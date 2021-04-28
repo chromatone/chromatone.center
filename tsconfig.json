@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "module": "esnext",
+    "lib": ["ESNext", "DOM", "DOM.Iterable", "webworker"],
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "noUnusedLocals": true,
+    "allowJs": true,
+    "baseUrl": "."
+  },
+  "include": [
+    "pages/.vitepress/**/*.ts",
+    "pages/components/**/*.vue",
+    "pages/cards/**/*.vue", 
+  ],
+  "exclude": [
+    "**/dist/**"
+  ]
+}

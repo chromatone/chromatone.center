@@ -1,0 +1,44 @@
+{
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "dev": "vitepress dev pages",
+    "build": "vitepress build pages",
+    "serve": "vitepress serve pages"
+  },
+  "dependencies": {
+    "@vueuse/core": "4.9.0",
+    "@vueuse/motion": "^1.5.4",
+    "javascript-time-ago": "^2.3.4",
+    "matter-js": "^0.17.1",
+    "paper": "^0.12.15",
+    "poly-decomp": "^0.3.0",
+    "vue": "^3.0.11"
+  },
+  "devDependencies": {
+    "@iconify/json": "^1.1.334",
+    "@rollup/plugin-yaml": "^3.0.0",
+    "@types/javascript-time-ago": "^2.0.2",
+    "@types/node": "^14.14.41",
+    "esbuild-register": "^2.5.0",
+    "glob": "^7.1.6",
+    "gray-matter": "^4.0.3",
+    "markdown-it-classy": "^0.2.0",
+    "markdown-it-container": "^3.0.0",
+    "markdown-it-external-links": "^0.0.6",
+    "patch-vue-directive-ssr": "^0.0.1",
+    "pug": "3.0.2",
+    "stylus": "^0.54.8",
+    "typescript": "^4.2.4",
+    "vite": "^2.2.3",
+    "vite-plugin-components": "^0.8.4",
+    "vite-plugin-icons": "^0.5.0",
+    "vite-plugin-restart": "^0.0.2",
+    "vite-plugin-windicss": "^0.15.7",
+    "vite-tsconfig-paths": "^3.3.9",
+    "vitepress": "^0.13.1",
+    "vitepress-tags": "^0.3.0",
+    "windicss": "2.5.14"
+  },
+  "version": "0.2.0"
+}

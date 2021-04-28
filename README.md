@@ -18,7 +18,7 @@ Stickers for musical instruments to physically map notes and pitch classes with 
 
 ## Express
 
-Musical and visual projects that implement Chromatone system in practice.
+Musical and visual projects and performers, who implement Chromatone system in practice.
 
 ## Contribute
 

@@ -9,7 +9,7 @@ altActionText: Войти
 list: main
 ---
 
-![](./public/media/logo/logo.svg)
+![](/media/logo/logo.svg)
 
 ## Chromatone is a colorful music exploration project
 

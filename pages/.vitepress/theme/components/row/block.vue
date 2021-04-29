@@ -1,5 +1,6 @@
 <template lang="pug">
 .block(
+  :id="item.title"
   v-motion,
   :initial="{ opacity: 0, y: 40 }",
   :enter="{ opacity: 0, y: 0, scale: 1 }",

@@ -15,3 +15,9 @@ Thermonuclear reactions in its core produce high energy gamma-rays that are abso
 ![](./sun.svg)
 
 ![](./sun-granules.jpg)
+
+## Earth atmosphere EM radiation absorption
+
+![](./sun-spectrum.svg)
+
+![](./spectral-lines.svg)

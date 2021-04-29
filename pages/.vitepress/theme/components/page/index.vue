@@ -1,6 +1,6 @@
 <template lang="pug">
 main
-  .art.h-md.bg-cover.sticky.-z-1(class="top-$header-height",v-if="$frontmatter.media", :style="{ backgroundImage: 'url(' + $frontmatter.media + ')' }", v-motion-fade)
+  .art.h-md.bg-cover.sticky.-z-1(class="top-$header-height",v-if="$frontmatter.media", :style="{ backgroundImage: 'url(/media/' + $frontmatter.media + ')' }", v-motion-fade)
   .info
     .content(:class="{ 'full-width': $frontmatter.fullWidth }")
       page-parents
@@ -17,12 +17,12 @@ main
     v-if="$frontmatter.list", 
     :rows="$site.customData.pages?.[$frontmatter.list]"
     )
-
   page-footer
   page-next-prev
 </template>
 
 <script setup lang="ts">
+
 
 
 </script>
@@ -33,7 +33,7 @@ main {
 }
 
 .info {
-  @apply;
+  @apply bg-white dark:bg-warm-gray-900;
 }
 
 .art {

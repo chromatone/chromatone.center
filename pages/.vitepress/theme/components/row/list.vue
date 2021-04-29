@@ -19,6 +19,10 @@ const props = defineProps({
 const sorted = computed(() => {
   if (!props.rows && typeof props.rows != 'array') { return }
   return [...props.rows].sort((a, b) => {
+    if (a.data?.order && b.data?.order) {
+      let ord = a.data.order < b.data.order ? -1 : 1
+      return ord
+    }
     if (a?.lastModified > b?.lastModified) {
       return -1
     } else {

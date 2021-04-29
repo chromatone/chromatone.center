@@ -1,7 +1,6 @@
 <template lang="pug">
 .crd(
-  class="hover:shadow",
-  :style="{ borderColor: lchToHsl(i, total)}"
+  :style="{ borderColor: lchToHsl(i, total) }"
   :title="item.lastModified",
   v-motion,
   :initial="{ opacity: 0, y: 40 }",
@@ -9,15 +8,15 @@
   :visible="{ opacity: 1, y: 0, scale: 1 }",
   :delay="i * 80",
   )
+  a.media(:href="item.link",v-if="item.data.media", :style="{ backgroundImage: 'url(/media/' + item.data.media + ')' }", v-motion-fade) 
   .info
     .flex.flex-1.items-center.self-stretch.flex-wrap
-      .mr-2.text-2xl(v-if="item.data.emoji") {{ item.data.emoji}}
+      .mr-2.text-2xl(v-if="item.data.emoji") {{ item.data.emoji }}
       a.text-xl.flex-auto(:href="item.link") {{ item.title }}
-      edit-seen(:link="item.link")
       card-date(:date="item.lastModified")
     a.text-md.mt-4.mb-2.font-normal(v-if="item.subtitle", :href="item.link") {{ item.subtitle }}
     .text-xl.font-bold.rounded-xl.text-orange-800.p-2.mt-4(class="dark:text-orange-300",v-if="item.data.price") {{ item.data.price }}
-  .media(v-if="item.data.media", :style="{ backgroundImage: 'url(' + item.media + ')' }", v-motion-fade) 
+
   line-list(:list="$site.customData.pages?.[item.data.list]")
 </template>
 
@@ -29,6 +28,7 @@ const props = defineProps({
   total: Number,
 });
 
+import { useLocalStorage } from '@vueuse/core'
 
 
 import { lchToHsl } from '@composables/colors.js'
@@ -36,8 +36,12 @@ import { lchToHsl } from '@composables/colors.js'
 
 <style lang="postcss" scoped>
 .crd {
-  @apply my-4 flex flex-col rounded shadow-md border-l-4;
+  @apply my-4 flex flex-col rounded shadow-md border-l-4 hover:shadow;
   transition: box-shadow color 100ms ease-in-out;
+}
+
+.crd.seen {
+  @apply opacity-70;
 }
 
 .info {

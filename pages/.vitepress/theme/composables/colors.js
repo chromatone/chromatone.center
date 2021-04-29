@@ -1,5 +1,6 @@
 import { colord, extend } from 'colord'
 import lchPlugin from 'colord/plugins/lch'
+// https://www.npmjs.com/package/colord
 
 extend([lchPlugin])
 

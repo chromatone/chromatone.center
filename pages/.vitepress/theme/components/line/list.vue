@@ -1,5 +1,5 @@
 <template lang="pug">
-.flex.flex-col.mx-4.mb-2(v-if="list")
+.line(v-if="list")
   a.flex.px-4.py-2.my-2.font-bold.border-l-4.shadow-md(
     v-for="(line,l) in list", 
     :key="line.title",
@@ -22,4 +22,7 @@ import { lchToHsl } from '@composables/colors.js'
 </script>
 
 <style  scoped>
+.line {
+  @apply flex flex-col md:mx-4 mx-2 mb-2;
+}
 </style>

@@ -22,40 +22,28 @@ const config: UserConfig<DefaultTheme.Config> = {
     editLinkText: 'Нашли ошибку?',
     nav: [
       {
-        text: 'Research',
-        link: '/research/',
+        text: 'Theory',
+        link: '/theory/',
         //@ts-ignore
-        items: pages.research
+        items: pages.theory
       },
       {
-        text: 'Explore',
-        link: '/explore/',
+        text: 'Apps',
+        link: '/apps/',
         //@ts-ignore
-        items: pages.explore
+        items: pages.apps
       },
       {
-        text: 'Memorize',
-        link: '/memorize/',
+        text: 'Shop',
+        link: '/shop/',
         //@ts-ignore
-        items: pages.memorize
+        items: pages.shop
       },
       {
-        text: 'Practice',
-        link: '/practice/',
+        text: 'Support',
+        link: '/support.html',
         //@ts-ignore
-        items: pages.practice
-      },
-      {
-        text: 'Express',
-        link: '/express/',
-        //@ts-ignore
-        items: pages.express
-      },
-      {
-        text: 'Contribute',
-        link: '/contribute/',
-        //@ts-ignore
-        items: pages.contribute
+        items: pages.support
       },
       {
         text: 'Contact',
@@ -67,40 +55,28 @@ const config: UserConfig<DefaultTheme.Config> = {
     sidebar: {
       '/': [
         {
-          text: 'Research',
-          link: '/research/',
+          text: 'Theory',
+          link: '/theory/',
           //@ts-ignore
-          children: pages.research
+          children: pages.theory
         },
         {
-          text: 'Explore',
-          link: '/explore/',
+          text: 'Apps',
+          link: '/apps/',
           //@ts-ignore
-          children: pages.explore
+          children: pages.apps
         },
         {
-          text: 'Memorize',
-          link: '/memorize/',
+          text: 'Shop',
+          link: '/shop/',
           //@ts-ignore
-          children: pages.memorize
+          children: pages.shop
         },
         {
-          text: 'Practice',
-          link: '/practice/',
+          text: 'Support',
+          link: '/support/',
           //@ts-ignore
-          children: pages.practice
-        },
-        {
-          text: 'Express',
-          link: '/express/',
-          //@ts-ignore
-          children: pages.express
-        },
-        {
-          text: 'Contribute',
-          link: '/contribute/',
-          //@ts-ignore
-          children: pages.contribute
+          children: pages.support
         },
         {
           text: 'Contact',

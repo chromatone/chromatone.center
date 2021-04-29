@@ -1,20 +1,31 @@
 <template lang="pug">
-.flex(@click="toggleSeen()")
-  fa-eye(v-if="!seen")
-  fa-eye-slash(v-else)
+.flex(@click="setSeen()") 
+  la-check(v-if="dif > 0",:style="{ color: dif > 0 ? 'green' : 'gray' }")
+  card-date(v-else,:date="modified")
 </template>
 
 <script setup>
-import { defineProps } from 'vue'
-import { useStorage, useToggle } from '@vueuse/core'
+import { defineProps, computed } from 'vue'
+import { useLocalStorage, useToggle } from '@vueuse/core'
 
 const props = defineProps({
-  link: String,
+  title: String,
+  modified: String,
+  content: Boolean,
 })
 
-const seen = useStorage(props.link, false)
+const seen = useLocalStorage(props.title, props.content ? Date.now() : 0)
 
-const toggleSeen = useToggle(seen);
+function setSeen() {
+  seen.value = Date.now()
+}
+
+const dif = computed(() => {
+  let mod = new Date(props.modified).getTime()
+  let dif = seen.value - mod
+  return dif
+});
+
 </script>
 
 <style  scoped>

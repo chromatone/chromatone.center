@@ -1,5 +1,7 @@
 ---
-editLink: false
+title: Contact
+tags: main
+order: 120
 ---
 
 ![](/img/starov.jpg) {avatar}

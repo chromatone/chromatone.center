@@ -4,17 +4,23 @@ import Icons, { ViteIconsResolver } from 'vite-plugin-icons'
 import WindiCSS from 'vite-plugin-windicss'
 import ViteRestart from 'vite-plugin-restart'
 import yaml from '@rollup/plugin-yaml';
+import { getAliases } from 'vite-aliases'
+
 
 
 export default defineConfig({
+  resolve: {
+		alias: getAliases({
+      path: 'pages/.vitepress/theme'
+    })
+	},
   plugins: [
     // @ts-ignore
     yaml(),
     Components({
       dirs: [
         '.vitepress/theme/components',
-        '../components',
-        './',
+        '.vitepress/components',
       ],
       extensions: ['vue', 'ts'],
       directoryAsNamespace: true,
@@ -31,7 +37,7 @@ export default defineConfig({
     }),
     WindiCSS({
       scan: {
-        dirs: ['.vitepress', '../components'],
+        dirs: ['.vitepress', '.vitepress/components'],
         include: ['index.md'],
         exclude: ['**/examples/**/*'],
         fileExtensions: ['vue', 'ts'],

@@ -6,16 +6,26 @@
 
 <script lang="ts" setup>
 import { defineProps, computed } from 'vue'
-import TimeAgo from 'javascript-time-ago'
+import { useTimeAgo } from '@vueuse/core'
 
 const props = defineProps({
   date: String,
 });
 
-const timeAgo = new TimeAgo('en-EN')
-const elapsed = computed(() => {
-  return timeAgo.format(new Date(props.date), 'mini')
-})
+const elapsed = useTimeAgo(new Date(props.date), {
+  messages: {
+    justNow: 'just now',
+    past: n => n.match(/\d/) ? `${n}` : n,
+    future: n => n.match(/\d/) ? `in ${n}` : n,
+    month: (n) => `${n} mo`,
+    year: (n) => `${n} y`,
+    day: (n) => `${n} d`,
+    week: (n) => `${n} w`,
+    hour: (n) => `${n} h`,
+    minute: (n) => `${n} m`,
+    second: (n) => `${n} s`,
+  }
+});
 </script>
 
 <style lang="stylus" scoped>

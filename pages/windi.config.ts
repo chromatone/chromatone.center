@@ -32,7 +32,7 @@ export default defineConfig({
       colors: {
         bg: 'var(--c-bg)',
         ...chromaticColors(12),
-        gray: colors.warmGray,
+        gray: colors.coolGray,
       },
       boxShadow: {
         box: '0px 5px 15px 0px rgba(0, 0, 0, 0.35)',

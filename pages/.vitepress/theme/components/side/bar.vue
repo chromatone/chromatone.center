@@ -1,7 +1,7 @@
 <template lang="pug">
 aside(class="h-auto border-l-1px border-$c-divider")
   .sidebar(:class="{ open }")
-    nav-links.nav
+    // nav-links.nav
     side-Links
 </template>
 

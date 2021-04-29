@@ -11,12 +11,7 @@ import { Theme } from 'vitepress'
 import Layout from './layout.vue'
 //@ts-ignore
 import NotFound from './not-found.vue'
-
-
-import TimeAgo from 'javascript-time-ago'
-import en from 'javascript-time-ago/locale/en'
-//@ts-ignore
-TimeAgo.addDefaultLocale(en)
+import rowList from '@components/row/list.vue'
 
 
 const theme: Theme = {
@@ -24,6 +19,8 @@ const theme: Theme = {
   NotFound,
   enhanceApp({ app }) {
     app.use(MotionPlugin)
+    //@ts-ignore
+    app.component(rowList)
   },
 }
 

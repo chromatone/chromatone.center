@@ -22,10 +22,10 @@ const config: UserConfig<DefaultTheme.Config> = {
     editLinkText: 'Нашли ошибку?',
     nav: [
       {
-        text: 'Learn',
-        link: '/learn/',
+        text: 'Research',
+        link: '/research/',
         //@ts-ignore
-        items: pages.learn
+        items: pages.research
       },
       {
         text: 'Explore',
@@ -35,15 +35,15 @@ const config: UserConfig<DefaultTheme.Config> = {
       },
       {
         text: 'Memorize',
-        link: '/memos/',
+        link: '/memorize/',
         //@ts-ignore
-        items: pages.memos
+        items: pages.memorize
       },
       {
         text: 'Practice',
-        link: '/stickers/',
+        link: '/practice/',
         //@ts-ignore
-        items: pages.stickers
+        items: pages.practice
       },
       {
         text: 'Express',
@@ -67,10 +67,10 @@ const config: UserConfig<DefaultTheme.Config> = {
     sidebar: {
       '/': [
         {
-          text: 'Learn',
-          link: '/learn/',
+          text: 'Research',
+          link: '/research/',
           //@ts-ignore
-          children: pages.learn
+          children: pages.research
         },
         {
           text: 'Explore',
@@ -80,15 +80,15 @@ const config: UserConfig<DefaultTheme.Config> = {
         },
         {
           text: 'Memorize',
-          link: '/memos/',
+          link: '/memorize/',
           //@ts-ignore
-          children: pages.memos
+          children: pages.memorize
         },
         {
           text: 'Practice',
-          link: '/stickers/',
+          link: '/practice/',
           //@ts-ignore
-          children: pages.stickers
+          children: pages.practice
         },
         {
           text: 'Express',

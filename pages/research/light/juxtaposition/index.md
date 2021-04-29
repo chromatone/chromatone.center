@@ -1,6 +1,5 @@
 ---
 title: Juxtaposition of acoustic and electromagnetic oscillations
-media: ./em-acoustic.svg
 tags: light
 ---
 

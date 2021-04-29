@@ -1,7 +1,6 @@
 ---
 title: Color models
 subtitle: A color model is an abstract mathematical model describing the way colors can be represented as tuples of numbers, typically as three or four values or color components. 
-media: color-models.svg
 tags: color
 ---
 
@@ -77,3 +76,23 @@ The CIELAB space is three-dimensional, and covers the entire range of human colo
 While the intention behind CIELAB was to create a space that was more perceptually uniform than CIEXYZ using only a simple formula,[3] CIELAB is known to lack perceptually uniformity, particularly in the area of blue hues.
 
 The lightness value, L* in CIELAB is calculated using the cube root of the relative luminance with an offset near black. This results in an effective power curve with an exponent of approximately 0.43 which represents the human eye's response to light under daylight (photopic) conditions. 
+
+
+
+### Links to useful resources about color models:
+
+- https://www.colorsystem.com/?lang=en
+- https://github.com/ucarion/cielab.io
+- http://scanline.ca/hue/cielab.html
+- https://en.wikipedia.org/wiki/CIELAB_color_space
+- https://colorjs.io/get/
+- https://lea.verou.me/2020/04/lch-colors-in-css-what-why-and-how/
+- https://en.wikipedia.org/wiki/HWB_color_model
+- https://cielab.xyz/colorconv/
+- https://youtu.be/4QyOFiDl8Bw
+
+## Color js tools
+
+- https://www.npmjs.com/package/chroma-js
+- https://www.npmjs.com/package/colord
+- https://www.npmjs.com/package/colorjs.io

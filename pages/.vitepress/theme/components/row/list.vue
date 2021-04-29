@@ -5,6 +5,7 @@
     :key="area.title", 
     :item="area", 
     :i="i",
+    :total="sorted.length"
     )  
 </template>
 

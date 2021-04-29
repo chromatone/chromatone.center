@@ -1,7 +1,6 @@
 ---
 title: Basic color names
 tags: color
-media: ./color-names.svg
 colors:
   red:
     en: Red
@@ -9,5 +8,5 @@ colors:
 ---
 
 
-<learn-color-names-table />
+<color-table />
 

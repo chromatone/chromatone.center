@@ -1,19 +1,16 @@
 <template lang="pug">
-.flex.flex-col  
-  .flex.p-4(:style="{ backgroundColor: lchToHsl(i) }",v-for="i in 12", :key="i") {{ lchToHsl(i) }}
+table.w-full
+  tr
+    th HSL
+    th LCH
+  tr(v-for="(n,i) in 12", :key="i")
+    td.p-8(:style="{ backgroundColor: levelColor(i, 12, 1) }") 
+    td.p-8(:style="{ backgroundColor: lchToHsl(i + 1, 12, 1, 60) }") 
+  
 </template>
 
 <script setup>
-import { colord, extend } from "colord";
-import lchPlugin from "colord/plugins/lch";
-
-extend([lchPlugin]);
-
-function lchToHsl(n) {
-  return colord(`lch(80% 60 ${n * 30}`).toHslString()
-};
-
-// https://www.npmjs.com/package/colord#plugins
+import { lchToHsl, levelColor } from '@composables/colors.js'
 
 </script>
 

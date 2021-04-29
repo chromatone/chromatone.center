@@ -9,25 +9,16 @@
   :visible="{ opacity: 1, y: 0, scale: 1 }",
   :delay="i * 80",
   )
-  a.info(:href="item.link")
+  .info
     .flex.flex-1.items-center.self-stretch.flex-wrap
       .mr-2.text-2xl(v-if="item.data.emoji") {{ item.data.emoji}}
-      h3.text-xl {{ item.title }}
-      .flex-auto
+      a.text-xl.flex-auto(:href="item.link") {{ item.title }}
+      edit-seen(:link="item.link")
       card-date(:date="item.lastModified")
-    .text-md.mt-4.mb-2.font-normal(v-if="item.subtitle") {{ item.subtitle }}
+    a.text-md.mt-4.mb-2.font-normal(v-if="item.subtitle", :href="item.link") {{ item.subtitle }}
     .text-xl.font-bold.rounded-xl.text-orange-800.p-2.mt-4(class="dark:text-orange-300",v-if="item.data.price") {{ item.data.price }}
   .media(v-if="item.data.media", :style="{ backgroundImage: 'url(' + item.media + ')' }", v-motion-fade) 
-  .flex.flex-col.mx-4.mb-2(v-if="$site.customData.pages?.[item.data.list]")
-    a.flex.px-4.py-2.my-2.font-bold.border-l-4.shadow-md(
-      v-for="(line,l) in $site.customData.pages?.[item.data.list]", 
-      :key="line.title",
-      :href="line.link",
-      :style="{ borderColor: lchToHsl(l, $site.customData.pages?.[item.data.list].length)}"
-      ) {{line.title}}
-      counter(:list="$site.customData.pages?.[line.data.list]")
-      .flex-1
-      card-date(:date="line.lastModified")
+  line-list(:list="$site.customData.pages?.[item.data.list]")
 </template>
 
 <script setup>
@@ -37,6 +28,8 @@ const props = defineProps({
   i: Number,
   total: Number,
 });
+
+
 
 import { lchToHsl } from '@composables/colors.js'
 </script>

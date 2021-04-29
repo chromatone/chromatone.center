@@ -1,5 +1,5 @@
 ---
-title: 'Chromatone'
+title: Visual music language
 heroImage: /media/logo/logo.svg
 actionLink: /enter.html
 actionText: Enter

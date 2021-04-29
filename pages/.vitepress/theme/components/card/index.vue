@@ -8,15 +8,15 @@
   :visible="{ opacity: 1, y: 0, scale: 1 }",
   :delay="i * 80",
   )
-  a.media(:href="item.link",v-if="item.data.media", :style="{ backgroundImage: 'url(/media/' + item.data.media + ')' }", v-motion-fade) 
-  .info
-    .flex.flex-1.items-center.self-stretch.flex-wrap
-      .mr-2.text-2xl(v-if="item.data.emoji") {{ item.data.emoji }}
-      a.text-xl.flex-auto(:href="item.link") {{ item.title }}
-      card-date(:date="item.lastModified")
-    a.text-md.mt-4.mb-2.font-normal(v-if="item.subtitle", :href="item.link") {{ item.subtitle }}
-    .text-xl.font-bold.rounded-xl.text-orange-800.p-2.mt-4(class="dark:text-orange-300",v-if="item.data.price") {{ item.data.price }}
-
+  a.flex(:href="item.link")
+    .info
+      .flex.flex-1.items-center.self-stretch.flex-wrap
+        .mr-2.text-2xl(v-if="item.data.emoji") {{ item.data.emoji }}
+        .text-xl.flex-auto {{ item.title }}
+        card-date(:date="item.lastModified")
+      .text-md.mt-4.mb-2.font-normal(v-if="item.subtitle") {{ item.subtitle }}
+      .text-xl.font-bold.rounded-xl.text-orange-800.p-2.mt-4(class="dark:text-orange-300",v-if="item.data.price") {{ item.data.price }}
+    .media(v-if="item.data.media", :style="{ backgroundImage: 'url(/media/' + item.data.media + ')' }", v-motion-fade) 
   line-list(:list="$site.customData.pages?.[item.data.list]")
 </template>
 
@@ -49,10 +49,14 @@ import { lchToHsl } from '@composables/colors.js'
 }
 
 .media {
-  @apply bg-cover bg-center self-stretch min-h-8em;
+  @apply bg-cover bg-center self-stretch min-h-4em min-w-6em;
   filter: saturate(10%) opacity(70%);
   transition: all 200ms ease-in-out;
   flex: 1 1 100px;
+}
+
+.crd:hover .media {
+  filter: saturate(100%) opacity(100%);
 }
 
 a:hover .art {

@@ -9,7 +9,7 @@
   :style="{ zIndex: i + 10, borderColor: lchToHsl(i, total) }"
   )
   a.header(:href="item.link")
-    .art.w-full.h-12em.bg-cover.bg-center.mb-8.rounded(v-if="item.data.media", :style="{ backgroundImage: 'url(' + item.media + ')' }", v-motion-fade)
+    .media.w-full.h-12em.bg-cover.bg-center.mb-8.rounded(v-if="item.data.media", :style="{ backgroundImage: 'url(/media/' + item.data.media + ')' }", v-motion-fade)
     .flex.flex-1.self-stretch.flex-wrap.items-center
       .mr-2.text-2xl(v-if="item.data.emoji") {{ item.data.emoji }}
       h3.text-3xl.flex.items-center {{ item.title }} 
@@ -47,7 +47,7 @@ import { lchToHsl } from '@composables/colors.js'
   @apply p-4 flex flex-col min-content flex-1 md:(px-8 py-4);
 }
 
-.art {
+.media {
   filter: saturate(10%) opacity(70%);
   transition: all 200ms ease-in-out;
 }

@@ -41,7 +41,7 @@ const config: UserConfig<DefaultTheme.Config> = {
       },
       {
         text: 'Support',
-        link: '/support.html',
+        link: '/support/',
         //@ts-ignore
         items: pages.support
       },

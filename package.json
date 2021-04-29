@@ -9,7 +9,7 @@
   "dependencies": {
     "@vueuse/core": "4.9.1",
     "@vueuse/motion": "^1.5.4",
-    "colord": "^1.4.0",
+    "colord": "^1.4.1",
     "javascript-time-ago": "^2.3.4",
     "matter-js": "^0.17.1",
     "paper": "^0.12.15",
@@ -36,7 +36,7 @@
     "vite-plugin-components": "^0.8.4",
     "vite-plugin-icons": "^0.5.0",
     "vite-plugin-restart": "^0.0.2",
-    "vite-plugin-windicss": "^0.15.7",
+    "vite-plugin-windicss": "^0.15.8",
     "vite-tsconfig-paths": "^3.3.10",
     "vitepress": "^0.13.2",
     "vitepress-tags": "^0.3.1",

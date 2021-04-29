@@ -14,7 +14,7 @@ const props = defineProps({
 
 const elapsed = useTimeAgo(new Date(props.date), {
   messages: {
-    justNow: 'just now',
+    justNow: ' now',
     past: n => n.match(/\d/) ? `${n}` : n,
     future: n => n.match(/\d/) ? `in ${n}` : n,
     month: (n) => `${n} mo`,

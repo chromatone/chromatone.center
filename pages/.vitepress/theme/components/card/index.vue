@@ -26,6 +26,8 @@
       :style="{ borderColor: lchToHsl(l, $site.customData.pages?.[item.data.list].length)}"
       ) {{line.title}}
       counter(:list="$site.customData.pages?.[line.data.list]")
+      .flex-1
+      card-date(:date="line.lastModified")
 </template>
 
 <script setup>

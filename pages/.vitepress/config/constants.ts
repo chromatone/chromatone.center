@@ -8,6 +8,6 @@ export const metaData = {
   site,
   locale: 'en',
   icon: '/media/circle/circle.svg',
-  author: 'Denis K Starov',
+  author: 'Chromatone.center',
   tags: 'color, music, stickers, posters, theory, webapp, science',
 }

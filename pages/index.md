@@ -1,15 +1,15 @@
 ---
-title: Visual music language
+title: Chromatone
+subtitle: Visual music language
 heroImage: /media/logo/logo.svg
 actionLink: /enter.html
 actionText: Enter
 altActionLink: /ru.html
 altActionText: Войти
-
+media: logo/logo.svg
 list: main
 ---
 
-![](/media/logo/logo.svg)
 
 ## Chromatone is a colorful music exploration project
 

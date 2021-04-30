@@ -25,7 +25,7 @@
   --c-brand: hsl(300, 30%, 40%);
   --c-brand-active: hsl(300, 30%, 40%);
   --c-brand-dark: hsl(300, 30%, 30%);
-  --c-brand-light: hsl(300, 60%, 65%);
+  --c-brand-light: hsl(300, 60%, 25%);
 
   --c-disabled-bg: #e5e5e5;
   --c-disabled-fg: #666;

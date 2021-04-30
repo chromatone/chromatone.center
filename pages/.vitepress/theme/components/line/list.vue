@@ -1,6 +1,6 @@
 <template lang="pug">
-.line(v-if="list")
-  a.flex.px-4.py-2.my-2.font-bold.border-l-4.shadow-md(
+.lines(v-if="list")
+  a.line(
     v-for="(line,l) in list", 
     :key="line.title",
     :href="line.link",
@@ -22,7 +22,12 @@ import { lchToHsl } from '@composables/colors.js'
 </script>
 
 <style  scoped>
-.line {
+.lines {
   @apply flex flex-col md:mx-4 mx-2 mb-2;
+}
+
+.line {
+  @apply flex px-4 py-2 my-2 font-bold border-l-4 transition-all shadow-md 
+  hover:(no-underline shadow-lg);
 }
 </style>

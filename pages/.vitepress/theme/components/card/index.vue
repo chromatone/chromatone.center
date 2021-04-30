@@ -36,7 +36,7 @@ import { lchToHsl } from '@composables/colors.js'
 
 <style lang="postcss" scoped>
 .crd {
-  @apply my-4 flex flex-col rounded shadow-md border-l-4 hover:shadow;
+  @apply my-4 flex flex-col rounded shadow-md border-l-4 hover:shadow-lg;
   transition: box-shadow color 100ms ease-in-out;
 }
 
@@ -49,14 +49,15 @@ import { lchToHsl } from '@composables/colors.js'
 }
 
 .media {
-  @apply bg-cover bg-center self-stretch min-h-4em min-w-6em;
+  @apply flex-0 bg-cover bg-center self-stretch min-h-6em min-w-6em rounded-bl-3xl;
+  flex-basis: 6em;
   filter: saturate(10%) opacity(70%);
   transition: all 200ms ease-in-out;
   flex: 1 1 100px;
 }
 
 .crd:hover .media {
-  filter: saturate(100%) opacity(100%);
+  filter: saturate(60%) opacity(80%);
 }
 
 a:hover .art {

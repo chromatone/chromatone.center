@@ -1,5 +1,5 @@
 <template lang="pug">
-.flex.flex-col.max-w-55ch.mx-auto
+.list-blocks
   row-block(
     v-for="(area,i) in sorted", 
     :key="area.title", 
@@ -11,30 +11,20 @@
 
 <script setup>
 import { computed, defineProps, reactive } from "vue";
-
+import { sortList } from '@composables/list.js'
 const props = defineProps({
   rows: Object,
 });
 
 const sorted = computed(() => {
-  if (!props.rows && typeof props.rows != 'array') { return }
-  return [...props.rows].sort((a, b) => {
-    if (a.data?.order && b.data?.order) {
-      let ord = a.data.order < b.data.order ? -1 : 1
-      return ord
-    }
-    if (a?.lastModified > b?.lastModified) {
-      return -1
-    } else {
-      return 1
-    }
-  })
-});
-
-
+  return sortList(props.rows)
+})
 
 
 </script>
 
 <style lang="postcss" scoped>
+.list-blocks {
+  @apply flex flex-col max-w-55ch mx-auto;
+}
 </style>

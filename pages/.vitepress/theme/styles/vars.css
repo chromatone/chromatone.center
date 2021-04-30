@@ -23,7 +23,7 @@
   --c-link: hsla(300, 10%, 24%, 1);
 
   --c-brand: hsl(300, 30%, 40%);
-  --c-brand-active: hsl(300, 30%, 40%);
+  --c-brand-active: hsl(300, 30%, 20%);
   --c-brand-dark: hsl(300, 30%, 30%);
   --c-brand-light: hsl(300, 60%, 25%);
 
@@ -95,10 +95,10 @@ html.dark {
 
   --c-link: hsla(10, 20%, 90%, 1);
 
-  --c-brand: hsl(10, 20%, 50%);
-  --c-brand-active: hsl(10, 40%, 50%);
-  --c-brand-dark: hsl(5, 30%, 30%);
-  --c-brand-light: hsl(20, 60%, 55%);
+  --c-brand: hsl(300, 30%, 50%);
+  --c-brand-active: hsl(300, 30%, 60%);
+  --c-brand-dark: hsl(300, 30%, 30%);
+  --c-brand-light: hsl(300, 30%, 65%);
 }
 
 /** Fallback Styles */

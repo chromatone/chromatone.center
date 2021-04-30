@@ -2,7 +2,7 @@
 main
   .header
     .media(:style="{ backgroundImage: 'url(' + getMedia($frontmatter.media) + ')' }", v-motion-fade)
-    .meta.content(:class="{ 'full-width': $frontmatter.fullWidth }")
+    .meta.content
       page-parents
       .text-4xl.font-bold.mb-4.flex.flex-wrap.items-center(v-if="$frontmatter.title", v-motion-fade, :key="$frontmatter.title") 
         .mr-2 {{ $frontmatter.title }}
@@ -18,8 +18,8 @@ main
     v-if="$frontmatter.list", 
     :rows="$site.customData.pages?.[$frontmatter.list]"
     )
-    page-footer
     page-next-prev
+  page-footer
 </template>
 
 <script setup lang="ts">
@@ -38,43 +38,39 @@ function getMedia(path) {
 
 <style lang="postcss" scoped>
 main {
-  @apply mb-4;
+  @apply flex flex-col;
 }
 
 .header {
-  @apply relative flex flex-col items-center h-xl;
+  @apply relative flex flex-col items-center h-62vh;
 }
 
 .meta {
-  @apply bg-white bg-opacity-85 absolute bottom-0 w-full rounded-t-lg;
+  @apply bg-white bg-opacity-85 absolute bottom-0 w-full rounded-t-lg z-10;
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 }
 
 .dark .meta {
-  @apply bg-true-gray-900 bg-opacity-85;
+  @apply bg-true-gray-800 bg-opacity-85;
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 }
 
 .info {
-  @apply bg-white dark:bg-bg;
+  @apply bg-white dark:bg-gray-800 pb-32 shadow-2xl z-3;
 }
 
 .media {
-  @apply transition-all bg-cover bg-gray-100 dark:(bg-gray-700) -z-5 fixed top-0 h-2xl left-0 right-0 bg-fixed;
-  filter: saturate(50%) sepia(5%) opacity(50%);
+  @apply transition-all bg-cover bg-center bg-gray-100 dark:(bg-gray-700) -z-5 fixed top-0 h-70vh left-0 right-0 bg-fixed;
+  filter: saturate(50%) sepia(5%) opacity(70%);
 }
 
 .header:hover .media {
-  filter: saturate(60%) sepia(0%) opacity(70%);
+  filter: saturate(60%) sepia(0%) opacity(90%);
 }
 
 .content {
   @apply p-8 max-w-55ch mx-auto flex flex-col pb-16;
-}
-
-.content.cards {
-  @apply max-w-65ch mx-auto;
 }
 </style>

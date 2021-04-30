@@ -1,5 +1,5 @@
 ---
-title: A5 cheat-sheet
+title: A4 cheat-sheet
 subtitle: A comprehesive guide to colorful notes
 price: $12
 tags: memo

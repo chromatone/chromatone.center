@@ -1,24 +1,18 @@
-<template>
-  <div v-if="hasLinks" class="next-and-prev-link">
-    <div class="container">
-      <div class="prev">
-        <a v-if="prev" class="link" :href="$withBase(prev.link)">
-          <carbon-arrow-left class="icon icon-prev" />
-          <span class="text">{{ prev.text }}</span>
-        </a>
-      </div>
-      <div class="next">
-        <a v-if="next" class="link" :href="$withBase(next.link)">
-          <span class="text">{{ next.text }}</span>
-          <carbon-arrow-right class="icon icon-next" />
-        </a>
-      </div>
-    </div>
-  </div>
+<template lang="pug">
+.next-and-prev-link(v-if="hasLinks")
+  .container.m-auto
+    .prev
+      a.link(v-if="prev", :href="$withBase(prev.link)")
+        carbon-arrow-left.icon.icon-prev
+        span.text {{ prev.text }}
+    .next
+      a.link(v-if="next", :href="$withBase(next.link)")
+        span.text {{ next.text }}
+        carbon-arrow-right.icon.icon-next          
 </template>
 
 <script setup lang="ts">
-import { useNextAndPrevLinks } from '../../composables/nextAndPrevLinks'
+import { useNextAndPrevLinks } from '@composables/nextAndPrevLinks'
 
 const { hasLinks, prev, next } = useNextAndPrevLinks()
 </script>
@@ -26,13 +20,13 @@ const { hasLinks, prev, next } = useNextAndPrevLinks()
 <style scoped>
 .next-and-prev-link {
   padding-top: 1rem;
+  margin: auto;
 }
 
 .container {
-  display: flex;
+  @apply flex mt-4 pt-8;
   justify-content: space-between;
   border-top: 1px solid var(--c-divider);
-  padding-top: 1rem;
 }
 
 .prev,
@@ -56,7 +50,6 @@ const { hasLinks, prev, next } = useNextAndPrevLinks()
   display: inline-flex;
   align-items: center;
   max-width: 100%;
-  font-size: 1rem;
   font-weight: 500;
 }
 

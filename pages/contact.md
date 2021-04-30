@@ -21,7 +21,7 @@ I'm a broad range designer and enthusiastic open source developer. So I explore 
 
 
 
-<svg class="defs">
+<svg class="defs" style="height:0">
 	<defs>
 		<clipPath id="squircle" clipPathUnits="objectBoundingBox">
 			<path d="M .5 0 C .1 0 0 .1 0 .5 0 .9 .1 1 .5 1 .9 1 1 .9 1 .5 1 .1 .9 0 .5 0 Z" />

@@ -23,11 +23,11 @@ import { lchToHsl } from '@composables/colors.js'
 
 <style  scoped>
 .lines {
-  @apply flex flex-col md:mx-4 mx-2 mb-2;
+  @apply flex flex-col mx-2 md:mx-4 mb-4;
 }
 
 .line {
-  @apply flex px-4 py-2 my-2 font-bold border-l-4 transition-all shadow-md 
+  @apply flex px-4 py-2 mt-4 font-bold border-l-4 transition-all shadow-md 
   hover:(no-underline shadow-lg);
 }
 </style>

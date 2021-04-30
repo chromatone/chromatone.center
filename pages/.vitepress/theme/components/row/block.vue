@@ -37,7 +37,7 @@ import { lchToHsl } from '@composables/colors.js'
 
 <style lang="postcss" scoped>
 .block {
-  @apply my-8 shadow-lg rounded-md
+  @apply my-8 shadow-lg rounded-md mx-2 md:mx-0 sm:mx-4
   flex flex-col items-stretch 
   border-l border-l-w-4 transition-all
   static;

@@ -1,6 +1,6 @@
 ---
 title: Intervals
-subtitle: Different 
+subtitle: Different kinds of relations between frequencies
 tags: music
 media: theory/intervals.svg
 ---

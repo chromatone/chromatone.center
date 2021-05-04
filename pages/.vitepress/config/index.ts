@@ -47,7 +47,7 @@ const config: UserConfig<DefaultTheme.Config> = {
       },
       {
         text: 'Contact',
-        link: '/contact.html',
+        link: '/contact/',
         //@ts-ignore
         items: pages.contact
       },
@@ -80,7 +80,7 @@ const config: UserConfig<DefaultTheme.Config> = {
         },
         {
           text: 'Contact',
-          link: '/contact.html',
+          link: '/contact/',
           //@ts-ignore
           children: pages.contact
         },

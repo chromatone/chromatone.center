@@ -39,7 +39,7 @@ import { lchToHsl } from '@composables/colors.js'
 .block {
   @apply my-8 shadow-lg rounded-md mx-2 md:mx-0 sm:mx-4
   flex flex-col items-stretch 
-  border-l border-l-w-4 transition-all
+    transition-all
   static;
 }
 
@@ -53,7 +53,7 @@ import { lchToHsl } from '@composables/colors.js'
 
 .cover {
   filter: saturate(10%) opacity(50%);
-  transition: all 200ms ease-in-out;
+  transition: all 600ms ease-in-out;
 }
 
 .block:hover .cover {

@@ -1,12 +1,11 @@
 <template lang="pug">
-main(aria-labelledby="main-title")
+main.mb-16(aria-labelledby="main-title")
   home-hero
-  content
-  row-list(
+  content.content
+  tile-list(
     v-if="$frontmatter.list", 
     :rows="$site.customData.pages?.[$frontmatter.list]"
     )
-  home-footer
 </template>
 
 <script setup lang="ts">
@@ -15,6 +14,6 @@ main(aria-labelledby="main-title")
 
 <style scoped lang="postcss">
 .content {
-  @apply max-w-65ch mx-auto p-6 md:(p-12)  bg-gray-50 bg-opacity-96 dark:(bg-warm-gray-900 bg-opacity-96);
+  @apply p-8 max-w-55ch mx-auto flex flex-col pb-16;
 }
 </style>

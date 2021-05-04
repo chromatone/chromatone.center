@@ -1,15 +1,22 @@
 <template lang="pug">
 footer
   nav
-    .flex.items-center.flex-col(v-for="page in sortList($site.customData.pages?.main)", :key="page.title")
+    .flex.items-center.flex-col(
+      v-for="(page,i) in sortList($site.customData.pages?.main)", 
+      :key="page.title",
+      v-motion,
+      :initial="{ opacity: 0, y: 40 }",
+      :enter="{ opacity: 0, y: 0, scale: 1 }",
+      :visible="{ opacity: 1, y: 0, scale: 1 }",
+      :delay="i * 80",)
       a.section(:href="page.link", :class="{ active: route.path.includes(page.link) }") {{ page.title }}
       .flex.flex-wrap.justify-center
-        a.p-2.font-normal(v-for="line in sortList($site.customData?.pages?.[page.data?.list])", :key="line.title", :href="line.link", :class="{ active: route.path.includes(line.link) }") {{ line.title }}
+        a.px-2.py-1.font-normal(v-for="line in sortList($site.customData?.pages?.[page.data?.list])", :key="line.title", :href="line.link", :class="{ active: route.path.includes(line.link) }") {{ line.title }}
 
   .flex.items-center.mt-8
     a.m-auto(href="/")
-      .text-2xl.text-center {{ $site.title }}
       img.h-8em.my-4(:src="$themeConfig.logo") 
+      .text-2xl.text-center {{ $site.title }}
 </template>
 
 <script setup lang="ts">
@@ -31,7 +38,7 @@ nav {
 }
 
 .section {
-  @apply text-xl p-2;
+  @apply text-xl px-2 mt-8 border-b-1 border-gray-500 px-4 pb-1 mb-2;
 }
 
 a {
@@ -39,6 +46,6 @@ a {
 }
 
 .active {
-  @apply text-$c-brand;
+  @apply text-$c-brand border-$c-brand;
 }
 </style>

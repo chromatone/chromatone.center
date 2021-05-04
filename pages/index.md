@@ -1,13 +1,13 @@
 ---
+template: home
 title: Chromatone
 subtitle: Visual music language
-heroImage: /media/logo/logo.svg
 actionLink: /enter.html
 actionText: Enter
 altActionLink: /ru.html
 altActionText: Войти
-cover: logo/logo.svg
 list: main
+icon: logo/logo.svg
 ---
 
 

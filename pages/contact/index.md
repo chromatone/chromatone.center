@@ -1,14 +1,20 @@
 ---
 title: Contact
+subtitle: The project and it's founder
 tags: main
 order: 120
 ---
+
+#### <la-instagram /> <a href="https://www.instagram.com/chromatone.center" target="_blank">@chromatone.center</a>
+
 
 ![](/img/starov.jpg) {avatar}
 
 ## Denis K Starov
 
-Moscow, Russia
+#### Chromatone founder, designer and developer
+
+Based in Moscow, Russia
 
 I'm a broad range designer and enthusiastic open source developer. So I explore music with the web browser. And share my experiments and explorations with everyone here.
 
@@ -31,6 +37,7 @@ I'm a broad range designer and enthusiastic open source developer. So I explore 
 
 <style>
 .avatar img {
-  clip-path: url(#squircle)
+  clip-path: url(#squircle);
+	height: 16em;
 }
 </style>

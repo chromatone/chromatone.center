@@ -6,20 +6,16 @@ header.home-hero(v-if="showHero")
     :enter="{ opacity: 0, y: 0, scale: 1 }",
     :visible="{ opacity: 1, y: 0, scale: 1 }",)
     figure(
-      v-if="$frontmatter.heroImage"
+      v-if="$frontmatter.icon"
       )
       img.block.w-auto(
-        :src="$withBase($frontmatter.heroImage)", 
+        :src="'/media/' + $frontmatter.icon", 
         :alt="$frontmatter.heroAlt"
         )
     .ml-2
       h1#main-title.text-4xl.mb-4.leading-10.text-center(v-if="hasHeroText") {{ heroText }}
 
       p.m-0.mt-1.text-xl.leading-6.text-center(v-if="hasTagline") {{ tagline }}
-
-      .mt-8.text-center
-        nav-link.action(v-if="hasAction", :item="{ link: data.actionLink, text: data.actionText }")
-        nav-link.action.alt(v-if="hasAltAction", :item="{ link: data.altActionLink, text: data.altActionText }").
 </template>
 
 <script setup lang="ts">
@@ -52,7 +48,6 @@ const hasAltAction = computed(
 
 <style scoped lang="postcss">
 .home-hero {
-  min-height: calc(100vh - var(--header-height));
   @apply pt-10 pb-11 px-4 md:px-6 text-center xs:py-14 md:(pt-16 pb-17) flex;
 }
 

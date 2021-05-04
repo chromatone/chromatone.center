@@ -1,7 +1,8 @@
 <template lang="pug">
 main
-  .header
-    .cover(:style="{ backgroundImage: 'url(' + getMedia($frontmatter.cover) + ')' }", v-motion-fade)
+  .header(:class="{ 'has-cover': $frontmatter.cover }")
+    .cover(v-if="$frontmatter.cover",:style="{ backgroundImage: 'url(/media/' + $frontmatter.cover + ')' }", v-motion-fade)
+    img.icon(v-if="$frontmatter.icon",:src="'/media/' + $frontmatter.icon")
     .meta.content
       page-parents
       .text-4xl.font-bold.mb-4.flex.flex-wrap.items-center(v-if="$frontmatter.title", v-motion-fade, :key="$frontmatter.title") 
@@ -19,19 +20,10 @@ main
     :rows="$site.customData.pages?.[$frontmatter.list]"
     )
     page-next-prev
-  page-footer
+  footer-row
 </template>
 
 <script setup lang="ts">
-function getMedia(path) {
-  if (path) {
-    return '/media/' + path
-  } else {
-    return '/media/art/sean-sinclair.jpg'
-  }
-}
-
-
 
 
 </script>
@@ -42,11 +34,19 @@ main {
 }
 
 .header {
-  @apply relative flex flex-col items-center h-62vh;
+  @apply relative flex flex-col items-center;
+}
+
+.header.has-cover {
+  @apply h-32em;
+}
+
+.has-cover .meta {
+  @apply absolute bottom-0 w-full rounded-t-lg;
 }
 
 .meta {
-  @apply bg-white bg-opacity-85 absolute bottom-0 w-full rounded-t-lg z-10;
+  @apply bg-white bg-opacity-85 z-10 min-w-55ch;
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 }
@@ -62,12 +62,16 @@ main {
 }
 
 .cover {
-  @apply transition-all bg-cover bg-center bg-gray-100 dark:(bg-gray-700) -z-5 fixed top-0 h-70vh left-0 right-0 bg-fixed;
-  filter: saturate(50%) sepia(5%) opacity(70%);
+  @apply transition-all duration-1000 bg-cover bg-center bg-gray-100 dark:(bg-gray-700) -z-5 fixed top-0 h-48em left-0 right-0 bg-fixed;
+  filter: saturate(50%) sepia(5%) opacity(70%) blur(20px);
 }
 
 .header:hover .cover {
   filter: saturate(60%) sepia(0%) opacity(90%);
+}
+
+.icon {
+  @apply m-4 max-h-20em max-w-20em;
 }
 
 .content {

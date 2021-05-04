@@ -4,9 +4,9 @@
   .main(:class="{ 'grid-layout': !enableHome }", :style="{ backgroundImage: 'url(' + $frontmatter.backgroundImage + ')' }")
     side-bar(:open="openSideBar")
       .sidebar-mask(@click="toggleSidebar(false)")
-    home(v-if="enableHome")
+    home(v-if="$frontmatter.template == 'home'")
     page(v-else)
-debug
+// debug
 </template>
 
 <script setup lang="ts">

@@ -19,8 +19,7 @@ const { hasLinks, prev, next } = useNextAndPrevLinks()
 
 <style scoped>
 .next-and-prev-link {
-  padding-top: 1rem;
-  margin: auto;
+  @apply p-4 m-auto;
 }
 
 .container {

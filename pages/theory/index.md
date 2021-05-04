@@ -4,6 +4,6 @@ subtitle: There is a way to understand something better. It is to know as much a
 list: theory
 tags: main
 order: 10
-media: theory/theory.svg
+cover: theory/theory.svg
 ---
 

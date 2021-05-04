@@ -6,7 +6,7 @@ actionLink: /enter.html
 actionText: Enter
 altActionLink: /ru.html
 altActionText: Войти
-media: logo/logo.svg
+cover: logo/logo.svg
 list: main
 ---
 

@@ -16,7 +16,7 @@
         card-date(:date="item.lastModified")
       .text-md.mt-4.mb-2.font-normal(v-if="item.subtitle") {{ item.subtitle }}
       .text-xl.font-bold.rounded-xl.text-orange-800.p-2.mt-4(class="dark:text-orange-300",v-if="item.data.price") {{ item.data.price }}
-    .media(v-if="item.data.media", :style="{ backgroundImage: 'url(/media/' + item.data.media + ')' }", v-motion-fade) 
+    .cover(v-if="item.data.cover", :style="{ backgroundImage: 'url(/media/' + item.data.cover + ')' }", v-motion-fade) 
   line-list(:list="$site.customData.pages?.[item.data.list]")
 </template>
 
@@ -48,7 +48,7 @@ import { lchToHsl } from '@composables/colors.js'
   @apply flex flex-col p-4 w-full;
 }
 
-.media {
+.cover {
   @apply flex-0 bg-cover bg-center self-stretch min-h-6em min-w-6em rounded-bl-3xl;
   flex-basis: 6em;
   filter: saturate(10%) opacity(70%);
@@ -56,7 +56,7 @@ import { lchToHsl } from '@composables/colors.js'
   flex: 1 1 100px;
 }
 
-.crd:hover .media {
+.crd:hover .cover {
   filter: saturate(60%) opacity(80%);
 }
 

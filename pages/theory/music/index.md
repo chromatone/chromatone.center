@@ -3,6 +3,6 @@ title: Music
 subtitle: How sounds form music together
 tags: theory
 list: music
-media: theory/tonnetz.svg
+cover: theory/tonnetz.svg
 ---
 

@@ -2,7 +2,7 @@
 title: Intervals
 subtitle: Different kinds of relations between frequencies
 tags: music
-media: theory/intervals.svg
+cover: theory/intervals.svg
 ---
 
 Any two musical notes with fundamental frequencies in a ratio equal to 2n (n is any integer) are perceived as very similar and represent the simplest interval in music – an octave. Human pitch perception is periodic so that “color” or chroma of all the notes that are an octave apart seem circularly equivalent and brings them together into one pitch class.

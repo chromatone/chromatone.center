@@ -1,7 +1,7 @@
 <template lang="pug">
 main
   .header
-    .media(:style="{ backgroundImage: 'url(' + getMedia($frontmatter.media) + ')' }", v-motion-fade)
+    .cover(:style="{ backgroundImage: 'url(' + getMedia($frontmatter.cover) + ')' }", v-motion-fade)
     .meta.content
       page-parents
       .text-4xl.font-bold.mb-4.flex.flex-wrap.items-center(v-if="$frontmatter.title", v-motion-fade, :key="$frontmatter.title") 
@@ -61,12 +61,12 @@ main {
   @apply bg-white dark:bg-gray-800 pb-32 shadow-2xl z-3;
 }
 
-.media {
+.cover {
   @apply transition-all bg-cover bg-center bg-gray-100 dark:(bg-gray-700) -z-5 fixed top-0 h-70vh left-0 right-0 bg-fixed;
   filter: saturate(50%) sepia(5%) opacity(70%);
 }
 
-.header:hover .media {
+.header:hover .cover {
   filter: saturate(60%) sepia(0%) opacity(90%);
 }
 

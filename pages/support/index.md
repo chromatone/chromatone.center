@@ -1,6 +1,6 @@
 ---
 title: Support
-subtitle: Repositories with the open source code and ways to help develop Chromatone
+subtitle: COntribute code or donate money to help develop Chromatone as an open source project
 list: support
 tags: main
 order: 40

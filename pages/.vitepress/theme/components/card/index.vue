@@ -13,9 +13,10 @@
       .flex.flex-1.items-center.self-stretch.flex-wrap
         .mr-2.text-2xl(v-if="item.data.emoji") {{ item.data.emoji }}
         .text-xl.flex-auto {{ item.title }}
-        card-date(:date="item.lastModified")
+        card-date(v-if="!item.data.product",:date="item.lastModified")
+        shop-price(:product="item.data?.product")
       .text-md.mt-4.mb-2.font-normal(v-if="item.subtitle") {{ item.subtitle }}
-      .text-xl.font-bold.rounded-xl.text-orange-800.p-2.mt-4(class="dark:text-orange-300",v-if="item.data.price") {{ item.data.price }}
+
     .cover(v-if="item.data.cover", :style="{ backgroundImage: 'url(/media/' + item.data.cover + ')' }", v-motion-fade) 
   line-list(:list="$site.customData.pages?.[item.data.list]")
 </template>
@@ -45,7 +46,8 @@ import { lchToHsl } from '@composables/colors.js'
 }
 
 .info {
-  @apply flex flex-col p-4 w-full;
+  @apply flex flex-col p-4 w-full
+  items-start;
 }
 
 .cover {

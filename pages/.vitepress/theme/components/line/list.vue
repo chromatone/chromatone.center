@@ -9,6 +9,7 @@
     counter(:list="$site.customData.pages?.[line?.data?.list]") 
     .flex-1 
     card-date(:date="line.lastModified")
+    shop-price(:product="line?.data?.product")
 </template>
 
 <script setup>

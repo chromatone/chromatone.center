@@ -9,17 +9,18 @@
   :style="{ zIndex: i + 10, borderColor: lchToHsl(i, total) }"
   )
   a.header(:href="item.link")
-    .cover.w-full.h-12em.bg-cover.bg-center.mb-8.rounded(v-if="item.data.cover", :style="{ backgroundImage: 'url(/media/' + item.data.cover + ')' }", v-motion-fade)
+    .cover(v-if="item.data?.cover", :style="{ backgroundImage: 'url(/media/' + item.data?.cover + ')' }", v-motion-fade)
     .info
       .mr-2.text-2xl(v-if="item.data.emoji") {{ item.data.emoji }}
       h3.text-3xl.flex.items-center {{ item.title }} 
+        shop-price(:product="item.data?.product")
       .px-2.mt-2(v-if="item.more") 
         radix-icons-text-align-left
       .flex-auto
-      card-date(:date="item.lastModified")
+      card-date(v-if="!item.data?.product",:date="item.lastModified")
       .text-md.mt-4.mb-2.font-normal.w-full(v-if="item.subtitle") {{ item.subtitle }}
       .text-xl.font-bold.rounded-xl.text-orange-800.p-2.mt-4(class="dark:text-orange-300",v-if="item.data.price") {{ item.data.price }}
-  card-list(v-if="$site.customData.pages?.[item.data.list]",:rows="$site.customData.pages?.[item.data.list]")
+  card-list(v-if="$site.customData.pages?.[item.data?.list]",:rows="$site.customData.pages?.[item.data?.list]")
 
 </template>
 
@@ -52,12 +53,13 @@ import { lchToHsl } from '@composables/colors.js'
 }
 
 .cover {
+  @apply w-full h-12em bg-cover bg-center mb-2 rounded;
   filter: saturate(10%) opacity(50%);
   transition: all 600ms ease-in-out;
 }
 
 .block:hover .cover {
-  filter: saturate(50%) opacity(70%);
+  filter: saturate(100%) opacity(90%);
 }
 
 a:hover {

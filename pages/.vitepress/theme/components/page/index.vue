@@ -1,18 +1,17 @@
 <template lang="pug">
 main
   .header(:class="{ 'has-cover': $frontmatter.cover }")
-    .cover(v-if="$frontmatter.cover",:style="{ backgroundImage: 'url(/media/' + $frontmatter.cover + ')' }", v-motion-fade)
+    .cover(:style="{ backgroundImage: 'url(/media/' + $frontmatter.cover + ')' }", v-motion-fade)
     img.icon(v-if="$frontmatter.icon",:src="'/media/' + $frontmatter.icon")
     .meta.content
       page-parents
       .text-4xl.font-bold.mb-4.flex.flex-wrap.items-center(v-if="$frontmatter.title", v-motion-fade, :key="$frontmatter.title") 
         .mr-2 {{ $frontmatter.title }}
         .flex-1
-        .mx-2.my-4.text-6xl {{ $frontmatter.emoji }}
-      .flex.items-center(v-if="$frontmatter.price")
-        .text-xl.font-bold.rounded-xl.text-orange-800.p-2.mr-2(class="dark:text-orange-200") {{ $frontmatter.price }}
-        a.text-xl.font-bold.rounded-xl.bg-orange-300.px-2.py-1(href="/contact") Заказать
-      .font-bold.mt-2.mb-4(v-if="$frontmatter.subtitle") {{$frontmatter.subtitle}}
+        .mx-2.my-4.text-6xl(v-if="$frontmatter.emoji") {{ $frontmatter.emoji }}
+      shop-price(:product="$frontmatter?.product")
+      .font-bold.mt-2.mb-4(v-if="$frontmatter.subtitle") {{ $frontmatter.subtitle }}
+      shop-order(:product="$frontmatter?.product")
   .info
     content.content
     row-list(
@@ -46,7 +45,7 @@ main {
 }
 
 .meta {
-  @apply bg-white bg-opacity-85 z-10 min-w-55ch;
+  @apply bg-gray-100 bg-opacity-85 z-10 max-w-55ch w-full mt-8;
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 }
@@ -58,7 +57,7 @@ main {
 }
 
 .info {
-  @apply bg-white dark:bg-gray-800 pb-32 shadow-2xl z-3;
+  @apply bg-gray-100 dark:bg-gray-800 pb-32 shadow-2xl z-3;
 }
 
 .cover {

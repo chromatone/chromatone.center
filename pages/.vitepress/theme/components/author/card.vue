@@ -1,9 +1,14 @@
 <template lang="pug">
-.author-card(v-if="author")
+.author-card(v-if="author",
+v-motion,
+  :initial="{ opacity: 0, y: 40 }",
+  :enter="{ opacity: 0, y: 0, scale: 1 }",
+  :visible="{ opacity: 1, y: 0, scale: 1 }",
+  )
   .flex.flex-wrap
     img.avatar(:src="author.avatar")
     .flex.flex-col.flex-1.justify-center
-      .p-4.flex.flex-col
+      .p-6.flex.flex-col
         .text-3xl.font-bold {{ author.name }}
         .pos.py-4.font-bold {{ author.pos }}
         .place.text-lg {{ author.place }}
@@ -26,7 +31,7 @@ const props = defineProps({
 
 <style scoped>
 .author-card {
-  @apply flex flex-col shadow-lg p-8 my-8 bg-gray-50 dark:bg-gray-700;
+  @apply flex flex-col shadow-lg p-8 my-16 bg-gray-50 dark:bg-gray-700;
 }
 .avatar {
   @apply h-12em self-start;

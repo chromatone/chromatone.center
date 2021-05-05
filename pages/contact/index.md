@@ -8,7 +8,7 @@ org:
   name: Chromatone
   pos: HQ
   place: Moscow, Russia
-  about: There is no company behind Chromatone so it may become an independent socially funded initiative. 
+  about: Ecosystem of tools to learn, practice, compose and perform music visually. The source codes are open so we can develop it as an internationally funded  social initiative.
   social:
     instagram: chromatone.center
     email: support@chromatone.center
@@ -27,7 +27,6 @@ author:
     github: davay42
 ---
 
-#### <la-instagram /> <a href="https://www.instagram.com/chromatone.center" target="_blank">@chromatone.center</a>
 
 <author-card :author="$frontmatter?.org" />
 

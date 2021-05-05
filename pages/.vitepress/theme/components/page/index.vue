@@ -1,6 +1,6 @@
 <template lang="pug">
 main
-  .header(:class="{ 'has-cover': $frontmatter.cover }")
+  .header(:class="{ 'has-cover': $frontmatter.cover || $frontmatter.icon }")
     .cover(:style="{ backgroundImage: 'url(/media/' + $frontmatter.cover + ')' }", v-motion-fade)
     img.icon(v-if="$frontmatter.icon",:src="'/media/' + $frontmatter.icon")
     .meta.content
@@ -37,7 +37,7 @@ main {
 }
 
 .header.has-cover {
-  @apply h-32em;
+  @apply h-42em;
 }
 
 .has-cover .meta {
@@ -70,7 +70,7 @@ main {
 }
 
 .icon {
-  @apply m-4 max-h-20em max-w-20em;
+  @apply m-4 max-h-20em max-w-20em fixed;
 }
 
 .content {

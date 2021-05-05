@@ -30,7 +30,7 @@ const route = useRoute()
 
 <style scoped lang="postcss">
 footer {
-  @apply min-h-26vh bg-gray-200 dark:bg-gray-900 flex flex-col pt-16 pb-16 px-4;
+  @apply min-h-26vh bg-gray-400 dark:bg-gray-900 flex flex-col pt-16 pb-16 px-4;
 }
 
 nav {
@@ -42,10 +42,10 @@ nav {
 }
 
 a {
-  @apply transition-all opacity-60 hover:(opacity-80 no-underline);
+  @apply transition-all opacity-60 text-gray-900 dark:text-gray-50 hover:(opacity-80 no-underline);
 }
 
 .active {
-  @apply text-$c-brand border-$c-brand;
+  @apply text-$c-brand dark:text-$c-brand-light border-$c-brand;
 }
 </style>

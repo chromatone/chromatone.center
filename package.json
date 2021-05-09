@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "vitepress dev pages",
     "build": "vitepress build pages",
-    "serve": "vitepress serve pages"
+    "serve": "vitepress serve pages",
+    "deploy": "sh deploy.sh"
   },
   "dependencies": {
     "@vueuse/core": "4.9.1",

@@ -1,4 +1,4 @@
-cd /pages/.vitepress/dist
+cd pages/.vitepress/dist
 
 git init
 git add -A

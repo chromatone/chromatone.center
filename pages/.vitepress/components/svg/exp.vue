@@ -18,6 +18,5 @@
 
 </script>
 
-<style lang="stylus" scoped>
-
+<style  scoped>
 </style>

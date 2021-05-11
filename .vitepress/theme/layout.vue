@@ -1,7 +1,7 @@
 <template lang="pug">
 .theme(:class="pageClasses")
   nav-bar(v-if="showNavbar", @toggle="toggleSidebar")
-  .main(:class="{ 'grid-layout': !enableHome }", :style="{ backgroundImage: 'url(' + $frontmatter.backgroundImage + ')' }")
+  .main
     side-bar(:open="openSideBar")
       .sidebar-mask(@click="toggleSidebar(false)")
     home(v-if="$frontmatter.template == 'home'")

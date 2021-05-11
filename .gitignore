@@ -45,6 +45,7 @@ yarn.lock
 
 # Vitepress
 dist
+**/dist
 wiki/
 
 # vscode

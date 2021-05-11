@@ -1,7 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@iconify/json': ^1.1.340
+  '@iconify/json': ^1.1.341
   '@types/node': ^15.0.2
   '@vueuse/core': 4.9.2
   '@vueuse/motion': ^1.5.5
@@ -16,7 +16,7 @@ specifiers:
   poly-decomp: ^0.3.0
   pug: 3.0.2
   typescript: ^4.2.4
-  vite: ^2.2.4
+  vite: ^2.3.0
   vite-aliases: ^0.6.3
   vite-plugin-components: ^0.9.0
   vite-plugin-icons: ^0.5.0
@@ -37,7 +37,7 @@ dependencies:
   vue: 3.0.11
 
 devDependencies:
-  '@iconify/json': 1.1.340
+  '@iconify/json': 1.1.341
   '@types/node': 15.0.2
   esbuild-register: 2.5.0
   markdown-it-classy: 0.2.0
@@ -46,12 +46,12 @@ devDependencies:
   patch-vue-directive-ssr: 0.0.1
   pug: 3.0.2
   typescript: 4.2.4
-  vite: 2.2.4
+  vite: 2.3.0
   vite-aliases: 0.6.3
-  vite-plugin-components: 0.9.0_vite@2.2.4
-  vite-plugin-icons: 0.5.0_@iconify+json@1.1.340
-  vite-plugin-restart: 0.0.2_vite@2.2.4
-  vite-plugin-windicss: 0.15.10_vite@2.2.4
+  vite-plugin-components: 0.9.0_vite@2.3.0
+  vite-plugin-icons: 0.5.0_@iconify+json@1.1.341
+  vite-plugin-restart: 0.0.2_vite@2.3.0
+  vite-plugin-windicss: 0.15.10_vite@2.3.0
   vitepress: 0.13.2
   vitepress-tags: 0.3.1
   windicss: 2.5.14
@@ -220,8 +220,8 @@ packages:
     resolution: {integrity: sha512-LFelJDOLZ6JHlmlAkgrvmcu4hpNPB91KYcr4f60D/exzU1eNOb4/KCVHIydGHIQFaOacIOD+Xy+B7P1z812cZg==}
     dev: true
 
-  /@iconify/json/1.1.340:
-    resolution: {integrity: sha512-VgL3ALV+Aqy0hnAaAi1W+5KzjVIrCh2Xu+52SJRtraoOpUw37VQArPAyVxJZGSK8NoanD7c4XOAcppaxnXqBXA==}
+  /@iconify/json/1.1.341:
+    resolution: {integrity: sha512-rGl01xY7V8SyYiGFyrOrPzEfUqooCxponcR4DvpgSE+pJJcu0HfmJP9Q1SbGJtQmVyMe23Z2uoBqB5ETckin7A==}
     dev: true
 
   /@nodelib/fs.scandir/2.1.4:
@@ -771,6 +771,12 @@ packages:
     dependencies:
       esbuild: 0.11.6
       jsonc-parser: 3.0.0
+    dev: true
+
+  /esbuild/0.11.20:
+    resolution: {integrity: sha512-QOZrVpN/Yz74xfat0H6euSgn3RnwLevY1mJTEXneukz1ln9qB+ieaerRMzSeETpz/UJWsBMzRVR/andBht5WKw==}
+    hasBin: true
+    requiresBuild: true
     dev: true
 
   /esbuild/0.11.6:
@@ -1835,7 +1841,7 @@ packages:
       vite: 2.2.4
     dev: true
 
-  /vite-plugin-components/0.9.0_vite@2.2.4:
+  /vite-plugin-components/0.9.0_vite@2.3.0:
     resolution: {integrity: sha512-ZtJn2gt6H9Nsd77qWvqr69Wwv+XgY0OU7WpjGZ+1p22O5ImOQT5CUx364bXUpgQSDCROnLtxsKga2wbGiPMaeA==}
     peerDependencies:
       vite: ^2.0.0-beta.69
@@ -1845,34 +1851,34 @@ packages:
       fast-glob: 3.2.5
       magic-string: 0.25.7
       minimatch: 3.0.4
-      vite: 2.2.4
+      vite: 2.3.0
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /vite-plugin-icons/0.5.0_@iconify+json@1.1.340:
+  /vite-plugin-icons/0.5.0_@iconify+json@1.1.341:
     resolution: {integrity: sha512-YsnoYixkp0HVIx6SvQWTyXXiWBCfc9gtKx3iqyPmN4fsE5hf7NvPp1LKiIazilP+zRUvHEyNeEbH4y6wUX8jMw==}
     peerDependencies:
       '@iconify/json': '*'
       '@vue/compiler-sfc': ^3.0.2
       vue-template-compiler: ^2.6.12
     dependencies:
-      '@iconify/json': 1.1.340
+      '@iconify/json': 1.1.341
       '@iconify/json-tools': 1.0.10
       vue-template-es2015-compiler: 1.9.1
     dev: true
 
-  /vite-plugin-restart/0.0.2_vite@2.2.4:
+  /vite-plugin-restart/0.0.2_vite@2.3.0:
     resolution: {integrity: sha512-WZ2Qp8Jo83wqBcZFQo481JchQcNgEYLIjd3NbhwPXr/mbg1mUC7hCMCrvafF5WcEQPChd7agx6fBm8RYrRR46A==}
     peerDependencies:
       vite: ^2.0.0-beta.69
     dependencies:
       chalk: 4.1.0
       micromatch: 4.0.2
-      vite: 2.2.4
+      vite: 2.3.0
     dev: true
 
-  /vite-plugin-windicss/0.15.10_vite@2.2.4:
+  /vite-plugin-windicss/0.15.10_vite@2.3.0:
     resolution: {integrity: sha512-6thupz/vOt6XTIHZGRd8vVwjmC+8/FNgdhZGfyp2gnkPxC4SKUa4wZFpLBhirw+ApP8vdm9oVpe2liBZdQIwIg==}
     peerDependencies:
       vite: ^2.0.1
@@ -1880,7 +1886,7 @@ packages:
       '@windicss/plugin-utils': 0.15.10
       chalk: 4.1.1
       debug: 4.3.2
-      vite: 2.2.4
+      vite: 2.3.0
       windicss: 2.5.14
     transitivePeerDependencies:
       - supports-color
@@ -1905,6 +1911,19 @@ packages:
     hasBin: true
     dependencies:
       esbuild: 0.9.7
+      postcss: 8.2.9
+      resolve: 1.20.0
+      rollup: 2.44.0
+    optionalDependencies:
+      fsevents: 2.3.2
+    dev: true
+
+  /vite/2.3.0:
+    resolution: {integrity: sha512-gsCy0t3X9nGGYDoNiE2NJgYq6BPxrtKeo6FkpMXdMvtUluYxnRhl7xfpHaYDmQLCnMbYTWhvWS1L/Hpw/V9L5w==}
+    engines: {node: '>=12.0.0'}
+    hasBin: true
+    dependencies:
+      esbuild: 0.11.20
       postcss: 8.2.9
       resolve: 1.20.0
       rollup: 2.44.0

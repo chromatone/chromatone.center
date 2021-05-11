@@ -2,7 +2,6 @@ import { defineConfig } from 'vite'
 import Components from 'vite-plugin-components'
 import Icons, { ViteIconsResolver } from 'vite-plugin-icons'
 import WindiCSS from 'vite-plugin-windicss'
-import ViteRestart from 'vite-plugin-restart'
 import { getAliases } from 'vite-aliases'
 
 
@@ -10,7 +9,7 @@ import { getAliases } from 'vite-aliases'
 export default defineConfig({
   resolve: {
 		alias: getAliases({
-      path: 'pages/.vitepress/theme'
+      path: '.vitepress/theme'
     })
 	},
   plugins: [
@@ -40,9 +39,7 @@ export default defineConfig({
         fileExtensions: ['vue', 'ts'],
       },
     }),
-    //  ViteRestart({
-    //    restart: ['.vitepress/config/*.*', 'pages/*.md'],
-    //  }),
+
   ],
   optimizeDeps: {
     include: [

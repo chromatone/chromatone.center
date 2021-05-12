@@ -1,6 +1,6 @@
 <template lang="pug">
 .header(:class="{ 'has-cover': $frontmatter.cover || $frontmatter.icon }")
-  .cover(:style="{ backgroundImage: 'url(/media/' + $frontmatter.cover + ')' }", v-motion-fade)
+  .cover(v-if="$frontmatter.cover",:style="{ backgroundImage: 'url(/media/' + $frontmatter.cover + ')' }", v-motion-fade)
   img.icon(v-if="$frontmatter.icon",:src="'/media/' + $frontmatter.icon")
   .meta
     page-parents

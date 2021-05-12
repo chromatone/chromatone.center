@@ -13,7 +13,4 @@ main.mb-16(aria-labelledby="main-title")
 </script>
 
 <style scoped lang="postcss">
-.content {
-  @apply p-8 max-w-55ch mx-auto flex flex-col pb-16;
-}
 </style>

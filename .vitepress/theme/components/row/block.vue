@@ -38,7 +38,7 @@ import { lchToHsl } from '@composables/colors.js'
 
 <style lang="postcss" scoped>
 .block {
-  @apply my-8 shadow-lg rounded-md mx-2 md:mx-0 sm:mx-4 bg-gray-50 dark:bg-gray-800
+  @apply my-8 shadow-lg rounded-md mx-2 md:mx-0 sm:mx-4 bg-light-200 dark:bg-dark-200
   flex flex-col items-stretch 
   transition-all
   static;
@@ -49,11 +49,11 @@ import { lchToHsl } from '@composables/colors.js'
 }
 
 .info {
-  @apply flex flex-1 self-stretch flex-wrap items-center p-4 md:(px-8 py-4);
+  @apply my-4 flex flex-1 self-stretch flex-wrap items-center p-4 md:(px-8 py-4);
 }
 
 .cover {
-  @apply w-full h-12em bg-cover bg-center mb-2 rounded;
+  @apply w-full h-16em bg-cover bg-center mb-2 rounded;
   filter: saturate(10%) opacity(50%);
   transition: all 600ms ease-in-out;
 }

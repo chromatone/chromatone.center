@@ -2,7 +2,7 @@
 title: Intervals
 subtitle: Different kinds of relations between frequencies
 tags: music
-icon: theory/intervals.svg
+cover: theory/chromatic.svg
 ---
 
 Any two musical notes with fundamental frequencies in a ratio equal to 2n (n is any integer) are perceived as very similar and represent the simplest interval in music – an octave. Human pitch perception is periodic so that “color” or chroma of all the notes that are an octave apart seem circularly equivalent and brings them together into one pitch class.
@@ -25,4 +25,4 @@ After 7 octave and 12 fifths you’ll end up on the same starting tone. And you�
 (3/2)^12 ≈ 129.74634 ~ 128 = 2^7
 
 
-![](./key-intervals.svg)
+<img src="./key-intervals.svg">

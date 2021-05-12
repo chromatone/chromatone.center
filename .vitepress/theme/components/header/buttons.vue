@@ -15,7 +15,7 @@ const props = defineProps({
 
 <style scoped>
 .button {
-  @apply flex items-center px-3 py-2 rounded-xl font-bold border mr-2 my-2 shadow-md bg-gray-100 dark:bg-gray-800;
+  @apply flex items-center px-3 py-2 rounded-xl font-bold mr-2 my-2 shadow-md bg-gray-100 dark:bg-gray-800;
   & svg {
     @apply mr-1;
   }

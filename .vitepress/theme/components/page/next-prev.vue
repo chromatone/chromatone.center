@@ -1,6 +1,6 @@
 <template lang="pug">
 .next-and-prev-link(v-if="hasLinks")
-  .container.m-auto
+  .row
     .prev
       a.link(v-if="prev", :href="$withBase(prev.link)")
         carbon-arrow-left.icon.icon-prev
@@ -19,20 +19,18 @@ const { hasLinks, prev, next } = useNextAndPrevLinks()
 
 <style scoped>
 .next-and-prev-link {
-  @apply p-4 m-auto;
+  @apply bg-gray-100 mt-16 dark:bg-gray-800;
 }
 
-.container {
-  @apply flex mt-4 pt-8;
-  justify-content: space-between;
-  border-top: 1px solid var(--c-divider);
+.row {
+  @apply mx-auto flex w-full max-w-65ch;
 }
 
 .prev,
 .next {
   display: flex;
+  flex: 1;
   flex-shrink: 0;
-  width: 50%;
 }
 
 .prev {
@@ -46,6 +44,7 @@ const { hasLinks, prev, next } = useNextAndPrevLinks()
 }
 
 .link {
+  @apply flex p-8 text-2xl bg-gray-100 dark:bg-gray-800;
   display: inline-flex;
   align-items: center;
   max-width: 100%;
@@ -53,7 +52,7 @@ const { hasLinks, prev, next } = useNextAndPrevLinks()
 }
 
 .text {
-  display: block;
+  @apply font-bold;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -62,8 +61,8 @@ const { hasLinks, prev, next } = useNextAndPrevLinks()
 .icon {
   display: block;
   flex-shrink: 0;
-  width: 16px;
-  height: 16px;
+  width: 1.5rem;
+  height: 1.5rem;
   color: var(--c-text);
   transform: translateY(1px);
 }

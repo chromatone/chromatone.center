@@ -31,7 +31,3 @@ author:
 <author-card :author="$frontmatter?.org" />
 
 <author-card :author="$frontmatter?.author" />
-
-<style>
-
-</style>

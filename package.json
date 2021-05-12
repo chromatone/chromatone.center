@@ -8,17 +8,17 @@
     "deploy": "sh deploy.sh"
   },
   "dependencies": {
-    "@vueuse/core": "4.9.2",
+    "@vueuse/core": "4.10.0",
     "@vueuse/motion": "^1.5.5",
-    "colord": "^1.6.0",
+    "colord": "^1.7.0",
     "matter-js": "^0.17.1",
     "paper": "^0.12.15",
     "poly-decomp": "^0.3.0",
     "vue": "^3.0.11"
   },
   "devDependencies": {
-    "@iconify/json": "^1.1.341",
-    "@types/node": "^15.0.2",
+    "@iconify/json": "^1.1.342",
+    "@types/node": "^15.0.3",
     "esbuild-register": "^2.5.0",
     "markdown-it-classy": "^0.2.0",
     "markdown-it-container": "^3.0.0",
@@ -26,14 +26,14 @@
     "patch-vue-directive-ssr": "^0.0.1",
     "pug": "3.0.2",
     "typescript": "^4.2.4",
-    "vite": "^2.3.0",
+    "vite": "^2.3.2",
     "vite-aliases": "^0.6.3",
-    "vite-plugin-components": "^0.9.0",
+    "vite-plugin-components": "^0.9.1",
     "vite-plugin-icons": "^0.5.0",
-    "vite-plugin-windicss": "^0.15.10",
+    "vite-plugin-windicss": "^0.16.0-beta.16",
     "vitepress": "^0.13.2",
     "vitepress-tags": "^0.3.1",
-    "windicss": "2.5.14"
+    "windicss": "3.0.0"
   },
   "version": "0.5.0"
 }

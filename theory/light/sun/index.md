@@ -2,6 +2,7 @@
 title: The Sun 
 subtitle: The main source of light on Earth
 tags: light
+cover: theory/sun.jpg
 ---
 
 The Sun is the center of our Solar system.

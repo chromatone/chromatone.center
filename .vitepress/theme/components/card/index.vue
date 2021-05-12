@@ -12,7 +12,7 @@
     .info
       .flex.flex-1.items-center.self-stretch.flex-wrap
         .mr-2.text-2xl(v-if="item.data.emoji") {{ item.data.emoji }}
-        .text-xl.flex-auto {{ item.title }}
+        .text-2xl.flex-auto {{ item.title }}
         card-date(v-if="!item.data.product",:date="item.lastModified")
 
       .text-md.mt-4.mb-2.font-normal(v-if="item.subtitle") {{ item.subtitle }}
@@ -31,15 +31,12 @@ const props = defineProps({
   total: Number,
 });
 
-import { useLocalStorage } from '@vueuse/core'
-
-
 import { lchToHsl } from '@composables/colors.js'
 </script>
 
 <style lang="postcss" scoped>
 .crd {
-  @apply my-4 flex flex-col rounded shadow-md border-l-4 hover:shadow-lg;
+  @apply my-4 transition-all bg-white dark:bg-gray-900 flex flex-col rounded shadow-md hover:shadow-lg;
   transition: box-shadow color 100ms ease-in-out;
 }
 

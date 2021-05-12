@@ -9,7 +9,8 @@ For many practical and theoretical purposes, arpeggios and broken chords (in whi
 
 Chords and sequences of chords are frequently used in modern West African and Oceanic music, Western classical music, and Western popular music; yet, they are absent from the music of many other parts of the world.
 
-![](/media/theory/am7-res.svg)
+
+<img src="/media/theory/am7-res.svg">
 
 In tonal Western classical music (music with a tonic key or "home key"), the most frequently encountered chords are triads, so called because they consist of three distinct notes: the root note, and intervals of a third and a fifth above the root note. Chords with more than three notes include added tone chords, extended chords and tone clusters, which are used in contemporary classical music, jazz and almost any other genre.
 

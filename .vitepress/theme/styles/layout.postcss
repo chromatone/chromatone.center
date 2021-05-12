@@ -181,12 +181,6 @@ figure {
 }
 
 img {
-  max-width: 100%;
-  /* border-radius: 10px; */
-}
-
-.content img {
-  @apply rounded-lg;
 }
 
 ul,
@@ -311,6 +305,30 @@ form {
   @apply opacity-80;
 }
 
+.content {
+  @apply m-auto bg-gray-100 dark:bg-gray-800 pt-8 pb-32 shadow-2xl z-3 m-1 sm:m-2 md:m-4 lg:m-8 xl:(m-16);
+}
+
+.content:empty {
+  display: none;
+}
+
 .content img {
-  margin: 2em 0;
+  @apply my-4 mx-auto rounded-lg max-h-5xl;
+}
+
+.content p {
+  @apply max-w-55ch h-auto flex-1 m-auto;
+}
+
+.content h1,
+.content h2,
+.content h3,
+.content h4,
+.content h5 {
+  @apply max-w-30em mx-auto mt-16 mb-8;
+}
+
+.content blockquote {
+  @apply py-8 max-w-55ch;
 }

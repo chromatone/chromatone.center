@@ -85,7 +85,7 @@ const pageClasses = computed(() => {
 })
 </script>
 
-<style lang="postcss" scoped>
+<style lang="postcss">
 .main {
   background-blend-mode: overlay;
   @apply min-h-screen bg-cover bg-center bg-fixed pt-$header-height;

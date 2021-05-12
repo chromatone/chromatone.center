@@ -14,10 +14,12 @@
         .mr-2.text-2xl(v-if="item.data.emoji") {{ item.data.emoji }}
         .text-xl.flex-auto {{ item.title }}
         card-date(v-if="!item.data.product",:date="item.lastModified")
-        shop-price(:product="item.data?.product")
+
       .text-md.mt-4.mb-2.font-normal(v-if="item.subtitle") {{ item.subtitle }}
 
-    .cover(v-if="item.data.cover", :style="{ backgroundImage: 'url(/media/' + item.data.cover + ')' }", v-motion-fade) 
+    .cover(v-if="item.data.cover", :style="{ backgroundImage: 'url(/media/' + item.data.cover + ')' }", v-motion-fade)
+    shop-price(:product="item.data?.product", :showButton="false")
+  header-buttons(:buttons="item.data?.buttons")
   line-list(:list="$site.customData.pages?.[item.data.list]")
 </template>
 

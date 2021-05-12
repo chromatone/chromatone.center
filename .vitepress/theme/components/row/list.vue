@@ -25,6 +25,6 @@ const sorted = computed(() => {
 
 <style lang="postcss" scoped>
 .list-blocks {
-  @apply flex flex-col max-w-55ch mx-auto;
+  @apply flex flex-col max-w-65ch mx-auto;
 }
 </style>

@@ -72,4 +72,4 @@ colors:
 
 <color-names :list="$frontmatter.colors" :langs="$frontmatter.langs" />
 
-![](./color-names.svg)
+<img src="./color-names.svg">

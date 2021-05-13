@@ -1,6 +1,7 @@
 ---
 title: Acoustic vs electromagnetic
 tags: spectre
+cover: theory/em-acoustic.svg
 ---
 
 
@@ -13,7 +14,7 @@ But they're stil oscillations, so we an compare their frequencies and wavelenght
 
 Let's start with frequencies. What is **1 Hz**? It's one oscillation per second. For EM it corresponds to radiation far in the **long radio spectrum**. We can't hear such slow air oscillations and 1 Hz is in **infrasonic** range.
 
-<img src="./em-acoustic.svg" >
+<img src="/media/theory/em-acoustic.svg" >
 
 This juxtaposition shows that electromagnetic and acoustic oscillations are of entirely different nature and can’t be matched just as they are. Audible frequencies of oscillating air correspond to long radio range of EM spectrum. If compared by the wavelengths our notes are situated somewhere around the FM radio range. In turn the visible light oscillations are so fast, that they can be matched only with hypersonic waves in some rigid bodies.
 

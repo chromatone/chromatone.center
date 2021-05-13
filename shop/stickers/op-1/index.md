@@ -4,9 +4,10 @@ subtitle: Full key cap colors with note letters
 product:
   price: $10-12
 tags: stickers
+list: op-1
 cover: stickers/op-1/op-1.jpg
 ---
 
-![](/media/stickers/op-1/op-12.jpg)
+<img src="/media/stickers/op-1/op-12.jpg">
 
-![](/media/stickers/op-1/op-1.jpg)
+<img src="/media/stickers/op-1/op-1.jpg">

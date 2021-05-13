@@ -13,4 +13,4 @@ You can easily find fifths and fourths with the arrows. And you can memorize any
 
 Even on the go. 🛹
 
-![](/media/memo/holo-uke.jpg)
+<img src="/media/memo/holo-uke.jpg">

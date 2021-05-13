@@ -3,7 +3,7 @@
   .cover(v-if="$frontmatter.cover",:style="{ backgroundImage: 'url(/media/' + $frontmatter.cover + ')' }", v-motion-fade)
   img.icon(v-if="$frontmatter.icon",:src="'/media/' + $frontmatter.icon")
   .meta
-    page-parents
+    page-parents.text-xl.mb-4
     .text-4xl.font-bold.mb-4.flex.flex-wrap.items-center(v-if="$frontmatter.title", v-motion-fade, :key="$frontmatter.title") 
       .mr-2 {{ $frontmatter.title }}
       .flex-1
@@ -24,11 +24,11 @@ const props = defineProps({
 
 <style scoped>
 .header {
-  @apply relative flex flex-col items-center;
+  @apply relative flex flex-col  items-center;
 }
 
 .header.has-cover {
-  @apply h-42em;
+  @apply h-42rem;
 }
 
 .has-cover .meta {
@@ -36,8 +36,8 @@ const props = defineProps({
 }
 
 .cover {
-  @apply transition-all duration-1000 bg-cover bg-center bg-gray-100 dark:(bg-gray-700) -z-5 fixed top-0 h-full left-0 right-0 bg-fixed;
-  filter: saturate(50%) sepia(5%) opacity(40%) blur(40px);
+  @apply transition-all ease-in-out duration-1000 bg-cover bg-center bg-gray-100 dark:(bg-gray-700) -z-5 fixed top-0 h-full left-0 right-0;
+  filter: saturate(50%) sepia(5%) opacity(50%) blur(40px);
 }
 
 .header:hover .cover {
@@ -49,7 +49,7 @@ const props = defineProps({
 }
 
 .meta {
-  @apply p-8 bg-gray-100 bg-opacity-85 z-10 max-w-65ch w-full mt-8 shadow-lg flex flex-col;
+  @apply p-8  bg-gray-100 bg-opacity-85 z-3 max-w-65ch w-full mt-8 shadow-md shadow-dark-100 flex flex-col;
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 }

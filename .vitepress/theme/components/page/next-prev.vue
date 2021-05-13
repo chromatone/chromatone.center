@@ -1,11 +1,12 @@
 <template lang="pug">
-.next-and-prev-link(v-if="hasLinks")
+.next-and-prev-link
   .row
-    .prev
+    .pad.prev
       a.link(v-if="prev", :href="$withBase(prev.link)")
         carbon-arrow-left.icon.icon-prev
         span.text {{ prev.text }}
-    .next
+    page-parents.pad.text-2xl.flex-1.flex.flex-col.items-center.p-8
+    .pad.next
       a.link(v-if="next", :href="$withBase(next.link)")
         span.text {{ next.text }}
         carbon-arrow-right.icon.icon-next          
@@ -19,18 +20,20 @@ const { hasLinks, prev, next } = useNextAndPrevLinks()
 
 <style scoped>
 .next-and-prev-link {
-  @apply bg-gray-100 mt-16 dark:bg-gray-800;
+  @apply bg-gray-100 dark:bg-gray-800;
 }
 
 .row {
-  @apply mx-auto flex w-full max-w-65ch;
+  @apply mx-auto flex flex-col w-full max-w-65ch xs:(flex-wrap flex-row);
 }
 
-.prev,
-.next {
+.pad {
+  @apply transition-all bg-light-300 dark:(bg-dark-300 hover:bg-dark-600) hover:bg-light-600;
   display: flex;
   flex: 1;
   flex-shrink: 0;
+}
+.pad:hover {
 }
 
 .prev {
@@ -44,9 +47,7 @@ const { hasLinks, prev, next } = useNextAndPrevLinks()
 }
 
 .link {
-  @apply flex p-8 text-2xl bg-gray-100 dark:bg-gray-800;
-  display: inline-flex;
-  align-items: center;
+  @apply flex items-center p-8 text-2xl;
   max-width: 100%;
   font-weight: 500;
 }

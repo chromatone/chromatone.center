@@ -9,7 +9,8 @@ export default defineConfig({
     bc: 'border-gray-300 dark:border-true-gray-600',
   },
   plugins: [
-    require('windicss/plugin/scroll-snap')
+    require('windicss/plugin/scroll-snap'),
+    require('windicss/plugin/filters')
   ],
   theme: {
     extend: {

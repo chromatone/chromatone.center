@@ -9,6 +9,6 @@ cover: stickers/108/list.jpg
 
 It covers 9 octaves and can be used to upgrade for chromatone the whole ensemble.
 
-![](/media/stickers/108/kit.jpg)
+<img src="/media/stickers/108/kit.jpg">
 
 Every sticker is 1 cm in diameter and is made of durable vinyl film. Place them on any instrument you practice so memorizing the notes will be a lot easier and faster. Especially if you are a visual person.

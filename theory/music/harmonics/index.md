@@ -7,4 +7,4 @@ cover: theory/overtones.svg
 
 A note isn't just a wave, it's a mix of resonating modes of oscillations.
 
-![](./overtones.svg)
+<img src="./overtones.svg">

@@ -1,8 +1,8 @@
 <template lang="pug">
-.flex.flex-wrap.mb-4.text-lg
+.flex.flex-wrap
   .flex-1(v-for="page in getParents($frontmatter.tags, $site.customData.pages.all)", :key="page.title") 
     a.flex.items-center(:href="page.link") 
-      ic-sharp-arrow-upward.mr-1
+      carbon-arrow-up.mr-1
       span {{ page.title }}
 </template>
 

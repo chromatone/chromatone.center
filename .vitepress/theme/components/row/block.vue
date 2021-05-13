@@ -1,5 +1,5 @@
 <template lang="pug">
-.block(
+.row(
   :id="item.title"
   v-motion,
   :initial="{ opacity: 0, y: 40 }",
@@ -37,7 +37,7 @@ import { lchToHsl } from '@composables/colors.js'
 </script>
 
 <style lang="postcss" scoped>
-.block {
+.row {
   @apply my-8 shadow-lg rounded-md mx-2 md:mx-0 sm:mx-4 bg-light-200 dark:bg-dark-200
   flex flex-col items-stretch 
   transition-all
@@ -54,8 +54,8 @@ import { lchToHsl } from '@composables/colors.js'
 
 .cover {
   @apply w-full h-16em bg-cover bg-center mb-2 rounded;
-  filter: saturate(10%) opacity(50%);
-  transition: all 600ms ease-in-out;
+  filter: saturate(80%) opacity(50%);
+  transition: all 300ms ease-in-out;
 }
 
 .block:hover .cover {

@@ -2,6 +2,7 @@
 title: Subtractive models
 subtitle: Colors produced ny light absorption
 tags: color-model
+cover: theory/cmyk.svg
 ---
 
 Subtractive means that color is produced by absorbing some parts of white light spectrum by the material. Subtractive models are used in painting and printing, where different pigment mixtures make up different colors.
@@ -10,7 +11,7 @@ A color model is subtractive in the sense that mixtures of dyes subtract specifi
 
 ### RYB
 
-![](./chromatography_1841.png)
+<img src="./chromatography_1841.png">
 
 >An RYB color chart from George Field's 1841 Chromatography; or, A treatise on colours and pigments: and of their powers in painting.
 

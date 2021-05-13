@@ -17,4 +17,4 @@ Consider every row as pair of relative major and minor scales. You can find the 
 
 It’s printed on high quality paper with matte plastic lamination. We also rounded the corners to make sure the cheat sheet is durable enough for long time use. Enjoy!
 
-![](/media/memo/a5-2.jpg)
+<img src="/media/memo/a5-2.jpg">

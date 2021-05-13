@@ -1,6 +1,7 @@
 ---
 title: Basic color names
 tags: color
+cover: theory/color-names.svg
 langs:
   en: English
   fr: Français
@@ -72,4 +73,4 @@ colors:
 
 <color-names :list="$frontmatter.colors" :langs="$frontmatter.langs" />
 
-<img src="./color-names.svg">
+<img src="/media/theory/color-names.svg">

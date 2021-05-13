@@ -1,11 +1,12 @@
 <template lang="pug">
 main
   header-block
-  content.content
-  row-list(
-    v-if="$frontmatter.list", 
-    :rows="$site.customData.pages?.[$frontmatter.list]"
-    )
+  .content-container
+    content.content
+    row-list(
+      v-if="$frontmatter.list", 
+      :rows="$site.customData.pages?.[$frontmatter.list]"
+      )
   page-next-prev
   footer-row
 </template>

@@ -54,7 +54,7 @@ import { lchToHsl } from '@composables/colors.js'
 
 .cover {
   @apply w-full h-16em bg-cover bg-center mb-2 rounded;
-  filter: saturate(80%) opacity(50%);
+  filter: saturate(50%) opacity(50%);
   transition: all 300ms ease-in-out;
 }
 

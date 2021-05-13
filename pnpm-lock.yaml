@@ -5,6 +5,7 @@ specifiers:
   '@types/node': ^15.0.3
   '@vueuse/core': 4.10.0
   '@vueuse/motion': ^1.5.5
+  chromatone-theory: ^1.1.0
   colord: ^1.7.0
   esbuild-register: ^2.5.0
   markdown-it-classy: ^0.2.0
@@ -29,6 +30,7 @@ specifiers:
 dependencies:
   '@vueuse/core': 4.10.0_vue@3.0.11
   '@vueuse/motion': 1.5.5_vue@3.0.11
+  chromatone-theory: 1.1.0
   colord: 1.7.0
   matter-js: 0.17.1
   paper: 0.12.15
@@ -615,6 +617,10 @@ packages:
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
+
+  /chromatone-theory/1.1.0:
+    resolution: {integrity: sha512-Mx7lGg3KPD/LYsa7lmaKi0j4/vn5UAfSv2XRCnQLDSTQoqeUtSPFs0eStr3mmem/ToEe/ApOhH0rIp3W9GXPhA==}
+    dev: false
 
   /cli-cursor/3.1.0:
     resolution: {integrity: sha512-I/zHAwsKf9FqGoXM4WWRACob9+SNukZTd94DWF57E4toouRulbCxcUh6RKUEOQlYTHJnzkPMySvPNaaSLNfLZw==}

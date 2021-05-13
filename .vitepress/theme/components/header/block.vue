@@ -41,7 +41,7 @@ const props = defineProps({
 }
 
 .header:hover .cover {
-  filter: saturate(60%) sepia(0%) opacity(90%);
+  filter: saturate(60%) sepia(0%) opacity(90%) blur(0);
 }
 
 .icon {

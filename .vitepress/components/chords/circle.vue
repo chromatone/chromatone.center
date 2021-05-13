@@ -8,34 +8,33 @@ svg.max-h-3xl(
   line.line(
     v-for="semitones in accord?.info.semitones",
     :key="semitones",
-    stroke="#666"
+    :stroke="noteColor(accord.root)"
     stroke-linecap="round"
     stroke-width="10"
-    opacity="0.8"
-    style="mix-blend-mode: difference;"
+    opacity="0.5"
+    style="mix-blend-mode: multiply;"
     :x1="getCoord(accord?.root).x",
     :y1="getCoord(accord?.root).y",
     :x2="getCoord(accord?.root + semitones).x",
     :y2="getCoord(accord?.root + semitones).y"
   )
   g.around(
-    style="mix-blend-mode: screen;"
+    style="mix-blend-mode: screen;cursor:pointer"
     v-for="note in notes", 
     :key="note.name",
     @click="$emit('selectRoot', note.pitch)",
     :opacity="isInChord(note.pitch) ? 1 : 0.3"
   )
     circle.note(
-      style="transform-box: fill-box"
-      :transform="`scale(${accord?.root == note.pitch ? 2.6 : isInChord(note.pitch) ? 1.62 : 1})`",
-      transform-origin="center center"
-      :class=`{}`,
+      style="transform-box: fill-box; transform-origin: center center;"
+      :style="{ transform: `scale(${accord?.root == note.pitch ? 2.6 : isInChord(note.pitch) ? 1.62 : 1}` }",
       :cx="getCoord(note.pitch).x",
       :cy="getCoord(note.pitch).y",
       r="5",
       :fill="getNoteColor(note.pitch)",
     )
     text(
+      style="user-select:none;transition:all 300ms ease"
       :fill="scales.minor.steps[note.pitch] ? 'hsla(0,0%,0%,0.8)' : 'hsla(0,0%,100%,0.9)'"
       font-family="Commissioner, sans-serif"
       font-size="4px"
@@ -46,6 +45,7 @@ svg.max-h-3xl(
     ) {{ note.name }}
 
   text(
+    style="cursor:pointer;user-select:none"
     :style="{ fill: noteColor(accord?.root) }"
     x="50",
     y="50",
@@ -66,14 +66,12 @@ const props = defineProps({
 
 defineEmit(['selectRoot'])
 
-
-
 function isInChord(n) {
   return props.accord.info.semitones.includes((24 + n - props.accord.root) % 12)
 }
 
 function getNoteColor(n) {
-  if (isInChord(n)) return noteColor(n)
+  if (isInChord(n % 12)) return noteColor(n % 12)
   else if (scales.minor.steps[n]) return 'hsla(0,0%,90%,1)'
   else return 'hsla(0,0%,10%,1)'
 }
@@ -88,19 +86,11 @@ function getCoord(n, total = 12, radius = 35, width = 100) {
 </script>
 
 <style lang="postcss"  scoped>
-text {
-  font-family: "Commissioner", sans-serif;
-}
-.line {
-  mix-blend-mode: difference;
-}
 .around {
-  @apply cursor-pointer;
   transition: all 400ms ease-out;
 }
 
 .note {
   transition: all 300ms ease-out;
-  transform-origin: center;
 }
 </style>

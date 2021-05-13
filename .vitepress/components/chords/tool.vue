@@ -1,43 +1,54 @@
 <template lang="pug">
 .flex.flex-col
-  .flex.flex-wrap.mt-4.justify-center
+  chords-circle#circle(:accord="accord", @selectRoot="accord.root = $event")
+  .flex.justify-center
+    a.chord(target="_blank",:download="`${notes[accord?.root].name}${accord?.info.handle}-circle.svg`",:href="download.circle", v-if="download.circle") Download SVG
+  .flex.flex-wrap.my-4.justify-center
     .chord(
       v-for="chord in chordList", 
       :key="chord?.handle", 
       @click="accord.info = chord",
       :class="{ active: chord?.handle == accord.info.handle }") {{ chord?.handle }}
-  chords-circle(
-  id="svg",:accord="accord", @selectRoot="accord.root = $event")
-  .flex.justify-center
-    a.chord(target="_blank",download="chord.svg",:href="download", v-if="download") Download SVG
+
+  chords-keys#keys(:accord="accord", @selectRoot="accord.root = $event")
+  .text-4xl.mt-4.text-center.font-bold(
+    :style="{ color: noteColor(accord.root) }"
+  ) {{ notes[accord?.root].name }}{{ accord?.info.handle }}
+  .flex.justify-center.mt-8
+    a.chord(target="_blank",:download="`${notes[accord?.root].name}${accord?.info.handle}-keys.svg`",:href="download.keys", v-if="download.keys") Download SVG
 </template>
 
 <script setup>
 import { reactive, ref, computed, watch } from 'vue'
-import { chords } from 'chromatone-theory'
+import { chords, notes, noteColor } from 'chromatone-theory'
 
 const accord = reactive({
   root: 0,
   info: chords.min,
 });
 
-const download = ref()
+const download = reactive({
+  circle: '',
+  keys: ''
+})
+
 watch(accord, () => {
   setTimeout(() => {
-    saveSVG()
+    saveSVG('circle')
+    saveSVG('keys')
   }, 100);
 
 })
 
 
-function saveSVG() {
-  var svg = document.getElementById("svg");
+function saveSVG(pic) {
+  var svg = document.getElementById(pic);
   if (!svg) return
   const serializer = new XMLSerializer();
   let source = serializer.serializeToString(svg);
   source = '<?xml version="1.0" standalone="no"?>\r\n' + source;
   var url = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(source);
-  download.value = url;
+  download[pic] = url;
 }
 
 const chordList = computed(() => {

@@ -6,15 +6,15 @@
       :key="chord?.handle", 
       @click="accord.info = chord",
       :class="{ active: chord?.handle == accord.info.handle }") {{ chord?.handle }}
-  chord-circle(
+  chords-circle(
   id="svg",:accord="accord", @selectRoot="accord.root = $event")
   .flex.justify-center
-    a.p-4(target="_blank",download="chord.svg",:href="download", v-if="download") Download
+    a.chord(target="_blank",download="chord.svg",:href="download", v-if="download") Download SVG
 </template>
 
 <script setup>
 import { reactive, ref, computed, watch } from 'vue'
-import { notes, noteColor, chords, scales } from 'chromatone-theory'
+import { chords } from 'chromatone-theory'
 
 const accord = reactive({
   root: 0,
@@ -42,11 +42,11 @@ function saveSVG() {
 
 const chordList = computed(() => {
   let list = Object.values(chords)
-  return list.sort(compare)
+  return list.sort(compareChords)
 });
 
 
-function compare(a, b) {
+function compareChords(a, b) {
   if (a.semitones.length < b.semitones.length) {
     return -1;
   }

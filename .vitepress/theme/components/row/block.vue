@@ -58,7 +58,7 @@ import { lchToHsl } from '@composables/colors.js'
   transition: all 300ms ease-in-out;
 }
 
-.block:hover .cover {
+.row:hover .cover {
   filter: saturate(100%) opacity(90%);
 }
 

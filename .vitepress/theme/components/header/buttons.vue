@@ -20,7 +20,7 @@ const props = defineProps({
     @apply mr-1;
   }
   &.primary {
-    @apply bg-orange-300 dark:bg-orange-700;
+    @apply bg-$c-brand-light dark:bg-orange-700;
   }
   &.github {
     @apply bg-gray-200 dark:bg-gray-700;

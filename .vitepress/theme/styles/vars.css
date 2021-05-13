@@ -21,11 +21,12 @@
   --c-text-light-3: #90a4b7;
 
   --c-link: hsla(300, 10%, 24%, 1);
+  --c-link-hover: hsla(300, 20%, 34%, 1);
 
   --c-brand: hsl(300, 30%, 40%);
   --c-brand-active: hsl(300, 30%, 20%);
   --c-brand-dark: hsl(300, 30%, 30%);
-  --c-brand-light: hsl(300, 60%, 25%);
+  --c-brand-light: hsl(300, 40%, 65%);
 
   --c-disabled-bg: #e5e5e5;
   --c-disabled-fg: #666;
@@ -94,6 +95,7 @@ html.dark {
   --c-disabled-fg: #aaa;
 
   --c-link: hsla(10, 20%, 90%, 1);
+  --c-link-hover: hsla(300, 20%, 80%, 1);
 
   --c-brand: hsl(300, 30%, 50%);
   --c-brand-active: hsl(300, 30%, 60%);

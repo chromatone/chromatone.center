@@ -12,21 +12,23 @@ svg.max-h-3xl(
     stroke-linecap="round"
     stroke-width="10"
     opacity="0.8"
+    style="mix-blend-mode: difference;"
     :x1="getCoord(accord?.root).x",
     :y1="getCoord(accord?.root).y",
     :x2="getCoord(accord?.root + semitones).x",
     :y2="getCoord(accord?.root + semitones).y"
   )
   g.around(
+    style="mix-blend-mode: screen;"
     v-for="note in notes", 
     :key="note.name",
     @click="$emit('selectRoot', note.pitch)",
-    :class=`{
-      active: isInChord(note.pitch),
-      root: accord?.root == note.pitch
-    }`,
+    :opacity="isInChord(note.pitch) ? 1 : 0.3"
   )
     circle.note(
+      style="transform-box: fill-box"
+      :transform="`scale(${accord?.root == note.pitch ? 2.6 : isInChord(note.pitch) ? 1.62 : 1})`",
+      transform-origin="center center"
       :class=`{}`,
       :cx="getCoord(note.pitch).x",
       :cy="getCoord(note.pitch).y",
@@ -56,8 +58,8 @@ svg.max-h-3xl(
 </template>
 
 <script setup>
-import { notes, noteColor, chords, scales } from 'chromatone-theory'
-import { defineProps, computed, ref, defineEmit } from 'vue'
+import { notes, noteColor, scales } from 'chromatone-theory'
+import { defineProps, ref, defineEmit } from 'vue'
 const props = defineProps({
   accord: Object,
 });
@@ -93,25 +95,12 @@ text {
   mix-blend-mode: difference;
 }
 .around {
-  mix-blend-mode: screen;
   @apply cursor-pointer;
-  transform-box: fill-box;
-  transform-origin: center;
   transition: all 400ms ease-out;
-  filter: saturate(0) opacity(30%);
-  &.active {
-    filter: saturate(1);
-    transform: scale(2);
-  }
-  &.root {
-    filter: saturate(1);
-    transform: scale(3);
-  }
 }
 
 .note {
   transition: all 300ms ease-out;
-  transform-box: fill-box;
   transform-origin: center;
 }
 </style>

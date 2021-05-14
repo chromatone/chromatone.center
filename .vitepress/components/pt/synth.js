@@ -1,11 +1,4 @@
-import {
-  defineProps,
-  computed,
-  ref,
-  reactive,
-  watch,
-  onBeforeUnmount,
-} from 'vue'
+import { computed, reactive, watch, onBeforeUnmount } from 'vue'
 import { gainToDb, PanVol, MonoSynth } from 'tone'
 import { calcFreq } from 'chromatone-theory'
 

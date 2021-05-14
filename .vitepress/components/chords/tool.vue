@@ -2,7 +2,8 @@
 .flex.flex-col
   chords-circle#circle(:accord="accord", @selectRoot="accord.root = $event")
   .flex.justify-center
-    a.chord(target="_blank",:download="`${notes[accord?.root].name}${accord?.info.handle}-circle.svg`",:href="download.circle", v-if="download.circle") Download SVG
+    a.absolute.text-2xl.-m-1rem.right-2rem(target="_blank",:download="`${notes[accord?.root].name}${accord?.info.handle}-circle.svg`",:href="download.circle", v-if="download.circle")
+      la-save
   .flex.flex-wrap.my-4.justify-center
     .chord(
       v-for="chord in chordList", 
@@ -14,8 +15,8 @@
   .text-4xl.mt-4.text-center.font-bold(
     :style="{ color: noteColor(accord.root) }"
   ) {{ notes[accord?.root].name }}{{ accord?.info.handle }}
-  .flex.justify-center.mt-8
-    a.chord(target="_blank",:download="`${notes[accord?.root].name}${accord?.info.handle}-keys.svg`",:href="download.keys", v-if="download.keys") Download SVG
+    a.absolute.text-2xl.right-2rem(target="_blank",:download="`${notes[accord?.root].name}${accord?.info.handle}-keys.svg`",:href="download.keys", v-if="download.keys")
+      la-save
 </template>
 
 <script setup>

@@ -6,7 +6,7 @@ import {
   watch,
   onBeforeUnmount,
 } from 'vue'
-import { Oscillator, context, start, gainToDb, PanVol, MonoSynth } from 'tone'
+import { gainToDb, PanVol, MonoSynth } from 'tone'
 import { calcFreq } from 'chromatone-theory'
 
 export function useSynth(pitch, octave) {
@@ -57,7 +57,6 @@ export function useSynth(pitch, octave) {
     () => voice.active,
     (act) => {
       if (act) {
-        console.log(act)
         synth.triggerAttack(voice.freq)
       } else {
         synth.triggerRelease()

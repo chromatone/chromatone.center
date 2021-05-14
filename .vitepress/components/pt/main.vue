@@ -1,9 +1,9 @@
 <template lang="pug">
-.flex
-  .flex.flex-col.w-full.flex-auto
+.flex.flex-col.w-full.flex-auto
+  client-only
     pt-control-row
     pt-table
-  .scroll-bar 
+
 </template>
   
 <script setup>

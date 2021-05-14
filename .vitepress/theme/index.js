@@ -1,5 +1,6 @@
 import 'virtual:windi.css'
 import { MotionPlugin } from '@vueuse/motion'
+import { GesturePlugin } from '@vueuse/gesture'
 
 import './styles/vars.css'
 import './styles/layout.postcss'
@@ -15,7 +16,7 @@ const theme = {
   NotFound,
   enhanceApp({ app }) {
     app.use(MotionPlugin)
-    //@ts-ignore
+    app.use(GesturePlugin)
     app.component(rowList)
   },
 }

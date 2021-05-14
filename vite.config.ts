@@ -45,6 +45,7 @@ export default defineConfig({
     include: [
       'vue',
       '@vueuse/core',
+      'tone'
     ],
   },
   build: {

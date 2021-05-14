@@ -11,3 +11,5 @@ buttons:
     text: chromatone/pitch-table
     type: github
 ---
+
+<pt-main />

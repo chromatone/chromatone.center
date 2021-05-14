@@ -9,12 +9,14 @@
   },
   "dependencies": {
     "@vueuse/core": "4.10.0",
+    "@vueuse/gesture": "^1.0.0",
     "@vueuse/motion": "^1.5.5",
-    "chromatone-theory": "1.1.2",
+    "chromatone-theory": "1.1.3",
     "colord": "^1.7.0",
     "matter-js": "^0.17.1",
     "paper": "^0.12.15",
     "poly-decomp": "^0.3.0",
+    "tone": "^14.8.21",
     "vue": "^3.0.11"
   },
   "devDependencies": {

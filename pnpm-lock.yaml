@@ -4,8 +4,9 @@ specifiers:
   '@iconify/json': ^1.1.342
   '@types/node': ^15.0.3
   '@vueuse/core': 4.10.0
+  '@vueuse/gesture': ^1.0.0
   '@vueuse/motion': ^1.5.5
-  chromatone-theory: 1.1.2
+  chromatone-theory: 1.1.3
   colord: ^1.7.0
   esbuild-register: ^2.5.0
   markdown-it-classy: ^0.2.0
@@ -16,6 +17,7 @@ specifiers:
   patch-vue-directive-ssr: ^0.0.1
   poly-decomp: ^0.3.0
   pug: 3.0.2
+  tone: ^14.8.21
   typescript: ^4.2.4
   vite: ^2.3.2
   vite-aliases: ^0.6.3
@@ -29,12 +31,14 @@ specifiers:
 
 dependencies:
   '@vueuse/core': 4.10.0_vue@3.0.11
+  '@vueuse/gesture': 1.0.0_vue@3.0.11
   '@vueuse/motion': 1.5.5_vue@3.0.11
-  chromatone-theory: 1.1.2
+  chromatone-theory: 1.1.3
   colord: 1.7.0
   matter-js: 0.17.1
   paper: 0.12.15
   poly-decomp: 0.3.0
+  tone: 14.8.21
   vue: 3.0.11
 
 devDependencies:
@@ -166,6 +170,12 @@ packages:
     resolution: {integrity: sha512-OhsyMrqygfk5v8HmWwOzlYjJrtLaFhF34MrfG/Z73DgYCI6ojNUTUp2TYbtnjo8PegeJp12eamsNettCQjKjVw==}
     engines: {node: '>=6.0.0'}
     hasBin: true
+
+  /@babel/runtime/7.14.0:
+    resolution: {integrity: sha512-JELkvo/DlpNdJ7dlyw/eY7E0suy5i5GQH+Vlxaq1nsNJ+H7f4Vtv3jMeCEgRhZZQFXTjldYfQgv2qmM6M1v5wA==}
+    dependencies:
+      regenerator-runtime: 0.13.7
+    dev: false
 
   /@babel/types/7.13.0:
     resolution: {integrity: sha512-hE+HE8rnG1Z6Wzo+MhaKE5lM5eMx71T4EHJgku2E3xIfaULhDcxiiRxUYgwX8qwP1BBSlag+TdGOt6JAidIZTA==}
@@ -384,6 +394,19 @@ packages:
       - vue
     dev: false
 
+  /@vueuse/gesture/1.0.0_vue@3.0.11:
+    resolution: {integrity: sha512-RKCYGmh1F8SGO00JGssDfVbeUz+HSkwUfhfN9gyI7LnARmKTnMTUaIuO4lJHOwOPTWwnmK857CPsdXX6NkUUAA==}
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0-beta.1
+      vue: ^2.0.0 || >=3.0.0-rc.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dependencies:
+      vue: 3.0.11
+      vue-demi: 0.7.5_vue@3.0.11
+    dev: false
+
   /@vueuse/motion/1.5.5_vue@3.0.11:
     resolution: {integrity: sha512-d1IgX33owiYPbnCGpAX6MT3YT2ZV5jN0IplbBF1AvScg93Q4eKLwWiroxVlCUxnDAuzyzFtOdkcXfWrjeP9+ow==}
     peerDependencies:
@@ -512,6 +535,14 @@ packages:
     engines: {node: '>= 4.0.0'}
     dev: true
 
+  /automation-events/4.0.0:
+    resolution: {integrity: sha512-DcS6qMkMFlh5ebcJG8/fbVDOC8iyXiltVWk1lBzjmwmpFIvc4eoF2fzSlYoMuBKUI+Adx2NNNKIHO1mHlr3XiA==}
+    engines: {node: '>=12.20.1'}
+    dependencies:
+      '@babel/runtime': 7.14.0
+      tslib: 2.2.0
+    dev: false
+
   /babel-walk/3.0.0-canary-5:
     resolution: {integrity: sha512-GAwkz0AihzY5bkwIY5QDR+LvsRQgB/B+1foMPvi0FZPMl5fjD7ICiznUiBdLYMH1QYe6vqu4gWYytZOccLouFw==}
     engines: {node: '>= 10.0.0'}
@@ -618,8 +649,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /chromatone-theory/1.1.2:
-    resolution: {integrity: sha512-AdP/H58bbb4Em7w4vij0G1fofVY+WK0hjdnK7B06WTuBIo2knAOo6ad4Jhf5jgCCG1iGTISI/yzaefUFhP7elw==}
+  /chromatone-theory/1.1.3:
+    resolution: {integrity: sha512-ixnRORx5b8oXc7CseflEGB4YXK+PDJkwAx3Jul88s/DfNWOY+fZO6Yg/NjLwejy+EtN9RcrYbNxOuBG1Vsp69A==}
     dev: false
 
   /cli-cursor/3.1.0:
@@ -1614,6 +1645,10 @@ packages:
       picomatch: 2.2.3
     dev: true
 
+  /regenerator-runtime/0.13.7:
+    resolution: {integrity: sha512-a54FxoJDIr27pgf7IgeQGxmqUNYrcV338lf/6gH456HZ/PhX+5BcwHXG9ajESmwe6WRO0tAzRUrRmNONWgkrew==}
+    dev: false
+
   /resolve/1.20.0:
     resolution: {integrity: sha512-wENBPt4ySzg4ybFQW2TT1zMQucPK95HSh/nq2CFTZVOGut2+pQvSsgtda4d26YrYcr067wjbmzOG8byDPBX63A==}
     dependencies:
@@ -1699,6 +1734,14 @@ packages:
     resolution: {integrity: sha1-BOaSb2YolTVPPdAVIDYzuFcpfiw=}
     dev: true
 
+  /standardized-audio-context/25.2.1:
+    resolution: {integrity: sha512-s5N3EV5lHDCCruwGEGtcrLVGUzopAZb5PZ1GTjKSmYa00ZIJtJMc3D4x82hnB7v+X9huJQi1QA+10VCxMqi0pQ==}
+    dependencies:
+      '@babel/runtime': 7.14.0
+      automation-events: 4.0.0
+      tslib: 2.2.0
+    dev: false
+
   /string-hash/1.1.3:
     resolution: {integrity: sha1-6Kr8CsGFW0Zmkp7X3RJ1311sgRs=}
     dev: true
@@ -1754,6 +1797,13 @@ packages:
   /token-stream/1.0.0:
     resolution: {integrity: sha1-zCAOqyYT9BZtJ/+a/HylbUnfbrQ=}
     dev: true
+
+  /tone/14.8.21:
+    resolution: {integrity: sha512-gs3EwI/XlAq18p1ebQ9CKfVhtJwsiHFBFbMQzA4eXGVlQ6cPDaoJ3khA5O8/xBH/rAcphQmYQCuiQBLGk0khjg==}
+    dependencies:
+      standardized-audio-context: 25.2.1
+      tslib: 2.2.0
+    dev: false
 
   /totalist/1.1.0:
     resolution: {integrity: sha512-gduQwd1rOdDMGxFG1gEvhV88Oirdo2p+KjoYFU7k2g+i7n6AFFbDQ5kMPUsW0pNbfQsB/cwXvT1i4Bue0s9g5g==}

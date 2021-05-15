@@ -1,4 +1,5 @@
 import { reactive, ref } from 'vue'
+import { useRafFn } from '@vueuse/core'
 import Aubio from './aubio.js'
 
 const noteStrings = [
@@ -19,7 +20,10 @@ const noteStrings = [
 const state = reactive({
   middleA: 440,
   semitone: 69,
+  span: 64,
   bufferSize: 4096,
+  frequencyData: null,
+  running: false,
 })
 
 const chain = {}
@@ -29,6 +33,7 @@ export function useTuner() {
   return {
     init,
     state,
+    chain,
   }
 }
 
@@ -41,6 +46,14 @@ function init() {
     1,
   )
 
+  state.frequencyData = new Uint8Array(chain.analyser.frequencyBinCount)
+
+  const { pause, resume } = useRafFn(() => {
+    if (chain?.analyser) {
+      chain.analyser.getByteFrequencyData(state.frequencyData)
+    }
+  })
+
   Aubio().then(function (aubio) {
     chain.pitchDetector = new aubio.Pitch(
       'default',
@@ -48,6 +61,7 @@ function init() {
       1,
       chain.audioContext.sampleRate,
     )
+    state.running = true
     startRecord()
   })
 }

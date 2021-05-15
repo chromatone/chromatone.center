@@ -1,22 +1,25 @@
 <template lang="pug">
 .flex.flex-col
-  chords-circle#circle(:accord="accord", @selectRoot="accord.root = $event")
-  .flex.justify-center
-    a.absolute.text-2xl.-m-1rem.right-2rem(target="_blank",:download="`${notes[accord?.root].name}${accord?.info.handle}-circle.svg`",:href="download.circle", v-if="download.circle")
-      la-save
+  .relative
+    svg-save(svg="circle", :file="`${notes[accord?.root].name}${accord?.info.handle}-circle.svg`")  
+    chords-circle#circle(:accord="accord", @selectRoot="accord.root = $event")
+
+
   .flex.flex-wrap.my-4.justify-center
     .chord(
       v-for="chord in chordList", 
       :key="chord?.handle", 
       @click="accord.info = chord",
       :class="{ active: chord?.handle == accord.info.handle }") {{ chord?.handle }}
-
-  chords-keys#keys(:accord="accord", @selectRoot="accord.root = $event")
-  .text-4xl.mt-4.text-center.font-bold(
+  .text-6xl.my-4.text-center.font-bold(
     :style="{ color: noteColor(accord.root) }"
   ) {{ notes[accord?.root].name }}{{ accord?.info.handle }}
-    a.absolute.text-2xl.right-2rem(target="_blank",:download="`${notes[accord?.root].name}${accord?.info.handle}-keys.svg`",:href="download.keys", v-if="download.keys")
-      la-save
+
+  .relative
+    svg-save(svg="keys", :file="`${notes[accord?.root].name}${accord?.info.handle}-keys.svg`")
+    chords-keys#keys(:accord="accord", @selectRoot="accord.root = $event")
+    
+ 
 </template>
 
 <script setup>

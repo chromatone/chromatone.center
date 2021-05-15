@@ -1,7 +1,6 @@
-import { HeadConfig } from 'vitepress'
 import { metaData } from './constants'
 
-const head: HeadConfig[] = [
+const head = [
   ['meta', { name: 'author', content: metaData?.author }],
   ['meta', { name: 'keywords', content: metaData?.tags }],
   ['link', { rel: 'icon', type: 'image/svg+xml', href: metaData.icon }],

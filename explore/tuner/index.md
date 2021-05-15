@@ -11,3 +11,7 @@ buttons:
     text: chromatone/tuner
     type: github
 ---
+
+<ClientOnly>
+  <tuner-main />
+</ClientOnly>

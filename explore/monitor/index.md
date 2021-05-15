@@ -11,3 +11,7 @@ buttons:
     text: chromatone/midi-monitor
     type: github
 ---
+
+<client-only>
+  <midi-monitor />
+</client-only>

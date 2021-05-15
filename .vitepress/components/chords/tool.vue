@@ -3,8 +3,6 @@
   .relative
     svg-save(svg="circle", :file="`${notes[accord?.root].name}${accord?.info.handle}-circle.svg`")  
     chords-circle#circle(:accord="accord", @selectRoot="accord.root = $event")
-
-
   .flex.flex-wrap.my-4.justify-center
     .chord(
       v-for="chord in chordList", 
@@ -14,12 +12,9 @@
   .text-6xl.my-4.text-center.font-bold(
     :style="{ color: noteColor(accord.root) }"
   ) {{ notes[accord?.root].name }}{{ accord?.info.handle }}
-
   .relative
     svg-save(svg="keys", :file="`${notes[accord?.root].name}${accord?.info.handle}-keys.svg`")
     chords-keys#keys(:accord="accord", @selectRoot="accord.root = $event")
-    
- 
 </template>
 
 <script setup>

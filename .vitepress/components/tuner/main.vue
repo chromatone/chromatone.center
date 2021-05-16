@@ -58,7 +58,6 @@
         stroke="black"
         stroke-linecap="round"
         stroke-width="2"
-
         :x1="200"
         :x2="200"
         :y1="20"
@@ -102,7 +101,7 @@
 <script setup>
 import { defineProps, ref, computed, reactive, onMounted, onBeforeUnmount } from 'vue'
 import { noteColor } from 'chromatone-theory'
-import { useTuner } from './useTuner.js'
+import { useTuner } from '../../use/useTuner.js'
 
 
 const { init, state, chain } = useTuner();
@@ -125,8 +124,7 @@ function start() {
 
 
 function getRawNote(frequency) {
-  const note = 12 * (Math.log(frequency / state.middleA) / Math.log(2))
-  return note % 12
+  return 12 * (Math.log(frequency / state.middleA) / Math.log(2)) % 12
 }
 
 

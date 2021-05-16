@@ -6,9 +6,10 @@ specifiers:
   '@vueuse/core': 4.10.0
   '@vueuse/gesture': ^1.0.0
   '@vueuse/motion': ^1.5.5
-  chromatone-theory: 1.1.3
+  chromatone-theory: 1.2.0
   colord: ^1.7.0
   esbuild-register: ^2.5.0
+  hidpi-canvas: ^1.0.10
   markdown-it-classy: ^0.2.0
   markdown-it-container: ^3.0.0
   markdown-it-external-links: ^0.0.6
@@ -34,8 +35,9 @@ dependencies:
   '@vueuse/core': 4.10.0_vue@3.0.11
   '@vueuse/gesture': 1.0.0_vue@3.0.11
   '@vueuse/motion': 1.5.5_vue@3.0.11
-  chromatone-theory: 1.1.3
+  chromatone-theory: 1.2.0
   colord: 1.7.0
+  hidpi-canvas: 1.0.10
   matter-js: 0.17.1
   paper: 0.12.15
   poly-decomp: 0.3.0
@@ -705,8 +707,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /chromatone-theory/1.1.3:
-    resolution: {integrity: sha512-ixnRORx5b8oXc7CseflEGB4YXK+PDJkwAx3Jul88s/DfNWOY+fZO6Yg/NjLwejy+EtN9RcrYbNxOuBG1Vsp69A==}
+  /chromatone-theory/1.2.0:
+    resolution: {integrity: sha512-oYHrG/0E77Pgy8+8KpDnfB+ip1yITKzW19UjalmmWYS1OM+DiONbHeSQAsxuuLcw5jK9iDn64EagF/cX5bTQ3Q==}
     dev: false
 
   /cli-cursor/3.1.0:
@@ -1163,6 +1165,10 @@ packages:
 
   /hey-listen/1.0.8:
     resolution: {integrity: sha512-COpmrF2NOg4TBWUJ5UVyaCU2A88wEMkUPK4hNqyCkqHbxT92BbvfjoSozkAIIm6XhicGlJHhFdullInrdhwU8Q==}
+    dev: false
+
+  /hidpi-canvas/1.0.10:
+    resolution: {integrity: sha1-0OmZlr9LkaTeETfod8rPF0cWYU0=}
     dev: false
 
   /htmlparser2/4.1.0:

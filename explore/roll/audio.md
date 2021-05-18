@@ -5,5 +5,5 @@ tags: apps
 cover: apps/roll.png
 ---
 <client-only>
-  <audio-roll />
+  <roll-audio />
 </client-only>

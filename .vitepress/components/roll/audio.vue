@@ -2,7 +2,7 @@
 .flex.flex-col.-my-8
   .button(@click="start()", v-if="!state.running") Start rolling 
   .flex.p-8.items-center(v-if="state.note")
-    .flex-1.text-center.font-bold.text-4xl.transition-all.duration-200(:style="{ color: state.note.color }") {{ state.note?.name }}{{ state.note?.octave }}  - {{ state.note.value }} 
+    .flex-1.text-center.font-bold.text-4xl.transition-all.duration-200(:style="{ color: state.note.color }") {{ state.note?.name }}{{ state.note?.octave }} 
     .flex-0.p-2.cursor-pointer.border-1.rounded(@click="draw.running = !draw.running")
       la-play(v-if="!draw.running")
       la-pause(v-else)

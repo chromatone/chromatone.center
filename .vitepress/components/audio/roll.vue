@@ -2,7 +2,10 @@
 .flex.flex-col.-my-8
   .button(@click="start()", v-if="!state.running") Start rolling 
   .flex.p-8.items-center(v-if="state.note")
-    .flex-1.text-center.font-bold.text-4xl.transition-all.duration-200(:style="{ color: state.note.color }") {{ state.note?.name }}{{ state.note?.octave }} 
+    .flex-1.text-center.font-bold.text-4xl.transition-all.duration-200(:style="{ color: state.note.color }") {{ state.note?.name }}{{ state.note?.octave }}  - {{ state.note.value }} 
+    .flex-0.p-2.cursor-pointer.border-1.rounded(@click="draw.running = !draw.running")
+      la-play(v-if="!draw.running")
+      la-pause(v-else)
     .flex-1.text-center.font-bold  {{ state.bpm.toFixed(1) }} BPM
   canvas(ref="roll")
 </template>
@@ -12,15 +15,17 @@ import { defineProps, ref, computed, reactive, onMounted, onBeforeUnmount, watch
 import { noteColor } from 'chromatone-theory'
 import { useTuner } from '../../use/useTuner.js'
 
-const octaves = [22.5, 55, 110, 220, 440, 880]
+const octaves = [0, 1, 2, 3, 4, 5, 6, 7, 8]
 
 const { init, state, chain } = useTuner();
 
 const draw = reactive({
+  running: true,
   speed: 4,
   runnerWidth: 2,
   runnerAhead: 4,
   maxPlotFrequency: 880,
+  maxPlotNote: 108,
   prevBeat: 0,
   step: 0,
 })
@@ -31,12 +36,13 @@ let context
 onMounted(() => {
   context = roll.value.getContext('2d')
   roll.value.width = window.innerWidth
-  roll.value.height = window.innerHeight / 2
+  roll.value.height = window.innerHeight / 1.5
 })
 
 
 
 watch(() => state?.frame, frame => {
+  if (!draw.running) return
   let x = (frame * draw.speed) % roll.value.width
 
   //runner
@@ -48,19 +54,19 @@ watch(() => state?.frame, frame => {
 
   //notes
   if (!state.note.silent) {
-    const y = roll.value.height - state.note.frequency / draw.maxPlotFrequency * roll.value.height
+    const y = roll.value.height - (state.note.value) / (draw.maxPlotNote) * roll.value.height
     context.arc(x - 5, y, 5, 0, 4 * Math.PI)
     context.fillStyle = state.note.color
     context.fill()
   }
 
   if (frame % 50 == 0) {
-    // red lines
+    // green lines
     context.beginPath()
-    context.strokeStyle = "hsla(0,30%,50%,0.1)"
+    context.strokeStyle = "hsla(90,50%,50%,0.1)"
     context.lineWidth = "1";
     for (let oct of octaves) {
-      let y = roll.value.height - oct / draw.maxPlotFrequency * roll.value.height
+      let y = roll.value.height - oct * 12 / draw.maxPlotNote * roll.value.height
       context.moveTo(0, y)
       context.lineTo(roll.value.width, y)
     }

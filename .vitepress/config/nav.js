@@ -4,9 +4,9 @@ export const pages = getTags('./')
 
 export const nav = [
   {
-    text: 'Learn',
-    link: '/learn/',
-    items: pages.theory,
+    text: 'Research',
+    link: '/research/',
+    items: pages.research,
   },
   {
     text: 'Explore',
@@ -33,9 +33,9 @@ export const nav = [
 export const sidebar = {
   '/': [
     {
-      text: 'Learn',
-      link: '/learn/',
-      children: pages.theory,
+      text: 'Research',
+      link: '/research/',
+      children: pages.reserch,
     },
     {
       text: 'Explore',

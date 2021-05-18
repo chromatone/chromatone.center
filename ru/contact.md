@@ -1,14 +1,14 @@
 ---
 title: Контакты
 subtitle: Проект и его основатель
-tags: main
+tags: ru-main
 order: 120
 org:
   avatar: /media/logo/logo.svg
   name: Хроматон
   pos: Центр
   place: Москва, Россия
-  about: Неформальная некоммерческая инициатива по обновлению музыкальной теории на основе современной науки и техники
+  about: Открытый исследовательский дизайн-проект международного визуально-музыкального языка на научной основе
   social:
     instagram: chromatone.center
     email: support@chromatone.center

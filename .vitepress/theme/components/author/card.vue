@@ -29,9 +29,9 @@ const props = defineProps({
 });
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 .author-card {
-  @apply flex flex-col shadow-lg p-8 my-16 bg-gray-50 dark:bg-gray-700;
+  @apply max-w-65ch m-auto flex flex-col shadow-lg p-8 my-16 bg-gray-50 dark:bg-gray-700;
 }
 .avatar {
   @apply h-12em self-start;

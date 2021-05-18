@@ -7,7 +7,44 @@ const config = {
   description: metaData.description,
   lang: metaData.locale,
   head,
+  locales: {
+    '/': {
+      lang: 'en-US',
+      title: metaData.title,
+      description: metaData.description,
+    },
+    '/ru/': {
+      lang: 'ru-RU',
+      title: 'Хроматон',
+      description: 'Визуально-музыкальный язык - русская версия',
+    },
+  },
   themeConfig: {
+    locales: {
+      '/': {
+        label: 'English',
+        selectText: 'En',
+        nav,
+        sidebar,
+        lang: 'en-US',
+        title: metaData.title,
+        description: metaData.description,
+      },
+      '/ru/': {
+        label: 'Russian',
+        selectText: 'Ru',
+        lang: 'ru-RU',
+        title: 'Хроматон',
+        description: 'Визуально-музыкальный язык - русская версия',
+        nav: [
+          {
+            text: 'Контакты',
+            link: '/ru/contact.html',
+          },
+        ],
+        sidebar,
+      },
+    },
     repo: '',
     logo: '/media/circle/circle.svg',
     docsDir: '.',

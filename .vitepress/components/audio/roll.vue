@@ -1,6 +1,6 @@
 <template lang="pug">
 .flex.flex-col.-my-8
-  .p-4.m-8.shadow-lg.cursor-pointer.transition-all.duration-300.rounded-xl.text-4xl.bg-gray-300.text-center.font-bold(@click="start()", v-if="!state.running") Start roll
+  .button(@click="start()", v-if="!state.running") Start rolling 
   .flex.p-8.items-center(v-if="state.note")
     .flex-1.text-center.font-bold.text-4xl.transition-all.duration-200(:style="{ color: state.note.color }") {{ state.note?.name }}{{ state.note?.octave }} 
     .flex-1.text-center.font-bold  {{ state.bpm.toFixed(1) }} BPM
@@ -54,16 +54,19 @@ watch(() => state?.frame, frame => {
     context.fill()
   }
 
-  // red lines
-  context.beginPath()
-  context.strokeStyle = "hsla(0,50%,50%,0.04)"
-  context.lineWidth = "0.5";
-  for (let oct of octaves) {
-    let y = roll.value.height - oct / draw.maxPlotFrequency * roll.value.height
-    context.moveTo(0, y)
-    context.lineTo(roll.value.width, y)
+  if (frame % 50 == 0) {
+    // red lines
+    context.beginPath()
+    context.strokeStyle = "hsla(0,30%,50%,0.1)"
+    context.lineWidth = "1";
+    for (let oct of octaves) {
+      let y = roll.value.height - oct / draw.maxPlotFrequency * roll.value.height
+      context.moveTo(0, y)
+      context.lineTo(roll.value.width, y)
+    }
+    context.stroke()
   }
-  context.stroke()
+
 
   //beat
   if (state.beat > draw.prevBeat) {
@@ -82,7 +85,7 @@ function start() {
 </script>
 
 <style scoped>
-.meter {
-  transition: transform 500ms ease;
+.button {
+  @apply p-4 m-8 shadow-lg cursor-pointer transition-all duration-300 rounded-4xl text-4xl bg-light-700 text-center font-bold dark:(bg-dark-400);
 }
 </style>

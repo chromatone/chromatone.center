@@ -1,20 +1,17 @@
-<template>
-  <nav v-if="show" class="nav-links">
-    <template v-if="links">
-      <div v-for="item in links" :key="item.text" class="item">
-        <NavDropdownLink v-if="item.items" :item="item" />
-        <NavLink v-else :item="item" />
-      </div>
-    </template>
+<template lang='pug'>
+nav.nav-links(v-if="show")
+  template(v-if="links")
+    .item(v-for="item in links", :key="item.text")
+      nav-dropdown-link(v-if="item.items", :item="item")
+      nav-link(v-else, :item="item").
 
-    <div v-if="localeLinks" class="item">
-      <NavDropdownLink :item="localeLinks" />
-    </div>
+  .item(v-if="localeLinks")
+    nav-dropdown-link(:item="localeLinks").
 
-    <!-- <div v-if="repo" class="item">
-      <NavLink :item="repo" />
-    </div> -->
-  </nav>
+  .item(v-if="repo")
+    nav-link(:item="repo").
+      
+      
 </template>
 
 <script setup lang="ts">

@@ -1,57 +1,24 @@
 <template lang="pug">
-.flex.flex-col
-  .flex {{ state.enabled }}
+.flex.items-center.justify-center
+  .flex.m-2.cursor-pointer.select-none
+    .p-2.border.border-green-500.text-green-500(v-if="WebMidi.supported && state.enabled") 
+      span(v-if="Object.entries(state.input).length > 0") MIDI
+      span(v-else) Plug in your MIDI device
+    .p-2.border.border-red-500.text-red-500(v-else) MIDI NOT AVAILABLE
   .flex
-    .p-2.m-2.border(v-for="input in state.input") 
+    .p-2.m-2.border.border-gray-500(v-for="input in state.input") 
       .font-bold {{ input.name }}
       .play(v-if="input.playing !== null")
         la-play(v-if="input.playing")
         la-pause(v-else)
-      .text-gray-200 
+      .text-gray-200 {{ input.msg }}
 
 </template>
 
 <script setup>
-import { defineProps, reactive, onBeforeUnmount, onMounted } from 'vue'
-import { WebMidi } from 'webmidi'
+import { useMidi } from './midi.js'
 
-const state = reactive({
-  enabled: false,
-  input: {},
-  output: {},
-})
-
-WebMidi.enable()
-
-WebMidi.addListener('enabled', e => {
-  state.enabled = true
-
-})
-
-WebMidi.addListener('connected', e => {
-  state[e.port.type][e.port.id] = {
-    name: e.port.name,
-    manufacturer: e.port.manufacturer,
-    playing: null,
-  }
-  e.port.addListener('start', () => {
-    state[e.port.type][e.port.id].playing = true
-  })
-  e.port.addListener('stop', () => {
-    state[e.port.type][e.port.id].playing = false
-  })
-  console.log(e.port)
-})
-
-WebMidi.addListener('disconnected', e => {
-  delete state[e.port.type][e.port.id]
-})
-
-
-
-onBeforeUnmount(() => {
-  WebMidi.disable()
-});
+const { state, WebMidi } = useMidi();
 
 </script>
 

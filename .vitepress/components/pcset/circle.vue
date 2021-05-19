@@ -122,6 +122,7 @@ svg.max-h-3xl.w-full(
 import { notes, pitchColor, scales } from 'chromatone-theory'
 import { ScaleType, ChordType, Scale, Chord, Note } from '@tonaljs/tonal'
 import { defineProps, ref, defineEmit, computed, onMounted, onBeforeUnmount, nextTick } from 'vue'
+import { useStorage } from '@vueuse/core'
 const props = defineProps({
   tonic: {
     type: Number,
@@ -226,7 +227,7 @@ import { PolySynth, Frequency } from 'tone'
 
 let synth
 
-const mute = ref(false)
+const mute = useStorage('mute-app', false)
 
 onMounted(() => {
   synth = new PolySynth().toDestination()

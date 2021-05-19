@@ -8,7 +8,7 @@ a.tile(:href="item.link", :style="{ backgroundColor: lchToHsl(i, total) }")
 
 <script setup>
 import { defineProps } from 'vue'
-import { lchToHsl } from '@composables/colors.js'
+import { lchToHsl } from '@theme/composables/colors.js'
 const props = defineProps({
   item: Object,
   i: Number,

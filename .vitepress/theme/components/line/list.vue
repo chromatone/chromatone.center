@@ -18,7 +18,7 @@ const props = defineProps({
   list: Object,
 });
 
-import { lchToHsl } from '@composables/colors.js'
+import { lchToHsl } from '@theme/composables/colors.js'
 </script>
 
 <style  scoped>

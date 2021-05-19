@@ -32,7 +32,7 @@ const props = defineProps({
   total: Number,
 });
 
-import { lchToHsl } from '@composables/colors.js'
+import { lchToHsl } from '@theme/composables/colors.js'
 
 </script>
 

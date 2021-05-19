@@ -46,7 +46,7 @@ footer
 </template>
 
 <script setup lang="ts">
-import { sortList } from '@composables/list.js'
+import { sortList } from '@theme/composables/list.js'
 import { useBrowserLocation } from '@vueuse/core'
 import { useRoute, useSiteData, inBrowser } from 'vitepress'
 

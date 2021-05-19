@@ -9,7 +9,7 @@ import { getAliases } from 'vite-aliases'
 export default defineConfig({
   resolve: {
 		alias: getAliases({
-      path: '.vitepress/theme'
+      path: '.vitepress'
     })
 	},
   plugins: [

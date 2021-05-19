@@ -15,7 +15,7 @@
 <script setup>
 import { defineProps, ref, computed, reactive, onMounted, onBeforeUnmount, watch } from 'vue'
 import { pitchColor } from 'chromatone-theory'
-import { useTuner } from '../../use/useTuner.js'
+import { useTuner } from '@use/useTuner.js'
 
 const octaves = [0, 1, 2, 3, 4, 5, 6, 7, 8]
 

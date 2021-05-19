@@ -10,7 +10,7 @@ table.w-full
 </template>
 
 <script setup>
-import { lchToHsl, levelColor } from '@composables/colors.js'
+import { lchToHsl, levelColor } from '@theme/composables/colors.js'
 
 </script>
 

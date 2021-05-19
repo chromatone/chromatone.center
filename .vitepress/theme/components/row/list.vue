@@ -11,7 +11,7 @@
 
 <script setup>
 import { computed, defineProps, reactive } from "vue";
-import { sortList } from '@composables/list.js'
+import { sortList } from '@theme/composables/list.js'
 const props = defineProps({
   rows: Object,
 });

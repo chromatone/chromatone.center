@@ -281,8 +281,7 @@ form {
   margin: auto;
 }
 .external-link {
-  font-size: 0.95rem;
-  opacity: 0.7;
+  opacity: 0.9;
 }
 
 .external-link::after {
@@ -327,7 +326,8 @@ form {
   & p,
   ul,
   ol,
-  blockquote {
+  blockquote,
+  pre {
     @apply max-w-55ch h-auto flex-1 m-auto p-4;
   }
 }
@@ -336,4 +336,28 @@ form {
   @apply flex flex-col  bg-light-100 bg-opacity-60 dark:(bg-dark-100 bg-opacity-60);
   -webkit-backdrop-filter: blur(70px);
   backdrop-filter: blur(70px);
+}
+
+.list-enter-active {
+  transition: all 0.3s ease-out;
+}
+.list-enter-from {
+  opacity: 0;
+  z-index: 20;
+  transform: translateY(-100%);
+}
+
+.list-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.list-leave-active {
+  transition: all 0.4s ease-in;
+}
+.list-move {
+  transition: transform 0.8s ease-in-out;
+}
+.list-item {
+  z-index: 1;
 }

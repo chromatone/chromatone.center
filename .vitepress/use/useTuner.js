@@ -1,7 +1,7 @@
 import { reactive, ref } from 'vue'
 import { useRafFn } from '@vueuse/core'
 import Aubio from './aubio.js'
-import { initGetUserMedia, noteColor } from 'chromatone-theory'
+import { initGetUserMedia, pitchColor } from 'chromatone-theory'
 
 const noteStrings = [
   'C',
@@ -159,7 +159,7 @@ function freqColor(frequency) {
   const note = getRawNote(frequency)
   if (!note) return '#333'
   const octave = parseInt(note / 12) + 2
-  const color = noteColor(note, octave)
+  const color = pitchColor(note, octave)
   return color
 }
 

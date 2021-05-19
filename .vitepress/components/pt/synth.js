@@ -1,6 +1,6 @@
 import { computed, reactive, watch, onBeforeUnmount } from 'vue'
 import { gainToDb, PanVol, MonoSynth } from 'tone'
-import { calcFreq } from 'chromatone-theory'
+import { pitchFreq } from 'chromatone-theory'
 
 export function useSynth(pitch, octave) {
   const panVol = new PanVol(0, -Infinity).toDestination()
@@ -21,7 +21,7 @@ export function useSynth(pitch, octave) {
       return voice.vol > 0
     }),
     freq: computed(() => {
-      let freq = calcFreq(pitch, octave)
+      let freq = pitchFreq(pitch, octave)
       synth.oscillator.frequency.value = freq
       return freq
     }),

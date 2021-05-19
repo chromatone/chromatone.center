@@ -1,22 +1,22 @@
 <template lang="pug">
-svg.max-h-3xl(
+svg.max-h-3xl.w-full(
   version="1.1",
   baseProfile="full",
   viewBox="0 0 100 100",
   xmlns="http://www.w3.org/2000/svg",
   )
   line.line(
-    v-for="semitones in accord?.info.semitones",
+    v-for="semitones in pcset?.info.semitones",
     :key="semitones",
-    :stroke="noteColor(accord.root)"
+    :stroke="pitchColor(pcset.root)"
     stroke-linecap="round"
     stroke-width="10"
     opacity="0.5"
     style="mix-blend-mode: multiply;"
-    :x1="getCoord(accord?.root).x",
-    :y1="getCoord(accord?.root).y",
-    :x2="getCoord(accord?.root + semitones).x",
-    :y2="getCoord(accord?.root + semitones).y"
+    :x1="getCoord(pcset?.root).x",
+    :y1="getCoord(pcset?.root).y",
+    :x2="getCoord(pcset?.root + semitones).x",
+    :y2="getCoord(pcset?.root + semitones).y"
   )
   g.around(
     style="mix-blend-mode: screen;cursor:pointer"
@@ -27,11 +27,11 @@ svg.max-h-3xl(
   )
     circle.note(
       style="transform-box: fill-box; transform-origin: center center;"
-      :style="{ transform: `scale(${accord?.root == note.pitch ? 2.6 : isInChord(note.pitch) ? 1.62 : 1}` }",
+      :style="{ transform: `scale(${pcset?.root == note.pitch ? 2.6 : isInChord(note.pitch) ? 1.62 : 1}` }",
       :cx="getCoord(note.pitch).x",
       :cy="getCoord(note.pitch).y",
       r="5",
-      :fill="getNoteColor(note.pitch)",
+      :fill="getPitchColor(note.pitch)",
     )
     text(
       style="user-select:none;transition:all 300ms ease"
@@ -46,7 +46,7 @@ svg.max-h-3xl(
 
   text(
     style="cursor:pointer;user-select:none"
-    :style="{ fill: noteColor(accord?.root) }"
+    :style="{ fill: pitchColor(pcset?.root) }"
     x="50",
     y="50",
     font-weight="bold"
@@ -54,24 +54,24 @@ svg.max-h-3xl(
     font-family="Commissioner, sans-serif"
     text-anchor="middle",
     dominant-baseline="middle"
-    ) {{ notes[accord?.root].name }}{{ accord?.info.handle }}
+    ) {{ notes[pcset?.root].name }}{{ pcset?.info.handle }}
 </template>
 
 <script setup>
-import { notes, noteColor, scales } from 'chromatone-theory'
+import { notes, pitchColor, scales } from 'chromatone-theory'
 import { defineProps, ref, defineEmit } from 'vue'
 const props = defineProps({
-  accord: Object,
+  pcset: Object,
 });
 
 defineEmit(['selectRoot'])
 
 function isInChord(n) {
-  return props.accord.info.semitones.includes((24 + n - props.accord.root) % 12)
+  return props.pcset.info.semitones.includes((24 + n - props.pcset.root) % 12)
 }
 
-function getNoteColor(n) {
-  if (isInChord(n % 12)) return noteColor(n % 12)
+function getPitchColor(n) {
+  if (isInChord(n % 12)) return pitchColor(n % 12)
   else if (scales.minor.steps[n]) return 'hsla(0,0%,90%,1)'
   else return 'hsla(0,0%,10%,1)'
 }

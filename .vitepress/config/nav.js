@@ -35,7 +35,7 @@ export const sidebar = {
     {
       text: 'Research',
       link: '/research/',
-      children: pages.reserch,
+      children: pages.research,
     },
     {
       text: 'Explore',

@@ -45,14 +45,15 @@ export default defineConfig({
     include: [
       'vue',
       '@vueuse/core',
-      'tone'
+      'tone',
+      '@tonaljs/tonal'
     ],
   },
   build: {
     rollupOptions:{
       output:{
         manualChunks: {
-          motion: ['@vueuse/motion']
+          motion: ['@vueuse/motion'],
         }
       }
     }

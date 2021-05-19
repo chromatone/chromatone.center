@@ -100,7 +100,7 @@
 
 <script setup>
 import { defineProps, ref, computed, reactive, onMounted, onBeforeUnmount } from 'vue'
-import { noteColor } from 'chromatone-theory'
+import { pitchColor } from 'chromatone-theory'
 import { useTuner } from '../../use/useTuner.js'
 
 
@@ -114,7 +114,7 @@ const background = computed(() => {
   const note = getRawNote(state.note?.frequency)
   if (!note) return '#333'
   const octave = state.note?.octave
-  const color = noteColor(note, octave)
+  const color = pitchColor(note, octave)
   return color
 })
 

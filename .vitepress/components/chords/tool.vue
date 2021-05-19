@@ -1,8 +1,8 @@
 <template lang="pug">
 .flex.flex-col
-  .relative
+  .relative.w-full.m-auto
     svg-save(svg="circle", :file="`${notes[accord?.root].name}${accord?.info.handle}-circle.svg`")  
-    chords-circle#circle(:accord="accord", @selectRoot="accord.root = $event")
+    chords-circle#circle(:pcset="accord", @selectRoot="accord.root = $event")
   .flex.flex-wrap.my-4.justify-center
     .chord(
       v-for="chord in chordList", 
@@ -10,7 +10,7 @@
       @click="accord.info = chord",
       :class="{ active: chord?.handle == accord.info.handle }") {{ chord?.handle }}
   .text-6xl.my-4.text-center.font-bold(
-    :style="{ color: noteColor(accord.root) }"
+    :style="{ color: pitchColor(accord.root) }"
   ) {{ notes[accord?.root].name }}{{ accord?.info.handle }}
   .relative
     svg-save(svg="keys", :file="`${notes[accord?.root].name}${accord?.info.handle}-keys.svg`")
@@ -19,7 +19,7 @@
 
 <script setup>
 import { reactive, ref, computed, watch } from 'vue'
-import { chords, notes, noteColor } from 'chromatone-theory'
+import { chords, notes, pitchColor } from 'chromatone-theory'
 
 const accord = reactive({
   root: 0,

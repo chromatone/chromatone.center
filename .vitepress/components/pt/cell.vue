@@ -22,7 +22,6 @@
 <script setup>
 import { defineProps, computed, ref, reactive, watch } from 'vue'
 import { context, start, gainToDb, PanVol, MonoSynth } from 'tone'
-import { calcFreq } from 'chromatone-theory'
 import { useSynth } from './synth.js'
 
 const props = defineProps({

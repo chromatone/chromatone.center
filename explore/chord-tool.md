@@ -1,7 +1,6 @@
 ---
 title: Chord tool
 subtitle: easify find different chords note colors
-tags: apps
 cover: apps/chord.svg
 ---
 

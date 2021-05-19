@@ -2,6 +2,7 @@
 header.nav-bar
   nav-bar-title
   dark-mode.ml-2
+  mute-button
   div(class="hidden lg:flex px-3 ml-4 lg:ml-10")
     NavLinks
   .flex-grow

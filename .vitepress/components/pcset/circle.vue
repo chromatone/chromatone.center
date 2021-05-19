@@ -5,25 +5,6 @@ svg.max-h-3xl.w-full(
   viewBox="0 0 100 100",
   xmlns="http://www.w3.org/2000/svg",
   )
-  g(
-    @click="mute = !mute"
-    font-size="3px"
-    transform="translate(90,10)"
-    style="cursor:pointer"
-    color="hsla(0,0%,50%,1)"
-  )
-    circle(
-      r="3"
-      fill="hsla(0,0%,50%,0.2)"
-      cx="1.8"
-      cy="1.8"
-    )
-    la-volume-up(
-      v-if="!mute"
-    )
-    la-volume-mute(
-      v-else
-    )
   line.line(
     v-for="(active,i) in chroma.split('')",
     :key="i",
@@ -66,6 +47,9 @@ svg.max-h-3xl.w-full(
 
   text(
     @mousedown="playChord()"
+    @touchstart.prevent.stop="playChord()"
+    @touchend="stopChord()"
+    @touchcancel="stopChord()"
     @mouseup="stopChord()"
     @mouseleave="stopChord()"
     style="cursor:pointer;user-select:none"
@@ -122,7 +106,7 @@ svg.max-h-3xl.w-full(
 import { notes, pitchColor, scales } from 'chromatone-theory'
 import { ScaleType, ChordType, Scale, Chord, Note } from '@tonaljs/tonal'
 import { defineProps, ref, defineEmit, computed, onMounted, onBeforeUnmount, nextTick } from 'vue'
-import { useStorage } from '@vueuse/core'
+import { mute } from '@theme/composables/state.js'
 const props = defineProps({
   tonic: {
     type: Number,
@@ -223,23 +207,33 @@ function getCoord(n = 0, total = 12, radius = 35, width = 100) {
   return { x, y }
 }
 
-import { PolySynth, Frequency } from 'tone'
+import { PolySynth, Frequency, DuoSynth } from 'tone'
 
 let synth
 
-const mute = useStorage('mute-app', false)
-
 onMounted(() => {
-  synth = new PolySynth().toDestination()
-  synth.set({
-    volume: -12,
-    envelope: {
-      attack: 0.05,
-      decay: 0.8,
-      sustain: 1.0,
-      release: 2
+  synth = new PolySynth(DuoSynth, {
+    maxPolyphony: 12,
+    harmonicity: 1,
+    volume: -17,
+    voice1: {
+      envelope: {
+        attack: 0.1,
+        decay: 0.8,
+        sustain: 1,
+        release: 4
+      }
+    },
+    voice2: {
+      envelope: {
+        attack: 0.1,
+        decay: 0.8,
+        sustain: 1,
+        release: 2
+      }
     }
-  })
+
+  }).toDestination()
 })
 
 onBeforeUnmount(() => {

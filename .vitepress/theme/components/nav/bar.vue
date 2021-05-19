@@ -1,11 +1,12 @@
 <template lang="pug">
 header.nav-bar
   nav-bar-title
-  dark-mode.ml-2
-  mute-button
+
   div(class="hidden lg:flex px-3 ml-4 lg:ml-10")
     NavLinks
   .flex-grow
+  mute-button.mr-2
+  dark-mode.mr-2
   nav-toggle-sidebar(@toggle="$emit('toggle')")
 </template>
 

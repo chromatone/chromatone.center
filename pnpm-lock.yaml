@@ -1,10 +1,10 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@iconify/json': ^1.1.342
+  '@iconify/json': ^1.1.345
   '@tonaljs/tonal': ^4.6.0
-  '@types/node': ^15.0.3
-  '@vueuse/core': 4.10.0
+  '@types/node': ^15.3.0
+  '@vueuse/core': 4.11.0
   '@vueuse/gesture': ^1.0.0
   '@vueuse/motion': ^1.5.5
   chromatone-theory: 1.3.0
@@ -19,22 +19,22 @@ specifiers:
   patch-vue-directive-ssr: ^0.0.1
   poly-decomp: ^0.3.0
   pug: 3.0.2
-  tone: ^14.8.21
+  tone: ^14.8.25
   typescript: ^4.2.4
-  vite: ^2.3.2
+  vite: ^2.3.3
   vite-aliases: ^0.6.3
   vite-plugin-components: ^0.9.1
-  vite-plugin-icons: ^0.5.0
-  vite-plugin-windicss: ^0.16.0-beta.16
+  vite-plugin-icons: ^0.5.1
+  vite-plugin-windicss: ^0.16.0-beta.17
   vitepress: ^0.13.2
   vitepress-tags: ^0.3.1
   vue: ^3.0.11
   webmidi: ^3.0.0-alpha.5
-  windicss: 3.0.0
+  windicss: 3.0.9
 
 dependencies:
   '@tonaljs/tonal': 4.6.0
-  '@vueuse/core': 4.10.0_vue@3.0.11
+  '@vueuse/core': 4.11.0_vue@3.0.11
   '@vueuse/gesture': 1.0.0_vue@3.0.11
   '@vueuse/motion': 1.5.5_vue@3.0.11
   chromatone-theory: 1.3.0
@@ -43,13 +43,13 @@ dependencies:
   matter-js: 0.17.1
   paper: 0.12.15
   poly-decomp: 0.3.0
-  tone: 14.8.21
+  tone: 14.8.25
   vue: 3.0.11
   webmidi: 3.0.0-alpha.5
 
 devDependencies:
-  '@iconify/json': 1.1.342
-  '@types/node': 15.0.3
+  '@iconify/json': 1.1.345
+  '@types/node': 15.3.0
   esbuild-register: 2.5.0
   markdown-it-classy: 0.2.0
   markdown-it-container: 3.0.0
@@ -57,14 +57,14 @@ devDependencies:
   patch-vue-directive-ssr: 0.0.1
   pug: 3.0.2
   typescript: 4.2.4
-  vite: 2.3.2
+  vite: 2.3.3
   vite-aliases: 0.6.3
-  vite-plugin-components: 0.9.1_vite@2.3.2
-  vite-plugin-icons: 0.5.0_@iconify+json@1.1.342
-  vite-plugin-windicss: 0.16.0-beta.16_vite@2.3.2
+  vite-plugin-components: 0.9.1_vite@2.3.3
+  vite-plugin-icons: 0.5.1_@iconify+json@1.1.345
+  vite-plugin-windicss: 0.16.0-beta.17_vite@2.3.3
   vitepress: 0.13.2
   vitepress-tags: 0.3.1
-  windicss: 3.0.0
+  windicss: 3.0.9
 
 packages:
 
@@ -158,6 +158,10 @@ packages:
       '@algolia/requester-common': 4.8.6
     dev: true
 
+  /@antfu/utils/0.1.6:
+    resolution: {integrity: sha512-1lcCCEOv4gYlYa/OCjM2JA5nbNll04mNMhSXYu4QetbG14m3LdCvkyDAPlc2AmqRQEqkKpJldRL++9sPpOIydw==}
+    dev: true
+
   /@arr/every/1.0.1:
     resolution: {integrity: sha512-UQFQ6SgyJ6LX42W8rHCs8KVc0JS0tzVL9ct4XYedJukskYVWTo49tNiMEK9C2HTyarbNiT/RVIRSY82vH+6sTg==}
     engines: {node: '>=4'}
@@ -242,8 +246,8 @@ packages:
     resolution: {integrity: sha512-LFelJDOLZ6JHlmlAkgrvmcu4hpNPB91KYcr4f60D/exzU1eNOb4/KCVHIydGHIQFaOacIOD+Xy+B7P1z812cZg==}
     dev: true
 
-  /@iconify/json/1.1.342:
-    resolution: {integrity: sha512-an/NmeNpDPQjdJjZq4Jc4ONv8v4Sh999q1XT1Y3hCReDYq4ZFyxeSeOlVv07rTwIvnEIQ8xqfP6+k1/zhujUBA==}
+  /@iconify/json/1.1.345:
+    resolution: {integrity: sha512-boO7ZtdoTzIlotTG9FFqSi/SvFS8YsmRV/JXZVaDL/C5CZQxSwNld6ZQ2GuLDbXtoXF3UPo2n5eH7gb4GqBlCw==}
     dev: true
 
   /@nodelib/fs.scandir/2.1.4:
@@ -435,8 +439,8 @@ packages:
       '@tonaljs/time-signature': 4.5.1
     dev: false
 
-  /@types/node/15.0.3:
-    resolution: {integrity: sha512-/WbxFeBU+0F79z9RdEOXH4CsDga+ibi5M8uEYr91u3CkT/pdWcV8MCook+4wDPnZBexRdwWS+PiVZ2xJviAzcQ==}
+  /@types/node/15.3.0:
+    resolution: {integrity: sha512-8/bnjSZD86ZfpBsDlCIkNXIvm+h6wi9g7IqL+kmFkQ+Wvu3JrasgLElfiPgoo8V8vVfnEi0QVS12gbl94h9YsQ==}
     dev: true
 
   /@types/webmidi/2.0.4:
@@ -551,10 +555,10 @@ packages:
     resolution: {integrity: sha512-dn5FyfSc4ky424jH4FntiHno7Ss5yLkqKNmM/NXwANRnlkmqu74pnGetexDFVG5phMk9/FhwovUZCWGxsotVKg==}
     dev: true
 
-  /@vueuse/core/4.10.0_vue@3.0.11:
-    resolution: {integrity: sha512-MEJKnp5ZQFTtQnHoUvP/yi6nRbr6S1NcaNe3L6PZi4n9Gm4JiAd5Rx0fS/xhaTKMOzsTbN1gTzoM1Gl3BDbjtA==}
+  /@vueuse/core/4.11.0_vue@3.0.11:
+    resolution: {integrity: sha512-a2/NHE3LjZ73LKGU1Ef2mz11ilIxs4pRIv1OUf98Sfvg6+GqA3R2VzIExswVlU3555GYIErmmJDywEHLsyii6w==}
     dependencies:
-      '@vueuse/shared': 4.10.0_vue@3.0.11
+      '@vueuse/shared': 4.11.0_vue@3.0.11
       vue-demi: 0.7.5_vue@3.0.11
     transitivePeerDependencies:
       - '@vue/composition-api'
@@ -599,8 +603,8 @@ packages:
       vue-demi: 0.7.4_vue@3.0.11
     dev: false
 
-  /@vueuse/shared/4.10.0_vue@3.0.11:
-    resolution: {integrity: sha512-zomWAt6Q2RNa9Wu3POUDJJqyAo6zlf4trsUu9goOQKNKE+G95kTKHQJoj4K3XOkjMktND24xrkvyOVGbp3lqVw==}
+  /@vueuse/shared/4.11.0_vue@3.0.11:
+    resolution: {integrity: sha512-WKyOxTWuAiOLTp9Eg6RYabtZBSiJyt9EgFZEMD8fSlZ1FAckg0Ntya3HLfTDkPBjOqVe3pMdOsAbLwsU+7Fwyw==}
     dependencies:
       vue-demi: 0.7.5_vue@3.0.11
     transitivePeerDependencies:
@@ -617,15 +621,16 @@ packages:
       - vue
     dev: false
 
-  /@windicss/plugin-utils/0.16.0-beta.16:
-    resolution: {integrity: sha512-FpHZZ1fqTfLZanxwMQeIzdqFYCuAUGE6VXH4T1T0zil7u4i5t2VaSbX9lUxuodYyyD7LTLx0G6QEqVbgyONIfQ==}
+  /@windicss/plugin-utils/0.16.0-beta.17:
+    resolution: {integrity: sha512-71Ph2FtnSo+MuK1WcHDmkMFx7hrxmEXm5CsA07MfyWTAP88HEY3XF0Hgfb4U2KjuE7DAVuNFWJU363imVzNwhw==}
     dependencies:
+      '@antfu/utils': 0.1.6
       debug: 4.3.2
       fast-glob: 3.2.5
       jiti: 1.9.2
       magic-string: 0.25.7
       micromatch: 4.0.4
-      windicss: 3.0.0
+      windicss: 3.0.9
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -1096,8 +1101,8 @@ packages:
       jsonc-parser: 3.0.0
     dev: true
 
-  /esbuild/0.11.20:
-    resolution: {integrity: sha512-QOZrVpN/Yz74xfat0H6euSgn3RnwLevY1mJTEXneukz1ln9qB+ieaerRMzSeETpz/UJWsBMzRVR/andBht5WKw==}
+  /esbuild/0.11.23:
+    resolution: {integrity: sha512-iaiZZ9vUF5wJV8ob1tl+5aJTrwDczlvGP0JoMmnpC2B0ppiMCu8n8gmy5ZTGl5bcG081XBVn+U+jP+mPFm5T5Q==}
     hasBin: true
     requiresBuild: true
     dev: true
@@ -2277,8 +2282,8 @@ packages:
     resolution: {integrity: sha1-zCAOqyYT9BZtJ/+a/HylbUnfbrQ=}
     dev: true
 
-  /tone/14.8.21:
-    resolution: {integrity: sha512-gs3EwI/XlAq18p1ebQ9CKfVhtJwsiHFBFbMQzA4eXGVlQ6cPDaoJ3khA5O8/xBH/rAcphQmYQCuiQBLGk0khjg==}
+  /tone/14.8.25:
+    resolution: {integrity: sha512-9E9YkmqVonGjXJSINVqEk98P4EQe4TltEHLrt9Jc6mpE+Ber7YUITlLAKP7NeYrqQfHyp+UN4g37WVw+2B63RA==}
     dependencies:
       standardized-audio-context: 25.2.1
       tslib: 2.2.0
@@ -2339,7 +2344,7 @@ packages:
       vite: 2.2.4
     dev: true
 
-  /vite-plugin-components/0.9.1_vite@2.3.2:
+  /vite-plugin-components/0.9.1_vite@2.3.3:
     resolution: {integrity: sha512-rD7RrqrrvSGdXX1HWecE8xvDTFASYtqVgVRHfK8GZNET4wD+JeJITIOaDx4KdvYDIchUAvCNnSLXj6Ll1H+ZGQ==}
     peerDependencies:
       vite: ^2.0.0-beta.69
@@ -2349,33 +2354,33 @@ packages:
       fast-glob: 3.2.5
       magic-string: 0.25.7
       minimatch: 3.0.4
-      vite: 2.3.2
+      vite: 2.3.3
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /vite-plugin-icons/0.5.0_@iconify+json@1.1.342:
-    resolution: {integrity: sha512-YsnoYixkp0HVIx6SvQWTyXXiWBCfc9gtKx3iqyPmN4fsE5hf7NvPp1LKiIazilP+zRUvHEyNeEbH4y6wUX8jMw==}
+  /vite-plugin-icons/0.5.1_@iconify+json@1.1.345:
+    resolution: {integrity: sha512-snEQYVnZ7NFEShFpki3vL9vj8k7M60PO6SXQTZgzIgrwlVsTsGzgsLw8B73v4DzEygPS7wuw3q6XqlZDVUMSiQ==}
     peerDependencies:
       '@iconify/json': '*'
       '@vue/compiler-sfc': ^3.0.2
       vue-template-compiler: ^2.6.12
     dependencies:
-      '@iconify/json': 1.1.342
+      '@iconify/json': 1.1.345
       '@iconify/json-tools': 1.0.10
       vue-template-es2015-compiler: 1.9.1
     dev: true
 
-  /vite-plugin-windicss/0.16.0-beta.16_vite@2.3.2:
-    resolution: {integrity: sha512-fvwAMnNriXN4JptTBZ4wGtE1KKt38cNyDFu3KZdd/zQ9s5O3Mv+clpowhuS+9zU5zFO4bY0GPKA4Vo8k7MQFiA==}
+  /vite-plugin-windicss/0.16.0-beta.17_vite@2.3.3:
+    resolution: {integrity: sha512-I8HF90Jn+jFqIpAIjTPd5nwnemY58lUM+6mgySaVR+Ygyfum1yNi1RO+GrJ7YPgqRDgOXOCE/tAYpMAmUaxavg==}
     peerDependencies:
       vite: ^2.0.1
     dependencies:
-      '@windicss/plugin-utils': 0.16.0-beta.16
+      '@windicss/plugin-utils': 0.16.0-beta.17
       chalk: 4.1.1
       debug: 4.3.2
-      vite: 2.3.2
-      windicss: 3.0.0
+      vite: 2.3.3
+      windicss: 3.0.9
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -2406,12 +2411,12 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vite/2.3.2:
-    resolution: {integrity: sha512-QhLdOompDrfkyryCNTts9HE+eJhvhN9ibKNJ5Q8DpQai+6nOsuIlaveZNg67e1O/2QaWqXeBo82eHnAs1De2bQ==}
+  /vite/2.3.3:
+    resolution: {integrity: sha512-eO1iwRbn3/BfkNVMNJDeANAFCZ5NobYOFPu7IqfY7DcI7I9nFGjJIZid0EViTmLDGwwSUPmRAq3cRBbO3+DsMA==}
     engines: {node: '>=12.0.0'}
     hasBin: true
     dependencies:
-      esbuild: 0.11.20
+      esbuild: 0.11.23
       postcss: 8.2.15
       resolve: 1.20.0
       rollup: 2.44.0
@@ -2525,8 +2530,8 @@ packages:
       - supports-color
     dev: false
 
-  /windicss/3.0.0:
-    resolution: {integrity: sha512-NTiPaIAOOtt+HMUXGJ5agMCdaQq2o5kREElIpX4RSG8g3oy6/7YM+dSbQMNelrMHSxqD7X/7DztHja2Bm8HblA==}
+  /windicss/3.0.9:
+    resolution: {integrity: sha512-pv/SnYPfqYwz25672irDzNZpcEK/QlN9Dlhe2KUQXDjqd46wl/zLAi51BNB0pdfDZDbNjyvI1XgDXHk1oFF51A==}
     engines: {node: '>= 12'}
     hasBin: true
     dev: true

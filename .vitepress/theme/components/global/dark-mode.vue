@@ -5,8 +5,8 @@ button.icon-button(@click="toggle")
 </template>
 
 <script setup lang='ts'>
-import { useToggle } from '@vueuse/core'
-import { isDark } from '../../composables/dark'
+import { useToggle, useDark } from '@vueuse/core'
+const isDark = useDark()
 
-const toggle = useToggle(isDark)
+const toggle = useToggle(isDark);
 </script>

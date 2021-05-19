@@ -5,14 +5,33 @@ svg.max-h-3xl.w-full(
   viewBox="0 0 100 100",
   xmlns="http://www.w3.org/2000/svg",
   )
+  g(
+    @click="mute = !mute"
+    font-size="3px"
+    transform="translate(90,10)"
+    style="cursor:pointer"
+    color="hsla(0,0%,50%,1)"
+  )
+    circle(
+      r="3"
+      fill="hsla(0,0%,50%,0.2)"
+      cx="1.8"
+      cy="1.8"
+    )
+    la-volume-up(
+      v-if="!mute"
+    )
+    la-volume-mute(
+      v-else
+    )
   line.line(
-    v-for="(active,i) in chroma.slice('')",
+    v-for="(active,i) in chroma.split('')",
     :key="i",
     :stroke="pitchColor(tonic + i)"
     stroke-linecap="round"
     stroke-width="10"
-    :opacity="active == '1' ? '0.3' : '0'"
-    style="mix-blend-mode: multiply; transition: opacity 300ms ease"
+    style="mix-blend-mode: multiply"
+    :style="{ opacity: active == '1' ? 0.5 : 0 }"
     :x1="getCoord(tonic).x",
     :y1="getCoord(tonic).y",
     :x2="getCoord(tonic + i).x",
@@ -46,12 +65,15 @@ svg.max-h-3xl.w-full(
     ) {{ notes[i].name }} 
 
   text(
+    @mousedown="playChord()"
+    @mouseup="stopChord()"
+    @mouseleave="stopChord()"
     style="cursor:pointer;user-select:none"
     :style="{ fill: pitchColor(tonic) }"
     x="50",
     y="50",
     font-weight="bold"
-    font-size="10px"
+    font-size="8px"
     font-family="Commissioner, sans-serif"
     text-anchor="middle",
     dominant-baseline="middle"
@@ -60,19 +82,46 @@ svg.max-h-3xl.w-full(
     style="cursor:pointer;user-select:none"
     :style="{ fill: pitchColor(tonic) }"
     x="50",
-    y="57",
+    y="58",
     font-weight="normal"
     font-size="4px"
     font-family="Commissioner, sans-serif"
     text-anchor="middle",
     dominant-baseline="middle"
     ) {{ !ScaleType.get(chroma).empty ? ScaleType.get(chroma).name : '' }}
+  text(
+    v-if="!ScaleType.get(scaleChroma).empty"
+    @click="$emit('clearScale')"
+    :style="{ fill: pitchColor(tonic) }"
+    style="cursor:pointer;user-select:none"
+    x="50",
+    y="63",
+    font-weight="normal"
+    font-size="3px"
+    font-family="Commissioner, sans-serif"
+    text-anchor="middle",
+    dominant-baseline="middle"
+    ) {{ !ScaleType.get(scaleChroma).empty ? ScaleType.get(scaleChroma).name : '' }} &times;
+
+  line.line(
+    v-for="(line,i) in scaleLines",
+    :key="i",
+    :stroke="pitchColor(line?.[1])"
+    stroke-linecap="round"
+    stroke-width="0.5"
+    style="mix-blend-mode: multiply; transition: opacity 300ms ease"
+    :x1="getCoord(line?.[0], 12, 30).x",
+    :y1="getCoord(line?.[0], 12, 30).y",
+    :x2="getCoord(line?.[1], 12, 30).x",
+    :y2="getCoord(line?.[1], 12, 30).y"
+    opacity="0.5"
+  )
 </template>
 
 <script setup>
 import { notes, pitchColor, scales } from 'chromatone-theory'
-import { Pcset, ScaleType, ChordType, Scale, Chord } from '@tonaljs/tonal'
-import { defineProps, ref, defineEmit, computed } from 'vue'
+import { ScaleType, ChordType, Scale, Chord, Note } from '@tonaljs/tonal'
+import { defineProps, ref, defineEmit, computed, onMounted, onBeforeUnmount, nextTick } from 'vue'
 const props = defineProps({
   tonic: {
     type: Number,
@@ -82,10 +131,13 @@ const props = defineProps({
     type: String,
     default: '100101000110'
   },
-  pcset: Object,
+  scaleChroma: {
+    type: String,
+    default: '100011010001'
+  },
 });
 
-const emit = defineEmit(['update:tonic', 'update:chroma'])
+const emit = defineEmit(['update:tonic', 'update:chroma', 'clearScale'])
 
 const chord = computed(() => {
   return ChordType.get(props.chroma)
@@ -95,15 +147,37 @@ const scaleList = computed(() => {
   return Chord.chordScales(chord.value.aliases[0])
 })
 
+const scaleLines = computed(() => {
+  let arr = rotate(props.scaleChroma.split(''), -props.tonic)
+  let lines = []
+  let step = 0
+  let last = 0
+  arr.forEach((val, i) => {
+    if (i > 0 && val == '1') {
+      step++
+      lines[step] = [lines[step - 1]?.[1] || 0, i]
+      last = i
+    }
+  })
+  if (lines.length > 0) {
+
+    lines.push([last, 0])
+  }
+  return lines
+})
+
 const selecting = ref(false)
 
 function react(num) {
   let n = (24 + Number(num) - props.tonic) % 12
+
   if (selecting.value) {
     emit('update:tonic', Number(num))
     selecting.value = false
+    playChordOnce()
     return
   }
+  playNote(num, props.chroma[n] == '1' ? 1 : 0)
   if (Number(num) != props.tonic) {
     let chroma = props.chroma + ''
     if (chroma[n] == '0') {
@@ -122,6 +196,10 @@ function react(num) {
   }
 }
 
+function rotate(arr, count = 1) {
+  return [...arr.slice(count, arr.length), ...arr.slice(0, count)];
+};
+
 function replaceAt(string, index, replace) {
   return string.substring(0, index) + replace + string.substring(index + 1);
 }
@@ -136,21 +214,89 @@ function getNoteColor(n) {
   else return 'hsla(0,0%,10%,1)'
 }
 
-function getCoord(n, total = 12, radius = 35, width = 100) {
+function getCoord(n = 0, total = 12, radius = 35, width = 100) {
   let angle = ((n - 3) / (total / 2)) * Math.PI; // Calculate the angle at which the element will be placed.
   // For a semicircle, we would use (i / numNodes) * Math.PI.
   let x = (radius * Math.cos(angle)) + (width / 2); // Calculate the x position of the element.
   let y = (radius * Math.sin(angle)) + (width / 2); // Calculate the y position of the element.
   return { x, y }
 }
+
+import { PolySynth, Frequency } from 'tone'
+
+let synth
+
+const mute = ref(false)
+
+onMounted(() => {
+  synth = new PolySynth().toDestination()
+  synth.set({
+    volume: -12,
+    envelope: {
+      attack: 0.05,
+      decay: 0.8,
+      sustain: 1.0,
+      release: 2
+    }
+  })
+})
+
+onBeforeUnmount(() => {
+  synth.disconnect().dispose()
+})
+
+function playNote(note = 0, octave = 0) {
+  if (mute.value) return
+  if (props.tonic > 0 && note < props.tonic) {
+    note = note + 12
+  }
+  note = note + 12 * octave
+  let freq = Frequency(note + 57, 'midi')
+  synth.triggerAttackRelease(freq, '8n')
+}
+
+const chordNotes = computed(() => {
+  let shiftChroma = rotate(props.chroma, -props.tonic)
+  let chOct = notes.map((n, i) => {
+    let oct = 4
+    if (i + 9 < props.tonic) oct = 5
+    return n.name + oct
+  })
+  let filtered = chOct.filter((val, i) => {
+    if (shiftChroma[i] == '1') {
+      return true
+    }
+  })
+  return Note.sortedNames(filtered)
+})
+
+function playChordOnce() {
+  if (mute.value) return
+  nextTick(() => {
+    chordNotes.value.forEach((note, i) => {
+      synth.triggerAttackRelease(note, '8n', `+${i / 3}`)
+    })
+    synth.triggerAttackRelease(chordNotes.value, '4n', `+${chordNotes.value.length / 3}`)
+  });
+
+}
+function playChord() {
+  if (mute.value) return
+  synth.triggerAttack(chordNotes.value)
+}
+
+function stopChord() {
+  if (mute.value) return
+  synth.triggerRelease(chordNotes.value)
+}
+
+
 </script>
 
 <style lang="postcss"  scoped>
-.around {
-  transition: all 400ms ease-out;
-}
-
-.note {
-  transition: all 300ms ease-out;
+.around,
+.note,
+.line {
+  transition: all 400ms ease-in-out;
 }
 </style>

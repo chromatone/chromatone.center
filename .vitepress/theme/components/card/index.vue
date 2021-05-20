@@ -16,9 +16,9 @@
         card-date(v-if="!item.data.product",:date="item.lastModified")
 
       .text-md.mt-4.mb-2.font-normal(v-if="item.subtitle") {{ item.subtitle }}
-
+      shop-price(:product="item.data?.product", :showButton="false")
     .cover(v-if="item.data.cover", :style="{ backgroundImage: 'url(/media/' + item.data.cover + ')' }", v-motion-fade)
-    shop-price(:product="item.data?.product", :showButton="false")
+
   header-buttons(:buttons="item.data?.buttons")
   line-list(:list="$site.customData.pages?.[item.data.list]")
 </template>
@@ -50,7 +50,7 @@ import { lchToHsl } from '@theme/composables/colors.js'
 }
 
 .cover {
-  @apply flex-0 bg-cover bg-center self-stretch min-h-6em min-w-6em rounded-bl-3xl;
+  @apply bg-cover bg-center self-stretch min-h-6em md:min-w-12em min-w-6em rounded-bl-3xl;
   flex-basis: 6em;
   filter: saturate(10%) opacity(70%);
   transition: all 200ms ease-in-out;

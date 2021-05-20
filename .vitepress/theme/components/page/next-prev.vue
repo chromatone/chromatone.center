@@ -1,13 +1,13 @@
 <template lang="pug">
 .next-and-prev-link
   .row
-    .pad.prev
-      a.link(v-if="prev", :href="$withBase(prev.link)")
+    .pad.prev(v-if="prev")
+      a.link( :href="$withBase(prev.link)")
         carbon-arrow-left.icon.icon-prev
         span.text {{ prev.text }}
     page-parents.pad.text-2xl.flex-1.flex.flex-col.items-center.p-8
-    .pad.next
-      a.link(v-if="next", :href="$withBase(next.link)")
+    .pad.next(v-if="next")
+      a.link( :href="$withBase(next.link)")
         span.text {{ next.text }}
         carbon-arrow-right.icon.icon-next          
 </template>

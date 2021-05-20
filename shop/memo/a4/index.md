@@ -1,9 +1,8 @@
 ---
 title: A4 cheat-sheet
-subtitle: A comprehesive guide to colorful notes
+subtitle: A comprehesive guide to colorful notes - WIP
 product:
   price: $12
-  link: https://ko-fi.com/s/a2d14d2c25
 tags: memo
 cover: memo/a4-scales.svg
 

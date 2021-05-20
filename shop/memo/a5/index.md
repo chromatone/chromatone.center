@@ -4,6 +4,7 @@ subtitle: Small and durable cheat sheet with all 12 relative major and minor key
 tags: memo
 product:
   price: $12
+  link: https://chromatone.center/product/cheat-sheet-a5/
 cover: memo/a5-front.png
 ---
 

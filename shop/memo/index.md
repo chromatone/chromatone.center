@@ -1,6 +1,6 @@
 ---
 title: Posters and cheatsheets
-subtitle: Memo to have around
+subtitle: Memos to have around
 tags: shop
 list: memo
 ---

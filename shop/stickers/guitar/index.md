@@ -3,6 +3,7 @@ title: Guitar fretboard stickers
 subtitle: A set of 21 narrow strip stickers to be put under the strings
 product:
   price: $10
+  link: https://chromatone.center/product/acoustic-guitar-fretboard/
 tags: stickers
 cover: stickers/guitar/close.jpg
 ---

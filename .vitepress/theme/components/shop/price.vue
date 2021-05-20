@@ -1,6 +1,12 @@
 <template lang="pug">
-a.price(v-if="product", :href="product?.link", target="_blank") {{ product?.price }}
-a.order(v-if="product?.link && showButton",:href="product?.link", target="_blank") Buy now
+.flex.w-full.flex-wrap.items-center
+  .flex-1
+  a.button.price(v-if="product", :href="product?.link", target="_blank") {{ product?.price }}
+
+  a.button.order.flex.items-center(v-if="product?.link",:href="product?.link", target="_blank")
+    mdi-shopping-outline
+    span(v-if="showButton").mx-2 Order now 
+.text-3xl
 
 
 </template>
@@ -18,13 +24,14 @@ const props = defineProps({
 </script>
 
 <style scoped>
+.button {
+  @apply p-2 my-2 mr-2 shadow-md z-6 text-2xl font-bold rounded-lg bg-yellow-400  dark:(bg-yellow-800);
+}
+
 .price {
-  @apply absolute right-2 top-2 shadow-sm z-6 text-2xl font-bold rounded-lg bg-yellow-600 text-white p-2 my-2 tracking-widest
-  md:(-right-2);
+  @apply tracking-widest;
 }
 
 .order {
-  @apply block flex-1 text-center text-xl text-white mt-2 font-bold rounded-lg bg-yellow-600 py-3  px-4 self-start transition-all
-  md:(absolute -right-2 bottom-8);
 }
 </style>

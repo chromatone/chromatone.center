@@ -1,11 +1,14 @@
 <template lang="pug">
 button.icon-button.mute
   mdi-midi-input(
-    :style="{ color: 'hsla(0,0%,50%,0.5)' }"
+    :style="{ opacity: isSupported ? 1 : 0.2 }"
   )
 </template>
 
 <script setup>
+import { ref } from 'vue'
+
+const isSupported = ref(!!navigator.requestMIDIAccess)
 
 
 function toggle() {

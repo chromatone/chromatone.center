@@ -1,5 +1,5 @@
 <template lang="pug">
-aside(class="h-auto border-l-1px border-$c-divider")
+aside(class="max-w-sm h-auto border-l-1px border-$c-divider")
   .sidebar(:class="{ open }")
     // nav-links.nav
     side-Links
@@ -22,7 +22,7 @@ defineProps({
   transform: translateX(100%);
   transition: all 0.15s ease-out;
   height: calc(100vh - var(--header-height));
-  @apply fixed top-$header-height bottom-0 right-0 lg:sticky;
+  @apply fixed top-$header-height bottom-0 right-0;
 }
 
 @screen lg {
@@ -33,6 +33,7 @@ defineProps({
 }
 
 .sidebar.open {
+  display: block;
   transform: translateX(0);
 }
 

@@ -1,55 +1,124 @@
-import { reactive, onBeforeUnmount, onMounted } from 'vue'
+import { reactive, onBeforeUnmount, watchEffect, onMounted } from 'vue'
 import { WebMidi } from 'webmidi'
 
-const channels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
-
 export function useMidi() {
-  const state = reactive({
+  const midi = reactive({
     enabled: false,
-    input: {},
-    output: {},
+    inputs: {},
+    outputs: {},
+    playing: false,
+    channels: {},
   })
 
   WebMidi.enable()
 
   WebMidi.addListener('enabled', (e) => {
-    state.enabled = true
+    midi.enabled = true
   })
 
   WebMidi.addListener('connected', (e) => {
-    state.enabled = true
-    state[e.port.type][e.port.id] = {
+    midi.enabled = true
+    midi[e.port.type + 's'][e.port.id] = {
       name: e.port.name,
       manufacturer: e.port.manufacturer,
-      playing: null,
     }
     if (e.port.type == 'input') {
       e.port.addListener('start', () => {
-        state[e.port.type][e.port.id].playing = true
+        midi.playing = true
       })
       e.port.addListener('stop', () => {
-        state[e.port.type][e.port.id].playing = false
+        midi.playing = false
       })
-      e.port.addListener(
-        'noteon',
-        (msg) => {
-          console.log(msg)
-        },
-        { channels },
-      )
+      e.port.addListener('noteon', (ev) => noteInOn(ev), { channels: 'all' })
+      e.port.addListener('noteoff', (ev) => noteInOn(ev), { channels: 'all' })
+      e.port.addListener('controlchange', (ev) => ccIn(ev), { channels: 'all' })
     }
   })
 
+  function createChannel(ch) {
+    if (!midi.channels[ch]) {
+      midi.channels[ch] = { num: ch, notes: {}, cc: {} }
+    }
+  }
+
+  function noteInOn(ev) {
+    let note = processNote(ev)
+    createChannel(note.channel)
+    midi.channels[note.channel].notes[note.name] = note
+  }
+
+  function ccIn(ev) {
+    let cc = {
+      channel: ev.target.number,
+      timestamp: ev.timestamp,
+      number: ev.controller.number,
+      value: ev.value,
+      raw: ev.rawValue,
+    }
+    createChannel(cc.channel)
+    midi.channels[cc.channel].cc[cc.number] = cc
+  }
+
+  function processNote(ev) {
+    let note = ev.note
+    note.timestamp = ev.timestamp
+    note.channel = ev.target.number
+    if (ev.type == 'noteoff') {
+      note.velocity = 0
+    } else {
+      note.velocity = ev.velocity
+    }
+    note.pitch = (note.number + 3) % 12
+    note.octA = Math.floor((note.number + 3) / 12) - 1
+    return note
+  }
+
   WebMidi.addListener('disconnected', (e) => {
-    delete state[e.port.type][e.port.id]
+    delete midi[e.port.type][e.port.id]
   })
 
   onBeforeUnmount(() => {
     WebMidi.disable()
   })
 
+  watchEffect(() => {
+    let out = Object.values(WebMidi.outputs)
+    if (midi.playing) {
+      out.forEach((output) => {
+        output.sendStart()
+      })
+    } else {
+      out.forEach((output) => {
+        output.sendStop()
+      })
+    }
+  })
+
+  function playNote(note) {
+    WebMidi.outputs.forEach((output) => {
+      midi.channels[note.channel].notes[note.name].velocity = 100
+      output.playNote(note.name, { channels: note.channel })
+    })
+  }
+
+  function stopNote(note) {
+    WebMidi.outputs.forEach((output) => {
+      midi.channels[note.channel].notes[note.name].velocity = 0
+      output.stopNote(note.name, { channels: note.channel })
+    })
+  }
+
+  function setCC(cc, value) {
+    WebMidi.outputs.forEach((output) => {
+      output.sendControlChange(Number(cc.number), value, cc.channel)
+    })
+  }
+
   return {
-    state,
+    midi,
+    playNote,
+    stopNote,
+    setCC,
     WebMidi,
   }
 }

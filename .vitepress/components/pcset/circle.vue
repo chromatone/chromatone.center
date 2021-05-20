@@ -104,7 +104,7 @@ svg.max-h-3xl.w-full(
 
 <script setup>
 import { notes, pitchColor, scales } from 'chromatone-theory'
-import { ScaleType, ChordType, Scale, Chord, Note } from '@tonaljs/tonal'
+import { ScaleType, ChordType, Chord, Note } from '@tonaljs/tonal'
 import { defineProps, ref, defineEmit, computed, onMounted, onBeforeUnmount, nextTick } from 'vue'
 import { mute } from '@theme/composables/state.js'
 const props = defineProps({

@@ -6,9 +6,13 @@ button.icon-button.mute
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 
-const isSupported = ref(!!navigator.requestMIDIAccess)
+const isSupported = ref()
+
+onMounted(() => {
+  isSupported.value = !!navigator.requestMIDIAccess
+})
 
 
 function toggle() {

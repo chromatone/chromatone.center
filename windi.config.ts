@@ -19,7 +19,7 @@ export default defineConfig({
         mono: 'var(--font-family-mono)',
       },
       screens: {
-        xs: '420px',
+        xs: '340px',
         md: '720px',
       },
       backgroundColor: {

@@ -16,7 +16,7 @@
 </template>
 
 <script setup>
-import { useMidi } from './midi.js'
+import { useMidi } from '@use/midi.js'
 
 const { state, WebMidi } = useMidi();
 

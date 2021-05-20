@@ -24,7 +24,7 @@
         :class="{ active: chord?.chroma == chroma }") {{ chord?.aliases[0] }}
   .flex.flex-wrap
     .text-xl.flex-1.min-w-full.text-center.my-4
-      .text-sm in
+      .text-sm It may be the root chord in these scales:
     transition-group(name="list")
       .chord(
         v-for="name in chordScales",
@@ -40,6 +40,7 @@ import { chords, notes, pitchColor } from 'chromatone-theory'
 import { ChordType, Chord, ScaleType } from '@tonaljs/tonal'
 import { useStorage } from '@vueuse/core'
 
+ChordType.add('110000000000', [' minor second'], 'minor second');
 const chordList = ChordType.all()
 const tonic = useStorage('tonic', 0)
 const chroma = useStorage('chroma', chordList[0].chroma)
@@ -53,6 +54,8 @@ const chordGroups = computed(() => {
   }
   return arr
 })
+
+
 
 const chord = computed(() => {
   return ChordType.get(chroma.value)

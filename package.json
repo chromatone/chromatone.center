@@ -8,6 +8,8 @@
     "deploy": "sh deploy.sh"
   },
   "dependencies": {
+    "@tonaljs/note": "^4.6.0",
+    "@tonaljs/pcset": "^4.5.1",
     "@tonaljs/tonal": "^4.6.0",
     "@vueuse/core": "4.11.0",
     "@vueuse/gesture": "^1.0.0",

@@ -2,6 +2,8 @@ lockfileVersion: 5.3
 
 specifiers:
   '@iconify/json': ^1.1.345
+  '@tonaljs/note': ^4.6.0
+  '@tonaljs/pcset': ^4.5.1
   '@tonaljs/tonal': ^4.6.0
   '@types/node': ^15.3.0
   '@vueuse/core': 4.11.0
@@ -33,6 +35,8 @@ specifiers:
   windicss: 3.0.9
 
 dependencies:
+  '@tonaljs/note': 4.6.0
+  '@tonaljs/pcset': 4.5.1
   '@tonaljs/tonal': 4.6.0
   '@vueuse/core': 4.11.0_vue@3.0.11
   '@vueuse/gesture': 1.0.0_vue@3.0.11

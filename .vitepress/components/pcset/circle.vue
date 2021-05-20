@@ -124,6 +124,8 @@ const props = defineProps({
 
 const emit = defineEmit(['update:tonic', 'update:chroma', 'clearScale'])
 
+
+
 const chord = computed(() => {
   return ChordType.get(props.chroma)
 })

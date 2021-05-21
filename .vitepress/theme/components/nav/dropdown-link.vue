@@ -1,16 +1,15 @@
-<template>
-  <div class="nav-dropdown-link" :class="{ open }">
-    <button class="button" :aria-label="item.ariaLabel" @click="toggle">
-      <a :href="item?.link" class="button-text">{{ item.text }}</a>
-      <span class="button-arrow" :class="open ? 'down' : 'right'" />
-    </button>
+<template lang="pug">
+.nav-dropdown-link(:class="{ open }")
+  button.button(:aria-label="item.ariaLabel", @click="toggle")
+    a.button-text(:href="item?.link") {{ item.text }}
+    span.button-arrow(:class="open ? 'down' : 'right'").
 
-    <ul class="dialog">
-      <li v-for="item in item.items" :key="item.text" class="dialog-item">
-        <NavDropdownLinkItem :item="item" />
-      </li>
-    </ul>
-  </div>
+
+  ul.dialog
+    li.dialog-item(v-for="item in item.items", :key="item.text")
+      nav-dropdown-link-item(:item="item")
+        
+        
 </template>
 
 <script setup lang="ts">
@@ -86,7 +85,7 @@ function toggle() {
 }
 
 .dialog {
-  @apply m-0 p-0 mb-2 list-none;
+  @apply m-0 p-0 mb-2 list-none z-8;
 }
 
 @screen lg {

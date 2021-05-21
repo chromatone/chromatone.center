@@ -1,21 +1,26 @@
 <template lang="pug">
 .midi(
-  :class="{ active: midi.panel }"
+  :class="{ active: panel }"
   )
-  button.p-2(@click="midi.panel = !midi.panel")
+  button.p-2(@click="panel = !panel")
     mdi-midi-input.transition-all.duration-200(
       :style=`{
         opacity: midi.enabled ? 1 : 0.2,
         color: pitchColor(midi.note?.pitch, midi.note?.octA)
       }`
+      class="visible"
     )
   transition(name="panel")
-    midi-panel(v-if="midi.panel")
+    state-midi-panel.absolute.right-0.top-16.w-full(v-if="panel")
 </template>
 
 <script setup>
 import { useMidi } from '@use/midi.js'
 import { pitchColor } from 'chromatone-theory'
+import { useStorage } from '@vueuse/core'
+
+const panel = useStorage('global-midi-panel', false)
+
 const { midi } = useMidi();
 </script>
 

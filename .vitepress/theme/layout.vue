@@ -6,7 +6,7 @@
       .sidebar-mask(@click="toggleSidebar(false)")
     home(v-if="$frontmatter.template == 'home'")
     page(v-else)
-// debug
+//debug
 </template>
 
 <script setup lang="ts">

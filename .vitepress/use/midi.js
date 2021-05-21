@@ -1,5 +1,6 @@
-import { reactive, onBeforeUnmount, watchEffect, onMounted } from 'vue'
+import { reactive, watchEffect, onMounted } from 'vue'
 import { WebMidi } from 'webmidi'
+import { useStorage } from '@vueuse/core'
 
 export const midi = reactive({
   enabled: false,
@@ -7,6 +8,7 @@ export const midi = reactive({
   outputs: {},
   playing: false,
   channels: {},
+  channel: useStorage('global-midi-channel', 1),
   note: {
     pitch: 3,
     octA: 3,
@@ -25,6 +27,7 @@ export function useMidi() {
       midi[e.port.type + 's'][e.port.id] = {
         name: e.port.name,
         manufacturer: e.port.manufacturer,
+        channel: 1,
       }
       if (e.port.type == 'input') {
         e.port.addListener('start', () => {
@@ -46,15 +49,11 @@ export function useMidi() {
     })
   })
 
-  // onBeforeUnmount(() => {
-  //   WebMidi.disable()
-  // })
-
   watchEffect(() => {
     let out = Object.values(WebMidi.outputs)
     if (midi.playing) {
       out.forEach((output) => {
-        output.sendStart()
+        output.sendContinue()
       })
     } else {
       out.forEach((output) => {
@@ -111,22 +110,46 @@ function createChannel(ch) {
   }
 }
 
-function playNote(note) {
+function setVelocity(channel, note, velocity) {
+  if (midi.channels?.[channel]?.notes?.[note]) {
+    midi.channels[channel].notes[note].velocity = velocity
+  }
+}
+
+export function playNote(note) {
+  setVelocity(note.channel, note.name, 100)
   WebMidi.outputs.forEach((output) => {
-    midi.channels[note.channel].notes[note.name].velocity = 100
-    output.playNote(note.name, { channels: note.channel })
+    output.playNote(note.name, { channels: note.channel || midi.channel })
   })
 }
 
-function stopNote(note) {
+export function stopNote(note) {
+  setVelocity(note.channel, note.name, 0)
   WebMidi.outputs.forEach((output) => {
-    midi.channels[note.channel].notes[note.name].velocity = 0
-    output.stopNote(note.name, { channels: note.channel })
+    output.stopNote(note.name, { channels: note.channel || midi.channel })
   })
 }
 
-function setCC(cc, value) {
+export function playOnce(note) {
+  playNote(note)
+  setTimeout(() => {
+    stopNote(note)
+    console.log('st')
+  }, 300)
+}
+
+export function setCC(cc, value) {
   WebMidi.outputs.forEach((output) => {
     output.sendControlChange(Number(cc.number), value, cc.channel)
+  })
+}
+
+export function stopAll() {
+  midi.channels = {}
+  midi.playing = false
+  WebMidi.outputs.forEach((output) => {
+    output.turnNotesOff()
+    output.turnSoundOff({ time: '+1' })
+    output.sendReset()
   })
 }

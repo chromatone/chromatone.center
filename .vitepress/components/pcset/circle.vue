@@ -104,6 +104,7 @@ svg.max-h-3xl.w-full(
 
 <script setup>
 import { notes, pitchColor, scales } from 'chromatone-theory'
+
 import { ScaleType, ChordType, Chord, Note } from '@tonaljs/tonal'
 import { defineProps, ref, defineEmit, computed, onMounted, onBeforeUnmount, nextTick } from 'vue'
 import { mute } from '@theme/composables/state.js'
@@ -210,6 +211,7 @@ function getCoord(n = 0, total = 12, radius = 35, width = 100) {
 }
 
 import { PolySynth, Frequency, DuoSynth } from 'tone'
+import { midi, playOnce as midiOnce, playNote as midiPlay, stopNote as midiStop } from '@use/midi.js'
 
 let synth
 
@@ -243,12 +245,14 @@ onBeforeUnmount(() => {
 })
 
 function playNote(note = 0, octave = 0) {
-  if (mute.value) return
+
   if (props.tonic > 0 && note < props.tonic) {
     note = note + 12
   }
   note = note + 12 * octave
   let freq = Frequency(note + 57, 'midi')
+  midiOnce({ name: freq.toNote() })
+  if (mute.value) return
   synth.triggerAttackRelease(freq, '8n')
 }
 
@@ -268,6 +272,9 @@ const chordNotes = computed(() => {
 })
 
 function playChordOnce() {
+  chordNotes.value.forEach(name => {
+    midiOnce({ name: name })
+  })
   if (mute.value) return
   nextTick(() => {
     chordNotes.value.forEach((note, i) => {
@@ -278,11 +285,17 @@ function playChordOnce() {
 
 }
 function playChord() {
+  chordNotes.value.forEach(name => {
+    midiPlay({ name: name })
+  })
   if (mute.value) return
   synth.triggerAttack(chordNotes.value)
 }
 
 function stopChord() {
+  chordNotes.value.forEach(name => {
+    midiStop({ name: name })
+  })
   if (mute.value) return
   synth.triggerRelease(chordNotes.value)
 }

@@ -1,5 +1,5 @@
 <template lang="pug">
-button.icon-button.mute(@click="toggle()")
+button.mute.p-2(@click="toggle()")
   bi-volume-up(v-if="!mute")
   bi-volume-mute(v-else)
 </template>
@@ -13,7 +13,7 @@ function toggle() {
 </script>
 
 <style scoped>
-.icon-button.mute {
+.mute {
   font-size: 1.1em;
 }
 </style>

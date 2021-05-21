@@ -101,7 +101,7 @@
 <script setup>
 import { defineProps, ref, computed, reactive, onMounted, onBeforeUnmount } from 'vue'
 import { pitchColor } from 'chromatone-theory'
-import { useTuner } from '@use/useTuner.js'
+import { useTuner } from '@use/tuner.js'
 
 
 const { init, state, chain } = useTuner();

@@ -1,5 +1,5 @@
 <template lang="pug">
-button.icon-button(@click="toggle")
+button.icon-button.p-2(@click="toggle")
   carbon-moon(v-show="isDark")
   ion-ios-sunny(v-show="!isDark")
 </template>

@@ -3,6 +3,7 @@ import { MotionPlugin } from '@vueuse/motion'
 import { GesturePlugin } from '@vueuse/gesture'
 
 import './styles/vars.css'
+import './styles/transitions.css'
 import './styles/layout.postcss'
 import './styles/custom-blocks.css'
 import './styles/sidebar-links.postcss'

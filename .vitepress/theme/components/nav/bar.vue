@@ -5,9 +5,9 @@ header.nav-bar
   div(class="hidden lg:flex px-3 ml-4 lg:ml-10")
     NavLinks
   .flex-grow
-  state-midi.px-2
-  state-mute.px-2
-  state-dark.px-2.mr-2
+  state-midi
+  state-mute
+  state-dark
   nav-toggle-sidebar(@toggle="$emit('toggle')")
 </template>
 

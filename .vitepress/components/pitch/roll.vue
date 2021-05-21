@@ -15,7 +15,7 @@
 <script setup>
 import { defineProps, ref, computed, reactive, onMounted, onBeforeUnmount, watch } from 'vue'
 import { pitchColor } from 'chromatone-theory'
-import { useTuner } from '@use/useTuner.js'
+import { useTuner } from '@use/tuner.js'
 
 const octaves = [0, 1, 2, 3, 4, 5, 6, 7, 8]
 
@@ -41,8 +41,6 @@ onMounted(() => {
   roll.value.height = window.innerHeight / 1.5
 })
 
-
-
 watch(() => state?.frame, frame => {
   if (!draw.running) return
   let x = (frame * draw.speed) % roll.value.width
@@ -51,8 +49,6 @@ watch(() => state?.frame, frame => {
   // ctx.clearRect(0, 0, roll.value.width, roll.value.height)
   // ctx.globalAlpha = 0.7
   // ctx.putImageData(imageData, 0, 0);
-
-
 
   ctx.globalAlpha = 1
   //runner

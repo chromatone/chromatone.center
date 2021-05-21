@@ -8,30 +8,31 @@
       :scaleChroma="scaleChroma"
       @clearScale="clearScale()"
       )
-  .flex.flex-wrap.m-auto
-    .chord-group(
-      v-for="(name,count) in groupNames", 
-      :key="name"
-      :class="{ active: count + 2 == numNotes }"
-      @click="chroma = chordGroups[count][0].chroma"
-      ) {{ name }}
-  .flex.flex-col.items-center
-    .flex.flex-wrap.my-4.justify-center
-      .chord(
-        v-for="chord in chordGroup", 
-        :key="chord?.aliases[0]", 
-        @click="chroma = chord.chroma",
-        :class="{ active: chord?.chroma == chroma }") {{ chord?.aliases[0] }}
-  .flex.flex-wrap
-    .text-xl.flex-1.min-w-full.text-center.my-4
-      .text-sm It may be the root chord in these scales:
-    transition-group(name="list")
-      .chord(
-        v-for="name in chordScales",
+  .max-w-65ch.m-auto
+    .flex.flex-wrap.m-auto
+      .chord-group(
+        v-for="(name,count) in groupNames", 
         :key="name"
-        @click="scale = name"
-        :class="{ active: scale == name }"
+        :class="{ active: count + 2 == numNotes }"
+        @click="chroma = chordGroups[count][0].chroma"
         ) {{ name }}
+    .flex.flex-col.items-center
+      .flex.flex-wrap.my-4.justify-center
+        .chord(
+          v-for="chord in chordGroup", 
+          :key="chord?.aliases[0]", 
+          @click="chroma = chord.chroma",
+          :class="{ active: chord?.chroma == chroma }") {{ chord?.aliases[0] }}
+    .flex.flex-wrap
+      .text-xl.flex-1.min-w-full.text-center.my-4
+        .text-sm It may be the root chord in these scales:
+      transition-group(name="list")
+        .chord(
+          v-for="name in chordScales",
+          :key="name"
+          @click="scale = name"
+          :class="{ active: scale == name }"
+          ) {{ name }}
 </template>
 
 <script setup>

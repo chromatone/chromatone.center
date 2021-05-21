@@ -10,8 +10,9 @@
       }`
       class="visible"
     )
-  transition(name="panel")
-    state-midi-panel.absolute.right-0.top-16.w-full(v-if="panel")
+  client-only
+    transition(name="panel")
+      state-midi-panel.absolute.right-0.top-16.w-full(v-if="panel")
 </template>
 
 <script setup>

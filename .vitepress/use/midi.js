@@ -17,36 +17,7 @@ export const midi = reactive({
 
 export function useMidi() {
   onMounted(() => {
-    WebMidi.enable()
-    WebMidi.addListener('enabled', (e) => {
-      midi.enabled = true
-    })
-
-    WebMidi.addListener('connected', (e) => {
-      midi.enabled = true
-      midi[e.port.type + 's'][e.port.id] = {
-        name: e.port.name,
-        manufacturer: e.port.manufacturer,
-        channel: 1,
-      }
-      if (e.port.type == 'input') {
-        e.port.addListener('start', () => {
-          midi.playing = true
-        })
-        e.port.addListener('stop', () => {
-          midi.playing = false
-        })
-        e.port.addListener('noteon', (ev) => noteInOn(ev), { channels: 'all' })
-        e.port.addListener('noteoff', (ev) => noteInOn(ev), { channels: 'all' })
-        e.port.addListener('controlchange', (ev) => ccIn(ev), {
-          channels: 'all',
-        })
-      }
-    })
-
-    WebMidi.addListener('disconnected', (e) => {
-      delete midi[e.port.type][e.port.id]
-    })
+    setupMidi()
   })
 
   watchEffect(() => {
@@ -69,6 +40,51 @@ export function useMidi() {
     setCC,
     WebMidi,
   }
+}
+
+function setupMidi() {
+  WebMidi.enable()
+  WebMidi.addListener('enabled', (e) => {
+    midi.enabled = true
+    initMidi()
+  })
+
+  WebMidi.addListener('connected', (e) => {
+    midi.enabled = true
+    initMidi()
+  })
+
+  WebMidi.addListener('disconnected', (e) => {
+    delete midi[e.port.type + 's'][e.port.id]
+  })
+}
+
+function initMidi() {
+  WebMidi.inputs.forEach((input) => {
+    midi.inputs[input.id] = {
+      name: input.name,
+      manufacturer: input.manufacturer,
+    }
+    input.addListener('start', () => {
+      midi.playing = true
+    })
+    input.addListener('stop', () => {
+      midi.playing = false
+    })
+    input.addListener('noteon', (ev) => noteInOn(ev), {
+      channels: 'all',
+    })
+    input.addListener('noteoff', (ev) => noteInOn(ev), { channels: 'all' })
+    input.addListener('controlchange', (ev) => ccIn(ev), {
+      channels: 'all',
+    })
+  })
+  WebMidi.outputs.forEach((output) => {
+    midi.outputs[output.id] = {
+      name: output.name,
+      manufacturer: output.manufacturer,
+    }
+  })
 }
 
 function noteInOn(ev) {

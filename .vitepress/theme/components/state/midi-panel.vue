@@ -16,7 +16,7 @@
       .button.w-3em.transition-all.duration-50.cursor-pointer(
         @mousedown="playNote(midi.note)"
         @mouseup="stopNote(midi.note)"
-        v-if="midi.note"
+        v-if="midi.note?.name"
         :style="{ borderColor: pitchColor(midi.note.pitch, midi.note.octA), color: pitchColor(midi.note.pitch, midi.note.octA) }"
       ) {{ midi.note.name }}
       .play.button(@click="midi.playing = !midi.playing")

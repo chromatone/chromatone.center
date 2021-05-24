@@ -1,5 +1,7 @@
 # Chromatone
 
+![](https://v2.chromatone.center/media/logo/logo.svg)
+
 The research center for the visual music language.
 
 ## Research

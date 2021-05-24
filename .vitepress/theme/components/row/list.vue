@@ -1,25 +1,19 @@
 <template lang="pug">
 .list-blocks
   row-block(
-    v-for="(area,i) in sorted", 
+    v-for="(area,i) in rows", 
     :key="area.title", 
     :item="area", 
     :i="i",
-    :total="sorted.length"
+    :total="rows.length"
     )  
 </template>
 
 <script setup>
 import { computed, defineProps, reactive } from "vue";
-import { sortList } from '@theme/composables/list.js'
 const props = defineProps({
   rows: Object,
 });
-
-const sorted = computed(() => {
-  return sortList(props.rows)
-})
-
 
 </script>
 

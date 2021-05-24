@@ -5,9 +5,9 @@ import lchPlugin from 'colord/plugins/lch'
 extend([lchPlugin])
 
 export function lchToHsl(n, total, a, s) {
-  return colord(
-    `lch(70% ${s ? s : '40'} ${n * (360 / total)} / ${a ? a : '0.5'}`,
-  ).toHslString()
+  let lch = `lch(70% ${s ? s : '40'} ${n * (360 / total)} / ${a ? a : '0.5'})`
+  let hsl = colord(lch).toHslString()
+  return hsl
 }
 
 export function levelColor(

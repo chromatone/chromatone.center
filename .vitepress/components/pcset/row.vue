@@ -1,25 +1,31 @@
 <template lang="pug">
-.flex.flex-col.items-center.mb-4
+.flex.flex-col.items-center.mb-8
   .flex
     .chroma-key(
       v-for="(bit,i) in set.chroma.split('')"
       :key="i"
-      :style="{ backgroundColor: bit == 1 ? pitchColor(i) : 'hsla(0,0%,50%,0.3)' }"
+      :style="{ backgroundColor: bit == 1 ? pitchColor((i + tonic) % 12) : minor[(i + tonic) % 12] == '1' ? 'hsla(0,0%,80%,0.3)' : 'hsla(0,0%,20%,0.3)' }"
       ) 
-  .flex.flex-wrap.justify-center(v-if="!chord.empty || scale")
-    .p-2(v-if="!chord.empty") 
-      span  {{ chord.name }} 
-      span  ({{ chord.aliases[0] }})
-    .p-2(v-if="scale") @ {{ scale }} scale
+  .flex.flex-wrap.justify-center.border-b-2.pt-2(v-if="!chord.empty || scale")
+    .note  {{ notes[tonic].name }}
+    .chord
+      span {{ chord.aliases[0] }}  &nbsp;
+      span.text-gray-500(class="dark:text-gray-400")  {{ chord.name }} 
+    .scale(v-if="scale") @ {{ scale }} scale
 </template>
 
 <script setup>
 import { defineProps, computed } from 'vue'
 import { ChordType, ScaleType } from '@tonaljs/tonal'
-import { pitchColor } from 'chromatone-theory'
+import { pitchColor, notes } from 'chromatone-theory'
 const props = defineProps({
   set: Object,
+  tonic: {
+    type: Number,
+    default: 0
+  }
 });
+const minor = "101101011010"
 
 const chord = ChordType.get(props.set.chroma)
 const scale = ScaleType.get(props.set.chroma).name
@@ -27,6 +33,6 @@ const scale = ScaleType.get(props.set.chroma).name
 
 <style scoped>
 .chroma-key {
-  @apply p-2 mx-1 sm:(p-4 mx-2) rounded-full;
+  @apply transition-all duration-300 h-2em px-3 flex-1 mx-1px sm:(p-4 mx-1 rounded-lg) rounded-sm;
 }
 </style>

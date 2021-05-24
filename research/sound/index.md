@@ -3,6 +3,7 @@ title: Sound
 subtitle: The ingenious hearing system and it's medium
 tags: research
 list: sound
+date: 2021-01-20
 ---
 
 <img src="./Spherical_pressure_waves.gif" >

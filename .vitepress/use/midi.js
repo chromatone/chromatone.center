@@ -17,7 +17,9 @@ export const midi = reactive({
 
 export function useMidi() {
   onMounted(() => {
-    setupMidi()
+    if (WebMidi.supported) {
+      setupMidi()
+    }
   })
 
   watchEffect(() => {
@@ -49,8 +51,11 @@ function setupMidi() {
     initMidi()
   })
 
+  let interval = setInterval(() => {
+    initMidi()
+  }, 3000)
+
   WebMidi.addListener('connected', (e) => {
-    midi.enabled = true
     initMidi()
   })
 
@@ -60,11 +65,14 @@ function setupMidi() {
 }
 
 function initMidi() {
+  midi.inputs = {}
   WebMidi.inputs.forEach((input) => {
+    midi.enabled = true
     midi.inputs[input.id] = {
       name: input.name,
       manufacturer: input.manufacturer,
     }
+    input.removeListener()
     input.addListener('start', () => {
       midi.playing = true
     })
@@ -79,6 +87,7 @@ function initMidi() {
       channels: 'all',
     })
   })
+  midi.outputs = {}
   WebMidi.outputs.forEach((output) => {
     midi.outputs[output.id] = {
       name: output.name,
@@ -150,7 +159,6 @@ export function playOnce(note) {
   playNote(note)
   setTimeout(() => {
     stopNote(note)
-    console.log('st')
   }, 300)
 }
 

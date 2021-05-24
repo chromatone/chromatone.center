@@ -18,7 +18,9 @@
         @mouseup="stopNote(midi.note)"
         v-if="midi.note?.name"
         :style="{ borderColor: pitchColor(midi.note.pitch, midi.note.octA), color: pitchColor(midi.note.pitch, midi.note.octA) }"
-      ) {{ midi.note.name }}
+      ) 
+        .w-2em {{ midi.note.name.slice(0, -1) }} 
+        .flex {{ midi.note.name.slice(-1) }}
       .play.button(@click="midi.playing = !midi.playing")
         la-play(v-if="!midi.playing")
         la-pause(v-else)
@@ -28,15 +30,23 @@
 
       .button.border(v-for="output in midi.outputs")  
         span {{ output.name }}
-      .button
+      .button(v-if="toChannel")
         span TO CH
-        input.ml-2(type="number", max="16",min="1",length="12", v-model="midi.channel")
+        input.ch.ml-2(type="number", max="16",min="1",length="12", v-model="midi.channel")
       
 </template>
 
 <script setup>
+import { defineProps } from 'vue'
 import { midi, stopAll, playNote, stopNote } from '@use/midi.js'
 import { pitchColor } from 'chromatone-theory'
+
+const props = defineProps({
+  toChannel: {
+    type: Boolean,
+    default: true,
+  }
+});
 </script>
 
 <style scoped>
@@ -45,13 +55,17 @@ import { pitchColor } from 'chromatone-theory'
 }
 
 .layer {
-  @apply shadow-md;
+  @apply shadow-md rounded-md;
   background-color: hsla(0, 0%, 100%, 0.6);
   backdrop-filter: blur(30px);
 }
 
-.dark .midi-panel {
-  background-color: hsla(0, 0%, 00%, 0.3);
+input.ch {
+  @apply pl-2 w-2.5em bg-transparent;
+}
+
+.dark .layer {
+  background-color: hsla(0, 0%, 0%, 0.3);
 }
 
 .button {

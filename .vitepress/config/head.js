@@ -4,7 +4,14 @@ const head = [
   ['meta', { name: 'author', content: metaData?.author }],
   ['meta', { name: 'keywords', content: metaData?.tags }],
   ['link', { rel: 'icon', type: 'image/svg+xml', href: metaData.icon }],
-
+  [
+    'meta',
+    {
+      name: 'apple-mobile-web-app-status-bar-style',
+      content: 'white-translucent',
+    },
+  ],
+  ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
   ['meta', { name: 'HandheldFriendly', content: 'True' }],
   ['meta', { name: 'MobileOptimized', content: '320' }],
   ['meta', { name: 'theme-color', content: '#0ea5e9' }],

@@ -5,7 +5,6 @@ import WindiCSS from 'vite-plugin-windicss'
 import { getAliases } from 'vite-aliases'
 
 
-
 export default defineConfig({
   resolve: {
 		alias: getAliases({

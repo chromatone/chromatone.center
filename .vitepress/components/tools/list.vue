@@ -1,0 +1,18 @@
+<template lang="pug">
+.flex.flex-col.max-w-65ch.m-auto
+  .flex.flex-col.p-8.shadow.mb-4(v-for="tool in tools")
+    a.flex.flex-col.py-2(:href="tool.url", target="_blank") 
+      .text-xl.mr-2 {{ tool.title }}
+      .opacity-80.font-normal.underline {{ tool.url }}
+    .text-md {{ tool.subtitle }}
+</template>
+
+<script setup>
+import { defineProps } from 'vue'
+const props = defineProps({
+  tools: Object
+});
+</script>
+
+<style scoped>
+</style>

@@ -2,7 +2,7 @@
 .flex.flex-col
   .relative.w-full.m-auto
     svg-save(svg="circle", :file="`${notes[accord?.root].name}${accord?.info.handle}-circle.svg`")  
-    chords-circle#circle(:pcset="accord", @selectRoot="accord.root = $event")
+    chord-circle#circle(:pcset="accord", @selectRoot="accord.root = $event")
   .flex.flex-wrap.my-4.justify-center
     .chord(
       v-for="chord in chordList", 
@@ -14,7 +14,7 @@
   ) {{ notes[accord?.root].name }}{{ accord?.info.handle }}
   .relative
     svg-save(svg="keys", :file="`${notes[accord?.root].name}${accord?.info.handle}-keys.svg`")
-    chords-keys#keys(:accord="accord", @selectRoot="accord.root = $event")
+    chord-keys#keys(:accord="accord", @selectRoot="accord.root = $event")
 </template>
 
 <script setup>

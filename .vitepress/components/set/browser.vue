@@ -1,6 +1,6 @@
 <template lang="pug">
 .flex.flex-col.m-auto.items-center.w-full.max-w-65ch
-  .flex.flex-wrap
+  .flex.flex-wrap.sticky.top-5rem
     .key(
       @click="tonic = i"
       v-for="(bit,i) in '101101011010'"
@@ -12,14 +12,14 @@
     .control(@click="control.count = !control.count") Notes 
       la-arrows-alt-v(:style="{ opacity: control.count ? 1 : 0.3 }")
 
-    .control(@click="control.chord = !control.chord") Chord
+    .control(@click="control.chord = !control.chord", :class="{ active: control.chord }") Chord
       la-filter.ml-2(:style="{ opacity: control.chord ? 1 : 0.3 }")
 
     .control(@click="control.scale = !control.scale") Scale
       la-filter.ml-2(:style="{ opacity: control.scale ? 1 : 0.3 }")
 
   transition-group(name="list")
-    pcset-row(v-for="(set,n) in sorted",:key="set.chroma", :set="set", :tonic="tonic")
+    set-row(v-for="(set,n) in sorted",:key="set.chroma", :set="set", :tonic="tonic")
 </template>
 
 <script setup>
@@ -88,6 +88,10 @@ const sorted = computed(() => {
 
 .control {
   @apply m-2 p-4 bg-light-400 rounded dark:bg-dark-400 cursor-pointer;
+}
+
+.control.active {
+  @apply bg-gray-400;
 }
 
 .key {

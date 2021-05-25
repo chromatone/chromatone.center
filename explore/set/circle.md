@@ -6,4 +6,4 @@ cover: apps/chord.svg
 date: 2021-04-20
 ---
 
-<pcset-tool />
+<set-tool />

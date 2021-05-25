@@ -2,9 +2,9 @@
 .flex.flex-col.items-center.mb-8
   .flex
     .chroma-key(
-      v-for="(bit,i) in set.chroma.split('')"
+      v-for="(bit,i) in set?.chroma.split('')"
       :key="i"
-      :style="{ backgroundColor: bit == 1 ? pitchColor((i + tonic) % 12) : minor[(i + tonic) % 12] == '1' ? 'hsla(0,0%,80%,0.3)' : 'hsla(0,0%,20%,0.3)' }"
+      :style="{ backgroundColor: bit == 1 ? pitchColor((Number(i) + tonic) % 12) : minor[(Number(i) + tonic) % 12] == '1' ? 'hsla(0,0%,80%,0.3)' : 'hsla(0,0%,20%,0.3)' }"
       ) 
   .flex.flex-wrap.justify-center.border-b-2.pt-2(v-if="!chord.empty || scale")
     .note  {{ notes[tonic].name }}
@@ -31,7 +31,7 @@ const chord = ChordType.get(props.set.chroma)
 const scale = ScaleType.get(props.set.chroma).name
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 .chroma-key {
   @apply transition-all duration-300 h-2em px-3 flex-1 mx-1px sm:(p-4 mx-1 rounded-lg) rounded-sm;
 }

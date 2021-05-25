@@ -19,7 +19,7 @@
       la-filter.ml-2(:style="{ opacity: control.scale ? 1 : 0.3 }")
 
   transition-group(name="list")
-    set-row(v-for="(set,n) in sorted",:key="set.chroma", :set="set", :tonic="tonic")
+    set-row(v-for="(set) in sorted",:key="set.chroma", :set="set", :tonic="tonic")
 </template>
 
 <script setup>
@@ -81,7 +81,7 @@ const sorted = computed(() => {
 
 </script>
 
-<style scoped>
+<style  lang="postcss" scoped>
 .control-row {
   @apply p-4 flex flex-wrap;
 }

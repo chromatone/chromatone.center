@@ -31,7 +31,7 @@ const props = defineProps({
 });
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 .note {
   @apply cursor-pointer transition-all duration-200 ease-in-out;
   filter: brightness(1);

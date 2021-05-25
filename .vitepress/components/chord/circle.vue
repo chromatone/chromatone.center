@@ -8,7 +8,7 @@ svg.max-h-3xl.w-full(
   line.line(
     v-for="semitones in pcset?.info.semitones",
     :key="semitones",
-    :stroke="pitchColor(pcset.root)"
+    :stroke="pitchColor(pcset?.root)"
     stroke-linecap="round"
     stroke-width="10"
     opacity="0.5"

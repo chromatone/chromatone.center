@@ -13,10 +13,10 @@ svg.max-h-sm(
   )
     rect(
       style="transition:all 300ms ease"
-      :x="20 * ((12 - 3 + i) % 12)"
+      :x="20 * ((12 - 3 + Number(i)) % 12)"
       :y="2"
       :width="18"
-      :stroke-width="accord.root == i ? 1 : 0"
+      :stroke-width="accord?.root == i ? 1 : 0"
       stroke="#000"
       :height="note.pos == 1 ? 50 : 90"
       :rx="5"
@@ -30,7 +30,7 @@ svg.max-h-sm(
       font-size="10px"
       text-anchor="middle",
       dominant-baseline="middle"
-      :x="20 * ((12 - 3 + i) % 12) + 9",
+      :x="20 * ((12 - 3 + Number(i)) % 12) + 9",
       :y="note.pos == 1 ? 40 : 80",
     ) {{ note.name }}
 

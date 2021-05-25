@@ -10,7 +10,7 @@
 
 </script>
   
-<style scoped>
+<style lang="postcss" scoped>
 .scroll-bar {
   @apply bg-gray-200 dark:bg-gray-500;
   background-image: linear-gradient(

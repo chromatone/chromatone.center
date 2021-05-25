@@ -6,7 +6,7 @@
       .header {{ ch.num }}
       midi-note(
         v-for="note in sortNotes(ch.notes)", 
-        :key="note.name"
+        :key="note?.name"
         :note="note"
         v-model:active="active"
         @play="playNote(note)"
@@ -41,7 +41,7 @@ function sortNotes(notes) {
 
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 .header {
   @apply p-2 m-1px font-bold bg-gray-500 bg-opacity-50;
 }

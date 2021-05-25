@@ -16,7 +16,7 @@
       :style="{ left: synth.pan + '%' }"
     ) 
 
-  pt-info(:name="note.name",:hz="synth.freq", :octave="octave")
+  pt-info(:name="note?.name",:hz="synth.freq", :octave="octave")
 </template>
 
 <script setup>
@@ -91,16 +91,16 @@ const textColor = computed(() => {
 
 </script>
 
-<style  scoped>
+<style lang="postcss"  scoped>
 .cell {
-  @apply relative flex flex-col p-1 flex-1 cursor-pointer select-none;
+  @apply relative opacity-90 flex flex-col p-1 flex-1 cursor-pointer select-none;
   transition: all 100ms ease;
   min-width: 2em;
   min-height: 4em;
 }
 .cell.active,
 .cell:active {
-  @apply;
+  @apply opacity-100;
 }
 
 .volume {

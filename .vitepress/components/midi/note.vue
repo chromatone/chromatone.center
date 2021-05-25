@@ -7,8 +7,8 @@
   @touchend="stop()"
   @mousemove="change()"
   @touchmove="change()"
-  :style="{ backgroundColor: pitchColor(note.pitch, note.octA - 1, note.velocity) }"
-  ) {{ note.name }} ({{ note.number }})
+  :style="{ backgroundColor: pitchColor(note?.pitch, note?.octA - 1, note?.velocity) }"
+  ) {{ note?.name }} ({{ note?.number }})
 </template>
 
 <script setup>
@@ -29,7 +29,7 @@ function play() {
   emit('play')
 }
 
-function stop(off) {
+function stop(off = false) {
   if (pressed.value) {
     pressed.value = false
     if (!off) {
@@ -48,7 +48,7 @@ function change() {
 }
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 .note {
   @apply flex-1 p-2 m-1px transition-all duration-200 items-center flex justify-center  cursor-pointer text-light-100 select-none;
 }

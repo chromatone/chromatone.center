@@ -82,7 +82,7 @@ function toggleStar(num) {
 
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 .title {
   @apply text-lg font-bold p-4;
   flex: 0 1 300px;

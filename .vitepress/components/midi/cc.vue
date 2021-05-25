@@ -2,9 +2,9 @@
 .cc(
   v-drag="dragger"
 )
-  .p-1.text-center.flex-1 {{ cc.number }}
+  .p-1.text-center.flex-1 {{ cc?.number }}
   .absolute.h-full.z-10.bg-gray-500.top-0.bg-opacity-40.self-start(
-    :style="{ width: cc.value * 100 + '%' }"
+    :style="{ width: cc?.value * 100 + '%' }"
   )
 </template>
 
@@ -29,7 +29,7 @@ function dragger({ movement: [x, y], dragging }) {
 }
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 .cc {
   @apply relative flex-1 flex  items-center  m-1px transition-all duration-200  cursor-pointer select-none;
 }

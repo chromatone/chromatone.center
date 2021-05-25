@@ -34,7 +34,7 @@ function incOctave(top) {
 
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 .btn {
   @apply flex-1 font-bold p-2 opacity-70 m-2 shadow rounded-lg hover:opacity-100 transition;
 }

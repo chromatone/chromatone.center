@@ -20,7 +20,7 @@ svg.max-h-3xl.w-full(
   )
   g.around(
     style="mix-blend-mode: screen;cursor:pointer"
-    v-for="(active,i) in chroma.slice('')", 
+    v-for="(active,i) in chroma.split('')", 
     :key="i",
     @click="react(i)",
     :opacity="isInChord(i) ? 1 : 0.3"

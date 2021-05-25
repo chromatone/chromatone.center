@@ -27,4 +27,4 @@ tools:
 date: 2018-09-08
 ---
 
-<tools-list :tools="$frontmatter.tools" />
+<other-list :tools="$frontmatter.tools" />

@@ -2,32 +2,32 @@
 
 ![](https://v2.chromatone.center/media/logo/logo.svg)
 
-The research center for the visual music language.
+The visual music research center
 
 ## Research
 
-Cards and short overviews on physics and phisiology of vision and hearing.
+Cards and short overviews on physics and physiology of vision and hearing and their intersection at visual music research, exploration, practice and self expression.
 
 ## Explore
 
-Webapps to perform independent researches of sound and color.
-
+Useful tools to have in the pocket like a pack of interactive cards to learn and use in everyday music practice. These are open source web-experiments with different aspects of sound and color. 
 
 ## Shop
 
-Posters and memos to use for better memorization of fundamental music concepts. Stickers for musical instruments to physically map notes and pitch classes with corresponding colors.
+- Stickers for musical instruments to physically map notes and pitch classes with corresponding colors.
+- Posters and memos to use for better memorization of fundamental music concepts. 
 
-## Support
+## Community
 
-Musical and visual projects and performers, who implement Chromatone system in practice. Repositories for the open source code base for the system. Mainly frontend web applications, but may include designs and even this website repo itself.
+Learners, sharing their experiences and setups. Musical and visual projects and performers, who implement Chromatone system in practice. Jams and other community events and 
 
 ## Contact
 
-Contact the author and the headquarter of the project.
+Contact the author and the headquarter of the project. 
 
 
 ## STACK
-- vue 3
+- [vue 3](https://v3.vuejs.org/)
   - [vueUse](https://vueuse.org)
   - [vueUse/gesture](https://gesture.vueuse.org)
     - how to prevent scrolling [example](https://vuepress.vuejs.org/guide/i18n.html#default-theme-i18n-config)
@@ -38,7 +38,7 @@ Contact the author and the headquarter of the project.
   - [vitepress](https://vitepress.vuejs.org/guide/global-component.html#content)
     - i18n like in [vuepress](https://vuepress.vuejs.org/guide/i18n.html#default-theme-i18n-config)
 - [windi css](https://windicss.org/)
-- [pug] https://pugjs.org/api/getting-started.html
+- [pug](https://pugjs.org/api/getting-started.html)
 - [tone.js](https://tonejs.github.io/docs/14.7.77)
 - [tonaljs](https://github.com/tonaljs/tonal)
 - [webmidi.js](https://webmidijs.org/docs/)

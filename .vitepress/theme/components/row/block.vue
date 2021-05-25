@@ -45,7 +45,7 @@ import { lchToHsl } from '@theme/composables/colors.js'
 }
 
 .header {
-  @apply flex flex-col min-content flex-1;
+  @apply flex flex-col flex-1;
 }
 
 .info {

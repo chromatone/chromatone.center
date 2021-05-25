@@ -1,108 +1,221 @@
 <template lang="pug">
 .flex.flex-col
   .flex.flex-wrap.items-center.m-auto
-    .flex.items-center.p-4
+    .flex.items-center.px-4
+      .text-xl Instrument
+      select.bg-transparent.text-xl.w-10rem.m-2.p-2(v-model="instrument.title")
+        option(v-for="(inst,key) in instruments", :key="key", :value="key") {{ key }}
+    .flex.items-center.px-4
       .text-xl Scale length
-      input.text-2xl.w-5rem.m-2.p-2(type="number", v-model="stringParams.l")
+      input.bg-transparent.text-2xl.w-5rem.m-2.p-2(type="number", v-model="instrument.l")
       .text-xl mm
-    .flex.items-center.p-4
+    .flex.items-center.px-4
       .text-xl Frets
-      input.text-2xl.w-4rem.m-2.p-2(type="number", v-model="stringParams.frets")
-  svg.max-h-3xl.w-full(
-  version="1.1",
-  baseProfile="full",
-  :viewBox="`-50 0 1100 ${strings.length * 50 + 60}`",
-  xmlns="http://www.w3.org/2000/svg",
-  )
-    line.string(
-      v-for="(string, i) in strings",
-      key="string"
-      stroke="currentColor"
-      stroke-width="1"
-      stroke-linecap="round"
-      :x1="0"
-      :y1="50 * i + 50"
-      :x2="1000"
-      :y2="50 * i + 50"
+      input.bg-transparent.text-2xl.w-4rem.m-2.p-2(type="number", v-model="instrument.frets")
+  .flex.flex-wrap
+    svg#fretboard.flex-1.max-h-3xl.w-full.strings(
+    version="1.1",
+    baseProfile="full",
+    :viewBox="`0 -60 ${instrument.tuning.length * 40 + 100} 1100`",
+    xmlns="http://www.w3.org/2000/svg",
     )
-    line.end(
-      v-for="x in [0,1000]"
-      :key="x"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      :x1="x"
-      :y1="10"
-      :x2="x"
-      :y2="strings.length * 50 + 40"
-    )
-    line(
-      v-for="fret in frets"
-      :key="fret"
-      stroke="gray"
-      stroke-width="1"
-      stroke-linecap="round"
-      :x1="fret * 1000"
-      :y1="20"
-      :x2="fret * 1000"
-      :y2="strings.length * 50 + 30"
-    )
-    g(v-for="(string,i) in strings", :key="string")
-      circle(
-        :cx="-8"
-        :cy="i * 50 + 50"
-        :r="8"
-        :fill="freqColor(Note.freq(string))"
+      text(
+        style="user-select:none;transition:all 300ms ease"
+        fill="currentColor"
+        font-family="Commissioner, sans-serif"
+        font-size="16px"
+        font-weight="bold"
+        text-anchor="middle",
+        dominant-baseline="middle"
+        :x="(instrument.tuning.length * 40 + 65) / 2",
+        :y="-40",
+        ) {{ instrument.title }}
+      line.string(
+        v-for="(string, i) in instrument.tuning",
+        key="string"
+        stroke="currentColor"
+        stroke-width="1"
+        stroke-linecap="round"
+        :y1="0"
+        :x1="40 * i + 50"
+        :y2="1000"
+        :x2="40 * i + 50"
       )
-      circle(
+      line.end(
+        v-for="y in [0,1000]"
+        :key="y"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        :y1="y"
+        :x1="10"
+        :y2="y"
+        :x2="instrument.tuning.length * 40 + 55"
+      )
+      text(
+        style="user-select:none;transition:all 300ms ease"
+        fill="currentColor"
+        font-family="Commissioner, sans-serif"
+        font-size="10px"
+        font-weight="normal"
+        text-anchor="left",
+        dominant-baseline="middle"
+        :x="instrument.tuning.length * 40 + 20",
+        :y="990",
+        ) {{ instrument.l }} mm
+      circle.inlay(
+        v-for="inlay in inlays"
+        :key="inlay"
+        fill="currentColor"
+        :cx="(instrument.tuning.length * 40 + 60) / 2"
+        :cy="frets[inlay - 1] * 1000 - (frets[inlay - 1] * 1000 - frets[inlay - 2] * 1000) / 2"
+        :r="4"
+      )
+      g(
+        v-for="inlay in octaves"
+        :key="inlay"
+      )
+        circle.inlay(
+          fill="currentColor"
+          :cx="(instrument.tuning.length * 40 + 60) / 2 - 5"
+          :cy="frets[inlay - 1] * 1000 - (frets[inlay - 1] * 1000 - frets[inlay - 2] * 1000) / 2"
+          :r="4"
+        )
+        circle.inlay(
+          fill="currentColor"
+          :cx="(instrument.tuning.length * 40 + 60) / 2 + 5"
+          :cy="frets[inlay - 1] * 1000 - (frets[inlay - 1] * 1000 - frets[inlay - 2] * 1000) / 2"
+          :r="4"
+        )
+      g.fret(
         v-for="(fret,f) in frets"
-        :cx="fret * 1000 - 8"
-        :cy="i * 50 + 50"
-        :r="8"
-        :fill="freqColor(Note.freq(Note.transpose(string, Interval.fromSemitones(f + 1))))"
+        :key="fret"
       )
-  .overflow-x-scroll.max-w-full
-    table.text-center.border-separate.m-auto
-      tr
-        th.w-1rem Fret
-        th.w-8rem Distance
-        th(v-for="string in strings", :key="string", :style="{ color: freqColor(Note.freq(string)) }") {{ string }}
-      tr(v-for="(fret,i) in frets", :key="i")
-        td {{ i + 1 }}
-        td {{ (fret * stringParams.l).toFixed(2) }} mm
-        td.rounded-xl(
-          v-for="string in strings",
-          :key="string"
-          :style="{ color: freqColor(Note.freq(Note.transpose(string, Interval.fromSemitones(i + 1)))) }"
-            ) {{ Note.transpose(string, Interval.fromSemitones(i + 1)) }}
-   
+        line(
+          stroke="gray"
+          stroke-width="1"
+          stroke-linecap="round"
+          :y1="fret * 1000"
+          :x1="20"
+          :y2="fret * 1000"
+          :x2="instrument.tuning.length * 40 + 40"
+        )
+        text(
+          style="user-select:none;transition:all 300ms ease"
+          fill="currentColor"
+          font-family="Commissioner, sans-serif"
+          font-size="10px"
+          font-weight="normal"
+          text-anchor="middle",
+          dominant-baseline="middle"
+          :x="24",
+          :y="fret * 1000 - 8",
+        ) {{ f + 1 }}
+        text(
+          style="user-select:none;transition:all 300ms ease"
+          fill="currentColor"
+          font-family="Commissioner, sans-serif"
+          font-size="10px"
+          font-weight="normal"
+          text-anchor="left",
+          dominant-baseline="middle"
+          :x="instrument.tuning.length * 40 + 30",
+          :y="fret * 1000 - 8",
+        ) {{ (fret * instrument.l).toFixed(2) }} mm
+      g.note(v-for="(string,i) in instrument.tuning", :key="string")
+        circle(
+          :cy="-12"
+          :cx="i * 40 + 50"
+          :r="12"
+          :fill="noteColor(string, 0)"
+        )
+        text(
+          style="user-select:none;transition:all 300ms ease"
+          fill="white"
+          font-family="Commissioner, sans-serif"
+          font-size="10px"
+          font-weight="bold"
+          text-anchor="middle",
+          dominant-baseline="middle"
+          :x="i * 40 + 50",
+          :y="-11",
+        ) {{ string }}
+        g.note(
+          v-for="(fret,f) in frets"
+          :key="fret"
+        )
+          circle(
+            :cy="fret * 1000 - 12"
+            :cx="i * 40 + 50"
+            :r="12"
+            :fill="noteColor(string, f + 1)"
+          )
+          text(
+          style="user-select:none;transition:all 300ms ease"
+          fill="white"
+          font-family="Commissioner, sans-serif"
+          font-size="10px"
+          font-weight="bold"
+          text-anchor="middle",
+          dominant-baseline="middle"
+          :x="i * 40 + 50",
+          :y="fret * 1000 - 11",
+        ) {{ Note.transpose(string, Interval.fromSemitones(f + 1)) }}
+    svg-save(svg="fretboard", :file="`${instrument.title}-${instrument.l}mm-${instrument.frets}frets.svg`")
 </template>
 
 <script setup>
-import { defineProps, reactive, computed } from 'vue'
+import { defineProps, reactive, computed, watch } from 'vue'
 import { useStorage } from '@vueuse/core'
 import { Note, Interval } from '@tonaljs/tonal'
 import { freqColor } from 'chromatone-theory'
+import { colord } from 'colord'
 
-const stringParams = useStorage('stringParams-calc', {
+const props = defineProps({
+  instruments: Object,
+})
+
+const instrument = useStorage('instrument-calc', {
   l: 430,
   frets: 27,
+  title: 'Guitar',
+  tuning: ['C4', 'G4', 'E4', 'A4']
 });
 
-const strings = useStorage('string-collection', ['C4', 'G4', 'E4', 'A4'])
+watch(() => instrument.value.title, title => {
+  const inst = props.instruments[title]
+  instrument.value.l = inst.l
+  instrument.value.frets = inst.frets
+  instrument.value.tuning = inst.tuning
+})
+
+const inlays = computed(() => {
+  return [3, 5, 7, 9, 15, 17, 19, 21].filter(el => el < instrument.value.frets)
+})
+
+const octaves = computed(() => {
+  return [12, 24].filter(el => el < instrument.value.frets)
+})
 
 const frets = computed(() => {
   let arr = []
-  for (let i = 1; i < stringParams.value.frets; i++) {
+  for (let i = 1; i < instrument.value.frets; i++) {
     arr.push((1 - Math.pow(0.9438743, i)))
   }
   return arr
 });
 
+function noteColor(note, semitones) {
+  return colord(freqColor(Note.freq(Note.transpose(note, Interval.fromSemitones(semitones))))).toHex()
+}
+
 </script>
 
 <style scoped>
-table {
-  border-spacing: 4px;
+.strings {
+  max-height: none !important;
+}
+.note {
+  @apply cursor-pointer;
 }
 </style>

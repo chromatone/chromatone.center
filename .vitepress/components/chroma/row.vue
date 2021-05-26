@@ -8,6 +8,8 @@
     .scale(v-if="scale") @ {{ scale }} scale
   .grid.grid-cols-12.justify-items-stretch
     .chroma-key(
+      @mouseenter="$emit('play')"
+      @mouseleave="$emit('stop')"
       v-for="(bit,i) in set?.chroma.split('')"
       :key="i"
       :class="{ active: bit == 1 }"
@@ -16,7 +18,7 @@
 </template>
 
 <script setup>
-import { defineProps, computed } from 'vue'
+import { defineProps, computed, defineEmit } from 'vue'
 import { ChordType, ScaleType } from '@tonaljs/tonal'
 import { pitchColor, notes } from 'chromatone-theory'
 const props = defineProps({
@@ -26,6 +28,9 @@ const props = defineProps({
     default: 0
   }
 });
+
+const emit = defineEmit(['play', 'stop'])
+
 const minor = "101101011010"
 
 const chord = ChordType.get(props.set.chroma)

@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue'
+import { ref, computed, watch, onMounted } from 'vue'
 import {
   useRoute,
   useSiteData,
@@ -19,6 +19,10 @@ import {
 } from 'vitepress'
 import { isSideBarEmpty, getSideBarConfig } from './support/sideBar'
 import type { DefaultTheme } from './config'
+
+onMounted(() => {
+  import('./composables/owa.js')
+})
 
 // generic state
 const route = useRoute()

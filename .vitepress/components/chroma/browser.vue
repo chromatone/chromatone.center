@@ -19,7 +19,13 @@
       la-filter.ml-2(:style="{ opacity: control.scale ? 1 : 0.3 }")
 
   transition-group(name="list")
-    chroma-row(v-for="(set) in sorted",:key="set.chroma", :set="set", :tonic="tonic")
+    chroma-row(
+      v-for="(set) in sorted",
+      :key="set.chroma",
+      :set="set",
+      :tonic="tonic",
+      @play="playNote($event)"
+      )
 </template>
 
 <script setup>
@@ -37,6 +43,10 @@ const control = useStorage('chroma-browser-filter', {
   num: true,
   chroma: false,
 })
+
+function playNote(ev) {
+  console.log(ev)
+}
 
 
 ChordType.add('100000000000', ['.P1/P8'], 'perfect unison/octave');

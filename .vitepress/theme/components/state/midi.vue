@@ -6,7 +6,7 @@
     mdi-midi-input.transition-all.duration-200(
       :style=`{
         opacity: midi.enabled ? 1 : 0.2,
-        color: pitchColor(midi.note?.pitch, midi.note?.octA)
+        color: pitchColor(midi.enabled ? midi.note?.pitch : 0, midi.note?.octA)
       }`
       class="visible"
     )

@@ -210,50 +210,21 @@ function getCoord(n = 0, total = 12, radius = 35, width = 100) {
   return { x, y }
 }
 
-import { PolySynth, Frequency, DuoSynth } from 'tone'
-import { midi, playOnce as midiOnce, playNote as midiPlay, stopNote as midiStop } from '@use/midi.js'
+import { Frequency } from 'tone'
+import { playOnce as midiOnce, playNote as midiPlay, stopNote as midiStop } from '@use/midi.js'
+import { useSynth } from '@use/synth.js'
 
-let synth
+const { playOnce, attack, release } = useSynth()
 
-onMounted(() => {
-  synth = new PolySynth(DuoSynth, {
-    maxPolyphony: 12,
-    harmonicity: 1,
-    volume: -17,
-    voice1: {
-      envelope: {
-        attack: 0.1,
-        decay: 0.8,
-        sustain: 1,
-        release: 4
-      }
-    },
-    voice2: {
-      envelope: {
-        attack: 0.1,
-        decay: 0.8,
-        sustain: 1,
-        release: 2
-      }
-    }
-
-  }).toDestination()
-})
-
-onBeforeUnmount(() => {
-  synth.disconnect().dispose()
-})
 
 function playNote(note = 0, octave = 0) {
-
   if (props.tonic > 0 && note < props.tonic) {
     note = note + 12
   }
   note = note + 12 * octave
   let freq = Frequency(note + 57, 'midi')
   midiOnce({ name: freq.toNote() })
-  if (mute.value) return
-  synth.triggerAttackRelease(freq, '8n')
+  playOnce(freq)
 }
 
 const chordNotes = computed(() => {
@@ -275,12 +246,11 @@ function playChordOnce() {
   chordNotes.value.forEach(name => {
     midiOnce({ name: name })
   })
-  if (mute.value) return
   nextTick(() => {
     chordNotes.value.forEach((note, i) => {
-      synth.triggerAttackRelease(note, '8n', `+${i / 3}`)
+      playOnce(note, '8n', `+${i / 3}`)
     })
-    synth.triggerAttackRelease(chordNotes.value, '4n', `+${chordNotes.value.length / 3}`)
+    playOnce(chordNotes.value, '4n', `+${chordNotes.value.length / 3}`)
   });
 
 }
@@ -288,18 +258,15 @@ function playChord() {
   chordNotes.value.forEach(name => {
     midiPlay({ name: name })
   })
-  if (mute.value) return
-  synth.triggerAttack(chordNotes.value)
+  attack(chordNotes.value)
 }
 
 function stopChord() {
   chordNotes.value.forEach(name => {
     midiStop({ name: name })
   })
-  if (mute.value) return
-  synth.triggerRelease(chordNotes.value)
+  release(chordNotes.value)
 }
-
 
 </script>
 

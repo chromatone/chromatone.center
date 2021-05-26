@@ -13,6 +13,7 @@
       //-   v-if="midi.note"
       //-   :style="{ backgroundColor: pitchColor(midi.note.pitch, midi.note.octA) }"
       //- )
+
       .button.w-3em.transition-all.duration-50.cursor-pointer(
         @mousedown="playNote(midi.note)"
         @mouseup="stopNote(midi.note)"
@@ -27,11 +28,11 @@
 
       .button.border(@click="stopAll()")
         la-stop
-
+      .button.opacity-30(@click="midi.out = !midi.out",:class="{ active: midi.out }") OUT
       .button.border(v-for="output in midi.outputs")  
         span {{ output.name }}
       .button(v-if="toChannel")
-        span TO CH
+        span CH
         input.ch.ml-2(type="number", max="16",min="1",length="12", v-model="midi.channel")
       
 </template>
@@ -70,5 +71,8 @@ input.ch {
 
 .button {
   @apply p-2 m-2 border flex items-center rounded cursor-pointer select-none;
+}
+.button.active {
+  @apply opacity-100;
 }
 </style>

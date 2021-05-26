@@ -5,7 +5,7 @@ button.mute.p-2(@click="toggle()")
 </template>
 
 <script setup>
-import { mute } from '../../composables/state.js'
+import { mute } from '@use/synth.js'
 
 function toggle() {
   mute.value = !mute.value

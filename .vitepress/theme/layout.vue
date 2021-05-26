@@ -20,10 +20,6 @@ import {
 import { isSideBarEmpty, getSideBarConfig } from './support/sideBar'
 import type { DefaultTheme } from './config'
 
-onMounted(() => {
-  import('./composables/owa.js')
-})
-
 // generic state
 const route = useRoute()
 const siteData = useSiteData<DefaultTheme.Config>()

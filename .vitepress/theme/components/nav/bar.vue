@@ -6,6 +6,8 @@ header.nav-bar
     NavLinks
   .flex-grow
   state-midi
+  client-only
+    state-synth
   state-mute
   state-dark
   nav-toggle-sidebar(@toggle="$emit('toggle')")

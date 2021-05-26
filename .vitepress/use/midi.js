@@ -4,6 +4,7 @@ import { useStorage } from '@vueuse/core'
 
 export const midi = reactive({
   enabled: false,
+  out: true,
   inputs: {},
   outputs: {},
   playing: false,
@@ -23,6 +24,7 @@ export function useMidi() {
   })
 
   watchEffect(() => {
+    if (!midi.out) return
     let out = Object.values(WebMidi.outputs)
     if (midi.playing) {
       out.forEach((output) => {
@@ -142,6 +144,7 @@ function setVelocity(channel, note, velocity) {
 }
 
 export function playNote(note) {
+  if (!midi.out) return
   setVelocity(note.channel, note.name, 100)
   WebMidi.outputs.forEach((output) => {
     output.playNote(note.name, { channels: note.channel || midi.channel })
@@ -149,6 +152,7 @@ export function playNote(note) {
 }
 
 export function stopNote(note) {
+  if (!midi.out) return
   setVelocity(note.channel, note.name, 0)
   WebMidi.outputs.forEach((output) => {
     output.stopNote(note.name, { channels: note.channel || midi.channel })
@@ -156,6 +160,7 @@ export function stopNote(note) {
 }
 
 export function playOnce(note) {
+  if (!midi.out) return
   playNote(note)
   setTimeout(() => {
     stopNote(note)
@@ -163,12 +168,14 @@ export function playOnce(note) {
 }
 
 export function setCC(cc, value) {
+  if (!midi.out) return
   WebMidi.outputs.forEach((output) => {
     output.sendControlChange(Number(cc.number), value, cc.channel)
   })
 }
 
 export function stopAll() {
+  if (!midi.out) return
   midi.channels = {}
   midi.playing = false
   WebMidi.outputs.forEach((output) => {

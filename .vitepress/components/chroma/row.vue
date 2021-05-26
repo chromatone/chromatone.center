@@ -1,15 +1,13 @@
 <template lang="pug">
 .flex.flex-col.items-stretch.mb-6.w-full
-  .flex.flex-wrap.justify-center.border-b-1.pt-2.mb-2(v-if="!chord.empty || scale")
-    .note  {{ notes[tonic].name }}
-    .chord
-      span {{ chord.aliases[0] }}  &nbsp;
-      span.text-gray-500(class="dark:text-gray-400")  {{ chord.name }} 
+  .flex.flex-wrap.justify-center.border-b-1.pt-2.mb-2(v-if="!chord.empty || scale") 
+    .chord.cursor-pointer(@click="playChordOnce()") {{ notes[tonic].name }}{{ chord.aliases[0] }} &nbsp;
+    .title.cursor-pointer.text-gray-500(class="dark:text-gray-400",  @click="arpeggiate()")  {{ chord.name }} 
     .scale(v-if="scale") @ {{ scale }} scale
   .grid.grid-cols-12.justify-items-stretch
     .chroma-key(
-      @mouseenter="$emit('play')"
-      @mouseleave="$emit('stop')"
+      @mouseenter="bit == 1 && playNote(i + tonic)"
+      @touchstart="bit == 1 && playNote(i + tonic)"
       v-for="(bit,i) in set?.chroma.split('')"
       :key="i"
       :class="{ active: bit == 1 }"
@@ -18,9 +16,14 @@
 </template>
 
 <script setup>
-import { defineProps, computed, defineEmit } from 'vue'
+import { defineProps, computed, defineEmit, nextTick } from 'vue'
 import { ChordType, ScaleType } from '@tonaljs/tonal'
 import { pitchColor, notes } from 'chromatone-theory'
+import { Note } from '@tonaljs/tonal'
+import { Frequency } from 'tone'
+import { playOnce } from '@use/synth.js'
+import { playOnce as midiOnce } from '@use/midi.js'
+
 const props = defineProps({
   set: Object,
   tonic: {
@@ -29,8 +32,48 @@ const props = defineProps({
   }
 });
 
-const emit = defineEmit(['play', 'stop'])
+const chordNotes = computed(() => {
+  let shiftChroma = rotate(props.set.chroma.split(''), -props.tonic)
+  let chOct = rotate(notes, -props.tonic).map((n, i) => {
+    return Frequency(n.pitch + props.tonic + 57, 'midi').toNote()
+  })
+  let filtered = chOct.filter((val, i) => {
+    if (shiftChroma[i] == '1') {
+      return true
+    }
+  })
+  return Note.sortedNames(filtered)
+})
 
+function playChordOnce() {
+  chordNotes.value.forEach(name => {
+    midiOnce({ name: name })
+  })
+  playOnce(chordNotes.value, '4n')
+}
+
+function arpeggiate() {
+  chordNotes.value.forEach((note, i) => {
+    playOnce(note, '8n', `+${i / 3}`)
+  })
+}
+
+function playChord() {
+  chordNotes.value.forEach(name => {
+    midiPlay({ name: name })
+  })
+  attack(chordNotes.value)
+}
+
+function playNote(note = 0, octave = 0) {
+  let freq = Frequency(note + 57, 'midi')
+  midiOnce({ name: freq.toNote() })
+  playOnce(freq.toNote())
+}
+
+function rotate(arr, count = 1) {
+  return [...arr.slice(count, arr.length), ...arr.slice(0, count)];
+};
 const minor = "101101011010"
 
 const chord = ChordType.get(props.set.chroma)
@@ -39,7 +82,7 @@ const scale = ScaleType.get(props.set.chroma).name
 
 <style lang="postcss" scoped>
 .chroma-key {
-  @apply grid place-content-center text-xs transition-all duration-300 p-1 py-3  mx-4px sm:(py-4)  rounded-md;
+  @apply grid cursor-pointer place-content-center text-xs transition-all duration-300 p-1 py-3  mx-4px sm:(py-4) hover:(opacity-100) opacity-80  rounded-md;
 }
 .chroma-key.active {
   @apply text-light-100 font-bold;

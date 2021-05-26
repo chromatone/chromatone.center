@@ -1,39 +1,37 @@
 <template lang="pug">
-.midi-panel
-  .max-w-55ch.m-auto.layer
-    .flex.items-center.justify-center.flex-wrap.py-2.m-auto
-      .flex.m-2
-        a.font-normal.p-2.border.border-green-500.text-green-500.select-none(v-if="midi.enabled", href="/explore/monitor/") 
-          span(v-if="Object.entries(midi.outputs).length > 0") MIDI 
-          span(v-else) Plug in your MIDI device
-        .p-2.border.border-red-500.text-red-500(v-else) MIDI NOT AVAILABLE
-      //- .m-2.p-2.rounded-full.transition-all.duration-50.cursor-pointer(
-      //-   @mousedown="playNote(midi.note)"
-      //-   @mouseup="stopNote(midi.note)"
-      //-   v-if="midi.note"
-      //-   :style="{ backgroundColor: pitchColor(midi.note.pitch, midi.note.octA) }"
-      //- )
+.m-auto.layer.w-full
+  .flex.items-center.justify-center.flex-wrap.py-2.m-auto
+    .flex.m-2
+      a.font-normal.p-2.border.border-green-500.text-green-500.select-none(v-if="midi.enabled", href="/explore/monitor/") 
+        span(v-if="Object.entries(midi.outputs).length > 0") MIDI 
+        span(v-else) Plug in your MIDI device
+      .p-2.border.border-red-500.text-red-500(v-else) MIDI NOT AVAILABLE
+    //- .m-2.p-2.rounded-full.transition-all.duration-50.cursor-pointer(
+    //-   @mousedown="playNote(midi.note)"
+    //-   @mouseup="stopNote(midi.note)"
+    //-   v-if="midi.note"
+    //-   :style="{ backgroundColor: pitchColor(midi.note.pitch, midi.note.octA) }"
+    //- )
+    .button.opacity-30(@click="midi.out = !midi.out",:class="{ active: midi.out }") OUT
+    .button.w-3em.transition-all.duration-50.cursor-pointer(
+      @mousedown="playNote(midi.note)"
+      @mouseup="stopNote(midi.note)"
+      v-if="midi.note?.name"
+      :style="{ borderColor: pitchColor(midi.note.pitch, midi.note.octA), color: pitchColor(midi.note.pitch, midi.note.octA) }"
+    ) 
+      .w-2em {{ midi.note.name.slice(0, -1) }} 
+      .flex {{ midi.note.name.slice(-1) }}
+    .play.button(@click="midi.playing = !midi.playing")
+      la-play(v-if="!midi.playing")
+      la-pause(v-else)
 
-      .button.w-3em.transition-all.duration-50.cursor-pointer(
-        @mousedown="playNote(midi.note)"
-        @mouseup="stopNote(midi.note)"
-        v-if="midi.note?.name"
-        :style="{ borderColor: pitchColor(midi.note.pitch, midi.note.octA), color: pitchColor(midi.note.pitch, midi.note.octA) }"
-      ) 
-        .w-2em {{ midi.note.name.slice(0, -1) }} 
-        .flex {{ midi.note.name.slice(-1) }}
-      .play.button(@click="midi.playing = !midi.playing")
-        la-play(v-if="!midi.playing")
-        la-pause(v-else)
-
-      .button.border(@click="stopAll()")
-        la-stop
-      .button.opacity-30(@click="midi.out = !midi.out",:class="{ active: midi.out }") OUT
-      .button.border(v-for="output in midi.outputs")  
-        span {{ output.name }}
-      .button(v-if="toChannel")
-        span CH
-        input.ch.ml-2(type="number", max="16",min="1",length="12", v-model="midi.channel")
+    .button.border(@click="stopAll()")
+      la-stop
+    .button.border(v-for="output in midi.outputs")  
+      span {{ output.name }}
+    .button(v-if="toChannel")
+      span CH
+      input.ch.ml-2(type="number", max="16",min="1",length="12", v-model="midi.channel")
       
 </template>
 
@@ -56,8 +54,8 @@ const props = defineProps({
 }
 
 .layer {
-  @apply shadow-md rounded-md;
-  background-color: hsla(0, 0%, 100%, 0.6);
+  @apply;
+  background-color: hsla(0, 0%, 100%, 0.8);
   backdrop-filter: blur(30px);
 }
 
@@ -66,7 +64,7 @@ input.ch {
 }
 
 .dark .layer {
-  background-color: hsla(0, 0%, 0%, 0.3);
+  background-color: hsla(0, 0%, 0%, 0.8);
 }
 
 .button {

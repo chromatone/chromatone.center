@@ -24,7 +24,6 @@
       :key="set.chroma",
       :set="set",
       :tonic="tonic",
-      @play="playNote($event)"
       )
 </template>
 
@@ -33,6 +32,7 @@ import { computed } from 'vue'
 import { Pcset, ChordType, ScaleType } from '@tonaljs/tonal'
 import { useStorage } from '@vueuse/core'
 import { pitchColor, notes } from 'chromatone-theory'
+
 
 const tonic = useStorage('chroma-tonic', 0)
 const search = useStorage('chroma-browser-search', '')
@@ -44,9 +44,6 @@ const control = useStorage('chroma-browser-filter', {
   chroma: false,
 })
 
-function playNote(ev) {
-  console.log(ev)
-}
 
 
 ChordType.add('100000000000', ['.P1/P8'], 'perfect unison/octave');
@@ -105,7 +102,7 @@ const sorted = computed(() => {
 }
 
 .keys {
-  @apply rounded-md p-1 grid grid-cols-6 xs:(grid-cols-12) w-full sticky top-$header-height bg-light-400  dark:bg-dark-300;
+  @apply z-8 rounded-md p-1 grid grid-cols-6 xs:(grid-cols-12) w-full sticky top-$header-height bg-light-400 bg-opacity-80  dark:(bg-dark-300 bg-opacity-80);
 }
 
 .key {

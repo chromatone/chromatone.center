@@ -12,7 +12,7 @@
     )
   client-only
     transition(name="panel")
-      state-midi-panel.absolute.right-0.top-16.w-full(v-if="panel")
+      state-midi-panel.panel(v-if="panel")
 </template>
 
 <script setup>
@@ -28,5 +28,9 @@ const { midi } = useMidi();
 <style scoped>
 .midi.active {
   @apply bg-light-700 dark:bg-dark-700;
+}
+
+.panel {
+  @apply absolute right-0 top-$header-height w-full;
 }
 </style>

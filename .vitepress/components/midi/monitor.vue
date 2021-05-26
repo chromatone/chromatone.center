@@ -1,6 +1,6 @@
 <template lang="pug">
 .flex.flex-col
-  state-midi-panel(:toChannel="false")
+  state-midi-panel.max-w-55ch(:toChannel="false")
   .flex.mt-4
     .flex.flex-col.flex-1.text-center(v-for="ch in midi.channels", :key="ch.num")
       .header {{ ch.num }}

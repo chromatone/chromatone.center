@@ -252,8 +252,8 @@ function playChordOnce() {
     })
     playOnce(chordNotes.value, '4n', `+${chordNotes.value.length / 3}`)
   });
-
 }
+
 function playChord() {
   chordNotes.value.forEach(name => {
     midiPlay({ name: name })

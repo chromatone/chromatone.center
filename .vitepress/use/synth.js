@@ -8,6 +8,7 @@ export const mute = useStorage('mute', false)
 
 export function useSynth() {
   onMounted(() => {
+    if (synth?.poly) return
     synth.poly = new PolySynth(DuoSynth, {
       maxPolyphony: 12,
       harmonicity: 1,
@@ -31,20 +32,20 @@ export function useSynth() {
     }).toDestination()
   })
 
-  function playOnce(note = 'A4', duration = '8n', time) {
-    if (mute.value) return
-    synth.poly.triggerAttackRelease(note, duration, time)
-  }
-
-  function attack(note) {
-    if (mute.value) return
-    synth.poly.triggerAttack(note)
-  }
-
-  function release(note) {
-    if (mute.value) return
-    synth.poly.triggerRelease(note)
-  }
-
   return { synth, playOnce, attack, release }
+}
+
+export function playOnce(note = 'A4', duration = '8n', time) {
+  if (mute.value || !synth.poly) return
+  synth.poly.triggerAttackRelease(note, duration, time)
+}
+
+export function attack(note) {
+  if (mute.value || !synth.poly) return
+  synth.poly.triggerAttack(note)
+}
+
+export function release(note) {
+  if (mute.value || !synth.poly) return
+  synth.poly.triggerRelease(note)
 }

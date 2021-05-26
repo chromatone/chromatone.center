@@ -2,14 +2,14 @@
 .crd(
   :style="{ borderColor: lchToHsl(i, total) }"
   :title="item.lastModified",
-  v-motion,
-  :initial="{ opacity: 0, y: 40 }",
-  :enter="{ opacity: 0, y: 0, scale: 1 }",
-  :visible="{ opacity: 1, y: 0, scale: 1 }",
-  :delay="i * 80",
   )
   a.flex(:href="item.link")
-    .info
+    .info(
+      v-motion,
+      :initial="{ opacity: 0, y: -5 }",
+      :enter="{ opacity: 0, y: 0, scale: 1 }",
+      :visible="{ opacity: 1, y: 0, scale: 1 }",
+      )
       .flex.flex-1.items-center.self-stretch.flex-wrap
         .mr-2.text-2xl(v-if="item.data.emoji") {{ item.data.emoji }}
         .text-2xl.flex-auto {{ item.title }}

@@ -1,11 +1,11 @@
 <template lang="pug">
 .flex.flex-col.m-auto.items-center.w-full.max-w-65ch
-  .flex.flex-wrap.sticky.top-5rem
+  .keys
     .key(
       @click="tonic = i"
       v-for="(bit,i) in '101101011010'"
       :key="i"
-      :style="{ backgroundColor: i == tonic ? pitchColor(i) : bit == '1' ? 'hsla(0,0%,80%,0.3)' : 'hsla(0,0%,20%,0.3)' }"
+      :style="{ backgroundColor: i == tonic ? pitchColor(i) : bit == '1' ? 'hsla(0,0%,80%,0.4)' : 'hsla(0,0%,10%,0.4)' }"
       ) {{ notes[i].name }}
   .control-row
     .control.font-bold(:style="{ color: pitchColor(tonic) }") {{ notes[tonic].name }}
@@ -19,7 +19,7 @@
       la-filter.ml-2(:style="{ opacity: control.scale ? 1 : 0.3 }")
 
   transition-group(name="list")
-    set-row(v-for="(set) in sorted",:key="set.chroma", :set="set", :tonic="tonic")
+    chroma-row(v-for="(set) in sorted",:key="set.chroma", :set="set", :tonic="tonic")
 </template>
 
 <script setup>
@@ -28,9 +28,9 @@ import { Pcset, ChordType, ScaleType } from '@tonaljs/tonal'
 import { useStorage } from '@vueuse/core'
 import { pitchColor, notes } from 'chromatone-theory'
 
-const tonic = useStorage('pcset-tonic', 0)
-const search = useStorage('pcset-browser-search', '')
-const control = useStorage('pcset-browser-filter', {
+const tonic = useStorage('chroma-tonic', 0)
+const search = useStorage('chroma-browser-search', '')
+const control = useStorage('chroma-browser-filter', {
   scale: false,
   chord: false,
   count: true,
@@ -87,11 +87,15 @@ const sorted = computed(() => {
 }
 
 .control {
-  @apply m-2 p-4 bg-light-400 rounded dark:bg-dark-400 cursor-pointer;
+  @apply m-2 p-4 rounded bg-light-400  dark:bg-dark-400 cursor-pointer;
 }
 
 .control.active {
   @apply bg-gray-400;
+}
+
+.keys {
+  @apply rounded-md p-1 grid grid-cols-6 xs:(grid-cols-12) w-full sticky top-$header-height bg-light-400  dark:bg-dark-300;
 }
 
 .key {

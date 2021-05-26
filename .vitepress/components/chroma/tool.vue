@@ -2,7 +2,7 @@
 .flex.flex-col
   .relative.w-full.m-auto
     svg-save(svg="circle", :file="`${notes[tonic].name}-${chroma}-circle.svg`")  
-    set-circle#circle(
+    chroma-circle#circle(
       v-model:chroma="chroma"
       v-model:tonic="tonic"
       :scaleChroma="scaleChroma"

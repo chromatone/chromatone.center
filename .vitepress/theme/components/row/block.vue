@@ -1,10 +1,6 @@
 <template lang="pug">
 .row(
   :id="item.title"
-  v-motion,
-  :initial="{ opacity: 0, y: 40 }",
-  :enter="{ opacity: 0, y: 0, scale: 1 }",
-  :visible="{ opacity: 1, y: 0, scale: 1 }",
   :style="{ zIndex: i + 10, borderColor: lchToHsl(i, total) }"
   )
   a.header(:href="item.link")

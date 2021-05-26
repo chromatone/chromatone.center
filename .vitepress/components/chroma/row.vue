@@ -1,17 +1,18 @@
 <template lang="pug">
-.flex.flex-col.items-center.mb-8
-  .flex
-    .chroma-key(
-      v-for="(bit,i) in set?.chroma.split('')"
-      :key="i"
-      :style="{ backgroundColor: bit == 1 ? pitchColor((Number(i) + tonic) % 12) : minor[(Number(i) + tonic) % 12] == '1' ? 'hsla(0,0%,80%,0.3)' : 'hsla(0,0%,20%,0.3)' }"
-      ) 
-  .flex.flex-wrap.justify-center.border-b-2.pt-2(v-if="!chord.empty || scale")
+.flex.flex-col.items-stretch.mb-6.w-full
+  .flex.flex-wrap.justify-center.border-b-1.pt-2.mb-2(v-if="!chord.empty || scale")
     .note  {{ notes[tonic].name }}
     .chord
       span {{ chord.aliases[0] }}  &nbsp;
       span.text-gray-500(class="dark:text-gray-400")  {{ chord.name }} 
     .scale(v-if="scale") @ {{ scale }} scale
+  .grid.grid-cols-12.justify-items-stretch
+    .chroma-key(
+      v-for="(bit,i) in set?.chroma.split('')"
+      :key="i"
+      :class="{ active: bit == 1 }"
+      :style="{ backgroundColor: bit == 1 ? pitchColor((i + tonic) % 12) : minor[(i + tonic) % 12] == '1' ? 'hsla(0,0%,80%,0.3)' : 'hsla(0,0%,20%,0.3)' }"
+      ) {{ bit == 1 ? notes[(i + tonic) % 12].name : i }}
 </template>
 
 <script setup>
@@ -33,6 +34,9 @@ const scale = ScaleType.get(props.set.chroma).name
 
 <style lang="postcss" scoped>
 .chroma-key {
-  @apply transition-all duration-300 h-2em px-3 flex-1 mx-1px sm:(p-4 mx-1 rounded-lg) rounded-sm;
+  @apply grid place-content-center text-xs transition-all duration-300 p-1 py-3  mx-4px sm:(py-4)  rounded-md;
+}
+.chroma-key.active {
+  @apply text-light-100 font-bold;
 }
 </style>

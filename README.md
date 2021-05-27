@@ -35,6 +35,7 @@ We've ported almost all separate apps into the main website. It becomes more and
 - Harmonics
 - Oscilloscope
 - Synth waveforms
+- Drum machine
 
 
 ## STACK

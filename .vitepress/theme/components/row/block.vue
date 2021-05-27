@@ -6,16 +6,19 @@
   a.header(:href="item.link")
     .cover(v-if="item.data?.cover", :style="{ backgroundImage: 'url(/media/' + item.data?.cover + ')' }", v-motion-fade)
     .info
-      .mr-2.text-2xl(v-if="item.data.emoji") {{ item.data.emoji }}
-      h3.text-3xl.flex.items-center {{ item.title }} 
+      .flex.items-center.w-full
+        .mr-2.text-2xl(v-if="item.data.emoji") {{ item.data.emoji }}
+        h3
+          span.text-3xl {{ item.title }} 
+          span.px-2.mt-2(v-if="item.more") 
+            radix-icons-text-align-left
+        .flex-1
+        shop-price(:product="item.data?.product")
 
-      .px-2.mt-2(v-if="item.more") 
-        radix-icons-text-align-left
-      .flex-auto
-      card-date(v-if="!item.data?.product",:date="item.lastModified")
+        card-date(v-if="!item.data?.product",:date="item.lastModified")
       .text-md.mt-4.mb-2.font-normal.w-full(v-if="item.subtitle") {{ item.subtitle }}
-      shop-price(:product="item.data?.product")
       header-buttons(:buttons="item.data?.buttons")
+
   card-list(v-if="$site.customData.pages?.[item.data?.list]",:rows="$site.customData.pages?.[item.data?.list]")
 
 </template>
@@ -45,7 +48,7 @@ import { lchToHsl } from '@theme/composables/colors.js'
 }
 
 .info {
-  @apply my-4 flex flex-1 self-stretch flex-wrap items-center p-4 md:(px-8 py-4);
+  @apply my-4 relative flex flex-1 self-stretch flex-wrap items-center p-4 md:(px-8 py-4);
 }
 
 .cover {

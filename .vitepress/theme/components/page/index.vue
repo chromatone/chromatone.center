@@ -1,12 +1,14 @@
 <template lang="pug">
 main
-  header-block
+  page-header
   .content-container
     content.content
+    shop-message
     row-list(
       v-if="$frontmatter.list", 
       :rows="$site.customData.pages?.[$frontmatter.list]"
       )
+
   page-next-prev
   footer-row
 </template>

@@ -6,7 +6,7 @@
   a.flex(:href="item.link")
     .info(
       v-motion,
-      :initial="{ opacity: 0, y: -5 }",
+      :initial="{ opacity: 0, y: 10 }",
       :enter="{ opacity: 0, y: 0, scale: 1 }",
       :visible="{ opacity: 1, y: 0, scale: 1 }",
       )
@@ -16,7 +16,8 @@
         card-date(v-if="!item.data.product",:date="item.lastModified")
 
       .text-md.mt-4.mb-2.font-normal(v-if="item.subtitle") {{ item.subtitle }}
-      shop-price(:product="item.data?.product", :showButton="false")
+      shop-price.float-left(:product="item.data?.product", :showButton="false")
+
     .cover(v-if="item.data.cover", :style="{ backgroundImage: 'url(/media/' + item.data.cover + ')' }", v-motion-fade)
 
   header-buttons(:buttons="item.data?.buttons")
@@ -36,7 +37,7 @@ import { lchToHsl } from '@theme/composables/colors.js'
 
 <style lang="postcss" scoped>
 .crd {
-  @apply my-4 transition-all bg-white dark:bg-gray-900 flex flex-col rounded shadow-md hover:shadow-lg;
+  @apply my-4 relative transition-all bg-white dark:bg-gray-900 flex flex-col rounded-md shadow-md hover:shadow-lg;
   transition: box-shadow color 100ms ease-in-out;
 }
 
@@ -45,12 +46,11 @@ import { lchToHsl } from '@theme/composables/colors.js'
 }
 
 .info {
-  @apply flex flex-col p-4 w-full
-  items-start;
+  @apply p-4 my-auto;
 }
 
 .cover {
-  @apply bg-cover bg-center self-stretch min-h-6em md:min-w-12em min-w-6em rounded-bl-3xl;
+  @apply bg-cover bg-center self-stretch min-h-16em sm:min-w-16em min-w-6em rounded-xl m-2;
   flex-basis: 6em;
   filter: saturate(10%) opacity(70%);
   transition: all 200ms ease-in-out;

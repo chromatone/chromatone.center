@@ -11,8 +11,9 @@
 
 
     .font-bold.mt-2.mb-4(v-if="$frontmatter.subtitle") {{ $frontmatter.subtitle }}
-    header-buttons(:buttons="$frontmatter?.buttons")
-    shop-price(:product="$frontmatter?.product")
+    page-buttons(:buttons="$frontmatter?.buttons")
+    .absolute.-bottom-2rem.right-2rem
+      shop-price(:product="$frontmatter?.product")
 </template>
 
 <script setup>

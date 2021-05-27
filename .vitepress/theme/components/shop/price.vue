@@ -1,14 +1,10 @@
 <template lang="pug">
-.flex.w-full.flex-wrap.items-center
-  .flex-1
+.flex.justify-center.items-center
   a.button.price(v-if="product", :href="product?.link", target="_blank") {{ product?.price }}
 
-  a.button.order.flex.items-center(v-if="product?.link",:href="product?.link", target="_blank")
-    mdi-shopping-outline
-    span(v-if="showButton").mx-2 Order now 
-.text-3xl
-
-
+  a.button.flex.items-center(v-if="product?.link",:href="product?.link", target="_blank")
+    eva-shopping-bag-outline.order
+    span.cart-text(v-if="showButton") Buy now
 </template>
 
 <script setup>
@@ -25,13 +21,18 @@ const props = defineProps({
 
 <style scoped>
 .button {
-  @apply p-2 my-2 mr-2 shadow-md z-6 text-2xl font-bold rounded-lg bg-yellow-400  dark:(bg-yellow-800);
+  @apply p-2 my-2 mr-2 shadow-md z-6 text-white text-2xl  rounded-lg bg-yellow-500  dark:(bg-yellow-600);
 }
 
 .price {
-  @apply tracking-widest;
+  @apply tracking-widest flex-1;
+}
+
+.cart-text {
+  @apply hidden sm:(block) text-xl ml-2;
 }
 
 .order {
+  font-size: 1.68rem;
 }
 </style>

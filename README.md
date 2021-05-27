@@ -25,6 +25,17 @@ Learners, sharing their experiences and setups. Musical and visual projects and 
 
 Contact the author and the headquarter of the project. 
 
+## Road map
+
+We've ported almost all separate apps into the main website. It becomes more and more integrated tool. But there's more! Next are the experiments, that stat at dev and need to be implemented with the new dev stack.
+
+- Tonal array
+- Pitch field / Tone grid
+- Noise lab
+- Harmonics
+- Oscilloscope
+- Synth waveforms
+
 
 ## STACK
 - [vue 3](https://v3.vuejs.org/)

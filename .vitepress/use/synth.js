@@ -1,5 +1,5 @@
 import { computed, reactive, watch, onBeforeUnmount, onMounted } from 'vue'
-import { PolySynth, Frequency, DuoSynth } from 'tone'
+import { PolySynth, Frequency, AMSynth } from 'tone'
 import { useStorage } from '@vueuse/core'
 
 const synth = {}
@@ -9,25 +9,15 @@ export const mute = useStorage('mute', false)
 export function useSynth() {
   onMounted(() => {
     if (synth?.poly) return
-    synth.poly = new PolySynth(DuoSynth, {
+    synth.poly = new PolySynth(AMSynth, {
       maxPolyphony: 12,
       harmonicity: 1,
-      volume: -17,
-      voice1: {
-        envelope: {
-          attack: 0.1,
-          decay: 0.8,
-          sustain: 1,
-          release: 4,
-        },
-      },
-      voice2: {
-        envelope: {
-          attack: 0.1,
-          decay: 1.6,
-          sustain: 1,
-          release: 2,
-        },
+      volume: -10,
+      envelope: {
+        attack: 0.1,
+        decay: 0.8,
+        sustain: 1,
+        release: 4,
       },
     }).toDestination()
   })

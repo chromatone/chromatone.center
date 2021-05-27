@@ -13,10 +13,10 @@ svg.max-h-3xl.w-full(
     stroke-width="10"
     style="mix-blend-mode: multiply"
     :style="{ opacity: active == '1' ? 0.5 : 0 }"
-    :x1="getCoord(tonic).x",
-    :y1="getCoord(tonic).y",
-    :x2="getCoord(tonic + i).x",
-    :y2="getCoord(tonic + i).y"
+    :x1="getCircleCoord(tonic).x",
+    :y1="getCircleCoord(tonic).y",
+    :x2="getCircleCoord(tonic + i).x",
+    :y2="getCircleCoord(tonic + i).y"
   )
   g.around(
     style="mix-blend-mode: screen;cursor:pointer"
@@ -28,8 +28,8 @@ svg.max-h-3xl.w-full(
     circle.note(
       style="transform-box: fill-box; transform-origin: center center;"
       :style="{ transform: `scale(${tonic == i ? 2.6 : isInChord(i) ? 1.62 : 1}` }",
-      :cx="getCoord(i).x",
-      :cy="getCoord(i).y",
+      :cx="getCircleCoord(i).x",
+      :cy="getCircleCoord(i).y",
       r="5",
       :opacity="tonic == i && selecting ? 0.5 : 1"
       :fill="getNoteColor(i)",
@@ -41,8 +41,8 @@ svg.max-h-3xl.w-full(
       font-size="4px"
       text-anchor="middle",
       dominant-baseline="middle"
-      :x="getCoord(i).x",
-      :y="getCoord(i).y + 0.5",
+      :x="getCircleCoord(i).x",
+      :y="getCircleCoord(i).y + 0.5",
     ) {{ notes[i].name }} 
   g(
     @mousedown="playChord()"
@@ -105,16 +105,16 @@ svg.max-h-3xl.w-full(
     stroke-linecap="round"
     stroke-width="0.5"
     style="mix-blend-mode: multiply; transition: opacity 300ms ease"
-    :x1="getCoord(line?.[0], 12, 30).x",
-    :y1="getCoord(line?.[0], 12, 30).y",
-    :x2="getCoord(line?.[1], 12, 30).x",
-    :y2="getCoord(line?.[1], 12, 30).y"
+    :x1="getCircleCoord(line?.[0], 12, 30).x",
+    :y1="getCircleCoord(line?.[0], 12, 30).y",
+    :x2="getCircleCoord(line?.[1], 12, 30).x",
+    :y2="getCircleCoord(line?.[1], 12, 30).y"
     opacity="0.5"
   )
 </template>
 
 <script setup>
-import { notes, pitchColor, scales, isInChroma } from 'chromatone-theory'
+import { notes, pitchColor, scales, isInChroma, getCircleCoord } from 'chromatone-theory'
 import { clrd, lchToHsl, chromaColorMix } from "@theme/composables/colors.js";
 import { ScaleType, ChordType, Chord, Note } from '@tonaljs/tonal'
 import { defineProps, ref, defineEmit, computed, onMounted, onBeforeUnmount, nextTick } from 'vue'
@@ -212,14 +212,6 @@ function getNoteColor(n) {
   if (isInChord(n % 12)) return pitchColor(n % 12)
   else if (scales.minor.steps[n]) return 'hsla(0,0%,90%,1)'
   else return 'hsla(0,0%,10%,1)'
-}
-
-function getCoord(n = 0, total = 12, radius = 35, width = 100) {
-  let angle = ((n - 3) / (total / 2)) * Math.PI; // Calculate the angle at which the element will be placed.
-  // For a semicircle, we would use (i / numNodes) * Math.PI.
-  let x = (radius * Math.cos(angle)) + (width / 2); // Calculate the x position of the element.
-  let y = (radius * Math.sin(angle)) + (width / 2); // Calculate the y position of the element.
-  return { x, y }
 }
 
 import { Frequency } from 'tone'

@@ -16,10 +16,9 @@
       :style="{ backgroundColor: tempo.color }"
     ) {{ tempo.note }}
   .flex.items-center
-    .button(@click="tempo.playing = true")
-      la-play
-    .button(@click="tempo.playing = false")
-      la-pause
+    .button(@click="tempo.playing = !tempo.playing")
+      la-play(v-if="!tempo.playing")
+      la-pause(v-else)  
     .button(@click="tempo.stopped = true")
       la-stop
   .flex

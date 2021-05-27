@@ -1,4 +1,5 @@
 <template lang="pug">
+svg-save(svg="tuning", :file="`tunings.svg`")  
 svg#tuning.w-full(
   version="1.1",
   baseProfile="full",
@@ -44,7 +45,6 @@ svg#tuning.w-full(
     :text="tune"
     :offset="0"
   )
-svg-save(svg="tuning", :file="`tunings.svg`")  
 </template>
 
 <script setup>

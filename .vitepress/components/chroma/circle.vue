@@ -44,24 +44,35 @@ svg.max-h-3xl.w-full(
       :x="getCoord(i).x",
       :y="getCoord(i).y + 0.5",
     ) {{ notes[i].name }} 
-
-  text(
+  g(
     @mousedown="playChord()"
     @touchstart.prevent.stop="playChord()"
     @touchend="stopChord()"
     @touchcancel="stopChord()"
     @mouseup="stopChord()"
     @mouseleave="stopChord()"
-    style="cursor:pointer;user-select:none"
-    :style="{ fill: pitchColor(tonic) }"
-    x="50",
-    y="50",
-    font-weight="bold"
-    font-size="8px"
-    font-family="Commissioner, sans-serif"
-    text-anchor="middle",
-    dominant-baseline="middle"
-    ) {{ notes[tonic].name }}{{ !chord.empty ? chord.aliases[0] : '' }}
+    style="cursor:pointer;user-select:none;transition: all 300ms ease"
+    class="hover:opacity-97"
+  )
+    circle(
+      :cx="50"
+      :cy="49"
+      :r="12"
+      :stroke-width="2"
+      :stroke-opacity="0.6"
+      style="transition: fill 300ms ease"
+      :style="{ fill: colors.lch, stroke: colors.hsl }"
+    )
+    text(
+      :style="{ fill: pitchColor(tonic) }"
+      x="50",
+      y="50",
+      font-weight="bold"
+      font-size="8px"
+      font-family="Commissioner, sans-serif"
+      text-anchor="middle",
+      dominant-baseline="middle"
+      ) {{ notes[tonic].name }}{{ !chord.empty ? chord.aliases[0] : '' }}
   text(
     style="cursor:pointer;user-select:none"
     :style="{ fill: pitchColor(tonic) }"
@@ -103,11 +114,10 @@ svg.max-h-3xl.w-full(
 </template>
 
 <script setup>
-import { notes, pitchColor, scales } from 'chromatone-theory'
-
+import { notes, pitchColor, scales, isInChroma } from 'chromatone-theory'
+import { clrd, lchToHsl, chromaColorMix } from "@theme/composables/colors.js";
 import { ScaleType, ChordType, Chord, Note } from '@tonaljs/tonal'
 import { defineProps, ref, defineEmit, computed, onMounted, onBeforeUnmount, nextTick } from 'vue'
-import { mute } from '@theme/composables/state.js'
 const props = defineProps({
   tonic: {
     type: Number,
@@ -125,7 +135,9 @@ const props = defineProps({
 
 const emit = defineEmit(['update:tonic', 'update:chroma', 'clearScale'])
 
-
+const colors = computed(() => {
+  return chromaColorMix(props.chroma, props.tonic)
+})
 
 const chord = computed(() => {
   return ChordType.get(props.chroma)
@@ -193,7 +205,7 @@ function replaceAt(string, index, replace) {
 }
 
 function isInChord(n) {
-  return props.chroma[(24 + n - props.tonic) % 12] == '1'
+  return isInChroma(props.chroma, props.tonic, n)
 }
 
 function getNoteColor(n) {

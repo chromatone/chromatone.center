@@ -17,7 +17,7 @@
 
         card-date(v-if="!item.data?.product",:date="item.lastModified")
       .text-md.mt-4.mb-2.font-normal.w-full(v-if="item.subtitle") {{ item.subtitle }}
-      header-buttons(:buttons="item.data?.buttons")
+      page-buttons(:buttons="item.data?.buttons")
 
   card-list(v-if="$site.customData.pages?.[item.data?.list]",:rows="$site.customData.pages?.[item.data?.list]")
 

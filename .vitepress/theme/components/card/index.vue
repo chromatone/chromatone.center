@@ -20,7 +20,7 @@
 
     .cover(v-if="item.data.cover", :style="{ backgroundImage: 'url(/media/' + item.data.cover + ')' }", v-motion-fade)
 
-  header-buttons(:buttons="item.data?.buttons")
+  page-buttons(:buttons="item.data?.buttons")
   line-list(:list="$site.customData.pages?.[item.data.list]")
 </template>
 

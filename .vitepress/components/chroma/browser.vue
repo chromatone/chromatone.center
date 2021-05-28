@@ -38,7 +38,7 @@ const tonic = useStorage('chroma-tonic', 0)
 const search = useStorage('chroma-browser-search', '')
 const control = useStorage('chroma-browser-filter', {
   scale: false,
-  chord: false,
+  chord: true,
   count: true,
   num: true,
   chroma: false,

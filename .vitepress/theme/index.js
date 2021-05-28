@@ -10,7 +10,6 @@ import './styles/sidebar-links.postcss'
 
 import Layout from './layout.vue'
 import NotFound from './not-found.vue'
-import rowList from '@theme/components/row/list.vue'
 
 const theme = {
   Layout,
@@ -18,7 +17,6 @@ const theme = {
   enhanceApp({ app }) {
     app.use(MotionPlugin)
     app.use(GesturePlugin)
-    app.component(rowList)
 
     if (
       process.env.NODE_ENV === 'production' &&

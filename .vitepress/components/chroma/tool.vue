@@ -38,11 +38,10 @@
 <script setup>
 import { reactive, ref, computed, watch } from 'vue'
 import { chords, notes, pitchColor } from 'chromatone-theory'
-import { ChordType, Chord, ScaleType } from '@tonaljs/tonal'
+import { ChordType, Chord, ScaleType, Interval } from '@tonaljs/tonal'
+import chordList from '@use/theory.js'
 import { useStorage } from '@vueuse/core'
 
-ChordType.add('110000000000', [' minor second'], 'minor second');
-const chordList = ChordType.all()
 const tonic = useStorage('tonic', 0)
 const chroma = useStorage('chroma', chordList[0].chroma)
 

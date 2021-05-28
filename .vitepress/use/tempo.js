@@ -1,5 +1,5 @@
 import { reactive, computed, watch, onMounted } from 'vue'
-import { Transport, start, Frequency, Loop } from 'tone'
+import { Transport, PluckSynth, start, Frequency, Loop } from 'tone'
 import { pitchColor } from 'chromatone-theory'
 
 export const tempo = reactive({
@@ -23,14 +23,17 @@ export const tempo = reactive({
   color: computed(() => pitchColor(tempo.digit)),
 })
 
-onMounted(() => {
-  const loop = new Loop((time) => {
-    tempo.blink = true
-    setTimeout(() => {
-      tempo.blink = false
-    }, 60)
-  }, '4n').start(0)
-})
+export function useTempo() {
+  onMounted(() => {
+    const loop = new Loop((time) => {
+      tempo.blink = true
+      setTimeout(() => {
+        tempo.blink = false
+      }, 60)
+    }, '4n').start(0)
+  })
+  return tempo
+}
 
 watch(
   () => tempo.bpm,

@@ -214,6 +214,7 @@ function noteColor(note, semitones) {
 <style scoped>
 .strings {
   max-height: none !important;
+  height: 1600px;
 }
 .note {
   @apply cursor-pointer;

@@ -24,6 +24,8 @@ const settings = {
 }
 
 const state = reactive({
+  initiated: false,
+  stream: null,
   middleA: settings.middleA,
   semitone: settings.semitone,
   note: {
@@ -58,6 +60,7 @@ export function useTuner() {
 }
 
 function init() {
+  state.initiated = true
   chain.audioContext = new window.AudioContext()
   chain.analyser = chain.audioContext.createAnalyser()
   chain.scriptProcessor = chain.audioContext.createScriptProcessor(
@@ -92,14 +95,15 @@ function init() {
       chain.audioContext.sampleRate,
     )
     state.running = true
-    startRecord()
+    start()
   })
 }
 
-function startRecord() {
+function start() {
   navigator.mediaDevices
     .getUserMedia({ audio: true })
     .then(function (stream) {
+      state.stream = stream
       chain.audioContext.createMediaStreamSource(stream).connect(chain.analyser)
       chain.analyser.connect(chain.scriptProcessor)
       chain.analyser.connect(chain.beatProcessor)
@@ -165,18 +169,4 @@ function freqColor(frequency) {
 
 function getRawNote(frequency) {
   return (12 * (Math.log(frequency / settings.middleA) / Math.log(2))) % 12
-}
-
-function play(frequency) {
-  if (!tools.oscillator) {
-    tools.oscillator = tools.audioContext.createOscillator()
-    tools.oscillator.connect(tools.audioContext.destination)
-    tools.oscillator.start()
-  }
-  tools.oscillator.frequency.value = frequency
-}
-
-function stop() {
-  tools.oscillator.stop()
-  tools.oscillator = null
 }

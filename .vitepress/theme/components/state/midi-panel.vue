@@ -31,7 +31,12 @@
       span {{ output.name }}
     .button(v-if="toChannel")
       span CH
-      input.ch.ml-2(type="number", max="16",min="1",length="12", v-model="midi.channel")
+      input.ch.ml-2(
+        type="number", 
+        inputmode="numeric"
+        pattern="[0-9]*"
+        max="16",min="1",length="12", 
+        v-model="midi.channel")
       
 </template>
 

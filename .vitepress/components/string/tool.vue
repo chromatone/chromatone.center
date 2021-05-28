@@ -7,11 +7,21 @@
         option(v-for="(inst,key) in instruments", :key="key", :value="key") {{ key }}
     .flex.items-center.px-4
       .text-xl Scale length
-      input.bg-transparent.text-2xl.w-5rem.m-2.p-2(type="number", v-model="instrument.l")
+      input.bg-transparent.text-2xl.w-5rem.m-2.p-2(
+        type="number", 
+        inputmode="numeric"
+        pattern="[0-9]*"
+        v-model="instrument.l"
+        )
       .text-xl mm
     .flex.items-center.px-4
       .text-xl Frets
-      input.bg-transparent.text-2xl.w-4rem.m-2.p-2(type="number", v-model="instrument.frets")
+      input.bg-transparent.text-2xl.w-4rem.m-2.p-2(
+        type="number", 
+        inputmode="numeric"
+        pattern="[0-9]*"
+        v-model="instrument.frets"
+        )
   .flex.flex-wrap
     svg#fretboard.flex-1.max-h-3xl.w-full.strings(
     version="1.1",

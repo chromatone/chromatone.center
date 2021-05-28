@@ -12,15 +12,27 @@
     viewBox="0 0 1000 1000",
     xmlns="http://www.w3.org/2000/svg",
     )
-    circle.transition-fill.duration-150(
+    g(
       v-for="(coord,n) in stepCoords",
       :key="coord.x"
-      :cx="coord.x"
-      :cy="coord.y"
-      :r="100"
-      :fill="n + 1 == current ? 'currentColor' : 'transparent'"
-      :stroke="n + 1 !== current ? 'currentColor' : 'transparent'"
     )
+      circle.transition-fill.duration-100(
+        :cx="coord.x"
+        :cy="coord.y"
+        :r="100"
+        :fill="n + 1 == current ? 'currentColor' : 'transparent'"
+        :stroke="n + 1 !== current ? 'currentColor' : 'transparent'"
+      )
+      text(
+        style="user-select:none;transition:all 200ms ease"
+        :fill="n + 1 !== current ? 'currentColor' : 'var(--c-bg)'"
+        font-family="Commissioner, sans-serif"
+        font-size="42px"
+        text-anchor="middle",
+        dominant-baseline="middle"
+        :x="coord.x",
+        :y="coord.y + 0.5",
+      ) {{ n + 1 }}
     line(
       :x1="500"
       :y1="500"
@@ -29,6 +41,12 @@
       stroke-linecap="cound"
       :x2="progress.x"
       :y2="progress.y"
+    )
+    circle(
+      :cx="500"
+      :cy="500"
+      fill="currentColor"
+      :r="5"
     )
 </template>
 

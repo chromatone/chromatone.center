@@ -3,12 +3,17 @@
 
 
   .flex
-    .button(@click="tempo.bpm--")
+    .button(@click="tempo.bpm = Math.round(tempo.bpm - 1)")
       la-minus
     .info.flex
-      input.w-4rem.bg-transparent(type="number",v-model="tempo.bpm")
+      input.w-4rem.bg-transparent(
+        inputmode="numeric"
+        pattern="[0-9]*"
+        type="number",
+        v-model="tempo.bpm"
+        )
       .ml-2 BPM
-    .button(@click="tempo.bpm++")
+    .button(@click="tempo.bpm = Math.round(tempo.bpm + 1)")
       la-plus
   .flex.items-center
     tempo-listen.button(@set="tempo.bpm = $event")
@@ -25,11 +30,19 @@
     .button(@click="tempo.stopped = true")
       la-stop
   .flex
+    .button(@click="tempo.metre.over--")
+      la-minus
     .info
-      input.bg-transparent.w-3rem(type="number", v-model="tempo.metre.over")
-    .info /
-    .info {{ tempo.metre.under }}
-
+      input.bg-transparent.w-3rem(
+        inputmode="numeric"
+        pattern="[0-9]*"
+        type="number", 
+        v-model="tempo.metre.over"
+        )
+      span.ml-2 /
+      span {{ tempo.metre.under }}
+    .button(@click="tempo.metre.over++")
+      la-plus
   tempo-row
 
 </template>
@@ -43,7 +56,7 @@ const tempo = useTempo();
 
 <style scoped>
 .button {
-  @apply p-4 border-1 m-1 cursor-pointer shadow rounded text-2xl;
+  @apply p-4 border-1 m-1 cursor-pointer shadow-md rounded text-2xl;
 }
 
 .info {

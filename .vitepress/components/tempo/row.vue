@@ -1,16 +1,41 @@
 <template lang="pug">
-.flex.flex-wrap
-  .info(
-    :class="{ active: step == current }",
-    v-for="step in steps", 
-    :key="step"
-    ) {{ step }} 
+.flex.flex-col.items-center
+  .flex.flex-wrap
+    .info(
+      :class="{ active: step == current }",
+      v-for="step in steps", 
+      :key="step"
+      ) {{ step }}
+  svg.max-h-3xl.w-full.p-4(
+    version="1.1",
+    baseProfile="full",
+    viewBox="0 0 1000 1000",
+    xmlns="http://www.w3.org/2000/svg",
+    )
+    circle.transition-fill.duration-150(
+      v-for="(coord,n) in stepCoords",
+      :key="coord.x"
+      :cx="coord.x"
+      :cy="coord.y"
+      :r="100"
+      :fill="n + 1 == current ? 'currentColor' : 'transparent'"
+      :stroke="n + 1 !== current ? 'currentColor' : 'transparent'"
+    )
+    line(
+      :x1="500"
+      :y1="500"
+      stroke-width="4"
+      stroke="currentColor"
+      stroke-linecap="cound"
+      :x2="progress.x"
+      :y2="progress.y"
+    )
 </template>
 
 <script setup>
 import { tempo } from '@use/tempo.js'
 import { Transport, PluckSynth, Sequence, Draw } from "tone";
-import { reactive, ref, watchEffect } from "vue";
+import { reactive, ref, watchEffect, computed } from "vue";
 import { mute } from '@use/synth.js'
 import { getCircleCoord } from 'chromatone-theory'
 
@@ -21,6 +46,12 @@ const synth = new PluckSynth({
 
 const current = ref(0);
 const steps = reactive([1, 2, 3, 4]);
+
+const stepCoords = computed(() => {
+  return steps.map(step => {
+    return getCircleCoord(step - 0.5, steps.length, 400, 1000)
+  })
+})
 
 const sequence = new Sequence(
   (time, step) => {
@@ -44,6 +75,16 @@ const sequence = new Sequence(
   steps,
   "4n"
 ).start(0);
+
+const progress = computed(() => {
+  if (tempo.ticks) {
+    return getCircleCoord(sequence.progress * 360, 360, 400, 1000)
+  } else {
+    return { x: 500, y: 0 }
+  }
+})
+
+
 
 watchEffect(() => {
   steps.length = 0;

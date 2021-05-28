@@ -29,14 +29,8 @@
       input.bg-transparent.w-3rem(type="number", v-model="tempo.metre.over")
     .info /
     .info {{ tempo.metre.under }}
-  .flex.flex-col.items-stretch
-    tempo-row.m-auto
-    svg.max-h-3xl.w-full(
-      version="1.1",
-      baseProfile="full",
-      viewBox="0 0 1000 1000",
-      xmlns="http://www.w3.org/2000/svg",
-      )
+
+  tempo-row
 
 </template>
 

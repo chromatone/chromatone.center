@@ -10,6 +10,7 @@ export const tempo = reactive({
   stopped: false,
   progress: 0,
   position: 0,
+  ticks: 0,
   metre: {
     over: 4,
     under: 4,
@@ -62,6 +63,7 @@ watch(
       Transport.start()
       requestAnimationFrame(function progress() {
         tempo.position = Transport.position
+        tempo.ticks = Transport.ticks
         if (tempo.playing) {
           requestAnimationFrame(progress)
         }

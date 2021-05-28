@@ -33,7 +33,22 @@
         :x="coord.x",
         :y="coord.y + 0.5",
       ) {{ n + 1 }}
+    g(
+      v-for="(line,i) in lineCoords"
+      :key="line[0].x"
+    )
+      line(
+        style="mix-blend-mode:difference;"
+        :x1="line[0].x"
+        :y1="line[0].y"
+        stroke-width="2"
+        stroke="currentColor"
+        stroke-linecap="cound"
+        :x2="line[1].x"
+        :y2="line[1].y"
+      )
     line(
+      style="mix-blend-mode:difference;"
       :x1="500"
       :y1="500"
       stroke-width="4"
@@ -71,6 +86,15 @@ const stepCoords = computed(() => {
   })
 })
 
+const lineCoords = computed(() => {
+  return steps.map(step => {
+    return [
+      getCircleCoord(step, steps.length, 450, 1000),
+      getCircleCoord(step, steps.length, 350, 1000)
+    ]
+  })
+})
+
 const sequence = new Sequence(
   (time, step) => {
     Draw.schedule(() => {
@@ -98,7 +122,7 @@ const progress = computed(() => {
   if (tempo.ticks) {
     return getCircleCoord(sequence.progress * 360, 360, 400, 1000)
   } else {
-    return { x: 500, y: 0 }
+    return { x: 500, y: 100 }
   }
 })
 

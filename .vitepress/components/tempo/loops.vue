@@ -1,12 +1,12 @@
 <template lang="pug">
 .flex.flex-col.items-center
-  .flex.flex-wrap
+  .flex.flex-wrap.p-8.max-w-65ch.absolute
     .info(
-      :class="{ active: step == current }",
+      :class="{ active: step == current, measure: (step - 1) % tempo.metre.under == 0 }",
       v-for="step in steps", 
       :key="step"
       ) 
-  svg.max-h-3xl.w-full.p-4(
+  svg.max-h-3xl.w-full.p-4.mt-8(
     version="1.1",
     baseProfile="full",
     viewBox="0 0 1000 1000",
@@ -54,8 +54,8 @@
       stroke-width="4"
       stroke="currentColor"
       stroke-linecap="cound"
-      :x2="progress.x"
-      :y2="progress.y"
+      :x2="lineProgress.x"
+      :y2="lineProgress.y"
     )
     circle(
       :cx="500"
@@ -67,18 +67,31 @@
 
 <script setup>
 import { tempo } from '@use/tempo.js'
-import { Transport, PluckSynth, Sequence, Draw } from "tone";
-import { reactive, ref, watchEffect, computed } from "vue";
+import { PluckSynth } from "tone";
+import { computed } from "vue";
 import { mute } from '@use/synth.js'
 import { getCircleCoord } from 'chromatone-theory'
-
+import { useSequence } from './sequencer.js'
 
 const synth = new PluckSynth({
   volume: -4,
 }).toDestination();
 
-const current = ref(0);
-const steps = reactive([1, 2, 3, 4]);
+const { progress, current, steps } = useSequence(
+  beatClick
+)
+
+function beatClick(step, time) {
+  if (mute.value) return
+  if (step == 1) {
+    synth.resonance = 0.95
+    synth.triggerAttackRelease(tempo.tune, '16n', time)
+  } else {
+    synth.resonance = 0.85
+    synth.triggerAttackRelease('G4', '16n', time)
+  }
+
+}
 
 const stepCoords = computed(() => {
   return steps.map(step => {
@@ -95,62 +108,27 @@ const lineCoords = computed(() => {
   })
 })
 
-const sequence = new Sequence(
-  (time, step) => {
-    Draw.schedule(() => {
-      current.value = step;
-    }, time);
-    if (mute.value) return
-    if (step == 1) {
-      synth.resonance = 0.85;
-      synth.triggerAttackRelease("C4", "16n", time);
-    } else {
-      synth.resonance = 0.8;
-      synth.triggerAttackRelease(
-        "G4",
-        "16n",
-        time
-      );
-    }
-
-  },
-  steps,
-  "4n"
-).start(0);
-
-const progress = computed(() => {
-  if (tempo.ticks) {
-    return getCircleCoord(sequence.progress * 360, 360, 400, 1000)
+const lineProgress = computed(() => {
+  if (progress.value > 0) {
+    return getCircleCoord(progress.value * 360, 360, 400, 1000)
   } else {
     return { x: 500, y: 100 }
   }
-})
-
-
-
-watchEffect(() => {
-  steps.length = 0;
-  for (let i = 1; i <= tempo.metre.over; i++) {
-    steps.push(i);
-  }
-  sequence.events = steps;
 });
-
-watchEffect(() => {
-  if (tempo.stopped) {
-    current.value = 0;
-  }
-});
-
 
 </script>
 
 <style scoped>
 .info {
-  @apply p-2 rounded-full m-1 border-1 text-2xl;
+  @apply p-2 rounded-full m-1 border-1 border-current text-2xl;
 }
 
-.active {
+.active,
+.measure.active {
   @apply bg-current transition-all duration-400;
+}
+
+.measure {
+  background-color: hsla(0, 0%, 50%, 0.5);
 }
 </style>

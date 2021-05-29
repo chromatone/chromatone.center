@@ -1,6 +1,7 @@
 import { reactive, computed, watch, onMounted } from 'vue'
 import { Transport, PluckSynth, start, Frequency, Loop } from 'tone'
 import { pitchColor } from 'chromatone-theory'
+import { Note } from '@tonaljs/tonal'
 
 export const tempo = reactive({
   bpm: 100,
@@ -20,6 +21,9 @@ export const tempo = reactive({
   },
   hz: computed(() => (tempo.bpm / 60).toFixed(2)),
   note: computed(() => Frequency(tempo.hz).toNote()),
+  tune: computed(() => {
+    return Note.pitchClass(tempo.note) + 4
+  }),
   digit: computed(() => (Frequency(tempo.hz).toMidi() + 12 * 10 + 3) % 12),
   color: computed(() => pitchColor(tempo.digit)),
 })
@@ -38,7 +42,7 @@ export function useTempo() {
 
 watch(
   () => tempo.bpm,
-  (bpm) => Transport.bpm.rampTo(bpm, 1),
+  (bpm) => Transport.bpm.rampTo(bpm, '4n'),
 )
 
 watch(

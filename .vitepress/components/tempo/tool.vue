@@ -1,8 +1,6 @@
 <template lang="pug">
 .flex.flex-col.max-w-65ch.m-auto.items-center
-
-
-  .flex
+  .flex.flex-wrap
     .button(@click="tempo.bpm = Math.round(tempo.bpm - 1)")
       la-minus
     .info.flex
@@ -15,13 +13,21 @@
       .ml-2 BPM
     .button(@click="tempo.bpm = Math.round(tempo.bpm + 1)")
       la-plus
+
+  .flex.items-center
+    .button(@click="tempo.bpm = Math.round(tempo.bpm) / 2")
+      la-slash
+      span 2
+    .button(@click="tempo.bpm = Math.round(tempo.bpm) * 2")
+      la-times
+      span 2
   .flex.items-center
     tempo-listen.button(@set="tempo.bpm = $event")
     .info.transition-all.duration-60(
       :style="{ backgroundColor: tempo.blink ? 'currentColor' : 'transparent' }"
     ) {{ tempo.hz }} Hz
-    .info(
-      :style="{ backgroundColor: tempo.color }"
+    .info.border-current(
+      :style="{ color: tempo.color }"
     ) {{ tempo.note }}
   .flex.items-center
     .button(@click="tempo.playing = !tempo.playing")
@@ -43,7 +49,7 @@
       span {{ tempo.metre.under }}
     .button(@click="tempo.metre.over++")
       la-plus
-  tempo-row
+  tempo-loops
 
 </template>
 

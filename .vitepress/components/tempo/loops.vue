@@ -1,12 +1,12 @@
 <template lang="pug">
-.flex.flex-col.items-center
+.flex.flex-col.items-center.w-full
   .flex.flex-wrap.p-8.max-w-65ch.absolute
     .info(
       :class="{ active: step == current, measure: (step - 1) % tempo.metre.under == 0 }",
       v-for="step in steps", 
       :key="step"
       ) 
-  svg.max-h-3xl.w-full.p-4.mt-8(
+  svg.w-full.p-4.mt-8(
     version="1.1",
     baseProfile="full",
     viewBox="0 0 1000 1000",

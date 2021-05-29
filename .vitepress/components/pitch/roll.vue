@@ -27,7 +27,8 @@ const draw = reactive({
   runnerWidth: 2,
   runnerAhead: 4,
   maxPlotFrequency: 880,
-  maxPlotNote: 108,
+  maxPlotNote: 97,
+  minPlotNote: 24,
   prevBeat: 0,
   step: 0,
 })
@@ -61,19 +62,19 @@ watch(() => state?.frame, frame => {
 
   //notes
   if (!state.note.silent) {
-    const y = roll.value.height - (state.note.value) / (draw.maxPlotNote) * roll.value.height
+    const y = roll.value.height - (state.note.value - draw.minPlotNote) / (draw.maxPlotNote - draw.minPlotNote) * roll.value.height
     ctx.arc(x - 5, y, 5, 0, 4 * Math.PI)
     ctx.fillStyle = state.note.color
     ctx.fill()
   }
 
   if (frame % 50 == 0) {
-    // green lines
+    // green octave lines
     ctx.beginPath()
     ctx.strokeStyle = "hsla(90,50%,50%,0.1)"
     ctx.lineWidth = "1";
     for (let oct of octaves) {
-      let y = roll.value.height - oct * 12 / draw.maxPlotNote * roll.value.height
+      let y = roll.value.height - (oct * 12 - draw.minPlotNote) / (draw.maxPlotNote - draw.minPlotNote) * roll.value.height
       ctx.moveTo(0, y)
       ctx.lineTo(roll.value.width, y)
     }

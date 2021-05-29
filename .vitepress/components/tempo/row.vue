@@ -5,7 +5,7 @@
       :class="{ active: step == current }",
       v-for="step in steps", 
       :key="step"
-      ) {{ step }}
+      ) 
   svg.max-h-3xl.w-full.p-4(
     version="1.1",
     baseProfile="full",
@@ -147,7 +147,7 @@ watchEffect(() => {
 
 <style scoped>
 .info {
-  @apply p-4 rounded m-1 border-1 text-2xl;
+  @apply p-2 rounded-full m-1 border-1 text-2xl;
 }
 
 .active {

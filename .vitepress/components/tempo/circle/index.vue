@@ -32,7 +32,8 @@
           )
       .button(@click="loops.push({ ...add })")
         la-plus
-  svg.w-full.p-4(
+
+  svg#metronome.w-full.p-4(
     version="1.1",
     baseProfile="full",
     viewBox="0 0 1000 1000",
@@ -46,6 +47,10 @@
       :radius="400 - i * 125"
       @del="loops.splice(i, 1)"
     )
+  //- svg-save(
+  //-   svg="metronome"
+  //-   :file="`tempo.svg`"
+  //- )
 </template>
 
 <script setup>

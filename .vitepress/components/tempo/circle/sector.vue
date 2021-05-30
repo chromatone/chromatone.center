@@ -4,7 +4,7 @@ g(
   svg-arc(
     :from="(step - 1) / total * 360"
     :to="(step) / total * 360"
-    :fill="active ? levelColor(step - 1, total) : 'transparent'"
+    :fill="active ? colord(levelColor(step - 1, total, 1)).toHex() : 'transparent'"
     :radius="radius + 50"
     opacity="0.5"
   )
@@ -13,7 +13,7 @@ g(
     :cy="stepCoord.y"
     :r="50"
     :fill="active ? 'currentColor' : 'transparent'"
-    :stroke="levelColor(step - 1, total)"
+    :stroke="colord(levelColor(step - 1, total, 1)).toHex()"
   )
   text(
     style="user-select:none;transition:all 200ms ease"
@@ -23,7 +23,7 @@ g(
     text-anchor="middle",
     dominant-baseline="middle"
     :x="stepCoord.x",
-    :y="stepCoord.y + 0.5",
+    :y="stepCoord.y + 4",
   ) {{ step }}
   line(
     style="mix-blend-mode:difference;"
@@ -42,6 +42,7 @@ g(
 import { defineProps, computed } from 'vue'
 import { levelColor } from "@theme/composables/colors.js";
 import { getCircleCoord } from 'chromatone-theory'
+import { colord } from 'colord'
 const props = defineProps({
   radius: {
     type: Number,

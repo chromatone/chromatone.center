@@ -5,7 +5,16 @@ button.mute.p-2(@click="toggle()")
 </template>
 
 <script setup>
-import { mute } from '@use/synth.js'
+import {
+  watchEffect
+} from 'vue'
+import { getDestination } from 'tone'
+import { useStorage } from '@vueuse/core'
+const mute = useStorage('mute', false)
+
+watchEffect(() => {
+  getDestination().mute = mute.value
+})
 
 function toggle() {
   mute.value = !mute.value

@@ -5,5 +5,6 @@ tags: apps
 cover: apps/chord.svg
 date: 2021-04-20
 ---
-
-<chroma-tool />
+<client-only>
+  <chroma-tool />
+</client-only>

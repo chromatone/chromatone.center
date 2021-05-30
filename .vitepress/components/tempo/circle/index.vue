@@ -1,10 +1,13 @@
 <template lang="pug">
-.flex.flex-col.items-center.w-full
-  .flex.flex-col
-    .flex(
-      v-for="loop in loops", 
+.flex.flex-col.items-center.w-full.mt-8
+  .flex.flex-col.items-center
+    .flex.flex-wrap(
+      v-for="(loop,i) in loops", 
       :key="loop"
     ) 
+      .button(@click="loop.mute = !loop.mute")
+        la-volume-off(v-if="loop.mute")
+        la-volume-up(v-else)
       .button(@click="loop.over--")
         la-minus
       .info {{ loop.over }} / {{ loop.under }}
@@ -12,7 +15,7 @@
         la-plus
       .button(@click="loops.splice(i, 1)")
         la-times
-    .flex(v-if="loops.length < 2")
+    .flex(v-if="loops.length < 3")
       .info
         input.bg-transparent.w-3rem(
           inputmode="numeric"
@@ -39,9 +42,9 @@
       v-for="(loop,i) in loops",
       :key="loop"
       :order="i"
-      :metre="loop"
-      :radius="400 - i * 120"
-      @del="loops.splice(i - 1, 1)"
+      :loop="loop"
+      :radius="400 - i * 125"
+      @del="loops.splice(i, 1)"
     )
 </template>
 
@@ -51,16 +54,19 @@ import { useStorage } from '@vueuse/core'
 
 
 const add = reactive({
+  mute: false,
   over: 4,
   under: 4,
 })
 
 const loops = useStorage('tempo-loops', [
   {
+    mute: false,
     over: 8,
     under: 8
   },
   {
+    mute: false,
     over: 4,
     under: 4
   }]);
@@ -68,10 +74,10 @@ const loops = useStorage('tempo-loops', [
 
 <style scoped>
 .button {
-  @apply p-4 border-1 m-1 cursor-pointer shadow-md rounded text-2xl;
+  @apply p-2 border-1 m-1 cursor-pointer shadow-md rounded text-2xl;
 }
 .info {
-  @apply p-4 rounded m-1 border-1 text-2xl;
+  @apply p-2 rounded m-1 text-2xl flex items-center;
 }
 
 .active,

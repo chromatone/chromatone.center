@@ -216,9 +216,8 @@ function getNoteColor(n) {
 
 import { Frequency } from 'tone'
 import { playOnce as midiOnce, playNote as midiPlay, stopNote as midiStop } from '@use/midi.js'
-import { useSynth } from '@use/synth.js'
+import { playOnce, attack, release } from '@use/synth.js'
 
-const { playOnce, attack, release } = useSynth()
 
 
 function playNote(note = 0, octave = 0) {

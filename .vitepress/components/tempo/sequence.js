@@ -8,10 +8,9 @@ import {
   start,
   Frequency,
 } from 'tone'
-import { mute } from '@use/synth.js'
 import { reactive, ref, watchEffect, computed, onBeforeUnmount } from 'vue'
 
-export function useSequence(size = { over: 4, under: 4 }, order = 0) {
+export function useSequence(metre = { over: 4, under: 4 }, order = 0) {
   const panner = new Panner(order % 2 == 0 ? -0.5 : 0.5).toDestination()
   const synth = new PluckSynth({
     volume: -2,
@@ -28,12 +27,12 @@ export function useSequence(size = { over: 4, under: 4 }, order = 0) {
       beatClick(step, time)
     },
     steps,
-    size.under + 'n',
+    metre.under + 'n',
   ).start(0)
 
   watchEffect(() => {
     steps.length = 0
-    for (let i = 1; i <= size.over; i++) {
+    for (let i = 1; i <= metre.over; i++) {
       steps.push(i)
     }
     sequence.events = steps
@@ -57,7 +56,7 @@ export function useSequence(size = { over: 4, under: 4 }, order = 0) {
     if (context.state == 'suspended') {
       start()
     }
-    if (mute.value) return
+    if (metre.mute) return
     if (mutes[step]) return
     if (step == 1) {
       synth.resonance = 0.9

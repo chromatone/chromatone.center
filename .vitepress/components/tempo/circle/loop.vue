@@ -1,16 +1,36 @@
 <template lang="pug">
 g
-  tempo-circle-sector(
-    v-for="step in steps"
-    :key="step"
-    :step="step"
-    :total="steps.length"
-    :active="!mutes[step] && step == current"
-    :radius="radius"
-    :opacity="mutes[step] ? 0.3 : 1"
-    style="cursor:pointer"
-    @click="mutes[step] = !mutes[step]"
+  g(
+    :opacity="loop.mute ? '0.25' : '1'"
   )
+    tempo-circle-sector(
+      v-for="step in steps"
+      :key="step"
+      :step="step"
+      :total="steps.length"
+      :active="!mutes[step] && step == current"
+      :radius="radius"
+      :opacity="mutes[step] ? 0.3 : 1"
+      style="cursor:pointer"
+      @click="mutes[step] = !mutes[step]"
+    )
+  g(
+    @click="loop.mute = false"
+    v-if="loop.mute"
+    style="cursor:pointer"
+  )
+    circle(
+      :r="24"
+      :cx="500"
+      :cy="144 + 125 * order"
+      fill="var(--c-bg)"
+    )
+    la-volume-off(
+      style="color:currentColor"
+      font-size="40px"
+      :x="477"
+      :y="120 + 125 * order"
+    )
   text(
     style="user-select:none;transition:all 300ms ease"
     fill="currentColor"
@@ -19,8 +39,8 @@ g
     text-anchor="end",
     dominant-baseline="middle"
     :x="490",
-    :y="100 + 120 * order",
-    ) {{ metre.over }} 
+    :y="100 + 125 * order",
+    ) {{ loop.over }} 
   text(
     style="user-select:none;transition:all 300ms ease"
     fill="currentColor"
@@ -29,8 +49,8 @@ g
     text-anchor="left",
     dominant-baseline="middle"
     :x="510",
-    :y="100 + 120 * order",
-    ) {{ metre.under }}
+    :y="100 + 125 * order",
+    ) {{ loop.under }}
 
   line(
     style="mix-blend-mode:difference;"
@@ -66,9 +86,10 @@ const props = defineProps({
     type: Number,
     default: 0
   },
-  metre: {
+  loop: {
     type: Object,
     default: {
+      mute: false,
       over: 4,
       under: 4
     }
@@ -76,11 +97,11 @@ const props = defineProps({
 });
 
 
-const { progress, current, steps, mutes } = useSequence(props.metre, props.order)
+const { progress, current, steps, mutes } = useSequence(props.loop, props.order)
 
 const lineProgress = computed(() => {
   if (progress.value > 0) {
-    return getCircleCoord(progress.value * 360, 360, props.radius, 1000)
+    return getCircleCoord(progress.value * 360, 360, props.radius + 50, 1000)
   } else {
     return { x: 500, y: 100 }
   }

@@ -1,16 +1,25 @@
 import { tempo } from '@use/tempo.js'
-import { Sequence, Draw, PluckSynth, context, start } from 'tone'
+import {
+  Sequence,
+  Panner,
+  Draw,
+  PluckSynth,
+  context,
+  start,
+  Frequency,
+} from 'tone'
 import { mute } from '@use/synth.js'
-import { reactive, ref, watchEffect, computed } from 'vue'
+import { reactive, ref, watchEffect, computed, onBeforeUnmount } from 'vue'
 
-export function useSequence(size = '4n') {
+export function useSequence(size = { over: 4, under: 4 }, order = 0) {
+  const panner = new Panner(order % 2 == 0 ? -0.5 : 0.5).toDestination()
   const synth = new PluckSynth({
-    volume: -4,
-  }).toDestination()
+    volume: -2,
+  }).connect(panner)
 
   const current = ref(0)
   const steps = reactive([1, 2, 3, 4])
-  const measure = size.match(/(\d+)/)[0]
+  const mutes = reactive({})
   const sequence = new Sequence(
     (time, step) => {
       Draw.schedule(() => {
@@ -19,12 +28,12 @@ export function useSequence(size = '4n') {
       beatClick(step, time)
     },
     steps,
-    size,
+    size.under + 'n',
   ).start(0)
 
   watchEffect(() => {
     steps.length = 0
-    for (let i = 1; i <= tempo.metre.over; i++) {
+    for (let i = 1; i <= size.over; i++) {
       steps.push(i)
     }
     sequence.events = steps
@@ -49,19 +58,34 @@ export function useSequence(size = '4n') {
       start()
     }
     if (mute.value) return
+    if (mutes[step]) return
     if (step == 1) {
-      synth.resonance = 0.95
-      synth.triggerAttackRelease(tempo.tune, '16n', time)
+      synth.resonance = 0.9
+      synth.triggerAttackRelease(
+        order % 2 == 1 ? tempo.tune : Frequency(tempo.tune).transpose(-5),
+        '16n',
+        time,
+      )
     } else {
       synth.resonance = 0.85
-      synth.triggerAttackRelease('G4', '16n', time)
+      synth.triggerAttackRelease(
+        order % 2 == 1 ? Frequency(tempo.tune).transpose(7) : tempo.tune,
+        '16n',
+        time,
+      )
     }
   }
+
+  onBeforeUnmount(() => {
+    sequence.stop().dispose()
+    panner.dispose()
+    synth.dispose()
+  })
 
   return {
     progress,
     current,
     steps,
-    measure,
+    mutes,
   }
 }

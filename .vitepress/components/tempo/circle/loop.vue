@@ -5,8 +5,33 @@ g
     :key="step"
     :step="step"
     :total="steps.length"
-    :active="step == current"
+    :active="!mutes[step] && step == current"
+    :radius="radius"
+    :opacity="mutes[step] ? 0.3 : 1"
+    style="cursor:pointer"
+    @click="mutes[step] = !mutes[step]"
   )
+  text(
+    style="user-select:none;transition:all 300ms ease"
+    fill="currentColor"
+    font-family="Commissioner, sans-serif"
+    font-size="40px"
+    text-anchor="end",
+    dominant-baseline="middle"
+    :x="490",
+    :y="100 + 120 * order",
+    ) {{ metre.over }} 
+  text(
+    style="user-select:none;transition:all 300ms ease"
+    fill="currentColor"
+    font-family="Commissioner, sans-serif"
+    font-size="40px"
+    text-anchor="left",
+    dominant-baseline="middle"
+    :x="510",
+    :y="100 + 120 * order",
+    ) {{ metre.under }}
+
   line(
     style="mix-blend-mode:difference;"
     :x1="500"
@@ -23,19 +48,39 @@ g
     fill="currentColor"
     :r="5"
   )
-  </template>
+</template>
   
-  <script setup>
-import { tempo } from '@use/tempo.js'
-import { computed } from "vue";
+<script setup>
+import { computed, defineProps, defineEmit } from "vue";
 import { getCircleCoord } from 'chromatone-theory'
 import { useSequence } from '../sequence.js'
 
-const { progress, current, steps, measure } = useSequence()
+defineEmit('del')
+
+const props = defineProps({
+  radius: {
+    type: Number,
+    default: 400
+  },
+  order: {
+    type: Number,
+    default: 0
+  },
+  metre: {
+    type: Object,
+    default: {
+      over: 4,
+      under: 4
+    }
+  }
+});
+
+
+const { progress, current, steps, mutes } = useSequence(props.metre, props.order)
 
 const lineProgress = computed(() => {
   if (progress.value > 0) {
-    return getCircleCoord(progress.value * 360, 360, 400, 1000)
+    return getCircleCoord(progress.value * 360, 360, props.radius, 1000)
   } else {
     return { x: 500, y: 100 }
   }
@@ -43,7 +88,7 @@ const lineProgress = computed(() => {
 
 </script>
   
-  <style scoped>
+<style scoped>
 .info {
   @apply p-2 rounded-full m-1 border-1 border-current text-2xl;
 }

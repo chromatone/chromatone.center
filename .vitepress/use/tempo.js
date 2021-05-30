@@ -2,9 +2,10 @@ import { reactive, computed, watch, onMounted } from 'vue'
 import { Transport, PluckSynth, start, Frequency, Loop } from 'tone'
 import { pitchColor } from 'chromatone-theory'
 import { Note } from '@tonaljs/tonal'
+import { useStorage } from '@vueuse/core'
 
 export const tempo = reactive({
-  bpm: 100,
+  bpm: useStorage('tempo-bpm', 100),
   blink: false,
   started: false,
   playing: false,

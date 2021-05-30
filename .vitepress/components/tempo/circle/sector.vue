@@ -1,12 +1,19 @@
 <template lang="pug">
 g(
 )
+  svg-arc(
+    :from="(step - 1) / total * 360"
+    :to="(step) / total * 360"
+    :fill="active ? levelColor(step - 1, total) : 'transparent'"
+    :radius="radius + 50"
+    opacity="0.5"
+  )
   circle.transition-fill.duration-100(
     :cx="stepCoord.x"
     :cy="stepCoord.y"
-    :r="100"
+    :r="50"
     :fill="active ? 'currentColor' : 'transparent'"
-    :stroke="!active ? 'currentColor' : 'transparent'"
+    :stroke="levelColor(step - 1, total)"
   )
   text(
     style="user-select:none;transition:all 200ms ease"
@@ -28,12 +35,18 @@ g(
     :x2="lineCoord[1].x"
     :y2="lineCoord[1].y"
   )
+
 </template>
 
 <script setup>
 import { defineProps, computed } from 'vue'
+import { levelColor } from "@theme/composables/colors.js";
 import { getCircleCoord } from 'chromatone-theory'
 const props = defineProps({
+  radius: {
+    type: Number,
+    default: 400,
+  },
   step: {
     type: Number,
     default: 0
@@ -50,15 +63,15 @@ const props = defineProps({
 
 const stepCoord = computed(() => {
 
-  return getCircleCoord(props.step - 0.5, props.total, 400, 1000)
+  return getCircleCoord(props.step - 0.5, props.total, props.radius, 1000)
 
 })
 
 const lineCoord = computed(() => {
 
   return [
-    getCircleCoord(props.step, props.total, 450, 1000),
-    getCircleCoord(props.step, props.total, 350, 1000)
+    getCircleCoord(props.step, props.total, props.radius + 50, 1000),
+    getCircleCoord(props.step, props.total, props.radius - 50, 1000)
   ]
 
 })

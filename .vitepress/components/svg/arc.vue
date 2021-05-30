@@ -1,5 +1,11 @@
 <template lang="pug">
-path(:d="d" :fill="fill" :stroke="stroke" fill-rule="evenodd")
+path(
+  opacity="0.4"
+  style="transition: all 150ms ease-in-out"
+  :d="d" 
+  :fill="fill" 
+  :stroke="stroke" fill-rule="evenodd"
+  )
 </template>
 
 <script setup>

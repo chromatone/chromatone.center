@@ -1,5 +1,34 @@
 <template lang="pug">
 .flex.flex-col.items-center.w-full
+  .flex.flex-col
+    .flex(
+      v-for="loop in loops", 
+      :key="loop"
+    ) 
+      .button(@click="loop.over--")
+        la-minus
+      .info {{ loop.over }} / {{ loop.under }}
+      .button(@click="loop.over++")
+        la-plus
+      .button(@click="loops.splice(i, 1)")
+        la-times
+    .flex(v-if="loops.length < 2")
+      .info
+        input.bg-transparent.w-3rem(
+          inputmode="numeric"
+          pattern="[0-9]*"
+          type="number", 
+          v-model="add.over"
+          )
+        span.ml-2 /
+        input.bg-transparent.w-3rem(
+          inputmode="numeric"
+          pattern="[0-9]*"
+          type="number", 
+          v-model="add.under"
+          )
+      .button(@click="loops.push({ ...add })")
+        la-plus
   svg.w-full.p-4(
     version="1.1",
     baseProfile="full",
@@ -10,64 +39,30 @@
       v-for="(loop,i) in loops",
       :key="loop"
       :order="i"
-      :metre="loop.metre"
+      :metre="loop"
       :radius="400 - i * 120"
-      @del="loops.splice(i, 1)"
+      @del="loops.splice(i - 1, 1)"
     )
-  .flex.flex-col
-    .flex(
-      v-for="loop in loops", 
-      :key="loop.metre"
-    ) 
-      .button(@click="loop.metre.over--")
-        la-minus
-      .info {{ loop.metre.over }} / {{ loop.metre.under }}
-      .button(@click="loop.metre.over++")
-        la-plus
-      .button(@click="loops.splice(i, 1)")
-        la-times
-    .flex(v-if="loops.length < 2")
-      .info
-        input.bg-transparent.w-3rem(
-          inputmode="numeric"
-          pattern="[0-9]*"
-          type="number", 
-          v-model="add.metre.over"
-          )
-        span.ml-2 /
-        input.bg-transparent.w-3rem(
-          inputmode="numeric"
-          pattern="[0-9]*"
-          type="number", 
-          v-model="add.metre.under"
-          )
-      .button(@click="loops.push({ metre: { ...add.metre } })")
-        la-plus
-
 </template>
 
 <script setup>
-import { reactive, computed } from 'vue'
+import { reactive, computed, ref } from 'vue'
+import { useStorage } from '@vueuse/core'
+
 
 const add = reactive({
-  metre: {
-    over: 4,
-    under: 4,
-  }
+  over: 4,
+  under: 4,
 })
 
-const loops = reactive([
+const loops = useStorage('tempo-loops', [
   {
-    metre: {
-      over: 8,
-      under: 8
-    }
+    over: 8,
+    under: 8
   },
   {
-    metre: {
-      over: 4,
-      under: 4
-    }
+    over: 4,
+    under: 4
   }]);
 </script>
 

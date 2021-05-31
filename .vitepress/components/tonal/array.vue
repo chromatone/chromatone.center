@@ -102,7 +102,7 @@ const props = defineProps({
 const scale = scales.minor
 
 const activeSteps = computed(() => {
-  let activeSteps = rotateArray(scale.steps, props.tonic)
+  let activeSteps = rotateArray(scale.steps, -props.tonic)
   return activeSteps
 })
 

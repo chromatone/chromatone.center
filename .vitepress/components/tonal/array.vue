@@ -35,7 +35,7 @@ svg#tonal-array(
         fill="white", 
         :x="80", 
         :y="-40"
-        ) {{ note.name }}
+        ) {{ note.name }}M
       text.chord-name(
         text-anchor="middle", 
         fill="white", 
@@ -95,14 +95,17 @@ const props = defineProps({
   tonic: {
     type: Number,
     default: 0
+  },
+  scale: {
+    type: Object,
+    default: scales.minor
   }
 })
 
 
-const scale = scales.minor
 
 const activeSteps = computed(() => {
-  let activeSteps = rotateArray(scale.steps, -props.tonic)
+  let activeSteps = rotateArray(props.scale.steps, -props.tonic)
   return activeSteps
 })
 

@@ -53,7 +53,4 @@ function stopNote() {
 </script>
 
 <style scoped>
-.tonic {
-  stroke-width: 10px;
-}
 </style>

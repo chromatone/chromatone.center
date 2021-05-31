@@ -1,13 +1,16 @@
 <template lang="pug">
 polygon.chord-trigger(
+  style="mix-blend-mode: screen;"
   :transform="'rotate(' + 60 * p + ')'", 
   @mousedown.stop.prevent="playChord", 
   @touchstart.stop.prevent="playChord", 
   @mouseleave.stop.prevent="stopChord", 
   @mouseup.stop.prevent="stopChord", 
   @touchend.stop.prevent="stopChord", 
-  :class="{ deactivated: !active }", 
-  :fill="pitchColor(note.pitch)", 
+  :fill="active ? pitchColor(note.pitch) : '#999'",
+  :opacity="1"
+  :stroke-width="1"
+  stroke="#fff"
   points="0,0 80,0 80,46.188 40,69.28")
 </template>
 
@@ -55,14 +58,4 @@ function calcChord(chord) {
 </script>
 
 <style scoped>
-.chord-trigger {
-  opacity: 0.5;
-  mix-blend-mode: screen;
-}
-.deactivated {
-  opacity: 1;
-  mix-blend-mode: normal;
-  fill: #999;
-  stroke: #aaa;
-}
 </style>

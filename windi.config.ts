@@ -36,6 +36,9 @@ export default defineConfig({
         gray: colors.trueGray,
         tg: colors.trueGray,
       },
+      cursor: {
+        'crosshair':'crosshair',
+      },
       boxShadow: {
         box: '0px 5px 15px 0px rgba(0, 0, 0, 0.35)',
       },

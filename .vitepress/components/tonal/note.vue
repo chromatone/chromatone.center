@@ -1,6 +1,6 @@
 <template lang="pug">
-g
-  circle.note-circle(
+g.cursor-pointer
+  circle.transition-all.duration-400(
     @mousedown.stop.prevent="playNote", 
     @touchstart.stop.prevent="playNote",
     @mouseup.stop.prevent="stopNote", 
@@ -8,11 +8,13 @@ g
     @touchend.stop.prevent="stopNote", 
     :r="r", 
     :cx="0", 
-    :cy="0", 
-    :class="{ deactivated: !active, tonic: tonic == note.pitch }", 
-    stroke-width="2", 
-    :fill="note.color")
-  text.note-name(
+    :cy="0",  
+    :stroke-width="tonic == note.pitch ? 4 : 1",
+    stroke="white"
+    :fill="active ? pitchColor(note.pitch) : '#999'")
+  text(
+    style="user-select: none;pointer-events: none;"
+    font-size="22px"
     text-anchor="middle", 
     fill="white", 
     :x="0", 
@@ -21,6 +23,9 @@ g
 
 <script setup>
 import { defineProps, ref } from 'vue'
+import { pitchColor, pitchFreq } from 'chromatone-theory'
+import { attack, release } from '@use/synth.js'
+
 const props = defineProps({
   note: Object,
   r: Number,
@@ -31,29 +36,24 @@ const props = defineProps({
 const playing = ref(false)
 
 function playNote() {
-  console.log(props.note, props.tonic)
   playing.value = true
-  // if (!Tone.contextStarted) {
-  //   Tone.context.resume()
-  // }
-  // this.playing = true
-  // Synth.chromaSynth.set(Synth.chromaOptions)
-  // let octave = this.root > this.note.pitch ? 4 : 3
-  // Synth.chromaSynth.triggerAttack(
-  //   Synth.calcFrequency(this.note.pitch, octave),
-  // )
+  let octave = props.tonic + 3 > props.note.pitch + 3 ? 4 : 3
+  attack(
+    pitchFreq(props.note.pitch, octave),
+  )
 };
 function stopNote() {
-  console.log(props.pitch, props.tonic)
   playing.value = false
-  // this.playing = false
-  // let octave = this.root > this.note.pitch ? 4 : 3
-  // Synth.chromaSynth.triggerRelease(
-  //   Synth.calcFrequency(this.note.pitch, octave),
-  // )
+  let octave = props.tonic + 3 > props.note.pitch + 3 ? 4 : 3
+  release(
+    pitchFreq(props.note.pitch, octave),
+  )
 };
 
 </script>
 
 <style scoped>
+.tonic {
+  stroke-width: 10px;
+}
 </style>

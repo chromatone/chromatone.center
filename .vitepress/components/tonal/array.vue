@@ -22,14 +22,12 @@ svg#tonal-array(
       v-for="(note, i) in rotateArray(fifths, shift-1).splice(0,7)",
       :transform="'translate(' + ((i - 1) * 2 * tonal.dx + ((n + 1) % 2) * tonal.dx) + ',' + (n - 1) * dy + ')'"
       )
-      polygon.chord-triangle(
-        :class="{ deactivated: hasMinor(note.pitch) }", 
-        :fill="pitchColor(note.pitch)", 
+      polygon.chord-triangle( 
+        :fill="!hasMinor(note.pitch) ? pitchColor(note.pitch, 2) : '#999'", 
         points="0,0 160,0 80,138.56"
         )
       polygon.chord-triangle.major(
-        :class="{ deactivated: hasMajor(note.pitch) }", 
-        :fill="pitchColor(note.pitch)", 
+        :fill="!hasMajor(note.pitch) ? pitchColor(note.pitch, 2) : '#999'", 
         points="0,0 160,0 80,-138.56"
         )
       text.chord-name(
@@ -44,7 +42,7 @@ svg#tonal-array(
         :x="80", 
         :y="55"
         ) {{ note.name }}m
-  g(
+  g.cursor-crosshair(
     v-for="(shift,n) in tonal.rows"
     )
     g(
@@ -67,7 +65,7 @@ svg#tonal-array(
         :active="activeSteps[note.pitch]", 
         :tonic="tonic", 
         :note="note", 
-        :r="r"
+        :r="tonal.r"
         )
 </template>
 
@@ -93,12 +91,18 @@ const tonal = reactive({
   ],
 })
 
-const tonic = useStorage('tonic', 0)
+const props = defineProps({
+  tonic: {
+    type: Number,
+    default: 0
+  }
+})
+
 
 const scale = scales.minor
 
 const activeSteps = computed(() => {
-  let activeSteps = rotateArray(scale.steps, tonic.value)
+  let activeSteps = rotateArray(scale.steps, props.tonic)
   return activeSteps
 })
 
@@ -131,4 +135,26 @@ function hasMinor(pitch) {
 </script>
 
 <style scoped>
+.note-circle,
+.chord-trigger,
+.chord-triangle {
+  transition: all 400ms ease-in-out;
+}
+
+.chord-name {
+  font-size: 22px;
+  opacity: 0.5;
+  user-select: none;
+  pointer-events: none;
+  transform-origin: center;
+}
+
+.chord-triangle.major {
+  opacity: 0.7;
+}
+
+.chord-trigger {
+  opacity: 0.5;
+  mix-blend-mode: screen;
+}
 </style>

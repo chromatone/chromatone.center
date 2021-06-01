@@ -1,7 +1,7 @@
 ---
 title: Other tools
 subtitle: There's a plenty of opportunities to dive into different aspects of music theory and practice online
-tags: apps
+tags: experiment
 links:
   - url: https://experiments.withgoogle.com/seeing-music
     title: Seeing music Google experiment

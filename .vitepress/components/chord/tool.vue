@@ -1,8 +1,6 @@
 <template lang="pug">
 .flex.flex-col
-  .relative.w-full.m-auto
-    svg-save(svg="circle", :file="`${notes[accord?.root].name}${accord?.info.handle}-circle.svg`")  
-    chord-circle#circle(:pcset="accord", @selectRoot="accord.root = $event")
+
   .flex.flex-wrap.my-4.justify-center
     .chord(
       v-for="chord in chordList", 

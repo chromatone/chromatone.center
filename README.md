@@ -29,7 +29,6 @@ Contact the author and the headquarter of the project.
 
 We've ported almost all separate apps into the main website. It becomes more and more integrated tool. But there's more! Next are the experiments, that stat at dev and need to be implemented with the new dev stack.
 
-- Tonal array
 - Pitch field / Tone grid
 - Noise lab
 - Harmonics

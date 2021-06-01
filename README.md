@@ -50,6 +50,9 @@ We've ported almost all separate apps into the main website. It becomes more and
     - i18n like in [vuepress](https://vuepress.vuejs.org/guide/i18n.html#default-theme-i18n-config)
 - [windi css](https://windicss.org/)
 - [pug](https://pugjs.org/api/getting-started.html)
-- [tone.js](https://tonejs.github.io/docs/14.7.77)
 - [tonaljs](https://github.com/tonaljs/tonal)
 - [webmidi.js](https://webmidijs.org/docs/)
+- audio
+  - [tone.js](https://tonejs.github.io/docs/14.7.77)
+  - [meyda](https://meyda.js.org)
+  - [aubiojs](https://github.com/qiuxiang/aubiojs)

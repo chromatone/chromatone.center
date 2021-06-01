@@ -2,7 +2,7 @@
 title: Chroma circle
 subtitle: Explore any combination of 12 tone equal temperament pitches
 tags: chroma
-cover: apps/chord.svg
+cover: apps/circle.svg
 date: 2021-04-20
 ---
 <client-only>

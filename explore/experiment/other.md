@@ -3,6 +3,9 @@ title: Other tools
 subtitle: There's a plenty of opportunities to dive into different aspects of music theory and practice online
 tags: experiment
 links:
+  - url: https://github.com/willianjusten/awesome-audio-visualization
+    title: Awesome audio visualization
+    subtitle: A huge collection of materials on music visualization. With free webapps and downloads.
   - url: https://experiments.withgoogle.com/seeing-music
     title: Seeing music Google experiment
     subtitle: This is a tool for visualizing music. You can turn on your mic to sing or play sounds. You can also drop in your own audio or video file. Some modes – like Hilbert Scope and Spectrogram – show the subtle textures of sound. Others show the paths and shapes of different melodies.

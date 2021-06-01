@@ -2,6 +2,7 @@ import { reactive, ref } from 'vue'
 import { useRafFn } from '@vueuse/core'
 import Aubio from './aubio.js'
 import { initGetUserMedia, pitchColor } from 'chromatone-theory'
+import Meyda from 'meyda'
 
 const noteStrings = [
   'C',
@@ -46,6 +47,7 @@ const state = reactive({
   beat: 0,
   bpm: 0,
   confidence: 0,
+  chroma: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 })
 
 const chain = {}
@@ -73,6 +75,17 @@ function init() {
     1,
     1,
   )
+
+  chain.meyda = Meyda.createMeydaAnalyzer({
+    audioContext: chain.audioContext,
+    source: chain.analyser,
+    bufferSize: 4096,
+    featureExtractors: ['chroma'],
+    callback: (features) => {
+      state.chroma = features.chroma
+    },
+  })
+  chain.meyda.start()
 
   state.frequencyData = new Uint8Array(chain.analyser.frequencyBinCount)
 
@@ -107,8 +120,6 @@ function start() {
       chain.audioContext.createMediaStreamSource(stream).connect(chain.analyser)
       chain.analyser.connect(chain.scriptProcessor)
       chain.analyser.connect(chain.beatProcessor)
-      chain.scriptProcessor.connect(chain.audioContext.destination)
-      chain.beatProcessor.connect(chain.audioContext.destination)
       chain.beatProcessor.addEventListener('audioprocess', (e) => {
         const tempo = chain.tempoAnalyzer.do(e.inputBuffer.getChannelData(0))
 

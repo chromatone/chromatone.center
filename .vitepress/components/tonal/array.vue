@@ -76,11 +76,10 @@ svg#tonal-array(
         :r="tonal.r"
         v-model:pressed="tonal.pressed"
         )
-p {{ tonal.pressed }}
 </template>
 
 <script setup>
-import { defineProps, reactive, computed } from 'vue'
+import { defineProps, reactive, computed, watch } from 'vue'
 import { rotateArray, notes, scales, pitchColor } from 'chromatone-theory'
 import { useStorage } from '@vueuse/core'
 
@@ -102,9 +101,6 @@ const tonal = reactive({
   ],
 })
 
-function move() {
-  console.log('move')
-}
 
 const props = defineProps({
   tonic: {
@@ -156,7 +152,7 @@ function hasMinor(pitch) {
 .note-circle,
 .chord-trigger,
 .chord-triangle {
-  transition: all 400ms ease-in-out;
+  transition: all 300ms ease-out;
 }
 
 .chord-name {

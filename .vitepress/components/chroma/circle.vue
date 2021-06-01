@@ -215,8 +215,8 @@ function getNoteColor(n) {
 }
 
 import { Frequency } from 'tone'
-import { playOnce as midiOnce, playNote as midiPlay, stopNote as midiStop } from '@use/midi.js'
-import { playOnce, attack, release } from '@use/synth.js'
+import { midiOnce, midiAttack, midiRelease } from '@use/midi.js'
+import { synthOnce, synthAttack, synthRelease } from '@use/synth.js'
 
 
 
@@ -227,7 +227,7 @@ function playNote(note = 0, octave = 0) {
   note = note + 12 * octave
   let freq = Frequency(note + 57, 'midi')
   midiOnce({ name: freq.toNote() })
-  playOnce(freq)
+  synthOnce(freq)
 }
 
 const chordNotes = computed(() => {
@@ -251,24 +251,24 @@ function playChordOnce() {
   })
   nextTick(() => {
     chordNotes.value.forEach((note, i) => {
-      playOnce(note, '8n', `+${i / 3}`)
+      synthOnce(note, '8n', `+${i / 3}`)
     })
-    playOnce(chordNotes.value, '4n', `+${chordNotes.value.length / 3}`)
+    synthOnce(chordNotes.value, '4n', `+${chordNotes.value.length / 3}`)
   });
 }
 
 function playChord() {
   chordNotes.value.forEach(name => {
-    midiPlay({ name: name })
+    midiAttack({ name: name })
   })
-  attack(chordNotes.value)
+  synthAttack(chordNotes.value)
 }
 
 function stopChord() {
   chordNotes.value.forEach(name => {
-    midiStop({ name: name })
+    midiRelease({ name: name })
   })
-  release(chordNotes.value)
+  synthRelease(chordNotes.value)
 }
 
 </script>

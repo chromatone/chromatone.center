@@ -7,7 +7,7 @@ polygon.chord-trigger(
   @mouseleave.stop.prevent="stopChord", 
   @mouseup.stop.prevent="stopChord", 
   @touchend.stop.prevent="stopChord", 
-  :fill="active ? pitchColor(note.pitch) : '#999'",
+  :fill="active ? pitchColor(note.pitch) : pitchColor(note.pitch, 1, 0.2)",
   :opacity="1"
   :stroke-width="1"
   stroke="#fff"
@@ -16,8 +16,10 @@ polygon.chord-trigger(
 
 <script setup>
 import { defineProps, computed } from 'vue'
-import { pitchColor, pitchFreq } from 'chromatone-theory'
-import { attack, release } from '@use/synth.js'
+import { pitchColor, pitchFreq, notes } from 'chromatone-theory'
+import { Frequency } from 'tone'
+import { synthAttack, synthRelease } from '@use/synth.js'
+import { midiAttack, midiRelease } from '@use/midi.js'
 
 const props = defineProps({
   note: Object,
@@ -28,13 +30,13 @@ const props = defineProps({
 
 
 
-const chordNotes = computed(() => {
+const chordPitches = computed(() => {
   return props.chord.map((x) => x + props.note.pitch)
 });
 
 const active = computed(() => {
   let active = true
-  let chord = chordNotes.value.map((x) => (x > 11 ? x % 12 : x))
+  let chord = chordPitches.value.map((x) => (x > 11 ? x % 12 : x))
   let activity = chord.forEach(note => {
     if (!props.activeSteps[note]) {
       active = false
@@ -43,17 +45,23 @@ const active = computed(() => {
   return active
 });
 
+const chordNames = computed(() => {
+  return chordPitches.value.map(pitch => {
+    return Frequency(pitchFreq(pitch)).toNote()
+  })
+})
+
+
+
 function playChord() {
-  attack(calcChord(chordNotes.value))
+  synthAttack(chordNames.value)
+  midiAttack(chordNames.value)
 };
 
 function stopChord() {
-  release(calcChord(chordNotes.value))
+  synthRelease(chordNames.value)
+  midiRelease(chordNames.value)
 };
-
-function calcChord(chord) {
-  return chord.map(x => pitchFreq(x))
-}
 
 </script>
 

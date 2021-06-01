@@ -6,16 +6,10 @@
         span(v-if="Object.entries(midi.outputs).length > 0") MIDI 
         span(v-else) Plug in your MIDI device
       .p-2.border.border-red-500.text-red-500(v-else) MIDI NOT AVAILABLE
-    //- .m-2.p-2.rounded-full.transition-all.duration-50.cursor-pointer(
-    //-   @mousedown="playNote(midi.note)"
-    //-   @mouseup="stopNote(midi.note)"
-    //-   v-if="midi.note"
-    //-   :style="{ backgroundColor: pitchColor(midi.note.pitch, midi.note.octA) }"
-    //- )
     .button.opacity-30(@click="midi.out = !midi.out",:class="{ active: midi.out }") OUT
     .button.w-3em.transition-all.duration-50.cursor-pointer(
-      @mousedown="playNote(midi.note)"
-      @mouseup="stopNote(midi.note)"
+      @mousedown="midiAttack(midi.note)"
+      @mouseup="midiRelease(midi.note)"
       v-if="midi.note?.name"
       :style="{ borderColor: pitchColor(midi.note.pitch, midi.note.octA), color: pitchColor(midi.note.pitch, midi.note.octA) }"
     ) 
@@ -42,7 +36,7 @@
 
 <script setup>
 import { defineProps } from 'vue'
-import { midi, stopAll, playNote, stopNote } from '@use/midi.js'
+import { midi, stopAll, midiAttack, midiRelease } from '@use/midi.js'
 import { pitchColor } from 'chromatone-theory'
 
 const props = defineProps({

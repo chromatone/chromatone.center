@@ -21,8 +21,8 @@ import { ChordType, ScaleType } from '@tonaljs/tonal'
 import { pitchColor, notes } from 'chromatone-theory'
 import { Note } from '@tonaljs/tonal'
 import { Frequency } from 'tone'
-import { playOnce } from '@use/synth.js'
-import { playOnce as midiOnce } from '@use/midi.js'
+import { synthOnce } from '@use/synth.js'
+import { midiOnce } from '@use/midi.js'
 
 const props = defineProps({
   set: Object,
@@ -49,26 +49,19 @@ function playChordOnce() {
   chordNotes.value.forEach(name => {
     midiOnce({ name: name })
   })
-  playOnce(chordNotes.value, '4n')
+  synthOnce(chordNotes.value, '4n')
 }
 
 function arpeggiate() {
   chordNotes.value.forEach((note, i) => {
-    playOnce(note, '8n', `+${i / 3}`)
+    synthOnce(note, '8n', `+${i / 3}`)
   })
-}
-
-function playChord() {
-  chordNotes.value.forEach(name => {
-    midiPlay({ name: name })
-  })
-  attack(chordNotes.value)
 }
 
 function playNote(note = 0, octave = 0) {
   let freq = Frequency(note + 57, 'midi')
   midiOnce({ name: freq.toNote() })
-  playOnce(freq.toNote())
+  synthOnce(freq.toNote())
 }
 
 function rotate(arr, count = 1) {

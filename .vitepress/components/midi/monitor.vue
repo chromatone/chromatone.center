@@ -9,8 +9,8 @@
         :key="note?.name"
         :note="note"
         v-model:active="active"
-        @play="playNote(note)"
-        @stop="stopNote(note)"
+        @play="midiAttack(note)"
+        @stop="midiRelease(note)"
       )
   .flex
     .flex.flex-col.flex-1.text-center(v-for="ch in midi.channels", :key="ch.num")
@@ -29,7 +29,7 @@ import { pitchColor } from 'chromatone-theory'
 
 const active = ref(false)
 
-const { midi, playNote, stopNote, setCC } = useMidi();
+const { midi, midiAttack, midiRelease, setCC } = useMidi();
 
 function sortNotes(notes) {
   if (!notes) return []

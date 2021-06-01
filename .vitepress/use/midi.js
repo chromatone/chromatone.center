@@ -39,8 +39,8 @@ export function useMidi() {
 
   return {
     midi,
-    playNote,
-    stopNote,
+    midiAttack,
+    midiRelease,
     setCC,
     WebMidi,
   }
@@ -143,27 +143,28 @@ function setVelocity(channel, note, velocity) {
   }
 }
 
-export function playNote(note) {
+export function midiAttack(note) {
   if (!midi.out) return
+
   setVelocity(note.channel, note.name, 100)
   WebMidi.outputs.forEach((output) => {
-    output.playNote(note.name, { channels: note.channel || midi.channel })
+    output.playNote(note, { channels: note.channel || midi.channel })
   })
 }
 
-export function stopNote(note) {
+export function midiRelease(note) {
   if (!midi.out) return
   setVelocity(note.channel, note.name, 0)
   WebMidi.outputs.forEach((output) => {
-    output.stopNote(note.name, { channels: note.channel || midi.channel })
+    output.stopNote(note, { channels: note.channel || midi.channel })
   })
 }
 
-export function playOnce(note) {
+export function midiOnce(note) {
   if (!midi.out) return
-  playNote(note)
+  midiAttack(note)
   setTimeout(() => {
-    stopNote(note)
+    midiRelease(note)
   }, 300)
 }
 

@@ -20,14 +20,14 @@ svg#tonal-array(
     )
     g(
       v-for="(note, i) in rotateArray(fifths, shift-1).splice(0,7)",
-      :transform="'translate(' + ((i - 1) * 2 * tonal.dx + ((n + 1) % 2) * tonal.dx) + ',' + (n - 1) * dy + ')'"
+      :transform="`translate(${((i - 1) * 2 * tonal.dx + ((n + 1) % 2) * tonal.dx)}, ${(n - 1) * dy})`"
       )
       polygon.chord-triangle( 
-        :fill="!hasMinor(note.pitch) ? pitchColor(note.pitch, 2) : '#999'", 
+        :fill="!hasMinor(note.pitch) ? pitchColor(note.pitch, 3) : pitchColor(note.pitch, 1, 0.2)", 
         points="0,0 160,0 80,138.56"
         )
       polygon.chord-triangle.major(
-        :fill="!hasMajor(note.pitch) ? pitchColor(note.pitch, 2) : '#999'", 
+        :fill="!hasMajor(note.pitch) ? pitchColor(note.pitch, 2) : pitchColor(note.pitch, 1, 0.2)", 
         points="0,0 160,0 80,-138.56"
         )
       text.chord-name(
@@ -47,7 +47,7 @@ svg#tonal-array(
     )
     g(
       v-for="(note, i) in rotateArray(fifths, shift).splice(0,7)", 
-      :transform="'translate(' + (i * 2 * tonal.dx + (n % 2) * tonal.dx) + ',' + n * dy + ')'"
+      :transform="`translate(${(i * 2 * tonal.dx + (n % 2) * tonal.dx)}, ${n * dy})`"
       )
       tonal-trigger(
         v-for="(chord, p) in tonal.chords", 
@@ -62,7 +62,7 @@ svg#tonal-array(
       :transform="'translate(' + (i * 2 * tonal.dx + (n % 2) * tonal.dx) + ',' + n * dy + ')'"
       )
       tonal-note(
-        :active="activeSteps[note.pitch]", 
+        :active="Boolean(activeSteps[note.pitch])", 
         :tonic="tonic", 
         :note="note", 
         :r="tonal.r"
@@ -146,7 +146,7 @@ function hasMinor(pitch) {
 
 .chord-name {
   font-size: 22px;
-  opacity: 0.5;
+  opacity: 1;
   user-select: none;
   pointer-events: none;
   transform-origin: center;

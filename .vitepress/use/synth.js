@@ -19,20 +19,20 @@ export function useSynth() {
     }).toDestination()
   })
 
-  return { synth, playOnce, attack, release }
+  return { synth, synthOnce, synthAttack, synthRelease }
 }
 
-export function playOnce(note = 'A4', duration = '8n', time) {
+export function synthOnce(note = 'A4', duration = '8n', time) {
   if (!synth.poly) return
   synth.poly.triggerAttackRelease(note, duration, time)
 }
 
-export function attack(note) {
+export function synthAttack(note) {
   if (!synth.poly) return
   synth.poly.triggerAttack(note)
 }
 
-export function release(note) {
+export function synthRelease(note) {
   if (!synth.poly) return
   synth.poly.triggerRelease(note)
 }

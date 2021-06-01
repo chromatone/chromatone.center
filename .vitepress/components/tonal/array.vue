@@ -4,6 +4,11 @@ svg#tonal-array(
   version="1.1",
   baseProfile="full",
   xmlns="http://www.w3.org/2000/svg",
+  @touchstart.stop.prevent="tonal.pressed = true"
+  @touchend.stop.prevent="tonal.pressed = false"
+  @mousedown.stop.prevent="tonal.pressed = true"
+  @mouseup.stop.prevent="tonal.pressed = false"
+  @mouseleave="tonal.pressed = false"
   )
   clipPath#grid-mask
     rect(
@@ -55,18 +60,23 @@ svg#tonal-array(
         :activeSteps="activeSteps", 
         :chord="chord", 
         :p="p", 
-        :note="note").
+        :note="note"
+        :pressed="tonal.pressed"
+        )
   g(v-for="(shift,n) in tonal.rows")
     g(
       v-for="(note, i) in rotateArray(fifths,shift).splice(0,6)",
       :transform="'translate(' + (i * 2 * tonal.dx + (n % 2) * tonal.dx) + ',' + n * dy + ')'"
       )
       tonal-note(
-        :active="Boolean(activeSteps[note.pitch])", 
+        :available="Boolean(activeSteps[note.pitch])", 
+        :pressed="tonal.pressed"
         :tonic="tonic", 
         :note="note", 
         :r="tonal.r"
+        v-model:pressed="tonal.pressed"
         )
+p {{ tonal.pressed }}
 </template>
 
 <script setup>
@@ -75,6 +85,7 @@ import { rotateArray, notes, scales, pitchColor } from 'chromatone-theory'
 import { useStorage } from '@vueuse/core'
 
 const tonal = reactive({
+  pressed: false,
   r: 28,
   dx: 80,
   rowNum: 12,
@@ -90,6 +101,10 @@ const tonal = reactive({
     [0, 4, 7],
   ],
 })
+
+function move() {
+  console.log('move')
+}
 
 const props = defineProps({
   tonic: {

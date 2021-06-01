@@ -2,12 +2,14 @@
 polygon.chord-trigger(
   style="mix-blend-mode: screen;"
   :transform="'rotate(' + 60 * p + ')'", 
-  @mousedown.stop.prevent="playChord", 
-  @touchstart.stop.prevent="playChord", 
-  @mouseleave.stop.prevent="stopChord", 
-  @mouseup.stop.prevent="stopChord", 
-  @touchend.stop.prevent="stopChord", 
-  :fill="active ? pitchColor(note.pitch) : pitchColor(note.pitch, 1, 0.2)",
+  @mousedown="playChord()", 
+  @mouseenter="pressed ? playChord() : null"
+  @touchstart="playChord()", 
+  @mouseleave="stopChord()", 
+  @mouseup="stopChord()", 
+  @touchend="stopChord()", 
+  @touchcancel="stopChord()"
+  :fill="playing ? pitchColor(note.pitch) : active ? pitchColor(note.pitch, 0.5) : pitchColor(note.pitch, 1, 0.2)",
   :opacity="1"
   :stroke-width="1"
   stroke="#fff"
@@ -15,20 +17,21 @@ polygon.chord-trigger(
 </template>
 
 <script setup>
-import { defineProps, computed } from 'vue'
+import { defineProps, computed, ref } from 'vue'
 import { pitchColor, pitchFreq, notes } from 'chromatone-theory'
 import { Frequency } from 'tone'
 import { synthAttack, synthRelease } from '@use/synth.js'
 import { midiAttack, midiRelease } from '@use/midi.js'
 
 const props = defineProps({
+  pressed: Boolean,
   note: Object,
   chord: Object,
   p: Number,
   activeSteps: Array,
 });
 
-
+const playing = ref(false)
 
 const chordPitches = computed(() => {
   return props.chord.map((x) => x + props.note.pitch)
@@ -47,18 +50,20 @@ const active = computed(() => {
 
 const chordNames = computed(() => {
   return chordPitches.value.map(pitch => {
-    return Frequency(pitchFreq(pitch)).toNote()
+    return Frequency(pitchFreq(pitch)).transpose(-12).toNote()
   })
 })
 
 
 
 function playChord() {
+  playing.value = true
   synthAttack(chordNames.value)
   midiAttack(chordNames.value)
 };
 
 function stopChord() {
+  playing.value = false
   synthRelease(chordNames.value)
   midiRelease(chordNames.value)
 };

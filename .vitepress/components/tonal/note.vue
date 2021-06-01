@@ -1,17 +1,19 @@
 <template lang="pug">
 g.cursor-pointer
   circle.transition-all.duration-400(
-    @mousedown.stop.prevent="attack", 
-    @touchstart.stop.prevent="attack",
-    @mouseup.stop.prevent="release", 
-    @mouseleave.stop.prevent="release", 
-    @touchend.stop.prevent="release", 
+    @mousedown="attack()", 
+    @touchstart="attack()",
+    @mouseenter="pressed ? attack() : null"
+    @mouseup="release()", 
+    @mouseleave="release()", 
+    @touchend="release()", 
+    @touchcancel="release()"
     :r="r", 
     :cx="0", 
     :cy="0",  
     :strokeWidth="tonic == note.pitch ? 4 : 1",
     stroke="white"
-    :fill="active ? pitchColor(note.pitch) : pitchColor(note.pitch, 2, 0.4)")
+    :fill="playing ? pitchColor(note.pitch, 4) : available ? pitchColor(note.pitch, 3) : pitchColor(note.pitch, 2, 0.4)")
   text(
     style="user-select: none;pointer-events: none;"
     font-size="22px"
@@ -22,7 +24,7 @@ g.cursor-pointer
 </template>
 
 <script setup>
-import { defineProps, ref, computed } from 'vue'
+import { defineProps, defineEmit, ref, computed, watch } from 'vue'
 import { Frequency } from 'tone'
 import { pitchColor, pitchFreq } from 'chromatone-theory'
 import { synthAttack, synthRelease } from '@use/synth.js'
@@ -31,9 +33,12 @@ import { midiOnce, midiAttack, midiRelease } from '@use/midi.js'
 const props = defineProps({
   note: Object,
   r: Number,
-  active: Boolean,
+  pressed: Boolean,
+  available: Boolean,
   tonic: Number,
 });
+
+const emit = defineEmit(['update:pressed'])
 
 const playing = ref(false)
 
@@ -42,24 +47,17 @@ const noteName = computed(() => {
   return Frequency(pitchFreq(props.note.pitch, octave)).toNote()
 })
 
+
 function attack() {
   playing.value = true
-
-  synthAttack(
-    noteName.value
-  )
+  synthAttack(noteName.value)
   midiAttack(noteName.value)
 };
 
 function release() {
   playing.value = false
-  let octave = props.tonic + 3 > props.note.pitch + 3 ? 4 : 3
-  synthRelease(
-    noteName.value
-  )
-  midiRelease(
-    noteName.value
-  )
+  synthRelease(noteName.value)
+  midiRelease(noteName.value)
 };
 
 </script>

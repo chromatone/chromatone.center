@@ -53,7 +53,7 @@ g.tet(
 
 <script setup>
 import { pitchColor, pitchFreq, notes, getCircleCoord } from 'chromatone-theory'
-import { attack, release } from '@use/synth.js'
+import { synthAttack, synthRelease } from '@use/synth.js'
 import { defineProps, computed, ref } from 'vue'
 import { colord } from 'colord'
 const props = defineProps({
@@ -79,9 +79,9 @@ const active = ref(false)
 function toggle() {
   active.value = !active.value
   if (active.value) {
-    attack(pitchFreq(props.note.pitch))
+    synthAttack(pitchFreq(props.note.pitch))
   } else {
-    release(pitchFreq(props.note.pitch))
+    synthRelease(pitchFreq(props.note.pitch))
   }
 
 }

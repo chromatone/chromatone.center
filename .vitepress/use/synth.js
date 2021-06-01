@@ -1,5 +1,12 @@
-import { onMounted } from 'vue'
-import { PolySynth, AMSynth } from 'tone'
+import { onMounted, watchEffect } from 'vue'
+import { PolySynth, AMSynth, getDestination } from 'tone'
+import { useStorage } from '@vueuse/core'
+
+export const mute = useStorage('mute', false)
+
+watchEffect(() => {
+  getDestination().mute = mute.value
+})
 
 const synth = {}
 
@@ -23,16 +30,16 @@ export function useSynth() {
 }
 
 export function synthOnce(note = 'A4', duration = '8n', time) {
-  if (!synth.poly) return
+  if (!synth.poly || mute.value) return
   synth.poly.triggerAttackRelease(note, duration, time)
 }
 
 export function synthAttack(note) {
-  if (!synth.poly) return
+  if (!synth.poly || mute.value) return
   synth.poly.triggerAttack(note)
 }
 
 export function synthRelease(note) {
-  if (!synth.poly) return
+  if (!synth.poly || mute.value) return
   synth.poly.triggerRelease(note)
 }

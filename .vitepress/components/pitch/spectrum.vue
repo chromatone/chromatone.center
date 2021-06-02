@@ -33,7 +33,6 @@
       :x2="i * 4",
       :y2="150 + bar"
     )
-p {{ state?.note }}
 </template>
   
 <script setup>

@@ -1,5 +1,4 @@
 import { reactive, ref } from 'vue'
-import { useRafFn } from '@vueuse/core'
 import Aubio from './aubio.js'
 import { initGetUserMedia, pitchColor } from 'chromatone-theory'
 import Meyda from 'meyda'

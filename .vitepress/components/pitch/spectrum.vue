@@ -37,7 +37,6 @@ p {{ state?.note }}
 </template>
   
 <script setup>
-import { useRafFn } from '@vueuse/core'
 import { pitchColor, freqPitch, rotateArray, scales, notes, getCircleCoord } from 'chromatone-theory'
 import { defineProps, reactive } from 'vue'
 import { useTuner } from '@use/tuner.js'

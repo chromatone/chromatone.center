@@ -56,3 +56,4 @@ We've ported almost all separate apps into the main website. It becomes more and
   - [tone.js](https://tonejs.github.io/docs/14.7.77)
   - [meyda](https://meyda.js.org)
   - [aubiojs](https://github.com/qiuxiang/aubiojs)
+  - [audiomotion-analyzer](https://www.npmjs.com/package/audiomotion-analyzer) ?

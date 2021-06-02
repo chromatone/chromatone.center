@@ -48,6 +48,8 @@ const state = reactive({
   bpm: 0,
   confidence: 0,
   chroma: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  spec: [],
+  rms: 0,
 })
 
 const chain = {}
@@ -76,24 +78,22 @@ function init() {
     1,
   )
 
+  //MEYDA
   chain.meyda = Meyda.createMeydaAnalyzer({
     audioContext: chain.audioContext,
     source: chain.analyser,
     bufferSize: 4096,
-    featureExtractors: ['chroma'],
+    featureExtractors: ['chroma', 'amplitudeSpectrum', 'rms'],
     callback: (features) => {
+      state.rms = features.rms
       state.chroma = features.chroma
+      state.spec = features.amplitudeSpectrum
     },
   })
   chain.meyda.start()
+  // END of MEYDA
 
   state.frequencyData = new Uint8Array(chain.analyser.frequencyBinCount)
-
-  const { pause, resume } = useRafFn(() => {
-    if (chain?.analyser) {
-      chain.analyser.getByteFrequencyData(state.frequencyData)
-    }
-  })
 
   Aubio().then(function (aubio) {
     chain.pitchDetector = new aubio.Pitch(
@@ -117,12 +117,16 @@ function start() {
     .getUserMedia({ audio: true })
     .then(function (stream) {
       state.stream = stream
-      chain.audioContext.createMediaStreamSource(stream).connect(chain.analyser)
+      const mediaStream = chain.audioContext
+        .createMediaStreamSource(stream)
+        .connect(chain.analyser)
+      mediaStream.connect(chain.scriptProcessor)
       chain.analyser.connect(chain.scriptProcessor)
       chain.analyser.connect(chain.beatProcessor)
+      chain.scriptProcessor.connect(chain.audioContext.destination)
+      chain.beatProcessor.connect(chain.audioContext.destination)
       chain.beatProcessor.addEventListener('audioprocess', (e) => {
         const tempo = chain.tempoAnalyzer.do(e.inputBuffer.getChannelData(0))
-
         if (tempo) {
           state.beat++
           state.confidence = chain.tempoAnalyzer.getConfidence()

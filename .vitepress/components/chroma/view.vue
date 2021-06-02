@@ -1,5 +1,6 @@
 <template lang="pug">
-.p-8.rounded-full.m-4(v-if="!state.initiated" @click="init()") Start
+.flex.justify-center(v-if="!state.initiated" )
+  start-button(@click="init()") Start
 .flex.flex-col(v-else)
   svg.max-h-3xl.w-full(
   version="1.1",
@@ -7,9 +8,16 @@
   viewBox="0 0 100 100",
   xmlns="http://www.w3.org/2000/svg",
   )
+    circle.note(
+      style="transition: all 200ms ease-in-out;transform-box: fill-box; transform-origin: center center;"
+      :cx="50",
+      :cy="50",
+      :r="50 * state.rms + 1",
+      :fill="state?.note.color",
+    )
     g.around(
       style="cursor:pointer"
-      v-for="(amount,i) in state.chroma", 
+      v-for="(amount,i) in rotateArray(state.chroma,-3)", 
       :key="i",
     )
       circle.note(
@@ -21,7 +29,7 @@
       )
       text(
         style="user-select:none;transition:all 300ms ease"
-        :fill="scales.minor.steps[i] ? 'hsla(0,0%,0%,0.8)' : 'hsla(0,0%,100%,0.9)'"
+        :fill="!scales.minor.steps[i] ? 'hsla(0,0%,0%,0.8)' : 'hsla(0,0%,100%,0.9)'"
         font-family="Commissioner, sans-serif"
         font-size="3px"
         text-anchor="middle",

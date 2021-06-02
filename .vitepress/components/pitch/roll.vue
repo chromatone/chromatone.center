@@ -1,6 +1,6 @@
 <template lang="pug">
 .flex.flex-col.-my-8
-  .button(@click="start()", v-if="!state.running") Start rolling 
+  start-button(@click="start()", v-if="!state.running") Start rolling 
   .flex.p-8.items-center(v-if="state.note")
     .flex-1.text-center.font-bold.text-4xl.transition-all.duration-200(:style="{ color: state.note.color }") {{ state.note?.name }}{{ state.note?.octave }} 
     .btn(@click="draw.running = !draw.running")
@@ -9,7 +9,7 @@
     .btn(@click="clear()")
       la-times
     .flex-1.text-center.font-bold  {{ state.bpm.toFixed(1) }} BPM
-  canvas(ref="roll")
+  canvas(ref="roll" )
 </template>
 
 <script setup>

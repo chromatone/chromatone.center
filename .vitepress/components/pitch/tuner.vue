@@ -1,6 +1,6 @@
 <template lang="pug">
-.flex.flex-col.-my-8
-  .p-4.m-8.shadow-lg.cursor-pointer.transition-all.duration-300.rounded-xl.text-4xl.bg-gray-300.text-center.font-bold(@click="start()", v-if="!state.running") Start tuner
+.flex.flex-col.-my-8.items-center
+  start-button(@click="start()", v-if="!state.running") Start tuner
   svg-save(svg="tuner", :file="`${state.note?.name}${state.note?.octave}`")
   svg#tuner.rounded-xl.w-full.max-h-3xl.-z3(
   v-if="state.running"
@@ -16,7 +16,8 @@
       :fill="background"
     )
     line(
-      v-for="(bar,i) in bars.slice(0,100)",
+      style="transition:all 200ms ease; "
+      v-for="(bar,i) in state.spec.slice(0,100)",
       :key="i",
       stroke="white"
       stroke-linecap="round"
@@ -24,7 +25,7 @@
       :x1="i * 4",
       :y1="300",
       :x2="i * 4",
-      :y2="300 - bar * 0.8"
+      :y2="300 - bar"
     )
     g(
       v-for="(n) in 11",
@@ -95,7 +96,6 @@
       x="200"
       y="180"
     ) {{ state.note?.frequency.toFixed(2) }} Hz
-    
 </template>
 
 <script setup>

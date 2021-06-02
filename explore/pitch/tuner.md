@@ -7,5 +7,5 @@ date: 2021-05-12
 ---
 
 <ClientOnly>
-  <tuner-main />
+  <pitch-tuner />
 </ClientOnly>

@@ -6,4 +6,8 @@ cover: apps/table.png
 date: 2021-05-01
 ---
 
-<pt-main />
+
+
+<client-only>
+  <pt-main />
+</client-only>

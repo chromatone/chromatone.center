@@ -56,4 +56,11 @@ We've ported almost all separate apps into the main website. It becomes more and
   - [tone.js](https://tonejs.github.io/docs/14.7.77)
   - [meyda](https://meyda.js.org)
   - [aubiojs](https://github.com/qiuxiang/aubiojs)
-  - [audiomotion-analyzer](https://www.npmjs.com/package/audiomotion-analyzer) ?
+  - [audiomotion-analyzer](https://www.npmjs.com/package/audiomotion-analyzer) ? need to unconnect it from canvas to use with svg. It has 1/12 octave frequ bars to visualize
+  
+
+#### AudioWorklet further research
+- https://dev.to/ndesmic/building-a-digital-synthesizer-part-1-making-some-noise-g7k
+- https://developer.mozilla.org/en-US/docs/Web/API/AudioWorkletNode
+- https://github_com.jam.dev/GoogleChromeLabs/audioworklet-polyfill
+- https://github.com/acarabott/audio-dsp-playground

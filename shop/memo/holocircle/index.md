@@ -2,8 +2,8 @@
 title: Holographic chromatic circle sticker
 subtitle: A tight pack of music information in a small round sticker
 product:
-  price: $6
-  link: https://chromatone.center/product/holographic-chromatic-circle-sticker/
+  price: $8
+  link: https://ko-fi.com/s/1903d23e3b
 tags: memo
 cover: memo/holologo.jpg
 ---

@@ -4,7 +4,7 @@ subtitle: A big set of universal circle colored and labeled note stickers
 tags: stickers
 product:
   price: $12
-  link: https://chromatone.center/product/108-notes-sound-field/
+  link: https://ko-fi.com/s/d7bdca5dd7
 cover: stickers/108/list.jpg
 ---
 

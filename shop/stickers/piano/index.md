@@ -3,7 +3,7 @@ title: Standard piano keys stickers
 subtitle: A full labeled 2 octave piano keys sticker set for learners
 product:
   price: $10
-  link: https://chromatone.center/product/2-octaves-standard-keyboard/
+  link: https://ko-fi.com/s/46e621d69b
 tags: stickers
 cover: stickers/piano/piano1.jpg
 ---

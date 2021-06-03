@@ -2,7 +2,7 @@
 title: Contact
 subtitle: The project and it's founder
 tags: main
-order: 120
+date: 2021-01-01
 org:
   avatar: /media/logo/logo.svg
   name: Chromatone

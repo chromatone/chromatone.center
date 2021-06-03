@@ -1,7 +1,7 @@
 ---
 title: Sound
 subtitle: The ingenious hearing system and it's medium
-tags: research
+tags: theory
 list: sound
 date: 2021-01-20
 ---

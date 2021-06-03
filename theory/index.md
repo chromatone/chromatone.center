@@ -1,9 +1,9 @@
 ---
-title: Research
+title: Theory
 subtitle: There is a way to understand something better. It is to know as much as possible about it.
-list: research
+list: theory
 tags: main
-order: 10
 cover: theory/theory.svg
+date: 2021-06-03
 ---
 

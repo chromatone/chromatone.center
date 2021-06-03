@@ -7,7 +7,7 @@ cover: apps/browser.png
 
 A [pitch class](https://en.wikipedia.org/wiki/Pitch_class) (p.c. or pc) is a set of all pitches that are a whole number of octaves apart, e.g., the pitch class A consists of the As in all octaves. "The pitch class A stands for all possible As, in whatever octave position."
 
->Although there is no formal upper or lower limit to this sequence, only a few of these pitches are audible to the human ear. Yet we can imagine seeing the [40th octave](/research/spectre/40/) as the frequency gets to the visual spectrum.
+>Although there is no formal upper or lower limit to this sequence, only a few of these pitches are audible to the human ear. Yet we can imagine seeing the [40th octave](/theory/spectre/40/) as the frequency gets to the visual spectrum.
 
 Pitch class is important because human pitch-perception is periodic: pitches belonging to the same pitch class are perceived as having a similar quality or color, a property called **"octave equivalence"**. 
 

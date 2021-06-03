@@ -3,9 +3,8 @@ export function sortList(list) {
     return
   }
   return [...list].sort((a, b) => {
-    if (a.data?.order && b.data?.order) {
-      let ord = a.data.order < b.data.order ? -1 : 1
-      return ord
+    if (a?.data && b?.date) {
+      return a.date > b.date ? -1 : 1
     }
     if (a?.lastModified > b?.lastModified) {
       return -1

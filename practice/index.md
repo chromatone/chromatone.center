@@ -1,8 +1,8 @@
 ---
-title: Explore
+title: Practice
 subtitle: Free open source web applications for music education and independent research
-list: apps
+list: practice
 cover: apps/table.png
 tags: main
-order: 20
+date: 2021-06-02
 ---

@@ -3,5 +3,5 @@ title: Shop
 subtitle: Posters, memos and stickers for musical instruments
 list: shop
 tags: main
-order: 30
+date: 2021-06-01
 ---

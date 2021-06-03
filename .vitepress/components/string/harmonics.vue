@@ -126,7 +126,7 @@
 
 <script setup>
 import { defineProps, reactive, computed } from 'vue'
-
+import { useRafFn } from '@vueuse/core'
 const string = reactive({
   tonic: 0,
   semitone: 1.05946309436,
@@ -207,6 +207,8 @@ function calcPath(num) {
   }
   return harm.join('')
 }
+
+const { pause, resume } = useRafFn(draw)
 
 function draw() {
   string.time = (Date.now() - string.date) / 1000;

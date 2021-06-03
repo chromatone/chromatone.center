@@ -1,10 +1,13 @@
 ---
 title: Harmonics
 subtitle: The natural sonic resonances
-tags: music
+tags: sound
 cover: theory/overtones.svg
 ---
 
 A note isn't just a wave, it's a mix of resonating modes of oscillations.
 
-<img src="./overtones.svg">
+<string-harmonics />
+
+
+<img src="/media/theory/overtones.svg">

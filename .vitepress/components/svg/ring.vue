@@ -1,11 +1,16 @@
 <template lang="pug">
 path(
-  opacity="0.4"
+  opacity="0.5"
   style="transition: all 300ms ease-out"
   :d="d" 
   :fill="fill" 
-  :stroke="stroke" fill-rule="evenodd"
+  :stroke="stroke" 
+  stroke-width="1"
+  fill-rule="evenodd"
+  stroke-linejoin="round"
+  :transform-origin="`${cx} ${cy}`"
   )
+  slot
 </template>
 
 <script setup>
@@ -37,7 +42,7 @@ const props = defineProps({
   },
   to: {
     type: Number,
-    default: 90
+    default: 360
   },
   thickness: {
     type: Number,
@@ -59,13 +64,10 @@ const arc = reactive({
 const d = computed(() => [
   "M", arc.start.x, arc.start.y,
   "A", props.radius, props.radius, 0, arc.largeArcFlag, 0, arc.end.x, arc.end.y,
-  "L", props.cx, props.cy,
+  "L", arc.end2.x, arc.end2.y,
+  "A", arc.cutout_radius, arc.cutout_radius, 0, arc.largeArcFlag, 1, arc.start2.x, arc.start2.y,
+  "L", arc.start.x, arc.start.y,
   "Z",
-
-  "M", arc.start2.x, arc.start2.y,
-  "A", arc.cutout_radius, arc.cutout_radius, 0, arc.largeArcFlag, 0, arc.end2.x, arc.end2.y,
-  "L", props.cx, props.cy,
-  "Z"
 ].join(" "));
 
 

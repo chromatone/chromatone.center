@@ -24,7 +24,7 @@ const theme = {
     ) {
       window.owa_baseUrl = 'http://stats.frkt.ru/'
       window.owa_cmds = window.owa_cmds || []
-      window.owa_cmds.push(['setSiteId', 'a77f19d1e45d3e4e89ac7a0287e52b77'])
+      window.owa_cmds.push(['setSiteId', '8f6d414728cf30c94bfb21602828b0d1'])
       window.owa_cmds.push(['trackPageView'])
       window.owa_cmds.push(['trackClicks'])
       ;(function () {

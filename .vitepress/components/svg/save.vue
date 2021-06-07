@@ -8,7 +8,10 @@
 import { defineProps, reactive, toRaw, ref } from 'vue'
 const props = defineProps({
   svg: String,
-  file: String
+  file: {
+    type: String,
+    default: 'svg'
+  }
 });
 
 const anchor = ref('')

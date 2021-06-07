@@ -16,7 +16,9 @@ links:
   - url: https://mimo-international.com/MIMO/instrument-families.aspx
     title: Musical instrument museums online
     subtitle: Explore the world collections of musical instruments
-
+  - url: https://shorstok.github.io/3k-project/
+    title: Инструменты для преподавания и исследования музыки на русском
+    subtitle: Кварто-квинтовый круг, аппликатуры, клавиши, с возможностью скачать нарисованное
 ---
 
 <other-list :tools="$frontmatter.links" />

@@ -1,7 +1,7 @@
 <template lang="pug">
 g(
 )
-  svg-arc(
+  svg-ring(
     :from="(step - 1) / total * 360"
     :to="(step) / total * 360"
     :fill="active ? colord(levelColor(step - 1, total, 1)).toHex() : 'transparent'"
@@ -75,7 +75,7 @@ const lineCoord = computed(() => {
     getCircleCoord(props.step, props.total, props.radius - 50, 1000)
   ]
 
-})
+});
 </script>
 
 <style scoped>

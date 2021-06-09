@@ -2,13 +2,15 @@ import { defineConfig } from 'vite'
 import Components from 'vite-plugin-components'
 import Icons, { ViteIconsResolver } from 'vite-plugin-icons'
 import WindiCSS from 'vite-plugin-windicss'
-import { getAliases } from 'vite-aliases'
+import { ViteAliases } from 'vite-aliases'
 
 
 export default defineConfig({
   resolve: {
-		alias: getAliases({
-      path: '.vitepress',
+    //@ts-ignore
+		alias: ViteAliases({
+      dir: '.vitepress',
+      deep: false,
     })
 	},
   plugins: [
@@ -32,7 +34,7 @@ export default defineConfig({
     }),
     WindiCSS({
       scan: {
-        dirs: ['.vitepress', '.vitepress/components'],
+        dirs: ['.vitepress'],
         include: ['index.md'],
         exclude: ['**/examples/**/*'],
         fileExtensions: ['vue', 'ts'],

@@ -1,6 +1,6 @@
 import { metaData } from './constants.js'
 import head from './head.js'
-import { nav, sidebar, pages } from './nav.js'
+import { nav, sidebar, pages, ru_nav, ru_sidebar } from './nav.js'
 
 const config = {
   title: metaData.title,
@@ -16,7 +16,7 @@ const config = {
     '/ru/': {
       lang: 'ru-RU',
       title: 'Хроматон',
-      description: 'Визуально-музыкальный язык - русская версия',
+      description: 'Визуально-музыкальный язык',
     },
   },
   themeConfig: {
@@ -31,18 +31,13 @@ const config = {
         description: metaData.description,
       },
       '/ru/': {
-        label: 'Russian',
+        label: 'Русский',
         selectText: 'Ru',
         lang: 'ru-RU',
         title: 'Хроматон',
-        description: 'Визуально-музыкальный язык - русская версия',
-        nav: [
-          {
-            text: 'Контакты',
-            link: '/ru/contact.html',
-          },
-        ],
-        sidebar,
+        description: 'Визуально-музыкальный язык',
+        nav: ru_nav,
+        sidebar: ru_sidebar,
       },
     },
     repo: '',

@@ -59,3 +59,61 @@ export const sidebar = {
     },
   ],
 }
+
+export const ru_nav = [
+  // {
+  //   text: 'Теория',
+  //   link: '/ru/theory/',
+  //   items: pages.ru_theory,
+  // },
+  // {
+  //   text: 'Практика',
+  //   link: '/ru/practice/',
+  //   items: pages.ru_practice,
+  // },
+  // {
+  //   text: 'Магазин',
+  //   link: '/ru/shop/',
+  //   items: pages.ru_shop,
+  // },
+  // {
+  //   text: 'Поддержка',
+  //   link: '/ru/support/',
+  //   items: pages.ru_support,
+  // },
+  {
+    text: 'Контакты',
+    link: '/ru/contact/',
+    items: pages.ru_contact,
+  },
+]
+
+export const ru_sidebar = {
+  '/': [
+    // {
+    //   text: 'Теория',
+    //   link: '/ru/theory/',
+    //   children: pages.ru_theory,
+    // },
+    // {
+    //   text: 'Практика',
+    //   link: '/ru/practice/',
+    //   children: pages.ru_practice,
+    // },
+    // {
+    //   text: 'Магазин',
+    //   link: '/ru/shop/',
+    //   children: pages.ru_shop,
+    // },
+    // {
+    //   text: 'Поддержка',
+    //   link: '/ru/support/',
+    //   children: pages.ru_support,
+    // },
+    {
+      text: 'Контакты',
+      link: '/ru/contact/',
+      children: pages.ru_contact,
+    },
+  ],
+}

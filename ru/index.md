@@ -2,7 +2,7 @@
 template: home
 title: Хроматон
 subtitle: Визуально-музыкальный язык
-list: ru-main
+list: ru_main
 icon: logo/logo.svg
 ---
 

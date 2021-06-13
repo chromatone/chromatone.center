@@ -1,0 +1,24 @@
+---
+title: Ресурсы
+subtitle: Ссылки на ценные источники информации по теории музыки и ее связи с цветом
+tags: ru_theory
+date: 2019-02-02
+links:
+  - url: https://rhythmiclight.com/
+    title: Rhythmic light by Fred Collopy
+    subtitle: The most full and honorable source of knowledge about light to sound correspondences. Started in 1998 and still growing!
+  - url: http://www.tonalsoft.com/enc/encyclopedia-index.aspx
+    title:  Encyclopedia of Microtonal Music Theory
+    subtitle: A very deep resource about all the subtleties and complexities of music theory by [Joe Monzo](http://www.tonalsoft.com/enc/m/monzo-writings.aspx)
+  - url: https://programmingdesignsystems.com/
+    title: A free digital book that teaches a practical introduction to the new foundations of graphic design.  
+    subtitle: By Rune Madsen
+  - url: https://mimo-international.com/MIMO/instrument-families.aspx
+    title: Musical instrument museums online
+    subtitle: Explore the world collections of musical instruments
+  - url: https://shorstok.github.io/3k-project/
+    title: Инструменты для преподавания и исследования музыки на русском
+    subtitle: Кварто-квинтовый круг, аппликатуры, клавиши, с возможностью скачать нарисованное
+---
+
+<other-list :tools="$frontmatter.links" />

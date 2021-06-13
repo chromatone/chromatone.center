@@ -25,6 +25,9 @@ links:
   - url: https://songcraft.io/
     title: Songcraft
     subtitle: The first all-in-one online platform for songwriters. 5 songs limited free plan.
+  - url: https://github.com/hisschemoller/music-pattern-generator
+    title: Music pattern generator
+    subtitle: Music Pattern Generator is an app to create musical rhythms. It sends MIDI data, so it won’t make any sounds by itself. For that you need to connect it to MIDI soft- or hardware that can handle MIDI data to produce sound.
 date: 2018-09-08
 ---
 

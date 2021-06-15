@@ -28,6 +28,12 @@ links:
   - url: https://github.com/hisschemoller/music-pattern-generator
     title: Music pattern generator
     subtitle: Music Pattern Generator is an app to create musical rhythms. It sends MIDI data, so it won’t make any sounds by itself. For that you need to connect it to MIDI soft- or hardware that can handle MIDI data to produce sound.
+  - url: https://shorstok.github.io/3k-project/
+    title: Инструменты для преподавания и исследования музыки на русском
+    subtitle: Кварто-квинтовый круг, аппликатуры, клавиши, с возможностью скачать нарисованное
+  - url: http://www.gootar.com/
+    title: Gootar
+    subtitle: A huge online toolbox for guitar players by goddess 401
 date: 2018-09-08
 ---
 

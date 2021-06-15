@@ -16,9 +16,9 @@ links:
   - url: https://mimo-international.com/MIMO/instrument-families.aspx
     title: Musical instrument museums online
     subtitle: Explore the world collections of musical instruments
-  - url: https://shorstok.github.io/3k-project/
-    title: Инструменты для преподавания и исследования музыки на русском
-    subtitle: Кварто-квинтовый круг, аппликатуры, клавиши, с возможностью скачать нарисованное
+  - url: http://www.musanim.com/
+    title: Music animation machine
+    subtitle: A life long project of Stephen Malinowski – he manually animates music pieces into nice visual playalongs. He uses blue color for the tonic (C) and accending colors for every next step of a fifth.
 ---
 
 <other-list :tools="$frontmatter.links" />

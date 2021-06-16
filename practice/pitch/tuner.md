@@ -1,7 +1,7 @@
 ---
 title: Color tuner
 subtitle: Fast and precise instrument tuner web-app
-tags: pitch
+tags: practice
 cover: apps/tuner.svg
 date: 2021-05-12
 ---

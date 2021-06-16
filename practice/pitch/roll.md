@@ -1,7 +1,7 @@
 ---
 title: Pitch roll
 subtitle: Plot main pitch of any incoming audio on an endless roll
-tags: pitch
+tags: practice
 cover: apps/roll.png
 date: 2021-05-02
 ---

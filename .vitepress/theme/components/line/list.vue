@@ -5,14 +5,15 @@
     :key="line.title",
     :href="line.link",
     ) {{ line.title }}
-    counter(:list="$site.customData.pages?.[line?.data?.list]") 
+    counter(:list="site.customData.pages?.[line?.data?.list]") 
     .flex-1 
     card-date(:date="line.lastModified")
     shop-price(:product="line?.data?.product", :showButton="false")
 </template>
 
 <script setup>
-
+import { useData } from 'vitepress'
+const { site } = useData()
 import { defineProps } from 'vue'
 const props = defineProps({
   list: Object,

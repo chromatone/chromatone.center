@@ -2,7 +2,7 @@
 footer
   nav
     .flex.items-center.flex-col(
-      v-for="(page,i) in $site.customData.pages?.main", 
+      v-for="(page,i) in site.customData.pages?.main", 
       :key="page.title",
       v-motion,
       :initial="{ opacity: 0, y: 40 }",
@@ -21,7 +21,7 @@ footer
       :delay="i * 80",)
       a.section(:href="page.link", :class="{ active: route.path.includes(page.link) }") {{ page.title }}
       .flex.flex-wrap.justify-center
-        a.px-2.py-1.font-normal(v-for="line in $site.customData?.pages?.[page.data?.list]", :key="line.title", :href="line.link", :class="{ active: route.path.includes(line.link) }") {{ line.title }}
+        a.px-2.py-1.font-normal(v-for="line in site.customData?.pages?.[page.data?.list]", :key="line.title", :href="line.link", :class="{ active: route.path.includes(line.link) }") {{ line.title }}
 
   .flex.items-center.mt-8(v-motion,
     :initial="{ opacity: 0, y: 40 }",
@@ -41,16 +41,14 @@ footer
 
     )
     a.m-auto(href="/")
-      img.h-8em.my-4(:src="$themeConfig.logo") 
-      .text-2xl.text-center {{ $site.title }}
+      img.h-8em.my-4(:src="theme.logo") 
+      .text-2xl.text-center {{ site.title }}
 </template>
 
 <script setup lang="ts">
-import { useBrowserLocation } from '@vueuse/core'
-import { useRoute, useSiteData, inBrowser } from 'vitepress'
-
+import { useData, useRoute } from 'vitepress'
+const { site, theme } = useData()
 const route = useRoute()
-
 </script>
 
 <style scoped lang="postcss">

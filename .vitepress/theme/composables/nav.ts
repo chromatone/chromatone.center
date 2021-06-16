@@ -1,25 +1,23 @@
 import { computed } from 'vue'
-import { useRoute, useSiteData, inBrowser } from 'vitepress'
+import { useRoute, useData, inBrowser } from 'vitepress'
 import type { DefaultTheme } from '../config'
 
 export function useLocaleLinks() {
   const route = useRoute()
-  const site = useSiteData()
+  const site = useData()
 
   return computed(() => {
-    const theme = site.value.themeConfig as DefaultTheme.Config
-    const locales = theme.locales
+    const theme = site.theme
+    const locales = theme.value.locales
 
-    if (!locales)
-      return null
-
+    if (!locales) return null
     const localeKeys = Object.keys(locales)
 
     if (localeKeys.length <= 1)
       return null
 
     // handle site base
-    const siteBase = inBrowser ? site.value.base : '/'
+    const siteBase = inBrowser ? site.site.value.base : '/'
 
     const siteBaseWithoutSuffix = siteBase.endsWith('/')
       ? siteBase.slice(0, -1)

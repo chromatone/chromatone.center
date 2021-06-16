@@ -124,7 +124,6 @@ function playChord(note, min = 0) {
   let type = min == 1 ? 'm' : ''
   let chord = Chord.get(note + type)
   let nts = Note.names(chord.notes.map(n => Note.simplify(n) + 4))
-  // console.log(nts)
   synthAttack(nts)
   midiAttack(nts)
 };
@@ -133,7 +132,6 @@ function stopChord(note, min = 0) {
   let type = min == 1 ? 'm' : ''
   let chord = Chord.get(note + type)
   let nts = chord.notes.map(n => Note.simplify(n) + 4)
-  // console.log(nts)
   synthRelease(nts)
   midiRelease(nts)
 };

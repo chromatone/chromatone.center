@@ -1,16 +1,15 @@
 import { computed } from 'vue'
-import { useSiteDataByRoute } from 'vitepress'
-import type { DefaultTheme } from '../config'
+import { useData } from 'vitepress'
 
 export const platforms = ['GitHub', 'GitLab', 'Bitbucket'].map((platform) => {
   return [platform, new RegExp(platform, 'i')] as const
 })
 
 export function useRepo() {
-  const site = useSiteDataByRoute()
+  const site = useData()
 
   return computed(() => {
-    const theme = site.value.themeConfig as DefaultTheme.Config
+    const theme = site.theme.value
     const name = theme.repo || theme.docsRepo
 
     if (!name)

@@ -21,10 +21,12 @@
     .cover(v-if="item.data.cover", :style="{ backgroundImage: 'url(/media/' + item.data.cover + ')' }", v-motion-fade)
 
   page-buttons(:buttons="item.data?.buttons")
-  line-list(:list="$site.customData.pages?.[item.data.list]")
+  line-list(:list="site.customData.pages?.[item.data.list]")
 </template>
 
 <script setup>
+import { useData } from 'vitepress'
+const { site } = useData()
 import { defineProps } from 'vue'
 const props = defineProps({
   item: Object,

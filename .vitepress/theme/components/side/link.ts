@@ -1,5 +1,5 @@
 import { FunctionalComponent, h, VNode } from 'vue'
-import { useRoute, useSiteData } from 'vitepress'
+import { useRoute, useData } from 'vitepress'
 import { Header } from '../../types/shared'
 import { DefaultTheme } from '../../config'
 import { joinUrl, isActive } from '../../utils'
@@ -12,11 +12,11 @@ const SideBarLink: FunctionalComponent<{
   item: DefaultTheme.SideBarItem
 }> = (props) => {
   const route = useRoute()
-  const site = useSiteData()
+  const site = useData()
 
   const headers = route.data.headers
   const text = props.item.text
-  const link = resolveLink(site.value.base, props.item.link)
+  const link = resolveLink(site.site.value.base, props.item.link)
   const children = (props.item as DefaultTheme.SideBarGroup).children
   const active = isActive(route, props.item.link)
   const childItems = createChildren(active, children, headers)

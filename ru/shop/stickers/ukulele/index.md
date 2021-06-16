@@ -4,7 +4,7 @@ subtitle: A set of 13 narrow strips to be put under your ukulele strings plus a 
 product:
   price: $8
   link: https://ko-fi.com/s/5e951d8b89
-tags: stickers
+tags: ru_stickers
 cover: stickers/ukulele/uke.jpg
 ---
 

@@ -2,17 +2,18 @@
 .next-and-prev-link
   .row
     .pad.prev(v-if="prev")
-      a.link( :href="$withBase(prev.link)")
+      a.link( :href="withBase(prev.link)")
         carbon-arrow-left.icon.icon-prev
         span.text {{ prev.text }}
     page-parents.pad.text-2xl.flex-1.flex.flex-col.items-center.p-8
     .pad.next(v-if="next")
-      a.link( :href="$withBase(next.link)")
+      a.link( :href="withBase(next.link)")
         span.text {{ next.text }}
         carbon-arrow-right.icon.icon-next          
 </template>
 
 <script setup lang="ts">
+import { withBase } from 'vitepress'
 import { useNextAndPrevLinks } from '@theme/composables/nextAndPrevLinks'
 
 const { hasLinks, prev, next } = useNextAndPrevLinks()

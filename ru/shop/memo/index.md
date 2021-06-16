@@ -1,7 +1,7 @@
 ---
 title: Posters and cheatsheets
 subtitle: Memos to have around
-tags: shop
-list: memo
+tags: ru_shop
+list: ru_memo
 ---
 

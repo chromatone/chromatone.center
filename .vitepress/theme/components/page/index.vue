@@ -6,7 +6,7 @@ main
     shop-message
     row-list(
       v-if="$frontmatter.list", 
-      :rows="$site.customData.pages?.[$frontmatter.list]"
+      :rows="site.customData.pages?.[$frontmatter.list]"
       )
 
   page-next-prev
@@ -14,7 +14,8 @@ main
 </template>
 
 <script setup lang="ts">
-
+import { useData } from 'vitepress'
+const { site, title, theme } = useData()
 
 </script>
 

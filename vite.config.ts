@@ -7,17 +7,18 @@ import { ViteAliases } from 'vite-aliases'
 
 export default defineConfig({
   resolve: {
-    //@ts-ignore
+ 
 		alias: ViteAliases({
       dir: '.vitepress',
       deep: false,
+      ignoreDuplicates:true
     })
 	},
   plugins: [
     Components({
       dirs: [
         '.vitepress/theme/components',
-        '.vitepress/components',
+        '.vitepress/comps',
       ],
       extensions: ['vue', 'ts'],
       directoryAsNamespace: true,

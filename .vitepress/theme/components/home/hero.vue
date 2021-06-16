@@ -20,10 +20,10 @@ header.home-hero(v-if="showHero")
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useSiteDataByRoute, useFrontmatter } from 'vitepress'
+import { useData } from 'vitepress'
 
-const site = useSiteDataByRoute()
-const data = useFrontmatter()
+const site = useData()
+const data = site.frontmatter
 
 const showHero = computed(() => {
   return (
@@ -35,10 +35,10 @@ const showHero = computed(() => {
 })
 
 const hasHeroText = computed(() => data.value.heroText !== null)
-const heroText = computed(() => data.value.heroText || site.value.title)
+const heroText = computed(() => data.value.heroText || site.site.value.title)
 
 const hasTagline = computed(() => data.value.tagline !== null)
-const tagline = computed(() => data.value.tagline || site.value.description)
+const tagline = computed(() => data.value.tagline || site.description.value)
 
 const hasAction = computed(() => data.value.actionLink && data.value.actionText)
 const hasAltAction = computed(

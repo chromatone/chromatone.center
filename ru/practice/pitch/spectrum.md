@@ -1,7 +1,7 @@
 ---
 title: Pitch spectrum
 subtitle: Visually analyse all the incoming audio spectrum in realtime
-tags: pitch
+tags: ru_pitch
 cover: apps/spectrum.png
 ---
 

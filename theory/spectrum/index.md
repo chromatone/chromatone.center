@@ -1,5 +1,5 @@
 ---
-title: Chromatic spectre
+title: Chromatic spectrum
 subtitle: The model in which musical octave meets color spectrum.
 tags: theory
 list: spectre

@@ -132,27 +132,31 @@
           :x="instrument.tuning.length * 40 + 30",
           :y="fret * 1000 - 8",
         ) {{ (fret * instrument.l).toFixed(2) }} mm
-      g.note(v-for="(string,i) in instrument.tuning", :key="string")
-        circle(
-          :cy="-12"
-          :cx="i * 40 + 50"
-          :r="12"
-          :fill="noteColor(string, 0)"
+      g.note(
+        v-for="(string,i) in instrument.tuning", :key="string"
         )
-        text(
-          style="user-select:none;transition:all 300ms ease"
-          fill="white"
-          font-family="Commissioner, sans-serif"
-          font-size="10px"
-          font-weight="bold"
-          text-anchor="middle",
-          dominant-baseline="middle"
-          :x="i * 40 + 50",
-          :y="-11",
-        ) {{ string }}
+        g(@click="selectNote(string, 0, i)")
+          circle(
+            :cy="-12"
+            :cx="i * 40 + 50"
+            :r="12"
+            :fill="noteColor(string, 0)"
+          )
+          text(
+            style="user-select:none;transition:all 300ms ease"
+            fill="white"
+            font-family="Commissioner, sans-serif"
+            font-size="10px"
+            font-weight="bold"
+            text-anchor="middle",
+            dominant-baseline="middle"
+            :x="i * 40 + 50",
+            :y="-11",
+          ) {{ string }}
         g.note(
           v-for="(fret,f) in frets"
           :key="fret"
+          @click="selectNote(Note.transpose(string, Interval.fromSemitones(f + 1)), f, i)"
         )
           circle(
             :cy="fret * 1000 - 12"
@@ -177,9 +181,11 @@
 <script setup>
 import { defineProps, reactive, computed, watch } from 'vue'
 import { useStorage } from '@vueuse/core'
-import { Note, Interval } from '@tonaljs/tonal'
+import { Note, Interval, Chord } from '@tonaljs/tonal'
 import { freqColor } from 'chromatone-theory'
 import { colord } from 'colord'
+import { synthOnce } from '@use/synth.js'
+import { midiOnce } from '@use/midi.js'
 
 const props = defineProps({
   instruments: Object,
@@ -189,8 +195,20 @@ const instrument = useStorage('instrument-calc', {
   l: 430,
   frets: 27,
   title: 'Guitar',
-  tuning: ['C4', 'G4', 'E4', 'A4']
+  tuning: ['C4', 'G4', 'E4', 'A4'],
 });
+
+const tab = reactive([])
+
+const chord = computed(() => {
+  return Chord.detect(tab)
+})
+
+function selectNote(note, num, string) {
+  midiOnce(note);
+  synthOnce(note)
+  tab[string] = note
+}
 
 watch(() => instrument.value.title, title => {
   const inst = props.instruments[title]

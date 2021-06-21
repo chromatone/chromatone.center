@@ -1,6 +1,6 @@
 ---
 title: Theory
-subtitle: There is a way to understand something better. It is to know as much as possible about it.
+subtitle: Let's explore color and music deep enough to establish a scientifically based connection between them.
 list: theory
 tags: main
 cover: theory/theory.svg

@@ -4,7 +4,7 @@ const site = isProd ? 'https://www.chromatone.center' : 'http://localhost:3000'
 
 export const metaData = {
   title: 'Chromatone',
-  description: 'Color music notation and communication',
+  description: 'Universal color music notation and communication',
   site,
   locale: 'en',
   icon: '/media/circle/circle.svg',

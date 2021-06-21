@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
 import { withBase } from 'vitepress'
-import { useNextAndPrevLinks } from '@theme/composables/nextAndPrevLinks'
+import { useNextAndPrevLinks } from '@theme/composables/nextAndPrevLinks.ts'
 
 const { hasLinks, prev, next } = useNextAndPrevLinks()
 </script>

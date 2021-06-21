@@ -6,15 +6,13 @@ import { ViteAliases } from 'vite-aliases'
 
 
 export default defineConfig({
-  resolve: {
- 
-		alias: ViteAliases({
+
+  plugins: [
+    ViteAliases({
       dir: '.vitepress',
       deep: false,
-      ignoreDuplicates:true
-    })
-	},
-  plugins: [
+      adjustDuplicates:true
+    }),
     Components({
       dirs: [
         '.vitepress/theme/components',

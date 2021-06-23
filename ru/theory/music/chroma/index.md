@@ -17,7 +17,7 @@ Psychologists refer to the quality of a pitch as its **"chroma"**. A chroma is a
 
 To avoid the problem of enharmonic spellings, theorists typically represent pitch classes using numbers beginning from zero, with each successively larger integer representing a pitch class that would be one semitone higher than the preceding one, if they were all realised as actual pitches in the same octave. Because octave-related pitches belong to the same class, when an octave is reached, the numbers begin again at zero. This cyclical system is referred to as modular arithmetic and, in the usual case of chromatic twelve-tone scales, pitch-class numbering is regarded as "modulo 12" (customarily abbreviated "mod 12" in the music-theory literature)—that is, every twelfth member is identical. One can map a pitch's fundamental frequency f (measured in hertz) to a real number p using the equation
 
-    p = 9 + 12 log 2 (⁡ f / 440  Hz ). 
+    p = 9 + 12 <sub>log 2</sub>(⁡ f / 440  Hz ). 
 
 
 This creates a linear pitch space in which octaves have size 12, semitones (the distance between adjacent keys on the piano keyboard) have size 1, and middle C (C4) is assigned the number 0 (thus, the pitches on piano are −39 to +48). Indeed, the mapping from pitch to real numbers defined in this manner forms the basis of the MIDI Tuning Standard, which uses the real numbers from 0 to 127 to represent the pitches C−1 to G9 (thus, middle C is 60). 

@@ -55,7 +55,7 @@ const config = {
       md.use(require('markdown-it-classy'))
       md.use(require('markdown-it-container'), 'card')
       md.use(require('markdown-it-external-links'), {
-        internalDomains: ['localhost', 'starovdenis.com'],
+        internalDomains: ['localhost', 'chromatone.center'],
       })
     },
   },

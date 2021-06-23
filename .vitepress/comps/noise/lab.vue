@@ -8,6 +8,10 @@
     :step="0.01"
     param="vol"
   )
+  choose(
+    v-model="options.noise.type"
+    :variants="types"
+  )
   .border-1.p-1.rounded.flex.flex-wrap.m-1
     sqnob(
       :min="0.005"
@@ -59,7 +63,7 @@ const options = useStorage('noise-options', {
 
 const active = ref(false)
 
-const types = ['brown', 'pink', 'white'];
+const types = { brown: 'brown', pink: 'pink', white: 'white' };
 
 const synth = new NoiseSynth(options.value).toDestination();
 
@@ -77,6 +81,10 @@ watch(options.value, () => {
 
 watch(() => options.value.volume, vol => {
   synth.volume.setValueAtTime(gainToDb(vol))
+});
+
+onBeforeUnmount(() => {
+  synth.triggerRelease()
 });
 
 </script>

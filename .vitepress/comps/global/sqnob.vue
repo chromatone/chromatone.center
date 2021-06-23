@@ -7,8 +7,9 @@
   .level(
     :style="{ height: state.internal + '%' }"
   )
-  .p-1 {{ modelValue.toFixed(1) }}
-  .text-sm.p-1 {{ param.toUpperCase() }}
+  .p-1
+    .text-lg {{ modelValue.toFixed(1) }}
+    .text-sm {{ param.toUpperCase() }}
 </template>
 
 <script setup>
@@ -101,7 +102,7 @@ function mapNumber(
 
 <style scoped>
 .knob {
-  @apply m-1 border-1 rounded text-center border-dark-100 dark:(border-light-400) cursor-pointer select-none relative;
+  @apply m-1 border-1 rounded text-center border-dark-100/50 dark:(border-light-100/50) cursor-pointer select-none relative;
 }
 
 .level {

@@ -7,7 +7,13 @@
   @touchend.self="setValue(true)"
   @touchcancel.self="setValue(false)"
 ) 
-  .mb-5 {{ title }}
+  .mb-5(
+    @mousedown.self="setValue(true)"
+    @mouseup.self="setValue(false)"
+    @touchstart.self="setValue(true)"
+    @touchend.self="setValue(true)"
+    @touchcancel.self="setValue(false)"
+    ) {{ title }}
   .toggle(
     @click.stop.capture="setValue(!modelValue)"
   )

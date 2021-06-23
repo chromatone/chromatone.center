@@ -8,7 +8,7 @@
     :style="{ height: state.internal + '%' }"
   )
   .p-1
-    .text-lg {{ modelValue.toFixed(1) }}
+    .text-lg {{ modelValue.toFixed(fixed) }}{{ unit }}
     .text-sm {{ param.toUpperCase() }}
 </template>
 
@@ -37,8 +37,12 @@ const props = defineProps({
   },
   unit: {
     type: String,
-    default: 'px'
+    default: ''
   },
+  fixed: {
+    type: Number,
+    default: 1,
+  }
 });
 
 const emit = defineEmit(['update:value'])

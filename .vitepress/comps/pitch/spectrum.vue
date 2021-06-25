@@ -1,34 +1,76 @@
 <template lang="pug">
 .flex.justify-center(v-if="!state.initiated" )
-  start-button(@click="init()") Start
+  start-button(@click="initiate()") Start
 .flex.flex-col(v-else)
   svg#tuner.rounded-xl.w-full.max-h-3xl.-z3(
-    v-if="state.running"
     version="1.1",
     baseProfile="full",
-    viewBox="0 0 400 400",
+    viewBox="0 0 512 300",
     xmlns="http://www.w3.org/2000/svg",
     )
-
     line(
       style="transition:all 500ms ease; "
-      v-for="(bar,i) in state.spec.slice(0,400)",
+      v-for="(bar,i) in audio.bands",
       :key="i",
-      :stroke="state?.note?.color"
+      :stroke="pitchColor(freqPitch(bar), 3, 1 - i / 256)"
       stroke-linecap="round"
-      stroke-width="2"
-      :y1="400 - i",
-      :x1="200 - bar",
-      :y2="400 - i",
-      :x2="200 + bar"
+      stroke-width="0.5"
+      :x1="512 * bar / 1500",
+      :y1="300",
+      :x2="512 * bar / 1500",
+      :y2="- audio.fft[i] * 1.5"
     )
+    circle(
+      v-for="(ww,w) in audio.wave"
+      :key="w"
+      :cx="w"
+      :cy="150 + 220 * ww"
+      :r="2"
+      :fill="state?.note?.color"
+    )
+  svg-save(svg="tuner")
 </template>
   
 <script setup>
-import { pitchColor, freqPitch, rotateArray, scales, notes, getCircleCoord } from 'chromatone-theory'
-import { defineProps, reactive } from 'vue'
+import { reactive } from 'vue'
+import { UserMedia, Waveform, FFT } from 'tone'
+import { useRafFn } from '@vueuse/core'
 import { useTuner } from '@use/tuner.js'
-const { init, state, chain } = useTuner();
+import { freqPitch, pitchColor } from 'chromatone-theory'
+
+const { init, state } = useTuner()
+
+const wave = new Waveform(512)
+const fft = new FFT({ size: 4096, smoothing: 0 })
+const mic = new UserMedia().connect(fft).connect(wave)
+
+
+
+const audio = reactive({
+  initiated: false,
+  fft: [],
+  wave: [],
+  bands: []
+})
+
+for (let i = 0; i < 300; i++) {
+  audio.bands[i] = fft.getFrequencyOfIndex(i)
+}
+
+function initiate() {
+  mic.open().then(() => {
+    init()
+    audio.initiated = true
+    console.log('mic open')
+    const { resume, pause } = useRafFn(() => {
+      audio.fft = fft.getValue()
+      audio.wave = wave.getValue()
+    })
+  }).catch(() => {
+    console.log('mic denied')
+  })
+}
+
 
 
 </script>

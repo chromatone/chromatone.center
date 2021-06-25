@@ -1,8 +1,8 @@
 ---
 title: Pitch spectrum
-subtitle: Visually analyse all the incoming audio spectrum in realtime
+subtitle: Visually analyse the incoming audio spectrum in realtime
 tags: practice
-cover: apps/spectrum.png
+cover: apps/spectrum.svg
 ---
 
 <client-only>

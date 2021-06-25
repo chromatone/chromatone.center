@@ -20,19 +20,17 @@
       :x2="512 * bar / 1500",
       :y2="- audio.fft[i] * 1.5"
     )
-    circle(
-      v-for="(ww,w) in audio.wave"
-      :key="w"
-      :cx="w"
-      :cy="150 + 220 * ww"
-      :r="2"
-      :fill="state?.note?.color"
+    polyline(
+      :points="audio.points"
+      stroke-width="4"
+      fill="none"
+      :stroke="state?.note?.color"
     )
   svg-save(svg="tuner")
 </template>
   
 <script setup>
-import { reactive } from 'vue'
+import { reactive, computed } from 'vue'
 import { UserMedia, Waveform, FFT } from 'tone'
 import { useRafFn } from '@vueuse/core'
 import { useTuner } from '@use/tuner.js'
@@ -50,7 +48,8 @@ const audio = reactive({
   initiated: false,
   fft: [],
   wave: [],
-  bands: []
+  bands: [],
+  points: '',
 })
 
 for (let i = 0; i < 300; i++) {
@@ -65,11 +64,13 @@ function initiate() {
     const { resume, pause } = useRafFn(() => {
       audio.fft = fft.getValue()
       audio.wave = wave.getValue()
+      audio.points = Array.from(audio.wave).map((val, i) => `${i},${150 + 280 * val}`).join(' ')
     })
   }).catch(() => {
     console.log('mic denied')
   })
 }
+
 
 
 

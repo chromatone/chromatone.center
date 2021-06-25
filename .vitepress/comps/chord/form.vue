@@ -8,14 +8,22 @@
       :class="{ active: activeNotes[note.pitch] }"
       :style="{ backgroundColor: activeNotes[note.pitch] ? pitchColor(note.pitch) : note.pos == 1 ? '#333' : '#aaa' }"
     ) {{ note.name }}
-  .p-4.flex.items-center
-    input(
+  .p-4.flex.flex-wrap.items-center
+    label(
+      for="zoom"
+    ) ZOOM
+    input.m-2(
+      id="zoom"
       type="range"
       min="75"
       max="1000"
       v-model="zoom"
     )
-    input(
+    label(
+      for="speed"
+    ) SPEED
+    input.m-2(
+      id="speed"
       type="range"
       min="10"
       max="150"

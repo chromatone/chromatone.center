@@ -1,6 +1,6 @@
 ---
-title: Pitch spectrum
-subtitle: Visually analyse the incoming audio spectrum in realtime
+title: Spectrum analyzer
+subtitle: Visually analyse the incoming audio spectrum and waveforms in realtime
 tags: practice
 cover: apps/spectrum.svg
 ---

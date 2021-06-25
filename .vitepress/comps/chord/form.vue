@@ -48,43 +48,29 @@
       v-for="(note,n) in activeNotes"
       :key="n"
     )
-      line(
-        x1="1200"
-        x2="1200"
-        y1="400"
-        :y2="computeSine(n, 600) * 100 + 400"
+      polyline(
         :stroke="pitchColor(n)"
-        stroke-width="2"
-      )
-      circle(
-        v-for="p in 600"
-        :key="p"
-        :cx="p * 2"
-        :cy="400"
-        :transform="`translate(0,${computeSine(n, p) * 100})`"
-        r="2"
-        :fill="pitchColor(n)"
+        :points="waves[n]"
+        stroke-width="3"
+        fill="none"
       )
       circle(
         :cx="1200"
         :cy="400"
-        :transform="`translate(0,${computeSine(n, 600) * 100})`"
+        :transform="`translate(0,${computeSine(n, 300) * 100})`"
         r="6"
         :fill="pitchColor(n)"
       )
-    circle(
-      v-for="(s,n) in sumWave"
-      :key="n"
-      :cx="n * 2"
-      :cy="400"
-      :transform="`translate(0,${s * 100})`"
-      r="6"
-      :fill="sumColor.hsl"
+    polyline(
+      :stroke="sumColor.hsl"
+      :points="sumLine"
+      stroke-width="10"
+      fill="none"
     )
     circle(
       :cx="1200"
       :cy="400"
-      :transform="`translate(0,${sumWave[599] * 100})`"
+      :transform="`translate(0,${sumWave[299] * 100})`"
       r="12"
       :fill="sumColor.hsl"
     )
@@ -126,9 +112,20 @@ const chroma = computed(() => {
   return str
 })
 
+const waves = computed(() => {
+  let obj = {}
+  for (let note in activeNotes.value) {
+    obj[note] = []
+    for (let x = 0; x < 300; x++) {
+      obj[note].push(`${x * 4},${computeSine(Number(note), x) * 100 + 400}`)
+    }
+  }
+  return obj
+})
+
 const sumWave = computed(() => {
   let arr = []
-  for (let w = 0; w < 600; w++) {
+  for (let w = 0; w < 300; w++) {
     arr[w] = 0
     for (let note in activeNotes.value) {
       let num = Number(note)
@@ -137,6 +134,10 @@ const sumWave = computed(() => {
   }
   return arr
 });
+
+const sumLine = computed(() => {
+  return sumWave.value.map((y, i) => `${i * 4},${y * 100 + 400}`).join(' ')
+})
 
 const sumColor = computed(() => {
   return chromaColorMix(chroma.value, Object.keys(activeNotes.value)[0])

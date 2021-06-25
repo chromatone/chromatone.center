@@ -11,24 +11,27 @@
   .p-4.flex.items-center
     input(
       type="range"
-      min="100"
+      min="75"
       max="1000"
       v-model="zoom"
     )
-    button.p-2.m-2(
-      @click="resume()"
-    )
-      fa-play
-    button.p-2.m-2(
-      @click="pause()"
-    )
-      fa-pause
     input(
       type="range"
       min="10"
-      max="100"
+      max="150"
       v-model="speed"
     )
+    button(
+      @click="moving = !moving"
+    )
+      la-pause(v-if="moving")
+      la-play(v-else)
+
+    button(
+      @click="sounding = !sounding"
+    )
+      la-volume-up(v-if="!sounding")
+      la-volume-off(v-else)
   svg(
     id="chord-form"
     version="1.1",
@@ -51,26 +54,26 @@
       polyline(
         :stroke="pitchColor(n)"
         :points="waves[n]"
-        stroke-width="3"
+        stroke-width="2"
         fill="none"
       )
       circle(
         :cx="1200"
         :cy="400"
-        :transform="`translate(0,${computeSine(n, 300) * 100})`"
+        :transform="`translate(0,${computeSine(n, numPoints - 1) * 100})`"
         r="6"
         :fill="pitchColor(n)"
       )
     polyline(
       :stroke="sumColor.hsl"
       :points="sumLine"
-      stroke-width="10"
+      stroke-width="12"
       fill="none"
     )
     circle(
       :cx="1200"
       :cy="400"
-      :transform="`translate(0,${sumWave[299] * 100})`"
+      :transform="`translate(0,${sumWave[numPoints - 1] * 100})`"
       r="12"
       :fill="sumColor.hsl"
     )
@@ -81,17 +84,44 @@
 
 <script setup>
 import { notes, pitchColor } from 'chromatone-theory'
-import { reactive, computed } from 'vue'
+import { reactive, computed, ref, watch, watchEffect } from 'vue'
 import { useStorage, useTimestamp } from '@vueuse/core'
 import { chromaColorMix } from "@theme/composables/colors.js";
+import { useSynth } from '@use/synth.js'
 const frequencies = []
 for (let f = 0; f < 13; f++) {
   frequencies[f] = Math.pow(2, f / 12)
 }
 
+const width = 1200
+const numPoints = 600
+const ratio = width / numPoints
+
 const { timestamp, pause, resume } = useTimestamp({ controls: true, offset: Date.now() })
+const moving = useStorage('chord-moving', true)
+watch(moving, val => {
+  if (val) {
+    resume()
+  } else {
+    pause()
+  }
+})
 
 const activeNotes = useStorage('chord-notes-obj', {})
+
+
+const sounding = ref(false)
+const { synthAttack, synthReleaseAll } = useSynth()
+watchEffect(() => {
+  synthReleaseAll()
+  if (sounding.value) {
+    for (let note in activeNotes.value) {
+      let oct = note < 3 ? 3 : 4;
+      synthAttack(notes[note].name + oct)
+    }
+  }
+})
+
 const zoom = useStorage('chord-zoom', 400)
 const speed = useStorage('chord-speed', 100)
 function select(pitch) {
@@ -116,8 +146,8 @@ const waves = computed(() => {
   let obj = {}
   for (let note in activeNotes.value) {
     obj[note] = []
-    for (let x = 0; x < 300; x++) {
-      obj[note].push(`${x * 4},${computeSine(Number(note), x) * 100 + 400}`)
+    for (let x = 0; x < numPoints; x++) {
+      obj[note].push(`${x * ratio},${computeSine(Number(note), x) * 100 + 400}`)
     }
   }
   return obj
@@ -125,7 +155,7 @@ const waves = computed(() => {
 
 const sumWave = computed(() => {
   let arr = []
-  for (let w = 0; w < 300; w++) {
+  for (let w = 0; w < numPoints; w++) {
     arr[w] = 0
     for (let note in activeNotes.value) {
       let num = Number(note)
@@ -136,7 +166,7 @@ const sumWave = computed(() => {
 });
 
 const sumLine = computed(() => {
-  return sumWave.value.map((y, i) => `${i * 4},${y * 100 + 400}`).join(' ')
+  return sumWave.value.map((y, i) => `${i * ratio},${y * 100 + 400}`).join(' ')
 })
 
 const sumColor = computed(() => {
@@ -146,10 +176,14 @@ const sumColor = computed(() => {
 
 <style scoped>
 .note {
-  @apply text-light-100 transition-all duration-400 p-2 m-2 w-3rem text-center font-bold rounded-full shadow-lg cursor-pointer;
+  @apply text-light-100 transition-all duration-400 p-2 m-1 w-2.5rem text-center font-bold rounded-full shadow-lg cursor-pointer;
   filter: grayscale(100%);
 }
 .note.active {
   filter: grayscale(0%);
+}
+
+button {
+  @apply p-2 m-2 border-1 rounded flex flex-col items-center;
 }
 </style>

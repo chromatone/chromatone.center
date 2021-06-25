@@ -26,7 +26,7 @@ export function useSynth() {
     }).toDestination()
   })
 
-  return { synth, synthOnce, synthAttack, synthRelease }
+  return { synth, synthOnce, synthAttack, synthRelease, synthReleaseAll }
 }
 
 export function synthOnce(note = 'A4', duration = '8n', time) {
@@ -42,4 +42,9 @@ export function synthAttack(note) {
 export function synthRelease(note) {
   if (!synth.poly || mute.value) return
   synth.poly.triggerRelease(note)
+}
+
+export function synthReleaseAll() {
+  if (!synth.poly || mute.value) return
+  synth.poly.releaseAll()
 }

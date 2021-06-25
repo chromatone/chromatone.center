@@ -5,5 +5,6 @@ tags: practice
 cover: apps/chord-form.svg
 ---
 
-
-<chord-form />
+<client-only >
+  <chord-form />
+</client-only>

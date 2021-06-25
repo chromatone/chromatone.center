@@ -2,7 +2,7 @@
 .midi(
   :class="{ active: panel }"
   )
-  button.p-2(@click="panel = !panel")
+  button.p-2(@click="panel = !panel" aria-label="Toggle MIDI panel")
     mdi-midi-input.transition-all.duration-200(
       :style=`{
         opacity: midi.enabled ? 1 : 0.2,

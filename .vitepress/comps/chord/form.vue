@@ -23,7 +23,7 @@
       for="speed"
     ) SPEED
     input.m-2(
-      id="speed"
+      id="speed" 
       type="range"
       min="10"
       max="150"

@@ -1,5 +1,5 @@
 <template lang="pug">
-button.mute.p-2(@click="mute = !mute")
+button.mute.p-2(@click="mute = !mute" aria-label="Toggle mute")
   bi-volume-up(v-if="!mute")
   bi-volume-mute(v-else)
 </template>

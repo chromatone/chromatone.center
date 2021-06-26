@@ -37,6 +37,8 @@ We've ported almost all separate apps into the main website. It becomes more and
 - Drum machine
 - Fretboard detect chord
 
+## Any other ideas? [Share them in the discussions!](https://github.com/chromatone/chromatone.center/discussions/2)
+
 
 ## STACK
 - [vue 3](https://v3.vuejs.org/)

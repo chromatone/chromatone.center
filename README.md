@@ -1,6 +1,6 @@
 # Chromatone
 
-[![](https://v2.chromatone.center/media/logo/logo.svg)](https://v2.chromatone.center/)
+[![](https://chromatone.center/media/logo/logo.svg)](https://chromatone.center/)
 
 The visual music research center
 

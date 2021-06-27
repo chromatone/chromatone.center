@@ -34,6 +34,9 @@ links:
   - url: http://www.gootar.com/
     title: Gootar
     subtitle: A huge online toolbox for guitar players by goddess 401
+  - url: https://www.abcjs.net/
+    title: Computer readable notation
+    subtitle: A format for typing music information in plain text files
 date: 2018-09-08
 ---
 

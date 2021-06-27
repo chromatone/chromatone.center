@@ -1,6 +1,6 @@
 # Chromatone
 
-[![](https://v2.chromatone.center/media/logo/logo.svg)](https://v2.chromatone.center/)
+[![](https://chromatone.center/media/logo/logo.svg)](https://chromatone.center/)
 
 The visual music research center
 
@@ -30,12 +30,14 @@ Contact the author and the headquarter of the project.
 We've ported almost all separate apps into the main website. It becomes more and more integrated tool. But there's more! Next are the experiments, that stat at dev and need to be implemented with the new dev stack.
 
 - Pitch field / Tone grid
-- Noise lab
+- ~~Noise lab~~
 - Harmonics
-- Oscilloscope
+- ~~Oscilloscope~~
 - Synth waveforms
 - Drum machine
 - Fretboard detect chord
+
+## Any other ideas? [Share them in the discussions!](https://github.com/chromatone/chromatone.center/discussions/2)
 
 
 ## STACK

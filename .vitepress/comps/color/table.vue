@@ -1,5 +1,5 @@
 <template lang="pug">
-table.w-full
+table.w-full.my-8
   tr
     th HSL
     th LCH

@@ -108,7 +108,7 @@ The **CMY** color model is a subtractive color model in which cyan, magenta and 
 
 When the intensities for all the components are the same, the result is a shade of gray, lighter, or darker depending on the intensity. When the intensities are different, the result is a colorized hue, more or less saturated depending on the difference of the strongest and weakest of the intensities of the primary colors employed. 
 
-<img src="/media/theory/cmyk.svg">
+<mix-cmyk />
 
 **CMYK** color model is a subtractive color model, based on the CMY color model, used in color printing, and is also used to describe the printing process itself, that is used in the layering technique by printers to create different colors on a white paper. CMYK refers to the four inks used in some color printing: cyan, magenta, yellow, and key. It uses K, black ink, since C, M, and Y inks are translucent and will only produce a gray color when laid on top of each other. 
 
@@ -120,7 +120,7 @@ Light, saturated colors often cannot be created with CMYK, and light colors in g
 
 A color model is additive in the sense that the three light beams are added together, and their light spectra add, wavelength for wavelength, to make the final color's spectrum. Because of properties, these three colors create white, this is in stark contrast to physical colors, such as dyes which create black when mixed. 
 
-<img src="/media/theory/rgb.svg">
+<mix-rgb />
 
 Zero intensity for each component gives the darkest color (no light, considered the black), and full intensity of each gives a white; the quality of this white depends on the nature of the primary light sources, but if they are properly balanced, the result is a neutral white matching the system's white point. When the intensities for all the components are the same, the result is a shade of gray, darker or lighter depending on the intensity. When the intensities are different, the result is a colorized hue, more or less saturated depending on the difference of the strongest and weakest of the intensities of the primary colors employed. 
 

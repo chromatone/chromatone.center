@@ -7,6 +7,9 @@ links:
   - url: https://github.com/willianjusten/awesome-audio-visualization
     title: Awesome audio visualization
     subtitle: A huge collection of materials on music visualization. With free webapps and downloads.
+  - url: https://musiclab.chromeexperiments.com/Song-Maker/
+    title: Google song maker
+    subtitle: To make a song, add notes by clicking the grid. Then, share your song with a link. You can also use a MIDI keyboard or sing a note into your mic.
   - url: https://experiments.withgoogle.com/seeing-music
     title: Seeing music Google experiment
     subtitle: This is a tool for visualizing music. You can turn on your mic to sing or play sounds. You can also drop in your own audio or video file. Some modes – like Hilbert Scope and Spectrogram – show the subtle textures of sound. Others show the paths and shapes of different melodies.

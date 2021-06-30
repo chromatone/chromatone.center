@@ -26,8 +26,8 @@
     "webmidi": "^3.0.0-alpha.5"
   },
   "devDependencies": {
-    "@iconify/json": "^1.1.361",
-    "@types/node": "^15.12.4",
+    "@iconify/json": "^1.1.365",
+    "@types/node": "^15.12.5",
     "esbuild-register": "^2.6.0",
     "markdown-it-classy": "^0.2.0",
     "markdown-it-container": "^3.0.0",
@@ -37,7 +37,7 @@
     "typescript": "^4.3.4",
     "vite": "^2.3.8",
     "vite-aliases": "0.8.2",
-    "vite-plugin-components": "^0.11.2",
+    "vite-plugin-components": "^0.11.4",
     "vite-plugin-icons": "^0.6.3",
     "vite-plugin-windicss": "^1.1.1",
     "vitepress": "0.15.5",

@@ -1,11 +1,11 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@iconify/json': ^1.1.361
+  '@iconify/json': ^1.1.365
   '@tonaljs/note': ^4.6.0
   '@tonaljs/pcset': ^4.5.1
   '@tonaljs/tonal': ^4.6.0
-  '@types/node': ^15.12.4
+  '@types/node': ^15.12.5
   '@vueuse/core': 5.0.3
   '@vueuse/gesture': ^1.0.0
   '@vueuse/motion': ^1.5.6
@@ -26,7 +26,7 @@ specifiers:
   typescript: ^4.3.4
   vite: ^2.3.8
   vite-aliases: 0.8.2
-  vite-plugin-components: ^0.11.2
+  vite-plugin-components: ^0.11.4
   vite-plugin-icons: ^0.6.3
   vite-plugin-windicss: ^1.1.1
   vitepress: 0.15.5
@@ -65,7 +65,7 @@ devDependencies:
   typescript: 4.3.4
   vite: 2.3.8
   vite-aliases: 0.8.2
-  vite-plugin-components: 0.11.3_vite@2.3.8
+  vite-plugin-components: 0.11.4_vite@2.3.8
   vite-plugin-icons: 0.6.3_@iconify+json@1.1.365
   vite-plugin-windicss: 1.1.1_vite@2.3.8
   vitepress: 0.15.5
@@ -2360,10 +2360,10 @@ packages:
       vite: 2.3.8
     dev: true
 
-  /vite-plugin-components/0.11.3_vite@2.3.8:
-    resolution: {integrity: sha512-gt8BC5LTNHAbHkTR0s33+/MWZZTA7KnmEiWuC/CZDaSXa7Uu9gGl+l2HWHRB8PDJ5N+TuKmdWXBeVNBoER9EMA==}
+  /vite-plugin-components/0.11.4_vite@2.3.8:
+    resolution: {integrity: sha512-BaTdqhXpCXIv9g6kthMRRB/BE5ijkXIBti6Jzghhpi1ZWlMA6X17yhWFynyUHK8KYi0tvn+Q/Ain5DnmCSC67A==}
     peerDependencies:
-      vite: ^2.0.0-beta.69
+      vite: ^2.0.0
     dependencies:
       chokidar: 3.5.2
       debug: 4.3.2

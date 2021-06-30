@@ -1,6 +1,6 @@
 ---
 template: home
-title: Chromatone
+title: Universal color music notation for visualization and communication
 actionLink: /enter.html
 actionText: Enter
 altActionLink: /ru.html

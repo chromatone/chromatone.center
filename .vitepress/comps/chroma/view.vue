@@ -9,22 +9,32 @@
   xmlns="http://www.w3.org/2000/svg",
   )
     circle.note(
-      style="transition: all 200ms ease-in-out;transform-box: fill-box; transform-origin: center center;"
+      style="transition: all 300ms ease-in-out;transform-box: fill-box; transform-origin: center center;"
       :cx="50",
       :cy="50",
-      :r="50 * state.rms + 1",
-      :fill="state?.note.color",
+      :r="100 * state.rms + 10",
+      :fill="state.note.silent ? '#888' : state?.note.color",
     )
+    text(
+      style="user-select:none;transition:all 300ms ease"
+      fill="white"
+      font-family="Commissioner, sans-serif"
+      font-size="3px"
+      text-anchor="middle",
+      dominant-baseline="middle"
+      :x="50",
+      :y="50",
+      ) {{ state.note.name }} 
     g.around(
       style="cursor:pointer"
       v-for="(amount,i) in rotateArray(state.chroma,-3)", 
       :key="i",
     )
       circle.note(
-        style="transition: all 200ms ease-in-out;transform-box: fill-box; transform-origin: center center;"
+        style="transition: all 300ms ease-in-out;transform-box: fill-box; transform-origin: center center;"
         :cx="getCircleCoord(i).x",
         :cy="getCircleCoord(i).y",
-        :r="1 + 10 * amount",
+        :r="2 + 12 * amount",
         :fill="pitchColor(i, 3, amount)",
       )
       text(
@@ -47,4 +57,7 @@ const { init, state, chain } = useTuner();
 </script>
 
 <style scoped>
+.note {
+  @apply mix-blend-screen;
+}
 </style>

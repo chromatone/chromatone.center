@@ -17,7 +17,6 @@ Sound is amplified and transformed into nerve signals by mechanically activated 
 
 <pitch-loudness />
 
-<img src="./hearing.svg" >
 
 # Harmonics – the natural resonances
 

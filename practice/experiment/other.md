@@ -40,6 +40,9 @@ links:
   - url: https://www.abcjs.net/
     title: Computer readable notation
     subtitle: A format for typing music information in plain text files
+  - url: https://www.themusiclab.org/
+    title: The Music Lab 
+    subtitle: We do citizen science to learn how the human mind creates and perceives music. Pick a game to get started!
 date: 2018-09-08
 ---
 

@@ -19,9 +19,9 @@ import { defineEmit } from 'vue'
 defineEmit(['toggle'])
 </script>
 
-<style scoped lang="postcss">
+<style scoped>
 .nav-bar {
-  @apply fixed top-0 inset-x-0 z-$z-index-navbar
+  @apply sm:(sticky top-0) inset-x-0 z-$z-index-navbar
     flex space-between align-center select-none
     border-b-1px border-$c-divider
     py-0.7rem px-4

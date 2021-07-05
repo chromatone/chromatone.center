@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useRepo } from '../../composables/repo'
+import { useRepo } from '../../composables/repo.js'
 
 const repo = useRepo()
 </script>

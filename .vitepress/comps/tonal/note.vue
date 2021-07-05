@@ -24,7 +24,7 @@ g.cursor-pointer
 </template>
 
 <script setup>
-import { defineProps, defineEmit, ref, computed, watch } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { Frequency } from 'tone'
 import { pitchColor, pitchFreq } from 'chromatone-theory'
 import { synthAttack, synthRelease } from '@use/synth.js'

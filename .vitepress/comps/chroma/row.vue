@@ -16,7 +16,7 @@
 </template>
 
 <script setup>
-import { defineProps, computed, defineEmit, nextTick } from 'vue'
+import { computed, nextTick } from 'vue'
 import { ChordType, ScaleType } from '@tonaljs/tonal'
 import { pitchColor, notes } from 'chromatone-theory'
 import { Note } from '@tonaljs/tonal'
@@ -73,7 +73,7 @@ const chord = ChordType.get(props.set.chroma)
 const scale = ScaleType.get(props.set.chroma).name
 </script>
 
-<style lang="postcss" scoped>
+<style  scoped>
 .chroma-key {
   @apply grid cursor-pointer place-content-center text-xs transition-all duration-300 p-1 py-3  mx-4px sm:(py-4) hover:(opacity-100) opacity-80  rounded-md;
 }

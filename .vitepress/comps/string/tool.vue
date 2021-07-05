@@ -179,7 +179,7 @@
 </template>
 
 <script setup>
-import { defineProps, reactive, computed, watch } from 'vue'
+import { reactive, computed, watch } from 'vue'
 import { useStorage } from '@vueuse/core'
 import { Note, Interval, Chord } from '@tonaljs/tonal'
 import { freqColor } from 'chromatone-theory'

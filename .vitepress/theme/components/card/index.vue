@@ -27,7 +27,6 @@
 <script setup>
 import { useData } from 'vitepress'
 const { site } = useData()
-import { defineProps } from 'vue'
 const props = defineProps({
   item: Object,
   i: Number,
@@ -37,7 +36,7 @@ const props = defineProps({
 import { lchToHsl } from '@theme/composables/colors.js'
 </script>
 
-<style lang="postcss" scoped>
+<style  scoped>
 .crd {
   @apply my-4 relative transition-all bg-white dark:bg-gray-900 flex flex-col rounded-md shadow-md hover:shadow-lg;
   transition: box-shadow color 100ms ease-in-out;

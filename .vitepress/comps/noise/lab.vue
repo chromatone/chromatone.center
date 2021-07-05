@@ -217,7 +217,7 @@
 </template>
 
 <script setup>
-import { defineProps, reactive, ref, watch, onMounted, onBeforeUnmount } from 'vue'
+import { reactive, ref, watch, onMounted, onBeforeUnmount } from 'vue'
 import { NoiseSynth, gainToDb, dbToGain, FFT, Gain, AutoFilter, AutoPanner, BitCrusher } from 'tone'
 import { useStorage, useRafFn } from '@vueuse/core'
 

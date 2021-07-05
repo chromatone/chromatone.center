@@ -15,8 +15,8 @@ nav.nav-links(v-if="show")
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useData } from 'vitepress'
-import { useLocaleLinks } from '../../composables/nav'
-import { useRepo } from '../../composables/repo'
+import { useLocaleLinks } from '../../composables/nav.js'
+import { useRepo } from '../../composables/repo.js'
 
 const site = useData()
 const localeLinks = useLocaleLinks()

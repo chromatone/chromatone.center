@@ -51,7 +51,6 @@
 
 <script setup>
 import { pitchColor, rotateArray, scales, notes, getCircleCoord } from 'chromatone-theory'
-import { defineProps } from 'vue'
 import { useTuner } from '@use/tuner.js'
 const { init, state, chain } = useTuner();
 </script>

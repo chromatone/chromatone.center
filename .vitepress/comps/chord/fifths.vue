@@ -109,7 +109,7 @@ svg-save(
 </template>
 
 <script setup>
-import { defineProps, ref, watch } from 'vue'
+import { ref, watch } from 'vue'
 import { useMotion } from '@vueuse/motion'
 import { useStorage } from '@vueuse/core'
 import { notes, rotateArray, getCircleCoord, pitchColor } from 'chromatone-theory'

@@ -46,7 +46,7 @@ const hasAltAction = computed(
 )
 </script>
 
-<style scoped lang="postcss">
+<style scoped >
 .home-hero {
   @apply pt-10 pb-11 px-4 md:px-6 text-center xs:py-14 md:(pt-16 pb-17) flex;
 }

@@ -39,7 +39,6 @@ svg.max-h-sm(
 
 <script setup>
 import { notes, pitchColor, scales } from 'chromatone-theory'
-import { defineProps, defineEmit } from 'vue'
 const props = defineProps({
   accord: Object,
 });

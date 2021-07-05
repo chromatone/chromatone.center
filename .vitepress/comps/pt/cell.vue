@@ -20,7 +20,7 @@
 </template>
 
 <script setup>
-import { defineProps, computed, ref, reactive, watch } from 'vue'
+import { computed, ref, reactive, watch } from 'vue'
 import { context, start, gainToDb, PanVol, MonoSynth } from 'tone'
 import { useSynth } from './synth.js'
 
@@ -91,7 +91,7 @@ const textColor = computed(() => {
 
 </script>
 
-<style lang="postcss"  scoped>
+<style   scoped>
 .cell {
   @apply relative opacity-90 flex flex-col p-1 flex-1 cursor-pointer select-none;
   transition: all 100ms ease;

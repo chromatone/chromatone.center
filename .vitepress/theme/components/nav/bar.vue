@@ -13,10 +13,8 @@ header.nav-bar
   nav-toggle-sidebar(@toggle="$emit('toggle')")
 </template>
 
-<script setup lang="ts">
-import { defineEmit } from 'vue'
-
-defineEmit(['toggle'])
+<script setup>
+defineEmit(['toggle']);
 </script>
 
 <style scoped>

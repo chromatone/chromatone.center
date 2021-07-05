@@ -12,7 +12,7 @@
 </template>
 
 <script setup>
-import { defineProps, ref, defineEmit } from 'vue'
+import { ref } from 'vue'
 import { pitchColor } from 'chromatone-theory'
 const props = defineProps({
   note: Object,
@@ -48,7 +48,7 @@ function change() {
 }
 </script>
 
-<style lang="postcss" scoped>
+<style  scoped>
 .note {
   @apply flex-1 p-2 m-1px transition-all duration-200 items-center flex justify-center  cursor-pointer text-light-100 select-none;
 }

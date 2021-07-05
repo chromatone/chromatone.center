@@ -117,7 +117,7 @@ svg.max-h-3xl.w-full(
 import { notes, pitchColor, scales, isInChroma, getCircleCoord } from 'chromatone-theory'
 import { clrd, lchToHsl, chromaColorMix } from "@theme/composables/colors.js";
 import { ScaleType, ChordType, Chord, Note } from '@tonaljs/tonal'
-import { defineProps, ref, defineEmit, computed, onMounted, onBeforeUnmount, nextTick } from 'vue'
+import { ref, computed, onMounted, onBeforeUnmount, nextTick } from 'vue'
 const props = defineProps({
   tonic: {
     type: Number,
@@ -273,7 +273,7 @@ function stopChord() {
 
 </script>
 
-<style lang="postcss"  scoped>
+<style   scoped>
 .around,
 .note,
 .line {

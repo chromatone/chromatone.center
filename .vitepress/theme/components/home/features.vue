@@ -24,7 +24,7 @@ const features = computed(() => {
 })
 </script>
 
-<style scoped lang="postcss">
+<style scoped >
 .home-features {
   @apply mx-auto pt-10 pb-11 max-w-960px
     xs:(pt-13 pb-14)

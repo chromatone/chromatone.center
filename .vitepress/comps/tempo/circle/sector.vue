@@ -39,7 +39,7 @@ g(
 </template>
 
 <script setup>
-import { defineProps, computed } from 'vue'
+import { computed } from 'vue'
 import { levelColor } from "@theme/composables/colors.js";
 import { getCircleCoord } from 'chromatone-theory'
 import { colord } from 'colord'

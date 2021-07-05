@@ -12,14 +12,11 @@
         
 </template>
 
-<script setup lang="ts">
-import { defineProps, ref, watch } from 'vue'
+<script setup >
+import { ref, watch } from 'vue'
 import { useRoute } from 'vitepress'
-import type { DefaultTheme } from '../../config'
 
-defineProps<{
-  item: DefaultTheme.NavItemWithChildren
-}>()
+defineProps(['item'])
 
 const route = useRoute()
 
@@ -37,7 +34,7 @@ function toggle() {
 }
 </script>
 
-<style scoped lang="postcss">
+<style scoped >
 .nav-dropdown-link {
   @apply relative h-36px overflow-hidden cursor-pointer
     lg:(h-auto overflow-visible);

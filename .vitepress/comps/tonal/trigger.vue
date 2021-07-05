@@ -17,7 +17,7 @@ polygon.chord-trigger(
 </template>
 
 <script setup>
-import { defineProps, computed, ref } from 'vue'
+import { computed, ref } from 'vue'
 import { pitchColor, pitchFreq, notes } from 'chromatone-theory'
 import { Frequency } from 'tone'
 import { synthAttack, synthRelease } from '@use/synth.js'

@@ -12,7 +12,6 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue'
 import { levelColor } from '@theme/composables/colors.js'
 const props = defineProps({
   list: Object,

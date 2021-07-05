@@ -13,7 +13,7 @@
 </template>
 
 <script setup>
-import { defineProps, defineEmit, reactive, computed, watchEffect } from 'vue'
+import { reactive, computed, watchEffect } from 'vue'
 const props = defineProps({
   max: {
     type: Number,

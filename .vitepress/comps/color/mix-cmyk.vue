@@ -50,24 +50,22 @@
     ) Y
   .flex.flex-wrap.justify-center
     .flex.flex-col.items-center.p-2
-      label(for="cyan") CYAN {{ mix.c }}
+      label(for="cyan" style="color:cyan") CYAN {{ mix.c }}
       input(type="range" v-model="mix.c" min="0" max="100" id="cyan")
     .flex.flex-col.items-center.p-2
-      label(for="magenta") MAGENTA {{ mix.m }}
+      label(for="magenta" style="color:magenta") MAGENTA {{ mix.m }}
       input(type="range" v-model="mix.m" min="0" max="100" id="magenta")
     .flex.flex-col.items-center.p-2
-      label(for="yellow") YELLOW {{ mix.y }}
+      label(for="yellow" style="color:yellow") YELLOW {{ mix.y }}
       input(type="range" v-model="mix.y" min="0" max="100" id="yellow")
     .flex.flex-col.items-center.p-2
-      label(for="black") BLACK {{ mix.k }}
+      label(for="black" style="color:black") BLACK {{ mix.k }}
       input(type="range" v-model="mix.k" min="0" max="100" id="black")
 </template>
 
 <script setup>
-import { defineProps, reactive } from 'vue'
-const props = defineProps({
+import { reactive } from 'vue'
 
-});
 
 const mix = reactive({
   radius: 30,

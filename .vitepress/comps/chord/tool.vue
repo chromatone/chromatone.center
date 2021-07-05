@@ -74,7 +74,7 @@ function compareChords(a, b) {
 
 </script>
 
-<style lang="postcss" scoped>
+<style  scoped>
 .chord {
   @apply text-xl p-2 transition-all cursor-pointer m-1 rounded-lg border bg-light-100 dark:bg-dark-100 hover:bg-light-500 dark:(hover:bg-dark-300);
   &.active {

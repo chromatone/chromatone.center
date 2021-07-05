@@ -23,13 +23,12 @@ svg.defs(style="height:0")
 </template>
 
 <script setup>
-import { defineProps } from 'vue'
 const props = defineProps({
   author: Object,
 });
 </script>
 
-<style lang="postcss" scoped>
+<style  scoped>
 .author-card {
   @apply max-w-65ch m-auto flex flex-col shadow-lg p-8 my-16 bg-gray-50 dark:bg-gray-700;
 }

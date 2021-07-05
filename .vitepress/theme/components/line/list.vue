@@ -14,7 +14,6 @@
 <script setup>
 import { useData } from 'vitepress'
 const { site } = useData()
-import { defineProps } from 'vue'
 const props = defineProps({
   list: Object,
 });

@@ -15,7 +15,7 @@
 </template>
 
 <script setup>
-import { computed, defineProps, reactive } from "vue";
+import { computed, reactive } from "vue";
 import { sortList } from '@theme/composables/list.js'
 const props = defineProps({
   rows: Object,
@@ -28,7 +28,7 @@ const sorted = computed(() => {
 
 </script>
 
-<style lang="postcss" scoped>
+<style  scoped>
 .tiles {
   @apply flex flex-wrap max-w-55ch mx-auto;
 }

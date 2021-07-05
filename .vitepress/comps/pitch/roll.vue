@@ -13,7 +13,7 @@
 </template>
 
 <script setup>
-import { defineProps, ref, computed, reactive, onMounted, onBeforeUnmount, watch } from 'vue'
+import { ref, computed, reactive, onMounted, onBeforeUnmount, watch } from 'vue'
 import { pitchColor, rotateArray } from 'chromatone-theory'
 import { useTuner } from '@use/tuner.js'
 
@@ -108,7 +108,7 @@ function clear() {
 
 </script>
 
-<style lang="postcss" scoped>
+<style  scoped>
 .button {
   @apply p-4 m-8 shadow-lg cursor-pointer transition-all duration-300 rounded-4xl text-4xl bg-light-700 text-center font-bold dark:(bg-dark-400);
 }

@@ -41,7 +41,7 @@ function sortNotes(notes) {
 
 </script>
 
-<style lang="postcss" scoped>
+<style  scoped>
 .header {
   @apply p-2 m-1px font-bold bg-gray-500 bg-opacity-50;
 }

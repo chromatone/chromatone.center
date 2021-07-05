@@ -11,10 +11,9 @@ import { useEditLink } from '../../composables/editLink'
 const { url, text } = useEditLink()
 </script>
 
-<style scoped lang="postcss">
+<style scoped >
 .link {
-  @apply
-    text-base font-medium
+  @apply text-base font-medium
     text-$c-text-light
     hover:(no-underline text-$c-brand);
 }

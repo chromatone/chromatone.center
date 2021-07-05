@@ -4,9 +4,11 @@ button.icon-button.p-2(@click="toggle" aria-label="Toggle dark mode")
   ion-ios-sunny(v-show="!isDark")
 </template>
 
-<script setup lang='ts'>
-import { useToggle, useDark } from '@vueuse/core'
+<script setup>
+import { useDark } from '@vueuse/core'
 const isDark = useDark()
 
-const toggle = useToggle(isDark);
+function toggle() {
+  isDark.value = !isDark.value
+}
 </script>

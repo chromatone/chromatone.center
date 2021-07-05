@@ -79,7 +79,7 @@ svg#tonal-array(
 </template>
 
 <script setup>
-import { defineProps, reactive, computed, watch } from 'vue'
+import { reactive, computed, watch } from 'vue'
 import { rotateArray, notes, scales, pitchColor } from 'chromatone-theory'
 import { useStorage } from '@vueuse/core'
 

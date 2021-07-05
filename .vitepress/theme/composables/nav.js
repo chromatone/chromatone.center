@@ -1,6 +1,5 @@
 import { computed } from 'vue'
 import { useRoute, useData, inBrowser } from 'vitepress'
-import type { DefaultTheme } from '../config'
 
 export function useLocaleLinks() {
   const route = useRoute()
@@ -13,8 +12,7 @@ export function useLocaleLinks() {
     if (!locales) return null
     const localeKeys = Object.keys(locales)
 
-    if (localeKeys.length <= 1)
-      return null
+    if (localeKeys.length <= 1) return null
 
     // handle site base
     const siteBase = inBrowser ? site.site.value.base : '/'
@@ -52,6 +50,6 @@ export function useLocaleLinks() {
     return {
       text: selectText,
       items: candidates,
-    } as DefaultTheme.NavItemWithChildren
+    }
   })
 }

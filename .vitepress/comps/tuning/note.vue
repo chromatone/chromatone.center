@@ -54,7 +54,7 @@ g.tet(
 <script setup>
 import { pitchColor, pitchFreq, notes, getCircleCoord } from 'chromatone-theory'
 import { synthAttack, synthRelease } from '@use/synth.js'
-import { defineProps, computed, ref } from 'vue'
+import { computed, ref } from 'vue'
 import { colord } from 'colord'
 const props = defineProps({
   R: Number,

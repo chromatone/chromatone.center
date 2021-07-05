@@ -9,7 +9,6 @@
 </template>
 
 <script setup>
-import { defineProps, defineEmit } from 'vue'
 const props = defineProps({
   cc: Object
 });
@@ -29,7 +28,7 @@ function dragger({ movement: [x, y], dragging }) {
 }
 </script>
 
-<style lang="postcss" scoped>
+<style  scoped>
 .cc {
   @apply relative flex-1 flex  items-center  m-1px transition-all duration-200  cursor-pointer select-none;
 }

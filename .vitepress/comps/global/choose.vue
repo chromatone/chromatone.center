@@ -9,7 +9,6 @@
 </template>
 
 <script setup>
-import { defineProps, defineEmit } from 'vue'
 const props = defineProps({
   modelValue: {
     type: [String, Number]

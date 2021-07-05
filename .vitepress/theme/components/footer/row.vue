@@ -51,7 +51,7 @@ const { site, theme } = useData()
 const route = useRoute()
 </script>
 
-<style scoped lang="postcss">
+<style scoped >
 footer {
   @apply transition-all min-h-26vh z-1 bg-gray-300 dark:bg-dark-700 flex flex-col pt-16 pb-16 px-4;
 }

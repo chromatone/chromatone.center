@@ -6,7 +6,6 @@
 
 <script setup>
 import { state } from './state.js'
-import { defineProps } from 'vue'
 
 const props = defineProps({
   top: Boolean,
@@ -34,7 +33,7 @@ function incOctave(top) {
 
 </script>
 
-<style lang="postcss" scoped>
+<style  scoped>
 .btn {
   @apply flex-1 font-bold p-2 opacity-70 m-2 shadow rounded-lg hover:opacity-100 transition;
 }

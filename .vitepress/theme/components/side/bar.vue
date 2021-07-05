@@ -5,15 +5,13 @@ aside(class="max-w-sm h-auto border-l-1px border-$c-divider")
     side-Links
 </template>
 
-<script setup lang="ts">
-import { defineProps } from 'vue'
-
+<script setup>
 defineProps({
   open: { type: Boolean, required: true },
-})
+});
 </script>
 
-<style scoped lang="postcss">
+<style scoped>
 .sidebar {
   z-index: var(--z-index-sidebar);
   width: 16.4rem;

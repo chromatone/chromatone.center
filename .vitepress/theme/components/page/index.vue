@@ -19,7 +19,7 @@ const { site, title, theme } = useData()
 
 </script>
 
-<style lang="postcss" scoped>
+<style  scoped>
 main {
   @apply flex flex-col;
 }

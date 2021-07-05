@@ -35,7 +35,6 @@
 </template>
 
 <script setup>
-import { defineProps } from 'vue'
 import { midi, stopAll, midiAttack, midiRelease } from '@use/midi.js'
 import { pitchColor } from 'chromatone-theory'
 

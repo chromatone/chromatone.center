@@ -9,14 +9,13 @@
 //debug
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { ref, computed, watch, onMounted } from 'vue'
 import {
   useRoute,
   useData,
 } from 'vitepress'
-import { isSideBarEmpty, getSideBarConfig } from './support/sideBar'
-import type { DefaultTheme } from './config'
+import { isSideBarEmpty, getSideBarConfig } from './support/sideBar.js'
 
 // generic state
 const route = useRoute()
@@ -57,7 +56,7 @@ const showSidebar = computed(() => {
   )
 })
 
-const toggleSidebar = (to?: boolean) => {
+const toggleSidebar = (to) => {
   openSideBar.value = typeof to === 'boolean' ? to : !openSideBar.value
 }
 
@@ -76,10 +75,10 @@ const pageClasses = computed(() => {
       'no-sidebar': !showSidebar.value,
     },
   ]
-})
+});
 </script>
 
-<style lang="postcss">
+<style >
 .main {
   background-blend-mode: overlay;
   @apply min-h-screen bg-cover bg-center bg-fixed pt-$header-height;

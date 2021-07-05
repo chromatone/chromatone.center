@@ -125,7 +125,7 @@
 </template>
 
 <script setup>
-import { defineProps, reactive, computed } from 'vue'
+import { reactive, computed } from 'vue'
 import { useRafFn } from '@vueuse/core'
 const string = reactive({
   tonic: 0,

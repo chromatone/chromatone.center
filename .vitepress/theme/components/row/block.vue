@@ -26,18 +26,16 @@
 <script setup>
 import { useData } from 'vitepress'
 const { site, title, theme } = useData()
-import { defineProps } from 'vue'
+import { lchToHsl } from '@theme/composables/colors.js'
 const props = defineProps({
   item: Object,
   i: Number,
   total: Number,
 });
 
-import { lchToHsl } from '@theme/composables/colors.js'
-
 </script>
 
-<style lang="postcss" scoped>
+<style scoped>
 .row {
   @apply my-8 shadow-lg rounded-md mx-2 md:mx-0 sm:mx-4 bg-light-200 dark:bg-dark-200
   flex flex-col items-stretch 

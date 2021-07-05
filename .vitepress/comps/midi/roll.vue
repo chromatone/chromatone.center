@@ -13,7 +13,7 @@
 </template>
 
 <script setup>
-import { defineProps, reactive, watch } from 'vue'
+import { reactive, watch } from 'vue'
 import { midi } from '@use/midi.js'
 
 const score = reactive({

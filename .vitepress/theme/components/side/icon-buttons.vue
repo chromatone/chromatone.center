@@ -11,7 +11,7 @@ const repo = useRepo()
   dark-mode
 </template>
 
-<style scoped lang="postcss">
+<style scoped >
 .icon-button {
   @apply rounded-lg p-2 bg-gray-200
   bg-opacity-50 hover:bg-opacity-60

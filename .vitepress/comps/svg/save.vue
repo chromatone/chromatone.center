@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-import { defineProps, reactive, toRaw, ref } from 'vue'
+import { reactive, toRaw, ref } from 'vue'
 const props = defineProps({
   svg: String,
   file: {
@@ -38,7 +38,7 @@ function saveSVG(pic) {
 
 </script>
 
-<style lang="postcss" scoped>
+<style  scoped>
 .snapshot {
   @apply flex absolute cursor-pointer bg-gray-200 bg-opacity-70 dark:(bg-gray-800 bg-opacity-70) text-2xl -mt-1rem right-2rem p-2  rounded-full;
 }

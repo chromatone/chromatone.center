@@ -1,26 +1,21 @@
 <template>
   <div class="nav-link">
-    <a class="item" v-bind="linkProps">
-      {{ item.text }}
-    </a>
+    <a class="item" v-bind="linkProps">{{ item.text }}</a>
   </div>
 </template>
 
-<script setup lang="ts">
-import { defineProps, toRefs } from 'vue'
-import type { DefaultTheme } from '../../config'
-import { useNavLink } from '../../composables/navLink'
+<script setup >
+import { toRefs } from 'vue'
+import { useNavLink } from '../../composables/navLink.js'
 
-const props = defineProps<{
-  item: DefaultTheme.NavItemWithLink
-}>()
+const props = defineProps(['item'])
 
 const propsRefs = toRefs(props)
 
-const { props: linkProps } = useNavLink(propsRefs.item)
+const { props: linkProps } = useNavLink(propsRefs.item);
 </script>
 
-<style scoped lang="postcss">
+<style scoped >
 .item {
   @apply block border-0 px-3 py-1.5 w-full
     text-left font-$font-family-base font-semibold text-$c-text whitespace-nowrap bg-transparent cursor-pointer

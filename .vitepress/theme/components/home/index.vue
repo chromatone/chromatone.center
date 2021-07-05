@@ -13,5 +13,5 @@ import { useData } from 'vitepress'
 const { site, frontmatter } = useData()
 </script>
 
-<style scoped lang="postcss">
+<style scoped >
 </style>

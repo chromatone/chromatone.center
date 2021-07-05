@@ -7,7 +7,6 @@ a.tile(:href="item.link", :style="{ backgroundColor: lchToHsl(i, total) }")
 </template>
 
 <script setup>
-import { defineProps } from 'vue'
 import { lchToHsl } from '@theme/composables/colors.js'
 const props = defineProps({
   item: Object,
@@ -16,7 +15,7 @@ const props = defineProps({
 });
 </script>
 
-<style lang="postcss" scoped>
+<style scoped>
 .tile {
   @apply m-4 flex flex-col shadow-md transition hover:shadow-xl no-underline;
   flex: 1 1 200px;

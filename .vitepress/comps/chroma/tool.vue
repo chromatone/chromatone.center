@@ -106,7 +106,7 @@ function saveSVG(pic) {
 
 </script>
 
-<style lang="postcss" scoped>
+<style  scoped>
 .chord {
   @apply p-2 transition-all cursor-pointer m-1 rounded-lg bg-light-500 dark:bg-dark-100 hover:bg-light-800 dark:(hover:bg-dark-300);
 }

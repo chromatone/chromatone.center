@@ -99,7 +99,7 @@
 </template>
 
 <script setup>
-import { defineProps, ref, computed, reactive, onMounted, onBeforeUnmount } from 'vue'
+import { ref, computed, reactive, onMounted, onBeforeUnmount } from 'vue'
 import { pitchColor } from 'chromatone-theory'
 import { useTuner } from '@use/tuner.js'
 

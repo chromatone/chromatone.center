@@ -26,3 +26,5 @@ A note isn't just a wave, it's a mix of resonating modes of oscillations.
 
 
 <img src="/media/theory/overtones.svg">
+
+<pitch-dissonance />

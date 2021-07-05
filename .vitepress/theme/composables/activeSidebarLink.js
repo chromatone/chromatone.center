@@ -1,12 +1,12 @@
 import { onMounted, onUnmounted, onUpdated } from 'vue'
 
 export function useActiveSidebarLinks() {
-  let rootActiveLink: HTMLAnchorElement | null = null
-  let activeLink: HTMLAnchorElement | null = null
+  let rootActiveLink = null
+  let activeLink = null
 
   const onScroll = throttleAndDebounce(setActiveLink, 300)
 
-  function setActiveLink(): void {
+  function setActiveLink() {
     const sidebarLinks = getSidebarLinks()
     const anchors = getAnchors(sidebarLinks)
 
@@ -24,14 +24,13 @@ export function useActiveSidebarLinks() {
     }
   }
 
-  function activateLink(hash: string | null): void {
+  function activateLink(hash) {
     deactivateLink(activeLink)
     deactivateLink(rootActiveLink)
 
     activeLink = document.querySelector(`.sidebar a[href="${hash}"]`)
 
-    if (!activeLink)
-      return
+    if (!activeLink) return
 
     activeLink.classList.add('active')
 
@@ -41,13 +40,12 @@ export function useActiveSidebarLinks() {
     if (rootLi && rootLi !== activeLink.parentElement) {
       rootActiveLink = rootLi.querySelector('a')
       rootActiveLink && rootActiveLink.classList.add('active')
-    }
-    else {
+    } else {
       rootActiveLink = null
     }
   }
 
-  function deactivateLink(link: HTMLAnchorElement | null): void {
+  function deactivateLink(link) {
     link && link.classList.remove('active')
   }
 
@@ -66,42 +64,36 @@ export function useActiveSidebarLinks() {
   })
 }
 
-function getSidebarLinks(): HTMLAnchorElement[] {
+function getSidebarLinks() {
   return [].slice.call(
     document.querySelectorAll('.sidebar a.sidebar-link-item'),
   )
 }
 
-function getAnchors(sidebarLinks: HTMLAnchorElement[]): HTMLAnchorElement[] {
+function getAnchors(sidebarLinks) {
   return [].slice
     .call(document.querySelectorAll('.header-anchor'))
-    .filter((anchor: HTMLAnchorElement) =>
-      sidebarLinks.some(sidebarLink => sidebarLink.hash === anchor.hash),
-    ) as HTMLAnchorElement[]
+    .filter((anchor) =>
+      sidebarLinks.some((sidebarLink) => sidebarLink.hash === anchor.hash),
+    )
 }
 
-function getPageOffset(): number {
-  return (document.querySelector('.nav-bar') as HTMLElement).offsetHeight
+function getPageOffset() {
+  return document.querySelector('.nav-bar').offsetHeight
 }
 
-function getAnchorTop(anchor: HTMLAnchorElement): number {
+function getAnchorTop(anchor) {
   const pageOffset = getPageOffset()
 
-  return anchor.parentElement!.offsetTop - pageOffset - 15
+  return anchor.parentElement.offsetTop - pageOffset - 15
 }
 
-function isAnchorActive(
-  index: number,
-  anchor: HTMLAnchorElement,
-  nextAnchor: HTMLAnchorElement,
-): [boolean, string | null] {
+function isAnchorActive(index, anchor, nextAnchor) {
   const scrollTop = window.scrollY
 
-  if (index === 0 && scrollTop === 0)
-    return [true, null]
+  if (index === 0 && scrollTop === 0) return [true, null]
 
-  if (scrollTop < getAnchorTop(anchor))
-    return [false, null]
+  if (scrollTop < getAnchorTop(anchor)) return [false, null]
 
   if (!nextAnchor || scrollTop < getAnchorTop(nextAnchor))
     return [true, decodeURIComponent(anchor.hash)]
@@ -109,13 +101,12 @@ function isAnchorActive(
   return [false, null]
 }
 
-function throttleAndDebounce(fn: () => void, delay: number): () => void {
-  let timeout: NodeJS.Timeout
+function throttleAndDebounce(fn, delay) {
+  let timeout
   let called = false
 
   return () => {
-    if (timeout)
-      clearTimeout(timeout)
+    if (timeout) clearTimeout(timeout)
 
     if (!called) {
       fn()
@@ -123,8 +114,7 @@ function throttleAndDebounce(fn: () => void, delay: number): () => void {
       setTimeout(() => {
         called = false
       }, delay)
-    }
-    else {
+    } else {
       timeout = setTimeout(fn, delay)
     }
   }

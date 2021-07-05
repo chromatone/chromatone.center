@@ -10,7 +10,7 @@
 </template>
 
 <script setup>
-import { computed, defineProps, reactive } from "vue";
+import { computed, reactive } from "vue";
 
 const props = defineProps({
   rows: Object,
@@ -29,7 +29,7 @@ const sorted = computed(() => {
 
 </script>
 
-<style lang="postcss" scoped>
+<style  scoped>
 .list {
   @apply mx-2 md:mx-4 my-2 flex flex-col flex-auto;
 }

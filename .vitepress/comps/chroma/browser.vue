@@ -88,7 +88,7 @@ const sorted = computed(() => {
 
 </script>
 
-<style  lang="postcss" scoped>
+<style   scoped>
 .control-row {
   @apply p-4 flex flex-wrap;
 }

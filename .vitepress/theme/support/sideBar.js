@@ -1,19 +1,14 @@
-import { DefaultTheme } from '../config'
-import { isArray, ensureStartingSlash, removeExtension } from '../utils'
+import { isArray, ensureStartingSlash, removeExtension } from '../utils.js'
 
-export function isSideBarConfig(
-  sidebar: DefaultTheme.SideBarConfig | DefaultTheme.MultiSideBarConfig,
-): sidebar is DefaultTheme.SideBarConfig {
+export function isSideBarConfig(sidebar) {
   return sidebar === false || sidebar === 'auto' || isArray(sidebar)
 }
 
-export function isSideBarGroup(
-  item: DefaultTheme.SideBarItem,
-): item is DefaultTheme.SideBarGroup {
-  return (item as DefaultTheme.SideBarGroup).children !== undefined
+export function isSideBarGroup(item) {
+  return item.children !== undefined
 }
 
-export function isSideBarEmpty(sidebar?: DefaultTheme.SideBarConfig): boolean {
+export function isSideBarEmpty(sidebar) {
   return isArray(sidebar) ? sidebar.length === 0 : !sidebar
 }
 
@@ -23,19 +18,14 @@ export function isSideBarEmpty(sidebar?: DefaultTheme.SideBarConfig): boolean {
  * combinations such as matching `guide/` and `/guide/`. If no matching config
  * was found, it will return `auto` as a fallback.
  */
-export function getSideBarConfig(
-  sidebar: DefaultTheme.SideBarConfig | DefaultTheme.MultiSideBarConfig,
-  path: string,
-): DefaultTheme.SideBarConfig {
-  if (isSideBarConfig(sidebar))
-    return sidebar
+export function getSideBarConfig(sidebar, path) {
+  if (isSideBarConfig(sidebar)) return sidebar
 
   path = ensureStartingSlash(path)
 
   for (const dir of Object.keys(sidebar)) {
     // make sure the multi sidebar key starts with slash too
-    if (path.startsWith(ensureStartingSlash(dir)))
-      return sidebar[dir]
+    if (path.startsWith(ensureStartingSlash(dir))) return sidebar[dir]
   }
 
   return 'auto'
@@ -47,10 +37,8 @@ export function getSideBarConfig(
  * don't have `link` property and removes `.md` or `.html` extension if a
  * link contains it.
  */
-export function getFlatSideBarLinks(
-  sidebar: DefaultTheme.SideBarItem[],
-): DefaultTheme.SideBarLink[] {
-  return sidebar.reduce<DefaultTheme.SideBarLink[]>((links, item) => {
+export function getFlatSideBarLinks(sidebar) {
+  return sidebar.reduce((links, item) => {
     if (item.link)
       links.push({ text: item.text, link: removeExtension(item.link) })
 

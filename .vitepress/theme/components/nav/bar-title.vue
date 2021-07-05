@@ -10,7 +10,7 @@ import { withBase, useData } from 'vitepress'
 const { theme, site, localePath } = useData();
 </script>
 
-<style scoped lang="postcss">
+<style scoped >
 .nav-bar-title {
   @apply text-xl md:text-1.3rem font-semibold text-$c-text
     inline-flex items-center whitespace-nowrap

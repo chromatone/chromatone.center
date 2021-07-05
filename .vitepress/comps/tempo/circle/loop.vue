@@ -71,7 +71,7 @@ g
 </template>
   
 <script setup>
-import { computed, defineProps, defineEmit } from "vue";
+import { computed } from "vue";
 import { getCircleCoord } from 'chromatone-theory'
 import { useSequence } from '../sequence.js'
 

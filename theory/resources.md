@@ -19,6 +19,9 @@ links:
   - url: http://www.musanim.com/
     title: Music animation machine
     subtitle: A life long project of Stephen Malinowski – he manually animates music pieces into nice visual playalongs. He uses blue color for the tonic (C) and accending colors for every next step of a fifth.
+  - url: https://sethares.engr.wisc.edu/index.html
+    title: Home page of William A. Sethares
+    subtitle: A very important figure in sensory dissonance research. His book "Tuning, Timbre, Spectrum, Scale" gives a comprehensive understanding of many important music concepts in a scientifically based way.
 ---
 
 <other-list :tools="$frontmatter.links" />

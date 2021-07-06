@@ -5,6 +5,11 @@ tags: theory
 list: sound
 cover: theory/sound.svg
 date: 2021-01-20
+links:
+  - url: https://sethares.engr.wisc.edu/consemi.html
+    title: Calculations of the dissonant curves
+  - url: https://www.juliabloggers.com/consonant-triads/
+    title: Python formulas for dissonance curves
 ---
 
 ![](./Spherical_pressure_waves.gif)
@@ -28,3 +33,4 @@ A note isn't just a wave, it's a mix of resonating modes of oscillations.
 <img src="/media/theory/overtones.svg">
 
 <pitch-dissonance />
+

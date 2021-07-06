@@ -1,8 +1,8 @@
 <template lang="pug">
 .p-4.text-2xl.text-center.-mb-12.font-bold Equal-loudness contour
-svg.max-h-3xl.w-full(
+svg#loudness.max-h-3xl.w-full(
   version="1.1",
-  ref="loudness"
+  ref="svg"
   baseProfile="full",
   viewBox="-50 -50 1000 720",
   xmlns="http://www.w3.org/2000/svg",
@@ -22,7 +22,7 @@ svg.max-h-3xl.w-full(
         stroke-width="2"
         stroke="currentColor"
       )
-      text.pointer-events-none(
+      text(
         fill="currentColor"
         font-family="Commissioner, sans-serif"
         font-size="25px"
@@ -46,7 +46,7 @@ svg.max-h-3xl.w-full(
           x1="-10"
           x2="900"
         )
-        text.pointer-events-none(
+        text(
           fill="currentColor"
           font-family="Commissioner, sans-serif"
           font-size="10px"
@@ -66,7 +66,7 @@ svg.max-h-3xl.w-full(
           stroke-width="1px"
           opacity="0.8"
         )
-        text.pointer-events-none(
+        text(
           fill="currentColor"
           font-family="Commissioner, sans-serif"
           font-size="22px"
@@ -83,7 +83,7 @@ svg.max-h-3xl.w-full(
         stroke-width="2"
         stroke="currentColor"
       )
-      text.pointer-events-none(
+      text(
         fill="currentColor"
         font-family="Commissioner, sans-serif"
         font-size="25px"
@@ -104,7 +104,7 @@ svg.max-h-3xl.w-full(
           stroke-width="2"
           opacity="0.4"
         )
-        text.pointer-events-none(
+        text(
           fill="hsla(90,50%,50%,1)"
           :x="900 * freq.toNormX(oct) + 5"
           y="20"
@@ -122,7 +122,7 @@ svg.max-h-3xl.w-full(
           stroke-width="1"
           :opacity="freq.nums.includes(mark) ? 0.3 : 0.1"
         )
-      text.pointer-events-none(
+      text(
         v-for="num in freq.nums"
           fill="currentColor"
           font-family="Commissioner, sans-serif"
@@ -148,7 +148,7 @@ svg.max-h-3xl.w-full(
           r="6"
           :fill="freq.color"
         )
-        text.pointer-events-none(
+        text(
           fill="currentColor"
           font-family="Commissioner, sans-serif"
           font-size="22px"
@@ -156,7 +156,7 @@ svg.max-h-3xl.w-full(
           x="10"
           y="590"
         ) {{ freq.hz.toFixed(1) }} Hz
-        text.pointer-events-none(
+        text(
           fill="currentColor"
           font-family="Commissioner, sans-serif"
           font-size="22px"
@@ -174,7 +174,7 @@ svg.max-h-3xl.w-full(
       )
     rect(
       style="cursor:none"
-      ref="field"
+      ref="area"
       x=0
       y=0
       width="900"
@@ -185,13 +185,12 @@ svg.max-h-3xl.w-full(
       :transform="`translate(${mouse.x}, ${mouse.y})`"
     )
       circle.pointer(
-        ref="pointer"
         :cx="0"
         :cy="0"
         r="16"
         :fill="freq.color"
       )
-      text.pointer-events-none(
+      text(
         font-weight="bold"
         fill="white"
         font-family="Commissioner, sans-serif"
@@ -227,7 +226,7 @@ svg.max-h-3xl.w-full(
         :fill="point.color"
         @click.stop.prevent="points.remove(idx)"
       )
-      text.pointer-events-none(
+      text(
         fill="currentColor"
         font-family="Commissioner, sans-serif"
         font-size="16px"
@@ -235,7 +234,7 @@ svg.max-h-3xl.w-full(
         x="-5"
         :y="point.y + 36"
         ) {{ point.cents < 0 ? '' : '+' }}{{ point.cents }}
-      text.pointer-events-none(
+      text(
         fill="currentColor"
         font-family="Commissioner, sans-serif"
         font-size="16px"
@@ -243,7 +242,7 @@ svg.max-h-3xl.w-full(
         x="5"
         :y="point.y + 36"
         ) {{ point.hz.toFixed(1) }} Hz
-      text.pointer-events-none(
+      text(
         font-weight="bold"
         fill="white"
         font-family="Commissioner, sans-serif"
@@ -269,9 +268,9 @@ svg.max-h-3xl.w-full(
     @click.stop.prevent="startApp()"
     )
     rect(
-      x=300
+      x=250
       y=200
-      width=300
+      width=400
       height=100
       rx=20
       fill="gray"
@@ -285,15 +284,16 @@ svg.max-h-3xl.w-full(
       text-anchor="middle"
       x="450"
       y="265"
-    ) START
-
+    ) START AUDIO
+svg-save(
+  svg="loudness"
+)
 </template>
 
 <script setup>
 import { ref, reactive, computed } from 'vue'
 import { freqColor, freqPitch, notes, pitchFreq } from 'chromatone-theory'
 import { MonoSynth, start } from 'tone'
-import { getCursorPositionInRect } from '@use/theory.js'
 
 const started = ref(false)
 function startApp() {
@@ -301,27 +301,9 @@ function startApp() {
   started.value = true
 }
 
+import { useSvgMouse } from '@use/mouse.js'
 
-const pointer = ref(null)
-const loudness = ref(null)
-const field = ref(null)
-const mouse = reactive({
-  x: 0,
-  y: 0,
-  normX: 0,
-  normY: 0,
-  getCursorPosition(event, svgElement = loudness.value) {
-    var svgPoint = svgElement.createSVGPoint();
-    svgPoint.x = event.clientX;
-    svgPoint.y = event.clientY;
-    let correct = svgPoint.matrixTransform(svgElement.getScreenCTM().inverse());
-    let bounds = field.value.getBBox()
-    mouse.x = correct.x < bounds.width ? correct.x < 0 ? 0 : correct.x : bounds.width
-    mouse.y = correct.y < bounds.height ? correct.y < 0 ? 0 : correct.y : bounds.height
-    mouse.normY = 1 - mouse.y / bounds.height
-    mouse.normX = mouse.x / bounds.width
-  }
-})
+const { svg, area, mouse } = useSvgMouse();
 
 
 const freq = reactive({
@@ -367,14 +349,12 @@ const points = reactive({
   list: [],
   add() {
     let hz = freq.toHz(mouse.normX)
-
     let synth = new MonoSynth({
       oscillator: {
         type: "sine"
       },
       volume: pressure.db
     }).toDestination()
-
     synth.triggerAttack(hz, mouse.normY)
     let pitch = (freqPitch(hz) + 120) % 12
     if (pitch > 11.5) pitch = 0
@@ -392,7 +372,9 @@ const points = reactive({
   },
   line: computed(() => {
     let line = []
-    points.list.forEach(p => {
+    let list = [...points.list]
+    list.sort((p1, p2) => p1.x < p2.x ? -1 : 1)
+    list.forEach(p => {
       line.push([p.x, p.y].join(','))
     })
     return line.join(' ')
@@ -414,5 +396,8 @@ const points = reactive({
 <style scoped>
 .pointer {
   @apply transition-all duration-50 pointer-events-none;
+}
+text {
+  @apply pointer-events-none select-none;
 }
 </style>

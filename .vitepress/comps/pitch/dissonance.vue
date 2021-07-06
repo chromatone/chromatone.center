@@ -1,19 +1,27 @@
 <template lang="pug">
-svg.max-h-3xl.w-full(
+svg#dissonance.max-h-3xl.w-full.my-20(
   version="1.1",
   baseProfile="full",
   :viewBox="`${-box.padW} ${-box.padH} ${box.width + 2 * box.padW} ${box.height + box.padH}`",
   xmlns="http://www.w3.org/2000/svg",
+  @mousemove="mouse.getCursorPosition"
+  ref="svg"
+  style="cursor:none"
   )
-  text.pointer-events-none(
+  defs
+    linearGradient#intervalGradient
+      stop(offset="0%" :stop-color="freqColor(freq.main)")
+      stop(offset="100%" :stop-color="freqColor(freq.hz)")
+  text(
     fill="currentColor"
     font-family="Commissioner, sans-serif"
     font-size="32px"
     text-anchor="middle"
     x="600"
     y="-30"
-  ) Sensory dissonance curve (for 6 partials harmonic timbre)
+  ) Sensory dissonance curve
   rect(
+    ref="area"
     x="0"
     y="0"
     width="1200"
@@ -23,7 +31,7 @@ svg.max-h-3xl.w-full(
     stroke-width="1px"
     opacity="0.5"
   )
-  text.pointer-events-none(
+  text(
     fill="currentColor"
     font-family="Commissioner, sans-serif"
     font-size="25px"
@@ -33,7 +41,15 @@ svg.max-h-3xl.w-full(
     transform-origin="-20 250"
     transform="rotate(-90)"
   ) Dissonance
-  text.pointer-events-none(
+  line(
+    x1="0"
+    x2="0"
+    y1="0"
+    y2="500"
+    :stroke="freqColor(freq.main)"
+    :stroke-width="synth.playing ? 10 : 1"
+  )
+  text(
     fill="currentColor"
     font-family="Commissioner, sans-serif"
     font-size="25px"
@@ -55,7 +71,15 @@ svg.max-h-3xl.w-full(
       :y2="530"
       stroke-width="1"
     )
-    text.pointer-events-none(
+    text(
+      fill="currentColor"
+      font-family="Commissioner, sans-serif"
+      font-size="18px"
+      text-anchor="end"
+      x="-5"
+      y="520"
+    ) {{ notes[c % 12].name }}
+    text(
       fill="currentColor"
       font-family="Commissioner, sans-serif"
       font-size="18px"
@@ -75,49 +99,204 @@ svg.max-h-3xl.w-full(
     v-for="(frac,idx) in fracPos"
     :key="frac"
     :transform="`translate(${frac} 0)`"
-    :stroke="pitchColor(idx, 3)"
+
   )
     line(
+      :stroke="pitchColor(idx, 3)"
       opacity="1"
-      :stroke="pitchColor(idx)"
-      stroke-width="3"
+      stroke-width="1"
       x1="0"
       x2="0"
       y1="0"
       y2="500"
     )
-    text.pointer-events-none(
-      fill="currentColor"
+    text(
+      font-weight="bold"
       font-family="Commissioner, sans-serif"
       font-size="22px"
       text-anchor="start"
+      :fill="pitchColor(idx, 3)"
       x="5"
       y="25"
     ) {{ intervals[idx] }}
-    text.pointer-events-none(
-      fill="currentColor"
+    text(
       font-family="Commissioner, sans-serif"
       font-size="22px"
       text-anchor="start"
+      :fill="pitchColor(idx, 3)"
       x="5"
       y="60"
     ) {{ fractions[idx] }}
+  rect(
+    v-if="synth.playing"
+    x="0"
+    y="0"
+    :width="mouse.x"
+    height="500"
+    fill="url(#intervalGradient)"
+    opacity="0.2"
+  )
+  g(
+    :transform="`translate(${mouse.x}, 0)`"
+  )
+    line.pointer(
+      x1="0"
+      x2="0"
+      y1="0"
+      y2="500"
+      :stroke-width="synth.playing ? 6 : 1"
+      :stroke="freqColor(freq.hz)"
+    )
+    circle.pointer(
+      :cx="0"
+      :cy="0"
+      r="16"
+      :fill="synth.playing ? freqColor(freq.hz) : 'currentColor'"
+      :transform="`translate(0, ${mouse.y})`"
+    )
+
+    circle.pointer(
+      :cx="0"
+      :cy="500"
+      r="8"
+      :fill="synth.playing ? freqColor(freq.hz) : 'currentColor'"
+    )
+    text(
+      font-family="Commissioner, sans-serif"
+      font-size="22px"
+      text-anchor="end"
+      x="-20"
+      fill="currentColor"
+      y="490"
+    ) {{ freq.hz.toFixed(0) }} hz
+    text(
+      font-family="Commissioner, sans-serif"
+      font-size="22px"
+      text-anchor="start"
+      x="20"
+      fill="currentColor"
+      y="490"
+    ) {{ freq.cents.toFixed(0) }}
+  g.cursor-pointer(
+  v-if="!synth.started"
+  @click.stop.prevent="initSynth()"
+  )
+    rect(
+      x=400
+      y=200
+      width=400
+      height=100
+      rx=20
+      fill="gray"
+      stroke="white"
+    )
+    text(
+      font-weight="bold"
+      fill="white"
+      font-family="Commissioner, sans-serif"
+      font-size="42px"
+      text-anchor="middle"
+      x="600"
+      y="265"
+    ) START AUDIO
+svg-save(
+  svg="dissonance"
+)
 </template>
 
 <script setup>
-import { pitchColor } from 'chromatone-theory'
+import { computed, reactive, watch } from 'vue'
+import { pitchColor, notes, freqColor } from 'chromatone-theory'
+import { useSvgMouse } from '@use/mouse.js'
+import { useMousePressed } from '@vueuse/core'
+import { MonoSynth, start } from 'tone'
+
+
+
 const box = {
   width: 1200,
   height: 600,
   padW: 100,
   padH: 100,
 }
+
 const cents = [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200];
 const intervals = ['1P', 'm2', 'M2', 'm3', 'M3', 'P4', 'TT', 'P5', 'm6', 'M6', 'm7', 'M7', 'P8']
 const fractions = ['1/1', '16/15', '9/8', '6/5', '5/4', '4/3', '45/32', '3/2', '8/5', '5/3', '9/5', '15/8', '2/1'];
 const fracPos = fractions.map(fr => 1200 * Math.log2(fr.split('/')[0] / fr.split('/')[1]));
 
+const { svg, area, mouse } = useSvgMouse();
+const { pressed } = useMousePressed()
+
+const freq = reactive({
+  main: 440,
+  cents: computed(() => {
+    return (mouse.normX * 1200)
+  }),
+  hz: computed(() => {
+    return freq.main * Math.pow(2, freq.cents / 1200)
+  }),
+});
+
+const synth = reactive({
+  started: false,
+  playing: false,
+  osc: 'sawtooth',
+  envelope: {
+    attack: 0.2,
+    decay: 0.2,
+    sustain: 1,
+    release: 1,
+  }
+})
+
+let synthOne, synthTwo
+
+function initSynth() {
+  if (!synth.started) {
+    synthOne = new MonoSynth({
+      oscillator: {
+        type: synth.osc
+      },
+      filterEnvelope: synth.envelope,
+      volume: -2
+    }).toDestination()
+    synthTwo = new MonoSynth({
+      oscillator: {
+        type: synth.osc,
+      },
+      filterEnvelope: synth.envelope,
+      volume: -2
+    }).toDestination()
+    synth.started = true
+  }
+}
+
+
+watch([() => freq.hz, pressed], (hz) => {
+  if (!synth.started) return
+  if (pressed.value) {
+    if (!synth.playing) {
+      synth.playing = true
+      synthOne.triggerAttack(freq.main)
+      synthTwo.triggerAttack(freq.hz)
+    } else {
+      synthTwo.frequency.rampTo(freq.hz)
+    }
+  } else {
+    synth.playing = false
+    synthOne.triggerRelease()
+    synthTwo.triggerRelease()
+  }
+});
+
 </script>
 
 <style scoped>
+.pointer {
+  @apply transition-all duration-50 pointer-events-none;
+}
+text {
+  @apply pointer-events-none select-none;
+}
 </style>

@@ -10,14 +10,13 @@ const props = defineProps({
   svg: String,
   file: {
     type: String,
-    default: 'svg'
   }
 });
 
 const anchor = ref('')
 
 const download = reactive({
-  file: props.file,
+  file: props.file || props.svg,
   url: ''
 })
 
@@ -29,7 +28,7 @@ function saveSVG(pic) {
   source = '<?xml version="1.0" standalone="no"?>\r\n' + source;
   var url = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(source);
   download.url = url
-  download.file = toRaw(props.file)
+  download.file = toRaw(props.file || props.svg)
 
   setTimeout(() => {
     anchor.value.click()

@@ -115,7 +115,7 @@ const box = {
 const cents = [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200];
 const intervals = ['1P', 'm2', 'M2', 'm3', 'M3', 'P4', 'TT', 'P5', 'm6', 'M6', 'm7', 'M7', 'P8']
 const fractions = ['1/1', '16/15', '9/8', '6/5', '5/4', '4/3', '45/32', '3/2', '8/5', '5/3', '9/5', '15/8', '2/1'];
-const fracPos = fractions.map(fr => 1200 * Math.log2(eval(fr)));
+const fracPos = fractions.map(fr => 1200 * Math.log2(fr.split('/')[0] / fr.split('/')[1]));
 
 </script>
 

@@ -14,3 +14,17 @@ ChordType.add(['1P', '7m'], ['7m'], 'minor seventh')
 ChordType.add(['1P', '7M'], ['7M'], 'major seventh')
 
 export default ChordType.all()
+
+export function getCursorPositionInRect(event, svgElement, rect) {
+  var svgPoint = svgElement.createSVGPoint()
+  svgPoint.x = event.clientX
+  svgPoint.y = event.clientY
+  let correct = svgPoint.matrixTransform(svgElement.getScreenCTM().inverse())
+  let bounds = rect.getBBox()
+  mouse.x =
+    correct.x < bounds.width ? (correct.x < 0 ? 0 : correct.x) : bounds.width
+  mouse.y =
+    correct.y < bounds.height ? (correct.y < 0 ? 0 : correct.y) : bounds.height
+  mouse.normY = 1 - mouse.y / bounds.height
+  mouse.normX = mouse.x / bounds.width
+}

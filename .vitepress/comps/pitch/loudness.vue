@@ -6,7 +6,7 @@ svg.max-h-3xl.w-full(
   baseProfile="full",
   viewBox="-50 -50 1000 720",
   xmlns="http://www.w3.org/2000/svg",
-  @mousemove="getCursorPosition"
+  @mousemove="mouse.getCursorPosition"
   @click="points.add()"
   )
   g(
@@ -163,7 +163,8 @@ svg.max-h-3xl.w-full(
           text-anchor="end"
           x="-10"
           y="590"
-        ) {{ freq.cents }}
+          :color="freq.color"
+        ) {{ freq.note.name }} {{ freq.cents }}
     path(
       stroke="currentColor"
       stroke-width="1"
@@ -199,7 +200,13 @@ svg.max-h-3xl.w-full(
         x="0"
         y="5"
         ) {{ freq.note.name }} 
-
+    polyline(
+      :points="points.line"
+      stroke="currentColor"
+      stroke-width="4"
+      fill="none"
+      opacity="0.7"
+    )
     g(
       v-for="(point,idx) in points.list"
       :key="point.hz"
@@ -259,7 +266,7 @@ svg.max-h-3xl.w-full(
       la-trash.text-2xl
   g.cursor-pointer(
     v-if="!started"
-    @click.stop.prevent="start()"
+    @click.stop.prevent="startApp()"
     )
     rect(
       x=300
@@ -285,11 +292,12 @@ svg.max-h-3xl.w-full(
 <script setup>
 import { ref, reactive, computed } from 'vue'
 import { freqColor, freqPitch, notes, pitchFreq } from 'chromatone-theory'
-import { init, synthAttack, synthRelease, synthReleaseAll } from '@use/synth.js'
+import { MonoSynth, start } from 'tone'
+import { getCursorPositionInRect } from '@use/theory.js'
 
 const started = ref(false)
-function start() {
-  init()
+function startApp() {
+  start()
   started.value = true
 }
 
@@ -302,6 +310,17 @@ const mouse = reactive({
   y: 0,
   normX: 0,
   normY: 0,
+  getCursorPosition(event, svgElement = loudness.value) {
+    var svgPoint = svgElement.createSVGPoint();
+    svgPoint.x = event.clientX;
+    svgPoint.y = event.clientY;
+    let correct = svgPoint.matrixTransform(svgElement.getScreenCTM().inverse());
+    let bounds = field.value.getBBox()
+    mouse.x = correct.x < bounds.width ? correct.x < 0 ? 0 : correct.x : bounds.width
+    mouse.y = correct.y < bounds.height ? correct.y < 0 ? 0 : correct.y : bounds.height
+    mouse.normY = 1 - mouse.y / bounds.height
+    mouse.normX = mouse.x / bounds.width
+  }
 })
 
 
@@ -330,9 +349,9 @@ const freq = reactive({
 })
 
 const pressure = reactive({
-  min: -20,
-  max: 100,
-  marks: [-20, -10, 0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
+  min: -80,
+  max: 10,
+  marks: [-80, -70, -60, -50, -40, -30, -20, -10, 0, 10],
   db: computed(() => pressure.toDb(mouse.normY)),
   toDb(pos) {
     return (pressure.max - pressure.min) * pos + pressure.min
@@ -342,15 +361,26 @@ const pressure = reactive({
   }
 })
 
+
+
 const points = reactive({
   list: [],
   add() {
     let hz = freq.toHz(mouse.normX)
-    synthAttack(hz, mouse.normY)
+
+    let synth = new MonoSynth({
+      oscillator: {
+        type: "sine"
+      },
+      volume: pressure.db
+    }).toDestination()
+
+    synth.triggerAttack(hz, mouse.normY)
     let pitch = (freqPitch(hz) + 120) % 12
     if (pitch > 11.5) pitch = 0
     let cents = ((pitch - pitch.toFixed(0)) * 100).toFixed(0)
     points.list.push({
+      synth,
       x: mouse.x,
       y: mouse.y,
       hz,
@@ -360,34 +390,24 @@ const points = reactive({
       color: freqColor(hz),
     })
   },
+  line: computed(() => {
+    let line = []
+    points.list.forEach(p => {
+      line.push([p.x, p.y].join(','))
+    })
+    return line.join(' ')
+  }),
   clear() {
-    synthReleaseAll()
+    points.list.forEach(point => {
+      point.synth.triggerRelease()
+    })
     points.list.splice(0, points.list.length)
   },
   remove(idx) {
-    synthRelease(points.list[idx].hz)
+    points.list?.[idx].synth.triggerRelease()
     points.list.splice(idx, 1)
   }
-})
-
-
-
-
-
-
-function getCursorPosition(event, svgElement = loudness.value) {
-  var svgPoint = svgElement.createSVGPoint();
-  svgPoint.x = event.clientX;
-  svgPoint.y = event.clientY;
-  let correct = svgPoint.matrixTransform(svgElement.getScreenCTM().inverse());
-  let bounds = field.value.getBBox()
-  mouse.x = correct.x < bounds.width ? correct.x < 0 ? 0 : correct.x : bounds.width
-  mouse.y = correct.y < bounds.height ? correct.y < 0 ? 0 : correct.y : bounds.height
-  mouse.normY = 1 - mouse.y / bounds.height
-  mouse.normX = mouse.x / bounds.width
-}
-
-
+});
 
 </script>
 

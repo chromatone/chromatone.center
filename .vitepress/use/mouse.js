@@ -1,18 +1,27 @@
-import { reactive, ref, onMounted } from 'vue'
+import { reactive, ref, onMounted, watch } from 'vue'
+import { useMousePressed, useMouseInElement } from '@vueuse/core'
 
 export function useSvgMouse() {
   const svg = ref(null)
   const area = ref(null)
+
+  const { pressed } = useMousePressed()
 
   const mouse = reactive({
     x: 0,
     y: 0,
     normX: 0,
     normY: 0,
+    pressed,
+    inside: false,
   })
 
   onMounted(() => {
     svg.value.addEventListener('mousemove', getCursorPosition)
+    const { isOutside } = useMouseInElement(area)
+    watch(isOutside, (out) => {
+      mouse.inside = !out
+    })
   })
 
   function getCursorPosition(event, svgElement = svg.value, rect = area.value) {

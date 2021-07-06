@@ -285,9 +285,6 @@ svg#loudness.max-h-3xl.w-full(
       x="450"
       y="265"
     ) START AUDIO
-svg-save(
-  svg="loudness"
-)
 </template>
 
 <script setup>

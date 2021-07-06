@@ -21,7 +21,7 @@ Acoustic vibrations propagate as mechanical waves of pressure in a transmission 
 Sound is amplified and transformed into nerve signals by mechanically activated hair cells emitting glutamate neurotransmitter in a basilar membrane in the cochlea of the human inner ear. It happens in a spiral organ with 2.5 coils of tonotopically organized bone tissue resonating with different frequencies in its different locations.
 
 <pitch-loudness />
-
+<svg-save svg="loudness" />
 
 # Harmonics – the natural resonances
 
@@ -32,5 +32,6 @@ A note isn't just a wave, it's a mix of resonating modes of oscillations.
 
 <img src="/media/theory/overtones.svg">
 
-<pitch-dissonance />
 
+<pitch-dissonance />
+<svg-save svg="dissonance" />

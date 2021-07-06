@@ -213,7 +213,7 @@ svg#dissonance.max-h-3xl.w-full.my-20(
     circle.pointer(
       :cx="0"
       :cy="0"
-      r="16"
+      :r="synth.playing ? 20 : 10"
       :fill="synth.playing ? freqColor(freq.hz) : 'currentColor'"
       :transform="`translate(0, ${mouse.y})`"
     )
@@ -262,10 +262,6 @@ svg#dissonance.max-h-3xl.w-full.my-20(
       x="600"
       y="265"
     ) START AUDIO
-svg-save(
-  svg="dissonance"
-)
-p {{ mouse }}
 </template>
 
 <script setup>

@@ -136,6 +136,8 @@ The RGB color model itself does not define what is meant by red, green, and blue
 
 Use of the three primary colors is not sufficient to reproduce all colors; only colors within the color triangle defined by the chromaticities of the primaries can be reproduced by additive mixing of non-negative amounts of those colors of light.
 
+![](/media/theory/palette.svg)
+
 ### HSL and HSV
 
 HSL (for hue, saturation, lightness) and HSV (for hue, saturation, value; also known as HSB, for hue, saturation, brightness) are alternative representations of the RGB color model, designed in the 1970s by computer graphics researchers to more closely align with the way human vision perceives color-making attributes. In these models, colors of each hue are arranged in a radial slice, around a central axis of neutral colors which ranges from black at the bottom to white at the top. 
@@ -147,6 +149,7 @@ Meanwhile, the HSV representation models how colors appear under light. The diff
 ![](./models/hsl.png)
 
 The issue with both HSV and HSL is that these approaches do not effectively separate colour into their three value components according to human perception of color. This can be seen when the saturation settings are altered — it is quite easy to notice the difference in perceptual lightness despite the "V" or "L" setting being fixed. 
+
 
 ### CIELUV and CIELAB
 

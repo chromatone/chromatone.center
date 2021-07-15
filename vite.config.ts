@@ -8,6 +8,7 @@ import { ViteAliases } from 'vite-aliases'
 export default defineConfig({
 
   plugins: [
+    //@ts-ignore
     ViteAliases({
       dir: '.vitepress',
       deep: false,

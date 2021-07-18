@@ -98,7 +98,7 @@ svg#loudness.max-h-3xl.w-full(
           :x1="900 * freq.toNormX(oct)"
           :x2="900 * freq.toNormX(oct)"
           y1="0"
-          :y2="freq.nums.includes(mark) ? 620 : 600"
+          :y2="600"
           stroke="hsla(90,50%,50%,1)"
           stroke-width="2"
           opacity="0.4"

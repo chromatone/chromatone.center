@@ -1,27 +1,27 @@
 <template lang="pug">
-.flex.flex-col.max-h-100vh
-  .flex.flex-wrap.justify-center.-mb-16.z-2
+.flex.flex-col
+  .flex.flex-wrap.justify-center.-mb-8.z-2
     sqnob(
       :min="harmonics.min"
       :max="harmonics.max"
       :step="1"
-      fixed="0"
+      :fixed="0"
       param="count"
       v-model="harmonics.count"
       )
     sqnob.w-16(
       :min="50"
       :max="1000"
-      step="0.1"
-      fixed="1"
+      :step="0.1"
+      :fixed="1"
       param="freq"
       v-model="fundamental.frequency"
       )
     sqnob(
       :min="0.2"
       :max="2"
-      step="0.1"
-      fixed="1"
+      :step="0.1"
+      :fixed="1"
       param="speed"
       v-model="time.speed"
       )
@@ -30,21 +30,27 @@
     )
       la-play(v-if="!time.move")
       la-pause(v-if="time.move")
+    button.shadow.p-3.m-1.border-1.border-current.rounded(
+      @click="sound.init()"
+    )
+      bi-volume-up(v-if="sound.enabled")
+      bi-volume-mute(v-if="!sound.enabled")
     piano-keys(v-model:pitch="fundamental.pitch")
     sqnob(
       :min="1"
       :max="5"
-      step="1"
-      fixed="0"
+      :step="1"
+      :fixed="0"
       param="octave"
       v-model="fundamental.octave"
       )
-  svg#harmonics.w-full(
+  svg#harmonics.w-full.max-h-100vh(
     version="1.1"
     baseProfile="full"
     :viewBox="`${-box.padX} ${-2 * box.padY} ${box.width + 2 * box.padX} ${box.height + 4 * box.padY}`"
     xmlns="http://www.w3.org/2000/svg"
     font-family="Commissioner, sans-serif"
+    @mouseleave="sound.stop()"
     )
     string-guitar(
       :length="box.width"
@@ -67,10 +73,27 @@
         stroke="gray"
         stroke-width="0.2"
       )
-    g#fundamental
+    g#fundamental.cursor-pointer(
+      @mouseover="fundamental.hover = true"
+      @mouseleave="fundamental.hover = false; sound.stopSaw()"
+      @mousedown="sound.playSaw(fundamental.frequency, true)"
+      @touchstart="sound.playSaw(fundamental.frequency, true)"
+      @mouseup="sound.stopSaw()"
+      @touchstop="sound.stopSaw()"
+      @touchcancel="sound.stopSaw()"
+      )
+      rect.transition-all.duration-200(
+        x="0"
+        :y="-0.5 * (box.height - box.padY) / (harmonics.count)"
+        :width="box.width"
+        :height="(box.height - box.padY) / (harmonics.count)"
+        :fill="fundamental.stroke"
+        :opacity="fundamental.hover ? 0.2 : 0.05"
+      )
       polyline(
         fill="none"
         v-bind="fundamental"
+        :stroke-width="fundamental.hover ? 2 : 1"
       )
       circle(
         cx="0"
@@ -98,16 +121,41 @@
         y="2"
         font-size="4px"
         ) {{ fundamental.note }} ({{ fundamental.cents.toFixed(0) }} cents)
-    g.harmonic(
+    g.harmonic.cursor-pointer(
       v-for="(harmonic,i) in harmonics.list"
       :key="harmonic"
+      :data-num="i + 1"
       :transform="`translate(0, ${harmonic.position})`"
+      @mouseenter="sound.change(harmonic.frequency)"
+      @mouseover="harmonic.hover = true"
+      @mouseleave="harmonic.hover = false"
+      @mousedown="sound.play(harmonic.frequency); harmonic.active = true"
+      @touchstart="sound.play(harmonic.frequency); harmonic.active = true"
+      @mouseup="sound.stop(); harmonic.active = false"
+      @touchstop="sound.stop(); harmonic.active = false"
+      @touchcancel="sound.stop(); harmonic.active = false"
       )
-      polyline(
+      rect.transition-all.duration-200(
+        x="0"
+        :y="-0.5 * (box.height - box.padY) / (harmonics.count)"
+        :width="box.width"
+        :height="(box.height - box.padY) / (harmonics.count)"
+        :fill="harmonic.stroke"
+        :opacity="harmonic.hover ? 0.2 : 0.05"
+      )
+      polyline.transition-all.duration-200(
         v-bind="harmonic"
         fill="none"
-        stroke-width="0.5"
+        :stroke-width="harmonic.hover ? harmonic.active ? 2 : 1 : 0.5"
       )
+      text(
+        fill="currentColor"
+        :x="-2"
+        text-anchor="end"
+        y="-3"
+        font-size="4px"
+        font-weight="bold"
+      ) {{ i + 1 }}
       text(
         fill="currentColor"
         :x="-2"
@@ -120,7 +168,7 @@
         fill="currentColor"
         :x="box.width + 2"
         text-anchor="start"
-        y="8"
+        y="-3"
         font-size="4px"
       ) {{ harmonics.intervals[i] }} 
       text(
@@ -130,12 +178,12 @@
         y="2"
         font-size="4px"
       ) {{ harmonic.note }} ({{ harmonic.centDiff > 0 ? '+' : '' }}{{ harmonic.centDiff }} cents)
-      circle(
+      circle.transition-all.duration-200(
         v-for="dot in harmonic.dots"
         :key="dot"
         cy="0"
         :cx="dot"
-        r="1"
+        :r="harmonic.hover ? 1.2 : 1"
         :fill="harmonic.stroke"
       )
 
@@ -159,7 +207,7 @@
 <script setup>
 import { useStorage, useTimestamp } from '@vueuse/core'
 import { pitchColor, freqColor, notes } from 'chromatone-theory'
-import { Frequency } from "tone";
+import { Synth, start, Frequency } from "tone";
 
 const box = reactive({
   width: 150,
@@ -172,6 +220,66 @@ const box = reactive({
   fill: 'none',
   'stroke-width': 0.2
 });
+
+let sine = null
+let saw = null
+const sound = reactive({
+  started: false,
+  enabled: false,
+  async init() {
+    if (sound.started) {
+      sound.enabled = !sound.enabled
+      return
+    }
+    await start()
+    sound.started = true
+    sound.enabled = true
+    sine = new Synth({
+      oscillator: {
+        type: 'sine',
+      },
+      volume: -5,
+      envelope: {
+        attack: 0.2,
+        decay: 0.01,
+        sustain: 1,
+        release: 4,
+      },
+    }).toDestination()
+    saw = new Synth({
+      oscillator: {
+        type: 'sawtooth',
+      },
+      volume: -10,
+      envelope: {
+        attack: 0.2,
+        decay: 0.01,
+        sustain: 1,
+        release: 4,
+      },
+    }).toDestination()
+  },
+  playSaw(note) {
+    if (!sound.enabled) return
+    saw.triggerAttack(note)
+  },
+  stopSaw() {
+    if (!sound.enabled) return
+    saw.triggerRelease()
+  },
+  play(note) {
+    if (!sound.enabled) return
+    sine.triggerAttack(note)
+  },
+  stop() {
+    if (!sound.enabled) return
+    sine.triggerRelease()
+  },
+  change(note) {
+    if (!sound.enabled) return
+    sine.setNote(note)
+  }
+})
 
 const { timestamp, pause, resume } = useTimestamp({ controls: true, offset: -Date.now() })
 
@@ -286,5 +394,3 @@ function calcCents(base, freq) {
   return -(1200 / Math.log10(2)) * (Math.log10(base / freq)) % 1200
 }
 </script>
-
-

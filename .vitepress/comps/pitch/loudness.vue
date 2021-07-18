@@ -1,5 +1,4 @@
 <template lang="pug">
-.p-4.text-2xl.text-center.-mb-12.font-bold Equal-loudness contour
 svg#loudness.max-h-3xl.w-full(
   version="1.1",
   ref="svg"

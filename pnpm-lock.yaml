@@ -32,7 +32,7 @@ specifiers:
   vitepress: 0.15.6
   vitepress-tags: ^0.4.0
   vue: ^3.1.4
-  vue-global-api: ^0.1.3
+  vue-global-api: ^0.2.4
   webmidi: ^3.0.0-alpha.5
   windicss: 3.1.5
 
@@ -52,7 +52,7 @@ dependencies:
   poly-decomp: 0.3.0
   tone: 14.8.26
   vue: 3.1.4
-  vue-global-api: 0.1.3_vue@3.1.4
+  vue-global-api: 0.2.4_vue@3.1.4
   webmidi: 3.0.0-alpha.5
 
 devDependencies:
@@ -2515,13 +2515,14 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /vue-demi/0.10.1_vue@3.1.4:
-    resolution: {integrity: sha512-L6Oi+BvmMv6YXvqv5rJNCFHEKSVu7llpWWJczqmAQYOdmPPw5PNYoz1KKS//Fxhi+4QP64dsPjtmvnYGo1jemA==}
+  /vue-demi/0.11.2_vue@3.1.4:
+    resolution: {integrity: sha512-J+X8Au6BhQdcej6LY4O986634hZLu55L0ewU2j8my7WIKlu8cK0dqmdUxqVHHMd/cMrKKZ9SywB/id6aLhwCtA==}
+    engines: {node: '>=12'}
     hasBin: true
     requiresBuild: true
     peerDependencies:
       '@vue/composition-api': ^1.0.0-rc.1
-      vue: ^2.6.0 || >=3.0.0
+      vue: ^3.0.0 || ^2.6.0
     peerDependenciesMeta:
       '@vue/composition-api':
         optional: true
@@ -2557,10 +2558,10 @@ packages:
       vue: 3.1.4
     dev: false
 
-  /vue-global-api/0.1.3_vue@3.1.4:
-    resolution: {integrity: sha512-6YNWo8SrL+/EkSa94JQ/fbQY7t5fH8ycxtIDOB1Lzjf4xh0EYgjj6D4pz00rh6X2uETjIt5mzyd+pibaekvdtA==}
+  /vue-global-api/0.2.4_vue@3.1.4:
+    resolution: {integrity: sha512-Cm84AZiALt8f4CJZzPvbForTzAUYe41msnzUnRK6B7YkaDaN8g87ap8CpHWvTU0+XtyDeLLAeQoRr+uwamxfpQ==}
     dependencies:
-      vue-demi: 0.10.1_vue@3.1.4
+      vue-demi: 0.11.2_vue@3.1.4
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue

@@ -42,6 +42,13 @@
       text-anchor="middle"
       fill="white"
     ) G
+    text(
+      x="50"
+      y="60"
+      font-size="2px"
+      text-anchor="middle"
+      fill="black"
+    ) rgb({{ mix.r }}, {{ mix.g }}, {{ mix.b }})
   .flex.flex-wrap.justify-center
     .flex.flex-col.items-center.p-2
       label(for="red" style="color:#FF0000") RED {{ mix.r }}

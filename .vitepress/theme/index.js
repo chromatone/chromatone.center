@@ -8,6 +8,9 @@ import './styles/layout.postcss'
 import './styles/custom-blocks.css'
 import './styles/sidebar-links.postcss'
 
+import 'vue-global-api/reactivity'
+import 'vue-global-api/lifecycle'
+
 import Layout from './layout.vue'
 import NotFound from './not-found.vue'
 

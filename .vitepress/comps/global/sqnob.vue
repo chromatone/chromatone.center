@@ -45,7 +45,7 @@ const props = defineProps({
   }
 });
 
-const emit = defineEmit(['update:value'])
+const emit = defineEmit(['update:modelValue'])
 
 const state = reactive({
   active: false,
@@ -90,7 +90,7 @@ function mapNumber(
   inputmax = 100,
   rangemin = 0,
   rangemax = 100,
-  step,
+  step = 1,
 ) {
   rangemax = parseFloat(rangemax)
   rangemin = parseFloat(rangemin)
@@ -99,7 +99,7 @@ function mapNumber(
   let result =
     ((val - inputmin) * (rangemax - rangemin)) / (inputmax - inputmin) +
     rangemin
-  return (result * (step || 100)) / (step || 100)
+  return Math.round(result / (step)) * (step)
 }
 
 </script>

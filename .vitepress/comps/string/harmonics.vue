@@ -1,26 +1,171 @@
 <template lang="pug">
-svg#dissonance.max-h-3xl.w-full.my-20(
-  version="1.1",
-  baseProfile="full",
-  :viewBox="`${-box.padX} ${-box.padY} ${box.width + 2 * box.padX} ${box.height + box.padY}`",
-  xmlns="http://www.w3.org/2000/svg",
-  )
-  rect.box(
-    v-bind="box"
-  )
-  polyline(
-    v-bind="fundamental"
-  )
-</template>
+.flex.flex-col.max-h-100vh
+  .flex.flex-wrap.justify-center.-mb-16.z-2
+    sqnob(
+      :min="harmonics.min"
+      :max="harmonics.max"
+      :step="1"
+      fixed="0"
+      param="count"
+      v-model="harmonics.count"
+      )
+    sqnob.w-16(
+      :min="50"
+      :max="1000"
+      step="0.1"
+      fixed="1"
+      param="freq"
+      v-model="fundamental.frequency"
+      )
+    sqnob(
+      :min="0.2"
+      :max="2"
+      step="0.1"
+      fixed="1"
+      param="speed"
+      v-model="time.speed"
+      )
+    button.shadow.p-3.m-1.border-1.border-current.rounded(
+      @click="time.move = !time.move"
+    )
+      la-play(v-if="!time.move")
+      la-pause(v-if="time.move")
+    piano-keys(v-model:pitch="fundamental.pitch")
+    sqnob(
+      :min="1"
+      :max="5"
+      step="1"
+      fixed="0"
+      param="octave"
+      v-model="fundamental.octave"
+      )
+  svg#harmonics.w-full(
+    version="1.1"
+    baseProfile="full"
+    :viewBox="`${-box.padX} ${-2 * box.padY} ${box.width + 2 * box.padX} ${box.height + 4 * box.padY}`"
+    xmlns="http://www.w3.org/2000/svg"
+    font-family="Commissioner, sans-serif"
+    )
+    string-guitar(
+      :length="box.width"
+      :transform="`translate(0,${box.height}) rotate(180) translate(-150, -12)`"
+    )
+    g#edges
+      line(
+        x1="0"
+        x2="0"
+        y1="0"
+        :y2="box.height"
+        stroke="gray"
+        stroke-width="0.2"
+      )
+      line(
+        :x1="box.width"
+        :x2="box.width"
+        y1="0"
+        :y2="box.height"
+        stroke="gray"
+        stroke-width="0.2"
+      )
+    g#fundamental
+      polyline(
+        fill="none"
+        v-bind="fundamental"
+      )
+      circle(
+        cx="0"
+        cy="0"
+        r="1"
+        :fill="fundamental.stroke"
+      )
+      circle(
+        :cx="box.width"
+        cy="0"
+        r="1"
+        :fill="fundamental.stroke"
+      )
+      text(
+        fill="currentColor"
+        :x="-2"
+        text-anchor="end"
+        y="2"
+        font-size="4px"
+        ) {{ fundamental.frequency.toFixed(1) }} Hz 
+      text(
+        fill="currentColor"
+        :x="box.width + 2"
+        text-anchor="start"
+        y="2"
+        font-size="4px"
+        ) {{ fundamental.note }} ({{ fundamental.cents.toFixed(0) }} cents)
+    g.harmonic(
+      v-for="(harmonic,i) in harmonics.list"
+      :key="harmonic"
+      :transform="`translate(0, ${harmonic.position})`"
+      )
+      polyline(
+        v-bind="harmonic"
+        fill="none"
+        stroke-width="0.5"
+      )
+      text(
+        fill="currentColor"
+        :x="-2"
+        text-anchor="end"
+        y="2"
+        font-size="4px"
+      ) {{ harmonic.frequency.toFixed(1) }} Hz
+      text(
+        font-weight="bold"
+        fill="currentColor"
+        :x="box.width + 2"
+        text-anchor="start"
+        y="8"
+        font-size="4px"
+      ) {{ harmonics.intervals[i] }} 
+      text(
+        fill="currentColor"
+        :x="box.width + 2"
+        text-anchor="start"
+        y="2"
+        font-size="4px"
+      ) {{ harmonic.note }} ({{ harmonic.centDiff > 0 ? '+' : '' }}{{ harmonic.centDiff }} cents)
+      circle(
+        v-for="dot in harmonic.dots"
+        :key="dot"
+        cy="0"
+        :cx="dot"
+        r="1"
+        :fill="harmonic.stroke"
+      )
 
+    g.lines(
+      v-for="(harmonic,i) in harmonics.list"
+      :key="i"
+      )
+      line(
+        v-for="dot in harmonic.dots"
+        :key="dot"
+        :x1="dot"
+        :x2="dot"
+        :y1="(i + 1) * (box.height - box.padY) / (harmonics.count)"
+        :y2="box.height + 12"
+        :stroke="harmonic.stroke"
+        stroke-width="0.2"
+        :opacity="1 - i / (harmonics.count + 2)"
+      )
+</template>
+  
 <script setup>
-import { reactive, computed } from 'vue'
-import { pitchColor } from 'chromatone-theory'
+import { useStorage, useTimestamp } from '@vueuse/core'
+import { pitchColor, freqColor, notes } from 'chromatone-theory'
+import { Frequency } from "tone";
+
 const box = reactive({
-  width: 100,
-  height: 100,
-  padX: 50,
-  padY: 50,
+  width: 150,
+  height: 200,
+  padX: 30,
+  padY: 20,
   x: 0,
   y: 0,
   stroke: 'currentColor',
@@ -28,15 +173,118 @@ const box = reactive({
   'stroke-width': 0.2
 });
 
+const { timestamp, pause, resume } = useTimestamp({ controls: true, offset: -Date.now() })
+
+const time = reactive({
+  phase: computed(() => {
+    return time.speed * (timestamp.value / 100) % 100 / 100
+  }),
+  speed: 1,
+  move: false,
+})
+
+watch(() => time.move, move => {
+  if (move) { resume() } else { pause() }
+}, { immediate: true })
+
 const fundamental = reactive({
+  frequency: 220,
   pitch: 0,
-  points: `0,0 100,0`,
-  stroke: computed(() => pitchColor(fundamental.pitch))
+  octave: 3,
+  points: computed(() => {
+    let points = []
+    for (let pos = 0; pos <= box.width; pos += 1) {
+      let sum = 0
+      for (let partial = 0; partial <= harmonics.count; partial++) {
+        sum = sum + calcWave(partial, pos, time.phase) / (Math.exp(partial / 2 + 1))
+      }
+      let y = box.height / (3 * harmonics.count) * sum * 5
+      points[pos] = `${pos},${y}`
+    }
+    return points.join(' ')
+  }),
+  stroke: computed(() => freqColor(fundamental.frequency)),
+  note: computed(() => {
+    return Frequency(fundamental.frequency).toNote()
+  }),
+  cents: computed(() => {
+    return calcCents(fundamental.frequency, Frequency(fundamental.note).toFrequency())
+  }),
 });
 
+watchEffect(() => {
+  fundamental.frequency = Frequency(notes[fundamental.pitch].name + fundamental.octave).toFrequency()
+})
 
+watchEffect(() => {
+  fundamental.octave = Number(fundamental.note.slice(-1))
+  fundamental.pitch = notes.find(note => note.name == fundamental.note.slice(0, -1) ? true : false).pitch
+})
 
+const harmonics = reactive({
+  count: 7,
+  min: 2,
+  max: 15,
+  list: [],
+  intervals: ['P8', 'P8+P5', '2P8', '2P8+M3', '2P8+P5', '2P8+m7', '3P8', '3P8+M2', '3P8+M3', '3P8+TT', '3P8+P5', '3P8+n6', '3P8+P5+m3', '3P8+M7', '4P8']
+})
+
+watch(() => harmonics.count, count => {
+  harmonics.list = []
+  for (let i = 1; i <= count; i++) {
+    harmonics.list[i - 1] = {
+      frequency: computed(() => {
+        return fundamental.frequency * (i + 1)
+      }),
+      note: computed(() => {
+        let freq = harmonics.list[i - 1].frequency
+        return Frequency(freq).toNote()
+      }),
+      cents: computed(() => {
+        return calcCents(fundamental.frequency, harmonics.list[i - 1].frequency).toFixed(0)
+      }),
+      centDiff: computed(() => {
+        return harmonics.list[i - 1].cents - Math.round(harmonics.list[i - 1].cents / 100) * 100
+      }),
+      position: computed(() => {
+        return i * (box.height - box.padY) / (harmonics.count)
+      }),
+      stroke: computed(() => {
+        return freqColor(harmonics.list[i - 1].frequency)
+      }),
+      amplitude: computed(() => {
+        return box.height / (3 * count * i / 2)
+      }),
+      points: computed(() => {
+        let points = []
+        for (let pos = 0; pos <= box.width; pos += 1) {
+          let y = harmonics.list[i - 1].amplitude * calcWave(i, pos, time.phase)
+          points[pos] = `${pos},${y}`
+        }
+        return points.join(' ')
+      }),
+      dots: computed(() => {
+        let dots = []
+        for (let pos = 0; pos <= i; pos++) {
+          dots.push(box.width / i * pos)
+        }
+        return dots
+      })
+    }
+  }
+}, { immediate: true })
+
+function calcWave(num, x, time) {
+  return Math.sin(Math.PI * num * x / box.width) * Math.cos(time * num * 2 * Math.PI)
+}
+
+function calcSine(num, x, phase = 0) {
+  return Math.sin(Math.PI * 2 * phase + num / 2 * x / box.width * 2 * Math.PI)
+}
+
+function calcCents(base, freq) {
+  return -(1200 / Math.log10(2)) * (Math.log10(base / freq)) % 1200
+}
 </script>
 
-<style scoped>
-</style>
+

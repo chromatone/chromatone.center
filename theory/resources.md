@@ -22,6 +22,12 @@ links:
   - url: https://sethares.engr.wisc.edu/index.html
     title: Home page of William A. Sethares
     subtitle: A very important figure in sensory dissonance research. His book "Tuning, Timbre, Spectrum, Scale" gives a comprehensive understanding of many important music concepts in a scientifically based way.
+  - url: https://www.acs.psu.edu/drussell/demos.html
+    title: Acoustics and Vibration Animations by Dr. Daniel A. Russell
+    subtitle: Teaching Professor of Acoustics, Graduate Program in Acoustics, The Pennsylvania State University. He created animations illustrating acoustics and vibration, waves and oscillation concepts.
+  - url: http://www.phys.unsw.edu.au/music/
+    title: Music acoustics
+    subtitle: Physics and music have been related for millenia. The art and science of music acoustics are presented here, in musician-friendly format, as is our research in music science.
 ---
 
 <other-list :tools="$frontmatter.links" />

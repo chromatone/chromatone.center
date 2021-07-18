@@ -48,6 +48,14 @@
       text-anchor="middle"
       fill="white"
     ) Y
+    text(
+      x="50"
+      y="60"
+      font-size="2px"
+      text-anchor="middle"
+      fill="white"
+    ) CMYK({{ mix.c }}%, {{ mix.m }}%, {{ mix.y }}%, {{ mix.k }}%)
+  .flex.flex-col.items-center 
   .flex.flex-wrap.justify-center
     .flex.flex-col.items-center.p-2
       label(for="cyan" style="color:cyan") CYAN {{ mix.c }}

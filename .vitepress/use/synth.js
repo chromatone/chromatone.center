@@ -22,7 +22,7 @@ export function init() {
     oscillator: {
       type: 'sine',
     },
-    volume: -5,
+    volume: -10,
     envelope: {
       attack: 0.01,
       decay: 0.01,

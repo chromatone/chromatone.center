@@ -84,3 +84,4 @@ instruments:
 ---
 
 <string-tool :instruments="$frontmatter.instruments" />
+<svg-save svg="fretboard" />

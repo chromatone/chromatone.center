@@ -1,7 +1,6 @@
 <template lang="pug">
 .flex.flex-col.-my-8.items-center
   start-button(@click="start()", v-if="!state.running") Start tuner
-  svg-save(svg="tuner", :file="`${state.note?.name}${state.note?.octave}`")
   svg#tuner.rounded-xl.w-full.max-h-3xl.-z3(
   v-if="state.running"
   version="1.1",

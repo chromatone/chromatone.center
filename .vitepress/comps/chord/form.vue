@@ -40,8 +40,7 @@
     )
       la-volume-up(v-if="!sounding")
       la-volume-off(v-else)
-  svg(
-    id="chord-form"
+  svg#chord-form(
     version="1.1",
     baseProfile="full",
     viewBox="0 0 1260 800",
@@ -85,9 +84,6 @@
       r="12"
       :fill="sumColor.hsl"
     )
-  svg-save(
-    svg="chord-form"
-  )
 </template>
 
 <script setup>

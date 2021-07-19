@@ -39,6 +39,6 @@ function saveSVG(pic) {
 
 <style  scoped>
 .snapshot {
-  @apply flex absolute cursor-pointer bg-gray-200 bg-opacity-70 dark:(bg-gray-800 bg-opacity-70) text-2xl -mt-1rem right-2rem p-2  rounded-full;
+  @apply flex absolute cursor-pointer bg-gray-200 bg-opacity-70 dark:(bg-gray-800 bg-opacity-70) text-2xl -mt-1rem right-2rem p-2 z-100  rounded-full;
 }
 </style>

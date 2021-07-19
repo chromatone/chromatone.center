@@ -1,6 +1,5 @@
 <template lang="pug">
-svg-save(svg="tuning", :file="`tunings.svg`")  
-svg#tuning.w-full(
+svg#tuning-circle.w-full(
   version="1.1",
   baseProfile="full",
   viewBox="0 -50 1000 1100",

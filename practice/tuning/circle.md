@@ -7,3 +7,4 @@ date: 2021-04-06
 ---
 
 <tuning-circle />
+<svg-save svg="tuning-circle" />

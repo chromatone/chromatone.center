@@ -1,6 +1,5 @@
 <template lang="pug">
-svg.max-h-3xl.w-full(
-  id="fifths"
+svg#fifths.max-h-3xl.w-full(
   version="1.1",
   baseProfile="full",
   viewBox="0 0 100 100",
@@ -102,10 +101,6 @@ svg.max-h-3xl.w-full(
         :y="getCircleCoord(n - 1, 12, 42 - idx * 26).y + 0.25",
         :style="{ transform: `rotate(${-(tonic) * 30}deg)` }"
       ) {{ step }}
-svg-save(
-  svg="fifths"
-  :file="`circle - of - fifths - ${tonic}.svg`"
-)
 </template>
 
 <script setup>

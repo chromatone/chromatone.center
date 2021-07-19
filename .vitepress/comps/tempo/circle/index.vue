@@ -47,10 +47,6 @@
       :radius="400 - i * 125"
       @del="loops.splice(i, 1)"
     )
-  //- svg-save(
-  //-   svg="metronome"
-  //-   :file="`tempo.svg`"
-  //- )
 </template>
 
 <script setup>

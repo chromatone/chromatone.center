@@ -8,4 +8,5 @@ date: 2021-05-12
 
 <ClientOnly>
   <pitch-tuner />
+  <svg-save svg="tuner" />
 </ClientOnly>

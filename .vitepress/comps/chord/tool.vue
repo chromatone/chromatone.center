@@ -11,8 +11,7 @@
     :style="{ color: pitchColor(accord.root) }"
   ) {{ notes[accord?.root].name }}{{ accord?.info.handle }}
   .relative
-    svg-save(svg="keys", :file="`${notes[accord?.root].name}${accord?.info.handle}-keys.svg`")
-    chord-keys#keys(:accord="accord", @selectRoot="accord.root = $event")
+    chord-keys#chord-keys(:accord="accord", @selectRoot="accord.root = $event")
 </template>
 
 <script setup>
@@ -23,30 +22,6 @@ const accord = reactive({
   root: 0,
   info: chords.min,
 });
-
-const download = reactive({
-  circle: '',
-  keys: ''
-})
-
-watch(accord, () => {
-  setTimeout(() => {
-    saveSVG('circle')
-    saveSVG('keys')
-  }, 100);
-
-})
-
-
-function saveSVG(pic) {
-  var svg = document.getElementById(pic);
-  if (!svg) return
-  const serializer = new XMLSerializer();
-  let source = serializer.serializeToString(svg);
-  source = '<?xml version="1.0" standalone="no"?>\r\n' + source;
-  var url = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(source);
-  download[pic] = url;
-}
 
 const chordList = computed(() => {
   let list = Object.values(chords)

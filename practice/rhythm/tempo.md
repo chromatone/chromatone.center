@@ -8,4 +8,5 @@ cover: apps/tempo.png
 
 <client-only >
   <tempo-tool />
+  <svg-save svg="metronome" />
 </client-only >

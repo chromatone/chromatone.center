@@ -175,7 +175,6 @@
           :x="i * 40 + 50",
           :y="fret * 1000 - 11",
         ) {{ Note.transpose(string, Interval.fromSemitones(f + 1)) }}
-    svg-save(svg="fretboard", :file="`${instrument.title}-${instrument.l}mm-${instrument.frets}frets.svg`")
 </template>
 
 <script setup>

@@ -7,4 +7,5 @@ cover: apps/spectrum.svg
 
 <client-only>
   <pitch-spectrum />
+  <svg-save svg="pitch-spectrum" />
 </client-only>

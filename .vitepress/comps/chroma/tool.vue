@@ -1,8 +1,7 @@
 <template lang="pug">
 .flex.flex-col
   .relative.w-full.m-auto
-    svg-save(svg="circle", :file="`${notes[tonic].name}-${chroma}-circle.svg`")  
-    chroma-circle#circle(
+    chroma-circle#chroma-circle(
       v-model:chroma="chroma"
       v-model:tonic="tonic"
       :scaleChroma="scaleChroma"
@@ -55,8 +54,6 @@ const chordGroups = computed(() => {
   return arr
 })
 
-
-
 const chord = computed(() => {
   return ChordType.get(chroma.value)
 })
@@ -79,30 +76,8 @@ const numNotes = computed(() => {
 
 const chordGroup = computed(() => {
   return chordList.filter(get => get.intervals.length === numNotes.value)
-})
+});
 
-
-const download = reactive({
-  circle: '',
-  keys: ''
-})
-
-watch([tonic, chroma], () => {
-  setTimeout(() => {
-    saveSVG('circle')
-  }, 300);
-
-})
-
-function saveSVG(pic) {
-  var svg = document.getElementById(pic);
-  if (!svg) return
-  const serializer = new XMLSerializer();
-  let source = serializer.serializeToString(svg);
-  source = '<?xml version="1.0" standalone="no"?>\r\n' + source;
-  var url = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(source);
-  download[pic] = url;
-}
 
 </script>
 

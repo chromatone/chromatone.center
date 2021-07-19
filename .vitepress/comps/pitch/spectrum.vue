@@ -2,7 +2,7 @@
 .flex.justify-center(v-if="!state.initiated" )
   start-button(@click="initiate()") Start
 .flex.flex-col(v-else)
-  svg#tuner.rounded-xl.w-full.max-h-3xl.-z3(
+  svg#pitch-spectrum.rounded-xl.w-full.max-h-3xl.-z3(
     version="1.1",
     baseProfile="full",
     viewBox="0 0 512 300",
@@ -26,7 +26,6 @@
       fill="none"
       :stroke="state?.note?.color"
     )
-  svg-save(svg="tuner")
 </template>
   
 <script setup>

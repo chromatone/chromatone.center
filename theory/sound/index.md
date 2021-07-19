@@ -36,8 +36,8 @@ A note isn't just a wave, it's a mix of resonating modes of oscillations.
 
 ### String overtones interactive model
 
-<string-harmonics />
-<svg-save svg="harmonics" />
+<string-overtones />
+<svg-save svg="overtones" />
 
 
 ----

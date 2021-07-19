@@ -1,13 +1,13 @@
 <template lang="pug">
 .flex.flex-col
-  .flex.flex-wrap.justify-center.-mb-8.z-2
+  .controls.flex.flex-wrap.justify-center.-mb-8.z-2
     sqnob(
-      :min="harmonics.min"
-      :max="harmonics.max"
+      :min="overtones.min"
+      :max="overtones.max"
       :step="1"
       :fixed="0"
       param="count"
-      v-model="harmonics.count"
+      v-model="overtones.count"
       )
     sqnob.w-16(
       :min="50"
@@ -44,7 +44,7 @@
       param="octave"
       v-model="fundamental.octave"
       )
-  svg#harmonics.w-full.max-h-100vh(
+  svg#overtones.w-full.max-h-100vh(
     version="1.1"
     baseProfile="full"
     :viewBox="`${-box.padX} ${-2 * box.padY} ${box.width + 2 * box.padX} ${box.height + 4 * box.padY}`"
@@ -84,9 +84,9 @@
       )
       rect.transition-all.duration-200(
         x="0"
-        :y="-0.5 * (box.height - box.padY) / (harmonics.count)"
+        :y="-0.5 * (box.height - box.padY) / (overtones.count)"
         :width="box.width"
-        :height="(box.height - box.padY) / (harmonics.count)"
+        :height="(box.height - box.padY) / (overtones.count)"
         :fill="fundamental.stroke"
         :opacity="fundamental.hover ? 0.2 : 0.05"
       )
@@ -121,32 +121,32 @@
         y="2"
         font-size="4px"
         ) {{ fundamental.note }} ({{ fundamental.cents.toFixed(0) }} cents)
-    g.harmonic.cursor-pointer(
-      v-for="(harmonic,i) in harmonics.list"
-      :key="harmonic"
+    g.overtone.cursor-pointer(
+      v-for="(overtone,i) in overtones.list"
+      :key="overtone"
       :data-num="i + 1"
-      :transform="`translate(0, ${harmonic.position})`"
-      @mouseenter="sound.change(harmonic.frequency)"
-      @mouseover="harmonic.hover = true"
-      @mouseleave="harmonic.hover = false"
-      @mousedown="sound.play(harmonic.frequency); harmonic.active = true"
-      @touchstart="sound.play(harmonic.frequency); harmonic.active = true"
-      @mouseup="sound.stop(); harmonic.active = false"
-      @touchstop="sound.stop(); harmonic.active = false"
-      @touchcancel="sound.stop(); harmonic.active = false"
+      :transform="`translate(0, ${overtone.position})`"
+      @mouseenter="sound.change(overtone.frequency)"
+      @mouseover="overtone.hover = true"
+      @mouseleave="overtone.hover = false"
+      @mousedown="sound.play(overtone.frequency); overtone.active = true"
+      @touchstart="sound.play(overtone.frequency); overtone.active = true"
+      @mouseup="sound.stop(); overtone.active = false"
+      @touchstop="sound.stop(); overtone.active = false"
+      @touchcancel="sound.stop(); overtone.active = false"
       )
       rect.transition-all.duration-200(
         x="0"
-        :y="-0.5 * (box.height - box.padY) / (harmonics.count)"
+        :y="-0.5 * (box.height - box.padY) / (overtones.count)"
         :width="box.width"
-        :height="(box.height - box.padY) / (harmonics.count)"
-        :fill="harmonic.stroke"
-        :opacity="harmonic.hover ? 0.2 : 0.05"
+        :height="(box.height - box.padY) / (overtones.count)"
+        :fill="overtone.stroke"
+        :opacity="overtone.hover ? 0.2 : 0.05"
       )
       polyline.transition-all.duration-200(
-        v-bind="harmonic"
+        v-bind="overtone"
         fill="none"
-        :stroke-width="harmonic.hover ? harmonic.active ? 2 : 1 : 0.5"
+        :stroke-width="overtone.hover ? overtone.active ? 2 : 1 : 0.5"
       )
       text(
         fill="currentColor"
@@ -162,7 +162,7 @@
         text-anchor="end"
         y="2"
         font-size="4px"
-      ) {{ harmonic.frequency.toFixed(1) }} Hz
+      ) {{ overtone.frequency.toFixed(1) }} Hz
       text(
         font-weight="bold"
         fill="currentColor"
@@ -170,37 +170,37 @@
         text-anchor="start"
         y="-3"
         font-size="4px"
-      ) {{ harmonics.intervals[i] }} 
+      ) {{ overtones.intervals[i] }} 
       text(
         fill="currentColor"
         :x="box.width + 2"
         text-anchor="start"
         y="2"
         font-size="4px"
-      ) {{ harmonic.note }} ({{ harmonic.centDiff > 0 ? '+' : '' }}{{ harmonic.centDiff }} cents)
+      ) {{ overtone.note }} ({{ overtone.centDiff > 0 ? '+' : '' }}{{ overtone.centDiff }} cents)
       circle.transition-all.duration-200(
-        v-for="dot in harmonic.dots"
+        v-for="dot in overtone.dots"
         :key="dot"
         cy="0"
         :cx="dot"
-        :r="harmonic.hover ? 1.2 : 1"
-        :fill="harmonic.stroke"
+        :r="overtone.hover ? 1.2 : 1"
+        :fill="overtone.stroke"
       )
 
     g.lines(
-      v-for="(harmonic,i) in harmonics.list"
+      v-for="(overtone,i) in overtones.list"
       :key="i"
       )
       line(
-        v-for="dot in harmonic.dots"
+        v-for="dot in overtone.dots"
         :key="dot"
         :x1="dot"
         :x2="dot"
-        :y1="(i + 1) * (box.height - box.padY) / (harmonics.count)"
+        :y1="(i + 1) * (box.height - box.padY) / (overtones.count)"
         :y2="box.height + 12"
-        :stroke="harmonic.stroke"
+        :stroke="overtone.stroke"
         stroke-width="0.2"
-        :opacity="1 - i / (harmonics.count + 2)"
+        :opacity="1 - i / (overtones.count + 2)"
       )
 </template>
   
@@ -303,10 +303,10 @@ const fundamental = reactive({
     let points = []
     for (let pos = 0; pos <= box.width; pos += 1) {
       let sum = 0
-      for (let partial = 0; partial <= harmonics.count; partial++) {
+      for (let partial = 0; partial <= overtones.count; partial++) {
         sum = sum + calcWave(partial, pos, time.phase) / (Math.exp(partial / 2 + 1))
       }
-      let y = box.height / (3 * harmonics.count) * sum * 5
+      let y = box.height / (3 * overtones.count) * sum * 5
       points[pos] = `${pos},${y}`
     }
     return points.join(' ')
@@ -329,7 +329,7 @@ watchEffect(() => {
   fundamental.pitch = notes.find(note => note.name == fundamental.note.slice(0, -1) ? true : false).pitch
 })
 
-const harmonics = reactive({
+const overtones = reactive({
   count: 7,
   min: 2,
   max: 15,
@@ -337,28 +337,28 @@ const harmonics = reactive({
   intervals: ['P8', 'P8+P5', '2P8', '2P8+M3', '2P8+P5', '2P8+m7', '3P8', '3P8+M2', '3P8+M3', '3P8+TT', '3P8+P5', '3P8+n6', '3P8+P5+m3', '3P8+M7', '4P8']
 })
 
-watch(() => harmonics.count, count => {
-  harmonics.list = []
+watch(() => overtones.count, count => {
+  overtones.list = []
   for (let i = 1; i <= count; i++) {
-    harmonics.list[i - 1] = {
+    overtones.list[i - 1] = {
       frequency: computed(() => {
         return fundamental.frequency * (i + 1)
       }),
       note: computed(() => {
-        let freq = harmonics.list[i - 1].frequency
+        let freq = overtones.list[i - 1].frequency
         return Frequency(freq).toNote()
       }),
       cents: computed(() => {
-        return calcCents(fundamental.frequency, harmonics.list[i - 1].frequency).toFixed(0)
+        return calcCents(fundamental.frequency, overtones.list[i - 1].frequency).toFixed(0)
       }),
       centDiff: computed(() => {
-        return harmonics.list[i - 1].cents - Math.round(harmonics.list[i - 1].cents / 100) * 100
+        return overtones.list[i - 1].cents - Math.round(overtones.list[i - 1].cents / 100) * 100
       }),
       position: computed(() => {
-        return i * (box.height - box.padY) / (harmonics.count)
+        return i * (box.height - box.padY) / (overtones.count)
       }),
       stroke: computed(() => {
-        return freqColor(harmonics.list[i - 1].frequency)
+        return freqColor(overtones.list[i - 1].frequency)
       }),
       amplitude: computed(() => {
         return box.height / (3 * count * i / 2)
@@ -366,7 +366,7 @@ watch(() => harmonics.count, count => {
       points: computed(() => {
         let points = []
         for (let pos = 0; pos <= box.width; pos += 1) {
-          let y = harmonics.list[i - 1].amplitude * calcWave(i, pos, time.phase)
+          let y = overtones.list[i - 1].amplitude * calcWave(i, pos, time.phase)
           points[pos] = `${pos},${y}`
         }
         return points.join(' ')

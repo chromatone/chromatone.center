@@ -41,7 +41,7 @@ const config = {
       },
     },
     repo: '',
-    logo: '/media/circle/circle.svg',
+    logo: '/media/logo/holologo.svg',
     docsDir: '.',
     docsBranch: 'master',
     docsRepo: '',

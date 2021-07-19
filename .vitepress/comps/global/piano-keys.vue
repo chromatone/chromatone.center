@@ -1,5 +1,5 @@
 <template lang="pug">
-.m-1.flex
+.m-1.flex.justify-center
   .key(
     v-for="key in keys.notes"
     :key="key"

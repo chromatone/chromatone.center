@@ -79,7 +79,7 @@
       @mousedown="sound.playSaw(fundamental.frequency, true)"
       @touchstart="sound.playSaw(fundamental.frequency, true)"
       @mouseup="sound.stopSaw()"
-      @touchstop="sound.stopSaw()"
+      @touchend="sound.stopSaw()"
       @touchcancel="sound.stopSaw()"
       )
       rect.transition-all.duration-200(
@@ -132,7 +132,7 @@
       @mousedown="sound.play(overtone.frequency); overtone.active = true"
       @touchstart="sound.play(overtone.frequency); overtone.active = true"
       @mouseup="sound.stop(); overtone.active = false"
-      @touchstop="sound.stop(); overtone.active = false"
+      @touchend="sound.stop(); overtone.active = false"
       @touchcancel="sound.stop(); overtone.active = false"
       )
       rect.transition-all.duration-200(
@@ -203,6 +203,13 @@
         :opacity="1 - i / (overtones.count + 2)"
       )
 </template>
+
+<style scoped>
+svg {
+  touch-action: none;
+  user-select: none;
+}
+</style>
   
 <script setup>
 import { useStorage, useTimestamp } from '@vueuse/core'

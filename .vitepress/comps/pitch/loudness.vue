@@ -1,5 +1,5 @@
 <template lang="pug">
-svg#loudness.max-h-3xl.w-full(
+svg#loudness.max-h-3xl.w-full.select-none(
   version="1.1",
   ref="svg"
   baseProfile="full",

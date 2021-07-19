@@ -107,6 +107,7 @@ function mapNumber(
 <style scoped>
 .knob {
   @apply m-1 border-1 rounded text-center border-dark-100/50 dark:(border-light-100/50) cursor-pointer select-none relative;
+  touch-action: none;
 }
 
 .level {

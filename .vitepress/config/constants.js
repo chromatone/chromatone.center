@@ -7,7 +7,7 @@ export const metaData = {
   description: 'Universal color music notation and communication',
   site,
   locale: 'en',
-  icon: '/media/circle/circle.svg',
+  icon: '/media/logo/holologo.svg',
   author: 'Chromatone.center',
   tags: 'color, music, stickers, posters, theory, webapp, science',
 }

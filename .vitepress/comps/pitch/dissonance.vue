@@ -1,5 +1,5 @@
 <template lang="pug">
-svg#dissonance.max-h-3xl.w-full.my-20(
+svg#dissonance.max-h-3xl.w-full.my-20.select-none(
   version="1.1",
   baseProfile="full",
   :viewBox="`${-box.padW} ${-box.padH} ${box.width + 2 * box.padW} ${box.height + box.padH}`",

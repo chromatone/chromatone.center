@@ -16,8 +16,6 @@ svg.max-h-sm(
       :x="20 * ((12 - 3 + Number(i)) % 12)"
       :y="2"
       :width="18"
-      :stroke-width="accord?.root == i ? 1 : 0"
-      stroke="#000"
       :height="note.pos == 1 ? 50 : 90"
       :rx="5"
       :ry="5"
@@ -40,7 +38,7 @@ svg.max-h-sm(
 <script setup>
 import { notes, pitchColor, scales } from 'chromatone-theory'
 const props = defineProps({
-  accord: Object,
+  chroma: { type: String, default: '100100010010' },
 });
 
 const whites = [...notes].filter(note => note.pos == 0)
@@ -52,7 +50,7 @@ defineEmit([
 ])
 
 function isInChord(n) {
-  return props.accord.info.semitones.includes((24 + n - props.accord.root) % 12)
+  return props.chroma.split('')[n] == '1'
 }
 
 function getNoteColor(n) {

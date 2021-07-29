@@ -6,7 +6,7 @@ actionText: Enter
 altActionLink: /ru.html
 altActionText: Войти
 list: main
-icon: logo/logo.svg
+icon: logo/holologo.svg
 ---
 
 # The international visual music language to learn and to experiment with

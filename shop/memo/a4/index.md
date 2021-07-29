@@ -8,7 +8,9 @@ cover: memo/a4-scales.svg
 
 ---
 
-The A5 cheat-sheet is currently in a design process.
+The A4 cheat-sheet is currently in a design process.
+
+<chord-scales />
 
 ![](/media/memo/a4-scales.svg)
 

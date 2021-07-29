@@ -20,13 +20,24 @@
       rx=4
       fill="none"
       )
+    g(font-size="4.5")
+      text(
+        v-for="(scale,i) in scales.major" :key="scale"
+        :x="box.padding.left + 12 + 22 * i"
+        y="-2"
+      ) {{ scale }}
+      text(
+        v-for="(scale,i) in scales.minor" :key="scale"
+        :x="box.padding.left + 108 + 22 * i"
+        y="-2"
+      ) {{ scale }}
     g(
       v-for="(tonic,i) in notes"
       :transform="`translate(0, ${i * (box.height - box.padding.y) / 12})`"
       )
       rect(
         :x="box.padding.left"
-        :y="box.padding.y - 2"
+        :y="box.padding.y - 1"
         rx="4"
         :width="box.width - box.padding.left - box.padding.x"
         height="22"
@@ -49,16 +60,9 @@
         :tonic="i"
       )
       chroma-keys(
-        :transform="`scale(0.2) translate(400,${i - 80})`"
+        :transform="`scale(0.1) translate(920,${i - 80 + 50})`"
         :chroma="rotateArray(chords.scale.split(''), -i).join('')"
       )
-      text(
-        y="5"
-        font-family="Commissioner, sans-serif"
-        font-size="4px"
-        text-anchor="middle",
-        dominant-baseline="middle"
-        ) 
 </template>
 
 <script setup>
@@ -74,7 +78,7 @@ const box = reactive({
     left: 20,
   }
 });
-const chords = reactive({
+const chords = {
   scale: '101101011010',
   majors: [
     { pitch: 10, chroma: '001001001010', type: '7' },
@@ -87,7 +91,11 @@ const chords = reactive({
     { pitch: 7, chroma: '001001010010', type: 'm7' },
     { pitch: 2, chroma: '101001001000', type: 'm7b5' },
   ]
-});
+};
+const scales = {
+  major: ['Myxolydian', 'Lydian', 'Ionian'],
+  minor: ['Aeolian', 'Dorian', 'Phrygian', 'Locrian']
+};
 </script>
 
 <style scoped>

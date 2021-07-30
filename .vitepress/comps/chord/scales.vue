@@ -1,25 +1,29 @@
 <template lang="pug">
 .p-4.mx-auto
-  h1.text-xl Scales
-  svg.m-8(
+  svg#diatonic.m-8.select-none(
     version="1.1",
     baseProfile="full",
-    :viewBox="`-${box.margin} -${box.margin + box.head} ${box.width + box.margin} ${box.height + box.margin + box.head}`",
+    :viewBox="`-${box.margin} -${box.margin + box.head} ${box.width + 2 * box.margin} ${box.height + 2 * box.margin + box.head}`",
     xmlns="http://www.w3.org/2000/svg",
-    font-family="Commissioner, sans-serif"
+    font-family="Commissioner , sans-serif"
     text-anchor="middle",
     dominant-baseline="middle"
     )
     rect(
-      x=0
+      x=-2
       :y="- box.head"
-      :width="box.width"
+      :width="box.width + box.padding.x"
       :height="box.height + box.head"
       stroke="gray"
-      stroke-width="0.5"
+      stroke-width="0.2"
       rx=4
       fill="none"
       )
+    g(font-size="4" font-weight="bold")
+      text(
+        :x="(box.width + box.padding.x) / 2"
+        y="-2"
+      ) major  |  minor
     g(font-size="4.5")
       text(
         v-for="(scale,i) in scales.major" :key="scale"
@@ -36,18 +40,25 @@
       :transform="`translate(0, ${i * (box.height - box.padding.y) / 12})`"
       )
       rect(
-        :x="box.padding.left"
+        :x="0"
         :y="box.padding.y - 1"
         rx="4"
-        :width="box.width - box.padding.left - box.padding.x"
+        :width="box.width"
         height="22"
-        :fill="i % 2 ? 'hsla(0,0%,20%,0.1)' : 'hsla(0,0%,80%,0.1)'"
+        opacity="0.1"
+        :fill="i % 2 ? '#333' : '#eee'"
+      )
+      chord-circle(
+        :pitch="false"
+        transform="translate(12,14)"
+        chroma="101101011010"
+        :tonic="i"
       )
       chord-circle(
         v-for="(chord,maj) in chords.majors" :key="chord"
         :pitch="(chord.pitch + tonic.pitch) % 12"
         :chroma="chord.chroma"
-        :transform="`translate(${maj * 22 + 32}, 14)`"
+        :transform="`translate(${maj * 22 + 12 + box.padding.left}, 14)`"
         :type="chord.type"
         :tonic="i"
       )
@@ -55,14 +66,23 @@
         v-for="(chord,maj) in chords.minors" :key="chord"
         :pitch="(chord.pitch + tonic.pitch) % 12"
         :chroma="chord.chroma"
-        :transform="`translate(${maj * 22 + 128}, 14)`"
+        :transform="`translate(${maj * 22 + 108 + box.padding.left}, 14)`"
         :type="chord.type"
         :tonic="i"
       )
       chroma-keys(
-        :transform="`scale(0.1) translate(920,${i - 80 + 50})`"
+        :transform="`scale(0.15) translate(${600 + box.padding.left},${i * 0.1 + box.padding.y + 44})`"
         :chroma="rotateArray(chords.scale.split(''), -i).join('')"
       )
+    line(
+      :x1="box.padding.left"
+      :x2="box.padding.left"
+      y1="5"
+      :y2="box.height - 5"
+      stroke="#777"
+      stroke-linecap="round"
+      stroke-width="0.2"
+    )
 </template>
 
 <script setup>
@@ -75,7 +95,7 @@ const box = reactive({
   padding: {
     x: 4,
     y: 4,
-    left: 20,
+    left: 24,
   }
 });
 const chords = {
@@ -99,4 +119,9 @@ const scales = {
 </script>
 
 <style scoped>
+@media screen {
+  svg {
+    filter: grayscale(30%);
+  }
+}
 </style>

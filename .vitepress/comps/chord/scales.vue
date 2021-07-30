@@ -14,7 +14,7 @@
       :y="- box.head"
       :width="box.width + box.padding.x"
       :height="box.height + box.head"
-      stroke="gray"
+      stroke="none"
       stroke-width="0.2"
       rx=4
       fill="none"

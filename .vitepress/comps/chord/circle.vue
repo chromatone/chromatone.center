@@ -25,13 +25,13 @@ g
     x2="0"
     y2="0"
     stroke-linecap="round"
-    stroke-width="3.6"
+    stroke-width="1"
     :stroke="note == '1' ? colord(pitchColor(n)).toHex() : 'none'"
   )
   circle(
     cx="0"
     cy="0"
-    r="2.5"
+    r="1"
     :fill="pitch === false ? 'none' : colord(pitchColor(pitch)).toHex()"
     )
   text(

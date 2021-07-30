@@ -12,7 +12,7 @@ The A4 cheat-sheet is currently in a design process.
 
 ## Diatonic scales and modes
 
-<chord-scales class="max-w-55ch" />
+<chord-scales />
 <svg-save svg="diatonic"/>
 
 ![](/media/memo/a4-scales.svg)

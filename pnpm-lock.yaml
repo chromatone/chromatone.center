@@ -1,11 +1,11 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@iconify/json': ^1.1.380
+  '@iconify/json': ^1.1.381
   '@tonaljs/note': ^4.6.2
   '@tonaljs/pcset': ^4.6.2
   '@tonaljs/tonal': ^4.6.2
-  '@types/node': ^16.4.6
+  '@types/node': ^16.4.8
   '@vueuse/core': 5.2.0
   '@vueuse/gesture': ^1.0.0
   '@vueuse/motion': ^1.5.6
@@ -17,7 +17,7 @@ specifiers:
   markdown-it-container: ^3.0.0
   markdown-it-external-links: ^0.0.6
   matter-js: ^0.17.1
-  meyda: ^5.2.1
+  meyda: ^5.2.2
   paper: ^0.12.15
   patch-vue-directive-ssr: ^0.0.1
   poly-decomp: ^0.3.0
@@ -32,7 +32,7 @@ specifiers:
   vitepress: 0.15.6
   vitepress-tags: ^0.4.0
   vue: ^3.1.5
-  vue-global-api: ^0.3.0
+  vue-global-api: ^0.4.1
   webmidi: ^3.0.0-alpha.5
   windicss: 3.1.6
 
@@ -47,17 +47,17 @@ dependencies:
   colord: 2.4.0
   hidpi-canvas: 1.0.10
   matter-js: 0.17.1
-  meyda: 5.2.1
+  meyda: 5.2.2
   paper: 0.12.15
   poly-decomp: 0.3.0
   tone: 14.8.26
   vue: 3.1.5
-  vue-global-api: 0.3.0_vue@3.1.5
+  vue-global-api: 0.4.1_vue@3.1.5
   webmidi: 3.0.0-alpha.5
 
 devDependencies:
-  '@iconify/json': 1.1.380
-  '@types/node': 16.4.6
+  '@iconify/json': 1.1.381
+  '@types/node': 16.4.8
   esbuild-register: 2.6.0
   markdown-it-classy: 0.2.0
   markdown-it-container: 3.0.0
@@ -68,7 +68,7 @@ devDependencies:
   vite: 2.4.4
   vite-aliases: 0.8.4
   vite-plugin-components: 0.13.2_vite@2.4.4
-  vite-plugin-icons: 0.6.5_@iconify+json@1.1.380
+  vite-plugin-icons: 0.6.5_@iconify+json@1.1.381
   vite-plugin-windicss: 1.2.7_vite@2.4.4
   vitepress: 0.15.6
   vitepress-tags: 0.4.0
@@ -238,8 +238,8 @@ packages:
     resolution: {integrity: sha512-LFelJDOLZ6JHlmlAkgrvmcu4hpNPB91KYcr4f60D/exzU1eNOb4/KCVHIydGHIQFaOacIOD+Xy+B7P1z812cZg==}
     dev: true
 
-  /@iconify/json/1.1.380:
-    resolution: {integrity: sha512-DKhpEjG8fc7VwrtoFStY+vHFgMKh8MSmzUG+1SfKjezBbPZI+bb2aVPNpLoHULkSoaV3eFVUw60/cte1iQCljw==}
+  /@iconify/json/1.1.381:
+    resolution: {integrity: sha512-5Eh8r1uw48zgea+jKqrJRA+eA9646Zpxy9Vp0+YCAutkrkWGRkpRZQh/nDlHCq7zL1X0KdHoMprW+1Mne8B9nQ==}
     dev: true
 
   /@nodelib/fs.scandir/2.1.5:
@@ -455,8 +455,8 @@ packages:
     resolution: {integrity: sha512-eC4U9MlIcu2q0KQmXszyn5Akca/0jrQmwDRgpAMJai7qBWq4amIQhZyNau4VYGtCeALvW1/NtjzJJ567aZxfKA==}
     dev: true
 
-  /@types/node/16.4.6:
-    resolution: {integrity: sha512-FKyawK3o5KL16AwbeFajen8G4K3mmqUrQsehn5wNKs8IzlKHE8TfnSmILXVMVziAEcnB23u1RCFU1NT6hSyr7Q==}
+  /@types/node/16.4.8:
+    resolution: {integrity: sha512-VL7RZyCpfYEmbyd3/Eq5RNYhZt7yoL1JThZQ3KzimzhLya2Qa86U1ZZmioNWAAjiz99z1ED1xF9NUV2srvfVrA==}
     dev: true
 
   /@types/throttle-debounce/2.1.0:
@@ -1214,6 +1214,10 @@ packages:
     engines: {node: '>=8'}
     dev: false
 
+  /eslint-config-vue-global-api/0.4.1:
+    resolution: {integrity: sha512-mJTiKBGLe1FXmEifYzCQzUTBpFv8OtfYzP6PAOuVRf+3hkGLMeiDh4bVzZEaJfdExtc8mPw9vp35YSLhwTselQ==}
+    dev: false
+
   /esprima/4.0.1:
     resolution: {integrity: sha512-eGuFFw7Upda+g4p+QHvnW0RyTX/SVeJBDM/gCtMARO0cLuT2HcEKnTPvhjV6aGeqrCB/sbNop0Kszm0jsaWU4A==}
     engines: {node: '>=4'}
@@ -1777,8 +1781,8 @@ packages:
     engines: {node: '>= 8'}
     dev: true
 
-  /meyda/5.2.1:
-    resolution: {integrity: sha512-cFokdfah6pwgN3EP58vs9FWeZbJEdcXnGB30gkM88LEOcmLKRcPbAlEx9h2SW2Zjt4QZX0wdkYKJWD9cq5NxLA==}
+  /meyda/5.2.2:
+    resolution: {integrity: sha512-yuS/whwD7JT8eTqM8eVxNRdAgs+FWjzrqjttg871FM3WJ3E1A/HlsmoLKobKYJUv9WB02pcmWnsn2/v/8OBOsA==}
     engines: {node: ^10 || ^12 || ^13 || ^14 || ^15 || ^16}
     hasBin: true
     dependencies:
@@ -2476,7 +2480,7 @@ packages:
       - supports-color
     dev: true
 
-  /vite-plugin-icons/0.6.5_@iconify+json@1.1.380:
+  /vite-plugin-icons/0.6.5_@iconify+json@1.1.381:
     resolution: {integrity: sha512-lfePr8juO2ajp0571iLL+9zIoyBD9nSSSHlC4JYXbAeMOJB6WTP+Vdc2gze8yI8JRO+Z0TXCCvvL9bPgvkI4Cg==}
     peerDependencies:
       '@iconify/json': '*'
@@ -2488,7 +2492,7 @@ packages:
       vue-template-compiler:
         optional: true
     dependencies:
-      '@iconify/json': 1.1.380
+      '@iconify/json': 1.1.381
       '@iconify/json-tools': 1.0.10
       vue-template-es2015-compiler: 1.9.1
     dev: true
@@ -2627,9 +2631,10 @@ packages:
       vue: 3.1.5
     dev: false
 
-  /vue-global-api/0.3.0_vue@3.1.5:
-    resolution: {integrity: sha512-HgruVX6+WfkjnSfDbSYFhaT2l1NyUZArHKIjabEliMrohrDUrC2AaATfeyYPI0z/gN6noBqvZ3RVKPAAC0RiNg==}
+  /vue-global-api/0.4.1_vue@3.1.5:
+    resolution: {integrity: sha512-283vpYOhVHJCpMkjNVEwZdgaAb+Y93zFaXGAWTI378MLoNuwQydjD/BAy1e81QYEmyA+JbxqcmMZVWcM9rbriw==}
     dependencies:
+      eslint-config-vue-global-api: 0.4.1
       vue-demi: 0.11.2_vue@3.1.5
     transitivePeerDependencies:
       - '@vue/composition-api'

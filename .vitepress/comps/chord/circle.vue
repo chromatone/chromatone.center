@@ -1,11 +1,5 @@
 <template lang="pug">
 g
-  //- circle(
-  //-   cx="0"
-  //-   cy="0"
-  //-   r="8"
-  //-   :fill="pitch === false ? 'none' : colord(pitchColor(pitch, 2)).toHex()"
-  //-   )
   g(
     v-for="(note,n) in rotateArray(chroma.split(''),-tonic)" :key="note"
     :transform="`translate(${getCircleCoord(n, 12, 8, 0).x}, ${getCircleCoord(n, 12, 8, 0).y})`"
@@ -31,7 +25,7 @@ g
     :y1="getCircleCoord(n, 12, 6.5, 0).y"
     x2="0"
     y2="0"
-    stroke-width="1.6"
+    :stroke-width="n == pitch % 12 ? 2.4 : 1.6"
     :stroke="note == '1' ? colord(pitchColor(n)).toHex() : 'none'"
   )
   circle(

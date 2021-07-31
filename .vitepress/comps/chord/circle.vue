@@ -13,8 +13,8 @@ g
     circle(
       x="0" 
       y="0" 
-      :r="note == '1' ? n == pitch % 12 ? 3 : 2.2 : 1"
-      :fill="colord(note == '1' ? pitchColor(n) : notes[n].pos == 0 ? 'hsl(0,0%,95%)' : 'hsl(0,0%,60%)').toHex()"
+      :r="note == '1' ? n == pitch % 12 ? 2.8 : 2.2 : 1"
+      :fill="colord(note == '1' ? pitchColor(n) : notes[n].pos == 0 ? 'hsl(0,0%,85%)' : 'hsl(0,0%,60%)').toHex()"
       :stroke="colord(notes[n]?.pos == 0 ? 'hsl(0,0%,90%)' : 'hsl(0,0%,40%)').toHex()"
       :stroke-width="0.3"
     )
@@ -27,12 +27,11 @@ g
       ) {{ notes[n]?.name }}
   line(
     v-for="(note,n) in rotateArray(chroma.split(''),-tonic)" :key="note"
-    :x1="getCircleCoord(n, 12, 6, 0).x"
-    :y1="getCircleCoord(n, 12, 6, 0).y"
+    :x1="getCircleCoord(n, 12, 6.5, 0).x"
+    :y1="getCircleCoord(n, 12, 6.5, 0).y"
     x2="0"
     y2="0"
-    stroke-linecap="round"
-    stroke-width="2"
+    stroke-width="1.6"
     :stroke="note == '1' ? colord(pitchColor(n)).toHex() : 'none'"
   )
   circle(
@@ -43,7 +42,7 @@ g
     )
   text(
     y="0.3"
-    font-size="2.5px"
+    font-size="2.4px"
     font-weight="bold"
     fill="white"
     ) {{ pitch === false ? '' : typeof pitch == 'string' ? pitch : notes[pitch % 12]?.name }}{{ type }}

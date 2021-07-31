@@ -21,7 +21,7 @@ g
         v-if="note && isInChord(note.pitch)"
         fill="white"
         font-family="Commissioner, sans-serif"
-        font-size="10px"
+        font-size="12px"
         font-weight="bold"
         text-anchor="middle",
         dominant-baseline="middle"

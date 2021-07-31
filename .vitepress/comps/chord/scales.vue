@@ -21,10 +21,16 @@
       )
     g(font-size="4" font-weight="bold")
       text(
-        :x="(box.width + box.padding.x) / 2"
+        :x="13"
         y="-2"
-      ) Major  |  minor
-    g(font-size="4.5")
+      ) Major
+      text(
+        :x="108"
+        y="-2"
+      ) Minor
+      line(x1="5" x2="93" y1="1" y2="1" stroke-width="0.25" stroke="black")
+      line(x1="100" x2="208" y1="1" y2="1" stroke-width="0.25" stroke="black")
+    g(font-size="4")
       text(
         v-for="(scale,i) in scales.major" :key="scale"
         :x="box.padding.left + 12 + 22 * i"

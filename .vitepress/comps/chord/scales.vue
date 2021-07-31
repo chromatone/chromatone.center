@@ -1,5 +1,5 @@
 <template lang="pug">
-.p-4.mx-auto
+.p-4.mx-auto.my-8
   svg#diatonic.m-8.select-none(
     version="1.1",
     baseProfile="full",
@@ -23,7 +23,7 @@
       text(
         :x="(box.width + box.padding.x) / 2"
         y="-2"
-      ) major  |  minor
+      ) Major  |  minor
     g(font-size="4.5")
       text(
         v-for="(scale,i) in scales.major" :key="scale"
@@ -45,11 +45,11 @@
         rx="4"
         :width="box.width"
         height="22"
-        opacity="0.1"
+        opacity="0.2"
         :fill="i % 2 ? '#333' : '#eee'"
       )
       chord-circle(
-        :pitch="false"
+        :pitch="i + 3"
         transform="translate(12,14)"
         chroma="101101011010"
         :tonic="i"
@@ -101,9 +101,9 @@ const box = reactive({
 const chords = {
   scale: '101101011010',
   majors: [
-    { pitch: 10, chroma: '001001001010', type: '7' },
+    { pitch: 3, chroma: '001100010010', type: 'M7' },
     { pitch: 8, chroma: '100100011000', type: 'M7' },
-    { pitch: 3, chroma: '001100010010', type: 'M7' }
+    { pitch: 10, chroma: '001001001010', type: '7' },
   ],
   minors: [
     { pitch: 0, chroma: '100100010010', type: 'm7' },
@@ -113,7 +113,7 @@ const chords = {
   ]
 };
 const scales = {
-  major: ['Myxolydian', 'Lydian', 'Ionian'],
+  major: ['Ionian', 'Lydian', 'Myxolydian'],
   minor: ['Aeolian', 'Dorian', 'Phrygian', 'Locrian']
 };
 </script>

@@ -9,25 +9,25 @@ g
     )
       rect(
         v-if="note"
-        style="transition:all 300ms ease"
-        :x="25 * ((Number(i))) + 15 * k"
+        :x="25 * i + 15 * k"
         :y="0"
         :width="22 - k * 4"
         :height="100 - 35 * k"
         :rx="5"
         :ry="5"
-        :fill="colord(getNoteColor(note.pitch)).toHex()"
+        :fill="colord(getNoteColor(note?.pitch)).toHex()"
       )
-      //- text(
-      //-   style="user-select:none; transition:all 300ms ease"
-      //-   :fill="scales.minor.steps[note.pitch] ? 'hsla(0,0%,0%,0.8)' : 'hsla(0,0%,100%,0.9)'"
-      //-   font-family="Commissioner, sans-serif"
-      //-   font-size="10px"
-      //-   text-anchor="middle",
-      //-   dominant-baseline="middle"
-      //-   :x="20 * ((12 - 3 + Number(i)) % 12) + 9",
-      //-   :y="note.pos == 1 ? 40 : 80",
-      //- ) {{ note.name }}
+      text(
+        v-if="note && isInChord(note.pitch)"
+        fill="white"
+        font-family="Commissioner, sans-serif"
+        font-size="10px"
+        font-weight="bold"
+        text-anchor="middle",
+        dominant-baseline="middle"
+        :x="25 * (i % 12) + 11 + 13 * k",
+        :y="note?.pos == 1 ? 55 : 88",
+      ) {{ note?.name }}
 
 
 </template>
@@ -50,8 +50,8 @@ function isInChord(n) {
 
 function getNoteColor(n) {
   if (isInChord(n % 12)) return pitchColor(n % 12)
-  else if (scales.minor.steps[n]) return 'hsl(0,0%,80%)'
-  else return 'hsl(0,0%,40%)'
+  else if (scales.minor.steps[n]) return 'hsl(0,0%,90%)'
+  else return 'hsl(0,0%,50%)'
 }
 </script>
 

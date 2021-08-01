@@ -36,6 +36,11 @@
   @apply transition-all ease-in-out duration-1000 bg-cover bg-center bg-gray-100 dark:(bg-gray-700) -z-5 fixed top-0 h-full left-0 right-0;
   filter: saturate(50%) sepia(5%) opacity(50%) blur(40px);
 }
+@media print {
+  .cover {
+    @apply h-100px;
+  }
+}
 
 .header:hover .cover {
   filter: saturate(60%) sepia(0%) opacity(90%) blur(0);

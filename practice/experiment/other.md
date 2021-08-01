@@ -43,6 +43,9 @@ links:
   - url: https://www.themusiclab.org/
     title: The Music Lab 
     subtitle: We do citizen science to learn how the human mind creates and perceives music. Pick a game to get started!
+  - url: https://ukebuddy.com/
+    title: Uke Buddy
+    subtitle: A comprehensive tool to explore ukulele chords, scales and song tabs.
 date: 2018-09-08
 ---
 

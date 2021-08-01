@@ -1,7 +1,13 @@
 <template lang="pug">
 g
+  //- circle(
+    cx="0"
+    cy="0"
+    r="8"
+    :fill="pitch === false ? 'none' : colord(pitchColor(pitch)).toHex()"
+    )
   g(
-    v-for="(note,n) in rotateArray(chroma.split(''),-tonic)" :key="note"
+    v-for="(note,n) in rotateArray(chroma.split(''), -tonic)" :key="note"
     :transform="`translate(${getCircleCoord(n, 12, 8, 0).x}, ${getCircleCoord(n, 12, 8, 0).y})`"
   )
     circle(
@@ -20,7 +26,7 @@ g
       fill="white"
       ) {{ notes[n]?.name }}
   line(
-    v-for="(note,n) in rotateArray(chroma.split(''),-tonic)" :key="note"
+    v-for="(note,n) in rotateArray(chroma.split(''), -tonic)" :key="note"
     :x1="getCircleCoord(n, 12, 6.5, 0).x"
     :y1="getCircleCoord(n, 12, 6.5, 0).y"
     x2="0"
@@ -36,7 +42,7 @@ g
     )
   text(
     y="0.3"
-    font-size="2.4px"
+    font-size="3px"
     font-weight="bold"
     fill="white"
     ) {{ pitch === false ? '' : typeof pitch == 'string' ? pitch : notes[pitch % 12]?.name }}{{ type }}

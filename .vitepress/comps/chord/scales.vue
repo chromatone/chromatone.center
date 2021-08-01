@@ -115,7 +115,7 @@ const chords = {
     { pitch: 0, chroma: '100100010010', type: 'm7' },
     { pitch: 5, chroma: '100101001000', type: 'm7' },
     { pitch: 7, chroma: '001001010010', type: 'm7' },
-    { pitch: 2, chroma: '101001001000', type: 'm7b5' },
+    { pitch: 2, chroma: '101001001000', type: 'ø7' },
   ]
 };
 const scales = {

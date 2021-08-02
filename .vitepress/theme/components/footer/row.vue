@@ -4,21 +4,7 @@ footer
     .flex.items-center.flex-col(
       v-for="(page,i) in site.customData.pages?.main", 
       :key="page.title",
-      v-motion,
-      :initial="{ opacity: 0, y: 40 }",
-      :enter="{ opacity: 0, y: 0, scale: 1 }",
-      :visible=`{
-        opacity: 1, y: 0,
-        scale: 1,
-        transition: {
-          type: 'spring',
-          stiffness: 100,
-          damping: 15,
-          restDelta: 0.5,
-          restSpeed: 50,
-        }
-      }`,
-      :delay="i * 80",)
+      )
       a.section(:href="page.link", :class="{ active: route.path.includes(page.link) }") {{ page.title }}
       .flex.flex-wrap.justify-center
         a.px-2.py-1.font-normal(v-for="line in site.customData?.pages?.[page.data?.list]", :key="line.title", :href="line.link", :class="{ active: route.path.includes(line.link) }") {{ line.title }}
@@ -37,7 +23,7 @@ footer
         restSpeed: 10,
       }
     }`,
-    :delay="500"
+    :delay="100"
 
     )
     a.m-auto(href="/")

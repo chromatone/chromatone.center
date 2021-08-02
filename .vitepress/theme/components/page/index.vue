@@ -4,23 +4,24 @@ main
   .content-container
     content.content
     shop-message
-    row-list(
-      v-if="$frontmatter.list", 
-      :rows="site.customData.pages?.[$frontmatter.list]"
-      )
+    page-list.mb-32
 
   page-next-prev
   footer-row
 </template>
 
 <script setup lang="ts">
-import { useData } from 'vitepress'
-const { site, title, theme } = useData()
+
 
 </script>
 
 <style  scoped>
 main {
   @apply flex flex-col;
+}
+.content-container {
+  @apply flex flex-col  bg-light-500 dark:(bg-dark-500);
+  -webkit-backdrop-filter: blur(70px);
+  backdrop-filter: blur(70px);
 }
 </style>

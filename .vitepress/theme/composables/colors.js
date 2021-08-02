@@ -7,8 +7,8 @@ import { pitchColor, isInChroma } from 'chromatone-theory'
 extend([mixPlugin])
 extend([lchPlugin])
 
-export function lchToHsl(n = 0, total = 12, a = 0.5, s = 40) {
-  let lch = `lch(70% ${s} ${n * (360 / total)} / ${a})`
+export function lchToHsl(n = 0, total = 12, a = 1, s = 40, lightness = 60) {
+  let lch = `lch(${lightness}% ${s} ${n * (360 / total)} / ${a})`
   let hsl = colord(lch).toHslString()
   return hsl
 }

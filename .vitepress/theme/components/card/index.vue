@@ -4,12 +4,7 @@
   :title="item.lastModified",
   )
   a.flex(:href="item.link")
-    .info(
-      v-motion,
-      :initial="{ opacity: 0, y: 10 }",
-      :enter="{ opacity: 0, y: 0, scale: 1 }",
-      :visible="{ opacity: 1, y: 0, scale: 1 }",
-      )
+    .info
       .flex.flex-1.items-center.self-stretch.flex-wrap
         .mr-2.text-2xl(v-if="item.data.emoji") {{ item.data.emoji }}
         .text-2xl.flex-auto {{ item.title }}
@@ -51,7 +46,7 @@ import { lchToHsl } from '@theme/composables/colors.js'
 }
 
 .cover {
-  @apply bg-cover bg-center self-stretch min-h-16em sm:min-w-16em min-w-6em rounded-xl m-2;
+  @apply bg-cover bg-center self-stretch h-full min-h-16em sm:min-w-16em min-w-6em rounded-xl;
   flex-basis: 6em;
   filter: saturate(10%) opacity(70%);
   transition: all 200ms ease-in-out;

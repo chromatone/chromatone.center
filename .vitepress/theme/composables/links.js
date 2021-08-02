@@ -4,9 +4,11 @@ export function useSiblings() {
   const { site, frontmatter, page } = useData()
   const tags = frontmatter.value.tags
   const pages = site.value.customData.pages
-  let prev, next
+  let prev, next, total, current
   if (tags && typeof tags == 'string' && pages[tags]) {
     const index = pages[tags].findIndex((el) => el.title == page.value.title)
+    total = pages[tags].length
+    current = index
     if (index >= 0 && index <= pages[tags].length) {
       next = pages[tags][index + 1]
     }
@@ -14,8 +16,7 @@ export function useSiblings() {
       prev = pages[tags][index - 1]
     }
   }
-
-  return { prev, next }
+  return { prev, next, current, total }
 }
 
 export function useParents() {

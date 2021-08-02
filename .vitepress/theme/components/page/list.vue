@@ -1,5 +1,5 @@
 <template lang="pug">
-.list-blocks
+.list-blocks(v-if="rows")
   row-block(
     v-for="(area,i) in rows", 
     :key="area.title", 
@@ -10,10 +10,10 @@
 </template>
 
 <script setup>
-import { computed, reactive } from "vue";
-const props = defineProps({
-  rows: Object,
-});
+import { useData } from 'vitepress'
+const { site, title, frontmatter } = useData()
+
+const rows = site.value.customData.pages?.[frontmatter.value.list];
 
 </script>
 

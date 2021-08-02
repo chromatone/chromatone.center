@@ -1,10 +1,21 @@
 <template lang="pug">
 .flex.justify-center.items-center
-  a.button.price(v-if="product", :href="product?.link", target="_blank") {{ product?.price }}
+  a.button.price(
+    v-if="product",
+    :href="product?.link", 
+    target="_blank",
+    :style="{ backgroundColor: color }"
 
-  a.button.flex.items-center(v-if="product?.link",:href="product?.link", target="_blank")
+  ) {{ product?.price }}
+
+  a.button.flex.items-center(
+    v-if="product?.link",
+    :href="product?.link", 
+    target="_blank"
+    :style="{ backgroundColor: color }"
+    )
     eva-shopping-bag-outline.order
-    span.cart-text(v-if="showButton") Buy now
+    span.cart-text(v-if="showButton") Buy
 </template>
 
 <script setup>
@@ -14,12 +25,13 @@ const props = defineProps({
     type: Boolean,
     default: true,
   },
+  color: String
 });
 </script>
 
 <style scoped>
 .button {
-  @apply p-2 my-2 mr-2 shadow-md z-6 text-white text-2xl  rounded-lg bg-yellow-500  dark:(bg-yellow-600);
+  @apply p-2 my-2 mr-2 shadow-md z-6 text-white text-2xl  rounded-md bg-yellow-500  dark:(bg-yellow-600);
 }
 
 .price {

@@ -1,8 +1,8 @@
 <template lang="pug">
 .flex(
   :style="{ opacity: lastTime ? 1 : 0.5 }"
-  @mousedown="tap()",
-  @touchstart="tap()"
+  @mousedown.stop.prevent="tap()",
+  @touchstart.stop.prevent="tap()"
 )
   fluent-tap-double-20-regular
 
@@ -31,7 +31,7 @@ function tap() {
 
 function refresh() {
   if (times.length > 2) {
-    var average = times.reduce(function(result, t) { return result += t }) / times.length
+    var average = times.reduce(function (result, t) { return result += t }) / times.length
     var bpm = (1 / (average / 1000)) * 60
     tempo.bpm = bpm
   }
@@ -40,7 +40,7 @@ function refresh() {
 let timer = null
 function beginTimeout() {
   clearTimeout(timer)
-  timer = setTimeout(function() {
+  timer = setTimeout(function () {
     times = [lastDifference]
     lastTime.value = null
   }, timeout)

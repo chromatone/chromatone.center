@@ -1,26 +1,24 @@
 <template lang="pug">
 .crd(
-  :style="{ borderColor: lchToHsl(i, total) }"
+  :style="{ borderColor: rowColor }"
   :title="item.lastModified",
   )
   a.flex(:href="item.link")
+    .cover(v-if="item.data.cover", :style="{ backgroundImage: 'url(/media/' + item.data.cover + ')' }", v-motion-fade)
     .info
       .flex.flex-1.items-center.self-stretch.flex-wrap
         .mr-2.text-2xl(v-if="item.data.emoji") {{ item.data.emoji }}
         .text-2xl.flex-auto {{ item.title }}
         card-date(v-if="!item.data.product",:date="item.lastModified")
-
       .text-md.mt-4.mb-2.font-normal(v-if="item.subtitle") {{ item.subtitle }}
       shop-price.float-left(:product="item.data?.product", :showButton="false")
-
-    .cover(v-if="item.data.cover", :style="{ backgroundImage: 'url(/media/' + item.data.cover + ')' }", v-motion-fade)
-
   page-buttons(:buttons="item.data?.buttons")
   line-list(:list="site.customData.pages?.[item.data.list]")
 </template>
 
 <script setup>
 import { useData } from 'vitepress'
+
 const { site } = useData()
 const props = defineProps({
   item: Object,
@@ -29,12 +27,16 @@ const props = defineProps({
 });
 
 import { lchToHsl } from '@theme/composables/colors.js'
+const rowColor = lchToHsl(props.i, props.total);
 </script>
 
 <style  scoped>
 .crd {
-  @apply my-4 relative transition-all bg-white dark:bg-gray-900 flex flex-col rounded-md shadow-md hover:shadow-lg;
-  transition: box-shadow color 100ms ease-in-out;
+  @apply my-8 shadow-md rounded-sm mx-2 md:mx-0 sm:mx-4 bg-light-200 dark:bg-dark-200
+  flex flex-col items-stretch 
+  transition-all
+  static;
+  border-width: 2px 2px 10px 2px;
 }
 
 .crd.seen {

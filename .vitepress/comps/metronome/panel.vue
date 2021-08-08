@@ -22,8 +22,8 @@
       la-times
       span 2
   .flex.items-center
-    tempo-tap.button
-    tempo-listen.button(@set="tempo.bpm = $event")
+    metronome-tap.button
+    metronome-listen.button(@set="tempo.bpm = $event")
     .info.transition-all.duration-60(
       :style="{ backgroundColor: tempo.blink ? 'currentColor' : 'transparent' }"
     ) {{ tempo.hz }} Hz

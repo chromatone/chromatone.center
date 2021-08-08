@@ -1,7 +1,7 @@
 <template lang="pug">
 .flex.flex-col
-  tempo-panel
-  tempo-circle
+  metronome-panel
+  metronome-circle
 </template>
 
 <script setup>

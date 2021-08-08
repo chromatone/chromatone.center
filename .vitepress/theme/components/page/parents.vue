@@ -1,16 +1,24 @@
 <template lang="pug">
-.flex.flex-wrap
-  .flex-1(v-for="page in parents", :key="page.title") 
-    a.flex.items-center(:href="page.link") 
-      carbon-arrow-up.mr-1
-      span {{ page.title }}
+.tabs
+  a.link(v-for="page in parents", :key="page.title" :href="page.link") 
+    carbon-chevron-left.mr-1
+    span {{ page.title }} {{ page.index }}
 </template>
 
 <script setup>
 import { useParents } from '../../composables/links.js'
 
 const parents = useParents();
-</script>
 
+</script>
+  
 <style  scoped>
+.tabs {
+  @apply absolute left-0 -mt-5rem inline-flex flex-wrap items-stretch justify-start;
+}
+
+.link {
+  @apply transition-all duration-500 no-underline text-lg flex items-center p-2 bg-light-300/70 dark:(bg-dark-100/70) hover:(bg-light-100 dark:bg-dark-100);
+  flex: 0 1 auto;
+}
 </style>

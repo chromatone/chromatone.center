@@ -61,7 +61,7 @@ const lightColor = lchToHsl(current, total, 1, 70, 60);
 }
 
 .meta {
-  @apply p-8 mb-4 bg-gray-100 bg-opacity-95 z-3 max-w-65ch w-full mt-8 flex flex-col;
+  @apply relative p-8 mb-4 bg-gray-100 bg-opacity-95 z-3 max-w-65ch w-full mt-8 flex flex-col;
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border-width: 4px 4px 20px 4px;

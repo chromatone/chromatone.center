@@ -1,12 +1,12 @@
 ---
-title: Tempo tool
-subtitle: A metronome and polyrythm exploration tool
+title: Metronome
+subtitle: A metronome and polyrhythm exploration tool
 tags: practice
 date: 2021-05-01
 cover: apps/tempo.png
 ---
 
 <client-only >
-  <tempo-tool />
+  <metronome />
   <svg-save svg="metronome" />
 </client-only >

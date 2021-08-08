@@ -21,13 +21,19 @@ export function useSiblings() {
 
 export function useParents() {
   const { site, frontmatter } = useData()
-  const tag = frontmatter.value.tags
+  let tag = frontmatter.value.tags
   const pages = site.value.customData.pages
   const parents = []
-  pages.all.forEach((page) => {
-    if (tag && typeof tag == 'string' && tag == page.data?.list) {
+  for (let p = 0; p < 5; p++) {
+    if (tag == 'main') continue
+    let page = pages.all.find((pg) => tag && pg.data?.list == tag)
+    if (page) {
       parents.push(page)
+    } else {
+      continue
     }
-  })
-  return parents
+    tag = page.data?.tags
+  }
+
+  return parents.reverse()
 }

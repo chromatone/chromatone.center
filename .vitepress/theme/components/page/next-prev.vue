@@ -47,13 +47,13 @@ const colors = {
 
 .prev {
   justify-content: flex-start;
-  border-width: 2px 2px 2px 10px;
+  border-width: 2px 2px 10px 2px;
 }
 
 .next {
   justify-content: flex-end;
   text-align: right;
-  border-width: 2px 10px 2px 2px;
+  border-width: 2px 2px 10px 2px;
 }
 
 .link {

@@ -3,7 +3,7 @@ g
   g(
     :opacity="loop.mute ? '0.25' : '1'"
   )
-    tempo-circle-sector(
+    metronome-circle-sector(
       v-for="step in steps"
       :key="step"
       :step="step"

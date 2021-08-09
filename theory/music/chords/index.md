@@ -25,6 +25,3 @@ Choose any of the notes to see the wavefrom of their combination.
 
 A series of chords is called a chord progression. One example of a widely used chord progression in Western traditional music and blues is the 12 bar blues progression. Although any chord may in principle be followed by any other chord, certain patterns of chords are more common in Western music, and some patterns have been accepted as establishing the key (tonic note) in common-practice harmony—notably the resolution of a dominant chord to a tonic chord. To describe this, Western music theory has developed the practice of numbering chords using Roman numerals[7] to represent the number of diatonic steps up from the tonic note of the scale. 
 
-## Ukulele chords
-
-<string-chords />

@@ -51,7 +51,7 @@ nav {
 }
 
 a {
-  @apply transition-all opacity-60 text-gray-900 dark:text-gray-50 hover:(opacity-80 no-underline);
+  @apply transition-all opacity-60 text-gray-900 dark:text-gray-50 hover:(opacity-80 underline);
 }
 
 .active {

@@ -47,7 +47,7 @@ const whites = [...notes].filter(note => note.pos == 0)
 const blacks = [...notes].filter(note => note.pos == 1)
 
 
-defineEmit([
+defineEmits([
   'selectRoot'
 ])
 

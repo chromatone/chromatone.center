@@ -13,7 +13,7 @@
 
 <script setup>
 import { notes, rotateArray, pitchColor } from 'chromatone-theory'
-const emit = defineEmit(['update:pitch']);
+const emit = defineEmits(['update:pitch']);
 const props = defineProps({
   pitch: {
     type: Number,

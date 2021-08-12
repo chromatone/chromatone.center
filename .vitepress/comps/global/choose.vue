@@ -19,7 +19,7 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmit(['update:modelValue']);
+const emit = defineEmits(['update:modelValue']);
 
 function setVariant(variant) {
   emit('update:modelValue', variant)

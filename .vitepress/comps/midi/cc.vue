@@ -13,7 +13,7 @@ const props = defineProps({
   cc: Object
 });
 
-const emit = defineEmit(['update'])
+const emit = defineEmits(['update'])
 
 let prev = 0
 

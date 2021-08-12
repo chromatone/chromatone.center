@@ -19,7 +19,7 @@ const props = defineProps({
   active: Boolean
 });
 
-const emit = defineEmit(['play', 'stop', 'update:active'])
+const emit = defineEmits(['play', 'stop', 'update:active'])
 
 const pressed = ref(false)
 

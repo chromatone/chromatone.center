@@ -14,7 +14,7 @@
 <script setup>
 import { ref, watch } from 'vue'
 
-defineEmit('set')
+defineEmits('set')
 
 import { useTuner } from '@use/tuner.js'
 

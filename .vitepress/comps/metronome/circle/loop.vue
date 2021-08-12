@@ -75,7 +75,7 @@ import { computed } from "vue";
 import { getCircleCoord } from 'chromatone-theory'
 import { useSequence } from '../sequence.js'
 
-defineEmit('del')
+defineEmits('del')
 
 const props = defineProps({
   radius: {

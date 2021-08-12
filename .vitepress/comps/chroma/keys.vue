@@ -42,7 +42,7 @@ const props = defineProps({
 const whites = [3, 5, 7, 8, 10, 0, 2].map(n => notes[n])
 const blacks = [4, 6, false, 9, 11, 1].map(n => notes[n])
 
-defineEmit([])
+defineEmits([])
 
 function isInChord(n) {
   return props.chroma.split('')[n] == '1'

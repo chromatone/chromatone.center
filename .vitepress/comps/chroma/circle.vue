@@ -133,7 +133,7 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmit(['update:tonic', 'update:chroma', 'clearScale'])
+const emit = defineEmits(['update:tonic', 'update:chroma', 'clearScale'])
 
 const colors = computed(() => {
   return chromaColorMix(props.chroma, props.tonic)

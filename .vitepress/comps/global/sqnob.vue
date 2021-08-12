@@ -45,7 +45,7 @@ const props = defineProps({
   }
 });
 
-const emit = defineEmit(['update:modelValue'])
+const emit = defineEmits(['update:modelValue'])
 
 const state = reactive({
   active: false,

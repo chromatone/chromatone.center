@@ -38,7 +38,7 @@ const props = defineProps({
   tonic: Number,
 });
 
-const emit = defineEmit(['update:pressed'])
+const emit = defineEmits(['update:pressed'])
 
 const playing = ref(false)
 

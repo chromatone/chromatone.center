@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-const emit = defineEmit(['toggle'])
+const emit = defineEmits(['toggle'])
 </script>
 
 <style>

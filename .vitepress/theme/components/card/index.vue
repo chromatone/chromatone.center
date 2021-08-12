@@ -32,11 +32,11 @@ const rowColor = lchToHsl(props.i, props.total);
 
 <style  scoped>
 .crd {
-  @apply my-6 shadow-md rounded-sm mx-2 md:mx-0 sm:mx-4 bg-light-200 dark:bg-dark-200
+  @apply my-4 shadow-md rounded-sm mx-2 md:mx-0 sm:mx-4 bg-light-200 dark:bg-dark-200
   flex flex-col items-stretch 
   transition-all
   static;
-  border-width: 2px 2px 10px 2px;
+  border-width: 2px 2px 6px 2px;
 }
 
 .crd.seen {

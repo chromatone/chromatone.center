@@ -2,7 +2,7 @@
 main.mb-16(aria-labelledby="main-title")
   home-hero
   content.content
-  tile-list(
+  home-tile-list(
     v-if="frontmatter.list", 
     :rows="site.customData.pages?.[frontmatter.list]"
     )

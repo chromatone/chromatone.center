@@ -1,64 +1,49 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
-<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.3.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 496 496" style="enable-background:new 0 0 496 496;" xml:space="preserve">
-<path style="fill:#F74D19;" d="M12.8,24C5.6,24,0,29.6,0,36.8v317.6c0,7.2,5.6,12.8,12.8,12.8s12.8-5.6,12.8-12.8V36.8
-	C25.6,29.6,19.2,24,12.8,24z"/>
-<path style="fill:#FF7A17;" d="M71.2,89.6c-7.2,0-12.8,5.6-12.8,12.8v252c0,7.2,5.6,12.8,12.8,12.8c7.2,0,12.8-5.6,12.8-12.8v-252
-	C84,95.2,78.4,89.6,71.2,89.6z"/>
-<path style="fill:#F74D19;" d="M130.4,142.4c-7.2,0-12.8,5.6-12.8,12.8v200c0,7.2,5.6,12.8,12.8,12.8s12.8-5.6,12.8-12.8v-200
-	C143.2,148,137.6,142.4,130.4,142.4z"/>
-<path style="fill:#FF7A17;" d="M188.8,251.2c-7.2,0-12.8,5.6-12.8,12.8v90.4c0,7.2,5.6,12.8,12.8,12.8s12.8-5.6,12.8-12.8V264
-	C201.6,256.8,196,251.2,188.8,251.2z"/>
-<path style="fill:#F74D19;" d="M248,198.4c-7.2,0-12.8,5.6-12.8,12.8v143.2c0,7.2,5.6,12.8,12.8,12.8c7.2,0,12.8-5.6,12.8-12.8
-	V211.2C260.8,204,255.2,198.4,248,198.4z"/>
-<path style="fill:#FF7A17;" d="M307.2,156.8c-7.2,0-12.8,5.6-12.8,12.8v184.8c0,7.2,5.6,12.8,12.8,12.8c7.2,0,12.8-5.6,12.8-12.8
-	V169.6C319.2,162.4,313.6,156.8,307.2,156.8z"/>
-<path style="fill:#F74D19;" d="M365.6,60c-7.2,0-12.8,5.6-12.8,12.8v281.6c0,7.2,5.6,12.8,12.8,12.8s12.8-5.6,12.8-12.8V72.8
-	C378.4,65.6,372.8,60,365.6,60z"/>
-<path style="fill:#FF7A17;" d="M424.8,28.8c-7.2,0-12.8,5.6-12.8,12.8v312.8c0,7.2,5.6,12.8,12.8,12.8c7.2,0,12.8-5.6,12.8-12.8
-	V40.8C436.8,34.4,431.2,28.8,424.8,28.8z"/>
-<path style="fill:#F74D19;" d="M483.2,160.8c-7.2,0-12.8,5.6-12.8,12.8v180.8c0,7.2,5.6,12.8,12.8,12.8s12.8-5.6,12.8-12.8V173.6
-	C496,166.4,490.4,160.8,483.2,160.8z"/>
-<path style="fill:#717B7C;" d="M59.2,357.6v101.6c0,7.2,5.6,12.8,12.8,12.8c7.2,0,12.8-5.6,12.8-12.8V357.6H59.2z"/>
+	 viewBox="0 0 566.9 566.9" enable-background="new 0 0 566.9 566.9" xml:space="preserve">
 <g>
-	<path style="fill:#3F4A4C;" d="M0,357.6v101.6c0,7.2,5.6,12.8,12.8,12.8s12.8-5.6,12.8-12.8V357.6H0z"/>
-	<path style="fill:#3F4A4C;" d="M117.6,357.6v101.6c0,7.2,5.6,12.8,12.8,12.8s12.8-5.6,12.8-12.8V357.6H117.6z"/>
-</g>
-<path style="fill:#717B7C;" d="M176.8,357.6v101.6c0,7.2,5.6,12.8,12.8,12.8s12.8-5.6,12.8-12.8V357.6H176.8z"/>
-<path style="fill:#3F4A4C;" d="M235.2,357.6v101.6c0,7.2,5.6,12.8,12.8,12.8c7.2,0,12.8-5.6,12.8-12.8V357.6H235.2z"/>
-<path style="fill:#717B7C;" d="M294.4,357.6v101.6c0,7.2,5.6,12.8,12.8,12.8c7.2,0,12.8-5.6,12.8-12.8V357.6H294.4z"/>
-<path style="fill:#3F4A4C;" d="M352.8,357.6v101.6c0,7.2,5.6,12.8,12.8,12.8s12.8-5.6,12.8-12.8V357.6H352.8z"/>
-<path style="fill:#717B7C;" d="M412,357.6v101.6c0,7.2,5.6,12.8,12.8,12.8c7.2,0,12.8-5.6,12.8-12.8V357.6H412z"/>
-<path style="fill:#3F4A4C;" d="M470.4,357.6v101.6c0,7.2,5.6,12.8,12.8,12.8s12.8-5.6,12.8-12.8V357.6H470.4z"/>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
-</g>
-<g>
+	<circle fill="none" stroke="#000000" stroke-miterlimit="10" cx="498.2" cy="281.3" r="579.7"/>
+	<circle fill="none" stroke="#000000" stroke-width="1.0447" stroke-miterlimit="10" cx="489.7" cy="281.3" r="567.1"/>
+	<circle fill="none" stroke="#000000" stroke-width="1.0895" stroke-miterlimit="10" cx="481.2" cy="281.3" r="554.6"/>
+	<circle fill="none" stroke="#000000" stroke-width="1.1342" stroke-miterlimit="10" cx="472.7" cy="281.3" r="542.1"/>
+	<circle fill="none" stroke="#000000" stroke-width="1.179" stroke-miterlimit="10" cx="464.2" cy="281.3" r="529.5"/>
+	<circle fill="none" stroke="#000000" stroke-width="1.2237" stroke-miterlimit="10" cx="455.7" cy="281.3" r="517"/>
+	<circle fill="none" stroke="#000000" stroke-width="1.2685" stroke-miterlimit="10" cx="447.3" cy="281.3" r="504.5"/>
+	<circle fill="none" stroke="#000000" stroke-width="1.3132" stroke-miterlimit="10" cx="438.8" cy="281.3" r="492"/>
+	<circle fill="none" stroke="#000000" stroke-width="1.358" stroke-miterlimit="10" cx="430.3" cy="281.3" r="479.4"/>
+	<circle fill="none" stroke="#000000" stroke-width="1.4027" stroke-miterlimit="10" cx="421.8" cy="281.3" r="466.9"/>
+	<circle fill="none" stroke="#000000" stroke-width="1.4475" stroke-miterlimit="10" cx="413.3" cy="281.3" r="454.4"/>
+	<circle fill="none" stroke="#000000" stroke-width="1.4922" stroke-miterlimit="10" cx="404.8" cy="281.3" r="441.8"/>
+	<circle fill="none" stroke="#000000" stroke-width="1.537" stroke-miterlimit="10" cx="396.4" cy="281.3" r="429.3"/>
+	<circle fill="none" stroke="#000000" stroke-width="1.5817" stroke-miterlimit="10" cx="387.9" cy="281.3" r="416.8"/>
+	<circle fill="none" stroke="#000000" stroke-width="1.6265" stroke-miterlimit="10" cx="379.4" cy="281.3" r="404.2"/>
+	<circle fill="none" stroke="#000000" stroke-width="1.6712" stroke-miterlimit="10" cx="370.9" cy="281.3" r="391.7"/>
+	<circle fill="none" stroke="#000000" stroke-width="1.716" stroke-miterlimit="10" cx="362.4" cy="281.3" r="379.2"/>
+	<circle fill="none" stroke="#000000" stroke-width="1.7607" stroke-miterlimit="10" cx="353.9" cy="281.3" r="366.7"/>
+	<circle fill="none" stroke="#000000" stroke-width="1.8055" stroke-miterlimit="10" cx="345.5" cy="281.3" r="354.1"/>
+	<circle fill="none" stroke="#000000" stroke-width="1.8502" stroke-miterlimit="10" cx="337" cy="281.3" r="341.6"/>
+	<circle fill="none" stroke="#000000" stroke-width="1.8949" stroke-miterlimit="10" cx="328.5" cy="281.3" r="329.1"/>
+	<circle fill="none" stroke="#000000" stroke-width="1.9397" stroke-miterlimit="10" cx="320" cy="281.3" r="316.5"/>
+	<circle fill="none" stroke="#000000" stroke-width="1.9844" stroke-miterlimit="10" cx="311.5" cy="281.3" r="304"/>
+	<circle fill="none" stroke="#000000" stroke-width="2.0292" stroke-miterlimit="10" cx="303" cy="281.3" r="291.5"/>
+	<circle fill="none" stroke="#000000" stroke-width="2.0739" stroke-miterlimit="10" cx="294.6" cy="281.3" r="279"/>
+	<circle fill="none" stroke="#000000" stroke-width="2.1187" stroke-miterlimit="10" cx="286.1" cy="281.3" r="266.4"/>
+	<circle fill="none" stroke="#000000" stroke-width="2.1634" stroke-miterlimit="10" cx="284.9" cy="281.3" r="253.9"/>
+	<circle fill="none" stroke="#000000" stroke-width="2.2082" stroke-miterlimit="10" cx="293.4" cy="281.3" r="241.4"/>
+	<circle fill="none" stroke="#000000" stroke-width="2.2529" stroke-miterlimit="10" cx="301.8" cy="281.3" r="228.8"/>
+	<circle fill="none" stroke="#000000" stroke-width="2.2977" stroke-miterlimit="10" cx="310.3" cy="281.3" r="216.3"/>
+	<circle fill="none" stroke="#000000" stroke-width="2.3424" stroke-miterlimit="10" cx="318.8" cy="281.3" r="203.8"/>
+	<circle fill="none" stroke="#000000" stroke-width="2.3872" stroke-miterlimit="10" cx="327.3" cy="281.3" r="191.2"/>
+	<circle fill="none" stroke="#000000" stroke-width="2.4319" stroke-miterlimit="10" cx="335.8" cy="281.3" r="178.7"/>
+	<circle fill="none" stroke="#000000" stroke-width="2.4767" stroke-miterlimit="10" cx="344.3" cy="281.3" r="166.2"/>
+	<circle fill="none" stroke="#000000" stroke-width="2.5214" stroke-miterlimit="10" cx="352.7" cy="281.3" r="153.7"/>
+	<circle fill="none" stroke="#000000" stroke-width="2.5662" stroke-miterlimit="10" cx="361.2" cy="281.3" r="141.1"/>
+	<circle fill="none" stroke="#000000" stroke-width="2.6109" stroke-miterlimit="10" cx="369.7" cy="281.3" r="128.6"/>
+	<circle fill="none" stroke="#000000" stroke-width="2.6557" stroke-miterlimit="10" cx="378.2" cy="281.3" r="116.1"/>
+	<circle fill="none" stroke="#000000" stroke-width="2.7004" stroke-miterlimit="10" cx="386.7" cy="281.3" r="103.5"/>
+	<circle fill="none" stroke="#000000" stroke-width="2.7452" stroke-miterlimit="10" cx="395.2" cy="281.3" r="91"/>
+	<circle fill="none" stroke="#000000" stroke-width="2.7899" stroke-miterlimit="10" cx="403.6" cy="281.3" r="78.5"/>
+	<circle fill="none" stroke="#000000" stroke-width="2.8346" stroke-miterlimit="10" cx="412.1" cy="281.3" r="66"/>
 </g>
 </svg>

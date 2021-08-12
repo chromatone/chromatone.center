@@ -2,9 +2,8 @@
 title: Chromatic spectrum
 subtitle: The model in which musical octave meets color spectrum.
 cover: theory/spectrum.svg
-tags: theory
-list: spectre
-date: 2021-01-10
+tags: sound
+date: 2021-08-24
 ---
 
 

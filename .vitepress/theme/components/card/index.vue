@@ -3,8 +3,8 @@
   :style="{ borderColor: rowColor }"
   :title="item.lastModified",
   )
-  a.flex(:href="item.link")
-    .cover(v-if="item.data.cover", :style="{ backgroundImage: 'url(/media/' + item.data.cover + ')' }", v-motion-fade)
+  a.flex.flex-wrap.items-stretch(:href="item.link")
+    .cover(v-if="item.data.cover", :style="{ backgroundImage: 'url(/media/' + item.data.cover + ')' }", v-motion-fade) 
     .info
       .flex.flex-1.items-center.self-stretch.flex-wrap
         .mr-2.text-2xl(v-if="item.data.emoji") {{ item.data.emoji }}
@@ -32,7 +32,7 @@ const rowColor = lchToHsl(props.i, props.total);
 
 <style  scoped>
 .crd {
-  @apply my-8 shadow-md rounded-sm mx-2 md:mx-0 sm:mx-4 bg-light-200 dark:bg-dark-200
+  @apply my-6 shadow-md rounded-sm mx-2 md:mx-0 sm:mx-4 bg-light-200 dark:bg-dark-200
   flex flex-col items-stretch 
   transition-all
   static;
@@ -45,14 +45,15 @@ const rowColor = lchToHsl(props.i, props.total);
 
 .info {
   @apply p-4 my-auto;
+  flex: 1 1 80%;
 }
 
 .cover {
-  @apply bg-cover bg-center self-stretch h-full min-h-16em sm:min-w-16em min-w-6em rounded-xl;
-  flex-basis: 6em;
+  @apply p-16 bg-cover bg-center rounded-xl;
   filter: saturate(10%) opacity(70%);
   transition: all 200ms ease-in-out;
-  flex: 1 1 100px;
+  flex: 1 1 20%;
+  backgound: cover;
 }
 
 .crd:hover .cover {

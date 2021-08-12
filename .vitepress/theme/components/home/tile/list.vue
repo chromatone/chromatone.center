@@ -1,6 +1,6 @@
 <template lang="pug">
 .tiles
-  tile-item(
+  home-tile-item(
     v-for="(area,i) in sorted", 
     :key="area.title", 
     :item="area", 

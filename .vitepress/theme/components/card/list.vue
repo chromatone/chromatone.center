@@ -1,11 +1,11 @@
 <template lang="pug">
 .list
   card(
-    v-for="(area,i) in sorted", 
+    v-for="(area,i) in rows", 
     :key="area.title", 
     :item="area", 
     :i="i",
-    :total="sorted.length",
+    :total="rows.length",
     )  
 </template>
 
@@ -16,21 +16,11 @@ const props = defineProps({
   rows: Object,
 });
 
-const sorted = computed(() => {
-  if (!props.rows && typeof props.rows != 'array') { return }
-  return [...props.rows].sort((a, b) => {
-    if (a?.lastModified > b?.lastModified) {
-      return -1
-    } else {
-      return 1
-    }
-  })
-});
 
 </script>
 
 <style  scoped>
 .list {
-  @apply mx-2 md:mx-4 my-2 flex flex-col flex-auto;
+  @apply mx-2 py-2 md:mx-4 my-2 flex flex-col flex-auto;
 }
 </style>

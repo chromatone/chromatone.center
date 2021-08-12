@@ -10,7 +10,7 @@ cover: /theory/sun-spectrum.svg
 
 ## Earth atmosphere EM radiation absorption
 
-<img src="/theory/sun-spectrum.svg">
+<img src="/media/theory/sun-spectrum.svg">
 
 <img src="./spectral-lines.svg">
 

@@ -10,7 +10,7 @@ svg(
     @click="moving = !moving"
   )
     circle(
-      :cx="50"
+      cx="0"
       cy="35"
       r="4.5"
       fill="currentColor"
@@ -19,13 +19,12 @@ svg(
     polygon(
       v-if="!moving"
       fill="gray"
-      points="48,32 53,35 48,38"
+      points="-2,32 3,35 -2,38"
     )
   circle(
     v-for="(circle,c) in circles"
-    :cx="circle.cx + 50"
+    v-bind="circle"
     cy="35"
-    :r="circle.r"
     stroke-width="0.5"
     stroke-linecap="round"
     stroke="currentColor"
@@ -58,9 +57,9 @@ watchEffect(() => {
   }
 })
 
-for (let c = 1; c < 15; c++) {
+for (let c = 1; c < 25; c++) {
   const circle = {
-    cx: computed(() => Math.cos(time.value / 1000 - c) * 3),
+    cx: computed(() => Math.cos(time.value / 1000 - c) * 3.5 + 10),
     r: c * 4,
   }
   circles.push(circle)

@@ -21,10 +21,12 @@
     ) {{ suffix }}
   .p-2.text-2xl.font-bold {{ state.key }} {{ state.suffix }}
   .flex.flex-wrap.justify-center
-    string-tab( 
-      v-for="pos in state.chord?.positions" :key="pos" 
-      v-bind="pos"
-      )
+    .relative(v-for="(pos,n) in state.chord?.positions" :key="pos" )
+      string-tab( 
+        :id="pos.frets"
+        v-bind="pos"
+        )
+      svg-save(:svg="pos.frets" :file="state.chord?.key + state.chord?.suffix + n")
 </template>
 
 <script setup>

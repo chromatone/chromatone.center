@@ -19,10 +19,10 @@
       la-filter.ml-2(:style="{ opacity: control.scale ? 1 : 0.3 }")
 
   transition-group(name="list")
-    chroma-row(
+    chroma-row.mb-6(
       v-for="(set) in sorted",
       :key="set.chroma",
-      :set="set",
+      :chroma="set.chroma",
       :tonic="tonic",
       )
 </template>

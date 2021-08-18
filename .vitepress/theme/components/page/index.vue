@@ -4,7 +4,7 @@ main
   .content-container
     content.content
     shop-message
-    page-list.mb-32
+    row-list.mb-32
 
   page-next-prev
   footer-row

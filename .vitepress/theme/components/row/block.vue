@@ -44,7 +44,7 @@ const bg = "url(/media/" + props.item.data?.cover + ")";
 
 <style scoped>
 .row {
-  @apply bg-light-200 dark:bg-dark-300 m-4 flex flex-col transition no-underline;
+  @apply bg-light-200 dark:bg-dark-300 mx-4 my-8 flex flex-col transition no-underline;
   box-shadow: v-bind(shadow);
   flex: 1 1 200px;
   &:hover {

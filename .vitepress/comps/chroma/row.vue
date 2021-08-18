@@ -1,18 +1,18 @@
 <template lang="pug">
-.flex.flex-col.items-stretch.mb-6.w-full
-  .flex.flex-wrap.justify-center.border-b-1.pt-2.mb-2(v-if="!chord.empty || scale") 
-    .chord.cursor-pointer(@click="playChordOnce()") {{ notes[tonic].name }}{{ chord.aliases[0] }} &nbsp;
-    .title.cursor-pointer.text-gray-500(class="dark:text-gray-400",  @click="arpeggiate()")  {{ chord.name }} 
-    .scale(v-if="scale") @ {{ scale }} scale
+.flex.flex-wrap.items-stretch.w-full
   .grid.grid-cols-12.justify-items-stretch
     .chroma-key(
       @mouseenter="bit == 1 && playNote(i + tonic)"
       @touchstart="bit == 1 && playNote(i + tonic)"
-      v-for="(bit,i) in set?.chroma.split('')"
+      v-for="(bit,i) in chroma.split('')"
       :key="i"
       :class="{ active: bit == 1 }"
       :style="{ backgroundColor: bit == 1 ? pitchColor((i + tonic) % 12) : minor[(i + tonic) % 12] == '1' ? 'hsla(0,0%,80%,0.3)' : 'hsla(0,0%,20%,0.3)' }"
       ) {{ bit == 1 ? notes[(i + tonic) % 12].name : i }}
+  .flex.flex-wrap.justify-center.border-b-1.px-2(v-if="!chord.empty || scale") 
+    button.shadow.px-2.py-1.font-bold.cursor-pointer(@click="playChordOnce()") {{ notes[tonic].name }}{{ chord.aliases[0] }} &nbsp;
+    button.shadow.px-2.py-1.cursor-pointer.text-gray-500(v-if="chord.name" class="dark:text-gray-400",  @click="arpeggiate()")  {{ chord.name }} 
+    .scale(v-if="scale") @ {{ scale }} scale
 </template>
 
 <script setup>
@@ -25,7 +25,7 @@ import { synthOnce } from '@use/synth.js'
 import { midiOnce } from '@use/midi.js'
 
 const props = defineProps({
-  set: Object,
+  chroma: Object,
   tonic: {
     type: Number,
     default: 0
@@ -33,7 +33,7 @@ const props = defineProps({
 });
 
 const chordNotes = computed(() => {
-  let shiftChroma = rotate(props.set.chroma.split(''), -props.tonic)
+  let shiftChroma = rotate(props.chroma.split(''), -props.tonic)
   let chOct = rotate(notes, -props.tonic).map((n, i) => {
     return Frequency(n.pitch + props.tonic + 57, 'midi').toNote()
   })
@@ -69,13 +69,13 @@ function rotate(arr, count = 1) {
 };
 const minor = "101101011010"
 
-const chord = ChordType.get(props.set.chroma)
-const scale = ScaleType.get(props.set.chroma).name
+const chord = ChordType.get(props.chroma)
+const scale = ScaleType.get(props.chroma).name
 </script>
 
 <style  scoped>
 .chroma-key {
-  @apply grid cursor-pointer place-content-center text-xs transition-all duration-300 p-1 py-3  mx-4px sm:(py-4) hover:(opacity-100) opacity-80  rounded-md;
+  @apply grid cursor-pointer place-content-center text-xs transition-all duration-300 w-8 py-1  mx-4px sm:(py-2) hover:(opacity-100) opacity-80  rounded-xl;
 }
 .chroma-key.active {
   @apply text-light-100 font-bold;

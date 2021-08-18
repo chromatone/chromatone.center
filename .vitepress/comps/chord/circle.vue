@@ -6,6 +6,17 @@ g
     r="8"
     :fill="pitch === false ? 'none' : colord(pitchColor(pitch)).toHex()"
     )
+  g(v-for="(note,n) in rotateArray(chroma.split(''), -tonic)" :key="note")
+    line(
+      :x1="getCircleCoord(n, 12, 6.5, 0).x"
+      :y1="getCircleCoord(n, 12, 6.5, 0).y"
+      x2="0"
+      y2="0"
+      v-if="note == '1'"
+      stroke-linecap="square"
+      stroke-width="3.92"
+      :stroke="note == '1' ? colord(pitchColor(n)).toHex() : 'none'"
+      )
   g(
     v-for="(note,n) in rotateArray(chroma.split(''), -tonic)" :key="note"
     :transform="`translate(${getCircleCoord(n, 12, 8, 0).x}, ${getCircleCoord(n, 12, 8, 0).y})`"
@@ -13,10 +24,8 @@ g
     circle(
       x="0" 
       y="0" 
-      :r="note == '1' ? n == pitch % 12 ? 2.8 : 2.2 : 1"
+      :r="note == '1' ? 2 : 1"
       :fill="colord(note == '1' ? pitchColor(n) : notes[n].pos == 0 ? 'hsl(0,0%,85%)' : 'hsl(0,0%,60%)').toHex()"
-      :stroke="colord(notes[n]?.pos == 0 ? 'hsl(0,0%,90%)' : 'hsl(0,0%,40%)').toHex()"
-      :stroke-width="0.3"
     )
     text(
       v-if="note == '1'"
@@ -25,15 +34,7 @@ g
       font-weight="bold"
       fill="white"
       ) {{ notes[n]?.name }}
-  line(
-    v-for="(note,n) in rotateArray(chroma.split(''), -tonic)" :key="note"
-    :x1="getCircleCoord(n, 12, 6.5, 0).x"
-    :y1="getCircleCoord(n, 12, 6.5, 0).y"
-    x2="0"
-    y2="0"
-    :stroke-width="n == pitch % 12 ? 2.4 : 1.6"
-    :stroke="note == '1' ? colord(pitchColor(n)).toHex() : 'none'"
-  )
+
   circle(
     cx="0"
     cy="0"

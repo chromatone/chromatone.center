@@ -127,7 +127,7 @@ const scales = {
 <style scoped>
 @media screen {
   svg {
-    filter: grayscale(30%);
+    filter: grayscale(20%);
   }
 }
 </style>

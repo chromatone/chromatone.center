@@ -1,7 +1,7 @@
 <template lang="pug">
 g
   g(
-    v-for="(keys,k) in [whites,blacks]" :key="k"
+    v-for="(keys,k) in [whites, blacks]" :key="k"
     )
     g(
       v-for="(note,i) in keys"
@@ -21,7 +21,7 @@ g
         v-if="note && isInChord(note.pitch)"
         fill="white"
         font-family="Commissioner, sans-serif"
-        font-size="12px"
+        font-size="10px"
         font-weight="bold"
         text-anchor="middle",
         dominant-baseline="middle"

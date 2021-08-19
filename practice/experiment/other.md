@@ -46,6 +46,9 @@ links:
   - url: https://ukebuddy.com/
     title: Uke Buddy
     subtitle: A comprehensive tool to explore ukulele chords, scales and song tabs.
+  - url: https://www.sequencer64.com
+    title: Sequencer64
+    subtitle: Sequencer64 is a progressive web application that allows you to quickly sequence a 64-step pattern for a 9-sound sampler.
 date: 2018-09-08
 ---
 

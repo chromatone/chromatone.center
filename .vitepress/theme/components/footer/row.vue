@@ -52,9 +52,8 @@ nav {
 
 a {
   @apply transition-all opacity-60 text-gray-900 dark:text-gray-50 hover:(opacity-80 underline);
-}
-
-.active {
-  @apply text-$c-brand dark:text-$c-brand-light border-$c-brand;
+  &.active {
+    @apply font-bold text-$c-brand dark:text-$c-brand-light border-$c-brand;
+  }
 }
 </style>

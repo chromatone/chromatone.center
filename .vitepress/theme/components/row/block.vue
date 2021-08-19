@@ -1,26 +1,27 @@
 <template lang="pug">
-a.header(:href="item.link")
-  .cover(v-if="item.data?.cover", v-motion-fade)
-  .info 
-    .flex.items-center.w-full(
-      :style="{ color: color }"
-    )
-      .mr-2.text-2xl(v-if="item.data.emoji") {{ item.data.emoji }}
-      h3
-        span.text-3xl {{ item.title }} 
-        span.px-2.mt-2(v-if="item.more") 
-          radix-icons-text-align-left
-      .flex-1
-      shop-price(
-        :product="item.data?.product" 
-        :color="color"
-        )
+.row
+  a.header(:href="item.link")
+    .cover(v-if="item.data?.cover", v-motion-fade)
+    .info 
+      .flex.items-center.w-full(
+        :style="{ color: color }"
+      )
+        .mr-2.text-2xl(v-if="item.data.emoji") {{ item.data.emoji }}
+        h3
+          span.text-3xl {{ item.title }} 
+          span.px-2.mt-2(v-if="item.more") 
+            radix-icons-text-align-left
+        .flex-1
+        shop-price(
+          :product="item.data?.product" 
+          :color="color"
+          )
 
-      card-date(v-if="!item.data?.product",:date="item.lastModified")
-    .text-md.mt-4.mb-2.font-normal.w-full(v-if="item.subtitle") {{ item.subtitle }}
-    page-buttons(:buttons="item.data?.buttons" :color="color")
+        card-date(v-if="!item.data?.product",:date="item.lastModified")
+      .text-md.mt-4.mb-2.font-normal.w-full(v-if="item.subtitle") {{ item.subtitle }}
+      page-buttons(:buttons="item.data?.buttons" :color="color")
 
-card-list(v-if="site.customData.pages?.[item.data?.list]",:rows="site.customData.pages?.[item.data?.list]" )
+  card-list(v-if="site.customData.pages?.[item.data?.list]",:rows="site.customData.pages?.[item.data?.list]" )
 </template>
 
 <script setup>
@@ -40,7 +41,7 @@ const bg = "url(/media/" + props.item.data?.cover + ")";
 
 <style scoped>
 .row {
-  @apply bg-light-200 dark:bg-dark-300 mx-4 my-8 flex flex-col transition no-underline;
+  @apply bg-light-200 dark:bg-dark-300 flex flex-col transition no-underline;
   flex: 1 1 200px;
 }
 

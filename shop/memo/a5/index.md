@@ -1,5 +1,5 @@
 ---
-title: A5 cheat-sheet
+title: A5 diatonic scales memo
 subtitle: Small and durable cheat sheet with all 12 relative major and minor keys along with all main chords they contain
 tags: shop
 product:

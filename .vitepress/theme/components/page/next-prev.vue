@@ -1,12 +1,22 @@
 <template lang="pug">
 .next-and-prev-link(:style="{ borderColor: colors.current }")
   .row
-    .pad.prev(v-if="prev" :style="{ borderColor: colors.prev }")
+    card-box.pad.prev(
+      v-if="prev" 
+      :i="current - 1"
+      :total="total"
+      :height="4"
+      )
       a.link( :href="prev.link" :style="{ color: colors.prev }")
         carbon-arrow-left.icon.icon-prev
         span.text {{ prev.title }}
     //- page-parents.pad.text-2xl.flex-1.flex.flex-col.items-center.p-8
-    .pad.next(v-if="next" :style="{ borderColor: colors.next }")
+    card-box.pad.next(
+      v-if="next"
+      :i="current + 1"
+      :total="total"
+      :height="4"
+      )
       a.link( :href="next.link" :style="{ color: colors.next }")
         span.text {{ next.title }}
         carbon-arrow-right.icon.icon-next          
@@ -26,7 +36,7 @@ const colors = {
 
 <style scoped>
 .next-and-prev-link {
-  @apply bg-gray-100/90 dark:bg-gray-800/90 py-8 shadow-inner;
+  @apply bg-gray-100/90 dark:bg-gray-800/90 py-4 
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border-width: 20px 0 0 0;
@@ -47,13 +57,11 @@ const colors = {
 
 .prev {
   justify-content: flex-start;
-  border-width: 2px 2px 10px 2px;
 }
 
 .next {
   justify-content: flex-end;
   text-align: right;
-  border-width: 2px 2px 10px 2px;
 }
 
 .link {

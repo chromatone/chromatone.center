@@ -1,12 +1,17 @@
 <template lang="pug">
 .list-blocks(v-if="rows")
-  row-block(
-    v-for="(area,i) in rows", 
+  card-box.my-8(
+    v-for="(area,i) in rows",
     :key="area.title", 
-    :item="area", 
-    :i="i",
+    :id="area.title"
+    :i="i"
     :total="rows.length"
-    )  
+    v-slot="{ color }"
+    )
+    row-block(
+      :item="area", 
+      :color="color"
+      )  
 </template>
 
 <script setup>

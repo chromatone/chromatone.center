@@ -1,6 +1,5 @@
 <template lang="pug">
 .crd(
-  :style="{ borderColor: rowColor }"
   :title="item.lastModified",
   )
   a.flex.flex-wrap.items-stretch(:href="item.link")
@@ -8,7 +7,7 @@
     .info
       .flex.flex-1.items-center.self-stretch.flex-wrap
         .mr-2.text-2xl(v-if="item.data.emoji") {{ item.data.emoji }}
-        .text-2xl.flex-auto {{ item.title }}
+        .text-2xl.flex-auto(:style="{ color: color }") {{ item.title }}
         card-date(v-if="!item.data.product",:date="item.lastModified")
       .text-md.mt-4.mb-2.font-normal(v-if="item.subtitle") {{ item.subtitle }}
       shop-price.float-left(:product="item.data?.product", :showButton="false")
@@ -22,21 +21,17 @@ import { useData } from 'vitepress'
 const { site } = useData()
 const props = defineProps({
   item: Object,
-  i: Number,
-  total: Number,
+  color: String
 });
 
-import { lchToHsl } from '@theme/composables/colors.js'
-const rowColor = lchToHsl(props.i, props.total);
-</script>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </script>
 
 <style  scoped>
 .crd {
-  @apply my-4 shadow-md rounded-sm mx-2 md:mx-0 sm:mx-4 bg-light-200 dark:bg-dark-200
+  @apply shadow-md rounded-sm mx-2 md:mx-0 sm:mx-4 bg-light-200 dark:bg-dark-200
   flex flex-col items-stretch 
   transition-all
   static;
-  border-width: 2px 2px 6px 2px;
 }
 
 .crd.seen {
@@ -49,7 +44,7 @@ const rowColor = lchToHsl(props.i, props.total);
 }
 
 .cover {
-  @apply p-16 bg-cover bg-center rounded-xl;
+  @apply p-16 bg-cover bg-center rounded;
   filter: saturate(10%) opacity(70%);
   transition: all 200ms ease-in-out;
   flex: 1 1 20%;

@@ -1,15 +1,18 @@
 <template lang="pug">
-.p-8.flex.max-w-65ch.m-auto.border-1.rounded-lg(v-if="$frontmatter.product")
-  .py-2.pr-4.flex-1 We deliver orders via international post. For $10 we send registered mail worldwide. With a code for you to track the letter's 1-4 weeks trip. 
-  shop-price(:product="$frontmatter?.product" :color="pageColor")
+card-box.p-4.mt-2.mb-12.flex.max-w-65ch.m-auto(
+  v-if="$frontmatter.product"
+  :i="current"
+  :total="total"
+  v-slot="{ color }"
+  )
+  .py-2.pr-4.flex-1 We deliver orders via international post. <br> For <strong>$10</strong> we send registered mail worldwide.<br> With a code to track the letter's <strong>1-4 weeks</strong> trip. 
+  shop-price(:product="$frontmatter?.product" :color="color")
 </template>
 
 <script setup>
 import { useSiblings } from '../../composables/links.js'
-import { lchToHsl } from '../../composables/colors.js'
 const { current, total } = useSiblings();
 
-const pageColor = lchToHsl(current, total, 1, 70, 70);
 </script>
 
 <style scoped>

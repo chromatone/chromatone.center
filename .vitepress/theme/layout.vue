@@ -5,7 +5,7 @@
     side-bar(:open="openSideBar")
       .sidebar-mask(@click="toggleSidebar(false)")
     home(v-if="$frontmatter.template == 'home'")
-    page(v-else)
+    page-main(v-else)
 //debug
 </template>
 
@@ -83,19 +83,4 @@ const pageClasses = computed(() => {
   background-blend-mode: overlay;
   @apply min-h-screen bg-cover bg-center bg-fixed pt-$header-height;
 }
-
-@screen lg {
-  .grid-layout-2 {
-    display: grid;
-    grid-template-columns: 16rem minmax(100px, 1fr);
-    grid-template-rows: 1fr;
-    gap: 0px 16px;
-  }
-}
-
-/* @screen lg {
-  .grid-layout {
-    grid-template-columns: min-content minmax(100px, 2fr) 16rem;
-  }
-} */
 </style>

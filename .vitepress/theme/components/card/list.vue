@@ -1,12 +1,17 @@
 <template lang="pug">
 .list
-  card(
+  card-box.my-4(
     v-for="(area,i) in rows", 
     :key="area.title", 
-    :item="area", 
-    :i="i",
-    :total="rows.length",
-    )  
+    :i="i"
+    :total="rows.length"
+    :height="4"
+    v-slot="{ color }"
+  )
+    card-item(
+      :item="area", 
+      :color="color"
+      )  
 </template>
 
 <script setup>

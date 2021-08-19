@@ -1,6 +1,6 @@
 ---
 title: Support
-subtitle: Contribute code or donate money to help develop Chromatone as an open source project
+subtitle: Share links, contribute code or donate money to the open source development
 list: support
 tags: main
 date: 2021-05-30

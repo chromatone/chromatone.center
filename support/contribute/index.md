@@ -1,6 +1,6 @@
 ---
-title: Contribute
-subtitle: Post issues, make forks, submit pull requests at GihHub
+title: Contribute code
+subtitle: Post issues and submit pull requests at GitHub
 tags: support
 buttons:
   - url: https://github.com/chromatone

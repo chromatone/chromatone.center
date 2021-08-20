@@ -1,5 +1,5 @@
 <template lang="pug">
-svg.max-h-200px(
+svg.max-h-400px.min-w-240px.min-h-300px(
   version="1.1",
   baseProfile="full",
   :viewBox="`${-neck.padX} ${-neck.padY} ${neck.width + 2 * neck.padX} ${neck.height + 2 * neck.padY}`",
@@ -59,7 +59,7 @@ svg.max-h-200px(
       v-if="string >= 0"
       fill="white"
       :x="s * neck.stringWidth"
-      :y="neck.height + 11"
+      :y="neck.height + 14"
       font-size="12px"
       font-weight="bold"
     ) {{ noteList[notes.list[s]]?.name }}
@@ -106,7 +106,7 @@ svg.max-h-200px(
       fill="white"
       font-weight="bold"
       :x="n * neck.stringWidth"
-      :y="note * neck.fretHeight - neck.fretHeight / 2 + 1"
+      :y="note * neck.fretHeight - neck.fretHeight / 2 + 5"
     ) {{ fingers[n] }}
 </template>
 

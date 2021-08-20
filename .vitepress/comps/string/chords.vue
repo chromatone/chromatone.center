@@ -21,7 +21,7 @@
     ) {{ suffix }}
   .p-2.text-2xl.font-bold {{ state.key }} {{ state.suffix }}
   .flex.flex-wrap.justify-center
-    .relative(v-for="(pos,n) in state.chord?.positions" :key="pos" )
+    .tab(v-for="(pos,n) in state.chord?.positions" :key="pos" )
       string-tab( 
         :id="pos.frets"
         v-bind="pos"
@@ -59,5 +59,9 @@ button {
   &.active {
     @apply font-bold opacity-100;
   }
+}
+.tab {
+  @apply relative flex justify-center;
+  flex: 1 1 100px;
 }
 </style>

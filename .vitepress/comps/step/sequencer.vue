@@ -10,6 +10,7 @@
     sqnob.w-50px(v-model="state.steps" :max="32" :min="4" :step="1" :fixed="0" param="steps")
     sqnob.w-50px(v-model="state.bpm" :step="1" :max="400" :min="10" :fixed="0" param="BPM")
     sqnob.w-50px(v-model="state.probability" :max="1" :min="0" :step="0.01" :fixed="2" param="prob")
+    button(:class="{ active: state.humanize }" @click="state.humanize = !state.humanize") HMN
     button(@click="clear()")
       la-trash-alt
     button(@click="state.playing = true" v-if="!state.playing")
@@ -60,6 +61,7 @@ const state = reactive({
   setNum: useStorage('seq-scale', 2708),
   type: useStorage('seq-type', 'up'),
   probability: useStorage('seq-prob', 1),
+  humanize: useStorage('seq-human', false),
   interval: useStorage('seq-interval', '8n'),
   note: computed(() => notes[state.tonic].name),
   scale: computed(() => ScaleType.get(state.setNum)),
@@ -118,10 +120,12 @@ function setPatterns() {
     patterns[index] = new Pattern((time, cell) => {
       Draw.schedule(() => {
         positions[index] = cell.cell
+        if (cell.active) {
+          midiOnce(cell.note)
+        }
       }, time)
       if (cell.active) {
         synthOnce(cell.note, state.interval, time)
-        midiOnce(cell.note)
       }
     }, rows[index], state.type).start(0);
     patterns[index].interval = state.interval
@@ -170,14 +174,18 @@ watch(() => state.probability, prob => {
   })
 })
 
+watch(() => state.humanize, hum => {
+  patterns.forEach(p => {
+    p.humanize = hum
+  })
+})
+
 onBeforeUnmount(() => {
   patterns.forEach(p => {
     p.stop(0)
     p.dispose()
   })
 });
-
-
 </script>
 
 <style scoped>
@@ -209,5 +217,8 @@ select {
 }
 button {
   @apply p-2 border-1 text-center flex flex-col justify-center m-1 rounded border-current;
+  &.active {
+    @apply bg-light-100 dark:bg-dark-100;
+  }
 }
 </style>

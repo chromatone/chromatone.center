@@ -1,5 +1,5 @@
 import { reactive, computed, watch, onMounted } from 'vue'
-import { Transport, PluckSynth, start, Frequency, Loop } from 'tone'
+import { Transport, start, Frequency, Loop } from 'tone'
 import { pitchColor } from 'chromatone-theory'
 import { Note } from '@tonaljs/tonal'
 import { useStorage } from '@vueuse/core'

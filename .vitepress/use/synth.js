@@ -20,14 +20,14 @@ export function init() {
   synth.poly = new PolySynth(MonoSynth, {
     maxPolyphony: 12,
     oscillator: {
-      type: 'sine',
+      type: 'fatsawtooth',
     },
     volume: -10,
     envelope: {
-      attack: 0.01,
-      decay: 0.01,
+      attack: 0.1,
+      decay: 0.1,
       sustain: 1,
-      release: 4,
+      release: 2,
     },
   }).toDestination()
 }

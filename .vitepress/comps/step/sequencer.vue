@@ -2,18 +2,20 @@
 .flex.flex-col
   .flex.flex-wrap
     piano-keys(v-model:pitch="state.tonic")
-    sqnob.w-70px(v-model="state.octave" :max="4" :min="1" :fixed="0" param="OCTAVE")
+    sqnob.w-70px(v-model="state.octave" :max="4" :min="2" :fixed="0" param="OCTAVE")
     select(v-model="state.setNum")
       option(v-for="scale in scales" :key="scale.setNum" :value="scale.setNum") {{ scale.name }}
+    select(v-model="state.type")
+      option(v-for="type in patternTypes" :key="type" :value="type") {{ type }}
+    sqnob.w-50px(v-model="state.steps" :max="32" :min="4" :step="1" :fixed="0" param="steps")
+    sqnob.w-50px(v-model="state.bpm" :step="1" :max="400" :min="10" :fixed="0" param="BPM")
+    sqnob.w-50px(v-model="state.probability" :max="1" :min="0" :step="0.01" :fixed="2" param="prob")
     button(@click="clear()")
       la-trash-alt
-    sqnob.w-50px(v-model="state.steps" :max="32" :min="4" :fixed="0" param="steps")
-    sqnob.w-50px(v-model="state.bpm" :max="400" :min="10" :fixed="0" param="BPM")
     button(@click="state.playing = true" v-if="!state.playing")
       la-play
     button(@click="state.playing = false" v-if="state.playing")
       la-pause
-    .p-2 {{ state.current }}
   .rows(
     @mousedown="state.hover = true"
     @mouseleave.self="state.hover = false"
@@ -31,7 +33,7 @@
           backgroundColor: cell.active ? pitchColor(state.pitches[r]) : 'transparent',
           marginRight: c % 4 == 3 ? '4px' : '1px'
         }`
-        :class="{ active: cell?.active }"
+        :class="{ active: cell?.active, current: cell.cell == positions[r] }"
         @mousedown.prevent="toggle(r, c, true, $event)"
         @mouseenter="toggle(r, c, false, $event)"
         )
@@ -39,11 +41,14 @@
 
 <script setup>
 import { notes, pitchColor } from 'chromatone-theory'
-import { Scale, ScaleType, Midi } from '@tonaljs/tonal'
+import { Scale, ScaleType, Midi, Note } from '@tonaljs/tonal'
 import { useStorage, useRafFn } from '@vueuse/core'
-import { Pattern, Transport } from 'tone'
+import { Pattern, start, Transport, Draw } from 'tone'
+import { synthOnce } from '@use/synth.js'
+import { useMidi } from '@use/midi.js'
 const scales = ScaleType.all();
 const state = reactive({
+  started: false,
   playing: false,
   hover: false,
   mounted: false,
@@ -53,15 +58,20 @@ const state = reactive({
   bpm: useStorage('seq-bpm', 120),
   steps: useStorage('seq-steps', 16),
   setNum: useStorage('seq-scale', 2708),
+  type: useStorage('seq-type', 'up'),
+  probability: useStorage('seq-prob', 1),
+  interval: useStorage('seq-interval', '8n'),
   note: computed(() => notes[state.tonic].name),
   scale: computed(() => ScaleType.get(state.setNum)),
-  range: computed(() => Scale.rangeOf(state.note + state.octave + ' ' + state.scale.name)(state.note + state.octave, state.note + (state.octave + 2)).reverse()),
+  range: computed(() => Scale.rangeOf(state.note + state.octave + ' ' + state.scale.name)(state.note + state.octave, state.note + (state.octave + 2)).map(note => Note.simplify(note)).reverse()),
   midi: computed(() => state.range.map(note => Midi.toMidi(note))),
   pitches: computed(() => state.midi.map(note => (note + 3) % 12)),
-  stepCount: computed(() => [...Array(state.steps).keys()])
 });
 
+const patternTypes = ['up', 'down', 'upDown', 'downUp', 'alternateUp', 'alternateDown', 'random', 'randomWalk', 'randomOnce'];
+
 const rows = reactive([])
+const positions = reactive([])
 let patterns = []
 
 watchEffect(() => {
@@ -89,7 +99,7 @@ onMounted(() => {
 
 watch(
   () => state.bpm,
-  (bpm) => Transport.bpm.rampTo(bpm, '4n'),
+  (bpm) => Transport.bpm.rampTo(bpm, state.interval),
 )
 
 watch(() => rows.length, len => {
@@ -97,6 +107,8 @@ watch(() => rows.length, len => {
     setPatterns()
   }
 }, { immediate: true })
+
+const { midiOnce } = useMidi()
 
 function setPatterns() {
   patterns.forEach(p => {
@@ -106,14 +118,15 @@ function setPatterns() {
   patterns = []
   rows.forEach((row, index) => {
     patterns[index] = new Pattern((time, cell) => {
-      if (index == 0) {
-        state.current = cell.cell
-      }
+      Draw.schedule(() => {
+        positions[index] = cell.cell
+      }, time)
       if (cell.active) {
-        console.log(cell.note, cell.cell)
+        synthOnce(cell.note, state.interval, time)
+        midiOnce(cell.note)
       }
-    }, rows[index], 'up').start(0);
-    patterns[index].interval = '16n'
+    }, rows[index], state.type).start(0);
+    patterns[index].interval = state.interval
   })
 }
 
@@ -131,26 +144,42 @@ function toggle(row, cell, sure, event) {
 
 function clear() {
   rows.forEach((row, r) => {
-    row.forEach((cell, c) => rows[r][c] = null)
+    row.forEach((cell, c) => rows[r][c].active = false)
   })
 }
 
 watch(() => state.playing, play => {
   if (play) {
     Transport.start()
+    if (!state.started) {
+      start()
+      state.started = true
+    }
   } else {
     Transport.stop()
   }
 });
+
+watch(() => state.type, type => {
+  patterns.forEach(p => {
+    p.pattern = type
+  })
+})
+
+watch(() => state.probability, prob => {
+  patterns.forEach(p => {
+    p.probability = prob
+  })
+})
 
 onBeforeUnmount(() => {
   patterns.forEach(p => {
     p.stop(0)
     p.dispose()
   })
-})
+});
 
-const patternsTypes = ['up', 'down', 'upDown', 'downUp', 'alternateUp', 'alternateDown', 'random', 'randomWalk', 'randomOnce'];
+
 </script>
 
 <style scoped>
@@ -165,7 +194,7 @@ const patternsTypes = ['up', 'down', 'upDown', 'downUp', 'alternateUp', 'alterna
   flex: 0 0 52px;
 }
 .cell {
-  @apply p-2 border-1 m-1px rounded;
+  @apply p-2 border-1 m-1px rounded transition-all duration-50 ease-in-out;
   flex: 1 1 20px;
   &.active {
     @apply bg-current;
@@ -173,8 +202,13 @@ const patternsTypes = ['up', 'down', 'upDown', 'downUp', 'alternateUp', 'alterna
   &.current {
     @apply border-2;
   }
+  &.active.current {
+    @apply scale-110 transform;
+  }
 }
-
+select {
+  @apply p-2 mx-2 rounded;
+}
 button {
   @apply p-2 border-1 text-center flex flex-col justify-center m-1 rounded border-current;
 }

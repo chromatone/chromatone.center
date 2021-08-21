@@ -41,6 +41,7 @@ export function useMidi() {
     midi,
     midiAttack,
     midiRelease,
+    midiOnce,
     setCC,
     WebMidi,
   }

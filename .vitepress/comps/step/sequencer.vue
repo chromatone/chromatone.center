@@ -45,7 +45,7 @@ import { Scale, ScaleType, Midi, Note } from '@tonaljs/tonal'
 import { useStorage, useRafFn } from '@vueuse/core'
 import { Pattern, start, Transport, Draw } from 'tone'
 import { synthOnce } from '@use/synth.js'
-import { useMidi } from '@use/midi.js'
+import { midiOnce } from '@use/midi.js'
 const scales = ScaleType.all();
 const state = reactive({
   started: false,
@@ -54,7 +54,7 @@ const state = reactive({
   mounted: false,
   current: 0,
   tonic: useStorage('seq-tonic', 0),
-  octave: useStorage('seq-octave', 4),
+  octave: useStorage('seq-octave', 3),
   bpm: useStorage('seq-bpm', 120),
   steps: useStorage('seq-steps', 16),
   setNum: useStorage('seq-scale', 2708),
@@ -107,8 +107,6 @@ watch(() => rows.length, len => {
     setPatterns()
   }
 }, { immediate: true })
-
-const { midiOnce } = useMidi()
 
 function setPatterns() {
   patterns.forEach(p => {

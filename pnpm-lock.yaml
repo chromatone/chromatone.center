@@ -1,11 +1,11 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@iconify/json': ^1.1.390
+  '@iconify/json': ^1.1.392
   '@tonaljs/note': ^4.6.2
   '@tonaljs/pcset': ^4.6.2
   '@tonaljs/tonal': ^4.6.2
-  '@types/node': ^16.7.0
+  '@types/node': ^16.7.1
   '@vueuse/core': 6.0.0
   '@vueuse/gesture': ^1.0.0
   '@vueuse/motion': ^1.6.0
@@ -56,8 +56,8 @@ dependencies:
   webmidi: 3.0.0-alpha.5
 
 devDependencies:
-  '@iconify/json': 1.1.390
-  '@types/node': 16.7.0
+  '@iconify/json': 1.1.392
+  '@types/node': 16.7.1
   esbuild-register: 3.0.0
   markdown-it-classy: 0.2.0
   markdown-it-container: 3.0.0
@@ -68,7 +68,7 @@ devDependencies:
   vite: 2.5.0
   vite-aliases: 0.8.6
   vite-plugin-components: 0.13.2_vite@2.5.0
-  vite-plugin-icons: 0.6.5_@iconify+json@1.1.390
+  vite-plugin-icons: 0.6.5_@iconify+json@1.1.392
   vite-plugin-windicss: 1.2.7_vite@2.5.0
   vitepress: 0.16.1
   vitepress-tags: 0.4.0
@@ -238,8 +238,8 @@ packages:
     resolution: {integrity: sha512-LFelJDOLZ6JHlmlAkgrvmcu4hpNPB91KYcr4f60D/exzU1eNOb4/KCVHIydGHIQFaOacIOD+Xy+B7P1z812cZg==}
     dev: true
 
-  /@iconify/json/1.1.390:
-    resolution: {integrity: sha512-2iLsQLORrET0xc9ldYEZF32WtxokHstQwWzFxhVJtbYrDydbtdqI2veoj3J+gWOscbGGev7FoQRqZ+VjGEYzCg==}
+  /@iconify/json/1.1.392:
+    resolution: {integrity: sha512-NeEnvIo815auLNL5bX732iafgdbzkDTlWJaad7fz7LWneJlImIuTDvCfybnMdS0g+9mItzfTzgUtHq2oJQqMFw==}
     dev: true
 
   /@nodelib/fs.scandir/2.1.5:
@@ -455,8 +455,8 @@ packages:
     resolution: {integrity: sha512-eC4U9MlIcu2q0KQmXszyn5Akca/0jrQmwDRgpAMJai7qBWq4amIQhZyNau4VYGtCeALvW1/NtjzJJ567aZxfKA==}
     dev: true
 
-  /@types/node/16.7.0:
-    resolution: {integrity: sha512-e66BrnjWQ3BRBZ2+iA5e85fcH9GLNe4S0n1H0T3OalK2sXg5XWEFTO4xvmGrYQ3edy+q6fdOh5t0/HOY8OAqBg==}
+  /@types/node/16.7.1:
+    resolution: {integrity: sha512-ncRdc45SoYJ2H4eWU9ReDfp3vtFqDYhjOsKlFFUDEn8V1Bgr2RjYal8YT5byfadWIRluhPFU6JiDOl0H6Sl87A==}
     dev: true
 
   /@types/throttle-debounce/2.1.0:
@@ -2447,7 +2447,7 @@ packages:
       - supports-color
     dev: true
 
-  /vite-plugin-icons/0.6.5_@iconify+json@1.1.390:
+  /vite-plugin-icons/0.6.5_@iconify+json@1.1.392:
     resolution: {integrity: sha512-lfePr8juO2ajp0571iLL+9zIoyBD9nSSSHlC4JYXbAeMOJB6WTP+Vdc2gze8yI8JRO+Z0TXCCvvL9bPgvkI4Cg==}
     peerDependencies:
       '@iconify/json': '*'
@@ -2459,7 +2459,7 @@ packages:
       vue-template-compiler:
         optional: true
     dependencies:
-      '@iconify/json': 1.1.390
+      '@iconify/json': 1.1.392
       '@iconify/json-tools': 1.0.10
       vue-template-es2015-compiler: 1.9.1
     dev: true

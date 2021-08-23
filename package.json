@@ -27,8 +27,8 @@
     "webmidi": "^3.0.0-alpha.5"
   },
   "devDependencies": {
-    "@iconify/json": "^1.1.390",
-    "@types/node": "^16.7.0",
+    "@iconify/json": "^1.1.392",
+    "@types/node": "^16.7.1",
     "esbuild-register": "^3.0.0",
     "markdown-it-classy": "^0.2.0",
     "markdown-it-container": "^3.0.0",

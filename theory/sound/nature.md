@@ -17,4 +17,4 @@ Acoustic vibrations propagate as mechanical waves of pressure in a transmission 
 
 ## Lindsay's Wheel of Acoustics
 
-![](./Lindsay's_Wheel_of_Acoustics.svg)
+![](./Lindsays_Wheel_of_Acoustics.svg)

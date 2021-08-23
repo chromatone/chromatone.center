@@ -20,10 +20,16 @@ export function init() {
   synth.poly = new PolySynth(MonoSynth, {
     maxPolyphony: 12,
     oscillator: {
-      type: 'fatsawtooth',
+      type: 'sawtooth8',
     },
     volume: -10,
     envelope: {
+      attack: 0.1,
+      decay: 0.1,
+      sustain: 1,
+      release: 2,
+    },
+    filterEnvelope: {
       attack: 0.1,
       decay: 0.1,
       sustain: 1,

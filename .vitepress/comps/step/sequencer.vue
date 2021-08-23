@@ -200,7 +200,7 @@ onBeforeUnmount(() => {
   flex: 0 0 52px;
 }
 .cell {
-  @apply p-2 border-1 m-1px rounded transition-all duration-50 ease-in-out;
+  @apply p-2 border-1 m-1px rounded transition-all duration-50 ease-in-out box-border;
   flex: 1 1 20px;
   &.active {
     @apply bg-current;

@@ -8,7 +8,10 @@
       @clearScale="clearScale()"
       )
   .max-w-65ch.m-auto
+    piano-keys.w-xs.h-4em.m-auto(
+      v-model:pitch="tonic" :chroma="chroma" names) 
     .flex.flex-wrap.m-auto
+
       .chord-group(
         v-for="(name,count) in groupNames", 
         :key="name"
@@ -18,31 +21,36 @@
     .flex.flex-col.items-center
       .flex.flex-wrap.my-4.justify-center
         .chord(
+          :style="{ backgroundColor: chord?.chroma == chroma ? chromaColorMix(chord.chroma, tonic).hsl : '' }"
           v-for="chord in chordGroup", 
           :key="chord?.aliases[0]", 
           @click="chroma = chord.chroma",
-          :class="{ active: chord?.chroma == chroma }") {{ chord?.aliases[0] }}
+          :class="{ active: chord?.chroma == chroma }") {{ notes[tonic].name + chord?.aliases[0] }}
+          piano-keys(v-model:pitch="tonic" :chroma="chord?.chroma")
     .flex.flex-wrap
       .text-xl.flex-1.min-w-full.text-center.my-4
         .text-sm It may be the root chord in these scales:
       transition-group(name="list")
         .chord(
           v-for="name in chordScales",
+          :style="{ color: scale == name ? 'white' : chromaColorMix(ScaleType.get(name).chroma, tonic).hsl, backgroundColor: scale == name ? chromaColorMix(ScaleType.get(name).chroma, tonic).hsl : '' }"
           :key="name"
           @click="scale = name"
           :class="{ active: scale == name }"
-          ) {{ name }}
+          ) {{ notes[tonic].name }} {{ name }}
+            piano-keys(v-model:pitch="tonic" :chroma="ScaleType.get(name).chroma")
 </template>
 
 <script setup>
 import { reactive, ref, computed, watch } from 'vue'
 import { chords, notes, pitchColor } from 'chromatone-theory'
+import { chromaColorMix } from '@theme/composables/colors.js'
 import { ChordType, Chord, ScaleType, Interval } from '@tonaljs/tonal'
 import chordList from '@use/theory.js'
 import { useStorage } from '@vueuse/core'
 
-const tonic = useStorage('tonic', 0)
-const chroma = useStorage('chroma', chordList[0].chroma)
+const tonic = useStorage('chroma-tonic', 0)
+const chroma = useStorage('chroma-chroma', chordList[0].chroma)
 
 const groupNames = ['Intervals', 'Triads', 'Tetrads', 'Pentads', 'Hexads', 'Heptads']
 
@@ -83,7 +91,7 @@ const chordGroup = computed(() => {
 
 <style  scoped>
 .chord {
-  @apply p-2 transition-all cursor-pointer m-1 rounded-lg bg-light-500 dark:bg-dark-100 hover:bg-light-800 dark:(hover:bg-dark-300);
+  @apply border-2 p-1 transition-all cursor-pointer m-1 rounded-lg bg-light-500 dark:bg-dark-100 hover:bg-light-800 dark:(hover:bg-dark-300);
 }
 
 .chord.active {

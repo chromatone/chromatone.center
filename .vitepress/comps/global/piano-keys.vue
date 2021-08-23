@@ -2,13 +2,13 @@
 .m-1.flex.justify-center
   .key(
     v-for="key in keys.notes"
-    :key="key"
-    :class="{ black: key.pos == 1 }"
+    :key="key + chroma"
+    :class="{ black: key.pos == 1, tonic: key.pitch == pitch }"
     @mouseover="key.active = true"
     @mouseleave="key.active = false"
     @click="emit('update:pitch', key.pitch)"
-    :style="{ backgroundColor: key.active || key.pitch == pitch ? pitchColor(key.pitch) : '' }"
-  )
+    :style="{ backgroundColor: isInChroma(key.pitch) || key.active || key.pitch == pitch ? pitchColor(key.pitch, key.pitch == pitch ? 4 : 3) : '' }" 
+  ) {{ names ? key.name : '' }}
 </template>
 
 <script setup>
@@ -18,24 +18,35 @@ const props = defineProps({
   pitch: {
     type: Number,
     default: 0
-  }
-});
-const box = reactive({
-  width: 800,
-  height: 100,
-  padX: 10,
-  padY: 10,
+  },
+  chroma: String,
+  size: {
+    type: String,
+    default: '2'
+  },
+  names: Boolean,
 });
 const keys = reactive({
   notes: rotateArray(notes, 3),
 });
+
+function isInChroma(pitch) {
+  if (props.chroma) {
+    let steps = rotateArray(props.chroma.split(''), -props.pitch)
+    return steps[pitch] == 1
+  }
+}
 </script>
 
 <style scoped>
 .key {
-  @apply cursor-pointer p-3 bg-white z-1 text-sm font-bold shadow rounded transition-all duration-200;
+  @apply cursor-pointer flex justify-center items-end bg-white z-1 text-sm font-bold shadow rounded transition-all duration-200;
+  padding: 1em 0.5em;
+  flex: 1;
   &.black {
-    @apply p-2 mb-5 -mx-2 bg-gray-500 z-2;
+    @apply -mx-1.2 bg-gray-300 dark:(bg-gray-700) z-2;
+    padding: 0.5em;
+    margin-bottom: 1em;
   }
   &:hover {
     @apply shadow-lg;

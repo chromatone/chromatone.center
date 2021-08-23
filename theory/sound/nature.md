@@ -14,3 +14,7 @@ Acoustic vibrations propagate as mechanical waves of pressure in a transmission 
  
 <sound-vibrations class="my-16" id="sound-vibrations" />
 <svg-save svg="sound-vibrations" />
+
+## Lindsay's Wheel of Acoustics
+
+![](./Lindsay's_Wheel_of_Acoustics.svg)

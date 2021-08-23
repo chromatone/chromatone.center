@@ -27,13 +27,13 @@ export function levelColor(
   return `hsla(${i * (360 / n)}, ${s}, ${l}, ${a})`
 }
 
-export function chromaColorMix(chroma, tonic) {
+export function chromaColorMix(chroma, tonic, part = 0.3) {
   let hsl = colord(pitchColor(tonic))
   let lch = colord(lchToHsl(tonic, 12, 1))
   chroma.split('').forEach((bit, i) => {
     if (isInChroma(chroma, tonic, i)) {
-      hsl = hsl.mix(pitchColor(i), 0.5)
-      lch = lch.mix(lchToHsl(i, 12, 1), 0.5)
+      hsl = hsl.mix(pitchColor(i), part)
+      lch = lch.mix(lchToHsl(i, 12, 1), part)
     }
   })
   return {

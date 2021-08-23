@@ -69,8 +69,8 @@ function rotate(arr, count = 1) {
 };
 const minor = "101101011010"
 
-const chord = ChordType.get(props.chroma)
-const scale = ScaleType.get(props.chroma).name
+const chord = ChordType.get(props.chroma);
+const scale = ScaleType.get(props.chroma).name;
 </script>
 
 <style  scoped>

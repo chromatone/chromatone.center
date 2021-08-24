@@ -24,6 +24,7 @@ specifiers:
   pug: 3.0.2
   tone: ^14.8.26
   typescript: ^4.3.5
+  unplugin-auto-import: ^0.1.4
   vite: ^2.5.0
   vite-aliases: 0.8.6
   vite-plugin-components: ^0.13.2
@@ -32,7 +33,6 @@ specifiers:
   vitepress: 0.16.1
   vitepress-tags: ^0.4.0
   vue: ^3.2.4
-  vue-global-api: ^0.4.1
   webmidi: ^3.0.0-alpha.5
   windicss: 3.1.7
 
@@ -52,7 +52,6 @@ dependencies:
   poly-decomp: 0.3.0
   tone: 14.8.26
   vue: 3.2.4
-  vue-global-api: 0.4.1_vue@3.2.4
   webmidi: 3.0.0-alpha.5
 
 devDependencies:
@@ -65,6 +64,7 @@ devDependencies:
   patch-vue-directive-ssr: 0.0.1
   pug: 3.0.2
   typescript: 4.3.5
+  unplugin-auto-import: 0.1.4_vite@2.5.0
   vite: 2.5.0
   vite-aliases: 0.8.6
   vite-plugin-components: 0.13.2_vite@2.5.0
@@ -269,6 +269,14 @@ packages:
 
   /@polka/url/1.0.0-next.15:
     resolution: {integrity: sha512-15spi3V28QdevleWBNXE4pIls3nFZmBbUGrW9IVPwiQczuSb9n76TCB4bsk8TSel+I1OkHEdPhu5QKMfY6rQHA==}
+    dev: true
+
+  /@rollup/pluginutils/4.1.1:
+    resolution: {integrity: sha512-clDjivHqWGXi7u+0d2r2sBi4Ie6VLEAzWMIkvJLnDmxoOhBYOTfzGbOQBA32THHm11/LiJbd01tJUpJsbshSWQ==}
+    engines: {node: '>= 8.0.0'}
+    dependencies:
+      estree-walker: 2.0.2
+      picomatch: 2.3.0
     dev: true
 
   /@tonaljs/abc-notation/4.6.2:
@@ -1188,10 +1196,6 @@ packages:
   /escape-string-regexp/2.0.0:
     resolution: {integrity: sha512-UpzcLCXolUWcNu5HtVMHYdXJjArjsF9C0aNnquZYY4uW/Vu0miy5YoWvbV345HauVvcAUnpRuhMMcqTcGOY2+w==}
     engines: {node: '>=8'}
-    dev: false
-
-  /eslint-config-vue-global-api/0.4.1:
-    resolution: {integrity: sha512-mJTiKBGLe1FXmEifYzCQzUTBpFv8OtfYzP6PAOuVRf+3hkGLMeiDh4bVzZEaJfdExtc8mPw9vp35YSLhwTselQ==}
     dev: false
 
   /esprima/4.0.1:
@@ -2415,6 +2419,37 @@ packages:
     engines: {node: '>= 10.0.0'}
     dev: true
 
+  /unplugin-auto-import/0.1.4_vite@2.5.0:
+    resolution: {integrity: sha512-kRSMAm5p+EpOj3zJ46AfzZCAWEvmkg/TFz7eNQDMsYiUnK87mrFlmYkt/p/6XOVu+i4pKjjfrE1/nM95mPwC4A==}
+    dependencies:
+      '@antfu/utils': 0.2.4
+      '@rollup/pluginutils': 4.1.1
+      magic-string: 0.25.7
+      unplugin: 0.0.8_vite@2.5.0
+    transitivePeerDependencies:
+      - rollup
+      - vite
+      - webpack
+    dev: true
+
+  /unplugin/0.0.8_vite@2.5.0:
+    resolution: {integrity: sha512-eN+JfXcV8Dq9FmnXiU8PHTsBjhyUazlztLh8L2eMLHnh4Gq1oXGkfcKdEQa8FBho5Be6IW2CsDFXwJISK1MiyQ==}
+    peerDependencies:
+      rollup: ^2.50.0
+      vite: ^2.3.0
+      webpack: ^5.0.0
+    peerDependenciesMeta:
+      rollup:
+        optional: true
+      vite:
+        optional: true
+      webpack:
+        optional: true
+    dependencies:
+      vite: 2.5.0
+      webpack-virtual-modules: 0.4.3
+    dev: true
+
   /util-deprecate/1.0.2:
     resolution: {integrity: sha1-RQ1Nyfpw3nMnYvvS1KKJgUGaDM8=}
     dev: true
@@ -2599,16 +2634,6 @@ packages:
       vue: 3.2.4
     dev: false
 
-  /vue-global-api/0.4.1_vue@3.2.4:
-    resolution: {integrity: sha512-283vpYOhVHJCpMkjNVEwZdgaAb+Y93zFaXGAWTI378MLoNuwQydjD/BAy1e81QYEmyA+JbxqcmMZVWcM9rbriw==}
-    dependencies:
-      eslint-config-vue-global-api: 0.4.1
-      vue-demi: 0.11.3_vue@3.2.4
-    transitivePeerDependencies:
-      - '@vue/composition-api'
-      - vue
-    dev: false
-
   /vue-template-es2015-compiler/1.9.1:
     resolution: {integrity: sha512-4gDntzrifFnCEvyoO8PqyJDmguXgVPxKiIxrBKjIowvL9l+N66196+72XVYR8BBf1Uv1Fgt3bGevJ+sEmxfZzw==}
     dev: true
@@ -2655,6 +2680,10 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: false
+
+  /webpack-virtual-modules/0.4.3:
+    resolution: {integrity: sha512-5NUqC2JquIL2pBAAo/VfBP6KuGkHIZQXW/lNKupLPfhViwh8wNsu0BObtl09yuKZszeEUfbXz8xhrHvSG16Nqw==}
+    dev: true
 
   /windicss/3.1.6:
     resolution: {integrity: sha512-9/ShTPRs2pg/AJo4PtbgDv9p7BUgR52WqL7Gpr8VSO6LH8z4I/oKamUAlSXqyLsWD6yKS+xtxF3FRiHVJwYcuQ==}

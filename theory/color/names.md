@@ -29,7 +29,7 @@ colors:
     en: Lime
     fr: Chartreuse
     es: Lima
-    ru: Лаймовый  
+    ru: Лаймовый
   green:
     en: Green
     fr: Vert
@@ -64,12 +64,12 @@ colors:
     en: Magenta
     fr: Magenta
     es: Magenta
-    ru: Фуксия
+    ru: Пурпурный
   rose:
-    en: Crimson
+    en: Rose
     fr: Crimson
     es: Carmesí
-    ru: Малиновый
+    ru: Малиновый (Пунцовый)
 ---
 
 

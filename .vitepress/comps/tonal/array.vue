@@ -24,7 +24,7 @@ svg#tonal-array(
     v-for="(shift,n) in tonal.bgRows"
     )
     g(
-      v-for="(note, i) in rotateArray(fifths, shift-1).splice(0,7)",
+      v-for="(note, i) in rotateArray(fifths, shift - 1).splice(0, 7)",
       :transform="`translate(${((i - 1) * 2 * tonal.dx + ((n + 1) % 2) * tonal.dx)}, ${(n - 1) * dy})`"
       )
       polygon.chord-triangle( 
@@ -51,7 +51,7 @@ svg#tonal-array(
     v-for="(shift,n) in tonal.rows"
     )
     g(
-      v-for="(note, i) in rotateArray(fifths, shift).splice(0,7)", 
+      v-for="(note, i) in rotateArray(fifths, shift).splice(0, 7)", 
       :transform="`translate(${(i * 2 * tonal.dx + (n % 2) * tonal.dx)}, ${n * dy})`"
       )
       tonal-trigger(
@@ -65,7 +65,7 @@ svg#tonal-array(
         )
   g(v-for="(shift,n) in tonal.rows")
     g(
-      v-for="(note, i) in rotateArray(fifths,shift).splice(0,6)",
+      v-for="(note, i) in rotateArray(fifths, shift).splice(0, 6)",
       :transform="'translate(' + (i * 2 * tonal.dx + (n % 2) * tonal.dx) + ',' + n * dy + ')'"
       )
       tonal-note(

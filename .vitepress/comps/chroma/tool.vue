@@ -21,12 +21,12 @@
     .flex.flex-col.items-center
       .flex.flex-wrap.my-4.justify-center
         .chord(
-          :style="{ backgroundColor: chord?.chroma == chroma ? chromaColorMix(chord.chroma, tonic).hsl : '' }"
+          :style="{ color: chord?.chroma == chroma ? 'white' : chromaColorMix(chord.chroma, tonic).hsl, backgroundColor: chord?.chroma == chroma ? chromaColorMix(chord.chroma, tonic).hsl : '' }"
           v-for="chord in chordGroup", 
           :key="chord?.aliases[0]", 
           @click="chroma = chord.chroma",
           :class="{ active: chord?.chroma == chroma }") {{ notes[tonic].name + chord?.aliases[0] }}
-          piano-keys(v-model:pitch="tonic" :chroma="chord?.chroma")
+
     .flex.flex-wrap
       .text-xl.flex-1.min-w-full.text-center.my-4
         .text-sm It may be the root chord in these scales:
@@ -38,7 +38,6 @@
           @click="scale = name"
           :class="{ active: scale == name }"
           ) {{ notes[tonic].name }} {{ name }}
-            piano-keys(v-model:pitch="tonic" :chroma="ScaleType.get(name).chroma")
 </template>
 
 <script setup>
@@ -46,7 +45,7 @@ import { reactive, ref, computed, watch } from 'vue'
 import { chords, notes, pitchColor } from 'chromatone-theory'
 import { chromaColorMix } from '@theme/composables/colors.js'
 import { ChordType, Chord, ScaleType, Interval } from '@tonaljs/tonal'
-import chordList from '@use/theory.js'
+import { chordList } from '@use/theory.js'
 import { useStorage } from '@vueuse/core'
 
 const tonic = useStorage('chroma-tonic', 0)
@@ -91,7 +90,7 @@ const chordGroup = computed(() => {
 
 <style  scoped>
 .chord {
-  @apply border-2 p-1 transition-all cursor-pointer m-1 rounded-lg bg-light-500 dark:bg-dark-100 hover:bg-light-800 dark:(hover:bg-dark-300);
+  @apply p-1 transition-all cursor-pointer m-1 rounded-lg bg-light-100 dark:bg-dark-800 hover:bg-light-800 dark:(hover:bg-dark-300);
 }
 
 .chord.active {

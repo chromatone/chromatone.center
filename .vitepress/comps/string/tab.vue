@@ -1,5 +1,5 @@
 <template lang="pug">
-svg.max-h-400px.min-w-240px.min-h-300px(
+svg.max-h-400px.min-w-100px.min-h-250px(
   version="1.1",
   baseProfile="full",
   :viewBox="`${-neck.padX} ${-neck.padY} ${neck.width + 2 * neck.padX} ${neck.height + 2 * neck.padY}`",
@@ -9,12 +9,20 @@ svg.max-h-400px.min-w-240px.min-h-300px(
   text-anchor="middle",
   dominant-baseline="middle"
 )
+  text(
+    font-weight="bold"
+    :fill="pitchColor(pitch)"
+    font-size="16px"
+    v-if="name"
+    :x="neck?.width / 2"
+    :y="-30"
+  ) {{ name }}
   line.top(
     :y1="baseFret == 1 ? 4 : 0"
     :y2="baseFret == 1 ? 4 : 0"
     :x1="baseFret == 1 ? 2 : 0"
     :x2="baseFret == 1 ? neck.width - 2 : neck.width"
-    stroke="black"
+    stroke="currentColor"
     stroke-linecap="square"
     :stroke-width="baseFret == 1 ? 8 : 2"
   )
@@ -23,6 +31,7 @@ svg.max-h-400px.min-w-240px.min-h-300px(
       :x="neck.width + 10"
       :y="fret * neck.fretHeight - neck.fretHeight / 2"
       font-size="18px"
+      fill="currentColor"
 
     ) {{ fret + baseFret - 1 }}
     line.fret(
@@ -119,6 +128,8 @@ const props = defineProps({
   baseFret: Number,
   barres: Array,
   midi: Array,
+  name: String,
+  pitch: Number,
 })
 const neck = reactive({
   stringWidth: 50,

@@ -41,7 +41,7 @@ const active = computed(() => {
   let active = true
   let chord = chordPitches.value.map((x) => (x > 11 ? x % 12 : x))
   let activity = chord.forEach(note => {
-    if (!props.activeSteps[note]) {
+    if (props.activeSteps[note] != '1') {
       active = false
     }
   })

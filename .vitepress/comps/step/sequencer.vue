@@ -1,10 +1,8 @@
 <template lang="pug">
 .flex.flex-col
-  .flex.flex-wrap
-    piano-keys(v-model:pitch="state.tonic")
+  choose-scale.py-4
+  .flex.flex-wrap.justify-center
     sqnob.w-70px(v-model="state.octave" :max="4" :min="2" :fixed="0" param="OCTAVE")
-    select(v-model="state.setNum")
-      option(v-for="scale in scales" :key="scale.setNum" :value="scale.setNum") {{ scale.name }}
     select(v-model="state.type")
       option(v-for="type in patternTypes" :key="type" :value="type") {{ type }}
     sqnob.w-50px(v-model="state.steps" :max="32" :min="4" :step="1" :fixed="0" param="steps")
@@ -44,28 +42,25 @@
 import { notes, pitchColor } from 'chromatone-theory'
 import { Scale, ScaleType, Midi, Note } from '@tonaljs/tonal'
 import { useStorage, useRafFn } from '@vueuse/core'
+import { globalScale, scaleList } from '@use/theory.js'
 import { Pattern, start, Transport, Draw } from 'tone'
 import { synthOnce } from '@use/synth.js'
 import { midiOnce } from '@use/midi.js'
-const scales = ScaleType.all();
 const state = reactive({
   started: false,
   playing: false,
   hover: false,
   mounted: false,
   current: 0,
-  tonic: useStorage('seq-tonic', 0),
   octave: useStorage('seq-octave', 3),
   bpm: useStorage('seq-bpm', 120),
   steps: useStorage('seq-steps', 16),
-  setNum: useStorage('seq-scale', 2708),
   type: useStorage('seq-type', 'up'),
   probability: useStorage('seq-prob', 1),
   humanize: useStorage('seq-human', false),
   interval: useStorage('seq-interval', '8n'),
-  note: computed(() => notes[state.tonic].name),
-  scale: computed(() => ScaleType.get(state.setNum)),
-  range: computed(() => Scale.rangeOf(state.note + state.octave + ' ' + state.scale.name)(state.note + state.octave, state.note + (state.octave + 2)).map(note => Note.simplify(note)).reverse()),
+  note: computed(() => notes[globalScale.tonic].name),
+  range: computed(() => Scale.rangeOf(state.note + state.octave + ' ' + globalScale.set.name)(state.note + state.octave, state.note + (state.octave + 2)).map(note => Note.simplify(note)).reverse()),
   midi: computed(() => state.range.map(note => Midi.toMidi(note))),
   pitches: computed(() => state.midi.map(note => (note + 3) % 12)),
 });

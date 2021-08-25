@@ -37,5 +37,7 @@ declare global {
   const onDeactivated: typeof import('vue')['onDeactivated']
   const onServerPrefetch: typeof import('vue')['onServerPrefetch']
   const onErrorCaptured: typeof import('vue')['onErrorCaptured']
+  const onRenderTracked: typeof import('vue')['onRenderTracked']
+  const onRenderTriggered: typeof import('vue')['onRenderTriggered']
 }
 export {}

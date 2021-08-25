@@ -11,7 +11,7 @@ svg.max-h-400px.min-w-100px.min-h-250px(
 )
   text(
     font-weight="bold"
-    :fill="pitchColor(pitch)"
+    :fill="notes.chordColor"
     font-size="16px"
     v-if="name"
     :x="neck?.width / 2"
@@ -141,8 +141,9 @@ const neck = reactive({
   dots: [3, 5, 7, 10]
 });
 const notes = reactive({
+  chordColor: computed(() => colord(pitchColor(props.pitch, 2)).toHex()),
   list: computed(() => props.midi.map(m => (m + 3) % 12)),
-  colors: computed(() => notes.list.map(n => colord(pitchColor(n)).toHex()))
+  colors: computed(() => notes.list.map(n => colord(pitchColor(n, 2.5)).toHex()))
 });
 </script>
 

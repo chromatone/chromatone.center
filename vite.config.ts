@@ -17,6 +17,11 @@ export default defineConfig({
       ],
       imports: [
         'vue',
+        {
+          '@vueuse/core': [
+            'useStorage'
+          ],
+        }
       ],
     }),
     //@ts-ignore

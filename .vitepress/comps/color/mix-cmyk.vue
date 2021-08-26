@@ -5,61 +5,77 @@
     baseProfile="full",
     viewBox="0 0 100 100",
     xmlns="http://www.w3.org/2000/svg",
+    stroke-width="2px"
     )
-    circle.mix-blend-multiply(
+    circle#c.mix-blend-multiply(
+      v-drag="onDrag"
       :r="mix.radius"
       cx="50"
       cy="40"
+      stroke="cyan"
+      stroke-linecap="round"
+      :stroke-dashoffset="mix.len - mix.len * (mix.c / mix.max)"
+      :stroke-dasharray="mix.len"
+      transform-origin="50 40"
+      transform="rotate(-90)"
       :fill="`hsla(180,100%,50%,${mix.c / 100})`"
     )
-    circle.mix-blend-multiply(
+    circle#m.mix-blend-multiply(
+      v-drag="onDrag"
       :r="mix.radius"
       cx="65"
       cy="65"
+      stroke="magenta"
+      stroke-linecap="round"
+      :stroke-dashoffset="mix.len - mix.len * (mix.m / mix.max)"
+      :stroke-dasharray="mix.len"
       :fill="`hsla(300,100%,50%,${mix.m / 100})`"
     )
-    circle.mix-blend-multiply(
+    circle#y.mix-blend-multiply(
+      v-drag="onDrag"
       :r="mix.radius"
       cx="35"
       cy="65"
+      stroke="yellow"
+      stroke-linecap="round"
+      :stroke-dashoffset="mix.len - mix.len * (mix.y / mix.max)"
+      :stroke-dasharray="mix.len"
+      transform-origin="35 65"
+      transform="rotate(180)"
       :fill="`hsla(60,100%,50%,${mix.y / 100})`"
     )
-    circle.mix-blend-multiply(
+    circle#k.mix-blend-multiply(
+      v-drag="onDrag"
       r="18"
       cx="50"
       cy="57"
+      stroke="black"
+      stroke-linecap="round"
+      transform-origin="50 57"
+      transform="rotate(90)"
+      :stroke-dashoffset="18 * Math.PI * 2 * (1 - (mix.k / mix.max))"
+      :stroke-dasharray="18 * Math.PI * 2"
       :fill="`hsla(60,0%,0%,${mix.k / 100})`"
     )
-    text.font-bold.text-xs(
+    text.font-bold.text-xs.pointer-events-none(
       x="50"
       y="30"
       text-anchor="middle"
       fill="white"
     ) C
-    text.font-bold.text-xs(
+    text.font-bold.text-xs.pointer-events-none(
       x="22"
       y="78"
       text-anchor="middle"
       fill="white"
     ) Y
-    text.font-bold.text-xs(
+    text.font-bold.text-xs.pointer-events-none(
       x="78"
       y="78"
       text-anchor="middle"
       fill="white"
     ) M
-    text(
-      x="50"
-      y="48"
-      font-size="2px"
-      text-anchor="middle"
-      :fill="mix.info.dark ? '#FFF' : '#000'"
-    ) 
-      tspan.font-bold {{ mix.info.hex }}
-      tspan.font-bold.text-3px(x="50" dy="4") {{ mix.info.name }} 
-      tspan(x="50" dy="4") {{ mix.info.rgb }}
-      tspan(x="50" dy="4") {{ mix.info.hsl }}
-      tspan(x="50" dy="4") {{ mix.info.cmyk }}
+    color-svg-info(:color="{ c: mix.c, m: mix.m, y: mix.y, k: mix.k, a: 1 }")
   .flex.flex-col.items-center 
   .flex.flex-wrap.justify-center
     .flex.flex-col.items-center.p-2
@@ -77,16 +93,27 @@
 </template>
 
 <script setup>
-import { getColorInfo } from '@use/colors.js'
 const mix = reactive({
   radius: 30,
-  c: 100,
-  m: 100,
-  y: 100,
-  k: 0,
+  len: computed(() => mix.radius * Math.PI * 2),
+  max: 100,
+  c: useStorage('cyan', 50),
+  m: useStorage('magenta', 50),
+  y: useStorage('yellow', 50),
+  k: useStorage('black', 10),
   cmyk: computed(() => `device-cmyk(${mix.c}%, ${mix.m}%, ${mix.y}%, ${mix.k}% / 100%)`),
-  info: computed(() => getColorInfo({ c: mix.c, m: mix.m, y: mix.y, k: mix.k, a: 1 }))
 });
+
+function onDrag(drag) {
+  let id = drag.event.target.id
+  mix[id] = Number(mix[id]) + (Number(drag.delta[0]) - Number(drag.delta[1]))
+  if (mix[id] < 0) {
+    mix[id] = 0
+  }
+  if (mix[id] > mix.max) {
+    mix[id] = mix.max
+  }
+}
 </script>
 
 <style scoped>

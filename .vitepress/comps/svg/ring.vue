@@ -14,7 +14,6 @@ path(
 </template>
 
 <script setup>
-import { computed, reactive } from 'vue'
 const props = defineProps({
   fill: {
     type: String,

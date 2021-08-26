@@ -39,5 +39,6 @@ declare global {
   const onErrorCaptured: typeof import('vue')['onErrorCaptured']
   const onRenderTracked: typeof import('vue')['onRenderTracked']
   const onRenderTriggered: typeof import('vue')['onRenderTriggered']
+  const useStorage: typeof import('@vueuse/core')['useStorage']
 }
 export {}

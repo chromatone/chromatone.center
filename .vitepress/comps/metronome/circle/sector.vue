@@ -1,10 +1,9 @@
 <template lang="pug">
-g(
-)
+g
   svg-ring(
-    :from="(step - 1) / total   * 360"
-    :to="(st  ep) / total * 360"
-    :fill="active ? colord(levelColor(step - 1, total, 1)).toHex() : 'transparent'"
+    :from="(step - 1) / total * 360"
+    :to="(step) / total * 360"
+    :fill="active ? hex : 'transparent'"
     :radius="radius + 50"
     opacity="0.5"
   )
@@ -13,7 +12,7 @@ g(
     :cy="stepCoord.y"
     :r="50"
     :fill="active ? 'currentColor' : 'transparent'"
-    :stroke="colord(levelColor(step - 1, total, 1)).toHex()"
+    :stroke="hex"
   )
   text(
     style="user-select:none;transition:all 200ms ease"
@@ -39,10 +38,11 @@ g(
 </template>
 
 <script setup>
-import { computed } from 'vue'
-import { levelColor } from "@use/colors.js";
+import { levelColor } from "@use/colors.js"
 import { getCircleCoord } from 'chromatone-theory'
 import { colord } from 'colord'
+console.log('test')
+
 const props = defineProps({
   radius: {
     type: Number,
@@ -62,14 +62,15 @@ const props = defineProps({
   }
 });
 
+const hex = computed(() => {
+  return colord(levelColor(props.step - 1, props.total, 1)).toHex()
+})
+
 const stepCoord = computed(() => {
-
   return getCircleCoord(props.step - 0.5, props.total, props.radius, 1000)
-
 })
 
 const lineCoord = computed(() => {
-
   return [
     getCircleCoord(props.step, props.total, props.radius + 50, 1000),
     getCircleCoord(props.step, props.total, props.radius - 50, 1000)

@@ -31,6 +31,10 @@ The **CMY** color model is a subtractive color model in which cyan, magenta and 
 
 When the intensities for all the components are the same, the result is a shade of gray, lighter, or darker depending on the intensity. When the intensities are different, the result is a colorized hue, more or less saturated depending on the difference of the strongest and weakest of the intensities of the primary colors employed. 
 
+### Interactive CMYK mixer
+
+Drag any of the color components up or right to increase it's value.
+
 <color-mix-cmyk />
 
 **CMYK** color model is a subtractive color model, based on the CMY color model, used in color printing, and is also used to describe the printing process itself, that is used in the layering technique by printers to create different colors on a white paper. CMYK refers to the four inks used in some color printing: cyan, magenta, yellow, and key. It uses K, black ink, since C, M, and Y inks are translucent and will only produce a gray color when laid on top of each other. 

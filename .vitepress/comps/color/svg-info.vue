@@ -1,5 +1,5 @@
 <template lang="pug">
-text(
+text.select-none.pointer-events-none(
   v-if="info"
   :x="x"
   :y="y"

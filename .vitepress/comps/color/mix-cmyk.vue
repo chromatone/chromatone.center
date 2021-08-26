@@ -1,95 +1,115 @@
 <template lang="pug">
-.flex.flex-col.items-center.mb-8
+.flex.flex-col.items-center.mb-8.p-4
   svg.max-h-3xl.w-full(
     version="1.1",
     baseProfile="full",
     viewBox="0 0 100 100",
     xmlns="http://www.w3.org/2000/svg",
     stroke-width="2px"
+    text-anchor="middle"
+    style="touch-action: pinch-zoom;"
     )
-    circle#c.mix-blend-multiply(
-      v-drag="onDrag"
-      :r="mix.radius"
-      cx="50"
-      cy="40"
-      stroke="cyan"
-      stroke-linecap="round"
-      :stroke-dashoffset="mix.len - mix.len * (mix.c / mix.max)"
-      :stroke-dasharray="mix.len"
-      transform-origin="50 40"
-      transform="rotate(-90)"
-      :fill="`hsla(180,100%,50%,${mix.c / 100})`"
-    )
-    circle#m.mix-blend-multiply(
-      v-drag="onDrag"
-      :r="mix.radius"
-      cx="65"
-      cy="65"
-      stroke="magenta"
-      stroke-linecap="round"
-      :stroke-dashoffset="mix.len - mix.len * (mix.m / mix.max)"
-      :stroke-dasharray="mix.len"
-      :fill="`hsla(300,100%,50%,${mix.m / 100})`"
-    )
-    circle#y.mix-blend-multiply(
-      v-drag="onDrag"
-      :r="mix.radius"
-      cx="35"
-      cy="65"
-      stroke="yellow"
-      stroke-linecap="round"
-      :stroke-dashoffset="mix.len - mix.len * (mix.y / mix.max)"
-      :stroke-dasharray="mix.len"
-      transform-origin="35 65"
-      transform="rotate(180)"
-      :fill="`hsla(60,100%,50%,${mix.y / 100})`"
-    )
-    circle#k.mix-blend-multiply(
-      v-drag="onDrag"
-      r="18"
-      cx="50"
-      cy="57"
-      stroke="black"
-      stroke-linecap="round"
-      transform-origin="50 57"
-      transform="rotate(90)"
-      :stroke-dashoffset="18 * Math.PI * 2 * (1 - (mix.k / mix.max))"
-      :stroke-dasharray="18 * Math.PI * 2"
-      :fill="`hsla(60,0%,0%,${mix.k / 100})`"
-    )
-    text.font-bold.text-xs.pointer-events-none(
-      x="50"
-      y="30"
-      text-anchor="middle"
+    circle#white(
       fill="white"
-    ) C
-    text.font-bold.text-xs.pointer-events-none(
-      x="22"
-      y="78"
-      text-anchor="middle"
-      fill="white"
-    ) Y
-    text.font-bold.text-xs.pointer-events-none(
-      x="78"
-      y="78"
-      text-anchor="middle"
-      fill="white"
-    ) M
-    color-svg-info(:color="{ c: mix.c, m: mix.m, y: mix.y, k: mix.k, a: 1 }")
-  .flex.flex-col.items-center 
-  .flex.flex-wrap.justify-center
-    .flex.flex-col.items-center.p-2
-      label(for="cyan" style="color:cyan") CYAN {{ mix.c }}
-      input(type="range" v-model="mix.c" min="0" max="100" id="cyan")
-    .flex.flex-col.items-center.p-2
-      label(for="magenta" style="color:magenta") MAGENTA {{ mix.m }}
-      input(type="range" v-model="mix.m" min="0" max="100" id="magenta")
-    .flex.flex-col.items-center.p-2
-      label(for="yellow" style="color:yellow") YELLOW {{ mix.y }}
-      input(type="range" v-model="mix.y" min="0" max="100" id="yellow")
-    .flex.flex-col.items-center.p-2
-      label(for="black" style="color:black") BLACK {{ mix.k }}
-      input(type="range" v-model="mix.k" min="0" max="100" id="black")
+      r="50"
+      cx=50
+      cy=50
+    )
+    g#sources
+      circle(
+        r=8
+        cx=50
+        cy=10
+        fill="cyan"
+        )
+      circle(
+        r=8
+        cx=85
+        cy=70
+        fill="magenta"
+        )
+      circle(
+        r=8
+        cx=15
+        cy=70
+        fill="yellow"
+        )
+      circle(
+        r=4
+        cx=50
+        cy=65
+        fill="black"
+        )
+    g#circles.cursor-pointer(
+      v-drag="onDrag"
+      stroke-linecap="round"
+    )
+      circle#c.mix-blend-multiply.cursor-pointer(
+        :r="mix.radius"
+        stroke="cyan"
+        :stroke-dashoffset="mix.len - mix.len * (mix.c / mix.max)"
+        :stroke-dasharray="mix.len"
+        transform="translate(50,33) rotate(-90)"
+        :fill="`hsla(180,100%,50%,${mix.c / 100})`"
+      )
+      circle#m.mix-blend-multiply.cursor-pointer(
+        :r="mix.radius"
+        stroke="magenta"
+        :stroke-dashoffset="mix.len - mix.len * (mix.m / mix.max)"
+        :stroke-dasharray="mix.len"
+        transform="translate(65,58) rotate(30)"
+        :fill="`hsla(300,100%,50%,${mix.m / 100})`"
+      )
+      circle#y.mix-blend-multiply.cursor-pointer(
+        :r="mix.radius"
+        stroke="yellow"
+        :stroke-dashoffset="mix.len - mix.len * (mix.y / mix.max)"
+        :stroke-dasharray="mix.len"
+        transform="translate(35,58) rotate(150)"
+        :fill="`hsla(60,100%,50%,${mix.y / 100})`"
+      )
+      circle#k.mix-blend-multiply(
+        v-drag="onDrag"
+        r="18"
+        stroke="black"
+        transform="translate(50,50) rotate(90)"
+        :stroke-dashoffset="18 * Math.PI * 2 * (1 - (mix.k / mix.max))"
+        :stroke-dasharray="18 * Math.PI * 2"
+        :fill="`hsla(60,0%,0%,${mix.k / 100})`"
+      )
+    g#labels.font-bold.text-xs.pointer-events-none.select-none(fill="white")
+      text(
+        x="49.5"
+        y="14"
+      ) C
+      text(
+        x="15"
+        y="74"
+      ) Y
+      text(
+        x="85"
+        y="74"
+      ) M
+      text.text-4px(
+        x="50"
+        y="66.5"
+      ) K
+
+    color-svg-info(:y="42" :color="{ c: mix.c, m: mix.m, y: mix.y, k: mix.k, a: 1 }")
+  //- .flex.flex-col.items-center 
+  //- .flex.flex-wrap.justify-center
+  //-   .flex.flex-col.items-center.p-2
+  //-     label(for="cyan" style="color:cyan") CYAN {{ mix.c }}
+  //-     input(type="range" v-model="mix.c" min="0" max="100" id="cyan")
+  //-   .flex.flex-col.items-center.p-2
+  //-     label(for="magenta" style="color:magenta") MAGENTA {{ mix.m }}
+  //-     input(type="range" v-model="mix.m" min="0" max="100" id="magenta")
+  //-   .flex.flex-col.items-center.p-2
+  //-     label(for="yellow" style="color:yellow") YELLOW {{ mix.y }}
+  //-     input(type="range" v-model="mix.y" min="0" max="100" id="yellow")
+  //-   .flex.flex-col.items-center.p-2
+  //-     label(for="black" style="color:black") BLACK {{ mix.k }}
+  //-     input(type="range" v-model="mix.k" min="0" max="100" id="black")
 </template>
 
 <script setup>

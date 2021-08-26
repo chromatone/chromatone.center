@@ -6,8 +6,9 @@ import mixPlugin from 'colord/plugins/mix'
 import namesPlugin from 'colord/plugins/names'
 import labPlugin from 'colord/plugins/lab'
 import cmykPlugin from 'colord/plugins/cmyk'
+import hwbPlugin from 'colord/plugins/hwb'
 
-extend([mixPlugin, lchPlugin, namesPlugin, labPlugin, cmykPlugin])
+extend([mixPlugin, lchPlugin, namesPlugin, labPlugin, cmykPlugin, hwbPlugin])
 
 export function lchToHsl(n = 0, total = 12, a = 1, s = 40, lightness = 60) {
   let lch = `lch(${lightness}% ${s} ${n * (360 / total)} / ${a})`
@@ -16,7 +17,6 @@ export function lchToHsl(n = 0, total = 12, a = 1, s = 40, lightness = 60) {
 }
 
 export function getColorInfo(color) {
-  console.log(color)
   const cld = colord(color)
   let info = {
     dark: cld.isDark(),
@@ -25,6 +25,7 @@ export function getColorInfo(color) {
     name: cld.toName({ closest: true }),
     cmyk: cld.toCmykString(),
     hsl: cld.toHslString(),
+    lab: cld.toLab(),
   }
   return info
 }

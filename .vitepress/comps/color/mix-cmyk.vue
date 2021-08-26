@@ -7,6 +7,7 @@
     xmlns="http://www.w3.org/2000/svg",
     stroke-width="2px"
     text-anchor="middle"
+    font-family="Commissioner, sans-serif"
     style="touch-action: pinch-zoom;"
     )
     circle#white(

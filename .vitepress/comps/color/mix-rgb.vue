@@ -1,12 +1,13 @@
 <template lang="pug">
 .flex.flex-col.items-center.mb-8.p-4
-  svg.max-h-90vh.w-full(
+  svg.max-h-3xl.w-full(
     version="1.1",
     baseProfile="full",
     viewBox="0 0 100 100",
     xmlns="http://www.w3.org/2000/svg",
     stroke-width="2px"
     style="touch-action: pinch-zoom;"
+    font-family="Commissioner, sans-serif"
     )
     circle#black(
       r="50"

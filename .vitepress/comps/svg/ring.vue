@@ -1,7 +1,7 @@
 <template lang="pug">
 path(
-  opacity="0.5"
-  style="transition: all 300ms ease-out"
+  opacity="1"
+  style="transition: all 200ms ease-out"
   :d="d" 
   :fill="fill" 
   :stroke="stroke" 

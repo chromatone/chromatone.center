@@ -31,7 +31,7 @@ We've ported almost all separate apps into the main website. It becomes more and
 
 - Pitch field / Tone grid
 - ~~Noise lab~~
-- Harmonics
+- ~~Harmonics~~
 - ~~Oscilloscope~~
 - Synth waveforms
 - Drum machine
@@ -41,8 +41,10 @@ We've ported almost all separate apps into the main website. It becomes more and
 
 
 ## STACK
+- [chromatone-theory](https://www.npmjs.com/package/chromatone-theory)
 - [vue 3](https://v3.vuejs.org/)
   - [vueUse](https://vueuse.org)
+  - [vueUse/motion](https://motion.vueuse.org)
   - [vueUse/gesture](https://gesture.vueuse.org)
     - how to prevent scrolling [example](https://vuepress.vuejs.org/guide/i18n.html#default-theme-i18n-config)
 - [vite](https://vitejs.dev/)
@@ -55,11 +57,12 @@ We've ported almost all separate apps into the main website. It becomes more and
 - [pug](https://pugjs.org/api/getting-started.html)
 - [tonaljs](https://github.com/tonaljs/tonal)
 - [webmidi.js](https://webmidijs.org/docs/)
+- [colord](https://www.npmjs.com/package/colord)
 - audio
-  - [tone.js](https://tonejs.github.io/docs/14.7.77)
+  - [tone.js](https://tonejs.github.io)
   - [meyda](https://meyda.js.org)
   - [aubiojs](https://github.com/qiuxiang/aubiojs)
-  - [audiomotion-analyzer](https://www.npmjs.com/package/audiomotion-analyzer) ? need to unconnect it from canvas to use with svg. It has 1/12 octave frequ bars to visualize
+  - [audiomotion-analyzer](https://www.npmjs.com/package/audiomotion-analyzer) 
   
 
 #### AudioWorklet further research

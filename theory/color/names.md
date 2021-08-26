@@ -72,6 +72,7 @@ colors:
     ru: Малиновый (Пунцовый)
 ---
 
+![](/media/theory/palette.svg)
 
 <color-names :list="$frontmatter.colors" :langs="$frontmatter.langs" />
 

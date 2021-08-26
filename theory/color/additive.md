@@ -23,4 +23,3 @@ The RGB color model itself does not define what is meant by red, green, and blue
 ![](./models/rgb_color_solid_cube.png)
 
 Use of the three primary colors is not sufficient to reproduce all colors; only colors within the color triangle defined by the chromaticities of the primaries can be reproduced by additive mixing of non-negative amounts of those colors of light.
-

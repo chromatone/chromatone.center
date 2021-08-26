@@ -143,7 +143,6 @@ function getRadius(qual) {
   return qual == 'minor' ? 1 : 0;
 }
 
-
 function playChord(note, qual = 'major') {
   let type = qual == 'minor' ? 'm' : ''
   let chord = Chord.get(note + type)

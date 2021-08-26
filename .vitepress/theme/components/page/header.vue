@@ -21,7 +21,7 @@
 
 <script setup>
 import { useSiblings } from '../../composables/links.js'
-import { lchToHsl } from '../../composables/colors.js'
+import { lchToHsl } from '@use/colors.js'
 const { current, total } = useSiblings();
 
 const pageColor = lchToHsl(current, total, 1, 50, 50);

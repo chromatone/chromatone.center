@@ -41,20 +41,25 @@
       y="78"
       text-anchor="middle"
       fill="white"
-    ) M
+    ) Y
     text.font-bold.text-xs(
       x="78"
       y="78"
       text-anchor="middle"
       fill="white"
-    ) Y
+    ) M
     text(
       x="50"
-      y="60"
+      y="48"
       font-size="2px"
       text-anchor="middle"
-      fill="white"
-    ) CMYK({{ mix.c }}%, {{ mix.m }}%, {{ mix.y }}%, {{ mix.k }}%)
+      :fill="mix.info.dark ? '#FFF' : '#000'"
+    ) 
+      tspan.font-bold {{ mix.info.hex }}
+      tspan.font-bold.text-3px(x="50" dy="4") {{ mix.info.name }} 
+      tspan(x="50" dy="4") {{ mix.info.rgb }}
+      tspan(x="50" dy="4") {{ mix.info.hsl }}
+      tspan(x="50" dy="4") {{ mix.info.cmyk }}
   .flex.flex-col.items-center 
   .flex.flex-wrap.justify-center
     .flex.flex-col.items-center.p-2
@@ -72,15 +77,15 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue'
-
-
+import { getColorInfo } from '@use/colors.js'
 const mix = reactive({
   radius: 30,
   c: 100,
   m: 100,
   y: 100,
   k: 0,
+  cmyk: computed(() => `device-cmyk(${mix.c}%, ${mix.m}%, ${mix.y}%, ${mix.k}% / 100%)`),
+  info: computed(() => getColorInfo({ c: mix.c, m: mix.m, y: mix.y, k: mix.k, a: 1 }))
 });
 </script>
 

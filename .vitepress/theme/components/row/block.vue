@@ -27,7 +27,7 @@
 <script setup>
 import { useData } from 'vitepress'
 const { site, title, theme } = useData()
-import { lchToHsl } from '../../composables/colors.js'
+import { lchToHsl } from '@use/colors.js'
 const props = defineProps({
   item: Object,
   color: {

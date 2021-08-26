@@ -2,8 +2,8 @@
 g(
 )
   svg-ring(
-    :from="(step - 1) / total * 360"
-    :to="(step) / total * 360"
+    :from="(step - 1) / total   * 360"
+    :to="(st  ep) / total * 360"
     :fill="active ? colord(levelColor(step - 1, total, 1)).toHex() : 'transparent'"
     :radius="radius + 50"
     opacity="0.5"
@@ -40,7 +40,7 @@ g(
 
 <script setup>
 import { computed } from 'vue'
-import { levelColor } from "@theme/composables/colors.js";
+import { levelColor } from "@use/colors.js";
 import { getCircleCoord } from 'chromatone-theory'
 import { colord } from 'colord'
 const props = defineProps({

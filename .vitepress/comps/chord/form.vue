@@ -90,7 +90,7 @@
 import { notes, pitchColor } from 'chromatone-theory'
 import { reactive, computed, ref, watch, watchEffect } from 'vue'
 import { useStorage, useTimestamp } from '@vueuse/core'
-import { chromaColorMix } from "@theme/composables/colors.js";
+import { chromaColorMix } from "@use/colors.js";
 import { useSynth } from '@use/synth.js'
 const frequencies = []
 for (let f = 0; f < 13; f++) {

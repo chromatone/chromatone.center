@@ -1,16 +1,32 @@
+import { pitchColor, isInChroma } from 'chromatone-theory'
 import { colord, extend } from 'colord'
 import lchPlugin from 'colord/plugins/lch'
 // https://www.npmjs.com/package/colord
 import mixPlugin from 'colord/plugins/mix'
-import { pitchColor, isInChroma } from 'chromatone-theory'
+import namesPlugin from 'colord/plugins/names'
+import labPlugin from 'colord/plugins/lab'
+import cmykPlugin from 'colord/plugins/cmyk'
 
-extend([mixPlugin])
-extend([lchPlugin])
+extend([mixPlugin, lchPlugin, namesPlugin, labPlugin, cmykPlugin])
 
 export function lchToHsl(n = 0, total = 12, a = 1, s = 40, lightness = 60) {
   let lch = `lch(${lightness}% ${s} ${n * (360 / total)} / ${a})`
   let hsl = colord(lch).toHslString()
   return hsl
+}
+
+export function getColorInfo(color) {
+  console.log(color)
+  const cld = colord(color)
+  let info = {
+    dark: cld.isDark(),
+    hex: cld.toHex(),
+    rgb: cld.toRgbString(),
+    name: cld.toName({ closest: true }),
+    cmyk: cld.toCmykString(),
+    hsl: cld.toHslString(),
+  }
+  return info
 }
 
 export function levelColor(

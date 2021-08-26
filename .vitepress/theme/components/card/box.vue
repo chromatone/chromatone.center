@@ -4,7 +4,7 @@
 </template>
 
 <script setup>
-import { lchToHsl } from '../../composables/colors.js'
+import { lchToHsl } from '@use/colors.js'
 const props = defineProps({
   i: {
     type: Number,

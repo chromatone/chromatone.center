@@ -115,7 +115,7 @@ svg.max-h-3xl.w-full(
 
 <script setup>
 import { notes, pitchColor, scales, isInChroma, getCircleCoord } from 'chromatone-theory'
-import { lchToHsl, chromaColorMix } from "@theme/composables/colors.js";
+import { lchToHsl, chromaColorMix } from "@use/colors.js";
 import { ScaleType, ChordType, Chord, Note } from '@tonaljs/tonal'
 import { ref, computed, onMounted, onBeforeUnmount, nextTick } from 'vue'
 const props = defineProps({

@@ -7,7 +7,7 @@ a.tile(:href="item.link", :style="{ color: color }")
 </template>
 
 <script setup>
-import { lchToHsl } from '@theme/composables/colors.js'
+import { lchToHsl } from '@use/colors.js'
 const props = defineProps({
   item: Object,
   i: Number,

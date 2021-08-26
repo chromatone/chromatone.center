@@ -12,7 +12,7 @@
 </template>
 
 <script setup>
-import { levelColor } from '@theme/composables/colors.js'
+import { levelColor } from '@use/colors.js'
 const props = defineProps({
   list: Object,
   langs: Object,

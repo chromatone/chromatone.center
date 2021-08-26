@@ -43,7 +43,7 @@
 <script setup>
 import { reactive, ref, computed, watch } from 'vue'
 import { chords, notes, pitchColor } from 'chromatone-theory'
-import { chromaColorMix } from '@theme/composables/colors.js'
+import { chromaColorMix } from '@use/colors.js'
 import { ChordType, Chord, ScaleType, Interval } from '@tonaljs/tonal'
 import { chordList } from '@use/theory.js'
 import { useStorage } from '@vueuse/core'

@@ -44,11 +44,16 @@
     ) G
     text(
       x="50"
-      y="60"
+      y="48"
       font-size="2px"
       text-anchor="middle"
-      fill="black"
-    ) rgb({{ mix.r }}, {{ mix.g }}, {{ mix.b }})
+      :fill="mix.info.dark ? '#FFF' : '#000'"
+    ) 
+      tspan.font-bold {{ mix.info.hex }}
+      tspan.font-bold.text-3px(x="50" dy="4") {{ mix.info.name }} 
+      tspan(x="50" dy="4") {{ mix.info.rgb }}
+      tspan(x="50" dy="4") {{ mix.info.hsl }}
+      tspan(x="50" dy="4") {{ mix.info.cmyk }}
   .flex.flex-wrap.justify-center
     .flex.flex-col.items-center.p-2
       label(for="red" style="color:#FF0000") RED {{ mix.r }}
@@ -62,15 +67,17 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue'
-
-
+import { getColorInfo } from '@use/colors.js'
 const mix = reactive({
   radius: 30,
   r: 255,
   g: 255,
   b: 255,
+  rgb: computed(() => `rgb(${mix.r},${mix.g},${mix.b})`),
+  info: computed(() => getColorInfo(mix.rgb))
 });
+
+
 </script>
 
 <style scoped>

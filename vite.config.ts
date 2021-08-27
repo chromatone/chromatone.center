@@ -63,7 +63,8 @@ export default defineConfig({
       'vue',
       '@vueuse/core',
       'tone',
-      '@tonaljs/tonal'
+      '@tonaljs/tonal',
+      'colord',
     ],
   },
   build: {
@@ -71,6 +72,7 @@ export default defineConfig({
       output:{
         manualChunks: {
           motion: ['@vueuse/motion'],
+          tone: ['tone'],
         }
       }
     }

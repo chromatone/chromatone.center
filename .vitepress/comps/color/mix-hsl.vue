@@ -17,7 +17,7 @@
           v-for="(step,i) in 10" :key="step"
           :stop-color="generateTone(mix.hue, 100 - i * 10).toHex()" :offset="i * 10 + '%'"
           )
-      linearGradient#gray(x1="0" x2="0" y1="0" y2="1")
+      linearGradient#light(x1="0" x2="0" y1="0" y2="1")
         stop(
           v-for="(step,i) in 10" :key="step"
           :stop-color="generateTone(mix.hue, mix.sat, 100 - i * 10).toHex()" :offset="i * 10 + '%'"
@@ -41,13 +41,13 @@
       v-drag="onDragSteps"
     )
       rect(
-        rx="1" x="-20" y="-2.5" 
+        x="-20" y="-2.5" 
         width="40" height="4" 
         fill="#ccc" stroke="currentColor"
         stroke-width="0.2")
-      rect(
-        rx="1" x="-20" y="-2.5" 
-        :width="40 * ((mix.hueCount - 2) / 58)" height="4" 
+      rect( 
+        x="-20" y="-2.5" 
+        :width="40 * (mix.hueCount / 60)" height="4" 
         fill="#aaa" stroke="currentColor"
         stroke-width="0.2")
       text.uppercase {{ mix.hueCount }} HUE STEPS 
@@ -99,7 +99,7 @@
         y="0"
         width="10"
         height="100"
-        fill="url(#gray)"
+        fill="url(#light)"
         v-drag="onDragL"
       )
       g.pointer-events-none(
@@ -156,7 +156,7 @@ const mix = reactive({
   sat: useStorage('saturation', 50),
   light: useStorage('lightness', 50),
   hsl: computed(() => `hsla(${mix.hue},${mix.sat}%,${mix.light}%,1)`),
-  hueSteps: computed(() => [...Array(mix.hueCount)].map((step, i) => 360 * i / mix.hueCount - 180 / mix.hueCount)),
+  hueSteps: computed(() => [...Array(mix.hueCount)].map((step, i) => 360 * i / mix.hueCount)),
   hueArcs: computed(() => mix.hueSteps.map((step, i, arr) => ({ from: step, to: arr[i + 1] || arr[0] }))),
 });
 

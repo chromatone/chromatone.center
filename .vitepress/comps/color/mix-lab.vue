@@ -9,6 +9,7 @@
     font-family="Commissioner, sans-serif"
     text-anchor="middle",
     dominant-baseline="middle"
+    style="touch-action: pinch-zoom; user-select:none"
     )
     defs
       linearGradient#gray(x1="0" x2="0" y1="0" y2="1")
@@ -26,9 +27,7 @@
           v-for="(step,i) in 10" :key="step"
           :stop-color="colord({ l: mix.l, a: mix.a, b: (10 - i) * mix.range / 10 - mix.range / 2, alpha: 1 }).toHex()" :offset="i * 10 + '%'"
           )
-    g#square(
-      style="touch-action: pinch-zoom;"
-    )
+    g#square
       g(
         v-for="(a,an) in mix.steps.a" :key="a + an"
       )
@@ -45,7 +44,7 @@
           :stroke="getHex(mix.l, a, b)"
           stroke-width="0.1px"
         )
-    g#b-range.cursor-pointer(style="touch-action: pinch-zoom;")
+    g#b-range.cursor-pointer
       rect#b(
         x="-15"
         y="0"
@@ -57,7 +56,7 @@
       g.pointer-events-none(
         :transform="`translate(0,${100 * (-mix.b + mix.range / 2) / (mix.range)})`"
       )
-        line.mix-blend-difference(
+        line(
           x1="-15"
           x2="-5"
           stroke="currentColor"
@@ -77,7 +76,7 @@
           y="-4"
           font-weight="bold"
         ) B {{ mix.b.toFixed(1) }}
-    g#l-range.cursor-pointer(style="touch-action: pinch-zoom;")
+    g#l-range.cursor-pointer
       rect#l(
         x="105"
         y="0"
@@ -102,7 +101,7 @@
           y="-3"
           font-weight="bold"
         ) L {{ mix.l.toFixed(1) }}
-    g#a-range.cursor-pointer(style="touch-action: pinch-zoom;")
+    g#a-range.cursor-pointer
       rect#a(
         x="0"
         y="-15"
@@ -168,7 +167,6 @@
       text.uppercase AB RANGE {{ mix.range }}
     transition(name="fade")
       g#current.cursor-pointer(
-        style="touch-action: pinch-zoom;"
         v-drag="onDrag"
       )
         rect.transition-all.duration-400.ease-in-out(

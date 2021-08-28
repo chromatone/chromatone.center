@@ -34,7 +34,7 @@
           width="10" height="5" 
           :fill="space == mix.space ? '#aaa' : '#ccc'" stroke="currentColor"
           stroke-width="0.2")
-        text.uppercase(:font-weight="space == mix.space ? 'bold' : 'normal'") {{ space }}
+        text(:font-weight="space == mix.space ? 'bold' : 'normal'") {{ space }}
     g#count.cursor-pointer(
       :transform="`translate(50, 102)`"
       font-size="2"
@@ -93,6 +93,11 @@
           r="18"
         )
         color-svg-info(:color="mix.current" :y="40")
+        text(
+          x="50"
+          y="63"
+          font-size="4"
+        ) {{ mix.hue.toFixed(0) }}&deg;
     g#l-range.cursor-pointer
       rect#light(
         x="100"
@@ -105,15 +110,16 @@
       g.pointer-events-none(
         :transform="`translate(0,${100 - mix.light})`"
       )
-        line.mix-blend-difference(
+        line(
           x1="100"
           x2="110"
           stroke="currentColor"
           stroke-linecap="round"
         )
         text(
+          font-weight="bold"
           font-size="3px"
-          x="101"
+          x="105"
           y="-2"
         ) L {{ mix.light.toFixed(1) }}
     g#s-range.cursor-pointer
@@ -128,15 +134,16 @@
       g.pointer-events-none(
         :transform="`translate(0,${100 - mix.sat})`"
       )
-        line.mix-blend-difference(
+        line(
           x1="-10"
           x2="0"
           stroke="currentColor"
           stroke-linecap="round"
         )
         text(
+          font-weight="bold"
           font-size="3px"
-          x="-9"
+          x="-5"
           y="-2"
         ) {{ paramNames[mix.space][1] }} {{ mix.sat.toFixed(1) }}
 </template>
@@ -160,7 +167,7 @@ const mix = reactive({
   hueArcs: computed(() => mix.hueSteps.map((step, i, arr) => ({ from: step, to: arr[i + 1] || arr[0] }))),
 });
 
-const spaces = ['hsl', 'lch', 'hwb']
+const spaces = ['HSL', 'Lch', 'HWB']
 
 const paramNames = {
   hsl: ['Hue', 'S', 'L'],

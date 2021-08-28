@@ -17,6 +17,7 @@ The HSL representation models the way different paints mix together to create co
 Meanwhile, the HSV representation models how colors appear under light. The difference between HSL and HSV is that a color with maximum lightness in HSL is pure white, but a color with maximum value/brightness in HSV is analogous to shining a white light on a colored object (e.g. shining a bright white light on a red object causes the object to still appear red, just brighter and more intense, while shining a dim light on a red object causes the object to appear darker and less bright).
 
 ## Interactive HSL, LCH and HWB color mixer
+Choose any of the models by clicking on it's name. You can define a hue for the color by clicking on it's sector and then change two other parameters either by dragging the bars on the side or just swiping across the circle. Top-down motion is for the L (W) component and right-left is for the other one. 
 
 <color-mix-hsl />
 

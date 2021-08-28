@@ -1,9 +1,9 @@
 <template lang="pug">
 .flex.flex-col.items-center.mb-8.p-4
-  svg.max-h-3xl.w-full(
+  svg.min-h-xl.max-h-3xl.w-full(
     version="1.1",
     baseProfile="full",
-    viewBox="0 -5 100 115",
+    viewBox="-15 -5 130 115",
     xmlns="http://www.w3.org/2000/svg",
     stroke-width="2px"
     font-family="Commissioner, sans-serif"
@@ -66,13 +66,13 @@
           :stroke="generateTone(arc.from).toHex()"
           @click="mix.hue = arc.from"
         )
-      g#coords
+      g#coords.mix-blend-difference
         circle(
           :cx="50"
           :cy="50"
           :r="mix.sat * 0.27 + 18"
           fill="none"
-          stroke="black"
+          stroke="white"
           stroke-width="0.2"
         )
         line.transition-all.duration-200(
@@ -82,7 +82,7 @@
           y1=45
           y2=0
           stroke-width="0.2"
-          stroke="black"
+          stroke="white"
           :transform="`translate(50,50) rotate(${angle - 180 + 180 / mix.hueCount})`"
         )
       g#current

@@ -155,7 +155,7 @@ import { useTransition, TransitionPresets } from '@vueuse/core'
 
 const mix = reactive({
   current: computed(() => generateTone(mix.hue).toHex()),
-  space: useStorage('color-space', 'lch'),
+  space: useStorage('color-space', 'Lch'),
   ring: useStorage('color-rings', 'tints'),
   hueCount: useStorage('hueCount', 12),
   toneCount: useStorage('toneCount', 6),

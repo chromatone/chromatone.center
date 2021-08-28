@@ -170,9 +170,9 @@ const mix = reactive({
 const spaces = ['HSL', 'Lch', 'HWB']
 
 const paramNames = {
-  hsl: ['Hue', 'S', 'L'],
-  lch: ['Hue', 'C', 'L'],
-  hwb: ['Hue', 'B', 'W',]
+  HSL: ['Hue', 'S', 'L'],
+  Lch: ['Hue', 'C', 'L'],
+  HWB: ['Hue', 'B', 'W',]
 }
 
 const angle = useTransition(computed(() => mix.hue), {
@@ -181,9 +181,9 @@ const angle = useTransition(computed(() => mix.hue), {
 })
 
 function generateTone(hue = mix.hue, sat = mix.sat, light = mix.light) {
-  if (mix.space == 'lch') {
+  if (mix.space == 'Lch') {
     return colord(`lch(${light}% ${sat} ${hue} / 1)`)
-  } else if (mix.space == 'hsl') {
+  } else if (mix.space == 'HSL') {
     return colord(`hsl(${hue}, ${sat}%, ${light}%)`)
   } else {
     return colord({ h: hue, w: light, b: sat, a: 1 })

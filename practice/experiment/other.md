@@ -49,6 +49,9 @@ links:
   - url: https://www.sequencer64.com
     title: Sequencer64
     subtitle: Sequencer64 is a progressive web application that allows you to quickly sequence a 64-step pattern for a 9-sound sampler.
+  - url: https://tonejs.github.io/demos
+    title: Tone.js demos
+    subtitle: A collection of interactive WebAudio online apps built with Tone.js library
 date: 2018-09-08
 ---
 

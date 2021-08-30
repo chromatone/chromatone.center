@@ -8,7 +8,7 @@
     :total="rows.length"
     v-slot="{ color }"
     )
-    row-block(
+    row-block.m-1(
       :item="area", 
       :color="color"
       )  

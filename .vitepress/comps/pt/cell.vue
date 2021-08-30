@@ -20,8 +20,7 @@
 </template>
 
 <script setup>
-import { computed, ref, reactive, watch } from 'vue'
-import { context, start, gainToDb, PanVol, MonoSynth } from 'tone'
+import { context, start, gainToDb, PanVol } from 'tone'
 import { useSynth } from './synth.js'
 
 const props = defineProps({
@@ -76,7 +75,7 @@ const color = computed(() => {
     (synth.active ? "100" : "25") +
     "%," +
     Math.abs(props.octave + 2) * 8 +
-    "%)"
+    "%,1)"
   );
 })
 

@@ -3,6 +3,7 @@ title: Chords
 subtitle: Harmonic sets of pitches/frequencies consisting of multiple notes that are heard as if sounding simultaneously
 cover: theory/am7-res.svg
 tags: music
+date: 2021-07-20
 ---
 
 For many practical and theoretical purposes, arpeggios and broken chords (in which the notes of the chord are sounded one after the other, rather than simultaneously), or sequences of chord tones, may also be considered as chords in the right musical context.

@@ -1,5 +1,5 @@
 <template lang="pug">
-.flex.p-4
+.flex.flex-wrap.p-4
   // .p-4.bg-green-400(@click="startContext()") Start
   pt-control-switch(
     label="letters",

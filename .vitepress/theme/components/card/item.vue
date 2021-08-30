@@ -23,12 +23,11 @@ const props = defineProps({
   item: Object,
   color: String
 });
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </script>
+</script>
 
 <style  scoped>
 .crd {
-  @apply shadow-md rounded-sm mx-2 md:mx-0 sm:mx-4 bg-light-200 dark:bg-dark-200
+  @apply rounded-sm mx-2 md:mx-0 sm:mx-4 bg-light-200 dark:bg-dark-200
   flex flex-col items-stretch 
   transition-all
   static;
@@ -39,12 +38,12 @@ const props = defineProps({
 }
 
 .info {
-  @apply p-4 my-auto;
+  @apply p-8 my-auto;
   flex: 1 1 80%;
 }
 
 .cover {
-  @apply p-16 bg-cover bg-center rounded;
+  @apply p-32 bg-cover bg-center rounded;
   filter: saturate(10%) opacity(70%);
   transition: all 200ms ease-in-out;
   flex: 1 1 20%;

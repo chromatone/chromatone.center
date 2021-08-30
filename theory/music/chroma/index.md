@@ -3,6 +3,7 @@ title: Pitch classes and chroma
 subtitle: There is a huge amount of possible note combinations. But it's countable. And very useful to navigate music concepts.
 tags: music
 cover: apps/browser.png
+date: 2021-07-30
 ---
 
 A [pitch class](https://en.wikipedia.org/wiki/Pitch_class) (p.c. or pc) is a set of all pitches that are a whole number of octaves apart, e.g., the pitch class A consists of the As in all octaves. "The pitch class A stands for all possible As, in whatever octave position."

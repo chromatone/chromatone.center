@@ -2,6 +2,10 @@
 title: Share links
 subtitle: You can use Chromatone to express your ideas or to better understand others. Sharing your media products may help people find the colorful language too.
 tags: support
+buttons:
+  - url: https://www.instagram.com/chromatone.center
+    text: "chromatone.center"
+    type: instagram
 ---
 
 You can share your creations with the world! Or you can bring us in to make lectures, workshops or performances at your places. We're open to any kind of collaboration!

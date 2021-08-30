@@ -3,6 +3,8 @@
   a.button(v-for="link in buttons", :key="link.url", :href="link.url", target="_blank", :style="{ backgroundColor: color }") 
     la-link(v-if="link?.type == 'primary'")
     la-github(v-if="link?.type == 'github'")
+    la-instagram(v-if="link?.type == 'instagram'")
+    la-heart(v-if="link?.type == 'heart'")
     span {{ link.text }}
 </template>
 

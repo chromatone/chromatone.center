@@ -17,7 +17,6 @@ ChordType.add(['1P', '7M'], ['7M'], 'major seventh')
 export const chordList = ChordType.all()
 export const scaleList = ScaleType.all()
 
-import { useStorage } from '@vueuse/core'
 export const globalScale = reactive({
   tonic: useStorage('tonic', 0),
   note: computed(() => notes[globalScale.tonic]),

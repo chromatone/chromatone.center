@@ -6,7 +6,7 @@ tags: support
 buttons:
   - url: https://ko-fi.com/chromatone
     text: Buy us a coffee
-    type: primary
+    type: heart
 ---
 
 Chromatone is an open source initiative and we are based on voluntary contributions of code, time and money. You can become a part of the development by even a small donation – it really gives us energy to continue it further. 

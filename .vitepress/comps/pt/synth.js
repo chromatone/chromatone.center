@@ -1,4 +1,3 @@
-import { computed, reactive, watch, onBeforeUnmount } from 'vue'
 import { gainToDb, PanVol, MonoSynth } from 'tone'
 import { pitchFreq } from 'chromatone-theory'
 
@@ -9,6 +8,9 @@ export function useSynth(pitch, octave) {
       type: 'sawtooth',
     },
     envelope: {
+      attack: 0.5,
+    },
+    filterEnvelope: {
       attack: 0.05,
     },
   }).connect(panVol)
@@ -29,6 +31,7 @@ export function useSynth(pitch, octave) {
 
   onBeforeUnmount(() => {
     synth.triggerRelease()
+    synth.dispose()
   })
 
   watch(

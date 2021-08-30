@@ -17,18 +17,22 @@ const props = defineProps({
   height: {
     type: Number,
     default: 6
+  },
+  borderWidth: {
+    type: Number,
+    default: 2
   }
 });
 
 const rowColor = lchToHsl(props.i, props.total);
 const color = computed(() => lchToHsl(props.i, props.total));
-const shadow = computed(() => `0 0 0 2px ${color.value}, 0 ${props.height}px 0 2px ${color.value}`);
-const hoverShadow = computed(() => `0 0 0 2px ${color.value}, 0 ${props.height * 2}px 0 4px ${color.value}`);
+const shadow = computed(() => `0 0 0 ${props.borderWidth}px ${color.value}, 0 ${props.height}px 0 2px ${color.value}`);
+const hoverShadow = computed(() => `0 0 0 ${props.borderWidth}px ${color.value}, 0 ${props.height * 2}px 0 4px ${color.value}`);
 </script>
 
 <style scoped>
 .block {
-  @apply rounded transition-all duration-150;
+  @apply rounded-sm mx-2 transition-all duration-150;
   box-shadow: v-bind(shadow);
   &:hover {
     box-shadow: v-bind(hoverShadow);

@@ -9,7 +9,11 @@
       ) {{ name }}
   .text-xl.font-bold Scale
   choose-scale.flex-1
-  .text-xl.font-bold.mb-2 Root note
+  string-neck.my-4(
+    :instrument="current"
+    :chordNotes="Chord.get(state.key + state.suffix).notes"
+    )
+  .text-xl.font-bold.mb-2 Chord root note
   .flex.flex-wrap.justify-center.my-2
     button.note(
       :style="{ backgroundColor: pitchColor(k, 3, rotateArray(globalScale.full?.chroma, -globalScale.tonic)[k] == '1' ? 1 : 0.05) }"
@@ -17,7 +21,7 @@
       v-for="(key,k) in state.instrument.keys" :key="key"
       @click="state.pitch = k"
     ) {{ key }}
-  .text-xl.font-bold.mt-2 Chord
+  .text-xl.font-bold.mt-2 Chord type
   .flex.flex-col.items-center.mb-2
     .flex.flex-wrap.justify-center.my-1.py-1.border-b-1(v-for="(chords, title) in state.byNotes" :key="chords")
       .p-1.m-1 {{ title }}:
@@ -31,7 +35,7 @@
   .flex.flex-wrap.justify-center
     .tab(v-for="(pos,n) in state.tabs?.positions" :key="pos" )
       string-tab( 
-        :id="pos.frets.join('')"
+        :id="state.key + state.suffix + n"
         :name="state.key + state.suffix"
         :pitch="state.pitch"
         v-bind="pos"
@@ -63,9 +67,8 @@ const state = reactive({
   }),
   chords: computed(() => {
     return state.instrument?.suffixes.map(suffix => {
-      let chord = Chord.get(state.key + suffix)
       return {
-        ...chord,
+        ...Chord.get(state.key + suffix),
         suffix,
       }
     })
@@ -104,7 +107,7 @@ button {
     }
   }
   &.active {
-    @apply font-bold opacity-100 border-current;
+    @apply opacity-100 border-current;
   }
   &:hover {
     @apply opacity-90;

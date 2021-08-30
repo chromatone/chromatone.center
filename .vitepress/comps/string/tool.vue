@@ -52,7 +52,7 @@
         :x2="40 * i + 50"
       )
       line.end(
-        v-for="y in [0,1000]"
+        v-for="y in [0, 1000]"
         :key="y"
         stroke="currentColor"
         stroke-width="2"
@@ -178,7 +178,6 @@
 </template>
 
 <script setup>
-import { reactive, computed, watch } from 'vue'
 import { useStorage } from '@vueuse/core'
 import { Note, Interval, Chord } from '@tonaljs/tonal'
 import { freqColor } from 'chromatone-theory'
@@ -193,7 +192,7 @@ const props = defineProps({
 const instrument = useStorage('instrument-calc', {
   l: 430,
   frets: 27,
-  title: 'Guitar',
+  title: 'Ukulele',
   tuning: ['C4', 'G4', 'E4', 'A4'],
 });
 
@@ -217,7 +216,7 @@ watch(() => instrument.value.title, title => {
 })
 
 const inlays = computed(() => {
-  return [3, 5, 7, 9, 15, 17, 19, 21].filter(el => el < instrument.value.frets)
+  return [3, 5, 7, 9, 12, 15, 17, 19, 21].filter(el => el < instrument.value.frets)
 })
 
 const octaves = computed(() => {

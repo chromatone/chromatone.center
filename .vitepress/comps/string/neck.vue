@@ -66,7 +66,7 @@
 
 <script setup>
 import { Note, Interval, Pcset } from '@tonaljs/tonal'
-import { freqColor } from 'chromatone-theory'
+import { freqColor, freqPitch } from 'chromatone-theory'
 import { colord } from 'colord'
 import { globalScale } from '@use/theory.js'
 const props = defineProps({

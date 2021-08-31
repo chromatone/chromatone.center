@@ -141,9 +141,9 @@ const neck = reactive({
   dots: [3, 5, 7, 10]
 });
 const notes = reactive({
-  chordColor: computed(() => colord(pitchColor(props.pitch, 2)).toHex()),
+  chordColor: computed(() => colord(pitchColor(props.pitch, 3)).toHex()),
   list: computed(() => props.midi.map(m => (m + 3) % 12)),
-  colors: computed(() => notes.list.map(n => colord(pitchColor(n, 2.5)).toHex()))
+  colors: computed(() => notes.list.map(n => colord(pitchColor(n, 3)).toHex()))
 });
 </script>
 

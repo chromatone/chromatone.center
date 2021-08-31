@@ -13,7 +13,7 @@
     :instrument="current"
     :chordNotes="Chord.get(state.key + state.suffix).notes"
     )
-  .text-xl.font-bold.mb-2 Chord root note
+  .text-xl.font-bold.mb-2 Chord root
   .flex.flex-wrap.justify-center.my-2
     button.note(
       :style="{ backgroundColor: pitchColor(k, 3, rotateArray(globalScale.full?.chroma, -globalScale.tonic)[k] == '1' ? 1 : 0.05) }"
@@ -31,7 +31,7 @@
         v-for="chord in chords" :key="chord.suffix"
         @click="state.suffix = chord.suffix"
       )  {{ chord.symbol || chord.suffix }}
-  .p-2.text-2xl.font-bold {{ state.key }} {{ state.suffix }}
+  .p-2.text-2xl.font-bold.my-2 {{ state.key }} {{ state.suffix }} tabs
   .flex.flex-wrap.justify-center
     .tab(v-for="(pos,n) in state.tabs?.positions" :key="pos" )
       string-tab( 

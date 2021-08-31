@@ -10,29 +10,30 @@
     text-anchor="middle",
     dominant-baseline="middle"
     )
-    line(
-      stroke="currentColor"
-      stroke-width="10"
-      y1="0"
-      :y2="neck.height"
-    )
-    g.fret(v-for="fret in neck.fretNum" :key="fret")
+    g#fretboard
       line(
-        :y1="neck.height"
-        :x1="fret * neck.fretWidth"
-        :x2="fret * neck.fretWidth"
         stroke="currentColor"
-        stroke-width="2"
-        opacity="0.5"
-        )
-      circle.inlay(
-        v-if="inlays.find(fr => fr == fret)"
-        :cx="(fret - 0.5) * neck.fretWidth"
-        :cy="neck.height / 2"
-        r="5"
-        opacity="0.8"
-        fill="currentColor"
+        stroke-width="10"
+        y1="0"
+        :y2="neck.height"
       )
+      g.fret(v-for="fret in neck.fretNum" :key="fret")
+        line(
+          :y1="neck.height"
+          :x1="fret * neck.fretWidth"
+          :x2="fret * neck.fretWidth"
+          stroke="currentColor"
+          stroke-width="2"
+          opacity="0.5"
+          )
+        circle.inlay(
+          v-if="inlays.find(fr => fr == fret)"
+          :cx="(fret - 0.5) * neck.fretWidth"
+          :cy="neck.height / 2"
+          r="5"
+          opacity="0.8"
+          fill="currentColor"
+        )
     g#strings
       g.string(
         v-for="(string,s) in neck.strings" 

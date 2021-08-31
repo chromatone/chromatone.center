@@ -3,7 +3,7 @@ title: Perceptual color models
 subtitle: Color spaces based on the "standard observer" perception of colors
 tags: color
 date: 2021-08-08
-cover: /theory/color/CIE_1976_UCS.png
+cover: theory/color/CIE_1976_UCS.png
 ---
 
 ## Munsell color system

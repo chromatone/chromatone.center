@@ -3,7 +3,7 @@ title: Overtones
 subtitle: A string fixed from both ends produces a harmonic set of incremental frequency partials, also called harmonics.
 tags: sound
 date: 2021-08-24
-cover: /theory/overtones.svg
+cover: theory/overtones.svg
 ---
 
 ## Harmonics – the natural resonances

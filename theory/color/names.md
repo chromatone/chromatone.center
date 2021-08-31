@@ -3,7 +3,7 @@ title: Color names
 subtitle: Know how to name any color of 12 equally spaced hues
 tags: color
 date: 2021-08-01
-cover: /theory/color-names.svg
+cover: theory/color-names.svg
 langs:
   en: English
   fr: Français

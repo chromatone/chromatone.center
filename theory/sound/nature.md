@@ -3,7 +3,7 @@ title: Nature of the sound
 subtitle: The acoustic waves - their sources and mediums.
 tags: sound
 date: 2021-08-30
-cover: /theory/sound.svg
+cover: theory/sound.svg
 ---
 
 ## What is sound?

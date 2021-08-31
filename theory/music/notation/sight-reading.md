@@ -1,7 +1,7 @@
 ---
 title: Sight-reading
 subtitle: The practice of reading and performing of a piece of song in a music notation that the performer has not seen or learned before.
-cover: /theory/notation/Michelangelo_Caravaggio_026.jpg
+cover: theory/notation/Michelangelo_Caravaggio_026.jpg
 date: 2021-08-16
 tags: notation
 ---

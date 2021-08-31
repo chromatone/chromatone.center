@@ -3,7 +3,7 @@ title: Human auditory system
 subtitle: Explore the intricate and inredibly complicated mechanism of converting acoustic vibrations to electrical nerve signals.
 tags: sound
 date: 2021-08-28
-cover: /theory/hearing/auditory-system.png
+cover: theory/hearing/auditory-system.png
 ---
 
 ## Tonal perception

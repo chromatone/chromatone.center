@@ -3,7 +3,7 @@ title: The Sun
 subtitle: The Sun is the center of our Solar system and is the main source of all light on Earth.
 tags: light
 date: 2021-08-30
-cover: /theory/sun.jpg
+cover: theory/sun.jpg
 ---
 
 The Sun is the center of our Solar system and is the main source of all light on Earth.

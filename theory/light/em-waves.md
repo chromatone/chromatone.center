@@ -3,7 +3,7 @@ title: Electromagnetic radiation
 subtitle: EM-waves propagationg through space
 tags: light
 date: 2021-08-24
-cover: /theory/emwavepropagation.jpg
+cover: theory/emwavepropagation.jpg
 ---
  
 

@@ -76,7 +76,6 @@
           stroke-width="0.2"
         )
         line.transition-all.duration-200(
-          ref="arrow"
           x1=0
           x2=0
           y1=45

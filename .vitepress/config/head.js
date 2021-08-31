@@ -3,7 +3,26 @@ import { metaData } from './constants'
 const head = [
   ['meta', { name: 'author', content: metaData?.author }],
   ['meta', { name: 'keywords', content: metaData?.tags }],
-  ['link', { rel: 'icon', type: 'image/svg+xml', href: metaData.icon }],
+  ['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
+  [
+    'link',
+    {
+      rel: 'alternate icon',
+      sizes: '16x16',
+      type: 'image/png',
+      href: '/favicon.ico',
+    },
+  ],
+  [
+    'link',
+    {
+      rel: 'apple-touch-icon',
+      sizes: '180x180',
+      href: '/apple-touch-icon.png',
+    },
+  ],
+  ['link', { rel: 'mask-icon', color: '#ffffff', href: '/favicon.svg' }],
+  ['meta', { name: 'theme-color', content: '#ffffff' }],
   [
     'meta',
     {

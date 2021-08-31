@@ -10,7 +10,7 @@ header.nav-bar
     state-synth
   state-mute
   state-dark
-  nav-toggle-sidebar(@toggle="$emit('toggle')  ")
+  nav-toggle-sidebar(@toggle="$emit('toggle')")
 </template>
 
 <script setup>

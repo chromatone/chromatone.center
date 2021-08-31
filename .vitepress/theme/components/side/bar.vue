@@ -1,8 +1,10 @@
 <template lang="pug">
 aside(class="max-w-sm h-auto border-l-1px border-$c-divider")
+  slot
   .sidebar(:class="{ open }")
     // nav-links.nav
     side-Links
+  
 </template>
 
 <script setup>

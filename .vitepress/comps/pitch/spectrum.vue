@@ -41,8 +41,6 @@ const wave = new Waveform(512)
 const fft = new FFT({ size: 4096, smoothing: 0 })
 const mic = new UserMedia().connect(fft).connect(wave)
 
-
-
 const audio = reactive({
   initiated: false,
   fft: [],

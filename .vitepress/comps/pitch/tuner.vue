@@ -6,6 +6,7 @@
   version="1.1",
   baseProfile="full",
   viewBox="0 0 400 300",
+  style="touch-action:none"
   xmlns="http://www.w3.org/2000/svg",
   )
     rect(
@@ -16,7 +17,7 @@
     )
     line(
       style="transition:all 200ms ease; "
-      v-for="(bar,i) in state.spec.slice(0,100)",
+      v-for="(bar,i) in state.spec.slice(0, 100)",
       :key="i",
       stroke="white"
       stroke-linecap="round"

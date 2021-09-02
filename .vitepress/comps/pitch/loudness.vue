@@ -5,6 +5,7 @@ svg#loudness.max-h-3xl.w-full.select-none(
   baseProfile="full",
   viewBox="-50 -50 1000 720",
   xmlns="http://www.w3.org/2000/svg",
+  style="touch-action:none"
   @mousemove="mouse.getCursorPosition"
   @click="points.add()"
   )

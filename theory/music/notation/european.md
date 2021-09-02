@@ -73,7 +73,7 @@ Aleatoric music (also aleatory music or chance music; from the Latin word alea, 
 
 Witold Roman Lutosławski (25 January 1913 – 7 February 1994) was a Polish composer and conductor. 
 
-![](./Lutosławski_Symphony_No._2_nos._7-9.gif)
+![](./lutoslawski.gif)
 
 John Milton Cage Jr. (September 5, 1912 – August 12, 1992) was an American composer, music theorist, artist, and philosopher. A pioneer of indeterminacy in music, electroacoustic music, and non-standard use of musical instruments, Cage was one of the leading figures of the post-war avant-garde.
 

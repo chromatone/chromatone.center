@@ -13,6 +13,8 @@ But they're stil oscillations, so we an compare their frequencies and wavelenght
 
 ## Frequency
 
+![](./acoustic-spectrum.svg)
+
 Let's start with frequencies. What is **1 Hz**? It's one oscillation per second. For EM it corresponds to radiation far in the **long radio spectrum**. We can't hear such slow air oscillations and 1 Hz is in **infrasonic** range.
 
 <img src="/media/theory/em-acoustic.svg" >

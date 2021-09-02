@@ -126,11 +126,11 @@
       :key="overtone"
       :data-num="i + 1"
       :transform="`translate(0, ${overtone.position})`"
-      @mouseenter="sound.change(overtone.frequency)"
+      @mouseenter="sound.change(overtone.frequency, i)"
       @mouseover="overtone.hover = true"
       @mouseleave="overtone.hover = false"
-      @mousedown="sound.play(overtone.frequency); overtone.active = true"
-      @touchstart="sound.play(overtone.frequency); overtone.active = true"
+      @mousedown="sound.play(overtone.frequency, i); overtone.active = true"
+      @touchstart="sound.play(overtone.frequency, i); overtone.active = true"
       @mouseup="sound.stop(); overtone.active = false"
       @touchend="sound.stop(); overtone.active = false"
       @touchcancel="sound.stop(); overtone.active = false"
@@ -255,7 +255,7 @@ const sound = reactive({
     }).toDestination()
     saw = new Synth({
       oscillator: {
-        type: 'sawtooth',
+        type: 'sawtooth8',
       },
       volume: -10,
       envelope: {
@@ -274,16 +274,18 @@ const sound = reactive({
     if (!sound.enabled) return
     saw.triggerRelease()
   },
-  play(note) {
+  play(note, order) {
     if (!sound.enabled) return
-    sine.triggerAttack(note)
+    saw.volume.rampTo(-10 - 100 * order, 0.01)
+    sine.triggerAttack(note, '+0.5', (overtones.count - order) / overtones.count)
   },
   stop() {
     if (!sound.enabled) return
     sine.triggerRelease()
   },
-  change(note) {
+  change(note, order) {
     if (!sound.enabled) return
+    saw.volume.rampTo(-10 - 100 * order, 0.01)
     sine.setNote(note)
   }
 })
@@ -303,9 +305,9 @@ watch(() => time.move, move => {
 }, { immediate: true })
 
 const fundamental = reactive({
-  frequency: 220,
-  pitch: 0,
-  octave: 3,
+  frequency: useStorage('overtones-fundamental', 220),
+  pitch: useStorage('overtones-pitch', 0),
+  octave: useStorage('overtones-fundamental', 3),
   points: computed(() => {
     let points = []
     for (let pos = 0; pos <= box.width; pos += 1) {

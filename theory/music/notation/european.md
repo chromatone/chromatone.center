@@ -41,6 +41,17 @@ In the early 11th century, Beneventan neumes (from the churches of Benevento in 
 
 By the 13th century, the neumes of Gregorian chant were usually written in square notation on a staff with four lines and three spaces and a clef marker, as in the 14th–15th century Graduale Aboense shown here. In square notation, small groups of ascending notes on a syllable are shown as stacked squares, read from bottom to top, while descending notes are written with diamonds read from left to right. In melismatic chants, in which a syllable may be sung to a large number of notes, a series of smaller such groups of neumes are written in succession, read from left to right. A special symbol called the custos, placed at the end of a system, showed which pitch came next at the start of the following system. Special neumes such as the oriscus, quilisma, and liquescent neumes, indicate particular vocal treatments for these notes. This system of square notation is standard in modern chantbooks. 
 
+![](./UtQueantLaxis-Arezzo.png)
+
+<youtube-embed video="veJNu1fi8p4" />
+
+>  Ut queant laxis     
+>  Resonare fibris,     
+>  Mira gestorum      
+>   Famuli tuorum,     
+>   Solve polluti     
+>   Labii reatum,     
+>   Sancte Johannes.    
 
 ![](./Graduale_Aboense.jpg)
 
@@ -55,3 +66,13 @@ Mensural notation grew out of an earlier, more limited method of notating rhythm
 ![](./CordierColor.jpg)
 
 The decisive innovation of mensural notation was the systematic use of different note shapes to denote rhythmic durations that stood in well-defined, hierarchical numerical relations to each other. While less context dependent than notation in rhythmic modes, mensural notation differed from the modern system in that the values of notes were still somewhat context-dependent. 
+
+## XX century
+
+There was a huge experimentation between composers to find new way to communicate music. One of the brightest examples are compositions by John Cage.
+
+![](./john-cage-1.jpg)
+
+![](./john-cage-2.jpeg)
+
+![](./john-cage-3.jpg)

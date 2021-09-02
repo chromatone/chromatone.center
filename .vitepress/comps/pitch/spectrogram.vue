@@ -7,6 +7,8 @@
     :height="state.height"
     ref="canv"
   )
+.flex.justify-center
+  sqnob(v-model="state.speed" param="speed" :min="1" :max="3" :step="0.5")
 </template>
   
 <script setup>
@@ -37,14 +39,14 @@ function analyze() {
 
   const audio = new AudioMotionAnalyzer(null, {
     source: mic,
-    mode: 2,
+    mode: 1,
     useCanvas: false,
     onCanvasDraw(instance) {
       tempCtx.drawImage(canvas, 0, 0, state.width, state.height)
       let bars = instance.getBars()
       for (let i = 0; i < bars.length; i++) {
         ctx.fillStyle = colorIt((bars[i].freqLo + bars[i].freqHi) / 2, bars[i].value[0])
-        ctx.fillRect(state.width - state.speed, state.height - i * 2, state.speed, 2)
+        ctx.fillRect(state.width - state.speed, state.height - i, state.speed, 1)
       }
       ctx.translate(-state.speed, 0)
       ctx.drawImage(tempCanvas, 0, 0, state.width, state.height)
@@ -54,7 +56,7 @@ function analyze() {
 }
 
 function colorIt(freq, value) {
-  return `hsl(${freqPitch(freq) * 30}, ${value * 80}%, ${value * 50}%)`
+  return `hsla(${freqPitch(freq) * 30}, ${value * 100}%, ${value * 80}%, 0.3)`
 }
 
 onMounted(() => {

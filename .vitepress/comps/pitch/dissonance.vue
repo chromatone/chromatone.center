@@ -6,13 +6,14 @@ svg#dissonance.max-h-3xl.w-full.my-20.select-none(
   xmlns="http://www.w3.org/2000/svg",
   @mousemove="mouse.getCursorPosition"
   ref="svg"
+  style="touch-action:none"
   )
   defs
     linearGradient#intervalGradient
       stop(offset="0%" :stop-color="freqColor(freq.main)")
       stop(offset="100%" :stop-color="freqColor(freq.hz)")
   g.cursor-pointer(
-    v-for="(fr,f) in [220,440]"
+    v-for="(fr,f) in [220, 440]"
     :key="fr"
     @click="freq.main = fr"
     :transform="`translate(${10 + f * 140},0)`"

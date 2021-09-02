@@ -4,13 +4,14 @@ svg#fifths.max-h-3xl.w-full(
   baseProfile="full",
   viewBox="0 0 100 100",
   xmlns="http://www.w3.org/2000/svg",
+  style="touch-action:none"
   )
   g(
     v-for="(scale,qual) in scales"
     :key="qual"
   )
     g.around(
-      style="mix-blend-mode: screen;cursor:pointer"
+      style="cursor:pointer"
       v-for="(note,i) in scale", 
       :key="i",
       @mousedown="playChord(note.name, qual)", 
@@ -27,7 +28,7 @@ svg#fifths.max-h-3xl.w-full(
         :to="(i) / 12 * 360 + 15"
         :radius="40 - 12 * getRadius(qual)"
         :thickness="10"
-        :opacity="Math.abs(tonic - i) == 11 || Math.abs(tonic - i) % 12 <= 1 ? 0.6 : 0.2"
+        :opacity="Math.abs(tonic - i) == 11 || Math.abs(tonic - i) % 12 <= 1 ? 0.8 : 0.2"
         :fill="Math.abs(tonic - i) == 11 || Math.abs(tonic - i) % 12 <= 1 ? pitchColor(note.pitch) : pitchColor(note.pitch, 4, 1)"
       )
       circle(

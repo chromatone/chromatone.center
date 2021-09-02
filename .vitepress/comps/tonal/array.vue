@@ -4,6 +4,7 @@ svg#tonal-array(
   version="1.1",
   baseProfile="full",
   xmlns="http://www.w3.org/2000/svg",
+  style="touch-action:none"
   @touchstart.stop.prevent="tonal.pressed = true"
   @touchend.stop.prevent="tonal.pressed = false"
   @mousedown.stop.prevent="tonal.pressed = true"

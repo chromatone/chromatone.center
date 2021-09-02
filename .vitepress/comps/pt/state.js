@@ -6,8 +6,9 @@ export const state = reactive({
     letters: useStorage('table-letters', true),
     bpm: useStorage('table-bpm', true),
     hz: useStorage('table-hz', true),
+    len: useStorage('table-len', true),
   },
-  rootFreq: 440,
+  middleA: useStorage('table-middleA', 440),
   tuning: 'equal',
   octave: {
     range: {

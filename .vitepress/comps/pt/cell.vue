@@ -23,6 +23,7 @@
 import { context, start, gainToDb, PanVol } from 'tone'
 import { useSynth } from './synth.js'
 
+
 const props = defineProps({
   note: Object,
   octave: {

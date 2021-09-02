@@ -67,9 +67,15 @@ Mensural notation grew out of an earlier, more limited method of notating rhythm
 
 The decisive innovation of mensural notation was the systematic use of different note shapes to denote rhythmic durations that stood in well-defined, hierarchical numerical relations to each other. While less context dependent than notation in rhythmic modes, mensural notation differed from the modern system in that the values of notes were still somewhat context-dependent. 
 
-## XX century
+## Aleatoric music
 
-There was a huge experimentation between composers to find new way to communicate music. One of the brightest examples are compositions by John Cage.
+Aleatoric music (also aleatory music or chance music; from the Latin word alea, meaning "dice") is music in which some element of the composition is left to chance, and/or some primary element of a composed work's realization is left to the determination of its performer(s). The term is most often associated with procedures in which the chance element involves a relatively limited number of possibilities. 
+
+Witold Roman Lutosławski (25 January 1913 – 7 February 1994) was a Polish composer and conductor. 
+
+![](./Lutosławski_Symphony_No._2_nos._7-9.gif)
+
+John Milton Cage Jr. (September 5, 1912 – August 12, 1992) was an American composer, music theorist, artist, and philosopher. A pioneer of indeterminacy in music, electroacoustic music, and non-standard use of musical instruments, Cage was one of the leading figures of the post-war avant-garde.
 
 ![](./john-cage-1.jpg)
 

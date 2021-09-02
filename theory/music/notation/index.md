@@ -7,4 +7,3 @@ date: 2021-08-30
 cover: theory/notation/Grand_staff.svg
 ---
 
-

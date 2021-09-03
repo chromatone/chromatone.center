@@ -6,6 +6,14 @@ cover: theory/chromatic.svg
 date: 2021-08-10
 ---
 
+## Monochord
+
+Drag the divider to explore the string divisions of a monochord, just like Pythagoras did.
+
+<client-only>
+  <string-monochord />
+</client-only>
+
 Any two musical notes with fundamental frequencies in a ratio equal to 2n (n is any integer) are perceived as very similar and represent the simplest interval in music – an octave. Human pitch perception is periodic so that “color” or chroma of all the notes that are an octave apart seem circularly equivalent and brings them together into one pitch class.
 
 <img src="./chromatic.svg">
@@ -27,3 +35,4 @@ After 7 octave and 12 fifths you’ll end up on the same starting tone. And you�
 
 
 <img src="./key-intervals.svg">
+

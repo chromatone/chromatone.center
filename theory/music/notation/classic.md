@@ -21,6 +21,3 @@ cover: theory/notation/Bachlut1.png
 ## J.S.Bach Prelude
 
 ![](/media/theory/notation/Bachlut1.png)
-
-
-

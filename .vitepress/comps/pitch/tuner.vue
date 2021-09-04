@@ -99,7 +99,7 @@
 </template>
 
 <script setup>
-import { ref, computed, reactive, onMounted, onBeforeUnmount } from 'vue'
+import { computed } from 'vue'
 import { pitchColor } from 'chromatone-theory'
 import { useTuner } from '@use/tuner.js'
 
@@ -122,14 +122,9 @@ function start() {
   init();
 }
 
-
 function getRawNote(frequency) {
   return 12 * (Math.log(frequency / state.middleA) / Math.log(2)) % 12
 }
-
-
-
-
 </script>
 
 <style scoped>

@@ -5,7 +5,6 @@
   canvas#spectrogram.m-4.rounded-md(
     :width="state.width"
     :height="state.height"
-    ref="canv"
   )
 .flex.justify-center
   sqnob(v-model="state.speed" param="speed" :min="1" :max="3" :step="0.5")
@@ -40,6 +39,7 @@ function analyze() {
   const audio = new AudioMotionAnalyzer(null, {
     source: mic,
     mode: 1,
+    connectSpeakers: false,
     useCanvas: false,
     onCanvasDraw(instance) {
       tempCtx.drawImage(canvas, 0, 0, state.width, state.height)

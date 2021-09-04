@@ -1,4 +1,3 @@
-import { reactive, ref } from 'vue'
 import Aubio from './aubio.js'
 import { initGetUserMedia, pitchColor } from 'chromatone-theory'
 import Meyda from 'meyda'

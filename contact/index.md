@@ -28,6 +28,6 @@ author:
 ---
 
 
-<author-card :author="$frontmatter?.org" />
+<author-card :author="$frontmatter?.org" :i="1" :total="3" />
 
-<author-card :author="$frontmatter?.author" />
+<author-card :author="$frontmatter?.author" :i="2" :total="3" />

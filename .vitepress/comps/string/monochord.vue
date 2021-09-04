@@ -30,17 +30,19 @@
         g#right(text-anchor="start")
           text( :x="100 * (1 - ratio) + 2" y=28) {{ part2.freq.toFixed(1) }} Hz
           text( :x="100 * (1 - ratio) + 2" y=24) {{ part2.note }} ({{ part2.cents.toFixed() }} cents) 
-      g#ratio(font-size="4px" fill="currentColor")
-        text(
-          :x="100 * (1 - ratio) - 2"
-          y=8
-          text-anchor="end"
-        ) {{ state.fraction }} 
-        text(
-          :x="100 * (1 - ratio) + 2"
-          y=8
-          text-anchor="start"          
-        ) {{ state.invFraction }} 
+      g#ratio.cursor-pointer(font-size="4px" fill="currentColor")
+        g(@click="synthOnce(fundamental.freq); synthOnce(part1.freq)")
+          text(
+            :x="100 * (1 - ratio) - 2"
+            y=8
+            text-anchor="end"
+          ) {{ state.fraction }} 
+        g(@click="synthOnce(fundamental.freq); synthOnce(part2.freq)")
+          text(
+            :x="100 * (1 - ratio) + 2"
+            y=8
+            text-anchor="start"          
+          ) {{ state.invFraction }} 
     g#fundamental.cursor-pointer(@click="synthOnce(fundamental.freq)" v-drag="dragFun")
       line(x2=100, stroke-width="4", :stroke="freqColor(fundamental.freq)" )
       circle(r=1)
@@ -66,8 +68,8 @@
       circle(r=1)
       circle(r=1 cx=100)
 
-.flex.flex-wrap.justify-center
-  button.p-2.border-1.shadow.m-1(@click="state.ratio = frac" v-for="(frac,fName) in fractions" :key="fName") {{ fName }}
+.flex.flex-wrap.justify-center.m-4
+  button.p-2.border-1.shadow.m-2(@click="state.ratio = frac" v-for="(frac,fName) in fractions" :key="fName") {{ fName }}
 </template>
 
 <script setup>
@@ -105,10 +107,22 @@ const part2 = reactive({
 const fractions = {
   '1/2': 1 / 2,
   '2/3': 2 / 3,
-  '4/5': 4 / 5,
-  '8/9': 8 / 9,
   '3/4': 3 / 4,
   '3/5': 3 / 5,
+  '4/5': 4 / 5,
+  '5/6': 5 / 6,
+  '4/7': 4 / 7,
+  '5/7': 5 / 7,
+  '6/7': 6 / 7,
+  '5/8': 5 / 8,
+  '7/8': 7 / 8,
+  '5/9': 5 / 9,
+  '7/9': 7 / 9,
+  '8/9': 8 / 9,
+  '9/10': 9 / 10,
+  '10/11': 10 / 11,
+  '11/12': 11 / 12,
+
   '8/15': 8 / 15,
 }
 

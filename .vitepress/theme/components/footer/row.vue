@@ -1,13 +1,15 @@
 <template lang="pug">
 footer
   nav
-    .flex.items-center.flex-col(
+    .flex.flex-col(
       v-for="(page,i) in site.customData.pages?.main", 
       :key="page.title",
       )
       a.section(:href="page.link", :class="{ active: route.path.includes(page.link) }") {{ page.title }}
-      .flex.flex-wrap.justify-center
-        a.px-2.py-1.font-normal(v-for="line in site.customData?.pages?.[page.data?.list]", :key="line.title", :href="line.link", :class="{ active: route.path.includes(line.link) }") {{ line.title }}
+      .flex.flex-wrap.py-2
+        .inline-flex.flex-wrap.items-center(v-for="line in site.customData?.pages?.[page.data?.list]", :key="line.title")
+          a.p-2(:href="line.link", :class="{ active: route.path.includes(line.link) }") {{ line.title }}
+          a.p-2.font-normal.text-16px(v-for="child in site.customData?.pages?.[line.data?.list]" :href="child.link",:class="{ active: route.path.includes(child.link) }") {{ child.title }}
 
   .flex.items-center.mt-8(v-motion,
     :initial="{ opacity: 0, y: 40 }",
@@ -47,7 +49,7 @@ nav {
 }
 
 .section {
-  @apply text-xl px-2 mt-8 border-b-1 border-gray-500 px-4 pb-1 mb-2;
+  @apply text-xl mt-8 border-b-1 border-gray-500 px-2 pb-1 mb-2;
 }
 
 a {

@@ -14,11 +14,13 @@ Drag the divider to explore the string divisions of a monochord, just like Pytha
   <string-monochord />
 </client-only>
 
+## Octave
+
 Any two musical notes with fundamental frequencies in a ratio equal to 2n (n is any integer) are perceived as very similar and represent the simplest interval in music – an octave. Human pitch perception is periodic so that “color” or chroma of all the notes that are an octave apart seem circularly equivalent and brings them together into one pitch class.
 
 <img src="./chromatic.svg">
 
-## Fifths
+## Fifth
 
 The second most harmonic interval is the fifth – a 3/2 of any given frequency. Pythagoras is claimed to be the first to use this law to construct pleasant musical notes combinations. This principle is foundational for the modern 12-TET equal temperament. Take the lowest starting frequency and go up in two ways:
 

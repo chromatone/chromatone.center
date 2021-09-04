@@ -1,10 +1,5 @@
 <template lang="pug">
-.author-card(v-if="author",
-v-motion,
-  :initial="{ opacity: 0, y: 40 }",
-  :enter="{ opacity: 0, y: 0, scale: 1 }",
-  :visible="{ opacity: 1, y: 0, scale: 1 }",
-  )
+card-box.author-card(v-if="author" :i="i" :total="total" :height="8")
   .flex.flex-wrap
     img.avatar(:src="author.avatar")
     .flex.flex-col.flex-1.justify-center
@@ -25,12 +20,14 @@ svg.defs(style="height:0")
 <script setup>
 const props = defineProps({
   author: Object,
+  i: Number,
+  total: Number
 });
 </script>
 
 <style  scoped>
 .author-card {
-  @apply max-w-65ch m-auto flex flex-col shadow-lg p-8 my-16 bg-gray-50 dark:bg-gray-700;
+  @apply max-w-65ch m-auto flex flex-col p-8 my-16 bg-gray-50 dark:bg-gray-700;
 }
 .avatar {
   @apply h-12em self-start;

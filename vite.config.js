@@ -7,13 +7,54 @@ import { ViteAliases } from 'vite-aliases'
 import AutoImport from 'unplugin-auto-import/vite'
 // import { VitePWA } from 'vite-plugin-pwa'
 
-
 export default defineConfig({
-
   plugins: [
+    AutoImport({
+      // targets to transform
+      include: [
+        /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
+        /\.vue\??/, // .vue
+      ],
+      imports: [
+        'vue',
+        {
+          '@vueuse/core': ['useStorage'],
+        },
+      ],
+    }),
+    //@ts-ignore
+    ViteAliases({
+      dir: '.vitepress',
+      deep: false,
+      adjustDuplicates: true,
+    }),
+    Components({
+      dirs: ['.vitepress/theme/components', '.vitepress/comps'],
+      extensions: ['vue', 'ts'],
+      directoryAsNamespace: true,
+      globalNamespaces: ['global'],
+      include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
+      exclude: [/node_modules/, /\.git/],
+      resolvers: [
+        IconsResolver({
+          componentPrefix: '',
+        }),
+      ],
+    }),
+    Icons({
+      defaultStyle: 'vertical-align: middle;',
+    }),
+    WindiCSS({
+      scan: {
+        dirs: ['.vitepress'],
+        include: ['index.md'],
+        exclude: ['**/examples/**/*'],
+        fileExtensions: ['vue', 'ts'],
+      },
+    }),
     // VitePWA({
     //   registerType: 'autoUpdate',
-    //   includeAssets: ['favicon.svg', 'favicon.ico', 'robots.txt', 'apple-touch-icon.png'],  
+    //   includeAssets: ['favicon.svg', 'favicon.ico', 'robots.txt', 'apple-touch-icon.png'],
     //   manifest: {
     //     name: 'Chromatone',
     //     short_name: 'The visual music language',
@@ -39,74 +80,17 @@ export default defineConfig({
     //     ]
     //   }
     // }),
-    AutoImport({
-      // targets to transform
-      include: [
-        /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
-        /\.vue\??/, // .vue
-      ],
-      imports: [
-        'vue',
-        {
-          '@vueuse/core': [
-            'useStorage'
-          ],
-        }
-      ],
-    }),
-    //@ts-ignore
-    ViteAliases({
-      dir: '.vitepress',
-      deep: false,
-      adjustDuplicates:true
-    }),
-    Components({
-      dirs: [
-        '.vitepress/theme/components',
-        '.vitepress/comps',
-      ],
-      extensions: ['vue', 'ts'],
-      directoryAsNamespace: true,
-      globalNamespaces: ['global'],
-      include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
-      exclude: [/node_modules/, /\.git/],
-      resolvers: [
-        IconsResolver({
-          componentPrefix: '',
-        }),
-      ],
-    }),
-    Icons({
-      defaultStyle: 'vertical-align: middle;',
-    }),
-    WindiCSS({
-      scan: {
-        dirs: ['.vitepress'],
-        include: ['index.md'],
-        exclude: ['**/examples/**/*'],
-        fileExtensions: ['vue', 'ts'],
-      },
-    }),
-
   ],
   optimizeDeps: {
-    include: [
-      'vue',
-      '@vueuse/core',
-      'tone',
-      '@tonaljs/tonal',
-      'colord',
-    ],
+    include: ['vue', '@vueuse/core', 'tone', '@tonaljs/tonal', 'colord'],
   },
   build: {
-    rollupOptions:{
-      output:{
+    rollupOptions: {
+      output: {
         manualChunks: {
           motion: ['@vueuse/motion'],
-        }
-      }
-    }
-  }
+        },
+      },
+    },
+  },
 })
-
-

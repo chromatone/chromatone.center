@@ -1,7 +1,7 @@
 ---
 title: Spectrum analyzer
 subtitle: Visually analyse the incoming audio spectrum and waveforms in realtime
-tags: practice
+tags: pitch
 cover: apps/spectrum.svg
 ---
 

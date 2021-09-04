@@ -18,7 +18,7 @@ svg.max-h-sm(
       :width="18"
       :stroke-width="accord?.root == i ? 1 : 0"
       stroke="#000"
-      :height="note.pos == 1 ? 50 : 90"
+      :height="note.pos == 1 ? 70 : 90"
       :rx="5"
       :ry="5"
       :fill="getNoteColor(i)"
@@ -31,7 +31,7 @@ svg.max-h-sm(
       text-anchor="middle",
       dominant-baseline="middle"
       :x="20 * ((12 - 3 + Number(i)) % 12) + 9",
-      :y="note.pos == 1 ? 40 : 80",
+      :y="note.pos == 1 ? 60 : 80",
     ) {{ note.name }}
 
 

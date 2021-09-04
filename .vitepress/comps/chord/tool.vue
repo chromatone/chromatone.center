@@ -10,7 +10,7 @@
   .text-6xl.my-4.text-center.font-bold(
     :style="{ color: pitchColor(accord.root) }"
   ) {{ notes[accord?.root].name }}{{ accord?.info.handle }}
-  .relative
+  .relative.m-auto
     chord-keys#chord-keys(:accord="accord", @selectRoot="accord.root = $event")
 </template>
 

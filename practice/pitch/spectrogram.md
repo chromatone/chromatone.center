@@ -1,7 +1,7 @@
 ---
 title: Spectrogram
 subtitle: 2.5D representation on frequency domain in time
-tags: practice
+tags: pitch
 date: 2021-05-01
 usefulLinks:
   - https://codepen.io/hvianna/pen/ZEKWWJb

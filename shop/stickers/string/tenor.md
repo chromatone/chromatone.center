@@ -4,7 +4,7 @@ subtitle: A sheet of transparent vinyl with precut uv-printed stickers
 product:
   price: $12
   link: https://ko-fi.com/s/9ed8d980c0
-tags: shop
+tags: stickers
 cover: stickers/uketenor/sheet.jpg
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Tonal array
 subtitle: Harmonic table note layout - symmetrical hexagonal pattern of interval sequences
-tags: practice
+tags: chords
 cover: apps/array.png
 ---
 

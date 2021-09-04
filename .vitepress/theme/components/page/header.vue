@@ -35,7 +35,7 @@ const lightColor = lchToHsl(current, total, 1, 70, 60);
 }
 
 .header.has-cover {
-  @apply h-42rem;
+  @apply h-22rem;
 }
 
 .has-cover .meta {

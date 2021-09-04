@@ -125,7 +125,7 @@ function processNote(ev) {
   if (ev.type == 'noteoff') {
     note.velocity = 0
   } else {
-    note.velocity = ev.velocity
+    note.velocity = 100
   }
   note.pitch = (note.number + 3) % 12
   note.octA = Math.floor((note.number + 3) / 12) - 1
@@ -134,7 +134,7 @@ function processNote(ev) {
 
 function createChannel(ch) {
   if (!midi.channels[ch]) {
-    midi.channels[ch] = { num: ch, notes: {}, cc: {} }
+    midi.channels[ch] = { num: ch, activeNotes: {}, notes: {}, cc: {} }
   }
 }
 

@@ -20,7 +20,7 @@ main {
   @apply flex flex-col;
 }
 .content-container {
-  @apply flex flex-col  bg-light-500 dark:(bg-dark-500);
+  @apply flex flex-col items-stretch bg-light-500 dark:(bg-dark-500);
   -webkit-backdrop-filter: blur(70px);
   backdrop-filter: blur(70px);
 }

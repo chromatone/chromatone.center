@@ -2,7 +2,7 @@
 .crd(
   :title="item.lastModified",
   )
-  a.flex.flex-wrap.items-stretch(:href="item.link")
+  a.flex.flex-col.items-stretch(:href="item.link")
     .cover(v-if="item.data.cover", :style="{ backgroundImage: 'url(/media/' + item.data.cover + ')' }", v-motion-fade) 
     .info
       .flex.flex-1.items-center.self-stretch.flex-wrap
@@ -29,7 +29,7 @@ const props = defineProps({
 .crd {
   @apply rounded-sm mx-2 md:mx-0 sm:mx-4 bg-light-200 dark:bg-dark-200
   flex flex-col items-stretch 
-  transition-all
+  transition-all px-2 py-4 duration-1000
   static;
 }
 
@@ -38,20 +38,21 @@ const props = defineProps({
 }
 
 .info {
-  @apply p-8 my-auto;
+  @apply pt-8 px-2 my-auto;
   flex: 1 1 80%;
 }
 
 .cover {
-  @apply p-32 bg-cover bg-center rounded;
+  @apply min-h-4em bg-cover bg-center rounded;
   filter: saturate(10%) opacity(70%);
-  transition: all 200ms ease-in-out;
+  transition: all 1200ms cubic-bezier(0.6, -0.1, 0, 1.1);
   flex: 1 1 20%;
   backgound: cover;
 }
 
 .crd:hover .cover {
   filter: saturate(60%) opacity(80%);
+  @apply min-h-20em;
 }
 
 a:hover .art {

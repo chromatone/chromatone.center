@@ -49,7 +49,7 @@ function isInChroma(pitch) {
     padding: 1.4em 1em;
     margin-left: -1.8em;
     margin-bottom: 1.6em;
-    transform: translateX(50%);
+    transform: translateX(25%);
   }
   &.tonic {
     @apply opacity-100;

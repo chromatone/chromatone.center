@@ -12,7 +12,7 @@
   .flex.flex-wrap.justify-center.border-b-1.px-2(v-if="!chord.empty || scale") 
     button.shadow.px-2.py-1.font-bold.cursor-pointer(@click="playChordOnce()") {{ notes[tonic].name }}{{ chord.aliases[0] }} &nbsp;
     button.shadow.px-2.py-1.cursor-pointer.text-gray-500(v-if="chord.name" class="dark:text-gray-400",  @click="arpeggiate()")  {{ chord.name }} 
-    .scale(v-if="scale") @ {{ scale }} scale
+    button.scale.p-2.font-bold(v-if="scale"  @click="arpeggiate()") {{ scale }} scale
 </template>
 
 <script setup>
@@ -25,7 +25,9 @@ import { synthOnce } from '@use/synth.js'
 import { midiOnce } from '@use/midi.js'
 
 const props = defineProps({
-  chroma: Object,
+  chroma: {
+    type: String
+  },
   tonic: {
     type: Number,
     default: 0

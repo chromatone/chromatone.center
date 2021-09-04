@@ -118,11 +118,11 @@ function start() {
       const mediaStream = chain.audioContext
         .createMediaStreamSource(stream)
         .connect(chain.analyser)
-      mediaStream.connect(chain.scriptProcessor)
+      // mediaStream.connect(chain.scriptProcessor)
       chain.analyser.connect(chain.scriptProcessor)
       chain.analyser.connect(chain.beatProcessor)
-      // chain.scriptProcessor.connect(chain.audioContext.destination)
-      // chain.beatProcessor.connect(chain.audioContext.destination)
+      chain.scriptProcessor.connect(chain.audioContext.destination)
+      chain.beatProcessor.connect(chain.audioContext.destination)
       chain.beatProcessor.addEventListener('audioprocess', (e) => {
         const tempo = chain.tempoAnalyzer.do(e.inputBuffer.getChannelData(0))
         if (tempo) {

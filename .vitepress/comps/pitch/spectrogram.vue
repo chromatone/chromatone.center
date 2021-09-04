@@ -2,7 +2,7 @@
 .flex.justify-center(v-if="!state.initiated" )
   start-button(@click="initiate()") Start
 .flex.flex-col
-  canvas#spectrogram.m-4.rounded-md(
+  canvas#spectrogram.m-4.h-30em.max-w-full.rounded-md(
     :width="state.width"
     :height="state.height"
   )

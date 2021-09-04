@@ -266,11 +266,9 @@ svg#dissonance.max-h-3xl.w-full.my-20.select-none(
 </template>
 
 <script setup>
-import { computed, reactive, watch } from 'vue'
 import { pitchColor, notes, freqColor } from 'chromatone-theory'
 import { useSvgMouse } from '@use/mouse.js'
 import { MonoSynth, start } from 'tone'
-
 
 
 const box = {
@@ -301,8 +299,8 @@ const freq = reactive({
 const synth = reactive({
   started: false,
   playing: false,
-  osc: 'sawtooth',
-  oscs: ['sawtooth', 'sine'],
+  osc: 'sawtooth8',
+  oscs: ['sawtooth8', 'sine'],
   envelope: {
     attack: 0.2,
     decay: 0.2,
@@ -368,7 +366,7 @@ watch([() => freq.hz, () => mouse.pressed], (hz) => {
 
 <style scoped>
 .pointer {
-  @apply transition-all duration-50 pointer-events-none;
+  @apply transition-all duration-100 pointer-events-none;
 }
 text {
   @apply pointer-events-none select-none;

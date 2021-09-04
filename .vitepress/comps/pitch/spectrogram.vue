@@ -15,14 +15,25 @@ import AudioMotionAnalyzer from 'audiomotion-analyzer'
 import { freqPitch } from 'chromatone-theory'
 import { UserMedia } from 'tone'
 
-const mic = new UserMedia();
-let canvas, ctx, tempCanvas, tempCtx
+let mic, canvas, ctx, tempCanvas, tempCtx
 const state = reactive({
   initiated: false,
   width: 400,
   height: 240,
   speed: 1
 })
+
+onMounted(() => {
+  mic = new UserMedia();
+  canvas = document.getElementById('spectrogram')
+  ctx = canvas.getContext('2d')
+  tempCanvas = document.createElement('canvas')
+  tempCtx = tempCanvas.getContext('2d')
+  tempCanvas.width = state.width
+  tempCanvas.height = state.height
+  ctx.fillStyle = '#ddd'
+  ctx.fillRect(0, 0, state.width, state.height)
+});
 
 function initiate() {
   mic.open().then(() => {
@@ -35,11 +46,11 @@ function initiate() {
 }
 
 function analyze() {
-
   const audio = new AudioMotionAnalyzer(null, {
     source: mic,
     mode: 1,
     connectSpeakers: false,
+    volume: 0,
     useCanvas: false,
     onCanvasDraw(instance) {
       tempCtx.drawImage(canvas, 0, 0, state.width, state.height)
@@ -55,20 +66,12 @@ function analyze() {
   })
 }
 
+
 function colorIt(freq, value) {
-  return `hsla(${freqPitch(freq) * 30}, ${value * 100}%, ${value * 80}%, 0.3)`
+  return `hsl(${freqPitch(freq) * 30}, ${value * 100}%, ${value * 80}%)`
 }
 
-onMounted(() => {
-  canvas = document.getElementById('spectrogram')
-  ctx = canvas.getContext('2d')
-  tempCanvas = document.createElement('canvas')
-  tempCtx = tempCanvas.getContext('2d')
-  tempCanvas.width = state.width
-  tempCanvas.height = state.height
-  ctx.fillStyle = '#ddd'
-  ctx.fillRect(0, 0, state.width, state.height)
-});
+
 
 // freqHi: 21714.84375
 // ​​​

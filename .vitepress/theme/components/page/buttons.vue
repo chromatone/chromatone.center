@@ -13,14 +13,14 @@ const props = defineProps({
   buttons: Array,
   color: {
     type: String,
-    default: '#555'
+    default: ''
   }
 });
 </script>
 
 <style scoped>
 .button {
-  @apply flex items-center px-3 py-2 rounded-md font-bold mr-2 my-2 shadow-md bg-gray-100 dark:bg-gray-800;
+  @apply flex items-center px-3 py-2 rounded-md font-bold mr-2 my-2 shadow-md bg-gray-300 dark:bg-gray-800;
   & svg {
     @apply mr-1;
   }

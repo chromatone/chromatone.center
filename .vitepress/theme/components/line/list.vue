@@ -15,7 +15,7 @@
       counter(:list="site.customData.pages?.[line?.data?.list]") 
       .flex-1 
       card-date(:date="line.lastModified")
-      shop-price(:product="line?.data?.product", :showButton="false")
+      shop-price.ml-2(:product="line?.data?.product", :showButton="false")
 </template>
 
 <script setup>
@@ -32,7 +32,7 @@ const props = defineProps({
 }
 
 .line {
-  @apply flex px-4 py-2 font-bold transition-all shadow-md bg-gray-50 dark:bg-gray-800 
+  @apply flex items-center px-4 py-2 font-bold transition-all shadow-md bg-gray-50 dark:bg-gray-800 
   hover:(no-underline shadow-lg);
 }
 </style>

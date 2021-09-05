@@ -46,9 +46,9 @@ export default defineConfig({
     }),
     WindiCSS({
       scan: {
-        dirs: ['.vitepress'],
+        dirs: ['.vitepress', './'],
         include: ['index.md'],
-        exclude: ['**/examples/**/*'],
+        exclude: ['**/examples/**/*', '/node_modules/'],
         fileExtensions: ['vue', 'ts'],
       },
     }),

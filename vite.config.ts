@@ -30,7 +30,7 @@ export default defineConfig({
     }),
     Components({
       dirs: ['.vitepress/theme/components', '.vitepress/comps'],
-      extensions: ['vue', 'ts'],
+      extensions: ['vue', 'ts','js'],
       directoryAsNamespace: true,
       globalNamespaces: ['global'],
       include: [/\.vue$/, /\.vue\?vue/, /\.md$/],

@@ -180,6 +180,8 @@
 </template>
 
 <script setup>
+import { reactive, computed, watchEffect } from 'vue'
+import { useStorage } from '@vueuse/core'
 import { colord } from 'colord'
 const mix = reactive({
   current: useStorage('color-current', '#fffff'),

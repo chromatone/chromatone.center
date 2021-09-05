@@ -148,8 +148,9 @@
 </template>
 
 <script setup>
+import { reactive, computed } from 'vue'
 import { colord } from 'colord'
-import { useTransition, TransitionPresets } from '@vueuse/core'
+import { useTransition, TransitionPresets, useStorage } from '@vueuse/core'
 
 
 const mix = reactive({

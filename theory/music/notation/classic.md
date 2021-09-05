@@ -14,6 +14,8 @@ cover: theory/notation/Bachlut1.png
 ![](./chromatic-c.jpg)
 ![](./chromatic-Eb.jpg)
 
+![](./chromatic-scale.svg)
+
 ## Note values and rests
 
 ![](./note-values-and-rests.png)
@@ -21,3 +23,7 @@ cover: theory/notation/Bachlut1.png
 ## J.S.Bach Prelude
 
 ![](/media/theory/notation/Bachlut1.png)
+
+## String technique instructions
+
+<youtube-embed video="ux3Z3yAK-UE" />

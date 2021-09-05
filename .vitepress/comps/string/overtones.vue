@@ -81,6 +81,7 @@
       @mouseup="sound.stopSaw()"
       @touchend="sound.stopSaw()"
       @touchcancel="sound.stopSaw()"
+      v-drag="fundamental.drag"
       )
       rect.transition-all.duration-200(
         x="0"
@@ -327,7 +328,21 @@ const fundamental = reactive({
   cents: computed(() => {
     return calcCents(fundamental.frequency, Frequency(fundamental.note).toFrequency())
   }),
+  drag(drag) {
+    fundamental.frequency = clampNum(fundamental.frequency, drag.delta[0] / 4, 55, 1000)
+  }
 });
+
+function clampNum(main, delta, min = 0, max = 100) {
+  let num = Number(main) + Number(delta)
+  if (num < min) {
+    num = min
+  }
+  if (num > max) {
+    num = max
+  }
+  return num
+}
 
 watchEffect(() => {
   fundamental.frequency = Frequency(notes[fundamental.pitch].name + fundamental.octave).toFrequency()

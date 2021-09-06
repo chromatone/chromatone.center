@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+	xmlns:svg="http://www.w3.org/2000/svg"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns="http://www.w3.org/2000/svg"
+	width="570"
+	height="693"
+	version="1.1"
+>
+	<title>GM Standard Drum Map on the keyboard.</title>
+	<desc>GM Standard Drum Map on the keyboard.</desc>
+	<style type="text/css">
+		<![CDATA[
+		text
+		{
+			font-family: Arial;
+		}
+		text.title
+		{
+			font-size: 20px;
+		}
+		text.number, text.sound
+		{
+			font-size: 9px;
+		}
+
+		polyline.red_lines, polyline.green_lines, polyline.blue_lines
+		{
+			stroke-width: 1px;
+			fill: none;
+		}
+		polyline.red_lines
+		{
+			stroke: red;
+		}
+		polyline.green_lines
+		{
+			stroke: green;
+		}
+		polyline.blue_lines
+		{
+			stroke: blue;
+		}
+		]]>
+	</style>
+	
+	<defs>
+		<rect id="white_key" width="14" height="72" fill="none"  stroke="black" stroke-width="1" />
+		<rect id="black_key" width="8"  height="47" fill="black" stroke="black" stroke-width="1" />
+	</defs>
+
+	<g id="layer">
+		<g id="title">
+			<text x="35" y="37" class="title">GM Standard</text>
+			<text x="50" y="61" class="title">Drum Map</text>
+		</g>
+
+		<g id="piano_top">
+			<rect x="112" y="150" width="308" height="72" fill="none" stroke="black" stroke-width="1" />
+
+			<g id="piano_top_white_keys">
+				<use xlink:href="#white_key" x="112" y="150" />
+				<use xlink:href="#white_key" x="126" y="150" />
+				<use xlink:href="#white_key" x="140" y="150" />
+				<use xlink:href="#white_key" x="154" y="150" />
+				<use xlink:href="#white_key" x="168" y="150" />
+				<use xlink:href="#white_key" x="182" y="150" />
+				<use xlink:href="#white_key" x="196" y="150" />
+				<use xlink:href="#white_key" x="210" y="150" />
+				<use xlink:href="#white_key" x="224" y="150" />
+				<use xlink:href="#white_key" x="238" y="150" />
+				<use xlink:href="#white_key" x="252" y="150" />
+				<use xlink:href="#white_key" x="266" y="150" />
+				<use xlink:href="#white_key" x="280" y="150" />
+				<use xlink:href="#white_key" x="294" y="150" />
+				<use xlink:href="#white_key" x="308" y="150" />
+				<use xlink:href="#white_key" x="322" y="150" />
+				<use xlink:href="#white_key" x="336" y="150" />
+				<use xlink:href="#white_key" x="350" y="150" />
+				<use xlink:href="#white_key" x="364" y="150" />
+				<use xlink:href="#white_key" x="378" y="150" />
+				<use xlink:href="#white_key" x="392" y="150" />
+				<use xlink:href="#white_key" x="406" y="150" />
+			</g>
+			<g id="piano_top_black_keys">
+				<use xlink:href="#black_key" x="122" y="150" />
+				<use xlink:href="#black_key" x="136" y="150" />
+				<use xlink:href="#black_key" x="164" y="150" />
+				<use xlink:href="#black_key" x="178" y="150" />
+				<use xlink:href="#black_key" x="192" y="150" />
+				<use xlink:href="#black_key" x="220" y="150" />
+				<use xlink:href="#black_key" x="234" y="150" />
+				<use xlink:href="#black_key" x="262" y="150" />
+				<use xlink:href="#black_key" x="276" y="150" />
+				<use xlink:href="#black_key" x="290" y="150" />
+				<use xlink:href="#black_key" x="318" y="150" />
+				<use xlink:href="#black_key" x="332" y="150" />
+				<use xlink:href="#black_key" x="360" y="150" />
+				<use xlink:href="#black_key" x="374" y="150" />
+				<use xlink:href="#black_key" x="388" y="150" />
+			</g>
+		</g>
+		<g id="piano_bottom">
+			<rect x="181" y="482" width="210" height="72" fill="none" stroke="black" stroke-width="1" />
+
+			<g id="piano_top_white_keys">
+				<use xlink:href="#white_key" x="181" y="482" />
+				<use xlink:href="#white_key" x="195" y="482" />
+				<use xlink:href="#white_key" x="209" y="482" />
+				<use xlink:href="#white_key" x="223" y="482" />
+				<use xlink:href="#white_key" x="237" y="482" />
+				<use xlink:href="#white_key" x="251" y="482" />
+				<use xlink:href="#white_key" x="265" y="482" />
+				<use xlink:href="#white_key" x="279" y="482" />
+				<use xlink:href="#white_key" x="293" y="482" />
+				<use xlink:href="#white_key" x="307" y="482" />
+				<use xlink:href="#white_key" x="321" y="482" />
+				<use xlink:href="#white_key" x="335" y="482" />
+				<use xlink:href="#white_key" x="349" y="482" />
+				<use xlink:href="#white_key" x="363" y="482" />
+				<use xlink:href="#white_key" x="377" y="482" />
+			</g>
+			<g id="piano_top_black_keys">
+				<use xlink:href="#black_key" x="191" y="482" />
+				<use xlink:href="#black_key" x="205" y="482" />
+				<use xlink:href="#black_key" x="233" y="482" />
+				<use xlink:href="#black_key" x="247" y="482" />
+				<use xlink:href="#black_key" x="261" y="482" />
+				<use xlink:href="#black_key" x="289" y="482" />
+				<use xlink:href="#black_key" x="303" y="482" />
+				<use xlink:href="#black_key" x="331" y="482" />
+				<use xlink:href="#black_key" x="345" y="482" />
+				<use xlink:href="#black_key" x="359" y="482" />
+			</g>
+		</g>
+		
+		<g id="piano_numbers">
+			<text x="116" y="216" class="number">0</text>
+			<text x="215" y="216" class="number">1</text>
+			<text x="312" y="216" class="number">2</text>
+			<text x="410" y="216" class="number">3</text>
+			<text x="185" y="547" class="number">3</text>
+			<text x="283" y="547" class="number">4</text>
+			<text x="381" y="547" class="number">5</text>
+		</g>
+
+		<g id="lines">
+		<!-- TOP -->
+			<polyline class="green_lines" points="200,130 224,130 224,152" /><!-- 37 -->
+			<polyline class="green_lines" points="202,117 238,117 238,152" /><!-- 39 -->
+
+			<polyline class="red_lines"   points="407,32  266,32  266,152" /><!-- 42 -->
+			<polyline class="red_lines"   points="407,45  280,45  280,152" /><!-- 44 -->
+			<polyline class="red_lines"   points="407,59  294,59  294,152" /><!-- 46 -->
+			<polyline class="red_lines"   points="407,70  322,70  322,152" /><!-- 49 -->
+			<polyline class="red_lines"   points="407,83  336,83  336,152" /><!-- 51 -->
+			<polyline class="red_lines"   points="407,97  364,97  364,152" /><!-- 54 -->
+			<polyline class="red_lines"   points="407,109 378,109 378,152" /><!-- 56 -->
+			<polyline class="red_lines"   points="407,124 392,124 392,152" /><!-- 58 -->
+
+			<polyline class="blue_lines"  points="171,260 203,260 203,220" /><!-- 35 -->
+			<polyline class="blue_lines"  points="137,272 217,272 217,220" /><!-- 36 -->
+			<polyline class="blue_lines"  points="150,286 231,286 231,220" /><!-- 38 -->
+			<polyline class="blue_lines"  points="140,299 245,299 245,220" /><!-- 40 -->
+			<polyline class="blue_lines"  points="143,311 259,311 259,220" /><!-- 41 -->
+			<polyline class="blue_lines"  points="147,324 273,324 273,220" /><!-- 43 -->
+			<polyline class="blue_lines"  points="119,337 287,337 287,220" /><!-- 45 -->
+			<polyline class="blue_lines"  points="138,351 301,351 301,220" /><!-- 47 -->
+			<polyline class="blue_lines"  points="130,363 315,363 315,220" /><!-- 48 -->
+			<polyline class="blue_lines"  points="123,376 329,376 329,220" /><!-- 50 -->
+
+			<polyline class="green_lines" points="413,300 343,300 343,220" /><!-- 52 -->
+			<polyline class="green_lines" points="413,287 356,287 356,220" /><!-- 53 -->
+			<polyline class="green_lines" points="413,274 371,274 371,220" /><!-- 55 -->
+			<polyline class="green_lines" points="413,260 385,260 385,220" /><!-- 57 -->
+			<polyline class="green_lines" points="413,248 399,248 399,220" /><!-- 59 -->
+
+		<!-- BOTTOM -->
+			<polyline class="green_lines" points="125,407 265,407 265,484" /><!-- 61 -->
+			<polyline class="green_lines" points="138,420 251,420 251,484" /><!-- 63 -->
+			<polyline class="green_lines" points="141,433 237,433 237,484" /><!-- 66 -->
+			<polyline class="green_lines" points="154,446 209,446 209,484" /><!-- 68 -->
+			<polyline class="green_lines" points="136,460 195,460 195,484" /><!-- 70 -->
+
+			<polyline class="red_lines"   points="375,423 293,423 293,484" /><!-- 73 -->
+			<polyline class="red_lines"   points="375,436 307,436 307,484" /><!-- 75 -->
+			<polyline class="red_lines"   points="375,449 335,449 335,484" /><!-- 78 -->
+			<polyline class="red_lines"   points="375,462 349,462 349,484" /><!-- 80 -->
+
+			<polyline class="blue_lines"  points="123,569 188,569 188,552" /><!-- 60 -->
+			<polyline class="blue_lines"  points="147,582 202,582 202,552" /><!-- 62 -->
+			<polyline class="blue_lines"  points="132,595 216,595 216,552" /><!-- 64 -->
+			<polyline class="blue_lines"  points="139,608 230,608 230,552" /><!-- 65 -->
+			<polyline class="blue_lines"  points="135,622 244,622 244,552" /><!-- 67 -->
+			<polyline class="blue_lines"  points="115,634 258,634 258,552" /><!-- 69 -->
+			<polyline class="blue_lines"  points="139,647 272,647 272,552" /><!-- 71 -->
+			<polyline class="blue_lines"  points="138,660 286,660 286,552" /><!-- 72 -->
+
+			<polyline class="green_lines" points="375,629 300,629 300,552" /><!-- 74 -->
+			<polyline class="green_lines" points="375,616 313,616 313,552" /><!-- 76 -->
+			<polyline class="green_lines" points="375,603 327,603 327,552" /><!-- 77 -->
+			<polyline class="green_lines" points="375,590 342,590 342,552" /><!-- 79 -->
+			<polyline class="green_lines" points="375,577 356,577 356,552" /><!-- 81 -->
+		</g>
+		<g id="texts">
+		<!-- TOP -->
+			<text class="sound" x="120"  y="133">37 Side Stick (C#)</text>
+			<text class="sound" x="120"  y="120">39 Hand Clap (D#)</text>
+
+			<text class="sound" x="413" y="34" >42 Closed Hi-Hat (F#)</text>
+			<text class="sound" x="413" y="47" >44 Pedal Hi-Hat (G#)</text>
+			<text class="sound" x="413" y="60" >46 Open Hi-Hat (A#)</text>
+			<text class="sound" x="413" y="73" >49 Crash Cymbal 1 (C#)</text>
+			<text class="sound" x="413" y="86" >51 Ride Cymbal 1 (D#)</text>
+			<text class="sound" x="413" y="99" >54 Tambourine (F#)</text>
+			<text class="sound" x="413" y="112">56 Cowbell (G#)</text>
+			<text class="sound" x="413" y="126">58 Vibraslap (A#)</text>
+			
+			<text class="sound" x="50"  y="262">35 Accoustic Bass Drum (B)</text>
+			<text class="sound" x="50"  y="275">36 Bass Drum 1 (C)</text>
+			<text class="sound" x="50"  y="288">38 Accoustic Snare (D)</text>
+			<text class="sound" x="50"  y="301">40 Electric Snare (E)</text>
+			<text class="sound" x="50"  y="314">41 Low Floor Tom (F)</text>
+			<text class="sound" x="50"  y="327">43 High Floor Tom (G)</text>
+			<text class="sound" x="50"  y="340">45 Low Tom (A)</text>
+			<text class="sound" x="50"  y="353">47 Low-Mid Tom (B)</text>
+			<text class="sound" x="50"  y="366">48 Hi-Mid Tom (C)</text>
+			<text class="sound" x="50"  y="379">50 High Tom (D)</text>
+
+			<text class="sound" x="421" y="303">52 Chinese Cymbal (E)</text>
+			<text class="sound" x="421" y="290">53 Ride Bell (F)</text>
+			<text class="sound" x="421" y="277">55 Splash Cymbal (G)</text>
+			<text class="sound" x="421" y="264">57 Crash Cymbal 2 (A)</text>
+			<text class="sound" x="421" y="251">59 Ride Cymbal 2 (B)</text>
+
+		<!-- BOTTOM -->
+			<text class="sound" x="50"  y="462">61 Low Bongo (C#)</text>
+			<text class="sound" x="50"  y="449">63 Open Hi Conga (D#)</text>
+			<text class="sound" x="50"  y="436">66 Low Timbale (F#)</text>
+			<text class="sound" x="50"  y="423">68 Low Agogo (G#)</text>
+			<text class="sound" x="50"  y="410">70 Maracas (A#)</text>
+
+			<text class="sound" x="381" y="426">73 Short Guiro (C#)</text>
+			<text class="sound" x="381" y="439">75 Claves (D#)</text>
+			<text class="sound" x="381" y="452">78 Mute Cuica (F#)</text>
+			<text class="sound" x="381" y="465">80 Mute Triangle (G#)</text>
+
+			<!-- -->
+			<text class="sound" x="50"  y="572">60 Hi Bongo (C)</text>
+			<text class="sound" x="50"  y="585">62 Mute Hi Conga (D)</text>
+			<text class="sound" x="50"  y="598">64 Low Conga (E)</text>
+			<text class="sound" x="50"  y="611">65 High Timbale (F)</text>
+			<text class="sound" x="50"  y="624">67 High Agogo (G)</text>
+			<text class="sound" x="50"  y="637">69 Cabasa (A)</text>
+			<text class="sound" x="50"  y="650">71 Short Whistle (B)</text>
+			<text class="sound" x="50"  y="663">72 Long Whistle (C)</text>
+
+			<text class="sound" x="381" y="632">74 Long Guiro (D)</text>
+			<text class="sound" x="381" y="619">76 Hi Wood Block (E)</text>
+			<text class="sound" x="381" y="606">77 Low Wood Block (F)</text>
+			<text class="sound" x="381" y="593">79 Open Cuica (G)</text>
+			<text class="sound" x="381" y="580">81 Open Triangle (A)</text>
+		</g>
+	</g>
+</svg>

@@ -32,6 +32,8 @@ The human eye with normal vision has three kinds of cone cells that sense light,
 
 ![](./eye/Eyesensitivity.svg)
 
+![](./Line_of_purples.png)
+
 ## Opposite color vision theory
 
 ![](./eye/Diagram_of_the_opponent_process.png)

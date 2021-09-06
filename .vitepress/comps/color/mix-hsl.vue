@@ -66,24 +66,37 @@
           :stroke="generateTone(arc.from).toHex()"
           @click="mix.hue = arc.from"
         )
-      g#coords.mix-blend-difference
+      g#coords.pointer-events-none(
+        :stroke="mix.info.dark ? 'white' : 'black'"
+      )
         circle(
           :cx="50"
           :cy="50"
           :r="mix.sat * 0.27 + 18"
           fill="none"
-          stroke="white"
           stroke-width="0.2"
         )
-        line.transition-all.duration-200(
-          x1=0
-          x2=0
-          y1=45
-          y2=0
-          stroke-width="0.2"
-          stroke="white"
-          :transform="`translate(50,50) rotate(${angle - 180 + 180 / mix.hueCount})`"
-        )
+        g#lines(
+          :transform="`translate(50,50) rotate(${angle - 180 + 180 / mix.hueCount})`" 
+          stroke-width="0.4"
+          )
+          line(
+            x1=0
+            x2=0
+            y1=45
+            y2=0
+            stroke-width="0.6"
+          )
+          line(
+            v-for="angle in harmonies[mix.harmony]" :key="angle"
+            :y1="mix.sat * 0.27 + 18"
+            :transform="`rotate(${angle})`"
+          )
+          circle.transition-all.duration-400(
+            :cy="mix.sat * 0.27 + 18"
+            r=3
+            :fill="mix.current"
+          )
       g#current
         circle(
           :fill="mix.current"
@@ -145,16 +158,43 @@
           x="-5"
           y="-2"
         ) {{ paramNames[mix.space][1] }} {{ mix.sat.toFixed(1) }}
+  .flex.flex-wrap.items-center.justify-center
+    .p-2.font-bold.text-xl Harmony
+    button.p-1.capitalize.border-1.shadow-md.m-2(
+      v-for="(angles, harm) in harmonies" :key="harm"
+      :class="{ active: harm == mix.harmony }"
+      @click="mix.harmony = harm"
+    ) 
+      .p-1.mb-1 {{ harm }}
+      .flex.justify-center
+        .p-4.flex-1(v-for="(step) in harmonies[harm]" :key="step" 
+        :style="{ backgroundColor: generateTone(mix.hue + step).toHex() }"
+        )
 </template>
 
 <script setup>
 import { reactive, computed } from 'vue'
+import { getColorInfo } from '@use/colors.js'
 import { colord } from 'colord'
 import { useTransition, TransitionPresets, useStorage } from '@vueuse/core'
 
+const harmonies = {
+  monochromatic: [0],
+  diad: [0, 60],
+  complementary: [0, 180],
+  analogous: [330, 0, 30],
+  'split-complementary': [0, 150, 210],
+  triad: [0, 120, 240],
+  'double complementary': [0, 30, 180, 210],
+  'rectangular tetrad': [0, 60, 180, 240],
+  'square tetrad': [0, 90, 180, 270],
+  pentagon: [0, 60, 150, 210, 300]
+}
 
 const mix = reactive({
+  harmony: 'monochromatic',
   current: computed(() => generateTone(mix.hue).toHex()),
+  info: computed(() => getColorInfo(mix.current)),
   space: useStorage('color-space', 'Lch'),
   ring: useStorage('color-rings', 'tints'),
   hueCount: useStorage('hueCount', 12),
@@ -221,4 +261,7 @@ function clampNum(main, delta, min = 0, max = 100) {
 </script>
 
 <style scoped>
+button.active {
+  @apply shadow-sm border-dark-300;
+}
 </style>

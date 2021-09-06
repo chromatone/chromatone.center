@@ -5,6 +5,7 @@ svg#fifths.max-h-3xl.w-full(
   viewBox="0 0 100 100",
   xmlns="http://www.w3.org/2000/svg",
   style="touch-action:none"
+  font-family="Commissioner, sans-serif"
   )
   g(
     v-for="(scale,qual) in scales"
@@ -28,7 +29,7 @@ svg#fifths.max-h-3xl.w-full(
         :to="(i) / 12 * 360 + 15"
         :radius="40 - 12 * getRadius(qual)"
         :thickness="10"
-        :opacity="Math.abs(tonic - i) == 11 || Math.abs(tonic - i) % 12 <= 1 ? 0.8 : 0.2"
+        :opacity="Math.abs(tonic - i) == 11 || Math.abs(tonic - i) % 12 <= 1 ? 0.8 : 0.4"
         :fill="Math.abs(tonic - i) == 11 || Math.abs(tonic - i) % 12 <= 1 ? pitchColor(note.pitch) : pitchColor(note.pitch, 4, 1)"
       )
       circle(
@@ -37,20 +38,18 @@ svg#fifths.max-h-3xl.w-full(
         :r="2"
         :fill="pitchColor(note.pitch, 4, 1, 1)"
         @click="tonic = i; scaleType = qual"
-        opacity="0.2"
-        class="hover:opacity-60 transition-all duration-300"
+        class="opacity-20 hover:opacity-80 transition-all duration-300"
       )
       circle.note(
         style="transition: all 300ms ease-out;transform-box: fill-box; transform-origin: center center;"
         :cx="getCircleCoord(i, 12, 35 - getRadius(qual) * 12).x",
         :cy="getCircleCoord(i, 12, 35 - getRadius(qual) * 12).y",
         r="5",
-        :fill="Math.abs(tonic - i) == 11 || Math.abs(tonic - i) % 12 <= 1 ? pitchColor(note.pitch) : pitchColor(note.pitch, 4, 1, 0.1)",
+        :fill="Math.abs(tonic - i) == 11 || Math.abs(tonic - i) % 12 <= 1 ? pitchColor(note.pitch) : pitchColor(note.pitch, 4, 1, 0.5)",
       )
       text(
         style="user-select:none;transition:all 300ms ease"
         fill="white"
-        font-family="Commissioner, sans-serif"
         font-size="4px"
         text-anchor="middle",
         dominant-baseline="middle"
@@ -93,7 +92,6 @@ svg#fifths.max-h-3xl.w-full(
         :key="step"
         style="user-select:none;transition:all 300ms ease"
         fill="black"
-        font-family="Commissioner, sans-serif"
         font-size="2.5px"
         text-anchor="middle",
         dominant-baseline="middle"

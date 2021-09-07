@@ -7,10 +7,11 @@ tags: notation
 
 ## ABC-notation
 
-https://abcnotation.com/learn
+ABC notation is a shorthand form of musical notation for computers. In basic form it uses the letter notation with a–g, A–G, and z, to represent the corresponding notes and rests, with other elements used to place added value on these – sharp, flat, raised or lowered octave, the note length, key, and ornamentation. This form of notation began from a combination of Helmholtz pitch notation and using ASCII characters to imitate standard musical notation (bar lines, tempo marks, etc.) that could facilitate the sharing of music online, and also added a new and simple language for software developers, not unlike other notations designed for ease, such as tablature and solfège.
 
-https://cdn.rawgit.com/paulrosen/abcjs/main/examples/editor.html
-https://paulrosen.github.io/abcjs/
+The earlier ABC notation was built on, standardized, and changed by Chris Walshaw to better fit the keyboard and an ASCII character set, with the help and input of others. Originally designed to encode folk and traditional Western European tunes (e.g., from England, Ireland, and Scotland) which are typically single-voice melodies that can be written in standard notation on a single staff line, the extensions by Walshaw and others has opened this up with an increased list of characters and headers in a syntax that can also support metadata for each tune.
+
+https://abcnotation.com/learn
 
 <youtube-embed video="H8hWKP5cEXE" />
 
@@ -37,6 +38,8 @@ The first note of a melody is denoted with an asterisk (*), although some Parson
 - d = "down", for when the note is lower than the previous note,
 - r = "repeat", for when the note has the same pitch as the previous note.
 
+[Search a melody by it's Parsons code at Musipedia](https://www.musipedia.org/melodic_contour.html)
+
 ### Some examples
 - Ode to Joy: *RUURDDDDRUURDR
 - "Twinkle Twinkle Little Star": *rururddrdrdrdurdrdrdurdrdrddrururddrdrdrd
@@ -47,7 +50,7 @@ The first note of a melody is denoted with an asterisk (*), although some Parson
 
 ## Piano roll
 
-The Buffalo Convention of December 10, 1908[6] established two future roll formats for the US-producers of piano rolls for self-playing pianos. The two formats had different punchings of 65 and 88 notes, but the same width (11+1⁄4 inches or 286 millimetres); thus 65-note rolls would be perforated at 6 holes to the inch, and 88-note rolls at 9 holes to the inch, leaving margins at both ends for future developments. This made it possible to play the piano rolls on any self-playing instrument built according to the convention, albeit sometimes with a loss of special functionality. This format became a loose world standard. 
+The Buffalo Convention of December 10, 1908 established two future roll formats for the US-producers of piano rolls for self-playing pianos. The two formats had different punchings of 65 and 88 notes, but the same width (11+1⁄4 inches or 286 millimetres); thus 65-note rolls would be perforated at 6 holes to the inch, and 88-note rolls at 9 holes to the inch, leaving margins at both ends for future developments. This made it possible to play the piano rolls on any self-playing instrument built according to the convention, albeit sometimes with a loss of special functionality. This format became a loose world standard. 
 
 ![](./PlayerPianoRoll.jpg)
 

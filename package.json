@@ -12,6 +12,7 @@
     "@vueuse/core": "6.1.0",
     "@vueuse/gesture": "^1.0.0",
     "@vueuse/motion": "^1.6.0",
+    "abcjs": "^5.12.0",
     "audiomotion-analyzer": "^3.5.0",
     "chromatone-theory": "1.3.4",
     "colord": "^2.7.0",

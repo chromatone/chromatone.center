@@ -140,7 +140,7 @@ svg#dissonance.max-h-3xl.w-full.my-20.select-none(
       y="520"
     ) {{ cent }}
   path(
-    v-if="synth.osc == 'sawtooth'"
+    v-if="synth.osc == 'sawtooth8'"
     fill="none", 
     stroke="currentColor", 
     stroke-width="3", 

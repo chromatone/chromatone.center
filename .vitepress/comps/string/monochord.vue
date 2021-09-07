@@ -73,6 +73,7 @@
 </template>
 
 <script setup>
+import { reactive } from 'vue'
 import { notes, freqColor, freqPitch } from 'chromatone-theory'
 import { useTransition, TransitionPresets } from '@vueuse/core'
 import { useSynth } from '@use/synth.js'

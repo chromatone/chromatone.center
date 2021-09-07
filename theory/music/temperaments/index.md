@@ -7,6 +7,14 @@ date: 2021-08-20
 ---
 
 
+## Monochord
+
+Drag the divider to explore the string divisions of a monochord, just like Pythagoras did.
+
+<client-only>
+  <string-monochord />
+</client-only>
+
 ## Pythagorean tuning
 
 Pythagorean tuning, or 3-limit tuning, also allows ratios including the number 3 and its powers, such as 3:2, a perfect fifth, and 9:4, a major ninth. 12-tone Pythagorean temperament is based on a stack of intervals called perfect fifths, each tuned in the ratio 3:2, the next simplest ratio after 2:1. Starting from D for example (D-based tuning), six other notes are produced by moving six times a ratio 3:2 up, and the remaining ones by moving the same ratio down:

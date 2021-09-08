@@ -20,3 +20,7 @@ Thermonuclear reactions in its core produce high energy gamma-rays that are abso
 ![](./sun-granules.jpg)
 
 ![](./Sunspot.jpg)
+
+## UV radiation of the Sun
+
+![](./extreme_ultraviolet_sun.jpg)

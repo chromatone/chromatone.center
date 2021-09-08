@@ -13,3 +13,5 @@ Synchronised oscillations (or their quanta, photons) of the electric and magneti
 ![](/media/theory/emwavepropagation.jpg)
 
 Visible light is a certain portion of electromagnetic spectrum between infrared (too weak to excite electrons in molecules) and ultraviolet (powerful enough to cause irreversible chemical reactions in organic matter).
+
+<img src="/media/theory/em-acoustic.svg" >

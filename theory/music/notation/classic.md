@@ -27,3 +27,7 @@ cover: theory/notation/Bachlut1.png
 ## String technique instructions
 
 <youtube-embed video="ux3Z3yAK-UE" />
+
+### Alexander Scriabin - Piano Concerto in F sharp minor, Op. 20
+
+<youtube-embed video="F734PyD3NAw" />

@@ -2,7 +2,7 @@
 title: Chromatic spectrum
 subtitle: The model in which musical octave meets color spectrum.
 cover: theory/spectrum.svg
-tags: sound
+tags: interplay
 date: 2021-08-24
 ---
 
@@ -33,8 +33,3 @@ Let's keep multiplying our A = 440 Hz by two until we reach the visible light sp
 
 We can conclude that it's a fundamental property of our perception to close perceived parts of any spectrum into a seamless circle. And these circles are not just illusions as the resonances and  periodicities are based on fundamental principles of physics.
 
-# Circle of colors and notes
-
-<img src="/media/logo/logo.svg">
-
-A is the lowest frequency note and red is the lowest frequency color. It’s the starting point. Then we divide the light spectrum into 12 parts and get scientifically correspondent colors for every note in an octave. Now we can see the circle of musical intervals with our eyes and use it to remember all the musical semitones.

@@ -1,9 +1,9 @@
 import { useData } from 'vitepress'
 
 export function useSiblings() {
-  const { site, frontmatter, page } = useData()
+  const { theme, frontmatter, page } = useData()
   const tags = frontmatter.value.tags
-  const pages = site.value.customData.pages
+  const pages = theme.value?.pages
   let prev, next, total, current
   if (tags && typeof tags == 'string' && pages[tags]) {
     const index = pages[tags].findIndex((el) => el.title == page.value.title)
@@ -20,9 +20,9 @@ export function useSiblings() {
 }
 
 export function useParents() {
-  const { site, frontmatter } = useData()
+  const { theme, frontmatter } = useData()
   let tag = frontmatter.value.tags
-  const pages = site.value.customData.pages
+  const pages = theme.value?.pages
   const parents = []
   for (let p = 0; p < 5; p++) {
     if (tag == 'main') continue

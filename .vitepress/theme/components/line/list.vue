@@ -12,7 +12,7 @@
       :style="{ color: color }"
       :href="line.link",
       ) {{ line.title }}
-      counter(:list="site.customData.pages?.[line?.data?.list]") 
+      counter(:list="theme.pages?.[line?.data?.list]") 
       .flex-1 
       card-date(:date="line.lastModified")
       shop-price.ml-2(:product="line?.data?.product", :showButton="false")
@@ -20,7 +20,7 @@
 
 <script setup>
 import { useData } from 'vitepress'
-const { site } = useData()
+const { theme } = useData()
 const props = defineProps({
   list: Object,
 });

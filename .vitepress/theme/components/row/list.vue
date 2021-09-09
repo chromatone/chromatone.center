@@ -16,9 +16,9 @@
 
 <script setup>
 import { useData } from 'vitepress'
-const { site, title, frontmatter } = useData()
+const { theme, title, frontmatter } = useData()
 
-const rows = site.value.customData.pages?.[frontmatter.value.list];
+const rows = theme.value?.pages?.[frontmatter.value.list];
 
 </script>
 

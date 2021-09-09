@@ -40,13 +40,9 @@ const config = {
         sidebar: ru_sidebar,
       },
     },
-    repo: '',
     logo: '/media/logo/holologo.svg',
-    docsDir: '.',
-    docsBranch: 'master',
-    docsRepo: '',
-    editLinks: false,
-    editLinkText: 'Нашли ошибку?',
+    repo: 'https://github.com/chromatone/chromatone.center',
+    pages,
     nav,
     sidebar,
   },
@@ -58,9 +54,6 @@ const config = {
         internalDomains: ['localhost', 'chromatone.center'],
       })
     },
-  },
-  customData: {
-    pages: pages,
   },
 }
 

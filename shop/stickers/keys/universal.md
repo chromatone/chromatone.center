@@ -6,6 +6,7 @@ product:
   link: https://ko-fi.com/s/a2d14d2c25
 tags: keys
 cover: stickers/universal/cover-uni.jpg
+date: 2021-08-20
 ---
 
 The most concentrated form of colorful instrument stickers. A small A6 sheet includes 144 various precut stickers for you to get creative with. There are two octabes of named note circles and much more pure colors. They come in the form of a circle, a ring, a semiring and a straight line.

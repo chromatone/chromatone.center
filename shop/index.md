@@ -4,6 +4,7 @@ subtitle: Posters, memos and stickers for musical instruments
 list: shop
 tags: main
 date: 2021-06-01
+cover: stickers/universal/cover-uni.jpg
 ---
 
 It's great having all the interactive tools available online, but there are times when screen is just isn't enough. Having colorful notes directly on the keys or frets of your instrument is a great help in learning and exploring music. So we design and print high quality vinyl stickers for almost any use case.

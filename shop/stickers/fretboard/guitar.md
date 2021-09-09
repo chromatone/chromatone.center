@@ -6,6 +6,7 @@ product:
   link: https://ko-fi.com/s/fec06a7b2d
 tags: fretboard
 cover: stickers/guitar/close.jpg
+date: 2021-09-06
 ---
 
 

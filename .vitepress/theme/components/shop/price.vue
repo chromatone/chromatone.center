@@ -1,5 +1,5 @@
 <template lang="pug">
-.flex.justify-center.items-center
+.shop-action
   a.button.price(
     v-if="product",
     :href="product?.link", 
@@ -30,6 +30,13 @@ const props = defineProps({
 </script>
 
 <style scoped>
+.shop-action {
+  @apply flex justify-center items-center;
+  &:hover .cart-text {
+    @apply w-3em opacity-100;
+  }
+}
+
 .button {
   @apply p-2 my-2 mr-2 shadow-md z-6 text-white text-2xl  rounded-md bg-yellow-500  dark:(bg-yellow-600);
 }
@@ -39,7 +46,7 @@ const props = defineProps({
 }
 
 .cart-text {
-  @apply hidden sm:(block) text-xl ml-2;
+  @apply w-0 opacity-0 sm:(block) text-xl ml-2 transition-all duration-300;
 }
 
 .order {

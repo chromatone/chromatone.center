@@ -10,7 +10,7 @@
         .text-2xl.flex-auto(:style="{ color: color }") {{ item.title }}
         card-date(v-if="!item.data.product",:date="item.lastModified")
       .text-md.mt-4.mb-2.font-normal(v-if="item.subtitle") {{ item.subtitle }}
-      shop-price.float-left(:product="item.data?.product", :showButton="false")
+      shop-price.float-left(:product="item.data?.product")
   page-buttons(:buttons="item.data?.buttons")
   line-list(:list="site.customData.pages?.[item.data.list]")
 </template>

@@ -6,6 +6,7 @@ product:
   link: https://ko-fi.com/s/46e621d69b
 tags: keys
 cover: stickers/piano/piano1.jpg
+date: 2021-08-05
 ---
 
 <img src="/media/stickers/piano/piano3.jpg">

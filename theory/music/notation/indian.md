@@ -11,6 +11,7 @@ svaras:
     color: Green
     planet: Mercury
     mnem: Sa
+    solfege: Do
     chakra: Mūlādhāra
 
   - name: ṛṣabha (ऋषभ) 
@@ -19,6 +20,7 @@ svaras:
     color: Red
     planet: Mars
     mnem: Re
+    solfege: Re
     chakra: Svādhiṣṭhāna
 
   - name: gāndhāra (गान्धार) 
@@ -27,6 +29,7 @@ svaras:
     color: Gold
     planet: Sun
     mnem: Ga
+    solfege: Mi
     chakra: Maṇipūra
 
   - name: madhyama (मध्यम) 
@@ -35,6 +38,7 @@ svaras:
     color: White
     planet: Moon
     mnem: Ma
+    solfege: Fa
     chakra: Anāhata
 
   - name: pañcama (पंचम) 
@@ -43,6 +47,7 @@ svaras:
     color: Black
     planet: Saturn
     mnem: Pa
+    solfege: Sol
     chakra: Viśuddha
 
   - name: dhaivata (धैवत) 
@@ -51,6 +56,7 @@ svaras:
     color: Yellow
     planet: Jupiter
     mnem: Dha
+    solfege: La
     chakra: Ājñā
 
   - name: niṣāda (निषाद) 
@@ -59,6 +65,7 @@ svaras:
     color: Multi
     planet: Venus
     mnem: Ni
+    solfege: Si
     chakra: Sahasrāra
 
 ---
@@ -73,9 +80,11 @@ The musical notation is written usually immediately above, sometimes within, the
 
 ## Saptak - सप्तक - 7 svaras - Octave
 
-<table>
+<table class="text-center">
 <tr>
+  <th>Solfege</th>
   <th>Syllable</th>
+
   <th>Name</th>
   <th>Meaning</th>
   <th>Variants</th>
@@ -84,6 +93,7 @@ The musical notation is written usually immediately above, sometimes within, the
   <th>Chakra</th>
 </tr>
 <tr v-for="svara in $frontmatter.svaras" :key="svara.name">
+  <td> {{svara.solfege}}</td>
   <td class="font-bold"> {{svara.mnem}}</td>
   <td> {{svara.name}}</td>
   <td> {{svara.trans}}</td>
@@ -95,7 +105,5 @@ The musical notation is written usually immediately above, sometimes within, the
 </table>
 
 https://en.wikipedia.org/wiki/Svara
-
-
 
 http://sanskritdictionary.com/%E1%B9%A3a%E1%B8%8Dja/242242/1

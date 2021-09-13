@@ -6,6 +6,10 @@ cover: theory/notation/gray-notes.svg
 date: 2021-08-22
 ---
 
+<script setup>
+  import {globalScale} from '@use/theory.js'
+</script>
+
 There is no rule stating how many notes a scale must include. The most common scales in Western music contain seven pitches and are thus called “heptatonic” (meaning “seven tones”). Other scales have fewer notes—five-note “pentatonic” scales are quite common in popular music. There’s even a scale that uses all 12 pitches: it’s called the “chromatic” scale.
 
 ## What Is a Diatonic Scale?
@@ -22,11 +26,15 @@ Also known as a heptatonic scale in music theory, diatonic scales use all seven 
 ### Scales
 Diatonic scales include both the major scale, or Ionian mode, which is the most frequently used musical scale, and the natural minor scale, or Aeolian mode, which uses the same number of notes as the major scale, but in a different pitch. Both scales are part of the six “church mode” scales established for religious music during the medieval period, which continue to form the basis for contemporary diatonic scales. 
 
+## Root note
+
+These scales always have a tonal center to which all the notes relate and lead to in different ways. It is called the root note of the scale.
+
+<piano-keys class="max-w-25em mx-auto my-8" v-model:pitch="globalScale.tonic" names/>
+
 ## The 7 Modes of the Diatonic Scale
 
 The diatonic scale has seven modes:
-
-<piano-keys v-model:pitch="globalScale.tonic" names/>
 
 ### Major scale
 - <chroma-row :tonic="globalScale.tonic" :chroma="'101011010101'" />
@@ -56,6 +64,3 @@ The Aeolian, or natural minor mode, opens with the A note on the white keys of a
 - <chroma-row :tonic="globalScale.tonic" :chroma="'110101101010'" />
 The seventh and final mode, Locrian, is also one of the least employed modes due to its dark and minor sound built around the B note. Like the Dorian, Aeolian, and Phrygian, the Locrian has a minor third, but also a minor second and fifth; the latter gives the mode a sense of being interrupted or unfinished. 
 
-<script setup>
-import {globalScale} from '@use/theory.js'
-</script>

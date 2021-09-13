@@ -62,12 +62,3 @@ A string fixed from both ends produces a harmonic set of incremental frequency p
 
 The concept of tristimulus originates in the world of color, describing the way three primary colors can be mixed together to create a given color. By analogy, the musical tristimulus measures the mixture of harmonics in a given sound, grouped into three sections. It is basically a proposal of reducing a huge number of sound partials, that can amount to dozens or hundreds in some cases, down to only three values. The first tristimulus measures the relative weight of the first harmonic; the second tristimulus measures the relative weight of the second, third, and fourth harmonics taken together; and the third tristimulus measures the relative weight of all the remaining harmonics.
 
-
-## Sensory dissonance
-
-A simple curve for two sine waves is readily established and then we can calculate and explore sensory dissonance curves for complex sounds as the sum of interactions between their partials.  
-
-Try dragging the note to hear the exact interval. Toggle the plain sine and rich sawtooth waveforms. Compare the feeling of consonance and the dips in the curve yourself. 
-
-<pitch-dissonance />
-<svg-save svg="dissonance" />

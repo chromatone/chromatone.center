@@ -11,8 +11,6 @@
       .mr-2 {{ $frontmatter.title }}
       .flex-1
       .mx-2.my-4.text-6xl(v-if="$frontmatter.emoji") {{ $frontmatter.emoji }}
-
-
     .font-bold.mt-2.mb-4(v-if="$frontmatter.subtitle") {{ $frontmatter.subtitle }}
     page-buttons(:buttons="$frontmatter?.buttons")
     .absolute.-bottom-2rem.right-2rem
@@ -31,7 +29,7 @@ const lightColor = lchToHsl(current, total, 1, 70, 60);
 
 <style scoped>
 .header {
-  @apply relative flex flex-col  items-center border-b-4;
+  @apply relative flex flex-col mt-32  items-center border-b-4;
 }
 
 .header.has-cover {

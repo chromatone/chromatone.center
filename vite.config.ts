@@ -49,7 +49,7 @@ export default defineConfig({
         dirs: ['.vitepress', './'],
         include: ['index.md'],
         exclude: ['**/examples/**/*', '/node_modules/'],
-        fileExtensions: ['vue', 'ts'],
+        fileExtensions: ['vue', 'ts', 'md'],
       },
     }),
     // VitePWA({

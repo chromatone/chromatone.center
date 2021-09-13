@@ -1,5 +1,5 @@
 <template lang="pug">
-main.mb-16(aria-labelledby="main-title")
+main.home(aria-labelledby="main-title")
   home-hero
   content.content
   home-tile-list(
@@ -14,4 +14,7 @@ const { theme, frontmatter } = useData()
 </script>
 
 <style scoped >
+.home {
+  @apply pb-16 flex flex-col items-stretch bg-light-500 dark:(bg-dark-500);
+}
 </style>

@@ -31,6 +31,19 @@ links:
   - url: https://cielab.xyz/colorconv/
     title: CIELAB.XYZ
     subtitle: Online color converter for different color models
+  - url: https://en.wikipedia.org/wiki/List_of_pitch_intervals
+    title: List of pitch intervals 
+    subtitle: Comprehesive Wikipedia collection of intervals
+  - url: https://en.wikipedia.org/wiki/List_of_chords
+    title: List of chords
+    subtitle: Comprehesive Wikipedia collection of chords
+  - url: https://en.wikipedia.org/wiki/List_of_chord_progressions
+    title: List of chord progressions
+    subtitle: Comprehesive Wikipedia collection of chord progressions
+  - url: https://en.wikipedia.org/wiki/List_of_musical_scales_and_modes
+    title: List of scales and modes
+    subtitle: Comprehesive Wikipedia collection of pitch class collections
+
 ---
 
 <other-list :tools="$frontmatter.links" />

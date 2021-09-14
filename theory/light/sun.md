@@ -16,7 +16,6 @@ The Sun is by far the brightest object in the Earth's sky, with an apparent magn
 
 Thermonuclear reactions in its core produce high energy gamma-rays that are absorbed and converted into lower energy radiation by ionized atoms in its photosphere and chromosphere layers.
 
-
 ![](./sun-granules.jpg)
 
 ![](./Sunspot.jpg)

@@ -6,7 +6,7 @@ date: 2021-08-29
 cover: theory/sun-spectrum.svg
 ---
 
-
+![](./em-spectrum.svg)
 
 ## Earth atmosphere EM radiation absorption
 

@@ -23,11 +23,21 @@ The second most harmonic interval is the fifth – a 3/2 of any given frequency.
 
 <img src="./circle-of-fifths-exp.svg">
 
-After 7 octave and 12 fifths you’ll end up on the same starting tone. And you’ll find that you’ve pressed all the other tones on the way. So any other step of fifth gives us a new note. Get the note frequencies, then divide them by two until they’re in the same octave with the starting frequency. And there you got it – 12 notes in any given octave.
+After 7 octaves and 12 fifths you’ll end up on the same starting tone. And you’ll find that you’ve pressed all the other tones on the way. So any other step of fifth gives us a new note. Get the note frequencies, then divide them by two until they’re in the same octave with the starting frequency. And there you got it – 12 notes in any given octave.
+
+![](/media/theory/tet/oct-equation.svg)
+
+This equation shows the approximate equality of the values of 12 perfect fifth intervals and 7 octaves. If we use the just interval of 3/2 we get the small difference, that represents the Pythagorean comma.
+
+In musical tuning, the Pythagorean comma (or ditonic comma), named after the ancient mathematician and philosopher Pythagoras, is the small interval (or comma) existing in Pythagorean tuning between two enharmonically equivalent notes such as C and B♯ (Play), or D♭ and C♯. It is equal to the frequency ratio. (1.5)12⁄27 =. 531441⁄524288 ≈ 1.01364, or about 23.46 cents, roughly a quarter of a semitone (in between 75:74 and 74:73).
+
+![](/media/theory/tet/tet-fifth-equation.svg)
 
 ## 12-Tone Equal Temperament
 
-(3/2)^12 ≈ 129.74634 ~ 128 = 2^7
+Twelve-tone equal temperament is the musical system that divides the octave into 12 parts, all of which are equally tempered (equally spaced) on a logarithmic scale, with a ratio equal to the 12th root of 2 (12√2 ≈ 1.05946). That resulting smallest interval, 1⁄12 the width of an octave, is called a semitone or half step. 
+
+![](/media/theory/tet/tet-equation.svg)
 
 
 <img src="./key-intervals.svg">

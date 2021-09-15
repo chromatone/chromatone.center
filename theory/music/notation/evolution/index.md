@@ -43,6 +43,10 @@ By the 13th century, the neumes of Gregorian chant were usually written in squar
 
 ![](./UtQueantLaxis-Arezzo.png)
 
+Guido d'Arezzo
+
+![](./Guidonischehand.gif)
+
 <youtube-embed video="veJNu1fi8p4" />
 
 >  Ut queant laxis     

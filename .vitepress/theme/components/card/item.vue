@@ -39,12 +39,12 @@ const props = defineProps({
 }
 
 .info {
-  @apply pt-8 px-2 my-auto;
+  @apply px-2 my-auto;
   flex: 1 1 80%;
 }
 
 .cover {
-  @apply min-h-4em bg-cover bg-center rounded;
+  @apply mb-4 min-h-4em bg-cover bg-center rounded;
   filter: saturate(10%) opacity(70%);
   transition: all 1200ms cubic-bezier(0.6, -0.1, 0, 1.1);
   flex: 1 1 20%;

@@ -21,7 +21,7 @@ An octave (Latin: octavus: eighth) or perfect octave (sometimes called the diapa
 
 Any two musical notes with fundamental frequencies in a ratio equal to 2n (n is any integer) are perceived as very similar and represent the simplest interval in music – an octave. Human pitch perception is periodic so that “color” or chroma of all the notes that are an octave apart seem circularly equivalent and brings them together into one pitch class.
 
-<img src="./chromatic.svg">
+<img src="../chromatic.svg">
 
 To emphasize that it is one of the perfect intervals (including unison, perfect fourth, and perfect fifth), the octave is designated P8.
 

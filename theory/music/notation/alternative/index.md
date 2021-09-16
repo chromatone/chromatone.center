@@ -22,7 +22,7 @@ The two systems share the same line pattern and the same alternating oval and tr
 
 ![](./bilinear-jose-sotorrio.png)
 
-![](blinearcomparison2.jpg)
+![](./blinearcomparison2.jpg)
 
 ## Chromatic staff from [Music notation project](http://musicnotation.org/)
 

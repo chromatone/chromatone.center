@@ -25,14 +25,14 @@ specifiers:
   pug: 3.0.2
   tone: ^14.8.26
   typescript: ^4.4.3
-  unplugin-auto-import: ^0.4.5
-  unplugin-icons: ^0.11.2
-  unplugin-vue-components: ^0.15.1
+  unplugin-auto-import: ^0.4.6
+  unplugin-icons: ^0.11.3
+  unplugin-vue-components: ^0.15.2
   vite: ^2.5.7
   vite-aliases: 0.8.6
   vite-plugin-pwa: ^0.11.2
   vite-plugin-windicss: ^1.4.3
-  vitepress: 0.18.0
+  vitepress: 0.18.1
   vitepress-tags: ^0.4.0
   vue: ^3.2.11
   webmidi: ^3.0.0-alpha.8
@@ -67,14 +67,14 @@ devDependencies:
   patch-vue-directive-ssr: 0.0.1
   pug: 3.0.2
   typescript: 4.4.3
-  unplugin-auto-import: 0.4.5_@vueuse+core@6.3.3+vite@2.5.7
-  unplugin-icons: 0.11.2_@iconify+json@1.1.402+vite@2.5.7
-  unplugin-vue-components: 0.15.1_vite@2.5.7+vue@3.2.11
+  unplugin-auto-import: 0.4.6_@vueuse+core@6.3.3+vite@2.5.7
+  unplugin-icons: 0.11.3_@iconify+json@1.1.402+vite@2.5.7
+  unplugin-vue-components: 0.15.2_vite@2.5.7+vue@3.2.11
   vite: 2.5.7
   vite-aliases: 0.8.6
   vite-plugin-pwa: 0.11.2_vite@2.5.7
   vite-plugin-windicss: 1.4.3_typescript@4.4.3+vite@2.5.7
-  vitepress: 0.18.0
+  vitepress: 0.18.1
   vitepress-tags: 0.4.0
   windicss: 3.1.7
 
@@ -4315,8 +4315,8 @@ packages:
     engines: {node: '>= 10.0.0'}
     dev: true
 
-  /unplugin-auto-import/0.4.5_@vueuse+core@6.3.3+vite@2.5.7:
-    resolution: {integrity: sha512-newc1GYPYhGQkR4WcORsGtFaEgZ3KvMyP7IOEcicXe2i/y12/w0u8HD47YogRf6UMdzaeJRqeqM5chCmClwSvQ==}
+  /unplugin-auto-import/0.4.6_@vueuse+core@6.3.3+vite@2.5.7:
+    resolution: {integrity: sha512-QCfCLsPUXPm8Xu81QKRLNCxb+6CwAUnQdH4x0Y+wD2xTZZmt7WHJoueQO5Y+tCtYAZ9QPg+b6wv+5FtBfIPkVw==}
     engines: {node: '>=14'}
     peerDependencies:
       '@vueuse/core': ^6.0.0
@@ -4330,15 +4330,15 @@ packages:
       has-pkg: 0.0.1
       magic-string: 0.25.7
       resolve: 1.20.0
-      unplugin: 0.2.7_vite@2.5.7
+      unplugin: 0.2.11_vite@2.5.7
     transitivePeerDependencies:
       - rollup
       - vite
       - webpack
     dev: true
 
-  /unplugin-icons/0.11.2_@iconify+json@1.1.402+vite@2.5.7:
-    resolution: {integrity: sha512-ON2mTud2oQNPN/lPdXGqfiXIJOtBuyHsto3FdvOcUuyTEGeYpbNjPPiKIsTEIdICm0EaTSgExLFkQxuK1fZGgg==}
+  /unplugin-icons/0.11.3_@iconify+json@1.1.402+vite@2.5.7:
+    resolution: {integrity: sha512-qJMi1YBv6QN2R6lu+l7dR+W3LXmen09/h2OzD9324YOvRM6ElsmaCWvc5uuvAVUSpSuuAKfb+Ay1lCIfpb34RA==}
     peerDependencies:
       '@iconify/json': '*'
       '@svgr/core': ^5.5.0
@@ -4366,8 +4366,8 @@ packages:
       - webpack
     dev: true
 
-  /unplugin-vue-components/0.15.1_vite@2.5.7+vue@3.2.11:
-    resolution: {integrity: sha512-vAcMrylfiDPPc8rp2vmviSvyC13D5OAHFlfvcSSKUN2NgYcHZRnxAb4/msuJQyyWMXXXwptVm6I+WQ9ZhonnZw==}
+  /unplugin-vue-components/0.15.2_vite@2.5.7+vue@3.2.11:
+    resolution: {integrity: sha512-g9IUvBzRTJw2TniXVVtzkxs+VNJ5buzzsG7vIQdwh28830AYo052l//hCTv/4tvT4wPGJiCCZQdJ8O5MREDbuQ==}
     engines: {node: '>=14'}
     peerDependencies:
       vue: 2 || 3
@@ -4380,7 +4380,7 @@ packages:
       magic-string: 0.25.7
       minimatch: 3.0.4
       resolve: 1.20.0
-      unplugin: 0.2.7_vite@2.5.7
+      unplugin: 0.2.11_vite@2.5.7
       vue: 3.2.11
     transitivePeerDependencies:
       - rollup
@@ -4389,12 +4389,12 @@ packages:
       - webpack
     dev: true
 
-  /unplugin/0.2.7_vite@2.5.7:
-    resolution: {integrity: sha512-KcMTl+aF+UhNOUvUdxwxHiOhvIoFe++foE2GgblFmXsnjdRYYggd2Tg7wopljCnOyiv5IspQRKfAvpyc4qtzuw==}
+  /unplugin/0.2.11_vite@2.5.7:
+    resolution: {integrity: sha512-PY8x+hG1smsF06chESP5BurwZN+tZK1tNjKsCXe4XFOfRCIOcrIPCrwBKwLSfeAdojVCtMjSpJ2e/l5QXNw16A==}
     peerDependencies:
       rollup: ^2.50.0
       vite: ^2.3.0
-      webpack: ^4.0.0
+      webpack: 4 || 5
     peerDependenciesMeta:
       rollup:
         optional: true
@@ -4528,8 +4528,8 @@ packages:
       gray-matter: 4.0.3
     dev: true
 
-  /vitepress/0.18.0:
-    resolution: {integrity: sha512-i/CihVujC3ws5uEa0ixa+VZzSkH+amqVbM+9QD1VrEk1OwJKheZSAYvy1c3hA/kz3TIpL1KB/g46Moxi2V9bpw==}
+  /vitepress/0.18.1:
+    resolution: {integrity: sha512-uUY0N8pgiGDkrdzDPI4OeCke6J7c3l17lqsQZzcGvxxHlN6qHWR4EJ4usII91UZIlpBwZymh5kKI12mr3+KG1Q==}
     engines: {node: '>=12.0.0'}
     hasBin: true
     dependencies:

@@ -112,7 +112,13 @@ https://en.wikipedia.org/wiki/Svara
 
 http://sanskritdictionary.com/%E1%B9%A3a%E1%B8%8Dja/242242/1
 
+## Hurrian songs - the worlds oldest music notation artefact
 
+![](./Hurritische_hymne.gif)
+
+The Hurrian songs are a collection of music inscribed in cuneiform on clay tablets excavated from the ancient Amorite-Canaanite city of Ugarit, a headland in northern Syria, which date to approximately 1400 BCE. One of these tablets, which is nearly complete, contains the Hurrian Hymn to Nikkal (also known as the Hurrian cult hymn or A Zaluzi to the Gods, or simply h.6), making it the oldest surviving substantially complete work of notated music in the world. 
+
+The complete song is one of about 36 such hymns in cuneiform writing, found on fragments of clay tablets excavated in the 1950s from the Royal Palace at Ugarit (present-day Ras Shamra, Syria), in a stratum dating from the fourteenth century BC, but is the only one surviving in substantially complete form.
 
 ##	Ancient Greece 
 
@@ -164,6 +170,8 @@ The system is very popular among some Asian people, making conventions to encode
 ## Japan
 
 **Kunkunshi** (工工四  (Okinawan) pronounced [kuŋkunɕiː]) is the traditional notation system by which music is recorded in the Ryukyu Islands. The term kunkunshi originally referred to the first three notes of a widely known Chinese melody, although today it is used almost exclusively in reference to the sheet music.
+
+Kunkunshi is believed to have been first developed by Mongaku Terukina or by his student Choki Yakabi in the early to mid-1700s. However, it was not until the end of the 19th century that the form became standardized for writing sanshin music.
 
 ![](./Kunkunshi.jpg)
 

@@ -14,6 +14,8 @@ ChordType.add(['1P', '6M'], ['6M'], 'major sixth')
 ChordType.add(['1P', '7m'], ['7m'], 'minor seventh')
 ChordType.add(['1P', '7M'], ['7M'], 'major seventh')
 
+export const chordType = ChordType
+
 export const chordList = ChordType.all()
 export const scaleList = ScaleType.all()
 

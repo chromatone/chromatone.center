@@ -15,14 +15,25 @@ Hymn to Applo in Delphi
 
 ## Korea
 
-Jeongganbo musical notation system
+**Jeongganbo** musical notation system
 
 ![](./Jeongganbo.jpg)
 
 ## Japan
 
-Kunkunshi (工工四  (Okinawan) pronounced [kuŋkunɕiː]) is the traditional notation system by which music is recorded in the Ryukyu Islands. The term kunkunshi originally referred to the first three notes of a widely known Chinese melody, although today it is used almost exclusively in reference to the sheet music.
+**Kunkunshi** (工工四  (Okinawan) pronounced [kuŋkunɕiː]) is the traditional notation system by which music is recorded in the Ryukyu Islands. The term kunkunshi originally referred to the first three notes of a widely known Chinese melody, although today it is used almost exclusively in reference to the sheet music.
 
 ![](./Kunkunshi.jpg)
 
 <youtube-embed video="O7DR4kjWG_c" />
+
+## China
+
+Modern chinese numbered musical notation
+
+![](./china.jpg)
+
+![](./jianpu.jpg)
+
+<youtube-embed video="TyB1efr8nGY" />
+

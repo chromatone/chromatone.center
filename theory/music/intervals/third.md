@@ -9,6 +9,8 @@ tags: intervals
 
 ![](./Major_third_on_C.png)
 
+- <chroma-row :chroma="'100010000000'" />
+
 The major third may be derived from the harmonic series as the interval between the fourth and fifth harmonics. The major third is classed as an imperfect consonance and is considered one of the most consonant intervals after the unison, octave, perfect fifth, and perfect fourth. 
 
 A major third is slightly different in different musical tunings: 
@@ -26,6 +28,8 @@ In equal temperament three major thirds in a row are equal to an octave (for exa
 
 ![](./Minor_third_on_C.png)
 
+- <chroma-row :chroma="'100100000000'" />
+
 A minor third is a musical interval that encompasses three half steps, or semitones. It is called minor because it is the smaller of the two: the major third spans an additional semitone. 
 
 The minor third may be derived from the harmonic series as the interval between the fifth and sixth harmonics, or from the 19th harmonic. The minor third is also obtainable in reference to a fundamental note from the undertone series, while the major third is obtainable as such from the overtone series. The 12-TET minor third (300 cents) more closely approximates the nineteenth harmonic with only 2.49 cents error.
@@ -38,6 +42,10 @@ The minor third is commonly used to express sadness in music, and research shows
 ![](./Comparison_of_minor_thirds.png)
 
 ## Minor sixth m6
+
+![](./Minor_sixth_on_C.png)
+
+- <chroma-row :chroma="'100000001000'" />
 
 Minor sixth is the inverse the major third. 
 
@@ -56,6 +64,8 @@ In the common practice period, sixths were considered interesting and dynamic co
 ## Major sixth M6
 
 ![](./Major_sixth_on_C.png)
+
+- <chroma-row :chroma="'100000000100'" />
 
 Major sixth is the inverse the minor third. 
 

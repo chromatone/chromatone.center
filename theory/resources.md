@@ -43,6 +43,9 @@ links:
   - url: https://en.wikipedia.org/wiki/List_of_musical_scales_and_modes
     title: List of scales and modes
     subtitle: Comprehesive Wikipedia collection of pitch class collections
+  - url: http://musicnotation.org/systems/
+    title: The Music notation project
+    subtitle: Many people struggle to learn to read and play music, and many give up before they become proficient. Could a better notation system make reading, writing, and playing music more enjoyable and easier to learn? We think so.
 
 ---
 

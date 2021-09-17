@@ -12,6 +12,10 @@ Musicology commonly classifies [pentatonic scales](https://en.wikipedia.org/wiki
 
 ### Major pentatonic scale
 
+- <chroma-circle :chroma="'101010010100'" type="6/9" />
+
+- <chroma-row  :chroma="'101010010100'" />
+
 Anhemitonic pentatonic scales can be constructed in many ways. The major pentatonic scale may be thought of as a gapped or incomplete major scale. However, the pentatonic scale has a unique character and is complete in terms of tonality. One construction takes five consecutive pitches from the circle of fifths; starting on C, these are C, G, D, A, and E. Transposing the pitches to fit into one octave rearranges the pitches into the major pentatonic scale: C, D, E, G, A. 
 
 Another construction works backward: It omits two pitches from a diatonic scale. If one were to begin with a C major scale, for example, one might omit the fourth and the seventh scale degrees, F and B. The remaining notes then make up the major pentatonic scale: C, D, E, G, and A.
@@ -25,6 +29,10 @@ The black keys on a piano keyboard comprise a G-flat major (or equivalently, F-s
 </audio>
 
 ### Minor pentatonic scale
+
+- <chroma-circle :chroma="'100101010010'" type="m7+11" />
+
+- <chroma-row  :chroma="'100101010010'" />
 
 Although various hemitonic pentatonic scales might be called minor, the term is most commonly applied to the relative minor pentatonic derived from the major pentatonic, using scale tones 1, 3, 4, 5, and 7 of the natural minor scale. (It may also be considered a gapped blues scale.) The C minor pentatonic scale, the relative of the E-flat pentatonic scale is C, E-flat, F, G, B-flat. The A minor pentatonic, the relative minor of C pentatonic, comprises the same tones as the C major pentatonic, starting on A, giving A, C, D, E, G. This minor pentatonic contains all three tones of an A minor triad.
 

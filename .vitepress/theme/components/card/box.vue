@@ -32,7 +32,7 @@ const hoverShadow = computed(() => `0 0 0 ${props.borderWidth}px ${color.value},
 
 <style scoped>
 .block {
-  @apply rounded-sm mx-2 transition-all duration-150;
+  @apply rounded-sm transition-all duration-150;
   box-shadow: v-bind(shadow);
   &:hover {
     box-shadow: v-bind(hoverShadow);

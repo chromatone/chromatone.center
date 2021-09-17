@@ -4,7 +4,7 @@ subtitle: Tuning systems
 tags: music
 list: temperaments
 cover: theory/et-limits.svg
-date: 2021-08-20
+date: 2021-09-20
 ---
 
 

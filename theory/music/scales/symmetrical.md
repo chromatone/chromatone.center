@@ -32,6 +32,8 @@ Any scale having the same number of modes as notes is not a mode of limited tran
 
 ### Whole tone scale
 
+- <chroma-circle :chroma="'101010101010'" type="Wt" />
+
 - <chroma-row :chroma="'101010101010'" />
 
 Interval cycle 2 (C2).
@@ -46,6 +48,8 @@ Whole tone scale was used notably by Bach and Mozart, Glinka and Rimsky-Korsakov
 
  ### Octatonic scale
 
+ - <chroma-circle :chroma="'110110110110'" type="Hwt" />
+
  - <chroma-row :chroma="'110110110110'" />
 
 The term most often refers to the symmetric scale composed of alternating whole and half steps. It also may refer to any 8-note scale (there's a plenty of them).
@@ -56,11 +60,15 @@ https://en.wikipedia.org/wiki/Octatonic_scale
 
 #### Third mode
 
+- <chroma-circle :chroma="'101110111011'" type="*3" />
+
  - <chroma-row :chroma="'101110111011'" />
 
 The third mode is divided into three groups of four notes each. It contains the intervals tone, semitone, semitone, tone, semitone, semitone, tone, semitone, semitone – it has four transpositions, like the augmented triad, and three modes. 
 
 #### Fourth mode
+
+- <chroma-circle :chroma="'111001111001'" type="*4" />
 
 - <chroma-row :chroma="'111001111001'" />
 
@@ -68,11 +76,15 @@ The fourth mode contains the intervals semitone, semitone, minor third, semitone
 
 #### Fifth mode
 
+- <chroma-circle :chroma="'110001110001'" type="*5" />
+
 - <chroma-row :chroma="'110001110001'" />
 
 The fifth mode contains the intervals semitone, major third, semitone, semitone, major third, semitone – it has six transpositions, like the tritone, and three modes. 
 
 #### Sixth mode
+
+- <chroma-circle :chroma="'101011101011'" type="*6" />
 
 - <chroma-row :chroma="'101011101011'" />
 
@@ -80,9 +92,8 @@ The sixth mode has the intervals tone, tone, semitone, semitone, tone, tone, sem
 
 #### Seventh mode
 
+- <chroma-circle :chroma="'111101111101'" type="*7" />
+
 - <chroma-row :chroma="'111101111101'" />
 
 The seventh mode contains the intervals semitone, semitone, semitone, tone, semitone, semitone, semitone, semitone, tone, semitone – it has six transpositions, like the tritone, and five modes. 
-
-
-https://en.wikipedia.org/wiki/List_of_tone_rows_and_series

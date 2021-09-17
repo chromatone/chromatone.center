@@ -11,3 +11,4 @@ date: 2021-08-22
 There is no rule stating how many notes a scale must include. The most common scales in Western music contain seven pitches and are thus called “heptatonic” (meaning “seven tones”). Other scales have fewer notes—five-note “pentatonic” scales are quite common in popular music. There’s even a scale that uses all 12 pitches: it’s called the “chromatic” scale.
 
 
+https://en.wikipedia.org/wiki/List_of_tone_rows_and_series

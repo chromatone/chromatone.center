@@ -7,9 +7,11 @@ tags: intervals
 
 ## Major third M3
 
-![](./Major_third_on_C.png)
+<abc-render abc="[A^c] A^c" />
 
-- <chroma-row :chroma="'100010000000'" />
+<chroma-circle :chroma="'100010000000'" type="+M3" />
+
+<chroma-row :chroma="'100010000000'" />
 
 The major third may be derived from the harmonic series as the interval between the fourth and fifth harmonics. The major third is classed as an imperfect consonance and is considered one of the most consonant intervals after the unison, octave, perfect fifth, and perfect fourth. 
 
@@ -26,9 +28,11 @@ In equal temperament three major thirds in a row are equal to an octave (for exa
 
 ## Minor third m3
 
-![](./Minor_third_on_C.png)
+<abc-render abc="[A4c] Ac" />
 
-- <chroma-row :chroma="'100100000000'" />
+<chroma-circle :chroma="'100100000000'" type="+m3" />
+
+<chroma-row :chroma="'100100000000'" />
 
 A minor third is a musical interval that encompasses three half steps, or semitones. It is called minor because it is the smaller of the two: the major third spans an additional semitone. 
 
@@ -43,9 +47,11 @@ The minor third is commonly used to express sadness in music, and research shows
 
 ## Minor sixth m6
 
-![](./Minor_sixth_on_C.png)
+<abc-render abc="[A4f] Af" />
 
-- <chroma-row :chroma="'100000001000'" />
+<chroma-circle :chroma="'100000001000'" type="+M6" />
+
+<chroma-row :chroma="'100000001000'" />
 
 Minor sixth is the inverse the major third. 
 
@@ -63,9 +69,11 @@ In the common practice period, sixths were considered interesting and dynamic co
 
 ## Major sixth M6
 
-![](./Major_sixth_on_C.png)
+<abc-render abc="[A4^f] A^f" />
 
-- <chroma-row :chroma="'100000000100'" />
+<chroma-circle :chroma="'100000000100'" type="+m6" />
+
+<chroma-row :chroma="'100000000100'" />
 
 Major sixth is the inverse the minor third. 
 

@@ -1,5 +1,5 @@
 <template lang="pug">
-card-box.p-4.mt-2.mb-12.flex.max-w-65ch.m-auto(
+card-box.p-4.mt-2.mb-12.flex.max-w-65ch.mx-auto(
   v-if="$frontmatter.product"
   :i="current"
   :total="total"

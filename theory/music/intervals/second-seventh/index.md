@@ -9,11 +9,13 @@ tags: intervals
 
 ### Major second M2
 
-![](./Major_second_on_C.svg)
+<abc-render abc="[A4B] AB" />
 
-- <chroma-row :chroma="'101000000000'" />
+<chroma-circle :chroma="'101000000000'" type="+M2" />
 
-A major second (sometimes also called whole tone or a whole step) is a second spanning two semitones. The major second is the interval that occurs between the first and second degrees of a major scale, the tonic and the supertonic.
+<chroma-row :chroma="'101000000000'" />
+
+A major second (sometimes also called **whole tone** or a **whole step**) is a second spanning two semitones. The major second is the interval that occurs between the first and second degrees of a major scale, the tonic and the supertonic.
 
 On a musical keyboard, a major second is the interval between two keys separated by one key, counting white and black keys alike. On a guitar string, it is the interval separated by two frets. In moveable-do solfège, it is the interval between do and re. It is considered a melodic step, as opposed to larger intervals called skips. 
 
@@ -31,9 +33,11 @@ In Pythagorean music theory, the epogdoon (Ancient Greek: ἐπόγδοον) is 
 
 ### Minor second m2
 
-![](./Minor_second_on_C.png)
+<abc-render abc="[A4_B] A_B" />
 
-- <chroma-row :chroma="'110000000000'" />
+<chroma-circle :chroma="'110000000000'" type="+m2" />
+
+<chroma-row :chroma="'110000000000'" />
 
 A semitone, also called a half step or a half tone, is the smallest musical interval commonly used in Western tonal music, and it is considered the most dissonant when sounded harmonically. It is defined as the interval between two adjacent notes in a 12-tone scale. 
 
@@ -47,9 +51,11 @@ Harmonically, the interval usually occurs as some form of dissonance or a noncho
 
 ### Minor seventh m7
 
-![](./Minor_seventh_on_C.png)
+<abc-render abc="[A4g] Ag" />
 
-- <chroma-row :chroma="'100000000010'" />
+<chroma-circle :chroma="'100000000010'" type="+m7" />
+
+<chroma-row :chroma="'100000000010'" />
 
 The minor seventh spans ten semitones.
 
@@ -62,9 +68,11 @@ In just intonation there is both a 16:9 "small just minor seventh", also called 
 
 ### Major seventh M7
 
-![](./Major_seventh_on_C.png)
+<abc-render abc="[A4^g] A^g" />
 
-- <chroma-row :chroma="'100000000001'" />
+<chroma-circle :chroma="'100000000001'" type="+M7" />
+
+<chroma-row :chroma="'100000000001'" />
 
 The major seventh spans eleven semitones.
 

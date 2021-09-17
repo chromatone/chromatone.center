@@ -73,7 +73,7 @@ The first note of a melody is denoted with an asterisk (*), although some Parson
 
 ## ABC-notation
 
-ABC notation is a shorthand form of musical notation for computers. In basic form it uses the letter notation with a–g, A–G, and z, to represent the corresponding notes and rests, with other elements used to place added value on these – sharp, flat, raised or lowered octave, the note length, key, and ornamentation. This form of notation began from a combination of Helmholtz pitch notation and using ASCII characters to imitate standard musical notation (bar lines, tempo marks, etc.) that could facilitate the sharing of music online, and also added a new and simple language for software developers, not unlike other notations designed for ease, such as tablature and solfège.
+[ABC notation](https://abcnotation.com/wiki/abc:standard:v2.1) is a shorthand form of musical notation for computers. In basic form it uses the letter notation with a–g, A–G, and z, to represent the corresponding notes and rests, with other elements used to place added value on these – sharp, flat, raised or lowered octave, the note length, key, and ornamentation. This form of notation began from a combination of Helmholtz pitch notation and using ASCII characters to imitate standard musical notation (bar lines, tempo marks, etc.) that could facilitate the sharing of music online, and also added a new and simple language for software developers, not unlike other notations designed for ease, such as tablature and solfège.
 
 [Interactive ABC notation renderer](/practice/experiment/abc.md)
 

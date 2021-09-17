@@ -1,10 +1,9 @@
 <template lang="pug">
-.flex.flex-wrap.items-stretch.w-full
+.flex.flex-wrap.items-stretch.mx-auto
   .grid.grid-cols-12.justify-items-stretch.mb-2
     .chroma-key(
       @mouseenter="hover(i, bit)"
       @touchstart="hover(i, bit)"
-
       v-for="(bit,i) in chroma.split('')"
       :key="i"
       @click="globalScale.tonic = (i + globalScale.tonic) % 12"

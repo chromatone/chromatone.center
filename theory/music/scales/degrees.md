@@ -13,7 +13,7 @@ The degrees of the traditional major and minor scales may be identified several 
 
 - by their ordinal numbers, as the first, second, third, fourth, fifth, sixth, or seventh degrees of the scale, sometimes raised or lowered;
 - by Arabic numerals (1, 2, 3, 4 …), as in the Nashville Number System, sometimes with carets (scale degree 1, scale degree 2, scale degree 3, scale degree 4 …);
-- by Roman numerals (I, II, III, IV …);[3]
+- by Roman numerals (I, II, III, IV …);
 - by the English name for their function: 
   - tonic, 
   - supertonic, 

@@ -1,7 +1,7 @@
 <template lang="pug">
 .flex.flex-col
   .relative.w-full.m-auto
-    chroma-circle#chroma-circle(
+    chroma-compass#chroma-compass(
       v-model:chroma="chroma"
       v-model:tonic="tonic"
       :scaleChroma="scaleChroma"

@@ -5,6 +5,10 @@ date: 2021-06-04
 tags: notation
 ---
 
+## Tabulature
+
+![](./capirola2.png)
+
 ## Tonic sol-fa notation
 
 In Curwen's system, the notes of the major scale (of any key) are notated with the single letters d, r, m, f, s, l, and t. For notes above the principal octave, an apostrophe follows the letter; notes below the principal octave have a subscript mark. Chromatic alterations are marked by the following vowel, "e" for sharp (pronounced "ee") and "a" for flat (pronounced "aw"). Thus, the ascending and descending chromatic scale is notated:

@@ -226,6 +226,10 @@ The first group includes scores in which the chance element is involved only in 
 
 In the second type of indeterminate music, chance elements involve the performance. Notated events are provided by the composer, but their arrangement is left to the determination of the performer. Karlheinz Stockhausen's Klavierstück XI (1956) presents nineteen events which are composed and notated in a traditional way, but the arrangement of these events is determined by the performer spontaneously during the performance. In Earle Brown's Available forms II (1962), the conductor is asked to decide the order of the events at the very moment of the performance.
 
+![](./available-forms.png)
+
+![](./Karlheinz-Stockhausens-Klavierstueck-XI.png)
+
 <youtube-embed video="NxLMtP8ejKA" />
 
 >![](./lutoslawski.gif)
@@ -233,9 +237,14 @@ In the second type of indeterminate music, chance elements involve the performan
 
 The greatest degree of indeterminacy is reached by the third type of indeterminate music, where traditional musical notation is replaced by visual or verbal signs suggesting how a work can be performed, for example in graphic score pieces. 
 
-![](./brown-dec.jpg)
+>![](./brown-dec.jpg)
+> Earle Brown's December 1952
 
-Earle Brown's December 1952 (1952) shows lines and rectangles of various lengths and thicknesses that can read as loudness, duration, or pitch. The performer chooses how to read them. Another example is Morton Feldman's Intersection No. 2 (1951) for piano solo, written on coordinate paper. Time units are represented by the squares viewed horizontally, while relative pitch levels of high, middle, and low are indicated by three vertical squares in each row. The performer determines what particular pitches and rhythms to play.
+Earle Brown's December 1952 (1952) shows lines and rectangles of various lengths and thicknesses that can read as loudness, duration, or pitch. The performer chooses how to read them. Another example is Morton Feldman's Intersection No. 2 (1951) for piano solo, written on coordinate paper. 
+
+![](./feldman-proj.jpg)
+
+Time units are represented by the squares viewed horizontally, while relative pitch levels of high, middle, and low are indicated by three vertical squares in each row. The performer determines what particular pitches and rhythms to play.
 
 
 >![](./drawing-xenakis.png)

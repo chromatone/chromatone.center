@@ -48,7 +48,7 @@ Whole tone scale was used notably by Bach and Mozart, Glinka and Rimsky-Korsakov
 
  - <chroma-row :chroma="'110110110110'" />
 
-the term most often refers to the symmetric scale composed of alternating whole and half steps.
+The term most often refers to the symmetric scale composed of alternating whole and half steps. It also may refer to any 8-note scale (there's a plenty of them).
 
 The second mode, also called the octatonic, diminished, whole-half, or half-whole scale, is divided into four groups of three notes each. It contains the intervals semitone, tone, semitone, tone, semitone, tone, semitone, tone – it has three transpositions, like the diminished 7th chord, and two modes.
 

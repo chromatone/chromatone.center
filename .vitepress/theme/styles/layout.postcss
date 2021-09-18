@@ -192,9 +192,6 @@ figure {
   margin: 0;
 }
 
-img {
-}
-
 ul,
 ol {
   padding-left: 1.25em;
@@ -320,7 +317,7 @@ form {
 .content {
   @apply m-auto py-8 z-6 m-1 sm:m-2 md:m-4 lg:m-8 xl:(m-16);
   & img {
-    @apply my-4 mx-auto rounded-lg max-h-3xl;
+    @apply my-4 mx-auto rounded-lg max-h-3xl min-w-80vw;
   }
   &:empty {
     display: none;

@@ -11,7 +11,7 @@ There's a plenty of possible ways to make the Chromatone system work for written
 
 The extension of the ancient method of linking finger phalanges and musical notes. We can make it consistent enough to use intuitively after a little practice.
 
-![](./note-hand.svg)
+![](./hand.svg)
 
 ## Integer notation adoption
 

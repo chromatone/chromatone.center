@@ -309,6 +309,16 @@ Instrumentalists who begin sight-singing for the first time in college as music 
 
 For choirs, sight-singing fixed do using chromatic movable do syllables is more suitable than sight-singing movable do for reading atonal music, polytonal music, pandiatonic music, music that modulates or changes key often, or music in which the composer simply did not write a key signature. It is not uncommon for this to be the case in modern or contemporary choral works. 
 
+## Tonic sol-fa notation
+
+In Curwen's system, the notes of the major scale (of any key) are notated with the single letters d, r, m, f, s, l, and t. For notes above the principal octave, an apostrophe follows the letter; notes below the principal octave have a subscript mark. Chromatic alterations are marked by the following vowel, "e" for sharp (pronounced "ee") and "a" for flat (pronounced "aw"). Thus, the ascending and descending chromatic scale is notated:
+
+>d de r re m f fe s se l le t d'
+>
+>d' t ta l la s sa f m ma r ra d
+
+Such chromatic notes appear only as ornaments or as preparation for a modulation; once the music has modulated, then the names for the new key are used. The modulation itself is marked by superscript of the old note name preceding its new name; for example, in modulation to the dominant, the new tonic is notated as sd. The music then proceeds in the new key until another modulation is notated.
+
 ## Arabic system
 
 An alternative theory argues that the solfège syllables (do, re, mi, fa, sol, la, ti) derive from the syllables of an Arabic solmization system درر مفصّلات Durar Mufaṣṣalāt ("Detailed Pearls") (**dāl, rā', mīm, fā', ṣād, lām, tā**), mentioned in the works of Francisci a Mesgnien Meninski in 1680 and later discussed by Jean-Benjamin de La Borde in 1780. However, there is no documentary evidence for this theory.
@@ -330,4 +340,18 @@ For Han people's music in China, the words used to name notes are (from fa to mi
 For Japanese music, the first line of Iroha, an ancient poem used as a tutorial of traditional kana, is used for solmization. The syllables representing the notes A, B, C, D, E, F, G are **i, ro, ha, ni, ho, he, to** respectively. Shakuhachi musical notation uses another solmization system beginning "Fu Ho U".
 
 Javanese musicians derive syllables from numbers: **ji-ro-lu-pat-ma-nem-pi**. These names derive from one-syllable simplification of the Javanese numerals siji, loro, telu, papat, lima, enem, pitu. ([Pa]pat and pi[tu], corresponding to 4 and 7, are skipped in the pentatonic slendro scale.) 
+
+## DODEKA system
+
+The objective was to create 2-letter names that convey a relationship between the names of the notes and their position on the staff.
+
+We did that using letters that are not present in the English (anglo-saxon) designation.
+
+For example, the note Do# (C#) is called Ka (K) because it shares the same position as La (A) (ie. both notes are above a line).
+
+Following this logic, the 12 notes can be written as:
+Do / Ka / Ré / To(l) / Mi / Fa / Hu / So(l) / Pi / La / Vé / Si.
+
+In English, we only use the first letters, which gives us the following sequence:
+C / K / D / T / E / F / H / G / P / A / V / B.
 

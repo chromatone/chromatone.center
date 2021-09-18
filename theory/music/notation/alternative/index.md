@@ -7,28 +7,76 @@ tags: notation
 
 ## Tabulature
 
+Tablature (or tabulature, or tab for short) is a form of musical notation indicating instrument fingering rather than musical pitches. The word tablature originates from the Latin word tabulatura. Tabula is a table or slate, in Latin. To tabulate something means to put it into a table or chart. 
+
+Tablature is common for fretted stringed instruments such as the lute, vihuela, or guitar, as well as many free reed aerophones such as the harmonica. Tablature was common during the Renaissance and Baroque eras, and is commonly used today in notating many forms of music. Three types of organ tablature were used in Europe: German, Spanish and Italian.
+
+>![](./Vihuela-Tab_Fuenllana_1554.jpg)
+>Example of numeric vihuela tablature from the book "Orphenica Lyra" by Miguel de Fuenllana (1554). Red numerals (original) mark the vocal part.
+
+While standard notation represents the rhythm and duration of each note and its pitch relative to the scale based on a twelve tone division of the octave, tablature is instead operationally based, indicating where and when a finger should be placed to generate a note, so pitch is denoted implicitly rather than explicitly. 
+
+![](./Tuning-chr.png)
+
+Tablature for plucked strings is based upon a diagrammatic representation of the strings and frets of the instrument, keyboard tablature represents the keys of the instrument, and woodwind tablature shows whether each of the fingerholes is to be closed or left open. 
+
 ![](./capirola2.png)
 
-## Tonic sol-fa notation
 
-In Curwen's system, the notes of the major scale (of any key) are notated with the single letters d, r, m, f, s, l, and t. For notes above the principal octave, an apostrophe follows the letter; notes below the principal octave have a subscript mark. Chromatic alterations are marked by the following vowel, "e" for sharp (pronounced "ee") and "a" for flat (pronounced "aw"). Thus, the ascending and descending chromatic scale is notated:
+![](./guitar-tabs.svg)
 
->d de r re m f fe s se l le t d'
->d' t ta l la s sa f m ma r ra d
+![](./Star-Wars-Ukulele-The-Imperial-March.jpg)
 
-Such chromatic notes appear only as ornaments or as preparation for a modulation; once the music has modulated, then the names for the new key are used. The modulation itself is marked by superscript of the old note name preceding its new name; for example, in modulation to the dominant, the new tonic is notated as sd. The music then proceeds in the new key until another modulation is notated.
+### Drum tabs
+
+Instead of the durational notes normally seen on a piece of sheet music, drum tab uses proportional horizontal placement to indicate rhythm and vertical placement on a series of lines to represent which drum from the drum kit to stroke. Drum tabs frequently depict drum patterns. 
+
+```
+HH|x-x-x-x-x-x-x-x-||
+ S|----o-------o---||
+ B|o-------o-------||
+   1 + 2 + 3 + 4 +
+```
+
+### Keyboard tabulature
+
+The modern keyboard tabs are built using any monospaced font. THey show each octave of the piano on a separate lane (with "R" and "L" for the hand). Letters show the note played. ">" symbols show note durations in the fixed time periods, divided by "|" symbols. The actual chords are placed above the tabs. 
+
+
+```
+Penny Lane - The Beatles
+Tabbed By: Ebon-Ivor
+
+             C          Am7          Dm7        Gsus7
+   +  1  +   1  +  2  +  3  +  4  +   1  +  2  +  3  +  4  +
+R5|---c-d-e-|e>>d>>c---c>>>>---------|------------------c-d-e>|
+R4|g>>------|--------b------b>>a>>---|a-----------------a>>>>>|
+R4|---------|g>>>>>g>>>>>g>>>>>---g>>|--g-f>>>>>>>>>>g>>f>>>>>|
+R4|---------|e>>>>>e>>>>>e>>>>>e>>>>>|------------------------|
+R4|---------|------------------c>>>>>|c>>>>>c>>>>>c>>>>>------|
+R3|---------|------------------------|a>>>>>a>>>>>a>>>>>------|
+L3|---------|c>>>>>------------------|------------------------|
+L2|---------|------b>>>>>a>>>>>g>>>>>|f>>>>>d>>>>>g>>>>>g>>>>>|
+
+   C          Am7          Cm7                     Am7b5
+
+``` 
+[tabnabber.com](https://tabnabber.com/view_Tab.asp?tabID=11885&sArtist=Beatles%2C%20The&sName=Penny%20Lane)
+
+---
+
 
 ## Bilinear notation by Jose A. Sotorrio
 
 Bilinear is quite similar to [Reed’s Twinline](http://musicnotation.org/system/twinline-notation-by-thomas-reed/). Sotorrio maintains he had no prior knowledge of Twinline when designing Bilinear, since he relied primarily on Gardner Read’s Source Book of Proposed Music Notation Reforms which does not include Twinline. (It was published in 1987, just after Twinline was introduced in 1986.) Since Twinline is the earlier system (Bilinear was introduced in 1997), Sotorrio now offers Bilinear as a variant of Twinline.
 
-The two systems share the same line pattern and the same alternating oval and triangle shaped noteheads, but there are differences in their details. Twinline’s triangles are right triangles with the 90 degree angle at their tip, while Bilinear’s triangles have a sharper angle at their tip. Also, the shape, color, and size of noteheads in Bilinear may be different depending on a note’s duration, as illustrated in the following image (courtesy of the Bilinear website):
-
 ![](./bilinear-jose-sotorrio.png)
+
+The two systems share the same line pattern and the same alternating oval and triangle shaped noteheads, but there are differences in their details. Twinline’s triangles are right triangles with the 90 degree angle at their tip, while Bilinear’s triangles have a sharper angle at their tip. Also, the shape, color, and size of noteheads in Bilinear may be different depending on a note’s duration, as illustrated in the following image (courtesy of the Bilinear website):
 
 ![](./blinearcomparison2.jpg)
 
-## Chromatic staff from [Music notation project](http://musicnotation.org/)
+## Chromatic staff
 
 >“The need for a new notation, or a radical improvement of the old, is greater than it seems, and the number of ingenious minds that have tackled the problem is greater than one might think.” — Arnold Schoenberg
 
@@ -42,21 +90,88 @@ On a chromatic staff each note has its own line or space on the staff. On the tr
 
 All of these features of traditional music notation combine to make reading music much more difficult than it might be with a better notation system. For an analogy, imagine trying to do arithmetic with Roman numerals. It can be done, but the notation system makes a big difference. Of course it is important to view traditional notation in its broader historical context and to keep in mind the innovations and reforms that it has undergone over time.
 
+[Music notation project](http://musicnotation.org/)
+
+---
+
 ## Klavarskribo 
 
 Klavarskribo (sometimes shortened to klavar) is a music notation system that was introduced in 1931 by the Dutchman Cornelis Pot (1885–1977). The name means "keyboard writing" in Esperanto. It differs from conventional music notation in a number of ways and is intended to be easily readable. 
 
 ![](./Klavar.png)
 
+The stave on which the notes are written is vertical so the music is read from top to bottom. Each note has its own individual position, low notes on the left and high notes on the right as on the piano. This stave consists of groups of two and three vertical lines corresponding to the black keys (notes) of the piano. White notes are written in the seven white spaces between the lines. Therefore sharps and flats are no longer needed, as each note has its own place in the octave. The evident correspondence between the stave and a piano induced Pot to use the name Klavarskribo.
+
+![](./KlavarExplain_3-E.png)
+
+All notes are provided with stems—stems to the right: play with the right hand, stems to the left: left hand.
+
+<youtube-embed video="efTv05nWNhk" />
+
+<youtube-embed video="5mTRUF6q5-I" />
+
+![](./Klavar-debussy.png)
+
+[](https://www.klavarskribo.eu/en/)
+
+---
+
 ## Dodeka
+
+![](./dodeka-keys.jpg)
 
 The Dodeka Keyboard Design is an isomorphic keyboard invented and designed by Jacques-Daniel Rochat. It is similar to a piano keyboard but with only a single row of keys containing each chromatic note.The keys corresponding to C, E and A flat are highlighted to provide visual landmarks. The creators aimed to create a rational and chromatic approach to music and performance. As an isomorphic keyboard, any musical sequence or interval has the same shape in each of the 12 keys. 
 
 ![](./DODEKA_Keyboard-comparison.png)
 
+The Dodeka Music Notation is an alternative music notation or musical notation system invented and designed in 1980s by inventor and musician Jacques-Daniel Rochat in an attempt to improve upon traditional music notation. 
+
+![](./Dodeka-music-notation-staff-pitch-web.jpg)
+
+Unlike conventional musical notation, the Dodeka music notation system uses a chromatic scale of 12 pitches and follows an equal pitch intervals configuration, with 4 lines per octave. In this configuration, the 12 notes of an octave appear in four positions vis-à-vis the staff lines, that is, either on, between, above and below the lines.
+
+Each pitch has its own unique place on the staff. And while conventional music notation may alter notes using accidental signs or key signatures, notes in the Dodeka notation appear as they are. There are no more key signatures or accidental signs in this musical system. 
+
+>![](./dodeka-alternative-music-notation-moonlight-D.jpg)
+>(Excerpt of Beethoven Für Elise written in Dodeka Notation)
+
+The Dodeka notation system represents note duration in a visual manner. Note lengths are represented through the notes graphical shapes, similar to what can be found in sequencer programmes. The reference time unit or time value being the quarter note (or crotchet), all durations are expressed as visual ratios from this reference point. For example, a whole note is the representation of four quarter note lengths. At the opposite, an eighth note (or quaver) is twice as short as a quarter note. All the other symbols and articulation marks are also [reimagined in Dodeka](https://www.dodekamusic.com/learn/alternative-music-notation/dodeka-musical-symbols-list-meaning/).
+
+[![](./dodeka-app.png)](https://apps.apple.com/us/app/dodeka-music/id1260932281?ls=1)
+
+### Dodeka note names
+
+The objective was to create 2-letter names that convey a relationship between the names of the notes and their position on the staff. We did that using letters that are not present in the English (anglo-saxon) designation. For example, the note Do# (C#) is called Ka (K) because it shares the same position as La (A) (ie. both notes are above a line).
+
+Following this logic, the 12 notes can be written as:
+Do / Ka / Ré / To(l) / Mi / Fa / Hu / So(l) / Pi / La / Vé / Si.
+
+In English, we only use the first letters, which gives us the following sequence:
+C / K / D / T / E / F / H / G / P / A / V / B.
+
+[Dodeka music](https://www.dodekamusic.com)
+
+---
+
 ## Parsons code
 
-The Parsons code, formally named the Parsons code for melodic contours, is a simple notation used to identify a piece of music through melodic motion — movements of the pitch up and down. Denys Parsons (father of Alan Parsons) developed this system for his 1975 book The Directory of Tunes and Musical Themes. Representing a melody in this manner makes it easier to index or search for pieces, particularly when the notes' values are unknown. Parsons covered around 15,000 classical, popular and folk pieces in his dictionary. In the process he found out that *UU is the most popular opening contour, used in 23% of all the themes, something that applies to all the genres.
+The Parsons code, formally named the Parsons code for melodic contours, is a simple notation used to identify a piece of music through melodic motion — movements of the pitch up and down. Denys Parsons (father of Alan Parsons) developed this system for his 1975 book The Directory of Tunes and Musical Themes. Representing a melody in this manner makes it easier to index or search for pieces, particularly when the notes' values are unknown. Parsons covered around 15,000 classical, popular and folk pieces in his dictionary. In the process he found out that *UU is the most popular opening contour, used in 23% of all the themes, something that applies to all the genres. 
+
+```
+Parsons Code of Ode to Joy
+
+    Parsons$ ./contour *RUURDDDDRUURDR
+            *-*                    
+           /   \                  
+          *     *                  
+         /       \                
+      *-*         *         *-*    
+                   \       /   \  
+                    *     *     *-*
+                     \   /        
+                      *-*
+
+```
 
 The first note of a melody is denoted with an asterisk (*), although some Parsons code users omit the first note. All succeeding notes are denoted with one of three letters to indicate the relationship of its pitch to the previous note:
 
@@ -75,17 +190,32 @@ The first note of a melody is denoted with an asterisk (*), although some Parson
 - "White Christmas": *udduuuu
 - First verse in Madonna's "Like a Virgin": *rrurddrdrrurdudurrrrddrduuddrdu
 
+There are [studies](http://ismir2003.ismir.net/papers/Uitdenbogerd.pdf) showing that despite it's simplicity, Parsons code is still too hard for non-musicians to formulate and interpret the code for melody search. Yet it may be useful for more skilled musicians, but the audio-based search becomes more widely spread and adopted.
+
+---
+
 ## ABC-notation
 
 [ABC notation](https://abcnotation.com/wiki/abc:standard:v2.1) is a shorthand form of musical notation for computers. In basic form it uses the letter notation with a–g, A–G, and z, to represent the corresponding notes and rests, with other elements used to place added value on these – sharp, flat, raised or lowered octave, the note length, key, and ornamentation. This form of notation began from a combination of Helmholtz pitch notation and using ASCII characters to imitate standard musical notation (bar lines, tempo marks, etc.) that could facilitate the sharing of music online, and also added a new and simple language for software developers, not unlike other notations designed for ease, such as tablature and solfège.
 
 [Interactive ABC notation renderer](/practice/experiment/abc.md)
 
-The earlier ABC notation was built on, standardized, and changed by Chris Walshaw to better fit the keyboard and an ASCII character set, with the help and input of others. Originally designed to encode folk and traditional Western European tunes (e.g., from England, Ireland, and Scotland) which are typically single-voice melodies that can be written in standard notation on a single staff line, the extensions by Walshaw and others has opened this up with an increased list of characters and headers in a syntax that can also support metadata for each tune.
+The earlier ABC notation was built on, standardized, and changed by Chris Walshaw to better fit the keyboard and an ASCII character set, with the help and input of others. Originally designed to encode folk and traditional Western European tunes (e.g., from England, Ireland, and Scotland) which are typically single-voice melodies that can be written in standard notation on a single staff line, the extensions by Walshaw and others has opened this up with an increased list of characters and headers in a syntax that can also support metadata for each tune:
+- The index, when there are more than one tune in a file (X:)- the title (T:), 
+- the time signature (M:), 
+- the default note length (L:), 
+- the type of tune (R:),
+- the key (K:). 
+
+Lines following the key designation represent the tune. 
+
+After a surge of renewed interest in clarifying some ambiguities in the 2.0 draft and suggestions for new features, serious discussion of a new (and official) standard resumed in 2011, culminating in the release of ABC 2.1 as a new standard in late December 2011. Chris Walshaw has become involved again and is coordinating the effort to further improve and clarify the language, with plans for topics to be addressed in future versions to be known as ABC 2.2 and ABC 2.3 . 
+
+<youtube-embed video="H8hWKP5cEXE" />
 
 https://abcnotation.com/learn
 
-<youtube-embed video="H8hWKP5cEXE" />
+---
 
 ## Piano roll
 

@@ -1,7 +1,7 @@
 ---
 title: Perceptual color models
 subtitle: Color spaces based on the "standard observer" perception of colors
-tags: color
+tags: models
 date: 2021-08-08
 cover: theory/color/CIE_1976_UCS.png
 ---
@@ -10,18 +10,18 @@ cover: theory/color/CIE_1976_UCS.png
 
 In colorimetry, the Munsell color system is a color space that specifies colors based on three properties of color: hue (basic color), chroma (color intensity), and value (lightness). It was created by Professor Albert H. Munsell in the first decade of the 20th century and adopted by the United States Department of Agriculture (USDA) as the official color system for soil research in the 1930s.
 
-![](./models/Munsell-system.svg)
+![](./Munsell-system.svg)
 
 Several earlier color order systems had placed colors into a three-dimensional color solid of one form or another, but Munsell was the first to separate hue, value, and chroma into perceptually uniform and independent dimensions, and he was the first to illustrate the colors systematically in three-dimensional space. Munsell's system, particularly the later renotations, is based on rigorous measurements of human subjects' visual responses to color, putting it on a firm experimental scientific basis. Because of this basis in human visual perception, Munsell's system has outlasted its contemporary color models, and though it has been superseded for some uses by models such as CIELAB (L*a*b*) and CIECAM02, it is still in wide use today.
 
->![](./models/munsell_1943_color_solid_cylindrical_coordinates.png)
+>![](./munsell_1943_color_solid_cylindrical_coordinates.png)
 > Three-dimensional representation of the 1943 Munsell renotations (with portion cut away). 
 
 ## HSL, HSV and HSB color models
 
 HSL (for hue, saturation, lightness) and HSV (for hue, saturation, value; also known as HSB, for hue, saturation, brightness) are alternative representations of the RGB color model, designed in the 1970s by computer graphics researchers to more closely align with the way human vision perceives color-making attributes. In these models, colors of each hue are arranged in a radial slice, around a central axis of neutral colors which ranges from black at the bottom to white at the top. 
 
-![](./models/hsl.png)
+![](./hsl.png)
 
 The HSL representation models the way different paints mix together to create colour in the real world, with the lightness dimension resembling the varying amounts of black or white paint in the mixture (e.g. to create "light red", a red pigment can be mixed with white paint; this white paint corresponds to a high "lightness" value in the HSL representation). Fully saturated colors are placed around a circle at a lightness value of ½, with a lightness value of 0 or 1 corresponding to fully black or white, respectively.
 

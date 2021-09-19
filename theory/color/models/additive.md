@@ -1,7 +1,7 @@
 ---
 title: Additive color models
 subtitle: The colors created by combining colored lights
-tags: color
+tags: models
 date: 2021-08-18
 cover: theory/rgb.svg
 ---
@@ -22,6 +22,6 @@ To form a color with RGB, three light beams (one red, one green, and one blue) m
 
 The RGB color model itself does not define what is meant by red, green, and blue colorimetrically, and so the results of mixing them are not specified as absolute, but relative to the primary colors. When the exact chromaticities of the red, green, and blue primaries are defined, the color model then becomes an absolute color space, such as sRGB or Adobe RGB.
 
-![](./models/rgb_color_solid_cube.png)
+![](./rgb_color_solid_cube.png)
 
 Use of the three primary colors is not sufficient to reproduce all colors; only colors within the color triangle defined by the chromaticities of the primaries can be reproduced by additive mixing of non-negative amounts of those colors of light.

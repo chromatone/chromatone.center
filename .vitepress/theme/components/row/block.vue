@@ -41,7 +41,7 @@ const bg = "url(/media/" + props.item.data?.cover + ")";
 
 <style scoped>
 .row {
-  @apply bg-light-200 dark:bg-dark-300 flex flex-col transition no-underline p-2;
+  @apply bg-light-200 dark:bg-dark-300 flex flex-col transition no-underline;
   flex: 1 1 200px;
 }
 
@@ -55,7 +55,7 @@ const bg = "url(/media/" + props.item.data?.cover + ")";
 }
 
 .cover {
-  @apply w-full min-h-20em bg-cover bg-center rounded;
+  @apply w-full min-h-10em bg-cover bg-center rounded;
   filter: saturate(50%) opacity(50%);
   transition: all 300ms ease-in-out;
   flex: 1 1 30%;

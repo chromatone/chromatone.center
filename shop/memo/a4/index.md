@@ -14,6 +14,6 @@ The A4 cheat-sheet is currently in a design process.
 <chord-scales />
 <svg-save svg="diatonic"/>
 
-![](/media/memo/a4-scales.svg)
+![svg](/media/memo/a4-scales.svg)
 
-![](/media/memo/a4-circle.svg)
+![svg](/media/memo/a4-circle.svg)

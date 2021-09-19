@@ -44,7 +44,7 @@ const props = defineProps({
 }
 
 .cover {
-  @apply mb-4 min-h-4em bg-cover bg-center rounded;
+  @apply mb-4 min-h-10em bg-cover bg-center rounded;
   filter: saturate(10%) opacity(70%);
   transition: all 1200ms cubic-bezier(0.6, -0.1, 0, 1.1);
   flex: 1 1 20%;
@@ -53,7 +53,6 @@ const props = defineProps({
 
 .crd:hover .cover {
   filter: saturate(60%) opacity(80%);
-  @apply min-h-20em;
 }
 
 a:hover .art {

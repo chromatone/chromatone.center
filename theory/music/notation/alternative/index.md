@@ -3,66 +3,7 @@ title: Alternative notation systems
 subtitle: There's a plenty of proposed and actually used ways of writing down and communicating music information
 date: 2021-06-04
 tags: notation
----
-
-## Tabulature
-
-Tablature (or tabulature, or tab for short) is a form of musical notation indicating instrument fingering rather than musical pitches. The word tablature originates from the Latin word tabulatura. Tabula is a table or slate, in Latin. To tabulate something means to put it into a table or chart. 
-
-Tablature is common for fretted stringed instruments such as the lute, vihuela, or guitar, as well as many free reed aerophones such as the harmonica. Tablature was common during the Renaissance and Baroque eras, and is commonly used today in notating many forms of music. Three types of organ tablature were used in Europe: German, Spanish and Italian.
-
->![](./Vihuela-Tab_Fuenllana_1554.jpg)
->Example of numeric vihuela tablature from the book "Orphenica Lyra" by Miguel de Fuenllana (1554). Red numerals (original) mark the vocal part.
-
-While standard notation represents the rhythm and duration of each note and its pitch relative to the scale based on a twelve tone division of the octave, tablature is instead operationally based, indicating where and when a finger should be placed to generate a note, so pitch is denoted implicitly rather than explicitly. 
-
-![](./Tuning-chr.png)
-
-Tablature for plucked strings is based upon a diagrammatic representation of the strings and frets of the instrument, keyboard tablature represents the keys of the instrument, and woodwind tablature shows whether each of the fingerholes is to be closed or left open. 
-
-![](./capirola2.png)
-
-
-![](./guitar-tabs.svg)
-
-![](./Star-Wars-Ukulele-The-Imperial-March.jpg)
-
-### Drum tabs
-
-Instead of the durational notes normally seen on a piece of sheet music, drum tab uses proportional horizontal placement to indicate rhythm and vertical placement on a series of lines to represent which drum from the drum kit to stroke. Drum tabs frequently depict drum patterns. 
-
-```
-HH|x-x-x-x-x-x-x-x-||
- S|----o-------o---||
- B|o-------o-------||
-   1 + 2 + 3 + 4 +
-```
-
-### Keyboard tabulature
-
-The modern keyboard tabs are built using any monospaced font. THey show each octave of the piano on a separate lane (with "R" and "L" for the hand). Letters show the note played. ">" symbols show note durations in the fixed time periods, divided by "|" symbols. The actual chords are placed above the tabs. 
-
-
-```
-Penny Lane - The Beatles
-Tabbed By: Ebon-Ivor
-
-             C          Am7          Dm7        Gsus7
-   +  1  +   1  +  2  +  3  +  4  +   1  +  2  +  3  +  4  +
-R5|---c-d-e-|e>>d>>c---c>>>>---------|------------------c-d-e>|
-R4|g>>------|--------b------b>>a>>---|a-----------------a>>>>>|
-R4|---------|g>>>>>g>>>>>g>>>>>---g>>|--g-f>>>>>>>>>>g>>f>>>>>|
-R4|---------|e>>>>>e>>>>>e>>>>>e>>>>>|------------------------|
-R4|---------|------------------c>>>>>|c>>>>>c>>>>>c>>>>>------|
-R3|---------|------------------------|a>>>>>a>>>>>a>>>>>------|
-L3|---------|c>>>>>------------------|------------------------|
-L2|---------|------b>>>>>a>>>>>g>>>>>|f>>>>>d>>>>>g>>>>>g>>>>>|
-
-   C          Am7          Cm7                     Am7b5
-
-``` 
-[tabnabber.com](https://tabnabber.com/view_Tab.asp?tabID=11885&sArtist=Beatles%2C%20The&sName=Penny%20Lane)
-
+list: alternatives
 ---
 
 
@@ -205,7 +146,8 @@ The earlier ABC notation was built on, standardized, and changed by Chris Walsha
 - the time signature (M:), 
 - the default note length (L:), 
 - the type of tune (R:),
-- the key (K:). 
+- the key (K:)
+  - with the clef (K: clef=[treble|alto|tenor|bass|perc])
 
 Lines following the key designation represent the tune. 
 
@@ -235,7 +177,7 @@ A MIDI message is an instruction that controls some aspect of the receiving devi
 
 Channel Voice messages transmit real-time performance data over a single channel. Examples include "note-on" messages which contain a MIDI note number that specifies the note's pitch, a velocity value that indicates how forcefully the note was played, and the channel number; "note-off" messages that end a note; program change messages that change a device's patch; and control changes that allow adjustment of an instrument's parameters. MIDI notes are numbered from 0 to 127 assigned to C−1 to G9. This corresponds to a range of 8.175799 to 12543.85 Hz (assuming equal temperament and 440 Hz A4) and extends beyond the 88 note piano range from A0 to C8. 
 
-![](./GM_Standard_Drum_Map_on_the_keyboard.svg)
+![svg](./GM_Standard_Drum_Map_on_the_keyboard.svg)
 
 ## Integer notation
 

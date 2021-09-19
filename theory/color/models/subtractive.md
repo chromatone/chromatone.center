@@ -1,7 +1,7 @@
 ---
 title: Subtractive color models
 subtitle: The colors produced by materials absorbing certain light frequencies. RYB and CMYK
-tags: color
+tags: models
 date: 2021-08-20
 cover: theory/cmyk.svg
 ---
@@ -12,7 +12,7 @@ A color model is subtractive in the sense that mixtures of dyes subtract specifi
 
 ### RYB
 
-<img src="./models/chromatography_1841.png">
+<img src="./chromatography_1841.png">
 
 >An RYB color chart from George Field's 1841 Chromatography; or, A treatise on colours and pigments: and of their powers in painting.
 
@@ -20,7 +20,7 @@ A color model is subtractive in the sense that mixtures of dyes subtract specifi
 
 In this context, the term primary color refers to three exemplar colors (red, yellow, and blue) as opposed to specific pigments. As illustrated, in the RYB color model, red, yellow, and blue are intermixed to create secondary color segments of orange, green, and purple. This set of primary colors emerged at a time when access to a large range of pigments was limited by availability and cost, and it encouraged artists and designers to explore the many nuances of color through mixing and intermixing a limited range of pigment colors. In art and design education, red, yellow, and blue pigments were usually augmented with white and black pigments, enabling the creation of a larger gamut of color nuances including tints and shades. 
 
-![](./models/tint-tone-shade.svg)
+![](./tint-tone-shade.svg)
 
 > **Jacob Christoph Le Blon** was the first to apply the RYB color model to printing, specifically mezzotint printing, and he used separate plates for each color: yellow, red and blue plus black to add shades and contrast. In 'Coloritto', Le Blon asserted that “the art of mixing colours…(in) painting can represent all visible objects with three colours: yellow, red and blue; for all colours can be composed of these three, which I call Primitive”. Le Blon added that red and yellow make orange; red and blue, make purple; and blue and yellow make green (Le Blon, 1725, p6).
 

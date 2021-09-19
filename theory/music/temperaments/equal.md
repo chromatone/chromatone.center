@@ -15,11 +15,11 @@ Zhu Zaiyu (朱載堉), a prince of the Ming court, spent thirty years on researc
 
 Zhu obtained his result mathematically by dividing the length of string and pipe successively by 12√2 ≈ 1.059463, and for pipe length by 24√2, such that after twelve divisions (an octave) the length was divided by a factor of 2:
 
-![](/media/theory/tet/12-equation.svg)
+![svg](/media/theory/tet/12-equation.svg)
 
 Similarly, after 84 divisions (7 octaves) the length was divided by a factor of 128.
 
-![](/media/theory/tet/128-equation.svg)
+![svg](/media/theory/tet/128-equation.svg)
 
 Zhu Zaiyu has been credited as the first person to solve the equal temperament problem mathematically.
 
@@ -27,11 +27,11 @@ Zhu Zaiyu has been credited as the first person to solve the equal temperament p
 
 ### Mathematics of 12-TET
 
-![](/media/theory/tet/tet-equation.svg)
+![svg](/media/theory/tet/tet-equation.svg)
 
-![](/media/theory/tet/tet-fifth-equation.svg)
+![svg](/media/theory/tet/tet-fifth-equation.svg)
 
-![](/media/theory/tet/oct-equation.svg)
+![svg](/media/theory/tet/oct-equation.svg)
 
 ![](./Monochord_ET.png)
 

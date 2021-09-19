@@ -52,7 +52,7 @@ Individuals rarely agree on what color a given sound is. B flat might be orange 
 
 **Alexander Scriabin** was a Russian composer and pianist. He is famously regarded as a synesthete, but there is a lot of controversy surrounding whether he had chromesthesia or not. Scriabin was a major proponent of Theosophy, which had a system associating colors to feelings and emotions. This influenced the musician, who distinguished "spiritual" tonalities (like F-sharp major) from "earthly, material" ones (C major, F major). Furthermore, Alexander Scriabin developed a "keyboard with lights" or clavier à lumières, which directly matched musical notes with colors.
 
-![](./Scriabin-Circle.svg)
+![svg](./Scriabin-Circle.svg)
 
 Scriabin's sound-to-color associations arranged into a circle of fifths, demonstrating its spectral quality.
 
@@ -92,7 +92,7 @@ Ideasthesia (alternative spelling ideaesthesia) is a neuroscientific phenomenon 
 
 While "synesthesia" meaning "union of senses" implies the association of two sensory elements with little connection to the cognitive level, empirical evidence indicated that most phenomena linked to synesthesia are in fact induced by semantic representations. That is, the linguistic meaning of the stimulus is what is important rather than its sensory properties. In other words, while synesthesia presumes that both the trigger (inducer) and the resulting experience (concurrent) are of sensory nature, ideasthesia presumes that only the resulting experience is of sensory nature while the trigger is semantic.
 
-![](./Booba-Kiki.svg)
+![svg](./Booba-Kiki.svg)
 
 Over the past decade, it has been suggested that the Bouba/Kiki phenomenon is a case of ideasthesia. Most people will agree that the star-shaped object on the left is named Kiki and the round one on the right Bouba. It has been assumed that these associations come from direct connections between visual and auditory cortices. However, Gomez et al. have shown that Kiki/Bouba associations are much richer as either word and either image is associated semantically to a number of concepts such as white or black color, feminine vs. masculine, cold vs. hot, and others. These sound-shape associations seem to be related through a large overlap between semantic networks of Kiki and star-shape on the one hand, and Bouba and round-shape on the other hand. For example, both Kiki and star-shape are clever, small, thin and nervous. This indicates that behind Kiki-Bouba effect lies a rich semantic network. In other words, our sensory experience is largely determined by the meaning that we assign to stimuli.
 

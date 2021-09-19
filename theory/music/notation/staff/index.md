@@ -14,7 +14,7 @@ cover: theory/notation/Bachlut1.png
 ![](./chromatic-c.jpg)
 ![](./chromatic-Eb.jpg)
 
-![](./chromatic-scale.svg)
+![svg](./chromatic-scale.svg)
 
 ## Note values and rests
 

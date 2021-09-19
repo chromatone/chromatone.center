@@ -6,23 +6,23 @@ date: 2021-08-29
 cover: theory/sun-spectrum.svg
 ---
 
-![](./em-spectrum.svg)
+![svg](./em-spectrum.svg)
 
  ## Black body emission
 
  Black-body radiation is the thermal electromagnetic radiation within or surrounding a body in thermodynamic equilibrium with its environment, emitted by a black body (an idealized opaque, non-reflective body). It has a specific spectrum of wavelengths, inversely related to intensity that depend only on the body's temperature, which is assumed for the sake of calculations and theory to be uniform and constant.
 
-![](./Color_temperature_black_body_800-12200K.svg)
+![svg](./Color_temperature_black_body_800-12200K.svg)
 
 Black-body radiation has a characteristic, continuous frequency spectrum that depends only on the body's temperature, called the Planck spectrum or Planck's law. The spectrum is peaked at a characteristic frequency that shifts to higher frequencies with increasing temperature, and at room temperature most of the emission is in the infrared region of the electromagnetic spectrum. As the temperature increases past about 500 degrees Celsius, black bodies start to emit significant amounts of visible light. Viewed in the dark by the human eye, the first faint glow appears as a "ghostly" grey (the visible light is actually red, but low intensity light activates only the eye's grey-level sensors). With rising temperature, the glow becomes visible even when there is some background surrounding light: first as a dull red, then yellow, and eventually a "dazzling bluish-white" as the temperature rises. When the body appears white, it is emitting a substantial fraction of its energy as ultraviolet radiation. The Sun, with an effective temperature of approximately 5800 K, is an approximate black body with an emission spectrum peaked in the central, yellow-green part of the visible spectrum, but with significant power in the ultraviolet as well. 
 
-![](./Wiens_law.svg)
+![svg](./Wiens_law.svg)
 
 ![](./PlanckianLocus.png)
 
  In the longer wavelengths this deviation is not so noticeable, as hv are very small. In the shorter wavelengths of the ultraviolet range, however, classical theory predicts the energy emitted tends to infinity, hence the ultraviolet catastrophe. The theory even predicted that all bodies would emit most of their energy in the ultraviolet range, clearly contradicted by the experimental data which showed a different peak wavelength at different temperatures (see also Wien's law).
 
-![](./Black_body.svg)
+![svg](./Black_body.svg)
 
 As the temperature increases, the peak of the emitted black-body radiation curve moves to higher intensities and shorter wavelengths. The black-body radiation graph is also compared with the classical model of Rayleigh and Jeans.
 

@@ -7,6 +7,6 @@ cover: theory/chromatic.svg
 date: 2021-09-15
 ---
 
-![](./intervals.svg)
+![svg](./intervals.svg)
 
-![](./chromatic.svg)
+![svg](./chromatic.svg)

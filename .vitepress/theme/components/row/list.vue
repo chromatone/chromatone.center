@@ -1,6 +1,6 @@
 <template lang="pug">
 .list-blocks(v-if="rows")
-  card-box.my-8(
+  card-box.my-8.mx-2(
     v-for="(area,i) in rows",
     :key="area.title", 
     :id="area.title"
@@ -8,7 +8,7 @@
     :total="rows.length"
     v-slot="{ color }"
     )
-    row-block.m-1(
+    row-block(
       :item="area", 
       :color="color"
       )  

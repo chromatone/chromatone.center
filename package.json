@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@tonaljs/tonal": "^4.6.5",
-    "@vueuse/core": "6.3.3",
+    "@vueuse/core": "6.4.1",
     "@vueuse/gesture": "^1.0.0",
     "@vueuse/motion": "^1.6.0",
     "abcjs": "^5.12.0",
@@ -23,12 +23,12 @@
     "paper": "^0.12.15",
     "poly-decomp": "^0.3.0",
     "tone": "^14.8.26",
-    "vue": "^3.2.11",
+    "vue": "^3.2.12",
     "webmidi": "^3.0.0-alpha.8"
   },
   "devDependencies": {
-    "@iconify/json": "^1.1.402",
-    "@types/node": "^16.9.1",
+    "@iconify/json": "^1.1.403",
+    "@types/node": "^16.9.4",
     "esbuild-register": "^3.0.0",
     "markdown-it-classy": "^0.2.0",
     "markdown-it-container": "^3.0.0",
@@ -39,7 +39,7 @@
     "unplugin-auto-import": "^0.4.6",
     "unplugin-icons": "^0.11.3",
     "unplugin-vue-components": "^0.15.2",
-    "vite": "^2.5.7",
+    "vite": "^2.5.10",
     "vite-aliases": "0.8.6",
     "vite-plugin-pwa": "^0.11.2",
     "vite-plugin-windicss": "^1.4.3",

@@ -33,4 +33,7 @@ Octaves are identified with various naming systems. Among the most common are th
 
 After the unison, the octave is the simplest interval in music. The human ear tends to hear both notes as being essentially "the same", due to closely related harmonics. Notes separated by an octave "ring" together, adding a pleasing sound to music. The interval is so natural to humans that when men and women are asked to sing in unison, they typically sing in octave.
 
+<img src="./octaves.svg">
+
 For this reason, notes an octave apart are given the same note name in the Western system of music notation—the name of a note an octave above A is also A. This is called octave equivalence, the assumption that pitches one or more octaves apart are musically equivalent in many ways, leading to the convention "that scales are uniquely defined by specifying the intervals within an octave". The conceptualization of pitch as having two dimensions, pitch height (absolute frequency) and pitch class (relative position within the octave), inherently include octave circularity. Thus all C♯s, or all 1s (if C = 0), in any octave are part of the same pitch class. 
+

@@ -1,0 +1,136 @@
+<svg  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        width="520px" height="100" 
+        viewBox="0 0 530 100" >
+<!--
+  Author: Paul J. DeMarco 
+  Email : pjdemarco@gmail.com
+  Date  : 7/26/2012
+  This is an image of a piano's keys.  The octaves are labeled and hovering over the keys will display the key's
+   frequency.
+  This image is in the public domain.
+-->
+<rect x="3" y="20" height="50" width="10" style="stroke:#888888; fill: #ffffff"><title>27.5</title></rect>
+<rect x="13" y="20" height="50" width="10" style="stroke:#888888; fill: #ffffff"><title>30.8677063285078</title></rect>
+<rect id="key_2" x="10.5" y="20" height="25" width="5" style="stroke:#000000; fill: #000000"><title>29.1352350948806</title></rect>
+<rect x="23" y="20" height="50" width="10" style="stroke:#888888; fill: #ffffff"><title>32.7031956625748</title></rect>
+<rect x="33" y="20" height="50" width="10" style="stroke:#888888; fill: #ffffff"><title>36.7080959896759</title></rect>
+<rect x="43" y="20" height="50" width="10" style="stroke:#888888; fill: #ffffff"><title>41.2034446141087</title></rect>
+<rect x="53" y="20" height="50" width="10" style="stroke:#888888; fill: #ffffff"><title>43.6535289291255</title></rect>
+<rect x="63" y="20" height="50" width="10" style="stroke:#888888; fill: #ffffff"><title>48.9994294977187</title></rect>
+<rect x="73" y="20" height="50" width="10" style="stroke:#888888; fill: #ffffff"><title>55</title></rect>
+<rect x="83" y="20" height="50" width="10" style="stroke:#888888; fill: #ffffff"><title>61.7354126570155</title></rect>
+<rect id="key_5" x="30.5" y="20" height="25" width="5" style="stroke:#000000; fill: #000000"><title>34.647828872109</title></rect>
+<rect id="key_7" x="40.5" y="20" height="25" width="5" style="stroke:#000000; fill: #000000"><title>38.8908729652601</title></rect>
+<rect id="key_10" x="60.5" y="20" height="25" width="5" style="stroke:#000000; fill: #000000"><title>46.2493028389543</title></rect>
+<rect id="key_12" x="70.5" y="20" height="25" width="5" style="stroke:#000000; fill: #000000"><title>51.9130871974931</title></rect>
+<rect id="key_14" x="80.5" y="20" height="25" width="5" style="stroke:#000000; fill: #000000"><title>58.2704701897612</title></rect>
+<line x1="23" y1="75" x2="93" y2="75" style="stroke:rgb(0,0,0);stroke-width:1"/>
+<line x1="23" y1="78" x2="23" y2="72" style="stroke:rgb(0,0,0);stroke-width:1"/>
+<line x1="93" y1="78" x2="93" y2="72" style="stroke:rgb(0,0,0);stroke-width:1"/>
+<text font-size="10" x="54" y="90" fill="black">1</text>
+<rect x="93" y="20" height="50" width="10" style="stroke:#888888; fill: #ffffff"><title>65.4063913251497</title></rect>
+<rect x="103" y="20" height="50" width="10" style="stroke:#888888; fill: #ffffff"><title>73.4161919793519</title></rect>
+<rect x="113" y="20" height="50" width="10" style="stroke:#888888; fill: #ffffff"><title>82.4068892282175</title></rect>
+<rect x="123" y="20" height="50" width="10" style="stroke:#888888; fill: #ffffff"><title>87.307057858251</title></rect>
+<rect x="133" y="20" height="50" width="10" style="stroke:#888888; fill: #ffffff"><title>97.9988589954373</title></rect>
+<rect x="143" y="20" height="50" width="10" style="stroke:#888888; fill: #ffffff"><title>110</title></rect>
+<rect x="153" y="20" height="50" width="10" style="stroke:#888888; fill: #ffffff"><title>123.470825314031</title></rect>
+<rect id="key_17" x="100.5" y="20" height="25" width="5" style="stroke:#000000; fill: #000000"><title>69.295657744218</title></rect>
+<rect id="key_19" x="110.5" y="20" height="25" width="5" style="stroke:#000000; fill: #000000"><title>77.7817459305202</title></rect>
+<rect id="key_22" x="130.5" y="20" height="25" width="5" style="stroke:#000000; fill: #000000"><title>92.4986056779086</title></rect>
+<rect id="key_24" x="140.5" y="20" height="25" width="5" style="stroke:#000000; fill: #000000"><title>103.826174394986</title></rect>
+<rect id="key_26" x="150.5" y="20" height="25" width="5" style="stroke:#000000; fill: #000000"><title>116.540940379522</title></rect>
+<line x1="93" y1="15" x2="163" y2="15" style="stroke:rgb(0,0,0);stroke-width:1"/>
+<line x1="93" y1="18" x2="93" y2="12" style="stroke:rgb(0,0,0);stroke-width:1"/>
+<line x1="163" y1="18" x2="163" y2="12" style="stroke:rgb(0,0,0);stroke-width:1"/>
+<text font-size="10" x="124" y="10" fill="black">2</text>
+<rect x="163" y="20" height="50" width="10" style="stroke:#888888; fill: #ffffff"><title>130.812782650299</title></rect>
+<rect x="173" y="20" height="50" width="10" style="stroke:#888888; fill: #ffffff"><title>146.832383958704</title></rect>
+<rect x="183" y="20" height="50" width="10" style="stroke:#888888; fill: #ffffff"><title>164.813778456435</title></rect>
+<rect x="193" y="20" height="50" width="10" style="stroke:#888888; fill: #ffffff"><title>174.614115716502</title></rect>
+<rect x="203" y="20" height="50" width="10" style="stroke:#888888; fill: #ffffff"><title>195.997717990875</title></rect>
+<rect x="213" y="20" height="50" width="10" style="stroke:#888888; fill: #ffffff"><title>220</title></rect>
+<rect x="223" y="20" height="50" width="10" style="stroke:#888888; fill: #ffffff"><title>246.941650628062</title></rect>
+<rect id="key_29" x="170.5" y="20" height="25" width="5" style="stroke:#000000; fill: #000000"><title>138.591315488436</title></rect>
+<rect id="key_31" x="180.5" y="20" height="25" width="5" style="stroke:#000000; fill: #000000"><title>155.56349186104</title></rect>
+<rect id="key_34" x="200.5" y="20" height="25" width="5" style="stroke:#000000; fill: #000000"><title>184.997211355817</title></rect>
+<rect id="key_36" x="210.5" y="20" height="25" width="5" style="stroke:#000000; fill: #000000"><title>207.652348789973</title></rect>
+<rect id="key_38" x="220.5" y="20" height="25" width="5" style="stroke:#000000; fill: #000000"><title>233.081880759045</title></rect>
+<line x1="163" y1="75" x2="233" y2="75" style="stroke:rgb(0,0,0);stroke-width:1"/>
+<line x1="163" y1="78" x2="163" y2="72" style="stroke:rgb(0,0,0);stroke-width:1"/>
+<line x1="233" y1="78" x2="233" y2="72" style="stroke:rgb(0,0,0);stroke-width:1"/>
+<text font-size="10" x="194" y="90" fill="black">3</text>
+<rect x="233" y="20" height="50" width="10" style="stroke:#888888; fill: #00ffff"><title>261.625565300599</title></rect>
+<rect x="243" y="20" height="50" width="10" style="stroke:#888888; fill: #ffffff"><title>293.664767917408</title></rect>
+<rect x="253" y="20" height="50" width="10" style="stroke:#888888; fill: #ffffff"><title>329.62755691287</title></rect>
+<rect x="263" y="20" height="50" width="10" style="stroke:#888888; fill: #ffffff"><title>349.228231433004</title></rect>
+<rect x="273" y="20" height="50" width="10" style="stroke:#888888; fill: #ffffff"><title>391.995435981749</title></rect>
+<rect x="283" y="20" height="50" width="10" style="stroke:#888888; fill: #ffff00"><title>440</title></rect>
+<rect x="293" y="20" height="50" width="10" style="stroke:#888888; fill: #ffffff"><title>493.883301256124</title></rect>
+<rect id="key_41" x="240.5" y="20" height="25" width="5" style="stroke:#000000; fill: #000000"><title>277.182630976872</title></rect>
+<rect id="key_43" x="250.5" y="20" height="25" width="5" style="stroke:#000000; fill: #000000"><title>311.126983722081</title></rect>
+<rect id="key_46" x="270.5" y="20" height="25" width="5" style="stroke:#000000; fill: #000000"><title>369.994422711634</title></rect>
+<rect id="key_48" x="280.5" y="20" height="25" width="5" style="stroke:#000000; fill: #000000"><title>415.304697579945</title></rect>
+<rect id="key_50" x="290.5" y="20" height="25" width="5" style="stroke:#000000; fill: #000000"><title>466.16376151809</title></rect>
+<line x1="233" y1="15" x2="303" y2="15" style="stroke:rgb(0,0,0);stroke-width:1"/>
+<line x1="233" y1="18" x2="233" y2="12" style="stroke:rgb(0,0,0);stroke-width:1"/>
+<line x1="303" y1="18" x2="303" y2="12" style="stroke:rgb(0,0,0);stroke-width:1"/>
+<text font-size="10" x="264" y="10" fill="black">4</text>
+<rect x="303" y="20" height="50" width="10" style="stroke:#888888; fill: #ffffff"><title>523.251130601197</title></rect>
+<rect x="313" y="20" height="50" width="10" style="stroke:#888888; fill: #ffffff"><title>587.329535834815</title></rect>
+<rect x="323" y="20" height="50" width="10" style="stroke:#888888; fill: #ffffff"><title>659.25511382574</title></rect>
+<rect x="333" y="20" height="50" width="10" style="stroke:#888888; fill: #ffffff"><title>698.456462866008</title></rect>
+<rect x="343" y="20" height="50" width="10" style="stroke:#888888; fill: #ffffff"><title>783.990871963499</title></rect>
+<rect x="353" y="20" height="50" width="10" style="stroke:#888888; fill: #ffffff"><title>880</title></rect>
+<rect x="363" y="20" height="50" width="10" style="stroke:#888888; fill: #ffffff"><title>987.766602512248</title></rect>
+<rect id="key_53" x="310.5" y="20" height="25" width="5" style="stroke:#000000; fill: #000000"><title>554.365261953744</title></rect>
+<rect id="key_55" x="320.5" y="20" height="25" width="5" style="stroke:#000000; fill: #000000"><title>622.253967444162</title></rect>
+<rect id="key_58" x="340.5" y="20" height="25" width="5" style="stroke:#000000; fill: #000000"><title>739.988845423269</title></rect>
+<rect id="key_60" x="350.5" y="20" height="25" width="5" style="stroke:#000000; fill: #000000"><title>830.60939515989</title></rect>
+<rect id="key_62" x="360.5" y="20" height="25" width="5" style="stroke:#000000; fill: #000000"><title>932.32752303618</title></rect>
+<line x1="303" y1="75" x2="373" y2="75" style="stroke:rgb(0,0,0);stroke-width:1"/>
+<line x1="303" y1="78" x2="303" y2="72" style="stroke:rgb(0,0,0);stroke-width:1"/>
+<line x1="373" y1="78" x2="373" y2="72" style="stroke:rgb(0,0,0);stroke-width:1"/>
+<text font-size="10" x="334" y="90" fill="black">5</text>
+<rect x="373" y="20" height="50" width="10" style="stroke:#888888; fill: #ffffff"><title>1046.50226120239</title></rect>
+<rect x="383" y="20" height="50" width="10" style="stroke:#888888; fill: #ffffff"><title>1174.65907166963</title></rect>
+<rect x="393" y="20" height="50" width="10" style="stroke:#888888; fill: #ffffff"><title>1318.51022765148</title></rect>
+<rect x="403" y="20" height="50" width="10" style="stroke:#888888; fill: #ffffff"><title>1396.91292573202</title></rect>
+<rect x="413" y="20" height="50" width="10" style="stroke:#888888; fill: #ffffff"><title>1567.981743927</title></rect>
+<rect x="423" y="20" height="50" width="10" style="stroke:#888888; fill: #ffffff"><title>1760</title></rect>
+<rect x="433" y="20" height="50" width="10" style="stroke:#888888; fill: #ffffff"><title>1975.5332050245</title></rect>
+<rect id="key_65" x="380.5" y="20" height="25" width="5" style="stroke:#000000; fill: #000000"><title>1108.73052390749</title></rect>
+<rect id="key_67" x="390.5" y="20" height="25" width="5" style="stroke:#000000; fill: #000000"><title>1244.50793488832</title></rect>
+<rect id="key_70" x="410.5" y="20" height="25" width="5" style="stroke:#000000; fill: #000000"><title>1479.97769084654</title></rect>
+<rect id="key_72" x="420.5" y="20" height="25" width="5" style="stroke:#000000; fill: #000000"><title>1661.21879031978</title></rect>
+<rect id="key_74" x="430.5" y="20" height="25" width="5" style="stroke:#000000; fill: #000000"><title>1864.65504607236</title></rect>
+<line x1="373" y1="15" x2="443" y2="15" style="stroke:rgb(0,0,0);stroke-width:1"/>
+<line x1="373" y1="18" x2="373" y2="12" style="stroke:rgb(0,0,0);stroke-width:1"/>
+<line x1="443" y1="18" x2="443" y2="12" style="stroke:rgb(0,0,0);stroke-width:1"/>
+<text font-size="10" x="404" y="10" fill="black">6</text>
+<rect x="443" y="20" height="50" width="10" style="stroke:#888888; fill: #ffffff"><title>2093.00452240479</title></rect>
+<rect x="453" y="20" height="50" width="10" style="stroke:#888888; fill: #ffffff"><title>2349.31814333926</title></rect>
+<rect x="463" y="20" height="50" width="10" style="stroke:#888888; fill: #ffffff"><title>2637.02045530296</title></rect>
+<rect x="473" y="20" height="50" width="10" style="stroke:#888888; fill: #ffffff"><title>2793.82585146403</title></rect>
+<rect x="483" y="20" height="50" width="10" style="stroke:#888888; fill: #ffffff"><title>3135.96348785399</title></rect>
+<rect x="493" y="20" height="50" width="10" style="stroke:#888888; fill: #ffffff"><title>3520</title></rect>
+<rect x="503" y="20" height="50" width="10" style="stroke:#888888; fill: #ffffff"><title>3951.06641004899</title></rect>
+<rect id="key_77" x="450.5" y="20" height="25" width="5" style="stroke:#000000; fill: #000000"><title>2217.46104781498</title></rect>
+<rect id="key_79" x="460.5" y="20" height="25" width="5" style="stroke:#000000; fill: #000000"><title>2489.01586977665</title></rect>
+<rect id="key_82" x="480.5" y="20" height="25" width="5" style="stroke:#000000; fill: #000000"><title>2959.95538169308</title></rect>
+<rect id="key_84" x="490.5" y="20" height="25" width="5" style="stroke:#000000; fill: #000000"><title>3322.43758063956</title></rect>
+<rect id="key_86" x="500.5" y="20" height="25" width="5" style="stroke:#000000; fill: #000000"><title>3729.31009214472</title></rect>
+<line x1="443" y1="75" x2="513" y2="75" style="stroke:rgb(0,0,0);stroke-width:1"/>
+<line x1="443" y1="78" x2="443" y2="72" style="stroke:rgb(0,0,0);stroke-width:1"/>
+<line x1="513" y1="78" x2="513" y2="72" style="stroke:rgb(0,0,0);stroke-width:1"/>
+<text font-size="10" x="474" y="90" fill="black">7</text>
+<rect x="513" y="20" height="50" width="10" style="stroke:#888888; fill: #ffffff"><title>4186.00904480958</title></rect>
+<line x1="3" y1="15" x2="23" y2="15" style="stroke:rgb(0,0,0);stroke-width:1"/>
+<line x1="3" y1="18" x2="3" y2="12" style="stroke:rgb(0,0,0);stroke-width:1"/>
+<line x1="23" y1="18" x2="23" y2="12" style="stroke:rgb(0,0,0);stroke-width:1"/>
+<text font-size="10" x="9" y="10" fill="black">0</text>
+<line x1="513" y1="15" x2="523" y2="15" style="stroke:rgb(0,0,0);stroke-width:1"/>
+<line x1="513" y1="18" x2="513" y2="12" style="stroke:rgb(0,0,0);stroke-width:1"/>
+<line x1="523" y1="18" x2="523" y2="12" style="stroke:rgb(0,0,0);stroke-width:1"/>
+<text font-size="10" x="514" y="10" fill="black">8</text>
+</svg>

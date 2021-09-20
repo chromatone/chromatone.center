@@ -29,11 +29,11 @@ Numbers are already widely used in music - they indicate rhythmic meters, interv
 
 ![](/media/apps/midi-roll.png)
 
-Try the [MIDI-roll](/practice/midi/roll.md) to look at incoming MIDI visualization.
+Try the [MIDI-roll](/apps/midi/roll.md) to look at incoming MIDI visualization.
 
 ![](/media/apps/roll.png)
 
-Try the [Pitch-roll](/practice/pitch/roll.md) to see the main note graph of incoming audio on an endless roll.
+Try the [Pitch-roll](/apps/pitch/roll.md) to see the main note graph of incoming audio on an endless roll.
 
 ## Colorful spectrogram
 
@@ -41,4 +41,4 @@ Adding the colors to a regular spectrogram makes you see much more about the mus
 
 ![](/media/apps/spectrogram.png)
 
-Try the [Colorful spectrogram](/practice/pitch/spectrogram.md) online now.
+Try the [Colorful spectrogram](/apps/pitch/spectrogram.md) online now.

@@ -144,12 +144,15 @@ function setVelocity(channel, note, velocity) {
   }
 }
 
-export function midiAttack(note) {
+export function midiAttack(note, options) {
   if (!midi.out) return
 
   setVelocity(note.channel, note.name, 100)
   WebMidi.outputs.forEach((output) => {
-    output.playNote(note, { channels: note.channel || midi.channel })
+    output.playNote(note, {
+      channels: note.channel || midi.channel,
+      ...options,
+    })
   })
 }
 
@@ -161,11 +164,11 @@ export function midiRelease(note) {
   })
 }
 
-export function midiOnce(note) {
+export function midiOnce(note, time) {
   if (!midi.out) return
-  midiAttack(note)
+  midiAttack(note, { time: `+${time}` })
   setTimeout(() => {
-    midiRelease(note)
+    midiRelease(note, { time: `+${time + 10}` })
   }, 300)
 }
 

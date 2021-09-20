@@ -2,13 +2,13 @@
 .flex.flex-col.m-auto.items-center.w-full.max-w-65ch
   .keys
     .key(
-      @click="tonic = i"
+      @click="globalScale.tonic = i"
       v-for="(bit,i) in '101101011010'"
       :key="i"
-      :style="{ backgroundColor: i == tonic ? pitchColor(i) : bit == '1' ? 'hsla(0,0%,80%,0.4)' : 'hsla(0,0%,10%,0.4)' }"
+      :style="{ backgroundColor: i == globalScale.tonic ? pitchColor(i) : bit == '1' ? 'hsla(0,0%,80%,0.4)' : 'hsla(0,0%,10%,0.4)' }"
       ) {{ notes[i].name }}
   .control-row
-    .control.font-bold(:style="{ color: pitchColor(tonic) }") {{ notes[tonic].name }}
+    .control.font-bold(:style="{ color: pitchColor(globalScale.tonic) }") {{ notes[globalScale.tonic].name }}
     .control(@click="control.count = !control.count") Notes 
       la-arrows-alt-v(:style="{ opacity: control.count ? 1 : 0.3 }")
 
@@ -18,13 +18,15 @@
     .control(@click="control.scale = !control.scale") Scale
       la-filter.ml-2(:style="{ opacity: control.scale ? 1 : 0.3 }")
 
-  transition-group(name="list")
-    chroma-row.mb-6(
-      v-for="(set) in sorted",
-      :key="set.chroma",
-      :chroma="set.chroma",
-      :tonic="tonic",
-      )
+  .flex.flex-col.items-start
+    transition-group(name="list")
+      chroma-row.mb-6(
+        :twoRow="false"
+        v-for="(set) in sorted",
+        :key="set.chroma",
+        :chroma="set.chroma",
+        :tonic="tonic",
+        )
 </template>
 
 <script setup>
@@ -32,6 +34,7 @@ import { computed } from 'vue'
 import { Pcset, ChordType, ScaleType } from '@tonaljs/tonal'
 import { useStorage } from '@vueuse/core'
 import { pitchColor, notes } from 'chromatone-theory'
+import { globalScale } from '@use/theory.js'
 
 
 const tonic = useStorage('chroma-tonic', 0)
@@ -106,7 +109,7 @@ const sorted = computed(() => {
 }
 
 .key {
-  @apply transition-all duration-300 p-2 m-1 sm:(p-3 m-1) rounded-lg cursor-pointer shadow-md;
+  @apply transition-all text-center duration-300 p-2 m-1 sm:(p-3 m-1) rounded-lg cursor-pointer shadow-md;
   flex: 1 1 1em;
 }
 

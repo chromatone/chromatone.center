@@ -12,9 +12,9 @@ Musicology commonly classifies [pentatonic scales](https://en.wikipedia.org/wiki
 
 ### Major pentatonic scale
 
-- <chroma-circle :chroma="'101010010100'" type="6/9" />
+<chroma-circle :chroma="'101010010100'" type="6/9" />
 
-- <chroma-row  :chroma="'101010010100'" />
+<chroma-row  :chroma="'101010010100'" />
 
 Anhemitonic pentatonic scales can be constructed in many ways. The major pentatonic scale may be thought of as a gapped or incomplete major scale. However, the pentatonic scale has a unique character and is complete in terms of tonality. One construction takes five consecutive pitches from the circle of fifths; starting on C, these are C, G, D, A, and E. Transposing the pitches to fit into one octave rearranges the pitches into the major pentatonic scale: C, D, E, G, A. 
 

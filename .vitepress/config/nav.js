@@ -4,14 +4,19 @@ export const pages = getTags('./')
 
 export const nav = [
   {
-    text: 'Theory',
-    link: '/theory/',
-    items: pages.theory,
+    text: 'Color',
+    link: '/color/',
+    items: pages.color,
   },
   {
-    text: 'Practice',
-    link: '/practice/',
-    items: pages.practice,
+    text: 'Music',
+    link: '/music/',
+    items: pages.music,
+  },
+  {
+    text: 'Apps',
+    link: '/apps/',
+    items: pages.apps,
   },
   {
     text: 'Shop',
@@ -33,14 +38,19 @@ export const nav = [
 export const sidebar = {
   '/': [
     {
-      text: 'Theory',
-      link: '/theory/',
-      children: pages.theory,
+      text: 'Color',
+      link: '/color/',
+      children: pages.color,
     },
     {
-      text: 'Practice',
-      link: '/practice/',
-      children: pages.practice,
+      text: 'Music',
+      link: '/music/',
+      children: pages.music,
+    },
+    {
+      text: 'Apps',
+      link: '/apps/',
+      children: pages.apps,
     },
     {
       text: 'Shop',

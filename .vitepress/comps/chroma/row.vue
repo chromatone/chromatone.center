@@ -1,6 +1,6 @@
 <template lang="pug">
-.flex.flex-wrap.items-stretch.mx-auto
-  .grid.grid-cols-12.justify-items-stretch.mb-2
+.flex.flex-wrap.mx-auto
+  .grid.grid-cols-12.justify-items-stretch.mb-2.mx-auto
     .chroma-key(
       @mouseenter="hover(i, bit)"
       @touchstart="hover(i, bit)"
@@ -10,7 +10,10 @@
       :class="{ active: bit == 1 }"
       :style="{ backgroundColor: calcBg(i, bit) }"
       ) {{ bit == 1 ? notes[(i + globalScale.tonic) % 12].name : i }}
-  .flex.flex-wrap.justify-center.border-b-1.px-2(v-if="!state.chord.empty || state.scale") 
+  .flex.flex-wrap.justify-center.border-b-1.px-2(
+    v-if="!state.chord.empty || state.scale"
+    :class="{ 'w-full': true }"
+    ) 
     button.m-1.shadow.px-2.py-1.font-bold.cursor-pointer(@click="playChordOnce()") {{ notes[globalScale.tonic].name }}{{ state.chord.aliases[0] }} &nbsp;
     button.m-1.shadow.px-2.py-1.cursor-pointer.text-gray-500(v-if="state.chord.name" class="dark:text-gray-400",  @click="arpeggiate()")  {{ state.chord.name }} 
     button.m-1.scale.p-2.font-bold(v-if="state.scale"  @click="arpeggiate()") {{ state.scale }} scale
@@ -19,7 +22,7 @@
 <script setup>
 import { computed, nextTick } from 'vue'
 import { ScaleType } from '@tonaljs/tonal'
-import { pitchColor, notes } from 'chromatone-theory'
+import { pitchColor, notes, rotateArray } from 'chromatone-theory'
 import { Note } from '@tonaljs/tonal'
 import { Frequency } from 'tone'
 import { synthOnce } from '@use/synth.js'
@@ -30,6 +33,10 @@ const props = defineProps({
   chroma: {
     type: String,
   },
+  twoRow: {
+    type: Boolean,
+    default: true,
+  }
 });
 
 const state = reactive({
@@ -55,8 +62,8 @@ function calcBg(i, bit, hover) {
 }
 
 const chordNotes = computed(() => {
-  let shiftChroma = rotate(props.chroma.split(''), -globalScale.tonic)
-  let chOct = rotate(notes, -globalScale.tonic).map((n, i) => {
+  let shiftChroma = rotateArray(props.chroma.split(''), -globalScale.tonic)
+  let chOct = rotateArray(notes, -globalScale.tonic).map((n, i) => {
     return Frequency(n.pitch + globalScale.tonic + 57, 'midi').toNote()
   })
   let filtered = chOct.filter((val, i) => {
@@ -68,8 +75,8 @@ const chordNotes = computed(() => {
 })
 
 function playChordOnce() {
-  chordNotes.value.forEach(name => {
-    midiOnce({ name: name })
+  chordNotes.value.forEach((name) => {
+    midiOnce(name)
   })
   synthOnce(chordNotes.value, '4n')
 }
@@ -77,18 +84,16 @@ function playChordOnce() {
 function arpeggiate() {
   chordNotes.value.forEach((note, i) => {
     synthOnce(note, '8n', `+${i / 3}`)
+    midiOnce(note, { time: `+${i / 3}` })
   })
 }
 
 function playNote(note = 0, octave = 0) {
   let freq = Frequency(note + 57, 'midi')
-  midiOnce({ name: freq.toNote() })
+  midiOnce(freq.toNote())
   synthOnce(freq.toNote())
 }
 
-function rotate(arr, count = 1) {
-  return [...arr.slice(count, arr.length), ...arr.slice(0, count)];
-};
 
 
 </script>

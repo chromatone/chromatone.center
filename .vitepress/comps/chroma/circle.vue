@@ -29,7 +29,7 @@ svg.select-none.max-w-12em.my-4.mx-auto(
   g.cursor-pointer(
     v-for="(note,n) in rotateArray(chroma.split(''), -globalScale.tonic)" :key="n"
     :transform="`translate(${getCircleCoord(n, 12, 8, 0).x}, ${getCircleCoord(n, 12, 8, 0).y})`"
-    @click="globalScale.tonic = n"
+    @mousedown="globalScale.tonic = n"
   )
     circle(
       x="0" 
@@ -44,33 +44,61 @@ svg.select-none.max-w-12em.my-4.mx-auto(
       font-weight="bold"
       fill="white"
       ) {{ notes[n]?.name }}
-
-  circle(
-    cx="0"
-    cy="0"
-    r="5"
-    :fill="pitch === false ? 'none' : colord(pitchColor(globalScale.tonic)).toHex()"
-    )
-  text(
-    y="0.3"
-    font-size="3px"
-    font-weight="bold"
-    fill="white"
-    ) {{ pitch === false ? '' : typeof pitch == 'string' ? pitch : notes[globalScale.tonic]?.name }}{{ type }}
+  g.center.cursor-pointer(
+    @click="playChordOnce()"
+  )
+    circle(
+      cx="0"
+      cy="0"
+      r="5"
+      :fill="pitch === false ? 'none' : colord(pitchColor(globalScale.tonic)).toHex()"
+      )
+    text(
+      y="0.3"
+      font-size="3px"
+      font-weight="bold"
+      fill="white"
+      ) {{ pitch === false ? '' : typeof pitch == 'string' ? pitch : notes[globalScale.tonic]?.name }}{{ type }}
 </template>
 
 <script setup>
-import { notes, pitchColor, rotateArray, getCircleCoord } from 'chromatone-theory'
-import { colord } from 'colord'
-import { globalScale } from '@use/theory.js'
-
-
 const props = defineProps({
   pitch: { type: Number, default: 0 },
   chroma: { type: String, default: '1001000100101' },
   type: { type: String, default: '' },
   tonic: { type: Number, default: 0 },
 });
+
+import { notes, pitchColor, rotateArray, getCircleCoord } from 'chromatone-theory'
+import { colord } from 'colord'
+import { globalScale } from '@use/theory.js'
+import { Frequency } from 'tone'
+import { Note } from '@tonaljs/tonal'
+import { midiOnce } from '@use/midi.js'
+import { synthOnce } from '@use/synth.js'
+
+const chordNotes = computed(() => {
+  let shiftChroma = rotateArray(props.chroma.split(''), -globalScale.tonic)
+  let chOct = rotateArray(notes, -globalScale.tonic).map((n, i) => {
+    return Frequency(n.pitch + globalScale.tonic + 57, 'midi').toNote()
+  })
+  let filtered = chOct.filter((val, i) => {
+    if (shiftChroma[i] == '1') {
+      return true
+    }
+  })
+  return Note.sortedNames(filtered)
+})
+
+function playChordOnce() {
+  chordNotes.value.forEach((name, i) => {
+    midiOnce(name)
+  })
+  synthOnce(chordNotes.value, '4n')
+}
+
+
+
 </script>
 
 <style scoped>

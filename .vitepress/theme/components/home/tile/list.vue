@@ -6,11 +6,6 @@
     :item="area", 
     :i="i",
     :total="sorted.length",
-    v-motion,
-    :initial="{ opacity: 0, y: 40 }",
-    :enter="{ opacity: 0, y: 0, scale: 1 }",
-    :visible="{ opacity: 1, y: 0, scale: 1 }",
-    :delay="i * 80",
     )  
 </template>
 

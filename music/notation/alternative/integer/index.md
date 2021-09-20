@@ -2,7 +2,7 @@
 title: Integer notation
 subtitle: System that uses numbers to show notes
 tags: alternatives
-date: 2021-09-10
+date: 2021-09-14
 ---
 
 In music, integer notation is the translation of pitch classes and/or interval classes into whole numbers. Thus if C = 0, then C♯ = 1 ... A♯ = 10, B = 11, with "10" and "11" substituted by "t" and "e" in some sources, A and B in others (like the duodecimal numeral system, which also uses "t" and "e", or A and B, for "10" and "11"). This allows the most economical presentation of information regarding post-tonal materials.

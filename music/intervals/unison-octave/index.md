@@ -7,7 +7,7 @@ date: 2021-09-10
 
 ## Unison P1
 
-![](./Unison_on_C.png)
+<abc-render abc="[A4A4] AA" />
 
 Unison is two or more musical parts that sound either the same pitch or pitches separated by intervals of one or more octaves, usually at the same time. 
 
@@ -15,13 +15,13 @@ Unison or perfect unison (also called a prime, or perfect prime) may refer to th
 
 ## Octave P8
 
-![](./octave.png)
+<abc-render abc="[A4a] Aa" />
 
 An octave (Latin: octavus: eighth) or perfect octave (sometimes called the diapason) is the interval between one musical pitch and another with double its frequency. The octave relationship is a natural phenomenon that has been referred to as the "basic miracle of music," the use of which is "common in most musical systems." The interval between the first and second harmonics of the harmonic series is an octave. 
 
 Any two musical notes with fundamental frequencies in a ratio equal to 2n (n is any integer) are perceived as very similar and represent the simplest interval in music – an octave. Human pitch perception is periodic so that “color” or chroma of all the notes that are an octave apart seem circularly equivalent and brings them together into one pitch class.
 
-<img src="../chromatic.svg">
+<img src="./key-intervals.svg">
 
 To emphasize that it is one of the perfect intervals (including unison, perfect fourth, and perfect fifth), the octave is designated P8.
 

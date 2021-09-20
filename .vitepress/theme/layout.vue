@@ -3,7 +3,8 @@
   nav-bar(v-if="showNavbar", @toggle="toggleSidebar")
   .main(:key="route.path")
     side-bar(:open="openSideBar")
-      .sidebar-mask(@click="toggleSidebar(false)")
+      transition(name="fade")
+        .sidebar-mask(v-show="openSideBar", @click="toggleSidebar(false)")
     home(v-if="$frontmatter.template == 'home'")
     page-main(v-else)
 //debug

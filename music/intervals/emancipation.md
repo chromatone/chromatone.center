@@ -28,13 +28,14 @@ Just as the harmonic series was and is used as a justification for consonance, s
 
 ### Cooper timeline
 
->![](./Overtone_series_and_Western_music_development.png)
->
->Cooper (1973, 6-7) proposes the following timeline:
->A) unison and octave singing (magadizing) in Greek music and Ambrosian and Greek chant,
->B) parallel fourths and fifths in organum "from c. 850"
->C) "triadic music; from c. 1400"
->D) chordal seventh, from c. 1600
->E) chordal ninth, from c. 1750
->F) whole-tone scale, from c. 1880"
->G) total chromaticism, twelve-tone technique, and microtones in the early 20th-century.
+![](./Overtone_series_and_Western_music_development.png)
+
+Cooper (1973, 6-7) proposes the following timeline:
+
+- A. unison and octave singing (magadizing) in Greek music and Ambrosian and Greek chant,
+- B. parallel fourths and fifths in organum, from c. 850
+- C. triadic music; from c. 1400
+- D. chordal seventh, from c. 1600
+- E. chordal ninth, from c. 1750
+- F. whole-tone scale, from c. 1880
+- G. total chromaticism, twelve-tone technique, and microtones in the early 20th-century.

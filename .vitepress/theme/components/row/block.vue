@@ -1,14 +1,14 @@
 <template lang="pug">
 .row
   a.header(:href="item.link")
-    .cover(v-if="item.data?.cover", v-motion-fade)
+    //- .cover(v-if="item.data?.cover", v-motion-fade)
     .info 
       .flex.items-center.w-full(
         :style="{ color: color }"
       )
         .mr-2.text-2xl(v-if="item.data.emoji") {{ item.data.emoji }}
         h3
-          span.text-3xl {{ item.title }} 
+          span.text-4xl {{ item.title }} 
           span.px-2.mt-2(v-if="item.more") 
             radix-icons-text-align-left
         .flex-1

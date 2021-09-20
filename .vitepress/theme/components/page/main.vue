@@ -2,7 +2,8 @@
 main
   page-header
   .content-container
-    content.content
+    transition(name="fade")
+      content.content
     shop-message
     row-list.mb-32
 

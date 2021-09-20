@@ -1,21 +1,18 @@
 <template lang="pug">
 header.home-hero(v-if="showHero")
   .w-45ch.m-auto(
-    v-motion,
-    :initial="{ opacity: 0, y: 40 }",
-    :enter="{ opacity: 0, y: 0, scale: 1 }",
-    :visible="{ opacity: 1, y: 0, scale: 1 }",)
-    figure(
-      v-if="$frontmatter.icon"
-      )
-      img.block.w-auto(
-        :src="'/media/' + $frontmatter.icon", 
-        :alt="$frontmatter.heroAlt"
+    )
+      figure(
+        v-if="$frontmatter.icon"
         )
-    .ml-2
-      h1#main-title.text-4xl.mb-4.leading-10.text-center(v-if="hasHeroText") {{ heroText }}
+        img.block.w-auto(
+          :src="'/media/' + $frontmatter.icon", 
+          :alt="$frontmatter.heroAlt"
+          )
+      .ml-2
+        h1#main-title.text-4xl.mb-4.leading-10.text-center(v-if="hasHeroText") {{ heroText }}
 
-      p.m-0.mt-1.text-xl.leading-6.text-center(v-if="hasTagline") {{ tagline }}
+        p.m-0.mt-1.text-xl.leading-6.text-center(v-if="hasTagline") {{ tagline }}
 </template>
 
 <script setup lang="ts">

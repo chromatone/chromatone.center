@@ -123,8 +123,9 @@ const fractions = {
   '9/10': 9 / 10,
   '10/11': 10 / 11,
   '11/12': 11 / 12,
-
   '8/15': 8 / 15,
+  '15/16': 15 / 16,
+  '32/45': 32 / 45
 }
 
 const ratio = useTransition(computed(() => state.ratio), {

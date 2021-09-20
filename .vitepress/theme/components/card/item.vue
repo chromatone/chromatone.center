@@ -3,7 +3,7 @@
   :title="item.lastModified",
   )
   a.flex.flex-col.items-stretch(:href="item.link")
-    .cover(v-if="item.data.cover", :style="{ backgroundImage: 'url(/media/' + item.data.cover + ')' }", v-motion-fade) 
+    //- .cover(v-if="item.data.cover", :style="{ backgroundImage: 'url(/media/' + item.data.cover + ')' }", v-motion-fade) 
     .info
       .flex.flex-1.items-center.self-stretch.flex-wrap
         .mr-2.text-2xl(v-if="item.data.emoji") {{ item.data.emoji }}

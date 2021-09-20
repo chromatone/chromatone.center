@@ -2,7 +2,7 @@
 title: Numbered notation
 subtitle: A simplified notation using numbers to show scale degrees
 tags: alternatives
-date: 2021-09-23
+date: 2021-09-29
 ---
 
 ### Jian pu - 'simplified notation' 

@@ -84,15 +84,6 @@ b {
   }
 }
 
-.content > div {
-  @apply flex flex-col items-stretch text-left;
-}
-
-.content h1 {
-  margin-top: 1.5rem;
-  font-size: 1.9rem;
-}
-
 @media screen and (min-width: 420px) {
   h1 {
     font-size: 2.2rem;
@@ -119,10 +110,6 @@ h4 svg {
 
 .content svg {
   display: inline-block;
-}
-
-.content h2 + h3 {
-  margin-top: 3rem;
 }
 
 .content h3 {
@@ -156,10 +143,6 @@ select,
 summary,
 textarea {
   touch-action: manipulation;
-}
-
-.content code {
-  @apply text-xs;
 }
 
 a {
@@ -257,13 +240,13 @@ form {
 }
 
 .sidebar-mask {
+  transition: all 300ms ease-out;
   position: fixed;
   top: 0;
   z-index: 20;
-  display: none;
   width: 100vw;
   height: 100vh;
-  @apply bg-gray-800 bg-opacity-25;
+  @apply bg-gray-800 bg-opacity-60;
 }
 
 .icon-button {
@@ -320,7 +303,7 @@ form {
     @apply my-4 mx-auto rounded-lg;
   }
   & img[alt='svg'] {
-    @apply min-h-50vh max-w-80vw;
+    @apply min-h-50vh max-w-80vw w-full;
   }
   &:empty {
     display: none;
@@ -338,5 +321,18 @@ form {
   blockquote,
   pre {
     @apply max-w-55ch h-auto flex-1 m-auto p-4;
+  }
+  & h1 {
+    margin-top: 1.5rem;
+    font-size: 1.9rem;
+  }
+  & > div {
+    @apply flex flex-col items-stretch text-left;
+  }
+  & h2 + h3 {
+    margin-top: 3rem;
+  }
+  & code {
+    @apply text-xs;
   }
 }

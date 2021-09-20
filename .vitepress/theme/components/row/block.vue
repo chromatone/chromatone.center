@@ -1,7 +1,7 @@
 <template lang="pug">
 .row
   a.header(:href="item.link")
-    //- .cover(v-if="item.data?.cover", v-motion-fade)
+    .cover(v-if="item.data?.cover", v-motion-fade)
     .info 
       .flex.items-center.w-full(
         :style="{ color: color }"

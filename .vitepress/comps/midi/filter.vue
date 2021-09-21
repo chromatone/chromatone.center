@@ -1,13 +1,15 @@
 <template lang="pug">
-.flex.flex-wrap
-  .channel(
-    v-for="ch in 16" :key="ch"
-    :class="{ filtered: !midi.filter[ch], active: midi.note.channel == ch }"
-    @click="midi.filter[ch] = !midi.filter[ch]"
-  ) {{ ch }}
-  .channel.filtered(
+.flex
+  .flex.flex-wrap
+    .channel(
+      v-for="ch in 16" :key="ch"
+      :class="{ filtered: !midi.filter[ch], active: midi.note.channel == ch }"
+      @click="midi.filter[ch] = !midi.filter[ch]"
+    ) {{ ch }}
+  .channel.filtered.flex.items-center.justify-center(
     @click="filterAll()"
   ) ALL
+
 </template>
 
 <script setup>

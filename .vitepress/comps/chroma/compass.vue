@@ -226,7 +226,7 @@ function playNote(note = 0, octave = 0) {
   }
   note = note + 12 * octave
   let freq = Frequency(note + 57, 'midi')
-  midiOnce({ name: freq.toNote() })
+  midiOnce(freq.toNote())
   synthOnce(freq)
 }
 
@@ -247,7 +247,7 @@ const chordNotes = computed(() => {
 
 function playChordOnce() {
   chordNotes.value.forEach(name => {
-    midiOnce({ name: name })
+    midiOnce(name)
   })
   nextTick(() => {
     chordNotes.value.forEach((note, i) => {
@@ -259,14 +259,14 @@ function playChordOnce() {
 
 function playChord() {
   chordNotes.value.forEach(name => {
-    midiAttack({ name: name })
+    midiAttack(name)
   })
   synthAttack(chordNotes.value)
 }
 
 function stopChord() {
   chordNotes.value.forEach(name => {
-    midiRelease({ name: name })
+    midiRelease(name)
   })
   synthRelease(chordNotes.value)
 }

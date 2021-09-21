@@ -10,8 +10,7 @@
   .max-w-65ch.m-auto
     piano-keys.w-xs.h-4em.m-auto(
       v-model:pitch="tonic" :chroma="chroma" names) 
-    .flex.flex-wrap.m-auto
-
+    .flex.flex-wrap.mx-auto.justify-center
       .chord-group(
         v-for="(name,count) in groupNames", 
         :key="name"
@@ -27,7 +26,7 @@
           @click="chroma = chord.chroma",
           :class="{ active: chord?.chroma == chroma }") {{ notes[tonic].name + chord?.aliases[0] }}
 
-    .flex.flex-wrap
+    .flex.flex-wrap.justify-center
       .text-xl.flex-1.min-w-full.text-center.my-4
         .text-sm It may be the root chord in these scales:
       transition-group(name="list")

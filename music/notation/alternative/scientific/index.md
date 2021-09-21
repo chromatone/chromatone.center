@@ -1,7 +1,7 @@
 ---
 title: Standard pitch notation
 subtitle: American SPN
-tags: alternative
+tags: alternatives
 date: 2021-09-14
 ---
 
@@ -23,7 +23,7 @@ The octave 0 of the scientific pitch notation is traditionally called the sub-co
 Scientific pitch notation is often used to specify the range of an instrument. It provides an unambiguous means of identifying a note in terms of textual notation rather than frequency, while at the same time avoiding the transposition conventions that are used in writing the music for instruments such as the clarinet and guitar. It is also easily translated into staff notation, as needed. In describing musical pitches, nominally enharmonic spellings can give rise to anomalies where, for example in meantone temperaments C♭
 4 is a lower frequency than B3; but such paradoxes usually do not arise in a scientific context. 
 
-Scientific pitch notation avoids possible confusion between various derivatives of Helmholtz notation which use similar symbols to refer to different notes. For example, "c" in Helmholtz's original notation[2] refers to the C below middle C, whereas "C" in ABC Notation refers to middle C itself. With scientific pitch notation, middle C is always C4, and C4 is never any note but middle C. This notation system also avoids the "fussiness" of having to visually distinguish between four and five primes, as well as the typographic issues involved in producing acceptable subscripts or substitutes for them. C7 is much easier to quickly distinguish visually from C8, than is, for example, c′′′′ from c′′′′′, and the use of simple integers (e.g. C7 and C8) makes subscripts unnecessary altogether.
+Scientific pitch notation avoids possible confusion between various derivatives of Helmholtz notation which use similar symbols to refer to different notes. For example, "c" in Helmholtz's original notation refers to the C below middle C, whereas "C" in ABC Notation refers to middle C itself. With scientific pitch notation, middle C is always C4, and C4 is never any note but middle C. This notation system also avoids the "fussiness" of having to visually distinguish between four and five primes, as well as the typographic issues involved in producing acceptable subscripts or substitutes for them. C7 is much easier to quickly distinguish visually from C8, than is, for example, c′′′′ from c′′′′′, and the use of simple integers (e.g. C7 and C8) makes subscripts unnecessary altogether.
 
 Although pitch notation is intended to describe sounds audibly perceptible as pitches, it can also be used to specify the frequency of non-pitch phenomena. Notes below E0 or higher than E♭
 10 are outside most humans' hearing range, although notes slightly outside the hearing range on the low end may still be indirectly perceptible as pitches due to their overtones falling within the hearing range.

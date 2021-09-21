@@ -31,7 +31,7 @@
         pattern="[0-9]*"
         max="16",min="1",length="12", 
         v-model="midi.channel")
-      
+    midi-filter
 </template>
 
 <script setup>

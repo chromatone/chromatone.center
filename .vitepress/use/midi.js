@@ -14,6 +14,7 @@ export const midi = reactive({
     pitch: 3,
     octA: 3,
   },
+  filter: useStorage('global-midi-filter', {}),
 })
 
 export function useMidi() {
@@ -101,6 +102,7 @@ function initMidi() {
 
 function noteInOn(ev) {
   let note = processNote(ev)
+  if (midi.filter[note.channel]) return
   midi.note = note
   createChannel(note.channel)
   midi.channels[note.channel].notes[note.name] = note
@@ -158,10 +160,17 @@ export function midiAttack(note, options) {
 
 export function midiRelease(note) {
   if (!midi.out) return
-  setVelocity(note.channel, note.name, 0)
-  WebMidi.outputs.forEach((output) => {
-    output.stopNote(note, { channels: note.channel || midi.channel })
-  })
+  if (note) {
+    setVelocity(note.channel, note.name, 0)
+    WebMidi.outputs.forEach((output) => {
+      output.stopNote(note, { channels: note.channel || midi.channel })
+    })
+  } else {
+    WebMidi.outputs.forEach((output) => {
+      output.turnNotesOff()
+      output.turnSoundOff({ time: '+1' })
+    })
+  }
 }
 
 export function midiOnce(note, time) {

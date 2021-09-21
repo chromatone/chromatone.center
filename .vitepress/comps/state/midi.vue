@@ -12,7 +12,7 @@
     )
   client-only
     transition(name="panel")
-      state-midi-panel.panel(v-if="panel")
+      midi-panel.panel(v-if="panel")
 </template>
 
 <script setup>

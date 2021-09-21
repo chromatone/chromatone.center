@@ -23,12 +23,12 @@
     "paper": "^0.12.15",
     "poly-decomp": "^0.3.0",
     "tone": "^14.8.26",
-    "vue": "^3.2.12",
-    "webmidi": "^3.0.0-alpha.8"
+    "vue": "^3.2.13",
+    "webmidi": "^3.0.0-alpha.10"
   },
   "devDependencies": {
-    "@iconify/json": "^1.1.403",
-    "@types/node": "^16.9.4",
+    "@iconify/json": "^1.1.404",
+    "@types/node": "^16.9.6",
     "esbuild-register": "^3.0.0",
     "markdown-it-classy": "^0.2.0",
     "markdown-it-container": "^3.0.0",
@@ -42,7 +42,7 @@
     "vite": "^2.5.10",
     "vite-aliases": "0.8.6",
     "vite-plugin-pwa": "^0.11.2",
-    "vite-plugin-windicss": "^1.4.3",
+    "vite-plugin-windicss": "^1.4.4",
     "vitepress": "0.18.1",
     "vitepress-tags": "^0.4.0",
     "windicss": "3.1.7"

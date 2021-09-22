@@ -1,6 +1,5 @@
 <template lang="pug">
 .flex.flex-col
-
   .flex.flex-wrap.my-4.justify-center
     .chord(
       v-for="chord in chordList", 

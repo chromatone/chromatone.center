@@ -14,20 +14,26 @@
     v-if="!state.chord.empty || state.scale"
     :class="{ 'w-full': true }"
     ) 
-    button.m-1.shadow.px-2.py-1.font-bold.cursor-pointer(@click="playChordOnce()") {{ notes[globalScale.tonic].name }}{{ state.chord.aliases[0] }} &nbsp;
+    button.m-1.shadow.px-2.py-1.font-bold.cursor-pointer(
+      @mousedown="playChroma(chroma)"
+      @touchstart.prevent.stop="playChroma(chroma)"
+      @touchend="stopChroma(chroma)"
+      @touchcancel="stopChroma(chroma)"
+      @mouseup="stopChroma(chroma)"
+      @mouseleave="stopChroma(chroma)"
+    ) {{ notes[globalScale.tonic].name }}{{ state.chord.aliases[0] }} &nbsp;
     button.m-1.shadow.px-2.py-1.cursor-pointer.text-gray-500(v-if="state.chord.name" class="dark:text-gray-400",  @click="arpeggiate()")  {{ state.chord.name }} 
     button.m-1.scale.p-2.font-bold(v-if="state.scale"  @click="arpeggiate()") {{ state.scale }} scale
 </template>
 
 <script setup>
 import { computed, nextTick } from 'vue'
-import { ScaleType } from '@tonaljs/tonal'
 import { pitchColor, notes, rotateArray } from 'chromatone-theory'
 import { Note } from '@tonaljs/tonal'
 import { Frequency } from 'tone'
 import { synthOnce } from '@use/synth.js'
 import { midiOnce } from '@use/midi.js'
-import { globalScale, chordType } from '@use/theory.js'
+import { globalScale, chordType, scaleType, playChroma, stopChroma } from '@use/theory.js'
 
 const props = defineProps({
   chroma: {
@@ -42,7 +48,7 @@ const props = defineProps({
 const state = reactive({
   minor: "101101011010",
   chord: computed(() => chordType.get(props.chroma)),
-  scale: computed(() => ScaleType.get(props.chroma).name),
+  scale: computed(() => scaleType.get(props.chroma).name),
 })
 
 function hover(i, bit) {

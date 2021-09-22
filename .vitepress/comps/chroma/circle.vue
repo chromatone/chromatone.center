@@ -45,7 +45,13 @@ svg.select-none.max-w-12em.my-4.mx-auto(
       fill="white"
       ) {{ notes[n]?.name }}
   g.center.cursor-pointer(
-    @click="playChordOnce()"
+    @mousedown="playChroma(chroma); pressed = true"
+    @touchstart.prevent.stop="playChroma(chroma); pressed = true"
+    @touchend="stopChroma(chroma); pressed = false"
+    @touchcancel="stopChroma(chroma); pressed = false"
+    @mouseup="stopChroma(chroma); pressed = false"
+    @mouseleave="stopChroma(chroma); pressed = false"
+    :class="{ pressed }"
   )
     circle(
       cx="0"
@@ -55,10 +61,10 @@ svg.select-none.max-w-12em.my-4.mx-auto(
       )
     text(
       y="0.3"
-      font-size="3px"
+      font-size="2.5px"
       font-weight="bold"
       fill="white"
-      ) {{ pitch === false ? '' : typeof pitch == 'string' ? pitch : notes[globalScale.tonic]?.name }}{{ type }}
+      ) {{ pitch === false ? '' : typeof pitch == 'string' ? pitch : notes[globalScale.tonic]?.name }}{{ chord.aliases[0] }}
 </template>
 
 <script setup>
@@ -68,38 +74,40 @@ const props = defineProps({
   type: { type: String, default: '' },
   tonic: { type: Number, default: 0 },
 });
-
-import { notes, pitchColor, rotateArray, getCircleCoord } from 'chromatone-theory'
+import { notes, rotateArray, getCircleCoord, pitchColor } from 'chromatone-theory'
 import { colord } from 'colord'
-import { globalScale } from '@use/theory.js'
-import { Frequency } from 'tone'
-import { Note } from '@tonaljs/tonal'
-import { midiOnce } from '@use/midi.js'
-import { synthOnce } from '@use/synth.js'
-
-const chordNotes = computed(() => {
-  let shiftChroma = rotateArray(props.chroma.split(''), -globalScale.tonic)
-  let chOct = rotateArray(notes, -globalScale.tonic).map((n, i) => {
-    return Frequency(n.pitch + globalScale.tonic + 57, 'midi').toNote()
-  })
-  let filtered = chOct.filter((val, i) => {
-    if (shiftChroma[i] == '1') {
-      return true
-    }
-  })
-  return Note.sortedNames(filtered)
-})
-
-function playChordOnce() {
-  chordNotes.value.forEach((name, i) => {
-    midiOnce(name)
-  })
-  synthOnce(chordNotes.value, '4n')
-}
+import { playChroma, chordType, scaleType, stopChroma, globalScale } from '@use/theory.js'
+const pressed = ref(false);
 
 
+const chord = computed(() => chordType.get(props.chroma));
+const scale = computed(() => scaleType.get(props.chroma).name)
 
 </script>
 
 <style scoped>
+.center {
+  @apply transition-all duration-200 ease-in-out;
+  &:hover {
+    @apply transform scale-105;
+  }
+  &.pressed {
+    @apply transform scale-100;
+    animation: filter-animation 700ms infinite;
+  }
+}
+
+@keyframes filter-animation {
+  0% {
+    filter: blur(0px) brightness(1);
+  }
+
+  50% {
+    filter: blur(0.2px) brightness(1.1);
+  }
+
+  100% {
+    filter: blur(0px) brightness(1);
+  }
+}
 </style>

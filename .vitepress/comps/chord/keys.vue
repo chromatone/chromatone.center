@@ -1,5 +1,5 @@
 <template lang="pug">
-svg.max-h-sm(
+svg.max-h-sm.w-full(
   version="1.1",
   baseProfile="full",
   viewBox="0 0 240 100",

@@ -28,7 +28,7 @@ import { ref, computed, watch } from 'vue'
 import { Frequency } from 'tone'
 import { pitchColor, pitchFreq } from 'chromatone-theory'
 import { synthAttack, synthRelease } from '@use/synth.js'
-import { midiOnce, midiAttack, midiRelease } from '@use/midi.js'
+import { playNote, stopNote } from '@use/theory.js'
 
 const props = defineProps({
   note: Object,
@@ -47,17 +47,14 @@ const noteName = computed(() => {
   return Frequency(pitchFreq(props.note.pitch, octave)).toNote()
 })
 
-
 function attack() {
   playing.value = true
-  synthAttack(noteName.value)
-  midiAttack(noteName.value)
+  playNote(noteName.value)
 };
 
 function release() {
   playing.value = false
-  synthRelease(noteName.value)
-  midiRelease(noteName.value)
+  stopNote(noteName.value)
 };
 
 </script>

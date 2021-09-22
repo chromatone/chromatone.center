@@ -108,8 +108,7 @@ import { useMotion } from '@vueuse/motion'
 import { useStorage } from '@vueuse/core'
 import { notes, rotateArray, getCircleCoord, pitchColor } from 'chromatone-theory'
 import { Chord, Note } from '@tonaljs/tonal'
-import { synthAttack, synthRelease } from '@use/synth.js'
-import { midiAttack, midiRelease } from '@use/midi.js'
+import {playNote, stopNote} from '@use/theory.js'
 
 const numFifths = [0, 7, 2, 9, 4, 11, 6, 1, 8, 3, 10, 5]
 const minors = numFifths.map(n => notes[n]);
@@ -146,18 +145,16 @@ function playChord(note, qual = 'major') {
   let type = qual == 'minor' ? 'm' : ''
   let chord = Chord.get(note + type)
   let nts = Note.names(chord.notes.map(n => Note.simplify(n) + 4))
-  synthAttack(nts)
-  midiAttack(nts)
+  playNote(nts)
+
 };
 
 function stopChord(note, qual = 'major') {
   let type = qual == 'minor' ? 'm' : ''
   let chord = Chord.get(note + type)
   let nts = chord.notes.map(n => Note.simplify(n) + 4)
-  synthRelease(nts)
-  midiRelease(nts)
+  stopNote(nts)
 };
-
 
 </script>
 

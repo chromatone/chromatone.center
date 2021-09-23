@@ -9,9 +9,7 @@ tags: intervals
 
 <abc-render abc="[A^c] A^c" />
 
-<chroma-circle :chroma="'100010000000'" type="+M3" />
-
-<chroma-row :chroma="'100010000000'" />
+<chroma-profile :chroma="'100010000000'" />
 
 The major third may be derived from the harmonic series as the interval between the fourth and fifth harmonics. The major third is classed as an imperfect consonance and is considered one of the most consonant intervals after the unison, octave, perfect fifth, and perfect fourth. 
 
@@ -30,9 +28,7 @@ In equal temperament three major thirds in a row are equal to an octave (for exa
 
 <abc-render abc="[A4c] Ac" />
 
-<chroma-circle :chroma="'100100000000'" type="+m3" />
-
-<chroma-row :chroma="'100100000000'" />
+<chroma-profile :chroma="'100100000000'" />
 
 A minor third is a musical interval that encompasses three half steps, or semitones. It is called minor because it is the smaller of the two: the major third spans an additional semitone. 
 
@@ -49,9 +45,7 @@ The minor third is commonly used to express sadness in music, and research shows
 
 <abc-render abc="[A4f] Af" />
 
-<chroma-circle :chroma="'100000001000'" type="+M6" />
-
-<chroma-row :chroma="'100000001000'" />
+<chroma-profile :chroma="'100000001000'" />
 
 Minor sixth is the inverse the major third. 
 
@@ -71,9 +65,7 @@ In the common practice period, sixths were considered interesting and dynamic co
 
 <abc-render abc="[A4^f] A^f" />
 
-<chroma-circle :chroma="'100000000100'" type="+m6" />
-
-<chroma-row :chroma="'100000000100'" />
+<chroma-profile :chroma="'100000000100'" />
 
 Major sixth is the inverse the minor third. 
 

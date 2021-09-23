@@ -28,7 +28,7 @@ const props = defineProps({
 
 <style  scoped>
 .lines {
-  @apply flex flex-col mx-2 md:mx-4 my-4;
+  @apply flex flex-col mx-2 md:mx-4 my-4 w-full;
 }
 
 .line {

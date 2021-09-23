@@ -4,41 +4,28 @@ subtitle: Chords consisting of three notes
 tags: chords
 date: 2021-09-22
 triads:
-    maj: 
-      title: Major chord
-      abc: "[A4^ce] A^ce"
+    maj:  
       chroma: '100010010000'
-    min: 
-      title: Minor chord
-      abc: '[A4ce] Ace'
+    min:  
       chroma: '100100010000'
-    aug: 
-      title: Augmented chord
-      abc: "[A4^cf] A^cf"
+    aug:  
       chroma: '100010001000'
-    dim: 
-      title: Diminished chord
-      abc: "[A4c^d] Ac^d"
+    dim:  
       chroma: '100100100000'
     sus2: 
-      title: Suspended 2 chord
-      abc: "[A4Be] ABe"
       chroma: '101000010000'
     sus4: 
-      title: Suspended 4 chord
-      abc: "[A4de] Ade"
       chroma: '100001010000'
-    Mb5: 
-      title: Major b5 chord
-      abc: "[A4^c_e] A^c_e" 
+    sus24: 
+      chroma: '101001010000'
+    Mb5:  
       chroma: '100010100000'
-    ms5: 
-      title: 'Minor #5 chord'
-      abc: "[A4cf] Acf"
+    ms5:  
       chroma: '100100001000'
 ---
 
-## Minor chord
+## Major and minor
+
 <chroma-profile v-bind="$frontmatter.triads.min" />
 
 A unique particularity of the minor chord is that this is the only chord of three notes in which the three notes have one harmonic – hearable and with a not too high row – in common (more or less exactly, depending on the tuning system used). This harmonic, common to the three notes, is situated 2 octaves above the high note of the chord. This is the sixth harmonic of the root of the chord, the fifth of the middle note, and the fourth of the high note:
@@ -52,8 +39,6 @@ Demonstration:
 - So the ratios of minor chord are 10:12:15
 - And the explication of the unique harmonic in common, between the three notes, is verified by : 10 × 6 = 12 × 5 = 15 × 4
 
-
-## Major chord
 
 <chroma-profile  v-bind="$frontmatter.triads.maj" />
 
@@ -73,19 +58,15 @@ Each suspended chord has two inversions. Suspended second chords are inversions 
 
 Sevenths on suspended chords are "virtually always minor sevenths", while the 9sus4 chord is similar to an eleventh chord and may be notated as such. For example, C9sus4 (C–F–G–B♭–D) may be notated C11 (C–G–B♭–D–F). 
 
-### Suspended 2 chord
-
 <chroma-profile  v-bind="$frontmatter.triads.sus2" />
 
-### Suspended 4 chord
-
 <chroma-profile  v-bind="$frontmatter.triads.sus4" />
+
+<chroma-profile  v-bind="$frontmatter.triads.sus24" />
 
 ---
 
 ## Augmented and diminished
-
-### Diminished chord
 
 <chroma-profile  v-bind="$frontmatter.triads.dim" />
 
@@ -100,8 +81,6 @@ If the music is in a minor key, diminished triads can also be found on the raise
 The leading-tone diminished triad and supertonic diminished triad are usually found in first inversion (viio6 and iio6, respectively) since the spelling of the chord forms a diminished fifth with the bass. This differs from the fully diminished seventh chord, which commonly occurs in root position. In both cases, the bass resolves up and the upper voices move downwards in contrary motion.
 
 
-
-### Augmented chord
 
 <chroma-profile  v-bind="$frontmatter.triads.aug" />
 
@@ -121,10 +100,6 @@ A synthetic chord is a made-up or non-traditional (synthetic) chord (collection 
 >
 > — Sitsky (1994)
 
-### Major b5 chord
-
 <chroma-profile v-bind="$frontmatter.triads.Mb5" />
-
-### Minor #5 chord
 
 <chroma-profile  v-bind="$frontmatter.triads.ms5" />

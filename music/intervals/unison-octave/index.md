@@ -9,6 +9,8 @@ date: 2021-09-10
 
 <abc-render abc="[A4A4] AA" />
 
+<chroma-profile chroma="100000000000" />
+
 Unison is two or more musical parts that sound either the same pitch or pitches separated by intervals of one or more octaves, usually at the same time. 
 
 Unison or perfect unison (also called a prime, or perfect prime) may refer to the (pseudo-)interval formed by a tone and its duplication (in German, Unisono, Einklang, or Prime), for example C–C, as differentiated from the second, C–D, etc. In the unison the two pitches have the ratio of 1:1 or 0 half steps and zero cents. Although two tones in unison are considered to be the same pitch, they are still perceivable as coming from separate sources, whether played on instruments of a different type or of the same type. This is because a pair of tones in unison come from different locations or can have different "colors" (timbres), i.e. come from different musical instruments or human voices. Voices with different colors have, as sound waves, different waveforms. These waveforms have the same fundamental frequency but differ in the amplitudes of their higher harmonics. The unison is considered the most consonant interval while the near unison is considered the most dissonant. The unison is also the easiest interval to tune. The unison is abbreviated as "P1". 

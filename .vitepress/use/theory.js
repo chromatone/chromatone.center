@@ -36,10 +36,10 @@ export const globalScale = reactive({
   isIn: computed(() => Pcset.isNoteIncludedIn(globalScale.pcs)),
 })
 
-function getChromaNotes(chroma = '100010010000') {
-  let shiftChroma = rotateArray(chroma.split(''), -globalScale.tonic)
-  let chOct = rotateArray(notes, -globalScale.tonic).map((n, i) => {
-    return Frequency(n.pitch + globalScale.tonic + 57, 'midi').toNote()
+function getChromaNotes(chroma = '100010010000', tonic = globalScale.tonic) {
+  let shiftChroma = rotateArray(chroma.split(''), -tonic)
+  let chOct = rotateArray(notes, -tonic).map((n, i) => {
+    return Frequency(n.pitch + tonic + 57, 'midi').toNote()
   })
   let filtered = chOct.filter((val, i) => {
     if (shiftChroma[i] == '1') {
@@ -49,24 +49,24 @@ function getChromaNotes(chroma = '100010010000') {
   return Note.sortedNames(filtered)
 }
 
-export function playChromaOnce(chroma) {
-  let notes = getChromaNotes(chroma)
+export function playChromaOnce(chroma, tonic) {
+  let notes = getChromaNotes(chroma, tonic)
   notes.forEach((name, i) => {
     midiOnce(name)
   })
   synthOnce(notes, '4n')
 }
 
-export function playChroma(chroma) {
-  let notes = getChromaNotes(chroma)
+export function playChroma(chroma, tonic) {
+  let notes = getChromaNotes(chroma, tonic)
   notes.forEach((name) => {
     midiAttack(name)
   })
   synthAttack(notes)
 }
 
-export function stopChroma(chroma) {
-  let notes = getChromaNotes(chroma)
+export function stopChroma(chroma, tonic) {
+  let notes = getChromaNotes(chroma, tonic)
   notes.forEach((name) => {
     midiRelease(name)
   })

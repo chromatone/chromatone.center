@@ -29,7 +29,6 @@ g
         :y="note?.pos == 1 ? 55 : 88",
       ) {{ note?.name }}
 
-
 </template>
 
 <script setup>

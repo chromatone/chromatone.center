@@ -10,11 +10,11 @@
       :class="{ active: bit == 1 }"
       :style="{ backgroundColor: calcBg(i, bit) }"
       ) {{ bit == 1 ? notes[(i + globalScale.tonic) % 12].name : i }}
-  .flex.flex-wrap.justify-center.border-b-1.px-2(
+  .flex.flex-wrap.justify-center.border-b-1.px-2.pb-2.items-center(
     v-if="!state.chord.empty || state.scale"
     :class="{ 'w-full': true }"
     ) 
-    button.m-1.shadow.px-2.py-1.font-bold.cursor-pointer(
+    button.m-1.shadow.px-2.py-1.font-bold.cursor-pointer.border-current(
       @mousedown="playChroma(chroma)"
       @touchstart.prevent.stop="playChroma(chroma)"
       @touchend="stopChroma(chroma)"
@@ -24,6 +24,7 @@
     ) {{ notes[globalScale.tonic].name }}{{ state.chord.aliases[0] }} &nbsp;
     button.m-1.shadow.px-2.py-1.cursor-pointer.text-gray-500(v-if="state.chord.name" class="dark:text-gray-400",  @click="arpeggiate()")  {{ state.chord.name }} 
     button.m-1.scale.p-2.font-bold(v-if="state.scale"  @click="arpeggiate()") {{ state.scale }} scale
+      
 </template>
 
 <script setup>
@@ -106,7 +107,7 @@ function playNote(note = 0, octave = 0) {
 
 <style  scoped>
 .chroma-key {
-  @apply grid cursor-pointer place-content-center text-xs transition-all duration-300 w-8 py-1  mx-4px sm:(py-2) hover:(opacity-100) opacity-80  rounded-xl;
+  @apply grid cursor-pointer place-content-center text-xs transition-all duration-300 w-8 py-1  mx-4px sm:(py-2) hover:(opacity-100) opacity-80  rounded-sm;
 }
 .chroma-key.active {
   @apply text-light-100 font-bold;

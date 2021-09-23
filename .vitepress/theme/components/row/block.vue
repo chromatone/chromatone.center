@@ -55,7 +55,7 @@ const bg = "url(/media/" + props.item.data?.cover + ")";
 }
 
 .cover {
-  @apply w-full min-h-10em bg-cover bg-center rounded;
+  @apply w-full min-h-16em bg-cover bg-center rounded;
   filter: saturate(50%) opacity(50%);
   transition: all 300ms ease-in-out;
   flex: 1 1 30%;

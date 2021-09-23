@@ -31,32 +31,32 @@
           text( :x="100 * (1 - ratio) + 2" y=28) {{ part2.freq.toFixed(1) }} Hz
           text( :x="100 * (1 - ratio) + 2" y=24) {{ part2.note }} ({{ part2.cents.toFixed() }} cents) 
       g#ratio.cursor-pointer(font-size="4px" fill="currentColor")
-        g(@click="synthOnce(fundamental.freq); synthOnce(part1.freq)")
+        g(@mousedown="synthOnce(fundamental.freq); synthOnce(part1.freq)")
           text(
             :x="100 * (1 - ratio) - 2"
             y=8
             text-anchor="end"
           ) {{ state.fraction }} 
-        g(@click="synthOnce(fundamental.freq); synthOnce(part2.freq)")
+        g(@mousedown="synthOnce(fundamental.freq); synthOnce(part2.freq)")
           text(
             :x="100 * (1 - ratio) + 2"
             y=8
             text-anchor="start"          
           ) {{ state.invFraction }} 
-    g#fundamental.cursor-pointer(@click="synthOnce(fundamental.freq)" v-drag="dragFun")
+    g#fundamental.cursor-pointer(@mousedown="synthOnce(fundamental.freq)" v-drag="dragFun")
       line(x2=100, stroke-width="4", :stroke="freqColor(fundamental.freq)" )
       circle(r=1)
       circle(cx=100,r=1)
       text(x=50 font-weight="bold") {{ fundamental.note }}  {{ fundamental.freq.toFixed() }} Hz ({{ fundamental.cents.toFixed() }} cents)
     g#divided.cursor-pointer(transform="translate(0,15)" v-drag="changeRatio" font-weight="bold")
-      g#part1(@click="synthOnce(part1.freq)")
+      g#part1(@mousedown="synthOnce(part1.freq)")
         line( 
           :stroke="freqColor(part1.freq)" 
           stroke-width="4",
           :x2="100 * (1 - ratio)"
         )
         text(y=0.3, :x="100 * (1 - ratio) / 2") {{ part1.note }}
-      g#part2(@click="synthOnce(part2.freq)")
+      g#part2(@mousedown="synthOnce(part2.freq)")
         line( 
           :stroke="freqColor(part2.freq)" 
           stroke-width="4",
@@ -132,6 +132,7 @@ const ratio = useTransition(computed(() => state.ratio), {
   duration: 200,
   transition: TransitionPresets.easeOutCubic,
 })
+
 
 const { synth, synthOnce } = useSynth();
 

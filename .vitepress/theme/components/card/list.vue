@@ -5,7 +5,7 @@
     :key="area.title", 
     :i="i"
     :total="rows.length"
-    :height="4"
+    :height="2"
     v-slot="{ color }"
   )
     card-item(

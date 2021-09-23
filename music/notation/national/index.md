@@ -3,7 +3,6 @@ title: National notation systems of ancient and modern cultures
 subtitle: Greece, Korea and others
 date: 2021-08-30
 tags: notation
-cover: theory/notation/Delphichymn.jpg
 
 svaras:
   - name: ṣaḍja (षड्ज)

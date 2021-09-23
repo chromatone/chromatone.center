@@ -9,9 +9,7 @@ tags: intervals
 
 <abc-render abc="[A4e] Ae" />
 
-<chroma-circle :chroma="'100000010000'" type="+P5" />
-
-<chroma-row :chroma="'100000010000'" />
+<chroma-profile :chroma="'100000010000'" />
 
 The second most harmonic interval is the fifth – a 3/2 of any given frequency. Pythagoras is claimed to be the first to use this law to construct pleasant musical notes combinations. This principle is foundational for the modern 12-TET equal temperament. Take the lowest starting frequency and go up in two ways:
 
@@ -41,9 +39,7 @@ Twelve-tone equal temperament is the musical system that divides the octave into
 
 <abc-render abc="[A4d] Ad" />
 
-<chroma-circle :chroma="'100001000000'" type="+P4" />
-
-<chroma-row :chroma="'100001000000'" />
+<chroma-profile :chroma="'100001000000'" />
 
 Perfect fourth is the inverse of the perfect fifth.
 

@@ -25,15 +25,15 @@ export function init() {
     volume: -10,
     envelope: {
       attack: 0.1,
-      decay: 0.1,
+      decay: 2,
       sustain: 1,
-      release: 2,
+      release: 4,
     },
     filterEnvelope: {
       attack: 0.1,
-      decay: 0.1,
+      decay: 2,
       sustain: 1,
-      release: 2,
+      release: 4,
     },
   }).toDestination()
 }

@@ -35,9 +35,7 @@ In Pythagorean music theory, the epogdoon (Ancient Greek: ἐπόγδοον) is 
 
 <abc-render abc="[A4_B] A_B" />
 
-<chroma-circle :chroma="'110000000000'" type="+m2" />
-
-<chroma-row :chroma="'110000000000'" />
+<chroma-profile :chroma="'110000000000'" />
 
 A semitone, also called a half step or a half tone, is the smallest musical interval commonly used in Western tonal music, and it is considered the most dissonant when sounded harmonically. It is defined as the interval between two adjacent notes in a 12-tone scale. 
 
@@ -53,9 +51,7 @@ Harmonically, the interval usually occurs as some form of dissonance or a noncho
 
 <abc-render abc="[A4g] Ag" />
 
-<chroma-circle :chroma="'100000000010'" type="+m7" />
-
-<chroma-row :chroma="'100000000010'" />
+<chroma-profile :chroma="'100000000010'" />
 
 The minor seventh spans ten semitones.
 
@@ -70,9 +66,7 @@ In just intonation there is both a 16:9 "small just minor seventh", also called 
 
 <abc-render abc="[A4^g] A^g" />
 
-<chroma-circle :chroma="'100000000001'" type="+M7" />
-
-<chroma-row :chroma="'100000000001'" />
+<chroma-profile :chroma="'100000000001'" />
 
 The major seventh spans eleven semitones.
 

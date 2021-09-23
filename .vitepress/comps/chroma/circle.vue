@@ -57,7 +57,7 @@ svg.select-none.max-w-12em.my-4.mx-auto(
       cx="0"
       cy="0"
       r="5"
-      :fill="pitch === false ? 'none' : colord(pitchColor(globalScale.tonic)).toHex()"
+      :fill="pitch === false ? 'none' : chromaColorMix(chroma, globalScale.tonic).hsl"
       )
     text(
       y="0.3"
@@ -76,6 +76,7 @@ const props = defineProps({
 });
 import { notes, rotateArray, getCircleCoord, pitchColor } from 'chromatone-theory'
 import { colord } from 'colord'
+import { chromaColorMix } from "@use/colors.js";
 import { playChroma, chordType, scaleType, stopChroma, globalScale } from '@use/theory.js'
 const pressed = ref(false);
 
@@ -93,21 +94,7 @@ const scale = computed(() => scaleType.get(props.chroma).name)
   }
   &.pressed {
     @apply transform scale-100;
-    animation: filter-animation 700ms infinite;
-  }
-}
-
-@keyframes filter-animation {
-  0% {
-    filter: blur(0px) brightness(1);
-  }
-
-  50% {
-    filter: blur(0.2px) brightness(1.1);
-  }
-
-  100% {
-    filter: blur(0px) brightness(1);
+    filter: brightness(1.1);
   }
 }
 </style>

@@ -1,0 +1,86 @@
+---
+title: Polytonality
+subtitle: The musical use of more than one key simultaneously. 
+date: 2021-09-20
+tags: harmony
+---
+
+Polytonality (also polyharmony) is the musical use of more than one key simultaneously. Bitonality is the use of only two different keys at the same time. Polyvalence is the use of more than one harmonic function, from the same key, at the same time.
+
+<youtube-embed video="lxPvWRXkEbE" />
+
+## History
+
+### In traditional music
+
+<youtube-embed video="iGPO1kcTTIc" />
+
+Lithuanian traditional singing style sutartines is based on polytonality. A typical sutartines song is based on a six-bar melody, where the first three bars contains melody based on the notes of the triad of a major key (for example, in G major), and the next three bars is based on another key, always a major second higher or lower (for example, in A major). This six-bar melody is performed as a canon, and repetition starts from the fourth bar. As a result, parts are constantly singing in different tonality (key) simultaneously (in G and in A). As a traditional style, sutartines disappeared in Lithuanian villages by the first decades of the 20th century, but later became a national musical symbol of Lithuanian music.
+
+<youtube-embed video="Wij_cgVGOxw" />
+
+<youtube-embed video="zeEnhlRteiA" />
+
+---
+
+Tribes throughout India—including the Kuravan of Kerala, the Jaunsari of Uttar Pradesh, the Gond, the Santal, and the Munda—also use bitonality, in responsorial song.
+
+### In classical music
+
+In J. S. Bach's Clavier-Übung III, there is a two-part passage where, according to Scholes: "It will be seen that this is a canon at the fourth below; as it is a strict canon, all the intervals of the leading 'voice' are exactly imitated by the following 'voice', and since the key of the leading part is D minor modulating to G minor, that of the following part is necessarily A minor modulating to D minor. Here, then, we have a case of polytonality, but Bach has so adjusted his progressions (by the choice at the critical moment of notes common to two keys) that while the right hand is doubtless quite under the impression that the piece is in D minor, etc., and the left hand that it is in A minor, etc., the listener feels that the whole thing is homogeneous in key, though rather fluctuating from moment to moment. In other words, Bach is trying to make the best of both worlds—the homotonal one of his own day and (prophetically) the polytonal one of a couple of centuries ater."
+
+<youtube-embed video="zJAcqI2HE8c" />
+
+Another early use of polytonality occurs in the classical period in the finale of Wolfgang Amadeus Mozart's composition A Musical Joke, which he deliberately ends with the violins, violas and horns playing in four discordant keys simultaneously. However, it was not featured prominently in non-programmatic contexts until the twentieth century, particularly in the work of Charles Ives (Psalm 67, c. 1898–1902), Béla Bartók (Fourteen Bagatelles, Op. 6, 1908), and Stravinsky (Petrushka, 1911). Ives claimed that he learned the technique of polytonality from his father, who taught him to sing popular songs in one key while harmonizing them in another.
+
+Although it is only used in one section and intended to represent drunken soldiers, there is an early example of polytonality in Heinrich Ignaz Franz Biber's short composition Battalia, written in 1673.
+
+<youtube-embed video="EkwqPJZe8ms" />
+
+Stravinsky's The Rite of Spring is widely credited with popularizing bitonality, and contemporary writers such as Casella (1924) describe him as progenitor of the technique: "the first work presenting polytonality in typical completeness—not merely in the guise of a more or less happy 'experiment', but responding throughout to the demands of expression—is beyond all question the grandiose Le Sacre du Printemps of Stravinsky (1913)".
+
+<youtube-embed video="ISdxPv2u-ns" />
+
+Bartók's "Playsong" demonstrates easily perceivable bitonality through "the harmonic motion of each key ... [being] relatively uncomplicated and very diatonic". Here, the "duality of key" featured is A minor and C♯ minor.
+
+><youtube-embed video="zZanU1ZaN6k" />
+>Example of polytonality or extended tonality from Milhaud's Saudades do Brasil (1920), right hand in B major and left hand in G major, or both hands in extended G major.
+
+Other polytonal composers influenced by Stravinsky include those in the French group, Les Six, particularly Darius Milhaud, as well as Americans such as Aaron Copland.
+
+<youtube-embed video="vC3qQpyp4rI" />
+
+Benjamin Britten used bi- and polytonality in his operas, as well as enharmonic relationships, for example to signify the conflict between Claggart (F minor) and Billy (E major) in Billy Budd (note the shared enharmonically equivalent G♯/A♭) or to express the main character's "maladjustment" in Peter Grimes.
+
+### Polytonality and polychords
+
+Polytonality requires the presentation of simultaneous key-centers. The term "polychord" describes chords that can be constructed by superimposing multiple familiar tonal sonorities. For example, familiar ninth, eleventh, and thirteenth chords can be built from or decomposed into separate chords:
+
+Thus polychords do not necessarily suggest polytonality, but they may not be explained as a single tertian chord. The Petrushka chord is an example of a polychord. This is the norm in jazz, for example, which makes frequent use of "extended" and polychordal harmonies without any intended suggestion of "multiple keys."
+
+## Polyvalency
+
+The following passage, taken from Beethoven's Piano Sonata in E♭, Op. 81a (Les Adieux), suggests clashes between tonic and dominant harmonies in the same key.
+
+Leeuw points to Beethoven's use of the clash between tonic and dominant, such as in his Third Symphony, as polyvalency rather than bitonality, with polyvalency being, "the telescoping of diverse functions that should really occur in succession to one another".
+
+## Polymodality
+
+Passages of music, such as Poulenc's Trois mouvements perpétuels, I., may be misinterpreted as polytonal rather than polymodal. In this case, two scales[clarification needed] are recognizable but are assimilated through the common tonic (B♭).
+
+## Polyscalarity
+
+Polyscalarity is defined as "the simultaneous use of musical objects which clearly suggest different source-collections. Specifically in reference to Stravinsky's music, Tymoczko uses the term polyscalarity out of deference to terminological sensibilities. In other words, the term is meant to avoid any implication that the listener can perceive two keys at once. Though Tymoczko believes that polytonality is perceivable, he believes polyscalarity is better suited to describe Stravinsky's music. This term is also used as a response to Van den Toorn's analysis against polytonality. Van den Toorn, in an attempt to dismiss polytonal analysis used a monoscalar approach to analyze the music with the octatonic scale. However, Tymoczko states that this was problematic in that it does not resolve all instances of multiple interactions between scales and chords. Moreover, Tymoczko quotes Stravinsky's claim that the music of Petrouchka's second tableau was conceived "in two keys". Polyscalarity is then a term encompassing multiscalar superimpositions and cases which give a different explanation than the octatonic scale.
+
+
+## Challenges
+
+Some music theorists, including Milton Babbitt and Paul Hindemith have questioned whether polytonality is a useful or meaningful notion or "viable auditory possibility". Babbitt called polytonality a "self-contradictory expression which, if it is to possess any meaning at all, can only be used as a label to designate a certain degree of expansion of the individual elements of a well-defined harmonic or voice-leading unit". Other theorists to question or reject polytonality include Allen Forte and Benjamin Boretz, who hold that the notion involves logical incoherence.
+
+Other theorists, such as Dmitri Tymoczko, respond that the notion of "tonality" is a psychological, not a logical notion. Furthermore, Tymoczko argues that two separate key-areas can, at least at a rudimentary level, be heard at one and the same time: for example, when listening to two different pieces played by two different instruments in two areas of a room.
+
+## Octatonicism
+
+<youtube-embed video="esD90diWZds" />
+
+Some critics of the notion of polytonality, such as Pieter van den Toorn, argue that the octatonic scale accounts in concrete pitch-relational terms for the qualities of "clashing", "opposition", "stasis", "polarity", and "superimposition" found in Stravinsky's music and, far from negating them, explains these qualities on a deeper level. For example, the passage from Petrushka, cited above, uses only notes drawn from the C octatonic collection C–C♯–D♯–E–F♯–G–A–A♯. 

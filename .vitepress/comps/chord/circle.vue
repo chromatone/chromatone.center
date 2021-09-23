@@ -39,7 +39,7 @@ g
     cx="0"
     cy="0"
     r="5"
-    :fill="pitch === false ? 'none' : colord(pitchColor(pitch)).toHex()"
+    :fill="pitch === false ? 'none' : chromaColorMix(chroma, pitch)"
     )
   text(
     y="0.3"
@@ -52,6 +52,7 @@ g
 
 <script setup>
 import { notes, pitchColor, rotateArray, getCircleCoord } from 'chromatone-theory'
+import { chromaColorMix } from "@use/colors.js";
 import { colord } from 'colord'
 const props = defineProps({
   pitch: { type: Number, default: 0 },

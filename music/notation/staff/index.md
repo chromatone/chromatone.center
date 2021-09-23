@@ -4,7 +4,6 @@ subtitle: How the sheet notes are written and read from classic era till today
 date: 2021-08-12
 tags: notation
 list: staff
-cover: theory/notation/Bachlut1.png
 ---
 
 

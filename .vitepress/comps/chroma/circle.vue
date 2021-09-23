@@ -58,6 +58,8 @@ svg.select-none.max-w-12em.my-4.mx-auto(
       cy="0"
       r="5"
       :fill="pitch === false ? 'none' : chromaColorMix(chroma, globalScale.tonic).hsl"
+      :stroke="pitchColor(globalScale.tonic)"
+      stroke-width="0.5px"
       )
     text(
       y="0.3"

@@ -13,6 +13,10 @@ https://www.guitarchalk.com/chord-progressions/
 
 https://autochords.com/
 
+https://chordchord.com/
+
+https://github.com/tonaljs/tonal/tree/9622ec8fa4031f0c80515d278dfa06424bf159e5/packages/progression
+
 50s progression 	
 I-vi-IV-V
 	

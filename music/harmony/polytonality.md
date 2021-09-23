@@ -84,3 +84,27 @@ Other theorists, such as Dmitri Tymoczko, respond that the notion of "tonality" 
 <youtube-embed video="esD90diWZds" />
 
 Some critics of the notion of polytonality, such as Pieter van den Toorn, argue that the octatonic scale accounts in concrete pitch-relational terms for the qualities of "clashing", "opposition", "stasis", "polarity", and "superimposition" found in Stravinsky's music and, far from negating them, explains these qualities on a deeper level. For example, the passage from Petrushka, cited above, uses only notes drawn from the C octatonic collection C–C♯–D♯–E–F♯–G–A–A♯. 
+
+## Polymodal chromaticism
+
+In music, polymodal chromaticism is the use of any and all musical modes sharing the same tonic simultaneously or in succession and thus creating a texture involving all twelve notes of the chromatic scale (total chromatic). Alternately it is the free alteration of the other notes in a mode once its tonic has been established.
+
+The term was coined by composer, ethnomusicologist, and pianist Béla Bartók. The technique became a means in Bartók's composition to avoid, expand, or develop major-minor tonality (i.e. common practice harmony). This approach differed from that used by Arnold Schoenberg and his followers in the Second Viennese School and later serialists.
+
+The concept was indicated by Bartók's folk-music-derived view of each note of the chromatic scale as being "of equal value" and thus to be used "freely and independently" (autobiography) and supported by references to the conception below in his Harvard Lectures (1943). The concept may be extended to the construction of non-diatonic modes from the pitches of more than one diatonic mode such as distance models including 1:3, the alternation of semitones and minor thirds, for example C–E♭–E–G–A♭–B–C which includes both the tonic and dominant as well as "'two of the most typical degrees from both major and minor' (E and B, E♭ and A♭, respectively) Kárpáti 1975 p. 132)".
+
+Bartók had realised that both melodic minor scales gave rise to four chromatic steps between the two scales' fifths and the rising melodic minor scale's seventh degrees when superimposed. Consequently, he started investigating if the same pattern could be established in some way in the beginning of any scales and came to realise that superimposing a Phrygian and a Lydian scale with the same tonic resulted in what looked like a chromatic scale. Bartók's twelve-tone Phrygian/Lydian polymode, however, differed from the chromatic scale as used by, for example, late-Romantic composers like Richard Strauss and Richard Wagner. During the late 19th century the chromatic altering of a chord or melody was a change in strict relation to its functional non-altered version. Alterations in the twelve-tone Phrygian/Lydian polymode, the other hand, were "diatonic ingredients of a diatonic modal scale."
+
+>Phrygian mode (C) 	C–D♭–E♭–F–G–A♭–B♭–C
+>Lydian mode (C) 	C–D–E–F♯–G–A–B–C
+>Twelve-tone Phrygian/Lydian polymode (C) 	C–D♭–D–E♭–E–F–F♯–G–A♭–A–B♭–B–C 
+>
+>Twelve-tone Phrygian-Lydian polymode
+
+Melodies could be developed and transformed in novel ways through diatonic extension and chromatic compression, while still having coherent links to their original forms. Bartók described this as a new means to develop a melody.
+
+Bartók started to superimpose all possible diatonic modes on each other in order to extend and compress melodies in ways that suited him, unrestricted by Baroque-Romantic tonality as well as strict serial methods such as the twelve-tone technique.
+
+In 1941, Bartók's ethnomusicological studies brought him into contact with the music of Dalmatia and he realised that the Dalmatian folk-music used techniques that resembled polymodal chromaticism. Bartók had defined and used polymodal chromaticism in his own music before this. The discovery inspired him to continue to develop the technique.
+
+Examples of Bartók's use of the technique include No. 80 ("Hommage à R. Sch.") from Mikrokosmos featuring C Phrygian/Lydian (C–D♭–E♭–F–G–A♭–B♭–C/C–D–E–F♯–G–A–B–C). Lendvai identifies the technique in the late works of Modest Mussorgsky, Richard Wagner, Franz Liszt, and Giuseppe Verdi.

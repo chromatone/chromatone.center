@@ -23,7 +23,7 @@
       @mouseleave="stopChroma(chroma)"
     ) {{ notes[globalScale.tonic].name }}{{ state.chord.aliases[0] }} &nbsp;
     button.m-1.shadow.px-2.py-1.cursor-pointer.text-gray-500(v-if="state.chord.name" class="dark:text-gray-400",  @click="arpeggiate()")  {{ state.chord.name }} 
-    button.m-1.scale.p-2.font-bold(v-if="state.scale"  @click="arpeggiate()") {{ state.scale }} scale
+    button.m-1.scale.p-2.font-bold(v-if="state.scale"  @click="arpeggiate(true)") {{ state.scale }} scale
       
 </template>
 
@@ -88,8 +88,12 @@ function playChordOnce() {
   synthOnce(chordNotes.value, '4n')
 }
 
-function arpeggiate() {
-  chordNotes.value.forEach((note, i) => {
+function arpeggiate(octave = false) {
+  let playedNotes = [...chordNotes.value]
+  if (octave) {
+    playedNotes.push(Frequency(globalScale.tonic + 57 + 12, 'midi').toNote())
+  }
+  playedNotes.forEach((note, i) => {
     synthOnce(note, '8n', `+${i / 3}`)
     midiOnce(note, { time: `+${i / 3}` })
   })

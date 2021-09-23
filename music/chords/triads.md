@@ -26,6 +26,14 @@ triads:
 
 ## Major and minor
 
+
+<chroma-profile  v-bind="$frontmatter.triads.maj" />
+
+A major triad can also be described by its intervals: the interval between the bottom and middle notes is a major third and the interval between the middle and top notes is a minor third.
+
+In Western classical music from 1600 to 1820 and in Western pop, folk and rock music, a major chord is usually played as a triad. Along with the minor triad, the major triad is one of the basic building blocks of tonal music in the Western common practice period and Western pop, folk and rock music. It is considered consonant, stable, or not requiring resolution. In Western music, a minor chord "sounds darker than a major chord", giving off a sense of sadness or somber feeling.
+
+
 <chroma-profile v-bind="$frontmatter.triads.min" />
 
 A unique particularity of the minor chord is that this is the only chord of three notes in which the three notes have one harmonic – hearable and with a not too high row – in common (more or less exactly, depending on the tuning system used). This harmonic, common to the three notes, is situated 2 octaves above the high note of the chord. This is the sixth harmonic of the root of the chord, the fifth of the middle note, and the fourth of the high note:
@@ -38,13 +46,6 @@ Demonstration:
 - Major third = 5:4 = 15:12
 - So the ratios of minor chord are 10:12:15
 - And the explication of the unique harmonic in common, between the three notes, is verified by : 10 × 6 = 12 × 5 = 15 × 4
-
-
-<chroma-profile  v-bind="$frontmatter.triads.maj" />
-
-A major triad can also be described by its intervals: the interval between the bottom and middle notes is a major third and the interval between the middle and top notes is a minor third.
-
-In Western classical music from 1600 to 1820 and in Western pop, folk and rock music, a major chord is usually played as a triad. Along with the minor triad, the major triad is one of the basic building blocks of tonal music in the Western common practice period and Western pop, folk and rock music. It is considered consonant, stable, or not requiring resolution. In Western music, a minor chord "sounds darker than a major chord", giving off a sense of sadness or somber feeling.
 
 ---
 

@@ -76,7 +76,6 @@ const speeder = useTransition(speed, {
   onFinished: (() => {
     if (speed.value == 0) {
       pause()
-      console.log('end')
     }
   })
 })

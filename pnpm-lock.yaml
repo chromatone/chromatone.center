@@ -3,6 +3,7 @@ lockfileVersion: 5.3
 specifiers:
   '@iconify/json': ^1.1.404
   '@tonaljs/tonal': ^4.6.5
+  '@tonejs/midi': ^2.0.27
   '@types/node': ^16.9.6
   '@vueuse/core': 6.4.1
   '@vueuse/gesture': ^1.0.0
@@ -40,6 +41,7 @@ specifiers:
 
 dependencies:
   '@tonaljs/tonal': 4.6.5
+  '@tonejs/midi': 2.0.27
   '@vueuse/core': 6.4.1_vue@3.2.13
   '@vueuse/gesture': 1.0.0_vue@3.2.13
   '@vueuse/motion': 1.6.0_vue@3.2.13
@@ -1613,6 +1615,13 @@ packages:
       '@tonaljs/time-signature': 4.6.2
     dev: false
 
+  /@tonejs/midi/2.0.27:
+    resolution: {integrity: sha512-JYiGA8k37rTWKPoiPhbJfWLotnZFCKw0G0rqijHD+u+LdjewTgt/Ubhn2JnD2yR+6+eLXTqHLJRS2a+tNLla3w==}
+    dependencies:
+      array-flatten: 2.1.2
+      midi-file: 1.1.2
+    dev: false
+
   /@types/estree/0.0.39:
     resolution: {integrity: sha512-EYNwp3bU+98cpU4lAWYYL7Zz+2gryWH1qbdDTidVd6hkiR6weksdbMadyXKXNPEkQFhXM+hVO9ZygomHXp+AIw==}
     dev: true
@@ -2079,6 +2088,10 @@ packages:
   /argparse/2.0.1:
     resolution: {integrity: sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==}
     dev: true
+
+  /array-flatten/2.1.2:
+    resolution: {integrity: sha512-hNfzcOV8W4NdualtqBFPyVO+54DSJuZGY9qT4pRroB6S9e3iiido2ISIC5h9R2sPJ8H3FHCIiEnsv1lPXO3KtQ==}
+    dev: false
 
   /array-union/2.1.0:
     resolution: {integrity: sha512-HGyxoOTYUyCM6stUe6EJgnd4EoewAI7zMdfqO+kGjnlZmBDz/cR5pf8r/cR4Wq60sL/p0IkcjUEEPwS3GFrIyw==}
@@ -3405,6 +3418,10 @@ packages:
       braces: 3.0.2
       picomatch: 2.3.0
     dev: true
+
+  /midi-file/1.1.2:
+    resolution: {integrity: sha512-VQNzirfADDFXTymgPJv2VfLylCq14spRNFhpA6u7dLqPMbw1BqGf5u9B0k7z++8X1RMs57pyn+G4kzhyIatlyw==}
+    dev: false
 
   /mime-db/1.48.0:
     resolution: {integrity: sha512-FM3QwxV+TnZYQ2aRqhlKBMHxk10lTbMt3bBkMAp54ddrNeVSfcQYOOKuGuy3Ddrm38I04If834fOUSq1yzslJQ==}

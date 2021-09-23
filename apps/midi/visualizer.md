@@ -8,3 +8,5 @@ tags: midi
 <client-only>
   <midi-visualizer />
 </client-only>
+
+https://github.com/Tonejs/Midi

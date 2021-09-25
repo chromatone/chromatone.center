@@ -1,11 +1,22 @@
 <template lang="pug">
 .flex.flex-col.items-center
-  .text-2xl MIDI Visualizer
-  .flex.flex-col
-    //- .p-1 {{ midi }}
-    la-play(@click="play()")
+  .text-2xl MIDI Recorder
   .flex.flex-wrap
-    .p-1(v-for="(track,t) in tracks" :key="track.channel") 
+    button(@click="play()")
+      la-play(v-if="!map.playing")
+      la-stop(v-else)
+    button
+      la-circle
+    button(@click="clear()")
+      la-trash-alt
+    button
+      label(for="upload")
+        la-upload
+      input#upload.p-2.w-18em.cursor-pointer(@change="uploaded" type="file" accept="audio/midi")
+    button(@click="download")
+      la-download
+  .flex.flex-wrap
+    .p-1(v-for="(track,t) in info.tracks" :key="track") 
       .track(
         @click="map.hiddenTracks[t] = !map.hiddenTracks[t]"
         :class="{ active: !map.hiddenTracks[t] }"
@@ -16,7 +27,7 @@
     :viewBox="`0 0 ${map.width} ${map.height}`",
     xmlns="http://www.w3.org/2000/svg",
   )
-    g(v-for="(track,t) in filteredTracks" :key="t")
+    g(v-for="(track,t) in info.filteredTracks" :key="track")
       rect(
         rx="0.4"
         v-for="note in track.notes" :key="note"
@@ -31,34 +42,56 @@
 <script setup>
 import { Midi } from '@tonejs/midi'
 import { pitchColor } from 'chromatone-theory'
-import { now, PolySynth, Synth } from 'tone'
-const midi = reactive({
-  tracks: [],
+import { now, PolySynth, Synth, Transport } from 'tone'
+
+let midiData
+
+const info = reactive({
   title: '',
   author: '',
   header: '',
+  duration: 0,
+  tracks: [],
+  filteredTracks: computed(() => info.tracks.filter((track, t) => !map.hiddenTracks[t]))
 })
 
 const map = reactive({
-  width: 100,
-  height: 127,
+  width: computed(() => info.duration),
+  height: computed(() => map.upper - map.lower),
+  upper: 127,
+  lower: 0,
   playing: false,
   hiddenTracks: [],
 })
 
-const tracks = ref([])
-const filteredTracks = computed(() => tracks.value.filter((track, t) => !map.hiddenTracks[t]))
+function uploaded(ev) {
+  let file1 = ev.target.files[0]
+  let reader = new FileReader()
+  reader.onload = (loaded) => {
+    midiData = new Midi(loaded.target.result)
+    parse(midiData)
+  }
+  reader.readAsArrayBuffer(file1)
+}
 
-async function parse() {
-  const parsed = await Midi.fromUrl("/midi/examples_bach_846.mid")
-  console.log(parsed.toJSON())
-  midi.title = parsed.tracks[0].name
-  midi.author = parsed.name
-  midi.header = parsed.header
-  midi.duration = parsed.duration
-  map.width = parsed.duration
-  midi.ticks = parsed.durationTicks
-  tracks.value = parsed.toJSON().tracks
+async function parse(parsed) {
+  info.title = parsed.tracks[0].name
+  info.header = parsed.header
+  info.duration = parsed.duration
+  info.ticks = parsed.durationTicks
+  info.tracks = parsed.toJSON().tracks
+}
+
+function clear() {
+  info.title = ''
+  info.header = ''
+  info.duration = 0
+  info.tracks = []
+  info.ticks = 0
+}
+
+function download() {
+  createAndDownloadBlobFile(midiData.toArray(), 'chromatone')
 }
 
 const synths = []
@@ -66,7 +99,7 @@ function play() {
   map.playing = !map.playing
   if (map.playing) {
     const noww = now() + 0.5
-    tracks.value.forEach(track => {
+    info.filteredTracks.forEach(track => {
       //create a synth for each track
       const synth = new PolySynth(Synth, {
         envelope: {
@@ -91,11 +124,34 @@ function play() {
   }
 }
 
-parse()
+function createAndDownloadBlobFile(body, filename, extension = 'mid') {
+  const blob = new Blob([body]);
+  const fileName = `${filename}.${extension}`;
+  if (navigator.msSaveBlob) {
+    // IE 10+
+    navigator.msSaveBlob(blob, fileName);
+  } else {
+    const link = document.createElement('a');
+    // Browsers that support HTML5 download attribute
+    if (link.download !== undefined) {
+      const url = URL.createObjectURL(blob);
+      link.setAttribute('href', url);
+      link.setAttribute('download', fileName);
+      link.style.visibility = 'hidden';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  }
+}
+
 
 </script>
 
 <style scoped>
+button {
+  @apply p-4 m-2 border-1 rounded cursor-pointer;
+}
 .track {
   @apply bg-light-900 border-1 p-1;
 }

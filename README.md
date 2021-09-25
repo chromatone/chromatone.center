@@ -55,10 +55,13 @@ We've ported almost all separate apps into the main website. It becomes more and
 - [windi css](https://windicss.org/)
 - [pug](https://pugjs.org/api/getting-started.html)
 - [tonaljs](https://github.com/tonaljs/tonal)
+- [abcjs](https://paulrosen.github.io/abcjs/)
 - [webmidi.js](https://webmidijs.org/docs/)
 - [colord](https://www.npmjs.com/package/colord)
 - audio
   - [tone.js](https://tonejs.github.io)
+    - [@tonejs/midi](https://github.com/Tonejs/Midi)
+    - [@tonejs/piano](https://tambien.github.io/Piano/) ?
   - [meyda](https://meyda.js.org)
   - [aubiojs](https://github.com/qiuxiang/aubiojs)
   - [audiomotion-analyzer](https://www.npmjs.com/package/audiomotion-analyzer) 

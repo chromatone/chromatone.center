@@ -1,6 +1,7 @@
 import { reactive, watchEffect, onMounted } from 'vue'
 import { WebMidi } from 'webmidi'
 import { useStorage } from '@vueuse/core'
+import { Midi } from '@tonejs/midi'
 
 export const midi = reactive({
   enabled: false,
@@ -122,6 +123,7 @@ function ccIn(ev) {
 
 function processNote(ev) {
   let note = ev.note
+  note.type = ev.type
   note.timestamp = ev.timestamp
   note.channel = ev.target.number
   if (ev.type == 'noteoff') {

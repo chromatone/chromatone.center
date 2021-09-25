@@ -5,6 +5,6 @@ date: 2021-08-04
 tags: midi
 ---
 
-https://midi-recorder.web.app/
-
-https://github.com/1j01/midi-recorder/
+<client-only>
+  <midi-recorder />
+</client-only>

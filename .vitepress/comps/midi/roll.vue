@@ -97,13 +97,13 @@ function drawVertical() {
 
 function drawHorizontal() {
   tempCtx.drawImage(canvas, 0, 0, state.width, state.height)
-  ctx.fillStyle = '#33333399'
+  ctx.fillStyle = '#33333340'
   ctx.fillRect(state.width - state.speed, 0, state.speed, state.height)
-  for (let i = 0; i < 127; i++) {
-    let num = (127 - i) * (state.height / 127)
-    ctx.fillStyle = colorIt((num + 3) % 12, 0.5, 0.1)
-    ctx.fillRect(0, state.height - num, state.width, 0.5)
-  }
+  // for (let i = 0; i < 127; i++) {
+  //   let num = (127 - i) * (state.height / 127)
+  //   ctx.fillStyle = colorIt((num + 3) % 12, 0.5, 0.1)
+  //   ctx.fillRect(0, state.height - num, state.width, 0.5)
+  // }
   score.notes.forEach(note => {
     ctx.fillStyle = colorIt((note.number + 3) % 12, 1)
     ctx.fillRect(state.width - state.speed, state.height - note.number * state.height / 127, state.speed, 12 - note.channel / 2)

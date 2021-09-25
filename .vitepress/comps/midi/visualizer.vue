@@ -1,18 +1,15 @@
 <template lang="pug">
 .flex.flex-col.items-center
-  .text-2xl MIDI Recorder
   .flex.flex-wrap
-    button(@click="play()")
-      la-play(v-if="!map.playing")
-      la-stop(v-else)
-    button
-      la-circle
-    button(@click="clear()")
-      la-trash-alt
     button
       label(for="upload")
         la-upload
       input#upload.p-2.w-18em.cursor-pointer(@change="uploaded" type="file" accept="audio/midi")
+    button(@click="play()")
+      la-play(v-if="!map.playing")
+      la-stop(v-else)
+    button(@click="clear()")
+      la-trash-alt
     button(@click="download")
       la-download
   .flex.flex-wrap
@@ -153,10 +150,10 @@ button {
   @apply p-4 m-2 border-1 rounded cursor-pointer;
 }
 .track {
-  @apply bg-light-900 border-1 p-1;
+  @apply bg-light-900 border-1 p-1 dark:bg-dark-100 select-none cursor-pointer rounded;
 }
 .active {
-  @apply bg-light-100 border-current;
+  @apply bg-light-100 border-current dark:bg-dark-900;
 }
 </style>
 

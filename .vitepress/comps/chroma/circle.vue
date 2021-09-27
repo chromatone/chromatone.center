@@ -15,7 +15,7 @@ svg.select-none.max-w-12em.my-4.mx-auto(
     r="8"
     :fill="pitch === false ? 'none' : colord(pitchColor(pitch)).toHex()"
     )
-  g(v-for="(note,n) in rotateArray(chroma.split(''), -globalScale.tonic)" :key="n")
+  g(v-for="(note,n) in actualChroma" :key="n")
     line(
       :x1="getCircleCoord(n, 12, 6.5, 0).x"
       :y1="getCircleCoord(n, 12, 6.5, 0).y"
@@ -27,7 +27,7 @@ svg.select-none.max-w-12em.my-4.mx-auto(
       :stroke="note == '1' ? colord(pitchColor(n)).toHex() : 'none'"
       )
   g.cursor-pointer(
-    v-for="(note,n) in rotateArray(chroma.split(''), -globalScale.tonic)" :key="n"
+    v-for="(note,n) in actualChroma" :key="n"
     :transform="`translate(${getCircleCoord(n, 12, 8, 0).x}, ${getCircleCoord(n, 12, 8, 0).y})`"
     @mousedown="globalScale.tonic = n"
   )
@@ -45,28 +45,34 @@ svg.select-none.max-w-12em.my-4.mx-auto(
       fill="white"
       ) {{ notes[n]?.name }}
   g.center.cursor-pointer(
-    @mousedown="playChroma(chroma); pressed = true"
-    @touchstart.prevent.stop="playChroma(chroma); pressed = true"
-    @touchend="stopChroma(chroma); pressed = false"
-    @touchcancel="stopChroma(chroma); pressed = false"
-    @mouseup="stopChroma(chroma); pressed = false"
-    @mouseleave="stopChroma(chroma); pressed = false"
+    @mousedown="playChroma(chroma, actualPitch); pressed = true"
+    @touchstart.prevent.stop="playChroma(chroma, actualPitch); pressed = true"
+    @touchend="stopChroma(chroma, actualPitch); pressed = false"
+    @touchcancel="stopChroma(chroma, actualPitch); pressed = false"
+    @mouseup="stopChroma(chroma, actualPitch); pressed = false"
+    @mouseleave="stopChroma(chroma, actualPitch); pressed = false"
     :class="{ pressed }"
   )
     circle(
       cx="0"
       cy="0"
       r="5"
-      :fill="pitch === false ? 'none' : chromaColorMix(chroma, globalScale.tonic).hsl"
+      :fill="pitch === false ? 'none' : chromaColorMix(chroma, actualPitch).hsl"
       :stroke="pitchColor(globalScale.tonic)"
-      stroke-width="0.5px"
+      stroke-width="0.4px"
       )
     text(
       y="0.3"
       font-size="2.5px"
       font-weight="bold"
       fill="white"
-      ) {{ pitch === false ? '' : typeof pitch == 'string' ? pitch : notes[globalScale.tonic]?.name }}{{ chord.aliases[0] }}
+      ) {{ pitch === false ? '' : typeof pitch == 'string' ? pitch : notes[actualPitch]?.name }}{{ chord.aliases[0] }}
+    text(
+      y="3"
+      font-size="2px"
+      font-weight="normal"
+      fill="white"
+      ) {{ type }}
 </template>
 
 <script setup>
@@ -82,7 +88,12 @@ import { chromaColorMix } from "@use/colors.js";
 import { playChroma, chordType, scaleType, stopChroma, globalScale } from '@use/theory.js'
 const pressed = ref(false);
 
+const actualChroma = computed(() => {
+  let pitch = props.pitch || globalScale.tonic
+  return rotateArray(props.chroma.split(''), -pitch)
+})
 
+const actualPitch = computed(() => props.pitch || globalScale.tonic)
 const chord = computed(() => chordType.get(props.chroma));
 const scale = computed(() => scaleType.get(props.chroma).name)
 

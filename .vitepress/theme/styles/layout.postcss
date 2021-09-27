@@ -273,6 +273,22 @@ form {
   opacity: 0.9;
 }
 
+.text-button {
+  @apply shadow m-1 p-1 rounded border-1 border-transparent transition-all duration-200;
+  &.note {
+    @apply text-white p-2 font-bold opacity-50 border-2 rounded-lg;
+    &.active {
+      @apply transform scale-125;
+    }
+  }
+  &.active {
+    @apply opacity-100 border-current;
+  }
+  &:hover {
+    @apply opacity-90;
+  }
+}
+
 .external-link::after {
   content: '';
   display: inline-block;

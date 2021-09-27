@@ -25,7 +25,7 @@
   .flex.flex-col.items-center.mb-2
     .flex.flex-wrap.justify-center.my-1.py-1.border-b-1(v-for="(chords, title) in state.byNotes" :key="chords")
       .p-1.m-1 {{ title }}:
-      button.p-1(
+      button.text-button(
         :style="{ opacity: isInScale(chord.notes) }"
         :class="{ active: state.suffix == chord.suffix, isin: isInScale(chord.notes) == 1.2 }"
         v-for="chord in chords" :key="chord.suffix"

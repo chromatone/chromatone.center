@@ -8,8 +8,15 @@ sources:
   - https://github.com/Tonejs/Midi
   - https://github.com/Tonejs/Tone.js/wiki/TransportTime
   - https://webmidijs.org/docs/v3.0.0-alpha.10/index.html
+status: alpha
+version: 0.1
 ---
 
 <client-only>
   <midi-recorder />
 </client-only>
+
+
+## Work in progress
+
+This app is a draft to be iterated on. The idea is to make a tool to record some kind of visual midi sketches and store them as mid files and also directly in the browser. 

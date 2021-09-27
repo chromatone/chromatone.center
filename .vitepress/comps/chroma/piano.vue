@@ -7,7 +7,7 @@
     @mouseover="key.active = true"
     @mouseleave="key.active = false"
     @click="globalScale.tonic = key.pitch"
-    :style="{ backgroundColor: isInChroma(key.pitch) || key.active || key.pitch == globalScale.tonic ? pitchColor(key.pitch, 4, key.pitch == globalScale.tonic ? 1 : 0.4) : '' }" 
+    :style="{ backgroundColor: keys.steps[key.pitch] == 1 || key.active || key.pitch == globalScale.tonic ? pitchColor(key.pitch, 4, key.pitch == globalScale.tonic ? 1 : 0.4) : '' }" 
   ) {{ names ? key.name : '' }}
 </template>
 
@@ -20,7 +20,10 @@ const props = defineProps({
     type: Number,
     default: 0
   },
-  chroma: String,
+  chroma: {
+    type: String,
+    default: '100010010000'
+  },
   size: {
     type: String,
     default: '2'
@@ -30,6 +33,8 @@ const props = defineProps({
 
 const keys = reactive({
   notes: rotateArray(notes, 3),
+  tonic: computed(() => props.pitch || globalScale.tonic),
+  steps: computed(() => rotateArray(props.chroma.split(''), -keys.tonic))
 });
 
 function isInChroma(pitch) {
@@ -48,8 +53,9 @@ function isInChroma(pitch) {
   flex: 1;
   &.black {
     @apply bg-gray-300 dark:(bg-gray-700) z-2;
-    padding: 1.4em 1em;
-    margin-left: -1.8em;
+    padding: 1em 1em;
+    margin-left: -1.5em;
+    margin-right: -0.2em;
     margin-bottom: 2em;
     transform: translateX(25%);
   }

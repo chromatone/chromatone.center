@@ -10,7 +10,7 @@
     :style="{ color: pitchColor(accord.root) }"
   ) {{ notes[accord?.root].name }}{{ accord?.info.handle }}
   .relative.m-auto
-    chord-keys#chord-keys(:accord="accord", @selectRoot="accord.root = $event")
+    chord-tool-keys#chord-keys(:accord="accord", @selectRoot="accord.root = $event")
 </template>
 
 <script setup>

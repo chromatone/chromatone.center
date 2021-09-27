@@ -52,6 +52,9 @@ links:
   - url: https://tonejs.github.io/demos
     title: Tone.js demos
     subtitle: A collection of interactive WebAudio online apps built with Tone.js library
+  - url: https://www.webaudiomodules.org/wamsynths/obxd
+    title: Online synths by WebAudioModules
+    subtitle: OBXD and other synths and effects
 date: 2018-09-08
 ---
 

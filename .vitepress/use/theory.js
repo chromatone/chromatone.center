@@ -23,6 +23,63 @@ export const scaleType = ScaleType
 export const chordList = ChordType.all()
 export const scaleList = ScaleType.all()
 
+let noteNames = []
+
+const naturals = [
+  'A',
+  'A#',
+  'B',
+  'C',
+  'C#',
+  'D',
+  'D#',
+  'E',
+  'F',
+  'F#',
+  'G',
+  'G#',
+]
+
+const sharps = [
+  'G##',
+  'A#',
+  'A##',
+  'B#',
+  'C#',
+  'C##',
+  'D#',
+  'D##',
+  'E#',
+  'F#',
+  'F##',
+  'G#',
+]
+const flats = [
+  'Bbb',
+  'Bb',
+  'Cb',
+  'Dbb',
+  'Db',
+  'Ebb',
+  'Eb',
+  'Fb',
+  'Gbb',
+  'Gb',
+  'Abb',
+  'Ab',
+]
+naturals.forEach((note, n) => {
+  noteNames[note] = n
+})
+sharps.forEach((note, n) => {
+  noteNames[note] = n
+})
+flats.forEach((note, n) => {
+  noteNames[note] = n
+})
+
+export { notes, noteNames, rotateArray }
+
 export const globalScale = reactive({
   tonic: useStorage('tonic', 0),
   note: computed(() => notes[globalScale.tonic]),

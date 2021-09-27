@@ -29,7 +29,7 @@
         :points="waves[n]"
         stroke-width="4"
         fill="none"
-        opacity="0.3"
+        opacity="1"
       )
     polyline(
       :stroke="sumColor.hsl"

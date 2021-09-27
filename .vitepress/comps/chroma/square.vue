@@ -1,5 +1,5 @@
 <template lang="pug">
-svg.select-none.max-w-12em.my-4.mx-auto(
+svg.select-none.max-w-12em(
   version="1.1",
   baseProfile="full",
   viewBox="0 0 100 100",
@@ -18,18 +18,19 @@ svg.select-none.max-w-12em.my-4.mx-auto(
     rect(
       :x="0"
       :y="0"
+      rx="4"
       :width="state.width / 4"
       :height="state.height / 4"
-      :fill="colord(note == '1' ? pitchColor(n, 3) : notes[n].pos == 0 ? 'hsl(0,0%,85%)' : 'hsl(0,0%,60%)').toHex()"
+      :fill="colord(note == '1' ? pitchColor(n, 3) : notes[n].pos == 0 ? 'hsl(0,0%,85%)' : 'hsl(0,0%,40%)').toHex()"
       :opacity="note == '1' ? 1 : 0.62"
     )
     text(
       v-if="note == '1'"
       :y="state.height / 8"
       :x="state.width / 8"
-      :font-size="n == actualPitch ? 12 : 8"
+      :font-size="8"
       font-weight="bold"
-      fill="#eee"
+      fill="white"
       ) {{ notes[n]?.name }}
     text(
       v-if="note == '0'"
@@ -37,7 +38,7 @@ svg.select-none.max-w-12em.my-4.mx-auto(
       :x="state.width / 8"
       font-size="10px"
       font-weight="normal"
-      fill="white"
+      fill="#333"
       ) {{ n }}
 
   g.center.cursor-pointer(
@@ -50,6 +51,7 @@ svg.select-none.max-w-12em.my-4.mx-auto(
     :class="{ pressed }"
   )
     rect(
+      rx="4"
       :x="state.width / 4"
       :y="state.width / 4"
       :width="state.width / 2"
@@ -61,7 +63,7 @@ svg.select-none.max-w-12em.my-4.mx-auto(
     text(
       :x="state.width / 2"
       :y="state.height / 2"
-      font-size="14px"
+      font-size="10px"
       font-weight="bold"
       fill="white"
       ) {{ pitch === false ? '' : typeof pitch == 'string' ? pitch : notes[actualPitch]?.name }}{{ chord.aliases[0] }}
@@ -71,13 +73,13 @@ svg.select-none.max-w-12em.my-4.mx-auto(
       :y="state.height / 2 + 15"
       font-size="10px"
       font-weight="bold"
-      fill="white"
+      :fill="pitchColor(globalScale.tonic, 3)"
       ) {{ props.roman }}
 </template>
 
 <script setup>
 const props = defineProps({
-  pitch: { type: Number, default: 0 },
+  pitch: { type: Number, default: null },
   chroma: { type: String, default: '1001000100101' },
   mode: { type: String, default: 'O' },
   tonic: { type: Number, default: 0 },

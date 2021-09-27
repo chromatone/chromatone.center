@@ -4,32 +4,45 @@ subtitle: All musically meaningful combinations of 4 notes
 tags: chords
 date: 2021-09-10
 tertian:
-  maj7:  
+  maj7:
+    title: Major Seventh 
     chroma: '100010010001'
   min7:  
+    title: Minor Seventh
     chroma: '100100010010'
-  '7':   
+  '7':  
+    title: Dominant Seventh
     chroma: '100010010010'
   dim7:  
+    title: Diminished Seventh
     chroma: '100100100100'
-  m7b5:  
+  m7b5:
+    title: Half-diminished 
     chroma: '100100100010'
-  mMaj7: 
+  mMaj7:
+    title: Minor Major Seventh
     chroma: '100100010001'
   augM7: 
-    chroma: '100010001010'
-nontertian:
-  M7b5:  
+    title: Augmented Seventh
     chroma: '100010001001'
-  m6:    
+nontertian:
+  M7b5:
+    title: Major Seventh b13
+    chroma: '100010001010'
+  m6:
+    title: Minor Sixth
     chroma: '100100010100'
-  '6':   
+  '6':
+    title: Sixth
     chroma: '100010010100'
-  '4':   
+  '4':
+    title: Fourth
     chroma: '100101000010'
-  sus24: 
+  sus24:
+    title: Sus24
     chroma: '101001010000'
   Madd9: 
+    title: Major add9
     chroma: '101010010000'
 ---
 
@@ -45,7 +58,7 @@ Most textbooks name these chords formally by the type of triad and type of seven
 
 The most common chords are tertian, constructed using a sequence of major thirds (spanning 4 semitones) and/or minor thirds (3 semitones). Since there are 3 third intervals in a seventh chord (4 notes) and each can be major or minor, there are 8 possible combinations, however, only seven of them are commonly found in western music. The augmented augmented seventh chord, defined by a root, a major third, an augmented fifth, and an augmented seventh (i.e., a sequence of 3 major thirds, such as C–E–G♯–B♯), is a rarely used tertian seventh chord. The reason is that the augmented seventh interval is enharmonically equivalent to one entire octave (in equal temperament, 3 major thirds = 12 semitones = 1 octave) and is hence perfectly consonant with the chord root. 
 
-<chroma-profile v-bind="chord" v-for="chord in $frontmatter.tertian" :key="chord" />
+<chroma-collection :collection="$frontmatter.tertian" />
 
 ---
 
@@ -53,4 +66,4 @@ The most common chords are tertian, constructed using a sequence of major thirds
 
 Seventh chords can also be constructed using augmented or diminished thirds. These chords are not tertian and can be used in non-tertian harmony. There are many (mathematically, 64) chords that can be built, however, only few of them are used.
 
-<chroma-profile v-bind="chord" v-for="chord in $frontmatter.nontertian" :key="chord" />
+<chroma-collection :collection="$frontmatter.nontertian" />

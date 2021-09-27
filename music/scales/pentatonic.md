@@ -3,6 +3,35 @@ title: Pentatonic scales
 subtitle: 5 very consonant notes to play easily together
 date: 2021-09-16
 tags: scales
+pentatonics:
+  major: 
+    title: Major pentatonic
+    chroma: '101010010100'
+  minor:
+    title: Minor pentatonic
+    chroma: '100101010010'
+  ms7:
+    title: Minor #7 pentatonic
+    chroma: '100101010001'
+  m6:
+    title: Minor Six pentatonic
+    chroma: '100101010100'
+japanese:
+  hirajoshi:
+    title: Hirajoshi
+    chroma: '101100011000'
+  ritusen:
+    title: Ritusen
+    chroma: '101001010100'
+  iwato:
+    title: Iwato
+    chroma: '110001100010'
+  kumoijoshi:
+    title: Kumoijoshi
+    chroma: '110001011000'
+  insen:
+    title: In-sen
+    chroma: '110001010010'
 ---
 
 
@@ -10,7 +39,6 @@ Musicology commonly classifies [pentatonic scales](https://en.wikipedia.org/wiki
 
 ## Major pentatonic scale
 
-<chroma-profile  :chroma="'101010010100'" />
 
 Anhemitonic pentatonic scales can be constructed in many ways. The major pentatonic scale may be thought of as a gapped or incomplete major scale. However, the pentatonic scale has a unique character and is complete in terms of tonality. One construction takes five consecutive pitches from the circle of fifths; starting on C, these are C, G, D, A, and E. Transposing the pitches to fit into one octave rearranges the pitches into the major pentatonic scale: C, D, E, G, A. 
 
@@ -26,15 +54,11 @@ The black keys on a piano keyboard comprise a G-flat major (or equivalently, F-s
 
 ## Minor pentatonic scale
 
-<chroma-profile  :chroma="'100101010010'" />
-
 Although various hemitonic pentatonic scales might be called minor, the term is most commonly applied to the relative minor pentatonic derived from the major pentatonic, using scale tones 1, 3, 4, 5, and 7 of the natural minor scale. (It may also be considered a gapped blues scale.) The C minor pentatonic scale, the relative of the E-flat pentatonic scale is C, E-flat, F, G, B-flat. The A minor pentatonic, the relative minor of C pentatonic, comprises the same tones as the C major pentatonic, starting on A, giving A, C, D, E, G. This minor pentatonic contains all three tones of an A minor triad.
 
 The standard tuning of a guitar uses the notes of an E minor pentatonic scale: E-A-D-G-B-E, contributing to its frequency in popular music.
 
-<chroma-profile  :chroma="'100101010001'" />
-
-<chroma-profile  :chroma="'100101010100'" />
+<chroma-collection :collection="$frontmatter.pentatonics" />
 
 
 ## Japanese scales
@@ -45,12 +69,4 @@ The most common version of the Japanese mode is a somewhat inaccurate term for a
 
 In addition to being used almost exclusively in traditional Japanese compositions, it is found frequently in video game music and the pieces of contemporary composers such as Anne Boyd. 
 
-<chroma-profile  :chroma="'101100011000'" />
-
-<chroma-profile  :chroma="'101001010100'" />
-
-<chroma-profile  :chroma="'110001100010'" />
-
-<chroma-profile  :chroma="'110001011000'" />
-
-<chroma-profile  :chroma="'110001010010'" />
+<chroma-collection :collection="$frontmatter.japanese" />

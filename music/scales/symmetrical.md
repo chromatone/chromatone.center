@@ -3,6 +3,23 @@ title: Symmetrical scales
 subtitle: Modes of limited transpostions and interval cycles
 date: 2021-04-03
 tags: scales
+limited:
+  third:
+    title: Third mode
+    link: https://en.wikipedia.org/wiki/Mode_of_limited_transposition
+    chroma: '101110111011'
+  fourth:
+    title: Fourth mode
+    chroma: '111001111001'
+  fifth:
+    title: Fifth mode
+    chroma: '110001110001'
+  sixth:
+    title: Sixth mode
+    chroma: '101011101011'
+  seven:
+    title: Seventh mode
+    chroma: '111101111101'
 ---
 
 Asymmetric scales are "far more common" than symmetric scales and this may be accounted for by the inability of symmetric scales to possess the property of uniqueness (containing each interval class a unique number of times) which assists with determining the location of notes in relation to the first note of the scale.
@@ -32,7 +49,7 @@ Any scale having the same number of modes as notes is not a mode of limited tran
 
 ### Whole tone scale
 
-<chroma-profile :chroma="'101010101010'" />
+<chroma-profile link="https://en.wikipedia.org/wiki/Whole_tone_scale" :chroma="'101010101010'" />
 
 Interval cycle 2 (C2).
 
@@ -42,44 +59,34 @@ The whole-tone scale has no leading tone and because all tones are the same dist
 
 Whole tone scale was used notably by Bach and Mozart, Glinka and Rimsky-Korsakov. H. C. Colles names as the "childhood of the whole-tone scale" the music of Berlioz and Schubert in France and Austria and then Russians Glinka and Dargomyzhsky.[9] Claude Debussy, who had been influenced by Russians, along with other impressionist composers made extensive use of whole tone scales. Voiles, the second piece in Debussy's first book of Préludes, is almost entirely within one whole-tone scale.
 
- The rāga Sahera in Hindustani classical music uses the same intervals as the whole-tone scale. 
+The rāga Sahera in Hindustani classical music uses the same intervals as the whole-tone scale. 
 
- ### Octatonic scale
+### Octatonic scale
 
-<chroma-profile :chroma="'110110110110'" />
+<chroma-profile link="https://en.wikipedia.org/wiki/Octatonic_scale" :chroma="'110110110110'" />
 
 The term most often refers to the symmetric scale composed of alternating whole and half steps. It also may refer to any 8-note scale (there's a plenty of them).
 
 The second mode, also called the octatonic, diminished, whole-half, or half-whole scale, is divided into four groups of three notes each. It contains the intervals semitone, tone, semitone, tone, semitone, tone, semitone, tone – it has three transpositions, like the diminished 7th chord, and two modes.
 
-https://en.wikipedia.org/wiki/Octatonic_scale
-
-#### Third mode
-
-<chroma-profile :chroma="'101110111011'" />
+### Third mode
 
 The third mode is divided into three groups of four notes each. It contains the intervals tone, semitone, semitone, tone, semitone, semitone, tone, semitone, semitone – it has four transpositions, like the augmented triad, and three modes. 
 
-#### Fourth mode
-
-<chroma-profile :chroma="'111001111001'" />
+### Fourth mode
 
 The fourth mode contains the intervals semitone, semitone, minor third, semitone, semitone, semitone, minor third, semitone – it has six transpositions, like the tritone, and four modes. 
 
-#### Fifth mode
-
- <chroma-profile :chroma="'110001110001'" />
+### Fifth mode
 
 The fifth mode contains the intervals semitone, major third, semitone, semitone, major third, semitone – it has six transpositions, like the tritone, and three modes. 
 
-#### Sixth mode
-
-<chroma-profile :chroma="'101011101011'" />
+### Sixth mode
 
 The sixth mode has the intervals tone, tone, semitone, semitone, tone, tone, semitone, semitone – it has six transpositions, like the tritone, and four modes. 
 
-#### Seventh mode
-
-<chroma-profile :chroma="'111101111101'" />
+### Seventh mode
 
 The seventh mode contains the intervals semitone, semitone, semitone, tone, semitone, semitone, semitone, semitone, tone, semitone – it has six transpositions, like the tritone, and five modes. 
+
+<chroma-collection :collection="$frontmatter.limited" />

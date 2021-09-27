@@ -3,38 +3,47 @@ title: Triads
 subtitle: Chords consisting of three notes
 tags: chords
 date: 2021-09-22
-triads:
-    maj:  
-      chroma: '100010010000'
-    min:  
-      chroma: '100100010000'
-    aug:  
-      chroma: '100010001000'
-    dim:  
-      chroma: '100100100000'
-    sus2: 
-      chroma: '101000010000'
-    sus4: 
-      chroma: '100001010000'
-    sus24: 
-      chroma: '101001010000'
-    Mb5:  
-      chroma: '100010100000'
-    ms5:  
-      chroma: '100100001000'
+majmin:
+  maj:  
+    title: Major
+    chroma: '100010010000'
+  min:  
+    title: Minor
+    chroma: '100100010000'
+mod:
+  aug:  
+    title: Augmented
+    chroma: '100010001000'
+  dim:  
+    title: Diminished
+    chroma: '100100100000'
+sus:
+  sus2: 
+    title: Sus2
+    chroma: '101000010000'
+  sus4: 
+    title: Sus4
+    chroma: '100001010000'
+  sus24: 
+    title: Sus24
+    chroma: '101001010000'
+synthetic:
+  Mb5:  
+    title: Mb5
+    chroma: '100010100000'
+  ms5:
+    title: Minor augmented
+    chroma: '100100001000'
 ---
 
 ## Major and minor
 
 
-<chroma-profile  v-bind="$frontmatter.triads.maj" />
-
 A major triad can also be described by its intervals: the interval between the bottom and middle notes is a major third and the interval between the middle and top notes is a minor third.
 
 In Western classical music from 1600 to 1820 and in Western pop, folk and rock music, a major chord is usually played as a triad. Along with the minor triad, the major triad is one of the basic building blocks of tonal music in the Western common practice period and Western pop, folk and rock music. It is considered consonant, stable, or not requiring resolution. In Western music, a minor chord "sounds darker than a major chord", giving off a sense of sadness or somber feeling.
 
-
-<chroma-profile v-bind="$frontmatter.triads.min" />
+<chroma-collection :collection="$frontmatter.majmin" />
 
 A unique particularity of the minor chord is that this is the only chord of three notes in which the three notes have one harmonic – hearable and with a not too high row – in common (more or less exactly, depending on the tuning system used). This harmonic, common to the three notes, is situated 2 octaves above the high note of the chord. This is the sixth harmonic of the root of the chord, the fifth of the middle note, and the fourth of the high note:
 
@@ -51,7 +60,7 @@ Demonstration:
 
 ## Suspended chords
 
-A suspended chord (or sus chord) is a musical chord in which the (major or minor) third is omitted and replaced with a perfect fourth or, less commonly, a major second.[1] The lack of a minor or a major third in the chord creates an open sound, while the dissonance between the fourth and fifth or second and root creates tension. When using popular-music symbols, they are indicated by the symbols "sus4" and "sus2".
+A suspended chord (or sus chord) is a musical chord in which the (major or minor) third is omitted and replaced with a perfect fourth or, less commonly, a major second. The lack of a minor or a major third in the chord creates an open sound, while the dissonance between the fourth and fifth or second and root creates tension. When using popular-music symbols, they are indicated by the symbols "sus4" and "sus2".
 
 The term is borrowed from the contrapuntal technique of suspension, where a note from a previous chord is carried over to the next chord, and then resolved down to the third or tonic, suspending a note from the previous chord. However, in modern usage, the term concerns only the notes played at a given time; in a suspended chord, the added tone does not necessarily resolve and is not necessarily "prepared" (i.e., held over) from the prior chord. As such, in C–F–G, F would resolve to E (or E♭, in the case of C minor), but in rock and popular music, "the term is used to indicate only the harmonic structure, with no implications about what comes before or after," though preparation of the fourth occurs about half the time and traditional resolution of the fourth occurs usually. In modern jazz, a third can be added to the chord voicing, as long as it is above the fourth.
 
@@ -59,17 +68,12 @@ Each suspended chord has two inversions. Suspended second chords are inversions 
 
 Sevenths on suspended chords are "virtually always minor sevenths", while the 9sus4 chord is similar to an eleventh chord and may be notated as such. For example, C9sus4 (C–F–G–B♭–D) may be notated C11 (C–G–B♭–D–F). 
 
-<chroma-profile  v-bind="$frontmatter.triads.sus2" />
-
-<chroma-profile  v-bind="$frontmatter.triads.sus4" />
-
-<chroma-profile  v-bind="$frontmatter.triads.sus24" />
+<chroma-collection :collection="$frontmatter.sus" />
 
 ---
 
 ## Augmented and diminished
 
-<chroma-profile  v-bind="$frontmatter.triads.dim" />
 
 A diminished triad (also known as the minor flatted fifth) is a triad consisting of two minor thirds above the root. It is a minor triad with a lowered (flattened) fifth. When using chord symbols, it may be indicated by the symbols "dim", "o", "m♭5", or "MI(♭5)". However, in most popular-music chord books, the symbol "dim" and "o" represents a diminished seventh chord (a four-tone chord), which in some modern jazz books and music theory books is represented by the "dim7" or "o7" symbols. 
 
@@ -81,9 +85,7 @@ If the music is in a minor key, diminished triads can also be found on the raise
 
 The leading-tone diminished triad and supertonic diminished triad are usually found in first inversion (viio6 and iio6, respectively) since the spelling of the chord forms a diminished fifth with the bass. This differs from the fully diminished seventh chord, which commonly occurs in root position. In both cases, the bass resolves up and the upper voices move downwards in contrary motion.
 
-
-
-<chroma-profile  v-bind="$frontmatter.triads.aug" />
+<chroma-collection :collection="$frontmatter.mod" />
 
 The term augmented triad arises from an augmented triad being considered a major chord whose top note (fifth) is raised. When using popular-music symbols, it is indicated by the symbol "+" or "aug". For example, the augmented triad built on C, written as C+, has pitches C–E–G♯:
 
@@ -101,6 +103,4 @@ A synthetic chord is a made-up or non-traditional (synthetic) chord (collection 
 >
 > — Sitsky (1994)
 
-<chroma-profile v-bind="$frontmatter.triads.Mb5" />
-
-<chroma-profile  v-bind="$frontmatter.triads.ms5" />
+<chroma-collection :collection="$frontmatter.synthetic" />

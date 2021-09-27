@@ -21,6 +21,6 @@ main {
   @apply flex flex-col;
 }
 .content-container {
-  @apply flex flex-col items-stretch bg-light-500 dark:(bg-dark-500);
+  @apply flex flex-col items-stretch bg-light-800 dark:(bg-dark-800);
 }
 </style>

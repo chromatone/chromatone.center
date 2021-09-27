@@ -63,7 +63,7 @@ svg.select-none.max-w-12em.my-4.mx-auto(
       )
     text(
       y="0.3"
-      font-size="2.5px"
+      font-size="2px"
       font-weight="bold"
       fill="white"
       ) {{ pitch === false ? '' : typeof pitch == 'string' ? pitch : notes[actualPitch]?.name }}{{ chord.aliases[0] }}
@@ -71,13 +71,13 @@ svg.select-none.max-w-12em.my-4.mx-auto(
       y="3"
       font-size="2px"
       font-weight="normal"
-      fill="white"
+      :fill="pitchColor(globalScale.tonic, 3)"
       ) {{ type }}
 </template>
 
 <script setup>
 const props = defineProps({
-  pitch: { type: Number, default: 0 },
+  pitch: { type: Number, default: null },
   chroma: { type: String, default: '1001000100101' },
   type: { type: String, default: '' },
   tonic: { type: Number, default: 0 },
@@ -88,12 +88,19 @@ import { chromaColorMix } from "@use/colors.js";
 import { playChroma, chordType, scaleType, stopChroma, globalScale } from '@use/theory.js'
 const pressed = ref(false);
 
-const actualChroma = computed(() => {
-  let pitch = props.pitch || globalScale.tonic
-  return rotateArray(props.chroma.split(''), -pitch)
+
+
+const actualPitch = computed(() => {
+  if (props.pitch === 0 || props.pitch) {
+    return props.pitch
+  } else {
+    return globalScale.tonic
+  }
 })
 
-const actualPitch = computed(() => props.pitch || globalScale.tonic)
+const actualChroma = computed(() => {
+  return rotateArray(props.chroma.split(''), -actualPitch.value)
+})
 const chord = computed(() => chordType.get(props.chroma));
 const scale = computed(() => scaleType.get(props.chroma).name)
 

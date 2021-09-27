@@ -3,7 +3,6 @@ title: Consonance and dissonance
 subtitle: The harmonic relations of notes
 tags: sound
 date: 2021-08-22
-cover: theory/dissonance.svg
 ---
 
 

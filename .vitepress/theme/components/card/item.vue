@@ -29,12 +29,12 @@ const props = defineProps({
 
 <style  scoped>
 .crd {
-  @apply rounded-sm mx-2 md:mx-0 sm:mx-4 bg-light-200 dark:bg-dark-200
+  @apply rounded-sm mx-2 md:mx-0 sm:mx-4 bg-light-500 dark:bg-dark-500
   flex flex-wrap items-stretch 
   transition-all px-2  duration-200
   static;
   &:hover {
-    @apply bg-light-100 dark:bg-dark-100;
+    @apply bg-light-100 dark:bg-dark-400;
   }
   & .info {
     @apply px-2 py-4 my-auto;

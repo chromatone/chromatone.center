@@ -41,8 +41,11 @@ const bg = "url(/media/" + props.item.data?.cover + ")";
 
 <style scoped>
 .row {
-  @apply bg-light-200 dark:bg-dark-300 flex flex-col transition no-underline;
+  @apply bg-light-500 dark:bg-dark-500 flex flex-col transition no-underline;
   flex: 1 1 200px;
+  &:hover {
+    @apply bg-light-200 dark:bg-dark-400;
+  }
 }
 
 .header {

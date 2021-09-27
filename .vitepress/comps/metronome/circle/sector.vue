@@ -11,7 +11,7 @@ g
     :cx="stepCoord.x"
     :cy="stepCoord.y"
     :r="50"
-    :fill="active ? 'currentColor' : 'transparent'"
+    :fill="active ? 'currentColor' : muted ? 'transparent' : levelColor(step - 1, total, 0.5)"
     :stroke="hex"
   )
   text(
@@ -41,7 +41,6 @@ g
 import { levelColor } from "@use/colors.js"
 import { getCircleCoord } from 'chromatone-theory'
 import { colord } from 'colord'
-console.log('test')
 
 const props = defineProps({
   radius: {
@@ -59,6 +58,10 @@ const props = defineProps({
   active: {
     type: Boolean,
     default: false
+  },
+  muted: {
+    type: Boolean,
+    default: false,
   }
 });
 

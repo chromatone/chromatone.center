@@ -1,8 +1,9 @@
 <template lang="pug">
 main.home(aria-labelledby="main-title")
-  home-hero
-  content.content
-  home-tile-list(
+  .noise
+  home-hero.z-2
+  content.content.z-2
+  home-tile-list.z-2(
     v-if="frontmatter.list", 
     :rows="theme.pages?.[frontmatter.list]"
     )
@@ -15,6 +16,13 @@ const { theme, frontmatter } = useData()
 
 <style scoped >
 .home {
-  @apply pb-16 flex flex-col items-stretch bg-light-500 dark:(bg-dark-500);
+  @apply relative pb-16 flex flex-col items-stretch bg-light-500 dark:(bg-dark-500);
+}
+.noise {
+  @apply w-full h-full absolute pointer-events-none z-0;
+  background: linear-gradient(to top, hsla(0, 0%, 50%, 1), transparent),
+    url(/img/noise.svg);
+  opacity: 0.2;
+  filter: contrast(100%) grayscale(100%);
 }
 </style>

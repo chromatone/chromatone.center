@@ -10,6 +10,7 @@ g
       :total="steps.length"
       :active="!mutes[step] && step == current"
       :radius="radius"
+      :muted="mutes[step]"
       :opacity="mutes[step] ? 0.3 : 1"
       style="cursor:pointer"
       @click="mutes[step] = !mutes[step]"

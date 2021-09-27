@@ -8,7 +8,7 @@ tags: notation
 ## Medieval neumes c. 500–1400
 
 <audio class="mx-auto my-4" controls>
-<source src="/media/audio/Dies.Irae.mp3" type="audio/mpeg">
+<source src="/audio/Dies.Irae.mp3" type="audio/mpeg">
 </audio>
 
 ![](./Dies_irae_ms_fragm.jpg)

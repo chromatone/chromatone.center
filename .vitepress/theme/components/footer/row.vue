@@ -1,5 +1,6 @@
 <template lang="pug">
-footer
+footer.relative
+  .noise
   nav
     .flex.flex-col(
       v-for="(page,i) in theme.pages?.main", 
@@ -57,5 +58,13 @@ a {
   &.active {
     @apply font-bold text-$c-brand dark:text-$c-brand-light border-$c-brand;
   }
+}
+
+.noise {
+  @apply w-full h-full top-0 left-0 absolute pointer-events-none z-0;
+  background: linear-gradient(to bottom, hsla(0, 0%, 0%, 1), transparent),
+    url(/img/noise.svg);
+  opacity: 0.2;
+  filter: contrast(100%) grayscale(100%);
 }
 </style>

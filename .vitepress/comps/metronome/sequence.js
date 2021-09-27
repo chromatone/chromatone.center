@@ -4,10 +4,6 @@ import { reactive, ref, watchEffect, computed, onBeforeUnmount } from 'vue'
 
 export function useSequence(metre = { over: 4, under: 4 }, order = 0) {
   const panner = new Panner(order % 2 == 0 ? -0.5 : 0.5).toDestination()
-  // const synth = new PluckSynth({
-  //   volume: -2,
-  // }).connect(panner)
-
   const synth = new Sampler({
     urls: {
       A1: 'low.wav',

@@ -1,14 +1,5 @@
 import { tempo } from '@use/tempo.js'
-import {
-  Sequence,
-  Panner,
-  Draw,
-  PluckSynth,
-  Sampler,
-  context,
-  start,
-  Frequency,
-} from 'tone'
+import { Sequence, Panner, Draw, Sampler, context, start } from 'tone'
 import { reactive, ref, watchEffect, computed, onBeforeUnmount } from 'vue'
 
 export function useSequence(metre = { over: 4, under: 4 }, order = 0) {

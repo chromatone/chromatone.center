@@ -1,6 +1,6 @@
 <template lang="pug">
 .flex.flex-col.items-center.w-full.mt-8
-  .flex.flex-col.items-center
+  .flex.flex-col.items-center.h-10rem
     .flex.flex-wrap(
       v-for="(loop,i) in loops", 
       :key="loop"
@@ -15,30 +15,26 @@
         la-plus
       .button(@click="loops.splice(i, 1)")
         la-times
-    .flex(v-if="loops.length < 3")
-      .info
-        input.bg-transparent.w-3rem(
-          inputmode="numeric"
-          pattern="[0-9]*"
-          type="number", 
-          v-model="add.over"
-          )
-        span.ml-2 /
-        input.bg-transparent.w-3rem(
-          inputmode="numeric"
-          pattern="[0-9]*"
-          type="number", 
-          v-model="add.under"
-          )
-      .button(@click="loops.push({ ...add })")
+    .flex(v-if="loops.length < 2")
+      .button(@click="add.over -= 1")
+        la-minus
+      .button(@click="add.over += 1")
         la-plus
+      .info.font-bold {{ add.over }} / {{ add.under }}
+
+      .button(@click="add.under -= 1")
+        la-minus
+      .button(@click="add.under += 1")
+        la-plus
+      .button(@click="loops.push({ ...add })")
+        la-check
 
   svg#metronome.w-full.my-8.max-h-90vh(
     version="1.1",
     baseProfile="full",
     viewBox="0 0 1000 1000",
     xmlns="http://www.w3.org/2000/svg",
-    style="user-select:none"
+    style="user-select:none;touch-action:none"
     )
     g.math(
       font-size="36"
@@ -169,8 +165,9 @@
       :key="loop"
       :order="i"
       :loop="loop"
-      :radius="400 - i * 125"
+      :radius="380 - i * 175"
       @del="loops.splice(i, 1)"
+      @over="loop.over += $event"
     )
 </template>
 

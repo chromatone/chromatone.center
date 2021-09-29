@@ -1,14 +1,17 @@
 <template lang="pug">
-g.center
-  g.bpm(
-    style="touch-action:none"
+g.center(
+  style="touch-action:none"
+)
+  g.bpm.cursor-pointer(
+
+    v-drag="drag"
   )
     circle.transition-all.duration-100.ease-out(
       stroke-width="2"
       :stroke="tempo.blink ? tempo.color : 'transparent'"
       cx="0"
       cy="0"
-      r="50"
+      :r="center.radius / 2"
       :fill="fill"
     )
     text.bpm(
@@ -23,7 +26,7 @@ g.center
     font-size="30"
   )
     g.arc.plus(
-      @click="tempo.bpm = Math.round(tempo.bpm + 1)"
+      @click="setTempo(1)"
     )
       svg-ring(
         :cx="0"
@@ -31,15 +34,15 @@ g.center
         :from="45"
         :to="135"
         :fill="fill"
-        :radius="100"
-        :thickness="50"
+        :radius="center.radius"
+        :thickness="center.thick"
       )
       la-plus(
-        x="55"
+        x="65"
         y="-15"
       )
     g.arc.minus(
-      @click="tempo.bpm = Math.round(tempo.bpm - 1)"
+      @click="setTempo(-1)"
     )
       svg-ring(
         :cx="0"
@@ -47,15 +50,15 @@ g.center
         :from="225"
         :to="315"
         :fill="fill"
-        :radius="100"
-        :thickness="50"
+        :radius="center.radius"
+        :thickness="center.thick"
       )
       la-minus(
-        x="-92"
+        x="-102"
         y="-15"
       )
     g.arc.multiply(
-      @click="tempo.bpm = Math.round(tempo.bpm * 2)"
+      @click="setTempo(tempo.bpm)"
     )
       svg-ring(
         :cx="0"
@@ -63,15 +66,15 @@ g.center
         :from="315"
         :to="45"
         :fill="fill"
-        :radius="100"
-        :thickness="50"
+        :radius="center.radius"
+        :thickness="center.thick"
       )
       la-times(
         x="-18"
-        y="-94"
+        y="-104"
       )
     g.arc.multiply(
-      @click="tempo.bpm = Math.round(tempo.bpm / 2)"
+      @click="setTempo(-tempo.bpm / 2)"
     )
       svg-ring(
         :cx="0"
@@ -79,12 +82,12 @@ g.center
         :from="135"
         :to="225"
         :fill="fill"
-        :radius="100"
-        :thickness="50"
+        :radius="center.radius"
+        :thickness="center.thick"
       )
       la-slash(
         x="-18"
-        y="55"
+        y="65"
       )
 </template>
 
@@ -92,6 +95,31 @@ g.center
 import { tempo } from '@use/tempo'
 import { isDark } from '@theme/composables/state.js'
 const fill = computed(() => isDark.value ? '#333' : '#eee');
+
+const center = reactive({
+  radius: 120,
+  thick: 60,
+});
+
+function drag(event) {
+  tempo.bpm = clampNum(tempo.bpm, event.delta[0] / 4 - event.delta[1] / 4)
+}
+
+function setTempo(diff) {
+  tempo.bpm = Math.round(clampNum(tempo.bpm, diff))
+}
+
+function clampNum(main, delta, min = 10, max = 500) {
+  let num = Number(main) + Number(delta)
+  if (num < min) {
+    num = min
+  }
+  if (num > max) {
+    num = max
+  }
+  return num
+}
+
 </script>
 
 <style scoped>

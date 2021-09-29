@@ -3,6 +3,23 @@ g(
   text-anchor="middle",
   style="user-select:none;transition:all 300ms ease"
 )
+  g.opacity-20
+    circle(
+      cx="500"
+      cy="500"
+      :r="radius + 52"
+      stroke-width="2"
+      fill="transparent"
+      stroke="currentColor"
+    )
+    circle(
+      cx="500"
+      cy="500"
+      :r="radius - 52"
+      stroke-width="2"
+      fill="transparent"
+      stroke="currentColor"
+    )
   g(
     :opacity="loop.mute ? '0.25' : '1'"
   )
@@ -18,22 +35,22 @@ g(
       style="cursor:pointer"
       @click="mutes[step] = !mutes[step]"
     )
-  g.info(
-    :transform="`translate(500,${order * 125})`"
+  svg-ring(
+    :cx="500"
+    :cy="500"
+    :from="340"
+    :to="20"
+    :fill="isDark ? '#333' : '#eee'"
+    :radius="495 - order * 175"
+    :thickness="60"
   )
-    rect(
-      :fill="isDark ? '#333' : '#eee'"
-      x="-60"
-      :y="38"
-      rx="10"
-      width="120"
-      height="60"
-      style="mix-blend-mode:difference;"
-    )
-    g(
+  g.info(
+    :transform="`translate(500,${order * 175 - 30})`"
+  )
+    g.mute(
       @click="loop.mute = !loop.mute"
       style="cursor:pointer;color:currentColor"
-      transform="translate(0, 125)"
+      transform="translate(75, 78)"
       font-size="32px"
     )
       circle(
@@ -54,13 +71,43 @@ g(
         :x="-20"
         :y="-20"
       )
+    line(
+      x1="0"
+      x2="0"
+      y1="90"
+      y2="50"
+      stroke="currentColor"
+      stroke-width="2"
+    )
+    g.over.cursor-pointer(
+      @click="$emit('over', -1)"
+      transform="translate(-130,70)"
+    )
+      circle(
+        cx="14"
+        cy="14"
+        r="20"
+        :fill="isDark ? '#222' : '#fff'"
+      )
+      la-minus
+    g.over.cursor-pointer(
+      @click="$emit('over', 1)"
+      transform="translate(-90,60)"
+    )
+      circle(
+        cx="14"
+        cy="14"
+        r="20"
+        :fill="isDark ? '#222' : '#fff'"
+      )
+      la-plus
     text(
       fill="currentColor"
       font-family="Commissioner, sans-serif"
       font-size="40px"
       text-anchor="end",
       :x="-10",
-      :y="80",
+      :y="82",
       ) {{ loop.over }} 
     text(
       fill="currentColor"
@@ -68,7 +115,7 @@ g(
       font-size="40px"
       text-anchor="start",
       :x="10",
-      :y="80",
+      :y="82",
       ) {{ loop.under }}
   g.arrows.pointer-events-none(
     style="mix-blend-mode:difference;"
@@ -100,7 +147,7 @@ import { useSequence } from './sequence.js'
 import { isDark } from '@theme/composables/state.js'
 
 
-defineEmits('del')
+defineEmits(['del', 'over'])
 
 const props = defineProps({
   radius: {

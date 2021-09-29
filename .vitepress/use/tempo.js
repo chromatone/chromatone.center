@@ -79,7 +79,7 @@ export function useTempo() {
 
 watch(
   () => tempo.bpm,
-  (bpm) => Transport.bpm.rampTo(bpm, '4n'),
+  (bpm) => Transport.bpm.rampTo(bpm, '8n'),
 )
 
 watch(

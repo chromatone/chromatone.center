@@ -33,13 +33,98 @@
       .button(@click="loops.push({ ...add })")
         la-plus
 
-  svg#metronome.w-full.p-4(
+  svg#metronome.w-full.my-8.max-h-90vh(
     version="1.1",
     baseProfile="full",
     viewBox="0 0 1000 1000",
     xmlns="http://www.w3.org/2000/svg",
-    style="touch-action:none"
+    style="user-select:none"
     )
+    g.math(
+      font-size="36"
+      transform="translate(30,80)"
+    )
+      circle.transition-all.duration-100(
+        cx="-10"
+        cy="-10"
+        r="4"
+        :fill="tempo.blink ? 'currentColor' : 'transparent'"
+      )
+      text(
+        fill="currentColor"
+        ) {{ tempo.bpm.toFixed(2) }} BPM
+      text(
+        fill="currentColor"
+        y="40"
+        ) {{ tempo.hz }} Hz
+      text(
+        y="80"
+        :fill="tempo.color"
+      ) {{ tempo.note }}
+
+    g.tap.cursor-pointer(
+      @mousedown.stop.prevent="tap()"
+      @touchstart.stop.prevent="tap()"
+      transform="translate(820,880)"
+      )
+      rect(
+        width="140"
+        height="80"
+        rx="10"
+        :stroke="tempo.tap.last ? 'currentColor' : '#33333333'"
+        fill="transparent"
+        stroke-width="4"
+      )
+      text(
+        fill="currentColor"
+        font-size="36"
+        y="55"
+        x="65"
+        text-anchor="middle"
+      ) TAP
+
+    g.transport(
+      transform="translate(800)"
+    )
+      g.play.cursor-pointer(
+      transform="translate(0,50)"
+      @click="tempo.playing = !tempo.playing"
+      font-size="50"
+
+      )
+        rect(
+          stroke="currentColor"
+          fill="transparent"
+          stroke-width="4"
+          x="0"
+          y="0"
+          rx="10"
+          width="60"
+          height="60"
+        )
+        la-play(
+          v-if="!tempo.playing"
+        )
+        la-pause(
+          v-else
+        )
+      g.stop.cursor-pointer(
+        transform="translate(80,50)"
+        @click="tempo.stopped = true"
+        font-size="50"
+
+        )
+          rect(
+            stroke="currentColor"
+            fill="transparent"
+            stroke-width="4"
+            x="0"
+            y="0"
+            rx="10"
+            width="60"
+            height="60"
+          )
+          la-stop
     metronome-circle-loop(
       v-for="(loop,i) in loops",
       :key="loop"
@@ -51,8 +136,7 @@
 </template>
 
 <script setup>
-import { reactive, computed, ref } from 'vue'
-import { useStorage } from '@vueuse/core'
+import { tempo, tap } from '@use/tempo.js'
 
 
 const add = reactive({

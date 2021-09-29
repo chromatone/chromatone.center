@@ -12,8 +12,6 @@
 </template>
 
 <script setup>
-import { ref, watch } from 'vue'
-
 defineEmits('set')
 
 import { useTuner } from '@use/tuner.js'

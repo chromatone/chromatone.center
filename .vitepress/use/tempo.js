@@ -27,7 +27,43 @@ export const tempo = reactive({
   }),
   digit: computed(() => (Frequency(tempo.hz).toMidi() + 12 * 10 + 3) % 12),
   color: computed(() => pitchColor(tempo.digit)),
+  tap: {
+    last: 0,
+    diff: 0,
+    timeout: 2000,
+    times: [],
+  },
 })
+
+export function tap() {
+  var time = performance.now()
+  if (tempo.tap.last) {
+    tempo.tap.diff = time - tempo.tap.last
+    tempo.tap.times.push(tempo.tap.diff)
+    refresh()
+  }
+  tempo.tap.last = time
+  beginTimeout()
+}
+
+function refresh() {
+  if (tempo.tap.times.length > 2) {
+    var average =
+      tempo.tap.times.reduce((result, t) => (result += t)) /
+      tempo.tap.times.length
+    var bpm = (1 / (average / 1000)) * 60
+    tempo.bpm = bpm
+  }
+}
+
+let timer = null
+function beginTimeout() {
+  clearTimeout(timer)
+  timer = setTimeout(function () {
+    tempo.tap.times = [tempo.tap.diff]
+    tempo.tap.last = null
+  }, tempo.tap.timeout)
+}
 
 export function useTempo() {
   onMounted(() => {

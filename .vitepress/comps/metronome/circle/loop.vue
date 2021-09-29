@@ -1,5 +1,8 @@
 <template lang="pug">
-g
+g(
+  text-anchor="middle",
+  style="user-select:none;transition:all 300ms ease"
+)
   g(
     :opacity="loop.mute ? '0.25' : '1'"
   )
@@ -15,59 +18,78 @@ g
       style="cursor:pointer"
       @click="mutes[step] = !mutes[step]"
     )
-  g(
-    @click="loop.mute = false"
-    v-if="loop.mute"
-    style="cursor:pointer"
+  g.info(
+    :transform="`translate(500,${order * 125})`"
   )
-    circle(
-      :r="24"
-      :cx="500"
-      :cy="144 + 125 * order"
-      fill="var(--c-bg)"
+    rect(
+      :fill="isDark ? '#333' : '#eee'"
+      x="-60"
+      :y="38"
+      rx="10"
+      width="120"
+      height="60"
+      style="mix-blend-mode:difference;"
     )
-    la-volume-off(
-      style="color:currentColor"
+    g(
+      @click="loop.mute = !loop.mute"
+      style="cursor:pointer;color:currentColor"
+      transform="translate(0, 125)"
+      font-size="32px"
+    )
+      circle(
+        :r="24"
+        :cx="0"
+        :cy="0"
+        fill="var(--c-bg)"
+      )
+      la-volume-off(
+        v-if="!loop.mute"
+        style=""
+        :x="-20"
+        :y="-20"
+      )
+      la-volume-up(
+        v-else
+        style=""
+        :x="-20"
+        :y="-20"
+      )
+    text(
+      fill="currentColor"
+      font-family="Commissioner, sans-serif"
       font-size="40px"
-      :x="477"
-      :y="120 + 125 * order"
-    )
-  text(
-    style="user-select:none;transition:all 300ms ease"
-    fill="currentColor"
-    font-family="Commissioner, sans-serif"
-    font-size="40px"
-    text-anchor="end",
-    dominant-baseline="middle"
-    :x="490",
-    :y="100 + 125 * order",
-    ) {{ loop.over }} 
-  text(
-    style="user-select:none;transition:all 300ms ease"
-    fill="currentColor"
-    font-family="Commissioner, sans-serif"
-    font-size="40px"
-    text-anchor="left",
-    dominant-baseline="middle"
-    :x="510",
-    :y="100 + 125 * order",
-    ) {{ loop.under }}
-
-  line(
+      text-anchor="end",
+      :x="-10",
+      :y="80",
+      ) {{ loop.over }} 
+    text(
+      fill="currentColor"
+      font-family="Commissioner, sans-serif"
+      font-size="40px"
+      text-anchor="start",
+      :x="10",
+      :y="80",
+      ) {{ loop.under }}
+  g.arrows.pointer-events-none(
     style="mix-blend-mode:difference;"
-    :x1="500"
-    :y1="500"
-    stroke-width="4"
-    stroke="currentColor"
-    stroke-linecap="cound"
-    :x2="lineProgress.x"
-    :y2="lineProgress.y"
   )
-  circle(
-    :cx="500"
-    :cy="500"
-    fill="currentColor"
-    :r="5"
+    line(
+      :x1="500"
+      :y1="500"
+      stroke-width="4"
+      stroke="currentColor"
+      stroke-linecap="cound"
+      :x2="lineProgress.x"
+      :y2="lineProgress.y"
+    )
+    circle(
+      :cx="500"
+      :cy="500"
+      fill="currentColor"
+      :r="5"
+    )
+  metronome-circle-center(
+    transform="translate(500,500)"
   )
 </template>
   
@@ -75,6 +97,8 @@ g
 import { computed } from "vue";
 import { getCircleCoord } from 'chromatone-theory'
 import { useSequence } from '../sequence.js'
+import { isDark } from '@theme/composables/state.js'
+
 
 defineEmits('del')
 
@@ -97,7 +121,6 @@ const props = defineProps({
   }
 });
 
-
 const { progress, current, steps, mutes } = useSequence(props.loop, props.order)
 
 const lineProgress = computed(() => {
@@ -117,7 +140,7 @@ const lineProgress = computed(() => {
 
 .active,
 .measure.active {
-  @apply bg-current transition-all duration-400;
+  @apply bg-current transition-all duration-200;
 }
 
 .measure {

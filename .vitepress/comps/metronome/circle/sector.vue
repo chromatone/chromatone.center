@@ -75,8 +75,8 @@ const stepCoord = computed(() => {
 
 const lineCoord = computed(() => {
   return [
-    getCircleCoord(props.step, props.total, props.radius + 50, 1000),
-    getCircleCoord(props.step, props.total, props.radius - 50, 1000)
+    getCircleCoord(props.step - 1, props.total, props.radius + 50, 1000),
+    getCircleCoord(props.step - 1, props.total, props.radius - 50, 1000)
   ]
 
 });

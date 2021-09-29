@@ -3,14 +3,18 @@ import { Sequence, Panner, Draw, Sampler, context, start } from 'tone'
 import { reactive, ref, watchEffect, computed, onBeforeUnmount } from 'vue'
 
 export function useSequence(metre = { over: 4, under: 4 }, order = 0) {
-  const panner = new Panner(order % 2 == 0 ? -0.5 : 0.5).toDestination()
+  const panner = new Panner().toDestination()
   const synth = new Sampler({
     urls: {
-      A1: 'low.wav',
-      A2: 'high.wav',
+      A1: 'SeikoSQ50/low.wav',
+      B1: 'SeikoSQ50/high.wav',
+      A2: 'synth/low.wav',
+      B2: 'synth/high.wav',
+      A3: 'block/high.wav',
+      B3: 'block/low.wav',
     },
     volume: -2,
-    baseUrl: '/audio/metronome/SeikoSQ50/',
+    baseUrl: '/audio/metronome/',
   }).connect(panner)
 
   const current = ref(0)
@@ -43,6 +47,8 @@ export function useSequence(metre = { over: 4, under: 4 }, order = 0) {
 
   const progress = computed(() => {
     if (tempo.ticks) {
+      let pan = Math.sin(sequence.progress * Math.PI * 2)
+      panner.pan.linearRampTo(pan * 0.7, 0.1)
       return sequence.progress
     } else {
       return 0
@@ -56,9 +62,9 @@ export function useSequence(metre = { over: 4, under: 4 }, order = 0) {
     if (metre.mute) return
     if (mutes[step]) return
     if (step == 1) {
-      synth.triggerAttackRelease('A1', '16n', time)
+      synth.triggerAttackRelease(`A${order + 1}`, '16n', time)
     } else {
-      synth.triggerAttackRelease('A2', '16n', time)
+      synth.triggerAttackRelease(`B${order + 1}`, '16n', time)
     }
   }
 

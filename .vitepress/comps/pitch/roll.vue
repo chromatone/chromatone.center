@@ -1,14 +1,14 @@
 <template lang="pug">
 .flex.flex-col.-my-8
-  start-button(@click="start()", v-if="!state.running") Start rolling 
-  .flex.p-8.items-center(v-if="state.note")
-    .flex-1.text-center.font-bold.text-4xl.transition-all.duration-200(:style="{ color: state.note.color }") {{ state.note?.name }}{{ state.note?.octave }} 
+  start-button(@click="start()", v-if="!tuner.running") Start rolling 
+  .flex.p-8.items-center(v-if="tuner.note")
+    .flex-1.text-center.font-bold.text-4xl.transition-all.duration-200(:style="{ color: tuner.note.color }") {{ tuner.note?.name }}{{ tuner.note?.octave }} 
     .btn(@click="draw.running = !draw.running")
       la-play(v-if="!draw.running")
       la-pause(v-else)
     .btn(@click="clear()")
       la-times
-    .flex-1.text-center.font-bold  {{ state.bpm.toFixed(1) }} BPM
+    .flex-1.text-center.font-bold  {{ tuner.bpm.toFixed(1) }} BPM
   canvas(ref="roll" )
 </template>
 
@@ -19,7 +19,7 @@ import { useTuner } from '@use/tuner.js'
 
 const octaves = [0, 1, 2, 3, 4, 5, 6, 7, 8]
 
-const { init, state, chain } = useTuner();
+const { init, tuner, chain } = useTuner();
 
 const draw = reactive({
   running: true,
@@ -42,7 +42,7 @@ onMounted(() => {
   roll.value.height = window.innerHeight / 1.5
 })
 
-watch(() => state?.frame, frame => {
+watch(() => tuner?.frame, frame => {
   if (!draw.running) return
   let x = (frame * draw.speed) % roll.value.width
 
@@ -57,14 +57,14 @@ watch(() => state?.frame, frame => {
   ctx.clearRect(x, 0, draw.speed, roll.value.height)
 
   ctx.beginPath()
-  ctx.fillStyle = state.note.color
+  ctx.fillStyle = tuner.note.color
   ctx.fillRect(x + draw.runnerAhead, 0, draw.runnerWidth, roll.value.height)
 
   //notes
-  if (!state.note.silent) {
-    const y = roll.value.height - (state.note.value - draw.minPlotNote) / (draw.maxPlotNote - draw.minPlotNote) * roll.value.height
+  if (!tuner.note.silent) {
+    const y = roll.value.height - (tuner.note.value - draw.minPlotNote) / (draw.maxPlotNote - draw.minPlotNote) * roll.value.height
     ctx.arc(x - 5, y, 5, 0, 4 * Math.PI)
-    ctx.fillStyle = state.note.color
+    ctx.fillStyle = tuner.note.color
     ctx.fill()
   }
 
@@ -83,9 +83,9 @@ watch(() => state?.frame, frame => {
 
   ctx.globalAlpha = 0.25
   //beat
-  if (state.beat > draw.prevBeat) {
-    draw.prevBeat = state.beat
-    ctx.fillStyle = state.note.color
+  if (tuner.beat > draw.prevBeat) {
+    draw.prevBeat = tuner.beat
+    ctx.fillStyle = tuner.note.color
     ctx.fillRect(x - 5, 0, 1, roll.value.height)
   }
   // if (frame % 5) {

@@ -1,5 +1,5 @@
 <template lang="pug">
-.flex.justify-center(v-if="!state.initiated" )
+.flex.justify-center(v-if="!tuner.initiated" )
   start-button(@click="init()") Start
 .flex.flex-col(v-else)
   svg.max-h-3xl.w-full(
@@ -12,8 +12,8 @@
       style="transition: all 300ms ease-in-out;transform-box: fill-box; transform-origin: center center;"
       :cx="50",
       :cy="50",
-      :r="100 * state.rms + 10",
-      :fill="state.note.silent ? '#888' : state?.note.color",
+      :r="100 * tuner.rms + 10",
+      :fill="tuner.note.silent ? '#888' : tuner?.note.color",
     )
     text(
       style="user-select:none;transition:all 300ms ease"
@@ -24,10 +24,10 @@
       dominant-baseline="middle"
       :x="50",
       :y="50",
-      ) {{ state.note.name }} 
+      ) {{ tuner.note.name }} 
     g.around(
       style="cursor:pointer"
-      v-for="(amount,i) in rotateArray(state.chroma,-3)", 
+      v-for="(amount,i) in rotateArray(tuner.chroma, -3)", 
       :key="i",
     )
       circle.note(
@@ -52,7 +52,7 @@
 <script setup>
 import { pitchColor, rotateArray, scales, notes, getCircleCoord } from 'chromatone-theory'
 import { useTuner } from '@use/tuner.js'
-const { init, state, chain } = useTuner();
+const { init, tuner, chain } = useTuner();
 </script>
 
 <style scoped>

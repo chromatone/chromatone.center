@@ -22,7 +22,7 @@ const settings = {
   semitone: 69,
 }
 
-const state = reactive({
+export const tuner = reactive({
   initiated: false,
   stream: null,
   middleA: settings.middleA,
@@ -45,6 +45,9 @@ const state = reactive({
   beat: 0,
   bpm: 0,
   confidence: 0,
+  listenBeat: false,
+  prevBeat: 0,
+  blink: false,
   chroma: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   spec: [],
   rms: 0,
@@ -56,24 +59,38 @@ export function useTuner() {
   initGetUserMedia()
   return {
     init,
-    state,
+    tuner,
     chain,
   }
 }
 
 function init() {
-  state.initiated = true
+  tuner.initiated = true
   chain.audioContext = new window.AudioContext()
   chain.analyser = chain.audioContext.createAnalyser()
   chain.scriptProcessor = chain.audioContext.createScriptProcessor(
-    state.bufferSize,
+    tuner.bufferSize,
     1,
     1,
   )
   chain.beatProcessor = chain.audioContext.createScriptProcessor(
-    state.tempoBufferSize,
+    tuner.tempoBufferSize,
     1,
     1,
+  )
+
+  watch(
+    () => tuner.frame,
+    () => {
+      if (!tuner.listen) return
+      if (tuner.beat > tuner.prevBeat) {
+        tuner.prevBeat = tuner.beat
+        tuner.blink = true
+        setTimeout(() => {
+          tuner.blink = false
+        }, 60)
+      }
+    },
   )
 
   //MEYDA
@@ -83,29 +100,29 @@ function init() {
     bufferSize: 4096,
     featureExtractors: ['chroma', 'amplitudeSpectrum', 'rms'],
     callback: (features) => {
-      state.rms = features.rms
-      state.chroma = features.chroma
-      state.spec = features.amplitudeSpectrum
+      tuner.rms = features.rms
+      tuner.chroma = features.chroma
+      tuner.spec = features.amplitudeSpectrum
     },
   })
   chain.meyda.start()
   // END of MEYDA
 
-  state.frequencyData = new Uint8Array(chain.analyser.frequencyBinCount)
+  tuner.frequencyData = new Uint8Array(chain.analyser.frequencyBinCount)
 
   Aubio().then(function (aubio) {
     chain.pitchDetector = new aubio.Pitch(
       'default',
-      state.bufferSize,
+      tuner.bufferSize,
       1,
       chain.audioContext.sampleRate,
     )
     chain.tempoAnalyzer = new aubio.Tempo(
-      state.tempoBufferSize * 4,
-      state.tempoBufferSize,
+      tuner.tempoBufferSize * 4,
+      tuner.tempoBufferSize,
       chain.audioContext.sampleRate,
     )
-    state.running = true
+    tuner.running = true
     start()
   })
 }
@@ -114,7 +131,7 @@ function start() {
   navigator.mediaDevices
     .getUserMedia({ audio: true })
     .then(function (stream) {
-      state.stream = stream
+      tuner.stream = stream
       const mediaStream = chain.audioContext
         .createMediaStreamSource(stream)
         .connect(chain.analyser)
@@ -126,19 +143,19 @@ function start() {
       chain.beatProcessor.addEventListener('audioprocess', (e) => {
         const tempo = chain.tempoAnalyzer.do(e.inputBuffer.getChannelData(0))
         if (tempo) {
-          state.beat++
-          state.confidence = chain.tempoAnalyzer.getConfidence()
-          state.bpm = chain.tempoAnalyzer.getBpm()
+          tuner.beat++
+          tuner.confidence = chain.tempoAnalyzer.getConfidence()
+          tuner.bpm = chain.tempoAnalyzer.getBpm()
         }
       })
       chain.scriptProcessor.addEventListener('audioprocess', function (event) {
         const frequency = chain.pitchDetector.do(
           event.inputBuffer.getChannelData(0),
         )
-        state.frame++
+        tuner.frame++
         if (frequency) {
           const note = getNote(frequency)
-          state.note = {
+          tuner.note = {
             name: noteStrings[note % 12],
             value: note,
             cents: getCents(frequency, note),
@@ -148,7 +165,7 @@ function start() {
             silent: false,
           }
         } else {
-          state.note.silent = true
+          tuner.note.silent = true
         }
       })
     })
@@ -158,12 +175,12 @@ function start() {
 }
 
 function getNote(frequency) {
-  const note = 12 * (Math.log(frequency / state.middleA) / Math.log(2))
-  return Math.round(note) + state.semitone
+  const note = 12 * (Math.log(frequency / tuner.middleA) / Math.log(2))
+  return Math.round(note) + tuner.semitone
 }
 
 function getStandardFrequency(note) {
-  return state.middleA * Math.pow(2, (note - state.semitone) / 12)
+  return tuner.middleA * Math.pow(2, (note - tuner.semitone) / 12)
 }
 
 function getCents(frequency, note) {

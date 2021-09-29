@@ -1,8 +1,8 @@
 <template lang="pug">
 .flex.flex-col.-my-8.items-center
-  start-button(@click="start()", v-if="!state.running") Start tuner
+  start-button(@click="start()", v-if="!tuner.running") Start tuner
   svg#tuner.rounded-xl.w-full.max-h-3xl.-z3(
-  v-if="state.running"
+  v-if="tuner.running"
   version="1.1",
   baseProfile="full",
   viewBox="0 0 400 300",
@@ -17,7 +17,7 @@
     )
     line(
       style="transition:all 200ms ease; "
-      v-for="(bar,i) in state.spec.slice(0, 100)",
+      v-for="(bar,i) in tuner.spec.slice(0, 100)",
       :key="i",
       stroke="white"
       stroke-linecap="round"
@@ -53,7 +53,7 @@
         y="10"
       ) {{ (n - 6) * 10 }} 
     g.meter(
-      :style="{ transform: `translateX(${5 * state.note?.cents}px)` }"
+      :style="{ transform: `translateX(${5 * tuner.note?.cents}px)` }"
     )
       line(
         stroke="black"
@@ -73,7 +73,7 @@
         dominant-baseline="middle"
         x="200"
         y="94"
-      ) {{ state.note?.cents > 0 ? '+' : '' }}{{ state.note?.cents }} 
+      ) {{ tuner.note?.cents > 0 ? '+' : '' }}{{ tuner.note?.cents }} 
     text(
       style="user-select:none;transition:all 300ms ease; "
       fill="black"
@@ -84,7 +84,7 @@
       dominant-baseline="middle"
       x="200"
       y="140"
-    ) {{ state.note?.name }}{{ state.note?.octave }}
+    ) {{ tuner.note?.name }}{{ tuner.note?.octave }}
     text(
       style="user-select:none;transition:all 300ms ease; "
       fill="black"
@@ -95,7 +95,7 @@
       dominant-baseline="middle"
       x="200"
       y="180"
-    ) {{ state.note?.frequency.toFixed(2) }} Hz
+    ) {{ tuner.note?.frequency.toFixed(2) }} Hz
 </template>
 
 <script setup>
@@ -104,16 +104,16 @@ import { pitchColor } from 'chromatone-theory'
 import { useTuner } from '@use/tuner.js'
 
 
-const { init, state, chain } = useTuner();
+const { init, tuner, chain } = useTuner();
 
 const bars = computed(() => {
-  return state.frequencyData || []
+  return tuner.frequencyData || []
 })
 
 const background = computed(() => {
-  const note = getRawNote(state.note?.frequency)
+  const note = getRawNote(tuner.note?.frequency)
   if (!note) return '#333'
-  const octave = state.note?.octave
+  const octave = tuner.note?.octave
   const color = pitchColor(note, octave)
   return color
 })
@@ -123,7 +123,7 @@ function start() {
 }
 
 function getRawNote(frequency) {
-  return 12 * (Math.log(frequency / state.middleA) / Math.log(2)) % 12
+  return 12 * (Math.log(frequency / tuner.middleA) / Math.log(2)) % 12
 }
 </script>
 

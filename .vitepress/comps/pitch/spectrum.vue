@@ -1,5 +1,5 @@
 <template lang="pug">
-.flex.justify-center(v-if="!state.initiated" )
+.flex.justify-center(v-if="!tuner.initiated" )
   start-button(@click="initiate()") Start
 .flex.flex-col(v-else)
   svg#pitch-spectrum.rounded-xl.w-full.max-h-3xl.-z3(
@@ -24,7 +24,7 @@
       :points="audio.points"
       stroke-width="4"
       fill="none"
-      :stroke="state?.note?.color"
+      :stroke="tuner?.note?.color"
     )
 </template>
   
@@ -35,7 +35,7 @@ import { useRafFn } from '@vueuse/core'
 import { useTuner } from '@use/tuner.js'
 import { freqPitch, pitchColor } from 'chromatone-theory'
 
-const { init, state } = useTuner()
+const { init, tuner } = useTuner()
 
 const wave = new Waveform(512)
 const fft = new FFT({ size: 4096, smoothing: 0 })

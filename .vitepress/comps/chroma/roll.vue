@@ -17,7 +17,7 @@
 import { useRafFn } from '@vueuse/core'
 import { rotateArray } from 'chromatone-theory'
 import { useTuner } from '@use/tuner.js'
-const { init, state, chain } = useTuner();
+const { init, tuner, chain } = useTuner();
 
 let canvas, ctx, tempCanvas, tempCtx
 const roll = reactive({
@@ -26,7 +26,7 @@ const roll = reactive({
   height: 508,
   speed: useStorage('chroma-roll-speed', 1),
   direction: useStorage('chroma-roll-direction', 1),
-  notes: computed(() => rotateArray(state.chroma, -3))
+  notes: computed(() => rotateArray(tuner.chroma, -3))
 })
 
 onMounted(() => {
@@ -107,8 +107,7 @@ function drawHorizontal() {
 function colorIt(pitch = 0, value = 1, opacity = 1) {
   return `hsla(${pitch * 30}, ${value * 100}%, ${value * 60}%, ${opacity})`
 }
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                </script>
+</script>
 
 <style scoped>
 </style>

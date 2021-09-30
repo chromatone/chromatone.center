@@ -161,8 +161,8 @@
       :loop="loop"
       :radius="380 - i * 175"
       @del="loops.splice(i, 1)"
-      @over="loop.over += $event"
-      @under="loop.under += $event"
+      @over="changeLoop(i, 'over', $event)"
+      @under="changeLoop(i, 'under', $event)"
       @sound="loop.sound = $event"
     )
     g.question.cursor-pointer(
@@ -209,6 +209,13 @@ const loops = useStorage('tempo-loops', [
     volume: 0.5,
     sound: 'B'
   }]);
+
+function changeLoop(l, n, diff) {
+  let num = loops.value[l][n] + diff
+  if (num >= 1 && num <= 32) {
+    loops.value[l][n] = num
+  }
+}
 
 const overlay = ref(false);
 </script>

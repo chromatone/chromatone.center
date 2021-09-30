@@ -5,7 +5,7 @@ g
     :to="(step) / total * 360"
     :fill="active ? hex : 'transparent'"
     :radius="radius + 50"
-    opacity="0.5"
+    opacity="0.6"
   )
   circle.transition-fill.duration-100(
     :cx="stepCoord.x"

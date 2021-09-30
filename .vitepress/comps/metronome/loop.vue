@@ -20,7 +20,7 @@ g(
       fill="transparent"
       stroke="currentColor"
     )
-  g(
+  g.steps(
     :opacity="volume / 2 + 0.5"
   )
     metronome-sector(
@@ -44,7 +44,30 @@ g(
     :radius="495 - order * 175"
     :thickness="60"
   )
-  g.mute(
+  g.sound(
+    :transform="`translate(${order * 175 + 30}, 500)`"
+  )
+    g.sound.cursor-pointer(
+      v-for="(pos,sound) in sounds"
+      :key="pos"
+      @click="$emit('sound', sound)"
+      :class="{ active: sound == loop.sound }"
+      )
+      circle(
+        :cx="pos[0]"
+        :cy="pos[1]"
+        stroke-width="3"
+        r="25"
+        :fill="isDark ? 'hsla(0,0%,30%,0.4)' : 'hsla(0,0%,100%,0.8)'"
+        )
+      text(
+        fill="currentColor"
+        stroke-width=0
+        :x="pos[0]"
+        :y="pos[1] + 8"
+        font-size="25"
+      ) {{ sound }}
+  g.vol(
     style="cursor:pointer;color:currentColor"
     :transform="`translate(${970 - order * 182}, 550)`"
     font-size="32px"
@@ -78,18 +101,42 @@ g(
         :x="-20"
         :y="-20"
       )
+  g.pan(
+    style="cursor:pointer;color:currentColor"
+    :transform="`translate(500,${970 - order * 182})`"
+    font-size="32px"
+    @dblclick="volume > 0 ? volume = 0 : volume = 0.75"
+    )
+    line(
+      x1="-50"
+      x2="50"
+      :stroke="isDark ? '#333' : '#fefefe'"
+      stroke-width="12"
+      stroke-linecap="round"
+    )
+    g.dragger(
+      :transform="`translate(${panning * 50},0)`"
+      v-drag="dragPan"
+    )
+      circle(
+        :r="24"
+        :cx="0"
+        :cy="0"
+        fill="var(--c-bg)"
+      )
+      mdi-pan-horizontal(
+        :x="-20"
+        :y="-20"
+      )
+
   g.info(
     :transform="`translate(500,${order * 175 - 30})`"
   )
-
-    line(
-      x1="0"
-      x2="0"
-      y1="90"
-      y2="50"
-      stroke="currentColor"
-      stroke-width="2"
-    )
+    text(
+      fill="currentColor"
+      font-size="45"
+      y="78"
+    ) :
     g.under.cursor-pointer(
       @click="$emit('under', -1)"
       transform="translate(110,72)"
@@ -181,7 +228,7 @@ import { isDark } from '@theme/composables/state.js'
 import { clampNum } from '@use/theory'
 
 
-defineEmits(['del', 'over', 'under'])
+defineEmits(['del', 'over', 'under', 'sound'])
 
 const props = defineProps({
   radius: {
@@ -196,12 +243,21 @@ const props = defineProps({
     type: Object,
     default: {
       over: 4,
-      under: 4
+      under: 4,
+      sound: 'A'
     }
   }
 });
 
-const { progress, current, steps, mutes, volume } = useSequence(props.loop, props.order)
+const sounds = {
+  A: [26, -120],
+  B: [10, -60],
+  C: [2, 0],
+  D: [10, 60],
+  E: [26, 120]
+}
+
+const { progress, current, steps, mutes, volume, panning } = useSequence(props.loop, props.order)
 
 const lineProgress = computed(() => {
   if (progress.value > 0) {
@@ -215,11 +271,20 @@ function dragVol(drag) {
   volume.value = clampNum(volume.value, -drag.delta[1] / 100, 0, 1)
 }
 
+function dragPan(drag) {
+  panning.value = clampNum(panning.value, drag.delta[0] / 100, -1, 1)
+}
+
 </script>
   
 <style scoped>
 .info {
   @apply p-2 rounded-full m-1 border-1 border-current text-2xl;
+}
+
+.active {
+  stroke: currentColor;
+  font-weight: bold;
 }
 
 .active,

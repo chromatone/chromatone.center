@@ -27,8 +27,8 @@
       text(
         y="80"
         :fill="tempo.color"
+        font-weight="bold"
       ) {{ tempo.note }}
-
     g.listen(
       transform="translate(20,880)"
       font-size="45"
@@ -69,10 +69,10 @@
           text-anchor="middle"
         ) {{ tuner.bpm.toFixed(1) }}
     g.tap.cursor-pointer(
-
-      transform="translate(820,880)"
+      transform="translate(760,880)"
       )
       g.finger(
+        transform="translate(140,0)"
         @mousedown.stop.prevent="tap()"
         @touchstart.stop.prevent="tap()"
       )
@@ -97,7 +97,7 @@
         v-if="tempo.tap.bpm"
       )
         rect(
-          x="80"
+          x="0"
           width="120"
           height="80"
           rx="10"
@@ -109,7 +109,7 @@
           fill="currentColor"
           font-size="36"
           y="52"
-          x="140"
+          x="60"
           text-anchor="middle"
         ) {{ tempo.tap.bpm.toFixed(1) }}
     g.transport(
@@ -163,7 +163,30 @@
       @del="loops.splice(i, 1)"
       @over="loop.over += $event"
       @under="loop.under += $event"
+      @sound="loop.sound = $event"
     )
+    g.question.cursor-pointer(
+      transform="translate(20,780)"
+      @click="overlay = true"
+    )
+      rect(
+        width="70"
+        height="80"
+        stroke="currentColor"
+        fill="transparent"
+        rx="10"
+        stroke-width="4"
+        )
+      g.icon(
+        font-size="45"
+        fill="currentColor"
+        transform="translate(6,12)"
+      )
+        healthicons-question
+    metronome-overlay.cursor-pointer(
+      v-if="overlay"
+      @click="overlay = false"
+      )
 </template>
 
 <script setup>
@@ -172,24 +195,21 @@ import { useTuner } from '@use/tuner.js'
 
 const { init, tuner } = useTuner();
 
-
-const add = reactive({
-  over: 4,
-  under: 4,
-  volume: 1
-})
-
 const loops = useStorage('tempo-loops', [
   {
     over: 8,
     under: 8,
     volume: 1,
+    sound: 'A'
   },
   {
     over: 3,
     under: 3,
-    volume: 0.5
+    volume: 0.5,
+    sound: 'B'
   }]);
+
+const overlay = ref(false);
 </script>
 
 <style scoped>

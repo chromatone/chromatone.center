@@ -2,17 +2,24 @@ import { tempo } from '@use/tempo.js'
 import { Sequence, PanVol, gainToDb, Draw, Sampler, context, start } from 'tone'
 import { reactive, ref, watchEffect, computed, onBeforeUnmount } from 'vue'
 
-export function useSequence(metre = { over: 4, under: 4 }, order = 0) {
+export function useSequence(
+  metre = { over: 4, under: 4, sound: 'A' },
+  order = 0,
+) {
   let pan = order % 2 == 1 ? -0.5 : 0.5
   const panner = new PanVol(pan, 0).toDestination()
   const synth = new Sampler({
     urls: {
-      A1: 'block/low.wav',
-      B1: 'block/high.wav',
-      A2: 'synth/low.wav',
+      A1: 'tongue/low.wav',
+      A2: 'tongue/high.wav',
+      B1: 'synth/low.wav',
       B2: 'synth/high.wav',
-      A3: 'block/high.wav',
-      B3: 'block/low.wav',
+      C1: 'seiko/high.wav',
+      C2: 'seiko/low.wav',
+      D1: '/logic/high.wav',
+      D2: '/logic/low.wav',
+      E1: '/ping/high.wav',
+      E2: '/ping/low.wav',
     },
     volume: -2,
     baseUrl: '/audio/metronome/',
@@ -20,8 +27,9 @@ export function useSequence(metre = { over: 4, under: 4 }, order = 0) {
 
   const current = ref(0)
   const steps = reactive([1, 2, 3, 4])
-  const mutes = reactive({})
-  const volume = ref(1)
+  const mutes = useStorage(`metro-mutes-${order}`, {})
+  const volume = useStorage(`metro-vol-${order}`, 1)
+  const panning = useStorage(`metro-pan-${order}`, pan)
   const sequence = new Sequence(
     (time, step) => {
       Draw.schedule(() => {
@@ -48,13 +56,15 @@ export function useSequence(metre = { over: 4, under: 4 }, order = 0) {
   })
 
   watch(volume, (vol) => {
-    panner.volume.targetRampTo(gainToDb(vol))
+    panner.volume.targetRampTo(gainToDb(vol), 1)
+  })
+
+  watch(panning, (p) => {
+    panner.pan.targetRampTo(p, 1)
   })
 
   const progress = computed(() => {
     if (tempo.ticks) {
-      // let pan = Math.sin(sequence.progress * Math.PI * 2)
-      // panner.pan.linearRampTo(pan * 0.7, 0.1)
       return sequence.progress
     } else {
       return 0
@@ -65,12 +75,11 @@ export function useSequence(metre = { over: 4, under: 4 }, order = 0) {
     if (context.state == 'suspended') {
       start()
     }
-    if (metre.mute) return
-    if (mutes[step]) return
+    if (mutes.value[step]) return
     if (step == 1) {
-      synth.triggerAttackRelease(`A${order + 1}`, '16n', time)
+      synth.triggerAttackRelease(`${metre.sound}1`, '16n', time)
     } else {
-      synth.triggerAttackRelease(`B${order + 1}`, '16n', time)
+      synth.triggerAttackRelease(`${metre.sound}2`, '16n', time)
     }
   }
 
@@ -86,5 +95,6 @@ export function useSequence(metre = { over: 4, under: 4 }, order = 0) {
     steps,
     mutes,
     volume,
+    panning,
   }
 }

@@ -139,3 +139,14 @@ export function stopNote(name) {
   midiRelease(name)
   synthRelease(name)
 }
+
+export function clampNum(main, delta, min = 0, max = 100) {
+  let num = Number(main) + Number(delta)
+  if (num < min) {
+    num = min
+  }
+  if (num > max) {
+    num = max
+  }
+  return num
+}

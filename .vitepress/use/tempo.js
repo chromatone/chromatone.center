@@ -32,6 +32,7 @@ export const tempo = reactive({
     diff: 0,
     timeout: 2000,
     times: [],
+    bpm: null,
   },
 })
 
@@ -52,7 +53,7 @@ function refresh() {
       tempo.tap.times.reduce((result, t) => (result += t)) /
       tempo.tap.times.length
     var bpm = (1 / (average / 1000)) * 60
-    tempo.bpm = bpm
+    tempo.tap.bpm = bpm
   }
 }
 

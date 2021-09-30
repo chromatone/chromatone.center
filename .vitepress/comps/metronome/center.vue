@@ -124,10 +124,10 @@ function clampNum(main, delta, min = 10, max = 500) {
 
 <style scoped>
 .arc {
-  transition: opacity 100ms ease-out;
-  opacity: 0.5;
+  transition: all 200ms ease-out;
+  filter: brightness(100%);
 }
 .arc:hover {
-  opacity: 100;
+  filter: brightness(350%);
 }
 </style>

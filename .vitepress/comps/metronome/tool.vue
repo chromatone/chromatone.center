@@ -1,34 +1,5 @@
 <template lang="pug">
 .flex.flex-col.items-center.w-full.mt-8
-  .flex.flex-col.items-center.h-10rem
-    .flex.flex-wrap(
-      v-for="(loop,i) in loops", 
-      :key="loop"
-    ) 
-      .button(@click="loop.mute = !loop.mute")
-        la-volume-off(v-if="loop.mute")
-        la-volume-up(v-else)
-      .button(@click="loop.over--")
-        la-minus
-      .info {{ loop.over }} / {{ loop.under }}
-      .button(@click="loop.over++")
-        la-plus
-      .button(@click="loops.splice(i, 1)")
-        la-times
-    .flex(v-if="loops.length < 2")
-      .button(@click="add.over -= 1")
-        la-minus
-      .button(@click="add.over += 1")
-        la-plus
-      .info.font-bold {{ add.over }} / {{ add.under }}
-
-      .button(@click="add.under -= 1")
-        la-minus
-      .button(@click="add.under += 1")
-        la-plus
-      .button(@click="loops.push({ ...add })")
-        la-check
-
   svg#metronome.w-full.my-8.max-h-90vh(
     version="1.1",
     baseProfile="full",
@@ -98,26 +69,49 @@
           text-anchor="middle"
         ) {{ tuner.bpm.toFixed(1) }}
     g.tap.cursor-pointer(
-      @mousedown.stop.prevent="tap()"
-      @touchstart.stop.prevent="tap()"
+
       transform="translate(820,880)"
       )
-      rect(
-        width="140"
-        height="80"
-        rx="10"
-        :stroke="tempo.tap.last ? 'currentColor' : '#33333333'"
-        fill="transparent"
-        stroke-width="4"
+      g.finger(
+        @mousedown.stop.prevent="tap()"
+        @touchstart.stop.prevent="tap()"
       )
-      text(
-        fill="currentColor"
-        font-size="36"
-        y="55"
-        x="65"
-        text-anchor="middle"
-      ) TAP
-
+        rect(
+          width="70"
+          height="80"
+          rx="10"
+          :stroke="tempo.tap.last ? 'currentColor' : '#33333333'"
+          fill="transparent"
+          stroke-width="4"
+        )
+        fluent-tap-double-20-regular(
+          font-size="55"
+          transform="translate(2,8)"
+          fill="currentColor"
+          y="0"
+          x="0"
+          text-anchor="middle"
+        )
+      g.bpm.transition-all.duration-200.ease-out(
+        @click="tempo.bpm = tempo.tap.bpm"
+        v-if="tempo.tap.bpm"
+      )
+        rect(
+          x="80"
+          width="120"
+          height="80"
+          rx="10"
+          stroke-width="4"
+          fill="transparent"
+          :stroke="tempo.tap.last ? 'currentColor' : '#33333333'"
+        )
+        text(
+          fill="currentColor"
+          font-size="36"
+          y="52"
+          x="140"
+          text-anchor="middle"
+        ) {{ tempo.tap.bpm.toFixed(1) }}
     g.transport(
       transform="translate(800)"
     )
@@ -162,12 +156,13 @@
           la-stop
     metronome-loop(
       v-for="(loop,i) in loops",
-      :key="loop"
+      :key="loop.under"
       :order="i"
       :loop="loop"
       :radius="380 - i * 175"
       @del="loops.splice(i, 1)"
       @over="loop.over += $event"
+      @under="loop.under += $event"
     )
 </template>
 
@@ -179,21 +174,21 @@ const { init, tuner } = useTuner();
 
 
 const add = reactive({
-  mute: false,
   over: 4,
   under: 4,
+  volume: 1
 })
 
 const loops = useStorage('tempo-loops', [
   {
-    mute: false,
     over: 8,
-    under: 8
+    under: 8,
+    volume: 1,
   },
   {
-    mute: false,
-    over: 4,
-    under: 4
+    over: 3,
+    under: 3,
+    volume: 0.5
   }]);
 </script>
 

@@ -1,13 +1,14 @@
 import { tempo } from '@use/tempo.js'
-import { Sequence, Panner, Draw, Sampler, context, start } from 'tone'
+import { Sequence, PanVol, gainToDb, Draw, Sampler, context, start } from 'tone'
 import { reactive, ref, watchEffect, computed, onBeforeUnmount } from 'vue'
 
 export function useSequence(metre = { over: 4, under: 4 }, order = 0) {
-  const panner = new Panner(order % 2 == 1 ? -0.5 : 0.5).toDestination()
+  let pan = order % 2 == 1 ? -0.5 : 0.5
+  const panner = new PanVol(pan, 0).toDestination()
   const synth = new Sampler({
     urls: {
-      A1: 'SeikoSQ50/low.wav',
-      B1: 'SeikoSQ50/high.wav',
+      A1: 'block/low.wav',
+      B1: 'block/high.wav',
       A2: 'synth/low.wav',
       B2: 'synth/high.wav',
       A3: 'block/high.wav',
@@ -20,6 +21,7 @@ export function useSequence(metre = { over: 4, under: 4 }, order = 0) {
   const current = ref(0)
   const steps = reactive([1, 2, 3, 4])
   const mutes = reactive({})
+  const volume = ref(1)
   const sequence = new Sequence(
     (time, step) => {
       Draw.schedule(() => {
@@ -43,6 +45,10 @@ export function useSequence(metre = { over: 4, under: 4 }, order = 0) {
     if (tempo.stopped) {
       current.value = 0
     }
+  })
+
+  watch(volume, (vol) => {
+    panner.volume.targetRampTo(gainToDb(vol))
   })
 
   const progress = computed(() => {
@@ -79,5 +85,6 @@ export function useSequence(metre = { over: 4, under: 4 }, order = 0) {
     current,
     steps,
     mutes,
+    volume,
   }
 }

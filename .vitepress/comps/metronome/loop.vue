@@ -21,7 +21,7 @@ g(
       stroke="currentColor"
     )
   g(
-    :opacity="loop.mute ? '0.25' : '1'"
+    :opacity="volume / 2 + 0.5"
   )
     metronome-sector(
       v-for="step in steps"
@@ -44,14 +44,21 @@ g(
     :radius="495 - order * 175"
     :thickness="60"
   )
-  g.info(
-    :transform="`translate(500,${order * 175 - 30})`"
-  )
-    g.mute(
-      @click="loop.mute = !loop.mute"
-      style="cursor:pointer;color:currentColor"
-      transform="translate(75, 78)"
-      font-size="32px"
+  g.mute(
+    style="cursor:pointer;color:currentColor"
+    :transform="`translate(${970 - order * 182}, 550)`"
+    font-size="32px"
+    @dblclick="volume > 0 ? volume = 0 : volume = 0.75"
+    )
+    line(
+      y2="-100"
+      :stroke="isDark ? '#333' : '#fefefe'"
+      stroke-width="12"
+      stroke-linecap="round"
+    )
+    g.dragger(
+      :transform="`translate(0,${-volume * 100})`"
+      v-drag="dragVol"
     )
       circle(
         :r="24"
@@ -60,7 +67,7 @@ g(
         fill="var(--c-bg)"
       )
       la-volume-off(
-        v-if="!loop.mute"
+        v-if="volume == 0"
         style=""
         :x="-20"
         :y="-20"
@@ -71,6 +78,10 @@ g(
         :x="-20"
         :y="-20"
       )
+  g.info(
+    :transform="`translate(500,${order * 175 - 30})`"
+  )
+
     line(
       x1="0"
       x2="0"
@@ -79,9 +90,31 @@ g(
       stroke="currentColor"
       stroke-width="2"
     )
+    g.under.cursor-pointer(
+      @click="$emit('under', -1)"
+      transform="translate(110,72)"
+    )
+      circle(
+        cx="14"
+        cy="14"
+        r="20"
+        :fill="isDark ? '#222' : '#fff'"
+      )
+      la-minus
+    g.over.cursor-pointer(
+      @click="$emit('under', 1)"
+      transform="translate(60,60)"
+    )
+      circle(
+        cx="14"
+        cy="14"
+        r="20"
+        :fill="isDark ? '#222' : '#fff'"
+      )
+      la-plus
     g.over.cursor-pointer(
       @click="$emit('over', -1)"
-      transform="translate(-130,70)"
+      transform="translate(-140,72)"
     )
       circle(
         cx="14"
@@ -145,9 +178,10 @@ import { computed } from "vue";
 import { getCircleCoord } from 'chromatone-theory'
 import { useSequence } from './sequence.js'
 import { isDark } from '@theme/composables/state.js'
+import { clampNum } from '@use/theory'
 
 
-defineEmits(['del', 'over'])
+defineEmits(['del', 'over', 'under'])
 
 const props = defineProps({
   radius: {
@@ -161,14 +195,13 @@ const props = defineProps({
   loop: {
     type: Object,
     default: {
-      mute: false,
       over: 4,
       under: 4
     }
   }
 });
 
-const { progress, current, steps, mutes } = useSequence(props.loop, props.order)
+const { progress, current, steps, mutes, volume } = useSequence(props.loop, props.order)
 
 const lineProgress = computed(() => {
   if (progress.value > 0) {
@@ -177,6 +210,10 @@ const lineProgress = computed(() => {
     return { x: 500, y: 100 }
   }
 });
+
+function dragVol(drag) {
+  volume.value = clampNum(volume.value, -drag.delta[1] / 100, 0, 1)
+}
 
 </script>
   

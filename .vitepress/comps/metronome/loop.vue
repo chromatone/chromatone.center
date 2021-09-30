@@ -105,7 +105,7 @@ g(
     style="cursor:pointer;color:currentColor"
     :transform="`translate(500,${970 - order * 182})`"
     font-size="32px"
-    @dblclick="volume > 0 ? volume = 0 : volume = 0.75"
+    @dblclick="panning != 0 ? panning = 0 : order == 0 ? panning = 0.5 : panning = -0.5"
     )
     line(
       x1="-50"

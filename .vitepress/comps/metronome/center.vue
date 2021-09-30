@@ -7,7 +7,7 @@ g.center(
     v-drag="drag"
   )
     circle.transition-all.duration-100.ease-out(
-      stroke-width="2"
+      stroke-width="4"
       :stroke="tempo.blink ? tempo.color : 'transparent'"
       cx="0"
       cy="0"

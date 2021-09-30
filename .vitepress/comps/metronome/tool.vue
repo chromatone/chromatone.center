@@ -1,5 +1,5 @@
 <template lang="pug">
-.flex.flex-col.items-center.w-full.mt-8
+.flex.flex-col.items-center.w-full
   svg#metronome.w-full.my-8.max-h-90vh(
     version="1.1",
     baseProfile="full",
@@ -11,7 +11,7 @@
       font-size="36"
       transform="translate(30,80)"
     )
-      circle.transition-all.duration-100(
+      circle.transition-all.duration-100.ease-out(
         cx="-10"
         cy="-10"
         r="4"
@@ -190,9 +190,10 @@
 </template>
 
 <script setup>
-import { tempo, tap } from '@use/tempo.js'
+import { useTempo, tap } from '@use/tempo.js'
 import { useTuner } from '@use/tuner.js'
 
+const tempo = useTempo()
 const { init, tuner } = useTuner();
 
 const loops = useStorage('tempo-loops', [

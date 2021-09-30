@@ -75,7 +75,7 @@ g(
     )
     line(
       y2="-100"
-      :stroke="isDark ? '#333' : '#fefefe'"
+      :stroke="isDark ? '#555' : '#fefefe'"
       stroke-width="12"
       stroke-linecap="round"
     )
@@ -110,7 +110,7 @@ g(
     line(
       x1="-50"
       x2="50"
-      :stroke="isDark ? '#333' : '#fefefe'"
+      :stroke="isDark ? '#555' : '#fefefe'"
       stroke-width="12"
       stroke-linecap="round"
     )
@@ -122,7 +122,7 @@ g(
         :r="24"
         :cx="0"
         :cy="0"
-        fill="var(--c-bg)"
+        :fill="isDark ? '#222' : '#f9f9f9'"
       )
       mdi-pan-horizontal(
         :x="-20"

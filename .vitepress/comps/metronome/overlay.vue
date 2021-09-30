@@ -38,13 +38,14 @@ g.overlay
     text(transform="matrix(1 0 0 1 24.2225 699.7968)", fill="#EA68A7", ) CHOOSE LOOP SOUND
     text(transform="matrix(1 0 0 1 780 627.4999)", fill="#8ECB84", ) LOOP VOLUME
     text(transform="matrix(1 0 0 1 472.961 505)", fill="#E21C41", ) BPM
+    text(transform="matrix(1 0 0 1 360 320)", fill="#E21C41", ) Drag the BPM to change it
     text(transform="matrix(1 0 0 1 400 365)", fill="#FCBB69", ) MULTIPLY BPM BY 2
     text(transform="matrix(1 0 0 1 405 652.0281)", fill="#7AC143", ) DIVIDE BPM BY 2
     text(transform="matrix(1 0 0 1 633.1732 506.5871)", fill="#60CCF2", ) BPM +1
     text(transform="matrix(1 0 0 1 280.9967 506.587)", fill="#0A92CF", ) BPM -1
     text(transform="matrix(1 0 0 1 516.9559 142.0775)", fill="#B75527", ) BOTTOM NUMBER
     text(transform="matrix(1 0 0 1 710 32.25)", fill="#30ABE2", ) PLAY/STOP CONTROLS
-    text(transform="matrix(1 0 0 1 520 710)", fill="#333", ) Click any sector to switch it on or off
+    text(transform="matrix(1 0 0 1 420 710)", fill="orange", ) Click any sector to switch it on or off
 </template>
 
 <script setup>

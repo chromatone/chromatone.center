@@ -18,7 +18,7 @@
         @click="map.hiddenTracks[t] = !map.hiddenTracks[t]"
         :class="{ active: !map.hiddenTracks[t] }"
         ) {{ track.channel }}: {{ track.name }} {{ track.instrument.family }}
-  svg(
+  svg#visual(
     version="1.1",
     baseProfile="full",
     :viewBox="`0 0 ${map.width} ${map.height}`",
@@ -33,7 +33,8 @@
         :width="note.duration"
         height="1"
         :fill="pitchColor((note.midi + 3) % 12)"
-        )    
+        )  
+  svg-save(svg="visual")  
 </template>
 
 <script setup>

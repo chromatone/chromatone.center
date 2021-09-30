@@ -105,7 +105,7 @@ function drawHorizontal() {
 }
 
 function colorIt(pitch = 0, value = 1, opacity = 1) {
-  return `hsla(${pitch * 30}, ${value * 100}%, ${value * 60}%, ${opacity})`
+  return `hsla(${pitch * 30}, ${value * 100}%, ${value * 80}%, ${opacity})`
 }
 </script>
 

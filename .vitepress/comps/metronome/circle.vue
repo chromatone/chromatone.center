@@ -154,7 +154,7 @@
             height="60"
           )
           la-stop
-    metronome-loop(
+    metronome-circle-loop(
       v-for="(loop,i) in loops",
       :key="loop.under"
       :order="i"
@@ -183,7 +183,7 @@
         transform="translate(6,12)"
       )
         healthicons-question
-    metronome-overlay.cursor-pointer(
+    metronome-circle-overlay.cursor-pointer(
       v-if="overlay"
       @click="overlay = false"
       )

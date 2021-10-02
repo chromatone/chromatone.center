@@ -15,5 +15,3 @@ https://en.wikipedia.org/wiki/Tresillo_(rhythm)
 https://en.wikipedia.org/wiki/Isorhythm
 
 https://en.wikipedia.org/wiki/Syncopation
-
-<youtube-embed video="GH2k8GccrqI" />

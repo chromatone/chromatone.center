@@ -23,7 +23,7 @@ g(
   g.steps(
     :opacity="volume / 2 + 0.5"
   )
-    metronome-sector(
+    metronome-circle-sector(
       v-for="step in steps"
       :key="step"
       :step="step"
@@ -215,7 +215,7 @@ g(
       fill="currentColor"
       :r="5"
     )
-  metronome-center(
+  metronome-circle-center(
     transform="translate(500,500)"
   )
 </template>
@@ -223,7 +223,7 @@ g(
 <script setup>
 import { computed } from "vue";
 import { getCircleCoord } from 'chromatone-theory'
-import { useSequence } from './sequence.js'
+import { useSequence } from '../sequence.js'
 import { isDark } from '@theme/composables/state.js'
 import { clampNum } from '@use/theory'
 

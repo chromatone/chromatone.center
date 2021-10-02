@@ -34,3 +34,5 @@ The notion of melodic expectation has prompted the existence of a corpus of stud
 Leonard Meyer's **Emotion and Meaning in Music** is the classic text in music expectation. Meyer's starting point is the belief that the experience of music (as a listener) is derived from one's emotions and feelings about the music, which themselves are a function of relationships within the music itself. Meyer writes that listeners bring with them a vast body of musical experiences that, as one listens to a piece, conditions one's response to that piece as it unfolds. Meyer argued that music's evocative power derives from its capacity to generate, suspend, prolongate, or violate these expectations. 
 
 https://en.wikipedia.org/wiki/Generative_theory_of_tonal_music
+
+https://en.wikipedia.org/wiki/Ornament_(music)#Turn

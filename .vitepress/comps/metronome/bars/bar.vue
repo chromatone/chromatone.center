@@ -7,7 +7,7 @@ g.bar
 </template>
 
 <script setup>
-import { useSequence } from './sequence.js'
+import { useSequence } from '../sequence.js'
 
 </script>
 

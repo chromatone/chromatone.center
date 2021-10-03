@@ -26,7 +26,7 @@ export function useSequence(
   }).connect(panner)
 
   const current = ref(0)
-  const steps = reactive([1, 2, 3, 4])
+  const steps = reactive([[1], [2], [3], [4]])
   const mutes = useStorage(`metro-mutes-${order}`, {})
   const volume = useStorage(`metro-vol-${order}`, 1)
   const panning = useStorage(`metro-pan-${order}`, pan)
@@ -41,25 +41,36 @@ export function useSequence(
     metre.under + 'n',
   ).start(0)
 
-  watchEffect(() => {
-    sequence.stop().dispose()
-    sequence = new Sequence(
-      (time, step) => {
-        Draw.schedule(() => {
-          current.value = step
-        }, time)
-        beatClick(step, time)
-      },
-      steps,
-      metre.under + 'n',
-    ).start(0)
-  })
+  watch(
+    () => metre.under,
+    () => {
+      sequence.stop().dispose()
+      sequence = new Sequence(
+        (time, step) => {
+          Draw.schedule(() => {
+            current.value = step
+          }, time)
+          beatClick(step, time)
+        },
+        steps,
+        metre.under + 'n',
+      ).start(0)
+    },
+  )
+
+  watch(
+    () => metre.over,
+    () => {
+      steps.length = 0
+      for (let i = 1; i <= metre.over; i++) {
+        steps.push([i])
+      }
+      sequence.events = steps
+    },
+  )
 
   watchEffect(() => {
-    steps.length = 0
-    for (let i = 1; i <= metre.over; i++) {
-      steps.push(i)
-    }
+    console.log(steps)
     sequence.events = steps
   })
 
@@ -89,6 +100,7 @@ export function useSequence(
     if (context.state == 'suspended') {
       start()
     }
+    console.log(step)
     if (mutes.value[step]) return
     if (step == 1) {
       synth.triggerAttackRelease(`${metre.sound}1`, '16n', time)

@@ -15,24 +15,23 @@ g(
   )
     metronome-bars-step(
       v-for="(step,s) in steps"
-      :key="s"
+      :key="step"
       :active="!mutes[step] && step == current"
       @click="mutes[step] = !mutes[step]"
       :opacity="mutes[step] ? 0.1 : 1"
       :step="step"
-      :mutes="mutes"
       :proportion="proportion"
       :total="steps.length"
-      :transform="`translate(${proportion * (step - 1) * 1000},0)`"
+      :transform="`translate(${proportion * s * 1000},0)`"
     )
     g.arrows.pointer-events-none(
       style="mix-blend-mode:difference;"
     )
       line(
         :x1="progress * 1000 * proportion * loop.over"
-        stroke-width="4"
+        stroke-width="8"
         stroke="currentColor"
-        stroke-linecap="cound"
+        stroke-linecap="round"
         :x2="progress * 1000 * proportion * loop.over"
         :y2="180"
       )

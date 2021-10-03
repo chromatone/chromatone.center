@@ -24,16 +24,16 @@ g(
     :opacity="volume / 2 + 0.5"
   )
     metronome-circle-sector(
-      v-for="step in steps"
+      v-for="(step,s) in steps"
       :key="step"
-      :step="step"
+      :step="s + 1"
       :total="steps.length"
-      :active="!mutes[step] && step == current"
+      :active="!mutes[s + 1] && step == current"
       :radius="radius"
-      :muted="mutes[step]"
-      :opacity="mutes[step] ? 0.3 : 1"
+      :muted="mutes[s + 1]"
+      :opacity="mutes[s + 1] ? 0.3 : 1"
       style="cursor:pointer"
-      @click="mutes[step] = !mutes[step]"
+      @click="mutes[s + 1] = !mutes[s + 1]"
     )
   svg-ring(
     :cx="500"

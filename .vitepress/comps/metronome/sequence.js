@@ -89,7 +89,6 @@ export function useSequence(
     if (context.state == 'suspended') {
       start()
     }
-    console.log(step)
     if (mutes.value[step]) return
     if (step == 1) {
       synth.triggerAttackRelease(`${metre.sound}1`, '16n', time)

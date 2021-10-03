@@ -25,7 +25,7 @@ const props = defineProps({
     default: 1
   },
   step: {
-    type: Number,
+    type: [Number, Array],
     default: 1
   },
   total: {

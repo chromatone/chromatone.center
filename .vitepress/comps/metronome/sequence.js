@@ -30,7 +30,7 @@ export function useSequence(
   const mutes = useStorage(`metro-mutes-${order}`, {})
   const volume = useStorage(`metro-vol-${order}`, 1)
   const panning = useStorage(`metro-pan-${order}`, pan)
-  const sequence = new Sequence(
+  let sequence = new Sequence(
     (time, step) => {
       Draw.schedule(() => {
         current.value = step
@@ -40,6 +40,20 @@ export function useSequence(
     steps,
     metre.under + 'n',
   ).start(0)
+
+  watchEffect(() => {
+    sequence.stop().dispose()
+    sequence = new Sequence(
+      (time, step) => {
+        Draw.schedule(() => {
+          current.value = step
+        }, time)
+        beatClick(step, time)
+      },
+      steps,
+      metre.under + 'n',
+    ).start(0)
+  })
 
   watchEffect(() => {
     steps.length = 0
@@ -75,6 +89,7 @@ export function useSequence(
     if (context.state == 'suspended') {
       start()
     }
+    console.log(step)
     if (mutes.value[step]) return
     if (step == 1) {
       synth.triggerAttackRelease(`${metre.sound}1`, '16n', time)

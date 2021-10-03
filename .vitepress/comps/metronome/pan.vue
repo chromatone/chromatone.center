@@ -1,0 +1,56 @@
+<template lang="pug">
+g.pan(
+  style="cursor:pointer;color:currentColor"
+  font-size="32px"
+  @dblclick="pan != 0 ? $emit('update:pan', 0) : order == 0 ? $emit('pan', 0.5) : $emit('update:pan', -0.5)"
+  )
+  line(
+    x1="-50"
+    x2="50"
+    :stroke="isDark ? '#555' : '#fefefe'"
+    stroke-width="12"
+    stroke-linecap="round"
+  )
+  circle(
+    r="4"
+    fill="currentColor"
+  )
+  g.dragger.transition-all.duration-100.opacity-80(
+    :transform="`translate(${pan * 50},0)`"
+    v-drag="dragPan"
+  )
+    circle(
+      :r="24"
+      :cx="0"
+      :cy="0"
+      :fill="isDark ? '#222' : '#f9f9f9'"
+    )
+    mdi-pan-horizontal(
+      :x="-20"
+      :y="-20"
+    )
+</template>
+
+<script setup>
+import { isDark } from '@theme/composables/state.js'
+import { clampNum } from '@use/theory'
+const props = defineProps({
+  pan: {
+    type: Number,
+    default: 0.75
+  },
+  order: {
+    type: Number,
+    default: 0
+  }
+})
+const emit = defineEmits(['update:pan'])
+function dragPan(drag) {
+  let pan = clampNum(props.pan, drag.delta[0] / 100, -1, 1)
+  emit('update:pan', pan)
+}
+
+</script>
+
+<style scoped>
+</style>

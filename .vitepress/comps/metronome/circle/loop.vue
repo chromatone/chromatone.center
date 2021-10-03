@@ -101,33 +101,11 @@ g(
         :x="-20"
         :y="-20"
       )
-  g.pan(
-    style="cursor:pointer;color:currentColor"
+  metronome-pan(
     :transform="`translate(500,${970 - order * 182})`"
-    font-size="32px"
-    @dblclick="panning != 0 ? panning = 0 : order == 0 ? panning = 0.5 : panning = -0.5"
-    )
-    line(
-      x1="-50"
-      x2="50"
-      :stroke="isDark ? '#555' : '#fefefe'"
-      stroke-width="12"
-      stroke-linecap="round"
-    )
-    g.dragger(
-      :transform="`translate(${panning * 50},0)`"
-      v-drag="dragPan"
-    )
-      circle(
-        :r="24"
-        :cx="0"
-        :cy="0"
-        :fill="isDark ? '#222' : '#f9f9f9'"
-      )
-      mdi-pan-horizontal(
-        :x="-20"
-        :y="-20"
-      )
+    :order="order"
+    v-model:pan="panning"
+  )
 
   g.info(
     :transform="`translate(500,${order * 175 - 30})`"
@@ -221,7 +199,6 @@ g(
 </template>
   
 <script setup>
-import { computed } from "vue";
 import { getCircleCoord } from 'chromatone-theory'
 import { useSequence } from '../sequence.js'
 import { isDark } from '@theme/composables/state.js'

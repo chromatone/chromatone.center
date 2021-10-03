@@ -46,7 +46,12 @@ links:
   - url: http://musicnotation.org/systems/
     title: The Music notation project
     subtitle: Many people struggle to learn to read and play music, and many give up before they become proficient. Could a better notation system make reading, writing, and playing music more enjoyable and easier to learn? We think so.
-
+  - url: https://ianring.com/musictheory/scales/
+    title: The Exciting Universe Of Music Theory
+    subtitle: A complete study of all Scales in the existence by Ian Ring. "The place for all you music theory nerds to geek out. Bask in the warm bath of wisdom, and be envied by all your peers with your deep knowledge of musical lore. "
+  - url: http://allthescales.org/
+    title: AllTheScales.org
+    subtitle: Based on the Western system of notes (as exemplified by the piano keyboard), there are 1490 possible scales. 2 In other words, with the combined genius of medieval monks through Beethoven through Stravinsky and Coltrane, we've managed to explore roughly 1% of this musical terrain.
 ---
 
 <other-list :tools="$frontmatter.links" />

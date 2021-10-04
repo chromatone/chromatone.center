@@ -3,7 +3,7 @@ title: Rhythm bars
 subtitle: A linear metronome and polyrhythm exploration tool
 tags: beat
 date: 2021-10-01
-cover: apps/tempo.png
+cover: apps/metro-bars.png
 ---
 
 <client-only >

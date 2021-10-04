@@ -5,7 +5,7 @@ g.overlay
   )
     rect(opacity="0.85", :fill="isDark ? '#333' : '#f7f7f7'", stroke="none", stroke-miterlimit="10", width="1000", height="1000")
     rect(x="24.2", y="37.2", fill="none", rx="20", stroke="#31429B",  stroke-miterlimit="10", width="213.8", height="142.8")
-    rect(x="786", y="37.2", fill="none", rx="20", stroke="#30ABE2",  stroke-miterlimit="10", width="169.3", height="86.3")
+    rect(x="786", y="40", fill="none", rx="20", stroke="#30ABE2",  stroke-miterlimit="10", width="190", height="100")
     rect(x="330.4", y="11", fill="none", rx="20", stroke="#AAD037",  stroke-miterlimit="10", width="169.3", height="86.3")
     rect(x="501.2", y="11", fill="none", rx="20", stroke="#B75527",  stroke-miterlimit="10", width="169.3", height="86.3")
     rect(x="330", y="174", fill="none", rx="20", stroke="#AAD037",  stroke-miterlimit="10", width="169.3", height="86.3")
@@ -45,6 +45,9 @@ g.overlay
     text(transform="matrix(1 0 0 1 280.9967 506.587)", fill="#0A92CF", ) BPM -1
     text(transform="matrix(1 0 0 1 516.9559 142.0775)", fill="#B75527", ) BOTTOM NUMBER
     text(transform="matrix(1 0 0 1 710 32.25)", fill="#30ABE2", ) PLAY/STOP CONTROLS
+    text(transform="matrix(1 0 0 1 700 180)", fill="#30ABE2", font-size="20" )
+      tspan Press Spacebar to play/pause
+      tspan(x=0 dy=30) Press Enter to stop
     text(transform="matrix(1 0 0 1 420 710)", fill="orange", ) Click any sector to switch it on or off
 </template>
 

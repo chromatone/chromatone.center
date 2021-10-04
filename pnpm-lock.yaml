@@ -1,7 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@iconify/json': ^1.1.409
+  '@iconify/json': ^1.1.410
   '@tonaljs/tonal': ^4.6.5
   '@tonejs/midi': ^2.0.27
   '@types/node': ^16.10.2
@@ -37,7 +37,7 @@ specifiers:
   vitepress-tags: ^0.4.0
   vue: ^3.2.19
   webmidi: ^3.0.0-alpha.16
-  windicss: 3.1.8
+  windicss: 3.1.9
 
 dependencies:
   '@tonaljs/tonal': 4.6.5
@@ -60,7 +60,7 @@ dependencies:
   webmidi: 3.0.0-alpha.16
 
 devDependencies:
-  '@iconify/json': 1.1.409
+  '@iconify/json': 1.1.410
   '@types/node': 16.10.2
   esbuild-register: 3.0.0
   markdown-it-classy: 0.2.0
@@ -78,7 +78,7 @@ devDependencies:
   vite-plugin-windicss: 1.4.9_typescript@4.4.3+vite@2.6.2
   vitepress: 0.19.2
   vitepress-tags: 0.4.0
-  windicss: 3.1.8
+  windicss: 3.1.9
 
 packages:
 
@@ -1354,8 +1354,8 @@ packages:
     resolution: {integrity: sha512-LFelJDOLZ6JHlmlAkgrvmcu4hpNPB91KYcr4f60D/exzU1eNOb4/KCVHIydGHIQFaOacIOD+Xy+B7P1z812cZg==}
     dev: true
 
-  /@iconify/json/1.1.409:
-    resolution: {integrity: sha512-8ozw0ZjqAYRHzkse/TMe+iGm56XxMj6RtTT8W6pLSybgBln8foUQ3n2KHinM/qyklwqqs/gpH+yelNXSCtF2Rw==}
+  /@iconify/json/1.1.410:
+    resolution: {integrity: sha512-CmtyDKL0NJldUjqQFF/WN6EAUQBEUHAInvaN+q5KWcY7YuWD49s+solatnEJH5YWXCzocHHG7glnJribAGm/8A==}
     dev: true
 
   /@iconify/types/1.0.9:
@@ -4441,6 +4441,12 @@ packages:
 
   /windicss/3.1.8:
     resolution: {integrity: sha512-G1UfnnSZ3s4MZnqqIL8DOQbL8rBArQKlodlby8OvP333TPaRouamuIuYyCt5kSNEJzFrkx168TSRIkqhDs9bOA==}
+    engines: {node: '>= 12'}
+    hasBin: true
+    dev: true
+
+  /windicss/3.1.9:
+    resolution: {integrity: sha512-5YoKvXeCQXIdwc91BoOgpKbIImr2JS8I14rPMa/5dKDDPA4ot3NgICWKELkml39R/8rn4Q0BVUUTqN+w+hjDSA==}
     engines: {node: '>= 12'}
     hasBin: true
     dev: true

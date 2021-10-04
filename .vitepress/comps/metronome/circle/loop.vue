@@ -234,7 +234,7 @@ const sounds = {
   E: [26, 120]
 }
 
-const { progress, current, steps, mutes, volume, panning } = useSequence(props.loop, props.order)
+const { progress, current, steps, mutes, volume, panning } = useSequence(props.loop, props.order, 'circle')
 
 const lineProgress = computed(() => {
   if (progress.value > 0) {

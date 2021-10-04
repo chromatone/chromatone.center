@@ -39,13 +39,23 @@ g.transport(
         height="80"
       )
       la-stop(
-      transform="translate(-1,4)"
+      transform="translate(-1,6)"
     )
     
 </template>
 
 <script setup>
 import { tempo } from '@use/tempo.js'
+import { onKeyStroke } from '@vueuse/core'
+
+onKeyStroke(' ', (e) => {
+  e.preventDefault()
+  tempo.playing = !tempo.playing
+});
+onKeyStroke('Enter', (e) => {
+  e.preventDefault()
+  tempo.stopped = true
+});
 </script>
 
 <style scoped>

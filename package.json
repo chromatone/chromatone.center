@@ -28,7 +28,7 @@
     "webmidi": "^3.0.0-alpha.16"
   },
   "devDependencies": {
-    "@iconify/json": "^1.1.409",
+    "@iconify/json": "^1.1.410",
     "@types/node": "^16.10.2",
     "esbuild-register": "^3.0.0",
     "markdown-it-classy": "^0.2.0",
@@ -46,7 +46,7 @@
     "vite-plugin-windicss": "^1.4.9",
     "vitepress": "0.19.2",
     "vitepress-tags": "^0.4.0",
-    "windicss": "3.1.8"
+    "windicss": "3.1.9"
   },
   "version": "1.2.5"
 }

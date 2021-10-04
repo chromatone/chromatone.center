@@ -34,14 +34,14 @@ export function levelColor(
   i = 0,
   n = 3,
   a = '0.5',
-  s = '80%',
+  s = '0.8',
+  l = '0.5',
   reverse = false,
-  l = '50%',
 ) {
   if (reverse) {
     i = n - i - 1
   }
-  return `hsla(${i * (360 / n)}, ${s}, ${l}, ${a})`
+  return `hsla(${i * (360 / n)}, ${s * 100}%, ${l * 100}%, ${a})`
 }
 
 export function chromaColorMix(chroma, tonic, part = 0.3) {

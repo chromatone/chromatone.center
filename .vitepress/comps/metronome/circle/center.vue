@@ -3,8 +3,8 @@ g.center(
   style="touch-action:none"
 )
   g.bpm.cursor-pointer(
-
     v-drag="drag"
+    @dblclick="tempo.bpm = 120"
   )
     circle.transition-all.duration-100.ease-out(
       stroke-width="4"
@@ -94,6 +94,7 @@ g.center(
 <script setup>
 import { tempo } from '@use/tempo'
 import { isDark } from '@theme/composables/state.js'
+import { clampNum } from '@use/theory'
 const fill = computed(() => isDark.value ? '#333' : '#eee');
 
 const center = reactive({
@@ -102,23 +103,13 @@ const center = reactive({
 });
 
 function drag(event) {
-  tempo.bpm = clampNum(tempo.bpm, event.delta[0] / 4 - event.delta[1] / 4)
+  tempo.bpm = clampNum(tempo.bpm, event.delta[0] / 4 - event.delta[1] / 4, 10, 500)
 }
 
 function setTempo(diff) {
-  tempo.bpm = Math.round(clampNum(tempo.bpm, diff))
+  tempo.bpm = Math.round(clampNum(tempo.bpm, diff, 10, 500))
 }
 
-function clampNum(main, delta, min = 10, max = 500) {
-  let num = Number(main) + Number(delta)
-  if (num < min) {
-    num = min
-  }
-  if (num > max) {
-    num = max
-  }
-  return num
-}
 
 </script>
 

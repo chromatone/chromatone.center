@@ -1,12 +1,25 @@
 <template lang="pug">
-g.math(
+g.math.cursor-pointer(
   font-size="36"
+  :drag-options="{ filterTaps: true }"
+  v-drag="drag"
+  @dblclick="tempo.bpm = 120"
 )
-  circle.transition-all.duration-100.ease-out(
-    cx="-10"
-    cy="-10"
-    r="4"
-    :fill="tempo.blink ? 'currentColor' : 'transparent'"
+  rect(
+    y="-50"
+    rx="20"
+    width="200"
+    height="150"
+    fill="transparent"
+  )
+  line.transition-all.duration-100.ease-out(
+    x1="-10"
+    x2="-10"
+    y1="-20"
+    y2="80"
+    stroke-width="8"
+    stroke-linecap="round"
+    :stroke="tempo.blink ? tempo.color : 'transparent'"
   )
   text(
     fill="currentColor"
@@ -24,6 +37,13 @@ g.math(
 
 <script setup>
 import { tempo } from '@use/tempo.js'
+import { clampNum } from '@use/theory'
+
+function drag(event) {
+  tempo.bpm = clampNum(tempo.bpm, event.delta[0] / 16 - event.delta[1] / 16, 10, 500)
+}
+
+
 </script>
 
 <style scoped>

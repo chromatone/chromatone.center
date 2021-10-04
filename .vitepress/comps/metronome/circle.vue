@@ -1,5 +1,5 @@
 <template lang="pug">
-.flex.flex-col.items-center.w-full
+.flex.flex-col.items-center.w-full(ref="circle")
   svg#metronome.w-full.my-8.max-h-90vh(
     version="1.1",
     baseProfile="full",
@@ -19,6 +19,21 @@
     metronome-transport(
       transform="translate(800)"
     )
+    g.cursor-pointer(
+      @click="toggle()"
+      font-size="30"
+      transform="translate(908,150)"
+    )
+      rect(
+        y="-7"
+        x="-7"
+        rx='10'
+        width="50"
+        height="50"
+        fill="transparent"
+        stroke="currentColor"
+      )
+      la-expand
     metronome-circle-loop(
       v-for="(loop,i) in loops",
       :key="i"
@@ -58,10 +73,15 @@
 import { useTempo, tap } from '@use/tempo.js'
 import { useTuner } from '@use/tuner.js'
 
+import { useFullscreen } from '@vueuse/core'
+const circle = ref(null)
+
+const { isFullscreen, enter, exit, toggle } = useFullscreen(circle)
+
 const tempo = useTempo()
 const { init, tuner } = useTuner();
 
-const loops = useStorage('tempo-loops', [
+const loops = useStorage('tempo-circle-loops', [
   {
     over: 8,
     under: 8,

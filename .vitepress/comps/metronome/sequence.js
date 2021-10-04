@@ -5,6 +5,7 @@ import { reactive, ref, watchEffect, computed, onBeforeUnmount } from 'vue'
 export function useSequence(
   metre = { over: 4, under: 4, sound: 'A' },
   order = 0,
+  mode = 'bar',
 ) {
   let pan = order % 2 == 1 ? -0.5 : 0.5
   const panner = new PanVol(pan, 0).toDestination()
@@ -25,16 +26,13 @@ export function useSequence(
     baseUrl: '/audio/metronome/',
   }).connect(panner)
 
-  const current = ref(0)
-  const steps = reactive([[1], [2], [3], [4]])
-  const mutes = useStorage(`metro-mutes-${order}`, {})
-  const volume = useStorage(`metro-vol-${order}`, 1)
-  const panning = useStorage(`metro-pan-${order}`, pan)
+  const current = ref('0-0')
+  const steps = reactive([['1-1'], ['2-1'], ['3-1'], ['4-1']])
+  const mutes = useStorage(`metro-${mode}-mutes-${order}`, {})
+  const volume = useStorage(`metro-${mode}-vol-${order}`, 1)
+  const panning = useStorage(`metro-${mode}-pan-${order}`, pan)
   let sequence = new Sequence(
     (time, step) => {
-      Draw.schedule(() => {
-        current.value = step
-      }, time)
       beatClick(step, time)
     },
     steps,
@@ -47,9 +45,6 @@ export function useSequence(
       sequence.stop().dispose()
       sequence = new Sequence(
         (time, step) => {
-          Draw.schedule(() => {
-            current.value = step
-          }, time)
           beatClick(step, time)
         },
         steps,
@@ -63,20 +58,20 @@ export function useSequence(
     () => {
       steps.length = 0
       for (let i = 1; i <= metre.over; i++) {
-        steps.push([i])
+        steps.push([`${i}-1`])
       }
       sequence.events = steps
     },
+    { immediate: true },
   )
 
   watchEffect(() => {
-    console.log(steps)
     sequence.events = steps
   })
 
   watchEffect(() => {
     if (tempo.stopped) {
-      current.value = 0
+      current.value = '0-1'
     }
   })
 
@@ -100,9 +95,13 @@ export function useSequence(
     if (context.state == 'suspended') {
       start()
     }
-    console.log(step)
+    let mainStep = typeof step == 'string' ? +step.split('-')[0] : step
+    Draw.schedule(() => {
+      current.value = step
+    }, time)
+    if (mutes.value[mainStep]) return
     if (mutes.value[step]) return
-    if (step == 1) {
+    if (step == '1-1') {
       synth.triggerAttackRelease(`${metre.sound}1`, '16n', time)
     } else {
       synth.triggerAttackRelease(`${metre.sound}2`, '16n', time)

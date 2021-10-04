@@ -3,48 +3,69 @@ g(
   text-anchor="middle",
   style="user-select:none;transition:all 300ms ease"
 )
-  g.opacity-20
-    rect(
-      width="1000"
-      height="280"
-      stroke="currentColor"
-    )
+  rect(
+    width="1000"
+    height="310"
+    stroke-width="2"
+    stroke="currentColor"
+    opacity="0.1"
+    rx="20"
+    fill="currentColor"
+  )
+
+
   g.steps(
     :opacity="volume / 2 + 0.5"
     transform="translate(0,100)"
   )
+    line(
+      transform="translate(0, 180)"
+      :x1="pad"
+      :x2="proportion * (steps.length) * width + pad"
+      stroke="currentColor"
+      stroke-width="4"
+    )
+    line(
+      :transform="`translate(${proportion * (steps.length) * width + pad}, 0)`"
+      stroke-width="4"
+      stroke="currentColor"
+      stroke-linecap="round"
+      :y2="180"
+    )
     metronome-bars-step(
       v-for="(step,s) in steps"
-      :key="step"
-      :active="!mutes[s + 1] && step == current"
+      :key="s"
       @mute="mutes[s + 1] = !mutes[s + 1]"
       @subdivide="steps[s] = $event"
-      :opacity="mutes[step] ? 0.1 : 1"
+      :opacity="mutes[s + 1] ? 0.1 : 1"
       :step="s + 1"
+      :mutes="mutes"
       :current="current"
       :subdivisions="step"
       :proportion="proportion"
       :total="steps.length"
-      :transform="`translate(${proportion * s * 1000},0)`"
+      :width="width"
+      :pad="pad"
+
     )
     g.arrows.pointer-events-none(
       style="mix-blend-mode:difference;"
     )
       line(
-        :x1="progress * 1000 * proportion * loop.over"
+        :transform="`translate(${pad + progress * width * proportion * loop.over}, 0)`"
         stroke-width="8"
         stroke="currentColor"
         stroke-linecap="round"
-        :x2="progress * 1000 * proportion * loop.over"
         :y2="180"
       )
+
 
   g.sound.cursor-pointer(
     v-for="(sound,s) in sounds"
     :key="sound"
     @click="$emit('sound', sound)"
     :class="{ active: sound == loop.sound }"
-    :transform="`translate(${s * 55 + 10},10)`"
+    :transform="`translate(${s * 55 + 90},10)`"
     )
     rect(
       width="50"
@@ -62,7 +83,7 @@ g(
     ) {{ sound }}
   g.del.cursor-pointer(
     @click="$emit('del')"
-    :transform="`translate(940,15)`"
+    :transform="`translate(20,10)`"
     )
     rect(
       width="50"
@@ -81,7 +102,7 @@ g(
 
   g.vol(
     style="cursor:pointer;color:currentColor"
-    :transform="`translate(810, 40)`"
+    :transform="`translate(850, 40)`"
     font-size="32px"
     @dblclick="volume > 0 ? volume = 0 : volume = 0.75"
     )
@@ -116,12 +137,12 @@ g(
 
   metronome-pan(
     v-model:pan="panning"
-    :transform="`translate(730,40)`"
+    :transform="`translate(760,40)`"
     :order="order"
   )
 
   g.info(
-    :transform="`translate(500,50)`"
+    :transform="`translate(530,50)`"
   )
     g.controls(
       transform="translate(0,-30)"
@@ -129,7 +150,7 @@ g(
     )
       g.under.cursor-pointer(
         @click="$emit('under', -1)"
-        transform="translate(110,0)"
+        transform="translate(105,0)"
       )
         rect(
           width="40"
@@ -140,7 +161,7 @@ g(
         la-minus
       g.over.cursor-pointer(
         @click="$emit('under', 1)"
-        transform="translate(60,0)"
+        transform="translate(55,0)"
       )
         rect(
           width="40"
@@ -198,6 +219,9 @@ import { useSequence } from '../sequence.js'
 import { isDark } from '@theme/composables/state.js'
 import { clampNum } from '@use/theory'
 
+const width = 950
+const pad = (1000 - width) / 2
+
 defineEmits(['del', 'over', 'under', 'sound']);
 
 const props = defineProps({
@@ -219,15 +243,16 @@ const props = defineProps({
   }
 });
 
-const sounds = ['A', 'B', 'C', 'D', 'E', 'F']
+const sounds = ['A', 'B', 'C', 'D', 'E']
 
-const { progress, current, steps, mutes, volume, panning } = useSequence(props.loop, props.order);
+const { progress, current, steps, mutes, volume, panning } = useSequence(props.loop, props.order, 'bars');
 
 const proportion = computed(() => ((props.loop.over / props.loop.under) / props.maxRatio) / props.loop.over)
 
 function dragVol(drag) {
   volume.value = clampNum(volume.value, drag.delta[0] / 100, 0, 1)
 }
+
 
 </script>
 

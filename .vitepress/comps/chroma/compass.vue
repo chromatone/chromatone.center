@@ -8,18 +8,18 @@ svg.max-h-3xl.w-full(
   line.line(
     v-for="(active,i) in chroma.split('')",
     :key="i",
-    :stroke="pitchColor(tonic + i)"
+    :stroke="pitchColor(globalScale.tonic + i)"
     stroke-linecap="round"
     stroke-width="10"
     style="mix-blend-mode: multiply"
     :style="{ opacity: active == '1' ? 0.5 : 0 }"
-    :x1="getCircleCoord(tonic).x",
-    :y1="getCircleCoord(tonic).y",
-    :x2="getCircleCoord(tonic + i).x",
-    :y2="getCircleCoord(tonic + i).y"
+    :x1="getCircleCoord(globalScale.tonic).x",
+    :y1="getCircleCoord(globalScale.tonic).y",
+    :x2="getCircleCoord(globalScale.tonic + i).x",
+    :y2="getCircleCoord(globalScale.tonic + i).y"
   )
   g.around(
-    style="mix-blend-mode: screen;cursor:pointer"
+    style="cursor:pointer"
     v-for="(active,i) in chroma.split('')", 
     :key="i",
     @click="react(i)",
@@ -27,11 +27,11 @@ svg.max-h-3xl.w-full(
   )
     circle.note(
       style="transform-box: fill-box; transform-origin: center center;"
-      :style="{ transform: `scale(${tonic == i ? 2.6 : isInChord(i) ? 1.62 : 1}` }",
+      :style="{ transform: `scale(${globalScale.tonic == i ? 2.6 : isInChord(i) ? 1.62 : 1}` }",
       :cx="getCircleCoord(i).x",
       :cy="getCircleCoord(i).y",
       r="5",
-      :opacity="tonic == i && selecting ? 0.5 : 1"
+      :opacity="globalScale.tonic == i && selecting ? 0.5 : 1"
       :fill="getNoteColor(i)",
     )
     text(
@@ -64,7 +64,7 @@ svg.max-h-3xl.w-full(
       :style="{ fill: colors.lch, stroke: colors.hsl }"
     )
     text(
-      :style="{ fill: pitchColor(tonic) }"
+      :style="{ fill: pitchColor(globalScale.tonic) }"
       x="50",
       y="50",
       font-weight="bold"
@@ -72,10 +72,10 @@ svg.max-h-3xl.w-full(
       font-family="Commissioner, sans-serif"
       text-anchor="middle",
       dominant-baseline="middle"
-      ) {{ notes[tonic].name }}{{ !chord.empty ? chord.aliases[0] : '' }}
+      ) {{ notes[globalScale.tonic].name }}{{ !chord.empty ? chord.aliases[0] : '' }}
   text(
     style="cursor:pointer;user-select:none"
-    :style="{ fill: pitchColor(tonic) }"
+    :style="{ fill: pitchColor(globalScale.tonic) }"
     x="50",
     y="58",
     font-weight="normal"
@@ -83,11 +83,11 @@ svg.max-h-3xl.w-full(
     font-family="Commissioner, sans-serif"
     text-anchor="middle",
     dominant-baseline="middle"
-    ) {{ !ScaleType.get(chroma).empty ? ScaleType.get(chroma).name : '' }}
+    ) {{ !scaleType.get(chroma).empty ? scaleType.get(chroma).name : '' }}
   text(
-    v-if="!ScaleType.get(scaleChroma).empty"
+    v-if="!scaleType.get(scaleChroma).empty"
     @click="$emit('clearScale')"
-    :style="{ fill: pitchColor(tonic) }"
+    :style="{ fill: pitchColor(globalScale.tonic) }"
     style="cursor:pointer;user-select:none"
     x="50",
     y="63",
@@ -96,7 +96,7 @@ svg.max-h-3xl.w-full(
     font-family="Commissioner, sans-serif"
     text-anchor="middle",
     dominant-baseline="middle"
-    ) {{ !ScaleType.get(scaleChroma).empty ? ScaleType.get(scaleChroma).name : '' }} &times;
+    ) {{ !scaleType.get(scaleChroma).empty ? scaleType.get(scaleChroma).name : '' }} &times;
 
   line.line(
     v-for="(line,i) in scaleLines",
@@ -104,7 +104,7 @@ svg.max-h-3xl.w-full(
     :stroke="pitchColor(line?.[1])"
     stroke-linecap="round"
     stroke-width="0.5"
-    style="mix-blend-mode: multiply; transition: opacity 300ms ease"
+    style=" transition: all 300ms ease"
     :x1="getCircleCoord(line?.[0], 12, 30).x",
     :y1="getCircleCoord(line?.[0], 12, 30).y",
     :x2="getCircleCoord(line?.[1], 12, 30).x",
@@ -116,13 +116,9 @@ svg.max-h-3xl.w-full(
 <script setup>
 import { notes, pitchColor, scales, isInChroma, getCircleCoord } from 'chromatone-theory'
 import { lchToHsl, chromaColorMix } from "@use/colors.js";
-import { ScaleType, ChordType, Chord, Note } from '@tonaljs/tonal'
-import { ref, computed, onMounted, onBeforeUnmount, nextTick } from 'vue'
+import { Chord, Note } from '@tonaljs/tonal'
+import { scaleType, chordType, globalScale } from '@use/theory'
 const props = defineProps({
-  tonic: {
-    type: Number,
-    default: 0
-  },
   chroma: {
     type: String,
     default: '100101000110'
@@ -133,14 +129,14 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits(['update:tonic', 'update:chroma', 'clearScale'])
+const emit = defineEmits(['update:chroma', 'clearScale'])
 
 const colors = computed(() => {
-  return chromaColorMix(props.chroma, props.tonic)
+  return chromaColorMix(props.chroma, globalScale.tonic)
 })
 
 const chord = computed(() => {
-  return ChordType.get(props.chroma)
+  return chordType.get(props.chroma)
 })
 
 const scaleList = computed(() => {
@@ -148,7 +144,7 @@ const scaleList = computed(() => {
 })
 
 const scaleLines = computed(() => {
-  let arr = rotate(props.scaleChroma.split(''), -props.tonic)
+  let arr = rotate(props.scaleChroma.split(''), -globalScale.tonic)
   let lines = []
   let step = 0
   let last = 0
@@ -169,16 +165,16 @@ const scaleLines = computed(() => {
 const selecting = ref(false)
 
 function react(num) {
-  let n = (24 + Number(num) - props.tonic) % 12
+  let n = (24 + Number(num) - globalScale.tonic) % 12
 
   if (selecting.value) {
-    emit('update:tonic', Number(num))
+    globalScale.tonic = Number(num)
     selecting.value = false
     playChordOnce()
     return
   }
   playNote(num, props.chroma[n] == '1' ? 1 : 0)
-  if (Number(num) != props.tonic) {
+  if (Number(num) != globalScale.tonic) {
     let chroma = props.chroma + ''
     if (chroma[n] == '0') {
       chroma = replaceAt(chroma, n, 1)
@@ -188,7 +184,7 @@ function react(num) {
     emit('update:chroma', chroma)
   } else {
     if (selecting.value) {
-      emit('update:tonic', n)
+      globalScale.tonic = n
       selecting.value = false
     } else {
       selecting.value = true
@@ -205,7 +201,7 @@ function replaceAt(string, index, replace) {
 }
 
 function isInChord(n) {
-  return isInChroma(props.chroma, props.tonic, n)
+  return isInChroma(props.chroma, globalScale.tonic, n)
 }
 
 function getNoteColor(n) {
@@ -221,7 +217,7 @@ import { synthOnce, synthAttack, synthRelease } from '@use/synth.js'
 
 
 function playNote(note = 0, octave = 0) {
-  if (props.tonic > 0 && note < props.tonic) {
+  if (globalScale.tonic > 0 && note < globalScale.tonic) {
     note = note + 12
   }
   note = note + 12 * octave
@@ -231,10 +227,10 @@ function playNote(note = 0, octave = 0) {
 }
 
 const chordNotes = computed(() => {
-  let shiftChroma = rotate(props.chroma, -props.tonic)
+  let shiftChroma = rotate(props.chroma, -globalScale.tonic)
   let chOct = notes.map((n, i) => {
     let oct = 4
-    if (i + 9 < props.tonic) oct = 5
+    if (i + 9 < globalScale.tonic) oct = 5
     return n.name + oct
   })
   let filtered = chOct.filter((val, i) => {

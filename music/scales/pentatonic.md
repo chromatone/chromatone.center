@@ -11,7 +11,7 @@ pentatonics:
     title: Minor pentatonic
     chroma: '100101010010'
   ms7:
-    title: Minor #7 pentatonic
+    title: 'Minor #7 pentatonic'
     chroma: '100101010001'
   m6:
     title: Minor Six pentatonic

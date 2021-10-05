@@ -9,15 +9,14 @@ polygon.chord-trigger(
   @mouseup="stopChord()", 
   @touchend="stopChord()", 
   @touchcancel="stopChord()"
-  :fill="playing ? pitchColor(note.pitch) : active ? pitchColor(note.pitch, 0.5) : pitchColor(note.pitch, 1, 0.2)",
+  :fill="playing ? pitchColor(note.pitch) : active ? pitchColor(note.pitch, 0.5) : pitchColor(note.pitch, -2, 0.1)",
   :opacity="1"
-  :stroke-width="1"
-  stroke="#fff"
+  :stroke-width="active ? 4 : 0.5"
+  stroke="hsla(0,0%,100%,0.5)"
   points="0,0 80,0 80,46.188 40,69.28")
 </template>
 
 <script setup>
-import { computed, ref } from 'vue'
 import { pitchColor, pitchFreq, notes } from 'chromatone-theory'
 import { Frequency } from 'tone'
 import { synthAttack, synthRelease } from '@use/synth.js'

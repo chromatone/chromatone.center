@@ -8,7 +8,6 @@
       :style="{ backgroundColor: i == globalScale.tonic ? pitchColor(i) : bit == '1' ? 'hsla(0,0%,80%,0.4)' : 'hsla(0,0%,10%,0.4)' }"
       ) {{ notes[i].name }}
   .control-row
-    .control.font-bold(:style="{ color: pitchColor(globalScale.tonic) }") {{ notes[globalScale.tonic].name }}
     .control(@click="control.count = !control.count") Notes 
       la-arrows-alt-v(:style="{ opacity: control.count ? 1 : 0.3 }")
 
@@ -30,11 +29,9 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
-import { Pcset, ChordType, ScaleType } from '@tonaljs/tonal'
-import { useStorage } from '@vueuse/core'
+import { Pcset } from '@tonaljs/tonal'
 import { pitchColor, notes } from 'chromatone-theory'
-import { globalScale } from '@use/theory.js'
+import { globalScale, chordType, scaleType } from '@use/theory.js'
 
 
 const tonic = useStorage('chroma-tonic', 0)
@@ -47,30 +44,15 @@ const control = useStorage('chroma-browser-filter', {
   chroma: false,
 })
 
-
-
-ChordType.add('100000000000', ['.P1/P8'], 'perfect unison/octave');
-ChordType.add('110000000000', ['.m2'], 'minor second');
-ChordType.add('101000000000', ['.M2'], 'major second');
-ChordType.add('100100000000', ['.m3'], 'minor third');
-ChordType.add('100010000000', ['.M3'], 'major third');
-ChordType.add('100001000000', ['.P4'], 'perfect fourth');
-ChordType.add('100000100000', ['.TT'], 'tritone');
-ChordType.add('100000010000', ['.P5'], 'perfect fifth');
-ChordType.add('100000001000', ['.m6'], 'minor sixth');
-ChordType.add('100000000100', ['.M6'], 'major sixth');
-ChordType.add('100000000010', ['.m7'], 'minor seventh');
-ChordType.add('100000000001', ['.M7'], 'major seventh');
-
 const allSets = Pcset.chromas().map(chroma => Pcset.get(chroma));
 
 const filtered = computed(() => {
   let arr = allSets
   if (control.value.chord) {
-    arr = arr.filter(e => !ChordType.get(e.chroma).empty)
+    arr = arr.filter(e => !chordType.get(e.chroma).empty)
   }
   if (control.value.scale) {
-    arr = arr.filter(e => !ScaleType.get(e.chroma).empty)
+    arr = arr.filter(e => !scaleType.get(e.chroma).empty)
   }
   return arr
 });

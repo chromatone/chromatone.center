@@ -1,16 +1,16 @@
 <template lang="pug">
-.flex.flex-col
+.fullscreen-container(ref="screen")
+  full-screen.absolute.top-2.right-2.z-10(:el="screen")
   .relative.w-full.m-auto
     chroma-compass#chroma-compass(
       v-model:chroma="chroma"
-      v-model:tonic="tonic"
       :scaleChroma="scaleChroma"
       @clearScale="clearScale()"
       )
   .max-w-65ch.m-auto
-    piano-keys.w-xs.h-4em.m-auto(
-      v-model:pitch="tonic" :chroma="chroma" names) 
-    .flex.flex-wrap.mx-auto.justify-center
+    chroma-piano.w-xs.m-auto(
+      :chroma="chroma" names) 
+    .flex.flex-wrap.mx-auto.justify-center.mt-4
       .chord-group(
         v-for="(name,count) in groupNames", 
         :key="name"
@@ -20,11 +20,11 @@
     .flex.flex-col.items-center
       .flex.flex-wrap.my-4.justify-center
         .chord(
-          :style="{ color: chord?.chroma == chroma ? 'white' : chromaColorMix(chord.chroma, tonic).hsl, backgroundColor: chord?.chroma == chroma ? chromaColorMix(chord.chroma, tonic).hsl : '' }"
+          :style="{ color: chord?.chroma == chroma ? 'white' : chromaColorMix(chord.chroma, globalScale.tonic).hsl, backgroundColor: chord?.chroma == chroma ? chromaColorMix(chord.chroma, globalScale.tonic).hsl : '' }"
           v-for="chord in chordGroup", 
           :key="chord?.aliases[0]", 
           @click="chroma = chord.chroma",
-          :class="{ active: chord?.chroma == chroma }") {{ notes[tonic].name + chord?.aliases[0] }}
+          :class="{ active: chord?.chroma == chroma }") {{ notes[globalScale.tonic].name + chord?.aliases[0] }}
 
     .flex.flex-wrap.justify-center
       .text-xl.flex-1.min-w-full.text-center.my-4
@@ -32,22 +32,21 @@
       transition-group(name="list")
         .chord(
           v-for="name in chordScales",
-          :style="{ color: scale == name ? 'white' : chromaColorMix(ScaleType.get(name).chroma, tonic).hsl, backgroundColor: scale == name ? chromaColorMix(ScaleType.get(name).chroma, tonic).hsl : '' }"
+          :style="{ color: scale == name ? 'white' : chromaColorMix(ScaleType.get(name).chroma, globalScale.tonic).hsl, backgroundColor: scale == name ? chromaColorMix(ScaleType.get(name).chroma, globalScale.tonic).hsl : '' }"
           :key="name"
           @click="scale = name"
           :class="{ active: scale == name }"
-          ) {{ notes[tonic].name }} {{ name }}
+          ) {{ notes[globalScale.tonic].name }} {{ name }}
 </template>
 
 <script setup>
-import { reactive, ref, computed, watch } from 'vue'
 import { chords, notes, pitchColor } from 'chromatone-theory'
 import { chromaColorMix } from '@use/colors.js'
-import { ChordType, Chord, ScaleType, Interval } from '@tonaljs/tonal'
-import { chordList } from '@use/theory.js'
-import { useStorage } from '@vueuse/core'
+import { Chord, ScaleType, Interval } from '@tonaljs/tonal'
+import { chordType, scaleType, chordList, globalScale } from '@use/theory.js'
 
-const tonic = useStorage('chroma-tonic', 0)
+const screen = ref()
+
 const chroma = useStorage('chroma-chroma', chordList[0].chroma)
 
 const groupNames = ['Intervals', 'Triads', 'Tetrads', 'Pentads', 'Hexads', 'Heptads']
@@ -61,7 +60,7 @@ const chordGroups = computed(() => {
 })
 
 const chord = computed(() => {
-  return ChordType.get(chroma.value)
+  return chordType.get(chroma.value)
 })
 
 const chordScales = computed(() => {
@@ -83,8 +82,6 @@ const numNotes = computed(() => {
 const chordGroup = computed(() => {
   return chordList.filter(get => get.intervals.length === numNotes.value)
 });
-
-
 </script>
 
 <style  scoped>

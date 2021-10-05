@@ -1,10 +1,11 @@
 <template lang="pug">
 .flex.flex-col.items-center.w-full
   midi-panel
-  .flex(v-if="!state.initiated")
-    start-button( @click="initiate()") Start
-  .flex.flex-col
-    canvas#spectrogram.m-4.h-80vh.w-full.rounded-md(
+
+  .fullscreen-container(ref="screen")
+    start-button.absolute( @click="initiate()", v-if="!state.initiated") Start
+    full-screen.absolute.bottom-6.right-2(:el="screen")
+    canvas#spectrogram.m-4.max-h-80vh.w-full.rounded-md(
       :width="state.width"
       :height="state.height"  
     )
@@ -16,6 +17,8 @@
 <script setup>
 import { useRafFn } from '@vueuse/core'
 import { midi } from '@use/midi.js'
+
+const screen = ref()
 
 const score = reactive({
   notes: computed(() => {
@@ -45,8 +48,8 @@ watch(() => midi.playing, playing => {
 let canvas, ctx, tempCanvas, tempCtx
 const state = reactive({
   initiated: false,
-  width: 508,
-  height: 508,
+  width: 1200,
+  height: 800,
   speed: useStorage('midi-roll-speed', 1),
   direction: useStorage('midi-roll-direction', 1),
 })
@@ -78,10 +81,10 @@ function onCanvasDraw() {
 
 function drawVertical() {
   tempCtx.drawImage(canvas, 0, 0, state.width, state.height)
-  ctx.fillStyle = '#33333399'
+  ctx.fillStyle = '#333333'
   ctx.fillRect(0, 0, state.width, state.speed)
   for (let i = 0; i < 127; i++) {
-    let num = i * 4
+    let num = i * state.width / 127
     ctx.fillStyle = colorIt((i + 3) % 12, 1, 0.1)
     ctx.fillRect(num, 0, 1, state.speed)
   }
@@ -90,19 +93,19 @@ function drawVertical() {
   score.notes.forEach(note => {
     const size = 16 - note.channel
     ctx.fillStyle = colorIt((note.number + 3) % 12, 1)
-    ctx.fillRect(note.number * 4 - size / 2, 0, size, state.speed * 2)
+    ctx.fillRect(note.number * state.width / 127 - size / 2, 0, size, state.speed * 2)
   })
   ctx.setTransform(1, 0, 0, 1, 0, 0);
 }
 
 function drawHorizontal() {
   tempCtx.drawImage(canvas, 0, 0, state.width, state.height)
-  ctx.fillStyle = '#33333340'
+  ctx.fillStyle = '#333333'
   ctx.fillRect(state.width - state.speed, 0, state.speed, state.height)
   // for (let i = 0; i < 127; i++) {
   //   let num = (127 - i) * (state.height / 127)
-  //   ctx.fillStyle = colorIt((num + 3) % 12, 0.5, 0.1)
-  //   ctx.fillRect(0, state.height - num, state.width, 0.5)
+  //   ctx.fillStyle = colorIt((i + 3) % 12, 0.5, 0.1)
+  //   ctx.fillRect(0, state.height - num, state.width, 1)
   // }
   score.notes.forEach(note => {
     ctx.fillStyle = colorIt((note.number + 3) % 12, 1)

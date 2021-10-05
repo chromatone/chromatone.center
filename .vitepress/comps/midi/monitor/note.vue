@@ -7,12 +7,11 @@
   @touchend="stop()"
   @mousemove="change()"
   @touchmove="change()"
-  :style="{ backgroundColor: pitchColor(note?.pitch, note?.octA - 1, note?.velocity) }"
-  ) {{ note?.name }} ({{ note?.number }})
+  :style="{ backgroundColor: pitchColor(note.pitch, note.octA - 1, note.velocity) }"
+  ) {{ note.name }}{{ note.accidental }} {{ note?.number }}
 </template>
 
 <script setup>
-import { ref } from 'vue'
 import { pitchColor } from 'chromatone-theory'
 const props = defineProps({
   note: Object,

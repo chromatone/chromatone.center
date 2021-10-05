@@ -27,7 +27,6 @@ g.transport(
   g.btn.cursor-pointer(
     transform="translate(90,50)"
     @click="tempo.stopped = true"
-
     )
       rect.border(
         fill="transparent"
@@ -37,9 +36,9 @@ g.transport(
         rx="10"
         width="70"
         height="80"
-      )
+        )
       la-stop(
-      transform="translate(-1,6)"
+      y="5"
     )
     
 </template>

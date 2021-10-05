@@ -7,4 +7,3 @@ cover: apps/fifths.png
 ---
 
 <chord-fifths />
-<svg-save svg="fifths" />

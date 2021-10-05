@@ -10,7 +10,7 @@
       :class="{ active: bit == 1 }"
       :style="{ backgroundColor: calcBg(i, bit) }"
       ) {{ bit == 1 ? notes[(i + globalScale.tonic) % 12].name : i }}
-  .flex.flex-wrap.justify-center.border-b-1.px-2.pb-2.items-center(
+  .flex.flex-wrap.justify-center.border-b-1.border-current.px-2.pb-2.items-center(
     v-if="!state.chord.empty || state.scale"
     :class="{ 'w-full': true }"
     ) 

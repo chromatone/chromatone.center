@@ -24,7 +24,7 @@ export function init() {
     },
     volume: -10,
     envelope: {
-      attack: 0.1,
+      attack: 0.02,
       decay: 2,
       sustain: 1,
       release: 4,

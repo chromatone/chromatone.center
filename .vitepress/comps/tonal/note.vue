@@ -11,7 +11,7 @@ g.cursor-pointer
     :r="r", 
     :cx="0", 
     :cy="0",  
-    :strokeWidth="tonic == note.pitch ? 4 : 1",
+    :stroke-width="tonic == note.pitch ? 4 : available ? 2 : 0",
     stroke="white"
     :fill="playing ? pitchColor(note.pitch, 4) : available ? pitchColor(note.pitch, 3) : pitchColor(note.pitch, 2, 0.4)")
   text(
@@ -24,7 +24,6 @@ g.cursor-pointer
 </template>
 
 <script setup>
-import { ref, computed, watch } from 'vue'
 import { Frequency } from 'tone'
 import { pitchColor, pitchFreq } from 'chromatone-theory'
 import { synthAttack, synthRelease } from '@use/synth.js'

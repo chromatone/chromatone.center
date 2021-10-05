@@ -13,8 +13,8 @@
       v-if="midi.note?.name"
       :style="{ borderColor: pitchColor(midi.note.pitch, midi.note.octA), color: pitchColor(midi.note.pitch, midi.note.octA) }"
     ) 
-      .w-2em {{ midi.note.name.slice(0, -1) }} 
-      .flex {{ midi.note.name.slice(-1) }}
+      .w-2em {{ midi.note.name }} 
+      .flex {{ midi.note.accidental }}
     .play.button(@click="midi.playing = !midi.playing")
       la-play(v-if="!midi.playing")
       la-pause(v-else)

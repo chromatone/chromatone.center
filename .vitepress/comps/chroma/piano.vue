@@ -50,13 +50,14 @@ function isInChroma(pitch) {
   @apply cursor-pointer flex justify-center items-end bg-white z-1 text-sm font-bold shadow rounded transition-all duration-200 opacity-100;
   padding: 2em 1em;
   margin-top: 0.2em;
+  margin-bottom: 1em;
   flex: 1;
   &.black {
     @apply bg-gray-300 dark:(bg-gray-700) z-2;
     padding: 1em 1em;
     margin-left: -1.5em;
     margin-right: -0.2em;
-    margin-bottom: 2em;
+    margin-bottom: 2.5em;
     transform: translateX(25%);
   }
   &.tonic {

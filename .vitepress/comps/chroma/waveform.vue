@@ -25,11 +25,11 @@
       :key="n"
     )
       polyline(
-        :stroke="pitchColor(n)"
+        :stroke="pitchColor(n, 2)"
         :points="waves[n]"
         stroke-width="4"
         fill="none"
-        opacity="1"
+        opacity="0.5"
       )
     polyline(
       :stroke="sumColor.hsl"

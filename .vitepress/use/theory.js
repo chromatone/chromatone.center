@@ -1,6 +1,7 @@
+import { pianoAttack, pianoRelease, pianoReleaseAll, pianoOnce } from './piano'
 import { Note, ChordType, ScaleType, Scale, Pcset } from '@tonaljs/tonal'
 import { Frequency } from 'tone'
-import { midiOnce, midiAttack, midiRelease } from '@use/midi.js'
+import { midiPlay, midiStop } from '@use/midi.js'
 import { synthOnce, synthAttack, synthRelease } from '@use/synth.js'
 import { notes, rotateArray } from 'chromatone-theory'
 
@@ -96,7 +97,8 @@ export const globalScale = reactive({
 function getChromaNotes(chroma = '100010010000', tonic = globalScale.tonic) {
   let shiftChroma = rotateArray(chroma.split(''), -tonic)
   let chOct = rotateArray(notes, -tonic).map((n, i) => {
-    return Frequency(n.pitch + tonic + 57, 'midi').toNote()
+    let noteName = Frequency(n.pitch + tonic + 57, 'midi').toNote()
+    return noteName
   })
   let filtered = chOct.filter((val, i) => {
     if (shiftChroma[i] == '1') {
@@ -108,36 +110,42 @@ function getChromaNotes(chroma = '100010010000', tonic = globalScale.tonic) {
 
 export function playChromaOnce(chroma, tonic) {
   let notes = getChromaNotes(chroma, tonic)
+
   notes.forEach((name, i) => {
     midiOnce(name)
   })
   synthOnce(notes, '4n')
+  // pianoOnce(notes, '4n')
 }
 
 export function playChroma(chroma, tonic) {
   let notes = getChromaNotes(chroma, tonic)
   notes.forEach((name) => {
-    midiAttack(name)
+    midiPlay(name)
   })
   synthAttack(notes)
+  // pianoAttack(notes)
 }
 
 export function stopChroma(chroma, tonic) {
   let notes = getChromaNotes(chroma, tonic)
   notes.forEach((name) => {
-    midiRelease(name)
+    midiStop(name)
   })
   synthRelease(notes)
+  // pianoRelease(notes)
 }
 
 export function playNote(name) {
   midiAttack(name)
   synthAttack(name)
+  // pianoAttack(notes)
 }
 
 export function stopNote(name) {
   midiRelease(name)
   synthRelease(name)
+  // pianoRelease(notes)
 }
 
 export function clampNum(main, delta, min = 0, max = 100) {

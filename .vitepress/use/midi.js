@@ -82,6 +82,7 @@ function initMidi() {
     })
     input.addListener('stop', () => {
       midi.playing = false
+      midi.channels = {}
     })
     input.addListener('noteon', (ev) => noteInOn(ev), {
       channels: 'all',
@@ -105,7 +106,7 @@ function noteInOn(ev) {
   if (midi.filter[note.channel]) return
   midi.note = note
   createChannel(note.channel)
-  midi.channels[note.channel].notes[note.name] = note
+  midi.channels[note.channel].notes[note.number] = note
 }
 
 function ccIn(ev) {
@@ -149,22 +150,46 @@ function setVelocity(channel, note, velocity) {
 
 export function midiAttack(note, options) {
   if (!midi.out) return
-
-  setVelocity(note.channel, note.name, 100)
+  let channel = note?.channel || midi.channel
+  setVelocity(channel, note?.number, 100)
   WebMidi.outputs.forEach((output) => {
-    output.playNote(note, {
-      channels: note.channel || midi.channel,
+    output.playNote(note.number, {
+      channels: channel,
       ...options,
     })
   })
 }
 
+export function midiPlay(note) {
+  if (!midi.out) return
+  WebMidi.outputs.forEach((output) => {
+    output.playNote(note, {
+      channels: midi.channel,
+    })
+  })
+}
+
+export function midiStop(note) {
+  if (!midi.out) return
+  if (note) {
+    WebMidi.outputs.forEach((output) => {
+      output.stopNote(note, { channels: midi.channel })
+    })
+  } else {
+    WebMidi.outputs.forEach((output) => {
+      output.turnNotesOff()
+      output.turnSoundOff({ time: '+1' })
+    })
+  }
+}
+
 export function midiRelease(note) {
   if (!midi.out) return
   if (note) {
-    setVelocity(note.channel, note.name, 0)
+    let channel = note?.channel || midi.channel
+    setVelocity(channel, note?.number, 0)
     WebMidi.outputs.forEach((output) => {
-      output.stopNote(note, { channels: note.channel || midi.channel })
+      output.stopNote(note.number, { channels: channel })
     })
   } else {
     WebMidi.outputs.forEach((output) => {
@@ -176,9 +201,9 @@ export function midiRelease(note) {
 
 export function midiOnce(note, time) {
   if (!midi.out) return
-  midiAttack(note, { time: `+${time}` })
+  midiPlay(note, { time: `+${time}` })
   setTimeout(() => {
-    midiRelease(note, { time: `+${time + 10}` })
+    midiStop(note, { time: `+${time + 10}` })
   }, 300)
 }
 

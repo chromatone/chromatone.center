@@ -3,7 +3,7 @@
   svg.max-h-3xl.w-full(
     version="1.1",
     baseProfile="full",
-    viewBox="0 0 100 100",
+    viewBox="-5 -5 110 110",
     xmlns="http://www.w3.org/2000/svg",
     stroke-width="2px"
     style="touch-action: pinch-zoom;"
@@ -13,6 +13,8 @@
       r="50"
       cx=50
       cy=50
+      :stroke="mix.rgb"
+      stroke-width="2"
     )
     g#sources
       circle(
@@ -93,6 +95,7 @@
 </template>
 
 <script setup>
+
 const mix = reactive({
   radius: 30,
   len: computed(() => mix.radius * Math.PI * 2),

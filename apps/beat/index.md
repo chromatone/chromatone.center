@@ -1,5 +1,5 @@
 ---
-title: Beats
+title: Beat
 subtitle: From chaotic noise to delicate patterns of beat and groove
 tags: apps
 list: beat

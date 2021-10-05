@@ -32,14 +32,15 @@
         v-for="(cell,c) in row" :key="cell" 
         :id="`c${r}-${c}`"
         :style=`{
-          borderColor: pitchColor(state.pitches[r]),
-          backgroundColor: cell.active ? pitchColor(state.pitches[r]) : 'transparent',
+          color: pitchColor(state.pitches[r]),
+          borderColor: cell.active ? pitchColor(state.pitches[r]) : cell.cell == positions[r] ? '#4449' : '#4442',
+          backgroundColor: cell.cell == positions[r] && cell.active ? pitchColor(state.pitches[r], 3) : 'transparent',
           marginRight: c % 4 == 3 ? '4px' : '1px'
         }`
         :class="{ active: cell?.active, current: cell.cell == positions[r] }"
         @mousedown.prevent="toggle(r, c, true, $event)"
         @mouseenter="toggle(r, c, false, $event)"
-        )
+        ) •
 </template>
 
 <script setup>
@@ -50,6 +51,7 @@ import { globalScale, scaleList } from '@use/theory.js'
 import { Pattern, start, Transport, Draw } from 'tone'
 import { synthOnce } from '@use/synth.js'
 import { midiOnce } from '@use/midi.js'
+import { pianoOnce, init } from '@use/piano'
 const state = reactive({
   started: false,
   playing: false,
@@ -95,6 +97,7 @@ watchEffect(() => {
 
 onMounted(() => {
   state.mounted = true
+  init()
   setPatterns()
 })
 
@@ -124,7 +127,8 @@ function setPatterns() {
         }
       }, time)
       if (cell.active) {
-        synthOnce(cell.note, state.interval, time)
+        // synthOnce(cell.note, state.interval, time)
+        pianoOnce(cell.note, state.interval, time)
       }
     }, rows[index], state.type).start(0);
     patterns[index].interval = state.interval
@@ -199,13 +203,13 @@ onBeforeUnmount(() => {
   flex: 0 0 52px;
 }
 .cell {
-  @apply p-2 border-1 m-1px rounded transition-all duration-50 ease-in-out box-border;
+  @apply p-1 text-center border-3 m-1px rounded-lg transition-all duration-100 ease-in-out box-border;
   flex: 1 1 20px;
   &.active {
     @apply bg-current;
   }
   &.current {
-    @apply border-2;
+    @apply;
   }
   &.active.current {
     @apply scale-110 transform;

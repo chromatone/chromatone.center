@@ -1,7 +1,6 @@
 import { reactive, watchEffect, onMounted } from 'vue'
 import { WebMidi } from 'webmidi'
 import { useStorage } from '@vueuse/core'
-import { Midi } from '@tonejs/midi'
 
 export const midi = reactive({
   enabled: false,

@@ -12,7 +12,9 @@
     )
     circle#white(
       fill="white"
-      r="50"
+      :stroke="mix.hex"
+      stroke-width="1"
+      r="49"
       cx=50
       cy=50
     )
@@ -114,6 +116,8 @@
 </template>
 
 <script setup>
+import { colord } from 'colord'
+
 const mix = reactive({
   radius: 30,
   len: computed(() => mix.radius * Math.PI * 2),
@@ -122,8 +126,11 @@ const mix = reactive({
   m: useStorage('magenta', 50),
   y: useStorage('yellow', 50),
   k: useStorage('black', 10),
-  cmyk: computed(() => `device-cmyk(${mix.c}%, ${mix.m}%, ${mix.y}%, ${mix.k}% / 100%)`),
+  cmyk: computed(() => `device-cmyk(${mix.c}% ${mix.m}% ${mix.y}% ${mix.k}% / 100%)`),
+  hex: computed(() => colord(mix.cmyk).toHex())
 });
+
+
 
 function onDrag(drag) {
   let id = drag.event.target.id

@@ -1,5 +1,6 @@
 <template lang="pug">
-.flex.flex-col.items-center.mb-8.p-4
+.fullscreen-container.mb-8.p-4.rounded-2xl.transition-all.duration-800.ease-out(ref="screen" :style="{ backgroundColor: mix.hex }")
+  full-screen.absolute.top-2.right-2(:el="screen")
   svg.max-h-3xl.w-full(
     version="1.1",
     baseProfile="full",
@@ -12,9 +13,7 @@
     )
     circle#white(
       fill="white"
-      :stroke="mix.hex"
-      stroke-width="1"
-      r="49"
+      r="50"
       cx=50
       cy=50
     )
@@ -130,7 +129,7 @@ const mix = reactive({
   hex: computed(() => colord(mix.cmyk).toHex())
 });
 
-
+const screen = ref()
 
 function onDrag(drag) {
   let id = drag.event.target.id

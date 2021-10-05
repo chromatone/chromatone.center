@@ -2,7 +2,7 @@
 .fullscreen-container(ref="screen")
   full-screen.absolute.top-2.right-2.z-10(:el="screen")
   .relative.w-full.m-auto
-    chroma-compass#chroma-compass(
+    chroma-compass-circle#chroma-compass(
       v-model:chroma="chroma"
       :scaleChroma="scaleChroma"
       @clearScale="clearScale()"

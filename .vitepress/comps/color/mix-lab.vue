@@ -1,5 +1,6 @@
 <template lang="pug">
-.flex.flex-col.mb-8
+.fullscreen-container.mb-8.p-4.rounded-2xl.transition-all.duration-800.ease-out(ref="screen" :style="{ backgroundColor: mix.hex }")
+  full-screen.absolute.top-2.right-2(:el="screen")
   svg.max-h-3xl.w-full.select-none(
     version="1.1",
     baseProfile="full",
@@ -180,9 +181,10 @@
 </template>
 
 <script setup>
-import { reactive, computed, watchEffect } from 'vue'
-import { useStorage } from '@vueuse/core'
 import { colord } from 'colord'
+
+const screen = ref()
+
 const mix = reactive({
   current: useStorage('color-current', '#fffff'),
   max: {

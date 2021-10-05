@@ -1,23 +1,27 @@
 <template lang="pug">
-svg.max-h-3xl.w-full(
+svg.max-h-3xl.w-full.transition-all.duration-400.ease-in-out(
   version="1.1",
   baseProfile="full",
   viewBox="0 0 100 100",
   xmlns="http://www.w3.org/2000/svg",
+  style="user-select:none"
   )
-  line.line(
+  g(
     v-for="(active,i) in chroma.split('')",
     :key="i",
-    :stroke="pitchColor(globalScale.tonic + i)"
-    stroke-linecap="round"
-    stroke-width="10"
-    style="mix-blend-mode: multiply"
-    :style="{ opacity: active == '1' ? 0.5 : 0 }"
-    :x1="getCircleCoord(globalScale.tonic).x",
-    :y1="getCircleCoord(globalScale.tonic).y",
-    :x2="getCircleCoord(globalScale.tonic + i).x",
-    :y2="getCircleCoord(globalScale.tonic + i).y"
   )
+    line.line(
+      v-show="active == '1'"
+      :stroke="pitchColor(globalScale.tonic + i)"
+      stroke-linecap="round"
+      stroke-width="10"
+      style="mix-blend-mode: multiply"
+      :opacity="active ? 0.5 : 0"
+      :x1="getCircleCoord(globalScale.tonic).x",
+      :y1="getCircleCoord(globalScale.tonic).y",
+      :x2="getCircleCoord(globalScale.tonic + i).x",
+      :y2="getCircleCoord(globalScale.tonic + i).y"
+    )
   g.around(
     style="cursor:pointer"
     v-for="(active,i) in chroma.split('')", 
@@ -35,7 +39,6 @@ svg.max-h-3xl.w-full(
       :fill="getNoteColor(i)",
     )
     text(
-      style="user-select:none;transition:all 300ms ease"
       :fill="scales.minor.steps[i] ? 'hsla(0,0%,0%,0.8)' : 'hsla(0,0%,100%,0.9)'"
       font-family="Commissioner, sans-serif"
       font-size="4px"
@@ -44,15 +47,13 @@ svg.max-h-3xl.w-full(
       :x="getCircleCoord(i).x",
       :y="getCircleCoord(i).y + 0.5",
     ) {{ notes[i].name }} 
-  g(
+  g.cursor-pointer(
     @mousedown="playChord()"
     @touchstart.prevent.stop="playChord()"
     @touchend="stopChord()"
     @touchcancel="stopChord()"
     @mouseup="stopChord()"
     @mouseleave="stopChord()"
-    style="cursor:pointer;user-select:none;transition: all 300ms ease"
-    class="hover:opacity-97"
   )
     circle(
       :cx="50"
@@ -60,11 +61,12 @@ svg.max-h-3xl.w-full(
       :r="12"
       :stroke-width="2"
       :stroke-opacity="0.6"
-      style="transition: fill 300ms ease"
-      :style="{ fill: colors.lch, stroke: colors.hsl }"
+      :fill="colors.lch"
+      :stroke="colors.hsl"
+
     )
     text(
-      :style="{ fill: pitchColor(globalScale.tonic) }"
+      :fill="pitchColor(globalScale.tonic)"
       x="50",
       y="50",
       font-weight="bold"
@@ -74,8 +76,7 @@ svg.max-h-3xl.w-full(
       dominant-baseline="middle"
       ) {{ notes[globalScale.tonic].name }}{{ !chord.empty ? chord.aliases[0] : '' }}
   text(
-    style="cursor:pointer;user-select:none"
-    :style="{ fill: pitchColor(globalScale.tonic) }"
+    :fill="pitchColor(globalScale.tonic)"
     x="50",
     y="58",
     font-weight="normal"
@@ -87,8 +88,7 @@ svg.max-h-3xl.w-full(
   text(
     v-if="!scaleType.get(scaleChroma).empty"
     @click="$emit('clearScale')"
-    :style="{ fill: pitchColor(globalScale.tonic) }"
-    style="cursor:pointer;user-select:none"
+    :fill="pitchColor(globalScale.tonic)"
     x="50",
     y="63",
     font-weight="normal"
@@ -104,7 +104,6 @@ svg.max-h-3xl.w-full(
     :stroke="pitchColor(line?.[1])"
     stroke-linecap="round"
     stroke-width="0.5"
-    style=" transition: all 300ms ease"
     :x1="getCircleCoord(line?.[0], 12, 30).x",
     :y1="getCircleCoord(line?.[0], 12, 30).y",
     :x2="getCircleCoord(line?.[1], 12, 30).x",
@@ -114,10 +113,14 @@ svg.max-h-3xl.w-full(
 </template>
 
 <script setup>
-import { notes, pitchColor, scales, isInChroma, getCircleCoord } from 'chromatone-theory'
+import { notes, pitchColor, scales, isInChroma, getCircleCoord, rotateArray } from 'chromatone-theory'
 import { lchToHsl, chromaColorMix } from "@use/colors.js";
 import { Chord, Note } from '@tonaljs/tonal'
 import { scaleType, chordType, globalScale } from '@use/theory'
+import { Frequency } from 'tone'
+import { midiOnce, midiAttack, midiRelease, midiPlay, midiStop } from '@use/midi.js'
+import { synthOnce, synthAttack, synthRelease } from '@use/synth.js'
+
 const props = defineProps({
   chroma: {
     type: String,
@@ -144,7 +147,7 @@ const scaleList = computed(() => {
 })
 
 const scaleLines = computed(() => {
-  let arr = rotate(props.scaleChroma.split(''), -globalScale.tonic)
+  let arr = rotateArray(props.scaleChroma.split(''), -globalScale.tonic)
   let lines = []
   let step = 0
   let last = 0
@@ -192,10 +195,6 @@ function react(num) {
   }
 }
 
-function rotate(arr, count = 1) {
-  return [...arr.slice(count, arr.length), ...arr.slice(0, count)];
-};
-
 function replaceAt(string, index, replace) {
   return string.substring(0, index) + replace + string.substring(index + 1);
 }
@@ -210,12 +209,6 @@ function getNoteColor(n) {
   else return 'hsla(0,0%,10%,1)'
 }
 
-import { Frequency } from 'tone'
-import { midiOnce, midiAttack, midiRelease } from '@use/midi.js'
-import { synthOnce, synthAttack, synthRelease } from '@use/synth.js'
-
-
-
 function playNote(note = 0, octave = 0) {
   if (globalScale.tonic > 0 && note < globalScale.tonic) {
     note = note + 12
@@ -227,7 +220,7 @@ function playNote(note = 0, octave = 0) {
 }
 
 const chordNotes = computed(() => {
-  let shiftChroma = rotate(props.chroma, -globalScale.tonic)
+  let shiftChroma = rotateArray(props.chroma, -globalScale.tonic)
   let chOct = notes.map((n, i) => {
     let oct = 4
     if (i + 9 < globalScale.tonic) oct = 5
@@ -249,30 +242,31 @@ function playChordOnce() {
     chordNotes.value.forEach((note, i) => {
       synthOnce(note, '8n', `+${i / 3}`)
     })
-    synthOnce(chordNotes.value, '4n', `+${chordNotes.value.length / 3}`)
+    synthOnce(chordNotes.value, '4n', `+${(chordNotes.value.length + 1) / 3}`)
   });
 }
 
 function playChord() {
   chordNotes.value.forEach(name => {
-    midiAttack(name)
+    midiPlay(name)
   })
   synthAttack(chordNotes.value)
 }
 
 function stopChord() {
   chordNotes.value.forEach(name => {
-    midiRelease(name)
+    midiStop(name)
   })
   synthRelease(chordNotes.value)
 }
 
 </script>
 
-<style   scoped>
+<style scoped>
 .around,
 .note,
-.line {
-  transition: all 400ms ease-in-out;
+.line,
+.transit {
+  transition: all 300ms ease-in-out;
 }
 </style>

@@ -6,5 +6,5 @@ cover: apps/compass.svg
 date: 2021-04-20
 ---
 <client-only>
-  <chroma-tool />
+  <chroma-compass />
 </client-only>

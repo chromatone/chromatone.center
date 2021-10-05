@@ -1,5 +1,6 @@
 <template lang="pug">
-.flex.flex-col.items-center.mb-8.p-4
+.fullscreen-container.mb-8.p-4.rounded-2xl.transition-all.duration-800.ease-out(ref="screen" :style="{ backgroundColor: mix.current }")
+  full-screen.absolute.top-2.right-2(:el="screen")
   svg.min-h-xl.max-h-3xl.w-full(
     version="1.1",
     baseProfile="full",
@@ -64,7 +65,8 @@
           :to="arc.to"
           :fill="generateTone(arc.from).toHex()"
           :stroke="generateTone(arc.from).toHex()"
-          @click="mix.hue = arc.from"
+          @mousedown="mix.hue = arc.from"
+          @touchstart="mix.hue = arc.from"
         )
       g#coords.pointer-events-none(
         :stroke="mix.info.dark ? 'white' : 'black'"
@@ -158,25 +160,30 @@
           x="-5"
           y="-2"
         ) {{ paramNames[mix.space][1] }} {{ mix.sat.toFixed(1) }}
-  .flex.flex-wrap.items-center.justify-center
+  .flex.flex-wrap.items-center.justify-center(:style="{ color: mix.info.dark ? '#FFF' : '#000' }")
     .p-2.font-bold.text-xl Harmony
-    button.p-1.capitalize.border-1.shadow-md.m-2(
+    button.p-1.capitalize.border-2.shadow-md.m-2.rounded-lg.border-dark-300(
       v-for="(angles, harm) in harmonies" :key="harm"
       :class="{ active: harm == mix.harmony }"
+      :style="{ backgroundColor: mix.info.dark ? '#333e' : '#eeee' }"
       @click="mix.harmony = harm"
+
     ) 
       .p-1.mb-1 {{ harm }}
       .flex.justify-center
-        .p-4.flex-1(v-for="(step) in harmonies[harm]" :key="step" 
-        :style="{ backgroundColor: generateTone(mix.hue + step).toHex() }"
+        .p-4.flex-1.rounded(
+          v-for="(step) in harmonies[harm]" :key="step" 
+          :style="{ backgroundColor: generateTone(mix.hue + step).toHex() }"
         )
 </template>
 
 <script setup>
-import { reactive, computed } from 'vue'
 import { getColorInfo } from '@use/colors.js'
 import { colord } from 'colord'
+import { clampNum } from '@use/theory'
 import { useTransition, TransitionPresets, useStorage } from '@vueuse/core'
+
+const screen = ref()
 
 const harmonies = {
   monochromatic: [0],
@@ -247,21 +254,11 @@ function onDragS(drag) {
   mix.sat = clampNum(mix.sat, -drag.delta[1] / 8)
 }
 
-function clampNum(main, delta, min = 0, max = 100) {
-  let num = Number(main) + Number(delta)
-  if (num < min) {
-    num = min
-  }
-  if (num > max) {
-    num = max
-  }
-  return num
-}
 
 </script>
 
 <style scoped>
 button.active {
-  @apply shadow-sm border-dark-300;
+  @apply shadow-sm border-light-300;
 }
 </style>

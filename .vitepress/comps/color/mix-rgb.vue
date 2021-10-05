@@ -1,5 +1,6 @@
 <template lang="pug">
-.flex.flex-col.items-center.mb-8.p-4
+.fullscreen-container.mb-8.p-4.rounded-2xl.transition-all.duration-800.ease-out(ref="screen" :style="{ backgroundColor: mix.rgb }")
+  full-screen.absolute.top-2.right-2(:el="screen")
   svg.max-h-3xl.w-full(
     version="1.1",
     baseProfile="full",
@@ -13,8 +14,6 @@
       r="50"
       cx=50
       cy=50
-      :stroke="mix.rgb"
-      stroke-width="2"
     )
     g#sources
       circle(
@@ -105,6 +104,8 @@ const mix = reactive({
   b: useStorage('blue', 190),
   rgb: computed(() => `rgb(${mix.r},${mix.g},${mix.b})`)
 });
+
+const screen = ref()
 
 function onDrag(drag) {
   let id = drag.event.target.id

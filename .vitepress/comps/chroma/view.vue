@@ -1,7 +1,7 @@
 <template lang="pug">
-.flex.justify-center(v-if="!tuner.initiated" )
-  start-button(@click="init()") Start
-.flex.flex-col(v-else)
+.fullscreen-container(ref="screen")
+  start-button.absolute(v-if="!tuner.initiated" @click="init()") Start
+  full-screen.absolute.bottom-6.right-6.z-30(:el="screen")
   svg.max-h-3xl.w-full(
   version="1.1",
   baseProfile="full",
@@ -53,6 +53,9 @@
 import { pitchColor, rotateArray, scales, notes, getCircleCoord } from 'chromatone-theory'
 import { useTuner } from '@use/tuner.js'
 const { init, tuner, chain } = useTuner();
+
+const screen = ref();
+
 </script>
 
 <style scoped>

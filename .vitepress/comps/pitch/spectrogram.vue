@@ -1,13 +1,16 @@
 <template lang="pug">
-.flex.justify-center(v-if="!state.initiated" )
-  start-button(@click="initiate()") Start
-.flex.flex-col
-  canvas#spectrogram.m-4.h-30em.max-w-full.rounded-md(
+.flex.justify-center( )
+
+.fullscreen-container(ref="plot")
+  canvas#spectrogram.m-4.h-full.min-h-30em.w-full.rounded-md(
     :width="state.width"
     :height="state.height"
   )
+  start-button.absolute(v-if="!state.initiated" @click="initiate()") Start
+  full-screen.absolute.bottom-6.right-6(:el="plot")
 .flex.justify-center
   sqnob(v-model="state.speed" param="speed" :min="1" :max="3" :step="0.5")
+    
 </template>
   
 <script setup>
@@ -15,10 +18,12 @@ import AudioMotionAnalyzer from 'audiomotion-analyzer'
 import { freqPitch } from 'chromatone-theory'
 import { UserMedia } from 'tone'
 
+const plot = ref(null)
+
 let mic, canvas, ctx, tempCanvas, tempCtx
 const state = reactive({
   initiated: false,
-  width: 400,
+  width: 800,
   height: 240,
   speed: 1
 })
@@ -31,7 +36,7 @@ onMounted(() => {
   tempCtx = tempCanvas.getContext('2d')
   tempCanvas.width = state.width
   tempCanvas.height = state.height
-  ctx.fillStyle = '#ddd'
+  ctx.fillStyle = '#000'
   ctx.fillRect(0, 0, state.width, state.height)
 });
 

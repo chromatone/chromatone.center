@@ -1,8 +1,9 @@
 <template lang="pug">
-.flex.flex-col.-my-8.items-center
-  start-button(@click="start()", v-if="!tuner.running") Start tuner
-  svg#tuner.rounded-xl.w-full.max-h-3xl.-z3(
-  v-if="tuner.running"
+.fullscreen-container(ref="display")
+  start-button.absolute.z-20(@click="start()", v-if="!tuner.running") Start tuner
+  full-screen.absolute.bottom-6.right-6.z-30(:el="display")
+  svg#tuner.rounded-xl.w-full.h-full.min-h-3xl.-z3(
+  :opacity="tuner.running ? 1 : 0.3"
   version="1.1",
   baseProfile="full",
   viewBox="0 0 400 300",
@@ -13,6 +14,7 @@
       style="transition:all 300ms ease; "
       width="100%"
       height="100%"
+      rx="5"
       :fill="background"
     )
     line(
@@ -103,6 +105,7 @@ import { computed } from 'vue'
 import { pitchColor } from 'chromatone-theory'
 import { useTuner } from '@use/tuner.js'
 
+const display = ref(null)
 
 const { init, tuner, chain } = useTuner();
 

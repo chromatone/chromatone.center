@@ -1,6 +1,5 @@
 <template lang="pug">
 .flex.flex-col.-my-8
-  start-button(@click="start()", v-if="!tuner.running") Start rolling 
   .flex.p-8.items-center(v-if="tuner.note")
     .flex-1.text-center.font-bold.text-4xl.transition-all.duration-200(:style="{ color: tuner.note.color }") {{ tuner.note?.name }}{{ tuner.note?.octave }} 
     .btn(@click="draw.running = !draw.running")
@@ -8,8 +7,16 @@
       la-pause(v-else)
     .btn(@click="clear()")
       la-times
+    sqnob(v-model="draw.speed" min="4" max="20" param="speed")
     .flex-1.text-center.font-bold  {{ tuner.bpm.toFixed(1) }} BPM
-  canvas(ref="roll" )
+
+  .fullscreen-container(ref="roller")
+    start-button.absolute(@click="start()", v-if="!tuner.running") Start rolling 
+    full-screen.absolute.bottom-6.right-6.z-30(:el="roller")
+    canvas.w-full.h-full(    
+      :width="1920"
+      :height="1080"
+      ref="roll" )
 </template>
 
 <script setup>
@@ -19,11 +26,13 @@ import { useTuner } from '@use/tuner.js'
 
 const octaves = [0, 1, 2, 3, 4, 5, 6, 7, 8]
 
+const roller = ref(null)
+
 const { init, tuner, chain } = useTuner();
 
 const draw = reactive({
   running: true,
-  speed: 4,
+  speed: useStorage('pitch-roll-speed', 4),
   runnerWidth: 2,
   runnerAhead: 4,
   maxPlotFrequency: 880,
@@ -38,8 +47,8 @@ let ctx
 
 onMounted(() => {
   ctx = roll.value.getContext('2d')
-  roll.value.width = window.innerWidth
-  roll.value.height = window.innerHeight / 1.5
+  // roll.value.width = window.innerWidth
+  // roll.value.height = window.innerHeight
 })
 
 watch(() => tuner?.frame, frame => {
@@ -58,12 +67,12 @@ watch(() => tuner?.frame, frame => {
 
   ctx.beginPath()
   ctx.fillStyle = tuner.note.color
-  ctx.fillRect(x + draw.runnerAhead, 0, draw.runnerWidth, roll.value.height)
+  ctx.fillRect(x + draw.speed, 0, draw.runnerWidth, roll.value.height)
 
   //notes
   if (!tuner.note.silent) {
     const y = roll.value.height - (tuner.note.value - draw.minPlotNote) / (draw.maxPlotNote - draw.minPlotNote) * roll.value.height
-    ctx.arc(x - 5, y, 5, 0, 4 * Math.PI)
+    ctx.arc(x - 8, y, 8, 0, 4 * Math.PI)
     ctx.fillStyle = tuner.note.color
     ctx.fill()
   }

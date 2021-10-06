@@ -10,6 +10,12 @@ pentatonics:
   minor:
     title: Minor pentatonic
     chroma: '100101010010'
+  suspended:
+    title: Suspended pentatonic
+    chroma: '101001010010'
+  blues:
+    title: Blues minor pentatonic
+    chroma: '100101001010'
   ms7:
     title: 'Minor #7 pentatonic'
     chroma: '100101010001'

@@ -4,12 +4,13 @@
   .flex.flex-col.justify-center.items-center.relative(ref="screen" class="bg-light-600 dark:bg-dark-700")
     start-button.absolute(v-if="!roll.initiated" @click="initiate()") Start
     full-screen.absolute.bottom-6.right-6.z-30(:el="screen")
-    canvas#spectrogram.m-4.w-full.rounded-md(
+    .absolute.top-6.left-4.text-2xl x{{ roll.speed }}
+    canvas#spectrogram.m-4.w-full.rounded-md.cursor-pointer(
+      v-drag="dragScreen"
       :width="roll.width"
       :height="roll.height"  
     )
   .flex.justify-center
-    sqnob(v-model="roll.speed" param="speed" :min="2" :max="12" :step="0.5")
     choose(v-model="roll.direction" :variants="{ 1: 'Vertical', 0: 'Horizontal' }")
 </template>
 
@@ -17,6 +18,7 @@
 import { useRafFn } from '@vueuse/core'
 import { rotateArray } from 'chromatone-theory'
 import { useTuner } from '@use/tuner.js'
+import { clampNum } from '@use/theory'
 const { init, tuner, chain } = useTuner();
 
 const screen = ref()
@@ -26,9 +28,10 @@ const roll = reactive({
   initiated: false,
   width: 1920,
   height: 1080,
-  speed: useStorage('chroma-roll-speed', 1),
-  direction: useStorage('chroma-roll-direction', 1),
-  notes: computed(() => rotateArray(tuner.chroma, -3))
+  speed: computed(() => Math.floor(roll.speedCount / 100)),
+  direction: useStorage('chroma-roll-direction', 0),
+  notes: computed(() => rotateArray(tuner.chroma, -3)),
+  speedCount: useStorage('chroma-roll-speed', 100),
 })
 
 onMounted(() => {
@@ -41,6 +44,10 @@ onMounted(() => {
   ctx.fillStyle = '#333'
   ctx.fillRect(0, 0, roll.width, roll.height)
 });
+
+function dragScreen(drag) {
+  roll.speedCount = clampNum(roll.speedCount, -drag.delta[0] + drag.delta[1], 100, 1200)
+}
 
 function initiate() {
   if (roll.initiated) return

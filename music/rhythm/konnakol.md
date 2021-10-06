@@ -29,7 +29,7 @@ date: 2021-09-22
 - eka |4 = 4
 - rupaka O + |4 = 6
 - triputa |3+ 2O =  7 -> Chaturashra-naDe Chaturashra-jaati triputa taLa = Adi tala
-- jhфmpa |7 + U+ O = 10
+- jhampa |7 + U+ O = 10
 - dhruva |4+O+2|4 = 14
 - matya |4+O+|4 = 10
 - atta 2|5+2O = 14

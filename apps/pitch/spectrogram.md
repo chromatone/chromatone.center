@@ -11,5 +11,9 @@ usefulLinks:
 ---
 
 <client-only>
-  <pitch-spectrogram />
+  <pitch-spectrogram class="mb-16" />
 </client-only>
+
+> <la-info-circle /> Drag to the left to speed up the roll speed.
+
+The colorful spectrogram is a powerful tool for visual audio analysis. Each particular frequency in the spectrum gets it's own position on the vertical axis along with the corresponding Chromatone color. The pitch spectrum is continous and the graph shows all the partials in a rather high resolution. The colors of the lines help differentiate pitches and overtones in any incoming audio signal. The quality of analysis is based primarily on the quality of the signal – thus a good microphone is recommended for best experience.

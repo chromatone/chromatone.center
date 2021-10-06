@@ -1,5 +1,5 @@
 <template lang="pug">
-svg.select-none.max-w-12em(
+svg.select-none.max-w-12em.m-2(
   version="1.1",
   baseProfile="full",
   viewBox="0 0 100 100",
@@ -9,24 +9,30 @@ svg.select-none.max-w-12em(
   text-anchor="middle",
   dominant-baseline="middle"
 )
+  rect(
+    width="100"
+    height="100"
+    rx="8"
+    opacity="0.6"
+    :fill="chromaColorMix(chroma, actualPitch).hsl"
+  )
   g.transition-all.duration-400.cursor-pointer(
     v-for="(note,n) in actualChroma" :key="n" 
-    :transform="`translate(${getRect(n).x},${getRect(n).y})`"
+    :transform="getRect(n)"
     @mousedown="globalScale.tonic = n"
     :opacity="note == '1' ? 1 : 0.62"
   )
     rect(
-      :x="0"
-      :y="0"
-      rx="4"
-      :width="state.width / 4"
-      :height="state.height / 4"
+      :x="2"
+      :y="2"
+      rx="6"
+      :width="state.width / 4 - 4"
+      :height="state.height / 4 - 4"
       :fill="colord(note == '1' ? pitchColor(n, 3) : notes[n].pos == 0 ? 'hsl(0,0%,85%)' : 'hsl(0,0%,40%)').toHex()"
-      :opacity="note == '1' ? 1 : 0.62"
     )
     text(
       v-if="note == '1'"
-      :y="state.height / 8"
+      :y="state.height / 8 + 1"
       :x="state.width / 8"
       :font-size="8"
       font-weight="bold"
@@ -34,11 +40,12 @@ svg.select-none.max-w-12em(
       ) {{ notes[n]?.name }}
     text(
       v-if="note == '0'"
-      :y="state.height / 8"
+      :y="state.height / 8 + 1"
       :x="state.width / 8"
-      font-size="10px"
+      font-size="6px"
       font-weight="normal"
       fill="#333"
+      opacity="0.5"
       ) {{ n }}
 
   g.center.cursor-pointer(
@@ -52,13 +59,11 @@ svg.select-none.max-w-12em(
   )
     rect(
       rx="4"
-      :x="state.width / 4"
-      :y="state.width / 4"
-      :width="state.width / 2"
-      :height="state.height / 2"
-      :fill="pitch === false ? 'none' : chromaColorMix(chroma, actualPitch).hsl"
-      :stroke="pitchColor(globalScale.tonic)"
-      stroke-width="2px"
+      :x="state.width / 4 + 2"
+      :y="state.width / 4 + 2"
+      :width="state.width / 2 - 4"
+      :height="state.height / 2 - 4"
+      :fill="pitch === false ? 'none' : pitchColor(actualPitch, 3)"
       )
     text(
       :x="state.width / 2"
@@ -70,10 +75,10 @@ svg.select-none.max-w-12em(
     text.function(
       v-if="props.roman"
       :x="state.width / 2"
-      :y="state.height / 2 + 15"
-      font-size="10px"
-      font-weight="bold"
-      :fill="pitchColor(globalScale.tonic, 3)"
+      :y="state.height / 2 + 13"
+      font-size="8px"
+      font-weight="normal"
+      fill="white"
       ) {{ props.roman }}
 </template>
 
@@ -132,10 +137,7 @@ function getRect(n, w = state.width, h = state.height) {
       case 11: posX = 0; posY = 1; break;
     }
   }
-  return {
-    x: posX * w / 4,
-    y: posY * h / 4
-  }
+  return `translate(${posX * w / 4},${posY * h / 4})`
 }
 
 </script>

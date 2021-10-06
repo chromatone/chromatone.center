@@ -9,11 +9,12 @@ svg.select-none.max-w-12em.my-4.mx-auto(
   text-anchor="middle",
   dominant-baseline="middle"
 )
-  //- circle(
+  circle(
     cx="0"
     cy="0"
     r="8"
-    :fill="pitch === false ? 'none' : colord(pitchColor(pitch)).toHex()"
+    opacity="0.5"
+    :fill="chromaColorMix(chroma, actualPitch).hsl"
     )
   g(v-for="(note,n) in actualChroma" :key="n")
     line(
@@ -24,7 +25,7 @@ svg.select-none.max-w-12em.my-4.mx-auto(
       v-if="note == '1'"
       stroke-linecap="square"
       stroke-width="3.92"
-      :stroke="note == '1' ? colord(pitchColor(n)).toHex() : 'none'"
+      :stroke="note == '1' ? colord(pitchColor(n, 3)).toHex() : 'none'"
       )
   g.cursor-pointer(
     v-for="(note,n) in actualChroma" :key="n"
@@ -57,9 +58,7 @@ svg.select-none.max-w-12em.my-4.mx-auto(
       cx="0"
       cy="0"
       r="5"
-      :fill="pitch === false ? 'none' : chromaColorMix(chroma, actualPitch).hsl"
-      :stroke="pitchColor(globalScale.tonic)"
-      stroke-width="0.4px"
+      :fill="pitch === false ? 'none' : pitchColor(actualPitch, 3)"
       )
     text(
       y="0.3"
@@ -69,9 +68,9 @@ svg.select-none.max-w-12em.my-4.mx-auto(
       ) {{ pitch === false ? '' : typeof pitch == 'string' ? pitch : notes[actualPitch]?.name }}{{ chord.aliases[0] }}
     text(
       y="3"
-      font-size="2px"
+      font-size="1.8px"
       font-weight="normal"
-      :fill="pitchColor(globalScale.tonic, 3)"
+      fill="white"
       ) {{ type }}
 </template>
 

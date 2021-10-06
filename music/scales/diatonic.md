@@ -53,4 +53,4 @@ These scales always have a tonal center to which all the notes relate and lead t
 
 ## The 7 Modes of the Diatonic Scale
 
-<chroma-collection :collection="$frontmatter.diatonic" />
+<chroma-profile-collection :collection="$frontmatter.diatonic" />

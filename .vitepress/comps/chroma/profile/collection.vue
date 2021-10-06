@@ -18,7 +18,7 @@ const props = defineProps({
   }
 });
 
-const current = useStorage(`current-${Object.keys(props.collection)[0]}`, Object.keys(props.collection)[0])
+const current = ref(Object.keys(props.collection)[0])
 </script>
 
 <style scoped>

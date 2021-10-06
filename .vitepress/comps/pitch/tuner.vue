@@ -7,7 +7,6 @@
   version="1.1",
   baseProfile="full",
   viewBox="0 0 400 300",
-  style="touch-action:none"
   xmlns="http://www.w3.org/2000/svg",
   )
     rect(
@@ -101,7 +100,6 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
 import { pitchColor } from 'chromatone-theory'
 import { useTuner } from '@use/tuner.js'
 

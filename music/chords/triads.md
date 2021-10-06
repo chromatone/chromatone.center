@@ -43,7 +43,7 @@ A major triad can also be described by its intervals: the interval between the b
 
 In Western classical music from 1600 to 1820 and in Western pop, folk and rock music, a major chord is usually played as a triad. Along with the minor triad, the major triad is one of the basic building blocks of tonal music in the Western common practice period and Western pop, folk and rock music. It is considered consonant, stable, or not requiring resolution. In Western music, a minor chord "sounds darker than a major chord", giving off a sense of sadness or somber feeling.
 
-<chroma-collection :collection="$frontmatter.majmin" />
+<chroma-profile-collection :collection="$frontmatter.majmin" />
 
 A unique particularity of the minor chord is that this is the only chord of three notes in which the three notes have one harmonic – hearable and with a not too high row – in common (more or less exactly, depending on the tuning system used). This harmonic, common to the three notes, is situated 2 octaves above the high note of the chord. This is the sixth harmonic of the root of the chord, the fifth of the middle note, and the fourth of the high note:
 
@@ -68,7 +68,7 @@ Each suspended chord has two inversions. Suspended second chords are inversions 
 
 Sevenths on suspended chords are "virtually always minor sevenths", while the 9sus4 chord is similar to an eleventh chord and may be notated as such. For example, C9sus4 (C–F–G–B♭–D) may be notated C11 (C–G–B♭–D–F). 
 
-<chroma-collection :collection="$frontmatter.sus" />
+<chroma-profile-collection :collection="$frontmatter.sus" />
 
 ---
 
@@ -85,7 +85,7 @@ If the music is in a minor key, diminished triads can also be found on the raise
 
 The leading-tone diminished triad and supertonic diminished triad are usually found in first inversion (viio6 and iio6, respectively) since the spelling of the chord forms a diminished fifth with the bass. This differs from the fully diminished seventh chord, which commonly occurs in root position. In both cases, the bass resolves up and the upper voices move downwards in contrary motion.
 
-<chroma-collection :collection="$frontmatter.mod" />
+<chroma-profile-collection :collection="$frontmatter.mod" />
 
 The term augmented triad arises from an augmented triad being considered a major chord whose top note (fifth) is raised. When using popular-music symbols, it is indicated by the symbol "+" or "aug". For example, the augmented triad built on C, written as C+, has pitches C–E–G♯:
 
@@ -103,4 +103,4 @@ A synthetic chord is a made-up or non-traditional (synthetic) chord (collection 
 >
 > — Sitsky (1994)
 
-<chroma-collection :collection="$frontmatter.synthetic" />
+<chroma-profile-collection :collection="$frontmatter.synthetic" />

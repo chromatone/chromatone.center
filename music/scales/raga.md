@@ -1,7 +1,7 @@
 ---
 title: Indian Raga
 subtitle: Improvisational music framework
-date: 2021-09-14
+date: 2021-09-03
 tags: scales
 ---
 

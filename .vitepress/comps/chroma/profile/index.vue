@@ -5,6 +5,7 @@
   chroma-waveform(
     :chroma="chroma" 
     )
+  abc-render(v-if="abc" :abc="abc")
   .flex.flex-col.items-center.justify-center.p-4.w-full.relative
     a.p-2.absolute.top-8px.right-2em(
       v-if="link"
@@ -12,20 +13,13 @@
       target="_blank"
     )
       la-wikipedia-w
-    .text-2xl.font-bold.capitalize.mb-4(
-      v-if="title || chord.name || chord.aliases[0] || scale.name"
+    .text-2xl.font-bold.capitalize.mb-2(
       ) {{ notes[globalScale.tonic].name }} {{ chord.name || chord.aliases[0] || scale.name }} {{ scale.aliases[0] ? `(${scale.aliases[0]})` : '' }}
-    .flex.flex-wrap.mb-2
-      .p-1(v-for="interval in intervals" :key="interval") {{ interval }}
-    .flex.flex-wrap.mb-2
-      .p-1(v-for="(semitone,s) in semitones" :key="s") {{ semitone }}
-  chroma-piano.h-5rem.mx-auto(:chroma="chroma")
-  chroma-row(:chroma="chroma")
+  chroma-piano.h-5rem.mx-auto.mb-4(:chroma="chroma")  
+  chroma-row.mb-4.mx-2(v-model:chroma="chroma")
   chroma-circle.flex-1.min-w-200px.pl-4(:chroma="chroma")
-  chroma-bars.flex-1.p-6(:chroma="chroma")
-  abc-render(v-if="abc" :abc="abc")
-
-  chroma-square.p-4(:chroma="chroma")
+  chroma-stack.flex-1.mx-4(:chroma="chroma")
+  chroma-square.mx-4(:chroma="chroma")
   .flex.w-full.p-6(v-if="description") {{ description }}
 
 </template>
@@ -53,19 +47,19 @@ const props = defineProps({
     default: ''
   }
 });
-import { Interval } from '@tonaljs/tonal'
+import { Interval, Pcset } from '@tonaljs/tonal'
 import { notes } from 'chromatone-theory'
 import { chromaColorMix } from "@use/colors.js";
 import { playChroma, chordType, scaleType, stopChroma, globalScale } from '@use/theory.js'
 
+const info = reactive({
+  chord: computed(() => chordType.get(props.chroma)),
+  scale: computed(() => scaleType.get(props.chroma)),
+})
+
 const chord = computed(() => chordType.get(props.chroma));
 const scale = computed(() => scaleType.get(props.chroma));
-const intervals = computed(() => {
-  let int = []
-  if (!chord.value.empty) { int = chord.value.intervals }
-  if (!scale.value.empty) { int = scale.value.intervals }
-  return int
-});
+const intervals = computed(() => Pcset.intervals(props.chroma));
 const semitones = computed(() => {
   let arr = []
   if (!intervals.value) return []

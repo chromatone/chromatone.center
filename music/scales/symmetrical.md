@@ -1,7 +1,7 @@
 ---
 title: Symmetrical scales
 subtitle: Modes of limited transpostions and interval cycles
-date: 2021-04-03
+date: 2021-09-12
 tags: scales
 limited:
   third:
@@ -89,4 +89,4 @@ The sixth mode has the intervals tone, tone, semitone, semitone, tone, tone, sem
 
 The seventh mode contains the intervals semitone, semitone, semitone, tone, semitone, semitone, semitone, semitone, tone, semitone – it has six transpositions, like the tritone, and five modes. 
 
-<chroma-collection :collection="$frontmatter.limited" />
+<chroma-profile-collection :collection="$frontmatter.limited" />

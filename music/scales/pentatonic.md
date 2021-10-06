@@ -58,7 +58,7 @@ Although various hemitonic pentatonic scales might be called minor, the term is 
 
 The standard tuning of a guitar uses the notes of an E minor pentatonic scale: E-A-D-G-B-E, contributing to its frequency in popular music.
 
-<chroma-collection :collection="$frontmatter.pentatonics" />
+<chroma-profile-collection :collection="$frontmatter.pentatonics" />
 
 
 ## Japanese scales
@@ -69,4 +69,4 @@ The most common version of the Japanese mode is a somewhat inaccurate term for a
 
 In addition to being used almost exclusively in traditional Japanese compositions, it is found frequently in video game music and the pieces of contemporary composers such as Anne Boyd. 
 
-<chroma-collection :collection="$frontmatter.japanese" />
+<chroma-profile-collection :collection="$frontmatter.japanese" />

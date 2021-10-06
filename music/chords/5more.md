@@ -50,6 +50,6 @@ five:
 
 ## Pentads – the five note chords
 
-<chroma-collection :collection="$frontmatter.five" />
+<chroma-profile-collection :collection="$frontmatter.five" />
 
 <youtube-embed video="RFH1LD4KdWs" />

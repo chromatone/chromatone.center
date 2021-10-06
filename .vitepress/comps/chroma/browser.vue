@@ -59,16 +59,12 @@ const filtered = computed(() => {
 
 const sorted = computed(() => {
   let arr = filtered.value
-
-  arr = arr.sort((a, b) => {
+  return arr.sort((a, b) => {
     if (control.value.count) {
       return a?.intervals.length < b?.intervals.length ? -1 : 1
     }
-    return a?.setNum < b?.setNum ? -1 : 1
+    return a.setNum < b.setNum ? -1 : 1
   })
-
-
-  return arr
 });
 
 </script>

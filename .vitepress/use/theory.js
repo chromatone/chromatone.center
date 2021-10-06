@@ -24,6 +24,21 @@ export const scaleType = ScaleType
 export const chordList = ChordType.all()
 export const scaleList = ScaleType.all()
 
+export const intervals = [
+  '1P',
+  '2m',
+  '2M',
+  '3m',
+  '3M',
+  '4P',
+  'TT',
+  '5P',
+  '6m',
+  '6M',
+  '7m',
+  '7M',
+]
+
 let noteNames = []
 
 const naturals = [

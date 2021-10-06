@@ -1,7 +1,11 @@
-***
-
-## title: Scales&#xA;subtitle: A scale is a subset of 12 chromatic pitches&#xA;tags: music&#xA;list: scales&#xA;cover: theory/notation/gray-notes.svg&#xA;date: 2021-08-28
-
+---
+title: Scales
+subtitle: A scale is a subset of 12 chromatic pitches
+tags: music
+list: scales
+cover: theory/notation/gray-notes.svg
+date: 2021-08-28
+---
 There is no rule stating how many notes a scale must include. The most common scales in Western music contain seven pitches and are thus called “heptatonic” (meaning “seven tones”). Other scales have fewer notes—five-note “pentatonic” scales are quite common in popular music. There’s even a scale that uses all 12 pitches: it’s called the “chromatic” scale.
 
 What we have in the 12-tone system is a binary "word" made of 12 bits. We can assign one bit to each degree of the chromatic scale, and use the power of binary arithmetic and logic to do some pretty awesome analysis with them. When represented as bits it reads from right to left - the lowest bit is the root, and each bit going from right to left ascends by one semitone.
@@ -14,7 +18,7 @@ This means that every possible combination of tones in the 12-tone set can be re
 
 ## Interval Pattern
 
-Another popular way of representing a scale is by its interval pattern. When I was learning the major scale, I was taught to say aloud: "tone, tone, semitone, tone, tone, tone, semitone". Many music theorists like to represent a scale this way because it's accurate and easy to understand: "TTSTTTS". Having a scale's interval pattern has merit as an intermediary step can make some kinds of analysis simpler. Expressed numerically - which is more convenient for computation - the major scale is \[2,2,1,2,2,2,1].
+Another popular way of representing a scale is by its interval pattern. When I was learning the major scale, I was taught to say aloud: "tone, tone, semitone, tone, tone, tone, semitone". Many music theorists like to represent a scale this way because it's accurate and easy to understand: "TTSTTTS". Having a scale's interval pattern has merit as an intermediary step can make some kinds of analysis simpler. Expressed numerically - which is more convenient for computation - the major scale is [2,2,1,2,2,2,1].
 
 ## Pitch Class Sets
 
@@ -73,18 +77,18 @@ When you play that minor scale, you're not playing "C minor", you're playing the
 
 To compute a mode of the current scale, we "rotate" all the notes down one semitone. Then if the rotated notes have an on bit in the root, then it is a mode of the original scale. It's as if you take the bracelet diagram that we've been using throughout this study, and twist it like a dial so that a different note is at the top, in the root position.
 
-  101010110101 = 2741 - major scale, "ionian" mode
-  110101011010 = 3418 - rotated down 1 semitone - not a scale
-  011010101101 = 1709 - rotated down 2 semitones - "dorian"
-  101101010110 = 2902 - rotated down 3 semitones - not a scale
-  010110101011 = 1451 - rotated down 4 semitones - "phrygian"
-  101011010101 = 2773 - rotated down 5 semitones - "lydian"
-  110101101010 = 3434 - rotated down 6 semitones - not a scale
-  011010110101 = 1717 - rotated down 7 semitones - "mixolydian"
-  101101011010 = 2906 - rotated down 8 semitones - not a scale
-  010110101101 = 1453 - rotated down 9 semitones - "aeolian"
-  101011010110 = 2774 - rotated down 10 semitones - not a scale
-  010101101011 = 1387 - rotated down 11 semitones - "locrian"
+- 101010110101 = 2741 - major scale, "ionian" mode
+-  110101011010 = 3418 - rotated down 1 semitone - not a scale
+-  011010101101 = 1709 - rotated down 2 semitones - "dorian"
+-  101101010110 = 2902 - rotated down 3 semitones - not a scale
+-  010110101011 = 1451 - rotated down 4 semitones - "phrygian"
+-  101011010101 = 2773 - rotated down 5 semitones - "lydian"
+-  110101101010 = 3434 - rotated down 6 semitones - not a scale
+-  011010110101 = 1717 - rotated down 7 semitones - "mixolydian"
+-  101101011010 = 2906 - rotated down 8 semitones - not a scale
+-  010110101101 = 1453 - rotated down 9 semitones - "aeolian"
+-  101011010110 = 2774 - rotated down 10 semitones - not a scale
+-  010101101011 = 1387 - rotated down 11 semitones - "locrian"
 			
 
 When we do this to every scale, we see modal relationships between scales, and we also discover symmetries when a scale is a mode of itself on another degree.

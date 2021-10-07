@@ -51,10 +51,10 @@
           :transform="`translate(${(n - 0.5) * neck.fretWidth},0)`"
         )
           circle(
-            :opacity="globalScale.isIn(getNote(string, n)) ? 1 : 0.2"
+            :opacity="globalScale.isIn(getNote(string, n)) ? 1 : 0.1"
             :stroke="neck.isInChord(getNote(string, n)) ? 'currentColor' : 'none'"
             stroke-width="3"
-            :r="neck.isInChord(getNote(string, n)) ? neck.noteSize / 2 - 6 : neck.noteSize / 2 - 10"
+            :r="neck.isInChord(getNote(string, n)) ? neck.noteSize / 2 - 8 : neck.noteSize / 2 - 8"
             :fill="noteColor(string, n)"
           )
           text(
@@ -93,7 +93,7 @@ const neck = reactive({
   height: computed(() => (neck.strings.length - 1) * neck.noteSize),
   width: computed(() => neck.fretNum * neck.fretWidth),
   isInChord: computed(() => Pcset.isNoteIncludedIn(props.chordNotes)),
-  noteSize: 45,
+  noteSize: 36,
   fretWidth: 50,
   fretNum: 20,
 });

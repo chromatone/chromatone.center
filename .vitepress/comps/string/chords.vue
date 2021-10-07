@@ -7,9 +7,9 @@
       :class="{ active: state.instrument.main.name == name }"
       @click="current = name"
       ) {{ name }}
-  .text-xl.font-bold Scale
-  choose-scale.flex-1
-  string-neck.my-4(
+  .text-xl.font-bold.mt-4 Scale
+  choose-scale.flex-1.mb-4
+  string-neck.my-8(
     :instrument="current"
     :chordNotes="Chord.get(state.key + state.suffix).notes"
     )

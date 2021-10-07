@@ -22,7 +22,7 @@ The term scale degree refers to the position of a particular note on a scale rel
 
 In the most general sense, the scale degree is the number given to each step of the scale, usually starting with 1 for tonic. In a more specific sense, scale degrees are given names that indicate their particular function within the scale. This definition implies a functional scale, as is the case in tonal music. 
 
-<img class="max-w-55ch" src="/media/theory/functions.svg" />
+<scale-degrees />
 
 The degrees of the traditional major and minor scales may be identified several ways:
 

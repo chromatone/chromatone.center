@@ -1,5 +1,5 @@
 <template lang="pug">
-.flex.flex-col.cursor-pointer.select-none.p-2.m-2.rounded-lg(
+.flex.flex-col.cursor-pointer.select-none.p-2.m-2.rounded-lg.transition-all.duration-300.ease(
   :style="{ backgroundColor: chromaColorMix(chroma, actualPitch).hsl }"
     @mousedown="playChroma(chroma, actualPitch); pressed = true"
     @touchstart.prevent.stop="playChroma(chroma, actualPitch); pressed = true"
@@ -13,7 +13,7 @@
   ) 
     .font-bold {{ pitch === false ? '' : typeof pitch == 'string' ? pitch : notes[actualPitch]?.name }}{{ chord.aliases[0] }}
     .text-sm(v-if="props.roman") {{ props.roman }}
-  .py-6px.px-8.my-2px.w-full.text-sm.text-center.font-bold.rounded(
+  .py-6px.px-8.my-2px.w-full.text-sm.text-center.font-bold.rounded.transition-all.duration-300.ease(
     style="touch-action:none"
     @mouseenter="hover(step)"
     @touchstart="hover(step)"

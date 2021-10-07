@@ -16,19 +16,19 @@ svg.select-none.max-w-12em.m-2(
     opacity="0.6"
     :fill="chromaColorMix(chroma, actualPitch).hsl"
   )
-  g.transition-all.duration-400.cursor-pointer(
-    v-for="(note,n) in actualChroma" :key="n" 
+  g.transition-all.duration-400.ease-in-out.cursor-pointer(
+    v-for="(note,n) in chroma" :key="n" 
     :transform="getRect(n)"
-    @mousedown="globalScale.tonic = n"
+    @mousedown="globalScale.tonic = (n + actualPitch) % 12"
     :opacity="note == '1' ? 1 : 0.62"
   )
-    rect(
+    rect.transition-all.duration-200.ease-in-out(
       :x="2"
       :y="2"
       rx="6"
       :width="state.width / 4 - 4"
       :height="state.height / 4 - 4"
-      :fill="colord(note == '1' ? pitchColor(n, 3) : notes[n].pos == 0 ? 'hsl(0,0%,85%)' : 'hsl(0,0%,40%)').toHex()"
+      :fill="colord(note == '1' ? pitchColor((n + actualPitch) % 12, 3) : notes[(n + globalScale.tonic) % 12].pos == 0 ? 'hsl(0,0%,85%)' : 'hsl(0,0%,40%)').toHex()"
     )
     text(
       v-if="note == '1'"
@@ -37,16 +37,16 @@ svg.select-none.max-w-12em.m-2(
       :font-size="8"
       font-weight="bold"
       fill="white"
-      ) {{ notes[n]?.name }}
+      ) {{ notes[(n + actualPitch) % 12].name }}
     text(
       v-if="note == '0'"
       :y="state.height / 8 + 1"
       :x="state.width / 8"
       font-size="6px"
       font-weight="normal"
-      fill="#333"
+      fill="black"
       opacity="0.5"
-      ) {{ n }}
+      ) {{ intervals[n] }}
 
   g.center.cursor-pointer(
     @mousedown.prevent.stop="playChroma(chroma, actualPitch); pressed = true"
@@ -57,13 +57,15 @@ svg.select-none.max-w-12em.m-2(
     @mouseleave="stopChroma(chroma, actualPitch); pressed = false"
     :class="{ pressed }"
   )
-    rect(
+    rect.transition-all.duration-400.ease-in-out(
       rx="4"
       :x="state.width / 4 + 2"
       :y="state.width / 4 + 2"
       :width="state.width / 2 - 4"
       :height="state.height / 2 - 4"
       :fill="pitch === false ? 'none' : pitchColor(actualPitch, 3)"
+      :stroke="pitchColor(globalScale.tonic, 3, 1, 0.5)"
+      stroke-width="2"
       )
     text(
       :x="state.width / 2"
@@ -93,16 +95,12 @@ const props = defineProps({
 import { notes, rotateArray, getCircleCoord, pitchColor } from 'chromatone-theory'
 import { colord } from 'colord'
 import { chromaColorMix } from "@use/colors.js";
-import { playChroma, chordType, scaleType, stopChroma, globalScale } from '@use/theory.js'
+import { playChroma, chordType, scaleType, stopChroma, globalScale, intervals } from '@use/theory.js'
 const pressed = ref(false);
 
 const state = reactive({
   width: 100,
   height: 100
-})
-
-const actualChroma = computed(() => {
-  return rotateArray(props.chroma.split(''), -actualPitch.value)
 })
 
 const actualPitch = computed(() => {

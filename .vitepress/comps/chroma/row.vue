@@ -1,8 +1,8 @@
 <template lang="pug">
-.flex.flex-col.items-start.border-2.px-2.pb-2.pt-1.rounded-xl.w-full.relative(
+.flex.flex-col.items-start.border-2.rounded-xl.w-full.relative(
   :style="{ borderColor: pitchColor(globalScale.tonic, 2), backgroundColor: pitchColor(globalScale.tonic, 2, 1, 0.05) }"
 )
-  .flex.flex-wrap.items-center.my-2(
+  .flex.flex-wrap.items-center.justify-between.p-2(
     :class="{ 'w-full': true }"
     ) 
     button.text-button.text-white.font-bold(
@@ -13,19 +13,24 @@
       @touchcancel="stopChroma(chroma)"
       @mouseup="stopChroma(chroma)"
       @mouseleave="stopChroma(chroma)"
-    ) {{ notes[globalScale.tonic].name }}{{ state.chord.aliases[0] }} &nbsp;
+    ) 
+      foundation-sound.-mt-1.mr-1
+      span.mr-2 {{ globalScale.note.name }}{{ state.chord.aliases[0] || ' ' + state.scale.name }}
+    .flex-1
     button.text-button(
       :style="{ borderColor: chromaColorMix(chroma, globalScale.tonic).hsl }"
-      v-if="state.chord.name" 
+      v-if="state.chord.name || state.chord.aliases[0]" 
       @click="arpeggiate()"
-      )  {{ state.chord.name }} 
+      )  
+        la-play.-mt-1.mr-1
+        span {{ globalScale.note.name }} {{ state.chord.name || state.chord.aliases[0] }} 
     button.text-button(
       :style="{ borderColor: chromaColorMix(chroma, globalScale.tonic).hsl }"
       v-if="state.scale.name"  
-      @click="arpeggiate(true)") {{ state.scale.name }} scale
-    .flex-1
-    .px-2.py-1.text-sm.absolute.top-2.right-2 
-  .flex.justify-stretch.mb-2.mx-auto.w-full
+      @click="arpeggiate(true)") 
+      la-play.-mt-1.mr-1
+      span {{ globalScale.note.name }} {{ state.scale.name }} scale
+  .flex.justify-stretch.mb-2.mx-auto.w-full.p-2
     .chroma-key(
       @mouseenter="hover(i, bit)"
       @touchstart="hover(i, bit)"
@@ -33,16 +38,19 @@
       :key="i"
       @click="toggleStep(i)"
       :class="{ active: bit == 1 }"
-      :style="{ backgroundColor: calcBg(i, bit), marginLeft: (i == 1 || i == 3 || i == 5 || i == 8 || i == 10) ? '12px' : '0px' }"
+      :style="{ backgroundColor: calcBg(i, bit), marginLeft: (i == 1 || i == 3 || i == 5 || i == 7 || i == 8 || i == 10) ? '16px' : '0px' }"
       ) {{ bit == 1 ? notes[(i + globalScale.tonic) % 12].name : intervals[i] }}
+
   .flex.flex-wrap.items-center.justify-stretch.w-full.px-2.text-sm
+    .p-2px {{ chroma }}
+    .flex-1
     .flex.font-bold(title="Intervals")
-      .p-2px {{ state.intervals.length }}:
       .p-2px(v-for="interval in state.intervals" :key="interval") {{ interval }}
     .flex-1
     .flex(title="Steps")
-      .p-2px(v-for="(semitone,s) in state.semitones" :key="s") {{ semitone }}
+      span(v-for="(semitone,s) in state.semitones" :key="s") {{ s != 0 ? '-' : '' }}{{ semitone }}
     .flex-1
+
     .p-1(title="Pcset number") # {{ state.num }}
 </template>
 
@@ -132,6 +140,8 @@ function arpeggiate(octave = false) {
   let playedNotes = [...chordNotes.value]
   if (octave) {
     playedNotes.push(Frequency(globalScale.tonic + 57 + 12, 'midi').toNote())
+    let back = [...chordNotes.value].reverse()
+    playedNotes = [...playedNotes, ...back]
   }
   playedNotes.forEach((note, i) => {
     synthOnce(note, '8n', `+${i / 3}`)
@@ -149,7 +159,7 @@ function playNote(note = 0, octave = 0) {
 
 <style  scoped>
 .chroma-key {
-  @apply grid cursor-pointer place-content-center text-xs transition-all duration-300 py-2   hover:(opacity-100) opacity-70  rounded-xl;
+  @apply grid cursor-pointer place-content-center text-xs transition-all duration-300 py-3   hover:(opacity-100) opacity-70  rounded-full;
   flex: 1 1 8%;
   box-shadow: 0 2px 0px rgba(0, 0, 0, 0.4);
 }

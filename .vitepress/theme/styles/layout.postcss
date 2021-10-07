@@ -274,7 +274,7 @@ form {
 }
 
 .text-button {
-  @apply shadow m-1 p-2 rounded border-1 border-transparent transition-all duration-200;
+  @apply shadow m-1 p-2 rounded-lg border-1 border-transparent transition-all duration-200;
   &.note {
     @apply text-white p-2 font-bold opacity-50 border-2 rounded-lg;
     &.active {
@@ -350,6 +350,9 @@ form {
   }
   & code {
     @apply text-xs;
+  }
+  & table {
+    @apply w-full max-w-55ch mx-auto;
   }
 }
 

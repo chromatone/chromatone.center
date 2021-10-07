@@ -98,3 +98,7 @@ When we do this to every scale, we see modal relationships between scales, and w
 Imperfection is a concept invented (so far as I can tell) by William Zeitler, to describe the presence or absense of perfect fifths in the scale tones. Any tone in the scale that does not have the perfect fifth above it represented in the scale is an "imperfect" tone. The number of imperfections is a metric that plausibly correlates with the perception of dissonance in a sonority.
 
 The only scale that has no imperfections is the 12-tone chromatic scale.
+
+https://ianring.com/musictheory/scales/
+
+https://en.wikipedia.org/wiki/List_of_musical_scales_and_modes

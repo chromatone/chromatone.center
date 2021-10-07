@@ -61,7 +61,6 @@ We've ported almost all separate apps into the main website. It becomes more and
 - audio
   - [tone.js](https://tonejs.github.io)
     - [@tonejs/midi](https://github.com/Tonejs/Midi)
-    - [@tonejs/piano](https://tambien.github.io/Piano/) ?
   - [meyda](https://meyda.js.org)
   - [aubiojs](https://github.com/qiuxiang/aubiojs)
   - [audiomotion-analyzer](https://www.npmjs.com/package/audiomotion-analyzer) 

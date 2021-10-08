@@ -5,7 +5,8 @@ date: 2021-09-03
 tags: scales
 ---
 
-## Raga
+<scale-raga />
+
 
 A raga or raag (IAST: rāga; also raaga or ragam; literally "coloring, tingeing, dyeing") is a melodic framework for improvisation akin to a melodic mode in Indian classical music. The rāga is a unique and central feature of the classical Indian music tradition, and as a result has no direct translation to concepts in classical European music. Each rāga is an array of melodic structures with musical motifs, considered in the Indian tradition to have the ability to "colour the mind" and affect the emotions of the audience.
 
@@ -34,8 +35,6 @@ Here’s a list of an aesthetic and scientifically designed chart of the 72 pare
 <img src="./Melakarta.katapayadi.sankhya.png" />
 
 Continuing the extremely complex system from which our Carnatic classical music was derived we here arrive at a very aesthetic and scientifically designed chart of the 72 parent ragas. These are called melakarta ragas which numbering 72 have been re-scheduled into 36 each taking the ‘shuddha madhyama’ and ‘prati (sharp) madhyama’, namely the note ‘Ma’ respectively. Again, these 72 ragas have been assigned to 12 chakras/wheel each comprising six ragas. Therefore, we have six chakras in the Ma1 (shuddha madhyama) scale and six in the Ma2 (prati madhyama).
-
-<scale-raga />
 
 The nomenclature given to the chakras carries great import. For instance, the first chakra being numero uno is called ‘Indu’ after the moon of which we have just one in our universe; chakra two is named after the eyes: netra; the third after agni (fire) which exists in three forms (treat agni); the fourth after the four Vedas, the fifth is the bana chakra after the pancha bana (five arrows of Manmatha/Cupid), the sixth Rithu after the seasons (shat rithu); the seventh is Rishi after the sapta (7)rishis; the eighth is called ‘Vasu chakra’ (our mythology speaks of 8 Vasus/superhumans); the ninth is ‘Brahma’ of which we are told there are 9 (nava brahma/creators); the tenth is ‘Disi’ or direction and in Indian system we count 10 directions; the eleventh is Rudra chakra named after 11 rudras/deities and finally the 12th chakra is the ‘Aditya’ or sun of which there are 12 in the galaxy apart from ours.
 

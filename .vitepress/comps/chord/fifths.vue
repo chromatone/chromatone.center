@@ -124,8 +124,8 @@ const scaleType = useStorage('scale-type', 'major')
 const selector = ref(null);
 
 const steps = {
-  minor: [['II', 'VI', 'III'], ['iv', 'i', 'v']],
-  major: [['IV', 'I', 'V'], ['vi', 'iii', 'vii']]
+  minor: [['VI', 'III', 'VII'], ['iv', 'i', 'v']],
+  major: [['IV', 'I', 'V'], ['ii', 'vi', 'iii']]
 }
 
 const move = useMotion(selector);

@@ -1,6 +1,5 @@
 <template lang="pug">
 path(
-  opacity="1"
   style="transition: all 200ms ease-out"
   :d="d" 
   :fill="fill" 
@@ -8,6 +7,7 @@ path(
   stroke-width="1"
   fill-rule="evenodd"
   stroke-linejoin="round"
+  :fill-opacity="op"
   :transform-origin="`${cx} ${cy}`"
   )
   slot
@@ -47,6 +47,10 @@ const props = defineProps({
     type: Number,
     default: 100
   },
+  op: {
+    type: Number,
+    default: 1
+  }
 });
 
 

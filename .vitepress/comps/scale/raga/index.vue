@@ -1,6 +1,6 @@
 <template lang="pug">
 .flex.flex-col.items-center.max-w-55ch.mx-auto
-  scale-degrees-circle(
+  scale-degrees-circle.w-full(
     v-model:chroma="state.chroma"
     fixed5
   )

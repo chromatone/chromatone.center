@@ -4,7 +4,6 @@ svg.select-none.w-20rem.m-2(
   baseProfile="full",
   viewBox="0 0 95 6",
   xmlns="http://www.w3.org/2000/svg",
-  style="touch-action:none"
   font-family="Commissioner, sans-serif"
   text-anchor="middle",
   dominant-baseline="middle"

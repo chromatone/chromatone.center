@@ -18,7 +18,7 @@ svg.select-none.m-2(
     :thickness="thickness"
     :from="degree.arc[0]"
     :to="degree.arc[1]"
-    opacity="0.3"
+    :op="0.3"
     :fill="`hsla(${(degree.arc[0] + degree.arc[1]) / 2 + 30 * globalScale.tonic},80%,50%,1)`"
   )
   g.fifths(
@@ -30,9 +30,9 @@ svg.select-none.m-2(
       :x2="getCircleCoord(((fifth + 1) * 7) % 12, 12, fifthsR, 1000).x"
       :y1="getCircleCoord((fifth * 7) % 12, 12, fifthsR, 1000).y"
       :y2="getCircleCoord(((fifth + 1) * 7) % 12, 12, fifthsR, 1000).y"
-      :stroke="pitchColor((globalScale.tonic + fifth + 1) * 7 % 12, 3, 0.8, 0.8)"
+      stroke="currentColor"
       stroke-linecap="round"
-      stroke-width="4"
+      stroke-width="2"
     )
   g.note.cursor-pointer.transition-all.duration-300.ease-out(
     v-for="(note,n) in rotateArray(notes, globalScale.tonic)" :key="n"
@@ -46,8 +46,8 @@ svg.select-none.m-2(
     text(font-size="25" fill="currentColor") {{ note.name }}
 
   g.interval.cursor-pointer(
-    v-for="(note,n) in rotateArray(notes, globalScale.tonic)" :key="note"
-    style="pointer-events:none"
+    v-for="(note,n) in rotateArray(notes, globalScale.tonic)" :key="n"
+    @click="toggleChroma(n)"
   )
     svg-ring.transition-all.duration-300.ease(
       :cx="500"
@@ -65,14 +65,22 @@ svg.select-none.m-2(
       text-anchor="middle"
       fill="currentColor"
     ) {{ intervals[n] }}
-  path#pathUp(
+  path#pathRight(
     :d="`M 500 500 m ${-pathUp}, 0 a ${pathUp}, ${pathUp} 0 1, 0 ${pathUp * 2}, 0  a ${pathUp}, ${pathUp} 0 1, 0  ${-pathUp * 2}, 0`"
     fill="none"
   )
+  path#pathLeft(
+    :d="`M 500 500 m ${-pathUp}, 0 a ${pathUp}, ${pathUp} 0 1, 1 ${pathUp * 2}, 0  a ${pathUp}, ${pathUp} 0 1, 1  ${-pathUp * 2}, 0`"
+    fill="none"
+  ) //https://stackoverflow.com/questions/5737975/circle-drawing-with-svgs-arc-path
   g.degrees
     text(font-size="30")
-      textPath(href="#pathUp" v-for="(degree,d) in degrees" :key="degree" :startOffset="degree.offset" :side="degree.side" fill="currentColor") {{ d }}
-  path#pathBottom(
+      textPath(:href="`#path${degree.path}`"  v-for="(degree,d) in degrees" :key="degree" :startOffset="degree.offset"  fill="currentColor") {{ d }}
+  path#pathBLeft(
+    :d="`M 500 500 m ${-pathBottom}, 0 a ${pathBottom}, ${pathBottom} 0 1, 1 ${pathBottom * 2}, 0  a ${pathBottom}, ${pathBottom} 0 1, 1  ${-pathBottom * 2}, 0`"
+    fill="none"
+  )
+  path#pathBRight(
     :d="`M 500 500 m ${-pathBottom}, 0 a ${pathBottom}, ${pathBottom} 0 1, 0 ${pathBottom * 2}, 0  a ${pathBottom}, ${pathBottom} 0 1, 0  ${-pathBottom * 2}, 0`"
     fill="none"
   )
@@ -80,7 +88,7 @@ svg.select-none.m-2(
     style="pointer-events: none"
   )
     text(font-size="36")
-      textPath(href="#pathBottom" v-for="(degree,d) in degrees" :key="degree" :startOffset="degree.roffset" :side="degree.side" fill="currentColor") {{ degree.roman }}
+      textPath(:href="`#pathB${degree.path}`" v-for="(degree,d) in degrees" :key="degree" :startOffset="degree.roffset"  fill="currentColor") {{ degree.roman }}
 
 </template>
 
@@ -118,7 +126,6 @@ function toggleChroma(n) {
   } else {
     arr[n] = 1
   }
-  console.log(n)
   emit('update:chroma', arr.join(''))
 }
 
@@ -150,7 +157,7 @@ const degrees = {
     steps: [0],
     offset: 550,
     roffset: 475,
-    side: 'right',
+    path: "Left",
     roman: 'I',
   },
   Supertonic: {
@@ -158,7 +165,7 @@ const degrees = {
     steps: [1, 2],
     offset: 840,
     roffset: 720,
-    side: 'right',
+    path: "Left",
     roman: 'II',
   },
   Mediant: {
@@ -166,7 +173,7 @@ const degrees = {
     steps: [3, 4],
     offset: 1000,
     roffset: 860,
-    side: 'left',
+    path: "Right",
     roman: 'III',
   },
   Subdominant: {
@@ -174,7 +181,7 @@ const degrees = {
     steps: [5, 6],
     offset: 650,
     roffset: 550,
-    side: 'left',
+    path: "Right",
     roman: 'IV',
   },
   Dominant: {
@@ -182,7 +189,7 @@ const degrees = {
     steps: [7],
     offset: 365,
     roffset: 315,
-    side: 'left',
+    path: "Right",
     roman: 'V',
   },
   Submediant: {
@@ -190,7 +197,7 @@ const degrees = {
     steps: [8, 9],
     offset: 100,
     roffset: 85,
-    side: 'left',
+    path: "Right",
     roman: 'VI',
   },
   Subtonic: {
@@ -198,7 +205,7 @@ const degrees = {
     steps: [10, 11],
     offset: 270,
     roffset: 230,
-    side: 'right',
+    path: "Left",
     roman: 'VII',
   },
 };

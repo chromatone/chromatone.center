@@ -19,22 +19,13 @@ defineProps({
   width: 16.4rem;
   background-color: var(--c-bg);
   overflow-y: auto;
-  transform: translateX(100%);
   transition: all 0.15s ease-out;
   height: calc(100vh - var(--header-height));
-  @apply fixed top-$header-height bottom-0 right-0;
-}
-
-@screen lg {
-  .sidebar {
-    display: none;
-    transform: translateX(0);
-  }
+  @apply fixed top-$header-height bottom-0 left-0 transform -translate-x-full;
 }
 
 .sidebar.open {
-  display: block;
-  transform: translateX(0);
+  @apply translate-x-0;
 }
 
 .nav {

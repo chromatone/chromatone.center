@@ -1,10 +1,8 @@
 <template lang="pug">
-aside(class="max-w-sm h-auto border-l-1px border-$c-divider")
+aside
   slot
   .sidebar(:class="{ open }")
-    // nav-links.nav
     side-Links
-  
 </template>
 
 <script setup>
@@ -17,11 +15,10 @@ defineProps({
 .sidebar {
   z-index: var(--z-index-sidebar);
   width: 16.4rem;
-  background-color: var(--c-bg);
   overflow-y: auto;
   transition: all 0.15s ease-out;
   height: calc(100vh - var(--header-height));
-  @apply fixed top-$header-height bottom-0 left-0 transform -translate-x-full;
+  @apply fixed top-$header-height bottom-0 left-0 transform -translate-x-full lg:(static h-full translate-x-0) shadow-xl bg-light-600 dark:bg-dark-700;
 }
 
 .sidebar.open {

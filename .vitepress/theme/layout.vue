@@ -81,7 +81,6 @@ const pageClasses = computed(() => {
 
 <style >
 .main {
-  background-blend-mode: overlay;
-  @apply min-h-screen bg-cover bg-center bg-fixed;
+  @apply flex min-h-screen bg-cover bg-center bg-fixed;
 }
 </style>

@@ -142,3 +142,9 @@ Later Govindacharya came up with a more mathematical and regular system of 72 ra
 In the Asampurna Melakarta system, there is no set rule for the ragas in contrast to the currently used system of Melakarta ragas. Some ragas though are the same in both systems (like 15 - Mayamalavagowla and 29 - Dheerasankarabharanam), and in some cases the scales are same, while names are different (like 8 - Janatodi and Hanumatodi, 56 - Chamaram and Shanmukhapriya).
 
 http://music-raagaa.blogspot.com/p/72-melakartha-raagas_17.html
+
+https://www.ragasurabhi.com/index.html
+
+http://carnatica.net/origin.htm
+
+http://www.melakarta.com/index.html

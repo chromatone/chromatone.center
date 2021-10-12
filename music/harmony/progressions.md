@@ -1,7 +1,7 @@
 ---
 title: Chord progressions
 subtitle: Successive chord loops as the foundation of modern music
-date: 2021-08-12
+date: 2021-10-12
 tags: harmony
 progressions:
   jazz:

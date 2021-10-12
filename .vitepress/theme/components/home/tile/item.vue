@@ -20,9 +20,9 @@ const hoverShadow = computed(() => `0 0 0 2px ${color.value}, 0 12px 0 4px ${col
 
 <style scoped>
 .tile {
-  @apply bg-light-100 dark:bg-dark-700 m-4 flex flex-col transition no-underline rounded-sm;
+  @apply bg-light-100 dark:bg-dark-700 m-4 flex flex-col transition no-underline rounded-xl;
   box-shadow: v-bind(shadow);
-  flex: 1 1 200px;
+  flex: 1 1 250px;
   &:hover {
     box-shadow: v-bind(hoverShadow);
   }

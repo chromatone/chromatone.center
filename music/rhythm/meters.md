@@ -5,6 +5,8 @@ tags: rhythm
 date: 2021-09-12
 ---
 
+https://en.wikipedia.org/wiki/Metre_(music)
+
 ## Simple time
 
 ### 2/2

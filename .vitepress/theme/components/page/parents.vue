@@ -14,7 +14,7 @@ const parents = useParents();
   
 <style  scoped>
 .tabs {
-  @apply absolute left-0 -mt-5rem inline-flex flex-wrap items-stretch justify-start;
+  @apply -mt-2 inline-flex flex-wrap items-stretch justify-start;
 }
 
 .link {

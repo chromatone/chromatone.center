@@ -24,6 +24,6 @@ const rows = theme.value?.pages?.[frontmatter.value.list];
 
 <style  scoped>
 .list-blocks {
-  @apply flex flex-col max-w-65ch mx-auto;
+  @apply flex flex-col max-w-65ch mx-auto w-full;
 }
 </style>

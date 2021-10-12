@@ -22,7 +22,7 @@ defineEmits(['toggle']);
   @apply sm:(sticky top-0) inset-x-0 z-30
     flex space-between align-center select-none
     border-b-1px border-$c-divider
-    py-0.7rem px-4
+    py-0.7rem px-4 z-40
     h-$header-height bg-$c-bg
     md:px-5 lg:px-6;
 }

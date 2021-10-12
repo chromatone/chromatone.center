@@ -1,5 +1,5 @@
 <template lang="pug">
-.next-and-prev-link(:style="{ borderColor: colors.current }")
+.next-and-prev-link(:style="{ backgroundColor: colors.current }")
   .row
     card-box.pad.prev(
       v-if="prev" 
@@ -39,7 +39,6 @@ const colors = {
   @apply bg-gray-100/90 dark:bg-gray-800/90 py-4 
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
-  border-width: 20px 0 0 0;
 }
 
 .row {

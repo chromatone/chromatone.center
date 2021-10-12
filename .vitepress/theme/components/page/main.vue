@@ -1,18 +1,19 @@
 <template lang="pug">
-main
-  page-header
-  .content-container
-    transition(name="fade")
+transition(name="fade")
+  main(:key="route.path")
+    page-header
+    .content-container
       content.content
-    shop-message
-    row-list.mb-32
-
-  page-next-prev
-  footer-row
+      shop-message
+      row-list.mb-32
+    page-next-prev
+    footer-row
 </template>
 
 <script setup lang="ts">
+import { useRoute } from 'vitepress'
 
+const route = useRoute()
 
 </script>
 
@@ -22,6 +23,6 @@ main {
   @apply flex flex-col;
 }
 .content-container {
-  @apply flex flex-col items-stretch bg-light-800 dark:(bg-dark-800);
+  @apply flex flex-col items-stretch bg-light-600 dark:(bg-dark-600);
 }
 </style>

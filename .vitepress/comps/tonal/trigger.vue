@@ -20,7 +20,7 @@ polygon.chord-trigger(
 import { pitchColor, pitchFreq, notes } from 'chromatone-theory'
 import { Frequency } from 'tone'
 import { synthAttack, synthRelease } from '@use/synth.js'
-import { midiAttack, midiRelease } from '@use/midi.js'
+import { midiPlay, midiStop } from '@use/midi.js'
 
 const props = defineProps({
   pressed: Boolean,
@@ -58,13 +58,13 @@ const chordNames = computed(() => {
 function playChord() {
   playing.value = true
   synthAttack(chordNames.value)
-  midiAttack(chordNames.value)
+  midiPlay(chordNames.value)
 };
 
 function stopChord() {
   playing.value = false
   synthRelease(chordNames.value)
-  midiRelease(chordNames.value)
+  midiStop(chordNames.value)
 };
 
 </script>

@@ -32,7 +32,7 @@ const screen = ref();
 }
 
 .scales {
-  @apply flex overflow-x-scroll m-4 p-2 my-4;
+  @apply flex w-20em overflow-x-scroll m-4 p-2 my-4;
   flex: 1 1 300px;
 }
 </style>

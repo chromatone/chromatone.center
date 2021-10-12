@@ -10,7 +10,7 @@ import hwbPlugin from 'colord/plugins/hwb'
 
 extend([mixPlugin, lchPlugin, namesPlugin, labPlugin, cmykPlugin, hwbPlugin])
 
-export function lchToHsl(n = 0, total = 12, a = 1, s = 40, lightness = 60) {
+export function lchToHsl(n = 0, total = 12, a = 1, s = 20, lightness = 60) {
   let lch = `lch(${lightness}% ${s} ${n * (360 / total)} / ${a})`
   let hsl = colord(lch).toHslString()
   return hsl

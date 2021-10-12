@@ -152,13 +152,13 @@ export function stopChroma(chroma, tonic) {
 }
 
 export function playNote(name) {
-  midiAttack(name)
+  midiPlay(name)
   synthAttack(name)
   // pianoAttack(notes)
 }
 
 export function stopNote(name) {
-  midiRelease(name)
+  midiStop(name)
   synthRelease(name)
   // pianoRelease(notes)
 }

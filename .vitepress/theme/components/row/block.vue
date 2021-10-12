@@ -1,14 +1,16 @@
 <template lang="pug">
-.row
+.row(
+  :style="{ backgroundColor: color }"
+  )
   a.header(:href="item.link")
-    .cover(v-if="item.data?.cover", v-motion-fade)
-    .info 
-      .flex.items-center.w-full(
-        :style="{ color: color }"
+    .cover(
+      :style="{ backgroundImage: bg }"
       )
+    .info 
+      .flex.items-center.w-full
         .mr-2.text-2xl(v-if="item.data.emoji") {{ item.data.emoji }}
         h3
-          span.text-4xl {{ item.title }} 
+          span.text-3xl {{ item.title }} 
           span.px-2.mt-2(v-if="item.more") 
             radix-icons-text-align-left
         .flex-1
@@ -36,12 +38,12 @@ const props = defineProps({
   }
 });
 
-const bg = "url(/media/" + props.item.data?.cover + ")";
+const bg = computed(() => `url(/media/${props.item.data?.cover}`);
 </script>
 
 <style scoped>
 .row {
-  @apply bg-light-500 dark:bg-dark-500 flex flex-col transition no-underline;
+  @apply bg-light-500 w-full dark:bg-dark-500 flex flex-col transition no-underline rounded-xl;
   flex: 1 1 200px;
   &:hover {
     @apply bg-light-200 dark:bg-dark-400;
@@ -49,20 +51,19 @@ const bg = "url(/media/" + props.item.data?.cover + ")";
 }
 
 .header {
-  @apply flex flex-col flex-1;
+  @apply relative flex flex-col flex-1 w-full pt-64;
 }
 
 .info {
-  @apply my-4 relative min-w-320px flex self-stretch flex-wrap items-center p-4 md:(px-8 py-4);
-  flex: 1 1 45%;
+  @apply m-2 relative max-w-500px flex self-stretch flex-wrap items-center p-4 md:(px-8 py-4) bg-light-100 dark:bg-dark-100 rounded-lg;
 }
 
 .cover {
-  @apply w-full min-h-16em bg-cover bg-center rounded;
-  filter: saturate(50%) opacity(50%);
-  transition: all 300ms ease-in-out;
+  @apply absolute w-full rounded-xl top-0 h-full rounded-xl;
+  filter: saturate(50%) opacity(30%);
+  transition: all 450ms ease-in-out;
   flex: 1 1 30%;
-  background-image: v-bind(bg);
+  background-size: cover;
 }
 
 .row:hover .cover {

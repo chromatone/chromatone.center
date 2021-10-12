@@ -81,6 +81,6 @@ const pageClasses = computed(() => {
 
 <style >
 .main {
-  @apply flex min-h-screen bg-cover bg-center bg-fixed;
+  @apply relative flex min-h-screen bg-cover bg-center bg-fixed;
 }
 </style>

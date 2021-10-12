@@ -1,5 +1,5 @@
 <template lang="pug">
-footer.relative
+footer
   .noise
   nav
     .flex.flex-col(
@@ -42,7 +42,7 @@ const route = useRoute()
 
 <style scoped >
 footer {
-  @apply transition-all min-h-26vh z-1 bg-gray-300 dark:bg-dark-700 flex flex-col pt-16 pb-16 px-4;
+  @apply relative transition-all min-h-26vh z-1 bg-gray-300 dark:bg-dark-700 flex flex-col pt-16 pb-16 px-4 lg:hidden;
 }
 
 nav {

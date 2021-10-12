@@ -32,7 +32,7 @@ const props = defineProps({
 }
 
 .line {
-  @apply flex items-center px-4 py-2 font-bold transition-all shadow-md bg-gray-50 dark:bg-gray-800 
+  @apply flex rounded-xl items-center px-4 py-2 font-bold transition-all shadow-md bg-gray-50 dark:bg-gray-800 
   hover:(no-underline shadow-lg);
 }
 </style>

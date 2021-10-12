@@ -1,6 +1,6 @@
 <template lang="pug">
 header.home-hero(v-if="showHero")
-  .w-45ch.m-auto(
+  .m-auto(
     )
       figure(
         v-if="$frontmatter.icon"

@@ -148,3 +148,5 @@ https://www.ragasurabhi.com/index.html
 http://carnatica.net/origin.htm
 
 http://www.melakarta.com/index.html
+
+http://www.carnaticcorner.com/articles/22_srutis.htm

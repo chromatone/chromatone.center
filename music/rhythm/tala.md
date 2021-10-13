@@ -81,3 +81,5 @@ Tintal has sixteen (16) beats in four equal divisions (Vibhag). The period betwe
 - DHA DHIN DHIN DHA 
 - DHA TIN TIN TA 
 - TA DHIN DHIN DHA  
+
+https://en.wikipedia.org/wiki/Konnakol

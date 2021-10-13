@@ -1,7 +1,7 @@
 <template lang="pug">
 .flex.flex-col.items-center
   .render(:id="id") {{ abc }}
-  svg-save(:svg="id")
+  svg-save(:svg="id" v-if="save")
 </template>
 
 <script setup>
@@ -15,6 +15,10 @@ const props = defineProps({
     default: 300,
   },
   responsive: {
+    type: Boolean,
+    default: false
+  },
+  save: {
     type: Boolean,
     default: false
   }

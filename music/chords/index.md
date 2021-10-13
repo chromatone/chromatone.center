@@ -20,7 +20,6 @@ Choose any of the notes to see the wavefrom of their combination.
 
 <client-only >
   <chord-form />
-  <svg-save svg="chord-form" />
 </client-only>
 
 

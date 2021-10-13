@@ -55,8 +55,6 @@ A note isn't just a wave, it's a mix of resonating modes of oscillations.
 A string fixed from both ends produces a harmonic set of incremental frequency partials, also called harmonics. 
 
 <string-overtones />
-<svg-save svg="overtones" />
-
 
 ### Tristimulus timbre model
 

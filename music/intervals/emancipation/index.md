@@ -39,3 +39,4 @@ Cooper (1973, 6-7) proposes the following timeline:
 - E. chordal ninth, from c. 1750
 - F. whole-tone scale, from c. 1880
 - G. total chromaticism, twelve-tone technique, and microtones in the early 20th-century.
+

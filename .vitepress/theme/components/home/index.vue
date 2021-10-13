@@ -16,7 +16,7 @@ const { theme, frontmatter } = useData()
 
 <style scoped >
 .home {
-  @apply relative pb-16 flex flex-col items-stretch bg-light-500 dark:(bg-dark-500);
+  @apply w-full relative pb-16 flex flex-col items-stretch bg-light-500 dark:(bg-dark-500);
 }
 .noise {
   @apply w-full h-full absolute pointer-events-none z-0;

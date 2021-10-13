@@ -1,5 +1,5 @@
 <template lang="pug">
-svg.select-none.max-w-12em.m-2(
+svg.select-none.min-w-8em.m-2(
   version="1.1",
   baseProfile="full",
   viewBox="0 0 100 100",

@@ -19,7 +19,7 @@
   chroma-row.mb-4.mx-2(v-model:chroma="chroma")
   chroma-circle.flex-1.min-w-200px.pl-4(:chroma="chroma")
   chroma-stack.flex-1.mx-4(:chroma="chroma")
-  chroma-square.mx-4(:chroma="chroma")
+  chroma-square.w-12em.mx-4(:chroma="chroma")
   .flex.w-full.p-6(v-if="description") {{ description }}
 
 </template>

@@ -32,9 +32,6 @@ const props = defineProps({
 <style scoped>
 .shop-action {
   @apply flex justify-center items-center;
-  &:hover .cart-text {
-    @apply w-3em opacity-100;
-  }
 }
 
 .button {
@@ -46,7 +43,7 @@ const props = defineProps({
 }
 
 .cart-text {
-  @apply w-0 opacity-0 sm:(block) text-xl ml-2 transition-all duration-300;
+  @apply text-xl ml-2 transition-all duration-300;
 }
 
 .order {

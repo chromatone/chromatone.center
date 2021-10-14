@@ -2,7 +2,7 @@
 title: Rhythm
 subtitle: Musical exploration of time
 date: 2021-08-24
-tags: music
+tags: theory
 list: rhythm
 ---
 

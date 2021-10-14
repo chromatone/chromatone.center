@@ -1,7 +1,7 @@
 ---
 title: Resources
 subtitle: Links to some valuable information on music and color theory and more
-tags: music
+tags: theory
 date: 2019-02-02
 links:
   - url: https://rhythmiclight.com/

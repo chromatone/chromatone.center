@@ -23,6 +23,6 @@ main {
   @apply flex flex-col;
 }
 .content-container {
-  @apply flex flex-col items-stretch bg-light-600 dark:(bg-dark-600);
+  @apply flex flex-col rounded-xl items-stretch bg-light-600 dark:(bg-dark-600);
 }
 </style>

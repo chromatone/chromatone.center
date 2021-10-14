@@ -11,14 +11,21 @@ import { useFullscreen } from '@vueuse/core'
 
 const props = defineProps(['el'])
 
-const full = ref()
+const element = ref()
 
-watchEffect(() => {
-  full.value = useFullscreen(props.el);
+onMounted(() => {
+  if (props.el) {
+    element.value = props.el
+  } else {
+    element.value = document.getElementById('screen')
+  }
+  full.value = useFullscreen(element.value)
 })
 
+const full = ref()
+
 function toggle() {
-  if (!full.value) full.value = useFullscreen(props.el);
+  if (!full.value) full.value = useFullscreen(element.value);
   full.value.toggle()
 }
 

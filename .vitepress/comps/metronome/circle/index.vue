@@ -7,16 +7,16 @@
     xmlns="http://www.w3.org/2000/svg",
     style="user-select:none;touch-action:none"
     )
-    metronome-math(
+    metronome-control-math(
       transform="translate(30,80)"
     )
-    metronome-listen(
+    metronome-control-listen(
       transform="translate(20,880)"
     )
-    metronome-tap(
+    metronome-control-tap(
       transform="translate(760,880)"
       )
-    metronome-transport(
+    metronome-control-transport(
       transform="translate(800)"
     )
     g.cursor-pointer(

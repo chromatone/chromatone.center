@@ -6,14 +6,23 @@ g.cursor-pointer(
     @mousedown="$emit('mute')"
     :width="proportion * width"
     height="180"
-    :fill="active ? levelColor(props.step - 1, props.total, 1) : 'transparent'"
+    :fill="active ? color : 'transparent'"
 
   )
-  text(
+  circle(
+    @click="$emit('accent')"
+    cy="45"
+    cx="30"
+    r="25"
+    stroke-width="4"
+    :stroke="color"
+    :fill="accented ? color : 'transparent'"
+  )
+  text.pointer-events-none(
     y="60"
     font-size="40"
     text-anchor="middle"
-    :x="20"
+    x="30"
     fill="currentColor"
   ) {{ step }}
   g.sub(
@@ -57,37 +66,6 @@ import { levelColor } from "@use/colors.js"
 import { colord } from 'colord'
 import { clampNum } from '@use/theory'
 
-const emit = defineEmits(['mute', 'subdivide'])
-
-const division = ref(0)
-const divNum = computed(() => Math.floor(division.value / 40))
-const divSteps = ref([])
-watch(divNum, (next, prev) => {
-  if (next == prev) return
-  let steps = []
-  for (let d = 1; d <= next; d++) {
-    steps.push(`${props.step}-${d}`)
-  }
-  divSteps.value = steps
-  emit('subdivide', steps)
-})
-
-function dragDiv(drag) {
-  if (drag.tap) {
-    let sub = drag.event.currentTarget.dataset.sub
-    props.mutes[sub] = !props.mutes[sub]
-  }
-  division.value = clampNum(division.value, drag.delta[0] - drag.delta[1], 40, 640)
-}
-
-const active = computed(() => {
-  let isParent = props.subdivisions[0] == props.current
-  let p = props.subdivisions[0].split('-')[0]
-  let c = props.current.split('-')[0]
-  let isMuted = props.mutes[props.subdivisions[0]]
-  return !isMuted && (isParent || p == c)
-})
-
 const props = defineProps({
   proportion: {
     type: Number,
@@ -113,6 +91,10 @@ const props = defineProps({
     type: Object,
     default: {}
   },
+  accented: {
+    type: Boolean,
+    default: false,
+  },
   width: {
     type: Number,
     default: 900
@@ -122,6 +104,44 @@ const props = defineProps({
     default: 50
   }
 });
+
+
+const emit = defineEmits(['mute', 'subdivide', 'accent'])
+
+const color = computed(() => levelColor(props.step - 1, props.total, 1))
+const accent = computed(() => props.subdivisions[0].includes('!'))
+
+const division = ref(0)
+const divNum = computed(() => Math.floor(division.value / 40))
+const divSteps = ref([])
+
+watch(divNum, (next, prev) => {
+  if (next == prev) return
+  let steps = []
+  for (let d = 1; d <= next; d++) {
+    steps.push(`${props.step}-${d}`)
+  }
+  divSteps.value = steps
+})
+
+watch(divSteps, steps => emit('subdivide', steps))
+
+function dragDiv(drag) {
+  if (drag.tap) {
+    let sub = drag.event.currentTarget.dataset.sub
+    props.mutes[sub] = !props.mutes[sub]
+  }
+  division.value = clampNum(division.value, drag.delta[0] - drag.delta[1], 40, 640)
+}
+
+const active = computed(() => {
+  let isParent = props.subdivisions[0] == props.current
+  let p = props.subdivisions[0].split('-')[0]
+  let c = props.current.split('-')[0]
+  let isMuted = props.mutes[props.subdivisions[0]]
+  return !isMuted && (isParent || p == c)
+});
+
 
 
 </script>

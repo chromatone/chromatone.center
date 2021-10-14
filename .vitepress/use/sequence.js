@@ -1,9 +1,8 @@
 import { tempo } from '@use/tempo.js'
 import { Sequence, PanVol, gainToDb, Draw, Sampler, context, start } from 'tone'
-import { reactive, ref, watchEffect, computed, onBeforeUnmount } from 'vue'
 
 export function useSequence(
-  metre = { over: 4, under: 4, sound: 'A' },
+  metre = { over: 4, under: 4, sound: 'A', volume: 1 },
   order = 0,
   mode = 'bar',
 ) {
@@ -11,10 +10,10 @@ export function useSequence(
   const panner = new PanVol(pan, 0).toDestination()
   const synth = new Sampler({
     urls: {
-      A1: 'tongue/low.wav',
-      A2: 'tongue/high.wav',
-      B1: 'synth/low.wav',
-      B2: 'synth/high.wav',
+      A1: 'tongue/high.wav',
+      A2: 'tongue/low.wav',
+      B1: 'synth/high.wav',
+      B2: 'synth/low.wav',
       C1: 'seiko/high.wav',
       C2: 'seiko/low.wav',
       D1: '/logic/high.wav',
@@ -22,13 +21,14 @@ export function useSequence(
       E1: '/ping/high.wav',
       E2: '/ping/low.wav',
     },
-    volume: -2,
+    volume: 0,
     baseUrl: '/audio/metronome/',
   }).connect(panner)
 
   const current = ref('0-0')
   const steps = reactive([['1-1'], ['2-1'], ['3-1'], ['4-1']])
   const mutes = useStorage(`metro-${mode}-mutes-${order}`, {})
+  const accents = useStorage(`metro-${mode}-accents-${order}`, { '1': true })
   const volume = useStorage(`metro-${mode}-vol-${order}`, 1)
   const panning = useStorage(`metro-${mode}-pan-${order}`, pan)
   let sequence = new Sequence(
@@ -101,7 +101,7 @@ export function useSequence(
     }, time)
     if (mutes.value[mainStep]) return
     if (mutes.value[step]) return
-    if (step == '1-1') {
+    if (accents.value[mainStep] && step.split('-')[1] == '1') {
       synth.triggerAttackRelease(`${metre.sound}1`, '16n', time)
     } else {
       synth.triggerAttackRelease(`${metre.sound}2`, '16n', time)
@@ -119,6 +119,7 @@ export function useSequence(
     current,
     steps,
     mutes,
+    accents,
     volume,
     panning,
   }

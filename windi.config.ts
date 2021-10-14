@@ -6,6 +6,7 @@ export default defineConfig({
   darkMode: 'class',
   shortcuts: {
     bc: 'border-gray-300 dark:border-true-gray-600',
+    'has-bg': 'bg-light-500 dark:bg-dark-500'
   },
   plugins: [
     require('windicss/plugin/scroll-snap'),

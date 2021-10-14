@@ -200,7 +200,7 @@ g(
   
 <script setup>
 import { getCircleCoord } from 'chromatone-theory'
-import { useSequence } from '../sequence.js'
+import { useSequence } from '@use/sequence.js'
 import { isDark } from '@theme/composables/state.js'
 import { clampNum } from '@use/theory'
 

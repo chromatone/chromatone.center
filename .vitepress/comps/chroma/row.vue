@@ -71,6 +71,10 @@ const props = defineProps({
   twoRow: {
     type: Boolean,
     default: true,
+  },
+  editable: {
+    type: Boolean,
+    default: false,
   }
 });
 
@@ -97,12 +101,14 @@ function hover(i, bit) {
 }
 
 function toggleStep(i) {
+  if (!props.editable) return
   let chroma = [...props.chroma.split('')]
   if (chroma[i] == '1') {
     chroma[i] = '0'
   } else {
     chroma[i] = '1'
   }
+
   emit('update:chroma', chroma.join(''))
 }
 

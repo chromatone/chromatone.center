@@ -16,7 +16,7 @@
     .text-2xl.font-bold.capitalize.mb-2(
       ) {{ notes[globalScale.tonic].name }} {{ chord.name || chord.aliases[0] || scale.name }} {{ scale.aliases[0] ? `(${scale.aliases[0]})` : '' }}
   chroma-piano.h-5rem.mx-auto.mb-4(:chroma="chroma")  
-  chroma-row.mb-4.mx-2(v-model:chroma="chroma")
+  chroma-row.mb-4.mx-2(v-model:chroma="chroma" :editable="editable")
   chroma-circle.flex-1.min-w-200px.pl-4(:chroma="chroma")
   chroma-stack.flex-1.mx-4(:chroma="chroma")
   chroma-square.w-12em.mx-4(:chroma="chroma")
@@ -45,6 +45,10 @@ const props = defineProps({
   description: {
     type: String,
     default: ''
+  },
+  editable: {
+    type: Boolean,
+    default: false
   }
 });
 import { Interval, Pcset } from '@tonaljs/tonal'

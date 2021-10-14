@@ -83,3 +83,9 @@ Tintal has sixteen (16) beats in four equal divisions (Vibhag). The period betwe
 - TA DHIN DHIN DHA  
 
 https://en.wikipedia.org/wiki/Konnakol
+
+## Tihai - the rhythmic cadence
+
+<youtube-embed video="0kJ4PA2yOSU" />
+
+<youtube-embed video="HXLGO-yTgzo" />

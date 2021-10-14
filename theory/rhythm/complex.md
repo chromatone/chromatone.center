@@ -3,7 +3,7 @@ title: Complex meters
 subtitle: Asymmetric, irregular, unusual, or odd meters
 tags: rhythm
 date: 2021-09-06
-complex: [5/4,5/8,6/4,6/8,7/4,7/8]
+complex: [5/4,5/8,7/4,7/8,9/4,9/8,11/8]
 ---
 
 <metronome-bars :meters="$frontmatter.complex" />
@@ -29,6 +29,46 @@ Paul Desmond's jazz composition "Take Five", in 5/4 time, was one of a number of
 
 However, such time signatures are only unusual in most Western music. Traditional music of the Balkans uses such meters extensively. Bulgarian dances, for example, include forms with 5, 7, 9, 11, 13, 15, 22, 25 and other numbers of beats per measure. These rhythms are notated as additive rhythms based on simple units, usually 2, 3 and 4 beats, though the notation fails to describe the metric "time bending" taking place, or compound meters. 
 
+## Quintuple meter
+
+[Quintuple meter](https://en.wikipedia.org/wiki/Quintuple_meter) or quintuple time is a musical meter characterized by five beats in a measure.
+
+They may consist of any combination of variably stressed or equally stressed beats.
+
+Like the more common duple, triple, and quadruple meters, it may be simple, with each beat divided in half, or compound, with each beat divided into thirds. The most common time signatures for simple quintuple meter are 5/4 and 5/8, and compound quintuple meter is most often written in 15/8. 
+
+<youtube-embed video="kXl0F9oF92E" /> 
+
+### Notation
+
+Simple quintuple meter can be written in 5/4 or 5/8 time, but may also be notated by using regularly alternating bars of triple and duple meters, for example 2/4 + 3/1. Compound quintuple meter, with each of its five beats divided into three parts, can similarly be notated using a time signature of 15/8, by writing triplets on each beat of a simple quintuple signature, or by regularly alternating meters such as 6/8 + 9/8.
+
+Another notational variant involves compound meters, in which two or three numerals take the place of the expected numerator. In simple quintuple meter, the 5 may be replaced as 2+3/8 or 2+1+2/8 for example. A time signature of 15/8, however, does not necessarily mean the music is in a compound quintuple meter. It may, for example, indicate a bar of triple meter in which each beat is subdivided into five parts. In this case, the meter is sometimes characterized as "triple quintuple time".
+
+It is also possible for a 15/8 time signature to be used for an irregular, or additive, metrical pattern, such as groupings of 3+3+3+2+2+2 eighth notes or, for example in the Hymn to the Sun and Hymn to Nemesis by Mesomedes of Crete, 2+2+2+2+2+3+2, which may alternatively be given the composite signature 8+7/8.
+
+Similarly, the presence of some bars with a 5/4 or 5/8 meter signature does not necessarily mean that the music is in quintuple meter overall. The regular alternation of 5/4 and 4/4 in Bruce Hornsby's "The Tango King" (from the album Hot House), for example, results in an overall nonuple meter (5+4 = 9).
+
+<youtube-embed video="PHdU5sHigYQ" />
+
+[Sextuple meters](https://en.wikipedia.org/wiki/Sextuple_metre) are rather rare.
+
+## Septuple meter
+
+[Septuple meter](https://en.wikipedia.org/wiki/Septuple_meter) is a meter with each bar divided into 7 notes of equal duration, usually 7/4 or 7/8 (or in compound meter, 21/8 time). The stress pattern can be 2+2+3, 3+2+2, or occasionally 2+3+2, although a survey of certain forms of mostly American popular music suggests that 2+2+3 is the most common among these three in these styles.
+
+A time signature of 21/8, however, does not necessarily mean that the bar is a compound septuple meter with seven beats, each divided into three. This signature may, for example, be used to indicate a bar of triple meter in which each beat is subdivided into seven parts. In this case, the meter is sometimes characterized as "triple septuple time". It is also possible for a 21/8 time signature to be used for an irregular, or "additive" metrical pattern, such as groupings of 3 + 3 + 3 + 2 + 3 + 2 + 3 + 2 eighth notes.
+
+Septuple meter can also be notated by using regularly alternating bars of triple and duple or quadruple meters, for example 4/4 + 3/4, or 6/8 + 6/8 + 9/8, or through the use of compound meters, in which two or three numerals take the place of the expected numerator 7, for example, 2+2+3/8, or 5+2/8. 
+
+<youtube-embed video="_yExwkQYcp0" />
+
+### Balkan folk music
+
+Septuple rhythms are characteristic of some European folk idioms, particularly in the Balkan countries. An example from Macedonia is the traditional tune "Jovano Jovanke", which can be transcribed in 7/8. Bulgarian dances are particularly noted for the use of a variety of irregular, or heterometric rhythms. The most popular of these is the rachenitsa, a type of khoro in a rapid septuple meter divided 2+2+3. In the Pirin area, the khoro has a rhythm subdivided 3+2+2, and two varieties of it are the pravo makedonsko ("straight Macedonian") and the mazhka rachenitsa ("men's rachenitsa"). Septuple rhythms are also found in Bulgarian vocal music, such as the koleda ritual songs sung by young men on Christmas Eve and Christmas to bless livestock, households, or specific family members.
+
+<youtube-embed video="xVgUKgORUnc" />
+
 ## Additive meters
 
 To indicate more complex patterns of stresses, such as additive rhythms, more complex time signatures can be used. Additive meters have a pattern of beats that subdivide into smaller, irregular groups. Such meters are sometimes called imperfect, in contrast to perfect meters, in which the bar is first divided into equal units.
@@ -46,3 +86,17 @@ Folk music may make use of metric time bends, so that the proportions of the per
 In Western classical music, metric time bend is used in the performance of the Viennese waltz. Most Western music uses metric ratios of 2:1, 3:1, or 4:1 (two-, three- or four-beat time signatures)—in other words, integer ratios that make all beats equal in time length. So, relative to that, 3:2 and 4:3 ratios correspond to very distinctive metric rhythm profiles. Complex accentuation occurs in Western music, but as syncopation rather than as part of the metric accentuation.
 
 Brăiloiu borrowed a term from Turkish medieval music theory: aksak. Such compound time signatures fall under the "aksak rhythm" category that he introduced along with a couple more that should describe the rhythm figures in traditional music. The term Brăiloiu revived had moderate success worldwide, but in Eastern Europe it is still frequently used. However, aksak rhythm figures occur not only in a few European countries, but on all continents, featuring various combinations of the two and three sequences. The longest are in Bulgaria. The shortest aksak rhythm figures follow the five-beat timing, comprising a two and a three (or three and two). 
+
+<youtube-embed video="j9GgmGLPbWU" />
+
+The term additive rhythm is also often used to refer to what are also incorrectly called asymmetric rhythms and even irregular rhythms – that is, meters which have a regular pattern of beats of uneven length. For example, the time signature 4/4 indicates each bar is eight quavers long, and has four beats, each a crotchet (that is, two quavers) long. The asymmetric time signature 3+3+2/8, on the other hand, while also having eight quavers in a bar, divides them into three beats, the first three quavers long, the second three quavers long, and the last just two quavers long.
+
+These kinds of rhythms are used, for example, by Béla Bartók, who was influenced by similar rhythms in Bulgarian folk music. The third movement of Bartók's String Quartet No. 5, a scherzo marked alla bulgarese features a "9/8 rhythm (4+2+3)". Stravinsky's Octet for Wind Instruments "ends with a jazzy 3+3+2 = 8 swung coda". Additive patterns also occur in some music of Philip Glass, and other minimalists, most noticeably the "one-two-one-two-three" chorus parts in Einstein on the Beach. They may also occur in passing in pieces which are on the whole in conventional meters. In jazz, Dave Brubeck's song "Blue Rondo à la Turk" features bars of nine quavers grouped into patterns of 2+2+2+3 at the start. George Harrison's song "Here Comes the Sun" on the Beatles' album Abbey Road features a rhythm "which switches between 11/8, 4/4 and 7/8 on the bridge". "The special effect of running even eighth notes accented as if triplets against the grain of the underlying backbeat is carried to a point more reminiscent of Stravinsky than of the Beatles".
+
+Olivier Messiaen made extensive use of additive rhythmic patterns, much of it stemming from his close study of the rhythms of Indian music. His "Danse de la fureur, pour les sept trompettes" from The Quartet for the End of Time is a bracing example. A gentler exploration of additive patterns can be found in "Le Regard de la Vierge" from the same composer's piano cycle Vingt Regards sur l'enfant-Jésus.
+
+György Ligeti's Étude No. 13, "L'escalier du diable" features patterns involving quavers grouped in twos and threes. The rhythm at the start of the study follows the pattern 2+2+3, then 2+2+2+3. According to the composer's note, the 12/8 time signature "serves only as a guideline, the actual meter consists of 36 quavers (three 'bars'), divided assymetrically".
+
+https://en.wikipedia.org/wiki/List_of_musical_works_in_unusual_time_signatures
+
+<youtube-embed video="_1d-Axi4mhY" />

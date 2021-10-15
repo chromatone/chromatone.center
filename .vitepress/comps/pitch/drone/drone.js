@@ -5,6 +5,7 @@ export const drone = reactive({
   base: 55,
   freq: useStorage('drone-freq', 110),
   stopped: true,
+  volume: useStorage('drone-vol', 0.5),
   note: computed(() => Frequency(drone.freq).toNote()),
   pitch: computed({
     get() {

@@ -8,7 +8,7 @@
     viewBox="0 0 512 300",
     xmlns="http://www.w3.org/2000/svg",
     )
-    g.lines
+    g.lines(v-if="audio.fft.length > 0")
       line(
         style="transition:all 500ms ease; "
         v-for="(bar,i) in audio.bands",
@@ -22,6 +22,7 @@
         :y2="- audio.fft[i] * 1.5"
       )
     polyline(
+      v-if="audio.points"
       :points="audio.points"
       stroke-width="4"
       fill="none"
@@ -64,7 +65,7 @@ function initiate() {
     const { resume, pause } = useRafFn(() => {
       audio.fft = fft.getValue()
       audio.wave = wave.getValue()
-      audio.points = Array.from(audio.wave).map((val, i) => `${i},${150 + 280 * val}`).join(' ')
+      audio.points = Array.from(audio.wave).map((val, i) => `${i},${120 + 280 * val}`).join(' ')
     })
   }).catch(() => {
     console.log('mic denied')

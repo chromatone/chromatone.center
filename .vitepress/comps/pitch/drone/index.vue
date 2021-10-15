@@ -21,9 +21,7 @@
         .p-1 {{ drone.centDiff }}
         .p-1 {{ drone.cents }} cents
         .p-1.text-xl {{ drone.freq.toFixed(2) }} Hz
-        button.text-button(@click="drone.stopped = !drone.stopped")
-          la-stop(v-if="!drone.stopped")
-          la-play(v-else)
+
     .intervals
       .interval.flex.flex-col.m-1(
         v-for="interval in intervals" :key="interval"
@@ -33,7 +31,11 @@
             v-for="voice in interval.voices" :key="voice"
             :interval="voice"
           )
-    .controls
+    .controls.flex.flex-wrap.items-center.justify-center
+      button.text-button(@click="drone.stopped = !drone.stopped")
+        la-stop(v-if="!drone.stopped")
+        la-play(v-else)
+      sqnob.w-5em(v-model="drone.volume" :min="0" :max="1" :step="0.05" param="VOL")
 </template>
 
 <script setup>

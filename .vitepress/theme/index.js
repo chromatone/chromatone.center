@@ -1,5 +1,4 @@
 import 'virtual:windi.css'
-import { MotionPlugin } from '@vueuse/motion'
 import { GesturePlugin } from '@vueuse/gesture'
 
 import './styles/vars.css'
@@ -15,7 +14,6 @@ const theme = {
   Layout,
   NotFound,
   enhanceApp({ app }) {
-    app.use(MotionPlugin)
     app.use(GesturePlugin)
 
     if (

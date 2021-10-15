@@ -12,23 +12,7 @@ footer
           a.p-2(:href="line.link", :class="{ active: route.path.includes(line.link) }") {{ line.title }}
           a.p-2.font-normal.text-16px(v-for="child in theme?.pages?.[line.data?.list]" :href="child.link",:class="{ active: route.path.includes(child.link) }") {{ child.title }}
 
-  .flex.items-center.mt-8(v-motion,
-    :initial="{ opacity: 0, y: 40 }",
-    :enter="{ opacity: 0, y: 0, scale: 1 }",
-    :visible=`{
-      opacity: 1, y: 0,
-      scale: 1,
-      transition: {
-        type: 'spring',
-        stiffness: 100,
-        damping: 10,
-        restDelta: 0.5,
-        restSpeed: 10,
-      }
-    }`,
-    :delay="100"
-
-    )
+  .flex.items-center.mt-8
     a.m-auto(href="/")
       img.h-8em.my-4(:src="theme.logo") 
       .text-2xl.text-center {{ site.title }}

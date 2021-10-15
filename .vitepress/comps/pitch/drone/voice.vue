@@ -7,8 +7,10 @@
   .vol.absolute.left-0.right-0.bottom-0.bg-dark-100.bg-opacity-30.border-t-1(
     :style="{ height: voice.vol * 100 + '%', opacity: voice.play ? 1 : 0.2 }"
   )
+  .vol.absolute.left-0.right-0.bottom-0.bg-dark-900.bg-opacity-20.border-t-1(
+    :style="{ height: voice.vol * 100 * voice.lfo + '%', opacity: voice.play ? 1 : 0.2 }"
+  )
   .pan.absolute.left-0.top-0.bottom-0.bg-dark-100.bg-opacity-30.border-r-1(
-
     :style="{ width: voice.pan * 50 + 50 + '%', opacity: voice.play ? 1 : 0.2 }"
   )
 </template>
@@ -16,7 +18,7 @@
 <script setup>
 import { freqColor } from 'chromatone-theory'
 import { clampNum } from '@use/theory'
-import { Frequency, Synth, Panner, gainToDb, LFO, Meter, dbToGain } from 'tone'
+import { Frequency, Synth, PanVol, gainToDb, LFO, Meter, dbToGain } from 'tone'
 import { drone } from './drone.js'
 import { useRafFn } from '@vueuse/core'
 const props = defineProps({
@@ -45,7 +47,7 @@ const voice = reactive({
   lfo: 0,
 });
 
-let synth, panner, lfo, meter
+let synth, panner, lfo, meter, lfoVol
 
 watch(() => voice.play, play => {
   if (!play) {
@@ -57,8 +59,9 @@ watch(() => voice.play, play => {
       meter = new Meter({
         normalRange: true
       })
-      panner = new Panner().toDestination()
-      lfo = new LFO('1m', -0.25, 0.25).connect(panner.pan).connect(meter).start()
+      panner = new PanVol({ volume: gainToDb(drone.volume) }).toDestination()
+      lfo = new LFO(Math.random() * 0.5 + 0.01, -0.25, 0.25).connect(panner.pan).start()
+      lfoVol = new LFO(Math.random() * 0.1 + 0.001, -20, 0).connect(panner.volume).connect(meter).start()
       synth = new Synth({
         envelope: {
           attack: 2,
@@ -86,6 +89,9 @@ function mount() {
   })
   watch(() => voice.pan, pan => {
     panner.pan.targetRampTo(pan, 1)
+  })
+  watch(() => drone.volume, vol => {
+    panner.volume.targetRampTo(gainToDb(vol), 1)
   })
   const { resume, pause } = useRafFn(() => {
     voice.lfo = meter.getValue()

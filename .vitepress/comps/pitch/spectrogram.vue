@@ -1,20 +1,20 @@
 <template lang="pug">
 .flex.flex-col.justify-center
-  .fullscreen-container(ref="screen")
+  .fullscreen-container#screen
     canvas#spectrogram.m-4.h-full.min-h-30em.w-full.rounded-md.cursor-pointer(
       :width="state.width"
       :height="state.height"
       v-drag="dragScreen"
     )
     start-button.absolute(v-if="!state.initiated" @click="initiate()") Start
-    full-screen.absolute.bottom-6.right-4(:el="screen")
+    full-screen.absolute.bottom-6.right-4
     .absolute.top-6.left-4.text-2xl x{{ state.speed }}
 
 </template>
   
 <script setup>
 import AudioMotionAnalyzer from 'audiomotion-analyzer'
-import { freqPitch } from 'chromatone-theory'
+import { initGetUserMedia, freqPitch } from 'chromatone-theory'
 import { UserMedia } from 'tone'
 import { clampNum } from '@use/theory'
 
@@ -34,7 +34,7 @@ function dragScreen(drag) {
 }
 
 onMounted(() => {
-  mic = new UserMedia();
+  initGetUserMedia()
   canvas = document.getElementById('spectrogram')
   ctx = canvas.getContext('2d')
   tempCanvas = document.createElement('canvas')
@@ -46,35 +46,32 @@ onMounted(() => {
 });
 
 function initiate() {
-  mic.open().then(() => {
+  navigator.mediaDevices.getUserMedia({ audio: true, video: false }).then((stream) => {
     state.initiated = true
-    analyze()
-
-  }).catch(() => {
-    console.log('mic denied')
-  })
-}
-
-function analyze() {
-  const audio = new AudioMotionAnalyzer(null, {
-    source: mic,
-    mode: 1,
-    connectSpeakers: false,
-    volume: 0,
-    useCanvas: false,
-    onCanvasDraw(instance) {
-      tempCtx.drawImage(canvas, 0, 0, state.width, state.height)
-      let bars = instance.getBars()
-      for (let i = 0; i < bars.length; i++) {
-        ctx.fillStyle = colorIt((bars[i].freqLo + bars[i].freqHi) / 2, bars[i].value[0])
-        ctx.fillRect(state.width - state.speed, state.height - i * (state.height / bars.length), state.speed, 1)
+    const audio = new AudioMotionAnalyzer(null, {
+      mode: 1,
+      connectSpeakers: false,
+      volume: 0,
+      useCanvas: false,
+      onCanvasDraw(instance) {
+        tempCtx.drawImage(canvas, 0, 0, state.width, state.height)
+        let bars = instance.getBars()
+        for (let i = 0; i < bars.length; i++) {
+          ctx.fillStyle = colorIt((bars[i].freqLo + bars[i].freqHi) / 2, bars[i].value[0])
+          ctx.fillRect(state.width - state.speed, state.height - i * (state.height / bars.length), state.speed, 1)
+        }
+        ctx.translate(-state.speed, 0)
+        ctx.drawImage(tempCanvas, 0, 0, state.width, state.height)
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
       }
-      ctx.translate(-state.speed, 0)
-      ctx.drawImage(tempCanvas, 0, 0, state.width, state.height)
-      ctx.setTransform(1, 0, 0, 1, 0, 0);
-    }
+    })
+    const micStream = audio.audioCtx.createMediaStreamSource(stream);
+    audio.connectInput(micStream);
+  }).catch((e) => {
+    console.log('mic denied', e)
   })
 }
+
 
 function colorIt(freq, value) {
   return `hsl(${freqPitch(freq) * 30}, ${value * 100}%, ${value * 80}%)`

@@ -1,6 +1,6 @@
 <template lang="pug">
-.fullscreen-container(ref="screen")
-  full-screen.absolute.top-2.right-2(:el="screen")
+.fullscreen-container#screen
+  full-screen.absolute.top-2.right-2
   svg#fifths.h-full.max-h-80vh.w-full(
     version="1.1",
     baseProfile="full",
@@ -59,9 +59,10 @@
           :y="getCircleCoord(i, 12, 35 - getRadius(qual) * 12).y + 0.5",
         ) {{ note.name }}{{ qual == 'minor' ? 'm' : '' }}
 
-    g(
+    g.transition-all.duration-300.ease-out(
       ref="selector"
       transform-origin="50 50"
+      :style="{ transform: `rotate(${tonic / 12 * 360}deg)`}"
     )
       svg-ring(
         :cx="50"
@@ -105,13 +106,11 @@
 </template>
 
 <script setup>
-import { useMotion } from '@vueuse/motion'
+
 import { useStorage } from '@vueuse/core'
 import { notes, rotateArray, getCircleCoord, pitchColor } from 'chromatone-theory'
 import { Chord, Note } from '@tonaljs/tonal'
 import {playNote, stopNote} from '@use/theory.js'
-
-const screen = ref()
 
 const numFifths = [0, 7, 2, 9, 4, 11, 6, 1, 8, 3, 10, 5]
 const minors = numFifths.map(n => notes[n]);
@@ -121,24 +120,11 @@ const scales = { minor: minors, major: majors }
 
 const tonic = useStorage('tonic', 0)
 const scaleType = useStorage('scale-type', 'major')
-const selector = ref(null);
 
 const steps = {
   minor: [['VI', 'III', 'VII'], ['iv', 'i', 'v']],
   major: [['IV', 'I', 'V'], ['ii', 'vi', 'iii']]
 }
-
-const move = useMotion(selector);
-
-watch(tonic, pos => {
-  move.apply({
-    rotate: pos / 12 * 360,
-    transition: {
-      type: 'spring',
-      damping: 20,
-    }
-  });
-}, { immediate: true });
 
 function getRadius(qual) {
   return qual == 'minor' ? 1 : 0;

@@ -44,7 +44,6 @@ We've ported almost all separate apps into the main website. It becomes more and
 - [chromatone-theory](https://www.npmjs.com/package/chromatone-theory)
 - [vue 3](https://v3.vuejs.org/)
   - [vueUse](https://vueuse.org)
-  - [vueUse/motion](https://motion.vueuse.org)
   - [vueUse/gesture](https://gesture.vueuse.org)
 - [vite](https://vitejs.dev/)
   - [unplugin-plugin-components](https://github.com/antfu/unplugin-vue-components)

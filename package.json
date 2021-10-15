@@ -12,9 +12,8 @@
     "@tonejs/midi": "^2.0.27",
     "@vueuse/core": "6.5.3",
     "@vueuse/gesture": "^1.0.0",
-    "@vueuse/motion": "^1.6.0",
     "abcjs": "^5.12.0",
-    "audiomotion-analyzer": "^3.6.0",
+    "audiomotion-analyzer": "3.6.0",
     "chromatone-theory": "1.3.4",
     "colord": "^2.8.0",
     "fraction.js": "^4.1.1",
@@ -23,12 +22,12 @@
     "meyda": "^5.2.2",
     "paper": "^0.12.15",
     "poly-decomp": "^0.3.0",
-    "tone": "^14.8.30",
+    "tone": "^14.8.32",
     "vue": "^3.2.20",
-    "webmidi": "^3.0.0-alpha.18"
+    "webmidi": "^3.0.0-alpha.19"
   },
   "devDependencies": {
-    "@iconify/json": "^1.1.414",
+    "@iconify/json": "^1.1.415",
     "esbuild-register": "^3.0.0",
     "markdown-it-classy": "^0.2.0",
     "markdown-it-container": "^3.0.0",

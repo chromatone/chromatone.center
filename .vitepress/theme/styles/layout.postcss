@@ -274,7 +274,7 @@ form {
 }
 
 .text-button {
-  @apply shadow m-1 p-2 rounded-lg border-1 border-dark-100/50 dark:border-light-100/50 transition-all duration-200;
+  @apply shadow m-1 p-2 rounded-lg border-1 border-dark-100/30 dark:border-light-100/60 transition-all duration-200 leading-none;
   &.note {
     @apply text-white p-2 font-bold opacity-50 border-2 rounded-lg;
     &.active {
@@ -285,7 +285,7 @@ form {
     @apply opacity-100 border-current;
   }
   &:hover {
-    @apply opacity-90;
+    @apply border-current;
   }
 }
 

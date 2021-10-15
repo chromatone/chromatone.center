@@ -44,7 +44,7 @@
       @touchstart.stop.prevent="tap()"
       :class="{ active: tempo.tap.last }"
     )
-      fluent-tap-double-20-regular.mt-2
+      fluent-tap-double-20-regular.mt-1
     button.text-button(
       v-if="tempo.tap.bpm && tempo.tap.last"
         @click="tempo.bpm = tempo.tap.bpm"

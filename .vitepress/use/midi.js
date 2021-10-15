@@ -15,6 +15,7 @@ export const midi = reactive({
     octA: 3,
   },
   filter: useStorage('global-midi-filter', {}),
+  available: computed(() => Object.entries(midi.outputs).length > 0),
 })
 
 export function useMidi() {

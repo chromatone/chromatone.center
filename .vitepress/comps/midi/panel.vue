@@ -1,13 +1,16 @@
 <template lang="pug">
-.m-auto.layer.w-full
-  .flex.items-center.justify-center.flex-wrap.py-2.m-auto
+.m-auto.layer.w-full.z-40
+  .p-2.border.border-red-500.text-red-500(v-if="!midi.enabled") MIDI is not available. Use a 
+    a.font-normal.underline(href="https://caniuse.com/?search=midi" target="_blank") compatible browser 
+    span or 
+    a.font-normal.underline(href="https://apps.apple.com/ru/app/web-midi-browser/id953846217" target="_blank") Web MIDI Browser on iOS
+  .flex.items-center.justify-center.flex-wrap.py-2.m-auto(v-else)
     .flex.m-2
-      a.font-normal.p-2.border.border-green-500.text-green-500.select-none(v-if="midi.enabled", href="/explore/monitor/") 
-        span(v-if="Object.entries(midi.outputs).length > 0") MIDI 
+      a.font-normal.p-2.border.border-green-500.text-green-500.select-none(href="/explore/monitor/") 
+        span(v-if="midi.available") MIDI 
         span(v-else) Plug in your MIDI device
-      .p-2.border.border-red-500.text-red-500(v-else) MIDI NOT AVAILABLE
-    .button.opacity-30(@click="midi.out = !midi.out",:class="{ active: midi.out }") OUT
-    .button.w-3em.transition-all.duration-50.cursor-pointer(
+    .text-button.opacity-30(@click="midi.out = !midi.out",:class="{ active: midi.out }") OUT
+    .text-button.w-3em.transition-all.duration-50.cursor-pointer(
       @mousedown="midiAttack(midi.note)"
       @mouseup="midiRelease(midi.note)"
       v-if="midi.note?.name"
@@ -19,11 +22,11 @@
       la-play(v-if="!midi.playing")
       la-pause(v-else)
 
-    .button.border(@click="stopAll()")
+    .text-button.border(@click="stopAll()")
       la-stop
-    .button.border(v-for="output in midi.outputs")  
+    .text-button.border(v-for="output in midi.outputs")  
       span {{ output.name }}
-    .button(v-if="toChannel")
+    .text-button(v-if="toChannel")
       span CH
       input.ch.ml-2(
         type="number", 

@@ -1,5 +1,5 @@
 <template lang="pug">
-.flex
+.flex.is-group
   .flex.flex-wrap
     .channel(
       v-for="ch in 16" :key="ch"
@@ -28,7 +28,7 @@ function filterAll() {
 
 <style scoped>
 .channel {
-  @apply transition-all duration-100 select-none px-2px py-5px m-2px min-w-22px text-0.75rem text-center cursor-pointer border-1 rounded-full;
+  @apply transition-all duration-100 select-none px-2px py-5px m-2px min-w-22px text-0.75rem text-center cursor-pointer border-1 rounded-lg;
   flex: 1 1 10%;
   &.filtered {
     @apply bg-light-900 dark:bg-dark-100;

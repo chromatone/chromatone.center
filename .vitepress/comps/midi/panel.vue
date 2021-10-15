@@ -18,11 +18,10 @@
     ) 
       .w-2em {{ midi.note.name }} 
       .flex {{ midi.note.accidental }}
-    .play.button(@click="midi.playing = !midi.playing")
+    button.play.text-button(@click="midi.playing = !midi.playing")
       la-play(v-if="!midi.playing")
       la-pause(v-else)
-
-    .text-button.border(@click="stopAll()")
+    button.text-button.border(@click="stopAll()")
       la-stop
     .text-button.border(v-for="output in midi.outputs")  
       span {{ output.name }}

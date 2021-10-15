@@ -2,9 +2,10 @@
 .theme(:class="pageClasses")
   nav-bar(v-if="showNavbar", @toggle="toggleSidebar")
   .main(:key="route.path")
+
+    transition(name="fade")
+      .sidebar-mask(v-show="openSideBar", @click="toggleSidebar(false)")
     side-bar(:open="openSideBar")
-      transition(name="fade")
-        .sidebar-mask(v-show="openSideBar", @click="toggleSidebar(false)")
     home(v-if="$frontmatter.template == 'home'")
     page-main(v-else)
 //debug

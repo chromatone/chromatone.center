@@ -1,5 +1,5 @@
 <template lang="pug">
-svg.w-full.mt-8(
+svg.w-full(
   version="1.1",
   baseProfile="full",
   :viewBox="`0 0 1000 310`",
@@ -16,11 +16,8 @@ svg.w-full.mt-8(
       stroke-width="2"
       stroke="currentColor"
       opacity="0.1"
-      rx="20"
       fill="currentColor"
     )
-
-
     g.steps(
       :opacity="volume / 2 + 0.5"
       transform="translate(0,100)"
@@ -101,19 +98,28 @@ svg.w-full.mt-8(
         rx="15"
         :fill="isDark ? 'hsla(0,0%,30%,0.4)' : 'hsla(0,0%,100%,0.8)'"
         )
-      la-times(
-        color="currentColor"
+      la-trash(
+        color="hsla(0,25%,50%,1)"
         stroke-width=0
-        y="4"
-        x="4"
-        font-size="35"
+        y="9"
+        x="9"
+        font-size="26"
       )
 
     g.vol(
       style="cursor:pointer;color:currentColor"
       :transform="`translate(40, 40)`"
       font-size="32px"
+      v-drag="dragVol"
       @dblclick="volume > 0 ? volume = 0 : volume = 0.75"
+      )
+      rect(
+        x="-10"
+        y="-30"
+        width="140"
+        height="60"
+        rx="20"
+        fill="transparent"
       )
       line(
         x2="100"
@@ -122,7 +128,6 @@ svg.w-full.mt-8(
         stroke-linecap="round"
       )
       g.dragger.opacity-80(
-        v-drag="dragVol"
         :transform="`translate(${volume * 100})`"
       )
         circle(

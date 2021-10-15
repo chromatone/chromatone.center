@@ -2,7 +2,16 @@
 g.pan(
   style="cursor:pointer;color:currentColor"
   font-size="32px"
+  v-drag="dragPan"
   @dblclick="pan != 0 ? $emit('update:pan', 0) : order == 0 ? $emit('pan', 0.5) : $emit('update:pan', -0.5)"
+  )
+  rect(
+    x="-60"
+    y="-30"
+    width="120"
+    height="60"
+    rx="20"
+    fill="transparent"
   )
   line(
     x1="-50"
@@ -17,7 +26,7 @@ g.pan(
   )
   g.dragger.transition-all.duration-100.opacity-80(
     :transform="`translate(${pan * 50},0)`"
-    v-drag="dragPan"
+
   )
     circle(
       :r="24"

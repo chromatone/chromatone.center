@@ -1,6 +1,6 @@
 <template lang="pug">
-.flex.flex-wrap.text-3xl.w-full.max-w-55ch.mx-auto
-  .transport.flex.flex-wrap
+.flex.flex-wrap.text-xl.w-full.max-w-55ch.mx-auto
+  .transport.flex.flex-wrap.is-group.m-1
     button.text-button(
       @click="tempo.playing = !tempo.playing"
     )
@@ -10,15 +10,7 @@
       @click="tempo.stopped = true"
     )
       la-stop
-  .info.flex.flex-wrap.cursor-pointer.select-none.text-center(
-    v-drag="drag"
-  )
-    .text-button.w-7em {{ tempo.bpm.toFixed(2) }} BPM
-    .text-button.w-5em {{ tempo.hz }} Hz
-    .text-button.w-3em.font-bold(
-      :style="{ color: tempo.color }"
-    ) {{ tempo.note }}
-  .math.flex.flex-wrap
+  .math.flex.flex-wrap.is-group.m-1
     button.text-button(
       @click="setTempo(-tempo.bpm / 2)"
     )
@@ -35,25 +27,36 @@
       @click="setTempo(tempo.bpm)"
     )
       la-times
-    .listap.flex.flex-wrap
-      button.text-button.flex(
-        @mousedown.stop.prevent="tap()"
-        @touchstart.stop.prevent="tap()"
-        :class="{ active: tempo.tap.last }"
-      )
-        fluent-tap-double-20-regular.mt-1
-      button.text-button(
-        v-if="tempo.tap.bpm && tempo.tap.last"
-          @click="tempo.bpm = tempo.tap.bpm"
-        ) {{ tempo.tap.bpm.toFixed(1) }}
-      button.text-button(@click="!tuner.initiated ? init() : (tuner.listen = !tuner.listen)")
-        tabler-ear(v-if="!tuner.listen")
-        tabler-ear-off(v-else)
-      button.text-button.duration-100(
-        :class="{ active: tuner.blink }"
-        @click="tempo.bpm = tuner.bpm"
-        v-if="tuner.listen") {{ tuner.bpm.toFixed(1) }}
-      full-screen
+  .info.flex.flex-wrap.items-center.cursor-move.select-none.text-center.is-group.m-1(
+    style="touch-action:none;"
+    v-drag="drag"
+  )
+    .text-button.w-9rem {{ tempo.bpm.toFixed(2) }} BPM
+    .text-button.w-6rem {{ tempo.hz }} Hz
+    .text-button.w-4rem.font-bold(
+      :style="{ color: tempo.color }"
+    ) {{ tempo.note }}
+
+  .listap.flex.flex-wrap.is-group.m-1
+    full-screen
+    button.text-button.flex(
+      @mousedown.stop.prevent="tap()"
+      @touchstart.stop.prevent="tap()"
+      :class="{ active: tempo.tap.last }"
+    )
+      fluent-tap-double-20-regular.mt-2
+    button.text-button(
+      v-if="tempo.tap.bpm && tempo.tap.last"
+        @click="tempo.bpm = tempo.tap.bpm"
+      ) {{ tempo.tap.bpm.toFixed(1) }}
+    button.text-button(@click="!tuner.initiated ? init() : (tuner.listen = !tuner.listen)")
+      tabler-ear(v-if="!tuner.listen")
+      tabler-ear-off(v-else)
+    button.text-button.duration-100(
+      :class="{ active: tuner.blink }"
+      @click="tempo.bpm = tuner.bpm"
+      v-if="tuner.listen") {{ tuner.bpm.toFixed(1) }}
+
 
 </template>
 

@@ -2,25 +2,25 @@
 .flex.flex-col.items-center.w-full.p-4.has-bg.rounded-xl#screen
   client-only 
     state-transport
-    metronome-bars-bar(
+    metronome-bars-bar.my-2.is-group(
       v-for="(loop,i) in loops",
       :key="loop"
       :order="i"
       :loop="loop"
       :maxRatio="maxRatio"
       @del="loops.splice(i, 1)"
-      @over="loop.over = clampNum(loop.over, $event, 1, 32)"
-      @under="loop.under = clampNum(loop.under, $event, 1, 32)"
+      @over="loop.over = clampNum(loop.over, $event, 1, 16)"
+      @under="loop.under = clampNum(loop.under, $event, 1, 16)"
       @sound="loop.sound = $event"
       :editable="!meters"
     )
-    .flex.flex-wrap
-      button.text-button.text-4xl(
+    .flex.flex-wrap.justify-center.is-group.m-1.text-xl
+      button.text-button(
         @click="loops.push({ ...newLoop })"
         v-if="!meters"
       )
         la-plus
-      button.text-button.text-xl(
+      button.text-button(
         v-for="meter in meters"
         @click="loops = [{ over: meter.split('/')[0], under: meter.split('/')[1], sound: 'A', volume: 1 }]"
       ) {{ meter }}

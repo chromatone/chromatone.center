@@ -2,7 +2,7 @@
 title: Evolution of european notation systems
 subtitle: From neumes to staves
 date: 2021-08-19
-tags: notation
+tags: notes
 ---
 
 ## Medieval neumes c. 500–1400

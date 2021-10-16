@@ -10,8 +10,6 @@
 </template>
 
 <script setup>
-import { computed, reactive } from "vue";
-import { sortList } from '@theme/composables/list.js'
 const props = defineProps({
   rows: Object,
 });
@@ -19,6 +17,22 @@ const props = defineProps({
 const sorted = computed(() => {
   return sortList(props.rows)
 });
+
+function sortList(list) {
+  if (!list && typeof list != 'array') {
+    return
+  }
+  return [...list].sort((a, b) => {
+    if (a?.data && b?.date) {
+      return a.date > b.date ? -1 : 1
+    }
+    if (a?.lastModified > b?.lastModified) {
+      return -1
+    } else {
+      return 1
+    }
+  })
+}
 
 
 </script>

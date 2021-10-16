@@ -1,7 +1,7 @@
 ---
 title: Solmization
 subtitle: Systems of attributing a distinct syllable to each note of a musical scale.
-tags: notation
+tags: notes
 date: 2021-08-31
 ---
 

@@ -1,21 +1,21 @@
 <template lang="pug">
 .list-blocks(v-if="rows")
-  card-box.my-8.mx-2(
+  .my-12.mx-2.shadow-xl.rounded-xl(
     v-for="(area,i) in rows",
     :key="area.title", 
     :id="area.title"
     :i="i"
     :total="rows.length"
-    v-slot="{ color }"
     )
     row-block(
       :item="area", 
-      :color="color"
+      :color="lchToHsl(i, rows.length)"
       )  
 </template>
 
 <script setup>
 import { useData } from 'vitepress'
+import { lchToHsl } from '@use/colors'
 const { theme, title, frontmatter } = useData()
 
 const rows = theme.value?.pages?.[frontmatter.value.list];

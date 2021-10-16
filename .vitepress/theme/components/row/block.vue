@@ -51,7 +51,7 @@ const bg = computed(() => `url(/media/${props.item.data?.cover}`);
 }
 
 .header {
-  @apply relative flex flex-col flex-1 w-full pt-64;
+  @apply relative flex flex-col flex-1 w-full pt-48;
 }
 
 .info {

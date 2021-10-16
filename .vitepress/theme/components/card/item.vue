@@ -16,7 +16,7 @@
         ) {{ item.subtitle }}
       shop-price.float-left(:product="item.data?.product")
 
-  page-buttons(:buttons="item.data?.buttons")
+  page-buttons.m-2(:buttons="item.data?.buttons")
   line-list(:list="theme?.pages?.[item.data.list]")
 </template>
 
@@ -42,7 +42,7 @@ const theColor = computed(() => props.color);
     @apply bg-light-100 dark:bg-dark-400;
   }
   & .container {
-    @apply flex rounded-xl flex-wrap min-w-full items-stretch w-full relative pt-32;
+    @apply flex rounded-xl flex-wrap min-w-full items-stretch w-full relative pt-24;
     flex: 1 1 100%;
     background-color: v-bind(theColor);
   }

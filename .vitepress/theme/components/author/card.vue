@@ -1,5 +1,5 @@
 <template lang="pug">
-card-box.author-card(v-if="author" :i="i" :total="total" :height="8")
+.rounded-2xl.author-card(v-if="author" :i="i" :total="total" :height="8")
   .flex.flex-wrap
     img.avatar(:src="author.avatar")
     .flex.flex-col.flex-1.justify-center
@@ -27,7 +27,7 @@ const props = defineProps({
 
 <style  scoped>
 .author-card {
-  @apply max-w-65ch m-auto flex flex-col p-8 my-16 bg-gray-50 dark:bg-gray-700;
+  @apply max-w-65ch m-auto flex flex-col p-8 my-16 shadow-lg bg-light-100 dark:bg-dark-300;
 }
 .avatar {
   @apply h-12em self-start;

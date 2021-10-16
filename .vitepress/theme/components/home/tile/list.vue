@@ -39,6 +39,6 @@ function sortList(list) {
 
 <style  scoped>
 .tiles {
-  @apply flex flex-wrap max-w-55ch mx-auto;
+  @apply flex flex-col max-w-65ch mx-auto;
 }
 </style>

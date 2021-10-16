@@ -3,6 +3,7 @@ title: Chromatone color notation
 subtitle: Different ways to implementing the color-frequency equations for writing and reading music
 tags: notes
 date: 2021-06-01
+cover: apps/midi-roll.png
 ---
 
 There's a plenty of possible ways to make the Chromatone system work for written music communication. This whole web site is one big experiment to find the most useful implications of the simple equations. But there's more to explore!

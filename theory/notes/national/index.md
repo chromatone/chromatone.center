@@ -3,7 +3,7 @@ title: National notation systems of ancient and modern cultures
 subtitle: Greece, Korea and others
 date: 2021-08-30
 tags: notes
-
+cover: theory/notation/Bhat_notation1.jpg
 svaras:
   - name: ṣaḍja (षड्ज)
     trans: Giving birth to the six

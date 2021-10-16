@@ -4,6 +4,7 @@ subtitle: How the sheet notes are written and read from classic era till today
 date: 2021-08-12
 tags: notes
 list: staff
+cover: theory/notation/kvintcirklen.png
 ---
 
 

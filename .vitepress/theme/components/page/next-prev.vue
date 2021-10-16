@@ -10,7 +10,7 @@
       a.link( :href="prev.link" :style="{ color: colors.prev }")
         carbon-arrow-left.icon.icon-prev
         span.text {{ prev.title }}
-    //- page-parents.pad.text-2xl.flex-1.flex.flex-col.items-center.p-8
+
     card-box.pad.next(
       v-if="next"
       :i="current + 1"
@@ -19,14 +19,15 @@
       )
       a.link( :href="next.link" :style="{ color: colors.next }")
         span.text {{ next.title }}
-        carbon-arrow-right.icon.icon-next          
+        carbon-arrow-right.icon.icon-next     
 </template>
 
 <script setup lang="ts">
-import { useSiblings } from '../../composables/links.js'
+import { useSiblings, useParents } from '../../composables/links.js'
 import { lchToHsl } from '@use/colors.js'
 
-const { prev, next, current, total } = useSiblings()
+const { prev, next, current, total } = useSiblings();
+const parents = useParents();
 const colors = {
   current: lchToHsl(current, total),
   prev: lchToHsl(current - 1, total),
@@ -36,13 +37,13 @@ const colors = {
 
 <style scoped>
 .next-and-prev-link {
-  @apply bg-gray-100/90 dark:bg-gray-800/90 py-4 
+  @apply bg-gray-100/90 dark:bg-gray-800/90 
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 }
 
 .row {
-  @apply mx-auto flex flex-col w-full max-w-65ch my-8 xs:(flex-wrap flex-row);
+  @apply mx-auto  flex flex-col w-full max-w-65ch my-8 px-4 xs:(flex-wrap flex-row);
 }
 
 .pad {

@@ -1,6 +1,6 @@
 <template lang="pug">
 .lines(v-if="list")
-  card-box.my-2(
+  card-box.m-2(
     v-for="(line,l) in list", 
     :key="line.title",
     :i="l"
@@ -28,7 +28,7 @@ const props = defineProps({
 
 <style  scoped>
 .lines {
-  @apply flex flex-col mx-2 md:mx-4 my-4 w-full;
+  @apply flex flex-wrap mx-2  my-4 w-full;
 }
 
 .line {

@@ -219,7 +219,7 @@
 <script setup>
 import { reactive, ref, watch, onMounted, onBeforeUnmount } from 'vue'
 import { NoiseSynth, gainToDb, dbToGain, FFT, Gain, AutoFilter, AutoPanner, BitCrusher } from 'tone'
-import { useStorage, useRafFn } from '@vueuse/core'
+import { useStorage, useRafFn, onKeyStroke } from '@vueuse/core'
 
 const options = useStorage('noise-options', {
   noise: {
@@ -295,6 +295,15 @@ const { pause, resume } = useRafFn(() => {
   }
 })
 
+onKeyStroke(' ', (e) => {
+  e.preventDefault()
+  active.value = true
+}, { eventName: 'keydown' })
+
+onKeyStroke(' ', (e) => {
+  active.value = false
+}, { eventName: 'keyup' })
+
 watch(active, (act) => {
   if (act) {
     synth.triggerAttack()
@@ -332,7 +341,7 @@ watch(crusherOptions.value, opt => {
   crusher.set(opt)
 });
 
-</script>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               </script>
 
 <style scoped>
 .row {

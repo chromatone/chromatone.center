@@ -10,7 +10,7 @@ import {
   Chorus,
   dbToGain,
 } from 'tone'
-import { useRafFn, watchOnce } from '@vueuse/core'
+import { useRafFn, watchOnce, onKeyStroke } from '@vueuse/core'
 
 const drone = reactive({
   base: 55,
@@ -44,6 +44,16 @@ function getCents(freq, pitch = 0) {
 }
 
 export function useDrone() {
+  onKeyStroke(' ', (e) => {
+    e.preventDefault()
+    drone.stopped = !drone.stopped
+  })
+  watch(
+    () => drone.volume,
+    (vol) => {
+      audio.bus.volume.targetRampTo(gainToDb(vol), 1)
+    },
+  )
   watchOnce(
     () => drone.started,
     () => {
@@ -163,16 +173,14 @@ export function useVoice(interval) {
         va.panner.pan.targetRampTo(pan, 1)
       },
     )
-    watch(
-      () => drone.volume,
-      (vol) => {
-        va.panner.volume.targetRampTo(gainToDb(vol), 1)
-      },
-    )
     useRafFn(() => {
       voice.lfo = va.meter.getValue()
     })
   }
+
+  onUnmounted(() => {
+    if (va.synth) va.synth.triggerRelease()
+  })
 
   return voice
 }

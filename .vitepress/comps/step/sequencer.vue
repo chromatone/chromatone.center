@@ -46,7 +46,7 @@
 <script setup>
 import { notes, pitchColor } from 'chromatone-theory'
 import { Scale, ScaleType, Midi, Note } from '@tonaljs/tonal'
-import { useStorage, useRafFn } from '@vueuse/core'
+import { useStorage, useRafFn, onKeyStroke } from '@vueuse/core'
 import { globalScale, scaleList } from '@use/theory.js'
 import { Pattern, start, Transport, Draw } from 'tone'
 import { synthOnce } from '@use/synth.js'
@@ -76,6 +76,11 @@ const patternTypes = ['up', 'down', 'upDown', 'downUp', 'alternateUp', 'alternat
 const rows = reactive([])
 const positions = reactive([])
 let patterns = []
+
+onKeyStroke(' ', (e) => {
+  e.preventDefault()
+  state.playing = !state.playing
+})
 
 watchEffect(() => {
   state.range.forEach((note, index) => {

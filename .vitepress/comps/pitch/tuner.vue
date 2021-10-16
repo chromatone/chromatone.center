@@ -2,7 +2,7 @@
 .fullscreen-container#screen
   start-button.absolute.z-20(@click="start()", v-if="!tuner.running") Start tuner
   full-screen.absolute.bottom-6.right-6.z-3
-  svg#tuner.rounded-xl.w-full.h-full.min-h-3xl.-z3(
+  svg#tuner.rounded-xl.w-full.h-full.-z3(
   :opacity="tuner.running ? 1 : 0.3"
   version="1.1",
   baseProfile="full",
@@ -17,8 +17,8 @@
         stop(:stop-color="background" stop-opacity="0.2" offset="100%")
     rect(
 
-      width="100%"
-      height="100%"
+      width="400"
+      height="300"
       rx="5"
       fill="url(#grad)"
     )

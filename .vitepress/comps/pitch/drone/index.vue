@@ -11,7 +11,7 @@
         :style="{ backgroundColor: pitchColor(note.pitch, 4, drone.pitch == note.pitch ? 1 : 0, drone.pitch == note.pitch ? 1 : 0.4) }"
         @click="drone.pitch = note.pitch"
       ) {{ note.name }}
-    .info.flex.flex-col.items-center.is-group.cursor-pointer.transition-all.duration-500.ease-out(
+    .info.my-4.flex.flex-col.items-center.is-group.cursor-pointer.transition-all.duration-500.ease-out(
       style="touch-action:none"
       v-drag="setFreq"
 
@@ -22,16 +22,16 @@
         .p-1 {{ drone.cents }} cents
         .p-1.text-xl {{ drone.freq.toFixed(2) }} Hz
 
-    .intervals
+    .intervals.my-2
       .interval.flex.flex-col.m-1(
         v-for="interval in intervals" :key="interval"
       )
         .flex.flex-wrap
-          pitch-drone-voice.m-1(
+          pitch-drone-voice.m-2(
             v-for="voice in interval.voices" :key="voice"
             :interval="voice"
           )
-    .controls.flex.flex-wrap.items-center.justify-center
+    .controls.my-2.flex.flex-wrap.items-center.justify-center
       button.text-button(@click="drone.stopped = !drone.stopped")
         la-stop(v-if="!drone.stopped")
         la-play(v-else)

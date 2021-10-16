@@ -14,12 +14,16 @@ const props = defineProps(['el'])
 const element = ref()
 
 onMounted(() => {
-  if (props.el) {
-    element.value = props.el
-  } else {
-    element.value = document.getElementById('screen')
-  }
-  full.value = useFullscreen(element.value)
+  nextTick(() => {
+    if (props.el) {
+      element.value = props.el
+    } else {
+      element.value = document.getElementById('screen')
+    }
+    full.value = useFullscreen(element.value)
+  })
+
+
 })
 
 const full = ref()

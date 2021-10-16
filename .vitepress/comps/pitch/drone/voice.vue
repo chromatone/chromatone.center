@@ -1,5 +1,5 @@
 <template lang="pug">
-.p-8.flex-1.relative.cursor-pointer.rounded-xl.overflow-hidden.text-center.font-bold(
+.py-16.px-8.flex-1.relative.cursor-pointer.rounded-xl.overflow-hidden.text-center.font-bold(
   style="touch-action:none"
   :style="{ backgroundColor: voice.color }"
   :class="{ 'border-current': voice.active }"

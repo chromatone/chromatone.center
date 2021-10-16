@@ -1,6 +1,6 @@
 <template lang="pug">
 .list-blocks(v-if="rows")
-  .my-12.mx-2(
+  .my-8.mx-2(
     v-for="(area,i) in rows",
     :key="area.title", 
     :id="area.title"

@@ -1,7 +1,7 @@
 <template lang="pug">
 .theme(:class="pageClasses")
   nav-bar(v-if="showNavbar", @toggle="toggleSidebar")
-  .main(:key="route.path")
+  .main
 
     transition(name="fade")
       .sidebar-mask(v-show="openSideBar", @click="toggleSidebar(false)")

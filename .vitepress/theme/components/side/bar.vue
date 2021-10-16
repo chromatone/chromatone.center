@@ -23,13 +23,15 @@
             v-if="theme.pages?.[page?.data?.list]"
             :style="{ color: lchToHsl(p, theme.pages?.[main.data?.list].length) }"
             ) {{ theme.pages?.[page?.data?.list].length }}
-        .flex.flex-col.my-2(v-if="route.path.includes(page.link) && theme.pages?.[page.data?.list] && theme.pages?.[page.data?.list].length > 0")
-          a.third(
-            :class="{ active: route.path.includes(line.link) }"
-            :style="{ borderColor: lchToHsl(l, theme.pages?.[page.data?.list].length) }"
-            v-for="(line,l) in theme.pages?.[page.data?.list]" :key="line"
-            :href="line.link"
-          ) {{ line.title }}
+        transition(name="fade")
+          .flex.flex-col.my-2(v-show="route.path.includes(page.link) && theme.pages?.[page.data?.list] && theme.pages?.[page.data?.list].length > 0")
+            transition-group(name="fade")
+              a.third(
+                :class="{ active: route.path.includes(line.link) }"
+                :style="{ borderColor: lchToHsl(l, theme.pages?.[page.data?.list].length) }"
+                v-for="(line,l) in theme.pages?.[page.data?.list]" :key="line"
+                :href="line.link"
+              ) {{ line.title }}
 </template>
 
 <script setup>
@@ -48,6 +50,7 @@ const route = useRoute();
 <style scoped>
 .sidebar {
   width: 16.4rem;
+  flex: 1 0 16.4rem;
   overflow-y: auto;
   transition: all 0.15s ease-out;
   @apply z-20 fixed top-$header-height bottom-0 left-0 transform -translate-x-full lg:(static translate-x-0) shadow-xl bg-light-600 dark:bg-dark-700;
@@ -61,7 +64,7 @@ const route = useRoute();
 }
 
 .group {
-  @apply flex flex-col transition-all duration-300 ease-out border-0 my-2 p-1;
+  @apply flex flex-col transition-all duration-300 ease-out border-0 my-2 p-2;
 }
 
 .first {
@@ -69,11 +72,11 @@ const route = useRoute();
 }
 
 .second {
-  @apply flex flex-col my-1 p-1 font-normal transition-all duration-300 ease-out border-l-2 text-1rem;
+  @apply flex flex-col my-1 p-2 font-normal transition-all duration-300 ease-out border-l-2 text-1.1rem;
 }
 
 .third {
-  @apply my-1 font-normal p-1 border-l-2 text-0.9rem leading-4;
+  @apply my-1 font-normal p-2 border-l-2 text-1rem leading-4;
 }
 
 .active {

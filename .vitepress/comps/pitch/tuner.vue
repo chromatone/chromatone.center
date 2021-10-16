@@ -1,7 +1,7 @@
 <template lang="pug">
-.fullscreen-container(ref="display")
+.fullscreen-container#screen
   start-button.absolute.z-20(@click="start()", v-if="!tuner.running") Start tuner
-  full-screen.absolute.bottom-6.right-6.z-30(:el="display")
+  full-screen.absolute.bottom-6.right-6.z-3
   svg#tuner.rounded-xl.w-full.h-full.min-h-3xl.-z3(
   :opacity="tuner.running ? 1 : 0.3"
   version="1.1",
@@ -9,12 +9,18 @@
   viewBox="0 0 400 300",
   xmlns="http://www.w3.org/2000/svg",
   )
+    defs
+      linearGradient#grad(x1=0 x2=0 y1=0 y2=1)
+        stop(:stop-color="background" stop-opacity="1" offset="0%")
+        stop(:stop-color="background" stop-opacity="1" offset="30%")
+        stop(:stop-color="background" stop-opacity="0.8" offset="60%")
+        stop(:stop-color="background" stop-opacity="0.2" offset="100%")
     rect(
-      style="transition:all 300ms ease; "
+
       width="100%"
       height="100%"
       rx="5"
-      :fill="background"
+      fill="url(#grad)"
     )
     line(
       style="transition:all 200ms ease; "
@@ -54,6 +60,7 @@
         y="10"
       ) {{ (n - 6) * 10 }} 
     g.meter(
+      style="user-select:none;transition:all 600ms ease; "
       :style="{ transform: `translateX(${5 * tuner.note?.cents}px)` }"
     )
       line(
@@ -65,16 +72,16 @@
         :y1="20"
         :y2="80"
       )
-      text(
-        style="user-select:none;transition:all 300ms ease; "
-        fill="black"
-        font-family="Commissioner, sans-serif"
-        font-size="12px"
-        text-anchor="middle",
-        dominant-baseline="middle"
-        x="200"
-        y="94"
-      ) {{ tuner.note?.cents > 0 ? '+' : '' }}{{ tuner.note?.cents }} 
+    text(
+      style="user-select:none;transition:all 300ms ease; "
+      fill="black"
+      font-family="Commissioner, sans-serif"
+      font-size="12px"
+      text-anchor="middle",
+      dominant-baseline="middle"
+      x="200"
+      y="94"
+    ) {{ tuner.note?.cents > 0 ? '+' : '' }}{{ tuner.note?.cents }} 
     text(
       style="user-select:none;transition:all 300ms ease; "
       fill="black"
@@ -131,5 +138,8 @@ function getRawNote(frequency) {
 <style scoped>
 .meter {
   transition: transform 500ms ease;
+}
+stop {
+  transition: all 600ms ease;
 }
 </style>

@@ -2,7 +2,7 @@
 .crd(
   :title="item.lastModified",
   )
-  a.container(:href="item.link")
+  a.container(:href="item.link" :class="{ 'pt-32': item.data?.cover }")
     .cover(v-if="item.data.cover", :style="{ backgroundImage: 'url(/media/' + item.data.cover + ')' }") 
     .info
       .title
@@ -42,12 +42,12 @@ const theColor = computed(() => props.color);
     @apply bg-light-100 dark:bg-dark-400;
   }
   & .container {
-    @apply flex rounded-xl flex-wrap min-w-full items-stretch w-full relative pt-24;
+    @apply flex rounded-xl flex-wrap min-w-full items-stretch w-full relative;
     flex: 1 1 100%;
     background-color: v-bind(theColor);
   }
   & .info {
-    @apply px-2 py-4 ml-2 m-2 z-4 max-w-20em bg-light-100 dark:bg-dark-100 rounded-lg;
+    @apply px-2 py-4 ml-2 m-2 z-4 max-w-24em bg-light-100 dark:bg-dark-100 rounded-lg;
     backdrop-filter: blur(10px) opacity(30%);
     flex: 1 1 100%;
   }

@@ -1,8 +1,11 @@
 <template lang="pug">
 .row(
-  :style="{ backgroundColor: color }"
+  :style="{ backgroundColor: color, borderColor: color }"
   )
-  a.header(:href="item.link")
+  a.header(
+    :href="item.link"
+    :class="{ 'pt-48': item.data?.cover }"
+  )
     .cover(
       :style="{ backgroundImage: bg }"
       )
@@ -43,15 +46,15 @@ const bg = computed(() => `url(/media/${props.item.data?.cover}`);
 
 <style scoped>
 .row {
-  @apply bg-light-500 w-full dark:bg-dark-500 flex flex-col transition no-underline rounded-xl;
+  @apply bg-light-500 w-full border-4 dark:bg-dark-500 flex flex-col transition no-underline rounded-xl shadow-lg;
   flex: 1 1 200px;
   &:hover {
-    @apply bg-light-200 dark:bg-dark-400;
+    @apply bg-light-200 dark:bg-dark-400 shadow-xl;
   }
 }
 
 .header {
-  @apply relative flex flex-col flex-1 w-full pt-48;
+  @apply relative flex flex-col flex-1 w-full;
 }
 
 .info {

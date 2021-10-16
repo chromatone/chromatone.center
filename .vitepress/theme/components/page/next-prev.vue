@@ -20,11 +20,29 @@
       a.link( :href="next.link" :style="{ color: colors.next }")
         span.text {{ next.title }}
         carbon-arrow-right.icon.icon-next     
+  .flex.flex-col.items-justify.p-4(
+    class="bg-light-900 dark:bg-dark-700"
+  )
+    .flex.flex-col.items-justify
+      a.p-4.flex.items-center.justify-center.m-2.rounded-xl.shadow-lg.transition-all.duration-300.ease-out(
+        style="flex:1 1"
+        class="hover:bg-light-100/50 dark:(hover:bg-dark-100/50)"
+        v-for="(parent,p) in parents" :key="parent"
+        :href="parent.link"
+        :style="{ order: 100 - p }"
+        )
+        carbon-chevron-up.mr-1
+        .p-1 {{ parent.title }}
+    a.text-xl.p-4.flex.flex-col.items-center(href="/")
+      img.w-16(:src="theme.logo")
+      .p-2 Chromatone
 </template>
 
 <script setup lang="ts">
 import { useSiblings, useParents } from '../../composables/links.js'
 import { lchToHsl } from '@use/colors.js'
+import { useRoute, useData } from 'vitepress'
+const { theme } = useData()
 
 const { prev, next, current, total } = useSiblings();
 const parents = useParents();

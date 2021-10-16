@@ -1,5 +1,5 @@
 <template lang="pug">
-.flex.flex-wrap.text-xl.w-full.max-w-55ch.mx-auto
+.flex.flex-wrap.text-xl.w-full.mx-auto
   .transport.flex.flex-wrap.is-group.m-1
     button.text-button(
       @click="tempo.playing = !tempo.playing"
@@ -28,7 +28,7 @@
     )
       la-times
   .info.flex.flex-wrap.items-center.cursor-move.select-none.text-center.is-group.m-1(
-    style="touch-action:none;"
+    style="touch-action:none;cursor: hand;"
     v-drag="drag"
   )
     .text-button.w-9rem {{ tempo.bpm.toFixed(2) }} BPM

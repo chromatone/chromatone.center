@@ -1,5 +1,5 @@
 ---
-title: Rhythm systems
+title: Rhythmic systems
 subtitle: Different systems of rhythmic organisation
 tags: rhythm
 list: rhythm-pattern

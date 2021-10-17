@@ -1,8 +1,8 @@
 ---
 title: Complex meters
 subtitle: Asymmetric, irregular, unusual, or odd meters
-tags: rhythm
-date: 2021-09-06
+tags: meter
+date: 2021-10-08
 complex:
   meters: [5/4,5/8,7/4,7/8,9/4,9/8,11/8]
   accent: '10010101010'

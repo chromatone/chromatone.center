@@ -1,8 +1,8 @@
 ---
 title: Syncopation, swing and groove
 subtitle: The propulsive quality or "feel" of a rhythm and swung notes to serve it
-tags: rhythm
-date: 2021-09-19
+tags: rhythm-pattern
+date: 2021-10-05
 ---
 
 ## Syncopation

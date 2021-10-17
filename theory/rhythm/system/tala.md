@@ -1,17 +1,11 @@
 ---
 title: Tala and konnakkol
 subtitle: The Indian rhythmic language and art
-tags: rhythm
-date: 2021-09-22
+tags: rhythm-pattern
+date: 2021-10-19
 ---
 
 ## [Tala](https://en.wikipedia.org/wiki/Tala_(music))
-
-<youtube-embed video="xcPUnpOLDYM"/>
-
-<youtube-embed video="NvcILiwkaDc"/>
-
-<youtube-embed video="XyUxY9huI_s"/>
 
 ### Angas
 - Anudhrutam, a single beat, notated 'U', a downward clap of the open hand with the palm facing down.
@@ -49,6 +43,12 @@ Chaturashra-naDe Chaturashra-jaati triputa taLa = Adi tala
 |Letter | Word | Sentence|
 
 1 cycle = 1 avartham
+
+<youtube-embed video="xcPUnpOLDYM"/>
+
+<youtube-embed video="NvcILiwkaDc"/>
+
+<youtube-embed video="XyUxY9huI_s"/>
 
 
 ## The art of rhythmic syllables

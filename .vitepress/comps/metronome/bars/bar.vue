@@ -288,6 +288,11 @@ watchEffect(() => {
     })
   }
   if (props.accent) {
+    if (!props.mute) {
+      props.accent.split('').forEach((accent, m) => {
+        mutes.value[m + 1] = accent == 0
+      })
+    }
     props.accent.split('').forEach((accent, a) => {
       accents.value[a + 1] = accent == 1
     })

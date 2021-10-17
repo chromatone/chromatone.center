@@ -13,7 +13,7 @@
       @under="loop.under = clampNum(loop.under, $event, 1, 16)"
       @sound="loop.sound = $event"
       :editable="!meters"
-      :accent="accent"
+      :accent="pattern"
       :mute="mute"
     )
     .flex.flex-wrap.justify-center.is-group.m-1.text-xl
@@ -22,10 +22,16 @@
         v-if="!meters"
       )
         la-plus
+      .is-group.m-2(v-if="meters && meters.length > 1")
+        button.text-button(
+          v-for="meter in meters"
+          @click="loops = [{ over: meter.split('/')[0], under: meter.split('/')[1], sound: 'A', volume: 1 }]"
+        ) {{ meter }}
       button.text-button(
-        v-for="meter in meters"
-        @click="loops = [{ over: meter.split('/')[0], under: meter.split('/')[1], sound: 'A', volume: 1 }]"
-      ) {{ meter }}
+        :class="{ active: acc == pattern }"
+        v-for="(acc,a) in accents"
+        @click="pattern = acc; loops[0].volume = 1"
+      ) {{ a }}
 </template>
 
 <script setup>
@@ -35,6 +41,10 @@ const props = defineProps({
   meters: {
     type: Array,
     default: null
+  },
+  accents: {
+    type: Array,
+    default: null,
   },
   accent: {
     type: String,
@@ -49,6 +59,8 @@ const props = defineProps({
     default: false,
   },
 })
+
+const pattern = ref(props.accent)
 
 const loops = useStorage('tempo-bar-loops', [
   {

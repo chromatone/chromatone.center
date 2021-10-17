@@ -2,7 +2,7 @@
 title: Pulse, beat and tempo
 subtitle: Time feeling of humans
 tags: rhythm
-date: 2021-10-13
+date: 2021-10-16
 ---
 
 ## Pulse

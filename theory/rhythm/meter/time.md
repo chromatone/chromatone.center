@@ -1,8 +1,8 @@
 ---
-title: Time
+title: Common time
 subtitle: Common time and half- and double-time changes
-tags: rhythm
-date: 2021-09-13
+tags: meter
+date: 2021-10-06
 ---
 
 ## Common-time
@@ -13,9 +13,7 @@ Time signatures are defined by how they divide the measure (in 9/8, complex trip
 
 ## Half-time
 
-In popular music, half-time is a type of meter and tempo that alters the rhythmic feel by essentially doubling the tempo resolution or metric division/level in comparison to common-time. Thus, two measures of 4
-4 approximate a single measure of 8
-8, while a single measure of 4/4 emulates 2/2. Half-time is not to be confused with alla breve or odd time. Though notes usually get the same value relative to the tempo, the way the beats are divided is altered. While much music typically has a backbeat on quarter note (crotchet) beats two and four, half time would increase the interval between backbeats to double, thus making it hit on beats three and seven, or the third beat of each measure (count out of an 8 beat measure [bar], common practice in half time):
+In popular music, half-time is a type of meter and tempo that alters the rhythmic feel by essentially doubling the tempo resolution or metric division/level in comparison to common-time. Thus, two measures of 4/4 approximate a single measure of 8/8, while a single measure of 4/4 emulates 2/2. Half-time is not to be confused with alla breve or odd time. Though notes usually get the same value relative to the tempo, the way the beats are divided is altered. While much music typically has a backbeat on quarter note (crotchet) beats two and four, half time would increase the interval between backbeats to double, thus making it hit on beats three and seven, or the third beat of each measure (count out of an 8 beat measure [bar], common practice in half time):
 
     1   2   3   4   1   2   3   4
     1   2   3   4   5   6   7   8

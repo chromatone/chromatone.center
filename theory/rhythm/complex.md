@@ -3,10 +3,12 @@ title: Complex meters
 subtitle: Asymmetric, irregular, unusual, or odd meters
 tags: rhythm
 date: 2021-09-06
-complex: [5/4,5/8,7/4,7/8,9/4,9/8,11/8]
+complex:
+  meters: [5/4,5/8,7/4,7/8,9/4,9/8,11/8]
+  accent: '10010101010'
 ---
 
-<metronome-bars :meters="$frontmatter.complex" />
+<metronome-bars v-bind="$frontmatter.complex" />
 
 
 Signatures that do not fit the usual duple or triple categories are called complex, asymmetric, irregular, unusual, or odd. The term odd meter, however, sometimes describes time signatures in which the upper number is simply odd rather than even, including 3/4 and 9/8.

@@ -1,7 +1,7 @@
 <template lang="pug">
 .flex.flex-col.items-center.w-full.p-4.has-bg.rounded-xl#screen
   client-only 
-    state-transport
+    state-transport(v-if="!secondary")
     metronome-bars-bar.my-2.is-group(
       v-for="(loop,i) in loops",
       :key="loop"
@@ -13,6 +13,8 @@
       @under="loop.under = clampNum(loop.under, $event, 1, 16)"
       @sound="loop.sound = $event"
       :editable="!meters"
+      :accent="accent"
+      :mute="mute"
     )
     .flex.flex-wrap.justify-center.is-group.m-1.text-xl
       button.text-button(
@@ -33,7 +35,19 @@ const props = defineProps({
   meters: {
     type: Array,
     default: null
-  }
+  },
+  accent: {
+    type: String,
+    default: '10010010001010000'
+  },
+  mute: {
+    type: String,
+    delault: '00000000000000000'
+  },
+  secondary: {
+    type: Boolean,
+    default: false,
+  },
 })
 
 const loops = useStorage('tempo-bar-loops', [
@@ -62,7 +76,7 @@ if (props.meters) {
   loops.value = [{
     over: nums[0],
     under: nums[1],
-    volume: 1,
+    volume: props.secondary ? 0 : 1,
     sound: 'A'
   }]
 }

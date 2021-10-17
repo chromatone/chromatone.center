@@ -3,10 +3,12 @@ title: Compound meters
 subtitle: Rhythmic meters
 tags: rhythm
 date: 2021-09-08
-compound: [6/4,6/8,6/16,12/4,12/8,12/16,9/4,9/8,9/16]
+compound:
+  meters: [6/4,6/8,6/16,12/4,12/8,12/16,9/4,9/8,9/16]
+  accent: '100100100100100'
 ---
 
-<metronome-bars :meters="$frontmatter.compound" />
+<metronome-bars v-bind="$frontmatter.compound" />
 
 Compound metre (or compound time), is a metre in which each beat of the bar divides naturally into three equal parts. That is, each beat contains a triple pulse. The top number in the time signature will be 6, 9, 12, 15, 18, 24, etc.
 

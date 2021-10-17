@@ -44,7 +44,7 @@ svg.w-full(
         @accent="accents[s + 1] = !accents[s + 1]"
         :opacity="mutes[s + 1] ? 0.1 : 1"
         :step="s + 1"
-        :accented="accents[s + 1]"
+        :accented="Boolean(accents[s + 1])"
         :mutes="mutes"
         :current="current"
         :subdivisions="step"
@@ -261,6 +261,14 @@ const props = defineProps({
   editable: {
     type: Boolean,
     default: false,
+  },
+  mute: {
+    type: String,
+    default: '',
+  },
+  accent: {
+    type: String,
+    default: '10'
   }
 });
 
@@ -268,12 +276,26 @@ const sounds = ['A', 'B', 'C', 'D', 'E']
 
 const { progress, current, steps, mutes, accents, volume, panning } = useSequence(props.loop, props.order, 'bars');
 
-
 const proportion = computed(() => ((props.loop.over / props.loop.under) / props.maxRatio) / props.loop.over)
 
 function dragVol(drag) {
   volume.value = clampNum(volume.value, drag.delta[0] / 100, 0, 1)
 }
+watchEffect(() => {
+  if (props.mute) {
+    props.mute.split('').forEach((mute, m) => {
+      mutes.value[m + 1] = mute == 1
+    })
+  }
+  if (props.accent) {
+    props.accent.split('').forEach((accent, a) => {
+      accents.value[a + 1] = accent == 1
+    })
+  }
+  if (props.loop.volume !== undefined) {
+    volume.value = props.loop.volume
+  }
+});
 
 
 </script>

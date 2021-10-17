@@ -2,7 +2,12 @@ import { tempo } from '@use/tempo.js'
 import { Sequence, PanVol, gainToDb, Draw, Sampler, context, start } from 'tone'
 
 export function useSequence(
-  metre = { over: 4, under: 4, sound: 'A', volume: 1 },
+  metre = {
+    over: 4,
+    under: 4,
+    sound: 'A',
+    volume: 1,
+  },
   order = 0,
   mode = 'bar',
 ) {
@@ -27,9 +32,15 @@ export function useSequence(
 
   const current = ref('0-0')
   const steps = reactive([['1-1'], ['2-1'], ['3-1'], ['4-1']])
-  const mutes = useStorage(`metro-${mode}-mutes-${order}`, {})
-  const accents = useStorage(`metro-${mode}-accents-${order}`, { '1': true })
-  const volume = useStorage(`metro-${mode}-vol-${order}`, 1)
+  const mutes = useStorage(
+    `metro-${mode}-${metre.over / metre.under}-mutes-${order}`,
+    {},
+  )
+  const accents = useStorage(
+    `metro-${mode}-${metre.over / metre.under}-accents-${order}`,
+    { '1': true },
+  )
+  const volume = useStorage(`metro-${mode}-vol-${order}`, metre.volume || 1)
   const panning = useStorage(`metro-${mode}-pan-${order}`, pan)
   let sequence = new Sequence(
     (time, step) => {
@@ -75,13 +86,21 @@ export function useSequence(
     }
   })
 
-  watch(volume, (vol) => {
-    panner.volume.targetRampTo(gainToDb(vol), 1)
-  })
+  watch(
+    volume,
+    (vol) => {
+      panner.volume.targetRampTo(gainToDb(vol), 1)
+    },
+    { immediate: true },
+  )
 
-  watch(panning, (p) => {
-    panner.pan.targetRampTo(p, 1)
-  })
+  watch(
+    panning,
+    (p) => {
+      panner.pan.targetRampTo(p, 1)
+    },
+    { immediate: true },
+  )
 
   const progress = computed(() => {
     if (tempo.ticks) {

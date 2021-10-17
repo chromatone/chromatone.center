@@ -101,7 +101,7 @@ g(
         :x="-20"
         :y="-20"
       )
-  metronome-pan(
+  metronome-control-pan(
     :transform="`translate(500,${970 - order * 182})`"
     :order="order"
     v-model:pan="panning"

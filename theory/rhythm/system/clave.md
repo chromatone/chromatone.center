@@ -1,5 +1,5 @@
 ---
-title: Clave, tresillo and more
+title: Afro-Cuban clave
 subtitle: African, Cuban and Latin American rhythm patterns
 tags: rhythm-pattern
 date: 2021-10-21

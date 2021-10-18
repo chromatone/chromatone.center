@@ -1,5 +1,5 @@
 ---
-title: Cross-beats
+title: African cross-beats
 subtitle: Combinations of two and more rhuthms as a basis of music
 tags: rhythm-pattern
 date: 2021-10-13

@@ -1,5 +1,5 @@
 ---
-title: Syncopation, swing and groove
+title: Jazz syncopation, swing and groove
 subtitle: The propulsive quality or "feel" of a rhythm and swung notes to serve it
 tags: rhythm-pattern
 date: 2021-10-05

@@ -17,7 +17,7 @@
           v-for="(page,p) in theme.pages?.[main.data?.list]" :key="page"
         ) 
 
-          a.flex.px-2.font-normal.py-1(
+          a.flex.px-2.font-normal(
             :href="page.link"
           )
             span {{ page.title }}
@@ -94,7 +94,7 @@ const route = useRoute();
 }
 
 .second {
-  @apply flex flex-col my-1 py-1 font-normal transition-all duration-300 ease-out border-l-2 text-1.1rem;
+  @apply flex flex-col my-1 py-1 font-normal transition-all duration-300 ease-out border-l-2 text-1rem;
 }
 
 .third {
@@ -102,7 +102,7 @@ const route = useRoute();
 }
 
 .active {
-  @apply border-l-4 font-bold bg-light-100/50 dark:bg-dark-100/50 rounded;
+  @apply border-l-4 font-bold bg-light-100/50 dark:bg-dark-100/50;
   > a {
     @apply font-bold;
   }

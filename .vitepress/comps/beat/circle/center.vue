@@ -1,6 +1,7 @@
 <template lang="pug">
 g.center(
   style="touch-action:none"
+  text-anchor="middle",
 )
   g.bpm.cursor-pointer(
     v-drag="drag"
@@ -11,6 +12,7 @@ g.center(
       :stroke="tempo.blink ? tempo.color : 'transparent'"
       cx="0"
       cy="0"
+      opacity="0.6"
       :r="center.radius / 2"
       :fill="fill"
     )
@@ -34,6 +36,7 @@ g.center(
         :from="45"
         :to="135"
         :fill="fill"
+        :op="0.7"
         :radius="center.radius"
         :thickness="center.thick"
       )
@@ -50,6 +53,7 @@ g.center(
         :from="225"
         :to="315"
         :fill="fill"
+        :op="0.7"
         :radius="center.radius"
         :thickness="center.thick"
       )
@@ -66,6 +70,7 @@ g.center(
         :from="315"
         :to="45"
         :fill="fill"
+        :op="0.7"
         :radius="center.radius"
         :thickness="center.thick"
       )
@@ -82,6 +87,7 @@ g.center(
         :from="135"
         :to="225"
         :fill="fill"
+        :op="0.7"
         :radius="center.radius"
         :thickness="center.thick"
       )

@@ -21,7 +21,7 @@ g(
       stroke="currentColor"
     )
   g.steps(
-    :opacity="volume / 2 + 0.5"
+    :opacity="volume"
   )
     beat-circle-sector(
       v-for="(step,s) in steps"
@@ -35,17 +35,22 @@ g(
       style="cursor:pointer"
       @click="mutes[s + 1] = !mutes[s + 1]"
     )
-  svg-ring(
-    :cx="500"
-    :cy="500"
-    :from="340"
-    :to="20"
-    :fill="isDark ? '#333' : '#eee'"
-    :radius="495 - order * 175"
-    :thickness="60"
-  )
+    g(
+      v-for="(step,s) in activeSteps"
+      :key="step"
+      )
+      line(
+        :x1="getCircleCoord(step - 1, steps.length, radius - 50, 1000).x"
+        :y1="getCircleCoord(step - 1, steps.length, radius - 50, 1000).y"
+        :x2="getCircleCoord(activeSteps[s + 1] - 1 || activeSteps[0] - 1, steps.length, radius - 50, 1000).x"
+        :y2="getCircleCoord(activeSteps[s + 1] - 1 || activeSteps[0] - 1, steps.length, radius - 50, 1000).y"
+        stroke-width="4"
+        :stroke="levelColor(step - 1, steps.length, 1)"
+      )
+
   g.sound(
-    :transform="`translate(${order * 175 + 30}, 500)`"
+    :transform="`translate(${order * size + 30}, 500)`"
+    :opacity="volume"
   )
     g.sound.cursor-pointer(
       v-for="(pos,sound) in sounds"
@@ -67,11 +72,21 @@ g(
         :y="pos[1] + 8"
         font-size="25"
       ) {{ sound }}
+
   g.vol(
     style="cursor:pointer;color:currentColor"
-    :transform="`translate(${970 - order * 182}, 550)`"
+    :transform="`translate(${970 - order * size}, 550)`"
     font-size="32px"
-    @dblclick="volume > 0 ? volume = 0 : volume = 0.75"
+    v-drag="dragVol"
+    @dblclick="volume > 0 ? volume = 0 : volume = 1"
+    )
+    rect(
+      width="48"
+      height="150"
+      x="-24"
+      y="-130"
+      rx="20"
+      fill="transparent"
     )
     line(
       y2="-100"
@@ -81,7 +96,6 @@ g(
     )
     g.dragger(
       :transform="`translate(0,${-volume * 100})`"
-      v-drag="dragVol"
     )
       circle(
         :r="24"
@@ -101,14 +115,15 @@ g(
         :x="-20"
         :y="-20"
       )
-  beat-control-pan(
-    :transform="`translate(500,${970 - order * 182})`"
+  beat-circle-pan(
+    :opacity="volume"
+    :transform="`translate(500,${970 - order * size})`"
     :order="order"
     v-model:pan="panning"
   )
 
   g.info(
-    :transform="`translate(500,${order * 175 - 30})`"
+    :transform="`translate(500,${order * size - 30})`"
   )
     text(
       fill="currentColor"
@@ -176,7 +191,6 @@ g(
       :y="82",
       ) {{ loop.under }}
   g.arrows.pointer-events-none(
-    style="mix-blend-mode:difference;"
   )
     line(
       :x1="500"
@@ -193,9 +207,6 @@ g(
       fill="currentColor"
       :r="5"
     )
-  beat-circle-center(
-    transform="translate(500,500)"
-  )
 </template>
   
 <script setup>
@@ -203,6 +214,7 @@ import { getCircleCoord } from 'chromatone-theory'
 import { useSequence } from '@use/sequence.js'
 import { isDark } from '@theme/composables/state.js'
 import { clampNum } from '@use/theory'
+import { levelColor } from "@use/colors.js"
 
 
 defineEmits(['del', 'over', 'under', 'sound'])
@@ -211,6 +223,10 @@ const props = defineProps({
   radius: {
     type: Number,
     default: 400
+  },
+  size: {
+    type: Number,
+    default: 175,
   },
   order: {
     type: Number,
@@ -235,6 +251,10 @@ const sounds = {
 }
 
 const { progress, current, steps, mutes, volume, panning } = useSequence(props.loop, props.order, 'circle')
+
+const activeSteps = computed(() => {
+  return steps.filter(step => !mutes.value[step[0].split('-')[0]]).map(step => Number(step[0].split('-')[0]))
+})
 
 const lineProgress = computed(() => {
   if (progress.value > 0) {

@@ -1,5 +1,5 @@
 <template lang="pug">
-.flex.flex-wrap.text-xl.w-full.mx-auto
+.flex.flex-wrap.text-xl.w-full.mx-auto.justify-center
   .transport.flex.flex-wrap.is-group.m-1
     button.text-button(
       @click="tempo.playing = !tempo.playing"

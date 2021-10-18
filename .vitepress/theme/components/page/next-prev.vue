@@ -17,10 +17,9 @@
         carbon-arrow-right.icon.icon-next     
   .flex.flex-col.items-justify
     .flex.flex-col.items-justify.mx-4
-      a.p-4.flex.items-center.justify-center.m-2.rounded-xl.shadow-sm.transition-all.duration-100.ease-out(
-        class="bg-light-900/40 dark:bg-dark-300/10 hover:no-underline"
+      a.p-4.flex.items-center.justify-center.m-2.rounded-xl.shadow-md.transition-all.duration-100.ease-out(
         style="flex:1 1"
-        class="hover:(bg-light-900/30 shadow-lg) dark:(hover:bg-dark-700)"
+        class="bg-light-900/40 dark:bg-dark-300/10 hover:no-underline hover:(bg-light-900/30 shadow-lg) dark:(hover:bg-dark-700)"
         v-for="(parent,p) in parents" :key="parent"
         :href="parent.link"
         :style="{ order: 100 - p }"
@@ -31,7 +30,7 @@
       class="hover:no-underline"
       href="/"
       )
-      img.w-16(:src="theme.logo")
+      img.w-32(src="/media/logo/circle.svg")
       .p-2 Chromatone
 </template>
 

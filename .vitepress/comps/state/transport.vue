@@ -10,6 +10,22 @@
       @click="tempo.stopped = true"
     )
       la-stop
+
+  .info.flex.flex-wrap.items-center.cursor-move.select-none.text-center.is-group.m-1.transition-all.duration-50.ease-in(
+    :style="{ borderColor: tempo.blink ? tempo.color : 'transparent' }"
+    style="touch-action:none;cursor: hand;"
+    v-drag="drag"
+  )
+    .text-button.w-8rem.flex.items-center
+      .flex-1.text-center {{ tempo.bpm.toFixed(2) }} 
+      .text-sm.mt-1px.ml-1 BPM
+    .text-button.w-5rem.flex.items-center
+      .flex-1 {{ tempo.hz }}  
+      .text-sm.mt-1px Hz
+    .text-button.w-3rem.font-bold(
+      :style="{ color: tempo.color, borderColor: tempo.color }"
+    ) {{ tempo.note }}
+
   .math.flex.flex-wrap.is-group.m-1
     button.text-button(
       @click="setTempo(-tempo.bpm / 2)"
@@ -27,18 +43,8 @@
       @click="setTempo(tempo.bpm)"
     )
       la-times
-  .info.flex.flex-wrap.items-center.cursor-move.select-none.text-center.is-group.m-1(
-    style="touch-action:none;cursor: hand;"
-    v-drag="drag"
-  )
-    .text-button.w-9rem {{ tempo.bpm.toFixed(2) }} BPM
-    .text-button.w-6rem {{ tempo.hz }} Hz
-    .text-button.w-4rem.font-bold(
-      :style="{ color: tempo.color }"
-    ) {{ tempo.note }}
 
   .listap.flex.flex-wrap.is-group.m-1
-    full-screen
     button.text-button.flex(
       @mousedown.stop.prevent="tap()"
       @touchstart.stop.prevent="tap()"

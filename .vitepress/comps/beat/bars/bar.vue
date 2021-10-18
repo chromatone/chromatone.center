@@ -1,5 +1,6 @@
 <template lang="pug">
 svg.w-full(
+  class="bg-light-300 dark:bg-dark-800"
   version="1.1",
   baseProfile="full",
   :viewBox="`0 0 1000 310`",
@@ -10,33 +11,25 @@ svg.w-full(
     text-anchor="middle",
     style="user-select:none;transition:all 300ms ease"
   )
-    rect(
-      width="1000"
-      height="310"
-      stroke-width="2"
-      stroke="currentColor"
-      opacity="0.1"
-      fill="currentColor"
-    )
     g.steps(
       :opacity="volume / 2 + 0.5"
       transform="translate(0,100)"
     )
       line(
-        transform="translate(0, 180)"
+        transform="translate(0,100)"
         :x1="pad"
         :x2="proportion * (steps.length) * width + pad"
         stroke="currentColor"
-        stroke-width="4"
+        stroke-width="2"
       )
       line(
         :transform="`translate(${proportion * (steps.length) * width + pad}, 0)`"
-        stroke-width="4"
+        stroke-width="2"
         stroke="currentColor"
         stroke-linecap="round"
         :y2="180"
       )
-      metronome-bars-step(
+      beat-bars-step(
         v-for="(step,s) in steps"
         :key="s"
         @mute="mutes[s + 1] = !mutes[s + 1]"
@@ -53,12 +46,10 @@ svg.w-full(
         :width="width"
         :pad="pad"
       )
-      g.arrows.pointer-events-none(
-        style="mix-blend-mode:difference;"
-      )
+      g.arrows.pointer-events-none
         line(
           :transform="`translate(${pad + progress * width * proportion * loop.over}, 0)`"
-          stroke-width="8"
+          stroke-width="4"
           stroke="currentColor"
           stroke-linecap="round"
           :y2="180"
@@ -149,7 +140,7 @@ svg.w-full(
           :y="-20"
         )
 
-    metronome-control-pan(
+    beat-control-pan(
       v-model:pan="panning"
       :transform="`translate(240,40)`"
       :order="order"

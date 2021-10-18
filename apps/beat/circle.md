@@ -7,5 +7,5 @@ cover: apps/tempo.png
 ---
 
 <client-only >
-  <metronome-circle />
+  <beat-circle />
 </client-only >

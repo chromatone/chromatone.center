@@ -21,7 +21,7 @@ export const tempo = reactive({
     ),
   },
   hz: computed(() => (tempo.bpm / 60).toFixed(2)),
-  note: computed(() => Frequency(tempo.hz).toNote()),
+  note: computed(() => Note.pitchClass(Frequency(tempo.hz).toNote())),
   tune: computed(() => {
     return Note.pitchClass(tempo.note) + 4
   }),

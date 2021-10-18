@@ -4,11 +4,11 @@ subtitle: Rhythmic meters
 tags: meter
 date: 2021-10-12
 simple: 
-  meters: [2/2,2/4,3/4,3/8,4/4,4/8]
+  meters: [2/2,2/4,4/4,4/8]
   accent: '10101010101010101010'
 ---
 
-<metronome-bars v-bind="$frontmatter.simple" />
+<beat-bars v-bind="$frontmatter.simple" />
 
 
 Simple metre (or simple time) is a metre in which each beat of the bar divides naturally into two (as opposed to three) equal parts. The top number in the time signature will be 2, 3, 4, 5, etc. 

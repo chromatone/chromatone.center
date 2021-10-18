@@ -8,7 +8,7 @@ complex:
   accent: '10010101010'
 ---
 
-<metronome-bars v-bind="$frontmatter.complex" />
+<beat-bars v-bind="$frontmatter.complex" />
 
 
 Signatures that do not fit the usual duple or triple categories are called complex, asymmetric, irregular, unusual, or odd. The term odd meter, however, sometimes describes time signatures in which the upper number is simply odd rather than even, including 3/4 and 9/8.

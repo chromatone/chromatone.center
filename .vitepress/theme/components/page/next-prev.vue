@@ -1,34 +1,26 @@
 <template lang="pug">
 .next-and-prev-link
-  .row(:style="{ backgroundColor: colors.current }")
-    card-box.pad.prev(
+  .row(:style="{ borderColor: colors.current }")
+    .pad.prev(
       v-if="prev" 
-      :i="current - 1"
-      :total="total"
-      :height="4"
       )
-      a.link( :href="prev.link" :style="{ color: colors.prev }")
+      a.link( :href="prev.link" :style="{ backgroundColor: colors.prev }")
         carbon-arrow-left.icon.icon-prev
         span.text {{ prev.title }}
 
-    card-box.pad.next(
+    .pad.next(
       v-if="next"
-      :i="current + 1"
-      :total="total"
-      :height="4"
+
       )
-      a.link( :href="next.link" :style="{ color: colors.next }")
+      a.link( :href="next.link" :style="{ backgroundColor: colors.next }")
         span.text {{ next.title }}
         carbon-arrow-right.icon.icon-next     
-  .flex.flex-col.items-justify.p-4(
-    :style="{ background: `linear-gradient(180deg, ${colors.current} 0%, ${colors.current} 70%, transparent 120% )` }"
-    class="bg-light-900 dark:bg-dark-700"
-  )
-    .flex.flex-col.items-justify
-      a.p-4.flex.items-center.justify-center.m-2.rounded-xl.shadow-sm.transition-all.duration-300.ease-out(
-        class="bg-light-400/10 dark:bg-dark-300/10 hover:no-underline"
+  .flex.flex-col.items-justify
+    .flex.flex-col.items-justify.mx-4
+      a.p-4.flex.items-center.justify-center.m-2.rounded-xl.shadow-sm.transition-all.duration-100.ease-out(
+        class="bg-light-900/40 dark:bg-dark-300/10 hover:no-underline"
         style="flex:1 1"
-        class="hover:(bg-light-500 shadow-lg) dark:(hover:bg-dark-200)"
+        class="hover:(bg-light-900/30 shadow-lg) dark:(hover:bg-dark-700)"
         v-for="(parent,p) in parents" :key="parent"
         :href="parent.link"
         :style="{ order: 100 - p }"
@@ -52,9 +44,9 @@ const { theme } = useData()
 const { prev, next, current, total } = useSiblings();
 const parents = useParents();
 const colors = reactive({
-  current: lchToHsl(current.value, total.value),
-  prev: lchToHsl(current.value - 1, total.value),
-  next: lchToHsl(current.value + 1, total.value)
+  current: computed(() => lchToHsl(current.value, total.value)),
+  prev: computed(() => lchToHsl(current.value - 1, total.value)),
+  next: computed(() => lchToHsl(current.value + 1, total.value))
 });
 </script>
 
@@ -63,14 +55,17 @@ const colors = reactive({
   @apply bg-gray-100/90 dark:bg-gray-800/90 
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
+  & a {
+    @apply text-dark-800 dark:text-light-300;
+  }
 }
 
 .row {
-  @apply mx-auto  flex flex-col w-full py-8 px-4 xs:(flex-wrap flex-row);
+  @apply mx-auto border-t-12  flex flex-col w-full py-4 px-4 xs:(flex-wrap flex-row);
 }
 
 .pad {
-  @apply m-2 transition-all flex flex-row items-stretch bg-light-300 dark:(bg-dark-300 hover:bg-dark-600) hover:bg-light-600;
+  @apply transition-all duration-200 ease-out m-2 rounded-xl shadow-lg hover:shadow-xl transition-all flex flex-row items-stretch;
   flex: 1 1 45%;
   filter: grayscale(40%) opacity(80%);
 }
@@ -88,7 +83,7 @@ const colors = reactive({
 }
 
 .link {
-  @apply items-center no-underline w-full rounded-sm p-8 text-2xl;
+  @apply items-center no-underline w-full rounded-xl p-8 text-2xl;
   max-width: 100%;
   font-weight: 500;
 }

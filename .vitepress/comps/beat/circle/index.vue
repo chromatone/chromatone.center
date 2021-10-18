@@ -7,16 +7,16 @@
     xmlns="http://www.w3.org/2000/svg",
     style="user-select:none;touch-action:none"
     )
-    metronome-control-math(
+    beat-control-math(
       transform="translate(30,80)"
     )
-    metronome-control-listen(
+    beat-control-listen(
       transform="translate(20,880)"
     )
-    metronome-control-tap(
+    beat-control-tap(
       transform="translate(760,880)"
       )
-    metronome-control-transport(
+    beat-control-transport(
       transform="translate(800)"
     )
     g.cursor-pointer(
@@ -34,7 +34,7 @@
         stroke="currentColor"
       )
       la-expand
-    metronome-circle-loop(
+    beat-circle-loop(
       v-for="(loop,i) in loops",
       :key="i"
       :order="i"
@@ -63,7 +63,7 @@
         transform="translate(6,12)"
       )
         healthicons-question
-    metronome-circle-overlay.cursor-pointer(
+    beat-circle-overlay.cursor-pointer(
       v-if="overlay"
       @click="overlay = false"
       )

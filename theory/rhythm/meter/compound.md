@@ -8,7 +8,7 @@ compound:
   accent: '100100100100100'
 ---
 
-<metronome-bars v-bind="$frontmatter.compound" />
+<beat-bars v-bind="$frontmatter.compound" />
 
 Compound metre (or compound time), is a metre in which each beat of the bar divides naturally into three equal parts. That is, each beat contains a triple pulse. The top number in the time signature will be 6, 9, 12, 15, 18, 24, etc.
 

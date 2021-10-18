@@ -37,15 +37,15 @@ three:
 
 ### Cells
 
-<metronome-bars v-bind="$frontmatter.one" secondary  />
+<beat-bars v-bind="$frontmatter.one" secondary  />
 
 ### Duple-pulse
 
-<metronome-bars v-bind="$frontmatter.two" />
+<beat-bars v-bind="$frontmatter.two" />
 
 ### Triple-pulse
 
-<metronome-bars v-bind="$frontmatter.three" secondary  />
+<beat-bars v-bind="$frontmatter.three" secondary  />
 
 ## Clave
 

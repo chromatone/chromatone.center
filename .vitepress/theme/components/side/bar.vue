@@ -17,7 +17,7 @@
           v-for="(page,p) in theme.pages?.[main.data?.list]" :key="page"
         ) 
 
-          a.flex.px-2.font-normal(
+          a.flex.px-2.font-normal.py-1(
             :href="page.link"
           )
             span {{ page.title }}
@@ -48,7 +48,7 @@
                   transition(name="fade")
                     .flex.flex-col.py-2(v-show="route.path.includes(line.link) && theme.pages?.[line.data?.list] && theme.pages?.[line.data?.list].length > 0")
                       transition-group(name="fade")
-                        a.text-1em.p-2.font-normal.transition-all.duration-200.ease-in(
+                        a.text-1em.p-2.my-1.font-normal.transition-all.duration-200.ease-in.border-l-2(
                           :href="dot.link"
                           :class="{ active: route.path.includes(dot.link) }"
                           :style="{ borderColor: lchToHsl(d, theme.pages?.[line.data?.list].length) }"
@@ -94,11 +94,11 @@ const route = useRoute();
 }
 
 .second {
-  @apply flex flex-col my-1 px-2 py-1 font-normal transition-all duration-300 ease-out border-l-2 text-1.1rem;
+  @apply flex flex-col my-1 py-1 font-normal transition-all duration-300 ease-out border-l-2 text-1.1rem;
 }
 
 .third {
-  @apply flex flex-col my-1 py-2 font-normal px-2 py-1 border-l-2 text-1rem leading-4;
+  @apply flex flex-col my-1 mx-2 py-2 font-normal px-2 border-l-2 text-1rem leading-4;
 }
 
 .active {

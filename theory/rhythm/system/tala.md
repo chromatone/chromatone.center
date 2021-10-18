@@ -3,7 +3,11 @@ title: Tala and konnakkol
 subtitle: The Indian rhythmic language and art
 tags: rhythm-pattern
 date: 2021-10-19
+tala: 
+  meters: [2/4,4/4,8/4]
 ---
+
+<beat-bars v-bind="$frontmatter.tala" />
 
 ## [Tala](https://en.wikipedia.org/wiki/Tala_(music))
 

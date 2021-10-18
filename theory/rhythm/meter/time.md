@@ -3,7 +3,11 @@ title: Common time
 subtitle: Common time and half- and double-time changes
 tags: meter
 date: 2021-10-06
+times: 
+  meters: [2/4,4/4,8/4]
 ---
+
+<beat-bars v-bind="$frontmatter.times" />
 
 ## Common-time
 

@@ -23,7 +23,7 @@ g(
   g.steps(
     :opacity="volume / 2 + 0.5"
   )
-    metronome-circle-sector(
+    beat-circle-sector(
       v-for="(step,s) in steps"
       :key="step"
       :step="s + 1"
@@ -101,7 +101,7 @@ g(
         :x="-20"
         :y="-20"
       )
-  metronome-control-pan(
+  beat-control-pan(
     :transform="`translate(500,${970 - order * 182})`"
     :order="order"
     v-model:pan="panning"
@@ -193,7 +193,7 @@ g(
       fill="currentColor"
       :r="5"
     )
-  metronome-circle-center(
+  beat-circle-center(
     transform="translate(500,500)"
   )
 </template>

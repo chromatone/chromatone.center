@@ -7,7 +7,7 @@
       la-pause(v-else)
     .btn(@click="clear()")
       la-times
-    sqnob(v-model="draw.speed" min="4" max="20" param="speed")
+    sqnob(v-model="draw.speed" :min="4" :max="20" param="speed")
     .flex-1.text-center.font-bold  {{ tuner.bpm.toFixed(1) }} BPM
 
   .fullscreen-container(ref="roller")

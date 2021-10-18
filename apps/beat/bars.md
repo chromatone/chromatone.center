@@ -7,7 +7,7 @@ cover: apps/metro-bars.png
 ---
 
 
-<metronome-bars />
+<beat-bars />
 
 
 Create any number of metronome bars and manipulate it in many ways. Change the meter, mute any step, change the sound, panning or volume of each bar separately. Set an accent on any beat by clicking the circle around the beat number. 

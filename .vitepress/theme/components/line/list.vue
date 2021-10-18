@@ -5,16 +5,14 @@
     :key="line.title",
     :i="l"
     :total="Object.keys(list).length"
-    :height="1"
+    :height="2"
     v-slot="{ color }"
   )
     a.line(
-      :style="{ color: color }"
       :href="line.link",
       ) {{ line.title }}
       counter(:list="theme.pages?.[line?.data?.list]") 
-      .flex-1 
-      card-date(:date="line.lastModified")
+      card-date.flex-1.ml-4(:date="line.lastModified")
       shop-price.ml-2(:product="line?.data?.product", :showButton="false")
 </template>
 
@@ -32,7 +30,7 @@ const props = defineProps({
 }
 
 .line {
-  @apply flex rounded-xl items-center px-4 py-2 font-bold transition-all shadow-md bg-gray-50 dark:bg-gray-800 
-  hover:(no-underline shadow-lg);
+  @apply flex rounded-xl font-normal items-center px-4 py-2 transition-all bg-gray-50 dark:bg-gray-800 
+  hover:(no-underline );
 }
 </style>

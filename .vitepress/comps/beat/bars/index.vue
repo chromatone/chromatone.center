@@ -1,8 +1,9 @@
 <template lang="pug">
-.flex.flex-col.items-center.w-full.p-4.has-bg.rounded-xl#screen
+.flex.flex-col.items-center.w-full.p-4.has-bg.rounded-xl#screen.relative
   client-only 
     state-transport(v-if="!secondary")
-    metronome-bars-bar.my-2.is-group(
+    full-screen.absolute.bottom-1.right-1
+    beat-bars-bar.mt-8.mb-4.rounded-xl.shadow-lg(
       v-for="(loop,i) in loops",
       :key="loop"
       :order="i"
@@ -48,7 +49,7 @@ const props = defineProps({
   },
   accent: {
     type: String,
-    default: '10010010001010000'
+    default: '11111111111111111'
   },
   mute: {
     type: String,

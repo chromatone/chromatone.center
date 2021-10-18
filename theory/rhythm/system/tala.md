@@ -4,7 +4,16 @@ subtitle: The Indian rhythmic language and art
 tags: rhythm-pattern
 date: 2021-10-19
 tala: 
-  meters: [2/4,4/4,8/4]
+  meters: [4/4]
+  accents: 
+    eka: '1000'
+    rupaka: '101000'
+    triputa: '1001010'
+    jhampa: '1000000110'
+    dhruva: '10001010001000'
+    matya: '1000101000'
+    atta: '10000100001010'
+    adi: '10001010'
 ---
 
 <beat-bars v-bind="$frontmatter.tala" />

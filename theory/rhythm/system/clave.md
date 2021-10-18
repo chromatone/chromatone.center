@@ -7,18 +7,13 @@ urls:
   - https://en.wikipedia.org/wiki/Tumbao
   - https://en.wikipedia.org/wiki/Clave_(rhythm)
   - https://en.wikipedia.org/wiki/Tresillo_(rhythm)
-one:
-  meters: [8/16]
-  accents:
-    Tresillo:  '10010010'
-    Habanera:  '100110100'
-    Cinquillo: '10110110'
-    
 two:
   meters: [16/16]
   accents: 
-    Son clave 3-2: '1001001000101000'
-    Son clave 2-3: '0010100010010010'
+    Tresillo:  '10010010'
+    Habanera:  '10011010'
+    Cinquillo: '10110110'
+    Son clave: '1001001000101000'
     Rumba clave: '1001000100101000'
     Bossanova: '1001001000100100'
     Standard bell (bembe): '1001001100101001'
@@ -26,26 +21,13 @@ two:
     Batucada: '1001100110110010'
     Maracatu: '1101101010101010'
     Baqueteo: '1011011010101010'
-three:
-  meters: [12/12]
-  accents:
     Son clave 6/8: '101010010100'
     Rumba clave 6/8: '101001010100'
     Standard bell 6/8: '101011010101'
-
 ---
 
-### Cells
-
-<beat-bars v-bind="$frontmatter.one" secondary  />
-
-### Duple-pulse
 
 <beat-bars v-bind="$frontmatter.two" />
-
-### Triple-pulse
-
-<beat-bars v-bind="$frontmatter.three" secondary  />
 
 ## Clave
 

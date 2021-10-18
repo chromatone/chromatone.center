@@ -25,13 +25,13 @@
         la-plus
       .is-group.m-2(v-if="meters && meters.length > 1")
         button.text-button(
-          v-for="meter in meters"
-          @click="loops = [{ over: meter.split('/')[0], under: meter.split('/')[1], sound: 'A', volume: 1 }]"
-        ) {{ meter }}
+          v-for="met in meters"
+          @click="loops = [{ over: met.split('/')[0], under: met.split('/')[1], sound: 'A', volume: 1 }]"
+        ) {{ met }}
       button.text-button(
         :class="{ active: acc == pattern }"
         v-for="(acc,a) in accents"
-        @click="pattern = acc; loops[0].volume = 1"
+        @click="pattern = acc; loops[0].over = acc.length; loops[0].under = 8"
       ) {{ a }}
 </template>
 
@@ -93,6 +93,11 @@ if (props.meters) {
     sound: 'A'
   }]
 }
+
+if (props.accents) {
+  pattern.value = props.accents[0]
+}
+
 
 
 const maxRatio = computed(() => {

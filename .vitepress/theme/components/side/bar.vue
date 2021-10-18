@@ -48,7 +48,7 @@
                   transition(name="fade")
                     .flex.flex-col.py-2(v-show="route.path.includes(line.link) && theme.pages?.[line.data?.list] && theme.pages?.[line.data?.list].length > 0")
                       transition-group(name="fade")
-                        a.text-1em.p-2.my-1.font-normal.transition-all.duration-200.ease-in.border-l-2(
+                        a.text-sm.px-2.py-1.my-1.font-normal.transition-all.duration-200.ease-in.border-l-2(
                           :href="dot.link"
                           :class="{ active: route.path.includes(dot.link) }"
                           :style="{ borderColor: lchToHsl(d, theme.pages?.[line.data?.list].length) }"

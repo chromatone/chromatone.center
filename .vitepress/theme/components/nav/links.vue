@@ -8,19 +8,16 @@ nav.nav-links(v-if="show")
   .item(v-if="localeLinks")
     nav-dropdown-link(:item="localeLinks")
 
-  .item(v-if="repo")
-    nav-link(:item="repo")
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useData } from 'vitepress'
 import { useLocaleLinks } from '../../composables/nav.js'
-import { useRepo } from '../../composables/repo.js'
+
 
 const site = useData()
 const localeLinks = useLocaleLinks()
-const repo = useRepo()
 
 const show = computed(() => links.value || repo.value)
 

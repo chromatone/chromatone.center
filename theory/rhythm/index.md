@@ -8,5 +8,3 @@ links:
  - https://en.wikipedia.org/wiki/Rhythm
  - https://en.wikipedia.org/wiki/Beat_(music)
 ---
-
-<youtube-embed video="lVPLIuBy9CY" />

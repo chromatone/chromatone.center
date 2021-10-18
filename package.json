@@ -5,7 +5,7 @@
     "dev": "vitepress dev --host",
     "build": "vitepress build ",
     "serve": "vitepress serve ",
-    "deploy": "sh deploy.sh"
+    "deploy": "sh deploy-io.sh"
   },
   "dependencies": {
     "@tonaljs/tonal": "^4.6.5",

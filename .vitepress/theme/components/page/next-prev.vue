@@ -1,6 +1,6 @@
 <template lang="pug">
-.next-and-prev-link(:style="{ backgroundColor: colors.current }")
-  .row
+.next-and-prev-link
+  .row(:style="{ backgroundColor: colors.current }")
     card-box.pad.prev(
       v-if="prev" 
       :i="current - 1"
@@ -21,19 +21,24 @@
         span.text {{ next.title }}
         carbon-arrow-right.icon.icon-next     
   .flex.flex-col.items-justify.p-4(
+    :style="{ background: `linear-gradient(180deg, ${colors.current} 0%, ${colors.current} 70%, transparent 120% )` }"
     class="bg-light-900 dark:bg-dark-700"
   )
     .flex.flex-col.items-justify
-      a.p-4.flex.items-center.justify-center.m-2.rounded-xl.shadow-lg.transition-all.duration-300.ease-out(
+      a.p-4.flex.items-center.justify-center.m-2.rounded-xl.shadow-sm.transition-all.duration-300.ease-out(
+        class="bg-light-400/10 dark:bg-dark-300/10 hover:no-underline"
         style="flex:1 1"
-        class="hover:bg-light-100/50 dark:(hover:bg-dark-100/50)"
+        class="hover:(bg-light-500 shadow-lg) dark:(hover:bg-dark-200)"
         v-for="(parent,p) in parents" :key="parent"
         :href="parent.link"
         :style="{ order: 100 - p }"
         )
         carbon-chevron-up.mr-1
         .p-1 {{ parent.title }}
-    a.text-xl.p-4.flex.flex-col.items-center(href="/")
+    a.text-xl.p-4.flex.flex-col.items-center(
+      class="hover:no-underline"
+      href="/"
+      )
       img.w-16(:src="theme.logo")
       .p-2 Chromatone
 </template>
@@ -46,11 +51,11 @@ const { theme } = useData()
 
 const { prev, next, current, total } = useSiblings();
 const parents = useParents();
-const colors = {
-  current: lchToHsl(current, total),
-  prev: lchToHsl(current - 1, total),
-  next: lchToHsl(current + 1, total)
-}
+const colors = reactive({
+  current: lchToHsl(current.value, total.value),
+  prev: lchToHsl(current.value - 1, total.value),
+  next: lchToHsl(current.value + 1, total.value)
+});
 </script>
 
 <style scoped>
@@ -61,7 +66,7 @@ const colors = {
 }
 
 .row {
-  @apply mx-auto  flex flex-col w-full max-w-65ch my-8 px-4 xs:(flex-wrap flex-row);
+  @apply mx-auto  flex flex-col w-full py-8 px-4 xs:(flex-wrap flex-row);
 }
 
 .pad {

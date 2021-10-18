@@ -137,3 +137,5 @@ In 1963 John Coltrane recorded "Afro Blue" with the great jazz drummer Elvin Jon
 The Wayne Shorter composition "Footprints" may have been the first overt expression of the 6:4 cross-rhythm (two cycles of 3:2) used by a straight ahead jazz group. On the version recorded on Miles Smiles by Miles Davis, the bass switches to 4/4 at 2:20. The 4/4 figure is known as tresillo in Latin music and is the duple-pulse correlative of the cross-beats in triple-pulse. Throughout the piece, the four main beats are maintained.  
 
 In recent decades, jazz has incorporated many different types of complex cross-rhythms, as well as other types of polyrhythms. 
+
+<youtube-embed video="lVPLIuBy9CY" />

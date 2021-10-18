@@ -25,16 +25,16 @@ const { current, total } = useSiblings();
 
 const pageColor = computed(() => {
   let l = isDark.value ? 40 : 60
-  return lchToHsl(current, total, 1, 20, l)
+  return lchToHsl(current.value, total.value, 1, 20, l)
 });
 
-const lightColor = lchToHsl(current, total, 1, 70, 60);
+const lightColor = lchToHsl(current.value, total.value, 1, 70, 60);
 
 </script>
 
 <style scoped>
 .header {
-  @apply relative flex flex-col min-h-22rem pt-32 px-4 items-center overflow-hidden;
+  @apply relative flex flex-col min-h-22rem pt-32 px-4 items-center overflow-hidden transition-all duration-400 ease-in;
 }
 
 .cover {

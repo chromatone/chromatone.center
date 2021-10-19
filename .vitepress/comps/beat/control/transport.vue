@@ -25,7 +25,7 @@ g.transport(
         v-else
       )
   g.btn.cursor-pointer(
-    transform="translate(90,50)"
+    transform="translate(0,150)"
     @click="tempo.stopped = true"
     )
       rect.border(

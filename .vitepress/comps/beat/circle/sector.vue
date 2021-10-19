@@ -1,39 +1,56 @@
 <template lang="pug">
-g
+g(
+  @mousedown="$emit('mute')"
+)
   svg-ring(
     :from="(step - 1) / total * 360"
     :to="(step) / total * 360"
-    :fill="active ? hex : 'transparent'"
+    :fill="color"
     :radius="radius + 50"
-    :op="0.6"
+    :op="active ? 1 : 0.1"
+
   )
-  circle.transition-fill.duration-100(
+  line(
+    v-if="!muted"
+    :x1="lineCoord[0].x"
+    :y1="lineCoord[0].y"
+    stroke-width="4"
+    :stroke="color"
+    stroke-linecap="round"
+    :x2="lineCoord[1].x"
+    :y2="lineCoord[1].y"
+  )
+  circle.transition-fill.duration-100.ease-out(
     :cx="stepCoord.x"
     :cy="stepCoord.y"
-    :r="50"
-    :fill="active ? 'currentColor' : muted ? 'transparent' : levelColor(step - 1, total, 0.5)"
-    :stroke="hex"
+    :r="25"
+    :stroke ="active ? 'currentColor' : color"
+    :fill="active ? 'currentColor' : accented ? color : 'transparent'"
+    :opacity="muted ? 0 : 1"
+    stroke-width="4"
+    @mousedown.stop="muted ? $emit('mute') : $emit('accent')"
+
+  )
+  circle.transition-fill.duration-100.ease-out(
+    :cx="getCircleCoord(step - 1, total, radius - 50, 1000).x"
+    :cy="getCircleCoord(step - 1, total, radius - 50, 1000).y"
+    :r="6"
+    :stroke ="active ? 'currentColor' : muted ? 'transparent' : color"
+    :fill="muted ? 'gray' : color"
+    stroke-width="4"
   )
   text(
-    style="user-select:none;transition:all 200ms ease"
+    :opacity="muted ? 0.2 : 1"
+    style="user-select:none;pointer-events:none;transition:all 200ms ease"
     :fill="!active ? 'currentColor' : 'var(--c-bg)'"
     font-family="Commissioner, sans-serif"
-    font-size="42px"
+    font-size="36px"
     text-anchor="middle",
     dominant-baseline="middle"
     :x="stepCoord.x",
     :y="stepCoord.y + 4",
   ) {{ step }}
-  line(
-    style="mix-blend-mode:difference;"
-    :x1="lineCoord[0].x"
-    :y1="lineCoord[0].y"
-    stroke-width="4"
-    :stroke="hex"
-    stroke-linecap="cound"
-    :x2="lineCoord[1].x"
-    :y2="lineCoord[1].y"
-  )
+
 
 </template>
 
@@ -41,6 +58,7 @@ g
 import { levelColor } from "@use/colors.js"
 import { getCircleCoord } from 'chromatone-theory'
 import { colord } from 'colord'
+import { tempo } from '@use/tempo'
 
 const props = defineProps({
   radius: {
@@ -62,20 +80,24 @@ const props = defineProps({
   muted: {
     type: Boolean,
     default: false,
-  }
+  },
+  accented: {
+    type: Boolean,
+    default: false,
+  },
 });
 
-const hex = computed(() => {
-  return colord(levelColor(props.step - 1, props.total, 1)).toHex()
+const color = computed(() => {
+  return levelColor(props.step - 1 + (tempo.digit / 12) * props.total, props.total, 1)
 })
 
 const stepCoord = computed(() => {
-  return getCircleCoord(props.step - 0.5, props.total, props.radius, 1000)
+  return getCircleCoord(props.step - 1, props.total, props.radius + 25, 1000)
 })
 
 const lineCoord = computed(() => {
   return [
-    getCircleCoord(props.step - 1, props.total, props.radius + 50, 1000),
+    getCircleCoord(props.step - 1, props.total, props.radius, 1000),
     getCircleCoord(props.step - 1, props.total, props.radius - 50, 1000)
   ]
 

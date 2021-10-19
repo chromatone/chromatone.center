@@ -4,7 +4,7 @@ path(
   :d="d" 
   :fill="fill" 
   :stroke="stroke" 
-  stroke-width="1"
+  :stroke-width="sWidth"
   fill-rule="evenodd"
   stroke-linejoin="round"
   :fill-opacity="op"
@@ -22,6 +22,10 @@ const props = defineProps({
   stroke: {
     type: String,
     default: 'none'
+  },
+  sWidth: {
+    type: Number,
+    default: 2
   },
   cx: {
     type: Number,

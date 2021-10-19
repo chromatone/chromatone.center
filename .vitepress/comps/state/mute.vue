@@ -5,6 +5,7 @@
     bi-volume-mute(v-else)
   transition(name="panel")
     .absolute.w-10.h-32.rounded-full.has-bg.flex.flex-col.items-center.shadow-lg.cursor-pointer(
+      style="touch-action:none;"
       v-if="open" 
       v-drag="dragVol"
       )

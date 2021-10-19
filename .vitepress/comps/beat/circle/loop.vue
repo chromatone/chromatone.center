@@ -3,19 +3,12 @@ g(
   text-anchor="middle",
   style="user-select:none;transition:all 300ms ease"
 )
-  g.opacity-20
+  g(opacity="0.5")
     circle(
       cx="500"
       cy="500"
-      :r="radius + 52"
-      stroke-width="2"
-      fill="transparent"
-      stroke="currentColor"
-    )
-    circle(
-      cx="500"
-      cy="500"
-      :r="radius - 52"
+      :r="radius - 50"
+
       stroke-width="2"
       fill="transparent"
       stroke="currentColor"
@@ -23,18 +16,6 @@ g(
   g.steps(
     :opacity="volume"
   )
-    beat-circle-sector(
-      v-for="(step,s) in steps"
-      :key="step"
-      :step="s + 1"
-      :total="steps.length"
-      :active="!mutes[s + 1] && step == current"
-      :radius="radius"
-      :muted="mutes[s + 1]"
-      :opacity="mutes[s + 1] ? 0.3 : 1"
-      style="cursor:pointer"
-      @click="mutes[s + 1] = !mutes[s + 1]"
-    )
     g(
       v-for="(step,s) in activeSteps"
       :key="step"
@@ -45,82 +26,99 @@ g(
         :x2="getCircleCoord(activeSteps[s + 1] - 1 || activeSteps[0] - 1, steps.length, radius - 50, 1000).x"
         :y2="getCircleCoord(activeSteps[s + 1] - 1 || activeSteps[0] - 1, steps.length, radius - 50, 1000).y"
         stroke-width="4"
-        :stroke="levelColor(step - 1, steps.length, 1)"
+        :stroke="levelColor((step - 1 + (tempo.digit / 12) * steps.length), steps.length, 1)"
       )
-
-  g.sound(
-    :transform="`translate(${order * size + 30}, 500)`"
-    :opacity="volume"
+    beat-circle-sector(
+      v-for="(step,s) in steps"
+      :key="step"
+      :step="s + 1"
+      :total="steps.length"
+      :active="!mutes[s + 1] && step == current"
+      :radius="radius"
+      :muted="mutes[s + 1]"
+      style="cursor:pointer"
+      @accent="accents[s + 1] = !accents[s + 1]"
+      @mute="mutes[s + 1] = !mutes[s + 1]"
+      :accented="Boolean(accents[s + 1])"
+    )
+  beat-control-sector.under(
+    :radius="490 - size * order"
+    :start="10 + order * 8"
+    :finish="90"
+    v-model="loop.under"
+    :step="1"
+    font-size="30"
+    :min="1"
+    :max="16"
+    @update="$emit('under', $event)"
+    :vector="[-1, -1]"
+    show-positions
+    :ratio="800"
+    :every="4"
   )
-    g.sound.cursor-pointer(
-      v-for="(pos,sound) in sounds"
-      :key="pos"
-      @click="$emit('sound', sound)"
-      :class="{ active: sound == loop.sound }"
-      )
-      circle(
-        :cx="pos[0]"
-        :cy="pos[1]"
-        stroke-width="3"
-        r="25"
-        :fill="isDark ? 'hsla(0,0%,30%,0.4)' : 'hsla(0,0%,100%,0.8)'"
-        )
-      text(
-        fill="currentColor"
-        stroke-width=0
-        :x="pos[0]"
-        :y="pos[1] + 8"
-        font-size="25"
-      ) {{ sound }}
+    text {{ loop.under }}
 
-  g.vol(
-    style="cursor:pointer;color:currentColor"
-    :transform="`translate(${970 - order * size}, 550)`"
-    font-size="32px"
-    v-drag="dragVol"
-    @dblclick="volume > 0 ? volume = 0 : volume = 1"
-    )
-    rect(
-      width="48"
-      height="150"
-      x="-24"
-      y="-130"
-      rx="20"
-      fill="transparent"
-    )
-    line(
-      y2="-100"
-      :stroke="isDark ? '#555' : '#fefefe'"
-      stroke-width="12"
-      stroke-linecap="round"
-    )
-    g.dragger(
-      :transform="`translate(0,${-volume * 100})`"
-    )
-      circle(
-        :r="24"
-        :cx="0"
-        :cy="0"
-        fill="var(--c-bg)"
-      )
-      la-volume-off(
-        v-if="volume == 0"
-        style=""
-        :x="-20"
-        :y="-20"
-      )
-      la-volume-up(
-        v-else
-        style=""
-        :x="-20"
-        :y="-20"
-      )
-  beat-circle-pan(
-    :opacity="volume"
-    :transform="`translate(500,${970 - order * size})`"
-    :order="order"
-    v-model:pan="panning"
+  beat-control-sector.over(
+    :radius="490 - size * order"
+    :start="270"
+    :finish="350 - order * 7"
+    v-model="loop.over"
+    :step="1"
+    font-size="30"
+    :min="2"
+    :max="48 - order * 24"
+    :vector="[-1, 1]"
+    @update="$emit('under', $event)"
+    show-positions
+    :ratio="1000"
+    :every="4"
   )
+    text {{ loop.over }}
+
+  beat-control-sector.vol(
+    :radius="490 - size * order"
+    :start="100 + order * 8"
+    :finish="130"
+    v-model="volume"
+    font-size="30"
+    :fixed="1"
+    :step="0.05"
+    :min="0"
+    :max="1"
+    :vector="[1, -1]"
+  )
+    la-volume-up(x="-18" y="-28")
+
+  beat-control-sector.pan(
+    :radius="490 - size * order"
+    :start="140"
+    :finish="175"
+    v-model="panning"
+    font-size="30"
+    :fixed="1"
+    :step="0.05"
+    :min="-1"
+    :max="1"
+    show-center
+  )
+    mdi-pan-horizontal(x="-18" y="-28")
+
+  beat-control-sector.sound(
+    :radius="490 - size * order"
+    v-model="soundControl"
+    :vector="[1, 1]"
+    :start="180 + order * 8"
+    :finish="260 - order * 8"
+    font-size="30"
+    :fixed="1"
+    :step="1"
+    :min="0"
+    :max="4"
+    show-positions
+    :ratio="500"
+    :every="1"
+  )
+    text {{ loop?.sound }}
 
   g.info(
     :transform="`translate(500,${order * size - 30})`"
@@ -128,52 +126,8 @@ g(
     text(
       fill="currentColor"
       font-size="45"
-      y="78"
-    ) :
-    g.under.cursor-pointer(
-      @click="$emit('under', -1)"
-      transform="translate(110,72)"
-    )
-      circle(
-        cx="14"
-        cy="14"
-        r="20"
-        :fill="isDark ? '#222' : '#fff'"
-      )
-      la-minus
-    g.over.cursor-pointer(
-      @click="$emit('under', 1)"
-      transform="translate(60,60)"
-    )
-      circle(
-        cx="14"
-        cy="14"
-        r="20"
-        :fill="isDark ? '#222' : '#fff'"
-      )
-      la-plus
-    g.over.cursor-pointer(
-      @click="$emit('over', -1)"
-      transform="translate(-140,72)"
-    )
-      circle(
-        cx="14"
-        cy="14"
-        r="20"
-        :fill="isDark ? '#222' : '#fff'"
-      )
-      la-minus
-    g.over.cursor-pointer(
-      @click="$emit('over', 1)"
-      transform="translate(-90,60)"
-    )
-      circle(
-        cx="14"
-        cy="14"
-        r="20"
-        :fill="isDark ? '#222' : '#fff'"
-      )
-      la-plus
+      y="85"
+    ) /
     text(
       fill="currentColor"
       font-family="Commissioner, sans-serif"
@@ -189,7 +143,8 @@ g(
       text-anchor="start",
       :x="10",
       :y="82",
-      ) {{ loop.under }}
+      ) {{ loop.under }} 
+
   g.arrows.pointer-events-none(
   )
     line(
@@ -215,9 +170,10 @@ import { useSequence } from '@use/sequence.js'
 import { isDark } from '@theme/composables/state.js'
 import { clampNum } from '@use/theory'
 import { levelColor } from "@use/colors.js"
+import { tempo } from '@use/tempo'
 
 
-defineEmits(['del', 'over', 'under', 'sound'])
+const emit = defineEmits(['del', 'over', 'under', 'sound'])
 
 const props = defineProps({
   radius: {
@@ -242,6 +198,14 @@ const props = defineProps({
   }
 });
 
+const soundLetters = ['A', 'B', 'C', 'D', 'E']
+const soundControl = ref(soundLetters.findIndex(el => el == props.loop?.sound))
+
+watch(soundControl, num => {
+  emit('sound', soundLetters[num])
+})
+
+
 const sounds = {
   A: [26, -120],
   B: [10, -60],
@@ -250,7 +214,7 @@ const sounds = {
   E: [26, 120]
 }
 
-const { progress, current, steps, mutes, volume, panning } = useSequence(props.loop, props.order, 'circle')
+const { progress, current, steps, mutes, accents, volume, panning } = useSequence(props.loop, props.order, 'circle')
 
 const activeSteps = computed(() => {
   return steps.filter(step => !mutes.value[step[0].split('-')[0]]).map(step => Number(step[0].split('-')[0]))

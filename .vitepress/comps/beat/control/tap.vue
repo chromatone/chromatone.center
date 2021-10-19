@@ -17,13 +17,13 @@ g.tap.cursor-pointer
       font-size="55"
       transform="translate(2,8)"
       fill="currentColor"
-      y="6"
+      y="0"
       x="2"
       text-anchor="middle"
     )
   g.bpm.transition-all.duration-200.ease-out(
     @click="tempo.bpm = tempo.tap.bpm"
-    v-if="tempo.tap.bpm"
+    v-if="tempo.tap.bpm && tempo.tap.last"
   )
     rect(
       x="0"

@@ -8,7 +8,7 @@ g.center(
     @dblclick="tempo.bpm = 120"
   )
     circle.transition-all.duration-100.ease-out(
-      stroke-width="4"
+      stroke-width="6"
       :stroke="tempo.blink ? tempo.color : 'transparent'"
       cx="0"
       cy="0"
@@ -28,7 +28,7 @@ g.center(
     font-size="30"
   )
     g.arc.plus(
-      @click="setTempo(1)"
+      @mousedown="setTempo(1)"
     )
       svg-ring(
         :cx="0"
@@ -45,7 +45,7 @@ g.center(
         y="-15"
       )
     g.arc.minus(
-      @click="setTempo(-1)"
+      @mousedown="setTempo(-1)"
     )
       svg-ring(
         :cx="0"
@@ -62,7 +62,7 @@ g.center(
         y="-15"
       )
     g.arc.multiply(
-      @click="setTempo(tempo.bpm)"
+      @mousedown="setTempo(tempo.bpm)"
     )
       svg-ring(
         :cx="0"
@@ -79,7 +79,7 @@ g.center(
         y="-104"
       )
     g.arc.multiply(
-      @click="setTempo(-tempo.bpm / 2)"
+      @mousedown="setTempo(-tempo.bpm / 2)"
     )
       svg-ring(
         :cx="0"
@@ -98,10 +98,12 @@ g.center(
 </template>
 
 <script setup>
-import { tempo } from '@use/tempo'
+import { useTempo } from '@use/tempo'
 import { isDark } from '@theme/composables/state.js'
 import { clampNum } from '@use/theory'
 const fill = computed(() => isDark.value ? '#333' : '#eee');
+
+const tempo = useTempo()
 
 const center = reactive({
   radius: 120,

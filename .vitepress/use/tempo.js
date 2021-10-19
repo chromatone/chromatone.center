@@ -75,43 +75,41 @@ export function useTempo() {
       }, 60)
     }, '4n').start(0)
   })
+  watch(
+    () => tempo.bpm,
+    (bpm) => Transport.bpm.rampTo(bpm, '4n'),
+    { immediate: true },
+  )
+  watch(
+    () => tempo.stopped,
+    (stop) => {
+      if (stop) {
+        Transport.stop()
+        tempo.playing = false
+      }
+    },
+  )
+  watch(
+    () => tempo.playing,
+    (playing) => {
+      if (playing) {
+        if (!tempo.started) {
+          start()
+          tempo.started = true
+        }
+        tempo.stopped = false
+        Transport.start()
+        requestAnimationFrame(function progress() {
+          tempo.position = Transport.position
+          tempo.ticks = Transport.ticks
+          if (tempo.playing) {
+            requestAnimationFrame(progress)
+          }
+        })
+      } else {
+        Transport.pause()
+      }
+    },
+  )
   return tempo
 }
-
-watch(
-  () => tempo.bpm,
-  (bpm) => Transport.bpm.rampTo(bpm, '8n'),
-)
-
-watch(
-  () => tempo.stopped,
-  (stop) => {
-    if (stop) {
-      Transport.stop()
-      tempo.playing = false
-    }
-  },
-)
-
-watch(
-  () => tempo.playing,
-  (playing) => {
-    if (playing) {
-      if (!tempo.started) {
-        start()
-        tempo.started = true
-      }
-      tempo.stopped = false
-      Transport.start()
-      requestAnimationFrame(function progress() {
-        tempo.position = Transport.position
-        tempo.ticks = Transport.ticks
-        if (tempo.playing) {
-          requestAnimationFrame(progress)
-        }
-      })
-    } else {
-      Transport.pause()
-    }
-  },
-)

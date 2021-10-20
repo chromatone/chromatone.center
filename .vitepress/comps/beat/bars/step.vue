@@ -98,8 +98,7 @@ g.cursor-pointer(
       :width="proportion * width"
       height="180"
       rx="10"
-
-      :fill="active ? color : 'transparent'"
+      :fill="active ? muted ? 'transparent' : color : 'transparent'"
     )
     circle.transition-all.duration-100.ease-out(
       @mousedown="muted ? $emit('mute') : $emit('accent')"
@@ -108,7 +107,7 @@ g.cursor-pointer(
       r="25"
       stroke-width="4"
       :stroke="color"
-      :fill="active ? 'currentColor' : accented ? color : isDark ? '#333' : '#eee'"
+      :fill="active ? muted ? 'transparent' : 'currentColor' : accented ? color : isDark ? '#333' : '#eee'"
     )
     text.pointer-events-none.transition-all.duration-100.ease-out(
       y="48"

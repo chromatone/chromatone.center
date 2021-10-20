@@ -31,7 +31,7 @@
       button.text-button(
         :class="{ active: acc == pattern }"
         v-for="(acc,a) in accents"
-        @click="pattern = acc; loops[0].over = acc.length; loops[0].under = 8"
+        @click="pattern = acc; loops[0].over = acc.length; loops[0].under = acc.length"
       ) {{ a }}
 </template>
 
@@ -44,7 +44,7 @@ const props = defineProps({
     default: null
   },
   accents: {
-    type: Array,
+    type: Object,
     default: null,
   },
   accent: {

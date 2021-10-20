@@ -1,6 +1,7 @@
 <template lang="pug">
-.flex.flex-col.items-center.w-full(ref="circle")
-  svg#metronome.w-full.my-8.max-h-90vh.has-bg(
+#screen.flex.flex-col.items-center.w-full.relative.pb-12.p-4.has-bg
+  full-screen.absolute.bottom-0.right-0
+  svg#metronome.w-full.max-h-90vh(
     version="1.1",
     baseProfile="full",
     viewBox="0 0 1000 1000",
@@ -14,27 +15,11 @@
       transform="translate(10,910)"
     )
     beat-control-tap(
-      transform="translate(780,900)"
+      transform="translate(785,900)"
       )
     beat-control-transport(
       transform="translate(910,-30)"
     )
-    g.cursor-pointer(
-      @click="toggle()"
-      font-size="55"
-      transform="translate(923,810)"
-    )
-      rect(
-        y="-8"
-        x="-2"
-        rx='10'
-        width="70"
-        height="80"
-        fill="transparent"
-        stroke="#33333333"
-        stroke-width="4"
-      )
-      la-expand
     beat-circle-loop(
       v-for="(loop,i) in loops",
       :key="i"
@@ -58,6 +43,7 @@
         width="70"
         height="80"
         stroke="currentColor"
+        stroke-opacity="0.3"
         fill="transparent"
         rx="10"
         stroke-width="4"
@@ -75,11 +61,6 @@
 </template>
 
 <script setup>
-
-import { useFullscreen } from '@vueuse/core'
-const circle = ref(null)
-
-const { isFullscreen, toggle } = useFullscreen(circle)
 
 const loops = useStorage('tempo-circle-loops', [
   {

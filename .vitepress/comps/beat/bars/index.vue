@@ -3,7 +3,7 @@
   client-only 
     state-transport(v-if="!secondary")
     full-screen.absolute.bottom-1.right-1
-    beat-bars-bar.mt-8.mb-4.rounded-xl.shadow-lg(
+    beat-bars-bar.my-1.rounded-xl.shadow-lg(
       v-for="(loop,i) in loops",
       :key="loop"
       :order="i"

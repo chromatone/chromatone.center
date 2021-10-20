@@ -1,6 +1,6 @@
 import { reactive, computed, watch, onMounted } from 'vue'
 import { Transport, start, Frequency, Loop } from 'tone'
-import { pitchColor } from 'chromatone-theory'
+import { pitchColor, freqPitch } from 'chromatone-theory'
 import { Note } from '@tonaljs/tonal'
 import { useStorage } from '@vueuse/core'
 
@@ -25,6 +25,7 @@ export const tempo = reactive({
   tune: computed(() => {
     return Note.pitchClass(tempo.note) + 4
   }),
+  pitch: computed(() => freqPitch(tempo.hz)),
   digit: computed(() => (Frequency(tempo.hz).toMidi() + 12 * 10 + 3) % 12),
   color: computed(() => pitchColor(tempo.digit)),
   tap: {

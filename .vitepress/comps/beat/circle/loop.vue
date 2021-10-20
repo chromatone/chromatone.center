@@ -1,3 +1,78 @@
+<script setup>
+import { getCircleCoord } from 'chromatone-theory'
+import { useSequence } from '@use/sequence.js'
+import { isDark } from '@theme/composables/state.js'
+import { clampNum } from '@use/theory'
+import { levelColor } from "@use/colors.js"
+import { tempo } from '@use/tempo'
+
+const emit = defineEmits(['del', 'over', 'under', 'sound'])
+
+const props = defineProps({
+  radius: {
+    type: Number,
+    default: 400
+  },
+  size: {
+    type: Number,
+    default: 175,
+  },
+  order: {
+    type: Number,
+    default: 0
+  },
+  loop: {
+    type: Object,
+    default: {
+      over: 4,
+      under: 4,
+      sound: 'A'
+    }
+  }
+});
+
+const soundLetters = ['A', 'B', 'C', 'D', 'E']
+const soundControl = ref(soundLetters.findIndex(el => el == props.loop?.sound))
+
+watch(soundControl, num => {
+  emit('sound', soundLetters[num])
+})
+
+const controlRadius = computed(() => props.radius + 110)
+
+const sounds = {
+  A: [26, -120],
+  B: [10, -60],
+  C: [2, 0],
+  D: [10, 60],
+  E: [26, 120]
+}
+
+const { progress, current, steps, mutes, accents, volume, panning } = useSequence(props.loop, props.order, 'circle')
+
+const activeSteps = computed(() => {
+  return steps.filter(step => !mutes.value[step[0].split('-')[0]]).map(step => Number(step[0].split('-')[0]))
+})
+
+const lineProgress = computed(() => {
+  if (progress.value > 0) {
+    return getCircleCoord(progress.value * 360, 360, props.radius + 50, 1000)
+  } else {
+    return { x: 500, y: 100 }
+  }
+});
+
+function dragVol(drag) {
+  volume.value = clampNum(volume.value, -drag.delta[1] / 100, 0, 1)
+}
+
+function dragPan(drag) {
+  panning.value = clampNum(panning.value, drag.delta[0] / 100, -1, 1)
+}
+
+</script>
+
+
 <template lang="pug">
 g(
   text-anchor="middle",
@@ -7,7 +82,7 @@ g(
     circle(
       cx="500"
       cy="500"
-      :r="radius - 50"
+      :r="radius - 55"
 
       stroke-width="2"
       fill="transparent"
@@ -21,12 +96,12 @@ g(
       :key="step"
       )
       line(
-        :x1="getCircleCoord(step - 1, steps.length, radius - 50, 1000).x"
-        :y1="getCircleCoord(step - 1, steps.length, radius - 50, 1000).y"
-        :x2="getCircleCoord(activeSteps[s + 1] - 1 || activeSteps[0] - 1, steps.length, radius - 50, 1000).x"
-        :y2="getCircleCoord(activeSteps[s + 1] - 1 || activeSteps[0] - 1, steps.length, radius - 50, 1000).y"
-        stroke-width="4"
-        :stroke="levelColor((step - 1 + (tempo.digit / 12) * steps.length), steps.length, 1)"
+        :x1="getCircleCoord(step - 1, steps.length, radius - 55, 1000).x"
+        :y1="getCircleCoord(step - 1, steps.length, radius - 55, 1000).y"
+        :x2="getCircleCoord(activeSteps[s + 1] - 1 || activeSteps[0] - 1, steps.length, radius - 55, 1000).x"
+        :y2="getCircleCoord(activeSteps[s + 1] - 1 || activeSteps[0] - 1, steps.length, radius - 55, 1000).y"
+        stroke-width="8"
+        :stroke="levelColor((step - 1 + (tempo.pitch / 12) * steps.length), steps.length, 1)"
       )
     beat-circle-sector(
       v-for="(step,s) in steps"
@@ -34,7 +109,7 @@ g(
       :step="s + 1"
       :total="steps.length"
       :active="!mutes[s + 1] && step == current"
-      :radius="radius"
+      :radius="radius - 5"
       :muted="mutes[s + 1]"
       style="cursor:pointer"
       @accent="accents[s + 1] = !accents[s + 1]"
@@ -42,15 +117,14 @@ g(
       :accented="Boolean(accents[s + 1])"
     )
   beat-control-sector.under(
-    :radius="490 - size * order"
-    :start="10 + order * 8"
+    :radius="controlRadius"
+    :start="11 + order * 8"
     :finish="90"
     v-model="loop.under"
     :step="1"
     font-size="30"
     :min="1"
     :max="16"
-    @update="$emit('under', $event)"
     :vector="[-1, -1]"
     show-positions
     :ratio="800"
@@ -59,16 +133,15 @@ g(
     text {{ loop.under }}
 
   beat-control-sector.over(
-    :radius="490 - size * order"
-    :start="270"
-    :finish="350 - order * 7"
+    :radius="controlRadius"
+    :start="348 - order * 8"
+    :finish="270"
     v-model="loop.over"
     :step="1"
     font-size="30"
     :min="2"
     :max="48 - order * 24"
-    :vector="[-1, 1]"
-    @update="$emit('under', $event)"
+    :vector="[1, -1]"
     show-positions
     :ratio="1000"
     :every="4"
@@ -76,13 +149,13 @@ g(
     text {{ loop.over }}
 
   beat-control-sector.vol(
-    :radius="490 - size * order"
-    :start="100 + order * 8"
+    :radius="controlRadius"
+    :start="98 + order * 6"
     :finish="130"
     v-model="volume"
     font-size="30"
     :fixed="1"
-    :step="0.05"
+    :step="0.02"
     :min="0"
     :max="1"
     :vector="[1, -1]"
@@ -90,8 +163,8 @@ g(
     la-volume-up(x="-18" y="-28")
 
   beat-control-sector.pan(
-    :radius="490 - size * order"
-    :start="140"
+    :radius="controlRadius"
+    :start="138 + order * 6"
     :finish="175"
     v-model="panning"
     font-size="30"
@@ -104,18 +177,18 @@ g(
     mdi-pan-horizontal(x="-18" y="-28")
 
   beat-control-sector.sound(
-    :radius="490 - size * order"
+    :radius="controlRadius"
     v-model="soundControl"
     :vector="[1, 1]"
-    :start="180 + order * 8"
-    :finish="260 - order * 8"
+    :start="183 + order * 6"
+    :finish="262 - order * 6"
     font-size="30"
     :fixed="1"
     :step="1"
     :min="0"
     :max="4"
     show-positions
-    :ratio="500"
+    :ratio="400"
     :every="1"
   )
     text {{ loop?.sound }}
@@ -163,80 +236,6 @@ g(
       :r="5"
     )
 </template>
-  
-<script setup>
-import { getCircleCoord } from 'chromatone-theory'
-import { useSequence } from '@use/sequence.js'
-import { isDark } from '@theme/composables/state.js'
-import { clampNum } from '@use/theory'
-import { levelColor } from "@use/colors.js"
-import { tempo } from '@use/tempo'
-
-
-const emit = defineEmits(['del', 'over', 'under', 'sound'])
-
-const props = defineProps({
-  radius: {
-    type: Number,
-    default: 400
-  },
-  size: {
-    type: Number,
-    default: 175,
-  },
-  order: {
-    type: Number,
-    default: 0
-  },
-  loop: {
-    type: Object,
-    default: {
-      over: 4,
-      under: 4,
-      sound: 'A'
-    }
-  }
-});
-
-const soundLetters = ['A', 'B', 'C', 'D', 'E']
-const soundControl = ref(soundLetters.findIndex(el => el == props.loop?.sound))
-
-watch(soundControl, num => {
-  emit('sound', soundLetters[num])
-})
-
-
-const sounds = {
-  A: [26, -120],
-  B: [10, -60],
-  C: [2, 0],
-  D: [10, 60],
-  E: [26, 120]
-}
-
-const { progress, current, steps, mutes, accents, volume, panning } = useSequence(props.loop, props.order, 'circle')
-
-const activeSteps = computed(() => {
-  return steps.filter(step => !mutes.value[step[0].split('-')[0]]).map(step => Number(step[0].split('-')[0]))
-})
-
-const lineProgress = computed(() => {
-  if (progress.value > 0) {
-    return getCircleCoord(progress.value * 360, 360, props.radius + 50, 1000)
-  } else {
-    return { x: 500, y: 100 }
-  }
-});
-
-function dragVol(drag) {
-  volume.value = clampNum(volume.value, -drag.delta[1] / 100, 0, 1)
-}
-
-function dragPan(drag) {
-  panning.value = clampNum(panning.value, drag.delta[0] / 100, -1, 1)
-}
-
-</script>
   
 <style scoped>
 .info {

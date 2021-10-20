@@ -1,70 +1,9 @@
-<template lang="pug">
-g.cursor-pointer(
-  :transform="`translate(${proportion * (step - 1) * width + pad},0)`"
-)
-  rect.transition-fill.duration-100(
-    @mousedown="$emit('mute')"
-    :width="proportion * width"
-    height="180"
-    :fill="active ? color : 'transparent'"
-
-  )
-  circle(
-    @click="$emit('accent')"
-    cy="45"
-    cx="30"
-    r="25"
-    stroke-width="4"
-    :stroke="color"
-    :fill="accented ? color : 'transparent'"
-  )
-  text.pointer-events-none(
-    y="60"
-    font-size="40"
-    text-anchor="middle"
-    x="30"
-    fill="currentColor"
-  ) {{ step }}
-  g.sub(
-    v-for="(sub,s) in subdivisions" :key="sub"
-    @dblclick="$emit('subdivide', [`${sub}-1`]); division = 40"
-    :data-sub="sub"
-    v-drag="dragDiv"
-  )
-    line(
-      :transform="`translate(${s * proportion * width / subdivisions.length}, 0)`"
-      y1="80"
-      y2="180"
-      stroke-width="1"
-      stroke="currentColor"
-    )
-    rect.transition-fill.duration-100(
-      :width="proportion * width / subdivisions.length"
-      height="80"
-      y="100"
-      :x="s * proportion * width / subdivisions.length"
-      :fill="`hsla(0,0%,${90 - s * 80 / subdivisions.length}%,${sub == current ? 0.9 : 0.4})`"
-    )
-    text(
-      v-if="!mutes[sub]"
-      y="140"
-      font-size="40"
-      text-anchor="middle"
-      :x="15 + s * proportion * width / subdivisions.length"
-      fill="currentColor"
-    ) {{ s + 1 }}
-  line(
-    y2="180"
-    stroke-width="8"
-    stroke-linecap="round"
-    :stroke="levelColor(props.step - 1, props.total, 1)"
-  )
-</template>
-
 <script setup>
 import { levelColor } from "@use/colors.js"
 import { colord } from 'colord'
 import { clampNum } from '@use/theory'
+import { isDark } from '@theme/composables/state.js'
+import { tempo } from '@use/tempo'
 
 const props = defineProps({
   proportion: {
@@ -78,6 +17,10 @@ const props = defineProps({
   subdivisions: {
     type: Array,
     default: []
+  },
+  muted: {
+    type: Boolean,
+    default: false,
   },
   total: {
     type: Number,
@@ -108,7 +51,7 @@ const props = defineProps({
 
 const emit = defineEmits(['mute', 'subdivide', 'accent'])
 
-const color = computed(() => levelColor(props.step - 1, props.total, 1))
+const color = computed(() => levelColor(props.step - 1 + (tempo.pitch / 12) * props.total, props.total, 1))
 const accent = computed(() => props.subdivisions[0].includes('!'))
 
 const division = ref(0)
@@ -141,10 +84,100 @@ const active = computed(() => {
   let isMuted = props.mutes[props.subdivisions[0]]
   return !isMuted && (isParent || p == c)
 });
-
-
-
 </script>
 
-<style scoped>
-</style>
+
+<template lang="pug">
+g.cursor-pointer(
+  :transform="`translate(${proportion * (step - 1) * width + pad},0)`"
+
+)
+  g.step(:opacity="muted ? 0.1 : 1")
+    rect.transition-fill.duration-100(
+      @mousedown="$emit('mute')"
+      :width="proportion * width"
+      height="180"
+      rx="10"
+
+      :fill="active ? color : 'transparent'"
+    )
+    circle.transition-all.duration-100.ease-out(
+      @mousedown="muted ? $emit('mute') : $emit('accent')"
+      cy="35"
+      cx="0"
+      r="25"
+      stroke-width="4"
+      :stroke="color"
+      :fill="active ? 'currentColor' : accented ? color : isDark ? '#333' : '#eee'"
+    )
+    text.pointer-events-none.transition-all.duration-100.ease-out(
+      y="48"
+      font-size="40"
+      text-anchor="middle"
+      x="0"
+      :fill="active ? isDark ? '#333' : '#eee' : 'currentColor'"
+    ) {{ step }}
+    line.pointer-events-none(
+      y1="60"
+      y2="100"
+      stroke-width="8"
+      :stroke="color"
+    )
+
+    g.sub(
+      v-for="(sub,s) in subdivisions" :key="sub"
+      @dblclick="$emit('subdivide', [`${sub}-1`]); division = 40"
+      :data-sub="sub"
+      v-drag="dragDiv"
+    )
+      line(
+        :transform="`translate(${s * proportion * width / subdivisions.length}, 0)`"
+        y1="100"
+        y2="150"
+        stroke-width="1"
+        stroke="currentColor"
+      )
+      rect.transition-fill.duration-100(
+        :width="proportion * width / subdivisions.length"
+        height="50"
+        y="100"
+        rx="10"
+        :x="s * proportion * width / subdivisions.length"
+        :fill="`hsla(0,0%,${90 - s * 80 / subdivisions.length}%,${sub == current ? 0.9 : 0.4})`"
+      )
+      circle.transition-all.duration-100.ease-out.pointer-events-none(
+        :transform="`translate(${s * proportion * width / subdivisions.length}, 0)`"
+        :cx="0"
+        :cy="100"
+        :r="6"
+        :fill ="sub == current ? 'currentColor' : muted ? 'transparent' : color"
+        :opacity="mutes[sub] ? 0 : 1"
+        stroke-width="4"
+        stroke-linecap="round"
+        )
+      text(
+        v-if="!mutes[sub]"
+        y="140"
+        font-size="40"
+        text-anchor="middle"
+        :x="15 + s * proportion * width / subdivisions.length"
+        fill="currentColor"
+      ) {{ s + 1 }}
+    circle.transition-all.duration-100.ease-out.pointer-events-none(
+      cx="0"
+      :cy="100"
+      r="10"
+      :fill="color"
+      :stroke="active ? 'currentColor' : 'transparent'"
+      stroke-width="4"
+      opacity="0.8"
+      )
+  circle.transition-all.duration-100.ease-out.pointer-events-none(
+    :cx="0"
+    v-if="muted"
+    :cy="100"
+    r="3"
+    fill="currentColor"
+    opacity="0.8"
+    )
+</template>

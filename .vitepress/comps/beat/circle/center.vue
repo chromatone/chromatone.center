@@ -68,7 +68,7 @@ g.center(
         :cx="0"
         :cy="0"
         :from="315"
-        :to="45"
+        :to="405"
         :fill="fill"
         :op="0.7"
         :radius="center.radius"

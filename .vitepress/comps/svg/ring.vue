@@ -1,7 +1,7 @@
 <template lang="pug">
 path(
   style="transition: all 200ms ease-out"
-  :d="d" 
+  :d="round ? pill : d" 
   :fill="fill" 
   :stroke="stroke" 
   :stroke-width="sWidth"
@@ -54,26 +54,45 @@ const props = defineProps({
   op: {
     type: Number,
     default: 1
+  },
+  round: {
+    type: Boolean,
+    default: false,
   }
 });
 
 
 // arc
 const arc = reactive({
-  start: computed(() => polarToCartesian(props.cx, props.cy, props.radius, props.to)),
-  end: computed(() => polarToCartesian(props.cx, props.cy, props.radius, props.from)),
-  largeArcFlag: computed(() => props.to - props.from <= 180 ? "0" : "1"),
-  cutout_radius: computed(() => props.radius - props.thickness),
-  start2: computed(() => polarToCartesian(props.cx, props.cy, arc.cutout_radius, props.to)),
-  end2: computed(() => polarToCartesian(props.cx, props.cy, arc.cutout_radius, props.from)),
+  from: computed(() => props.from <= props.to ? props.from : props.to),
+  to: computed(() => props.from > props.to ? props.from : props.to),
+  start: computed(() => getPolar(arc.to)),
+  end: computed(() => getPolar(arc.from)),
+  largeArcFlag: computed(() => arc.to - arc.from <= 180 ? "0" : "1"),
+  cutout: computed(() => props.radius - props.thickness),
+  start2: computed(() => getPolar(arc.to, arc.cutout)),
+  end2: computed(() => getPolar(arc.from, arc.cutout)),
 })
+
+function getPolar(angle = 0, radius = props.radius) {
+  return polarToCartesian(props.cx, props.cy, radius, angle)
+}
 
 const d = computed(() => [
   "M", arc.start.x, arc.start.y,
   "A", props.radius, props.radius, 0, arc.largeArcFlag, 0, arc.end.x, arc.end.y,
   "L", arc.end2.x, arc.end2.y,
-  "A", arc.cutout_radius, arc.cutout_radius, 0, arc.largeArcFlag, 1, arc.start2.x, arc.start2.y,
+  "A", arc.cutout, arc.cutout, 0, arc.largeArcFlag, 1, arc.start2.x, arc.start2.y,
   "L", arc.start.x, arc.start.y,
+  "Z",
+].join(" "));
+
+const pill = computed(() => [
+  "M", arc.start.x, arc.start.y,
+  "A", props.radius, props.radius, 0, arc.largeArcFlag, 0, arc.end.x, arc.end.y,
+  "A", props.thickness / 2, props.thickness / 2, 0, 0, 0, arc.end2.x, arc.end2.y,
+  "A", arc.cutout, arc.cutout, 0, arc.largeArcFlag, 1, arc.start2.x, arc.start2.y,
+  "A", props.thickness / 2, props.thickness / 2, 0, 0, 0, arc.start.x, arc.start.y,
   "Z",
 ].join(" "));
 

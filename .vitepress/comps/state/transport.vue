@@ -11,7 +11,7 @@
     )
       la-stop
 
-  .info.flex.flex-wrap.items-center.cursor-move.select-none.text-center.is-group.m-1.transition-all.duration-50.ease-in(
+  .info.flex.flex-wrap.items-center.cursor-pointer.select-none.text-center.is-group.m-1.transition-all.duration-50.ease-in(
     :style="{ borderColor: tempo.blink ? tempo.color : 'transparent' }"
     style="touch-action:none;cursor: hand;"
     v-drag="drag"

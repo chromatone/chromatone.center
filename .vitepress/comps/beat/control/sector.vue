@@ -49,10 +49,6 @@ const props = defineProps({
     type: Array,
     default: [1, -1],
   },
-  delta: {
-    type: Number,
-    default: 100,
-  },
   showPositions: {
     type: Boolean,
     default: false,
@@ -108,38 +104,45 @@ const allSteps = computed(() => {
 g.arc.cursor-pointer(
   v-drag="dragParam"
   )
+  defs
+    filter#shadowButton(x="-50%" height="200%" width="300%")
+      feDropShadow(dx="0" dy="3" stdDeviation="3" flood-color="#2225")
   svg-ring(
-    :cx="500"
-    :cy="500"
-    :from="props.start"
-    :to="props.finish"
-    :fill="isDark ? '#333' : '#ddd'"
-    :op="0.7"
-    :radius="radius - 20"
-    :thickness="10"
-  )
-  svg-ring(
+
     :cx="500"
     :cy="500"
     :from="props.start"
     :to="arc.angle"
-    :fill="isDark ? '#444' : '#ddd'"
-    :op="0.1"
+    :fill="isDark ? '#1115' : '#fff4'"
     @mousedown="incParam(1)"
     :radius="radius"
     :thickness="50"
+    round
   )
   svg-ring(
     :cx="500"
     :cy="500"
     :from="arc.angle"
     :to="props.finish"
-    :fill="isDark ? '#222' : '#ccc'"
-    :op="0.1"
+    :fill="isDark ? '#8882' : '#ddd9'"
     @mousedown="incParam(-1)"
     :radius="radius"
     :thickness="50"
+    round
   )
+  svg-ring(
+    style="pointer-events:none"
+    :cx="500"
+    :cy="500"
+    :from="props.start"
+    :to="props.finish"
+    :fill="isDark ? '#333' : '#cdcdcd'"
+    :op="0.7"
+    :radius="radius - 17"
+    :thickness="16"
+    round
+  )
+
   circle(
     v-if="showCenter"
     opacity="0.75"
@@ -150,23 +153,26 @@ g.arc.cursor-pointer(
   )
   g.all(
     v-if="showPositions"
-  )
+    )
     circle(
       v-for="(st,s) in allSteps" :key="st"
       :cx="st.x"
       :cy="st.y"
       :r="every && (s) % every == 0 ? 4 : 2"
       fill="currentColor"
+
       opacity="0.4"
     )
+
   g(
     :transform="`translate(${arc.position.x} ${arc.position.y})`"
   )
+
     circle(
+      style="filter:url(#shadowButton);"
       r="25"
-      stroke-width="2"
-      stroke-opacity="0.5"
-      stroke="currentColor"
+      stroke-width="3"
+      stroke-opacity="0.3"
       :fill="isDark ? '#333' : '#ddd'"
     )
     g(transform="translate(0 10)" fill="currentColor")

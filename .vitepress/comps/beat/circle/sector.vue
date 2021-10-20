@@ -8,19 +8,18 @@ g(
     :fill="color"
     :radius="radius + 50"
     :op="active ? 1 : 0.1"
-
   )
   line(
-    v-if="!muted"
     :x1="lineCoord[0].x"
     :y1="lineCoord[0].y"
-    stroke-width="4"
-    :stroke="color"
+    :stroke-width="muted ? 2 : 4"
+    :stroke="!muted ? color : 'currentColor'"
     stroke-linecap="round"
+    :opacity="muted ? 0.5 : 1"
     :x2="lineCoord[1].x"
     :y2="lineCoord[1].y"
   )
-  circle.transition-fill.duration-100.ease-out(
+  circle.transition-all.duration-100.ease-out(
     :cx="stepCoord.x"
     :cy="stepCoord.y"
     :r="25"
@@ -31,13 +30,15 @@ g(
     @mousedown.stop="muted ? $emit('mute') : $emit('accent')"
 
   )
-  circle.transition-fill.duration-100.ease-out(
+  circle.transition-all.duration-100.ease-out(
     :cx="getCircleCoord(step - 1, total, radius - 50, 1000).x"
     :cy="getCircleCoord(step - 1, total, radius - 50, 1000).y"
-    :r="6"
+    :r="muted ? 4 : 8"
     :stroke ="active ? 'currentColor' : muted ? 'transparent' : color"
-    :fill="muted ? 'gray' : color"
+    :fill="muted ? 'currentColor' : color"
+    :opacity="muted ? 0.5 : 1"
     stroke-width="4"
+    stroke-linecap="round"
   )
   text(
     :opacity="muted ? 0.2 : 1"
@@ -88,7 +89,7 @@ const props = defineProps({
 });
 
 const color = computed(() => {
-  return levelColor(props.step - 1 + (tempo.digit / 12) * props.total, props.total, 1)
+  return levelColor(props.step - 1 + (tempo.pitch / 12) * props.total, props.total, 1)
 })
 
 const stepCoord = computed(() => {
@@ -97,7 +98,7 @@ const stepCoord = computed(() => {
 
 const lineCoord = computed(() => {
   return [
-    getCircleCoord(props.step - 1, props.total, props.radius, 1000),
+    getCircleCoord(props.step - 1, props.total, props.radius - (props.muted ? 25 : 0), 1000),
     getCircleCoord(props.step - 1, props.total, props.radius - 50, 1000)
   ]
 

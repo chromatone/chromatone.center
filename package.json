@@ -10,7 +10,7 @@
   "dependencies": {
     "@tonaljs/tonal": "^4.6.5",
     "@tonejs/midi": "^2.0.27",
-    "@vueuse/core": "6.6.2",
+    "@vueuse/core": "6.7.3",
     "@vueuse/gesture": "^1.0.0",
     "abcjs": "^5.12.0",
     "audiomotion-analyzer": "3.6.0",
@@ -27,7 +27,7 @@
     "webmidi": "^3.0.0-alpha.20"
   },
   "devDependencies": {
-    "@iconify/json": "^1.1.416",
+    "@iconify/json": "^1.1.417",
     "esbuild-register": "^3.0.0",
     "markdown-it-classy": "^0.2.0",
     "markdown-it-container": "^3.0.0",

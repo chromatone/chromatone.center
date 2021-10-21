@@ -10,6 +10,13 @@ urls:
 afro:
   meters: [16/16]
   patterns: 
+    '1011':
+      meter: 8/8
+      names:
+        - name: Cumbia
+          place: Columbia
+        - name: Calypso
+          place: Trinidad
     '10010010': 
       meter: 8/16
       names:

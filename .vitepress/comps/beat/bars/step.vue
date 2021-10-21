@@ -115,7 +115,7 @@ g.cursor-pointer(
       text-anchor="middle"
       x="0"
       :fill="active ? isDark ? '#333' : '#eee' : 'currentColor'"
-    ) {{ step }}
+    ) {{ step + 1 }}
     line.pointer-events-none(
       y1="60"
       y2="100"

@@ -1,5 +1,6 @@
 import { tempo } from '@use/tempo.js'
 import { Sequence, PanVol, gainToDb, Draw, Sampler, context, start } from 'tone'
+import { useUrlSearchParams } from '@vueuse/core'
 
 export function useSequence(
   metre = {
@@ -84,7 +85,7 @@ export function useSequence(
 
   watchEffect(() => {
     if (tempo.stopped) {
-      current.value = '0-1'
+      current.value = '1000-1'
     }
   })
 
@@ -128,6 +129,27 @@ export function useSequence(
       synth.triggerAttackRelease(`${metre.sound}2`, '16n', time)
     }
   }
+
+  // const params = useUrlSearchParams('hash')
+  // watch([accents.value, mutes.value], (acc, mut) => {
+  //   console.log(acc, mut)
+  //   params['a' + order] = accents.value.reduce(
+  //     (cum, v) => cum + (v ? '1' : '0'),
+  //     '',
+  //   )
+  //   params['m' + order] = mutes.value.reduce(
+  //     (cum, v) => cum + (v ? '1' : '0'),
+  //     '',
+  //   )
+  // })
+  // onMounted(() => {
+  //   if (params['a' + order]) {
+  //     accents.value = params['a' + order].split('').map((a) => a == 1)
+  //   }
+  //   if (params['m' + order]) {
+  //     mutes.value = params['m' + order].split('').map((m) => m == 1)
+  //   }
+  // })
 
   onBeforeUnmount(() => {
     sequence.stop().dispose()

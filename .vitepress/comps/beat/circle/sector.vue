@@ -50,7 +50,7 @@ g(
     dominant-baseline="middle"
     :x="stepCoord.x",
     :y="stepCoord.y + 4",
-  ) {{ step }}
+  ) {{ step + 1 }}
 
 
 </template>

@@ -3,7 +3,7 @@ import { useSequence } from '@use/sequence.js'
 import { isDark } from '@theme/composables/state.js'
 import { clampNum } from '@use/theory'
 import { tempo } from '@use/tempo'
-import { pitchColor } from 'chromatone-theory'
+import { pitchColor, rotateArray } from 'chromatone-theory'
 import { levelColor } from '@use/colors'
 
 const width = 920
@@ -35,11 +35,11 @@ const props = defineProps({
   },
   mute: {
     type: String,
-    default: '',
+    default: null,
   },
   accent: {
     type: String,
-    default: '10'
+    default: null
   }
 });
 
@@ -57,31 +57,24 @@ const activeSteps = computed(() => {
   return steps.filter(step => !mutes.value[step[0].split('-')[0]]).map(step => Number(step[0].split('-')[0]))
 })
 
-console.log(activeSteps.value)
+function rotateAccents(num) {
+  accents.value = rotateArray(accents.value, num)
+  mutes.value = rotateArray(mutes.value, num)
+}
 
 function dragVol(drag) {
   volume.value = clampNum(volume.value, drag.delta[0] / 100, 0, 1)
 }
-watchEffect(() => {
-  if (props.mute) {
-    props.mute.split('').forEach((mute, m) => {
-      mutes.value[m + 1] = mute == 1
+
+watch(() => props.accent, accent => {
+  if (accent) {
+    accent.split('').forEach((mute, m) => {
+      mutes.value[m] = mute == 0
+      accents.value[m] = mute == 1
     })
-  }
-  if (props.accent) {
-    if (!props.mute) {
-      props.accent.split('').forEach((accent, m) => {
-        mutes.value[m + 1] = accent == 0
-      })
-    }
-    props.accent.split('').forEach((accent, a) => {
-      accents.value[a + 1] = accent == 1
-    })
-  }
-  if (props.loop.volume !== undefined) {
-    volume.value = props.loop.volume
   }
 });
+
 </script>
 
 
@@ -103,7 +96,7 @@ svg.w-full(
   )
     beat-control-bar.over(
       v-model="loop.over"
-      :width="370"
+      :width="340"
       :step="1"
       :min="2"
       :max="16"
@@ -112,9 +105,9 @@ svg.w-full(
       :every="4"
     )
     beat-control-bar.under(
-      transform="translate(550,0)"
+      transform="translate(580,0)"
       v-model="loop.under"
-      :width="370"
+      :width="340"
       :step="1"
       :min="1"
       :max="16"
@@ -147,8 +140,35 @@ svg.w-full(
       font-size="40px"
       text-anchor="start",
       :x="10",
-      ) {{ loop.under }}
-
+      ) {{ loop.under }} 
+    g.cursor-pointer.opacity-50.transition-all.duration-200.ease(
+      class="hover:opacity-100"
+      transform="translate(70,-10)"
+      @mousedown="rotateAccents(-1)"
+    )
+      circle(
+        r="18"
+        fill="#5553"
+      )
+      la-angle-right(
+        font-size="28"
+        x="-17"
+        y="-17"
+      )
+    g.cursor-pointer.opacity-50.transition-all.duration-200.ease(
+      class="hover:opacity-100"
+      transform="translate(-70,-10)"
+      @mousedown="rotateAccents(1)"
+    )
+      circle(
+        r="18"
+        fill="#5553"
+      )
+      la-angle-left(
+        font-size="28"
+        x="-17"
+        y="-17"
+      )
   g(
     text-anchor="middle",
     style="user-select:none;transition:all 300ms ease"
@@ -167,20 +187,20 @@ svg.w-full(
         )
         line(
           v-for="(step,s) in activeSteps" :key="step"
-          :x1="proportion * (step - 1) * width + pad"
+          :x1="proportion * (step) * width + pad"
           :x2="proportion * (activeSteps[s + 1] || steps.length) * width + pad"
           stroke-width="6"
-          :stroke="levelColor((step - 1 + (tempo.pitch / 12) * steps.length), steps.length, 1)"
+          :stroke="levelColor((step + (tempo.pitch / 12) * steps.length), steps.length, 1)"
         )
       beat-bars-step(
         v-for="(step,s) in steps"
         :key="s"
-        @mute="mutes[s + 1] = !mutes[s + 1]"
+        @mute="mutes[s] = !mutes[s]"
         @subdivide="steps[s] = $event"
-        @accent="accents[s + 1] = !accents[s + 1]"
-        :muted="mutes[s + 1]"
-        :step="s + 1"
-        :accented="Boolean(accents[s + 1])"
+        @accent="accents[s] = !accents[s]"
+        :muted="mutes[s]"
+        :step="s"
+        :accented="Boolean(accents[s])"
         :mutes="mutes"
         :current="current"
         :subdivisions="step"

@@ -107,30 +107,29 @@ g.arc.cursor-pointer(
   defs
     filter#shadowButton(x="-50%" height="200%" width="300%")
       feDropShadow(dx="0" dy="3" stdDeviation="3" flood-color="#2225")
-  svg-ring(
-
+  svg-ring.increase(
     :cx="500"
     :cy="500"
     :from="props.start"
     :to="arc.angle"
-    :fill="isDark ? '#1115' : '#fff4'"
+    :fill="isDark ? '#1111' : '#fff4'"
     @mousedown="incParam(1)"
     :radius="radius"
     :thickness="50"
     round
   )
-  svg-ring(
+  svg-ring.decrease(
     :cx="500"
     :cy="500"
     :from="arc.angle"
-    :to="props.finish"
+    :to="showCenter ? (props.finish + props.start) / 2 : props.finish"
     :fill="isDark ? '#8882' : '#ddd9'"
     @mousedown="incParam(-1)"
     :radius="radius"
     :thickness="50"
     round
   )
-  svg-ring(
+  svg-ring.line(
     style="pointer-events:none"
     :cx="500"
     :cy="500"

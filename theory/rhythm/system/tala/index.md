@@ -5,15 +5,42 @@ tags: rhythm-pattern
 date: 2021-10-19
 tala: 
   meters: [4/4]
-  accents: 
-    eka: '1000'
-    rupaka: '101000'
-    triputa: '1001010'
-    jhampa: '1000000110'
-    dhruva: '10001010001000'
-    matya: '1000101000'
-    atta: '10000100001010'
-    adi: '10001010'
+  patterns: 
+    '1000':
+      meter: 8/8
+      names:
+        - name: Eka
+    '101000':
+      meter: 8/8
+      names:
+        - name: Rupaka
+        - name: Chaturasra-nadai Chaturasra-jaati Rupaka tala
+    '1001010':
+      meter: 8/8
+      names:
+        - name: Triputa
+    '1000000110':
+      meter: 8/8  
+      names:
+        - name: Jhampa
+    '10001010001000':
+      meter: 8/8
+      names:
+        - name: Dhruva
+    '1000101000':
+      meter: 8/8
+      names:
+        - name: Matya
+    '10000100001010':
+      meter: 8/8
+      names:
+        - name: Atta
+        - name: Chatusra-nadai Khanda-jati Ata tala
+    '10001010':
+      meter: 8/8
+      names:
+        - name: Adi tala
+        - name: Chaturasra-nadai Chaturasra-jaati Triputa tala
 ---
 
 <beat-bars v-bind="$frontmatter.tala" />

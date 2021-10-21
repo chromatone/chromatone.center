@@ -17,7 +17,7 @@
       :accent="pattern"
       :mute="mute"
     )
-    .flex.flex-wrap.justify-center.is-group.m-1.text-xl
+    .flex.flex-wrap.justify-center.is-group.m-1.text-xl.p-2
       button.text-button(
         @click="loops.push({ ...newLoop })"
         v-if="!meters"
@@ -29,10 +29,20 @@
           @click="loops = [{ over: met.split('/')[0], under: met.split('/')[1], sound: 'A', volume: 1 }]"
         ) {{ met }}
       button.text-button(
-        :class="{ active: acc == pattern }"
-        v-for="(acc,a) in accents"
-        @click="pattern = acc; loops[0].over = acc.length; loops[0].under = acc.length"
-      ) {{ a }}
+        :class="{ active: pattern == p }"
+        v-for="(pat,p) in patterns"
+        @click="pattern = p; loops[0].over = p.length; loops[0].under = pat.meter ? pat.meter.split('/')[1] : p.length"
+      ) {{ pat?.names?.[0]?.name || p }}
+    .flex.flex-col.p-2.my-2.is-group(v-if="patterns")
+      .flex.flex
+        .flex-1.p-1.border-1.border-current.rounded-lg.m-1.opacity-50(
+          v-for="(accent,a) in pattern" :key="a"
+          :style="{ backgroundColor: accent == 1 ? 'currentColor' : 'transparent' }"
+        )
+      .flex.flex-wrap.justify-center
+        .p-1(v-for="pt in patterns[pattern]?.names" :key="pt") 
+          span.font-bold.mx-2 {{ pt.name }}  
+          span(v-if="pt.place") ({{ pt.place }})
 </template>
 
 <script setup>
@@ -43,7 +53,7 @@ const props = defineProps({
     type: Array,
     default: null
   },
-  accents: {
+  patterns: {
     type: Object,
     default: null,
   },
@@ -94,11 +104,9 @@ if (props.meters) {
   }]
 }
 
-if (props.accents) {
-  pattern.value = props.accents[0]
+if (props.patterns) {
+  pattern.value = Object.keys(props.patterns)[0]
 }
-
-
 
 const maxRatio = computed(() => {
   let max = 0

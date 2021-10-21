@@ -1,5 +1,5 @@
 <script setup>
-import { getCircleCoord } from 'chromatone-theory'
+import { getCircleCoord, rotateArray } from 'chromatone-theory'
 import { useSequence } from '@use/sequence.js'
 import { isDark } from '@theme/composables/state.js'
 import { clampNum } from '@use/theory'
@@ -70,6 +70,11 @@ function dragPan(drag) {
   panning.value = clampNum(panning.value, drag.delta[0] / 100, -1, 1)
 }
 
+function rotateAccents(num) {
+  accents.value = rotateArray(accents.value, num)
+  mutes.value = rotateArray(mutes.value, num)
+}
+
 </script>
 
 
@@ -96,29 +101,29 @@ g(
       :key="step"
       )
       line(
-        :x1="getCircleCoord(step - 1, steps.length, radius - 55, 1000).x"
-        :y1="getCircleCoord(step - 1, steps.length, radius - 55, 1000).y"
-        :x2="getCircleCoord(activeSteps[s + 1] - 1 || activeSteps[0] - 1, steps.length, radius - 55, 1000).x"
-        :y2="getCircleCoord(activeSteps[s + 1] - 1 || activeSteps[0] - 1, steps.length, radius - 55, 1000).y"
+        :x1="getCircleCoord(step, steps.length, radius - 55, 1000).x"
+        :y1="getCircleCoord(step, steps.length, radius - 55, 1000).y"
+        :x2="getCircleCoord(activeSteps[s + 1] || activeSteps[0], steps.length, radius - 55, 1000).x"
+        :y2="getCircleCoord(activeSteps[s + 1] || activeSteps[0], steps.length, radius - 55, 1000).y"
         stroke-width="8"
-        :stroke="levelColor((step - 1 + (tempo.pitch / 12) * steps.length), steps.length, 1)"
+        :stroke="levelColor((step + (tempo.pitch / 12) * steps.length), steps.length, 1)"
       )
     beat-circle-sector(
       v-for="(step,s) in steps"
       :key="step"
-      :step="s + 1"
+      :step="s"
       :total="steps.length"
-      :active="!mutes[s + 1] && step == current"
+      :active="!mutes[s] && step == current"
       :radius="radius - 5"
-      :muted="mutes[s + 1]"
+      :muted="mutes[s]"
       style="cursor:pointer"
-      @accent="accents[s + 1] = !accents[s + 1]"
-      @mute="mutes[s + 1] = !mutes[s + 1]"
-      :accented="Boolean(accents[s + 1])"
+      @accent="accents[s] = !accents[s]"
+      @mute="mutes[s] = !mutes[s]"
+      :accented="Boolean(accents[s])"
     )
   beat-control-sector.under(
     :radius="controlRadius"
-    :start="11 + order * 8"
+    :start="16 + order * 11"
     :finish="90"
     v-model="loop.under"
     :step="1"
@@ -134,7 +139,7 @@ g(
 
   beat-control-sector.over(
     :radius="controlRadius"
-    :start="348 - order * 8"
+    :start="343 - order * 11"
     :finish="270"
     v-model="loop.over"
     :step="1"
@@ -194,12 +199,12 @@ g(
     text {{ loop?.sound }}
 
   g.info(
-    :transform="`translate(500,${order * size - 30})`"
+    :transform="`translate(500,${order * size + 50})`"
+    v-drag="rotateAccents"
   )
     text(
       fill="currentColor"
       font-size="45"
-      y="85"
     ) /
     text(
       fill="currentColor"
@@ -207,7 +212,7 @@ g(
       font-size="40px"
       text-anchor="end",
       :x="-10",
-      :y="82",
+      :y="-3",
       ) {{ loop.over }} 
     text(
       fill="currentColor"
@@ -215,9 +220,36 @@ g(
       font-size="40px"
       text-anchor="start",
       :x="10",
-      :y="82",
+      :y="-3",
       ) {{ loop.under }} 
-
+    g.cursor-pointer.opacity-50.transition-all.duration-200.ease(
+      class="hover:opacity-100"
+      transform="translate(74,-10)"
+      @mousedown="rotateAccents(-1)"
+    )
+      circle(
+        r="18"
+        fill="#5553"
+      )
+      la-angle-right(
+        font-size="28"
+        x="-17"
+        y="-17"
+      )
+    g.cursor-pointer.opacity-50.transition-all.duration-200.ease(
+      class="hover:opacity-100"
+      transform="translate(-78,-10)"
+      @mousedown="rotateAccents(1)"
+    )
+      circle(
+        r="18"
+        fill="#5553"
+      )
+      la-angle-left(
+        font-size="28"
+        x="-17"
+        y="-17"
+      )
   g.arrows.pointer-events-none(
   )
     line(

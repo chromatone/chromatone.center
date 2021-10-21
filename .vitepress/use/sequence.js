@@ -31,14 +31,14 @@ export function useSequence(
   }).connect(panner)
 
   const current = ref('0-0')
-  const steps = reactive([['1-1'], ['2-1'], ['3-1'], ['4-1']])
+  const steps = reactive([['0-1'], ['1-1'], ['2-1'], ['3-1']])
   const mutes = useStorage(
     `metro-${mode}-${metre.over / metre.under}-mutes-${order}`,
-    {},
+    [],
   )
   const accents = useStorage(
     `metro-${mode}-${metre.over / metre.under}-accents-${order}`,
-    { '1': true },
+    [true],
   )
   const volume = useStorage(`metro-${mode}-vol-${order}`, metre.volume || 1)
   const panning = useStorage(`metro-${mode}-pan-${order}`, pan)
@@ -68,7 +68,7 @@ export function useSequence(
     () => metre.over,
     () => {
       steps.length = 0
-      for (let i = 1; i <= metre.over; i++) {
+      for (let i = 0; i < metre.over; i++) {
         steps.push([`${i}-1`])
       }
       sequence.events = steps
@@ -78,6 +78,8 @@ export function useSequence(
 
   watchEffect(() => {
     sequence.events = steps
+    accents.value.length = steps.length
+    mutes.value.length = steps.length
   })
 
   watchEffect(() => {

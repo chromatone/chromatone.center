@@ -51,7 +51,7 @@ const props = defineProps({
 
 const emit = defineEmits(['mute', 'subdivide', 'accent'])
 
-const color = computed(() => levelColor(props.step - 1 + (tempo.pitch / 12) * props.total, props.total, 1))
+const color = computed(() => levelColor(props.step + (tempo.pitch / 12) * props.total, props.total, 1))
 const accent = computed(() => props.subdivisions[0].includes('!'))
 
 const division = ref(0)
@@ -61,7 +61,7 @@ const divSteps = ref([])
 watch(divNum, (next, prev) => {
   if (next == prev) return
   let steps = []
-  for (let d = 1; d <= next; d++) {
+  for (let d = 0; d < next; d++) {
     steps.push(`${props.step}-${d}`)
   }
   divSteps.value = steps
@@ -89,7 +89,7 @@ const active = computed(() => {
 
 <template lang="pug">
 g.cursor-pointer(
-  :transform="`translate(${proportion * (step - 1) * width + pad},0)`"
+  :transform="`translate(${proportion * step * width + pad},0)`"
 
 )
   g.step(:opacity="muted ? 0.1 : 1")

@@ -7,27 +7,137 @@ urls:
   - https://en.wikipedia.org/wiki/Tumbao
   - https://en.wikipedia.org/wiki/Clave_(rhythm)
   - https://en.wikipedia.org/wiki/Tresillo_(rhythm)
-two:
+afro:
   meters: [16/16]
-  accents: 
-    Tresillo:  '10010010'
-    Habanera:  '10011010'
-    Cinquillo: '10110110'
-    Son clave: '1001001000101000'
-    Rumba clave: '1001000100101000'
-    Bossanova: '1001001000100100'
-    Standard bell (bembe): '1001001100101001'
-    Afoxe: '1101011010101010'
-    Batucada: '1001100110110010'
-    Maracatu: '1101101010101010'
-    Baqueteo: '1011011010101010'
-    Son clave 6/8: '101010010100'
-    Rumba clave 6/8: '101001010100'
-    Standard bell 6/8: '101011010101'
+  patterns: 
+    '10010010': 
+      meter: 8/16
+      names:
+        - name: Tresillo
+          place: Cuba
+        - name: Tumbao
+          place: 
+        - name: Al-thakil al-thani
+          place: Thirteenth-century Baghdad
+    '10011010':
+      meter: 8/16
+      names:
+        - name: Habanera
+          place: Cuba
+        - name: Tumba francesa
+          place: Senegal
+    '10110110':  
+      meter: 8/16 
+      names:
+        - name: Cinquillo
+          place: Cuba
+        - name: Makuta
+          place: Cuba
+        - name: Moribayasa
+          place: Malinke people, Guinea
+        - name: Banda
+          place: Haiti
+    '10011110':
+      meter: 8/16
+      names:
+        - name: Bomba
+          place: Puerto Rico
+    '1000101000101000':
+      names:
+        - name: Shiko
+          place: Nigeria
+    '1001001000101000':   
+      names:
+        - name: Clave son
+          place: Cuba
+        - name: Kpanlogo
+          place: Ghana
+    '1001000100101000':   
+      names:
+        - name: Clave rumba
+          place: Cuba
+        - name: Guaguancó
+          place: Cuba
+    '1001001000100100':   
+      names:
+        - name: Bossanova
+          place: Brasil
+    '1001001000110000':
+      names:
+        - name: Soukous
+          place: Central Africa
+    '1001001000100010':
+      names:
+        - name: Gahu
+          place: Ghana
+    '1001001100101001':   
+      names:
+        - name: Standard bell pattern
+          place: USA
+        - name: Bembe 4/4
+          place: Africa
+    '1101011010101010':    
+      names:
+        - name: Afoxe
+          place: 
+        - name: Kassa
+          place: Guinea 
+    '1001100110110010':   
+      names:
+        - name: Batucada
+          place: 
+    '1101101010101010':  
+      names:
+        - name: Maracatu
+          place: 
+    '1011011010101010':
+      names:
+        - name: Baqueteo
+          place: 
+    '101010010110':
+      names:
+        - name: Adowa
+          place: Ashanti people, Ghana
+    '101010010100':   
+      names:
+        - name: Son clave 6/8
+          place: Cuba
+    '101001010100': 
+      names:
+        - name: Fume-fume
+          place: Ghana
+        - name: Rumba clave 6/8
+          place: Cuba
+    '101011010101':  
+      names:
+        - name: Bembe
+          place: Cuba
+        - name: Batá,Columbia de La Habana, Chango, Eleggua, Imbaloke, Palo
+          place: Cuba
+        - name: Ibo
+          place: Haiti
+        - name: Agbadza, Bintin, Adzogbo
+          place: Ghana
+        - name: Zebola
+          place: Mongo people, Congo
+        - name: Behavento
+          place: Brasil
+        - name: Tiriba, libeté 
+          place: Guinea
+        - name: Signature tune, standard pattern
+          place: Africa
+    '101101101010':
+      names:
+        - name: Tonada
+          place: Africa
+    '111010101010':
+      names:
+        - name: Sorsonet
+          place: Africa
 ---
 
 
-<beat-bars v-bind="$frontmatter.two" />
+<beat-bars v-bind="$frontmatter.afro" />
 
 ## Clave
 

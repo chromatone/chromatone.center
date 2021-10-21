@@ -99,8 +99,8 @@ g.bar.cursor-pointer(
   )
   line.add(
     @mousedown="incParam(1)"
-    :x1="bar.pos"
-    :x2="width"
+    :x1="inverted ? 0 : bar.pos"
+    :x2="inverted ? bar.pos : width"
     :y1="height / 2"
     :y2="height / 2"
     stroke-linecap="round"
@@ -118,7 +118,7 @@ g.bar.cursor-pointer(
   )
   line.subtract(
     @mousedown="incParam(-1)"
-    :x1="showCenter ? width / 2 : 0"
+    :x1="inverted ? width : showCenter ? width / 2 : 0"
     :x2="bar.pos"
     :y1="height / 2"
     :y2="height / 2"

@@ -3,8 +3,8 @@ g(
   @mousedown="$emit('mute')"
 )
   svg-ring(
-    :from="(step - 1) / total * 360"
-    :to="(step) / total * 360"
+    :from="step / total * 360"
+    :to="(step + 1) / total * 360"
     :fill="color"
     :radius="radius + 50"
     :op="active ? 1 : 0.1"
@@ -31,8 +31,8 @@ g(
 
   )
   circle.transition-all.duration-100.ease-out(
-    :cx="getCircleCoord(step - 1, total, radius - 50, 1000).x"
-    :cy="getCircleCoord(step - 1, total, radius - 50, 1000).y"
+    :cx="getCircleCoord(step, total, radius - 50, 1000).x"
+    :cy="getCircleCoord(step, total, radius - 50, 1000).y"
     :r="muted ? 4 : 8"
     :stroke ="active ? 'currentColor' : muted ? 'transparent' : color"
     :fill="muted ? 'currentColor' : color"
@@ -89,17 +89,17 @@ const props = defineProps({
 });
 
 const color = computed(() => {
-  return levelColor(props.step - 1 + (tempo.pitch / 12) * props.total, props.total, 1)
+  return levelColor(props.step + (tempo.pitch / 12) * props.total, props.total, 1)
 })
 
 const stepCoord = computed(() => {
-  return getCircleCoord(props.step - 1, props.total, props.radius + 25, 1000)
+  return getCircleCoord(props.step, props.total, props.radius + 25, 1000)
 })
 
 const lineCoord = computed(() => {
   return [
-    getCircleCoord(props.step - 1, props.total, props.radius - (props.muted ? 25 : 0), 1000),
-    getCircleCoord(props.step - 1, props.total, props.radius - 50, 1000)
+    getCircleCoord(props.step, props.total, props.radius - (props.muted ? 25 : 0), 1000),
+    getCircleCoord(props.step, props.total, props.radius - 50, 1000)
   ]
 
 });

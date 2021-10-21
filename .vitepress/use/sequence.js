@@ -1,6 +1,6 @@
 import { tempo } from '@use/tempo.js'
 import { Sequence, PanVol, gainToDb, Draw, Sampler, context, start } from 'tone'
-import { useUrlSearchParams } from '@vueuse/core'
+// import { useUrlSearchParams } from '@vueuse/core'
 
 export function useSequence(
   metre = {

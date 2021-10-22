@@ -77,8 +77,8 @@ const loops = useStorage('tempo-circle-loops', [
   }]
 );
 
-function changeLoop(l, n, diff) {
-  let num = loops.value[l][n] + diff
+function changeLoop(l, n, val) {
+  let num = val
   if (num >= 1 && num <= 48) {
     loops.value[l][n] = num
   }

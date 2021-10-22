@@ -142,7 +142,7 @@ g.arc.cursor-pointer(
     round
   )
 
-  circle(
+  circle.pointer-events-none(
     v-if="showCenter"
     opacity="0.75"
     fill="currentColor"
@@ -150,7 +150,7 @@ g.arc.cursor-pointer(
     :cx="arc.center.x"
     :cy="arc.center.y"
   )
-  g.all(
+  g.all.pointer-events-none(
     v-if="showPositions"
     )
     circle(

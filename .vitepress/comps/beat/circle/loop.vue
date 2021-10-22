@@ -5,6 +5,7 @@ import { isDark } from '@theme/composables/state.js'
 import { clampNum } from '@use/theory'
 import { levelColor } from "@use/colors.js"
 import { tempo } from '@use/tempo'
+// import { useUrlSearchParams } from '@vueuse/core'
 
 const emit = defineEmits(['del', 'over', 'under', 'sound'])
 
@@ -61,6 +62,30 @@ const lineProgress = computed(() => {
     return { x: 500, y: 100 }
   }
 });
+
+
+// const params = useUrlSearchParams('hash')
+// let letters = ['a', 'b']
+// let letter = letters[props.order]
+
+// watch(() => [...mutes.value], (mut) => {
+//   let str = mut.reduce(
+//     (acc, v) => acc + (v ? '0' : '1'),
+//     '',
+//   )
+//   params[letter] = str
+// })
+
+// onMounted(() => {
+//   if (params[letter]) {
+//     emit('over', split.length)
+//     emit('under', split.length)
+//     let split = params[letter].split('')
+//     accents.value = split.map((a) => a == 1)
+//     mutes.value = split.map((a) => a == 0)
+
+//   }
+// })
 
 function dragVol(drag) {
   volume.value = clampNum(volume.value, -drag.delta[1] / 100, 0, 1)

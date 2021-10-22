@@ -1,13 +1,13 @@
 <template lang="pug">
-.max-w-55ch.mx-auto.flex.flex-col.items-stretch.w-full.transition-all.duration-500.ease-out.select-none.rounded-2xl.shadow-xl.text-white(
-  :style="{ backgroundColor: drone.color }"
+.max-w-55ch.mx-auto.flex.flex-col.items-stretch.w-full.transition-all.duration-500.ease-out.select-none.rounded-2xl.shadow-xl.border-8(
+  :style="{ borderColor: drone.color }"
 )
 
   .drone.w-full.flex-1.justify-center.flex.flex-col.p-2
-    .notes.w-full.text-sm.font-bold.text-white.text-center.flex.flex-wrap
+    .notes.w-full.text-sm.font-bold.text-center.flex.flex-wrap
       .p-2.m-1.flex-1.cursor-pointer.rounded-xl(
         v-for="note in notes" :key="note"
-        :style="{ backgroundColor: pitchColor(note.pitch, 4, drone.pitch == note.pitch ? 1 : 0, drone.pitch == note.pitch ? 1 : 0.4) }"
+        :style="{ backgroundColor: pitchColor(note.pitch, 4, drone.pitch == note.pitch ? 1 : 0.2, drone.pitch == note.pitch ? 1 : 0.4) }"
         @click="drone.pitch = note.pitch"
       ) {{ note.name }}
     .info.my-4.flex.flex-col.items-center.is-group.cursor-pointer.transition-all.duration-500.ease-out(
@@ -34,8 +34,8 @@
       button.text-button(@click="drone.stopped = !drone.stopped")
         la-stop(v-if="!drone.stopped")
         la-play(v-else)
-      sqnob.w-4em(v-model="drone.volume" :min="0" :max="1" :step="0.05" param="VOL")
-      sqnob.w-4em(v-model="drone.filterFreq" :min="55" :max="12000" :step="0.05" :fixed="0" param="LP")
+      control-knob.w-4em(v-model="drone.volume" :min="0" :max="1" :step="0.05" param="VOL")
+      control-knob.w-4em(v-model="drone.filterFreq" :min="55" :max="12000" :step="0.05" :fixed="0" param="LP")
 </template>
 
 <script setup>

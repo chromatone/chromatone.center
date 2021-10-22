@@ -1,6 +1,6 @@
 <template lang="pug">
 .fullscreen-container#screen
-  start-button.absolute.z-20(@click="start()", v-if="!tuner.running") Start tuner
+  control-start.absolute.z-20(@click="start()", v-if="!tuner.running") Start tuner
   full-screen.absolute.bottom-6.right-6.z-3
   svg#tuner.rounded-xl.w-full.h-full.-z3(
   :opacity="tuner.running ? 1 : 0.3"

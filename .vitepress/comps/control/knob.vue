@@ -1,19 +1,4 @@
-<template lang="pug">
-.knob(
-  v-drag="handler"
-  @dblclick="reset()"
-  :drag-options="{ preventWindowScrollY: true }"
-)
-  .level(
-    :style="{ height: state.internal + '%' }"
-  )
-  .p-1
-    .text-lg {{ modelValue.toFixed(fixed) }}{{ unit }}
-    .text-sm {{ param.toUpperCase() }}
-</template>
-
 <script setup>
-import { reactive, computed, watchEffect } from 'vue'
 const props = defineProps({
   max: {
     type: Number,
@@ -70,7 +55,6 @@ watchEffect(() => {
   state.internal = mapInput(props.modelValue)
 })
 
-
 function reset() {
   state.internal = state.initial
   emit('update:modelValue', state.external)
@@ -104,13 +88,27 @@ function mapNumber(
 
 </script>
 
+<template lang="pug">
+.knob(
+  v-drag="handler"
+  @dblclick="reset()"
+  :drag-options="{ preventWindowScrollY: true }"
+)
+  .level(
+    :style="{ height: state.internal + '%' }"
+  )
+  .p-1
+    .text-lg {{ modelValue.toFixed(fixed) }}{{ unit }}
+    .text-sm {{ param.toUpperCase() }}
+</template>
+
 <style scoped>
 .knob {
-  @apply m-1 border-1 rounded text-center border-dark-100/50 dark:(border-light-100/50) cursor-pointer select-none relative;
+  @apply shadow-md m-1 border-2 rounded-lg text-center border-dark-100/50 dark:(border-light-100/50) cursor-pointer select-none relative overflow-hidden;
   touch-action: none;
 }
 
 .level {
-  @apply bg-dark-50/40 rounded dark:(bg-light-100/40) absolute bottom-0 w-full;
+  @apply border-t-1 bg-dark-50/40 border-dark-100  dark:(border-light-100 bg-light-100/40) absolute bottom-0 w-full;
 }
 </style>

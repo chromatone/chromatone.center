@@ -7,11 +7,11 @@
       la-pause(v-else)
     .btn(@click="clear()")
       la-times
-    sqnob(v-model="draw.speed" :min="4" :max="20" param="speed")
+    control-knob(v-model="draw.speed" :min="4" :max="20" param="speed")
     .flex-1.text-center.font-bold  {{ tuner.bpm.toFixed(1) }} BPM
 
   .fullscreen-container(ref="roller")
-    start-button.absolute(@click="start()", v-if="!tuner.running") Start rolling 
+    control-start.absolute(@click="start()", v-if="!tuner.running") Start rolling 
     full-screen.absolute.bottom-6.right-6.z-30(:el="roller")
     canvas.w-full.h-full(    
       :width="1920"

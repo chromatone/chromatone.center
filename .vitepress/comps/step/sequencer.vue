@@ -1,17 +1,17 @@
 <template lang="pug">
 .flex.flex-col
-  choose-scale.py-4
+  control-scale.py-4
   .flex.flex-wrap.justify-center
-    sqnob.w-70px(v-model="state.octave" :max="4" :min="2" :fixed="0" param="OCTAVE")
+    control-knob.w-70px(v-model="state.octave" :max="4" :min="2" :fixed="0" param="OCTAVE")
     select(v-model="state.type")
       option(
         v-for="(type) in patternTypes" 
         :key="type" :value="type"
         ) {{ type }}
-    sqnob.w-50px(
+    control-knob.w-50px(
       v-model="state.steps" :max="32" :min="4" :step="1" :fixed="0" param="steps")
-    sqnob.w-50px(v-model="state.bpm" :step="1" :max="400" :min="10" :fixed="0" param="BPM")
-    sqnob.w-50px(v-model="state.probability" :max="1" :min="0" :step="0.01" :fixed="2" param="prob")
+    control-knob.w-50px(v-model="state.bpm" :step="1" :max="400" :min="10" :fixed="0" param="BPM")
+    control-knob.w-50px(v-model="state.probability" :max="1" :min="0" :step="0.01" :fixed="2" param="prob")
     button(:class="{ active: state.humanize }" @click="state.humanize = !state.humanize") HMN
     button(@click="clear()")
       la-trash-alt

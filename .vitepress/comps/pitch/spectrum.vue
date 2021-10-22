@@ -1,6 +1,6 @@
 <template lang="pug">
 .fullscreen-container(ref="screen")
-  start-button.absolute(v-if="!tuner.initiated"  @click="initiate()") Start
+  control-start.absolute(v-if="!tuner.initiated"  @click="initiate()") Start
   full-screen.absolute.bottom-6.right-6.z-30(:el="screen")
   svg#pitch-spectrum.rounded-xl.w-full.h-full.min-h-2xl.-z3(
     version="1.1",

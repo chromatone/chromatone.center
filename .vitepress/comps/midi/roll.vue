@@ -3,15 +3,15 @@
   midi-panel
 
   .fullscreen-container(ref="screen")
-    start-button.absolute( @click="initiate()", v-if="!state.initiated") Start
+    control-start.absolute( @click="initiate()", v-if="!state.initiated") Start
     full-screen.absolute.bottom-6.right-2(:el="screen")
     canvas#spectrogram.m-4.max-h-80vh.w-full.rounded-md(
       :width="state.width"
       :height="state.height"  
     )
   .flex.justify-center
-    sqnob(v-model="state.speed" param="speed" :min="1" :max="3" :step="0.5")
-    choose(v-model="state.direction" :variants="{ 1: 'Vertical', 0: 'Horizontal' }")
+    control-knob(v-model="state.speed" param="speed" :min="1" :max="3" :step="0.5")
+    control-choose(v-model="state.direction" :variants="{ 1: 'Vertical', 0: 'Horizontal' }")
 </template>
 
 <script setup>

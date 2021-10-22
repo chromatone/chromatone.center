@@ -1,7 +1,7 @@
 <template lang="pug">
 .flex.flex-col
   .controls.flex.flex-wrap.justify-center.-mb-8.z-2
-    sqnob(
+    control-knob(
       :min="overtones.min"
       :max="overtones.max"
       :step="1"
@@ -9,7 +9,7 @@
       param="count"
       v-model="overtones.count"
       )
-    sqnob.w-16(
+    control-knob.w-16(
       :min="50"
       :max="1000"
       :step="0.1"
@@ -17,7 +17,7 @@
       param="freq"
       v-model="fundamental.frequency"
       )
-    sqnob(
+    control-knob(
       :min="0.2"
       :max="2"
       :step="0.1"
@@ -35,8 +35,8 @@
     )
       bi-volume-up(v-if="sound.enabled")
       bi-volume-mute(v-if="!sound.enabled")
-    piano-keys(v-model:pitch="fundamental.pitch")
-    sqnob(
+    control-piano(v-model:pitch="fundamental.pitch")
+    control-knob(
       :min="1"
       :max="5"
       :step="1"

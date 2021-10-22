@@ -1,40 +1,40 @@
 <template lang="pug">
 .row
-  push-button(v-model="active" title="NOISE")
-  sqnob.w-3rem(
+  control-push(v-model="active" title="NOISE")
+  control-knob.w-3rem(
     :min="0"
     :max="1"
     v-model="options.volume"
     :step="0.01"
     param="DRY"
   )
-  choose(
+  control-choose(
     v-model="options.noise.type"
     :variants="types"
   )
   .group
-    sqnob(
+    control-knob(
       :min="0.005"
       :max="4"
       :step="0.01"
       param="ATT"
       v-model="options.envelope.attack"
     )
-    sqnob(
+    control-knob(
       :min="0.005"
       :max="6"
       :step="0.01"
       param="DEC"
       v-model="options.envelope.decay"
     )
-    sqnob(
+    control-knob(
       :min="0.005"
       :max="1"
       :step="0.01"
       param="SUS"
       v-model="options.envelope.sustain"
     )
-    sqnob(
+    control-knob(
       :min="0.005"
       :max="10"
       :step="0.01"
@@ -60,11 +60,11 @@
     )
 .row
   .flex.flex-wrap
-    push-button(
+    control-push(
       title="FILTER"
       v-model="filterOptions.on"
     )
-    sqnob.w-3rem(
+    control-knob.w-3rem(
       param="VOL"
       :min="0"
       :max="1"
@@ -72,7 +72,7 @@
       :fixed="1"
       v-model="filterOptions.volume"
     )
-    sqnob.w-4rem(
+    control-knob.w-4rem(
       param="FREQ"
       :min="10"
       :max="999"
@@ -81,7 +81,7 @@
       unit="hz"
       v-model="filterOptions.baseFrequency"
     )
-    sqnob.w-3rem(
+    control-knob.w-3rem(
       param="OCT"
       :min="0.1"
       :max="7"
@@ -89,7 +89,7 @@
       :fixed="1"
       v-model="filterOptions.octaves"
     )
-    sqnob.w-3rem(
+    control-knob.w-3rem(
       param="Q"
       :min="0.1"
       :max="20"
@@ -97,7 +97,7 @@
       :fixed="1"
       v-model="filterOptions.filter.Q"
     )
-    sqnob(
+    control-knob(
       param="WET"
       :min="0"
       :max="1"
@@ -106,16 +106,16 @@
       unit=""
       v-model="filterOptions.wet"
     )
-    choose(
+    control-choose(
       v-model="filterOptions.filter.type"
       :variants="filterTypes"
     ) 
   .flex.flex-wrap
-    push-button(
+    control-push(
       title="PLAY"
       v-model="filterOptions.play"
     )
-    sqnob.w-4rem(
+    control-knob.w-4rem(
       param="LFO"
       :min="0.01"
       :max="4"
@@ -124,7 +124,7 @@
       unit="hz"
       v-model="filterOptions.frequency"
     )
-    sqnob.w-4rem(
+    control-knob.w-4rem(
       param="DPTH"
       :min="0"
       :max="1"
@@ -133,17 +133,17 @@
       unit=""
       v-model="filterOptions.depth"
     )
-    choose(
+    control-choose(
       v-model="filterOptions.type"
       :variants="filterLFOTypes"
     )
 .row
-  push-button(
+  control-push(
     title="BITCRUSHER"
     v-model="crusherOptions.on"
     )
 
-  sqnob.w-4rem(
+  control-knob.w-4rem(
     param="VOL"
     :min="0.01"
     :max="1"
@@ -151,7 +151,7 @@
     :fixed="1"
     v-model="crusherOptions.volume"
   )
-  sqnob.w-4rem(
+  control-knob.w-4rem(
     param="BITS"
     :min="1"
     :max="16"
@@ -159,7 +159,7 @@
     :fixed="2"
     v-model="crusherOptions.bits"
   )
-  sqnob.w-4rem(
+  control-knob.w-4rem(
     param="WET"
     :min="0"
     :max="1"
@@ -169,15 +169,15 @@
     v-model="crusherOptions.wet"
   )
 .row
-  push-button(
+  control-push(
     title="PAN"
     v-model="pannerOptions.on"
     )
-  push-button(
+  control-push(
     title="PLAY"
     v-model="pannerOptions.play"
     )
-  sqnob.w-4rem(
+  control-knob.w-4rem(
     param="VOL"
     :min="0.01"
     :max="1"
@@ -185,7 +185,7 @@
     :fixed="1"
     v-model="pannerOptions.volume"
   )
-  sqnob.w-4rem(
+  control-knob.w-4rem(
     param="LFO"
     :min="0.01"
     :max="4"
@@ -194,7 +194,7 @@
     unit="hz"
     v-model="pannerOptions.frequency"
   )
-  sqnob.w-4rem(
+  control-knob.w-4rem(
     param="DPTH"
     :min="0"
     :max="1"
@@ -203,7 +203,7 @@
     unit=""
     v-model="pannerOptions.depth"
   )
-  sqnob.w-4rem(
+  control-knob.w-4rem(
     param="WET"
     :min="0"
     :max="1"
@@ -341,7 +341,7 @@ watch(crusherOptions.value, opt => {
   crusher.set(opt)
 });
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               </script>
+</script>
 
 <style scoped>
 .row {

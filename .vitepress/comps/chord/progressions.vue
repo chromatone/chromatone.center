@@ -4,7 +4,7 @@
     :style="{ borderColor: pitchColor(globalScale.tonic, 2), backgroundColor: pitchColor(globalScale.tonic, 2, 1, 0.05) }"
     )
     .flex.flex-wrap.mx-auto.my-4
-      choose(v-model="state.mode" :variants="{ circles: 'Circles', squares: 'Squares', bars: 'Bars' }")
+      control-choose(v-model="state.mode" :variants="{ circles: 'Circles', squares: 'Squares', bars: 'Bars' }")
     chroma-piano.w-20em.mx-auto(:chroma="'1000000000000'", names)
     .flex.flex-col.text-center.mb-2.relative
       .text-2xl.font-bold.flex.mx-auto.items-center {{ globalScale.note.name }} {{ state.current.title }}

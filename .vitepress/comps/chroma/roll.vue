@@ -2,7 +2,7 @@
 .flex.flex-col.items-center.w-full
 
   .flex.flex-col.justify-center.items-center.relative(ref="screen" class="bg-light-600 dark:bg-dark-700")
-    start-button.absolute(v-if="!roll.initiated" @click="initiate()") Start
+    control-start.absolute(v-if="!roll.initiated" @click="initiate()") Start
     full-screen.absolute.bottom-6.right-6.z-30(:el="screen")
     .absolute.top-6.left-4.text-2xl x{{ roll.speed }}
     canvas#spectrogram.m-4.w-full.rounded-md.cursor-pointer(
@@ -11,7 +11,7 @@
       :height="roll.height"  
     )
   .flex.justify-center
-    choose(v-model="roll.direction" :variants="{ 1: 'Vertical', 0: 'Horizontal' }")
+    control-choose(v-model="roll.direction" :variants="{ 1: 'Vertical', 0: 'Horizontal' }")
 </template>
 
 <script setup>

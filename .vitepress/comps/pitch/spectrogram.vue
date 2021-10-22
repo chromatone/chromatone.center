@@ -6,7 +6,7 @@
       :height="state.height"
       v-drag="dragScreen"
     )
-    start-button.absolute(v-if="!state.initiated" @click="initiate()") Start
+    control-start.absolute(v-if="!state.initiated" @click="initiate()") Start
     full-screen.absolute.bottom-6.right-4
     .absolute.top-6.left-4.text-2xl x{{ state.speed }}
 

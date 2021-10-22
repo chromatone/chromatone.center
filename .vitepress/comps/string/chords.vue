@@ -8,7 +8,7 @@
       @click="current = name"
       ) {{ name }}
   .text-xl.font-bold.mt-4 Scale
-  choose-scale.flex-1.mb-4
+  control-scale.flex-1.mb-4
   string-neck.my-8(
     :instrument="current"
     :chordNotes="Chord.get(state.key + state.suffix).notes"

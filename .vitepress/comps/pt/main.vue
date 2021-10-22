@@ -1,7 +1,7 @@
 <template lang="pug">
 .flex.flex-col.w-full.flex-auto
   client-only
-    choose-scale.mb-4
+    control-scale.mb-4
     .flex.flex-wrap.p-4
       pt-control-switch(
         label="letters",

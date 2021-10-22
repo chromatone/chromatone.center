@@ -2,11 +2,11 @@
 .fullscreen-container#screen
   full-screen.absolute.top-2.right-2
   svg#fifths.h-full.max-h-80vh.w-full(
+    style="flex: 1 1 600px;touch-action:none"
     version="1.1",
     baseProfile="full",
     viewBox="0 0 100 100",
     xmlns="http://www.w3.org/2000/svg",
-    style="touch-action:none"
     font-family="Commissioner, sans-serif"
     )
     g(
@@ -31,7 +31,7 @@
           :to="(i) / 12 * 360 + 15"
           :radius="40 - 12 * getRadius(qual)"
           :thickness="10"
-          :opacity="Math.abs(tonic - i) == 11 || Math.abs(tonic - i) % 12 <= 1 ? 0.8 : 0.4"
+          :op="Math.abs(tonic - i) == 11 || Math.abs(tonic - i) % 12 <= 1 ? 0.8 : 0.1"
           :fill="Math.abs(tonic - i) == 11 || Math.abs(tonic - i) % 12 <= 1 ? pitchColor(note.pitch) : pitchColor(note.pitch, 4, 1)"
         )
         circle(
@@ -40,7 +40,7 @@
           :r="2"
           :fill="pitchColor(note.pitch, 4, 1, 1)"
           @click="tonic = i; scaleType = qual"
-          class="opacity-20 hover:opacity-80 transition-all duration-300"
+          class="opacity-20 hover:opacity-80"
         )
         circle.note(
           style="transition: all 300ms ease-out;transform-box: fill-box; transform-origin: center center;"
@@ -51,7 +51,7 @@
         )
         text(
           style="user-select:none;transition:all 300ms ease"
-          fill="white"
+          fill="currentColor"
           font-size="4px"
           text-anchor="middle",
           dominant-baseline="middle"
@@ -93,15 +93,14 @@
         text.pointer-events-none(
           v-for="(step,n) in level"
           :key="step"
-          style="user-select:none;transition:all 300ms ease"
-          fill="black"
+          style="user-select:none;transition:all 300ms ease;"
+          fill="currentColor"
           font-size="2.5px"
           text-anchor="middle",
           dominant-baseline="middle"
-          :transform-origin="`${getCircleCoord(n - 1, 12, 42 - idx * 26).x} ${getCircleCoord(n - 1, 12, 42 - idx * 26).y}`"
           :x="getCircleCoord(n - 1, 12, 42 - idx * 26).x",
           :y="getCircleCoord(n - 1, 12, 42 - idx * 26).y + 0.25",
-          :style="{ transform: `rotate(${-(tonic) * 30}deg)` }"
+          :style="{ transform: `rotate(${-(tonic) * 30}deg)`, transformOrigin: `${getCircleCoord(n - 1, 12, 42 - idx * 26).x}px ${getCircleCoord(n - 1, 12, 42 - idx * 26).y}px` }"
         ) {{ step }}
 </template>
 

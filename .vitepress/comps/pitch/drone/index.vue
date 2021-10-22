@@ -4,22 +4,6 @@
 )
 
   .drone.w-full.flex-1.justify-center.flex.flex-col.p-2
-    .notes.w-full.text-sm.font-bold.text-center.flex.flex-wrap
-      .p-2.m-1.flex-1.cursor-pointer.rounded-xl(
-        v-for="note in notes" :key="note"
-        :style="{ backgroundColor: pitchColor(note.pitch, 4, drone.pitch == note.pitch ? 1 : 0.2, drone.pitch == note.pitch ? 1 : 0.4) }"
-        @click="drone.pitch = note.pitch"
-      ) {{ note.name }}
-    .info.my-4.flex.flex-col.items-center.is-group.cursor-pointer.transition-all.duration-500.ease-out(
-      style="touch-action:none"
-      v-drag="setFreq"
-
-    )
-      .flex.flex-wrap.items-center.p-2
-        .p-1.text-4xl.font-bold {{ drone.note }} 
-        .p-1 {{ drone.centDiff }}
-        .p-1 {{ drone.cents }} cents
-        .p-1.text-xl {{ drone.freq.toFixed(2) }} Hz
 
     .intervals.my-2
       .interval.flex.flex-col.m-1(
@@ -30,12 +14,26 @@
             v-for="voice in interval.voices" :key="voice"
             :interval="voice"
           )
-    .controls.my-2.flex.flex-wrap.items-center.justify-center
-      button.text-button(@click="drone.stopped = !drone.stopped")
-        la-stop(v-if="!drone.stopped")
-        la-play(v-else)
-      control-knob.w-4em(v-model="drone.volume" :min="0" :max="1" :step="0.05" param="VOL")
-      control-knob.w-4em(v-model="drone.filterFreq" :min="55" :max="12000" :step="0.05" :fixed="0" param="LP")
+    .info.my-4.flex.flex-wrap.justify-stretch.items-center(
+      style="touch-action:none"
+    )
+      .flex.flex-wrap.p-4.mx-2.flex-1.min-w-10em.items-center.rounded-xl.text-white.p-2.cursor-pointer.transition-all.duration-500.ease-out(v-drag="setFreq" :style="{ backgroundColor: drone.color }")
+        .p-1.text-4xl.font-bold {{ drone.note }} 
+        .p-1 {{ drone.centDiff }}
+        .p-1 {{ drone.cents }} cents
+        .p-1.text-xl {{ drone.freq.toFixed(2) }} Hz
+      .controls.min-w-10em.flex-1.my-2.p-2.flex.flex-wrap.items-center.justify-center.is-group
+        button.text-button.text-3xl(@click="drone.stopped = !drone.stopped")
+          la-stop(v-if="!drone.stopped")
+          la-play(v-else)
+        control-knob.w-4em(v-model="drone.volume" :min="0" :max="1" :step="0.05" param="VOL")
+        control-knob.w-4em(v-model="drone.filterFreq" :min="55" :max="12000" :step="0.05" :fixed="0" param="LP")
+    .notes.w-full.text-sm.font-bold.text-center.flex.flex-wrap
+      .p-2.m-1.flex-1.cursor-pointer.rounded-xl(
+        v-for="note in notes" :key="note"
+        :style="{ backgroundColor: pitchColor(note.pitch, 3, drone.pitch == note.pitch ? 1 : 0.2, drone.pitch == note.pitch ? 1 : 0.4) }"
+        @click="drone.pitch = note.pitch"
+      ) {{ note.name }}
 </template>
 
 <script setup>

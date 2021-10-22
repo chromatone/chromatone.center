@@ -10,15 +10,16 @@
   .max-w-65ch.m-auto
     chroma-piano.w-xs.m-auto(
       :chroma="chroma" names) 
-    .flex.flex-wrap.mx-auto.justify-center.mt-4
-      .chord-group(
-        v-for="(name,count) in groupNames", 
-        :key="name"
-        :class="{ active: count + 2 == numNotes }"
-        @click="chroma = chordGroups[count][0].chroma"
-        ) {{ name }}
-    .flex.flex-col.items-center
-      .flex.flex-wrap.my-4.justify-center
+    .is-group.flex.flex-col.p-2
+      .flex.flex-wrap.mx-auto.justify-center
+        .chord-group(
+          v-for="(name,count) in groupNames", 
+          :key="name"
+          :class="{ active: count + 2 == numNotes }"
+          @click="chroma = chordGroups[count][0].chroma"
+          ) {{ name }}
+
+      .flex.flex-wrap.justify-center
         .chord(
           :style="{ color: chord?.chroma == chroma ? 'white' : chromaColorMix(chord.chroma, globalScale.tonic).hsl, backgroundColor: chord?.chroma == chroma ? chromaColorMix(chord.chroma, globalScale.tonic).hsl : '' }"
           v-for="chord in chordGroup", 
@@ -26,10 +27,9 @@
           @click="chroma = chord.chroma",
           :class="{ active: chord?.chroma == chroma }") {{ notes[globalScale.tonic].name + chord?.aliases[0] }}
 
-    .flex.flex-wrap.justify-center
-      .text-xl.flex-1.min-w-full.text-center.my-4
-        .text-sm It may be the root chord in these scales:
-      transition-group(name="list")
+      .flex.flex-wrap.justify-center
+        .min-w-full.text-center.my-4
+          .mx-auto.w-auto.text-sm.border-b-1.border-current It may be the root chord in these scales:
         .chord(
           v-for="name in chordScales",
           :style="{ color: scale == name ? 'white' : chromaColorMix(ScaleType.get(name).chroma, globalScale.tonic).hsl, backgroundColor: scale == name ? chromaColorMix(ScaleType.get(name).chroma, globalScale.tonic).hsl : '' }"

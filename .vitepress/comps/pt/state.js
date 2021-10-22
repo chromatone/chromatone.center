@@ -1,6 +1,3 @@
-import { useStorage } from '@vueuse/core'
-import { reactive, computed } from 'vue'
-
 export const state = reactive({
   show: {
     letters: useStorage('table-letters', true),
@@ -8,6 +5,7 @@ export const state = reactive({
     hz: useStorage('table-hz', true),
     len: useStorage('table-len', true),
   },
+  stopped: true,
   middleA: useStorage('table-middleA', 440),
   tuning: 'equal',
   octave: {

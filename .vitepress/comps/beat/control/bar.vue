@@ -7,7 +7,7 @@ const emit = defineEmits(['update:modelValue'])
 
 const props = defineProps({
   modelValue: {
-    type: Number,
+    type: [Number, String],
     default: 0.1,
   },
   step: {
@@ -57,12 +57,12 @@ const props = defineProps({
 });
 
 const bar = reactive({
-  inner: (props.modelValue - props.min) / (props.max - props.min),
+  inner: (Number(props.modelValue) - props.min) / (props.max - props.min),
   proportion: computed(() => {
     if (props.inverted) {
-      return (props.modelValue - props.max) / (props.min - props.max)
+      return (Number(props.modelValue) - props.max) / (props.min - props.max)
     } else {
-      return (props.modelValue - props.min) / (props.max - props.min)
+      return (Number(props.modelValue) - props.min) / (props.max - props.min)
     }
   }),
   pos: computed(() => bar.proportion * props.width)

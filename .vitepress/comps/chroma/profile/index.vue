@@ -1,29 +1,3 @@
-<template lang="pug">
-.profile(
-  :style="{ borderColor: chromaColorMix(chroma, globalScale.tonic).hsl }"
-)
-  chroma-waveform(
-    :chroma="chroma" 
-    )
-  abc-render(v-if="abc" :abc="abc")
-  .flex.flex-col.items-center.justify-center.p-4.w-full.relative
-    a.p-2.absolute.top-8px.right-2em(
-      v-if="link"
-      :href="link"
-      target="_blank"
-    )
-      la-wikipedia-w
-    .text-2xl.font-bold.capitalize.mb-2(
-      ) {{ notes[globalScale.tonic].name }} {{ chord.name || chord.aliases[0] || scale.name }} {{ scale.aliases[0] ? `(${scale.aliases[0]})` : '' }}
-  chroma-piano.h-5rem.mx-auto.mb-4(:chroma="chroma")  
-  chroma-row.mb-4.mx-2(v-model:chroma="chroma" :editable="editable")
-  chroma-circle.flex-1.min-w-200px.pl-4(:chroma="chroma")
-  chroma-stack.flex-1.mx-4(:chroma="chroma")
-  chroma-square.w-12em.mx-4(:chroma="chroma")
-  .flex.w-full.p-6(v-if="description") {{ description }}
-
-</template>
-
 <script setup>
 const props = defineProps({
   title: {
@@ -74,8 +48,35 @@ const semitones = computed(() => {
 });
 </script>
 
+<template lang="pug">
+.profile(
+  :style="{ borderColor: chromaColorMix(chroma, globalScale.tonic).hsl }"
+)
+  chroma-waveform(
+    :chroma="chroma" 
+    )
+  abc-render(v-if="abc" :abc="abc")
+  .flex.flex-col.items-center.justify-center.p-4.w-full.relative
+    a.p-2.absolute.top-8px.right-2em(
+      v-if="link"
+      :href="link"
+      target="_blank"
+    )
+      la-wikipedia-w
+    .text-2xl.font-bold.capitalize.mb-2(
+      ) {{ notes[globalScale.tonic].name }} {{ chord.name || chord.aliases[0] || scale.name }} {{ scale.aliases[0] ? `(${scale.aliases[0]})` : '' }}
+  .flex.flex-wrap.w-full.items-center
+    chroma-circle.flex-1.min-w-200px.pl-4(:chroma="chroma")
+    chroma-piano.h-5rem.mx-auto.mb-4(:chroma="chroma")  
+  chroma-row.mb-4.mx-2(v-model:chroma="chroma" :editable="editable")
+  chroma-stack.flex-1.mx-4.mb-4(:chroma="chroma")
+  chroma-square.w-12em.mx-4(v-model:chroma="chroma" :editable="editable")
+  .flex.w-full.p-6(v-if="description") {{ description }}
+
+</template>
+
 <style scoped>
 .profile {
-  @apply flex flex-wrap max-w-55ch mx-auto text-center border-2 rounded-xl shadow-lg bg-light-500 dark:bg-dark-500;
+  @apply flex flex-wrap justify-center max-w-55ch mx-auto text-center border-2 rounded-xl shadow-lg bg-light-500 dark:bg-dark-500;
 }
 </style>

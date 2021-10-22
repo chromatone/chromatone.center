@@ -98,7 +98,7 @@ function mapNumber(
     :style="{ height: state.internal + '%' }"
   )
   .p-1
-    .text-lg {{ modelValue.toFixed(fixed) }}{{ unit }}
+    .text-lg.font-bold {{ modelValue.toFixed(fixed) }}{{ unit }}
     .text-sm {{ param.toUpperCase() }}
 </template>
 

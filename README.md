@@ -27,16 +27,10 @@ Contact the author and the headquarter of the project.
 
 ## Road map
 
-We've ported almost all separate apps into the main website. It becomes more and more integrated tool. But there's more! Next are the experiments, that stat at dev and need to be implemented with the new dev stack.
+We've ported almost all separate apps into the main website. It becomes more and more integrated tool. But there's more! 
 
-- Pitch field / Tone grid
-- ~~Noise lab~~
-- ~~Harmonics~~
-- ~~Oscilloscope~~
-- Synth waveforms
-- Drum machine
-- Fretboard detect chord
-
+Current tasks and progress are open [at this ClickUp project](https://sharing.clickup.com/l/h/6-8826475-1/f14fd62f6465442)
+ 
 ## Any other ideas? [Share them in the discussions!](https://github.com/chromatone/chromatone.center/discussions/2)
 
 

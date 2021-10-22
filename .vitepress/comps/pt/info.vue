@@ -1,5 +1,5 @@
 <template lang="pug">
-.flex.flex-col.text-xs.p-1(v-if="state.show.hz || state.show.bpm || state.show.letters")
+.flex.flex-col.text-xs.p-1(v-if="state.show.len || state.show.hz || state.show.bpm || state.show.letters")
   .text-xl.font-bold(v-if="state.show.letters") {{ name }}{{ octave }}
   .flex(v-if="state.show.hz") {{ round(hz) }}hz
   .flex(v-if="state.show.len") {{ len.toFixed(2) }} m

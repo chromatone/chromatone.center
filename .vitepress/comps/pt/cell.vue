@@ -20,7 +20,7 @@
 </template>
 
 <script setup>
-import { context, start, gainToDb, PanVol } from 'tone'
+import { context, start } from 'tone'
 import { useSynth } from './synth.js'
 
 

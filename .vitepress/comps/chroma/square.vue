@@ -19,7 +19,7 @@ svg.select-none.min-w-8em.m-2(
   g.transition-all.duration-400.ease-in-out.cursor-pointer(
     v-for="(note,n) in chroma" :key="n" 
     :transform="getRect(n)"
-    @mousedown="globalScale.tonic = (n + actualPitch) % 12"
+    @mousedown="toggleStep(n)"
     :opacity="note == '1' ? 1 : 0.62"
   )
     rect.transition-all.duration-200.ease-in-out(
@@ -85,12 +85,14 @@ svg.select-none.min-w-8em.m-2(
 </template>
 
 <script setup>
+const emit = defineEmits(['update:chroma'])
 const props = defineProps({
   pitch: { type: Number, default: null },
   chroma: { type: String, default: '1001000100101' },
   mode: { type: String, default: 'O' },
   tonic: { type: Number, default: 0 },
   roman: { type: String, default: '' },
+  editable: { type: Boolean, default: false }
 });
 import { notes, rotateArray, getCircleCoord, pitchColor } from 'chromatone-theory'
 import { colord } from 'colord'
@@ -136,6 +138,17 @@ function getRect(n, w = state.width, h = state.height) {
     }
   }
   return `translate(${posX * w / 4},${posY * h / 4})`
+}
+
+function toggleStep(i) {
+  if (!props.editable) return
+  let chroma = [...props.chroma.split('')]
+  if (chroma[i] == '1') {
+    chroma[i] = '0'
+  } else {
+    chroma[i] = '1'
+  }
+  emit('update:chroma', chroma.join(''))
 }
 
 </script>

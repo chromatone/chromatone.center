@@ -44,7 +44,7 @@ function setValue(val) {
 
 <style scoped>
 .btn {
-  @apply p-2 border-1 text-center flex flex-col place-items-center rounded-lg m-1 select-none cursor-pointer relative border-dark-100/50 dark:(border-light-100/50);
+  @apply p-2 border-2 text-center flex flex-col place-items-center rounded-lg m-1 select-none cursor-pointer relative border-dark-100/50 dark:(border-light-100/50);
 }
 .btn.active {
   @apply transition-all duration-200 bg-dark-100/50 dark:(bg-light-100/50);

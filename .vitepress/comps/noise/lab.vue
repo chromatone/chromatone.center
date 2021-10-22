@@ -1,5 +1,13 @@
+<script setup>
+import { useNoise } from './noise.js'
+const {
+  options, filterOptions, pannerOptions, crusherOptions, active, fftData, fftFreq, types, filterTypes, filterLFOTypes
+} = useNoise();
+</script>
+
+
 <template lang="pug">
-.row
+.row.is-group
   control-push(v-model="active" title="NOISE")
   control-knob.w-3rem(
     :min="0"
@@ -12,29 +20,29 @@
     v-model="options.noise.type"
     :variants="types"
   )
-  .group
-    control-knob(
+  .is-group.flex.flex-wrap.p-1
+    control-knob.w-12(
       :min="0.005"
       :max="4"
       :step="0.01"
       param="ATT"
       v-model="options.envelope.attack"
     )
-    control-knob(
+    control-knob.w-12(
       :min="0.005"
       :max="6"
       :step="0.01"
       param="DEC"
       v-model="options.envelope.decay"
     )
-    control-knob(
+    control-knob.w-12(
       :min="0.005"
       :max="1"
       :step="0.01"
       param="SUS"
       v-model="options.envelope.sustain"
     )
-    control-knob(
+    control-knob.w-12(
       :min="0.005"
       :max="10"
       :step="0.01"
@@ -58,7 +66,7 @@
       :y1="10 - fftData[i] * 50"
       :title="fftFreq[i]"
     )
-.row
+.row.is-group
   .flex.flex-wrap
     control-push(
       title="FILTER"
@@ -137,7 +145,7 @@
       v-model="filterOptions.type"
       :variants="filterLFOTypes"
     )
-.row
+.row.is-group
   control-push(
     title="BITCRUSHER"
     v-model="crusherOptions.on"
@@ -168,7 +176,7 @@
     unit=""
     v-model="crusherOptions.wet"
   )
-.row
+.row.is-group
   control-push(
     title="PAN"
     v-model="pannerOptions.on"
@@ -216,139 +224,8 @@
 
 </template>
 
-<script setup>
-import { reactive, ref, watch, onMounted, onBeforeUnmount } from 'vue'
-import { NoiseSynth, gainToDb, dbToGain, FFT, Gain, AutoFilter, AutoPanner, BitCrusher } from 'tone'
-import { useStorage, useRafFn, onKeyStroke } from '@vueuse/core'
-
-const options = useStorage('noise-options', {
-  noise: {
-    type: 'pink',
-  },
-  envelope: {
-    attack: 0.1,
-    decay: 0.1,
-    sustain: 0.9,
-    release: 1,
-  },
-  volume: 1,
-})
-
-const filterOptions = useStorage('filter-options', {
-  on: false,
-  play: false,
-  volume: 1,
-  baseFrequency: 50,
-  depth: 0.1,
-  frequency: 1,
-  octaves: 2,
-  wet: 1,
-  type: 'sine',
-  filter: {
-    Q: 1,
-    type: 'lowpass'
-  }
-})
-
-const pannerOptions = useStorage('panner-options', {
-  on: false,
-  play: false,
-  wet: 1,
-  frequency: 1,
-  depth: 1,
-  volume: 1,
-})
-
-const crusherOptions = useStorage('bit-options', {
-  on: false,
-  bits: 16,
-  wet: 1,
-  volume: 1,
-})
-
-const active = ref(false)
-const fftData = ref([])
-const fftFreq = ref([])
-const types = { brown: 'brown', pink: 'pink', white: 'white' };
-const filterTypes = { lowpass: 'LP', highpass: 'HP', bandpass: 'BP' };
-const filterLFOTypes = { sine: 'SIN', triangle: 'TRI', square: 'SQR', sawtooth: 'SAW' }
-const fft = new FFT({ size: 512, smoothing: 0.2 }).toDestination()
-
-
-for (let j = 0; j < 32; j++) {
-  fftFreq.value[j] = fft.getFrequencyOfIndex(j)
-}
-const gain = new Gain(options.value.volume).connect(fft);
-const filterGain = new Gain(filterOptions.value.volume).connect(fft)
-const pannerGain = new Gain(pannerOptions.value.volume).connect(fft)
-const crusherGain = new Gain(crusherOptions.value.volume).connect(fft)
-const panner = new AutoPanner(pannerOptions.value).connect(pannerGain)
-const crusher = new BitCrusher(crusherOptions.value).connect(crusherGain).connect(panner)
-
-const filter = new AutoFilter(filterOptions.value).connect(filterGain).connect(crusher)
-const synth = new NoiseSynth(options.value).connect(gain).connect(filter)
-
-const { pause, resume } = useRafFn(() => {
-  let arr = fft.getValue()
-  for (let j = 0; j < 32; j++) {
-    fftData.value[j] = dbToGain(arr[j]) * 10
-  }
-})
-
-onKeyStroke(' ', (e) => {
-  e.preventDefault()
-  active.value = true
-}, { eventName: 'keydown' })
-
-onKeyStroke(' ', (e) => {
-  active.value = false
-}, { eventName: 'keyup' })
-
-watch(active, (act) => {
-  if (act) {
-    synth.triggerAttack()
-  } else {
-    synth.triggerRelease()
-  }
-});
-
-watch(options.value, () => {
-  synth.set(options.value)
-});
-
-watch(() => options.value.volume, vol => {
-  gain.gain.rampTo(vol, 1)
-});
-
-onBeforeUnmount(() => {
-  synth.triggerRelease()
-});
-
-watch(filterOptions.value, opt => {
-  opt.play ? filter.start() : filter.stop()
-  opt.on ? filterGain.gain.rampTo(filterOptions.value.volume, 0.2) : filterGain.gain.rampTo(0, 0.2)
-  filter.set(opt)
-});
-
-watch(pannerOptions.value, opt => {
-  opt.play ? panner.start() : panner.stop()
-  opt.on ? pannerGain.gain.rampTo(pannerOptions.value.volume, 0.2) : pannerGain.gain.rampTo(0, 0.2)
-  panner.set(opt)
-});
-
-watch(crusherOptions.value, opt => {
-  opt.on ? crusherGain.gain.rampTo(crusherOptions.value.volume, 0.2) : crusherGain.gain.rampTo(0, 0.2)
-  crusher.set(opt)
-});
-
-</script>
-
 <style scoped>
 .row {
-  @apply my-2 flex flex-wrap border-1 p-2 rounded-lg max-w-65ch mx-auto;
-}
-
-.group {
-  @apply border-1 border-dark-100/50 dark:(border-light-100/50) p-1 rounded-md flex flex-wrap m-1;
+  @apply w-full my-2 flex justify-start flex-wrap border-1 p-2 rounded-lg max-w-65ch mx-auto;
 }
 </style>

@@ -51,9 +51,20 @@ export function useSynth(pitch, octave) {
   )
 
   watch(
+    () => state.stopped,
+    (stop) => {
+      if (stop) {
+        voice.vol = 0
+        voice.pan = 50
+      }
+    },
+  )
+
+  watch(
     () => voice.active,
     (act) => {
       if (act) {
+        if (state.stopped) state.stopped = false
         synth.triggerAttack(voice.freq)
       } else {
         synth.triggerRelease()

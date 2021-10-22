@@ -1,3 +1,69 @@
+<script setup>
+import { rotateArray, notes, scales, pitchColor } from 'chromatone-theory'
+
+const tonal = reactive({
+  pressed: false,
+  r: 28,
+  dx: 80,
+  rowNum: 12,
+  colNum: 12,
+  rows: [0, 9, 5, 2, 10],
+  bgRows: [4, 0, 9, 5, 2, 10, 7],
+  chords: [
+    [0, 3, 7],
+    [0, 3, 8],
+    [0, 5, 8],
+    [0, 5, 9],
+    [0, 4, 9],
+    [0, 4, 7],
+  ],
+})
+
+
+const props = defineProps({
+  tonic: {
+    type: Number,
+    default: 0
+  },
+  scale: {
+    type: Object,
+    default: scales.minor
+  }
+})
+
+const activeSteps = computed(() => {
+  let activeSteps = rotateArray(props.scale.steps, -props.tonic)
+  return activeSteps
+})
+
+const dy = computed(() => {
+  return tonal.dx * 2 * 0.866
+})
+
+const fifths = computed(() => {
+  let fifths = []
+  for (let n = 0; n < 12; n++) {
+    fifths[n] = notes[(7 * n) % 12]
+  }
+  return fifths
+})
+
+function hasMajor(pitch) {
+  return (
+    !activeSteps.value[pitch] ||
+    !activeSteps.value[(pitch + 4) % 12] ||
+    !activeSteps.value[(pitch + 7) % 12]
+  )
+};
+function hasMinor(pitch) {
+  return (
+    !activeSteps.value[pitch] ||
+    !activeSteps.value[(pitch + 3) % 12] ||
+    !activeSteps.value[(pitch + 7) % 12]
+  )
+};
+</script>
+
 <template lang="pug">
 svg#tonal-array(
   viewBox="-80 -110 1040 770"
@@ -79,75 +145,6 @@ svg#tonal-array(
         )
 </template>
 
-<script setup>
-import { reactive, computed, watch } from 'vue'
-import { rotateArray, notes, scales, pitchColor } from 'chromatone-theory'
-import { useStorage } from '@vueuse/core'
-
-const tonal = reactive({
-  pressed: false,
-  r: 28,
-  dx: 80,
-  rowNum: 12,
-  colNum: 12,
-  rows: [0, 9, 5, 2, 10],
-  bgRows: [4, 0, 9, 5, 2, 10, 7],
-  chords: [
-    [0, 3, 7],
-    [0, 3, 8],
-    [0, 5, 8],
-    [0, 5, 9],
-    [0, 4, 9],
-    [0, 4, 7],
-  ],
-})
-
-
-const props = defineProps({
-  tonic: {
-    type: Number,
-    default: 0
-  },
-  scale: {
-    type: Object,
-    default: scales.minor
-  }
-})
-
-
-
-const activeSteps = computed(() => {
-  let activeSteps = rotateArray(props.scale.steps, -props.tonic)
-  return activeSteps
-})
-
-const dy = computed(() => {
-  return tonal.dx * 2 * 0.866
-})
-
-const fifths = computed(() => {
-  let fifths = []
-  for (let n = 0; n < 12; n++) {
-    fifths[n] = notes[(7 * n) % 12]
-  }
-  return fifths
-})
-
-function hasMajor(pitch) {
-  return (
-    !activeSteps.value[pitch] ||
-    !activeSteps.value[(pitch + 4) % 12] ||
-    !activeSteps.value[(pitch + 7) % 12]
-  )
-};
-function hasMinor(pitch) {
-  return (
-    !activeSteps.value[pitch] ||
-    !activeSteps.value[(pitch + 3) % 12] ||
-    !activeSteps.value[(pitch + 7) % 12]
-  )
-};
-</script>
 
 <style scoped>
 .note-circle,

@@ -97,8 +97,8 @@ const newLoop = reactive({
 if (props.meters) {
   let nums = props.meters[0].split('/')
   loops.value = [{
-    over: nums[0],
-    under: nums[1],
+    over: Number(nums[0]),
+    under: Number(nums[1]),
     volume: props.secondary ? 0 : 1,
     sound: 'A'
   }]

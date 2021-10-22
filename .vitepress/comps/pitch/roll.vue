@@ -1,28 +1,48 @@
 <template lang="pug">
 .flex.flex-col.-my-8
   .flex.p-8.items-center(v-if="tuner.note")
-    .flex-1.text-center.font-bold.text-4xl.transition-all.duration-200(:style="{ color: tuner.note.color }") {{ tuner.note?.name }}{{ tuner.note?.octave }} 
+    .flex-1.text-center.font-bold.text-4xl.transition-all.duration-200.flex.items-center(:style="{ color: tuner.note.color }") 
+      .p-1.w-2em {{ tuner.note?.name }}
+      .p-1.w-1em {{ tuner.note?.octave }} 
+      .p-1.mt-2.w-6em.text-sm {{ tuner.note.cents > 0 ? '+' : '' }}{{ tuner.note.cents }} cents
     .btn(@click="draw.running = !draw.running")
       la-play(v-if="!draw.running")
       la-pause(v-else)
     .btn(@click="clear()")
       la-times
-    control-knob(v-model="draw.speed" :min="4" :max="20" param="speed")
     .flex-1.text-center.font-bold  {{ tuner.bpm.toFixed(1) }} BPM
 
-  .fullscreen-container(ref="roller")
+  .fullscreen-container.rounded-xl.cursor-pointer#screen(
+    v-drag="dragSpeed"
+  )
     control-start.absolute(@click="start()", v-if="!tuner.running") Start rolling 
-    full-screen.absolute.bottom-6.right-6.z-30(:el="roller")
-    canvas.w-full.h-full(    
+    .p-1.absolute.top-1.left-1.flex.items-center
+      la-angle-double-right
+      span {{ draw.speed.toFixed(1) }}
+    full-screen.absolute.bottom-1.right-1.z-30
+    canvas.w-full.h-full.rounded-xl(    
       :width="1920"
       :height="1080"
       ref="roll" )
 </template>
 
 <script setup>
-import { ref, computed, reactive, onMounted, onBeforeUnmount, watch } from 'vue'
 import { pitchColor, rotateArray } from 'chromatone-theory'
+import { clampNum } from '@use/theory'
 import { useTuner } from '@use/tuner.js'
+import { onKeyStroke } from '@vueuse/core'
+
+onKeyStroke(' ', () => {
+  draw.running = !draw.running
+})
+
+onKeyStroke('Enter', () => {
+  clear()
+})
+
+function dragSpeed(drag) {
+  draw.speed = clampNum(draw.speed, drag.delta[0] / 5, 4, 20)
+}
 
 const octaves = [0, 1, 2, 3, 4, 5, 6, 7, 8]
 

@@ -1,59 +1,3 @@
-<template lang="pug">
-.flex.flex-col.items-start.border-2.rounded-xl.w-full.relative(
-  :style="{ borderColor: pitchColor(globalScale.tonic, 2), backgroundColor: pitchColor(globalScale.tonic, 2, 1, 0.05) }"
-)
-  .flex.flex-wrap.items-center.justify-between.p-2(
-    :class="{ 'w-full': true }"
-    ) 
-    button.text-button.text-white.font-bold(
-      :style="{ backgroundColor: chromaColorMix(chroma, globalScale.tonic).hsl }"
-      @mousedown="playChroma(chroma)"
-      @touchstart.prevent.stop="playChroma(chroma)"
-      @touchend="stopChroma(chroma)"
-      @touchcancel="stopChroma(chroma)"
-      @mouseup="stopChroma(chroma)"
-      @mouseleave="stopChroma(chroma)"
-    ) 
-      foundation-sound.-mt-1.mr-1
-      span.mr-2 {{ globalScale.note.name }}{{ state.chord.aliases[0] || ' ' + state.scale.name }}
-    .flex-1
-    button.text-button(
-      :style="{ borderColor: chromaColorMix(chroma, globalScale.tonic).hsl }"
-      v-if="state.chord.name || state.chord.aliases[0]" 
-      @click="arpeggiate()"
-      )  
-        la-play.-mt-1.mr-1
-        span {{ globalScale.note.name }} {{ state.chord.name || state.chord.aliases[0] }} 
-    button.text-button(
-      :style="{ borderColor: chromaColorMix(chroma, globalScale.tonic).hsl }"
-      v-if="state.scale.name"  
-      @click="arpeggiate(true)") 
-      la-play.-mt-1.mr-1
-      span {{ globalScale.note.name }} {{ state.scale.name }} scale
-  .flex.justify-stretch.mb-2.mx-auto.w-full.p-2
-    .chroma-key(
-      @mouseenter="hover(i, bit)"
-      @touchstart="hover(i, bit)"
-      v-for="(bit,i) in chroma.split('')"
-      :key="i"
-      @click="toggleStep(i)"
-      :class="{ active: bit == 1 }"
-      :style="{ backgroundColor: calcBg(i, bit), marginLeft: (i == 1 || i == 3 || i == 5 || i == 7 || i == 8 || i == 10) ? '16px' : '0px' }"
-      ) {{ bit == 1 ? notes[(i + globalScale.tonic) % 12].name : intervals[i] }}
-
-  .flex.flex-wrap.items-center.justify-stretch.w-full.px-2.text-sm
-    .p-2px {{ chroma }}
-    .flex-1
-    .flex.font-bold(title="Intervals")
-      .p-2px(v-for="interval in state.intervals" :key="interval") {{ interval }}
-    .flex-1
-    .flex(title="Steps")
-      span(v-for="(semitone,s) in state.semitones" :key="s") {{ s != 0 ? '-' : '' }}{{ semitone }}
-    .flex-1
-
-    .p-1(title="Pcset number") # {{ state.num }}
-</template>
-
 <script setup>
 import { pitchColor, notes, rotateArray } from 'chromatone-theory'
 import { chromaColorMix } from "@use/colors.js";
@@ -163,10 +107,67 @@ function playNote(note = 0, octave = 0) {
 
 </script>
 
+<template lang="pug">
+.flex.flex-col.items-start.border-2.rounded-xl.w-full.relative.shadow-lg(
+  :style="{ borderColor: pitchColor(globalScale.tonic, 2), backgroundColor: pitchColor(globalScale.tonic, 2, 1, 0.05) }"
+)
+  .flex.flex-wrap.items-center.justify-stretch.w-full.px-2.text-sm
+    .p-2px {{ chroma }}
+    .flex-1
+    .flex.font-bold(title="Intervals")
+      .p-2px(v-for="interval in state.intervals" :key="interval") {{ interval }}
+    .flex-1
+    .flex(title="Steps")
+      span(v-for="(semitone,s) in state.semitones" :key="s") {{ s != 0 ? '-' : '' }}{{ semitone }}
+    .flex-1
+
+    .p-1(title="Pcset number") # {{ state.num }}
+  .flex.flex-wrap.items-center.justify-between.p-2(
+    :class="{ 'w-full': true }"
+    ) 
+    button.text-button.text-white.font-bold(
+      :style="{ backgroundColor: chromaColorMix(chroma, globalScale.tonic).hsl }"
+      @mousedown="playChroma(chroma)"
+      @touchstart.prevent.stop="playChroma(chroma)"
+      @touchend="stopChroma(chroma)"
+      @touchcancel="stopChroma(chroma)"
+      @mouseup="stopChroma(chroma)"
+      @mouseleave="stopChroma(chroma)"
+    ) 
+      foundation-sound.-mt-1.mr-1
+      span.mr-2 {{ globalScale.note.name }}{{ state.chord.aliases[0] || ' ' + state.scale.name }}
+    .flex-1
+    button.text-button(
+      :style="{ borderColor: chromaColorMix(chroma, globalScale.tonic).hsl }"
+      v-if="state.chord.name || state.chord.aliases[0]" 
+      @click="arpeggiate()"
+      )  
+        la-play.-mt-1.mr-1
+        span {{ globalScale.note.name }} {{ state.chord.name || state.chord.aliases[0] }} 
+    button.text-button(
+      :style="{ borderColor: chromaColorMix(chroma, globalScale.tonic).hsl }"
+      v-if="state.scale.name"  
+      @click="arpeggiate(true)") 
+      la-play.-mt-1.mr-1
+      span {{ globalScale.note.name }} {{ state.scale.name }} scale
+  .flex.justify-stretch.mb-2.mx-auto.w-full.p-2
+    .chroma-key(
+      @mouseenter="hover(i, bit)"
+      @touchstart="hover(i, bit)"
+      v-for="(bit,i) in chroma.split('')"
+      :key="i"
+      @click="toggleStep(i)"
+      :class="{ active: bit == 1 }"
+      :style="{ backgroundColor: calcBg(i, bit), marginLeft: (i == 1 || i == 3 || i == 5 || i == 7 || i == 8 || i == 10) ? '16px' : '0px' }"
+      ) {{ bit == 1 ? notes[(i + globalScale.tonic) % 12].name : '' }}
+</template>
+
+
+
 <style  scoped>
 .chroma-key {
-  @apply grid cursor-pointer place-content-center text-xs transition-all duration-300 py-3   hover:(opacity-100) opacity-70  rounded-full;
-  flex: 1 1 8%;
+  @apply cursor-pointer text-xs transition-all duration-300 py-3   hover:(opacity-100) opacity-70  rounded-full flex justify-center px-2;
+  flex: 1 1 12px;
   box-shadow: 0 2px 0px rgba(0, 0, 0, 0.4);
 }
 .chroma-key.active {

@@ -58,7 +58,7 @@ function isInChord(n) {
 function getNoteColor(n) {
   if (isInChord(n % 12)) return pitchColor(n % 12)
   else if (scales.minor.steps[n]) return 'hsla(0,0%,90%,1)'
-  else return 'hsla(0,0%,10%,1)'
+  else return 'hsla(0,0%,40%,1)'
 }
 </script>
 

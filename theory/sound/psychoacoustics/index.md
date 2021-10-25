@@ -2,7 +2,7 @@
 title: Psychoacoustics
 subtitle: The science of percieved sound
 tags: sound
-date: 2021-08-27
+date: 2021-08-29
 cover: theory/hearing.svg
 ---
 

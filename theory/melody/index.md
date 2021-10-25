@@ -36,3 +36,7 @@ Leonard Meyer's **Emotion and Meaning in Music** is the classic text in music ex
 https://en.wikipedia.org/wiki/Generative_theory_of_tonal_music
 
 https://en.wikipedia.org/wiki/Ornament_(music)#Turn
+
+https://en.wikipedia.org/wiki/Melodic_motion
+
+https://en.wikipedia.org/wiki/Modal_frame

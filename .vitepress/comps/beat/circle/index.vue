@@ -12,7 +12,7 @@
       transform="translate(20,50)"
     )
     beat-control-listen(
-      transform="translate(10,910)"
+      transform="translate(10,900)"
     )
     beat-control-tap(
       transform="translate(785,900)"
@@ -20,6 +20,17 @@
     beat-control-transport(
       transform="translate(910,-30)"
     )
+    beat-control-button(
+      @click="overlay = true"
+      transform="translate(10,750)"
+    )
+      healthicons-question
+    beat-control-button(
+      @click="renderMidi()"
+      transform="translate(925,750)"
+    )
+      la-file-download
+
     beat-circle-loop(
       v-for="(loop,i) in loops",
       :key="i"
@@ -35,25 +46,7 @@
     beat-circle-center(
       transform="translate(500,500) scale(0.75)"
     )
-    g.question.cursor-pointer(
-      transform="translate(10,810)"
-      @click="overlay = true"
-    )
-      rect(
-        width="70"
-        height="80"
-        stroke="currentColor"
-        stroke-opacity="0.3"
-        fill="transparent"
-        rx="10"
-        stroke-width="4"
-        )
-      g.icon(
-        font-size="45"
-        fill="currentColor"
-        transform="translate(6,12)"
-      )
-        healthicons-question
+
     beat-circle-overlay.cursor-pointer(
       v-if="overlay"
       @click="overlay = false"
@@ -61,7 +54,7 @@
 </template>
 
 <script setup>
-
+import { renderMidi } from '@use/sequence'
 const loops = useStorage('tempo-circle-loops', [
   {
     over: 8,

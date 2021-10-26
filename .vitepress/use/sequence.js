@@ -1,5 +1,12 @@
 import { tempo } from '@use/tempo.js'
 import { Sequence, PanVol, gainToDb, Draw, Sampler, context, start } from 'tone'
+import MidiWriter from 'midi-writer-js'
+import { Midi } from '@tonejs/midi'
+import { createAndDownloadBlobFile, midiOnce } from './midi'
+
+const tracks = reactive([])
+
+let notes = ['C', 'E', 'G', 'B', 'D', 'F', 'A', 'C#', 'D#', 'F#', 'G#', 'A#']
 
 export function useSequence(
   metre = {
@@ -49,6 +56,13 @@ export function useSequence(
     steps,
     metre.under + 'n',
   ).start(0)
+
+  tracks[order] = reactive({
+    metre: computed(() => metre),
+    steps,
+    mutes,
+    accents,
+  })
 
   watch(
     () => metre.under,
@@ -124,8 +138,10 @@ export function useSequence(
     if (mutes.value[step]) return
     if (accents.value[mainStep] && step.split('-')[1] == '1') {
       synth.triggerAttackRelease(`${metre.sound}1`, '16n', time)
+      // midiOnce(notes[order * 2] + 3, { time: '+' + time })
     } else {
       synth.triggerAttackRelease(`${metre.sound}2`, '16n', time)
+      // midiOnce(notes[order * 2 + 1] + 3, { time: '+' + time })
     }
   }
 
@@ -144,4 +160,42 @@ export function useSequence(
     volume,
     panning,
   }
+}
+
+export function renderMidi() {
+  let render = []
+  tracks.forEach((track, t) => {
+    let midiTrack = new MidiWriter.Track()
+    midiTrack.setTempo(tempo.bpm)
+    midiTrack.addInstrumentName('Clave')
+    midiTrack.addTrackName('Chromatone beat ' + t)
+    track.steps.forEach((step, s) => {
+      step.forEach((code) => {
+        if (track.mutes[s] || track.mutes[code]) return
+        let [beat, sub] = code.split('-').map(Number)
+        let division = 512 / track.metre.under
+        let subdivision = division / step.length
+        let subStep = 0
+        if (step.length > 1) {
+          subStep = sub * subdivision
+        }
+        midiTrack.addEvent(
+          new MidiWriter.NoteEvent({
+            pitch: track.accents[s]
+              ? notes[t * 2] + '2'
+              : notes[t * 2 + 1] + '2',
+            duration: `T${subdivision}`,
+            startTick: division * beat + subStep,
+            repeat: 2,
+            velocity: track.accents[s] || track.accents[code] ? 100 : 64,
+          }),
+        )
+      })
+    })
+    render[t] = midiTrack
+  })
+
+  var write = new MidiWriter.Writer(render)
+  let midiData = new Midi(write.buildFile())
+  createAndDownloadBlobFile(midiData.toArray(), 'Chromatone-beat')
 }

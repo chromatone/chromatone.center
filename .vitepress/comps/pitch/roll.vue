@@ -1,5 +1,5 @@
 <template lang="pug">
-.flex.flex-col.-my-8
+.flex.flex-col.mb-8
   .flex.p-8.items-center(v-if="tuner.note")
     .flex-1.text-center.font-bold.text-4xl.transition-all.duration-200.flex.items-center(:style="{ color: tuner.note.color }") 
       .p-1.w-2em {{ tuner.note?.name }}
@@ -21,6 +21,7 @@
       span {{ draw.speed.toFixed(1) }}
     full-screen.absolute.bottom-1.right-1.z-30
     canvas.w-full.h-full.rounded-xl(    
+      @dblclick="clear()"
       :width="1920"
       :height="1080"
       ref="roll" )
@@ -32,7 +33,8 @@ import { clampNum } from '@use/theory'
 import { useTuner } from '@use/tuner.js'
 import { onKeyStroke } from '@vueuse/core'
 
-onKeyStroke(' ', () => {
+onKeyStroke(' ', (event) => {
+  event.preventDefault()
   draw.running = !draw.running
 })
 
@@ -41,6 +43,9 @@ onKeyStroke('Enter', () => {
 })
 
 function dragSpeed(drag) {
+  if (drag.tap) {
+    draw.running = !draw.running
+  }
   draw.speed = clampNum(draw.speed, drag.delta[0] / 5, 4, 20)
 }
 

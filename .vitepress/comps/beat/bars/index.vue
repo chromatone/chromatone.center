@@ -23,6 +23,9 @@
         v-if="!meters"
       )
         la-plus
+      button.text-button.flex.items-center(@click="renderMidi()")
+        la-file-download.mr-2
+        span.text-sm MIDI export
       .is-group.m-2(v-if="meters && meters.length > 1")
         button.text-button(
           v-for="met in meters"
@@ -43,10 +46,12 @@
         .p-1(v-for="pt in patterns[pattern]?.names" :key="pt") 
           span.font-bold.mx-2 {{ pt.name }}  
           span(v-if="pt.place") ({{ pt.place }})
+
 </template>
 
 <script setup>
 import { clampNum } from '@use/theory'
+import { renderMidi } from '@use/sequence'
 
 const props = defineProps({
   meters: {

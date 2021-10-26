@@ -20,6 +20,7 @@
     "hidpi-canvas": "^1.0.10",
     "matter-js": "^0.17.1",
     "meyda": "^5.2.2",
+    "midi-writer-js": "^2.0.1",
     "paper": "^0.12.15",
     "poly-decomp": "^0.3.0",
     "tone": "^14.8.32",

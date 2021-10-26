@@ -161,20 +161,21 @@ export function midiAttack(note, options) {
   })
 }
 
-export function midiPlay(note) {
+export function midiPlay(note, options) {
   if (!midi.out) return
   WebMidi.outputs.forEach((output) => {
     output.playNote(note, {
       channels: midi.channel,
+      ...options,
     })
   })
 }
 
-export function midiStop(note) {
+export function midiStop(note, options) {
   if (!midi.out) return
   if (note) {
     WebMidi.outputs.forEach((output) => {
-      output.stopNote(note, { channels: midi.channel })
+      output.stopNote(note, { channels: midi.channel, ...options })
     })
   } else {
     WebMidi.outputs.forEach((output) => {
@@ -200,11 +201,11 @@ export function midiRelease(note) {
   }
 }
 
-export function midiOnce(note, time) {
-  if (!midi.out) return
-  midiPlay(note, { time: `+${time}` })
+export function midiOnce(note, options) {
+  if (!midi.out || midi.filter[midi.channel]) return
+  midiPlay(note, options)
   setTimeout(() => {
-    midiStop(note, { time: `+${time + 10}` })
+    midiStop(note, options)
   }, 300)
 }
 
@@ -224,4 +225,25 @@ export function stopAll() {
     output.turnSoundOff({ time: '+1' })
     output.sendReset()
   })
+}
+
+export function createAndDownloadBlobFile(body, filename, extension = 'mid') {
+  const blob = new Blob([body])
+  const fileName = `${filename}.${extension}`
+  if (navigator.msSaveBlob) {
+    // IE 10+
+    navigator.msSaveBlob(blob, fileName)
+  } else {
+    const link = document.createElement('a')
+    // Browsers that support HTML5 download attribute
+    if (link.download !== undefined) {
+      const url = URL.createObjectURL(blob)
+      link.setAttribute('href', url)
+      link.setAttribute('download', fileName)
+      link.style.visibility = 'hidden'
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
+    }
+  }
 }

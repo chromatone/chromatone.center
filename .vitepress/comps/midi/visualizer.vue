@@ -18,7 +18,7 @@
         @click="map.hiddenTracks[t] = !map.hiddenTracks[t]"
         :class="{ active: !map.hiddenTracks[t] }"
         ) {{ track.channel }}: {{ track.name }} {{ track.instrument.family }}
-  svg#visual(
+  svg#visual.max-h-90-vh(
     version="1.1",
     baseProfile="full",
     :viewBox="`0 0 ${map.width} ${map.height}`",
@@ -41,6 +41,7 @@
 import { Midi } from '@tonejs/midi'
 import { pitchColor } from 'chromatone-theory'
 import { now, PolySynth, Synth, Transport } from 'tone'
+import { createAndDownloadBlobFile } from '@use/midi'
 
 let midiData
 
@@ -122,26 +123,7 @@ function play() {
   }
 }
 
-function createAndDownloadBlobFile(body, filename, extension = 'mid') {
-  const blob = new Blob([body]);
-  const fileName = `${filename}.${extension}`;
-  if (navigator.msSaveBlob) {
-    // IE 10+
-    navigator.msSaveBlob(blob, fileName);
-  } else {
-    const link = document.createElement('a');
-    // Browsers that support HTML5 download attribute
-    if (link.download !== undefined) {
-      const url = URL.createObjectURL(blob);
-      link.setAttribute('href', url);
-      link.setAttribute('download', fileName);
-      link.style.visibility = 'hidden';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }
-  }
-}
+
 
 
 </script>

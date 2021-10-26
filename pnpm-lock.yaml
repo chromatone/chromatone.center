@@ -18,6 +18,7 @@ specifiers:
   markdown-it-external-links: ^0.0.6
   matter-js: ^0.17.1
   meyda: ^5.2.2
+  midi-writer-js: ^2.0.1
   paper: ^0.12.15
   patch-vue-directive-ssr: ^0.0.1
   poly-decomp: ^0.3.0
@@ -50,6 +51,7 @@ dependencies:
   hidpi-canvas: 1.0.10
   matter-js: 0.17.1
   meyda: 5.2.2
+  midi-writer-js: 2.0.1
   paper: 0.12.15
   poly-decomp: 0.3.0
   tone: 14.8.32
@@ -3075,6 +3077,13 @@ packages:
     resolution: {integrity: sha512-VQNzirfADDFXTymgPJv2VfLylCq14spRNFhpA6u7dLqPMbw1BqGf5u9B0k7z++8X1RMs57pyn+G4kzhyIatlyw==}
     dev: false
 
+  /midi-writer-js/2.0.1:
+    resolution: {integrity: sha512-wVoE/o5Lyw2VQaUdnJQtqVhpEy9DlhlYQ/OkSCtJEhwodKXIXk/wfYQmjrVkW3abdZJqafnvPfSM50SvmSbltw==}
+    requiresBuild: true
+    dependencies:
+      tonal-midi: 0.69.7
+    dev: false
+
   /mimic-fn/2.1.0:
     resolution: {integrity: sha512-OqbOk5oEQeAZ8WXWydlu9HJjz9WVdEIvamMCcXmuqUYjTknH/sqsWvhQ3vgwKFRR1HpjvNBKQ37nbJgYzGqGcg==}
     engines: {node: '>=6'}
@@ -3133,6 +3142,10 @@ packages:
     resolution: {integrity: sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==}
     engines: {node: '>=0.10.0'}
     dev: true
+
+  /note-parser/2.0.1:
+    resolution: {integrity: sha1-JDj9V6RolLQCs6IHF5hmASnI+8E=}
+    dev: false
 
   /npm-run-path/4.0.1:
     resolution: {integrity: sha512-S48WzZW777zhNIrn7gxOlISNAqi9ZC/uQFnRdbeIHhZhCA6UqpkOT8T1G7BvfdgP4Er8gF4sUbaS0i7QvIfCWw==}
@@ -3712,6 +3725,12 @@ packages:
   /token-stream/1.0.0:
     resolution: {integrity: sha1-zCAOqyYT9BZtJ/+a/HylbUnfbrQ=}
     dev: true
+
+  /tonal-midi/0.69.7:
+    resolution: {integrity: sha1-51Tsk/Pb2yim051CRXwzrSRf+kc=}
+    dependencies:
+      note-parser: 2.0.1
+    dev: false
 
   /tone/14.8.32:
     resolution: {integrity: sha512-bt75xPc6RINdtsWvJTzBALi47XIzzz0hcmIoLXKimiN+1oz1jXxB4na8mKIWlynYIT64J6Xr/gVITRrUgkN+Gg==}

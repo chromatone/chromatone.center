@@ -7,6 +7,24 @@ progressions:
   major:
     title: Major
     degrees: Imaj7-IIm7-IIIm7-IVmaj7-V7-VIm7-VIIm7b5
+  dorian:
+    title: Dorian
+    degrees: Im7-IIm7-bIIImaj7-IV7-Vm7-VIm7b5-bVIImaj7
+  phrygian:
+    title: Phrygian
+    degrees: Im7-bIImaj7-bIII7-IVm7-Vm7b5-bVImaj7-bVIIm7
+  lydian:
+    title: Lydian
+    degrees: Imaj7-II7-IIIm7-#IVm7b5-Vmaj7-VIm7-VIIm7
+  myxolydian:
+    title: Mixolydian
+    degrees: I7-IIm7-IIIm7b5-IVmaj7-Vm7-VIm7-bVIImaj7
+  aeolian:
+    title: Minor
+    degrees: Im7-IIm7b5-bIIImaj7-IVm7-Vm7-bVImaj7-bVII7
+  locrian:
+    title: Locrian
+    degrees: Im7b5-bIImaj7-bIIIm7-IVm7-bVmaj7-bVI7-bVIIm7
   natural:
     title: Natural minor
     degrees: Im7-IIm7b5-IIImaj7-IVm7-Vm7-VImaj7-VII7
@@ -42,11 +60,6 @@ The degrees of the traditional major and minor scales may be identified several 
   
   
 These names are derived from a scheme where the tonic note is the 'centre'. Then the supertonic and subtonic are, respectively, a second above and below the tonic; the mediant and submediant are a third above and below it; and the dominant and subdominant are a fifth above and below the tonic.
-
-
-
-
-
 
 
 <chord-progressions  class="mt-16" :list="$frontmatter.progressions" />

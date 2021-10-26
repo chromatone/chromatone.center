@@ -1,7 +1,5 @@
 import { tempo } from '@use/tempo.js'
 import { Sequence, PanVol, gainToDb, Draw, Sampler, context, start } from 'tone'
-import MidiWriter from 'midi-writer-js'
-import { Midi } from '@tonejs/midi'
 import { createAndDownloadBlobFile, midiOnce } from './midi'
 
 const tracks = reactive([])
@@ -162,10 +160,13 @@ export function useSequence(
   }
 }
 
+import { Writer, Track, NoteEvent } from 'midi-writer-js'
+import { Midi } from '@tonejs/midi'
+
 export function renderMidi() {
   let render = []
   tracks.forEach((track, t) => {
-    let midiTrack = new MidiWriter.Track()
+    let midiTrack = new Track()
     midiTrack.setTempo(tempo.bpm)
     midiTrack.addInstrumentName('Clave')
     midiTrack.addTrackName('Chromatone beat ' + t)
@@ -180,7 +181,7 @@ export function renderMidi() {
           subStep = sub * subdivision
         }
         midiTrack.addEvent(
-          new MidiWriter.NoteEvent({
+          new NoteEvent({
             pitch: track.accents[s]
               ? notes[t * 2] + '2'
               : notes[t * 2 + 1] + '2',
@@ -195,7 +196,7 @@ export function renderMidi() {
     render[t] = midiTrack
   })
 
-  var write = new MidiWriter.Writer(render)
+  var write = new Writer(render)
   let midiData = new Midi(write.buildFile())
   createAndDownloadBlobFile(midiData.toArray(), 'Chromatone-beat')
 }

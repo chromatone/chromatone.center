@@ -38,8 +38,8 @@
       @click="state.selected = name"
       :class="{ active: progression == state.current }"
     ) 
-      .font-bold.px-1.mb-1 {{ progression.degrees }}
-      .text-sm {{ progression.title }} 
+      .font-bold.px-1.mb-1 {{ progression.title }}
+      .text-sm {{ progression.degrees }} 
 </template>
 
 <script setup>

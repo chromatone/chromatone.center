@@ -10,14 +10,14 @@ urls:
 afro:
   meters: [16/16]
   patterns: 
-    '1011':
+    'X.xx':
       meter: 8/8
       names:
         - name: Cumbia
           place: Columbia
         - name: Calypso
           place: Trinidad
-    '10010010': 
+    'X..x..x.': 
       meter: 8/16
       names:
         - name: Tresillo
@@ -26,14 +26,14 @@ afro:
           place: 
         - name: Al-thakil al-thani
           place: Thirteenth-century Baghdad
-    '10011010':
+    'X..xx.x.':
       meter: 8/16
       names:
         - name: Habanera
           place: Cuba
         - name: Tumba francesa
           place: Senegal
-    '10110110':  
+    'X.xx.xx.':  
       meter: 8/16 
       names:
         - name: Cinquillo
@@ -44,78 +44,78 @@ afro:
           place: Malinke people, Guinea
         - name: Banda
           place: Haiti
-    '10011110':
+    'X..xxxx.':
       meter: 8/16
       names:
         - name: Bomba
           place: Puerto Rico
-    '1000101000101000':
+    'X...x.x...x.x...':
       names:
         - name: Shiko
           place: Nigeria
-    '1001001000101000':   
+    'X..x..x...x.x...':   
       names:
         - name: Clave son
           place: Cuba
         - name: Kpanlogo
           place: Ghana
-    '1001000100101000':   
+    'X..x...x..x.x...':   
       names:
         - name: Clave rumba
           place: Cuba
         - name: Guaguancó
           place: Cuba
-    '1001001000100100':   
+    'X..x..x...x..x..':   
       names:
         - name: Bossanova
           place: Brasil
-    '1001001000110000':
+    'X..x..x...xx....':
       names:
         - name: Soukous
           place: Central Africa
-    '1001001000100010':
+    'X..x..x...x...x.':
       names:
         - name: Gahu
           place: Ghana
-    '1001001100101001':   
+    'X..x..xx..x.x..x':   
       names:
         - name: Standard bell pattern
           place: USA
         - name: Bembe 4/4
           place: Africa
-    '1101011010101010':    
+    'Xx.x.xx.x.x.x.x.':    
       names:
         - name: Afoxe
           place: 
         - name: Kassa
           place: Guinea 
-    '1001100110110010':   
+    'X..xx..xx.xx..x.':   
       names:
         - name: Batucada
-          place: 
-    '1101101010101010':  
+          place: Brasil
+    'Xx.xx.x.x.x.x.x.':  
       names:
         - name: Maracatu
-          place: 
-    '1011011010101010':
+          place: Brasil
+    'X.xx.xx.x.x.x.x.':
       names:
         - name: Baqueteo
-          place: 
-    '101010010110':
+          place: Cuba
+    'X.x.x..x.xx.':
       names:
         - name: Adowa
           place: Ashanti people, Ghana
-    '101010010100':   
+    'X.x.x..x.x..':   
       names:
         - name: Son clave 6/8
           place: Cuba
-    '101001010100': 
+    'X.x..x.x.x..': 
       names:
         - name: Fume-fume
           place: Ghana
         - name: Rumba clave 6/8
           place: Cuba
-    '101011010101':  
+    'X.x.xx.x.x.x':  
       names:
         - name: Bembe
           place: Cuba
@@ -133,11 +133,11 @@ afro:
           place: Guinea
         - name: Signature tune, standard pattern
           place: Africa
-    '101101101010':
+    'X.xx.xx.x.x.':
       names:
         - name: Tonada
           place: Africa
-    '111010101010':
+    'Xxx.x.x.x.x.':
       names:
         - name: Sorsonet
           place: Africa

@@ -2,6 +2,8 @@
 .flex.flex-col.items-center.w-full.p-4.has-bg.rounded-xl#screen.relative
   client-only 
     state-transport(v-if="!secondary")
+      button.text-button.flex.items-center(@click="renderMidi()")
+        la-file-download
     full-screen.absolute.bottom-1.right-1
     beat-bars-bar.my-1.rounded-xl.shadow-lg(
       v-for="(loop,i) in loops",
@@ -23,9 +25,6 @@
         v-if="!meters"
       )
         la-plus
-      button.text-button.flex.items-center(@click="renderMidi()")
-        la-file-download.mr-2
-        span.text-sm MIDI export
       .is-group.m-2(v-if="meters && meters.length > 1")
         button.text-button(
           v-for="met in meters"
@@ -40,7 +39,7 @@
       .flex.flex
         .flex-1.p-1.border-1.border-current.rounded-lg.m-1.opacity-50(
           v-for="(accent,a) in pattern" :key="a"
-          :style="{ backgroundColor: accent == 1 ? 'currentColor' : 'transparent' }"
+          :style="{ opacity: accent == 'X' ? 1 : 0.5, backgroundColor: accent == '1' || accent == 'X' || accent == 'x' ? 'currentColor' : 'transparent' }"
         )
       .flex.flex-wrap.justify-center
         .p-1(v-for="pt in patterns[pattern]?.names" :key="pt") 
@@ -109,9 +108,12 @@ if (props.meters) {
   }]
 }
 
-if (props.patterns) {
-  pattern.value = Object.keys(props.patterns)[0]
-}
+watchEffect(() => {
+  if (props.patterns) {
+    pattern.value = Object.keys(props.patterns)[0]
+  }
+})
+
 
 const maxRatio = computed(() => {
   let max = 0

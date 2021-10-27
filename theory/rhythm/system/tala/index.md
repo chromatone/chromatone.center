@@ -6,38 +6,38 @@ date: 2021-10-19
 tala: 
   meters: [4/4]
   patterns: 
-    '1000':
-      meter: 8/8
+    'Xxxx':
+      meter: 8/4
       names:
         - name: Eka
-    '101000':
-      meter: 8/8
+    'XxXxxx':
+      meter: 8/4
       names:
         - name: Rupaka
         - name: Chaturasra-nadai Chaturasra-jaati Rupaka tala
-    '1001010':
-      meter: 8/8
+    'XxxXxXx':
+      meter: 8/4
       names:
         - name: Triputa
-    '1000000110':
-      meter: 8/8  
+    'XxxxxxxXXx':
+      meter: 8/4  
       names:
         - name: Jhampa
-    '10001010001000':
-      meter: 8/8
+    'XxxxXxXxxxXxxx':
+      meter: 8/4
       names:
         - name: Dhruva
-    '1000101000':
-      meter: 8/8
+    'XxxxXxXxxx':
+      meter: 8/4
       names:
         - name: Matya
-    '10000100001010':
-      meter: 8/8
+    'XxxxxXxxxxXxXx':
+      meter: 8/4
       names:
         - name: Atta
         - name: Chatusra-nadai Khanda-jati Ata tala
-    '10001010':
-      meter: 8/8
+    'XxxxXxXx':
+      meter: 8/4
       names:
         - name: Adi tala
         - name: Chaturasra-nadai Chaturasra-jaati Triputa tala

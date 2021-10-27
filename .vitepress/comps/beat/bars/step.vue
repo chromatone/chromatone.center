@@ -138,7 +138,7 @@ g.cursor-pointer(
       )
       rect.transition-fill.duration-100(
         :width="proportion * width / subdivisions.length"
-        height="50"
+        height="80"
         y="100"
         rx="10"
         :x="s * proportion * width / subdivisions.length"

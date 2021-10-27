@@ -9,29 +9,29 @@ urls:
 flamenco:
   meters: [16/16]
   patterns: 
-    '100100100100': 
+    'X..x..x..x..': 
       names:
         - name: Fandango
-    '100100101010': 
+    'X..x..x.x.x.': 
       names:
         - name: Guajira
-    '101010010010': 
+    'X.x.x..x..x.': 
       names:
         - name: Seguiriya
-    '001000110101': 
+    '..x...xx.x.X': 
       names:
         - name: Bulería
-    '001001010101': 
+    '..x..x.x.x.X': 
       names:
         - name: Soleá
-    '100101100100': 
+    'X..x.xx..x..': 
       names:
         - name: Tientos
-    '010101': 
+    '.x.x.x': 
       meter: 8/12
       names:
         - name: Buleria on 6 (A)
-    '001001': 
+    '..x..x': 
       meter: 8/12
       names:
         - name: Buleria on 6 (B)

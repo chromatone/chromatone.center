@@ -5,7 +5,7 @@ tags: meter
 date: 2021-10-12
 simple: 
   meters: [2/2,2/4,4/4,4/8]
-  accent: '10101010101010101010'
+  accent: 'XxXxXxXxXxXxXxXxXx'
 ---
 
 <beat-bars v-bind="$frontmatter.simple" />

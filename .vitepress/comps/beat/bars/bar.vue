@@ -68,12 +68,12 @@ function dragVol(drag) {
 
 watch(() => props.accent, accent => {
   if (accent) {
-    accent.split('').forEach((mute, m) => {
-      mutes.value[m] = mute == 0
-      accents.value[m] = mute == 1
+    accent.split('').forEach((sign, m) => {
+      mutes.value[m] = (sign == 0 || sign == '.')
+      accents.value[m] = (sign == 2 || sign == 'X')
     })
   }
-});
+}, { immediate: true });
 
 </script>
 

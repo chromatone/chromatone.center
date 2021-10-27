@@ -44,7 +44,7 @@ cover: theory/notation/kvintcirklen.png
 
 A A# B C C# D D# E F F# G G# A
 
-<abc-render responsive :abc="'A,^A,B,C^CD^DEF^FG^FA'" />
+<abc-render responsive :abc="'A,^A,B,C^CD^DEF^FG^GA'" />
 
 ### Descending
 
@@ -59,10 +59,22 @@ A Ab G Gb F E Eb D Db C B Bb A
 
 Whole note = 2 half notes = 4 quarter notes = 8 eighth notes = 16 sixteenth notes
 
-<abc-render responsive :abc="`M:4/4\n|G8|G4G4|G2G2G2G2|GGGGGGGG|G/G/G/G/G/G/G/G/|`" />
+<abc-render responsive :abc="`M:4/4\n|G8|G4A4|G2A2B2c2|GDGDGDGD|G/D/G/D/G/D/G/D/G/D/G/D/G/D/G/D/|`" />
 
-## Rests
-<abc-render responsive :abc="`M:4/4\n|z8|z4z4|z2z2z2z2|zzzzzzzz|z/z/z/z/z/z/z/z/|`" />
+### Dotted notes
+
+<abc-render responsive :abc="`M:4/4\n|(G12|G4)|G5G2|G3GG3G|G3/2G/2G3/2G/2G3/2G/2G3/2G/2|`" />
+
+### Triplets
+
+<abc-render responsive :abc="`M:4/4\n|(3G4A4B4|(3G2A2B2 (3G2A2B2| (3GAB (3GAB (3GAB (3GAB|`" />
+
+### Other tuplets
+
+<abc-render responsive :abc="`M:4/4\n|(5G2A2B2c2d2|(7CDEFGAB|`" />
+
+### Rests
+<abc-render responsive :abc="`M:4/4\n|z8|z4z4|z2z2z2z2|zzzzzzzz|z/z/z/z/z/z/z/z/z/z/z/z/z/z/z/z/|`" />
 
 
 ![](./note-values-and-rests.png)
@@ -71,7 +83,7 @@ Whole note = 2 half notes = 4 quarter notes = 8 eighth notes = 16 sixteenth note
 
 >![](/media/theory/notation/Bachlut1.png)
 > J.S.Bach Prelude
-> 
+
 ## String technique instructions
 
 <youtube-embed video="ux3Z3yAK-UE" />

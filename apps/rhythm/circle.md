@@ -30,3 +30,5 @@ It's the center for deep exploration of any kind of rhythmic patterns. We have t
 14. If you see a square icon <la-expand /> at the bottom left corner, you are able to open the circle metronome to the full screen. What an immense experience!
 15. Once you build some interesting patterns you can export them as a MIDI file to use in any DAW or other MIDI-compatible tool. Just press the <la-file-download /> button at the right bottom corner and choose a place to save it to your system. Then you can drag and drop it to your DAW timeline, choose intrument for the tracks and transpose the notes to desired notes.
 16. Explore our [rhythm theory section](/theory/rhythm/) for inspiration about what to dial into the loops. This app can act as a simple visual and audial cue for your music practice or become a tool to explore the enormous space of possible rhythmic combinations. Polyrhythms have never been so easy to see and internalise. The colors and the form of the metronome can help sticking to the tempo even in silence. Be creative and feel the power of this rhythm visualisation tool.
+
+<youtube-embed video="2UphAzryVpY" />

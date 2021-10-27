@@ -46,7 +46,7 @@
 <script setup>
 import { notes, pitchColor } from 'chromatone-theory'
 import { Scale, ScaleType, Midi, Note } from '@tonaljs/tonal'
-import { useStorage, useRafFn, onKeyStroke } from '@vueuse/core'
+import { useRafFn, onKeyStroke } from '@vueuse/core'
 import { globalScale, scaleList } from '@use/theory.js'
 import { Pattern, start, Transport, Draw } from 'tone'
 import { synthOnce } from '@use/synth.js'

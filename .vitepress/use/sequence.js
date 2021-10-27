@@ -166,15 +166,16 @@ import { Midi } from '@tonejs/midi'
 export function renderMidi() {
   let render = []
   tracks.forEach((track, t) => {
+    let division = 512 / track.metre.under
     let midiTrack = new Track()
     midiTrack.setTempo(tempo.bpm)
-    midiTrack.addInstrumentName('Clave')
+    midiTrack.addInstrumentName('116')
     midiTrack.addTrackName('Chromatone beat ' + t)
+    midiTrack.setTimeSignature(4, 4)
     track.steps.forEach((step, s) => {
       step.forEach((code) => {
         if (track.mutes[s] || track.mutes[code]) return
         let [beat, sub] = code.split('-').map(Number)
-        let division = 512 / track.metre.under
         let subdivision = division / step.length
         let subStep = 0
         if (step.length > 1) {
@@ -187,16 +188,27 @@ export function renderMidi() {
               : notes[t * 2 + 1] + '2',
             duration: `T${subdivision}`,
             startTick: division * beat + subStep,
-            repeat: 2,
             velocity: track.accents[s] || track.accents[code] ? 100 : 64,
           }),
         )
       })
     })
+    // midiTrack.addEvent(
+    //   new NoteEvent({
+    //     pitch: 0,
+    //     duration: `T1`,
+    //     startTick: division * (track.steps.length - 1),
+    //     velocity: 1,
+    //   })
+    // )
     render[t] = midiTrack
   })
 
   var write = new Writer(render)
   let midiData = new Midi(write.buildFile())
+  midiData.tracks.forEach((track, t) => {
+    midiData.tracks[t].instrument.number = 119
+  })
+  console.log(midiData.tracks)
   createAndDownloadBlobFile(midiData.toArray(), 'Chromatone-beat')
 }

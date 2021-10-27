@@ -53,13 +53,13 @@ afro:
       names:
         - name: Shiko
           place: Nigeria
-    'X..x..x...x.x...':   
+    'X..X..X...x.x...':   
       names:
         - name: Clave son
           place: Cuba
         - name: Kpanlogo
           place: Ghana
-    'X..x...x..x.x...':   
+    'X..X...X..x.x...':   
       names:
         - name: Clave rumba
           place: Cuba
@@ -73,7 +73,7 @@ afro:
       names:
         - name: Soukous
           place: Central Africa
-    'X..x..x...x...x.':
+    'X..x..x...X...x.':
       names:
         - name: Gahu
           place: Ghana
@@ -83,24 +83,52 @@ afro:
           place: USA
         - name: Bembe 4/4
           place: Africa
-    'Xx.x.xx.x.x.x.x.':    
-      names:
-        - name: Afoxe
-          place: 
-        - name: Kassa
-          place: Guinea 
-    'X..xx..xx.xx..x.':   
-      names:
-        - name: Batucada
-          place: Brasil
-    'Xx.xx.x.x.x.x.x.':  
-      names:
-        - name: Maracatu
-          place: Brasil
     'X.xx.xx.x.x.x.x.':
       names:
         - name: Baqueteo
           place: Cuba
+    'Xx.x.xx.X.x.x.x.':    
+      names:
+        - name: Afoxe/Ijexa
+          place: Brasil
+        - name: Kassa
+          place: Guinea 
+    'X..xx..XX.xx..X.':   
+      names:
+        - name: Batucada
+          place: Brasil
+    'xX.Xx.X.x.X.x.X.':  
+      names:
+        - name: Maracatu
+          place: Brasil
+    'XX.x.xx.X.X.x.x.':
+      names:
+        - name: Maculelê 
+          place: Brasil
+    'X.X.xx.X.X.Xx.x.':
+      names:
+        - name: Samba 1
+          place: Brasil
+    'X.xxx.XXX.x.xxX.':
+      names:
+        - name: Samba 2
+          place: Brasil
+    'x.x.XX.xxx.XXX.X':
+      names:
+        - name: Samba 3
+          place: Brasil
+    'x.XXX.xx.X.XX.x.':
+      names:
+        - name: Samba 4
+          place: Brasil
+    'x.X..x.x.X..x.x.':
+      names:
+        - name: Samba 5
+          place: Brasil
+    'x.XXXX.xxx.XX.x.':
+      names:
+        - name: Samba 6
+          place: Brasil
     'X.x.x..x.xx.':
       names:
         - name: Adowa
@@ -373,6 +401,8 @@ According to drummer Bobby Sanabria the Brazilian composer Antonio Carlos Jobim,
 
 #### Other Brazilian examples
 
+
+
 The examples below are transcriptions of several patterns resembling the Cuban clave that is found in various styles of Brazilian music, on the ago-gô and surdo instruments.
 
 Legend: Time signature: 2/4; L=low bell, H=high bell, O = open surdo hit, X = muffled surdo hit, and | divides the measure:
@@ -392,6 +422,8 @@ For 3rd example above, the clave pattern is based on a common accompaniment patt
     C|B C . C B . C .|B . C . B C . C||
 
 The singer enters on the wrong side of the clave and the ago-gô player adjusts accordingly. This recording cuts off the first bar so that it sounds like the bell comes in on the third beat of the second bar. This is suggestive of a pre-determined rhythmic relationship between the vocal part and the percussion and supports the idea of a clave-like structure in Brazilian music.
+
+<youtube-embed video="DhOLGoBCDjw" />
 
 ### In Jamaican and French Caribbean music
 

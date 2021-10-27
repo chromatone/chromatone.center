@@ -57,52 +57,52 @@ These terms have also been used inconsistently through time and in different geo
 
 From slowest to fastest:
 
-- Larghissimo – very, very slow (24 BPM and under)
-- Adagissimo – very slow (24-40 BPM)
-- Grave – very slow (25–45 BPM)
-- Largo – slow and broad (40–60 BPM)
-- Lento – slow (45–60 BPM)
-- Larghetto – rather slow and broad (60–66 BPM)
-- Adagio – slow with great expression (66–76 BPM)
-- Adagietto – slower than andante (72–76 BPM) or slightly faster than adagio (70–80 BPM)
-- Andante – at a walking pace (76–108 BPM)
-- Andantino – slightly faster than andante (although, in some cases, it can be taken to mean slightly slower than andante) (80–108 BPM)
-- Marcia moderato – moderately, in the manner of a march (83–85 BPM)
-- Moderato – at a moderate speed (108–120 BPM)
-- Andante moderato – between andante and moderato (thus the name) (92–112 BPM)
-- Allegretto – by the mid-19th century, moderately fast (112–120 BPM); see paragraph above for earlier usage
-- Allegro moderato – close to, but not quite allegro (116–120 BPM)
-- Allegro – fast, quick, and bright (120–156 BPM) (molto allegro is slightly faster than allegro, but always in its range; 124-156 BPM)
-- Vivace – lively and fast (156–176 BPM)
-- Vivacissimo – very fast and lively (172–176 BPM)
-- Allegrissimo or Allegro vivace – very fast (172–176 BPM)
-- Presto – very, very fast (168–200 BPM)
-- Prestissimo – even faster than presto (200 BPM and over)
+- **Larghissimo** – very, very slow (24 BPM and under)
+- **Adagissimo** – very slow (24-40 BPM)
+- **Grave** – very slow (25–45 BPM)
+- **Largo** – slow and broad (40–60 BPM)
+- **Lento** – slow (45–60 BPM)
+- **Larghetto** – rather slow and broad (60–66 BPM)
+- **Adagio** – slow with great expression (66–76 BPM)
+- **Adagietto** – slower than andante (72–76 BPM) or slightly faster than adagio (70–80 BPM)
+- **Andante** – at a walking pace (76–108 BPM)
+- **Andantino** – slightly faster than andante (although, in some cases, it can be taken to mean slightly slower than andante) (80–108 BPM)
+- **Marcia moderato** – moderately, in the manner of a march (83–85 BPM)
+- **Moderato** – at a moderate speed (108–120 BPM)
+- **Andante moderato** – between andante and moderato (thus the name) (92–112 BPM)
+- **Allegretto** – by the mid-19th century, moderately fast (112–120 BPM); see paragraph above for earlier usage
+- **Allegro moderato** – close to, but not quite allegro (116–120 BPM)
+- **Allegro** – fast, quick, and bright (120–156 BPM) (molto allegro is slightly faster than allegro, but always in its range; 124-156 BPM)
+- **Vivace** – lively and fast (156–176 BPM)
+- **Vivacissimo** – very fast and lively (172–176 BPM)
+- **Allegrissimo** or Allegro vivace – very fast (172–176 BPM)
+- **Presto** – very, very fast (168–200 BPM)
+- **Prestissimo** – even faster than presto (200 BPM and over)
 
 Additional terms
 
-- A piacere – the performer may use their own discretion with regard to tempo and rhythm; literally "at pleasure"
-- Assai – (very) much
-- A tempo – resume previous tempo
-- Con grazia – with grace, or gracefully
-- Con moto – Italian for "with movement"; can be combined with a tempo indication, e.g., Andante con moto
-- Lamentoso – sadly, plaintively
-- L'istesso, L'istesso tempo, or Lo stesso tempo – at the same speed; L'istesso is used when the actual speed of the music has not changed, despite apparent signals to the contrary, such as changes in time signature or note length (half notes in 4
+- **A piacere** – the performer may use their own discretion with regard to tempo and rhythm; literally "at pleasure"
+- **Assai** – (very) much
+- **A tempo** – resume previous tempo
+- **Con grazia** – with grace, or gracefully
+- **Con moto** – Italian for "with movement"; can be combined with a tempo indication, e.g., Andante con moto
+- **Lamentoso** – sadly, plaintively
+- **L'istesso**, L'istesso tempo, or Lo stesso tempo – at the same speed; L'istesso is used when the actual speed of the music has not changed, despite apparent signals to the contrary, such as changes in time signature or note length (half notes in 4
 - 4 could change to whole notes in 2
 - 2, and they would all have the same duration)
-- Ma non tanto – but not so much; used in the same way and has the same effect as Ma non troppo (see immediately below) but to a lesser degree
-- Ma non troppo – but not too much; used to modify a basic tempo to indicate that the basic tempo should be reined in to a degree; for example, Adagio ma non troppo to mean ″Slow, but not too much″, Allegro ma non troppo to mean ″Fast, but not too much″
-- Maestoso – majestically, stately
-- Molto – very
-- meno - Less
-- Più - more
-- Poco – a little
-- Subito – suddenly
-- Tempo comodo – at a comfortable speed
-- Tempo di... – the speed of a ... (such as Tempo di valzer (speed of a waltz, dotted quarter note. ≈ 60 BPM or quarter note≈ 126 BPM), Tempo di marcia (speed of a march, quarter note ≈ 120 BPM))
-- Tempo giusto – at a consistent speed, at the 'right' speed, in strict tempo
-- Tempo primo – resume the original (first) tempo
-- Tempo semplice – simple, regular speed, plainly
+- **Ma non tanto** – but not so much; used in the same way and has the same effect as Ma non troppo (see immediately below) but to a lesser degree
+- **Ma non troppo** – but not too much; used to modify a basic tempo to indicate that the basic tempo should be reined in to a degree; for example, Adagio ma non troppo to mean ″Slow, but not too much″, Allegro ma non troppo to mean ″Fast, but not too much″
+- **Maestoso** – majestically, stately
+- **Molto** – very
+- **meno** - Less
+- **Più** - more
+- **Poco** – a little
+- **Subito** – suddenly
+- **Tempo comodo** – at a comfortable speed
+- **Tempo di...** – the speed of a ... (such as Tempo di valzer (speed of a waltz, dotted quarter note. ≈ 60 BPM or quarter note≈ 126 BPM), Tempo di marcia (speed of a march, quarter note ≈ 120 BPM))
+- **Tempo giusto** – at a consistent speed, at the 'right' speed, in strict tempo
+- **Tempo primo** – resume the original (first) tempo
+- **Tempo semplice** – simple, regular speed, plainly
 
 ### English tempo markings
 
@@ -116,19 +116,19 @@ Humourist Tom Lehrer uses facetious English tempo markings in his anthology Too 
 
 Typical tempo ranges for most common elecytonic music genres:
 
-- Dub: 60-90 BPM
-- Hip-hop: 60-100 BPM
-- Triphop/Downtempo: 90-110 BPM
-- House: 115-130 BPM
-- UK garage/2-step: 130-135 BPM
-- Grime: 140 BPM
-- Techno/Trance: 120-140 BPM
-- Acid Techno: 135-150
-- Schranz: 150
-- Dubstep: 135-145 BPM (70-75 BPM in half-time)
-- Hardstyle: 150 BPM
-- Juke/Footwork: 160 BPM
-- Drum and bass: 160-180 BPM
+- **Dub:** 60-90 BPM
+- **Hip-hop:** 60-100 BPM
+- **Triphop/Downtempo:** 90-110 BPM
+- **House:** 115-130 BPM
+- **UK garage/2-step:** 130-135 BPM
+- **Grime:** 140 BPM
+- **Techno/Trance:** 120-140 BPM
+- **Acid Techno:** 135-150
+- **Schranz:** 150
+- **Dubstep:** 135-145 BPM (70-75 BPM in half-time)
+- **Hardstyle:** 150 BPM
+- **Juke/Footwork:** 160 BPM
+- **Drum and bass:** 160-180 BPM
 
 ### Extreme tempo
 

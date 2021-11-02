@@ -1,9 +1,9 @@
 ---
-title: MIDI-monitor
+title: MIDI monitor
 subtitle: See everything that's happening on your MIDI-bus right in the browser
 tags: midi
 cover: apps/monitor.png
-date: 2021-04-10
+date: 2021-09-10
 ---
 
 <client-only>

@@ -27,6 +27,10 @@ const props = defineProps({
   fixed: {
     type: Number,
     default: 0,
+  },
+  ratio: {
+    type: Number,
+    default: 1
   }
 });
 
@@ -44,7 +48,7 @@ const state = reactive({
 function handler(event) {
   const { delta: [x, y], dragging, shiftKey } = event
   state.active = dragging
-  let diff = 1
+  let diff = props.ratio
   state.internal -= y / diff
   state.internal += x / diff
   if (state.internal > 100) state.internal = 100
@@ -106,23 +110,22 @@ function mapNumber(
     :style="{ width: state.internal + '%' }"
   )
   .flex.items-center
-    .pl-1(@click="change(-1)")
+    .pl-1.absolute(@mousedown="change(-1)")
       la-minus
     .px-1.flex-1.text-center(@dblclick="reset()" )
       slot
         .text-lg.font-bold {{ modelValue.toFixed(fixed) }}{{ unit }}
-    .pr-1(@click="change(1)")
+    .pr-1.absolute.right-0(@mousedown="change(1)")
       la-plus
-  .text-xs {{ param.toUpperCase() }}
 </template>
 
 <style scoped>
 .knob {
-  @apply shadow-md m-1 border-2 rounded-lg text-center border-dark-100/50 dark:(border-light-100/50) cursor-pointer select-none relative overflow-hidden flex flex-col;
+  @apply shadow-md m-1 border-2 rounded-lg text-center border-dark-100/50 dark:(border-light-100/50) cursor-pointer select-none relative overflow-hidden flex flex-col justify-center;
   touch-action: none;
 }
 
 .level {
-  @apply pointer-events-none border-r-1 bg-dark-50/20 border-dark-100  dark:(border-light-100 bg-light-100/40) absolute h-4 bottom-0 w-full;
+  @apply pointer-events-none border-r-2 bg-dark-50/20 border-dark-100/60  dark:(border-light-100/60 bg-light-100/40) absolute top-0 bottom-0 w-full;
 }
 </style>

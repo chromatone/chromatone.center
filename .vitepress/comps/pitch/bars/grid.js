@@ -9,34 +9,7 @@ import {
   start,
   Midi,
 } from 'tone'
-import { createAndDownloadBlobFile, midiOnce } from './midi'
-
-export const loops = useStorage('tempo-bar-loops', [
-  {
-    over: 8,
-    under: 8,
-    tonic: 69,
-    volume: 1,
-    sound: 'A',
-  },
-  {
-    over: 3,
-    under: 3,
-    tonic: 69,
-    volume: 0.5,
-    sound: 'B',
-  },
-])
-
-export function addLoop() {
-  loops.value.push({
-    over: 4,
-    under: 4,
-    tonic: 69,
-    volume: 1,
-    sound: 'A',
-  })
-}
+import { createAndDownloadBlobFile, midiOnce } from '@use/midi'
 
 const tracks = reactive([])
 
@@ -45,6 +18,8 @@ export function useGrid(
     over: 4,
     under: 4,
     tonic: 69,
+    pitch: 0,
+    octave: 3,
     sound: 'A',
     volume: 1,
   },
@@ -54,7 +29,7 @@ export function useGrid(
   const panner = new PanVol(pan, 0).toDestination()
   const synth = new PolySynth({
     envelope: {
-      attack: 0.1,
+      attack: 0.5,
       release: '8n',
     },
     filterEnvelope: {
@@ -68,6 +43,11 @@ export function useGrid(
   const volume = useStorage(`grid-vol-${order}`, metre.volume || 1)
   const panning = useStorage(`grid-pan-${order}`, pan)
   const probability = useStorage(`grid-probability-${order}`, 1)
+
+  const tonic = computed(() => {
+    return metre.pitch + 12 * metre.octave - 3
+  })
+
   let sequence = new Sequence(
     (time, step) => {
       beatClick(step, time)
@@ -165,7 +145,7 @@ export function useGrid(
     }, time)
 
     let notes = Object.entries(step).map((entry) =>
-      entry[1] ? Midi(Number(entry[0]) + metre.tonic) : null,
+      entry[1] ? Midi(Number(entry[0]) + tonic.value) : null,
     )
     synth.triggerAttackRelease(notes, metre.under + 'n', time)
     // midiOnce(notes[order * 2] + 3, { time: '+' + time })

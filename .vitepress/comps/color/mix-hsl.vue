@@ -55,6 +55,8 @@
     g#circle.cursor-pointer(v-drag="onDrag" :drag-options="{ filterTaps: true }")
       g.arc(
         v-for="(arc,i) in mix.hueArcs" :key="arc"
+        :data-from="arc.from"
+        :data-to="arc.to"
       )
         svg-ring.sector(
           :cx="50"
@@ -64,7 +66,6 @@
           :from="arc.from"
           :to="arc.to"
           :fill="generateTone(arc.from).toHex()"
-          :stroke="generateTone(arc.from).toHex()"
           @mousedown="mix.hue = arc.from"
           @touchstart="mix.hue = arc.from"
         )
@@ -211,7 +212,7 @@ const mix = reactive({
   light: useStorage('lightness', 50),
   hsl: computed(() => `hsla(${mix.hue},${mix.sat}%,${mix.light}%,1)`),
   hueSteps: computed(() => [...Array(mix.hueCount)].map((step, i) => 360 * i / mix.hueCount)),
-  hueArcs: computed(() => mix.hueSteps.map((step, i, arr) => ({ from: step, to: arr[i + 1] || arr[0] }))),
+  hueArcs: computed(() => mix.hueSteps.map((step, i, arr) => ({ from: step, to: arr[i + 1] || 359.9 }))),
 });
 
 const spaces = ['HSL', 'Lch', 'HWB']

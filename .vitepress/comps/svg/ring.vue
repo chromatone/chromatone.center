@@ -25,7 +25,7 @@ const props = defineProps({
   },
   sWidth: {
     type: Number,
-    default: 2
+    default: 0
   },
   cx: {
     type: Number,

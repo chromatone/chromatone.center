@@ -13,7 +13,7 @@ import { createAndDownloadBlobFile, midiOnce } from '@use/midi'
 
 const tracks = reactive([])
 
-export function useGrid(
+export function useLoop(
   metre = {
     over: 4,
     under: 4,
@@ -22,6 +22,7 @@ export function useGrid(
     octave: 3,
     sound: 'A',
     volume: 1,
+    muted: false,
   },
   order = 0,
 ) {

@@ -1,5 +1,5 @@
 ---
-title: Color tuner
+title: Pitch tuner
 subtitle: Fast and precise instrument tuner web-app
 tags: pitch
 cover: apps/tuner.svg

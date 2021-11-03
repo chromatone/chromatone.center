@@ -1,14 +1,19 @@
 <template lang="pug">
-.flex.flex-col.justify-center
+.flex.flex-col.justify-center.text-white
   .fullscreen-container#screen
     canvas#spectrogram.m-4.h-full.min-h-30em.w-full.rounded-md.cursor-pointer(
       :width="state.width"
       :height="state.height"
       v-drag="dragScreen"
     )
-    control-start.absolute(v-if="!state.initiated" @click="initiate()") Start
-    full-screen.absolute.bottom-6.right-4
-    .absolute.top-6.left-4.text-2xl x{{ state.speed }}
+    control-start.absolute(v-if="!state.initiated" @click="initiate()")
+    full-screen.absolute.bottom-6.right-2
+    .absolute.top-6.left-4.text-xl.select-none x{{ state.speed }}
+    .absolute.bottom-8.left-2.text-xl.select-none.cursor-pointer(@mousedown="paused = !paused")
+      la-play(v-if="paused")
+      la-pause(v-else)
+    button.absolute.top-6.right-2.text-xl.select-none.cursor-pointer(@mousedown="clear()")
+      la-trash-alt
 
 </template>
   
@@ -17,10 +22,29 @@ import AudioMotionAnalyzer from 'audiomotion-analyzer'
 import { initGetUserMedia, freqPitch } from 'chromatone-theory'
 import { UserMedia } from 'tone'
 import { clampNum } from '@use/theory'
+import { onKeyStroke } from '@vueuse/core'
 
 const screen = ref(null)
 
+const paused = ref(false)
+
+onKeyStroke(' ', (e) => {
+  paused.value = !paused.value
+  e.preventDefault()
+})
+
+onKeyStroke('Enter', (e) => {
+  clear()
+  e.preventDefault()
+})
+
 let mic, canvas, ctx, tempCanvas, tempCtx
+
+function clear() {
+  ctx.fillStyle = '#000'
+  ctx.fillRect(0, 0, state.width, state.height)
+}
+
 const state = reactive({
   initiated: false,
   width: 800,
@@ -30,6 +54,7 @@ const state = reactive({
 })
 
 function dragScreen(drag) {
+  if (drag.tap) paused.value = !paused.value
   state.speedCount = clampNum(state.speedCount, -drag.delta[0] / 2, 100, 300)
 }
 
@@ -54,6 +79,7 @@ function initiate() {
       volume: 0,
       useCanvas: false,
       onCanvasDraw(instance) {
+        if (paused.value) return
         tempCtx.drawImage(canvas, 0, 0, state.width, state.height)
         let bars = instance.getBars()
         for (let i = 0; i < bars.length; i++) {

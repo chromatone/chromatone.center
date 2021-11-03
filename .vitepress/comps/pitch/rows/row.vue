@@ -21,13 +21,14 @@ const props = defineProps({
       octave: 2,
       sound: 'A',
       volume: 1,
+      muted: false,
     }
   },
 });
 
 import { isDark } from '@theme/composables/state.js'
 import { pitchColor, notes } from 'chromatone-theory'
-import { useGrid } from './grid.js'
+import { useLoop } from './loop.js'
 import { Frequency } from 'tone'
 
 const emit = defineEmits(['del', 'over', 'under', 'pitch', 'octave']);
@@ -40,7 +41,7 @@ const {
   panning,
   clearGrid,
   probability,
-} = useGrid(props.loop, props.order);
+} = useLoop(props.loop, props.order);
 
 </script>
 
@@ -119,8 +120,6 @@ const {
     .flex-1
     button.text-button(@mousedown="clearGrid()")
       la-trash-alt
-    button.text-button(@mousedown="$emit('del')")
-      la-times
   svg.w-full(
     version="1.1",
     baseProfile="full",
@@ -176,7 +175,7 @@ const {
           :width="1000 / steps.length"
           :height="400 / 24"
           rx="2"
-          :fill="pitchColor(cell + loop.pitch - 1, 3, 1, step?.[0]?.[c] ? 1 : 0.1)"
+          :fill="pitchColor(cell + loop.pitch - 1, 3, 1, step?.[0]?.[c] ? 1 : 0.05)"
           @mousedown="step[0][c] = !step[0][c]"
         )
     g.progress(

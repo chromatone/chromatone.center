@@ -1,29 +1,9 @@
 <script setup>
 import { lchToHsl } from '@use/colors'
-const loops = useStorage('pitch-bars', [
-  {
-    over: 8,
-    under: 8,
-    tonic: 69,
-    pitch: 0,
-    octave: 3,
-    volume: 1,
-    muted: false,
-    sound: 'A',
-  }
-])
+const loops = useStorage('pitch-bars', [1])
 
 function addLoop() {
-  loops.value.push({
-    over: 16,
-    under: 16,
-    pitch: 0,
-    octave: 3,
-    tonic: 69,
-    volume: 1,
-    muted: false,
-    sound: 'A',
-  })
+  loops.value.push(Math.ceil(Math.random() * 100))
   active.value = loops.value.length - 1
 }
 
@@ -33,6 +13,7 @@ const active = useStorage('pitch-bars-active', 0);
 <template lang="pug">
 .flex.flex-col.items-center
   state-transport
+    control-scale.m-4
   .flex.flex-wrap.mt-4.w-full.justify-start.px-2
     button.px-4.rounded-t-md.mx-2px.transition-all.duration-300.ease.flex.items-center(
       v-for="(loop,l) in loops" :key="loop"
@@ -40,10 +21,10 @@ const active = useStorage('pitch-bars-active', 0);
       :class="{ active: active == l }"
       :style="{ backgroundColor: lchToHsl(l, loops.length, active == l ? 1 : 0.5) }"
     ) 
-      la-times.mr-2(
-        @mousedown="loops.splice(l, 1); active = loops.length - 1"
-      )
-      .p-0 {{ loop.over }}/{{ loop.under }}
+      //- la-times.mr-2(
+      //-   @mousedown="loops.splice(l, 1); active = loops.length - 1"
+      //- )
+      .px-4.py-2 {{ l }}
 
     button.text-button(
     @click="addLoop()"
@@ -51,18 +32,11 @@ const active = useStorage('pitch-bars-active', 0);
       la-plus
   .flex.flex-col.mb-4.mx-4.w-full.relative.h-600px
     transition-group(name="fade")
-      pitch-rows-row.absolute.w-full(
+      pitch-grids-grid.absolute.w-full(
         v-for="(loop,l) in loops" :key="loop"
         :order="l"
-        :loop="loop"
         :active="active == l"
         :color="lchToHsl(l, loops.length, 1)"
         @del="loops.splice(l, 1); active = loops.length - 1"
-        @over="loop.over = $event"
-        @under="loop.under = $event"
-        @pitch="loop.pitch = $event"
-        @octave="loop.octave = $event"
       )
-
-
 </template>

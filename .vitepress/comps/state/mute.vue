@@ -6,6 +6,7 @@
   transition(name="panel")
     .absolute.w-10.h-32.rounded-full.has-bg.flex.flex-col.items-center.shadow-lg.cursor-pointer(
       style="touch-action:none;"
+      ref="panel"
       v-if="open" 
       v-drag="dragVol"
       )
@@ -25,6 +26,11 @@ import { clampNum } from '@use/theory'
 import { getDestination, gainToDb } from 'tone'
 const open = ref(false);
 const volume = useStorage('main-vol', 1);
+import { onClickOutside } from '@vueuse/core'
+
+const panel = ref()
+
+onClickOutside(panel, () => open.value = false)
 
 function dragVol(drag) {
   volume.value = clampNum(volume.value, -drag.delta[1] / 300, 0, 1)

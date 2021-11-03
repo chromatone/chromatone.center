@@ -56,7 +56,6 @@ const accent = computed(() => props.subdivisions[0].includes('!'))
 
 const division = ref(0)
 const divNum = computed(() => Math.floor(division.value / 40))
-const divSteps = ref([])
 
 watch(divNum, (next, prev) => {
   if (next == prev) return
@@ -64,10 +63,8 @@ watch(divNum, (next, prev) => {
   for (let d = 0; d < next; d++) {
     steps.push(`${props.step}-${d}`)
   }
-  divSteps.value = steps
+  emit('subdivide', steps)
 })
-
-watch(divSteps, steps => emit('subdivide', steps))
 
 function dragDiv(drag) {
   if (drag.tap) {

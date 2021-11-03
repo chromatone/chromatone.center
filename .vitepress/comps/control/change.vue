@@ -126,6 +126,6 @@ function mapNumber(
 }
 
 .level {
-  @apply pointer-events-none border-r-2 bg-dark-50/20 border-dark-100/60  dark:(border-light-100/60 bg-light-100/40) absolute top-0 bottom-0 w-full;
+  @apply border-r-2 bg-dark-50/20 border-dark-100/60  dark:(border-light-100/60 bg-light-100/40) absolute top-0 bottom-0 w-full;
 }
 </style>

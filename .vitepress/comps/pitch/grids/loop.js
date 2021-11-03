@@ -1,4 +1,5 @@
 import { tempo } from '@use/tempo.js'
+import { globalScale, rotateArray } from '@use/theory'
 import {
   Sequence,
   PanVol,
@@ -13,127 +14,108 @@ import { createAndDownloadBlobFile, midiOnce } from '@use/midi'
 
 const tracks = reactive([])
 
-export function useLoop(
-  metre = {
-    over: 4,
-    under: 4,
-    tonic: 69,
-    pitch: 0,
-    octave: 3,
-    sound: 'A',
-    volume: 1,
-    muted: false,
-  },
-  order = 0,
-) {
-  let pan = order % 2 == 1 ? -0.5 : 0.5
-  const panner = new PanVol(pan, 0).toDestination()
+export function useLoop(order = 0) {
+  const loop = reactive({
+    over: useStorage(`grid-${order}-over`, 4),
+    under: useStorage(`grid-${order}-under`, 4),
+    probability: useStorage(`grid-${order}-probability`, 1),
+    pitch: computed(() => globalScale.tonic),
+    chroma: computed(() => globalScale.set.chroma),
+    octave: useStorage(`grid-${order}-octave`, 3),
+    volume: useStorage(`grid-${order}-vol`, 1),
+    pan: useStorage(`grid-${order}-pan`, order % 2 == 1 ? -0.5 : 0.5),
+    tonic: computed(() => {
+      return loop.pitch + 12 * loop.octave - 3
+    }),
+    steps: useStorage(`grid-${order}-steps`, []),
+    current: [],
+    progress: computed(() => {
+      if (tempo.ticks) {
+        return sequence?.progress
+      } else {
+        return 0
+      }
+    }),
+    clear() {
+      loop.steps.forEach((step, s) => {
+        loop.steps[s] = [{}]
+      })
+    },
+    rotate(way = 1) {
+      loop.steps = rotateArray(loop.steps, way)
+    },
+  })
+
+  const panner = new PanVol(loop.pan, 0).toDestination()
   const synth = new PolySynth({
     envelope: {
       attack: 0.5,
-      release: '8n',
+      release: 0.2,
     },
     filterEnvelope: {
       attack: 0.1,
+      release: 0.2,
     },
   }).connect(panner)
 
-  const current = ref('0-0')
-  const steps = useStorage(`grid-${order}-steps`, [])
-
-  const volume = useStorage(`grid-vol-${order}`, metre.volume || 1)
-  const panning = useStorage(`grid-pan-${order}`, pan)
-  const probability = useStorage(`grid-probability-${order}`, 1)
-
-  const tonic = computed(() => {
-    return metre.pitch + 12 * metre.octave - 3
-  })
+  synth.maxPolyphony = 100
 
   let sequence = new Sequence(
     (time, step) => {
       beatClick(step, time)
     },
-    steps.value,
-    metre.under + 'n',
+    loop.steps,
+    loop.under + 'n',
   ).start(0)
 
   tracks[order] = reactive({
-    metre: computed(() => metre),
-    steps: steps.value,
+    loop: computed(() => loop),
   })
 
-  function clearGrid() {
-    steps.value.forEach((step, s) => {
-      steps.value[s] = [{}]
-    })
-  }
-
   watch(
-    () => metre.under,
+    () => loop.under,
     () => {
       sequence.stop().dispose()
       sequence = new Sequence(
         (time, step) => {
           beatClick(step, time)
         },
-        steps.value,
-        metre.under + 'n',
+        loop.steps,
+        loop.under + 'n',
       ).start(0)
+      sequence.probability = loop.probability
     },
   )
 
   watch(
-    () => metre.over,
+    () => loop.over,
     () => {
-      if (steps.value.length > metre.over) {
-        steps.value.length = metre.over
+      if (loop.steps.length > loop.over) {
+        loop.steps.length = loop.over
       } else {
-        for (let i = steps.value.length; i < metre.over; i++) {
-          steps.value.push([{}])
+        for (let i = loop.steps.length; i < loop.over; i++) {
+          loop.steps.push([{}])
         }
       }
-
-      sequence.events = steps.value
+      sequence.events = loop.steps
     },
     { immediate: true },
   )
 
   watchEffect(() => {
-    sequence.events = steps.value
+    sequence.events = loop.steps
   })
 
   watchEffect(() => {
     if (tempo.stopped) {
-      current.value = null
+      loop.current = null
     }
   })
 
   watchEffect(() => {
-    sequence.probability = probability.value
-  })
-
-  watch(
-    volume,
-    (vol) => {
-      panner.volume.targetRampTo(gainToDb(vol), 1)
-    },
-    { immediate: true },
-  )
-
-  watch(
-    panning,
-    (p) => {
-      panner.pan.targetRampTo(p, 1)
-    },
-    { immediate: true },
-  )
-
-  const progress = computed(() => {
-    if (tempo.ticks) {
-      return sequence.progress
-    } else {
-      return 0
-    }
+    sequence.probability = loop.probability
+    panner.volume.targetRampTo(gainToDb(loop.volume), 1)
+    panner.pan.targetRampTo(loop.pan, 1)
   })
 
   function beatClick(step, time) {
@@ -142,13 +124,18 @@ export function useLoop(
     }
     Draw.schedule(() => {
       // console.log(step)
-      current.value = step
+      loop.current = step
     }, time)
 
-    let notes = Object.entries(step).map((entry) =>
-      entry[1] ? Midi(Number(entry[0]) + tonic.value) : null,
+    let notes = Object.entries(step).map((entry) => {
+      if (entry[0] == 'sub') return
+      return entry[1] ? Midi(Number(entry[0]) + loop.tonic) : null
+    })
+    synth.triggerAttackRelease(
+      notes,
+      { [loop.under + 'n']: 1 / (step.sub || 1) },
+      time,
     )
-    synth.triggerAttackRelease(notes, metre.under + 'n', time)
     // midiOnce(notes[order * 2] + 3, { time: '+' + time })
   }
 
@@ -158,15 +145,7 @@ export function useLoop(
     synth.dispose()
   })
 
-  return {
-    progress,
-    current,
-    steps,
-    volume,
-    panning,
-    probability,
-    clearGrid,
-  }
+  return loop
 }
 
 import { Writer, Track, NoteEvent } from 'midi-writer-js'
@@ -174,7 +153,7 @@ import { Writer, Track, NoteEvent } from 'midi-writer-js'
 export function renderMidi() {
   let render = []
   tracks.forEach((track, t) => {
-    let division = 512 / track.metre.under
+    let division = 512 / track.loop.under
     let midiTrack = new Track()
     midiTrack.setTempo(tempo.bpm)
     midiTrack.addInstrumentName('116')

@@ -65,7 +65,7 @@ function getChord(step) {
     if (entry[0] == 'sub') return
     if (entry[1]) return Frequency(Number(entry[0]) + globalScale.tonic + 69, 'midi').toNote()
   }).filter(n => n != null)
-  return Chord.detect(notes)[0]
+  return Chord.detect(notes)[0] || notes[0]
 }
 
 </script>
@@ -98,7 +98,7 @@ g.col(
         :y2="10"
         :stroke-width="sub[c] ? 2 : 6"
         stroke-opacity="0.1"
-        :stroke="sub[c] ? 'black' : pitchColor(cell + globalScale.tonic - 1, 3, 1)"
+        :stroke="sub[c] ? 'black' : pitchColor(cell + globalScale.tonic - 1, 3, doubleScale[c] == 1 ? 1 : 0.1, sub[c] ? 1 : 0.5)"
       )
   g.subs(
     v-drag="dragDiv"
@@ -122,11 +122,13 @@ g.col(
         :width="width / step.length"
 
       )
-      text.font-bold.text-xl(
+      text.font-bold(
         :x="width / step.length / 2"
         :y="40"
+        :font-size="20 * (1 - 0.15 * (step.length - 1))"
         fill="currentColor"
         text-anchor="middle"
+        dominant-baseline="cental"
       ) {{ getChord(sub) }}
 </template>
 

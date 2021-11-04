@@ -1,5 +1,5 @@
 <template lang="pug">
-button.text-button.text-2xl(
+button.text-button(
   v-show="supported"
   @click="toggle()"
 )

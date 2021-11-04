@@ -4,7 +4,7 @@
     state-transport(v-if="!secondary")
       button.text-button.flex.items-center(@click="renderMidi()")
         la-file-download
-    full-screen.absolute.bottom-1.right-1
+      full-screen.text-md
     beat-bars-bar.my-1.rounded-xl.shadow-lg(
       v-for="(loop,i) in loops",
       :key="loop"

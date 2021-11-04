@@ -10,8 +10,9 @@ import {
   start,
   Midi,
   Frequency,
+  Time,
 } from 'tone'
-import { createAndDownloadBlobFile, midiOnce } from '@use/midi'
+import { createAndDownloadBlobFile, midiPlay } from '@use/midi'
 
 const loops = reactive([])
 
@@ -121,21 +122,30 @@ export function useLoop(order = 0) {
     if (context.state == 'suspended') {
       start()
     }
-    Draw.schedule(() => {
-      // console.log(step)
-      loop.current = step
-    }, time)
 
-    let notes = Object.entries(step).map((entry) => {
-      if (entry[0] == 'sub') return
-      return entry[1] ? Midi(Number(entry[0]) + loop.tonic) : null
-    })
+    let notes = Object.entries(step)
+      .map((entry) => {
+        if (entry[0] == 'sub') return
+        return entry[1] ? Midi(Number(entry[0]) + loop.tonic) : null
+      })
+      .filter(Number)
+
     synth.triggerAttackRelease(
       notes,
       { [loop.under + 'n']: 1 / (step.sub || 1) },
       time,
     )
-    // midiOnce(notes[order * 2] + 3, { time: '+' + time })
+
+    Draw.schedule(() => {
+      // console.log(step)
+      loop.current = step
+      let dur = Time({
+        [loop.under + 'n']: 1 / (step.sub || 1),
+      }).toMilliseconds()
+      let midiNotes = notes.map((n) => n.toMidi())
+      console.log(dur)
+      midiPlay(midiNotes, { duration: dur, attack: loop.volume })
+    }, time)
   }
 
   onBeforeUnmount(() => {

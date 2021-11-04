@@ -45,7 +45,7 @@
       la-times
 
   .listap.flex.flex-wrap.is-group.m-1
-    button.text-button.flex(
+    button.text-button(
       @mousedown.stop.prevent="tap()"
       @touchstart.stop.prevent="tap()"
       :class="{ active: tempo.tap.last }"

@@ -1,5 +1,8 @@
 <script setup>
 import { lchToHsl } from '@use/colors'
+import { isDark } from '@theme/composables/state'
+import { renderMidi } from './loop'
+
 const loops = useStorage('pitch-bars', [1])
 
 function addLoop() {
@@ -19,7 +22,7 @@ const active = useStorage('pitch-bars-active', 0);
       v-for="(loop,l) in loops" :key="loop"
       @mousedown="active = l"
       :class="{ active: active == l }"
-      :style="{ backgroundColor: lchToHsl(l, loops.length, active == l ? 1 : 0.5) }"
+      :style="{ backgroundColor: lchToHsl(l, loops.length, active == l ? 1 : 0.3) }"
     ) 
       //- la-times.mr-2(
       //-   @mousedown="loops.splice(l, 1); active = loops.length - 1"
@@ -32,13 +35,15 @@ const active = useStorage('pitch-bars-active', 0);
       la-plus
     .flex-1
     full-screen
+    button.text-button.flex.items-center(@click="renderMidi()")
+      la-file-download
   .flex.flex-col.mb-4.mx-4.w-full.relative.h-600px
     transition-group(name="fade")
       pitch-grids-grid.absolute.w-full(
         v-for="(loop,l) in loops" :key="loop"
         :order="l"
         :active="active == l"
-        :color="lchToHsl(l, loops.length, 1)"
+        :color="lchToHsl(l, loops.length, isDark ? 0.3 : 1)"
         @del="loops.splice(l, 1); active = loops.length - 1"
       )
 </template>

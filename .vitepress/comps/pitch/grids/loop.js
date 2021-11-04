@@ -9,10 +9,11 @@ import {
   context,
   start,
   Midi,
+  Frequency,
 } from 'tone'
 import { createAndDownloadBlobFile, midiOnce } from '@use/midi'
 
-const tracks = reactive([])
+const loops = reactive([])
 
 export function useLoop(order = 0) {
   const loop = reactive({
@@ -46,6 +47,8 @@ export function useLoop(order = 0) {
     },
   })
 
+  loops[order] = loop
+
   const panner = new PanVol(loop.pan, 0).toDestination()
   const synth = new PolySynth({
     envelope: {
@@ -67,10 +70,6 @@ export function useLoop(order = 0) {
     loop.steps,
     loop.under + 'n',
   ).start(0)
-
-  tracks[order] = reactive({
-    loop: computed(() => loop),
-  })
 
   watch(
     () => loop.under,
@@ -140,6 +139,7 @@ export function useLoop(order = 0) {
   }
 
   onBeforeUnmount(() => {
+    loops.splice(order, 1)
     sequence.stop().dispose()
     panner.dispose()
     synth.dispose()
@@ -152,34 +152,35 @@ import { Writer, Track, NoteEvent } from 'midi-writer-js'
 
 export function renderMidi() {
   let render = []
-  tracks.forEach((track, t) => {
-    let division = 512 / track.loop.under
+  loops.forEach((loop, l) => {
+    let division = 512 / loop.under
     let midiTrack = new Track()
     midiTrack.setTempo(tempo.bpm)
-    midiTrack.addInstrumentName('116')
-    midiTrack.addTrackName('Chromatone beat ' + t)
+    midiTrack.addInstrumentName('piano')
+    midiTrack.addTrackName('Chromatone grid ' + l)
     midiTrack.setTimeSignature(4, 4)
-    track.steps.forEach((step, s) => {
-      step.forEach((code) => {
-        if (track.mutes[s] || track.mutes[code]) return
-        let [beat, sub] = code.split('-').map(Number)
+    loop?.steps.forEach((step, s) => {
+      step.forEach((code, c) => {
+        let sub = c
+        let beat = s
         let subdivision = division / step.length
-        let subStep = 0
-        if (step.length > 1) {
-          subStep = sub * subdivision
-        }
+        let notes = Object.entries(code)
+          .map((entry) =>
+            entry[1] == true ? Number(entry[0]) + loop.tonic : null,
+          )
+          .filter((n) => Number(n))
+          .map((midi) => Frequency(midi, 'midi').toNote())
         midiTrack.addEvent(
           new NoteEvent({
-            pitch: track.accents[s]
-              ? notes[t * 2] + '2'
-              : notes[t * 2 + 1] + '2',
+            pitch: notes,
             duration: `T${subdivision}`,
-            startTick: division * beat + subStep,
-            velocity: track.accents[s] || track.accents[code] ? 100 : 64,
+            startTick: division * beat + sub * subdivision,
+            velocity: loop.volume * 100,
           }),
         )
       })
     })
+    // --- LOOP HACK ---
     // midiTrack.addEvent(
     //   new NoteEvent({
     //     pitch: 0,
@@ -188,14 +189,10 @@ export function renderMidi() {
     //     velocity: 1,
     //   })
     // )
-    render[t] = midiTrack
+    render[l] = midiTrack
   })
 
   var write = new Writer(render)
-  let midiData = new Midi(write.buildFile())
-  midiData.tracks.forEach((track, t) => {
-    midiData.tracks[t].instrument.number = 119
-  })
-  console.log(midiData.tracks)
-  createAndDownloadBlobFile(midiData.toArray(), 'Chromatone-beat')
+
+  createAndDownloadBlobFile(write.buildFile(), 'Chromatone-grid')
 }

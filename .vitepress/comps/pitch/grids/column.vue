@@ -83,24 +83,22 @@ g.col(
       v-for="(sub,s) in step" :key="sub"
     )
       rect.transition-all.duration-200.ease-out(
-        class="stroke-0 hover:stroke-4"
-        :stroke="pitchColor(cell + globalScale.tonic - 1, 3, doubleScale[c] == 1 ? 1 : 0.1, 1)"
-        :x="s * width / step.length"
-        :width="width / step.length"
-        :height="height / 25"
+        stroke-width="0"
+        :x="s * width / step.length + 1"
+        :width="width / step.length - 2"
+        :height="height / 25 - 2"
         rx="4"
         :fill="pitchColor(cell + globalScale.tonic - 1, 3, doubleScale[c] == 1 ? 1 : 0.1, sub[c] ? 1 : 0.1)"
         @mousedown="sub[c] = !sub[c]"
       )
-      line.pointer-events-none(
-        v-if="sub[c]"
+      line.line.pointer-events-none.transition-all.duration-200.ease-out(
         :x1="s * width / step.length"
         :x2="(s + 1) * width / step.length"
         :y1="10"
         :y2="10"
-        stroke-opacity="0.7"
-        stroke-width="6"
-        :stroke="color"
+        :stroke-width="sub[c] ? 2 : 6"
+        stroke-opacity="0.1"
+        :stroke="sub[c] ? 'black' : pitchColor(cell + globalScale.tonic - 1, 3, 1)"
       )
   g.subs(
     v-drag="dragDiv"
@@ -131,3 +129,9 @@ g.col(
         text-anchor="middle"
       ) {{ getChord(sub) }}
 </template>
+
+<style scoped>
+.sub:hover .line {
+  stroke-opacity: 1;
+}
+</style>

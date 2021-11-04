@@ -62,9 +62,9 @@ import { colord } from 'colord'
           text {{ p * 30 }}&deg;
           text(y="10") {{ cards[p].nm }}
           text(y="22") {{ colord(pitchColor(p, 3)).toHex() }}
-    g.center
-      color-cards-circles(
-      transform="rotate(-45) scale(0.4)"
-      transform-origin="center center"
-    )  
+    //- g.center
+    //-   color-cards-circles(
+    //-   transform="rotate(-45) scale(0.4)"
+    //-   transform-origin="center center"
+    //- )  
 </template>

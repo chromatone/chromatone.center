@@ -1,5 +1,5 @@
 <template lang="pug">
-.overflow-y-scroll.w-full.my-16
+.overflow-y-scroll.w-full.my-16.max-w-100vw
   table.text-center.w-full
     tr.bg-gray-200.bg-opacity-20
       th #

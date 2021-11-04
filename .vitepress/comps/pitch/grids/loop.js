@@ -137,13 +137,10 @@ export function useLoop(order = 0) {
     )
 
     Draw.schedule(() => {
-      // console.log(step)
-      loop.current = step
       let dur = Time({
         [loop.under + 'n']: 1 / (step.sub || 1),
       }).toMilliseconds()
       let midiNotes = notes.map((n) => n.toMidi())
-      console.log(dur)
       midiPlay(midiNotes, { duration: dur, attack: loop.volume })
     }, time)
   }

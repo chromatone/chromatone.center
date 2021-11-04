@@ -85,10 +85,14 @@ colors:
     ru: Розовый
 ---
 
-![svg](/media/theory/palette.svg)
+<color-cards :list="$frontmatter.colors" :langs="$frontmatter.langs" >
+
+</color-cards>
 
 <color-names :list="$frontmatter.colors" :langs="$frontmatter.langs" />
 
 <img src="/media/theory/color-names.svg">
 
 https://en.wikipedia.org/wiki/Tertiary_color
+
+<img src="/media/theory/palette.svg" width="400" height="400" />

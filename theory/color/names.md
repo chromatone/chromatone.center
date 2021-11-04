@@ -80,9 +80,9 @@ colors:
   rose:
     nm: "-"
     en: Rose
-    fr: Crimson
+    fr: Cramoisi
     es: Carmesí
-    ru: Малиновый (Пунцовый)
+    ru: Розовый
 ---
 
 ![svg](/media/theory/palette.svg)
@@ -90,3 +90,5 @@ colors:
 <color-names :list="$frontmatter.colors" :langs="$frontmatter.langs" />
 
 <img src="/media/theory/color-names.svg">
+
+https://en.wikipedia.org/wiki/Tertiary_color

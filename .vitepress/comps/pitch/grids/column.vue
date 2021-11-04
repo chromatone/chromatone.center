@@ -55,7 +55,7 @@ watch(divNum, (next, prev) => {
 })
 
 function dragDiv(drag) {
-  division.value = clampNum(division.value, drag.delta[0] - drag.delta[1], 20, 120)
+  division.value = clampNum(division.value, drag.delta[0] - drag.delta[1], 20, 160)
 }
 
 const doubleScale = computed(() => (globalScale.set.chroma + globalScale.set.chroma + 1).split(''));

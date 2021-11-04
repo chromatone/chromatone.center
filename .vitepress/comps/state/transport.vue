@@ -62,7 +62,7 @@
       :class="{ active: tuner.blink }"
       @click="tempo.bpm = tuner.bpm"
       v-if="tuner.listen") {{ tuner.bpm.toFixed(1) }}
-  .is-group.m-1
+  .is-group.m-1.flex.items-center
     slot
 
 </template>

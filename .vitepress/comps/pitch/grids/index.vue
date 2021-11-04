@@ -11,7 +11,7 @@ const active = useStorage('pitch-bars-active', 0);
 </script>
 
 <template lang="pug">
-.flex.flex-col.items-center
+#screen.flex.flex-col.items-center.rounded-xl.fullscreen-container.p-2
   state-transport
     control-scale.m-4
   .flex.flex-wrap.mt-4.w-full.justify-start.px-2
@@ -30,6 +30,8 @@ const active = useStorage('pitch-bars-active', 0);
     @click="addLoop()"
     )
       la-plus
+    .flex-1
+    full-screen
   .flex.flex-col.mb-4.mx-4.w-full.relative.h-600px
     transition-group(name="fade")
       pitch-grids-grid.absolute.w-full(

@@ -55,6 +55,9 @@ links:
   - url: https://www.webaudiomodules.org/wamsynths/obxd
     title: Online synths by WebAudioModules
     subtitle: OBXD and other synths and effects
+  - url: https://farplay.io/
+    title: FarPlay
+    subtitle: The easiest, fastest & safest low-latency audio on the internet.
 date: 2018-09-08
 ---
 

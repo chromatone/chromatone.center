@@ -3,6 +3,7 @@ title: Melody
 subtitle: Combinations of pitch and rhythm
 date: 2021-08-04
 tags: theory
+list: melody
 ---
 
 A melody (from Greek μελῳδία, melōidía, "singing, chanting"), also tune, voice or line, is a linear succession of musical tones that the listener perceives as a single entity. In its most literal sense, a melody is a combination of pitch and rhythm, while more figuratively, the term can include successions of other musical elements such as tonal color. It is the foreground to the background accompaniment. A line or part need not be a foreground melody.

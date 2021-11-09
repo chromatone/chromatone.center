@@ -51,6 +51,7 @@ Current tasks and progress are open [at this ClickUp project](https://sharing.cl
 - [abcjs](https://paulrosen.github.io/abcjs/)
 - [webmidi.js](https://webmidijs.org/docs/)
 - [colord](https://www.npmjs.com/package/colord)
+- [paperjs](http://paperjs.org)
 - audio
   - [tone.js](https://tonejs.github.io)
     - [@tonejs/midi](https://github.com/Tonejs/Midi)

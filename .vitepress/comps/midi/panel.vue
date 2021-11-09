@@ -6,18 +6,18 @@
     a.font-normal.underline(href="https://apps.apple.com/ru/app/web-midi-browser/id953846217" target="_blank") Web MIDI Browser on iOS
   .flex.items-center.justify-center.flex-wrap.py-2.m-auto(v-else)
     .flex.m-2
-      a.font-normal.p-2.border.border-green-500.text-green-500.select-none(href="/explore/monitor/") 
+      a.font-normal.p-2.border.border-green-500.text-green-500.select-none.rounded-lg(href="/explore/monitor/") 
         span(v-if="midi.available") MIDI 
         span(v-else) Plug in your MIDI device
     .text-button.opacity-30(@click="midi.out = !midi.out",:class="{ active: midi.out }") OUT
-    .text-button.w-3em.transition-all.duration-50.cursor-pointer(
+    .text-button.w-3em.transition-all.duration-50.cursor-pointer.flex(
       @mousedown="midiAttack(midi.note)"
       @mouseup="midiRelease(midi.note)"
       v-if="midi.note?.name"
       :style="{ borderColor: pitchColor(midi.note.pitch, midi.note.octA), color: pitchColor(midi.note.pitch, midi.note.octA) }"
     ) 
       .w-2em {{ midi.note.name }} 
-      .flex {{ midi.note.accidental }}
+      .flex-1 {{ midi.note.accidental }}
     button.play.text-button(@click="midi.playing = !midi.playing")
       la-play(v-if="!midi.playing")
       la-pause(v-else)
@@ -38,6 +38,7 @@
 
 <script setup>
 import { midi, stopAll, midiAttack, midiRelease } from '@use/midi.js'
+import { onKeyStroke } from '@vueuse/core'
 import { pitchColor } from 'chromatone-theory'
 
 const props = defineProps({
@@ -46,25 +47,21 @@ const props = defineProps({
     default: true,
   }
 });
+
+onKeyStroke(' ', ev => {
+  ev.preventDefault()
+  midi.playing = !midi.playing
+});
 </script>
 
 <style scoped>
-.midi-panel {
-  @apply z-1;
-}
-
 .layer {
-  @apply;
-  background-color: hsla(0, 0%, 100%, 0.8);
+  @apply bg-light-200 dark:bg-dark-900 rounded-xl;
   backdrop-filter: blur(30px);
 }
 
 input.ch {
   @apply pl-2 w-2.5em bg-transparent;
-}
-
-.dark .layer {
-  background-color: hsla(0, 0%, 0%, 0.8);
 }
 
 .button {

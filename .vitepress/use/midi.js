@@ -14,6 +14,7 @@ export const midi = reactive({
     pitch: 3,
     octA: 3,
   },
+  clock: 0,
   filter: useStorage('global-midi-filter', {}),
   available: computed(() => Object.entries(midi.outputs).length > 0),
 })
@@ -70,7 +71,7 @@ function setupMidi() {
 }
 
 function initMidi() {
-  midi.inputs = {}
+  midi.inputs = reactive({})
   WebMidi.inputs.forEach((input) => {
     midi.enabled = true
     midi.inputs[input.id] = {
@@ -92,8 +93,13 @@ function initMidi() {
     input.addListener('controlchange', (ev) => ccIn(ev), {
       channels: 'all',
     })
+
+    input.addListener('clock', (ev) => {
+      midi.clock = ev.timestamp
+      //bpm = 60000 / ((ev.timestamp - prevTimestamp) * PPQ)  ppq=24
+    })
   })
-  midi.outputs = {}
+  midi.outputs = reactive({})
   WebMidi.outputs.forEach((output) => {
     midi.outputs[output.id] = {
       name: output.name,

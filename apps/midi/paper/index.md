@@ -11,4 +11,4 @@ buttons:
   - url: https://github.com/chromatone/midi-paper
     text: chromatone/midi-paper
     type: github
----s
+---

@@ -41,3 +41,5 @@ https://en.wikipedia.org/wiki/Ornament_(music)#Turn
 https://en.wikipedia.org/wiki/Melodic_motion
 
 https://en.wikipedia.org/wiki/Modal_frame
+
+<youtube-embed video="XLIrjjklq_s" />

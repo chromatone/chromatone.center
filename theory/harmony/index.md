@@ -13,3 +13,4 @@ According to William Russo harmonic rhythm is, "the duration of each different c
 Strong harmonic rhythm is characterized by strong root progressions and emphasis of root positions, weak contrapuntal bass motion, strong rhythmic placement in the measure (especially downbeat), and relatively longer duration.
 
 "The 'fastness' or 'slowness' of harmonic rhythm is not absolute, but relative,"[self-published source] and thus analysts compare the overall pace of harmonic rhythm from one piece to another, or the amount of variation of harmonic rhythm within a piece. For example, a key stylistic difference between Baroque music and Classical-period music is that the latter exhibits much more variety of harmonic rhythm, even though the harmony itself is less complex. 
+

@@ -4,8 +4,13 @@ subtitle: The science of percieved sound
 tags: sound
 date: 2021-08-29
 cover: theory/hearing.svg
+list: psychoacoustics
 ---
 
+<pitch-loudness />
+
+>**Find your own equal loudness contour**      
+>Place sine oscillators on the 2D-plane where vertical axis is the volume and horizontal is the frequency of the sounds being played. You can build up a curve for your absolute threshold of hearing, or explore your own feeling of really loud sounds. **Be careful clicking at the top of the graph!**
 
 ## Equal-loudness contour
 
@@ -17,10 +22,4 @@ Fletcher and Munson first measured equal-loudness contours using headphones (193
 
 ![](./Audible.jpg)
 
-In 1956 Robinson and Dadson produced a new experimental determination that they believed was more accurate. It became the basis for a standard (ISO 226) that was considered definitive until 2003 when ISO revised the standard on the basis of recent assessments by research groups worldwide. 
-
-## Find your own equal loudness contour 
-
-Place sine oscillators on the 2D-plane where vertical axis is the volume and horizontal is the frequency of the sounds being played. You can build up a curve for your absolute threshold of hearing, or explore your own feeling of really loud sounds. **Be careful clicking at the top of the graph!**
-
-<pitch-loudness />
+In 1956 Robinson and Dadson produced a new experimental determination that they believed was more accurate. It became the basis for a standard (ISO 226) that was considered definitive until 2003 when ISO revised the standard on the basis of recent assessments by research groups worldwide.

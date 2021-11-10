@@ -82,7 +82,7 @@ colors:
     en: Rose
     fr: Cramoisi
     es: Carmesí
-    ru: Розовый
+    ru: Малиновый
 ---
 
 <color-cards :list="$frontmatter.colors" :langs="$frontmatter.langs" >

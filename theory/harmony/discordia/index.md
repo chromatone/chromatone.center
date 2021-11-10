@@ -73,7 +73,7 @@ A well-known example of a second-class saint is Emperor Norton, a citizen in 19t
 
 ### Principia Discordia
 
-<a href="/media/theory/discordia/Principia_Discordia.pdf" target="_blank" >The Principia Discordia</a> is a Discordian religious text written by Greg Hill (Malaclypse the Younger) with Kerry Wendell Thornley (Lord Omar Khayyam Ravenhurst). The first edition was printed using Jim Garrison's Xerox printer in 1963.[1] The second edition was published under the title Principia Discordia or How The West Was Lost in a limited edition of five copies in 1965. The phrase Principia Discordia, reminiscent of Isaac Newton's 1687 Principia Mathematica, is presumably intended to mean Discordant Principles, or Principles of Discordance. 
+<a href="/media/pdf/Principia_Discordia.pdf" target="_blank" >The Principia Discordia</a> is a Discordian religious text written by Greg Hill (Malaclypse the Younger) with Kerry Wendell Thornley (Lord Omar Khayyam Ravenhurst). The first edition was printed using Jim Garrison's Xerox printer in 1963.[1] The second edition was published under the title Principia Discordia or How The West Was Lost in a limited edition of five copies in 1965. The phrase Principia Discordia, reminiscent of Isaac Newton's 1687 Principia Mathematica, is presumably intended to mean Discordant Principles, or Principles of Discordance. 
 
 [The Principia Discordia](https://www.principiadiscordia.com/) describes the Discordian Society and its Goddess Eris, as well as the basics of the POEE denomination of Discordianism. It features typewritten and handwritten text intermixed with clip art, stamps, and seals appropriated from other sources.
 

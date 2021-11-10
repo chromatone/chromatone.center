@@ -16,3 +16,5 @@ Drag the divider to explore the string divisions of a monochord, just like Pytha
 <client-only>
   <string-monochord />
 </client-only>
+
+https://en.wikipedia.org/wiki/Interval_cycle

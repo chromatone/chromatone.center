@@ -1,6 +1,6 @@
 <template lang="pug">
 a.nav-bar-title(:href="withBase(localePath)", :aria-label="`${site.title}, назад в начало`")
-  img.mr-3.align-bottom.h-30px(v-if="theme.logo", :src="withBase(theme.logo)", alt="Logo")
+  img.mr-3.align-bottom.h-30px(v-if="theme.icon", :src="withBase(theme.icon)", alt="Logo")
   .title {{ site.title }}
 
 </template>

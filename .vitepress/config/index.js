@@ -41,6 +41,7 @@ const config = {
       },
     },
     logo: '/media/logo/holologo.svg',
+    icon: 'media/logo/icon.svg',
     repo: 'https://github.com/chromatone/chromatone.center',
     pages,
     nav,

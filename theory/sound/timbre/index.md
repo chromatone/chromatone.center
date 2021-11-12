@@ -50,12 +50,6 @@ When the resonator's 'nipple' is placed inside one's ear, a specific frequency o
 
 A note isn't just a wave, it's a mix of resonating modes of oscillations.
 
-## String overtones interactive model
-
-A string fixed from both ends produces a harmonic set of incremental frequency partials, also called harmonics. 
-
-<string-overtones />
-
 ### Tristimulus timbre model
 
 The concept of tristimulus originates in the world of color, describing the way three primary colors can be mixed together to create a given color. By analogy, the musical tristimulus measures the mixture of harmonics in a given sound, grouped into three sections. It is basically a proposal of reducing a huge number of sound partials, that can amount to dozens or hundreds in some cases, down to only three values. The first tristimulus measures the relative weight of the first harmonic; the second tristimulus measures the relative weight of the second, third, and fourth harmonics taken together; and the third tristimulus measures the relative weight of all the remaining harmonics.

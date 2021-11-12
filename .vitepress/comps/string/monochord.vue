@@ -1,7 +1,6 @@
 <template lang="pug">
 .flex.flex-col
-  .text-xl.m-auto.font-bold Monochord divisions
-  svg.max-h-400px.min-w-100px.min-h-250px.select-none(
+  svg.min-w-100px.select-none(
     version="1.1",
     baseProfile="full",
     :viewBox="`-10 -5 120 35`",

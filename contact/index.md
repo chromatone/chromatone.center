@@ -4,7 +4,7 @@ subtitle: The project and it's founder
 tags: main
 date: 2021-01-01
 org:
-  avatar: /media/logo/logo.svg
+  avatar: /media/logo/smooth.svg
   name: Chromatone
   pos: HQ
   place: Moscow, Russia

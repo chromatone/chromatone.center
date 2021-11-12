@@ -4,14 +4,9 @@ export const pages = getTags('./')
 
 export const nav = [
   {
-    text: 'Color',
-    link: '/color/',
-    items: pages.color,
-  },
-  {
-    text: 'Music',
-    link: '/music/',
-    items: pages.music,
+    text: 'Theory',
+    link: '/theory/',
+    items: pages.theory,
   },
   {
     text: 'Apps',

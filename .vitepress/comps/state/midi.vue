@@ -12,15 +12,18 @@
     )
   client-only
     transition(name="panel")
-      midi-panel.panel(v-if="panel")
+      midi-panel.panel(v-if="panel" ref="target")
 </template>
 
 <script setup>
 import { useMidi } from '@use/midi.js'
 import { pitchColor } from 'chromatone-theory'
-import { useStorage } from '@vueuse/core'
+import { onClickOutside } from '@vueuse/core'
+
 
 const panel = useStorage('global-midi-panel', false)
+const target = ref(null)
+onClickOutside(target, () => panel.value = false)
 
 const { midi } = useMidi();
 </script>

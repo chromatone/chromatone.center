@@ -10,6 +10,6 @@ const emit = defineEmits(['toggle'])
 
 <style>
 .sidebar-button {
-  @apply cursor-pointer h-full inline-flex px-2 items-center;
+  @apply cursor-pointer h-full inline-flex px-2 items-center lg:hidden;
 }
 </style>

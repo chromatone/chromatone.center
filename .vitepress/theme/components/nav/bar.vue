@@ -2,8 +2,8 @@
 header.nav-bar
   nav-bar-title
 
-  //- div(class="hidden lg:flex px-3 ml-4 lg:ml-10")
-  //-   nav-links
+  div(class="hidden lg:flex px-3 ml-4 lg:ml-10")
+    nav-links
   .flex-grow
   state-midi
   client-only

@@ -3,6 +3,7 @@ title: Monochord
 subtitle: Virtual string for frequency and length ratio explorations
 tags: apps-sound
 date: 2021-09-12
+cover: apps/monochord.png
 ---
 
 

@@ -8,6 +8,3 @@ date: 2021-09-15
 ---
 
 ![svg](./chromatic.svg)
-
-
-https://en.wikipedia.org/wiki/Interval_cycle

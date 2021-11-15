@@ -1,5 +1,5 @@
 <template lang="pug">
-main.bg
+main
   page-header
   transition(name="fade")
     .content-container(:key="route.path")
@@ -22,9 +22,7 @@ main {
   @apply flex flex-col;
   justify-content: stretch;
 }
-.bg {
-  @apply bg-light-600 dark:(bg-dark-600) transition-all duration-600 ease-out;
-}
+
 .content-container {
   @apply flex flex-col flex-1 items-stretch;
 }

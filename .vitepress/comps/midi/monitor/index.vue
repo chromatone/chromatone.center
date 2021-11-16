@@ -1,8 +1,9 @@
 <template lang="pug">
 .flex.flex-col
   midi-panel(:toChannel="false")
-  .fullscreen-container(ref="screen" @mouseleave="active = false")
-    full-screen.absolute.bottom-2.right-4.z-20(:el="screen")
+    full-screen
+  .fullscreen-container#screen(@mouseleave="active = false")
+
     .flex.w-full.h-full.mt-4
       .flex.flex-col.flex-1.text-center(v-for="ch in midi.channels", :key="ch.num")
         .header {{ ch.num }}

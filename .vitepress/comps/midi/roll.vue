@@ -5,7 +5,7 @@
   .fullscreen-container(ref="screen")
     control-start.absolute( @click="initiate()", v-if="!state.initiated") Start
     full-screen.absolute.bottom-6.right-2(:el="screen")
-    canvas#spectrogram.m-4.max-h-80vh.w-full.rounded-md(
+    canvas#spectrogram.m-4.max-h-80vh.w-full.rounded-3xl(
       :width="state.width"
       :height="state.height"  
     )

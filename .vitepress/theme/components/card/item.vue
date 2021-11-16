@@ -47,8 +47,9 @@ const theColor = computed(() => props.color);
     background-color: v-bind(theColor);
   }
   & .info {
-    @apply px-2 py-4 ml-2 m-2 z-4 max-w-24em bg-light-100 dark:bg-dark-100 rounded-lg;
-    backdrop-filter: blur(10px) opacity(30%);
+    @apply px-2 py-4 ml-2 m-2 z-4 max-w-24em bg-light-100 bg-opacity-80 dark:bg-dark-100 rounded-xl;
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
     flex: 1 1 100%;
   }
   & .title {

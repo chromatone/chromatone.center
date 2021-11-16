@@ -18,7 +18,7 @@
         @click="map.hiddenTracks[t] = !map.hiddenTracks[t]"
         :class="{ active: !map.hiddenTracks[t] }"
         ) {{ track.channel }}: {{ track.name }} {{ track.instrument.family }}
-  svg#visual.max-h-90-vh(
+  svg#visual.max-h-70vh(
     version="1.1",
     baseProfile="full",
     :viewBox="`0 0 ${map.width} ${map.height}`",

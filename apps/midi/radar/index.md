@@ -6,4 +6,4 @@ date: 2021-11-9
 cover: apps/geometry.png
 ---
 
-<draw-geometry />
+<midi-radar />

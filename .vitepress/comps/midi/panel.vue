@@ -33,7 +33,9 @@
         pattern="[0-9]*"
         max="16",min="1",length="12", 
         v-model="midi.channel")
-    midi-filter
+    midi-filter.mx-2
+    .is-group.mx-1.p-1
+      slot
 </template>
 
 <script setup>

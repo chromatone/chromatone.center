@@ -58,6 +58,7 @@ Current tasks and progress are open [at this ClickUp project](https://sharing.cl
   - [meyda](https://meyda.js.org)
   - [aubiojs](https://github.com/qiuxiang/aubiojs)
   - [audiomotion-analyzer](https://www.npmjs.com/package/audiomotion-analyzer) 
+- [OpenLayers](https://github.com/openlayers/openlayers)
   
 
 #### AudioWorklet further research

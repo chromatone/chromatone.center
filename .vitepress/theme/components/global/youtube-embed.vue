@@ -1,6 +1,6 @@
 <template lang="pug">
 .iframe-container
-  iframe.shadow-2xl.rounded-lg.mx-auto.my-2(
+  iframe.shadow-2xl.rounded-2xl.overflow-hidden.mx-auto(
     loading="lazy"
     :src="`https://www.youtube-nocookie.com/embed/${video}`", 
     title="YouTube video player", 

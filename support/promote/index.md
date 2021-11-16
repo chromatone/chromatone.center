@@ -8,6 +8,12 @@ buttons:
     type: instagram
 ---
 
+## Follow us on Instagram
+
+[@chromatone.center](https://instagram.com/chromatone.center) is the place where we share news and announcements about the project.
+
+## Share your creations
+
 You can share your creations with the world! Or you can bring us in to make lectures, workshops or performances at your places. We're open to any kind of collaboration!
 
 ## NAMM2019 @ Moscow

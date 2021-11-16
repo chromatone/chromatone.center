@@ -1,5 +1,5 @@
 ---
-title: Chroma roll
+title: Roll
 subtitle: Visual representation of any audio chroma content
 tags: chroma
 date: 2021-09-28

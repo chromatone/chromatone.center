@@ -1,5 +1,5 @@
 ---
-title: Circular metronome
+title: Circles
 subtitle: A circular rhythm and polyrhythm exploration tool
 tags: rhythm-app
 date: 2021-10-02

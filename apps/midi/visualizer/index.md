@@ -1,5 +1,5 @@
 ---
-title: MIDI file visualizer
+title: File visualizer
 subtitle: Render a MIDI-file to a colorful picture
 date: 2021-05-20
 tags: midi

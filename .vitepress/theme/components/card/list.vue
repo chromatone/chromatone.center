@@ -11,7 +11,8 @@
     card-item(
       :item="area", 
       :color="color"
-      )  
+      )
+      slot
 </template>
 
 <script setup>

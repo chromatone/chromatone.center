@@ -42,7 +42,7 @@ const bg = computed(() => `url(/media/${props.item.data?.cover}`);
       .text-md.mt-4.mb-2.font-normal.w-full(v-if="item.subtitle") {{ item.subtitle }}
       page-buttons(:buttons="item.data?.buttons" :color="color")
 
-  card-list(v-if="theme.pages?.[item.data?.list]",:rows="theme.pages?.[item.data?.list]" )
+  card-list(v-if="theme.pages?.[item.data?.list]",:rows="theme.pages?.[item.data?.list]" ) {{ item.title }}
 </template>
 
 <style scoped>

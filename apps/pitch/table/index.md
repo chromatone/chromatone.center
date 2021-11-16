@@ -1,5 +1,5 @@
 ---
-title: Pitch table
+title: Table
 subtitle: Every possible note in a huge expandable table
 tags: pitch
 cover: apps/table.png

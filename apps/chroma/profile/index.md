@@ -1,5 +1,5 @@
 ---
-title: Chroma profile
+title: Profile
 subtitle: Get info for any possible chroma combination
 tags: chroma
 date: 2021-05-12

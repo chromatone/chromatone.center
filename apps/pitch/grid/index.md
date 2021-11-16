@@ -1,5 +1,5 @@
 ---
-title: Pitch grid
+title: Grid
 subtitle: Write note sequences in flexible grids
 tags: pitch
 date: 2021-11-02

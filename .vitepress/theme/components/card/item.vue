@@ -8,6 +8,8 @@
       .title
         .mr-2.text-2xl(v-if="item.data.emoji") {{ item.data.emoji }}
         .text-2xl.p-2 {{ item.title }}
+          .absolute.top-6px.text-sm.font-normal.opacity-50
+            slot
         .flex-1
         card-date.mr-2(v-if="!item.data.product",:date="item.lastModified")
       .subtitle(

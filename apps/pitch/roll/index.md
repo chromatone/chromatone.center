@@ -1,5 +1,5 @@
 ---
-title: Pitch roll
+title: Roll
 subtitle: Plot main pitch of any incoming audio on an endless roll
 tags: pitch
 cover: apps/roll.png

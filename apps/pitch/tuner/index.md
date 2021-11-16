@@ -1,5 +1,5 @@
 ---
-title: Pitch tuner
+title: Tuner
 subtitle: Fast and precise instrument tuner web-app
 tags: pitch
 cover: apps/tuner.svg

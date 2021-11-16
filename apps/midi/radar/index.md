@@ -1,5 +1,5 @@
 ---
-title: MIDI radar
+title: Radar
 subtitle: Circular MIDI visualisation experiment
 tags: midi
 date: 2021-11-9

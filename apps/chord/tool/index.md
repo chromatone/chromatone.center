@@ -1,5 +1,5 @@
 ---
-title: Chord tool
+title: Finder
 subtitle: easify find different chords note colors
 cover: apps/chord.svg
 tags: chord

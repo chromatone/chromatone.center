@@ -1,5 +1,5 @@
 ---
-title: Rhythm loops
+title: Bars
 subtitle: A linear metronome and polyrhythm exploration tool
 tags: rhythm-app
 date: 2021-10-01

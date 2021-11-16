@@ -1,5 +1,5 @@
 ---
-title: Drone app
+title: Drone
 subtitle: Digital shruti box or tanpura tool online
 tags: pitch
 date: 2021-10-12

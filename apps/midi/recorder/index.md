@@ -1,5 +1,5 @@
 ---
-title: MIDI recorder
+title: Recorder
 subtitle: Record MIDI as you play – visualize and save your music
 date: 2021-08-04
 tags: midi

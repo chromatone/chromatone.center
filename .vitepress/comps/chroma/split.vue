@@ -1,7 +1,7 @@
 <template lang="pug">
-.fullscreen-container.rounded-4xl(ref="screen")
+.fullscreen-container.rounded-4xl#screen
   control-start.absolute(v-if="!tuner.initiated" @click="init()") Start
-  full-screen.absolute.bottom-6.right-6.z-30(:el="screen")
+  full-screen.absolute.bottom-6.right-6.z-30
   svg.max-h-3xl.w-full(
   version="1.1",
   baseProfile="full",
@@ -55,8 +55,6 @@
 import { pitchColor, rotateArray, scales, notes, getCircleCoord } from 'chromatone-theory'
 import { useTuner } from '@use/tuner.js'
 const { init, tuner, chain } = useTuner();
-
-const screen = ref();
 
 </script>
 

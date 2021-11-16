@@ -4,7 +4,7 @@
   .main
 
     transition(name="fade")
-      .sidebar-mask(v-show="openSideBar", @click="toggleSidebar(false)")
+      .sidebar-mask.z-5(v-show="openSideBar", @click="toggleSidebar(false)")
     side-bar(:open="openSideBar")
     home(v-if="$frontmatter.template == 'home'")
     page-main(v-else)
@@ -83,5 +83,14 @@ const pageClasses = computed(() => {
 <style >
 .main {
   @apply relative flex min-h-screen bg-cover bg-center bg-fixed;
+}
+
+.sidebar-mask {
+  transition: all 300ms ease-out;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  @apply bg-gray-800 bg-opacity-60;
 }
 </style>

@@ -1,5 +1,5 @@
 <template lang="pug">
-.fullscreen-container.mb-8.p-4.rounded-2xl.transition-all.duration-800.ease-out(ref="screen" :style="{ backgroundColor: mix.hex }")
+.fullscreen-container.mb-8.p-4.rounded-4xl.transition-all.duration-800.ease-out(ref="screen" :style="{ backgroundColor: mix.hex }")
   full-screen.absolute.top-2.right-2(:el="screen")
   svg.max-h-3xl.w-full.select-none(
     version="1.1",

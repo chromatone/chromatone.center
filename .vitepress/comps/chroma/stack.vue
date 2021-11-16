@@ -1,5 +1,5 @@
 <template lang="pug">
-.flex.flex-col.cursor-pointer.select-none.p-2.m-2.rounded-lg.transition-all.duration-300.ease(
+.flex.flex-col.cursor-pointer.select-none.p-2.m-2.rounded-xl.transition-all.duration-300.ease(
   :style="{ backgroundColor: chromaColorMix(chroma, actualPitch).hsl }"
     @mousedown="playChroma(chroma, actualPitch); pressed = true"
     @touchstart.prevent.stop="playChroma(chroma, actualPitch); pressed = true"

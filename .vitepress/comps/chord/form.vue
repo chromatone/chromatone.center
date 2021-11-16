@@ -1,6 +1,6 @@
 <template lang="pug">
-.flex.flex-col.items-center
-  .flex.flex-wrap
+.flex.flex-col.items-center#screen.fullscreen-container.rounded-4xl
+  .flex.flex-wrap.mt-6
     .note(
       v-for="note in notes"
       :key="note"
@@ -9,43 +9,56 @@
       :style="{ backgroundColor: activeNotes[note.pitch] ? pitchColor(note.pitch) : note.pos == 1 ? '#333' : '#aaa' }"
     ) {{ note.name }}
   .p-4.flex.flex-wrap.items-center
-    label(
-      for="zoom"
-    ) ZOOM
-    input.m-2(
-      id="zoom"
-      type="range"
-      min="75"
-      max="1000"
-      v-model="zoom"
-    )
-    label(
-      for="speed"
-    ) SPEED
-    input.m-2(
-      id="speed" 
-      type="range"
-      min="10"
-      max="150"
-      v-model="speed"
-    )
-    button(
-      @click="moving = !moving"
-    )
-      la-pause(v-if="moving")
-      la-play(v-else)
+    .is-group.flex
+      button(
+        @click="moving = !moving"
+      )
+        la-pause(v-if="moving")
+        la-play(v-else)
 
-    button(
-      @click="sounding = !sounding"
-    )
-      la-volume-up(v-if="!sounding")
-      la-volume-off(v-else)
+      button(
+        @click="sounding = !sounding"
+      )
+        la-volume-up(v-if="!sounding")
+        la-volume-off(v-else)
+      full-screen
   svg#chord-form(
     version="1.1",
     baseProfile="full",
     viewBox="0 0 1260 800",
     xmlns="http://www.w3.org/2000/svg",
+    v-drag="modify"
   )
+    g.zoom
+      text(
+        y="760"
+        fill="currentColor"
+        x="12"
+      ) ZOOM X{{ zoom / 100 }}
+      line(
+        :y1="800 - zoom / 1000 * 800"
+        y2="800"
+        transform="translate(4 0)"
+        stroke-linecap="round"
+        stroke="currentColor"
+        stroke-opacity="0.5"
+        stroke-width="8"
+      )
+    g.speed
+      text(
+        y="780"
+        x="12"
+        fill="currentColor"
+      ) SPEED X{{ speed / 100 }}
+      line(
+        :x1="speed / 400 * 1260"
+        x2="0"
+        transform="translate(0 795)"
+        stroke-linecap="round"
+        stroke="currentColor"
+        stroke-opacity="0.5"
+        stroke-width="12"
+      )
     line(
       x1="0"
       x2="1200"
@@ -88,10 +101,10 @@
 
 <script setup>
 import { notes, pitchColor } from 'chromatone-theory'
-import { reactive, computed, ref, watch, watchEffect } from 'vue'
 import { useStorage, useTimestamp } from '@vueuse/core'
 import { chromaColorMix } from "@use/colors.js";
 import { useSynth } from '@use/synth.js'
+import { clampNum } from '@use/theory'
 const frequencies = []
 for (let f = 0; f < 13; f++) {
   frequencies[f] = Math.pow(2, f / 12)
@@ -101,7 +114,7 @@ const width = 1200
 const numPoints = 600
 const ratio = width / numPoints
 
-const { timestamp, pause, resume } = useTimestamp({ controls: true, offset: Date.now() })
+const { timestamp, pause, resume } = useTimestamp({ controls: true, offset: Date.now(), immediate: false })
 const moving = useStorage('chord-moving', true)
 watch(moving, val => {
   if (val) {
@@ -110,6 +123,8 @@ watch(moving, val => {
     pause()
   }
 })
+
+
 
 const activeNotes = useStorage('chord-notes-obj', {})
 
@@ -130,6 +145,11 @@ const zoom = useStorage('chord-zoom', 400)
 const speed = useStorage('chord-speed', 100)
 function select(pitch) {
   activeNotes.value[pitch] ? delete activeNotes.value[pitch] : activeNotes.value[pitch] = true
+}
+
+function modify(drag) {
+  speed.value = clampNum(speed.value, drag.delta[0], 10, 400)
+  zoom.value = clampNum(zoom.value, -drag.delta[1], 75, 1000)
 }
 
 function computeSine(note, pos) {

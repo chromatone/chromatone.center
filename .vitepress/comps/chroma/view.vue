@@ -1,5 +1,5 @@
 <template lang="pug">
-.fullscreen-container(ref="screen")
+.fullscreen-container.rounded-4xl(ref="screen")
   control-start.absolute(v-if="!tuner.initiated" @click="init()") Start
   full-screen.absolute.bottom-6.right-6.z-30(:el="screen")
   svg.max-h-3xl.w-full(
@@ -12,7 +12,8 @@
       style="transition: all 300ms ease-in-out;transform-box: fill-box; transform-origin: center center;"
       :cx="50",
       :cy="50",
-      :r="100 * tuner.rms + 10",
+      :r="10",
+      :style="{ transform: `scale(${0.5 + 20 * tuner.rms})` }"
       :fill="tuner.note.silent ? '#888' : tuner?.note.color",
     )
     text(
@@ -34,7 +35,8 @@
         style="transition: all 300ms ease-in-out;transform-box: fill-box; transform-origin: center center;"
         :cx="getCircleCoord(i).x",
         :cy="getCircleCoord(i).y",
-        :r="2 + 12 * amount",
+        :r="2",
+        :style="{ transform: `scale(${0.5 + 5 * amount})` }"
         :fill="pitchColor(i, 3, amount)",
       )
       text(

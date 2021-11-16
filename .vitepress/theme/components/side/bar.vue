@@ -75,7 +75,7 @@ const route = useRoute();
   flex: 1 0 16.4rem;
   overflow-y: auto;
   transition: all 300ms ease-out;
-  @apply z-20 fixed top-$header-height bottom-0 left-0 transform -translate-x-full lg:(static translate-x-0) shadow-xl bg-light-600 dark:bg-dark-700;
+  @apply z-20 fixed rounded-xl top-$header-height bottom-0 left-0 transform -translate-x-full lg:(static translate-x-0) shadow-xl bg-light-600 dark:bg-dark-700;
   & a {
     @apply no-underline;
   }
@@ -90,7 +90,7 @@ const route = useRoute();
 }
 
 .first {
-  @apply py-2 transition-all duration-300 ease-out text-xl;
+  @apply py-2 transition-all  duration-300 ease-out text-xl;
 }
 
 .second {

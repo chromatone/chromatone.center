@@ -34,7 +34,7 @@ const theColor = computed(() => props.color);
 
 <style  scoped>
 .crd {
-  @apply relative rounded-xl bg-light-500 dark:bg-dark-500
+  @apply relative  bg-light-500 dark:bg-dark-500
   flex flex-wrap items-stretch justify-stretch
   transition-all  duration-200
   static;
@@ -42,7 +42,7 @@ const theColor = computed(() => props.color);
     @apply bg-light-100 dark:bg-dark-400;
   }
   & .container {
-    @apply flex rounded-xl flex-wrap min-w-full items-stretch w-full relative;
+    @apply flex flex-wrap min-w-full items-stretch w-full relative;
     flex: 1 1 100%;
     background-color: v-bind(theColor);
   }
@@ -58,7 +58,7 @@ const theColor = computed(() => props.color);
     @apply mt-4 mb-2 p-2 font-normal w-full;
   }
   & .cover {
-    @apply absolute top-0 w-full h-full bg-cover bg-center rounded-xl z-1;
+    @apply absolute top-0 w-full h-full bg-cover bg-center z-1;
 
     filter: saturate(50%) brightness(160%) opacity(30%);
     transition: all 900ms cubic-bezier(0.6, -0.1, 0, 1.1);

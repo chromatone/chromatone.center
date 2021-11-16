@@ -1,8 +1,8 @@
 <template lang="pug">
-.fullscreen-container#screen
+.fullscreen-container#screen.rounded-4xl.overflow-hidden.mb-4
   control-start.absolute.z-20(@click="start()", v-if="!tuner.running") Start tuner
   full-screen.absolute.bottom-6.right-6.z-3
-  svg#tuner.rounded-xl.w-full.h-full.-z3(
+  svg#tuner.w-full.min-h-full(
   :opacity="tuner.running ? 1 : 0.3"
   version="1.1",
   baseProfile="full",

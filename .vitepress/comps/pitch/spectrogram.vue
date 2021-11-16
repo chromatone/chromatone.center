@@ -1,18 +1,18 @@
 <template lang="pug">
 .flex.flex-col.justify-center.text-white
-  .fullscreen-container#screen
-    canvas#spectrogram.m-4.h-full.min-h-30em.w-full.rounded-md.cursor-pointer(
+  .fullscreen-container.rounded-4xl.overflow-hidden#screen.m-4
+    canvas#spectrogram.h-full.min-h-30em.w-full.rounded-md.cursor-pointer(
       :width="state.width"
       :height="state.height"
       v-drag="dragScreen"
     )
     control-start.absolute(v-if="!state.initiated" @click="initiate()")
-    full-screen.absolute.bottom-6.right-2
-    .absolute.top-6.left-4.text-xl.select-none x{{ state.speed }}
-    .absolute.bottom-8.left-2.text-xl.select-none.cursor-pointer(@mousedown="paused = !paused")
+    full-screen.absolute.bottom-2.right-2
+    .absolute.top-4.left-4.text-xl.select-none x{{ state.speed }}
+    .absolute.bottom-4.left-4.text-xl.select-none.cursor-pointer(@mousedown="paused = !paused")
       la-play(v-if="paused")
       la-pause(v-else)
-    button.absolute.top-6.right-2.text-xl.select-none.cursor-pointer(@mousedown="clear()")
+    button.absolute.top-4.right-4.text-xl.select-none.cursor-pointer(@mousedown="clear()")
       la-trash-alt
 
 </template>

@@ -21,7 +21,7 @@ import { Frequency } from 'tone'
 
 const grid = reactive({
   width: 1000,
-  height: 500,
+  height: 720,
   footer: 60,
 })
 
@@ -33,7 +33,7 @@ const loop = useLoop(props.order);
 </script>
 
 <template lang="pug">
-.flex.flex-col.shadow-xl.rounded-xl.border-4(
+.flex.flex-col.shadow-xl.rounded-3xl.overflow-hidden.border-4(
   :style="{ zIndex: active ? 100 : 1, opacity: active ? 1 : 0.25, borderColor: color, }"
 )
   .flex.flex-wrap.p-2(

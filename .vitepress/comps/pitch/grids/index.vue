@@ -17,8 +17,8 @@ const active = useStorage('pitch-bars-active', 0);
 #screen.flex.flex-col.items-center.rounded-xl.fullscreen-container.p-2
   state-transport
     control-scale.m-4
-  .flex.flex-wrap.mt-4.w-full.justify-start.px-2
-    button.px-4.rounded-t-md.mx-2px.transition-all.duration-300.ease.flex.items-center(
+  .flex.flex-wrap.mt-4.w-full.justify-start.px-6
+    button.px-2.rounded-t-xl.mx-2px.transition-all.duration-300.ease.flex.items-center(
       v-for="(loop,l) in loops" :key="loop"
       @mousedown="active = l"
       :class="{ active: active == l }"
@@ -37,7 +37,7 @@ const active = useStorage('pitch-bars-active', 0);
     full-screen
     button.text-button.flex.items-center(@click="renderMidi()")
       la-file-download
-  .flex.flex-col.mb-4.mx-4.w-full.relative.h-600px
+  .flex.flex-col.mb-4.mx-4.w-full.relative.h-640px
     transition-group(name="fade")
       pitch-grids-grid.absolute.w-full(
         v-for="(loop,l) in loops" :key="loop"

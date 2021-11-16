@@ -19,7 +19,7 @@ defineEmits(['toggle']);
 
 <style scoped>
 .nav-bar {
-  @apply lg:(sticky top-0) inset-x-0 z-30
+  @apply lg:(sticky top-0) inset-x-0 z-40
     flex space-between align-center select-none
     border-b-1px border-$c-divider
     py-0.7rem px-4 z-40

@@ -5,7 +5,7 @@
       button.text-button.flex.items-center(@click="renderMidi()")
         la-file-download
       full-screen.text-md
-    beat-bars-bar.my-1.rounded-xl.shadow-lg(
+    beat-bars-bar.my-1.rounded-3xl.shadow-lg(
       v-for="(loop,i) in loops",
       :key="loop"
       :order="i"

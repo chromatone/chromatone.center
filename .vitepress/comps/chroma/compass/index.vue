@@ -1,5 +1,5 @@
 <template lang="pug">
-.fullscreen-container(ref="screen")
+.fullscreen-container.rounded-4xl(ref="screen")
   full-screen.absolute.top-2.right-2.z-10(:el="screen")
   .relative.w-full.m-auto
     chroma-compass-circle#chroma-compass(
@@ -10,7 +10,7 @@
   .max-w-65ch.m-auto
     chroma-piano.w-xs.m-auto(
       :chroma="chroma" names) 
-    .is-group.flex.flex-col.p-2
+    .flex.flex-col.p-2
       .flex.flex-wrap.mx-auto.justify-center
         .chord-group(
           v-for="(name,count) in groupNames", 

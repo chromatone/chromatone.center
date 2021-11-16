@@ -1,5 +1,5 @@
 <template lang="pug">
-.max-w-55ch.mx-auto.flex.flex-col.items-stretch.w-full.transition-all.duration-500.ease-out.select-none.rounded-2xl.shadow-xl.border-8(
+.max-w-55ch.mx-auto.flex.flex-col.items-stretch.w-full.transition-all.duration-500.ease-out.select-none.rounded-4xl.shadow-xl.border-8(
   :style="{ borderColor: drone.color }"
 )
 

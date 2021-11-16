@@ -1,10 +1,10 @@
 <template lang="pug">
-.btn
-  button.mute.p-2(@click="open = !open" aria-label="Toggle mute")
+.btn.relative.w-8
+  button.absolute.mute.p-2(@click.stop.prevent="open = true" aria-label="Toggle mute")
     bi-volume-up(v-if="!mute")
     bi-volume-mute(v-else)
   transition(name="panel")
-    .absolute.w-10.h-32.rounded-full.has-bg.flex.flex-col.items-center.shadow-lg.cursor-pointer(
+    .absolute.w-10.h-32.rounded-full.has-bg.flex.flex-col.items-center.shadow-lg.cursor-pointer.z-20(
       style="touch-action:none;"
       ref="panel"
       v-if="open" 
@@ -30,7 +30,14 @@ import { onClickOutside } from '@vueuse/core'
 
 const panel = ref()
 
-onClickOutside(panel, () => open.value = false)
+function toggle(ev) {
+  open.value = !open.value
+}
+
+onClickOutside(panel, (ev) => {
+  if (open.value) ev.stopPropagation()
+  open.value = false
+})
 
 function dragVol(drag) {
   volume.value = clampNum(volume.value, -drag.delta[1] / 300, 0, 1)

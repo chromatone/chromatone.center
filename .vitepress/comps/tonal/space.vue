@@ -12,7 +12,7 @@
         :style="{ fontWeight: scale.handle == sc.handle ? 'bold' : 'normal' }"
         ) {{ sc.name }}
     full-screen(:el="screen")
-  .fullscreen-container(ref="screen")
+  .fullscreen-container.rounded-4xl(ref="screen")
     tonal-array(:tonic="globalScale.tonic", :scale="scale")    
 </template>
 

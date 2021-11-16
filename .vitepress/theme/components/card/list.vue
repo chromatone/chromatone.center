@@ -26,6 +26,6 @@ const props = defineProps({
 
 <style  scoped>
 .list {
-  @apply bg-light-400 dark:bg-dark-400 rounded-xl p-2 md:p-4 flex flex-col flex-auto;
+  @apply bg-light-400 mt-2 dark:bg-dark-400 rounded-3xl p-2 md:p-4 flex flex-col flex-auto;
 }
 </style>

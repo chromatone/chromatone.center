@@ -101,16 +101,17 @@ g.col(
         :stroke="sub[c] ? 'black' : pitchColor(cell + globalScale.tonic - 1, 3, doubleScale[c] == 1 ? 1 : 0.1, sub[c] ? 1 : 0.5)"
       )
   g.subs(
-    v-drag="dragDiv"
+
     :transform="`translate(0 ${height})`"
     v-show="active"
   )
     rect(
+      v-drag="dragDiv"
       :width="width"
       :height="footer"
       fill="transparent"
     )
-    g(
+    g.pointer-events-none(
       :transform="`translate(${s * width / step.length} 0)`"
       v-for="(sub,s) in step" :key="sub"
     )

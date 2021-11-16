@@ -42,7 +42,7 @@ const hoverShadow = computed(() => `
 
 <style scoped>
 .block {
-  @apply rounded-xl transition-all duration-150;
+  @apply rounded-2xl overflow-hidden transition-all duration-150;
   box-shadow: v-bind(shadow);
   &:hover {
     @apply shadow-xl;

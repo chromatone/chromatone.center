@@ -5,7 +5,7 @@
     control-start.absolute(v-if="!roll.initiated" @click="initiate()") Start
     full-screen.absolute.bottom-6.right-6.z-30(:el="screen")
     .absolute.top-6.left-4.text-2xl x{{ roll.speed }}
-    canvas#spectrogram.m-4.w-full.rounded-md.cursor-pointer(
+    canvas#spectrogram.m-4.w-full.rounded-4xl.cursor-pointer(
       v-drag="dragScreen"
       :width="roll.width"
       :height="roll.height"  

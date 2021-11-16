@@ -12,16 +12,17 @@
       la-times
     .flex-1.text-center.font-bold  {{ tuner.bpm.toFixed(1) }} BPM
 
-  .fullscreen-container.rounded-xl.cursor-pointer#screen(
-    v-drag="dragSpeed"
+  .fullscreen-container.rounded-4xl.cursor-pointer#screen(
+
   )
     control-start.absolute(@click="start()", v-if="!tuner.running") Start rolling 
-    .p-1.absolute.top-1.left-1.flex.items-center
+    .p-1.absolute.top-2.left-2.flex.items-center
       la-angle-double-right
       span {{ draw.speed.toFixed(1) }}
-    full-screen.absolute.bottom-1.right-1.z-30
-    canvas.w-full.h-full.rounded-xl(    
+    full-screen.absolute.bottom-2.right-2.z-30
+    canvas.w-full.h-full.rounded-4xl(    
       @dblclick="clear()"
+      v-drag="dragSpeed"
       :width="1920"
       :height="1080"
       ref="roll" )
@@ -132,6 +133,7 @@ watch(() => tuner?.frame, frame => {
 
 function start() {
   init();
+  draw.running = true
 };
 
 function clear() {

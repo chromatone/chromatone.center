@@ -1,5 +1,5 @@
 <template lang="pug">
-#map.h-400px.rounded-3xl.overflow-hidden.shadow-xl.mt-8
+#map.h-400px.rounded-3xl.overflow-hidden.shadow-xl.mb-8
 </template>
 
 <script setup>
@@ -9,37 +9,75 @@ import OSM from 'ol/source/OSM';
 import { fromLonLat } from 'ol/proj';
 import Feature from 'ol/Feature';
 import Point from 'ol/geom/Point';
-import { Circle, Style } from 'ol/style';
+import LineString from 'ol/geom/LineString';
+import { Circle, Style, Stroke, Fill } from 'ol/style';
 import VectorSource from 'ol/source/Vector';
 import { Tile as TileLayer, Vector as VectorLayer } from 'ol/layer';
 
+import { pitchColor } from 'chromatone-theory'
+
 import { useData } from 'vitepress'
+
+const center = [37.72265776708658, 55.79885477019039]
 
 onMounted(() => {
   const { frontmatter } = useData()
-  const cities = frontmatter.value.cities.map(city => {
-    return new Feature({
-      geometry: new Point(fromLonLat([city.coord[1], city.coord[0]]))
+  const cities = frontmatter.value.cities.map((city, c) => {
+    let feature = new Feature({
+      geometry: new Point(fromLonLat([city.coord[1], city.coord[0]])),
     })
+    let pitch = c % 12
+    feature.setStyle(new Style({
+      image: new Circle({
+        radius: 6,
+        stroke: new Stroke({ color: pitchColor(pitch, 3), width: 2 }),
+        fill: new Stroke({ color: pitchColor(pitch, 4, 1, 0.3) }),
+      }),
+    }))
+    return feature
   })
 
-  const vectorSource = new VectorSource({
+
+  const pointSource = new VectorSource({
     features: cities,
   });
 
-  const vectorLayer = new VectorLayer({
-    source: vectorSource,
+  const pointLayer = new VectorLayer({
+    source: pointSource,
+  });
+
+  const lines = frontmatter.value.cities.map((city, c) => {
+    let line = new Feature({
+      geometry: new LineString([fromLonLat(center), fromLonLat([city.coord[1], city.coord[0]])])
+    })
+    line.setStyle(new Style({
+      stroke: new Stroke({
+        color: pitchColor(c % 12, 4, 1, 0.3),
+        width: 2,
+      }),
+    }))
+    return line
+  })
+
+  const lineSource = new VectorSource({
+    features: lines,
+  });
+
+  const lineLayer = new VectorLayer({
+    source: lineSource,
   });
 
   new Map({
     layers: [
       new TileLayer({ source: new OSM() }),
-      vectorLayer,
+      lineLayer,
+      pointLayer,
+
     ],
     view: new View({
       center: fromLonLat([10, 30]),
       zoom: 1,
-      maxZoom: 8,
+      maxZoom: 9,
     }),
     target: 'map'
   });

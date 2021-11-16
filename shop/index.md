@@ -201,6 +201,9 @@ cities:
   - city: Moscow, Khamovniki
     country: Russia
     coord: [55.74483961420843, 37.59322618089409] 
+  - city: Austin, TX 
+    country: USA
+    coord: [30.20261175781122, -97.84653826002946] 
 
 ---
 

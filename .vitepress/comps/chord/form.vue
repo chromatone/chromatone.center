@@ -148,6 +148,9 @@ function select(pitch) {
 }
 
 function modify(drag) {
+  if (drag.tap) {
+    moving.value = !moving.value
+  }
   speed.value = clampNum(speed.value, drag.delta[0], 10, 400)
   zoom.value = clampNum(zoom.value, -drag.delta[1], 75, 1000)
 }

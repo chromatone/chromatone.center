@@ -1,6 +1,6 @@
 <template lang="pug">
-.flex.flex-col
-  .controls.flex.flex-wrap.justify-center.-mb-8.z-2
+.flex.flex-col.fullscreen-container.rounded-4xl#screen
+  .controls.flex.flex-wrap.justify-center.-mb-8.z-2.mt-8
     .is-group.flex.items-center.mr-2
       button.shadow.p-3.m-1.border-1.border-current.rounded(
         @click="time.move = !time.move"
@@ -34,170 +34,172 @@
         param="octave"
         v-model="fundamental.octave"
         )
+    .is-group.flex.items-center.ml-2.p-2
+      full-screen
   .relative.flex.flex-col.items-center
     button.shadow.p-3.m-1.border-1.border-current.rounded.absolute.top-80(
       @click="sound.init()"
       v-if="!sound.enabled"
     )
       bi-volume-up
-    svg#overtones.w-full.max-h-100vh(
-      version="1.1"
-      baseProfile="full"
-      :viewBox="`${-box.padX} ${-2 * box.padY} ${box.width + 2 * box.padX} ${box.height + 4 * box.padY}`"
-      xmlns="http://www.w3.org/2000/svg"
-      font-family="Commissioner, sans-serif"
-      @mouseleave="sound.stop()"
+  svg#overtones.w-full.max-h-90vh(
+    version="1.1"
+    baseProfile="full"
+    :viewBox="`${-box.padX} ${-2 * box.padY} ${box.width + 2 * box.padX} ${box.height + 4 * box.padY}`"
+    xmlns="http://www.w3.org/2000/svg"
+    font-family="Commissioner, sans-serif"
+    @mouseleave="sound.stop()"
+    )
+    string-guitar(
+      :length="box.width"
+      :transform="`translate(0,${box.height}) rotate(180) translate(-150, -12)`"
+    )
+    g#edges
+      line(
+        x1="0"
+        x2="0"
+        y1="0"
+        :y2="box.height"
+        stroke="gray"
+        stroke-width="0.2"
       )
-      string-guitar(
-        :length="box.width"
-        :transform="`translate(0,${box.height}) rotate(180) translate(-150, -12)`"
+      line(
+        :x1="box.width"
+        :x2="box.width"
+        y1="0"
+        :y2="box.height"
+        stroke="gray"
+        stroke-width="0.2"
       )
-      g#edges
-        line(
-          x1="0"
-          x2="0"
-          y1="0"
-          :y2="box.height"
-          stroke="gray"
-          stroke-width="0.2"
-        )
-        line(
-          :x1="box.width"
-          :x2="box.width"
-          y1="0"
-          :y2="box.height"
-          stroke="gray"
-          stroke-width="0.2"
-        )
-      g#fundamental.cursor-pointer(
-        @mouseover="fundamental.hover = true"
-        @mouseleave="fundamental.hover = false; sound.stopSaw()"
-        @mousedown="sound.playSaw(fundamental.frequency, true)"
-        @touchstart="sound.playSaw(fundamental.frequency, true)"
-        @mouseup="sound.stopSaw()"
-        @touchend="sound.stopSaw()"
-        @touchcancel="sound.stopSaw()"
-        )
-        rect.transition-all.duration-200(
-          x="0"
-          :y="-0.5 * (box.height - box.padY) / (overtones.count)"
-          :width="box.width"
-          :height="(box.height - box.padY) / (overtones.count)"
-          :fill="fundamental.stroke"
-          :opacity="fundamental.hover ? 0.2 : 0.05"
-        )
-        polyline(
-          fill="none"
-          v-bind="fundamental"
-          :stroke-width="fundamental.hover ? 2 : 1"
-        )
-        circle(
-          cx="0"
-          cy="0"
-          r="1"
-          :fill="fundamental.stroke"
-        )
-        circle(
-          :cx="box.width"
-          cy="0"
-          r="1"
-          :fill="fundamental.stroke"
-        )
-        text(
-          fill="currentColor"
-          :x="-2"
-          text-anchor="end"
-          y="2"
-          font-size="4px"
-          ) {{ fundamental.frequency.toFixed(1) }} Hz 
-        text(
-          fill="currentColor"
-          :x="box.width + 2"
-          text-anchor="start"
-          y="2"
-          font-size="4px"
-          ) {{ fundamental.note }} ({{ fundamental.cents.toFixed(0) }} cents)
-      g.overtone.cursor-pointer(
-        v-for="(overtone,i) in overtones.list"
-        :key="overtone"
-        :data-num="i + 1"
-        :transform="`translate(0, ${overtone.position})`"
-        @mouseenter="sound.change(overtone.frequency, i)"
-        @mouseover="overtone.hover = true"
-        @mouseleave="overtone.hover = false"
-        @mousedown="sound.play(overtone.frequency, i); overtone.active = true"
-        @touchstart="sound.play(overtone.frequency, i); overtone.active = true"
-        @mouseup="sound.stop(); overtone.active = false"
-        @touchend="sound.stop(); overtone.active = false"
-        @touchcancel="sound.stop(); overtone.active = false"
-        )
-        rect.transition-all.duration-200(
-          x="0"
-          :y="-0.5 * (box.height - box.padY) / (overtones.count)"
-          :width="box.width"
-          :height="(box.height - box.padY) / (overtones.count)"
-          :fill="overtone.stroke"
-          :opacity="overtone.hover ? 0.2 : 0.05"
-        )
-        polyline.transition-all.duration-200(
-          v-bind="overtone"
-          fill="none"
-          :stroke-width="overtone.hover ? overtone.active ? 2 : 1 : 0.5"
-        )
-        text(
-          fill="currentColor"
-          :x="-2"
-          text-anchor="end"
-          y="-3"
-          font-size="4px"
-          font-weight="bold"
-        ) {{ i + 1 }}
-        text(
-          fill="currentColor"
-          :x="-2"
-          text-anchor="end"
-          y="2"
-          font-size="4px"
-        ) {{ overtone.frequency.toFixed(1) }} Hz
-        text(
-          font-weight="bold"
-          fill="currentColor"
-          :x="box.width + 2"
-          text-anchor="start"
-          y="-3"
-          font-size="4px"
-        ) {{ overtones.intervals[i] }} 
-        text(
-          fill="currentColor"
-          :x="box.width + 2"
-          text-anchor="start"
-          y="2"
-          font-size="4px"
-        ) {{ overtone.note }} ({{ overtone.centDiff > 0 ? '+' : '' }}{{ overtone.centDiff }} cents)
-        circle.transition-all.duration-200(
-          v-for="dot in overtone.dots"
-          :key="dot"
-          cy="0"
-          :cx="dot"
-          :r="overtone.hover ? 1.2 : 1"
-          :fill="overtone.stroke"
-        )
+    g#fundamental.cursor-pointer(
+      @mouseover="fundamental.hover = true"
+      @mouseleave="fundamental.hover = false; sound.stopSaw()"
+      @mousedown="sound.playSaw(fundamental.frequency, true)"
+      @touchstart="sound.playSaw(fundamental.frequency, true)"
+      @mouseup="sound.stopSaw()"
+      @touchend="sound.stopSaw()"
+      @touchcancel="sound.stopSaw()"
+      )
+      rect.transition-all.duration-200(
+        x="0"
+        :y="-0.5 * (box.height - box.padY) / (overtones.count)"
+        :width="box.width"
+        :height="(box.height - box.padY) / (overtones.count)"
+        :fill="fundamental.stroke"
+        :opacity="fundamental.hover ? 0.2 : 0.05"
+      )
+      polyline(
+        fill="none"
+        v-bind="fundamental"
+        :stroke-width="fundamental.hover ? 2 : 1"
+      )
+      circle(
+        cx="0"
+        cy="0"
+        r="1"
+        :fill="fundamental.stroke"
+      )
+      circle(
+        :cx="box.width"
+        cy="0"
+        r="1"
+        :fill="fundamental.stroke"
+      )
+      text(
+        fill="currentColor"
+        :x="-2"
+        text-anchor="end"
+        y="2"
+        font-size="4px"
+        ) {{ fundamental.frequency.toFixed(1) }} Hz 
+      text(
+        fill="currentColor"
+        :x="box.width + 2"
+        text-anchor="start"
+        y="2"
+        font-size="4px"
+        ) {{ fundamental.note }} ({{ fundamental.cents.toFixed(0) }} cents)
+    g.overtone.cursor-pointer(
+      v-for="(overtone,i) in overtones.list"
+      :key="overtone"
+      :data-num="i + 1"
+      :transform="`translate(0, ${overtone.position})`"
+      @mouseenter="sound.change(overtone.frequency, i)"
+      @mouseover="overtone.hover = true"
+      @mouseleave="overtone.hover = false"
+      @mousedown="sound.play(overtone.frequency, i); overtone.active = true"
+      @touchstart="sound.play(overtone.frequency, i); overtone.active = true"
+      @mouseup="sound.stop(); overtone.active = false"
+      @touchend="sound.stop(); overtone.active = false"
+      @touchcancel="sound.stop(); overtone.active = false"
+      )
+      rect.transition-all.duration-200(
+        x="0"
+        :y="-0.5 * (box.height - box.padY) / (overtones.count)"
+        :width="box.width"
+        :height="(box.height - box.padY) / (overtones.count)"
+        :fill="overtone.stroke"
+        :opacity="overtone.hover ? 0.2 : 0.05"
+      )
+      polyline.transition-all.duration-200(
+        v-bind="overtone"
+        fill="none"
+        :stroke-width="overtone.hover ? overtone.active ? 2 : 1 : 0.5"
+      )
+      text(
+        fill="currentColor"
+        :x="-2"
+        text-anchor="end"
+        y="-3"
+        font-size="4px"
+        font-weight="bold"
+      ) {{ i + 1 }}
+      text(
+        fill="currentColor"
+        :x="-2"
+        text-anchor="end"
+        y="2"
+        font-size="4px"
+      ) {{ overtone.frequency.toFixed(1) }} Hz
+      text(
+        font-weight="bold"
+        fill="currentColor"
+        :x="box.width + 2"
+        text-anchor="start"
+        y="-3"
+        font-size="4px"
+      ) {{ overtones.intervals[i] }} 
+      text(
+        fill="currentColor"
+        :x="box.width + 2"
+        text-anchor="start"
+        y="2"
+        font-size="4px"
+      ) {{ overtone.note }} ({{ overtone.centDiff > 0 ? '+' : '' }}{{ overtone.centDiff }} cents)
+      circle.transition-all.duration-200(
+        v-for="dot in overtone.dots"
+        :key="dot"
+        cy="0"
+        :cx="dot"
+        :r="overtone.hover ? 1.2 : 1"
+        :fill="overtone.stroke"
+      )
 
-      g.lines(
-        v-for="(overtone,i) in overtones.list"
-        :key="i"
-        )
-        line(
-          v-for="dot in overtone.dots"
-          :key="dot"
-          :x1="dot"
-          :x2="dot"
-          :y1="(i + 1) * (box.height - box.padY) / (overtones.count)"
-          :y2="box.height + 12"
-          :stroke="overtone.stroke"
-          stroke-width="0.2"
-          :opacity="1 - i / (overtones.count + 2)"
-        )
+    g.lines(
+      v-for="(overtone,i) in overtones.list"
+      :key="i"
+      )
+      line(
+        v-for="dot in overtone.dots"
+        :key="dot"
+        :x1="dot"
+        :x2="dot"
+        :y1="(i + 1) * (box.height - box.padY) / (overtones.count)"
+        :y2="box.height + 12"
+        :stroke="overtone.stroke"
+        stroke-width="0.2"
+        :opacity="1 - i / (overtones.count + 2)"
+      )
 </template>
 
 <style scoped>
@@ -411,4 +413,4 @@ function calcSine(num, x, phase = 0) {
 function calcCents(base, freq) {
   return -(1200 / Math.log10(2)) * (Math.log10(base / freq)) % 1200
 }
-</script>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      </script>

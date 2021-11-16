@@ -1,5 +1,5 @@
 <template lang="pug">
-.btn.relative.w-8
+.btn.relative.w-10
   button.absolute.mute.p-2(@click.stop.prevent="open = true" aria-label="Toggle mute")
     bi-volume-up(v-if="!mute")
     bi-volume-mute(v-else)

@@ -39,7 +39,7 @@ import { colord } from 'colord'
         y="1"
         width="98"
         height="98"
-        rx="6"
+        rx="12"
         :fill="pitchColor(p, 3)"
       )
       g.text.pointer-events-none(

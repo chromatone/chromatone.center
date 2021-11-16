@@ -1,6 +1,7 @@
 <template lang="pug">
-.flex.flex-col
-  svg.min-w-100px.select-none(
+.flex.flex-col.fullscreen-container#screen.rounded-4xl
+  full-screen.absolute.top-2.right-2
+  svg.py-8.select-none(
     version="1.1",
     baseProfile="full",
     :viewBox="`-10 -5 120 35`",
@@ -67,8 +68,8 @@
       circle(r=1)
       circle(r=1 cx=100)
 
-.flex.flex-wrap.justify-center.m-4
-  button.p-2.border-1.shadow.m-2(@click="state.ratio = frac" v-for="(frac,fName) in fractions" :key="fName") {{ fName }}
+  .flex.flex-wrap.justify-center.m-4
+    button.p-2.border-1.shadow.m-2(@click="state.ratio = frac" v-for="(frac,fName) in fractions" :key="fName") {{ fName }}
 </template>
 
 <script setup>

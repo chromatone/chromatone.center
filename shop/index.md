@@ -201,13 +201,19 @@ cities:
   - city: Moscow, Khamovniki
     country: Russia
     coord: [55.74483961420843, 37.59322618089409] 
+  - city: Osielsko
+    country: Poland
+    coord: [53.18467813335776, 18.06578745624908] 
+  - city: Praha
+    country: Czech republic
+    coord: [50.11023377083589, 14.472452225457124] 
   - city: Austin, TX 
     country: USA
     coord: [30.20261175781122, -97.84653826002946] 
 
 ---
 
-We are the growing global community more than **{{$frontmatter.cities.length}}** musicians worldwide who've already implemented Chromatone into our daily music practice. Join us today!
+We are the growing global community more than **{{$frontmatter.cities.length +10}}** musicians worldwide who've already implemented Chromatone into our daily music practice. Join us today!
 
 <customer-map />
 

@@ -76,7 +76,7 @@
         :type="chord.type"
         :tonic="i"
       )
-      chroma-keys(
+      draw-keys(
         :transform="`scale(0.15) translate(${600 + box.padding.left},${i * 0.1 + box.padding.y + 44})`"
         :chroma="rotateArray(chords.scale.split(''), -i).join('')"
       )

@@ -1,58 +1,60 @@
-<template lang="pug">
-g
-  g(
-    v-for="(keys,k) in [whites, blacks]" :key="k"
-    )
-    g(
-      v-for="(note,i) in keys"
-      :key="i"
-    )
-      rect(
-        v-if="note"
-        :x="25 * i + 15 * k"
-        :y="0"
-        :width="22 - k * 4"
-        :height="100 - 35 * k"
-        :rx="5"
-        :ry="5"
-        :fill="colord(getNoteColor(note?.pitch)).toHex()"
-      )
-      text(
-        v-if="note && isInChord(note.pitch)"
-        fill="white"
-        font-family="Commissioner, sans-serif"
-        font-size="10px"
-        font-weight="bold"
-        text-anchor="middle",
-        dominant-baseline="middle"
-        :x="25 * (i % 12) + 11 + 13 * k",
-        :y="note?.pos == 1 ? 55 : 88",
-      ) {{ note?.name }}
-
-</template>
-
 <script setup>
-import { colord } from 'colord'
-import { notes, pitchColor, scales } from 'chromatone-theory'
 const props = defineProps({
-  chroma: { type: String, default: '100100010010' },
+  chroma: { type: String, default: '100010010000' },
+  pitch: { type: Number, default: 0 }
 });
 
-const whites = [3, 5, 7, 8, 10, 0, 2].map(n => notes[n])
-const blacks = [4, 6, false, 9, 11, 1].map(n => notes[n])
+import { globalScale } from '@use/theory.js'
+import { pitchColor, notes, rotateArray } from 'chromatone-theory'
 
-defineEmits([])
+const keys = reactive({
+  tonic: computed(() => props.pitch || globalScale.tonic),
+  white: [3, 5, 7, 8, 10, 0, 2],
+  black: [4, 6, null, 9, 11, 1],
+  chroma: computed(() => {
+    return rotateArray(props.chroma.split(''), props.pitch)
+  })
+});
 
-function isInChord(n) {
-  return props.chroma.split('')[n] == '1'
+function isInChroma(note) {
+  console.log(note, keys.chroma, keys.chroma[note])
+
+  return keys.chroma[note] == '1'
 }
 
-function getNoteColor(n) {
-  if (isInChord(n % 12)) return pitchColor(n % 12)
-  else if (scales.minor.steps[n]) return 'hsl(0,0%,90%)'
-  else return 'hsl(0,0%,50%)'
-}
 </script>
 
-<style scoped>
-</style>
+<template lang="pug">
+svg.w-full.rounded-2xl.overflow-hidden(
+  version="1.1",
+  baseProfile="full",
+  :viewBox="`0 0 700 300`",
+  xmlns="http://www.w3.org/2000/svg",
+  font-family="Commissioner, sans-serif"
+  font-weight="bold"
+  font-size="50"
+  text-anchor="middle",
+  dominant-baseline="middle"
+  )
+  rect(
+    fill="#eee2"
+    width="700"
+    height="300"
+  )
+  g.white
+    g.key(
+      v-for="(key,k) in keys.white" :key="key"
+      :transform="`translate(${k * 100} 0)`"
+    )
+      rect(
+        width="100"
+        height="300"
+        :fill="isInChroma(key) ? pitchColor(key) : '#eee'"
+
+      )
+      text(
+        y="250"
+        x="50"
+
+      ) {{ notes[key].name }}
+</template>

@@ -97,7 +97,8 @@ const props = defineProps({
 import { notes, rotateArray, getCircleCoord, pitchColor } from 'chromatone-theory'
 import { colord } from 'colord'
 import { chromaColorMix } from "@use/colors.js";
-import { playChroma, chordType, scaleType, stopChroma, globalScale, intervals } from '@use/theory.js'
+import { chordType, scaleType, intervals } from '@use/theory'
+import { playChroma, stopChroma, globalScale } from '@use/chroma'
 const pressed = ref(false);
 
 const state = reactive({

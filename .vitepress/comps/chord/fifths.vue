@@ -109,7 +109,7 @@
 import { useStorage } from '@vueuse/core'
 import { notes, rotateArray, getCircleCoord, pitchColor } from 'chromatone-theory'
 import { Chord, Note } from '@tonaljs/tonal'
-import {playNote, stopNote} from '@use/theory.js'
+import {playNote, stopNote} from '@use/chroma'
 
 const numFifths = [0, 7, 2, 9, 4, 11, 6, 1, 8, 3, 10, 5]
 const minors = numFifths.map(n => notes[n]);

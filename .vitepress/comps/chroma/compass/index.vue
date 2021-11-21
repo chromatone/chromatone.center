@@ -43,7 +43,8 @@
 import { chords, notes, pitchColor } from 'chromatone-theory'
 import { chromaColorMix } from '@use/colors.js'
 import { Chord, ScaleType, Interval } from '@tonaljs/tonal'
-import { chordType, scaleType, chordList, globalScale } from '@use/theory.js'
+import { chordType, scaleType, chordList } from '@use/theory'
+import { globalScale } from '@use/chroma'
 
 const screen = ref()
 

@@ -7,7 +7,8 @@
 </template>
 
 <script setup>
-import { globalScale, scaleList } from '@use/theory.js'
+import { scaleList } from '@use/theory'
+import { globalScale } from '@use/chroma'
 import { pitchColor } from 'chromatone-theory'
 </script>
 

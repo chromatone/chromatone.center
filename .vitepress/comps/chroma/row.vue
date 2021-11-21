@@ -5,21 +5,14 @@ import { Note, Pcset, Interval } from '@tonaljs/tonal'
 import { Frequency } from 'tone'
 import { synthOnce } from '@use/synth.js'
 import { midiOnce } from '@use/midi.js'
-import { globalScale, chordType, scaleType, playChroma, stopChroma, intervals } from '@use/theory.js'
+import { chordType, scaleType, intervals } from '@use/theory'
+import { globalScale, playChroma, stopChroma, } from '@use/chroma'
 
 const emit = defineEmits(['update:chroma'])
 const props = defineProps({
-  chroma: {
-    type: String,
-  },
-  twoRow: {
-    type: Boolean,
-    default: true,
-  },
-  editable: {
-    type: Boolean,
-    default: false,
-  }
+  chroma: { type: String, },
+  twoRow: { type: Boolean, default: true, },
+  editable: { type: Boolean, default: false, }
 });
 
 const state = reactive({

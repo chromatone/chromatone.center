@@ -1,9 +1,8 @@
 <script setup>
 import { useSequence } from '@use/sequence.js'
 import { isDark } from '@theme/composables/state.js'
-import { clampNum } from '@use/theory'
 import { tempo } from '@use/tempo'
-import { pitchColor, rotateArray } from 'chromatone-theory'
+import { pitchColor, rotateArray, clampNum } from 'chromatone-theory'
 import { levelColor } from '@use/colors'
 
 const width = 920

@@ -31,8 +31,8 @@ const props = defineProps({
 });
 
 import { isDark } from '@theme/composables/state'
-import { globalScale, clampNum } from '@use/theory'
-import { pitchColor } from 'chromatone-theory'
+import { globalScale } from '@use/chroma'
+import { pitchColor, clampNum } from 'chromatone-theory'
 import { Frequency } from 'tone'
 import { Chord } from "@tonaljs/tonal"
 

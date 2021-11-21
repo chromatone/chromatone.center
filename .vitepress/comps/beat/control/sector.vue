@@ -3,7 +3,7 @@
 <script setup>
 import { getCircleCoord } from 'chromatone-theory'
 import { isDark } from '@theme/composables/state.js'
-import { clampNum } from '@use/theory'
+import { clampNum } from 'chromatone-theory'
 import { levelColor } from "@use/colors.js"
 
 const emit = defineEmits(['update:modelValue'])

@@ -1,5 +1,6 @@
 import { tempo } from '@use/tempo.js'
-import { globalScale, rotateArray } from '@use/theory'
+import { rotateArray } from 'chromatone-theory'
+import { globalScale } from '@use/chroma'
 import {
   Sequence,
   PanVol,

@@ -37,7 +37,7 @@ g.math.cursor-pointer(
 
 <script setup>
 import { tempo } from '@use/tempo.js'
-import { clampNum } from '@use/theory'
+import { clampNum } from 'chromatone-theory'
 
 function drag(event) {
   tempo.bpm = clampNum(tempo.bpm, event.delta[0] / 16 - event.delta[1] / 16, 10, 500)

@@ -71,7 +71,7 @@
 import { useTempo, tap } from '@use/tempo.js'
 import { useTuner } from '@use/tuner.js'
 import { onKeyStroke } from '@vueuse/core'
-import { clampNum } from '@use/theory'
+import { clampNum } from 'chromatone-theory'
 const tempo = useTempo();
 const { init, tuner } = useTuner();
 

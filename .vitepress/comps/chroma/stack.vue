@@ -33,7 +33,9 @@ const props = defineProps({
 });
 
 import { pitchColor, rotateArray } from 'chromatone-theory'
-import { globalScale, noteNames, notes, chordType, scaleType, playChroma, stopChroma } from '@use/theory.js'
+import { noteNames, chordType, scaleType } from '@use/theory.js'
+import { notes } from 'chromatone-theory'
+import { playChroma, stopChroma, globalScale } from '@use/chroma'
 import { chromaColorMix } from "@use/colors.js"
 import { Progression, Chord } from "@tonaljs/tonal"
 import { Frequency } from 'tone'

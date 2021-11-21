@@ -49,7 +49,7 @@
 </template>
 
 <script setup>
-import { clampNum } from '@use/theory'
+import { clampNum } from 'chromatone-theory'
 import { renderMidi } from '@use/sequence'
 
 const props = defineProps({

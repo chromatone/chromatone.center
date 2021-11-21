@@ -27,7 +27,7 @@ g.cursor-pointer
 import { Frequency } from 'tone'
 import { pitchColor, pitchFreq } from 'chromatone-theory'
 import { synthAttack, synthRelease } from '@use/synth.js'
-import { playNote, stopNote } from '@use/theory.js'
+import { playNote, stopNote } from '@use/chroma'
 
 const props = defineProps({
   note: Object,

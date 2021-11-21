@@ -2,7 +2,7 @@
 import { getCircleCoord, rotateArray } from 'chromatone-theory'
 import { useSequence } from '@use/sequence.js'
 import { isDark } from '@theme/composables/state.js'
-import { clampNum } from '@use/theory'
+import { clampNum } from 'chromatone-theory'
 import { levelColor } from "@use/colors.js"
 import { tempo } from '@use/tempo'
 // import { useUrlSearchParams } from '@vueuse/core'

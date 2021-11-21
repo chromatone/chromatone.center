@@ -18,7 +18,7 @@
 
 <script setup>
 
-import { clampNum } from '@use/theory'
+import { clampNum } from 'chromatone-theory'
 import { Frequency, Synth, PanVol, gainToDb, LFO, Meter, dbToGain } from 'tone'
 import { useVoice } from './drone.js'
 

@@ -18,7 +18,7 @@
 import { useRafFn } from '@vueuse/core'
 import { rotateArray } from 'chromatone-theory'
 import { useTuner } from '@use/tuner.js'
-import { clampNum } from '@use/theory'
+import { clampNum } from 'chromatone-theory'
 const { init, tuner, chain } = useTuner();
 
 const screen = ref()

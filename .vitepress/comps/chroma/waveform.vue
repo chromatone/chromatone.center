@@ -45,7 +45,7 @@ import { reactive, computed, ref, watch, watchEffect } from 'vue'
 import { useStorage, useRafFn, useTransition, TransitionPresets } from '@vueuse/core'
 import { chromaColorMix } from "@use/colors.js";
 import { useSynth } from '@use/synth.js'
-import { globalScale, playChroma, stopChroma } from '@use/theory.js'
+import { playChroma, stopChroma, globalScale } from '@use/chroma'
 const frequencies = []
 for (let f = 0; f < 13; f++) {
   frequencies[f] = Math.pow(2, f / 12)

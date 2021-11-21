@@ -30,7 +30,7 @@
 
 <script setup>
 import { pitchColor, rotateArray } from 'chromatone-theory'
-import { clampNum } from '@use/theory'
+import { clampNum } from 'chromatone-theory'
 import { useTuner } from '@use/tuner.js'
 import { onKeyStroke } from '@vueuse/core'
 

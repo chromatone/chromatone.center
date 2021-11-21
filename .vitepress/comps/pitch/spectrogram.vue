@@ -21,7 +21,7 @@
 import AudioMotionAnalyzer from 'audiomotion-analyzer'
 import { initGetUserMedia, freqPitch } from 'chromatone-theory'
 import { UserMedia } from 'tone'
-import { clampNum } from '@use/theory'
+import { clampNum } from 'chromatone-theory'
 import { onKeyStroke } from '@vueuse/core'
 
 const screen = ref(null)

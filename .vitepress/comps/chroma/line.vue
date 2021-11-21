@@ -1,3 +1,16 @@
+<script setup>
+import { pitchColor } from 'chromatone-theory'
+import { globalScale } from '@use/chroma'
+const props = defineProps({
+  chroma: {
+    type: String,
+    default: '101010101010'
+  }
+});
+
+const dist = [0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0];
+</script>
+
 <template lang="pug">
 svg.select-none.w-20rem.m-2(
   version="1.1",
@@ -20,18 +33,7 @@ svg.select-none.w-20rem.m-2(
 )
 </template>
 
-<script setup>
-import { pitchColor } from 'chromatone-theory'
-import { globalScale } from '@use/theory'
-const props = defineProps({
-  chroma: {
-    type: String,
-    default: '101010101010'
-  }
-});
 
-const dist = [0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0];
-</script>
 
 <style scoped>
 </style>

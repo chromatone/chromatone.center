@@ -213,7 +213,7 @@ svg {
 import { useStorage, useTimestamp } from '@vueuse/core'
 import { pitchColor, freqColor, notes, pitchFreq } from 'chromatone-theory'
 import { Synth, start, Frequency } from "tone";
-import { globalScale } from '@use/theory'
+import { globalScale } from '@use/chroma'
 
 const box = reactive({
   width: 150,

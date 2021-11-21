@@ -181,7 +181,7 @@
 <script setup>
 import { getColorInfo } from '@use/colors.js'
 import { colord } from 'colord'
-import { clampNum } from '@use/theory'
+import { clampNum } from 'chromatone-theory'
 import { useTransition, TransitionPresets, useStorage } from '@vueuse/core'
 
 const screen = ref()

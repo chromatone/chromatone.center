@@ -13,7 +13,7 @@
 
 <script setup>
 import { notes, rotateArray, pitchColor } from 'chromatone-theory'
-import { globalScale } from '@use/theory.js'
+import { globalScale } from '@use/chroma'
 const emit = defineEmits(['update:pitch']);
 const props = defineProps({
   pitch: {

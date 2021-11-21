@@ -32,7 +32,7 @@
 </template>
 
 <script setup>
-import { globalScale } from '@use/theory'
+import { globalScale } from '@use/chroma'
 import { pitchColor } from 'chromatone-theory'
 import melakarta from './melakarta.json'
 

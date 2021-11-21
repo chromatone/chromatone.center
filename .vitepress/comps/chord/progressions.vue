@@ -1,8 +1,38 @@
+<script setup>
+import { pitchColor, rotateArray, notes } from 'chromatone-theory'
+import { noteNames } from '@use/theory'
+import { globalScale, playChroma, stopChroma } from '@use/chroma'
+import { Progression, Chord } from "@tonaljs/tonal";
+
+const props = defineProps({
+  list: { type: Object, required: true },
+  initial: { type: String, default: 'major' }
+});
+
+const state = reactive({
+  mode: useStorage('progresions-mode', 'bars'),
+  selected: props.initial,
+  current: computed(() => props.list[state.selected])
+})
+
+function getChords(degrees) {
+  let parsed = degrees.split('-');
+  let names = Progression.fromRomanNumerals(globalScale.note, parsed);
+  let chords = names.map(chord => {
+    let info = Chord.get(chord)
+    info.pitches = info.notes.map(name => noteNames[name])
+    info.tonicPitch = noteNames[info.tonic]
+    return info
+  })
+  return chords
+}
+</script>
+
 <template lang="pug">
 .flex.flex-col
   chroma-keys.flex-1.p-1.min-w-150px(
-    :chroma="'10010001000'"
-    :pitch="0"
+    :chroma="getChords(state.current.degrees)[0].chroma"
+    v-model:pitch="globalScale.tonic"
     )
   .flex.flex-col.items-stretch.my-2.p-8.border-2.rounded-xl(
     :style="{ borderColor: pitchColor(globalScale.tonic, 2), backgroundColor: pitchColor(globalScale.tonic, 2, 1, 0.05) }"
@@ -55,43 +85,3 @@
       .font-bold.px-1.mb-1 {{ progression.title }}
       .text-sm {{ progression.degrees }} 
 </template>
-
-<script setup>
-const props = defineProps({
-  list: {
-    type: Object,
-    required: true
-  },
-  initial: {
-    type: String,
-    default: 'major'
-  }
-});
-
-const state = reactive({
-  mode: useStorage('progresions-mode', 'bars'),
-  selected: props.initial,
-  current: computed(() => props.list[state.selected])
-})
-
-
-import { pitchColor, rotateArray, notes } from 'chromatone-theory'
-import { globalScale, noteNames, playChroma, stopChroma } from '@use/theory'
-import { Progression, Chord } from "@tonaljs/tonal";
-
-function getChords(degrees) {
-  let parsed = degrees.split('-');
-  let names = Progression.fromRomanNumerals(globalScale.note, parsed);
-  let chords = names.map(chord => {
-    let info = Chord.get(chord)
-    info.pitches = info.notes.map(name => noteNames[name])
-    info.tonicPitch = noteNames[info.tonic]
-    return info
-  })
-  return chords
-}
-
-</script>
-
-<style scoped>
-</style>

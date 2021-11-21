@@ -1,37 +1,8 @@
-<template lang="pug">
-.flex.flex-col.m-auto.items-center.w-full.max-w-65ch
-  .keys
-    .key(
-      @click="globalScale.tonic = i"
-      v-for="(bit,i) in '101101011010'"
-      :key="i"
-      :style="{ backgroundColor: i == globalScale.tonic ? pitchColor(i) : bit == '1' ? 'hsla(0,0%,80%,0.4)' : 'hsla(0,0%,10%,0.4)' }"
-      ) {{ notes[i].name }}
-  .control-row
-    .control(@click="control.count = !control.count") Notes 
-      la-arrows-alt-v(:style="{ opacity: control.count ? 1 : 0.3 }")
-
-    .control(@click="control.chord = !control.chord", :class="{ active: control.chord }") Chord
-      la-filter.ml-2(:style="{ opacity: control.chord ? 1 : 0.3 }")
-
-    .control(@click="control.scale = !control.scale") Scale
-      la-filter.ml-2(:style="{ opacity: control.scale ? 1 : 0.3 }")
-
-  .flex.flex-col.items-start
-    transition-group(name="list")
-      chroma-row.mb-6(
-        :twoRow="false"
-        v-for="(set) in sorted",
-        :key="set.chroma",
-        :chroma="set.chroma",
-        :tonic="tonic",
-        )
-</template>
-
 <script setup>
 import { Pcset } from '@tonaljs/tonal'
 import { pitchColor, notes } from 'chromatone-theory'
-import { globalScale, chordType, scaleType } from '@use/theory.js'
+import { chordType, scaleType } from '@use/theory.js'
+import { globalScale } from '@use/chroma'
 
 
 const tonic = useStorage('chroma-tonic', 0)
@@ -95,3 +66,33 @@ const sorted = computed(() => {
   @apply shadow-lg;
 }
 </style>
+
+<template lang="pug">
+.flex.flex-col.m-auto.items-center.w-full.max-w-65ch
+  .keys
+    .key(
+      @click="globalScale.tonic = i"
+      v-for="(bit,i) in '101101011010'"
+      :key="i"
+      :style="{ backgroundColor: i == globalScale.tonic ? pitchColor(i) : bit == '1' ? 'hsla(0,0%,80%,0.4)' : 'hsla(0,0%,10%,0.4)' }"
+      ) {{ notes[i].name }}
+  .control-row
+    .control(@click="control.count = !control.count") Notes 
+      la-arrows-alt-v(:style="{ opacity: control.count ? 1 : 0.3 }")
+
+    .control(@click="control.chord = !control.chord", :class="{ active: control.chord }") Chord
+      la-filter.ml-2(:style="{ opacity: control.chord ? 1 : 0.3 }")
+
+    .control(@click="control.scale = !control.scale") Scale
+      la-filter.ml-2(:style="{ opacity: control.scale ? 1 : 0.3 }")
+
+  .flex.flex-col.items-start
+    transition-group(name="list")
+      chroma-row.mb-6(
+        :twoRow="false"
+        v-for="(set) in sorted",
+        :key="set.chroma",
+        :chroma="set.chroma",
+        :tonic="tonic",
+        )
+</template>

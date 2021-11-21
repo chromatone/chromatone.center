@@ -1,7 +1,7 @@
 <script setup>
 import { levelColor } from "@use/colors.js"
 import { colord } from 'colord'
-import { clampNum } from '@use/theory'
+import { clampNum } from 'chromatone-theory'
 import { isDark } from '@theme/composables/state.js'
 import { tempo } from '@use/tempo'
 

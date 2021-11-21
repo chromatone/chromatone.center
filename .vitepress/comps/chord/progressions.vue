@@ -15,6 +15,8 @@ const state = reactive({
   current: computed(() => props.list[state.selected])
 })
 
+const variants = { ukulele: 'Ukulele', guitar: 'Guitar', piano: 'Piano', circles: 'Circles', squares: 'Squares', bars: 'Bars' }
+
 function getChords(degrees) {
   let parsed = degrees.split('-');
   let names = Progression.fromRomanNumerals(globalScale.note, parsed);
@@ -30,14 +32,11 @@ function getChords(degrees) {
 
 <template lang="pug">
 .flex.flex-col
-  chroma-keys.flex-1.p-1.min-w-150px(
-    v-model:pitch="globalScale.tonic"
-    )
   .flex.flex-col.items-stretch.my-2.p-8.border-2.rounded-xl(
     :style="{ borderColor: pitchColor(globalScale.tonic, 2), backgroundColor: pitchColor(globalScale.tonic, 2, 1, 0.05) }"
     )
     .flex.flex-wrap.mx-auto.my-4
-      control-choose(v-model="state.mode" :variants="{ tab: 'Tabs', piano: 'Piano', circles: 'Circles', squares: 'Squares', bars: 'Bars' }")
+      control-choose(v-model="state.mode" :variants="variants")
     chroma-keys.w-20em.mx-auto(:chroma="'1000000000000'", v-model:pitch="globalScale.tonic")
     .flex.flex-col.text-center.mb-2.relative
       .text-2xl.font-bold.flex.mx-auto.items-center {{ globalScale.note.name }} {{ state.current.title }}
@@ -46,17 +45,24 @@ function getChords(degrees) {
       .text-lg {{ state.current.degrees }} 
     transition(name="fade" mode="out-in")
       .flex.flex-wrap(:key="state.current")
-        .flex-1.flex.flex-col.items-stretch.select-none(v-for="(chord,c) in getChords(state.current.degrees)" :key="chord")
+        .flex-1.flex.flex-col.items-center.select-none(v-for="(chord,c) in getChords(state.current.degrees)" :key="c")
           chroma-keys.flex-1.p-1.min-w-150px(
             :chroma="chord.chroma"
             :pitch="chord.tonicPitch"
             :roman="state.current.degrees.split('-')[c]"
             v-if="state.mode == 'piano'"
             )
-          chroma-tab.m-4.w-10em(
+          chroma-tab.max-w-10em(
+            instrument="ukulele"
             :chroma="chord.chroma"
             :pitch="chord.tonicPitch"
-            v-if="state.mode == 'tab'"
+            v-if="state.mode == 'ukulele'"
+            )
+          chroma-tab.max-w-10em(
+            instrument="guitar"
+            :chroma="chord.chroma"
+            :pitch="chord.tonicPitch"
+            v-if="state.mode == 'guitar'"
             )
           chroma-circle.min-w-8em(
             :chroma="chord.chroma" 
@@ -70,7 +76,7 @@ function getChords(degrees) {
             :pitch="chord.tonicPitch" 
             :roman="state.current.degrees.split('-')[c]"
             )
-          chroma-stack.mt-4(
+          chroma-stack.mx-8(
             v-if="state.mode == 'bars'"
             :chroma="chord.chroma" 
             :pitch="chord.tonicPitch" 

@@ -38,7 +38,6 @@ function keyColor(key) {
   return isInChroma(key) ? pitchColor(key, 5) : notes[key].pos == 0 ? '#eee' : '#aaa'
 }
 
-
 </script>
 
 <template lang="pug">

@@ -8,7 +8,7 @@ specifiers:
   '@vueuse/gesture': ^1.0.0
   abcjs: ^5.12.0
   audiomotion-analyzer: 3.6.0
-  chromatone-theory: 1.3.5
+  chromatone-theory: 1.3.6
   colord: ^2.9.1
   esbuild-register: ^3.1.2
   fraction.js: ^4.1.2
@@ -46,7 +46,7 @@ dependencies:
   '@vueuse/gesture': 1.0.0_vue@3.2.22
   abcjs: 5.12.0
   audiomotion-analyzer: 3.6.0
-  chromatone-theory: 1.3.5
+  chromatone-theory: 1.3.6
   colord: 2.9.1
   fraction.js: 4.1.2
   hidpi-canvas: 1.0.10
@@ -2146,8 +2146,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /chromatone-theory/1.3.5:
-    resolution: {integrity: sha512-uiwarkGQjUIpAc3s84Ke6kTn8R6Hj6ZPyJFsaL2b8kz3G/sCAuC4I24DhWVBV1WEr8lRVVI1+NHYMjGwVcBYHQ==}
+  /chromatone-theory/1.3.6:
+    resolution: {integrity: sha512-Zrj17I7g91XAimMESW7Owv2RpZk/adgG6AT8DA+ygHGWteI+Sx3eLDuzmBQUGvfmK31rUe860phq5IPUQJwSgQ==}
     dev: false
 
   /color-convert/1.9.3:

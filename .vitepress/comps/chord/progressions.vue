@@ -31,7 +31,6 @@ function getChords(degrees) {
 <template lang="pug">
 .flex.flex-col
   chroma-keys.flex-1.p-1.min-w-150px(
-    :chroma="getChords(state.current.degrees)[0].chroma"
     v-model:pitch="globalScale.tonic"
     )
   .flex.flex-col.items-stretch.my-2.p-8.border-2.rounded-xl(
@@ -39,7 +38,7 @@ function getChords(degrees) {
     )
     .flex.flex-wrap.mx-auto.my-4
       control-choose(v-model="state.mode" :variants="{ tab: 'Tabs', piano: 'Piano', circles: 'Circles', squares: 'Squares', bars: 'Bars' }")
-    chroma-piano.w-20em.mx-auto(:chroma="'1000000000000'", names)
+    chroma-keys.w-20em.mx-auto(:chroma="'1000000000000'", v-model:pitch="globalScale.tonic")
     .flex.flex-col.text-center.mb-2.relative
       .text-2xl.font-bold.flex.mx-auto.items-center {{ globalScale.note.name }} {{ state.current.title }}
       a.p-2.text-2xl.absolute.right-2.top-2.rounded-full.shadow-xl(:href="state.current.link" target="_blank" v-if="state.current.link")
@@ -51,6 +50,7 @@ function getChords(degrees) {
           chroma-keys.flex-1.p-1.min-w-150px(
             :chroma="chord.chroma"
             :pitch="chord.tonicPitch"
+            :roman="state.current.degrees.split('-')[c]"
             v-if="state.mode == 'piano'"
             )
           chroma-tab.m-4.w-10em(

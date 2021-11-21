@@ -1,3 +1,74 @@
+<script setup>
+const emit = defineEmits(['update:chroma'])
+const props = defineProps({
+  pitch: { type: Number, default: null },
+  chroma: { type: String, default: '1001000100101' },
+  mode: { type: String, default: 'O' },
+  tonic: { type: Number, default: 0 },
+  roman: { type: String, default: '' },
+  editable: { type: Boolean, default: false }
+});
+import { notes, rotateArray, getCircleCoord, pitchColor } from 'chromatone-theory'
+import { colord } from 'colord'
+import { chromaColorMix } from "@use/colors.js";
+import { chordType, scaleType, intervals } from '@use/theory'
+import { playChroma, stopChroma, globalScale } from '@use/chroma'
+const pressed = ref(false);
+
+const state = reactive({
+  width: 100,
+  height: 100
+})
+
+const actualPitch = computed(() => {
+  if (props.pitch === 0 || props.pitch) {
+    return props.pitch
+  } else {
+    return globalScale.tonic
+  }
+})
+const chord = computed(() => chordType.get(props.chroma));
+const scale = computed(() => scaleType.get(props.chroma).name)
+
+function getRect(n, w = state.width, h = state.height) {
+  let posX, posY, x, y
+  if (props.mode == 'Z') {
+    posX = n % 4
+    posY = Math.floor(n / 4) + 1
+    if (n > 3 && n < 8) { posX = 3 - posX }
+  } else if (props.mode == 'O') {
+    switch (n) {
+      case 0: posX = 0; posY = 0; break;
+      case 1: posX = 1; posY = 0; break;
+      case 2: posX = 2; posY = 0; break;
+      case 3: posX = 3; posY = 0; break;
+      case 4: posX = 3; posY = 1; break;
+      case 5: posX = 3; posY = 2; break;
+      case 6: posX = 3; posY = 3; break;
+      case 7: posX = 2; posY = 3; break;
+      case 8: posX = 1; posY = 3; break;
+      case 9: posX = 0; posY = 3; break;
+      case 10: posX = 0; posY = 2; break;
+      case 11: posX = 0; posY = 1; break;
+    }
+  }
+  return `translate(${posX * w / 4},${posY * h / 4})`
+}
+
+function toggleStep(i) {
+  if (!props.editable) return
+  let chroma = [...props.chroma.split('')]
+  if (chroma[i] == '1') {
+    chroma[i] = '0'
+  } else {
+    chroma[i] = '1'
+  }
+  emit('update:chroma', chroma.join(''))
+}
+
+</script>
+
+
 <template lang="pug">
 svg.select-none.min-w-8em.m-2(
   version="1.1",
@@ -84,75 +155,6 @@ svg.select-none.min-w-8em.m-2(
       ) {{ props.roman }}
 </template>
 
-<script setup>
-const emit = defineEmits(['update:chroma'])
-const props = defineProps({
-  pitch: { type: Number, default: null },
-  chroma: { type: String, default: '1001000100101' },
-  mode: { type: String, default: 'O' },
-  tonic: { type: Number, default: 0 },
-  roman: { type: String, default: '' },
-  editable: { type: Boolean, default: false }
-});
-import { notes, rotateArray, getCircleCoord, pitchColor } from 'chromatone-theory'
-import { colord } from 'colord'
-import { chromaColorMix } from "@use/colors.js";
-import { chordType, scaleType, intervals } from '@use/theory'
-import { playChroma, stopChroma, globalScale } from '@use/chroma'
-const pressed = ref(false);
-
-const state = reactive({
-  width: 100,
-  height: 100
-})
-
-const actualPitch = computed(() => {
-  if (props.pitch === 0 || props.pitch) {
-    return props.pitch
-  } else {
-    return globalScale.tonic
-  }
-})
-const chord = computed(() => chordType.get(props.chroma));
-const scale = computed(() => scaleType.get(props.chroma).name)
-
-function getRect(n, w = state.width, h = state.height) {
-  let posX, posY, x, y
-  if (props.mode == 'Z') {
-    posX = n % 4
-    posY = Math.floor(n / 4) + 1
-    if (n > 3 && n < 8) { posX = 3 - posX }
-  } else if (props.mode == 'O') {
-    switch (n) {
-      case 0: posX = 0; posY = 0; break;
-      case 1: posX = 1; posY = 0; break;
-      case 2: posX = 2; posY = 0; break;
-      case 3: posX = 3; posY = 0; break;
-      case 4: posX = 3; posY = 1; break;
-      case 5: posX = 3; posY = 2; break;
-      case 6: posX = 3; posY = 3; break;
-      case 7: posX = 2; posY = 3; break;
-      case 8: posX = 1; posY = 3; break;
-      case 9: posX = 0; posY = 3; break;
-      case 10: posX = 0; posY = 2; break;
-      case 11: posX = 0; posY = 1; break;
-    }
-  }
-  return `translate(${posX * w / 4},${posY * h / 4})`
-}
-
-function toggleStep(i) {
-  if (!props.editable) return
-  let chroma = [...props.chroma.split('')]
-  if (chroma[i] == '1') {
-    chroma[i] = '0'
-  } else {
-    chroma[i] = '1'
-  }
-  emit('update:chroma', chroma.join(''))
-}
-
-</script>
 
 <style scoped>
 .center {

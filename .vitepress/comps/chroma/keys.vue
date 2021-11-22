@@ -15,7 +15,6 @@ import { chordType, scaleType } from '@use/theory'
 const keys = reactive({
   white: [3, 5, 7, 8, 10, 0, 2],
   black: [4, 6, null, 9, 11, 1],
-  pressed: false,
   chroma: computed(() => rotateArray(props.chroma.split(''), -props.pitch)),
   scale: computed(() => rotateArray(globalScale.chroma.split(''), -props.pitch)),
   title: computed(() => {
@@ -41,13 +40,13 @@ function keyColor(key) {
 </script>
 
 <template lang="pug">
-.flex.flex-col.m-1.rounded-2xl.cursor-pointer.transition-all.duration-300.ease.relative(
-  @mousedown="playChroma(chroma, pitch); keys.pressed = true"
-  @touchstart.prevent.stop="playChroma(chroma, pitch); keys.pressed = true"
-  @touchend="stopChroma(chroma, pitch); keys.pressed = false"
-  @touchcancel="stopChroma(chroma, pitch); keys.pressed = false"
-  @mouseup="stopChroma(chroma, pitch); keys.pressed = false"
-  @mouseleave="stopChroma(chroma, pitch); keys.pressed = false"
+.flex.flex-col.m-1.rounded-2xl.cursor-pointer.transition-all.duration-300.ease.relative.select-none(
+  style="touch-action:none"
+  @mousedown="playChroma(chroma, pitch)"
+  @touchend="stopChroma(chroma, pitch)"
+  @touchcancel="stopChroma(chroma, pitch)"
+  @mouseup="stopChroma(chroma, pitch)"
+  @mouseleave="stopChroma(chroma, pitch)"
   :style="{ backgroundColor: pitchColor(pitch, 2, 1, 0.5) }"
 )
   .flex.justify-center.my-2.px-2
@@ -72,9 +71,10 @@ function keyColor(key) {
       g.key(
         v-for="(key,k) in keys.white" :key="key"
         :transform="`translate(${k * 100 + 5} 0)`"
-        @click="$emit('update:pitch', key)"
+
       )
         rect.transition-all.duration-300.ease-out(
+          @click="$emit('update:pitch', key)"
           width="90"
           height="300"
           rx="45"
@@ -83,7 +83,7 @@ function keyColor(key) {
           stroke-width="8"
           :stroke="isInScale(key) ? pitchColor(key, 3) : 'transparent'"
         )
-        text(
+        text.pointer-events-none(
           y="250"
           x="45"
           fill="black"
@@ -92,9 +92,9 @@ function keyColor(key) {
       g.key(
         v-for="(key,k) in keys.black" :key="key"
         :transform="`translate(${k * 100 + 55} 10)`"
-        @click="$emit('update:pitch', key)"
       )
         rect.transition-all.duration-300.ease-out(
+          @click="$emit('update:pitch', key)"
           v-if="key"
           width="90"
           height="200"
@@ -104,7 +104,7 @@ function keyColor(key) {
           stroke-width="8"
           :stroke="isInScale(key) ? pitchColor(key, 3) : 'transparent'"
         )
-        text.transition-all.duration-300.ease-out(
+        text.pointer-events-none(
           y="130"
           x="40"
           fill="white"

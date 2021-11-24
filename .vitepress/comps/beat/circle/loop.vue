@@ -10,46 +10,21 @@ import { tempo } from '@use/tempo'
 const emit = defineEmits(['del', 'over', 'under', 'sound'])
 
 const props = defineProps({
-  radius: {
-    type: Number,
-    default: 400
-  },
-  size: {
-    type: Number,
-    default: 175,
-  },
-  order: {
-    type: Number,
-    default: 0
-  },
-  loop: {
-    type: Object,
-    default: {
-      over: 4,
-      under: 4,
-      sound: 'A'
-    }
-  }
+  radius: { type: Number, default: 400 },
+  size: { type: Number, default: 175, },
+  order: { type: Number, default: 0 },
+  loop: { type: Object, default: { over: 4, under: 4, sound: 'A' } }
 });
 
-const soundLetters = ['A', 'B', 'C', 'D', 'E']
+const soundLetters = ['A', 'B', 'C', 'D', 'E', 'F']
 const soundControl = ref(soundLetters.findIndex(el => el == props.loop?.sound))
+const controlRadius = computed(() => props.radius + 110)
+
+const { progress, current, steps, mutes, accents, volume, panning, addSample, recorder } = useSequence(props.loop, props.order, 'circle')
 
 watch(soundControl, num => {
   emit('sound', soundLetters[num])
 })
-
-const controlRadius = computed(() => props.radius + 110)
-
-const sounds = {
-  A: [26, -120],
-  B: [10, -60],
-  C: [2, 0],
-  D: [10, 60],
-  E: [26, 120]
-}
-
-const { progress, current, steps, mutes, accents, volume, panning } = useSequence(props.loop, props.order, 'circle')
 
 const activeSteps = computed(() => {
   return steps.filter(step => !mutes.value[step[0].split('-')[0]]).map(step => Number(step[0].split('-')[0]))
@@ -216,12 +191,68 @@ g(
     :fixed="1"
     :step="1"
     :min="0"
-    :max="4"
+    :max="5"
     show-positions
     :ratio="400"
     :every="1"
   )
     text {{ loop?.sound }}
+
+  transition(name="fade")
+    g.recorder(transform="translate(200 790)" v-if="soundControl == 5 && !recorder.both")
+      rect(
+        style="filter:url(#shadowButton);"
+        width="600"
+        height="200"
+        rx="100"
+        :fill="isDark ? '#333e' : '#ddde'"
+      )
+      g.record(transform="translate(300 50)" v-if="recorder.recording")
+        circle(
+          r="40"
+          :fill="isDark ? '#333e' : '#ddde'"
+          style="filter:url(#shadowButton);" 
+          @mousedown="soundControl--"
+        )
+        la-check.pointer-events-none( font-size="40px" x="-25" y="-25")
+      g.close.cursor-pointer(transform="translate(300 150)" )
+        circle(
+          r="40" 
+          :fill="isDark ? '#333e' : '#ddde'"
+          style="filter:url(#shadowButton);" 
+          @mousedown="soundControl--"
+          )
+        la-times.pointer-events-none( font-size="40px" x="-25" y="-25")
+      g.add(v-for="(sound,s) in ['main', 'accent']" :key="sound")
+        rect(
+          :x="40 + s * 300"
+          y="40"
+          fill="none"
+          width="220"
+          height="120"
+          stroke="currentColor"
+          :stroke-width="recorder[sound] ? 10 : 2"
+          stroke-opacity="0.5"
+          rx="60"
+        )
+        g.record.cursor-pointer(
+          :transform="`translate(${100 + 400 * s} ${100})`"
+        )
+          circle(
+            @mousedown="recorder.rec(sound)" 
+            class="opacity-60 hover:opacity-80 transition-all duration-200 ease " 
+            r="40" fill="#900" 
+            :stroke="recorder.recording == sound ? '#666' : 'transparent'" stroke-width="4" 
+            style="filter:url(#shadowButton);" 
+            )
+        g.load.cursor-pointer(
+          :transform="`translate(${160 + 200 * s} ${50})`"
+        )
+          foreignObject.p-4(width="110" height="110")
+            label.transition-all.duration-200.ease.cursor-pointer.text-4xl.rounded-full.px-4.pb-6.pt-2(:for="sound" class="hover:bg-light-200 dark:(hover:bg-dark-100) bg-light-400 shadow-lg dark:bg-dark-300")
+              la-upload
+            input.hidden(type="file" :id="sound" @change="recorder.load(sound, $event.target.files[0])")
+
 
   g.info(
     :transform="`translate(500,${order * size + 50})`"

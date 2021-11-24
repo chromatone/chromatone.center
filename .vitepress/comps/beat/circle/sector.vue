@@ -62,30 +62,12 @@ import { colord } from 'colord'
 import { tempo } from '@use/tempo'
 
 const props = defineProps({
-  radius: {
-    type: Number,
-    default: 400,
-  },
-  step: {
-    type: Number,
-    default: 0
-  },
-  total: {
-    type: Number,
-    default: 4
-  },
-  active: {
-    type: Boolean,
-    default: false
-  },
-  muted: {
-    type: Boolean,
-    default: false,
-  },
-  accented: {
-    type: Boolean,
-    default: false,
-  },
+  radius: { type: Number, default: 400, },
+  step: { type: Number, default: 0 },
+  total: { type: Number, default: 4 },
+  active: { type: Boolean, default: false },
+  muted: { type: Boolean, default: false, },
+  accented: { type: Boolean, default: false, },
 });
 
 const color = computed(() => {

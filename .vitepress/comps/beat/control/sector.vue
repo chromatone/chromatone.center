@@ -9,62 +9,20 @@ import { levelColor } from "@use/colors.js"
 const emit = defineEmits(['update:modelValue'])
 
 const props = defineProps({
-  modelValue: {
-    type: Number,
-    default: 0.1,
-  },
-  step: {
-    type: Number,
-    default: 0.1,
-  },
-  min: {
-    type: Number,
-    default: 0,
-  },
-  max: {
-    type: Number,
-    default: 1,
-  },
-  start: {
-    type: Number,
-    default: 0,
-  },
-  finish: {
-    type: Number,
-    default: 90,
-  },
-  radius: {
-    type: Number,
-    default: 300,
-  },
-  cx: {
-    type: Number,
-    default: 500,
-  },
-  cy: {
-    type: Number,
-    default: 500,
-  },
-  vector: {
-    type: Array,
-    default: [1, -1],
-  },
-  showPositions: {
-    type: Boolean,
-    default: false,
-  },
-  ratio: {
-    type: Number,
-    default: 200,
-  },
-  every: {
-    type: Number,
-    default: null,
-  },
-  showCenter: {
-    type: Boolean,
-    default: false,
-  }
+  modelValue: { type: Number, default: 0.1, },
+  step: { type: Number, default: 0.1, },
+  min: { type: Number, default: 0, },
+  max: { type: Number, default: 1, },
+  start: { type: Number, default: 0, },
+  finish: { type: Number, default: 90, },
+  radius: { type: Number, default: 300, },
+  cx: { type: Number, default: 500, },
+  cy: { type: Number, default: 500, },
+  vector: { type: Array, default: [1, -1], },
+  showPositions: { type: Boolean, default: false, },
+  ratio: { type: Number, default: 200, },
+  every: { type: Number, default: null, },
+  showCenter: { type: Boolean, default: false, }
 });
 
 const arc = reactive({
@@ -80,7 +38,7 @@ function dragParam(drag) {
 }
 
 function incParam(diff) {
-  arc.inner += diff * props.step / (props.max - props.min)
+  arc.inner = clampNum(arc.inner, diff * props.step / (props.max - props.min), 0, 1)
 }
 
 watch(() => arc.inner, val => {
@@ -129,7 +87,7 @@ g.arc.cursor-pointer(
     :thickness="50"
     round
   )
-  svg-ring.line(
+  svg-ring.line.pointer-events-none(
     style="pointer-events:none"
     :cx="500"
     :cy="500"
@@ -153,7 +111,7 @@ g.arc.cursor-pointer(
   g.all.pointer-events-none(
     v-if="showPositions"
     )
-    circle(
+    circle.pointer-events-none(
       v-for="(st,s) in allSteps" :key="st"
       :cx="st.x"
       :cy="st.y"
@@ -163,11 +121,11 @@ g.arc.cursor-pointer(
       opacity="0.4"
     )
 
-  g(
+  g.pointer-events-none(
     :transform="`translate(${arc.position.x} ${arc.position.y})`"
   )
 
-    circle(
+    circle.pointer-events-none(
       style="filter:url(#shadowButton);"
       r="25"
       stroke-width="3"

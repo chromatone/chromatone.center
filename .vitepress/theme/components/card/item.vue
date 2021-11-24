@@ -49,16 +49,16 @@ const theColor = computed(() => props.color);
     background-color: v-bind(theColor);
   }
   & .info {
-    @apply px-2 py-4 ml-2 m-2 z-4 max-w-24em bg-light-100 bg-opacity-80 dark:bg-dark-100 rounded-xl;
+    @apply px-2 py-4 ml-2 m-2 z-4 max-w-24em bg-light-100 bg-opacity-80 dark:bg-dark-100 rounded-xl relative;
     -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
     flex: 1 1 100%;
   }
   & .title {
-    @apply flex items-center flex-wrap;
+    @apply flex items-center flex-wrap mt-2;
   }
   & .subtitle {
-    @apply mt-2 mb-2 p-2 font-normal w-full;
+    @apply mt-0 mb-2 p-2 font-normal w-full;
   }
   & .cover {
     @apply absolute top-0 w-full h-full bg-cover bg-center z-1;

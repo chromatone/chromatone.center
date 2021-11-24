@@ -199,7 +199,7 @@ g(
     text {{ loop?.sound }}
 
   transition(name="fade")
-    g.recorder(transform="translate(200 790)" v-if="soundControl == 5 && !recorder.both")
+    g.recorder(:transform="`translate(200 ${800 - order * 220})`" v-if="soundControl == 5 && !recorder.both")
       rect(
         style="filter:url(#shadowButton);"
         width="600"

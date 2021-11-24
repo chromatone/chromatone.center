@@ -7,17 +7,18 @@ date: 2021-10-16
 
 ## Pulse
 
-In music theory, the pulse is a musical piece's either audible or implied series of uniformly spaced beats—in other words, uniformly timed instants of punctuating sound—and thus is the monotonous "tapping" that sets the tempo and that underlies or anchors the rhythm. Whereas the rhythm, being a musical creation that at times can intricately depart from the pulse, may become too difficult for an untrained listener to fully match, nearly any listener instinctively matches the pulse by simply tapping uniformly, despite rhythmic variations in timing of sounds atop the pulse. A performance may leave certain beats silent, not literally sounded, but the pulse remains as an abstraction. For example, even after a silent passage in a piece, the piece typically resumes on beat, as it were, by referencing the implied pulse, established before the silence. 
+In music theory, the pulse is a musical piece's either audible or implied series of uniformly spaced beats—in other words, uniformly timed instants of punctuating sound—and thus is the monotonous "tapping" that sets the tempo and that underlies or anchors the rhythm. Whereas the rhythm, being a musical creation that at times can intricately depart from the pulse, may become too difficult for an untrained listener to fully match, nearly any listener instinctively matches the pulse by simply tapping uniformly, despite rhythmic variations in timing of sounds atop the pulse. A performance may leave certain beats silent, not literally sounded, but the pulse remains as an abstraction. For example, even after a silent passage in a piece, the piece typically resumes on beat, as it were, by referencing the implied pulse, established before the silence.
 
 The pulse may be audible or implied. The **tempo** of the piece is the speed of the pulse. If a pulse becomes too fast it would become a drone; one that is too slow would be perceived as unconnected sounds. When the period of any continuous beat is faster than 8–10 per second or slower than 1 per 1.5–2 seconds, it cannot be perceived as such. "Musical" pulses are generally specified in the range 40 to 240 beats per minute. The pulse is not necessarily the fastest or the slowest component of the rhythm but the one that is perceived as basic. This is currently most often designated as a crotchet or quarter note when written.
 
 Pulse is related to and distinguished from rhythm (grouping), beats, and meter:
 
->A pulse is one of a series of regularly recurring, precisely equivalent ["undifferentiated"] stimuli. Like the tick of a metronome or a watch, pulses mark off equal units in the temporal continuum.... A sense of regular pulses, once established, tends to be continued in the mind and musculature of the listener, even though the sound has stopped.... The human mind tends to impose some sort of organization upon such equal pulses. ...   
->[Pulse is] an important part of musical experience. Not only is pulse necessary for the existence of meter ["there can be no meter without an underlying pulse to establish the units of measurement"], but it generally, though not always, underlies and reinforces rhythmic experience.   
->Meter is the measurement of the number of pulses between more or less regularly recurring accents. Therefore, in order for meter to exist, some of the pulses in a series must be accented—marked for consciousness—relative to others. When pulses are thus counted within a metric context, they are referred to as beats.
->— Leonard B. Meyer and Cooper (1960)
+> A pulse is one of a series of regularly recurring, precisely equivalent ["undifferentiated"] stimuli. Like the tick of a metronome or a watch, pulses mark off equal units in the temporal continuum.... A sense of regular pulses, once established, tends to be continued in the mind and musculature of the listener, even though the sound has stopped.... The human mind tends to impose some sort of organization upon such equal pulses. ...  
+> [Pulse is] an important part of musical experience. Not only is pulse necessary for the existence of meter ["there can be no meter without an underlying pulse to establish the units of measurement"], but it generally, though not always, underlies and reinforces rhythmic experience.  
+> Meter is the measurement of the number of pulses between more or less regularly recurring accents. Therefore, in order for meter to exist, some of the pulses in a series must be accented—marked for consciousness—relative to others. When pulses are thus counted within a metric context, they are referred to as beats.
+> — Leonard B. Meyer and Cooper (1960)
 
+<youtube-embed video="2UphAzryVpY" />
 
 ## Pulse groups
 
@@ -25,13 +26,13 @@ While ideal pulses are identical, when pulses are variously accented, this produ
 
 Pulses can occur at multiple metric levels. Pulse groups may be distinguished as synchronous, if all pulses on slower levels coincide with those on faster levels, and nonsynchronous, if not.
 
-An isochronal or equally spaced pulse on one level that uses varied pulse groups (rather than just one pulse group the whole piece) create a pulse on the (slower) multiple level that is non-isochronal (a stream of 2+3... at the eighth note level would create a pulse of a quarter note+dotted quarter note as its multiple level). 
+An isochronal or equally spaced pulse on one level that uses varied pulse groups (rather than just one pulse group the whole piece) create a pulse on the (slower) multiple level that is non-isochronal (a stream of 2+3... at the eighth note level would create a pulse of a quarter note+dotted quarter note as its multiple level).
 
 ## Tempo
 
 [Tempo](https://en.wikipedia.org/wiki/Tempo) (Italian for "time"; plural tempos, or tempi from the Italian plural) is the speed or pace of a given piece. In classical music, tempo is typically indicated with an instruction at the start of a piece (often using conventional Italian terms) and is usually measured in beats per minute (or BPM). In modern classical compositions, a "metronome mark" in beats per minute may supplement or replace the normal tempo marking, while in modern genres like electronic dance music, tempo will typically simply be stated in BPM.
 
-Tempo may be separated from articulation and meter, or these aspects may be indicated along with tempo, all contributing to the overall texture. While the ability to hold a steady tempo is a vital skill for a musical performer, tempo is changeable. Depending on the genre of a piece of music and the performers' interpretation, a piece may be played with slight tempo rubato or drastic variances. In ensembles, the tempo is often indicated by a conductor or by one of the instrumentalists, for instance the drummer. 
+Tempo may be separated from articulation and meter, or these aspects may be indicated along with tempo, all contributing to the overall texture. While the ability to hold a steady tempo is a vital skill for a musical performer, tempo is changeable. Depending on the genre of a piece of music and the performers' interpretation, a piece may be played with slight tempo rubato or drastic variances. In ensembles, the tempo is often indicated by a conductor or by one of the instrumentalists, for instance the drummer.
 
 ### Measurement of the tempo
 
@@ -47,7 +48,7 @@ The speed of a piece of music can also be gauged according to measures per minut
 
 ## Choosing speed
 
-In different musical contexts, different instrumental musicians, singers, conductors, bandleaders, music directors or other individuals will select the tempo of a song or piece. In a popular music or traditional music group or band, the bandleader or drummer may select the tempo. In popular and traditional music, whoever is setting the tempo often counts out one or two bars in tempo. In some songs or pieces in which a singer or solo instrumentalist begins the work with a solo introduction (prior to the start of the full group), the tempo they set will provide the tempo for the group. In an orchestra or concert band, the conductor normally sets the tempo. In a marching band, the drum major may set the tempo. In a sound recording, in some cases a record producer may set the tempo for a song (although this would be less likely with an experienced bandleader). 
+In different musical contexts, different instrumental musicians, singers, conductors, bandleaders, music directors or other individuals will select the tempo of a song or piece. In a popular music or traditional music group or band, the bandleader or drummer may select the tempo. In popular and traditional music, whoever is setting the tempo often counts out one or two bars in tempo. In some songs or pieces in which a singer or solo instrumentalist begins the work with a solo introduction (prior to the start of the full group), the tempo they set will provide the tempo for the group. In an orchestra or concert band, the conductor normally sets the tempo. In a marching band, the drum major may set the tempo. In a sound recording, in some cases a record producer may set the tempo for a song (although this would be less likely with an experienced bandleader).
 
 ## Basic tempo markings
 
@@ -110,7 +111,7 @@ English indications, for example quickly, have also been used, by Benjamin Britt
 
 "Show tempo", a term used since the early days of Vaudeville, describes the traditionally brisk tempo (usually 160–170 BPM) of opening songs in stage revues and musicals.
 
-Humourist Tom Lehrer uses facetious English tempo markings in his anthology Too Many Songs by Tom Lehrer. For example, "National Brotherhood Week" is to be played "fraternally"; "We Will All Go Together" is marked "eschatologically"; and "Masochism Tango" has the tempo "painstakingly". His English contemporaries Flanders and Swann have similarly marked scores, with the music for their song "The Whale (Moby Dick)" shown as "oceanlike and vast". 
+Humourist Tom Lehrer uses facetious English tempo markings in his anthology Too Many Songs by Tom Lehrer. For example, "National Brotherhood Week" is to be played "fraternally"; "We Will All Go Together" is marked "eschatologically"; and "Masochism Tango" has the tempo "painstakingly". His English contemporaries Flanders and Swann have similarly marked scores, with the music for their song "The Whale (Moby Dick)" shown as "oceanlike and vast".
 
 ## Electronic music
 
@@ -134,13 +135,12 @@ Typical tempo ranges for most common elecytonic music genres:
 
 More extreme tempos are achievable at the same underlying tempo with very fast drum patterns, often expressed as drum rolls. Such compositions often exhibit a much slower underlying tempo, but may increase the tempo by adding additional percussive beats. Extreme metal subgenres such as speedcore and grindcore often strive to reach unusually fast tempo. The use of extreme tempo was very common in the fast bebop jazz from the 1940s and 1950s. A common jazz tune such as "Cherokee" was often performed at quarter note equal to or sometimes exceeding 368 BPM. Some of Charlie Parker's famous tunes ("Bebop", "Shaw Nuff") have been performed at 380 BPM plus.
 
-<youtube-embed video="GH2k8GccrqI" /> 
+<youtube-embed video="GH2k8GccrqI" />
 
 There is also a subgenre of speedcore known as Extratone, which is defined by music with a BPM over 3,600, or sometimes 1,000 BPM or over.
-
 
 ### Beatmatching
 
 In popular music genres such as disco, house music and electronic dance music, beatmatching is a technique that DJs use that involves speeding up or slowing down a record (or CDJ player, a speed-adjustable CD player for DJ use) to match the tempo of a previous or subsequent track, so both can be seamlessly mixed. Having beatmatched two songs, the DJ can either seamlessly crossfade from one song to another, or play both tracks simultaneously, creating a layered effect.
 
-DJs often beatmatch the underlying tempos of recordings, rather than their strict BPM value suggested by the kick drum, particularly when dealing with high tempo tracks. A 240 BPM track, for example, matches the beat of a 120 BPM track without slowing down or speeding up, because both have an underlying tempo of 120 quarter notes per minute. Thus, some soul music (around 75–90 BPM) mixes well with a drum and bass beat (from 150–185 BPM). When speeding up or slowing down a record on a turntable, the pitch and tempo of a track are linked: spinning a disc 10% faster makes both pitch and tempo 10% higher. Software processing to change the pitch without changing the tempo is called pitch-shifting. The opposite operation, changing the tempo without changing the pitch, is called time-stretching. 
+DJs often beatmatch the underlying tempos of recordings, rather than their strict BPM value suggested by the kick drum, particularly when dealing with high tempo tracks. A 240 BPM track, for example, matches the beat of a 120 BPM track without slowing down or speeding up, because both have an underlying tempo of 120 quarter notes per minute. Thus, some soul music (around 75–90 BPM) mixes well with a drum and bass beat (from 150–185 BPM). When speeding up or slowing down a record on a turntable, the pitch and tempo of a track are linked: spinning a disc 10% faster makes both pitch and tempo 10% higher. Software processing to change the pitch without changing the tempo is called pitch-shifting. The opposite operation, changing the tempo without changing the pitch, is called time-stretching.

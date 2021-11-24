@@ -8,7 +8,7 @@
       .title
         .mr-2.text-2xl(v-if="item.data.emoji") {{ item.data.emoji }}
         .text-2xl.p-2 {{ item.title }}
-          .absolute.top-6px.text-sm.font-normal.opacity-50
+          .absolute.top-10px.text-sm.font-normal.opacity-50
             slot
         .flex-1
         card-date.mr-2(v-if="!item.data.product",:date="item.lastModified")
@@ -58,7 +58,7 @@ const theColor = computed(() => props.color);
     @apply flex items-center flex-wrap;
   }
   & .subtitle {
-    @apply mt-4 mb-2 p-2 font-normal w-full;
+    @apply mt-2 mb-2 p-2 font-normal w-full;
   }
   & .cover {
     @apply absolute top-0 w-full h-full bg-cover bg-center z-1;

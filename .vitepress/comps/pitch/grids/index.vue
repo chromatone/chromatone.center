@@ -24,9 +24,6 @@ const active = useStorage('pitch-bars-active', 0);
       :class="{ active: active == l }"
       :style="{ backgroundColor: lchToHsl(l, loops.length, active == l ? 1 : 0.3) }"
     ) 
-      //- la-times.mr-2(
-      //-   @mousedown="loops.splice(l, 1); active = loops.length - 1"
-      //- )
       .px-4.py-2 {{ l }}
 
     button.text-button(

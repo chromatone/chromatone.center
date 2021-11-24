@@ -1,5 +1,5 @@
 import { Writer, Track, NoteEvent } from "midi-writer-js";
-import { createAndDownloadBlobFile, midiOnce } from "./midi";
+import { createAndDownloadBlobFile } from "./midi";
 import { Midi } from "@tonejs/midi";
 import { tempo } from "@use/tempo.js";
 let notes = ["C", "E", "G", "B", "D", "F", "A", "C#", "D#", "F#", "G#", "A#"];
@@ -50,6 +50,6 @@ export function renderMidi(tracks) {
   midiData.tracks.forEach((track, t) => {
     midiData.tracks[t].instrument.number = 119;
   });
-  console.log(midiData.tracks);
+
   createAndDownloadBlobFile(midiData.toArray(), "Chromatone-beat");
 }

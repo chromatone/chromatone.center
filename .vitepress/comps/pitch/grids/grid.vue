@@ -42,7 +42,7 @@ const loop = useLoop(props.order);
     .is-group.flex.p-1.mx-1.items-center
 
       control-change.w-5em(
-        v-model="loop.over"
+        v-model="loop.metre.over"
         :step="1"
         :min="1"
         :max="48"
@@ -50,7 +50,7 @@ const loop = useLoop(props.order);
       )
       .p-2.text-xl /
       control-change.w-5em(
-        v-model="loop.under"
+        v-model="loop.metre.under"
         :step="1"
         :min="1"
         :max="16"
@@ -136,11 +136,11 @@ const loop = useLoop(props.order);
           :height="grid.height"
         )
         line(
-          v-for="beat in loop.over" :key="beat"
+          v-for="beat in loop.metre.over" :key="beat"
           :y2="grid.height"
-          :stroke-width="beat % loop.under == 0 ? 8 : beat % 4 == 0 ? 4 : active ? 1 : 0"
+          :stroke-width="beat % loop.metre.under == 0 ? 8 : beat % 4 == 0 ? 4 : active ? 1 : 0"
           :stroke="color"
-          :transform="`translate(${beat * grid.width / loop.over} 0)`"
+          :transform="`translate(${beat * grid.width / loop.metre.over} 0)`"
         )
         line(
           x2="1000"

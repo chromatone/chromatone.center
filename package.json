@@ -10,7 +10,7 @@
   "dependencies": {
     "@tonaljs/tonal": "^4.6.5",
     "@tonejs/midi": "^2.0.27",
-    "@vueuse/core": "7.0.0",
+    "@vueuse/core": "7.0.3",
     "@vueuse/gesture": "^1.0.0",
     "abcjs": "^5.12.0",
     "audiomotion-analyzer": "3.6.0",
@@ -29,7 +29,7 @@
     "webmidi": "^3.0.0-alpha.25"
   },
   "devDependencies": {
-    "@iconify/json": "^1.1.431",
+    "@iconify/json": "^2.0.0",
     "esbuild-register": "^3.1.2",
     "markdown-it-classy": "^0.2.0",
     "markdown-it-container": "^3.0.0",
@@ -37,12 +37,12 @@
     "patch-vue-directive-ssr": "^0.0.1",
     "pug": "3.0.2",
     "typescript": "^4.5.2",
-    "unplugin-auto-import": "^0.4.14",
+    "unplugin-auto-import": "^0.4.16",
     "unplugin-icons": "^0.12.18",
     "unplugin-vue-components": "^0.17.2",
     "vite": "^2.6.14",
     "vite-aliases": "0.8.7",
-    "vite-plugin-pwa": "^0.11.6",
+    "vite-plugin-pwa": "^0.11.7",
     "vite-plugin-windicss": "^1.5.1",
     "vitepress": "0.20.1",
     "vitepress-tags": "^0.4.0",

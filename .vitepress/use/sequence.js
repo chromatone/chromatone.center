@@ -50,9 +50,6 @@ export function useSequence(
     baseUrl: "/audio/metronome/",
   }).connect(panner);
 
-  import("audio-recorder-polyfill").then(
-    (AudioRecorder) => (window.MediaRecorder = AudioRecorder)
-  );
   const rec = new Recorder();
 
   const recorder = reactive({

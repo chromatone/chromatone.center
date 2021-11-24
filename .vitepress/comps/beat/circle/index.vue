@@ -1,6 +1,6 @@
 <template lang="pug">
-#screen.flex.flex-col.items-center.w-full.relative.pb-12.p-4.has-bg
-  full-screen.absolute.bottom-0.right-0
+#screen.flex.flex-col.items-center.w-full.relative.pb-12.p-4.fullscreen-container.rounded-4xl
+  full-screen.absolute.bottom-2.right-2
   svg#metronome.w-full.max-h-90vh(
     version="1.1",
     baseProfile="full",

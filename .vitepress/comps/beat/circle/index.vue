@@ -26,7 +26,7 @@
     )
       healthicons-question
     beat-control-button(
-      @click="renderMidi()"
+      @click="renderMidi(tracks)"
       transform="translate(925,750)"
     )
       la-file-download
@@ -54,7 +54,8 @@
 </template>
 
 <script setup>
-import { renderMidi } from '@use/sequence'
+import { renderMidi } from '@use/midiRender'
+import { tracks } from '@use/sequence'
 const loops = useStorage('tempo-circle-loops', [
   {
     over: 8,

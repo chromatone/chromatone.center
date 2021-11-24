@@ -11,11 +11,8 @@ import {
   Meter,
   UserMedia,
 } from "tone";
-import { createAndDownloadBlobFile, midiOnce } from "./midi";
 
-const tracks = reactive([]);
-
-let notes = ["C", "E", "G", "B", "D", "F", "A", "C#", "D#", "F#", "G#", "A#"];
+export const tracks = reactive([]);
 
 export function useSequence(
   metre = {
@@ -28,8 +25,17 @@ export function useSequence(
   mode = "bar"
 ) {
   let pan = order % 2 == 1 ? -0.5 : 0.5;
-  const panner = new PanVol(pan, 0).toDestination();
-  const synth = new Sampler({
+
+  const audio = {
+    meter: null,
+    mic: null,
+    recorder: null,
+    panner: null,
+    synth: null,
+  };
+
+  audio.panner = new PanVol(pan, 0).toDestination();
+  audio.synth = new Sampler({
     urls: {
       A1: "tongue/high.wav",
       A2: "tongue/low.wav",
@@ -48,9 +54,9 @@ export function useSequence(
       release: 2,
     },
     baseUrl: "/audio/metronome/",
-  }).connect(panner);
+  }).connect(audio.panner);
 
-  const rec = new Recorder();
+  audio.recorder = new Recorder();
 
   const recorder = reactive({
     recording: false,
@@ -59,32 +65,29 @@ export function useSequence(
     both: computed(() => recorder.main && recorder.accent),
     async load(pos = "main", blob) {
       let arr = await blob.arrayBuffer();
-      let buff = await rec.context.decodeAudioData(arr);
-      synth.add(pos == "main" ? "F1" : "F2", buff);
+      let buff = await audio.recorder.context.decodeAudioData(arr);
+      audio.synth.add(pos == "main" ? "F1" : "F2", buff);
       recorder[pos] = true;
       recorder.recording = false;
     },
     async rec(pos = "main") {
       if (!recorder.recording) {
-        const meter = new Meter().connect(rec);
-        const mic = new UserMedia(1).connect(meter);
-        mic
+        audio.meter = new Meter().connect(audio.recorder);
+        audio.mic = new UserMedia(1).connect(audio.meter);
+        audio.mic
           .open()
           .then(() => {
             recorder.recording = pos;
-            // promise resolves when input is available
-
-            rec.start();
+            audio.recorder.start();
           })
           .catch((e) => {
-            // promise is rejected when the user doesn't have or allow mic access
             console.log("mic not open");
           });
       } else {
-        let blob = await rec.stop();
+        let blob = await audio.recorder.stop();
         let arr = await blob.arrayBuffer();
-        let buff = await rec.context.decodeAudioData(arr);
-        synth.add(pos == "main" ? "F1" : "F2", buff);
+        let buff = await audio.recorder.context.decodeAudioData(arr);
+        audio.synth.add(pos == "main" ? "F1" : "F2", buff);
         recorder[pos] = true;
         recorder.recording = false;
       }
@@ -170,7 +173,7 @@ export function useSequence(
   watch(
     volume,
     (vol) => {
-      panner.volume.targetRampTo(gainToDb(vol), 1);
+      audio.panner.volume.targetRampTo(gainToDb(vol), 1);
     },
     { immediate: true }
   );
@@ -178,7 +181,7 @@ export function useSequence(
   watch(
     panning,
     (p) => {
-      panner.pan.targetRampTo(p, 1);
+      audio.panner.pan.targetRampTo(p, 1);
     },
     { immediate: true }
   );
@@ -205,14 +208,14 @@ export function useSequence(
     if (metre.sound == "F" && !accented && !recorder.main) return;
     if (metre.sound == "F" && accented && !recorder.accent) return;
     let note = `${metre.sound}${accented ? 2 : 1}`;
-    synth.triggerAttackRelease(note, metre.under + "n", time);
+    audio.synth.triggerAttackRelease(note, metre.under + "n", time);
     // midiOnce(notes[order * 2] + 3, { time: '+' + time })
   }
 
   onBeforeUnmount(() => {
     sequence.stop().dispose();
-    panner.dispose();
-    synth.dispose();
+    audio.panner.dispose();
+    audio.synth.dispose();
   });
 
   return {
@@ -225,57 +228,4 @@ export function useSequence(
     panning,
     recorder,
   };
-}
-
-import { Writer, Track, NoteEvent } from "midi-writer-js";
-import { Midi } from "@tonejs/midi";
-
-export function renderMidi() {
-  let render = [];
-  tracks.forEach((track, t) => {
-    let division = 512 / track.metre.under;
-    let midiTrack = new Track();
-    midiTrack.setTempo(tempo.bpm);
-    midiTrack.addInstrumentName("116");
-    midiTrack.addTrackName("Chromatone beat " + t);
-    midiTrack.setTimeSignature(4, 4);
-    track.steps.forEach((step, s) => {
-      step.forEach((code) => {
-        if (track.mutes[s] || track.mutes[code]) return;
-        let [beat, sub] = code.split("-").map(Number);
-        let subdivision = division / step.length;
-        let subStep = 0;
-        if (step.length > 1) {
-          subStep = sub * subdivision;
-        }
-        midiTrack.addEvent(
-          new NoteEvent({
-            pitch: track.accents[s]
-              ? notes[t * 2] + "2"
-              : notes[t * 2 + 1] + "2",
-            duration: `T${subdivision}`,
-            startTick: division * beat + subStep,
-            velocity: track.accents[s] || track.accents[code] ? 100 : 64,
-          })
-        );
-      });
-    });
-    // midiTrack.addEvent(
-    //   new NoteEvent({
-    //     pitch: 0,
-    //     duration: `T1`,
-    //     startTick: division * (track.steps.length - 1),
-    //     velocity: 1,
-    //   })
-    // )
-    render[t] = midiTrack;
-  });
-
-  var write = new Writer(render);
-  let midiData = new Midi(write.buildFile());
-  midiData.tracks.forEach((track, t) => {
-    midiData.tracks[t].instrument.number = 119;
-  });
-  console.log(midiData.tracks);
-  createAndDownloadBlobFile(midiData.toArray(), "Chromatone-beat");
 }

@@ -14,7 +14,7 @@ const active = useStorage('pitch-bars-active', 0);
 </script>
 
 <template lang="pug">
-#screen.flex.flex-col.items-center.rounded-xl.fullscreen-container.p-2
+#screen.flex.flex-col.items-center.rounded-4xl.fullscreen-container.p-2
   state-transport
     control-scale.m-4
   .flex.flex-wrap.mt-4.w-full.justify-start.px-6
@@ -37,7 +37,7 @@ const active = useStorage('pitch-bars-active', 0);
     full-screen
     button.text-button.flex.items-center(@click="renderMidi()")
       la-file-download
-  .flex.flex-col.mb-4.mx-4.w-full.relative.h-640px
+  .flex.flex-col.mb-4.mx-4.w-full.relative.h-840px
     transition-group(name="fade")
       pitch-grids-grid.absolute.w-full(
         v-for="(loop,l) in loops" :key="loop"

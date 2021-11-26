@@ -21,7 +21,11 @@ export function useRadar() {
   watch(
     () => midi.clock,
     () => {
-      radar.angle += 360 / 192;
+      if (midi.playing) {
+        radar.angle += 360 / 192 / 2;
+      } else {
+        radar.angle = 0;
+      }
     }
   );
   return {

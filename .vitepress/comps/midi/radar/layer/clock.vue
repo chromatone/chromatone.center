@@ -5,6 +5,7 @@
 <script setup>
 import { getCircleCoord } from 'chromatone-theory'
 import { polarXY, radar } from '../radar.js'
+import { isDark } from '@theme/composables/state'
 
 import paper from 'paper'
 
@@ -13,7 +14,7 @@ const view = paper.view
 const arrow = new paper.Path.Line({
   from: view.center,
   to: [view.center.x, view.bounds.y],
-  strokeColor: 'black',
+  strokeColor: isDark.value ? '#eee' : '#888',
   strokeCap: 'round',
   strokeWidth: 1,
   pivot: view.center
@@ -21,8 +22,8 @@ const arrow = new paper.Path.Line({
 
 const center = new paper.Shape.Circle({
   center: view.center,
-  radius: 6,
-  fillColor: '#888'
+  radius: 4,
+  fillColor: isDark.value ? '#eee' : '#888'
 })
 
 let octaves = []
@@ -32,6 +33,11 @@ for (let o = 1; o < 8; o++) {
   ring.strokeColor = '#f002'
   octaves.push(ring)
 }
+
+watch(isDark, dark => {
+  arrow.strokeColor = isDark.value ? '#eee' : '#888'
+  center.fillColor = isDark.value ? '#eee' : '#888'
+})
 
 paper.view.on('resize', ev => {
   arrow.firstSegment.point = paper.view.center
@@ -43,7 +49,7 @@ const maxPoints = 100
 const points = []
 
 watch(() => radar.angle, angle => {
-  let p = polarXY(paper.view.center, 500, angle)
+  let p = polarXY(paper.view.center, 400, angle)
   arrow.lastSegment.point = p
 })
 

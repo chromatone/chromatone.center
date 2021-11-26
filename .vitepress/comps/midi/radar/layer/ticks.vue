@@ -6,7 +6,10 @@ import { polarXY, radar } from '../radar.js'
 
 const props = defineProps({
   channel: { type: Number, default: 7 },
-  full: {}
+  in: { type: Number, default: 380 },
+  out: { type: Number, default: 400 },
+  width: { type: Number, default: 2 },
+  rounded: { type: Boolean, default: true },
 })
 
 const view = paper.view
@@ -19,17 +22,17 @@ watch(() => midi.note, note => {
   if (note.type == 'noteon' && note.channel == props.channel) {
 
     let circ = new paper.Path.Line({
-      from: polarXY(paper.view.center, 340, radar.angle),
-      to: polarXY(paper.view.center, 360, radar.angle),
+      from: polarXY(paper.view.center, props.in, radar.angle),
+      to: polarXY(paper.view.center, props.out, radar.angle),
       opacity: 1,
       strokeColor: pitchColor(note.pitch, 3, 0.2),
-      strokeWidth: 3,
-      strokeCap: 'round',
+      strokeWidth: props.width,
+      strokeCap: props.rounded ? 'round' : '',
     })
     circ.tween({
       opacity: 0,
       easing: 'easeInOutCubic',
-    }, 4000)
+    }, 8000)
     points.unshift(circ)
   }
   if (points.length > maxPoints) {

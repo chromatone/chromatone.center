@@ -10,27 +10,16 @@
       width="1000"
       height="1000"
     )
-      div(v-if="loaded")
+      div(v-if="radar.loaded")
         midi-radar-layer-pointer
-        midi-radar-layer-clock(:channel="5" to-center :grow="400")
-        midi-radar-layer-clock(:channel="7")
-        midi-radar-layer-clock(:channel="8" :grow="100")
+        midi-radar-layer-circles(:channel="5" :grow="300" to-center)
+        midi-radar-layer-circles(:channel="8" :grow="1" )
+        midi-radar-layer-ticks(:channel="3")
+        midi-radar-layer-clock()
 </template>
 
 <script setup>
-import paper from 'paper'
-const screen = ref()
-
-const loaded = ref(false)
-
-onMounted(() => {
-  paper.setup(screen.value)
-  paper.view.draw()
-  loaded.value = true
-});
-onBeforeUnmount(() => {
-  paper.project.clear()
-  loaded.value = false
-});
+import { useRadar } from './radar.js'
+const { screen, radar } = useRadar()
 
 </script>

@@ -8,16 +8,16 @@ cover: stickers/universal/cover-uni.jpg
 cities:
   - city: Moscow
     country: Russia
-    coord: [55.799996,37.722273]
+    coord: [55.799996, 37.722273]
   - city: Lambrecht
     country: Germany
-    coord: [49.368440,8.069080]
-  - city: Tai Hang 
+    coord: [49.368440, 8.069080]
+  - city: Tai Hang
     country: Hong Kong
-    coord: [22.278482,114.191555,]
+    coord: [22.278482, 114.191555]
   - city: Springfield, MO
     country: USA
-    coord: [37.23644149305249,-93.31788335980335]
+    coord: [37.23644149305249, -93.31788335980335]
   - city: Boston, MA
     country: USA
     coord: [42.34194113664735, -71.08229155779708]
@@ -114,13 +114,13 @@ cities:
   - city: New York, NY
     country: USA
     coord: [40.73793185378023, -73.99603195789358]
-  - city: Lindenhurst, NY 
+  - city: Lindenhurst, NY
     country: USA
     coord: [40.69751713068349, -73.38968707138714]
   - city: Miami, FL
     country: USA
     coord: [25.753134305582403, -80.21235944663749]
-  - city: Philadelphia, PA 
+  - city: Philadelphia, PA
     country: USA
     coord: [39.97883708051853, -75.1227100542142]
   - city: Bristol
@@ -153,7 +153,7 @@ cities:
   - city: Münsing
     country: Germany
     coord: [47.864920752611894, 11.334687654748803]
-  - city: Oxford, MS 
+  - city: Oxford, MS
     country: USA
     coord: [34.375485682799706, -89.56731479008573]
   - city: Plano, TX
@@ -171,7 +171,7 @@ cities:
   - city: Branford, CT
     country: USA
     coord: [41.295968689802734, -72.82438206093555]
-  - city: Quaker Hill, CT 
+  - city: Quaker Hill, CT
     country: USA
     coord: [41.4033900534013, -72.11293247442322]
   - city: Wichita Falls, TX
@@ -191,26 +191,31 @@ cities:
     coord: [33.79523732075658, -84.33315953243846]
   - city: Sochi
     country: Russia
-    coord: [43.901217115240094, 39.335106302698165] 
+    coord: [43.901217115240094, 39.335106302698165]
   - city: Almaty
     country: Kazakhstan
-    coord: [43.16908367837858, 76.87487656731079] 
+    coord: [43.16908367837858, 76.87487656731079]
   - city: Moscow, Strogino
     country: Russia
-    coord: [55.80529425924007, 37.39869510652762] 
+    coord: [55.80529425924007, 37.39869510652762]
   - city: Moscow, Khamovniki
     country: Russia
-    coord: [55.74483961420843, 37.59322618089409] 
+    coord: [55.74483961420843, 37.59322618089409]
   - city: Osielsko
     country: Poland
-    coord: [53.18467813335776, 18.06578745624908] 
+    coord: [53.18467813335776, 18.06578745624908]
   - city: Praha
     country: Czech republic
-    coord: [50.11023377083589, 14.472452225457124] 
-  - city: Austin, TX 
+    coord: [50.11023377083589, 14.472452225457124]
+  - city: Austin, TX
     country: USA
-    coord: [30.20261175781122, -97.84653826002946] 
-
+    coord: [30.20261175781122, -97.84653826002946]
+  - city: Seattle, WA
+    country: USA
+    coord: [47.6060154513441, -122.32035515948176]
+  - city: Northville, MI
+    country: USA
+    coord: [42.40910219529877, -83.4336254593393]
 ---
 
 We are the growing global community more than **{{$frontmatter.cities.length +10}}** musicians worldwide who've already implemented Chromatone into our daily music practice. Join us today!

@@ -1,5 +1,5 @@
 ---
-title: Harmony study
+title: Study
 subtitle: Different approaches to harmony in music and everything else
 date: 2021-11-10
 tags: harmony
@@ -7,7 +7,7 @@ tags: harmony
 
 ## Ancient Greece
 
-In Greek mythology, Harmonia (/hɑːrˈmoʊniə/; Ancient Greek: Ἁρμονία) is the immortal goddess of harmony and concord. Her Roman counterpart is Concordia. Her Greek opposite is Eris, whose Roman counterpart is Discordia. 
+In Greek mythology, Harmonia (/hɑːrˈmoʊniə/; Ancient Greek: Ἁρμονία) is the immortal goddess of harmony and concord. Her Roman counterpart is Concordia. Her Greek opposite is Eris, whose Roman counterpart is Discordia.
 
 According to one account, she is the daughter of Ares and Aphrodite. By another account, Harmonia was from Samothrace and was the daughter of Zeus and Electra, her brother Iasion being the founder of the mystic rites celebrated on the island.
 
@@ -19,7 +19,6 @@ Cadmus was credited by the ancient Greeks (such as Herodotus c. 484 – c. 425 B
 
 ### Pythagoreans
 
-
 Pythagoras pioneered the mathematical and experimental study of music. He objectively measured physical quantities, such as the length of a string, and discovered quantitative mathematical relationships of music through arithmetic ratios. Pythagoras attempted to explain subjective psychological and aesthetic feelings, such as the enjoyment of musical harmony. Pythagoras and his students experimented systematically with strings of varying length and tension, with wind instruments, with brass discs of the same diameter but different thickness, and with identical vases filled with different levels of water. Early Pythagoreans established quantitative ratios between the length of a string or pipe and the pitch of notes and the frequency of string vibration.
 
 Pythagoras is credited with discovering that the most harmonious musical intervals are created by the simple numerical ratio of the first four natural numbers which derive respectively from the relations of string length: the octave (1/2), the fifth (2/3) and the fourth (3/4). The sum of those numbers 1 + 2 + 3 + 4 = 10 was for Pythagoreans the perfect number, because it contained in itself "the whole essential nature of numbers". Werner Heisenberg has called this formulation of musical arithmetic as "among the most powerful advances of human science" because it enables the measurement of sound in space.
@@ -30,8 +29,43 @@ The fact that mathematics could explain the human sentimental world had a profou
 
 > ![](./Pythagoras_and_Philolaus.png)
 >
->Medieval woodcut by Franchino Gaffurio, depicting Pythagoras and Philolaus conducting musical investigations.
+> Medieval woodcut by Franchino Gaffurio, depicting Pythagoras and Philolaus conducting musical investigations.
 
 For Pythagoreans, harmony signified the "unification of a multifarious composition and the agreement of unlike spirits". In Pythagoreanism, numeric harmony was applied in mathematical, medical, psychological, aesthetic, metaphysical and cosmological problems. For Pythagorean philosophers, the basic property of numbers was expressed in the harmonious interplay of opposite pairs. Harmony assured the balance of opposite forces. Pythagoras had in his teachings named numbers and the symmetries of them as the first principle, and called these numeric symmetries harmony. This numeric harmony could be discovered in rules throughout nature. Numbers governed the properties and conditions of all beings and were regarded the causes of being in everything else. Pythagorean philosophers believed that numbers were the elements of all beings and the universe as a whole was composed of harmony and numbers.
+
+## Ancient Rome
+
+### Concordia discors
+
+> Cum tu inter scabiem tantam et contagia lucri
+> Nil parvum sapias et adhuc sublimia cures:
+> Quae mare conpescant causae, quid temperet annum,
+> Stellae sponte sua iussaene vagentur et errent,
+> Quid premat obscurum lunae, quid proferat orbem,
+> Quid velit et possit rerum concordia discors,
+> Empedocles an Stertinium deliret acumen.
+> — Horat. Epist. I,12 (23-20 BCE)
+
+> Temporis angusti mansit concordia discors
+> Paxque fuit non sponte ducum <…>
+> — Lucan. Bell. civ. I, vers.98-99 (48-65 AD)
+
+## Discordia concors
+
+> …faciuntque deum per quattuor artus
+> Et mundi struxere globum prohibentque requiri
+> Ultra se quicquam, cum per se cuncta crearint:
+> Frigida nec calidis desint aut umida siccis,
+> Spiritus aut solidis, sitque haec discordia concors
+> Quae nexus habilis et opus generabile fingit
+> Atque omnis partus elementa capacia reddit:
+> Semper erit pugna ingeniis, dubiumque manebit
+> Quod latet et tantum supra est hominemque deumque.
+> — Manilius. Astronomica, I.137-146
+
+## Renaissance
+
+> ![](./Banchieri1.jpg)
+> Adriano Banchieri (1628)
 
 <youtube-embed video="eRkgK4jfi6M" />

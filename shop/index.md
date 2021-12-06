@@ -220,7 +220,7 @@ cities:
 
 We are the growing global community more than **{{$frontmatter.cities.length +10}}** musicians worldwide who've already implemented Chromatone into our daily music practice. Join us today!
 
-<customer-map />
+<map-ol :cities="$frontmatter.cities" />
 
 It's great having all the interactive tools available online, but there are times when screen is just isn't enough. Having colorful notes directly on the keys or frets of your instrument is a great help in learning and exploring music. So we design and print high quality vinyl stickers for almost any use case.
 

@@ -1,5 +1,5 @@
 <template lang="pug">
-#map.h-400px.rounded-3xl.overflow-hidden.shadow-xl.mb-8
+#map.h-400px.rounded-3xl.overflow-hidden.shadow-xl.mb-8.cursor-pointer(tabindex="1")
 </template>
 
 <script setup>
@@ -13,16 +13,18 @@ import LineString from 'ol/geom/LineString';
 import { Circle, Style, Stroke, Fill } from 'ol/style';
 import VectorSource from 'ol/source/Vector';
 import { Tile as TileLayer, Vector as VectorLayer } from 'ol/layer';
+import PinchZoom from 'ol/interaction/PinchZoom';
+
 
 import { pitchColor } from 'chromatone-theory'
 
-import { useData } from 'vitepress'
-
-const center = [37.72265776708658, 55.79885477019039]
+const props = defineProps({
+  center: { type: Array, default: [37.72265776708658, 55.79885477019039] },
+  cities: { type: Array, default: [] }
+})
 
 onMounted(() => {
-  const { frontmatter } = useData()
-  const cities = frontmatter.value.cities.map((city, c) => {
+  const cities = props.cities.map((city, c) => {
     let feature = new Feature({
       geometry: new Point(fromLonLat([city.coord[1], city.coord[0]])),
     })
@@ -46,9 +48,9 @@ onMounted(() => {
     source: pointSource,
   });
 
-  const lines = frontmatter.value.cities.map((city, c) => {
+  const lines = props.cities.map((city, c) => {
     let line = new Feature({
-      geometry: new LineString([fromLonLat(center), fromLonLat([city.coord[1], city.coord[0]])])
+      geometry: new LineString([fromLonLat(props.center), fromLonLat([city.coord[1], city.coord[0]])])
     })
     line.setStyle(new Style({
       stroke: new Stroke({
@@ -79,7 +81,8 @@ onMounted(() => {
       zoom: 1,
       maxZoom: 9,
     }),
-    target: 'map'
+    target: 'map',
+
   });
 
 });

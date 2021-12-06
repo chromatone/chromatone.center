@@ -9,6 +9,7 @@ specifiers:
   abcjs: ^5.12.0
   audiomotion-analyzer: 3.6.0
   chromatone-theory: 1.3.6
+  cobe: ^0.3.3
   colord: ^2.9.1
   esbuild-register: ^3.2.0
   fraction.js: ^4.1.2
@@ -47,6 +48,7 @@ dependencies:
   abcjs: 5.12.0
   audiomotion-analyzer: 3.6.0
   chromatone-theory: 1.3.6
+  cobe: 0.3.3
   colord: 2.9.1
   fraction.js: 4.1.2
   hidpi-canvas: 1.0.10
@@ -2153,6 +2155,12 @@ packages:
     resolution: {integrity: sha512-Zrj17I7g91XAimMESW7Owv2RpZk/adgG6AT8DA+ygHGWteI+Sx3eLDuzmBQUGvfmK31rUe860phq5IPUQJwSgQ==}
     dev: false
 
+  /cobe/0.3.3:
+    resolution: {integrity: sha512-okgBuYZCKaAfo9IOwh3y1lg7asXawsHDb5fh3EjRJ8M27O/Rn3CIRXXdMb/mgI6uC1r9ortfEkWbSZSQMJE07Q==}
+    dependencies:
+      phenomenon: 1.6.0
+    dev: false
+
   /color-convert/1.9.3:
     resolution: {integrity: sha512-QfAUtd+vFdAtFQcC8CCyYt1fYWxSqAiK2cSD6zDB8N3cpsEBAvRxp9zOGg6G/SHHJYAT88/az/IuDGALsNVbGg==}
     dependencies:
@@ -3547,6 +3555,10 @@ packages:
     dependencies:
       ieee754: 1.2.1
       resolve-protobuf-schema: 2.1.0
+    dev: false
+
+  /phenomenon/1.6.0:
+    resolution: {integrity: sha512-7h9/fjPD3qNlgggzm88cY58l9sudZ6Ey+UmZsizfhtawO6E3srZQXywaNm2lBwT72TbpHYRPy7ytIHeBUD/G0A==}
     dev: false
 
   /picomatch/2.3.0:

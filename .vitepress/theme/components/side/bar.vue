@@ -1,59 +1,63 @@
 <template lang="pug">
 .sidebar(:class="{ open }")
   .flex.flex-col
-    .group(
+    .my-4.first(
       v-for="(main,m) in theme.pages.main" :key="main.title"
+    )
+      .level(
         :class="{ active: route.path.includes(main.link) }"
         :style="{ borderColor: lchToHsl(m, theme.pages.main.length) }"
-      )
-      a.first(
-        :href="main.link"
-        :style="{ color: lchToHsl(m, theme.pages.main.length) }"
-        ) {{ main.title }}
-      .flex.flex-col
-        .second(
-          :class="{ active: route.path.includes(page.link) }"
-          :style="{ borderColor: lchToHsl(p, theme.pages?.[main.data?.list].length) }"
-          v-for="(page,p) in theme.pages?.[main.data?.list]" :key="page"
-        ) 
+        )
+        a.mb-2.ml-1(
+          :href="main.link"
+          :style="{ color: lchToHsl(m, theme.pages.main.length) }"
+          ) {{ main.title }}
+        .flex.flex-col
+          .level.second(
+            :class="{ active: route.path.includes(page.link) }"
+            :style="{ borderColor: lchToHsl(p, theme.pages?.[main.data?.list].length) }"
+            v-for="(page,p) in theme.pages?.[main.data?.list]" :key="page"
+          ) 
+            a(
+              :href="page.link"
+            )
+              .text {{ page.title }}
+              .flex-1
+              .text(
+                v-if="theme.pages?.[page?.data?.list]"
+                :style="{ color: lchToHsl(p, theme.pages?.[main.data?.list].length) }"
+                ) {{ theme.pages?.[page?.data?.list].length }}
 
-          a.flex.px-2.font-normal(
-            :href="page.link"
-          )
-            span {{ page.title }}
-            .flex-1
-            span(
-              v-if="theme.pages?.[page?.data?.list]"
-              :style="{ color: lchToHsl(p, theme.pages?.[main.data?.list].length) }"
-              ) {{ theme.pages?.[page?.data?.list].length }}
+            transition(name="fade")
+              .flex.flex-col.my-2(v-show="route.path.includes(page.link) && theme.pages?.[page.data?.list] && theme.pages?.[page.data?.list].length > 0")
 
-          transition(name="fade")
-            .flex.flex-col.my-2(v-show="route.path.includes(page.link) && theme.pages?.[page.data?.list] && theme.pages?.[page.data?.list].length > 0")
+                transition-group(name="fade")
+                  .level.third.transition-all.duration-200.ease-in(
+                    :class="{ active: route.path.includes(line.link) }"
+                    v-for="(line,l) in theme.pages?.[page.data?.list]" :key="line"
+                    :style="{ borderColor: lchToHsl(l, theme.pages?.[page.data?.list].length) }"
+                    )
+                    a.flex.font-normal(
+                      :href="line.link"
+                    ) 
+                      .text {{ line.title }}
+                      .flex-1(v-if="theme.pages?.[line?.data?.list]")
+                      .text(
+                      v-if="theme.pages?.[line?.data?.list]"
+                      :style="{ color: lchToHsl(p, theme.pages?.[line.data?.list].length) }"
+                      ) {{ theme.pages?.[line?.data?.list].length }}
+                    transition(name="fade")
+                      .flex.flex-col(v-show="route.path.includes(line.link) && theme.pages?.[line.data?.list] && theme.pages?.[line.data?.list].length > 0")
+                        transition-group(name="fade")
+                          .level.fourth(
+                            :class="{ active: route.path.includes(dot.link) }"
+                            :style="{ borderColor: lchToHsl(d, theme.pages?.[line.data?.list].length) }"
+                            v-for="(dot,d) in theme.pages?.[line?.data?.list]" :key="dot"
+                          )
+                            a(
+                              :href="dot.link"
 
-              transition-group(name="fade")
-                .third.transition-all.duration-200.ease-in(
-                  :class="{ active: route.path.includes(line.link) }"
-                  v-for="(line,l) in theme.pages?.[page.data?.list]" :key="line"
-                  :style="{ borderColor: lchToHsl(l, theme.pages?.[page.data?.list].length) }"
-                  )
-                  a.flex.font-normal(
-                    :href="line.link"
-                  ) 
-                    span {{ line.title }}
-                    .flex-1(v-if="theme.pages?.[line?.data?.list]")
-                    span(
-                    v-if="theme.pages?.[line?.data?.list]"
-                    :style="{ color: lchToHsl(p, theme.pages?.[line.data?.list].length) }"
-                    ) {{ theme.pages?.[line?.data?.list].length }}
-                  transition(name="fade")
-                    .flex.flex-col.py-2(v-show="route.path.includes(line.link) && theme.pages?.[line.data?.list] && theme.pages?.[line.data?.list].length > 0")
-                      transition-group(name="fade")
-                        a.text-sm.px-2.py-1.my-1.font-normal.transition-all.duration-200.ease-in.border-l-2(
-                          :href="dot.link"
-                          :class="{ active: route.path.includes(dot.link) }"
-                          :style="{ borderColor: lchToHsl(d, theme.pages?.[line.data?.list].length) }"
-                          v-for="(dot,d) in theme.pages?.[line?.data?.list]" :key="dot"
-                          ) {{ dot.title }}
+                              ) {{ dot.title }}
 </template>
 
 <script setup>
@@ -77,7 +81,7 @@ const route = useRoute();
   transition: all 300ms ease-out;
   @apply z-20 fixed rounded-xl top-$header-height bottom-0 left-0 transform -translate-x-full lg:(static translate-x-0) shadow-xl bg-light-600 dark:bg-dark-700;
   & a {
-    @apply no-underline;
+    @apply no-underline block flex;
   }
 }
 
@@ -85,26 +89,33 @@ const route = useRoute();
   @apply translate-x-0;
 }
 
-.group {
-  @apply flex flex-col transition-all duration-300 ease-out border-l-2 my-2 pl-2;
+.level {
+  @apply my-2 ml-1 cursor-pointer flex flex-col border-l-2 transition-all duration-200 ease-in-out hover:border-l-4;
+  & a {
+    @apply py-2 flex px-2 font-normal;
+  }
 }
 
 .first {
-  @apply py-2 transition-all  duration-300 ease-out text-xl;
+  @apply px-2 text-xl;
 }
 
 .second {
-  @apply flex flex-col my-1 py-1 font-normal transition-all duration-300 ease-out border-l-2 text-1rem;
+  @apply ml-1 font-normal text-1rem;
 }
 
 .third {
-  @apply flex flex-col my-1 mx-2 py-2 font-normal px-2 border-l-2 text-1rem leading-4;
+  @apply mx-1 font-normal text-1rem leading-4;
+}
+
+.fourth {
+  @apply font-normal;
 }
 
 .active {
-  @apply border-l-4 font-bold bg-light-100/50 dark:bg-dark-100/50;
+  @apply border-l-6 font-bold bg-light-100/50 dark:bg-dark-100/50 hover:border-l-6;
   > a {
-    @apply font-bold;
+    @apply font-bold py-4;
   }
 }
 </style>

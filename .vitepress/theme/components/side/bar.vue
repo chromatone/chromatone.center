@@ -97,15 +97,15 @@ const route = useRoute();
 }
 
 .first {
-  @apply px-2 text-xl;
+  @apply text-xl;
 }
 
 .second {
-  @apply ml-1 font-normal text-1rem;
+  @apply font-normal text-1rem;
 }
 
 .third {
-  @apply mx-1 font-normal text-1rem leading-4;
+  @apply font-normal text-1rem leading-6;
 }
 
 .fourth {

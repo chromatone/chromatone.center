@@ -10,7 +10,7 @@ import { fromLonLat } from 'ol/proj';
 import Feature from 'ol/Feature';
 import Point from 'ol/geom/Point';
 import LineString from 'ol/geom/LineString';
-import { Circle, Style, Stroke, Fill } from 'ol/style';
+import { Circle, Style, Stroke } from 'ol/style';
 import VectorSource from 'ol/source/Vector';
 import { Tile as TileLayer, Vector as VectorLayer } from 'ol/layer';
 import PinchZoom from 'ol/interaction/PinchZoom';

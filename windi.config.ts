@@ -1,5 +1,7 @@
 import { defineConfig } from 'windicss/helpers'
 import colors from 'windicss/colors'
+import snap from 'windicss/plugin/scroll-snap'
+import filters from 'windicss/plugin/filters'
 
 
 export default defineConfig({
@@ -9,8 +11,8 @@ export default defineConfig({
     'has-bg': 'bg-light-500 dark:bg-dark-500',
   },
   plugins: [
-    require('windicss/plugin/scroll-snap'),
-    require('windicss/plugin/filters')
+    snap,
+    filters
   ],
   theme: {
     extend: {

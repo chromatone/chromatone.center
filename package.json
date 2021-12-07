@@ -30,7 +30,7 @@
     "webmidi": "^3.0.2"
   },
   "devDependencies": {
-    "@iconify/json": "^2.0.2",
+    "@iconify/json": "^2.0.7",
     "esbuild-register": "^3.2.0",
     "markdown-it-classy": "^0.2.0",
     "markdown-it-container": "^3.0.0",
@@ -39,12 +39,11 @@
     "pug": "3.0.2",
     "typescript": "^4.5.2",
     "unplugin-auto-import": "^0.5.1",
-    "unplugin-icons": "^0.12.20",
-    "unplugin-vue-components": "^0.17.2",
-    "vite": "^2.6.14",
+    "unplugin-icons": "^0.12.22",
+    "unplugin-vue-components": "^0.17.6",
+    "vite": "2.6.14",
     "vite-aliases": "0.8.7",
-    "vite-plugin-pwa": "^0.11.8",
-    "vite-plugin-windicss": "^1.5.3",
+    "vite-plugin-windicss": "^1.5.4",
     "vitepress": "0.20.1",
     "vitepress-tags": "^0.4.0",
     "windicss": "3.2.1"

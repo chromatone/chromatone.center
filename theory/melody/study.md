@@ -1,7 +1,7 @@
 ---
 title: Melody study
 subtitle: What is melody and how can we understand it
-date: 2021-11-01
+date: 2021-12-01
 tags: melody
 ---
 
@@ -42,34 +42,54 @@ Different musical styles use melody in different ways. For example:
 - In western classical music, composers often introduce an initial melody, or theme, and then create variations. Classical music often has several melodic layers, called polyphony, such as those in a fugue, a type of counterpoint. Often, melodies are constructed from motifs or short melodic fragments, such as the opening of Beethoven's Fifth Symphony. Richard Wagner popularized the concept of a leitmotif: a motif or melody associated with a certain idea, person or place.
 - While in both most popular music and classical music of the common practice period pitch and duration are of primary importance in melodies, the contemporary music of the 20th and 21st centuries pitch and duration have lessened in importance and quality has gained importance, often primary. Examples include musique concrète, klangfarbenmelodie, Elliott Carter's Eight Etudes and a Fantasy (which contains a movement with only one note), the third movement of Ruth Crawford-Seeger's String Quartet 1931 (later re-orchestrated as Andante for string orchestra), which creates the melody from an unchanging set of pitches through "dissonant dynamics" alone, and György Ligeti's Aventures, in which recurring phonetics create the linear form.
 
-## Melodic expectation
-
-In music cognition and musical analysis, the study of melodic expectation considers the engagement of the brain's predictive mechanisms in response to music. For example, if the ascending musical partial octave "do-re-mi-fa-sol-la-ti-..." is heard, listeners familiar with Western music will have a strong expectation to hear or provide one more note, "do", to complete the octave.
-
-The notion of melodic expectation has prompted the existence of a corpus of studies in which authors often choose to provide their own terminology in place of using the literature's. This results in an important number of different terms that all point towards the phenomenon of musical expectation:
-
-- Anticipation
-- Arousal
-- Deduction
-- Directionality
-- Expectancy, expectation, expectedness, and in French attente
-- Facilitation
-- Implication / realization
-- Implication (independent from realization)
-- Induction
-- Inertia
-- Musical force(s)
-- Previsibility, predictability and prediction
-- Resolution
-- Tension / release, tension / relaxation
-- Closure, which may be used as the ending of the expectation process, as a group boundary, or as both simultaneously
-
-Leonard Meyer's **Emotion and Meaning in Music** is the classic text in music expectation. Meyer's starting point is the belief that the experience of music (as a listener) is derived from one's emotions and feelings about the music, which themselves are a function of relationships within the music itself. Meyer writes that listeners bring with them a vast body of musical experiences that, as one listens to a piece, conditions one's response to that piece as it unfolds. Meyer argued that music's evocative power derives from its capacity to generate, suspend, prolongate, or violate these expectations.
-
-https://en.wikipedia.org/wiki/Ornament_(music)#Turn
-
-https://en.wikipedia.org/wiki/Melodic_motion
-
-https://en.wikipedia.org/wiki/Modal_frame
-
 <youtube-embed video="XLIrjjklq_s" />
+
+### Counterpoint
+
+<youtube-embed video="b5PoTBOj7Xc" />
+
+## Voice leading
+
+Voice leading (or part writing) is the linear progression of individual melodic lines (voices or parts) and their interaction with one another to create harmonies, typically in accordance with the principles of common-practice harmony and counterpoint.
+
+Rigorous concern for voice leading is of greatest importance in common-practice music, although jazz and pop music also demonstrate attention to voice leading to varying degrees. In Jazz Theory, Gabriel Sakuma writes that "[a]t the surface level, jazz voice-leading conventions seem more relaxed than they are in common-practice music." Marc Schonbrun also states that while it is untrue that "popular music has no voice leading in it, [...] the largest amount of popular music is simply conceived with chords as blocks of information, and melodies are layered on top of the chords."
+
+### History
+
+Voice leading developed as an independent concept when Heinrich Schenker stressed its importance in "free counterpoint", as opposed to strict counterpoint. He wrote:
+
+> All musical technique is derived from two basic ingredients: voice leading and the progression of scale degrees [i.e. of harmonic roots]. Of the two, voice leading is the earlier and the more original element.
+> The theory of voice leading is to be presented here as a discipline unified in itself; that is, I shall show how […] it everywhere maintains its inner unity.
+
+Schenker indeed did not present the rules of voice leading merely as contrapuntal rules, but showed how they are inseparable from the rules of harmony and how they form one of the most essential aspects of musical composition. (See Schenkerian analysis: voice leading.)
+
+### Common-practice conventions and pedagogy
+
+Western musicians have tended to teach voice leading by focusing on connecting adjacent harmonies because that skill is foundational to meeting larger, structural objectives. Common-practice conventions dictate that melodic lines should be smooth and independent. To be smooth, they should be primarily conjunct (stepwise), avoid leaps that are difficult to sing, approach and follow leaps with movement in the opposite direction, and correctly handle tendency tones (primarily, the leading-tone, but also the scale degree 4, which often moves down to scale degree 3) To be independent, they should avoid parallel fifths and octaves.
+
+Contrapuntal conventions likewise consider permitted or forbidden melodic intervals in individual parts, intervals between parts, the direction of the movement of the voices with respect to each other, etc. Whether dealing with counterpoint or harmony, these conventions emerge not only from a desire to create easy-to-sing parts but also from the constraints of tonal materials and from the objectives behind writing certain textures.
+
+### These conventions are discussed in more detail below.
+
+1. Move each voice the shortest distance possible. One of the main conventions of common-practice part-writing is that, between successive harmonies, voices should avoid leaps and retain common tones as much as possible. This principle was commonly discussed among 17th- and 18th-century musicians as a rule of thumb. For example, Rameau taught "one cannot pass from one note to another but by that which is closest." In the 19th century, as music pedagogy became a more theoretical discipline in some parts of Europe, the 18th-century rule of thumb became codified into a more strict definition. Organist Johann August Dürrnberger coined the term "rule of the shortest way" for it and delineated that:
+
+- When a chord contains one or more notes that will be reused in the chords immediately following, then these notes should remain, that is retained in the respective parts.
+- The parts which do not remain, follow the law of the shortest way (Gesetze des nächsten Weges), that is that each such part names the note of the following chord closest to itself if no forbidden succession arises from this.
+- If no note at all is present in a chord which can be reused in the chord immediately following, one must apply contrary motion according to the law of the shortest way, that is, if the root progresses upwards, the accompanying parts must move downwards, or inversely, if the root progresses downwards, the other parts move upwards and, in both cases, to the note of the following chord closest to them.
+  This rule was taught by Bruckner to Schoenberg and Schenker, who both had followed his classes in Vienna. Schenker re-conceived the principle as the "rule of melodic fluency":
+
+> If one wants to avoid the dangers produced by larger intervals [...], the best remedy is simply to interrupt the series of leaps – that is, to prevent a second leap from occurring by continuing with a second or an only slightly larger interval after the first leap; or one may change the direction of the second interval altogether; finally both means can be used in combination. Such procedures yield a kind of wave-like melodic line which as a whole represents an animated entity, and which, with its ascending and descending curves, appears balanced in all its individual component parts. This kind of line manifests what is called melodic fluency [Fließender Gesang].
+
+Schenker attributed the rule to Cherubini, but this is the result of a somewhat inexact German translation. Cherubini only said that conjunct movement should be preferred. Franz Stoepel, the German translator, used the expression Fließender Gesang to translate mouvement conjoint. The concept of Fließender Gesang is a common concept of German counterpoint theory. Modern Schenkerians made the concept of "melodic fluency" an important one in their teaching of voice leading.
+
+2. Voice crossing should be avoided except to create melodic interest.
+
+3. Avoid parallel fifths and octaves. To promote voice independence, melodic lines should avoid parallel unisons, parallel fifths, and parallel octaves between any two voices. They should also avoid hidden consecutives, perfect intervals reached by any two voices moving in the same direction, even if not by the same interval, particularly if the higher of the two voices makes a disjunct motion. In organ registers, certain interval combinations and chords are activated by a single key so that playing a melody results in parallel voice leading. These voices, losing independence, are fused into one and the parallel chords are perceived as single tones with a new timbre. This effect is also used in orchestral arrangements; for instance, in Ravel's Boléro #5[clarification needed] the parallel parts of flutes, horn and celesta resemble the sound of an electric organ. In counterpoint, parallel voices are prohibited because they violate the homogeneity of musical texture when independent voices occasionally disappear turning into a new timbre quality and vice versa.
+
+### Harmonic roles
+
+As the Renaissance gave way to the Baroque era in the 1600s, part writing reflected the increasing stratification of harmonic roles. This differentiation between outer and inner voices was an outgrowth of both tonality and homophony. In this new Baroque style, the outer voices took a commanding role in determining the flow of the music and tended to move more often by leaps. Inner voices tended to move stepwise or repeat common tones.
+
+A Schenkerian analysis perspective on these roles shifts the discussion somewhat from "outer and inner voices" to "upper and bass voices." Although the outer voices still play the dominant, form-defining role in this view, the leading soprano voice is often seen as a composite line that draws on the voice leadings in each of the upper voices of the imaginary continuo. Approaching harmony from a non-Schenkerian perspective, Dmitri Tymoczko nonetheless also demonstrates such "3+1" voice leading, where "three voices articulate a strongly crossing-free voice leading between complete triads [...], while a fourth voice adds doublings," as a feature of tonal writing.
+
+Neo-Riemannian theory examines another facet of this principle. That theory decomposes movements from one chord to another into one or several "parsimonious movements" between pitch classes instead of actual pitches (i.e., neglecting octave shifts). Such analysis shows the deeper continuity underneath surface disjunctions, as in the Bach example from BWV 941 hereby.

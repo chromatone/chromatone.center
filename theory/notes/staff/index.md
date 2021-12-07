@@ -7,7 +7,6 @@ list: staff
 cover: theory/notation/kvintcirklen.png
 ---
 
-
 ![](/media/theory/notation/kvintcirklen.png)
 
 ## Clefs
@@ -15,10 +14,10 @@ cover: theory/notation/kvintcirklen.png
 1. Treble (G) <abc-render :abc="'K:treble\nG8'" />
 2. Bass (F) <abc-render :abc="'K:bass\nF,8'" />
 3. Baritone (F) <abc-render :abc="'K:bass3\nF,8'" />
-4. Tenor (C) 	<abc-render :abc="'K:tenor\nc,8'" />
-5. Alto (C)	<abc-render :abc="'K:alto\nc,8'" />
-6. Mezzosoprano (C)	<abc-render :abc="'K:alto2\nc,8'" />
-7. Soprano (C) 	<abc-render :abc="'K:alto1\nc,8'" />
+4. Tenor (C) <abc-render :abc="'K:tenor\nc,8'" />
+5. Alto (C) <abc-render :abc="'K:alto\nc,8'" />
+6. Mezzosoprano (C) <abc-render :abc="'K:alto2\nc,8'" />
+7. Soprano (C) <abc-render :abc="'K:alto1\nc,8'" />
 
 ## Note pitch
 
@@ -40,7 +39,7 @@ cover: theory/notation/kvintcirklen.png
 
 <abc-render :abc="'K:C#\n__G8'" />
 
-### Ascending 
+### Ascending
 
 A A# B C C# D D# E F F# G G# A
 
@@ -74,22 +73,14 @@ Whole note = 2 half notes = 4 quarter notes = 8 eighth notes = 16 sixteenth note
 <abc-render responsive :abc="`M:4/4\n|(5G2A2B2c2d2|(7CDEFGAB|`" />
 
 ### Rests
-<abc-render responsive :abc="`M:4/4\n|z8|z4z4|z2z2z2z2|zzzzzzzz|z/z/z/z/z/z/z/z/z/z/z/z/z/z/z/z/|`" />
 
+<abc-render responsive :abc="`M:4/4\n|z8|z4z4|z2z2z2z2|zzzzzzzz|z/z/z/z/z/z/z/z/z/z/z/z/z/z/z/z/|`" />
 
 ![](./note-values-and-rests.png)
 
-
-
->![](/media/theory/notation/Bachlut1.png)
+> ![](/media/theory/notation/Bachlut1.png)
 > J.S.Bach Prelude
-
-## String technique instructions
-
-<youtube-embed video="ux3Z3yAK-UE" />
 
 ### Alexander Scriabin - Piano Concerto in F sharp minor, Op. 20
 
 <youtube-embed video="F734PyD3NAw" />
-
-

@@ -1,5 +1,5 @@
 <template lang="pug">
-.sidebar(:class="{ open }")
+.panel(:class="{ open }")
   .flex.flex-col
     .my-4.first(
       v-for="(main,m) in theme.pages.main" :key="main.title"
@@ -74,23 +74,23 @@ const route = useRoute();
 </script>
 
 <style scoped>
-.sidebar {
+.panel {
   width: 16.4rem;
   flex: 1 0 16.4rem;
   overflow-y: auto;
   transition: all 300ms ease-out;
-  @apply z-20 fixed rounded-xl top-$header-height bottom-0 left-0 transform -translate-x-full lg:(static translate-x-0) shadow-xl bg-light-600 dark:bg-dark-700;
+  @apply pr-2 pl-1 z-20 fixed rounded-xl top-$header-height bottom-0 left-0 transform -translate-x-full lg:(static translate-x-0) shadow-xl bg-light-600 dark:bg-dark-700;
   & a {
     @apply no-underline block flex;
   }
 }
 
-.sidebar.open {
+.panel.open {
   @apply translate-x-0;
 }
 
 .level {
-  @apply my-2 ml-1 cursor-pointer flex flex-col border-l-2 transition-all duration-200 ease-in-out hover:border-l-4;
+  @apply my-1 ml-1 cursor-pointer flex flex-col border-l-2 transition-all duration-200 ease-in-out hover:border-l-4;
   & a {
     @apply py-2 flex px-2 font-normal;
   }

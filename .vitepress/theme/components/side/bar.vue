@@ -5,7 +5,7 @@
       v-for="(main,m) in theme.pages.main" :key="main.title"
     )
       .level(
-        :class="{ active: route.path.includes(main.link) }"
+        :aria-current="route.path.includes(main.link) ? 'page' : false"
         :style="{ borderColor: lchToHsl(m, theme.pages.main.length) }"
         )
         a.mb-2.ml-1(
@@ -14,7 +14,7 @@
           ) {{ main.title }}
         .flex.flex-col
           .level.second(
-            :class="{ active: route.path.includes(page.link) }"
+            :aria-current="route.path.includes(page.link) ? 'page' : false"
             :style="{ borderColor: lchToHsl(p, theme.pages?.[main.data?.list].length) }"
             v-for="(page,p) in theme.pages?.[main.data?.list]" :key="page"
           ) 
@@ -33,7 +33,7 @@
 
                 transition-group(name="fade")
                   .level.third.transition-all.duration-200.ease-in(
-                    :class="{ active: route.path.includes(line.link) }"
+                    :aria-current="route.path.includes(line.link) ? 'page' : false"
                     v-for="(line,l) in theme.pages?.[page.data?.list]" :key="line"
                     :style="{ borderColor: lchToHsl(l, theme.pages?.[page.data?.list].length) }"
                     )
@@ -50,7 +50,7 @@
                       .flex.flex-col(v-show="route.path.includes(line.link) && theme.pages?.[line.data?.list] && theme.pages?.[line.data?.list].length > 0")
                         transition-group(name="fade")
                           .level.fourth(
-                            :class="{ active: route.path.includes(dot.link) }"
+                            :aria-current="route.path.includes(dot.link) ? 'page' : false"
                             :style="{ borderColor: lchToHsl(d, theme.pages?.[line.data?.list].length) }"
                             v-for="(dot,d) in theme.pages?.[line?.data?.list]" :key="dot"
                           )
@@ -112,7 +112,7 @@ const route = useRoute();
   @apply font-normal;
 }
 
-.active {
+[aria-current="page"] {
   @apply border-l-6 font-bold bg-light-100/50 dark:bg-dark-100/50 hover:border-l-6;
   > a {
     @apply font-bold py-4;

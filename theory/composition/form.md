@@ -17,7 +17,7 @@ Compositions that do not follow a fixed structure and rely more on improvisation
 
 To aid in the process of describing form, musicians have developed a simple system of labeling musical units with letters. In his textbook "Listening to Music", professor Craig Wright writes,
 
->The first statement of a musical idea is designated A. Subsequent contrasting sections are labeled B, C, D, and so on. If the first or any other musical unit returns in varied form, then that variation is indicated by a superscript number-- A1 and B2, for example. Subdivisions of each large musical unit are shown by lowercase letters (a, b, and so on).
+> The first statement of a musical idea is designated A. Subsequent contrasting sections are labeled B, C, D, and so on. If the first or any other musical unit returns in varied form, then that variation is indicated by a superscript number-- A1 and B2, for example. Subdivisions of each large musical unit are shown by lowercase letters (a, b, and so on).
 
 Some writers also use a prime label (such as B', pronounced "B prime", or B'', pronounced "B double prime") to denote sections that are closely related, but vary slightly.
 
@@ -64,13 +64,13 @@ A modified strophic form varies the pattern in some stanzas (A A' A"...) somewha
 
 Many folk and popular songs are strophic in form, including the twelve-bar blues, ballads, hymns and chants. Examples include "Barbara Allen", "Erie Canal", and "Michael, Row the Boat Ashore". Also "Oh! Susanna" (A = verse & chorus).
 
-Many classical art songs are also composed in strophic form, from the 17th century French air de cour to 19th century German lieder and beyond. Haydn used the strophic variation form in many of his string quartets and a few of his symphonies, employed almost always in the slow second movement. Franz Schubert composed many important strophic lieder, including settings of both narrative poems and simpler, folk-like texts, such as his "Heidenröslein" and "Der Fischer". Several of the songs in his song cycle Die schöne Müllerin use strophic form. 
+Many classical art songs are also composed in strophic form, from the 17th century French air de cour to 19th century German lieder and beyond. Haydn used the strophic variation form in many of his string quartets and a few of his symphonies, employed almost always in the slow second movement. Franz Schubert composed many important strophic lieder, including settings of both narrative poems and simpler, folk-like texts, such as his "Heidenröslein" and "Der Fischer". Several of the songs in his song cycle Die schöne Müllerin use strophic form.
 
 #### Medley or "chain" form
 
 Medley, potpourri or chain form is the extreme opposite, that of "unrelieved variation": it is simply an indefinite sequence of self-contained sections (ABCD...), sometimes with repeats (AABBCCDD...).
 
-[Potpourri or Pot-Pourri](https://en.wikipedia.org/wiki/Potpourri_(music)) (/ˌpoʊpʊˈriː/; French, literally "putrid pot") is a kind of musical form structured as ABCDEF..., the same as medley or, sometimes, fantasia. It is often used in light, easy-going and popular types of music.
+[Potpourri or Pot-Pourri](<https://en.wikipedia.org/wiki/Potpourri_(music)>) (/ˌpoʊpʊˈriː/; French, literally "putrid pot") is a kind of musical form structured as ABCDEF..., the same as medley or, sometimes, fantasia. It is often used in light, easy-going and popular types of music.
 
 This is a form of arrangement where the individual sections are simply juxtaposed with no strong connection or relationship. This type of form is organized by the principle of non-repetition. This is usually to be applied to a composition that consists of a string of favourite tunes, like a potpourri based on either some popular opera, operetta, or a collection of songs, dances, etc.
 
@@ -78,7 +78,7 @@ The term has been in use since the beginning of the 18th century, or to be more 
 
 Potpourris became especially popular in the 19th century. The opera overtures of French composers, such as François-Adrien Boïeldieu (1775–1834), Daniel Auber (1782–1871) and Ferdinand Hérold (1791–1833), or the Englishman Arthur Sullivan (1842–1900) belong to this type. Richard Strauss called the overture to his Die schweigsame Frau a "pot-pourri".
 
-The "overtures" to light modern stage works (e.g. operettas or musicals) are almost always written in potpourri form, using airs from the work in question. There is usually some structure to the order presented though. The opening is usually a fanfare or majestic theme (presumably the supposed hoped-for most popular song number), followed by a romantic number, then a comical number; and finally a return to the opening theme or a variation thereof. 
+The "overtures" to light modern stage works (e.g. operettas or musicals) are almost always written in potpourri form, using airs from the work in question. There is usually some structure to the order presented though. The opening is usually a fanfare or majestic theme (presumably the supposed hoped-for most popular song number), followed by a romantic number, then a comical number; and finally a return to the opening theme or a variation thereof.
 
 #### Binary form
 
@@ -99,7 +99,8 @@ More often than not, especially in 18th-century compositions, the A and B sectio
 Binary form is usually characterized as having the form AB, though since both sections repeat, a more accurate description would be AABB. Others, however, prefer to use the label AA′. This second designation points to the fact that there is no great change in character between the two sections. The rhythms and melodic material used will generally be closely related in each section, and if the piece is written for a musical ensemble, the instrumentation will generally be the same. This is in contrast to the use of verse-chorus form in popular music—the contrast between the two sections is primarily one of the keys used.
 
 #### Further distinctions
-A piece in binary form can be further classified according to a number of characteristics: 
+
+A piece in binary form can be further classified according to a number of characteristics:
 
 ##### Simple vs. rounded
 
@@ -111,25 +112,24 @@ Rounded binary form is sometimes referred to as small ternary form.
 
 Rounded binary or minuet form:
 
->A      :||: B       A or A'   
->I(->V) :||: V(or other closely related) I
+> A :||: B A or A'  
+> I(->V) :||: V(or other closely related) I
 
 If the B section lacks such a return of the opening A material, the piece is said to be in simple binary.
 
 Simple:
 
->A->B :||: A->B    
->I->V :||: V->I
+> A->B :||: A->B  
+> I->V :||: V->I
 
 Slow-movement form:
 
->A'        A"       
->I->V      I->I
+> A' A"  
+> I->V I->I
 
 Many examples of rounded binary are found among the church sonatas of Vivaldi including his Sonata No. 1 for Cello and Continuo, First Movement, while certain Baroque composers such as Bach and Handel used the form rarely.
 
 ##### Sectional vs. continuous
-
 
 If the A section ends with an Authentic (or Perfect) cadence in the original tonic key of the piece, the design is referred to as a sectional binary. This refers to the fact that the piece is in different tonal sections, each beginning in their own respective keys.
 
@@ -146,13 +146,14 @@ The asymmetrical binary form becomes more common than the symmetrical type from 
 Although most of Chopin's nocturnes are in an overall ternary form, quite often the individual sections (either the A, the B, or both) are in binary form, most often of the asymmetrical variety. If a section of this binary structure is repeated, in this case it is written out again in full, usually considerably varied, rather than enclosed between repeat signs.
 
 ##### Balanced binary
-Balanced binary is when the end of the first section and the end of the second section have analogous material and are organized in a parallel way. 
+
+Balanced binary is when the end of the first section and the end of the second section have analogous material and are organized in a parallel way.
 
 #### Ternary form
 
 [Ternary form](https://en.wikipedia.org/wiki/Ternary_form) is a three-part musical form in which the third part repeats or at least contains the principal idea of the first part, represented as A B A. There are both simple and compound ternary forms. Da capo arias are usually in simple ternary form (i.e. "from the head"). A compound ternary form (or trio form) similarly involves an ABA pattern, but each section is itself either in binary (two sub-sections which may be repeated) or (simple) ternary form.
 
-Ternary form, sometimes called song form, is a three-part musical form consisting of an opening section (A), a following section (B) and then a repetition of the first section (A). It is usually schematized as A–B–A. Prominent examples include the da capo aria "The trumpet shall sound" from Handel's Messiah, Chopin's Prelude in D-Flat Major "Raindrop", (Op. 28) and the opening chorus of Bach's St John Passion. 
+Ternary form, sometimes called song form, is a three-part musical form consisting of an opening section (A), a following section (B) and then a repetition of the first section (A). It is usually schematized as A–B–A. Prominent examples include the da capo aria "The trumpet shall sound" from Handel's Messiah, Chopin's Prelude in D-Flat Major "Raindrop", (Op. 28) and the opening chorus of Bach's St John Passion.
 
 ##### Simple ternary form
 
@@ -179,21 +180,23 @@ Occasionally the A section or B section of a dance like movement is not divided 
 
 In a complex ternary form each section is itself in ternary form in the scheme of [(A–B–A)(C–D–C)(A–B–A)] By convention each part is repeated and only on its first rendition: [(A–A–B–B–A)(C–C–D–D–C)(A–B–A)]. An example are the Impromptus (Op. 7) by Jan Voříšek.[9]
 
-Expanded ternary forms are especially common among Romantic-era composers; for example, Chopin's "Military" Polonaise (Op. 40, No. 1) is in the form [(A–A–B–A-B–A)(C–C–D–C-D–C)(A–B–A)], where the A and B sections and C and D sections are repeated as a group, and the original theme returning at the end without repeats. 
+Expanded ternary forms are especially common among Romantic-era composers; for example, Chopin's "Military" Polonaise (Op. 40, No. 1) is in the form [(A–A–B–A-B–A)(C–C–D–C-D–C)(A–B–A)], where the A and B sections and C and D sections are repeated as a group, and the original theme returning at the end without repeats.
 
 #### Rondo form
 
-[Rondo form](https://en.wikipedia.org/wiki/Rondo)  has a recurring theme alternating with different (usually contrasting) sections called "episodes". It may be asymmetrical (ABACADAEA) or symmetrical (ABACABA). A recurring section, especially the main theme, is sometimes more thoroughly varied, or else one episode may be a "development" of it. A similar arrangement is the ritornello form of the Baroque concerto grosso. Arch form (ABCBA) resembles a symmetrical rondo without intermediate repetitions of the main theme.
+[Rondo form](https://en.wikipedia.org/wiki/Rondo) has a recurring theme alternating with different (usually contrasting) sections called "episodes". It may be asymmetrical (ABACADAEA) or symmetrical (ABACABA). A recurring section, especially the main theme, is sometimes more thoroughly varied, or else one episode may be a "development" of it. A similar arrangement is the ritornello form of the Baroque concerto grosso. Arch form (ABCBA) resembles a symmetrical rondo without intermediate repetitions of the main theme.
 
 #### Variational form
 
-[Variational](https://en.wikipedia.org/wiki/Variation_(music)) forms are those in which variation is an important formative element.
+[Variational](<https://en.wikipedia.org/wiki/Variation_(music)>) forms are those in which variation is an important formative element.
 
 [Theme and Variations](https://en.wikipedia.org/wiki/Theme_and_Variations): a theme, which in itself can be of any shorter form (binary, ternary, etc.), forms the only "section" and is repeated indefinitely (as in strophic form) but is varied each time (A,B,A,F,Z,A), so as to make a sort of sectional chain form. An important variant of this, much used in 17th-century British music and in the Passacaglia and Chaconne, was that of the ground bass—a repeating bass theme or basso ostinato over and around which the rest of the structure unfolds, often, but not always, spinning polyphonic or contrapuntal threads, or improvising divisions and descants. This is said by Scholes (1977) to be the form par excellence of unaccompanied or accompanied solo instrumental music. The Rondo is often found with sections varied (AA1BA2CA3BA4) or (ABA1CA2B1A).
 
 #### Sonata-allegro form
 
 Sonata-allegro form (also [sonata form](https://en.wikipedia.org/wiki/Sonata_form) or first movement form) is typically cast in a greater ternary form, having the nominal subdivisions of Exposition, Development and Recapitulation. Usually, but not always, the "A" parts (Exposition and Recapitulation, respectively) may be subdivided into two or three themes or theme groups which are taken asunder and recombined to form the "B" part (the development) —thus, e.g. (AabB[dev. of a and/or b]A1ab1+coda).
+
+<youtube-embed video="14dwegqniNg" />
 
 The sonata form is "the most important principle of musical form, or formal type from the classical period well into the twentieth century." It is usually used as the form of the first movement in multi-movement works. So, it is also called "first-movement form" or "sonata-allegro form"(Because usually the most common first movements are in allegro tempo).
 
@@ -251,3 +254,21 @@ Also called Hybrid song forms. Compound song forms blend together two or more so
 ### Cyclical forms
 
 In the 13th century the song cycle emerged, which is a set of related songs (as the suite is a set of related dances). The oratorio took shape in the second half of the 16th century as a narrative recounted—rather than acted—by the singers.
+
+### Matrix
+
+In music, especially folk and popular music, a matrix is an element of variations which does not change. The term was derived from use in musical writings and from Arthur Koestler's The Act of Creation, who defines creativity as the bisociation of two sets of ideas or matrices. Musical matrices may be combined in any number, usually more than two, and may be — and must be for analysis — broken down into smaller ones. They may be intended by the composer and perceived by the listener, or they may not, and they may be purposefully ambiguous.
+
+The simplest examples given by van der Merwe are fixed notes, definite intervals, and regular beats, while the most complex given are the Baroque fugue, Classical tonality, and Romantic chromaticism. The following examples are some matrices which are part of "Pop Goes the Weasel":
+
+- major mode
+- 6/8 time
+- four-bar phrasing
+- regular beat
+- rhyming tune structure
+- ending both halves of the tune with the same figure
+- melodic climax
+- perfect cadence
+- three primary triads implied
+
+Co-ordinated matrices may possess "bound-upness" or "at-oddness", depending on the degree to which they are connected to each other or go their separate ways, respectively, and are more or less easy to reconcile. The matrices of the larger matrix known as sonata rondo form are more bound up than the matrices of rondo form, while African and Indian music feature more rhythmic at-oddness than European music's coinciding beats, and European harmony features more at-oddness (between the melody and bass) than the preceding organum. At-oddness is a matter of degree, and almost all at odd matrices are partially bound up.[3]

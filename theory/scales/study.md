@@ -15,7 +15,9 @@ The total number of possible combinations of on and off bits is called the "powe
 
 This means that every possible combination of tones in the 12-tone set can be represented by a number between 0 and 4095. We don't need to remember the fancy names like "phrygian", we can just call it scale number 1451. Convenient!
 
-> An important concept here is that any set of tones can be represented by a number. This number is not "ordinal" - it's not merely describing the position of the set in an indexed scheme; it's also not "cardinal" because it's not describing an amount of something. This is a nominal number because the number *is* the scale. You can do binary arithmetic with it, and you are adding and subtracting scales with no need to convert the scale into some other representation.
+> An important concept here is that any set of tones can be represented by a number. This number is not "ordinal" - it's not merely describing the position of the set in an indexed scheme; it's also not "cardinal" because it's not describing an amount of something. This is a nominal number because the number _is_ the scale. You can do binary arithmetic with it, and you are adding and subtracting scales with no need to convert the scale into some other representation.
+
+<youtube-embed video="Vq2xt2D3e3E" />
 
 ## Interval Pattern
 
@@ -27,7 +29,7 @@ Yet another way to represent a scale is as a "pitch class set", where the tones 
 
 ## What is a scale?
 
-Or more importantly, what is *not* a scale?
+Or more importantly, what is _not_ a scale?
 
 Now that we have the superset of all possible sets of tones, we can whittle it down to exclude ones that we don't consider to be a legitimate "scale". We can do this with just two rules.
 
@@ -51,7 +53,7 @@ Now that we've whittled our set of tones to only the ones we'd call a "scale", l
 
 | number of tones | how many scales |
 | :-------------- | :-------------- |
-| 1	              | 0               |
+| 1               | 0               |
 | 2               | 0               |
 | 3               | 1               |
 | 4               | 31              |
@@ -79,18 +81,17 @@ When you play that minor scale, you're not playing "C minor", you're playing the
 To compute a mode of the current scale, we "rotate" all the notes down one semitone. Then if the rotated notes have an on bit in the root, then it is a mode of the original scale. It's as if you take the bracelet diagram that we've been using throughout this study, and twist it like a dial so that a different note is at the top, in the root position.
 
 - 101010110101 = 2741 - major scale, "ionian" mode
--  110101011010 = 3418 - rotated down 1 semitone - not a scale
--  011010101101 = 1709 - rotated down 2 semitones - "dorian"
--  101101010110 = 2902 - rotated down 3 semitones - not a scale
--  010110101011 = 1451 - rotated down 4 semitones - "phrygian"
--  101011010101 = 2773 - rotated down 5 semitones - "lydian"
--  110101101010 = 3434 - rotated down 6 semitones - not a scale
--  011010110101 = 1717 - rotated down 7 semitones - "mixolydian"
--  101101011010 = 2906 - rotated down 8 semitones - not a scale
--  010110101101 = 1453 - rotated down 9 semitones - "aeolian"
--  101011010110 = 2774 - rotated down 10 semitones - not a scale
--  010101101011 = 1387 - rotated down 11 semitones - "locrian"
-			
+- 110101011010 = 3418 - rotated down 1 semitone - not a scale
+- 011010101101 = 1709 - rotated down 2 semitones - "dorian"
+- 101101010110 = 2902 - rotated down 3 semitones - not a scale
+- 010110101011 = 1451 - rotated down 4 semitones - "phrygian"
+- 101011010101 = 2773 - rotated down 5 semitones - "lydian"
+- 110101101010 = 3434 - rotated down 6 semitones - not a scale
+- 011010110101 = 1717 - rotated down 7 semitones - "mixolydian"
+- 101101011010 = 2906 - rotated down 8 semitones - not a scale
+- 010110101101 = 1453 - rotated down 9 semitones - "aeolian"
+- 101011010110 = 2774 - rotated down 10 semitones - not a scale
+- 010101101011 = 1387 - rotated down 11 semitones - "locrian"
 
 When we do this to every scale, we see modal relationships between scales, and we also discover symmetries when a scale is a mode of itself on another degree.
 

@@ -89,7 +89,7 @@ function initMidi() {
     input.addListener("noteon", (ev) => noteInOn(ev), {
       channels: "all",
     });
-    input.addListener("noteoff", (ev) => {}, { channels: "all" });
+    input.addListener("noteoff", (ev) => noteInOn(ev), { channels: "all" });
     input.addListener("controlchange", (ev) => ccIn(ev), {
       channels: "all",
     });

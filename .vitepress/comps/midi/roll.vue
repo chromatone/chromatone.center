@@ -1,19 +1,3 @@
-<template lang="pug">
-.flex.flex-col.items-center.w-full
-  midi-panel
-
-  .fullscreen-container(ref="screen")
-    control-start.absolute( @click="initiate()", v-if="!state.initiated") Start
-    full-screen.absolute.bottom-6.right-2(:el="screen")
-    canvas#spectrogram.m-4.max-h-80vh.w-full.rounded-3xl(
-      :width="state.width"
-      :height="state.height"  
-    )
-  .flex.justify-center
-    control-knob(v-model="state.speed" param="speed" :min="1" :max="3" :step="0.5")
-    control-choose(v-model="state.direction" :variants="{ 1: 'Vertical', 0: 'Horizontal' }")
-</template>
-
 <script setup>
 import { useRafFn } from '@vueuse/core'
 import { midi } from '@use/midi.js'
@@ -129,6 +113,19 @@ function colorIt(pitch = 0, value = 1, opacity = 1) {
 
 </script>
 
-<style scoped>
-</style>
+<template lang="pug">
+.flex.flex-col.items-center.w-full
+  midi-panel
+
+  .fullscreen-container(ref="screen")
+    control-start.absolute( @click="initiate()", v-if="!state.initiated") Start
+    full-screen.absolute.bottom-6.right-2(:el="screen")
+    canvas#spectrogram.m-4.max-h-80vh.w-full.rounded-3xl(
+      :width="state.width"
+      :height="state.height"  
+    )
+  .flex.justify-center
+    control-knob(v-model="state.speed" param="speed" :min="1" :max="3" :step="0.5")
+    control-choose(v-model="state.direction" :variants="{ 1: 'Vertical', 0: 'Horizontal' }")
+</template>
 

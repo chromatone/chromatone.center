@@ -13,6 +13,7 @@ org:
     instagram: chromatone.center
     email: support@chromatone.center
     github: chromatone
+    discord: https://discord.gg/KE3RvZfVDM
 
 author:
   avatar: /img/starov.jpg
@@ -26,7 +27,6 @@ author:
     email: me@starovdenis.com
     github: davay42
 ---
-
 
 <author-card :author="$frontmatter?.org" />
 

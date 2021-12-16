@@ -16,7 +16,7 @@ const bg = computed(() => `url(/media/${props.item.data?.cover}`);
 
 <template lang="pug">
 .row(
-  :style="{ backgroundColor: color, borderColor: color }"
+  :style="{ backgroundColor: color }"
   )
   a.header(
     :href="item.link"
@@ -47,7 +47,7 @@ const bg = computed(() => `url(/media/${props.item.data?.cover}`);
 
 <style scoped>
 .row {
-  @apply bg-light-500 w-full border-4 dark:bg-dark-500 flex flex-col transition-all duration-300 ease no-underline rounded-4xl overflow-hidden shadow-lg;
+  @apply bg-light-500 w-full dark:bg-dark-500 flex flex-col transition-all duration-300 ease no-underline rounded-4xl overflow-hidden shadow-lg;
   flex: 1 1 200px;
   &:hover {
     @apply bg-light-200 dark:bg-dark-400 shadow-xl;
@@ -59,7 +59,7 @@ const bg = computed(() => `url(/media/${props.item.data?.cover}`);
 }
 
 .info {
-  @apply m-2 relative max-w-500px flex self-stretch flex-wrap items-center p-4 md:(px-8 py-4) bg-light-100 bg-opacity-80 dark:bg-dark-100 rounded-3xl;
+  @apply m-2 relative max-w-500px flex self-stretch flex-wrap items-center p-4 md:(p-5 py-4) bg-light-100 bg-opacity-80 dark:bg-dark-100 rounded-3xl;
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 }

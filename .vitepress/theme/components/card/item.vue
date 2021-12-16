@@ -40,9 +40,6 @@ const theColor = computed(() => props.color);
   flex flex-wrap items-stretch justify-stretch
   transition-all  duration-200
   static;
-  &:hover {
-    @apply bg-light-100 dark:bg-dark-400;
-  }
   & .container {
     @apply flex flex-wrap min-w-full items-stretch w-full relative;
     flex: 1 1 100%;

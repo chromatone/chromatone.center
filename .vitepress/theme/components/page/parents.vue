@@ -18,7 +18,7 @@ const parents = useParents();
 }
 
 .link {
-  @apply transition-all rounded-lg mr-1 duration-500 no-underline text-lg flex items-center p-2 bg-light-300/70 dark:(bg-dark-100/70) hover:(bg-light-100 dark:bg-dark-100);
+  @apply transition-all rounded-xl mr-1 duration-500 no-underline text-lg flex items-center p-2 bg-light-300/70 dark:(bg-dark-100/70) hover:(bg-light-100 dark:bg-dark-100);
   flex: 0 1 auto;
 }
 </style>

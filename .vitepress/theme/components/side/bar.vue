@@ -9,6 +9,7 @@
         :style="{ borderColor: lchToHsl(m, theme.pages.main.length) }"
         )
         a.mb-2.ml-1(
+          style="font-weight:bold"
           :href="main.link"
           :style="{ color: lchToHsl(m, theme.pages.main.length) }"
           ) {{ main.title }}
@@ -91,7 +92,7 @@ const route = useRoute();
 
 .level {
   @apply my-1 ml-1 cursor-pointer flex flex-col border-l-2 transition-all duration-200 ease-in-out hover:border-l-4;
-  & a {
+  > a {
     @apply py-2 flex px-2 font-normal;
   }
 }

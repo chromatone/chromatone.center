@@ -2,7 +2,7 @@
 .social 
   a.text-button(v-if="social.instagram", :href="'https://instagram.com/' + social.instagram", target="_blank")
     la-instagram.icon
-    .name {{ social.instagram }}
+    .name @{{ social.instagram }}
   a.text-button(v-if="social.telegram", :href="'https://t.me/' + social.telegram", target="_blank")
     la-telegram.icon
     .name {{ social.telegram }}
@@ -12,6 +12,9 @@
   a.text-button(v-if="social.email", :href="'mailto:' + social.email", target="_blank")
     la-at.icon
     .name {{ social.email }}
+  a.text-button(v-if="social.discord", :href="'mailto:' + social.discord", target="_blank")
+    la-discord.icon
+    .name Discord server
 </template>
 
 <script setup>

@@ -10,13 +10,14 @@
 </template>
 
 <script setup>
-import { lchToHsl } from '@use/colors.js'
-import { isDark } from '@theme/composables/state'
+
 
 const props = defineProps({
   rows: Object,
 });
 
+import { lchToHsl } from '@use/colors.js'
+import { isDark } from '@theme/composables/state'
 function getColor(i, total) {
   let l = isDark.value ? 40 : 60
   return lchToHsl(i, total, 1, 20, l)
@@ -32,6 +33,6 @@ function getColor(i, total) {
 }
 
 .inset {
-  @apply rounded-2xl overflow-hidden shadow-md mx-1 my-5 sm:(mx-2) md:(mx-4) lg:(my-8) hover:(shadow-lg);
+  @apply rounded-2xl overflow-hidden shadow-md mx-1 my-6 sm:(mx-2) md:(mx-4) lg:(my-8) hover:(shadow-lg);
 }
 </style>

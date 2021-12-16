@@ -1,19 +1,14 @@
 <template lang="pug">
 .lines(v-if="list")
-  card-box.m-2(
+  a.line(
     v-for="(line,l) in list", 
     :key="line.title",
-    :i="l"
-    :total="Object.keys(list).length"
-    :height="2"
-    v-slot="{ color }"
-  )
-    a.line(
-      :href="line.link",
-      ) {{ line.title }}
-      counter(:list="theme.pages?.[line?.data?.list]") 
-      card-date.flex-1.ml-4(:date="line.lastModified")
-      shop-price.ml-2(:product="line?.data?.product", :showButton="false")
+    :style="{ backgroundColor: getColor(l, Object.keys(props.list).length) }"
+    :href="line.link",
+    ) {{ line.title }}
+    counter(:list="theme.pages?.[line?.data?.list]") 
+    card-date.flex-1.ml-4(:date="line.lastModified")
+    shop-price.ml-2(:product="line?.data?.product", :showButton="false")
 </template>
 
 <script setup>
@@ -22,6 +17,16 @@ const { theme } = useData()
 const props = defineProps({
   list: Object,
 });
+
+
+
+import { lchToHsl } from '@use/colors.js'
+import { isDark } from '@theme/composables/state'
+function getColor(i, total) {
+  let l = isDark.value ? 40 : 85
+  return lchToHsl(i, total, 1, 10, l)
+}
+
 </script>
 
 <style  scoped>
@@ -30,7 +35,7 @@ const props = defineProps({
 }
 
 .line {
-  @apply flex rounded-2xl font-normal items-center px-4 py-2 transition-all bg-gray-50 dark:bg-gray-800 
-  hover:(no-underline );
+  @apply m-1 shadow-md flex rounded-2xl font-normal items-center px-4 py-2 transition-all bg-gray-50 dark:bg-gray-800 
+  hover:(no-underline shadow-lg);
 }
 </style>

@@ -56,14 +56,8 @@ const lightColor = lchToHsl(current.value, total.value, 1, 70, 60);
 }
 
 .meta {
-  @apply relative p-8 mb-8 bg-light-100 bg-opacity-60 z-3 max-w-65ch w-full mt-8 flex flex-col rounded-3xl shadow-xl;
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-}
-
-.dark .meta {
-  @apply bg-true-gray-800 bg-opacity-85;
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+  @apply relative p-8 mb-8 bg-light-100 bg-opacity-80 z-3 max-w-65ch w-full mt-8 flex flex-col rounded-3xl shadow-xl dark:(bg-true-gray-800 bg-opacity-80);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
 }
 </style>

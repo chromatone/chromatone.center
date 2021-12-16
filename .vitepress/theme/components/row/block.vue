@@ -59,7 +59,7 @@ const bg = computed(() => `url(/media/${props.item.data?.cover}`);
 }
 
 .info {
-  @apply m-2 relative max-w-500px flex self-stretch flex-wrap items-center p-4 md:(p-5 py-4) bg-light-100 bg-opacity-80 dark:bg-dark-100 rounded-3xl;
+  @apply m-2 relative max-w-500px flex self-stretch flex-wrap items-center p-4 md:(p-5 py-4) bg-light-100 bg-opacity-70 dark:(bg-dark-100 bg-opacity-70) rounded-3xl;
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 }

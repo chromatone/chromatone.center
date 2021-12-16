@@ -4,37 +4,37 @@
 
 The visual music research center
 
-## Research
+## Theory
 
 Cards and short overviews on physics and physiology of vision and hearing and their intersection at visual music research, exploration, practice and self expression.
 
-## Explore
+## Apps
 
-Useful tools to have in the pocket like a pack of interactive cards to learn and use in everyday music practice. These are open source web-experiments with different aspects of sound and color. 
+Useful tools to have in the pocket like a pack of interactive cards to learn and use in everyday music practice. These are open source web-experiments with different aspects of sound and color.
 
 ## Shop
 
 - Stickers for musical instruments to physically map notes and pitch classes with corresponding colors.
-- Posters and memos to use for better memorization of fundamental music concepts. 
+- Posters and memos to use for better memorization of fundamental music concepts.
 
 ## Community
 
-Learners, sharing their experiences and setups. Musical and visual projects and performers, who implement Chromatone system in practice. Jams and other community events and 
+Learners, sharing their experiences and setups. Musical and visual projects and performers, who implement Chromatone system in practice. Jams and other community events and
 
 ## Contact
 
-Contact the author and the headquarter of the project. 
+Contact the author and the headquarter of the project.
 
 ## Road map
 
-We've ported almost all separate apps into the main website. It becomes more and more integrated tool. But there's more! 
+We've ported almost all separate apps into the main website. It becomes more and more integrated tool. But there's more!
 
 Current tasks and progress are open [at this ClickUp project](https://sharing.clickup.com/l/h/6-8826475-1/f14fd62f6465442)
- 
+
 ## Any other ideas? [Share them in the discussions!](https://github.com/chromatone/chromatone.center/discussions/2)
 
-
 ## STACK
+
 - [chromatone-theory](https://www.npmjs.com/package/chromatone-theory)
 - [vue 3](https://v3.vuejs.org/)
   - [vueUse](https://vueuse.org)
@@ -57,12 +57,5 @@ Current tasks and progress are open [at this ClickUp project](https://sharing.cl
     - [@tonejs/midi](https://github.com/Tonejs/Midi)
   - [meyda](https://meyda.js.org)
   - [aubiojs](https://github.com/qiuxiang/aubiojs)
-  - [audiomotion-analyzer](https://www.npmjs.com/package/audiomotion-analyzer) 
+  - [audiomotion-analyzer](https://www.npmjs.com/package/audiomotion-analyzer)
 - [OpenLayers](https://github.com/openlayers/openlayers)
-  
-
-#### AudioWorklet further research
-- https://dev.to/ndesmic/building-a-digital-synthesizer-part-1-making-some-noise-g7k
-- https://developer.mozilla.org/en-US/docs/Web/API/AudioWorkletNode
-- https://github_com.jam.dev/GoogleChromeLabs/audioworklet-polyfill
-- https://github.com/acarabott/audio-dsp-playground

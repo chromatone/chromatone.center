@@ -8,7 +8,7 @@ const props = defineProps({
   editable: { type: Boolean, default: false }
 });
 import { Interval, Pcset } from '@tonaljs/tonal'
-import { notes } from 'chromatone-theory'
+import { notes } from '@theory'
 import { chromaColorMix } from "@use/colors";
 import { chordType, scaleType } from '@use/theory'
 import { playChroma, stopChroma, globalScale } from '@use/chroma'

@@ -45,7 +45,7 @@
 </template>
   
 <script setup>
-import { notes } from 'chromatone-theory'
+import { notes } from '@theory'
 import { state } from './state.js'
 import { globalScale } from '@use/chroma'
 import { onKeyStroke } from '@vueuse/core'

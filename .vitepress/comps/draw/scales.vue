@@ -92,7 +92,7 @@
 </template>
 
 <script setup>
-import { notes, pitchColor, rotateArray } from 'chromatone-theory'
+import { notes, pitchColor, rotateArray } from '@theory'
 const box = reactive({
   width: 210,
   height: 297,

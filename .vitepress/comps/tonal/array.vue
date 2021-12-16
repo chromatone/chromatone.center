@@ -1,5 +1,5 @@
 <script setup>
-import { rotateArray, notes, scales, pitchColor } from 'chromatone-theory'
+import { rotateArray, notes, scales, pitchColor } from '@theory'
 
 const tonal = reactive({
   pressed: false,

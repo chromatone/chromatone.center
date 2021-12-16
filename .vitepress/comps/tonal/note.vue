@@ -25,7 +25,7 @@ g.cursor-pointer
 
 <script setup>
 import { Frequency } from 'tone'
-import { pitchColor, pitchFreq } from 'chromatone-theory'
+import { pitchColor, pitchFreq } from '@theory'
 import { synthAttack, synthRelease } from '@use/synth.js'
 import { playNote, stopNote } from '@use/chroma'
 

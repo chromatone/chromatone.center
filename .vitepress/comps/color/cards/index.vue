@@ -9,7 +9,7 @@ const cards = Object.values(props.list)
 
 const positions = [[0, 0], [1, 0], [2, 0], [3, 0], [3, 1], [3, 2], [3, 3], [2, 3], [1, 3], [0, 3], [0, 2], [0, 1],];
 
-import { pitchColor, notes } from 'chromatone-theory'
+import { pitchColor, notes } from '@theory'
 import { colord } from 'colord'
 </script>
 

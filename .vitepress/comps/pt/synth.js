@@ -1,12 +1,12 @@
-import { gainToDb, PanVol, MonoSynth } from 'tone'
-import { pitchFreq } from 'chromatone-theory'
-import { state } from './state.js'
+import { gainToDb, PanVol, MonoSynth } from "tone";
+import { pitchFreq } from "@theory";
+import { state } from "./state.js";
 
 export function useSynth(pitch, octave) {
-  const panVol = new PanVol(0, -Infinity).toDestination()
+  const panVol = new PanVol(0, -Infinity).toDestination();
   const synth = new MonoSynth({
     oscillator: {
-      type: 'sawtooth',
+      type: "sawtooth",
     },
     envelope: {
       attack: 0.5,
@@ -14,63 +14,63 @@ export function useSynth(pitch, octave) {
     filterEnvelope: {
       attack: 0.05,
     },
-  }).connect(panVol)
+  }).connect(panVol);
 
   const voice = reactive({
     vol: 0,
     pan: 50,
     started: false,
     active: computed(() => {
-      return voice.vol > 0
+      return voice.vol > 0;
     }),
     freq: computed(() => {
-      let freq = pitchFreq(pitch, octave, state.middleA)
-      synth.oscillator.frequency.value = freq
-      return freq
+      let freq = pitchFreq(pitch, octave, state.middleA);
+      synth.oscillator.frequency.value = freq;
+      return freq;
     }),
-  })
+  });
 
   onBeforeUnmount(() => {
-    synth.triggerRelease()
-    synth.dispose()
-  })
+    synth.triggerRelease();
+    synth.dispose();
+  });
 
   watch(
     () => voice.vol,
     (vol) => {
-      panVol.volume.targetRampTo(gainToDb((vol * 0.4) / 100))
-    },
-  )
+      panVol.volume.targetRampTo(gainToDb((vol * 0.4) / 100));
+    }
+  );
 
   watch(
     () => voice.pan,
     (pan) => {
-      let place = ((pan - 50) / 100) * 2
-      panVol.pan.targetRampTo(place)
-    },
-  )
+      let place = ((pan - 50) / 100) * 2;
+      panVol.pan.targetRampTo(place);
+    }
+  );
 
   watch(
     () => state.stopped,
     (stop) => {
       if (stop) {
-        voice.vol = 0
-        voice.pan = 50
+        voice.vol = 0;
+        voice.pan = 50;
       }
-    },
-  )
+    }
+  );
 
   watch(
     () => voice.active,
     (act) => {
       if (act) {
-        if (state.stopped) state.stopped = false
-        synth.triggerAttack(voice.freq)
+        if (state.stopped) state.stopped = false;
+        synth.triggerAttack(voice.freq);
       } else {
-        synth.triggerRelease()
+        synth.triggerRelease();
       }
-    },
-  )
+    }
+  );
 
-  return voice
+  return voice;
 }

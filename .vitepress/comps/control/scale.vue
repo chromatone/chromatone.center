@@ -9,7 +9,7 @@
 <script setup>
 import { scaleList } from '@use/theory'
 import { globalScale } from '@use/chroma'
-import { pitchColor } from 'chromatone-theory'
+import { pitchColor } from '@theory'
 </script>
 
 <style scoped>

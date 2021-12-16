@@ -1,6 +1,6 @@
 <script setup>
 import { Pcset } from '@tonaljs/tonal'
-import { pitchColor, notes } from 'chromatone-theory'
+import { pitchColor, notes } from '@theory'
 import { chordType, scaleType } from '@use/theory.js'
 import { globalScale } from '@use/chroma'
 

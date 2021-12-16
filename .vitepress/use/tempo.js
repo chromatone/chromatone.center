@@ -1,11 +1,11 @@
-import { reactive, computed, watch, onMounted } from 'vue'
-import { Transport, start, Frequency, Loop } from 'tone'
-import { pitchColor, freqPitch } from 'chromatone-theory'
-import { Note } from '@tonaljs/tonal'
-import { useStorage } from '@vueuse/core'
+import { reactive, computed, watch, onMounted } from "vue";
+import { Transport, start, Frequency, Loop } from "tone";
+import { pitchColor, freqPitch } from "@theory";
+import { Note } from "@tonaljs/tonal";
+import { useStorage } from "@vueuse/core";
 
 export const tempo = reactive({
-  bpm: useStorage('tempo-bpm', 100),
+  bpm: useStorage("tempo-bpm", 100),
   blink: false,
   started: false,
   playing: false,
@@ -17,13 +17,13 @@ export const tempo = reactive({
     over: 4,
     under: 4,
     num: computed(() =>
-      (tempo.metre.over / (tempo.metre.under / 4)).toFixed(2),
+      (tempo.metre.over / (tempo.metre.under / 4)).toFixed(2)
     ),
   },
   hz: computed(() => (tempo.bpm / 60).toFixed(2)),
   note: computed(() => Note.pitchClass(Frequency(tempo.hz).toNote())),
   tune: computed(() => {
-    return Note.pitchClass(tempo.note) + 4
+    return Note.pitchClass(tempo.note) + 4;
   }),
   pitch: computed(() => freqPitch(tempo.hz)),
   digit: computed(() => (Frequency(tempo.hz).toMidi() + 12 * 10 + 3) % 12),
@@ -35,82 +35,82 @@ export const tempo = reactive({
     times: [],
     bpm: null,
   },
-})
+});
 
 export function tap() {
-  var time = performance.now()
+  var time = performance.now();
   if (tempo.tap.last) {
-    tempo.tap.diff = time - tempo.tap.last
-    tempo.tap.times.push(tempo.tap.diff)
-    refresh()
+    tempo.tap.diff = time - tempo.tap.last;
+    tempo.tap.times.push(tempo.tap.diff);
+    refresh();
   }
-  tempo.tap.last = time
-  beginTimeout()
+  tempo.tap.last = time;
+  beginTimeout();
 }
 
 function refresh() {
   if (tempo.tap.times.length > 2) {
     var average =
       tempo.tap.times.reduce((result, t) => (result += t)) /
-      tempo.tap.times.length
-    var bpm = (1 / (average / 1000)) * 60
-    tempo.tap.bpm = bpm
+      tempo.tap.times.length;
+    var bpm = (1 / (average / 1000)) * 60;
+    tempo.tap.bpm = bpm;
   }
 }
 
-let timer = null
+let timer = null;
 function beginTimeout() {
-  clearTimeout(timer)
+  clearTimeout(timer);
   timer = setTimeout(function () {
-    tempo.tap.times = [tempo.tap.diff]
-    tempo.tap.last = null
-  }, tempo.tap.timeout)
+    tempo.tap.times = [tempo.tap.diff];
+    tempo.tap.last = null;
+  }, tempo.tap.timeout);
 }
 
 export function useTempo() {
   onMounted(() => {
     const loop = new Loop((time) => {
-      tempo.blink = true
+      tempo.blink = true;
       setTimeout(() => {
-        tempo.blink = false
-      }, 60)
-    }, '4n').start(0)
-  })
+        tempo.blink = false;
+      }, 60);
+    }, "4n").start(0);
+  });
   watch(
     () => tempo.bpm,
-    (bpm) => Transport.bpm.rampTo(bpm, '4n'),
-    { immediate: true },
-  )
+    (bpm) => Transport.bpm.rampTo(bpm, "4n"),
+    { immediate: true }
+  );
   watch(
     () => tempo.stopped,
     (stop) => {
       if (stop) {
-        Transport.stop()
-        tempo.playing = false
+        Transport.stop();
+        tempo.playing = false;
       }
-    },
-  )
+    }
+  );
   watch(
     () => tempo.playing,
     (playing) => {
       if (playing) {
         if (!tempo.started) {
-          start()
-          tempo.started = true
+          start();
+          tempo.started = true;
         }
-        tempo.stopped = false
-        Transport.start()
+        tempo.stopped = false;
+        Transport.start();
         requestAnimationFrame(function progress() {
-          tempo.position = Transport.position
-          tempo.ticks = Transport.ticks
+          tempo.position = Transport.position;
+          tempo.ticks = Transport.ticks;
           if (tempo.playing) {
-            requestAnimationFrame(progress)
+            requestAnimationFrame(progress);
           }
-        })
+        });
       } else {
-        Transport.pause()
+        Transport.pause();
       }
-    },
-  )
-  return tempo
+    }
+  );
+  return tempo;
 }

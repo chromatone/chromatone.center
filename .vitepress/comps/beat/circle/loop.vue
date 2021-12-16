@@ -1,8 +1,8 @@
 <script setup>
-import { getCircleCoord, rotateArray } from 'chromatone-theory'
+import { getCircleCoord, rotateArray } from '@theory'
 import { useSequence } from '@use/sequence.js'
 import { isDark } from '@theme/composables/state.js'
-import { clampNum } from 'chromatone-theory'
+import { clampNum } from '@theory'
 import { levelColor } from "@use/colors.js"
 import { tempo } from '@use/tempo'
 // import { useUrlSearchParams } from '@vueuse/core'

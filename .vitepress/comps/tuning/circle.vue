@@ -47,7 +47,7 @@ svg#tuning-circle.w-full(
 </template>
 
 <script setup>
-import { notes, freqPitch } from 'chromatone-theory'
+import { notes, freqPitch } from '@theory'
 import { computed, reactive } from 'vue'
 
 const circles = [250, 350, 450, 150]

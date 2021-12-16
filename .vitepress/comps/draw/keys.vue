@@ -33,7 +33,7 @@ g
 
 <script setup>
 import { colord } from 'colord'
-import { notes, pitchColor, scales } from 'chromatone-theory'
+import { notes, pitchColor, scales } from '@theory'
 const props = defineProps({
   chroma: { type: String, default: '100100010010' },
 });

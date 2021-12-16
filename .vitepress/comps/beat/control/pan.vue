@@ -42,7 +42,7 @@ g.pan(
 
 <script setup>
 import { isDark } from '@theme/composables/state.js'
-import { clampNum } from 'chromatone-theory'
+import { clampNum } from '@theory'
 const props = defineProps({
   pan: {
     type: Number,

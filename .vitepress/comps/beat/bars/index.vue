@@ -1,5 +1,5 @@
 <script setup>
-import { clampNum } from 'chromatone-theory'
+import { clampNum } from '@theory'
 import { renderMidi } from '@use/midiRender'
 import { tracks } from '@use/sequence'
 

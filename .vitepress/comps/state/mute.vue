@@ -22,7 +22,7 @@
 
 <script setup>
 import { mute } from '@use/synth'
-import { clampNum } from 'chromatone-theory'
+import { clampNum } from '@theory'
 import { getDestination, gainToDb } from 'tone'
 const open = ref(false);
 const volume = useStorage('main-vol', 1);

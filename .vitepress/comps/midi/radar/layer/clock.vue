@@ -3,7 +3,7 @@
 </template>
 
 <script setup>
-import { getCircleCoord } from 'chromatone-theory'
+import { getCircleCoord } from '@theory'
 import { polarXY, radar } from '../radar.js'
 import { isDark } from '@theme/composables/state'
 

@@ -1,5 +1,5 @@
 <script setup>
-import { notes, rotateArray, pitchColor } from 'chromatone-theory'
+import { notes, rotateArray, pitchColor } from '@theory'
 import { globalScale } from '@use/chroma'
 import ukulele from '../../db/ukulele.json'
 import guitar from '../../db/guitar.json'

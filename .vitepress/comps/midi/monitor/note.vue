@@ -12,7 +12,7 @@
 </template>
 
 <script setup>
-import { pitchColor } from 'chromatone-theory'
+import { pitchColor } from '@theory'
 const props = defineProps({
   note: Object,
   active: Boolean

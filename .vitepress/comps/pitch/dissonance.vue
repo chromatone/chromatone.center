@@ -268,7 +268,7 @@
 </template>
 
 <script setup>
-import { pitchColor, notes, freqColor } from 'chromatone-theory'
+import { pitchColor, notes, freqColor } from '@theory'
 import { useSvgMouse } from '@use/mouse.js'
 import { MonoSynth, start } from 'tone'
 

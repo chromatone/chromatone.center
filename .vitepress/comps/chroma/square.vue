@@ -8,7 +8,7 @@ const props = defineProps({
   roman: { type: String, default: '' },
   editable: { type: Boolean, default: false }
 });
-import { notes, rotateArray, getCircleCoord, pitchColor } from 'chromatone-theory'
+import { notes, rotateArray, getCircleCoord, pitchColor } from '@theory'
 import { colord } from 'colord'
 import { chromaColorMix } from "@use/colors.js";
 import { chordType, scaleType, intervals } from '@use/theory'

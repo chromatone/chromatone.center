@@ -37,8 +37,8 @@
 </template>
 
 <script setup>
-import { clampNum } from 'chromatone-theory'
-import { notes, pitchColor } from 'chromatone-theory'
+import { clampNum } from '@theory'
+import { notes, pitchColor } from '@theory'
 import { useDrone } from './drone.js'
 
 const drone = useDrone()

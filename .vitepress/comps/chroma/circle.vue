@@ -81,7 +81,7 @@ const props = defineProps({
   type: { type: String, default: '' },
   tonic: { type: Number, default: 0 },
 });
-import { notes, rotateArray, getCircleCoord, pitchColor } from 'chromatone-theory'
+import { notes, rotateArray, getCircleCoord, pitchColor } from '@theory'
 import { colord } from 'colord'
 import { chromaColorMix } from "@use/colors.js";
 import { chordType, scaleType } from '@use/theory.js'

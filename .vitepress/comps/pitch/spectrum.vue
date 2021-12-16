@@ -35,7 +35,7 @@ import { reactive, computed } from 'vue'
 import { UserMedia, Waveform, FFT } from 'tone'
 import { useRafFn } from '@vueuse/core'
 import { useTuner } from '@use/tuner.js'
-import { freqPitch, pitchColor } from 'chromatone-theory'
+import { freqPitch, pitchColor } from '@theory'
 
 const screen = ref()
 

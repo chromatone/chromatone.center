@@ -52,7 +52,7 @@ g.tet(
 </template>
 
 <script setup>
-import { pitchColor, pitchFreq, notes, getCircleCoord } from 'chromatone-theory'
+import { pitchColor, pitchFreq, notes, getCircleCoord } from '@theory'
 import { synthAttack, synthRelease } from '@use/synth.js'
 import { computed, ref } from 'vue'
 import { colord } from 'colord'

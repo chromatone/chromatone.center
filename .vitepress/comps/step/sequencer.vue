@@ -44,7 +44,7 @@
 </template>
 
 <script setup>
-import { notes, pitchColor } from 'chromatone-theory'
+import { notes, pitchColor } from '@theory'
 import { Scale, ScaleType, Midi, Note } from '@tonaljs/tonal'
 import { useRafFn, onKeyStroke } from '@vueuse/core'
 import { scaleList } from '@use/theory'

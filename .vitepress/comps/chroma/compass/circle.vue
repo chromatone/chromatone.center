@@ -113,7 +113,7 @@ svg.max-h-3xl.w-full.transition-all.duration-400.ease-in-out(
 </template>
 
 <script setup>
-import { notes, pitchColor, scales, isInChroma, getCircleCoord, rotateArray } from 'chromatone-theory'
+import { notes, pitchColor, scales, isInChroma, getCircleCoord, rotateArray } from '@theory'
 import { lchToHsl, chromaColorMix } from "@use/colors.js";
 import { Chord, Note } from '@tonaljs/tonal'
 import { scaleType, chordType } from '@use/theory'

@@ -1,7 +1,7 @@
 <script setup>
 import paper from 'paper'
 import { midi } from '@use/midi'
-import { pitchColor } from 'chromatone-theory'
+import { pitchColor } from '@theory'
 import { polarXY, radar } from '../radar.js'
 
 const props = defineProps({

@@ -19,9 +19,9 @@
   
 <script setup>
 import AudioMotionAnalyzer from 'audiomotion-analyzer'
-import { initGetUserMedia, freqPitch } from 'chromatone-theory'
+import { initGetUserMedia, freqPitch } from '@theory'
 import { UserMedia } from 'tone'
-import { clampNum } from 'chromatone-theory'
+import { clampNum } from '@theory'
 import { onKeyStroke } from '@vueuse/core'
 
 const screen = ref(null)

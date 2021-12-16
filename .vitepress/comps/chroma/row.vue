@@ -1,5 +1,5 @@
 <script setup>
-import { pitchColor, notes, rotateArray } from 'chromatone-theory'
+import { pitchColor, notes, rotateArray } from '@theory'
 import { chromaColorMix } from "@use/colors.js";
 import { Note, Pcset, Interval } from '@tonaljs/tonal'
 import { Frequency } from 'tone'

@@ -107,7 +107,7 @@
 <script setup>
 
 import { useStorage } from '@vueuse/core'
-import { notes, rotateArray, getCircleCoord, pitchColor } from 'chromatone-theory'
+import { notes, rotateArray, getCircleCoord, pitchColor } from '@theory'
 import { Chord, Note } from '@tonaljs/tonal'
 import {playNote, stopNote} from '@use/chroma'
 

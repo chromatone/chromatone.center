@@ -1,6 +1,6 @@
 <script setup>
 import { Note, Interval, Pcset } from '@tonaljs/tonal'
-import { freqColor, freqPitch, rotateArray, pitchColor, notes } from 'chromatone-theory'
+import { freqColor, freqPitch, rotateArray, pitchColor, notes } from '@theory'
 import { colord } from 'colord'
 import { globalScale } from '@use/chroma'
 import { chordType, scaleType } from '@use/theory'

@@ -27,7 +27,7 @@
 
 <script setup>
 import { Midi } from '@tonejs/midi'
-import { pitchColor } from 'chromatone-theory'
+import { pitchColor } from '@theory'
 import { now, PolySynth, Synth, Transport } from 'tone'
 import { createAndDownloadBlobFile } from '@use/midi'
 

@@ -33,7 +33,7 @@
 
 <script setup>
 import { globalScale } from '@use/chroma'
-import { pitchColor } from 'chromatone-theory'
+import { pitchColor } from '@theory'
 import melakarta from './melakarta.json'
 
 let mela = {}

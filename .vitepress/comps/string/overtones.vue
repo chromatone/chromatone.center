@@ -211,7 +211,7 @@ svg {
   
 <script setup>
 import { useStorage, useTimestamp } from '@vueuse/core'
-import { pitchColor, freqColor, notes, pitchFreq } from 'chromatone-theory'
+import { pitchColor, freqColor, notes, pitchFreq } from '@theory'
 import { Synth, start, Frequency } from "tone";
 import { globalScale } from '@use/chroma'
 

@@ -52,7 +52,7 @@
 </template>
 
 <script setup>
-import { pitchColor, rotateArray, scales, notes, getCircleCoord } from 'chromatone-theory'
+import { pitchColor, rotateArray, scales, notes, getCircleCoord } from '@theory'
 import { useTuner } from '@use/tuner.js'
 const { init, tuner, chain } = useTuner();
 

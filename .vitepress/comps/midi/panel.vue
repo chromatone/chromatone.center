@@ -41,7 +41,7 @@
 <script setup>
 import { midi, stopAll, midiAttack, midiRelease } from '@use/midi.js'
 import { onKeyStroke } from '@vueuse/core'
-import { pitchColor } from 'chromatone-theory'
+import { pitchColor } from '@theory'
 
 const props = defineProps({
   toChannel: {

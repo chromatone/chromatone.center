@@ -40,7 +40,7 @@
 </template>
 
 <script setup>
-import { chords, notes, pitchColor } from 'chromatone-theory'
+import { chords, notes, pitchColor } from '@theory'
 import { chromaColorMix } from '@use/colors.js'
 import { Chord, ScaleType, Interval } from '@tonaljs/tonal'
 import { chordType, scaleType, chordList } from '@use/theory'

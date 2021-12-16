@@ -16,7 +16,7 @@ import { Tile as TileLayer, Vector as VectorLayer } from 'ol/layer';
 import PinchZoom from 'ol/interaction/PinchZoom';
 
 
-import { pitchColor } from 'chromatone-theory'
+import { pitchColor } from '@theory'
 
 const props = defineProps({
   center: { type: Array, default: [37.72265776708658, 55.79885477019039] },

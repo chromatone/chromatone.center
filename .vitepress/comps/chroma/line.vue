@@ -1,5 +1,5 @@
 <script setup>
-import { pitchColor } from 'chromatone-theory'
+import { pitchColor } from '@theory'
 import { globalScale } from '@use/chroma'
 const props = defineProps({
   chroma: {

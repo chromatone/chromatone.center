@@ -38,7 +38,7 @@ svg.max-h-sm.w-full(
 </template>
 
 <script setup>
-import { notes, pitchColor, scales } from 'chromatone-theory'
+import { notes, pitchColor, scales } from '@theory'
 const props = defineProps({
   accord: Object,
 });

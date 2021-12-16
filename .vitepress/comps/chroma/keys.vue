@@ -9,7 +9,7 @@ const props = defineProps({
 const emit = defineEmits(['update:pitch'])
 
 import { globalScale, playChroma, stopChroma } from '@use/chroma'
-import { pitchColor, notes, rotateArray } from 'chromatone-theory'
+import { pitchColor, notes, rotateArray } from '@theory'
 import { chordType, scaleType } from '@use/theory'
 
 const keys = reactive({

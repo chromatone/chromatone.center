@@ -291,7 +291,7 @@
 
 <script setup>
 import { ref, reactive, computed } from 'vue'
-import { freqColor, freqPitch, notes, pitchFreq } from 'chromatone-theory'
+import { freqColor, freqPitch, notes, pitchFreq } from '@theory'
 import { MonoSynth, start } from 'tone'
 
 const started = ref(false)

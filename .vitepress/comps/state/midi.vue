@@ -17,7 +17,7 @@
 
 <script setup>
 import { useMidi } from '@use/midi.js'
-import { pitchColor } from 'chromatone-theory'
+import { pitchColor } from '@theory'
 import { onClickOutside } from '@vueuse/core'
 
 

@@ -74,7 +74,7 @@
 
 <script setup>
 import { reactive } from 'vue'
-import { notes, freqColor, freqPitch } from 'chromatone-theory'
+import { notes, freqColor, freqPitch } from '@theory'
 import { useTransition, TransitionPresets } from '@vueuse/core'
 import { useSynth } from '@use/synth.js'
 import { Frequency } from 'tone'

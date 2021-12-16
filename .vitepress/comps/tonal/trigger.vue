@@ -17,7 +17,7 @@ polygon.chord-trigger(
 </template>
 
 <script setup>
-import { pitchColor, pitchFreq, notes } from 'chromatone-theory'
+import { pitchColor, pitchFreq, notes } from '@theory'
 import { Frequency } from 'tone'
 import { synthAttack, synthRelease } from '@use/synth.js'
 import { midiPlay, midiStop } from '@use/midi.js'

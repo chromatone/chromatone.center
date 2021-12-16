@@ -100,11 +100,11 @@
 </template>
 
 <script setup>
-import { notes, pitchColor } from 'chromatone-theory'
+import { notes, pitchColor } from '@theory'
 import { useStorage, useTimestamp } from '@vueuse/core'
 import { chromaColorMix } from "@use/colors.js";
 import { useSynth } from '@use/synth.js'
-import { clampNum } from 'chromatone-theory'
+import { clampNum } from '@theory'
 const frequencies = []
 for (let f = 0; f < 13; f++) {
   frequencies[f] = Math.pow(2, f / 12)

@@ -18,7 +18,7 @@
 
 <script setup>
 import { useStorage } from '@vueuse/core'
-import { pitchColor, pitchFreq, notes, scales } from 'chromatone-theory'
+import { pitchColor, pitchFreq, notes, scales } from '@theory'
 import { globalScale } from '@use/chroma'
 const scale = useStorage('array-scale', scales.minor);
 

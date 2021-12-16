@@ -40,7 +40,7 @@
 </template>
 
 <script setup>
-import { notes, pitchColor, rotateArray } from 'chromatone-theory'
+import { notes, pitchColor, rotateArray } from '@theory'
 import { reactive, computed, ref, watch, watchEffect } from 'vue'
 import { useStorage, useRafFn, useTransition, TransitionPresets } from '@vueuse/core'
 import { chromaColorMix } from "@use/colors.js";

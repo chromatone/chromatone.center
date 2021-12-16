@@ -57,7 +57,7 @@ g(
 
 <script setup>
 import { levelColor } from "@use/colors.js"
-import { getCircleCoord } from 'chromatone-theory'
+import { getCircleCoord } from '@theory'
 import { colord } from 'colord'
 import { tempo } from '@use/tempo'
 

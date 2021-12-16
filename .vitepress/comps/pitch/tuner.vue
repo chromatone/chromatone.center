@@ -107,7 +107,7 @@
 </template>
 
 <script setup>
-import { pitchColor } from 'chromatone-theory'
+import { pitchColor } from '@theory'
 import { useTuner } from '@use/tuner.js'
 
 const display = ref(null)

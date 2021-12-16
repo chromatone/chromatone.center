@@ -32,9 +32,9 @@ const props = defineProps({
   roman: { type: String, default: '' },
 });
 
-import { pitchColor, rotateArray } from 'chromatone-theory'
+import { pitchColor, rotateArray } from '@theory'
 import { noteNames, chordType, scaleType } from '@use/theory.js'
-import { notes } from 'chromatone-theory'
+import { notes } from '@theory'
 import { playChroma, stopChroma, globalScale } from '@use/chroma'
 import { chromaColorMix } from "@use/colors.js"
 import { Progression, Chord } from "@tonaljs/tonal"

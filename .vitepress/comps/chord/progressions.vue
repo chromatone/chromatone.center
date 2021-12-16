@@ -1,5 +1,5 @@
 <script setup>
-import { pitchColor, rotateArray, notes } from 'chromatone-theory'
+import { pitchColor, rotateArray, notes } from '@theory'
 import { noteNames } from '@use/theory'
 import { globalScale, playChroma, stopChroma } from '@use/chroma'
 import { Progression, Chord } from "@tonaljs/tonal";

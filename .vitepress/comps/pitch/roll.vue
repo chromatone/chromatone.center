@@ -29,8 +29,8 @@
 </template>
 
 <script setup>
-import { pitchColor, rotateArray } from 'chromatone-theory'
-import { clampNum } from 'chromatone-theory'
+import { pitchColor, rotateArray } from '@theory'
+import { clampNum } from '@theory'
 import { useTuner } from '@use/tuner.js'
 import { onKeyStroke } from '@vueuse/core'
 

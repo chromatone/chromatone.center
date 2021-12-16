@@ -1,7 +1,7 @@
 <script setup>
 import { intervals } from '@use/theory'
 import { globalScale } from '@use/chroma'
-import { notes, pitchColor, getCircleCoord, rotateArray } from 'chromatone-theory'
+import { notes, pitchColor, getCircleCoord, rotateArray } from '@theory'
 
 const noteR = 140
 const noteSize = 30

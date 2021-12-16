@@ -51,7 +51,7 @@ g
 </template>
 
 <script setup>
-import { notes, pitchColor, rotateArray, getCircleCoord } from 'chromatone-theory'
+import { notes, pitchColor, rotateArray, getCircleCoord } from '@theory'
 import { chromaColorMix } from "@use/colors.js";
 import { colord } from 'colord'
 const props = defineProps({

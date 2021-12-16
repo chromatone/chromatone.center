@@ -15,7 +15,7 @@ const props = defineProps({
 });
 
 import { isDark } from '@theme/composables/state'
-import { pitchColor, notes } from 'chromatone-theory'
+import { pitchColor, notes } from '@theory'
 import { useLoop } from './loop'
 import { Frequency } from 'tone'
 

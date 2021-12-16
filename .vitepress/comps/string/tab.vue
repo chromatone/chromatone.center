@@ -120,7 +120,7 @@ svg.max-h-360px.min-w-100px.min-h-250px(
 </template>
 
 <script setup>
-import { pitchColor, notes as noteList } from 'chromatone-theory'
+import { pitchColor, notes as noteList } from '@theory'
 import { colord } from 'colord'
 const props = defineProps({
   frets: Array,

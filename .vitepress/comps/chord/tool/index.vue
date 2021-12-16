@@ -15,7 +15,7 @@
 
 <script setup>
 import { reactive, ref, computed, watch } from 'vue'
-import { chords, notes, pitchColor } from 'chromatone-theory'
+import { chords, notes, pitchColor } from '@theory'
 
 const accord = reactive({
   root: 0,

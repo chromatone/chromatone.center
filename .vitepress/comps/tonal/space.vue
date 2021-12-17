@@ -1,8 +1,10 @@
 <template lang="pug">
 .flex.flex-col
   .flex.flex-wrap.my-4.items-center.justify-center
-    chroma-piano(
+    chroma-keys.w-250px(
+      :title="false"
       chroma="100000000000"
+      v-model:pitch="globalScale.tonic"
     )
     .scales
       .p-2.flex-1.cursor-pointer.whitespace-nowrap(

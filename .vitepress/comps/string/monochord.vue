@@ -1,7 +1,7 @@
 <script setup>
 import { reactive } from 'vue'
 import { notes, freqColor, freqPitch, clampNum } from '@theory'
-import { useTransition, TransitionPresets, useElementHover } from '@vueuse/core'
+import { useTransition, TransitionPresets } from '@vueuse/core'
 import { useSynth } from '@use/synth.js'
 import { Frequency } from 'tone'
 import Fraction from 'fraction.js'
@@ -58,7 +58,6 @@ const ratio = useTransition(computed(() => state.ratio), {
   duration: 200,
   transition: TransitionPresets.easeOutCubic,
 })
-
 
 const { synth, synthOnce } = useSynth();
 

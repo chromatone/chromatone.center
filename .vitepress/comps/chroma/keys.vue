@@ -1,9 +1,11 @@
 <script setup>
 const props = defineProps({
   chroma: { type: String, default: '100000000000' },
+  letters: { type: Boolean, defualt: false },
   pitch: { type: Number, default: 0 },
   scale: { type: String },
   roman: { type: String, default: '' },
+  title: { type: Boolean, default: true }
 });
 
 const emit = defineEmits(['update:pitch'])
@@ -11,6 +13,7 @@ const emit = defineEmits(['update:pitch'])
 import { globalScale, playChroma, stopChroma } from '@use/chroma'
 import { pitchColor, notes, rotateArray } from '@theory'
 import { chordType, scaleType } from '@use/theory'
+import { colord } from 'colord'
 
 const keys = reactive({
   white: [3, 5, 7, 8, 10, 0, 2],
@@ -19,7 +22,7 @@ const keys = reactive({
   scale: computed(() => rotateArray(globalScale.chroma.split(''), -props.pitch)),
   title: computed(() => {
     if (!chordType.get(props.chroma)?.empty) return chordType.get(props.chroma).aliases[0]
-    if (!scaleType.get(props.chroma)?.empty) return scaleType.get(props.chroma)
+    if (!scaleType.get(props.chroma)?.empty) return scaleType.get(props.chroma).aliases[0]
     else return ''
   })
 });
@@ -29,12 +32,13 @@ function isInChroma(note) {
 }
 
 function isInScale(note) {
-  return props.scale && note != null && rotateArray(props.scale.split(''), -props.pitch)[note] == '1'
+  return props.scale && note != null && keys.chroma[note] == '1'
 }
 
-function keyColor(key) {
+function keyColor(key, off) {
   if (key == null) return 'transparent'
-  return isInChroma(key) ? pitchColor(key, 5) : notes[key].pos == 0 ? '#eee' : '#aaa'
+  if (key == props.pitch) return colord(pitchColor(key, 4)).toHex()
+  return isInChroma(key) && !off ? colord(pitchColor(key, 3.5)).toHex() : notes[key].pos == 0 ? '#eee' : '#999'
 }
 
 </script>
@@ -42,27 +46,27 @@ function keyColor(key) {
 <template lang="pug">
 .flex.flex-col.m-1.rounded-2xl.cursor-pointer.transition-all.duration-300.ease.relative.select-none(
   style="touch-action:none"
-  @mousedown="playChroma(chroma, pitch)"
+  @mousedown="chroma.split('').filter(l => l == '1').length < 5 ? playChroma(chroma, pitch) : null"
   @touchend="stopChroma(chroma, pitch)"
   @touchcancel="stopChroma(chroma, pitch)"
   @mouseup="stopChroma(chroma, pitch)"
   @mouseleave="stopChroma(chroma, pitch)"
   :style="{ backgroundColor: pitchColor(pitch, 2, 1, 0.5) }"
 )
-  .flex.justify-center.my-2.px-2
+  .flex.justify-center.my-2.px-2(v-if="title")
     .absolute.right-4 {{ roman }}
     .font-bold.text-xl.flex-1.text-center {{ notes[pitch].name }}{{ keys.title }}
-
-  svg.w-full.mt-2(
+  svg.w-full.mt-2#chroma-keys(
     version="1.1",
     baseProfile="full",
-    :viewBox="`-10 -10 720 320`",
+    :viewBox="`-10 -20 720 360`",
     xmlns="http://www.w3.org/2000/svg",
     font-family="Commissioner, sans-serif"
-    font-weight="bold"
+    font-weight="600"
     font-size="40"
     text-anchor="middle",
     dominant-baseline="middle"
+    :class="{ letters }"
     )
     defs
       filter#shadowButton(x="-50%" height="200%" width="300%")
@@ -70,51 +74,69 @@ function keyColor(key) {
     g.white
       g.key(
         v-for="(key,k) in keys.white" :key="key"
-        :transform="`translate(${k * 100 + 5} 0)`"
-
+        :transform="`translate(${k * 100 + 5} 30)`"
       )
         rect.transition-all.duration-300.ease-out(
           @click="$emit('update:pitch', key)"
           width="90"
-          height="300"
+          height="290"
           rx="45"
-          :fill="keyColor(key)"
+          :fill="keyColor(key, true)"
           style="filter:url(#shadowButton);"
-          stroke-width="8"
-          :stroke="isInScale(key) ? pitchColor(key, 3) : 'transparent'"
+        )
+        circle.transition-all.duration-300.ease-out(
+          @click="$emit('update:pitch', key)"
+          cy="245"
+          cx="45"
+          r="45"
+          :fill="keyColor(key)"
         )
         text.pointer-events-none(
+          v-show="isInChroma(key)"
           y="250"
           x="45"
-          fill="black"
+          :fill="!isInChroma(key) ? 'black' : 'white'"
         ) {{ notes[key].name }}
     g.black 
       g.key(
         v-for="(key,k) in keys.black" :key="key"
-        :transform="`translate(${k * 100 + 55} 10)`"
+        :transform="`translate(${k * 100 + 55} -10)`"
       )
         rect.transition-all.duration-300.ease-out(
           @click="$emit('update:pitch', key)"
           v-if="key"
           width="90"
-          height="200"
+          height="220"
           rx="45"
           style="filter:url(#shadowButton);"
+          :fill="keyColor(key, true)"
+          :data-check="key"
+        )
+        circle.transition-all.duration-300.ease-out(
+          @click="$emit('update:pitch', key)"
+          v-if="key"
+          cy="175"
+          cx="45"
+          r="45"
           :fill="keyColor(key)"
           stroke-width="8"
           :stroke="isInScale(key) ? pitchColor(key, 3) : 'transparent'"
         )
         text.pointer-events-none(
-          y="130"
-          x="40"
+          v-show="isInChroma(key)"
+          y="180"
+          x="45"
           fill="white"
         ) {{ notes[key]?.name }}
 </template>
 
 <style scoped>
 .key text {
-  opacity: 0;
   transition: all 300ms ease;
+}
+
+.letters .key .text {
+  opacity: 1;
 }
 .key:hover text {
   opacity: 1;

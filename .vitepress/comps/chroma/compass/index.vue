@@ -7,9 +7,10 @@
       :scaleChroma="scaleChroma"
       @clearScale="clearScale()"
       )
-  .max-w-65ch.m-auto
-    chroma-piano.w-xs.m-auto(
-      :chroma="chroma" names) 
+  .max-w-65ch.m-auto.flex.flex-col.items-center
+    chroma-keys.m-auto(
+      v-model:pitch="globalScale.tonic"
+      :chroma="chroma") 
     .flex.flex-col.p-2
       .flex.flex-wrap.mx-auto.justify-center
         .chord-group(

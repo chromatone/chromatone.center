@@ -4,12 +4,13 @@ subtitle: A comprehesive guide to colorful notes - WIP
 product:
   price: $12
 cover: memo/a4-scales.svg
-
 ---
 
 The A4 cheat-sheet is currently in a design process.
 
 ## Diatonic scales and modes
+
+<chroma-keys chroma="111111111111" :letters="true" />
 
 <draw-scales />
 <svg-save svg="diatonic"/>

@@ -5,6 +5,7 @@
     la-github(v-if="link?.type == 'github'")
     la-instagram(v-if="link?.type == 'instagram'")
     la-heart(v-if="link?.type == 'heart'")
+    la-discord(v-if="link?.type == 'discord'")
     span {{ link.text }}
 </template>
 

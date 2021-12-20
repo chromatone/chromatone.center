@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "vitepress dev --host",
     "build": "vitepress build ",
-    "serve": "vitepress serve ",
+    "serve": "vitepress serve --port 3200",
     "deploy": "sh deploy.sh"
   },
   "dependencies": {

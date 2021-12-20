@@ -8,6 +8,7 @@ import AutoImport from 'unplugin-auto-import/vite'
 // import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
+  base:'./',
   plugins: [
     AutoImport({
       // targets to transform

@@ -10,6 +10,6 @@ export const metaData = {
   icon: "/media/logo/holologo.svg",
   image: "/media/logo/cardtw.png",
   author: "davay",
-  twitter: "https://twitter.com/defucc",
+  twitter: "www.chromatone.center",
   tags: "color, music, stickers, posters, theory, webapp, science",
 };

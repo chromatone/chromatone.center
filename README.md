@@ -31,16 +31,15 @@ We've ported almost all separate apps into the main website. It becomes more and
 
 Current tasks and progress are open [at this ClickUp project](https://sharing.clickup.com/l/h/6-8826475-1/f14fd62f6465442)
 
-## Any other ideas? [Share them in the discussions!](https://github.com/chromatone/chromatone.center/discussions/2)
+## Any other ideas? [Welcome to our subreddit](https://www.reddit.com/r/chromatone/)
 
 ## STACK
 
-- [chromatone-theory](https://www.npmjs.com/package/chromatone-theory)
 - [vue 3](https://v3.vuejs.org/)
   - [vueUse](https://vueuse.org)
   - [vueUse/gesture](https://gesture.vueuse.org)
 - [vite](https://vitejs.dev/)
-  - [unplugin-plugin-components](https://github.com/antfu/unplugin-vue-components)
+  - [unplugin-vue-components](https://github.com/antfu/unplugin-vue-components)
   - [unplugin-icons](https://github.com/antfu/unplugin-icons)
     - [Icônes](https://icones.js.org/)
   - [vitepress](https://vitepress.vuejs.org/guide/global-component.html#content)

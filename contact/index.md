@@ -13,7 +13,7 @@ org:
     instagram: chromatone.center
     email: support@chromatone.center
     github: chromatone
-    discord: https://discord.gg/KE3RvZfVDM
+    reddit: r/chromatone
 
 author:
   avatar: /img/starov.jpg

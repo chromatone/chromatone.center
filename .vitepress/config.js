@@ -14,11 +14,6 @@ export default {
       title: metaData.title,
       description: metaData.description,
     },
-    "/ru/": {
-      lang: "ru-RU",
-      title: "Хроматон",
-      description: "Визуально-музыкальный язык",
-    },
   },
   themeConfig: {
     locales: {
@@ -30,15 +25,6 @@ export default {
         lang: "en-US",
         title: metaData.title,
         description: metaData.description,
-      },
-      "/ru/": {
-        label: "Русский",
-        selectText: "Ru",
-        lang: "ru-RU",
-        title: "Хроматон",
-        description: "Визуально-музыкальный язык",
-        nav: ru_nav,
-        sidebar: ru_sidebar,
       },
     },
     logo: "/media/logo/holologo.svg",

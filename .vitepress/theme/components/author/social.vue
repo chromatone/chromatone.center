@@ -12,9 +12,9 @@
   a.text-button(v-if="social.email", :href="'mailto:' + social.email", target="_blank")
     la-at.icon
     .name {{ social.email }}
-  a.text-button(v-if="social.discord", :href="'mailto:' + social.discord", target="_blank")
-    la-discord.icon
-    .name Discord server
+  a.text-button(v-if="social.reddit", :href="'https://www.reddit.com/' + social.reddit", target="_blank")
+    la-reddit.icon
+    .name {{ social.reddit }}
 </template>
 
 <script setup>

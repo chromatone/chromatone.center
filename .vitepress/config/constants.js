@@ -8,7 +8,8 @@ export const metaData = {
   site,
   locale: "en",
   icon: "/media/logo/holologo.svg",
-  image: "/media/logo/fifths.jpg",
-  author: "Chromatone.center",
+  image: "/media/logo/cardtw.png",
+  author: "davay",
+  twitter: "https://twitter.com/defucc",
   tags: "color, music, stickers, posters, theory, webapp, science",
 };

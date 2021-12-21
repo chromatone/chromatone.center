@@ -37,7 +37,7 @@ const head = [
 
   ["meta", { name: "twitter:card", content: "summary_large_image" }],
   ["meta", { name: "twitter:site", content: metaData?.site }],
-  ["meta", { name: "twitter:title", value: metaData?.title }],
+  ["meta", { name: "twitter:title", value: metaData?.twitter }],
   ["meta", { name: "twitter:description", value: metaData.description }],
   //@ts-ignore
   ["meta", { name: "twitter:image", content: metaData?.image }],

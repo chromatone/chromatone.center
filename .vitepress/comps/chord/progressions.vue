@@ -37,7 +37,7 @@ function getChords(degrees) {
     )
     .flex.flex-wrap.mx-auto.my-4
       control-choose(v-model="state.mode" :variants="variants")
-    chroma-keys.w-20em.mx-auto(:chroma="'1000000000000'", v-model:pitch="globalScale.tonic")
+    chroma-keys.w-20em.mx-auto(:chroma="globalScale.chroma", v-model:pitch="globalScale.tonic")
     .flex.flex-col.text-center.mb-2.relative
       .text-2xl.font-bold.flex.mx-auto.items-center {{ globalScale.note.name }} {{ state.current.title }}
       a.p-2.text-2xl.absolute.right-2.top-2.rounded-full.shadow-xl(:href="state.current.link" target="_blank" v-if="state.current.link")

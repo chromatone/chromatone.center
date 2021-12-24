@@ -181,7 +181,6 @@
 <script setup>
 import { getColorInfo } from '@use/colors.js'
 import { colord } from 'colord'
-import { clampNum } from '@theory'
 import { useTransition, TransitionPresets, useStorage } from '@vueuse/core'
 
 const screen = ref()
@@ -205,11 +204,11 @@ const mix = reactive({
   info: computed(() => getColorInfo(mix.current)),
   space: useStorage('color-space', 'Lch'),
   ring: useStorage('color-rings', 'tints'),
-  hueCount: useStorage('hueCount', 12),
+  hueCount: useClamp(useStorage('hueCount', 12), 2, 60),
   toneCount: useStorage('toneCount', 6),
   hue: useStorage('hue', 50),
-  sat: useStorage('saturation', 50),
-  light: useStorage('lightness', 50),
+  sat: useClamp(useStorage('saturation', 50), 0, 100),
+  light: useClamp(useStorage('lightness', 50), 0, 100),
   hsl: computed(() => `hsla(${mix.hue},${mix.sat}%,${mix.light}%,1)`),
   hueSteps: computed(() => [...Array(mix.hueCount)].map((step, i) => 360 * i / mix.hueCount)),
   hueArcs: computed(() => mix.hueSteps.map((step, i, arr) => ({ from: step, to: arr[i + 1] || 359.9 }))),
@@ -239,20 +238,20 @@ function generateTone(hue = mix.hue, sat = mix.sat, light = mix.light) {
 }
 
 function onDragSteps(drag) {
-  mix.hueCount = clampNum(mix.hueCount, drag.delta[0], 2, 60)
+  mix.hueCount += drag.delta[0]
 }
 
 function onDrag(drag) {
-  mix.light = clampNum(mix.light, -drag.delta[1] / 8)
-  mix.sat = clampNum(mix.sat, drag.delta[0] / 8)
+  mix.light -= drag.delta[1] / 8
+  mix.sat += drag.delta[0] / 8
 }
 
 function onDragL(drag) {
-  mix.light = clampNum(mix.light, -drag.delta[1] / 8)
+  mix.light -= drag.delta[1] / 8
 }
 
 function onDragS(drag) {
-  mix.sat = clampNum(mix.sat, -drag.delta[1] / 8)
+  mix.sat -= drag.delta[1] / 8
 }
 
 

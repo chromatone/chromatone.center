@@ -22,10 +22,9 @@
 
 <script setup>
 import { mute } from '@use/synth'
-import { clampNum } from '@theory'
 import { getDestination, gainToDb } from 'tone'
 const open = ref(false);
-const volume = useStorage('main-vol', 1);
+const volume = useClamp(useStorage('main-vol', 1), 0, 1);
 import { onClickOutside } from '@vueuse/core'
 
 const panel = ref()
@@ -40,7 +39,7 @@ onClickOutside(panel, (ev) => {
 })
 
 function dragVol(drag) {
-  volume.value = clampNum(volume.value, -drag.delta[1] / 300, 0, 1)
+  volume.value -= drag.delta[1] / 300
   getDestination().volume.targetRampTo(gainToDb(volume.value), 0.1)
 }
 </script>

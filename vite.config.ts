@@ -19,7 +19,7 @@ export default defineConfig({
       imports: [
         'vue',
         {
-          '@vueuse/core': ['useStorage'],
+          '@vueuse/core': ['useStorage','useClamp'],
         },
       ],
     }),

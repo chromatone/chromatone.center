@@ -71,7 +71,6 @@
 import { useTempo, tap } from '@use/tempo.js'
 import { useTuner } from '@use/tuner.js'
 import { onKeyStroke } from '@vueuse/core'
-import { clampNum } from '@theory'
 const tempo = useTempo();
 const { init, tuner } = useTuner();
 
@@ -86,12 +85,12 @@ onKeyStroke('Enter', (e) => {
 });
 
 function drag(event) {
-  tempo.bpm = clampNum(tempo.bpm, event.delta[0] / 16 - event.delta[1] / 16, 10, 500)
+  tempo.bpm += (event.delta[0] - event.delta[1]) / 16
 }
 
 
 function setTempo(diff) {
-  tempo.bpm = Math.round(clampNum(tempo.bpm, diff, 10, 500))
+  tempo.bpm += diff
 }
 
 </script>

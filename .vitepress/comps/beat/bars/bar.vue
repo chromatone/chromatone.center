@@ -2,7 +2,7 @@
 import { useSequence } from '@use/sequence.js'
 import { isDark } from '@theme/composables/state.js'
 import { tempo } from '@use/tempo'
-import { pitchColor, rotateArray, clampNum } from '@theory'
+import { pitchColor, rotateArray } from '@theory'
 import { levelColor } from '@use/colors'
 
 const width = 920
@@ -62,7 +62,7 @@ function rotateAccents(num) {
 }
 
 function dragVol(drag) {
-  volume.value = clampNum(volume.value, drag.delta[0] / 100, 0, 1)
+  volume.value += drag.delta[0] / 100
 }
 
 watch(() => props.accent, accent => {

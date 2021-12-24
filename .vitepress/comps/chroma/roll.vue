@@ -18,7 +18,6 @@
 import { useRafFn } from '@vueuse/core'
 import { rotateArray } from '@theory'
 import { useTuner } from '@use/tuner.js'
-import { clampNum } from '@theory'
 const { init, tuner, chain } = useTuner();
 
 const screen = ref()
@@ -31,7 +30,7 @@ const roll = reactive({
   speed: computed(() => Math.floor(roll.speedCount / 100)),
   direction: useStorage('chroma-roll-direction', 0),
   notes: computed(() => rotateArray(tuner.chroma, -3)),
-  speedCount: useStorage('chroma-roll-speed', 100),
+  speedCount: useClamp(useStorage('chroma-roll-speed', 100), 100, 1200),
 })
 
 onMounted(() => {
@@ -46,7 +45,7 @@ onMounted(() => {
 });
 
 function dragScreen(drag) {
-  roll.speedCount = clampNum(roll.speedCount, -drag.delta[0] + drag.delta[1], 100, 1200)
+  roll.speedCount += drag.delta[1] - drag.delta[0]
 }
 
 function initiate() {

@@ -21,7 +21,6 @@
 import AudioMotionAnalyzer from 'audiomotion-analyzer'
 import { initGetUserMedia, freqPitch } from '@theory'
 import { UserMedia } from 'tone'
-import { clampNum } from '@theory'
 import { onKeyStroke } from '@vueuse/core'
 
 const screen = ref(null)
@@ -50,12 +49,12 @@ const state = reactive({
   width: 800,
   height: 240,
   speed: computed(() => Math.floor(state.speedCount / 100)),
-  speedCount: 100
+  speedCount: useClamp(100, 100, 300)
 })
 
 function dragScreen(drag) {
   if (drag.tap) paused.value = !paused.value
-  state.speedCount = clampNum(state.speedCount, -drag.delta[0] / 2, 100, 300)
+  state.speedCount -= drag.delta[0] / 2
 }
 
 onMounted(() => {

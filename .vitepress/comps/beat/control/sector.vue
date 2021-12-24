@@ -3,7 +3,6 @@
 <script setup>
 import { getCircleCoord } from '@theory'
 import { isDark } from '@theme/composables/state.js'
-import { clampNum } from '@theory'
 import { levelColor } from "@use/colors.js"
 
 const emit = defineEmits(['update:modelValue'])
@@ -26,7 +25,7 @@ const props = defineProps({
 });
 
 const arc = reactive({
-  inner: (props.modelValue - props.min) / (props.max - props.min),
+  inner: useClamp((props.modelValue - props.min) / (props.max - props.min), 0, 1),
   proportion: computed(() => ((props.modelValue - props.min) / (props.max - props.min))),
   angle: computed(() => arc.proportion * (props.start - props.finish) + props.finish),
   position: computed(() => getCircleCoord(arc.angle, 360, props.radius - 25, 1000)),
@@ -34,11 +33,11 @@ const arc = reactive({
 });
 
 function dragParam(drag) {
-  arc.inner = clampNum(arc.inner, (props.vector[0] * drag.delta[0] + props.vector[1] * drag.delta[1]) / props.ratio, 0, 1)
+  arc.inner += (props.vector[0] * drag.delta[0] + props.vector[1] * drag.delta[1]) / props.ratio
 }
 
 function incParam(diff) {
-  arc.inner = clampNum(arc.inner, diff * props.step / (props.max - props.min), 0, 1)
+  arc.inner += diff * props.step / (props.max - props.min)
 }
 
 watch(() => arc.inner, val => {

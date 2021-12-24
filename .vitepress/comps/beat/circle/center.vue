@@ -100,7 +100,6 @@ g.center(
 <script setup>
 import { useTempo } from '@use/tempo'
 import { isDark } from '@theme/composables/state.js'
-import { clampNum } from '@theory'
 const fill = computed(() => isDark.value ? '#333' : '#eee');
 
 const tempo = useTempo()
@@ -111,11 +110,11 @@ const center = reactive({
 });
 
 function drag(event) {
-  tempo.bpm = clampNum(tempo.bpm, event.delta[0] / 4 - event.delta[1] / 4, 10, 500)
+  tempo.bpm += (event.delta[0] - event.delta[1]) / 4
 }
 
 function setTempo(diff) {
-  tempo.bpm = Math.round(clampNum(tempo.bpm, diff, 10, 500))
+  tempo.bpm = Math.round(diff)
 }
 
 

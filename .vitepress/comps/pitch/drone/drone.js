@@ -4,7 +4,7 @@ import { useRafFn, watchOnce, onKeyStroke } from "@vueuse/core";
 
 const drone = reactive({
   base: 55,
-  freq: useStorage("drone-freq", 110),
+  freq: useClamp(useStorage("drone-freq", 110), 27.5, 220),
   started: false,
   stopped: true,
   filterFreq: useStorage("drone-filter-freq", 1000),
@@ -74,8 +74,8 @@ export function useVoice(interval) {
   const voice = reactive({
     play: false,
     active: false,
-    vol: useStorage(`drone-${interval}-vol`, 0.8),
-    pan: useStorage(`drone-${interval}-pan`, 0),
+    vol: useClamp(useStorage(`drone-${interval}-vol`, 0.8), 0, 1),
+    pan: useClamp(useStorage(`drone-${interval}-pan`, 0), -1, 1),
     freq: computed(() => drone.freq * Math.pow(2, interval / 12)),
     note: computed(() => Frequency(voice.freq).toNote()),
     color: computed(() => freqColor(voice.freq)),

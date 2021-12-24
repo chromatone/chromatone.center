@@ -5,7 +5,7 @@ import { Note } from "@tonaljs/tonal";
 import { useStorage } from "@vueuse/core";
 
 export const tempo = reactive({
-  bpm: useStorage("tempo-bpm", 100),
+  bpm: useClamp(useStorage("tempo-bpm", 100), 10, 500),
   blink: false,
   started: false,
   playing: false,

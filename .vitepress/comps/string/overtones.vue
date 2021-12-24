@@ -332,22 +332,7 @@ const fundamental = reactive({
   cents: computed(() => {
     return calcCents(fundamental.frequency, Frequency(fundamental.note).toFrequency())
   }),
-  drag(drag) {
-    fundamental.frequency = clampNum(fundamental.frequency, drag.delta[0] / 4, 55, 1000)
-  }
 });
-
-function clampNum(main, delta, min = 0, max = 100) {
-  let num = Number(main) + Number(delta)
-  if (num < min) {
-    num = min
-  }
-  if (num > max) {
-    num = max
-  }
-  return num
-}
-
 
 const overtones = reactive({
   count: 7,
@@ -413,4 +398,4 @@ function calcSine(num, x, phase = 0) {
 function calcCents(base, freq) {
   return -(1200 / Math.log10(2)) * (Math.log10(base / freq)) % 1200
 }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      </script>
+</script>

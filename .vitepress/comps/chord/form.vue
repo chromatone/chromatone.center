@@ -101,10 +101,10 @@
 
 <script setup>
 import { notes, pitchColor } from '@theory'
-import { useStorage, useTimestamp } from '@vueuse/core'
+import { useStorage, useTimestamp, useClamp } from '@vueuse/core'
 import { chromaColorMix } from "@use/colors.js";
 import { useSynth } from '@use/synth.js'
-import { clampNum } from '@theory'
+
 const frequencies = []
 for (let f = 0; f < 13; f++) {
   frequencies[f] = Math.pow(2, f / 12)
@@ -141,8 +141,8 @@ watchEffect(() => {
   }
 })
 
-const zoom = useStorage('chord-zoom', 400)
-const speed = useStorage('chord-speed', 100)
+const zoom = useClamp(useStorage('chord-zoom', 400), 75, 1000)
+const speed = useClamp(useStorage('chord-speed', 100), 10, 400)
 function select(pitch) {
   activeNotes.value[pitch] ? delete activeNotes.value[pitch] : activeNotes.value[pitch] = true
 }
@@ -151,8 +151,8 @@ function modify(drag) {
   if (drag.tap) {
     moving.value = !moving.value
   }
-  speed.value = clampNum(speed.value, drag.delta[0], 10, 400)
-  zoom.value = clampNum(zoom.value, -drag.delta[1], 75, 1000)
+  speed.value += drag.delta[0]
+  zoom.value -= -drag.delta[1]
 }
 
 function computeSine(note, pos) {

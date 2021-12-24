@@ -1,17 +1,17 @@
 <script setup>
 import { reactive } from 'vue'
-import { notes, freqColor, freqPitch, clampNum } from '@theory'
+import { notes, freqColor, freqPitch } from '@theory'
 import { useTransition, TransitionPresets } from '@vueuse/core'
 import { useSynth } from '@use/synth.js'
 import { Frequency } from 'tone'
 import Fraction from 'fraction.js'
 const state = reactive({
-  ratio: 0.8,
+  ratio: useClamp(0.8, 0.05, 0.95),
   fraction: computed(() => new Fraction(1 - state.ratio).simplify(0.001).toFraction(true)),
   invFraction: computed(() => new Fraction(state.ratio).simplify(0.001).toFraction(true)),
 });
 const fundamental = reactive({
-  freq: 220,
+  freq: useClamp(220, 50, 2000),
   pitch: computed(() => freqPitch(fundamental.freq).toFixed()),
   note: computed(() => Frequency(fundamental.freq).toNote()),
   cents: computed(() => calcCents(Frequency(fundamental.note).toFrequency(), fundamental.freq)),
@@ -62,11 +62,11 @@ const ratio = useTransition(computed(() => state.ratio), {
 const { synth, synthOnce } = useSynth();
 
 function dragFun(drag) {
-  fundamental.freq = clampNum(fundamental.freq, drag.delta[0] / 4, 50, 2000)
+  fundamental.freq += drag.delta[0] / 4
 }
 
 function changeRatio(drag) {
-  state.ratio = clampNum(state.ratio, -drag.delta[0] / 1200, 0.05, 0.95)
+  state.ratio -= drag.delta[0] / 1200
 }
 
 function calcCents(base, freq) {

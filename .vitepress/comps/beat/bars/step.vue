@@ -1,7 +1,7 @@
 <script setup>
 import { levelColor } from "@use/colors.js"
 import { colord } from 'colord'
-import { clampNum } from '@theory'
+
 import { isDark } from '@theme/composables/state.js'
 import { tempo } from '@use/tempo'
 
@@ -54,7 +54,7 @@ const emit = defineEmits(['mute', 'subdivide', 'accent'])
 const color = computed(() => levelColor(props.step + (tempo.pitch / 12) * props.total, props.total, 1))
 const accent = computed(() => props.subdivisions[0].includes('!'))
 
-const division = ref(0)
+const division = useClamp(0, 40, 640)
 const divNum = computed(() => Math.floor(division.value / 40))
 
 watch(divNum, (next, prev) => {
@@ -71,7 +71,7 @@ function dragDiv(drag) {
     let sub = drag.event.currentTarget.dataset.sub
     props.mutes[sub] = !props.mutes[sub]
   }
-  division.value = clampNum(division.value, drag.delta[0] - drag.delta[1], 40, 640)
+  division.value += drag.delta[0] - drag.delta[1]
 }
 
 const active = computed(() => {

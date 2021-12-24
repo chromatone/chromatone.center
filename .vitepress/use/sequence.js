@@ -114,8 +114,16 @@ export function useSequence(
     `metro-${mode}-${metre.over / metre.under}-accents-${order}`,
     [true]
   );
-  const volume = useStorage(`metro-${mode}-vol-${order}`, metre.volume || 1);
-  const panning = useStorage(`metro-${mode}-pan-${order}`, pan);
+  const volume = useClamp(
+    useStorage(`metro-${mode}-vol-${order}`, metre.volume || 1),
+    0,
+    1
+  );
+  const panning = useClamp(
+    useStorage(`metro-${mode}-pan-${order}`, pan),
+    -1,
+    1
+  );
 
   let sequence = new Sequence(
     (time, step) => {

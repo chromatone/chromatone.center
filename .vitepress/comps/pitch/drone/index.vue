@@ -37,14 +37,13 @@
 </template>
 
 <script setup>
-import { clampNum } from '@theory'
 import { notes, pitchColor } from '@theory'
 import { useDrone } from './drone.js'
 
 const drone = useDrone()
 
 function setFreq(drag) {
-  drone.freq = clampNum(drone.freq, drag.delta[0] / 10, 27.5, 220)
+  drone.freq += drag.delta[0] / 10
 }
 
 const intervals = reactive({

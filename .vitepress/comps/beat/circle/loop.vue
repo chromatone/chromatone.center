@@ -2,7 +2,6 @@
 import { getCircleCoord, rotateArray } from '@theory'
 import { useSequence } from '@use/sequence.js'
 import { isDark } from '@theme/composables/state.js'
-import { clampNum } from '@theory'
 import { levelColor } from "@use/colors.js"
 import { tempo } from '@use/tempo'
 // import { useUrlSearchParams } from '@vueuse/core'
@@ -38,14 +37,12 @@ const lineProgress = computed(() => {
   }
 });
 
-
-
 function dragVol(drag) {
-  volume.value = clampNum(volume.value, -drag.delta[1] / 100, 0, 1)
+  volume.value -= -drag.delta[1]
 }
 
 function dragPan(drag) {
-  panning.value = clampNum(panning.value, drag.delta[0] / 100, -1, 1)
+  panning.value += drag.delta[0] / 100
 }
 
 function rotateAccents(num) {

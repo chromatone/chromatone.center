@@ -1,63 +1,26 @@
 <script setup>
 import { isDark } from '@theme/composables/state.js'
-import { clampNum } from '@theory'
 import { levelColor } from "@use/colors.js"
 
 const emit = defineEmits(['update:modelValue'])
 
 const props = defineProps({
-  modelValue: {
-    type: [Number, String],
-    default: 0.1,
-  },
-  step: {
-    type: Number,
-    default: 0.1,
-  },
-  min: {
-    type: Number,
-    default: 0,
-  },
-  max: {
-    type: Number,
-    default: 1,
-  },
-  width: {
-    type: Number,
-    default: 100,
-  },
-  height: {
-    type: Number,
-    default: 50,
-  },
-  vector: {
-    type: Array,
-    default: [1, -1],
-  },
-  showPositions: {
-    type: Boolean,
-    default: false,
-  },
-  ratio: {
-    type: Number,
-    default: 200,
-  },
-  every: {
-    type: Number,
-    default: null,
-  },
-  showCenter: {
-    type: Boolean,
-    default: false,
-  },
-  inverted: {
-    type: Boolean,
-    default: false,
-  }
+  modelValue: { type: [Number, String], default: 0.1, },
+  step: { type: Number, default: 0.1, },
+  min: { type: Number, default: 0, },
+  max: { type: Number, default: 1, },
+  width: { type: Number, default: 100, },
+  height: { type: Number, default: 50, },
+  vector: { type: Array, default: [1, -1], },
+  showPositions: { type: Boolean, default: false, },
+  ratio: { type: Number, default: 200, },
+  every: { type: Number, default: null, },
+  showCenter: { type: Boolean, default: false, },
+  inverted: { type: Boolean, default: false, }
 });
 
 const bar = reactive({
-  inner: (Number(props.modelValue) - props.min) / (props.max - props.min),
+  inner: useClamp((Number(props.modelValue) - props.min) / (props.max - props.min), 0, 1),
   proportion: computed(() => {
     if (props.inverted) {
       return (Number(props.modelValue) - props.max) / (props.min - props.max)
@@ -69,7 +32,7 @@ const bar = reactive({
 });
 
 function dragParam(drag) {
-  bar.inner = clampNum(bar.inner, (props.vector[0] * drag.delta[0] + props.vector[1] * drag.delta[1]) / props.ratio, 0, 1)
+  bar.inner += (props.vector[0] * drag.delta[0] + props.vector[1] * drag.delta[1]) / props.ratio
 }
 
 function incParam(diff) {

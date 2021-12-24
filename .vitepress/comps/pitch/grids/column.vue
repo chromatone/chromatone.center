@@ -1,44 +1,23 @@
 <script setup>
 const props = defineProps({
-  step: {
-    type: Array,
-    default: [{}]
-  },
-  pos: {
-    type: Number,
-    default: 0
-  },
-  width: {
-    type: Number,
-    default: 100,
-  },
-  height: {
-    type: Number,
-    default: 500,
-  },
-  footer: {
-    type: Number,
-    default: 60,
-  },
-  color: {
-    type: String,
-    default: 'gray',
-  },
-  active: {
-    type: Boolean,
-    default: false,
-  }
+  step: { type: Array, default: [{}] },
+  pos: { type: Number, default: 0 },
+  width: { type: Number, default: 100, },
+  height: { type: Number, default: 500, },
+  footer: { type: Number, default: 60, },
+  color: { type: String, default: 'gray', },
+  active: { type: Boolean, default: false, }
 });
 
 import { isDark } from '@theme/composables/state'
 import { globalScale } from '@use/chroma'
-import { pitchColor, clampNum } from '@theory'
+import { pitchColor } from '@theory'
 import { Frequency } from 'tone'
 import { Chord } from "@tonaljs/tonal"
 
 const emit = defineEmits(['subdivide'])
 
-const division = ref(0)
+const division = useClamp(0, 20, 160)
 const divNum = computed(() => Math.floor(division.value / 20))
 
 watch(divNum, (next, prev) => {
@@ -55,7 +34,7 @@ watch(divNum, (next, prev) => {
 })
 
 function dragDiv(drag) {
-  division.value = clampNum(division.value, drag.delta[0] - drag.delta[1], 20, 160)
+  division.value += drag.delta[0] - drag.delta[1]
 }
 
 const doubleScale = computed(() => (globalScale.set.chroma + globalScale.set.chroma + 1).split(''));

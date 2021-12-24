@@ -30,9 +30,20 @@
 
 <script setup>
 import { pitchColor, rotateArray } from '@theory'
-import { clampNum } from '@theory'
 import { useTuner } from '@use/tuner.js'
-import { onKeyStroke } from '@vueuse/core'
+import { onKeyStroke, useClamp } from '@vueuse/core'
+
+const draw = reactive({
+  running: true,
+  speed: useClamp(useStorage('pitch-roll-speed', 4), 4, 20),
+  runnerWidth: 2,
+  runnerAhead: 4,
+  maxPlotFrequency: 880,
+  maxPlotNote: 97,
+  minPlotNote: 24,
+  prevBeat: 0,
+  step: 0,
+})
 
 onKeyStroke(' ', (event) => {
   event.preventDefault()
@@ -47,7 +58,7 @@ function dragSpeed(drag) {
   if (drag.tap) {
     draw.running = !draw.running
   }
-  draw.speed = clampNum(draw.speed, drag.delta[0] / 5, 4, 20)
+  draw.speed = draw.speed + drag.delta[0] / 5
 }
 
 const octaves = [0, 1, 2, 3, 4, 5, 6, 7, 8]
@@ -56,17 +67,7 @@ const roller = ref(null)
 
 const { init, tuner, chain } = useTuner();
 
-const draw = reactive({
-  running: true,
-  speed: useStorage('pitch-roll-speed', 4),
-  runnerWidth: 2,
-  runnerAhead: 4,
-  maxPlotFrequency: 880,
-  maxPlotNote: 97,
-  minPlotNote: 24,
-  prevBeat: 0,
-  step: 0,
-})
+
 
 const roll = ref()
 let ctx

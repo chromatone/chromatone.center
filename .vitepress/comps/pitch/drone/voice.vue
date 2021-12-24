@@ -17,8 +17,6 @@
 </template>
 
 <script setup>
-
-import { clampNum } from '@theory'
 import { Frequency, Synth, PanVol, gainToDb, LFO, Meter, dbToGain } from 'tone'
 import { useVoice } from './drone.js'
 
@@ -36,8 +34,8 @@ function vol(drag) {
     voice.play = !voice.play
     voice.active = voice.play
   }
-  voice.vol = clampNum(voice.vol, -drag.delta[1] / 100, 0, 1)
-  voice.pan = clampNum(voice.pan, drag.delta[0] / 100, -1, 1)
+  voice.vol -= drag.delta[1] / 400
+  voice.pan += drag.delta[0] / 100
 }
 
 </script>

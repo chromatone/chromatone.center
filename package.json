@@ -10,36 +10,36 @@
   "dependencies": {
     "@tonaljs/tonal": "^4.6.5",
     "@tonejs/midi": "^2.0.27",
-    "@vueuse/core": "7.3.0",
+    "@vueuse/core": "7.4.1",
     "@vueuse/gesture": "^1.0.0",
     "abcjs": "^5.12.0",
     "audiomotion-analyzer": "3.6.0",
-    "cobe": "^0.4.0",
-    "colord": "^2.9.1",
+    "cobe": "^0.4.1",
+    "colord": "^2.9.2",
     "fraction.js": "^4.1.2",
     "hidpi-canvas": "^1.0.10",
     "meyda": "^5.3.0",
     "midi-writer-js": "^2.0.1",
     "ol": "^6.9.0",
     "paper": "^0.12.15",
-    "tone": "^14.8.32",
+    "tone": "^14.8.35",
     "vue": "^3.2.26",
-    "webmidi": "^3.0.4"
+    "webmidi": "^3.0.6"
   },
   "devDependencies": {
-    "@iconify/json": "^2.0.11",
+    "@iconify/json": "^2.0.15",
     "markdown-it-external-links": "^0.0.6",
     "patch-vue-directive-ssr": "^0.0.1",
     "pug": "3.0.2",
-    "unplugin-auto-import": "^0.5.3",
+    "unplugin-auto-import": "^0.5.4",
     "unplugin-icons": "^0.12.23",
-    "unplugin-vue-components": "^0.17.9",
+    "unplugin-vue-components": "^0.17.10",
     "vite": "2.6.14",
     "vite-aliases": "0.8.7",
-    "vite-plugin-windicss": "^1.5.4",
+    "vite-plugin-windicss": "^1.6.1",
     "vitepress": "0.20.1",
     "vitepress-tags": "^0.4.0",
-    "windicss": "3.3.0"
+    "windicss": "3.4.0"
   },
   "version": "1.4.0"
 }

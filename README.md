@@ -19,6 +19,8 @@ Useful tools to have in the pocket like a pack of interactive cards to learn and
 
 ## Community
 
+Join our subreddit [r/chromatone](https://www.reddit.com/r/chromatone/)
+
 Learners, sharing their experiences and setups. Musical and visual projects and performers, who implement Chromatone system in practice. Jams and other community events and
 
 ## Contact

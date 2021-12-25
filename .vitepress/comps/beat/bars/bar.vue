@@ -8,38 +8,15 @@ import { levelColor } from '@use/colors'
 const width = 920
 const pad = (1000 - width) / 2
 
-const emit = defineEmits(['del', 'over', 'under', 'sound']);
+const emit = defineEmits(['del', 'sound']);
 
 const props = defineProps({
-  order: {
-    type: Number,
-    default: 0
-  },
-  loop: {
-    type: Object,
-    default: {
-      over: 4,
-      under: 4,
-      sound: 'A',
-      volume: 1,
-    }
-  },
-  maxRatio: {
-    type: Number,
-    default: 1
-  },
-  editable: {
-    type: Boolean,
-    default: false,
-  },
-  mute: {
-    type: String,
-    default: null,
-  },
-  accent: {
-    type: String,
-    default: null
-  }
+  order: { type: Number, default: 0 },
+  loop: { type: Object, default: { over: 4, under: 4, sound: 'A', volume: 1, } },
+  maxRatio: { type: Number, default: 1 },
+  editable: { type: Boolean, default: false, },
+  mute: { type: String, default: null, },
+  accent: { type: String, default: null }
 });
 
 const sounds = ['A', 'B', 'C', 'D', 'E']

@@ -1,5 +1,4 @@
 <script setup>
-import { clampNum } from '@theory'
 import { renderMidi } from '@use/midiRender'
 import { tracks } from '@use/sequence'
 
@@ -85,8 +84,6 @@ function changeLoop(l, n, diff) {
       :loop="loop"
       :maxRatio="maxRatio"
       @del="loops.splice(i, 1)"
-      @over="loop.over = clampNum(loop.over, $event, 1, 16)"
-      @under="loop.under = clampNum(loop.under, $event, 1, 16)"
       @sound="loop.sound = $event"
       :editable="!meters"
       :accent="pattern"

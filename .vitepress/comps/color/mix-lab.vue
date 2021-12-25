@@ -1,3 +1,79 @@
+<script setup>
+import { colord } from 'colord'
+
+const screen = ref()
+
+const range = useClamp(useStorage('lab-range', 100), 100, 300)
+const rangeLow = computed(() => -range.value / 2)
+const rangeHigh = computed(() => range.value / 2)
+
+const mix = reactive({
+  current: useStorage('color-current', '#fffff'),
+  max: {
+    l: 100,
+    res: 36,
+  },
+  l: useClamp(useStorage('color-l', 50), 0, 100),
+  a: useClamp(useStorage('color-a', 20), rangeLow, rangeHigh),
+  b: useClamp(useStorage('color-b', 20), rangeLow, rangeHigh),
+  lab: computed(() => {
+    return { l: mix.l, a: mix.a, b: mix.b, alpha: 1 }
+  }),
+  hex: computed(() => colord(mix.lab).toHex()),
+  width: 100,
+  height: 100,
+  res: useClamp(useStorage('lab-res', 10), 10, 36),
+  steps: {
+    a: computed(() => getSteps(mix.res)),
+    b: computed(() => getSteps(mix.res))
+  },
+});
+
+function getHex(l, a, b) {
+  return colord({ l: l, a: a * range.value, b: -b * range.value, alpha: 1 }).toHex()
+}
+
+function getSteps(count) {
+  return [...Array(count)].map((_, i) => (i - count / 2) / count)
+}
+
+function onDrag(drag) {
+  mix.b -= drag.delta[1] / 2
+  mix.a += drag.delta[0] / 2
+}
+
+function onDragRes(drag) {
+  mix.res += drag.delta[0]
+}
+
+function onDragRange(drag) {
+  range.value += drag.delta[0]
+}
+
+function onDragL(drag) {
+  mix.l -= drag.delta[1] / 8
+}
+
+function onDragA(drag) {
+  mix.a += drag.delta[0] / 2
+}
+
+function onDragB(drag) {
+  mix.b -= drag.delta[1] / 2
+}
+
+function selectColor(l, a, b) {
+  mix.a = a * range.value
+  mix.b = -b * range.value
+  mix.current = mix.hex
+}
+
+watchEffect(() => {
+  mix.current = mix.hex
+});
+
+</script>
+
 <template lang="pug">
 .fullscreen-container.mb-8.p-4.rounded-4xl.transition-all.duration-800.ease-out(ref="screen" :style="{ backgroundColor: mix.hex }")
   full-screen.absolute.top-2.right-2(:el="screen")
@@ -21,12 +97,12 @@
       linearGradient#green-red(x1="0" x2="1" y1="0" y2="0")
         stop(
           v-for="(step,i) in 10" :key="step"
-          :stop-color="colord({ l: mix.l, a: i * mix.range / 10 - mix.range / 2, b: mix.b, alpha: 1 }).toHex()" :offset="i * 10 + '%'"
+          :stop-color="colord({ l: mix.l, a: i * range / 10 - range / 2, b: mix.b, alpha: 1 }).toHex()" :offset="i * 10 + '%'"
           )
       linearGradient#blue-yellow(x1="0" x2="0" y1="0" y2="1")
         stop(
           v-for="(step,i) in 10" :key="step"
-          :stop-color="colord({ l: mix.l, a: mix.a, b: (10 - i) * mix.range / 10 - mix.range / 2, alpha: 1 }).toHex()" :offset="i * 10 + '%'"
+          :stop-color="colord({ l: mix.l, a: mix.a, b: (10 - i) * range / 10 - range / 2, alpha: 1 }).toHex()" :offset="i * 10 + '%'"
           )
     g#square
       g(
@@ -55,7 +131,7 @@
         v-drag="onDragB"
       )
       g.pointer-events-none(
-        :transform="`translate(0,${100 * (-mix.b + mix.range / 2) / (mix.range)})`"
+        :transform="`translate(0,${100 * (-mix.b + range / 2) / (range)})`"
       )
         line(
           x1="-15"
@@ -112,7 +188,7 @@
         v-drag="onDragA"
       )
       g.pointer-events-none(
-        :transform="`translate(${100 * (mix.a + mix.range / 2) / (mix.range)},0)`"
+        :transform="`translate(${100 * (mix.a + range / 2) / (range)},0)`"
       )
         line.mix-blend-difference(
           y1="-15"
@@ -162,10 +238,10 @@
         stroke-width="0.2")
       rect( 
         x="-20" y="-2.5" 
-        :width="40 * (mix.range / 300)" height="4" 
+        :width="40 * (range / 300)" height="4" 
         fill="#aaa" stroke="currentColor"
         stroke-width="0.2")
-      text.uppercase AB RANGE {{ mix.range }}
+      text.uppercase AB RANGE {{ range }}
     transition(name="fade")
       g#current.cursor-pointer(
         v-drag="onDrag"
@@ -180,89 +256,4 @@
         color-svg-info(:color="mix.lab" :y="40")
 </template>
 
-<script setup>
-import { colord } from 'colord'
 
-const screen = ref()
-
-const mix = reactive({
-  current: useStorage('color-current', '#fffff'),
-  max: {
-    l: 100,
-    res: 36,
-  },
-  l: useStorage('color-l', 50),
-  a: useStorage('color-a', 20),
-  b: useStorage('color-b', 20),
-  range: useStorage('lab-range', 100),
-  lab: computed(() => {
-    return { l: mix.l, a: mix.a, b: mix.b, alpha: 1 }
-  }),
-  hex: computed(() => colord(mix.lab).toHex()),
-  width: 100,
-  height: 100,
-  res: useStorage('lab-res', 10),
-  steps: {
-    a: computed(() => getSteps(mix.res)),
-    b: computed(() => getSteps(mix.res))
-  },
-});
-
-function getHex(l, a, b) {
-  return colord({ l: l, a: a * mix.range, b: -b * mix.range, alpha: 1 }).toHex()
-}
-
-function getSteps(count) {
-  return [...Array(count)].map((_, i) => (i - count / 2) / count)
-}
-
-function onDrag(drag) {
-  mix.b = clampNum(mix.b, -drag.delta[1] / 2, -mix.range / 2, mix.range / 2)
-  mix.a = clampNum(mix.a, drag.delta[0] / 2, -mix.range / 2, mix.range / 2)
-}
-
-function onDragRes(drag) {
-  mix.res = clampNum(mix.res, drag.delta[0], 4, 36)
-}
-
-function onDragRange(drag) {
-  mix.range = clampNum(mix.range, drag.delta[0], 100, 300)
-}
-
-function onDragL(drag) {
-  mix.l = clampNum(mix.l, -drag.delta[1] / 8)
-}
-
-function onDragA(drag) {
-  mix.a = clampNum(mix.a, drag.delta[0] / 2, -mix.range / 2, mix.range / 2)
-}
-
-function onDragB(drag) {
-  mix.b = clampNum(mix.b, -drag.delta[1] / 2, -mix.range / 2, mix.range / 2)
-}
-
-function clampNum(main, delta, min = 0, max = 100) {
-  let num = Number(main) + Number(delta)
-  if (num < min) {
-    num = min
-  }
-  if (num > max) {
-    num = max
-  }
-  return num
-}
-
-function selectColor(l, a, b) {
-  mix.a = a * mix.range
-  mix.b = -b * mix.range
-  mix.current = mix.hex
-}
-
-watchEffect(() => {
-  mix.current = mix.hex
-});
-
-</script>
-
-<style scoped>
-</style>

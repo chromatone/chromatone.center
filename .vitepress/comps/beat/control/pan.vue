@@ -42,21 +42,13 @@ g.pan(
 
 <script setup>
 import { isDark } from '@theme/composables/state.js'
-import { clampNum } from '@theory'
 const props = defineProps({
-  pan: {
-    type: Number,
-    default: 0.75
-  },
-  order: {
-    type: Number,
-    default: 0
-  }
+  pan: { type: Number, default: 0.75 },
+  order: { type: Number, default: 0 }
 })
 const emit = defineEmits(['update:pan'])
 function dragPan(drag) {
-  let pan = clampNum(props.pan, drag.delta[0] / 100, -1, 1)
-  emit('update:pan', pan)
+  emit('update:pan', props.pan + drag.delta[0] / 100)
 }
 
 </script>

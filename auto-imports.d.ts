@@ -42,6 +42,7 @@ declare global {
   const triggerRef: typeof import('vue')['triggerRef']
   const unref: typeof import('vue')['unref']
   const useAttrs: typeof import('vue')['useAttrs']
+  const useClamp: typeof import('@vueuse/core')['useClamp']
   const useCssModule: typeof import('vue')['useCssModule']
   const useSlots: typeof import('vue')['useSlots']
   const useStorage: typeof import('@vueuse/core')['useStorage']

@@ -34,7 +34,7 @@
       .p-2 Chromatone
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { useSiblings, useParents } from '../../composables/links.js'
 import { lchToHsl } from '@use/colors.js'
 import { useRoute, useData } from 'vitepress'

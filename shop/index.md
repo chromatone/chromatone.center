@@ -222,6 +222,9 @@ cities:
   - city: Mochdre, Colwyn Bay
     country: UK
     coord: [53.29398377085999, -3.764940086163702]
+  - city: St.Gallen
+    country: Switzerland
+    coord: [47.433922614739856, 9.383051984649073]
 ---
 
 We are the growing global community more than **{{$frontmatter.cities.length +10}}** musicians worldwide who've already implemented Chromatone into our daily music practice. Join us today!

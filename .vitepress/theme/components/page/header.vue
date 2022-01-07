@@ -28,7 +28,7 @@ const pageColor = computed(() => {
   return lchToHsl(current.value, total.value, 1, 20, l)
 });
 
-const lightColor = lchToHsl(current.value, total.value, 1, 70, 60);
+const lightColor = computed(() => lchToHsl(current.value, total.value, 1, 70, 60));
 
 </script>
 

@@ -1,3 +1,14 @@
+<script setup>
+const props = defineProps({
+  product: Object,
+  showButton: {
+    type: Boolean,
+    default: true,
+  },
+  color: { type: String, default: '#444' }
+});
+</script>
+
 <template lang="pug">
 .shop-action
   a.button.price(
@@ -18,16 +29,7 @@
     span.cart-text(v-if="showButton") Buy
 </template>
 
-<script setup>
-const props = defineProps({
-  product: Object,
-  showButton: {
-    type: Boolean,
-    default: true,
-  },
-  color: String
-});
-</script>
+
 
 <style scoped>
 .shop-action {

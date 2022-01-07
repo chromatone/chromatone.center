@@ -8,7 +8,7 @@
     ) {{ line.title }}
     counter(:list="theme.pages?.[line?.data?.list]") 
     card-date.flex-1.ml-4(:date="line.lastModified")
-    shop-price.ml-2(:product="line?.data?.product", :showButton="false")
+    shop-price.ml-2(:product="line?.data?.product", :showButton="false" :color="getColor(l, Object.keys(props.list).length, 40)")
 </template>
 
 <script setup>
@@ -22,9 +22,9 @@ const props = defineProps({
 
 import { lchToHsl } from '@use/colors.js'
 import { isDark } from '@theme/composables/state'
-function getColor(i, total) {
+function getColor(i, total, b = 10) {
   let l = isDark.value ? 40 : 85
-  return lchToHsl(i, total, 1, 10, l)
+  return lchToHsl(i, total, 1, b, l - b)
 }
 
 </script>

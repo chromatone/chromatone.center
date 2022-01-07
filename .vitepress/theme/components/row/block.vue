@@ -35,7 +35,7 @@ const bg = computed(() => `url(/media/${props.item.data?.cover}`);
         .flex-1
         shop-price(
           :product="item.data?.product" 
-          :color="color"
+          :color="'color'"
           )
 
         card-date(v-if="!item.data?.product",:date="item.lastModified")

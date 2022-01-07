@@ -10,7 +10,7 @@ const props = defineProps({
 </script>
 
 <template lang="pug">
-.shop-action
+.shop-action 
   a.button.price(
     v-if="product",
     :href="product?.link", 

@@ -16,7 +16,7 @@
         v-if="item.subtitle" 
 
         ) {{ item.subtitle }}
-      shop-price.float-left(:product="item.data?.product")
+      shop-price.float-left(:product="item.data?.product" :color="color")
 
   page-buttons.m-2(:buttons="item.data?.buttons")
   line-list(:list="theme?.pages?.[item.data.list]")

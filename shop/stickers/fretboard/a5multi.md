@@ -6,7 +6,7 @@ product:
   price: $18
   link: https://ko-fi.com/s/e5f5c23a30
 cover: stickers/a5multi/main.jpeg
-date: 2021-09-01
+date: 2022-01-01
 ---
 
 ![](/media/stickers/a5multi/angle.jpeg)

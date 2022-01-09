@@ -225,6 +225,9 @@ cities:
   - city: St.Gallen
     country: Switzerland
     coord: [47.433922614739856, 9.383051984649073]
+  - city: Antwerpen
+    country: Belgium
+    coord: [51.21691231798491, 4.417465229464261]
 ---
 
 We are the growing global community more than **{{$frontmatter.cities.length +10}}** musicians worldwide who've already implemented Chromatone into our daily music practice. Join us today!

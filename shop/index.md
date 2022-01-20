@@ -231,9 +231,12 @@ cities:
   - city: Grand Rapids, MI
     country: USA
     coord: [42.94684243977635, -85.64382820165625]
+  - city: Springdale, AR
+    country: USA
+    coord: [36.23714010693595, -94.12344684200349]
 ---
 
-We are the growing global community more than **{{$frontmatter.cities.length +10}}** musicians worldwide who've already implemented Chromatone into our daily music practice. Join us today!
+We are the growing global community of more than **{{$frontmatter.cities.length +10}}** musicians worldwide who've already implemented Chromatone into our daily music practice. Join us today!
 
 <map-ol :cities="$frontmatter.cities" />
 

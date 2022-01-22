@@ -234,6 +234,9 @@ cities:
   - city: Springdale, AR
     country: USA
     coord: [36.23714010693595, -94.12344684200349]
+  - city: Skokie, IL
+    country: USA
+    coord: [42.03730357512444, -87.76156707638249]
 ---
 
 We are the growing global community of more than **{{$frontmatter.cities.length +10}}** musicians worldwide who've already implemented Chromatone into our daily music practice. Join us today!

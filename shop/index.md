@@ -237,6 +237,9 @@ cities:
   - city: Skokie, IL
     country: USA
     coord: [42.03730357512444, -87.76156707638249]
+  - city: Leeds
+    country: UK
+    coord: [53.77806590446647, -1.2546868044128854]
 ---
 
 We are the growing global community of more than **{{$frontmatter.cities.length +10}}** musicians worldwide who've already implemented Chromatone into our daily music practice. Join us today!

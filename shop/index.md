@@ -240,6 +240,12 @@ cities:
   - city: Leeds
     country: UK
     coord: [53.77806590446647, -1.2546868044128854]
+  - city: Pflugerville, TX
+    country: USA
+    coord: [30.471375127822885, -97.56903284388358]
+  - city: Azusa, CA
+    country: USA
+    coord: [34.143579457039365, -117.9127539472182]
 ---
 
 We are the growing global community of more than **{{$frontmatter.cities.length +10}}** musicians worldwide who've already implemented Chromatone into our daily music practice. Join us today!

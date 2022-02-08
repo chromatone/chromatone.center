@@ -246,6 +246,9 @@ cities:
   - city: Azusa, CA
     country: USA
     coord: [34.143579457039365, -117.9127539472182]
+  - city: Wakefield, MA
+    country: USA
+    coord: [42.51351725371844, -71.09156126142905]
 ---
 
 We are the growing global community of more than **{{$frontmatter.cities.length +10}}** musicians worldwide who've already implemented Chromatone into our daily music practice. Join us today!

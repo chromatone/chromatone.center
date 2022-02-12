@@ -249,6 +249,9 @@ cities:
   - city: Wakefield, MA
     country: USA
     coord: [42.51351725371844, -71.09156126142905]
+  - city: Singapore
+    country: Singapore
+    coord: [1.2888089431353276, 103.82838432648393]
 ---
 
 We are the growing global community of more than **{{$frontmatter.cities.length +10}}** musicians worldwide who've already implemented Chromatone into our daily music practice. Join us today!

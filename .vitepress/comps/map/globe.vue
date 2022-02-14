@@ -20,7 +20,7 @@ onMounted(() => {
     height: 1000,
     phi: 0,
     theta: 0.28,
-    dark: 0,
+    dark_ 0,
     diffuse: 1.2,
     mapSamples: 16000,
     mapBrightness: 9,

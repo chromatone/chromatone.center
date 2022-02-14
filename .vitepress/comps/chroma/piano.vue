@@ -53,7 +53,7 @@ function isInChroma(pitch) {
   margin-bottom: 1em;
   flex: 1;
   &.black {
-    @apply bg-gray-300 dark:(bg-gray-700) z-2;
+    @apply bg-gray-300 dark_(bg-gray-700) z-2;
     padding: 1em 1em;
     margin-left: -1.5em;
     margin-right: -0.2em;

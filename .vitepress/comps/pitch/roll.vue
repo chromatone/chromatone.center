@@ -147,7 +147,7 @@ function clear() {
 
 <style  scoped>
 .button {
-  @apply p-4 m-8 shadow-lg cursor-pointer transition-all duration-300 rounded-4xl text-4xl bg-light-700 text-center font-bold dark:(bg-dark-400);
+  @apply p-4 m-8 shadow-lg cursor-pointer transition-all duration-300 rounded-4xl text-4xl bg-light-700 text-center font-bold dark_(bg-dark-400);
 }
 
 .btn {

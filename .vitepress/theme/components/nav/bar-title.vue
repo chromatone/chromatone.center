@@ -12,12 +12,12 @@ const { theme, site, localePath } = useData();
 
 <style scoped >
 .nav-bar-title {
-  @apply text-xl md:text-1.3rem font-semibold text-$c-text
+  @apply text-xl md_text-1.3rem font-semibold text-$c-text
     inline-flex items-center whitespace-nowrap
-    hover:no-underline;
+    hover_no-underline;
 }
 
 .title {
-  @apply xs:block hidden;
+  @apply xs_block hidden;
 }
 </style>

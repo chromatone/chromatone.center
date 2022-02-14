@@ -58,7 +58,7 @@ onKeyStroke(' ', ev => {
 
 <style scoped>
 .layer {
-  @apply bg-light-200 dark:bg-dark-900 rounded-xl;
+  @apply bg-light-200 dark_bg-dark-900 rounded-xl;
   backdrop-filter: blur(30px);
 }
 

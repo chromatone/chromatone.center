@@ -40,7 +40,7 @@ g.recorder
     )
       circle(
         @mousedown="recorder.rec(sound)" 
-        class="opacity-60 hover:opacity-80 transition-all duration-200 ease " 
+        class="opacity-60 hover_opacity-80 transition-all duration-200 ease " 
         r="40" fill="#900" 
         :stroke="recorder.recording == sound ? '#666' : 'transparent'" stroke-width="4" 
         style="filter:url(#shadowButton);" 
@@ -49,7 +49,7 @@ g.recorder
       :transform="`translate(${160 + 200 * s} ${50})`"
     )
       foreignObject.p-4(width="110" height="110")
-        label.transition-all.duration-200.ease.cursor-pointer.text-4xl.rounded-full.px-4.pb-6.pt-2(:for="sound" class="hover:bg-light-200 dark:(hover:bg-dark-100) bg-light-400 shadow-lg dark:bg-dark-300")
+        label.transition-all.duration-200.ease.cursor-pointer.text-4xl.rounded-full.px-4.pb-6.pt-2(:for="sound" class="hover_bg-light-200 dark_(hover_bg-dark-100) bg-light-400 shadow-lg dark_bg-dark-300")
           la-upload
         input.hidden(type="file" :id="sound" @change="recorder.load(sound, $event.target.files[0])")
 </template>

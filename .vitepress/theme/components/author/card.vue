@@ -27,7 +27,7 @@ const props = defineProps({
 
 <style  scoped>
 .author-card {
-  @apply max-w-65ch m-auto flex flex-col p-8 my-16 shadow-lg bg-light-100 dark:bg-dark-300;
+  @apply max-w-65ch m-auto flex flex-col p-8 my-16 shadow-lg bg-light-100 dark_bg-dark-300;
 }
 .avatar {
   @apply h-12em self-start;

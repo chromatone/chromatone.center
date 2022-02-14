@@ -36,7 +36,7 @@ const theColor = computed(() => props.color);
 
 <style  scoped>
 .crd {
-  @apply relative  bg-light-500 dark:bg-dark-800
+  @apply relative  bg-light-500 dark_bg-dark-800
   flex flex-wrap items-stretch justify-stretch
   transition-all  duration-200
   static;
@@ -46,7 +46,7 @@ const theColor = computed(() => props.color);
     background-color: v-bind(theColor);
   }
   & .info {
-    @apply px-2 py-4 ml-2 m-2 z-4 max-w-24em bg-light-100 bg-opacity-80 dark:(bg-dark-600 bg-opacity-80) rounded-xl relative;
+    @apply px-2 py-4 ml-2 m-2 z-4 max-w-24em bg-light-100 bg-opacity-80 dark_(bg-dark-600 bg-opacity-80) rounded-xl relative;
     -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
     flex: 1 1 100%;

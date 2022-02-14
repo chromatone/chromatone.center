@@ -1,6 +1,6 @@
 <template lang="pug">
 svg(
-  class="bg-light-300 dark:bg-dark-800"
+  class="bg-light-300 dark_bg-dark-800"
     version="1.1",
     baseProfile="full",
     :viewBox="`0 0 1000 100`",

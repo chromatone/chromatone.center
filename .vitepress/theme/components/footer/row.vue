@@ -26,7 +26,7 @@ const route = useRoute()
 
 <style scoped >
 footer {
-  @apply relative transition-all min-h-26vh z-1 bg-gray-300 dark:bg-dark-700 flex flex-col pt-16 pb-16 px-4 lg:hidden;
+  @apply relative transition-all min-h-26vh z-1 bg-gray-300 dark_bg-dark-700 flex flex-col pt-16 pb-16 px-4 lg_hidden;
 }
 
 nav {
@@ -38,9 +38,9 @@ nav {
 }
 
 a {
-  @apply transition-all opacity-60 text-gray-900 dark:text-gray-50 hover:(opacity-80 underline);
+  @apply transition-all opacity-60 text-gray-900 dark_text-gray-50 hover_(opacity-80 underline);
   &.active {
-    @apply font-bold text-$c-brand dark:text-$c-brand-light border-$c-brand;
+    @apply font-bold text-$c-brand dark_text-$c-brand-light border-$c-brand;
   }
 }
 

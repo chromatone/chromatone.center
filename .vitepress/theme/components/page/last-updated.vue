@@ -32,6 +32,6 @@ onMounted(() => {
 
 <style scoped >
 .last-updated {
-  @apply inline-block m-0 text-0.9rem leading-1.4rem text-$c-text-light lg:(text-base leading-1.4rem);
+  @apply inline-block m-0 text-0.9rem leading-1.4rem text-$c-text-light lg_(text-base leading-1.4rem);
 }
 </style>

@@ -37,7 +37,7 @@ const props = defineProps({
 }
 
 .button {
-  @apply p-2 my-2 mr-2 shadow-md z-6 text-white text-2xl  rounded-md bg-yellow-500  dark:(bg-yellow-600);
+  @apply p-2 my-2 mr-2 shadow-md z-6 text-white text-2xl  rounded-md bg-yellow-500  dark_(bg-yellow-600);
 }
 
 .price {

@@ -121,11 +121,11 @@ function mapNumber(
 
 <style scoped>
 .knob {
-  @apply shadow-md m-1 border-2 rounded-lg text-center border-dark-100/50 dark:(border-light-100/50) cursor-pointer select-none relative overflow-hidden flex flex-col justify-center;
+  @apply shadow-md m-1 border-2 rounded-lg text-center border-dark-100/50 dark_(border-light-100/50) cursor-pointer select-none relative overflow-hidden flex flex-col justify-center;
   touch-action: none;
 }
 
 .level {
-  @apply border-r-2 bg-dark-50/20 border-dark-100/60  dark:(border-light-100/60 bg-light-100/40) absolute top-0 bottom-0 w-full;
+  @apply border-r-2 bg-dark-50/20 border-dark-100/60  dark_(border-light-100/60 bg-light-100/40) absolute top-0 bottom-0 w-full;
 }
 </style>

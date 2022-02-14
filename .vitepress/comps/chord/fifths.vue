@@ -40,7 +40,7 @@
           :r="2"
           :fill="pitchColor(note.pitch, 4, 1, 1)"
           @click="tonic = i; scaleType = qual"
-          class="opacity-20 hover:opacity-80"
+          class="opacity-20 hover_opacity-80"
         )
         circle.note(
           style="transition: all 300ms ease-out;transform-box: fill-box; transform-origin: center center;"

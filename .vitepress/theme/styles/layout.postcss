@@ -23,7 +23,7 @@ html {
 }
 
 body {
-  @apply bg-light-600 dark:(bg-dark-600) transition-all duration-600 ease-out;
+  @apply bg-light-600 dark_(bg-dark-600) transition-all duration-600 ease-out;
   width: 100%;
   min-width: 320px;
   min-height: 100vh;
@@ -265,11 +265,11 @@ form {
 }
 
 .is-group {
-  @apply border-1 shadow-inner shadow-md border-dark-300/30 dark:border-light-300/20 rounded-xl;
+  @apply border-1 shadow-inner shadow-md border-dark-300/30 dark_border-light-300/20 rounded-xl;
 }
 
 .text-button {
-  @apply shadow m-1 p-2 rounded-lg border-1 border-dark-100/30 dark:border-light-100/60 transition-all duration-200 leading-none;
+  @apply shadow m-1 p-2 rounded-lg border-1 border-dark-100/30 dark_border-light-100/60 transition-all duration-200 leading-none;
   &.note {
     @apply text-white p-2 font-bold opacity-50 border-2 rounded-lg;
     &.active {
@@ -296,8 +296,8 @@ form {
 
 .card {
   @apply shadow-xl p-4 my-40 bg-warm-gray-50 bg-opacity-20
-  dark:(bg-warm-gray-700 bg-opacity-20) 
-  sm:(p-12);
+  dark_(bg-warm-gray-700 bg-opacity-20) 
+  sm_(p-12);
 }
 
 .tame {
@@ -309,7 +309,7 @@ form {
 }
 
 .content {
-  @apply m-auto py-8 z-6 m-1 sm:m-2 md:m-4 lg:m-8 xl:(m-16);
+  @apply m-auto py-8 z-6 m-1 sm_m-2 md_m-4 lg_m-8 xl_(m-16);
   & img {
     @apply my-4 mx-auto rounded-lg;
   }
@@ -356,7 +356,7 @@ form {
 }
 
 .fullscreen-container {
-  @apply flex flex-col justify-center relative items-center  bg-light-400 dark:bg-dark-800 shadow-xl;
+  @apply flex flex-col justify-center relative items-center  bg-light-400 dark_bg-dark-800 shadow-xl;
   &:fullscreen {
     @apply overflow-y-scroll;
   }

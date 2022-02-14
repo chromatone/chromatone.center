@@ -46,7 +46,7 @@ const sorted = computed(() => {
 }
 
 .control {
-  @apply m-2 p-4 rounded bg-light-400  dark:bg-dark-400 cursor-pointer;
+  @apply m-2 p-4 rounded bg-light-400  dark_bg-dark-400 cursor-pointer;
 }
 
 .control.active {
@@ -54,11 +54,11 @@ const sorted = computed(() => {
 }
 
 .keys {
-  @apply z-8 rounded-md p-1 grid grid-cols-6 xs:(grid-cols-12) w-full sticky top-$header-height bg-light-400 bg-opacity-80  dark:(bg-dark-300 bg-opacity-80);
+  @apply z-8 rounded-md p-1 grid grid-cols-6 xs_(grid-cols-12) w-full sticky top-$header-height bg-light-400 bg-opacity-80  dark_(bg-dark-300 bg-opacity-80);
 }
 
 .key {
-  @apply transition-all text-center duration-300 p-2 m-1 sm:(p-3 m-1) rounded-lg cursor-pointer shadow-md;
+  @apply transition-all text-center duration-300 p-2 m-1 sm_(p-3 m-1) rounded-lg cursor-pointer shadow-md;
   flex: 1 1 1em;
 }
 

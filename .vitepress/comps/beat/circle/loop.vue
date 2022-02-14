@@ -206,7 +206,7 @@ g(
       :y="-3",
       ) {{ loop.under }} 
     g.cursor-pointer.opacity-50.transition-all.duration-200.ease(
-      class="hover:opacity-100"
+      class="hover_opacity-100"
       transform="translate(74,-10)"
       @mousedown="rotateAccents(-1)"
     )
@@ -220,7 +220,7 @@ g(
         y="-17"
       )
     g.cursor-pointer.opacity-50.transition-all.duration-200.ease(
-      class="hover:opacity-100"
+      class="hover_opacity-100"
       transform="translate(-78,-10)"
       @mousedown="rotateAccents(1)"
     )

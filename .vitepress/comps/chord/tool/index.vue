@@ -50,9 +50,9 @@ function compareChords(a, b) {
 
 <style  scoped>
 .chord {
-  @apply text-xl p-2 transition-all cursor-pointer m-1 rounded-lg border bg-light-100 dark:bg-dark-100 hover:bg-light-500 dark:(hover:bg-dark-300);
+  @apply text-xl p-2 transition-all cursor-pointer m-1 rounded-lg border bg-light-100 dark_bg-dark-100 hover_bg-light-500 dark_(hover_bg-dark-300);
   &.active {
-    @apply bg-light-700 dark:bg-dark-700;
+    @apply bg-light-700 dark_bg-dark-700;
   }
 }
 </style>

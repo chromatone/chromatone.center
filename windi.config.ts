@@ -5,10 +5,11 @@ import filters from 'windicss/plugin/filters'
 
 
 export default defineConfig({
+  separator: "_",
   darkMode: 'class',
   shortcuts: {
-    bc: 'border-gray-300 dark:border-true-gray-600',
-    'has-bg': 'bg-light-500 dark:bg-dark-500',
+    bc: 'border-gray-300 dark_border-true-gray-600',
+    'has-bg': 'bg-light-500 dark_bg-dark-500',
   },
   plugins: [
     snap,

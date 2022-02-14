@@ -159,7 +159,7 @@ function playNote(note = 0, octave = 0) {
 
 <style  scoped>
 .chroma-key {
-  @apply cursor-pointer text-xs transition-all duration-300 py-3   hover:(opacity-100) opacity-70  rounded-full flex justify-center px-2;
+  @apply cursor-pointer text-xs transition-all duration-300 py-3   hover_(opacity-100) opacity-70  rounded-full flex justify-center px-2;
   flex: 1 1 12px;
   box-shadow: 0 2px 0px rgba(0, 0, 0, 0.4);
 }

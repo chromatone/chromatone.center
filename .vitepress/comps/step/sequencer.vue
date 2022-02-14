@@ -56,7 +56,7 @@ import { pianoOnce, init } from '@use/piano'
 const state = reactive({
   started: false,
   playing: false,
-  hover: false,
+  hover_ false,
   mounted: false,
   current: 0,
   octave: useStorage('seq-octave', 3),
@@ -227,7 +227,7 @@ select {
 button {
   @apply p-2 border-1 text-center flex flex-col justify-center m-1 rounded border-current;
   &.active {
-    @apply bg-light-100 dark:bg-dark-100;
+    @apply bg-light-100 dark_bg-dark-100;
   }
 }
 </style>

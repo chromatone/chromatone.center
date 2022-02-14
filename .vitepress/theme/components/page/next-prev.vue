@@ -19,7 +19,7 @@
     .flex.flex-col.items-justify.mx-4
       a.p-4.flex.items-center.justify-center.m-2.rounded-xl.shadow-md.transition-all.duration-100.ease-out(
         style="flex:1 1"
-        class="bg-light-900/40 dark:bg-dark-300/10 hover:no-underline hover:(bg-light-900/30 shadow-lg) dark:(hover:bg-dark-700)"
+        class="bg-light-900/40 dark_bg-dark-300/10 hover_no-underline hover_(bg-light-900/30 shadow-lg) dark_(hover_bg-dark-700)"
         v-for="(parent,p) in parents" :key="parent"
         :href="parent.link"
         :style="{ order: 100 - p }"
@@ -27,7 +27,7 @@
         carbon-chevron-up.mr-1
         .p-1 {{ parent.title }}
     a.text-xl.p-4.flex.flex-col.items-center(
-      class="hover:no-underline"
+      class="hover_no-underline"
       href="/"
       )
       img.w-32(src="/media/logo/circle.svg")
@@ -51,20 +51,20 @@ const colors = reactive({
 
 <style scoped>
 .next-and-prev-link {
-  @apply bg-gray-100/90 dark:bg-gray-800/90 
+  @apply bg-gray-100/90 dark_bg-gray-800/90 
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   & a {
-    @apply text-dark-800 dark:text-light-300;
+    @apply text-dark-800 dark_text-light-300;
   }
 }
 
 .row {
-  @apply mx-auto border-t-12  flex flex-col w-full py-4 px-4 xs:(flex-wrap flex-row);
+  @apply mx-auto border-t-12  flex flex-col w-full py-4 px-4 xs_(flex-wrap flex-row);
 }
 
 .pad {
-  @apply transition-all duration-200 ease-out m-2 rounded-xl shadow-lg hover:shadow-xl transition-all flex flex-row items-stretch;
+  @apply transition-all duration-200 ease-out m-2 rounded-xl shadow-lg hover_shadow-xl transition-all flex flex-row items-stretch;
   flex: 1 1 45%;
   filter: grayscale(40%) opacity(80%);
 }

@@ -28,11 +28,11 @@ function setVariant(variant) {
 
 <style scoped>
 .btn {
-  @apply cursor-pointer flex place-items-center p-2 border-2 border-dark-100/50 dark:(border-light-100/50);
+  @apply cursor-pointer flex place-items-center p-2 border-2 border-dark-100/50 dark_(border-light-100/50);
 }
 
 .btn.active {
-  @apply bg-dark-100/50 dark:(bg-light-100/50);
+  @apply bg-dark-100/50 dark_(bg-light-100/50);
 }
 
 .btn:first-child {

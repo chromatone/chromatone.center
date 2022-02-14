@@ -13,14 +13,14 @@
     button(@click="download")
       la-download
   .flex.flex-wrap
-    .p-1(v-for="(track,t) in info.tracks" :key="track") 
+    .p-1(v-for="(track, t) in info.tracks" :key="track") 
       .track(
         @click="map.hiddenTracks[t] = !map.hiddenTracks[t]"
         :class="{ active: !map.hiddenTracks[t] }"
         ) {{ track.channel }}: {{ track.name }} {{ track.instrument.family }}
   .flex.flex-col
     midi-grid-track(
-      v-for="(track,t) in info.filteredTracks" :key="track" 
+      v-for="(track, t) in info.filteredTracks" :key="track" 
       :track="track"
       )
 </template>
@@ -29,7 +29,7 @@
 import { Midi } from '@tonejs/midi'
 import { pitchColor } from '@theory'
 import { now, PolySynth, Synth, Transport } from 'tone'
-import { createAndDownloadBlobFile } from '@use/midi'
+import { createAndDownloadBlobFile } from '@use/midiRender'
 
 let midiData
 

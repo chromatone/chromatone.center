@@ -15,6 +15,7 @@ export const midi = reactive({
     pitch: 3,
     octA: 3,
   },
+  cc: {},
   clock: 0,
   filter: useStorage("global-midi-filter", {}),
   available: computed(() => Object.entries(midi.outputs).length > 0),
@@ -59,9 +60,9 @@ function setupMidi() {
     initMidi();
   });
 
-  let interval = setInterval(() => {
-    initMidi();
-  }, 3000);
+  // let interval = setInterval(() => {
+  //   initMidi();
+  // }, 3000);
 
   WebMidi.addListener("connected", (e) => {
     initMidi();
@@ -75,11 +76,14 @@ function setupMidi() {
 
 function initMidi() {
   midi.inputs = reactive({});
+
   WebMidi.inputs.forEach((input) => {
     midi.enabled = true;
     midi.inputs[input.id] = {
       name: input.name,
       manufacturer: input.manufacturer,
+      forwarder: input.addForwarder(),
+      input,
     };
     input.removeListener();
     input.addListener("start", () => {
@@ -102,18 +106,30 @@ function initMidi() {
       //bpm = 60000 / ((ev.timestamp - prevTimestamp) * PPQ)  ppq=24
     });
   });
+
   midi.outputs = reactive({});
   WebMidi.outputs.forEach((output) => {
     midi.outputs[output.id] = {
       name: output.name,
       manufacturer: output.manufacturer,
+      output,
     };
   });
 }
 
 function noteInOn(ev) {
-  console.log(ev);
-  let note = processNote(ev);
+  let note = ev.note;
+  note.port = ev.port.id;
+  note.type = ev.type;
+  note.timestamp = ev.timestamp;
+  note.channel = ev.target.number;
+  if (ev.type == "noteoff") {
+    note.velocity = 0;
+  } else {
+    note.velocity = 100;
+  }
+  note.pitch = (note.number + 3) % 12;
+  note.octA = Math.floor((note.number + 3) / 12) - 1;
   if (midi.filter[note.channel]) return;
   midi.note = note;
   createChannel(note.channel);
@@ -127,24 +143,11 @@ function ccIn(ev) {
     number: ev.controller.number,
     value: ev.value,
     raw: ev.rawValue,
+    port: ev.port.id,
   };
+  midi.cc = cc;
   createChannel(cc.channel);
   midi.channels[cc.channel].cc[cc.number] = cc;
-}
-
-function processNote(ev) {
-  let note = ev.note;
-  note.type = ev.type;
-  note.timestamp = ev.timestamp;
-  note.channel = ev.target.number;
-  if (ev.type == "noteoff") {
-    note.velocity = 0;
-  } else {
-    note.velocity = 100;
-  }
-  note.pitch = (note.number + 3) % 12;
-  note.octA = Math.floor((note.number + 3) / 12) - 1;
-  return note;
 }
 
 function createChannel(ch) {
@@ -235,25 +238,4 @@ export function stopAll() {
     output.turnSoundOff({ time: "+1" });
     output.sendReset();
   });
-}
-
-export function createAndDownloadBlobFile(body, filename, extension = "mid") {
-  const blob = new Blob([body]);
-  const fileName = `${filename}.${extension}`;
-  if (navigator.msSaveBlob) {
-    // IE 10+
-    navigator.msSaveBlob(blob, fileName);
-  } else {
-    const link = document.createElement("a");
-    // Browsers that support HTML5 download attribute
-    if (link.download !== undefined) {
-      const url = URL.createObjectURL(blob);
-      link.setAttribute("href", url);
-      link.setAttribute("download", fileName);
-      link.style.visibility = "hidden";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }
-  }
 }

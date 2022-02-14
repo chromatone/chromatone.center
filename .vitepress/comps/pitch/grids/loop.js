@@ -13,7 +13,8 @@ import {
   Frequency,
   Time,
 } from "tone";
-import { createAndDownloadBlobFile, midiPlay } from "@use/midi";
+import { midiPlay } from "@use/midi";
+import { createAndDownloadBlobFile } from "@use/midiRender";
 
 const loops = reactive([]);
 

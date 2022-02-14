@@ -1,5 +1,4 @@
 import { Writer, Track, NoteEvent } from "midi-writer-js";
-import { createAndDownloadBlobFile } from "./midi";
 import { Midi } from "@tonejs/midi";
 import { tempo } from "@use/tempo.js";
 let notes = ["C", "E", "G", "B", "D", "F", "A", "C#", "D#", "F#", "G#", "A#"];
@@ -52,4 +51,25 @@ export function renderMidi(tracks) {
   });
 
   createAndDownloadBlobFile(midiData.toArray(), "Chromatone-beat");
+}
+
+export function createAndDownloadBlobFile(body, filename, extension = "mid") {
+  const blob = new Blob([body]);
+  const fileName = `${filename}.${extension}`;
+  if (navigator.msSaveBlob) {
+    // IE 10+
+    navigator.msSaveBlob(blob, fileName);
+  } else {
+    const link = document.createElement("a");
+    // Browsers that support HTML5 download attribute
+    if (link.download !== undefined) {
+      const url = URL.createObjectURL(blob);
+      link.setAttribute("href", url);
+      link.setAttribute("download", fileName);
+      link.style.visibility = "hidden";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  }
 }

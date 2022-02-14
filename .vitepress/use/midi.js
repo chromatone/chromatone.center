@@ -4,6 +4,7 @@ import { useStorage } from "@vueuse/core";
 
 export const midi = reactive({
   enabled: false,
+  initiated: false,
   out: true,
   inputs: {},
   outputs: {},
@@ -51,6 +52,7 @@ export function useMidi() {
 }
 
 function setupMidi() {
+  if (midi.initiated) return;
   WebMidi.enable();
   WebMidi.addListener("enabled", (e) => {
     midi.enabled = true;
@@ -68,6 +70,7 @@ function setupMidi() {
   WebMidi.addListener("disconnected", (e) => {
     delete midi[e.port.type + "s"][e.port.id];
   });
+  midi.initiated = true;
 }
 
 function initMidi() {
@@ -109,6 +112,7 @@ function initMidi() {
 }
 
 function noteInOn(ev) {
+  console.log(ev);
   let note = processNote(ev);
   if (midi.filter[note.channel]) return;
   midi.note = note;

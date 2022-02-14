@@ -8,6 +8,7 @@ export const midi = reactive({
   out: true,
   inputs: {},
   outputs: {},
+  forwards: {},
   playing: false,
   channels: {},
   channel: useStorage("global-midi-channel", 1),
@@ -20,6 +21,21 @@ export const midi = reactive({
   filter: useStorage("global-midi-filter", {}),
   available: computed(() => Object.entries(midi.outputs).length > 0),
 });
+
+export function forwardMidi(iid, oid) {
+  const output = WebMidi.outputs.find((out) => out.id == oid);
+  const destinations = midi.inputs[iid].forwarder.destinations;
+  const index = destinations.indexOf(output);
+
+  if (index == -1) {
+    destinations.push(output);
+    midi.forwards[iid] = midi.forwards[iid] || {};
+    midi.forwards[iid][oid] = true;
+  } else {
+    destinations.splice(index, 1);
+    delete midi.forwards?.[iid]?.[oid];
+  }
+}
 
 export function useMidi() {
   onMounted(() => {
@@ -83,7 +99,6 @@ function initMidi() {
       name: input.name,
       manufacturer: input.manufacturer,
       forwarder: input.addForwarder(),
-      input,
     };
     input.removeListener();
     input.addListener("start", () => {
@@ -112,7 +127,6 @@ function initMidi() {
     midi.outputs[output.id] = {
       name: output.name,
       manufacturer: output.manufacturer,
-      output,
     };
   });
 }
@@ -146,6 +160,7 @@ function ccIn(ev) {
     port: ev.port.id,
   };
   midi.cc = cc;
+  midi.inputs[ev.port.id].cc = ev.value;
   createChannel(cc.channel);
   midi.channels[cc.channel].cc[cc.number] = cc;
 }

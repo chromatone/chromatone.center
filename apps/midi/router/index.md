@@ -1,13 +1,13 @@
 ---
 title: Router
-subtitle: Connect different MIDI devices together in multiple ways
+subtitle: Forward all MIDI messages from one device to another
 tags: midi
-cover: apps/monitor.png
+cover: apps/midi-router.png
 date: 2022-02-14
 ---
 
 <client-only>
-  <midi-router />
+  <midi-router class="mb-20" />
 </client-only>
 
-### Work in progress...
+Click on the desired output under the input you want to send signals from.

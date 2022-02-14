@@ -109,7 +109,7 @@ watch(() => midi.playing, playing => {
 
 onBeforeUnmount(() => {
   points.forEach(point => { if (point && point.remove) point.remove() })
-  plinesoints.forEach(point => { if (point && point.remove) point.remove() })
+  lines.forEach(point => { if (point && point.remove) point.remove() })
 });
 
 

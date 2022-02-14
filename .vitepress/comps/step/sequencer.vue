@@ -26,10 +26,10 @@
     )
     .row
       .title
-    .row(v-for="(row,r) in rows" :key="row")
+    .row(v-for="(row, r) in rows" :key="row")
       .title(:style="{ color: pitchColor(state.pitches[r]) }") {{ state.range[r] }}
       .cell(
-        v-for="(cell,c) in row" :key="cell" 
+        v-for="(cell, c) in row" :key="cell" 
         :id="`c${r}-${c}`"
         :style=`{
           color: pitchColor(state.pitches[r]),
@@ -56,7 +56,7 @@ import { pianoOnce, init } from '@use/piano'
 const state = reactive({
   started: false,
   playing: false,
-  hover_ false,
+  hover: false,
   mounted: false,
   current: 0,
   octave: useStorage('seq-octave', 3),

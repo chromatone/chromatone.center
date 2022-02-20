@@ -63,7 +63,7 @@ const theColor = computed(() => props.color);
     filter: saturate(50%) brightness(160%) opacity(30%);
     transition: all 900ms cubic-bezier(0.6, -0.1, 0, 1.1);
     flex: 1 0 100%;
-    backgound: cover;
+    background: cover;
   }
   &:hover .cover {
     filter: saturate(100%) brightness(100%) opacity(90%);

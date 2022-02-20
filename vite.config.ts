@@ -85,11 +85,15 @@ export default defineConfig({
   optimizeDeps: {
     include: ['vue', '@vueuse/core', 'tone', '@tonaljs/tonal', 'colord'],
   },
+  ssr: {
+    noExternal: ['audiomotion-analyzer','fraction.js', 'tone','ol','cobe']
+  },
   build: {
+    chunkSizeWarningLimit: 100000,
     rollupOptions: {
       output: {
         manualChunks: {
-          
+          tone: ['tone']
         },
       },
     },

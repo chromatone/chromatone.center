@@ -11,7 +11,7 @@ import {useData} from 'vitepress'
 const {theme} = useData()
 const all = theme.value.pages.all
 const shop = all.find(page => page.link == '/shop/')
-const cities = shop.data.cities
+const cities = shop?.data?.cities
 const dots = cities.map(city=>city.coord)
 </script>
 

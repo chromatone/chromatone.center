@@ -252,6 +252,12 @@ cities:
   - city: Singapore
     country: Singapore
     coord: [1.2888089431353276, 103.82838432648393]
+  - city: Oxnard, CA
+    country: USA
+    coord: [34.24759359370812, -119.17481440598617]
+  - city: Tübingen
+    country: Germany
+    coord: [48.52067492924253, 9.02865176973334]
 ---
 
 We are the growing global community of more than **{{$frontmatter.cities.length +10}}** musicians worldwide who've already implemented Chromatone into our daily music practice. Join us today!

@@ -1,35 +1,3 @@
-<template lang="pug">
-.fullscreen-container(ref="screen")
-  control-start.absolute(v-if="!tuner.initiated"  @click="initiate()") Start
-  full-screen.absolute.bottom-6.right-6.z-30(:el="screen")
-  svg#pitch-spectrum.rounded-xl.w-full.h-full.min-h-2xl.-z3(
-    version="1.1",
-    baseProfile="full",
-    viewBox="0 0 512 300",
-    xmlns="http://www.w3.org/2000/svg",
-    )
-    g.lines(v-if="audio.fft.length > 0")
-      line(
-        style="transition:all 500ms ease; "
-        v-for="(bar,i) in audio.bands",
-        :key="i",
-        :stroke="pitchColor(freqPitch(bar), 3, 1 - i / 256)"
-        stroke-linecap="round"
-        stroke-width="0.5"
-        :x1="512 * bar / 1500",
-        :y1="300",
-        :x2="512 * bar / 1500",
-        :y2="- audio.fft[i] * 1.5"
-      )
-    polyline(
-      v-if="audio.points"
-      :points="audio.points"
-      stroke-width="4"
-      fill="none"
-      :stroke="tuner?.note.color"
-    )
-</template>
-  
 <script setup>
 import { reactive, computed } from 'vue'
 import { UserMedia, Waveform, FFT } from 'tone'
@@ -76,6 +44,38 @@ function initiate() {
 
 
 </script>
+  
+<template lang="pug">
+.fullscreen-container(ref="screen")
+  control-start.absolute(v-if="!tuner.initiated"  @click="initiate()") Start
+  full-screen.absolute.bottom-6.right-6.z-30(:el="screen")
+  svg#pitch-spectrum.rounded-xl.w-full.h-full.min-h-2xl.-z3(
+    version="1.1",
+    baseProfile="full",
+    viewBox="0 0 512 300",
+    xmlns="http://www.w3.org/2000/svg",
+    )
+    g.lines(v-if="audio.fft.length > 0")
+      line(
+        style="transition:all 500ms ease; "
+        v-for="(bar,i) in audio.bands",
+        :key="i",
+        :stroke="pitchColor(freqPitch(bar), 3, 1 - i / 256)"
+        stroke-linecap="round"
+        stroke-width="0.5"
+        :x1="512 * bar / 1500",
+        :y1="300",
+        :x2="512 * bar / 1500",
+        :y2="- audio.fft[i] * 1.5"
+      )
+    polyline(
+      v-if="audio.points"
+      :points="audio.points"
+      stroke-width="4"
+      fill="none"
+      :stroke="tuner?.note.color"
+    )
+</template>
   
 <style scoped>
 </style>

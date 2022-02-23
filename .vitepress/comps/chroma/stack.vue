@@ -1,28 +1,3 @@
-<template lang="pug">
-.flex.flex-col.cursor-pointer.select-none.p-4.m-2.rounded-xl.transition-all.duration-300.ease.w-full(
-  :style="{ backgroundColor: chromaColorMix(chroma, actualPitch).hsl }"
-    @mousedown="playChroma(chroma, actualPitch); pressed = true"
-    @touchstart.prevent.stop="playChroma(chroma, actualPitch); pressed = true"
-    @touchend="stopChroma(chroma, actualPitch); pressed = false"
-    @touchcancel="stopChroma(chroma, actualPitch); pressed = false"
-    @mouseup="stopChroma(chroma, actualPitch); pressed = false"
-    @mouseleave="stopChroma(chroma, actualPitch); pressed = false"
-)
-  .p-2.text-center.mb-2.rounded-lg.text-white(
-    :style="{ backgroundColor: pitchColor(actualPitch, 3) }"
-  ) 
-    .font-bold {{ pitch === false ? '' : typeof pitch == 'string' ? pitch : notes[actualPitch]?.name }}{{ chord.aliases[0] }}
-    .text-sm(v-if="props.roman") {{ props.roman }}
-  .py-6px.px-8.my-2px.w-full.text-sm.text-center.font-bold.rounded.transition-all.duration-300.ease(
-    style="touch-action:none"
-    @mouseenter="hover(step)"
-    @touchstart="hover(step)"
-    v-for="(step,n) in steps"
-    :key="n"
-    :style="{ backgroundColor: step.active ? pitchColor(step.pitch) : minor[step.pitch] == 1 ? 'hsla(0,0%,90%,0.8)' : 'hsla(0,0%,20%,0.6)' }"
-    ) 
-</template>
-
 <script setup>
 const props = defineProps({
   pitch: { type: Number, default: null },
@@ -71,6 +46,31 @@ function playNote(note = 0, octave = 0) {
   synthOnce(freq.toNote())
 }
 </script>
+
+<template lang="pug">
+.flex.flex-col.cursor-pointer.select-none.p-4.m-2.rounded-xl.transition-all.duration-300.ease.w-full(
+  :style="{ backgroundColor: chromaColorMix(chroma, actualPitch).hsl }"
+    @mousedown="playChroma(chroma, actualPitch); pressed = true"
+    @touchstart.prevent.stop="playChroma(chroma, actualPitch); pressed = true"
+    @touchend="stopChroma(chroma, actualPitch); pressed = false"
+    @touchcancel="stopChroma(chroma, actualPitch); pressed = false"
+    @mouseup="stopChroma(chroma, actualPitch); pressed = false"
+    @mouseleave="stopChroma(chroma, actualPitch); pressed = false"
+)
+  .p-2.text-center.mb-2.rounded-lg.text-white(
+    :style="{ backgroundColor: pitchColor(actualPitch, 3) }"
+  ) 
+    .font-bold {{ pitch === false ? '' : typeof pitch == 'string' ? pitch : notes[actualPitch]?.name }}{{ chord.aliases[0] }}
+    .text-sm(v-if="props.roman") {{ props.roman }}
+  .py-6px.px-8.my-2px.w-full.text-sm.text-center.font-bold.rounded.transition-all.duration-300.ease(
+    style="touch-action:none"
+    @mouseenter="hover(step)"
+    @touchstart="hover(step)"
+    v-for="(step,n) in steps"
+    :key="n"
+    :style="{ backgroundColor: step.active ? pitchColor(step.pitch) : minor[step.pitch] == 1 ? 'hsla(0,0%,90%,0.8)' : 'hsla(0,0%,20%,0.6)' }"
+    ) 
+</template>
 
 <style scoped>
 </style>

@@ -1,3 +1,14 @@
+<script setup>
+const props = defineProps({
+  collection: {
+    type: Object,
+    required: true
+  }
+});
+
+const current = ref(Object.keys(props.collection)[0])
+</script>
+
 <template lang="pug">
 .flex.flex-wrap.max-w-55ch.mx-auto.justify-center.my-8
   button.text-button(
@@ -9,17 +20,6 @@
 
   chroma-profile.my-4(v-bind="collection[current]")
 </template>
-
-<script setup>
-const props = defineProps({
-  collection: {
-    type: Object,
-    required: true
-  }
-});
-
-const current = ref(Object.keys(props.collection)[0])
-</script>
 
 <style scoped>
 </style>

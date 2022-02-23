@@ -1,3 +1,11 @@
+<script setup>
+const props = defineProps({
+  author: Object,
+  i: Number,
+  total: Number
+});
+</script>
+
 <template lang="pug">
 .rounded-2xl.author-card(v-if="author" :i="i" :total="total" :height="8")
   .flex.flex-wrap
@@ -16,14 +24,6 @@ svg.defs(style="height:0")
     clipPath#squircle(clipPathUnits="objectBoundingBox")
       path(d="M .5 0 C .1 0 0 .1 0 .5 0 .9 .1 1 .5 1 .9 1 1 .9 1 .5 1 .1 .9 0 .5 0 Z")
 </template>
-
-<script setup>
-const props = defineProps({
-  author: Object,
-  i: Number,
-  total: Number
-});
-</script>
 
 <style  scoped>
 .author-card {

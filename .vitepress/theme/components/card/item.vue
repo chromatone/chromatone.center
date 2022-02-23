@@ -1,3 +1,15 @@
+<script setup>
+import { useData } from 'vitepress'
+
+const { theme } = useData()
+
+const props = defineProps({
+  item: Object,
+  color: String
+});
+const theColor = computed(() => props.color);
+</script>
+
 <template lang="pug">
 .crd(
   :title="item.lastModified",
@@ -21,18 +33,6 @@
   page-buttons.m-2(:buttons="item.data?.buttons")
   line-list(:list="theme?.pages?.[item.data.list]")
 </template>
-
-<script setup>
-import { useData } from 'vitepress'
-
-const { theme } = useData()
-
-const props = defineProps({
-  item: Object,
-  color: String
-});
-const theColor = computed(() => props.color);
-</script>
 
 <style  scoped>
 .crd {

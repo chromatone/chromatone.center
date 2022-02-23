@@ -1,3 +1,27 @@
+<script setup>
+import { useTimestamp } from '@vueuse/core'
+
+const { timestamp: time, resume, pause } = useTimestamp({ offset: -Date.now(), controls: true })
+
+const circles = reactive([]);
+const moving = ref(false)
+watchEffect(() => {
+  if (moving.value) {
+    resume()
+  } else {
+    pause()
+  }
+})
+
+for (let c = 1; c < 25; c++) {
+  const circle = {
+    cx: computed(() => Math.cos(time.value / 1000 - c) * 3.5 + 10),
+    r: c * 4,
+  }
+  circles.push(circle)
+}
+</script>
+
 <template lang="pug">
 svg(
   version="1.1",
@@ -41,30 +65,6 @@ svg(
     rx="2"
   )
 </template>
-
-<script setup>
-import { useTimestamp } from '@vueuse/core'
-
-const { timestamp: time, resume, pause } = useTimestamp({ offset: -Date.now(), controls: true })
-
-const circles = reactive([]);
-const moving = ref(false)
-watchEffect(() => {
-  if (moving.value) {
-    resume()
-  } else {
-    pause()
-  }
-})
-
-for (let c = 1; c < 25; c++) {
-  const circle = {
-    cx: computed(() => Math.cos(time.value / 1000 - c) * 3.5 + 10),
-    r: c * 4,
-  }
-  circles.push(circle)
-}
-</script>
 
 <style scoped>
 </style>

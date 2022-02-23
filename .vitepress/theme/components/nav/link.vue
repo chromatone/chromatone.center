@@ -1,9 +1,3 @@
-<template>
-  <div class="nav-link">
-    <a class="item" v-bind="linkProps">{{ item.text }}</a>
-  </div>
-</template>
-
 <script setup >
 import { toRefs } from 'vue'
 import { useNavLink } from '../../composables/navLink.js'
@@ -14,6 +8,12 @@ const propsRefs = toRefs(props)
 
 const { props: linkProps } = useNavLink(propsRefs.item);
 </script>
+
+<template>
+  <div class="nav-link">
+    <a class="item" v-bind="linkProps">{{ item.text }}</a>
+  </div>
+</template>
 
 <style scoped >
 .item {

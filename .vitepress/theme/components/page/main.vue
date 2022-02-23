@@ -1,3 +1,9 @@
+<script setup lang="ts">
+import { useRoute } from 'vitepress'
+
+const route = useRoute()
+</script>
+
 <template lang="pug">
 main
   page-header
@@ -9,12 +15,6 @@ main
   page-next-prev
   //- footer-row
 </template>
-
-<script setup lang="ts">
-import { useRoute } from 'vitepress'
-
-const route = useRoute()
-</script>
 
 <style  scoped>
 main {

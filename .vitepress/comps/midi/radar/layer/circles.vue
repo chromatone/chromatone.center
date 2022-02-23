@@ -1,7 +1,3 @@
-<template lang="pug">
-
-</template>
-
 <script setup>
 const props = defineProps({
   channel: { type: Number, default: 7 },
@@ -114,6 +110,10 @@ onBeforeUnmount(() => {
 
 
 </script>
+
+<template lang="pug">
+
+</template>
 
 <style scoped>
 </style>

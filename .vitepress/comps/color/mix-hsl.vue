@@ -1,3 +1,82 @@
+<script setup>
+import { getColorInfo } from '@use/colors.js'
+import { colord } from 'colord'
+import { useTransition, TransitionPresets, useStorage } from '@vueuse/core'
+
+const screen = ref()
+
+const harmonies = {
+  monochromatic: [0],
+  diad: [0, 60],
+  complementary: [0, 180],
+  analogous: [330, 0, 30],
+  'split-complementary': [0, 150, 210],
+  triad: [0, 120, 240],
+  'double complementary': [0, 30, 180, 210],
+  'rectangular tetrad': [0, 60, 180, 240],
+  'square tetrad': [0, 90, 180, 270],
+  pentagon: [0, 60, 150, 210, 300]
+}
+
+const mix = reactive({
+  harmony: 'monochromatic',
+  current: computed(() => generateTone(mix.hue).toHex()),
+  info: computed(() => getColorInfo(mix.current)),
+  space: useStorage('color-space', 'Lch'),
+  ring: useStorage('color-rings', 'tints'),
+  hueCount: useClamp(useStorage('hueCount', 12), 2, 60),
+  toneCount: useStorage('toneCount', 6),
+  hue: useStorage('hue', 50),
+  sat: useClamp(useStorage('saturation', 50), 0, 100),
+  light: useClamp(useStorage('lightness', 50), 0, 100),
+  hsl: computed(() => `hsla(${mix.hue},${mix.sat}%,${mix.light}%,1)`),
+  hueSteps: computed(() => [...Array(mix.hueCount)].map((step, i) => 360 * i / mix.hueCount)),
+  hueArcs: computed(() => mix.hueSteps.map((step, i, arr) => ({ from: step, to: arr[i + 1] || 359.9 }))),
+});
+
+const spaces = ['HSL', 'Lch', 'HWB']
+
+const paramNames = {
+  HSL: ['Hue', 'S', 'L'],
+  Lch: ['Hue', 'C', 'L'],
+  HWB: ['Hue', 'B', 'W',]
+}
+
+const angle = useTransition(computed(() => mix.hue), {
+  duration: 400,
+  transition: TransitionPresets.easeInOutCubic,
+})
+
+function generateTone(hue = mix.hue, sat = mix.sat, light = mix.light) {
+  if (mix.space == 'Lch') {
+    return colord(`lch(${light}% ${sat} ${hue} / 1)`)
+  } else if (mix.space == 'HSL') {
+    return colord(`hsl(${hue}, ${sat}%, ${light}%)`)
+  } else {
+    return colord({ h: hue, w: light, b: sat, a: 1 })
+  }
+}
+
+function onDragSteps(drag) {
+  mix.hueCount += drag.delta[0]
+}
+
+function onDrag(drag) {
+  mix.light -= drag.delta[1] / 8
+  mix.sat += drag.delta[0] / 8
+}
+
+function onDragL(drag) {
+  mix.light -= drag.delta[1] / 8
+}
+
+function onDragS(drag) {
+  mix.sat -= drag.delta[1] / 8
+}
+
+
+</script>
+
 <template lang="pug">
 .fullscreen-container.mb-8.p-4.rounded-4xl.transition-all.duration-800.ease-out(ref="screen" :style="{ backgroundColor: mix.current }")
   full-screen.absolute.top-2.right-2(:el="screen")
@@ -177,85 +256,6 @@
           :style="{ backgroundColor: generateTone(mix.hue + step).toHex() }"
         )
 </template>
-
-<script setup>
-import { getColorInfo } from '@use/colors.js'
-import { colord } from 'colord'
-import { useTransition, TransitionPresets, useStorage } from '@vueuse/core'
-
-const screen = ref()
-
-const harmonies = {
-  monochromatic: [0],
-  diad: [0, 60],
-  complementary: [0, 180],
-  analogous: [330, 0, 30],
-  'split-complementary': [0, 150, 210],
-  triad: [0, 120, 240],
-  'double complementary': [0, 30, 180, 210],
-  'rectangular tetrad': [0, 60, 180, 240],
-  'square tetrad': [0, 90, 180, 270],
-  pentagon: [0, 60, 150, 210, 300]
-}
-
-const mix = reactive({
-  harmony: 'monochromatic',
-  current: computed(() => generateTone(mix.hue).toHex()),
-  info: computed(() => getColorInfo(mix.current)),
-  space: useStorage('color-space', 'Lch'),
-  ring: useStorage('color-rings', 'tints'),
-  hueCount: useClamp(useStorage('hueCount', 12), 2, 60),
-  toneCount: useStorage('toneCount', 6),
-  hue: useStorage('hue', 50),
-  sat: useClamp(useStorage('saturation', 50), 0, 100),
-  light: useClamp(useStorage('lightness', 50), 0, 100),
-  hsl: computed(() => `hsla(${mix.hue},${mix.sat}%,${mix.light}%,1)`),
-  hueSteps: computed(() => [...Array(mix.hueCount)].map((step, i) => 360 * i / mix.hueCount)),
-  hueArcs: computed(() => mix.hueSteps.map((step, i, arr) => ({ from: step, to: arr[i + 1] || 359.9 }))),
-});
-
-const spaces = ['HSL', 'Lch', 'HWB']
-
-const paramNames = {
-  HSL: ['Hue', 'S', 'L'],
-  Lch: ['Hue', 'C', 'L'],
-  HWB: ['Hue', 'B', 'W',]
-}
-
-const angle = useTransition(computed(() => mix.hue), {
-  duration: 400,
-  transition: TransitionPresets.easeInOutCubic,
-})
-
-function generateTone(hue = mix.hue, sat = mix.sat, light = mix.light) {
-  if (mix.space == 'Lch') {
-    return colord(`lch(${light}% ${sat} ${hue} / 1)`)
-  } else if (mix.space == 'HSL') {
-    return colord(`hsl(${hue}, ${sat}%, ${light}%)`)
-  } else {
-    return colord({ h: hue, w: light, b: sat, a: 1 })
-  }
-}
-
-function onDragSteps(drag) {
-  mix.hueCount += drag.delta[0]
-}
-
-function onDrag(drag) {
-  mix.light -= drag.delta[1] / 8
-  mix.sat += drag.delta[0] / 8
-}
-
-function onDragL(drag) {
-  mix.light -= drag.delta[1] / 8
-}
-
-function onDragS(drag) {
-  mix.sat -= drag.delta[1] / 8
-}
-
-
-</script>
 
 <style scoped>
 button.active {

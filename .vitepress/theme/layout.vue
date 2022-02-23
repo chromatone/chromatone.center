@@ -1,16 +1,3 @@
-<template lang="pug">
-.theme(:class="pageClasses")
-  nav-bar(v-if="showNavbar", @toggle="toggleSidebar")
-  .main
-
-    transition(name="fade")
-      .sidebar-mask.z-5(v-show="openSideBar", @click="toggleSidebar(false)")
-    side-bar(:open="openSideBar")
-    home(v-if="$frontmatter.template == 'home'")
-    page-main(v-else)
-//debug
-</template>
-
 <script setup>
 import { ref, computed, watch, onMounted } from 'vue'
 import {
@@ -79,6 +66,19 @@ const pageClasses = computed(() => {
   ]
 });
 </script>
+
+<template lang="pug">
+.theme(:class="pageClasses")
+  nav-bar(v-if="showNavbar", @toggle="toggleSidebar")
+  .main
+
+    transition(name="fade")
+      .sidebar-mask.z-5(v-show="openSideBar", @click="toggleSidebar(false)")
+    side-bar(:open="openSideBar")
+    home(v-if="$frontmatter.template == 'home'")
+    page-main(v-else)
+//debug
+</template>
 
 <style >
 .main {

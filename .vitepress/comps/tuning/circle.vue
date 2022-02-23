@@ -1,51 +1,3 @@
-<template lang="pug">
-svg#tuning-circle.w-full(
-  version="1.1",
-  baseProfile="full",
-  viewBox="0 -50 1000 1100",
-  xmlns="http://www.w3.org/2000/svg",
-  )
-  circle(
-    :cx=500,
-    :cy=500
-    :r="r"
-    stroke="gray"
-    fill="none",
-    v-for="r in circles",
-    :key="r"
-  )
-  tuning-note(
-    :R="circles[2]"
-    :w="1000"
-    :note="note"
-    v-for="(note,i) in notes", 
-    :key="i",
-  )
-  tuning-note(
-    :R="circles[1]"
-    :w="1000"
-    :level="2"
-    :note="note"
-    v-for="(note,i) in limitNotes", 
-    :key="i",
-  )
-  tuning-note(
-    :R="circles[0]"
-    :w="1000"
-    :level="1"
-    :note="note"
-    v-for="(note,i) in pythNotes", 
-    :key="i",
-  )
-  tuning-text(
-    v-for="(r,tune) in tunings"
-    :key="tune"
-    :r="r"
-    :text="tune"
-    :offset="0"
-  )
-</template>
-
 <script setup>
 import { notes, freqPitch } from '@theory'
 import { computed, reactive } from 'vue'
@@ -168,6 +120,54 @@ function rotate(arr, count = 1) {
 };
 
 </script>
+
+<template lang="pug">
+svg#tuning-circle.w-full(
+  version="1.1",
+  baseProfile="full",
+  viewBox="0 -50 1000 1100",
+  xmlns="http://www.w3.org/2000/svg",
+  )
+  circle(
+    :cx=500,
+    :cy=500
+    :r="r"
+    stroke="gray"
+    fill="none",
+    v-for="r in circles",
+    :key="r"
+  )
+  tuning-note(
+    :R="circles[2]"
+    :w="1000"
+    :note="note"
+    v-for="(note,i) in notes", 
+    :key="i",
+  )
+  tuning-note(
+    :R="circles[1]"
+    :w="1000"
+    :level="2"
+    :note="note"
+    v-for="(note,i) in limitNotes", 
+    :key="i",
+  )
+  tuning-note(
+    :R="circles[0]"
+    :w="1000"
+    :level="1"
+    :note="note"
+    v-for="(note,i) in pythNotes", 
+    :key="i",
+  )
+  tuning-text(
+    v-for="(r,tune) in tunings"
+    :key="tune"
+    :r="r"
+    :text="tune"
+    :offset="0"
+  )
+</template>
 
 <style scoped>
 </style>

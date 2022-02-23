@@ -1,22 +1,3 @@
-<template lang="pug">
-.flex.flex-col.justify-center.text-white
-  .fullscreen-container.rounded-4xl.overflow-hidden#screen.m-4
-    canvas#spectrogram.h-full.min-h-30em.w-full.rounded-md.cursor-pointer(
-      :width="state.width"
-      :height="state.height"
-      v-drag="dragScreen"
-    )
-    control-start.absolute(v-if="!state.initiated" @click="initiate()")
-    full-screen.absolute.bottom-2.right-2
-    .absolute.top-4.left-4.text-xl.select-none x{{ state.speed }}
-    .absolute.bottom-4.left-4.text-xl.select-none.cursor-pointer(@mousedown="paused = !paused")
-      la-play(v-if="paused")
-      la-pause(v-else)
-    button.absolute.top-4.right-4.text-xl.select-none.cursor-pointer(@mousedown="clear()")
-      la-trash-alt
-
-</template>
-  
 <script setup>
 import AudioMotionAnalyzer from 'audiomotion-analyzer'
 import { initGetUserMedia, freqPitch } from '@theory'
@@ -103,6 +84,25 @@ function colorIt(freq, value) {
 }
 
 </script>
+  
+<template lang="pug">
+.flex.flex-col.justify-center.text-white
+  .fullscreen-container.rounded-4xl.overflow-hidden#screen.m-4
+    canvas#spectrogram.h-full.min-h-30em.w-full.rounded-md.cursor-pointer(
+      :width="state.width"
+      :height="state.height"
+      v-drag="dragScreen"
+    )
+    control-start.absolute(v-if="!state.initiated" @click="initiate()")
+    full-screen.absolute.bottom-2.right-2
+    .absolute.top-4.left-4.text-xl.select-none x{{ state.speed }}
+    .absolute.bottom-4.left-4.text-xl.select-none.cursor-pointer(@mousedown="paused = !paused")
+      la-play(v-if="paused")
+      la-pause(v-else)
+    button.absolute.top-4.right-4.text-xl.select-none.cursor-pointer(@mousedown="clear()")
+      la-trash-alt
+
+</template>
   
 <style scoped>
 </style>

@@ -1,3 +1,45 @@
+<script setup>
+
+import { useStorage } from '@vueuse/core'
+import { notes, rotateArray, getCircleCoord, pitchColor } from '@theory'
+import { Chord, Note } from '@tonaljs/tonal'
+import {playNote, stopNote} from '@use/chroma'
+
+const numFifths = [0, 7, 2, 9, 4, 11, 6, 1, 8, 3, 10, 5]
+const minors = numFifths.map(n => notes[n]);
+const majors = rotateArray(numFifths, -3).map(n => notes[n]);
+
+const scales = { minor: minors, major: majors }
+
+const tonic = useStorage('tonic', 0)
+const scaleType = useStorage('scale-type', 'major')
+
+const steps = {
+  minor: [['VI', 'III', 'VII'], ['iv', 'i', 'v']],
+  major: [['IV', 'I', 'V'], ['ii', 'vi', 'iii']]
+}
+
+function getRadius(qual) {
+  return qual == 'minor' ? 1 : 0;
+}
+
+function playChord(note, qual = 'major') {
+  let type = qual == 'minor' ? 'm' : ''
+  let chord = Chord.get(note + type)
+  let nts = Note.names(chord.notes.map(n => Note.simplify(n) + 4))
+  playNote(nts)
+
+};
+
+function stopChord(note, qual = 'major') {
+  let type = qual == 'minor' ? 'm' : ''
+  let chord = Chord.get(note + type)
+  let nts = chord.notes.map(n => Note.simplify(n) + 4)
+  stopNote(nts)
+};
+
+</script>
+
 <template lang="pug">
 .fullscreen-container#screen
   full-screen.absolute.top-2.right-2
@@ -103,48 +145,6 @@
           :style="{ transform: `rotate(${-(tonic) * 30}deg)`, transformOrigin: `${getCircleCoord(n - 1, 12, 42 - idx * 26).x}px ${getCircleCoord(n - 1, 12, 42 - idx * 26).y}px` }"
         ) {{ step }}
 </template>
-
-<script setup>
-
-import { useStorage } from '@vueuse/core'
-import { notes, rotateArray, getCircleCoord, pitchColor } from '@theory'
-import { Chord, Note } from '@tonaljs/tonal'
-import {playNote, stopNote} from '@use/chroma'
-
-const numFifths = [0, 7, 2, 9, 4, 11, 6, 1, 8, 3, 10, 5]
-const minors = numFifths.map(n => notes[n]);
-const majors = rotateArray(numFifths, -3).map(n => notes[n]);
-
-const scales = { minor: minors, major: majors }
-
-const tonic = useStorage('tonic', 0)
-const scaleType = useStorage('scale-type', 'major')
-
-const steps = {
-  minor: [['VI', 'III', 'VII'], ['iv', 'i', 'v']],
-  major: [['IV', 'I', 'V'], ['ii', 'vi', 'iii']]
-}
-
-function getRadius(qual) {
-  return qual == 'minor' ? 1 : 0;
-}
-
-function playChord(note, qual = 'major') {
-  let type = qual == 'minor' ? 'm' : ''
-  let chord = Chord.get(note + type)
-  let nts = Note.names(chord.notes.map(n => Note.simplify(n) + 4))
-  playNote(nts)
-
-};
-
-function stopChord(note, qual = 'major') {
-  let type = qual == 'minor' ? 'm' : ''
-  let chord = Chord.get(note + type)
-  let nts = chord.notes.map(n => Note.simplify(n) + 4)
-  stopNote(nts)
-};
-
-</script>
 
 <style scoped>
 </style>

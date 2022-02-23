@@ -1,3 +1,29 @@
+<script setup>
+
+const mix = reactive({
+  radius: 30,
+  len: computed(() => mix.radius * Math.PI * 2),
+  max: 255,
+  r: useStorage('red', 190),
+  g: useStorage('gree', 190),
+  b: useStorage('blue', 190),
+  rgb: computed(() => `rgb(${mix.r},${mix.g},${mix.b})`)
+});
+
+const screen = ref()
+
+function onDrag(drag) {
+  let id = drag.event.target.id
+  mix[id] = Number(mix[id]) + (Number(drag.delta[0]) - Number(drag.delta[1]))
+  if (mix[id] < 0) {
+    mix[id] = 0
+  }
+  if (mix[id] > mix.max) {
+    mix[id] = mix.max
+  }
+}
+</script>
+
 <template lang="pug">
 .fullscreen-container.mb-8.p-4.rounded-4xl.transition-all.duration-800.ease-out(ref="screen" :style="{ backgroundColor: mix.rgb }")
   full-screen.absolute.top-2.right-2(:el="screen")
@@ -92,32 +118,6 @@
   //-     label(for="blue" style="color:#0000FF") BLUE {{ mix.b }}
   //-     input(type="range" v-model="mix.b" min="0" max="255" id="blue")
 </template>
-
-<script setup>
-
-const mix = reactive({
-  radius: 30,
-  len: computed(() => mix.radius * Math.PI * 2),
-  max: 255,
-  r: useStorage('red', 190),
-  g: useStorage('gree', 190),
-  b: useStorage('blue', 190),
-  rgb: computed(() => `rgb(${mix.r},${mix.g},${mix.b})`)
-});
-
-const screen = ref()
-
-function onDrag(drag) {
-  let id = drag.event.target.id
-  mix[id] = Number(mix[id]) + (Number(drag.delta[0]) - Number(drag.delta[1]))
-  if (mix[id] < 0) {
-    mix[id] = 0
-  }
-  if (mix[id] > mix.max) {
-    mix[id] = mix.max
-  }
-}
-</script>
 
 <style scoped>
 </style>

@@ -1,28 +1,3 @@
-<template lang="pug">
-g.cursor-pointer
-  circle.transition-all.duration-400(
-    @mousedown="attack()", 
-    @touchstart="attack()",
-    @mouseenter="pressed ? attack() : null"
-    @mouseup="release()", 
-    @mouseleave="release()", 
-    @touchend="release()", 
-    @touchcancel="release()"
-    :r="r", 
-    :cx="0", 
-    :cy="0",  
-    :stroke-width="tonic == note.pitch ? 4 : available ? 2 : 0",
-    stroke="white"
-    :fill="playing ? pitchColor(note.pitch, 4) : available ? pitchColor(note.pitch, 3) : pitchColor(note.pitch, 2, 0.4)")
-  text(
-    style="user-select: none;pointer-events: none;"
-    font-size="22px"
-    text-anchor="middle", 
-    fill="white", 
-    :x="0", 
-    :y="8") {{ note.name }}
-</template>
-
 <script setup>
 import { Frequency } from 'tone'
 import { pitchColor, pitchFreq } from '@theory'
@@ -57,6 +32,31 @@ function release() {
 };
 
 </script>
+
+<template lang="pug">
+g.cursor-pointer
+  circle.transition-all.duration-400(
+    @mousedown="attack()", 
+    @touchstart="attack()",
+    @mouseenter="pressed ? attack() : null"
+    @mouseup="release()", 
+    @mouseleave="release()", 
+    @touchend="release()", 
+    @touchcancel="release()"
+    :r="r", 
+    :cx="0", 
+    :cy="0",  
+    :stroke-width="tonic == note.pitch ? 4 : available ? 2 : 0",
+    stroke="white"
+    :fill="playing ? pitchColor(note.pitch, 4) : available ? pitchColor(note.pitch, 3) : pitchColor(note.pitch, 2, 0.4)")
+  text(
+    style="user-select: none;pointer-events: none;"
+    font-size="22px"
+    text-anchor="middle", 
+    fill="white", 
+    :x="0", 
+    :y="8") {{ note.name }}
+</template>
 
 <style scoped>
 </style>

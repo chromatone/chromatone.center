@@ -1,7 +1,3 @@
-<template lang="pug">
-span(@click="speak()") {{ text }}
-</template>
-
 <script setup>
 const props = defineProps({
   text: { type: String, default: 'Text-to-speech' }
@@ -18,6 +14,10 @@ function speak() {
 }
 
 </script>
+
+<template lang="pug">
+span(@click="speak()") {{ text }}
+</template>
 
 <style scoped>
 </style>

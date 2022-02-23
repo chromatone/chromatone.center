@@ -1,17 +1,3 @@
-<template lang="pug">
-.nav-dropdown-link(:class="{ open }")
-  button.button(:aria-label="item.ariaLabel", @click="toggle")
-    a.button-text(:href="item?.link") {{ item.text }}
-    span.button-arrow(:class="open ? 'down' : 'right'").
-
-
-  ul.dialog
-    li.dialog-item(v-for="item in item.items", :key="item.text")
-      nav-dropdown-link-item(:item="item")
-        
-        
-</template>
-
 <script setup >
 import { ref, watch } from 'vue'
 import { useRoute } from 'vitepress'
@@ -33,6 +19,20 @@ function toggle() {
   open.value = !open.value
 }
 </script>
+
+<template lang="pug">
+.nav-dropdown-link(:class="{ open }")
+  button.button(:aria-label="item.ariaLabel", @click="toggle")
+    a.button-text(:href="item?.link") {{ item.text }}
+    span.button-arrow(:class="open ? 'down' : 'right'").
+
+
+  ul.dialog
+    li.dialog-item(v-for="item in item.items", :key="item.text")
+      nav-dropdown-link-item(:item="item")
+        
+        
+</template>
 
 <style scoped >
 .nav-dropdown-link {

@@ -1,16 +1,16 @@
-<template lang="pug">
-.tabs
-  a.link(v-for="page in parents", :key="page.title" :href="page.link") 
-    carbon-chevron-left.mr-1
-    span {{ page.title }} {{ page.index }}
-</template>
-
 <script setup>
 import { useParents } from '../../composables/links.js'
 
 const parents = useParents();
 
 </script>
+
+<template lang="pug">
+.tabs
+  a.link(v-for="page in parents", :key="page.title" :href="page.link") 
+    carbon-chevron-left.mr-1
+    span {{ page.title }} {{ page.index }}
+</template>
   
 <style  scoped>
 .tabs {

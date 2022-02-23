@@ -1,3 +1,47 @@
+<script setup>
+import { pitchColor, pitchFreq, notes, getCircleCoord } from '@theory'
+import { synthAttack, synthRelease } from '@use/synth.js'
+import { computed, ref } from 'vue'
+import { colord } from 'colord'
+const props = defineProps({
+  R: Number,
+  w: Number,
+  note: Object,
+  inner: {
+    type: Number,
+    default: 150,
+  },
+  level: {
+    type: Number,
+    default: 3
+  }
+});
+
+const color = computed(() => {
+  return colord(pitchColor(props.note.pitch, props.level)).toHex()
+})
+
+const active = ref(false)
+
+function toggle() {
+  active.value = !active.value
+  if (active.value) {
+    synthAttack(pitchFreq(props.note.pitch))
+  } else {
+    synthRelease(pitchFreq(props.note.pitch))
+  }
+
+}
+
+const coord = computed(() => {
+  return getCircleCoord(props.note.pitch, 12, props.R, props.w);
+});
+
+const innerCoord = computed(() => {
+  return getCircleCoord(props.note.pitch, 12, props.inner, props.w);
+});
+</script>
+
 <template lang="pug">
 g.tet(
   style="cursor:pointer; transition: all 200ms ease-in-out"
@@ -50,50 +94,6 @@ g.tet(
     :y="coord.y + 22",
   )  {{ (note.pitch * 100).toFixed() }}
 </template>
-
-<script setup>
-import { pitchColor, pitchFreq, notes, getCircleCoord } from '@theory'
-import { synthAttack, synthRelease } from '@use/synth.js'
-import { computed, ref } from 'vue'
-import { colord } from 'colord'
-const props = defineProps({
-  R: Number,
-  w: Number,
-  note: Object,
-  inner: {
-    type: Number,
-    default: 150,
-  },
-  level: {
-    type: Number,
-    default: 3
-  }
-});
-
-const color = computed(() => {
-  return colord(pitchColor(props.note.pitch, props.level)).toHex()
-})
-
-const active = ref(false)
-
-function toggle() {
-  active.value = !active.value
-  if (active.value) {
-    synthAttack(pitchFreq(props.note.pitch))
-  } else {
-    synthRelease(pitchFreq(props.note.pitch))
-  }
-
-}
-
-const coord = computed(() => {
-  return getCircleCoord(props.note.pitch, 12, props.R, props.w);
-});
-
-const innerCoord = computed(() => {
-  return getCircleCoord(props.note.pitch, 12, props.inner, props.w);
-});
-</script>
 
 <style scoped>
 </style>

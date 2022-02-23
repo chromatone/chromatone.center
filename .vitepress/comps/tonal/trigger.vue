@@ -1,21 +1,3 @@
-<template lang="pug">
-polygon.chord-trigger(
-  style="mix-blend-mode: screen;"
-  :transform="'rotate(' + 60 * p + ')'", 
-  @mousedown="playChord()", 
-  @mouseenter="pressed ? playChord() : null"
-  @touchstart="playChord()", 
-  @mouseleave="stopChord()", 
-  @mouseup="stopChord()", 
-  @touchend="stopChord()", 
-  @touchcancel="stopChord()"
-  :fill="playing ? pitchColor(note.pitch) : active ? pitchColor(note.pitch, 0.5) : pitchColor(note.pitch, -2, 0.1)",
-  :opacity="1"
-  :stroke-width="active ? 4 : 0.5"
-  stroke="hsla(0,0%,100%,0.5)"
-  points="0,0 80,0 80,46.188 40,69.28")
-</template>
-
 <script setup>
 import { pitchColor, pitchFreq, notes } from '@theory'
 import { Frequency } from 'tone'
@@ -68,6 +50,24 @@ function stopChord() {
 };
 
 </script>
+
+<template lang="pug">
+polygon.chord-trigger(
+  style="mix-blend-mode: screen;"
+  :transform="'rotate(' + 60 * p + ')'", 
+  @mousedown="playChord()", 
+  @mouseenter="pressed ? playChord() : null"
+  @touchstart="playChord()", 
+  @mouseleave="stopChord()", 
+  @mouseup="stopChord()", 
+  @touchend="stopChord()", 
+  @touchcancel="stopChord()"
+  :fill="playing ? pitchColor(note.pitch) : active ? pitchColor(note.pitch, 0.5) : pitchColor(note.pitch, -2, 0.1)",
+  :opacity="1"
+  :stroke-width="active ? 4 : 0.5"
+  stroke="hsla(0,0%,100%,0.5)"
+  points="0,0 80,0 80,46.188 40,69.28")
+</template>
 
 <style scoped>
 </style>

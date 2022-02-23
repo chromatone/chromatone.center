@@ -1,8 +1,3 @@
-<template lang="pug">
-.block
-  slot(:color="color")
-</template>
-
 <script setup>
 import { lchToHsl } from '@use/colors.js'
 import { isDark } from '@theme/composables/state'
@@ -39,6 +34,11 @@ const hoverShadow = computed(() => `
 0px ${props.height * 2}px 0 2px ${color.value}
 `);
 </script>
+
+<template lang="pug">
+.block
+  slot(:color="color")
+</template>
 
 <style scoped>
 .block {

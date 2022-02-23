@@ -1,16 +1,3 @@
-<template lang="pug">
-.flex.justify-center.min-h-2rem
-  .key(
-    v-for="key in keys.notes"
-    :key="key"
-    :class="{ black: key.pos == 1, tonic: key.pitch == pitch }"
-    @mouseover="key.active = true"
-    @mouseleave="key.active = false"
-    @click="emit('update:pitch', key.pitch)"
-    :style="{ backgroundColor: isInChroma(key.pitch) || key.active || key.pitch == pitch ? pitchColor(key.pitch, 4, key.pitch == pitch ? 1 : 0.4) : '' }" 
-  ) {{ names ? key.name : '' }}
-</template>
-
 <script setup>
 import { notes, rotateArray, pitchColor } from '@theory'
 const emit = defineEmits(['update:pitch']);
@@ -37,6 +24,19 @@ function isInChroma(pitch) {
   }
 }
 </script>
+
+<template lang="pug">
+.flex.justify-center.min-h-2rem
+  .key(
+    v-for="key in keys.notes"
+    :key="key"
+    :class="{ black: key.pos == 1, tonic: key.pitch == pitch }"
+    @mouseover="key.active = true"
+    @mouseleave="key.active = false"
+    @click="emit('update:pitch', key.pitch)"
+    :style="{ backgroundColor: isInChroma(key.pitch) || key.active || key.pitch == pitch ? pitchColor(key.pitch, 4, key.pitch == pitch ? 1 : 0.4) : '' }" 
+  ) {{ names ? key.name : '' }}
+</template>
 
 <style scoped>
 .key {

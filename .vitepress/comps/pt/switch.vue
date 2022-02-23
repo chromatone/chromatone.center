@@ -1,15 +1,15 @@
-<template lang="pug">
-.button
-  .indicator.mr-2(:style="{ color: state ? '#fff' : '#333' }") ●
-  .uppercase.mr-1 {{ label }}
-</template>
-
 <script setup>
 const props = defineProps({
   label: String,
   state: Boolean,
 });
 </script>
+
+<template lang="pug">
+.button
+  .indicator.mr-2(:style="{ color: state ? '#fff' : '#333' }") ●
+  .uppercase.mr-1 {{ label }}
+</template>
 
 <style  scoped>
 .button {

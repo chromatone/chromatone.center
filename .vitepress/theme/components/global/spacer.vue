@@ -1,7 +1,3 @@
-<template lang="pug">
-hr(:style="{ minHeight: height + 'px' }")
-</template>
-
 <script setup>
 
 const props = defineProps({
@@ -12,6 +8,10 @@ const props = defineProps({
 });
 
 </script>
+
+<template lang="pug">
+hr(:style="{ minHeight: height + 'px' }")
+</template>
 
 <style  scoped>
 </style>

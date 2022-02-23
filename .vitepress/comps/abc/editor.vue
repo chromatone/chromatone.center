@@ -1,20 +1,3 @@
-<template lang="pug">
-.flex.flex-col.m-auto.max-w-65ch
-  .flex.flex-wrap
-    button.p-2.border-1.m-2(
-      v-for="(tune, name) in tunes" :key="name"
-      @click="notation = tune"
-    ) {{ name }}
-  textarea#abc.w-full(
-    v-model="notation"
-    rows="18"
-  )
-  #warnings
-  #audio.mt-6
-  #paper
-  
-</template>
-
 <script setup>
 
 import tunes from './tunes.js'
@@ -35,6 +18,23 @@ onMounted(() => {
 
 });
 </script>
+
+<template lang="pug">
+.flex.flex-col.m-auto.max-w-65ch
+  .flex.flex-wrap
+    button.p-2.border-1.m-2(
+      v-for="(tune, name) in tunes" :key="name"
+      @click="notation = tune"
+    ) {{ name }}
+  textarea#abc.w-full(
+    v-model="notation"
+    rows="18"
+  )
+  #warnings
+  #audio.mt-6
+  #paper
+  
+</template>
 
 <style>
 /* Some basic CSS to make the Audio controls in abcjs presentable. */

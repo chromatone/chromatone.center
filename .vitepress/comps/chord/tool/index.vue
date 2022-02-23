@@ -1,18 +1,3 @@
-<template lang="pug">
-.flex.flex-col
-  .flex.flex-wrap.my-4.justify-center
-    .chord(
-      v-for="chord in chordList", 
-      :key="chord?.handle", 
-      @click="accord.info = chord",
-      :class="{ active: chord?.handle == accord.info.handle }") {{ chord?.handle }}
-  .text-6xl.my-4.text-center.font-bold(
-    :style="{ color: pitchColor(accord.root) }"
-  ) {{ notes[accord?.root].name }}{{ accord?.info.handle }}
-  .relative.m-auto
-    chord-tool-keys#chord-keys(:accord="accord", @selectRoot="accord.root = $event")
-</template>
-
 <script setup>
 import { reactive, ref, computed, watch } from 'vue'
 import { chords, notes, pitchColor } from '@theory'
@@ -47,6 +32,21 @@ function compareChords(a, b) {
 }
 
 </script>
+
+<template lang="pug">
+.flex.flex-col
+  .flex.flex-wrap.my-4.justify-center
+    .chord(
+      v-for="chord in chordList", 
+      :key="chord?.handle", 
+      @click="accord.info = chord",
+      :class="{ active: chord?.handle == accord.info.handle }") {{ chord?.handle }}
+  .text-6xl.my-4.text-center.font-bold(
+    :style="{ color: pitchColor(accord.root) }"
+  ) {{ notes[accord?.root].name }}{{ accord?.info.handle }}
+  .relative.m-auto
+    chord-tool-keys#chord-keys(:accord="accord", @selectRoot="accord.root = $event")
+</template>
 
 <style  scoped>
 .chord {

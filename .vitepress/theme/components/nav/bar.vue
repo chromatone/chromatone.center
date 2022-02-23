@@ -1,3 +1,7 @@
+<script setup>
+defineEmits(['toggle']);
+</script>
+
 <template lang="pug">
 header.nav-bar
   nav-bar-title
@@ -12,10 +16,6 @@ header.nav-bar
   state-dark
   nav-toggle-sidebar(@toggle="$emit('toggle')")
 </template>
-
-<script setup>
-defineEmits(['toggle']);
-</script>
 
 <style scoped>
 .nav-bar {

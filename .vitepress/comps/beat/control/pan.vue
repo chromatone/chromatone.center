@@ -1,3 +1,16 @@
+<script setup>
+import { isDark } from '@theme/composables/state.js'
+const props = defineProps({
+  pan: { type: Number, default: 0.75 },
+  order: { type: Number, default: 0 }
+})
+const emit = defineEmits(['update:pan'])
+function dragPan(drag) {
+  emit('update:pan', props.pan + drag.delta[0] / 100)
+}
+
+</script>
+
 <template lang="pug">
 g.pan(
   style="cursor:pointer;color:currentColor"
@@ -39,19 +52,6 @@ g.pan(
       :y="-20"
     )
 </template>
-
-<script setup>
-import { isDark } from '@theme/composables/state.js'
-const props = defineProps({
-  pan: { type: Number, default: 0.75 },
-  order: { type: Number, default: 0 }
-})
-const emit = defineEmits(['update:pan'])
-function dragPan(drag) {
-  emit('update:pan', props.pan + drag.delta[0] / 100)
-}
-
-</script>
 
 <style scoped>
 </style>

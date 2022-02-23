@@ -1,18 +1,3 @@
-<template lang="pug">
-path(
-  style="transition: all 200ms ease-out"
-  :d="round ? pill : d" 
-  :fill="fill" 
-  :stroke="stroke" 
-  :stroke-width="sWidth"
-  fill-rule="evenodd"
-  stroke-linejoin="round"
-  :fill-opacity="op"
-  :transform-origin="`${cx} ${cy}`"
-  )
-  slot
-</template>
-
 <script setup>
 const props = defineProps({
   fill: {
@@ -107,6 +92,21 @@ function polarToCartesian(centerX, centerY, radius, angleInDegrees) {
 }
 
 </script>
+
+<template lang="pug">
+path(
+  style="transition: all 200ms ease-out"
+  :d="round ? pill : d" 
+  :fill="fill" 
+  :stroke="stroke" 
+  :stroke-width="sWidth"
+  fill-rule="evenodd"
+  stroke-linejoin="round"
+  :fill-opacity="op"
+  :transform-origin="`${cx} ${cy}`"
+  )
+  slot
+</template>
 
 <style scoped>
 </style>

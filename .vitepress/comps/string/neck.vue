@@ -1,3 +1,45 @@
+<script setup>
+import { Note, Interval, Pcset } from '@tonaljs/tonal'
+import { freqColor, freqPitch } from '@theory'
+import { colord } from 'colord'
+import { globalScale } from '@use/chroma'
+const props = defineProps({
+  instrument: {
+    type: String,
+    default: 'ukulele'
+  },
+  chordNotes: {
+    type: Array,
+    default: []
+  }
+});
+
+const instruments = {
+  guitar: ['E2', 'A2', 'D3', 'G3', 'B3', 'E4'],
+  ukulele: ['G4', 'C4', 'E4', 'A4']
+};
+
+const inlays = [3, 5, 7, 10, 12, 15, 17, 19, 21]
+
+const neck = reactive({
+  strings: computed(() => instruments[props.instrument]),
+  height: computed(() => (neck.strings.length - 1) * neck.noteSize),
+  width: computed(() => neck.fretNum * neck.fretWidth),
+  isInChord: computed(() => Pcset.isNoteIncludedIn(props.chordNotes)),
+  noteSize: 36,
+  fretWidth: 50,
+  fretNum: 20,
+});
+
+function noteColor(note, semitones) {
+  return colord(freqColor(Note.freq(Note.transpose(note, Interval.fromSemitones(semitones))))).toHex()
+}
+
+function getNote(string, semitones) {
+  return Note.transpose(string, Interval.fromSemitones(semitones))
+}
+</script>
+
 <template lang="pug">
 .flex.flex-col.w-full
   svg#fretboard.max-h-3xl.w-full(
@@ -64,48 +106,6 @@
             font-weight="bold"
           ) {{ getNote(string, n) }}
 </template>
-
-<script setup>
-import { Note, Interval, Pcset } from '@tonaljs/tonal'
-import { freqColor, freqPitch } from '@theory'
-import { colord } from 'colord'
-import { globalScale } from '@use/chroma'
-const props = defineProps({
-  instrument: {
-    type: String,
-    default: 'ukulele'
-  },
-  chordNotes: {
-    type: Array,
-    default: []
-  }
-});
-
-const instruments = {
-  guitar: ['E2', 'A2', 'D3', 'G3', 'B3', 'E4'],
-  ukulele: ['G4', 'C4', 'E4', 'A4']
-};
-
-const inlays = [3, 5, 7, 10, 12, 15, 17, 19, 21]
-
-const neck = reactive({
-  strings: computed(() => instruments[props.instrument]),
-  height: computed(() => (neck.strings.length - 1) * neck.noteSize),
-  width: computed(() => neck.fretNum * neck.fretWidth),
-  isInChord: computed(() => Pcset.isNoteIncludedIn(props.chordNotes)),
-  noteSize: 36,
-  fretWidth: 50,
-  fretNum: 20,
-});
-
-function noteColor(note, semitones) {
-  return colord(freqColor(Note.freq(Note.transpose(note, Interval.fromSemitones(semitones))))).toHex()
-}
-
-function getNote(string, semitones) {
-  return Note.transpose(string, Interval.fromSemitones(semitones))
-}
-</script>
 
 <style scoped>
 .note {

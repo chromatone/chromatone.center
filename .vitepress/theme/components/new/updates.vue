@@ -1,10 +1,3 @@
-<template lang="pug">
-.flex.flex-col.mx-4.items-center
-  .max-w-55ch
-    .text-xl Recent updates
-    card-list(:rows="recent")
-</template>
-
 <script setup>
 import { useData } from 'vitepress'
 const { theme } = useData()
@@ -20,6 +13,13 @@ const recent = computed(() => {
   return sorted.splice(0, 12)
 });
 </script>
+
+<template lang="pug">
+.flex.flex-col.mx-4.items-center
+  .max-w-55ch
+    .text-xl Recent updates
+    card-list(:rows="recent")
+</template>
 
 <style scoped>
 </style>

@@ -1,48 +1,3 @@
-<template lang="pug">
-.flex.flex-col
-  control-scale.py-4
-  .flex.flex-wrap.justify-center
-    control-knob.w-70px(v-model="state.octave" :max="4" :min="2" :fixed="0" param="OCTAVE")
-    select(v-model="state.type")
-      option(
-        v-for="(type) in patternTypes" 
-        :key="type" :value="type"
-        ) {{ type }}
-    control-knob.w-50px(
-      v-model="state.steps" :max="32" :min="4" :step="1" :fixed="0" param="steps")
-    control-knob.w-50px(v-model="state.bpm" :step="1" :max="400" :min="10" :fixed="0" param="BPM")
-    control-knob.w-50px(v-model="state.probability" :max="1" :min="0" :step="0.01" :fixed="2" param="prob")
-    button(:class="{ active: state.humanize }" @click="state.humanize = !state.humanize") HMN
-    button(@click="clear()")
-      la-trash-alt
-    button(@click="state.playing = true" v-if="!state.playing")
-      la-play
-    button(@click="state.playing = false" v-if="state.playing")
-      la-pause
-  .rows(
-    @mousedown="state.hover = true"
-    @mouseleave.self="state.hover = false"
-    @mouseup="state.hover = false"
-    )
-    .row
-      .title
-    .row(v-for="(row, r) in rows" :key="row")
-      .title(:style="{ color: pitchColor(state.pitches[r]) }") {{ state.range[r] }}
-      .cell(
-        v-for="(cell, c) in row" :key="cell" 
-        :id="`c${r}-${c}`"
-        :style=`{
-          color: pitchColor(state.pitches[r]),
-          borderColor: cell.active ? pitchColor(state.pitches[r]) : cell.cell == positions[r] ? '#4449' : '#4442',
-          backgroundColor: cell.cell == positions[r] && cell.active ? pitchColor(state.pitches[r], 3) : 'transparent',
-          marginRight: c % 4 == 3 ? '4px' : '1px'
-        }`
-        :class="{ active: cell?.active, current: cell.cell == positions[r] }"
-        @mousedown.prevent="toggle(r, c, true, $event)"
-        @mouseenter="toggle(r, c, false, $event)"
-        ) •
-</template>
-
 <script setup>
 import { notes, pitchColor } from '@theory'
 import { Scale, ScaleType, Midi, Note } from '@tonaljs/tonal'
@@ -196,6 +151,51 @@ onBeforeUnmount(() => {
   })
 });
 </script>
+
+<template lang="pug">
+.flex.flex-col
+  control-scale.py-4
+  .flex.flex-wrap.justify-center
+    control-knob.w-70px(v-model="state.octave" :max="4" :min="2" :fixed="0" param="OCTAVE")
+    select(v-model="state.type")
+      option(
+        v-for="(type) in patternTypes" 
+        :key="type" :value="type"
+        ) {{ type }}
+    control-knob.w-50px(
+      v-model="state.steps" :max="32" :min="4" :step="1" :fixed="0" param="steps")
+    control-knob.w-50px(v-model="state.bpm" :step="1" :max="400" :min="10" :fixed="0" param="BPM")
+    control-knob.w-50px(v-model="state.probability" :max="1" :min="0" :step="0.01" :fixed="2" param="prob")
+    button(:class="{ active: state.humanize }" @click="state.humanize = !state.humanize") HMN
+    button(@click="clear()")
+      la-trash-alt
+    button(@click="state.playing = true" v-if="!state.playing")
+      la-play
+    button(@click="state.playing = false" v-if="state.playing")
+      la-pause
+  .rows(
+    @mousedown="state.hover = true"
+    @mouseleave.self="state.hover = false"
+    @mouseup="state.hover = false"
+    )
+    .row
+      .title
+    .row(v-for="(row, r) in rows" :key="row")
+      .title(:style="{ color: pitchColor(state.pitches[r]) }") {{ state.range[r] }}
+      .cell(
+        v-for="(cell, c) in row" :key="cell" 
+        :id="`c${r}-${c}`"
+        :style=`{
+          color: pitchColor(state.pitches[r]),
+          borderColor: cell.active ? pitchColor(state.pitches[r]) : cell.cell == positions[r] ? '#4449' : '#4442',
+          backgroundColor: cell.cell == positions[r] && cell.active ? pitchColor(state.pitches[r], 3) : 'transparent',
+          marginRight: c % 4 == 3 ? '4px' : '1px'
+        }`
+        :class="{ active: cell?.active, current: cell.cell == positions[r] }"
+        @mousedown.prevent="toggle(r, c, true, $event)"
+        @mouseenter="toggle(r, c, false, $event)"
+        ) •
+</template>
 
 <style scoped>
 .rows {

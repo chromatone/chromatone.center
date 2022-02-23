@@ -1,16 +1,3 @@
-<template lang="pug">
-.note(
-  @mousedown="play()"
-  @mouseup="stop()"
-  @mouseleave="stop(true)"
-  @touchstart.prevent="play()"
-  @touchend="stop()"
-  @mousemove="change()"
-  @touchmove="change()"
-  :style="{ backgroundColor: pitchColor(note.pitch, note.octA - 1, note.velocity) }"
-  ) {{ note.name }}{{ note.accidental }} {{ note?.number }}
-</template>
-
 <script setup>
 import { pitchColor } from '@theory'
 const props = defineProps({
@@ -46,6 +33,19 @@ function change() {
   }
 }
 </script>
+
+<template lang="pug">
+.note(
+  @mousedown="play()"
+  @mouseup="stop()"
+  @mouseleave="stop(true)"
+  @touchstart.prevent="play()"
+  @touchend="stop()"
+  @mousemove="change()"
+  @touchmove="change()"
+  :style="{ backgroundColor: pitchColor(note.pitch, note.octA - 1, note.velocity) }"
+  ) {{ note.name }}{{ note.accidental }} {{ note?.number }}
+</template>
 
 <style  scoped>
 .note {

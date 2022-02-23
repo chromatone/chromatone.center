@@ -1,3 +1,9 @@
+<script setup>
+const props = defineProps({
+  social: Object
+});
+</script>
+
 <template lang="pug">
 .social 
   a.text-button(v-if="social.instagram", :href="'https://instagram.com/' + social.instagram", target="_blank")
@@ -16,12 +22,6 @@
     la-reddit.icon
     .name {{ social.reddit }}
 </template>
-
-<script setup>
-const props = defineProps({
-  social: Object
-});
-</script>
 
 <style scoped>
 .social {

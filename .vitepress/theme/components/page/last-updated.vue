@@ -1,10 +1,3 @@
-<template>
-  <p v-if="hasLastUpdated" class="last-updated">
-    <span class="inline-block font-medium">{{ prefix }}:</span>
-    <span class="inline-block ml-1.5 font-normal">{{ datetime }}</span>
-  </p>
-</template>
-
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
 import { useData } from 'vitepress'
@@ -29,6 +22,13 @@ onMounted(() => {
   datetime.value = new Date(site.page.value.lastUpdated).toLocaleString('en-US')
 })
 </script>
+
+<template>
+  <p v-if="hasLastUpdated" class="last-updated">
+    <span class="inline-block font-medium">{{ prefix }}:</span>
+    <span class="inline-block ml-1.5 font-normal">{{ datetime }}</span>
+  </p>
+</template>
 
 <style scoped >
 .last-updated {

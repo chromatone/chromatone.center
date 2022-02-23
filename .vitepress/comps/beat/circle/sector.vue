@@ -1,3 +1,35 @@
+<script setup>
+import { levelColor } from "@use/colors.js"
+import { getCircleCoord } from '@theory'
+import { colord } from 'colord'
+import { tempo } from '@use/tempo'
+
+const props = defineProps({
+  radius: { type: Number, default: 400, },
+  step: { type: Number, default: 0 },
+  total: { type: Number, default: 4 },
+  active: { type: Boolean, default: false },
+  muted: { type: Boolean, default: false, },
+  accented: { type: Boolean, default: false, },
+});
+
+const color = computed(() => {
+  return levelColor(props.step + (tempo.pitch / 12) * props.total, props.total, 1)
+})
+
+const stepCoord = computed(() => {
+  return getCircleCoord(props.step, props.total, props.radius + 25, 1000)
+})
+
+const lineCoord = computed(() => {
+  return [
+    getCircleCoord(props.step, props.total, props.radius - (props.muted ? 25 : 0), 1000),
+    getCircleCoord(props.step, props.total, props.radius - 50, 1000)
+  ]
+
+});
+</script>
+
 <template lang="pug">
 g(
   @mousedown="$emit('mute')"
@@ -54,38 +86,6 @@ g(
 
 
 </template>
-
-<script setup>
-import { levelColor } from "@use/colors.js"
-import { getCircleCoord } from '@theory'
-import { colord } from 'colord'
-import { tempo } from '@use/tempo'
-
-const props = defineProps({
-  radius: { type: Number, default: 400, },
-  step: { type: Number, default: 0 },
-  total: { type: Number, default: 4 },
-  active: { type: Boolean, default: false },
-  muted: { type: Boolean, default: false, },
-  accented: { type: Boolean, default: false, },
-});
-
-const color = computed(() => {
-  return levelColor(props.step + (tempo.pitch / 12) * props.total, props.total, 1)
-})
-
-const stepCoord = computed(() => {
-  return getCircleCoord(props.step, props.total, props.radius + 25, 1000)
-})
-
-const lineCoord = computed(() => {
-  return [
-    getCircleCoord(props.step, props.total, props.radius - (props.muted ? 25 : 0), 1000),
-    getCircleCoord(props.step, props.total, props.radius - 50, 1000)
-  ]
-
-});
-</script>
 
 <style scoped>
 </style>

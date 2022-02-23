@@ -1,25 +1,3 @@
-<template lang="pug">
-.btn.relative.w-10
-  button.absolute.mute.p-2(@click.stop.prevent="open = true" aria-label="Toggle mute")
-    bi-volume-up(v-if="!mute")
-    bi-volume-mute(v-else)
-  transition(name="panel")
-    .absolute.w-10.h-32.rounded-full.has-bg.flex.flex-col.items-center.shadow-lg.cursor-pointer.z-20(
-      style="touch-action:none;"
-      ref="panel"
-      v-if="open" 
-      v-drag="dragVol"
-      )
-      .p-1.rounded-xl.opacity-50.bg-current.absolute.top-4.bottom-12
-      .p-10px.rounded-full.bg-current.absolute.cursor-pointer(
-        :style="{ transform: `translateY(${70 - volume * 60}px)` }"
-      )
-      button.mute.mt-24(@click="mute = !mute" aria-label="Toggle mute")
-        bi-volume-up(v-if="mute")
-        bi-volume-mute(v-else)
-
-</template>
-
 <script setup>
 import { mute } from '@use/synth'
 import { getDestination, gainToDb } from 'tone'
@@ -43,6 +21,28 @@ function dragVol(drag) {
   getDestination().volume.targetRampTo(gainToDb(volume.value), 0.1)
 }
 </script>
+
+<template lang="pug">
+.btn.relative.w-10
+  button.absolute.mute.p-2(@click.stop.prevent="open = true" aria-label="Toggle mute")
+    bi-volume-up(v-if="!mute")
+    bi-volume-mute(v-else)
+  transition(name="panel")
+    .absolute.w-10.h-32.rounded-full.has-bg.flex.flex-col.items-center.shadow-lg.cursor-pointer.z-20(
+      style="touch-action:none;"
+      ref="panel"
+      v-if="open" 
+      v-drag="dragVol"
+      )
+      .p-1.rounded-xl.opacity-50.bg-current.absolute.top-4.bottom-12
+      .p-10px.rounded-full.bg-current.absolute.cursor-pointer(
+        :style="{ transform: `translateY(${70 - volume * 60}px)` }"
+      )
+      button.mute.mt-24(@click="mute = !mute" aria-label="Toggle mute")
+        bi-volume-up(v-if="mute")
+        bi-volume-mute(v-else)
+
+</template>
 
 <style scoped>
 .mute {

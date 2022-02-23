@@ -1,3 +1,23 @@
+<script setup>
+const props = defineProps(['length']);
+
+const fretboard = reactive({
+  semitone: 1.05946309436,
+  inlays: computed(() => {
+    return [3, 5, 7, 9, 15, 17, 19, 21].map(pos => {
+      return 1 - Math.pow(0.9438743, pos - 0.5)
+    })
+  }),
+  frets: computed(() => {
+    let arr = []
+    for (let i = 0; i < 22; i++) {
+      arr.push(1 - Math.pow(0.9438743, i))
+    }
+    return arr
+  })
+});
+</script>
+
 <template lang="pug">
 g#guitar
   path#body(
@@ -78,26 +98,6 @@ g#guitar
     opacity="0.6"
   )
 </template>
-
-<script setup>
-const props = defineProps(['length']);
-
-const fretboard = reactive({
-  semitone: 1.05946309436,
-  inlays: computed(() => {
-    return [3, 5, 7, 9, 15, 17, 19, 21].map(pos => {
-      return 1 - Math.pow(0.9438743, pos - 0.5)
-    })
-  }),
-  frets: computed(() => {
-    let arr = []
-    for (let i = 0; i < 22; i++) {
-      arr.push(1 - Math.pow(0.9438743, i))
-    }
-    return arr
-  })
-});
-</script>
 
 <style scoped>
 </style>

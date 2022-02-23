@@ -1,3 +1,9 @@
+<script setup>
+const props = defineProps({
+  tools: Object
+});
+</script>
+
 <template lang="pug">
 .flex.flex-col.max-w-65ch.m-auto
   .flex.flex-col.p-8.shadow.mb-4(v-for="tool in tools")
@@ -6,12 +12,6 @@
       .opacity-80.font-normal.underline {{ tool.url }}
     .text-md {{ tool.subtitle }}
 </template>
-
-<script setup>
-const props = defineProps({
-  tools: Object
-});
-</script>
 
 <style scoped>
 </style>

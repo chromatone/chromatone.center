@@ -1,117 +1,3 @@
-<template lang="pug">
-svg.max-h-3xl.w-full.transition-all.duration-400.ease-in-out(
-  version="1.1",
-  baseProfile="full",
-  viewBox="0 0 100 100",
-  xmlns="http://www.w3.org/2000/svg",
-  style="user-select:none"
-  )
-  g(
-    v-for="(active,i) in chroma.split('')",
-    :key="i",
-  )
-    line.line(
-      v-show="active == '1'"
-      :stroke="pitchColor(globalScale.tonic + i)"
-      stroke-linecap="round"
-      stroke-width="10"
-      style="mix-blend-mode: multiply"
-      :opacity="active ? 0.5 : 0"
-      :x1="getCircleCoord(globalScale.tonic).x",
-      :y1="getCircleCoord(globalScale.tonic).y",
-      :x2="getCircleCoord(globalScale.tonic + i).x",
-      :y2="getCircleCoord(globalScale.tonic + i).y"
-    )
-  g.around(
-    style="cursor:pointer"
-    v-for="(active,i) in chroma.split('')", 
-    :key="i",
-    @click="react(i)",
-    :opacity="isInChord(i) ? 1 : 0.3"
-  )
-    circle.note(
-      style="transform-box: fill-box; transform-origin: center center;"
-      :style="{ transform: `scale(${globalScale.tonic == i ? 2.6 : isInChord(i) ? 1.62 : 1}` }",
-      :cx="getCircleCoord(i).x",
-      :cy="getCircleCoord(i).y",
-      r="5",
-      :opacity="globalScale.tonic == i && selecting ? 0.5 : 1"
-      :fill="getNoteColor(i)",
-    )
-    text(
-      :fill="scales.minor.steps[i] ? 'hsla(0,0%,0%,0.8)' : 'hsla(0,0%,100%,0.9)'"
-      font-family="Commissioner, sans-serif"
-      font-size="4px"
-      text-anchor="middle",
-      dominant-baseline="middle"
-      :x="getCircleCoord(i).x",
-      :y="getCircleCoord(i).y + 0.5",
-    ) {{ notes[i].name }} 
-  g.cursor-pointer(
-    @mousedown="playChord()"
-    @touchstart.prevent.stop="playChord()"
-    @touchend="stopChord()"
-    @touchcancel="stopChord()"
-    @mouseup="stopChord()"
-    @mouseleave="stopChord()"
-  )
-    circle(
-      :cx="50"
-      :cy="49"
-      :r="12"
-      :stroke-width="2"
-      :stroke-opacity="0.6"
-      :fill="colors.lch"
-      :stroke="colors.hsl"
-
-    )
-    text(
-      :fill="pitchColor(globalScale.tonic)"
-      x="50",
-      y="50",
-      font-weight="bold"
-      font-size="8px"
-      font-family="Commissioner, sans-serif"
-      text-anchor="middle",
-      dominant-baseline="middle"
-      ) {{ notes[globalScale.tonic].name }}{{ !chord.empty ? chord.aliases[0] : '' }}
-  text(
-    :fill="pitchColor(globalScale.tonic)"
-    x="50",
-    y="58",
-    font-weight="normal"
-    font-size="4px"
-    font-family="Commissioner, sans-serif"
-    text-anchor="middle",
-    dominant-baseline="middle"
-    ) {{ !scaleType.get(chroma).empty ? scaleType.get(chroma).name : '' }}
-  text(
-    v-if="!scaleType.get(scaleChroma).empty"
-    @click="$emit('clearScale')"
-    :fill="pitchColor(globalScale.tonic)"
-    x="50",
-    y="63",
-    font-weight="normal"
-    font-size="3px"
-    font-family="Commissioner, sans-serif"
-    text-anchor="middle",
-    dominant-baseline="middle"
-    ) {{ !scaleType.get(scaleChroma).empty ? scaleType.get(scaleChroma).name : '' }} &times;
-
-  line.line(
-    v-for="(line,i) in scaleLines",
-    :key="i",
-    :stroke="pitchColor(line?.[1])"
-    stroke-linecap="round"
-    stroke-width="0.5"
-    :x1="getCircleCoord(line?.[0], 12, 30).x",
-    :y1="getCircleCoord(line?.[0], 12, 30).y",
-    :x2="getCircleCoord(line?.[1], 12, 30).x",
-    :y2="getCircleCoord(line?.[1], 12, 30).y"
-    opacity="0.5"
-  )
-</template>
-
 <script setup>
 import { notes, pitchColor, scales, isInChroma, getCircleCoord, rotateArray } from '@theory'
 import { lchToHsl, chromaColorMix } from "@use/colors.js";
@@ -262,6 +148,120 @@ function stopChord() {
 }
 
 </script>
+
+<template lang="pug">
+svg.max-h-3xl.w-full.transition-all.duration-400.ease-in-out(
+  version="1.1",
+  baseProfile="full",
+  viewBox="0 0 100 100",
+  xmlns="http://www.w3.org/2000/svg",
+  style="user-select:none"
+  )
+  g(
+    v-for="(active,i) in chroma.split('')",
+    :key="i",
+  )
+    line.line(
+      v-show="active == '1'"
+      :stroke="pitchColor(globalScale.tonic + i)"
+      stroke-linecap="round"
+      stroke-width="10"
+      style="mix-blend-mode: multiply"
+      :opacity="active ? 0.5 : 0"
+      :x1="getCircleCoord(globalScale.tonic).x",
+      :y1="getCircleCoord(globalScale.tonic).y",
+      :x2="getCircleCoord(globalScale.tonic + i).x",
+      :y2="getCircleCoord(globalScale.tonic + i).y"
+    )
+  g.around(
+    style="cursor:pointer"
+    v-for="(active,i) in chroma.split('')", 
+    :key="i",
+    @click="react(i)",
+    :opacity="isInChord(i) ? 1 : 0.3"
+  )
+    circle.note(
+      style="transform-box: fill-box; transform-origin: center center;"
+      :style="{ transform: `scale(${globalScale.tonic == i ? 2.6 : isInChord(i) ? 1.62 : 1}` }",
+      :cx="getCircleCoord(i).x",
+      :cy="getCircleCoord(i).y",
+      r="5",
+      :opacity="globalScale.tonic == i && selecting ? 0.5 : 1"
+      :fill="getNoteColor(i)",
+    )
+    text(
+      :fill="scales.minor.steps[i] ? 'hsla(0,0%,0%,0.8)' : 'hsla(0,0%,100%,0.9)'"
+      font-family="Commissioner, sans-serif"
+      font-size="4px"
+      text-anchor="middle",
+      dominant-baseline="middle"
+      :x="getCircleCoord(i).x",
+      :y="getCircleCoord(i).y + 0.5",
+    ) {{ notes[i].name }} 
+  g.cursor-pointer(
+    @mousedown="playChord()"
+    @touchstart.prevent.stop="playChord()"
+    @touchend="stopChord()"
+    @touchcancel="stopChord()"
+    @mouseup="stopChord()"
+    @mouseleave="stopChord()"
+  )
+    circle(
+      :cx="50"
+      :cy="49"
+      :r="12"
+      :stroke-width="2"
+      :stroke-opacity="0.6"
+      :fill="colors.lch"
+      :stroke="colors.hsl"
+
+    )
+    text(
+      :fill="pitchColor(globalScale.tonic)"
+      x="50",
+      y="50",
+      font-weight="bold"
+      font-size="8px"
+      font-family="Commissioner, sans-serif"
+      text-anchor="middle",
+      dominant-baseline="middle"
+      ) {{ notes[globalScale.tonic].name }}{{ !chord.empty ? chord.aliases[0] : '' }}
+  text(
+    :fill="pitchColor(globalScale.tonic)"
+    x="50",
+    y="58",
+    font-weight="normal"
+    font-size="4px"
+    font-family="Commissioner, sans-serif"
+    text-anchor="middle",
+    dominant-baseline="middle"
+    ) {{ !scaleType.get(chroma).empty ? scaleType.get(chroma).name : '' }}
+  text(
+    v-if="!scaleType.get(scaleChroma).empty"
+    @click="$emit('clearScale')"
+    :fill="pitchColor(globalScale.tonic)"
+    x="50",
+    y="63",
+    font-weight="normal"
+    font-size="3px"
+    font-family="Commissioner, sans-serif"
+    text-anchor="middle",
+    dominant-baseline="middle"
+    ) {{ !scaleType.get(scaleChroma).empty ? scaleType.get(scaleChroma).name : '' }} &times;
+
+  line.line(
+    v-for="(line,i) in scaleLines",
+    :key="i",
+    :stroke="pitchColor(line?.[1])"
+    stroke-linecap="round"
+    stroke-width="0.5"
+    :x1="getCircleCoord(line?.[0], 12, 30).x",
+    :y1="getCircleCoord(line?.[0], 12, 30).y",
+    :x2="getCircleCoord(line?.[1], 12, 30).x",
+    :y2="getCircleCoord(line?.[1], 12, 30).y"
+    opacity="0.5"
+  )
+</template>
 
 <style scoped>
 .around,

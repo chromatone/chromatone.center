@@ -1,14 +1,3 @@
-<template lang="pug">
-.list
-  card-item.inset(
-    v-for="(area,i) in rows", 
-    :key="area.title", 
-    :item="area", 
-    :color="getColor(i, rows.length)"
-    )
-    slot
-</template>
-
 <script setup>
 
 
@@ -26,6 +15,17 @@ function getColor(i, total) {
 
 
 </script>
+
+<template lang="pug">
+.list
+  card-item.inset(
+    v-for="(area,i) in rows", 
+    :key="area.title", 
+    :item="area", 
+    :color="getColor(i, rows.length)"
+    )
+    slot
+</template>
 
 <style  scoped>
 .list {

@@ -1,3 +1,10 @@
+<script setup>
+import { tempo } from '@use/tempo.js'
+import { useTuner } from '@use/tuner.js'
+const { init, tuner } = useTuner();
+
+</script>
+
 <template lang="pug">
 g.listen(
   font-size="45"
@@ -38,13 +45,6 @@ g.listen(
       text-anchor="middle"
     ) {{ tuner.bpm.toFixed(1) }}
 </template>
-
-<script setup>
-import { tempo } from '@use/tempo.js'
-import { useTuner } from '@use/tuner.js'
-const { init, tuner } = useTuner();
-
-</script>
 
 <style scoped>
 .listen {

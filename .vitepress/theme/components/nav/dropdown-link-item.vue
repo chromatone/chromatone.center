@@ -1,11 +1,3 @@
-<template>
-  <a class="item" v-bind="linkProps">
-    <!-- <span class="arrow" /> -->
-    <span class="inline-flex items-center font-normal">{{ item.text }}</span>
-    <!-- <span class="icon"><OutboundLink v-if="isExternal" /></span> -->
-  </a>
-</template>
-
 <script setup>
 import { toRefs } from 'vue'
 
@@ -17,6 +9,14 @@ const propsRefs = toRefs(props)
 
 const { props: linkProps } = useNavLink(propsRefs.item);
 </script>
+
+<template>
+  <a class="item" v-bind="linkProps">
+    <!-- <span class="arrow" /> -->
+    <span class="inline-flex items-center font-normal">{{ item.text }}</span>
+    <!-- <span class="icon"><OutboundLink v-if="isExternal" /></span> -->
+  </a>
+</template>
 
 <style scoped >
 .item {

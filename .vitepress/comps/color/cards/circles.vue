@@ -1,3 +1,7 @@
+<script setup>
+
+</script>
+
 <template lang="pug">
 <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 283.46 283.46">
   <g>
@@ -54,7 +58,3 @@
   </g>
 </svg>
 </template>
-
-<script setup>
-
-</script>

@@ -1,10 +1,10 @@
+<script setup>
+</script>
+
 <template lang="pug">
 button.button
   slot Start
 </template>
-
-<script setup>
-</script>
 
 <style scoped>
 .button {

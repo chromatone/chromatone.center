@@ -1,3 +1,31 @@
+<script setup>
+import { pitchColor, notes as noteList } from '@theory'
+import { colord } from 'colord'
+const props = defineProps({
+  frets: Array,
+  fingers: Array,
+  baseFret: Number,
+  barres: Array,
+  midi: Array,
+  name: String,
+  pitch: Number,
+})
+const neck = reactive({
+  stringWidth: 50,
+  fretHeight: 60,
+  width: computed(() => (props.frets.length - 1) * 50),
+  height: computed(() => (4 * neck.fretHeight)),
+  padX: 40,
+  padY: 40,
+  dots: [3, 5, 7, 10]
+});
+const notes = reactive({
+  chordColor: computed(() => colord(pitchColor(props.pitch, 3)).toHex()),
+  list: computed(() => props.midi.map(m => (m + 3) % 12)),
+  colors: computed(() => notes.list.map(n => colord(pitchColor(n, 3)).toHex()))
+});
+</script>
+
 <template lang="pug">
 svg.max-h-360px.min-w-100px.min-h-250px(
   version="1.1",
@@ -118,34 +146,6 @@ svg.max-h-360px.min-w-100px.min-h-250px(
       :y="note * neck.fretHeight - neck.fretHeight / 2 + 5"
     ) {{ fingers[n] }}
 </template>
-
-<script setup>
-import { pitchColor, notes as noteList } from '@theory'
-import { colord } from 'colord'
-const props = defineProps({
-  frets: Array,
-  fingers: Array,
-  baseFret: Number,
-  barres: Array,
-  midi: Array,
-  name: String,
-  pitch: Number,
-})
-const neck = reactive({
-  stringWidth: 50,
-  fretHeight: 60,
-  width: computed(() => (props.frets.length - 1) * 50),
-  height: computed(() => (4 * neck.fretHeight)),
-  padX: 40,
-  padY: 40,
-  dots: [3, 5, 7, 10]
-});
-const notes = reactive({
-  chordColor: computed(() => colord(pitchColor(props.pitch, 3)).toHex()),
-  list: computed(() => props.midi.map(m => (m + 3) % 12)),
-  colors: computed(() => notes.list.map(n => colord(pitchColor(n, 3)).toHex()))
-});
-</script>
 
 <style scoped>
 </style>

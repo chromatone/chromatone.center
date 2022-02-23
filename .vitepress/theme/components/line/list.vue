@@ -1,16 +1,3 @@
-<template lang="pug">
-.lines(v-if="list")
-  a.line(
-    v-for="(line,l) in list", 
-    :key="line.title",
-    :style="{ backgroundColor: getColor(l, Object.keys(props.list).length) }"
-    :href="line.link",
-    ) {{ line.title }}
-    counter(:list="theme.pages?.[line?.data?.list]") 
-    card-date.flex-1.ml-4(:date="line.lastModified")
-    shop-price.ml-2(:product="line?.data?.product", :showButton="false" :color="getColor(l, Object.keys(props.list).length, 40)")
-</template>
-
 <script setup>
 import { useData } from 'vitepress'
 const { theme } = useData()
@@ -28,6 +15,19 @@ function getColor(i, total, b = 10) {
 }
 
 </script>
+
+<template lang="pug">
+.lines(v-if="list")
+  a.line(
+    v-for="(line,l) in list", 
+    :key="line.title",
+    :style="{ backgroundColor: getColor(l, Object.keys(props.list).length) }"
+    :href="line.link",
+    ) {{ line.title }}
+    counter(:list="theme.pages?.[line?.data?.list]") 
+    card-date.flex-1.ml-4(:date="line.lastModified")
+    shop-price.ml-2(:product="line?.data?.product", :showButton="false" :color="getColor(l, Object.keys(props.list).length, 40)")
+</template>
 
 <style  scoped>
 .lines {

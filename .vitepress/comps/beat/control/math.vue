@@ -1,3 +1,13 @@
+<script setup>
+import { tempo } from '@use/tempo.js'
+
+function drag(event) {
+  tempo.bpm += (event.delta[0] - event.delta[1]) / 16
+}
+
+
+</script>
+
 <template lang="pug">
 g.math.cursor-pointer(
   font-size="36"
@@ -34,16 +44,6 @@ g.math.cursor-pointer(
     font-weight="bold"
 ) {{ tempo.note }}
 </template>
-
-<script setup>
-import { tempo } from '@use/tempo.js'
-
-function drag(event) {
-  tempo.bpm += (event.delta[0] - event.delta[1]) / 16
-}
-
-
-</script>
 
 <style scoped>
 </style>

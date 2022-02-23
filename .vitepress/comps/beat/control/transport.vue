@@ -1,3 +1,17 @@
+<script setup>
+import { tempo } from '@use/tempo.js'
+import { onKeyStroke } from '@vueuse/core'
+
+onKeyStroke(' ', (e) => {
+  e.preventDefault()
+  tempo.playing = !tempo.playing
+});
+onKeyStroke('Enter', (e) => {
+  e.preventDefault()
+  tempo.stopped = true
+});
+</script>
+
 <template lang="pug">
 g.transport(
   font-size="60"
@@ -43,20 +57,6 @@ g.transport(
     )
     
 </template>
-
-<script setup>
-import { tempo } from '@use/tempo.js'
-import { onKeyStroke } from '@vueuse/core'
-
-onKeyStroke(' ', (e) => {
-  e.preventDefault()
-  tempo.playing = !tempo.playing
-});
-onKeyStroke('Enter', (e) => {
-  e.preventDefault()
-  tempo.stopped = true
-});
-</script>
 
 <style scoped>
 .border {

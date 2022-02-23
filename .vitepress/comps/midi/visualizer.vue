@@ -1,42 +1,3 @@
-<template lang="pug">
-.flex.flex-col.items-center
-  .flex.flex-wrap
-    button
-      label(for="upload")
-        la-upload
-      input#upload.p-2.w-18em.cursor-pointer(@change="uploaded" type="file" accept="audio/midi")
-    button(@click="play()")
-      la-play(v-if="!map.playing")
-      la-stop(v-else)
-    button(@click="clear()")
-      la-trash-alt
-    button(@click="download")
-      la-download
-  .flex.flex-wrap
-    .p-1(v-for="(track, t) in info.tracks" :key="track") 
-      .track(
-        @click="map.hiddenTracks[t] = !map.hiddenTracks[t]"
-        :class="{ active: !map.hiddenTracks[t] }"
-        ) {{ track.channel }}: {{ track.name }} {{ track.instrument.family }}
-  svg#visual.max-h-70vh(
-    version="1.1",
-    baseProfile="full",
-    :viewBox="`0 0 ${map.width} ${map.height}`",
-    xmlns="http://www.w3.org/2000/svg",
-  )
-    g(v-for="(track, t) in info.filteredTracks" :key="track")
-      rect(
-        rx="0.4"
-        v-for="note in track.notes" :key="note"
-        :x="note.time"
-        :y="127 - note.midi"
-        :width="note.duration"
-        height="1"
-        :fill="pitchColor((note.midi + 3) % 12)"
-        )  
-  svg-save(svg="visual")  
-</template>
-
 <script setup>
 import { Midi } from '@tonejs/midi'
 import { pitchColor } from '@theory'
@@ -127,6 +88,45 @@ function play() {
 
 
 </script>
+
+<template lang="pug">
+.flex.flex-col.items-center
+  .flex.flex-wrap
+    button
+      label(for="upload")
+        la-upload
+      input#upload.p-2.w-18em.cursor-pointer(@change="uploaded" type="file" accept="audio/midi")
+    button(@click="play()")
+      la-play(v-if="!map.playing")
+      la-stop(v-else)
+    button(@click="clear()")
+      la-trash-alt
+    button(@click="download")
+      la-download
+  .flex.flex-wrap
+    .p-1(v-for="(track, t) in info.tracks" :key="track") 
+      .track(
+        @click="map.hiddenTracks[t] = !map.hiddenTracks[t]"
+        :class="{ active: !map.hiddenTracks[t] }"
+        ) {{ track.channel }}: {{ track.name }} {{ track.instrument.family }}
+  svg#visual.max-h-70vh(
+    version="1.1",
+    baseProfile="full",
+    :viewBox="`0 0 ${map.width} ${map.height}`",
+    xmlns="http://www.w3.org/2000/svg",
+  )
+    g(v-for="(track, t) in info.filteredTracks" :key="track")
+      rect(
+        rx="0.4"
+        v-for="note in track.notes" :key="note"
+        :x="note.time"
+        :y="127 - note.midi"
+        :width="note.duration"
+        height="1"
+        :fill="pitchColor((note.midi + 3) % 12)"
+        )  
+  svg-save(svg="visual")  
+</template>
 
 <style scoped>
 button {

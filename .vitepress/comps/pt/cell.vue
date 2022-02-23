@@ -1,24 +1,3 @@
-<template lang="pug">
-.cell(
-  v-drag="dragHandler",
-  :drag-options="dragOptions",
-  :style=`{
-    backgroundColor: color,
-    color: textColor
-  }`, 
-  :class="{ active: synth.active }")
-  .absolute.w-full.h-full.top-0.left-0.bottom-0(v-show="synth.vol > 0")
-    .volume(
-      :style="{ height: synth.vol + '%' }"
-    ) 
-  .absolute.h-full.top-0.left-0.right-0.text-center(v-show="synth.pan != 50")
-    .pan.absolute.bg-gray-100.h-full.m-auto(
-      :style="{ left: synth.pan + '%' }"
-    ) 
-
-  pt-info(:name="note?.name",:hz="synth.freq", :octave="octave")
-</template>
-
 <script setup>
 import { context, start } from 'tone'
 import { useSynth } from './synth.js'
@@ -90,6 +69,27 @@ const textColor = computed(() => {
 });
 
 </script>
+
+<template lang="pug">
+.cell(
+  v-drag="dragHandler",
+  :drag-options="dragOptions",
+  :style=`{
+    backgroundColor: color,
+    color: textColor
+  }`, 
+  :class="{ active: synth.active }")
+  .absolute.w-full.h-full.top-0.left-0.bottom-0(v-show="synth.vol > 0")
+    .volume(
+      :style="{ height: synth.vol + '%' }"
+    ) 
+  .absolute.h-full.top-0.left-0.right-0.text-center(v-show="synth.pan != 50")
+    .pan.absolute.bg-gray-100.h-full.m-auto(
+      :style="{ left: synth.pan + '%' }"
+    ) 
+
+  pt-info(:name="note?.name",:hz="synth.freq", :octave="octave")
+</template>
 
 <style   scoped>
 .cell {

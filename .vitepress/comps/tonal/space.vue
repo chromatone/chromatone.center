@@ -1,3 +1,12 @@
+<script setup>
+import { useStorage } from '@vueuse/core'
+import { pitchColor, pitchFreq, notes, scales } from '@theory'
+import { globalScale } from '@use/chroma'
+const scale = useStorage('array-scale', scales.minor);
+
+const screen = ref();
+</script>
+
 <template lang="pug">
 .flex.flex-col
   .flex.flex-wrap.my-4.items-center.justify-center
@@ -17,15 +26,6 @@
   .fullscreen-container.rounded-4xl(ref="screen")
     tonal-array(:tonic="globalScale.tonic", :scale="scale")    
 </template>
-
-<script setup>
-import { useStorage } from '@vueuse/core'
-import { pitchColor, pitchFreq, notes, scales } from '@theory'
-import { globalScale } from '@use/chroma'
-const scale = useStorage('array-scale', scales.minor);
-
-const screen = ref();
-</script>
 
 <style scoped>
 .keys {

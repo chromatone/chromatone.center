@@ -1,3 +1,7 @@
+<script setup>
+import { tempo, tap } from '@use/tempo.js'
+</script>
+
 <template lang="pug">
 g.tap.cursor-pointer
   g.finger(
@@ -42,10 +46,6 @@ g.tap.cursor-pointer
       text-anchor="middle"
     ) {{ tempo.tap.bpm.toFixed(1) }}
 </template>
-
-<script setup>
-import { tempo, tap } from '@use/tempo.js'
-</script>
 
 <style scoped>
 </style>

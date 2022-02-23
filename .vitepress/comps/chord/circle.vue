@@ -1,3 +1,15 @@
+<script setup>
+import { notes, pitchColor, rotateArray, getCircleCoord } from '@theory'
+import { chromaColorMix } from "@use/colors.js";
+import { colord } from 'colord'
+const props = defineProps({
+  pitch: { type: Number, default: 0 },
+  chroma: { type: String, default: '1001000100101' },
+  type: { type: String, default: '' },
+  tonic: { type: Number, default: 0 },
+});
+</script>
+
 <template lang="pug">
 g
   //- circle(
@@ -49,18 +61,6 @@ g
     ) {{ pitch === false ? '' : typeof pitch == 'string' ? pitch : notes[pitch % 12]?.name }}{{ type }}
   
 </template>
-
-<script setup>
-import { notes, pitchColor, rotateArray, getCircleCoord } from '@theory'
-import { chromaColorMix } from "@use/colors.js";
-import { colord } from 'colord'
-const props = defineProps({
-  pitch: { type: Number, default: 0 },
-  chroma: { type: String, default: '1001000100101' },
-  type: { type: String, default: '' },
-  tonic: { type: Number, default: 0 },
-});
-</script>
 
 <style scoped>
 </style>

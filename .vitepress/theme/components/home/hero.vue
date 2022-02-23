@@ -1,3 +1,7 @@
+<script setup lang="ts">
+
+</script>
+
 <template lang="pug">
 header.home-hero.mt-16
   .w-full.max-w-600px.m-auto.p-4(
@@ -10,8 +14,4 @@ header.home-hero.mt-16
           :alt="$frontmatter.heroAlt"
           )
 </template>
-
-<script setup lang="ts">
-
-</script>
 

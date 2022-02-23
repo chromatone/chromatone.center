@@ -1,3 +1,16 @@
+<script setup>
+import { lchToHsl } from '@use/colors'
+defineProps({
+  open: { type: Boolean, required: true },
+});
+
+import { useData, useRoute } from 'vitepress'
+const { site, theme } = useData()
+const route = useRoute();
+
+
+</script>
+
 <template lang="pug">
 .panel(:class="{ open }")
   .flex.flex-col
@@ -60,19 +73,6 @@
 
                               ) {{ dot.title }}
 </template>
-
-<script setup>
-import { lchToHsl } from '@use/colors'
-defineProps({
-  open: { type: Boolean, required: true },
-});
-
-import { useData, useRoute } from 'vitepress'
-const { site, theme } = useData()
-const route = useRoute();
-
-
-</script>
 
 <style scoped>
 .panel {

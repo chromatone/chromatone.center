@@ -1,3 +1,21 @@
+<script setup>
+import { midi, stopAll, midiAttack, midiRelease } from '@use/midi.js'
+import { onKeyStroke } from '@vueuse/core'
+import { pitchColor } from '@theory'
+
+const props = defineProps({
+  toChannel: {
+    type: Boolean,
+    default: true,
+  }
+});
+
+onKeyStroke(' ', ev => {
+  ev.preventDefault()
+  midi.playing = !midi.playing
+});
+</script>
+
 <template lang="pug">
 .m-auto.layer.w-full.z-40
   .p-2.border.border-red-500.text-red-500(v-if="!midi.enabled") MIDI is not available. Use a 
@@ -37,24 +55,6 @@
     .is-group.mx-1.p-1
       slot
 </template>
-
-<script setup>
-import { midi, stopAll, midiAttack, midiRelease } from '@use/midi.js'
-import { onKeyStroke } from '@vueuse/core'
-import { pitchColor } from '@theory'
-
-const props = defineProps({
-  toChannel: {
-    type: Boolean,
-    default: true,
-  }
-});
-
-onKeyStroke(' ', ev => {
-  ev.preventDefault()
-  midi.playing = !midi.playing
-});
-</script>
 
 <style scoped>
 .layer {

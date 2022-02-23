@@ -1,17 +1,3 @@
-<template lang="pug">
-g  
-  defs
-    path(:id="`myTextPath${r}`",:d="`M ${r},0 A ${r},${r} 0 0 1 -${r},0 A ${r},${r} 0 0 1 ${r},0`", :transform="`translate(${w / 2},${w / 2}), rotate(-90)`", fill="none", stroke="darkblue", stroke-width="2")
-  text(
-    fill="currentColor"
-    font-size="24px"
-  )
-    textPath(
-      :xlink:href="`#myTextPath${r}`"
-      :startOffset="`${offset}%`"
-    ) {{ text }}
-</template>
-
 <script setup>
 const props = defineProps({
   size: {
@@ -38,6 +24,20 @@ const props = defineProps({
 
 const id = 'myText' + Math.floor(Math.random() * 20);
 </script>
+
+<template lang="pug">
+g  
+  defs
+    path(:id="`myTextPath${r}`",:d="`M ${r},0 A ${r},${r} 0 0 1 -${r},0 A ${r},${r} 0 0 1 ${r},0`", :transform="`translate(${w / 2},${w / 2}), rotate(-90)`", fill="none", stroke="darkblue", stroke-width="2")
+  text(
+    fill="currentColor"
+    font-size="24px"
+  )
+    textPath(
+      :xlink:href="`#myTextPath${r}`"
+      :startOffset="`${offset}%`"
+    ) {{ text }}
+</template>
 
 <style scoped>
 </style>

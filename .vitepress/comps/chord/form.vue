@@ -1,104 +1,3 @@
-<template lang="pug">
-.flex.flex-col.items-center#screen.fullscreen-container.rounded-4xl
-  .flex.flex-wrap.mt-6
-    .note(
-      v-for="note in notes"
-      :key="note"
-      @click="select(note.pitch)"
-      :class="{ active: activeNotes[note.pitch] }"
-      :style="{ backgroundColor: activeNotes[note.pitch] ? pitchColor(note.pitch) : note.pos == 1 ? '#333' : '#aaa' }"
-    ) {{ note.name }}
-  .p-4.flex.flex-wrap.items-center
-    .is-group.flex
-      button(
-        @click="moving = !moving"
-      )
-        la-pause(v-if="moving")
-        la-play(v-else)
-
-      button(
-        @click="sounding = !sounding"
-      )
-        la-volume-up(v-if="!sounding")
-        la-volume-off(v-else)
-      full-screen
-  svg#chord-form(
-    version="1.1",
-    baseProfile="full",
-    viewBox="0 0 1260 800",
-    xmlns="http://www.w3.org/2000/svg",
-    v-drag="modify"
-  )
-    g.zoom
-      text(
-        y="760"
-        fill="currentColor"
-        x="12"
-      ) ZOOM X{{ zoom / 100 }}
-      line(
-        :y1="800 - zoom / 1000 * 800"
-        y2="800"
-        transform="translate(4 0)"
-        stroke-linecap="round"
-        stroke="currentColor"
-        stroke-opacity="0.5"
-        stroke-width="8"
-      )
-    g.speed
-      text(
-        y="780"
-        x="12"
-        fill="currentColor"
-      ) SPEED X{{ speed / 100 }}
-      line(
-        :x1="speed / 400 * 1260"
-        x2="0"
-        transform="translate(0 795)"
-        stroke-linecap="round"
-        stroke="currentColor"
-        stroke-opacity="0.5"
-        stroke-width="12"
-      )
-    line(
-      x1="0"
-      x2="1200"
-      y1="400"
-      y2="400"
-      stroke="gray"
-      stroke-width="1"
-    )
-    g(
-      v-for="(note,n) in activeNotes"
-      :key="n"
-    )
-      polyline(
-        :stroke="pitchColor(n)"
-        :points="waves[n]"
-        stroke-width="2"
-        fill="none"
-      )
-      circle(
-        :cx="1200"
-        :cy="400"
-        :transform="`translate(0,${computeSine(n, numPoints - 1) * 100})`"
-        r="6"
-        :fill="pitchColor(n)"
-      )
-    polyline(
-      :stroke="sumColor.hsl"
-      :points="sumLine"
-      stroke-width="12"
-      fill="none"
-    )
-    circle(
-      :cx="1200"
-      :cy="400"
-      :transform="`translate(0,${sumWave[numPoints - 1] * 100})`"
-      r="12"
-      :fill="sumColor.hsl"
-    )
-</template>
-
 <script setup>
 import { notes, pitchColor } from '@theory'
 import { useStorage, useTimestamp, useClamp } from '@vueuse/core'
@@ -200,6 +99,107 @@ const sumColor = computed(() => {
   return chromaColorMix(chroma.value, Object.keys(activeNotes.value)[0])
 });
 </script>
+
+<template lang="pug">
+.flex.flex-col.items-center#screen.fullscreen-container.rounded-4xl
+  .flex.flex-wrap.mt-6
+    .note(
+      v-for="note in notes"
+      :key="note"
+      @click="select(note.pitch)"
+      :class="{ active: activeNotes[note.pitch] }"
+      :style="{ backgroundColor: activeNotes[note.pitch] ? pitchColor(note.pitch) : note.pos == 1 ? '#333' : '#aaa' }"
+    ) {{ note.name }}
+  .p-4.flex.flex-wrap.items-center
+    .is-group.flex
+      button(
+        @click="moving = !moving"
+      )
+        la-pause(v-if="moving")
+        la-play(v-else)
+
+      button(
+        @click="sounding = !sounding"
+      )
+        la-volume-up(v-if="!sounding")
+        la-volume-off(v-else)
+      full-screen
+  svg#chord-form(
+    version="1.1",
+    baseProfile="full",
+    viewBox="0 0 1260 800",
+    xmlns="http://www.w3.org/2000/svg",
+    v-drag="modify"
+  )
+    g.zoom
+      text(
+        y="760"
+        fill="currentColor"
+        x="12"
+      ) ZOOM X{{ zoom / 100 }}
+      line(
+        :y1="800 - zoom / 1000 * 800"
+        y2="800"
+        transform="translate(4 0)"
+        stroke-linecap="round"
+        stroke="currentColor"
+        stroke-opacity="0.5"
+        stroke-width="8"
+      )
+    g.speed
+      text(
+        y="780"
+        x="12"
+        fill="currentColor"
+      ) SPEED X{{ speed / 100 }}
+      line(
+        :x1="speed / 400 * 1260"
+        x2="0"
+        transform="translate(0 795)"
+        stroke-linecap="round"
+        stroke="currentColor"
+        stroke-opacity="0.5"
+        stroke-width="12"
+      )
+    line(
+      x1="0"
+      x2="1200"
+      y1="400"
+      y2="400"
+      stroke="gray"
+      stroke-width="1"
+    )
+    g(
+      v-for="(note,n) in activeNotes"
+      :key="n"
+    )
+      polyline(
+        :stroke="pitchColor(n)"
+        :points="waves[n]"
+        stroke-width="2"
+        fill="none"
+      )
+      circle(
+        :cx="1200"
+        :cy="400"
+        :transform="`translate(0,${computeSine(n, numPoints - 1) * 100})`"
+        r="6"
+        :fill="pitchColor(n)"
+      )
+    polyline(
+      :stroke="sumColor.hsl"
+      :points="sumLine"
+      stroke-width="12"
+      fill="none"
+    )
+    circle(
+      :cx="1200"
+      :cy="400"
+      :transform="`translate(0,${sumWave[numPoints - 1] * 100})`"
+      r="12"
+      :fill="sumColor.hsl"
+    )
+</template>
 
 <style scoped>
 .note {

@@ -1,45 +1,3 @@
-<template lang="pug">
-.fullscreen-container.rounded-4xl(ref="screen")
-  full-screen.absolute.top-2.right-2.z-10(:el="screen")
-  .relative.w-full.m-auto
-    chroma-compass-circle#chroma-compass(
-      v-model:chroma="chroma"
-      :scaleChroma="scaleChroma"
-      @clearScale="clearScale()"
-      )
-  .max-w-65ch.m-auto.flex.flex-col.items-center
-    chroma-keys.m-auto(
-      v-model:pitch="globalScale.tonic"
-      :chroma="chroma") 
-    .flex.flex-col.p-2
-      .flex.flex-wrap.mx-auto.justify-center
-        .chord-group(
-          v-for="(name,count) in groupNames", 
-          :key="name"
-          :class="{ active: count + 2 == numNotes }"
-          @click="chroma = chordGroups[count][0].chroma"
-          ) {{ name }}
-
-      .flex.flex-wrap.justify-center
-        .chord(
-          :style="{ color: chord?.chroma == chroma ? 'white' : chromaColorMix(chord.chroma, globalScale.tonic).hsl, backgroundColor: chord?.chroma == chroma ? chromaColorMix(chord.chroma, globalScale.tonic).hsl : '' }"
-          v-for="chord in chordGroup", 
-          :key="chord?.aliases[0]", 
-          @click="chroma = chord.chroma",
-          :class="{ active: chord?.chroma == chroma }") {{ notes[globalScale.tonic].name + chord?.aliases[0] }}
-
-      .flex.flex-wrap.justify-center
-        .min-w-full.text-center.my-4
-          .mx-auto.w-auto.text-sm.border-b-1.border-current It may be the root chord in these scales:
-        .chord(
-          v-for="name in chordScales",
-          :style="{ color: scale == name ? 'white' : chromaColorMix(ScaleType.get(name).chroma, globalScale.tonic).hsl, backgroundColor: scale == name ? chromaColorMix(ScaleType.get(name).chroma, globalScale.tonic).hsl : '' }"
-          :key="name"
-          @click="scale = name"
-          :class="{ active: scale == name }"
-          ) {{ notes[globalScale.tonic].name }} {{ name }}
-</template>
-
 <script setup>
 import { chords, notes, pitchColor } from '@theory'
 import { chromaColorMix } from '@use/colors.js'
@@ -85,6 +43,48 @@ const chordGroup = computed(() => {
   return chordList.filter(get => get.intervals.length === numNotes.value)
 });
 </script>
+
+<template lang="pug">
+.fullscreen-container.rounded-4xl(ref="screen")
+  full-screen.absolute.top-2.right-2.z-10(:el="screen")
+  .relative.w-full.m-auto
+    chroma-compass-circle#chroma-compass(
+      v-model:chroma="chroma"
+      :scaleChroma="scaleChroma"
+      @clearScale="clearScale()"
+      )
+  .max-w-65ch.m-auto.flex.flex-col.items-center
+    chroma-keys.m-auto(
+      v-model:pitch="globalScale.tonic"
+      :chroma="chroma") 
+    .flex.flex-col.p-2
+      .flex.flex-wrap.mx-auto.justify-center
+        .chord-group(
+          v-for="(name,count) in groupNames", 
+          :key="name"
+          :class="{ active: count + 2 == numNotes }"
+          @click="chroma = chordGroups[count][0].chroma"
+          ) {{ name }}
+
+      .flex.flex-wrap.justify-center
+        .chord(
+          :style="{ color: chord?.chroma == chroma ? 'white' : chromaColorMix(chord.chroma, globalScale.tonic).hsl, backgroundColor: chord?.chroma == chroma ? chromaColorMix(chord.chroma, globalScale.tonic).hsl : '' }"
+          v-for="chord in chordGroup", 
+          :key="chord?.aliases[0]", 
+          @click="chroma = chord.chroma",
+          :class="{ active: chord?.chroma == chroma }") {{ notes[globalScale.tonic].name + chord?.aliases[0] }}
+
+      .flex.flex-wrap.justify-center
+        .min-w-full.text-center.my-4
+          .mx-auto.w-auto.text-sm.border-b-1.border-current It may be the root chord in these scales:
+        .chord(
+          v-for="name in chordScales",
+          :style="{ color: scale == name ? 'white' : chromaColorMix(ScaleType.get(name).chroma, globalScale.tonic).hsl, backgroundColor: scale == name ? chromaColorMix(ScaleType.get(name).chroma, globalScale.tonic).hsl : '' }"
+          :key="name"
+          @click="scale = name"
+          :class="{ active: scale == name }"
+          ) {{ notes[globalScale.tonic].name }} {{ name }}
+</template>
 
 <style  scoped>
 .chord {

@@ -1,3 +1,32 @@
+<script setup>
+import { pitchColor } from '@theory'
+import { useTuner } from '@use/tuner.js'
+
+const display = ref(null)
+
+const { init, tuner, chain } = useTuner();
+
+const bars = computed(() => {
+  return tuner.frequencyData || []
+})
+
+const background = computed(() => {
+  const note = getRawNote(tuner.note?.frequency)
+  if (!note) return '#333'
+  const octave = tuner.note?.octave
+  const color = pitchColor(note, octave)
+  return color
+})
+
+function start() {
+  init();
+}
+
+function getRawNote(frequency) {
+  return 12 * (Math.log(frequency / tuner.middleA) / Math.log(2)) % 12
+}
+</script>
+
 <template lang="pug">
 .fullscreen-container#screen.rounded-4xl.overflow-hidden.mb-4
   control-start.absolute.z-20(@click="start()", v-if="!tuner.running") Start tuner
@@ -105,35 +134,6 @@
       y="180"
     ) {{ tuner.note?.frequency.toFixed(2) }} Hz
 </template>
-
-<script setup>
-import { pitchColor } from '@theory'
-import { useTuner } from '@use/tuner.js'
-
-const display = ref(null)
-
-const { init, tuner, chain } = useTuner();
-
-const bars = computed(() => {
-  return tuner.frequencyData || []
-})
-
-const background = computed(() => {
-  const note = getRawNote(tuner.note?.frequency)
-  if (!note) return '#333'
-  const octave = tuner.note?.octave
-  const color = pitchColor(note, octave)
-  return color
-})
-
-function start() {
-  init();
-}
-
-function getRawNote(frequency) {
-  return 12 * (Math.log(frequency / tuner.middleA) / Math.log(2)) % 12
-}
-</script>
 
 <style scoped>
 .meter {

@@ -1,3 +1,32 @@
+<script setup>
+import { colord } from 'colord'
+
+const mix = reactive({
+  radius: 30,
+  len: computed(() => mix.radius * Math.PI * 2),
+  max: 100,
+  c: useStorage('cyan', 50),
+  m: useStorage('magenta', 50),
+  y: useStorage('yellow', 50),
+  k: useStorage('black', 10),
+  cmyk: computed(() => `device-cmyk(${mix.c}% ${mix.m}% ${mix.y}% ${mix.k}% / 100%)`),
+  hex: computed(() => colord(mix.cmyk).toHex())
+});
+
+const screen = ref()
+
+function onDrag(drag) {
+  let id = drag.event.target.id
+  mix[id] = Number(mix[id]) + (Number(drag.delta[0]) - Number(drag.delta[1]))
+  if (mix[id] < 0) {
+    mix[id] = 0
+  }
+  if (mix[id] > mix.max) {
+    mix[id] = mix.max
+  }
+}
+</script>
+
 <template lang="pug">
 .fullscreen-container.mb-8.p-4.rounded-4xl.transition-all.duration-800.ease-out(ref="screen" :style="{ backgroundColor: mix.hex }")
   full-screen.absolute.top-2.right-2(:el="screen")
@@ -113,35 +142,6 @@
   //-     label(for="black" style="color:black") BLACK {{ mix.k }}
   //-     input(type="range" v-model="mix.k" min="0" max="100" id="black")
 </template>
-
-<script setup>
-import { colord } from 'colord'
-
-const mix = reactive({
-  radius: 30,
-  len: computed(() => mix.radius * Math.PI * 2),
-  max: 100,
-  c: useStorage('cyan', 50),
-  m: useStorage('magenta', 50),
-  y: useStorage('yellow', 50),
-  k: useStorage('black', 10),
-  cmyk: computed(() => `device-cmyk(${mix.c}% ${mix.m}% ${mix.y}% ${mix.k}% / 100%)`),
-  hex: computed(() => colord(mix.cmyk).toHex())
-});
-
-const screen = ref()
-
-function onDrag(drag) {
-  let id = drag.event.target.id
-  mix[id] = Number(mix[id]) + (Number(drag.delta[0]) - Number(drag.delta[1]))
-  if (mix[id] < 0) {
-    mix[id] = 0
-  }
-  if (mix[id] > mix.max) {
-    mix[id] = mix.max
-  }
-}
-</script>
 
 <style scoped>
 </style>

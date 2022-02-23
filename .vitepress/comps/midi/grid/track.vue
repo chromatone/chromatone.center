@@ -1,3 +1,26 @@
+<script setup>
+import { pitchColor } from '@theory'
+const props = defineProps({
+  track: Object,
+});
+
+const bar = reactive({
+  total: computed(() => props.track.endOfTrackTicks),
+  step: computed(() => 1000 / bar.total)
+})
+
+
+const ticks = computed(() => {
+  let arr = []
+  arr.length = props.track.endOfTrackTicks
+  props.track.notes.forEach((note, n) => {
+    arr[note.ticks] = arr[note.ticks] || []
+    arr[note.ticks].push({ ...note, index: n })
+  })
+  return arr
+});
+</script>
+
 <template lang="pug">
 svg(
   class="bg-light-300 dark_bg-dark-800"
@@ -26,29 +49,6 @@ svg(
     :y="note.midi"
     :fill="pitchColor(note.midi + 3)")
 </template>
-
-<script setup>
-import { pitchColor } from '@theory'
-const props = defineProps({
-  track: Object,
-});
-
-const bar = reactive({
-  total: computed(() => props.track.endOfTrackTicks),
-  step: computed(() => 1000 / bar.total)
-})
-
-
-const ticks = computed(() => {
-  let arr = []
-  arr.length = props.track.endOfTrackTicks
-  props.track.notes.forEach((note, n) => {
-    arr[note.ticks] = arr[note.ticks] || []
-    arr[note.ticks].push({ ...note, index: n })
-  })
-  return arr
-});
-</script>
 
 <style scoped>
 </style>

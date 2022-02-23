@@ -1,3 +1,9 @@
+<script setup lang="ts">
+import { useData, useRoute } from 'vitepress'
+const { site, theme } = useData()
+const route = useRoute()
+</script>
+
 <template lang="pug">
 footer
   .noise
@@ -17,12 +23,6 @@ footer
       img.h-8em.my-4(:src="theme.logo") 
       .text-2xl.text-center {{ site.title }}
 </template>
-
-<script setup lang="ts">
-import { useData, useRoute } from 'vitepress'
-const { site, theme } = useData()
-const route = useRoute()
-</script>
 
 <style scoped >
 footer {

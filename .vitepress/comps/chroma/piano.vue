@@ -1,16 +1,3 @@
-<template lang="pug">
-.flex.justify-center.min-h-2rem
-  .key(
-    v-for="key in keys.notes"
-    :key="key"
-    :class="{ black: key.pos == 1, tonic: key.pitch == pitch }"
-    @mouseover="key.active = true"
-    @mouseleave="key.active = false"
-    @click="globalScale.tonic = key.pitch"
-    :style="{ backgroundColor: keys.steps[key.pitch] == 1 || key.active || key.pitch == globalScale.tonic ? pitchColor(key.pitch, 4, key.pitch == globalScale.tonic ? 1 : 0.4) : '' }" 
-  ) {{ names ? key.name : '' }}
-</template>
-
 <script setup>
 import { notes, rotateArray, pitchColor } from '@theory'
 import { globalScale } from '@use/chroma'
@@ -44,6 +31,19 @@ function isInChroma(pitch) {
   }
 }
 </script>
+
+<template lang="pug">
+.flex.justify-center.min-h-2rem
+  .key(
+    v-for="key in keys.notes"
+    :key="key"
+    :class="{ black: key.pos == 1, tonic: key.pitch == pitch }"
+    @mouseover="key.active = true"
+    @mouseleave="key.active = false"
+    @click="globalScale.tonic = key.pitch"
+    :style="{ backgroundColor: keys.steps[key.pitch] == 1 || key.active || key.pitch == globalScale.tonic ? pitchColor(key.pitch, 4, key.pitch == globalScale.tonic ? 1 : 0.4) : '' }" 
+  ) {{ names ? key.name : '' }}
+</template>
 
 <style scoped>
 .key {

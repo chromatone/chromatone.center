@@ -1,3 +1,7 @@
+<script setup>
+defineProps(['video']);
+</script>
+
 <template lang="pug">
 .iframe-container
   iframe.shadow-2xl.rounded-2xl.overflow-hidden.mx-auto(
@@ -9,10 +13,6 @@
     allowfullscreen
     )
 </template>
-
-<script setup>
-defineProps(['video']);
-</script>
 
 <style scoped>
 .iframe-container {

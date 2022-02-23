@@ -1,3 +1,8 @@
+<script setup lang="ts">
+import { useData } from 'vitepress'
+const { theme, frontmatter } = useData()
+</script>
+
 <template lang="pug">
 main.home(aria-labelledby="main-title")
   .noise
@@ -8,11 +13,6 @@ main.home(aria-labelledby="main-title")
     :rows="theme.pages?.[frontmatter.list]"
     )
 </template>
-
-<script setup lang="ts">
-import { useData } from 'vitepress'
-const { theme, frontmatter } = useData()
-</script>
 
 <style scoped >
 .home {

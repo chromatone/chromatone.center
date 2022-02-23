@@ -1,25 +1,3 @@
-<template lang="pug">
-.btn(
-  :class="{ active: modelValue }"
-  @mousedown.self="setValue(true)"
-  @mouseup.self="setValue(false)"
-  @touchstart.self="setValue(true)"
-  @touchend.self="setValue(true)"
-  @touchcancel.self="setValue(false)"
-) 
-  .mb-5(
-    @mousedown.self="setValue(true)"
-    @mouseup.self="setValue(false)"
-    @touchstart.self="setValue(true)"
-    @touchend.self="setValue(true)"
-    @touchcancel.self="setValue(false)"
-    ) {{ title }}
-  .toggle(
-    @click.stop.capture="setValue(!modelValue)"
-  )
-    .toggler
-</template>
-
 <script setup>
 
 const props = defineProps({
@@ -41,6 +19,28 @@ function setValue(val) {
 
 
 </script>
+
+<template lang="pug">
+.btn(
+  :class="{ active: modelValue }"
+  @mousedown.self="setValue(true)"
+  @mouseup.self="setValue(false)"
+  @touchstart.self="setValue(true)"
+  @touchend.self="setValue(true)"
+  @touchcancel.self="setValue(false)"
+) 
+  .mb-5(
+    @mousedown.self="setValue(true)"
+    @mouseup.self="setValue(false)"
+    @touchstart.self="setValue(true)"
+    @touchend.self="setValue(true)"
+    @touchcancel.self="setValue(false)"
+    ) {{ title }}
+  .toggle(
+    @click.stop.capture="setValue(!modelValue)"
+  )
+    .toggler
+</template>
 
 <style scoped>
 .btn {

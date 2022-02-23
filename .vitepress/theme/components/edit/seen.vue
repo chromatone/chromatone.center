@@ -1,9 +1,3 @@
-<template lang="pug">
-.flex(@click="setSeen()") 
-  la-check(v-if="dif > 0",:style="{ color: dif > 0 ? 'green' : 'gray' }")
-  card-date(v-else,:date="modified")
-</template>
-
 <script setup>
 import { computed } from 'vue'
 import { useLocalStorage, useToggle } from '@vueuse/core'
@@ -27,6 +21,12 @@ const dif = computed(() => {
 });
 
 </script>
+
+<template lang="pug">
+.flex(@click="setSeen()") 
+  la-check(v-if="dif > 0",:style="{ color: dif > 0 ? 'green' : 'gray' }")
+  card-date(v-else,:date="modified")
+</template>
 
 <style  scoped>
 </style>

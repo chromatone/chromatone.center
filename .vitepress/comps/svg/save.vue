@@ -1,9 +1,3 @@
-<template lang="pug">
-.snapshot
-  la-camera(@click="saveSVG(svg)")
-  a(ref="anchor",target="_blank",:download="download.file",:href="download.url", v-if="download.url")
-</template>
-
 <script setup>
 import { reactive, toRaw, ref } from 'vue'
 const props = defineProps({
@@ -36,6 +30,12 @@ function saveSVG(pic) {
 }
 
 </script>
+
+<template lang="pug">
+.snapshot
+  la-camera(@click="saveSVG(svg)")
+  a(ref="anchor",target="_blank",:download="download.file",:href="download.url", v-if="download.url")
+</template>
 
 <style  scoped>
 .snapshot {

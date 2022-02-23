@@ -1,14 +1,3 @@
-<template lang="pug">
-.tiles
-  home-tile-item(
-    v-for="(area,i) in sorted", 
-    :key="area.title", 
-    :item="area", 
-    :i="i",
-    :total="sorted.length",
-    )  
-</template>
-
 <script setup>
 const props = defineProps({
   rows: Object,
@@ -36,6 +25,17 @@ function sortList(list) {
 
 
 </script>
+
+<template lang="pug">
+.tiles
+  home-tile-item(
+    v-for="(area,i) in sorted", 
+    :key="area.title", 
+    :item="area", 
+    :i="i",
+    :total="sorted.length",
+    )  
+</template>
 
 <style  scoped>
 .tiles {

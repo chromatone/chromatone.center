@@ -1,44 +1,3 @@
-<template lang="pug">
-.waveform
-  svg.min-h-4em.w-full.cursor-pointer(
-    version="1.1",
-    baseProfile="full",
-    :viewBox="`0 0 ${width} ${height}`",
-    xmlns="http://www.w3.org/2000/svg",
-    @mousedown="playChroma(chroma); pressed = true"
-    @touchstart.prevent.stop="playChroma(chroma); pressed = true"
-    @touchend="stopChroma(chroma); pressed = false"
-    @touchcancel="stopChroma(chroma); pressed = false"
-    @mouseup="stopChroma(chroma); pressed = false"
-    @mouseleave="stopChroma(chroma); pressed = false"
-  )
-    line(
-      x1="0"
-      x2="1200"
-      y1="400"
-      y2="400"
-      stroke="gray"
-      stroke-width="1"
-    )
-    g(
-      v-for="(note,n) in activeNotes"
-      :key="n"
-    )
-      polyline(
-        :stroke="pitchColor(n, 2)"
-        :points="waves[n]"
-        stroke-width="4"
-        fill="none"
-        opacity="0.5"
-      )
-    polyline(
-      :stroke="sumColor.hsl"
-      :points="sumLine"
-      stroke-width="16"
-      fill="none"
-    )
-</template>
-
 <script setup>
 import { notes, pitchColor, rotateArray } from '@theory'
 import { reactive, computed, ref, watch, watchEffect } from 'vue'
@@ -148,6 +107,47 @@ const sumColor = computed(() => {
 
 
 </script>
+
+<template lang="pug">
+.waveform
+  svg.min-h-4em.w-full.cursor-pointer(
+    version="1.1",
+    baseProfile="full",
+    :viewBox="`0 0 ${width} ${height}`",
+    xmlns="http://www.w3.org/2000/svg",
+    @mousedown="playChroma(chroma); pressed = true"
+    @touchstart.prevent.stop="playChroma(chroma); pressed = true"
+    @touchend="stopChroma(chroma); pressed = false"
+    @touchcancel="stopChroma(chroma); pressed = false"
+    @mouseup="stopChroma(chroma); pressed = false"
+    @mouseleave="stopChroma(chroma); pressed = false"
+  )
+    line(
+      x1="0"
+      x2="1200"
+      y1="400"
+      y2="400"
+      stroke="gray"
+      stroke-width="1"
+    )
+    g(
+      v-for="(note,n) in activeNotes"
+      :key="n"
+    )
+      polyline(
+        :stroke="pitchColor(n, 2)"
+        :points="waves[n]"
+        stroke-width="4"
+        fill="none"
+        opacity="0.5"
+      )
+    polyline(
+      :stroke="sumColor.hsl"
+      :points="sumLine"
+      stroke-width="16"
+      fill="none"
+    )
+</template>
 
 <style scoped>
 .waveform {

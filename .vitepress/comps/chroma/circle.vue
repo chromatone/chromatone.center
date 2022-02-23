@@ -1,3 +1,35 @@
+<script setup>
+const props = defineProps({
+  pitch: { type: Number, default: null },
+  chroma: { type: String, default: '1001000100101' },
+  type: { type: String, default: '' },
+  tonic: { type: Number, default: 0 },
+});
+import { notes, rotateArray, getCircleCoord, pitchColor } from '@theory'
+import { colord } from 'colord'
+import { chromaColorMix } from "@use/colors.js";
+import { chordType, scaleType } from '@use/theory.js'
+import { globalScale, playChroma, stopChroma } from '@use/chroma'
+const pressed = ref(false);
+
+
+
+const actualPitch = computed(() => {
+  if (props.pitch === 0 || props.pitch) {
+    return props.pitch
+  } else {
+    return globalScale.tonic
+  }
+})
+
+const actualChroma = computed(() => {
+  return rotateArray(props.chroma.split(''), -actualPitch.value)
+})
+const chord = computed(() => chordType.get(props.chroma));
+const scale = computed(() => scaleType.get(props.chroma).name)
+
+</script>
+
 <template lang="pug">
 svg.select-none.max-w-12em.my-4.mx-auto(
   version="1.1",
@@ -73,38 +105,6 @@ svg.select-none.max-w-12em.my-4.mx-auto(
       fill="white"
       ) {{ type }}
 </template>
-
-<script setup>
-const props = defineProps({
-  pitch: { type: Number, default: null },
-  chroma: { type: String, default: '1001000100101' },
-  type: { type: String, default: '' },
-  tonic: { type: Number, default: 0 },
-});
-import { notes, rotateArray, getCircleCoord, pitchColor } from '@theory'
-import { colord } from 'colord'
-import { chromaColorMix } from "@use/colors.js";
-import { chordType, scaleType } from '@use/theory.js'
-import { globalScale, playChroma, stopChroma } from '@use/chroma'
-const pressed = ref(false);
-
-
-
-const actualPitch = computed(() => {
-  if (props.pitch === 0 || props.pitch) {
-    return props.pitch
-  } else {
-    return globalScale.tonic
-  }
-})
-
-const actualChroma = computed(() => {
-  return rotateArray(props.chroma.split(''), -actualPitch.value)
-})
-const chord = computed(() => chordType.get(props.chroma));
-const scale = computed(() => scaleType.get(props.chroma).name)
-
-</script>
 
 <style scoped>
 .center {

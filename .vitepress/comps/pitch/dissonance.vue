@@ -1,3 +1,102 @@
+<script setup>
+import { pitchColor, notes, freqColor } from '@theory'
+import { useSvgMouse } from '@use/mouse.js'
+import { MonoSynth, start } from 'tone'
+
+
+const box = {
+  width: 1200,
+  height: 600,
+  padW: 100,
+  padH: 100,
+}
+
+const cents = [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200];
+const intervals = ['1P', 'm2', 'M2', 'm3', 'M3', 'P4', 'TT', 'P5', 'm6', 'M6', 'm7', 'M7', 'P8']
+const fractions = ['1/1', '16/15', '9/8', '6/5', '5/4', '4/3', '45/32', '3/2', '8/5', '5/3', '9/5', '15/8', '2/1'];
+const fracPos = fractions.map(fr => 1200 * Math.log2(fr.split('/')[0] / fr.split('/')[1]));
+
+const { svg, area, mouse } = useSvgMouse();
+
+
+const freq = reactive({
+  main: 220,
+  cents: computed(() => {
+    return (mouse.normX * 1200)
+  }),
+  hz: computed(() => {
+    return freq.main * Math.pow(2, freq.cents / 1200)
+  }),
+});
+
+const synth = reactive({
+  started: false,
+  playing: false,
+  osc: 'sawtooth8',
+  oscs: ['sawtooth8', 'sine'],
+  envelope: {
+    attack: 0.2,
+    decay: 0.2,
+    sustain: 1,
+    release: 1,
+  },
+  setOsc(osc) {
+    synth.osc = osc
+    synthOne.set({
+      oscillator: {
+        type: osc
+      }
+    });
+    synthTwo.set({
+      oscillator: {
+        type: osc
+      }
+    })
+  }
+})
+
+let synthOne, synthTwo
+
+function initSynth() {
+  if (!synth.started) {
+    synthOne = new MonoSynth({
+      oscillator: {
+        type: synth.osc
+      },
+      filterEnvelope: synth.envelope,
+      volume: -4
+    }).toDestination()
+    synthTwo = new MonoSynth({
+      oscillator: {
+        type: synth.osc,
+      },
+      filterEnvelope: synth.envelope,
+      volume: -4
+    }).toDestination()
+    synth.started = true
+  }
+}
+
+
+watch([() => freq.hz, () => mouse.pressed], (hz) => {
+  if (!synth.started) return
+  if (mouse.pressed) {
+    if (!synth.playing && mouse.inside) {
+      synth.playing = true
+      synthOne.triggerAttack(freq.main)
+      synthTwo.triggerAttack(freq.hz)
+    } else {
+      synthTwo.frequency.rampTo(freq.hz)
+    }
+  } else {
+    synth.playing = false
+    synthOne.triggerRelease()
+    synthTwo.triggerRelease()
+  }
+});
+
+</script>
+
 <template lang="pug">
 .fullscreen-container#screen.rounded-4xl
   full-screen.absolute.top-2.right-2
@@ -266,105 +365,6 @@
         y="265"
       ) START AUDIO
 </template>
-
-<script setup>
-import { pitchColor, notes, freqColor } from '@theory'
-import { useSvgMouse } from '@use/mouse.js'
-import { MonoSynth, start } from 'tone'
-
-
-const box = {
-  width: 1200,
-  height: 600,
-  padW: 100,
-  padH: 100,
-}
-
-const cents = [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200];
-const intervals = ['1P', 'm2', 'M2', 'm3', 'M3', 'P4', 'TT', 'P5', 'm6', 'M6', 'm7', 'M7', 'P8']
-const fractions = ['1/1', '16/15', '9/8', '6/5', '5/4', '4/3', '45/32', '3/2', '8/5', '5/3', '9/5', '15/8', '2/1'];
-const fracPos = fractions.map(fr => 1200 * Math.log2(fr.split('/')[0] / fr.split('/')[1]));
-
-const { svg, area, mouse } = useSvgMouse();
-
-
-const freq = reactive({
-  main: 220,
-  cents: computed(() => {
-    return (mouse.normX * 1200)
-  }),
-  hz: computed(() => {
-    return freq.main * Math.pow(2, freq.cents / 1200)
-  }),
-});
-
-const synth = reactive({
-  started: false,
-  playing: false,
-  osc: 'sawtooth8',
-  oscs: ['sawtooth8', 'sine'],
-  envelope: {
-    attack: 0.2,
-    decay: 0.2,
-    sustain: 1,
-    release: 1,
-  },
-  setOsc(osc) {
-    synth.osc = osc
-    synthOne.set({
-      oscillator: {
-        type: osc
-      }
-    });
-    synthTwo.set({
-      oscillator: {
-        type: osc
-      }
-    })
-  }
-})
-
-let synthOne, synthTwo
-
-function initSynth() {
-  if (!synth.started) {
-    synthOne = new MonoSynth({
-      oscillator: {
-        type: synth.osc
-      },
-      filterEnvelope: synth.envelope,
-      volume: -4
-    }).toDestination()
-    synthTwo = new MonoSynth({
-      oscillator: {
-        type: synth.osc,
-      },
-      filterEnvelope: synth.envelope,
-      volume: -4
-    }).toDestination()
-    synth.started = true
-  }
-}
-
-
-watch([() => freq.hz, () => mouse.pressed], (hz) => {
-  if (!synth.started) return
-  if (mouse.pressed) {
-    if (!synth.playing && mouse.inside) {
-      synth.playing = true
-      synthOne.triggerAttack(freq.main)
-      synthTwo.triggerAttack(freq.hz)
-    } else {
-      synthTwo.frequency.rampTo(freq.hz)
-    }
-  } else {
-    synth.playing = false
-    synthOne.triggerRelease()
-    synthTwo.triggerRelease()
-  }
-});
-
-</script>
 
 <style scoped>
 .pointer {

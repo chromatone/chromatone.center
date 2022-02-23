@@ -1,3 +1,32 @@
+<script setup>
+import { globalScale } from '@use/chroma'
+import { pitchColor } from '@theory'
+import melakarta from './melakarta.json'
+
+let mela = {}
+
+for (let i = 0; i < 72; i++) {
+  let raga = melakarta[i]
+  mela[raga.category] = mela[raga.category] || {}
+  mela[raga.category][raga.group] = mela[raga.category][raga.group] || {}
+  mela[raga.category][raga.group][raga.num] = raga
+}
+
+const state = reactive({
+  chroma: useStorage('degrees-chroma', '101011010100'),
+  current: computed(() => Object.values(melakarta).find(raga => raga.chroma == state.chroma)),
+  cat: 'Shuddha Madhyama',
+  group: 'Indu Chakra',
+});
+
+watch(() => state.current, raga => {
+  if (!raga) return
+  state.cat = raga.category
+  state.group = raga.group
+});
+
+</script>
+
 <template lang="pug">
 .flex.flex-col.items-center.max-w-55ch.mx-auto
   scale-degrees-circle.w-full(
@@ -30,35 +59,6 @@
       .flex-1
       chroma-line(:chroma="raga.chroma")
 </template>
-
-<script setup>
-import { globalScale } from '@use/chroma'
-import { pitchColor } from '@theory'
-import melakarta from './melakarta.json'
-
-let mela = {}
-
-for (let i = 0; i < 72; i++) {
-  let raga = melakarta[i]
-  mela[raga.category] = mela[raga.category] || {}
-  mela[raga.category][raga.group] = mela[raga.category][raga.group] || {}
-  mela[raga.category][raga.group][raga.num] = raga
-}
-
-const state = reactive({
-  chroma: useStorage('degrees-chroma', '101011010100'),
-  current: computed(() => Object.values(melakarta).find(raga => raga.chroma == state.chroma)),
-  cat: 'Shuddha Madhyama',
-  group: 'Indu Chakra',
-});
-
-watch(() => state.current, raga => {
-  if (!raga) return
-  state.cat = raga.category
-  state.group = raga.group
-});
-
-</script>
 
 <style scoped>
 .active {

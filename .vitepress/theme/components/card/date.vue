@@ -1,10 +1,3 @@
-<template lang="pug">
-.text-sm.rounded-full.flex.items-center(v-if="fresh")
-  mdi-watering-can.can(v-if="superFresh")
-  mdi-watering-can-outline.can(v-else)
-  .flex-1.font-normal {{ elapsed }}
-</template>
-
 <script lang="ts" setup>
 import { computed } from 'vue'
 import { useTimeAgo } from '@vueuse/core'
@@ -42,6 +35,13 @@ const elapsed = useTimeAgo(new Date(props.date), {
   }
 });
 </script>
+
+<template lang="pug">
+.text-sm.rounded-full.flex.items-center(v-if="fresh")
+  mdi-watering-can.can(v-if="superFresh")
+  mdi-watering-can-outline.can(v-else)
+  .flex-1.font-normal {{ elapsed }}
+</template>
 
 <style scoped>
 .can {

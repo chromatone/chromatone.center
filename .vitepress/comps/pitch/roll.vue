@@ -1,33 +1,3 @@
-<template lang="pug">
-.flex.flex-col.mb-8
-  .flex.p-8.items-center(v-if="tuner.note")
-    .flex-1.text-center.font-bold.text-4xl.transition-all.duration-200.flex.items-center(:style="{ color: tuner.note.color }") 
-      .p-1.w-2em {{ tuner.note?.name }}
-      .p-1.w-1em {{ tuner.note?.octave }} 
-      .p-1.mt-2.w-6em.text-sm {{ tuner.note.cents > 0 ? '+' : '' }}{{ tuner.note.cents }} cents
-    .btn(@click="draw.running = !draw.running")
-      la-play(v-if="!draw.running")
-      la-pause(v-else)
-    .btn(@click="clear()")
-      la-times
-    .flex-1.text-center.font-bold  {{ tuner.bpm.toFixed(1) }} BPM
-
-  .fullscreen-container.rounded-4xl.cursor-pointer#screen(
-
-  )
-    control-start.absolute(@click="start()", v-if="!tuner.running") Start rolling 
-    .p-1.absolute.top-2.left-2.flex.items-center
-      la-angle-double-right
-      span {{ draw.speed.toFixed(1) }}
-    full-screen.absolute.bottom-2.right-2.z-30
-    canvas.w-full.h-full.rounded-4xl(    
-      @dblclick="clear()"
-      v-drag="dragSpeed"
-      :width="1920"
-      :height="1080"
-      ref="roll" )
-</template>
-
 <script setup>
 import { pitchColor, rotateArray } from '@theory'
 import { useTuner } from '@use/tuner.js'
@@ -144,6 +114,36 @@ function clear() {
 
 
 </script>
+
+<template lang="pug">
+.flex.flex-col.mb-8
+  .flex.p-8.items-center(v-if="tuner.note")
+    .flex-1.text-center.font-bold.text-4xl.transition-all.duration-200.flex.items-center(:style="{ color: tuner.note.color }") 
+      .p-1.w-2em {{ tuner.note?.name }}
+      .p-1.w-1em {{ tuner.note?.octave }} 
+      .p-1.mt-2.w-6em.text-sm {{ tuner.note.cents > 0 ? '+' : '' }}{{ tuner.note.cents }} cents
+    .btn(@click="draw.running = !draw.running")
+      la-play(v-if="!draw.running")
+      la-pause(v-else)
+    .btn(@click="clear()")
+      la-times
+    .flex-1.text-center.font-bold  {{ tuner.bpm.toFixed(1) }} BPM
+
+  .fullscreen-container.rounded-4xl.cursor-pointer#screen(
+
+  )
+    control-start.absolute(@click="start()", v-if="!tuner.running") Start rolling 
+    .p-1.absolute.top-2.left-2.flex.items-center
+      la-angle-double-right
+      span {{ draw.speed.toFixed(1) }}
+    full-screen.absolute.bottom-2.right-2.z-30
+    canvas.w-full.h-full.rounded-4xl(    
+      @dblclick="clear()"
+      v-drag="dragSpeed"
+      :width="1920"
+      :height="1080"
+      ref="roll" )
+</template>
 
 <style  scoped>
 .button {

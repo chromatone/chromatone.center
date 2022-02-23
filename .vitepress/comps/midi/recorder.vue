@@ -1,38 +1,3 @@
-<template lang="pug">
-.flex.flex-col.items-center
-  .text-2xl MIDI Recorder
-  .flex.flex-wrap
-    button(@click="play()")
-      la-play(v-if="!map.playing")
-      la-stop(v-else)
-    button(@click="map.recording = !map.recording")
-      la-circle(:style="{ color: map.recording ? 'red' : '' }")
-    button(@click="clear()")
-      la-trash-alt
-    button(@click="download")
-      la-download
-  //- .flex.flex-wrap
-  //-   input(type="text" v-model="info.title" placeholder="Title")
-  svg.h-30em.w-full(
-    version="1.1",
-    baseProfile="full",
-    :viewBox="`0 0 ${map.width} ${map.height}`",
-    xmlns="http://www.w3.org/2000/svg",
-  )
-    g(v-for="(track,t) in info.tracks" :key="track")
-      rect(
-        rx="0.4"
-        v-for="note in track.notes" :key="note"
-        :x="calcX(note.timestamp)"
-        :y="calcY(note.number)"
-        :width="note.duration * 1000 / (info.last - info.first)"
-        :height="map.height / (info.top - info.bottom)"
-        :fill="pitchColor((note.number + 3) % 12)"
-        )
-  //- .flex.flex-wrap
-  //-   .p-1 {{ info.top }} - {{ info.bottom }}
-</template>
-
 <script setup>
 import { Midi } from '@tonejs/midi'
 import { pitchColor } from '@theory'
@@ -132,6 +97,41 @@ function play() {
 
 
 </script>
+
+<template lang="pug">
+.flex.flex-col.items-center
+  .text-2xl MIDI Recorder
+  .flex.flex-wrap
+    button(@click="play()")
+      la-play(v-if="!map.playing")
+      la-stop(v-else)
+    button(@click="map.recording = !map.recording")
+      la-circle(:style="{ color: map.recording ? 'red' : '' }")
+    button(@click="clear()")
+      la-trash-alt
+    button(@click="download")
+      la-download
+  //- .flex.flex-wrap
+  //-   input(type="text" v-model="info.title" placeholder="Title")
+  svg.h-30em.w-full(
+    version="1.1",
+    baseProfile="full",
+    :viewBox="`0 0 ${map.width} ${map.height}`",
+    xmlns="http://www.w3.org/2000/svg",
+  )
+    g(v-for="(track,t) in info.tracks" :key="track")
+      rect(
+        rx="0.4"
+        v-for="note in track.notes" :key="note"
+        :x="calcX(note.timestamp)"
+        :y="calcY(note.number)"
+        :width="note.duration * 1000 / (info.last - info.first)"
+        :height="map.height / (info.top - info.bottom)"
+        :fill="pitchColor((note.number + 3) % 12)"
+        )
+  //- .flex.flex-wrap
+  //-   .p-1 {{ info.top }} - {{ info.bottom }}
+</template>
 
 <style scoped>
 button {

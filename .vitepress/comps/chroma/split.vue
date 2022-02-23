@@ -1,3 +1,10 @@
+<script setup>
+import { pitchColor, rotateArray, scales, notes, getCircleCoord } from '@theory'
+import { useTuner } from '@use/tuner.js'
+const { init, tuner, chain } = useTuner();
+
+</script>
+
 <template lang="pug">
 .fullscreen-container.rounded-4xl#screen
   control-start.absolute(v-if="!tuner.initiated" @click="init()") Start
@@ -50,13 +57,6 @@
         :y="getCircleCoord(i).y + 0.25",
       ) {{ notes[i].name }} 
 </template>
-
-<script setup>
-import { pitchColor, rotateArray, scales, notes, getCircleCoord } from '@theory'
-import { useTuner } from '@use/tuner.js'
-const { init, tuner, chain } = useTuner();
-
-</script>
 
 <style scoped>
 .note {

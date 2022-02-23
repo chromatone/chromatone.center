@@ -1,3 +1,23 @@
+<script setup>
+import { useMidi } from '@use/midi.js'
+import { pitchColor } from '@theory'
+
+const screen = ref()
+
+const active = ref(false)
+
+const { midi, midiAttack, midiRelease, setCC } = useMidi();
+
+function sortNotes(notes) {
+  if (!notes) return []
+  let arr = Object.values(notes)
+  return arr.sort((a, b) => {
+    return a.number > b.number ? -1 : 1
+  })
+}
+
+</script>
+
 <template lang="pug">
 .flex.flex-col
   midi-panel(:toChannel="false")
@@ -24,26 +44,6 @@
           @update="setCC(cc, $event)"
         )
 </template>
-
-<script setup>
-import { useMidi } from '@use/midi.js'
-import { pitchColor } from '@theory'
-
-const screen = ref()
-
-const active = ref(false)
-
-const { midi, midiAttack, midiRelease, setCC } = useMidi();
-
-function sortNotes(notes) {
-  if (!notes) return []
-  let arr = Object.values(notes)
-  return arr.sort((a, b) => {
-    return a.number > b.number ? -1 : 1
-  })
-}
-
-</script>
 
 <style  scoped>
 .header {

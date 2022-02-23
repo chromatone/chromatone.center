@@ -1,3 +1,9 @@
+<script setup>
+import { useRadar } from './radar.js'
+const { screen, radar } = useRadar()
+
+</script>
+
 <template lang="pug">
 .flex.flex-col
   midi-panel.mb-4
@@ -22,9 +28,3 @@
         midi-radar-layer-ticks.hihat(:channel="3"  :width="8")
         midi-radar-layer-ticks.fx(:channel="4" :in="350" :out="360" :width="10" :rounded="false")
 </template>
-
-<script setup>
-import { useRadar } from './radar.js'
-const { screen, radar } = useRadar()
-
-</script>

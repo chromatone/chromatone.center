@@ -1,3 +1,7 @@
+<script setup>
+import { isDark } from '@theme/composables/state.js'
+</script>
+
 <template lang="pug">
 g
   g#rects
@@ -69,10 +73,6 @@ g
     text(transform="matrix(1 0 0 1 337.6439 650.5206)", style="fill:#FFFFFF;  font-size:21.6557px;") CLICK A STEP TO ACTIVATE IT
     text(transform="matrix(1 0 0 1 302.5375 853.3745)", style="fill:#FFFFFF;  font-size:21.6557px;") CLICK A STEP CIRCLE TO SET ACCENT
 </template>
-
-<script setup>
-import { isDark } from '@theme/composables/state.js'
-</script>
 
 <style scoped>
 </style>

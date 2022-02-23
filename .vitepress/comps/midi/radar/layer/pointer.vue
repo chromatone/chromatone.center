@@ -1,7 +1,3 @@
-<template lang="pug">
-
-</template>
-
 <script setup>
 import paper from 'paper'
 
@@ -46,3 +42,7 @@ onBeforeUnmount(() => {
 
 
 </script>
+
+<template lang="pug">
+
+</template>

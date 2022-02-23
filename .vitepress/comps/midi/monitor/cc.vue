@@ -1,13 +1,3 @@
-<template lang="pug">
-.cc(
-  v-drag="dragger"
-)
-  .p-1.text-center.flex-1 {{ cc?.number }}
-  .absolute.h-full.z-10.bg-gray-500.top-0.bg-opacity-40.self-start(
-    :style="{ width: cc?.value * 100 + '%' }"
-  )
-</template>
-
 <script setup>
 const props = defineProps({
   cc: Object
@@ -27,6 +17,16 @@ function dragger({ movement: [x, y], dragging }) {
   emit('update', val)
 }
 </script>
+
+<template lang="pug">
+.cc(
+  v-drag="dragger"
+)
+  .p-1.text-center.flex-1 {{ cc?.number }}
+  .absolute.h-full.z-10.bg-gray-500.top-0.bg-opacity-40.self-start(
+    :style="{ width: cc?.value * 100 + '%' }"
+  )
+</template>
 
 <style  scoped>
 .cc {

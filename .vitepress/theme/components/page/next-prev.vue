@@ -1,3 +1,18 @@
+<script setup>
+import { useSiblings, useParents } from '../../composables/links.js'
+import { lchToHsl } from '@use/colors.js'
+import { useRoute, useData } from 'vitepress'
+const { theme } = useData()
+
+const { prev, next, current, total } = useSiblings();
+const parents = useParents();
+const colors = reactive({
+  current: computed(() => lchToHsl(current.value, total.value)),
+  prev: computed(() => lchToHsl(current.value - 1, total.value)),
+  next: computed(() => lchToHsl(current.value + 1, total.value))
+});
+</script>
+
 <template lang="pug">
 .next-and-prev-link
   .row(:style="{ borderColor: colors.current }")
@@ -33,21 +48,6 @@
       img.w-32(src="/media/logo/circle.svg")
       .p-2 Chromatone
 </template>
-
-<script setup>
-import { useSiblings, useParents } from '../../composables/links.js'
-import { lchToHsl } from '@use/colors.js'
-import { useRoute, useData } from 'vitepress'
-const { theme } = useData()
-
-const { prev, next, current, total } = useSiblings();
-const parents = useParents();
-const colors = reactive({
-  current: computed(() => lchToHsl(current.value, total.value)),
-  prev: computed(() => lchToHsl(current.value - 1, total.value)),
-  next: computed(() => lchToHsl(current.value + 1, total.value))
-});
-</script>
 
 <style scoped>
 .next-and-prev-link {

@@ -1,3 +1,26 @@
+<script setup>
+import { useTempo } from '@use/tempo'
+import { isDark } from '@theme/composables/state.js'
+const fill = computed(() => isDark.value ? '#333' : '#eee');
+
+const tempo = useTempo()
+
+const center = reactive({
+  radius: 120,
+  thick: 60,
+});
+
+function drag(event) {
+  tempo.bpm += (event.delta[0] - event.delta[1]) / 4
+}
+
+function setTempo(diff) {
+  tempo.bpm = Math.round(diff)
+}
+
+
+</script>
+
 <template lang="pug">
 g.center(
   style="touch-action:none"
@@ -96,29 +119,6 @@ g.center(
         y="65"
       )
 </template>
-
-<script setup>
-import { useTempo } from '@use/tempo'
-import { isDark } from '@theme/composables/state.js'
-const fill = computed(() => isDark.value ? '#333' : '#eee');
-
-const tempo = useTempo()
-
-const center = reactive({
-  radius: 120,
-  thick: 60,
-});
-
-function drag(event) {
-  tempo.bpm += (event.delta[0] - event.delta[1]) / 4
-}
-
-function setTempo(diff) {
-  tempo.bpm = Math.round(diff)
-}
-
-
-</script>
 
 <style scoped>
 .arc {

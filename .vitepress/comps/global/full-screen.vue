@@ -1,11 +1,3 @@
-<template lang="pug">
-button.text-button(
-  v-show="supported"
-  @click="toggle()"
-)
-  la-expand
-</template>
-
 <script setup>
 import { useFullscreen } from '@vueuse/core'
 
@@ -36,6 +28,14 @@ function toggle() {
 const supported = computed(() => full.value?.isSupported);
 
 </script>
+
+<template lang="pug">
+button.text-button(
+  v-show="supported"
+  @click="toggle()"
+)
+  la-expand
+</template>
 
 <style scoped>
 </style>

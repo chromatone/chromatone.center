@@ -1,3 +1,18 @@
+<script setup>
+import { notes } from '@theory'
+import { state } from './state.js'
+import { globalScale } from '@use/chroma'
+import { onKeyStroke } from '@vueuse/core'
+
+onKeyStroke(' ', (e) => {
+  e.preventDefault()
+  state.stopped = !state.stopped
+})
+
+const table = ref();
+
+</script>
+  
 <template lang="pug">
 .flex.flex-col.w-full.flex-auto
   client-only
@@ -43,21 +58,6 @@
       pt-shift
 
 </template>
-  
-<script setup>
-import { notes } from '@theory'
-import { state } from './state.js'
-import { globalScale } from '@use/chroma'
-import { onKeyStroke } from '@vueuse/core'
-
-onKeyStroke(' ', (e) => {
-  e.preventDefault()
-  state.stopped = !state.stopped
-})
-
-const table = ref();
-
-</script>
   
 <style  scoped>
 .dim {

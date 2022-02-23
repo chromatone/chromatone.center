@@ -1,3 +1,106 @@
+<script setup>
+import { ref, reactive, computed } from 'vue'
+import { freqColor, freqPitch, notes, pitchFreq } from '@theory'
+import { MonoSynth, start } from 'tone'
+
+const started = ref(false)
+function startApp() {
+  start()
+  started.value = true
+}
+
+import { useSvgMouse } from '@use/mouse.js'
+
+const { svg, area, mouse } = useSvgMouse();
+
+
+const freq = reactive({
+  min: 10,
+  max: 20000,
+  marks: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000, 20000],
+  nums: [10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000, 20000],
+  As: [22.5, 55, 110, 220, 440, 880, 1760, 3520, 7040, 14080],
+  Cs: [16, 32, 65, 130.813, 261, 523, 1046, 2093, 4186, 8372, 16744],
+  hz: computed(() => freq.toHz(mouse.normX)),
+  color: computed(() => freqColor(freq.hz)),
+  pitch: computed(() => (freqPitch(freq.hz) + 120) % 12),
+  note: computed(() => {
+    let note = Math.round(freq.pitch)
+    if (note > 11.5) note = 0
+    return notes[note]
+  }),
+  cents: computed(() => ((freq.pitch - freq.pitch.toFixed(0)) * 100).toFixed(0)),
+  toNormX(hz) {
+    return ((Math.log(hz) - Math.log(freq.min)) / (Math.log(freq.max) - Math.log(freq.min)))
+  },
+  toHz(pos) {
+    return Math.pow(10, (pos * (Math.log10(freq.max) - Math.log10(freq.min)) + Math.log10(freq.min)))
+  },
+})
+
+const pressure = reactive({
+  min: -80,
+  max: 10,
+  marks: [-80, -70, -60, -50, -40, -30, -20, -10, 0, 10],
+  db: computed(() => pressure.toDb(mouse.normY)),
+  toDb(pos) {
+    return (pressure.max - pressure.min) * pos + pressure.min
+  },
+  toNormY(db) {
+    return (db - pressure.min) / (pressure.max - pressure.min)
+  }
+})
+
+
+
+const points = reactive({
+  list: [],
+  add() {
+    let hz = freq.toHz(mouse.normX)
+    let synth = new MonoSynth({
+      oscillator: {
+        type: "sine"
+      },
+      volume: pressure.db
+    }).toDestination()
+    synth.triggerAttack(hz, mouse.normY)
+    let pitch = (freqPitch(hz) + 120) % 12
+    if (pitch > 11.5) pitch = 0
+    let cents = ((pitch - pitch.toFixed(0)) * 100).toFixed(0)
+    points.list.push({
+      synth,
+      x: mouse.x,
+      y: mouse.y,
+      hz,
+      pitch,
+      cents,
+      note: notes?.[Math.round(pitch)]?.name,
+      color: freqColor(hz),
+    })
+  },
+  line: computed(() => {
+    let line = []
+    let list = [...points.list]
+    list.sort((p1, p2) => p1.x < p2.x ? -1 : 1)
+    list.forEach(p => {
+      line.push([p.x, p.y].join(','))
+    })
+    return line.join(' ')
+  }),
+  clear() {
+    points.list.forEach(point => {
+      point.synth.triggerRelease()
+    })
+    points.list.splice(0, points.list.length)
+  },
+  remove(idx) {
+    points.list?.[idx].synth.triggerRelease()
+    points.list.splice(idx, 1)
+  }
+});
+
+</script>
+
 <template lang="pug">
 .fullscreen-container.rounded-4xl#screen.p-4.mb-8
   full-screen.absolute.right-2.top-2
@@ -288,109 +391,6 @@
         y="265"
       ) START AUDIO
 </template>
-
-<script setup>
-import { ref, reactive, computed } from 'vue'
-import { freqColor, freqPitch, notes, pitchFreq } from '@theory'
-import { MonoSynth, start } from 'tone'
-
-const started = ref(false)
-function startApp() {
-  start()
-  started.value = true
-}
-
-import { useSvgMouse } from '@use/mouse.js'
-
-const { svg, area, mouse } = useSvgMouse();
-
-
-const freq = reactive({
-  min: 10,
-  max: 20000,
-  marks: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000, 20000],
-  nums: [10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000, 20000],
-  As: [22.5, 55, 110, 220, 440, 880, 1760, 3520, 7040, 14080],
-  Cs: [16, 32, 65, 130.813, 261, 523, 1046, 2093, 4186, 8372, 16744],
-  hz: computed(() => freq.toHz(mouse.normX)),
-  color: computed(() => freqColor(freq.hz)),
-  pitch: computed(() => (freqPitch(freq.hz) + 120) % 12),
-  note: computed(() => {
-    let note = Math.round(freq.pitch)
-    if (note > 11.5) note = 0
-    return notes[note]
-  }),
-  cents: computed(() => ((freq.pitch - freq.pitch.toFixed(0)) * 100).toFixed(0)),
-  toNormX(hz) {
-    return ((Math.log(hz) - Math.log(freq.min)) / (Math.log(freq.max) - Math.log(freq.min)))
-  },
-  toHz(pos) {
-    return Math.pow(10, (pos * (Math.log10(freq.max) - Math.log10(freq.min)) + Math.log10(freq.min)))
-  },
-})
-
-const pressure = reactive({
-  min: -80,
-  max: 10,
-  marks: [-80, -70, -60, -50, -40, -30, -20, -10, 0, 10],
-  db: computed(() => pressure.toDb(mouse.normY)),
-  toDb(pos) {
-    return (pressure.max - pressure.min) * pos + pressure.min
-  },
-  toNormY(db) {
-    return (db - pressure.min) / (pressure.max - pressure.min)
-  }
-})
-
-
-
-const points = reactive({
-  list: [],
-  add() {
-    let hz = freq.toHz(mouse.normX)
-    let synth = new MonoSynth({
-      oscillator: {
-        type: "sine"
-      },
-      volume: pressure.db
-    }).toDestination()
-    synth.triggerAttack(hz, mouse.normY)
-    let pitch = (freqPitch(hz) + 120) % 12
-    if (pitch > 11.5) pitch = 0
-    let cents = ((pitch - pitch.toFixed(0)) * 100).toFixed(0)
-    points.list.push({
-      synth,
-      x: mouse.x,
-      y: mouse.y,
-      hz,
-      pitch,
-      cents,
-      note: notes?.[Math.round(pitch)]?.name,
-      color: freqColor(hz),
-    })
-  },
-  line: computed(() => {
-    let line = []
-    let list = [...points.list]
-    list.sort((p1, p2) => p1.x < p2.x ? -1 : 1)
-    list.forEach(p => {
-      line.push([p.x, p.y].join(','))
-    })
-    return line.join(' ')
-  }),
-  clear() {
-    points.list.forEach(point => {
-      point.synth.triggerRelease()
-    })
-    points.list.splice(0, points.list.length)
-  },
-  remove(idx) {
-    points.list?.[idx].synth.triggerRelease()
-    points.list.splice(idx, 1)
-  }
-});
-
-</script>
 
 <style scoped>
 .pointer {

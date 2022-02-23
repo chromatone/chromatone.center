@@ -1,13 +1,3 @@
-<template lang="pug">
-.flex.flex-wrap.m-1
-  .btn(
-    v-for="(title,variant) in variants"
-    :key="variant"
-    @click="setVariant(variant)"
-    :class="{ active: modelValue == variant }"
-  ) {{ title }}
-</template>
-
 <script setup>
 const props = defineProps({
   modelValue: {
@@ -25,6 +15,16 @@ function setVariant(variant) {
   emit('update:modelValue', variant)
 }
 </script>
+
+<template lang="pug">
+.flex.flex-wrap.m-1
+  .btn(
+    v-for="(title,variant) in variants"
+    :key="variant"
+    @click="setVariant(variant)"
+    :class="{ active: modelValue == variant }"
+  ) {{ title }}
+</template>
 
 <style scoped>
 .btn {

@@ -1,9 +1,3 @@
-<template lang="pug">
-.flex.flex-col.items-center
-  .render(:id="id") {{ abc }}
-  svg-save(:svg="id" v-if="save")
-</template>
-
 <script setup>
 const props = defineProps({
   abc: {
@@ -47,6 +41,12 @@ function clickListener(elem, tune, classes, analysis, drag) {
   console.log(elem)
 }
 </script>
+
+<template lang="pug">
+.flex.flex-col.items-center
+  .render(:id="id") {{ abc }}
+  svg-save(:svg="id" v-if="save")
+</template>
  
 <style scoped>
 </style>

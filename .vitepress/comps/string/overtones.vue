@@ -1,3 +1,201 @@
+<script setup>
+import { useStorage, useTimestamp } from '@vueuse/core'
+import { pitchColor, freqColor, notes, pitchFreq } from '@theory'
+import { Synth, start, Frequency } from "tone";
+import { globalScale } from '@use/chroma'
+
+const box = reactive({
+  width: 150,
+  height: 200,
+  padX: 30,
+  padY: 20,
+  x: 0,
+  y: 0,
+  stroke: 'currentColor',
+  fill: 'none',
+  'stroke-width': 0.2
+});
+
+let sine = null
+let saw = null
+const sound = reactive({
+  started: false,
+  enabled: false,
+  async init() {
+    if (sound.started) {
+      sound.enabled = !sound.enabled
+      return
+    }
+    await start()
+    sound.started = true
+    sound.enabled = true
+    sine = new Synth({
+      oscillator: {
+        type: 'sine',
+      },
+      volume: -5,
+      envelope: {
+        attack: 0.1,
+        decay: 0.01,
+        sustain: 1,
+        release: 4,
+      },
+    }).toDestination()
+    saw = new Synth({
+      oscillator: {
+        type: 'sawtooth8',
+      },
+      volume: -10,
+      envelope: {
+        attack: 0.1,
+        decay: 0.01,
+        sustain: 1,
+        release: 4,
+      },
+    }).toDestination()
+  },
+  playSaw(note) {
+    if (!sound.enabled) {
+      sound.init()
+      return null
+    }
+    saw.triggerAttack(note)
+  },
+  stopSaw() {
+    if (!sound.enabled) return
+    saw.triggerRelease()
+  },
+  play(note, order, immediate) {
+    if (!sound.enabled) {
+      sound.init()
+      return null
+    }
+    saw.volume.rampTo(-10 - 100 * order, 0.01)
+    sine.triggerAttack(note, '+0.1', (overtones.count - order) / overtones.count)
+  },
+  stop() {
+    if (!sound.enabled) return
+    sine.triggerRelease()
+  },
+  change(note, order) {
+    if (!sound.enabled) return
+    saw.volume.rampTo(-10 - 100 * order, 0.01)
+    sine.setNote(note)
+  }
+})
+
+const { timestamp, pause, resume } = useTimestamp({ controls: true, offset: -Date.now() })
+
+const time = reactive({
+  phase: computed(() => {
+    return time.speed * (timestamp.value / 100) % 100 / 100
+  }),
+  speed: 1,
+  move: true,
+})
+
+watch(() => time.move, move => {
+  if (move) { resume() } else { pause() }
+}, { immediate: true })
+
+const fundamental = reactive({
+  pitch: 0,
+  octave: 3,
+  frequency: computed(() => pitchFreq(globalScale.tonic, fundamental.octave)),
+  points: computed(() => {
+    let points = []
+    for (let pos = 0; pos <= box.width; pos += 1) {
+      let sum = 0
+      for (let partial = 0; partial <= overtones.count; partial++) {
+        sum = sum + calcWave(partial, pos, time.phase) / (Math.exp(partial / 2 + 1))
+      }
+      let y = box.height / (3 * overtones.count) * sum * 5
+      points[pos] = `${pos},${y}`
+    }
+    return points.join(' ')
+  }),
+  stroke: computed(() => freqColor(fundamental.frequency)),
+  note: computed(() => {
+    return Frequency(fundamental.frequency).toNote()
+  }),
+  cents: computed(() => {
+    return calcCents(fundamental.frequency, Frequency(fundamental.note).toFrequency())
+  }),
+});
+
+const overtones = reactive({
+  count: 7,
+  min: 2,
+  max: 15,
+  list: [],
+  intervals: ['P8', 'P8+P5', '2P8', '2P8+M3', '2P8+P5', '2P8+m7', '3P8', '3P8+M2', '3P8+M3', '3P8+TT', '3P8+P5', '3P8+n6', '3P8+P5+m3', '3P8+M7', '4P8']
+})
+
+watch(() => overtones.count, count => {
+  overtones.list = []
+  for (let i = 1; i <= count; i++) {
+    overtones.list[i - 1] = {
+      frequency: computed(() => {
+        return fundamental.frequency * (i + 1)
+      }),
+      note: computed(() => {
+        let freq = overtones.list[i - 1].frequency
+        return Frequency(freq).toNote()
+      }),
+      cents: computed(() => {
+        return calcCents(fundamental.frequency, overtones.list[i - 1].frequency).toFixed(0)
+      }),
+      centDiff: computed(() => {
+        return overtones.list[i - 1].cents - Math.round(overtones.list[i - 1].cents / 100) * 100
+      }),
+      position: computed(() => {
+        return i * (box.height - box.padY) / (overtones.count)
+      }),
+      stroke: computed(() => {
+        return freqColor(overtones.list[i - 1].frequency)
+      }),
+      amplitude: computed(() => {
+        return box.height / (3 * count * i / 2)
+      }),
+      points: computed(() => {
+        let points = []
+        for (let pos = 0; pos <= box.width; pos += 1) {
+          let y = overtones.list[i - 1].amplitude * calcWave(i, pos, time.phase)
+          points[pos] = `${pos},${y}`
+        }
+        return points.join(' ')
+      }),
+      dots: computed(() => {
+        let dots = []
+        for (let pos = 0; pos <= i; pos++) {
+          dots.push(box.width / i * pos)
+        }
+        return dots
+      })
+    }
+  }
+}, { immediate: true })
+
+function calcWave(num, x, time) {
+  return Math.sin(Math.PI * num * x / box.width) * Math.cos(time * num * 2 * Math.PI)
+}
+
+function calcSine(num, x, phase = 0) {
+  return Math.sin(Math.PI * 2 * phase + num / 2 * x / box.width * 2 * Math.PI)
+}
+
+function calcCents(base, freq) {
+  return -(1200 / Math.log10(2)) * (Math.log10(base / freq)) % 1200
+}
+</script>
+
+<style scoped>
+svg {
+  touch-action: none;
+  user-select: none;
+}
+</style>
+  
 <template lang="pug">
 .flex.flex-col.fullscreen-container.rounded-4xl#screen
   .controls.flex.flex-wrap.justify-center.-mb-8.z-2.mt-8
@@ -201,201 +399,3 @@
         :opacity="1 - i / (overtones.count + 2)"
       )
 </template>
-
-<style scoped>
-svg {
-  touch-action: none;
-  user-select: none;
-}
-</style>
-  
-<script setup>
-import { useStorage, useTimestamp } from '@vueuse/core'
-import { pitchColor, freqColor, notes, pitchFreq } from '@theory'
-import { Synth, start, Frequency } from "tone";
-import { globalScale } from '@use/chroma'
-
-const box = reactive({
-  width: 150,
-  height: 200,
-  padX: 30,
-  padY: 20,
-  x: 0,
-  y: 0,
-  stroke: 'currentColor',
-  fill: 'none',
-  'stroke-width': 0.2
-});
-
-let sine = null
-let saw = null
-const sound = reactive({
-  started: false,
-  enabled: false,
-  async init() {
-    if (sound.started) {
-      sound.enabled = !sound.enabled
-      return
-    }
-    await start()
-    sound.started = true
-    sound.enabled = true
-    sine = new Synth({
-      oscillator: {
-        type: 'sine',
-      },
-      volume: -5,
-      envelope: {
-        attack: 0.1,
-        decay: 0.01,
-        sustain: 1,
-        release: 4,
-      },
-    }).toDestination()
-    saw = new Synth({
-      oscillator: {
-        type: 'sawtooth8',
-      },
-      volume: -10,
-      envelope: {
-        attack: 0.1,
-        decay: 0.01,
-        sustain: 1,
-        release: 4,
-      },
-    }).toDestination()
-  },
-  playSaw(note) {
-    if (!sound.enabled) {
-      sound.init()
-      return null
-    }
-    saw.triggerAttack(note)
-  },
-  stopSaw() {
-    if (!sound.enabled) return
-    saw.triggerRelease()
-  },
-  play(note, order, immediate) {
-    if (!sound.enabled) {
-      sound.init()
-      return null
-    }
-    saw.volume.rampTo(-10 - 100 * order, 0.01)
-    sine.triggerAttack(note, '+0.1', (overtones.count - order) / overtones.count)
-  },
-  stop() {
-    if (!sound.enabled) return
-    sine.triggerRelease()
-  },
-  change(note, order) {
-    if (!sound.enabled) return
-    saw.volume.rampTo(-10 - 100 * order, 0.01)
-    sine.setNote(note)
-  }
-})
-
-const { timestamp, pause, resume } = useTimestamp({ controls: true, offset: -Date.now() })
-
-const time = reactive({
-  phase: computed(() => {
-    return time.speed * (timestamp.value / 100) % 100 / 100
-  }),
-  speed: 1,
-  move: true,
-})
-
-watch(() => time.move, move => {
-  if (move) { resume() } else { pause() }
-}, { immediate: true })
-
-const fundamental = reactive({
-  pitch: 0,
-  octave: 3,
-  frequency: computed(() => pitchFreq(globalScale.tonic, fundamental.octave)),
-  points: computed(() => {
-    let points = []
-    for (let pos = 0; pos <= box.width; pos += 1) {
-      let sum = 0
-      for (let partial = 0; partial <= overtones.count; partial++) {
-        sum = sum + calcWave(partial, pos, time.phase) / (Math.exp(partial / 2 + 1))
-      }
-      let y = box.height / (3 * overtones.count) * sum * 5
-      points[pos] = `${pos},${y}`
-    }
-    return points.join(' ')
-  }),
-  stroke: computed(() => freqColor(fundamental.frequency)),
-  note: computed(() => {
-    return Frequency(fundamental.frequency).toNote()
-  }),
-  cents: computed(() => {
-    return calcCents(fundamental.frequency, Frequency(fundamental.note).toFrequency())
-  }),
-});
-
-const overtones = reactive({
-  count: 7,
-  min: 2,
-  max: 15,
-  list: [],
-  intervals: ['P8', 'P8+P5', '2P8', '2P8+M3', '2P8+P5', '2P8+m7', '3P8', '3P8+M2', '3P8+M3', '3P8+TT', '3P8+P5', '3P8+n6', '3P8+P5+m3', '3P8+M7', '4P8']
-})
-
-watch(() => overtones.count, count => {
-  overtones.list = []
-  for (let i = 1; i <= count; i++) {
-    overtones.list[i - 1] = {
-      frequency: computed(() => {
-        return fundamental.frequency * (i + 1)
-      }),
-      note: computed(() => {
-        let freq = overtones.list[i - 1].frequency
-        return Frequency(freq).toNote()
-      }),
-      cents: computed(() => {
-        return calcCents(fundamental.frequency, overtones.list[i - 1].frequency).toFixed(0)
-      }),
-      centDiff: computed(() => {
-        return overtones.list[i - 1].cents - Math.round(overtones.list[i - 1].cents / 100) * 100
-      }),
-      position: computed(() => {
-        return i * (box.height - box.padY) / (overtones.count)
-      }),
-      stroke: computed(() => {
-        return freqColor(overtones.list[i - 1].frequency)
-      }),
-      amplitude: computed(() => {
-        return box.height / (3 * count * i / 2)
-      }),
-      points: computed(() => {
-        let points = []
-        for (let pos = 0; pos <= box.width; pos += 1) {
-          let y = overtones.list[i - 1].amplitude * calcWave(i, pos, time.phase)
-          points[pos] = `${pos},${y}`
-        }
-        return points.join(' ')
-      }),
-      dots: computed(() => {
-        let dots = []
-        for (let pos = 0; pos <= i; pos++) {
-          dots.push(box.width / i * pos)
-        }
-        return dots
-      })
-    }
-  }
-}, { immediate: true })
-
-function calcWave(num, x, time) {
-  return Math.sin(Math.PI * num * x / box.width) * Math.cos(time * num * 2 * Math.PI)
-}
-
-function calcSine(num, x, phase = 0) {
-  return Math.sin(Math.PI * 2 * phase + num / 2 * x / box.width * 2 * Math.PI)
-}
-
-function calcCents(base, freq) {
-  return -(1200 / Math.log10(2)) * (Math.log10(base / freq)) % 1200
-}
-</script>

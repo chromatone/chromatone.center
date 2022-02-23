@@ -1,3 +1,12 @@
+<script setup>
+import { useData } from 'vitepress'
+import { lchToHsl } from '@use/colors'
+const { theme, title, frontmatter } = useData()
+
+const rows = theme.value?.pages?.[frontmatter.value.list];
+
+</script>
+
 <template lang="pug">
 .list-blocks(v-if="rows")
   .my-8.mx-2(
@@ -12,15 +21,6 @@
       :color="lchToHsl(i, rows.length)"
       )  
 </template>
-
-<script setup>
-import { useData } from 'vitepress'
-import { lchToHsl } from '@use/colors'
-const { theme, title, frontmatter } = useData()
-
-const rows = theme.value?.pages?.[frontmatter.value.list];
-
-</script>
 
 <style  scoped>
 .list-blocks {

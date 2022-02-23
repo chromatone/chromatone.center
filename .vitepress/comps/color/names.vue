@@ -1,3 +1,11 @@
+<script setup>
+import { levelColor } from '@use/colors.js'
+const props = defineProps({
+  list: Object,
+  langs: Object,
+});
+</script>
+
 <template lang="pug">
 .overflow-y-scroll.w-full.my-16.max-w-100vw
   table.text-center.w-full
@@ -10,14 +18,6 @@
       td {{ i * 30 }}º
       td.p-4(v-for="name in color") {{ name }} 
 </template>
-
-<script setup>
-import { levelColor } from '@use/colors.js'
-const props = defineProps({
-  list: Object,
-  langs: Object,
-});
-</script>
 
 <style  scoped>
 </style>

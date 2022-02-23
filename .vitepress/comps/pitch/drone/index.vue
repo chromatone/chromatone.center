@@ -1,3 +1,27 @@
+<script setup>
+import { notes, pitchColor } from '@theory'
+import { useDrone } from './drone.js'
+
+const drone = useDrone()
+
+function setFreq(drag) {
+  drone.freq += drag.delta[0] / 10
+}
+
+const intervals = reactive({
+  fifths: {
+    title: '5P',
+    voices: [7, 19, 31],
+  },
+  octave: {
+    title: '8P',
+    voices: [-12, 0, 12],
+  },
+
+});
+
+</script>
+
 <template lang="pug">
 .max-w-55ch.mx-auto.flex.flex-col.items-stretch.w-full.transition-all.duration-500.ease-out.select-none.rounded-4xl.shadow-xl.border-8(
   :style="{ borderColor: drone.color }"
@@ -35,30 +59,6 @@
         @click="drone.pitch = note.pitch"
       ) {{ note.name }}
 </template>
-
-<script setup>
-import { notes, pitchColor } from '@theory'
-import { useDrone } from './drone.js'
-
-const drone = useDrone()
-
-function setFreq(drag) {
-  drone.freq += drag.delta[0] / 10
-}
-
-const intervals = reactive({
-  fifths: {
-    title: '5P',
-    voices: [7, 19, 31],
-  },
-  octave: {
-    title: '8P',
-    voices: [-12, 0, 12],
-  },
-
-});
-
-</script>
 
 <style scoped>
 </style>

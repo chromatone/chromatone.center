@@ -1,3 +1,8 @@
+<script setup>
+
+
+</script>
+
 <template lang="pug">
 g.transport(
   font-size="45"
@@ -18,11 +23,6 @@ g.transport(
       slot
 
 </template>
-
-<script setup>
-
-
-</script>
 
 <style scoped>
 .border {

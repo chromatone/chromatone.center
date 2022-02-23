@@ -1,17 +1,3 @@
-<template lang="pug">
-.flex.is-group
-  .flex.flex-wrap
-    .channel(
-      v-for="ch in 16" :key="ch"
-      :class="{ filtered: !midi.filter[ch], active: midi.note.channel == ch }"
-      @click="midi.filter[ch] = !midi.filter[ch]"
-    ) {{ ch }}
-  .channel.filtered.flex.items-center.justify-center(
-    @click="filterAll()"
-  ) ALL
-
-</template>
-
 <script setup>
 import { midi, midiRelease } from '@use/midi'
 
@@ -25,6 +11,20 @@ function filterAll() {
 }
 
 </script>
+
+<template lang="pug">
+.flex.is-group
+  .flex.flex-wrap
+    .channel(
+      v-for="ch in 16" :key="ch"
+      :class="{ filtered: !midi.filter[ch], active: midi.note.channel == ch }"
+      @click="midi.filter[ch] = !midi.filter[ch]"
+    ) {{ ch }}
+  .channel.filtered.flex.items-center.justify-center(
+    @click="filterAll()"
+  ) ALL
+
+</template>
 
 <style scoped>
 .channel {

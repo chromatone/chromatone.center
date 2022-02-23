@@ -1,3 +1,8 @@
+<script setup>
+import { lchToHsl, levelColor } from '@use/colors.js'
+
+</script>
+
 <template lang="pug">
 table.w-full.my-8
   tr
@@ -8,11 +13,6 @@ table.w-full.my-8
     td.p-8(:style="{ backgroundColor: lchToHsl(i + 1, 12, 1, 60) }") 
   
 </template>
-
-<script setup>
-import { lchToHsl, levelColor } from '@use/colors.js'
-
-</script>
 
 <style scoped>
 </style>

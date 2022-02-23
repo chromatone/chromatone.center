@@ -1,3 +1,9 @@
+<script setup>
+import { useSiblings } from '../../composables/links.js'
+const { current, total } = useSiblings();
+
+</script>
+
 <template lang="pug">
 card-box.p-4.mt-2.mb-12.flex.flex-col.max-w-65ch.mx-auto.text-center(
   v-if="$frontmatter.product"
@@ -9,12 +15,6 @@ card-box.p-4.mt-2.mb-12.flex.flex-col.max-w-65ch.mx-auto.text-center(
   .flex.mx-auto(v-if="$frontmatter?.product")
     shop-price(:product="$frontmatter?.product" :color="color")
 </template>
-
-<script setup>
-import { useSiblings } from '../../composables/links.js'
-const { current, total } = useSiblings();
-
-</script>
 
 <style scoped>
 </style>

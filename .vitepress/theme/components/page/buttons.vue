@@ -1,3 +1,13 @@
+<script setup>
+const props = defineProps({
+  buttons: Array,
+  color: {
+    type: String,
+    default: ''
+  }
+});
+</script>
+
 <template lang="pug">
 .flex.flex-wrap.mt-4(v-if="buttons && buttons.length > 0")
   a.button(v-for="link in buttons", :key="link.url", :href="link.url", target="_blank", :style="{ backgroundColor: color }") 
@@ -8,16 +18,6 @@
     la-discord(v-if="link?.type == 'discord'")
     span {{ link.text }}
 </template>
-
-<script setup>
-const props = defineProps({
-  buttons: Array,
-  color: {
-    type: String,
-    default: ''
-  }
-});
-</script>
 
 <style scoped>
 .button {

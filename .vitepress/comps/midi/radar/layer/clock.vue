@@ -1,7 +1,3 @@
-<template lang="pug">
-
-</template>
-
 <script setup>
 import { getCircleCoord } from '@theory'
 import { polarXY, radar } from '../radar.js'
@@ -61,6 +57,10 @@ onBeforeUnmount(() => {
 
 
 </script>
+
+<template lang="pug">
+
+</template>
 
 <style scoped>
 </style>

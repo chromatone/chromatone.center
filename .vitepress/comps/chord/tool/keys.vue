@@ -1,3 +1,28 @@
+<script setup>
+import { notes, pitchColor, scales } from '@theory'
+const props = defineProps({
+  accord: Object,
+});
+
+const whites = [...notes].filter(note => note.pos == 0)
+const blacks = [...notes].filter(note => note.pos == 1)
+
+
+defineEmits([
+  'selectRoot'
+])
+
+function isInChord(n) {
+  return props.accord.info.semitones.includes((24 + n - props.accord.root) % 12)
+}
+
+function getNoteColor(n) {
+  if (isInChord(n % 12)) return pitchColor(n % 12)
+  else if (scales.minor.steps[n]) return 'hsla(0,0%,90%,1)'
+  else return 'hsla(0,0%,40%,1)'
+}
+</script>
+
 <template lang="pug">
 svg.max-h-sm.w-full(
   version="1.1",
@@ -36,31 +61,6 @@ svg.max-h-sm.w-full(
 
 
 </template>
-
-<script setup>
-import { notes, pitchColor, scales } from '@theory'
-const props = defineProps({
-  accord: Object,
-});
-
-const whites = [...notes].filter(note => note.pos == 0)
-const blacks = [...notes].filter(note => note.pos == 1)
-
-
-defineEmits([
-  'selectRoot'
-])
-
-function isInChord(n) {
-  return props.accord.info.semitones.includes((24 + n - props.accord.root) % 12)
-}
-
-function getNoteColor(n) {
-  if (isInChord(n % 12)) return pitchColor(n % 12)
-  else if (scales.minor.steps[n]) return 'hsla(0,0%,90%,1)'
-  else return 'hsla(0,0%,40%,1)'
-}
-</script>
 
 <style scoped>
 </style>

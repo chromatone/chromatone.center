@@ -1,3 +1,31 @@
+<script setup>
+import { useTempo, tap } from '@use/tempo.js'
+import { useTuner } from '@use/tuner.js'
+import { onKeyStroke } from '@vueuse/core'
+const tempo = useTempo();
+const { init, tuner } = useTuner();
+
+
+onKeyStroke(' ', (e) => {
+  e.preventDefault()
+  tempo.playing = !tempo.playing
+});
+onKeyStroke('Enter', (e) => {
+  e.preventDefault()
+  tempo.stopped = true
+});
+
+function drag(event) {
+  tempo.bpm += (event.delta[0] - event.delta[1]) / 16
+}
+
+
+function setTempo(diff) {
+  tempo.bpm += diff
+}
+
+</script>
+
 <template lang="pug">
 .flex.flex-wrap.text-xl.w-full.mx-auto.justify-center
   .transport.flex.flex-wrap.is-group.m-1
@@ -66,34 +94,6 @@
     slot
 
 </template>
-
-<script setup>
-import { useTempo, tap } from '@use/tempo.js'
-import { useTuner } from '@use/tuner.js'
-import { onKeyStroke } from '@vueuse/core'
-const tempo = useTempo();
-const { init, tuner } = useTuner();
-
-
-onKeyStroke(' ', (e) => {
-  e.preventDefault()
-  tempo.playing = !tempo.playing
-});
-onKeyStroke('Enter', (e) => {
-  e.preventDefault()
-  tempo.stopped = true
-});
-
-function drag(event) {
-  tempo.bpm += (event.delta[0] - event.delta[1]) / 16
-}
-
-
-function setTempo(diff) {
-  tempo.bpm += diff
-}
-
-</script>
 
 <style scoped>
 .active {

@@ -1,3 +1,18 @@
+<script setup>
+import { useSiblings } from '../../composables/links.js'
+import { lchToHsl } from '@use/colors.js'
+import { isDark } from '@theme/composables/state'
+const { current, total } = useSiblings();
+
+const pageColor = computed(() => {
+  let l = isDark.value ? 40 : 60
+  return lchToHsl(current.value, total.value, 1, 20, l)
+});
+
+const lightColor = computed(() => lchToHsl(current.value, total.value, 1, 70, 60));
+
+</script>
+
 <template lang="pug">
 .header(
   :class="{ 'has-cover': $frontmatter.cover || $frontmatter.icon }"
@@ -16,21 +31,6 @@
     .absolute.-bottom-2rem.right-2rem
       shop-price(:product="$frontmatter?.product" :color="lightColor")
 </template>
-
-<script setup>
-import { useSiblings } from '../../composables/links.js'
-import { lchToHsl } from '@use/colors.js'
-import { isDark } from '@theme/composables/state'
-const { current, total } = useSiblings();
-
-const pageColor = computed(() => {
-  let l = isDark.value ? 40 : 60
-  return lchToHsl(current.value, total.value, 1, 20, l)
-});
-
-const lightColor = computed(() => lchToHsl(current.value, total.value, 1, 70, 60));
-
-</script>
 
 <style scoped>
 .header {

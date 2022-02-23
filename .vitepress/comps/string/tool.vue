@@ -1,3 +1,63 @@
+<script setup>
+import { useStorage } from '@vueuse/core'
+import { Note, Interval, Chord } from '@tonaljs/tonal'
+import { freqColor } from '@theory'
+import { colord } from 'colord'
+import { synthOnce } from '@use/synth.js'
+import { midiOnce } from '@use/midi.js'
+
+const props = defineProps({
+  instruments: Object,
+})
+
+const instrument = useStorage('instrument-calc', {
+  l: 430,
+  frets: 27,
+  title: 'Ukulele',
+  tuning: ['C4', 'G4', 'E4', 'A4'],
+});
+
+const tab = reactive([])
+
+const chord = computed(() => {
+  return Chord.detect(tab)
+})
+
+function selectNote(note, num, string) {
+  midiOnce(note);
+  synthOnce(note)
+  tab[string] = note
+}
+
+watch(() => instrument.value.title, title => {
+  const inst = props.instruments[title]
+  instrument.value.l = inst.l
+  instrument.value.frets = inst.frets
+  instrument.value.tuning = inst.tuning
+})
+
+const inlays = computed(() => {
+  return [3, 5, 7, 9, 12, 15, 17, 19, 21].filter(el => el < instrument.value.frets)
+})
+
+const octaves = computed(() => {
+  return [12, 24].filter(el => el < instrument.value.frets)
+})
+
+const frets = computed(() => {
+  let arr = []
+  for (let i = 1; i < instrument.value.frets; i++) {
+    arr.push((1 - Math.pow(0.9438743, i)))
+  }
+  return arr
+});
+
+function noteColor(note, semitones) {
+  return colord(freqColor(Note.freq(Note.transpose(note, Interval.fromSemitones(semitones))))).toHex()
+}
+
+</script>
+
 <template lang="pug">
 .flex.flex-col
   .flex.flex-wrap.items-center.m-auto
@@ -176,66 +236,6 @@
           :y="fret * 1000 - 11",
         ) {{ Note.transpose(string, Interval.fromSemitones(f + 1)) }}
 </template>
-
-<script setup>
-import { useStorage } from '@vueuse/core'
-import { Note, Interval, Chord } from '@tonaljs/tonal'
-import { freqColor } from '@theory'
-import { colord } from 'colord'
-import { synthOnce } from '@use/synth.js'
-import { midiOnce } from '@use/midi.js'
-
-const props = defineProps({
-  instruments: Object,
-})
-
-const instrument = useStorage('instrument-calc', {
-  l: 430,
-  frets: 27,
-  title: 'Ukulele',
-  tuning: ['C4', 'G4', 'E4', 'A4'],
-});
-
-const tab = reactive([])
-
-const chord = computed(() => {
-  return Chord.detect(tab)
-})
-
-function selectNote(note, num, string) {
-  midiOnce(note);
-  synthOnce(note)
-  tab[string] = note
-}
-
-watch(() => instrument.value.title, title => {
-  const inst = props.instruments[title]
-  instrument.value.l = inst.l
-  instrument.value.frets = inst.frets
-  instrument.value.tuning = inst.tuning
-})
-
-const inlays = computed(() => {
-  return [3, 5, 7, 9, 12, 15, 17, 19, 21].filter(el => el < instrument.value.frets)
-})
-
-const octaves = computed(() => {
-  return [12, 24].filter(el => el < instrument.value.frets)
-})
-
-const frets = computed(() => {
-  let arr = []
-  for (let i = 1; i < instrument.value.frets; i++) {
-    arr.push((1 - Math.pow(0.9438743, i)))
-  }
-  return arr
-});
-
-function noteColor(note, semitones) {
-  return colord(freqColor(Note.freq(Note.transpose(note, Interval.fromSemitones(semitones))))).toHex()
-}
-
-</script>
 
 <style scoped>
 .strings {

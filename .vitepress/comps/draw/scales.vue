@@ -1,3 +1,36 @@
+<script setup>
+import { notes, pitchColor, rotateArray } from '@theory'
+const box = reactive({
+  width: 210,
+  height: 297,
+  margin: 6,
+  head: 10,
+  padding: {
+    x: 4,
+    y: 4,
+    left: 24,
+  }
+});
+const chords = {
+  scale: '101101011010',
+  majors: [
+    { pitch: 3, chroma: '001100010010', type: 'M7' },
+    { pitch: 8, chroma: '100100011000', type: 'M7' },
+    { pitch: 10, chroma: '001001001010', type: '7' },
+  ],
+  minors: [
+    { pitch: 0, chroma: '100100010010', type: 'm7' },
+    { pitch: 5, chroma: '100101001000', type: 'm7' },
+    { pitch: 7, chroma: '001001010010', type: 'm7' },
+    { pitch: 2, chroma: '101001001000', type: 'ø7' },
+  ]
+};
+const scales = {
+  major: ['Ionian', 'Lydian', 'Myxolydian'],
+  minor: ['Aeolian', 'Dorian', 'Phrygian', 'Locrian']
+};
+</script>
+
 <template lang="pug">
 .p-4.mx-auto.my-8
   svg#diatonic.m-8.select-none(
@@ -90,39 +123,6 @@
       stroke-width="0.2"
     )
 </template>
-
-<script setup>
-import { notes, pitchColor, rotateArray } from '@theory'
-const box = reactive({
-  width: 210,
-  height: 297,
-  margin: 6,
-  head: 10,
-  padding: {
-    x: 4,
-    y: 4,
-    left: 24,
-  }
-});
-const chords = {
-  scale: '101101011010',
-  majors: [
-    { pitch: 3, chroma: '001100010010', type: 'M7' },
-    { pitch: 8, chroma: '100100011000', type: 'M7' },
-    { pitch: 10, chroma: '001001001010', type: '7' },
-  ],
-  minors: [
-    { pitch: 0, chroma: '100100010010', type: 'm7' },
-    { pitch: 5, chroma: '100101001000', type: 'm7' },
-    { pitch: 7, chroma: '001001010010', type: 'm7' },
-    { pitch: 2, chroma: '101001001000', type: 'ø7' },
-  ]
-};
-const scales = {
-  major: ['Ionian', 'Lydian', 'Myxolydian'],
-  minor: ['Aeolian', 'Dorian', 'Phrygian', 'Locrian']
-};
-</script>
 
 <style scoped>
 @media screen {

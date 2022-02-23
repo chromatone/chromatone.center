@@ -1,7 +1,3 @@
-<template lang="pug">
-#map.h-400px.rounded-3xl.overflow-hidden.shadow-xl.mb-8.cursor-pointer(tabindex="1")
-</template>
-
 <script setup>
 import 'ol/ol.css'
 import { Map, View } from 'ol';
@@ -88,6 +84,10 @@ onMounted(() => {
 });
 
 </script>
+
+<template lang="pug">
+#map.h-400px.rounded-3xl.overflow-hidden.shadow-xl.mb-8.cursor-pointer(tabindex="1")
+</template>
 
 <style scoped>
 </style>

@@ -1,19 +1,3 @@
-<template lang="pug">
-.flex.flex-col.items-center.w-full
-
-  .flex.flex-col.justify-center.items-center.relative(ref="screen" class="bg-light-600 dark_bg-dark-700")
-    control-start.absolute(v-if="!roll.initiated" @click="initiate()") Start
-    full-screen.absolute.bottom-6.right-6.z-30(:el="screen")
-    .absolute.top-6.left-4.text-2xl x{{ roll.speed }}
-    canvas#spectrogram.m-4.w-full.rounded-4xl.cursor-pointer(
-      v-drag="dragScreen"
-      :width="roll.width"
-      :height="roll.height"  
-    )
-  .flex.justify-center
-    control-choose(v-model="roll.direction" :variants="{ 1: 'Vertical', 0: 'Horizontal' }")
-</template>
-
 <script setup>
 import { useRafFn } from '@vueuse/core'
 import { rotateArray } from '@theory'
@@ -95,6 +79,22 @@ function colorIt(pitch = 0, value = 1, opacity = 1) {
   return `hsla(${pitch * 30}, ${value * 100}%, ${value * 60}%, ${opacity})`
 }
 </script>
+
+<template lang="pug">
+.flex.flex-col.items-center.w-full
+
+  .flex.flex-col.justify-center.items-center.relative(ref="screen" class="bg-light-600 dark_bg-dark-700")
+    control-start.absolute(v-if="!roll.initiated" @click="initiate()") Start
+    full-screen.absolute.bottom-6.right-6.z-30(:el="screen")
+    .absolute.top-6.left-4.text-2xl x{{ roll.speed }}
+    canvas#spectrogram.m-4.w-full.rounded-4xl.cursor-pointer(
+      v-drag="dragScreen"
+      :width="roll.width"
+      :height="roll.height"  
+    )
+  .flex.justify-center
+    control-choose(v-model="roll.direction" :variants="{ 1: 'Vertical', 0: 'Horizontal' }")
+</template>
 
 <style scoped>
 </style>

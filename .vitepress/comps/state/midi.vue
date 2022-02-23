@@ -1,3 +1,19 @@
+<script setup>
+import { useMidi } from '@use/midi.js'
+import { pitchColor } from '@theory'
+import { onClickOutside } from '@vueuse/core'
+
+
+const panel = useStorage('global-midi-panel', false)
+const target = ref(null)
+onClickOutside(target, () => {
+
+  panel.value = false
+})
+
+const { midi } = useMidi();
+</script>
+
 <template lang="pug">
 .midi(
   :class="{ active: panel }"
@@ -14,22 +30,6 @@
     transition(name="panel")
       midi-panel.panel(v-if="panel" ref="target")
 </template>
-
-<script setup>
-import { useMidi } from '@use/midi.js'
-import { pitchColor } from '@theory'
-import { onClickOutside } from '@vueuse/core'
-
-
-const panel = useStorage('global-midi-panel', false)
-const target = ref(null)
-onClickOutside(target, () => {
-
-  panel.value = false
-})
-
-const { midi } = useMidi();
-</script>
 
 <style scoped>
 .midi.active {

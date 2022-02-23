@@ -1,3 +1,17 @@
+<script setup>
+import { useData } from 'vitepress'
+import { lchToHsl } from '@use/colors.js'
+const props = defineProps({
+  item: Object,
+  i: Number,
+  total: Number,
+});
+
+const { theme } = useData();
+
+const color = computed(() => lchToHsl(props.i, props.total));
+</script>
+
 <template lang="pug">
 .flex.p-4.flex-col.tile.border-t-16(:i="i", :total="total"
   :style="{ borderColor: lchToHsl(i, total) }",
@@ -17,20 +31,6 @@
       )
       .m-2.p-2(:i="p", :total="theme.pages?.[item.data.list].length") {{ page  .title }}
 </template>
-
-<script setup>
-import { useData } from 'vitepress'
-import { lchToHsl } from '@use/colors.js'
-const props = defineProps({
-  item: Object,
-  i: Number,
-  total: Number,
-});
-
-const { theme } = useData();
-
-const color = computed(() => lchToHsl(props.i, props.total));
-</script>
 
 <style scoped>
 .tile {

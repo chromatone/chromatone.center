@@ -1,3 +1,31 @@
+<script setup>
+import { renderMidi } from '@use/midiRender'
+import { tracks } from '@use/sequence'
+const loops = useStorage('tempo-circle-loops', [
+  {
+    over: 8,
+    under: 8,
+    volume: 1,
+    sound: 'A'
+  },
+  {
+    over: 3,
+    under: 3,
+    volume: 0.5,
+    sound: 'B'
+  }]
+);
+
+function changeLoop(l, n, val) {
+  let num = val
+  if (num >= 1 && num <= 48) {
+    loops.value[l][n] = num
+  }
+}
+
+const overlay = ref(false);
+</script>
+
 <template lang="pug">
 #screen.flex.flex-col.items-center.w-full.relative.pb-12.p-4.fullscreen-container.rounded-4xl
   full-screen.absolute.bottom-2.right-2
@@ -52,34 +80,6 @@
       @click="overlay = false"
       )
 </template>
-
-<script setup>
-import { renderMidi } from '@use/midiRender'
-import { tracks } from '@use/sequence'
-const loops = useStorage('tempo-circle-loops', [
-  {
-    over: 8,
-    under: 8,
-    volume: 1,
-    sound: 'A'
-  },
-  {
-    over: 3,
-    under: 3,
-    volume: 0.5,
-    sound: 'B'
-  }]
-);
-
-function changeLoop(l, n, val) {
-  let num = val
-  if (num >= 1 && num <= 48) {
-    loops.value[l][n] = num
-  }
-}
-
-const overlay = ref(false);
-</script>
 
 <style scoped>
 .button {

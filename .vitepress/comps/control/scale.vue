@@ -1,3 +1,9 @@
+<script setup>
+import { scaleList } from '@use/theory'
+import { globalScale } from '@use/chroma'
+import { pitchColor } from '@theory'
+</script>
+
 <template lang="pug">
 .flex.flex-wrap.justify-center.min-h-5rem.items-stretch
   chroma-keys.w-300px(v-model:pitch="globalScale.tonic" :chroma="globalScale.set.chroma" :title="false")
@@ -5,12 +11,6 @@
   select.m-2(v-model="globalScale.chroma")
     option(v-for="scale in scaleList.sort((a, b) => a.name > b.name ? 1 : -1)" :key="scale.chroma" :value="scale.chroma") {{ scale.name }}
 </template>
-
-<script setup>
-import { scaleList } from '@use/theory'
-import { globalScale } from '@use/chroma'
-import { pitchColor } from '@theory'
-</script>
 
 <style scoped>
 select {

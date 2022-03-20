@@ -7,10 +7,7 @@ import filters from 'windicss/plugin/filters'
 export default defineConfig({
   separator: "_",
   darkMode: 'class',
-  shortcuts: {
-    bc: 'border-gray-300 dark_border-true-gray-600',
-    'has-bg': 'bg-light-500 dark_bg-dark-500',
-  },
+ 
   plugins: [
     snap,
     filters
@@ -27,8 +24,6 @@ export default defineConfig({
       },
       colors: {
         bg: 'var(--c-bg)',
-        gray: colors.trueGray,
-        tg: colors.trueGray,
       },
       cursor: {
         'crosshair':'crosshair',

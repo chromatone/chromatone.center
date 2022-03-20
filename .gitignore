@@ -47,6 +47,7 @@ yarn.lock
 dist
 **/dist
 wiki/
+.vitepress/.temp
 
 # vscode
 .vscode/

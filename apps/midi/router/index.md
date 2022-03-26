@@ -7,6 +7,7 @@ date: 2022-02-14
 ---
 
 <client-only>
+  <midi-panel class="mb-4" />
   <midi-router class="mb-20" />
 </client-only>
 

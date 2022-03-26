@@ -2,6 +2,7 @@
 import { midi, stopAll, midiAttack, midiRelease } from '@use/midi.js'
 import { onKeyStroke } from '@vueuse/core'
 import { pitchColor } from '@theory'
+import { synthOptions } from '@use/synth.js'
 
 const props = defineProps({
   toChannel: {
@@ -36,11 +37,15 @@ onKeyStroke(' ', ev => {
     ) 
       .w-2em {{ midi.note.name }} 
       .flex-1 {{ midi.note.accidental }}
+    button.text-button.border(@click="synthOptions.midi = !synthOptions.midi" :class="{ active: synthOptions.midi }")
+      bi-volume-up(v-if="synthOptions.midi")
+      bi-volume-off(v-else)
     button.play.text-button(@click="midi.playing = !midi.playing")
       la-play(v-if="!midi.playing")
       la-pause(v-else)
     button.text-button.border(@click="stopAll()")
       la-stop
+
     .text-button.border(v-for="output in midi.outputs")  
       span {{ output.name }}
     .text-button(v-if="toChannel")

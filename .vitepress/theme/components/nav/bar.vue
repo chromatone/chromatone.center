@@ -1,5 +1,6 @@
 <script setup>
 defineEmits(['toggle']);
+
 </script>
 
 <template lang="pug">
@@ -10,9 +11,7 @@ header.nav-bar
     nav-links
   .flex-grow
   state-midi
-  client-only
-    state-synth
-  state-mute
+  state-synth
   state-dark
   nav-toggle-sidebar(@toggle="$emit('toggle')")
 </template>

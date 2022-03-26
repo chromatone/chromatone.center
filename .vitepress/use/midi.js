@@ -1,6 +1,7 @@
 import { reactive, watchEffect, onMounted } from "vue";
 import { WebMidi } from "webmidi";
 import { useStorage } from "@vueuse/core";
+import { useSynth } from "./synth";
 
 export const midi = reactive({
   enabled: false,
@@ -21,21 +22,6 @@ export const midi = reactive({
   filter: useStorage("global-midi-filter", {}),
   available: computed(() => Object.entries(midi.outputs).length > 0),
 });
-
-export function forwardMidi(iid, oid) {
-  const output = WebMidi.outputs.find((out) => out.id == oid);
-  const destinations = midi.inputs[iid].forwarder.destinations;
-  const index = destinations.indexOf(output);
-
-  if (index == -1) {
-    destinations.push(output);
-    midi.forwards[iid] = midi.forwards[iid] || {};
-    midi.forwards[iid][oid] = true;
-  } else {
-    destinations.splice(index, 1);
-    delete midi.forwards?.[iid]?.[oid];
-  }
-}
 
 export function useMidi() {
   onMounted(() => {
@@ -90,6 +76,7 @@ function setupMidi() {
   midi.initiated = true;
 }
 
+
 function initMidi() {
   midi.inputs = reactive({});
 
@@ -130,6 +117,8 @@ function initMidi() {
     };
   });
 }
+
+
 
 function noteInOn(ev) {
   let note = ev.note;
@@ -207,8 +196,8 @@ export function midiStop(note, options) {
     });
   } else {
     WebMidi.outputs.forEach((output) => {
-      output.turnNotesOff();
-      output.turnSoundOff({ time: "+1" });
+      output.sendAllNotesOff();
+      output.sendAllSoundOff({ time: "+1" });
     });
   }
 }
@@ -223,8 +212,8 @@ export function midiRelease(note) {
     });
   } else {
     WebMidi.outputs.forEach((output) => {
-      output.turnNotesOff();
-      output.turnSoundOff({ time: "+1" });
+      output.sendAllNotesOff();
+      output.sendAllSoundOff({ time: "+1" });
     });
   }
 }
@@ -249,8 +238,24 @@ export function stopAll() {
   midi.channels = {};
   midi.playing = false;
   WebMidi.outputs.forEach((output) => {
-    output.turnNotesOff();
-    output.turnSoundOff({ time: "+1" });
+    output.sendAllNotesOff();
+    output.sendAllSoundOff({ time: "+1" });
     output.sendReset();
   });
+}
+
+
+export function forwardMidi(iid, oid) {
+  const output = WebMidi.outputs.find((out) => out.id == oid);
+  const destinations = midi.inputs[iid].forwarder.destinations;
+  const index = destinations.indexOf(output);
+
+  if (index == -1) {
+    destinations.push(output);
+    midi.forwards[iid] = midi.forwards[iid] || {};
+    midi.forwards[iid][oid] = true;
+  } else {
+    destinations.splice(index, 1);
+    delete midi.forwards?.[iid]?.[oid];
+  }
 }

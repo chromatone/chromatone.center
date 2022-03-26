@@ -269,7 +269,7 @@ form {
 }
 
 .text-button {
-  @apply shadow m-1 p-2 rounded-lg border-1 border-dark-100/30 dark_border-light-100/60 transition-all duration-200 leading-none;
+  @apply shadow m-1 p-2 rounded-lg border-1 bg-light-700 dark_bg-dark-700 border-dark-100/30 dark_border-light-100/60 transition-all duration-200 leading-none;
   &.note {
     @apply text-white p-2 font-bold opacity-50 border-2 rounded-lg;
     &.active {
@@ -277,11 +277,15 @@ form {
     }
   }
   &.active {
-    @apply opacity-100 border-current;
+    @apply opacity-100 border-current bg-dark-50  text-white dark_bg-light-900 dark_text-black;
   }
   &:hover {
     @apply border-current;
   }
+}
+
+.text-button::after {
+  @apply w-40 bg-light-200 h-40 absolute z-100 block;
 }
 
 .external-link::after {

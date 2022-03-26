@@ -6,7 +6,6 @@ const { screen, radar } = useRadar()
 
 <template lang="pug">
 .flex.flex-col
-  midi-panel.mb-4
   #screen.flex.flex-col.w-full.items-stretch.relative.fullscreen-container.rounded-3xl.shadow-xl
     full-screen.absolute.top-2.right-2
     canvas.max-w-full.max-h-full.h-full.w-full.min-h-600px(

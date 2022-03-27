@@ -27,8 +27,11 @@ const emit = defineEmits(['update:modelValue'])
       :id="type"
       :value="type"
       name="OSC" 
+      :aria-label="`Select ${type} oscillator`"
       )
-    label.text-button.flex-auto.flex.justify-center(:for="type" :value="type"
+    label.text-button.flex-auto.flex.justify-center(
+      :for="type" 
+      :value="type"
       :class="{ active: modelValue == type }"
     )
       ph-wave-sine-duotone(v-if="type == 'sine'")

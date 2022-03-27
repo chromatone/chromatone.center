@@ -22,10 +22,9 @@ const { synthOptions, synthOnce, init } = useSynth();
 .btn.w-10
   button.p-2.text-2xl(
     @click.stop.prevent="open = true; !synthOptions.initiated && init()"
-    aria-label="Toggle mute"
+    aria-label="Toggle synth panel"
     )
-    bi-volume-up(v-if="!synthOptions.mute")
-    bi-volume-mute(v-else)
+    la-wave-square
   transition(name="panel")
     .panel(v-if="open" ref="panel")
       button.text-button.mute.p-2.flex.flex-col.items-center(
@@ -36,22 +35,12 @@ const { synthOptions, synthOnce, init } = useSynth();
         la-wave-square.text-4xl
       synth-oscillators.flex-1(v-model="synthOptions.params.oscillator.type")
       .flex-1
-      button.text-button.border(@click="synthOptions.midi = !synthOptions.midi" :class="{ active: synthOptions.midi }")
-        mdi-midi-input.text-3xl
-      control-knob(
-        param="Vol"
-        v-model="synthOptions.volume"
-        :min="0"
-        :max="1"
-        :step="0.001"
-      )
-      button.text-button.border.mute.mt-24(
-        @click="synthOptions.mute = !synthOptions.mute" 
-        :class="{ active: !synthOptions.mute }"
-        aria-label="Toggle mute"
+      button.text-button.border(
+        @click="synthOptions.midi = !synthOptions.midi" 
+        aria-label="Play synth on MIDI input"
+        :class="{ active: synthOptions.midi }"
         )
-        bi-volume-up(v-if="!synthOptions.mute")
-        bi-volume-mute(v-else)
+        mdi-midi-input.text-3xl
 </template>
 
 <style  scoped>

@@ -1,15 +1,12 @@
-import { onMounted, watchEffect } from 'vue'
-import { PolySynth, MonoSynth, getDestination, start, now, Midi, gainToDb } from 'tone'
+import { PolySynth, MonoSynth, start, now, Midi } from 'tone'
 import { midi } from './midi'
 import { useStorage } from '@vueuse/core'
 
-export const mute = useStorage('mute', false)
+const synth = {}
 
 export const synthOptions = reactive({
-  mute: useStorage('mute', false),
   midi: useStorage('midi-synth', false),
   initiated: false,
-  volume: useClamp(useStorage('main-vol', 1), 0, 1),
   params: {
     maxPolyphony: 50,
     oscillator: {
@@ -32,13 +29,6 @@ export const synthOptions = reactive({
 
 })
 
-watchEffect(() => {
-  getDestination().mute = synthOptions.mute
-})
-
-watch(() => synthOptions.volume, vol => {
-  getDestination().volume.targetRampTo(gainToDb(vol), 0.1)
-})
 
 watch(() => synthOptions.params, params => {
   if (synth.poly) {
@@ -46,7 +36,7 @@ watch(() => synthOptions.params, params => {
   }
 }, { deep: true })
 
-const synth = {}
+
 
 watch(() => midi.note, note => {
   if (!synthOptions.midi) return

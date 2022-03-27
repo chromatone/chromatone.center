@@ -29,29 +29,28 @@ export const synthOptions = reactive({
 
 })
 
-
-watch(() => synthOptions.params, params => {
-  if (synth.poly) {
-    synth.poly.set(params)
-  }
-}, { deep: true })
-
-
-
-watch(() => midi.note, note => {
-  if (!synthOptions.midi) return
-  if (note.velocity > 0) {
-    synthAttack(Midi(note.number).toFrequency(), note.velocity / 127)
-  } else {
-    synthRelease(Midi(note.number).toFrequency())
-  }
-})
-
-watch(() => midi.playing, play => {
-  if (!play) synthReleaseAll()
-})
-
 export function useSynth() {
+  if (!synthOptions.initiated) {
+    watch(() => synthOptions.params, params => {
+      if (synth.poly) {
+        synth.poly.set(params)
+      }
+    }, { deep: true })
+
+
+    watch(() => midi.note, note => {
+      if (!synthOptions.midi) return
+      if (note.velocity > 0) {
+        synthAttack(Midi(note.number).toFrequency(), note.velocity / 127)
+      } else {
+        synthRelease(Midi(note.number).toFrequency())
+      }
+    })
+
+    watch(() => midi.playing, play => {
+      if (!play) synthReleaseAll()
+    })
+  }
   return { init, synth, synthOptions, synthOnce, synthAttack, synthRelease, synthReleaseAll }
 }
 
@@ -81,3 +80,5 @@ export function synthReleaseAll() {
   if (!synth.poly || synthOptions.mute) return init()
   synth.poly.releaseAll()
 }
+
+

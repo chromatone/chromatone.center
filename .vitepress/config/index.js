@@ -1,6 +1,5 @@
 import { metaData } from './constants.js'
 import head from './head.js'
-import { nav, sidebar, pages, ru_nav, ru_sidebar } from './nav.js'
 
 const config = {
   title: metaData.title,
@@ -24,8 +23,6 @@ const config = {
       '/': {
         label: 'English',
         selectText: 'En',
-        nav,
-        sidebar,
         lang: 'en-US',
         title: metaData.title,
         description: metaData.description,
@@ -36,16 +33,11 @@ const config = {
         lang: 'ru-RU',
         title: 'Хроматон',
         description: 'Визуально-музыкальный язык',
-        nav: ru_nav,
-        sidebar: ru_sidebar,
       },
     },
     logo: '/media/logo/holologo.svg',
     icon: 'media/logo/icon.svg',
     repo: 'https://github.com/chromatone/chromatone.center',
-    pages,
-    nav,
-    sidebar,
   },
   markdown: {
     config: (md) => {

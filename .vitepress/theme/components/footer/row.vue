@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { useData, useRoute } from 'vitepress'
+import { pages } from '@theme/composables/pages'
+
 const { site, theme } = useData()
 const route = useRoute()
 </script>
@@ -9,14 +11,14 @@ footer
   .noise
   nav
     .flex.flex-col(
-      v-for="(page,i) in theme.pages?.main", 
+      v-for="(page, i) in pages['/']", 
       :key="page.title",
       )
-      a.section(:href="page.link", :class="{ active: route.path.includes(page.link) }") {{ page.title }}
+      a.section(:href="page.path", :class="{ active: route.path.includes(page.path) }") {{ page.title }}
       .flex.flex-wrap.py-2
-        .inline-flex.flex-wrap.items-center(v-for="line in theme?.pages?.[page.data?.list]", :key="line.title")
-          a.p-2(:href="line.link", :class="{ active: route.path.includes(line.link) }") {{ line.title }}
-          a.p-2.font-normal.text-16px(v-for="child in theme?.pages?.[line.data?.list]" :href="child.link",:class="{ active: route.path.includes(child.link) }") {{ child.title }}
+        .inline-flex.flex-wrap.items-center(v-for="line in pages[page.path]", :key="line.title")
+          a.p-2(:href="line.link", :class="{ active: route.path.includes(line.path) }") {{ line.title }}
+          a.p-2.font-normal.text-16px(v-for="child in pages[line.path]" :href="child.path",:class="{ active: route.path.includes(child.path) }") {{ child.title }}
 
   .flex.items-center.mt-8
     a.m-auto(href="/")

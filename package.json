@@ -1,6 +1,18 @@
 {
+  "name": "chromatone.center",
   "private": true,
   "license": "MIT",
+  "version": "1.4.2",
+  "author": "Davay42",
+  "homepage": "https://chromatone.center",
+  "funding": {
+    "type": "ko-fi",
+    "url": "https://ko-fi.com/davay"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chromatone/chromatone.center.git"
+  },
   "scripts": {
     "dev": "vitepress dev --host --port 3242",
     "build": "vitepress build ",
@@ -41,8 +53,6 @@
     "vite-plugin-pages": "^0.22.0",
     "vite-plugin-pages-sitemap": "^1.1.11",
     "vitepress": "0.22.3",
-    "vitepress-tags": "^0.4.0",
     "windicss": "3.5.1"
-  },
-  "version": "1.4.2"
+  }
 }

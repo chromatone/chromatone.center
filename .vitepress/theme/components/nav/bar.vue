@@ -5,7 +5,7 @@ defineEmits(['toggle']);
 
 <template lang="pug">
 header.nav-bar
-  nav-bar-title
+  nav-bar-title(@toggle="$emit('toggle')")
 
   div(class="hidden lg_flex px-3 ml-4 lg_ml-10")
     nav-links

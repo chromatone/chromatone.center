@@ -1,12 +1,14 @@
 <script setup>
-import { withBase, useData } from 'vitepress'
+import { useData } from 'vitepress'
 const { theme, site, localePath } = useData();
+
+defineEmits(['toggle'])
 </script>
 
 <template lang="pug">
-a.nav-bar-title(:href="withBase(localePath)", :aria-label="`${site.title}, назад в начало`")
-  img.mr-3.align-bottom.h-30px(v-if="theme.icon", :src="withBase(theme.icon)", alt="Logo")
-  .title {{ site.title }}
+.nav-bar-title 
+  img.cursor-pointer.mr-3.align-bottom.h-30px.lg_pointer-events-none(v-if="theme.icon", :src="theme.icon", alt="Logo" @click="$emit('toggle')")
+  a.title(href="/", :aria-label="`${site.title}, назад в начало`") {{ site.title }}
 
 </template>
 

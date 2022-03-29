@@ -1,7 +1,6 @@
 <script setup>
 import { useData } from 'vitepress'
-
-const { theme } = useData()
+import { pages } from '@theme/composables/pages'
 
 const props = defineProps({
   item: Object,
@@ -14,7 +13,7 @@ const theColor = computed(() => props.color);
 .crd(
   :title="item.lastModified",
   )
-  a.container(:href="item.link" :class="{ 'pt-32': item?.cover }")
+  a.container(:href="item.path" :class="{ 'pt-32': item?.cover }")
     .cover(v-if="item.cover", :style="{ backgroundImage: 'url(/media/' + item.cover + ')' }") 
     .info
       .title
@@ -31,7 +30,7 @@ const theColor = computed(() => props.color);
       shop-price.float-left(:product="item?.product" :color="color")
 
   page-buttons.m-2(:buttons="item?.buttons")
-  line-list(:list="theme?.pages?.[item.list]")
+  line-list(:list="pages[item.path]")
 </template>
 
 <style  scoped>

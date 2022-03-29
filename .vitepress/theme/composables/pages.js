@@ -5,8 +5,7 @@ import { getPages, getPage, normalize, getParents, getSiblings } from 'vitepress
 const pages = getPages(routes)
 
 const usePage = path => getPage(path, routes)
-
 const useParents = path => getParents(path, routes)
 const useSiblings = path => getSiblings(path, routes)
 
-export { routes, pages, usePage, useParents, useSiblings, normalize }
+export { routes, pages, usePage, useParents, useSiblings, normalize } 

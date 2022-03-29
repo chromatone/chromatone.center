@@ -1,6 +1,6 @@
 <script setup>
 import { useData, useRoute } from 'vitepress'
-import { pages, normalize, usePage } from '@theme/composables/pages'
+import { pages, usePage } from '@theme/composables/pages'
 import { lchToHsl } from '@use/colors.js'
 
 const route = useRoute()
@@ -24,7 +24,7 @@ const bg = computed(() => `url(/media/${props.item?.cover}`);
   :style="{ backgroundColor: color }"
   )
   a.header(
-    :href="normalize(item.path)"
+    :href="item.path"
     :class="{ 'pt-48': item?.cover }"
   )
     .cover(
@@ -46,7 +46,7 @@ const bg = computed(() => `url(/media/${props.item?.cover}`);
         card-date(v-if="!item?.product",:date="item.lastModified")
       .text-md.mt-4.mb-2.font-normal.w-full(v-if="item.subtitle") {{ item.subtitle }}
       page-buttons(:buttons="item?.buttons" :color="color")
-  card-list(v-if="pages[normalize(item.path)]",:rows="pages[normalize(item.path)]" ) {{ item.title }}
+  card-list(v-if="pages[item.path]",:cards="pages[item.path]" ) {{ item.title }}
 </template>
 
 <style scoped>

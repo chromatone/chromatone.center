@@ -1,14 +1,17 @@
 <script setup>
-import { useData } from 'vitepress'
-const { theme } = useData()
+
+import { lchToHsl } from '@use/colors.js'
+import { isDark } from '@theme/composables/state'
+import { pages } from '@theme/composables/pages'
+
+
 const props = defineProps({
   list: Object,
 });
 
 
 
-import { lchToHsl } from '@use/colors.js'
-import { isDark } from '@theme/composables/state'
+
 function getColor(i, total, b = 10) {
   let l = isDark.value ? 40 : 85
   return lchToHsl(i, total, 1, b, l - b)
@@ -19,14 +22,14 @@ function getColor(i, total, b = 10) {
 <template lang="pug">
 .lines(v-if="list")
   a.line(
-    v-for="(line,l) in list", 
+    v-for="(line, l) in list", 
     :key="line.title",
     :style="{ backgroundColor: getColor(l, Object.keys(props.list).length) }"
-    :href="line.link",
+    :href="line.path",
     ) {{ line.title }}
-    counter(:list="theme.pages?.[line?.data?.list]") 
+    counter(:list="pages[line.path]") 
     card-date.flex-1.ml-4(:date="line.lastModified")
-    shop-price.ml-2(:product="line?.data?.product", :showButton="false" :color="getColor(l, Object.keys(props.list).length, 40)")
+    shop-price.ml-2(:product="line?.product", :showButton="false" :color="getColor(l, Object.keys(props.list).length, 40)")
 </template>
 
 <style  scoped>

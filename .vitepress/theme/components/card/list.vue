@@ -1,28 +1,25 @@
 <script setup>
-
-
-const props = defineProps({
-  rows: Object,
-});
-
 import { lchToHsl } from '@use/colors.js'
 import { isDark } from '@theme/composables/state'
+
+const props = defineProps({
+  cards: Object,
+});
+
 function getColor(i, total) {
   let l = isDark.value ? 40 : 60
   return lchToHsl(i, total, 1, 20, l)
 }
-
-
 
 </script>
 
 <template lang="pug">
 .list
   card-item.inset(
-    v-for="(area,i) in rows", 
-    :key="area.title", 
-    :item="area", 
-    :color="getColor(i, rows.length)"
+    v-for="(card, i) in cards", 
+    :key="card.title", 
+    :item="card", 
+    :color="getColor(i, cards.length)"
     )
     slot
 </template>

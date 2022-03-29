@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { useData } from 'vitepress'
-const { theme, frontmatter } = useData()
+import { pages } from '@theme/composables/pages'
 </script>
 
 <template lang="pug">
@@ -8,10 +7,14 @@ main.home(aria-labelledby="main-title")
   .noise
   home-hero.z-2
   content.content.z-2
-  home-tile-list.z-2(
-    v-if="frontmatter.list", 
-    :rows="theme.pages?.[frontmatter.list]"
-    )
+  .flex.flex-col.max-w-65ch.mx-auto
+    home-tile-item(
+      v-for="(area, i) in pages['/']", 
+      :key="area.title", 
+      :item="area", 
+      :i="i",
+      :total="pages['/'].length",
+      )  
 </template>
 
 <style scoped >

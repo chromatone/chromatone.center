@@ -1,42 +1,42 @@
 <script setup>
-import { useSiblings, useParents } from '../../composables/links.js'
+import { useSiblings, useParents, pages } from '@theme/composables/pages'
 import { lchToHsl } from '@use/colors.js'
 import { useRoute, useData } from 'vitepress'
-const { theme } = useData()
+const route = useRoute()
 
-const { prev, next, current, total } = useSiblings();
-const parents = useParents();
+const siblings = computed(() => useSiblings(route.path))
+const parents = computed(() => useParents(route.path))
+const list = computed(() => pages[parents.value[parents.value.length - 1]?.path])
+const total = computed(() => list.value ? list.value.length : 0)
+const index = computed(() => list.value ? list.value.findIndex(page => page.path == route.path) : 0)
+
+
 const colors = reactive({
-  current: computed(() => lchToHsl(current.value, total.value)),
-  prev: computed(() => lchToHsl(current.value - 1, total.value)),
-  next: computed(() => lchToHsl(current.value + 1, total.value))
+  current: computed(() => lchToHsl(index.value, total.value)),
+  prev: computed(() => lchToHsl(index.value - 1, total.value)),
+  next: computed(() => lchToHsl(index.value + 1, total.value))
 });
 </script>
 
 <template lang="pug">
 .next-and-prev-link
   .row(:style="{ borderColor: colors.current }")
-    .pad.prev(
-      v-if="prev" 
-      )
-      a.link( :href="prev.link" :style="{ backgroundColor: colors.prev }")
+    .pad.prev(v-if="siblings.prev")
+      a.link( :href="siblings.prev.path" :style="{ backgroundColor: colors.prev }")
         carbon-arrow-left.icon.icon-prev
-        span.text {{ prev.title }}
+        span.text {{ siblings.prev.title }}
 
-    .pad.next(
-      v-if="next"
-
-      )
-      a.link( :href="next.link" :style="{ backgroundColor: colors.next }")
-        span.text {{ next.title }}
+    .pad.next(v-if="siblings.next")
+      a.link( :href="siblings.next.path" :style="{ backgroundColor: colors.next }")
+        span.text {{ siblings.next.title }}
         carbon-arrow-right.icon.icon-next     
   .flex.flex-col.items-justify
     .flex.flex-col.items-justify.mx-4
       a.p-4.flex.items-center.justify-center.m-2.rounded-xl.shadow-md.transition-all.duration-100.ease-out(
         style="flex:1 1"
         class="bg-light-900/40 dark_bg-dark-300/10 hover_no-underline hover_(bg-light-900/30 shadow-lg) dark_(hover_bg-dark-700)"
-        v-for="(parent,p) in parents" :key="parent"
-        :href="parent.link"
+        v-for="(parent, p) in parents" :key="parent"
+        :href="parent.path"
         :style="{ order: 100 - p }"
         )
         carbon-chevron-up.mr-1

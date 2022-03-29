@@ -22,7 +22,7 @@ const theColor = computed(() => props.color);
           .absolute.top-10px.text-sm.font-normal.opacity-50
             slot
         .flex-1
-        card-date.mr-2(v-if="!item.product",:date="item.lastModified")
+        card-date.mr-2(v-if="!item?.product",:date="item.lastModified")
       .subtitle(
         v-if="item.subtitle" 
 

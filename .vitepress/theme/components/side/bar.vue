@@ -1,11 +1,12 @@
 <script setup>
 import { lchToHsl } from '@use/colors'
+import { pages } from '@theme/composables/pages'
+
 defineProps({
   open: { type: Boolean, required: true },
 });
 
-import { useData, useRoute } from 'vitepress'
-const { site, theme } = useData()
+import { useRoute } from 'vitepress'
 const route = useRoute();
 
 
@@ -14,64 +15,55 @@ const route = useRoute();
 <template lang="pug">
 .panel(:class="{ open }")
   .flex.flex-col
-    .my-4.first(
-      v-for="(main,m) in theme.pages.main" :key="main.title"
-    )
+    .my-4.first(v-for="(main, m) in pages['/']" :key="main.title")
       .level(
-        :aria-current="route.path.includes(main.link) ? 'page' : false"
-        :style="{ borderColor: lchToHsl(m, theme.pages.main.length) }"
+        :aria-current="route.path.includes(main.path) ? 'page' : false"
+        :style="{ borderColor: lchToHsl(m, pages['/'].length) }"
         )
         a.mb-2.ml-1(
           style="font-weight:bold"
-          :href="main.link"
-          :style="{ color: lchToHsl(m, theme.pages.main.length) }"
+          :href="main.path"
+          :style="{ color: lchToHsl(m, pages['/'].length) }"
           ) {{ main.title }}
         .flex.flex-col
           .level.second(
-            :aria-current="route.path.includes(page.link) ? 'page' : false"
-            :style="{ borderColor: lchToHsl(p, theme.pages?.[main.data?.list].length) }"
-            v-for="(page,p) in theme.pages?.[main.data?.list]" :key="page"
+            :aria-current="route.path.includes(page.path) ? 'page' : false"
+            :style="{ borderColor: lchToHsl(p, pages[main.path].length) }"
+            v-for="(page, p) in pages[main.path]" :key="page"
           ) 
-            a(
-              :href="page.link"
-            )
+            a(:href="page.path")
               .text {{ page.title }}
               .flex-1
               .text(
-                v-if="theme.pages?.[page?.data?.list]"
-                :style="{ color: lchToHsl(p, theme.pages?.[main.data?.list].length) }"
-                ) {{ theme.pages?.[page?.data?.list].length }}
+                v-if="pages[page.path]"
+                :style="{ color: lchToHsl(p, pages[page.path].length) }"
+                ) {{ pages[page.path].length }}
 
             transition(name="fade")
-              .flex.flex-col.my-2(v-show="route.path.includes(page.link) && theme.pages?.[page.data?.list] && theme.pages?.[page.data?.list].length > 0")
+              .flex.flex-col.my-2(v-show="route.path.includes(page.path) && pages[page.path] && pages[page.path].length > 0")
 
                 transition-group(name="fade")
                   .level.third.transition-all.duration-200.ease-in(
-                    :aria-current="route.path.includes(line.link) ? 'page' : false"
-                    v-for="(line,l) in theme.pages?.[page.data?.list]" :key="line"
-                    :style="{ borderColor: lchToHsl(l, theme.pages?.[page.data?.list].length) }"
+                    :aria-current="route.path.includes(line.path) ? 'page' : false"
+                    v-for="(line, l) in pages[page.path]" :key="line"
+                    :style="{ borderColor: lchToHsl(l, pages[page.path].length) }"
                     )
-                    a.flex.font-normal(
-                      :href="line.link"
-                    ) 
+                    a.flex.font-normal(:href="line.path") 
                       .text {{ line.title }}
-                      .flex-1(v-if="theme.pages?.[line?.data?.list]")
+                      .flex-1(v-if="pages[line.path]")
                       .text(
-                      v-if="theme.pages?.[line?.data?.list]"
-                      :style="{ color: lchToHsl(p, theme.pages?.[line.data?.list].length) }"
-                      ) {{ theme.pages?.[line?.data?.list].length }}
+                      v-if="pages[line.path]"
+                      :style="{ color: lchToHsl(p, pages[line.path].length) }"
+                      ) {{ pages[line.path].length }}
                     transition(name="fade")
-                      .flex.flex-col(v-show="route.path.includes(line.link) && theme.pages?.[line.data?.list] && theme.pages?.[line.data?.list].length > 0")
+                      .flex.flex-col(v-show="route.path.includes(line.path) && pages[line.path] && pages[line.path].length > 0")
                         transition-group(name="fade")
                           .level.fourth(
-                            :aria-current="route.path.includes(dot.link) ? 'page' : false"
-                            :style="{ borderColor: lchToHsl(d, theme.pages?.[line.data?.list].length) }"
-                            v-for="(dot,d) in theme.pages?.[line?.data?.list]" :key="dot"
+                            :aria-current="route.path.includes(dot.path) ? 'page' : false"
+                            :style="{ borderColor: lchToHsl(d, pages[line.path].length) }"
+                            v-for="(dot, d) in pages[line.path]" :key="dot"
                           )
-                            a(
-                              :href="dot.link"
-
-                              ) {{ dot.title }}
+                            a(:href="dot.path") {{ dot.title }}
 </template>
 
 <style scoped>

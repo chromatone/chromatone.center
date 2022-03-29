@@ -7,11 +7,9 @@ date: 2021-05-30
 ---
 
 <script setup> 
-import {useData} from 'vitepress'
-const {theme} = useData()
-const all = theme.value.pages.all
-const shop = all.find(page => page.link == '/shop/')
-const cities = shop?.data?.cities
+import routes from '~pages'
+const shop = routes.find(page => page.path == '/shop/')
+const cities = shop?.cities
 const dots = cities.map(city=>city.coord)
 </script>
 

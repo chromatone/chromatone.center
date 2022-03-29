@@ -1,10 +1,9 @@
 <script setup>
-import { useData } from 'vitepress'
-const { theme } = useData()
+import { routes } from '@theme/composables/pages'
 const recent = computed(() => {
-  let all = theme.value.pages.all.filter(el => el.title && !el.hidden)
+  let all = routes.filter(el => el.title && !el.hidden)
   let sorted = [...all].sort((a, b) => {
-    if (a.lastModified < b.lastModified) {
+    if (a.date < b.date) {
       return 1
     } else {
       return -1

@@ -1,6 +1,6 @@
 <script setup >
-import { ref, watch } from 'vue'
 import { useRoute } from 'vitepress'
+import { pages } from '@theme/composables/pages'
 
 defineProps(['item'])
 
@@ -22,13 +22,13 @@ function toggle() {
 
 <template lang="pug">
 .nav-dropdown-link(:class="{ open }")
-  button.button(:aria-label="item.ariaLabel", @click="toggle")
-    a.button-text(:href="item?.link") {{ item.text }}
+  button.button(:aria-label="item.title", @click="toggle")
+    a.button-text(:href="item?.path") {{ item.title }}
     span.button-arrow(:class="open ? 'down' : 'right'").
 
 
   ul.dialog
-    li.dialog-item(v-for="item in item.items", :key="item.text")
+    li.dialog-item(v-for="item in pages[item.path]", :key="item.text")
       nav-dropdown-link-item(:item="item")
         
         

@@ -1,6 +1,8 @@
 <script setup>
 import { useData } from 'vitepress'
 import { lchToHsl } from '@use/colors.js'
+import { pages } from '@theme/composables/pages'
+
 const props = defineProps({
   item: Object,
   i: Number,
@@ -18,18 +20,18 @@ const color = computed(() => lchToHsl(props.i, props.total));
 )
   // img.cover(:src="'/media/' + item.data.cover")
   a.flex.flex-col.p-2(
-    :href="item.link", 
+    :href="item.path", 
 
     )
     .text-3xl.mb-4.font-bold {{ item.title }}
     .font-normal {{ item.subtitle }}
   .flex.flex-wrap.py-2
     a.cursor-pointer.m-2.shadow-md.rounded-xl.border-4(
-      :style="{ borderColor: lchToHsl(p, theme.pages?.[item.data.list].length) }",
-      :href="page.link",
-      v-for="(page,p) in theme.pages?.[item.data.list]" :key="page.title"
+      :style="{ borderColor: lchToHsl(p, pages[item.path].length) }",
+      :href="page.path",
+      v-for="(page, p) in pages[item.path]" :key="page.title"
       )
-      .m-2.p-2(:i="p", :total="theme.pages?.[item.data.list].length") {{ page  .title }}
+      .m-2.p-2(:i="p", :total="pages[item.path].length") {{ page.title }}
 </template>
 
 <style scoped>

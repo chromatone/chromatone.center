@@ -1,5 +1,4 @@
 import { defineConfig } from 'windicss/helpers'
-import colors from 'windicss/colors'
 import snap from 'windicss/plugin/scroll-snap'
 import filters from 'windicss/plugin/filters'
 
@@ -7,7 +6,7 @@ import filters from 'windicss/plugin/filters'
 export default defineConfig({
   separator: "_",
   darkMode: 'class',
- 
+
   plugins: [
     snap,
     filters
@@ -26,7 +25,7 @@ export default defineConfig({
         bg: 'var(--c-bg)',
       },
       cursor: {
-        'crosshair':'crosshair',
+        'crosshair': 'crosshair',
       },
       boxShadow: {
         box: '0px 5px 15px 0px rgba(0, 0, 0, 0.35)',

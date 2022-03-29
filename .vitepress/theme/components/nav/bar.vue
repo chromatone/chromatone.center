@@ -11,8 +11,9 @@ header.nav-bar
     nav-links
   .flex-grow
   state-midi
-  state-synth
-  state-audio
+  client-only
+    state-synth
+    state-audio
   state-dark
   nav-toggle-sidebar(@toggle="$emit('toggle')")
 </template>

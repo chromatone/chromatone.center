@@ -7,8 +7,13 @@ import { ViteAliases } from 'vite-aliases'
 import AutoImport from 'unplugin-auto-import/vite'
 // import { VitePWA } from 'vite-plugin-pwa'
 
+import Pages from "vite-plugin-pages";
+import { extendRoutes } from "vitepress-pages";
+import generateSitemap from 'vite-plugin-pages-sitemap'
+
+
 export default defineConfig({
-  base:'./',
+  base: './',
   plugins: [
     AutoImport({
       // targets to transform
@@ -19,7 +24,7 @@ export default defineConfig({
       imports: [
         'vue',
         {
-          '@vueuse/core': ['useStorage','useClamp'],
+          '@vueuse/core': ['useStorage', 'useClamp'],
         },
       ],
     }),
@@ -29,9 +34,18 @@ export default defineConfig({
       deep: false,
       adjustDuplicates: true,
     }),
+    Pages({
+      dirs: [
+        { dir: ".", baseRoute: "." },
+      ],
+      exclude: ['**/node_modules/**/*.*', '**/!(index).md'],
+      extensions: ['md'],
+      ...extendRoutes(),
+      onRoutesGenerated: routes => (generateSitemap({ routes, hostname: 'https://chromatone.center' })),
+    }),
     Components({
       dirs: ['.vitepress/theme/components', '.vitepress/comps'],
-      extensions: ['vue', 'ts','js'],
+      extensions: ['vue', 'ts', 'js'],
       directoryAsNamespace: true,
       globalNamespaces: ['global'],
       include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
@@ -87,7 +101,7 @@ export default defineConfig({
   },
   //@ts-ignore
   ssr: {
-    noExternal: ['audiomotion-analyzer','fraction.js', 'tone','ol','cobe']
+    noExternal: ['audiomotion-analyzer', 'fraction.js', 'tone', 'ol', 'cobe']
   },
   build: {
     chunkSizeWarningLimit: 100000,

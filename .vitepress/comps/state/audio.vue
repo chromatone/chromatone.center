@@ -1,7 +1,9 @@
 <script setup>
-import { audio } from '@theme/composables/state'
+import { useAudio } from '@theme/composables/state'
 import { onClickOutside } from '@vueuse/core'
 
+
+const audio = useAudio()
 const open = ref(false);
 
 const panel = ref()

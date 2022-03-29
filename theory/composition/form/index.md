@@ -1,7 +1,7 @@
 ---
 title: Musical form
 subtitle: The structure of a musical composition or performance
-tags: composition
+
 date: 2021-11-02
 links:
   - https://en.wikipedia.org/wiki/List_of_classical_music_genres

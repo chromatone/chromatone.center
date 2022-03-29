@@ -2,7 +2,7 @@
 title: Chord progressions
 subtitle: Successive chord loops as the foundation of modern music
 date: 2021-10-12
-tags: harmony
+
 progressions:
   jazz:
     title: Jazz
@@ -53,7 +53,7 @@ progressions:
     link: https://en.wikipedia.org/wiki/%2750s_progression
     degrees: I-vim-IV-V
   major:
-    title: Major 
+    title: Major
     degrees: I-IV-bVII-IV
   andalusian:
     title: Andalusian cadence
@@ -79,4 +79,3 @@ web:
 ---
 
 <chord-progressions :list="$frontmatter.progressions" />
-

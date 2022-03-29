@@ -2,7 +2,6 @@
 title: Nonchord tones
 subtitle: Notes in a piece of music or song that are not part of the chord set out by the harmonic framework
 date: 2021-08-10
-tags: harmony
 ---
 
 ## Non-chord tones
@@ -21,8 +20,8 @@ According to Music in Theory and Practice, "Most nonharmonic tones are dissonant
 
 Nonharmonic tones generally occur in a pattern of three pitches, of which the nonharmonic tone is the center:
 
->Chord tone 	– 	Nonchord tone 	– 	Chord tone
->Preparation 	– 	Dissonance 	– 	Resolution
+> Chord tone – Nonchord tone – Chord tone
+> Preparation – Dissonance – Resolution
 
 Nonchord tones are categorized by how they are used. The most important distinction is whether they occur on a strong or weak beat and are thus either accented or unaccented nonchord tones They are also distinguished by their direction of approach and departure and the voice or voices in which they occur and the number of notes they contain.
 
@@ -64,8 +63,8 @@ A neighbour tone is where you skip up or down from a note (or chord tone) and th
 
 #### Suspension and retardation
 
->Endeavor, moreover, to introduce suspensions now in this voice, now in that, for it is incredible how much grace the melody acquires by this means. And every note which has a special function is rendered audible thereby.
->— Johann Joseph Fux (1725)
+> Endeavor, moreover, to introduce suspensions now in this voice, now in that, for it is incredible how much grace the melody acquires by this means. And every note which has a special function is rendered audible thereby.
+> — Johann Joseph Fux (1725)
 
 A suspension (SUS) (sometimes referred to as a syncope) occurs when the harmony shifts from one chord to another, but one or more notes of the first chord (the preparation) are either temporarily held over into or are played again against the second chord (against which they are nonchord tones called the suspension) before resolving downwards to a chord tone by step (the resolution). The whole process is called a suspension as well as the specific nonchord tone(s).
 

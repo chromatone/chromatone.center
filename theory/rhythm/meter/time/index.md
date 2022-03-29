@@ -1,10 +1,10 @@
 ---
 title: Common time
 subtitle: Common time and half- and double-time changes
-tags: meter
+
 date: 2021-10-06
-times: 
-  meters: [2/4,4/4,8/4]
+times:
+  meters: [2/4, 4/4, 8/4]
 ---
 
 <beat-bars v-bind="$frontmatter.times" />
@@ -13,7 +13,7 @@ times:
 
 Rhythm pattern characteristic of much popular music including rock, quarter note (crotchet) or "regular" time: "bass drum on beats 1 and 3 and snare drum on beats 2 and 4 of the measure [bar]...add eighth notes [quavers] on the hi-hat".
 
-Time signatures are defined by how they divide the measure (in 9/8, complex triple time, each measure is divided in three, each of which is divided into three eighth notes: 3×3=9). In "common" time, often considered 4/4, each level is divided in two (simple duple time: 2×2=4). In a common-time rock drum pattern each measure (a whole note) is divided in two by the bass drum (half note), each half is divided in two by the snare drum (quarter note, collectively the bass and snare divide the measure into four), and each quarter note is divided in two by a ride pattern (eighth note). "Half"-time refers to halving this division (divide each measure into quarter notes with the ride pattern), while "double"-time refers to doubling this division (divide each measure into sixteenth notes with the ride pattern). 
+Time signatures are defined by how they divide the measure (in 9/8, complex triple time, each measure is divided in three, each of which is divided into three eighth notes: 3×3=9). In "common" time, often considered 4/4, each level is divided in two (simple duple time: 2×2=4). In a common-time rock drum pattern each measure (a whole note) is divided in two by the bass drum (half note), each half is divided in two by the snare drum (quarter note, collectively the bass and snare divide the measure into four), and each quarter note is divided in two by a ride pattern (eighth note). "Half"-time refers to halving this division (divide each measure into quarter notes with the ride pattern), while "double"-time refers to doubling this division (divide each measure into sixteenth notes with the ride pattern).
 
 ## Half-time
 
@@ -31,11 +31,11 @@ A classic example is the half-time shuffle, a variation of a shuffle rhythm, whi
 
 In half time, the feel of notes are chopped in half, but the actual time value remains the same. For example, at the same tempo, 8th notes (quavers) would sound like 16ths (semiquavers). In the case of the half time shuffle, triplets sound like 16th note (semiquaver) triplets, etc. By preserving the tempo, the beat is stretched by a factor of 2.
 
->![](./Double,_common,_and_half_times_same_tempo.png)
->Double-, common, and half- time offbeats at the same tempo.
+> ![](./Double,_common,_and_half_times_same_tempo.png)
+> Double-, common, and half- time offbeats at the same tempo.
 
->![](./Double,_common,_and_half_times_equivalent_tempo.png)
->Double-, common, and half- time offbeats at equivalent tempos.
+> ![](./Double,_common,_and_half_times_equivalent_tempo.png)
+> Double-, common, and half- time offbeats at equivalent tempos.
 
 ## Double time
 

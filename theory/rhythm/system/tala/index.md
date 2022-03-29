@@ -1,42 +1,42 @@
 ---
 title: Indian tala
 subtitle: The Indian rhythmic language and art of konnakkol
-tags: rhythm-pattern
+
 date: 2021-10-19
-tala: 
+tala:
   meters: [4/4]
-  patterns: 
-    'Xxxx':
+  patterns:
+    "Xxxx":
       meter: 8/4
       names:
         - name: Eka
-    'XxXxxx':
+    "XxXxxx":
       meter: 8/4
       names:
         - name: Rupaka
         - name: Chaturasra-nadai Chaturasra-jaati Rupaka tala
-    'XxxXxXx':
+    "XxxXxXx":
       meter: 8/4
       names:
         - name: Triputa
-    'XxxxxxxXXx':
-      meter: 8/4  
+    "XxxxxxxXXx":
+      meter: 8/4
       names:
         - name: Jhampa
-    'XxxxXxXxxxXxxx':
+    "XxxxXxXxxxXxxx":
       meter: 8/4
       names:
         - name: Dhruva
-    'XxxxXxXxxx':
+    "XxxxXxXxxx":
       meter: 8/4
       names:
         - name: Matya
-    'XxxxxXxxxxXxXx':
+    "XxxxxXxxxxXxXx":
       meter: 8/4
       names:
         - name: Atta
         - name: Chatusra-nadai Khanda-jati Ata tala
-    'XxxxXxXx':
+    "XxxxXxXx":
       meter: 8/4
       names:
         - name: Adi tala
@@ -47,7 +47,7 @@ tala:
 
 ## Tala
 
-A [Tala](https://en.wikipedia.org/wiki/Tala_(music)) (IAST tāla), sometimes spelled Titi or Pipi, literally means a "clap, tapping one's hand on one's arm, a musical measure". It is the term used in Indian classical music to refer to musical meter, that is any rhythmic beat or strike that measures musical time. The measure is typically established by hand clapping, waving, touching fingers on thigh or the other hand, verbally, striking of small cymbals, or a percussion instrument in the Indian subcontinental traditions. Along with raga which forms the fabric of a melodic structure, the tala forms the life cycle and thereby constitutes one of the two foundational elements of Indian music.
+A [Tala](<https://en.wikipedia.org/wiki/Tala_(music)>) (IAST tāla), sometimes spelled Titi or Pipi, literally means a "clap, tapping one's hand on one's arm, a musical measure". It is the term used in Indian classical music to refer to musical meter, that is any rhythmic beat or strike that measures musical time. The measure is typically established by hand clapping, waving, touching fingers on thigh or the other hand, verbally, striking of small cymbals, or a percussion instrument in the Indian subcontinental traditions. Along with raga which forms the fabric of a melodic structure, the tala forms the life cycle and thereby constitutes one of the two foundational elements of Indian music.
 
 Tala is an ancient music concept traceable to Vedic era texts of Hinduism, such as the Samaveda and methods for singing the Vedic hymns. The music traditions of the North and South India, particularly the raga and tala systems, were not considered as distinct till about the 16th century. There on, during the tumultuous period of Islamic rule of the Indian subcontinent, the traditions separated and evolved into distinct forms. The tala system of the north is called Hindustaani, while the south is called Carnaatic. However, the tala system between them continues to have more common features than differences.
 
@@ -61,8 +61,8 @@ Tāļa (ताळ) is a Sanskrit word, which means "being established". Adi tala
 
 According to David Nelson – an Ethnomusicology scholar specializing in Carnatic music, a tala in Indian music covers "the whole subject of musical meter". Indian music is composed and performed in a metrical framework, a structure of beats that is a tala. The tala forms the metrical structure that repeats, in a cyclical harmony, from the start to end of any particular song or dance segment, making it conceptually analogous to meters in Western music. However, talas have certain qualitative features that classical European musical meters do not. For example, some talas are much longer than any classical Western meter, such as a framework based on 29 beats whose cycle takes about 45 seconds to complete when performed. Another sophistication in talas is the lack of "strong, weak" beat composition typical of the traditional European meter. In classical Indian traditions, the tala is not restricted to permutations of strong and weak beats, but its flexibility permits the accent of a beat to be decided by the shape of musical phrase.
 
->![](./Narada.jpg)
->A painting depicting the Vedic sage-musician Narada, with a tala instrument in his left hand.
+> ![](./Narada.jpg)
+> A painting depicting the Vedic sage-musician Narada, with a tala instrument in his left hand.
 
 A tala measures musical time in Indian music. However, it does not imply a regular repeating accent pattern, instead its hierarchical arrangement depends on how the musical piece is supposed to be performed. A metric cycle of a tala contains a specific number of beats, which can be as short as 3 beats or as long as 128 beats. The pattern repeats, but the play of accent and empty beats are an integral part of Indian music architecture. Each tala has subunits. In other words, the larger cyclic tala pattern has embedded smaller cyclic patterns, and both of these rhythmic patterns provide the musician and the audience to experience the play of harmonious and discordant patterns at two planes. A musician can choose to intentionally challenge a pattern at the subunit level by contradicting the tala, explore the pattern in exciting ways, then bring the music and audience experience back to the fundamental pattern of cyclical beats.
 
@@ -80,13 +80,13 @@ The Samaveda is organized into two formats. One part is based on the musical met
 
 According to Lewis Rowell – a professor of Music specializing on classical Indian music, the need and impulse to develop mathematically precise musical meters in the Vedic era may have been driven by the Indian use of oral tradition for transmitting vast amounts of Vedic literature. Deeply and systematically embedded structure and meters may have enabled the ancient Indians a means to detect and correct any errors of memory or oral transmission from one person or generation to the next. According to Michael Witzel,
 
->The Vedic texts were orally composed and transmitted, without the use of script, in an unbroken line of transmission from teacher to student that was formalized early on. This ensured an impeccable textual transmission superior to the classical texts of other cultures; it is, in fact, something like a tape-recording.... Not just the actual words, but even the long-lost musical (tonal) accent (as in old Greek or in Japanese) has been preserved up to the present.    
->— Michael Witzel
+> The Vedic texts were orally composed and transmitted, without the use of script, in an unbroken line of transmission from teacher to student that was formalized early on. This ensured an impeccable textual transmission superior to the classical texts of other cultures; it is, in fact, something like a tape-recording.... Not just the actual words, but even the long-lost musical (tonal) accent (as in old Greek or in Japanese) has been preserved up to the present.  
+> — Michael Witzel
 
 The Samaveda also included a system of chironomy, or hand signals to set the recital speed. These were mudras (finger and palm postures) and jatis (finger counts of the beat), a system at the foundation of talas. The chants in the Vedic recital text, associated with rituals, are presented to be measured in matras and its multiples in the invariant ratio of 1:2:3. This system is also the basis of every tala.
 
->![](/media/theory/five-gandharva.jpg)
->Five Gandharvas (celestial musicians) from 4th-5th century CE, northwest Indian subcontinent, carrying the four types of musical instruments. Gandharvas are discussed in Vedic era literature.
+> ![](/media/theory/five-gandharva.jpg)
+> Five Gandharvas (celestial musicians) from 4th-5th century CE, northwest Indian subcontinent, carrying the four types of musical instruments. Gandharvas are discussed in Vedic era literature.
 
 In the ancient traditions of Hinduism, two musical genre appeared, namely Gandharva (formal, composed, ceremonial music) and Gana (informal, improvised, entertainment music). The Gandharva music also implied celestial, divine associations, while the Gana also implied singing. The Vedic Sanskrit musical tradition had spread widely in the Indian subcontinent, and according to Rowell, the ancient Tamil classics make it "abundantly clear that a cultivated musical tradition existed in South India as early as the last few pre-Christian centuries".
 
@@ -104,29 +104,27 @@ In the South Indian system (Carnatic), a full tala is a group of seven suladi ta
 
 Each repeated cycle of a tala is called an avartan. This is counted additively in sections (vibhag or anga) which roughly correspond to bars or measures but may not have the same number of beats (matra, akshara) and may be marked by accents or rests. So the Hindustani **Jhoomra tal** has 14 beats, counted 3+4+3+4, which differs from **Dhamar tal**, also of 14 beats but counted 5+2+3+4. The spacing of the vibhag accents makes them distinct, otherwise, again, since **Rupak tal** consists of 7 beats, two cycles of it of would be indistinguishable from one cycle of the related Dhamar tal. However the most common Hindustani tala, Teental, is a regularly-divisible cycle of four measures of four beats each.
 
-
 The first beat of any tala, called **sam** (pronounced as the English word 'sum' and meaning even or equal) is always the most important and heavily emphasised. It is the point of resolution in the rhythm where the percussionist's and soloist's phrases culminate: a soloist has to sound an important note of the raga there, and a North Indian classical dance composition must end there. However, melodies do not always begin on the first beat of the tala but may be offset, for example to suit the words of a composition so that the most accented word falls upon the sam. The term talli, literally "shift", is used to describe this offset in Tamil. A composition may also start with an anacrusis on one of the last beats of the previous cycle of the tala, called ateeta eduppu in Tamil.
 
 The tāla is indicated visually by using a series of rhythmic hand gestures called **kriyas** that correspond to the angas or "limbs", or vibhag of the tāla. These movements define the tala in Carnatic music, and in the Hindustani tradition too, when learning and reciting the tala, the first beat of any vibhag is known as **tali** ("clap") and is accompanied by a clap of the hands, while an "empty" (khali) vibhag is indicated with a sideways wave of the dominant clapping hand (usually the right) or the placing of the back of the hand upon the base hand's palm instead. But northern definitions of tala rely far more upon specific drum-strokes, known as bols, each with its own name that can be vocalized as well as written. In one common notation the sam is denoted by an 'X' and the khali, which is always the first beat of a particular vibhag, denoted by '0' (zero).
 
 A tala does not have a fixed tempo (laya) and can be played at different speeds. In Hindustani classical music a typical recital of a raga falls into two or three parts categorized by the quickening tempo of the music; **Vilambit** (delayed, i.e., slow), **Madhya** (medium tempo) and **Drut** (fast). Carnatic music adds an extra slow and fast category, categorised by divisions of the pulse; **Chauka** (1 stroke per beat), **Vilamba** (2 strokes per beat), **Madhyama** (4 strokes per beat), **Drut**(8 strokes per beat) and lastly **Adi-drut**(16 strokes per beat).
 
-Indian classical music, both northern and southern, have theoretically developed since ancient times numerous tala, though in practice some talas are very common, and some are rare. 
-
+Indian classical music, both northern and southern, have theoretically developed since ancient times numerous tala, though in practice some talas are very common, and some are rare.
 
 ## In Carnatic music
 
 Tala was introduced to Karnataka music by its founder Purandara Dasa. Carnatic music uses various classification systems of tālas such as the **Chapu** (4 talas), **Chanda** (108 talas) and **Melakarta** (72 talas). The **Suladi Sapta Tāla** system (35 talas) is used here, according to which there are seven families of tāla. A tāla cannot exist without reference to one of five jatis, differentiated by the length in beats of the laghu, thus allowing thirty-five possible tālas. With all possible combinations of tala types and laghu lengths, there are 5 x 7 = 35 talas having lengths ranging from 3 (Tisra-jati Eka tala) to 29 (sankeerna jati dhruva tala) aksharas. The seven tala families and the number of aksharas for each of the 35 talas are;
 
-|Tala |	Anga Notation |	Tisra (3) |	Chatusra (4) |	Khanda (5) |	Misra (7) |	Sankeerna (9)|
-|---|---|---|---|---|---|---|
-|Dhruva |	lOll |	11| 	**14** |	17 |	23 |	29|
-|Matya |	lOl |	8 |	**10** |	12 |	16 |	20|
-|Rupaka |	Ol |	5 |	**6** |	7 |	9 |	11|
-|Jhampa |	lUO |	**6** |	7 |	8 |	10 |	12|
-|Triputa |	lOO |	7 |	**8** |	9 |	11 |	13|
-|Ata |	llOO |	10 |	**12** |	14 |	18 |	22|
-|Eka |	l |	3 |	**4** |	5 |	7 |	9|
+| Tala    | Anga Notation | Tisra (3) | Chatusra (4) | Khanda (5) | Misra (7) | Sankeerna (9) |
+| ------- | ------------- | --------- | ------------ | ---------- | --------- | ------------- |
+| Dhruva  | lOll          | 11        | **14**       | 17         | 23        | 29            |
+| Matya   | lOl           | 8         | **10**       | 12         | 16        | 20            |
+| Rupaka  | Ol            | 5         | **6**        | 7          | 9         | 11            |
+| Jhampa  | lUO           | **6**     | 7            | 8          | 10        | 12            |
+| Triputa | lOO           | 7         | **8**        | 9          | 11        | 13            |
+| Ata     | llOO          | 10        | **12**       | 14         | 18        | 22            |
+| Eka     | l             | 3         | **4**        | 5          | 7         | 9             |
 
 In practice, only a few talas have compositions set to them. The most common tala is **Chaturasra-nadai Chaturasra-jaati Triputa tala**, also called Adi tala (Adi meaning primordial in Sanskrit). Nadai is a term which means subdivision of beats. Many kritis and around half of the varnams are set to this tala. Other common talas include:
 
@@ -152,13 +150,13 @@ There are 6 main angas/strokes in talas;
 
 Each tala can incorporate one of the five following jatis.
 
-|Jati |	Number of Aksharas |
-|---|---|
-|Chaturasra |	4|
-|Thisra |	3|
-|Khanda |	5|
-|Misra |	7|
-|Sankeerna |	9|
+| Jati       | Number of Aksharas |
+| ---------- | ------------------ |
+| Chaturasra | 4                  |
+| Thisra     | 3                  |
+| Khanda     | 5                  |
+| Misra      | 7                  |
+| Sankeerna  | 9                  |
 
 Each tala family has a default jati associated with it; the tala name mentioned without qualification refers to the default jati.
 
@@ -177,18 +175,19 @@ For example, one cycle of khanda-jati rupaka tala comprises a 2-beat dhrutam fol
 
 The number of maatras in an akshara is called the nadai. This number can be 3, 4, 5, 7 or 9, and take the same name as the jatis. The default nadai is Chatusram:
 
-|Jati|Maatras|Phonetic representation of beats|
-|---|---|---|
-|Tisra|3|Tha Ki Ta| 
-|Chatusra|4|Tha Ka Dhi Mi|
-|Khanda |	5 |	Tha Ka Tha Ki Ta|
-|Misra |	7 |	Tha Ki Ta Tha Ka Dhi Mi|
-|Sankeerna |	9 |Tha Ka Dhi Mi Tha Ka Tha Ki Ta |
+| Jati      | Maatras | Phonetic representation of beats |
+| --------- | ------- | -------------------------------- |
+| Tisra     | 3       | Tha Ki Ta                        |
+| Chatusra  | 4       | Tha Ka Dhi Mi                    |
+| Khanda    | 5       | Tha Ka Tha Ki Ta                 |
+| Misra     | 7       | Tha Ki Ta Tha Ka Dhi Mi          |
+| Sankeerna | 9       | Tha Ka Dhi Mi Tha Ka Tha Ki Ta   |
 
 Sometimes, pallavis are sung as part of a Ragam Thanam Pallavi exposition in some of the rarer, more complicated talas; such pallavis, if sung in a non-Chatusra-nadai tala, are called nadai pallavis. In addition, pallavis are often sung in chauka kale (slowing the tala cycle by a magnitude of four times), although this trend seems to be slowing.
 
 ### Kāla
-Kāla refers to the change of tempo during a rendition of song, typically doubling up the speed. Onnaam kaalam is 1st speed, Erandaam kaalam is 2nd speed and so on. Erandaam kaalam fits in twice the number of aksharaas (notes) into the same beat, thus doubling the tempo. Sometimes, Kāla is also used similar to Layā, for example Madhyama Kālam or Chowka Kālam. 
+
+Kāla refers to the change of tempo during a rendition of song, typically doubling up the speed. Onnaam kaalam is 1st speed, Erandaam kaalam is 2nd speed and so on. Erandaam kaalam fits in twice the number of aksharaas (notes) into the same beat, thus doubling the tempo. Sometimes, Kāla is also used similar to Layā, for example Madhyama Kālam or Chowka Kālam.
 
 <youtube-embed video="MBvAYPvfmEk" />
 
@@ -204,19 +203,19 @@ Some rare talas even contain a "half-beat". For example, Dharami is an 11 1/2 be
 
 Some talas, for example Dhamaar, Ek, Jhoomra and Chau talas, lend themselves better to slow and medium tempos. Others flourish at faster speeds, like Jhap or Rupak talas. Trital or Teental is one of the most popular, since it is as aesthetic at slower tempos as it is at faster speeds.
 
-There are many talas in Hindustani music, some of the more popular ones are: 
+There are many talas in Hindustani music, some of the more popular ones are:
 
-|Name |	Beats |	Division |	Vibhaga|
-|---|---|---|---|
-|Tintal (or Trital or Teental) |	16 |	4+4+4+4 |	X 2 0 3|
-|Jhoomra |	14 |	3+4+3+4 |	X 2 0 3|
-|Tilwada |	16 |	4+4+4+4 |	X 2 0 3|
-|Dhamar |	14 |	5+2+3+4 |	X 2 0 3|
-|Ektal and Chautal 	|12 |	2+2+2+2+2+2 |	X 0 2 0 3 4|
-|Jhaptal 	|10 |	2+3+2+3 |	X 2 0 3|
-|Keherwa |	8 |	4+4 |	X 0|
-|Rupak (Mughlai/Roopak) |	7 |	3+2+2 |	X 2 3|
-|Dadra |	6 |	3+3 |	X 0 |
+| Name                          | Beats | Division    | Vibhaga     |
+| ----------------------------- | ----- | ----------- | ----------- |
+| Tintal (or Trital or Teental) | 16    | 4+4+4+4     | X 2 0 3     |
+| Jhoomra                       | 14    | 3+4+3+4     | X 2 0 3     |
+| Tilwada                       | 16    | 4+4+4+4     | X 2 0 3     |
+| Dhamar                        | 14    | 5+2+3+4     | X 2 0 3     |
+| Ektal and Chautal             | 12    | 2+2+2+2+2+2 | X 0 2 0 3 4 |
+| Jhaptal                       | 10    | 2+3+2+3     | X 2 0 3     |
+| Keherwa                       | 8     | 4+4         | X 0         |
+| Rupak (Mughlai/Roopak)        | 7     | 3+2+2       | X 2 3       |
+| Dadra                         | 6     | 3+3         | X 0         |
 
 ### 72 melakarta talas
 
@@ -883,20 +882,19 @@ There are many talas in Hindustani music, some of the more popular ones are:
 
 ### 7 Saptangachakram (7 angas)
 
-|Anga |	Symbol |	Aksharakala|
-|---|---|---|
-|Anudrutam |	U |	1|
-|Druta| 	O |	2|
-|Druta-virama |	UO |	3|
-|Laghu (Chatusra-jati) |	l |	4|
-|Guru |	8 |	8|
-|Plutam |	3 |	12|
-|Kakapadam |	x |	16 |
+| Anga                  | Symbol | Aksharakala |
+| --------------------- | ------ | ----------- |
+| Anudrutam             | U      | 1           |
+| Druta                 | O      | 2           |
+| Druta-virama          | UO     | 3           |
+| Laghu (Chatusra-jati) | l      | 4           |
+| Guru                  | 8      | 8           |
+| Plutam                | 3      | 12          |
+| Kakapadam             | x      | 16          |
 
 https://www.mridangams.com/2007/09/tala-dhasa-pranas.html
 
------
-
+---
 
 ## Konnakkol
 
@@ -924,31 +922,31 @@ Trichy Shri R Thayumanavar gave a rebirth to konnakol. His disciple Andankoil AV
 
 ### Solkattu
 
-|Sol |Sollu-Solkattus |Jatti|
-|---|---|---|
-|Letter | Word | Sentence|
+| Sol    | Sollu-Solkattus | Jatti    |
+| ------ | --------------- | -------- |
+| Letter | Word            | Sentence |
 
 Konnakol uses rhythmic solfege for different subdivisions of the beat called "Solkattu." Common ones are:
 
-|N |Name|Syllables|
-|---|---|---|
-|2 | Chatusra 1/2 Speed| Tha Ka|
-|3 | Tisra| Tha Ki Ta|
-| 4 | Chatusra| Tha Ka Dhi Mi|
-| 5 | Khanda| Tha Dhi Gi Na Thom|
-| 6 | Tisra Double Speed| Tha Ka Dhi Mi Tha Ka|
-| 7 | Misra| Tha Ka Di Mi Tha Ki Ta|
-| 8 | Chatusra Double Speed| Tha Ka Dhi Mi Tha Ka Jhu No|
-| 9 | Sankirna| Tha Ka Dhi Mi Ta Dhi Gi Na Thom|
-| 10 | Khanda Double Speed| Tha Ka Tha Ki Ta Tha Dhi Gi Na Thom, or Tha Ki Ta Dhim†2 Tha Dhi Gi Na Thom|
+| N   | Name                  | Syllables                                                                   |
+| --- | --------------------- | --------------------------------------------------------------------------- |
+| 2   | Chatusra 1/2 Speed    | Tha Ka                                                                      |
+| 3   | Tisra                 | Tha Ki Ta                                                                   |
+| 4   | Chatusra              | Tha Ka Dhi Mi                                                               |
+| 5   | Khanda                | Tha Dhi Gi Na Thom                                                          |
+| 6   | Tisra Double Speed    | Tha Ka Dhi Mi Tha Ka                                                        |
+| 7   | Misra                 | Tha Ka Di Mi Tha Ki Ta                                                      |
+| 8   | Chatusra Double Speed | Tha Ka Dhi Mi Tha Ka Jhu No                                                 |
+| 9   | Sankirna              | Tha Ka Dhi Mi Ta Dhi Gi Na Thom                                             |
+| 10  | Khanda Double Speed   | Tha Ka Tha Ki Ta Tha Dhi Gi Na Thom, or Tha Ki Ta Dhim†2 Tha Dhi Gi Na Thom |
 
-†'2' suffix signifies solfege syllable is held twice as long. 
+†'2' suffix signifies solfege syllable is held twice as long.
 
 <youtube-embed video="ZuZF8BaOt58"/>
 
 ## Tihai - the rhythmic cadence
 
-[Tihai](https://en.wikipedia.org/wiki/Tihai) (pronounced ti-'ha-yi) is a polyrhythmic technique found in Indian classical music, and often used to conclude a piece. Tihais can be either sung or played on an instrument. Tihais are sometimes used to distort the listeners’ perception of time, only to reveal the consistent underlying cycle at the sam. 
+[Tihai](https://en.wikipedia.org/wiki/Tihai) (pronounced ti-'ha-yi) is a polyrhythmic technique found in Indian classical music, and often used to conclude a piece. Tihais can be either sung or played on an instrument. Tihais are sometimes used to distort the listeners’ perception of time, only to reveal the consistent underlying cycle at the sam.
 
 ### Definition
 
@@ -970,6 +968,6 @@ If the three groupings are played with two groupings of rests, which are equally
 
 Otherwise, if there are no rests between the three groupings, then the tihai is called Bedumdaar (or for short, Bedum).
 
-Sometimes, a pattern is played on the tabla that is almost identical to a tihai, except for the fact that it ends on the beat just before the sum. Such patterns are known as anagat. 
+Sometimes, a pattern is played on the tabla that is almost identical to a tihai, except for the fact that it ends on the beat just before the sum. Such patterns are known as anagat.
 
 <youtube-embed video="HXLGO-yTgzo" />

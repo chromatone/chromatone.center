@@ -1,11 +1,11 @@
 ---
-title: Klavarskribo 
+title: Klavarskribo
 subtitle: Vertical chromatic staff notation by Cornelis Pot
-tags: alternatives
+
 date: 2021-09-20
 ---
 
-Klavarskribo (sometimes shortened to klavar) is a music notation system that was introduced in 1931 by the Dutchman Cornelis Pot (1885–1977). The name means "keyboard writing" in Esperanto. It differs from conventional music notation in a number of ways and is intended to be easily readable. 
+Klavarskribo (sometimes shortened to klavar) is a music notation system that was introduced in 1931 by the Dutchman Cornelis Pot (1885–1977). The name means "keyboard writing" in Esperanto. It differs from conventional music notation in a number of ways and is intended to be easily readable.
 
 ![](./Klavar.png)
 

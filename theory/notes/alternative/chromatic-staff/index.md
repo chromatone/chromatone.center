@@ -1,11 +1,11 @@
 ---
 title: Chromatic staff
 subtitle: Extension of the regular staff to have room for all the 12 notes
-tags: alternatives
+
 date: 2021-09-22
 ---
 
->“The need for a new notation, or a radical improvement of the old, is greater than it seems, and the number of ingenious minds that have tackled the problem is greater than one might think.” — Arnold Schoenberg
+> “The need for a new notation, or a radical improvement of the old, is greater than it seems, and the number of ingenious minds that have tackled the problem is greater than one might think.” — Arnold Schoenberg
 
 Here is a chromatic scale on a traditional diatonic staff (above) and the same chromatic scale on a chromatic staff with five lines (below). This is just one of many versions of chromatic staff.
 

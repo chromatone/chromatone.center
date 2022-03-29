@@ -1,7 +1,7 @@
 ---
 title: Singing
 subtitle: Connecting melody and text through a human voice
-tags: melody
+
 date: 2021-11-20
 ---
 

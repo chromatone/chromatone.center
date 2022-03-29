@@ -1,8 +1,7 @@
 ---
 title: Support
 subtitle: Share links, contribute code or donate money to the open source development
-list: support
-tags: main
+
 date: 2021-05-30
 ---
 

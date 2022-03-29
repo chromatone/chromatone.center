@@ -1,7 +1,7 @@
 ---
 title: Other tools
 subtitle: There's a plenty of opportunities to dive into different aspects of music theory and practice online
-tags: experiment
+
 cover: apps/other.png
 links:
   - url: https://github.com/willianjusten/awesome-audio-visualization
@@ -17,7 +17,7 @@ links:
     title: Ableton - learning music
     subtitle: In these lessons, you'll learn the basics of music making. No prior experience or equipment is required; you'll do everything right here in your browser.
   - url: http://www.sengpielaudio.com/Calculations03.htm
-    title:  Music calculations online
+    title: Music calculations online
     subtitle: A collection of useful music math tools of Alexander Sengpiel
   - url: https://www.earbeater.com
     title: Free Online Ear Training
@@ -41,7 +41,7 @@ links:
     title: Computer readable notation
     subtitle: A format for typing music information in plain text files
   - url: https://www.themusiclab.org/
-    title: The Music Lab 
+    title: The Music Lab
     subtitle: We do citizen science to learn how the human mind creates and perceives music. Pick a game to get started!
   - url: https://ukebuddy.com/
     title: Uke Buddy

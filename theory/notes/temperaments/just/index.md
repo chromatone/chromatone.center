@@ -2,7 +2,7 @@
 title: Just intonation
 subtitle: 5-limit and other rational fraction based tunings
 date: 2021-08-20
-tags: temperaments
+
 cover: theory/chromatic.svg
 ---
 

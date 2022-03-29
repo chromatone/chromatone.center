@@ -2,7 +2,6 @@
 title: Generative theory of tonal music
 subtitle:
 date: 2021-11-13
-tags: composition
 ---
 
 A [generative theory of tonal music](https://en.wikipedia.org/wiki/Generative_theory_of_tonal_music) (GTTM) is a theory of music conceived by American composer and music theorist Fred Lerdahl and American linguist Ray Jackendoff and presented in the 1983 book of the same title. It constitutes a "formal description of the musical intuitions of a listener who is experienced in a musical idiom" with the aim of illuminating the unique human capacity for musical understanding.
@@ -55,6 +54,7 @@ Each of the four major hierarchical organizations (grouping structure, metrical 
 3. The transformational rules, which provide a means of associating distorted structures with well-formed descriptions.
 
 ### I. Grouping structure rules
+
 #### Grouping well-formedness rules (G~WFRs)
 
 1. "Any contiguous sequence of pitch-events, drum beats, or the like can constitute a group, and only contiguous sequences can constitute a group."
@@ -133,6 +133,7 @@ Time-span reduction rules begin with two segmentation rules and proceed to the s
 9. "In choosing the head of a piece, prefer the structural ending to the structural beginning."
 
 ### IV. Prolongational reduction rules
+
 #### Prolongational reduction well-formedness rules (PR~WFRs)
 
 1. "There is a single event in the underlying grouping structure of every piece that functions as prolongational head."

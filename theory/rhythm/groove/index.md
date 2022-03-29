@@ -1,7 +1,7 @@
 ---
 title: Syncopation, swing and groove
 subtitle: The propulsive quality or "feel" of a rhythm and swung notes to serve it
-tags: rhythm
+
 date: 2021-09-05
 ---
 
@@ -39,7 +39,7 @@ Anticipated bass is a bass tone that comes syncopated shortly before the downbea
 
 Richard Middleton suggests adding the concept of transformation to Narmour's prosodic rules which create rhythmic successions in order to explain or generate syncopations. "The syncopated pattern is heard 'with reference to', 'in light of', as a remapping of, its partner." He gives examples of various types of syncopation: Latin, backbeat, and before-the-beat.
 
-**Latin equivalent of simple 4/4:** a syncopated rhythm in which the first and fourth beat are provided as expected, but the accent occurs unexpectedly in between the second and third beats, creating a familiar "Latin rhythm" known as tresillo. 
+**Latin equivalent of simple 4/4:** a syncopated rhythm in which the first and fourth beat are provided as expected, but the accent occurs unexpectedly in between the second and third beats, creating a familiar "Latin rhythm" known as tresillo.
 
 **Backbeat transformation of simple 4/4**: the accent may be shifted from the first to the second beat in duple meter (and the third to fourth in quadruple), creating the backbeat rhythm. Different crowds will "clap along" at concerts either on 1 and 3 or on 2 and 4.
 
@@ -47,9 +47,9 @@ This demonstrates how each syncopated pattern may be heard as a remapping, "with
 
 ## Swing
 
-The term [swing](https://en.wikipedia.org/wiki/Swing_(jazz_performance_style)) has two main uses. Colloquially, it is used to describe the propulsive quality or "feel" of a rhythm, especially when the music prompts a visceral response such as foot-tapping or head-nodding. This sense can also be called "groove".
+The term [swing](<https://en.wikipedia.org/wiki/Swing_(jazz_performance_style)>) has two main uses. Colloquially, it is used to describe the propulsive quality or "feel" of a rhythm, especially when the music prompts a visceral response such as foot-tapping or head-nodding. This sense can also be called "groove".
 
-The term swing, as well as swung note(s) and swung rhythm, is also used more specifically to refer to a technique (most commonly associated with jazz but also used in other genres) that involves alternately lengthening and shortening the first and second consecutive notes in the two part pulse-divisions in a beat. 
+The term swing, as well as swung note(s) and swung rhythm, is also used more specifically to refer to a technique (most commonly associated with jazz but also used in other genres) that involves alternately lengthening and shortening the first and second consecutive notes in the two part pulse-divisions in a beat.
 
 ### Overview
 
@@ -59,7 +59,7 @@ When jazz performer Cootie Williams was asked to define it, he joked, "Define it
 
 Benny Goodman, the 1930s-era bandleader nicknamed the "King of Swing", called swing "free speech in music", whose most important element is "the liberty a soloist has to stand and play a chorus in the way he feels it". His contemporary Tommy Dorsey gave a more ambiguous definition when he proposed that "Swing is sweet and hot at the same time and broad enough in its creative conception to meet every challenge tomorrow may present." Boogie-woogie pianist Maurice Rocco argues that the definition of swing "is just a matter of personal opinion". When asked for a definition of swing, Fats Waller replied, "Lady, if you gotta ask, you'll never know."
 
->What is Swing? Perhaps the best answer, after all, was supplied by the hep-cat who rolled her eyes, stared into the far-off and sighed, "You can feel it, but you just can't explain it. Do you dig me?"
+> What is Swing? Perhaps the best answer, after all, was supplied by the hep-cat who rolled her eyes, stared into the far-off and sighed, "You can feel it, but you just can't explain it. Do you dig me?"
 > — Treadwell (1946), p.10
 
 Stanley Dance, in The World of Swing, devoted the two first chapters of his work to discussions of the concept of swing with a collection of the musicians who played it. They described a kinetic quality to the music. It was compared to flying; "take off" was a signal to start a solo. The rhythmic pulse continued between the beats, expressed in dynamics, articulation, and inflection. Swing was as much in the music anticipating the beat, like the swing of a jumprope anticipating the jump, as in the beat itself. Swing has been defined in terms of formal rhythmic devices, but according to the Jimmie Lunceford tune, "T'aint whatcha do, it's the way thatcha do it" (say it so it swings).
@@ -88,11 +88,11 @@ Similarly, section arrangements sometimes used a series of triplets, either acce
 
 The rhythmic devices of the swing era became subtler with bebop. Bud Powell and other piano players influenced by him mostly did away with left-hand rhythmic figures, replacing them with chords. The ride cymbal played in a "ting-ti-ting" pattern took the role of the high-hat, the snare drum was mainly used for lead-in accents, and the bass drum was mainly used for occasional "bombs." But the importance of the lead-in as a rhythmic device was still respected. Drummer Max Roach emphasized the importance of the lead-in, audible or not, in "protecting the beat." Bebop soloists rose to the challenge of keeping a swinging feel in highly sophisticated music often played at a breakneck pace. The groundbreakers of bebop had come of age as musicians with swing and, while breaking the barriers of the swing era, still reflected their swing heritage.
 
-
 Various rhythmic swing approximations:
-- ≈1:1 = eighth note + eighth note, "straight eighths." 
-- ≈3:2 = long eighth + short eighth. 
-- ≈2:1 = triplet quarter note + triplet eighth, triple meter; 
+
+- ≈1:1 = eighth note + eighth note, "straight eighths."
+- ≈3:2 = long eighth + short eighth.
+- ≈2:1 = triplet quarter note + triplet eighth, triple meter;
 - ≈3:1 = dotted eighth note + sixteenth note.
 
 The subtler end of the range involves treating written pairs of adjacent eighth notes (or sixteenth notes, depending on the level of swing) as slightly asymmetrical pairs of similar values. On the other end of the spectrum, the "dotted eighth – sixteenth" rhythm, consists of a long note three times as long as the short. Prevalent "dotted rhythms" such as these in the rhythm section of dance bands in the mid-20th century are more accurately described as a "shuffle"; they are also an important feature of baroque dance and many other styles.
@@ -100,19 +100,21 @@ The subtler end of the range involves treating written pairs of adjacent eighth 
 In jazz, the swing ratio typically lies somewhere between 1:1 and 3:1, and can vary considerably. Swing ratios in jazz tend to be wider at slower tempos and narrower at faster tempos. In jazz scores, swing is often assumed, but is sometimes explicitly indicated. For example, "Satin Doll", a swing era jazz standard, was notated in 4/4 time and in some versions includes the direction, medium swing.
 
 ### Genres using swing rhythm
-Swing is commonly used in swing jazz, ragtime, blues, jazz, western swing, new jack swing, big band jazz, swing revival, funk, funk blues, R&B, soul music, rockabilly, neo rockabilly, rock and hip-hop. Much written music in jazz is assumed to be performed with a swing rhythm. Styles that always use traditional (triplet) rhythms, resembling "hard swing", include foxtrot, quickstep and some other ballroom dances, Stride piano, and 1920s-era Novelty piano (the successor to Ragtime style). 
+
+Swing is commonly used in swing jazz, ragtime, blues, jazz, western swing, new jack swing, big band jazz, swing revival, funk, funk blues, R&B, soul music, rockabilly, neo rockabilly, rock and hip-hop. Much written music in jazz is assumed to be performed with a swing rhythm. Styles that always use traditional (triplet) rhythms, resembling "hard swing", include foxtrot, quickstep and some other ballroom dances, Stride piano, and 1920s-era Novelty piano (the successor to Ragtime style).
 
 ## Groove
 
-[Groove](https://en.wikipedia.org/wiki/Groove_(music)) is the sense of an effect ("feel") of changing pattern in a propulsive rhythm or sense of "swing". In jazz, it can be felt as a quality of persistently repeated rhythmic units, created by the interaction of the music played by a band's rhythm section (e.g. drums, electric bass or double bass, guitar, and keyboards). Groove is a significant feature of popular music, and can be found in many genres, including salsa, rock, soul, funk, and fusion.
+[Groove](<https://en.wikipedia.org/wiki/Groove_(music)>) is the sense of an effect ("feel") of changing pattern in a propulsive rhythm or sense of "swing". In jazz, it can be felt as a quality of persistently repeated rhythmic units, created by the interaction of the music played by a band's rhythm section (e.g. drums, electric bass or double bass, guitar, and keyboards). Groove is a significant feature of popular music, and can be found in many genres, including salsa, rock, soul, funk, and fusion.
 
-Characteristic rock groove: "bass drum on beats 1 and 3 and snare drum on beats 2 and 4 of the measure...add eighth notes on the hi-hat". 
+Characteristic rock groove: "bass drum on beats 1 and 3 and snare drum on beats 2 and 4 of the measure...add eighth notes on the hi-hat".
 
 From a broader ethnomusicological perspective, groove has been described as "an unspecifiable but ordered sense of something that is sustained in a distinctive, regular and attractive way, working to draw the listener in." Musicologists and other scholars have analyzed the concept of "groove" since around the 1990s. They have argued that a "groove" is an "understanding of rhythmic patterning" or "feel" and "an intuitive sense" of "a cycle in motion" that emerges from "carefully aligned concurrent rhythmic patterns" that stimulates dancing or foot-tapping on the part of listeners. The concept can be linked to the sorts of ostinatos that generally accompany fusions and dance musics of African derivation (e.g. African-American, Afro-Cuban, Afro-Brazilian, etc.).
 
 The term is often applied to musical performances that make one want to move or dance, and enjoyably "groove" (a word that also has sexual connotations). The expression "in the groove" (as in the jazz standard) was widely used from around 1936 to 1945, at the height of the swing era, to describe top-notch jazz performances. In the 1940s and 1950s, groove commonly came to denote musical "routine, preference, style, [or] source of pleasure."
 
 ### Description
+
 #### Musicians' perspectives
 
 Like the term "swing", which is used to describe a cohesive rhythmic "feel" in a jazz context, the concept of "groove" can be hard to define. Marc Sabatella's article Establishing The Groove argues that "groove is a completely subjective thing." He claims that "one person may think a given drummer has a great feel, while another person may think the same drummer sounds too stiff, and another may think he is too loose." Similarly, a bass educator states that while "groove is an elusive thing" it can be defined as "what makes the music breathe" and the "sense of motion in the context of a song".
@@ -139,7 +141,7 @@ The "groove" has been cited as an example of sensory-motor coupling between neur
 
 #### Jazz
 
-In some more traditional styles of jazz, the musicians often use the word "swing" to describe the sense of rhythmic cohesion of a skilled group. However, since the 1950s, musicians from the organ trio and latin jazz subgenres have also used the term "groove". Jazz flute player Herbie Mann talks a lot about "the groove." In the 1950s, Mann "locked into a Brazilian groove in the early '60s, then moved into a funky, soulful groove in the late '60s and early '70s. By the mid-'70s he was making hit disco records, still cooking in a rhythmic groove." He describes his approach to finding the groove as follows: "All you have to do is find the waves that are comfortable to float on top of." Mann argues that the "epitome of a groove record" is "Memphis Underground or Push Push", because the "rhythm section [is] locked all in one perception." 
+In some more traditional styles of jazz, the musicians often use the word "swing" to describe the sense of rhythmic cohesion of a skilled group. However, since the 1950s, musicians from the organ trio and latin jazz subgenres have also used the term "groove". Jazz flute player Herbie Mann talks a lot about "the groove." In the 1950s, Mann "locked into a Brazilian groove in the early '60s, then moved into a funky, soulful groove in the late '60s and early '70s. By the mid-'70s he was making hit disco records, still cooking in a rhythmic groove." He describes his approach to finding the groove as follows: "All you have to do is find the waves that are comfortable to float on top of." Mann argues that the "epitome of a groove record" is "Memphis Underground or Push Push", because the "rhythm section [is] locked all in one perception."
 
 #### Reggae
 

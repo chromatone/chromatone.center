@@ -2,7 +2,7 @@
 title: Comparison of the tunings
 subtitle: Ways to juxtapose and compare different tuning methods side by side
 date: 2021-08-05
-tags: temperaments
+
 cover: theory/tuning-circle.svg
 ---
 

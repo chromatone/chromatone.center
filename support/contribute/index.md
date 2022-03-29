@@ -1,7 +1,7 @@
 ---
 title: Contribute code
 subtitle: Post issues and submit pull requests at GitHub
-tags: support
+
 buttons:
   - url: https://github.com/chromatone
     text: GitHub/Chromatone

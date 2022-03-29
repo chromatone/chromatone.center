@@ -1,7 +1,7 @@
 ---
 title: Drone
 subtitle: Digital shruti box or tanpura tool online
-tags: pitch
+
 date: 2021-10-12
 cover: apps/drone.png
 ---
@@ -12,7 +12,7 @@ cover: apps/drone.png
 
 ## Multipurpose rich harmonic sound generator
 
-You choose the pitch and the app plays 3 octaves and 3 fifths intervals for it. The sound is generated with [sawtooth](https://en.wikipedia.org/wiki/Sawtooth_wave) oscillator synth and this gives the incredible amount of harmonic material to play with. Consider it as an electronic version of [indian tanpura](https://en.wikipedia.org/wiki/Tanpura) or simply the [Shruti box](https://en.wikipedia.org/wiki/Shruti_box). 
+You choose the pitch and the app plays 3 octaves and 3 fifths intervals for it. The sound is generated with [sawtooth](https://en.wikipedia.org/wiki/Sawtooth_wave) oscillator synth and this gives the incredible amount of harmonic material to play with. Consider it as an electronic version of [indian tanpura](https://en.wikipedia.org/wiki/Tanpura) or simply the [Shruti box](https://en.wikipedia.org/wiki/Shruti_box).
 
 ### How to use the drone app
 

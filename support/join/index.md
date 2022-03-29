@@ -2,7 +2,7 @@
 title: Join the conversation
 subtitle: Participate in the discord server talks and help build the international musician community.
 date: 2020-02-12
-tags: support
+
 buttons:
   - url: https://discord.gg/KE3RvZfVDM
     text: Get an invite

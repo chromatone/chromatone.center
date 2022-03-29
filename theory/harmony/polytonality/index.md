@@ -1,8 +1,7 @@
 ---
 title: Polytonality
-subtitle: The musical use of more than one key simultaneously. 
+subtitle: The musical use of more than one key simultaneously.
 date: 2021-09-20
-tags: harmony
 ---
 
 Polytonality (also polyharmony) is the musical use of more than one key simultaneously. Bitonality is the use of only two different keys at the same time. Polyvalence is the use of more than one harmonic function, from the same key, at the same time.
@@ -43,8 +42,8 @@ Stravinsky's The Rite of Spring is widely credited with popularizing bitonality,
 
 Bartók's "Playsong" demonstrates easily perceivable bitonality through "the harmonic motion of each key ... [being] relatively uncomplicated and very diatonic". Here, the "duality of key" featured is A minor and C♯ minor.
 
-><youtube-embed video="zZanU1ZaN6k" />
->Example of polytonality or extended tonality from Milhaud's Saudades do Brasil (1920), right hand in B major and left hand in G major, or both hands in extended G major.
+> <youtube-embed video="zZanU1ZaN6k" />
+> Example of polytonality or extended tonality from Milhaud's Saudades do Brasil (1920), right hand in B major and left hand in G major, or both hands in extended G major.
 
 Other polytonal composers influenced by Stravinsky include those in the French group, Les Six, particularly Darius Milhaud, as well as Americans such as Aaron Copland.
 
@@ -72,7 +71,6 @@ Passages of music, such as Poulenc's Trois mouvements perpétuels, I., may be mi
 
 Polyscalarity is defined as "the simultaneous use of musical objects which clearly suggest different source-collections. Specifically in reference to Stravinsky's music, Tymoczko uses the term polyscalarity out of deference to terminological sensibilities. In other words, the term is meant to avoid any implication that the listener can perceive two keys at once. Though Tymoczko believes that polytonality is perceivable, he believes polyscalarity is better suited to describe Stravinsky's music. This term is also used as a response to Van den Toorn's analysis against polytonality. Van den Toorn, in an attempt to dismiss polytonal analysis used a monoscalar approach to analyze the music with the octatonic scale. However, Tymoczko states that this was problematic in that it does not resolve all instances of multiple interactions between scales and chords. Moreover, Tymoczko quotes Stravinsky's claim that the music of Petrouchka's second tableau was conceived "in two keys". Polyscalarity is then a term encompassing multiscalar superimpositions and cases which give a different explanation than the octatonic scale.
 
-
 ## Challenges
 
 Some music theorists, including Milton Babbitt and Paul Hindemith have questioned whether polytonality is a useful or meaningful notion or "viable auditory possibility". Babbitt called polytonality a "self-contradictory expression which, if it is to possess any meaning at all, can only be used as a label to designate a certain degree of expansion of the individual elements of a well-defined harmonic or voice-leading unit". Other theorists to question or reject polytonality include Allen Forte and Benjamin Boretz, who hold that the notion involves logical incoherence.
@@ -83,7 +81,7 @@ Other theorists, such as Dmitri Tymoczko, respond that the notion of "tonality" 
 
 <youtube-embed video="esD90diWZds" />
 
-Some critics of the notion of polytonality, such as Pieter van den Toorn, argue that the octatonic scale accounts in concrete pitch-relational terms for the qualities of "clashing", "opposition", "stasis", "polarity", and "superimposition" found in Stravinsky's music and, far from negating them, explains these qualities on a deeper level. For example, the passage from Petrushka, cited above, uses only notes drawn from the C octatonic collection C–C♯–D♯–E–F♯–G–A–A♯. 
+Some critics of the notion of polytonality, such as Pieter van den Toorn, argue that the octatonic scale accounts in concrete pitch-relational terms for the qualities of "clashing", "opposition", "stasis", "polarity", and "superimposition" found in Stravinsky's music and, far from negating them, explains these qualities on a deeper level. For example, the passage from Petrushka, cited above, uses only notes drawn from the C octatonic collection C–C♯–D♯–E–F♯–G–A–A♯.
 
 ## Polymodal chromaticism
 
@@ -95,11 +93,11 @@ The concept was indicated by Bartók's folk-music-derived view of each note of t
 
 Bartók had realised that both melodic minor scales gave rise to four chromatic steps between the two scales' fifths and the rising melodic minor scale's seventh degrees when superimposed. Consequently, he started investigating if the same pattern could be established in some way in the beginning of any scales and came to realise that superimposing a Phrygian and a Lydian scale with the same tonic resulted in what looked like a chromatic scale. Bartók's twelve-tone Phrygian/Lydian polymode, however, differed from the chromatic scale as used by, for example, late-Romantic composers like Richard Strauss and Richard Wagner. During the late 19th century the chromatic altering of a chord or melody was a change in strict relation to its functional non-altered version. Alterations in the twelve-tone Phrygian/Lydian polymode, the other hand, were "diatonic ingredients of a diatonic modal scale."
 
->Phrygian mode (C) 	C–D♭–E♭–F–G–A♭–B♭–C
->Lydian mode (C) 	C–D–E–F♯–G–A–B–C
->Twelve-tone Phrygian/Lydian polymode (C) 	C–D♭–D–E♭–E–F–F♯–G–A♭–A–B♭–B–C 
+> Phrygian mode (C) C–D♭–E♭–F–G–A♭–B♭–C
+> Lydian mode (C) C–D–E–F♯–G–A–B–C
+> Twelve-tone Phrygian/Lydian polymode (C) C–D♭–D–E♭–E–F–F♯–G–A♭–A–B♭–B–C
 >
->Twelve-tone Phrygian-Lydian polymode
+> Twelve-tone Phrygian-Lydian polymode
 
 Melodies could be developed and transformed in novel ways through diatonic extension and chromatic compression, while still having coherent links to their original forms. Bartók described this as a new means to develop a melody.
 

@@ -1,37 +1,37 @@
 ---
 title: Flamenco compás
 subtitle: A variety of both contemporary and traditional musical styles typical of southern Spain
-tags: rhythm-pattern
+
 date: 2021-10-16
 urls:
   - https://en.wikipedia.org/wiki/Flamenco
   - http://www.compas-flamenco.com/en/palos.html#Table
 flamenco:
   meters: [16/16]
-  patterns: 
-    'X..x..x..x..': 
+  patterns:
+    "X..x..x..x..":
       names:
         - name: Fandango
-    'X..x..x.x.x.': 
+    "X..x..x.x.x.":
       names:
         - name: Guajira
-    'X.x.x..x..x.': 
+    "X.x.x..x..x.":
       names:
         - name: Seguiriya
-    '..x...xx.x.X': 
+    "..x...xx.x.X":
       names:
         - name: Bulería
-    '..x..x.x.x.X': 
+    "..x..x.x.x.X":
       names:
         - name: Soleá
-    'X..x.xx..x..': 
+    "X..x.xx..x..":
       names:
         - name: Tientos
-    '.x.x.x': 
+    ".x.x.x":
       meter: 8/12
       names:
         - name: Buleria on 6 (A)
-    '..x..x': 
+    "..x..x":
       meter: 8/12
       names:
         - name: Buleria on 6 (B)

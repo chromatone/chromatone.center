@@ -2,7 +2,6 @@
 title: Composers
 subtitle: Interviews and retrospectives
 date: 2021-10-02
-tags: composition
 ---
 
 ## Steve Reich

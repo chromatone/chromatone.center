@@ -4,7 +4,7 @@ subtitle: 144 tiny color accents
 product:
   price: $10
   link: https://ko-fi.com/s/a2d14d2c25
-tags: keys
+
 cover: stickers/universal/cover-uni.jpg
 date: 2021-08-20
 ---

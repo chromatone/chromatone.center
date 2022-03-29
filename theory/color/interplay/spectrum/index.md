@@ -2,10 +2,9 @@
 title: Chromatic spectrum
 subtitle: The model in which musical octave meets color spectrum.
 cover: theory/spectrum.svg
-tags: interplay
+
 date: 2021-08-24
 ---
-
 
 Sonic and electromagnetic waves have very different mediums as a carrier field. Sound is carried by air molecules, light travels through vacuum just because of ever present electromagnetic field.
 
@@ -31,5 +30,4 @@ Let's keep multiplying our A = 440 Hz by two until we reach the visible light sp
 
 <img src="/media/theory/spectrum.svg" />
 
-We can conclude that it's a fundamental property of our perception to close perceived parts of any spectrum into a seamless circle. And these circles are not just illusions as the resonances and  periodicities are based on fundamental principles of physics.
-
+We can conclude that it's a fundamental property of our perception to close perceived parts of any spectrum into a seamless circle. And these circles are not just illusions as the resonances and periodicities are based on fundamental principles of physics.

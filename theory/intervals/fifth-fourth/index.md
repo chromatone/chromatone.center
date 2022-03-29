@@ -2,7 +2,6 @@
 title: Fifth and fourth
 subtitle: Perfect, but not equivalent intervals
 date: 2021-09-08
-tags: intervals
 ---
 
 ## Fifth P5
@@ -30,10 +29,9 @@ In musical tuning, the Pythagorean comma (or ditonic comma), named after the anc
 
 ### 12-Tone Equal Temperament
 
-Twelve-tone equal temperament is the musical system that divides the octave into 12 parts, all of which are equally tempered (equally spaced) on a logarithmic scale, with a ratio equal to the 12th root of 2 (12√2 ≈ 1.05946). That resulting smallest interval, 1⁄12 the width of an octave, is called a semitone or half step. 
+Twelve-tone equal temperament is the musical system that divides the octave into 12 parts, all of which are equally tempered (equally spaced) on a logarithmic scale, with a ratio equal to the 12th root of 2 (12√2 ≈ 1.05946). That resulting smallest interval, 1⁄12 the width of an octave, is called a semitone or half step.
 
 <img src="./tet-fifth-equation.svg" />
-
 
 ## Perfect fourth P4
 
@@ -43,17 +41,17 @@ Twelve-tone equal temperament is the musical system that divides the octave into
 
 Perfect fourth is the inverse of the perfect fifth.
 
-The perfect fourth may be derived from the harmonic series as the interval between the third and fourth harmonics. The term perfect identifies this interval as belonging to the group of perfect intervals, so called because they are neither major nor minor. 
+The perfect fourth may be derived from the harmonic series as the interval between the third and fourth harmonics. The term perfect identifies this interval as belonging to the group of perfect intervals, so called because they are neither major nor minor.
 
-A perfect fourth in just intonation corresponds to a pitch ratio of 4:3, or about 498 cents, while in equal temperament a perfect fourth is equal to five semitones, or 500 cents. 
+A perfect fourth in just intonation corresponds to a pitch ratio of 4:3, or about 498 cents, while in equal temperament a perfect fourth is equal to five semitones, or 500 cents.
 
-The perfect fourth is a perfect interval like the unison, octave, and perfect fifth, and it is a sensory consonance. In common practice harmony, however, it is considered a stylistic dissonance in certain contexts, namely in two-voice textures and whenever it occurs "above the bass in chords with three or more notes". If the bass note also happens to be the chord's root, the interval's upper note almost always temporarily displaces the third of any chord, and, in the terminology used in popular music, is then called a suspended fourth. 
+The perfect fourth is a perfect interval like the unison, octave, and perfect fifth, and it is a sensory consonance. In common practice harmony, however, it is considered a stylistic dissonance in certain contexts, namely in two-voice textures and whenever it occurs "above the bass in chords with three or more notes". If the bass note also happens to be the chord's root, the interval's upper note almost always temporarily displaces the third of any chord, and, in the terminology used in popular music, is then called a suspended fourth.
 
 ## Quartal and quintal harmony
 
 In music, quartal harmony is the building of harmonic structures built from the intervals of the perfect fourth, the augmented fourth and the diminished fourth. For instance, a three-note quartal chord on C can be built by stacking perfect fourths, C–F–B♭.
 
-Quintal harmony is harmonic structure preferring the perfect fifth, the augmented fifth and the diminished fifth. For instance, a three-note quintal chord on C can be built by stacking perfect fifths, C–G–D. 
+Quintal harmony is harmonic structure preferring the perfect fifth, the augmented fifth and the diminished fifth. For instance, a three-note quintal chord on C can be built by stacking perfect fifths, C–G–D.
 
 Regarding chords built from perfect fourths alone, composer Vincent Persichetti writes that:
 

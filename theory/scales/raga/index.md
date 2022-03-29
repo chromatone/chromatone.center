@@ -2,12 +2,11 @@
 title: Indian Raga
 subtitle: Improvisational music framework
 date: 2021-09-03
-tags: scales
+
 cover: theory/five-gandharva.jpg
 ---
 
 <scale-raga />
-
 
 A raga or raag (IAST: rāga; also raaga or ragam; literally "coloring, tingeing, dyeing") is a melodic framework for improvisation akin to a melodic mode in Indian classical music. The rāga is a unique and central feature of the classical Indian music tradition, and as a result has no direct translation to concepts in classical European music. Each rāga is an array of melodic structures with musical motifs, considered in the Indian tradition to have the ability to "colour the mind" and affect the emotions of the audience.
 
@@ -41,8 +40,6 @@ The nomenclature given to the chakras carries great import. For instance, the fi
 
 <youtube-embed video="mrFJ9MLR7do" />
 
-
-
 This apart, the entire chart is made user-friendly by assigning the syllabic notes in an order that facilitates easy memorising for a student of music. For instance, all the ragas in the Indu chakra have a common note in rishabha and gandhara, viz,. ‘ra-ga’ (shuddha rishabha and shuddha gandhara-ri1 and ga1). The only notes that change their position in numerical order are the daivatha and nishadha (dha & ni). Similarly, in Netra chakra, it is ‘ra and gi’. The rishabha remains the same (ri1) while the gandhara changes to ‘sadharana gandharam (ga2). The third Agni chakra is identified with ‘ra-gu’ which means no change in the placement of rishabha but then the gandhara changes to antara gandhara (ga3). When it comes to the fourth Veda chakra, it is ‘ri-gi’ where the rishabha undergoes a change in position to chatursruti rishabha (ri2) with the gandhara remaining constant at sadharana gandhara (ga2). In the Bana chakra (ri-gu) the chatusruti rishabha is constant ‘ri2’ while the gandhara turns ‘ga3’. Finally, in the sixth Rithu chakra which completes the shuddha madhyama ragas, it is ‘ru-gu’ where the rishabha is placed in shatsruti (ri3) and the gandhara remains in ‘ga3’. The same is repeated in the next six chakras (37-72) which come under the prati madhayama melakarta ragas corresponding to the 36 shuddha madhyama ragas.
 
 <youtube-embed video="G5xfoEVyJRg" />
@@ -51,28 +48,28 @@ Now let’s get the list of these 72 ragas: Kanakangi, Ratnangi, Ganamurti, Vana
 
 ## Katapayadi system
 
-[ka·ṭa·pa·yā·di](https://en.wikipedia.org/wiki/Katapayadi_system) (Devanagari: कटपयादि) system (also known as Paralppēru, Malayalam: പരല്‍പ്പേര്) of numerical notation is an ancient Indian alphasyllabic numeral system to depict letters to numerals for easy remembrance of numbers as words or verses. Assigning more than one letter to one numeral and nullifying certain other letters as valueless, this system provides the flexibility in forming meaningful words out of numbers which can be easily remembered. 
+[ka·ṭa·pa·yā·di](https://en.wikipedia.org/wiki/Katapayadi_system) (Devanagari: कटपयादि) system (also known as Paralppēru, Malayalam: പരല്‍പ്പേര്) of numerical notation is an ancient Indian alphasyllabic numeral system to depict letters to numerals for easy remembrance of numbers as words or verses. Assigning more than one letter to one numeral and nullifying certain other letters as valueless, this system provides the flexibility in forming meaningful words out of numbers which can be easily remembered.
 
 Following verse found in Śaṅkaravarman's Sadratnamāla explains the mechanism of the system.[8][9]
 
->नञावचश्च शून्यानि संख्या: कटपयादय:।    
->मिश्रे तूपान्त्यहल् संख्या न च चिन्त्यो हलस्वर:॥
+> नञावचश्च शून्यानि संख्या: कटपयादय:।  
+> मिश्रे तूपान्त्यहल् संख्या न च चिन्त्यो हलस्वर:॥
 
 Transiliteration:
 
->nanyāvacaśca śūnyāni saṃkhyāḥ kaṭapayādayaḥ    
->miśre tūpāntyahal saṃkhyā na ca cintyo halasvaraḥ
+> nanyāvacaśca śūnyāni saṃkhyāḥ kaṭapayādayaḥ  
+> miśre tūpāntyahal saṃkhyā na ca cintyo halasvaraḥ
 
 Translation: na (न), nya (ञ) and a (अ)-s, i.e., vowels represent zero. The nine integers are represented by consonant group beginning with ka, ṭa, pa, ya. In a conjunct consonant, the last of the consonants alone will count. A consonant without a vowel is to be ignored.
 
 Explanation: The assignment of letters to the numerals are as per the following arrangement (In Devanagari, Kannada, Telugu & Malayalam respectively)
 
-| 1           | 2            | 3           | 4            | 5              | 6            | 7            | 8           | 9            | 0            |
-|-------------|--------------|-------------|--------------|----------------|--------------|--------------|-------------|--------------|--------------|
-| ka  क ಕ క ക | kha  ख ಖ ఖ ഖ | ga  ग ಗ గ ഗ | gha  घ ಘ ఘ ഘ | nga  ङ ಙ జ్ఞ ങ | ca  च ಚ చ ച  | cha  छ ಛ ఛ ഛ | ja  ज ಜ జ ജ | jha  झ ಝ ఝ ഝ | nya  ञ ಞ ఞ ഞ |
-| ṭa  ट ಟ ట ട | ṭha  ठ ಠ ఠ ഠ | ḍa  ड ಡ డ ഡ | ḍha  ढ ಢ ఢ ഢ | ṇa  ण ಣ ణ ണ    | ta  त ತ త ത  | tha  थ ಥ థ ഥ | da  द ದ ద ദ | dha  ध ಧ ధ ധ | na  न ನ న ന  |
-| pa  प ಪ ప പ | pha  फ ಫ ఫ ഫ | ba  ब బ ബ   | bha  भ ಭ భ ഭ | ma  म ಮ మ മ    | –            | –            | –           | –            | –            |
-| ya  य ಯ య യ | ra  र ರ ర ര  | la  ल ల ల ല | va  व ವ వ വ  | śha  श ಶ శ ശ   | sha  ष ಷ ష ഷ | sa  स ಸ స സ  | ha  ह ಹ హ ഹ | –            | –            |
+| 1          | 2           | 3          | 4           | 5             | 6           | 7           | 8          | 9           | 0           |
+| ---------- | ----------- | ---------- | ----------- | ------------- | ----------- | ----------- | ---------- | ----------- | ----------- |
+| ka क ಕ క ക | kha ख ಖ ఖ ഖ | ga ग ಗ గ ഗ | gha घ ಘ ఘ ഘ | nga ङ ಙ జ్ఞ ങ | ca च ಚ చ ച  | cha छ ಛ ఛ ഛ | ja ज ಜ జ ജ | jha झ ಝ ఝ ഝ | nya ञ ಞ ఞ ഞ |
+| ṭa ट ಟ ట ട | ṭha ठ ಠ ఠ ഠ | ḍa ड ಡ డ ഡ | ḍha ढ ಢ ఢ ഢ | ṇa ण ಣ ణ ണ    | ta त ತ త ത  | tha थ ಥ థ ഥ | da द ದ ద ദ | dha ध ಧ ధ ധ | na न ನ న ന  |
+| pa प ಪ ప പ | pha फ ಫ ఫ ഫ | ba ब బ ബ   | bha भ ಭ భ ഭ | ma म ಮ మ മ    | –           | –           | –          | –           | –           |
+| ya य ಯ య യ | ra र ರ ర ര  | la ल ల ల ല | va व ವ వ വ  | śha श ಶ శ ശ   | sha ष ಷ ష ഷ | sa स ಸ స സ  | ha ह ಹ హ ഹ | –           | –           |
 
 - Consonants have numerals assigned as per the above table. For example, ba (ब) is always 3 whereas 5 can be represented by either nga (ङ) or ṇa (ण) or ma (म) or śha (श).
 - All stand-alone vowels like a (अ) and ṛ (ऋ) are assigned to zero.
@@ -80,26 +77,24 @@ Explanation: The assignment of letters to the numerals are as per the following 
 - There is no way of representing the decimal separator in the system.
 - Indians used the Hindu–Arabic numeral system for numbering, traditionally written in increasing place values from left to right. This is as per the rule "अङ्कानां वामतो गतिः" which means numbers go from right to left.
 
-
-
 The melakarta ragas of the Carnatic music is named so that the first two syllables of the name will give its number. This system is sometimes called the Ka-ta-pa-ya-di sankhya. The Swaras 'Sa' and 'Pa' are fixed, and here is how to get the other swaras from the melakarta number.
 
 Melakartas 1 through 36 have Ma1 and those from 37 through 72 have Ma2.
 The other notes are derived by noting the (integral part of the) quotient and remainder when one less than the melakarta number is divided by 6. If the melakarta number is greater than 36, subtract 36 from the melakarta number before performing this step.
 'Ri' and 'Ga' positions: the raga will have:
-    Ri1 and Ga1 if the quotient is 0
-    Ri1 and Ga2 if the quotient is 1
-    Ri1 and Ga3 if the quotient is 2
-    Ri2 and Ga2 if the quotient is 3
-    Ri2 and Ga3 if the quotient is 4
-    Ri3 and Ga3 if the quotient is 5
+Ri1 and Ga1 if the quotient is 0
+Ri1 and Ga2 if the quotient is 1
+Ri1 and Ga3 if the quotient is 2
+Ri2 and Ga2 if the quotient is 3
+Ri2 and Ga3 if the quotient is 4
+Ri3 and Ga3 if the quotient is 5
 'Da' and 'Ni' positions: the raga will have:
-    Da1 and Ni1 if remainder is 0
-    Da1 and Ni2 if remainder is 1
-    Da1 and Ni3 if remainder is 2
-    Da2 and Ni2 if remainder is 3
-    Da2 and Ni3 if remainder is 4
-    Da3 and Ni3 if remainder is 5
+Da1 and Ni1 if remainder is 0
+Da1 and Ni2 if remainder is 1
+Da1 and Ni3 if remainder is 2
+Da2 and Ni2 if remainder is 3
+Da2 and Ni3 if remainder is 4
+Da3 and Ni3 if remainder is 5
 
 ### Raga Dheerasankarabharanam
 
@@ -111,25 +106,24 @@ From the coding scheme Ma ↔ "title" 5, Cha ↔ "title" 6. Hence the raga's mel
 
 ### Exception for Simhendramadhyamam
 
-As per the above calculation, we should get Sa ↔ "title" 7, Ha ↔ "title" 8 giving the number 87 instead of 57 for Simhendramadhyamam. This should be ideally Sa ↔ "title" 7, Ma ↔ "title" 5 giving the number 57. So it is believed that the name should be written as Sihmendramadhyamam (as in the case of Brahmana in Sanskrit). 
+As per the above calculation, we should get Sa ↔ "title" 7, Ha ↔ "title" 8 giving the number 87 instead of 57 for Simhendramadhyamam. This should be ideally Sa ↔ "title" 7, Ma ↔ "title" 5 giving the number 57. So it is believed that the name should be written as Sihmendramadhyamam (as in the case of Brahmana in Sanskrit).
 
 ## Chakras
 
 The 72 melakarta ragas are split into 12 groups called chakras, each containing 6 ragas. The ragas within the chakra differ only in the dhaivatham and nishadham notes (D and N), as illustrated below. The name of each of the 12 chakras suggest their ordinal number as well.[2][4]
 
 - **Indu** stands for the moon, of which we have only one - hence it is the first chakra.
--  **Netra** means eyes, of which we have two - hence it is the second.
--  **Agni** is the third chakra as it denotes the three agnis or the holy fires (laukikaagni - earthly fire, daavaagni - lightning, and divyaagni - the Sun).
--  **Veda** denoting four Vedas or scriptures namely Rigveda, Samaveda, Yajurveda, Atharvaveda is the name of the fourth chakra.
--  **Bana** comes fifth as it stands for the five banas of Manmatha.
--  **Rutu** is the sixth chakra standing for the 6 seasons of Hindu calendar.
--  **Rishi**, meaning sage, is the seventh chakra representing the seven sages.
--  **Vasu** stands for the eight vasus of Hinduism.
--  **Brahma** comes next of which there are 9.
--  The 10 directions, including akash (sky) and patal (nether region), is represented by the tenth chakra, **Disi**.
--  Eleventh chakra is **Rudra** of which represents the eleven names of Lord Shiva.
--  Twelfth comes **Aditya** of which stands for the twelve names of Lord Surya or the Sun God.
-
+- **Netra** means eyes, of which we have two - hence it is the second.
+- **Agni** is the third chakra as it denotes the three agnis or the holy fires (laukikaagni - earthly fire, daavaagni - lightning, and divyaagni - the Sun).
+- **Veda** denoting four Vedas or scriptures namely Rigveda, Samaveda, Yajurveda, Atharvaveda is the name of the fourth chakra.
+- **Bana** comes fifth as it stands for the five banas of Manmatha.
+- **Rutu** is the sixth chakra standing for the 6 seasons of Hindu calendar.
+- **Rishi**, meaning sage, is the seventh chakra representing the seven sages.
+- **Vasu** stands for the eight vasus of Hinduism.
+- **Brahma** comes next of which there are 9.
+- The 10 directions, including akash (sky) and patal (nether region), is represented by the tenth chakra, **Disi**.
+- Eleventh chakra is **Rudra** of which represents the eleven names of Lord Shiva.
+- Twelfth comes **Aditya** of which stands for the twelve names of Lord Surya or the Sun God.
 
 ## Asampurna Melakarta
 
@@ -137,7 +131,7 @@ https://en.wikipedia.org/wiki/Asampurna_Melakarta
 
 The Asampurna Melakarta (transliterated as Asaṃpūrṇa Mēḷakarta) scheme is the system of 72 ragas (musical scales) originally proposed in the 17th century by Venkatamakhin in his Chaturdanda Prakasikha.[1] This proposal used scales with notes that do not conform to the sampurna raga system. Skipped notes or repeated notes, etc., were used in some of the ragas. Some of the ragas of any Melakarta system will use Vivadi swaras (discordant notes). The original system is supposed to avoid such ill-effects and was followed by the Muthuswami Dikshitar school. The naming of the original system followed Katapayadi system. Muthuswami Dikshitar's compositions use the name of these ragas in the lyrics of the songs and is still referred to by those names even in radio / TV announcements of these songs.
 
-Later Govindacharya came up with a more mathematical and regular system of 72 ragas, which is currently considered fundamental ragas (musical scales) in Carnatic music (South Indian classical music). These melakarta ragas were sampurna ragas. Some of the names of the ragas had to be modified to fit into the Katapayadi system. 
+Later Govindacharya came up with a more mathematical and regular system of 72 ragas, which is currently considered fundamental ragas (musical scales) in Carnatic music (South Indian classical music). These melakarta ragas were sampurna ragas. Some of the names of the ragas had to be modified to fit into the Katapayadi system.
 
 In the Asampurna Melakarta system, there is no set rule for the ragas in contrast to the currently used system of Melakarta ragas. Some ragas though are the same in both systems (like 15 - Mayamalavagowla and 29 - Dheerasankarabharanam), and in some cases the scales are same, while names are different (like 8 - Janatodi and Hanumatodi, 56 - Chamaram and Shanmukhapriya).
 

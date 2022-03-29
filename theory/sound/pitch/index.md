@@ -1,7 +1,7 @@
 ---
 title: Frequency and pitch
 subtitle: The human perception of sound frequency as a place of it at a scale
-tags: sound
+
 date: 2021-08-28
 ---
 
@@ -23,7 +23,7 @@ In most cases, the pitch of complex sounds such as speech and musical notes corr
 
 The pitch of complex tones can be ambiguous, meaning that two or more different pitches can be perceived, depending upon the observer. When the actual fundamental frequency can be precisely determined through physical measurement, it may differ from the perceived pitch because of overtones, also known as upper partials, harmonic or otherwise. A complex tone composed of two sine waves of 1000 and 1200 Hz may sometimes be heard as up to three pitches: two spectral pitches at 1000 and 1200 Hz, derived from the physical frequencies of the pure tones, and the combination tone at 200 Hz, corresponding to the repetition rate of the waveform. In a situation like this, the percept at 200 Hz is commonly referred to as the missing fundamental, which is often the greatest common divisor of the frequencies present.
 
-Pitch depends to a lesser degree on the sound pressure level (loudness, volume) of the tone, especially at frequencies below 1,000 Hz and above 2,000 Hz. The pitch of lower tones gets lower as sound pressure increases. For instance, a tone of 200 Hz that is very loud seems one semitone lower in pitch than if it is just barely audible. Above 2,000 Hz, the pitch gets higher as the sound gets louder. These results were obtained in the pioneering works by S. Stevens  and W. Snow. Later investigations, i.e. by A. Cohen, had shown that in most cases the apparent pitch shifts were not significantly different from pitch‐matching errors. When averaged, the remaining shifts followed the directions of Stevens' curves but were small (2% or less by frequency, i.e. not more than a semitone).
+Pitch depends to a lesser degree on the sound pressure level (loudness, volume) of the tone, especially at frequencies below 1,000 Hz and above 2,000 Hz. The pitch of lower tones gets lower as sound pressure increases. For instance, a tone of 200 Hz that is very loud seems one semitone lower in pitch than if it is just barely audible. Above 2,000 Hz, the pitch gets higher as the sound gets louder. These results were obtained in the pioneering works by S. Stevens and W. Snow. Later investigations, i.e. by A. Cohen, had shown that in most cases the apparent pitch shifts were not significantly different from pitch‐matching errors. When averaged, the remaining shifts followed the directions of Stevens' curves but were small (2% or less by frequency, i.e. not more than a semitone).
 
 ### Theories of pitch perception
 
@@ -61,14 +61,11 @@ Pitches are labeled using:
 
 For example, one might refer to the A above middle C as a′, A4, or 440 Hz. In standard Western equal temperament, the notion of pitch is insensitive to "spelling": the description "G4 double sharp" refers to the same pitch as A4; in other temperaments, these may be distinct pitches. Human perception of musical intervals is approximately logarithmic with respect to fundamental frequency: the perceived interval between the pitches "A220" and "A440" is the same as the perceived interval between the pitches A440 and A880. Motivated by this logarithmic perception, music theorists sometimes represent pitches using a numerical scale based on the logarithm of fundamental frequency. For example, one can adopt the widely used MIDI standard to map fundamental frequency, f, to a real number, p, as follows
 
-> p = 69 + 12 × log 2 ⁡ ( f 440  Hz ) 
+> p = 69 + 12 × log 2 ⁡ ( f 440 Hz )
 
 This creates a linear pitch space in which octaves have size 12, semitones (the distance between adjacent keys on the piano keyboard) have size 1, and A440 is assigned the number 69. Distance in this space corresponds to musical intervals as understood by musicians. An equal-tempered semitone is subdivided into 100 cents. The system is flexible enough to include "microtones" not found on standard piano keyboards. For example, the pitch halfway between C (60) and C♯ (61) can be labeled 60.5.
 
-
-
 ## Pitch standards and standard pitch
-
 
 A pitch standard (also concert pitch) is the conventional pitch reference a group of musical instruments are tuned to for a performance. Concert pitch may vary from ensemble to ensemble, and has varied widely over musical history.
 

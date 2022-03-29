@@ -2,7 +2,7 @@
 title: Synesthesia
 subtitle: Neurological phenomenon of interlinked sensory signals
 date: 2021-08-25
-tags: interplay
+
 cover: theory/Number_Form-synesthesia.jpg
 ---
 
@@ -10,7 +10,7 @@ The term Synesthesia comes from the Ancient Greek σύν syn, 'together', and α
 
 Synesthesia (American English) or synaesthesia (British English) is a perceptual phenomenon in which stimulation of one sensory or cognitive pathway leads to involuntary experiences in a second sensory or cognitive pathway.People who report a lifelong history of such experiences are known as synesthetes. Awareness of synesthetic perceptions varies from person to person.[7] In one common form of synesthesia, known as grapheme–color synesthesia or color–graphemic synesthesia, letters or numbers are perceived as inherently colored. In spatial-sequence, or number form synesthesia, numbers, months of the year, or days of the week elicit precise locations in space (for example, 1980 may be "farther away" than 1990), or may appear as a three-dimensional map (clockwise or counterclockwise). Synesthetic associations can occur in any combination and any number of senses or cognitive pathways.
 
-Little is known about how synesthesia develops. It has been suggested that synesthesia develops during childhood when children are intensively engaged with abstract concepts for the first time. This hypothesis – referred to as semantic vacuum hypothesis – explains why the most common forms of synesthesia are grapheme–color, spatial sequence, and number form. These are usually the first abstract concepts that educational systems require children to learn. 
+Little is known about how synesthesia develops. It has been suggested that synesthesia develops during childhood when children are intensively engaged with abstract concepts for the first time. This hypothesis – referred to as semantic vacuum hypothesis – explains why the most common forms of synesthesia are grapheme–color, spatial sequence, and number form. These are usually the first abstract concepts that educational systems require children to learn.
 
 ## Types
 
@@ -21,9 +21,9 @@ There are two overall forms of synesthesia:
 
 For example, in chromesthesia (sound to color), a projector may hear a trumpet, and see an orange triangle in space, while an associator might hear a trumpet, and think very strongly that it sounds "orange".
 
-Synesthesia can occur between nearly any two senses or perceptual modes, and at least one synesthete, Solomon Shereshevsky, experienced synesthesia that linked all five senses. 
+Synesthesia can occur between nearly any two senses or perceptual modes, and at least one synesthete, Solomon Shereshevsky, experienced synesthesia that linked all five senses.
 
-While nearly every logically possible combination of experiences can occur, several types are more common than others. 
+While nearly every logically possible combination of experiences can occur, several types are more common than others.
 
 ## Grapheme–color synesthesia
 
@@ -38,7 +38,7 @@ Another common form of synesthesia is the association of sounds with colors. For
 
 The colors triggered by certain sounds, and any other synesthetic visual experiences, are referred to as photisms.
 
-Individuals rarely agree on what color a given sound is. B flat might be orange for one person and blue for another. Composers Franz Liszt and Nikolai Rimsky-Korsakov famously disagreed on the colors of musical keys. 
+Individuals rarely agree on what color a given sound is. B flat might be orange for one person and blue for another. Composers Franz Liszt and Nikolai Rimsky-Korsakov famously disagreed on the colors of musical keys.
 
 ## Composers with synesthesia
 
@@ -100,4 +100,4 @@ Over the past decade, it has been suggested that the Bouba/Kiki phenomenon is a 
 
 The concept of ideasthesia has been often discussed in relation to art, and also used to formulate a psychological theory of art. According to the theory, we consider something to be a piece of art when experiences induced by the piece are accurately balanced with semantics induced by the same piece. Thus, a piece of art makes us both strongly think and strongly experience. Moreover, the two must be perfectly balanced such that the most salient stimulus or event is both the one that evokes strongest experiences (fear, joy, ... ) and strongest cognition (recall, memory, ...) — in other words, idea is well balanced with aesthesia.
 
-Ideasthesia theory of art may be used for psychological studies of aesthetics. It may also help explain classificatory disputes about art as its main tenet is that experience of art can only be individual, depending on person's unique knowledge, experiences and history. There could exist no general classification of art satisfactorily applicable to each and all individuals. 
+Ideasthesia theory of art may be used for psychological studies of aesthetics. It may also help explain classificatory disputes about art as its main tenet is that experience of art can only be individual, depending on person's unique knowledge, experiences and history. There could exist no general classification of art satisfactorily applicable to each and all individuals.

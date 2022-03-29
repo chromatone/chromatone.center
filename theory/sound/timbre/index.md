@@ -1,14 +1,14 @@
 ---
 title: Timbre and overtones
 subtitle: The character of sound
-tags: sound
+
 date: 2021-08-26
 cover: theory/overtones.svg
 ---
 
 ## Timbre
 
-In music, timbre, also known as tone color or tone quality (from psychoacoustics), is the perceived sound quality of a musical note, sound or tone. Timbre distinguishes different types of sound production, such as choir voices and musical instruments. It also enables listeners to distinguish different instruments in the same category (e.g., an oboe and a clarinet, both woodwind instruments). 
+In music, timbre, also known as tone color or tone quality (from psychoacoustics), is the perceived sound quality of a musical note, sound or tone. Timbre distinguishes different types of sound production, such as choir voices and musical instruments. It also enables listeners to distinguish different instruments in the same category (e.g., an oboe and a clarinet, both woodwind instruments).
 
 The physical characteristics of sound that determine the perception of timbre include frequency spectrum and envelope. Singers and instrumental musicians can change the timbre of the music they are singing/playing by using different singing or playing techniques. For example, a violinist can use different bowing styles or play on different parts of the string to obtain different timbres (e.g., playing sul tasto produces a light, airy timbre, whereas playing sul ponticello produces a harsh, even and aggressive tone).
 
@@ -21,7 +21,6 @@ Many commentators have attempted to decompose timbre into component attributes. 
 - Time envelope in terms of rise, duration, and decay (ADSR, which stands for "attack, decay, sustain, release")
 - Changes both of spectral envelope (formant-glide) and fundamental frequency (micro-intonation)
 - Prefix, or onset of a sound, quite dissimilar to the ensuing lasting vibration
-
 
 ## Amplitude envelope
 
@@ -36,11 +35,11 @@ Many commentators have attempted to decompose timbre into component attributes. 
 
 Helmholtz resonance or wind throb is the phenomenon of air resonance in a cavity, such as when one blows across the top of an empty bottle. The name comes from a device created in the 1850s by Hermann von Helmholtz, the Helmholtz resonator, which he used to identify the various frequencies or musical pitches present in music and other complex sounds.
 
-When air is forced into a cavity, the pressure inside increases. When the external force pushing the air into the cavity is removed, the higher-pressure air inside will flow out. Due to the inertia of the moving air the cavity will be left at a pressure slightly lower than the outside, causing air to be drawn back in. This process repeats, with the magnitude of the pressure oscillations increasing and decreasing asymptotically after the sound starts and stops. 
+When air is forced into a cavity, the pressure inside increases. When the external force pushing the air into the cavity is removed, the higher-pressure air inside will flow out. Due to the inertia of the moving air the cavity will be left at a pressure slightly lower than the outside, causing air to be drawn back in. This process repeats, with the magnitude of the pressure oscillations increasing and decreasing asymptotically after the sound starts and stops.
 
 ![](./Helmholtz_resonator.jpg)
 
-When the resonator's 'nipple' is placed inside one's ear, a specific frequency of the complex sound can be picked out and heard clearly. In his book Helmholtz’ explains: When we "apply a resonator to the ear, most of the tones produced in the surrounding air will be considerably damped; but if the proper tone of the resonator is sounded, it brays into the ear most powerfully…. The proper tone of the resonator may even be sometimes heard cropping up in the whistling of the wind, the rattling of carriage wheels, the splashing of water." 
+When the resonator's 'nipple' is placed inside one's ear, a specific frequency of the complex sound can be picked out and heard clearly. In his book Helmholtz’ explains: When we "apply a resonator to the ear, most of the tones produced in the surrounding air will be considerably damped; but if the proper tone of the resonator is sounded, it brays into the ear most powerfully…. The proper tone of the resonator may even be sometimes heard cropping up in the whistling of the wind, the rattling of carriage wheels, the splashing of water."
 
 ## Harmonics – the natural resonances
 

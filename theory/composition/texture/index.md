@@ -1,7 +1,7 @@
 ---
 title: Texture
 subtitles: Overall quality of the sound in a musical piece
-tags: composition
+
 date: 2021-07-10
 ---
 

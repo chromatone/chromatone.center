@@ -1,7 +1,7 @@
 ---
 title: Audio illusions
 subtitle: Deeper explorations of subtle psychoacoustic effects
-tags: psychoacoustics
+
 date: 2021-11-10
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Contact
 subtitle: The project and it's founder
-tags: main
+
 date: 2021-01-01
 org:
   avatar: /media/logo/smooth.svg

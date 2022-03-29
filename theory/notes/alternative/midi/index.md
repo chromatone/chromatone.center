@@ -1,7 +1,7 @@
 ---
 title: MIDI
 subtitle: Standard for digital music communication
-tags: alternatives
+
 date: 2021-09-12
 cover: theory/notation/GM_Standard_Drum_Map_on_the_keyboard.svg
 ---

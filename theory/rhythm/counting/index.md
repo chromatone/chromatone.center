@@ -1,7 +1,7 @@
 ---
 title: Counting
 subtitle: A system of regularly occurring sounds that serve to assist with the performance or audition of music by allowing the easy identification of the beat.
-tags: rhythm
+
 date: 2021-10-13
 ---
 
@@ -11,10 +11,10 @@ Counting is a system of regularly occurring sounds that serve to assist with the
 
 The method involving numbers may be termed count chant, "to identify it as a unique instructional process."
 
-In lieu of simply counting the beats of a measure, other systems can be used which may be more appropriate to the particular piece of music. Depending on the tempo, the divisions of a beat may be vocalized as well (for slower times), or skipping numbers altogether (for faster times). As an alternative to counting, a metronome can be used to accomplish the same function. 
+In lieu of simply counting the beats of a measure, other systems can be used which may be more appropriate to the particular piece of music. Depending on the tempo, the divisions of a beat may be vocalized as well (for slower times), or skipping numbers altogether (for faster times). As an alternative to counting, a metronome can be used to accomplish the same function.
 
 Triple meter, such as 3/4, is often counted **1 2 3**, while compound meter, such as 6
-8, is often counted in two and subdivided **One-and-ah-Two-and-ah** but may be articulated as **One-la-lee-Two-la-lee**. 
+8, is often counted in two and subdivided **One-and-ah-Two-and-ah** but may be articulated as **One-la-lee-Two-la-lee**.
 
 For each subdivision employed a new syllable is used. For example, sixteenth notes in 4/4 are counted **1 e & a 2 e & a 3 e & a 4 e & a**, using numbers for the quarter note, "&" for the eighth note, and "e" and "a" for the sixteenth note level.
 
@@ -28,7 +28,7 @@ Rather than numbers or nonsense syllables, a random word may be assigned to a rh
 
 ### Numbers
 
-Ultimately, musicians count using **numbers**, **“ands”** and vowel sounds. Downbeats within a measure are called **1, 2, 3…** Upbeats are represented with a plus sign and are called “and” (i.e. **1 + 2 +**), and further subdivisions receive the sounds “ee” and “uh” (i.e. **1 e + a 2 e + a**). Musicians do not agree on what to call triplets: some simply say the word triplet (“**trip-a-let**”), or another three-syllable word (like pineapple or elephant) with an antepenultimate accent. Some use numbers along with the word triplet (i.e. “**1-trip-let**”). Still others have devised sounds like “ah-lee” or “la-li” added after the number (i.e. **1-la-li, 2-la-li** or **1-tee-duh, 2-tee-duh**). 
+Ultimately, musicians count using **numbers**, **“ands”** and vowel sounds. Downbeats within a measure are called **1, 2, 3…** Upbeats are represented with a plus sign and are called “and” (i.e. **1 + 2 +**), and further subdivisions receive the sounds “ee” and “uh” (i.e. **1 e + a 2 e + a**). Musicians do not agree on what to call triplets: some simply say the word triplet (“**trip-a-let**”), or another three-syllable word (like pineapple or elephant) with an antepenultimate accent. Some use numbers along with the word triplet (i.e. “**1-trip-let**”). Still others have devised sounds like “ah-lee” or “la-li” added after the number (i.e. **1-la-li, 2-la-li** or **1-tee-duh, 2-tee-duh**).
 
 ### Traditional American system
 
@@ -55,7 +55,6 @@ The French "Time-Names system", also called the "Galin-Paris-Cheve system", orig
 - Quarter Note: **Ta**
 - 2 Eighth Note: **Ta Te**
 - 4 Sixteenth Notes: **Tafa Tefe**
-
 
 ### Kodály Method
 

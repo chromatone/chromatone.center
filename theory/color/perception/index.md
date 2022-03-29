@@ -1,7 +1,7 @@
 ---
 title: Human color perception
 subtitle: Physiology and features of the eyes
-tags: color
+
 date: 2021-08-30
 cover: theory/color-sensitivity.jpg
 ---

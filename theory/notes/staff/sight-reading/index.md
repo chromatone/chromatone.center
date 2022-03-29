@@ -1,12 +1,12 @@
 ---
 title: Sight reading
 subtitle: The complexity of perfecting staff notaion reading
-tags: staff
+
 date: 2021-09-02
 cover: theory/notation/Michelangelo_Caravaggio_026.jpg
 ---
 
-Sight-singing is used to describe a singer who is sight-reading. Both activities require the musician to play or sing the notated rhythms and pitches. 
+Sight-singing is used to describe a singer who is sight-reading. Both activities require the musician to play or sing the notated rhythms and pitches.
 
 ## Psychology
 
@@ -24,7 +24,7 @@ This type of memory has specifically come into focus when discussing sight readi
 
 Based on the research and opinions of multiple musicians and scientists, the take home message about one's sight-reading ability and working memory capacity seems to be that “The best sight-readers combined strong working memories with tens of thousands of hours of practice.”
 
-Sight-reading also depends on familiarity with the musical idiom being performed; this permits the reader to recognize and process frequently occurring patterns of notes as a single unit, rather than individual notes, thus achieving greater efficiency. This phenomenon, which also applies to the reading of language, is referred to as chunking. Errors in sight-reading tend to occur in places where the music contains unexpected or unusual sequences; these defeat the strategy of "reading by expectation" that sight-readers typically employ. 
+Sight-reading also depends on familiarity with the musical idiom being performed; this permits the reader to recognize and process frequently occurring patterns of notes as a single unit, rather than individual notes, thus achieving greater efficiency. This phenomenon, which also applies to the reading of language, is referred to as chunking. Errors in sight-reading tend to occur in places where the music contains unexpected or unusual sequences; these defeat the strategy of "reading by expectation" that sight-readers typically employ.
 
 ## Professional use
 
@@ -63,6 +63,6 @@ Grand-staff knowledge consists of fluency in both clefs such that reading a note
 
 Udtaisuk also reports that a sense of keyboard geography and an ability to quickly and efficiently match notes to keyboard keys is important for sight-reading. He found that "computer programs and flash cards are effective ways to teach students to identify notes [and] enhance a sense of keyboard geography by highlighting the relationships between the keyboard and the printed notation".
 
-Most students do not sight-read well because it requires specific instruction, which is seldom given. A major challenge in sight-reading instruction, according to Hardy, is obtaining enough practice material. Since practicing rehearsed reading does not help improve sight-reading, a student can only use a practice piece once. Moreover, the material must be at just the right level of difficulty for each student, and a variety of styles is preferred. Hardy suggests music teachers cooperate to build a large lending library of music and purchase inexpensive music from garage sales and store sales. 
+Most students do not sight-read well because it requires specific instruction, which is seldom given. A major challenge in sight-reading instruction, according to Hardy, is obtaining enough practice material. Since practicing rehearsed reading does not help improve sight-reading, a student can only use a practice piece once. Moreover, the material must be at just the right level of difficulty for each student, and a variety of styles is preferred. Hardy suggests music teachers cooperate to build a large lending library of music and purchase inexpensive music from garage sales and store sales.
 
 https://en.wikipedia.org/wiki/Sight-reading

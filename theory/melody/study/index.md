@@ -2,7 +2,6 @@
 title: Melody study
 subtitle: What is melody and how can we understand it
 date: 2021-12-01
-tags: melody
 ---
 
 A [melody](https://en.wikipedia.org/wiki/Melody) (from Greek μελῳδία, melōidía, "singing, chanting"), also tune, voice or line, is a linear succession of musical tones that the listener perceives as a single entity. In its most literal sense, a melody is a combination of pitch and rhythm, while more figuratively, the term can include successions of other musical elements such as tonal color. It is the foreground to the background accompaniment. A line or part need not be a foreground melody.

@@ -1,17 +1,17 @@
 ---
 title: Resources
 subtitle: Links to some valuable information on music and color theory and more
-tags: theory
+
 date: 2019-02-02
 links:
   - url: https://rhythmiclight.com/
     title: Rhythmic light by Fred Collopy
     subtitle: The most full and honorable source of knowledge about light to sound correspondences. Started in 1998 and still growing!
   - url: http://www.tonalsoft.com/enc/encyclopedia-index.aspx
-    title:  Encyclopedia of Microtonal Music Theory
+    title: Encyclopedia of Microtonal Music Theory
     subtitle: A very deep resource about all the subtleties and complexities of music theory by [Joe Monzo](http://www.tonalsoft.com/enc/m/monzo-writings.aspx)
   - url: https://programmingdesignsystems.com/
-    title: A free digital book that teaches a practical introduction to the new foundations of graphic design.  
+    title: A free digital book that teaches a practical introduction to the new foundations of graphic design.
     subtitle: By Rune Madsen
   - url: https://mimo-international.com/MIMO/instrument-families.aspx
     title: Musical instrument museums online
@@ -32,7 +32,7 @@ links:
     title: CIELAB.XYZ
     subtitle: Online color converter for different color models
   - url: https://en.wikipedia.org/wiki/List_of_pitch_intervals
-    title: List of pitch intervals 
+    title: List of pitch intervals
     subtitle: Comprehesive Wikipedia collection of intervals
   - url: https://en.wikipedia.org/wiki/List_of_chords
     title: List of chords

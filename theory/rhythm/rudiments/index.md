@@ -1,10 +1,9 @@
 ---
 title: Drum rudiments
 subtitle: Basic patterns played with drum sticks
-tags: rhythm
+
 date: 2021-06-30
 ---
-
 
 <youtube-embed video="WSC7iujjg_o" />
 

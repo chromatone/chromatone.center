@@ -1,7 +1,7 @@
 ---
 title: Study of scales
 subtitle: The principles for analyzing different combinations of notes
-tags: scales
+
 date: 2021-09-30
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Motion
 subtitle: Melodic motion of the voice
-tags: melody
+
 date: 2021-11-24
 ---
 

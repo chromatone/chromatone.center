@@ -2,7 +2,7 @@
 title: National notation systems of ancient and modern cultures
 subtitle: Greece, Korea and others
 date: 2021-08-30
-tags: notes
+
 cover: theory/notation/Bhat_notation1.jpg
 svaras:
   - name: ṣaḍja (षड्ज)
@@ -14,7 +14,7 @@ svaras:
     solfege: Do
     chakra: Mūlādhāra
 
-  - name: ṛṣabha (ऋषभ) 
+  - name: ṛṣabha (ऋषभ)
     variants: komal re (ra), shuddha re (ri)
     trans: Bull
     color: Red
@@ -23,7 +23,7 @@ svaras:
     solfege: Re
     chakra: Svādhiṣṭhāna
 
-  - name: gāndhāra (गान्धार) 
+  - name: gāndhāra (गान्धार)
     variants: komal ga (ga), shuddha ma (gi)
     trans: Minium
     color: Gold
@@ -32,7 +32,7 @@ svaras:
     solfege: Mi
     chakra: Maṇipūra
 
-  - name: madhyama (मध्यम) 
+  - name: madhyama (मध्यम)
     variants: shuddha ma (mi), tivra ma (mu)
     trans: Middlemost
     color: White
@@ -41,7 +41,7 @@ svaras:
     solfege: Fa
     chakra: Anāhata
 
-  - name: pañcama (पंचम) 
+  - name: pañcama (पंचम)
     trans: Fifth
     variants: shuddha pa (pa)
     color: Black
@@ -50,7 +50,7 @@ svaras:
     solfege: Sol
     chakra: Viśuddha
 
-  - name: dhaivata (धैवत) 
+  - name: dhaivata (धैवत)
     variants: komal dha (dha), shuddha dha (dhi)
     trans: Steady
     color: Yellow
@@ -59,7 +59,7 @@ svaras:
     solfege: La
     chakra: Ājñā
 
-  - name: niṣāda (निषाद) 
+  - name: niṣāda (निषाद)
     variants: komal ni (na), shuddha ni (ni)
     trans: Sitting
     color: Multi
@@ -114,16 +114,15 @@ http://sanskritdictionary.com/%E1%B9%A3a%E1%B8%8Dja/242242/1
 
 ![](./Hurritische_hymne.gif)
 
-The Hurrian songs are a collection of music inscribed in cuneiform on clay tablets excavated from the ancient Amorite-Canaanite city of Ugarit, a headland in northern Syria, which date to approximately 1400 BCE. One of these tablets, which is nearly complete, contains the Hurrian Hymn to Nikkal (also known as the Hurrian cult hymn or A Zaluzi to the Gods, or simply h.6), making it the oldest surviving substantially complete work of notated music in the world. 
+The Hurrian songs are a collection of music inscribed in cuneiform on clay tablets excavated from the ancient Amorite-Canaanite city of Ugarit, a headland in northern Syria, which date to approximately 1400 BCE. One of these tablets, which is nearly complete, contains the Hurrian Hymn to Nikkal (also known as the Hurrian cult hymn or A Zaluzi to the Gods, or simply h.6), making it the oldest surviving substantially complete work of notated music in the world.
 
 The complete song is one of about 36 such hymns in cuneiform writing, found on fragments of clay tablets excavated in the 1950s from the Royal Palace at Ugarit (present-day Ras Shamra, Syria), in a stratum dating from the fourteenth century BC, but is the only one surviving in substantially complete form.
 
-##	Ancient Greece 
+## Ancient Greece
 
 Hymn to Applo in Delphi
 
 ![](/media/theory/notation/Delphichymn.jpg)
-
 
 ## China
 
@@ -141,8 +140,6 @@ Hymn to Applo in Delphi
 
 ![](./Kam_Hok_Yap_Mun-Yeung_Kwan_Sam_Tip.jpg)
 
-
-
 ## Korea
 
 **Jeongganbo** musical notation system
@@ -151,7 +148,7 @@ Hymn to Applo in Delphi
 
 ## Japan
 
-**Kunkunshi** (工工四  (Okinawan) pronounced [kuŋkunɕiː]) is the traditional notation system by which music is recorded in the Ryukyu Islands. The term kunkunshi originally referred to the first three notes of a widely known Chinese melody, although today it is used almost exclusively in reference to the sheet music.
+**Kunkunshi** (工工四 (Okinawan) pronounced [kuŋkunɕiː]) is the traditional notation system by which music is recorded in the Ryukyu Islands. The term kunkunshi originally referred to the first three notes of a widely known Chinese melody, although today it is used almost exclusively in reference to the sheet music.
 
 Kunkunshi is believed to have been first developed by Mongaku Terukina or by his student Choki Yakabi in the early to mid-1700s. However, it was not until the end of the 19th century that the form became standardized for writing sanshin music.
 

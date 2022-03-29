@@ -1,7 +1,7 @@
 ---
 title: Chromatone color notation
 subtitle: Different ways to implementing the color-frequency equations for writing and reading music
-tags: notes
+
 date: 2021-06-01
 cover: apps/midi-roll.png
 ---

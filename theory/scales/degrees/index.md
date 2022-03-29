@@ -2,7 +2,6 @@
 title: Scale degrees
 subtitle: Positions of notes on a scale
 date: 2021-09-10
-tags: scales
 ---
 
 The term scale degree refers to the position of a particular note on a scale relative to the tonic, the first and main note of the scale from which each octave is assumed to begin. Degrees are useful for indicating the size of intervals and chords and whether they are major or minor.

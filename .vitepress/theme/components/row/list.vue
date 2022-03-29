@@ -1,24 +1,26 @@
 <script setup>
-import { useData } from 'vitepress'
+import { useRoute } from 'vitepress'
+import { pages } from '@theme/composables/pages'
 import { lchToHsl } from '@use/colors'
-const { theme, title, frontmatter } = useData()
 
-const rows = theme.value?.pages?.[frontmatter.value.list];
+const route = useRoute()
+
+const list = pages[route.path]
 
 </script>
 
 <template lang="pug">
-.list-blocks(v-if="rows")
+.list-blocks(v-if="list")
   .my-8.mx-2(
-    v-for="(area,i) in rows",
-    :key="area.title", 
-    :id="area.title"
+    v-for="(block, i) in list",
+    :key="block.title", 
+    :id="block.title"
     :i="i"
-    :total="rows.length"
+    :total="list.length"
     )
     row-block(
-      :item="area", 
-      :color="lchToHsl(i, rows.length)"
+      :item="block", 
+      :color="lchToHsl(i, list.length)"
       )  
 </template>
 

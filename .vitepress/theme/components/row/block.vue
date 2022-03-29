@@ -1,7 +1,12 @@
 <script setup>
-import { useData } from 'vitepress'
-const { site, title, theme } = useData()
+import { useData, useRoute } from 'vitepress'
+import { pages, normalize, usePage } from '@theme/composables/pages'
 import { lchToHsl } from '@use/colors.js'
+
+const route = useRoute()
+
+const page = usePage(route.path)
+
 const props = defineProps({
   item: Object,
   color: {
@@ -10,7 +15,7 @@ const props = defineProps({
   }
 });
 
-const bg = computed(() => `url(/media/${props.item.data?.cover}`);
+const bg = computed(() => `url(/media/${props.item?.cover}`);
 </script>
 
 
@@ -19,30 +24,29 @@ const bg = computed(() => `url(/media/${props.item.data?.cover}`);
   :style="{ backgroundColor: color }"
   )
   a.header(
-    :href="item.link"
-    :class="{ 'pt-48': item.data?.cover }"
+    :href="normalize(item.path)"
+    :class="{ 'pt-48': item?.cover }"
   )
     .cover(
       :style="{ backgroundImage: bg }"
       )
     .info 
       .flex.items-center.w-full
-        .mr-2.text-2xl(v-if="item.data.emoji") {{ item.data.emoji }}
+        .mr-2.text-2xl(v-if="item.emoji") {{ item.emoji }}
         h3
           span.text-3xl {{ item.title }} 
           span.px-2.mt-2(v-if="item.more") 
             radix-icons-text-align-left
         .flex-1
         shop-price(
-          :product="item.data?.product" 
+          :product="item?.product" 
           :color="'color'"
           )
 
-        card-date(v-if="!item.data?.product",:date="item.lastModified")
+        card-date(v-if="!item?.product",:date="item.lastModified")
       .text-md.mt-4.mb-2.font-normal.w-full(v-if="item.subtitle") {{ item.subtitle }}
-      page-buttons(:buttons="item.data?.buttons" :color="color")
-
-  card-list(v-if="theme.pages?.[item.data?.list]",:rows="theme.pages?.[item.data?.list]" ) {{ item.title }}
+      page-buttons(:buttons="item?.buttons" :color="color")
+  card-list(v-if="pages[normalize(item.path)]",:rows="pages[normalize(item.path)]" ) {{ item.title }}
 </template>
 
 <style scoped>

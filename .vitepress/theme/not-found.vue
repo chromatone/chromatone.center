@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useData } from 'vitepress'
+
 const { site } = useData()
 
 const msgs = [
@@ -12,6 +13,9 @@ const msgs = [
 function getMsg() {
   return msgs[Math.floor(Math.random() * msgs.length)]
 }
+
+
+
 </script>
 
 <template>

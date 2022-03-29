@@ -29,7 +29,7 @@ specifiers:
   vite-plugin-pages-sitemap: ^1.1.11
   vite-plugin-windicss: ^1.8.3
   vitepress: 0.22.3
-  vitepress-pages: ^0.7.0
+  vitepress-pages: ^0.7.1
   vitepress-tags: ^0.4.0
   vue: ^3.2.31
   webmidi: ^3.0.15
@@ -51,7 +51,7 @@ dependencies:
   ol: 6.14.1
   paper: 0.12.15
   tone: 14.8.38
-  vitepress-pages: 0.7.0
+  vitepress-pages: 0.7.1
   vue: 3.2.31
   webmidi: 3.0.15
 
@@ -3217,8 +3217,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitepress-pages/0.7.0:
-    resolution: {integrity: sha512-WnDQ0Hen3Iz1NeN1h94xIqN0KNr7arFtNFiM6Y4Ge8Bmy6FqCX87VFR5zmKYP9DiGdCzR1yFww7pvnCD3g4MwA==}
+  /vitepress-pages/0.7.1:
+    resolution: {integrity: sha512-bO1afBCy/3gNrztW068HNe4wW79J5mOuGkTNEH7qK3ccAQlOi/D4ZT95839G41wmYzX2hwhnYnGnZBC9lZdRGQ==}
     dependencies:
       gray-matter: 4.0.3
       sharp: 0.30.3

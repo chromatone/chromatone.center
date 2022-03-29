@@ -40,7 +40,9 @@ export default defineConfig({
       ],
       exclude: ['**/node_modules/**/*.*', '**/!(index).md'],
       extensions: ['md'],
-      ...extendRoutes(),
+      ...extendRoutes({
+        mediaTypes: {}
+      }),
       onRoutesGenerated: routes => (generateSitemap({ routes, hostname: 'https://chromatone.center' })),
     }),
     Components({

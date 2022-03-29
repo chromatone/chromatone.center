@@ -14,24 +14,24 @@ const theColor = computed(() => props.color);
 .crd(
   :title="item.lastModified",
   )
-  a.container(:href="item.link" :class="{ 'pt-32': item.data?.cover }")
-    .cover(v-if="item.data.cover", :style="{ backgroundImage: 'url(/media/' + item.data.cover + ')' }") 
+  a.container(:href="item.link" :class="{ 'pt-32': item?.cover }")
+    .cover(v-if="item.cover", :style="{ backgroundImage: 'url(/media/' + item.cover + ')' }") 
     .info
       .title
-        .mr-2.text-2xl(v-if="item.data.emoji") {{ item.data.emoji }}
+        .mr-2.text-2xl(v-if="item.emoji") {{ item.emoji }}
         .text-2xl.p-2 {{ item.title }}
           .absolute.top-10px.text-sm.font-normal.opacity-50
             slot
         .flex-1
-        card-date.mr-2(v-if="!item.data.product",:date="item.lastModified")
+        card-date.mr-2(v-if="!item.product",:date="item.lastModified")
       .subtitle(
         v-if="item.subtitle" 
 
         ) {{ item.subtitle }}
-      shop-price.float-left(:product="item.data?.product" :color="color")
+      shop-price.float-left(:product="item?.product" :color="color")
 
-  page-buttons.m-2(:buttons="item.data?.buttons")
-  line-list(:list="theme?.pages?.[item.data.list]")
+  page-buttons.m-2(:buttons="item?.buttons")
+  line-list(:list="theme?.pages?.[item.list]")
 </template>
 
 <style  scoped>

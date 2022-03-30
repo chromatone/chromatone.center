@@ -1,20 +1,16 @@
 <script setup>
 import { useSiblings, useParents, pages } from '@theme/composables/pages'
 import { lchToHsl } from '@use/colors.js'
-import { useRoute, useData } from 'vitepress'
+import { useRoute } from 'vitepress'
 const route = useRoute()
 
 const siblings = computed(() => useSiblings(route.path))
 const parents = computed(() => useParents(route.path))
-const list = computed(() => pages[parents.value[parents.value.length - 1]?.path])
-const total = computed(() => list.value ? list.value.length : 0)
-const index = computed(() => list.value ? list.value.findIndex(page => page.path == route.path) : 0)
-
 
 const colors = reactive({
-  current: computed(() => lchToHsl(index.value, total.value)),
-  prev: computed(() => lchToHsl(index.value - 1, total.value)),
-  next: computed(() => lchToHsl(index.value + 1, total.value))
+  current: computed(() => lchToHsl(siblings.value.index, siblings.value.total)),
+  prev: computed(() => lchToHsl(siblings.value.index - 1, siblings.value.total)),
+  next: computed(() => lchToHsl(siblings.value.index + 1, siblings.value.total))
 });
 </script>
 

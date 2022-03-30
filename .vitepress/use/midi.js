@@ -1,7 +1,6 @@
 import { reactive, watchEffect, onMounted } from "vue";
-import { WebMidi, Enumerations } from "webmidi";
+import { WebMidi } from "webmidi";
 import { useStorage } from "@vueuse/core";
-import { useSynth } from "./synth";
 
 export const midi = reactive({
   enabled: false,

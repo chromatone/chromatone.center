@@ -19,7 +19,7 @@ const { midi } = useMidi();
   :class="{ active: panel }"
   )
   button.p-2(@click.stop="panel = !panel" aria-label="Toggle MIDI panel")
-    mdi-midi-input.transition-all.duration-200.text-2xl(
+    mdi-midi-input.transition-all.duration-200.text-xl(
       :style=`{
         opacity: midi.enabled ? 1 : 0.2,
         color: pitchColor(midi.enabled ? midi.note?.pitch : 0, midi.note?.octA)

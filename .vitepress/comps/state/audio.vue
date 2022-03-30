@@ -22,7 +22,7 @@ onClickOutside(panel, (ev) => {
 
 <template lang="pug">
 .btn.w-10
-  button.p-2.text-2xl(
+  button.p-2.text-xl(
     @click.stop.prevent="open = true"
     aria-label="Toggle mute"
     )

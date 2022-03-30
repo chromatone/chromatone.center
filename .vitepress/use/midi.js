@@ -1,5 +1,5 @@
 import { reactive, watchEffect, onMounted } from "vue";
-import { WebMidi } from "webmidi";
+import { WebMidi, Enumerations } from "webmidi";
 import { useStorage } from "@vueuse/core";
 import { useSynth } from "./synth";
 
@@ -32,13 +32,13 @@ export function useMidi() {
 
   watchEffect(() => {
     if (!midi.out) return;
-    let out = Object.values(WebMidi.outputs);
+    let outs = Object.values(WebMidi.outputs);
     if (midi.playing) {
-      out.forEach((output) => {
+      outs.forEach((output) => {
         output.sendContinue();
       });
     } else {
-      out.forEach((output) => {
+      outs.forEach((output) => {
         output.sendStop();
       });
     }
@@ -86,6 +86,9 @@ function initMidi() {
       name: input.name,
       manufacturer: input.manufacturer,
       forwarder: input.addForwarder(),
+      event: null,
+      note: null,
+      cc: null
     };
     input.removeListener();
     input.addListener("start", () => {
@@ -95,11 +98,25 @@ function initMidi() {
       midi.playing = false;
       midi.channels = {};
     });
-    input.addListener("noteon", (ev) => noteInOn(ev), {
+    input.addListener('midimessage', ev => {
+      if (ev?.message?.type == 'clock') return
+      midi.inputs[input.id].event = ev
+    })
+    input.addListener("noteon", (ev) => {
+      midi.inputs[input.id].note = noteInOn(ev)
+    }, {
       channels: "all",
     });
-    input.addListener("noteoff", (ev) => noteInOn(ev), { channels: "all" });
-    input.addListener("controlchange", (ev) => ccIn(ev), {
+    input.addListener("noteoff", (ev) => {
+      midi.inputs[input.id].note = noteInOn(ev)
+    }, { channels: "all" });
+
+    input.addListener("controlchange", (ev) => {
+      const cc = ccIn(ev)
+      if (!cc) return
+      midi.inputs[input.id].cc = cc
+      midi.cc = cc
+    }, {
       channels: "all",
     });
 
@@ -118,8 +135,6 @@ function initMidi() {
   });
 }
 
-
-
 function noteInOn(ev) {
   let note = ev.note;
   note.port = ev.port.id;
@@ -137,9 +152,11 @@ function noteInOn(ev) {
   midi.note = note;
   createChannel(note.channel);
   midi.channels[note.channel].notes[note.number] = note;
+  return note
 }
 
 function ccIn(ev) {
+  if (midi.filter[ev.target.number]) return;
   let cc = {
     channel: ev.target.number,
     timestamp: ev.timestamp,
@@ -148,10 +165,9 @@ function ccIn(ev) {
     raw: ev.rawValue,
     port: ev.port.id,
   };
-  midi.cc = cc;
-  midi.inputs[ev.port.id].cc = ev.value;
   createChannel(cc.channel);
   midi.channels[cc.channel].cc[cc.number] = cc;
+  return cc
 }
 
 function createChannel(ch) {

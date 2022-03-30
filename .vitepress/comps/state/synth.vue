@@ -20,7 +20,7 @@ const { synthOptions, synthOnce, init } = useSynth();
 
 <template lang="pug">
 .btn.w-10
-  button.p-2.text-2xl(
+  button.p-2.text-xl(
     @click.stop.prevent="open = true; !synthOptions.initiated && init()"
     aria-label="Toggle synth panel"
     )

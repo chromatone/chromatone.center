@@ -1,44 +1,37 @@
 <script setup>
-import { useMidi, forwardMidi } from '@use/midi.js'
-import { pitchColor } from '@theory'
+import { useMidi, forwardMidi } from "@use/midi.js";
+import { pitchColor } from "@theory";
 const { midi, midiAttack, midiRelease, setCC } = useMidi();
 
 function inputColor(iid) {
-  return midi.note.port == iid && midi.note.velocity > 0 ? pitchColor(midi.note?.pitch) : '#777'
+  return midi.note.port == iid && midi.note.velocity > 0
+    ? pitchColor(midi.note?.pitch, null, 1, 0.4)
+    : "#7773";
 }
+
 
 </script>
 
-<template lang='pug'>
+<template lang="pug">
 .flex.flex-wrap.gap-4.justify-center
-  .p-4.shadow-lg.rounded-2xl.bg-light-900.dark_bg-dark-300.relative.border-2(
-    style="flex: 1 1 200px"
-    :style="{ borderColor: inputColor(iid) }"
+  midi-router-input(
+    :input="input"
+    :iid="iid"
     v-for="(input, iid) in midi.inputs" 
     :key="iid"
     )
-    .py-12px.px-1px.absolute.top-8px.right-15px.bg-dark-800.dark_bg-light-100.rounded-xl(
-      :style="{ transform: `rotate(${input.cc * 180 + 90}deg)` }"
-    )
-    .p-1.absolute.top-4.right-12px.rounded-xl.transition-all.duration-100(
-      :style="{ backgroundColor: inputColor(iid) }"
-    )
-
-    .text-sm {{ input.manufacturer }}
-    .text-xl.font-bold {{ input.name }}
-    .flex.flex-wrap.gap-3.mt-4
-      .px-2.shadow-sm.rounded-xl.bg-light-200.dark_bg-dark-500.cursor-pointer.border-2.border-transparent(
-        :class="{ active: midi.forwards?.[iid]?.[oid] }"
-        @click="forwardMidi(iid, oid)"
-        v-for="(output, oid) in midi.outputs"
-        :key="oid"
-        v-show="input.name != output.name"
-        ) 
-        .text-sm {{ output.name }}
 </template>
 
 <style lang="postcss" scoped>
 .active {
   @apply border-dark-200 dark_border-light-200;
+}
+
+.display {
+  @apply overflow-hidden px-1 py-2px rounded-lg border-1 border-dark-50/50 w-16ch flex justify-between transition relative;
+}
+
+.indicator {
+  @apply h-full w-full origin-left absolute top-0 left-0 border-r-1 transition border-dark-50/50 bg-dark-50 bg-opacity-20 dark_bg-light-50 dark_bg-opacity-20;
 }
 </style>

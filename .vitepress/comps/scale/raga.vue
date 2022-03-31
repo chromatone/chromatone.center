@@ -1,7 +1,7 @@
 <script setup>
 import { globalScale } from '@use/chroma'
 import { pitchColor } from '@use/calculations'
-import melakarta from './melakarta.json'
+import melakarta from '@db/melakarta.json'
 
 let mela = {}
 

@@ -2,6 +2,7 @@
 title: Seconds and sevenths
 subtitle: The rather dissonant shortest intervals
 date: 2021-09-04
+cover: Epogdoon.jpg
 ---
 
 ## Second
@@ -20,7 +21,7 @@ On a musical keyboard, a major second is the interval between two keys separated
 
 In just intonation, major seconds can occur in at least two different frequency ratios: 9:8 (about 203.9 cents) major tone and 10:9 minor tone (about 182.4 cents). The largest (9:8) ones are called major tones or greater tones, the smallest (10:9) are called minor tones or lesser tones. Their size differs by exactly one syntonic comma (81:80, or about 21.5 cents). Some equal temperaments, such as 15-ET and 22-ET, also distinguish between a greater and a lesser tone.
 
-![](./Comparison_of_major_seconds.png)
+![](./images/Comparison_of_major_seconds.png)
 
 The major tone may be derived from the harmonic series as the interval between the eighth and ninth harmonics. The minor tone may be derived from the harmonic series as the interval between the ninth and tenth harmonics.
 
@@ -40,7 +41,7 @@ A semitone, also called a half step or a half tone, is the smallest musical inte
 
 In twelve-tone equal temperament all semitones are equal in size (100 cents). In other tuning systems, "semitone" refers to a family of intervals that may vary both in size and name. In Pythagorean tuning, seven semitones out of twelve are diatonic, with ratio 256:243 or 90.2 cents (Pythagorean limma), and the other five are chromatic, with ratio 2187:2048 or 113.7 cents (Pythagorean apotome); they differ by the Pythagorean comma of ratio 531441:524288 or 23.5 cents. In quarter-comma meantone, seven of them are diatonic, and 117.1 cents wide, while the other five are chromatic, and 76.0 cents wide; they differ by the lesser diesis of ratio 128:125 or 41.1 cents. 12-tone scales tuned in just intonation typically define three or four kinds of semitones. For instance, Asymmetric five-limit tuning yields chromatic semitones with ratios 25:24 (70.7 cents) and 135:128 (92.2 cents), and diatonic semitones with ratios 16:15 (111.7 cents) and 27:25 (133.2 cents).
 
-![](./Comparison_of_minor_seconds.png)
+![](./images/Comparison_of_minor_seconds.png)
 
 Melodically, this interval is very frequently used, and is of particular importance in cadences. In the perfect and deceptive cadences it appears as a resolution of the leading-tone to the tonic. In the plagal cadence, it appears as the falling of the subdominant to the mediant. It also occurs in many forms of the imperfect cadence, wherever the tonic falls to the leading-tone.
 

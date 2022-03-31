@@ -112,7 +112,7 @@ http://sanskritdictionary.com/%E1%B9%A3a%E1%B8%8Dja/242242/1
 
 ## Hurrian songs - the worlds oldest music notation artefact
 
-![](./Hurritische_hymne.gif)
+![](./images/Hurritische_hymne.gif)
 
 The Hurrian songs are a collection of music inscribed in cuneiform on clay tablets excavated from the ancient Amorite-Canaanite city of Ugarit, a headland in northern Syria, which date to approximately 1400 BCE. One of these tablets, which is nearly complete, contains the Hurrian Hymn to Nikkal (also known as the Hurrian cult hymn or A Zaluzi to the Gods, or simply h.6), making it the oldest surviving substantially complete work of notated music in the world.
 
@@ -122,7 +122,7 @@ The complete song is one of about 36 such hymns in cuneiform writing, found on f
 
 Hymn to Applo in Delphi
 
-![](./Delphichymn.jpg)
+![](./images/Delphichymn.jpg)
 
 ## China
 
@@ -136,15 +136,15 @@ Hymn to Applo in Delphi
 6. 五 - [wúː] - wǔ - la
 7. 乙 - [jìː] - yǐ - si
 
-![](./gongche.jpg)
+![](./images/gongche.jpg)
 
-![](./Kam_Hok_Yap_Mun-Yeung_Kwan_Sam_Tip.jpg)
+![](./images/Kam_Hok_Yap_Mun-Yeung_Kwan_Sam_Tip.jpg)
 
 ## Korea
 
 **Jeongganbo** musical notation system
 
-![](./Jeongganbo.jpg)
+![](./images/Jeongganbo.jpg)
 
 ## Japan
 
@@ -152,8 +152,8 @@ Hymn to Applo in Delphi
 
 Kunkunshi is believed to have been first developed by Mongaku Terukina or by his student Choki Yakabi in the early to mid-1700s. However, it was not until the end of the 19th century that the form became standardized for writing sanshin music.
 
-![](./Kunkunshi.jpg)
+![](./images/Kunkunshi.jpg)
 
-![](./Kunkunshi_for_Tinsagu_nu_Hana.png)
+![](./images/Kunkunshi_for_Tinsagu_nu_Hana.png)
 
 <youtube-embed video="O7DR4kjWG_c" />

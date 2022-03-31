@@ -1,7 +1,7 @@
 ---
 title: Drone
 subtitle: A harmonic or monophonic effect or accompaniment where a note or chord is continuously sounded throughout most or all of a piece
-
+cover: s-l1600.jpg
 date: 2021-10-14
 ---
 
@@ -17,7 +17,7 @@ A drone differs from a pedal tone or point in degree or quality. A pedal point m
 
 ## History and distribution
 
-> ![](./A_Lady_Playing_the_Tanpura,_ca._1735.jpg)
+> ![](./images/A_Lady_Playing_the_Tanpura,_ca._1735.jpg)
 > A Lady Playing the Tanpura, ca. 1735.
 
 The systematic use of drones originated in instrumental music of ancient Southwest Asia, and spread north and west to Europe, east to India, and south to Africa. It is used in Indian music and is played with the tanpura (or tambura) and other Indian drone instruments like the ottu, the ektar, the dotara (or dotar; dutar in Persian Central Asia), the surpeti, the surmandal (or swarmandal) and the shankh (conch shell). Most of the types of bagpipes that exist worldwide have up to three drones, making this one of the first instruments that comes to mind when speaking of drone music. In America, most forms of the African-influenced banjo contain a drone string. Since the 1960s, the drone has become a prominent feature in drone music and other forms of avant-garde music.
@@ -26,7 +26,7 @@ In vocal music drone is particularly widespread in traditional musical cultures,
 
 ## Part(s) of a musical instrument
 
-> ![](./Golowan_Festival_Penzance_June_2005_Mid-Argyl_band2.jpg)
+> ![](./images/Golowan_Festival_Penzance_June_2005_Mid-Argyl_band2.jpg)
 > Highland bagpipes, with drone pipes over the pipers' left shoulders
 
 Drone is also the term for the part of a musical instrument intended to produce the drone effect's sustained pitch, generally without the ongoing attention of the player. Different melodic Indian instruments (e.g. the sitar, the sarod, the sarangi and the rudra veena) contain a drone. For example, the sitar features three or four resonating drone strings, and Indian notes (sargam) are practiced to a drone. Bagpipes (like the Great Highland Bagpipe and the Zampogna) feature a number of drone pipes, giving the instruments their characteristic sounds. A hurdy-gurdy has one or more drone strings. The fifth string on a five-string banjo is a drone string with a separate tuning peg that places the end of the string five frets down the neck of the instrument; this string is usually tuned to the same note as that which the first string produces when played at the fifth fret, and the drone string is seldom fretted. The bass strings of the Slovenian drone zither also freely resonate as a drone. The Welsh Crwth also features two drone strings.
@@ -72,20 +72,20 @@ Before the arrival of the harmonium in the Indian subcontinent, musicians used e
 
 Later, a keyless version of the harmonium was invented for the specific purpose of producing the drone sound. It was given the name shruti box or sruti box. These types of instruments had controls on the top or on the side of the box for controlling the pitch.
 
-![](./kyw-professionalconcert-shruti-box-teak-wood.jpg)
+![](./images/kyw-professionalconcert-shruti-box-teak-wood.jpg)
 
 The shruti box is enjoying a renaissance in the West amongst traditional and contemporary musicians, who are using it for a range of different styles. In the early nineties, traditional Irish singer Nóirín Ní Riain brought the shruti box to Ireland, giving it a minor place in traditional Irish music. More recently Scottish folk artist Karine Polwart and Julie Fowlis use the instrument, using it on some of their songs. Singers find it very useful as an accompaniment and instrumentalists enjoy the drone reference it gives to play along with.
 
 ### Jivari
 
-> ![](./Sitar_jawari.jpg)
+> ![](./images/Sitar_jawari.jpg)
 > The Javari of a sitar, made from ebony, showing graphite marks from the first two strings
 
 Javārī, (also: 'joārī', 'juvārī', 'jvārī' (alternately transcribed 'jawārī', 'jowārī', 'joyārī', 'juwārī', and 'jwārī')) in Indian classical music refers to the overtone-rich "buzzing" sound characteristic of classical Indian string instruments such as the tanpura, sitar, surbahar, rudra veena and Sarasvati veena. Javari can refer to the acoustic phenomenon itself and to the meticulously carved bone, ivory or wooden bridges that support the strings on the sounding board and produce this particular effect. A similar sort of bridge is used on traditional Ethiopian lyres, as well as on the ancient Greek kithara, and the "bray pins" of some early European harps operated on the same principle. A similar sound effect, called in Japanese sawari, is used on some traditional Japanese instruments as well.
 
 Under the strings of tanpuras, which are unfretted (unstopped), and occasionally under those bass drone strings of sitars and surbahars which are seldom fretted, cotton threads are placed on the javari bridge to control the exact position of the node and its height above the curved surface, in order to more precisely refine the sound of javari. These cotton threads are known in Hindi as 'jīvā', meaning "life" and referring to the brighter tone heard from the plucked string once the thread has been slid into the correct position. This process is called "adjusting the javari". After a substantial time of playing, the surface directly under the string will wear out through the erosive impact of the strings. The sound will become thin and sharp and tuning also becomes a problem. Then a skilled, experienced craftsman needs to redress and polish the surface, which is called "doing the javari" ("'Javārī Sāf Karnā' or "Cleaning the Javārī'").
 
-> ![](./Topvieuw_of_a_tambura_bridge.jpg)
+> ![](./images/Topvieuw_of_a_tambura_bridge.jpg)
 > Top view of a rosewood tambura bridge. Notice the marks left by the strings as the javari-maker assures that the contact-lines on the surface of the bridge are continuous and even. As a further test strings are pulled sideways and lengthwise in order to rub the bridge with the string, to better judge the quality of the surface, as unevenness in the surface shows clearly as a gap.
 
 The rich and very much 'alive' resonant sound requires great sensitivity and experience in the tuning process. In the actual tuning, the fundamentals are of lesser interest as attention is drawn to the sustained harmonics that should be clearly audible, particularly the octaves, fifths, major thirds and minor sevenths of the (fundamental) tone of the string. The actual tuning is done on three levels: firstly by means of the large pegs, secondly, by carefully shifting tuning-beads for micro-tuning and thirdly, on a tanpura, by even more careful shifting of the cotton threads that pass between the strings and the bridge, somewhat before the zenith of its curve.
@@ -98,7 +98,7 @@ Typical of javari on an instrument with preferably long strings, is that on the 
 
 The javari of a tanpura is in a way fine-tuned with a cotton thread under the string. Both the thread itself and its function is called 'jiva'. The jiva lifts the string by its diameter off the bridge and gives the necessary clearance and adjustability. By carefully shifting the jiva the sequence of the shifting grazing on the parabolic surface of the bridge becomes 'tuneable' within limits. For each string there should be a spot relative to the curve of the bridge where optimum sound quality is found. Within the area of optimum resonance and sustain, a little play should be available for further fine-tuning, in which the jiva can hardly be seen to move. Staying with optics, shifting the jiva would be similar to using the manual fine focus on a camera. Experienced 'javari-makers' will agree that the 'javari' has to be made specific to certain string lengths, gauges and pitches and certain amplitudes.
 
-> ![](./Side_view_of_Tanjore-style_rosewood_tanpura_bridge_with_cotton_threads_adjusted_for_full_resonance.jpg)
+> ![](./images/Side_view_of_Tanjore-style_rosewood_tanpura_bridge_with_cotton_threads_adjusted_for_full_resonance.jpg)
 > Side view of a Tanjore-style rosewood tanpura bridge with cotton threads adjusted for full resonance.
 
 The curvature of the bridge of the main strings of a sitar will be different from that of the smaller and lower bridge in front of the main bridge, which carries the sympathetic resonance-strings (tarafs). As this choir of thinner and shorter strings is excited solely by the sympathetic resonance with the tones played on the main strings, the general amplitude is smaller, so accordingly the curvature will be flatter. The making of a perfectly sounding javari for any instrument requires a very high degree of skill and expertise. Tanpuras are the only instruments that are always used with jiva-threads, except the octave-tamburis. Sitar, Rudra Veena, Sarasvati Veena, all have parabolic wide javari bridges for the main playing strings. Sarod and Sarangi have some of their sympathetic resonance strings (tarafs) on small, flat javari-bridges similar to that of the sitar. The javari of a sitar will be made according to the wishes of the player, either 'open',('khula') with a bright sounding javari-effect, or 'closed' ('band') with a relatively more plain tone, or something in between ('ghol'). The choice depends on the preference of the sitar-player and on the adapted playing style.

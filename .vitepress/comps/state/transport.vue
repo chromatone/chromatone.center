@@ -39,9 +39,8 @@ function setTempo(diff) {
     )
       la-stop
 
-  .info.flex.flex-wrap.items-center.cursor-move.select-none.text-center.is-group.m-1.transition-all.duration-50.ease-in(
+  .info.flex.flex-wrap.items-center.cursor-move.select-none.text-center.is-group.m-1.transition-all.duration-50.ease-in.touch-none(
     :style="{ borderColor: tempo.blink ? tempo.color : 'transparent' }"
-    style="touch-action:none;"
     v-drag="drag"
   )
     .text-button.w-8rem.flex.items-center

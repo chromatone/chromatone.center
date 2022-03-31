@@ -1,9 +1,12 @@
 ---
 title: Tonal array
 subtitle: Harmonic table note layout - symmetrical hexagonal pattern of interval sequences
-
 cover: apps/array.png
 ---
+
+<script setup>
+import tonalSpace from './space.vue'
+</script>
 
 <client-only>
   <tonal-space />

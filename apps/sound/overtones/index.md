@@ -6,6 +6,10 @@ date: 2021-08-12
 cover: apps/overtones.png
 ---
 
-<string-overtones />
+<script setup>
+import overtones from './overtones.vue'
+</script>
+
+<overtones />
 
 A string fixed from both ends produces a harmonic set of incremental frequency partials, also called harmonics.

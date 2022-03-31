@@ -61,8 +61,7 @@ function playNote(note = 0, octave = 0) {
   ) 
     .font-bold {{ pitch === false ? '' : typeof pitch == 'string' ? pitch : notes[actualPitch] }}{{ chord.aliases[0] }}
     .text-sm(v-if="props.roman") {{ props.roman }}
-  .py-6px.px-8.my-2px.w-full.text-sm.text-center.font-bold.rounded.transition-all.duration-300.ease(
-    style="touch-action:none"
+  .py-6px.px-8.my-2px.w-full.text-sm.text-center.font-bold.rounded.transition-all.duration-300.ease.touch-none(
     @mouseenter="hover(step)"
     @touchstart="hover(step)"
     v-for="(step, n) in steps"

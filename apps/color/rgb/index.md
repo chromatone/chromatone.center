@@ -6,4 +6,4 @@ date: 2021-10-22
 cover: apps/cmyk.png
 ---
 
-<color-mix-rgb />
+<color-rgb />

@@ -6,6 +6,10 @@ date: 2021-10-12
 cover: apps/drone.png
 ---
 
+<script setup>
+import pitchDrone from './drone.vue'
+</script>
+
 <client-only >
   <pitch-drone />
 </client-only >

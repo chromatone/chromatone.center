@@ -83,5 +83,9 @@ instruments:
     tuning: [E1, A1, D2, G2]
 ---
 
-<string-tool :instruments="$frontmatter.instruments" />
+<script setup>
+import fretboardTool from './tool.vue'
+</script>
+
+<fretboard-tool :instruments="$frontmatter.instruments" />
 <svg-save svg="fretboard" />

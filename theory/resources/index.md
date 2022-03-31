@@ -54,4 +54,8 @@ links:
     subtitle: Based on the Western system of notes (as exemplified by the piano keyboard), there are 1490 possible scales. 2 In other words, with the combined genius of medieval monks through Beethoven through Stravinsky and Coltrane, we've managed to explore roughly 1% of this musical terrain.
 ---
 
-<other-list :tools="$frontmatter.links" />
+<script setup>
+import resourceList from './list.vue'
+</script>
+
+<resource-list :tools="$frontmatter.links" />

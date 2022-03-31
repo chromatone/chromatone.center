@@ -103,14 +103,14 @@ export default defineConfig({
   },
   //@ts-ignore
   ssr: {
-    noExternal: ['audiomotion-analyzer', 'fraction.js', 'tone', 'ol', 'cobe']
+    noExternal: ['audiomotion-analyzer', 'fraction.js', 'tone', 'ol', 'cobe', 'aubiojs']
   },
   build: {
     chunkSizeWarningLimit: 100000,
     rollupOptions: {
       output: {
         manualChunks: {
-          tone: ['tone']
+          tone: ['tone', 'aubio']
         },
       },
     },

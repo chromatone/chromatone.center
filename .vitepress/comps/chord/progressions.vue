@@ -52,13 +52,13 @@ function getChords(degrees) {
             :roman="state.current.degrees.split('-')[c]"
             v-if="state.mode == 'piano'"
             )
-          chroma-tab.max-w-10em(
+          chord-tab.max-w-10em(
             instrument="ukulele"
             :chroma="chord.chroma"
             :pitch="chord.tonicPitch"
             v-if="state.mode == 'ukulele'"
             )
-          chroma-tab.max-w-10em(
+          chord-tab.max-w-10em(
             instrument="guitar"
             :chroma="chord.chroma"
             :pitch="chord.tonicPitch"

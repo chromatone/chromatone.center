@@ -11,7 +11,11 @@ links:
     title: Python formulas for dissonance curves
 ---
 
-<pitch-dissonance />
+<script setup>
+import dissonance from './dissonance.vue'
+</script>
+
+<dissonance />
 
 A simple curve for two sine waves is readily established and then we can calculate and explore sensory dissonance curves for complex sounds as the sum of interactions between their partials.
 

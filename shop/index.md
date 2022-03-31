@@ -262,6 +262,10 @@ cities:
     coord: [55.60082392293618, 12.968196869576506]
 ---
 
+<script setup>
+import mapOl from './map-ol.vue'
+</script>
+
 We are the growing global community of more than **{{$frontmatter.cities.length +10}}** musicians worldwide who've already implemented Chromatone into our daily music practice. Join us today!
 
 <map-ol :cities="$frontmatter.cities" />

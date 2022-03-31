@@ -6,6 +6,10 @@ date: 2021-09-28
 cover: apps/chroma-roll.png
 ---
 
+<script setup>
+import chromaRoll from './roll.vue'
+</script>
+
 <client-only >
   <chroma-roll class="mb-16" />
 </client-only>

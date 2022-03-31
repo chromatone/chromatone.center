@@ -30,8 +30,8 @@ svg.defs(style="height:0")
   @apply max-w-65ch m-auto flex flex-col p-8 my-16 shadow-lg bg-light-100 dark_bg-dark-300;
 }
 .avatar {
-  @apply h-12em self-start;
-  flex: 0 1 120px;
+  @apply self-start;
+  flex: 1 1 120px;
   clip-path: url(#squircle);
 }
 </style>

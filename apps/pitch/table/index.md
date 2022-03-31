@@ -6,6 +6,10 @@ cover: apps/table.png
 date: 2021-05-01
 ---
 
+<script setup>
+import pitchTable from './table.vue'
+</script>
+
 <client-only>
-  <pt-main />
+  <pitch-table />
 </client-only>

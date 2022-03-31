@@ -6,6 +6,10 @@ date: 2021-09-03
 cover: theory/five-gandharva.jpg
 ---
 
+<script setup>
+import scaleRaga from './raga.vue'
+</script>
+
 <scale-raga />
 
 A raga or raag (IAST: rāga; also raaga or ragam; literally "coloring, tingeing, dyeing") is a melodic framework for improvisation akin to a melodic mode in Indian classical music. The rāga is a unique and central feature of the classical Indian music tradition, and as a result has no direct translation to concepts in classical European music. Each rāga is an array of melodic structures with musical motifs, considered in the Indian tradition to have the ability to "colour the mind" and affect the emotions of the audience.

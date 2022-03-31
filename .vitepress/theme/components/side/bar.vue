@@ -1,6 +1,8 @@
 <script setup>
 import { lchToHsl } from '@use/colors'
 import { pages } from '@theme/composables/pages'
+import { useData } from 'vitepress'
+const { site } = useData();
 
 defineProps({
   open: { type: Boolean, required: true },
@@ -14,6 +16,7 @@ const route = useRoute();
 
 <template lang="pug">
 .panel(:class="{ open }")
+  //- a.title(href="/", :aria-label="`${site.title}, назад в начало`") {{ site.title }}
   .flex.flex-col
     .my-4.first(v-for="(main, m) in pages['/']" :key="main.title")
       .level(
@@ -110,5 +113,11 @@ const route = useRoute();
   > a {
     @apply font-bold py-4;
   }
+}
+
+.title {
+  @apply ml-4 mt-4 text-xl 
+    inline-flex items-center whitespace-nowrap
+    hover_no-underline;
 }
 </style>

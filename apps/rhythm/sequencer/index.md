@@ -6,4 +6,8 @@ date: 2021-08-19
 cover: /apps/sequencer.png
 ---
 
-<step-sequencer />
+<script setup>
+import sequencer from './sequencer.vue'
+</script>
+
+<sequencer />

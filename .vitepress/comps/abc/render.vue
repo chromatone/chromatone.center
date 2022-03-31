@@ -32,7 +32,7 @@ onMounted(() => {
         staffwidth: 300,
         clickListener,
       })
-      console.log(visualObj)
+      // console.log(visualObj)
     })
   })
 });

@@ -6,4 +6,8 @@ cover: apps/browser.png
 date: 2021-04-19
 ---
 
+<script setup>
+import chromaBrowser from './browser.vue'
+</script>
+
 <chroma-browser />

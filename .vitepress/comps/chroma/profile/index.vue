@@ -35,7 +35,7 @@ const semitones = computed(() => {
 .profile(
   :style="{ borderColor: chromaColorMix(chroma, globalScale.tonic).hsl }"
 )
-  chroma-waveform(
+  chroma-profile-waveform(
     :chroma="chroma" 
     )
   abc-render(v-if="abc" :abc="abc")

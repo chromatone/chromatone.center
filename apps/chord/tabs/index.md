@@ -6,4 +6,8 @@ date: 2021-08-03
 cover: /apps/tabs.png
 ---
 
+<script setup>
+import stringChords from './chords.vue'
+</script>
+
 <string-chords />

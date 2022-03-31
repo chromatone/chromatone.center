@@ -85,9 +85,12 @@ colors:
     ru: Малиновый
 ---
 
-<color-cards :list="$frontmatter.colors" :langs="$frontmatter.langs" >
+<script setup>
+import colorCards from './cards.vue'
+import colorNames from './names.vue'
+</script>
 
-</color-cards>
+<color-cards :list="$frontmatter.colors" :langs="$frontmatter.langs" />
 
 <color-names :list="$frontmatter.colors" :langs="$frontmatter.langs" />
 

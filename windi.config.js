@@ -18,6 +18,7 @@ export default defineConfig({
         mono: 'var(--font-family-mono)',
       },
       screens: {
+        xxs: '240px',
         xs: '340px',
         md: '720px',
       },

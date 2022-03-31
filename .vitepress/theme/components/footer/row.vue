@@ -28,7 +28,7 @@ footer
 
 <style scoped >
 footer {
-  @apply relative transition-all min-h-26vh z-1 bg-gray-300 dark_bg-dark-700 flex flex-col pt-16 pb-16 px-4 lg_hidden;
+  @apply relative transition-all min-h-26vh z-1 bg-dark-50 dark_bg-dark-700 flex flex-col pt-16 pb-16 px-4 lg_hidden;
 }
 
 nav {
@@ -36,11 +36,11 @@ nav {
 }
 
 .section {
-  @apply text-xl mt-8 border-b-1 border-gray-500 px-2 pb-1 mb-2;
+  @apply text-xl mt-8 border-b-1 border-dark-500 px-2 pb-1 mb-2;
 }
 
 a {
-  @apply transition-all opacity-60 text-gray-900 dark_text-gray-50 hover_(opacity-80 underline);
+  @apply transition-all opacity-60 text-dark-900 dark_text-dark-50 hover_(opacity-80 underline);
   &.active {
     @apply font-bold text-$c-brand dark_text-$c-brand-light border-$c-brand;
   }

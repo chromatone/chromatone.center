@@ -6,6 +6,10 @@ date: 2021-06-05
 cover: apps/fifths.png
 ---
 
+<script setup>
+import chordFifths from './fifths.vue'
+</script>
+
 <chord-fifths />
 
 ## The double circle of fifths as a tool to explore chords in tonal space

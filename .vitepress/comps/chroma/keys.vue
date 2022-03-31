@@ -44,8 +44,7 @@ function keyColor(key, off) {
 </script>
 
 <template lang="pug">
-.flex.flex-col.m-1.rounded-2xl.cursor-pointer.transition-all.duration-300.ease.relative.select-none(
-  style="touch-action:none"
+.flex.flex-col.m-1.rounded-2xl.cursor-pointer.transition-all.duration-300.ease.relative.select-none.touch-none(
   @mousedown="chroma.split('').filter(l => l == '1').length < 5 ? playChroma(chroma, pitch) : null"
   @touchend="stopChroma(chroma, pitch)"
   @touchcancel="stopChroma(chroma, pitch)"

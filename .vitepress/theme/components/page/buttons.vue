@@ -16,6 +16,7 @@ const props = defineProps({
     la-instagram(v-if="link?.type == 'instagram'")
     la-heart(v-if="link?.type == 'heart'")
     la-discord(v-if="link?.type == 'discord'")
+    la-reddit(v-if="link?.type == 'reddit'")
     span {{ link.text }}
 </template>
 

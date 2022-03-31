@@ -12,7 +12,7 @@ main
       content.content.flex-1
       shop-message
       row-list.mb-32
-  page-next-prev
+  nav-next-prev
   //- footer-row
 </template>
 

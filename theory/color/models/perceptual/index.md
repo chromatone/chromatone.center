@@ -6,28 +6,32 @@ date: 2021-08-08
 cover: theory/color/CIE_1976_UCS.png
 ---
 
+<script setup>
+import colorTable from './table.vue'
+</script>
+
 ## Munsell color system
 
 In colorimetry, the Munsell color system is a color space that specifies colors based on three properties of color: hue (basic color), chroma (color intensity), and value (lightness). It was created by Professor Albert H. Munsell in the first decade of the 20th century and adopted by the United States Department of Agriculture (USDA) as the official color system for soil research in the 1930s.
 
-![](./Munsell-system.svg)
+![](./images/Munsell-system.svg)
 
 Several earlier color order systems had placed colors into a three-dimensional color solid of one form or another, but Munsell was the first to separate hue, value, and chroma into perceptually uniform and independent dimensions, and he was the first to illustrate the colors systematically in three-dimensional space. Munsell's system, particularly the later renotations, is based on rigorous measurements of human subjects' visual responses to color, putting it on a firm experimental scientific basis. Because of this basis in human visual perception, Munsell's system has outlasted its contemporary color models, and though it has been superseded for some uses by models such as CIELAB (L*a*b\*) and CIECAM02, it is still in wide use today.
 
-> ![](./munsell_1943_color_solid_cylindrical_coordinates.png)
+> ![](./images/munsell_1943_color_solid_cylindrical_coordinates.png)
 > Three-dimensional representation of the 1943 Munsell renotations (with portion cut away).
 
 ## HSL, HSV and HSB color models
 
 HSL (for hue, saturation, lightness) and HSV (for hue, saturation, value; also known as HSB, for hue, saturation, brightness) are alternative representations of the RGB color model, designed in the 1970s by computer graphics researchers to more closely align with the way human vision perceives color-making attributes. In these models, colors of each hue are arranged in a radial slice, around a central axis of neutral colors which ranges from black at the bottom to white at the top.
 
-![](./hsl.png)
+![](./images/hsl.png)
 
 The HSL representation models the way different paints mix together to create colour in the real world, with the lightness dimension resembling the varying amounts of black or white paint in the mixture (e.g. to create "light red", a red pigment can be mixed with white paint; this white paint corresponds to a high "lightness" value in the HSL representation). Fully saturated colors are placed around a circle at a lightness value of ½, with a lightness value of 0 or 1 corresponding to fully black or white, respectively.
 
 Meanwhile, the HSV representation models how colors appear under light. The difference between HSL and HSV is that a color with maximum lightness in HSL is pure white, but a color with maximum value/brightness in HSV is analogous to shining a white light on a colored object (e.g. shining a bright white light on a red object causes the object to still appear red, just brighter and more intense, while shining a dim light on a red object causes the object to appear darker and less bright).
 
-![](./HSV_color_solid_cylinder_saturation_gray.png)
+![](./images/HSV_color_solid_cylinder_saturation_gray.png)
 
 The issue with both HSV and HSL is that these approaches do not effectively separate colour into their three value components according to human perception of color. This can be seen when the saturation settings are altered — it is quite easy to notice the difference in perceptual lightness despite the "V" or "L" setting being fixed.
 
@@ -43,7 +47,7 @@ CIE-based Lch color spaces are transformations of the two chroma values (ab or u
 
 Choose any of the models by clicking on it's name. You can define a hue for the color by clicking on it's sector and then change two other parameters either by dragging the bars on the side or just swiping across the circle. Top-down motion is for the L (W) component and right-left is for the other one.
 
-<color-mix-hsl />
+<color-hsl />
 
 ## CIE 1931 XYZ
 
@@ -73,7 +77,7 @@ The CIELAB color space also referred to as L*a*b* is a color space defined by th
 
 Like the CIEXYZ space it derives from, CIELAB colorspace is a device-independent, "standard observer" model. The colors it defines are not relative to any particular device such as a computer monitor or a printer, but instead relate to the CIE standard observer which is an averaging of the results of color matching experiments under laboratory conditions.
 
-![](./Lab_color_at_luminance_75.png)
+![](./images/Lab_color_at_luminance_75.png)
 
 The CIELAB space is three-dimensional, and covers the entire range of human color perception, or gamut. It is based on the opponent color model of human vision, where red/green forms an opponent pair, and blue/yellow forms an opponent pair. The lightness value, L*, also referred to as "Lstar," defines black at 0 and white at 100. The a* axis is relative to the green–red opponent colors, with negative values toward green and positive values toward red. The b\* axis represents the blue–yellow opponents, with negative numbers toward blue and positive toward yellow.
 
@@ -81,7 +85,7 @@ The CIELAB space is three-dimensional, and covers the entire range of human colo
 
 Mix any possible color out of three color components by dragging the bars on the sides or simply by swiping the central color panel. You can also change the grid resolution and the range of A and B components with the sliders below the grid.
 
-<color-mix-lab />
+<color-lab />
 
 While the intention behind CIELAB was to create a space that was more perceptually uniform than CIEXYZ using only a simple formula, CIELAB is known to lack perceptually uniformity, particularly in the area of blue hues.
 

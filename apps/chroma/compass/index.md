@@ -6,6 +6,10 @@ cover: apps/compass.svg
 date: 2021-04-20
 ---
 
+<script setup>
+import chromaCompass from './index.vue'
+</script>
+
 <client-only>
   <chroma-compass />
 </client-only>

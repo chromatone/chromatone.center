@@ -6,6 +6,10 @@ date: 2021-11-12
 cover: apps/loudness.png
 ---
 
+<script setup>
+import pitchLoudness from './loudness.vue'
+</script>
+
 <pitch-loudness />
 
 > **Find your own equal loudness contour**  

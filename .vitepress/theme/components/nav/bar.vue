@@ -1,20 +1,28 @@
 <script setup>
+import { useData } from 'vitepress'
+const { theme, site, localePath } = useData();
+
 defineEmits(['toggle']);
 
 </script>
 
 <template lang="pug">
 header.nav-bar
-  nav-bar-title(@toggle="$emit('toggle')")
+  img.top-4.fixed.z-1000.cursor-pointer.mr-3.h-30px(v-if="theme.icon", :src="theme.icon", alt="Logo" @click="$emit('toggle')")
+  .nav-bar-title 
+
+    a.title.pl-10(href="/", :aria-label="`${site.title}, назад в начало`") {{ site.title }}
 
   div(class="hidden lg_flex px-3 ml-4 lg_ml-10")
     nav-links
   .flex-grow
   state-midi
   client-only
-    state-synth
+    synth-panel
     state-audio
-  state-dark
+  state-dark.fixed.bottom-18.right-14px
+  nav-scroll.fixed.bottom-8.right-24px
+  nav-search.ml-1
   nav-toggle-sidebar(@toggle="$emit('toggle')")
 </template>
 
@@ -30,5 +38,15 @@ header.nav-bar
 
 .nav-bar.root {
   @apply border-transparent bg-$c-bg-semi;
+}
+
+.nav-bar-title {
+  @apply text-xl md_text-1.3rem font-semibold text-$c-text
+    inline-flex items-center whitespace-nowrap
+    hover_no-underline;
+}
+
+.title {
+  @apply xs_block hidden;
 }
 </style>

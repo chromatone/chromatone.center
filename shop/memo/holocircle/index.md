@@ -5,7 +5,7 @@ product:
   price: $10
   link: https://ko-fi.com/s/1903d23e3b
 
-cover: holologo.jpg
+cover: holologo.svg
 ---
 
 A rather small sticker to be put on your instrument case or any other flat surface. It’s highly durable print and vinyl holographic film make it the best portable format for visual music learning.

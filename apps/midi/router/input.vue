@@ -7,11 +7,7 @@ const props = defineProps({
   iid: [Number, String]
 })
 
-const { midi, midiAttack, midiRelease, setCC } = useMidi();
-
-function inputColor(iid) {
-  return;
-}
+const { midi } = useMidi();
 
 const color = computed(() => props.input?.note?.velocity > 0
   ? pitchColor(props.input.note?.pitch, null, 1, 0.4)

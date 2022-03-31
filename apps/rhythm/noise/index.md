@@ -6,6 +6,10 @@ date: 2021-06-22
 cover: apps/noise.jpg
 ---
 
+<script setup>
+import noiseLab from './noise.vue'
+</script>
+
 <client-only>
   <noise-lab />
 </client-only >

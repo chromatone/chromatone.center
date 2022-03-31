@@ -6,6 +6,10 @@ product:
 cover: memo/a4-scales.svg
 ---
 
+<script setup>
+import drawScales from './scales.vue'
+</script>
+
 The A4 cheat-sheet is currently in a design process.
 
 ## Diatonic scales and modes

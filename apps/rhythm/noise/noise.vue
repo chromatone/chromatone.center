@@ -1,5 +1,5 @@
 <script setup>
-import { useNoise } from './noise.js'
+import { useNoise } from '@use/noise.js'
 const {
   options, filterOptions, pannerOptions, crusherOptions, active, fftData, fftFreq, types, filterTypes, filterLFOTypes
 } = useNoise();
@@ -56,7 +56,7 @@ const {
     xmlns="http://www.w3.org/2000/svg",
   )
     line(
-      v-for="(fr,i) in fftFreq"
+      v-for="(fr, i) in fftFreq"
       :key="fr"
       stroke-width="1"
       stroke="gray"

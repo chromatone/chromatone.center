@@ -6,6 +6,10 @@ cover: apps/midi-roll.png
 date: 2021-09-30
 ---
 
+<script setup>
+import midiRoll from './roll.vue'
+</script>
+
 <client-only >
   <midi-roll />
 </client-only>

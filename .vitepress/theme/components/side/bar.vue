@@ -35,7 +35,7 @@ const route = useRoute();
             v-for="(page, p) in pages[main.path]" :key="page"
           ) 
             a(:href="page.path")
-              .text {{ page.title }}
+              .text {{ page?.title }}
               .flex-1
               .text(
                 v-if="pages[page.path]"

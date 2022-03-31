@@ -29,9 +29,9 @@ const color = computed(() => lchToHsl(props.i, props.total));
     a.cursor-pointer.m-2.shadow-md.rounded-xl.border-4(
       :style="{ borderColor: lchToHsl(p, pages[item.path].length) }",
       :href="page.path",
-      v-for="(page, p) in pages[item.path]" :key="page.title"
+      v-for="(page, p) in pages[item.path]" :key="page.path"
       )
-      .m-2.p-2(:i="p", :total="pages[item.path].length") {{ page.title }}
+      .m-2.p-2(:i="p", :total="pages[item.path].length") {{ page?.title }}
 </template>
 
 <style lang="postcss" scoped>

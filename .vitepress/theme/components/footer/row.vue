@@ -12,9 +12,9 @@ footer
   nav
     .flex.flex-col(
       v-for="(page, i) in pages['/']", 
-      :key="page.title",
+      :key="page?.title",
       )
-      a.section(:href="page.path", :class="{ active: route.path.includes(page.path) }") {{ page.title }}
+      a.section(:href="page.path", :class="{ active: route.path.includes(page.path) }") {{ page?.title }}
       .flex.flex-wrap.py-2
         .inline-flex.flex-wrap.items-center(v-for="line in pages[page.path]", :key="line.title")
           a.p-2(:href="line.link", :class="{ active: route.path.includes(line.path) }") {{ line.title }}

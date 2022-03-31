@@ -17,7 +17,7 @@ const pages = getPages(routes)
     :href="page.path"
     :class="{ active: route.path.includes(page.path) }"
     )
-    .text-lg {{ page.title }} 
+    .text-lg {{ page?.title }} 
 </template>
 
 <style lang="postcss" scoped>

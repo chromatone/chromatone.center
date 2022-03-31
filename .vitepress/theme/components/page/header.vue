@@ -24,15 +24,15 @@ const lightColor = computed(() => lchToHsl(siblings.value.index, siblings.value.
   :class="{ 'has-cover': page?.cover || page?.icon }"
   :style="{ backgroundColor: pageColor }"
   )
-  .cover(v-if="page.cover",:style="{ backgroundImage: `url(${page.cover})`, backgroundColor: pageColor }")
-  img.icon(v-if="page.icon",:src="page.icon")
+  .cover(v-if="page?.cover",:style="{ backgroundImage: `url(${page.cover})`, backgroundColor: pageColor }")
+  img.icon(v-if="page?.icon",:src="page.icon")
   .meta(:style="{ borderColor: pageColor }")
     page-parents.text-xl.mb-4
-    .text-4xl.font-bold.mb-4.flex.flex-wrap.items-center(v-if="page.title" :key="page.title") 
-      .mr-2 {{ page.title }}
+    .text-4xl.font-bold.mb-4.flex.flex-wrap.items-center(v-if="page?.title" :key="page.path") 
+      .mr-2 {{ page?.title }}
       .flex-1
-      .mx-2.my-4.text-6xl(v-if="page.emoji") {{ page.emoji }}
-    .font-bold.mt-2.mb-4(v-if="page.subtitle") {{ page.subtitle }}
+      .mx-2.my-4.text-6xl(v-if="page?.emoji") {{ page.emoji }}
+    .font-bold.mt-2.mb-4(v-if="page?.subtitle") {{ page.subtitle }}
     page-buttons(:buttons="page?.buttons")
     .absolute.-bottom-2rem.right-2rem
       shop-price(:product="page?.product" :color="lightColor")

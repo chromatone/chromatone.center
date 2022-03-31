@@ -1,12 +1,15 @@
 import { Frequency } from "tone";
-import { midiPlay, midiStop } from "@use/midi.js";
-import { synthOnce, synthAttack, synthRelease } from "@use/synth.js";
-import { notes, rotateArray } from "@theory";
+import { midiPlay, midiStop } from "./midi.js";
+import { synthOnce, synthAttack, synthRelease } from "./synth.js";
+import { rotateArray } from "@use/calculations";
+import { notes } from '@use/theory'
 import { Note, ChordType, ScaleType, Scale, Pcset } from "@tonaljs/tonal";
+
+const allNotes = [...notes].map((n, i) => ({ name: n, pitch: i }))
 
 export const globalScale = reactive({
   tonic: useStorage("global-tonic", 0),
-  note: computed(() => notes[globalScale.tonic]),
+  note: computed(() => allNotes[globalScale.tonic]),
   chroma: useStorage("global-chroma", "101011010101"),
   setNum: useStorage("seq-scale", 2708),
   set: computed(() => ScaleType.get(globalScale.chroma)),
@@ -20,7 +23,7 @@ export const globalScale = reactive({
 
 function getChromaNotes(chroma = "100010010000", tonic = globalScale.tonic) {
   let shiftChroma = rotateArray(chroma.split(""), -tonic);
-  let chOct = rotateArray(notes, -tonic).map((n, i) => {
+  let chOct = rotateArray(allNotes, -tonic).map((n, i) => {
     let noteName = Frequency(n.pitch + tonic + 57, "midi").toNote();
     return noteName;
   });

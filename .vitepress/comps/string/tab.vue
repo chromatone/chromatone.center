@@ -1,5 +1,6 @@
 <script setup>
-import { pitchColor, notes as noteList } from '@theory'
+import { notes as noteList } from '@use/theory'
+import { pitchColor } from '@use/calculations'
 import { colord } from 'colord'
 const props = defineProps({
   frets: Array,
@@ -54,7 +55,7 @@ svg.max-h-360px.min-w-100px.min-h-250px(
     stroke-linecap="square"
     :stroke-width="baseFret == 1 ? 8 : 2"
   )
-  g.frets(v-for="(fret,f) in 4" :key="fret")
+  g.frets(v-for="(fret, f) in 4" :key="fret")
     text(
       :x="neck.width + 10"
       :y="fret * neck.fretHeight - neck.fretHeight / 2"
@@ -76,7 +77,7 @@ svg.max-h-360px.min-w-100px.min-h-250px(
       r="10"
       fill="gray"
     )
-  g.strings(v-for="(string,s) in frets" :key="s")
+  g.strings(v-for="(string, s) in frets" :key="s")
     line(
       :x1="s * neck.stringWidth"
       :x2="s * neck.stringWidth"
@@ -99,7 +100,7 @@ svg.max-h-360px.min-w-100px.min-h-250px(
       :y="neck.height + 14"
       font-size="12px"
       font-weight="bold"
-    ) {{ noteList[notes.list[s]]?.name }}
+    ) {{ noteList[notes.list[s]] }}
   g.barres
     line(
       v-for="barre in barres" :key="barre"
@@ -112,7 +113,7 @@ svg.max-h-360px.min-w-100px.min-h-250px(
       stroke="gray"
       opacity="0.5"
     )
-  g.notes(v-for="(note,n) in frets" :key="n")
+  g.notes(v-for="(note, n) in frets" :key="n")
     circle(
       v-if="note == 0"
       :cx="n * neck.stringWidth"

@@ -1,6 +1,6 @@
 <script setup>
 import { levelColor } from "@use/colors.js"
-import { getCircleCoord } from '@theory'
+import { getCircleCoord } from '@use/calculations'
 import { colord } from 'colord'
 import { tempo } from '@use/tempo'
 

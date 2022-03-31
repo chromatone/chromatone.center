@@ -1,5 +1,6 @@
 import Aubio from "./aubio.js";
-import { initGetUserMedia, pitchColor } from "@theory";
+import { pitchColor } from "@use/calculations";
+import { initGetUserMedia } from '@use/audio'
 import Meyda from "meyda";
 
 const noteStrings = [

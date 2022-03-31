@@ -1,12 +1,15 @@
 <script setup>
 import { colord } from 'colord'
-import { notes, pitchColor, scales } from '@theory'
+import { pitchColor } from '@use/calculations'
+import { notes, scales } from '@use/theory'
 const props = defineProps({
   chroma: { type: String, default: '100100010010' },
 });
 
-const whites = [3, 5, 7, 8, 10, 0, 2].map(n => notes[n])
-const blacks = [4, 6, false, 9, 11, 1].map(n => notes[n])
+const allNotes = [...notes].map((n, i) => ({ name: n, pitch: i }))
+
+const whites = [3, 5, 7, 8, 10, 0, 2].map(n => allNotes[n])
+const blacks = [4, 6, false, 9, 11, 1].map(n => allNotes[n])
 
 defineEmits([])
 
@@ -24,10 +27,10 @@ function getNoteColor(n) {
 <template lang="pug">
 g
   g(
-    v-for="(keys,k) in [whites, blacks]" :key="k"
+    v-for="(keys, k) in [whites, blacks]" :key="k"
     )
     g(
-      v-for="(note,i) in keys"
+      v-for="(note, i) in keys"
       :key="i"
     )
       rect(

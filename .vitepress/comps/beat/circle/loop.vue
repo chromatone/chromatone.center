@@ -1,5 +1,5 @@
 <script setup>
-import { getCircleCoord, rotateArray } from '@theory'
+import { getCircleCoord, rotateArray } from '@use/calculations'
 import { useSequence } from '@use/sequence.js'
 import { isDark } from '@theme/composables/state.js'
 import { levelColor } from "@use/colors.js"
@@ -72,7 +72,7 @@ g(
     :opacity="volume"
   )
     g(
-      v-for="(step,s) in activeSteps"
+      v-for="(step, s) in activeSteps"
       :key="step"
       )
       line(
@@ -84,7 +84,7 @@ g(
         :stroke="levelColor((step + (tempo.pitch / 12) * steps.length), steps.length, 1)"
       )
     beat-circle-sector(
-      v-for="(step,s) in steps"
+      v-for="(step, s) in steps"
       :key="step"
       :step="s"
       :total="steps.length"

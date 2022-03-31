@@ -1,10 +1,12 @@
 <script setup>
-import { notes, rotateArray, pitchColor } from '@theory'
+import { rotateArray, pitchColor } from '@use/calculations'
+
 import { globalScale } from '@use/chroma'
-import ukulele from '../../db/ukulele.json'
-import guitar from '../../db/guitar.json'
+import ukulele from '@db/ukulele.json'
+import guitar from '@db/guitar.json'
 import { useStorage } from '@vueuse/core'
 import { Chord } from '@tonaljs/tonal'
+
 const instruments = {
   ukulele, guitar
 }
@@ -62,7 +64,7 @@ function isInScale(list) {
     .text-xl.font-bold.mt-2 Instrument
     .flex.flex-wrap.justify-center.my-2
       button.p-4.text-xl.capitalize(
-        v-for="(instrument,name) in instruments" :key="name"
+        v-for="(instrument, name) in instruments" :key="name"
         :class="{ active: state.instrument.main.name == name }"
         @click="current = name"
         ) {{ name }}
@@ -83,7 +85,7 @@ function isInScale(list) {
       button.note(
         :style="{ backgroundColor: pitchColor(k, 3, rotateArray(globalScale.full?.chroma, -globalScale.tonic)[k] == '1' ? 1 : 0.05) }"
         :class="{ active: state.key == key }"
-        v-for="(key,k) in state.instrument.keys" :key="key"
+        v-for="(key, k) in state.instrument.keys" :key="key"
         @click="state.pitch = k"
       ) {{ key }}
 
@@ -105,7 +107,7 @@ function isInScale(list) {
   .is-group.flex.flex-col.items-center.my-2
     .p-2.text-2xl.font-bold.my-2 {{ state.key }} {{ state.suffix }} tabs
     .flex.flex-wrap.justify-center
-      .tab(v-for="(pos,n) in state.tabs?.positions" :key="pos" )
+      .tab(v-for="(pos, n) in state.tabs?.positions" :key="pos" )
         string-tab( 
           :id="state.key + state.suffix + n"
           :name="state.key + state.suffix"

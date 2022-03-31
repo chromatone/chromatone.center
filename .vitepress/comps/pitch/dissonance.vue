@@ -1,8 +1,8 @@
 <script setup>
-import { pitchColor, notes, freqColor } from '@theory'
+import { pitchColor, freqColor } from '@use/calculations'
 import { useSvgMouse } from '@use/mouse.js'
 import { MonoSynth, start } from 'tone'
-
+import { notes } from '@use/theory'
 
 const box = {
   width: 1200,
@@ -114,7 +114,7 @@ watch([() => freq.hz, () => mouse.pressed], (hz) => {
         stop(offset="0%" :stop-color="freqColor(freq.main)")
         stop(offset="100%" :stop-color="freqColor(freq.hz)")
     g.cursor-pointer(
-      v-for="(fr,f) in [220, 440]"
+      v-for="(fr, f) in [220, 440]"
       :key="fr"
       @click="freq.main = fr"
       :transform="`translate(${10 + f * 140},0)`"
@@ -148,7 +148,7 @@ watch([() => freq.hz, () => mouse.pressed], (hz) => {
       y="-30"
     ) Sensory dissonance curve
     g.cursor-pointer(
-      v-for="(osc,o) in synth.oscs"
+      v-for="(osc, o) in synth.oscs"
       :key="osc"
       @click="synth.setOsc(osc)"
       :transform="`translate(${870 + o * 240},0)`"
@@ -231,7 +231,7 @@ watch([() => freq.hz, () => mouse.pressed], (hz) => {
         text-anchor="end"
         x="-5"
         y="520"
-      ) {{ notes[c % 12].name }}
+      ) {{ notes[c % 12] }}
       text(
         fill="currentColor"
         font-family="Commissioner, sans-serif"
@@ -261,7 +261,7 @@ watch([() => freq.hz, () => mouse.pressed], (hz) => {
       d="M0,504.9c22.4-726,123.3-349,177.8-272.3C380.1,517.5,953.4,500,1200,500"
       )
     g(
-      v-for="(frac,idx) in fracPos"
+      v-for="(frac, idx) in fracPos"
       :key="frac"
       :transform="`translate(${frac} 0)`"
 

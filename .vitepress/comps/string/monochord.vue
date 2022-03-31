@@ -1,10 +1,10 @@
 <script setup>
-import { reactive } from 'vue'
-import { notes, freqColor, freqPitch } from '@theory'
+import { freqColor, freqPitch } from '@use/calculations'
 import { useTransition, TransitionPresets } from '@vueuse/core'
 import { useSynth } from '@use/synth.js'
 import { Frequency } from 'tone'
 import Fraction from 'fraction.js'
+
 const state = reactive({
   ratio: useClamp(0.8, 0.05, 0.95),
   fraction: computed(() => new Fraction(1 - state.ratio).simplify(0.001).toFraction(true)),
@@ -147,5 +147,5 @@ function calcCents(base, freq) {
       circle(r=1 cx=100)
 
   .flex.flex-wrap.justify-center.m-4
-    button.p-2.border-1.shadow.m-2(@click="state.ratio = frac" v-for="(frac,fName) in fractions" :key="fName") {{ fName }}
+    button.p-2.border-1.shadow.m-2(@click="state.ratio = frac" v-for="(frac, fName) in fractions" :key="fName") {{ fName }}
 </template>

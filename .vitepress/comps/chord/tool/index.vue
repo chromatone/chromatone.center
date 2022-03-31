@@ -1,6 +1,6 @@
 <script setup>
-import { reactive, ref, computed, watch } from 'vue'
-import { chords, notes, pitchColor } from '@theory'
+import { pitchColor } from '@use/calculations'
+import { notes, chords } from '@use/theory'
 
 const accord = reactive({
   root: 0,
@@ -43,7 +43,7 @@ function compareChords(a, b) {
       :class="{ active: chord?.handle == accord.info.handle }") {{ chord?.handle }}
   .text-6xl.my-4.text-center.font-bold(
     :style="{ color: pitchColor(accord.root) }"
-  ) {{ notes[accord?.root].name }}{{ accord?.info.handle }}
+  ) {{ notes[accord?.root] }}{{ accord?.info.handle }}
   .relative.m-auto
     chord-tool-keys#chord-keys(:accord="accord", @selectRoot="accord.root = $event")
 </template>

@@ -9,7 +9,8 @@ const cards = Object.values(props.list)
 
 const positions = [[0, 0], [1, 0], [2, 0], [3, 0], [3, 1], [3, 2], [3, 3], [2, 3], [1, 3], [0, 3], [0, 2], [0, 1],];
 
-import { pitchColor, notes } from '@theory'
+import { pitchColor } from '@use/calculations'
+import { notes } from '@use/theory'
 import { colord } from 'colord'
 </script>
 
@@ -29,7 +30,7 @@ import { colord } from 'colord'
         feDropShadow(dx="0" dy="1" stdDeviation="2" flood-color="#2225")
     g.card(
 
-      v-for="(pos,p) in positions" :key="pos"
+      v-for="(pos, p) in positions" :key="pos"
       :transform="`translate(${pos[0] * 100} ${pos[1] * 100})`"
     )
       rect(
@@ -47,9 +48,9 @@ import { colord } from 'colord'
         fill="currentColor"
       )
         text.font-bold.text-12px {{ cards[p].en }}
-        text.font-bold.text-14px(transform="translate(80 65)" text-anchor="end") {{ notes[p].name }}
+        text.font-bold.text-14px(transform="translate(80 65)" text-anchor="end") {{ notes[p] }}
         g.other(
-          v-for="(lang,l,i) in langs" :key="lang"
+          v-for="(lang, l, i) in langs" :key="lang"
           :transform="`translate(0 ${i * 12 + 16})`"
         )
           text(v-if="l != 'nm'")

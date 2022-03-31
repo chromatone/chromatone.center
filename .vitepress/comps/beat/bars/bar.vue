@@ -2,7 +2,7 @@
 import { useSequence } from '@use/sequence.js'
 import { isDark } from '@theme/composables/state.js'
 import { tempo } from '@use/tempo'
-import { pitchColor, rotateArray } from '@theory'
+import { pitchColor, rotateArray } from '@use/calculations'
 import { levelColor } from '@use/colors'
 
 const width = 920
@@ -162,14 +162,14 @@ svg.w-full(
           stroke-width="2"
         )
         line(
-          v-for="(step,s) in activeSteps" :key="step"
+          v-for="(step, s) in activeSteps" :key="step"
           :x1="proportion * (step) * width + pad"
           :x2="proportion * (activeSteps[s + 1] || steps.length) * width + pad"
           stroke-width="6"
           :stroke="levelColor((step + (tempo.pitch / 12) * steps.length), steps.length, 1)"
         )
       beat-bars-step(
-        v-for="(step,s) in steps"
+        v-for="(step, s) in steps"
         :key="s"
         @mute="mutes[s] = !mutes[s]"
         @subdivide="steps[s] = $event"

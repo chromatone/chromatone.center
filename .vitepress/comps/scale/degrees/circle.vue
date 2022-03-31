@@ -1,7 +1,10 @@
 <script setup>
 import { intervals } from '@use/theory'
 import { globalScale } from '@use/chroma'
-import { notes, pitchColor, getCircleCoord, rotateArray } from '@theory'
+import { pitchColor, getCircleCoord, rotateArray } from '@use/calculations'
+import { notes } from '@use/theory'
+
+const allNotes = [...notes].map((n, i) => ({ name: n, pitch: i }))
 
 const noteR = 140
 const noteSize = 30
@@ -156,18 +159,18 @@ svg.select-none.m-2(
       stroke-width="2"
     )
   g.note.cursor-pointer.transition-all.duration-300.ease-out(
-    v-for="(note,n) in rotateArray(notes, globalScale.tonic)" :key="n"
+    v-for="(note, n) in rotateArray(allNotes, globalScale.tonic)" :key="n"
     :transform="`translate(${getCircleCoord(n, 12, noteR, 1000).x} ${getCircleCoord(n, 12, noteR, 1000).y})`"
     @click="globalScale.tonic = note.pitch"
   )
     circle.transition-all.duration-300.ease(
       :r="noteSize"
-      :fill="chroma.split('')[n] == 1 ? pitchColor(note.pitch, 3) : note.pos == 1 ? '#5552' : '#ccc2'"
+      :fill="chroma.split('')[n] == 1 ? pitchColor(note.pitch, 3) : note.name.length == 2 ? '#5552' : '#ccc2'"
     )
     text(font-size="25" fill="currentColor") {{ note.name }}
 
   g.interval.cursor-pointer(
-    v-for="(note,n) in rotateArray(notes, globalScale.tonic)" :key="n"
+    v-for="(note, n) in rotateArray(allNotes, globalScale.tonic)" :key="n"
     @click="toggleChroma(n)"
   )
     svg-ring.transition-all.duration-300.ease(
@@ -177,7 +180,7 @@ svg.select-none.m-2(
       :thickness="60"
       :from="n * 30 - 15"
       :to="n * 30 + 15"
-      :fill="chroma.split('')[n] == 1 ? pitchColor(note.pitch, 3) : note.pos == 1 ? '#5552' : '#ccc2'"
+      :fill="chroma.split('')[n] == 1 ? pitchColor(note.pitch, 3) : note.name.length == 2 ? '#5552' : '#ccc2'"
     )
     text(
       :x="getCircleCoord(n, 12, pathIn, 1000).x"
@@ -196,7 +199,7 @@ svg.select-none.m-2(
   ) //https://stackoverflow.com/questions/5737975/circle-drawing-with-svgs-arc-path
   g.degrees
     text(font-size="30")
-      textPath(:href="`#path${degree.path}`"  v-for="(degree,d) in degrees" :key="degree" :startOffset="degree.offset"  fill="currentColor") {{ d }}
+      textPath(:href="`#path${degree.path}`"  v-for="(degree, d) in degrees" :key="degree" :startOffset="degree.offset"  fill="currentColor") {{ d }}
   path#pathBLeft(
     :d="`M 500 500 m ${-pathBottom}, 0 a ${pathBottom}, ${pathBottom} 0 1, 1 ${pathBottom * 2}, 0  a ${pathBottom}, ${pathBottom} 0 1, 1  ${-pathBottom * 2}, 0`"
     fill="none"
@@ -209,7 +212,7 @@ svg.select-none.m-2(
     style="pointer-events: none"
   )
     text(font-size="36")
-      textPath(:href="`#pathB${degree.path}`" v-for="(degree,d) in degrees" :key="degree" :startOffset="degree.roffset"  fill="currentColor") {{ degree.roman }}
+      textPath(:href="`#pathB${degree.path}`" v-for="(degree, d) in degrees" :key="degree" :startOffset="degree.roffset"  fill="currentColor") {{ degree.roman }}
 
 </template>
 

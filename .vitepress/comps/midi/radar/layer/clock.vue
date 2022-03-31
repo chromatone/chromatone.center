@@ -1,5 +1,5 @@
 <script setup>
-import { getCircleCoord } from '@theory'
+import { getCircleCoord } from '@use/calculations'
 import { polarXY, radar } from '../radar.js'
 import { isDark } from '@theme/composables/state'
 

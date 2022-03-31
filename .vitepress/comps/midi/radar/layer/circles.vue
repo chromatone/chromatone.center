@@ -11,7 +11,7 @@ const props = defineProps({
 
 import paper from 'paper'
 import { midi } from '@use/midi'
-import { pitchColor, getCircleCoord } from '@theory'
+import { pitchColor, getCircleCoord } from '@use/calculations'
 import { polarXY, radar } from '../radar.js'
 
 const view = paper.view

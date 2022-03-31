@@ -1,5 +1,8 @@
 <script setup>
-import { rotateArray, notes, scales, pitchColor } from '@theory'
+import { rotateArray, pitchColor } from '@use/calculations'
+import { notes, scales } from '@use/theory'
+
+const allNotes = [...notes].map((n, i) => ({ name: n, pitch: i }))
 
 const tonal = reactive({
   pressed: false,
@@ -43,7 +46,7 @@ const dy = computed(() => {
 const fifths = computed(() => {
   let fifths = []
   for (let n = 0; n < 12; n++) {
-    fifths[n] = notes[(7 * n) % 12]
+    fifths[n] = allNotes[(7 * n) % 12]
   }
   return fifths
 })
@@ -88,7 +91,7 @@ svg#tonal-array.rounded-4xl(
       )
   g(
     clip-path="url(#grid-mask)", 
-    v-for="(shift,n) in tonal.bgRows"
+    v-for="(shift, n) in tonal.bgRows"
     )
     g(
       v-for="(note, i) in rotateArray(fifths, shift - 1).splice(0, 7)",
@@ -115,7 +118,7 @@ svg#tonal-array.rounded-4xl(
         :y="55"
         ) {{ note.name }}m
   g.cursor-crosshair(
-    v-for="(shift,n) in tonal.rows"
+    v-for="(shift, n) in tonal.rows"
     )
     g(
       v-for="(note, i) in rotateArray(fifths, shift).splice(0, 7)", 
@@ -130,7 +133,7 @@ svg#tonal-array.rounded-4xl(
         :note="note"
         :pressed="tonal.pressed"
         )
-  g(v-for="(shift,n) in tonal.rows")
+  g(v-for="(shift, n) in tonal.rows")
     g(
       v-for="(note, i) in rotateArray(fifths, shift).splice(0, 6)",
       :transform="'translate(' + (i * 2 * tonal.dx + (n % 2) * tonal.dx) + ',' + n * dy + ')'"

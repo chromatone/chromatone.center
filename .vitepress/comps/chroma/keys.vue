@@ -11,8 +11,8 @@ const props = defineProps({
 const emit = defineEmits(['update:pitch'])
 
 import { globalScale, playChroma, stopChroma } from '@use/chroma'
-import { pitchColor, notes, rotateArray } from '@theory'
-import { chordType, scaleType } from '@use/theory'
+import { pitchColor, rotateArray } from '@use/calculations'
+import { chordType, scaleType, notes } from '@use/theory'
 import { colord } from 'colord'
 
 const keys = reactive({
@@ -38,7 +38,7 @@ function isInScale(note) {
 function keyColor(key, off) {
   if (key == null) return 'transparent'
   if (key == props.pitch) return colord(pitchColor(key, 4)).toHex()
-  return isInChroma(key) && !off ? colord(pitchColor(key, 3.5)).toHex() : notes[key].pos == 0 ? '#eee' : '#999'
+  return isInChroma(key) && !off ? colord(pitchColor(key, 3.5)).toHex() : notes[key].length != 2 ? '#eee' : '#999'
 }
 
 </script>
@@ -55,7 +55,7 @@ function keyColor(key, off) {
 )
   .flex.justify-center.my-2.px-2(v-if="title")
     .absolute.right-4 {{ roman }}
-    .font-bold.text-xl.flex-1.text-center {{ notes[pitch].name }}{{ keys.title }}
+    .font-bold.text-xl.flex-1.text-center {{ notes[pitch] }}{{ keys.title }}
   svg.w-full.mt-2#chroma-keys(
     version="1.1",
     baseProfile="full",
@@ -73,7 +73,7 @@ function keyColor(key, off) {
         feDropShadow(dx="0" dy="3" stdDeviation="4" flood-color="#2225")
     g.white
       g.key(
-        v-for="(key,k) in keys.white" :key="key"
+        v-for="(key, k) in keys.white" :key="key"
         :transform="`translate(${k * 100 + 5} 30)`"
       )
         rect.transition-all.duration-300.ease-out(
@@ -96,10 +96,10 @@ function keyColor(key, off) {
           y="250"
           x="45"
           :fill="!isInChroma(key) ? 'black' : 'white'"
-        ) {{ notes[key].name }}
+        ) {{ notes[key] }}
     g.black 
       g.key(
-        v-for="(key,k) in keys.black" :key="key"
+        v-for="(key, k) in keys.black" :key="key"
         :transform="`translate(${k * 100 + 55} -10)`"
       )
         rect.transition-all.duration-300.ease-out(
@@ -127,7 +127,7 @@ function keyColor(key, off) {
           y="180"
           x="45"
           fill="white"
-        ) {{ notes[key]?.name }}
+        ) {{ notes[key] }}
 </template>
 
 <style scoped>

@@ -1,6 +1,6 @@
 <script setup>
 import { useStorage, useTimestamp } from '@vueuse/core'
-import { pitchColor, freqColor, notes, pitchFreq } from '@theory'
+import { pitchColor, freqColor, pitchFreq } from '@use/calculations'
 import { Synth, start, Frequency } from "tone";
 import { globalScale } from '@use/chroma'
 
@@ -318,7 +318,7 @@ svg {
         font-size="4px"
         ) {{ fundamental.note }} ({{ fundamental.cents.toFixed(0) }} cents)
     g.overtone.cursor-pointer(
-      v-for="(overtone,i) in overtones.list"
+      v-for="(overtone, i) in overtones.list"
       :key="overtone"
       :data-num="i + 1"
       :transform="`translate(0, ${overtone.position})`"
@@ -384,7 +384,7 @@ svg {
       )
 
     g.lines(
-      v-for="(overtone,i) in overtones.list"
+      v-for="(overtone, i) in overtones.list"
       :key="i"
       )
       line(

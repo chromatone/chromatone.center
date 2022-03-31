@@ -1,8 +1,8 @@
 <script setup>
-import { pitchColor, pitchFreq, notes } from '@theory'
+import { pitchColor, pitchFreq } from '@use/calculations'
 import { Frequency } from 'tone'
-import { synthAttack, synthRelease } from '@use/synth.js'
-import { midiPlay, midiStop } from '@use/midi.js'
+import { synthAttack, synthRelease } from '@use/synth'
+import { midiPlay, midiStop } from '@use/midi'
 
 const props = defineProps({
   pressed: Boolean,

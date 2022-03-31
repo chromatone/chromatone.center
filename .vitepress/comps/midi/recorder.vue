@@ -1,6 +1,6 @@
 <script setup>
 import { Midi } from '@tonejs/midi'
-import { pitchColor } from '@theory'
+import { pitchColor } from '@use/calculations'
 import { now, PolySynth, Synth, Transport } from 'tone'
 import { midi } from '@use/midi'
 
@@ -119,7 +119,7 @@ function play() {
     :viewBox="`0 0 ${map.width} ${map.height}`",
     xmlns="http://www.w3.org/2000/svg",
   )
-    g(v-for="(track,t) in info.tracks" :key="track")
+    g(v-for="(track, t) in info.tracks" :key="track")
       rect(
         rx="0.4"
         v-for="note in track.notes" :key="note"

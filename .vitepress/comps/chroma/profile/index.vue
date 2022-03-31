@@ -8,7 +8,7 @@ const props = defineProps({
   editable: { type: Boolean, default: false }
 });
 import { Interval, Pcset } from '@tonaljs/tonal'
-import { notes } from '@theory'
+import { notes } from '@use/theory'
 import { chromaColorMix } from "@use/colors";
 import { chordType, scaleType } from '@use/theory'
 import { playChroma, stopChroma, globalScale } from '@use/chroma'
@@ -47,7 +47,7 @@ const semitones = computed(() => {
     )
       la-wikipedia-w
     .text-2xl.font-bold.capitalize.mb-2(
-      ) {{ notes[globalScale.tonic].name }} {{ chord.name || chord.aliases[0] || scale.name }} {{ scale.aliases[0] ? `(${scale.aliases[0]})` : '' }}
+      ) {{ notes[globalScale.tonic] }} {{ chord.name || chord.aliases[0] || scale.name }} {{ scale.aliases[0] ? `(${scale.aliases[0]})` : '' }}
   .flex.flex-wrap.w-full.items-center
     chroma-circle.flex-1.min-w-200px.pl-4(:chroma="chroma")
     chroma-keys.w-240px.h-8rem.mx-auto.mb-4(:chroma="chroma" v-model:pitch="globalScale.tonic" :title="false")  

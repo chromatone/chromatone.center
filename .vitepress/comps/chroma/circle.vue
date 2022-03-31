@@ -1,18 +1,17 @@
 <script setup>
+import { rotateArray, getCircleCoord, pitchColor } from '@use/calculations'
+import { colord } from 'colord'
+import { chromaColorMix } from "@use/colors.js";
+import { chordType, scaleType, notes } from '@use/theory'
+import { globalScale, playChroma, stopChroma } from '@use/chroma'
+const pressed = ref(false);
+
 const props = defineProps({
   pitch: { type: Number, default: null },
   chroma: { type: String, default: '1001000100101' },
   type: { type: String, default: '' },
   tonic: { type: Number, default: 0 },
 });
-import { notes, rotateArray, getCircleCoord, pitchColor } from '@theory'
-import { colord } from 'colord'
-import { chromaColorMix } from "@use/colors.js";
-import { chordType, scaleType } from '@use/theory.js'
-import { globalScale, playChroma, stopChroma } from '@use/chroma'
-const pressed = ref(false);
-
-
 
 const actualPitch = computed(() => {
   if (props.pitch === 0 || props.pitch) {
@@ -48,7 +47,7 @@ svg.select-none.max-w-12em.my-4.mx-auto(
     opacity="0.5"
     :fill="chromaColorMix(chroma, actualPitch).hsl"
     )
-  g(v-for="(note,n) in actualChroma" :key="n")
+  g(v-for="(note, n) in actualChroma" :key="n")
     line(
       :x1="getCircleCoord(n, 12, 6.5, 0).x"
       :y1="getCircleCoord(n, 12, 6.5, 0).y"
@@ -60,7 +59,7 @@ svg.select-none.max-w-12em.my-4.mx-auto(
       :stroke="note == '1' ? colord(pitchColor(n, 3)).toHex() : 'none'"
       )
   g.cursor-pointer(
-    v-for="(note,n) in actualChroma" :key="n"
+    v-for="(note, n) in actualChroma" :key="n"
     :transform="`translate(${getCircleCoord(n, 12, 8, 0).x}, ${getCircleCoord(n, 12, 8, 0).y})`"
     @mousedown="globalScale.tonic = n"
   )
@@ -68,7 +67,7 @@ svg.select-none.max-w-12em.my-4.mx-auto(
       x="0" 
       y="0" 
       :r="note == '1' ? 2 : 1"
-      :fill="colord(note == '1' ? pitchColor(n) : notes[n].pos == 0 ? 'hsl(0,0%,85%)' : 'hsl(0,0%,60%)').toHex()"
+      :fill="colord(note == '1' ? pitchColor(n) : notes[n].length != 2 ? 'hsl(0,0%,85%)' : 'hsl(0,0%,60%)').toHex()"
     )
     text(
       v-if="note == '1'"
@@ -76,7 +75,7 @@ svg.select-none.max-w-12em.my-4.mx-auto(
       font-size="2px"
       font-weight="bold"
       fill="white"
-      ) {{ notes[n]?.name }}
+      ) {{ notes[n] }}
   g.center.cursor-pointer(
     @mousedown="playChroma(chroma, actualPitch); pressed = true"
     @touchstart.prevent.stop="playChroma(chroma, actualPitch); pressed = true"
@@ -97,7 +96,7 @@ svg.select-none.max-w-12em.my-4.mx-auto(
       font-size="2px"
       font-weight="bold"
       fill="white"
-      ) {{ pitch === false ? '' : typeof pitch == 'string' ? pitch : notes[actualPitch]?.name }}{{ chord.aliases[0] }}
+      ) {{ pitch === false ? '' : typeof pitch == 'string' ? pitch : notes[actualPitch] }}{{ chord.aliases[0] }}
     text(
       y="3"
       font-size="1.8px"

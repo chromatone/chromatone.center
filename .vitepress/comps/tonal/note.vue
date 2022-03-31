@@ -1,6 +1,6 @@
 <script setup>
 import { Frequency } from 'tone'
-import { pitchColor, pitchFreq } from '@theory'
+import { pitchColor, pitchFreq } from '@use/calculations'
 import { synthAttack, synthRelease } from '@use/synth.js'
 import { playNote, stopNote } from '@use/chroma'
 

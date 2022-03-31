@@ -1,5 +1,5 @@
 <script setup>
-import { pitchColor } from '@theory'
+import { pitchColor } from '@use/calculations'
 import { useTuner } from '@use/tuner.js'
 
 const display = ref(null)

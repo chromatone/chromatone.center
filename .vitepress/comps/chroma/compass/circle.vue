@@ -1,8 +1,8 @@
 <script setup>
-import { notes, pitchColor, scales, isInChroma, getCircleCoord, rotateArray } from '@theory'
+import { pitchColor, isInChroma, getCircleCoord, rotateArray } from '@use/calculations'
 import { lchToHsl, chromaColorMix } from "@use/colors.js";
 import { Chord, Note } from '@tonaljs/tonal'
-import { scaleType, chordType } from '@use/theory'
+import { scaleType, chordType, notes } from '@use/theory'
 import { globalScale } from '@use/chroma'
 import { Frequency } from 'tone'
 import { midiOnce, midiAttack, midiRelease, midiPlay, midiStop } from '@use/midi.js'
@@ -92,7 +92,7 @@ function isInChord(n) {
 
 function getNoteColor(n) {
   if (isInChord(n % 12)) return pitchColor(n % 12)
-  else if (scales.minor.steps[n]) return 'hsla(0,0%,90%,1)'
+  else if (notes[n].length != 2) return 'hsla(0,0%,90%,1)'
   else return 'hsla(0,0%,10%,1)'
 }
 
@@ -111,7 +111,7 @@ const chordNotes = computed(() => {
   let chOct = notes.map((n, i) => {
     let oct = 4
     if (i + 9 < globalScale.tonic) oct = 5
-    return n.name + oct
+    return n + oct
   })
   let filtered = chOct.filter((val, i) => {
     if (shiftChroma[i] == '1') {
@@ -158,7 +158,7 @@ svg.max-h-3xl.w-full.transition-all.duration-400.ease-in-out(
   style="user-select:none"
   )
   g(
-    v-for="(active,i) in chroma.split('')",
+    v-for="(active, i) in chroma.split('')",
     :key="i",
   )
     line.line(
@@ -175,7 +175,7 @@ svg.max-h-3xl.w-full.transition-all.duration-400.ease-in-out(
     )
   g.around(
     style="cursor:pointer"
-    v-for="(active,i) in chroma.split('')", 
+    v-for="(active, i) in chroma.split('')", 
     :key="i",
     @click="react(i)",
     :opacity="isInChord(i) ? 1 : 0.3"
@@ -190,14 +190,14 @@ svg.max-h-3xl.w-full.transition-all.duration-400.ease-in-out(
       :fill="getNoteColor(i)",
     )
     text(
-      :fill="scales.minor.steps[i] ? 'hsla(0,0%,0%,0.8)' : 'hsla(0,0%,100%,0.9)'"
+      :fill="notes[i].length == 2 ? 'hsla(0,0%,0%,0.8)' : 'hsla(0,0%,100%,0.9)'"
       font-family="Commissioner, sans-serif"
       font-size="4px"
       text-anchor="middle",
       dominant-baseline="middle"
       :x="getCircleCoord(i).x",
       :y="getCircleCoord(i).y + 0.5",
-    ) {{ notes[i].name }} 
+    ) {{ notes[i] }} 
   g.cursor-pointer(
     @mousedown="playChord()"
     @touchstart.prevent.stop="playChord()"
@@ -225,7 +225,7 @@ svg.max-h-3xl.w-full.transition-all.duration-400.ease-in-out(
       font-family="Commissioner, sans-serif"
       text-anchor="middle",
       dominant-baseline="middle"
-      ) {{ notes[globalScale.tonic].name }}{{ !chord.empty ? chord.aliases[0] : '' }}
+      ) {{ notes[globalScale.tonic] }}{{ !chord.empty ? chord.aliases[0] : '' }}
   text(
     :fill="pitchColor(globalScale.tonic)"
     x="50",
@@ -250,7 +250,7 @@ svg.max-h-3xl.w-full.transition-all.duration-400.ease-in-out(
     ) {{ !scaleType.get(scaleChroma).empty ? scaleType.get(scaleChroma).name : '' }} &times;
 
   line.line(
-    v-for="(line,i) in scaleLines",
+    v-for="(line, i) in scaleLines",
     :key="i",
     :stroke="pitchColor(line?.[1])"
     stroke-linecap="round"

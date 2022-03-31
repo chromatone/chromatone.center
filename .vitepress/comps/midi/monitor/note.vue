@@ -1,5 +1,5 @@
 <script setup>
-import { pitchColor } from '@theory'
+import { pitchColor } from '@use/calculations'
 const props = defineProps({
   note: Object,
   active: Boolean

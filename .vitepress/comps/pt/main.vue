@@ -1,5 +1,5 @@
 <script setup>
-import { notes } from '@theory'
+import { notes } from '@use/theory'
 import { state } from './state.js'
 import { globalScale } from '@use/chroma'
 import { onKeyStroke } from '@vueuse/core'
@@ -54,7 +54,7 @@ const table = ref();
     .fullscreen-container(ref="table")
       pt-shift(:top="true")
       .flex.w-full(v-for="octave in state.octave.list", :key="octave")
-        pt-cell(:class="{ dim: !globalScale.isIn(note.name) }" v-for="note in notes", :key="note.name", :note="note", :octave="octave") 
+        pt-cell(:class="{ dim: !globalScale.isIn(note) }" v-for="note in notes", :key="note", :note="note", :octave="octave") 
       pt-shift
 
 </template>

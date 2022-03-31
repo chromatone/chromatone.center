@@ -1,8 +1,9 @@
 <script setup>
 import { Note, Interval, Pcset } from '@tonaljs/tonal'
-import { freqColor, freqPitch } from '@theory'
+import { freqColor, freqPitch } from '@use/calculations'
 import { colord } from 'colord'
 import { globalScale } from '@use/chroma'
+
 const props = defineProps({
   instrument: {
     type: String,
@@ -78,7 +79,7 @@ function getNote(string, semitones) {
         )
     g#strings
       g.string(
-        v-for="(string,s) in neck.strings" 
+        v-for="(string, s) in neck.strings" 
         :key="string"
         :transform="`translate(0,${neck.height - s * neck.noteSize})`"
         )
@@ -89,7 +90,7 @@ function getNote(string, semitones) {
           opacity="0.5"
         )
         g.note(
-          v-for="(note,n) in neck.fretNum + 1" :key="note"
+          v-for="(note, n) in neck.fretNum + 1" :key="note"
           :transform="`translate(${(n - 0.5) * neck.fretWidth},0)`"
         )
           circle(

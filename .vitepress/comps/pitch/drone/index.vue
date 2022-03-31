@@ -1,5 +1,6 @@
 <script setup>
-import { notes, pitchColor } from '@theory'
+import { pitchColor } from '@use/calculations'
+import { notes } from '@use/theory'
 import { useDrone } from './drone.js'
 
 const drone = useDrone()
@@ -54,10 +55,10 @@ const intervals = reactive({
         control-knob.w-4em(v-model="drone.filterFreq" :min="55" :max="12000" :step="0.05" :fixed="0" param="LP")
     .notes.w-full.text-sm.font-bold.text-center.flex.flex-wrap
       .p-2.m-1.flex-1.cursor-pointer.rounded-xl(
-        v-for="note in notes" :key="note"
-        :style="{ backgroundColor: pitchColor(note.pitch, 3, drone.pitch == note.pitch ? 1 : 0.2, drone.pitch == note.pitch ? 1 : 0.4) }"
-        @click="drone.pitch = note.pitch"
-      ) {{ note.name }}
+        v-for="(note, pitch) in notes" :key="note"
+        :style="{ backgroundColor: pitchColor(pitch, 3, drone.pitch == pitch ? 1 : 0.2, drone.pitch == pitch ? 1 : 0.4) }"
+        @click="drone.pitch = pitch"
+      ) {{ note }}
 </template>
 
 <style scoped>

@@ -1,8 +1,8 @@
 <script setup>
-import { chords, notes, pitchColor } from '@theory'
+import { pitchColor } from '@use/calculations'
 import { chromaColorMix } from '@use/colors.js'
 import { Chord, ScaleType, Interval } from '@tonaljs/tonal'
-import { chordType, scaleType, chordList } from '@use/theory'
+import { chordType, scaleType, chordList, notes } from '@use/theory'
 import { globalScale } from '@use/chroma'
 
 const screen = ref()
@@ -60,7 +60,7 @@ const chordGroup = computed(() => {
     .flex.flex-col.p-2
       .flex.flex-wrap.mx-auto.justify-center
         .chord-group(
-          v-for="(name,count) in groupNames", 
+          v-for="(name, count) in groupNames", 
           :key="name"
           :class="{ active: count + 2 == numNotes }"
           @click="chroma = chordGroups[count][0].chroma"
@@ -72,7 +72,7 @@ const chordGroup = computed(() => {
           v-for="chord in chordGroup", 
           :key="chord?.aliases[0]", 
           @click="chroma = chord.chroma",
-          :class="{ active: chord?.chroma == chroma }") {{ notes[globalScale.tonic].name + chord?.aliases[0] }}
+          :class="{ active: chord?.chroma == chroma }") {{ notes[globalScale.tonic] + chord?.aliases[0] }}
 
       .flex.flex-wrap.justify-center
         .min-w-full.text-center.my-4
@@ -83,7 +83,7 @@ const chordGroup = computed(() => {
           :key="name"
           @click="scale = name"
           :class="{ active: scale == name }"
-          ) {{ notes[globalScale.tonic].name }} {{ name }}
+          ) {{ notes[globalScale.tonic] }} {{ name }}
 </template>
 
 <style  scoped>

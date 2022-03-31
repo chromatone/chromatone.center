@@ -1,5 +1,6 @@
 <script setup>
-import { notes, rotateArray, pitchColor } from '@theory'
+import { rotateArray, pitchColor } from '@use/calculations'
+import { notes } from '@use/theory'
 const emit = defineEmits(['update:pitch']);
 const props = defineProps({
   pitch: {
@@ -13,8 +14,11 @@ const props = defineProps({
   },
   names: Boolean,
 });
+
+const allNotes = [...notes].map((n, i) => ({ name: n, pitch: i }))
+
 const keys = reactive({
-  notes: rotateArray(notes, 3),
+  notes: rotateArray(allNotes, 3),
 });
 
 function isInChroma(pitch) {
@@ -30,7 +34,7 @@ function isInChroma(pitch) {
   .key(
     v-for="key in keys.notes"
     :key="key"
-    :class="{ black: key.pos == 1, tonic: key.pitch == pitch }"
+    :class="{ black: key.name.length == 2, tonic: key.pitch == pitch }"
     @mouseover="key.active = true"
     @mouseleave="key.active = false"
     @click="emit('update:pitch', key.pitch)"

@@ -1,6 +1,7 @@
 <script setup>
 import { context, start } from 'tone'
 import { useSynth } from './synth.js'
+import { notes } from '@use/theory'
 
 
 const props = defineProps({
@@ -11,7 +12,7 @@ const props = defineProps({
   }
 });
 
-const synth = useSynth(props.note.pitch, props.octave);
+const synth = useSynth(notes[props.note], props.octave);
 
 const dragOptions = reactive({
   filterTaps: true,
@@ -50,7 +51,7 @@ const dragHandler = (dragEvent) => {
 const color = computed(() => {
   return (
     "hsla(" +
-    props.note.pitch * 30 +
+    notes[props.note] * 30 +
     "," +
     (synth.active ? "100" : "25") +
     "%," +
@@ -88,7 +89,7 @@ const textColor = computed(() => {
       :style="{ left: synth.pan + '%' }"
     ) 
 
-  pt-info(:name="note?.name",:hz="synth.freq", :octave="octave")
+  pt-info(:name="note",:hz="synth.freq", :octave="octave")
 </template>
 
 <style   scoped>

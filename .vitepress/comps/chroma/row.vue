@@ -1,11 +1,11 @@
 <script setup>
-import { pitchColor, notes, rotateArray } from '@theory'
+import { pitchColor, rotateArray } from '@use/calculations'
 import { chromaColorMix } from "@use/colors.js";
 import { Note, Pcset, Interval } from '@tonaljs/tonal'
 import { Frequency } from 'tone'
 import { synthOnce } from '@use/synth.js'
 import { midiOnce } from '@use/midi.js'
-import { chordType, scaleType, intervals } from '@use/theory'
+import { chordType, scaleType, intervals, notes } from '@use/theory'
 import { globalScale, playChroma, stopChroma, } from '@use/chroma'
 
 const emit = defineEmits(['update:chroma'])
@@ -59,9 +59,11 @@ function calcBg(i, bit, hover) {
   }
 }
 
+const allNotes = [...notes].map((n, i) => ({ name: n, pitch: i }))
+
 const chordNotes = computed(() => {
   let shiftChroma = rotateArray(props.chroma.split(''), -globalScale.tonic)
-  let chOct = rotateArray(notes, -globalScale.tonic).map((n, i) => {
+  let chOct = rotateArray(allNotes, -globalScale.tonic).map((n, i) => {
     return Frequency(n.pitch + globalScale.tonic + 57, 'midi').toNote()
   })
   let filtered = chOct.filter((val, i) => {
@@ -111,7 +113,7 @@ function playNote(note = 0, octave = 0) {
       .p-2px(v-for="interval in state.intervals" :key="interval") {{ interval }}
     .flex-1
     .flex(title="Steps")
-      span(v-for="(semitone,s) in state.semitones" :key="s") {{ s != 0 ? '-' : '' }}{{ semitone }}
+      span(v-for="(semitone, s) in state.semitones" :key="s") {{ s != 0 ? '-' : '' }}{{ semitone }}
     .flex-1
 
     .p-1(title="Pcset number") # {{ state.num }}
@@ -147,12 +149,12 @@ function playNote(note = 0, octave = 0) {
     .chroma-key(
       @mouseenter="hover(i, bit)"
       @touchstart="hover(i, bit)"
-      v-for="(bit,i) in chroma.split('')"
+      v-for="(bit, i) in chroma.split('')"
       :key="i"
       @click="toggleStep(i)"
       :class="{ active: bit == 1 }"
       :style="{ backgroundColor: calcBg(i, bit), marginLeft: (i == 1 || i == 3 || i == 5 || i == 7 || i == 8 || i == 10) ? '16px' : '0px' }"
-      ) {{ bit == 1 ? notes[(i + globalScale.tonic) % 12].name : '' }}
+      ) {{ bit == 1 ? notes[(i + globalScale.tonic) % 12] : '' }}
 </template>
 
 

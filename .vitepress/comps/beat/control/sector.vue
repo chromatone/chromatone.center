@@ -1,7 +1,7 @@
 
 
 <script setup>
-import { getCircleCoord } from '@theory'
+import { getCircleCoord } from '@use/calculations'
 import { isDark } from '@theme/composables/state.js'
 import { levelColor } from "@use/colors.js"
 
@@ -111,7 +111,7 @@ g.arc.cursor-pointer(
     v-if="showPositions"
     )
     circle.pointer-events-none(
-      v-for="(st,s) in allSteps" :key="st"
+      v-for="(st, s) in allSteps" :key="st"
       :cx="st.x"
       :cy="st.y"
       :r="every && (s) % every == 0 ? 4 : 2"

@@ -1,5 +1,5 @@
 import { gainToDb, PanVol, MonoSynth } from "tone";
-import { pitchFreq } from "@theory";
+import { pitchFreq } from "@use/calculations";
 import { state } from "./state.js";
 
 export function useSynth(pitch, octave) {

@@ -1,13 +1,14 @@
 <script setup>
-import { notes, pitchColor } from '@theory'
+import { pitchColor } from '@use/calculations'
 import { Scale, ScaleType, Midi, Note } from '@tonaljs/tonal'
 import { useRafFn, onKeyStroke } from '@vueuse/core'
-import { scaleList } from '@use/theory'
+import { scaleList, notes } from '@use/theory'
 import { globalScale } from '@use/chroma'
 import { Pattern, start, Transport, Draw } from 'tone'
 import { synthOnce } from '@use/synth.js'
 import { midiOnce } from '@use/midi.js'
 import { pianoOnce, init } from '@use/piano'
+
 const state = reactive({
   started: false,
   playing: false,
@@ -21,7 +22,7 @@ const state = reactive({
   probability: useStorage('seq-prob', 1),
   humanize: useStorage('seq-human', false),
   interval: useStorage('seq-interval', '8n'),
-  note: computed(() => notes[globalScale.tonic].name),
+  note: computed(() => notes[globalScale.tonic]),
   range: computed(() => Scale.rangeOf(state.note + state.octave + ' ' + globalScale.set.name)(state.note + state.octave, state.note + (state.octave + 2)).map(note => Note.simplify(note)).reverse()),
   midi: computed(() => state.range.map(note => Midi.toMidi(note))),
   pitches: computed(() => state.midi.map(note => (note + 3) % 12)),

@@ -15,7 +15,8 @@ const props = defineProps({
 });
 
 import { isDark } from '@theme/composables/state'
-import { pitchColor, notes } from '@theory'
+import { pitchColor } from '@use/calculations'
+import { notes } from '@use/theory'
 import { useLoop } from './loop'
 import { Frequency } from 'tone'
 
@@ -71,7 +72,7 @@ const loop = useLoop(props.order);
         :max="7"
         :ratio="4"
         )
-          .font-bold.transition-all.duration-300.ease(:style="{ color: pitchColor(loop.pitch, loop.octave) }") {{ notes[loop.pitch].name }}{{ loop.octave }}
+          .font-bold.transition-all.duration-300.ease(:style="{ color: pitchColor(loop.pitch, loop.octave) }") {{ notes[loop.pitch] }}{{ loop.octave }}
     .is-group.p-1.flex.mx-1
       control-change.w-5em(
         v-model="loop.probability"
@@ -150,7 +151,7 @@ const loop = useLoop(props.order);
         )
 
       pitch-grids-column(
-        v-for="(step,s) in loop.steps" :key="s"
+        v-for="(step, s) in loop.steps" :key="s"
         :step="step"
         :pos="s"
         :color="color"

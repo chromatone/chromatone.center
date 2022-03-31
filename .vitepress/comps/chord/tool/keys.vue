@@ -1,12 +1,9 @@
 <script setup>
-import { notes, pitchColor, scales } from '@theory'
+import { notes } from '@use/theory'
+import { pitchColor } from '@use/calculations'
 const props = defineProps({
   accord: Object,
 });
-
-const whites = [...notes].filter(note => note.pos == 0)
-const blacks = [...notes].filter(note => note.pos == 1)
-
 
 defineEmits([
   'selectRoot'
@@ -18,7 +15,7 @@ function isInChord(n) {
 
 function getNoteColor(n) {
   if (isInChord(n % 12)) return pitchColor(n % 12)
-  else if (scales.minor.steps[n]) return 'hsla(0,0%,90%,1)'
+  else if (notes[n].length != 2) return 'hsla(0,0%,90%,1)'
   else return 'hsla(0,0%,40%,1)'
 }
 </script>
@@ -32,32 +29,32 @@ svg.max-h-sm.w-full(
   )
   g(
     style="cursor:pointer; transition:all 300ms ease"
-    v-for="(note,i) in notes"
-    :key="note.pitch"
-    @click="$emit('selectRoot', i)"
+    v-for="(note, pitch) in notes"
+    :key="pitch"
+    @click="$emit('selectRoot', pitch)"
   )
     rect(
       style="transition:all 300ms ease"
-      :x="20 * ((12 - 3 + Number(i)) % 12)"
+      :x="20 * ((12 - 3 + Number(pitch)) % 12)"
       :y="2"
       :width="18"
-      :stroke-width="accord?.root == i ? 1 : 0"
+      :stroke-width="accord?.root == pitch ? 1 : 0"
       stroke="#000"
-      :height="note.pos == 1 ? 70 : 90"
+      :height="note.length == 2 ? 70 : 90"
       :rx="5"
       :ry="5"
-      :fill="getNoteColor(i)"
+      :fill="getNoteColor(pitch)"
     )
     text(
       style="user-select:none; transition:all 300ms ease"
-      :fill="scales.minor.steps[note.pitch] ? 'hsla(0,0%,0%,0.8)' : 'hsla(0,0%,100%,0.9)'"
+      :fill="notes[pitch].length == 2 ? 'hsla(0,0%,0%,0.8)' : 'hsla(0,0%,100%,0.9)'"
       font-family="Commissioner, sans-serif"
       font-size="10px"
       text-anchor="middle",
       dominant-baseline="middle"
-      :x="20 * ((12 - 3 + Number(i)) % 12) + 9",
-      :y="note.pos == 1 ? 60 : 80",
-    ) {{ note.name }}
+      :x="20 * ((12 - 3 + Number(pitch)) % 12) + 9",
+      :y="note.length == 2 ? 60 : 80",
+    ) {{ note }}
 
 
 </template>

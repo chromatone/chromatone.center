@@ -1,5 +1,6 @@
 <script setup>
-import { notes, pitchColor } from '@theory'
+import { pitchColor } from '@use/calculations'
+import { notes } from '@use/theory'
 import { useStorage, useTimestamp, useClamp } from '@vueuse/core'
 import { chromaColorMix } from "@use/colors.js";
 import { useSynth } from '@use/synth.js'
@@ -23,8 +24,6 @@ watch(moving, val => {
   }
 })
 
-
-
 const activeNotes = useStorage('chord-notes-obj', {})
 
 
@@ -35,7 +34,7 @@ watchEffect(() => {
   if (sounding.value) {
     for (let note in activeNotes.value) {
       let oct = note < 3 ? 3 : 4;
-      synthAttack(notes[note].name + oct)
+      synthAttack(notes[note] + oct)
     }
   }
 })
@@ -104,12 +103,12 @@ const sumColor = computed(() => {
 .flex.flex-col.items-center#screen.fullscreen-container.rounded-4xl
   .flex.flex-wrap.mt-6
     .note(
-      v-for="note in notes"
+      v-for="(note, pitch) in notes"
       :key="note"
-      @click="select(note.pitch)"
-      :class="{ active: activeNotes[note.pitch] }"
-      :style="{ backgroundColor: activeNotes[note.pitch] ? pitchColor(note.pitch) : note.pos == 1 ? '#333' : '#aaa' }"
-    ) {{ note.name }}
+      @click="select(pitch)"
+      :class="{ active: activeNotes[pitch] }"
+      :style="{ backgroundColor: activeNotes[pitch] ? pitchColor(pitch) : note.length == 2 ? '#333' : '#aaa' }"
+    ) {{ note }}
   .p-4.flex.flex-wrap.items-center
     .is-group.flex
       button(
@@ -170,7 +169,7 @@ const sumColor = computed(() => {
       stroke-width="1"
     )
     g(
-      v-for="(note,n) in activeNotes"
+      v-for="(note, n) in activeNotes"
       :key="n"
     )
       polyline(

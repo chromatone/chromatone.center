@@ -1,7 +1,7 @@
 <script setup>
 import { midi, stopAll, midiAttack, midiRelease } from '@use/midi.js'
 import { onKeyStroke } from '@vueuse/core'
-import { pitchColor } from '@theory'
+import { pitchColor } from '@use/calculations'
 import { synthOptions } from '@use/synth.js'
 
 const props = defineProps({

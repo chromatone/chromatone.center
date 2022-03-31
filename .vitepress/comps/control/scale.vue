@@ -1,7 +1,7 @@
 <script setup>
 import { scaleList } from '@use/theory'
 import { globalScale } from '@use/chroma'
-import { pitchColor } from '@theory'
+import { pitchColor } from '@use/calculations'
 </script>
 
 <template lang="pug">

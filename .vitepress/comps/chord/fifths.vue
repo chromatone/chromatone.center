@@ -1,13 +1,15 @@
 <script setup>
 
 import { useStorage } from '@vueuse/core'
-import { notes, rotateArray, getCircleCoord, pitchColor } from '@theory'
+import { rotateArray, getCircleCoord, pitchColor } from '@use/calculations'
+import { notes } from '@use/theory'
 import { Chord, Note } from '@tonaljs/tonal'
-import {playNote, stopNote} from '@use/chroma'
+import { playNote, stopNote } from '@use/chroma'
 
 const numFifths = [0, 7, 2, 9, 4, 11, 6, 1, 8, 3, 10, 5]
-const minors = numFifths.map(n => notes[n]);
-const majors = rotateArray(numFifths, -3).map(n => notes[n]);
+const allNotes = notes.map((n, i) => ({ name: n, pitch: i }))
+const minors = numFifths.map(n => allNotes[n]);
+const majors = rotateArray(numFifths, -3).map(n => allNotes[n]);
 
 const scales = { minor: minors, major: majors }
 
@@ -52,12 +54,12 @@ function stopChord(note, qual = 'major') {
     font-family="Commissioner, sans-serif"
     )
     g(
-      v-for="(scale,qual) in scales"
+      v-for="(scale, qual) in scales"
       :key="qual"
     )
       g.around(
         style="cursor:pointer"
-        v-for="(note,i) in scale", 
+        v-for="(note, i) in scale", 
         :key="i",
         @mousedown="playChord(note.name, qual)", 
         @touchstart="playChord(note.name, qual)", 
@@ -104,7 +106,7 @@ function stopChord(note, qual = 'major') {
     g.transition-all.duration-300.ease-out(
       ref="selector"
       transform-origin="50 50"
-      :style="{ transform: `rotate(${tonic / 12 * 360}deg)`}"
+      :style="{ transform: `rotate(${tonic / 12 * 360}deg)` }"
     )
       svg-ring(
         :cx="50"
@@ -131,9 +133,9 @@ function stopChord(note, qual = 'major') {
         v-if="scaleType != 'major'"
         :fill="pitchColor(minors[tonic].pitch)"
       )
-      g(v-for="(level,idx) in steps[scaleType]" :key="idx")
+      g(v-for="(level, idx) in steps[scaleType]" :key="idx")
         text.pointer-events-none(
-          v-for="(step,n) in level"
+          v-for="(step, n) in level"
           :key="step"
           style="user-select:none;transition:all 300ms ease;"
           fill="currentColor"

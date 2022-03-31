@@ -1,6 +1,6 @@
 <script setup>
 import { useRafFn } from '@vueuse/core'
-import { rotateArray } from '@theory'
+import { rotateArray } from '@use/calculations'
 import { useTuner } from '@use/tuner.js'
 const { init, tuner, chain } = useTuner();
 

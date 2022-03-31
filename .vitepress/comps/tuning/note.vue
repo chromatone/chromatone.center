@@ -1,7 +1,7 @@
 <script setup>
-import { pitchColor, pitchFreq, notes, getCircleCoord } from '@theory'
+import { pitchColor, pitchFreq, getCircleCoord } from '@use/calculations'
 import { synthAttack, synthRelease } from '@use/synth.js'
-import { computed, ref } from 'vue'
+
 import { colord } from 'colord'
 const props = defineProps({
   R: Number,

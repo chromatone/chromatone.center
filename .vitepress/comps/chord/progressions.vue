@@ -1,5 +1,5 @@
 <script setup>
-import { pitchColor, rotateArray, notes } from '@theory'
+import { pitchColor, rotateArray } from '@use/calculations'
 import { noteNames } from '@use/theory'
 import { globalScale, playChroma, stopChroma } from '@use/chroma'
 import { Progression, Chord } from "@tonaljs/tonal";
@@ -45,7 +45,7 @@ function getChords(degrees) {
       .text-lg {{ state.current.degrees }} 
     transition(name="fade" mode="out-in")
       .flex.flex-wrap(:key="state.current")
-        .flex-1.flex.flex-col.items-center.select-none(v-for="(chord,c) in getChords(state.current.degrees)" :key="c")
+        .flex-1.flex.flex-col.items-center.select-none(v-for="(chord, c) in getChords(state.current.degrees)" :key="c")
           chroma-keys.flex-1.p-1.min-w-150px(
             :chroma="chord.chroma"
             :pitch="chord.tonicPitch"
@@ -84,7 +84,7 @@ function getChords(degrees) {
           )
   .flex.flex-wrap.justify-center.p-4
     button.text-button.flex.flex-col(
-      v-for="(progression,name) in list" :key="progression"
+      v-for="(progression, name) in list" :key="progression"
       @click="state.selected = name"
       :class="{ active: progression == state.current }"
     ) 

@@ -7,9 +7,8 @@ const props = defineProps({
   roman: { type: String, default: '' },
 });
 
-import { pitchColor, rotateArray } from '@theory'
-import { noteNames, chordType, scaleType } from '@use/theory.js'
-import { notes } from '@theory'
+import { pitchColor, rotateArray } from '@use/calculations'
+import { noteNames, chordType, scaleType, notes } from '@use/theory.js'
 import { playChroma, stopChroma, globalScale } from '@use/chroma'
 import { chromaColorMix } from "@use/colors.js"
 import { Progression, Chord } from "@tonaljs/tonal"
@@ -60,13 +59,13 @@ function playNote(note = 0, octave = 0) {
   .p-2.text-center.mb-2.rounded-lg.text-white(
     :style="{ backgroundColor: pitchColor(actualPitch, 3) }"
   ) 
-    .font-bold {{ pitch === false ? '' : typeof pitch == 'string' ? pitch : notes[actualPitch]?.name }}{{ chord.aliases[0] }}
+    .font-bold {{ pitch === false ? '' : typeof pitch == 'string' ? pitch : notes[actualPitch] }}{{ chord.aliases[0] }}
     .text-sm(v-if="props.roman") {{ props.roman }}
   .py-6px.px-8.my-2px.w-full.text-sm.text-center.font-bold.rounded.transition-all.duration-300.ease(
     style="touch-action:none"
     @mouseenter="hover(step)"
     @touchstart="hover(step)"
-    v-for="(step,n) in steps"
+    v-for="(step, n) in steps"
     :key="n"
     :style="{ backgroundColor: step.active ? pitchColor(step.pitch) : minor[step.pitch] == 1 ? 'hsla(0,0%,90%,0.8)' : 'hsla(0,0%,20%,0.6)' }"
     ) 

@@ -1,6 +1,5 @@
 <script setup>
-import { notes, pitchColor, rotateArray } from '@theory'
-import { reactive, computed, ref, watch, watchEffect } from 'vue'
+import { pitchColor, rotateArray } from '@use/calculations'
 import { useStorage, useRafFn, useTransition, TransitionPresets } from '@vueuse/core'
 import { chromaColorMix } from "@use/colors.js";
 import { useSynth } from '@use/synth.js'
@@ -131,7 +130,7 @@ const sumColor = computed(() => {
       stroke-width="1"
     )
     g(
-      v-for="(note,n) in activeNotes"
+      v-for="(note, n) in activeNotes"
       :key="n"
     )
       polyline(

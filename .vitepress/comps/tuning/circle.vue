@@ -1,6 +1,8 @@
 <script setup>
-import { notes, freqPitch } from '@theory'
-import { computed, reactive } from 'vue'
+import { freqPitch } from '@use/calculations'
+import { notes } from '@use/theory'
+
+const allNotes = [...notes].map((n, i) => ({ name: n, pitch: i }))
 
 const circles = [250, 350, 450, 150]
 const tunings = {
@@ -38,66 +40,18 @@ const limitNotes = computed(() => {
 });
 
 const pythagoras = [
-  {
-    two: 0,
-    three: 0,
-    inv: false,
-  },
-  {
-    two: 8,
-    three: 5,
-    inv: false
-  },
-  {
-    two: 3,
-    three: 2,
-    inv: true
-  },
-  {
-    two: 5,
-    three: 3,
-    inv: false
-  },
-  {
-    two: 6,
-    three: 4,
-    inv: true
-  },
-  {
-    two: 2,
-    three: 1,
-    inv: false
-  },
-  {
-    two: 9,
-    three: 6,
-    inv: true
-  },
-  {
-    two: 1,
-    three: 1,
-    inv: true
-  },
-  {
-    two: 7,
-    three: 4,
-    inv: false
-  },
-  {
-    two: 4,
-    three: 3,
-    inv: true
-  },
-  {
-    two: 4,
-    three: 2,
-    inv: false
-  },
-  {
-    two: 7,
-    three: 5,
-    inv: true
-  },
+  { two: 0, three: 0, inv: false, },
+  { two: 8, three: 5, inv: false },
+  { two: 3, three: 2, inv: true },
+  { two: 5, three: 3, inv: false },
+  { two: 6, three: 4, inv: true },
+  { two: 2, three: 1, inv: false },
+  { two: 9, three: 6, inv: true },
+  { two: 1, three: 1, inv: true },
+  { two: 7, three: 4, inv: false },
+  { two: 4, three: 3, inv: true },
+  { two: 4, three: 2, inv: false },
+  { two: 7, three: 5, inv: true },
 ]
 
 const pythNotes = computed(() => {
@@ -141,7 +95,7 @@ svg#tuning-circle.w-full(
     :R="circles[2]"
     :w="1000"
     :note="note"
-    v-for="(note,i) in notes", 
+    v-for="(note, i) in allNotes", 
     :key="i",
   )
   tuning-note(
@@ -149,7 +103,7 @@ svg#tuning-circle.w-full(
     :w="1000"
     :level="2"
     :note="note"
-    v-for="(note,i) in limitNotes", 
+    v-for="(note, i) in limitNotes", 
     :key="i",
   )
   tuning-note(
@@ -157,11 +111,11 @@ svg#tuning-circle.w-full(
     :w="1000"
     :level="1"
     :note="note"
-    v-for="(note,i) in pythNotes", 
+    v-for="(note, i) in pythNotes", 
     :key="i",
   )
   tuning-text(
-    v-for="(r,tune) in tunings"
+    v-for="(r, tune) in tunings"
     :key="tune"
     :r="r"
     :text="tune"

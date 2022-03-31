@@ -1,9 +1,9 @@
 <script setup>
 import { Note, Interval, Pcset } from '@tonaljs/tonal'
-import { freqColor, freqPitch, rotateArray, pitchColor, notes } from '@theory'
+import { freqColor, freqPitch, rotateArray, pitchColor } from '@use/calculations'
 import { colord } from 'colord'
 import { globalScale } from '@use/chroma'
-import { chordType, scaleType } from '@use/theory'
+import { chordType, scaleType, notes } from '@use/theory'
 
 const props = defineProps({
   instrument: { type: String, default: 'ukulele' },
@@ -59,7 +59,7 @@ function getNote(string, semitones) {
   :style="{ backgroundColor: pitchColor(pitch, 3, 1, 0.3) }"
 )
   .flex.justify-center
-    .text-2x.font-bold {{ notes[pitch].name }}{{ neck.title }}
+    .text-2x.font-bold {{ notes[pitch] }}{{ neck.title }}
   svg#fretboard.max-h-3xl.w-full.my-2(
     version="1.1",
     baseProfile="full",
@@ -96,7 +96,7 @@ function getNote(string, semitones) {
         )
     g#strings
       g.string(
-        v-for="(string,s) in neck.strings" 
+        v-for="(string, s) in neck.strings" 
         :key="string"
         :transform="`translate(${s * neck.noteSize} 0)`"
         )
@@ -107,7 +107,7 @@ function getNote(string, semitones) {
           opacity="0.5"
         )
         g.note(
-          v-for="(note,n) in neck.fretNum + 1" :key="note"
+          v-for="(note, n) in neck.fretNum + 1" :key="note"
           :transform="`translate(0 ${(n - 0.5) * neck.fretWidth})`"
         )
           circle(
@@ -120,7 +120,7 @@ function getNote(string, semitones) {
             fill="white"
             font-size="18"
             font-weight="bold"
-          ) {{ notes[(n + string) % 12].name }}
+          ) {{ notes[(n + string) % 12] }}
 </template>
 
 <style scoped>

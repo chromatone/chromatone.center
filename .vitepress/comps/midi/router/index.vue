@@ -1,6 +1,6 @@
 <script setup>
 import { useMidi, forwardMidi } from "@use/midi.js";
-import { pitchColor } from "@theory";
+import { pitchColor } from "@use/calculations";
 const { midi, midiAttack, midiRelease, setCC } = useMidi();
 
 function inputColor(iid) {

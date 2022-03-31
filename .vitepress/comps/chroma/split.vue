@@ -1,5 +1,6 @@
 <script setup>
-import { pitchColor, rotateArray, scales, notes, getCircleCoord } from '@theory'
+import { pitchColor, rotateArray, getCircleCoord } from '@use/calculations'
+import { notes } from '@use/theory'
 import { useTuner } from '@use/tuner.js'
 const { init, tuner, chain } = useTuner();
 
@@ -35,7 +36,7 @@ const { init, tuner, chain } = useTuner();
       ) {{ tuner.note.name }} 
     g.around(
       style="cursor:pointer"
-      v-for="(amount,i) in rotateArray(tuner.chroma, -3)", 
+      v-for="(amount, i) in rotateArray(tuner.chroma, -3)", 
       :key="i",
     )
       circle.note(
@@ -48,7 +49,7 @@ const { init, tuner, chain } = useTuner();
       )
       text(
         style="user-select:none;transition:all 300ms ease"
-        :fill="!scales.minor.steps[i] ? 'hsla(0,0%,0%,0.8)' : 'hsla(0,0%,100%,0.9)'"
+        :fill="notes[i].length == 2 ? 'hsla(0,0%,0%,0.8)' : 'hsla(0,0%,100%,0.9)'"
         font-family="Commissioner, sans-serif"
         font-size="3px"
         text-anchor="middle",

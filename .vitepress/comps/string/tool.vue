@@ -1,7 +1,7 @@
 <script setup>
 import { useStorage } from '@vueuse/core'
 import { Note, Interval, Chord } from '@tonaljs/tonal'
-import { freqColor } from '@theory'
+import { freqColor } from '@use/calculations'
 import { colord } from 'colord'
 import { synthOnce } from '@use/synth.js'
 import { midiOnce } from '@use/midi.js'
@@ -64,7 +64,7 @@ function noteColor(note, semitones) {
     .flex.items-center.px-4
       .text-xl Instrument
       select.bg-transparent.text-xl.w-10rem.m-2.p-2(v-model="instrument.title")
-        option(v-for="(inst,key) in instruments", :key="key", :value="key") {{ key }}
+        option(v-for="(inst, key) in instruments", :key="key", :value="key") {{ key }}
     .flex.items-center.px-4
       .text-xl Scale length
       input.bg-transparent.text-2xl.w-5rem.m-2.p-2(
@@ -158,7 +158,7 @@ function noteColor(note, semitones) {
           :r="4"
         )
       g.fret(
-        v-for="(fret,f) in frets"
+        v-for="(fret, f) in frets"
         :key="fret"
       )
         line(
@@ -193,7 +193,7 @@ function noteColor(note, semitones) {
           :y="fret * 1000 - 8",
         ) {{ (fret * instrument.l).toFixed(2) }} mm
       g.note(
-        v-for="(string,i) in instrument.tuning", :key="string"
+        v-for="(string, i) in instrument.tuning", :key="string"
         )
         g(@click="selectNote(string, 0, i)")
           circle(
@@ -214,7 +214,7 @@ function noteColor(note, semitones) {
             :y="-11",
           ) {{ string }}
         g.note(
-          v-for="(fret,f) in frets"
+          v-for="(fret, f) in frets"
           :key="fret"
           @click="selectNote(Note.transpose(string, Interval.fromSemitones(f + 1)), f, i)"
         )

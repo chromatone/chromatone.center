@@ -8,10 +8,10 @@ const props = defineProps({
   roman: { type: String, default: '' },
   editable: { type: Boolean, default: false }
 });
-import { notes, rotateArray, getCircleCoord, pitchColor } from '@theory'
+import { rotateArray, getCircleCoord, pitchColor } from '@use/calculations'
 import { colord } from 'colord'
 import { chromaColorMix } from "@use/colors.js";
-import { chordType, scaleType, intervals } from '@use/theory'
+import { chordType, scaleType, intervals, notes } from '@use/theory'
 import { playChroma, stopChroma, globalScale } from '@use/chroma'
 const pressed = ref(false);
 
@@ -88,7 +88,7 @@ svg.select-none.min-w-8em.m-2(
     :fill="chromaColorMix(chroma, actualPitch).hsl"
   )
   g.transition-all.duration-400.ease-in-out.cursor-pointer(
-    v-for="(note,n) in chroma" :key="n" 
+    v-for="(note, n) in chroma" :key="n" 
     :transform="getRect(n)"
     @mousedown="toggleStep(n)"
     :opacity="note == '1' ? 1 : 0.62"
@@ -99,7 +99,7 @@ svg.select-none.min-w-8em.m-2(
       rx="6"
       :width="state.width / 4 - 4"
       :height="state.height / 4 - 4"
-      :fill="colord(note == '1' ? pitchColor((n + actualPitch) % 12, 3) : notes[(n + globalScale.tonic) % 12].pos == 0 ? 'hsl(0,0%,85%)' : 'hsl(0,0%,40%)').toHex()"
+      :fill="colord(note == '1' ? pitchColor((n + actualPitch) % 12, 3) : notes[(n + globalScale.tonic) % 12].length != 2 ? 'hsl(0,0%,85%)' : 'hsl(0,0%,40%)').toHex()"
     )
     text(
       v-if="note == '1'"
@@ -108,7 +108,7 @@ svg.select-none.min-w-8em.m-2(
       :font-size="8"
       font-weight="bold"
       fill="white"
-      ) {{ notes[(n + actualPitch) % 12].name }}
+      ) {{ notes[(n + actualPitch) % 12] }}
     text(
       v-if="note == '0'"
       :y="state.height / 8 + 1"
@@ -144,7 +144,7 @@ svg.select-none.min-w-8em.m-2(
       font-size="10px"
       font-weight="bold"
       fill="white"
-      ) {{ pitch === false ? '' : typeof pitch == 'string' ? pitch : notes[actualPitch]?.name }}{{ chord.aliases[0] }}
+      ) {{ pitch === false ? '' : typeof pitch == 'string' ? pitch : notes[actualPitch] }}{{ chord.aliases[0] }}
     text.function(
       v-if="props.roman"
       :x="state.width / 2"

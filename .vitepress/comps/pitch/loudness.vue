@@ -1,6 +1,6 @@
 <script setup>
-import { ref, reactive, computed } from 'vue'
-import { freqColor, freqPitch, notes, pitchFreq } from '@theory'
+import { freqColor, freqPitch, pitchFreq } from '@use/calculations'
+import { notes } from '@use/theory'
 import { MonoSynth, start } from 'tone'
 
 const started = ref(false)
@@ -197,7 +197,7 @@ const points = reactive({
           y="650"
         ) Frequency
         g(
-          v-for="(oct,o) in freq.Cs"
+          v-for="(oct, o) in freq.Cs"
           :key="oct"
         )
           line(
@@ -215,7 +215,7 @@ const points = reactive({
             y="20"
           ) C{{ o }}
         g(
-          v-for="(mark,i) in freq.marks"
+          v-for="(mark, i) in freq.marks"
           :key="mark"
         )
           line(
@@ -303,7 +303,7 @@ const points = reactive({
           text-anchor="middle"
           x="0"
           y="5"
-          ) {{ freq.note.name }} 
+          ) {{ freq.note }} 
       polyline(
         :points="points.line"
         stroke="currentColor"
@@ -312,7 +312,7 @@ const points = reactive({
         opacity="0.7"
       )
       g(
-        v-for="(point,idx) in points.list"
+        v-for="(point, idx) in points.list"
         :key="point.hz"
         :transform="`translate(${point.x}, 0)`"
       )

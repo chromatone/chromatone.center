@@ -1,6 +1,6 @@
 <script setup>
 import { useMidi } from '@use/midi.js'
-import { pitchColor } from '@theory'
+import { pitchColor } from '@use/calculations'
 import { onClickOutside } from '@vueuse/core'
 
 

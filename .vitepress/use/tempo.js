@@ -1,6 +1,6 @@
 import { reactive, computed, watch, onMounted } from "vue";
 import { Transport, start, Frequency, Loop } from "tone";
-import { pitchColor, freqPitch } from "@theory";
+import { pitchColor, freqPitch } from "@use/calculations";
 import { Note } from "@tonaljs/tonal";
 import { useStorage } from "@vueuse/core";
 

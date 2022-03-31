@@ -1,5 +1,5 @@
 <script setup>
-import { pitchColor } from '@theory'
+import { pitchColor } from '@use/calculations'
 const props = defineProps({
   track: Object,
 });
@@ -30,7 +30,7 @@ svg(
     xmlns="http://www.w3.org/2000/svg",
     style="user-select:none;touch-action:none"
 )
-  g(v-for="(tick,t) in ticks" :key="tick" )
+  g(v-for="(tick, t) in ticks" :key="tick" )
     line(
 
       :x1="t * bar.step" 

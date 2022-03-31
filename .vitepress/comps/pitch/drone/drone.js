@@ -1,4 +1,4 @@
-import { freqColor, freqPitch, pitchFreq } from "@theory";
+import { freqColor, freqPitch, pitchFreq } from "@use/calculations";
 import { Frequency, Synth, PanVol, gainToDb, LFO, Meter, Filter } from "tone";
 import { useRafFn, watchOnce, onKeyStroke } from "@vueuse/core";
 

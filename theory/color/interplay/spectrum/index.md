@@ -1,8 +1,7 @@
 ---
 title: Chromatic spectrum
 subtitle: The model in which musical octave meets color spectrum.
-cover: theory/spectrum.svg
-
+cover: spectrum.svg
 date: 2021-08-24
 ---
 
@@ -16,7 +15,7 @@ But they're stil oscillations, so we an compare their frequencies and wavelenght
 
 Let's start with frequencies. What is **1 Hz**? It's one oscillation per second. For EM it corresponds to radiation far in the **long radio spectrum**. We can't hear such slow air oscillations and 1 Hz is in **infrasonic** range.
 
-<img src="/media/theory/em-acoustic.svg" >
+<img src="./em-acoustic.svg" >
 
 This juxtaposition shows that electromagnetic and acoustic oscillations are of entirely different nature and can’t be matched just as they are. Audible frequencies of oscillating air correspond to long radio range of EM spectrum. If compared by the wavelengths our notes are situated somewhere around the FM radio range. In turn the visible light oscillations are so fast, that they can be matched only with hypersonic waves in some rigid bodies.
 
@@ -28,6 +27,6 @@ Let take it mathematically. Acoustic oscillations frequency multiplies by to wit
 
 Let's keep multiplying our A = 440 Hz by two until we reach the visible light spectrum – about 0.4–1 PHz. We can calculate all the notes frequencies and place them in the spectrogram. What we get is that A is near orange red, C is green and E is blue. Roughly. But If we consider a little lower base A frequency, we can see pretty nice corellation.
 
-<img src="/media/theory/spectrum.svg" />
+<img src="./spectrum.svg" />
 
 We can conclude that it's a fundamental property of our perception to close perceived parts of any spectrum into a seamless circle. And these circles are not just illusions as the resonances and periodicities are based on fundamental principles of physics.

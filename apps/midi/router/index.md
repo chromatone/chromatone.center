@@ -2,7 +2,7 @@
 title: Router
 subtitle: Forward all MIDI messages from one device to another
 
-cover: apps/midi-router.png
+cover: midi-router.png
 date: 2022-02-14
 ---
 

@@ -2,7 +2,7 @@
 title: Additive color models
 subtitle: The colors created by combining colored lights
 date: 2021-08-18
-cover: theory/rgb.svg
+cover: rgb.svg
 ---
 
 A color model is additive in the sense that the three light beams are added together, and their light spectra add, wavelength for wavelength, to make the final color's spectrum. Because of properties, these three colors create white, this is in stark contrast to physical colors, such as dyes which create black when mixed.

@@ -3,7 +3,7 @@ title: Psychoacoustics
 subtitle: The science of percieved sound
 
 date: 2021-08-29
-cover: theory/hearing.svg
+cover: hearing.svg
 ---
 
 ## Equal-loudness contour

@@ -3,7 +3,7 @@ title: Perceptual color models
 subtitle: Color spaces based on the "standard observer" perception of colors
 
 date: 2021-08-08
-cover: theory/color/CIE_1976_UCS.png
+cover: CIE_1976_UCS.png
 ---
 
 <script setup>
@@ -71,7 +71,7 @@ CIELUV, is a color space adopted by the International Commission on Illumination
 
 Due to the distribution of cones in the eye, the tristimulus values depend on the observer's field of view. To eliminate this variable, the CIE defined a color-mapping function called the standard (colorimetric) observer, to represent an average human's chromatic response within a 2° arc inside the fovea.
 
-![](/media/theory/color/CIE_1976_UCS.png)
+![](./CIE_1976_UCS.png)
 
 The CIELAB color space also referred to as L*a*b* is a color space defined by the International Commission on Illumination (abbreviated CIE) in 1976. It expresses color as three values: L* for perceptual lightness, and a* and b* for the four unique colors of human vision: red, green, blue, and yellow. CIELAB was intended as a perceptually uniform space, where a given numerical change corresponds to similar perceived change in color. While the LAB space is not truly perceptually uniform, it nevertheless is useful in industry for detecting small differences in color.
 

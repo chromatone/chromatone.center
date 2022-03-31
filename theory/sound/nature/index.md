@@ -3,7 +3,7 @@ title: Nature of sound
 subtitle: The acoustic waves - their sources and mediums.
 
 date: 2021-08-30
-cover: theory/sound-waves.jpg
+cover: sound-waves.jpg
 ---
 
 <script setup>

@@ -3,10 +3,10 @@ title: Classic European music staff notation
 subtitle: How the sheet notes are written and read from classic era till today
 date: 2021-08-12
 
-cover: theory/notation/kvintcirklen.png
+cover: kvintcirklen.png
 ---
 
-![](/media/theory/notation/kvintcirklen.png)
+![](./kvintcirklen.png)
 
 ## Clefs
 
@@ -77,7 +77,7 @@ Whole note = 2 half notes = 4 quarter notes = 8 eighth notes = 16 sixteenth note
 
 ![](./note-values-and-rests.png)
 
-> ![](/media/theory/notation/Bachlut1.png)
+> ![](./Bachlut1.png)
 > J.S.Bach Prelude
 
 ### Alexander Scriabin - Piano Concerto in F sharp minor, Op. 20

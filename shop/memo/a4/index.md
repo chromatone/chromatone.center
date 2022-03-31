@@ -3,7 +3,7 @@ title: A4 cheat-sheet
 subtitle: A comprehesive guide to colorful notes - WIP
 product:
   price: $12
-cover: memo/a4-scales.svg
+cover: a4-scales.svg
 ---
 
 <script setup>
@@ -19,6 +19,6 @@ The A4 cheat-sheet is currently in a design process.
 <draw-scales />
 <svg-save svg="diatonic"/>
 
-![svg](/media/memo/a4-scales.svg)
+![svg](./a4-scales.svg)
 
-![svg](/media/memo/a4-circle.svg)
+![svg](./a4-circle.svg)

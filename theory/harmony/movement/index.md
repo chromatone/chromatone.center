@@ -96,8 +96,6 @@ The first appearance of the "Coltrane changes" appear in the verse to the standa
 
 The harmonic use of the chromatic third relation originated in the Romantic era and may occur on any structural level, for example in chord progressions or through key changes. The standard Western chromatic scale has twelve equidistant semitones. When arranged according to the circle of fifths, it looks like this.
 
-![svg](/media/theory/chromatic.svg)
-
 > Precisely because of this equidistancy, the roots of these three chords can produce a destabilizing effect; if C, A♭ and E appear as the tonic pitches of three key areas on a larger level, the identity of the composition's tonal center can only be determined by the closure of the composition.
 > — Demsey (1991)
 

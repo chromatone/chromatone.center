@@ -3,7 +3,7 @@ title: Indian Raga
 subtitle: Improvisational music framework
 date: 2021-09-03
 
-cover: theory/five-gandharva.jpg
+cover: five-gandharva.jpg
 ---
 
 <scale-raga />
@@ -50,7 +50,7 @@ Now let’s get the list of these 72 ragas: Kanakangi, Ratnangi, Ganamurti, Vana
 
 [ka·ṭa·pa·yā·di](https://en.wikipedia.org/wiki/Katapayadi_system) (Devanagari: कटपयादि) system (also known as Paralppēru, Malayalam: പരല്‍പ്പേര്) of numerical notation is an ancient Indian alphasyllabic numeral system to depict letters to numerals for easy remembrance of numbers as words or verses. Assigning more than one letter to one numeral and nullifying certain other letters as valueless, this system provides the flexibility in forming meaningful words out of numbers which can be easily remembered.
 
-Following verse found in Śaṅkaravarman's Sadratnamāla explains the mechanism of the system.[8][9]
+Following verse found in Śaṅkaravarman's Sadratnamāla explains the mechanism of the system.
 
 > नञावचश्च शून्यानि संख्या: कटपयादय:।  
 > मिश्रे तूपान्त्यहल् संख्या न च चिन्त्यो हलस्वर:॥
@@ -129,7 +129,7 @@ The 72 melakarta ragas are split into 12 groups called chakras, each containing 
 
 https://en.wikipedia.org/wiki/Asampurna_Melakarta
 
-The Asampurna Melakarta (transliterated as Asaṃpūrṇa Mēḷakarta) scheme is the system of 72 ragas (musical scales) originally proposed in the 17th century by Venkatamakhin in his Chaturdanda Prakasikha.[1] This proposal used scales with notes that do not conform to the sampurna raga system. Skipped notes or repeated notes, etc., were used in some of the ragas. Some of the ragas of any Melakarta system will use Vivadi swaras (discordant notes). The original system is supposed to avoid such ill-effects and was followed by the Muthuswami Dikshitar school. The naming of the original system followed Katapayadi system. Muthuswami Dikshitar's compositions use the name of these ragas in the lyrics of the songs and is still referred to by those names even in radio / TV announcements of these songs.
+The Asampurna Melakarta (transliterated as Asaṃpūrṇa Mēḷakarta) scheme is the system of 72 ragas (musical scales) originally proposed in the 17th century by Venkatamakhin in his Chaturdanda Prakasikha. This proposal used scales with notes that do not conform to the sampurna raga system. Skipped notes or repeated notes, etc., were used in some of the ragas. Some of the ragas of any Melakarta system will use Vivadi swaras (discordant notes). The original system is supposed to avoid such ill-effects and was followed by the Muthuswami Dikshitar school. The naming of the original system followed Katapayadi system. Muthuswami Dikshitar's compositions use the name of these ragas in the lyrics of the songs and is still referred to by those names even in radio / TV announcements of these songs.
 
 Later Govindacharya came up with a more mathematical and regular system of 72 ragas, which is currently considered fundamental ragas (musical scales) in Carnatic music (South Indian classical music). These melakarta ragas were sampurna ragas. Some of the names of the ragas had to be modified to fit into the Katapayadi system.
 

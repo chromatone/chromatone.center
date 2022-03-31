@@ -3,7 +3,7 @@ title: Drone
 subtitle: Digital shruti box or tanpura tool online
 
 date: 2021-10-12
-cover: apps/drone.png
+cover: drone.png
 ---
 
 <script setup>

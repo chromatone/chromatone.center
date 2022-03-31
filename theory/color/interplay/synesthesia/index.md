@@ -3,12 +3,12 @@ title: Synesthesia
 subtitle: Neurological phenomenon of interlinked sensory signals
 date: 2021-08-25
 
-cover: theory/Number_Form-synesthesia.jpg
+cover: Number_Form-synesthesia.jpg
 ---
 
 The term Synesthesia comes from the Ancient Greek σύν syn, 'together', and αἴσθησις aisthēsis, 'sensation'.
 
-Synesthesia (American English) or synaesthesia (British English) is a perceptual phenomenon in which stimulation of one sensory or cognitive pathway leads to involuntary experiences in a second sensory or cognitive pathway.People who report a lifelong history of such experiences are known as synesthetes. Awareness of synesthetic perceptions varies from person to person.[7] In one common form of synesthesia, known as grapheme–color synesthesia or color–graphemic synesthesia, letters or numbers are perceived as inherently colored. In spatial-sequence, or number form synesthesia, numbers, months of the year, or days of the week elicit precise locations in space (for example, 1980 may be "farther away" than 1990), or may appear as a three-dimensional map (clockwise or counterclockwise). Synesthetic associations can occur in any combination and any number of senses or cognitive pathways.
+Synesthesia (American English) or synaesthesia (British English) is a perceptual phenomenon in which stimulation of one sensory or cognitive pathway leads to involuntary experiences in a second sensory or cognitive pathway.People who report a lifelong history of such experiences are known as synesthetes. Awareness of synesthetic perceptions varies from person to person. In one common form of synesthesia, known as grapheme–color synesthesia or color–graphemic synesthesia, letters or numbers are perceived as inherently colored. In spatial-sequence, or number form synesthesia, numbers, months of the year, or days of the week elicit precise locations in space (for example, 1980 may be "farther away" than 1990), or may appear as a three-dimensional map (clockwise or counterclockwise). Synesthetic associations can occur in any combination and any number of senses or cognitive pathways.
 
 Little is known about how synesthesia develops. It has been suggested that synesthesia develops during childhood when children are intensively engaged with abstract concepts for the first time. This hypothesis – referred to as semantic vacuum hypothesis – explains why the most common forms of synesthesia are grapheme–color, spatial sequence, and number form. These are usually the first abstract concepts that educational systems require children to learn.
 
@@ -27,7 +27,7 @@ While nearly every logically possible combination of experiences can occur, seve
 
 ## Grapheme–color synesthesia
 
-![](/media/theory/Number_Form-synesthesia.jpg)
+![](./Number_Form-synesthesia.jpg)
 A picture from the 2009 non-fiction book Wednesday Is Indigo Blue. Note the numbers 1-12 form an upside-down clock face.
 
 In one of the most common forms of synesthesia, individual letters of the alphabet and numbers (collectively referred to as graphemes) are "shaded" or "tinged" with a color. While different individuals usually do not report the same colors for all letters and numbers, studies with large numbers of synesthetes find some commonalities across letters (e.g., A is likely to be red).

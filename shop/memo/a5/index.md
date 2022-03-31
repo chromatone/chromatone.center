@@ -5,10 +5,12 @@ subtitle: Small and durable cheat sheet with all 12 relative major and minor key
 product:
   price: $12
   link: https://ko-fi.com/s/93da4887a5
-cover: memo/a5-front.png
+cover: a5-front.png
 ---
 
 The great companion for our colorful stickers – a small and durable cheat sheet with all 12 relative major and minor keys along with all main chords they contain. All chords show not only their root notes and names, but also notes they consist of.
+
+![](./a5-back.png)
 
 In short: you can find out different harmonic movements in music just by looking at the cheat sheet. And stickers will help you never get lost among all those 12 keys.
 
@@ -16,4 +18,4 @@ Consider every row as pair of relative major and minor scales. You can find the 
 
 It’s printed on high quality paper with matte plastic lamination. We also rounded the corners to make sure the cheat sheet is durable enough for long time use. Enjoy!
 
-<img src="/media/memo/a5-2.jpg">
+<img src="./a5-2.jpg">

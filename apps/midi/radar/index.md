@@ -3,7 +3,7 @@ title: Radar
 subtitle: Circular MIDI visualisation experiment
 
 date: 2021-11-9
-cover: apps/geometry.png
+cover: geometry.png
 ---
 
 <script setup>

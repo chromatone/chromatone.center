@@ -5,11 +5,11 @@ subtitle: Uv printed transparent vinyl stickers for a guitar, ukulele, regulat k
 product:
   price: $18
   link: https://ko-fi.com/s/e5f5c23a30
-cover: stickers/a5multi/main.jpeg
+cover: main.jpeg
 date: 2022-01-01
 ---
 
-![](/media/stickers/a5multi/angle.jpeg)
+![](./angle.jpeg)
 
 The combination of 3 smaller sticker kits on a precut sheet of high quality transparent vinyl with durable UV printed colors. The colors are bright, but balanced. With this only sheet you can upgrade a whole set of instruments:
 
@@ -18,10 +18,10 @@ The combination of 3 smaller sticker kits on a precut sheet of high quality tran
 - keys of a piano, synth or a MIDI-keyboard
 - - some nice memos and Chromatone logos.
 
-![](/media/stickers/a5multi/close.jpeg)
+![](./close.jpeg)
 
 The paint is eco friendly, matte and very durable. No need for any kind of coating.
 
-![](/media/stickers/a5multi/fret.jpeg)
+![](./fret.jpeg)
 
-![](/media/stickers/a5multi/addons.jpeg)
+![](./addons.jpeg)

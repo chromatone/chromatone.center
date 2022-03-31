@@ -3,7 +3,7 @@ title: Color names
 subtitle: Know how to name any color of 12 equally spaced hues
 
 date: 2021-08-01
-cover: theory/color-names.svg
+cover: color-names.svg
 langs:
   nm: Wavelength
   en: English
@@ -94,8 +94,8 @@ import colorNames from './names.vue'
 
 <color-names :list="$frontmatter.colors" :langs="$frontmatter.langs" />
 
-<img src="/media/theory/color-names.svg">
+<img src="./color-names.svg">
 
 https://en.wikipedia.org/wiki/Tertiary_color
 
-<img src="/media/theory/palette.svg" width="400" height="400" />
+<img src="../models/palette.svg" width="400" height="400" />

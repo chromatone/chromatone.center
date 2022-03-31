@@ -3,7 +3,7 @@ title: Evolution of european notation systems
 subtitle: From neumes to staves
 date: 2021-08-19
 
-cover: theory/notation/hooks_and_banners.png
+cover: hooks_and_banners.png
 ---
 
 ## Medieval neumes c. 500–1400
@@ -37,7 +37,7 @@ In the early 11th century, Beneventan neumes (from the churches of Benevento in 
 
 Znamenny Chant is a singing tradition used in the Russian Orthodox Church which uses a "hook and banner" notation. Znamenny Chant is unison, melismatic liturgical singing that has its own specific notation, called the stolp notation. The symbols used in the stolp notation are called kryuki (Russian: крюки, 'hooks') or znamena (Russian: знамёна, 'signs'). Often the names of the signs are used to refer to the stolp notation. Znamenny melodies are part of a system, consisting of Eight Modes (intonation structures; called glasy); the melodies are characterized by fluency and well-balancedness (Kholopov 2003, 192). There exist several types of Znamenny Chant: the so-called Stolpovoy, Malyj (Little) and Bolshoy (Great) Znamenny Chant. Ruthenian Chant (Prostopinije) is sometimes considered a sub-division of the Znamenny Chant tradition, with the Muscovite Chant (Znamenny Chant proper) being the second branch of the same musical continuum.
 
-![](/media/theory/notation/hooks_and_banners.png)
+![](./hooks_and_banners.png)
 
 Znamenny Chants are not written with notes (the so-called linear notation), but with special signs, called Znamëna (Russian for "marks", "banners") or Kryuki ("hooks"), as some shapes of these signs resemble hooks. Each sign may include the following components: a large black hook or a black stroke, several smaller black 'points' and 'commas' and lines near the hook or crossing the hook. Some signs may mean only one note, some 2 to 4 notes, and some a whole melody of more than 10 notes with a complicated rhythmic structure. The stolp notation was developed in Kievan Rus' as an East Slavic refinement of the Byzantine neumatic musical notation.
 

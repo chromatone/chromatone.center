@@ -2,7 +2,7 @@
 title: Other tools
 subtitle: There's a plenty of opportunities to dive into different aspects of music theory and practice online
 
-cover: apps/other.png
+cover: other.png
 links:
   - url: https://github.com/willianjusten/awesome-audio-visualization
     title: Awesome audio visualization

@@ -3,7 +3,7 @@ title: Timbre and overtones
 subtitle: The character of sound
 
 date: 2021-08-26
-cover: theory/overtones.svg
+cover: overtones.svg
 ---
 
 ## Timbre

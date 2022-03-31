@@ -2,7 +2,7 @@
 title: Roll
 subtitle: Plot main pitch of any incoming audio on an endless roll
 
-cover: apps/roll.png
+cover: roll.png
 date: 2021-05-02
 ---
 

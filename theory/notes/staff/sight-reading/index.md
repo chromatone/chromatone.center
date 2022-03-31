@@ -3,7 +3,7 @@ title: Sight reading
 subtitle: The complexity of perfecting staff notaion reading
 
 date: 2021-09-02
-cover: theory/notation/Michelangelo_Caravaggio_026.jpg
+cover: Michelangelo_Caravaggio_026.jpg
 ---
 
 Sight-singing is used to describe a singer who is sight-reading. Both activities require the musician to play or sing the notated rhythms and pitches.

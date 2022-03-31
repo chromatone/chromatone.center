@@ -9,4 +9,4 @@ The Buffalo Convention of December 10, 1908 established two future roll formats 
 
 ![](./PlayerPianoRoll.jpg)
 
-![](/media/theory/notation/FL.png)
+![](./FL.png)

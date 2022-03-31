@@ -3,7 +3,7 @@ title: Sensory dissonance curve
 subtitle: The harmonic relations of notes
 
 date: 2021-08-22
-cover: theory/dissonance.svg
+cover: dissonance.svg
 links:
   - url: https://sethares.engr.wisc.edu/consemi.html
     title: Calculations of the dissonant curves

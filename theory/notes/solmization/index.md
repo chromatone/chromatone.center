@@ -3,7 +3,7 @@ title: Solmization
 subtitle: Systems of attributing a distinct syllable to each note of a musical scale.
 
 date: 2021-08-31
-cover: theory/notation/The_Hand_of_Guido.jpg
+cover: The_Hand_of_Guido.jpg
 ---
 
 Solmization is a system of attributing a distinct syllable to each note of a musical scale. Various forms of solmization are in use and have been used throughout the world, but solfège is the most common convention in countries of Western culture.
@@ -19,7 +19,7 @@ There are two current ways of applying solfège:
 1. **fixed do**, where the syllables are always tied to specific pitches (e.g. "do" is always "C-natural")
 2. **movable do**, where the syllables are assigned to scale degrees, with "do" always the first degree of the major scale.
 
-![](/media/theory/notation/The_Hand_of_Guido.jpg)
+![](./The_Hand_of_Guido.jpg)
 
 In eleventh-century Italy, the music theorist Guido of Arezzo in his work "Micrologus" invented a notational system that named the six notes of the hexachord after the first syllable of each line of the Latin hymn Ut queant laxis, the "Hymn to St. John the Baptist", yielding ut, re, mi, fa, sol, la. Each successive line of this hymn begins on the next scale degree, so each note's name was the syllable sung at that pitch in this hymn.
 

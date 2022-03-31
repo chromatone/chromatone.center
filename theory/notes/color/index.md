@@ -3,7 +3,7 @@ title: Chromatone color notation
 subtitle: Different ways to implementing the color-frequency equations for writing and reading music
 
 date: 2021-06-01
-cover: apps/midi-roll.png
+cover: midi-roll.png
 ---
 
 There's a plenty of possible ways to make the Chromatone system work for written music communication. This whole web site is one big experiment to find the most useful implications of the simple equations. But there's more to explore!
@@ -28,18 +28,12 @@ Numbers are already widely used in music - they indicate rhythmic meters, interv
 
 ## Colorful piano rolls
 
-![](/media/apps/midi-roll.png)
-
 Try the [MIDI-roll](/apps/midi/roll/) to look at incoming MIDI visualization.
-
-![](/media/apps/roll.png)
 
 Try the [Pitch-roll](/apps/pitch/roll/) to see the main note graph of incoming audio on an endless roll.
 
 ## Colorful spectrogram
 
 Adding the colors to a regular spectrogram makes you see much more about the musical contents of any sound. You can easily see the fundamental pitch and the colors of all the main overtones for simple sounds.
-
-![](/media/apps/spectrogram.png)
 
 Try the [Colorful spectrogram](/apps/pitch/spectrogram/) online now.

@@ -3,7 +3,7 @@ title: Monochord
 subtitle: Virtual string for frequency and length ratio explorations
 
 date: 2021-09-12
-cover: apps/monochord.png
+cover: monochord.png
 ---
 
 <script setup>

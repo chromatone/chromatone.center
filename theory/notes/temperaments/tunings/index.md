@@ -2,14 +2,14 @@
 title: Tunings comparison
 subtitle: Ways to juxtapose and compare different tuning methods side by side
 date: 2021-08-05
-cover: theory/tuning-circle.svg
+cover: tuning-circle.svg
 ---
 
 <script setup>
 import tuningCircle from './circle.vue'
 </script>
 
-<img src="/media/theory/et-limits.svg" />
+<img src="./et-limits.svg" />
 
 ## Circle of tunings
 

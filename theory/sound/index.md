@@ -2,6 +2,6 @@
 title: Sound
 subtitle: The ingenious hearing system and it's medium
 
-cover: theory/waves.jpg
+cover: waves.jpg
 date: 2021-10-20
 ---

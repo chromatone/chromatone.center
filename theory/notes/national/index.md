@@ -3,7 +3,7 @@ title: National notation systems of ancient and modern cultures
 subtitle: Greece, Korea and others
 date: 2021-08-30
 
-cover: theory/notation/Bhat_notation1.jpg
+cover: Bhat_notation1.jpg
 svaras:
   - name: ṣaḍja (षड्ज)
     trans: Giving birth to the six
@@ -79,7 +79,7 @@ https://en.wikipedia.org/wiki/Vedic_accent
 
 The musical notation is written usually immediately above, sometimes within, the line of Samaveda text, either in syllabic or a numerical form depending on the Samavedic Sakha (school). The Indian scholar and musical theorist Pingala (c. 200 BC), in his Chanda Sutra, used marks indicating long and short syllables.
 
-![](/media/theory/notation/Bhat_notation1.jpg)
+![](./Bhat_notation1.jpg)
 
 ## Saptak - सप्तक - 7 svaras - Octave
 
@@ -122,7 +122,7 @@ The complete song is one of about 36 such hymns in cuneiform writing, found on f
 
 Hymn to Applo in Delphi
 
-![](/media/theory/notation/Delphichymn.jpg)
+![](./Delphichymn.jpg)
 
 ## China
 

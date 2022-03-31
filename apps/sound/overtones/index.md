@@ -3,7 +3,7 @@ title: String overtones
 subtitle: String standing waves interactive visualization
 date: 2021-08-12
 
-cover: apps/overtones.png
+cover: overtones.png
 ---
 
 <script setup>

@@ -2,7 +2,7 @@
 title: Spectrum analyzer
 subtitle: Visually analyse the incoming audio spectrum and waveforms in realtime
 
-cover: apps/spectrum.svg
+cover: spectrum.svg
 ---
 
 <script setup>

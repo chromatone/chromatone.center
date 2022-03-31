@@ -3,7 +3,7 @@ title: Light spectrum
 subtitle: Spectrum of solar radiation
 
 date: 2021-08-29
-cover: theory/sun-spectrum.svg
+cover: sun-spectrum.svg
 ---
 
 ![svg](./em-spectrum.svg)
@@ -36,6 +36,6 @@ Calculating the black-body curve was a major challenge in theoretical physics du
 
 ## Earth atmosphere EM radiation absorption
 
-<img src="/media/theory/sun-spectrum.svg">
+<img src="./sun-spectrum.svg">
 
 <img src="./spectral-lines.svg">

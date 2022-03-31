@@ -1,7 +1,7 @@
 ---
 title: Chords
 subtitle: Harmonic sets of pitches/frequencies consisting of multiple notes that are heard as if sounding simultaneously
-cover: theory/am7-res.svg
+cover: am7-res.svg
 
 date: 2021-09-10
 ---

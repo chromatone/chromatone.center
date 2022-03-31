@@ -3,7 +3,7 @@ title: Dodeka
 subtitle: Keyboard and notation redesigned for consistence and ease of use
 
 date: 2021-09-18
-cover: theory/dodeka-keys.jpg
+cover: dodeka-keys.jpg
 ---
 
 The Dodeka Keyboard Design is an isomorphic keyboard invented and designed by Jacques-Daniel Rochat. It is similar to a piano keyboard but with only a single row of keys containing each chromatic note.The keys corresponding to C, E and A flat are highlighted to provide visual landmarks. The creators aimed to create a rational and chromatic approach to music and performance. As an isomorphic keyboard, any musical sequence or interval has the same shape in each of the 12 keys.
@@ -37,4 +37,4 @@ C / K / D / T / E / F / H / G / P / A / V / B.
 
 [Dodeka music](https://www.dodekamusic.com)
 
-![](/media/theory/dodeka-keys.jpg)
+![](./dodeka-keys.jpg)

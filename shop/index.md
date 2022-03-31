@@ -3,7 +3,7 @@ title: Shop
 subtitle: Posters, memos and stickers for musical instruments
 
 date: 2021-06-01
-cover: stickers/universal/cover-uni.jpg
+
 cities:
   - city: Moscow
     country: Russia

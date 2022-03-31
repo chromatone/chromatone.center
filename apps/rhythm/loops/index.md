@@ -3,7 +3,7 @@ title: Bars
 subtitle: A linear metronome and polyrhythm exploration tool
 
 date: 2021-10-01
-cover: apps/metro-bars.png
+cover: metro-bars.png
 ---
 
 <client-only >

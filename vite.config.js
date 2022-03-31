@@ -41,7 +41,9 @@ export default defineConfig({
       exclude: ['**/node_modules/**/*.*', '**/!(index).md'],
       extensions: ['md'],
       ...extendRoutes({
-        mediaTypes: {}
+        mediaTypes: {
+          cover: { size: 1200, height: 800, fit: "inside" },
+        }
       }),
       onRoutesGenerated: routes => (generateSitemap({ routes, hostname: 'https://chromatone.center' })),
     }),

@@ -2,6 +2,7 @@
 title: Indian tala
 subtitle: The Indian rhythmic language and art of konnakkol
 
+cover: five-gandharva.jpg
 date: 2021-10-19
 tala:
   meters: [4/4]
@@ -85,7 +86,7 @@ According to Lewis Rowell – a professor of Music specializing on classical Ind
 
 The Samaveda also included a system of chironomy, or hand signals to set the recital speed. These were mudras (finger and palm postures) and jatis (finger counts of the beat), a system at the foundation of talas. The chants in the Vedic recital text, associated with rituals, are presented to be measured in matras and its multiples in the invariant ratio of 1:2:3. This system is also the basis of every tala.
 
-> ![](/media/theory/five-gandharva.jpg)
+> ![](./five-gandharva.jpg)
 > Five Gandharvas (celestial musicians) from 4th-5th century CE, northwest Indian subcontinent, carrying the four types of musical instruments. Gandharvas are discussed in Vedic era literature.
 
 In the ancient traditions of Hinduism, two musical genre appeared, namely Gandharva (formal, composed, ceremonial music) and Gana (informal, improvised, entertainment music). The Gandharva music also implied celestial, divine associations, while the Gana also implied singing. The Vedic Sanskrit musical tradition had spread widely in the Indian subcontinent, and according to Rowell, the ancient Tamil classics make it "abundantly clear that a cultivated musical tradition existed in South India as early as the last few pre-Christian centuries".

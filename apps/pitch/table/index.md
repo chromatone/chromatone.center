@@ -2,7 +2,7 @@
 title: Table
 subtitle: Every possible note in a huge expandable table
 
-cover: apps/table.png
+cover: table.png
 date: 2021-05-01
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Finder
 subtitle: Easily find different chords note colors
-cover: apps/chord.svg
+cover: chord.svg
 ---
 
 <script setup>

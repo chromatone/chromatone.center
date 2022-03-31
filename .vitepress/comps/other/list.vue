@@ -13,5 +13,5 @@ const props = defineProps({
     .text-md {{ tool.subtitle }}
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 </style>

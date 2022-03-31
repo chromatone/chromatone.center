@@ -137,5 +137,5 @@ g.arc.cursor-pointer(
   
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 </style>

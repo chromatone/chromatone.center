@@ -123,7 +123,7 @@ function getNote(string, semitones) {
           ) {{ notes[(n + string) % 12] }}
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 .note {
   @apply cursor-pointer transition-all duration-300 ease-in-out;
   & text {

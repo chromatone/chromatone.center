@@ -145,7 +145,7 @@ function clear() {
       ref="roll" )
 </template>
 
-<style  scoped>
+<style lang="postcss" scoped>
 .button {
   @apply p-4 m-8 shadow-lg cursor-pointer transition-all duration-300 rounded-4xl text-4xl bg-light-700 text-center font-bold dark_(bg-dark-400);
 }

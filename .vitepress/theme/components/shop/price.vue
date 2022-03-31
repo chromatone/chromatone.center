@@ -31,7 +31,7 @@ const props = defineProps({
 
 
 
-<style scoped>
+<style lang="postcss" scoped>
 .shop-action {
   @apply flex justify-center items-center;
 }

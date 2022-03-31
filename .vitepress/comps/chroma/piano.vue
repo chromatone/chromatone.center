@@ -49,7 +49,7 @@ function isInChroma(pitch) {
   ) {{ names ? key.name : '' }}
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 .key {
   @apply cursor-pointer flex justify-center items-end bg-white z-1 text-sm font-bold shadow rounded transition-all duration-200 opacity-100;
   padding: 2em 1em;

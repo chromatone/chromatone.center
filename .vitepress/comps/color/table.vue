@@ -14,5 +14,5 @@ table.w-full.my-8
   
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 </style>

@@ -28,7 +28,7 @@ function dragger({ movement: [x, y], dragging }) {
   )
 </template>
 
-<style  scoped>
+<style lang="postcss" scoped>
 .cc {
   @apply relative flex-1 flex  items-center  m-1px transition-all duration-200  cursor-pointer select-none;
 }

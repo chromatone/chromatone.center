@@ -119,7 +119,7 @@ function mapNumber(
       la-plus
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 .knob {
   @apply shadow-md m-1 border-2 rounded-lg text-center border-dark-100/50 dark_(border-light-100/50) cursor-pointer select-none relative overflow-hidden flex flex-col justify-center;
   touch-action: none;

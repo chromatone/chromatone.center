@@ -21,5 +21,5 @@ const current = ref(Object.keys(props.collection)[0])
   chroma-profile.my-4(v-bind="collection[current]")
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 </style>

@@ -19,5 +19,5 @@ function speak() {
 span(@click="speak()") {{ text }}
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 </style>

@@ -61,7 +61,7 @@ onKeyStroke(' ', ev => {
       slot
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 .layer {
   @apply bg-light-200 dark_bg-dark-900 rounded-xl;
   backdrop-filter: blur(30px);

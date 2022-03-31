@@ -258,7 +258,7 @@ svg.w-full(
         )
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 g {
   transition: fill 300ms ease;
 }

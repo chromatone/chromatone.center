@@ -133,7 +133,7 @@ function play() {
   //-   .p-1 {{ info.top }} - {{ info.bottom }}
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 button {
   @apply p-4 m-2 border-1 rounded cursor-pointer;
 }

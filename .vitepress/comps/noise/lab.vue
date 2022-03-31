@@ -224,7 +224,7 @@ const {
 
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 .row {
   @apply w-full my-2 flex justify-start flex-wrap border-1 p-2 rounded-lg max-w-65ch mx-auto;
 }

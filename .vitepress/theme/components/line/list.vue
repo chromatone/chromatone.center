@@ -32,7 +32,7 @@ function getColor(i, total, b = 10) {
     shop-price.ml-2(:product="line?.product", :showButton="false" :color="getColor(l, Object.keys(props.list).length, 40)")
 </template>
 
-<style  scoped>
+<style lang="postcss" scoped>
 .lines {
   @apply flex flex-wrap mx-2  my-4 w-full;
 }

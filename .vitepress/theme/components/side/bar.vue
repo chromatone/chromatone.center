@@ -66,7 +66,7 @@ const route = useRoute();
                             a(:href="dot.path") {{ dot.title }}
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 .panel {
   width: 16.4rem;
   flex: 1 0 16.4rem;

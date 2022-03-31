@@ -86,7 +86,7 @@ const chordGroup = computed(() => {
           ) {{ notes[globalScale.tonic] }} {{ name }}
 </template>
 
-<style  scoped>
+<style lang="postcss" scoped>
 .chord {
   @apply p-1 transition-all cursor-pointer m-1 rounded-lg bg-light-100 dark_bg-dark-800 hover_bg-light-800 dark_(hover_bg-dark-300);
 }

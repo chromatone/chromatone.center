@@ -39,5 +39,5 @@ g
     ) {{ text }}
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 </style>

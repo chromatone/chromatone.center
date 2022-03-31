@@ -122,5 +122,5 @@ g.bar.cursor-pointer(
         text {{ modelValue }}  
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 </style>

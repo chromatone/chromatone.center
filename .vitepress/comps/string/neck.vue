@@ -108,7 +108,7 @@ function getNote(string, semitones) {
           ) {{ getNote(string, n) }}
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 .note {
   @apply cursor-pointer;
   & text {

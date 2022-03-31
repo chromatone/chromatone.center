@@ -40,7 +40,7 @@ const hoverShadow = computed(() => `
   slot(:color="color")
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 .block {
   @apply rounded-2xl overflow-hidden transition-all duration-150;
   box-shadow: v-bind(shadow);

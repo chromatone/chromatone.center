@@ -24,7 +24,7 @@ function getColor(i, total) {
     slot
 </template>
 
-<style  scoped>
+<style lang="postcss" scoped>
 .list {
   @apply bg-light-400 mt-2 dark_bg-dark-400 rounded-3xl p-2 md_p-4 flex flex-col flex-auto;
 }

@@ -13,5 +13,5 @@ const props = defineProps({
 hr(:style="{ minHeight: height + 'px' }")
 </template>
 
-<style  scoped>
+<style lang="postcss" scoped>
 </style>

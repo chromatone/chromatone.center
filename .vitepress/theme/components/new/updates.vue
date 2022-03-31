@@ -20,5 +20,5 @@ const recent = computed(() => {
     card-list(:rows="recent")
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 </style>

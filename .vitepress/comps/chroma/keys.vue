@@ -130,7 +130,7 @@ function keyColor(key, off) {
         ) {{ notes[key] }}
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 .key text {
   transition: all 300ms ease;
 }

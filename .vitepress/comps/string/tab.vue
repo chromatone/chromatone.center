@@ -148,5 +148,5 @@ svg.max-h-360px.min-w-100px.min-h-250px(
     ) {{ fingers[n] }}
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 </style>

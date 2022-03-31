@@ -12,7 +12,7 @@ import { pitchColor } from '@use/calculations'
     option(v-for="scale in scaleList.sort((a, b) => a.name > b.name ? 1 : -1)" :key="scale.chroma" :value="scale.chroma") {{ scale.name }}
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 select {
   @apply p-2 bg-light-100 dark_bg-dark-300;
 }

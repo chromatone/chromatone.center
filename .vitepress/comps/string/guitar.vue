@@ -99,5 +99,5 @@ g#guitar
   )
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 </style>

@@ -106,5 +106,5 @@ function colorIt(freq, value) {
 
 </template>
   
-<style scoped>
+<style lang="postcss" scoped>
 </style>

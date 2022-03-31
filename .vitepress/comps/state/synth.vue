@@ -43,7 +43,7 @@ const { synthOptions, synthOnce, init } = useSynth();
         mdi-midi-input.text-3xl
 </template>
 
-<style  scoped>
+<style lang="postcss" scoped>
 .mute {
   font-size: 1.1em;
 }

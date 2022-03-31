@@ -392,7 +392,7 @@ const points = reactive({
       ) START AUDIO
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 .pointer {
   @apply transition-all duration-50 pointer-events-none;
 }

@@ -36,7 +36,7 @@ const lightColor = computed(() => lchToHsl(siblings.value.index, siblings.value.
       shop-price(:product="$frontmatter?.product" :color="lightColor")
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 .header {
   @apply relative flex flex-col min-h-22rem pt-32 px-4 items-center overflow-hidden transition-all duration-400 ease-in;
 }

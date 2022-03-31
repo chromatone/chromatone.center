@@ -46,7 +46,7 @@ onClickOutside(panel, (ev) => {
         bi-volume-mute(v-else)
 </template>
 
-<style  scoped>
+<style lang="postcss" scoped>
 .mute {
   font-size: 1.1em;
 }

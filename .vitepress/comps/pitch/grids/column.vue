@@ -112,7 +112,7 @@ g.col(
       ) {{ getChord(sub) }}
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 .sub:hover .line {
   stroke-opacity: 1;
 }

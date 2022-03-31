@@ -89,5 +89,5 @@ onMounted(() => {
 #map.h-400px.rounded-3xl.overflow-hidden.shadow-xl.mb-8.cursor-pointer(tabindex="1")
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 </style>

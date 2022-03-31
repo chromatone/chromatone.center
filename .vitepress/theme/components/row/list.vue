@@ -24,7 +24,7 @@ const list = pages[route.path]
       )  
 </template>
 
-<style  scoped>
+<style lang="postcss" scoped>
 .list-blocks {
   @apply flex flex-col max-w-65ch mx-auto w-full;
 }

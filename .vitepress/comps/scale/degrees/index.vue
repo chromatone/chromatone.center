@@ -14,5 +14,5 @@ const state = reactive({
   )
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 </style>

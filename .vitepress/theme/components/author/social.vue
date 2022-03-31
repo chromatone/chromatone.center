@@ -23,7 +23,7 @@ const props = defineProps({
     .name {{ social.reddit }}
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 .social {
   @apply flex flex-wrap px-2;
 }

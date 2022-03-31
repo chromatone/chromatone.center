@@ -21,7 +21,7 @@ svg.select-none.w-20rem.m-2(
   text-anchor="middle",
   dominant-baseline="middle"
 )
-  g.cursor-pointer(v-for="(note,n) in chroma.split('')" :key="n")
+  g.cursor-pointer(v-for="(note, n) in chroma.split('')" :key="n")
     circle.transition-all.duration-300.ease-out(
       @click="globalScale.tonic = (globalScale.tonic + n) % 12"
       :cx="n * 8 + 4 + 2 * dist[n]"
@@ -35,5 +35,5 @@ svg.select-none.w-20rem.m-2(
 
 
 
-<style scoped>
+<style lang="postcss" scoped>
 </style>

@@ -95,7 +95,7 @@ function setTempo(diff) {
 
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 .active {
   @apply border-current;
 }

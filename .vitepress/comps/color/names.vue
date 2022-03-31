@@ -19,5 +19,5 @@ const props = defineProps({
       td.p-4(v-for="name in color") {{ name }} 
 </template>
 
-<style  scoped>
+<style lang="postcss" scoped>
 </style>

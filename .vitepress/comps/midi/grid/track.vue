@@ -50,5 +50,5 @@ svg(
     :fill="pitchColor(note.midi + 3)")
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 </style>

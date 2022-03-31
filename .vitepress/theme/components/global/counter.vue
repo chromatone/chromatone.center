@@ -10,5 +10,5 @@ const props = defineProps({
   .flex-1 {{ list.length }}
 </template>
 
-<style  scoped>
+<style lang="postcss" scoped>
 </style>

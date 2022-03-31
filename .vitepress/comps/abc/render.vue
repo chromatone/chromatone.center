@@ -48,5 +48,5 @@ function clickListener(elem, tune, classes, analysis, drag) {
   svg-save(:svg="id" v-if="save")
 </template>
  
-<style scoped>
+<style lang="postcss" scoped>
 </style>

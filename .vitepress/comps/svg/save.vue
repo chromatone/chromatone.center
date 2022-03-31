@@ -37,7 +37,7 @@ function saveSVG(pic) {
   a(ref="anchor",target="_blank",:download="download.file",:href="download.url", v-if="download.url")
 </template>
 
-<style  scoped>
+<style lang="postcss" scoped>
 .snapshot {
   @apply flex absolute cursor-pointer bg-gray-200 bg-opacity-70 dark_(bg-gray-800 bg-opacity-70) text-2xl -mt-1rem right-2rem p-2 z-100  rounded-full;
 }

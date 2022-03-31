@@ -198,7 +198,7 @@ onBeforeUnmount(() => {
         ) •
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 .rows {
   @apply my-4 mx-2 cursor-pointer select-none;
 }

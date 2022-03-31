@@ -40,5 +40,5 @@ function vol(drag) {
   .text-2xl.z-100 {{ voice.note }}
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 </style>

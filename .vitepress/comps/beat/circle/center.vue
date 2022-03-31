@@ -120,7 +120,7 @@ g.center(
       )
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 .arc {
   transition: all 200ms ease-out;
   filter: brightness(100%);

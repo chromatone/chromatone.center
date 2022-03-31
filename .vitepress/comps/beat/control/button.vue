@@ -24,7 +24,7 @@ g.transport(
 
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 .border {
   stroke: #3333;
   transition: stroke 200ms ease-out;

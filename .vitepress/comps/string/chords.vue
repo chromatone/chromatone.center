@@ -119,7 +119,7 @@ function isInScale(list) {
 
 
 
-<style scoped>
+<style lang="postcss" scoped>
 button {
   @apply shadow m-1 rounded border-1 border-transparent transition-all duration-200;
   &.note {

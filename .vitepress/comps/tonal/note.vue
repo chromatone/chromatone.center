@@ -58,5 +58,5 @@ g.cursor-pointer
     :y="8") {{ note.name }}
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 </style>

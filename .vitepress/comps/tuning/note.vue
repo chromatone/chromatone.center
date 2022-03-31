@@ -95,5 +95,5 @@ g.tet(
   )  {{ (note.pitch * 100).toFixed() }}
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 </style>

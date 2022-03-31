@@ -148,7 +148,7 @@ const sumColor = computed(() => {
     )
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 .waveform {
   flex: 1 1 100%;
 }

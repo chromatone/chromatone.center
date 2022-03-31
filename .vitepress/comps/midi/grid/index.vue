@@ -118,7 +118,7 @@ function play() {
       )
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 button {
   @apply p-4 m-2 border-1 rounded cursor-pointer;
 }

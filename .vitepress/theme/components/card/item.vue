@@ -33,7 +33,7 @@ const theColor = computed(() => props.color);
   line-list(:list="pages[item.path]")
 </template>
 
-<style  scoped>
+<style lang="postcss" scoped>
 .crd {
   @apply relative  bg-light-500 dark_bg-dark-800
   flex flex-wrap items-stretch justify-stretch

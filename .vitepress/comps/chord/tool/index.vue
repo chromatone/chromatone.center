@@ -48,7 +48,7 @@ function compareChords(a, b) {
     chord-tool-keys#chord-keys(:accord="accord", @selectRoot="accord.root = $event")
 </template>
 
-<style  scoped>
+<style lang="postcss" scoped>
 .chord {
   @apply text-xl p-2 transition-all cursor-pointer m-1 rounded-lg border bg-light-100 dark_bg-dark-100 hover_bg-light-500 dark_(hover_bg-dark-300);
   &.active {

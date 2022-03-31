@@ -143,5 +143,5 @@ function onDrag(drag) {
   //-     input(type="range" v-model="mix.k" min="0" max="100" id="black")
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 </style>

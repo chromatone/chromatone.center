@@ -15,7 +15,7 @@ const props = defineProps({
     la-chevron-up
 </template>
 
-<style  scoped>
+<style lang="postcss" scoped>
 .btn {
   @apply flex-1 font-bold p-2 opacity-70 m-2 shadow rounded-lg hover_opacity-100 transition;
 }

@@ -105,7 +105,7 @@ svg.select-none.max-w-12em.my-4.mx-auto(
       ) {{ type }}
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 .center {
   @apply transition-all duration-200 ease-in-out;
   &:hover {

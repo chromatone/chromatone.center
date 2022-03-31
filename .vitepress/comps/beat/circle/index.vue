@@ -81,7 +81,7 @@ const overlay = ref(false);
       )
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 .button {
   @apply p-2 border-1 m-1 cursor-pointer shadow-md rounded text-2xl;
 }

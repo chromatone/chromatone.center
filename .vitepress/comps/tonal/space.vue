@@ -28,7 +28,7 @@ const screen = ref();
     tonal-array(:tonic="globalScale.tonic", :scale="scale")    
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 .keys {
   @apply h-16 mx-2 flex-1 mx-auto;
   flex: 1 1 200px;

@@ -47,5 +47,5 @@ g.tap.cursor-pointer
     ) {{ tempo.tap.bpm.toFixed(1) }}
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 </style>

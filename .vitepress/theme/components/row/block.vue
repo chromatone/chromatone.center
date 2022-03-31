@@ -49,7 +49,7 @@ const bg = computed(() => `url(/media/${props.item?.cover}`);
   card-list(v-if="pages[item.path]",:cards="pages[item.path]" ) {{ item.title }}
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 .row {
   @apply bg-light-500 w-full dark_bg-dark-500 flex flex-col transition-all duration-300 ease no-underline rounded-4xl overflow-hidden shadow-lg;
   flex: 1 1 200px;

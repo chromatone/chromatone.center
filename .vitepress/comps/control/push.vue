@@ -42,7 +42,7 @@ function setValue(val) {
     .toggler
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 .btn {
   @apply p-2 border-2 text-center flex flex-col place-items-center rounded-lg m-1 select-none cursor-pointer relative border-dark-100/50 dark_(border-light-100/50);
 }

@@ -53,7 +53,7 @@ function getRawNote(frequency) {
     )
     line(
       style="transition:all 200ms ease; "
-      v-for="(bar,i) in tuner.spec.slice(0, 100)",
+      v-for="(bar, i) in tuner.spec.slice(0, 100)",
       :key="i",
       stroke="white"
       stroke-linecap="round"
@@ -135,7 +135,7 @@ function getRawNote(frequency) {
     ) {{ tuner.note?.frequency.toFixed(2) }} Hz
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 .meter {
   transition: transform 500ms ease;
 }

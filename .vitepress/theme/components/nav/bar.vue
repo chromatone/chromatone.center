@@ -18,7 +18,7 @@ header.nav-bar
   nav-toggle-sidebar(@toggle="$emit('toggle')")
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 .nav-bar {
   @apply lg_(sticky top-0) inset-x-0 z-40
     flex space-between align-center select-none

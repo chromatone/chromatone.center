@@ -69,5 +69,5 @@ polygon.chord-trigger(
   points="0,0 80,0 80,46.188 40,69.28")
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 </style>

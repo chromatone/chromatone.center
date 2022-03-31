@@ -59,7 +59,7 @@ const table = ref();
 
 </template>
   
-<style  scoped>
+<style lang="postcss" scoped>
 .dim {
   @apply opacity-20;
 }

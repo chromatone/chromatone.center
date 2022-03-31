@@ -200,7 +200,7 @@ const sumColor = computed(() => {
     )
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 .note {
   @apply text-light-100 transition-all duration-400 p-2 m-1 w-2.5rem text-center font-bold rounded-full shadow-lg cursor-pointer;
   filter: grayscale(100%);

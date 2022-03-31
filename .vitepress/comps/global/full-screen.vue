@@ -37,5 +37,5 @@ button.text-button(
   la-expand
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 </style>

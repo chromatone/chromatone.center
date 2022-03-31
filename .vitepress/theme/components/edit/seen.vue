@@ -28,5 +28,5 @@ const dif = computed(() => {
   card-date(v-else,:date="modified")
 </template>
 
-<style  scoped>
+<style lang="postcss" scoped>
 </style>

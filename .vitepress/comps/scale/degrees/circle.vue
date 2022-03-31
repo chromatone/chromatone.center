@@ -218,6 +218,6 @@ svg.select-none.m-2(
 
 
 
-<style scoped>
+<style lang="postcss" scoped>
 </style>
 

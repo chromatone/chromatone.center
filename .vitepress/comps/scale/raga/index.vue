@@ -49,7 +49,7 @@ watch(() => state.current, raga => {
       ) {{ cat }}
     .flex.flex-wrap.border-b-1.border-current.py-2
       .m-1.cursor-pointer(
-        v-for="(group,g) in mela[state.cat]" :key="g"
+        v-for="(group, g) in mela[state.cat]" :key="g"
         @click="state.group = g"
         :class="{ selected: state.group == g }"
         ) {{ g }}
@@ -60,7 +60,7 @@ watch(() => state.current, raga => {
       chroma-line(:chroma="raga.chroma")
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 .active {
   @apply border-current rounded-lg;
 }

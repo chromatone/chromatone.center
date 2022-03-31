@@ -189,7 +189,7 @@ function calcCents(base, freq) {
 }
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 svg {
   touch-action: none;
   user-select: none;

@@ -237,7 +237,7 @@ function noteColor(note, semitones) {
         ) {{ Note.transpose(string, Interval.fromSemitones(f + 1)) }}
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 .strings {
   max-height: none !important;
   height: 1600px;

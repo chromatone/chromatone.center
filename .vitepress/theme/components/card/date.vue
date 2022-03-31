@@ -43,7 +43,7 @@ const elapsed = useTimeAgo(new Date(props.date), {
   .flex-1.font-normal {{ elapsed }}
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 .can {
   @apply text-lg opacity-50 text-green-800 transition-all dark_text-green-200;
 }

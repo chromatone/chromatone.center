@@ -20,5 +20,5 @@ card-box.p-4.mt-2.mb-12.flex.flex-col.max-w-65ch.mx-auto.text-center(
     shop-price(:product="page?.product" :color="color")
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 </style>

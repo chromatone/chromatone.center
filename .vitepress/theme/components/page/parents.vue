@@ -15,7 +15,7 @@ const parents = computed(() => useParents(route.path))
     span {{ page.title }}
 </template>
   
-<style  scoped>
+<style lang="postcss" scoped>
 .tabs {
   @apply -mt-2 inline-flex flex-wrap items-stretch justify-start;
 }

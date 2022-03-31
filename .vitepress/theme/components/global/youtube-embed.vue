@@ -14,7 +14,7 @@ defineProps(['video']);
     )
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 .iframe-container {
   margin: 4em 0;
   overflow: hidden;

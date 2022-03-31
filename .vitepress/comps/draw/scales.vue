@@ -125,7 +125,7 @@ const scales = {
     )
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 @media screen {
   svg {
     filter: grayscale(20%);

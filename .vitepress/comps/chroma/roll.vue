@@ -96,6 +96,6 @@ function colorIt(pitch = 0, value = 1, opacity = 1) {
     control-choose(v-model="roll.direction" :variants="{ 1: 'Vertical', 0: 'Horizontal' }")
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 </style>
 

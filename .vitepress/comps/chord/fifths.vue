@@ -148,5 +148,5 @@ function stopChord(note, qual = 'major') {
         ) {{ step }}
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 </style>

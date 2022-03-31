@@ -149,7 +149,7 @@ svg#tonal-array.rounded-4xl(
 </template>
 
 
-<style scoped>
+<style lang="postcss" scoped>
 .note-circle,
 .chord-trigger,
 .chord-triangle {

@@ -123,5 +123,5 @@ svg#tuning-circle.w-full(
   )
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 </style>

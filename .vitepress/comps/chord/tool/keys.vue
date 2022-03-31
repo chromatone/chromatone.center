@@ -59,5 +59,5 @@ svg.max-h-sm.w-full(
 
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 </style>

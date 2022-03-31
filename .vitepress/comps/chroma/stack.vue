@@ -71,5 +71,5 @@ function playNote(note = 0, octave = 0) {
     ) 
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 </style>

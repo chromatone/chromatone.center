@@ -257,7 +257,7 @@ function onDragS(drag) {
         )
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 button.active {
   @apply shadow-sm border-light-300;
 }

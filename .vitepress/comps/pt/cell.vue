@@ -92,7 +92,7 @@ const textColor = computed(() => {
   pt-info(:name="note",:hz="synth.freq", :octave="octave")
 </template>
 
-<style   scoped>
+<style lang="postcss" scoped>
 .cell {
   @apply relative opacity-90 flex flex-col p-1 flex-1 cursor-pointer select-none;
   touch-action: none;

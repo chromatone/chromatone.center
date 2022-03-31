@@ -252,7 +252,7 @@ g(
     )
 </template>
   
-<style scoped>
+<style lang="postcss" scoped>
 .info {
   @apply p-2 rounded-full m-1 border-1 border-current text-2xl;
 }

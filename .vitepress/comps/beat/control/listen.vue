@@ -46,7 +46,7 @@ g.listen(
     ) {{ tuner.bpm.toFixed(1) }}
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 .listen {
   @apply cursor-pointer;
 }

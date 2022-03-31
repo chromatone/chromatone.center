@@ -77,5 +77,5 @@ function initiate() {
     )
 </template>
   
-<style scoped>
+<style lang="postcss" scoped>
 </style>

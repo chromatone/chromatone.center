@@ -58,7 +58,7 @@ const semitones = computed(() => {
 
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 .profile {
   @apply flex flex-wrap justify-center max-w-55ch mx-auto text-center border-2 rounded-4xl shadow-lg bg-light-500 dark_bg-dark-500;
 }

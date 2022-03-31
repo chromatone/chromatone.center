@@ -59,7 +59,7 @@ const { init, tuner, chain } = useTuner();
       ) {{ notes[i].name }} 
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 .note {
   @apply mix-blend-screen;
 }

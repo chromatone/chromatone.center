@@ -16,7 +16,7 @@ main
   //- footer-row
 </template>
 
-<style  scoped>
+<style lang="postcss" scoped>
 main {
   flex: 1 1 70%;
   @apply flex flex-col;

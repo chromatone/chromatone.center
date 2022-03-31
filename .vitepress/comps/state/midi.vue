@@ -31,7 +31,7 @@ const { midi } = useMidi();
       midi-panel.panel(v-if="panel" ref="target")
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 .midi.active {
   @apply bg-light-700 dark_bg-dark-700;
 }

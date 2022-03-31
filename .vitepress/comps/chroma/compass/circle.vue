@@ -263,7 +263,7 @@ svg.max-h-3xl.w-full.transition-all.duration-400.ease-in-out(
   )
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 .around,
 .note,
 .line,

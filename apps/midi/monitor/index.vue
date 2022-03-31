@@ -1,9 +1,8 @@
 <script setup>
+import midiNote from './note.vue'
+import midiCc from './cc.vue'
+
 import { useMidi } from '@use/midi.js'
-import { pitchColor } from '@use/calculations'
-
-const screen = ref()
-
 const active = ref(false)
 
 const { midi, midiAttack, midiRelease, setCC } = useMidi();
@@ -27,7 +26,7 @@ function sortNotes(notes) {
     .flex.w-full.h-full.mt-4
       .flex.flex-col.flex-1.text-center(v-for="ch in midi.channels", :key="ch.num")
         .header {{ ch.num }}
-        midi-monitor-note(
+        midi-note(
           v-for="note in sortNotes(ch.notes)", 
           :key="note.number"
           :note="note"
@@ -37,7 +36,7 @@ function sortNotes(notes) {
         )
     .flex.w-full
       .flex.flex-col.flex-1.text-center(v-for="ch in midi.channels", :key="ch.num")
-        midi-monitor-cc(
+        midi-cc(
           v-for="cc in ch.cc"
           :key="cc.number"
           :cc="cc"
@@ -45,7 +44,7 @@ function sortNotes(notes) {
         )
 </template>
 
-<style  scoped>
+<style lang="postcss"  scoped>
 .header {
   @apply p-2 m-1px font-bold bg-gray-500 bg-opacity-50;
 }

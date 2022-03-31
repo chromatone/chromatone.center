@@ -11,7 +11,7 @@ const props = defineProps({
   .uppercase.mr-1 {{ label }}
 </template>
 
-<style  scoped>
+<style lang="postcss" scoped>
 .button {
   @apply flex py-1 px-2 text-xs font-bold mr-2 shadow bg-gray-300 rounded-xl cursor-pointer select-none transition items-center
   dark_(bg-gray-800)  

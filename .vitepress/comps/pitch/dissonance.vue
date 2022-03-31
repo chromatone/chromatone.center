@@ -366,7 +366,7 @@ watch([() => freq.hz, () => mouse.pressed], (hz) => {
       ) START AUDIO
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 .pointer {
   @apply transition-all duration-100 pointer-events-none;
 }

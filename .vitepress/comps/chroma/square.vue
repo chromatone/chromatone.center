@@ -156,7 +156,7 @@ svg.select-none.min-w-8em.m-2(
 </template>
 
 
-<style scoped>
+<style lang="postcss" scoped>
 .center {
   @apply transition-all duration-200 ease-in-out;
   &:hover {

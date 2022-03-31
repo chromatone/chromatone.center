@@ -45,5 +45,5 @@ function round(value) {
   .flex(v-if="state.show.bpm") {{ round(bpm) }}BPM
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 </style>

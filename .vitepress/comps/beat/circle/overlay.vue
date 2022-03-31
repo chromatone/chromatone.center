@@ -74,5 +74,5 @@ g
     text(transform="matrix(1 0 0 1 302.5375 853.3745)", style="fill:#FFFFFF;  font-size:21.6557px;") CLICK A STEP CIRCLE TO SET ACCENT
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 </style>

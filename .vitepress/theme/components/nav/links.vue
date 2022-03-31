@@ -23,7 +23,7 @@ nav.nav-links
 
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 .nav-links {
   padding: 0.75rem 0;
   border-bottom: 1px solid var(--c-divider);

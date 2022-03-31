@@ -40,7 +40,7 @@ const sorted = computed(() => {
 
 </script>
 
-<style   scoped>
+<style lang="postcss" scoped>
 .control-row {
   @apply p-4 flex flex-wrap;
 }

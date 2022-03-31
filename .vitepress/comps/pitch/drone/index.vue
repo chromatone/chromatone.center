@@ -61,5 +61,5 @@ const intervals = reactive({
       ) {{ note }}
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 </style>

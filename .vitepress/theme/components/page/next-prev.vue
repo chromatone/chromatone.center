@@ -45,7 +45,7 @@ const colors = reactive({
       .p-2 Chromatone
 </template>
 
-<style scoped>
+<style lang="postcss" scoped>
 .next-and-prev-link {
   @apply bg-gray-100/90 dark_bg-gray-800/90 
   -webkit-backdrop-filter: blur(10px);

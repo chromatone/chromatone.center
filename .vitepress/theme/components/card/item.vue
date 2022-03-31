@@ -14,7 +14,7 @@ const theColor = computed(() => props.color);
   :title="item.lastModified",
   )
   a.container(:href="item.path" :class="{ 'pt-32': item?.cover }")
-    .cover(v-if="item.cover", :style="{ backgroundImage: 'url(/media/' + item.cover + ')' }") 
+    .cover(v-if="item?.cover", :style="{ backgroundImage: `url(${item.cover})` }") 
     .info
       .title
         .mr-2.text-2xl(v-if="item.emoji") {{ item.emoji }}

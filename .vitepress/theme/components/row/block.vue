@@ -15,7 +15,7 @@ const props = defineProps({
   }
 });
 
-const bg = computed(() => `url(/media/${props.item?.cover}`);
+const bg = computed(() => `url(${props.item?.cover}`);
 </script>
 
 

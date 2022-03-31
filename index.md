@@ -6,7 +6,7 @@ actionText: Enter
 altActionLink: /ru.html
 altActionText: Войти
 
-icon: logo/logo.svg
+icon: /media/logo/logo.svg
 ---
 
 # The international visual music language to learn and to experiment with

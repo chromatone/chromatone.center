@@ -2,7 +2,6 @@
 title: Fifth and fourth
 subtitle: Perfect, but not equivalent intervals
 date: 2021-09-08
-cover: circle-of-fifths-exp.svg
 ---
 
 ## Fifth P5

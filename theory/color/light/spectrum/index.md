@@ -38,4 +38,4 @@ Calculating the black-body curve was a major challenge in theoretical physics du
 
 <img src="./sun-spectrum.svg">
 
-<img src="./spectral-lines.svg">
+<img src="./images/spectral-lines.svg">

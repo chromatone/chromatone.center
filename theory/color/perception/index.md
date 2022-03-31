@@ -20,11 +20,11 @@ The perception of color derives from the stimulation of cone cells in the human 
 
 The human eye with normal vision has three kinds of cone cells that sense light, having peaks of spectral sensitivity in short ("S", 420 nm – 440 nm), middle ("M", 530 nm – 540 nm), and long ("L", 560 nm – 580 nm) wavelengths. These cone cells underlie human color perception in conditions of medium and high brightness; in very dim light color vision diminishes, and the low-brightness, monochromatic "night vision" receptors, denominated "rod cells", become effective. Thus, three parameters corresponding to levels of stimulus of the three kinds of cone cells, in principle describe any human color sensation. Weighting a total light power spectrum by the individual spectral sensitivities of the three kinds of cone cells renders three effective values of stimulus; these three values compose a tristimulus specification of the objective color of the light spectrum. The three parameters, denoted "S", "M", and "L", are indicated using a 3-dimensional space denominated the "LMS color space", which is one of many color spaces devised to quantify human color vision.
 
-![](./images/color-sensitivity.jpg)
+![](./color-sensitivity.jpg)
 
 ![](./images/Cone-fundamentals-with-srgb-spectrum.svg)
 
-> <img src="./cie-1931.svg">
+> <img src="./images/cie-1931.svg">
 >
 > The CIE XYZ standard observer color matching functions
 

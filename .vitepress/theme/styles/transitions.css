@@ -102,3 +102,28 @@
 .fade-enter-from {
   opacity: 0;
 }
+
+
+.fall {
+  background-color: hsla(0,0%,80%,0.2);
+}
+
+.fall-enter-active {
+  transition: all 0.9s ease-out;
+}
+.fall-leave-active {
+  transform: scale(0.95);
+}
+
+.fall-leave-to {
+  transform: scale(0.95);
+}
+
+.fall-enter-from {
+  background-color: white;
+  transform: translatey(-10px);
+}
+
+.dark .fall-enter-from {
+  background-color: black;
+}

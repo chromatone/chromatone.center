@@ -1,37 +1,44 @@
-import { PolySynth, MonoSynth, start, now, Midi } from 'tone'
+import { PolySynth, MonoSynth, start, now, Midi, AutoPanner, Reverb, Transport } from 'tone'
 import { midi } from './midi'
 import { useStorage } from '@vueuse/core'
 
-const synth = {}
+export const quantizeModes = ['+0', '@16n', '@32n', '@8n']
 
-export const synthOptions = reactive({
-  midi: useStorage('midi-synth', false),
-  initiated: false,
-  params: {
+export const synth = {
+  state: reactive({
+    midi: useStorage('synth-midi', true),
+    initiated: false,
+    mute: false,
+    quantize: useStorage('synth-quantize', quantizeModes[0]),
+  }),
+  params: reactive({
     maxPolyphony: 50,
     oscillator: {
       type: useStorage('synth-osc', 'sawtooth8')
     },
     volume: -10,
     envelope: {
-      attack: 0.02,
-      decay: 2,
-      sustain: 1,
-      release: 4,
+      attack: 0.009,
+      decay: 0.3,
+      sustain: 0.4,
+      release: 0.8,
     },
     filterEnvelope: {
-      attack: 0.1,
-      decay: 2,
-      sustain: 1,
-      release: 4,
-    },
-  }
-
-})
+      attack: 0.001,
+      decay: 0.7,
+      sustain: 0.5,
+      release: 1,
+      baseFrequency: 60,
+      octaves: 5
+    }
+  })
+}
 
 export function useSynth() {
-  if (!synthOptions.initiated) {
-    watch(() => synthOptions.params, params => {
+  if (!synth.state.initiated) {
+    Transport.start()
+
+    watch(synth.params, params => {
       if (synth.poly) {
         synth.poly.set(params)
       }
@@ -39,7 +46,7 @@ export function useSynth() {
 
 
     watch(() => midi.note, note => {
-      if (!synthOptions.midi) return
+      if (!synth.state.midi) return
       if (note.velocity > 0) {
         synthAttack(Midi(note.number).toFrequency(), note.velocity / 127)
       } else {
@@ -51,33 +58,39 @@ export function useSynth() {
       if (!play) synthReleaseAll()
     })
   }
-  return { init, synth, synthOptions, synthOnce, synthAttack, synthRelease, synthReleaseAll }
+  return { init, synth, synthOnce, synthAttack, synthRelease, synthReleaseAll }
 }
 
 export function init() {
   start()
   if (synth?.poly) return
-  synth.poly = new PolySynth(MonoSynth, synthOptions.params).toDestination()
-  synthOptions.initiated = true
+  synth.pan = new AutoPanner('4n').toDestination()
+  synth.reverb = new Reverb(2.5).connect(synth.pan)
+  synth.poly = new PolySynth(MonoSynth, synth.params).connect(synth.pan)
+
+  synth.reverb.wet.set(0.7)
+  synth.poly.connect(synth.reverb)
+  synth.poly.connect(synth.pan)
+  synth.pan.start()
 }
 
 export function synthOnce(note = 'A4', duration = '8n', time) {
-  if (!synth.poly || synthOptions.mute) return init()
-  synth.poly.triggerAttackRelease(note, duration, time)
+  if (!synth.poly || synth.state.mute) return init()
+  synth.poly.triggerAttackRelease(note, duration, synth.state.quantize)
 }
 
 export function synthAttack(note, velocity) {
-  if (!synth.poly || synthOptions.mute) return init()
-  synth.poly.triggerAttack(note, now(), velocity)
+  if (!synth.poly || synth.state.mute) return init()
+  synth.poly.triggerAttack(note, synth.state.quantize, velocity)
 }
 
 export function synthRelease(note) {
-  if (!synth.poly || synthOptions.mute) return init()
-  synth.poly.triggerRelease(note)
+  if (!synth.poly || synth.state.mute) return init()
+  synth.poly.triggerRelease(note, synth.state.quantize)
 }
 
 export function synthReleaseAll() {
-  if (!synth.poly || synthOptions.mute) return init()
+  if (!synth.poly || synth.state.mute) return init()
   synth.poly.releaseAll()
 }
 

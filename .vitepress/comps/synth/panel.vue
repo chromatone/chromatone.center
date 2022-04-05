@@ -1,5 +1,5 @@
 <script setup>
-import { useSynth } from '@use/synth'
+import { useSynth, quantizeModes } from '@use/synth'
 import { onClickOutside } from '@vueuse/core'
 
 const open = ref(false);
@@ -15,30 +15,41 @@ onClickOutside(panel, (ev) => {
   open.value = false
 })
 
-const { synthOptions, synthOnce, init } = useSynth();
+const { synth, synthOnce, init } = useSynth();
+
+let count = 0
+
+function cycle() {
+  count++
+  synth.state.quantize = quantizeModes[count % quantizeModes.length]
+}
 </script>
 
 <template lang="pug">
 .btn.w-10
   button.p-2.text-xl(
-    @click.stop.prevent="open = true; !synthOptions.initiated && init()"
+    @click.stop.prevent="open = true; !synth.state.initiated && init()"
     aria-label="Toggle synth panel"
     )
     la-wave-square
   transition(name="panel")
     .panel(v-if="open" ref="panel")
       button.text-button.mute.p-2.flex.flex-col.items-center(
-        :class="{ active: synthOptions.initiated }"
+        :class="{ active: synth.state.initiated }"
         @click="synthOnce()" 
         aria-label="Test synth sound"
         )
         la-wave-square.text-4xl
-      synth-oscillators.flex-1(v-model="synthOptions.params.oscillator.type")
+      synth-oscillators.flex-1(v-model="synth.params.oscillator.type")
+      button.text-button(
+        @click="cycle"
+        aria-label="Synth panel"
+        ) Quantize {{ synth.state.quantize }}
       .flex-1
       button.text-button.border(
-        @click="synthOptions.midi = !synthOptions.midi" 
+        @click="synth.state.midi = !synth.state.midi" 
         aria-label="Play synth on MIDI input"
-        :class="{ active: synthOptions.midi }"
+        :class="{ active: synth.state.midi }"
         )
         mdi-midi-input.text-3xl
 </template>

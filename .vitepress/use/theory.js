@@ -25,7 +25,7 @@ export const intervals = ['1P', '2m', '2M', '3m', '3M', '4P', 'TT', '5P', '6m', 
 
 export const noteNames = []
 
-const naturals = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#',]
+const naturals = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#']
 const sharps = ['G##', 'A#', 'A##', 'B#', 'C#', 'C##', 'D#', 'D##', 'E#', 'F#', 'F##', 'G#']
 const flats = ['Bbb', 'Bb', 'Cb', 'Dbb', 'Db', 'Ebb', 'Eb', 'Fb', 'Gbb', 'Gb', 'Abb', 'Ab']
 

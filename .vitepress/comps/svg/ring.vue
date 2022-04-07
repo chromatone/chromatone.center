@@ -1,49 +1,16 @@
 <script setup>
 const props = defineProps({
-  fill: {
-    type: String,
-    default: 'gray'
-  },
-  stroke: {
-    type: String,
-    default: 'none'
-  },
-  sWidth: {
-    type: Number,
-    default: 0
-  },
-  cx: {
-    type: Number,
-    default: 500
-  },
-  cy: {
-    type: Number,
-    default: 500
-  },
-  radius: {
-    type: Number,
-    default: 450
-  },
-  from: {
-    type: Number,
-    default: 0
-  },
-  to: {
-    type: Number,
-    default: 360
-  },
-  thickness: {
-    type: Number,
-    default: 100
-  },
-  op: {
-    type: Number,
-    default: 1
-  },
-  round: {
-    type: Boolean,
-    default: false,
-  }
+  fill: { type: String, default: 'gray' },
+  stroke: { type: String, default: 'none' },
+  sWidth: { type: Number, default: 0 },
+  cx: { type: Number, default: 500 },
+  cy: { type: Number, default: 500 },
+  radius: { type: Number, default: 450 },
+  from: { type: Number, default: 0 },
+  to: { type: Number, default: 360 },
+  thickness: { type: Number, default: 100 },
+  op: { type: Number, default: 1 },
+  round: { type: Boolean, default: false, }
 });
 
 

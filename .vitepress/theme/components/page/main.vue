@@ -9,7 +9,7 @@ main
   page-header
   transition(name="fade")
     .content-container(:key="route.path")
-      content.content.flex-1
+      content.content.flex-1.z-10
       shop-message
       row-list.mb-32
   nav-next-prev

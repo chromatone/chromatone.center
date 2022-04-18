@@ -38,11 +38,11 @@ const { init, tuner, chain } = useTuner();
       style="cursor:pointer"
       v-for="(amount, i) in rotateArray(tuner.chroma, -3)", 
       :key="i",
+      :transform="`translate(${getCircleCoord(i).x},${getCircleCoord(i).y})`"
     )
       circle.note(
         style="transition: all 300ms ease-in-out;transform-box: fill-box; transform-origin: center center;"
-        :cx="getCircleCoord(i).x",
-        :cy="getCircleCoord(i).y",
+
         :r="2",
         :style="{ transform: `scale(${0.5 + 5 * amount})` }"
         :fill="pitchColor(i, 3, amount)",
@@ -54,13 +54,11 @@ const { init, tuner, chain } = useTuner();
         font-size="3px"
         text-anchor="middle",
         dominant-baseline="middle"
-        :x="getCircleCoord(i).x",
-        :y="getCircleCoord(i).y + 0.25",
-      ) {{ notes[i].name }} 
+      ) {{ notes[i] }} 
 </template>
 
 <style lang="postcss" scoped>
 .note {
-  @apply mix-blend-screen;
+  /* @apply mix-blend-screen; */
 }
 </style>

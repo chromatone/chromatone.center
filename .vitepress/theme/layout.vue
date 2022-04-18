@@ -18,6 +18,8 @@ watch(route, () => {
 
 <template lang="pug">
 .theme
+  state-dark.fixed.bottom-18.right-14px.z-1000
+  nav-scroll.fixed.bottom-8.right-24px.z-1000
   nav-bar(@toggle="openSideBar = !openSideBar")
   .main
     transition(name="fade")

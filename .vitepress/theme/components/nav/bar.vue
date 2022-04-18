@@ -7,7 +7,7 @@ defineEmits(['toggle']);
 </script>
 
 <template lang="pug">
-header.nav-bar
+header.nav-bar.relative
   img.top-4.fixed.z-1000.cursor-pointer.mr-3.h-30px(v-if="theme.icon", :src="theme.icon", alt="Logo" @click="$emit('toggle')")
   .nav-bar-title 
 
@@ -20,20 +20,13 @@ header.nav-bar
   client-only
     synth-panel
     state-audio
-  state-dark.fixed.bottom-18.right-14px
-  nav-scroll.fixed.bottom-8.right-24px
   nav-search.ml-1
   nav-toggle-sidebar(@toggle="$emit('toggle')")
 </template>
 
 <style lang="postcss" scoped>
 .nav-bar {
-  @apply lg_(sticky top-0) inset-x-0 z-40
-    flex space-between align-center select-none
-    border-b-1px border-$c-divider
-    py-0.7rem px-4 z-40
-    h-$header-height bg-$c-bg
-    md_px-5 lg_px-6;
+  @apply lg_(sticky top-0) inset-x-0 z-4000 flex select-none border-b-1px border-$c-divider py-0.7rem px-4 z-40 h-$header-height bg-$c-bg md_px-5 lg_px-6;
 }
 
 .nav-bar.root {
@@ -41,9 +34,7 @@ header.nav-bar
 }
 
 .nav-bar-title {
-  @apply text-xl md_text-1.3rem font-semibold text-$c-text
-    inline-flex items-center whitespace-nowrap
-    hover_no-underline;
+  @apply text-xl md_text-1.3rem font-semibold text-$c-text inline-flex items-center whitespace-nowrap hover_no-underline;
 }
 
 .title {

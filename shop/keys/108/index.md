@@ -4,7 +4,8 @@ subtitle: A big set of universal circle colored and labeled note stickers
 
 product:
   price: $12
-  link: https://ko-fi.com/s/d7bdca5dd7
+  link2: https://ko-fi.com/s/d7bdca5dd7
+  link: https://airtable.com/shrm1flZTa0s9LFd6
 cover: list.jpg
 date: 2021-08-01
 ---

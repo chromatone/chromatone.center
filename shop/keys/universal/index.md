@@ -3,8 +3,8 @@ title: Universal instrument stickers
 subtitle: 144 tiny color accents
 product:
   price: $10
-  link: https://ko-fi.com/s/a2d14d2c25
-
+  link2: https://ko-fi.com/s/a2d14d2c25
+  link: https://airtable.com/shrm1flZTa0s9LFd6
 cover: cover-uni.jpg
 date: 2021-08-20
 ---

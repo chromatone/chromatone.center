@@ -12,3 +12,5 @@ icon: /media/logo/logo.svg
 # The international visual music language to learn and to experiment with
 
 Chromatone is an ongoing research and experiment to induce a synchronised artificial synesthesia for personal music learning and exploration along with collective practice and performance. Imagine if once we agree on a certain way to connect notes and colors? It can empower our music perception with vision, the main modality for most of humans. Let's try to do it now!
+
+We're building a visual [music theory study](./theory/index.md), that may help beginners learn complex music concepts in color. [Interactive web-apps](./apps/index.md) expand the 

@@ -13,3 +13,5 @@ date: 2021-09-06
 <img src="./op-12.jpg">
 
 <img src="./op-1.jpg">
+
+[Matte laminated](./matte/index.md) stickers are more durable under heavy practice.

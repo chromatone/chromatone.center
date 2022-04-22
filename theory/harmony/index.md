@@ -4,6 +4,12 @@ subtitle: Chord progressions and accompaniment
 date: 2021-08-18
 ---
 
+What is [Harmony](./study/index.md)? How the [Chord Progressions](./progressions/index.md) are built from individual chords? 
+
+May two or more scales [Sound nice simultaneously](./polytonality/index.md)? Or how to [Transition from one key to another](./modulation/index.md)? Let's explore all the possible [Harmonic movements](./movement/index.md) in different frames like [Chord-scale system](./chord-scale/index.md) or the [Chord and nonchord tones approach](./non-chord/index.md)
+
+## Harmonic rhythm
+
 In music theory, harmonic rhythm, also known as harmonic tempo, is the rate at which the chords change (or progress) in a musical composition, in relation to the rate of notes. Thus a passage in common time with a stream of sixteenth notes and chord changes every measure has a slow harmonic rhythm and a fast surface or "musical" rhythm (16 notes per chord change), while a piece with a trickle of half notes and chord changes twice a measure has a fast harmonic rhythm and a slow surface rhythm (1 note per chord change). Harmonic rhythm may be described as strong or weak.
 
 According to William Russo harmonic rhythm is, "the duration of each different chord...in a succession of chords." According to Joseph Swain (2002 p. 4) harmonic rhythm, "is simply that perception of rhythm that depends on changes in aspects of harmony." According to Walter Piston (1944), "the rhythmic life contributed to music by means of the underlying changes of harmony. The pattern of the harmonic rhythm of a given piece of music, derived by noting the root changes as they occur, reveals important and distinctive features affecting the style and texture."

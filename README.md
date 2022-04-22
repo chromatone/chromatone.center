@@ -2,7 +2,7 @@
 
 [![](https://chromatone.center/media/logo/logo.svg)](https://chromatone.center/)
 
-The visual music research center
+The visual music [research center](./index.md)
 
 ## Theory
 

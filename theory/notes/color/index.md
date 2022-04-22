@@ -28,12 +28,12 @@ Numbers are already widely used in music - they indicate rhythmic meters, interv
 
 ## Colorful piano rolls
 
-Try the [MIDI-roll](/apps/midi/roll/) to look at incoming MIDI visualization.
+Try the [MIDI-roll](../../../apps/midi/roll/index.md) to look at incoming MIDI visualization.
 
-Try the [Pitch-roll](/apps/pitch/roll/) to see the main note graph of incoming audio on an endless roll.
+Try the [Pitch-roll](../../../apps/pitch/roll/index.md) to see the main note graph of incoming audio on an endless roll.
 
 ## Colorful spectrogram
 
 Adding the colors to a regular spectrogram makes you see much more about the musical contents of any sound. You can easily see the fundamental pitch and the colors of all the main overtones for simple sounds.
 
-Try the [Colorful spectrogram](/apps/pitch/spectrogram/) online now.
+Try the [Colorful spectrogram](../../../apps/pitch/spectrogram/index.md) online now.

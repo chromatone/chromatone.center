@@ -83,3 +83,5 @@ Whole note = 2 half notes = 4 quarter notes = 8 eighth notes = 16 sixteenth note
 ### Alexander Scriabin - Piano Concerto in F sharp minor, Op. 20
 
 <youtube-embed video="F734PyD3NAw" />
+
+[Sight reading](./sight-reading/index.md)

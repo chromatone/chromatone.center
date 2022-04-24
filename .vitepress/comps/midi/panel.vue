@@ -15,14 +15,20 @@ onKeyStroke(' ', ev => {
   ev.preventDefault()
   midi.playing = !midi.playing
 });
+
+var isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
 </script>
 
 <template lang="pug">
 .m-auto.layer.w-full.z-40
-  .p-2.border.border-red-500.text-red-500(v-if="!midi.enabled") MIDI is not available. Use a 
-    a.font-normal.underline(href="https://caniuse.com/?search=midi" target="_blank") compatible browser 
+  .p-2.border.border-red-500.text-red-500.inline-flex.gap-2.w-full(v-if="!midi.enabled") MIDI is not available. Please 
+    template(v-if="isFirefox")
+      a.font-normal.underline(href="/site_permissions_for_chromatonecenter-1.0-an+fx.xpi") Install site permission (recent Firefox)
+      span or
+    a.font-normal.underline(href="https://caniuse.com/?search=midi" target="_blank") use a compatible browser 
     span or 
     a.font-normal.underline(href="https://apps.apple.com/ru/app/web-midi-browser/id953846217" target="_blank") Web MIDI Browser on iOS
+
   .flex.items-center.justify-center.flex-wrap.py-2.m-auto(v-else)
     .flex.m-2
       a.font-normal.p-2.border.border-green-500.text-green-500.select-none.rounded-lg(href="/explore/monitor/") 
@@ -74,6 +80,7 @@ input.ch {
 .button {
   @apply p-2 m-2 border flex items-center rounded cursor-pointer select-none;
 }
+
 .button.active {
   @apply opacity-100;
 }

@@ -1,7 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@iconify/json': ^2.1.31
+  '@iconify/json': ^2.1.32
   '@tonaljs/tonal': ^4.6.5
   '@tonejs/midi': ^2.0.28
   '@vueuse/core': ^8.3.1
@@ -20,7 +20,7 @@ specifiers:
   paper: ^0.12.15
   patch-vue-directive-ssr: ^0.0.1
   pug: 3.0.2
-  tone: ^14.8.38
+  tone: ^14.8.39
   unplugin-auto-import: ^0.7.1
   unplugin-icons: ^0.14.1
   unplugin-vue-components: ^0.19.3
@@ -51,13 +51,13 @@ dependencies:
   midi-writer-js: 2.1.0
   ol: 6.14.1
   paper: 0.12.15
-  tone: 14.8.38
+  tone: 14.8.39
   vitepress-pages: 0.8.5_vite-plugin-pages@0.23.0
   vue: 3.2.33
   webmidi: 3.0.19
 
 devDependencies:
-  '@iconify/json': 2.1.31
+  '@iconify/json': 2.1.32
   markdown-it-external-links: 0.0.6
   patch-vue-directive-ssr: 0.0.1
   pug: 3.0.2
@@ -260,8 +260,8 @@ packages:
       - '@algolia/client-search'
     dev: true
 
-  /@iconify/json/2.1.31:
-    resolution: {integrity: sha512-peG8fjKAOe8w9xMrYo0kkDdF9AcDPxz89P516TTsC3EK2MVTaRuvuXEgMG3trqfU0Hur/n6ZZ/LXGE+/qS4aFg==}
+  /@iconify/json/2.1.32:
+    resolution: {integrity: sha512-mq+IIxkMSds9ad+QXKSArAxEa3AxnigFgr0xfmyPGhRyw63hpUqwOtnzMgb92VzhimsdItO4ihyJ0HqBgPy9VQ==}
     dependencies:
       '@iconify/types': 1.1.0
       pathe: 0.2.0
@@ -2985,8 +2985,8 @@ packages:
       note-parser: 2.0.1
     dev: false
 
-  /tone/14.8.38:
-    resolution: {integrity: sha512-6u1xI/dMirxhFmCQYboEymz4A3dCZIMqj1a15cqVSFq1Q78/sV12emM/rY5LkK1u3VMnzT+9iX/hVMkJzNtrpA==}
+  /tone/14.8.39:
+    resolution: {integrity: sha512-LIpX6AuuzY0HYV1WsdtYoTY0vN9c51znm6RF97ezy59J6l16Baechy83WM3vXbavs+1CYWmyOWKtiFm8pi+azg==}
     dependencies:
       standardized-audio-context: 25.3.16
       tslib: 2.3.1

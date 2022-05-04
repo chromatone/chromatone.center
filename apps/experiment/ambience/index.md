@@ -8,6 +8,8 @@ date: 2022-04-28
 import AmbientDrone from './ambience.vue'
 </script>
 
+<client-only>
 <ambient-drone />
+</client-only>
 
 ### Work in progress

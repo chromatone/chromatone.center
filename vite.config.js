@@ -24,7 +24,7 @@ export default defineConfig({
       imports: [
         'vue',
         {
-          '@vueuse/core': ['useStorage', 'useClamp'],
+          '@vueuse/core': ['useStorage', 'useClamp', 'useRafFn'],
         },
       ],
     }),

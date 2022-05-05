@@ -18,7 +18,7 @@ import { notes } from '@use/theory'
 
 const options = useStorage("ambient-synth-options", {
   oscillator: {
-    type: "sine",
+    type: "sawtooth",
   },
   envelope: {
     attack: 1,
@@ -32,7 +32,7 @@ const options = useStorage("ambient-synth-options", {
 
 const active = ref(false)
 const note = ref(0)
-const octave = ref(4)
+const octave = ref(2)
 
 const gain = new Gain(options.value.volume).toDestination()
 const filter = new Filter({ type: 'lowpass', frequency: 1500, Q: 0 }).connect(gain)
@@ -61,16 +61,15 @@ watch(note, n => {
 
 <template lang='pug'>
 .flex.flex-col.gap-4
-  .flex.items-center
-    .font-bold AM
+  .flex.items-center.flex-wrap
+    .font-bold Bass
     button.p-2(@click="active = !active")
       la-play(v-if="!active")
       la-pause(v-else)
     .flex.flex-wrap.gap-2
-      button.p-1(v-for="(n, i) in notes" :key="n" @click="note = i" :class="{ active: i == note }") {{ n }}
+      button.p-1.text-xs(v-for="(n, i) in notes" :key="n" @click="note = i" :class="{ active: i == note }") {{ n }}
   .flex.flex-wrap.gap-4
 
-    clamped-noise(title="Harmonicity" instrument="FM" :min="0.1" :max="8" @random="synth.harmonicity.rampTo($event)")
     clamped-noise(title="Low pass" instrument="FM"  :min="50" :max="10000" @random="filter.frequency.rampTo($event)")
     clamped-noise(title="Pan" instrument="FM"  :min="-1" @random="panner.pan.rampTo($event)")
     clamped-noise(title="Volume" instrument="FM"  @random="gain.gain.rampTo($event)")

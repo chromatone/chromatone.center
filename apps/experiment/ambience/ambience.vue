@@ -2,13 +2,15 @@
 import Drone from './layers/drone.vue';
 import Noise from './layers/noise.vue';
 import arp from './layers/arp.vue';
+import SimplexPaper from './simplexPaper.vue';
 </script>
 
 <template lang='pug'>
-.flex.flex-col.gap-4
-  noise.border-1.p-2.rounded-lg
-  drone.border-1.p-2.rounded-lg
-  arp.border-1.p-2.rounded-lg
+.flex.flex-col.gap-4.items-center
+  simplex-paper
+  noise.border-1.p-2.rounded-xl.w-full.border-current
+  drone.border-1.p-2.rounded-xl.w-full.border-current
+  arp.border-1.p-2.rounded-xl.w-full.border-current
 </template>
 
 <style lang="postcss" scoped>

@@ -32,26 +32,27 @@ const octave = ref(4)
 
 const gain = new Gain(options.value.volume).toDestination()
 const filter = new Filter({ type: 'lowpass', frequency: 1500, Q: 0 }).connect(gain)
-const reverb = new Reverb(4).connect(filter)
-const delay = new FeedbackDelay({ delayTime: '8t', feedback: 0.6 }).connect(reverb)
+const reverb = new Reverb(6).connect(filter)
+const delay = new FeedbackDelay({ delayTime: '4t', feedback: 0.6 }).connect(reverb)
 const panner = new Panner(0).connect(delay)
 const synth = new PluckSynth({
   attackNoise: 2,
   resonance: 0.85,
+  volume: 10
 }).connect(panner)
 
 const loop = new Pattern({
   callback(time, value) {
-    synth.triggerAttackRelease(value, '8n', time)
+    synth.triggerAttackRelease(value + octave.value, '8n', time)
   },
-  values: [notes[note.value] + octave.value, notes[(note.value + 7) % 12] + octave.value, notes[note.value] + (octave.value + 1)],
+  values: [notes[note.value], notes[(note.value + 7) % 12]],
   pattern: 'random',
   interval: '8n',
   humanize: true,
 })
 
 watch(note, n => {
-  loop.values = [notes[n] + octave.value, notes[(n + 7) % 12] + octave.value, notes[n] + (octave.value + 1)]
+  loop.values = [notes[n], notes[(n + 7) % 12]]
 })
 
 watch(active, a => {
@@ -66,19 +67,39 @@ watch(active, a => {
 
 <template lang='pug'>
 .flex.flex-col.gap-4
-  .flex.items-center
+  .flex.items-center.flex-wrap
     .font-bold Pluck
     button.p-2(@click="active = !active")
       la-play(v-if="!active")
       la-pause(v-else)
     .flex.flex-wrap.gap-2
-      button.p-1(v-for="(n, i) in notes" :key="n" @click="note = i" :class="{ active: i == note }") {{ n }}
+      button.p-1.text-xs(v-for="(n, i) in notes" :key="n" @click="note = i" :class="{ active: i == note }") {{ n }}
   .flex.flex-wrap.gap-4
 
-    clamped-noise(title="Low pass" instrument="Arp" :min="50" :max="10000" @random="filter.frequency.rampTo($event)")
-    clamped-noise(title="Probability" instrument="Arp" @random="loop.probability = $event")
-    clamped-noise(title="Pan" instrument="Arp" :min="-1" @random="panner.pan.rampTo($event)")
-    clamped-noise(title="Volume" instrument="Arp" @random="gain.gain.rampTo($event)")
+
+    clamped-noise(
+      title="Octave" instrument="Arp" 
+      :min="2" :max="6"
+      @random="octave = Math.round($event)"
+      )
+    clamped-noise(
+      title="Probability" instrument="Arp" 
+      @random="loop.probability = $event"
+      )
+    clamped-noise(
+      title="Low pass" instrument="Arp" 
+      :min="50" :max="10000" 
+      @random="filter.frequency.rampTo($event)"
+      )
+    clamped-noise(
+      title="Pan" instrument="Arp" 
+      :min="-1" 
+      @random="panner.pan.rampTo($event)"
+      )
+    clamped-noise(
+      title="Volume" instrument="Arp" 
+      @random="gain.gain.rampTo($event)"
+      )
 
 </template>
 

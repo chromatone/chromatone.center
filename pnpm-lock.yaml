@@ -21,6 +21,7 @@ specifiers:
   patch-vue-directive-ssr: ^0.0.1
   pug: 3.0.2
   simplex-noise: ^3.0.1
+  thousands-counter: ^2.1.1
   tone: ^14.8.39
   unplugin-auto-import: ^0.7.1
   unplugin-icons: ^0.14.1
@@ -53,6 +54,7 @@ dependencies:
   ol: 6.14.1
   paper: 0.12.15
   simplex-noise: 3.0.1
+  thousands-counter: 2.1.1
   tone: 14.8.39
   vitepress-pages: 0.8.5_vite-plugin-pages@0.23.0
   vue: 3.2.33
@@ -2956,6 +2958,10 @@ packages:
       fs-constants: 1.0.0
       inherits: 2.0.4
       readable-stream: 3.6.0
+    dev: false
+
+  /thousands-counter/2.1.1:
+    resolution: {integrity: sha512-yUesewbf9UBHi7C7fhm3VrPD1i2S7Y4PikgKW2JblgTGAEF1hvcBLzKiahlnkMoNbyMPHzGns5Khj2Td3sT3PA==}
     dev: false
 
   /time-stamp/1.1.0:

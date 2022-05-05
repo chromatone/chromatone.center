@@ -39,7 +39,8 @@
     "vitepress-pages": "^0.8.5",
     "vue": "^3.2.33",
     "webmidi": "^3.0.19",
-    "simplex-noise": "^3.0.1"
+    "simplex-noise": "^3.0.1",
+    "thousands-counter": "^2.1.1"
   },
   "devDependencies": {
     "@iconify/json": "^2.1.32",

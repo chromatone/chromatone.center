@@ -36,8 +36,6 @@ const bitCrusher = new BitCrusher(4).connect(reverb)
 const panner = new Panner(0).connect(bitCrusher)
 const synth = new NoiseSynth(options.value).connect(panner)
 
-
-
 // watch(volRandom, v => gain.gain.rampTo(v))
 
 watch(active, a => {
@@ -58,11 +56,25 @@ watch(active, a => {
       la-play(v-if="!active")
       la-pause(v-else)
   .flex.flex-wrap.gap-4
-
-    clamped-noise(title="Bit crusher" instrument="Noise"  :min="2" :max="8" @random="bitCrusher.bits.rampTo($event)")
-    clamped-noise(title="Low pass" instrument="Noise" :min="50" :max="10000" @random="filter.frequency.rampTo($event)")
-    clamped-noise(title="Pan" instrument="Noise" :min="-1" @random="panner.pan.rampTo($event)")
-    clamped-noise(title="Volume" instrument="Noise" @random="gain.gain.rampTo($event)")
+    clamped-noise(
+      title="Bit crusher" instrument="Noise"  
+      :min="2" :max="8" 
+      @random="bitCrusher.bits.rampTo($event)"
+      )
+    clamped-noise(
+      title="Low pass" instrument="Noise" 
+      :min="50" :max="10000" 
+      @random="filter.frequency.rampTo($event)"
+      )
+    clamped-noise(
+      title="Pan" instrument="Noise" 
+      :min="-1" 
+      @random="panner.pan.rampTo($event)"
+      )
+    clamped-noise(
+      title="Volume" instrument="Noise" 
+      @random="gain.gain.rampTo($event)"
+      )
 </template>
 
 <style lang="postcss" scoped>

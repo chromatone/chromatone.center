@@ -1,5 +1,5 @@
 <script setup>
-import { simplex, tracks, zoom } from './simplex';
+import { simplex, tracks, zoom } from '../simplex';
 
 
 import paper from "paper";

@@ -2,7 +2,7 @@
 import Drone from './layers/drone.vue';
 import Noise from './layers/noise.vue';
 import arp from './layers/arp.vue';
-import SimplexPaper from './simplexPaper.vue';
+import SimplexPaper from './paper/simplexPaper.vue';
 </script>
 
 <template lang='pug'>

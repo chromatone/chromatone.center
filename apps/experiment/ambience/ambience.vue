@@ -6,11 +6,11 @@ import SimplexPaper from './paper/simplexPaper.vue';
 </script>
 
 <template lang='pug'>
-.flex.flex-col.gap-4.items-center
+.flex.flex-col.gap-6.items-center
   simplex-paper
-  noise.border-1.p-2.rounded-xl.w-full.border-current
-  drone.border-1.p-2.rounded-xl.w-full.border-current
-  arp.border-1.p-2.rounded-xl.w-full.border-current
+  noise.p-2.rounded-xl.w-full.shadow-xl.bg-light-800.dark_bg-dark-200
+  drone.p-2.rounded-xl.w-full.shadow-xl.bg-light-800.dark_bg-dark-200
+  arp.p-2.rounded-xl.w-full.shadow-xl.bg-light-800.dark_bg-dark-200
 </template>
 
 <style lang="postcss" scoped>

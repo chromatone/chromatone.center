@@ -40,8 +40,6 @@ const reverb = new Reverb(4).connect(filter)
 const panner = new Panner(0).connect(reverb)
 const synth = new FMSynth(options.value).connect(panner)
 
-
-
 const currentNote = useStorage('ambient-synth-note', 0)
 
 watch(active, a => {

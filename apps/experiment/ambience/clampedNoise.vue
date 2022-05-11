@@ -1,4 +1,6 @@
 <script setup>
+import CircleKnob from './knob.vue'
+
 import { simplex, useSimplex } from './simplex';
 import tc from 'thousands-counter';
 
@@ -6,7 +8,7 @@ const props = defineProps({
   instrument: { type: String, default: 'inst' },
   title: { type: String, default: 'random-value' },
   minSpeed: { type: Number, default: 0.001 },
-  maxSpeed: { type: Number, default: 100 },
+  maxSpeed: { type: Number, default: 1000 },
   min: { type: Number, default: 0 },
   max: { type: Number, default: 1 },
   radius: { type: Number, default: 1 },
@@ -41,14 +43,6 @@ const value = computed(() => randomValue.value * (props.max - props.min) + props
 
 watch(value, v => emit('random', v))
 
-function dragSpeed(drag) {
-  const diff = drag.delta[0] - drag.delta[1]
-  speed.value += diff
-}
-function dragRadius(drag) {
-  const diff = (drag.delta[0] - drag.delta[1]) / 10
-  radius.value += diff
-}
 
 function dragMin(drag) {
   const diff = (drag.delta[0] - drag.delta[1]) / 1000
@@ -63,19 +57,12 @@ function dragMax(drag) {
 </script>
 
 <template lang='pug'>
-.flex-1.border-1.border-current.relative.w-full.cursor-pointer.min-w-40.rounded-lg.select-none.overflow-hidden
-  .flex.p-1.gap-0
-    .p-0 {{ title }} 
-    .flex-1.relative.border-1.border-current.rounded-full.overflow-hidden.text-xs.m-1.cursor-pointer(v-drag="dragRadius")
-      //- .absolute.text-xs.right-2.-top-2px Radius
-      .absolute.px-2.border-current.border-r-2.left-0.mix-blend-difference.text-right.bottom-0.pb-1px.bg-dark-50.bg-opacity-10(
-      :style="{ width: radius / 2.5 + '%' }"
-      ) R{{ radius.toFixed() }}
-    .flex-1.relative.border-1.border-current.rounded-full.overflow-hidden.text-xs.m-1.cursor-pointer(v-drag="dragSpeed" :drag-options="{ preventWindowScrollY: true }")
-      //- .absolute.text-xs.right-2.-top-2px Speed
-      .absolute.px-2.border-current.border-r-2.left-0.mix-blend-difference.text-right.bottom-0.pb-1px.bg-dark-50.bg-opacity-10(
-      :style="{ width: speed / 40 + '%' }"
-      ) S{{ speed.toFixed() }}
+.flex-1.bg-light-400.dark_bg-dark-400.shadow.relative.w-full.cursor-pointer.min-w-25.rounded-lg.select-none.overflow-hidden
+  .flex.flex-col.p-1.gap-0
+    .px-1.pb-1 {{ title }}
+    .flex
+      circle-knob(v-model="radius" :max="250" :min="10")
+      circle-knob(v-model="speed" :max="maxSpeed" :min="minSpeed" title="S" :step="1000")
   .flex.relative.border-t-1.border-current
     .flex-1.h-6.cursor-pointer(v-drag="dragMin" :drag-options="{ preventWindowScrollY: true }")
     .flex-1.h-6.cursor-pointer(v-drag="dragMax" :drag-options="{ preventWindowScrollY: true }")

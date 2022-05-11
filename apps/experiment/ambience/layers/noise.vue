@@ -68,7 +68,7 @@ watch(active, a => {
       )
     clamped-noise(
       title="Pan" instrument="Noise" 
-      :min="-1" 
+      :min="-1" :max="1"
       @random="panner.pan.rampTo($event)"
       )
     clamped-noise(

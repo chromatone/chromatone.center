@@ -1,6 +1,7 @@
 <script setup>
 import { useSynth, quantizeModes } from '@use/synth'
 import { onClickOutside } from '@vueuse/core'
+import { midi } from '@use/midi'
 
 const open = ref(false);
 
@@ -46,6 +47,12 @@ function cycle() {
         aria-label="Synth panel"
         ) Quantize {{ synth.state.quantize }}
       .flex-1
+      button.text-button.border(
+        @click="midi.keyboard = !midi.keyboard" 
+        aria-label="Play MIDI with PC keyboard"
+        :class="{ active: midi.keyboard }"
+        )
+        tabler-keyboard.text-3xl
       button.text-button.border(
         @click="synth.state.midi = !synth.state.midi" 
         aria-label="Play synth on MIDI input"

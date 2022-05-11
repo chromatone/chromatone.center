@@ -1,4 +1,6 @@
 <script setup>
+import BeatBar from './bar.vue'
+
 import { renderMidi } from '@use/midiRender'
 import { tracks } from '@use/sequence'
 
@@ -6,7 +8,7 @@ const props = defineProps({
   meters: { type: Array, default: null },
   patterns: { type: Object, default: null, },
   accent: { type: String, default: '11111111111111111' },
-  mute: { type: String, delault: '00000000000000000' },
+  mute: { type: String, delault: '' },
   secondary: { type: Boolean, default: false, },
 })
 
@@ -77,7 +79,7 @@ function changeLoop(l, n, diff) {
       button.text-button.flex.items-center(@click="renderMidi(tracks)")
         la-file-download
       full-screen.text-md
-    beat-bars-bar.my-1.rounded-3xl.shadow-lg(
+    beat-bar.my-1.rounded-3xl.shadow-lg(
       v-for="(loop,i) in loops",
       :key="loop"
       :order="i"

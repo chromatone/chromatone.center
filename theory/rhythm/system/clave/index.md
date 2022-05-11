@@ -266,6 +266,8 @@ In Cuban popular music, the first three strokes of son clave are also known coll
 
 <youtube-embed video="1QFU5tJc9ok" />
 
+[Tresillo club music @ The Fader](https://www.thefader.com/2015/06/10/tresillo-club-music)
+
 #### Cinquillo
 
 The cinquillo pattern is another common embellishment of tresillo. Cinquillo is used frequently in the Cuban contradanza (the "habanera") and the danzón. The figure is also a common bell pattern found throughout sub-Saharan Africa.

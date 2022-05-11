@@ -8,10 +8,14 @@ cover: experiments.png
 
 Here's our collection of various web music experiments built by us or other creators. 
 
+[TouchMe Experience](./touchme/index.md) is an online MIDI synth and visualizer built in collaboration with [Playtronica](https://playtronica.com) for the **TouchMe** controller.
+
+[Ambient drone box](./ambience/index.md) is an experiment where simplex noise meets generative music. 
+
 Here's the universal [Fretboard calculator](./fretboard/index.md) that may help you build your own custom fretted string instrument with any given dimestions. 
 
 We haven't ported the fabulous [MIDI Paper](./paper/index.md) visualizer yet, but you may play with it standalone. The [Sound Laboratory](./lab/index.md) is another powerful standalone tool to explore basic sound synthesis and effect chains. Some even more old experiments are at [Dev](./dev/index.md).
 
-There's a couple of work in progress tools like the [Spectrum analyzer](./spectrum/index.md) and [Euclidean rhythm generator](./euclid/index.md).
+The [Spectrum analyzer](./spectrum/index.md) is a basic sound analysis visualization to build upon..
 
 And there's a ever growing collection of [Other music web-apps](./other/index.md) found on the internet.

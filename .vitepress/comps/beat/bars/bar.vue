@@ -1,4 +1,6 @@
 <script setup>
+import BarStep from './step.vue'
+
 import { useSequence } from '@use/sequence.js'
 import { isDark } from '@theme/composables/state.js'
 import { tempo } from '@use/tempo'
@@ -25,7 +27,7 @@ watch(soundControl, num => {
   emit('sound', sounds[num])
 })
 
-const { progress, current, steps, mutes, accents, volume, panning } = useSequence(props.loop, props.order, 'bars');
+const { progress, current, steps, mutes, accents, volume, panning, reset, isEuclidean } = useSequence(props.loop, props.order, 'bars');
 
 const proportion = computed(() => ((props.loop.over / props.loop.under) / props.maxRatio) / props.loop.over)
 
@@ -36,10 +38,6 @@ const activeSteps = computed(() => {
 function rotateAccents(num) {
   accents.value = rotateArray(accents.value, num)
   mutes.value = rotateArray(mutes.value, num)
-}
-
-function dragVol(drag) {
-  volume.value += drag.delta[0] / 100
 }
 
 watch(() => props.accent, accent => {
@@ -168,7 +166,7 @@ svg.w-full(
           stroke-width="6"
           :stroke="levelColor((step + (tempo.pitch / 12) * steps.length), steps.length, 1)"
         )
-      beat-bars-step(
+      bar-step(
         v-for="(step, s) in steps"
         :key="s"
         @mute="mutes[s] = !mutes[s]"
@@ -228,14 +226,34 @@ svg.w-full(
       beat-control-bar.sound(
         transform="translate(540,0)"
         v-model="soundControl"
-        :width="320"
+        :width="265"
         :step="1"
         :min="0"
         :max="4"
         show-positions
         :every="1"
-      )
+        )
         text {{ loop?.sound }}
+      transition(name="fade")
+        g.reset.cursor-pointer(
+          @mousedown="reset()"
+          :transform="`translate(840, 0)`"
+          v-if="editable && !isEuclidean"
+          )
+          rect(
+            style="filter:url(#shadowButton)"
+            width="50"
+            height="50"
+            stroke-width="3"
+            rx="40"
+            :fill="isDark ? 'hsla(0,0%,30%,1)' : 'hsla(0,0%,100%,1)'"
+            )
+          ic-baseline-refresh(
+            stroke-width=0
+            y="9"
+            x="9"
+            font-size="26"
+            )
       g.del.cursor-pointer(
         @mousedown="$emit('del')"
         :transform="`translate(900, 0)`"

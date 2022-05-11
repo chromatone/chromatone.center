@@ -21,19 +21,27 @@ var isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
 
 <template lang="pug">
 .m-auto.layer.w-full.z-40
-  .p-2.border.border-red-500.text-red-500.inline-flex.gap-2.w-full(v-if="!midi.enabled") MIDI is not available. Please 
+  .p-2.border.border-red-500.text-red-500.flex.flex-wrap.gap-2.w-full(v-if="!midi.enabled") MIDI is not available. Please 
     template(v-if="isFirefox")
       a.font-normal.underline(href="/site_permissions_for_chromatonecenter-1.0-an+fx.xpi") Install site permission (recent Firefox)
       span or
     a.font-normal.underline(href="https://caniuse.com/?search=midi" target="_blank") use a compatible browser 
     span or 
     a.font-normal.underline(href="https://apps.apple.com/ru/app/web-midi-browser/id953846217" target="_blank") Web MIDI Browser on iOS
+    span or 
+    .font-normal.text-dark-200.dark_text-light-100 use your PC keyboard
 
   .flex.items-center.justify-center.flex-wrap.py-2.m-auto(v-else)
     .flex.m-2
       a.font-normal.p-2.border.border-green-500.text-green-500.select-none.rounded-lg(href="/explore/monitor/") 
         span(v-if="midi.available") MIDI 
         span(v-else) Plug in your MIDI device
+    button.text-button.border(
+      @click="midi.keyboard = !midi.keyboard" 
+      aria-label="Play MIDI with PC keyboard"
+      :class="{ active: midi.keyboard }"
+      )
+      tabler-keyboard
     .text-button.opacity-30(@click="midi.out = !midi.out",:class="{ active: midi.out }") OUT
     .text-button.w-3em.transition-all.duration-50.cursor-pointer.flex(
       @mousedown="midiAttack(midi.note)"

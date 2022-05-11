@@ -22,7 +22,7 @@ const { midi } = useMidi();
     mdi-midi-input.transition-all.duration-200.text-xl(
       :style=`{
         opacity: midi.enabled ? 1 : 0.2,
-        color: pitchColor(midi.enabled ? midi.note?.pitch : 0, midi.note?.octA)
+        color: pitchColor(midi.note?.pitch)
       }`
       class="visible"
     )

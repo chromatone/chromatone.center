@@ -1,4 +1,5 @@
 import { tempo } from "@use/tempo.js";
+import { onKeyStroke } from "@vueuse/core";
 import {
   Sequence,
   PanVol,
@@ -106,24 +107,29 @@ export function useSequence(
 
   const current = ref("0-0");
   const steps = reactive([["0-1"], ["1-1"], ["2-1"], ["3-1"]]);
-  const mutes = useStorage(
-    `metro-${mode}-${metre.over / metre.under}-mutes-${order}`,
-    []
-  );
-  const accents = useStorage(
-    `metro-${mode}-${metre.over / metre.under}-accents-${order}`,
-    [true]
-  );
-  const volume = useClamp(
-    useStorage(`metro-${mode}-vol-${order}`, metre.volume || 1),
-    0,
-    1
-  );
-  const panning = useClamp(
-    useStorage(`metro-${mode}-pan-${order}`, pan),
-    -1,
-    1
-  );
+  const mutes = useStorage(`metro-${mode}-mutes-${order}`, []);
+  const accents = useStorage(`metro-${mode}-accents-${order}`, [true]);
+  const volume = useClamp(useStorage(`metro-${mode}-vol-${order}`, metre.volume || 1), 0, 1);
+  const panning = useClamp(useStorage(`metro-${mode}-pan-${order}`, pan), -1, 1);
+
+  const mutesCount = computed(() => mutes.value.reduce((acc, val) => {
+    if (!val) { acc++ }
+    return acc
+  }, 0))
+
+  const euclidSeq = computed(() => mutesCount.value > 0 && mutesCount.value < steps.length ? getEuclideanRhythm(mutesCount.value, steps.length) : new Array(steps.length).fill('1').join(''))
+
+  const currentSeq = computed(() => mutes.value.reduce((acc, val) => val ? acc + '0' : acc + '1', ''))
+
+  const isEuclidean = computed(() => euclidSeq.value == currentSeq.value)
+
+  function reset() {
+    let arr = []
+    euclidSeq.value.split('').forEach((e, i) => {
+      arr[i] = (e != false && e != null) ? false : true
+    })
+    mutes.value = arr
+  }
 
   let sequence = new Sequence(
     (time, step) => {
@@ -132,13 +138,6 @@ export function useSequence(
     steps,
     metre.under + "n"
   ).start(0);
-
-  tracks[order] = reactive({
-    metre: computed(() => metre),
-    steps,
-    mutes,
-    accents,
-  });
 
   watch(
     () => metre.under,
@@ -206,7 +205,7 @@ export function useSequence(
     if (context.state == "suspended") {
       start();
     }
-    let mainStep = typeof step == "string" ? +step.split("-")[0] : step;
+    let mainStep = typeof step == "string" ? + step.split("-")[0] : step;
     Draw.schedule(() => {
       current.value = step;
     }, time);
@@ -220,10 +219,26 @@ export function useSequence(
     // midiOnce(notes[order * 2] + 3, { time: '+' + time })
   }
 
+  const lastHit = ref(0)
+
+  onKeyStroke('Shift', () => {
+    lastHit.value = progress.value
+  })
+
   onBeforeUnmount(() => {
     sequence.stop().dispose();
     audio.panner.dispose();
     audio.synth.dispose();
+  });
+
+  tracks[order] = reactive({
+    metre: computed(() => metre),
+    steps,
+    mutes,
+    accents,
+    mutesCount,
+    isEuclidean,
+    reset
   });
 
   return {
@@ -235,5 +250,27 @@ export function useSequence(
     volume,
     panning,
     recorder,
+    lastHit,
+    reset,
+    isEuclidean
   };
+}
+
+function _getEuclideanRhythm(m, k, input) {
+  input = input || new Array(m).fill('1').concat(new Array(k).fill('0'));
+  const output = [];
+
+  for (let i = 0; i < Math.min(m, k); i++) {
+    output.push(input.shift() + input.pop());
+  }
+
+  if (input.length > 1) {
+    return _getEuclideanRhythm(output.length, input.length, output.concat(input));
+  }
+
+  return output.concat(input);
+}
+
+export function getEuclideanRhythm(x, total) {
+  return _getEuclideanRhythm(x, total - x).join('');
 }

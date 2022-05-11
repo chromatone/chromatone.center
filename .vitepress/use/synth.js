@@ -3,6 +3,7 @@ import { midi } from './midi'
 import { useStorage } from '@vueuse/core'
 
 export const quantizeModes = ['+0', '@16n', '@32n', '@8n']
+{ }
 
 export const synth = {
   state: reactive({
@@ -64,7 +65,7 @@ export function useSynth() {
 export function init() {
   start()
   if (synth?.poly) return
-  synth.pan = new AutoPanner('4n').toDestination()
+  synth.pan = new AutoPanner({ frequency: '4n', depth: 0.4 }).toDestination()
   synth.reverb = new Reverb(2.5).connect(synth.pan)
   synth.poly = new PolySynth(MonoSynth, synth.params).connect(synth.pan)
 

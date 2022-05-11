@@ -1,4 +1,8 @@
 <script setup>
+import CircleCenter from './center.vue'
+import CircleOverlay from './overlay.vue'
+import CircleLoop from './loop.vue'
+
 import { renderMidi } from '@use/midiRender'
 import { tracks } from '@use/sequence'
 const loops = useStorage('tempo-circle-loops', [
@@ -24,6 +28,11 @@ function changeLoop(l, n, val) {
 }
 
 const overlay = ref(false);
+
+function resetTracks() {
+  tracks.forEach(t=>t.reset())
+}
+
 </script>
 
 <template lang="pug">
@@ -36,30 +45,27 @@ const overlay = ref(false);
     xmlns="http://www.w3.org/2000/svg",
     style="user-select:none;touch-action:none"
     )
-    beat-control-math(
-      transform="translate(20,50)"
-    )
-    beat-control-listen(
-      transform="translate(10,900)"
-    )
-    beat-control-tap(
-      transform="translate(785,900)"
+    beat-control-math(transform="translate(20,50)")
+    beat-control-button(
+      @click="resetTracks()"
+      transform="translate(10,110) scale(0.75)"
+      title="Reset to Euclidean"
       )
-    beat-control-transport(
-      transform="translate(910,-30)"
-    )
+      ic-baseline-refresh
+    beat-control-listen(transform="translate(10,900)")
+    beat-control-tap(transform="translate(785,900)")
+    beat-control-transport(transform="translate(910,-30)")
     beat-control-button(
       @click="overlay = true"
       transform="translate(10,750)"
-    )
+      )
       healthicons-question
     beat-control-button(
       @click="renderMidi(tracks)"
       transform="translate(925,750)"
-    )
+      )
       la-file-download
-
-    beat-circle-loop(
+    circle-loop(
       v-for="(loop,i) in loops",
       :key="i"
       :order="i"
@@ -70,12 +76,9 @@ const overlay = ref(false);
       @over="changeLoop(i, 'over', $event)"
       @under="changeLoop(i, 'under', $event)"
       @sound="loop.sound = $event"
-    )
-    beat-circle-center(
-      transform="translate(500,500) scale(0.75)"
-    )
-
-    beat-circle-overlay.cursor-pointer(
+      )
+    circle-center(transform="translate(500,500) scale(0.75)")
+    circle-overlay.cursor-pointer(
       v-if="overlay"
       @click="overlay = false"
       )

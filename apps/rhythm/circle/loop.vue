@@ -1,4 +1,6 @@
 <script setup>
+import LoopSector from './loop-sector.vue'
+
 import { getCircleCoord, rotateArray } from '@use/calculations'
 import { useSequence } from '@use/sequence.js'
 import { isDark } from '@theme/composables/state.js'
@@ -19,11 +21,11 @@ const soundLetters = ['A', 'B', 'C', 'D', 'E', 'F']
 const soundControl = ref(soundLetters.findIndex(el => el == props.loop?.sound))
 const controlRadius = computed(() => props.radius + 110)
 
-const { progress, current, steps, mutes, accents, volume, panning, addSample, recorder } = useSequence(props.loop, props.order, 'circle')
+const { progress, current, steps, mutes, accents, volume, panning, recorder, lastHit } = useSequence(props.loop, props.order, 'circle')
 
 watch(soundControl, num => {
   emit('sound', soundLetters[num])
-})
+})   
 
 const activeSteps = computed(() => {
   return steps.filter(step => !mutes.value[step[0].split('-')[0]]).map(step => Number(step[0].split('-')[0]))
@@ -37,13 +39,13 @@ const lineProgress = computed(() => {
   }
 });
 
-function dragVol(drag) {
-  volume.value -= -drag.delta[1]
-}
-
-function dragPan(drag) {
-  panning.value += drag.delta[0] / 100
-}
+const lastLine = computed(() => {
+  if (progress.value > 0) {
+    return getCircleCoord(lastHit.value * 360, 360, props.radius + 50, 1000)
+  } else {
+    return { x: 500, y: 100 }
+  }
+});
 
 function rotateAccents(num) {
   accents.value = rotateArray(accents.value, num)
@@ -83,7 +85,7 @@ g(
         stroke-width="8"
         :stroke="levelColor((step + (tempo.pitch / 12) * steps.length), steps.length, 1)"
       )
-    beat-circle-sector(
+    loop-sector(
       v-for="(step, s) in steps"
       :key="step"
       :step="s"
@@ -233,8 +235,17 @@ g(
         x="-17"
         y="-17"
       )
-  g.arrows.pointer-events-none(
-  )
+  g.arrow.pointer-events-none
+    line(
+      :x1="500"
+      :y1="500"
+      stroke-width="4"
+      stroke="currentColor"
+      stroke-linecap="cound"
+      :x2="lastLine.x"
+      :y2="lastLine.y"
+      v-if="lastHit>0"
+      )
     line(
       :x1="500"
       :y1="500"
@@ -243,13 +254,13 @@ g(
       stroke-linecap="cound"
       :x2="lineProgress.x"
       :y2="lineProgress.y"
-    )
+      )
     circle(
       :cx="500"
       :cy="500"
       fill="currentColor"
       :r="5"
-    )
+      )
 </template>
   
 <style lang="postcss" scoped>

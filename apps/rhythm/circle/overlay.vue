@@ -14,6 +14,7 @@ g
     path(style="fill:#88C6E2;", d="M975.8,210h-61.7c-7.8,0-14.2-6.4-14.2-14.2V25.2c0-7.8,6.4-14.2,14.2-14.2h61.7		c7.8,0,14.2,6.4,14.2,14.2v170.7C990,203.6,983.6,210,975.8,210z")
 
     rect(x="900" y="790" width="90" height="90" rx="20" fill="#037755")
+    rect(x="10" y="150" width="110" height="60" rx="20" fill="#039955ee")
 
     path(style="fill-rule:evenodd;clip-rule:evenodd;fill:#60CCF2;", d="M563.6,563.6c35.1-35.1,35.1-92.1,0-127.3l-31.8,31.8			c17.6,17.6,17.6,46.1,0,63.6L563.6,563.6z")
     path(style="fill-rule:evenodd;clip-rule:evenodd;fill:#0A92CF;", d="M436.4,436.4c-35.1,35.1-35.1,92.1,0,127.3l31.8-31.8			c-17.6-17.6-17.6-46.1,0-63.6L436.4,436.4z")
@@ -32,6 +33,7 @@ g
     path(style="fill-rule:evenodd;clip-rule:evenodd;fill:#F7956A;", d="M523.8,772c49.3-4.3,96.6-22,136.7-51.1		c3.6-2.6,4.4-7.6,1.8-11.2s-7.6-4.4-11.2-1.8l0,0c-37.7,27.4-82.2,44-128.7,48.1c-4.4,0.4-7.7,4.3-7.3,8.7S519.4,772.3,523.8,772z")
     path(style="fill-rule:evenodd;clip-rule:evenodd;fill:#EA68A7;", d="M235.1,566c26.5,106.3,114,186.5,222.2,203.6		c4.4,0.7,8.5-2.3,9.2-6.7c0.7-4.4-2.3-8.5-6.7-9.2c-101.9-16.1-184.2-91.6-209.2-191.7c-1.1-4.3-5.4-6.9-9.7-5.8		C236.6,557.4,234,561.8,235.1,566z")
   g#texts(font-weight="bold" font-size="25px")
+    text(transform="matrix(1 0 0 1 15 188)" font-size="18" ) EUCLIDEAN
     text(font-size="15" text-anchor="middle" transform="matrix(1 0 0 1 945 820)", style="fill:#FFFFFF;  ")
       tspan(x="0") EXPORT 
       tspan(x="0" y="20") MIDI

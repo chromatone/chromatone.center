@@ -10,6 +10,7 @@ cover: metro-bars.png
   <beat-bars />
 </client-only >
 
+
 ## Flexible metronome bars to construct any possible rhythm
 
 Here you have a linear version of the colorful metronome to play with.

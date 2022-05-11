@@ -29,7 +29,7 @@ onMounted(() => {
 });
 
 function dragScreen(drag) {
-  roll.speedCount += drag.delta[1] - drag.delta[0]
+  roll.speedCount += drag.delta[0] - drag.delta[1]
 }
 
 function initiate() {
@@ -51,12 +51,12 @@ function drawVertical() {
   tempCtx.drawImage(canvas, 0, 0, roll.width, roll.height)
   ctx.fillStyle = '#33333399'
   ctx.fillRect(0, 0, roll.width, roll.speed)
-  ctx.translate(0, roll.speed)
+  ctx.translate(0, -roll.speed)
   ctx.drawImage(tempCanvas, 0, 0, roll.width, roll.height)
   roll.notes.forEach((note, n) => {
     let x = (n) * roll.width / 12
     ctx.fillStyle = colorIt(n, note, 0.5)
-    ctx.fillRect(x, 0, roll.width / 12, roll.speed)
+    ctx.fillRect(x, roll.height-roll.speed, roll.width / 12, roll.speed)
   })
   ctx.setTransform(1, 0, 0, 1, 0, 0);
 }
@@ -85,15 +85,16 @@ function colorIt(pitch = 0, value = 1, opacity = 1) {
 
   .flex.flex-col.justify-center.items-center.relative.bg-light-600.dark_bg-dark-700(ref="screen")
     control-start.absolute(v-if="!roll.initiated" @click="initiate()") Start
-    full-screen.absolute.bottom-6.right-6.z-30(:el="screen")
-    .absolute.top-6.left-4.text-2xl x{{ roll.speed }}
-    canvas#spectrogram.m-4.w-full.rounded-4xl.cursor-pointer(
+    full-screen.absolute.bottom-4.right-4.z-30(:el="screen")
+    button.text-button.absolute.top-4.right-4(@click="roll.direction ? roll.direction = 0 : roll.direction = 1")
+      la-arrow-up(v-if="roll.direction == 1")
+      la-arrow-left(v-if="roll.direction == 0")
+    .absolute.top-4.left-4.text-xl.text-white x{{ roll.speed }}
+    canvas#spectrogram.w-full.rounded-2xl.cursor-pointer(
       v-drag="dragScreen"
       :width="roll.width"
       :height="roll.height"  
-    )
-  .flex.justify-center
-    control-choose(v-model="roll.direction" :variants="{ 1: 'Vertical', 0: 'Horizontal' }")
+      )
 </template>
 
 <style lang="postcss" scoped>

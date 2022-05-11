@@ -8,7 +8,7 @@ export const tempo = reactive({
   bpm: useClamp(useStorage("tempo-bpm", 100), 10, 500),
   blink: false,
   started: false,
-  playing: false,
+  playing: true,
   stopped: false,
   progress: 0,
   position: 0,
@@ -68,6 +68,7 @@ function beginTimeout() {
 }
 
 export function useTempo() {
+
   onMounted(() => {
     const loop = new Loop((time) => {
       tempo.blink = true;
@@ -76,11 +77,13 @@ export function useTempo() {
       }, 60);
     }, "4n").start(0);
   });
+
   watch(
     () => tempo.bpm,
     (bpm) => Transport.bpm.rampTo(bpm, "4n"),
     { immediate: true }
   );
+
   watch(
     () => tempo.stopped,
     (stop) => {
@@ -90,6 +93,7 @@ export function useTempo() {
       }
     }
   );
+
   watch(
     () => tempo.playing,
     (playing) => {
@@ -110,7 +114,9 @@ export function useTempo() {
       } else {
         Transport.pause();
       }
-    }
+    }, {
+    immediate: true
+  }
   );
   return tempo;
 }

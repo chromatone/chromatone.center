@@ -2,6 +2,9 @@
 title: Educators catalog
 subtitle: Teachers and guides ready to help you find your own way into music
 date: 2022-04-03
+buttons:
+  - url: https://airtable.com/shrFbtdCJR07jDsaM
+    text: Find your educator
 teachers:
   - avatar: /img/starov.jpg
     name: Denis K Starov
@@ -15,7 +18,6 @@ teachers:
       - Lectures
       - Improvisations
       - Performances
-    book: https://airtable.com/shrFbtdCJR07jDsaM
     social:
       instagram: starov
       telegram: starov

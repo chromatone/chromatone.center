@@ -1,5 +1,5 @@
 <script setup>
-import { useAudio } from '@theme/composables/state'
+import { useAudio } from '@use/audio'
 import { onClickOutside } from '@vueuse/core'
 
 

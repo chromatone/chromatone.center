@@ -12,6 +12,7 @@ import {
   Meter,
   UserMedia,
 } from "tone";
+import { useRecorder } from "./recorder";
 
 export const tracks = reactive([]);
 
@@ -35,7 +36,10 @@ export function useSequence(
     synth: null,
   };
 
+  const { recorder: rec } = useRecorder()
+
   audio.panner = new PanVol(pan, 0).toDestination();
+  audio.panner.connect(rec)
   audio.synth = new Sampler({
     urls: {
       A1: "tongue/high.wav",

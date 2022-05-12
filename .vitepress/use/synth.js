@@ -1,6 +1,7 @@
 import { PolySynth, MonoSynth, start, now, Midi, AutoPanner, Reverb } from 'tone'
 import { midi } from './midi'
 import { useStorage, useCycleList } from '@vueuse/core'
+import { useRecorder } from './recorder'
 
 export const quantizeModes = ['+0', '@8n', '@16n', '@32n']
 
@@ -9,7 +10,7 @@ export const synth = {
     midi: useStorage('synth-midi', true),
     initiated: false,
     mute: false,
-    quantize: useCycleList(quantizeModes, { initialValue: useStorage('synth-quantize', quantizeModes[0]) }),
+    quantize: useCycleList(['+0', '@8n', '@16n', '@32n'], { initialValue: useStorage('synth-quantize', '+0') }),
   }),
   params: reactive({
     maxPolyphony: 50,
@@ -63,7 +64,9 @@ export function useSynth() {
 export function init() {
   start()
   if (synth?.poly) return
+  const { recorder } = useRecorder()
   synth.pan = new AutoPanner({ frequency: '4n', depth: 0.4 }).toDestination()
+  synth.pan.connect(recorder)
   synth.reverb = new Reverb(2.5).connect(synth.pan)
   synth.poly = new PolySynth(MonoSynth, synth.params).connect(synth.pan)
 

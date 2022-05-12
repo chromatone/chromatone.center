@@ -2,6 +2,7 @@
 import { useSynth, quantizeModes } from '@use/synth'
 import { onClickOutside } from '@vueuse/core'
 import { midi } from '@use/midi'
+import { useRecorder } from '@use/recorder'
 
 const open = ref(false);
 
@@ -24,6 +25,8 @@ function cycle() {
   count++
   synth.state.quantize = quantizeModes[count % quantizeModes.length]
 }
+
+const {record, recording, toggled, duration} = useRecorder()
 </script>
 
 <template lang="pug">
@@ -46,6 +49,8 @@ function cycle() {
         @click="synth.state.quantize.next()"
         aria-label="Synth panel"
         ) Quantize {{ synth.state.quantize.state }}
+      button.text-button(@click="record.start()" v-if="!recording") Record
+      button.text-button(@click="record.stop()" v-else) Stop {{(duration/1000).toFixed(1)}}s
       .flex-1
       button.text-button.border(
         @click="midi.keyboard = !midi.keyboard" 
@@ -67,6 +72,6 @@ function cycle() {
 }
 
 .panel {
-  @apply absolute right-0 top-$header-height w-full p-4 bg-light-300 dark_bg-dark-300 z-20 flex bg-opacity-90 dark_bg-opacity-90 flex items-center shadow-lg;
+  @apply absolute right-0 top-$header-height w-full p-4 bg-light-300 dark_bg-dark-300 z-20 flex bg-opacity-90 dark_bg-opacity-90 flex-wrap items-center shadow-lg;
 }
 </style>

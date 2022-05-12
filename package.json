@@ -20,6 +20,7 @@
     "deploy": "sh deploy.sh"
   },
   "dependencies": {
+    "audio-recorder-polyfill": "^0.4.1",
     "@tonaljs/tonal": "^4.6.5",
     "@tonejs/midi": "^2.0.28",
     "@vueuse/core": "^8.4.2",

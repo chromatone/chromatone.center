@@ -1,8 +1,5 @@
-import AudioRecorder from 'audio-recorder-polyfill'
 import { Recorder } from 'tone';
 import { useLastChanged, useTimestamp } from '@vueuse/core'
-
-window.MediaRecorder = AudioRecorder
 
 export let recorder
 

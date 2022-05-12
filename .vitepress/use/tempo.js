@@ -8,7 +8,7 @@ export const tempo = reactive({
   bpm: useClamp(useStorage("tempo-bpm", 100), 10, 500),
   blink: false,
   started: false,
-  playing: true,
+  playing: false,
   stopped: false,
   progress: 0,
   position: 0,
@@ -35,6 +35,9 @@ export const tempo = reactive({
     times: [],
     bpm: null,
   },
+  set(diff) {
+    tempo.bpm = Math.round(diff + tempo.bpm)
+  }
 });
 
 export function tap() {

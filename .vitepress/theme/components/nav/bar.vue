@@ -19,6 +19,7 @@ header.nav-bar.relative
   state-midi
   client-only
     synth-panel
+    state-tempo
     state-audio
   nav-search.ml-1
   nav-toggle-sidebar(@toggle="$emit('toggle')")

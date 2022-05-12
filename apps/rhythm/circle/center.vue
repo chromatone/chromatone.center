@@ -14,11 +14,6 @@ function drag(event) {
   tempo.bpm += (event.delta[0] - event.delta[1]) / 4
 }
 
-function setTempo(diff) {
-  tempo.bpm = Math.round(diff)
-}
-
-
 </script>
 
 <template lang="pug">
@@ -51,7 +46,7 @@ g.center(
     font-size="30"
   )
     g.arc.plus(
-      @mousedown="setTempo(1)"
+      @mousedown="tempo.set(1)"
     )
       svg-ring(
         :cx="0"
@@ -68,7 +63,7 @@ g.center(
         y="-15"
       )
     g.arc.minus(
-      @mousedown="setTempo(-1)"
+      @mousedown="tempo.set(-1)"
     )
       svg-ring(
         :cx="0"
@@ -85,7 +80,7 @@ g.center(
         y="-15"
       )
     g.arc.multiply(
-      @mousedown="setTempo(tempo.bpm)"
+      @mousedown="tempo.set(tempo.bpm)"
     )
       svg-ring(
         :cx="0"
@@ -102,7 +97,7 @@ g.center(
         y="-104"
       )
     g.arc.multiply(
-      @mousedown="setTempo(-tempo.bpm / 2)"
+      @mousedown="tempo.set(-tempo.bpm / 2)"
     )
       svg-ring(
         :cx="0"

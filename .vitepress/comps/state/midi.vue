@@ -15,9 +15,7 @@ const { midi } = useMidi();
 </script>
 
 <template lang="pug">
-.midi(
-  :class="{ active: panel }"
-  )
+.midi(:class="{ active: panel }")
   button.p-2(@click.stop="panel = !panel" aria-label="Toggle MIDI panel")
     mdi-midi-input.transition-all.duration-200.text-xl(
       :style=`{

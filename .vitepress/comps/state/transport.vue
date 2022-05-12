@@ -20,10 +20,6 @@ function drag(event) {
 }
 
 
-function setTempo(diff) {
-  tempo.bpm += diff
-}
-
 </script>
 
 <template lang="pug">
@@ -31,18 +27,18 @@ function setTempo(diff) {
   .transport.flex.flex-wrap.is-group.m-1
     button.text-button(
       @click="tempo.playing = !tempo.playing"
-    )
+      )
       la-play(v-if="!tempo.playing")
       la-pause(v-else)
     button.text-button(
       @click="tempo.stopped = true"
-    )
+      )
       la-stop
 
   .info.flex.flex-wrap.items-center.cursor-move.select-none.text-center.is-group.m-1.transition-all.duration-50.ease-in.touch-none(
     :style="{ borderColor: tempo.blink ? tempo.color : 'transparent' }"
     v-drag="drag"
-  )
+    )
     .text-button.w-8rem.flex.items-center
       .flex-1.text-center {{ tempo.bpm.toFixed(2) }} 
       .text-sm.mt-1px.ml-1 BPM
@@ -51,24 +47,24 @@ function setTempo(diff) {
       .text-sm.mt-1px Hz
     .text-button.w-3rem.font-bold(
       :style="{ color: tempo.color, borderColor: tempo.color }"
-    ) {{ tempo.note }}
+      ) {{ tempo.note }}
 
   .math.flex.flex-wrap.is-group.m-1
     button.text-button(
-      @click="setTempo(-tempo.bpm / 2)"
-    )
+      @click="tempo.set(-tempo.bpm / 2)"
+      )
       la-slash
     button.text-button(
-      @click="setTempo(-1)"
-    )
+      @click="tempo.set(-1)"
+      )
       la-minus
     button.text-button(
-      @click="setTempo(1)"
-    )
+      @click="tempo.set(1)"
+      )
       la-plus
     button.text-button(
-      @click="setTempo(tempo.bpm)"
-    )
+      @click="tempo.set(tempo.bpm)"
+      )
       la-times
 
   .listap.flex.flex-wrap.is-group.m-1

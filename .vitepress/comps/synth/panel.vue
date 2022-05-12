@@ -43,9 +43,9 @@ function cycle() {
         la-wave-square.text-4xl
       synth-oscillators.flex-1(v-model="synth.params.oscillator.type")
       button.text-button(
-        @click="cycle"
+        @click="synth.state.quantize.next()"
         aria-label="Synth panel"
-        ) Quantize {{ synth.state.quantize }}
+        ) Quantize {{ synth.state.quantize.state }}
       .flex-1
       button.text-button.border(
         @click="midi.keyboard = !midi.keyboard" 

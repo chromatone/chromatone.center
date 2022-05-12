@@ -6,30 +6,30 @@ const props = defineProps({
 
 <template lang="pug">
 .social 
-  a.text-button(v-if="social.instagram", :href="'https://instagram.com/' + social.instagram", target="_blank")
+  a(v-if="social.instagram", :href="'https://instagram.com/' + social.instagram", target="_blank")
     la-instagram.icon
     .name @{{ social.instagram }}
-  a.text-button(v-if="social.telegram", :href="'https://t.me/' + social.telegram", target="_blank")
+  a(v-if="social.telegram", :href="'https://t.me/' + social.telegram", target="_blank")
     la-telegram.icon
     .name {{ social.telegram }}
-  a.text-button(v-if="social.github", :href="'https://github.com/' + social.github", target="_blank")
+  a(v-if="social.github", :href="'https://github.com/' + social.github", target="_blank")
     la-github.icon
     .name {{ social.github }}
-  a.text-button(v-if="social.email", :href="'mailto:' + social.email", target="_blank")
+  a(v-if="social.email", :href="'mailto:' + social.email", target="_blank")
     la-at.icon
     .name {{ social.email }}
-  a.text-button(v-if="social.reddit", :href="'https://www.reddit.com/' + social.reddit", target="_blank")
+  a(v-if="social.reddit", :href="'https://www.reddit.com/' + social.reddit", target="_blank")
     la-reddit.icon
     .name {{ social.reddit }}
 </template>
 
 <style lang="postcss" scoped>
 .social {
-  @apply flex flex-wrap px-2;
+  @apply flex flex-wrap px-2 items-center;
 }
 
 .social a {
-  @apply flex items-center;
+  @apply flex items-center p-2;
 }
 
 .social .icon {

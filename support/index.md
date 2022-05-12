@@ -20,4 +20,4 @@ If you're a designer, JS developer, audio analysis library or know how else the 
 
 If you find Chromatone system helpful in your music learning or teaching process, please share love with a [Donation](./donate/index.md) to the site author.
 
-There's a dedicated [Reddit community to join](./join/index.md) and hang around. And it's important to let as much people as possible to know about it. So [Share links](./promote/index.md) and spread the word about Chromatone through your social media and beyond. 
+We have a subreddit to hang around and an Instagram account to tag in your posts. And it's important to let more people join the growing community of visual musicians. So [follow us](./follow/index.md) and spread the word about Chromatone through your social media and beyond. 

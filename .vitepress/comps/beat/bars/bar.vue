@@ -248,7 +248,7 @@ svg.w-full(
             rx="40"
             :fill="isDark ? 'hsla(0,0%,30%,1)' : 'hsla(0,0%,100%,1)'"
             )
-          ic-baseline-refresh(
+          tabler-stairs(
             stroke-width=0
             y="9"
             x="9"

@@ -23,7 +23,7 @@ const bg = computed(() => `url(${props.item?.cover}`);
 .row(
   :style="{ backgroundColor: color }"
   )
-  a.header(
+  a.header.no-underline(
     :href="item.path"
     :class="{ 'pt-48': item?.cover }"
   )

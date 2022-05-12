@@ -2,7 +2,7 @@
 title: Donate money
 subtitle: If you want to help, but don't know how – buy us a coffee!
 emoji: 💸
-
+date: 2022-04-17
 buttons:
   - url: https://airtable.com/shrm1flZTa0s9LFd6
     text: Make a donation

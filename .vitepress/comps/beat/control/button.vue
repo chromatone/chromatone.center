@@ -4,12 +4,8 @@
 </script>
 
 <template lang="pug">
-g.transport(
-  font-size="45"
-)
-  g.btn.cursor-pointer(
-  transform="translate(0,50)"
-  )
+g.transport(font-size="45")
+  g.btn.cursor-pointer(transform="translate(0,50)")
     rect.border(
       fill="transparent"
       stroke-width="4"
@@ -17,9 +13,7 @@ g.transport(
       width="70"
       height="80"
     )
-    g(
-      transform="translate(6,12)"
-    )
+    g(transform="translate(6,12)")
       slot
 
 </template>

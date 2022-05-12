@@ -48,10 +48,10 @@ function resetTracks() {
     beat-control-math(transform="translate(20,50)")
     beat-control-button(
       @click="resetTracks()"
-      transform="translate(10,110) scale(0.75)"
+      transform="translate(20,110) scale(0.75)"
       title="Reset to Euclidean"
       )
-      ic-baseline-refresh
+      tabler-stairs
     beat-control-listen(transform="translate(10,900)")
     beat-control-tap(transform="translate(785,900)")
     beat-control-transport(transform="translate(910,-30)")

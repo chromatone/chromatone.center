@@ -44,3 +44,7 @@ watch(route, () => {
   @apply bg-gray-800 bg-opacity-60;
 }
 </style>
+
+
+mdi-checkbox-blank-circle-outline
+mdi-checkbox-blank-circle

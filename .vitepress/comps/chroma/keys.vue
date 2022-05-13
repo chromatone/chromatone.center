@@ -127,6 +127,7 @@ function keyColor(key, off) {
           x="45"
           fill="white"
         ) {{ notes[key] }}
+  slot
 </template>
 
 <style lang="postcss" scoped>

@@ -1,4 +1,5 @@
 import { getDestination, Sampler, start, now } from 'tone'
+import { useRecorder } from '@use/recorder'
 
 export const mute = useStorage('mute', false)
 
@@ -16,6 +17,7 @@ export function usePiano() {
 export function init() {
   start()
   if (piano) return
+  const { recorder } = useRecorder()
   piano = new Sampler({
     urls: {
       A0: 'A0.mp3',
@@ -52,6 +54,7 @@ export function init() {
     release: 1,
     baseUrl: '/audio/piano/',
   }).toDestination()
+  piano.connect(recorder)
 }
 
 export function pianoOnce(note = 'A4', duration = '8n', time) {

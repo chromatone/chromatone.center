@@ -1,5 +1,5 @@
 
-import { getDestination, gainToDb, Recorder } from 'tone'
+import { getDestination, gainToDb } from 'tone'
 
 const audio = reactive({
   initiated: false,

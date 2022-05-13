@@ -24,7 +24,7 @@ export const record = {
     // download the recording by creating an anchor element and blob url
     const url = URL.createObjectURL(rec);
     const anchor = document.createElement("a");
-    anchor.download = "recording.wav";
+    anchor.download = "recording.webm";
     anchor.href = url;
     anchor.click();
   }

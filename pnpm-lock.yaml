@@ -7,6 +7,7 @@ specifiers:
   '@vueuse/core': ^8.4.2
   '@vueuse/gesture': ^1.0.0
   abcjs: ^6.0.2
+  audio-recorder-polyfill: ^0.4.1
   audiomotion-analyzer: 3.6.0
   cobe: ^0.5.0
   colord: ^2.9.2
@@ -43,6 +44,7 @@ dependencies:
   '@vueuse/core': 8.4.2_vue@3.2.33
   '@vueuse/gesture': 1.0.0_vue@3.2.33
   abcjs: 6.0.2
+  audio-recorder-polyfill: 0.4.1
   audiomotion-analyzer: 3.6.0
   cobe: 0.5.0
   colord: 2.9.2
@@ -813,6 +815,10 @@ packages:
   /assert-never/1.2.1:
     resolution: {integrity: sha512-TaTivMB6pYI1kXwrFlEhLeGfOqoDNdTxjCdwRfFFkEA30Eu+k48W34nlok2EYWJfFFzqaEmichdNM7th6M5HNw==}
     dev: true
+
+  /audio-recorder-polyfill/0.4.1:
+    resolution: {integrity: sha512-SS4qVOzuVwlS/tjQdd0uR+9cCKBTkx4jsAdjM+rMNqoTEWf6bMnBSTfv+FO4Zn9ngxviJOxhkgRWWXsAMqM96Q==}
+    dev: false
 
   /audiomotion-analyzer/3.6.0:
     resolution: {integrity: sha512-3f1fuyuIjhuDn5MADwNpwyyEYj3Cg48+QSjl4O5qFtW3daVAK9fmSRI6b55lW0MlmckrQ3oNyqaocDeHZ8uwLQ==}

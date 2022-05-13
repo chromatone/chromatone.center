@@ -42,6 +42,13 @@ const {record, recording, toggled, duration} = useRecorder()
           ph-microphone.z-10.relative(v-if="!mic.opened")
           ph-microphone-fill.z-10.relative(v-else)
           .absolute.bottom-0.left-0.w-full.transition-all.duration-50ms(:style="{height: mic.meter*100 + '%', backgroundColor: `hsl(${200-mic.meter*200},90%,50%)`}")
+        control-knob(
+          v-model="mic.volume"
+          :min="0"
+          :max="1"
+          :step="0.001"
+          param="VOL"
+        )
         button.text-button(:class="{active: mic.monitor}" @click="mic.monitor = !mic.monitor")
           ph-ear
         button.text-button(@click="record.start()" v-if="!recording") 

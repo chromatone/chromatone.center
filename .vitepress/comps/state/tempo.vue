@@ -13,8 +13,8 @@ onClickOutside(target, () => {
 </script>
 
 <template lang="pug">
-.tempo(:class="{ active: panel }")
-  button.p-2(@click.stop="panel = !panel" aria-label="Toggle tempo panel")
+.tempo
+  button.p-2.rounded-xl(@click.stop="panel = !panel"  :class="{ active: panel }" aria-label="Toggle tempo panel")
     fad-metronome.transition-all.duration-200.text-xl
   client-only
     transition(name="panel")
@@ -22,7 +22,7 @@ onClickOutside(target, () => {
 </template>
 
 <style lang="postcss" scoped>
-.tempo.active {
+.active {
   @apply bg-light-700 dark_bg-dark-700;
 }
 

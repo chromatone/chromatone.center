@@ -1,5 +1,5 @@
 ---
-title: Educators catalog
+title: Educators
 subtitle: Teachers and guides ready to help you find your own way into music
 date: 2022-04-03
 buttons:

@@ -3,6 +3,8 @@ import { useAudio } from '@use/audio'
 import { onClickOutside } from '@vueuse/core'
 import { useMic } from '@use/mic'
 import { useRecorder } from '@use/recorder'
+import { cameras, microphones } from '@use/cast'
+
 
 const audio = useAudio()
 const open = ref(false);
@@ -56,6 +58,7 @@ const {record, recording, toggled, duration} = useRecorder()
         button.text-button.flex.items-center.text-red-500(@click="record.stop()" v-else)  
           mdi-checkbox-blank-circle.animate-pulse
           .p-1 {{(duration/1000).toFixed(1)}} s
+        cast-controls
         .flex-1
         control-knob(
           param="Vol"

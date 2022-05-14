@@ -41,7 +41,8 @@
     "vitepress-pages": "^0.8.5",
     "thousands-counter": "^2.1.1",
     "audiomotion-analyzer": "3.6.0",
-    "audio-recorder-polyfill": "^0.4.1"
+    "audio-recorder-polyfill": "^0.4.1",
+    "recordrtc": "^5.6.2"
   },
   "devDependencies": {
     "@iconify/json": "^2.1.41",

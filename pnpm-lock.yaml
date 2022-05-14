@@ -21,6 +21,7 @@ specifiers:
   paper: ^0.12.15
   patch-vue-directive-ssr: ^0.0.1
   pug: 3.0.2
+  recordrtc: ^5.6.2
   simplex-noise: ^3.0.1
   thousands-counter: ^2.1.1
   tone: ^14.8.40
@@ -55,6 +56,7 @@ dependencies:
   midi-writer-js: 2.1.0
   ol: 6.14.1
   paper: 0.12.15
+  recordrtc: 5.6.2
   simplex-noise: 3.0.1
   thousands-counter: 2.1.1
   tone: 14.8.40
@@ -2665,6 +2667,10 @@ packages:
     dependencies:
       picomatch: 2.3.0
     dev: true
+
+  /recordrtc/5.6.2:
+    resolution: {integrity: sha512-1QNKKNtl7+KcwD1lyOgP3ZlbiJ1d0HtXnypUy7yq49xEERxk31PHvE9RCciDrulPCY7WJ+oz0R9hpNxgsIurGQ==}
+    dev: false
 
   /regenerator-runtime/0.13.9:
     resolution: {integrity: sha512-p3VT+cOEgxFsRRA9X4lkI1E+k2/CtnKtU4gcxyaCUreilL/vqI6CdZ3wxVUx3UOUg+gnUOQQcRI7BmSI656MYA==}

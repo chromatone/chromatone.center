@@ -1,5 +1,5 @@
 ---
-title: Materials in Russian
+title: Russian language
 subtitle: The lectures, courses and other educational materials for Russian speakers
 date: 2022-01-03
 ---

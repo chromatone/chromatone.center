@@ -20,7 +20,7 @@ function toggleRecording() {
 </script>
 
 <template lang="pug">
-button.icon-btn.md_hidden(
+button.icon-btn(
   v-if="currentCamera !== 'none'", 
   :class="{ 'text-green-500': Boolean(showAvatar && streamCamera) }", 
   title="Show camera view", 
@@ -37,5 +37,4 @@ button.icon-btn(
   carbon-video(v-else)
       
 cast-devices
-cast-camera
 </template>

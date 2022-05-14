@@ -1,31 +1,32 @@
 <script setup>
-import { useVModel } from '@vueuse/core'
-import { nextTick } from 'vue'
-import { getFilename, mimeType, recordCamera, recorder, recordingName } from '@use/cast'
-
+import { useVModel } from "@vueuse/core";
+import { nextTick } from "vue";
+import { getFilename, mimeType, recordCamera, cast, recordingName } from "@use/cast";
 
 const props = defineProps({
   modelValue: {
     default: false,
   },
-})
+});
 
-const value = useVModel(props, 'modelValue', emit)
-const { startRecording } = recorder
+const emit = defineEmits([]);
+
+const value = useVModel(props, "modelValue", emit);
+const { startRecording } = cast;
 function close() {
-  value.value = false
+  value.value = false;
 }
 async function start() {
-  close()
-  await nextTick()
+  close();
+  await nextTick();
   startRecording({
     mimeType: mimeType.value,
-  })
+  });
 }
 </script>
 
-<template lang='pug'>
-.px-6.py-4.recording-dialog.flex.flex-col.gap-2(v-model="value")
+<template lang="pug">
+.px-6.py-4.recording-dialog.flex.flex-col.gap-2
   .flex.gap-2.text-xl
     carbon-video.my-auto.
       Recording
@@ -56,7 +57,7 @@ async function start() {
           
           {{ getFilename('camera', mimeType) }}
           
-    deviceslist
+    cast-devices
       
       
   .flex.my-1

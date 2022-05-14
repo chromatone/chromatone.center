@@ -1,23 +1,22 @@
 <script setup>
-import {
-  useRoute,
-  useData,
-} from 'vitepress'
+import { useRoute, useData } from "vitepress";
 
 // generic state
-const route = useRoute()
+const route = useRoute();
 
 // sidebar
-const openSideBar = ref(false)
+const openSideBar = ref(false);
 
 watch(route, () => {
-  openSideBar.value = false
-})
-
+  openSideBar.value = false;
+});
 </script>
 
 <template lang="pug">
 .theme
+  client-only
+    cast-camera
+    cast-dialog.absolute.top-10.z-20.bg-light-200
   state-dark.fixed.bottom-18.right-14px.z-1000
   nav-scroll.fixed.bottom-8.right-24px.z-1000
   nav-bar(@toggle="openSideBar = !openSideBar")
@@ -30,7 +29,7 @@ watch(route, () => {
 //debug
 </template>
 
-<style >
+<style>
 .main {
   @apply relative flex min-h-screen bg-cover bg-center bg-fixed;
 }
@@ -45,6 +44,4 @@ watch(route, () => {
 }
 </style>
 
-
-mdi-checkbox-blank-circle-outline
-mdi-checkbox-blank-circle
+mdi-checkbox-blank-circle-outline mdi-checkbox-blank-circle

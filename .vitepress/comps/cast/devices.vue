@@ -1,47 +1,62 @@
 <script setup>
 import {
-  currentCamera, currentMic,
+  currentCamera,
+  currentMic,
   cameras,
   ensureDevicesListPermissions,
   microphones,
   mimeExtMap,
   mimeType,
   getSupportedMimeTypes,
-} from '@use/cast'
+} from "@use/cast";
 
 const camerasItems = computed(() => [
   {
-    value: 'none',
-    display: 'None',
+    value: "none",
+    display: "None",
   },
-  ...cameras.value.map(i => ({
+  ...cameras.value.map((i) => ({
     value: i.deviceId,
     display: i.label,
   })),
-])
+]);
 const microphonesItems = computed(() => [
   {
-    value: 'none',
-    display: 'None',
+    value: "none",
+    display: "None",
   },
-  ...microphones.value.map(i => ({
+  ...microphones.value.map((i) => ({
     value: i.deviceId,
     display: i.label,
   })),
-])
-const mimeTypeItems = getSupportedMimeTypes().map(mime => ({
+]);
+const mimeTypeItems = getSupportedMimeTypes().map((mime) => ({
   value: mime,
   display: mimeExtMap[mime].toUpperCase(),
-}))
-ensureDevicesListPermissions()
+}));
+ensureDevicesListPermissions();
 </script>
 
-<template lang='pug'>
-.flex.flex-wrap.gap-2
+<template lang="pug">
+.flex.flex-wrap.gap-2.text-sm
   select(v-model="currentCamera", title="Camera")
-    option(v-for="camera in camerasItems" :key="camera")
+    option(
+      v-for="camera in camerasItems" 
+      :key="camera"
+      :value="camera.value"
+      ) {{camera.display}}
   select(v-model="currentMic", title="Microphone")
-    option(v-for="microphone in microphonesItems" :key="microphone")
+    option(
+      v-for="microphone in microphonesItems" 
+      :key="microphone" 
+      :value="microphone.value"
+      ) {{microphone.display}}
   select(v-if="mimeTypeItems.length", v-model="mimeType", title="mimeType")
-    option(v-for="mime in mimeTypeItems" :key="mime") {{mime}}
+    option(v-for="mime in mimeTypeItems" :key="mime" :value="mime.value") {{mime.display}}
 </template>
+
+<style lang="postcss" scoped>
+select {
+  @apply px-2 w-full;
+}
+</style>

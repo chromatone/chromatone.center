@@ -1,0 +1,21 @@
+<script setup>
+import { onClickOutside } from "@vueuse/core";
+
+const props = defineProps({
+  open: Boolean,
+});
+
+const emit = defineEmits(["update:open"]);
+
+const panel = ref();
+
+onClickOutside(panel, (ev) => {
+  emit("update:open", false);
+});
+</script>
+
+<template lang="pug">
+transition(name="fade")
+  .absolute.right-2.top-18.bg-light-200.dark_bg-dark-400.shadow-xl.rounded-2xl.max-w-95vw.w-120.p-4.flex.flex-wrap.gap-1(v-if="open" ref="panel")
+    slot
+</template>

@@ -1,28 +1,27 @@
 <script setup>
-import { lchToHsl } from '@use/colors'
-import { pages } from '@theme/composables/pages'
-import { useData } from 'vitepress'
+import { lchToHsl } from "@use/colors";
+import { pages } from "@theme/composables/pages";
+import { useData } from "vitepress";
 const { site } = useData();
 
 defineProps({
   open: { type: Boolean, required: true },
 });
 
-import { useRoute } from 'vitepress'
+import { useRoute } from "vitepress";
 const route = useRoute();
-
-
 </script>
 
 <template lang="pug">
 .panel(:class="{ open }")
   //- a.title(href="/", :aria-label="`${site.title}, назад в начало`") {{ site.title }}
-  .flex.flex-col
-    .my-4.first(v-for="(main, m) in pages['/']" :key="main.title")
+  side-search.m-3
+  .flex.flex-col.gap-8
+    .first(v-for="(main, m) in pages['/']" :key="main.title")
       .level(
         :aria-current="route.path.includes(main.path) ? 'page' : false"
         :style="{ borderColor: lchToHsl(m, pages['/'].length) }"
-        )
+        ) 
         a.mb-2.ml-1(
           style="font-weight:bold"
           :href="main.path"

@@ -2,6 +2,9 @@ import { PolySynth, MonoSynth, start, now, Midi, AutoPanner, Reverb } from 'tone
 import { midi } from './midi'
 import { useStorage, useCycleList } from '@vueuse/core'
 import { useRecorder } from './recorder'
+import { onKeyDown } from '@vueuse/core'
+import { master } from './audio'
+
 
 export const quantizeModes = ['+0', '@8n', '@16n', '@32n']
 
@@ -38,6 +41,10 @@ export const synth = {
 export function useSynth() {
   if (!synth.state.initiated) {
 
+    onKeyDown('Escape', () => {
+      synthReleaseAll()
+    })
+
     watch(synth.params, params => {
       if (synth.poly) {
         synth.poly.set(params)
@@ -65,7 +72,7 @@ export function init() {
   start()
   if (synth?.poly) return
   const { recorder } = useRecorder()
-  synth.pan = new AutoPanner({ frequency: '4n', depth: 0.4 }).toDestination()
+  synth.pan = new AutoPanner({ frequency: '4n', depth: 0.4 }).connect(master)
   synth.pan.connect(recorder)
   synth.reverb = new Reverb(2.5).connect(synth.pan)
   synth.poly = new PolySynth(MonoSynth, synth.params).connect(synth.pan)

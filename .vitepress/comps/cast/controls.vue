@@ -17,20 +17,7 @@ function toggleRecording() {
 </script>
 
 <template lang="pug">
-button.text-button(
-  v-if="currentCamera !== 'none'", 
-  :class="{ 'text-green-500': Boolean(showAvatar && streamCamera) }", 
-  title="Show camera view", 
-  @click="toggleAvatar"
-  )
-  carbon-user-avatar
-    
-button.text-button(
-  :class="{ 'text-red-500': recording }", 
-  title="Recording", 
-  @click="toggleRecording"
-  )
-  carbon-stop-outline(v-if="recording")
-  carbon-video(v-else)
+.
+
       
 </template>

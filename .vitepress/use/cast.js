@@ -141,10 +141,9 @@ export function useRecording() {
     streamCapture.value = await navigator.mediaDevices.getDisplayMedia({
       video: {
         // aspectRatio: 1.6,
-        frameRate: 15,
+        frameRate: 30,
         width: 3840,
         height: 2160,
-        // @ts-expect-error missing types
         cursor: 'motion',
         resizeMode: 'crop-and-scale',
       },
@@ -160,9 +159,9 @@ export function useRecording() {
 
     if (streamCamera.value) {
       const audioTrack = streamCamera.value.getAudioTracks()?.[0]
-      if (audioTrack)
+      if (audioTrack) {
         streamSlides.value.addTrack(audioTrack)
-
+      }
       recorderCamera.value = new Recorder(
         streamCamera.value,
         config,

@@ -6,9 +6,9 @@ date: 2021-01-01
 
 Chromatone is ready to be used in a multitude of music educational products like courses, workshops, posters, stickers and, of course, web-apps. We are ready to get involved in any of these directions and we are glad to meet new companies to collaborate with. 
 
-## Content
+## Educational content
 
-> We are open for educational content collaborations. Chromatone is the platform to create tons of it for different 
+> We are open for educational content collaborations. Chromatone is the platform to produce it for different audiences. In HQ and with music theory expertise.
 
 ### SkillBox video course
 

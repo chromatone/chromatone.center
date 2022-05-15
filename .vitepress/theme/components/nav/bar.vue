@@ -15,12 +15,7 @@ header.nav-bar.relative
   div(class="hidden lg_flex px-3 ml-4 lg_ml-10")
     nav-links
   .flex-grow
-  state-midi
-  client-only
-    synth-panel
-    state-tempo
-    state-audio
-  nav-search.ml-1
+  tool-bar
   nav-toggle-sidebar(@toggle="$emit('toggle')")
 </template>
 

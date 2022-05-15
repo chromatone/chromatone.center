@@ -1,26 +1,26 @@
 <script setup>
-import { midi, stopAll, midiAttack, midiRelease } from '@use/midi.js'
-import { onKeyStroke } from '@vueuse/core'
-import { pitchColor } from '@use/calculations'
-import { synth } from '@use/synth.js'
+import { midi, stopAll, midiAttack, midiRelease } from "@use/midi.js";
+import { onKeyStroke } from "@vueuse/core";
+import { pitchColor } from "@use/calculations";
+import { synth } from "@use/synth.js";
 
 const props = defineProps({
   toChannel: {
     type: Boolean,
     default: true,
-  }
+  },
 });
 
-onKeyStroke(' ', ev => {
-  ev.preventDefault()
-  midi.playing = !midi.playing
+onKeyStroke(" ", (ev) => {
+  ev.preventDefault();
+  midi.playing = !midi.playing;
 });
 
-var isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+var isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
 </script>
 
 <template lang="pug">
-.m-auto.layer.w-full.z-40
+.m-auto.layer.w-full.z-40.flex.flex-wrap
   .p-2.border.border-red-500.text-red-500.flex.flex-wrap.gap-2.w-full(v-if="!midi.enabled") MIDI is not available. Please 
     template(v-if="isFirefox")
       a.font-normal.underline(href="/site_permissions_for_chromatonecenter-1.0-an+fx.xpi") Install site permission (recent Firefox)
@@ -70,9 +70,9 @@ var isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
         pattern="[0-9]*"
         max="16",min="1",length="12", 
         v-model="midi.channel")
-    midi-filter.mx-2
-    .is-group.mx-1.p-1
-      slot
+    midi-filter.mx-2(style="flex: 1 1 100px")
+    
+    slot.is-group.mx-1.p-1
 </template>
 
 <style lang="postcss" scoped>

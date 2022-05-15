@@ -1,7 +1,7 @@
 import { useRafFn } from "@vueuse/core"
-import { Meter, UserMedia, gainToDb } from "tone"
+import { Meter, UserMedia, gainToDb, Gain } from "tone"
 import { useRecorder } from "./recorder"
-
+import { master } from "@use/audio"
 
 
 const mic = reactive({
@@ -22,7 +22,6 @@ export function useMic() {
     meter.normalRange = true
     input = new UserMedia().connect(meter)
     input.connect(recorder)
-
   }
 
   watch(() => mic.open, o => {
@@ -41,9 +40,9 @@ export function useMic() {
 
   watch(() => mic.monitor, mon => {
     if (mon) {
-      input.toDestination()
+      input.connect(master)
     } else {
-      input.disconnect()
+      input.disconnect(master)
     }
   })
 

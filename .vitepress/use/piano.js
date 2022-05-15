@@ -1,11 +1,6 @@
-import { getDestination, Sampler, start, now } from 'tone'
-import { useRecorder } from '@use/recorder'
+import { Sampler, start, now } from 'tone'
+import { useAudio } from '@use/audio'
 
-export const mute = useStorage('mute', false)
-
-watchEffect(() => {
-  getDestination().mute = mute.value
-})
 
 let piano
 
@@ -17,7 +12,7 @@ export function usePiano() {
 export function init() {
   start()
   if (piano) return
-  const { recorder } = useRecorder()
+  const { master } = useAudio()
   piano = new Sampler({
     urls: {
       A0: 'A0.mp3',
@@ -53,26 +48,26 @@ export function init() {
     },
     release: 1,
     baseUrl: '/audio/piano/',
-  }).toDestination()
-  piano.connect(recorder)
+  }).connect(master.limiter)
+
 }
 
 export function pianoOnce(note = 'A4', duration = '8n', time) {
-  if (!piano || mute.value) return init()
+  if (!piano) return init()
   piano.triggerAttackRelease(note, duration, time)
 }
 
 export function pianoAttack(note, velocity) {
-  if (!piano || mute.value) return init()
+  if (!piano) return init()
   piano.triggerAttack(note, now(), velocity)
 }
 
 export function pianoRelease(note) {
-  if (!piano || mute.value) return init()
+  if (!piano) return init()
   piano.triggerRelease(note)
 }
 
 export function pianoReleaseAll() {
-  if (!piano || mute.value) return init()
+  if (!piano) return init()
   piano.releaseAll()
 }

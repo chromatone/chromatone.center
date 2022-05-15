@@ -1,9 +1,15 @@
-import { gainToDb, PanVol, MonoSynth } from "tone";
+import { gainToDb, PanVol, MonoSynth, connect } from "tone";
 import { pitchFreq } from "@use/calculations";
 import { state } from "./state.js";
+import { useAudio } from "../../../.vitepress/use/audio.js";
+import { useAudio } from "@use/audio";
+
 
 export function useSynth(pitch, octave) {
-  const panVol = new PanVol(0, -Infinity).toDestination();
+  const { meter } = useAudio()
+
+  const panVol = new PanVol(0, -Infinity).connect(master.limiter);
+
   const synth = new MonoSynth({
     oscillator: {
       type: "sawtooth",

@@ -1,8 +1,9 @@
 <script setup>
 import { pitchColor, freqColor } from '@use/calculations'
 import { useSvgMouse } from '@use/mouse.js'
-import { MonoSynth, gainToDb } from 'tone'
+import { MonoSynth, gainToDb, Gain } from 'tone'
 import { notes } from '@use/theory'
+import { useAudio } from '../../../.vitepress/use/audio';
 
 const box = {
   width: 1200,
@@ -55,24 +56,27 @@ const synth = reactive({
   }
 })
 
-let synthOne, synthTwo
+let synthOne, synthTwo, synthSum
 
 function initSynth() {
   if (!synth.started) {
+    const { master } = useAudio()
+    synthSum = new Gain(0.3).toDestination()
     synthOne = new MonoSynth({
       oscillator: {
         type: synth.osc
       },
       filterEnvelope: synth.envelope,
-      volume: -4
-    }).toDestination()
+      volume: 0
+    }).connect(synthSum)
     synthTwo = new MonoSynth({
       oscillator: {
         type: synth.osc,
       },
       filterEnvelope: synth.envelope,
-      volume: -4
-    }).toDestination()
+      volume: 0
+    }).connect(synthSum)
+
     synth.started = true
   }
 }
@@ -375,6 +379,7 @@ watch([() => freq.hz, () => mouse.pressed], (hz) => {
 .pointer {
   @apply transition-all duration-100 pointer-events-none;
 }
+
 text {
   @apply pointer-events-none select-none;
 }

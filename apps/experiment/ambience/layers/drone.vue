@@ -32,7 +32,7 @@ const options = useStorage("ambient-synth-options", {
 
 const active = ref(false)
 const note = ref(0)
-const octave = ref(2)
+const octave = ref(1)
 
 const gain = new Gain(options.value.volume).toDestination()
 const filter = new Filter({ type: 'lowpass', frequency: 1500, Q: 0 }).connect(gain)

@@ -20,7 +20,7 @@ var isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
 </script>
 
 <template lang="pug">
-.m-auto.layer.w-full.z-40.flex.flex-wrap
+.m-auto.layer.w-full.z-40.flex.flex-col
   .p-2.border.border-red-500.text-red-500.flex.flex-wrap.gap-2.w-full(v-if="!midi.enabled") MIDI is not available. Please 
     template(v-if="isFirefox")
       a.font-normal.underline(href="/site_permissions_for_chromatonecenter-1.0-an+fx.xpi") Install site permission (recent Firefox)
@@ -31,39 +31,47 @@ var isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
     span or 
     .font-normal.text-dark-200.dark_text-light-100 use your PC keyboard
 
-  .flex.items-center.justify-center.flex-wrap.py-2.m-auto(v-else)
+  .flex.items-center.justify-center.flex-col.py-2.m-auto(v-else)
     .flex.m-2
-      a.font-normal.p-2.border.border-green-500.text-green-500.select-none.rounded-lg(href="/explore/monitor/") 
+      a.font-normal.p-2.border.border-green-500.text-green-500.select-none.rounded-lg(href="/apps/midi/monitor/") 
         span(v-if="midi.available") MIDI 
         span(v-else) Plug in your MIDI device
-    button.text-button.border(
-      @click="midi.keyboard = !midi.keyboard" 
-      aria-label="Play MIDI with PC keyboard"
-      :class="{ active: midi.keyboard }"
-      )
-      tabler-keyboard
-    .text-button.opacity-30(@click="midi.out = !midi.out",:class="{ active: midi.out }") OUT
-    .text-button.w-3em.transition-all.duration-50.cursor-pointer.flex(
-      @mousedown="midiAttack(midi.note)"
-      @mouseup="midiRelease(midi.note)"
-      v-if="midi.note?.name"
-      :style="{ borderColor: pitchColor(midi.note.pitch, midi.note.octA), color: pitchColor(midi.note.pitch, midi.note.octA) }"
-    ) 
-      .w-2em {{ midi.note.name }} 
-      .flex-1 {{ midi.note.accidental }}
-    button.text-button.border(@click="synth.state.midi = !synth.state.midi" :class="{ active: synth.state.midi }")
-      bi-volume-up(v-if="synth.state.midi")
-      bi-volume-off(v-else)
-    button.play.text-button(@click="midi.playing = !midi.playing")
-      la-play(v-if="!midi.playing")
-      la-pause(v-else)
-    button.text-button.border(@click="stopAll()")
-      la-stop
+    .flex
+      .is-group
+        button.play.text-button(@click="midi.playing = !midi.playing")
+          la-play(v-if="!midi.playing")
+          la-pause(v-else)
+        button.text-button.border(@click="stopAll()")
+          la-stop
+      .text-button.w-3em.transition-all.duration-50.cursor-pointer.flex(
+        @mousedown="midiAttack(midi.note)"
+        @mouseup="midiRelease(midi.note)"
+        v-if="midi.note?.name"
+        :style="{ borderColor: pitchColor(midi.note.pitch, midi.note.octA), color: pitchColor(midi.note.pitch, midi.note.octA) }"
+        ) 
+        .w-2em {{ midi.note.name }} 
+        .flex-1 {{ midi.note.accidental }}
+    .flex.flex-wrap
+      button.flex-button.border(
+        @click="midi.keyboard = !midi.keyboard" 
+        aria-label="Play MIDI with PC keyboard"
+        :class="{ active: midi.keyboard }"
+        )
+        tabler-keyboard
+        .m-0 PC keyboard
+      button.flex-button.opacity-30(@click="midi.out = !midi.out",:class="{ active: midi.out }") 
+        fad-midiplug
+        .m-0 MIDI OUT
+      button.flex-button.border(@click="synth.state.midi = !synth.state.midi" :class="{ active: synth.state.midi }")
+        bi-volume-up(v-if="synth.state.midi")
+        bi-volume-off(v-else)
+        .m-0 MIDI Synth
 
-    .text-button.border(v-for="output in midi.outputs")  
+
+    button.text-button.border(v-for="output in midi.outputs")  
       span {{ output.name }}
-    .text-button(v-if="toChannel")
-      span CH
+    button.text-button(v-if="toChannel")
+      span Active Channel
       input.ch.ml-2(
         type="number", 
         inputmode="numeric"
@@ -71,7 +79,7 @@ var isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
         max="16",min="1",length="12", 
         v-model="midi.channel")
     midi-filter.mx-2(style="flex: 1 1 100px")
-    
+
     slot.is-group.mx-1.p-1
 </template>
 

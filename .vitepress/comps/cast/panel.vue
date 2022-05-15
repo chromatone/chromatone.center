@@ -2,7 +2,7 @@
 import { useVModel } from "@vueuse/core";
 import { nextTick } from "vue";
 import {
-  getFilename,
+  fileNames,
   mimeType,
   recordCamera,
   cast,
@@ -31,12 +31,21 @@ const { record, recording: audioRecording, toggled, duration } = useRecorder();
 .flex.flex-col.gap-2.w-full
 
   .flex.flex-wrap
-    button.flex-button(@click="record.start()" v-if="!audioRecording") 
-      mdi-checkbox-blank-circle-outline
-      .m-0 Record audio
-    button.flex-button.text-red-500(@click="record.stop()" v-else)  
-      mdi-checkbox-blank-circle.animate-pulse
-      .p-1 {{(duration/1000).toFixed(1)}} s
+    .is-group.flex.flex-wrap
+      button.flex-button(@click="record.start()" v-if="!audioRecording") 
+        mdi-checkbox-blank-circle-outline
+        .m-0 Record audio
+      button.flex-button.text-red-500(@click="record.stop()" v-else)  
+        mdi-checkbox-blank-circle.animate-pulse
+        .p-1 {{ (duration / 1000).toFixed(1) }} s
+      button.flex-button(
+        :class="{ 'text-red-500': recording }", 
+        title="Recording", 
+        @click="toggleRecording"
+        )
+        carbon-stop-outline(v-if="recording")
+        carbon-video(v-else)
+        .m-0 Record screen
     button.flex-button(
       v-if="currentCamera !== 'none'", 
       :class="{ 'text-green-500': Boolean(showAvatar && streamCamera) }", 
@@ -46,41 +55,32 @@ const { record, recording: audioRecording, toggled, duration } = useRecorder();
       carbon-user-avatar
       .ml-0 Camera avatar
     button.flex-button(
-      :class="{ 'text-red-500': recording }", 
-      title="Recording", 
-      @click="toggleRecording"
-      )
-      carbon-stop-outline(v-if="recording")
-      carbon-video(v-else)
-      .m-0 Record screen
-    button.flex-button(
       @click="options = !options"
       aria-label="Screencast options"
-
-     )
-      la-cog
-      .ml-0 Settings
-  .flex.gap-4(v-if="options")
+      )
+        la-cog
+        .ml-0 Settings
+  .flex.gap-2(v-if="options")
     .flex.flex-col.gap-2.py-2(style="flex: 1 1 100px")
-      .form-text
-        input.bg-transparent.text-current(v-model="recordingName", name="title", type="text", placeholder="Recording title")
       .form-check
         input(v-model="recordCamera", name="record-camera", type="checkbox")
-        label(for="record-camera", @click="recordCamera = !recordCamera") Record camera
+        label(for="record-camera", @click="recordCamera = !recordCamera") Record camera video
+      .form-text
+        input.bg-transparent.text-current(
+          v-model="recordingName", 
+          name="title", 
+          type="text", 
+          placeholder="Recording title"
+          )
+
       .text-xs.w-full.opacity-50
-        .mt-2.opacity-50.
-          
-          Enumerated filenames
-          
-        .font-mono.
-          
-          {{ getFilename('screen', mimeType) }}
-          
-        .font-mono(v-if="recordCamera").
-          
-          {{ getFilename('camera', mimeType) }}
-          
-    cast-devices(style="flex: 1 1 100px")
+        .mt-2.opacity-50 Enumerated filenames
+
+        .font-mono {{ fileNames.screen }}
+
+        .font-mono(v-if="recordCamera") {{ fileNames.camera }}
+
+    cast-devices(style="flex: 10 1 300px")
 
           
 </template>

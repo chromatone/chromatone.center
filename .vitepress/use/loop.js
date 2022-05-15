@@ -15,6 +15,7 @@ import {
 } from "tone";
 import { midiPlay } from "@use/midi";
 import { createAndDownloadBlobFile } from "@use/midiRender";
+import { useAudio } from '@use/audio'
 
 const loops = reactive([]);
 
@@ -54,7 +55,8 @@ export function useLoop(order = 0) {
 
   loops[order] = loop;
 
-  const panner = new PanVol(loop.pan, 0).toDestination();
+  const { master } = useAudio()
+  const panner = new PanVol(loop.pan, 0).connect(master.limiter());
   const synth = new PolySynth({
     envelope: {
       attack: 0.5,

@@ -16,6 +16,6 @@ onClickOutside(panel, (ev) => {
 
 <template lang="pug">
 transition(name="fade")
-  .absolute.right-2.top-18.bg-light-200.dark_bg-dark-400.shadow-xl.rounded-2xl.max-w-95vw.w-120.p-4.flex.flex-wrap.gap-1(v-if="open" ref="panel")
+  .absolute.right-2.top-18.bg-light-200.dark_bg-dark-400.shadow-xl.rounded-2xl.max-w-95vw.w-120.p-4.flex.flex-wrap.gap-1(v-show="open" ref="panel")
     slot
 </template>

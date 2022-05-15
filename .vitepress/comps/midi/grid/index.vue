@@ -3,6 +3,7 @@ import { Midi } from '@tonejs/midi'
 import { pitchColor } from '@use/calculations'
 import { now, PolySynth, Synth, Transport } from 'tone'
 import { createAndDownloadBlobFile } from '@use/midiRender'
+import { master } from '@use/audio'
 
 let midiData
 
@@ -70,7 +71,7 @@ function play() {
           sustain: 0.3,
           release: 1
         }
-      }).toDestination()
+      }).connect(master.limiter)
       synths.push(synth)
       //schedule all of the events
       track.notes.forEach(note => {
@@ -122,9 +123,11 @@ function play() {
 button {
   @apply p-4 m-2 border-1 rounded cursor-pointer;
 }
+
 .track {
   @apply bg-light-900 border-1 p-1 dark_bg-dark-100 select-none cursor-pointer rounded;
 }
+
 .active {
   @apply bg-light-100 border-current dark_bg-dark-900;
 }

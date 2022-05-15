@@ -15,7 +15,8 @@ header.nav-bar.relative
   div(class="hidden lg_flex px-3 ml-4 lg_ml-10")
     nav-links
   .flex-grow
-  tool-bar
+  client-only
+    state-tools
   nav-toggle-sidebar(@toggle="$emit('toggle')")
 </template>
 

@@ -3,6 +3,7 @@ import { Midi } from '@tonejs/midi'
 import { pitchColor } from '@use/calculations'
 import { now, PolySynth, Synth, Transport } from 'tone'
 import { midi } from '@use/midi'
+import { useAudio } from '@use/audio'
 
 let midiData = new Midi()
 
@@ -68,6 +69,7 @@ function calcY(number) {
 const synths = []
 function play() {
   map.playing = !map.playing
+  const { master } = useAudio()
   if (map.playing) {
     const noww = now() + 0.5
     info.filteredTracks.forEach(track => {
@@ -79,7 +81,7 @@ function play() {
           sustain: 0.3,
           release: 1
         }
-      }).toDestination()
+      }).connect(master.limiter)
       synths.push(synth)
       //schedule all of the events
       track.notes.forEach(note => {
@@ -137,9 +139,11 @@ function play() {
 button {
   @apply p-4 m-2 border-1 rounded cursor-pointer;
 }
+
 .track {
   @apply bg-light-900 border-1 p-1;
 }
+
 .active {
   @apply bg-light-100 border-current;
 }

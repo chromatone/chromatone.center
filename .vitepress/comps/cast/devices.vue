@@ -38,25 +38,25 @@ ensureDevicesListPermissions();
 </script>
 
 <template lang="pug">
-.flex.flex-wrap.gap-2.text-sm
+.flex.flex-wrap.gap-2.text-sm 
   select(v-model="currentCamera", title="Camera")
     option(
       v-for="camera in camerasItems" 
       :key="camera"
       :value="camera.value"
-      ) {{camera.display}}
+      ) {{ camera.display || camera.value.substring(0, 10) }}
   select(v-model="currentMic", title="Microphone")
     option(
       v-for="microphone in microphonesItems" 
       :key="microphone" 
       :value="microphone.value"
-      ) {{microphone.display}}
+      ) {{ microphone.display || microphone.value.substring(0, 10) }}
   select(v-if="mimeTypeItems.length", v-model="mimeType", title="mimeType")
-    option(v-for="mime in mimeTypeItems" :key="mime" :value="mime.value") {{mime.display}}
+    option(v-for="mime in mimeTypeItems" :key="mime" :value="mime.value") {{ mime.display }}
 </template>
 
 <style lang="postcss" scoped>
 select {
-  @apply px-2 w-full;
+  @apply px-2 w-full dark_bg-dark-200;
 }
 </style>

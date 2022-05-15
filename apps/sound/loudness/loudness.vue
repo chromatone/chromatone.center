@@ -2,14 +2,14 @@
 import { freqColor, freqPitch, pitchFreq } from '@use/calculations'
 import { notes } from '@use/theory'
 import { MonoSynth, start } from 'tone'
+import { useSvgMouse } from '@use/mouse.js'
+
 
 const started = ref(false)
 function startApp() {
   start()
   started.value = true
 }
-
-import { useSvgMouse } from '@use/mouse.js'
 
 const { svg, area, mouse } = useSvgMouse();
 
@@ -396,6 +396,7 @@ const points = reactive({
 .pointer {
   @apply transition-all duration-50 pointer-events-none;
 }
+
 text {
   @apply pointer-events-none select-none;
 }

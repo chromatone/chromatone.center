@@ -8,25 +8,26 @@ const { mic, input } = useMic();
 
 <template lang="pug">
 .flex.flex-wrap.w-full
-
-  button.flex-button.relative.overflow-hidden(
+  .is-group.flex
+    button.flex-button.relative.overflow-hidden(
       @click="mic.open = !mic.open"
-    )
-    ph-microphone.z-10.relative(v-if="!mic.opened")
-    ph-microphone-fill.z-10.relative(v-else)
-    .m-0 Mic
-  .rounded-xl.overflow-hidden.w-4.relative.my-1.bg-light-800.dark_bg-dark-800
-    .absolute.bottom-0.left-0.w-full.transition-all.duration-50ms(:style="{height: mic.meter*100 + '%', backgroundColor: `hsl(${180-mic.meter*180},90%,50%)`}")
-  button.flex-button(:class="{active: mic.monitor}" @click="mic.monitor = !mic.monitor")
-    ph-ear
-    .m-0 Monitoring
-  control-knob(
-    v-model="mic.volume"
-    :min="0"
-    :max="1"
-    :step="0.001"
-    param="GAIN"
-    )
+      :class="{ active: mic.open }"
+      )
+      ph-microphone.z-10.relative(v-if="!mic.opened")
+      ph-microphone-fill.z-10.relative(v-else)
+      .m-0 Mic
+    button.flex-button(:class="{ active: mic.monitor }" @click="mic.monitor = !mic.monitor")
+      ph-ear
+      .m-0 Monitoring
+    .rounded-xl.overflow-hidden.w-4.relative.my-1.bg-light-800.dark_bg-dark-800
+      .absolute.bottom-0.left-0.w-full.transition-all.duration-50ms(:style="{ height: mic.meter * 100 + '%', backgroundColor: `hsl(${180 - mic.meter * 180},90%,50%)` }")
+    control-knob(
+      v-model="mic.volume"
+      :min="0"
+      :max="1"
+      :step="0.001"
+      param="GAIN"
+      )
   .flex-1
   control-knob(
     param="Vol"
@@ -45,4 +46,5 @@ const { mic, input } = useMic();
         
 </template>
 
-<style lang="postcss" scoped></style>
+<style lang="postcss" scoped>
+</style>

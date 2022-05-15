@@ -1,6 +1,7 @@
 import { freqColor, freqPitch, pitchFreq } from "@use/calculations";
 import { Frequency, Synth, PanVol, gainToDb, LFO, Meter, Filter } from "tone";
 import { useRafFn, watchOnce, onKeyStroke } from "@vueuse/core";
+import { master } from '@use/audio'
 
 const drone = reactive({
   base: 55,
@@ -62,7 +63,7 @@ const audio = {
 
 function initAudio() {
   audio.bus = new PanVol();
-  audio.filter = new Filter(drone.filterFreq).toDestination();
+  audio.filter = new Filter(drone.filterFreq).connect(master.limiter)
   audio.bus.connect(audio.filter);
 }
 

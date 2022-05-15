@@ -1,4 +1,5 @@
-import { getDestination, start, gainToDb, Meter, Context } from "tone";
+import { getDestination, start, gainToDb, Meter, context, Reverb, Limiter } from "tone";
+import { useRecorder } from "./recorder";
 
 const audio = reactive({
   initiated: false,
@@ -6,15 +7,29 @@ const audio = reactive({
   volume: useClamp(useStorage("main-vol", 1), 0, 1),
 });
 
-export let master, masterStream;
+export const master = {}
 
 export function useAudio() {
   if (!audio.initiated) {
     start()
-    const context = new Context()
-    masterStream = context.createMediaStreamDestination()
 
-    master = new Meter().toDestination();
+    const { recorder } = useRecorder()
+
+    master.stream = context.createMediaStreamDestination()
+
+    master.meter = new Meter().toDestination();
+    master.meter.connect(master.stream)
+    master.meter.connect(recorder)
+
+    master.limiter = new Limiter(-18).connect(master.meter)
+
+
+    master.reverb = new Reverb({
+      decay: 2.5,
+      wet: 0.7
+    }).connect(master.meter)
+    master.limiter.connect(master.reverb)
+
 
     watchEffect(() => {
       getDestination().mute = audio.mute;
@@ -23,8 +38,9 @@ export function useAudio() {
     watchEffect(() => {
       getDestination().volume.targetRampTo(gainToDb(audio.volume), 0.1);
     });
+    audio.initiated = true;
   }
-  audio.initiated = true;
+
   return { audio, master };
 }
 

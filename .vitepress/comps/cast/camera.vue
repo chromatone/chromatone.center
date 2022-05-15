@@ -66,7 +66,7 @@ onMounted(fixPosition);
 </script>
 
 <template lang="pug">
-.fixed.z-10(
+.avatar.fixed.z-1000(
   v-if="streamCamera && showAvatar && currentCamera !== 'none'", 
   :style="containerStyle"
   )
@@ -81,10 +81,13 @@ onMounted(fixPosition);
       volume="0", 
       style="transform: rotateY(180deg)"
       )
-    
-  .absolute.bottom-0.right-0.rounded-full.shadow-lg.shadow.z-30.p-2.bg-purple-500(
+
+  .absolute.bottom-0.right-0.rounded-full.shadow-lg.shadow.z-30.p-2.bg-current(
     ref="handler", 
     :style="handleStyle", 
     :class="handlerDown ? '!opacity-100' : ''"
     ) 
 </template>
+
+<style lang="postcss" scoped>
+</style>

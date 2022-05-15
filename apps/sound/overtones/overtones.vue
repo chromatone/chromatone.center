@@ -5,6 +5,7 @@ import { useStorage, useTimestamp } from '@vueuse/core'
 import { pitchColor, freqColor, pitchFreq } from '@use/calculations'
 import { Synth, start, Frequency } from "tone";
 import { globalScale } from '@use/chroma'
+import { useAudio } from '@use/audio'
 
 const box = reactive({
   width: 150,
@@ -31,18 +32,20 @@ const sound = reactive({
     await start()
     sound.started = true
     sound.enabled = true
+
+    const { master } = useAudio()
     sine = new Synth({
       oscillator: {
         type: 'sine',
       },
-      volume: -5,
+      volume: -10,
       envelope: {
         attack: 0.1,
         decay: 0.01,
         sustain: 1,
         release: 4,
       },
-    }).toDestination()
+    }).connect(master.limiter)
     saw = new Synth({
       oscillator: {
         type: 'sawtooth8',
@@ -54,7 +57,7 @@ const sound = reactive({
         sustain: 1,
         release: 4,
       },
-    }).toDestination()
+    }).connect(master.limiter)
   },
   playSaw(note) {
     if (!sound.enabled) {
@@ -102,7 +105,7 @@ watch(() => time.move, move => {
 
 const fundamental = reactive({
   pitch: 0,
-  octave: 3,
+  octave: useStorage('overtones-octave', 2),
   frequency: computed(() => pitchFreq(globalScale.tonic, fundamental.octave)),
   points: computed(() => {
     let points = []
@@ -126,7 +129,7 @@ const fundamental = reactive({
 });
 
 const overtones = reactive({
-  count: 7,
+  count: useStorage('overtones-count', 7),
   min: 2,
   max: 15,
   list: [],

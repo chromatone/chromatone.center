@@ -1,7 +1,6 @@
 import { PolySynth, MonoSynth, start, now, Midi, AutoPanner, Reverb } from 'tone'
 import { midi } from './midi'
 import { useStorage, useCycleList } from '@vueuse/core'
-import { useRecorder } from './recorder'
 import { onKeyDown } from '@vueuse/core'
 import { master } from './audio'
 
@@ -13,14 +12,14 @@ export const synth = {
     midi: useStorage('synth-midi', true),
     initiated: false,
     mute: false,
-    quantize: useCycleList(['+0', '@8n', '@16n', '@32n'], { initialValue: useStorage('synth-quantize', '+0') }),
+    quantize: useCycleList(quantizeModes, { initialValue: '+0' }),
   }),
   params: reactive({
     maxPolyphony: 50,
     oscillator: {
       type: useStorage('synth-osc', 'sawtooth8')
     },
-    volume: -10,
+    volume: -16,
     envelope: {
       attack: 0.009,
       decay: 0.3,
@@ -35,7 +34,7 @@ export const synth = {
       baseFrequency: 60,
       octaves: 5
     }
-  })
+  }),
 }
 
 export function useSynth() {
@@ -44,6 +43,7 @@ export function useSynth() {
     onKeyDown('Escape', () => {
       synthReleaseAll()
     })
+
 
     watch(synth.params, params => {
       if (synth.poly) {
@@ -71,15 +71,12 @@ export function useSynth() {
 export function init() {
   start()
   if (synth?.poly) return
-  const { recorder } = useRecorder()
-  synth.pan = new AutoPanner({ frequency: '4n', depth: 0.4 }).connect(master)
-  synth.pan.connect(recorder)
-  synth.reverb = new Reverb(2.5).connect(synth.pan)
+
+  synth.pan = new AutoPanner({ frequency: '4n', depth: 0.4 }).connect(master.limiter)
+
+
   synth.poly = new PolySynth(MonoSynth, synth.params).connect(synth.pan)
 
-  synth.reverb.wet.set(0.7)
-  synth.poly.connect(synth.reverb)
-  synth.poly.connect(synth.pan)
   synth.pan.start()
 }
 

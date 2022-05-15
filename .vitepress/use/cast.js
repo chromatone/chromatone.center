@@ -1,5 +1,6 @@
 import { useDevicesList, useEventListener, useStorage } from '@vueuse/core'
-
+import { master } from './audio'
+import { mic } from './mic'
 
 export const currentCamera = useStorage('cast-camera', 'default')
 export const currentMic = useStorage('cast-mic', 'default')
@@ -34,6 +35,11 @@ export function getSupportedMimeTypes() {
   return []
 }
 
+export const fileNames = reactive({
+  screen: computed(() => getFilename('screen', mimeType.value)),
+  camera: computed(() => getFilename('camera', mimeType.value)),
+})
+
 
 
 export const {
@@ -42,7 +48,7 @@ export const {
   audioInputs: microphones,
   ensurePermissions: ensureDevicesListPermissions,
 } = useDevicesList({
-  onUpdated() {
+  onUpdated: function () {
     if (currentCamera.value !== 'none') {
       if (!cameras.value.find(i => i.deviceId === currentCamera.value))
         currentCamera.value = cameras.value[0]?.deviceId || 'default'
@@ -158,10 +164,13 @@ export function useRecording() {
     Object.assign(config, customConfig)
 
     if (streamCamera.value) {
-      const audioTrack = streamCamera.value.getAudioTracks()?.[0]
-      if (audioTrack) {
-        streamSlides.value.addTrack(audioTrack)
-      }
+      // const audioTrack = streamCamera.value.getAudioTracks()?.[0]
+      // if (audioTrack) {
+      //   streamSlides.value.addTrack(audioTrack)
+      // }
+
+      streamSlides.value.addTrack(master.stream.stream.getAudioTracks()?.[0])
+
       recorderCamera.value = new Recorder(
         streamCamera.value,
         config,

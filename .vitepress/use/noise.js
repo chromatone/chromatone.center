@@ -9,7 +9,7 @@ import {
   BitCrusher,
 } from "tone";
 import { useStorage, useRafFn, onKeyStroke } from "@vueuse/core";
-
+import { useAudio } from '@use/audio'
 
 const types = { brown: "brown", pink: "pink", white: "white" };
 
@@ -38,7 +38,7 @@ const options = useStorage("noise-options", {
 const filterOptions = useStorage("filter-options", {
   on: false,
   play: false,
-  volume: 1,
+  volume: 0.5,
   baseFrequency: 50,
   depth: 0.1,
   frequency: 1,
@@ -73,7 +73,9 @@ export function useNoise() {
   const fftData = ref([]);
   const fftFreq = ref([]);
 
-  const fft = new FFT({ size: 512, smoothing: 0.2 }).toDestination();
+  const { master } = useAudio()
+
+  const fft = new FFT({ size: 512, smoothing: 0.2 }).connect(master.limiter);
 
   for (let j = 0; j < 32; j++) {
     fftFreq.value[j] = fft.getFrequencyOfIndex(j);

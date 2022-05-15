@@ -2,7 +2,7 @@
 const props = defineProps({
   author: Object,
   i: Number,
-  total: Number
+  total: Number,
 });
 </script>
 
@@ -36,7 +36,7 @@ svg.defs(style="height:0")
   @apply max-w-65ch m-auto flex flex-col  my-16 shadow-lg bg-light-100 dark_bg-dark-300;
 }
 img.avatar {
-  @apply self-start ;
+  @apply self-start w-50;
   flex: 1 1 120px;
   clip-path: url(#squircle);
 }

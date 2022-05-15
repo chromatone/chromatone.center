@@ -1,9 +1,8 @@
 <script setup>
-import { useData } from 'vitepress'
+import { useData } from "vitepress";
 const { theme, site, localePath } = useData();
 
-defineEmits(['toggle']);
-
+defineEmits(["toggle"]);
 </script>
 
 <template lang="pug">
@@ -11,7 +10,7 @@ header.nav-bar.relative
   img.top-4.fixed.z-1000.cursor-pointer.mr-3.h-30px(v-if="theme.icon", :src="theme.icon", alt="Logo" @click="$emit('toggle')")
   .nav-bar-title 
 
-    a.title.pl-10(href="/", :aria-label="`${site.title}, назад в начало`") {{ site.title }}
+    a.title.ml-10(href="/", :aria-label="`${site.title}, назад в начало`") {{ site.title }}
 
   div(class="hidden lg_flex px-3 ml-4 lg_ml-10")
     nav-links

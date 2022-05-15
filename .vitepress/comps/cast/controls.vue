@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { cast, showRecordingDialog } from '@use/cast'
+import { cast, showRecordingDialog } from "@use/cast";
 
 const {
   currentCamera,
@@ -8,19 +8,16 @@ const {
   streamCamera,
   stopRecording,
   toggleAvatar,
-} = cast
+} = cast;
 
 function toggleRecording() {
-  if (recording.value)
-    stopRecording()
-  else
-    showRecordingDialog.value = true
+  if (recording.value) stopRecording();
+  else showRecordingDialog.value = true;
 }
-
 </script>
 
 <template lang="pug">
-button.icon-btn(
+button.text-button(
   v-if="currentCamera !== 'none'", 
   :class="{ 'text-green-500': Boolean(showAvatar && streamCamera) }", 
   title="Show camera view", 
@@ -28,7 +25,7 @@ button.icon-btn(
   )
   carbon-user-avatar
     
-button.icon-btn(
+button.text-button(
   :class="{ 'text-red-500': recording }", 
   title="Recording", 
   @click="toggleRecording"
@@ -36,5 +33,4 @@ button.icon-btn(
   carbon-stop-outline(v-if="recording")
   carbon-video(v-else)
       
-cast-devices
 </template>

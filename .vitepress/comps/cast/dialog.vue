@@ -1,21 +1,20 @@
 <script setup>
 import { useVModel } from "@vueuse/core";
 import { nextTick } from "vue";
-import { getFilename, mimeType, recordCamera, cast, recordingName } from "@use/cast";
+import {
+  getFilename,
+  mimeType,
+  recordCamera,
+  cast,
+  recordingName,
+  showRecordingDialog,
+} from "@use/cast";
 
-const props = defineProps({
-  modelValue: {
-    default: false,
-  },
-});
-
-const emit = defineEmits([]);
-
-const value = useVModel(props, "modelValue", emit);
 const { startRecording } = cast;
 function close() {
-  value.value = false;
+  showRecordingDialog.value = false;
 }
+
 async function start() {
   close();
   await nextTick();
@@ -26,7 +25,7 @@ async function start() {
 </script>
 
 <template lang="pug">
-.px-6.py-4.recording-dialog.flex.flex-col.gap-2
+.px-6.py-4.recording-dialog.flex.flex-col.gap-2(v-if="showRecordingDialog")
   .flex.gap-2.text-xl
     carbon-video.my-auto.
       Recording

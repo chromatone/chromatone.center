@@ -1,7 +1,6 @@
 import { gainToDb, PanVol, MonoSynth, connect } from "tone";
 import { pitchFreq } from "@use/calculations";
 import { state } from "./state.js";
-import { useAudio } from "../../../.vitepress/use/audio.js";
 import { useAudio } from "@use/audio";
 
 

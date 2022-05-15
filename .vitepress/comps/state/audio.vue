@@ -19,8 +19,7 @@ const { mic, input } = useMic();
     button.flex-button(:class="{ active: mic.monitor }" @click="mic.monitor = !mic.monitor")
       ph-ear
       .m-0 Monitoring
-    .rounded-xl.overflow-hidden.w-4.relative.my-1.bg-light-800.dark_bg-dark-800
-      .absolute.bottom-0.left-0.w-full.transition-all.duration-50ms(:style="{ height: mic.meter * 100 + '%', backgroundColor: `hsl(${180 - mic.meter * 180},90%,50%)` }")
+
     control-knob(
       v-model="mic.volume"
       :min="0"
@@ -28,22 +27,24 @@ const { mic, input } = useMic();
       :step="0.001"
       param="GAIN"
       )
+    control-meter.mr-1(:meter="mic.meter")
   .flex-1
-  control-knob(
-    param="Vol"
-    v-model="audio.volume"
-    :min="0"
-    :max="1"
-    :step="0.001"
-    )
-  button.text-button.border.mute.mt-24(
-    @click="audio.mute = !audio.mute" 
-    :class="{ active: !audio.mute }"
-    aria-label="Toggle mute"
-    )
-    bi-volume-up(v-if="!audio.mute")
-    bi-volume-mute(v-else)
-        
+  .flex.flex-wrap.is-group
+    control-knob(
+      param="Vol"
+      v-model="audio.volume"
+      :min="0"
+      :max="1"
+      :step="0.001"
+      )
+    button.text-button.border.mute.mt-24(
+      @click="audio.mute = !audio.mute" 
+      :class="{ active: !audio.mute }"
+      aria-label="Toggle mute"
+      )
+      bi-volume-up(v-if="!audio.mute")
+      bi-volume-mute(v-else)
+    control-meter.mr-1(:meter="audio.meter")
 </template>
 
 <style lang="postcss" scoped>

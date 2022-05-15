@@ -1,7 +1,7 @@
 ---
 title: Educators
 subtitle: Teachers and guides ready to help you find your own way into music
-date: 2022-04-03
+date: 2022-07-03
 buttons:
   - url: https://airtable.com/shrFbtdCJR07jDsaM
     text: Find your educator

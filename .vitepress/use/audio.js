@@ -5,6 +5,7 @@ const audio = reactive({
   initiated: false,
   mute: useStorage("mute", false),
   volume: useClamp(useStorage("main-vol", 1), 0, 1),
+  meter: 0
 });
 
 export const master = {}
@@ -18,8 +19,13 @@ export function useAudio() {
     master.stream = context.createMediaStreamDestination()
 
     master.meter = new Meter().toDestination();
+    master.meter.normalRange = true
     master.meter.connect(master.stream)
     master.meter.connect(recorder)
+
+    useRafFn(() => {
+      audio.meter = master.meter.getValue()
+    })
 
     master.limiter = new Limiter(-18).connect(master.meter)
 

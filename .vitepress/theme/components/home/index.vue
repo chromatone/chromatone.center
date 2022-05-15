@@ -5,7 +5,15 @@ import { pages } from '@theme/composables/pages'
 <template lang="pug">
 main.home(aria-labelledby="main-title")
   .noise
-  home-hero.z-2
+  header.home-hero.mt-16
+  .w-full.max-w-600px.m-auto.p-4
+    figure(
+      v-if="$frontmatter?.icon"
+      )
+      img.block.w-auto(
+        :src="$frontmatter.icon", 
+        :alt="$frontmatter.heroAlt"
+        )
   content.content.z-2
   .flex.flex-col.max-w-65ch.mx-auto
     home-tile-item(
@@ -21,6 +29,7 @@ main.home(aria-labelledby="main-title")
 .home {
   @apply w-full relative pb-16 flex flex-col items-stretch bg-light-500 dark_(bg-dark-500) transition-all duration-600 ease-out;
 }
+
 .noise {
   @apply w-full h-full absolute pointer-events-none z-0;
   background: linear-gradient(to top, hsla(0, 0%, 50%, 1), transparent),

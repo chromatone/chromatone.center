@@ -37,7 +37,7 @@ nav.nav-links
     border-bottom: 0;
   }
 
-  .item + .item {
+  .item+.item {
     padding-left: 24px;
   }
 }

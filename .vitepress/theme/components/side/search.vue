@@ -16,7 +16,7 @@ const candidates = computed(() => fuse.search(input.value));
 <template lang="pug">
 .flex.items-center.relative
   .flex.items-center.w-full
-    input.w-full.p-2.rounded-xl.z-20.bg-light-100.dark_bg-dark-100.shadow-lg(autofocus v-model="input")
+    input.w-full.p-2.rounded-xl.z-20.bg-light-100.dark_bg-dark-100.shadow(autofocus v-model="input")
     button.absolute.left-2.z-400(@mousedown="toggle()" aria-label="Search" v-if="!input" )
       la-search.text-xl
     button.absolute.right-3.z-400(v-else @click="input = ''")

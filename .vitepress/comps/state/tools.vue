@@ -32,7 +32,7 @@ button(
   aria-label="Toggle MIDI panel" 
   :class="{ active: open.midi }")
   mdi-midi-input.transition-all.duration-200.text-xl(
-    :style="{ opacity: midi.enabled ? 1 : 0.2, color: pitchColor(midi.note?.pitch) }"
+    :style="{ color: pitchColor(midi.note?.pitch) }"
     class="visible"
   )
 button.text-xl(

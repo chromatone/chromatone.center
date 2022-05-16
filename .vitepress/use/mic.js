@@ -1,6 +1,7 @@
 import { useRafFn } from "@vueuse/core"
-import { Meter, UserMedia, gainToDb } from "tone"
+import { Meter, UserMedia, gainToDb, Gate, Compressor, StereoWidener } from "tone"
 import { useAudio } from "@use/audio"
+import { useClamp } from "@vueuse/core"
 
 
 export const mic = reactive({
@@ -9,17 +10,24 @@ export const mic = reactive({
   opened: false,
   monitor: false,
   meter: 0,
-  volume: 1
+  volume: useClamp(useStorage('mic-vol', 1), 0, 2),
+  gate: useClamp(useStorage('mic-gate', -60), -100, -40)
 })
 
-let meter, input
+let meter, input, gate, compressor
 
 export function useMic() {
   if (!mic.initiated) {
 
     meter = new Meter()
     meter.normalRange = true
-    input = new UserMedia().connect(meter)
+    input = new UserMedia()
+    compressor = new Compressor({ threshold: -20, ratio: 2 }).connect(meter)
+    gate = new Gate({ threshold: -60, smoothing: 1 })
+
+
+    input.connect(gate)
+    gate.connect(compressor)
 
     const { master } = useAudio()
 
@@ -37,17 +45,11 @@ export function useMic() {
       }
     })
 
-    watch(() => mic.monitor, mon => {
-      if (mon) {
-        input.connect(master.limiter)
-      } else {
-        input.disconnect(master.limiter)
-      }
-    })
+    watch(() => mic.monitor, mon => mon ? meter.connect(master.limiter) : meter.disconnect(master.limiter))
 
-    watch(() => mic.volume, vol => {
-      input.volume.rampTo(gainToDb(vol))
-    })
+    watch(() => mic.volume, vol => input.volume.rampTo(gainToDb(vol)), { immediate: true })
+
+    watch(() => mic.gate, g => gate.threshold = g, { immediate: true })
 
   }
   return { mic, input }

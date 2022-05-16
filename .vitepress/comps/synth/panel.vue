@@ -13,7 +13,7 @@ function cycle() {
 </script>
 
 <template lang="pug">
-.flex.flex-col.w-full
+.flex.flex-col.w-full.gap-2
   .flex.flex-wrap
     button.flex-button(
       :class="{ active: synth.state.initiated }"
@@ -30,6 +30,13 @@ function cycle() {
       .m-0 Stop synth
   .flex.flex-wrap
     synth-oscillators.is-group(v-model="synth.params.oscillator.type")
+    control-knob(
+      :min="0"
+      :max="1"
+      :step="0.001"
+      v-model="synth.state.volume"
+      param="VOL"
+    )
     button.flex-button(
       @click="synth.state.quantize.next()"
       aria-label="Synth panel"

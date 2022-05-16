@@ -4,7 +4,7 @@ import { useRecorder } from "./recorder";
 const audio = reactive({
   initiated: false,
   mute: useStorage("mute", false),
-  volume: useClamp(useStorage("main-vol", 1), 0, 1),
+  volume: useClamp(useStorage("main-vol", 1), 0, 2),
   meter: 0
 });
 
@@ -31,8 +31,8 @@ export function useAudio() {
 
 
     master.reverb = new Reverb({
-      decay: 2.5,
-      wet: 0.7
+      decay: 1,
+      wet: 0.5
     }).connect(master.meter)
     master.limiter.connect(master.reverb)
 

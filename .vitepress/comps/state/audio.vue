@@ -23,9 +23,18 @@ const { mic, input } = useMic();
     control-knob(
       v-model="mic.volume"
       :min="0"
-      :max="1"
+      :max="2"
       :step="0.001"
       param="GAIN"
+      )
+    control-knob(
+      v-model="mic.gate"
+      :min="-100"
+      :max="-40"
+      :step="1"
+      param="GATE"
+      unit="dB"
+      :fixed="0"
       )
     control-meter.mr-1(:meter="mic.meter")
   .flex-1
@@ -34,7 +43,7 @@ const { mic, input } = useMic();
       param="Vol"
       v-model="audio.volume"
       :min="0"
-      :max="1"
+      :max="2"
       :step="0.001"
       )
     button.text-button.border.mute.mt-24(

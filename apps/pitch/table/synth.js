@@ -5,7 +5,7 @@ import { useAudio } from "@use/audio";
 
 
 export function useSynth(pitch, octave) {
-  const { meter } = useAudio()
+  const { master } = useAudio()
 
   const panVol = new PanVol(0, -Infinity).connect(master.limiter);
 

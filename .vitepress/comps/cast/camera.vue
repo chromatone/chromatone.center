@@ -8,7 +8,7 @@ const size = useStorage(
   Math.round(Math.min(window.innerHeight, window.innerWidth / 4))
 );
 
-const zoom = useClamp(1, 1, 3)
+const zoom = useClamp(useStorage('cast-cam-zoom', 1), 1, 3)
 
 const position = useStorage("cast-cam-pos", {
   x: window.innerWidth - size.value - 30,

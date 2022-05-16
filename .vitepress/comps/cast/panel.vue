@@ -9,9 +9,12 @@ import {
   showRecordingDialog,
 } from "@use/cast";
 
+import { useWindowSize } from '@vueuse/core'
+
 const {
   streamCamera,
   showAvatar,
+  recordingTime,
   currentCamera,
   toggleAvatar,
   toggleRecording,
@@ -24,6 +27,9 @@ const options = ref();
 import { useRecorder } from "@use/recorder";
 
 const { record, recording: audioRecording, toggled, duration } = useRecorder();
+
+const { width, height } = useWindowSize()
+
 </script>
 
 <template lang="pug">
@@ -36,7 +42,7 @@ const { record, recording: audioRecording, toggled, duration } = useRecorder();
         .m-0 Record audio
       button.flex-button.text-red-500(@click="record.stop()" v-else)  
         mdi-checkbox-blank-circle.animate-pulse
-        .p-1 {{ (duration / 1000).toFixed(1) }} s
+        .p-1 {{ (duration / 1000).toFixed() }} s
       button.flex-button(
         :class="{ 'text-red-500': recording }", 
         title="Recording", 
@@ -44,7 +50,8 @@ const { record, recording: audioRecording, toggled, duration } = useRecorder();
         )
         carbon-stop-outline(v-if="recording")
         carbon-video(v-else)
-        .m-0 Record screen
+        .m-0 Record screen {{ width }}x{{ height }}
+        .p-1(v-if="recordingTime") {{ (recordingTime / 1000).toFixed() }}s
     button.flex-button(
       v-if="currentCamera !== 'none'", 
       :class="{ 'text-green-500': Boolean(showAvatar && streamCamera) }", 

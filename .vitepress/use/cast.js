@@ -1,6 +1,6 @@
+import { useTimestamp } from '@vueuse/core'
 import { useDevicesList, useEventListener, useStorage } from '@vueuse/core'
 import { master } from './audio'
-import { mic } from './mic'
 
 export const currentCamera = useStorage('cast-camera', 'default')
 export const currentMic = useStorage('cast-mic', 'default')
@@ -71,6 +71,17 @@ export function download(name, url) {
 
 export function useRecording() {
   const recording = ref(false)
+  const recordingStartedAt = ref()
+
+  const timestamp = useTimestamp()
+
+  watch(recording, r => r ? recordingStartedAt.value = Date.now() : recordingStartedAt.value = null)
+
+  const recordingTime = computed(() => {
+    if (!recordingStartedAt.value) return 0
+    return timestamp.value - recordingStartedAt.value
+  })
+
   const showAvatar = ref(false)
 
   const recorderCamera = shallowRef()
@@ -241,6 +252,7 @@ export function useRecording() {
 
   return {
     recording,
+    recordingTime,
     showAvatar,
     toggleRecording,
     startRecording,

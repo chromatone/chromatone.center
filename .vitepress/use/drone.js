@@ -2,6 +2,7 @@ import { freqColor, freqPitch, pitchFreq } from "@use/calculations";
 import { Frequency, Synth, PanVol, gainToDb, LFO, Meter, Filter } from "tone";
 import { useRafFn, watchOnce, onKeyStroke } from "@vueuse/core";
 import { master } from '@use/audio'
+import { createChannel } from "./audio";
 
 const drone = reactive({
   base: 55,
@@ -42,7 +43,7 @@ export function useDrone() {
   watch(
     () => drone.volume,
     (vol) => {
-      audio.bus.volume.targetRampTo(gainToDb(vol), 1);
+      audio.channel.volume.targetRampTo(gainToDb(vol), 1);
     }
   );
   watchOnce(
@@ -62,9 +63,9 @@ const audio = {
 };
 
 function initAudio() {
-  audio.bus = new PanVol();
-  audio.filter = new Filter(drone.filterFreq).connect(master.limiter)
-  audio.bus.connect(audio.filter);
+  const { channel } = createChannel('drone')
+  audio.channel = channel
+  audio.filter = new Filter(drone.filterFreq).connect(channel)
 }
 
 //ONE VOICE
@@ -124,7 +125,7 @@ export function useVoice(interval) {
     });
     va.panner = new PanVol({
       volume: gainToDb(drone.volume),
-    }).connect(audio.bus);
+    }).connect(audio.filter);
     va.lfo = new LFO(Math.random() * 0.5 + 0.01, -0.25, 0.25)
       .connect(va.panner.pan)
       .start();

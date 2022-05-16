@@ -8,7 +8,7 @@ const props = defineProps({
   instrument: { type: String, default: 'inst' },
   title: { type: String, default: 'random-value' },
   minSpeed: { type: Number, default: 0.001 },
-  maxSpeed: { type: Number, default: 1000 },
+  maxSpeed: { type: Number, default: 10000 },
   min: { type: Number, default: 0 },
   max: { type: Number, default: 1 },
   radius: { type: Number, default: 1 },
@@ -61,8 +61,8 @@ function dragMax(drag) {
   .flex.flex-col.p-1.gap-0
     .px-1.pb-1 {{ title }}
     .flex
-      circle-knob(v-model="radius" :max="250" :min="10")
-      circle-knob(v-model="speed" :max="maxSpeed" :min="minSpeed" title="S" :step="1000")
+      control-knob.flex-1(v-model="radius" :max="250" :min="10" param="Radius")
+      control-knob.flex-1(v-model="speed" :max="maxSpeed" :min="minSpeed" param="Speed" :step="1")
   .flex.relative.border-t-1.border-current
     .flex-1.h-6.cursor-pointer(v-drag="dragMin" :drag-options="{ preventWindowScrollY: true }")
     .flex-1.h-6.cursor-pointer(v-drag="dragMax" :drag-options="{ preventWindowScrollY: true }")

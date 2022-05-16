@@ -15,7 +15,7 @@ import {
 } from "tone";
 import { midiPlay } from "@use/midi";
 import { createAndDownloadBlobFile } from "@use/midiRender";
-import { useAudio } from '@use/audio'
+import { createChannel } from '@use/audio'
 
 const loops = reactive([]);
 
@@ -55,8 +55,8 @@ export function useLoop(order = 0) {
 
   loops[order] = loop;
 
-  const { master } = useAudio()
-  const panner = new PanVol(loop.pan, 0).connect(master.limiter());
+  const { channel } = createChannel(`grid-loop-${order}`)
+  const panner = new PanVol(loop.pan, 0).connect(channel);
   const synth = new PolySynth({
     envelope: {
       attack: 0.5,
@@ -162,6 +162,7 @@ export function useLoop(order = 0) {
 }
 
 import { Writer, Track, NoteEvent } from "midi-writer-js";
+
 
 export function renderMidi() {
   let render = [];

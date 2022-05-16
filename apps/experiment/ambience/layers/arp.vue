@@ -1,24 +1,17 @@
 <script setup>
 import ClampedNoise from '../clampedNoise.vue';
 import {
-  FMSynth,
-  gainToDb,
-  dbToGain,
-  FFT,
   Gain,
-  AutoFilter,
-  AutoPanner,
   Reverb,
-  PanVol,
-  Loop,
   PluckSynth,
   Panner,
   Filter,
-  FeedbackDelay,
+  PingPongDelay,
   Pattern
 } from "tone";
 
 import { notes } from '@use/theory'
+import { createChannel } from '@use/audio'
 
 const options = useStorage("ambient-arp-options", {
   attackNoise: 2,
@@ -30,10 +23,12 @@ const active = ref(false)
 const note = ref(0)
 const octave = ref(4)
 
-const gain = new Gain(options.value.volume).toDestination()
+const { channel } = createChannel('ambient-arp')
+
+const gain = new Gain(options.value.volume).connect(channel)
 const filter = new Filter({ type: 'lowpass', frequency: 1500, Q: 0 }).connect(gain)
 const reverb = new Reverb(6).connect(filter)
-const delay = new FeedbackDelay({ delayTime: '4t', feedback: 0.6 }).connect(reverb)
+const delay = new PingPongDelay({ delayTime: '4t', feedback: 0.6 }).connect(reverb)
 const panner = new Panner(0).connect(delay)
 const synth = new PluckSynth({
   attackNoise: 2,
@@ -50,6 +45,7 @@ const loop = new Pattern({
   interval: '8n',
   humanize: true,
 })
+
 
 watch(note, n => {
   loop.values = [notes[n], notes[(n + 7) % 12]]

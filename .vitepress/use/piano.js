@@ -1,5 +1,5 @@
 import { Sampler, start, now } from 'tone'
-import { useAudio } from '@use/audio'
+import { createChannel } from '@use/audio'
 
 
 let piano
@@ -12,7 +12,7 @@ export function usePiano() {
 export function init() {
   start()
   if (piano) return
-  const { master } = useAudio()
+  const { channel } = createChannel('piano')
   piano = new Sampler({
     urls: {
       A0: 'A0.mp3',
@@ -48,7 +48,7 @@ export function init() {
     },
     release: 1,
     baseUrl: '/audio/piano/',
-  }).connect(master.limiter)
+  }).connect(channel)
 
 }
 

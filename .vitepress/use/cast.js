@@ -21,11 +21,11 @@ export function getFilename(media, mimeType) {
 
   const pad = (v) => `${v}`.padStart(2, '0')
 
-  const date = `${pad(d.getMonth() + 1)}${pad(d.getDate())}-${pad(d.getHours())}${pad(d.getMinutes())}`
+  const date = `${d.getFullYear()}-${pad(d.getMonth() + 1)}${pad(d.getDate())}-${pad(d.getHours())}${pad(d.getMinutes())}`
 
   const ext = mimeType ? mimeExtMap[mimeType] : 'webm'
 
-  return `${[media, recordingName.value, date].filter(el => !!el).join('-')}.${ext}`
+  return `${[date, media, recordingName.value].filter(el => !!el).join('-')}.${ext}`
 }
 
 export function getSupportedMimeTypes() {

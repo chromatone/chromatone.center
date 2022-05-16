@@ -2,13 +2,13 @@
 import { useAudio } from "@use/audio";
 import { useMic } from "@use/mic";
 
-const { audio } = useAudio();
+const { audio, channels } = useAudio();
 const { mic, input } = useMic();
 </script>
 
 <template lang="pug">
-.flex.flex-wrap.w-full
-  .is-group.flex
+.flex.flex-col.w-full.gap-2
+  .is-group.flex.p-2
     button.flex-button.relative.overflow-hidden(
       @click="mic.open = !mic.open"
       :class="{ active: mic.open }"
@@ -37,8 +37,8 @@ const { mic, input } = useMic();
       :fixed="0"
       )
     control-meter.mr-1(:meter="mic.meter")
-  .flex-1
-  .flex.flex-wrap.is-group
+  .flex.flex-wrap.is-group.items-center.p-2
+    .p-1.font-bold Master
     control-knob(
       param="Vol"
       v-model="audio.volume"
@@ -54,6 +54,10 @@ const { mic, input } = useMic();
       bi-volume-up(v-if="!audio.mute")
       bi-volume-mute(v-else)
     control-meter.mr-1(:meter="audio.meter")
+
+  .flex.flex-wrap.items-center.is-group.p-2.gap-2(v-if="Object.keys(channels).length > 0")
+    .p-1.font-bold Channels
+    .p-1.text-sm(v-for="(channel, title) in channels" :key="channel") {{ title }}
 </template>
 
 <style lang="postcss" scoped>

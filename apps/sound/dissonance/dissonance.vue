@@ -3,7 +3,7 @@ import { pitchColor, freqColor } from '@use/calculations'
 import { useSvgMouse } from '@use/mouse.js'
 import { MonoSynth, gainToDb, Gain } from 'tone'
 import { notes } from '@use/theory'
-import { useAudio } from '../../../.vitepress/use/audio';
+import { createChannel } from '@use/audio';
 
 const box = {
   width: 1200,
@@ -56,26 +56,26 @@ const synth = reactive({
   }
 })
 
-let synthOne, synthTwo, synthSum
+let synthOne, synthTwo
 
 function initSynth() {
   if (!synth.started) {
-    const { master } = useAudio()
-    synthSum = new Gain(0.3).toDestination()
+    const { channel } = createChannel('dissonance')
+
     synthOne = new MonoSynth({
       oscillator: {
         type: synth.osc
       },
       filterEnvelope: synth.envelope,
       volume: 0
-    }).connect(synthSum)
+    }).connect(channel)
     synthTwo = new MonoSynth({
       oscillator: {
         type: synth.osc,
       },
       filterEnvelope: synth.envelope,
       volume: 0
-    }).connect(synthSum)
+    }).connect(channel)
 
     synth.started = true
   }

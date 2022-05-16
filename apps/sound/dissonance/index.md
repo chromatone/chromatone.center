@@ -15,7 +15,9 @@ links:
 import dissonance from './dissonance.vue'
 </script>
 
-<dissonance />
+<client-only>
+  <dissonance />
+</client-only>
 
 A simple curve for two sine waves is readily established and then we can calculate and explore sensory dissonance curves for complex sounds as the sum of interactions between their partials.
 

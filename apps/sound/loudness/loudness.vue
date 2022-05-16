@@ -3,7 +3,7 @@ import { freqColor, freqPitch, pitchFreq } from '@use/calculations'
 import { notes } from '@use/theory'
 import { MonoSynth, start } from 'tone'
 import { useSvgMouse } from '@use/mouse.js'
-
+import { createChannel } from '@use/audio'
 
 const started = ref(false)
 function startApp() {
@@ -51,18 +51,21 @@ const pressure = reactive({
   }
 })
 
-
+let channel
 
 const points = reactive({
   list: [],
   add() {
+    if (!channel) {
+      ; ({ channel } = createChannel('loudness'))
+    }
     let hz = freq.toHz(mouse.normX)
     let synth = new MonoSynth({
       oscillator: {
         type: "sine"
       },
       volume: pressure.db
-    }).toDestination()
+    }).connect(channel)
     synth.triggerAttack(hz, mouse.normY)
     let pitch = (freqPitch(hz) + 120) % 12
     if (pitch > 11.5) pitch = 0

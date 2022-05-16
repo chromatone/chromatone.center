@@ -10,6 +10,7 @@ import {
 } from "tone";
 import { useStorage, useRafFn, onKeyStroke } from "@vueuse/core";
 import { useAudio } from '@use/audio'
+import { createChannel } from "./audio";
 
 const types = { brown: "brown", pink: "pink", white: "white" };
 
@@ -73,9 +74,9 @@ export function useNoise() {
   const fftData = ref([]);
   const fftFreq = ref([]);
 
-  const { master } = useAudio()
+  const { channel } = createChannel('noise')
 
-  const fft = new FFT({ size: 512, smoothing: 0.2 }).connect(master.limiter);
+  const fft = new FFT({ size: 512, smoothing: 0.2 }).connect(channel);
 
   for (let j = 0; j < 32; j++) {
     fftFreq.value[j] = fft.getFrequencyOfIndex(j);

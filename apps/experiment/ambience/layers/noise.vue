@@ -14,6 +14,7 @@ import {
   Filter
 } from "tone";
 
+import { createChannel } from '@use/audio'
 
 const options = useStorage("ambient-options", {
   noise: {
@@ -29,7 +30,10 @@ const options = useStorage("ambient-options", {
 });
 
 const active = ref(false)
-const gain = new Gain(options.value.volume).toDestination()
+
+const { channel } = createChannel('ambient-noise')
+
+const gain = new Gain(options.value.volume).connect(channel)
 const filter = new Filter({ type: 'lowpass', frequency: 1500, Q: 0 }).connect(gain)
 const reverb = new Reverb(4).connect(filter)
 const bitCrusher = new BitCrusher(4).connect(reverb)

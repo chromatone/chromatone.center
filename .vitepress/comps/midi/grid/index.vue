@@ -3,7 +3,7 @@ import { Midi } from '@tonejs/midi'
 import { pitchColor } from '@use/calculations'
 import { now, PolySynth, Synth, Transport } from 'tone'
 import { createAndDownloadBlobFile } from '@use/midiRender'
-import { master } from '@use/audio'
+import { useAudio } from '@use/audio'
 
 let midiData
 
@@ -62,8 +62,10 @@ function play() {
   map.playing = !map.playing
   if (map.playing) {
     const noww = now() + 0.5
-    info.filteredTracks.forEach(track => {
+    info?.filteredTracks?.forEach(track => {
       //create a synth for each track
+      console.log(track)
+      const { master } = useAudio()
       const synth = new PolySynth(Synth, {
         envelope: {
           attack: 0.02,

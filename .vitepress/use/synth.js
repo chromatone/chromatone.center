@@ -1,8 +1,8 @@
-import { PolySynth, MonoSynth, start, now, Midi, AutoPanner, Reverb, gainToDb, StereoWidener, Channel } from 'tone'
+import { PolySynth, MonoSynth, start, now, Midi, AutoPanner, Reverb, gainToDb, StereoWidener, PingPongDelay } from 'tone'
 import { midi } from './midi'
 import { useStorage, useCycleList } from '@vueuse/core'
 import { onKeyDown } from '@vueuse/core'
-import { useAudio } from './audio'
+import { createChannel } from './audio'
 import { useClamp } from '@vueuse/core'
 
 
@@ -23,7 +23,7 @@ export const synth = {
     },
     volume: -20,
     envelope: {
-      attack: 0.009,
+      attack: 0.01,
       decay: 0.1,
       sustain: 0.6,
       release: 1,
@@ -74,13 +74,14 @@ export function useSynth() {
 export function init() {
   start()
   if (synth?.poly) return
-  const { master } = useAudio()
+  const { channel } = createChannel('synth')
 
-  synth.channel = new Channel().connect(master.limiter)
+  synth.widener = new StereoWidener(0.7).connect(channel)
 
-  synth.widener = new StereoWidener(0.5).connect(synth.channel)
+  synth.reverb = new Reverb(3).connect(synth.widener)
+  synth.delay = new PingPongDelay({ delayTime: '16n', feedback: 0.3, wet: 0.3, maxDelay: '4n' }).connect(synth.widener)
 
-  synth.pan = new AutoPanner({ frequency: '4n', depth: 0.4 }).connect(synth.widener)
+  synth.pan = new AutoPanner({ frequency: '4n', depth: 0.4 }).connect(synth.reverb).connect(synth.delay).connect(synth.widener)
 
 
   synth.poly = new PolySynth(MonoSynth, synth.params).connect(synth.pan)

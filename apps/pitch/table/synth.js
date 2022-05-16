@@ -1,13 +1,14 @@
 import { gainToDb, PanVol, MonoSynth, connect } from "tone";
 import { pitchFreq } from "@use/calculations";
 import { state } from "./state.js";
-import { useAudio } from "@use/audio";
+import { createChannel } from "@use/audio";
+
+
 
 
 export function useSynth(pitch, octave) {
-  const { master } = useAudio()
-
-  const panVol = new PanVol(0, -Infinity).connect(master.limiter);
+  const { channel } = createChannel('table')
+  const panVol = new PanVol(0, -Infinity).connect(channel);
 
   const synth = new MonoSynth({
     oscillator: {

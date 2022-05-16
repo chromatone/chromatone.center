@@ -12,7 +12,7 @@ useRafFn(() => {
   count.value += 1
 })
 
-export function useSimplex({ title = 'simplex', size = 10, minSpeed = 0.001, maxSpeed = 4000 } = {}) {
+export function useSimplex({ title = 'simplex', size = 10, minSpeed = 0.001, maxSpeed = 10000 } = {}) {
 
   const progress = ref(0)
 

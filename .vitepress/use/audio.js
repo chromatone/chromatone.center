@@ -1,4 +1,4 @@
-import { getDestination, start, gainToDb, Meter, context, Reverb, Limiter } from "tone";
+import { getDestination, start, gainToDb, Meter, context, Reverb, Limiter, Channel, Solo, Gain } from "tone";
 import { useRecorder } from "./recorder";
 
 const audio = reactive({
@@ -8,7 +8,9 @@ const audio = reactive({
   meter: 0
 });
 
-export const master = {}
+export const master = shallowReactive({})
+
+export const channels = shallowReactive({})
 
 export function useAudio() {
   if (!audio.initiated) {
@@ -47,7 +49,16 @@ export function useAudio() {
     audio.initiated = true;
   }
 
-  return { audio, master };
+  return { audio, master, channels };
+}
+
+export function createChannel(title = (Math.random() * 1000).toFixed(0), options) {
+  const { master } = useAudio()
+  const channel = new Limiter(options).connect(master.limiter)
+  channels[title] = channel
+
+
+  return { channel }
 }
 
 

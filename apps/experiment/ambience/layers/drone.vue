@@ -15,6 +15,8 @@ import {
 } from "tone";
 
 import { notes } from '@use/theory'
+import { createChannel } from '@use/audio'
+
 
 const options = useStorage("ambient-synth-options", {
   oscillator: {
@@ -34,7 +36,9 @@ const active = ref(false)
 const note = ref(0)
 const octave = ref(1)
 
-const gain = new Gain(options.value.volume).toDestination()
+const { channel } = createChannel('ambient-drone')
+
+const gain = new Gain(options.value.volume).connect(channel)
 const filter = new Filter({ type: 'lowpass', frequency: 1500, Q: 0 }).connect(gain)
 const reverb = new Reverb(4).connect(filter)
 const panner = new Panner(0).connect(reverb)

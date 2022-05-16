@@ -1,6 +1,6 @@
 import { useRafFn } from "@vueuse/core"
 import { Meter, UserMedia, gainToDb, Gate, Compressor, StereoWidener } from "tone"
-import { useAudio } from "@use/audio"
+import { createChannel } from "@use/audio"
 import { useClamp } from "@vueuse/core"
 
 
@@ -29,7 +29,7 @@ export function useMic() {
     input.connect(gate)
     gate.connect(compressor)
 
-    const { master } = useAudio()
+    const { channel } = createChannel('mic')
 
     watch(() => mic.open, o => {
       if (o) {
@@ -45,7 +45,7 @@ export function useMic() {
       }
     })
 
-    watch(() => mic.monitor, mon => mon ? meter.connect(master.limiter) : meter.disconnect(master.limiter))
+    watch(() => mic.monitor, mon => mon ? meter.connect(channel) : meter.disconnect(channel))
 
     watch(() => mic.volume, vol => input.volume.rampTo(gainToDb(vol)), { immediate: true })
 

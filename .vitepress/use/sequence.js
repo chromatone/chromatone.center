@@ -12,7 +12,7 @@ import {
   Meter,
   UserMedia,
 } from "tone";
-import { useAudio } from '@use/audio'
+import { createChannel } from '@use/audio'
 
 export const tracks = reactive([]);
 
@@ -38,8 +38,8 @@ export function useSequence(
 
 
 
-  const { master } = useAudio()
-  audio.panner = new PanVol(pan, 0).connect(master.limiter);
+  const { channel } = createChannel(`sequence-${mode}-${order}`)
+  audio.panner = new PanVol(pan, 0).connect(channel);
 
   audio.synth = new Sampler({
     urls: {

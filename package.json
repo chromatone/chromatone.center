@@ -22,7 +22,7 @@
   "dependencies": {
     "@tonaljs/tonal": "^4.6.5",
     "@tonejs/midi": "^2.0.28",
-    "@vueuse/core": "^8.4.2",
+    "@vueuse/core": "^8.4.0",
     "@vueuse/gesture": "^1.0.0",
     "abcjs": "^6.0.2",
     "audio-recorder-polyfill": "^0.4.1",
@@ -45,6 +45,7 @@
     "webmidi": "^3.0.20"
   },
   "devDependencies": {
+    "vue-demi": "^0.12.5",
     "@iconify/json": "^2.1.43",
     "markdown-it-external-links": "^0.0.6",
     "patch-vue-directive-ssr": "^0.0.1",

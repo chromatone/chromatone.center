@@ -1,5 +1,5 @@
 <script setup>
-import { useFocus, onClickOutside } from "@vueuse/core";
+import { onClickOutside } from "@vueuse/core";
 import Fuse from "fuse.js";
 import routes from "~pages";
 

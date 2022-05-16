@@ -16,7 +16,7 @@ export function lchToHsl(n = 0, total = 12, a = 1, s = 20, lightness = 60) {
   return hsl;
 }
 
-export const currentColor = useStorage("main-color", "#333333");
+// export const currentColor = useStorage("main-color", "#333333");
 
 export function getColorInfo(color) {
   const cld = colord(color);

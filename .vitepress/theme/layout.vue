@@ -10,6 +10,8 @@ const openSideBar = ref(false);
 watch(route, () => {
   openSideBar.value = false;
 });
+
+onUpdated(() => { })
 </script>
 
 <template lang="pug">

@@ -1,6 +1,4 @@
 <script setup>
-import CircleKnob from './knob.vue'
-
 import { simplex, useSimplex } from './simplex';
 import tc from 'thousands-counter';
 

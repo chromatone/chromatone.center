@@ -23,6 +23,23 @@ export const midi = reactive({
   clock: 0,
   filter: useStorage("global-midi-filter", {}),
   available: computed(() => Object.entries(midi.outputs).length > 0),
+  activeNotes: computed(() => {
+    let notes = {}
+    for (let ch in midi.channels) {
+
+      for (let num in midi.channels[ch].activeNotes) {
+        notes[num] = midi.channels[ch].activeNotes[num]
+      }
+    }
+    return notes
+  }),
+  activeChroma: computed(() => {
+    let chroma = new Array(12)
+    for (let num in midi.activeNotes) {
+      chroma[(num - 9) % 12] = num
+    }
+    return chroma
+  })
 });
 
 const noteKeys = {
@@ -208,19 +225,22 @@ function noteInOn(ev) {
   note.type = ev.type;
   note.timestamp = ev.timestamp;
   note.channel = ev.target.number;
+  if (midi.filter[note.channel]) return;
+  createChannel(note.channel);
+  midi.channels[note.channel].notes[note.number] = note;
   if (ev.type == "noteoff") {
     note.velocity = 0;
+    delete midi.channels[note.channel].activeNotes[note.number]
   } else {
     note.velocity = 100;
+    midi.channels[note.channel].activeNotes[note.number] = true
   }
   note.pitch = (note.number + 3) % 12;
   note.octA = Math.floor((note.number + 3) / 12) - 1;
-  if (midi.filter[note.channel]) return;
   midi.note = note;
-  createChannel(note.channel);
-  midi.channels[note.channel].notes[note.number] = note;
   return note;
 }
+
 
 function ccIn(ev) {
   if (midi.filter[ev.target.number]) return;
@@ -239,7 +259,7 @@ function ccIn(ev) {
 
 function createChannel(ch) {
   if (!midi.channels[ch]) {
-    midi.channels[ch] = { num: ch, activeNotes: {}, notes: {}, cc: {} };
+    midi.channels[ch] = reactive({ num: ch, activeNotes: {}, notes: {}, cc: {} });
   }
 }
 

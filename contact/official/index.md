@@ -1,5 +1,5 @@
 ---
-title: Project
+title: Official
 subtitle: All the channels to interact with and about Chromatone
 
 date: 2021-01-19

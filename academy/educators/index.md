@@ -21,7 +21,7 @@ teachers:
     social:
       instagram: starov
       telegram: starov
-      email: me@starovdenis.com
+      email: davay@chromatone.center
       github: davay42
 ---
 

@@ -21,3 +21,9 @@ In 2021 we've been working with the educational platform called [SkillBox](https
 ### Playtronica web experience
 
 In 2022 we started our web-app collaboration with [Playtronica](https://playtronica.com). They're building MIDI controllers and we're building an interactive audio-visual playground web application together - the [TouchMe Experience](./../../apps/experiment/touchme/index.md). 
+
+## Music video production
+
+### tsoop
+
+[tsoop.ru](https://tsoop.ru) is an improvisational electronic music project with visualizations based on Chromatone system. There's a couple of albums published, but the main focus is on live collaborative music events. It's the research about what else can we can perform together.  🥁 

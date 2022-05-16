@@ -64,6 +64,8 @@ side-panel(v-model:open="open.audio")
   state-audio
 side-panel(v-model:open="open.record")
   cast-panel
+
+midi-notes
 </template>
 
 <style lang="postcss" scoped>

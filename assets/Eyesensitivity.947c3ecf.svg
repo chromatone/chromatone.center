@@ -1,0 +1,1172 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="669.01099"
+   height="588.56006"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="Nowy dokument 1">
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.35"
+     inkscape:cx="752.10223"
+     inkscape:cy="540.92005"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1366"
+     inkscape:window-height="705"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <defs
+     id="defs4">
+    <linearGradient
+       y2="405.21933"
+       x2="697.14282"
+       y1="405.21933"
+       x1="54.285713"
+       gradientTransform="matrix(1.2523854,0,0,0.33937845,78.032405,466.268)"
+       gradientUnits="userSpaceOnUse"
+       id="linearGradient5655"
+       xlink:href="#linearGradient3142"
+       inkscape:collect="always" />
+    <linearGradient
+       id="linearGradient3142">
+      <stop
+         id="WL380nm"
+         offset="0"
+         style="stop-color:#00121F;stop-opacity:1;" />
+      <stop
+         id="WL381nm"
+         offset="0.00602409638554217"
+         style="stop-color:#00121F;stop-opacity:1;" />
+      <stop
+         id="WL383nm"
+         offset="0.0120481927710843"
+         style="stop-color:#00121F;stop-opacity:1;" />
+      <stop
+         id="WL385nm"
+         offset="0.0180722891566265"
+         style="stop-color:#00121F;stop-opacity:1;" />
+      <stop
+         id="WL387nm"
+         offset="0.0240963855421687"
+         style="stop-color:#00121F;stop-opacity:1;" />
+      <stop
+         id="WL389nm"
+         offset="0.0301204819277108"
+         style="stop-color:#001930;stop-opacity:1;" />
+      <stop
+         id="WL391nm"
+         offset="0.036144578313253"
+         style="stop-color:#001930;stop-opacity:1;" />
+      <stop
+         id="WL393nm"
+         offset="0.0421686746987952"
+         style="stop-color:#240036;stop-opacity:1;" />
+      <stop
+         id="WL395nm"
+         offset="0.0481927710843374"
+         style="stop-color:#24003E;stop-opacity:1;" />
+      <stop
+         id="WL397nm"
+         offset="0.0542168674698795"
+         style="stop-color:#1F0043;stop-opacity:1;" />
+      <stop
+         id="WL399nm"
+         offset="0.0602409638554217"
+         style="stop-color:#190048;stop-opacity:1;" />
+      <stop
+         id="WL401nm"
+         offset="0.0662650602409639"
+         style="stop-color:#330052;stop-opacity:1;" />
+      <stop
+         id="WL403nm"
+         offset="0.072289156626506"
+         style="stop-color:#2C0059;stop-opacity:1;" />
+      <stop
+         id="WL405nm"
+         offset="0.0783132530120482"
+         style="stop-color:#240061;stop-opacity:1;" />
+      <stop
+         id="WL407nm"
+         offset="0.0843373493975904"
+         style="stop-color:#1F006A;stop-opacity:1;" />
+      <stop
+         id="WL409nm"
+         offset="0.0903614457831325"
+         style="stop-color:#2C0078;stop-opacity:1;" />
+      <stop
+         id="WL411nm"
+         offset="0.0963855421686747"
+         style="stop-color:#360087;stop-opacity:1;" />
+      <stop
+         id="WL413nm"
+         offset="0.102409638554217"
+         style="stop-color:#390096;stop-opacity:1;" />
+      <stop
+         id="WL415nm"
+         offset="0.108433734939759"
+         style="stop-color:#4C00A8;stop-opacity:1;" />
+      <stop
+         id="WL417nm"
+         offset="0.114457831325301"
+         style="stop-color:#5500BC;stop-opacity:1;" />
+      <stop
+         id="WL419nm"
+         offset="0.120481927710843"
+         style="stop-color:#5200CD;stop-opacity:1;" />
+      <stop
+         id="WL421nm"
+         offset="0.126506024096386"
+         style="stop-color:#6100E2;stop-opacity:1;" />
+      <stop
+         id="WL423nm"
+         offset="0.132530120481928"
+         style="stop-color:#6B00F8;stop-opacity:1;" />
+      <stop
+         id="WL425nm"
+         offset="0.13855421686747"
+         style="stop-color:#6E00FF;stop-opacity:1;" />
+      <stop
+         id="WL427nm"
+         offset="0.144578313253012"
+         style="stop-color:#7000FF;stop-opacity:1;" />
+      <stop
+         id="WL429nm"
+         offset="0.150602409638554"
+         style="stop-color:#6E00FF;stop-opacity:1;" />
+      <stop
+         id="WL431nm"
+         offset="0.156626506024096"
+         style="stop-color:#6C00FF;stop-opacity:1;" />
+      <stop
+         id="WL433nm"
+         offset="0.162650602409639"
+         style="stop-color:#6E00FF;stop-opacity:1;" />
+      <stop
+         id="WL435nm"
+         offset="0.168674698795181"
+         style="stop-color:#7000FF;stop-opacity:1;" />
+      <stop
+         id="WL437nm"
+         offset="0.174698795180723"
+         style="stop-color:#6F00FF;stop-opacity:1;" />
+      <stop
+         id="WL439nm"
+         offset="0.180722891566265"
+         style="stop-color:#6C00FF;stop-opacity:1;" />
+      <stop
+         id="WL441nm"
+         offset="0.186746987951807"
+         style="stop-color:#6A00FF;stop-opacity:1;" />
+      <stop
+         id="WL443nm"
+         offset="0.192771084337349"
+         style="stop-color:#6700FF;stop-opacity:1;" />
+      <stop
+         id="WL445nm"
+         offset="0.198795180722892"
+         style="stop-color:#6700FF;stop-opacity:1;" />
+      <stop
+         id="WL447nm"
+         offset="0.204819277108434"
+         style="stop-color:#6100FF;stop-opacity:1;" />
+      <stop
+         id="WL449nm"
+         offset="0.210843373493976"
+         style="stop-color:#5C00FF;stop-opacity:1;" />
+      <stop
+         id="WL451nm"
+         offset="0.216867469879518"
+         style="stop-color:#5700FF;stop-opacity:1;" />
+      <stop
+         id="WL453nm"
+         offset="0.22289156626506"
+         style="stop-color:#5900FF;stop-opacity:1;" />
+      <stop
+         id="WL455nm"
+         offset="0.228915662650602"
+         style="stop-color:#5400FF;stop-opacity:1;" />
+      <stop
+         id="WL457nm"
+         offset="0.234939759036145"
+         style="stop-color:#4E00FF;stop-opacity:1;" />
+      <stop
+         id="WL459nm"
+         offset="0.240963855421687"
+         style="stop-color:#4300FF;stop-opacity:1;" />
+      <stop
+         id="WL461nm"
+         offset="0.246987951807229"
+         style="stop-color:#3300FF;stop-opacity:1;" />
+      <stop
+         id="WL463nm"
+         offset="0.253012048192771"
+         style="stop-color:#1F00FF;stop-opacity:1;" />
+      <stop
+         id="WL465nm"
+         offset="0.259036144578313"
+         style="stop-color:#0019FF;stop-opacity:1;" />
+      <stop
+         id="WL467nm"
+         offset="0.265060240963855"
+         style="stop-color:#003CFF;stop-opacity:1;" />
+      <stop
+         id="WL469nm"
+         offset="0.271084337349398"
+         style="stop-color:#0050FF;stop-opacity:1;" />
+      <stop
+         id="WL471nm"
+         offset="0.27710843373494"
+         style="stop-color:#0061FF;stop-opacity:1;" />
+      <stop
+         id="WL473nm"
+         offset="0.283132530120482"
+         style="stop-color:#0070FF;stop-opacity:1;" />
+      <stop
+         id="WL475nm"
+         offset="0.289156626506024"
+         style="stop-color:#007FFF;stop-opacity:1;" />
+      <stop
+         id="WL477nm"
+         offset="0.295180722891566"
+         style="stop-color:#008DFF;stop-opacity:1;" />
+      <stop
+         id="WL479nm"
+         offset="0.301204819277108"
+         style="stop-color:#009DFF;stop-opacity:1;" />
+      <stop
+         id="WL481nm"
+         offset="0.307228915662651"
+         style="stop-color:#00A3FA;stop-opacity:1;" />
+      <stop
+         id="WL483nm"
+         offset="0.313253012048193"
+         style="stop-color:#00B1F5;stop-opacity:1;" />
+      <stop
+         id="WL485nm"
+         offset="0.319277108433735"
+         style="stop-color:#00B6ED;stop-opacity:1;" />
+      <stop
+         id="WL487nm"
+         offset="0.325301204819277"
+         style="stop-color:#00BBE6;stop-opacity:1;" />
+      <stop
+         id="WL489nm"
+         offset="0.331325301204819"
+         style="stop-color:#00C4E1;stop-opacity:1;" />
+      <stop
+         id="WL491nm"
+         offset="0.337349397590361"
+         style="stop-color:#00CDDD;stop-opacity:1;" />
+      <stop
+         id="WL493nm"
+         offset="0.343373493975904"
+         style="stop-color:#00D6DA;stop-opacity:1;" />
+      <stop
+         id="WL495nm"
+         offset="0.349397590361446"
+         style="stop-color:#00DFD8;stop-opacity:1;" />
+      <stop
+         id="WL497nm"
+         offset="0.355421686746988"
+         style="stop-color:#00E3D5;stop-opacity:1;" />
+      <stop
+         id="WL499nm"
+         offset="0.36144578313253"
+         style="stop-color:#00EBD4;stop-opacity:1;" />
+      <stop
+         id="WL501nm"
+         offset="0.367469879518072"
+         style="stop-color:#00F6D5;stop-opacity:1;" />
+      <stop
+         id="WL503nm"
+         offset="0.373493975903614"
+         style="stop-color:#00FDD4;stop-opacity:1;" />
+      <stop
+         id="WL505nm"
+         offset="0.379518072289157"
+         style="stop-color:#00FFCF;stop-opacity:1;" />
+      <stop
+         id="WL507nm"
+         offset="0.385542168674699"
+         style="stop-color:#00FFCA;stop-opacity:1;" />
+      <stop
+         id="WL509nm"
+         offset="0.391566265060241"
+         style="stop-color:#00FFC4;stop-opacity:1;" />
+      <stop
+         id="WL511nm"
+         offset="0.397590361445783"
+         style="stop-color:#00FFBF;stop-opacity:1;" />
+      <stop
+         id="WL513nm"
+         offset="0.403614457831325"
+         style="stop-color:#00FFBA;stop-opacity:1;" />
+      <stop
+         id="WL515nm"
+         offset="0.409638554216867"
+         style="stop-color:#00FFB5;stop-opacity:1;" />
+      <stop
+         id="WL517nm"
+         offset="0.41566265060241"
+         style="stop-color:#00FFB2;stop-opacity:1;" />
+      <stop
+         id="WL519nm"
+         offset="0.421686746987952"
+         style="stop-color:#00FFAD;stop-opacity:1;" />
+      <stop
+         id="WL521nm"
+         offset="0.427710843373494"
+         style="stop-color:#00FFAA;stop-opacity:1;" />
+      <stop
+         id="WL523nm"
+         offset="0.433734939759036"
+         style="stop-color:#00FFA6;stop-opacity:1;" />
+      <stop
+         id="WL525nm"
+         offset="0.439759036144578"
+         style="stop-color:#00FFA4;stop-opacity:1;" />
+      <stop
+         id="WL527nm"
+         offset="0.44578313253012"
+         style="stop-color:#00FFA0;stop-opacity:1;" />
+      <stop
+         id="WL529nm"
+         offset="0.451807228915663"
+         style="stop-color:#00FF9C;stop-opacity:1;" />
+      <stop
+         id="WL531nm"
+         offset="0.457831325301205"
+         style="stop-color:#00FF97;stop-opacity:1;" />
+      <stop
+         id="WL533nm"
+         offset="0.463855421686747"
+         style="stop-color:#00FF94;stop-opacity:1;" />
+      <stop
+         id="WL535nm"
+         offset="0.469879518072289"
+         style="stop-color:#00FF8E;stop-opacity:1;" />
+      <stop
+         id="WL537nm"
+         offset="0.475903614457831"
+         style="stop-color:#00FF8B;stop-opacity:1;" />
+      <stop
+         id="WL539nm"
+         offset="0.481927710843373"
+         style="stop-color:#00FF82;stop-opacity:1;" />
+      <stop
+         id="WL541nm"
+         offset="0.487951807228916"
+         style="stop-color:#00FF7E;stop-opacity:1;" />
+      <stop
+         id="WL543nm"
+         offset="0.493975903614458"
+         style="stop-color:#00FF76;stop-opacity:1;" />
+      <stop
+         id="WL545nm"
+         offset="0.5"
+         style="stop-color:#00FF6A;stop-opacity:1;" />
+      <stop
+         id="WL547nm"
+         offset="0.506024096385542"
+         style="stop-color:#00FF5C;stop-opacity:1;" />
+      <stop
+         id="WL549nm"
+         offset="0.512048192771084"
+         style="stop-color:#00FF46;stop-opacity:1;" />
+      <stop
+         id="WL551nm"
+         offset="0.518072289156627"
+         style="stop-color:#00FF24;stop-opacity:1;" />
+      <stop
+         id="WL553nm"
+         offset="0.524096385542169"
+         style="stop-color:#39FF00;stop-opacity:1;" />
+      <stop
+         id="WL555nm"
+         offset="0.530120481927711"
+         style="stop-color:#59FF00;stop-opacity:1;" />
+      <stop
+         id="WL557nm"
+         offset="0.536144578313253"
+         style="stop-color:#73FF00;stop-opacity:1;" />
+      <stop
+         id="WL559nm"
+         offset="0.542168674698795"
+         style="stop-color:#8AFF00;stop-opacity:1;" />
+      <stop
+         id="WL561nm"
+         offset="0.548192771084337"
+         style="stop-color:#9DFF00;stop-opacity:1;" />
+      <stop
+         id="WL563nm"
+         offset="0.55421686746988"
+         style="stop-color:#ABFF00;stop-opacity:1;" />
+      <stop
+         id="WL565nm"
+         offset="0.560240963855422"
+         style="stop-color:#BBFA00;stop-opacity:1;" />
+      <stop
+         id="WL567nm"
+         offset="0.566265060240964"
+         style="stop-color:#C7F600;stop-opacity:1;" />
+      <stop
+         id="WL569nm"
+         offset="0.572289156626506"
+         style="stop-color:#D5F100;stop-opacity:1;" />
+      <stop
+         id="WL571nm"
+         offset="0.578313253012048"
+         style="stop-color:#DFEC00;stop-opacity:1;" />
+      <stop
+         id="WL573nm"
+         offset="0.58433734939759"
+         style="stop-color:#EAE600;stop-opacity:1;" />
+      <stop
+         id="WL575nm"
+         offset="0.590361445783133"
+         style="stop-color:#F3E100;stop-opacity:1;" />
+      <stop
+         id="WL577nm"
+         offset="0.596385542168675"
+         style="stop-color:#FDDA00;stop-opacity:1;" />
+      <stop
+         id="WL579nm"
+         offset="0.602409638554217"
+         style="stop-color:#FFCE00;stop-opacity:1;" />
+      <stop
+         id="WL581nm"
+         offset="0.608433734939759"
+         style="stop-color:#FFC000;stop-opacity:1;" />
+      <stop
+         id="WL583nm"
+         offset="0.614457831325301"
+         style="stop-color:#FFB300;stop-opacity:1;" />
+      <stop
+         id="WL585nm"
+         offset="0.620481927710843"
+         style="stop-color:#FFA800;stop-opacity:1;" />
+      <stop
+         id="WL587nm"
+         offset="0.626506024096386"
+         style="stop-color:#FF9C00;stop-opacity:1;" />
+      <stop
+         id="WL589nm"
+         offset="0.632530120481928"
+         style="stop-color:#FF9100;stop-opacity:1;" />
+      <stop
+         id="WL591nm"
+         offset="0.63855421686747"
+         style="stop-color:#FF8700;stop-opacity:1;" />
+      <stop
+         id="WL593nm"
+         offset="0.644578313253012"
+         style="stop-color:#FF7C00;stop-opacity:1;" />
+      <stop
+         id="WL595nm"
+         offset="0.650602409638554"
+         style="stop-color:#FF7000;stop-opacity:1;" />
+      <stop
+         id="WL597nm"
+         offset="0.656626506024096"
+         style="stop-color:#FF6A00;stop-opacity:1;" />
+      <stop
+         id="WL599nm"
+         offset="0.662650602409639"
+         style="stop-color:#FF5E00;stop-opacity:1;" />
+      <stop
+         id="WL601nm"
+         offset="0.668674698795181"
+         style="stop-color:#FF5500;stop-opacity:1;" />
+      <stop
+         id="WL603nm"
+         offset="0.674698795180723"
+         style="stop-color:#FF4800;stop-opacity:1;" />
+      <stop
+         id="WL605nm"
+         offset="0.680722891566265"
+         style="stop-color:#FF4100;stop-opacity:1;" />
+      <stop
+         id="WL607nm"
+         offset="0.686746987951807"
+         style="stop-color:#FF3300;stop-opacity:1;" />
+      <stop
+         id="WL609nm"
+         offset="0.692771084337349"
+         style="stop-color:#FF2C00;stop-opacity:1;" />
+      <stop
+         id="WL611nm"
+         offset="0.698795180722892"
+         style="stop-color:#FF1200;stop-opacity:1;" />
+      <stop
+         id="WL613nm"
+         offset="0.704819277108434"
+         style="stop-color:#FF0012;stop-opacity:1;" />
+      <stop
+         id="WL615nm"
+         offset="0.710843373493976"
+         style="stop-color:#FF0028;stop-opacity:1;" />
+      <stop
+         id="WL617nm"
+         offset="0.716867469879518"
+         style="stop-color:#FF002C;stop-opacity:1;" />
+      <stop
+         id="WL619nm"
+         offset="0.72289156626506"
+         style="stop-color:#FF0036;stop-opacity:1;" />
+      <stop
+         id="WL621nm"
+         offset="0.728915662650602"
+         style="stop-color:#FF003C;stop-opacity:1;" />
+      <stop
+         id="WL623nm"
+         offset="0.734939759036145"
+         style="stop-color:#FF0041;stop-opacity:1;" />
+      <stop
+         id="WL625nm"
+         offset="0.740963855421687"
+         style="stop-color:#FF0041;stop-opacity:1;" />
+      <stop
+         id="WL627nm"
+         offset="0.746987951807229"
+         style="stop-color:#FF0043;stop-opacity:1;" />
+      <stop
+         id="WL629nm"
+         offset="0.753012048192771"
+         style="stop-color:#FF0043;stop-opacity:1;" />
+      <stop
+         id="WL631nm"
+         offset="0.759036144578313"
+         style="stop-color:#FF004C;stop-opacity:1;" />
+      <stop
+         id="WL633nm"
+         offset="0.765060240963855"
+         style="stop-color:#FF0048;stop-opacity:1;" />
+      <stop
+         id="WL635nm"
+         offset="0.771084337349398"
+         style="stop-color:#FF004A;stop-opacity:1;" />
+      <stop
+         id="WL637nm"
+         offset="0.77710843373494"
+         style="stop-color:#F7004A;stop-opacity:1;" />
+      <stop
+         id="WL639nm"
+         offset="0.783132530120482"
+         style="stop-color:#F3004E;stop-opacity:1;" />
+      <stop
+         id="WL641nm"
+         offset="0.789156626506024"
+         style="stop-color:#E80046;stop-opacity:1;" />
+      <stop
+         id="WL643nm"
+         offset="0.795180722891566"
+         style="stop-color:#E00046;stop-opacity:1;" />
+      <stop
+         id="WL645nm"
+         offset="0.801204819277108"
+         style="stop-color:#D70043;stop-opacity:1;" />
+      <stop
+         id="WL647nm"
+         offset="0.807228915662651"
+         style="stop-color:#CF003E;stop-opacity:1;" />
+      <stop
+         id="WL649nm"
+         offset="0.813253012048193"
+         style="stop-color:#C90043;stop-opacity:1;" />
+      <stop
+         id="WL651nm"
+         offset="0.819277108433735"
+         style="stop-color:#BF003E;stop-opacity:1;" />
+      <stop
+         id="WL653nm"
+         offset="0.825301204819277"
+         style="stop-color:#B50039;stop-opacity:1;" />
+      <stop
+         id="WL655nm"
+         offset="0.831325301204819"
+         style="stop-color:#AF0039;stop-opacity:1;" />
+      <stop
+         id="WL657nm"
+         offset="0.837349397590361"
+         style="stop-color:#A9003C;stop-opacity:1;" />
+      <stop
+         id="WL659nm"
+         offset="0.843373493975904"
+         style="stop-color:#9D0036;stop-opacity:1;" />
+      <stop
+         id="WL661nm"
+         offset="0.849397590361446"
+         style="stop-color:#970030;stop-opacity:1;" />
+      <stop
+         id="WL663nm"
+         offset="0.855421686746988"
+         style="stop-color:#8F0030;stop-opacity:1;" />
+      <stop
+         id="WL665nm"
+         offset="0.86144578313253"
+         style="stop-color:#880030;stop-opacity:1;" />
+      <stop
+         id="WL667nm"
+         offset="0.867469879518072"
+         style="stop-color:#800028;stop-opacity:1;" />
+      <stop
+         id="WL669nm"
+         offset="0.873493975903614"
+         style="stop-color:#760028;stop-opacity:1;" />
+      <stop
+         id="WL671nm"
+         offset="0.879518072289157"
+         style="stop-color:#6E001F;stop-opacity:1;" />
+      <stop
+         id="WL673nm"
+         offset="0.885542168674699"
+         style="stop-color:#640019;stop-opacity:1;" />
+      <stop
+         id="WL675nm"
+         offset="0.891566265060241"
+         style="stop-color:#620024;stop-opacity:1;" />
+      <stop
+         id="WL677nm"
+         offset="0.897590361445783"
+         style="stop-color:#620024;stop-opacity:1;" />
+      <stop
+         id="WL679nm"
+         offset="0.903614457831325"
+         style="stop-color:#570019;stop-opacity:1;" />
+      <stop
+         id="WL681nm"
+         offset="0.909638554216867"
+         style="stop-color:#4A0000;stop-opacity:1;" />
+      <stop
+         id="WL683nm"
+         offset="0.91566265060241"
+         style="stop-color:#550024;stop-opacity:1;" />
+      <stop
+         id="WL685nm"
+         offset="0.921686746987952"
+         style="stop-color:#460019;stop-opacity:1;" />
+      <stop
+         id="WL687nm"
+         offset="0.927710843373494"
+         style="stop-color:#460019;stop-opacity:1;" />
+      <stop
+         id="WL689nm"
+         offset="0.933734939759036"
+         style="stop-color:#330000;stop-opacity:1;" />
+      <stop
+         id="WL691nm"
+         offset="0.939759036144578"
+         style="stop-color:#330000;stop-opacity:1;" />
+      <stop
+         id="WL693nm"
+         offset="0.94578313253012"
+         style="stop-color:#330000;stop-opacity:1;" />
+      <stop
+         id="WL695nm"
+         offset="0.951807228915663"
+         style="stop-color:#330000;stop-opacity:1;" />
+      <stop
+         id="WL697nm"
+         offset="0.957831325301205"
+         style="stop-color:#300019;stop-opacity:1;" />
+      <stop
+         id="WL699nm"
+         offset="0.963855421686747"
+         style="stop-color:#300019;stop-opacity:1;" />
+      <stop
+         id="WL701nm"
+         offset="0.969879518072289"
+         style="stop-color:#300019;stop-opacity:1;" />
+      <stop
+         id="WL703nm"
+         offset="0.975903614457831"
+         style="stop-color:#300019;stop-opacity:1;" />
+      <stop
+         id="WL705nm"
+         offset="0.981927710843373"
+         style="stop-color:#300019;stop-opacity:1;" />
+      <stop
+         id="WL707nm"
+         offset="0.987951807228916"
+         style="stop-color:#300019;stop-opacity:1;" />
+      <stop
+         id="WL709nm"
+         offset="0.993975903614458"
+         style="stop-color:#300019;stop-opacity:1;" />
+      <stop
+         id="WL710nm"
+         offset="1.0"
+         style="stop-color:#300019;stop-opacity:1;" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3142"
+       id="linearGradient4121"
+       x1="10.835938"
+       y1="557.04132"
+       x2="637.83038"
+       y2="557.04132"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(24.5909,-273.77077)">
+    <rect
+       style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
+       id="rect4141"
+       width="669.01099"
+       height="587.0285"
+       x="-24.5909"
+       y="275.30234" />
+    <path
+       style="fill:url(#linearGradient4121);fill-opacity:1;stroke:#ffffff;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="M 9.3105566,833.5578 C 61.511521,837.31518 91.662974,813.88906 123.75,792.18361 c 67.59499,-59.5041 85.58287,-176.93224 104.04531,-284.82848 9.23122,-53.94812 21.86232,-105.11148 34.30977,-146.26345 36.82949,-105.92441 67.12709,-107.84403 115.19314,-4.29741 16.90242,36.98105 29.91146,83.31825 44.78583,132.67745 29.74874,98.71839 53.50524,213.59826 114.30695,296.21019 22.90465,26.73946 54.81681,45.87947 99.93428,48.38676"
+       id="path2998"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccsccscc" />
+    <path
+       style="fill:none;stroke:#8f35ef;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:0.94117647;stroke-dasharray:none"
+       d="m -8.8392857,832.18361 0,-556.89706"
+       id="path4143"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#3f96ef;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:0.94117647;stroke-dasharray:none"
+       d="m 141.01098,834.26393 0,-558.9616"
+       id="path4145"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#33e23f;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:0.94117647;stroke-dasharray:none"
+       d="m 272.99107,834.28182 0,-558.97879"
+       id="path4147"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#ffd20f;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:0.94117647;stroke-dasharray:none"
+       d="m 393.08036,834.32647 0,-558.961"
+       id="path4149"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:none;stroke:#f9001f;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:0.94117647;stroke-dasharray:none"
+       d="m 550,834.32647 0,-559.0557"
+       id="path4151"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path4762"
+       d="m 2.3174716,826.33649 0,12.19994"
+       style="fill:none;stroke:#ffffff;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:label="MajorXDiv1"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path4764"
+       d="m 24.186022,826.33649 0,12.19994"
+       style="fill:none;stroke:#ffffff;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:label="MajorXDiv2"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path4766"
+       d="m 46.054572,826.33649 0,12.19994"
+       style="fill:none;stroke:#ffffff;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:label="MajorXDiv3"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path4768"
+       d="m 67.923122,826.33649 0,12.19994"
+       style="fill:none;stroke:#ffffff;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:label="MajorXDiv4"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path4770"
+       d="m 89.791676,826.33649 0,12.19994"
+       style="fill:none;stroke:#ffffff;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:label="MajorXDiv5"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path4772"
+       d="m 111.66023,826.33649 0,12.19994"
+       style="fill:none;stroke:#ffffff;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:label="MajorXDiv6"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path4774"
+       d="m 133.52878,826.33649 0,12.19994"
+       style="fill:none;stroke:#ffffff;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:label="MajorXDiv7"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path4776"
+       d="m 155.39733,826.33649 0,12.19994"
+       style="fill:none;stroke:#ffffff;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:label="MajorXDiv8"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path4778"
+       d="m 177.26588,826.33649 0,12.19994"
+       style="fill:none;stroke:#ffffff;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:label="MajorXDiv9"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path4780"
+       d="m 199.13443,826.33649 0,12.19994"
+       style="fill:none;stroke:#ffffff;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:label="MajorXDiv10"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path4782"
+       d="m 221.00298,826.33649 0,12.19994"
+       style="fill:none;stroke:#ffffff;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:label="MajorXDiv11"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path4784"
+       d="m 242.87153,826.33649 0,12.19994"
+       style="fill:none;stroke:#ffffff;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:label="MajorXDiv12"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path4786"
+       d="m 264.74008,826.33649 0,12.19994"
+       style="fill:none;stroke:#ffffff;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:label="MajorXDiv13"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path4788"
+       d="m 286.60863,826.33649 0,12.19994"
+       style="fill:none;stroke:#ffffff;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:label="MajorXDiv14"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path4790"
+       d="m 308.47718,826.33649 0,12.19994"
+       style="fill:none;stroke:#ffffff;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:label="MajorXDiv15"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path4792"
+       d="m 330.34573,826.33649 0,12.19994"
+       style="fill:none;stroke:#ffffff;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:label="MajorXDiv16"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path4794"
+       d="m 352.21428,826.33649 0,12.19994"
+       style="fill:none;stroke:#ffffff;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:label="MajorXDiv17"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path4796"
+       d="m 374.08283,826.33649 0,12.19994"
+       style="fill:none;stroke:#ffffff;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:label="MajorXDiv18"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path4798"
+       d="m 395.95138,826.33649 0,12.19994"
+       style="fill:none;stroke:#ffffff;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:label="MajorXDiv19"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path4800"
+       d="m 417.81993,826.33649 0,12.19994"
+       style="fill:none;stroke:#ffffff;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:label="MajorXDiv20"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path4802"
+       d="m 439.68848,826.33649 0,12.19994"
+       style="fill:none;stroke:#ffffff;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:label="MajorXDiv21"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path4804"
+       d="m 461.55703,826.33649 0,12.19994"
+       style="fill:none;stroke:#ffffff;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:label="MajorXDiv22"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path4806"
+       d="m 483.42558,826.33649 0,12.19994"
+       style="fill:none;stroke:#ffffff;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:label="MajorXDiv23"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path4808"
+       d="m 505.29413,826.33649 0,12.19994"
+       style="fill:none;stroke:#ffffff;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:label="MajorXDiv24"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path4810"
+       d="m 527.16268,826.33649 0,12.19994"
+       style="fill:none;stroke:#ffffff;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:label="MajorXDiv25"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path4812"
+       d="m 549.03123,826.33649 0,12.19994"
+       style="fill:none;stroke:#ffffff;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:label="MajorXDiv26"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path4814"
+       d="m 570.89978,826.33649 0,12.19994"
+       style="fill:none;stroke:#ffffff;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:label="MajorXDiv27"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path4816"
+       d="m 592.76833,826.33649 0,12.19994"
+       style="fill:none;stroke:#ffffff;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:label="MajorXDiv28"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path4818"
+       d="m 614.63688,826.33649 0,12.19994"
+       style="fill:none;stroke:#ffffff;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:label="MajorXDiv29"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path4822"
+       d="m -19.556441,833.95231 652.517141,0"
+       style="fill:none;stroke:#ffffff;stroke-width:1.5;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       inkscape:label="MajorYDiv1"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path4762-3"
+       d="m -19.445437,823.21345 0,12.98705"
+       style="fill:none;stroke:#ffffff;stroke-width:1.5;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:label="MajorXDiv1"
+       inkscape:connector-curvature="0" />
+    <path
+       id="path4818-1"
+       d="m 636.77491,822.38487 0,13.8866"
+       style="fill:none;stroke:#ffffff;stroke-width:1.60033298;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:label="MajorXDiv29"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-size:28px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:89.99999762%;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:Times New Roman"
+       x="-375.05185"
+       y="56.326889"
+       id="text5144"
+       sodipodi:linespacing="89.999998%"
+       transform="matrix(0,-1,1,0,0,0)"><tspan
+         sodipodi:role="line"
+         id="tspan5146"
+         x="-375.05185"
+         y="56.326889">% Sensitivity</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:28px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:89.99999762%;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:Times New Roman"
+       x="-18.182747"
+       y="855.12988"
+       id="text5148"
+       sodipodi:linespacing="89.999998%"><tspan
+         sodipodi:role="line"
+         id="tspan5150"
+         x="-18.182747"
+         y="855.12988" /></text>
+    <text
+       xml:space="preserve"
+       style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:89.99999762%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:Times New Roman"
+       x="-19.192898"
+       y="854.62482"
+       id="text5152"
+       sodipodi:linespacing="89.999998%"><tspan
+         sodipodi:role="line"
+         id="tspan5154"
+         x="-19.192898"
+         y="854.62482"></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:89.99999762%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:Times New Roman"
+       x="-18.435284"
+       y="856.39258"
+       id="text5156"
+       sodipodi:linespacing="89.999998%"><tspan
+         sodipodi:role="line"
+         id="tspan5158"
+         x="-18.435284"
+         y="856.39258">400                            500    Nanometres       600                            700</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:24px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:89.99999762%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:Times New Roman"
+       x="85"
+       y="289.50504"
+       id="text5160"
+       sodipodi:linespacing="89.999998%"><tspan
+         sodipodi:role="line"
+         id="tspan5162"
+         x="85"
+         y="289.50504" /></text>
+    <text
+       xml:space="preserve"
+       style="font-size:22px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:89.99999762%;letter-spacing:0px;word-spacing:0px;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:Times New Roman"
+       x="84.285713"
+       y="290.39789"
+       id="text5164"
+       sodipodi:linespacing="89.999998%"><tspan
+         sodipodi:role="line"
+         id="tspan5166"
+         x="84.285713"
+         y="290.39789" /></text>
+    <text
+       xml:space="preserve"
+       style="font-size:22px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:89.99999762%;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:Times New Roman"
+       x="118.03571"
+       y="289.50504"
+       id="text5168"
+       sodipodi:linespacing="89.999998%"><tspan
+         sodipodi:role="line"
+         x="118.03571"
+         y="289.50504"
+         id="tspan5174">100-</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:22px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:89.99999762%;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:Times New Roman"
+       x="112.85714"
+       y="343.96933"
+       id="text5180"
+       sodipodi:linespacing="89.999998%"><tspan
+         sodipodi:role="line"
+         id="tspan5182"
+         x="112.85714"
+         y="343.96933"
+         style="fill:#ffffff">90-</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:22px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:89.99999762%;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:Times New Roman"
+       x="113.21429"
+       y="398.43362"
+       id="text5184"
+       sodipodi:linespacing="89.999998%"><tspan
+         sodipodi:role="line"
+         id="tspan5186"
+         x="113.21429"
+         y="398.43362">80-</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:22px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:89.99999762%;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:Times New Roman"
+       x="110.89286"
+       y="453.96933"
+       id="text5188"
+       sodipodi:linespacing="89.999998%"><tspan
+         sodipodi:role="line"
+         id="tspan5190"
+         x="110.89286"
+         y="453.96933">70-</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:22px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:89.99999762%;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:Times New Roman"
+       x="112.85714"
+       y="510.21933"
+       id="text5192"
+       sodipodi:linespacing="89.999998%"><tspan
+         sodipodi:role="line"
+         id="tspan5194"
+         x="112.85714"
+         y="510.21933">60-</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:22px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:89.99999762%;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:Times New Roman"
+       x="112.85714"
+       y="566.64789"
+       id="text5196"
+       sodipodi:linespacing="89.999998%"><tspan
+         sodipodi:role="line"
+         id="tspan5198"
+         x="112.85714"
+         y="566.64789">50-</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:22px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:89.99999762%;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:Times New Roman"
+       x="112.5"
+       y="620.75507"
+       id="text5200"
+       sodipodi:linespacing="89.999998%"><tspan
+         sodipodi:role="line"
+         id="tspan5202"
+         x="112.5"
+         y="620.75507">40-</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:22px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:89.99999762%;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:Times New Roman"
+       x="111.78571"
+       y="677.36218"
+       id="text5204"
+       sodipodi:linespacing="89.999998%"><tspan
+         sodipodi:role="line"
+         id="tspan5206"
+         x="111.78571"
+         y="677.36218">30-</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:22px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:89.99999762%;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:Times New Roman"
+       x="111.42857"
+       y="731.82648"
+       id="text5208"
+       sodipodi:linespacing="89.999998%"><tspan
+         sodipodi:role="line"
+         id="tspan5210"
+         x="111.42857"
+         y="731.82648">20-</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:22px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:89.99999762%;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:Times New Roman"
+       x="109.53571"
+       y="788.61218"
+       id="text5212"
+       sodipodi:linespacing="89.999998%"><tspan
+         sodipodi:role="line"
+         id="tspan5214"
+         x="109.53571"
+         y="788.61218">10-</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:36px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:end;line-height:89.99999762%;letter-spacing:0px;word-spacing:0px;text-anchor:end;fill:#ffffff;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:Times New Roman"
+       x="616.45801"
+       y="322.96442"
+       id="text5140"
+       sodipodi:linespacing="89.999998%"><tspan
+         sodipodi:role="line"
+         id="tspan5142"
+         x="616.45801"
+         y="322.96442"
+         style="font-size:28px">Eye color sensitivity</tspan></text>
+  </g>
+</svg>

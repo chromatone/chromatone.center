@@ -1,0 +1,273 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="480" viewBox="0 0 600 480">
+
+<desc>Produced by GNUPLOT 4.4 patchlevel 0, background spectrum based on http://commons.wikimedia.org/wiki/File:Linear_visible_spectrum.svg</desc>
+
+<defs>
+<linearGradient x1="0%" y1="0%" x2="100%" y2="0%" id="grad_spectrum">
+<stop offset="0.000" stop-color="#020005" />
+<stop offset="0.108" stop-color="#17032a" />
+<stop offset="0.121" stop-color="#1f053a" />
+<stop offset="0.135" stop-color="#25084b" />
+<stop offset="0.148" stop-color="#290a5c" />
+<stop offset="0.162" stop-color="#2b0e6f" />
+<stop offset="0.175" stop-color="#291380" />
+<stop offset="0.189" stop-color="#1f237b" />
+<stop offset="0.202" stop-color="#132e74" />
+<stop offset="0.216" stop-color="#09376c" />
+<stop offset="0.229" stop-color="#0a3e66" />
+<stop offset="0.243" stop-color="#0c4667" />
+<stop offset="0.256" stop-color="#0e4f6a" />
+<stop offset="0.270" stop-color="#10596c" />
+<stop offset="0.283" stop-color="#11636d" />
+<stop offset="0.297" stop-color="#146e6f" />
+<stop offset="0.310" stop-color="#177970" />
+<stop offset="0.324" stop-color="#178672" />
+<stop offset="0.337" stop-color="#1a9574" />
+<stop offset="0.351" stop-color="#1da375" />
+<stop offset="0.364" stop-color="#1db273" />
+<stop offset="0.378" stop-color="#20c070" />
+<stop offset="0.391" stop-color="#22cb6b" />
+<stop offset="0.405" stop-color="#21d662" />
+<stop offset="0.418" stop-color="#23e054" />
+<stop offset="0.432" stop-color="#36e842" />
+<stop offset="0.445" stop-color="#50ed28" />
+<stop offset="0.459" stop-color="#73eb22" />
+<stop offset="0.472" stop-color="#8fe722" />
+<stop offset="0.486" stop-color="#a5e221" />
+<stop offset="0.500" stop-color="#b9dc22" />
+<stop offset="0.513" stop-color="#cbd621" />
+<stop offset="0.527" stop-color="#dcce20" />
+<stop offset="0.540" stop-color="#ecc420" />
+<stop offset="0.554" stop-color="#f2b735" />
+<stop offset="0.567" stop-color="#f5ab42" />
+<stop offset="0.581" stop-color="#f69f49" />
+<stop offset="0.594" stop-color="#f7944b" />
+<stop offset="0.608" stop-color="#f98848" />
+<stop offset="0.621" stop-color="#fa7b42" />
+<stop offset="0.635" stop-color="#fb6c39" />
+<stop offset="0.648" stop-color="#fd5b2e" />
+<stop offset="0.662" stop-color="#fc471f" />
+<stop offset="0.675" stop-color="#f7300f" />
+<stop offset="0.689" stop-color="#ea220d" />
+<stop offset="0.702" stop-color="#d42215" />
+<stop offset="0.716" stop-color="#bf2318" />
+<stop offset="0.729" stop-color="#a92309" />
+<stop offset="0.743" stop-color="#981f07" />
+<stop offset="0.756" stop-color="#871b06" />
+<stop offset="0.770" stop-color="#771805" />
+<stop offset="0.783" stop-color="#671504" />
+<stop offset="0.797" stop-color="#591303" />
+<stop offset="0.810" stop-color="#4d1103" />
+<stop offset="0.824" stop-color="#420e02" />
+<stop offset="0.837" stop-color="#370c01" />
+<stop offset="0.851" stop-color="#2e0a01" />
+<stop offset="0.864" stop-color="#270801" />
+<stop offset="0.878" stop-color="#210600" />
+<stop offset="0.891" stop-color="#1e0400" />
+<stop offset="0.905" stop-color="#1a0300" />
+<stop offset="1.000" stop-color="#040100" />
+</linearGradient>
+</defs>
+
+<path fill="url(#grad_spectrum)" fill-opacity="0.25" d="M144 18h62v395h-62z" />
+<g font-family="Arial" font-size="12pt" font-weight="bold" text-anchor="middle" stroke="none" fill="#999999">
+ <switch><text x="120" y="16" systemLanguage="da"><tspan>UV</tspan></text><text x="120" y="16"><tspan>UV</tspan></text></switch>
+ <switch><text x="175" y="16" systemLanguage="da"><tspan>SYNLIGT</tspan></text><text x="175" y="16"><tspan>VISIBLE</tspan></text></switch>
+ <switch><text x="372" y="16" systemLanguage="da"><tspan>INFRARØD</tspan></text><text x="372" y="16"><tspan>INFRARED</tspan></text></switch>
+</g>
+<g style="fill:none;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter">
+<path stroke="rgb(173, 216, 230)" d="M579.1 413.4L579.1 16.7M496.1 413.4L496.1 16.7M413 413.4L413 16.7M330 413.4L330 16.7M247 413.4L247 16.7M163.9 413.4L163.9 16.7M80.9 413.4L80.9 16.7M80.9 43.1L579.1 43.1M80.9 96L579.1 96M80.9 148.9L579.1 148.9M80.9 201.8L579.1 201.8M80.9 254.7L579.1 254.7M80.9 307.6L579.1 307.6M80.9 360.5L579.1 360.5M80.9 413.4L579.1 413.4M579.1 413.4L579.1 16.7M496.1 413.4L496.1 16.7M413 413.4L413 16.7M330 413.4L330 16.7M247 413.4L247 16.7M163.9 413.4L163.9 16.7M80.9 413.4L80.9 16.7M80.9 43.1L579.1 43.1M80.9 96L579.1 96M80.9 148.9L579.1 148.9M80.9 201.8L579.1 201.8M80.9 254.7L579.1 254.7M80.9 307.6L579.1 307.6M80.9 360.5L579.1 360.5M80.9 413.4L579.1 413.4" />
+
+<path style="stroke:black" d="M579.1 413.4L579.1 422.4M496.1 413.4L496.1 422.4M413 413.4L413 422.4M330 413.4L330 422.4M247 413.4L247 422.4M163.9 413.4L163.9 422.4M80.9 413.4L80.9 422.4M80.9 43.1L71.9 43.1M80.9 96L71.9 96M80.9 148.9L71.9 148.9M80.9 201.8L71.9 201.8M80.9 254.7L71.9 254.7M80.9 307.6L71.9 307.6M80.9 360.5L71.9 360.5M579.1 413.4L579.1 422.4M496.1 413.4L496.1 422.4M413 413.4L413 422.4M330 413.4L330 422.4M247 413.4L247 422.4M163.9 413.4L163.9 422.4M80.9 413.4L80.9 422.4M80.9 43.1L71.9 43.1M80.9 96L71.9 96M80.9 148.9L71.9 148.9M80.9 201.8L71.9 201.8M80.9 254.7L71.9 254.7M80.9 307.6L71.9 307.6M80.9 360.5L71.9 360.5M80.9 413.4L71.9 413.4" />
+<path style="stroke:black" d="M80.9 16.7L80.9 413.4L579.1 413.4M579.1 16.7M80.9 16.7" />
+<path style="stroke:black" d="M80.9 16.7L80.9 413.4L579.1 413.4M579.1 16.7M80.9 16.7M80.9 413.4L71.9 413.4" />
+<path style="stroke:black" d="M80.9 16.7L80.9 413.4L579.1 413.4M579.1 16.7M80.9 16.7" />
+<path style="stroke:black" d="M80.9 16.7L80.9 413.4L579.1 413.4M579.1 16.7M80.9 16.7" />
+
+<g style="stroke:none;fill:black;font-family:Arial;font-size:12pt;text-anchor:end">
+<g transform="translate(63.6,417.9)">
+<switch><text><tspan>0</tspan></text></switch>
+</g>
+<g transform="translate(63.6,365.0)">
+<switch><text><tspan>2</tspan></text></switch>
+</g>
+<g transform="translate(63.6,312.1)">
+<switch><text><tspan> 4</tspan></text></switch>
+</g>
+<g transform="translate(63.6,259.2)">
+<switch><text><tspan> 6</tspan>
+</text></switch>
+</g>
+<g transform="translate(63.6,206.3)">
+<switch><text><tspan> 8</tspan>
+</text></switch>
+</g>
+<g transform="translate(63.6,153.4)">
+<switch><text><tspan> 10</tspan>
+</text></switch>
+</g>
+<g transform="translate(63.6,100.5)">
+<switch><text><tspan> 12</tspan>
+</text></switch>
+</g>
+<g transform="translate(63.6,47.6)">
+<switch><text><tspan> 14</tspan>
+</text></switch>
+</g>
+<g transform="translate(80.9,444.9)" style="text-anchor:middle">
+<switch><text><tspan> 0</tspan>
+</text></switch>
+</g>
+<g transform="translate(163.9,444.9)" style="text-anchor:middle">
+<switch><text><tspan> 0.5</tspan>
+</text></switch>
+</g>
+<g transform="translate(247.0,444.9)" style="text-anchor:middle">
+<switch><text><tspan> 1</tspan>
+</text></switch>
+</g>
+<g transform="translate(330.0,444.9)" style="text-anchor:middle">
+<switch><text><tspan> 1.5</tspan>
+</text></switch>
+</g>
+<g transform="translate(413.0,444.9)" style="text-anchor:middle">
+<switch><text><tspan> 2</tspan>
+</text></switch>
+</g>
+<g transform="translate(496.1,444.9)" style="text-anchor:middle">
+<switch><text><tspan> 2.5</tspan>
+</text></switch>
+</g>
+<g transform="translate(579.1,444.9)" style="text-anchor:middle">
+<switch><text><tspan> 3</tspan>
+</text></switch>
+</g>
+<g transform="translate(25.9,215.1) rotate(270)" style="text-anchor:middle">
+<switch><text systemLanguage="da"><tspan>Spectral intensitet (kW · sr⁻¹ · m⁻² · nm⁻¹)</tspan>
+</text><text><tspan>Spectral radiance (kW · sr⁻¹ · m⁻² · nm⁻¹)</tspan>
+</text></switch>
+</g>
+<g transform="translate(330.0,471.9)" style="text-anchor:middle">
+<switch><text systemLanguage="da"><tspan>Bølgelængde (µm)</tspan>
+</text><text><tspan>Wavelength (μm)</tspan>
+</text></switch>
+</g>
+<g transform="translate(155.6,71.4)" style="text-anchor:start">
+<switch><text><tspan>5000 K</tspan>
+</text></switch>
+</g>
+<g transform="translate(180.5,297.6)" style="text-anchor:start">
+<switch><text><tspan>4000 K</tspan>
+</text></switch>
+</g>
+<g transform="translate(213.8,380.9)" style="text-anchor:start">
+<switch><text><tspan>3000 K</tspan>
+</text></switch>
+</g>
+<g transform="translate(338.3,127.0)" style="text-anchor:start">
+<switch><text systemLanguage="da"><tspan>Klassisk teori (5000 K)</tspan>
+</text><text><tspan>Classical theory (5000 K)</tspan>
+</text></switch>
+</g>
+</g>
+<g style="stroke:red;stroke-width:2">
+<path d="M85.9 413.4L91 413.4L96 413.4L101 413.4L106.1 413.4L111.1 413.4L116.1 413.4L121.2 413.4L126.2 413.4L131.2 413.2L136.3 413L141.3 412.5L146.3 411.7L151.4 410.6L156.4 409.2L161.4 407.5L166.4 405.6L171.5 403.6L176.5 401.5L181.5 399.4L186.6 397.4L191.6 395.5L196.6 393.8L201.7 392.3L206.7 391L211.7 389.9L216.8 389L221.8 388.3L226.8 387.8L231.9 387.4L236.9 387.2L241.9 387.2L247 387.3L252 387.4L257 387.7L262.1 388.1L267.1 388.5L272.1 388.9L277.2 389.5L282.2 390L287.2 390.6L292.3 391.2L297.3 391.8L302.3 392.4L307.4 393L312.4 393.6L317.4 394.3L322.5 394.9L327.5 395.5L332.5 396.1L337.5 396.6L342.6 397.2L347.6 397.8L352.6 398.3L357.7 398.8L362.7 399.3L367.7 399.8L372.8 400.3L377.8 400.8L382.8 401.2L387.9 401.6L392.9 402.1L397.9 402.5L403 402.8L408 403.2L413 403.6L418.1 403.9L423.1 404.3L428.1 404.6L433.2 404.9L438.2 405.2L443.2 405.5L448.3 405.7L453.3 406L458.3 406.2L463.4 406.5L468.4 406.7L473.4 406.9L478.5 407.2L483.5 407.4L488.5 407.6L493.6 407.8L498.6 407.9L503.6 408.1L508.6 408.3L513.7 408.5L518.7 408.6L523.7 408.8L528.8 408.9L533.8 409.1L538.8 409.2L543.9 409.3L548.9 409.5L553.9 409.6L559 409.7L564 409.8L569 409.9L574.1 410L579.1 410.1" />
+</g>
+<g style="stroke:green;stroke-width:2">
+<path d="M85.9 413.4L91 413.4L96 413.4L101 413.4L106.1 413.4L111.1 413.4L116.1 413.1L121.2 412.1L126.2 409.5L131.2 404.9L136.3 397.8L141.3 388.6L146.3 377.8L151.4 366.1L156.4 354.4L161.4 343.3L166.4 333.3L171.5 324.6L176.5 317.4L181.5 311.8L186.6 307.7L191.6 304.9L196.6 303.4L201.7 303L206.7 303.5L211.7 304.7L216.8 306.6L221.8 309L226.8 311.8L231.9 314.8L236.9 318L241.9 321.4L247 324.9L252 328.4L257 331.9L262.1 335.3L267.1 338.7L272.1 342L277.2 345.2L282.2 348.3L287.2 351.3L292.3 354.1L297.3 356.9L302.3 359.5L307.4 362L312.4 364.4L317.4 366.7L322.5 368.9L327.5 371L332.5 373L337.5 374.8L342.6 376.6L347.6 378.3L352.6 379.9L357.7 381.4L362.7 382.9L367.7 384.3L372.8 385.6L377.8 386.8L382.8 388L387.9 389.1L392.9 390.2L397.9 391.2L403 392.1L408 393L413 393.9L418.1 394.7L423.1 395.5L428.1 396.2L433.2 396.9L438.2 397.6L443.2 398.2L448.3 398.9L453.3 399.4L458.3 400L463.4 400.5L468.4 401L473.4 401.5L478.5 401.9L483.5 402.4L488.5 402.8L493.6 403.2L498.6 403.6L503.6 403.9L508.6 404.3L513.7 404.6L518.7 404.9L523.7 405.2L528.8 405.5L533.8 405.8L538.8 406L543.9 406.3L548.9 406.5L553.9 406.8L559 407L564 407.2L569 407.4L574.1 407.6L579.1 407.8" />
+</g>
+<g style="stroke:blue;stroke-width:2">
+<path d="M85.9 413.4L91 413.4L96 413.4L101 413.4L106.1 413.2L111.1 411.3L116.1 404.1L121.2 387.4L126.2 359.4L131.2 321.6L136.3 278.1L141.3 233.5L146.3 191.6L151.4 155.1L156.4 125.5L161.4 103.3L166.4 88.2L171.5 79.6L176.5 76.4L181.5 77.9L186.6 83L191.6 91L196.6 101L201.7 112.5L206.7 125L211.7 138L216.8 151.3L221.8 164.6L226.8 177.7L231.9 190.4L236.9 202.8L241.9 214.6L247 226L252 236.8L257 247L262.1 256.7L267.1 265.8L272.1 274.4L277.2 282.4L282.2 290L287.2 297.1L292.3 303.8L297.3 310L302.3 315.9L307.4 321.4L312.4 326.5L317.4 331.3L322.5 335.9L327.5 340.1L332.5 344L337.5 347.8L342.6 351.2L347.6 354.5L352.6 357.6L357.7 360.5L362.7 363.2L367.7 365.7L372.8 368.1L377.8 370.3L382.8 372.5L387.9 374.4L392.9 376.3L397.9 378.1L403 379.8L408 381.3L413 382.8L418.1 384.2L423.1 385.5L428.1 386.8L433.2 388L438.2 389.1L443.2 390.2L448.3 391.2L453.3 392.1L458.3 393L463.4 393.9L468.4 394.7L473.4 395.5L478.5 396.2L483.5 396.9L488.5 397.6L493.6 398.2L498.6 398.8L503.6 399.4L508.6 399.9L513.7 400.4L518.7 400.9L523.7 401.4L528.8 401.8L533.8 402.3L538.8 402.7L543.9 403.1L548.9 403.4L553.9 403.8L559 404.1L564 404.5L569 404.8L574.1 405.1L579.1 405.3" />
+</g>
+<g style="stroke:none;fill:black;font-family:Arial;font-size:12pt;text-anchor:end">
+<g transform="translate(63.6,417.9)">
+<switch><text><tspan> 0</tspan>
+</text></switch>
+</g>
+<g transform="translate(63.6,365.0)">
+<switch><text><tspan> 2</tspan>
+</text></switch>
+</g>
+<g transform="translate(63.6,312.1)">
+<switch><text><tspan> 4</tspan>
+</text></switch>
+</g>
+<g transform="translate(63.6,259.2)">
+<switch><text><tspan> 6</tspan>
+</text></switch>
+</g>
+<g transform="translate(63.6,206.3)">
+<switch><text><tspan> 8</tspan>
+</text></switch>
+</g>
+<g transform="translate(63.6,153.4)">
+<switch><text><tspan> 10</tspan>
+</text></switch>
+</g>
+<g transform="translate(63.6,100.5)">
+<switch><text><tspan> 12</tspan>
+</text></switch>
+</g>
+<g transform="translate(63.6,47.6)">
+<switch><text><tspan> 14</tspan>
+</text></switch>
+</g>
+<g transform="translate(80.9,444.9)" style="text-anchor:middle">
+<switch><text><tspan> 0</tspan>
+</text></switch>
+</g>
+<g transform="translate(163.9,444.9)" style="text-anchor:middle">
+<switch><text><tspan> 0.5</tspan>
+</text></switch>
+</g>
+<g transform="translate(247.0,444.9)" style="text-anchor:middle">
+<switch><text><tspan> 1</tspan>
+</text></switch>
+</g>
+<g transform="translate(330.0,444.9)" style="text-anchor:middle">
+<switch><text><tspan> 1.5</tspan>
+</text></switch>
+</g>
+<g transform="translate(413.0,444.9)" style="text-anchor:middle">
+<switch><text><tspan> 2</tspan>
+</text></switch>
+</g>
+<g transform="translate(496.1,444.9)" style="text-anchor:middle">
+<switch><text><tspan> 2.5</tspan>
+</text></switch>
+</g>
+<g transform="translate(579.1,444.9)" style="text-anchor:middle">
+<switch><text><tspan> 3</tspan>
+</text></switch>
+</g>
+<g transform="translate(25.9,215.1) rotate(270)" style="text-anchor:middle">
+<switch><text systemLanguage="da"><tspan> Spectral intensitet (kW · sr⁻¹ · m⁻² · nm⁻¹)</tspan>
+</text><text><tspan>Spectral radiance (kW · sr⁻¹ · m⁻² · nm⁻¹)</tspan>
+</text></switch>
+</g>
+<g transform="translate(330.0,471.9)" style="text-anchor:middle">
+<switch><text systemLanguage="da"><tspan> Bølgelængde (µm)</tspan>
+</text><text><tspan>Wavelength (μm)</tspan>
+</text></switch>
+</g>
+<g transform="translate(155.6,71.4)" style="text-anchor:start">
+<switch><text><tspan>5000 K</tspan>
+</text></switch>
+</g>
+<g transform="translate(180.5,297.6)" style="text-anchor:start">
+<switch><text><tspan>4000 K</tspan>
+</text></switch>
+</g>
+<g transform="translate(213.8,380.9)" style="text-anchor:start">
+<switch><text><tspan>3000 K</tspan>
+</text></switch>
+</g>
+<g transform="translate(338.3,127.0)" style="text-anchor:start">
+<switch><text systemLanguage="da"><tspan>Klassisk teori (5000 K)</tspan>
+</text><text><tspan>Classical theory (5000 K)</tspan>
+</text></switch>
+</g>
+</g>
+<path style="stroke:#000;stroke-width:2" d="M295 16.7L297.3 33.6L302.3 67L307.4 96.8L312.4 123.4L317.4 147.3L322.5 168.8L327.5 188.2L332.5 205.6L337.5 221.5L342.6 235.8L347.6 248.8L352.6 260.7L357.7 271.5L362.7 281.4L367.7 290.4L372.8 298.7L377.8 306.2L382.8 313.2L387.9 319.6L392.9 325.5L397.9 331L403 336L408 340.7L413 345L418.1 349L423.1 352.7L428.1 356.1L433.2 359.3L438.2 362.3L443.2 365.1L448.3 367.7L453.3 370.1L458.3 372.4L463.4 374.5L468.4 376.5L473.4 378.3L478.5 380.1L483.5 381.7L488.5 383.2L493.6 384.7L498.6 386L503.6 387.3L508.6 388.5L513.7 389.7L518.7 390.7L523.7 391.7L528.8 392.7L533.8 393.6L538.8 394.5L543.9 395.3L548.9 396L553.9 396.8L559 397.5L564 398.1L569 398.7L574.1 399.3L579.1 399.9" />
+</g>
+</svg>

@@ -5,15 +5,15 @@ import { pages } from '@theme/composables/pages'
 <template lang="pug">
 main.home(aria-labelledby="main-title")
   .noise
-  header.home-hero.mt-16
-  .w-full.max-w-600px.m-auto.p-4
-    figure(
-      v-if="$frontmatter?.icon"
-      )
-      img.block.w-auto(
-        :src="$frontmatter.icon", 
-        :alt="$frontmatter.heroAlt"
+  //- header.home-hero.mt-16
+    .w-full.max-w-600px.m-auto.p-4.opacity-20
+      figure(
+        v-if="$frontmatter?.icon"
         )
+        img.block.w-auto(
+          :src="$frontmatter.icon", 
+          :alt="$frontmatter.heroAlt"
+          )
   content.content.z-2
   .flex.flex-col.max-w-65ch.mx-auto
     home-tile-item(

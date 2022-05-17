@@ -6,8 +6,9 @@ actionText: Enter
 altActionLink: /ru.html
 altActionText: Войти
 
-icon: /media/logo/logo.svg
 ---
+
+<svg-flower />
 
 # The international visual music language to learn and to experiment with
 
@@ -16,3 +17,4 @@ Chromatone is an ongoing research and experiment to induce a synchronised artifi
 We're building a visual [music theory study](./theory/index.md), that may help beginners learn complex music concepts in color. [Interactive web-apps](./apps/index.md) expand the knowledge and grow deeper music awareness. 
 
 For those, who want to touch and feel the colorful notes we have a [Sticker shop](./shop/index.md). While those who are interested in further project development may consider [supporting](./support/index.md) [us](contact/author/index.md) today.
+

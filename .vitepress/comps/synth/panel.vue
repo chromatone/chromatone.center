@@ -37,11 +37,16 @@ function cycle() {
       v-model="synth.state.volume"
       param="VOL"
     )
+  .flex.is-group
     button.flex-button(
       @click="synth.state.quantize.next()"
       aria-label="Synth panel"
       ) Quantize 
       .font-bold {{ synth.state.quantize.state }}
+    button.flex-button(
+
+      ) Octave
+      .font-bold {{ midi.offset > 0 ? '+' : '' }}{{ midi.offset }}
   .flex.flex-wrap
     button.flex-button.border(
       @click="midi.keyboard = !midi.keyboard" 

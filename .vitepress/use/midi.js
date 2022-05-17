@@ -1,6 +1,7 @@
 import { WebMidi, Note } from "webmidi"
 import { useStorage, onKeyDown, onKeyUp } from "@vueuse/core"
 import { preventDefault } from "ol/events/Event";
+import { useClamp } from "@vueuse/core";
 
 export const midi = reactive({
   enabled: false,
@@ -16,7 +17,7 @@ export const midi = reactive({
     pitch: 0,
     channel: 1
   },
-  offset: 0,
+  offset: useClamp(0, -2, 2),
   keyboard: true,
   cc: {},
   message: null,
@@ -86,9 +87,9 @@ const noteKeys = {
   '|Ё': { note: 'G', offset: 2 },
 }
 
-export function playKey(name, offset, off) {
-
-  const note = new Note(name + (4 + offset + midi.offset), {
+export function playKey(name, offset = 0, off) {
+  let noteName = name + (4 + offset + midi.offset)
+  const note = new Note(noteName, {
     attack: off ? 0 : 1,
   });
   const ev = {
@@ -102,37 +103,44 @@ export function playKey(name, offset, off) {
 }
 
 export function useMidi() {
+  if (!midi.initiated) {
 
-  for (let keys in noteKeys) {
-    onKeyDown(keys.split(''), (ev) => {
-      if (ev.repeat || !midi.keyboard) return
-      playKey(noteKeys[keys].note, noteKeys[keys].offset)
-    })
-    onKeyUp(keys.split(''), (ev) => {
-      if (ev.repeat || !midi.keyboard) return
-      playKey(noteKeys[keys].note, noteKeys[keys].offset, true)
-    })
+    onKeyDown('zZяЯ'.split(''), ev => !ev.repeat && midi.offset--)
+    onKeyDown('xXчЧ'.split(''), ev => !ev.repeat && midi.offset++)
+
+    for (let keys in noteKeys) {
+      onKeyDown(keys.split(''), (ev) => {
+        if (ev.repeat || !midi.keyboard) return
+        playKey(noteKeys[keys].note, noteKeys[keys].offset)
+      })
+      onKeyUp(keys.split(''), (ev) => {
+        if (ev.repeat || !midi.keyboard) return
+        playKey(noteKeys[keys].note, noteKeys[keys].offset, true)
+      })
+    }
+
+    onMounted(() => {
+      if (WebMidi.supported) {
+        setupMidi();
+      }
+    });
+
+    watchEffect(() => {
+      if (!midi.out) return;
+      let outs = Object.values(WebMidi.outputs);
+      if (midi.playing) {
+        outs.forEach((output) => {
+          output.sendContinue();
+        });
+      } else {
+        outs.forEach((output) => {
+          output.sendStop();
+        });
+      }
+    });
+    midi.initiated = true;
   }
 
-  onMounted(() => {
-    if (WebMidi.supported) {
-      setupMidi();
-    }
-  });
-
-  watchEffect(() => {
-    if (!midi.out) return;
-    let outs = Object.values(WebMidi.outputs);
-    if (midi.playing) {
-      outs.forEach((output) => {
-        output.sendContinue();
-      });
-    } else {
-      outs.forEach((output) => {
-        output.sendStop();
-      });
-    }
-  });
 
   return {
     midi,
@@ -145,7 +153,7 @@ export function useMidi() {
 }
 
 function setupMidi() {
-  if (midi.initiated) return;
+
 
   WebMidi.enable();
   WebMidi.addListener("enabled", (e) => {

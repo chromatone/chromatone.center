@@ -26,7 +26,7 @@ button(
   aria-label="Toggle tempo panel"
   :style="{ color: tempo.blink ? tempo.color : 'currentColor' }"
   )
-  fad-metronome.text-xl
+  mdi-metronome.text-xl
 button(
   @click="open.midi = !open.midi" 
   aria-label="Toggle MIDI panel" 

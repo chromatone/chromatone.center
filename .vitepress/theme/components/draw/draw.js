@@ -1,8 +1,10 @@
 import { computed, markRaw, nextTick, reactive, ref, watch } from 'vue'
+import { useRoute } from 'vitepress'
 import { createDrauu } from 'drauu'
 import { toReactive, useStorage } from '@vueuse/core'
 import { notes } from '@use/theory'
 import { pitchColor } from '@use/calculations'
+import { useCycleList } from '@vueuse/core'
 
 
 export const brushColors = [
@@ -13,10 +15,14 @@ export const brushColors = [
 
 const drawingModes = ['line', 'arrow', 'stylus', 'rectangle', 'ellipse']
 
+export const brushSizes = useCycleList([1, 2, 5, 10, 20])
+
 export const drawingState = ref()
+const pages = reactive({})
 const onPatch = () => { }
 const patch = () => { }
-const currentPage = ref(0)
+
+const currentPage = ref('/')
 const isPresenter = ref()
 
 export const drawingEnabled = ref(false)
@@ -75,7 +81,7 @@ export function updateState() {
 
 export function loadCanvas(page) {
   disableDump = true
-  const data = drawingState[page || currentPage.value]
+  const data = pages[page || currentPage.value]
   if (data != null)
     drauu.load(data)
   else
@@ -90,23 +96,22 @@ export function useDraw() {
       if (!disableDump) {
         const dump = drauu.dump()
         const key = currentPage.value
-        if ((drawingState[key] || '') !== dump && syncUp.value)
-          patch(key, drauu.dump())
+        if ((pages[key] || '') !== dump)
+          pages[key] = dump
       }
     })
 
-    onPatch((state) => {
+    watch(currentPage, (page) => {
       disableDump = true
-      if (state[currentPage.value] != null)
-        drauu.load(state[currentPage.value] || '')
+      if (pages[page] != null)
+        drauu.load(pages[page] || '')
       disableDump = false
       updateState()
     })
 
     nextTick(() => {
       watch(currentPage, () => {
-        if (!drauu.mounted)
-          return
+
         loadCanvas()
       }, { immediate: true })
     })
@@ -149,8 +154,8 @@ export function useDraw() {
   drawingInitiated.value = true
 
   return {
-    brush, brushColors, canClear,
-    canRedo, canUndo, clearDrauu,
+    brush, brushColors, brushSizes, canClear,
+    canRedo, canUndo, clearDrauu, currentPage,
     drauu, drawingEnabled, drawingMode, drawingPinned, drauu, drawingEnabled, loadCanvas
   }
 }

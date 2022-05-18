@@ -1,11 +1,19 @@
 <script setup>
-import {
-  useDraw
-} from './draw'
+import { useDraw } from './draw'
+import { midi } from '@use/midi'
+import { pitchColor } from '@use/calculations'
+import { useRoute } from 'vitepress'
+
+
+const route = useRoute()
+
+
 
 const { brush, brushColors, canClear,
   canRedo, canUndo, clearDrauu,
-  drauu, drawingEnabled, drawingMode, drawingPinned, } = useDraw()
+  drauu, drawingEnabled, drawingMode, brushSizes, drawingPinned, currentPage } = useDraw()
+
+watch(route, (r) => currentPage.value = r.path)
 
 function undo() {
   drauu.undo()
@@ -22,16 +30,23 @@ function setBrushColor(color) {
   brush.color = color
   drawingEnabled.value = true
 }
+
+watch(() => midi.note, note => {
+  brush.color = pitchColor(note.pitch)
+})
+
 </script>
 
 <template lang="pug">
 .flex.flex-wrap.text-xl.p-2.gap-2.rounded-md.bg-main.shadow.transition-opacity.duration-200.dark_border.dark_border-gray-400.dark_border-opacity-10.bg-light-300.dark_bg-dark-300.justify-center(
-  :class="drawingEnabled ? '' : drawingPinned ? 'opacity-40 hover:opacity-90' : 'opacity-0 pointer-events-none'", 
+  :class="drawingEnabled ? '' : drawingPinned ? 'opacity-40 hover_opacity-90' : 'opacity-0 pointer-events-none'", 
   storage-key="slidev-drawing-pos", 
   :initial-x="10", 
   :initial-y="10"
   )
-  button.icon-btn(:class="{ shallow: drawingMode !== 'stylus' }", @click="setDrawingMode('stylus')")
+  button.flex-button(@click="brush.size = brushSizes.next()")
+    .ml-0 {{ brush.size }}
+  button.flex-button(:class="{ shallow: drawingMode !== 'stylus' }", @click="setDrawingMode('stylus')")
     carbon:pen
 
 

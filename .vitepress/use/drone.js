@@ -44,27 +44,27 @@ export function useDrone() {
     initAudio();
     audio.initiated = true;
     drone.started = true;
+
+    onKeyStroke(" ", (e) => {
+      e.preventDefault();
+      drone.stopped = !drone.stopped;
+    });
+    watch(
+      () => drone.volume,
+      (vol) => {
+        audio.gain.gain.targetRampTo(vol, 1);
+      }
+    );
+    watch(
+      () => drone.filterFreq,
+      (freq) => {
+        audio.filter.frequency.targetRampTo(freq, 0.1);
+      }
+    );
+
   }
 
-  onKeyStroke(" ", (e) => {
-    e.preventDefault();
-    drone.stopped = !drone.stopped;
-  });
-  watch(
-    () => drone.volume,
-    (vol) => {
-      audio.gain.gain.targetRampTo(vol, 1);
-    }
-  );
-  watchOnce(
-    () => drone.started,
-    () => {
-      watch(
-        () => drone.filterFreq,
-        (freq) => audio.filter.frequency.targetRampTo(freq, 0.5)
-      );
-    }
-  );
+
   return drone;
 }
 

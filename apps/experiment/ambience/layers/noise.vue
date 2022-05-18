@@ -35,8 +35,7 @@ const { channel } = createChannel('ambient-noise')
 
 const gain = new Gain(options.value.volume).connect(channel)
 const filter = new Filter({ type: 'lowpass', frequency: 1500, Q: 0 }).connect(gain)
-const reverb = new Reverb(4).connect(filter)
-const bitCrusher = new BitCrusher(4).connect(reverb)
+const bitCrusher = new BitCrusher(4).connect(filter)
 const panner = new Panner(0).connect(bitCrusher)
 const synth = new NoiseSynth(options.value).connect(panner)
 

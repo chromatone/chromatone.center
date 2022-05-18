@@ -83,11 +83,11 @@ const { width, height } = useWindowSize()
           v-model="recordingName", 
           name="title", 
           type="text", 
-          placeholder="Recording title"
+          placeholder="Enter recording title"
           )
 
       .text-xs.w-full.opacity-50
-        .mt-2.opacity-50 Enumerated filenames
+        .mt-2.opacity-50 Resulting filenames
 
         .font-mono {{ fileNames.screen }}
 

@@ -8,19 +8,18 @@ import { useCycleList } from '@vueuse/core'
 
 
 export const brushColors = [
+  '#000000',
   ...notes.map((el, i) => pitchColor(i)),
   '#ffffff',
-  '#000000',
+
 ]
 
 const drawingModes = ['line', 'arrow', 'stylus', 'rectangle', 'ellipse']
 
-export const brushSizes = useCycleList([1, 2, 5, 10, 20])
+export const brushSizes = useCycleList([4, 8, 16, 24])
 
 export const drawingState = ref()
 const pages = reactive({})
-const onPatch = () => { }
-const patch = () => { }
 
 const currentPage = ref('/')
 const isPresenter = ref()
@@ -69,8 +68,6 @@ export const drauu = markRaw(createDrauu(drauuOptions))
 
 export function clearDrauu() {
   drauu.clear()
-  if (syncUp.value)
-    patch(currentPage.value, '')
 }
 
 export function updateState() {

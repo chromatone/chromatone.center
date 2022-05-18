@@ -1,5 +1,4 @@
 <script setup>
-import { nextTick } from "vue";
 import {
   fileNames,
   mimeType,
@@ -10,6 +9,7 @@ import {
 } from "@use/cast";
 
 import { useWindowSize } from '@vueuse/core'
+import { drawingEnabled } from '@theme/components/draw/draw'
 
 const {
   streamCamera,
@@ -35,7 +35,7 @@ const { width, height } = useWindowSize()
 <template lang="pug">
 .flex.flex-col.gap-2.w-full
 
-  .flex.flex-wrap
+  .flex.flex-wrap.gap-2
     .is-group.flex.flex-wrap
       button.flex-button(@click="record.start()" v-if="!audioRecording") 
         mdi-checkbox-blank-circle-outline
@@ -52,25 +52,32 @@ const { width, height } = useWindowSize()
         carbon-video(v-else)
         .m-0 Record screen {{ width }}x{{ height }}
         .p-1(v-if="recordingTime") {{ (recordingTime / 1000).toFixed() }}s
-    button.flex-button(
-      v-if="currentCamera !== 'none'", 
-      :class="{ 'text-green-500': Boolean(showAvatar && streamCamera) }", 
-      title="Show camera view", 
-      @click="toggleAvatar"
-      )
-      carbon-user-avatar
-      .ml-0 Camera avatar
-    button.flex-button(
-      @click="options = !options"
-      aria-label="Screencast options"
-      )
-        la-cog
-        .ml-0 Settings
+    .is-group.flex.flex-wrap
+      button.flex-button(
+        @click="drawingEnabled = !drawingEnabled"
+        :class="{ active: drawingEnabled }"
+        )
+        carbon-pen
+        .ml-0 Draw
+      button.flex-button(
+        v-if="currentCamera !== 'none'", 
+        :class="{ 'text-green-500': Boolean(showAvatar && streamCamera) }", 
+        title="Show camera view", 
+        @click="toggleAvatar"
+        )
+        carbon-user-avatar
+        .ml-0 Camera avatar
+      button.flex-button(
+        @click="options = !options"
+        aria-label="Screencast options"
+        )
+          la-cog
+          .ml-0 Settings
   .flex.gap-2(v-if="options")
     .flex.flex-col.gap-2.py-2(style="flex: 1 1 100px")
       .form-check
-        input(v-model="recordCamera", name="record-camera", type="checkbox")
-        label(for="record-camera", @click="recordCamera = !recordCamera") Record camera video
+        input.mr-2(v-model="recordCamera", name="record-camera", type="checkbox")
+        label(for="record-camera", @click="recordCamera = !recordCamera") Record camera separately
       .form-text
         input.bg-transparent.text-current(
           v-model="recordingName", 

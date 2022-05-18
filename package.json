@@ -42,7 +42,8 @@
     "tone": "^14.8.40",
     "vitepress-pages": "^0.8.5",
     "vue": "^3.2.33",
-    "webmidi": "^3.0.20"
+    "webmidi": "^3.0.20",
+    "drauu": "^0.3.0"
   },
   "devDependencies": {
     "vue-demi": "^0.12.5",

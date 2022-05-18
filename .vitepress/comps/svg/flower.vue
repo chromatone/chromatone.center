@@ -41,6 +41,8 @@ svg.max-w-150.mx-auto(
       g.key.cursor-pointer(
         @mousedown="playKey(note.note, pitch >= 3 ? 0 : -1)"
         @mouseup="playKey(note.note, pitch >= 3 ? 0 : -1, true)"
+        @touchstart.prevent.stop="playKey(note.note, pitch >= 3 ? 0 : -1)"
+        @touchend.prevent.stop="playKey(note.note, pitch >= 3 ? 0 : -1, true)"
         @mouseleave="playKey(note.note, pitch >= 3 ? 0 : -1, true)"
       )
         g.petal(

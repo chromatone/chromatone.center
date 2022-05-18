@@ -18,10 +18,14 @@ onUpdated(() => { })
 .theme
   client-only
     cast-camera
+    draw-controls.bottom-0.fixed.z-3000
+
   state-dark.fixed.bottom-18.right-14px.z-1000
   nav-scroll.fixed.bottom-8.right-24px.z-1000
-  nav-bar(@toggle="openSideBar = !openSideBar")
+  nav-bar.md_sticky.top-0(@toggle="openSideBar = !openSideBar")
   .main
+    client-only
+      draw-layer.z-20
     transition(name="fade")
       .sidebar-mask.z-5(v-show="openSideBar", @click="openSideBar = false")
     side-bar(:open="openSideBar")

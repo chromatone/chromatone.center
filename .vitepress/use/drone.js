@@ -1,6 +1,6 @@
 import { freqColor, freqPitch, pitchFreq } from "@use/calculations";
 import { Frequency, Synth, PanVol, gainToDb, LFO, Meter, Filter, Gain } from "tone";
-import { useRafFn, watchOnce, onKeyStroke } from "@vueuse/core";
+import { useRafFn, onKeyStroke } from "@vueuse/core";
 import { master } from '@use/audio'
 import { createChannel } from "./audio";
 

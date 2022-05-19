@@ -58,9 +58,9 @@ function dragMax(drag) {
 .flex-1.bg-light-400.dark_bg-dark-400.shadow.relative.w-full.cursor-pointer.min-w-25.rounded-lg.select-none.overflow-hidden
   .flex.flex-col.p-1.gap-0
     .px-1.pb-1 {{ title }}
-    .flex
-      control-knob.flex-1(v-model="radius" :max="250" :min="10" param="Radius")
-      control-knob.flex-1(v-model="speed" :max="maxSpeed" :min="minSpeed" param="Speed" :step="1")
+    .flex.gap-2.p-1
+      control-knob.flex-1(v-model="radius" :max="250" :min="10" param="Radius" :fixed="0")
+      control-knob.flex-1(v-model="speed" :max="maxSpeed" :min="minSpeed" param="Speed" :step="1" :fixed="0")
   .flex.relative.border-t-1.border-current
     .flex-1.h-6.cursor-pointer(v-drag="dragMin" :drag-options="{ preventWindowScrollY: true }")
     .flex-1.h-6.cursor-pointer(v-drag="dragMax" :drag-options="{ preventWindowScrollY: true }")

@@ -7,7 +7,7 @@ const {
 
 
 <template lang="pug">
-.row.is-group
+.row.is-group.gap-2
   control-push(v-model="active" title="NOISE")
   control-knob.w-3rem(
     :min="0"
@@ -20,7 +20,7 @@ const {
     v-model="options.noise.type"
     :variants="types"
   )
-  .is-group.flex.flex-wrap.p-1
+  .is-group.flex.flex-wrap.p-1.gap-1
     control-knob.w-12(
       :min="0.005"
       :max="4"
@@ -66,8 +66,8 @@ const {
       :y1="10 - fftData[i] * 50"
       :title="fftFreq[i]"
     )
-.row.is-group
-  .flex.flex-wrap
+.row.is-group.gap-2
+  .flex.flex-wrap.gap-2
     control-push(
       title="FILTER"
       v-model="filterOptions.on"
@@ -118,7 +118,7 @@ const {
       v-model="filterOptions.filter.type"
       :variants="filterTypes"
     ) 
-  .flex.flex-wrap
+  .flex.flex-wrap.gap-2
     control-push(
       title="PLAY"
       v-model="filterOptions.play"
@@ -145,7 +145,7 @@ const {
       v-model="filterOptions.type"
       :variants="filterLFOTypes"
     )
-.row.is-group
+.row.is-group.gap-2
   control-push(
     title="BITCRUSHER"
     v-model="crusherOptions.on"
@@ -176,7 +176,7 @@ const {
     unit=""
     v-model="crusherOptions.wet"
   )
-.row.is-group
+.row.is-group.gap-2
   control-push(
     title="PAN"
     v-model="pannerOptions.on"

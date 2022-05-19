@@ -10,7 +10,7 @@ import { midiOnce } from '@use/midi.js'
 import { pianoOnce, init } from '@use/piano'
 import { tempo } from '@use/tempo'
 import { isDark } from '@theme/composables/state'
- 
+
 const state = reactive({
   started: false,
   playing: false,
@@ -116,14 +116,14 @@ function clear() {
 
 watch(() => state.playing, play => {
   if (play) {
-    patterns.forEach(p=>{p.start(0)})
+    patterns.forEach(p => { p.start(0) })
     Transport.start()
     if (!state.started) {
       start()
       state.started = true
     }
   } else {
-    patterns.forEach(p=>{p.stop()})
+    patterns.forEach(p => { p.stop() })
     Transport.stop()
   }
 });
@@ -132,19 +132,19 @@ watch(() => state.type, type => {
   patterns.forEach(p => {
     p.pattern = type
   })
-},{immediate:true})
+}, { immediate: true })
 
 watch(() => state.probability, prob => {
   patterns.forEach(p => {
     p.probability = prob
   })
-},{immediate:true})
+}, { immediate: true })
 
 watch(() => state.humanize, hum => {
   patterns.forEach(p => {
     p.humanize = hum
   })
-},{immediate:true})
+}, { immediate: true })
 
 function reset() {
   state.playing = false
@@ -158,8 +158,8 @@ onBeforeUnmount(() => {
   })
 });
 
-function borderColor(cell,r) {
-  return cell.active ? pitchColor(state.pitches[r]) : cell.cell == positions[r] ? isDark.value ?  '#eee7' : '#3337': '#4444'
+function borderColor(cell, r) {
+  return cell.active ? pitchColor(state.pitches[r]) : cell.cell == positions[r] ? isDark.value ? '#eee7' : '#3337' : '#4444'
 }
 
 </script>
@@ -168,7 +168,7 @@ function borderColor(cell,r) {
 .flex.flex-col
   .flex.flex-wrap.items-center.justify-center
     control-scale.flex-1
-    .flex.flex-wrap.justify-center.flex-1.bg-light-900.p-4.rounded-2xl.dark_bg-dark-800
+    .flex.flex-wrap.justify-center.flex-1.bg-light-900.p-4.rounded-2xl.dark_bg-dark-800.gap-2
       control-knob.w-70px(v-model="state.octave" :max="4" :min="2" :fixed="0" param="OCTAVE")
       select(v-model="state.type")
         option(
@@ -182,12 +182,13 @@ function borderColor(cell,r) {
       button.text-button(:class="{ active: state.humanize }" @click="state.humanize = !state.humanize") HMN
       button.text-button(@click="clear()")
         la-trash-alt
-      button.text-button(@click="state.playing = true" v-if="!state.playing")
-        la-play
-      button.text-button(@click="state.playing = false" v-if="state.playing")
-        la-pause
-      button.text-button(@click="reset()")
-        la-stop
+      .is-group
+        button.text-button(@click="state.playing = true" v-if="!state.playing")
+          la-play
+        button.text-button(@click="state.playing = false" v-if="state.playing")
+          la-pause
+        button.text-button(@click="reset()")
+          la-stop
   .rows(
     @mousedown="state.hover = true"
     @mouseleave.self="state.hover = false"
@@ -202,8 +203,8 @@ function borderColor(cell,r) {
         :id="`c${r}-${c}`"
         :style=`{
           color: pitchColor(state.pitches[r]),
-          borderColor: borderColor(cell,r),
-          backgroundColor: cell.cell == positions[r] ? cell.active ? pitchColor(state.pitches[r], 3) : isDark ? '#0005': '#fff5' : 'transparent',
+          borderColor: borderColor(cell, r),
+          backgroundColor: cell.cell == positions[r] ? cell.active ? pitchColor(state.pitches[r], 3) : isDark ? '#0005' : '#fff5' : 'transparent',
           marginRight: c % 4 == 3 ? '12px' : '1px'
         }`
         :class="{ active: cell?.active, current: cell.cell == positions[r] }"
@@ -211,7 +212,7 @@ function borderColor(cell,r) {
         @mouseenter="toggle(r, c, false, $event)"
         )
         .dot(
-          :style="{backgroundColor: cell.active ? pitchColor(state.pitches[r]) : cell.cell == positions[r] ? 'currentColor' : '#4448'}"
+          :style="{ backgroundColor: cell.active ? pitchColor(state.pitches[r]) : cell.cell == positions[r] ? 'currentColor' : '#4448' }"
         )
 </template>
 
@@ -219,46 +220,53 @@ function borderColor(cell,r) {
 .rows {
   @apply my-4 mx-2 cursor-pointer select-none bg-light-900 rounded-xl overflow-hidden shadow-lg dark_bg-dark-700 dark_border-1 dark_border-opacity-10;
 }
+
 .row {
   @apply flex w-full;
 }
+
 .title {
-  @apply pr-2 text-right text-sm bg-dark-50 bg-opacity-40 dark_bg-dark-800 flex items-center justify-end ;
+  @apply pr-2 text-right text-sm bg-dark-50 bg-opacity-40 dark_bg-dark-800 flex items-center justify-end;
   flex: 0 0 52px;
 }
+
 .cell {
-  @apply flex items-center justify-center py-2 text-center  m-1px rounded-xl transition-all duration-200 ease-out box-border h-10;
+  @apply flex items-center justify-center py-2 text-center m-1px rounded-xl transition-all duration-200 ease-out box-border h-10;
   transition: all 200ms ease-out;
   flex: 1 1 20px;
+
   &.active .dot {
     transform: scale(4);
   }
 
   &:hover {
-    @apply !bg-dark-100 !dark_bg-dark-900;
+    @apply  !bg-dark-100 !dark_bg-dark-900;
   }
 
   &.current .dot {
     transform: scale(1.1);
   }
+
   &:hover .dot {
     background-color: currentColor !important;
     transform: scale(6);
   }
-  
+
   &.current.active .dot {
     transform: scale(8);
   }
+
   &.active.current {
-    @apply scale-110 ;
+    @apply scale-110;
   }
+
   & .dot {
-    @apply  bg-light-100 rounded-full w-1 h-1;
+    @apply bg-light-100 rounded-full w-1 h-1;
     transition: all 200ms ease-out;
   }
 }
+
 select {
   @apply p-2 mx-2 rounded dark_bg-dark-100;
 }
-
 </style>

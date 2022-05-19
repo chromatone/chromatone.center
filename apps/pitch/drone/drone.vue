@@ -43,7 +43,7 @@ const intervals = reactive({
         .p-1 {{ drone.centDiff }}
         .p-1 {{ drone.cents }} cents
         .p-1.text-xl {{ drone.freq.toFixed(2) }} Hz
-      .controls.min-w-10em.flex-1.my-2.p-2.flex.flex-wrap.items-center.justify-center.is-group
+      .controls.min-w-10em.flex-1.my-2.p-2.flex.flex-wrap.items-center.justify-center.is-group.gap-2
         button.text-button.text-3xl(@click="drone.stopped = !drone.stopped")
           la-stop(v-if="!drone.stopped")
           la-play(v-else)

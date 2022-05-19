@@ -28,7 +28,7 @@ function cycle() {
       )
       la-ban.text-xl
       .m-0 Stop synth
-  .flex.flex-wrap
+  .flex.flex-wrap.gap-2
     synth-oscillators.is-group(v-model="synth.params.oscillator.type")
     control-knob(
       :min="0"

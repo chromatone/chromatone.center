@@ -8,7 +8,7 @@ const { mic, input } = useMic();
 
 <template lang="pug">
 .flex.flex-col.w-full.gap-2
-  .is-group.flex.p-2
+  .is-group.flex.p-2.gap-2
     button.flex-button.relative.overflow-hidden(
       @click="mic.open = !mic.open"
       :class="{ active: mic.open }"

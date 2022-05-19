@@ -40,6 +40,7 @@ Current tasks and progress are open [at this ClickUp project](https://sharing.cl
 - [Vue 3](https://v3.vuejs.org/)
   - [VueUse](https://vueuse.org)
   - [VueUse/gesture](https://gesture.vueuse.org)
+  - [Floating Vue](https://floating-vue.starpad.dev)
 - [Vite](https://vitejs.dev/)
   - [unplugin-vue-components](https://github.com/antfu/unplugin-vue-components)
   - [unplugin-icons](https://github.com/antfu/unplugin-icons)

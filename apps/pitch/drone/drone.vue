@@ -3,7 +3,7 @@ import droneVoice from "./voice.vue";
 
 import { pitchColor } from "@use/calculations";
 import { notes } from "@use/theory";
-import { useDrone } from "@use/drone.js";
+import { useDrone } from "./drone.js";
 
 const drone = useDrone();
 
@@ -57,4 +57,5 @@ const intervals = reactive({
       ) {{ note }}
 </template>
 
-<style lang="postcss" scoped></style>
+<style lang="postcss" scoped>
+</style>

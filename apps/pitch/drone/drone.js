@@ -1,8 +1,8 @@
 import { freqColor, freqPitch, pitchFreq } from "@use/calculations";
 import { Frequency, Synth, PanVol, gainToDb, LFO, Meter, Filter, Gain } from "tone";
 import { useRafFn, onKeyStroke } from "@vueuse/core";
-import { master } from '@use/audio'
-import { createChannel } from "./audio";
+import { createChannel } from '@use/audio'
+import { learnCC } from "../../../.vitepress/use/midi";
 
 const drone = reactive({
   base: 55,
@@ -68,6 +68,7 @@ export function useDrone() {
   return drone;
 }
 
+let voiceCount = 0
 
 
 //ONE VOICE
@@ -86,6 +87,31 @@ export function useVoice(interval) {
     lfo: 0,
     panning: 0,
   });
+
+
+
+  const midiVol = learnCC({
+    param: `drone-${interval}-vol`,
+    number: 5 + voiceCount,
+  })
+
+  watch(midiVol, vol => {
+    voice.vol = vol
+    if (vol > 0)
+      voice.play = true
+  })
+
+  const midiPan = learnCC({
+    param: `drone-${interval}-pan`,
+    number: 6 + voiceCount,
+  })
+
+  watch(midiPan, pan => {
+    voice.pan = (pan - 0.5) * 2
+  })
+
+  voiceCount += 2
+
 
   watch(
     () => drone.stopped,

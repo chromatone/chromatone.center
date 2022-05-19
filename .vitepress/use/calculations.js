@@ -27,9 +27,8 @@ export function pitchFreq(
 
 export function pitchColor(pitch = 0, octave, velocity = 1, alpha = 1) {
   octave = octave || Math.floor(pitch / 12) + 4
-  return `hsla(${(pitch % 12) * 30},${velocity * 100}%,${
-    Math.abs(octave + 2) * 8
-  }%,${alpha})`
+  return `hsla(${(pitch % 12) * 30},${velocity * 100}%,${Math.abs(octave + 2) * 8
+    }%,${alpha})`
 }
 
 export function freqColor(freq) {
@@ -58,4 +57,14 @@ export function rotateArray(arr, count = 1) {
 
 export function clampNum(main, delta, min = 0, max = 100) {
   return Math.max(min, Math.min(Number(main) + Number(delta), max));
+}
+
+export function getCents(frequency, pitch) {
+  return Math.floor(
+    (1200 * Math.log(frequency / getStandardFrequency(pitch))) / Math.log(2)
+  );
+}
+
+export function getStandardFrequency(pitch, middleA = 440) {
+  return middleA * Math.pow(2, (pitch - 69) / 12);
 }

@@ -1,34 +1,19 @@
 <script setup>
+import { midi, learnCC } from '@use/midi'
+
 const props = defineProps({
-  max: {
-    type: Number,
-    default: 100,
-  },
-  min: {
-    type: Number,
-    default: 0,
-  },
-  modelValue: {
-    type: Number,
-    default: 50,
-  },
-  step: {
-    type: Number,
-    default: 1,
-  },
-  param: {
-    type: String,
-    default: "param",
-  },
-  unit: {
-    type: String,
-    default: "",
-  },
-  fixed: {
-    type: Number,
-    default: 1,
-  },
+  max: { type: Number, default: 100, },
+  min: { type: Number, default: 0, },
+  modelValue: { type: Number, default: 50, },
+  step: { type: Number, default: 1, },
+  param: { type: String, default: "param", },
+  unit: { type: String, default: "", },
+  fixed: { type: Number, default: 1, },
+  cc: { type: Number, default: 0 },
+  channel: { type: Number, default: 0 },
 });
+
+
 
 const emit = defineEmits(["update:modelValue"]);
 
@@ -40,6 +25,17 @@ const state = reactive({
     return mapOutput(state.internal);
   }),
 });
+
+const midiVal = learnCC({
+  param: props.param,
+  number: props.cc,
+  channel: props.channel
+})
+
+watch(midiVal, v => {
+  state.internal = v * 100;
+  emit("update:modelValue", state.external);
+})
 
 function handler(event) {
   const {
@@ -106,11 +102,11 @@ function mapNumber(
 
 <style lang="postcss" scoped>
 .knob {
-  @apply shadow-md m-1 border-2 rounded-lg text-center border-dark-100/50 dark_(border-light-100/50) cursor-pointer select-none relative overflow-hidden;
+  @apply shadow-md border-2 rounded-lg text-center border-dark-100/50 dark_(border-light-100/50) cursor-pointer select-none relative overflow-hidden;
   touch-action: none;
 }
 
 .level {
-  @apply border-t-1 bg-dark-50/40 border-dark-100  dark_(border-light-100 bg-light-100/40) absolute bottom-0 w-full;
+  @apply border-t-1 bg-dark-50/40 border-dark-100 dark_(border-light-100 bg-light-100/40) absolute bottom-0 w-full;
 }
 </style>

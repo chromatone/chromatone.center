@@ -1,10 +1,13 @@
 import "virtual:windi.css";
 import { GesturePlugin } from "@vueuse/gesture";
+import FloatingVue from 'floating-vue'
 
 import "./styles/vars.css";
 import "./styles/transitions.css";
 import "./styles/layout.postcss";
 import "./styles/custom-blocks.css";
+import 'floating-vue/dist/style.css'
+
 
 import Layout from "./layout.vue";
 import NotFound from "./not-found.vue";
@@ -14,7 +17,7 @@ const theme = {
   NotFound,
   enhanceApp({ app }) {
     app.use(GesturePlugin);
-
+    app.use(FloatingVue)
     if (
       process.env.NODE_ENV === "production" &&
       typeof window !== "undefined"
@@ -31,7 +34,7 @@ const theme = {
         window.owa_baseUrl =
           "https:" == document.location.protocol
             ? window.owa_baseSecUrl ||
-              window.owa_baseUrl.replace(/http:/, "https:")
+            window.owa_baseUrl.replace(/http:/, "https:")
             : window.owa_baseUrl;
         _owa.src =
           window.owa_baseUrl + "modules/base/js/owa.tracker-combined-min.js";

@@ -77,6 +77,7 @@ svg.w-full(
       show-positions
       :ratio="500"
       :every="4"
+      v-tooltip.top="'Number of steps'"
     )
     beat-control-bar.under(
       transform="translate(580,0)"
@@ -90,35 +91,39 @@ svg.w-full(
       :every="4"
       inverted
       :vector="[-1, -1]"
+      v-tooltip.top="'Measure subdivision'"
     )
 
   g.info(
     :transform="`translate(500,53)`"
-  )
-    text(
-      fill="currentColor"
-      font-size="45"
-      text-anchor="middle",
-      y="2"
-    ) /
-    text(
-      fill="currentColor"
-      font-family="Commissioner, sans-serif"
-      font-size="40px"
-      text-anchor="end",
-      :x="-10",
-      ) {{ loop.over }} 
-    text(
-      fill="currentColor"
-      font-family="Commissioner, sans-serif"
-      font-size="40px"
-      text-anchor="start",
-      :x="10",
-      ) {{ loop.under }} 
+    )
+    g.signature(v-tooltip.top="'Time signature'")
+      text(
+        fill="currentColor"
+        font-size="45"
+        text-anchor="middle",
+        y="2"
+      ) /
+      text(
+        fill="currentColor"
+        font-family="Commissioner, sans-serif"
+        font-size="40px"
+        text-anchor="end",
+        :x="-10",
+        ) {{ loop.over }} 
+      text(
+        fill="currentColor"
+        font-family="Commissioner, sans-serif"
+        font-size="40px"
+        text-anchor="start",
+        :x="10",
+        ) {{ loop.under }} 
+
     g.cursor-pointer.opacity-50.transition-all.duration-200.ease(
       class="hover_opacity-100"
       transform="translate(70,-10)"
       @mousedown="rotateAccents(-1)"
+      v-tooltip.top="'Rotate pattern backward'"
     )
       circle(
         r="18"
@@ -133,6 +138,7 @@ svg.w-full(
       class="hover_opacity-100"
       transform="translate(-70,-10)"
       @mousedown="rotateAccents(1)"
+      v-tooltip.top="'Rotate pattern forward'"
     )
       circle(
         r="18"
@@ -202,6 +208,7 @@ svg.w-full(
         v-model="volume"
         :width="200"
         :step="0.01"
+        v-tooltip.bottom="'Track volume'"
       )
         g(transform="translate(-20 -30)")
           la-volume-off(
@@ -218,6 +225,7 @@ svg.w-full(
         :width="200"
         :step="0.01"
         show-center
+        v-tooltip.bottom="'Track panning'"
       )
         mdi-pan-horizontal(
           :x="-18"
@@ -232,6 +240,7 @@ svg.w-full(
         :max="4"
         show-positions
         :every="1"
+        v-tooltip.bottom="'Click sound select'"
         )
         text {{ loop?.sound }}
       transition(name="fade")
@@ -239,6 +248,7 @@ svg.w-full(
           @mousedown="reset()"
           :transform="`translate(840, 0)`"
           v-if="editable && !isEuclidean"
+          v-tooltip.bottom="'Reset to Euclidean pattern'"
           )
           rect(
             style="filter:url(#shadowButton)"
@@ -258,6 +268,7 @@ svg.w-full(
         @mousedown="$emit('del')"
         :transform="`translate(900, 0)`"
         v-if="editable"
+        v-tooltip.bottom="'Remove track'"
         )
         rect(
           style="filter:url(#shadowButton)"
@@ -280,6 +291,7 @@ svg.w-full(
 g {
   transition: fill 300ms ease;
 }
+
 .active {
   stroke: currentColor;
 }

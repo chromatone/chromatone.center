@@ -207,10 +207,12 @@ svg {
     .is-group.flex.items-center.mr-2.gap-2
       button.shadow.p-3.m-1.border-1.border-current.rounded(
         @click="time.move = !time.move"
+        v-tooltip.bottom="'Toggle animation'"
       )
         la-play(v-if="!time.move")
         la-pause(v-if="time.move")
       control-knob(
+        v-tooltip.bottom="'Number of harmonics'"
         :min="overtones.min"
         :max="overtones.max"
         :step="1"
@@ -219,6 +221,7 @@ svg {
         v-model="overtones.count"
         )
       control-knob(
+        v-tooltip.bottom="'Speed of animation'"
         :min="0.2"
         :max="2"
         :step="0.1"
@@ -228,13 +231,14 @@ svg {
         )
 
     .is-group.flex.items-center.gap-2
-      control-piano(v-model:pitch="globalScale.tonic")
+      control-piano(v-model:pitch="globalScale.tonic" v-tooltip.bottom="'Fundamental pitch'")
       control-knob(
         :min="1"
         :max="5"
         :step="1"
         :fixed="0"
         param="octave"
+        v-tooltip.bottom="'Octave of the fundamental pitch'"
         v-model="fundamental.octave"
         )
     .is-group.flex.items-center.ml-2.p-2

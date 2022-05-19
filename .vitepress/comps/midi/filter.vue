@@ -17,8 +17,18 @@ function filterAll() {
   .font-bold.mr-2 Channel filter
     .channel.filtered.flex.items-center.justify-center(
       @click="filterAll()"
-) ALL
-  .flex.flex-wrap
+      ) ALL
+    button.flex-button(
+      v-tooltip.bottom="'Output MIDI channel'"
+      )
+      span CH
+      input.ch.ml-2.dark_bg-dark-200(
+        type="number", 
+        inputmode="numeric"
+        pattern="[0-9]*"
+        max="16",min="1",length="12", 
+        v-model="midi.channel")
+  .grid.grid-cols-4
     .channel(
       v-for="ch in 16" :key="ch"
       :class="{ filtered: !midi.filter[ch], active: midi.note.channel == ch }"
@@ -32,9 +42,11 @@ function filterAll() {
 .channel {
   @apply transition-all duration-100 select-none px-2px py-5px m-2px min-w-22px text-0.75rem text-center cursor-pointer border-1 rounded-lg line-through;
   flex: 1 1 10%;
+
   &.filtered {
     @apply bg-light-900 dark_bg-dark-100 no-underline;
   }
+
   &.active {
     @apply border-current;
   }

@@ -33,6 +33,7 @@ const supported = computed(() => full.value?.isSupported);
 button.text-button(
   v-show="supported"
   @click="toggle()"
+  v-tooltip.left="'Toggle fullscreen'"
 )
   la-expand
 </template>

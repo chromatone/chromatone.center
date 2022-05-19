@@ -76,7 +76,7 @@ function isInScale(list) {
   .is-group.flex.flex-col.items-center.p-2.my-2
     .text-xl.font-bold.mt-4 Scale
     control-scale.flex-1.mb-4
-    tab-neck.my-8(
+    tab-neck.my-8.min-w-150(
       :instrument="current"
       :chordNotes="Chord.get(state.key + state.suffix).notes"
       )
@@ -125,22 +125,28 @@ function isInScale(list) {
 <style lang="postcss" scoped>
 button {
   @apply shadow m-1 rounded border-1 border-transparent transition-all duration-200;
+
   &.note {
     @apply text-white p-2 font-bold opacity-50 border-2 rounded-lg;
+
     &.active {
       @apply transform scale-125;
     }
   }
+
   &.active {
     @apply opacity-100 border-current;
   }
+
   &:hover {
     @apply opacity-90;
   }
 }
+
 .isin {
   @apply font-bold;
 }
+
 .tab {
   @apply relative flex justify-center;
   flex: 1 1 100px;

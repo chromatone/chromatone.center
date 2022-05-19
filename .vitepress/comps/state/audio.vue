@@ -12,11 +12,12 @@ const { mic, input } = useMic();
     button.flex-button.relative.overflow-hidden(
       @click="mic.open = !mic.open"
       :class="{ active: mic.open }"
+      v-tooltip.top="'Enable microphone'"
       )
       ph-microphone.z-10.relative(v-if="!mic.opened")
       ph-microphone-fill.z-10.relative(v-else)
       .m-0 Mic
-    button.flex-button(:class="{ active: mic.monitor }" @click="mic.monitor = !mic.monitor")
+    button.flex-button(:class="{ active: mic.monitor }" @click="mic.monitor = !mic.monitor" v-tooltip.top="'Connect microphone to output'")
       ph-ear
       .m-0 Monitoring
 
@@ -26,6 +27,7 @@ const { mic, input } = useMic();
       :max="2"
       :step="0.001"
       param="GAIN"
+      v-tooltip.top="'Microphone volume'"
       )
     control-knob(
       v-model="mic.gate"
@@ -35,9 +37,10 @@ const { mic, input } = useMic();
       param="GATE"
       unit="dB"
       :fixed="0"
+      v-tooltip.top="'Noise gate'"
       )
     control-meter.mr-1(:meter="mic.meter")
-  .flex.flex-wrap.is-group.items-center.p-2
+  .flex.flex-wrap.is-group.items-center.p-2.gap-2
     .p-1.font-bold Master
     control-knob(
       param="Vol"
@@ -45,11 +48,13 @@ const { mic, input } = useMic();
       :min="0"
       :max="2"
       :step="0.001"
+      v-tooltip.top="'Master volume'"
       )
     button.text-button.border.mute.mt-24(
       @click="audio.mute = !audio.mute" 
       :class="{ active: !audio.mute }"
       aria-label="Toggle mute"
+      v-tooltip.top="'Toggle mute'"
       )
       bi-volume-up(v-if="!audio.mute")
       bi-volume-mute(v-else)

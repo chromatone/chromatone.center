@@ -18,6 +18,7 @@ g.listen(
       fill="transparent"
       rx="10"
       stroke-width="4"
+      v-tooltip.right="'Guess tempo from audio input'"
     )
     g.icon(
       transform="translate(6,12)"

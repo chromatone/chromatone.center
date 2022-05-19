@@ -4,13 +4,6 @@ import { onKeyStroke } from "@vueuse/core";
 import { pitchColor } from "@use/calculations";
 import { synth } from "@use/synth.js";
 
-const props = defineProps({
-  toChannel: {
-    type: Boolean,
-    default: true,
-  },
-});
-
 onKeyStroke(" ", (ev) => {
   ev.preventDefault();
   midi.playing = !midi.playing;
@@ -56,13 +49,22 @@ var isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
         @click="midi.keyboard = !midi.keyboard" 
         aria-label="Play MIDI with PC keyboard"
         :class="{ active: midi.keyboard }"
+        v-tooltip.bottom="'Play MIDI with PC keyboard'"
         )
         tabler-keyboard
         .m-0 PC keyboard
-      button.flex-button.opacity-30(@click="midi.out = !midi.out",:class="{ active: midi.out }") 
+      button.flex-button.opacity-30(
+        @click="midi.out = !midi.out",
+        :class="{ active: midi.out }"
+        v-tooltip.bottom="'Output MIDI to external devices'"
+        ) 
         fad-midiplug
         .m-0 MIDI OUT
-      button.flex-button.border(@click="synth.state.midi = !synth.state.midi" :class="{ active: synth.state.midi }")
+      button.flex-button.border(
+        @click="synth.state.midi = !synth.state.midi" 
+        :class="{ active: synth.state.midi }"
+        v-tooltip.bottom="'Play synth on MIDI input'"
+        )
         bi-volume-up(v-if="synth.state.midi")
         bi-volume-off(v-else)
         .m-0 MIDI Synth
@@ -70,14 +72,6 @@ var isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
 
     button.text-button.border(v-for="output in midi.outputs")  
       span {{ output.name }}
-    button.text-button(v-if="toChannel")
-      span Active Channel
-      input.ch.ml-2(
-        type="number", 
-        inputmode="numeric"
-        pattern="[0-9]*"
-        max="16",min="1",length="12", 
-        v-model="midi.channel")
     midi-filter.mx-2(style="flex: 1 1 100px")
 
     slot.is-group.mx-1.p-1

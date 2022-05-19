@@ -25,7 +25,7 @@ const { progress, current, steps, mutes, accents, volume, panning, recorder, las
 
 watch(soundControl, num => {
   emit('sound', soundLetters[num])
-})   
+})
 
 const activeSteps = computed(() => {
   return steps.filter(step => !mutes.value[step[0].split('-')[0]]).map(step => Number(step[0].split('-')[0]))
@@ -111,6 +111,7 @@ g(
     show-positions
     :ratio="800"
     :every="4"
+    v-tooltip.top="'Measure subdivision'"
   )
     text {{ loop.under }}
 
@@ -127,6 +128,7 @@ g(
     show-positions
     :ratio="1000"
     :every="4"
+    v-tooltip.top="'Number of steps'"
   )
     text {{ loop.over }}
 
@@ -141,6 +143,7 @@ g(
     :min="0"
     :max="1"
     :vector="[1, -1]"
+    v-tooltip.bottom="'Track volume'"
   )
     la-volume-up(x="-18" y="-28")
 
@@ -155,6 +158,7 @@ g(
     :min="-1"
     :max="1"
     show-center
+    v-tooltip.bottom="'Track panning'"
   )
     mdi-pan-horizontal(x="-18" y="-28")
 
@@ -172,6 +176,7 @@ g(
     show-positions
     :ratio="400"
     :every="1"
+    v-tooltip.bottom="'Select sound'"
   )
     text {{ loop?.sound }}
 
@@ -187,30 +192,31 @@ g(
     :transform="`translate(500,${order * size + 50})`"
     v-drag="rotateAccents"
   )
-    text(
-      fill="currentColor"
-      font-size="45"
-    ) /
-    text(
-      fill="currentColor"
-      font-family="Commissioner, sans-serif"
-      font-size="40px"
-      text-anchor="end",
-      :x="-10",
-      :y="-3",
-      ) {{ loop.over }} 
-    text(
-      fill="currentColor"
-      font-family="Commissioner, sans-serif"
-      font-size="40px"
-      text-anchor="start",
-      :x="10",
-      :y="-3",
-      ) {{ loop.under }} 
-    g.cursor-pointer.opacity-50.transition-all.duration-200.ease(
-      class="hover_opacity-100"
+    g.signature(v-tooltip.top="'Time signature'")
+      text(
+        fill="currentColor"
+        font-size="45"
+      ) /
+      text(
+        fill="currentColor"
+        font-family="Commissioner, sans-serif"
+        font-size="40px"
+        text-anchor="end",
+        :x="-10",
+        :y="-3",
+        ) {{ loop.over }} 
+      text(
+        fill="currentColor"
+        font-family="Commissioner, sans-serif"
+        font-size="40px"
+        text-anchor="start",
+        :x="10",
+        :y="-3",
+        ) {{ loop.under }} 
+    g.cursor-pointer.opacity-50.transition-all.duration-200.ease.hover_opacity-100(
       transform="translate(74,-10)"
       @mousedown="rotateAccents(-1)"
+      v-tooltip.top="'Rotate pattern forward'"
     )
       circle(
         r="18"
@@ -221,10 +227,10 @@ g(
         x="-17"
         y="-17"
       )
-    g.cursor-pointer.opacity-50.transition-all.duration-200.ease(
-      class="hover_opacity-100"
+    g.cursor-pointer.opacity-50.transition-all.duration-200.ease.hover_opacity-100(
       transform="translate(-78,-10)"
       @mousedown="rotateAccents(1)"
+      v-tooltip.top="'Rotate pattern back'"
     )
       circle(
         r="18"
@@ -244,7 +250,7 @@ g(
       stroke-linecap="cound"
       :x2="lastLine.x"
       :y2="lastLine.y"
-      v-if="lastHit>0"
+      v-if="lastHit > 0"
       )
     line(
       :x1="500"

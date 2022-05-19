@@ -24,6 +24,7 @@ g.center(
   g.bpm.cursor-pointer(
     v-drag="drag"
     @dblclick="tempo.bpm = 120"
+    v-tooltip.bottom="'Drag to change BPM'"
   )
     circle.transition-all.duration-100.ease-out(
       stroke-width="6"
@@ -33,6 +34,7 @@ g.center(
       opacity="0.6"
       :r="center.radius / 2"
       :fill="fill"
+
     )
     text.bpm(
       fill="currentColor"
@@ -47,6 +49,7 @@ g.center(
   )
     g.arc.plus(
       @mousedown="tempo.set(1)"
+      v-tooltip.right="'Add 1'"
     )
       svg-ring(
         :cx="0"
@@ -64,6 +67,7 @@ g.center(
       )
     g.arc.minus(
       @mousedown="tempo.set(-1)"
+      v-tooltip.left="'Subtract 1'"
     )
       svg-ring(
         :cx="0"
@@ -81,6 +85,7 @@ g.center(
       )
     g.arc.multiply(
       @mousedown="tempo.set(tempo.bpm)"
+      v-tooltip.top="'Multiply by 2'"
     )
       svg-ring(
         :cx="0"
@@ -98,6 +103,7 @@ g.center(
       )
     g.arc.multiply(
       @mousedown="tempo.set(-tempo.bpm / 2)"
+      v-tooltip.bottom="'Divide by 2'"
     )
       svg-ring(
         :cx="0"
@@ -120,6 +126,7 @@ g.center(
   transition: all 200ms ease-out;
   filter: brightness(100%);
 }
+
 .arc:hover {
   filter: brightness(350%);
 }

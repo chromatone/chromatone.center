@@ -28,6 +28,7 @@ function drag(event) {
       :style="{ color: tempo.blink ? tempo.color : 'currentColor' }"
       @click="tempo.mute = !tempo.mute" 
       aria-label="Toggle metronome"
+      v-tooltip.top="'Toggle metronome'"
       ) 
       mdi-metronome.z-4(
         style="transition: all 300ms ease-out;"
@@ -38,20 +39,21 @@ function drag(event) {
     button(
       style="grid-area: PLAY"
       @click="tempo.playing = !tempo.playing"
+      v-tooltip.top="'Play'"
       )
       la-play(v-if="!tempo.playing")
       la-pause(v-else)
-    button(style="grid-area: STOP" @click="tempo.stopped = true")
+    button(style="grid-area: STOP" @click="tempo.stopped = true" v-tooltip.bottom="'Stop'")
       la-stop
 
-    button(style="grid-area: MINUS" @click="tempo.set(-1)")
+    button(style="grid-area: MINUS" @click="tempo.set(-1)" v-tooltip.bottom="'Subtract 1 BPM'")
       la-minus
-    button(style="grid-area: PLUS" @click="tempo.set(1)")
+    button(style="grid-area: PLUS" @click="tempo.set(1)" v-tooltip.bottom="'Add 1 BPM'")
       la-plus
 
-    button(style="grid-area: DIVIDE" @click="tempo.set(-tempo.bpm / 2)")
+    button(style="grid-area: DIVIDE" @click="tempo.set(-tempo.bpm / 2)" v-tooltip.top="'Half speed'")
       la-slash
-    button(style="grid-area: MULTIPLY" @click="tempo.set(tempo.bpm)")
+    button(style="grid-area: MULTIPLY" @click="tempo.set(tempo.bpm)" v-tooltip.top="'Double speed'")
       la-times
 
 
@@ -68,6 +70,7 @@ function drag(event) {
     button.relative.flex.flex-col.gap-2.touch-none(
       v-drag="drag"
       style="grid-area: Hz"  
+      v-tooltip.top="'Tempo frequency and pitch class'"
       :style="{ color: tempo.color, borderColor: tempo.color }"
       )
       .text-4xl.font-bold {{ tempo.note }}
@@ -81,29 +84,33 @@ function drag(event) {
       :step="0.01"
       param="VOL"
       :cc="16"
+      v-tooltip.top="'Metronome volume'"
       ) 
     button(
       style="grid-area: TAP" 
       @mousedown.stop.prevent="tap()"
       @touchstart.stop.prevent="tap()"
       :class="{ active: tempo.tap.last }"
+      v-tooltip.bottom="'Tap tempo'"
       )
       fluent-tap-double-20-regular.mt-1
     button(
       style="grid-area: TAPPED" 
+      v-tooltip.bottom="'Click to set tap tempo'"
       @click="tempo.tap.bpm && tempo.tap.last ? tempo.bpm = tempo.tap.bpm : tap()") 
       .font-bold(v-if="tempo.tap.bpm && tempo.tap.last") {{ tempo.tap.bpm.toFixed(1) }}
       .opacity-40(v-else) TAP
 
-    button(style="grid-area: GUESS" @click="!tuner.initiated ? init() : (tuner.listen = !tuner.listen)" )
+    button(style="grid-area: GUESS" @click="!tuner.initiated ? init() : (tuner.listen = !tuner.listen)" v-tooltip.top="'Guess tempo from audio'" )
       template(v-if="!tuner.listen")
         tabler-ear
       template(v-else)
         tabler-ear-off
     button.duration-100(
       style="grid-area: GUESSED" 
+      v-tooltip.top="'Click to set guessed tempo'"
       :class="{ active: tuner.blink }"
-      @click="tuner.listen ? tempo.bpm = tuner.bpm : tuner.listen = true") 
+      @click="!tuner.initiated ? init() : tuner.listen && tuner.bpm ? tempo.bpm = tuner.bpm : tuner.listen = true") 
       .font-bold(v-if="tuner.listen") {{ tuner.bpm.toFixed(0) }}
       .opacity-40(v-else) GUESS
   .flex.font-mono.text-sm.gap-4

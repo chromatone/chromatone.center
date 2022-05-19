@@ -17,7 +17,7 @@ const screen = ref();
       :title="false"
       chroma="100000000000"
       v-model:pitch="globalScale.tonic"
-    )
+      )
     .scales
       .p-2.flex-1.cursor-pointer.whitespace-nowrap(
         v-for="sc in scales"

@@ -8,6 +8,7 @@ g.tap.cursor-pointer
     transform="translate(140,0)"
     @mousedown.stop.prevent="tap()"
     @touchstart.stop.prevent="tap()"
+
   )
     rect(
       width="70"
@@ -16,6 +17,7 @@ g.tap.cursor-pointer
       :stroke="tempo.tap.last ? 'currentColor' : '#33333333'"
       fill="transparent"
       stroke-width="4"
+      v-tooltip.left="'Tap tempo'"
     )
     fluent-tap-double-20-regular(
       font-size="55"

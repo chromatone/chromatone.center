@@ -19,6 +19,7 @@ g.transport(
       rx="10"
       width="70"
       height="80"
+      v-tooltip.left="'Play/pause'"
     )
     g(
       transform="translate(-2,4)"
@@ -35,6 +36,7 @@ g.transport(
     @click="tempo.stopped = true"
     )
       rect.border(
+        v-tooltip.left="'Stop'"
         fill="transparent"
         stroke-width="4"
         x="0"

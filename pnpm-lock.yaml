@@ -12,6 +12,7 @@ specifiers:
   cobe: ^0.5.0
   colord: ^2.9.2
   drauu: ^0.3.0
+  floating-vue: ^2.0.0-beta.16
   fraction.js: ^4.2.0
   fuse.js: ^6.6.2
   hidpi-canvas: ^1.0.10
@@ -52,6 +53,7 @@ dependencies:
   cobe: 0.5.0
   colord: 2.9.2
   drauu: 0.3.0
+  floating-vue: 2.0.0-beta.16_vue@3.2.33
   fraction.js: 4.2.0
   fuse.js: 6.6.2
   hidpi-canvas: 1.0.10
@@ -274,6 +276,16 @@ packages:
     resolution: {integrity: sha512-rN2Nu70lDIqWrihwlrBlncv94PJrPUi2F91O8vnOEJYpb1qQnG5v8oFiYzfshiSmKzENPKHt7F8eaG5xoaLW4w==}
     dependencies:
       perfect-freehand: 1.0.16
+    dev: false
+
+  /@floating-ui/core/0.3.1:
+    resolution: {integrity: sha512-ensKY7Ub59u16qsVIFEo2hwTCqZ/r9oZZFh51ivcLGHfUwTn8l1Xzng8RJUe91H/UP8PeqeBronAGx0qmzwk2g==}
+    dev: false
+
+  /@floating-ui/dom/0.1.10:
+    resolution: {integrity: sha512-4kAVoogvQm2N0XE0G6APQJuCNuErjOfPW8Ux7DFxh8+AfugWflwVJ5LDlHOwrwut7z/30NUvdtHzQ3zSip4EzQ==}
+    dependencies:
+      '@floating-ui/core': 0.3.1
     dev: false
 
   /@iconify/json/2.1.43:
@@ -1562,6 +1574,16 @@ packages:
       locate-path: 6.0.0
       path-exists: 4.0.0
     dev: true
+
+  /floating-vue/2.0.0-beta.16_vue@3.2.33:
+    resolution: {integrity: sha512-MoVA9pLGMVkuyG9cvlzpSB9//HGynbWnkLr0cxDgnEWORL98kuSa2ph/bcq7sDGNM3l0/3v6HYSqhBMBp9F3/A==}
+    peerDependencies:
+      vue: ^3.2.0
+    dependencies:
+      '@floating-ui/dom': 0.1.10
+      vue: 3.2.33
+      vue-resize: 2.0.0-alpha.1_vue@3.2.33
+    dev: false
 
   /foreach/2.0.5:
     resolution: {integrity: sha1-C+4AUBiusmDQo6865ljdATbsG5k=}
@@ -3393,6 +3415,14 @@ packages:
     peerDependenciesMeta:
       '@vue/composition-api':
         optional: true
+    dependencies:
+      vue: 3.2.33
+    dev: false
+
+  /vue-resize/2.0.0-alpha.1_vue@3.2.33:
+    resolution: {integrity: sha512-7+iqOueLU7uc9NrMfrzbG8hwMqchfVfSzpVlCMeJQe4pyibqyoifDNbKTZvwxZKDvGkB+PdFeKvnGZMoEb8esg==}
+    peerDependencies:
+      vue: ^3.0.0
     dependencies:
       vue: 3.2.33
     dev: false

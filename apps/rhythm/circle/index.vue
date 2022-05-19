@@ -30,7 +30,7 @@ function changeLoop(l, n, val) {
 const overlay = ref(false);
 
 function resetTracks() {
-  tracks.forEach(t=>t.reset())
+  tracks.forEach(t => t.reset())
 }
 
 </script>
@@ -50,6 +50,7 @@ function resetTracks() {
       @click="resetTracks()"
       transform="translate(20,110) scale(0.75)"
       title="Reset to Euclidean"
+      v-tooltip.right="'Reset to Euclidean pattern'"
       )
       tabler-stairs
     beat-control-listen(transform="translate(10,900)")
@@ -58,15 +59,17 @@ function resetTracks() {
     beat-control-button(
       @click="overlay = true"
       transform="translate(10,750)"
+      v-tooltip.right="'Toggle info overlay'"
       )
       healthicons-question
     beat-control-button(
       @click="renderMidi(tracks)"
       transform="translate(925,750)"
+      v-tooltip.left="'Export MIDI file'"
       )
       la-file-download
     circle-loop(
-      v-for="(loop,i) in loops",
+      v-for="(loop, i) in loops",
       :key="i"
       :order="i"
       :loop="loop"
@@ -88,6 +91,7 @@ function resetTracks() {
 .button {
   @apply p-2 border-1 m-1 cursor-pointer shadow-md rounded text-2xl;
 }
+
 .info {
   @apply p-2 rounded m-1 text-2xl flex items-center;
 }

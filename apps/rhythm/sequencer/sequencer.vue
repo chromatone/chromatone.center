@@ -167,27 +167,27 @@ function borderColor(cell, r) {
 <template lang="pug">
 .flex.flex-col
   .flex.flex-wrap.items-center.justify-center
-    control-scale.flex-1
+    control-scale.flex-1(v-tooltip.top="'Select root note and scale'")
     .flex.flex-wrap.justify-center.flex-1.bg-light-900.p-4.rounded-2xl.dark_bg-dark-800.gap-2
-      control-knob.w-70px(v-model="state.octave" :max="4" :min="2" :fixed="0" param="OCTAVE")
-      select(v-model="state.type")
+      control-knob.w-70px(v-model="state.octave" :max="4" :min="2" :fixed="0" param="OCTAVE" v-tooltip.top="'Octave'")
+      select(v-model="state.type" v-tooltip.top="'Pattern type'")
         option(
           v-for="(type) in patternTypes" 
           :key="type" :value="type"
           ) {{ type }}
       control-knob.w-50px(
-        v-model="state.steps" :max="32" :min="4" :step="1" :fixed="0" param="steps")
-      control-knob.w-50px(v-model="tempo.bpm" :step="1" :max="400" :min="10" :fixed="0" param="BPM")
+        v-model="state.steps" :max="32" :min="4" :step="1" :fixed="0" param="steps" v-tooltip.top="'Number of steps'")
+      control-knob.w-50px(v-model="tempo.bpm" :step="1" :max="400" :min="10" :fixed="0" param="BPM" v-tooltip.top="'Set tempo'")
       control-knob.w-50px(v-model="state.probability" :max="1" :min="0" :step="0.01" :fixed="2" param="prob")
-      button.text-button(:class="{ active: state.humanize }" @click="state.humanize = !state.humanize") HMN
-      button.text-button(@click="clear()")
+      button.text-button(:class="{ active: state.humanize }" @click="state.humanize = !state.humanize" v-tooltip.bottom="'Humanize rhythm'") HMN
+      button.text-button(@click="clear()" v-tooltip.bottom="'Clear pattern'")
         la-trash-alt
-      .is-group
-        button.text-button(@click="state.playing = true" v-if="!state.playing")
+      .is-group.flex.items-center
+        button.text-button(@click="state.playing = true" v-if="!state.playing" v-tooltip.bottom="'Play'")
           la-play
-        button.text-button(@click="state.playing = false" v-if="state.playing")
+        button.text-button(@click="state.playing = false" v-if="state.playing" v-tooltip.bottom="'Pause'")
           la-pause
-        button.text-button(@click="reset()")
+        button.text-button(@click="reset()" v-tooltip.bottom="'Stop'")
           la-stop
   .rows(
     @mousedown="state.hover = true"

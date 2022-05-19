@@ -37,7 +37,11 @@ const { width, height } = useWindowSize()
 
   .flex.flex-wrap.gap-2
     .is-group.flex.flex-wrap
-      button.flex-button(@click="record.start()" v-if="!audioRecording") 
+      button.flex-button(
+        @click="record.start()" 
+        v-if="!audioRecording"
+        v-tooltip.top="'Start audio recording'"
+        ) 
         mdi-checkbox-blank-circle-outline
         .m-0 Record audio
       button.flex-button.text-red-500(@click="record.stop()" v-else)  
@@ -47,6 +51,7 @@ const { width, height } = useWindowSize()
         :class="{ 'text-red-500': recording }", 
         title="Recording", 
         @click="toggleRecording"
+        v-tooltip.top="'Start screen recording'"
         )
         carbon-stop-outline(v-if="recording")
         carbon-video(v-else)
@@ -56,6 +61,7 @@ const { width, height } = useWindowSize()
       button.flex-button(
         @click="drawingEnabled = !drawingEnabled"
         :class="{ active: drawingEnabled }"
+        v-tooltip.top="'Draw on the screen'"
         )
         carbon-pen
         .ml-0 Draw
@@ -64,15 +70,17 @@ const { width, height } = useWindowSize()
         :class="{ 'text-green-500': Boolean(showAvatar && streamCamera) }", 
         title="Show camera view", 
         @click="toggleAvatar"
+        v-tooltip.top="'Enable circular camera avatar'"
         )
         carbon-user-avatar
         .ml-0 Camera avatar
       button.flex-button(
         @click="options = !options"
         aria-label="Screencast options"
+        v-tooltip.top="'Open screencast options'"
         )
-          la-cog
-          .ml-0 Settings
+        la-cog
+        .ml-0 Settings
   .flex.gap-2(v-if="options")
     .flex.flex-col.gap-2.py-2(style="flex: 1 1 100px")
       .form-check

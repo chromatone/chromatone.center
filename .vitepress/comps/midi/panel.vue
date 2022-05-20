@@ -75,7 +75,7 @@ var isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
     midi-filter.mx-2(style="flex: 1 1 100px")
 
     slot.is-group.mx-1.p-1
-  img(src="/media/apps/pc-keyboard.svg")
+  img.mt-4(src="/media/apps/pc-keyboard-3.svg")
 </template>
 
 <style lang="postcss" scoped>

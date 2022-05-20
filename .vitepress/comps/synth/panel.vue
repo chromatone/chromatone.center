@@ -38,7 +38,7 @@ const octaves = useCycleList([-2, -1, 0, 1, 2], { initialValue: midi.offset })
     synth-oscillators.is-group(v-model="synth.params.oscillator.type" v-tooltip.top="'Select oscillator type'")
     control-knob(
       :min="0"
-      :max="1"
+      :max="2"
       :step="0.001"
       v-model="synth.state.volume"
       param="VOL"

@@ -1,4 +1,4 @@
-import { PolySynth, MonoSynth, start, now, Midi, AutoPanner, Reverb, gainToDb, StereoWidener, PingPongDelay } from 'tone'
+import { PolySynth, MonoSynth, start, now, Midi, AutoPanner, Reverb, gainToDb, StereoWidener, PingPongDelay, Compressor, Gain } from 'tone'
 import { midi } from './midi'
 import { useStorage, useCycleList } from '@vueuse/core'
 import { onKeyDown } from '@vueuse/core'
@@ -14,14 +14,14 @@ export const synth = {
     initiated: false,
     mute: false,
     quantize: useCycleList(quantizeModes, { initialValue: '+0' }),
-    volume: useClamp(1, 0, 1)
+    volume: useClamp(1, 0, 2)
   }),
   params: reactive({
     maxPolyphony: 50,
     oscillator: {
       type: useStorage('synth-osc', 'sawtooth8')
     },
-    volume: -20,
+    volume: -30,
     envelope: {
       attack: 0.01,
       decay: 0.1,
@@ -82,9 +82,8 @@ export function init() {
   synth.delay = new PingPongDelay({ delayTime: '16n', feedback: 0.3, wet: 0.3, maxDelay: '4n' }).connect(synth.widener)
 
   synth.pan = new AutoPanner({ frequency: '4n', depth: 0.4 }).connect(synth.reverb).connect(synth.delay).connect(synth.widener)
-
-
-  synth.poly = new PolySynth(MonoSynth, synth.params).connect(synth.pan)
+  synth.compressor = new Compressor().connect(synth.pan)
+  synth.poly = new PolySynth(MonoSynth, synth.params).connect(synth.compressor)
 
   synth.pan.start()
 }

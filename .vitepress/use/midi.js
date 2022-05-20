@@ -1,6 +1,6 @@
 import { WebMidi, Note } from "webmidi"
 import { useStorage, onKeyDown, onKeyUp } from "@vueuse/core"
-import { preventDefault } from "ol/events/Event";
+import { setupKeyboard } from './keyboard'
 import { useClamp } from "@vueuse/core";
 
 export const midi = reactive({
@@ -348,61 +348,3 @@ export function forwardMidi(iid, oid) {
 }
 
 
-function setupKeyboard() {
-  onKeyDown('zZяЯ'.split(''), ev => !ev.repeat && midi.offset--)
-  onKeyDown('xXчЧ'.split(''), ev => !ev.repeat && midi.offset++)
-
-  const noteKeys = {
-    'aAф': { note: 'C', offset: 0 },
-    'wWц': { note: 'C#', offset: 0 },
-    'sSы': { note: 'D', offset: 0 },
-    'eEу': { note: 'D#', offset: 0 },
-    'dDв': { note: 'E', offset: 0 },
-    'fFа': { note: 'F', offset: 0 },
-    'tTе': { note: 'F#', offset: 0 },
-    'gGп': { note: 'G', offset: 0 },
-    'yYн': { note: 'G#', offset: 0 },
-    'hHр': { note: 'A', offset: 0 },
-    'uUг': { note: 'A#', offset: 0 },
-    'jJо': { note: 'B', offset: 0 },
-    'kKл': { note: 'C', offset: 1 },
-    'oOщ': { note: 'C#', offset: 1 },
-    'lLд': { note: 'D', offset: 1 },
-    'pPз': { note: 'D#', offset: 1 },
-    ';:ж': { note: 'E', offset: 1 },
-    'э': { note: 'F', offset: 1 },
-    ']}ъ': { note: 'F#', offset: 1 },
-    '\\|ё': { note: 'G', offset: 1 },
-    'AФ': { note: 'C', offset: 1 },
-    'WЦ': { note: 'C#', offset: 1 },
-    'SЫ': { note: 'D', offset: 1 },
-    'EУ': { note: 'D#', offset: 1 },
-    'DВ': { note: 'E', offset: 1 },
-    'FА': { note: 'F', offset: 1 },
-    'TЕ': { note: 'F#', offset: 1 },
-    'GП': { note: 'G', offset: 1 },
-    'YН': { note: 'G#', offset: 1 },
-    'HР': { note: 'A', offset: 1 },
-    'UГ': { note: 'A#', offset: 1 },
-    'JО': { note: 'B', offset: 1 },
-    'KЛ': { note: 'C', offset: 2 },
-    'OЩ': { note: 'C#', offset: 2 },
-    'LД': { note: 'D', offset: 2 },
-    'PЗ': { note: 'D#', offset: 2 },
-    ':Ж': { note: 'E', offset: 2 },
-    '"Э': { note: 'F', offset: 2 },
-    '}Ъ': { note: 'F#', offset: 2 },
-    '|Ё': { note: 'G', offset: 2 },
-  }
-
-  for (let keys in noteKeys) {
-    onKeyDown(keys.split(''), (ev) => {
-      if (ev.repeat || !midi.keyboard) return
-      playKey(noteKeys[keys].note, noteKeys[keys].offset)
-    })
-    onKeyUp(keys.split(''), (ev) => {
-      if (ev.repeat || !midi.keyboard) return
-      playKey(noteKeys[keys].note, noteKeys[keys].offset, true)
-    })
-  }
-}

@@ -1,0 +1,202 @@
+<svg class="max-w-150 mx-auto" version="1.1" baseProfile="full" viewBox="-50 -50 1100 1100"
+  xmlns="http://www.w3.org/2000/svg" text-anchor="middle" dominant-baseline="middle">
+  <defs>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="0" stdDeviation="8" flood-opacity="0.3"></feDropShadow>
+    </filter>
+  </defs>
+  <g transform="translate(500, 500) ">
+    <g class="keys">
+      <g class="key cursor-pointer">
+        <g class="petal" transform="rotate(0) translate(0,-120) " fill="#eee" opacity="0.9"
+          style="transition: all 100ms ease-out 0s;" filter="url(#shadow)">
+          <path
+            d="M 0,0 a 30,30,0,0,0,25,-20 l 70 -260 a 120,120,0,0,0,2,-20 a 100,100,0,0,0,-200,0 a 120,120,0,0,0,2,20 l 70,260 a 30,30,0,0,0,25,20z">
+          </path>
+        </g>
+        <g class="note" transform="translate(2.5717582782094416e-14, -420)">
+          <circle style="transition: all 100ms ease-out 0s;" fill="hsla(0,100%,32%,1)" r="83.33333333333333"></circle>
+          <text font-size="50" font-weight="bold" fill="white">
+            <tspan dy="5" text-anchor="middle" dominant-baseline="middle">A</tspan>
+          </text>
+        </g>
+      </g>
+    </g>
+    <g class="keys">
+      <g class="key cursor-pointer">
+        <g class="petal" transform="rotate(30) translate(0,-120) " fill="#222" opacity="0.9"
+          style="transition: all 100ms ease-out 0s;" filter="url(#shadow)">
+          <path
+            d="M 0,0 a 30,30,0,0,0,25,-20 l 70 -260 a 120,120,0,0,0,2,-20 a 100,100,0,0,0,-200,0 a 120,120,0,0,0,2,20 l 70,260 a 30,30,0,0,0,25,20z">
+          </path>
+        </g>
+        <g class="note" transform="translate(210.00000000000006, -363.7306695894642)">
+          <circle style="transition: all 100ms ease-out 0s;" fill="hsla(30,100%,32%,1)" r="83.33333333333333"></circle>
+          <text font-size="50" font-weight="bold" fill="white">
+            <tspan dy="5" text-anchor="middle" dominant-baseline="middle">A#</tspan>
+          </text>
+        </g>
+      </g>
+    </g>
+    <g class="keys">
+      <g class="key cursor-pointer">
+        <g class="petal" transform="rotate(60) translate(0,-120) " fill="#eee" opacity="0.9"
+          style="transition: all 100ms ease-out 0s;" filter="url(#shadow)">
+          <path
+            d="M 0,0 a 30,30,0,0,0,25,-20 l 70 -260 a 120,120,0,0,0,2,-20 a 100,100,0,0,0,-200,0 a 120,120,0,0,0,2,20 l 70,260 a 30,30,0,0,0,25,20z">
+          </path>
+        </g>
+        <g class="note" transform="translate(363.73066958946424, -209.99999999999997)">
+          <circle style="transition: all 100ms ease-out 0s;" fill="hsla(60,100%,32%,1)" r="83.33333333333333"></circle>
+          <text font-size="50" font-weight="bold" fill="white">
+            <tspan dy="5" text-anchor="middle" dominant-baseline="middle">B</tspan>
+          </text>
+        </g>
+      </g>
+    </g>
+    <g class="keys">
+      <g class="key cursor-pointer">
+        <g class="petal" transform="rotate(90) translate(0,-120) " fill="#eee" opacity="0.9"
+          style="transition: all 100ms ease-out 0s;" filter="url(#shadow)">
+          <path
+            d="M 0,0 a 30,30,0,0,0,25,-20 l 70 -260 a 120,120,0,0,0,2,-20 a 100,100,0,0,0,-200,0 a 120,120,0,0,0,2,20 l 70,260 a 30,30,0,0,0,25,20z">
+          </path>
+        </g>
+        <g class="note" transform="translate(420, 0)">
+          <circle style="transition: all 100ms ease-out 0s;" fill="hsla(90,100%,32%,1)" r="83.33333333333333"></circle>
+          <text font-size="50" font-weight="bold" fill="white">
+            <tspan dy="5" text-anchor="middle" dominant-baseline="middle">C</tspan>
+          </text>
+        </g>
+      </g>
+    </g>
+    <g class="keys">
+      <g class="key cursor-pointer">
+        <g class="petal" transform="rotate(120) translate(0,-120) " fill="#222" opacity="0.9"
+          style="transition: all 100ms ease-out 0s;" filter="url(#shadow)">
+          <path
+            d="M 0,0 a 30,30,0,0,0,25,-20 l 70 -260 a 120,120,0,0,0,2,-20 a 100,100,0,0,0,-200,0 a 120,120,0,0,0,2,20 l 70,260 a 30,30,0,0,0,25,20z">
+          </path>
+        </g>
+        <g class="note" transform="translate(363.73066958946424, 209.99999999999997)">
+          <circle style="transition: all 100ms ease-out 0s;" fill="hsla(120,100%,32%,1)" r="83.33333333333333"></circle>
+          <text font-size="50" font-weight="bold" fill="white">
+            <tspan dy="5" text-anchor="middle" dominant-baseline="middle">C#</tspan>
+          </text>
+        </g>
+      </g>
+    </g>
+    <g class="keys">
+      <g class="key cursor-pointer">
+        <g class="petal" transform="rotate(150) translate(0,-120) " fill="#eee" opacity="1"
+          style="transition: all 100ms ease-out 0s;" filter="url(#shadow)">
+          <path
+            d="M 0,0 a 30,30,0,0,0,25,-20 l 70 -260 a 120,120,0,0,0,2,-20 a 100,100,0,0,0,-200,0 a 120,120,0,0,0,2,20 l 70,260 a 30,30,0,0,0,25,20z">
+          </path>
+        </g>
+        <g class="note" transform="translate(210.00000000000006, 363.7306695894642)">
+          <circle style="transition: all 100ms ease-out 0s;" fill="hsla(150,100%,48%,1)" r="83.33333333333333"></circle>
+          <text font-size="50" font-weight="bold" fill="white">
+            <tspan dy="5" text-anchor="middle" dominant-baseline="middle">D</tspan>
+          </text>
+        </g>
+      </g>
+    </g>
+    <g class="keys">
+      <g class="key cursor-pointer">
+        <g class="petal" transform="rotate(180) translate(0,-120) " fill="#222" opacity="0.9"
+          style="transition: all 100ms ease-out 0s;" filter="url(#shadow)">
+          <path
+            d="M 0,0 a 30,30,0,0,0,25,-20 l 70 -260 a 120,120,0,0,0,2,-20 a 100,100,0,0,0,-200,0 a 120,120,0,0,0,2,20 l 70,260 a 30,30,0,0,0,25,20z">
+          </path>
+        </g>
+        <g class="note" transform="translate(2.5717582782094416e-14, 420)">
+          <circle style="transition: all 100ms ease-out 0s;" fill="hsla(180,100%,32%,1)" r="83.33333333333333"></circle>
+          <text font-size="50" font-weight="bold" fill="white">
+            <tspan dy="5" text-anchor="middle" dominant-baseline="middle">D#</tspan>
+          </text>
+        </g>
+      </g>
+    </g>
+    <g class="keys">
+      <g class="key cursor-pointer">
+        <g class="petal" transform="rotate(210) translate(0,-120) " fill="#eee" opacity="1"
+          style="transition: all 100ms ease-out 0s;" filter="url(#shadow)">
+          <path
+            d="M 0,0 a 30,30,0,0,0,25,-20 l 70 -260 a 120,120,0,0,0,2,-20 a 100,100,0,0,0,-200,0 a 120,120,0,0,0,2,20 l 70,260 a 30,30,0,0,0,25,20z">
+          </path>
+        </g>
+        <g class="note" transform="translate(-209.99999999999994, 363.73066958946424)">
+          <circle style="transition: all 100ms ease-out 0s;" fill="hsla(210,100%,48%,1)" r="83.33333333333333"></circle>
+          <text font-size="50" font-weight="bold" fill="white">
+            <tspan dy="5" text-anchor="middle" dominant-baseline="middle">E</tspan>
+          </text>
+        </g>
+      </g>
+    </g>
+    <g class="keys">
+      <g class="key cursor-pointer">
+        <g class="petal" transform="rotate(240) translate(0,-120) " fill="#eee" opacity="1"
+          style="transition: all 100ms ease-out 0s;" filter="url(#shadow)">
+          <path
+            d="M 0,0 a 30,30,0,0,0,25,-20 l 70 -260 a 120,120,0,0,0,2,-20 a 100,100,0,0,0,-200,0 a 120,120,0,0,0,2,20 l 70,260 a 30,30,0,0,0,25,20z">
+          </path>
+        </g>
+        <g class="note" transform="translate(-363.73066958946424, 209.99999999999997)">
+          <circle style="transition: all 100ms ease-out 0s;" fill="hsla(240,100%,48%,1)" r="83.33333333333333"></circle>
+          <text font-size="50" font-weight="bold" fill="white">
+            <tspan dy="5" text-anchor="middle" dominant-baseline="middle">F</tspan>
+          </text>
+        </g>
+      </g>
+    </g>
+    <g class="keys">
+      <g class="key cursor-pointer">
+        <g class="petal" transform="rotate(270) translate(0,-120) " fill="#222" opacity="0.9"
+          style="transition: all 100ms ease-out 0s;" filter="url(#shadow)">
+          <path
+            d="M 0,0 a 30,30,0,0,0,25,-20 l 70 -260 a 120,120,0,0,0,2,-20 a 100,100,0,0,0,-200,0 a 120,120,0,0,0,2,20 l 70,260 a 30,30,0,0,0,25,20z">
+          </path>
+        </g>
+        <g class="note" transform="translate(-420, 5.143516556418883e-14)">
+          <circle style="transition: all 100ms ease-out 0s;" fill="hsla(270,100%,32%,1)" r="83.33333333333333"></circle>
+          <text font-size="50" font-weight="bold" fill="white">
+            <tspan dy="5" text-anchor="middle" dominant-baseline="middle">F#</tspan>
+          </text>
+        </g>
+      </g>
+    </g>
+    <g class="keys">
+      <g class="key cursor-pointer">
+        <g class="petal" transform="rotate(300) translate(0,-120) " fill="#eee" opacity="0.9"
+          style="transition: all 100ms ease-out 0s;" filter="url(#shadow)">
+          <path
+            d="M 0,0 a 30,30,0,0,0,25,-20 l 70 -260 a 120,120,0,0,0,2,-20 a 100,100,0,0,0,-200,0 a 120,120,0,0,0,2,20 l 70,260 a 30,30,0,0,0,25,20z">
+          </path>
+        </g>
+        <g class="note" transform="translate(-363.7306695894642, -210.00000000000006)">
+          <circle style="transition: all 100ms ease-out 0s;" fill="hsla(300,100%,32%,1)" r="83.33333333333333"></circle>
+          <text font-size="50" font-weight="bold" fill="white">
+            <tspan dy="5" text-anchor="middle" dominant-baseline="middle">G</tspan>
+          </text>
+        </g>
+      </g>
+    </g>
+    <g class="keys">
+      <g class="key cursor-pointer">
+        <g class="petal" transform="rotate(330) translate(0,-120) " fill="#222" opacity="0.9"
+          style="transition: all 100ms ease-out 0s;" filter="url(#shadow)">
+          <path
+            d="M 0,0 a 30,30,0,0,0,25,-20 l 70 -260 a 120,120,0,0,0,2,-20 a 100,100,0,0,0,-200,0 a 120,120,0,0,0,2,20 l 70,260 a 30,30,0,0,0,25,20z">
+          </path>
+        </g>
+        <g class="note" transform="translate(-210.0000000000002, -363.7306695894641)">
+          <circle style="transition: all 100ms ease-out 0s;" fill="hsla(330,100%,32%,1)" r="83.33333333333333"></circle>
+          <text font-size="50" font-weight="bold" fill="white">
+            <tspan dy="5" text-anchor="middle" dominant-baseline="middle">G#</tspan>
+          </text>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

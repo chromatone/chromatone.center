@@ -1,19 +1,16 @@
 import { computed, markRaw, nextTick, reactive, ref, watch } from 'vue'
 import { createDrauu } from 'drauu'
 import { toReactive, useStorage } from '@vueuse/core'
-import { notes } from '@use/theory'
-import { pitchColor } from '@use/calculations'
 import { useCycleList } from '@vueuse/core'
 
 
 export const brushColors = [
   '#000000',
-  ...notes.map((el, i) => pitchColor(i)),
+  ...new Array(12).fill(true).map((el, i) => `hsl(${i * 30}, 100%,50%)`),
   '#ffffff',
-
 ]
 
-const drawingModes = ['line', 'arrow', 'stylus', 'rectangle', 'ellipse']
+export const drawingModes = ['line', 'arrow', 'stylus', 'rectangle', 'ellipse']
 
 export const brushSizes = useCycleList([4, 8, 16, 24])
 

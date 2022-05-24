@@ -49,13 +49,11 @@ watch(() => midi.note, note => {
     button(:class="{ active: drawingMode == 'stylus' }", @click="setDrawingMode('stylus')")
       carbon:pen
 
-
     button(:class="{ active: drawingMode == 'line' }", @click="setDrawingMode('line')")
       svg.-mt-1(width="1em", height="1em", preserveAspectRatio="xMidYMid meet", viewBox="0 0 24 24")
         path(d="M21.71 3.29a1 1 0 0 0-1.42 0l-18 18a1 1 0 0 0 0 1.42a1 1 0 0 0 1.42 0l18-18a1 1 0 0 0 0-1.42z", fill="currentColor")
     button(:class="{ active: drawingMode == 'arrow' }", @click="setDrawingMode('arrow')")
       carbon:arrow-up-right
-
 
     button(:class="{ active: drawingMode == 'ellipse' }", @click="setDrawingMode('ellipse')")
       carbon:radio-button

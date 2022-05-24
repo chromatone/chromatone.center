@@ -44,7 +44,8 @@
     "vue": "^3.2.33",
     "webmidi": "^3.0.20",
     "drauu": "^0.3.0",
-    "floating-vue": "^2.0.0-beta.16"
+    "floating-vue": "^2.0.0-beta.16",
+    "@gun-vue/composables": "^0.9.1"
   },
   "devDependencies": {
     "vue-demi": "^0.12.5",

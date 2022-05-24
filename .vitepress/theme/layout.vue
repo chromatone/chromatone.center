@@ -1,6 +1,6 @@
 <script setup>
 import { useRoute, useData } from "vitepress";
-import { drawingEnabled } from '@theme/components/draw/draw'
+import { drawingEnabled, drawingPinned } from '@theme/components/draw/draw'
 // generic state
 const route = useRoute();
 
@@ -18,7 +18,7 @@ onUpdated(() => { })
 .theme
   client-only
     cast-camera
-    .bottom-0.fixed.w-full.z-3000.flex.justify-center
+    .bottom-0.fixed.w-full.z-3000.flex.justify-center(v-if="drawingEnabled || drawingPinned")
       draw-controls
     button.fixed.bottom-32.right-24px.text-xl.z-1000(
       @click="drawingEnabled = !drawingEnabled"

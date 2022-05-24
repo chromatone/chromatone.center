@@ -46,6 +46,7 @@ function handler(event) {
   state.active = dragging;
   let diff = shiftKey ? 12 : 4;
   state.internal -= y / diff;
+  state.internal += x / diff;
   if (state.internal > 100) state.internal = 100;
   if (state.internal < 0) state.internal = 0;
   emit("update:modelValue", state.external);

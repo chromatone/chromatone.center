@@ -105,7 +105,7 @@ export default defineConfig({
   },
   //@ts-ignore
   ssr: {
-    noExternal: ['audiomotion-analyzer', 'fraction.js', 'tone', 'ol', 'cobe']
+    noExternal: ['audiomotion-analyzer', 'fraction.js', 'tone', 'ol', 'cobe', '@gun-vue/composables']
   },
   build: {
     chunkSizeWarningLimit: 100000,

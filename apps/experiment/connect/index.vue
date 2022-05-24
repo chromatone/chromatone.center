@@ -99,7 +99,7 @@ watch(() => user.pub, () => {
 </script>
 
 <template lang='pug'>
-.flex.flex-col.gap-4(:key="user.is") {{ user.initiated }}
+.flex.flex-col.gap-4(:key="user.is")
   .flex.flex-wrap.gap-2.rounded-3xl.bg-light-800.dark_bg-dark-800.items-center.p-2(v-if="user?.is")
     .font-bold Me:
     img.max-w-20.max-h-20(class="!rounded-4xl !m-0" :src="gunAvatar({ pub: user?.pub, size: 200 })")

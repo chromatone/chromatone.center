@@ -16,7 +16,7 @@ header.nav-bar.relative
     nav-links
   .flex-grow
   client-only
-    state-tools
+    nav-tools
   //- nav-toggle-sidebar(@toggle="$emit('toggle')")
 </template>
 

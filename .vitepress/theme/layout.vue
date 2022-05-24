@@ -1,6 +1,6 @@
 <script setup>
 import { useRoute, useData } from "vitepress";
-
+import { drawingEnabled } from '@theme/components/draw/draw'
 // generic state
 const route = useRoute();
 
@@ -18,8 +18,14 @@ onUpdated(() => { })
 .theme
   client-only
     cast-camera
-    draw-controls.bottom-0.fixed.z-3000
-
+    .bottom-0.fixed.w-full.z-3000.flex.justify-center
+      draw-controls
+    button.fixed.bottom-32.right-24px.text-xl.z-1000(
+      @click="drawingEnabled = !drawingEnabled"
+      :class="{ active: drawingEnabled }"
+      v-tooltip.top="'Draw on the screen'"
+      )
+      carbon-pen
   state-dark.fixed.bottom-18.right-14px.z-1000
   nav-scroll.fixed.bottom-8.right-24px.z-1000
   nav-bar.md_sticky.top-0(@toggle="openSideBar = !openSideBar")

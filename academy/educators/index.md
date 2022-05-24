@@ -3,8 +3,8 @@ title: Educators
 subtitle: Teachers and guides ready to help you find your own way into music
 date: 2022-07-03
 buttons:
-  - url: https://airtable.com/shrFbtdCJR07jDsaM
-    text: Find your educator
+  - url: https://app.planist.fr/davay
+    text: Book a music theory lesson now
 teachers:
   - avatar: /img/starov.jpg
     name: Denis K Starov
@@ -18,11 +18,7 @@ teachers:
       - Lectures
       - Improvisations
       - Performances
-    social:
-      instagram: starov
-      telegram: starov
-      email: davay@chromatone.center
-      github: davay42
+    book: https://app.planist.fr/davay
 ---
 
 We're building an international community of the visual music theory teachers and practitioners. It all starts from the founder of the system and grows exponentially as a net of those who learn to see music in color. Learners become teachers with time. And the cycle goes on.

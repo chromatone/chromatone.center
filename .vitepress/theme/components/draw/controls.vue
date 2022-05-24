@@ -10,7 +10,9 @@ const { brush, brushColors, canClear,
   canRedo, canUndo, clearDrauu,
   drauu, drawingEnabled, drawingMode, brushSizes, drawingPinned, currentPage } = useDraw()
 
-watch(route, (r) => currentPage.value = r.path)
+onMounted(() => {
+  watch(route, (r) => currentPage.value = r.path, { immediate: true })
+})
 
 function undo() {
   drauu.undo()

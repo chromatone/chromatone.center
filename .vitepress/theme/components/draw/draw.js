@@ -1,5 +1,4 @@
 import { computed, markRaw, nextTick, reactive, ref, watch } from 'vue'
-import { useRoute } from 'vitepress'
 import { createDrauu } from 'drauu'
 import { toReactive, useStorage } from '@vueuse/core'
 import { notes } from '@use/theory'
@@ -19,7 +18,7 @@ const drawingModes = ['line', 'arrow', 'stylus', 'rectangle', 'ellipse']
 export const brushSizes = useCycleList([4, 8, 16, 24])
 
 export const drawingState = ref()
-const pages = reactive({})
+const pages = toReactive(useStorage('drawings', {}))
 
 const currentPage = ref('/')
 const isPresenter = ref()
@@ -96,6 +95,14 @@ export function useDraw() {
         if ((pages[key] || '') !== dump)
           pages[key] = dump
       }
+    })
+
+    onMounted(() => {
+      nextTick(() => {
+        if (pages?.[currentPage.value] != null)
+          drauu.load(pages?.[currentPage.value] || '')
+      })
+
     })
 
     watch(currentPage, (page) => {

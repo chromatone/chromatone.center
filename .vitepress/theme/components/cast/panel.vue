@@ -59,13 +59,6 @@ const { width, height } = useWindowSize()
         .p-1(v-if="recordingTime") {{ (recordingTime / 1000).toFixed() }}s
     .is-group.flex.flex-wrap
       button.flex-button(
-        @click="drawingEnabled = !drawingEnabled"
-        :class="{ active: drawingEnabled }"
-        v-tooltip.top="'Draw on the screen'"
-        )
-        carbon-pen
-        .ml-0 Draw
-      button.flex-button(
         v-if="currentCamera !== 'none'", 
         :class="{ 'text-green-500': Boolean(showAvatar && streamCamera) }", 
         title="Show camera view", 

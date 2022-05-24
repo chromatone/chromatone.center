@@ -1,5 +1,5 @@
 import { WebMidi, Note } from "webmidi"
-import { useStorage, onKeyDown, onKeyUp } from "@vueuse/core"
+import { useStorage } from "@vueuse/core"
 import { setupKeyboard } from './keyboard'
 import { useClamp } from "@vueuse/core";
 

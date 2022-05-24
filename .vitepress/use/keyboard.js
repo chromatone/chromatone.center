@@ -1,4 +1,3 @@
-import { onKeyDown, onKeyUp } from "@vueuse/core"
 import { midi, playKey } from "./midi"
 
 const noteKeys = {

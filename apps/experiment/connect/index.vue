@@ -1,8 +1,9 @@
 <script setup>
 import { useGun, useUser, useSpace, SEA, gunAvatar, updateProfile } from '@gun-vue/composables'
-import { midi } from '@use/midi'
+import { midi, playKey } from '@use/midi'
 import { pitchColor } from '@use/calculations'
 import { notes } from '@use/theory'
+import { synthOnce } from '@use/synth'
 
 
 const TIMEOUT = 10000
@@ -70,10 +71,35 @@ watch(name, n => {
   updateProfile('name', n)
 })
 
+const totalGuests = computed(() => Object.keys(guests).length)
+const totalOnliners = computed(() => Object.keys(onliners.value).length)
+
+let pinger = 0
+
+function ping(pub) {
+  db.get('ping').get(pub).put(++pinger)
+}
+
+watch(() => user.pub, () => {
+
+  setTimeout(() => {
+    if (!user.pub) return
+    db.get('ping').get(user.pub).on(d => {
+      let note = notes[midi.note.pitch]
+      playKey(note, undefined)
+      setTimeout(() => {
+        playKey(note, undefined, true)
+      }, 200)
+    })
+  }, 500)
+
+}, { immediate: true })
+
+
 </script>
 
 <template lang='pug'>
-.flex.flex-col.gap-4(:key="user.is")
+.flex.flex-col.gap-4(:key="user.is") {{ user.initiated }}
   .flex.flex-wrap.gap-2.rounded-3xl.bg-light-800.dark_bg-dark-800.items-center.p-2(v-if="user?.is")
     .font-bold Me:
     img.max-w-20.max-h-20(class="!rounded-4xl !m-0" :src="gunAvatar({ pub: user?.pub, size: 200 })")
@@ -85,11 +111,15 @@ watch(name, n => {
     button.flex-button(@click="generate()") Generate
     img.max-w-20.max-h-20(class="!rounded-2xl !m-0" :src="gunAvatar({ pub: pair?.pub, size: 200 })")
     button.flex-button(v-if="pair" @click="start()") Start
-  .flex.flex-wrap.gap-2.items-center
-    .font-bold Guests:
-    .flex.items-center.gap-1.bg-light-800.dark_bg-dark-900.rounded-3xl.p-2(v-for="(guest, pub) in onliners" :key="guest")
+  .flex.flex-col.gap-2.select-none
+    .font-bold Us ({{ totalOnliners }}/{{ totalGuests }})
+    .flex.items-center.p-2.gap-1.bg-light-800.dark_bg-dark-900.rounded-3xl.cursor-pointer(
+      v-for="(guest, pub) in onliners" :key="guest"
+      @mousedown="ping(pub)" @touchstart="ping(pub)"
+      )
       img.max-w-10.max-h-10(class="!rounded-2xl !m-0" :src="gunAvatar({ pub: pub, size: 100 })")
-      .p-2.capitalize {{ guest.name }}
+      .p-2.capitalize.font-bold {{ guest.name }}
+      .flex-1
       .p-2.rounded-2xl.text-white.w-10.text-center.transition(:style="{ backgroundColor: pitchColor(guest.note - 9, 3) }") {{ notes[(guest.note - 9) % 12] }}
 </template> 
 

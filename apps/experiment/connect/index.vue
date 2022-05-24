@@ -92,3 +92,5 @@ watch(name, n => {
       .p-2.capitalize {{ guest.name }}
       .p-2.rounded-2xl.text-white.w-10.text-center.transition(:style="{ backgroundColor: pitchColor(guest.note - 9, 3) }") {{ notes[(guest.note - 9) % 12] }}
 </template> 
+
+// https://github.com/amark/gun/blob/master/examples/basic/stream.html

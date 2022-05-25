@@ -211,7 +211,7 @@ svg {
       )
         la-play(v-if="!time.move")
         la-pause(v-if="time.move")
-      control-knob(
+      control-rotary(
         v-tooltip.bottom="'Number of harmonics'"
         :min="overtones.min"
         :max="overtones.max"
@@ -220,7 +220,7 @@ svg {
         param="count"
         v-model="overtones.count"
         )
-      control-knob(
+      control-rotary(
         v-tooltip.bottom="'Speed of animation'"
         :min="0.2"
         :max="2"
@@ -232,7 +232,7 @@ svg {
 
     .is-group.flex.items-center.gap-2
       control-piano(v-model:pitch="globalScale.tonic" v-tooltip.bottom="'Fundamental pitch'")
-      control-knob(
+      control-rotary(
         :min="1"
         :max="5"
         :step="1"

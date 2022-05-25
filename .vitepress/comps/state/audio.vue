@@ -21,15 +21,15 @@ const { mic, input } = useMic();
       ph-ear
       .m-0 Monitoring
 
-    control-knob(
+    control-rotary(
       v-model="mic.volume"
       :min="0"
       :max="2"
       :step="0.001"
       param="GAIN"
-      v-tooltip.top="'Microphone volume'"
+      v-tooltip.bottom="'Microphone volume'"
       )
-    control-knob(
+    control-rotary(
       v-model="mic.gate"
       :min="-100"
       :max="-40"
@@ -37,18 +37,18 @@ const { mic, input } = useMic();
       param="GATE"
       unit="dB"
       :fixed="0"
-      v-tooltip.top="'Noise gate'"
+      v-tooltip.bottom="'Noise gate'"
       )
     control-meter.mr-1(:meter="mic.meter")
   .flex.flex-wrap.is-group.items-center.p-2.gap-2
     .p-1.font-bold Master
-    control-knob(
+    control-rotary(
       param="Vol"
       v-model="audio.volume"
       :min="0"
       :max="2"
       :step="0.001"
-      v-tooltip.top="'Master volume'"
+      v-tooltip.bottom="'Master volume'"
       )
     button.text-button.border.mute.mt-24(
       @click="audio.mute = !audio.mute" 

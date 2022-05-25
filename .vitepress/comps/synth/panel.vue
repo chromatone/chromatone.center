@@ -36,7 +36,7 @@ const octaves = useCycleList([-2, -1, 0, 1, 2], { initialValue: midi.offset })
       .m-0 Stop synth
   .flex.flex-wrap.gap-2
     synth-oscillators.is-group(v-model="synth.params.oscillator.type" v-tooltip.top="'Select oscillator type'")
-    control-knob(
+    control-rotary(
       :min="0"
       :max="2"
       :step="0.001"

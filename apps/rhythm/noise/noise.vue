@@ -9,7 +9,7 @@ const {
 <template lang="pug">
 .row.is-group.gap-2
   control-push(v-model="active" title="NOISE")
-  control-knob.w-3rem(
+  control-rotary(
     :min="0"
     :max="1"
     v-model="options.volume"
@@ -20,29 +20,29 @@ const {
     v-model="options.noise.type"
     :variants="types"
   )
-  .is-group.flex.flex-wrap.p-1.gap-1
-    control-knob.w-12(
+  .is-group.flex.flex-wrap.p-1
+    control-rotary(
       :min="0.005"
       :max="4"
       :step="0.01"
       param="ATT"
       v-model="options.envelope.attack"
     )
-    control-knob.w-12(
+    control-rotary(
       :min="0.005"
       :max="6"
       :step="0.01"
       param="DEC"
       v-model="options.envelope.decay"
     )
-    control-knob.w-12(
+    control-rotary(
       :min="0.005"
       :max="1"
       :step="0.01"
       param="SUS"
       v-model="options.envelope.sustain"
     )
-    control-knob.w-12(
+    control-rotary(
       :min="0.005"
       :max="10"
       :step="0.01"
@@ -72,7 +72,7 @@ const {
       title="FILTER"
       v-model="filterOptions.on"
     )
-    control-knob.w-3rem(
+    control-rotary(
       param="VOL"
       :min="0"
       :max="1"
@@ -80,7 +80,7 @@ const {
       :fixed="1"
       v-model="filterOptions.volume"
     )
-    control-knob.w-4rem(
+    control-rotary(
       param="FREQ"
       :min="10"
       :max="999"
@@ -89,7 +89,7 @@ const {
       unit="hz"
       v-model="filterOptions.baseFrequency"
     )
-    control-knob.w-3rem(
+    control-rotary(
       param="OCT"
       :min="0.1"
       :max="7"
@@ -97,7 +97,7 @@ const {
       :fixed="1"
       v-model="filterOptions.octaves"
     )
-    control-knob.w-3rem(
+    control-rotary(
       param="Q"
       :min="0.1"
       :max="20"
@@ -105,7 +105,7 @@ const {
       :fixed="1"
       v-model="filterOptions.filter.Q"
     )
-    control-knob(
+    control-rotary(
       param="WET"
       :min="0"
       :max="1"
@@ -123,7 +123,7 @@ const {
       title="PLAY"
       v-model="filterOptions.play"
     )
-    control-knob.w-4rem(
+    control-rotary(
       param="LFO"
       :min="0.01"
       :max="4"
@@ -132,7 +132,7 @@ const {
       unit="hz"
       v-model="filterOptions.frequency"
     )
-    control-knob.w-4rem(
+    control-rotary(
       param="DPTH"
       :min="0"
       :max="1"
@@ -151,7 +151,7 @@ const {
     v-model="crusherOptions.on"
     )
 
-  control-knob.w-4rem(
+  control-rotary(
     param="VOL"
     :min="0.01"
     :max="1"
@@ -159,7 +159,7 @@ const {
     :fixed="1"
     v-model="crusherOptions.volume"
   )
-  control-knob.w-4rem(
+  control-rotary(
     param="BITS"
     :min="1"
     :max="16"
@@ -167,7 +167,7 @@ const {
     :fixed="2"
     v-model="crusherOptions.bits"
   )
-  control-knob.w-4rem(
+  control-rotary(
     param="WET"
     :min="0"
     :max="1"
@@ -185,7 +185,7 @@ const {
     title="PLAY"
     v-model="pannerOptions.play"
     )
-  control-knob.w-4rem(
+  control-rotary(
     param="VOL"
     :min="0.01"
     :max="1"
@@ -193,7 +193,7 @@ const {
     :fixed="1"
     v-model="pannerOptions.volume"
   )
-  control-knob.w-4rem(
+  control-rotary(
     param="LFO"
     :min="0.01"
     :max="4"
@@ -202,7 +202,7 @@ const {
     unit="hz"
     v-model="pannerOptions.frequency"
   )
-  control-knob.w-4rem(
+  control-rotary(
     param="DPTH"
     :min="0"
     :max="1"
@@ -211,7 +211,7 @@ const {
     unit=""
     v-model="pannerOptions.depth"
   )
-  control-knob.w-4rem(
+  control-rotary(
     param="WET"
     :min="0"
     :max="1"

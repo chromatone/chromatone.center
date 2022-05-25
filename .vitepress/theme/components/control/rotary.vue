@@ -39,20 +39,14 @@ watch(midiVal, v => {
 
 function handler(event) {
   const {
-    initial,
     delta: [x, y],
-    delta,
-    movement,
     dragging,
     shiftKey,
   } = event;
-  console.log(offset)
   state.active = dragging;
   let diff = shiftKey ? 12 : 4;
-
-  state.internal += (movement[1] >= 0 ? -x : x) / diff
-  state.internal += (movement[0] < 0 ? -y : y) / diff
-
+  state.internal -= y / diff;
+  state.internal += x / diff;
   if (state.internal > 100) state.internal = 100;
   if (state.internal < 0) state.internal = 0;
   emit("update:modelValue", state.external);
@@ -75,22 +69,14 @@ function mapOutput(val) {
   return mapNumber(val, 0, 100, props.min, props.max, props.step);
 }
 
-function mapNumber(
-  val,
-  inputmin = 0,
-  inputmax = 100,
-  rangemin = 0,
-  rangemax = 100,
-  step = 1
-) {
-  rangemax = parseFloat(rangemax);
-  rangemin = parseFloat(rangemin);
-  inputmax = parseFloat(inputmax);
-  inputmin = parseFloat(inputmin);
-  let result =
-    ((val - inputmin) * (rangemax - rangemin)) / (inputmax - inputmin) + rangemin;
+function mapNumber(val, inputmin = 0, inputmax = 100, rangemin = 0, rangemax = 100, step = 1) {
+  let result = ((val - inputmin) * (rangemax - rangemin)) / (inputmax - inputmin) + rangemin;
   return Math.round(result / step) * step;
 }
+
+const r = 45
+const len = Math.PI * 2 * r - 50
+
 </script>
 
 <template lang="pug">
@@ -98,18 +84,36 @@ function mapNumber(
   v-drag="handler"
   @dblclick="reset()"
   :drag-options="{ preventWindowScrollY: true }"
-)
-  .level.pointer-events-none(
-    :style="{ height: state.internal + '%' }"
   )
-  .p-1.pointer-events-none
-    .text-lg.font-bold {{ modelValue.toFixed(fixed) }}{{ unit }}
-    .text-sm {{ param.toUpperCase() }}
+  svg(viewBox="0 0 100 120")
+    g(stroke="currentColor")
+      path(d="M25,90 a 45,45,1,1,1,50,0" 
+      fill="none"
+      stroke="#9996"
+      stroke-width="8" stroke-linecap="round"
+      )
+      path(d="M25,90 a 45,45,1,1,1,50,0" 
+      fill="none"
+      stroke-width="8" stroke-linecap="round"
+      :stroke-dasharray="len"
+      :stroke-dashoffset="len - (len * (state.internal / 100) - 5) - 6"
+      )
+      g(:transform="`translate(50,52.5) rotate(${state.internal * 2.9}) `")
+        circle(stroke-width="2" fill="none" :r="38" opacity="0.6")
+        circle(r="4" cx="-15" cy="25" fill="currentColor" opacity="0.8")
+    g(transform="translate(50,50)" text-anchor="middle" dominant-baseline="middle" fill="currentColor")
+      text.font-bold.text-2xl(:transform="`translate(0,${unit ? -3 : 5})`")
+        tspan(dominant-baseline="middle") {{ modelValue.toFixed(fixed) }}
+      text(transform="translate(0,20)")
+        tspan(dominant-baseline="middle") {{ unit }}
+      text.font-bold(transform="translate(0,58)")
+        tspan(dominant-baseline="middle")  {{ param.toUpperCase() }}
+
 </template>
 
 <style lang="postcss" scoped>
 .knob {
-  @apply shadow-md border-2 rounded-lg text-center border-dark-100/50 dark_(border-light-100/50) cursor-pointer select-none relative overflow-hidden;
+  @apply p-1 cursor-move rounded-lg max-w-18 text-center border-dark-100/50 dark_(border-light-100/50) cursor-pointer select-none relative overflow-hidden;
   touch-action: none;
 }
 

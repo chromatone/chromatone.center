@@ -47,6 +47,7 @@ export function init() {
       C8: 'C8.mp3',
     },
     release: 1,
+    volume: -10,
     baseUrl: '/audio/piano/',
   }).connect(channel)
 

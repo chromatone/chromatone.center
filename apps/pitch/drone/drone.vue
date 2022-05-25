@@ -47,8 +47,9 @@ const intervals = reactive({
         button.text-button.text-3xl(@click="drone.stopped = !drone.stopped")
           la-stop(v-if="!drone.stopped")
           la-play(v-else)
-        control-knob.w-4em(v-model="drone.volume" :min="0" :max="1" :step="0.05" param="VOL")
-        control-knob.w-4em(v-model="drone.filterFreq" :min="55" :max="12000" :step="0.05" :fixed="0" param="LP")
+        .is-group.flex.p-2.gap-2
+          control-rotary.w-4em(v-model="drone.volume" :min="0" :max="1" :step="0.05" param="VOL")
+          control-rotary.w-4em(v-model="drone.filterFreq" :min="55" :max="12000" :step="0.05" :fixed="0" param="LP")
     .notes.w-full.text-sm.font-bold.text-center.flex.flex-wrap
       .p-2.m-1.flex-1.cursor-pointer.rounded-xl(
         v-for="(note, pitch) in notes" :key="note"

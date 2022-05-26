@@ -96,11 +96,11 @@ const len = Math.PI * 2 * r - 50
       fill="none"
       stroke-width="8" stroke-linecap="round"
       :stroke-dasharray="len"
-      :stroke-dashoffset="len - (len * (state.internal / 100) - 5) - 6"
+      :stroke-dashoffset="len - (len * (state.internal / 100))"
       )
       g(:transform="`translate(50,52.5) rotate(${state.internal * 2.9}) `")
         circle(stroke-width="2" fill="none" :r="38" opacity="0.6")
-        circle(r="4" cx="-15" cy="25" fill="currentColor" opacity="0.8")
+        //- circle(r="4" cx="-15" cy="25" fill="currentColor" opacity="0.8")
     g(transform="translate(50,50)" text-anchor="middle" dominant-baseline="middle" fill="currentColor")
       text.font-bold.text-2xl(:transform="`translate(0,${unit ? -3 : 5})`")
         tspan(dominant-baseline="middle") {{ modelValue.toFixed(fixed) }}
@@ -113,7 +113,7 @@ const len = Math.PI * 2 * r - 50
 
 <style lang="postcss" scoped>
 .knob {
-  @apply p-1 cursor-move rounded-lg max-w-18 text-center border-dark-100/50 dark_(border-light-100/50) cursor-pointer select-none relative overflow-hidden;
+  @apply p-1 cursor-move min-w-16 rounded-lg max-w-18 text-center border-dark-100/50 dark_(border-light-100/50) cursor-pointer select-none relative overflow-hidden;
   touch-action: none;
 }
 

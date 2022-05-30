@@ -22,7 +22,7 @@ const props = defineProps({
         .px-2.py-1.bg-light-400.rounded-xl.shadow.dark_bg-dark-400(v-for="interaction in author?.interactions" :key="interaction") {{ interaction }}
   .p-2.bg-dark-200.bg-opacity-10.dark_bg-light-200.dark_bg-opacity-10
     a.flex-button.font-bold.justify-center(:href="author.book" target="_blank" v-if="author.book")
-      .p-2 BOOK A SESSION NOW
+      .p-2 BOOK A FREE TRIAL SESSION NOW
     author-social(:social="author.social" v-if="author.social")
 
 

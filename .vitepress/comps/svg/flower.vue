@@ -17,6 +17,13 @@ const flower = computed(() => {
   })
 })
 
+const pressed = ref()
+
+function keyPlay(pitch, event, off, velocity) {
+  pressed.value = !off
+  playKey(flower.value[pitch].note, pitch >= 3 ? 0 : -1, off, velocity)
+}
+
 </script>
 
 <template lang='pug'>
@@ -39,11 +46,11 @@ svg.max-w-150.mx-auto(
   g(:transform="`translate(${size / 2}, ${size / 2}) `")
     g.keys(v-for="(note, pitch) in flower" key="note")
       g.key.cursor-pointer(
-        @mousedown="playKey(note.note, pitch >= 3 ? 0 : -1)"
-        @mouseup="playKey(note.note, pitch >= 3 ? 0 : -1, true)"
-        @touchstart.prevent.stop="playKey(note.note, pitch >= 3 ? 0 : -1)"
-        @touchend.prevent.stop="playKey(note.note, pitch >= 3 ? 0 : -1, true)"
-        @mouseleave="playKey(note.note, pitch >= 3 ? 0 : -1, true)"
+        @mousedown="keyPlay(pitch, $event)"
+        @mouseup="keyPlay(pitch, $event, true)"
+        @touchstart.prevent.stop="keyPlay(pitch, $event)"
+        @touchend.prevent.stop="keyPlay(pitch, $event, true)"
+        @mouseleave="keyPlay(pitch, $event, true)"
       )
         g.petal(
           :transform="`rotate(${pitch * 30}) translate(0,-120) `"
@@ -56,7 +63,7 @@ svg.max-w-150.mx-auto(
             :d="`M 0,0 a 30,30,0,0,0,25,-20 l 70 -260 a 120,120,0,0,0,2,-20 a 100,100,0,0,0,-200,0 a 120,120,0,0,0,2,20 l 70,260 a 30,30,0,0,0,25,20z`"
             )
 
-        g.note(
+        g.note.select-none(
           :transform="`translate(${note.coord.x}, ${note.coord.y})`"
           )
           circle(

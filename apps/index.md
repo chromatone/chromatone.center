@@ -1,7 +1,7 @@
 ---
 title: Apps
 subtitle: Web applications for music education and independent research
-date: 2021-06-02
+date: 2021-07-02
 ---
 
 Here's a growing collection of free and open source interactive web experiences for everyone to explore. You can have a direct experience of natural patterns in [human sound perception](./sound/index.md) with just your laptop or a smartphone.

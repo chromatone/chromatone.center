@@ -1,6 +1,6 @@
 ---
-title: Donate money
-subtitle: If you want to help, but don't know how – buy us a coffee!
+title: Charity donation
+subtitle: You can support Chromatone development as a free and open source ecosytem of visual music 
 emoji: 💸
 date: 2022-04-17
 buttons:
@@ -13,4 +13,6 @@ Chromatone is an open source initiative and we are based on voluntary contributi
 
 [Fill in this form](https://airtable.com/shrm1flZTa0s9LFd6)
 
-<iframe id='kofiframe' src='https://ko-fi.com/chromatone/?hidefeed=true&widget=true&embed=true&preview=true' style='border:none;width:100%;padding:4px;background:transparent;' height='712' title='chromatone'></iframe>
+<!-- <iframe id='kofiframe' src='https://ko-fi.com/chromatone/?hidefeed=true&widget=true&embed=true&preview=true' style='border:none;width:100%;padding:4px;background:transparent;' height='712' title='chromatone'></iframe> -->
+
+<iframe class="airtable-embed" src="https://airtable.com/embed/shr2G9e4KAI9rqzTm?backgroundColor=yellow" frameborder="0" onmousewheel="" width="100%" height="600" style="background: transparent; border: 1px solid #ccc;"></iframe>

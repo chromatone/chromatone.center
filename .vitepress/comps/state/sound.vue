@@ -39,7 +39,7 @@ const { mic, input } = useMic();
       :fixed="0"
       v-tooltip.bottom="'Noise gate'"
       )
-    control-meter.mr-1(:meter="mic.meter")
+    control-level.mr-1(:meter="mic.meter")
   .flex.flex-wrap.is-group.items-center.p-2.gap-2
     .p-1.font-bold Master
     control-rotary(
@@ -58,7 +58,7 @@ const { mic, input } = useMic();
       )
       bi-volume-up(v-if="!audio.mute")
       bi-volume-mute(v-else)
-    control-meter.mr-1(:meter="audio.meter")
+    control-level.mr-1(:meter="audio.meter")
 
   .flex.flex-wrap.items-center.is-group.p-2.gap-2(v-if="Object.keys(channels).length > 0")
     .p-1.font-bold Channels

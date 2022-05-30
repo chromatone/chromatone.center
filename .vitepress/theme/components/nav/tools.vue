@@ -67,7 +67,7 @@ side-panel(v-model:open="open.synth")
 side-panel(v-model:open="open.tempo")
   state-transport
 side-panel(v-model:open="open.audio")
-  state-audio
+  state-sound
 side-panel(v-model:open="open.record")
   cast-panel
 

@@ -1,5 +1,5 @@
 ---
-title: Shop
+title: Prints
 subtitle: Posters, memos and stickers for musical instruments
 
 date: 2021-06-01

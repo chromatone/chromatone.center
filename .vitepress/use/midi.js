@@ -55,10 +55,11 @@ export function learnCC({ param, number, channel } = {}) {
   return val
 }
 
-export function playKey(name, offset = 0, off) {
+export function playKey(name, offset = 0, off, velocity = 1) {
   let noteName = name + (4 + offset + midi.offset)
   const note = new Note(noteName, {
-    attack: off ? 0 : 1,
+    attack: off ? 0 : velocity,
+    release: off ? 0 : velocity,
   });
   const ev = {
     type: off ? "noteoff" : "noteon",
@@ -217,7 +218,7 @@ function noteInOn(ev) {
     note.velocity = 0;
     delete midi.channels[note.channel].activeNotes[note.number]
   } else {
-    note.velocity = 100;
+    note.velocity = 120 * (ev.note.attack || 1);
     midi.channels[note.channel].activeNotes[note.number] = true
   }
   note.pitch = (note.number + 3) % 12;

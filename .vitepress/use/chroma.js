@@ -4,11 +4,12 @@ import { synthOnce, synthAttack, synthRelease } from "./synth.js";
 import { rotateArray } from "@use/calculations";
 import { notes } from '@use/theory'
 import { Note, ChordType, ScaleType, Scale, Pcset } from "@tonaljs/tonal";
+import { useClamp } from "@vueuse/core";
 
 const allNotes = [...notes].map((n, i) => ({ name: n, pitch: i }))
 
 export const globalScale = reactive({
-  tonic: useStorage("global-tonic", 0),
+  tonic: useClamp(useStorage("global-tonic", 0), 0, 11),
   note: computed(() => allNotes[globalScale.tonic]),
   chroma: useStorage("global-chroma", "101011010101"),
   setNum: useStorage("seq-scale", 2708),

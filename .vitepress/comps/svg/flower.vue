@@ -2,6 +2,7 @@
 import { notes } from '@use/theory'
 import { getCircleCoord, pitchColor } from '@use/calculations'
 import { midi, playKey } from '@use/midi'
+import { globalScale } from '@use/chroma'
 
 const props = defineProps({
   size: { type: Number, default: 1000 },
@@ -12,6 +13,7 @@ const flower = computed(() => {
   return notes.map((note, n) => {
     return {
       note: note,
+      pitch: n,
       coord: getCircleCoord(n, 12, props.size * 0.42, 0)
     }
   })
@@ -44,9 +46,9 @@ svg.max-w-150.mx-auto(
         flood-opacity="0.3"
       )
   g(:transform="`translate(${size / 2}, ${size / 2}) `")
-    g.keys(v-for="(note, pitch) in flower" key="note")
+    g.keys(v-for="(note, pitch) in flower" :key="note")
       g.key.cursor-pointer(
-        @mousedown="keyPlay(pitch, $event)"
+        @mousedown="keyPlay(pitch, $event);"
         @mouseup="keyPlay(pitch, $event, true)"
         @touchstart.prevent.stop="keyPlay(pitch, $event)"
         @touchend.prevent.stop="keyPlay(pitch, $event, true)"

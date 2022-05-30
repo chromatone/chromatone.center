@@ -72,7 +72,7 @@ var isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
 
     button.text-button.border(v-for="output in midi.outputs")  
       span {{ output.name }}
-    midi-filter.mx-2(style="flex: 1 1 100px")
+    midi-filter-channels.mx-2(style="flex: 1 1 100px")
 
     slot.is-group.mx-1.p-1
   img.mt-4(src="/media/apps/pc-keyboard-3.svg")

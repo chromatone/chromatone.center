@@ -35,7 +35,7 @@ function drag(event) {
         :transform="`scale(${!tempo.mute && tempo.blink ? 1.1 : 1})`"
         :style="{ opacity: tempo.mute ? 0.3 : 1 }"
         )
-      beat-progress.opacity-30.z-2.absolute.top-0.bottom-0.w-full.h-full(:progress="tempo.progress" :color="tempo.color" :stroke="10")
+      beat-move.opacity-30.z-2.absolute.top-0.bottom-0.w-full.h-full(:progress="tempo.progress" :color="tempo.color" :stroke="10")
     button(
       style="grid-area: PLAY"
       @click="tempo.playing = !tempo.playing"

@@ -36,7 +36,7 @@ onUpdated(() => { })
       .sidebar-mask.z-5(v-show="openSideBar", @click="openSideBar = false")
     side-bar(:open="openSideBar")
     home(v-if="$frontmatter.template == 'home'")
-    page-main(v-else)
+    page-primary(v-else)
 //debug
 </template>
 

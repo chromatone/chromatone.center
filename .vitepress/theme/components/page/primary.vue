@@ -6,7 +6,7 @@ const route = useRoute()
 
 <template lang="pug">
 main
-  page-header
+  page-headline
   transition(name="fade")
     .content-container(:key="route.path")
       content.content.flex-1.z-10

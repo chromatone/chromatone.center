@@ -18,5 +18,5 @@ Third step is to make such musical gatherings a part of the new post-scarcity cu
 
 ---------
 
-On this journey we meet great [partners](./partners/index.md) that start implementing the Chromatone music notation system and it's code. It's becoming more and more developed and ready to use in many new ways.
+On this journey we meet great [partners](./cases/index.md) that start implementing the Chromatone music notation system and it's code. It's becoming more and more developed and ready to use in many new ways.
 

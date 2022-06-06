@@ -58,6 +58,9 @@ links:
   - url: https://farplay.io/
     title: FarPlay
     subtitle: The easiest, fastest & safest low-latency audio on the internet.
+  - url: https://noisecraft.app/
+    title: NoiseCraft
+    subtitle: NoiseCraft is an open source, visual programming language and platform for sound synthesis and music making, with the goal of creating a community for the open exchange of musical ideas.
 date: 2018-09-08
 ---
 

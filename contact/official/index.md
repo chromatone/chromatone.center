@@ -7,7 +7,7 @@ org:
   avatar: /media/logo/smooth.svg
   name: Chromatone
   pos: HQ
-  place: Moscow, Russia
+  place: Since 2017
   about: Ecosystem of tools to learn, practice, compose and perform music visually. The source codes are open so we can develop it as an internationally funded  social initiative.
   social:
     instagram: chromatone.center

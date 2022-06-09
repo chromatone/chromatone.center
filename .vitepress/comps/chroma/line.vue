@@ -1,6 +1,8 @@
 <script setup>
 import { pitchColor } from '@use/calculations'
 import { globalScale } from '@use/chroma'
+import { notes } from '@use/theory'
+
 const props = defineProps({
   chroma: {
     type: String,
@@ -20,17 +22,18 @@ svg.select-none.w-20rem.m-2(
   font-family="Commissioner, sans-serif"
   text-anchor="middle",
   dominant-baseline="middle"
-)
+  )
   g.cursor-pointer(v-for="(note, n) in chroma.split('')" :key="n")
     circle.transition-all.duration-300.ease-out(
       @click="globalScale.tonic = (globalScale.tonic + n) % 12"
       :cx="n * 8 + 4 + 2 * dist[n]"
       cy="3"
       r="2"
-      :fill="note == '1' ? pitchColor(n + globalScale.tonic, 3) : 'transparent'"
+      :fill="note == '1' ? pitchColor(n + globalScale.tonic, 3) : notes[(n + globalScale.tonic) % 12].length < 2 ? '#fff4' : '#0004'"
       :stroke="note == '0' ? 'currentColor' : 'transparent'"
       stroke-width="0.25"
-)
+      v-tooltip="notes[(n + globalScale.tonic) % 12]"
+      )
 </template>
 
 

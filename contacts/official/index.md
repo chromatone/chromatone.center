@@ -3,6 +3,7 @@ title: Official
 subtitle: All the channels to interact with and about Chromatone
 
 date: 2021-01-19
+cover: smooth.svg
 org:
   avatar: /media/logo/smooth.svg
   name: Chromatone

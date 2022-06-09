@@ -3,6 +3,7 @@ title: Author
 subtitle:  Hi! I'm Denis Starov - the founder of Chromatone system
 
 date: 2021-01-10
+cover: starov.jpg
 author:
   avatar: /img/starov.jpg
   name: Denis K Starov

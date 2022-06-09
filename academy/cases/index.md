@@ -20,7 +20,7 @@ In 2021 we've been working with the educational platform called [SkillBox](https
 
 ### Playtronica web experience
 
-In 2022 we started our web-app collaboration with [Playtronica](https://playtronica.com). They're building MIDI controllers and we're building an interactive audio-visual playground web application together - the [TouchMe Experience](./../../apps/experiment/touchme/index.md). 
+In 2022 we started our web-app collaboration with [Playtronica](https://playtronica.com). They're building MIDI controllers and we're building an interactive audio-visual playground web application together - the [TouchMe Experience](./../../practice/experiments/touchme/index.md). 
 
 ## Music video production
 

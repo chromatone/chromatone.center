@@ -1,7 +1,6 @@
 ---
-title: Prints
-subtitle: Posters, memos and stickers for musical instruments
-
+title: Shop
+subtitle: Printed posters, memos and stickers for musical instruments and more
 date: 2021-06-01
 
 cities:

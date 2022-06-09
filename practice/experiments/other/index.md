@@ -1,5 +1,5 @@
 ---
-title: Other tools
+title: Other online music tools
 subtitle: There's a plenty of opportunities to dive into different aspects of music theory and practice online
 
 cover: other.png

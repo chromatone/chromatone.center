@@ -111,7 +111,7 @@ func bresenhamEuclidean(onsets: Int, pulses: Int) -> [Int] {
 
 ## And what does it sound like?
 
-You can listen to any Euclidean pattern in the [Circular metronome app](./../../../../apps/rhythm/circle/index.md), the algorhithm is used to set a default position for mutes along the beat cycle. Just mute some notes in a cycle and press the reset button. It will create the rhythm for you. There're also ‘rotate buttons’ that will rotate the pattern by taking the final onset and moving it to the start of the pattern (recall that although the algorithms discussed here generate a single pattern, they stand for a ‘rhythm necklace’ that includes all the rotations of that pattern that start with an onset).
+You can listen to any Euclidean pattern in the [Circular metronome app](./../../../../practice/rhythm/circle/index.md), the algorhithm is used to set a default position for mutes along the beat cycle. Just mute some notes in a cycle and press the reset button. It will create the rhythm for you. There're also ‘rotate buttons’ that will rotate the pattern by taking the final onset and moving it to the start of the pattern (recall that although the algorithms discussed here generate a single pattern, they stand for a ‘rhythm necklace’ that includes all the rotations of that pattern that start with an onset).
 
 
 ## A musical analysis

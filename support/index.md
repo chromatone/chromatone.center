@@ -7,7 +7,7 @@ date: 2021-05-30
 <script setup> 
 import mapGlobe from './globe.vue'
 import routes from '~pages'
-const shop = routes.find(page => page.path == '/prints/')
+const shop = routes.find(page => page.path == '/shop/')
 const cities = shop?.cities
 const dots = cities.map(city=>city.coord)
 </script>

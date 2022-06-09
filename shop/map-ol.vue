@@ -15,7 +15,7 @@ import PinchZoom from 'ol/interaction/PinchZoom';
 import { pitchColor } from '@use/calculations'
 
 const props = defineProps({
-  center: { type: Array, default: [37.72265776708658, 55.79885477019039] },
+  center: { type: Array, default: [0, 70] },
   cities: { type: Array, default: [] }
 })
 

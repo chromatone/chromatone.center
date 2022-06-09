@@ -3,7 +3,7 @@ import createGlobe from 'cobe'
 
 const props = defineProps({
   dots: { type: Array, default: [] },
-  center: { type: Array, default: [55.79885477019039, 37.72265776708658] }
+  center: { type: Array, default: [0, 70] }
 })
 
 const canvas = ref()
@@ -27,7 +27,7 @@ onMounted(() => {
     baseColor: [0.8, 0.8, 0.8],
     markerColor: [0.3, 0.9, 0.7],
     glowColor: [1, 1, 1],
-    markers: [{ location: props.center, size: 0.15 }, ...markers],
+    markers: [{ location: props.center, size: 0.0 }, ...markers],
     onRender: (state) => {
       // Called on every animation frame.
       // `state` will be an empty object, return updated params.

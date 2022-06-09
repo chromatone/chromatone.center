@@ -20,7 +20,7 @@
     "deploy": "sh deploy.sh"
   },
   "dependencies": {
-    "@gun-vue/composables": "^0.9.1",
+    "@gun-vue/composables": "^0.9.3",
     "@tonaljs/tonal": "^4.6.5",
     "@tonejs/midi": "^2.0.28",
     "@vueuse/core": "^8.6.0",
@@ -35,7 +35,7 @@
     "fraction.js": "^4.2.0",
     "fuse.js": "^6.6.2",
     "hidpi-canvas": "^1.0.10",
-    "meyda": "^5.5.0",
+    "meyda": "^5.5.1",
     "midi-writer-js": "^2.1.0",
     "ol": "^6.14.1",
     "paper": "^0.12.15",
@@ -48,11 +48,11 @@
     "webmidi": "^3.0.20"
   },
   "devDependencies": {
-    "@iconify/json": "^2.1.54",
+    "@iconify/json": "^2.1.58",
     "markdown-it-external-links": "^0.0.6",
     "patch-vue-directive-ssr": "^0.0.1",
     "pug": "3.0.2",
-    "unplugin-auto-import": "^0.8.6",
+    "unplugin-auto-import": "^0.8.7",
     "unplugin-icons": "^0.14.3",
     "unplugin-vue-components": "^0.19.6",
     "vite": "2.9.10",
@@ -60,8 +60,8 @@
     "vite-plugin-pages": "^0.23.0",
     "vite-plugin-pages-sitemap": "^1.2.2",
     "vite-plugin-windicss": "^1.8.4",
-    "vitepress": "1.0.0-draft.8",
-    "vue-demi": "^0.12.5",
+    "vitepress": "1.0.0-alpha.1",
+    "vue-demi": "0.12.5",
     "windicss": "3.5.4"
   }
 }

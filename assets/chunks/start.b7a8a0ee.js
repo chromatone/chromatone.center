@@ -1,1 +1,0 @@
-import{o,c as r,O as a,k as i,_ as e}from"../app.bab79888.js";const n={class:"button"},s=i("Start");function d(t,c){return o(),r("button",n,[a(t.$slots,"default",{},()=>[s],!0)])}const w={};var b=e(w,[["render",d],["__scopeId","data-v-ba393ede"]]);export{b as _};

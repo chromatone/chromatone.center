@@ -31,6 +31,6 @@
   "iconPath": "./media/logo/holologo.png",
   "short_name": "Chromatone",
   "start_url": ".",
-  "theme_color": "#ff0088",
+  "theme_color": "#333",
   "skylink": ""
 }

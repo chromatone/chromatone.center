@@ -23,7 +23,7 @@ svg.select-none.w-20rem.m-2(
   text-anchor="middle",
   dominant-baseline="middle"
   )
-  g.cursor-pointer(v-for="(note, n) in chroma.split('')" :key="n")
+  g.cursor-pointer(v-for="(note, n) in chroma.split('')" :key="note")
     circle.transition-all.duration-300.ease-out(
       @click="globalScale.tonic = (globalScale.tonic + n) % 12"
       :cx="n * 8 + 4 + 2 * dist[n]"
@@ -32,6 +32,7 @@ svg.select-none.w-20rem.m-2(
       :fill="note == '1' ? pitchColor(n + globalScale.tonic, 3) : notes[(n + globalScale.tonic) % 12].length < 2 ? '#fff4' : '#0004'"
       :stroke="note == '0' ? 'currentColor' : 'transparent'"
       stroke-width="0.25"
+      :opacity="note == '1' ? 1 : 0.5" 
       v-tooltip="notes[(n + globalScale.tonic) % 12]"
       )
 </template>

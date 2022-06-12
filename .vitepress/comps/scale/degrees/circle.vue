@@ -132,7 +132,7 @@ svg.select-none.m-2(
   font-family="Commissioner, sans-serif"
   text-anchor="middle",
   dominant-baseline="middle"
-)
+  )
   svg-ring.cursor-pointer(
     v-for="degree in degrees" :key="degree"
     @click="toggleDegree(degree.steps)"
@@ -167,7 +167,11 @@ svg.select-none.m-2(
       :r="noteSize"
       :fill="chroma.split('')[n] == 1 ? pitchColor(note.pitch, 3) : note.name.length == 2 ? '#5552' : '#ccc2'"
     )
-    text(font-size="25" fill="currentColor") {{ note.name }}
+    text(font-size="25" fill="currentColor") 
+      tspan(  
+        text-anchor="middle",
+        dominant-baseline="middle"
+        ) {{ note.name }}
 
   g.interval.cursor-pointer(
     v-for="(note, n) in rotateArray(allNotes, globalScale.tonic)" :key="n"
@@ -188,18 +192,26 @@ svg.select-none.m-2(
       font-size="20"
       text-anchor="middle"
       fill="currentColor"
-    ) {{ intervals[n] }}
+      ) 
+      tspan(  
+        text-anchor="middle",
+        dominant-baseline="middle"
+        ) {{ intervals[n] }}
   path#pathRight(
     :d="`M 500 500 m ${-pathUp}, 0 a ${pathUp}, ${pathUp} 0 1, 0 ${pathUp * 2}, 0  a ${pathUp}, ${pathUp} 0 1, 0  ${-pathUp * 2}, 0`"
     fill="none"
-  )
+    )
   path#pathLeft(
     :d="`M 500 500 m ${-pathUp}, 0 a ${pathUp}, ${pathUp} 0 1, 1 ${pathUp * 2}, 0  a ${pathUp}, ${pathUp} 0 1, 1  ${-pathUp * 2}, 0`"
     fill="none"
-  ) //https://stackoverflow.com/questions/5737975/circle-drawing-with-svgs-arc-path
+    ) //https://stackoverflow.com/questions/5737975/circle-drawing-with-svgs-arc-path
   g.degrees
     text(font-size="30")
-      textPath(:href="`#path${degree.path}`"  v-for="(degree, d) in degrees" :key="degree" :startOffset="degree.offset"  fill="currentColor") {{ d }}
+      textPath(:href="`#path${degree.path}`"  v-for="(degree, d) in degrees" :key="degree" :startOffset="degree.offset"  fill="currentColor") 
+        tspan(  
+        text-anchor="middle",
+        dominant-baseline="middle"
+        ) {{ d }}
   path#pathBLeft(
     :d="`M 500 500 m ${-pathBottom}, 0 a ${pathBottom}, ${pathBottom} 0 1, 1 ${pathBottom * 2}, 0  a ${pathBottom}, ${pathBottom} 0 1, 1  ${-pathBottom * 2}, 0`"
     fill="none"
@@ -212,7 +224,11 @@ svg.select-none.m-2(
     style="pointer-events: none"
   )
     text(font-size="36")
-      textPath(:href="`#pathB${degree.path}`" v-for="(degree, d) in degrees" :key="degree" :startOffset="degree.roffset"  fill="currentColor") {{ degree.roman }}
+      textPath(:href="`#pathB${degree.path}`" v-for="(degree, d) in degrees" :key="degree" :startOffset="degree.roffset"  fill="currentColor") 
+        tspan(  
+        text-anchor="middle",
+        dominant-baseline="middle"
+        ) {{ degree.roman }}
 
 </template>
 

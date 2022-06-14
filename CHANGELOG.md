@@ -1,4 +1,8 @@
-## Unreleased (2022-06-12)
+## Unreleased (2022-06-14)
+
+### New feature:
+
+- :sparkles: bump dependencies([`e4ead0e`](https://github.com/chromatone/chromatone.center/commit/e4ead0ee2cf9f32ee5625eb6ece89c1b1d6cd1a5)) (by davay)
 
 ## v1.8.0 (2022-06-09)
 

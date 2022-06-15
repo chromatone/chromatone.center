@@ -45,7 +45,7 @@ function keyColor(key, off) {
 
 <template lang="pug">
 .flex.flex-col.m-1.rounded-2xl.cursor-pointer.transition-all.duration-300.ease.relative.select-none.touch-none(
-  @mousedown="chroma.split('').filter(l => l == '1').length < 5 ? playChroma(chroma, pitch) : null"
+  @mousedown="playChroma(chroma, pitch)"
   @touchend="stopChroma(chroma, pitch)"
   @touchcancel="stopChroma(chroma, pitch)"
   @mouseup="stopChroma(chroma, pitch)"
@@ -138,6 +138,7 @@ function keyColor(key, off) {
 .letters .key .text {
   opacity: 1;
 }
+
 .key:hover text {
   opacity: 1;
 }

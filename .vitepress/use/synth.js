@@ -8,6 +8,7 @@ import { useClamp } from '@vueuse/core'
 
 export const quantizeModes = ['+0', '@8n', '@16n', '@32n']
 
+
 export const synth = {
   state: reactive({
     midi: useStorage('synth-midi', true),
@@ -19,7 +20,7 @@ export const synth = {
   params: reactive({
     maxPolyphony: 50,
     oscillator: {
-      type: useStorage('synth-osc', 'sawtooth8')
+      type: useStorage('synth-osc', 'sawtooth8'),
     },
     volume: -30,
     envelope: {
@@ -52,7 +53,7 @@ export function useSynth() {
       if (synth.poly) {
         synth.poly.set(params)
       }
-    }, { deep: true })
+    }, { deep: true, immediate: true })
 
 
     watch(() => midi.note, note => {
@@ -90,7 +91,7 @@ export function init() {
 
 export function synthOnce(note = 'A4', duration = '8n', time) {
   if (!synth.poly || synth.state.mute) return init()
-  synth.poly.triggerAttackRelease(note, duration, synth.state.quantize.state)
+  synth.poly.triggerAttackRelease(note, duration, time)
 }
 
 export function synthAttack(note, velocity) {

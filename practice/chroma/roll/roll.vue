@@ -56,7 +56,7 @@ function drawVertical() {
   roll.notes.forEach((note, n) => {
     let x = (n) * roll.width / 12
     ctx.fillStyle = colorIt(n, note, 0.5)
-    ctx.fillRect(x, roll.height-roll.speed, roll.width / 12, roll.speed)
+    ctx.fillRect(x, roll.height - roll.speed, roll.width / 12, roll.speed)
   })
   ctx.setTransform(1, 0, 0, 1, 0, 0);
 }
@@ -78,6 +78,11 @@ function drawHorizontal() {
 function colorIt(pitch = 0, value = 1, opacity = 1) {
   return `hsla(${pitch * 30}, ${value * 100}%, ${value * 60}%, ${opacity})`
 }
+
+function clear() {
+  ctx.fillStyle = '#333'
+  ctx.fillRect(0, 0, roll.width, roll.height)
+}
 </script>
 
 <template lang="pug">
@@ -86,9 +91,11 @@ function colorIt(pitch = 0, value = 1, opacity = 1) {
   .flex.flex-col.justify-center.items-center.relative.bg-light-600.dark_bg-dark-700(ref="screen")
     control-start.absolute(v-if="!roll.initiated" @click="initiate()") Start
     full-screen.absolute.bottom-4.right-4.z-30(:el="screen")
-    button.text-button.absolute.top-4.right-4(@click="roll.direction ? roll.direction = 0 : roll.direction = 1")
+    button.absolute.bottom-4.left-4.text-xl.text-white(@click="roll.direction ? roll.direction = 0 : roll.direction = 1")
       la-arrow-up(v-if="roll.direction == 1")
       la-arrow-left(v-if="roll.direction == 0")
+    button.absolute.top-4.right-4.text-xl.select-none.cursor-pointer(@mousedown="clear()")
+      la-trash-alt
     .absolute.top-4.left-4.text-xl.text-white x{{ roll.speed }}
     canvas#spectrogram.w-full.rounded-2xl.cursor-pointer(
       v-drag="dragScreen"

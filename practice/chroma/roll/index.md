@@ -1,7 +1,7 @@
 ---
 title: Roll
 subtitle: Visual representation of any audio chroma content
-date: 2021-09-28
+date: 2022-06-12
 cover: chroma-roll.png
 ---
 

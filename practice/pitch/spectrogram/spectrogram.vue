@@ -1,12 +1,12 @@
 <script setup>
 import AudioMotionAnalyzer from 'audiomotion-analyzer'
-import { initGetUserMedia } from '@use/audio'
+import { initGetUserMedia, master } from '@use/audio'
 import { freqPitch } from '@use/calculations'
-
+import { useMic } from '@use/mic'
 import { UserMedia } from 'tone'
 import { onKeyStroke } from '@vueuse/core'
 
-const screen = ref(null)
+const { mic, input } = useMic()
 
 const paused = ref(false)
 
@@ -20,7 +20,7 @@ onKeyStroke('Enter', (e) => {
   e.preventDefault()
 })
 
-let mic, canvas, ctx, tempCanvas, tempCtx
+let canvas, ctx, tempCanvas, tempCtx
 
 function clear() {
   ctx.fillStyle = '#000'
@@ -52,14 +52,17 @@ onMounted(() => {
   ctx.fillRect(0, 0, state.width, state.height)
 });
 
+let audio
+
 function initiate() {
   navigator.mediaDevices.getUserMedia({ audio: true, video: false }).then((stream) => {
     state.initiated = true
-    const audio = new AudioMotionAnalyzer(null, {
+    audio = new AudioMotionAnalyzer(null, {
       mode: 1,
       connectSpeakers: false,
       volume: 0,
       useCanvas: false,
+      source: master.meter,
       onCanvasDraw(instance) {
         if (paused.value) return
         tempCtx.drawImage(canvas, 0, 0, state.width, state.height)
@@ -73,8 +76,8 @@ function initiate() {
         ctx.setTransform(1, 0, 0, 1, 0, 0);
       }
     })
-    const micStream = audio.audioCtx.createMediaStreamSource(stream);
-    audio.connectInput(micStream);
+    mic.open = true
+    audio.connectInput(input)
   }).catch((e) => {
     console.log('mic denied', e)
   })
@@ -84,6 +87,7 @@ function initiate() {
 function colorIt(freq, value) {
   return `hsl(${freqPitch(freq) * 30}, ${value * 100}%, ${value * 80}%)`
 }
+
 
 </script>
   
@@ -98,11 +102,12 @@ function colorIt(freq, value) {
     control-start.absolute(v-if="!state.initiated" @click="initiate()")
     full-screen.absolute.bottom-2.right-2
     .absolute.top-4.left-4.text-xl.select-none x{{ state.speed }}
-    .absolute.bottom-4.left-4.text-xl.select-none.cursor-pointer(@mousedown="paused = !paused")
+    button.absolute.bottom-4.left-4.text-xl.select-none.cursor-pointer(@mousedown="paused = !paused")
       la-play(v-if="paused")
       la-pause(v-else)
     button.absolute.top-4.right-4.text-xl.select-none.cursor-pointer(@mousedown="clear()")
       la-trash-alt
+
 
 </template>
   

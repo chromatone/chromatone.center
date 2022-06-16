@@ -2,6 +2,7 @@
 import { useSynth, quantizeModes } from "@use/synth";
 import { midi } from "@use/midi";
 import { useCycleList } from '@vueuse/core'
+import { freqColor, pitchFreq } from '@use/calculations'
 
 const { synth, synthOnce, init, synthReleaseAll } = useSynth();
 
@@ -12,12 +13,24 @@ function cycle() {
   synth.state.quantize = quantizeModes[count % quantizeModes.length];
 }
 
+
+const partials = reactive([1, 0.2, 1, 0, 0, 1, 0.2, 0.2])
+
 const octaves = useCycleList([-2, -1, 0, 1, 2], { initialValue: midi.offset })
+
+watch(partials, () => {
+  synth.poly.set({ oscillator: { partials: [...partials] } })
+  console.log('set')
+})
+
+const frequency = computed(() => {
+  return pitchFreq(midi.note.pitch, midi.note.octA)
+})
 
 </script>
 
 <template lang="pug">
-.flex.flex-col.w-full.gap-2
+.flex.flex-col.w-full.gap-2 
   .flex.flex-wrap
     button.flex-button(
       :class="{ active: synth.state.initiated }"
@@ -43,7 +56,14 @@ const octaves = useCycleList([-2, -1, 0, 1, 2], { initialValue: midi.offset })
       v-model="synth.state.volume"
       param="VOL"
       v-tooltip.top="'Synth volume'"
-    )
+      )
+  .flex.flex-wrap
+    .p-1(v-for="(part, p) in partials" :key="p")
+      control-knob.w-10.transition(
+        :min="0" :max="1" :step="0.01" 
+        v-model="partials[p]" :param="p + ''" 
+        :style="{ color: freqColor(frequency * (p + 1)) }"
+        )
   .flex.is-group
     button.flex-button(
       @click="synth.state.quantize.next()"

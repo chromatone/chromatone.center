@@ -1,23 +1,23 @@
 {
   "name": "chromatone.center",
-  "private": true,
-  "license": "MIT",
   "version": "1.8.1",
-  "author": "Davay42",
+  "private": true,
   "homepage": "https://chromatone.center",
-  "funding": {
-    "type": "ko-fi",
-    "url": "https://ko-fi.com/davay"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/chromatone/chromatone.center.git"
   },
+  "funding": {
+    "type": "ko-fi",
+    "url": "https://ko-fi.com/davay"
+  },
+  "license": "MIT",
+  "author": "Davay42",
   "scripts": {
-    "dev": "vitepress dev --host --port 3242",
     "build": "vitepress build ",
-    "serve": "vitepress serve --port 3200",
-    "deploy": "sh deploy.sh"
+    "deploy": "sh deploy.sh",
+    "dev": "vitepress dev --host --port 3242",
+    "serve": "vitepress serve --port 3200"
   },
   "dependencies": {
     "@gun-vue/composables": "^0.9.3",

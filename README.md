@@ -8,7 +8,7 @@ The visual music [research center](./index.md)
 
 Cards and short overviews on physics and physiology of vision and hearing and their intersection at visual music research, exploration, practice and self expression.
 
-## Apps
+## Practice
 
 Useful tools to have in the pocket like a pack of interactive cards to learn and use in everyday music practice. These are open source web-experiments with different aspects of sound and color.
 

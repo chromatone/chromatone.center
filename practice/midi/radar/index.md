@@ -14,3 +14,5 @@ import midiRadar from './index.vue'
   <midi-panel class="mb-4" />
   <midi-radar />
 </client-only>
+
+The radar rotation is powered by MIDI clock, so please use devices with clock master available.

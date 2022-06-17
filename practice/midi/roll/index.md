@@ -3,7 +3,7 @@ title: Roll
 subtitle: Record all MIDI notes on an infinite roll
 
 cover: midi-roll.png
-date: 2021-09-30
+date: 2022-06-16
 ---
 
 <script setup>

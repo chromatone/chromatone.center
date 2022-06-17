@@ -3,7 +3,7 @@ title: Monitor
 subtitle: See everything that's happening on your MIDI-bus right in the browser
 
 cover: monitor.png
-date: 2021-09-10
+date: 2022-06-12
 ---
 
 <script setup>

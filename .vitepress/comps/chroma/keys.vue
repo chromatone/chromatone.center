@@ -95,7 +95,11 @@ function keyColor(key, off) {
           y="250"
           x="45"
           :fill="!isInChroma(key) ? 'black' : 'white'"
-        ) {{ notes[key] }}
+        ) 
+          tspan(    
+            text-anchor="middle",
+            dominant-baseline="middle"
+            ) {{ notes[key] }}
     g.black 
       g.key(
         v-for="(key, k) in keys.black" :key="key"
@@ -126,7 +130,11 @@ function keyColor(key, off) {
           y="180"
           x="45"
           fill="white"
-        ) {{ notes[key] }}
+        ) 
+          tspan(    
+            text-anchor="middle",
+            dominant-baseline="middle"
+            ) {{ notes[key] }}
   slot
 </template>
 

@@ -3,7 +3,7 @@ title: Router
 subtitle: Forward all MIDI messages from one device to another
 
 cover: midi-router.png
-date: 2022-02-14
+date: 2022-06-08
 ---
 
 <script setup>

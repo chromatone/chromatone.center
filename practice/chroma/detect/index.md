@@ -1,15 +1,14 @@
 ---
-title: Split
+title: Detect
 subtitle: Let's look at the relative amounts of all pitch class frequencies in any audio signal in real time.
-
 cover: chroma.png
 date: 2022-06-16
 ---
 
 <script setup>
-import chromaSplit from './split.vue'
+import chromaDetect from './detect.vue'
 </script>
 
 <client-only>
-  <chroma-split />
+  <chroma-detect />
 </client-only>

@@ -45,7 +45,6 @@ const radius = useClamp(2, 1, 5)
     )
       circle.note(
         style="transition: all 300ms ease-in-out;transform-box: fill-box; transform-origin: center center;"
-
         :r="radius",
         :style="{ transform: `scale(${0.5 + 10 * amount})` }"
         :fill="pitchColor(i, 3, amount)",

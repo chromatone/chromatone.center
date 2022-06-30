@@ -61,6 +61,12 @@ links:
   - url: https://noisecraft.app/
     title: NoiseCraft
     subtitle: NoiseCraft is an open source, visual programming language and platform for sound synthesis and music making, with the goal of creating a community for the open exchange of musical ideas.
+  - url: https://glicol.org/
+    title: Glicol
+    subtitle: Next-generation computer music language
+  - url: https://ludotune.com/
+    title: Ludotune
+    subtitle: A 3D musical toy for making music with cubes
 date: 2018-09-08
 ---
 

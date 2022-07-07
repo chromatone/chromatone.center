@@ -21,7 +21,7 @@ function getColor(i, total, b = 10) {
 
 <template lang="pug">
 .lines(v-if="list")
-  a.line(
+  a.line.no-underline(
     v-for="(line, l) in list", 
     :key="line.title",
     :style="{ backgroundColor: getColor(l, Object.keys(props.list).length) }"
@@ -34,11 +34,10 @@ function getColor(i, total, b = 10) {
 
 <style lang="postcss" scoped>
 .lines {
-  @apply flex flex-wrap mx-2  my-4 w-full;
+  @apply flex flex-wrap mx-2 my-4 w-full;
 }
 
 .line {
-  @apply m-1 shadow-md flex rounded-2xl font-normal items-center px-4 py-2 transition-all bg-gray-50 dark_bg-gray-800 
-  hover_(no-underline shadow-lg);
+  @apply m-1 shadow-md flex rounded-2xl font-normal items-center px-4 py-2 transition-all bg-gray-50 dark_bg-gray-800 hover_(no-underline shadow-lg);
 }
 </style>

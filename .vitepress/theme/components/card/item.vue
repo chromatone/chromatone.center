@@ -13,7 +13,7 @@ const theColor = computed(() => props.color);
 .crd(
   :title="item.lastModified",
   )
-  a.container(:href="item.path" :class="{ 'pt-32': item?.cover }")
+  a.container.no-underline(:href="item.path" :class="{ 'pt-32': item?.cover }")
     .cover(v-if="item?.cover", :style="{ backgroundImage: `url(${item.cover})` }") 
     .info
       .title
@@ -35,27 +35,29 @@ const theColor = computed(() => props.color);
 
 <style lang="postcss" scoped>
 .crd {
-  @apply relative  bg-light-500 dark_bg-dark-800
-  flex flex-wrap items-stretch justify-stretch
-  transition-all  duration-200
-  static;
+  @apply relative bg-light-500 dark_bg-dark-800 flex flex-wrap items-stretch transition-all duration-200 static;
+
   & .container {
     @apply flex flex-wrap min-w-full items-stretch w-full relative;
     flex: 1 1 100%;
     background-color: v-bind(theColor);
   }
+
   & .info {
     @apply px-2 py-4 ml-2 m-2 z-4 max-w-24em bg-light-100 bg-opacity-80 dark_(bg-dark-600 bg-opacity-80) rounded-xl relative;
     -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
     flex: 1 1 100%;
   }
+
   & .title {
-    @apply flex items-center flex-wrap mt-2;
+    @apply flex items-center flex-wrap mt-2 !no-underline;
   }
+
   & .subtitle {
-    @apply mt-0 mb-2 p-2 font-normal w-full;
+    @apply mt-0 mb-2 p-2 font-normal w-full no-underline;
   }
+
   & .cover {
     @apply absolute top-0 w-full h-full bg-cover bg-center z-1;
 
@@ -64,6 +66,7 @@ const theColor = computed(() => props.color);
     flex: 1 0 100%;
     background: cover;
   }
+
   &:hover .cover {
     filter: saturate(100%) brightness(100%) opacity(90%);
   }

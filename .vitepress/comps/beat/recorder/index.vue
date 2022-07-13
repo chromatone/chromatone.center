@@ -1,5 +1,5 @@
 <script setup>
-import { isDark } from '@theme/composables/state.js'
+import { isDark } from '#theme/composables/state.js'
 const props = defineProps({
   recorder: Object,
 })
@@ -23,7 +23,7 @@ g.recorder
       @mousedown="$emit('close')"
       )
     la-times.pointer-events-none( font-size="40px" x="-25" y="-25")
-  g.add(v-for="(sound,s) in ['main', 'accent']" :key="sound")
+  g.add(v-for="(sound, s) in ['main', 'accent']" :key="sound")
     rect(
       :x="40 + s * 300"
       y="40"

@@ -1,9 +1,9 @@
 <script setup>
 import { useGun, useUser, useSpace, SEA, gunAvatar, updateProfile } from '@gun-vue/composables'
-import { midi, playKey } from '@use/midi'
-import { pitchColor } from '@use/calculations'
-import { notes } from '@use/theory'
-import { synthOnce } from '@use/synth'
+import { midi, playKey } from '#use/midi'
+import { pitchColor } from '#use/calculations'
+import { notes } from '#use/theory'
+import { synthOnce } from '#use/synth'
 
 
 const TIMEOUT = 10000

@@ -3,9 +3,9 @@ import tableShift from './shift.vue'
 import tableCell from './cell.vue'
 import tableSwitch from './switch.vue'
 
-import { notes } from '@use/theory'
+import { notes } from '#use/theory'
 import { state } from './state.js'
-import { globalScale } from '@use/chroma'
+import { globalScale } from '#use/chroma'
 import { onKeyStroke } from '@vueuse/core'
 
 onKeyStroke(' ', (e) => {

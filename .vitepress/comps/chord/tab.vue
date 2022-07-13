@@ -1,9 +1,9 @@
 <script setup>
 import { Note, Interval, Pcset } from '@tonaljs/tonal'
-import { freqColor, freqPitch, rotateArray, pitchColor } from '@use/calculations'
+import { freqColor, freqPitch, rotateArray, pitchColor } from '#use/calculations'
 import { colord } from 'colord'
-import { globalScale } from '@use/chroma'
-import { chordType, scaleType, notes } from '@use/theory'
+import { globalScale } from '#use/chroma'
+import { chordType, scaleType, notes } from '#use/theory'
 
 const props = defineProps({
   instrument: { type: String, default: 'ukulele' },
@@ -126,9 +126,11 @@ function getNote(string, semitones) {
 <style lang="postcss" scoped>
 .note {
   @apply cursor-pointer transition-all duration-300 ease-in-out;
+
   & text {
     @apply transition-all ease-in-out duration-100;
   }
+
   &:hover text {
     opacity: 1;
   }

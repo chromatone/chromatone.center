@@ -1,7 +1,7 @@
 <script setup>
 import { colord } from 'colord'
-import { pitchColor } from '@use/calculations'
-import { notes, scales } from '@use/theory'
+import { pitchColor } from '#use/calculations'
+import { notes, scales } from '#use/theory'
 const props = defineProps({
   chroma: { type: String, default: '100100010010' },
 });

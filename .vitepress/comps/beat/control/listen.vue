@@ -1,6 +1,6 @@
 <script setup>
-import { tempo } from '@use/tempo.js'
-import { useTuner } from '@use/tuner.js'
+import { tempo } from '#use/tempo.js'
+import { useTuner } from '#use/tuner.js'
 const { init, tuner } = useTuner();
 
 </script>

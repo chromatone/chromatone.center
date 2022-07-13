@@ -1,4 +1,4 @@
-import { tempo } from "@use/tempo.js";
+import { tempo } from "#use/tempo.js";
 import { onKeyStroke } from "@vueuse/core";
 import {
   Sequence,
@@ -12,7 +12,7 @@ import {
   Meter,
   UserMedia,
 } from "tone";
-import { createChannel } from '@use/audio'
+import { createChannel } from '#use/audio'
 
 export const tracks = reactive([]);
 

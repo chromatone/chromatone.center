@@ -1,5 +1,5 @@
 <script setup>
-import { getColorInfo } from '@use/colors.js'
+import { getColorInfo } from '#use/colors.js'
 const props = defineProps({
   color: {
     type: [String, Object]

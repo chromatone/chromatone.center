@@ -1,9 +1,9 @@
 <script setup>
-import { rotateArray, getCircleCoord, pitchColor } from '@use/calculations'
+import { rotateArray, getCircleCoord, pitchColor } from '#use/calculations'
 import { colord } from 'colord'
-import { chromaColorMix } from "@use/colors.js";
-import { chordType, scaleType, notes } from '@use/theory'
-import { globalScale, playChroma, stopChroma } from '@use/chroma'
+import { chromaColorMix } from "#use/colors.js";
+import { chordType, scaleType, notes } from '#use/theory'
+import { globalScale, playChroma, stopChroma } from '#use/chroma'
 const pressed = ref(false);
 
 const props = defineProps({
@@ -108,9 +108,11 @@ svg.select-none.max-w-12em.my-4.mx-auto(
 <style lang="postcss" scoped>
 .center {
   @apply transition-all duration-200 ease-in-out;
+
   &:hover {
     @apply transform scale-105;
   }
+
   &.pressed {
     @apply transform scale-100;
     filter: brightness(1.1);

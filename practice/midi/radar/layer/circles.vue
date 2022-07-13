@@ -1,7 +1,7 @@
 <script setup>
 import paper from "paper";
-import { midi } from "@use/midi";
-import { pitchColor } from "@use/calculations";
+import { midi } from "#use/midi";
+import { pitchColor } from "#use/calculations";
 import { polarXY, radar } from "../radar.js";
 
 const props = defineProps({
@@ -148,4 +148,5 @@ onBeforeUnmount(() => {
 
 </template>
 
-<style lang="postcss" scoped></style>
+<style lang="postcss" scoped>
+</style>

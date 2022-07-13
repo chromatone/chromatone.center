@@ -1,6 +1,6 @@
 <script setup>
-import { lchToHsl } from '@use/colors.js'
-import { isDark } from '@theme/composables/state'
+import { lchToHsl } from '#use/colors.js'
+import { isDark } from '#theme/composables/state'
 const props = defineProps({
   i: {
     type: Number,
@@ -44,6 +44,7 @@ const hoverShadow = computed(() => `
 .block {
   @apply rounded-2xl overflow-hidden transition-all duration-150;
   box-shadow: v-bind(shadow);
+
   &:hover {
     @apply shadow-xl;
     box-shadow: v-bind(hoverShadow);

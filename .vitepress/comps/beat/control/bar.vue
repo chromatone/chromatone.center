@@ -1,6 +1,6 @@
 <script setup>
-import { isDark } from '@theme/composables/state.js'
-import { levelColor } from "@use/colors.js"
+import { isDark } from '#theme/composables/state.js'
+import { levelColor } from "#use/colors.js"
 
 const emit = defineEmits(['update:modelValue'])
 
@@ -93,7 +93,7 @@ g.bar.cursor-pointer(
     v-if="showPositions"
   )
     circle(
-      v-for="(st,s) in allSteps" :key="st"
+      v-for="(st, s) in allSteps" :key="st"
       :cx="st"
       :cy="height / 2"
       :r="every && (s) % every == 0 ? 4 : 2"

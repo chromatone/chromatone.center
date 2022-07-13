@@ -2,8 +2,8 @@
 import { reactive, computed } from 'vue'
 import { UserMedia, Waveform, FFT } from 'tone'
 import { useRafFn } from '@vueuse/core'
-import { useTuner } from '@use/tuner.js'
-import { freqPitch, pitchColor } from '@use/calculations'
+import { useTuner } from '#use/tuner.js'
+import { freqPitch, pitchColor } from '#use/calculations'
 
 const screen = ref()
 

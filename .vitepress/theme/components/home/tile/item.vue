@@ -1,7 +1,7 @@
 <script setup>
 import { useData } from 'vitepress'
-import { lchToHsl } from '@use/colors.js'
-import { pages } from '@theme/composables/pages'
+import { lchToHsl } from '#use/colors.js'
+import { pages } from '#theme/composables/pages'
 
 const props = defineProps({
   item: Object,
@@ -39,8 +39,8 @@ const color = computed(() => lchToHsl(props.i, props.total));
   @apply bg-light-300 mx-2 sm_mx-4 shadow-lg dark_bg-dark-400 my-8 flex flex-col transition no-underline rounded-xl;
 
   flex: 1 1 50px;
-  &:hover {
-  }
+
+  &:hover {}
 }
 
 .cover {

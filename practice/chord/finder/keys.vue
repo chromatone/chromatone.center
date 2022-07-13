@@ -1,6 +1,6 @@
 <script setup>
-import { notes } from '@use/theory'
-import { pitchColor } from '@use/calculations'
+import { notes } from '#use/theory'
+import { pitchColor } from '#use/calculations'
 const props = defineProps({
   accord: Object,
 });

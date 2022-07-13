@@ -9,7 +9,7 @@ import {
   BitCrusher,
 } from "tone";
 import { useStorage, useRafFn, onKeyStroke } from "@vueuse/core";
-import { useAudio } from '@use/audio'
+import { useAudio } from '#use/audio'
 import { createChannel } from "./audio";
 
 const types = { brown: "brown", pink: "pink", white: "white" };

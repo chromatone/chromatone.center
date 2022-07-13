@@ -8,11 +8,11 @@ const props = defineProps({
   roman: { type: String, default: '' },
   editable: { type: Boolean, default: false }
 });
-import { rotateArray, getCircleCoord, pitchColor } from '@use/calculations'
+import { rotateArray, getCircleCoord, pitchColor } from '#use/calculations'
 import { colord } from 'colord'
-import { chromaColorMix } from "@use/colors.js";
-import { chordType, scaleType, intervals, notes } from '@use/theory'
-import { playChroma, stopChroma, globalScale } from '@use/chroma'
+import { chromaColorMix } from "#use/colors.js";
+import { chordType, scaleType, intervals, notes } from '#use/theory'
+import { playChroma, stopChroma, globalScale } from '#use/chroma'
 const pressed = ref(false);
 
 const state = reactive({
@@ -159,8 +159,9 @@ svg.select-none.min-w-8em.m-2(
 <style lang="postcss" scoped>
 .center {
   @apply transition-all duration-200 ease-in-out;
-  &:hover {
-  }
+
+  &:hover {}
+
   &.pressed {
     filter: brightness(1.1);
   }

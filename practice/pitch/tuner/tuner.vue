@@ -1,6 +1,6 @@
 <script setup>
-import { pitchColor } from '@use/calculations'
-import { useTuner } from '@use/tuner.js'
+import { pitchColor } from '#use/calculations'
+import { useTuner } from '#use/tuner.js'
 
 const display = ref(null)
 
@@ -139,6 +139,7 @@ function getRawNote(frequency) {
 .meter {
   transition: transform 500ms ease;
 }
+
 stop {
   transition: all 600ms ease;
 }

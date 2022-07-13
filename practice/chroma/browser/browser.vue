@@ -1,8 +1,8 @@
 <script setup>
 import { Pcset } from '@tonaljs/tonal'
-import { pitchColor } from '@use/calculations'
-import { chordType, scaleType, notes } from '@use/theory'
-import { globalScale } from '@use/chroma'
+import { pitchColor } from '#use/calculations'
+import { chordType, scaleType, notes } from '#use/theory'
+import { globalScale } from '#use/chroma'
 
 
 const tonic = useStorage('chroma-tonic', 0)
@@ -76,7 +76,7 @@ const sorted = computed(() => {
 }
 
 .control {
-  @apply m-2 p-4 rounded bg-light-400  dark_bg-dark-400 cursor-pointer;
+  @apply m-2 p-4 rounded bg-light-400 dark_bg-dark-400 cursor-pointer;
 }
 
 .control.active {
@@ -84,7 +84,7 @@ const sorted = computed(() => {
 }
 
 .keys {
-  @apply z-8 rounded-md p-1 grid grid-cols-6 xs_(grid-cols-12) w-full sticky top-$header-height bg-light-400 bg-opacity-80  dark_(bg-dark-300 bg-opacity-80);
+  @apply z-8 rounded-md p-1 grid grid-cols-6 xs_(grid-cols-12) w-full sticky top-$header-height bg-light-400 bg-opacity-80 dark_(bg-dark-300 bg-opacity-80);
 }
 
 .key {

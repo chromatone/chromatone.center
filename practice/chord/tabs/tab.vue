@@ -1,6 +1,6 @@
 <script setup>
-import { notes as noteList } from '@use/theory'
-import { pitchColor } from '@use/calculations'
+import { notes as noteList } from '#use/theory'
+import { pitchColor } from '#use/calculations'
 import { colord } from 'colord'
 const props = defineProps({
   frets: Array,

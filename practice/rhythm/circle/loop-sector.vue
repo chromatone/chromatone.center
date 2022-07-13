@@ -1,8 +1,8 @@
 <script setup>
-import { levelColor } from "@use/colors.js"
-import { getCircleCoord } from '@use/calculations'
+import { levelColor } from "#use/colors.js"
+import { getCircleCoord } from '#use/calculations'
 import { colord } from 'colord'
-import { tempo } from '@use/tempo'
+import { tempo } from '#use/tempo'
 
 const props = defineProps({
   radius: { type: Number, default: 400, },

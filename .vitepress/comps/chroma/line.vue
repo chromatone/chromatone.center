@@ -1,7 +1,7 @@
 <script setup>
-import { pitchColor } from '@use/calculations'
-import { globalScale } from '@use/chroma'
-import { notes } from '@use/theory'
+import { pitchColor } from '#use/calculations'
+import { globalScale } from '#use/chroma'
+import { notes } from '#use/theory'
 
 const props = defineProps({
   chroma: {

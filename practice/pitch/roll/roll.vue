@@ -1,6 +1,6 @@
 <script setup>
-import { pitchColor, rotateArray } from '@use/calculations'
-import { useTuner } from '@use/tuner'
+import { pitchColor, rotateArray } from '#use/calculations'
+import { useTuner } from '#use/tuner'
 import { onKeyStroke, useClamp } from '@vueuse/core'
 
 const draw = reactive({

@@ -1,9 +1,9 @@
 <script setup>
 import { Midi } from '@tonejs/midi'
-import { pitchColor } from '@use/calculations'
+import { pitchColor } from '#use/calculations'
 import { now, PolySynth, Synth, Transport } from 'tone'
-import { createAndDownloadBlobFile } from '@use/midiRender'
-import { useAudio } from '@use/audio'
+import { createAndDownloadBlobFile } from '#use/midiRender'
+import { useAudio } from '#use/audio'
 
 let midiData
 

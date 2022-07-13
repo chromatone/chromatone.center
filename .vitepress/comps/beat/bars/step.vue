@@ -1,9 +1,9 @@
 <script setup>
-import { levelColor } from "@use/colors.js"
+import { levelColor } from "#use/colors.js"
 import { colord } from 'colord'
 
-import { isDark } from '@theme/composables/state.js'
-import { tempo } from '@use/tempo'
+import { isDark } from '#theme/composables/state.js'
+import { tempo } from '#use/tempo'
 
 const props = defineProps({
   proportion: {
@@ -121,7 +121,7 @@ g.cursor-pointer(
     )
 
     g.sub(
-      v-for="(sub,s) in subdivisions" :key="sub"
+      v-for="(sub, s) in subdivisions" :key="sub"
       @dblclick="$emit('subdivide', [`${sub}-1`]); division = 40"
       :data-sub="sub"
       v-drag="dragDiv"

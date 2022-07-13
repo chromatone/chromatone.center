@@ -1,5 +1,5 @@
 <script setup>
-import { midi, midiRelease } from '@use/midi'
+import { midi, midiRelease } from '#use/midi'
 
 function filterAll() {
   let state = midi.filter[1]

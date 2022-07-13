@@ -1,9 +1,9 @@
 <script setup>
-import { pitchColor, freqColor } from '@use/calculations'
-import { useSvgMouse } from '@use/mouse.js'
+import { pitchColor, freqColor } from '#use/calculations'
+import { useSvgMouse } from '#use/mouse.js'
 import { MonoSynth, gainToDb, Gain } from 'tone'
-import { notes } from '@use/theory'
-import { createChannel } from '@use/audio';
+import { notes } from '#use/theory'
+import { createChannel } from '#use/audio';
 
 const box = {
   width: 1200,

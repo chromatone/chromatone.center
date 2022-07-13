@@ -1,5 +1,5 @@
 <script setup>
-import { useNoise } from '@use/noise.js'
+import { useNoise } from '#use/noise.js'
 const {
   options, filterOptions, pannerOptions, crusherOptions, active, fftData, fftFreq, types, filterTypes, filterLFOTypes
 } = useNoise();

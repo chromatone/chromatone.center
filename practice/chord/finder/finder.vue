@@ -1,8 +1,8 @@
 <script setup>
 import finderKeys from './keys.vue'
 
-import { pitchColor } from '@use/calculations'
-import { notes, chords } from '@use/theory'
+import { pitchColor } from '#use/calculations'
+import { notes, chords } from '#use/theory'
 
 const accord = reactive({
   root: 0,
@@ -53,6 +53,7 @@ function compareChords(a, b) {
 <style lang="postcss" scoped>
 .chord {
   @apply text-xl p-2 transition-all cursor-pointer m-1 rounded-lg border bg-light-100 dark_bg-dark-100 hover_bg-light-500 dark_(hover_bg-dark-300);
+
   &.active {
     @apply bg-light-700 dark_bg-dark-700;
   }

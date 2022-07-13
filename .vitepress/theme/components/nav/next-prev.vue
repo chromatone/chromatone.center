@@ -1,6 +1,6 @@
 <script setup>
-import { useSiblings, useParents, pages } from '@theme/composables/pages'
-import { lchToHsl } from '@use/colors.js'
+import { useSiblings, useParents, pages } from '#theme/composables/pages'
+import { lchToHsl } from '#use/colors.js'
 import { useRoute } from 'vitepress'
 const route = useRoute()
 
@@ -50,9 +50,9 @@ const colors = reactive({
 
 <style lang="postcss" scoped>
 .next-and-prev-link {
-  @apply bg-dark-50/10 dark_bg-dark-800/90 
-  -webkit-backdrop-filter: blur(10px);
+  @apply bg-dark-50/10 dark_bg-dark-800/90 -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
+
   & a {
     @apply text-dark-800 dark_text-light-300;
   }
@@ -63,7 +63,7 @@ const colors = reactive({
 }
 
 .row {
-  @apply mx-auto border-t-12  flex flex-col w-full py-4 px-4 xs_(flex-wrap flex-row);
+  @apply mx-auto border-t-12 flex flex-col w-full py-4 px-4 xs_(flex-wrap flex-row);
 }
 
 .pad {
@@ -71,6 +71,7 @@ const colors = reactive({
   flex: 1 1 45%;
   filter: grayscale(40%) opacity(80%);
 }
+
 .pad:hover {
   filter: grayscale(0%) opacity(100%);
 }
@@ -108,6 +109,7 @@ const colors = reactive({
 .icon-prev {
   margin-right: 8px;
 }
+
 .icon-next {
   margin-left: 8px;
 }

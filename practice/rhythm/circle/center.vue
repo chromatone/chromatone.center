@@ -1,6 +1,6 @@
 <script setup>
-import { useTempo } from '@use/tempo'
-import { isDark } from '@theme/composables/state.js'
+import { useTempo } from '#use/tempo'
+import { isDark } from '#theme/composables/state.js'
 const fill = computed(() => isDark.value ? '#333' : '#eee');
 
 const tempo = useTempo()

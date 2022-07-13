@@ -1,7 +1,7 @@
 <script setup>
-import { notes } from '@use/theory'
-import { pitchColor, getCircleCoord } from '@use/calculations'
-import { globalScale } from '@use/chroma'
+import { notes } from '#use/theory'
+import { pitchColor, getCircleCoord } from '#use/calculations'
+import { globalScale } from '#use/chroma'
 </script>
 
 <template lang='pug'>

@@ -1,4 +1,4 @@
-import { midi } from "@use/midi";
+import { midi } from "#use/midi";
 import paper from "paper";
 
 export const radar = reactive({

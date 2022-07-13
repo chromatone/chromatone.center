@@ -1,7 +1,7 @@
 <script setup>
-import { pitchColor, rotateArray, getCircleCoord } from '@use/calculations'
-import { notes } from '@use/theory'
-import { useTuner } from '@use/tuner.js'
+import { pitchColor, rotateArray, getCircleCoord } from '#use/calculations'
+import { notes } from '#use/theory'
+import { useTuner } from '#use/tuner.js'
 const { init, tuner, chain } = useTuner();
 
 const blur = ref(0)

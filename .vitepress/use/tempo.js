@@ -1,10 +1,10 @@
 import { reactive, computed, watch, onMounted } from "vue";
 import { Transport, start, Frequency, Loop, Sampler, gainToDb } from "tone";
-import { pitchColor, freqPitch } from "@use/calculations";
+import { pitchColor, freqPitch } from "#use/calculations";
 import { Note } from "@tonaljs/tonal";
 import { useStorage } from "@vueuse/core";
 import { useRafFn } from "@vueuse/core";
-import { createChannel } from '@use/audio'
+import { createChannel } from '#use/audio'
 
 export const tempo = reactive({
   initialized: false,

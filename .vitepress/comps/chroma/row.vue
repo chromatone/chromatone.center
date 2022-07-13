@@ -1,12 +1,12 @@
 <script setup>
-import { pitchColor, rotateArray } from '@use/calculations'
-import { chromaColorMix } from "@use/colors.js";
+import { pitchColor, rotateArray } from '#use/calculations'
+import { chromaColorMix } from "#use/colors.js";
 import { Note, Pcset, Interval } from '@tonaljs/tonal'
 import { Frequency } from 'tone'
-import { synthOnce } from '@use/synth.js'
-import { midiOnce } from '@use/midi.js'
-import { chordType, scaleType, intervals, notes } from '@use/theory'
-import { globalScale, playChroma, stopChroma, } from '@use/chroma'
+import { synthOnce } from '#use/synth.js'
+import { midiOnce } from '#use/midi.js'
+import { chordType, scaleType, intervals, notes } from '#use/theory'
+import { globalScale, playChroma, stopChroma, } from '#use/chroma'
 
 const emit = defineEmits(['update:chroma'])
 const props = defineProps({
@@ -161,10 +161,11 @@ function playNote(note = 0, octave = 0) {
 
 <style lang="postcss" scoped>
 .chroma-key {
-  @apply cursor-pointer text-xs transition-all duration-300 py-3   hover_(opacity-100) opacity-70  rounded-full flex justify-center px-2;
+  @apply cursor-pointer text-xs transition-all duration-300 py-3 hover_(opacity-100) opacity-70 rounded-full flex justify-center px-2;
   flex: 1 1 12px;
   box-shadow: 0 2px 0px rgba(0, 0, 0, 0.4);
 }
+
 .chroma-key.active {
   @apply text-light-100 font-bold opacity-90;
   box-shadow: 0 2px 0px rgba(0, 0, 0, 0.6);

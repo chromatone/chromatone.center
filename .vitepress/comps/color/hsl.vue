@@ -1,5 +1,5 @@
 <script setup>
-import { getColorInfo } from '@use/colors.js'
+import { getColorInfo } from '#use/colors.js'
 import { colord } from 'colord'
 import { useTransition, TransitionPresets, useStorage } from '@vueuse/core'
 
@@ -94,17 +94,17 @@ function onDragS(drag) {
     defs
       linearGradient#sat(x1="0" x2="0" y1="0" y2="1")
         stop(
-          v-for="(step,i) in 10" :key="step"
+          v-for="(step, i) in 10" :key="step"
           :stop-color="generateTone(mix.hue, 100 - i * 10).toHex()" :offset="i * 10 + '%'"
           )
       linearGradient#light(x1="0" x2="0" y1="0" y2="1")
         stop(
-          v-for="(step,i) in 10" :key="step"
+          v-for="(step, i) in 10" :key="step"
           :stop-color="generateTone(mix.hue, mix.sat, 100 - i * 10).toHex()" :offset="i * 10 + '%'"
           )
     g#spaces
       g.cursor-pointer(
-        v-for="(space,i) in spaces" :key="space"
+        v-for="(space, i) in spaces" :key="space"
         font-size="3"
         :transform="`translate(${12 * (i - 1) + 50}, 0)`"
         @click="mix.space = space"
@@ -133,7 +133,7 @@ function onDragS(drag) {
       text.uppercase {{ mix.hueCount }} HUE STEPS 
     g#circle.cursor-pointer(v-drag="onDrag" :drag-options="{ filterTaps: true }")
       g.arc(
-        v-for="(arc,i) in mix.hueArcs" :key="arc"
+        v-for="(arc, i) in mix.hueArcs" :key="arc"
         :data-from="arc.from"
         :data-to="arc.to"
       )

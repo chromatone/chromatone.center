@@ -1,9 +1,9 @@
 <script setup>
-import { freqColor, freqPitch, pitchFreq } from '@use/calculations'
-import { notes } from '@use/theory'
+import { freqColor, freqPitch, pitchFreq } from '#use/calculations'
+import { notes } from '#use/theory'
 import { MonoSynth, start } from 'tone'
-import { useSvgMouse } from '@use/mouse.js'
-import { createChannel } from '@use/audio'
+import { useSvgMouse } from '#use/mouse.js'
+import { createChannel } from '#use/audio'
 
 const started = ref(false)
 function startApp() {

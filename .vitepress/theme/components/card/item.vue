@@ -1,6 +1,6 @@
 <script setup>
 import { useData } from 'vitepress'
-import { pages } from '@theme/composables/pages'
+import { pages } from '#theme/composables/pages'
 
 const props = defineProps({
   item: Object,

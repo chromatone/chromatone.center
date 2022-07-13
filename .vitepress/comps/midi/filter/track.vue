@@ -1,5 +1,5 @@
 <script setup>
-import { pitchColor } from '@use/calculations'
+import { pitchColor } from '#use/calculations'
 const props = defineProps({
   track: Object,
 });

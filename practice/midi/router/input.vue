@@ -1,6 +1,6 @@
 <script setup>
-import { useMidi, forwardMidi } from "@use/midi.js";
-import { pitchColor } from "@use/calculations";
+import { useMidi, forwardMidi } from "#use/midi.js";
+import { pitchColor } from "#use/calculations";
 
 const props = defineProps({
   input: Object,

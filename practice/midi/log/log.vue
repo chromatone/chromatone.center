@@ -1,6 +1,6 @@
 <script setup>
-import { pitchColor } from '@use/calculations'
-import { useMidi } from '@use/midi'
+import { pitchColor } from '#use/calculations'
+import { useMidi } from '#use/midi'
 import { Utilities } from 'webmidi'
 const active = ref(false)
 

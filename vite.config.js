@@ -30,6 +30,7 @@ export default defineConfig({
     }),
     //@ts-ignore
     ViteAliases({
+      prefix: '#',
       dir: '.vitepress',
       deep: false,
       adjustDuplicates: true,

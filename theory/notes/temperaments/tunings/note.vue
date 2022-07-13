@@ -1,6 +1,6 @@
 <script setup>
-import { pitchColor, pitchFreq, getCircleCoord } from '@use/calculations'
-import { synthAttack, synthRelease } from '@use/synth.js'
+import { pitchColor, pitchFreq, getCircleCoord } from '#use/calculations'
+import { synthAttack, synthRelease } from '#use/synth.js'
 
 import { colord } from 'colord'
 const props = defineProps({

@@ -1,6 +1,6 @@
 <script setup>
-import { useAudio } from "@use/audio";
-import { useMic } from "@use/mic";
+import { useAudio } from "#use/audio";
+import { useMic } from "#use/mic";
 
 const { audio, channels } = useAudio();
 const { mic, input } = useMic();

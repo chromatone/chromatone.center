@@ -1,5 +1,5 @@
 <script setup>
-import { levelColor } from '@use/colors.js'
+import { levelColor } from '#use/colors.js'
 const props = defineProps({
   list: Object,
   langs: Object,
@@ -13,7 +13,7 @@ const props = defineProps({
       th #
       th Hue
       th.p-4(v-for="(lang) in langs", :key="lang") {{ lang }} 
-    tr(v-for="(color, n,i) in list", :key="n", :style="{ backgroundColor: levelColor(i, 12) }")
+    tr(v-for="(color, n, i) in list", :key="n", :style="{ backgroundColor: levelColor(i, 12) }")
       td {{ i + 1 }}
       td {{ i * 30 }}º
       td.p-4(v-for="name in color") {{ name }} 

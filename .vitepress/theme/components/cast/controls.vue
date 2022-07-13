@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { cast, showRecordingDialog } from "@use/cast";
+import { cast, showRecordingDialog } from "#use/cast";
 
 const {
   currentCamera,

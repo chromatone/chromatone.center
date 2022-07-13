@@ -20,7 +20,7 @@
     "serve": "vitepress serve --port 3200"
   },
   "dependencies": {
-    "@gun-vue/composables": "^0.9.3",
+    "@gun-vue/composables": "^0.9.4",
     "@tonaljs/tonal": "^4.6.5",
     "@tonejs/midi": "^2.0.28",
     "@vueuse/core": "^8.7.5",
@@ -45,7 +45,7 @@
     "tone": "^14.8.40",
     "vitepress-pages": "^0.8.5",
     "vue": "^3.2.37",
-    "webmidi": "^3.0.20"
+    "webmidi": "^3.0.21"
   },
   "devDependencies": {
     "@iconify/json": "^2.1.70",
@@ -59,9 +59,9 @@
     "vite-aliases": "0.9.2",
     "vite-plugin-pages": "^0.25.0",
     "vite-plugin-pages-sitemap": "^1.2.2",
-    "vite-plugin-pwa": "^0.12.1",
+    "vite-plugin-pwa": "^0.12.3",
     "vite-plugin-windicss": "^1.8.6",
-    "vitepress": "1.0.0-alpha.2",
+    "vitepress": "1.0.0-alpha.4",
     "vue-demi": "0.12.5",
     "windicss": "3.5.6"
   }

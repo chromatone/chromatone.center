@@ -1,7 +1,7 @@
 <script setup>
 import { useSiblings, usePage } from '../../composables/pages'
-import { lchToHsl } from '@use/colors.js'
-import { isDark } from '@theme/composables/state'
+import { lchToHsl } from '#use/colors.js'
+import { isDark } from '#theme/composables/state'
 import { useRoute } from 'vitepress'
 
 const route = useRoute()
@@ -47,6 +47,7 @@ const lightColor = computed(() => lchToHsl(siblings.value.index, siblings.value.
   @apply fixed overflow-hidden transition-all ease-in-out duration-500 bg-cover bg-center bg-gray-100 dark_(bg-gray-700) absolute top-0 h-full left-0 right-0;
   filter: saturate(20%) sepia(5%) opacity(10%) blur(0px);
 }
+
 @media print {
   .cover {
     @apply h-100px;

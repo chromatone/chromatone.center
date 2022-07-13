@@ -1,8 +1,8 @@
 <script setup>
-import { notes } from '@use/theory'
-import { getCircleCoord, pitchColor } from '@use/calculations'
-import { midi, playKey } from '@use/midi'
-import { globalScale } from '@use/chroma'
+import { notes } from '#use/theory'
+import { getCircleCoord, pitchColor } from '#use/calculations'
+import { midi, playKey } from '#use/midi'
+import { globalScale } from '#use/chroma'
 
 const props = defineProps({
   size: { type: Number, default: 1000 },

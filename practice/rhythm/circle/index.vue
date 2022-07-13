@@ -3,8 +3,8 @@ import CircleCenter from './center.vue'
 import CircleOverlay from './overlay.vue'
 import CircleLoop from './loop.vue'
 
-import { renderMidi } from '@use/midiRender'
-import { tracks } from '@use/sequence'
+import { renderMidi } from '#use/midiRender'
+import { tracks } from '#use/sequence'
 const loops = useStorage('tempo-circle-loops', [
   {
     over: 8,

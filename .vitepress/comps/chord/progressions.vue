@@ -1,7 +1,7 @@
 <script setup>
-import { pitchColor, rotateArray } from '@use/calculations'
-import { noteNames } from '@use/theory'
-import { globalScale, playChroma, stopChroma } from '@use/chroma'
+import { pitchColor, rotateArray } from '#use/calculations'
+import { noteNames } from '#use/theory'
+import { globalScale, playChroma, stopChroma } from '#use/chroma'
 import { Progression, Chord } from "@tonaljs/tonal";
 
 const props = defineProps({

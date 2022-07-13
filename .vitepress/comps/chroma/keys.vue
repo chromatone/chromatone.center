@@ -10,9 +10,9 @@ const props = defineProps({
 
 const emit = defineEmits(['update:pitch'])
 
-import { globalScale, playChroma, stopChroma } from '@use/chroma'
-import { pitchColor, rotateArray } from '@use/calculations'
-import { chordType, scaleType, notes } from '@use/theory'
+import { globalScale, playChroma, stopChroma } from '#use/chroma'
+import { pitchColor, rotateArray } from '#use/calculations'
+import { chordType, scaleType, notes } from '#use/theory'
 import { colord } from 'colord'
 
 const keys = reactive({

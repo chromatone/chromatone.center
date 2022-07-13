@@ -1,8 +1,8 @@
 <script setup>
-import { midi, stopAll, midiAttack, midiRelease } from "@use/midi.js";
+import { midi, stopAll, midiAttack, midiRelease } from "#use/midi.js";
 import { onKeyStroke } from "@vueuse/core";
-import { pitchColor } from "@use/calculations";
-import { synth } from "@use/synth.js";
+import { pitchColor } from "#use/calculations";
+import { synth } from "#use/synth.js";
 
 onKeyStroke(" ", (ev) => {
   ev.preventDefault();

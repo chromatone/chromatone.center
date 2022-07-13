@@ -1,7 +1,7 @@
 <script setup>
 import { useDraw } from './draw'
-import { midi } from '@use/midi'
-import { pitchColor } from '@use/calculations'
+import { midi } from '#use/midi'
+import { pitchColor } from '#use/calculations'
 import { useRoute } from 'vitepress'
 
 const route = useRoute()

@@ -1,6 +1,6 @@
 <script setup>
-import { useTempo, tap } from "@use/tempo.js";
-import { useTuner } from "@use/tuner.js";
+import { useTempo, tap } from "#use/tempo.js";
+import { useTuner } from "#use/tuner.js";
 import { onKeyStroke, useCycleList } from "@vueuse/core";
 const tempo = useTempo();
 const { init, tuner } = useTuner();

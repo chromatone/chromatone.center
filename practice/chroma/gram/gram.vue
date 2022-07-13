@@ -1,7 +1,7 @@
 <script setup>
 import { useRafFn } from '@vueuse/core'
-import { rotateArray } from '@use/calculations'
-import { useTuner } from '@use/tuner.js'
+import { rotateArray } from '#use/calculations'
+import { useTuner } from '#use/tuner.js'
 const { init, tuner, chain } = useTuner();
 
 const screen = ref()

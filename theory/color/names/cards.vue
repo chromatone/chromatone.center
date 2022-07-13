@@ -2,8 +2,8 @@
 <script setup>
 import colorCircles from './circles.vue'
 
-import { pitchColor } from '@use/calculations'
-import { notes } from '@use/theory'
+import { pitchColor } from '#use/calculations'
+import { notes } from '#use/theory'
 import { colord } from 'colord'
 
 const props = defineProps({

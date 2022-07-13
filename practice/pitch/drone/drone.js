@@ -1,7 +1,7 @@
-import { freqColor, freqPitch, pitchFreq } from "@use/calculations";
+import { freqColor, freqPitch, pitchFreq } from "#use/calculations";
 import { Frequency, Synth, PanVol, gainToDb, LFO, Meter, Filter, Gain } from "tone";
 import { useRafFn, onKeyStroke } from "@vueuse/core";
-import { createChannel } from '@use/audio'
+import { createChannel } from '#use/audio'
 import { learnCC } from "../../../.vitepress/use/midi";
 
 const drone = reactive({

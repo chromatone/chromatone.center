@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { pages } from '@theme/composables/pages'
+import { pages } from '#theme/composables/pages'
 </script>
 
 <template lang="pug">

@@ -1,6 +1,6 @@
 <script setup>
-import { useMidi } from '@use/midi'
-import { pitchColor } from '@use/calculations'
+import { useMidi } from '#use/midi'
+import { pitchColor } from '#use/calculations'
 
 const { midi } = useMidi()
 </script>

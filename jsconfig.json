@@ -1,5 +1,11 @@
 {
   "vueCompilerOptions": {
     "experimentalDisableTemplateSupport": true
-  }
+  },
+  "compilerOptions": {
+		"baseUrl": ".",
+		"paths": {
+			"#*": ["./.vitepress/*"]
+		}
+	}
 }

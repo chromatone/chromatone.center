@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useData, useRoute } from 'vitepress'
-import { pages } from '@theme/composables/pages'
+import { pages } from '#theme/composables/pages'
 
 const { site, theme } = useData()
 const route = useRoute()
@@ -41,6 +41,7 @@ nav {
 
 a {
   @apply transition-all opacity-60 text-dark-900 dark_text-dark-50 hover_(opacity-80 underline);
+
   &.active {
     @apply font-bold text-$c-brand dark_text-$c-brand-light border-$c-brand;
   }

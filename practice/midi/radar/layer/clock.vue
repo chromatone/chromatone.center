@@ -1,7 +1,7 @@
 <script setup>
-import { getCircleCoord } from '@use/calculations'
+import { getCircleCoord } from '#use/calculations'
 import { polarXY, radar } from '../radar.js'
-import { isDark } from '@theme/composables/state'
+import { isDark } from '#theme/composables/state'
 
 import paper from 'paper'
 

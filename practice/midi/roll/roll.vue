@@ -1,6 +1,6 @@
 <script setup>
 import { useRafFn } from "@vueuse/core";
-import { midi } from "@use/midi.js";
+import { midi } from "#use/midi.js";
 
 const screen = ref();
 
@@ -38,7 +38,7 @@ const state = reactive({
   initiated: false,
   width: 1200,
   height: 800,
-  speed: computed(()=>Math.round(state.rawSpeed*2)/2),
+  speed: computed(() => Math.round(state.rawSpeed * 2) / 2),
   rawSpeed: useClamp(useStorage("midi-roll-speed", 1), 1, 3),
   direction: useStorage("midi-roll-direction", 1),
 });
@@ -129,7 +129,7 @@ function colorIt(pitch = 0, value = 1, opacity = 1) {
 
 function dragSpeed(drag) {
   let diff = drag.delta[0] - drag.delta[1];
-  state.rawSpeed += diff/500
+  state.rawSpeed += diff / 500
 }
 </script>
 
@@ -144,7 +144,7 @@ function dragSpeed(drag) {
       la-arrow-up(v-if="state.direction == 1")
       la-arrow-left(v-if="state.direction == 0")
     .absolute.top-2.left-2.text-white.p-2
-      .text-lg x{{state.speed}}
+      .text-lg x{{ state.speed }}
     canvas#spectrogram.max-h-80vh.w-full.rounded-3xl.cursor-pointer(
       v-drag="dragSpeed"
       :width="state.width"

@@ -1,6 +1,6 @@
 <script setup>
-import { lchToHsl } from "@use/colors";
-import { pages } from "@theme/composables/pages";
+import { lchToHsl } from "#use/colors";
+import { pages } from "#theme/composables/pages";
 import { useData } from "vitepress";
 const { site } = useData();
 
@@ -75,6 +75,7 @@ const route = useRoute();
   overflow-y: auto;
   transition: all 300ms ease-out;
   @apply pr-2 pl-1 z-20 fixed rounded-xl top-$header-height bottom-0 left-0 transform -translate-x-full lg_(static translate-x-0) shadow-xl bg-light-600 dark_bg-dark-700;
+
   & a {
     @apply no-underline block flex;
   }
@@ -86,7 +87,8 @@ const route = useRoute();
 
 .level {
   @apply my-1 ml-1 cursor-pointer flex flex-col border-l-2 transition-all duration-200 ease-in-out hover_border-l-4;
-  > a {
+
+  >a {
     @apply py-2 flex px-2 font-normal;
   }
 }
@@ -109,14 +111,13 @@ const route = useRoute();
 
 [aria-current="page"] {
   @apply border-l-6 font-bold bg-light-100/50 dark_bg-dark-100/50 hover_border-l-6;
-  > a {
+
+  >a {
     @apply font-bold py-4;
   }
 }
 
 .title {
-  @apply ml-4 mt-4 text-xl 
-    inline-flex items-center whitespace-nowrap
-    hover_no-underline;
+  @apply ml-4 mt-4 text-xl inline-flex items-center whitespace-nowrap hover_no-underline;
 }
 </style>

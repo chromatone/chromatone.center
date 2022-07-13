@@ -1,7 +1,7 @@
 <script setup>
 import { useDraggable, useEventListener, useStorage } from "@vueuse/core";
 import { computed, onMounted, ref, watchEffect } from "vue";
-import { cast, currentCamera } from "@use/cast";
+import { cast, currentCamera } from "#use/cast";
 
 const size = useStorage(
   "cast-cam-size",

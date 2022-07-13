@@ -1,7 +1,7 @@
 <script setup>
-import { rotateArray, pitchColor } from '@use/calculations'
-import { notes } from '@use/theory'
-import { globalScale } from '@use/chroma'
+import { rotateArray, pitchColor } from '#use/calculations'
+import { notes } from '#use/theory'
+import { globalScale } from '#use/chroma'
 
 const allNotes = [...notes].map((n, i) => ({ name: n, pitch: i }))
 
@@ -56,6 +56,7 @@ function isInChroma(pitch) {
   margin-top: 0.2em;
   margin-bottom: 1em;
   flex: 1;
+
   &.black {
     @apply bg-gray-300 dark_(bg-gray-700) z-2;
     padding: 1em 1em;
@@ -64,9 +65,11 @@ function isInChroma(pitch) {
     margin-bottom: 2.5em;
     transform: translateX(25%);
   }
+
   &.tonic {
     @apply opacity-100;
   }
+
   &:hover {
     @apply shadow-md;
   }

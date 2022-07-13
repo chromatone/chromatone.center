@@ -1,7 +1,7 @@
 <script setup>
 import { useData, useRoute } from 'vitepress'
-import { pages, usePage } from '@theme/composables/pages'
-import { lchToHsl } from '@use/colors.js'
+import { pages, usePage } from '#theme/composables/pages'
+import { lchToHsl } from '#use/colors.js'
 
 const route = useRoute()
 
@@ -53,6 +53,7 @@ const bg = computed(() => `url(${props.item?.cover}`);
 .row {
   @apply bg-light-500 w-full dark_bg-dark-500 flex flex-col transition-all duration-300 ease no-underline rounded-4xl overflow-hidden shadow-lg;
   flex: 1 1 200px;
+
   &:hover {
     @apply bg-light-200 dark_bg-dark-400 shadow-xl;
   }
@@ -69,7 +70,7 @@ const bg = computed(() => `url(${props.item?.cover}`);
 }
 
 .cover {
-  @apply absolute w-full  top-0 h-full rounded-xl;
+  @apply absolute w-full top-0 h-full rounded-xl;
   filter: saturate(50%) opacity(30%);
   transition: all 450ms ease-in-out;
   flex: 1 1 30%;

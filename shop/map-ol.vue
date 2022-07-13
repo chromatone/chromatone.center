@@ -12,7 +12,7 @@ import { Tile as TileLayer, Vector as VectorLayer } from 'ol/layer';
 import PinchZoom from 'ol/interaction/PinchZoom';
 
 
-import { pitchColor } from '@use/calculations'
+import { pitchColor } from '#use/calculations'
 
 const props = defineProps({
   center: { type: Array, default: [0, 70] },

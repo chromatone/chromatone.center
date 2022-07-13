@@ -8,10 +8,10 @@ const props = defineProps({
   editable: { type: Boolean, default: false }
 });
 import { Interval, Pcset } from '@tonaljs/tonal'
-import { notes } from '@use/theory'
-import { chromaColorMix } from "@use/colors";
-import { chordType, scaleType } from '@use/theory'
-import { playChroma, stopChroma, globalScale } from '@use/chroma'
+import { notes } from '#use/theory'
+import { chromaColorMix } from "#use/colors";
+import { chordType, scaleType } from '#use/theory'
+import { playChroma, stopChroma, globalScale } from '#use/chroma'
 
 const info = reactive({
   chord: computed(() => chordType.get(props.chroma)),

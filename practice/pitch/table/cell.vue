@@ -3,7 +3,7 @@ import CellInfo from './info.vue'
 
 import { context, start } from 'tone'
 import { useSynth } from './synth.js'
-import { notes } from '@use/theory'
+import { notes } from '#use/theory'
 
 
 const props = defineProps({
@@ -102,6 +102,7 @@ const textColor = computed(() => {
   min-width: 2em;
   min-height: 4em;
 }
+
 .cell.active,
 .cell:active {
   @apply opacity-100;

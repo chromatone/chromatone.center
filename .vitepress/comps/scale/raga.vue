@@ -1,7 +1,7 @@
 <script setup>
-import { globalScale } from '@use/chroma'
-import { pitchColor } from '@use/calculations'
-import melakarta from '@db/melakarta.json'
+import { globalScale } from '#use/chroma'
+import { pitchColor } from '#use/calculations'
+import melakarta from '#db/melakarta.json'
 
 let mela = {}
 
@@ -64,6 +64,7 @@ watch(() => state.current, raga => {
 .active {
   @apply border-current rounded-lg;
 }
+
 .selected {
   @apply font-bold underline underline-offset-4 underline-3;
 }

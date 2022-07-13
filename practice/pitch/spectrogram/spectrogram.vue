@@ -1,8 +1,8 @@
 <script setup>
 import AudioMotionAnalyzer from 'audiomotion-analyzer'
-import { initGetUserMedia, master } from '@use/audio'
-import { freqPitch } from '@use/calculations'
-import { useMic } from '@use/mic'
+import { initGetUserMedia, master } from '#use/audio'
+import { freqPitch } from '#use/calculations'
+import { useMic } from '#use/mic'
 import { UserMedia } from 'tone'
 import { onKeyStroke } from '@vueuse/core'
 

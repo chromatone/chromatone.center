@@ -1,7 +1,7 @@
 <script setup>
-import { pitchColor, rotateArray, getCircleCoord } from '@use/calculations'
-import { notes } from '@use/theory'
-import { chromaColorMix } from "@use/colors.js";
+import { pitchColor, rotateArray, getCircleCoord } from '#use/calculations'
+import { notes } from '#use/theory'
+import { chromaColorMix } from "#use/colors.js";
 import { colord } from 'colord'
 const props = defineProps({
   pitch: { type: Number, default: 0 },

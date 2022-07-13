@@ -1,8 +1,10 @@
+import { defineConfig } from 'vitepress'
+
 import { metaData } from "./config/constants.js";
 import head from "./config/head.js";
 import mdLinks from "markdown-it-external-links";
 
-export default {
+export default defineConfig({
   title: metaData.title,
   description: metaData.description,
   lang: metaData.locale,
@@ -35,4 +37,4 @@ export default {
       });
     },
   },
-};
+});

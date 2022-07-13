@@ -28,7 +28,6 @@ export default defineConfig({
         },
       ],
     }),
-    //@ts-ignore
     ViteAliases({
       prefix: '#',
       dir: '.vitepress',
@@ -115,7 +114,6 @@ export default defineConfig({
   optimizeDeps: {
     include: ['vue', '@vueuse/core', 'tone', '@tonaljs/tonal', 'colord'],
   },
-  //@ts-ignore
   ssr: {
     noExternal: ['audiomotion-analyzer', 'fraction.js', 'tone', 'ol', 'cobe', '@gun-vue/composables']
   },

@@ -24,7 +24,7 @@ var isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
     span or 
     .font-normal.text-dark-200.dark_text-light-100 use your PC keyboard
 
-  .flex.items-center.justify-center.flex-col.py-2.m-auto(v-else)
+  .flex.items-center.justify-center.flex-wrap.py-2.m-auto(v-else)
     .flex.m-2
       a.font-normal.p-2.border.border-green-500.text-green-500.select-none.rounded-lg(href="/apps/midi/monitor/") 
         span(v-if="midi.available") MIDI 
@@ -75,7 +75,6 @@ var isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
     midi-filter-channels.mx-2(style="flex: 1 1 100px")
 
     slot.is-group.mx-1.p-1
-  img.mt-4(src="/media/apps/pc-keyboard-3.svg")
 </template>
 
 <style lang="postcss" scoped>

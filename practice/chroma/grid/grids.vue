@@ -17,8 +17,6 @@ const active = useStorage('pitch-bars-active', 0);
 
 <template lang="pug">
 #screen.flex.flex-col.items-center.rounded-4xl.fullscreen-container.p-2
-  state-transport
-    control-scale.m-4
   .flex.flex-wrap.mt-4.w-full.justify-start.px-6
     button.px-2.rounded-t-xl.mx-2px.transition-all.duration-300.ease.flex.items-center(
       v-for="(loop, l) in loops" :key="loop"

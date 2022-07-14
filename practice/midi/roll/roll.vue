@@ -135,8 +135,6 @@ function dragSpeed(drag) {
 
 <template lang="pug">
 .flex.flex-col.items-center.w-full
-  midi-panel
-
   .fullscreen-container.rounded-3xl(ref="screen")
     control-start.absolute( @click="initiate()", v-if="!state.initiated") Start
     full-screen.absolute.bottom-2.right-2(:el="screen")

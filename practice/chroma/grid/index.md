@@ -17,5 +17,8 @@ import pitchGrids from './grids.vue'
 </script>
 
 <client-only >
+  <control-scale />
   <pitch-grids />
+  <state-transport />
+
 </client-only>

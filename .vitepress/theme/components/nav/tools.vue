@@ -62,6 +62,7 @@ button(
   bi-record-circle
 side-panel(v-model:open="open.midi")
   midi-panel
+  img.mt-4(src="/media/apps/pc-keyboard-3.svg")
 side-panel(v-model:open="open.synth")
   synth-panel
 side-panel(v-model:open="open.tempo")

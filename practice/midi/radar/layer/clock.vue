@@ -2,8 +2,12 @@
 import { getCircleCoord } from '#use/calculations'
 import { polarXY, radar } from '../radar.js'
 import { isDark } from '#theme/composables/state'
-
 import paper from 'paper'
+
+const props = defineProps({
+  zoom: { type: Number, default: 4 }
+})
+
 
 const view = paper.view
 
@@ -29,6 +33,24 @@ for (let o = 1; o < 8; o++) {
   ring.strokeColor = '#f002'
   octaves.push(ring)
 }
+
+const bars = reactive([])
+
+watch(() => radar.zoom, zoom => {
+  bars.forEach(bar => bar.remove())
+  for (let i = 0; i <= zoom; i++) {
+    let coord = getCircleCoord(i, zoom, view.size.width, view.size.width)
+    bars[i] = new paper.Path.Line({
+      from: view.center,
+      to: [coord.x, coord.y],
+      strokeColor: isDark.value ? '#eee3' : '#8883',
+      strokeCap: 'round',
+      strokeWidth: 1,
+      pivot: view.center
+    })
+  }
+
+})
 
 watch(isDark, dark => {
   arrow.strokeColor = isDark.value ? '#eee' : '#888'

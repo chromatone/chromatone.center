@@ -7,7 +7,7 @@ cover: geometry.png
 ---
 
 <script setup>
-import midiRadar from './index.vue'
+import midiRadar from './radar.vue'
 </script>
 
 <client-only >

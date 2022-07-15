@@ -20,16 +20,51 @@ const maxPoints = 60;
 const points = [];
 const lines = [];
 
+const prevNote = ref({
+  pitch: 0
+})
+
 watch(
   () => midi.note,
   (note) => {
+
     if (note.type == "noteon" && note.channel == props.channel) {
+
       let coord = polarXY(
         view.center,
         ((note.octA + note.pitch / 12) / 9) * 500,
         radar.angle
       );
       let p = new paper.Point(coord.x, coord.y);
+
+
+      let line = new paper.Path.Line({
+        strokeColor: pitchColor(prevNote.value.pitch),
+        strokeWidth: props.lineWidth,
+        from: points[0]?.position || p,
+        to: p,
+        strokeCap: "round",
+        blendMode: props.blendMode,
+      });
+
+      line
+        .tween(
+          {
+            opacity: props.opacity,
+          },
+          200
+        )
+        .then(() => {
+          line.tween(
+            {
+              opacity: 0,
+              easing: "easeInOutCubic",
+            },
+            8000
+          );
+        });
+
+
       let circ = new paper.Shape.Circle({
         center: p,
         radius: props.size,
@@ -47,32 +82,6 @@ watch(
         )
         .then(() => {
           circ.tween(
-            {
-              opacity: 0,
-              easing: "easeInOutCubic",
-            },
-            8000
-          );
-        });
-
-      let line = new paper.Path.Line({
-        strokeColor: pitchColor(note.pitch),
-        strokeWidth: props.lineWidth,
-        from: points[0]?.position || circ.position,
-        to: circ.position,
-        strokeCap: "round",
-        blendMode: props.blendMode,
-      });
-
-      line
-        .tween(
-          {
-            opacity: props.opacity,
-          },
-          200
-        )
-        .then(() => {
-          line.tween(
             {
               opacity: 0,
               easing: "easeInOutCubic",
@@ -101,7 +110,11 @@ watch(
       }
       points.unshift(circ);
       lines.unshift(line);
+      prevNote.value = note
     }
+
+
+
     if (points.length > maxPoints) {
       for (let i = maxPoints; i <= points.length; i++) {
         if (!points[i] || !points[i].remove) return;
@@ -117,6 +130,8 @@ watch(
       }
       lines.length = maxPoints;
     }
+
+
   }
 );
 

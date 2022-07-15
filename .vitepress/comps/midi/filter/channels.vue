@@ -17,17 +17,14 @@ function filterAll() {
   .font-bold.mr-2 Channel filter
     .channel.filtered.flex.items-center.justify-center(
       @click="filterAll()"
-      ) ALL
+      ) TOGGLE ALL
     button.flex-button(
       v-tooltip.bottom="'Output MIDI channel'"
       )
-      span CH
-      input.ch.ml-2.dark_bg-dark-200(
-        type="number", 
-        inputmode="numeric"
-        pattern="[0-9]*"
-        max="16",min="1",length="12", 
-        v-model="midi.channel")
+      span OUT CH
+      select.bg-transparent.text-xl.font-bold(v-model="midi.channel")
+        option(v-for="n in 16" :key="n" :value="n") {{ n }}
+
   .grid.grid-cols-4
     .channel(
       v-for="ch in 16" :key="ch"
@@ -48,7 +45,7 @@ function filterAll() {
   }
 
   &.active {
-    @apply border-current;
+    @apply border-current filter dark_brightness-300;
   }
 }
 </style>

@@ -4,6 +4,7 @@ import paper from "paper";
 export const radar = reactive({
   angle: 0,
   loaded: false,
+  zoom: 2,
 });
 
 export function useRadar() {
@@ -22,7 +23,7 @@ export function useRadar() {
     () => midi.clock,
     () => {
       if (midi.playing) {
-        radar.angle += 360 / 192 / 2;
+        radar.angle += 360 / 192 / radar.zoom;
       } else {
         radar.angle = 0;
       }

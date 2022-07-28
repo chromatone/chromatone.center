@@ -21,7 +21,7 @@ onMounted(() => {
   watch(zoom, z => {
     for (let x = 0; x < size; x++) {
       for (let y = 0; y < size; y++) {
-        raster.setPixel(x, y, `hsl(0,0%,${(simplex.noise2D((x - size / 2) / z, (y - size / 2) / z) + 1) * 50}%)`)
+        raster.setPixel(x, y, `hsl(0,0%,${(simplex((x - size / 2) / z, (y - size / 2) / z) + 1) * 50}%)`)
       }
     }
   }, { immediate: true })

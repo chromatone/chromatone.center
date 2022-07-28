@@ -1,7 +1,7 @@
 import { useStorage } from '@vueuse/core';
-import SimplexNoise from 'simplex-noise';
+import { createNoise2D } from 'simplex-noise';
 
-export const simplex = new SimplexNoise();
+export const simplex = createNoise2D();
 
 const count = ref(0)
 
@@ -24,7 +24,7 @@ export function useSimplex({ title = 'simplex', size = 10, minSpeed = 0.001, max
 
   const polar = computed(() => polarXY(radius.value, progress.value))
 
-  const random = computed(() => simplex.noise2D(polar.value.x / zoom.value, polar.value.y / zoom.value)
+  const random = computed(() => simplex(polar.value.x / zoom.value, polar.value.y / zoom.value)
   )
 
   tracks[title] = reactive({ polar, radius, speed, random })

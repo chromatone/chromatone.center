@@ -1,12 +1,13 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@gun-vue/composables': ^0.9.4
+  '@gun-vue/composables': ^0.9.0
   '@iconify/json': ^2.1.70
   '@tonaljs/tonal': ^4.6.5
   '@tonejs/midi': ^2.0.28
-  '@vueuse/core': ^8.9.4
+  '@vueuse/core': ^9.0.0
   '@vueuse/gesture': 2.0.0-beta.1
+  '@vueuse/math': ^9.0.0
   abcjs: ^6.0.4
   audio-recorder-polyfill: ^0.4.1
   audiomotion-analyzer: 3.6.0
@@ -25,13 +26,13 @@ specifiers:
   patch-vue-directive-ssr: ^0.0.1
   pug: 3.0.2
   recordrtc: ^5.6.2
-  simplex-noise: ^3.0.1
+  simplex-noise: ^4.0.0
   thousands-counter: ^2.1.1
   tone: ^14.8.40
-  tsup: ^6.1.3
-  unplugin-auto-import: ^0.9.3
+  tsup: ^6.2.0
+  unplugin-auto-import: ^0.10.0
   unplugin-icons: ^0.14.7
-  unplugin-vue-components: ^0.21.1
+  unplugin-vue-components: ^0.21.2
   vite: 2.9.13
   vite-aliases: 0.9.2
   vite-plugin-pages: ^0.25.0
@@ -49,8 +50,9 @@ dependencies:
   '@gun-vue/composables': 0.9.4
   '@tonaljs/tonal': 4.6.5
   '@tonejs/midi': 2.0.28
-  '@vueuse/core': 8.9.4_vue@3.2.37
+  '@vueuse/core': 9.0.0_vue@3.2.37
   '@vueuse/gesture': 2.0.0-beta.1_vue@3.2.37
+  '@vueuse/math': 9.0.0_vue@3.2.37
   abcjs: 6.0.4
   audio-recorder-polyfill: 0.4.1
   audiomotion-analyzer: 3.6.0
@@ -66,7 +68,7 @@ dependencies:
   ol: 6.15.1
   paper: 0.12.15
   recordrtc: 5.6.2
-  simplex-noise: 3.0.1
+  simplex-noise: 4.0.0
   thousands-counter: 2.1.1
   tone: 14.8.40
   vitepress-pages: 0.8.5_vite-plugin-pages@0.25.0
@@ -78,10 +80,10 @@ devDependencies:
   markdown-it-external-links: 0.0.6
   patch-vue-directive-ssr: 0.0.1
   pug: 3.0.2
-  tsup: 6.1.3
-  unplugin-auto-import: 0.9.3_3ymh4p6wipk6mzqfyfgvti5amm
+  tsup: 6.2.0
+  unplugin-auto-import: 0.10.2_fcx5b7v7wmm654udb2ngcqfz7u
   unplugin-icons: 0.14.7_vite@2.9.13
-  unplugin-vue-components: 0.21.1_vite@2.9.13+vue@3.2.37
+  unplugin-vue-components: 0.21.2_vite@2.9.13+vue@3.2.37
   vite: 2.9.13
   vite-aliases: 0.9.2
   vite-plugin-pages: 0.25.0_vite@2.9.13
@@ -1847,6 +1849,9 @@ packages:
   /@types/web-bluetooth/0.0.14:
     resolution: {integrity: sha512-5d2RhCard1nQUC3aHcq/gHzWYO6K0WJmAbjO7mQJgCQKtZpgXxv1rOM6O/dBDhDYYVutk1sciOgNSe+5YyfM8A==}
 
+  /@types/web-bluetooth/0.0.15:
+    resolution: {integrity: sha512-w7hEHXnPMEZ+4nGKl/KDRVpxkwYxYExuHOYXyzIzCDzEZ9ZCGMAewulr9IqJu2LR4N37fcnb1XVeuZ09qgOxhA==}
+
   /@types/webmidi/2.0.6:
     resolution: {integrity: sha512-sfS0A5IryqmBrUpcGPipEPeFdpqmZzP6b6lZFxHKgz5n2Vhzh4yJ5P2TvoDUhDjqJyv0Y25ng0Qodgo2Vu08ug==}
     dev: false
@@ -1990,6 +1995,18 @@ packages:
       '@vueuse/shared': 8.9.4_vue@3.2.37
       vue: 3.2.37
       vue-demi: 0.12.5_vue@3.2.37
+    dev: true
+
+  /@vueuse/core/9.0.0_vue@3.2.37:
+    resolution: {integrity: sha512-hMMc2ajuVknkL7Z39JdP9gFFND2OgnDTSS5mmuinWGAE1Vxy1AwDvTHm3+juyk+GzJjYRAktnBIPy7Fq53iOnw==}
+    dependencies:
+      '@types/web-bluetooth': 0.0.15
+      '@vueuse/metadata': 9.0.0
+      '@vueuse/shared': 9.0.0_vue@3.2.37
+      vue-demi: 0.12.5_vue@3.2.37
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - vue
 
   /@vueuse/gesture/2.0.0-beta.1_vue@3.2.37:
     resolution: {integrity: sha512-HTLibLy3bh6TjRnDAbMAvHSsEmrkRituMj2x+mHwmp1EnM8A8CDRTfNJEr8d/hIairnPPp5Va2KWYVmyP/zvkA==}
@@ -2007,12 +2024,26 @@ packages:
       vue-demi: 0.12.5_vue@3.2.37
     dev: false
 
+  /@vueuse/math/9.0.0_vue@3.2.37:
+    resolution: {integrity: sha512-UqGUt5t4lio5UDZ49SNV0uUg58aIx2R10GvlMEeEGr95/kuEtXNiFNnDXKtiHRwoHYdzbLRIC1dlHay9fD+b7Q==}
+    dependencies:
+      '@vueuse/shared': 9.0.0_vue@3.2.37
+      vue-demi: 0.12.5_vue@3.2.37
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - vue
+    dev: false
+
   /@vueuse/metadata/8.9.0:
     resolution: {integrity: sha512-pjkIbQgJPRUrxK5/iXVKQFGC+OhJ+Vd6fhBsdwgj+NNJEHUotRliYymwdvhnEke/o+kkulT0xMvoK19nyPoiMw==}
     dev: false
 
   /@vueuse/metadata/8.9.4:
     resolution: {integrity: sha512-IwSfzH80bnJMzqhaapqJl9JRIiyQU0zsRGEgnxN6jhq7992cPUJIRfV+JHRIZXjYqbwt07E1gTEp0R0zPJ1aqw==}
+    dev: true
+
+  /@vueuse/metadata/9.0.0:
+    resolution: {integrity: sha512-79YVIsAP1bbWm5GdQuG7jDVF/9uuExzhkO0Sd4/TLuSfzH2uZOrHvGwy+ZNJHjbyRn3uf56rKINWLJdBuTLSqQ==}
 
   /@vueuse/shared/7.6.1_vue@3.2.37:
     resolution: {integrity: sha512-VhURBjuyELYLW94TLqwyM+tUZ0uyWAOjp8zDnJts5wwyHZlGt/yabLbuEl70cKmt0zR9psVyAyHC+LTgRrA1Zw==}
@@ -2057,6 +2088,15 @@ packages:
     dependencies:
       vue: 3.2.37
       vue-demi: 0.12.5_vue@3.2.37
+    dev: true
+
+  /@vueuse/shared/9.0.0_vue@3.2.37:
+    resolution: {integrity: sha512-WRCyr/wIz5e/2gR/+qFucbCUcGMyJKkQZAzlECl3e71ebQQ9X/w3aBWT9FbnogJX+DNZ/t3Pj+TqPbC7TH1Yog==}
+    dependencies:
+      vue-demi: 0.12.5_vue@3.2.37
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - vue
 
   /@windicss/config/1.8.7:
     resolution: {integrity: sha512-8n+/Y36j5L3rw2tgMdLjeGRuNV7VYfKoHoraLK6Bk9OJ1MTPd5vv7pekof/uOPWVV7WWjVeZ6CTO8SDbDDW3iw==}
@@ -2094,6 +2134,12 @@ packages:
 
   /acorn/8.7.1:
     resolution: {integrity: sha512-Xx54uLJQZ19lKygFXOWsscKUbsBZW0CPykPhVQdhIeIwrbPmJzqeASDInc8nKBnp/JT6igTs82qPXz069H8I/A==}
+    engines: {node: '>=0.4.0'}
+    hasBin: true
+    dev: true
+
+  /acorn/8.8.0:
+    resolution: {integrity: sha512-QOxyigPVrpZ2GXT+PFyZTl6TtOFc5egxHIP9IlQ+RbupQuX4RkT/Bee4/kQuC02Xkzg84JcT7oLYtDIQxp+v7w==}
     engines: {node: '>=0.4.0'}
     hasBin: true
     dev: true
@@ -4485,8 +4531,8 @@ packages:
   /safe-buffer/5.2.1:
     resolution: {integrity: sha512-rp3So07KcdmmKbGvgaNxQSJr7bGVSVk5S9Eq1F+ppbRo70+YeaDxkw5Dd8NPN+GD6bjnYm2VuPuCXmpuYvmCXQ==}
 
-  /scule/0.2.1:
-    resolution: {integrity: sha512-M9gnWtn3J0W+UhJOHmBxBTwv8mZCan5i1Himp60t6vvZcor0wr+IM0URKmIglsWJ7bRujNAVVN77fp+uZaWoKg==}
+  /scule/0.3.2:
+    resolution: {integrity: sha512-zIvPdjOH8fv8CgrPT5eqtxHQXmPNnV/vHJYffZhE43KZkvULvpCTvOt1HPlFaCZx287INL9qaqrZg34e8NgI4g==}
     dev: true
 
   /section-matter/1.0.0:
@@ -4589,8 +4635,8 @@ packages:
       is-arrayish: 0.3.2
     dev: false
 
-  /simplex-noise/3.0.1:
-    resolution: {integrity: sha512-eww0SFiWLyOaUKQMJ7gbdvQJvULeJdM/Y4BiC3rrOQnYHo+MSPh465/qeXSZkpTdB9/HthumpnYD3DobZweBBQ==}
+  /simplex-noise/4.0.0:
+    resolution: {integrity: sha512-ciRAxJnRdQhFhZ7+yZKxk8bQJoIq2J2UPO2pbzy1vcrWFq70P4hNCCmcCTkBKDCIeXZVd/yKjL8Fmh8Aeu5+6g==}
     dev: false
 
   /slash/3.0.0:
@@ -4904,8 +4950,8 @@ packages:
     resolution: {integrity: sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==}
     dev: false
 
-  /tsup/6.1.3:
-    resolution: {integrity: sha512-eRpBnbfpDFng+EJNTQ90N7QAf4HAGGC7O3buHIjroKWK7D1ibk9/YnR/3cS8HsMU5T+6Oi+cnF+yU5WmCnB//Q==}
+  /tsup/6.2.0:
+    resolution: {integrity: sha512-PNRQY/eUrtQgPHITOa9qU1Qss2AKHZl9OJFMsQGF+rpcQBMIYh5i0BUh5Gam8C8J0OuNQOGazqBEQHWMFLJKlQ==}
     engines: {node: '>=14'}
     hasBin: true
     peerDependencies:
@@ -4992,8 +5038,8 @@ packages:
       tiny-inflate: 1.0.3
     dev: false
 
-  /unimport/0.4.7_vite@2.9.13:
-    resolution: {integrity: sha512-V2Pbscd1VSdgWm1/OI2pjtydEOTjE7DDnHZKhpOq7bSUBc1i8+1f6PK8jI1lJ1plRDcSNr0DLtAmtU9NPkFQpw==}
+  /unimport/0.6.4_vite@2.9.13:
+    resolution: {integrity: sha512-1cbSeTsC2EwzWeWAyQleajM354y+EYsymxE9p1wDbHKVTEe9XL6+e7vlEv2pj1Zk8YYFf+CBf9QG8My7aDKhag==}
     dependencies:
       '@rollup/pluginutils': 4.2.1
       escape-string-regexp: 5.0.0
@@ -5002,9 +5048,9 @@ packages:
       magic-string: 0.26.2
       mlly: 0.5.5
       pathe: 0.3.2
-      scule: 0.2.1
+      scule: 0.3.2
       strip-literal: 0.4.0
-      unplugin: 0.7.2_vite@2.9.13
+      unplugin: 0.8.0_vite@2.9.13
     transitivePeerDependencies:
       - esbuild
       - rollup
@@ -5024,8 +5070,8 @@ packages:
     engines: {node: '>= 10.0.0'}
     dev: true
 
-  /unplugin-auto-import/0.9.3_3ymh4p6wipk6mzqfyfgvti5amm:
-    resolution: {integrity: sha512-S3fC/kp98v+HhELCCG4jm4fhd/BbXhhcmFxxQ/JHXefLPtz9WTCOsSq3pq7U4D94xJ0eyZOPo/56Y9iUf3kskw==}
+  /unplugin-auto-import/0.10.2_fcx5b7v7wmm654udb2ngcqfz7u:
+    resolution: {integrity: sha512-TtGWSN1GjXlfEuB7ALmQfW8EYIG99fASsChkMBvTqyWgfBebN0/9njoMZJ73c234vqduHJGgtRyveYNSYt8X0g==}
     engines: {node: '>=14'}
     peerDependencies:
       '@vueuse/core': '*'
@@ -5035,11 +5081,11 @@ packages:
     dependencies:
       '@antfu/utils': 0.5.2
       '@rollup/pluginutils': 4.2.1
-      '@vueuse/core': 8.9.4_vue@3.2.37
+      '@vueuse/core': 9.0.0_vue@3.2.37
       local-pkg: 0.4.2
       magic-string: 0.26.2
-      unimport: 0.4.7_vite@2.9.13
-      unplugin: 0.7.2_vite@2.9.13
+      unimport: 0.6.4_vite@2.9.13
+      unplugin: 0.8.0_vite@2.9.13
     transitivePeerDependencies:
       - esbuild
       - rollup
@@ -5079,8 +5125,8 @@ packages:
       - webpack
     dev: true
 
-  /unplugin-vue-components/0.21.1_vite@2.9.13+vue@3.2.37:
-    resolution: {integrity: sha512-8MhIT323q1EUu7rz6NfQeiHqDrZKtygy6s9jzcQAuuZUM2T38SHlPT5YJjBOZmM0Bau6YuNTKfBBX4iHzeusaQ==}
+  /unplugin-vue-components/0.21.2_vite@2.9.13+vue@3.2.37:
+    resolution: {integrity: sha512-HBU+EuesDj/HRs7EtYH7gBACljVhqLylltrCLModRmCToIIrrNvMh54aylUt4AD4qiwylgOx4Vgb9sBlrIcRDw==}
     engines: {node: '>=14'}
     peerDependencies:
       '@babel/parser': ^7.15.8
@@ -5094,11 +5140,11 @@ packages:
       chokidar: 3.5.3
       debug: 4.3.4
       fast-glob: 3.2.11
-      local-pkg: 0.4.1
+      local-pkg: 0.4.2
       magic-string: 0.26.2
       minimatch: 5.1.0
       resolve: 1.22.1
-      unplugin: 0.7.1_vite@2.9.13
+      unplugin: 0.7.2_vite@2.9.13
       vue: 3.2.37
     transitivePeerDependencies:
       - esbuild
@@ -5150,6 +5196,30 @@ packages:
         optional: true
     dependencies:
       acorn: 8.7.1
+      chokidar: 3.5.3
+      vite: 2.9.13
+      webpack-sources: 3.2.3
+      webpack-virtual-modules: 0.4.4
+    dev: true
+
+  /unplugin/0.8.0_vite@2.9.13:
+    resolution: {integrity: sha512-OzOkJ9XOPlD1Cph6qy/p4i/KSUbs76GToXjH/STHpfo6D7y+EqpfAL6G6HaoOw5QLkt9+KWwcxYUmPFkDf1upQ==}
+    peerDependencies:
+      esbuild: '>=0.13'
+      rollup: ^2.50.0
+      vite: ^2.3.0 || ^3.0.0-0
+      webpack: 4 || 5
+    peerDependenciesMeta:
+      esbuild:
+        optional: true
+      rollup:
+        optional: true
+      vite:
+        optional: true
+      webpack:
+        optional: true
+    dependencies:
+      acorn: 8.8.0
       chokidar: 3.5.3
       vite: 2.9.13
       webpack-sources: 3.2.3

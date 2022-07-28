@@ -1,9 +1,8 @@
 import { PolySynth, MonoSynth, start, now, Midi, AutoPanner, Reverb, gainToDb, StereoWidener, PingPongDelay, Compressor, Gain } from 'tone'
 import { midi } from './midi'
-import { useStorage, useCycleList } from '@vueuse/core'
+import { useCycleList } from '@vueuse/core'
 import { onKeyDown } from '@vueuse/core'
 import { createChannel } from './audio'
-import { useClamp } from '@vueuse/core'
 
 
 export const quantizeModes = ['+0', '@8n', '@16n', '@32n']

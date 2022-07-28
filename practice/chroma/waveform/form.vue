@@ -1,7 +1,7 @@
 <script setup>
 import { pitchColor } from '#use/calculations'
 import { notes } from '#use/theory'
-import { useStorage, useTimestamp, useClamp, onKeyStroke } from '@vueuse/core'
+import { useTimestamp, onKeyStroke } from '@vueuse/core'
 import { chromaColorMix } from "#use/colors.js";
 import { useSynth } from '#use/synth.js'
 

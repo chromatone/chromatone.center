@@ -1,7 +1,5 @@
 import { WebMidi, Note } from "webmidi"
-import { useStorage } from "@vueuse/core"
 import { setupKeyboard } from './keyboard'
-import { useClamp } from "@vueuse/core";
 
 export const midi = reactive({
   enabled: false,

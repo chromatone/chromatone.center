@@ -69,5 +69,5 @@ jobs:
           releaseBody: "See the assets to download this version and install on your desktop platform."
           releaseDraft: true
           prerelease: false
-          distPath: ./vitepress/dist
-          iconPath: ./public/media/logo/holologo.png
+          distPath: .vitepress/dist
+          iconPath: .vitepress/dist/media/logo/holologo.png

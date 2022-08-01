@@ -70,4 +70,3 @@ jobs:
           releaseDraft: true
           prerelease: false
           distPath: .vitepress/dist
-          iconPath: .vitepress/dist/media/logo/holologo.png

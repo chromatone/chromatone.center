@@ -5,16 +5,16 @@ specifiers:
   '@iconify/json': ^2.1.70
   '@tonaljs/tonal': ^4.6.5
   '@tonejs/midi': ^2.0.28
-  '@vueuse/core': ^9.0.0
+  '@vueuse/core': ^9.1.0
   '@vueuse/gesture': 2.0.0-beta.1
-  '@vueuse/math': ^9.0.0
+  '@vueuse/math': ^9.1.0
   abcjs: ^6.0.4
   audio-recorder-polyfill: ^0.4.1
   audiomotion-analyzer: 3.6.0
   cobe: ^0.5.0
   colord: ^2.9.2
   drauu: ^0.3.0
-  floating-vue: ^2.0.0-beta.17
+  floating-vue: ^2.0.0-beta.19
   fraction.js: ^4.2.0
   fuse.js: ^6.6.2
   hidpi-canvas: ^1.0.10
@@ -50,9 +50,9 @@ dependencies:
   '@gun-vue/composables': 0.9.4
   '@tonaljs/tonal': 4.6.5
   '@tonejs/midi': 2.0.28
-  '@vueuse/core': 9.0.0_vue@3.2.37
+  '@vueuse/core': 9.1.0_vue@3.2.37
   '@vueuse/gesture': 2.0.0-beta.1_vue@3.2.37
-  '@vueuse/math': 9.0.0_vue@3.2.37
+  '@vueuse/math': 9.1.0_vue@3.2.37
   abcjs: 6.0.4
   audio-recorder-polyfill: 0.4.1
   audiomotion-analyzer: 3.6.0
@@ -81,7 +81,7 @@ devDependencies:
   patch-vue-directive-ssr: 0.0.1
   pug: 3.0.2
   tsup: 6.2.0
-  unplugin-auto-import: 0.10.2_fcx5b7v7wmm654udb2ngcqfz7u
+  unplugin-auto-import: 0.10.2_j5rpt4dhk2yosgjbnda3obaq6u
   unplugin-icons: 0.14.7_vite@2.9.13
   unplugin-vue-components: 0.21.2_vite@2.9.13+vue@3.2.37
   vite: 2.9.13
@@ -1997,12 +1997,12 @@ packages:
       vue-demi: 0.12.5_vue@3.2.37
     dev: true
 
-  /@vueuse/core/9.0.0_vue@3.2.37:
-    resolution: {integrity: sha512-hMMc2ajuVknkL7Z39JdP9gFFND2OgnDTSS5mmuinWGAE1Vxy1AwDvTHm3+juyk+GzJjYRAktnBIPy7Fq53iOnw==}
+  /@vueuse/core/9.1.0_vue@3.2.37:
+    resolution: {integrity: sha512-BIroqvXEqt826aE9r3K5cox1zobuPuAzdYJ36kouC2TVhlXvFKIILgFVWrpp9HZPwB3aLzasmG3K87q7TSyXZg==}
     dependencies:
       '@types/web-bluetooth': 0.0.15
-      '@vueuse/metadata': 9.0.0
-      '@vueuse/shared': 9.0.0_vue@3.2.37
+      '@vueuse/metadata': 9.1.0
+      '@vueuse/shared': 9.1.0_vue@3.2.37
       vue-demi: 0.12.5_vue@3.2.37
     transitivePeerDependencies:
       - '@vue/composition-api'
@@ -2024,10 +2024,10 @@ packages:
       vue-demi: 0.12.5_vue@3.2.37
     dev: false
 
-  /@vueuse/math/9.0.0_vue@3.2.37:
-    resolution: {integrity: sha512-UqGUt5t4lio5UDZ49SNV0uUg58aIx2R10GvlMEeEGr95/kuEtXNiFNnDXKtiHRwoHYdzbLRIC1dlHay9fD+b7Q==}
+  /@vueuse/math/9.1.0_vue@3.2.37:
+    resolution: {integrity: sha512-GoMozWT1UyiSOg5rXAaFOSRxySES/UcIpUY2rpQp+2Y1whnolb7KPUq/2n/sUs65SUCLHYnVgqvbEf0HHPQtPw==}
     dependencies:
-      '@vueuse/shared': 9.0.0_vue@3.2.37
+      '@vueuse/shared': 9.1.0_vue@3.2.37
       vue-demi: 0.12.5_vue@3.2.37
     transitivePeerDependencies:
       - '@vue/composition-api'
@@ -2042,8 +2042,8 @@ packages:
     resolution: {integrity: sha512-IwSfzH80bnJMzqhaapqJl9JRIiyQU0zsRGEgnxN6jhq7992cPUJIRfV+JHRIZXjYqbwt07E1gTEp0R0zPJ1aqw==}
     dev: true
 
-  /@vueuse/metadata/9.0.0:
-    resolution: {integrity: sha512-79YVIsAP1bbWm5GdQuG7jDVF/9uuExzhkO0Sd4/TLuSfzH2uZOrHvGwy+ZNJHjbyRn3uf56rKINWLJdBuTLSqQ==}
+  /@vueuse/metadata/9.1.0:
+    resolution: {integrity: sha512-8OEhlog1iaAGTD3LICZ8oBGQdYeMwByvXetOtAOZCJOzyCRSwqwdggTsmVZZ1rkgYIEqgUBk942AsAPwM21s6A==}
 
   /@vueuse/shared/7.6.1_vue@3.2.37:
     resolution: {integrity: sha512-VhURBjuyELYLW94TLqwyM+tUZ0uyWAOjp8zDnJts5wwyHZlGt/yabLbuEl70cKmt0zR9psVyAyHC+LTgRrA1Zw==}
@@ -2090,8 +2090,8 @@ packages:
       vue-demi: 0.12.5_vue@3.2.37
     dev: true
 
-  /@vueuse/shared/9.0.0_vue@3.2.37:
-    resolution: {integrity: sha512-WRCyr/wIz5e/2gR/+qFucbCUcGMyJKkQZAzlECl3e71ebQQ9X/w3aBWT9FbnogJX+DNZ/t3Pj+TqPbC7TH1Yog==}
+  /@vueuse/shared/9.1.0_vue@3.2.37:
+    resolution: {integrity: sha512-pB/3njQu4tfJJ78ajELNda0yMG6lKfpToQW7Soe09CprF1k3QuyoNi1tBNvo75wBDJWD+LOnr+c4B5HZ39jY/Q==}
     dependencies:
       vue-demi: 0.12.5_vue@3.2.37
     transitivePeerDependencies:
@@ -5070,7 +5070,7 @@ packages:
     engines: {node: '>= 10.0.0'}
     dev: true
 
-  /unplugin-auto-import/0.10.2_fcx5b7v7wmm654udb2ngcqfz7u:
+  /unplugin-auto-import/0.10.2_j5rpt4dhk2yosgjbnda3obaq6u:
     resolution: {integrity: sha512-TtGWSN1GjXlfEuB7ALmQfW8EYIG99fASsChkMBvTqyWgfBebN0/9njoMZJ73c234vqduHJGgtRyveYNSYt8X0g==}
     engines: {node: '>=14'}
     peerDependencies:
@@ -5081,7 +5081,7 @@ packages:
     dependencies:
       '@antfu/utils': 0.5.2
       '@rollup/pluginutils': 4.2.1
-      '@vueuse/core': 9.0.0_vue@3.2.37
+      '@vueuse/core': 9.1.0_vue@3.2.37
       local-pkg: 0.4.2
       magic-string: 0.26.2
       unimport: 0.6.4_vite@2.9.13

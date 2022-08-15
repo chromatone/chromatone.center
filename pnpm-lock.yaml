@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@gun-vue/composables': ^0.9.0
+  '@gun-vue/composables': ^0.11.5
   '@iconify/json': ^2.1.93
   '@tonaljs/tonal': ^4.6.5
   '@tonejs/midi': ^2.0.28
@@ -47,7 +47,7 @@ specifiers:
   windicss: 3.5.6
 
 dependencies:
-  '@gun-vue/composables': 0.9.4
+  '@gun-vue/composables': 0.11.5
   '@tonaljs/tonal': 4.6.5
   '@tonejs/midi': 2.0.28
   '@vueuse/core': 9.1.0_vue@3.2.37
@@ -1410,10 +1410,12 @@ packages:
       '@floating-ui/core': 0.3.1
     dev: false
 
-  /@gun-vue/composables/0.9.4:
-    resolution: {integrity: sha512-zW+yRQDcBldGj1UZNKEmvFGtc+QbGb3Qqe5kvl5iAx7VDAQkYkZOzyrqnN3SipePMy4Fd4X6w6l14RPqE0Fz7Q==}
+  /@gun-vue/composables/0.11.5:
+    resolution: {integrity: sha512-DebDxDt7f/n4DkvK0QJyID+1s3nsem1H+OjZ136bdVm8tISjdipUpuKXty0hF7zUbenmOrPCOb0sTAEP+oPK0Q==}
     dependencies:
-      '@vueuse/core': 8.9.0_vue@3.2.37
+      '@vueuse/core': 9.1.0_vue@3.2.37
+      '@vueuse/integrations': 9.1.0_wbtz6wsj2mykkqvfpofcsavjum
+      '@vueuse/math': 9.1.0_vue@3.2.37
       base32: 0.0.6
       buffer: 6.0.3
       color-hash: 2.0.1
@@ -1421,10 +1423,10 @@ packages:
       drauu: 0.3.0
       fuse.js: 6.6.2
       grapheme-breaker-mjs: 1.0.4
-      gun: 0.2020.1237
+      gun: 0.2020.1238
       gun-avatar: 1.6.2
-      gun-util: 0.0.17_gun@0.2020.1237
-      jszip: 3.10.0
+      gun-util: 0.0.18_gun@0.2020.1238
+      jszip: 3.10.1
       markdown-it: 13.0.1
       markdown-it-external-links: 0.0.6
       ms: 2.1.3
@@ -1434,7 +1436,15 @@ packages:
       yaml: 2.1.1
     transitivePeerDependencies:
       - '@vue/composition-api'
+      - async-validator
+      - axios
       - bufferutil
+      - change-case
+      - focus-trap
+      - jwt-decode
+      - nprogress
+      - qrcode
+      - universal-cookie
       - utf-8-validate
     dev: false
 
@@ -1857,6 +1867,7 @@ packages:
 
   /@types/web-bluetooth/0.0.14:
     resolution: {integrity: sha512-5d2RhCard1nQUC3aHcq/gHzWYO6K0WJmAbjO7mQJgCQKtZpgXxv1rOM6O/dBDhDYYVutk1sciOgNSe+5YyfM8A==}
+    dev: true
 
   /@types/web-bluetooth/0.0.15:
     resolution: {integrity: sha512-w7hEHXnPMEZ+4nGKl/KDRVpxkwYxYExuHOYXyzIzCDzEZ9ZCGMAewulr9IqJu2LR4N37fcnb1XVeuZ09qgOxhA==}
@@ -1970,24 +1981,6 @@ packages:
       vue-demi: 0.12.5_vue@3.2.37
     dev: false
 
-  /@vueuse/core/8.9.0_vue@3.2.37:
-    resolution: {integrity: sha512-eKWehF6gsiLYxnYM/1xgDu16bKED7AWvkk56JIFNQes8OKgktr3Jc1wUy8UWIulrnwCXICUu9YUo+Wkq4r2JNw==}
-    peerDependencies:
-      '@vue/composition-api': ^1.1.0
-      vue: ^2.6.0 || ^3.2.0
-    peerDependenciesMeta:
-      '@vue/composition-api':
-        optional: true
-      vue:
-        optional: true
-    dependencies:
-      '@types/web-bluetooth': 0.0.14
-      '@vueuse/metadata': 8.9.0
-      '@vueuse/shared': 8.9.0_vue@3.2.37
-      vue: 3.2.37
-      vue-demi: 0.12.5_vue@3.2.37
-    dev: false
-
   /@vueuse/core/8.9.4_vue@3.2.37:
     resolution: {integrity: sha512-B/Mdj9TK1peFyWaPof+Zf/mP9XuGAngaJZBwPaXBvU3aCTZlx3ltlrFFFyMV4iGBwsjSCeUCgZrtkEj9dS2Y3Q==}
     peerDependencies:
@@ -2033,6 +2026,51 @@ packages:
       vue-demi: 0.12.5_vue@3.2.37
     dev: false
 
+  /@vueuse/integrations/9.1.0_wbtz6wsj2mykkqvfpofcsavjum:
+    resolution: {integrity: sha512-HCVlm/aNllOKLYP4cx/rFFGz4q+QlgkF6N5tS7GRYVk/HGPxKqkUBX865niRfZfo+INvqtgTmpp9o+pYXaZlDg==}
+    peerDependencies:
+      async-validator: '*'
+      axios: '*'
+      change-case: '*'
+      drauu: '*'
+      focus-trap: '*'
+      fuse.js: '*'
+      jwt-decode: '*'
+      nprogress: '*'
+      qrcode: '*'
+      universal-cookie: '*'
+    peerDependenciesMeta:
+      async-validator:
+        optional: true
+      axios:
+        optional: true
+      change-case:
+        optional: true
+      drauu:
+        optional: true
+      focus-trap:
+        optional: true
+      fuse.js:
+        optional: true
+      jwt-decode:
+        optional: true
+      nprogress:
+        optional: true
+      qrcode:
+        optional: true
+      universal-cookie:
+        optional: true
+    dependencies:
+      '@vueuse/core': 9.1.0_vue@3.2.37
+      '@vueuse/shared': 9.1.0_vue@3.2.37
+      drauu: 0.3.0
+      fuse.js: 6.6.2
+      vue-demi: 0.12.5_vue@3.2.37
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - vue
+    dev: false
+
   /@vueuse/math/9.1.0_vue@3.2.37:
     resolution: {integrity: sha512-GoMozWT1UyiSOg5rXAaFOSRxySES/UcIpUY2rpQp+2Y1whnolb7KPUq/2n/sUs65SUCLHYnVgqvbEf0HHPQtPw==}
     dependencies:
@@ -2041,10 +2079,6 @@ packages:
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
-    dev: false
-
-  /@vueuse/metadata/8.9.0:
-    resolution: {integrity: sha512-pjkIbQgJPRUrxK5/iXVKQFGC+OhJ+Vd6fhBsdwgj+NNJEHUotRliYymwdvhnEke/o+kkulT0xMvoK19nyPoiMw==}
     dev: false
 
   /@vueuse/metadata/8.9.4:
@@ -2056,21 +2090,6 @@ packages:
 
   /@vueuse/shared/7.6.1_vue@3.2.37:
     resolution: {integrity: sha512-VhURBjuyELYLW94TLqwyM+tUZ0uyWAOjp8zDnJts5wwyHZlGt/yabLbuEl70cKmt0zR9psVyAyHC+LTgRrA1Zw==}
-    peerDependencies:
-      '@vue/composition-api': ^1.1.0
-      vue: ^2.6.0 || ^3.2.0
-    peerDependenciesMeta:
-      '@vue/composition-api':
-        optional: true
-      vue:
-        optional: true
-    dependencies:
-      vue: 3.2.37
-      vue-demi: 0.12.5_vue@3.2.37
-    dev: false
-
-  /@vueuse/shared/8.9.0_vue@3.2.37:
-    resolution: {integrity: sha512-Pmu3Fopk/JJjN8b90uQuFrVCc/RPcSA/0zDFRTyn3YIhoB5ESna/1Sac5WZxK+n82g/ERXHHQTetGI9yxEdPfA==}
     peerDependencies:
       '@vue/composition-api': ^1.1.0
       vue: ^2.6.0 || ^3.2.0
@@ -2152,11 +2171,6 @@ packages:
     engines: {node: '>=0.4.0'}
     hasBin: true
     dev: true
-
-  /addressparser/0.3.2:
-    resolution: {integrity: sha512-fDlslCJpojuY1cnb7tY7COAriA7cdSzDiWyrWNdFn7Cjd+jrEgZavqkOgD/wg+eH765YPnQjqlS88OL/Q0Qtkg==}
-    dev: false
-    optional: true
 
   /ajv/8.11.0:
     resolution: {integrity: sha512-wGgprdCvMalC0BztXvitD2hC04YffAvtsUn93JbGXYLAtCUO4xd17mCCZQxUOItiBwZvJScWo8NIvQMQ71rdpg==}
@@ -2737,29 +2751,6 @@ packages:
   /electron-to-chromium/1.4.174:
     resolution: {integrity: sha512-JER+w+9MV2MBVFOXxP036bLlNOnzbYAWrWU8sNUwoOO69T3w4564WhM5H5atd8VVS8U4vpi0i0kdoYzm1NPQgQ==}
     dev: true
-
-  /emailjs-base64/1.1.4:
-    resolution: {integrity: sha512-4h0xp1jgVTnIQBHxSJWXWanNnmuc5o+k4aHEpcLXSToN8asjB5qbXAexs7+PEsUKcEyBteNYsSvXUndYT2CGGA==}
-    dev: false
-    optional: true
-
-  /emailjs-mime-codec/2.0.9:
-    resolution: {integrity: sha512-7qJo4pFGcKlWh/kCeNjmcgj34YoJWY0ekZXEHYtluWg4MVBnXqGM4CRMtZQkfYwitOhUgaKN5EQktJddi/YIDQ==}
-    dependencies:
-      emailjs-base64: 1.1.4
-      ramda: 0.26.1
-      text-encoding: 0.7.0
-    dev: false
-    optional: true
-
-  /emailjs/2.2.0:
-    resolution: {integrity: sha512-J9HNx13GA5DnJma10YxsSqYCErTyB0KoVflTddPTyKlEVHM0MckZXn/zDqovdacwWkHCxqC9AKVY8GMPaGvaGQ==}
-    requiresBuild: true
-    dependencies:
-      addressparser: 0.3.2
-      emailjs-mime-codec: 2.0.9
-    dev: false
-    optional: true
 
   /end-of-stream/1.4.4:
     resolution: {integrity: sha512-+uw1inIHVPQoaVuHzRyXd21icM+cnt4CzD5rW+NC1wjOUSTOs+Te7FOv7AhN7vS9x/oIyhLP5PR1H+phQAHu5Q==}
@@ -3515,7 +3506,7 @@ packages:
     resolution: {integrity: sha512-GwMg6/7LoGWFbrMjmgnPaRrZnjqjo4D1Mz9NcELwz/lvJckdKWeBOmyJxeZsURndPDxrMiDy7FE9lFPMuhEd/Q==}
     dependencies:
       '@vueuse/core': 7.6.1_vue@3.2.37
-      gun: 0.2020.1237
+      gun: 0.2020.1238
       vue: 3.2.37
     transitivePeerDependencies:
       - '@vue/composition-api'
@@ -3523,25 +3514,24 @@ packages:
       - utf-8-validate
     dev: false
 
-  /gun-util/0.0.17_gun@0.2020.1237:
-    resolution: {integrity: sha512-RG851+Lh+Ju+Wigir0h5Az/3tsNRSAvvCeIvRrvXvWv8vjfWDogNKxE86pWseMRe8ovl/zlVbO6BnsDLCB1HeQ==}
+  /gun-util/0.0.18_gun@0.2020.1238:
+    resolution: {integrity: sha512-vHjt5U0uzSgCLMuZ+GN81hqO0H3oI5cbKgkN76lJoSVaXwFr/45SRBU3Fmk2DWg2tPjtwh1vO2Bhd+eTz7e/jQ==}
     peerDependencies:
       gun: '>=0.2019.930'
     dependencies:
       '@types/lodash': 4.14.182
-      gun: 0.2020.1237
+      gun: 0.2020.1238
       lodash: 4.17.21
       moment: 2.29.3
     dev: false
 
-  /gun/0.2020.1237:
-    resolution: {integrity: sha512-5WiAMqbLzKfYy/45AVGNrI0OiU7hG5z2hdMeRBMDYXGHzkOUDvbrOnO6qaEqmvCwlwzHJaIilKS51KvMyxhDTQ==}
+  /gun/0.2020.1238:
+    resolution: {integrity: sha512-8rKaAN74o3RTc2/a3CZca3Rx6rWnYpB1nS7mCtWH+LC7wvt2tzPR1yfRCq61haoR/Vtbl45qdq8iyoz9lAY8mg==}
     engines: {node: '>=0.8.4'}
     dependencies:
       ws: 7.5.8
     optionalDependencies:
       '@peculiar/webcrypto': 1.4.0
-      emailjs: 2.2.0
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
@@ -3915,8 +3905,8 @@ packages:
       promise: 7.3.1
     dev: true
 
-  /jszip/3.10.0:
-    resolution: {integrity: sha512-LDfVtOLtOxb9RXkYOwPyNBTQDL4eUbqahtoY6x07GiDJHwSYvn8sHHIw8wINImV3MqbMNve2gSuM1DDqEKk09Q==}
+  /jszip/3.10.1:
+    resolution: {integrity: sha512-xXDvecyTpGLrqFrvkrUSoxxfJI5AH7U8zxxtVclpsUtMCq4JQ290LY8AW5c7Ggnr/Y/oK+bQMbqK2qmtk3pN4g==}
     dependencies:
       lie: 3.3.0
       pako: 1.0.11
@@ -4570,11 +4560,6 @@ packages:
     resolution: {integrity: sha512-RKJ22hX8mHe3Y6wH/N3wCM6BWtjaxIyyUIkpHOvfFnxdI4yD4tBXEBKSbriGujF6jnSVkJrffuo6vxACiSSxIw==}
     dev: false
 
-  /ramda/0.26.1:
-    resolution: {integrity: sha512-hLWjpy7EnsDBb0p+Z3B7rPi3GDeRG5ZtiI33kJhTt+ORCd38AbAIjB/9zRIUoeTbE/AVX5ZkU7m6bznsvrf8eQ==}
-    dev: false
-    optional: true
-
   /randombytes/2.1.0:
     resolution: {integrity: sha512-vYl3iOX+4CKUWuxGi9Ukhie6fsqXqS9FE2Zaic4tNFD2N2QQaXOMFbuKK4QmDHC0JO6B1Zp41J0LpT0oR68amQ==}
     dependencies:
@@ -5095,12 +5080,6 @@ packages:
       commander: 2.20.3
       source-map-support: 0.5.21
     dev: true
-
-  /text-encoding/0.7.0:
-    resolution: {integrity: sha512-oJQ3f1hrOnbRLOcwKz0Liq2IcrvDeZRHXhd9RgLrsT+DjWY/nty1Hi7v3dtkaEYbPYe0mUoOfzRrMwfXXwgPUA==}
-    deprecated: no longer maintained
-    dev: false
-    optional: true
 
   /thenify-all/1.6.0:
     resolution: {integrity: sha512-RNxQH/qI8/t3thXJDwcstUO4zeqo64+Uy/+sNVRBx4Xn2OX+OZ9oP+iJnNFqplFra2ZUVeKCSa2oVWi3T4uVmA==}

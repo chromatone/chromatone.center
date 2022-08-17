@@ -6,6 +6,7 @@ import WindiCSS from 'vite-plugin-windicss'
 import { ViteAliases } from 'vite-aliases'
 import AutoImport from 'unplugin-auto-import/vite'
 import { VitePWA } from 'vite-plugin-pwa'
+import { resolve } from 'path'
 
 import Pages from "vite-plugin-pages";
 import { extendRoutes } from "vitepress-pages";
@@ -119,8 +120,16 @@ export default defineConfig({
     noExternal: ['audiomotion-analyzer', 'fraction.js', 'tone', 'ol', 'cobe', '@gun-vue/composables']
   },
   build: {
+    outDir: "lib",
+    lib: {
+      entry: resolve(__dirname, '.vitepress/use/index.js'),
+      name: 'chromatone.center',
+      fileName: 'chromatone-center',
+      formats: ["es"],
+    },
     chunkSizeWarningLimit: 100000,
     rollupOptions: {
+      external: ['vue'],
       output: {
         manualChunks: {
           tone: ['tone']

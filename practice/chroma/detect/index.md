@@ -12,3 +12,7 @@ import chromaDetect from './detect.vue'
 <client-only>
   <chroma-detect />
 </client-only>
+
+---
+
+See more at [see.chromatone.center](https://see.chromatone.center/)

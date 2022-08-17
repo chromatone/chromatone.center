@@ -49,6 +49,8 @@ dist
 wiki/
 .vitepress/.temp
 
+lib
+
 # vscode
 .vscode/
 

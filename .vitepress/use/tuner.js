@@ -50,6 +50,7 @@ export const tuner = reactive({
   prevBeat: 0,
   blink: false,
   chroma: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  chromaAvg: computed(() => tuner.chroma.reduce((a, b) => a + b, 0) / 12),
   spec: [],
   rms: 0,
 });

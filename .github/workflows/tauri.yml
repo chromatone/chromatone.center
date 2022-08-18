@@ -1,4 +1,4 @@
-name: Release Pages
+name: Release Pages GH
 on:
   push:
     branches:

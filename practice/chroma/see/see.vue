@@ -20,10 +20,15 @@ useDrag(e => {
 }, {
   domTarget: stage
 })
+
+function getAmmount(ammount) {
+  return ammount > tuner.chromaAvg ? tuner.note.silent ? 0 : ammount : 0
+}
+
 </script>
 
 <template lang="pug">
-.fullscreen-container.rounded-4xl {{ tuner.chromaAvg }}
+.fullscreen-container.rounded-4xl
   control-start.absolute(v-if="!tuner.initiated" @click="init()") Start
   full-screen.absolute.bottom-6.right-6.z-30
   svg.max-h-3xl.w-full#screen.cursor-pointer(
@@ -40,12 +45,12 @@ useDrag(e => {
         feGaussianBlur(in="SourceGraphic" :stdDeviation="blur * 4")
     g    
       circle.note(
-        style="transition: all 300ms ease-in-out;transform-box: fill-box; transform-origin: center center;"
+        style="transition: all 500ms ease-in-out;transform-box: fill-box; transform-origin: center center;"
         :cx="50",
         :cy="50",
         :r="10",
         :style="{ transform: `scale(${0.5 + 20 * tuner.rms})` }"
-        :fill="tuner.note.silent ? '#888' : tuner?.note.color",
+        :fill="tuner.note.silent ? '#555' : tuner?.note.color",
         filter="url(#blur-more)"
       )
       text(
@@ -57,26 +62,28 @@ useDrag(e => {
         dominant-baseline="middle"
         :x="50",
         :y="50",
+        :opacity="tuner.note.silent ? 0 : 1"
         ) {{ tuner.note.name }} 
       g.around(
         style="cursor:pointer"
-        v-for="(amount, i) in rotateArray(tuner.chroma, -3)", 
+        v-for="(ammount, i) in rotateArray(tuner.chroma, -3)", 
         :key="i",
         :transform="`translate(${getCircleCoord(i).x},${getCircleCoord(i).y})`"
       )
         circle.note(
-          style="transition: all 300ms ease-in-out;transform-box: fill-box; transform-origin: center center;"
+          style="transition: all 400ms ease-in-out;transform-box: fill-box; transform-origin: center center;"
           :r="radius",
-          :style="{ transform: `scale(${0.5 + 10 * amount})` }"
-          :fill="pitchColor(i, 3, amount)",
+          :style="{ transform: `scale(${0.5 + 10 * getAmmount(ammount)})` }"
+          :fill="pitchColor(i, 3, getAmmount(ammount))",
           filter="url(#blur)"
         )
         text(
-          style="user-select:none;transition:all 300ms ease"
+          style="user-select:none;transition:all 500ms ease"
           :fill="notes[i].length == 2 ? 'hsla(0,0%,0%,0.8)' : 'hsla(0,0%,100%,0.9)'"
           font-family="Commissioner, sans-serif"
           font-size="3px"
           text-anchor="middle",
           dominant-baseline="middle"
+          :opacity="getAmmount(ammount)"
         ) {{ notes[i] }} 
 </template>

@@ -31,7 +31,7 @@ function getAmmount(ammount) {
 .fullscreen-container.rounded-4xl
   control-start.absolute(v-if="!tuner.initiated" @click="init()") Start
   full-screen.absolute.bottom-6.right-6.z-30
-  svg.max-h-3xl.w-full#screen.cursor-pointer(
+  svg.max-h-100vh.w-full#screen.cursor-pointer.touch-none(
     version="1.1",
     baseProfile="full",
     viewBox="0 0 100 100",

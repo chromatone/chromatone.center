@@ -1,8 +1,8 @@
 name: Release Pages
 on:
   push:
-    tags:
-      - "app-v*"
+    branches:
+      - "gh-pages"
   workflow_dispatch:
 
 jobs:
@@ -15,6 +15,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+        with:
+          path: tauri
 
       - name: Node.js setup
         uses: actions/setup-node@v1
@@ -32,10 +34,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tagName: "App v.__VERSION__" # tauri-action replaces \_\_VERSION\_\_ with the app version
+          tagName: "App v.__VERSION__"
           releaseName: "app v.__VERSION__"
           releaseBody: "See the assets to download this version and install on your desktop platform."
           releaseDraft: true
           prerelease: false
-          distPath: ../
+          distPath: ../tauri
           bundleIdentifier: center.chromatone.app

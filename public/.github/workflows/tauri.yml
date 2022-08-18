@@ -1,0 +1,41 @@
+name: Release
+on:
+  push:
+    branches:
+      - "gh-pages"
+  workflow_dispatch:
+
+jobs:
+  release:
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: [macos-latest, ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.platform }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Node.js setup
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16
+
+      - name: Rust setup
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+
+      - name: Build the app
+        uses: tauri-apps/tauri-action@v0
+
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tagName: "App v.__VERSION__" # tauri-action replaces \_\_VERSION\_\_ with the app version
+          releaseName: "app v.__VERSION__"
+          releaseBody: "See the assets to download this version and install on your desktop platform."
+          releaseDraft: true
+          prerelease: false
+          distPath: ../
+          bundleIdentifier: center.chromatone.app

@@ -1,8 +1,8 @@
 name: Release Pages
 on:
   push:
-    branches:
-      - "gh-pages"
+    tags:
+      - "app-v*"
   workflow_dispatch:
 
 jobs:

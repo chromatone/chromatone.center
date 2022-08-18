@@ -70,3 +70,4 @@ jobs:
           releaseDraft: true
           prerelease: false
           distPath: .vitepress/dist
+          bundleIdentifier: center.chromatone.app

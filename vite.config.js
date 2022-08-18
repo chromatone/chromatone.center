@@ -116,7 +116,7 @@ export default defineConfig({
     include: ['vue', '@vueuse/core', 'tone', '@tonaljs/tonal', 'colord'],
   },
   ssr: {
-    noExternal: ['audiomotion-analyzer', 'fraction.js', 'tone', 'ol', 'cobe', '@gun-vue/composables']
+    noExternal: ['audiomotion-analyzer', 'fraction.js', 'tone', 'ol', 'cobe', '@gun-vue/composables', 'drauu', '@tonejs/midi', 'midi-writer-js']
   },
   build: {
     chunkSizeWarningLimit: 100000,

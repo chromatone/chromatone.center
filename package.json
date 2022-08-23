@@ -14,12 +14,12 @@
 	"author": "Davay42",
 	"exports": {
 		".": {
-			"import": "./lib/chromatone-center.es.js",
-			"browser": "./lib/chromatone-center.es.js"
+			"import": "./lib/chromatone-center.mjs",
+			"browser": "./lib/chromatone-center.mjs"
 		}
 	},
-	"main": "./lib/chromatone-center.es.js",
-	"module": "./lib/chromatone-center.es.js",
+	"main": "./lib/chromatone-center.mjs",
+	"module": "./lib/chromatone-center.mjs",
 	"files": [
 		"lib"
 	],

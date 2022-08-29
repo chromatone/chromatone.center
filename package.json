@@ -60,7 +60,7 @@
 		"webmidi": "^3.0.21"
 	},
 	"devDependencies": {
-		"@iconify/json": "^2.1.99",
+		"@iconify/json": "^2.1.100",
 		"markdown-it-external-links": "^0.0.6",
 		"patch-vue-directive-ssr": "^0.0.1",
 		"pug": "3.0.2",

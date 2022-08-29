@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@gun-vue/composables': ^0.11.5
-  '@iconify/json': ^2.1.99
+  '@iconify/json': ^2.1.100
   '@tonaljs/tonal': ^4.6.5
   '@tonejs/midi': ^2.0.28
   '@vueuse/core': ^9.1.1
@@ -74,7 +74,7 @@ dependencies:
   webmidi: 3.0.21
 
 devDependencies:
-  '@iconify/json': 2.1.99
+  '@iconify/json': 2.1.100
   markdown-it-external-links: 0.0.6
   patch-vue-directive-ssr: 0.0.1
   pug: 3.0.2
@@ -1456,8 +1456,8 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@iconify/json/2.1.99:
-    resolution: {integrity: sha512-A3kvTZmF5cy3xVF3HhItNFwHN7vY27kzcqBXy53bZwuXmXUstevddoqOQi4/01/OGVFFe9sPowclSWUXX+dErg==}
+  /@iconify/json/2.1.100:
+    resolution: {integrity: sha512-ztPJgsoqJQ2T216O0Wl94YmK085kLWeu25SekkwZaaTVZ5XaByER/h84AWGaKz7sBnnvdWJ+8ExAGyBGdr44bg==}
     dependencies:
       '@iconify/types': 1.1.0
       pathe: 0.3.4

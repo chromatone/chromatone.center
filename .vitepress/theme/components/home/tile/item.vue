@@ -19,14 +19,15 @@ const color = computed(() => lchToHsl(props.i, props.total));
   :style="{ borderColor: lchToHsl(i, total) }",
 )
   // img.cover(:src="'/media/' + item.data.cover")
-  a.flex.flex-col.p-2(
+  a.flex.flex-col.p-2.no-underline(
     :href="item.path", 
-
     )
-    .text-3xl.mb-4.font-bold {{ item.title }}
+    .text-5xl.mb-4(
+      :style="{ color: lchToHsl(i, total) }"
+    ) {{ item.title }}
     .font-normal {{ item.subtitle }}
   .flex.flex-wrap.py-2
-    a.cursor-pointer.m-2.shadow-md.rounded-xl.border-4(
+    a.cursor-pointer.m-2.shadow-md.rounded-xl.border-4.no-underline(
       :style="{ borderColor: lchToHsl(p, pages[item.path].length) }",
       :href="page.path",
       v-for="(page, p) in pages[item.path]" :key="page.path"

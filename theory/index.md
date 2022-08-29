@@ -5,7 +5,7 @@ cover: tonnetz.svg
 date: 2021-10-30
 ---
 
-This is the main music theory research hub for establishing the Chromatone interpretation of some basic and also quite profound concepts. 
+This is the main research hub for establishing the Chromatone interpretation of basic and profound music theory concepts. 
 
 We start from the very beginning - the physical world around us and the ways we can perceive and interpret it. What is [Light and Color](./color/index.md) and how do we see it? What is [Sound](./sound/index.md) and how do we hear it? This gives us the firm foundation for building more and more intricate structures on top of it.
 

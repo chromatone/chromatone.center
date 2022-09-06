@@ -11,9 +11,9 @@ import midiRoll from './roll.vue'
 </script>
 
 <client-only >
-  <midi-panel style="margin-bottom: 2em;" />
-  <midi-roll />
 
+  <midi-roll />
+  <midi-panel style="margin-top: 2em;" />
 </client-only>
 
 

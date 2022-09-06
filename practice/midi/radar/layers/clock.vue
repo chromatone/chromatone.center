@@ -35,15 +35,26 @@ for (let o = 1; o < 8; o++) {
 }
 
 const bars = reactive([])
+const middles = reactive([])
 
 watch(() => radar.zoom, zoom => {
   bars.forEach(bar => bar.remove())
+  middles.forEach(bar => bar.remove())
   for (let i = 0; i <= zoom; i++) {
     let coord = getCircleCoord(i, zoom, view.size.width, view.size.width)
+    let coordHalf = getCircleCoord(i + 0.5, zoom, view.size.width, view.size.width)
+    middles[i] = new paper.Path.Line({
+      from: view.center,
+      to: [coordHalf.x, coordHalf.y],
+      strokeColor: isDark.value ? '#eee1' : '#8881',
+      strokeCap: 'round',
+      strokeWidth: 1,
+      pivot: view.center
+    })
     bars[i] = new paper.Path.Line({
       from: view.center,
       to: [coord.x, coord.y],
-      strokeColor: isDark.value ? '#eee3' : '#8883',
+      strokeColor: isDark.value ? '#eee6' : '#8886',
       strokeCap: 'round',
       strokeWidth: 1,
       pivot: view.center

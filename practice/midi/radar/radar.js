@@ -1,4 +1,5 @@
 import { midi } from "#use/midi";
+import { tempo } from '#use/tempo'
 import paper from "paper";
 
 export const radar = reactive({
@@ -15,17 +16,28 @@ export function useRadar() {
     paper.view.draw();
     radar.loaded = true;
   });
+
   onBeforeUnmount(() => {
     paper.project.clear();
     radar.loaded = false;
   });
+
+  watch(() => tempo.ticks, t => {
+    if (!midi.playing) {
+      radar.angle = (t / (192 * 4)) * (360 / radar.zoom);
+    }
+  })
+
   watch(
     () => midi.clock,
-    () => {
+    (t) => {
       if (midi.playing) {
         radar.angle += 360 / 192 / radar.zoom;
       } else {
-        radar.angle = 0;
+        if (!tempo.playing) {
+          radar.angle = 0;
+        }
+
       }
     }
   );

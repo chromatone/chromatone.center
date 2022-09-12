@@ -15,7 +15,7 @@ import PinchZoom from 'ol/interaction/PinchZoom';
 import { pitchColor } from '#use/calculations'
 
 const props = defineProps({
-  center: { type: Array, default: [0, 70] },
+  center: { type: Array, default: [7.89, 98.30] },
   cities: { type: Array, default: [] }
 })
 
@@ -90,4 +90,5 @@ onMounted(() => {
 </template>
 
 <style lang="postcss" scoped>
+
 </style>

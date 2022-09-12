@@ -4,8 +4,7 @@ subtitle: Uv printed transparent vinyl stickers for a guitar, ukulele, regulat k
 
 product:
   price: $18
-  link2: https://ko-fi.com/s/e5f5c23a30
-  link: https://airtable.com/shrm1flZTa0s9LFd6
+  link: https://ko-fi.com/s/e5f5c23a30
 cover: main.jpeg
 date: 2022-01-01
 ---

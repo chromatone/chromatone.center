@@ -3,8 +3,7 @@ title: Guitar fretboard stickers
 subtitle: A set of 21 narrow strip stickers to be put under the strings
 product:
   price: $10
-  link2: https://ko-fi.com/s/fec06a7b2d
-  link: https://airtable.com/shrm1flZTa0s9LFd6
+  link: https://ko-fi.com/s/fec06a7b2d
 cover: close.jpg
 date: 2021-09-06
 ---

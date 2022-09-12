@@ -4,8 +4,7 @@ subtitle: UV printed precut stickers on an A5 sheet of high quality transparent 
 
 product:
   price: $18
-  link2: https://ko-fi.com/s/1f0f4da547
-  link: https://airtable.com/shrm1flZTa0s9LFd6
+  link: https://ko-fi.com/s/1f0f4da547
 cover: main.jpeg
 date: 2021-09-01
 ---

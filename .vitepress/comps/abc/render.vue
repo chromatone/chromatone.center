@@ -27,7 +27,7 @@ onMounted(() => {
         responsive: props.responsive ? 'resize' : null,
         scale: 3,
         add_classes: true,
-        paddingbottom: -10,
+        paddingbottom: 10,
         paddingtop: 0,
         staffwidth: 300,
         clickListener,
@@ -38,15 +38,27 @@ onMounted(() => {
 });
 
 function clickListener(elem, tune, classes, analysis, drag) {
-  console.log(elem)
+  // console.log({ elem, analysis })
+  console.log(analysis?.clickedName, analysis)
 }
 </script>
 
 <template lang="pug">
-.flex.flex-col.items-center
+.flex.flex-col.items-center.b1
   .render(:id="id") {{ abc }}
   svg-save(:svg="id" v-if="save")
 </template>
  
 <style lang="postcss" scoped>
+.render {
+  @apply pb-4;
+}
+
+@for $i from 1 to 3 {
+  .b$1 {
+    width: $(
+      i)px;
+  }
+}
 </style>
+

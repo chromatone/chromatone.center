@@ -105,16 +105,6 @@ function useDrag(channel) {
         fill="white"
       ) G
       color-svg-info(transform="scale(0.7) translate(21,12)" :color="mix.rgb" :y="46")
-  //- .flex.flex-wrap.justify-center
-  //-   .flex.flex-col.items-center.p-2
-  //-     label(for="red" style="color:#FF0000") RED {{ mix.r }}
-  //-     input(type="range" v-model="mix.r" min="0" max="255" id="red")
-  //-   .flex.flex-col.items-center.p-2
-  //-     label(for="green" style="color:#00FF00") GREEN {{ mix.g }}
-  //-     input(type="range" v-model="mix.g" min="0" max="255" id="green")
-  //-   .flex.flex-col.items-center.p-2
-  //-     label(for="blue" style="color:#0000FF") BLUE {{ mix.b }}
-  //-     input(type="range" v-model="mix.b" min="0" max="255" id="blue")
 </template>
 
 <style lang="postcss" scoped>

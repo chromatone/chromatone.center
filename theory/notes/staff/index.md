@@ -6,6 +6,53 @@ date: 2021-08-12
 cover: kvintcirklen.png
 ---
 
+<script setup>
+import {state} from '#comps/abc/state'
+
+const minuet = `
+X:409
+T:Minuet in G Major
+T:BWV Anhang 114 
+C:Christian Petzold (1677-1733)
+C:Formerly attributed to J. S. Bach 
+C:(Guitar chords added)
+Z:ClassicMan at musescore.com
+Z:abc-edited-by: AW
+L:1/4
+M:3/4
+I:linebreak $
+K:G
+V:1 treble %nm="Piano"
+V:2 treble 
+V:3 bass 
+V:4 bass 
+V:1
+"G"d G/A/"D7/a"B/c/ | "G/b"d .G .G | "C"e Mc/d/e/f/ | "G/b"g .G .G | \
+"Am"Mc d/c/""B/A/ | "G"B c/B/A/G/ | "D"F "G"G/A/B/G/ |"D    D7"{B} A3 |$ 
+"G"d G/A/"D7/a"B/c/ | "G/b"d .G .G | "C"e Mc/d/e/f/ | "G/b"g .G .G | \
+"Am"Mc d/c/"D/f#"B/A/ | "G"B c/B/"G/b"A/G/ | "Am/c"A "G/d"B/A/"D"G/F/ | "G"G3 ::$ 
+%
+"G"b g/a/b/g/ | "D/f#"a d/e/f/d/ | "Em"g e/f/g/d/ | "A"^c B/c/ A | \
+"A"A/B/^c/d/e/f/ | "G/b"g "D"f "A/c#"e | "D"f "D/f#"A "A"^c | "D       D7"d3 |$ 
+"G/b"d G/F/ G | "C"e G/F/ G | "G/b"d "D/a"c "G"B | "D"A/G/F/G/ A | \
+"D"D/E/F/G/A/B/ | "C/e"c "G"PB "D/f#"A | "G"B/d/ "G/b"G "D"F | "G"G3 :| 
+V:2
+x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 |$ x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 ::$ x3 | x3 | x3 | 
+x3 | x3 | x3 | x3 | x3 |$ x3 | x3 | x3 | x3 | x3 | x3 | x3 | [B,D]3 :| 
+V:3
+[B,D]2 A, | B,3 | C3 | B,3 | A,3 | G,3 | D B, G, | D D,/C/B,/A,/ |$ B,2 A, | G, .B, .G, | C3 | 
+B, C/B,/A,/G,/ | A,2 F, | G,2 B, | C D D, | G,2 G,, ::$ G,3 | F,3 | E, G, E, | A,2 A,, | A,3 | 
+B, D ^C | D F, A, | D D, =C |$ z D2 | z E2 | B, A, G, | D2 z | z z F, | E, G, F, | G, B,, D, | 
+G, D, G,, :| 
+V:4
+G,2 x | x3 | x3 | x3 | x3 | x3 | x3 | x3 |$ x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 ::$ x3 | x3 | 
+x3 | x3 | x3 | x3 | x3 | x3 |$ B,2 B, | C2 C | x3 | x3 | D,3 | x3 | x3 | x3 :| 
+`
+</script>
+ 
+<button :style="{background: state.colorize ? 'linear-gradient(#e66465, #9198e5)': ''}" class="button fixed right-16 bottom-4 z-20000 p-2 bg-light-400 dark_bg-dark-400 rounded-xl shadow active_bg-red-100" 
+@click="state.colorize = !state.colorize">Colorize notes</button>
+
 ![](./kvintcirklen.png)
 
 ## Clefs
@@ -83,5 +130,8 @@ Whole note = 2 half notes = 4 quarter notes = 8 eighth notes = 16 sixteenth note
 ### Alexander Scriabin - Piano Concerto in F sharp minor, Op. 20
 
 <youtube-embed video="F734PyD3NAw" />
+
+
+<abc-render responsive :abc="minuet" />
 
 [Sight reading](./sight-reading/index.md)

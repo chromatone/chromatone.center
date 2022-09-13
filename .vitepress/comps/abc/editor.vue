@@ -1,5 +1,8 @@
 <script setup>
-
+import { watchDebounced } from '@vueuse/core'
+import { state } from './state.js'
+import { notes } from '#use/theory'
+import { pitchColor } from '#use/calculations'
 import tunes from './tunes.js'
 const notation = useStorage('abc-notes', tunes['kalinka']);
 
@@ -15,18 +18,61 @@ onMounted(() => {
       abcjsParams: {}
     });
   })
+  watchDebounced([notation, state], n => {
 
+    const nodes = document.querySelectorAll('[data-name]')
+    nodes.forEach(node => {
+      if (state.colorize) {
+        const note = { pitch: 0, acc: 0, octave: 4 }
+        const { name } = node.dataset
+        if (name.length > 3 || /^\d+$/.test(name) || name == 'bar') return
+        for (let i = 0; i < name.length; i++) {
+          const pitch = notes.findIndex(note => note == name[i]?.toUpperCase())
+          // console.log(pitch)
+          switch (name[i]) {
+            case '^':
+              note.acc++;
+              break
+            case '_':
+              note.acc--;
+              break
+            case ',':
+              note.octave--
+              break
+            default:
+              const pitch = notes.findIndex(note => note == name[i]?.toUpperCase())
+              if (pitch < 0) break
+              note.pitch = pitch
+              node.dataset.pitch = pitch
+              break
+          }
+        }
+
+        const pitchClass = (note.pitch + note.acc + 12) % 12
+        node.style.fill = pitchColor(pitchClass, note.octave)
+      } else {
+        node.style.fill = 'currentColor'
+      }
+
+
+    })
+  })
 });
 </script>
 
 <template lang="pug">
 .flex.flex-col.m-auto.max-w-65ch
+  button(
+    :style="{background: state.colorize ? 'linear-gradient(#e66465, #9198e5)': ''}" 
+    class="button fixed right-16 bottom-4 z-20000 p-2 bg-light-400 dark_bg-dark-400 rounded-xl shadow active_bg-red-100" 
+    @click="state.colorize = !state.colorize"
+    ) Colorize notes
   .flex.flex-wrap
     button.p-2.border-1.m-2(
       v-for="(tune, name) in tunes" :key="name"
       @click="notation = tune"
     ) {{ name }}
-  textarea#abc.w-full(
+  textarea#abc.w-full.dark_bg-dark-800.p-4(
     v-model="notation"
     rows="18"
   )
@@ -127,7 +173,8 @@ onMounted(() => {
 
 .abcjs-inline-audio .abcjs-midi-progress-indicator {
   width: 20px;
-  margin-left: -10px; /* half of the width */
+  margin-left: -10px;
+  /* half of the width */
   height: 14px;
   background-color: #f4f4f4;
   position: absolute;
@@ -177,6 +224,7 @@ onMounted(() => {
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }
+
 .abcjs-inline-audio .abcjs-loading-svg circle {
   stroke: #f4f4f4;
 }
@@ -185,6 +233,7 @@ onMounted(() => {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -194,31 +243,37 @@ onMounted(() => {
 .abcjs-large .abcjs-inline-audio {
   height: 52px;
 }
+
 .abcjs-large .abcjs-btn {
   width: 56px;
   height: 52px;
   font-size: 28px;
   padding: 6px 8px;
 }
+
 .abcjs-large .abcjs-midi-progress-background {
   height: 20px;
   border: 4px solid #cccccc;
 }
+
 .abcjs-large .abcjs-midi-progress-indicator {
   height: 28px;
   top: -8px;
   width: 40px;
 }
+
 .abcjs-large .abcjs-midi-clock {
   font-size: 32px;
   margin-right: 10px;
   margin-left: 10px;
   margin-top: -1px;
 }
+
 .abcjs-large .abcjs-midi-tempo {
   font-size: 20px;
   width: 50px;
 }
+
 .abcjs-large .abcjs-tempo-wrapper {
   font-size: 20px;
 }

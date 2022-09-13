@@ -1,4 +1,8 @@
 <script setup>
+import { pitchColor } from '#use/calculations'
+import { notes } from '#use/theory'
+import { state } from './state'
+
 const props = defineProps({
   abc: {
     type: String,
@@ -23,6 +27,7 @@ const id = (Math.random() + 1).toString(36).substring(7)
 onMounted(() => {
   import('abcjs').then(ABCJS => {
     watchEffect(() => {
+
       let visualObj = ABCJS.renderAbc(id, props.abc, {
         responsive: props.responsive ? 'resize' : null,
         scale: 3,
@@ -32,7 +37,40 @@ onMounted(() => {
         staffwidth: 300,
         clickListener,
       })
-      // console.log(visualObj)
+      if (!state.colorize) return
+      const nodes = document.querySelectorAll('[data-name]')
+      nodes.forEach(node => {
+        const note = { pitch: 0, acc: 0, octave: 4 }
+        const { name } = node.dataset
+        if (name.length > 3 || /^\d+$/.test(name) || name == 'bar') return
+        for (let i = 0; i < name.length; i++) {
+          const pitch = notes.findIndex(note => note == name[i]?.toUpperCase())
+          // console.log(pitch)
+          switch (name[i]) {
+            case '^':
+              note.acc++;
+              break
+            case '_':
+              note.acc--;
+              break
+            case ',':
+              note.octave--
+              break
+            default:
+              const pitch = notes.findIndex(note => note == name[i]?.toUpperCase())
+              if (pitch < 0) break
+              note.pitch = pitch
+              node.dataset.pitch = pitch
+              break
+          }
+        }
+
+        const pitchClass = (note.pitch + note.acc + 12) % 12
+        node.style.fill = pitchColor(pitchClass, note.octave)
+
+      })
+
+
     })
   })
 });
@@ -51,14 +89,7 @@ function clickListener(elem, tune, classes, analysis, drag) {
  
 <style lang="postcss" scoped>
 .render {
-  @apply pb-4;
-}
-
-@for $i from 1 to 3 {
-  .b$1 {
-    width: $(
-      i)px;
-  }
+  @apply pb-0;
 }
 </style>
 

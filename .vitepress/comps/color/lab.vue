@@ -154,7 +154,7 @@ watchEffect(() => {
           stroke="currentColor"
           stroke-linecap="round"
         )
-        line.mix-blend-difference(
+        line(
           x1="-15"
           x2="100"
           stroke="currentColor"
@@ -180,7 +180,7 @@ watchEffect(() => {
       g.pointer-events-none(
         :transform="`translate(0,${100 - mix.l})`"
       )
-        line.mix-blend-difference(
+        line(
           x1="105"
           x2="115"
           stroke="currentColor"
@@ -205,7 +205,7 @@ watchEffect(() => {
       g.pointer-events-none(
         :transform="`translate(${100 * (mix.a + range / 2) / (range)},0)`"
       )
-        line.mix-blend-difference(
+        line(
           y1="-15"
           y2="-5"
           stroke="currentColor"

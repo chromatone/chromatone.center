@@ -27,6 +27,7 @@ const mix = reactive({
     a: computed(() => getSteps(mix.res)),
     b: computed(() => getSteps(mix.res))
   },
+  dark: computed(() => colord(mix.lab).isDark())
 });
 
 function getHex(l, a, b) {
@@ -72,10 +73,12 @@ watchEffect(() => {
   mix.current = mix.hex
 });
 
+
+
 </script>
 
 <template lang="pug">
-.fullscreen-container.mb-8.p-4.rounded-4xl.transition-all.duration-800.ease-out(ref="screen" :style="{ backgroundColor: mix.hex }")
+.fullscreen-container.mb-8.p-4.rounded-xl.transition-all.duration-400.ease-in(ref="screen" :style="{ backgroundColor: mix.hex }")
   full-screen.absolute.top-2.right-2(:el="screen")
   svg.max-h-3xl.w-full.select-none(
     version="1.1",
@@ -87,6 +90,7 @@ watchEffect(() => {
     text-anchor="middle",
     dominant-baseline="middle"
     style="touch-action: pinch-zoom; user-select:none"
+    :style="{color:mix.dark ?'white' : 'black'}"
     )
     defs
       linearGradient#gray(x1="0" x2="0" y1="0" y2="1")
@@ -104,11 +108,11 @@ watchEffect(() => {
           v-for="(step,i) in 10" :key="step"
           :stop-color="colord({ l: mix.l, a: mix.a, b: (10 - i) * range / 10 - range / 2, alpha: 1 }).toHex()" :offset="i * 10 + '%'"
           )
-    g#square
-      g(
+    g#square(v-drag="onDrag")
+      g.row(
         v-for="(a,an) in mix.steps.a" :key="a + an"
-      )
-        rect.cursor-pointer.transition-all.duration-400.ease-in-out(
+        )
+        rect.cursor-pointer(
           v-for="(b,bn) in mix.steps.b" :key="b + bn"
           :x="an * mix.width / (mix.res)"
           :y="bn * mix.height / (mix.res)"
@@ -116,11 +120,22 @@ watchEffect(() => {
           :class="{ current: mix.current == getHex(mix.l, a, b) }"
           :width="mix.width / (mix.res)"
           :height="mix.height / (mix.res)"
-          @click="selectColor(mix.l, a, b)"
+          @mousedown="selectColor(mix.l, a, b)"
           :fill="getHex(mix.l, a, b)"
           :stroke="getHex(mix.l, a, b)"
           stroke-width="0.1px"
         )
+      transition(name="fade")
+        g#current.cursor-pointer
+          rect(
+            :x="30"
+            :y="30"
+            :width="40"
+            :height="40"
+            :fill="mix.hex"
+          )
+          color-svg-info(:color="mix.lab" :y="36")        
+
     g#b-range.cursor-pointer
       rect#b(
         x="-15"
@@ -242,18 +257,7 @@ watchEffect(() => {
         fill="#aaa" stroke="currentColor"
         stroke-width="0.2")
       text.uppercase AB RANGE {{ range }}
-    transition(name="fade")
-      g#current.cursor-pointer(
-        v-drag="onDrag"
-      )
-        rect.transition-all.duration-400.ease-in-out(
-          :x="30"
-          :y="30"
-          :width="40"
-          :height="40"
-          :fill="mix.hex"
-        )
-        color-svg-info(:color="mix.lab" :y="40")
+    
 </template>
 
 

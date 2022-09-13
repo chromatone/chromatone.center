@@ -6,7 +6,7 @@ const props = defineProps({
   },
   x: {
     type: Number,
-    default: 50
+    default: 36
   },
   y: {
     type: Number,
@@ -14,26 +14,32 @@ const props = defineProps({
   }
 })
 const info = computed(() => getColorInfo(props.color));
+
+const dy = 4.8
+
 </script>
 
 <template lang="pug">
 g
-  text.select-none.pointer-events-none(
+  text.select-none(
+
     v-if="info"
     :x="x"
     :y="y"
-    font-size="2px"
+    font-size="2.6"
     text-anchor="middle"
     :fill="info.dark ? '#FFF' : '#000'"
   ) 
-    tspan.font-bold {{ info.hex }}
-    tspan.font-bold.text-3px(x="50" dy="4") {{ info.name }} 
-    tspan(x="50" dy="3.2") {{ info.rgb }}
-    tspan(x="50" dy="3.2") {{ info.cmyk }}
-    tspan(x="50" dy="3.2") {{ info.hsl }}
-    tspan(x="50" dy="3.2") lab({{ info.lab.l }}, {{ info.lab.a }}, {{ info.lab.b }})
+    color-copy.font-bold.text-3px(x="51" :text="info.hex")
+    tspan.font-bold.text-4px(x="50" dy="6") {{ info.name }} 
+
+    color-copy(x="51" :dy="dy+3" :text="info.rgb")
+    color-copy(x="51" :dy="dy" :text="info.hsl") 
+    color-copy(x="51" :dy="dy" :text="` lab(${ info.lab.l }, ${ info.lab.a }, ${ info.lab.b })`")
+    color-copy(x="51" :dy="dy" :text="info.cmyk.slice(7)")
 
 </template>
 
 <style lang="postcss" scoped>
+
 </style>

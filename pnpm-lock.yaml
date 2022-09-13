@@ -5,23 +5,23 @@ specifiers:
   '@iconify/json': ^2.1.100
   '@tonaljs/tonal': ^4.6.5
   '@tonejs/midi': ^2.0.28
-  '@vueuse/core': ^9.1.1
+  '@vueuse/core': ^9.2.0
   '@vueuse/gesture': 2.0.0-beta.1
-  '@vueuse/math': ^9.1.1
-  abcjs: ^6.1.0
+  '@vueuse/math': ^9.2.0
+  abcjs: ^6.1.3
   audio-recorder-polyfill: ^0.4.1
   audiomotion-analyzer: 3.6.0
-  cobe: ^0.6.0
+  cobe: ^0.6.1
   colord: ^2.9.3
   drauu: ^0.3.1
-  floating-vue: ^2.0.0-beta.19
+  floating-vue: ^2.0.0-beta.20
   fraction.js: ^4.2.0
   fuse.js: ^6.6.2
   hidpi-canvas: ^1.0.10
   markdown-it-external-links: ^0.0.6
   meyda: ^5.5.1
   midi-writer-js: ^2.1.0
-  ol: ^7.0.0
+  ol: 7.1.0
   paper: ^0.12.15
   patch-vue-directive-ssr: ^0.0.1
   pug: 3.0.2
@@ -48,13 +48,13 @@ dependencies:
   '@gun-vue/composables': 0.11.5
   '@tonaljs/tonal': 4.6.5
   '@tonejs/midi': 2.0.28
-  '@vueuse/core': 9.1.1_vue@3.2.37
+  '@vueuse/core': 9.2.0_vue@3.2.37
   '@vueuse/gesture': 2.0.0-beta.1_vue@3.2.37
-  '@vueuse/math': 9.1.1_vue@3.2.37
-  abcjs: 6.1.0
+  '@vueuse/math': 9.2.0_vue@3.2.37
+  abcjs: 6.1.3
   audio-recorder-polyfill: 0.4.1
   audiomotion-analyzer: 3.6.0
-  cobe: 0.6.0
+  cobe: 0.6.1
   colord: 2.9.3
   drauu: 0.3.1
   floating-vue: 2.0.0-y.0_vue@3.2.37
@@ -63,7 +63,7 @@ dependencies:
   hidpi-canvas: 1.0.10
   meyda: 5.5.1
   midi-writer-js: 2.1.0
-  ol: 7.0.0
+  ol: 7.1.0
   paper: 0.12.15
   recordrtc: 5.6.2
   simplex-noise: 4.0.0
@@ -78,7 +78,7 @@ devDependencies:
   markdown-it-external-links: 0.0.6
   patch-vue-directive-ssr: 0.0.1
   pug: 3.0.2
-  unplugin-auto-import: 0.11.2_jfxn32i2eq37u3jpfk3zc3f4hy
+  unplugin-auto-import: 0.11.2_xzdak4oorhltpgyl5ifk6omxfe
   unplugin-icons: 0.14.8_vite@3.0.9
   unplugin-vue-components: 0.22.4_vite@3.0.9+vue@3.2.37
   vite: 3.0.9
@@ -1423,7 +1423,7 @@ packages:
     dependencies:
       '@vueuse/core': 9.1.0_vue@3.2.37
       '@vueuse/integrations': 9.1.0_jn23qlziivgdxarkcz6hvym5ai
-      '@vueuse/math': 9.1.1_vue@3.2.37
+      '@vueuse/math': 9.2.0_vue@3.2.37
       base32: 0.0.6
       buffer: 6.0.3
       color-hash: 2.0.1
@@ -1997,12 +1997,12 @@ packages:
       - vue
     dev: false
 
-  /@vueuse/core/9.1.1_vue@3.2.37:
-    resolution: {integrity: sha512-QfuaNWRDMQcCUwXylCyYhPC3ScS9Tiiz4J0chdwr3vOemBwRToSywq8MP+ZegKYFnbETzRY8G/5zC+ca30wrRQ==}
+  /@vueuse/core/9.2.0_vue@3.2.37:
+    resolution: {integrity: sha512-/MZ6qpz6uSyaXrtoeBWQzAKRG3N7CvfVWvQxiM3ei3Xe5ydOjjtVbo7lGl9p8dECV93j7W8s63A8H0kFLpLyxg==}
     dependencies:
       '@types/web-bluetooth': 0.0.15
-      '@vueuse/metadata': 9.1.1
-      '@vueuse/shared': 9.1.1_vue@3.2.37
+      '@vueuse/metadata': 9.2.0
+      '@vueuse/shared': 9.2.0_vue@3.2.37
       vue-demi: 0.13.8_vue@3.2.37
     transitivePeerDependencies:
       - '@vue/composition-api'
@@ -2069,10 +2069,10 @@ packages:
       - vue
     dev: false
 
-  /@vueuse/math/9.1.1_vue@3.2.37:
-    resolution: {integrity: sha512-cUkEnnw7WYb5dzEyEoVLFNu2b/CjlhJ38O7zj1MYas7KzqXifvJJDiAipuBYskJPNoyauV2BXVZI6l1UDweFMg==}
+  /@vueuse/math/9.2.0_vue@3.2.37:
+    resolution: {integrity: sha512-jZNPqigMwUygLvGXqzxJfy5Tm1B8HCRPNgPvW1odtZSCxgWnBIo3nZBelMz6jlw5LY9GprZbKR/hrwvQ98+y4w==}
     dependencies:
-      '@vueuse/shared': 9.1.1_vue@3.2.37
+      '@vueuse/shared': 9.2.0_vue@3.2.37
       vue-demi: 0.13.8_vue@3.2.37
     transitivePeerDependencies:
       - '@vue/composition-api'
@@ -2083,8 +2083,8 @@ packages:
     resolution: {integrity: sha512-8OEhlog1iaAGTD3LICZ8oBGQdYeMwByvXetOtAOZCJOzyCRSwqwdggTsmVZZ1rkgYIEqgUBk942AsAPwM21s6A==}
     dev: false
 
-  /@vueuse/metadata/9.1.1:
-    resolution: {integrity: sha512-XZ2KtSW+85LLHB/IdGILPAtbIVHasPsAW7aqz3BRMzJdAQWRiM/FGa1OKBwLbXtUw/AmjKYFlZJo7eOFIBXRog==}
+  /@vueuse/metadata/9.2.0:
+    resolution: {integrity: sha512-exN4KE6iquxDCdt72BgEhb3tlOpECtD61AUdXnUqBTIUCl70x1Ar/QXo3bYcvxmdMS2/peQyfeTzBjRTpvL5xw==}
 
   /@vueuse/shared/7.6.1_vue@3.2.37:
     resolution: {integrity: sha512-VhURBjuyELYLW94TLqwyM+tUZ0uyWAOjp8zDnJts5wwyHZlGt/yabLbuEl70cKmt0zR9psVyAyHC+LTgRrA1Zw==}
@@ -2110,8 +2110,8 @@ packages:
       - vue
     dev: false
 
-  /@vueuse/shared/9.1.1_vue@3.2.37:
-    resolution: {integrity: sha512-c+IfcOYmHiHqoEa3ED1Tbpue5GHmoUmTp8PtO4YbczthtY155Rt6DmWhjxMLXBF1Bcidagxljmp/7xtAzEHXLw==}
+  /@vueuse/shared/9.2.0_vue@3.2.37:
+    resolution: {integrity: sha512-NnRp/noSWuXW0dKhZK5D0YLrDi0nmZ18UeEgwXQq7Ul5TTP93lcNnKjrHtd68j2xFB/l59yPGFlCryL692bnrA==}
     dependencies:
       vue-demi: 0.13.8_vue@3.2.37
     transitivePeerDependencies:
@@ -2142,8 +2142,8 @@ packages:
       - supports-color
     dev: true
 
-  /abcjs/6.1.0:
-    resolution: {integrity: sha512-AE0a6leb3gcG7DIm3JUEYHoyfZzCkO2YcuWo2K+bGC1XD08IJwhnaPP6JDwpW/NtO3YayVAXx2kxq4J+zlDvcQ==}
+  /abcjs/6.1.3:
+    resolution: {integrity: sha512-8uTxfNxHbodc/yMwxjuwi2CyWLur04ec1lkreVc3mg119oWwsn3yEAR4gCzKK+Yw1+7OP+1BAFRlwT0tTT5HQw==}
     dev: false
 
   /acorn/7.4.1:
@@ -2481,8 +2481,8 @@ packages:
     resolution: {integrity: sha512-jJ0bqzaylmJtVnNgzTeSOs8DPavpbYgEr/b0YL8/2GO3xJEhInFmhKMUnEJQjZumK7KXGFhUy89PrsJWlakBVg==}
     dev: false
 
-  /cobe/0.6.0:
-    resolution: {integrity: sha512-+FuvBjhfxPMOGXkSzAmj3XVmXqq6vqKtufeg64axTr0ipBxOwGIpyXN6T6wR7SGRCueF/bkbyL2fMITtZwjUNQ==}
+  /cobe/0.6.1:
+    resolution: {integrity: sha512-aqtj9FPpPncXDE5KCHCcL9k7ZaudCPZlj8k/1mhiMf9ubOUurYFyq/NRtofFLJEjMoTTNF6UecfuvBYdVjlyxA==}
     dependencies:
       phenomenon: 1.6.0
     dev: false
@@ -3916,19 +3916,19 @@ packages:
       has-symbols: 1.0.3
       object-keys: 1.1.1
 
-  /ol-mapbox-style/9.0.0:
-    resolution: {integrity: sha512-smixniNq2N4nTLAYf8ouIcBI4dOd1P6p3CWd/cmuP6ai85s84vOGUVbCa1jcS40oDRlOakWRP3XqtEQhEv7Wbw==}
+  /ol-mapbox-style/9.1.0:
+    resolution: {integrity: sha512-R/XE6FdviaXNdnSw6ItHSEreMtQU68cwQCGv4Kl8yG0V1dZhnI5JWr8IOphJwffPVxfWTCnJb5aALGSB89MvhA==}
     dependencies:
       '@mapbox/mapbox-gl-style-spec': 13.25.0
       mapbox-to-css-font: 2.4.1
     dev: false
 
-  /ol/7.0.0:
-    resolution: {integrity: sha512-7kCUKeWXopFPuEE0iuNXTasMi4wgvoM/Ri7pHW74/0lPfdWrrjrYAn2hOuIdfSIiMxdjifwQqpC9hhTFGxmH7A==}
+  /ol/7.1.0:
+    resolution: {integrity: sha512-mAeV5Ca4mFhYaJoGWNZnIMN5VNnFTf63FgZjBiYu/DjQDGKNsD5QyvvqVziioVdOOgl6b8rPB/ypj2XNBinPwA==}
     dependencies:
       earcut: 2.2.4
       geotiff: 2.0.4
-      ol-mapbox-style: 9.0.0
+      ol-mapbox-style: 9.1.0
       pbf: 3.2.1
       rbush: 3.0.1
     dev: false
@@ -4872,7 +4872,7 @@ packages:
     engines: {node: '>= 10.0.0'}
     dev: true
 
-  /unplugin-auto-import/0.11.2_jfxn32i2eq37u3jpfk3zc3f4hy:
+  /unplugin-auto-import/0.11.2_xzdak4oorhltpgyl5ifk6omxfe:
     resolution: {integrity: sha512-1+VwBfn9dtiYv9SQLKP1AvZolUbK9xTVeAT+iOcEk4EHSFUlmIqBVLEKI76cifSQTLOJ3rZyPrEgptf3SZNLlQ==}
     engines: {node: '>=14'}
     peerDependencies:
@@ -4883,7 +4883,7 @@ packages:
     dependencies:
       '@antfu/utils': 0.5.2
       '@rollup/pluginutils': 4.2.1
-      '@vueuse/core': 9.1.1_vue@3.2.37
+      '@vueuse/core': 9.2.0_vue@3.2.37
       local-pkg: 0.4.2
       magic-string: 0.26.2
       unimport: 0.6.7_vite@3.0.9
@@ -5208,7 +5208,7 @@ packages:
       '@docsearch/js': 3.2.1
       '@vitejs/plugin-vue': 3.0.3_vite@3.0.9+vue@3.2.37
       '@vue/devtools-api': 6.2.1
-      '@vueuse/core': 9.1.1_vue@3.2.37
+      '@vueuse/core': 9.2.0_vue@3.2.37
       body-scroll-lock: 4.0.0-beta.0
       shiki: 0.11.1
       vite: 3.0.9

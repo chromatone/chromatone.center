@@ -96,9 +96,9 @@ function getNote(string, semitones) {
           circle(
             :opacity="globalScale.isIn(getNote(string, n)) ? 1 : 0.1"
             :stroke="neck.isInChord(getNote(string, n)) ? 'currentColor' : 'none'"
-            stroke-width="3"
-            :r="neck.isInChord(getNote(string, n)) ? neck.noteSize / 2 - 8 : neck.noteSize / 2 - 8"
-            :fill="noteColor(string, n)"
+            stroke-width="5"
+            :r="neck.isInChord(getNote(string, n)) ? neck.noteSize / 2 - 4 : neck.noteSize / 2 - 8"
+            :fill="noteColor(string, n+24)"
           )
           text(
             opacity="0"

@@ -71,6 +71,7 @@ onMounted(() => {
     class="button fixed right-16 bottom-4 z-20000 p-2 bg-light-400 dark_bg-dark-400 rounded-xl shadow active_bg-red-100" 
     @click="state.colorize = !state.colorize"
     ) Colorize notes
+  svg-save.fixed.bottom-4.right-55(svg="paper" :deep="true")
   .flex.flex-wrap
     button.p-2.border-1.m-2(
       v-for="(tune, name) in tunes" :key="name"

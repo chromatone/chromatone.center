@@ -4,7 +4,8 @@ const props = defineProps({
   svg: String,
   file: {
     type: String,
-  }
+  },
+  deep: Boolean
 });
 
 const anchor = ref('')
@@ -14,8 +15,10 @@ const download = reactive({
   url: ''
 })
 
-function saveSVG(pic) {
-  var svg = document.getElementById(pic);
+function saveSVG(pic, deep) {
+
+  let svg = document.getElementById(pic);
+  if (deep) svg = svg.childNodes[0]
   if (!svg) return
   const serializer = new XMLSerializer();
   let source = serializer.serializeToString(svg);
@@ -33,12 +36,12 @@ function saveSVG(pic) {
 
 <template lang="pug">
 .snapshot
-  la-camera(@click="saveSVG(svg)")
+  la-camera(@click="saveSVG(svg, deep)")
   a(ref="anchor",target="_blank",:download="download.file",:href="download.url", v-if="download.url")
 </template>
 
 <style lang="postcss" scoped>
 .snapshot {
-  @apply flex absolute cursor-pointer bg-gray-200 bg-opacity-70 dark_(bg-gray-800 bg-opacity-70) text-2xl -mt-1rem right-2rem p-2 z-100  rounded-full;
+  @apply flex cursor-pointer bg-gray-200 bg-opacity-70 dark_(bg-gray-800 bg-opacity-70) text-2xl -mt-1rem p-2 z-100 rounded-full;
 }
 </style>

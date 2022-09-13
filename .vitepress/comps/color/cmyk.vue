@@ -5,24 +5,19 @@ const mix = reactive({
   radius: 30,
   len: computed(() => mix.radius * Math.PI * 2),
   max: 100,
-  c: useStorage('cyan', 50),
-  m: useStorage('magenta', 50),
-  y: useStorage('yellow', 50),
-  k: useStorage('black', 10),
+  c: useClamp(useStorage('cyan', 50), 0, 100),
+  m: useClamp(useStorage('magenta', 50), 0, 100),
+  y: useClamp(useStorage('yellow', 50), 0, 100),
+  k: useClamp(useStorage('black', 10), 0, 100),
   cmyk: computed(() => `device-cmyk(${mix.c}% ${mix.m}% ${mix.y}% ${mix.k}% / 100%)`),
   hex: computed(() => colord(mix.cmyk).toHex())
 });
 
 const screen = ref()
 
-function onDrag(drag) {
-  let id = drag.event.target.id
-  mix[id] = Number(mix[id]) + (Number(drag.delta[0]) - Number(drag.delta[1]))
-  if (mix[id] < 0) {
-    mix[id] = 0
-  }
-  if (mix[id] > mix.max) {
-    mix[id] = mix.max
+function useDrag(channel) {
+  return (drag) => {
+    mix[channel] = Number(mix[channel]) + (Number(drag.delta[0]) - Number(drag.delta[1]))
   }
 }
 </script>
@@ -38,7 +33,7 @@ function onDrag(drag) {
     stroke-width="2px"
     text-anchor="middle"
     font-family="Commissioner, sans-serif"
-    style="touch-action: pinch-zoom;"
+    style="touch-action: none;"
     )
     circle#white(
       fill="white"
@@ -72,11 +67,12 @@ function onDrag(drag) {
         fill="black"
         )
     g#circles.cursor-pointer(
-      v-drag="onDrag"
+
       stroke-linecap="round"
     )
       circle#c.mix-blend-multiply.cursor-pointer(
         :r="mix.radius"
+        v-drag="useDrag('c')"
         stroke="cyan"
         :stroke-dashoffset="mix.len - mix.len * (mix.c / mix.max)"
         :stroke-dasharray="mix.len"
@@ -85,6 +81,7 @@ function onDrag(drag) {
       )
       circle#m.mix-blend-multiply.cursor-pointer(
         :r="mix.radius"
+        v-drag="useDrag('m')"
         stroke="magenta"
         :stroke-dashoffset="mix.len - mix.len * (mix.m / mix.max)"
         :stroke-dasharray="mix.len"
@@ -93,6 +90,7 @@ function onDrag(drag) {
       )
       circle#y.mix-blend-multiply.cursor-pointer(
         :r="mix.radius"
+        v-drag="useDrag('y')"
         stroke="yellow"
         :stroke-dashoffset="mix.len - mix.len * (mix.y / mix.max)"
         :stroke-dasharray="mix.len"
@@ -100,7 +98,7 @@ function onDrag(drag) {
         :fill="`hsla(60,100%,50%,${mix.y / 100})`"
       )
       circle#k.mix-blend-multiply(
-        v-drag="onDrag"
+        v-drag="useDrag('k')"
         r="18"
         stroke="black"
         transform="translate(50,50) rotate(90)"
@@ -126,7 +124,11 @@ function onDrag(drag) {
         y="66.5"
       ) K
 
-    color-svg-info(:y="42" :color="{ c: mix.c, m: mix.m, y: mix.y, k: mix.k, a: 1 }")
+    color-svg-info.select-none(
+      :y="42" 
+      transform="scale(0.8) translate(12,4)"
+      :color="{ c: mix.c, m: mix.m, y: mix.y, k: mix.k, a: 1 }"
+      )
   //- .flex.flex-col.items-center 
   //- .flex.flex-wrap.justify-center
   //-   .flex.flex-col.items-center.p-2
@@ -144,4 +146,5 @@ function onDrag(drag) {
 </template>
 
 <style lang="postcss" scoped>
+
 </style>

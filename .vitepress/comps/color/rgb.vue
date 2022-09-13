@@ -4,22 +4,17 @@ const mix = reactive({
   radius: 30,
   len: computed(() => mix.radius * Math.PI * 2),
   max: 255,
-  r: useStorage('red', 190),
-  g: useStorage('gree', 190),
-  b: useStorage('blue', 190),
+  r: useClamp(useStorage('red', 190), 0, 255),
+  g: useClamp(useStorage('gree', 190), 0, 255),
+  b: useClamp(useStorage('blue', 190), 0, 255),
   rgb: computed(() => `rgb(${mix.r},${mix.g},${mix.b})`)
 });
 
 const screen = ref()
 
-function onDrag(drag) {
-  let id = drag.event.target.id
-  mix[id] = Number(mix[id]) + (Number(drag.delta[0]) - Number(drag.delta[1]))
-  if (mix[id] < 0) {
-    mix[id] = 0
-  }
-  if (mix[id] > mix.max) {
-    mix[id] = mix.max
+function useDrag(channel) {
+  return (drag) => {
+    mix[channel] = Number(mix[channel]) + (Number(drag.delta[0]) - Number(drag.delta[1]))
   }
 }
 </script>
@@ -33,7 +28,7 @@ function onDrag(drag) {
     viewBox="-5 -5 110 110",
     xmlns="http://www.w3.org/2000/svg",
     stroke-width="2px"
-    style="touch-action: pinch-zoom;"
+    style="touch-action: none;"
     font-family="Commissioner, sans-serif"
     )
     circle#black(
@@ -61,12 +56,13 @@ function onDrag(drag) {
         fill="#0000ff"
         )
     g#circles.cursor-pointer(
-      v-drag="onDrag"
+
       stroke-linecap="round"
       :stroke-dasharray="mix.len"
     )
       circle#r.mix-blend-lighten(
         :r="mix.radius"
+        v-drag="useDrag('r')"
         :fill="`rgb(${mix.r},0,0)`"
         stroke="#ff0000"
         :stroke-dashoffset="mix.len - mix.len * (mix.r / mix.max)"
@@ -75,6 +71,7 @@ function onDrag(drag) {
 
       circle#g.mix-blend-lighten(
         :r="mix.radius"
+        v-drag="useDrag('g')"
         :fill="`rgb(0,${mix.g},0)`"
         stroke="#00ff00"
         :stroke-dashoffset="mix.len - mix.len * (mix.g / mix.max)"
@@ -82,12 +79,13 @@ function onDrag(drag) {
       )
       circle#b.mix-blend-lighten(
         :r="mix.radius"
+        v-drag="useDrag('b')"
         :fill="`rgb(0,0,${mix.b})`"
         stroke="#0000ff"
         :stroke-dashoffset="mix.len - mix.len * (mix.b / mix.max)"
         transform="translate(50,68) rotate(90)"
       )
-    g#text.font-bold.text-xs.pointer-events-none.select-none
+    g#text.font-bold.text-xs.select-none
       text(
         x="15"
         y="33"
@@ -106,7 +104,7 @@ function onDrag(drag) {
         text-anchor="middle"
         fill="white"
       ) G
-      color-svg-info(:color="mix.rgb" :y="42")
+      color-svg-info(transform="scale(0.7) translate(21,12)" :color="mix.rgb" :y="46")
   //- .flex.flex-wrap.justify-center
   //-   .flex.flex-col.items-center.p-2
   //-     label(for="red" style="color:#FF0000") RED {{ mix.r }}
@@ -120,4 +118,5 @@ function onDrag(drag) {
 </template>
 
 <style lang="postcss" scoped>
+
 </style>

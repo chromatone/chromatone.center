@@ -90,7 +90,7 @@ function onDragS(drag) {
     font-family="Commissioner, sans-serif"
     text-anchor="middle",
     dominant-baseline="middle"
-    style="touch-action: pinch-zoom; user-select:none"
+    style="touch-action: none; user-select:none"
     :style="{color: mix.dark ? 'white': 'black'}"
     )
     defs

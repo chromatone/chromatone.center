@@ -131,7 +131,11 @@ Whole note = 2 half notes = 4 quarter notes = 8 eighth notes = 16 sixteenth note
 
 <youtube-embed video="F734PyD3NAw" />
 
+## Vector render of staff notation by ABCjs
 
+Note colorization is very useful to build connections between classic and Chromatone music theory visualizations.
 <abc-render responsive :abc="minuet" />
+
+[Play with the ABC notations editor](../alternative/abc/index.md)
 
 [Sight reading](./sight-reading/index.md)

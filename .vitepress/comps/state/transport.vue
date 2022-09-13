@@ -5,12 +5,14 @@ import { onKeyStroke, useCycleList } from "@vueuse/core";
 const tempo = useTempo();
 const { init, tuner } = useTuner();
 
-onKeyStroke(" ", (e) => {
-  e.preventDefault();
+onKeyStroke(" ", (ev) => {
+  if (ev.target.nodeName == 'TEXTAREA') return;
+  ev.preventDefault();
   tempo.playing = !tempo.playing;
 });
-onKeyStroke("Enter", (e) => {
-  e.preventDefault();
+onKeyStroke("Enter", (ev) => {
+  if (ev.target.nodeName == 'TEXTAREA') return;
+  ev.preventDefault();
   tempo.stopped = true;
 });
 

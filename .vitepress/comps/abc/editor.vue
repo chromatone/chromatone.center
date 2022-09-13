@@ -9,8 +9,10 @@ const notation = useStorage('abc-notes', tunes['kalinka']);
 onMounted(() => {
   import('abcjs').then(ABCJS => {
     new ABCJS.Editor("abc", {
+
       canvas_id: "paper",
       warnings_id: "warnings",
+      staffwidth: 200,
       synth: {
         el: "#audio",
         options: { displayLoop: true, displayRestart: true, displayPlay: true, displayProgress: true, displayWarp: true }
@@ -28,7 +30,6 @@ onMounted(() => {
         if (name.length > 3 || /^\d+$/.test(name) || name == 'bar') return
         for (let i = 0; i < name.length; i++) {
           const pitch = notes.findIndex(note => note == name[i]?.toUpperCase())
-          // console.log(pitch)
           switch (name[i]) {
             case '^':
               note.acc++;
@@ -42,6 +43,7 @@ onMounted(() => {
             default:
               const pitch = notes.findIndex(note => note == name[i]?.toUpperCase())
               if (pitch < 0) break
+              if (name[i] == notes[pitch].toLowerCase()) note.octave++
               note.pitch = pitch
               node.dataset.pitch = pitch
               break
@@ -56,12 +58,14 @@ onMounted(() => {
 
 
     })
+  }, {
+    immediate: true
   })
 });
 </script>
 
 <template lang="pug">
-.flex.flex-col.m-auto.max-w-65ch
+.flex.flex-col.m-auto
   button(
     :style="{background: state.colorize ? 'linear-gradient(#e66465, #9198e5)': ''}" 
     class="button fixed right-16 bottom-4 z-20000 p-2 bg-light-400 dark_bg-dark-400 rounded-xl shadow active_bg-red-100" 

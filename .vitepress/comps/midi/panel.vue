@@ -5,7 +5,8 @@ import { pitchColor } from "#use/calculations";
 import { synth } from "#use/synth.js";
 
 onKeyStroke(" ", (ev) => {
-  ev.preventDefault();
+  if (ev.target.nodeName == 'TEXTAREA') return;
+  ev.preventDefault()
   midi.playing = !midi.playing;
 });
 

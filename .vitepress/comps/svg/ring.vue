@@ -62,7 +62,6 @@ function polarToCartesian(centerX, centerY, radius, angleInDegrees) {
 
 <template lang="pug">
 path(
-  style="transition: all 200ms ease-out"
   :d="round ? pill : d" 
   :fill="fill" 
   :stroke="stroke" 
@@ -76,4 +75,5 @@ path(
 </template>
 
 <style lang="postcss" scoped>
+
 </style>

@@ -30,8 +30,8 @@ g
     text-anchor="middle"
     :fill="info.dark ? '#FFF' : '#000'"
   ) 
-    color-copy.font-bold.text-3px(x="51" :text="info.hex")
-    tspan.font-bold.text-4px(x="50" dy="6") {{ info.name }} 
+    color-copy.font-bold.text-3px(x="51" dy="1" :text="info.hex")
+    tspan.font-bold.text-4px(x="50" dy="5") {{ info.name }} 
 
     color-copy(x="51" :dy="dy+3" :text="info.rgb")
     color-copy(x="51" :dy="dy" :text="info.hsl") 

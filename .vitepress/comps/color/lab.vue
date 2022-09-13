@@ -78,7 +78,7 @@ watchEffect(() => {
 </script>
 
 <template lang="pug">
-.fullscreen-container.mb-8.p-4.rounded-xl.transition-all.duration-400.ease-in(ref="screen" :style="{ backgroundColor: mix.hex }")
+.fullscreen-container.mb-8.p-4.rounded-xl.transition-all.duration-400.ease-in-out(ref="screen" :style="{ backgroundColor: mix.hex }")
   full-screen.absolute.top-2.right-2(:el="screen")
   svg.max-h-3xl.w-full.select-none(
     version="1.1",
@@ -89,7 +89,7 @@ watchEffect(() => {
     font-family="Commissioner, sans-serif"
     text-anchor="middle",
     dominant-baseline="middle"
-    style="touch-action: pinch-zoom; user-select:none"
+    style="touch-action: none; user-select:none"
     :style="{color:mix.dark ?'white' : 'black'}"
     )
     defs

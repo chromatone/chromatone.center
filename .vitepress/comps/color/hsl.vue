@@ -32,6 +32,7 @@ const mix = reactive({
   hsl: computed(() => `hsla(${mix.hue},${mix.sat}%,${mix.light}%,1)`),
   hueSteps: computed(() => [...Array(mix.hueCount)].map((step, i) => 360 * i / mix.hueCount)),
   hueArcs: computed(() => mix.hueSteps.map((step, i, arr) => ({ from: step, to: arr[i + 1] || 359.9 }))),
+  dark: computed(() => colord(mix.current).isDark())
 });
 
 const spaces = ['HSL', 'Lch', 'HWB']
@@ -78,7 +79,7 @@ function onDragS(drag) {
 </script>
 
 <template lang="pug">
-.fullscreen-container.mb-8.p-4.rounded-4xl.transition-all.duration-800.ease-out(ref="screen" :style="{ backgroundColor: mix.current }")
+.fullscreen-container.mb-8.p-4.rounded-xl.transition-all.duration-800.ease-out(ref="screen" :style="{ backgroundColor: mix.current }")
   full-screen.absolute.top-2.right-2(:el="screen")
   svg.min-h-xl.max-h-3xl.w-full(
     version="1.1",
@@ -90,6 +91,7 @@ function onDragS(drag) {
     text-anchor="middle",
     dominant-baseline="middle"
     style="touch-action: pinch-zoom; user-select:none"
+    :style="{color: mix.dark ? 'white': 'black'}"
     )
     defs
       linearGradient#sat(x1="0" x2="0" y1="0" y2="1")
@@ -186,11 +188,12 @@ function onDragS(drag) {
           cy="50"
           r="18"
         )
-        color-svg-info(:color="mix.current" :y="40")
+        color-svg-info(transform="scale(0.8) translate(12,5)" :color="mix.current" :y="40")
         text(
           x="50"
-          y="63"
+          y="64"
           font-size="4"
+          fill="currentColor"
         ) {{ mix.hue.toFixed(0) }}&deg;
     g#l-range.cursor-pointer
       rect#light(
@@ -214,7 +217,8 @@ function onDragS(drag) {
           font-weight="bold"
           font-size="3px"
           x="105"
-          y="-2"
+          y="-3"
+          fill="currentColor"
         ) L {{ mix.light.toFixed(1) }}
     g#s-range.cursor-pointer
       rect#sat(
@@ -235,10 +239,11 @@ function onDragS(drag) {
           stroke-linecap="round"
         )
         text(
+          fill="currentColor"
           font-weight="bold"
           font-size="3px"
           x="-5"
-          y="-2"
+          y="-3"
         ) {{ paramNames[mix.space][1] }} {{ mix.sat.toFixed(1) }}
   .flex.flex-wrap.items-center.justify-center(:style="{ color: mix.info.dark ? '#FFF' : '#000' }")
     .p-2.font-bold.text-xl Harmony

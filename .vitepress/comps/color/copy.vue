@@ -1,5 +1,4 @@
 <script setup>
-import { useClipboard } from '@vueuse/core'
 const props = defineProps({
 	text: String
 })

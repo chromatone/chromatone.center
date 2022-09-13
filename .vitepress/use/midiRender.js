@@ -66,6 +66,7 @@ export function createAndDownloadBlobFile(body, filename, extension = "mid") {
       const url = URL.createObjectURL(blob);
       link.setAttribute("href", url);
       link.setAttribute("download", fileName);
+      link.setAttribute("target", "_blank");
       link.style.visibility = "hidden";
       document.body.appendChild(link);
       link.click();

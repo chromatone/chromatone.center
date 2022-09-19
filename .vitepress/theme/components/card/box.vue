@@ -37,18 +37,19 @@ const hoverShadow = computed(() => `
 </script>
 
 <template lang="pug">
-.block
+.block(
+  :style="{boxShadow: shadow}"
+)
   slot(:color="color")
 </template>
 
 <style lang="postcss" scoped>
 .block {
   @apply rounded-2xl overflow-hidden transition-all duration-150;
-  box-shadow: v-bind(shadow);
 
   &:hover {
     @apply shadow-xl;
-    box-shadow: v-bind(hoverShadow);
+    /* box-shadow: v-bind(hoverShadow); */
   }
 }
 </style>

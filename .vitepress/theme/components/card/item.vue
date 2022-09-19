@@ -6,14 +6,13 @@ const props = defineProps({
   item: Object,
   color: String
 });
-const theColor = computed(() => props.color);
 </script>
 
 <template lang="pug">
 .crd(
   :title="item.lastModified",
   )
-  a.container.no-underline(:href="item.path" :class="{ 'pt-32': item?.cover }")
+  a.container.no-underline(:href="item.path" :class="{ 'pt-32': item?.cover, backgroundColor: color }")
     .cover(v-if="item?.cover", :style="{ backgroundImage: `url(${item.cover})` }") 
     .info
       .title
@@ -40,7 +39,6 @@ const theColor = computed(() => props.color);
   & .container {
     @apply flex flex-wrap min-w-full items-stretch w-full relative;
     flex: 1 1 100%;
-    background-color: v-bind(theColor);
   }
 
   & .info {

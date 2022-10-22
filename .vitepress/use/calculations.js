@@ -26,7 +26,9 @@ export function pitchFreq(
 }
 
 export function pitchColor(pitch = 0, octave, velocity = 1, alpha = 1) {
-  octave = octave || Math.floor(pitch / 12) + 4
+  if (octave === undefined) {
+    octave = Math.floor(pitch / 12) + 4
+  }
   return `hsla(${(pitch % 12) * 30},${velocity * 100}%,${Math.abs(octave + 2) * 8
     }%,${alpha})`
 }

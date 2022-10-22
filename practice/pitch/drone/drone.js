@@ -203,7 +203,7 @@ export function useVoice(interval) {
     });
   }
 
-  onUnmounted(() => {
+  onBeforeUnmount(() => {
     if (va.synth) va.synth.triggerRelease();
   });
 

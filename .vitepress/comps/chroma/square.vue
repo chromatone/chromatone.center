@@ -20,6 +20,10 @@ const state = reactive({
   height: 100
 })
 
+const squarePositions = [
+  [0, 0], [1, 0], [2, 0], [3, 0], [3, 1], [3, 2], [3, 3], [2, 3], [1, 3], [0, 3], [0, 2], [0, 1]
+]
+
 const actualPitch = computed(() => {
   if (props.pitch === 0 || props.pitch) {
     return props.pitch
@@ -37,20 +41,7 @@ function getRect(n, w = state.width, h = state.height) {
     posY = Math.floor(n / 4) + 1
     if (n > 3 && n < 8) { posX = 3 - posX }
   } else if (props.mode == 'O') {
-    switch (n) {
-      case 0: posX = 0; posY = 0; break;
-      case 1: posX = 1; posY = 0; break;
-      case 2: posX = 2; posY = 0; break;
-      case 3: posX = 3; posY = 0; break;
-      case 4: posX = 3; posY = 1; break;
-      case 5: posX = 3; posY = 2; break;
-      case 6: posX = 3; posY = 3; break;
-      case 7: posX = 2; posY = 3; break;
-      case 8: posX = 1; posY = 3; break;
-      case 9: posX = 0; posY = 3; break;
-      case 10: posX = 0; posY = 2; break;
-      case 11: posX = 0; posY = 1; break;
-    }
+    [posX, posY] = squarePositions[n]
   }
   return `translate(${posX * w / 4},${posY * h / 4})`
 }

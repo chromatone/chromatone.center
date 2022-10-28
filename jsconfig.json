@@ -1,6 +1,9 @@
 {
+	"allowJs": true,
   "vueCompilerOptions": {
-    "experimentalDisableTemplateSupport": true
+		"plugins": [
+			"@volar/vue-language-plugin-pug"
+		]
   },
   "compilerOptions": {
 		"baseUrl": ".",

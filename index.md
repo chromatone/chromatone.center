@@ -8,7 +8,7 @@ altActionText: Войти
 
 ---
 
-<svg-flower />
+<chroma-flower />
 
 # Visual music language to learn, explore and express with
 

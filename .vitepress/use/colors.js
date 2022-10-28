@@ -10,6 +10,34 @@ import hwbPlugin from "colord/plugins/hwb";
 
 extend([mixPlugin, lchPlugin, namesPlugin, labPlugin, cmykPlugin, hwbPlugin]);
 
+export const defaultScheme = Array(12).fill(true).map((v, i) => colord(pitchColor(i)).toHex())
+
+export const scheme = reactive({
+  default: [...defaultScheme],
+  custom: useStorage('custom-colors', [...defaultScheme]),
+  isDefault: computed(() => scheme.custom.every((v, i) => v == defaultScheme[i])),
+  customize: false,
+  reset() {
+    scheme.custom = [...defaultScheme]
+  }
+})
+
+export function schemeColor(pitch = 0, octave = 2, velocity = 1, alpha = 1) {
+  const diff = octave - 2
+  if (scheme.custom[pitch] != scheme.default[pitch]) {
+    let c = colord(scheme.custom[pitch])
+    if (diff >= 0) {
+      c = c.lighten(diff * 0.1)
+    } else {
+      c = c.darken(diff * 0.1)
+    }
+    return c.toHex()
+  } else {
+    return pitchColor(pitch, octave, velocity, alpha)
+  }
+}
+
+
 export function lchToHsl(n = 0, total = 12, a = 1, s = 20, lightness = 60) {
   let lch = `lch(${lightness}% ${s} ${n * (360 / total)} / ${a})`;
   let hsl = colord(lch).toHslString();

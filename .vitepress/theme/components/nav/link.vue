@@ -8,7 +8,7 @@ const props = defineProps(['item'])
   a.item(:href="item.path") {{ item.title }}
 </template>
 
-<style scoped >
+<style scoped lang="postcss">
 .item {
   @apply block border-0 px-3 py-1.5 w-full text-left font-$font-family-base font-semibold text-$c-text whitespace-nowrap bg-transparent cursor-pointer lg_(border-b-2px border-transparent px-0 font-normal text-0.9rem);
 }

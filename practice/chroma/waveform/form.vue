@@ -1,5 +1,5 @@
 <script setup>
-import { pitchColor } from '#use/calculations'
+import { noteColor } from "#use/colors"
 import { notes } from '#use/theory'
 import { useTimestamp, onKeyStroke } from '@vueuse/core'
 import { chromaColorMix } from "#use/colors.js";
@@ -112,7 +112,7 @@ const sumColor = computed(() => {
       :key="note"
       @click="select(pitch)"
       :class="{ active: activeNotes[pitch] }"
-      :style="{ backgroundColor: activeNotes[pitch] ? pitchColor(pitch) : note.length == 2 ? '#333' : '#aaa' }"
+      :style="{ backgroundColor: activeNotes[pitch] ? noteColor(pitch) : note.length == 2 ? '#333' : '#aaa' }"
     ) {{ note }}
   .p-4.flex.flex-wrap.items-center
     .is-group.flex
@@ -178,7 +178,7 @@ const sumColor = computed(() => {
       :key="n"
     )
       polyline(
-        :stroke="pitchColor(n)"
+        :stroke="noteColor(n)"
         :points="waves[n]"
         stroke-width="2"
         fill="none"
@@ -188,7 +188,7 @@ const sumColor = computed(() => {
         :cy="400"
         :transform="`translate(0,${computeSine(n, numPoints - 1) * 100})`"
         r="6"
-        :fill="pitchColor(n)"
+        :fill="noteColor(n)"
       )
     polyline(
       :stroke="sumColor.hsl"

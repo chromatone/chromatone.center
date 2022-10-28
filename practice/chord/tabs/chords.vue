@@ -2,8 +2,8 @@
 import stringTab from './tab.vue'
 import tabNeck from './neck.vue'
 
-import { rotateArray, pitchColor } from '#use/calculations'
-
+import { rotateArray } from '#use/calculations'
+import { noteColor } from '#use/colors'
 import { globalScale } from '#use/chroma'
 import ukulele from '#db/ukulele.json'
 import guitar from '#db/guitar.json'
@@ -86,7 +86,7 @@ function isInScale(list) {
     .text-xl.font-bold.mb-2 Chord
     .flex.flex-wrap.justify-center.my-2
       button.note(
-        :style="{ backgroundColor: pitchColor(k, 3, rotateArray(globalScale.full?.chroma, -globalScale.tonic)[k] == '1' ? 1 : 0.05) }"
+        :style="{ backgroundColor: noteColor(k, 3, rotateArray(globalScale.full?.chroma, -globalScale.tonic)[k] == '1' ? 1 : 0.05) }"
         :class="{ active: state.key == key }"
         v-for="(key, k) in state.instrument.keys" :key="key"
         @click="state.pitch = k"

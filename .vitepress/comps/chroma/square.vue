@@ -1,5 +1,12 @@
 <script setup>
+import { rotateArray, getCircleCoord } from '#use/calculations'
+import { colord } from 'colord'
+import { chromaColorMix, noteColor } from "#use/colors.js";
+import { chordType, scaleType, intervals, notes } from '#use/theory'
+import { playChroma, stopChroma, globalScale } from '#use/chroma'
+
 const emit = defineEmits(['update:chroma'])
+
 const props = defineProps({
   pitch: { type: Number, default: null },
   chroma: { type: String, default: '1001000100101' },
@@ -8,11 +15,6 @@ const props = defineProps({
   roman: { type: String, default: '' },
   editable: { type: Boolean, default: false }
 });
-import { rotateArray, getCircleCoord, pitchColor } from '#use/calculations'
-import { colord } from 'colord'
-import { chromaColorMix } from "#use/colors.js";
-import { chordType, scaleType, intervals, notes } from '#use/theory'
-import { playChroma, stopChroma, globalScale } from '#use/chroma'
 const pressed = ref(false);
 
 const state = reactive({
@@ -90,7 +92,7 @@ svg.select-none.min-w-8em.m-2(
       rx="6"
       :width="state.width / 4 - 4"
       :height="state.height / 4 - 4"
-      :fill="colord(note == '1' ? pitchColor((n + actualPitch) % 12, 3) : notes[(n + globalScale.tonic) % 12].length != 2 ? 'hsl(0,0%,85%)' : 'hsl(0,0%,40%)').toHex()"
+      :fill="colord(note == '1' ? noteColor((n + actualPitch) % 12, 3) : notes[(n + globalScale.tonic) % 12].length != 2 ? 'hsl(0,0%,85%)' : 'hsl(0,0%,40%)').toHex()"
     )
     text(
       v-if="note == '1'"
@@ -125,8 +127,8 @@ svg.select-none.min-w-8em.m-2(
       :y="state.width / 4 + 2"
       :width="state.width / 2 - 4"
       :height="state.height / 2 - 4"
-      :fill="pitch === false ? 'none' : pitchColor(actualPitch, 3)"
-      :stroke="pitchColor(globalScale.tonic, 3, 1, 0.5)"
+      :fill="pitch === false ? 'none' : noteColor(actualPitch, 3)"
+      :stroke="noteColor(globalScale.tonic, 3, 1, 0.5)"
       stroke-width="2"
       )
     text(

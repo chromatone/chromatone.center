@@ -1,6 +1,6 @@
 <script setup>
 import { notes } from '#use/theory'
-import { pitchColor } from '#use/calculations'
+import { noteColor } from "#use/colors"
 const props = defineProps({
   accord: Object,
 });
@@ -14,7 +14,7 @@ function isInChord(n) {
 }
 
 function getNoteColor(n) {
-  if (isInChord(n % 12)) return pitchColor(n % 12)
+  if (isInChord(n % 12)) return noteColor(n % 12)
   else if (notes[n].length != 2) return 'hsla(0,0%,90%,1)'
   else return 'hsla(0,0%,40%,1)'
 }
@@ -60,4 +60,5 @@ svg.max-h-sm.w-full(
 </template>
 
 <style lang="postcss" scoped>
+
 </style>

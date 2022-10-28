@@ -1,6 +1,7 @@
 <script setup>
 import { Note, Interval, Pcset } from '@tonaljs/tonal'
-import { freqColor, freqPitch, rotateArray, pitchColor } from '#use/calculations'
+import { freqColor, freqPitch, rotateArray } from '#use/calculations'
+import { noteColor } from '#use/colors'
 import { colord } from 'colord'
 import { globalScale } from '#use/chroma'
 import { chordType, scaleType, notes } from '#use/theory'
@@ -45,7 +46,7 @@ function isInChord(note) {
   return Math.random() - 0.5 > 0 ? true : false
 }
 
-function noteColor(note, semitones) {
+function semitoneColor(note, semitones) {
   return colord(freqColor(Note.freq(Note.transpose(note, Interval.fromSemitones(semitones))))).toHex()
 }
 
@@ -56,7 +57,7 @@ function getNote(string, semitones) {
 
 <template lang="pug">
 .flex.flex-col.items-center.justify-center.rounded-3xl.m-2.py-2(
-  :style="{ backgroundColor: pitchColor(pitch, 3, 1, 0.3) }"
+  :style="{ backgroundColor: noteColor(pitch, 3, 1, 0.3) }"
 )
   .flex.justify-center
     .text-2x.font-bold {{ notes[pitch] }}{{ neck.title }}
@@ -113,7 +114,7 @@ function getNote(string, semitones) {
           circle(
             :opacity="neck.chroma[(n + string) % 12] == 1 ? 1 : 0"
             :r="neck.noteSize / 2 - 8"
-            :fill="pitchColor(n + string)"
+            :fill="semitoneColor(n + string)"
           )
           text(
             opacity="0"

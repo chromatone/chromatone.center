@@ -1,5 +1,6 @@
 <script setup>
-import { pitchColor, isInChroma, getCircleCoord, rotateArray } from '#use/calculations'
+import { isInChroma, getCircleCoord, rotateArray } from '#use/calculations'
+import { noteColor } from '#use/colors'
 import { lchToHsl, chromaColorMix } from "#use/colors.js";
 import { Chord, Note } from '@tonaljs/tonal'
 import { scaleType, chordType, notes } from '#use/theory'
@@ -91,7 +92,7 @@ function isInChord(n) {
 }
 
 function getNoteColor(n) {
-  if (isInChord(n % 12)) return pitchColor(n % 12)
+  if (isInChord(n % 12)) return noteColor(n % 12)
   else if (notes[n].length != 2) return 'hsla(0,0%,90%,1)'
   else return 'hsla(0,0%,10%,1)'
 }
@@ -163,7 +164,7 @@ svg.max-h-3xl.w-full.transition-all.duration-400.ease-in-out(
   )
     line.line(
       v-show="active == '1'"
-      :stroke="pitchColor(globalScale.tonic + i)"
+      :stroke="noteColor(globalScale.tonic + i)"
       stroke-linecap="round"
       stroke-width="10"
       style="mix-blend-mode: multiply"
@@ -217,7 +218,7 @@ svg.max-h-3xl.w-full.transition-all.duration-400.ease-in-out(
 
     )
     text(
-      :fill="pitchColor(globalScale.tonic)"
+      :fill="noteColor(globalScale.tonic)"
       x="50",
       y="50",
       font-weight="bold"
@@ -227,7 +228,7 @@ svg.max-h-3xl.w-full.transition-all.duration-400.ease-in-out(
       dominant-baseline="middle"
       ) {{ notes[globalScale.tonic] }}{{ !chord.empty ? chord.aliases[0] : '' }}
   text(
-    :fill="pitchColor(globalScale.tonic)"
+    :fill="noteColor(globalScale.tonic)"
     x="50",
     y="58",
     font-weight="normal"
@@ -239,7 +240,7 @@ svg.max-h-3xl.w-full.transition-all.duration-400.ease-in-out(
   text(
     v-if="!scaleType.get(scaleChroma).empty"
     @click="$emit('clearScale')"
-    :fill="pitchColor(globalScale.tonic)"
+    :fill="noteColor(globalScale.tonic)"
     x="50",
     y="63",
     font-weight="normal"
@@ -252,7 +253,7 @@ svg.max-h-3xl.w-full.transition-all.duration-400.ease-in-out(
   line.line(
     v-for="(line, i) in scaleLines",
     :key="i",
-    :stroke="pitchColor(line?.[1])"
+    :stroke="noteColor(line?.[1])"
     stroke-linecap="round"
     stroke-width="0.5"
     :x1="getCircleCoord(line?.[0], 12, 30).x",

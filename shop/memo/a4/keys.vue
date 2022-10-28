@@ -1,6 +1,6 @@
 <script setup>
 import { colord } from 'colord'
-import { pitchColor } from '#use/calculations'
+import { noteColor } from "#use/colors"
 import { notes, scales } from '#use/theory'
 const props = defineProps({
   chroma: { type: String, default: '100100010010' },
@@ -18,7 +18,7 @@ function isInChord(n) {
 }
 
 function getNoteColor(n) {
-  if (isInChord(n % 12)) return pitchColor(n % 12)
+  if (isInChord(n % 12)) return noteColor(n % 12)
   else if (scales.minor.steps[n]) return 'hsl(0,0%,90%)'
   else return 'hsl(0,0%,50%)'
 }
@@ -58,4 +58,5 @@ g
 </template>
 
 <style lang="postcss" scoped>
+
 </style>

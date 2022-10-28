@@ -1,7 +1,7 @@
 <script setup>
 import { isDark } from '#theme/composables/state'
 import { globalScale } from '#use/chroma'
-import { pitchColor } from '#use/calculations'
+import { noteColor } from "#use/colors"
 import { Frequency } from 'tone'
 import { Chord } from "@tonaljs/tonal"
 
@@ -69,7 +69,7 @@ g.col(
         :width="width / step.length - 2"
         :height="height / 25 - 2"
         rx="4"
-        :fill="pitchColor(cell + globalScale.tonic - 1, 3, doubleScale[c] == 1 ? 1 : 0.1, sub[c] ? 1 : 0.1)"
+        :fill="noteColor(cell + globalScale.tonic - 1, 3, doubleScale[c] == 1 ? 1 : 0.1, sub[c] ? 1 : 0.1)"
         @mousedown="sub[c] = !sub[c]"
       )
       line.line.pointer-events-none.transition-all.duration-200.ease-out(
@@ -79,7 +79,7 @@ g.col(
         :y2="10"
         :stroke-width="sub[c] ? 4 : 6"
         stroke-opacity="0.1"
-        :stroke="sub[c] ? 'black' : pitchColor(cell + globalScale.tonic - 1, 3, doubleScale[c] == 1 ? 1 : 0.1, sub[c] ? 1 : 0.5)"
+        :stroke="sub[c] ? 'black' : noteColor(cell + globalScale.tonic - 1, 3, doubleScale[c] == 1 ? 1 : 0.1, sub[c] ? 1 : 0.5)"
       )
   g.subs(
 

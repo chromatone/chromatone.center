@@ -1,7 +1,7 @@
 <script setup>
 import { midi, stopAll, midiAttack, midiRelease } from "#use/midi.js";
 import { onKeyStroke } from "@vueuse/core";
-import { pitchColor } from "#use/calculations";
+import { noteColor } from '#use/colors'
 import { synth } from "#use/synth.js";
 
 onKeyStroke(" ", (ev) => {
@@ -41,7 +41,7 @@ var isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
         @mousedown="midiAttack(midi.note)"
         @mouseup="midiRelease(midi.note)"
         v-if="midi.note?.name"
-        :style="{ borderColor: pitchColor(midi.note.pitch, midi.note.octA), color: pitchColor(midi.note.pitch, midi.note.octA) }"
+        :style="{ borderColor: noteColor(midi.note.pitch, midi.note.octA), color: noteColor(midi.note.pitch, midi.note.octA) }"
         ) 
         .w-2em {{ midi.note.name }} 
         .flex-1 {{ midi.note.accidental }}

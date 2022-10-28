@@ -1,7 +1,7 @@
 <script setup>
 import droneVoice from "./voice.vue";
 
-import { pitchColor } from "#use/calculations";
+import { noteColor } from "#use/colors";
 import { notes } from "#use/theory";
 import { useDrone } from "./drone.js";
 
@@ -53,10 +53,11 @@ const intervals = reactive({
     .notes.w-full.text-sm.font-bold.text-center.flex.flex-wrap
       .p-2.m-1.flex-1.cursor-pointer.rounded-xl(
         v-for="(note, pitch) in notes" :key="note"
-        :style="{ backgroundColor: pitchColor(pitch, 3, drone.pitch == pitch ? 1 : 0.2, drone.pitch == pitch ? 1 : 0.4) }"
+        :style="{ backgroundColor: noteColor(pitch, 3, drone.pitch == pitch ? 1 : 0.2, drone.pitch == pitch ? 1 : 0.4) }"
         @click="drone.pitch = pitch"
       ) {{ note }}
 </template>
 
 <style lang="postcss" scoped>
+
 </style>

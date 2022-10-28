@@ -4,7 +4,7 @@ import CellInfo from './info.vue'
 import { context, start } from 'tone'
 import { useSynth } from './synth.js'
 import { notes } from '#use/theory'
-import { pitchColor } from '#use/calculations'
+import { noteColor } from "#use/colors";
 
 
 const props = defineProps({
@@ -51,7 +51,7 @@ const dragHandler = (dragEvent) => {
   }
 }
 
-const color = computed(() => pitchColor(props.pitch, props.octave))
+const color = computed(() => noteColor(props.pitch, props.octave))
 
 const textColor = computed(() => {
   // here's a nice algo for HEX colors https://codepen.io/cferdinandi/pen/Yomroj 

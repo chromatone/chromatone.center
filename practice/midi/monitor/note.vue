@@ -1,5 +1,5 @@
 <script setup>
-import { pitchColor } from '#use/calculations'
+import { noteColor } from "#use/colors"
 const props = defineProps({
   note: Object,
   active: Boolean
@@ -43,7 +43,7 @@ function change() {
   @touchend="stop()"
   @mousemove="change()"
   @touchmove="change()"
-  :style="{ backgroundColor: pitchColor(note.pitch, note.octA - 1, note.velocity) }"
+  :style="{ backgroundColor: noteColor(note.pitch, note.octA - 1, note.velocity) }"
   ) {{ note.name }}{{ note.accidental }} {{ note?.number }}
 </template>
 

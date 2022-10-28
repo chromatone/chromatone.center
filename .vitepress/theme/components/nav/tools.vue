@@ -1,6 +1,6 @@
 <script setup>
 import { useMidi } from "#use/midi.js";
-import { pitchColor } from "#use/calculations";
+import { noteColor } from '#use/colors'
 import { useAudio } from "#use/audio";
 import { useSynth, quantizeModes } from "#use/synth";
 import { tempo } from '#use/tempo'
@@ -35,7 +35,7 @@ button(
   :class="{ active: open.midi }"
   )
   mdi-midi-input.transition-all.duration-200.text-xl(
-    :style="{ color: pitchColor(midi.note?.pitch) }"
+    :style="{ color: noteColor(midi.note?.pitch) }"
     class="visible"
   )
 button.text-xl(

@@ -1,9 +1,9 @@
 <script setup>
-import { pitchColor, rotateArray } from '#use/calculations'
+import { rotateArray } from '#use/calculations'
 import { noteNames } from '#use/theory'
 import { globalScale, playChroma, stopChroma } from '#use/chroma'
 import { Progression, Chord } from "@tonaljs/tonal";
-
+import { noteColor } from '#use/colors'
 const props = defineProps({
   list: { type: Object, required: true },
   initial: { type: String, default: 'major' }
@@ -33,7 +33,7 @@ function getChords(degrees) {
 <template lang="pug">
 .flex.flex-col
   .flex.flex-col.items-stretch.my-2.p-8.border-2.rounded-xl(
-    :style="{ borderColor: pitchColor(globalScale.tonic, 2), backgroundColor: pitchColor(globalScale.tonic, 2, 1, 0.05) }"
+    :style="{ borderColor: noteColor(globalScale.tonic, 2), backgroundColor: noteColor(globalScale.tonic, 2, 1, 0.05) }"
     )
     .flex.flex-wrap.mx-auto.my-4
       control-choose(v-model="state.mode" :variants="variants")

@@ -1,5 +1,5 @@
 <script setup>
-import { pitchColor } from '#use/calculations'
+import { noteColor } from "#use/colors"
 const props = defineProps({
   track: Object,
 });
@@ -47,8 +47,9 @@ svg(
     height="10"
     rx="4"
     :y="note.midi"
-    :fill="pitchColor(note.midi + 3)")
+    :fill="noteColor(note.midi + 3)")
 </template>
 
 <style lang="postcss" scoped>
+
 </style>

@@ -1,5 +1,5 @@
 <script setup>
-import { pitchColor } from '#use/calculations'
+import { noteColor } from "#use/colors"
 import { useTuner } from '#use/tuner.js'
 
 const display = ref(null)
@@ -14,7 +14,7 @@ const background = computed(() => {
   const note = getRawNote(tuner.note?.frequency)
   if (!note) return '#333'
   const octave = tuner.note?.octave
-  const color = pitchColor(note, octave)
+  const color = noteColor(note, octave)
   return color
 })
 

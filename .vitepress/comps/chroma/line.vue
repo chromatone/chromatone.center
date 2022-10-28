@@ -1,5 +1,5 @@
 <script setup>
-import { pitchColor } from '#use/calculations'
+import { noteColor } from "#use/colors"
 import { globalScale } from '#use/chroma'
 import { notes } from '#use/theory'
 
@@ -29,7 +29,7 @@ svg.select-none.w-20rem.m-2(
       :cx="n * 8 + 4 + 2 * dist[n]"
       cy="3"
       r="2"
-      :fill="note == '1' ? pitchColor(n + globalScale.tonic, 3) : notes[(n + globalScale.tonic) % 12].length < 2 ? '#fff4' : '#0004'"
+      :fill="note == '1' ? noteColor(n + globalScale.tonic, 3) : notes[(n + globalScale.tonic) % 12].length < 2 ? '#fff4' : '#0004'"
       :stroke="note == '0' ? 'currentColor' : 'transparent'"
       stroke-width="0.25"
       :opacity="note == '1' ? 1 : 0.5" 
@@ -40,4 +40,5 @@ svg.select-none.w-20rem.m-2(
 
 
 <style lang="postcss" scoped>
+
 </style>

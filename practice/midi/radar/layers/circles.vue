@@ -1,7 +1,7 @@
 <script setup>
 import paper from "paper";
 import { midi } from "#use/midi";
-import { pitchColor } from "#use/calculations";
+import { noteColor } from '#use/colors'
 import { polarXY, radar } from "../radar.js";
 
 const props = defineProps({
@@ -39,7 +39,7 @@ watch(
 
 
       let line = new paper.Path.Line({
-        strokeColor: pitchColor(prevNote.value.pitch),
+        strokeColor: noteColor(prevNote.value.pitch),
         strokeWidth: props.lineWidth,
         from: points[0]?.position || p,
         to: p,
@@ -69,7 +69,7 @@ watch(
         center: p,
         radius: props.size,
         opacity: 0,
-        fillColor: pitchColor(note.pitch),
+        fillColor: noteColor(note.pitch),
         blendMode: props.blendMode,
       });
 
@@ -164,4 +164,5 @@ onBeforeUnmount(() => {
 </template>
 
 <style lang="postcss" scoped>
+
 </style>

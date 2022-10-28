@@ -1,5 +1,6 @@
 <script setup>
-import { pitchColor, rotateArray, getCircleCoord } from '#use/calculations'
+import { rotateArray, getCircleCoord } from '#use/calculations'
+import { noteColor } from '#use/colors'
 import { notes } from '#use/theory'
 import { useTuner } from '#use/tuner.js'
 import { useClamp } from '@vueuse/math'
@@ -74,7 +75,7 @@ function getAmmount(ammount) {
           style="transition: all 400ms ease-in-out;transform-box: fill-box; transform-origin: center center;"
           :r="radius",
           :style="{ transform: `scale(${0.5 + 10 * getAmmount(ammount)})` }"
-          :fill="pitchColor(i, 3, getAmmount(ammount))",
+          :fill="noteColor(i, 3, getAmmount(ammount))",
           filter="url(#blur)"
         )
         text(

@@ -1,7 +1,7 @@
 <script setup>
 import paper from 'paper'
 import { midi } from '#use/midi'
-import { pitchColor } from '#use/calculations'
+import { noteColor } from "#use/colors"
 import { polarXY, radar } from '../radar.js'
 
 const props = defineProps({
@@ -25,7 +25,7 @@ watch(() => midi.note, note => {
       from: polarXY(paper.view.center, props.in, radar.angle),
       to: polarXY(paper.view.center, props.out, radar.angle),
       opacity: 1,
-      strokeColor: pitchColor(note.pitch, 3, 0.2),
+      strokeColor: noteColor(note.pitch, 3, 0.2),
       strokeWidth: props.width,
       strokeCap: props.rounded ? 'round' : '',
     })
@@ -61,4 +61,5 @@ onBeforeUnmount(() => {
 </template>
 
 <style lang="postcss" scoped>
+
 </style>

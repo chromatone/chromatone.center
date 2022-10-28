@@ -1,5 +1,5 @@
 <script setup>
-import { pitchColor } from '#use/calculations'
+import { noteColor } from "#use/colors"
 import { useMidi } from '#use/midi'
 import { Utilities } from 'webmidi'
 const active = ref(false)
@@ -22,7 +22,7 @@ function sortNotes(notes) {
       .txt CH {{ ev.message?.channel }}
       .txt {{ ev.message?.type }}
       .txt {{ ev.data }}
-      .p-2(:style="{ backgroundColor: pitchColor(ev.message.dataBytes[0] + 3 || 0) }")
+      .p-2(:style="{ backgroundColor: noteColor(ev.message.dataBytes[0] + 3 || 0) }")
 
       .txt.whitespace-nowrap  {{ Utilities.toNoteIdentifier(ev.message.dataBytes[0] || 1) }}
       .txt {{ ((ev.message.dataBytes[1]) / 127).toFixed(2) }}

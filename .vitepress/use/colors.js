@@ -22,15 +22,12 @@ export const scheme = reactive({
   }
 })
 
-export function schemeColor(pitch = 0, octave = 2, velocity = 1, alpha = 1) {
+export function noteColor(pitch = 0, octave = 2, velocity = 1, alpha = 1) {
+  octave += Math.floor(pitch / 12)
   const diff = octave - 2
   if (scheme.custom[pitch] != scheme.default[pitch]) {
     let c = colord(scheme.custom[pitch])
-    if (diff >= 0) {
-      c = c.lighten(diff * 0.1)
-    } else {
-      c = c.darken(diff * 0.1)
-    }
+    c = c.lighten(diff * 0.1)
     return c.toHex()
   } else {
     return pitchColor(pitch, octave, velocity, alpha)

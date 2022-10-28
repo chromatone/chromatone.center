@@ -1,6 +1,6 @@
 <script setup>
 import { Midi } from '@tonejs/midi'
-import { pitchColor } from '#use/calculations'
+import { noteColor } from "#use/colors"
 import { now, PolySynth, Synth, Transport } from 'tone'
 import { midi } from '#use/midi'
 import { useAudio } from '#use/audio'
@@ -129,7 +129,7 @@ function play() {
         :y="calcY(note.number)"
         :width="note.duration * 1000 / (info.last - info.first)"
         :height="map.height / (info.top - info.bottom)"
-        :fill="pitchColor((note.number + 3) % 12)"
+        :fill="noteColor((note.number + 3) % 12)"
         )
   //- .flex.flex-wrap
   //-   .p-1 {{ info.top }} - {{ info.bottom }}

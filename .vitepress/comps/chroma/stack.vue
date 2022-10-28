@@ -1,4 +1,13 @@
 <script setup>
+import { rotateArray } from '#use/calculations'
+import { noteNames, chordType, scaleType, notes } from '#use/theory.js'
+import { playChroma, stopChroma, globalScale } from '#use/chroma'
+import { chromaColorMix, noteColor } from "#use/colors.js"
+import { Progression, Chord } from "@tonaljs/tonal"
+import { Frequency } from 'tone'
+import { synthOnce } from '#use/synth.js'
+import { midiOnce } from '#use/midi.js'
+
 const props = defineProps({
   pitch: { type: Number, default: null },
   chroma: { type: String, default: '1001000100101' },
@@ -7,14 +16,7 @@ const props = defineProps({
   roman: { type: String, default: '' },
 });
 
-import { pitchColor, rotateArray } from '#use/calculations'
-import { noteNames, chordType, scaleType, notes } from '#use/theory.js'
-import { playChroma, stopChroma, globalScale } from '#use/chroma'
-import { chromaColorMix } from "#use/colors.js"
-import { Progression, Chord } from "@tonaljs/tonal"
-import { Frequency } from 'tone'
-import { synthOnce } from '#use/synth.js'
-import { midiOnce } from '#use/midi.js'
+
 
 const minor = '101101011010'.split('')
 
@@ -57,7 +59,7 @@ function playNote(note = 0, octave = 0) {
     @mouseleave="stopChroma(chroma, actualPitch); pressed = false"
 )
   .p-2.text-center.mb-2.rounded-lg.text-white(
-    :style="{ backgroundColor: pitchColor(actualPitch, 3) }"
+    :style="{ backgroundColor: noteColor(actualPitch, 3) }"
   ) 
     .font-bold {{ pitch === false ? '' : typeof pitch == 'string' ? pitch : notes[actualPitch] }}{{ chord.aliases[0] }}
     .text-sm(v-if="props.roman") {{ props.roman }}
@@ -66,9 +68,10 @@ function playNote(note = 0, octave = 0) {
     @touchstart="hover(step)"
     v-for="(step, n) in steps"
     :key="n"
-    :style="{ backgroundColor: step.active ? pitchColor(step.pitch) : minor[step.pitch] == 1 ? 'hsla(0,0%,90%,0.8)' : 'hsla(0,0%,20%,0.6)' }"
+    :style="{ backgroundColor: step.active ? noteColor(step.pitch) : minor[step.pitch] == 1 ? 'hsla(0,0%,90%,0.8)' : 'hsla(0,0%,20%,0.6)' }"
     ) 
 </template>
 
 <style lang="postcss" scoped>
+
 </style>

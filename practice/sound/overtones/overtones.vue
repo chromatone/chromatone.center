@@ -2,7 +2,7 @@
 import overtonesGuitar from './guitar.vue'
 
 import { useStorage, useTimestamp } from '@vueuse/core'
-import { pitchColor, freqColor, pitchFreq } from '#use/calculations'
+import { freqColor, pitchFreq } from '#use/calculations'
 import { Synth, start, Frequency } from "tone";
 import { globalScale } from '#use/chroma'
 import { createChannel } from '#use/audio'

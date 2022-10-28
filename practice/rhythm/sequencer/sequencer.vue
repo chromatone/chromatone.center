@@ -1,5 +1,5 @@
 <script setup>
-import { pitchColor } from '#use/calculations'
+import { noteColor } from "#use/colors"
 import { Scale, ScaleType, Midi, Note } from '@tonaljs/tonal'
 import { useRafFn, onKeyStroke } from '@vueuse/core'
 import { scaleList, notes } from '#use/theory'
@@ -159,7 +159,7 @@ onBeforeUnmount(() => {
 });
 
 function borderColor(cell, r) {
-  return cell.active ? pitchColor(state.pitches[r]) : cell.cell == positions[r] ? isDark.value ? '#eee7' : '#3337' : '#4444'
+  return cell.active ? noteColor(state.pitches[r]) : cell.cell == positions[r] ? isDark.value ? '#eee7' : '#3337' : '#4444'
 }
 
 </script>
@@ -200,14 +200,14 @@ function borderColor(cell, r) {
     .row
       .title
     .row(v-for="(row, r) in rows" :key="row")
-      .title.m-1.rounded-md.shadow(:style="{ color: pitchColor(state.pitches[r]), backgroundColor: state.range[r].length > 2 ? '#0005' : '#aaa5' }") {{ state.range[r] }}
+      .title.m-1.rounded-md.shadow(:style="{ color: noteColor(state.pitches[r]), backgroundColor: state.range[r].length > 2 ? '#0005' : '#aaa5' }") {{ state.range[r] }}
       .cell(
         v-for="(cell, c) in row" :key="cell" 
         :id="`c${r}-${c}`"
         :style=`{
-          color: pitchColor(state.pitches[r]),
+          color: noteColor(state.pitches[r]),
           borderColor: borderColor(cell, r),
-          backgroundColor: cell.cell == positions[r] ? cell.active ? pitchColor(state.pitches[r], 3) : isDark ? '#0005' : '#fff5' : 'transparent',
+          backgroundColor: cell.cell == positions[r] ? cell.active ? noteColor(state.pitches[r], 3) : isDark ? '#0005' : '#fff5' : 'transparent',
           marginRight: c % 4 == 3 ? '12px' : '1px'
         }`
         :class="{ active: cell?.active, current: cell.cell == positions[r] }"
@@ -215,7 +215,7 @@ function borderColor(cell, r) {
         @mouseenter="toggle(r, c, false, $event)"
         )
         .dot(
-          :style="{ backgroundColor: cell.active ? pitchColor(state.pitches[r]) : cell.cell == positions[r] ? 'currentColor' : '#4448' }"
+          :style="{ backgroundColor: cell.active ? noteColor(state.pitches[r]) : cell.cell == positions[r] ? 'currentColor' : '#4448' }"
         )
 </template>
 
@@ -243,7 +243,7 @@ function borderColor(cell, r) {
   }
 
   &:hover {
-    @apply  !bg-dark-100 !dark_bg-dark-900;
+    @apply !bg-dark-100 !dark_bg-dark-900;
   }
 
   &.current .dot {

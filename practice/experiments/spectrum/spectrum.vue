@@ -3,7 +3,8 @@ import { reactive, computed } from 'vue'
 import { UserMedia, Waveform, FFT } from 'tone'
 import { useRafFn } from '@vueuse/core'
 import { useTuner } from '#use/tuner.js'
-import { freqPitch, pitchColor } from '#use/calculations'
+import { freqPitch } from '#use/calculations'
+import { noteColor } from '#use/colors'
 
 const screen = ref()
 
@@ -60,7 +61,7 @@ function initiate() {
         style="transition:all 500ms ease; "
         v-for="(bar, i) in audio.bands",
         :key="i",
-        :stroke="pitchColor(freqPitch(bar), 3, 1 - i / 256)"
+        :stroke="noteColor(freqPitch(bar), 3, 1 - i / 256)"
         stroke-linecap="round"
         stroke-width="0.5"
         :x1="512 * bar / 1500",
@@ -78,4 +79,5 @@ function initiate() {
 </template>
   
 <style lang="postcss" scoped>
+
 </style>

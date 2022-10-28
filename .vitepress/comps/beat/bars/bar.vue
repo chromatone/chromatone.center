@@ -4,8 +4,9 @@ import BarStep from './step.vue'
 import { useSequence } from '#use/sequence.js'
 import { isDark } from '#theme/composables/state.js'
 import { tempo } from '#use/tempo'
-import { pitchColor, rotateArray } from '#use/calculations'
+import { rotateArray } from '#use/calculations'
 import { levelColor } from '#use/colors'
+import { noteColor } from '#use/colors'
 
 const width = 920
 const pad = (1000 - width) / 2
@@ -201,7 +202,7 @@ svg.w-full(
         :cx="proportion * (steps.length) * width + pad"
         :cy="100"
         :r="!mutes[1] ? 8 : 4"
-        :fill="!mutes[1] ? pitchColor(tempo.pitch, 4) : 'currentColor'"
+        :fill="!mutes[1] ? noteColor(tempo.pitch, 4) : 'currentColor'"
       )
     g.bottom(transform="translate(40,290)")
       beat-control-bar.volume(

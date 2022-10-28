@@ -2,7 +2,8 @@
 import tonalNote from './note.vue'
 import tonalTrigger from './trigger.vue'
 
-import { rotateArray, pitchColor } from '#use/calculations'
+import { rotateArray } from '#use/calculations'
+import { noteColor } from '#use/colors'
 import { notes, scales } from '#use/theory'
 
 const allNotes = [...notes].map((n, i) => ({ name: n, pitch: i }))
@@ -101,11 +102,11 @@ svg#tonal-array.rounded-4xl(
       :transform="`translate(${((i - 1) * 2 * tonal.dx + ((n + 1) % 2) * tonal.dx)}, ${(n - 1) * dy})`"
       )
       polygon.chord-triangle( 
-        :fill="!hasMinor(note.pitch) ? pitchColor(note.pitch, 3) : pitchColor(note.pitch, 1, 0.2)", 
+        :fill="!hasMinor(note.pitch) ? noteColor(note.pitch, 3) : noteColor(note.pitch, 1, 0.2)", 
         points="0,0 160,0 80,138.56"
         )
       polygon.chord-triangle.major(
-        :fill="!hasMajor(note.pitch) ? pitchColor(note.pitch, 2) : pitchColor(note.pitch, 1, 0.2)", 
+        :fill="!hasMajor(note.pitch) ? noteColor(note.pitch, 2) : noteColor(note.pitch, 1, 0.2)", 
         points="0,0 160,0 80,-138.56"
         )
       text.chord-name(

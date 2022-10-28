@@ -1,5 +1,6 @@
 <script setup>
-import { pitchColor, rotateArray, getCircleCoord } from '#use/calculations'
+import { rotateArray, getCircleCoord } from '#use/calculations'
+import { noteColor } from '#use/colors'
 import { notes } from '#use/theory'
 import { chromaColorMix } from "#use/colors.js";
 import { colord } from 'colord'
@@ -17,7 +18,7 @@ g
     cx="0"
     cy="0"
     r="8"
-    :fill="pitch === false ? 'none' : colord(pitchColor(pitch)).toHex()"
+    :fill="pitch === false ? 'none' : colord(noteColor(pitch)).toHex()"
     )
   g(v-for="(note, n) in rotateArray(chroma.split(''), -tonic)" :key="note")
     line(
@@ -28,7 +29,7 @@ g
       v-if="note == '1'"
       stroke-linecap="square"
       stroke-width="3.92"
-      :stroke="note == '1' ? colord(pitchColor(n)).toHex() : 'none'"
+      :stroke="note == '1' ? colord(noteColor(n)).toHex() : 'none'"
       )
   g(
     v-for="(note, n) in rotateArray(chroma.split(''), -tonic)" :key="note"
@@ -38,7 +39,7 @@ g
       x="0" 
       y="0" 
       :r="note == '1' ? 2 : 1"
-      :fill="colord(note == '1' ? pitchColor(n) : notes?.[n].length != 2 ? 'hsl(0,0%,85%)' : 'hsl(0,0%,60%)').toHex()"
+      :fill="colord(note == '1' ? noteColor(n) : notes?.[n].length != 2 ? 'hsl(0,0%,85%)' : 'hsl(0,0%,60%)').toHex()"
     )
     text(
       v-if="note == '1'"
@@ -64,4 +65,5 @@ g
 </template>
 
 <style lang="postcss" scoped>
+
 </style>

@@ -1,8 +1,10 @@
 <script setup>
 import drawKeys from './keys.vue'
 
-import { pitchColor, rotateArray } from '#use/calculations'
+import { rotateArray } from '#use/calculations'
+import { noteColor } from "#use/colors";
 import { notes } from '#use/theory'
+
 const box = reactive({
   width: 210,
   height: 297,

@@ -1,4 +1,11 @@
 <script setup>
+import { globalScale, playChroma, stopChroma } from '#use/chroma'
+import { rotateArray } from '#use/calculations'
+import { noteColor } from '#use/colors'
+import { chordType, scaleType, notes } from '#use/theory'
+import { colord } from 'colord'
+
+
 const props = defineProps({
   chroma: { type: String, default: '100000000000' },
   letters: { type: Boolean, defualt: false },
@@ -10,10 +17,7 @@ const props = defineProps({
 
 const emit = defineEmits(['update:pitch'])
 
-import { globalScale, playChroma, stopChroma } from '#use/chroma'
-import { pitchColor, rotateArray } from '#use/calculations'
-import { chordType, scaleType, notes } from '#use/theory'
-import { colord } from 'colord'
+
 
 const keys = reactive({
   white: [3, 5, 7, 8, 10, 0, 2],
@@ -37,8 +41,8 @@ function isInScale(note) {
 
 function keyColor(key, off) {
   if (key == null) return 'transparent'
-  if (key == props.pitch) return colord(pitchColor(key, 4)).toHex()
-  return isInChroma(key) && !off ? colord(pitchColor(key, 3.5)).toHex() : notes[key].length != 2 ? '#eee' : '#999'
+  if (key == props.pitch) return colord(noteColor(key, 4)).toHex()
+  return isInChroma(key) && !off ? colord(noteColor(key, 3.5)).toHex() : notes[key].length != 2 ? '#eee' : '#999'
 }
 
 </script>
@@ -50,7 +54,7 @@ function keyColor(key, off) {
   @touchcancel="stopChroma(chroma, pitch)"
   @mouseup="stopChroma(chroma, pitch)"
   @mouseleave="stopChroma(chroma, pitch)"
-  :style="{ backgroundColor: pitchColor(pitch, 2, 1, 0.5) }"
+  :style="{ backgroundColor: noteColor(pitch, 2, 1, 0.5) }"
 )
   .flex.justify-center.my-2.px-2(v-if="title")
     .absolute.right-4 {{ roman }}
@@ -123,7 +127,7 @@ function keyColor(key, off) {
           r="45"
           :fill="keyColor(key)"
           stroke-width="8"
-          :stroke="isInScale(key) ? pitchColor(key, 3) : 'transparent'"
+          :stroke="isInScale(key) ? noteColor(key, 3) : 'transparent'"
         )
         text.pointer-events-none(
           v-show="isInChroma(key)"

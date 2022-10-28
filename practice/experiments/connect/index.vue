@@ -1,7 +1,7 @@
 <script setup>
 import { useGun, useUser, useSpace, SEA, gunAvatar, updateProfile } from '@gun-vue/composables'
 import { midi, playKey } from '#use/midi'
-import { pitchColor } from '#use/calculations'
+import { noteColor } from "#use/colors"
 import { notes } from '#use/theory'
 import { synthOnce } from '#use/synth'
 
@@ -120,7 +120,7 @@ watch(() => user.pub, () => {
       img.avatar(:src="gunAvatar({ pub: pub, size: 100 })")
       .p-2.capitalize.font-bold {{ guest.name }}
       .flex-1
-      .p-2.rounded-2xl.text-white.w-10.text-center.transition(:style="{ backgroundColor: pitchColor(guest.note - 9, 3) }") {{ notes[(guest.note - 9) % 12] }}
+      .p-2.rounded-2xl.text-white.w-10.text-center.transition(:style="{ backgroundColor: noteColor(guest.note - 9, 3) }") {{ notes[(guest.note - 9) % 12] }}
 </template> 
 
 <style lang="postcss" scoped>

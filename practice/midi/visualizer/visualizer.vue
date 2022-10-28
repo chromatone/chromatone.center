@@ -1,6 +1,6 @@
 <script setup>
 import { Midi } from '@tonejs/midi'
-import { pitchColor } from '#use/calculations'
+import { noteColor } from "#use/colors"
 import { now, PolySynth, Synth, Transport } from 'tone'
 import { createAndDownloadBlobFile } from '#use/midiRender'
 
@@ -123,7 +123,7 @@ function play() {
         :y="127 - note.midi"
         :width="note.duration"
         height="1"
-        :fill="pitchColor((note.midi + 3) % 12)"
+        :fill="noteColor((note.midi + 3) % 12)"
         )  
   svg-save(svg="visual")  
 </template>

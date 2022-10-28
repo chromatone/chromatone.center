@@ -1,5 +1,5 @@
 <script setup>
-import { pitchColor } from '#use/calculations'
+import { noteColor } from "#use/colors"
 import { notes } from '#use/theory'
 import { state } from './state'
 
@@ -66,7 +66,7 @@ onMounted(() => {
         }
 
         const pitchClass = (note.pitch + note.acc + 12) % 12
-        node.style.fill = pitchColor(pitchClass, note.octave)
+        node.style.fill = noteColor(pitchClass, note.octave)
 
       })
 

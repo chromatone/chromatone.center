@@ -1,7 +1,8 @@
 <script setup>
 import { notes } from '#use/theory'
-import { pitchColor, getCircleCoord } from '#use/calculations'
+import { getCircleCoord } from '#use/calculations'
 import { globalScale } from '#use/chroma'
+import { noteColor } from '#use/colors'
 </script>
 
 <template lang='pug'>
@@ -9,7 +10,7 @@ import { globalScale } from '#use/chroma'
   .notes.preserve-3d.perspect-3.origin-center.m-auto
     .note.bg-light-500.origin-top.cursor-pointer(
       v-for="(note, n) in notes" :key="note"
-      :style="{ backgroundColor: pitchColor(n + globalScale.tonic), transform: `translate3d(${getCircleCoord(n, 12, 200, 420).x}px,200px,${-getCircleCoord(n, 12, 5, -2).y}px)` }"
+      :style="{ backgroundColor: noteColor(n + globalScale.tonic), transform: `translate3d(${getCircleCoord(n, 12, 200, 420).x}px,200px,${-getCircleCoord(n, 12, 5, -2).y}px)` }"
       @click="globalScale.tonic = n"
       )
 </template>

@@ -1,6 +1,7 @@
 <script setup>
 import { Frequency } from 'tone'
-import { pitchColor, pitchFreq } from '#use/calculations'
+import { pitchFreq } from '#use/calculations'
+import { noteColor } from '#use/colors'
 import { synthAttack, synthRelease } from '#use/synth.js'
 import { playNote, stopNote } from '#use/chroma'
 
@@ -48,7 +49,7 @@ g.cursor-pointer
     :cy="0",  
     :stroke-width="tonic == note.pitch ? 4 : available ? 2 : 0",
     stroke="white"
-    :fill="playing ? pitchColor(note.pitch, 4) : available ? pitchColor(note.pitch, 3) : pitchColor(note.pitch, 2, 0.4)")
+    :fill="playing ? noteColor(note.pitch, 4) : available ? noteColor(note.pitch, 3) : noteColor(note.pitch, 2, 0.4)")
   text(
     style="user-select: none;pointer-events: none;"
     font-size="22px"
@@ -59,4 +60,5 @@ g.cursor-pointer
 </template>
 
 <style lang="postcss" scoped>
+
 </style>

@@ -1,6 +1,7 @@
 import { reactive, computed, watch, onMounted } from "vue";
 import { Transport, start, Frequency, Loop, Sampler, gainToDb } from "tone";
-import { pitchColor, freqPitch } from "#use/calculations";
+import { freqPitch } from "#use/calculations";
+import { noteColor } from '#use/colors'
 import { Note } from "@tonaljs/tonal";
 import { useStorage } from "@vueuse/core";
 import { useRafFn } from "@vueuse/core";
@@ -32,7 +33,7 @@ export const tempo = reactive({
   }),
   pitch: computed(() => freqPitch(tempo.hz)),
   digit: computed(() => (Frequency(tempo.hz).toMidi() + 12 * 10 + 3) % 12),
-  color: computed(() => pitchColor(tempo.digit)),
+  color: computed(() => noteColor(tempo.digit)),
   tap: {
     last: 0,
     diff: 0,

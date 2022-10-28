@@ -1,6 +1,6 @@
 <script setup>
 import { notes as noteList } from '#use/theory'
-import { pitchColor } from '#use/calculations'
+import { noteColor } from "#use/colors"
 import { colord } from 'colord'
 const props = defineProps({
   frets: Array,
@@ -21,9 +21,9 @@ const neck = reactive({
   dots: [3, 5, 7, 10]
 });
 const notes = reactive({
-  chordColor: computed(() => colord(pitchColor(props.pitch, 3)).toHex()),
+  chordColor: computed(() => colord(noteColor(props.pitch, 3)).toHex()),
   list: computed(() => props.midi.map(m => (m + 3) % 12)),
-  colors: computed(() => notes.list.map(n => colord(pitchColor(n, 3)).toHex()))
+  colors: computed(() => notes.list.map(n => colord(noteColor(n, 3)).toHex()))
 });
 </script>
 
@@ -149,4 +149,5 @@ svg.max-h-360px.min-w-100px.min-h-250px(
 </template>
 
 <style lang="postcss" scoped>
+
 </style>

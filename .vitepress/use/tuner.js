@@ -1,5 +1,5 @@
 import Aubio from "./aubio.js";
-import { pitchColor } from "#use/calculations";
+import { noteColor } from '#use/colors'
 import { initGetUserMedia } from '#use/audio'
 import Meyda from "meyda";
 
@@ -195,7 +195,7 @@ function freqColor(frequency) {
   const note = getRawNote(frequency);
   if (!note) return "#333";
   const octave = parseInt(note / 12) + 2;
-  const color = pitchColor(note, octave);
+  const color = noteColor(note, octave);
   return color;
 }
 

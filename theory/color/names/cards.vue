@@ -2,7 +2,7 @@
 <script setup>
 import colorCircles from './circles.vue'
 
-import { pitchColor } from '#use/calculations'
+import { noteColor } from "#use/colors"
 import { notes } from '#use/theory'
 import { colord } from 'colord'
 
@@ -45,7 +45,7 @@ const positions = [[0, 0], [1, 0], [2, 0], [3, 0], [3, 1], [3, 2], [3, 3], [2, 3
         width="98"
         height="98"
         rx="12"
-        :fill="pitchColor(p, 3)"
+        :fill="noteColor(p, 3)"
       )
       g.text.pointer-events-none(
         transform="translate(10 22)"
@@ -66,7 +66,7 @@ const positions = [[0, 0], [1, 0], [2, 0], [3, 0], [3, 1], [3, 2], [3, 3], [2, 3
         )
           text {{ p * 30 }}&deg;
           text(y="10") {{ cards[p].nm }}
-          text(y="22") {{ colord(pitchColor(p, 3)).toHex() }}
+          text(y="22") {{ colord(noteColor(p, 3)).toHex() }}
     //- g.center
     //-   color-circles(
     //-   transform="rotate(-45) scale(0.4)"

@@ -1,6 +1,6 @@
 <script setup>
-import { pitchColor, rotateArray } from '#use/calculations'
-import { chromaColorMix } from "#use/colors.js";
+import { rotateArray } from '#use/calculations'
+import { chromaColorMix, noteColor } from "#use/colors.js";
 import { Note, Pcset, Interval } from '@tonaljs/tonal'
 import { Frequency } from 'tone'
 import { synthOnce } from '#use/synth.js'
@@ -51,7 +51,7 @@ function toggleStep(i) {
 
 function calcBg(i, bit, hover) {
   if (bit == 1) {
-    return pitchColor((i + globalScale.tonic) % 12, 3)
+    return noteColor((i + globalScale.tonic) % 12, 3)
   } else if (state.minor[(i + globalScale.tonic) % 12] == '1') {
     return 'hsla(0,0%,80%,0.3)'
   } else {
@@ -104,7 +104,7 @@ function playNote(note = 0, octave = 0) {
 
 <template lang="pug">
 .flex.flex-col.items-start.border-2.rounded-xl.w-full.relative.shadow-lg(
-  :style="{ borderColor: pitchColor(globalScale.tonic, 2), backgroundColor: pitchColor(globalScale.tonic, 2, 1, 0.05) }"
+  :style="{ borderColor: noteColor(globalScale.tonic, 2), backgroundColor: noteColor(globalScale.tonic, 2, 1, 0.05) }"
 )
   .flex.flex-wrap.items-center.justify-stretch.w-full.px-2.text-sm
     .p-2px {{ chroma }}

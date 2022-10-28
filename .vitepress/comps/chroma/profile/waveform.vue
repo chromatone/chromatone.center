@@ -1,7 +1,7 @@
 <script setup>
-import { pitchColor, rotateArray } from '#use/calculations'
+import { rotateArray } from '#use/calculations'
 import { useStorage, useRafFn, useTransition, TransitionPresets } from '@vueuse/core'
-import { chromaColorMix } from "#use/colors.js";
+import { chromaColorMix, noteColor } from "#use/colors.js";
 import { useSynth } from '#use/synth.js'
 import { playChroma, stopChroma, globalScale } from '#use/chroma'
 const frequencies = []
@@ -134,7 +134,7 @@ const sumColor = computed(() => {
       :key="n"
     )
       polyline(
-        :stroke="pitchColor(n, 2)"
+        :stroke="noteColor(n, 2)"
         :points="waves[n]"
         stroke-width="4"
         fill="none"

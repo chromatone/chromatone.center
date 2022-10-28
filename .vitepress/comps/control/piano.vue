@@ -1,6 +1,8 @@
 <script setup>
-import { rotateArray, pitchColor } from '#use/calculations'
+import { rotateArray } from '#use/calculations'
+import { noteColor } from '#use/colors'
 import { notes } from '#use/theory'
+
 const emit = defineEmits(['update:pitch']);
 const props = defineProps({
   pitch: {
@@ -38,7 +40,7 @@ function isInChroma(pitch) {
     @mouseover="key.active = true"
     @mouseleave="key.active = false"
     @click="emit('update:pitch', key.pitch)"
-    :style="{ backgroundColor: isInChroma(key.pitch) || key.active || key.pitch == pitch ? pitchColor(key.pitch, 4, key.pitch == pitch ? 1 : 0.4) : '' }" 
+    :style="{ backgroundColor: isInChroma(key.pitch) || key.active || key.pitch == pitch ? noteColor(key.pitch, 4, key.pitch == pitch ? 1 : 0.4) : '' }" 
   ) {{ names ? key.name : '' }}
 </template>
 

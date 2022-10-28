@@ -1,5 +1,5 @@
 <script setup>
-import { pitchColor } from '#use/calculations';
+import { noteColor } from "#use/colors";
 import { midi } from '#use/midi';
 import { notes } from '#use/theory';
 import { colord } from 'colord';
@@ -11,7 +11,7 @@ const height = ref(300)
 
 <template lang='pug'>
 #screen.h-600px.w-full.transition(
-  :style="{ backgroundColor: pitchColor(midi?.note?.pitch, midi.note?.octA, 1, midi.note?.attack) }"
+  :style="{ backgroundColor: noteColor(midi?.note?.pitch, midi.note?.octA, 1, midi.note?.attack) }"
 )
 full-screen.absolute.right-4.top-4()
 

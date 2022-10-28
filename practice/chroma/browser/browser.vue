@@ -1,6 +1,6 @@
 <script setup>
 import { Pcset } from '@tonaljs/tonal'
-import { pitchColor } from '#use/calculations'
+import { noteColor } from "#use/colors"
 import { chordType, scaleType, notes } from '#use/theory'
 import { globalScale } from '#use/chroma'
 
@@ -47,7 +47,7 @@ const sorted = computed(() => {
       @click="globalScale.tonic = i"
       v-for="(bit, i) in '101101011010'"
       :key="i"
-      :style="{ backgroundColor: i == globalScale.tonic ? pitchColor(i) : bit == '1' ? 'hsla(0,0%,80%,0.4)' : 'hsla(0,0%,10%,0.4)' }"
+      :style="{ backgroundColor: i == globalScale.tonic ? noteColor(i) : bit == '1' ? 'hsla(0,0%,80%,0.4)' : 'hsla(0,0%,10%,0.4)' }"
       ) {{ notes[i] }}
   .control-row
     .control(@click="control.count = !control.count") Notes 

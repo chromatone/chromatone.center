@@ -1,5 +1,6 @@
 <script setup>
-import { pitchColor, freqColor } from '#use/calculations'
+import { freqColor } from '#use/calculations'
+import { noteColor } from "#use/colors";
 import { useSvgMouse } from '#use/mouse.js'
 import { MonoSynth, gainToDb, Gain } from 'tone'
 import { notes } from '#use/theory'
@@ -276,7 +277,7 @@ watch([() => freq.hz, () => mouse.pressed], (hz) => {
 
     )
       line(
-        :stroke="pitchColor(idx, 3)"
+        :stroke="noteColor(idx, 3)"
         opacity="1"
         stroke-width="1"
         x1="0"
@@ -289,7 +290,7 @@ watch([() => freq.hz, () => mouse.pressed], (hz) => {
         font-family="Commissioner, sans-serif"
         font-size="22px"
         text-anchor="start"
-        :fill="pitchColor(idx, 3)"
+        :fill="noteColor(idx, 3)"
         x="5"
         y="25"
       ) {{ intervals[idx] }}
@@ -297,7 +298,7 @@ watch([() => freq.hz, () => mouse.pressed], (hz) => {
         font-family="Commissioner, sans-serif"
         font-size="22px"
         text-anchor="start"
-        :fill="pitchColor(idx, 3)"
+        :fill="noteColor(idx, 3)"
         x="5"
         y="60"
       ) {{ fractions[idx] }}

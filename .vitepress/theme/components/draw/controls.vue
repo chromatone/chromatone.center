@@ -1,7 +1,7 @@
 <script setup>
 import { useDraw } from './draw'
 import { midi } from '#use/midi'
-import { pitchColor } from '#use/calculations'
+import { noteColor } from "#use/colors"
 import { useRoute } from 'vitepress'
 
 const route = useRoute()
@@ -31,7 +31,7 @@ function setBrushColor(color) {
 }
 
 watch(() => midi.note, note => {
-  brush.color = pitchColor(note.pitch)
+  brush.color = noteColor(note.pitch)
 })
 
 </script>

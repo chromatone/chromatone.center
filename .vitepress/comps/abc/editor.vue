@@ -2,7 +2,7 @@
 import { watchDebounced } from '@vueuse/core'
 import { state } from './state.js'
 import { notes } from '#use/theory'
-import { pitchColor } from '#use/calculations'
+import { noteColor } from "#use/colors"
 import tunes from './tunes.js'
 const notation = useStorage('abc-notes', tunes['kalinka']);
 
@@ -51,7 +51,7 @@ onMounted(() => {
         }
 
         const pitchClass = (note.pitch + note.acc + 12) % 12
-        node.style.fill = pitchColor(pitchClass, note.octave)
+        node.style.fill = noteColor(pitchClass, note.octave)
       } else {
         node.style.fill = 'currentColor'
       }

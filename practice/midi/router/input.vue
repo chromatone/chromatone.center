@@ -1,6 +1,6 @@
 <script setup>
 import { useMidi, forwardMidi } from "#use/midi.js";
-import { pitchColor } from "#use/calculations";
+import { noteColor } from "#use/colors";
 
 const props = defineProps({
   input: Object,
@@ -10,7 +10,7 @@ const props = defineProps({
 const { midi } = useMidi();
 
 const color = computed(() => props.input?.note?.velocity > 0
-  ? pitchColor(props.input.note?.pitch, null, 1, 0.4)
+  ? noteColor(props.input.note?.pitch, null, 1, 0.4)
   : "#7773")
 
 </script>

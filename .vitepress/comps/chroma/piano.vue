@@ -1,5 +1,6 @@
 <script setup>
-import { rotateArray, pitchColor } from '#use/calculations'
+import { rotateArray } from '#use/calculations'
+import { noteColor } from '#use/colors'
 import { notes } from '#use/theory'
 import { globalScale } from '#use/chroma'
 
@@ -45,7 +46,7 @@ function isInChroma(pitch) {
     @mouseover="key.active = true"
     @mouseleave="key.active = false"
     @click="globalScale.tonic = key.pitch"
-    :style="{ backgroundColor: keys.steps[key.pitch] == 1 || key.active || key.pitch == globalScale.tonic ? pitchColor(key.pitch, 4, key.pitch == globalScale.tonic ? 1 : 0.4) : '' }" 
+    :style="{ backgroundColor: keys.steps[key.pitch] == 1 || key.active || key.pitch == globalScale.tonic ? noteColor(key.pitch, 4, key.pitch == globalScale.tonic ? 1 : 0.4) : '' }" 
   ) {{ names ? key.name : '' }}
 </template>
 

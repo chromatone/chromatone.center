@@ -1,5 +1,6 @@
 <script setup>
-import { rotateArray, getCircleCoord, pitchColor } from '#use/calculations'
+import { rotateArray, getCircleCoord } from '#use/calculations'
+import { noteColor } from '#use/colors'
 import { colord } from 'colord'
 import { chromaColorMix } from "#use/colors.js";
 import { chordType, scaleType, notes } from '#use/theory'
@@ -56,7 +57,7 @@ svg.select-none.max-w-12em.my-4.mx-auto(
       v-if="note == '1'"
       stroke-linecap="square"
       stroke-width="3.92"
-      :stroke="note == '1' ? colord(pitchColor(n, 3)).toHex() : 'none'"
+      :stroke="note == '1' ? colord(noteColor(n, 3)).toHex() : 'none'"
       )
   g.cursor-pointer(
     v-for="(note, n) in actualChroma" :key="n"
@@ -67,7 +68,7 @@ svg.select-none.max-w-12em.my-4.mx-auto(
       x="0" 
       y="0" 
       :r="note == '1' ? 2 : 1"
-      :fill="colord(note == '1' ? pitchColor(n) : notes[n].length != 2 ? 'hsl(0,0%,85%)' : 'hsl(0,0%,60%)').toHex()"
+      :fill="colord(note == '1' ? noteColor(n) : notes[n].length != 2 ? 'hsl(0,0%,85%)' : 'hsl(0,0%,60%)').toHex()"
     )
     text(
       v-if="note == '1'"
@@ -89,7 +90,7 @@ svg.select-none.max-w-12em.my-4.mx-auto(
       cx="0"
       cy="0"
       r="5"
-      :fill="pitch === false ? 'none' : pitchColor(actualPitch, 3)"
+      :fill="pitch === false ? 'none' : noteColor(actualPitch, 3)"
       )
     text(
       y="0.3"

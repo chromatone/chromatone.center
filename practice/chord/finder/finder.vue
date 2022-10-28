@@ -1,7 +1,7 @@
 <script setup>
 import finderKeys from './keys.vue'
 
-import { pitchColor } from '#use/calculations'
+import { noteColor } from "#use/colors"
 import { notes, chords } from '#use/theory'
 
 const accord = reactive({
@@ -44,7 +44,7 @@ function compareChords(a, b) {
       @click="accord.info = chord",
       :class="{ active: chord?.handle == accord.info.handle }") {{ chord?.handle }}
   .text-6xl.my-4.text-center.font-bold(
-    :style="{ color: pitchColor(accord.root) }"
+    :style="{ color: noteColor(accord.root) }"
   ) {{ notes[accord?.root] }}{{ accord?.info.handle }}
   .relative.m-auto
     finder-keys#chord-keys(:accord="accord", @selectRoot="accord.root = $event")

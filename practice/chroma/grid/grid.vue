@@ -2,7 +2,7 @@
 import gridColumn from './column.vue'
 
 import { isDark } from '#theme/composables/state'
-import { pitchColor } from '#use/calculations'
+import { noteColor } from "#use/colors"
 import { notes } from '#use/theory'
 import { useLoop } from '#use/loop'
 import { Frequency } from 'tone'
@@ -58,7 +58,7 @@ const loop = useLoop(props.order);
       button.text-button(@click="loop.rotate()")
         la-angle-right
     .is-group.p-1.flex.mx-1.transition-all.duration-300.ease(
-      :style="{ borderColor: pitchColor(loop.pitch, loop.octave) }"
+      :style="{ borderColor: noteColor(loop.pitch, loop.octave) }"
     )
       control-change.w-5em(
         v-model="loop.octave"
@@ -67,7 +67,7 @@ const loop = useLoop(props.order);
         :max="7"
         :ratio="4"
         )
-          .font-bold.transition-all.duration-300.ease(:style="{ color: pitchColor(loop.pitch, loop.octave) }") {{ notes[loop.pitch] }}{{ loop.octave }}
+          .font-bold.transition-all.duration-300.ease(:style="{ color: noteColor(loop.pitch, loop.octave) }") {{ notes[loop.pitch] }}{{ loop.octave }}
     .is-group.p-1.flex.mx-1
       control-change.w-5em(
         v-model="loop.probability"
@@ -142,7 +142,7 @@ const loop = useLoop(props.order);
           x2="1000"
           :transform="`translate(0 ${grid.height / 2})`"
           stroke-width="4"
-          :stroke="pitchColor(loop.pitch)"
+          :stroke="noteColor(loop.pitch)"
         )
 
       grid-column(

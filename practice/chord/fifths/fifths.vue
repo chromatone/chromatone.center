@@ -1,8 +1,9 @@
 <script setup>
 
 import { useStorage } from '@vueuse/core'
-import { rotateArray, getCircleCoord, pitchColor } from '#use/calculations'
+import { rotateArray, getCircleCoord } from '#use/calculations'
 import { notes } from '#use/theory'
+import { noteColor } from '#use/colors'
 import { Chord, Note } from '@tonaljs/tonal'
 import { playNote, stopNote } from '#use/chroma'
 
@@ -76,13 +77,13 @@ function stopChord(note, qual = 'major') {
           :radius="40 - 12 * getRadius(qual)"
           :thickness="10"
           :op="Math.abs(tonic - i) == 11 || Math.abs(tonic - i) % 12 <= 1 ? 0.8 : 0.1"
-          :fill="Math.abs(tonic - i) == 11 || Math.abs(tonic - i) % 12 <= 1 ? pitchColor(note.pitch) : pitchColor(note.pitch, 4, 1)"
+          :fill="Math.abs(tonic - i) == 11 || Math.abs(tonic - i) % 12 <= 1 ? noteColor(note.pitch) : noteColor(note.pitch, 4, 1)"
         )
         circle(
           :cx="getCircleCoord(i, 12, 42 - getRadius(qual) * 26).x",
           :cy="getCircleCoord(i, 12, 42 - getRadius(qual) * 26).y",
           :r="2"
-          :fill="pitchColor(note.pitch, 4, 1, 1)"
+          :fill="noteColor(note.pitch, 4, 1, 1)"
           @click="tonic = i; scaleType = qual"
           class="opacity-20 hover_opacity-80"
         )
@@ -91,7 +92,7 @@ function stopChord(note, qual = 'major') {
           :cx="getCircleCoord(i, 12, 35 - getRadius(qual) * 12).x",
           :cy="getCircleCoord(i, 12, 35 - getRadius(qual) * 12).y",
           r="5",
-          :fill="Math.abs(tonic - i) == 11 || Math.abs(tonic - i) % 12 <= 1 ? pitchColor(note.pitch) : pitchColor(note.pitch, 4, 1, 0.5)",
+          :fill="Math.abs(tonic - i) == 11 || Math.abs(tonic - i) % 12 <= 1 ? noteColor(note.pitch) : noteColor(note.pitch, 4, 1, 0.5)",
         )
         text(
           style="user-select:none;transition:all 300ms ease"
@@ -124,14 +125,14 @@ function stopChord(note, qual = 'major') {
         :cy="8"
         :r="2"
         v-if="scaleType != 'minor'"
-        :fill="pitchColor(majors[tonic].pitch)"
+        :fill="noteColor(majors[tonic].pitch)"
       )
       circle.transition-all.duration-300.cursor-pointer(
         :cx="50"
         :cy="34"
         :r="2"
         v-if="scaleType != 'major'"
-        :fill="pitchColor(minors[tonic].pitch)"
+        :fill="noteColor(minors[tonic].pitch)"
       )
       g(v-for="(level, idx) in steps[scaleType]" :key="idx")
         text.pointer-events-none(
@@ -149,4 +150,5 @@ function stopChord(note, qual = 'major') {
 </template>
 
 <style lang="postcss" scoped>
+
 </style>

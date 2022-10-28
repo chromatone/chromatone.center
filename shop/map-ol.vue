@@ -12,7 +12,7 @@ import { Tile as TileLayer, Vector as VectorLayer } from 'ol/layer';
 import PinchZoom from 'ol/interaction/PinchZoom';
 
 
-import { pitchColor } from '#use/calculations'
+import { noteColor } from "#use/colors";
 
 const props = defineProps({
   center: { type: Array, default: [7.89, 98.30] },
@@ -28,8 +28,8 @@ onMounted(() => {
     feature.setStyle(new Style({
       image: new Circle({
         radius: 6,
-        stroke: new Stroke({ color: pitchColor(pitch, 3), width: 2 }),
-        fill: new Stroke({ color: pitchColor(pitch, 4, 1, 0.3) }),
+        stroke: new Stroke({ color: noteColor(pitch, 3), width: 2 }),
+        fill: new Stroke({ color: noteColor(pitch, 4, 1, 0.3) }),
       }),
     }))
     return feature
@@ -50,7 +50,7 @@ onMounted(() => {
     })
     line.setStyle(new Style({
       stroke: new Stroke({
-        color: pitchColor(c % 12, 4, 1, 0.3),
+        color: noteColor(c % 12, 4, 1, 0.3),
         width: 2,
       }),
     }))

@@ -1,7 +1,7 @@
 <script setup>
 import compassCircle from './circle.vue'
 
-import { pitchColor } from '#use/calculations'
+import { noteColor } from "#use/colors"
 import { chromaColorMix } from '#use/colors.js'
 import { Chord, ScaleType, Interval } from '@tonaljs/tonal'
 import { chordType, scaleType, chordList, notes } from '#use/theory'

@@ -1,7 +1,7 @@
 <script setup>
-import { pitchColor, pitchFreq, getCircleCoord } from '#use/calculations'
+import { pitchFreq, getCircleCoord } from '#use/calculations'
 import { synthAttack, synthRelease } from '#use/synth.js'
-
+import { noteColor } from "#use/colors";
 import { colord } from 'colord'
 const props = defineProps({
   R: Number,
@@ -18,7 +18,7 @@ const props = defineProps({
 });
 
 const color = computed(() => {
-  return colord(pitchColor(props.note.pitch, props.level)).toHex()
+  return colord(noteColor(props.note.pitch, props.level)).toHex()
 })
 
 const active = ref(false)
@@ -96,4 +96,5 @@ g.tet(
 </template>
 
 <style lang="postcss" scoped>
+
 </style>

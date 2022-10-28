@@ -1,5 +1,5 @@
 <script setup>
-import { pitchColor, pitchFreq } from '#use/calculations'
+import { pitchFreq } from '#use/calculations'
 import { Frequency } from 'tone'
 import { synthAttack, synthRelease } from '#use/synth'
 import { midiPlay, midiStop } from '#use/midi'
@@ -62,7 +62,7 @@ polygon.chord-trigger(
   @mouseup="stopChord()", 
   @touchend="stopChord()", 
   @touchcancel="stopChord()"
-  :fill="playing ? pitchColor(note.pitch) : active ? pitchColor(note.pitch, 0.5) : pitchColor(note.pitch, -2, 0.1)",
+  :fill="playing ? noteColor(note.pitch) : active ? noteColor(note.pitch, 0.5) : noteColor(note.pitch, -2, 0.1)",
   :opacity="1"
   :stroke-width="active ? 4 : 0.5"
   stroke="hsla(0,0%,100%,0.5)"
@@ -70,4 +70,5 @@ polygon.chord-trigger(
 </template>
 
 <style lang="postcss" scoped>
+
 </style>

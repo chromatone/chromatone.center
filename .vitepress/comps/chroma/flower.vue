@@ -1,7 +1,7 @@
 <script setup>
 import { notes } from '#use/theory'
-import { defaultScheme, scheme, schemeColor } from '#use/colors'
-import { getCircleCoord, pitchColor } from '#use/calculations'
+import { defaultScheme, scheme, noteColor } from '#use/colors'
+import { getCircleCoord } from '#use/calculations'
 import { midi, playKey } from '#use/midi'
 import { globalScale } from '#use/chroma'
 import { colord } from "colord";
@@ -57,7 +57,7 @@ watchThrottled(loaded, l => {
 
 <template lang='pug'>
 .max-w-150.mx-auto.w-full.relative.flex.items-center.flex-col.justify-center
-  button.absolute.text-2xl.opacity-30.hover_opacity-100.transition.cursor-pointer(
+  button.absolute.text-xl.opacity-30.hover_opacity-100.hover_scale-110.transition.cursor-pointer.transform(
     v-tooltip.bottom="'Customize colors'"
     aria-label="Customize colors sitewide"
     @click="scheme.customize = !scheme.customize"
@@ -145,7 +145,7 @@ watchThrottled(loaded, l => {
             )
             circle(
               style="transition: all 100ms ease-out"
-              :fill="schemeColor(pitch, midi.activeChroma[pitch] ? 4 : 2)"
+              :fill="noteColor(pitch, midi.activeChroma[pitch] ? 4 : 2)"
               :r="size / 12"
               )
             text.transition(

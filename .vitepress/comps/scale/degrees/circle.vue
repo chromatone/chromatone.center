@@ -1,7 +1,8 @@
 <script setup>
 import { intervals } from '#use/theory'
 import { globalScale } from '#use/chroma'
-import { pitchColor, getCircleCoord, rotateArray } from '#use/calculations'
+import { noteColor } from '#use/colors'
+import { getCircleCoord, rotateArray } from '#use/calculations'
 import { notes } from '#use/theory'
 
 const allNotes = [...notes].map((n, i) => ({ name: n, pitch: i }))
@@ -165,7 +166,7 @@ svg.select-none.m-2(
   )
     circle.transition-all.duration-300.ease(
       :r="noteSize"
-      :fill="chroma.split('')[n] == 1 ? pitchColor(note.pitch, 3) : note.name.length == 2 ? '#5552' : '#ccc2'"
+      :fill="chroma.split('')[n] == 1 ? noteColor(note.pitch, 3) : note.name.length == 2 ? '#5552' : '#ccc2'"
     )
     text(font-size="25" fill="currentColor") 
       tspan(  
@@ -184,7 +185,7 @@ svg.select-none.m-2(
       :thickness="60"
       :from="n * 30 - 15"
       :to="n * 30 + 15"
-      :fill="chroma.split('')[n] == 1 ? pitchColor(note.pitch, 3) : note.name.length == 2 ? '#5552' : '#ccc2'"
+      :fill="chroma.split('')[n] == 1 ? noteColor(note.pitch, 3) : note.name.length == 2 ? '#5552' : '#ccc2'"
     )
     text(
       :x="getCircleCoord(n, 12, pathIn, 1000).x"
@@ -235,5 +236,6 @@ svg.select-none.m-2(
 
 
 <style lang="postcss" scoped>
+
 </style>
 

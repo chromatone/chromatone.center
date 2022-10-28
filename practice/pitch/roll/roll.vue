@@ -1,5 +1,5 @@
 <script setup>
-import { pitchColor, rotateArray } from '#use/calculations'
+import { rotateArray } from '#use/calculations'
 import { useTuner } from '#use/tuner'
 import { onKeyStroke } from '@vueuse/core'
 

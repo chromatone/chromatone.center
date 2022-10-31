@@ -98,7 +98,7 @@ function keyColor(key, off) {
           v-show="isInChroma(key)"
           y="250"
           x="45"
-          :fill="!isInChroma(key) ? 'black' : 'white'"
+          :fill="colord(noteColor(key)).isDark() ? 'white' : 'black'"
         ) 
           tspan(    
             text-anchor="middle",
@@ -133,7 +133,7 @@ function keyColor(key, off) {
           v-show="isInChroma(key)"
           y="180"
           x="45"
-          fill="white"
+          :fill="colord(noteColor(key)).isDark() ? 'white' : 'black'"
         ) 
           tspan(    
             text-anchor="middle",

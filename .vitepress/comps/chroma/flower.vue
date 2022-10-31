@@ -151,9 +151,8 @@ watchThrottled(loaded, l => {
             text.transition(
               :font-size="size / 20"
               font-weight="bold"
-              fill="white"
-
-            )
+              :fill="colord(noteColor(pitch, midi.activeChroma[pitch] ? 4 : 2)).isDark() ? 'white' : 'black'"
+              )
               tspan(
                 dy="5"
                 text-anchor="middle" 

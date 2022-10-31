@@ -105,7 +105,7 @@ function playNote(note = 0, octave = 0) {
 <template lang="pug">
 .flex.flex-col.items-start.border-2.rounded-xl.w-full.relative.shadow-lg(
   :style="{ borderColor: noteColor(globalScale.tonic, 2), backgroundColor: noteColor(globalScale.tonic, 2, 1, 0.05) }"
-)
+  )
   .flex.flex-wrap.items-center.justify-stretch.w-full.px-2.text-sm
     .p-2px {{ chroma }}
     .flex-1

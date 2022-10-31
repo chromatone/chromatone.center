@@ -100,7 +100,7 @@ svg.select-none.min-w-8em.m-2(
       :x="state.width / 8"
       :font-size="8"
       font-weight="bold"
-      fill="white"
+      :fill="colord(noteColor(n + globalScale.tonic)).isDark() ? 'white' : 'black'"
       ) {{ notes[(n + actualPitch) % 12] }}
     text(
       v-if="note == '0'"

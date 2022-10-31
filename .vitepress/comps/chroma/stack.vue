@@ -7,6 +7,8 @@ import { Progression, Chord } from "@tonaljs/tonal"
 import { Frequency } from 'tone'
 import { synthOnce } from '#use/synth.js'
 import { midiOnce } from '#use/midi.js'
+import { colord } from 'colord'
+
 
 const props = defineProps({
   pitch: { type: Number, default: null },
@@ -59,8 +61,8 @@ function playNote(note = 0, octave = 0) {
     @mouseleave="stopChroma(chroma, actualPitch); pressed = false"
 )
   .p-2.text-center.mb-2.rounded-lg.text-white(
-    :style="{ backgroundColor: noteColor(actualPitch, 3) }"
-  ) 
+    :style="{ backgroundColor: noteColor(actualPitch, 3), color: colord(noteColor(actualPitch),3).isDark() ? 'white' : 'black' }"
+    )
     .font-bold {{ pitch === false ? '' : typeof pitch == 'string' ? pitch : notes[actualPitch] }}{{ chord.aliases[0] }}
     .text-sm(v-if="props.roman") {{ props.roman }}
   .py-6px.px-8.my-2px.w-full.text-sm.text-center.font-bold.rounded.transition-all.duration-300.ease.touch-none(

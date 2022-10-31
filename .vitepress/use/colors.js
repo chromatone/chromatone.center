@@ -28,7 +28,7 @@ export function noteColor(pitch = 0, octave = 2, velocity = 1, alpha = 1) {
   if (scheme.custom[pitch] != scheme.default[pitch]) {
     let c = colord(scheme.custom[pitch])
     c = c.lighten(diff * 0.1)
-    return c.toHex()
+    return c.alpha(alpha).toHex()
   } else {
     return pitchColor(pitch, octave, velocity, alpha)
   }

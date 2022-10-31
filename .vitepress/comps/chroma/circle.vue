@@ -75,7 +75,7 @@ svg.select-none.max-w-12em.my-4.mx-auto(
       y="0.3"
       font-size="2px"
       font-weight="bold"
-      fill="white"
+      :fill="colord(noteColor(n)).isDark() ? 'white' : 'black'"
       ) {{ notes[n] }}
   g.center.cursor-pointer(
     @mousedown="playChroma(chroma, actualPitch); pressed = true"
@@ -96,13 +96,13 @@ svg.select-none.max-w-12em.my-4.mx-auto(
       y="0.3"
       font-size="2px"
       font-weight="bold"
-      fill="white"
+      :fill="colord(noteColor(actualPitch)).isDark() ? 'white' : 'black'"
       ) {{ pitch === false ? '' : typeof pitch == 'string' ? pitch : notes[actualPitch] }}{{ chord.aliases[0] }}
     text(
       y="3"
       font-size="1.8px"
       font-weight="normal"
-      fill="white"
+      :fill="colord(noteColor(actualPitch)).isDark() ? 'white' : 'black'"
       ) {{ type }}
 </template>
 

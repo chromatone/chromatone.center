@@ -15,7 +15,7 @@ import PinchZoom from 'ol/interaction/PinchZoom';
 import { noteColor } from "#use/colors";
 
 const props = defineProps({
-  center: { type: Array, default: [7.89, 98.30] },
+  center: { type: Array, default: [98.348, 7.915] },
   cities: { type: Array, default: [] }
 })
 

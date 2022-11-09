@@ -1,6 +1,6 @@
 import { useRafFn } from "@vueuse/core"
 import { Meter, UserMedia, gainToDb, Gate, Compressor, StereoWidener } from "tone"
-import { createChannel } from "#use/audio"
+import { createChannel } from "#/use/audio"
 
 
 export const mic = reactive({

@@ -1,5 +1,5 @@
 import { Sampler, start, now } from 'tone'
-import { createChannel } from '#use/audio'
+import { createChannel } from '#/use/audio'
 
 
 let piano

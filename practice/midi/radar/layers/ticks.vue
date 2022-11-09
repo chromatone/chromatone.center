@@ -1,7 +1,7 @@
 <script setup>
 import paper from 'paper'
-import { midi } from '#use/midi'
-import { noteColor } from "#use/colors"
+import { midi } from '#/use/midi'
+import { noteColor } from "#/use/colors"
 import { polarXY, radar } from '../radar.js'
 
 const props = defineProps({

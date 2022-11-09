@@ -1,6 +1,6 @@
 <script setup>
-import { lchToHsl } from '#use/colors'
-import { isDark } from '#theme/composables/state'
+import { lchToHsl } from '#/use/colors'
+import { isDark } from '#/theme/composables/state'
 
 const props = defineProps({
   i: {

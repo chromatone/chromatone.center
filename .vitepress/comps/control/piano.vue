@@ -1,7 +1,7 @@
 <script setup>
-import { rotateArray } from '#use/calculations'
-import { noteColor } from '#use/colors'
-import { notes } from '#use/theory'
+import { rotateArray } from '#/use/calculations'
+import { noteColor } from '#/use/colors'
+import { notes } from '#/use/theory'
 
 const emit = defineEmits(['update:pitch']);
 const props = defineProps({

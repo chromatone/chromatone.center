@@ -1,6 +1,6 @@
 <script setup>
 import { useRafFn } from "@vueuse/core";
-import { midi } from "#use/midi.js";
+import { midi } from "#/use/midi.js";
 
 const screen = ref();
 

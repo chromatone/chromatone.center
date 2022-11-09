@@ -1,8 +1,8 @@
 <script setup>
-import { useSynth, quantizeModes } from "#use/synth";
-import { midi } from "#use/midi";
+import { useSynth, quantizeModes } from "#/use/synth";
+import { midi } from "#/use/midi";
 import { useCycleList } from '@vueuse/core'
-import { freqColor, pitchFreq } from '#use/calculations'
+import { freqColor, pitchFreq } from '#/use/calculations'
 
 const { synth, synthOnce, init, synthReleaseAll } = useSynth();
 

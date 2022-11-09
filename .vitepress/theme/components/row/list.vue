@@ -1,7 +1,7 @@
 <script setup>
 import { useRoute } from 'vitepress'
-import { pages } from '#theme/composables/pages'
-import { lchToHsl } from '#use/colors'
+import { pages } from '#/theme/composables/pages'
+import { lchToHsl } from '#/use/colors'
 
 const route = useRoute()
 

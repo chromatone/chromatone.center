@@ -1,8 +1,8 @@
 import { Frequency } from "tone";
 import { midiPlay, midiStop } from "./midi.js";
 import { synthOnce, synthAttack, synthRelease } from "./synth.js";
-import { rotateArray } from "#use/calculations";
-import { notes } from '#use/theory'
+import { rotateArray } from "#/use/calculations";
+import { notes } from '#/use/theory'
 import { Note, ChordType, ScaleType, Scale, Pcset } from "@tonaljs/tonal";
 
 const allNotes = [...notes].map((n, i) => ({ name: n, pitch: i }))

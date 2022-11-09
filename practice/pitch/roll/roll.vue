@@ -1,6 +1,6 @@
 <script setup>
-import { rotateArray } from '#use/calculations'
-import { useTuner } from '#use/tuner'
+import { rotateArray } from '#/use/calculations'
+import { useTuner } from '#/use/tuner'
 import { onKeyStroke } from '@vueuse/core'
 
 const draw = reactive({

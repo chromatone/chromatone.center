@@ -2,11 +2,11 @@
 import stringTab from './tab.vue'
 import tabNeck from './neck.vue'
 
-import { rotateArray } from '#use/calculations'
-import { noteColor } from '#use/colors'
-import { globalScale } from '#use/chroma'
-import ukulele from '#db/ukulele.json'
-import guitar from '#db/guitar.json'
+import { rotateArray } from '#/use/calculations'
+import { noteColor } from '#/use/colors'
+import { globalScale } from '#/use/chroma'
+import ukulele from '#/db/ukulele.json'
+import guitar from '#/db/guitar.json'
 import { useStorage } from '@vueuse/core'
 import { Chord } from '@tonaljs/tonal'
 

@@ -1,9 +1,9 @@
 <script setup>
 import pitchGrid from './grid.vue'
 
-import { lchToHsl } from '#use/colors'
-import { isDark } from '#theme/composables/state'
-import { renderMidi } from '#use/loop'
+import { lchToHsl } from '#/use/colors'
+import { isDark } from '#/theme/composables/state'
+import { renderMidi } from '#/use/loop'
 
 const loops = useStorage('pitch-bars', [1])
 

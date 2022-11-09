@@ -1,7 +1,7 @@
 <script setup>
 import { useSiblings, usePage } from '../../composables/pages'
-import { lchToHsl } from '#use/colors.js'
-import { isDark } from '#theme/composables/state'
+import { lchToHsl } from '#/use/colors.js'
+import { isDark } from '#/theme/composables/state'
 import { useRoute } from 'vitepress'
 
 const route = useRoute()

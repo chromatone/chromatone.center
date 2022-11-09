@@ -1,5 +1,5 @@
 <script setup>
-import { isDark } from '#theme/composables/state.js'
+import { isDark } from '#/theme/composables/state.js'
 </script>
 
 <template lang="pug">
@@ -77,4 +77,5 @@ g
 </template>
 
 <style lang="postcss" scoped>
+
 </style>

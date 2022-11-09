@@ -1,9 +1,9 @@
 <script setup>
-import { levelColor } from "#use/colors.js"
+import { levelColor } from "#/use/colors.js"
 import { colord } from 'colord'
 
-import { isDark } from '#theme/composables/state.js'
-import { tempo } from '#use/tempo'
+import { isDark } from '#/theme/composables/state.js'
+import { tempo } from '#/use/tempo'
 
 const props = defineProps({
   proportion: {

@@ -1,5 +1,5 @@
 <script setup>
-import { useParents } from '#theme/composables/pages'
+import { useParents } from '#/theme/composables/pages'
 import { useRoute } from 'vitepress'
 
 const route = useRoute()

@@ -1,7 +1,7 @@
 import { gainToDb, PanVol, MonoSynth, connect } from "tone";
-import { pitchFreq } from "#use/calculations";
+import { pitchFreq } from "#/use/calculations";
 import { state } from "./state.js";
-import { createChannel } from "#use/audio";
+import { createChannel } from "#/use/audio";
 
 
 

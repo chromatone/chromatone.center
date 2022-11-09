@@ -1,6 +1,6 @@
 <script setup>
-import { useMidi } from '#use/midi'
-import { noteColor } from "#use/colors"
+import { useMidi } from '#/use/midi'
+import { noteColor } from "#/use/colors"
 
 const { midi } = useMidi()
 </script>

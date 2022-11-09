@@ -1,9 +1,9 @@
 <script setup>
-import { noteColor } from "#use/colors"
-import { notes } from '#use/theory'
+import { noteColor } from "#/use/colors"
+import { notes } from '#/use/theory'
 import { useTimestamp, onKeyStroke } from '@vueuse/core'
-import { chromaColorMix } from "#use/colors.js";
-import { useSynth } from '#use/synth.js'
+import { chromaColorMix } from "#/use/colors.js";
+import { useSynth } from '#/use/synth.js'
 
 const frequencies = []
 for (let f = 0; f < 13; f++) {

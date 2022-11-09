@@ -1,9 +1,9 @@
 <script setup>
-import { rotateArray } from '#use/calculations'
+import { rotateArray } from '#/use/calculations'
 import { useStorage, useRafFn, useTransition, TransitionPresets } from '@vueuse/core'
-import { chromaColorMix, noteColor } from "#use/colors.js";
-import { useSynth } from '#use/synth.js'
-import { playChroma, stopChroma, globalScale } from '#use/chroma'
+import { chromaColorMix, noteColor } from "#/use/colors.js";
+import { useSynth } from '#/use/synth.js'
+import { playChroma, stopChroma, globalScale } from '#/use/chroma'
 const frequencies = []
 for (let f = 0; f < 13; f++) {
   frequencies[f] = Math.pow(2, f / 12)

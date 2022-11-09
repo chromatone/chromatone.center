@@ -1,6 +1,6 @@
-import { tempo } from "#use/tempo.js";
-import { rotateArray } from "#use/calculations";
-import { globalScale } from "#use/chroma";
+import { tempo } from "#/use/tempo.js";
+import { rotateArray } from "#/use/calculations";
+import { globalScale } from "#/use/chroma";
 import {
   Sequence,
   PanVol,
@@ -13,9 +13,9 @@ import {
   Frequency,
   Time,
 } from "tone";
-import { midiPlay } from "#use/midi";
-import { createAndDownloadBlobFile } from "#use/midiRender";
-import { createChannel } from '#use/audio'
+import { midiPlay } from "#/use/midi";
+import { createAndDownloadBlobFile } from "#/use/midiRender";
+import { createChannel } from '#/use/audio'
 
 const loops = reactive([]);
 

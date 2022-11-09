@@ -8,7 +8,7 @@ import {
   mimeExtMap,
   mimeType,
   getSupportedMimeTypes,
-} from "#use/cast";
+} from "#/use/cast";
 
 const camerasItems = computed(() => [
   {

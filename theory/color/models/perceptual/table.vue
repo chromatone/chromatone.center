@@ -1,5 +1,5 @@
 <script setup>
-import { lchToHsl, levelColor } from '#use/colors.js'
+import { lchToHsl, levelColor } from '#/use/colors.js'
 
 </script>
 
@@ -15,4 +15,5 @@ table.w-full.my-8
 </template>
 
 <style lang="postcss" scoped>
+
 </style>

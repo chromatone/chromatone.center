@@ -1,6 +1,6 @@
 <script setup>
-import { lchToHsl } from "#use/colors";
-import { pages } from "#theme/composables/pages";
+import { lchToHsl } from "#/use/colors";
+import { pages } from "#/theme/composables/pages";
 import { useData } from "vitepress";
 const { site } = useData();
 

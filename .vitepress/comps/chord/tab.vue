@@ -1,10 +1,10 @@
 <script setup>
 import { Note, Interval, Pcset } from '@tonaljs/tonal'
-import { freqColor, freqPitch, rotateArray } from '#use/calculations'
-import { noteColor } from '#use/colors'
+import { freqColor, freqPitch, rotateArray } from '#/use/calculations'
+import { noteColor } from '#/use/colors'
 import { colord } from 'colord'
-import { globalScale } from '#use/chroma'
-import { chordType, scaleType, notes } from '#use/theory'
+import { globalScale } from '#/use/chroma'
+import { chordType, scaleType, notes } from '#/use/theory'
 
 const props = defineProps({
   instrument: { type: String, default: 'ukulele' },

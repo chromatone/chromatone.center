@@ -1,11 +1,11 @@
 <script setup>
 import compassCircle from './circle.vue'
 
-import { noteColor } from "#use/colors"
-import { chromaColorMix } from '#use/colors.js'
+import { noteColor } from "#/use/colors"
+import { chromaColorMix } from '#/use/colors.js'
 import { Chord, ScaleType, Interval } from '@tonaljs/tonal'
-import { chordType, scaleType, chordList, notes } from '#use/theory'
-import { globalScale } from '#use/chroma'
+import { chordType, scaleType, chordList, notes } from '#/use/theory'
+import { globalScale } from '#/use/chroma'
 
 const screen = ref()
 

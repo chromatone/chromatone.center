@@ -1,8 +1,8 @@
 <script setup>
 import { Pcset } from '@tonaljs/tonal'
-import { noteColor } from "#use/colors"
-import { chordType, scaleType, notes } from '#use/theory'
-import { globalScale } from '#use/chroma'
+import { noteColor } from "#/use/colors"
+import { chordType, scaleType, notes } from '#/use/theory'
+import { globalScale } from '#/use/chroma'
 
 
 const tonic = useStorage('chroma-tonic', 0)

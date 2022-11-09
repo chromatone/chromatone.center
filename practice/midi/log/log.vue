@@ -1,6 +1,6 @@
 <script setup>
-import { noteColor } from "#use/colors"
-import { useMidi } from '#use/midi'
+import { noteColor } from "#/use/colors"
+import { useMidi } from '#/use/midi'
 import { Utilities } from 'webmidi'
 const active = ref(false)
 

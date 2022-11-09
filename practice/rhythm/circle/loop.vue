@@ -1,11 +1,11 @@
 <script setup>
 import LoopSector from './loop-sector.vue'
 
-import { getCircleCoord, rotateArray } from '#use/calculations'
-import { useSequence } from '#use/sequence.js'
-import { isDark } from '#theme/composables/state.js'
-import { levelColor } from "#use/colors.js"
-import { tempo } from '#use/tempo'
+import { getCircleCoord, rotateArray } from '#/use/calculations'
+import { useSequence } from '#/use/sequence.js'
+import { isDark } from '#/theme/composables/state.js'
+import { levelColor } from "#/use/colors.js"
+import { tempo } from '#/use/tempo'
 // import { useUrlSearchParams } from '@vueuse/core'
 
 const emit = defineEmits(['del', 'over', 'under', 'sound'])

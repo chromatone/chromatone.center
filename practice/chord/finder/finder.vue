@@ -1,8 +1,8 @@
 <script setup>
 import finderKeys from './keys.vue'
 
-import { noteColor } from "#use/colors"
-import { notes, chords } from '#use/theory'
+import { noteColor } from "#/use/colors"
+import { notes, chords } from '#/use/theory'
 
 const accord = reactive({
   root: 0,

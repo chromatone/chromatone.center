@@ -1,11 +1,11 @@
 <script setup>
 
 import { useStorage } from '@vueuse/core'
-import { rotateArray, getCircleCoord } from '#use/calculations'
-import { notes } from '#use/theory'
-import { noteColor } from '#use/colors'
+import { rotateArray, getCircleCoord } from '#/use/calculations'
+import { notes } from '#/use/theory'
+import { noteColor } from '#/use/colors'
 import { Chord, Note } from '@tonaljs/tonal'
-import { playNote, stopNote } from '#use/chroma'
+import { playNote, stopNote } from '#/use/chroma'
 
 const numFifths = [0, 7, 2, 9, 4, 11, 6, 1, 8, 3, 10, 5]
 const allNotes = notes.map((n, i) => ({ name: n, pitch: i }))

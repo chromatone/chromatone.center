@@ -1,7 +1,7 @@
 <script setup>
-import { scaleList, notes } from '#use/theory'
-import { globalScale } from '#use/chroma'
-import { noteColor } from "#use/colors"
+import { scaleList, notes } from '#/use/theory'
+import { globalScale } from '#/use/chroma'
+import { noteColor } from "#/use/colors"
 
 const sortedScales = computed(() => {
   return scaleList.sort((a, b) => {

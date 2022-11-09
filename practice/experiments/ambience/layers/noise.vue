@@ -14,7 +14,7 @@ import {
   Filter
 } from "tone";
 
-import { createChannel } from '#use/audio'
+import { createChannel } from '#/use/audio'
 
 const options = useStorage("ambient-options", {
   noise: {

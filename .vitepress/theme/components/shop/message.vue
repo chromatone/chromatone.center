@@ -1,5 +1,5 @@
 <script setup>
-import { useSiblings, usePage, pages } from '#theme/composables/pages'
+import { useSiblings, usePage, pages } from '#/theme/composables/pages'
 import { useRoute } from 'vitepress'
 
 const route = useRoute()
@@ -21,4 +21,5 @@ card-box.p-4.mt-2.mb-12.flex.flex-col.max-w-65ch.mx-auto.text-center(
 </template>
 
 <style lang="postcss" scoped>
+
 </style>

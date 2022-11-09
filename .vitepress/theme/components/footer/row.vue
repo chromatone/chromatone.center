@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useData, useRoute } from 'vitepress'
-import { pages } from '#theme/composables/pages'
+import { pages } from '#/theme/composables/pages'
 
 const { site, theme } = useData()
 const route = useRoute()

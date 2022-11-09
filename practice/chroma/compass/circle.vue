@@ -1,13 +1,13 @@
 <script setup>
-import { isInChroma, getCircleCoord, rotateArray } from '#use/calculations'
-import { noteColor } from '#use/colors'
-import { lchToHsl, chromaColorMix } from "#use/colors.js";
+import { isInChroma, getCircleCoord, rotateArray } from '#/use/calculations'
+import { noteColor } from '#/use/colors'
+import { lchToHsl, chromaColorMix } from "#/use/colors.js";
 import { Chord, Note } from '@tonaljs/tonal'
-import { scaleType, chordType, notes } from '#use/theory'
-import { globalScale } from '#use/chroma'
+import { scaleType, chordType, notes } from '#/use/theory'
+import { globalScale } from '#/use/chroma'
 import { Frequency } from 'tone'
-import { midiOnce, midiAttack, midiRelease, midiPlay, midiStop } from '#use/midi.js'
-import { synthOnce, synthAttack, synthRelease } from '#use/synth.js'
+import { midiOnce, midiAttack, midiRelease, midiPlay, midiStop } from '#/use/midi.js'
+import { synthOnce, synthAttack, synthRelease } from '#/use/synth.js'
 
 const props = defineProps({
   chroma: {

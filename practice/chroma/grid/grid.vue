@@ -1,10 +1,10 @@
 <script setup>
 import gridColumn from './column.vue'
 
-import { isDark } from '#theme/composables/state'
-import { noteColor } from "#use/colors"
-import { notes } from '#use/theory'
-import { useLoop } from '#use/loop'
+import { isDark } from '#/theme/composables/state'
+import { noteColor } from "#/use/colors"
+import { notes } from '#/use/theory'
+import { useLoop } from '#/use/loop'
 import { Frequency } from 'tone'
 
 const props = defineProps({

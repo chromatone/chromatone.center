@@ -1,8 +1,8 @@
 <script setup>
 import { Midi } from '@tonejs/midi'
-import { noteColor } from "#use/colors"
+import { noteColor } from "#/use/colors"
 import { now, PolySynth, Synth, Transport } from 'tone'
-import { createAndDownloadBlobFile } from '#use/midiRender'
+import { createAndDownloadBlobFile } from '#/use/midiRender'
 
 let midiData
 

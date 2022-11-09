@@ -1,9 +1,9 @@
 <script setup>
 import { Frequency } from 'tone'
-import { pitchFreq } from '#use/calculations'
-import { noteColor } from '#use/colors'
-import { synthAttack, synthRelease } from '#use/synth.js'
-import { playNote, stopNote } from '#use/chroma'
+import { pitchFreq } from '#/use/calculations'
+import { noteColor } from '#/use/colors'
+import { synthAttack, synthRelease } from '#/use/synth.js'
+import { playNote, stopNote } from '#/use/chroma'
 
 const props = defineProps({
   note: Object,

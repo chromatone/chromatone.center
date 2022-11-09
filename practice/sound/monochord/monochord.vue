@@ -1,7 +1,7 @@
 <script setup>
-import { freqColor, freqPitch } from '#use/calculations'
+import { freqColor, freqPitch } from '#/use/calculations'
 import { useTransition, TransitionPresets } from '@vueuse/core'
-import { useSynth } from '#use/synth.js'
+import { useSynth } from '#/use/synth.js'
 import { Frequency } from 'tone'
 import Fraction from 'fraction.js'
 

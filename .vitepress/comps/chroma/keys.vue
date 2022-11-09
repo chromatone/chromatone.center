@@ -1,8 +1,8 @@
 <script setup>
-import { globalScale, playChroma, stopChroma } from '#use/chroma'
-import { rotateArray } from '#use/calculations'
-import { noteColor } from '#use/colors'
-import { chordType, scaleType, notes } from '#use/theory'
+import { globalScale, playChroma, stopChroma } from '#/use/chroma'
+import { rotateArray } from '#/use/calculations'
+import { noteColor } from '#/use/colors'
+import { chordType, scaleType, notes } from '#/use/theory'
 import { colord } from 'colord'
 
 

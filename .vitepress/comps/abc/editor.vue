@@ -1,8 +1,8 @@
 <script setup>
 import { watchDebounced } from '@vueuse/core'
 import { state } from './state.js'
-import { notes } from '#use/theory'
-import { noteColor } from "#use/colors"
+import { notes } from '#/use/theory'
+import { noteColor } from "#/use/colors"
 import tunes from './tunes.js'
 const notation = useStorage('abc-notes', tunes['kalinka']);
 

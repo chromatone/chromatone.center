@@ -1,9 +1,9 @@
 <script setup>
-import { notes } from '#use/theory'
-import { defaultScheme, scheme, noteColor } from '#use/colors'
-import { getCircleCoord } from '#use/calculations'
-import { midi, playKey } from '#use/midi'
-import { globalScale } from '#use/chroma'
+import { notes } from '#/use/theory'
+import { defaultScheme, scheme, noteColor } from '#/use/colors'
+import { getCircleCoord } from '#/use/calculations'
+import { midi, playKey } from '#/use/midi'
+import { globalScale } from '#/use/chroma'
 import { colord } from "colord";
 import { useClipboard, watchThrottled } from '@vueuse/core'
 

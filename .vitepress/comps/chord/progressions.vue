@@ -1,9 +1,9 @@
 <script setup>
-import { rotateArray } from '#use/calculations'
-import { noteNames } from '#use/theory'
-import { globalScale, playChroma, stopChroma } from '#use/chroma'
+import { rotateArray } from '#/use/calculations'
+import { noteNames } from '#/use/theory'
+import { globalScale, playChroma, stopChroma } from '#/use/chroma'
 import { Progression, Chord } from "@tonaljs/tonal";
-import { noteColor } from '#use/colors'
+import { noteColor } from '#/use/colors'
 const props = defineProps({
   list: { type: Object, required: true },
   initial: { type: String, default: 'major' }

@@ -1,15 +1,15 @@
 <script setup>
-import { noteColor } from "#use/colors"
+import { noteColor } from "#/use/colors"
 import { Scale, ScaleType, Midi, Note } from '@tonaljs/tonal'
 import { useRafFn, onKeyStroke } from '@vueuse/core'
-import { scaleList, notes } from '#use/theory'
-import { globalScale } from '#use/chroma'
+import { scaleList, notes } from '#/use/theory'
+import { globalScale } from '#/use/chroma'
 import { Pattern, start, Transport, Draw } from 'tone'
-import { synthOnce } from '#use/synth.js'
-import { midiOnce } from '#use/midi.js'
-import { pianoOnce, init } from '#use/piano'
-import { tempo } from '#use/tempo'
-import { isDark } from '#theme/composables/state'
+import { synthOnce } from '#/use/synth.js'
+import { midiOnce } from '#/use/midi.js'
+import { pianoOnce, init } from '#/use/piano'
+import { tempo } from '#/use/tempo'
+import { isDark } from '#/theme/composables/state'
 
 const state = reactive({
   started: false,

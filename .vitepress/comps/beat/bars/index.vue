@@ -1,8 +1,8 @@
 <script setup>
 import BeatBar from './bar.vue'
 
-import { renderMidi } from '#use/midiRender'
-import { tracks } from '#use/sequence'
+import { renderMidi } from '#/use/midiRender'
+import { tracks } from '#/use/sequence'
 
 const props = defineProps({
   meters: { type: Array, default: null },

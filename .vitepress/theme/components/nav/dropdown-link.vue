@@ -1,6 +1,6 @@
 <script setup >
 import { useRoute } from 'vitepress'
-import { pages } from '#theme/composables/pages'
+import { pages } from '#/theme/composables/pages'
 
 defineProps(['item'])
 

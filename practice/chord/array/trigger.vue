@@ -1,8 +1,8 @@
 <script setup>
-import { pitchFreq } from '#use/calculations'
+import { pitchFreq } from '#/use/calculations'
 import { Frequency } from 'tone'
-import { synthAttack, synthRelease } from '#use/synth'
-import { midiPlay, midiStop } from '#use/midi'
+import { synthAttack, synthRelease } from '#/use/synth'
+import { midiPlay, midiStop } from '#/use/midi'
 
 const props = defineProps({
   pressed: Boolean,

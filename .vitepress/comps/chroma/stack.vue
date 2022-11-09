@@ -1,12 +1,12 @@
 <script setup>
-import { rotateArray } from '#use/calculations'
-import { noteNames, chordType, scaleType, notes } from '#use/theory.js'
-import { playChroma, stopChroma, globalScale } from '#use/chroma'
-import { chromaColorMix, noteColor } from "#use/colors.js"
+import { rotateArray } from '#/use/calculations'
+import { noteNames, chordType, scaleType, notes } from '#/use/theory.js'
+import { playChroma, stopChroma, globalScale } from '#/use/chroma'
+import { chromaColorMix, noteColor } from "#/use/colors.js"
 import { Progression, Chord } from "@tonaljs/tonal"
 import { Frequency } from 'tone'
-import { synthOnce } from '#use/synth.js'
-import { midiOnce } from '#use/midi.js'
+import { synthOnce } from '#/use/synth.js'
+import { midiOnce } from '#/use/midi.js'
 import { colord } from 'colord'
 
 

@@ -3,8 +3,8 @@ import CellInfo from './info.vue'
 
 import { context, start } from 'tone'
 import { useSynth } from './synth.js'
-import { notes } from '#use/theory'
-import { noteColor } from "#use/colors";
+import { notes } from '#/use/theory'
+import { noteColor } from "#/use/colors";
 
 
 const props = defineProps({

@@ -1,8 +1,8 @@
 <script setup>
-import { midi, stopAll, midiAttack, midiRelease } from "#use/midi.js";
+import { midi, stopAll, midiAttack, midiRelease } from "#/use/midi.js";
 import { onKeyStroke } from "@vueuse/core";
-import { noteColor } from '#use/colors'
-import { synth } from "#use/synth.js";
+import { noteColor } from '#/use/colors'
+import { synth } from "#/use/synth.js";
 
 onKeyStroke(" ", (ev) => {
   if (ev.target.nodeName == 'TEXTAREA') return;

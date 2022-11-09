@@ -1,5 +1,5 @@
 <script setup>
-import { isDark } from '#theme/composables/state.js'
+import { isDark } from '#/theme/composables/state.js'
 const props = defineProps({
   pan: { type: Number, default: 0.75 },
   order: { type: Number, default: 0 }
@@ -54,4 +54,5 @@ g.pan(
 </template>
 
 <style lang="postcss" scoped>
+
 </style>

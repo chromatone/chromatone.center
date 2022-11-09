@@ -1,5 +1,5 @@
 <script setup>
-import { levelColor } from '#use/colors.js'
+import { levelColor } from '#/use/colors.js'
 const props = defineProps({
   list: Object,
   langs: Object,
@@ -20,4 +20,5 @@ const props = defineProps({
 </template>
 
 <style lang="postcss" scoped>
+
 </style>

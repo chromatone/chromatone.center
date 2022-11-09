@@ -1,7 +1,7 @@
 <script setup>
-import { isDark } from '#theme/composables/state'
-import { globalScale } from '#use/chroma'
-import { noteColor } from "#use/colors"
+import { isDark } from '#/theme/composables/state'
+import { globalScale } from '#/use/chroma'
+import { noteColor } from "#/use/colors"
 import { Frequency } from 'tone'
 import { Chord } from "@tonaljs/tonal"
 

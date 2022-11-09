@@ -1,5 +1,5 @@
 <script setup>
-import { tempo, tap } from '#use/tempo.js'
+import { tempo, tap } from '#/use/tempo.js'
 </script>
 
 <template lang="pug">
@@ -50,4 +50,5 @@ g.tap.cursor-pointer
 </template>
 
 <style lang="postcss" scoped>
+
 </style>

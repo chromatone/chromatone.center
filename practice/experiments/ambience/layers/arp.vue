@@ -10,8 +10,8 @@ import {
   Pattern
 } from "tone";
 
-import { notes } from '#use/theory'
-import { createChannel } from '#use/audio'
+import { notes } from '#/use/theory'
+import { createChannel } from '#/use/audio'
 
 const options = useStorage("ambient-arp-options", {
   attackNoise: 2,

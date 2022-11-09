@@ -1,5 +1,5 @@
 <script setup>
-import { useCopy } from '#use/clipboard.js'
+import { useCopy } from '#/use/clipboard.js'
 
 const props = defineProps({
 	text: String

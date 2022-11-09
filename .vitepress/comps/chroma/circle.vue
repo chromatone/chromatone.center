@@ -1,10 +1,10 @@
 <script setup>
-import { rotateArray, getCircleCoord } from '#use/calculations'
-import { noteColor } from '#use/colors'
+import { rotateArray, getCircleCoord } from '#/use/calculations'
+import { noteColor } from '#/use/colors'
 import { colord } from 'colord'
-import { chromaColorMix } from "#use/colors.js";
-import { chordType, scaleType, notes } from '#use/theory'
-import { globalScale, playChroma, stopChroma } from '#use/chroma'
+import { chromaColorMix } from "#/use/colors.js";
+import { chordType, scaleType, notes } from '#/use/theory'
+import { globalScale, playChroma, stopChroma } from '#/use/chroma'
 const pressed = ref(false);
 
 const props = defineProps({

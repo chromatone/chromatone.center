@@ -1,8 +1,8 @@
 <script setup>
 import { Note, Interval, Pcset } from '@tonaljs/tonal'
-import { freqColor, freqPitch } from '#use/calculations'
+import { freqColor, freqPitch } from '#/use/calculations'
 import { colord } from 'colord'
-import { globalScale } from '#use/chroma'
+import { globalScale } from '#/use/chroma'
 
 const props = defineProps({
   instrument: {

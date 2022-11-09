@@ -2,9 +2,9 @@
 import tonalNote from './note.vue'
 import tonalTrigger from './trigger.vue'
 
-import { rotateArray } from '#use/calculations'
-import { noteColor } from '#use/colors'
-import { notes, scales } from '#use/theory'
+import { rotateArray } from '#/use/calculations'
+import { noteColor } from '#/use/colors'
+import { notes, scales } from '#/use/theory'
 
 const allNotes = [...notes].map((n, i) => ({ name: n, pitch: i }))
 

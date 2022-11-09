@@ -1,6 +1,6 @@
 <script setup>
-import { noteColor } from "#use/colors"
-import { notes } from '#use/theory'
+import { noteColor } from "#/use/colors"
+import { notes } from '#/use/theory'
 import { state } from './state'
 
 const props = defineProps({

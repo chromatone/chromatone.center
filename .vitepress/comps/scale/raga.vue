@@ -1,7 +1,7 @@
 <script setup>
-import { globalScale } from '#use/chroma'
-import { noteColor } from "#use/colors"
-import melakarta from '#db/melakarta.json'
+import { globalScale } from '#/use/chroma'
+import { noteColor } from "#/use/colors"
+import melakarta from '#/db/melakarta.json'
 
 let mela = {}
 

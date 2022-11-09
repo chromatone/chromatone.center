@@ -6,10 +6,10 @@ import {
   cast,
   recordingName,
   showRecordingDialog,
-} from "#use/cast";
+} from "#/use/cast";
 
 import { useWindowSize } from '@vueuse/core'
-import { drawingEnabled } from '#theme/components/draw/draw'
+import { drawingEnabled } from '#/theme/components/draw/draw'
 
 const {
   streamCamera,
@@ -24,7 +24,7 @@ const {
 
 const options = ref();
 
-import { useRecorder } from "#use/recorder";
+import { useRecorder } from "#/use/recorder";
 
 const { record, recording: audioRecording, toggled, duration } = useRecorder();
 

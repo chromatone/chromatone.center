@@ -1,10 +1,10 @@
 <script setup>
 import { useStorage } from '@vueuse/core'
 import { Note, Interval, Chord } from '@tonaljs/tonal'
-import { freqColor } from '#use/calculations'
+import { freqColor } from '#/use/calculations'
 import { colord } from 'colord'
-import { synthOnce } from '#use/synth.js'
-import { midiOnce } from '#use/midi.js'
+import { synthOnce } from '#/use/synth.js'
+import { midiOnce } from '#/use/midi.js'
 
 const props = defineProps({
   instruments: Object,

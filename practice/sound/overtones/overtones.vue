@@ -2,10 +2,10 @@
 import overtonesGuitar from './guitar.vue'
 
 import { useStorage, useTimestamp } from '@vueuse/core'
-import { freqColor, pitchFreq } from '#use/calculations'
+import { freqColor, pitchFreq } from '#/use/calculations'
 import { Synth, start, Frequency } from "tone";
-import { globalScale } from '#use/chroma'
-import { createChannel } from '#use/audio'
+import { globalScale } from '#/use/chroma'
+import { createChannel } from '#/use/audio'
 
 const box = reactive({
   width: 150,

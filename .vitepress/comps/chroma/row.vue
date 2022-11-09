@@ -1,12 +1,12 @@
 <script setup>
-import { rotateArray } from '#use/calculations'
-import { chromaColorMix, noteColor } from "#use/colors.js";
+import { rotateArray } from '#/use/calculations'
+import { chromaColorMix, noteColor } from "#/use/colors.js";
 import { Note, Pcset, Interval } from '@tonaljs/tonal'
 import { Frequency } from 'tone'
-import { synthOnce } from '#use/synth.js'
-import { midiOnce } from '#use/midi.js'
-import { chordType, scaleType, intervals, notes } from '#use/theory'
-import { globalScale, playChroma, stopChroma, } from '#use/chroma'
+import { synthOnce } from '#/use/synth.js'
+import { midiOnce } from '#/use/midi.js'
+import { chordType, scaleType, intervals, notes } from '#/use/theory'
+import { globalScale, playChroma, stopChroma, } from '#/use/chroma'
 
 const emit = defineEmits(['update:chroma'])
 const props = defineProps({

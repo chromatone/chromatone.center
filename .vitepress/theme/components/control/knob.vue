@@ -1,5 +1,5 @@
 <script setup>
-import { midi, learnCC } from '#use/midi'
+import { midi, learnCC } from '#/use/midi'
 
 const props = defineProps({
   max: { type: Number, default: 100, },

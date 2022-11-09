@@ -1,7 +1,7 @@
 <script setup>
-import { noteColor } from "#use/colors";
-import { midi } from '#use/midi';
-import { notes } from '#use/theory';
+import { noteColor } from "#/use/colors";
+import { midi } from '#/use/midi';
+import { notes } from '#/use/theory';
 import { colord } from 'colord';
 
 

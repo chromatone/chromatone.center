@@ -1,5 +1,5 @@
 <script setup>
-import { noteColor } from "#use/colors"
+import { noteColor } from "#/use/colors"
 const props = defineProps({
   track: Object,
 });

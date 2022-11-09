@@ -1,6 +1,6 @@
 <script setup>
-import { isDark } from '#theme/composables/state.js'
-import { levelColor } from "#use/colors.js"
+import { isDark } from '#/theme/composables/state.js'
+import { levelColor } from "#/use/colors.js"
 
 const emit = defineEmits(['update:modelValue'])
 
@@ -123,4 +123,5 @@ g.bar.cursor-pointer(
 </template>
 
 <style lang="postcss" scoped>
+
 </style>

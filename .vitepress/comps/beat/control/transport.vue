@@ -1,5 +1,5 @@
 <script setup>
-import { tempo } from '#use/tempo.js'
+import { tempo } from '#/use/tempo.js'
 
 </script>
 

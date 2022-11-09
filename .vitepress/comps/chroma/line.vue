@@ -1,7 +1,7 @@
 <script setup>
-import { noteColor } from "#use/colors"
-import { globalScale } from '#use/chroma'
-import { notes } from '#use/theory'
+import { noteColor } from "#/use/colors"
+import { globalScale } from '#/use/chroma'
+import { notes } from '#/use/theory'
 
 const props = defineProps({
   chroma: {

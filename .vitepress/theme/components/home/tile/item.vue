@@ -1,7 +1,7 @@
 <script setup>
 import { useData } from 'vitepress'
-import { lchToHsl } from '#use/colors.js'
-import { pages } from '#theme/composables/pages'
+import { lchToHsl } from '#/use/colors.js'
+import { pages } from '#/theme/composables/pages'
 
 const props = defineProps({
   item: Object,

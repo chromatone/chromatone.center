@@ -1,9 +1,9 @@
 <script setup>
 import tonalArray from './array.vue'
 import { useStorage } from '@vueuse/core'
-import { pitchFreq } from '#use/calculations'
-import { scales } from '#use/theory'
-import { globalScale } from '#use/chroma'
+import { pitchFreq } from '#/use/calculations'
+import { scales } from '#/use/theory'
+import { globalScale } from '#/use/chroma'
 
 
 const scale = useStorage('array-scale', scales.minor);

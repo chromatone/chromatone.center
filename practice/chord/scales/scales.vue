@@ -1,8 +1,8 @@
 <script setup>
-import { chordList, scaleList, notes } from '#use/theory'
-import { globalScale } from '#use/chroma'
-import { rotateArray } from '#use/calculations'
-import { noteColor } from '#use/colors'
+import { chordList, scaleList, notes } from '#/use/theory'
+import { globalScale } from '#/use/chroma'
+import { rotateArray } from '#/use/calculations'
+import { noteColor } from '#/use/colors'
 
 const scaleChords = computed(() => scaleList
   .map(scale => {

@@ -1,5 +1,5 @@
-import { midi } from "#use/midi";
-import { tempo } from '#use/tempo'
+import { midi } from "#/use/midi";
+import { tempo } from '#/use/tempo'
 import paper from "paper";
 
 export const radar = reactive({

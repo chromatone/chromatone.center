@@ -1,8 +1,8 @@
 <script setup>
-import { notes } from '#use/theory'
-import { getCircleCoord } from '#use/calculations'
-import { globalScale } from '#use/chroma'
-import { noteColor } from '#use/colors'
+import { notes } from '#/use/theory'
+import { getCircleCoord } from '#/use/calculations'
+import { globalScale } from '#/use/chroma'
+import { noteColor } from '#/use/colors'
 </script>
 
 <template lang='pug'>

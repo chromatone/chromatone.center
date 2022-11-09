@@ -1,8 +1,8 @@
 <script setup>
 import droneVoice from "./voice.vue";
 
-import { noteColor } from "#use/colors";
-import { notes } from "#use/theory";
+import { noteColor } from "#/use/colors";
+import { notes } from "#/use/theory";
 import { useDrone } from "./drone.js";
 
 const drone = useDrone();

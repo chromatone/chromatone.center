@@ -1,5 +1,5 @@
 <script setup>
-import { isDark } from '#theme/composables/state.js'
+import { isDark } from '#/theme/composables/state.js'
 const props = defineProps({
   recorder: Object,
 })

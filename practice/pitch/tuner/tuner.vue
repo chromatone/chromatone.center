@@ -1,6 +1,6 @@
 <script setup>
-import { noteColor } from "#use/colors"
-import { useTuner } from '#use/tuner.js'
+import { noteColor } from "#/use/colors"
+import { useTuner } from '#/use/tuner.js'
 
 const display = ref(null)
 

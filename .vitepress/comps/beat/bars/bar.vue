@@ -1,12 +1,12 @@
 <script setup>
 import BarStep from './step.vue'
 
-import { useSequence } from '#use/sequence.js'
-import { isDark } from '#theme/composables/state.js'
-import { tempo } from '#use/tempo'
-import { rotateArray } from '#use/calculations'
-import { levelColor } from '#use/colors'
-import { noteColor } from '#use/colors'
+import { useSequence } from '#/use/sequence.js'
+import { isDark } from '#/theme/composables/state.js'
+import { tempo } from '#/use/tempo'
+import { rotateArray } from '#/use/calculations'
+import { levelColor } from '#/use/colors'
+import { noteColor } from '#/use/colors'
 
 const width = 920
 const pad = (1000 - width) / 2

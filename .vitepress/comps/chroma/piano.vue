@@ -1,8 +1,8 @@
 <script setup>
-import { rotateArray } from '#use/calculations'
-import { noteColor } from '#use/colors'
-import { notes } from '#use/theory'
-import { globalScale } from '#use/chroma'
+import { rotateArray } from '#/use/calculations'
+import { noteColor } from '#/use/colors'
+import { notes } from '#/use/theory'
+import { globalScale } from '#/use/chroma'
 
 const allNotes = [...notes].map((n, i) => ({ name: n, pitch: i }))
 

@@ -3,13 +3,19 @@ import Components from 'unplugin-vue-components/vite'
 import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
 import WindiCSS from 'vite-plugin-windicss'
-import { ViteAliases } from 'vite-aliases'
+
 import AutoImport from 'unplugin-auto-import/vite'
 import { VitePWA } from 'vite-plugin-pwa'
 
 import Pages from "vite-plugin-pages";
 import { extendRoutes } from "vitepress-pages";
 import generateSitemap from 'vite-plugin-pages-sitemap'
+
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+const filename = fileURLToPath(import.meta.url);
+const dirname = path.dirname(filename);
 
 
 export default defineConfig({
@@ -29,12 +35,6 @@ export default defineConfig({
           '@vueuse/math': ['useClamp',]
         },
       ],
-    }),
-    ViteAliases({
-      prefix: '#',
-      dir: '.vitepress',
-      deep: false,
-      adjustDuplicates: true,
     }),
     Pages({
       dirs: [
@@ -113,6 +113,11 @@ export default defineConfig({
       }
     }),
   ],
+  resolve: {
+    alias: {
+      "#": path.resolve(dirname, ".vitepress/"),
+    }
+  },
   optimizeDeps: {
     include: ['vue', '@vueuse/core', 'tone', '@tonaljs/tonal', 'colord'],
   },

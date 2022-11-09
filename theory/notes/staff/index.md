@@ -7,7 +7,7 @@ cover: kvintcirklen.png
 ---
 
 <script setup>
-import {state} from '#comps/abc/state'
+import {state} from '#/comps/abc/state'
 
 const minuet = `
 X:409

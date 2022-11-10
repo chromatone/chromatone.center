@@ -259,6 +259,9 @@ cities:
   - city: Malmö
     country: Sweden
     coord: [55.60082392293618, 12.968196869576506]
+  - city: Bardon
+    country: Australia
+    coord: [-27.46318926780656, 152.9782996556569]
 ---
 
 <script setup>

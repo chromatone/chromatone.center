@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@gun-vue/composables': ^0.11.5
   '@iconify/json': ^2.1.135
+  '@stripe/stripe-js': ^1.42.1
   '@tonaljs/tonal': ^4.6.5
   '@tonejs/midi': ^2.0.28
   '@volar/vue-language-plugin-pug': 1.0.9
@@ -41,11 +42,13 @@ specifiers:
   vitepress: 1.0.0-alpha.28
   vitepress-pages: ^0.8.6
   vue: ^3.2.42
+  vue-stripe-js: ^1.0.1
   webmidi: ^3.0.21
   windicss: 3.5.6
 
 dependencies:
   '@gun-vue/composables': 0.11.5
+  '@stripe/stripe-js': 1.42.1
   '@tonaljs/tonal': 4.6.5
   '@tonejs/midi': 2.0.28
   '@vueuse/core': 9.5.0_vue@3.2.42
@@ -71,6 +74,7 @@ dependencies:
   tone: 14.8.49
   vitepress-pages: 0.8.6_vite-plugin-pages@0.27.1
   vue: 3.2.42
+  vue-stripe-js: 1.0.1
   webmidi: 3.0.21
 
 devDependencies:
@@ -1705,6 +1709,10 @@ packages:
       estree-walker: 2.0.2
       picomatch: 2.3.1
     dev: true
+
+  /@stripe/stripe-js/1.42.1:
+    resolution: {integrity: sha512-5H7P7rVNDMdiJCUKsKXRUyr6IjZ4/9f8FB62NCa5O4rDftRfs4u2dPjjHs/tIs4OLeBB6oSzJIkE7cPr4ykPHg==}
+    dev: false
 
   /@surma/rollup-plugin-off-main-thread/2.2.3:
     resolution: {integrity: sha512-lR8q/9W7hZpMWweNiAKU7NQerBnzQQLvi8qnTDU/fxItPhtZVMbPV3lbCwjhIlNBe9Bbr5V+KHshvWmVSG9cxQ==}
@@ -5304,6 +5312,10 @@ packages:
       vue: ^3.0.0
     dependencies:
       vue: 3.2.42
+    dev: false
+
+  /vue-stripe-js/1.0.1:
+    resolution: {integrity: sha512-f2u+YkN42uHrUZbYiiqEQ+DtCyPQgJ/BdzU35EwhFqJghS6k2n8tw/VhYm35TjLsxJE+tYO7/pBUdTS+Xu5Rrw==}
     dev: false
 
   /vue/3.2.42:

@@ -2,6 +2,8 @@
 import CircleCenter from './center.vue'
 import CircleOverlay from './overlay.vue'
 import CircleLoop from './loop.vue'
+import { midi } from '#/use/midi'
+import { tempo } from '#/use/tempo'
 
 import { renderMidi } from '#/use/midiRender'
 import { tracks } from '#/use/sequence'
@@ -32,6 +34,18 @@ const overlay = ref(false);
 function resetTracks() {
   tracks.forEach(t => t.reset())
 }
+
+const midiChannel = ref(1)
+const tempoCC = ref(8)
+const prevCC = ref(0)
+
+watch(() => midi.cc, cc => {
+  if (cc.channel != midiChannel.value) return
+  if (cc.number != tempoCC.value) return
+  const diff = cc.raw - prevCC.value
+  prevCC.value = cc.raw
+  tempo.bpm = Math.floor(tempo.bpm + diff)
+})
 
 </script>
 
@@ -79,6 +93,8 @@ function resetTracks() {
       @over="changeLoop(i, 'over', $event)"
       @under="changeLoop(i, 'under', $event)"
       @sound="loop.sound = $event"
+      :midiCC="6+i*8"
+      :midiChannel="midiChannel"
       )
     circle-center(transform="translate(500,500) scale(0.75)")
     circle-overlay.cursor-pointer(

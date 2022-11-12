@@ -4,6 +4,7 @@
 import { getCircleCoord } from '#/use/calculations'
 import { isDark } from '#/theme/composables/state.js'
 import { levelColor } from "#/use/colors.js"
+import { midi } from '#/use/midi'
 
 const emit = defineEmits(['update:modelValue'])
 
@@ -21,7 +22,9 @@ const props = defineProps({
   showPositions: { type: Boolean, default: false, },
   ratio: { type: Number, default: 200, },
   every: { type: Number, default: null, },
-  showCenter: { type: Boolean, default: false, }
+  showCenter: { type: Boolean, default: false, },
+  midiChannel: { type: Number, default: 1, },
+  midiCC: { type: Number, default: 0, },
 });
 
 const arc = reactive({
@@ -55,6 +58,15 @@ const allSteps = computed(() => {
   return all
 });
 
+const prevCC = ref(0)
+
+watch(() => midi.cc, cc => {
+  if (cc.channel != props.midiChannel || cc.number != props.midiCC) return
+  const diff = prevCC.value - cc.value
+  prevCC.value = cc.value
+  arc.inner = cc.value
+})
+
 </script>
 
 <template lang="pug">
@@ -74,7 +86,7 @@ g.arc.cursor-pointer(
     :radius="radius"
     :thickness="50"
     round
-  )
+    )
   svg-ring.decrease(
     :cx="500"
     :cy="500"
@@ -85,7 +97,7 @@ g.arc.cursor-pointer(
     :radius="radius"
     :thickness="50"
     round
-  )
+    )
   svg-ring.line.pointer-events-none(
     style="pointer-events:none"
     :cx="500"
@@ -97,7 +109,7 @@ g.arc.cursor-pointer(
     :radius="radius - 17"
     :thickness="16"
     round
-  )
+    ) 
 
   circle.pointer-events-none(
     v-if="showCenter"

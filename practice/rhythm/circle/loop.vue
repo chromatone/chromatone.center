@@ -6,6 +6,7 @@ import { useSequence } from '#/use/sequence.js'
 import { isDark } from '#/theme/composables/state.js'
 import { levelColor } from "#/use/colors.js"
 import { tempo } from '#/use/tempo'
+import { midi } from '#/use/midi'
 // import { useUrlSearchParams } from '@vueuse/core'
 
 const emit = defineEmits(['del', 'over', 'under', 'sound'])
@@ -14,7 +15,9 @@ const props = defineProps({
   radius: { type: Number, default: 400 },
   size: { type: Number, default: 175, },
   order: { type: Number, default: 0 },
-  loop: { type: Object, default: { over: 4, under: 4, sound: 'A' } }
+  loop: { type: Object, default: { over: 4, under: 4, sound: 'A' } },
+  midiChannel: { type: Number, default: 1 },
+  midiCC: { type: Number, default: 6 },
 });
 
 const soundLetters = ['A', 'B', 'C', 'D', 'E', 'F']
@@ -51,6 +54,16 @@ function rotateAccents(num) {
   accents.value = rotateArray(accents.value, num)
   mutes.value = rotateArray(mutes.value, num)
 }
+
+const prevCC = ref(0)
+
+watch(() => midi.cc, cc => {
+  if (cc.channel != props.midiChannel) return
+  if (cc.number != props.midiCC) return
+  const diff = prevCC.value - cc.raw
+  prevCC.value = cc.raw
+  rotateAccents(diff)
+})
 
 </script>
 
@@ -112,6 +125,8 @@ g(
     :ratio="800"
     :every="4"
     v-tooltip.top="'Measure subdivision'"
+    :midiChannel="midiChannel"
+    :midiCC="2+order*8"
   )
     text {{ loop.under }}
 
@@ -129,6 +144,8 @@ g(
     :ratio="1000"
     :every="4"
     v-tooltip.top="'Number of steps'"
+    :midiChannel="midiChannel"
+    :midiCC="1+order*8"
   )
     text {{ loop.over }}
 
@@ -144,6 +161,8 @@ g(
     :max="1"
     :vector="[1, -1]"
     v-tooltip.bottom="'Track volume'"
+    :midiChannel="midiChannel"
+    :midiCC="3+order*8"
   )
     la-volume-up(x="-18" y="-28")
 
@@ -159,6 +178,8 @@ g(
     :max="1"
     show-center
     v-tooltip.bottom="'Track panning'"
+    :midiChannel="midiChannel"
+    :midiCC="4+order*8"
   )
     mdi-pan-horizontal(x="-18" y="-28")
 
@@ -177,6 +198,8 @@ g(
     :ratio="400"
     :every="1"
     v-tooltip.bottom="'Select sound'"
+    :midiChannel="midiChannel"
+    :midiCC="5+order*8"
   )
     text {{ loop?.sound }}
 

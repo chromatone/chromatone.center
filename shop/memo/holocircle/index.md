@@ -2,7 +2,7 @@
 title: Holographic chroma circle sticker
 subtitle: A tight pack of music information in a small round sticker
 product:
-  price: $10
+  price: 10
   link2: https://ko-fi.com/s/1903d23e3b
   link: https://airtable.com/shrm1flZTa0s9LFd6
 cover: holologo.svg

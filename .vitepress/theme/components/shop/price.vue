@@ -1,5 +1,8 @@
 <script setup>
+import { cart, addToCart } from '#/theme/composables/cart.js'
+
 const props = defineProps({
+  title: String,
   product: Object,
   showButton: {
     type: Boolean,
@@ -7,6 +10,8 @@ const props = defineProps({
   },
   color: { type: String, default: '#444' }
 });
+
+
 </script>
 
 <template lang="pug">
@@ -17,7 +22,7 @@ const props = defineProps({
     target="_blank",
     :style="{ backgroundColor: color }"
 
-  ) {{ product?.price }}
+  ) ${{ product?.price }}
 
   a.button.flex.items-center(
     v-if="product?.link",
@@ -27,6 +32,13 @@ const props = defineProps({
     )
     eva-shopping-bag-outline.order
     span.cart-text(v-if="showButton") Buy
+  .button.flex.items-center(
+    v-if="product?.id"
+    :style="{ backgroundColor: color }"
+    @click="addToCart(title, product)"
+    ) 
+    la-shopping-cart
+    .font-bold.cart-text Add to cart
 </template>
 
 
@@ -37,7 +49,7 @@ const props = defineProps({
 }
 
 .button {
-  @apply p-2 my-2 mr-2 shadow-md z-6 text-white text-2xl  rounded-md bg-yellow-500  dark_(bg-yellow-600);
+  @apply p-2 my-2 mr-2 shadow-md z-6 text-white text-2xl rounded-md bg-yellow-500 dark_(bg-yellow-600);
 }
 
 .price {

@@ -3,8 +3,9 @@ title: A5 max sticker set
 subtitle: UV printed precut stickers on an A5 sheet of high quality transparent vinyl
 
 product:
-  price: $18
+  price: 18
   link: https://ko-fi.com/s/1f0f4da547
+  id: price_1M1YpEBJnUXQERocQ8NTipAV
 cover: main.jpeg
 date: 2021-09-01
 ---

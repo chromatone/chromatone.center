@@ -3,8 +3,9 @@ title: A5 multi instrument sticker set
 subtitle: Uv printed transparent vinyl stickers for a guitar, ukulele, regulat keys and more
 
 product:
-  price: $18
+  price: 18
   link: https://ko-fi.com/s/e5f5c23a30
+  id: price_1M1XuQBJnUXQERoc5nVjpAX6
 cover: main.jpeg
 date: 2022-01-01
 ---

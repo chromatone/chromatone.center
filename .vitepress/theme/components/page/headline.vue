@@ -35,7 +35,7 @@ const lightColor = computed(() => lchToHsl(siblings.value.index, siblings.value.
     .font-bold.mt-2.mb-4(v-if="page?.subtitle") {{ page.subtitle }}
     page-buttons(:buttons="page?.buttons")
     .absolute.-bottom-2rem.right-2rem
-      shop-price(:product="page?.product" :color="lightColor")
+      shop-price(:product="page?.product" :title="page?.title" :color="lightColor")
 </template>
 
 <style lang="postcss" scoped>

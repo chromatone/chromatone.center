@@ -3,7 +3,7 @@ title: A5 diatonic scales memo
 subtitle: Small and durable cheat sheet with all 12 relative major and minor keys along with all main chords they contain
 
 product:
-  price: $12
+  price: 12
   link: https://ko-fi.com/s/93da4887a5
 cover: a5-front.png
 ---

@@ -2,7 +2,7 @@
 title: A4 cheat-sheet
 subtitle: A comprehesive guide to colorful notes - WIP
 product:
-  price: $12
+  price: 12
 cover: a4-scales.svg
 ---
 

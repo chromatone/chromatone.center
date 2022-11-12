@@ -3,7 +3,7 @@ title: 108 notes sound field
 subtitle: A big set of universal circle colored and labeled note stickers
 
 product:
-  price: $12
+  price: 12
   link: https://ko-fi.com/s/d7bdca5dd7
 cover: list.jpg
 date: 2021-08-01

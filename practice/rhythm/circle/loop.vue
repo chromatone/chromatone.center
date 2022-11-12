@@ -17,8 +17,8 @@ const props = defineProps({
   order: { type: Number, default: 0 },
   loop: { type: Object, default: { over: 4, under: 4, sound: 'A' } },
   midiChannel: { type: Number, default: 1 },
-  rotateCC: { type: Number, default: 6 },
-  stepsCC: { type: Number, default: 7 },
+  rotateCC: { type: Number, default: 3 },
+  stepsCC: { type: Number, default: 4 },
 });
 
 const soundLetters = ['A', 'B', 'C', 'D', 'E', 'F']
@@ -69,11 +69,8 @@ watch(() => midi.cc, cc => {
     const can = mutes.value.length - mutesCount.value
     if (can < 0) return
     if (diff > 0 && mutesCount.value <= 1) return
-
     const index = mutes.value.findIndex(mute => mute == diff < 0)
     mutes.value[index] = diff > 0
-
-    console.log(mutes.value, mutesCount.value, index, diff, can)
     reset()
   }
   if (cc.number == props.rotateCC) {
@@ -180,7 +177,7 @@ g(
     :vector="[1, -1]"
     v-tooltip.bottom="'Track volume'"
     :midiChannel="midiChannel"
-    :midiCC="4+order*8"
+    :midiCC="7+order*8"
   )
     la-volume-up(x="-18" y="-28")
 
@@ -197,7 +194,7 @@ g(
     show-center
     v-tooltip.bottom="'Track panning'"
     :midiChannel="midiChannel"
-    :midiCC="3+order*8"
+    :midiCC="6+order*8"
   )
     mdi-pan-horizontal(x="-18" y="-28")
 

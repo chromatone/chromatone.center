@@ -93,8 +93,8 @@ watch(() => midi.cc, cc => {
       @over="changeLoop(i, 'over', $event)"
       @under="changeLoop(i, 'under', $event)"
       @sound="loop.sound = $event"
-      :rotateCC="6+i*8"
-      :stepsCC="7+i*8"
+      :rotateCC="4+i*8"
+      :stepsCC="3+i*8"
       :midiChannel="midiChannel"
 
       )

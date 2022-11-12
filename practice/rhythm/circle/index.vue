@@ -93,8 +93,10 @@ watch(() => midi.cc, cc => {
       @over="changeLoop(i, 'over', $event)"
       @under="changeLoop(i, 'under', $event)"
       @sound="loop.sound = $event"
-      :midiCC="6+i*8"
+      :rotateCC="6+i*8"
+      :stepsCC="7+i*8"
       :midiChannel="midiChannel"
+
       )
     circle-center(transform="translate(500,500) scale(0.75)")
     circle-overlay.cursor-pointer(

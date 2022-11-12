@@ -173,7 +173,12 @@ export function useSequence(
   watchEffect(() => {
     sequence.events = steps;
     accents.value.length = steps.length;
+    const muteL = mutes.value.length
     mutes.value.length = steps.length;
+    if (muteL < steps.length) {
+      mutes.value.fill(true, muteL)
+    }
+
   });
 
   watchEffect(() => {
@@ -257,7 +262,8 @@ export function useSequence(
     recorder,
     lastHit,
     reset,
-    isEuclidean
+    isEuclidean,
+    mutesCount
   };
 }
 

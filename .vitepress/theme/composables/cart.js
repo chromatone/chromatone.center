@@ -20,7 +20,6 @@ export const open = ref(false)
 export const total = computed(() => {
 	let sum = 0
 	for (let id in cart) {
-		console.log(cart[id])
 		sum += Number(cart?.[id]?.price) * Number(cart?.[id]?.quantity)
 	}
 	return sum

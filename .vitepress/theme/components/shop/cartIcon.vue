@@ -21,5 +21,5 @@ const quantity = computed(() => {
 <template lang='pug'>
 .relative
 	la-shopping-cart
-	.-top-1.right-0.text-xs.absolute.bg-purple-400.bg-opacity-90.px-1.rounded-full.text-black {{quantity}}
+	.-top-1.right-0.text-xs.absolute.bg-purple-600.bg-opacity-90.px-1.rounded-full.text-white {{quantity}}
 </template>

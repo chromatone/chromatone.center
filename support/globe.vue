@@ -32,7 +32,7 @@ onMounted(() => {
       // Called on every animation frame.
       // `state` will be an empty object, return updated params.
       state.phi = phi
-      phi += 0.005
+      phi += 0.0025
     },
   })
 })
@@ -42,5 +42,5 @@ onMounted(() => {
 </script>
 
 <template lang='pug'>
-canvas.w-500px.h-500px.m-auto.rounded-2xl(ref="canvas")
+canvas.w-full.h-500px.m-auto.rounded-2xl(ref="canvas")
 </template>

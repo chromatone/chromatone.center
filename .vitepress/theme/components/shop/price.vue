@@ -15,11 +15,13 @@ const props = defineProps({
 </script>
 
 <template lang="pug">
-.shop-action.text-xl
+.shop-action.text-xl(
+  @click.prevent.stop="addToCart(title, product)"
+  )
   .shop-button.price(
     v-if="product",
     :style="{ backgroundColor: color }"
-    @click="addToCart(title, product)"
+
   ) ${{ product?.price }}
 
   //- a.shop-button.flex.items-center(
@@ -31,12 +33,13 @@ const props = defineProps({
   //-   eva-shopping-bag-outline.order
   //-   span.cart-text(v-if="showButton") Buy
   .shop-button.flex.items-center(
+    style="flex: 3;"
     v-if="product?.id"
     :style="{ backgroundColor: color }"
-    @click.prevent.stop="addToCart(title, product)"
+
     ) 
     shop-cart-icon(:id="product?.id")
-    .font-bold.cart-text.whitespace-nowrap Add to cart
+    .font-bold.cart-text Add to cart
 
 </template>
 
@@ -47,11 +50,13 @@ const props = defineProps({
 }
 
 .price {
-  @apply tracking-widest flex-1;
+  @apply tracking-widest font-bold tabular-nums;
+  flex: 0;
 }
 
 .cart-text {
-  @apply text-xl ml-2 transition-all duration-300;
+  @apply flex-1 text-xl ml-2 transition-all duration-300;
+
 }
 
 .order {

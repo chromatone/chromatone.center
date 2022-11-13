@@ -38,15 +38,14 @@ const bg = computed(() => `url(${props.item?.cover}`);
           span.px-2.mt-2(v-if="item.more") 
             radix-icons-text-align-left
         .flex-1
-        shop-price(
-          :title="item.title"
-          :product="item?.product" 
-          :color="'color'"
-          )
-
         card-date(v-if="!item?.product",:date="item.lastModified")
       .text-md.mt-4.mb-2.font-normal.w-full(v-if="item.subtitle") {{ item.subtitle }}
       page-buttons(:buttons="item?.buttons" :color="color")
+      shop-price.my-2(
+        :title="item.title"
+        :product="item?.product" 
+        :color="'color'"
+        )
   card-list(v-if="pages[item.path]",:cards="pages[item.path]" ) {{ item.title }}
 </template>
 

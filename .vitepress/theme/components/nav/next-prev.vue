@@ -50,7 +50,8 @@ const colors = reactive({
 
 <style lang="postcss" scoped>
 .next-and-prev-link {
-  @apply bg-dark-50/10 dark_bg-dark-800/90 -webkit-backdrop-filter: blur(10px);
+  @apply bg-dark-50/10 dark_bg-dark-800/90;
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 
   & a {
@@ -86,14 +87,12 @@ const colors = reactive({
 }
 
 .link {
-  @apply items-center no-underline w-full rounded-xl p-8 text-2xl;
-  max-width: 100%;
+  @apply items-center no-underline w-full rounded-xl p-8 text-2xl max-w-88vw;
   font-weight: 500;
 }
 
 .text {
   @apply font-bold;
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }

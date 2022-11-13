@@ -5,6 +5,7 @@ subtitle: Small and durable cheat sheet with all 12 relative major and minor key
 product:
   price: 12
   link: https://ko-fi.com/s/93da4887a5
+  id: price_1M3cRVBJnUXQERoc6fhnFgLy
 cover: a5-front.png
 ---
 

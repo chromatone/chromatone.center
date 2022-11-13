@@ -8,48 +8,42 @@ const props = defineProps({
     type: Boolean,
     default: true,
   },
-  color: { type: String, default: '#444' }
+  color: { type: String, default: '' }
 });
 
 
 </script>
 
 <template lang="pug">
-.shop-action 
-  a.button.price(
+.shop-action.text-xl
+  .shop-button.price(
     v-if="product",
-    :href="product?.link", 
-    target="_blank",
-    :style="{ backgroundColor: color }"
-
-  ) ${{ product?.price }}
-
-  a.button.flex.items-center(
-    v-if="product?.link",
-    :href="product?.link", 
-    target="_blank"
-    :style="{ backgroundColor: color }"
-    )
-    eva-shopping-bag-outline.order
-    span.cart-text(v-if="showButton") Buy
-  //- .button.flex.items-center(
-    v-if="product?.id"
     :style="{ backgroundColor: color }"
     @click="addToCart(title, product)"
-    ) 
-    la-shopping-cart
-    .font-bold.cart-text Add to cart
-</template>
+  ) ${{ product?.price }}
 
+  //- a.shop-button.flex.items-center(
+  //-   v-if="product?.link",
+  //-   :href="product?.link", 
+  //-   target="_blank"
+  //-   :style="{ backgroundColor: color }"
+  //-   )
+  //-   eva-shopping-bag-outline.order
+  //-   span.cart-text(v-if="showButton") Buy
+  .shop-button.flex.items-center(
+    v-if="product?.id"
+    :style="{ backgroundColor: color }"
+    @click.prevent.stop="addToCart(title, product)"
+    ) 
+    shop-cart-icon(:id="product?.id")
+    .font-bold.cart-text.whitespace-nowrap Add to cart
+
+</template>
 
 
 <style lang="postcss" scoped>
 .shop-action {
   @apply flex justify-center items-center;
-}
-
-.button {
-  @apply p-2 my-2 mr-2 shadow-md z-6 text-white text-2xl rounded-md bg-yellow-500 dark_(bg-yellow-600);
 }
 
 .price {

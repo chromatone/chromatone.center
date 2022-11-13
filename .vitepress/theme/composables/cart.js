@@ -4,6 +4,28 @@ const stripeKey = 'pk_live_51M1WfLBJnUXQERocrGtVUDvfIdzMmecoAClLVFLSi2VG2cNF2kS6
 
 export const cart = reactive({})
 
+watch(cart, c => {
+	if (Object.keys(cart).length <= 0) {
+		open.value = false
+	}
+	for (let id in cart) {
+		if (cart[id].quantity <= 0) {
+			delete cart[id]
+		}
+	}
+})
+
+export const open = ref(false)
+
+export const total = computed(() => {
+	let sum = 0
+	for (let id in cart) {
+		console.log(cart[id])
+		sum += Number(cart?.[id]?.price) * Number(cart?.[id]?.quantity)
+	}
+	return sum
+})
+
 
 export function addToCart(title, product = {}) {
 	const { id, price } = product
@@ -12,7 +34,7 @@ export function addToCart(title, product = {}) {
 	} else {
 		cart[id] = { title, price, quantity: 1 }
 	}
-
+	open.value = true
 }
 
 export async function checkout() {

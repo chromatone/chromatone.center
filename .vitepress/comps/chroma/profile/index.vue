@@ -53,9 +53,9 @@ const semitones = computed(() => {
   .flex.flex-wrap.w-full.items-center
     chroma-circle.flex-1.min-w-200px.pl-4(:chroma="chroma")
     chroma-keys.w-240px.h-8rem.mx-auto.mb-4(:chroma="chroma" v-model:pitch="globalScale.tonic" :title="false")  
-  chroma-row.mb-4.mx-2(v-model:chroma="chroma" :editable="editable")
+  chroma-row.mb-4.mx-2(:chroma="chroma" :editable="editable")
   chroma-stack.flex-1.mx-4.mb-4(:chroma="chroma")
-  chroma-square.w-12em.mx-4(v-model:chroma="chroma" :editable="editable")
+  chroma-square.w-12em.mx-4(:chroma="chroma" :editable="editable")
   .flex.w-full.p-6(v-if="description") {{ description }}
 
 </template>

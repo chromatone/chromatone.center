@@ -32,7 +32,7 @@ const props = defineProps({
     )
     eva-shopping-bag-outline.order
     span.cart-text(v-if="showButton") Buy
-  .button.flex.items-center(
+  //- .button.flex.items-center(
     v-if="product?.id"
     :style="{ backgroundColor: color }"
     @click="addToCart(title, product)"

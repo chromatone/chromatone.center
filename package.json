@@ -32,7 +32,7 @@
 	},
 	"dependencies": {
 		"@gun-vue/composables": "^0.11.5",
-		"@stripe/stripe-js": "^1.42.1",
+		"@stripe/stripe-js": "^1.44.1",
 		"@tonaljs/tonal": "^4.6.5",
 		"@tonejs/midi": "^2.0.28",
 		"@vueuse/core": "^9.5.0",
@@ -57,12 +57,12 @@
 		"thousands-counter": "^2.1.1",
 		"tone": "^14.8.49",
 		"vitepress-pages": "^0.8.6",
-		"vue": "^3.2.42",
+		"vue": "^3.2.45",
 		"vue-stripe-js": "^1.0.1",
 		"webmidi": "^3.0.21"
 	},
 	"devDependencies": {
-		"@iconify/json": "^2.1.135",
+		"@iconify/json": "^2.1.136",
 		"@volar/vue-language-plugin-pug": "1.0.9",
 		"markdown-it-external-links": "^0.0.6",
 		"patch-vue-directive-ssr": "^0.0.1",

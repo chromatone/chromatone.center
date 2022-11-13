@@ -22,7 +22,7 @@ const emit = defineEmits(['update:modelValue'])
   .flex-auto.w-full.text-sm.text-center.border-b-1.border-dark-300.dark_border-light-300 OSC
   .flex.relative.flex-auto(v-for="(abbr, type) in types" :key="type")
     input.absolute.right-1.top-1(
-      type="radio" v-model="modelValue" 
+      type="radio" :modelValue="modelValue" 
       @input="$emit('update:modelValue', type)"
       :id="type"
       :value="type"

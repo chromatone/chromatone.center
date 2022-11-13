@@ -1,5 +1,5 @@
 ---
-title: A5 max sticker set
+title: A5 MAX sticker set
 subtitle: UV printed precut stickers on an A5 sheet of high quality transparent vinyl
 
 product:

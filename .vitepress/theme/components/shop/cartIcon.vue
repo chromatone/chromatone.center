@@ -8,10 +8,10 @@ const props = defineProps({
 const quantity = computed(() => {
 	let q = 0
 	if (props.id) {
-		q = cart?.[props.id]?.quantity
+		q = cart.value?.[props.id]?.quantity
 	} else {
-		for (let id in cart) {
-			q += cart[id].quantity
+		for (let id in cart.value) {
+			q += cart.value[id].quantity
 		}
 	}
 	return q

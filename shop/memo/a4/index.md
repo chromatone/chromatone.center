@@ -1,10 +1,10 @@
 ---
-title: A4 cheat-sheet
+title: A4 cheat-sheet WIP
 subtitle: A comprehesive guide to colorful notes - WIP
-product:
-  price: 12
 cover: a4-scales.svg
 ---
+
+## WORK IN PROGRESS
 
 <script setup>
 import drawScales from './scales.vue'

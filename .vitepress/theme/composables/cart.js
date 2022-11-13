@@ -2,15 +2,17 @@ import { loadStripe } from '@stripe/stripe-js';
 
 const stripeKey = 'pk_live_51M1WfLBJnUXQERocrGtVUDvfIdzMmecoAClLVFLSi2VG2cNF2kS6bVsR4uUVtMYvusv4lkBMaDuOzgVJUuNMWndm00CVS3obG3'
 
-export const cart = reactive({})
+export const cart = useStorage('shopping-cart', {})
+
+export const delivery = ref(10)
 
 watch(cart, c => {
-	if (Object.keys(cart).length <= 0) {
+	if (Object.keys(c).length <= 0) {
 		open.value = false
 	}
-	for (let id in cart) {
-		if (cart[id].quantity <= 0) {
-			delete cart[id]
+	for (let id in c) {
+		if (c[id].quantity <= 0) {
+			delete cart.value[id]
 		}
 	}
 })
@@ -19,19 +21,20 @@ export const open = ref(false)
 
 export const total = computed(() => {
 	let sum = 0
-	for (let id in cart) {
-		sum += Number(cart?.[id]?.price) * Number(cart?.[id]?.quantity)
+	for (let id in cart.value) {
+		sum += Number(cart.value?.[id]?.price) * Number(cart.value?.[id]?.quantity)
 	}
+	sum += delivery.value
 	return sum
 })
 
 
 export function addToCart(title, product = {}) {
 	const { id, price } = product
-	if (cart[id]) {
-		cart[id].quantity++
+	if (cart.value[id]) {
+		cart.value[id].quantity++
 	} else {
-		cart[id] = { title, price, quantity: 1 }
+		cart.value[id] = { title, price, quantity: 1 }
 	}
 	open.value = true
 }
@@ -41,13 +44,13 @@ export async function checkout() {
 
 	const lineItems = []
 
-	for (let id in cart) {
+	for (let id in cart.value) {
 		lineItems.push({
 			price: id,
-			quantity: cart[id].quantity
+			quantity: cart.value[id].quantity
 		})
 	}
-
+	// delivery
 	lineItems.push({
 		price: 'price_1M2c5LBJnUXQERocesvg8j1O',
 		quantity: 1

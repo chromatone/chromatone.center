@@ -4,6 +4,7 @@ subtitle: A set of 13 narrow strips to be put under your ukulele strings plus a 
 product:
   price: 8
   link: https://ko-fi.com/s/5e951d8b89
+  id: price_1M3cKMBJnUXQERocq77GJw4x
 cover: uke.jpg
 date: 2021-09-01
 ---

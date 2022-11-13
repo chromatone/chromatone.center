@@ -29,7 +29,12 @@ function getColor(i, total, b = 10) {
     ) {{ line.title }}
     counter(:list="pages[line.path]") 
     card-date.flex-1.ml-4(:date="line.lastModified")
-    shop-price.ml-2(:product="line?.product", :showButton="false" :color="getColor(l, Object.keys(props.list).length, 40)")
+    shop-price.ml-2(
+      :title="line?.title"
+      :product="line?.product", 
+      :showButton="false" 
+      :color="getColor(l, Object.keys(props.list).length, 40)"
+      )
 </template>
 
 <style lang="postcss" scoped>

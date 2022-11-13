@@ -2,13 +2,14 @@
 title: Universal instrument stickers
 subtitle: 144 tiny color accents
 product:
-  price: 10
+  price: 12
   link: https://ko-fi.com/s/a2d14d2c25
+  id: price_1M3bm2BJnUXQERocLydmlMV2
 cover: cover-uni.jpg
 date: 2021-08-20
 ---
 
-The most concentrated form of colorful instrument stickers. A small A6 sheet includes 144 various precut stickers for you to get creative with. There are two octabes of named note circles and much more pure colors. They come in the form of a circle, a ring, a semiring and a straight line.
+The most concentrated form of colorful instrument stickers. A small A6 sheet includes 144 various precut stickers for you to get creative with. There are two octaves of named note circles and much more pure colors. They come in the form of a circle, a ring, a semiring and a straight line.
 
 ![](./sheet.jpg)
 

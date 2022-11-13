@@ -26,7 +26,11 @@ const props = defineProps({
         v-if="item.subtitle" 
 
         ) {{ item.subtitle }}
-      shop-price.float-left(:product="item?.product" :color="color")
+      shop-price.float-left(
+        :title="item?.title"
+        :product="item?.product"
+        :color="color"
+        )
 
   page-buttons.m-2(:buttons="item?.buttons")
   line-list(:list="pages[item.path]")

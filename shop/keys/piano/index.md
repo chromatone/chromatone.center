@@ -4,6 +4,7 @@ subtitle: A full labeled 2 octave piano keys sticker set for learners
 product:
   price: 10
   link: https://ko-fi.com/s/46e621d69b
+  id: price_1M3c4FBJnUXQERocCM0HOQgt
 cover: piano1.jpg
 date: 2021-08-05
 ---

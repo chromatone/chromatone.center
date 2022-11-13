@@ -18,7 +18,11 @@ card-box.p-4.mt-2.mb-12.flex.flex-col.max-w-65ch.mx-auto.text-center(
   )
   .py-2.pr-4.flex-1 We deliver orders via international post. <br> For <strong>$10</strong> we send registered mail worldwide.<br> And provide the code to track the letter's <strong>1-4 week</strong> journey. 
   .flex.mx-auto(v-if="page?.product")
-    shop-price(:product="page?.product" :color="color" :title="page?.title" )
+    shop-price(
+      :product="page?.product" 
+      :color="color" 
+      :title="page?.title" 
+      )
   //- shop-cart
 </template>
 

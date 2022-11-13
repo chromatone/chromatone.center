@@ -1,5 +1,5 @@
 ---
-title: Matte laminated
+title: OP-1 key stickers matte laminated
 subtitle: Durable colors to stay vivid for long
 product:
   price: 12

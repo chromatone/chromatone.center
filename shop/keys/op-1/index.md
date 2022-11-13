@@ -1,5 +1,5 @@
 ---
-title: OP-1 keys stickers
+title: OP-1 key stickers
 subtitle: Full key cap colors with note letters
 product:
   price: 10

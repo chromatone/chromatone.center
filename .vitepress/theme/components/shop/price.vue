@@ -1,5 +1,5 @@
 <script setup>
-import { cart, addToCart } from '#/theme/composables/cart.js'
+import { cart, addToCart } from '#/theme/composables/cart'
 
 const props = defineProps({
   title: String,
@@ -43,7 +43,7 @@ const props = defineProps({
 
 <style lang="postcss" scoped>
 .shop-action {
-  @apply flex justify-center items-center;
+  @apply flex justify-center items-center gap-2;
 }
 
 .price {

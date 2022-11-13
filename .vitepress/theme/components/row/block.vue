@@ -39,6 +39,7 @@ const bg = computed(() => `url(${props.item?.cover}`);
             radix-icons-text-align-left
         .flex-1
         shop-price(
+          :title="item.title"
           :product="item?.product" 
           :color="'color'"
           )

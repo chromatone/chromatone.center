@@ -1,9 +1,9 @@
 name: Release from Pages
-on:
-  push:
-    branches:
-      - "gh-pages"
-  workflow_dispatch:
+# on:
+#   push:
+#     branches:
+#       - "gh-pages"
+#   workflow_dispatch:
 
 jobs:
   release:

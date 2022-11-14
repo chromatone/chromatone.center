@@ -2,21 +2,41 @@ import { loadStripe } from '@stripe/stripe-js';
 
 const stripeKey = 'pk_live_51M1WfLBJnUXQERocrGtVUDvfIdzMmecoAClLVFLSi2VG2cNF2kS6bVsR4uUVtMYvusv4lkBMaDuOzgVJUuNMWndm00CVS3obG3'
 
-const allowedCountries = ["AC", "AD", "AE", "AF", "AG", "AI", "AL", "AM", "AO", "AQ", "AR", "AT", "AU", "AW", "AX", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BL", "BM", "BN", "BO", "BQ", "BR", "BS", "BT", "BV", "BW", "BY", "BZ", "CA", "CD", "CF", "CG", "CH", "CI", "CK", "CL", "CM", "CN", "CO", "CR", "CV", "CW", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "EH", "ER", "ES", "ET", "FI", "FJ", "FK", "FO", "FR", "GA", "GB", "GD", "GE", "GF", "GG", "GH", "GI", "GL", "GM", "GN", "GP", "GQ", "GR", "GS", "GT", "GU", "GW", "GY", "HK", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IM", "IN", "IO", "IQ", "IS", "IT", "JE", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KY", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MF", "MG", "MK", "ML", "MM", "MN", "MO", "MQ", "MR", "MS", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NC", "NE", "NG", "NI", "NL", "NO", "NP", "NR", "NU", "NZ", "OM", "PA", "PE", "PF", "PG", "PH", "PK", "PL", "PM", "PN", "PR", "PS", "PT", "PY", "QA", "RE", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SE", "SG", "SH", "SI", "SJ", "SK", "SL", "SM", "SN", "SO", "SR", "SS", "ST", "SV", "SX", "SZ", "TA", "TC", "TD", "TF", "TG", "TH", "TJ", "TK", "TL", "TM", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "US", "UY", "UZ", "VA", "VC", "VE", "VG", "VN", "VU", "WF", "WS", "XK", "YE", "YT", "ZA", "ZM", "ZW", "ZZ"]
 
 const MaxQuantity = 5
 
 export const cartInitilized = ref(false)
 export const open = ref(false)
 export const cart = useStorage('shopping-cart', {})
-export const delivery = ref(10)
+
+export const delivery = reactive({
+	current: 'default',
+	selected: computed(() => delivery.ways[delivery.current]),
+	ways: {
+		default: {
+			id: 'price_1M2c5LBJnUXQERocesvg8j1O',
+			desc: "We deliver orders via international post. For $10 we send registered mail worldwide. And provide the code to track its 1-4 week journey. ",
+			price: 10,
+		},
+		regular: {
+			id: 'price_1M43vqBJnUXQERocQGm2gcNv',
+			desc: "The most straightforward way to send a letter to any place. Just glue enough stamps and put it to a mailbox nearby. Regular post is slower and less predictable, but still does it's job well. Expect up to a 3-4 weeks of waiting if far from Thailand.",
+			price: 5,
+		},
+		registered: {
+			id: 'price_1M43RmBJnUXQERoctPtMJBBy',
+			desc: "Sending parcels with track numbers from Thailand is surprisingly costly. But it's more reliable and transparent as you and me can check the progress of the delivery.",
+			price: 15
+		}
+	}
+})
 
 export const total = computed(() => {
 	let sum = 0
 	for (let id in cart.value) {
 		sum += Number(cart.value?.[id]?.price) * Number(cart.value?.[id]?.quantity)
 	}
-	sum += delivery.value
+	sum += delivery.selected.price
 	return sum
 })
 
@@ -54,16 +74,19 @@ export async function checkout() {
 	}
 	// delivery
 	lineItems.push({
-		price: 'price_1M2c5LBJnUXQERocesvg8j1O',
+		price: delivery.selected.id,
 		quantity: 1
 	})
 
 	const { error } = await stripe.redirectToCheckout({
 		lineItems,
 		mode: 'payment',
-		successUrl: 'https://chromatone.center/success',
-		cancelUrl: 'https://chromatone.center/cancel',
-		shippingAddressCollection: { allowedCountries }
+		successUrl: 'https://chromatone.center/shop/success.html',
+		cancelUrl: 'https://chromatone.center/shop/cancel.html',
+		shippingAddressCollection: { allowedCountries: allowedCountries() }
 	})
 }
 
+function allowedCountries() {
+	return ["AC", "AD", "AE", "AF", "AG", "AI", "AL", "AM", "AO", "AQ", "AR", "AT", "AU", "AW", "AX", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BL", "BM", "BN", "BO", "BQ", "BR", "BS", "BT", "BV", "BW", "BY", "BZ", "CA", "CD", "CF", "CG", "CH", "CI", "CK", "CL", "CM", "CN", "CO", "CR", "CV", "CW", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "EH", "ER", "ES", "ET", "FI", "FJ", "FK", "FO", "FR", "GA", "GB", "GD", "GE", "GF", "GG", "GH", "GI", "GL", "GM", "GN", "GP", "GQ", "GR", "GS", "GT", "GU", "GW", "GY", "HK", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IM", "IN", "IO", "IQ", "IS", "IT", "JE", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KR", "KW", "KY", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MF", "MG", "MK", "ML", "MM", "MN", "MO", "MQ", "MR", "MS", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NC", "NE", "NG", "NI", "NL", "NO", "NP", "NR", "NU", "NZ", "OM", "PA", "PE", "PF", "PG", "PH", "PK", "PL", "PM", "PN", "PR", "PS", "PT", "PY", "QA", "RE", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SE", "SG", "SH", "SI", "SJ", "SK", "SL", "SM", "SN", "SO", "SR", "SS", "ST", "SV", "SX", "SZ", "TA", "TC", "TD", "TF", "TG", "TH", "TJ", "TK", "TL", "TM", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "US", "UY", "UZ", "VA", "VC", "VE", "VG", "VN", "VU", "WF", "WS", "XK", "YE", "YT", "ZA", "ZM", "ZW", "ZZ"]
+}

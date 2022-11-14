@@ -1,18 +1,19 @@
 ---
-title: Charity donation
-subtitle: You can support Chromatone development as a free and open source ecosytem of visual music 
-emoji: 💸
+title: Sponsorship
+subtitle: You can support Chromatone development as a free and open source ecosytem of visual music
 date: 2022-04-17
 buttons:
-  - url: https://airtable.com/shrm1flZTa0s9LFd6
-    text: Make a donation
+  - url: https://github.com/sponsors/davay42
+    text: Sponsor the author
     type: heart
 ---
 
 Chromatone is an open source initiative and we are based on voluntary contributions of code, time and money. You can become a part of the development by even a small donation – it really gives us energy to continue it further.
 
-[Fill in this form](https://airtable.com/shrm1flZTa0s9LFd6)
+You can start supporting the project today by sponsoring it's author at GitHub.
 
-<!-- <iframe id='kofiframe' src='https://ko-fi.com/chromatone/?hidefeed=true&widget=true&embed=true&preview=true' style='border:none;width:100%;padding:4px;background:transparent;' height='712' title='chromatone'></iframe> -->
+[github.com/sponsors/davay42](https://github.com/sponsors/davay42)
 
-<iframe class="airtable-embed" src="https://airtable.com/embed/shr2G9e4KAI9rqzTm?backgroundColor=yellow" frameborder="0" onmousewheel="" width="100%" height="600" style="background: transparent; border: 1px solid #ccc;"></iframe>
+🙏
+
+In future the project will grow big enough to become an Open Collective to be even more transparent about all the funding and expenses. We'll need to get at least 100 stars for [the repository at GitHub](https://github.com/chromatone/chromatone.center). Let's do it together!

@@ -3,10 +3,12 @@ import { cart, checkout, total, open, delivery } from '#/theme/composables/cart'
 </script>
 
 <template lang='pug'>
-.flex.flex-col.overflow-scroll.max-h-85vh.tabular-nums.gap-4(v-if="cart && Object.keys(cart).length > 0")
+.flex.flex-col.overflow-scroll.max-h-85vh.tabular-nums.gap-1(v-if="cart && Object.keys(cart).length > 0")
+	.flex.justify-between
+		.text-lg.px-4.pt-1 My shopping cart
 	table.text-left.m-0.mb-4.text-sm.md_text-lg
 		tr.text-md
-			td Position
+			td Item
 			td.text-center Price
 			td.text-center Quantity
 			td.text-right Total
@@ -15,7 +17,7 @@ import { cart, checkout, total, open, delivery } from '#/theme/composables/cart'
 			td.text-center ${{pos.price}}
 			td
 				.flex.justify-between.items-center
-					.flex.gap-2.items-center
+					.flex.gap-2.items-center.flex-1.justify-center
 						button.text-sm.cursor-pointer.bg-light-900.bg-opacity-20.p-1.rounded-xl(@click="pos.quantity--")
 							la-minus
 						.font-bold {{pos.quantity}}
@@ -23,11 +25,11 @@ import { cart, checkout, total, open, delivery } from '#/theme/composables/cart'
 							la-plus
 			td.w-6ch.text-right.font-bold ${{Number(pos.price) * Number(pos.quantity)}}
 		tr
-			td.font-bold(v-tooltip.bottom="'We deliver orders via international post. For $10 we send registered mail worldwide. And provide the code to track its 1-4 week journey. '") 
+			td.font-bold(v-tooltip.bottom="delivery.selected.desc") 
 				.flex.items-center.gap-2 
 					p.whitespace-nowrap Worldwide delivery
 					.px-2.rounded-xl.bg-light-800.dark_bg-dark-800 i
-			td.text-right(colspan="3") ${{delivery}}
+			td.text-right(colspan="3") ${{delivery.selected.price}}
 		tr.text-xl
 			td.font-bold Total
 			td.font-bold.text-right(colspan="3") ${{total}}
@@ -35,7 +37,7 @@ import { cart, checkout, total, open, delivery } from '#/theme/composables/cart'
 .flex.gap-2.mt-2
 	button.shop-button.text-md.flex-1(@click="checkout()") Checkout 
 		span.font-bold ${{total}}
-	button.border-2.border-opacity-80.dark_border-opacity-30.dark_border-light-100.px-2.rounded-lg(@click="open = false") Close
+
 </template>
 
 <style scoped lang="postcss">

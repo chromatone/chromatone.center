@@ -40,7 +40,7 @@ export default defineConfig({
       dirs: [
         { dir: ".", baseRoute: "." },
       ],
-      exclude: ['**/node_modules/**/*.*', '**/!(index).md'],
+      exclude: ['**/node_modules/**/*.*', '**/!(index).md', '**/shop/success.md', '**/shop/cancel.md'],
       extensions: ['md'],
       ...extendRoutes({
         mediaTypes: {

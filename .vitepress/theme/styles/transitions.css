@@ -48,23 +48,23 @@
 
 .slide-enter-active,
 .slide-leave-active {
-  transition: all 0.75s ease-out;
+  transition: all 500ms ease-in-out;
 }
 
 .slide-enter-to {
-  transform: translateX(0);
+  transform: translateY(0);
 }
 
 .slide-enter-from {
-  transform: translateX(-100%);
+  transform: translateY(100%);
 }
 
 .slide-leave-to {
-  transform: translateX(100%);
+  transform: translateY(100%);
 }
 
 .slide-leave-from {
-  transform: translateX(0%);
+  transform: translateY(0%);
 }
 
 .scale-slide-enter-active,

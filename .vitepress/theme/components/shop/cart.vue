@@ -1,8 +1,5 @@
 <script setup>
 import { cart, checkout, total, open, delivery } from '#/theme/composables/cart'
-
-
-
 </script>
 
 <template lang='pug'>

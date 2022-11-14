@@ -3,7 +3,7 @@ title: Educators
 subtitle: Teachers and guides ready to help you find your own way into music
 date: 2022-07-03
 buttons:
-  - url: https://app.planist.fr/davay
+  - url: https://airtable.com/shrFbtdCJR07jDsaM
     text: Book a music theory lesson now
 teachers:
   - avatar: /img/starov.jpg
@@ -18,7 +18,7 @@ teachers:
       - Lectures
       - Improvisations
       - Performances
-    book: https://app.planist.fr/davay
+    book: https://airtable.com/shrFbtdCJR07jDsaM
 ---
 
 We're building an international community of the visual music theory teachers and practitioners. It all starts from the founder of the system and grows exponentially as a net of those who learn to see music in color. Learners become teachers with time. And the cycle goes on.

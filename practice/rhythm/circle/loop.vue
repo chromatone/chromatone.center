@@ -1,87 +1,104 @@
 <script setup>
-import LoopSector from './loop-sector.vue'
+import LoopSector from "./loop-sector.vue";
+import BeatControlSector from './sector.vue'
 
-import { getCircleCoord, rotateArray } from '#/use/calculations'
-import { useSequence } from '#/use/sequence.js'
-import { isDark } from '#/theme/composables/state.js'
-import { levelColor } from "#/use/colors.js"
-import { tempo } from '#/use/tempo'
-import { midi } from '#/use/midi'
+import { getCircleCoord, rotateArray } from "#/use/calculations";
+import { useSequence } from "#/use/sequence.js";
+import { isDark } from "#/theme/composables/state.js";
+import { levelColor } from "#/use/colors.js";
+import { tempo } from "#/use/tempo";
+import { midi } from "#/use/midi";
 // import { useUrlSearchParams } from '@vueuse/core'
 
-const emit = defineEmits(['del', 'over', 'under', 'sound'])
+import { controls } from "./controls";
+
+const emit = defineEmits(["del", "over", "under", "sound"]);
 
 const props = defineProps({
   radius: { type: Number, default: 400 },
-  size: { type: Number, default: 175, },
+  size: { type: Number, default: 175 },
   order: { type: Number, default: 0 },
-  loop: { type: Object, default: { over: 4, under: 4, sound: 'A' } },
-  midiChannel: { type: Number, default: 1 },
+  loop: { type: Object, default: { over: 4, under: 4, sound: "A" } },
   rotateCC: { type: Number, default: 3 },
   stepsCC: { type: Number, default: 4 },
 });
 
-const soundLetters = ['A', 'B', 'C', 'D', 'E', 'F']
-const soundControl = ref(soundLetters.findIndex(el => el == props.loop?.sound))
-const controlRadius = computed(() => props.radius + 110)
+const soundLetters = ["A", "B", "C", "D", "E", "F"];
+const soundControl = ref(soundLetters.findIndex((el) => el == props.loop?.sound));
+const controlRadius = computed(() => props.radius + 110);
 
-const { progress, current, steps, mutes, accents, volume, panning, recorder, lastHit, mutesCount, reset } = useSequence(props.loop, props.order, 'circle')
+const {
+  progress,
+  current,
+  steps,
+  mutes,
+  accents,
+  volume,
+  panning,
+  recorder,
+  lastHit,
+  mutesCount,
+  reset,
+} = useSequence(props.loop, props.order, "circle");
 
-watch(soundControl, num => {
-  emit('sound', soundLetters[num])
-})
+watch(soundControl, (num) => {
+  emit("sound", soundLetters[num]);
+});
 
 const activeSteps = computed(() => {
-  return steps.filter(step => !mutes.value[step[0].split('-')[0]]).map(step => Number(step[0].split('-')[0]))
-})
+  return steps
+    .filter((step) => !mutes.value[step[0].split("-")[0]])
+    .map((step) => Number(step[0].split("-")[0]));
+});
 
 const lineProgress = computed(() => {
   if (progress.value > 0) {
-    return getCircleCoord(progress.value * 360, 360, props.radius + 50, 1000)
+    return getCircleCoord(progress.value * 360, 360, props.radius + 50, 1000);
   } else {
-    return { x: 500, y: 100 }
+    return { x: 500, y: 100 };
   }
 });
 
 const lastLine = computed(() => {
   if (progress.value > 0) {
-    return getCircleCoord(lastHit.value * 360, 360, props.radius + 50, 1000)
+    return getCircleCoord(lastHit.value * 360, 360, props.radius + 50, 1000);
   } else {
-    return { x: 500, y: 100 }
+    return { x: 500, y: 100 };
   }
 });
 
 function rotateAccents(num) {
-  accents.value = rotateArray(accents.value, num)
-  mutes.value = rotateArray(mutes.value, num)
+  accents.value = rotateArray(accents.value, num);
+  mutes.value = rotateArray(mutes.value, num);
 }
 
-const prevCC = ref(0)
-const prevSteps = ref(4)
+const prevCC = ref(0);
+const prevSteps = ref(4);
 
-watch(() => midi.cc, cc => {
-  if (cc.channel != props.midiChannel) return
+watch(
+  () => midi.cc,
+  (cc) => {
+    if (cc.channel != controls.channel) return;
 
-  if (cc.number == props.stepsCC) {
-    const diff = prevSteps.value - cc.raw
-    prevSteps.value = cc.raw
-    if (!diff) return
-    const can = mutes.value.length - mutesCount.value
-    if (can < 0) return
-    if (diff > 0 && mutesCount.value <= 1) return
-    const index = mutes.value.findIndex(mute => mute == diff < 0)
-    mutes.value[index] = diff > 0
-    reset()
+    if (cc.number == controls.cc[props.order].steps) {
+      const diff = prevSteps.value - cc.raw;
+      prevSteps.value = cc.raw;
+      if (!diff) return;
+      const can = mutes.value.length - mutesCount.value;
+      if (can < 0) return;
+      if (diff > 0 && mutesCount.value <= 1) return;
+      const index = mutes.value.findIndex((mute) => mute == diff < 0);
+      mutes.value[index] = diff > 0;
+      reset();
+    }
+    if (cc.number == controls.cc[props.order].rotate) {
+      const diff = prevCC.value - cc.raw;
+      prevCC.value = cc.raw;
+      rotateAccents(diff);
+    }
   }
-  if (cc.number == props.rotateCC) {
-    const diff = prevCC.value - cc.raw
-    prevCC.value = cc.raw
-    rotateAccents(diff)
-  }
-})
-
+);
 </script>
-
 
 <template lang="pug">
 g(
@@ -140,8 +157,8 @@ g(
     :ratio="800"
     :every="4"
     v-tooltip.top="'Measure subdivision'"
-    :midiChannel="midiChannel"
-    :midiCC="2+order*8"
+
+    :midiCC="controls.cc[order].under"
   )
     text {{ loop.under }}
 
@@ -159,8 +176,8 @@ g(
     :ratio="1000"
     :every="4"
     v-tooltip.top="'Number of steps'"
-    :midiChannel="midiChannel"
-    :midiCC="1+order*8"
+
+    :midiCC="controls.cc[order].over"
   )
     text {{ loop.over }}
 
@@ -176,8 +193,8 @@ g(
     :max="1"
     :vector="[1, -1]"
     v-tooltip.bottom="'Track volume'"
-    :midiChannel="midiChannel"
-    :midiCC="7+order*8"
+
+    :midiCC="controls.cc[order].vol"
   )
     la-volume-up(x="-18" y="-28")
 
@@ -193,8 +210,8 @@ g(
     :max="1"
     show-center
     v-tooltip.bottom="'Track panning'"
-    :midiChannel="midiChannel"
-    :midiCC="6+order*8"
+
+    :midiCC="controls.cc[order].pan"
   )
     mdi-pan-horizontal(x="-18" y="-28")
 
@@ -213,8 +230,8 @@ g(
     :ratio="400"
     :every="1"
     v-tooltip.bottom="'Select sound'"
-    :midiChannel="midiChannel"
-    :midiCC="5+order*8"
+
+    :midiCC="controls.cc[order].sound"
   )
     text {{ loop?.sound }}
 
@@ -306,7 +323,7 @@ g(
       :r="5"
       )
 </template>
-  
+
 <style lang="postcss" scoped>
 .info {
   @apply p-2 rounded-full m-1 border-1 border-current text-2xl;

@@ -7,6 +7,8 @@ import { tempo } from '#/use/tempo'
 
 import { renderMidi } from '#/use/midiRender'
 import { tracks } from '#/use/sequence'
+import { controls } from './controls'
+
 const loops = useStorage('tempo-circle-loops', [
   {
     over: 8,
@@ -40,7 +42,7 @@ const tempoCC = ref(8)
 const prevCC = ref(0)
 
 watch(() => midi.cc, cc => {
-  if (cc.channel != midiChannel.value) return
+  if (cc.channel != controls.channel) return
   if (cc.number != tempoCC.value) return
   const diff = cc.raw - prevCC.value
   prevCC.value = cc.raw
@@ -95,8 +97,6 @@ watch(() => midi.cc, cc => {
       @sound="loop.sound = $event"
       :rotateCC="4+i*8"
       :stepsCC="3+i*8"
-      :midiChannel="midiChannel"
-
       )
     circle-center(transform="translate(500,500) scale(0.75)")
     circle-overlay.cursor-pointer(

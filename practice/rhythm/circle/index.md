@@ -13,7 +13,7 @@ links:
 </client-only >
 
 <script setup>
-import BeatCircle from './index.vue'
+import BeatCircle from './main.vue'
 </script>
 
 ## Welcome to the all-mighty Chromatone circular metronome!
@@ -40,13 +40,13 @@ It's the center for deep exploration of any kind of rhythmic patterns. We have t
 18. Explore our [rhythm theory section](../../../theory/rhythm/index.md) for inspiration about what to dial into the loops. This app can act as a simple visual and audial cue for your music practice or become a tool to explore the enormous space of possible rhythmic combinations. Polyrhythms have never been so easy to see and internalise. The colors and the form of the metronome can help sticking to the tempo even in silence. Be creative and feel the power of this rhythm visualisation tool.
 19. You can also control all the parameters of the metronome with your MIDI-controller. Use the knobs to send the **CC messages number 1-16** on **channel 1** for it. Two loops are independently controlled by these commands:
 
-| Parameter | Outer loop | Inner loop |
-|---|---|---|
-| Number of steps | CC 1 | CC 9 |
-| Subdivision | CC 2 | CC 10 |
-| Number of active steps | CC 3 | CC 11 |
-| Rotation of the pattern | CC 4 | CC 12 |
-| Beat sound | CC 5 | CC 13 |
-| Panning | CC 6 | CC 14 |
-| Volume | CC 7 | CC 15 |
-| BPM | CC 8 | -- |
+| Parameter               | Outer loop | Inner loop |
+| ----------------------- | ---------- | ---------- |
+| Number of steps         | CC 1       | CC 9       |
+| Subdivision             | CC 2       | CC 10      |
+| Number of active steps  | CC 3       | CC 11      |
+| Rotation of the pattern | CC 4       | CC 12      |
+| Beat sound              | CC 5       | CC 13      |
+| Panning                 | CC 6       | CC 14      |
+| Volume                  | CC 7       | CC 15      |
+| BPM                     | CC 8       | --         |

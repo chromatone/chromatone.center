@@ -33,12 +33,12 @@
 	"dependencies": {
 		"@gun-vue/composables": "^0.11.5",
 		"@stripe/stripe-js": "^1.44.1",
-		"@tonaljs/tonal": "^4.6.5",
+		"@tonaljs/tonal": "^4.6.10",
 		"@tonejs/midi": "^2.0.28",
 		"@vueuse/core": "^9.5.0",
 		"@vueuse/gesture": "2.0.0-beta.1",
 		"@vueuse/math": "^9.5.0",
-		"abcjs": "^6.1.6",
+		"abcjs": "^6.1.7",
 		"audio-recorder-polyfill": "^0.4.1",
 		"audiomotion-analyzer": "3.6.0",
 		"cobe": "^0.6.2",
@@ -59,10 +59,10 @@
 		"vitepress-pages": "^0.8.6",
 		"vue": "^3.2.45",
 		"vue-stripe-js": "^1.0.1",
-		"webmidi": "^3.0.21"
+		"webmidi": "^3.0.22"
 	},
 	"devDependencies": {
-		"@iconify/json": "^2.1.136",
+		"@iconify/json": "^2.1.141",
 		"@volar/vue-language-plugin-pug": "1.0.9",
 		"markdown-it-external-links": "^0.0.6",
 		"patch-vue-directive-ssr": "^0.0.1",
@@ -70,12 +70,12 @@
 		"unplugin-auto-import": "^0.11.4",
 		"unplugin-icons": "^0.14.13",
 		"unplugin-vue-components": "^0.22.9",
-		"vite": "3.2.3",
+		"vite": "3.2.4",
 		"vite-plugin-pages": "^0.27.1",
 		"vite-plugin-pages-sitemap": "^1.4.0",
 		"vite-plugin-pwa": "^0.13.3",
 		"vite-plugin-windicss": "^1.8.8",
-		"vitepress": "1.0.0-alpha.28",
+		"vitepress": "1.0.0-alpha.29",
 		"windicss": "3.5.6"
 	}
 }

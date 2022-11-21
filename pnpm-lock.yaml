@@ -2,15 +2,15 @@ lockfileVersion: 5.4
 
 specifiers:
   '@gun-vue/composables': ^0.11.5
-  '@iconify/json': ^2.1.136
+  '@iconify/json': ^2.1.141
   '@stripe/stripe-js': ^1.44.1
-  '@tonaljs/tonal': ^4.6.5
+  '@tonaljs/tonal': ^4.6.10
   '@tonejs/midi': ^2.0.28
   '@volar/vue-language-plugin-pug': 1.0.9
   '@vueuse/core': ^9.5.0
   '@vueuse/gesture': 2.0.0-beta.1
   '@vueuse/math': ^9.5.0
-  abcjs: ^6.1.6
+  abcjs: ^6.1.7
   audio-recorder-polyfill: ^0.4.1
   audiomotion-analyzer: 3.6.0
   cobe: ^0.6.2
@@ -34,27 +34,27 @@ specifiers:
   unplugin-auto-import: ^0.11.4
   unplugin-icons: ^0.14.13
   unplugin-vue-components: ^0.22.9
-  vite: 3.2.3
+  vite: 3.2.4
   vite-plugin-pages: ^0.27.1
   vite-plugin-pages-sitemap: ^1.4.0
   vite-plugin-pwa: ^0.13.3
   vite-plugin-windicss: ^1.8.8
-  vitepress: 1.0.0-alpha.28
+  vitepress: 1.0.0-alpha.29
   vitepress-pages: ^0.8.6
   vue: ^3.2.45
   vue-stripe-js: ^1.0.1
-  webmidi: ^3.0.21
+  webmidi: ^3.0.22
   windicss: 3.5.6
 
 dependencies:
   '@gun-vue/composables': 0.11.5
   '@stripe/stripe-js': 1.44.1
-  '@tonaljs/tonal': 4.6.5
+  '@tonaljs/tonal': 4.6.10
   '@tonejs/midi': 2.0.28
   '@vueuse/core': 9.5.0_vue@3.2.45
   '@vueuse/gesture': 2.0.0-beta.1_vue@3.2.45
   '@vueuse/math': 9.5.0_vue@3.2.45
-  abcjs: 6.1.6
+  abcjs: 6.1.7
   audio-recorder-polyfill: 0.4.1
   audiomotion-analyzer: 3.6.0
   cobe: 0.6.2
@@ -75,10 +75,10 @@ dependencies:
   vitepress-pages: 0.8.6_vite-plugin-pages@0.27.1
   vue: 3.2.45
   vue-stripe-js: 1.0.1
-  webmidi: 3.0.21
+  webmidi: 3.0.22
 
 devDependencies:
-  '@iconify/json': 2.1.136
+  '@iconify/json': 2.1.141
   '@volar/vue-language-plugin-pug': 1.0.9
   markdown-it-external-links: 0.0.6
   patch-vue-directive-ssr: 0.0.1
@@ -86,12 +86,12 @@ devDependencies:
   unplugin-auto-import: 0.11.4_@vueuse+core@9.5.0
   unplugin-icons: 0.14.13
   unplugin-vue-components: 0.22.9_vue@3.2.45
-  vite: 3.2.3
-  vite-plugin-pages: 0.27.1_vite@3.2.3
+  vite: 3.2.4
+  vite-plugin-pages: 0.27.1_vite@3.2.4
   vite-plugin-pages-sitemap: 1.4.0
-  vite-plugin-pwa: 0.13.3_vite@3.2.3
-  vite-plugin-windicss: 1.8.8_vite@3.2.3
-  vitepress: 1.0.0-alpha.28
+  vite-plugin-pwa: 0.13.3_vite@3.2.4
+  vite-plugin-windicss: 1.8.8_vite@3.2.4
+  vitepress: 1.0.0-alpha.29
   windicss: 3.5.6
 
 packages:
@@ -1484,8 +1484,8 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@iconify/json/2.1.136:
-    resolution: {integrity: sha512-tO5hV+yXn87+OCQqiVzis6i4YQiRX4044ZjubP6GmbeclE6tsypK+by/tXjbm90GTX0jhsOJ6YLzWl3szivywg==}
+  /@iconify/json/2.1.141:
+    resolution: {integrity: sha512-FPVZPGwhfugQ4ejfdvvy+/oAq0QCG3MY4oWrt80s77XQX1LEA7UndN1GV5uBdo2fKgRU94RnmBbtDOZ4T+4aoQ==}
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 0.3.9
@@ -1723,165 +1723,165 @@ packages:
       string.prototype.matchall: 4.0.7
     dev: true
 
-  /@tonaljs/abc-notation/4.6.5:
-    resolution: {integrity: sha512-1S0Jnx0NfDLgyhkQOMEHqOacELL6RUdPcWWUP+nAnsOsb9owvB9RKYLSzp5odd16FVUR7U8c/JLc2yxIRvSeJw==}
+  /@tonaljs/abc-notation/4.6.10:
+    resolution: {integrity: sha512-V1SigYdxOdNDPF69rftmdg54LxaM+Zv2Fn5iTpu4036EfaU9b3E1dDkm/WVyNK+9ey7yza1Mn5fiQPyOt6xpzA==}
     dependencies:
-      '@tonaljs/core': 4.6.5
+      '@tonaljs/core': 4.6.10
     dev: false
 
-  /@tonaljs/array/4.6.5:
-    resolution: {integrity: sha512-7A3DbBQ+qIQ134FqE518b4tJ8V2a15Sn303JjHzgnqZqKrNh/s3wqwkL60F7LKcd09tcp+vIKQP/MYt4xMcRAA==}
+  /@tonaljs/array/4.6.10:
+    resolution: {integrity: sha512-EIlQfVCjRpnr0nB42tHLi3+l7ognj53VOqin0c1VGiijwcC/YfgWRwPuGyXwmEl3dSODAkJ8XvtVVnLCj1fADg==}
     dependencies:
-      '@tonaljs/core': 4.6.5
+      '@tonaljs/core': 4.6.10
     dev: false
 
-  /@tonaljs/chord-detect/4.6.5:
-    resolution: {integrity: sha512-4xu53UP4kNTfdTNpAAVijhXcQ+ypJqmeMnsST08ZXSjoYfJUhmf5rWDWfz36KOTtNdCA6AbYgdtTYV/Xw0nd/w==}
+  /@tonaljs/chord-detect/4.6.10:
+    resolution: {integrity: sha512-uspUZ0oMEJbMIUEitIpGv/8ZguiMwVsdpcRMIbqXEOTYP1Ve/7U9IdS3gD1xwkdZRnRU/e+vezmAbzEpFs3pYA==}
     dependencies:
-      '@tonaljs/chord-type': 4.6.5
-      '@tonaljs/core': 4.6.5
-      '@tonaljs/pcset': 4.6.5
+      '@tonaljs/chord-type': 4.6.10
+      '@tonaljs/core': 4.6.10
+      '@tonaljs/pcset': 4.6.10
     dev: false
 
-  /@tonaljs/chord-type/4.6.5:
-    resolution: {integrity: sha512-Ol4DDopqpZCF9odosO2i8I+plud3Ul7VWJGNvL+PPCf4Qnwuz87q3aJQDLNoRUz4VyW0u66mq3LyVh6A8kb6Ug==}
+  /@tonaljs/chord-type/4.6.10:
+    resolution: {integrity: sha512-WOs+YOF120WATg8KdJ6tol5B72TuYL9nAQ2IKCjzZro8p/urRZ3QBdAPcTlbALVdHEU5ec4ptrq57q8X/YBQgw==}
     dependencies:
-      '@tonaljs/core': 4.6.5
-      '@tonaljs/pcset': 4.6.5
+      '@tonaljs/core': 4.6.10
+      '@tonaljs/pcset': 4.6.10
     dev: false
 
-  /@tonaljs/chord/4.6.5:
-    resolution: {integrity: sha512-Pjdel4aDVv4kcx9PW6Qozt5BB9nAt13AOExfzKztpgPmlBSy0SKHse7Jp1cA4MGAuLHU8dzVssTFYpCskEFw3w==}
+  /@tonaljs/chord/4.6.10:
+    resolution: {integrity: sha512-Ryov9MmFzLcqLpyytV+6d18Mrd9LCUPYh6usvVH0ivkhctRb/UlwTFTwo5tN5IgQrLUphbAmhGx7vSS7z3Lw+Q==}
     dependencies:
-      '@tonaljs/chord-detect': 4.6.5
-      '@tonaljs/chord-type': 4.6.5
-      '@tonaljs/collection': 4.6.2
-      '@tonaljs/core': 4.6.5
-      '@tonaljs/pcset': 4.6.5
-      '@tonaljs/scale-type': 4.6.5
+      '@tonaljs/chord-detect': 4.6.10
+      '@tonaljs/chord-type': 4.6.10
+      '@tonaljs/collection': 4.6.10
+      '@tonaljs/core': 4.6.10
+      '@tonaljs/pcset': 4.6.10
+      '@tonaljs/scale-type': 4.6.10
     dev: false
 
-  /@tonaljs/collection/4.6.2:
-    resolution: {integrity: sha512-bfPCotLJNB/tG1NrdbsQPLDKZB5jlMs7uPQ6RYKiNkaena3345ZKkbCGl5pj6YTXeDm/oblXiSbFAn7SlLRZdQ==}
+  /@tonaljs/collection/4.6.10:
+    resolution: {integrity: sha512-i19j92RjyuTnC6FSYo4TF7JJQjhZ0KJSvEmwxwKOxgw8/+DNiwMf301zGzBJKUYoEc8vNsk3vCEHmxAh4qEPnQ==}
     dev: false
 
-  /@tonaljs/core/4.6.5:
-    resolution: {integrity: sha512-t7Vx0+L3j/ubQj2AhI1H45D/K745np4DwJjJjXNi5FlGD+TL2wyw50dCwkHKGHsrLDqup1qqP6yN7LBpC6UwNg==}
+  /@tonaljs/core/4.6.10:
+    resolution: {integrity: sha512-PV8VXflQM1isS1517VvRUbxEbJoQ5ZLSS5pQLX4L+ffSzXaRBEBLaJgEa/lUyzEYrwiIjVFp4vpaMYWdxY+27Q==}
     dev: false
 
-  /@tonaljs/duration-value/4.6.2:
-    resolution: {integrity: sha512-zrXT0L/qsDQ6251Mlqz54vcUbYUB9xb6uJhlxUzc6VauXOt8UOfrdTULubRTXTaBwWt1h8J5n9pXTQmNGzNI9A==}
+  /@tonaljs/duration-value/4.6.10:
+    resolution: {integrity: sha512-GjapTxTJoBYRkUtx1M43+HGsSO3FirNyZQzqKSohtSPfyleZz7OyyiK6eaV5c1eEyGXGdfokKEd2bXhjt3j/KQ==}
     dev: false
 
-  /@tonaljs/interval/4.6.5:
-    resolution: {integrity: sha512-7EDWhqZ7Nnh9oD4ahRYJHLc799ACGxYL4hDHwMKD16B2MgXqPvDeDvwQ31qUuO0ruGz8tMb3FDlgg0Hplowcbw==}
+  /@tonaljs/interval/4.6.10:
+    resolution: {integrity: sha512-QZfebbgdNHxjeL5BzzMqDVTYT2gDRWv9VySlaaRNTOv9PbI4RBxjsLJiwr3o97u5ind4QYyjkDdz4Ur0XyO0eQ==}
     dependencies:
-      '@tonaljs/core': 4.6.5
+      '@tonaljs/core': 4.6.10
     dev: false
 
-  /@tonaljs/key/4.6.5:
-    resolution: {integrity: sha512-ZdZWb5IStx6CLRmdEjawR66CqNpoW3EVUua2nVZBMdgnNebWxt4nvgH/ZNvGlCQGFZkUZzRhCfTwqsS6e3OmSA==}
+  /@tonaljs/key/4.6.10:
+    resolution: {integrity: sha512-M1iFdu1dyvzqOEbqACp23TKyaT44G+84VnHBzhsLBe06vGTeoOFg0/+RUFoQCSnkHkv/KI3CjEkkbTzdP8q3DQ==}
     dependencies:
-      '@tonaljs/core': 4.6.5
-      '@tonaljs/note': 4.6.5
-      '@tonaljs/roman-numeral': 4.6.5
+      '@tonaljs/core': 4.6.10
+      '@tonaljs/note': 4.6.10
+      '@tonaljs/roman-numeral': 4.6.10
     dev: false
 
-  /@tonaljs/midi/4.6.5:
-    resolution: {integrity: sha512-fJEZtNvV3M6yW1w+Tep60Rbv5PvuKszQcQzaJS1Loq5mHOKAzdmRfuJSpEpZBiaKEZ1WAMh1QKXYyOd+imyGQg==}
+  /@tonaljs/midi/4.6.10:
+    resolution: {integrity: sha512-qTlQebVYqq5jGMNVU75+ZA0TNxZ1t9fvLXHuQAASyBFVSQNYi+FOs63pEBFSonpmmHNdTzIcCwoLRpUKhHaKXw==}
     dependencies:
-      '@tonaljs/core': 4.6.5
+      '@tonaljs/core': 4.6.10
     dev: false
 
-  /@tonaljs/mode/4.6.5:
-    resolution: {integrity: sha512-54iaON1rJ6q8fV5iuei8RGDxYhKBGGxZz3rjAxGSqdTUwBRVOdPqtzOkofThf9gRGYOMhzPp1BMbxbV+UCAPsA==}
+  /@tonaljs/mode/4.6.10:
+    resolution: {integrity: sha512-6gaOdg3DFQ9+tdMa+N5QG2y6FdGv0tZEekkV70lj3FvgRrCHvCh+BQ5/HGv57Bo6i4SGmlYbgBK4lKcda2rZsA==}
     dependencies:
-      '@tonaljs/collection': 4.6.2
-      '@tonaljs/core': 4.6.5
-      '@tonaljs/interval': 4.6.5
-      '@tonaljs/pcset': 4.6.5
-      '@tonaljs/scale-type': 4.6.5
+      '@tonaljs/collection': 4.6.10
+      '@tonaljs/core': 4.6.10
+      '@tonaljs/interval': 4.6.10
+      '@tonaljs/pcset': 4.6.10
+      '@tonaljs/scale-type': 4.6.10
     dev: false
 
-  /@tonaljs/note/4.6.5:
-    resolution: {integrity: sha512-Y0/eTzcReXzfcSLLG4k/dLLayqbvh/XYIkybG/QMDyR0BREuJq0Sw+NavbzhTtO0dadIQb/qfe0GFq4k2xS+NQ==}
+  /@tonaljs/note/4.6.10:
+    resolution: {integrity: sha512-1cOxpGAYQwsZlONFj86BP75NWJuXvgKANwf9am7tN8DnbIvXaRQfkoOorD9b14CgO2pfQUZBp7f5pMnByy/9SA==}
     dependencies:
-      '@tonaljs/core': 4.6.5
-      '@tonaljs/midi': 4.6.5
+      '@tonaljs/core': 4.6.10
+      '@tonaljs/midi': 4.6.10
     dev: false
 
-  /@tonaljs/pcset/4.6.5:
-    resolution: {integrity: sha512-oWAKflP3cREnUfScqsBzg2LLKNevxSnpDtrq8CPtwOAsrAa8PjQG07NQfhqIiFMjPUdgkDiER3qVA1n8dDwAJA==}
+  /@tonaljs/pcset/4.6.10:
+    resolution: {integrity: sha512-9RkA/6iEo5+C4nof8Z6hC6flqOLPRDiFZ0+X6YL3ug5kFPTX1QXVSmAwFtaUSRzaKbGUKofS0BncK6mbnqzDdA==}
     dependencies:
-      '@tonaljs/collection': 4.6.2
-      '@tonaljs/core': 4.6.5
+      '@tonaljs/collection': 4.6.10
+      '@tonaljs/core': 4.6.10
     dev: false
 
-  /@tonaljs/progression/4.6.5:
-    resolution: {integrity: sha512-ijYEgMFQG4izHYUw5cRtBRNBuoYzmpGvb/tRiykhJNI6XIjekZEMiMsOMfb1u5q+EGvnVNXRmrluMRDIz2rmRw==}
+  /@tonaljs/progression/4.6.10:
+    resolution: {integrity: sha512-W8ws0I1ETPNm7djI4V1vy9E3yFRvhRxBDPuXK8C5+TsMWPtwfY03owzT4yc4rPj4eBuVQRqiA614DEn46bQG4Q==}
     dependencies:
-      '@tonaljs/chord': 4.6.5
-      '@tonaljs/core': 4.6.5
-      '@tonaljs/roman-numeral': 4.6.5
+      '@tonaljs/chord': 4.6.10
+      '@tonaljs/core': 4.6.10
+      '@tonaljs/roman-numeral': 4.6.10
     dev: false
 
-  /@tonaljs/range/4.6.5:
-    resolution: {integrity: sha512-99cOvVJ3l4X0UJuTSa6qE87JriREnnWIsi3xo1/n7RoqFxnfi8YPh4SfJJyysvHcT18X4EfcTNde9ancMBVu6A==}
+  /@tonaljs/range/4.6.10:
+    resolution: {integrity: sha512-I3KO/RaGv+s4zC/i4SVwmWYWZUzaOOgiWXzPJtmJDqCiDTsYSUzBn52cWXBL02/83vhBihc4pgHMHkOc8/SwmA==}
     dependencies:
-      '@tonaljs/collection': 4.6.2
-      '@tonaljs/midi': 4.6.5
+      '@tonaljs/collection': 4.6.10
+      '@tonaljs/midi': 4.6.10
     dev: false
 
-  /@tonaljs/roman-numeral/4.6.5:
-    resolution: {integrity: sha512-bWYQNZWKmYDDcmbQQNwcWAHfTWanpzmvI0wplrMnGd4x0op5etwUEv+Yzjg0B1ef+E+zcU02Sl0WwRJhaDK3hg==}
+  /@tonaljs/roman-numeral/4.6.10:
+    resolution: {integrity: sha512-EASBrYCAw9HTsC69SVxSNqLShzdl2rincQHO3N46GsKB2/Wa8h5Ya5ToqOSkpJyqcr7UJAB5VyMFxEcdsD3rLQ==}
     dependencies:
-      '@tonaljs/core': 4.6.5
+      '@tonaljs/core': 4.6.10
     dev: false
 
-  /@tonaljs/scale-type/4.6.5:
-    resolution: {integrity: sha512-rwcDOYf2UifjLJhmuQ8f8bJSeOCMDQJ1lB7lzlqdFxes03OeQhdOEfrT0nPtW8BhBEvq4GMM2NA6CLxX8MTwOQ==}
+  /@tonaljs/scale-type/4.6.10:
+    resolution: {integrity: sha512-MBxY4Ix8pUZ46tAn2A7yM2k0Kw/zNlNNKw49ViETZx1HEH2SAN5h2/NuIGfgoR9kdoa9FjTw899oQu6qImfIoA==}
     dependencies:
-      '@tonaljs/core': 4.6.5
-      '@tonaljs/pcset': 4.6.5
+      '@tonaljs/core': 4.6.10
+      '@tonaljs/pcset': 4.6.10
     dev: false
 
-  /@tonaljs/scale/4.6.5:
-    resolution: {integrity: sha512-isYDamelOBtcd5bEnJ8QV0Js7jKRwZ0FlFVE/+bUN3wsyo9u6KLL5gMyfH9RKdx74m8lE13JXYTXgKqe+AOa4A==}
+  /@tonaljs/scale/4.6.10:
+    resolution: {integrity: sha512-s/iHRBSFBa1fSWfnBy9uWaX94o1Y0SdAmEV4nWmjyvIT7J7I3TfQQHFJLq/Bz1mUR7T5faB1MqeGd299xd0Sfw==}
     dependencies:
-      '@tonaljs/chord-type': 4.6.5
-      '@tonaljs/collection': 4.6.2
-      '@tonaljs/core': 4.6.5
-      '@tonaljs/note': 4.6.5
-      '@tonaljs/pcset': 4.6.5
-      '@tonaljs/scale-type': 4.6.5
+      '@tonaljs/chord-type': 4.6.10
+      '@tonaljs/collection': 4.6.10
+      '@tonaljs/core': 4.6.10
+      '@tonaljs/note': 4.6.10
+      '@tonaljs/pcset': 4.6.10
+      '@tonaljs/scale-type': 4.6.10
     dev: false
 
-  /@tonaljs/time-signature/4.6.2:
-    resolution: {integrity: sha512-OlZY4gdLd21WpMeAI1nS9E9zWcYU6oAzh6ptAUndqmVnFIrIWIWKCkWapdFx8dWdqrX8jqya3m4T33wmeo7w5Q==}
+  /@tonaljs/time-signature/4.6.10:
+    resolution: {integrity: sha512-QDfoW5jKZzGetuM46QfLHXchVSy2SVkrYf46V++yPSY4Af+l5Q/yX24B5B/g9qO3q2ocPlKGMK7wa6aGGGT9yA==}
     dev: false
 
-  /@tonaljs/tonal/4.6.5:
-    resolution: {integrity: sha512-lmsWinI9dy7nQyzCEgDVeVAwJtsk4ey05cJZd6oa4QVuSFD+CR8ebaEiwT4/Na+W0kHrKicT3h0uYc2PJIvx5Q==}
+  /@tonaljs/tonal/4.6.10:
+    resolution: {integrity: sha512-jGHobb0rp5lDuZsOGPKnpzU95t/iwX1drMAMaDyACTw9Qf1lKIXfvphR0sKjjWGyYO/8AFK1xFZKm8UFNhW9Ew==}
     dependencies:
-      '@tonaljs/abc-notation': 4.6.5
-      '@tonaljs/array': 4.6.5
-      '@tonaljs/chord': 4.6.5
-      '@tonaljs/chord-type': 4.6.5
-      '@tonaljs/collection': 4.6.2
-      '@tonaljs/core': 4.6.5
-      '@tonaljs/duration-value': 4.6.2
-      '@tonaljs/interval': 4.6.5
-      '@tonaljs/key': 4.6.5
-      '@tonaljs/midi': 4.6.5
-      '@tonaljs/mode': 4.6.5
-      '@tonaljs/note': 4.6.5
-      '@tonaljs/pcset': 4.6.5
-      '@tonaljs/progression': 4.6.5
-      '@tonaljs/range': 4.6.5
-      '@tonaljs/roman-numeral': 4.6.5
-      '@tonaljs/scale': 4.6.5
-      '@tonaljs/scale-type': 4.6.5
-      '@tonaljs/time-signature': 4.6.2
+      '@tonaljs/abc-notation': 4.6.10
+      '@tonaljs/array': 4.6.10
+      '@tonaljs/chord': 4.6.10
+      '@tonaljs/chord-type': 4.6.10
+      '@tonaljs/collection': 4.6.10
+      '@tonaljs/core': 4.6.10
+      '@tonaljs/duration-value': 4.6.10
+      '@tonaljs/interval': 4.6.10
+      '@tonaljs/key': 4.6.10
+      '@tonaljs/midi': 4.6.10
+      '@tonaljs/mode': 4.6.10
+      '@tonaljs/note': 4.6.10
+      '@tonaljs/pcset': 4.6.10
+      '@tonaljs/progression': 4.6.10
+      '@tonaljs/range': 4.6.10
+      '@tonaljs/roman-numeral': 4.6.10
+      '@tonaljs/scale': 4.6.10
+      '@tonaljs/scale-type': 4.6.10
+      '@tonaljs/time-signature': 4.6.10
     dev: false
 
   /@tonejs/midi/2.0.28:
@@ -1937,14 +1937,14 @@ packages:
     dev: false
     optional: true
 
-  /@vitejs/plugin-vue/3.2.0_vite@3.2.3+vue@3.2.45:
+  /@vitejs/plugin-vue/3.2.0_vite@3.2.4+vue@3.2.45:
     resolution: {integrity: sha512-E0tnaL4fr+qkdCNxJ+Xd0yM31UwMkQje76fsDVBBUCoGOUPexu2VDUYHL8P4CwV+zMvWw6nlRw19OnRKmYAJpw==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       vite: ^3.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 3.2.3
+      vite: 3.2.4
       vue: 3.2.45
     dev: true
 
@@ -2281,8 +2281,8 @@ packages:
       - supports-color
     dev: true
 
-  /abcjs/6.1.6:
-    resolution: {integrity: sha512-wLwYqFMLoObDOmgIUK+9PLg57t+PDisWbuBJNmlhrAO0tS3ot0h8b1jzgAOqUO1LkG3zrTnqMjKE+w830Jc/Ag==}
+  /abcjs/6.1.7:
+    resolution: {integrity: sha512-2FSyBPbrPk+k/CrPowLClQGBXdPoxpC+FFe/FZcErritcfCCKOKWowMib8MetNSSdeGurXZ6p6RNZjix1vpD6g==}
     dev: false
 
   /acorn/7.4.1:
@@ -5109,7 +5109,7 @@ packages:
     resolution: {integrity: sha512-8GlmNSeObvDVUdmgutfWnGBZGsn3Zb8IXCjRODFB0tOhQqAQPZRwXrFha6ZLjvF4DgVJI3sW2FfiXa1wFxJvmg==}
     dev: true
 
-  /vite-plugin-pages/0.27.1_vite@3.2.3:
+  /vite-plugin-pages/0.27.1_vite@3.2.4:
     resolution: {integrity: sha512-KXfeG9aQSNsSXBs1mPeeuC0rwkLti+MgoJ3GknrwRDNrdrojb9czcFAVlnoPNVdfuvTHcWdf5zqN7+vuvz2JZQ==}
     peerDependencies:
       '@vue/compiler-sfc': ^2.7.0 || ^3.0.0
@@ -5126,12 +5126,12 @@ packages:
       json5: 2.2.1
       local-pkg: 0.4.2
       picocolors: 1.0.0
-      vite: 3.2.3
+      vite: 3.2.4
       yaml: 2.1.3
     transitivePeerDependencies:
       - supports-color
 
-  /vite-plugin-pwa/0.13.3_vite@3.2.3:
+  /vite-plugin-pwa/0.13.3_vite@3.2.4:
     resolution: {integrity: sha512-cjWXpZ7slAY14OKz7M8XdgTIi9wjf6OD6NkhiMAc+ogxnbUrecUwLdRtfGPCPsN2ftut5gaN1jTghb11p6IQAA==}
     peerDependencies:
       vite: ^3.1.0
@@ -5141,7 +5141,7 @@ packages:
       fast-glob: 3.2.12
       pretty-bytes: 6.0.0
       rollup: 2.79.1
-      vite: 3.2.3
+      vite: 3.2.4
       workbox-build: 6.5.4
       workbox-window: 6.5.4
     transitivePeerDependencies:
@@ -5149,7 +5149,7 @@ packages:
       - supports-color
     dev: true
 
-  /vite-plugin-windicss/1.8.8_vite@3.2.3:
+  /vite-plugin-windicss/1.8.8_vite@3.2.4:
     resolution: {integrity: sha512-iyu+ZX0NmhNEUaLPv7xtC+EFRBpWMmw0nhd9a9upayfuNG/thwslKiQKmRB7U/dG0k/2oWLvPDvN/B9i7oRgSA==}
     peerDependencies:
       vite: ^2.0.1 || ^3.0.0
@@ -5157,14 +5157,14 @@ packages:
       '@windicss/plugin-utils': 1.8.8
       debug: 4.3.4
       kolorist: 1.5.1
-      vite: 3.2.3
+      vite: 3.2.4
       windicss: 3.5.6
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /vite/3.2.3:
-    resolution: {integrity: sha512-h8jl1TZ76eGs3o2dIBSsvXDLb1m/Ec1iej8ZMdz+PsaFUsftZeWe2CZOI3qogEsMNaywc17gu0q6cQDzh/weCQ==}
+  /vite/3.2.4:
+    resolution: {integrity: sha512-Z2X6SRAffOUYTa+sLy3NQ7nlHFU100xwanq1WDwqaiFiCe+25zdxP1TfCS5ojPV2oDDcXudHIoPnI1Z/66B7Yw==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:
@@ -5202,21 +5202,21 @@ packages:
     dependencies:
       gray-matter: 4.0.3
       sharp: 0.31.2
-      vite-plugin-pages: 0.27.1_vite@3.2.3
+      vite-plugin-pages: 0.27.1_vite@3.2.4
     dev: false
 
-  /vitepress/1.0.0-alpha.28:
-    resolution: {integrity: sha512-pvbLssDMgLUN1terajmPlFBxHSDGO4DqwexKbjFyr7LeELerVuwGrG6F2J1hxmwOlbpLd1kHXEDqGm9JX/kTDQ==}
+  /vitepress/1.0.0-alpha.29:
+    resolution: {integrity: sha512-oaRaeMLcN9M3Bxz97fFVF6Gzm3Aqtb0CijTt5TOW0XPzNPuKA0YpFnsmS97gdKmA+VztM6itRJ8K7JJuU0VS3g==}
     hasBin: true
     dependencies:
       '@docsearch/css': 3.3.0
       '@docsearch/js': 3.3.0
-      '@vitejs/plugin-vue': 3.2.0_vite@3.2.3+vue@3.2.45
+      '@vitejs/plugin-vue': 3.2.0_vite@3.2.4+vue@3.2.45
       '@vue/devtools-api': 6.4.5
       '@vueuse/core': 9.5.0_vue@3.2.45
       body-scroll-lock: 4.0.0-beta.0
       shiki: 0.11.1
-      vite: 3.2.3
+      vite: 3.2.4
       vue: 3.2.45
     transitivePeerDependencies:
       - '@algolia/client-search'
@@ -5358,8 +5358,8 @@ packages:
     resolution: {integrity: sha512-YQ+BmxuTgd6UXZW3+ICGfyqRyHXVlD5GtQr5+qjiNW7bF0cqrzX500HVXPBOvgXb5YnzDd+h0zqyv61KUD7+Sg==}
     dev: true
 
-  /webmidi/3.0.21:
-    resolution: {integrity: sha512-SStCLo099908jR0duYUTstVHNlKh9A/WvXIF5ED2ShGnE2MAy28UhrdzgjLsyDzOiBn8Od3ngT8g/MVa2TC5hg==}
+  /webmidi/3.0.22:
+    resolution: {integrity: sha512-vy1lPV/WPeI2G/+4poxYBQcRfiErIf8RDrGxw9/oKVOkP9OCNa1g/TArzQWmq7CG9+Lh0VJ+GLFOJsAHAX1a0w==}
     engines: {node: '>=8.5'}
     dependencies:
       djipevents: 2.0.6

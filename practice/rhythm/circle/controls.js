@@ -1,5 +1,6 @@
 export const controls = reactive({
 	channel: 1,
+	tempoCC: 8,
 	cc: [
 		{
 			over: 1,

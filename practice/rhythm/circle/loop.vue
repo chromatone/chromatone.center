@@ -19,8 +19,6 @@ const props = defineProps({
   size: { type: Number, default: 175 },
   order: { type: Number, default: 0 },
   loop: { type: Object, default: { over: 4, under: 4, sound: "A" } },
-  rotateCC: { type: Number, default: 3 },
-  stepsCC: { type: Number, default: 4 },
 });
 
 const soundLetters = ["A", "B", "C", "D", "E", "F"];
@@ -176,7 +174,6 @@ g(
     :ratio="1000"
     :every="4"
     v-tooltip.top="'Number of steps'"
-
     :midiCC="controls.cc[order].over"
   )
     text {{ loop.over }}

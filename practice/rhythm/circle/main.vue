@@ -37,13 +37,11 @@ function resetTracks() {
   tracks.forEach(t => t.reset())
 }
 
-const midiChannel = ref(1)
-const tempoCC = ref(8)
 const prevCC = ref(0)
 
 watch(() => midi.cc, cc => {
   if (cc.channel != controls.channel) return
-  if (cc.number != tempoCC.value) return
+  if (cc.number != controls.tempoCC) return
   const diff = cc.raw - prevCC.value
   prevCC.value = cc.raw
   tempo.bpm = Math.floor(tempo.bpm + diff)
@@ -95,8 +93,6 @@ watch(() => midi.cc, cc => {
       @over="changeLoop(i, 'over', $event)"
       @under="changeLoop(i, 'under', $event)"
       @sound="loop.sound = $event"
-      :rotateCC="4+i*8"
-      :stepsCC="3+i*8"
       )
     circle-center(transform="translate(500,500) scale(0.75)")
     circle-overlay.cursor-pointer(

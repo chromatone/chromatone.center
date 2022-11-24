@@ -5,6 +5,7 @@ import { getCircleCoord } from '#/use/calculations'
 import { isDark } from '#/theme/composables/state.js'
 import { levelColor } from "#/use/colors.js"
 import { midi } from '#/use/midi'
+import { controls } from './controls';
 
 const emit = defineEmits(['update:modelValue'])
 
@@ -61,7 +62,7 @@ const allSteps = computed(() => {
 const prevCC = ref(0)
 
 watch(() => midi.cc, cc => {
-  if (cc.channel != props.midiChannel || cc.number != props.midiCC) return
+  if (cc.channel != controls.channel || cc.number != props.midiCC) return
   const diff = prevCC.value - cc.value
   prevCC.value = cc.value
   arc.inner = cc.value

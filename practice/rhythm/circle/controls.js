@@ -20,5 +20,15 @@ export const controls = reactive({
 			pan: 14,
 			vol: 15,
 		},
-	]
+	],
+	params: {
+		over: 'Number of steps',
+		under: 'Subdivision',
+		steps: 'Number of active steps',
+		rotate: 'Rotation of the pattern',
+		sound: 'Beat sound kit',
+		pan: 'Panning',
+		vol: 'Volume',
+		bpm: 'BPM'
+	}
 })

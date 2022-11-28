@@ -265,6 +265,9 @@ cities:
   - city: Denver, CO
     country: USA
     coord: [39.74917550828077, -104.96380944599251]
+  - city: Paris
+    country: France
+    coord: [48.82679300660968, 2.33213061166907]
 ---
 
 <script setup>

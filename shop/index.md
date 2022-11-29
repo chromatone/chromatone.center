@@ -268,6 +268,9 @@ cities:
   - city: Paris
     country: France
     coord: [48.82679300660968, 2.33213061166907]
+  - city: Carol Stream, IL
+    country: USA
+    coord: [41.92410946573435, -88.12669267492724]
 ---
 
 <script setup>

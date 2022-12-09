@@ -271,6 +271,9 @@ cities:
   - city: Carol Stream, IL
     country: USA
     coord: [41.92410946573435, -88.12669267492724]
+  - city: Astoria, NY
+    country: USA
+    coord: [40.76345307617687, -73.9079990596028]
 ---
 
 <script setup>

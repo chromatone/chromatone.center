@@ -1,4 +1,5 @@
 import { loadStripe } from '@stripe/stripe-js';
+import { useStorage } from '@vueuse/core';
 
 const stripeKey = 'pk_live_51M1WfLBJnUXQERocrGtVUDvfIdzMmecoAClLVFLSi2VG2cNF2kS6bVsR4uUVtMYvusv4lkBMaDuOzgVJUuNMWndm00CVS3obG3'
 
@@ -10,22 +11,25 @@ export const open = ref(false)
 export const cart = useStorage('shopping-cart', {})
 
 export const delivery = reactive({
-	current: 'default',
+	current: useStorage('delivery-way', 'regular'),
 	selected: computed(() => delivery.ways[delivery.current]),
 	ways: {
-		default: {
-			id: 'price_1M2c5LBJnUXQERocesvg8j1O',
-			desc: "We deliver orders via international post. For $10 we send registered mail worldwide. And provide the code to track its 1-4 week journey. ",
-			price: 10,
-		},
+		// default: {
+		// 	id: 'price_1M2c5LBJnUXQERocesvg8j1O',
+		// 	desc: "We deliver orders via international post. For $10 we send registered mail worldwide. And provide the code to track its 1-4 week journey. ",
+		// 	price: 10,
+		// },
 		regular: {
 			id: 'price_1M43vqBJnUXQERocQGm2gcNv',
-			desc: "The most straightforward way to send a letter to any place. Just glue enough stamps and put it to a mailbox nearby. Regular post is slower and less predictable, but still does it's job well. Expect up to a 3-4 weeks of waiting if far from Thailand.",
+			title: 'Regular post',
+			desc: "The most straightforward way to send a letter to any place. Just glue on stamps and drop it into a mailbox nearby. Regular post is slower and less predictable, but still does it's job well. We'll send you a photo of the parcel before sending, but then expect up to a 3-4 weeks of wait with no clue about the progress.",
 			price: 5,
 		},
 		registered: {
-			id: 'price_1M43RmBJnUXQERoctPtMJBBy',
-			desc: "Sending parcels with track numbers from Thailand is surprisingly costly. But it's more reliable and transparent as you and me can check the progress of the delivery.",
+			id:
+				'price_1M43RmBJnUXQERoctPtMJBBy',
+			title: 'Registered mail',
+			desc: "Sending parcels with tracking numbers from Thailand is surprisingly costly. But it's more reliable and transparent as you and us can check the progress of the delivery. It usually takes about 2-3 weeks to ship.",
 			price: 15
 		}
 	}
@@ -36,7 +40,7 @@ export const total = computed(() => {
 	for (let id in cart.value) {
 		sum += Number(cart.value?.[id]?.price) * Number(cart.value?.[id]?.quantity)
 	}
-	sum += delivery.selected.price
+	sum += delivery?.selected?.price
 	return sum
 })
 

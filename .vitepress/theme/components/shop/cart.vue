@@ -24,12 +24,23 @@ import { cart, checkout, total, open, delivery } from '#/theme/composables/cart'
 						button.text-sm.cursor-pointer.bg-light-900.bg-opacity-20.p-1.rounded-xl(@click="pos.quantity++")
 							la-plus
 			td.w-6ch.text-right.font-bold ${{Number(pos.price) * Number(pos.quantity)}}
-		tr
-			td.font-bold(v-tooltip.bottom="delivery.selected.desc") 
+		tr.text-center
+			td.font-bold 
 				.flex.items-center.gap-2 
 					p.whitespace-nowrap Worldwide delivery
-					.px-2.rounded-xl.bg-light-800.dark_bg-dark-800 i
-			td.text-right(colspan="3") ${{delivery.selected.price}}
+			td(v-for="(way,name) in delivery.ways" :key="way")
+				label.w-full.px-2.pt-1.pb-2.border-1.rounded-lg.flex.flex-wrap.items-center.border-dark-100.border-opacity-40.transition.cursor-pointer(
+					:class="{active:delivery.current == name}"
+					v-tooltip.top="{content:way.desc, distance:8, delay:400, triggers:['hover','click','focus','touch']}"
+					)
+					input.hidden(
+						type="radio" 
+						name="delivery" 
+						v-model="delivery.current"
+						:value="name")
+					.price.text-lg ${{way.price}}&nbsp;
+					.font-normal.text-left {{way.title}}
+			td.text-right ${{delivery?.selected?.price}}
 		tr.text-xl
 			td.font-bold Total
 			td.font-bold.text-right(colspan="3") ${{total}}
@@ -43,5 +54,19 @@ import { cart, checkout, total, open, delivery } from '#/theme/composables/cart'
 <style scoped lang="postcss">
 tr:nth-child(2n) {
 	@apply bg-light-100/10;
+}
+
+.active {
+	@apply border-dark-700 dark_border-light-100 dark_bg-dark-400 bg-light-700;
+}
+
+.active .price {
+	@apply font-bold;
+}
+</style>
+
+<style>
+.v-popper__popper {
+	max-width: 20em;
 }
 </style>

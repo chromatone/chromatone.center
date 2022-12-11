@@ -75,7 +75,7 @@
 		"vite-plugin-pages-sitemap": "^1.4.0",
 		"vite-plugin-pwa": "^0.13.3",
 		"vite-plugin-windicss": "^1.8.8",
-		"vitepress": "1.0.0-alpha.30",
+		"vitepress": "1.0.0-alpha.31",
 		"windicss": "3.5.6"
 	}
 }

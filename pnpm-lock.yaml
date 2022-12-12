@@ -1,6 +1,8 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@animxyz/core': 0.6.6
+  '@animxyz/vue3': ^0.6.7
   '@gun-vue/composables': ^0.11.7
   '@iconify/json': ^2.1.150
   '@stripe/stripe-js': ^1.46.0
@@ -47,6 +49,8 @@ specifiers:
   windicss: 3.5.6
 
 dependencies:
+  '@animxyz/core': 0.6.6
+  '@animxyz/vue3': 0.6.7_vue@3.2.45
   '@gun-vue/composables': 0.11.7
   '@stripe/stripe-js': 1.46.0
   '@tonaljs/tonal': 4.8.0
@@ -213,6 +217,20 @@ packages:
       '@jridgewell/gen-mapping': 0.1.1
       '@jridgewell/trace-mapping': 0.3.14
     dev: true
+
+  /@animxyz/core/0.6.6:
+    resolution: {integrity: sha512-NtAA/G0Gq3hzAiL6yuE/4U8IgHMPUl3MxbWUbhO443T9UCsf9rBY94P5aK79Zd+/529FeoNdDphIOcOZLsI2sA==}
+    dev: false
+
+  /@animxyz/vue3/0.6.7_vue@3.2.45:
+    resolution: {integrity: sha512-tLx4HfFcoxR5wgIMFDrmjS2mZifFRNMiwn7skPT3as9ViuCW3QdCsBIDYY2tR37GSvSUC1NhNwkkCZ1pt0C+Hg==}
+    peerDependencies:
+      vue: '>= 3'
+    dependencies:
+      '@animxyz/core': 0.6.6
+      clsx: 1.2.1
+      vue: 3.2.45
+    dev: false
 
   /@antfu/install-pkg/0.1.1:
     resolution: {integrity: sha512-LyB/8+bSfa0DFGC06zpCEfs89/XoWZwws5ygEa5D+Xsm3OfI+aXQ86VgVG7Acyef+rSZ5HE7J8rrxzrQeM3PjQ==}
@@ -2730,6 +2748,11 @@ packages:
 
   /chownr/1.1.4:
     resolution: {integrity: sha512-jJ0bqzaylmJtVnNgzTeSOs8DPavpbYgEr/b0YL8/2GO3xJEhInFmhKMUnEJQjZumK7KXGFhUy89PrsJWlakBVg==}
+    dev: false
+
+  /clsx/1.2.1:
+    resolution: {integrity: sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==}
+    engines: {node: '>=6'}
     dev: false
 
   /cobe/0.6.2:

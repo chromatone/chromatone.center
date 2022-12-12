@@ -64,25 +64,26 @@ watchThrottled(loaded, l => {
     :class="{customize: scheme.customize}"
     )
     la-cog
-  button.absolute.opacity-50.hover_opacity-100.transition.cursor-pointer.bottom-0.left-5.flex.items-center.gap-1.bg-light-100.dark_bg-dark-100.rounded-xl.p-2.shadow-lg(
-    v-tooltip.bottom="'Copy custom schema'"
-    aria-label="Copy custom schema"
-    @click="copy(JSON.stringify(scheme.custom))"
-    :class="{customize: copied}"
-    v-if="scheme.customize"
-    )
-    la-copy.text-xl
-    .p-0 COPY
-  .absolute.opacity-50.hover_opacity-100.transition.bottom-0.right-5.flex.items-center.gap-1.bg-light-100.dark_bg-dark-100.rounded-xl.shadow-lg(
-    v-tooltip.bottom="'Paste custom schema'"
-    aria-label="Paste custom schema"
-    v-if="scheme.customize"
-    )
-    la-paste.text-xl.absolute.ml-1
-    input.w-25.p-2.pl-8.rounded-xl(
-      v-model="loaded" placeholder="PASTE"
-      :style="{backgroundColor: err ? 'red' : ''}"
+  XyzTransitionGroup( xyz="fade stagger")
+    button.absolute.opacity-50.hover_opacity-100.transition.cursor-pointer.bottom-0.left-5.flex.items-center.gap-1.bg-light-100.dark_bg-dark-100.rounded-xl.p-2.shadow-lg(
+      v-tooltip.bottom="'Copy custom schema'"
+      aria-label="Copy custom schema"
+      @click="copy(JSON.stringify(scheme.custom))"
+      :class="{customize: copied}"
+      v-if="scheme.customize"
       )
+      la-copy.text-xl
+      .p-0 COPY
+    .absolute.opacity-50.hover_opacity-100.transition.bottom-0.right-5.flex.items-center.gap-1.bg-light-100.dark_bg-dark-100.rounded-xl.shadow-lg(
+      v-tooltip.bottom="'Paste custom schema'"
+      aria-label="Paste custom schema"
+      v-if="scheme.customize"
+      )
+      la-paste.text-xl.absolute.ml-1
+      input.w-25.p-2.pl-8.rounded-xl(
+        v-model="loaded" placeholder="PASTE"
+        :style="{backgroundColor: err ? 'red' : ''}"
+        )
   svg.w-full.min-w-full(
     version="1.1",
     baseProfile="full",

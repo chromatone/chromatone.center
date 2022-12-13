@@ -30,6 +30,7 @@ function getColor(i, total, b = 10) {
     counter(:list="pages[line.path]") 
     card-date.flex-1.ml-4(:date="line.lastModified")
     shop-price.ml-2(
+      v-if="line?.product"
       :title="line?.title"
       :product="line?.product", 
       :showButton="false" 

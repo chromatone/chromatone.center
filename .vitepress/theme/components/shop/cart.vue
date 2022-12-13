@@ -1,5 +1,5 @@
 <script setup>
-import { cart, checkout, total, open, delivery } from '#/theme/composables/cart'
+import { cart, checkout, total, open, delivery, count } from '#/theme/composables/cart'
 </script>
 
 <template lang='pug'>
@@ -41,6 +41,14 @@ import { cart, checkout, total, open, delivery } from '#/theme/composables/cart'
 					.price.text-lg ${{way.price}}&nbsp;
 					.font-normal.text-left {{way.title}}
 			td.text-right ${{delivery?.selected?.price}}
+		tr(:style="{opacity: count > 1 ? 1: .3}")
+			td(colspan="3")
+				.flex.gap-4
+					.text-md Order <b>2 or more</b> items and get a holographic Chromatone sticker <b>for free</b>! 
+			td.relative
+				.flex.items-center.justify-center
+					la-plus.absolute.-left-1.text-1rem(v-if="count>1")
+					img.h-8(src="/media/logo/holologo.svg")
 		tr.text-xl
 			td.font-bold Total
 			td.font-bold.text-right(colspan="3") ${{total}}

@@ -42,6 +42,7 @@ const bg = computed(() => `url(${props.item?.cover}`);
       .text-md.mt-4.mb-2.font-normal.w-full(v-if="item.subtitle") {{ item.subtitle }}
       page-buttons(:buttons="item?.buttons" :color="color")
       shop-price.my-2(
+        v-if="item?.product"
         :title="item.title"
         :product="item?.product" 
         :color="'color'"
@@ -64,7 +65,7 @@ const bg = computed(() => `url(${props.item?.cover}`);
 }
 
 .info {
-  @apply m-2 relative max-w-500px flex self-stretch flex-wrap items-center p-4 md_(p-5 py-4) bg-light-100 bg-opacity-70 dark_(bg-dark-100 bg-opacity-70) rounded-3xl;
+  @apply m-2 relative max-w-500px flex self-stretch flex-wrap items-center p-4 md_(px-5 py-4) bg-light-100 bg-opacity-70 dark_(bg-dark-100 bg-opacity-70) rounded-3xl;
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 }

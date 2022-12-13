@@ -35,6 +35,14 @@ export const delivery = reactive({
 	}
 })
 
+export const count = computed(() => {
+	let all = 0
+	for (let id in cart.value) {
+		all += Number(cart.value?.[id]?.quantity)
+	}
+	return all
+})
+
 export const total = computed(() => {
 	let sum = 0
 	for (let id in cart.value) {

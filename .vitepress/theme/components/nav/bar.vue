@@ -6,12 +6,10 @@ defineEmits(["toggle"]);
 </script>
 
 <template lang="pug">
+img.top-4.left-4.fixed.z-1000.cursor-pointer.mr-3.h-30px(v-if="theme.icon", :src="theme.icon", alt="Chromatone logo" @click="$emit('toggle')")
 header.nav-bar.relative
-  img.top-4.fixed.z-1000.cursor-pointer.mr-3.h-30px(v-if="theme.icon", :src="theme.icon", alt="Logo" @click="$emit('toggle')")
   .nav-bar-title
-
     a.title.ml-10.no-underline(href="/", :aria-label="`${site.title}, go to main page`") {{ site.title }}
-
   div(class="hidden lg_flex px-3 ml-4 lg_ml-10")
     nav-links
   .flex-grow
@@ -22,7 +20,7 @@ header.nav-bar.relative
 
 <style lang="postcss" scoped>
 .nav-bar {
-  @apply lg_(sticky top-0) inset-x-0 z-4000 flex select-none border-b-1px border-$c-divider py-0.7rem px-4 z-40 h-$header-height bg-$c-bg md_px-5 lg_px-6;
+  @apply inset-x-0 z-4000 flex select-none border-b-1px border-$c-divider py-0.7rem px-4 z-10 h-$header-height bg-$c-bg md_px-5 lg_px-6;
 }
 
 .nav-bar.root {

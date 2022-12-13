@@ -33,9 +33,7 @@ watch(route, () => {
   .main
     client-only
       draw-layer.z-20
-    transition(name="fade")
-      .sidebar-mask.z-5(v-show="openSideBar", @click="openSideBar = false")
-    side-bar(:open="openSideBar")
+    side-bar(:open="openSideBar" @close="openSideBar = false")
     home(v-if="$frontmatter.template == 'home'")
     page-primary(v-else)
 //debug

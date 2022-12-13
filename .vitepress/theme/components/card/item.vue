@@ -27,6 +27,7 @@ const props = defineProps({
 
         ) {{ item.subtitle }}
       shop-price.float-left(
+        v-if="item?.product"
         :title="item?.title"
         :product="item?.product"
         :color="color"
@@ -46,7 +47,7 @@ const props = defineProps({
   }
 
   & .info {
-    @apply px-2 py-4 ml-2 m-2 z-4 max-w-24em bg-light-100 bg-opacity-80 dark_(bg-dark-600 bg-opacity-80) rounded-xl relative;
+    @apply px-2 pt-4 pb-1 ml-2 m-2 z-4 max-w-24em bg-light-100 bg-opacity-80 dark_(bg-dark-600 bg-opacity-80) rounded-xl relative;
     -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
     flex: 1 1 100%;

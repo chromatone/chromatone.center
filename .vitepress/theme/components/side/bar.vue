@@ -1,19 +1,23 @@
 <script setup>
 import { lchToHsl } from "#/use/colors";
 import { pages } from "#/theme/composables/pages";
-import { useData } from "vitepress";
+import { useData, useRoute } from "vitepress";
 const { site } = useData();
 
 defineProps({
   open: { type: Boolean, required: true },
 });
 
-import { useRoute } from "vitepress";
+defineEmits(['close'])
+
+
 const route = useRoute();
 </script>
 
 <template lang="pug">
-.panel(:class="{ open }")
+transition(name="fade")
+  .sidebar-mask.z-50.overscroll-contain(v-show="open", @click="$emit('close')")
+.panel.z-51.overscroll-contain(:class="{ open }")
   //- a.title(href="/", :aria-label="`${site.title}, назад в начало`") {{ site.title }}
   side-search.m-3
   .flex.flex-col.gap-8
@@ -74,7 +78,7 @@ const route = useRoute();
   flex: 1 0 16.4rem;
   overflow-y: auto;
   transition: all 300ms ease-out;
-  @apply pr-2 pl-1 z-20 fixed rounded-xl top-$header-height bottom-0 left-0 transform -translate-x-full lg_(static translate-x-0) shadow-xl bg-light-600 dark_bg-dark-700;
+  @apply pr-2 pl-1 fixed rounded-xl top-$header-height bottom-0 left-0 transform -translate-x-full lg_(static translate-x-0) shadow-xl bg-light-600 dark_bg-dark-700;
 
   & a {
     @apply no-underline block flex;

@@ -274,6 +274,9 @@ cities:
   - city: Astoria, NY
     country: USA
     coord: [40.76345307617687, -73.9079990596028]
+  - city: Lisburn
+    country: GB
+    coord: [54.50621073748895, -6.0791036303430745]
 ---
 
 <script setup>

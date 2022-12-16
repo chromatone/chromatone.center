@@ -20,17 +20,17 @@ export const delivery = reactive({
 		// 	price: 10,
 		// },
 		regular: {
-			id: 'price_1M43vqBJnUXQERocQGm2gcNv',
+			id: 'stamp',
 			title: 'Regular post',
 			desc: "The most straightforward way to send a letter to any place. Just glue on stamps and drop it into a mailbox nearby. Regular post is slower and less predictable, but still does it's job well. We'll send you a photo of the parcel before sending, but then expect up to a 3-4 weeks of wait with no clue about the progress.",
-			price: 5,
+			price: 6,
 		},
 		registered: {
 			id:
-				'price_1M43RmBJnUXQERoctPtMJBBy',
+				'parcel',
 			title: 'Registered mail',
 			desc: "Sending parcels with tracking numbers from Thailand is surprisingly costly. But it's more reliable and transparent as you and us can check the progress of the delivery. It usually takes about 2-3 weeks to ship.",
-			price: 15
+			price: 16
 		}
 	}
 })

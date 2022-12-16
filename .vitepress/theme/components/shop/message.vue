@@ -10,14 +10,14 @@ const page = usePage(route.path)
 </script>
 
 <template lang="pug">
-card-box.p-4.mx-4.mb-16.flex.flex-col.max-w-65ch.gap-4(
+card-box.px-4.py-3.ml-4.sm_mx-auto.mr-16.mb-16.flex.flex-col.max-w-65ch.gap-2.bg_light-100.bg-light-200.dark_bg-dark-200.my-8.opacity-80.hover_opacity-100.transition(
   v-if="page?.product"
   :i="index"
   :total="total"
   v-slot="{ color }"
   )
-  .text-2xl.font-bold {{page?.title}}
-  .text-lg {{page?.subtitle}}
+  .text-md.font-bold {{page?.title}}
+  //- .text-sm.mb-2 {{page?.subtitle}}
   .flex(v-if="page?.product")
     shop-price.flex-1(
       :product="page?.product" 

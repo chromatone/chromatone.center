@@ -7,7 +7,7 @@ product:
   link: https://ko-fi.com/s/e5f5c23a30
   id: price_1M1XuQBJnUXQERoc5nVjpAX6
 cover: main.jpeg
-date: 2022-01-01
+date: 2021-09-02
 ---
 
 ![](./angle.jpeg)

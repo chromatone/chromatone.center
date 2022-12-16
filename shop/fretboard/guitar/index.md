@@ -1,12 +1,12 @@
 ---
 title: Guitar fretboard stickers
-subtitle: A set of 21 narrow strip stickers to be put under the strings
+subtitle: A set of 21 narrow strips of colorful notes for all the frets
 product:
   price: 10
   link: https://ko-fi.com/s/fec06a7b2d
   id: price_1M3cFWBJnUXQERocjWekYEPv
 cover: close.jpg
-date: 2021-09-06
+date: 2021-11-06
 ---
 
 You can place them above or beyond the frets of your guitar. Plus a bigger circle note stickers kit for the side of the fret-board.

@@ -275,8 +275,14 @@ cities:
     country: USA
     coord: [40.76345307617687, -73.9079990596028]
   - city: Lisburn
-    country: GB
+    country: UK
     coord: [54.50621073748895, -6.0791036303430745]
+  - city: Hyde
+    country: UK
+    coord: [53.43986054115799, -2.0831345304049598]
+  - city: Muskegon, MI
+    country: USA
+    coord: [43.23399152649921, -86.25687663413066]
 ---
 
 <script setup>

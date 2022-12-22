@@ -53,7 +53,7 @@
 		"hidpi-canvas": "^1.0.10",
 		"meyda": "^5.5.1",
 		"midi-writer-js": "^2.1.4",
-		"ol": "7.2.0",
+		"ol": "7.2.1",
 		"paper": "^0.12.17",
 		"recordrtc": "^5.6.2",
 		"simplex-noise": "^4.0.1",

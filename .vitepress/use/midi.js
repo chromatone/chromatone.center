@@ -109,7 +109,6 @@ export function useMidi() {
 
 function setupMidi() {
 
-
   WebMidi.enable();
   WebMidi.addListener("enabled", (e) => {
     midi.enabled = true;

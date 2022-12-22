@@ -17,12 +17,20 @@ const flower = computed(() => {
     return {
       note: note,
       pitch: n,
-      coord: getCircleCoord(n, 12, props.size * 0.42, 0),
-      middle: getCircleCoord(n, 12, props.size * 0.28, 0),
-      inside: getCircleCoord(n, 12, props.size * 0.15, 0),
+      coord: coord(n, 0.42),
+      middle: coord(n, 0.28),
+      inside: coord(n, 0.15),
     }
   })
 })
+
+const midiNotes = computed(() => {
+  return new Array(127).fill(null).map((c, n) => (n + 3) % 12)
+})
+
+function coord(n = 0, q = 0.5) {
+  return getCircleCoord(n, 12, props.size * q, 0)
+}
 
 const pressed = ref()
 
@@ -110,7 +118,7 @@ watchThrottled(loaded, l => {
           @mouseleave="keyPlay(pitch, $event, true)"
           )
           g.petal(
-            :transform="`rotate(${pitch * 30}) translate(0,-120) `"
+            :transform="`rotate(${pitch * 30}) translate(2,-120) `"
             :fill="note.note.length > 1 ? '#222' : '#eee'"
             :opacity="midi.activeChroma[pitch] ? 1 : 0.9"
             style="transition: all 100ms ease-out"
@@ -159,6 +167,20 @@ watchThrottled(loaded, l => {
                 text-anchor="middle" 
                 dominant-baseline="middle" 
                 ) {{ note.note }}
+
+      g.spiral.pointer-events-none
+        g.note(v-for="(pitch, i) in midiNotes" :key="i")
+          circle(
+            style="transition: all 100ms ease-out"
+            :cx="coord(pitch, i/700+0.145).x" 
+            :cy="coord(pitch, i/700 +0.145).y" 
+            :fill="defaultScheme[pitch]"
+            :r="8" 
+            :opacity="midi.activeNotes[i] ? 1 : 0"
+            )
+          line(
+            :x1="coord()"
+          )
 </template>
 
 <style scoped lang="postcss">

@@ -70,6 +70,9 @@ links:
   - url: https://ludotune.com/
     title: Ludotune
     subtitle: A 3D musical toy for making music with cubes
+  - url: http://science-to-touch.com/LaLaLab/
+    title: "Science to touch: LaLaLab"
+    subtitle: A collection of visual mathematical tools to explore music possibilities
 date: 2018-09-08
 ---
 

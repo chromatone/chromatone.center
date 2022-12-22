@@ -54,3 +54,6 @@ A note isn't just a wave, it's a mix of resonating modes of oscillations.
 The concept of tristimulus originates in the world of color, describing the way three primary colors can be mixed together to create a given color. By analogy, the musical tristimulus measures the mixture of harmonics in a given sound, grouped into three sections. It is basically a proposal of reducing a huge number of sound partials, that can amount to dozens or hundreds in some cases, down to only three values. The first tristimulus measures the relative weight of the first harmonic; the second tristimulus measures the relative weight of the second, third, and fourth harmonics taken together; and the third tristimulus measures the relative weight of all the remaining harmonics.
 
 <youtube-embed video="Wpt3lmSFW3k" />
+
+
+<iframe class="m-auto" title="vimeo-player" src="https://player.vimeo.com/video/164848028?h=68deef5350" width="640" height="360" frameborder="0" allowfullscreen></iframe>

@@ -12,7 +12,6 @@
 	},
 	"license": "MIT",
 	"author": "Davay42",
-	"type": "module",
 	"exports": {
 		".": {
 			"import": "./lib/chromatone-center.js",

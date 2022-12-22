@@ -1,7 +1,7 @@
 ---
 title: Shop
 subtitle: Printed posters, memos and stickers for musical instruments and more
-date: 2021-06-01
+date: 2021-06-08
 
 cities:
   - city: Moscow

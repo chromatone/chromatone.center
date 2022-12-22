@@ -12,14 +12,15 @@
 	},
 	"license": "MIT",
 	"author": "Davay42",
+	"type": "module",
 	"exports": {
 		".": {
-			"import": "./lib/chromatone-center.mjs",
-			"browser": "./lib/chromatone-center.mjs"
+			"import": "./lib/chromatone-center.js",
+			"browser": "./lib/chromatone-center.js"
 		}
 	},
-	"main": "./lib/chromatone-center.mjs",
-	"module": "./lib/chromatone-center.mjs",
+	"main": "./lib/chromatone-center.js",
+	"module": "./lib/chromatone-center.js",
 	"files": [
 		"lib"
 	],

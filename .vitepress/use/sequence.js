@@ -105,7 +105,7 @@ export function useSequence(
   });
 
   watch(
-    () => metre.value.sound,
+    () => metre.value?.sound,
     (sound) => {
       if (sound != "F") {
         recorder.main = false;
@@ -118,7 +118,7 @@ export function useSequence(
   const steps = reactive([["0-1"], ["1-1"], ["2-1"], ["3-1"]]);
   const mutes = useStorage(`metro-${mode}-mutes-${order}`, []);
   const accents = useStorage(`metro-${mode}-accents-${order}`, [true]);
-  const volume = useClamp(useStorage(`metro-${mode}-vol-${order}`, metre.value.volume || 1), 0, 1);
+  const volume = useClamp(useStorage(`metro-${mode}-vol-${order}`, metre.value?.volume || 1), 0, 1);
   const panning = useClamp(useStorage(`metro-${mode}-pan-${order}`, pan), -1, 1);
 
   const mutesCount = computed(() => mutes.value.reduce((acc, val) => {
@@ -149,7 +149,7 @@ export function useSequence(
   ).start(0);
 
   watch(
-    () => metre.value.under,
+    () => metre.value?.under,
     () => {
       sequence.stop().dispose();
       sequence = new Sequence(
@@ -163,10 +163,10 @@ export function useSequence(
   );
 
   watch(
-    () => metre.value.over,
+    () => metre.value?.over,
     () => {
       steps.length = 0;
-      for (let i = 0; i < metre.value.over; i++) {
+      for (let i = 0; i < metre.value?.over; i++) {
         steps.push([`${i}-1`]);
       }
       sequence.events = steps;
@@ -226,10 +226,10 @@ export function useSequence(
     let accented = accents.value[mainStep] && step.split("-")[1] == "1";
     if (mutes.value[mainStep]) return;
     if (mutes.value[step]) return;
-    if (metre.value.sound == "F" && !accented && !recorder.main) return;
-    if (metre.value.sound == "F" && accented && !recorder.accent) return;
-    let note = `${metre.value.sound}${accented ? 2 : 1}`;
-    audio.synth.triggerAttackRelease(note, metre.value.under + "n", time);
+    if (metre.value?.sound == "F" && !accented && !recorder.main) return;
+    if (metre.value?.sound == "F" && accented && !recorder.accent) return;
+    let note = `${metre.value?.sound}${accented ? 2 : 1}`;
+    audio.synth.triggerAttackRelease(note, metre.value?.under + "n", time);
     // midiOnce(notes[order * 2] + 3, { time: '+' + time })
   }
 

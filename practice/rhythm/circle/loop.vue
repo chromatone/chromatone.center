@@ -32,7 +32,7 @@ const {
   mutesCount,
   reset,
   metre
-} = useSequence(null, props.order, "circle");
+} = useSequence(undefined, props.order, "circle");
 
 const soundLetters = ["A", "B", "C", "D", "E", "F"];
 const soundControl = ref(soundLetters.findIndex((el) => el == metre.value?.sound));
@@ -157,7 +157,7 @@ g(
 
     :midiCC="controls.cc[order].under"
   )
-    text {{ metre.under }}
+    text {{ metre?.under }}
 
   beat-control-sector.over(
     :radius="controlRadius"
@@ -175,7 +175,7 @@ g(
     v-tooltip.top="'Number of steps'"
     :midiCC="controls.cc[order].over"
   )
-    text {{ metre.over }}
+    text {{ metre?.over }}
 
   beat-control-sector.vol(
     :radius="controlRadius"
@@ -255,7 +255,7 @@ g(
         text-anchor="end",
         :x="-10",
         :y="-3",
-        ) {{ metre.over }} 
+        ) {{ metre?.over }} 
       text(
         fill="currentColor"
         font-family="Commissioner, sans-serif"
@@ -263,7 +263,7 @@ g(
         text-anchor="start",
         :x="10",
         :y="-3",
-        ) {{ metre.under }} 
+        ) {{ metre?.under }} 
     g.cursor-pointer.opacity-50.transition-all.duration-200.ease.hover_opacity-100(
       transform="translate(74,-10)"
       @mousedown="rotateAccents(-1)"

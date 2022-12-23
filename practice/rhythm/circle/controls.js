@@ -1,3 +1,25 @@
+export const loops = useStorage('tempo-circle-loops', [
+	{
+		over: 8,
+		under: 8,
+		volume: 1,
+		sound: 'A'
+	},
+	{
+		over: 3,
+		under: 3,
+		volume: 0.5,
+		sound: 'B'
+	}]
+);
+
+export function changeLoop(l, n, val) {
+	if (val >= 1 && val <= 48) {
+		loops.value[l][n] = val
+	}
+}
+
+
 export const controls = reactive({
 	channel: 1,
 	tempoCC: 8,

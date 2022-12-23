@@ -9,28 +9,6 @@ import { renderMidi } from '#/use/midiRender'
 import { tracks } from '#/use/sequence'
 import { controls } from './controls'
 
-const loops = useStorage('tempo-circle-loops', [
-  {
-    over: 8,
-    under: 8,
-    volume: 1,
-    sound: 'A'
-  },
-  {
-    over: 3,
-    under: 3,
-    volume: 0.5,
-    sound: 'B'
-  }]
-);
-
-function changeLoop(l, n, val) {
-  let num = val
-  if (num >= 1 && num <= 48) {
-    loops.value[l][n] = num
-  }
-}
-
 const overlay = ref(false);
 
 function resetTracks() {
@@ -83,16 +61,11 @@ watch(() => midi.cc, cc => {
       )
       la-file-download
     circle-loop(
-      v-for="(loop, i) in loops",
+      v-for="(loop, i) in 2",
       :key="i"
       :order="i"
-      :loop="loop"
       :radius="380 - i * 200"
       :size="200"
-      @del="loops.splice(i, 1)"
-      @over="changeLoop(i, 'over', $event)"
-      @under="changeLoop(i, 'under', $event)"
-      @sound="loop.sound = $event"
       )
     circle-center(transform="translate(500,500) scale(0.75)")
     circle-overlay.cursor-pointer(

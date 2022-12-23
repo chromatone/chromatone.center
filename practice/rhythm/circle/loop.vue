@@ -9,8 +9,7 @@ import { levelColor } from "#/use/colors.js";
 import { tempo } from "#/use/tempo";
 import { midi } from "#/use/midi";
 // import { useUrlSearchParams } from '@vueuse/core'
-
-import { controls } from "./controls";
+import { controls } from './controls'
 
 const emit = defineEmits(["del", "over", "under", "sound"]);
 
@@ -18,12 +17,7 @@ const props = defineProps({
   radius: { type: Number, default: 400 },
   size: { type: Number, default: 175 },
   order: { type: Number, default: 0 },
-  loop: { type: Object, default: { over: 4, under: 4, sound: "A" } },
 });
-
-const soundLetters = ["A", "B", "C", "D", "E", "F"];
-const soundControl = ref(soundLetters.findIndex((el) => el == props.loop?.sound));
-const controlRadius = computed(() => props.radius + 110);
 
 const {
   progress,
@@ -37,10 +31,15 @@ const {
   lastHit,
   mutesCount,
   reset,
-} = useSequence(props.loop, props.order, "circle");
+  metre
+} = useSequence(null, props.order, "circle");
+
+const soundLetters = ["A", "B", "C", "D", "E", "F"];
+const soundControl = ref(soundLetters.findIndex((el) => el == metre.value?.sound));
+const controlRadius = computed(() => props.radius + 110);
 
 watch(soundControl, (num) => {
-  emit("sound", soundLetters[num]);
+  metre.value.sound = soundLetters[num]
 });
 
 const activeSteps = computed(() => {
@@ -145,7 +144,7 @@ g(
     :radius="controlRadius"
     :start="16 + order * 11"
     :finish="90"
-    v-model="loop.under"
+    v-model="metre.under"
     :step="1"
     font-size="30"
     :min="1"
@@ -158,13 +157,13 @@ g(
 
     :midiCC="controls.cc[order].under"
   )
-    text {{ loop.under }}
+    text {{ metre.under }}
 
   beat-control-sector.over(
     :radius="controlRadius"
     :start="343 - order * 11"
     :finish="270"
-    v-model="loop.over"
+    v-model="metre.over"
     :step="1"
     font-size="30"
     :min="2"
@@ -176,7 +175,7 @@ g(
     v-tooltip.top="'Number of steps'"
     :midiCC="controls.cc[order].over"
   )
-    text {{ loop.over }}
+    text {{ metre.over }}
 
   beat-control-sector.vol(
     :radius="controlRadius"
@@ -230,7 +229,7 @@ g(
 
     :midiCC="controls.cc[order].sound"
   )
-    text {{ loop?.sound }}
+    text {{ metre?.sound }}
 
   transition(name="fade")
     beat-recorder(
@@ -256,7 +255,7 @@ g(
         text-anchor="end",
         :x="-10",
         :y="-3",
-        ) {{ loop.over }} 
+        ) {{ metre.over }} 
       text(
         fill="currentColor"
         font-family="Commissioner, sans-serif"
@@ -264,7 +263,7 @@ g(
         text-anchor="start",
         :x="10",
         :y="-3",
-        ) {{ loop.under }} 
+        ) {{ metre.under }} 
     g.cursor-pointer.opacity-50.transition-all.duration-200.ease.hover_opacity-100(
       transform="translate(74,-10)"
       @mousedown="rotateAccents(-1)"

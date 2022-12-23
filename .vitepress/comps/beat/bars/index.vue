@@ -3,6 +3,7 @@ import BeatBar from './bar.vue'
 
 import { renderMidi } from '#/use/midiRender'
 import { tracks } from '#/use/sequence'
+import { loops } from './loops';
 
 const props = defineProps({
   meters: { type: Array, default: null },
@@ -13,20 +14,6 @@ const props = defineProps({
 })
 
 const pattern = ref(props.accent)
-
-const loops = useStorage('tempo-bar-loops', [
-  {
-    over: 8,
-    under: 8,
-    volume: 1,
-    sound: 'A'
-  },
-  {
-    over: 3,
-    under: 3,
-    volume: 0.5,
-    sound: 'B'
-  }]);
 
 const newLoop = reactive({
   over: 4,
@@ -63,12 +50,6 @@ const maxRatio = computed(() => {
   return max
 })
 
-function changeLoop(l, n, diff) {
-  let num = loops.value[l][n] + diff
-  if (num >= 1 && num <= 32) {
-    loops.value[l][n] = num
-  }
-}
 
 </script>
 
@@ -99,15 +80,18 @@ function changeLoop(l, n, diff) {
         la-file-download
       full-screen.text-md(v-tooltip.bottom="'Toggle fullscreen'")
       .is-group.m-2(v-if="meters && meters.length > 1")
+
         button.text-button(
           v-for="met in meters"
           @click="loops = [{ over: met.split('/')[0], under: met.split('/')[1], sound: 'A', volume: 1 }]"
         ) {{ met }}
+
       button.text-button(
         :class="{ active: pattern == p }"
         v-for="(pat, p) in patterns"
         @click="pattern = p; loops[0].over = p.length; loops[0].under = pat.meter ? pat.meter.split('/')[1] : p.length"
       ) {{ pat?.names?.[0]?.name || p }}
+
     .flex.flex-col.p-2.my-2.is-group(v-if="patterns")
       .flex.flex
         .flex-1.p-1.border-1.border-current.rounded-lg.m-1.opacity-50(

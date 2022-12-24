@@ -5,7 +5,7 @@ subtitle: Rhythmic meters
 date: 2021-10-10
 compound:
   meters: [6/4, 6/8, 6/16, 12/4, 12/8, 12/16, 9/4, 9/8, 9/16]
-  accent: "XxxXxxXxxXxx"
+  accents: "XxxXxxXxxXxx"
 ---
 
 <beat-bars v-bind="$frontmatter.compound" />

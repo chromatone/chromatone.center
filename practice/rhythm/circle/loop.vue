@@ -13,8 +13,6 @@ import { midi } from "#/use/midi";
 // import { useUrlSearchParams } from '@vueuse/core'
 import { controls } from './controls'
 
-const emit = defineEmits(["del", "over", "under", "sound"]);
-
 const props = defineProps({
   radius: { type: Number, default: 400 },
   size: { type: Number, default: 175 },

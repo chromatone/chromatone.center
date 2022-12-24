@@ -62,9 +62,6 @@ export function createChannel(title = (Math.random() * 1000).toFixed(0), options
 }
 
 
-
-
-
 export function initGetUserMedia() {
   window.AudioContext = window.AudioContext || window.webkitAudioContext;
   if (!window.AudioContext) {

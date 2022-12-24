@@ -5,7 +5,7 @@ subtitle: Rhythmic meters
 date: 2021-10-12
 simple:
   meters: [2/2, 2/4, 4/4, 4/8]
-  accent: "XxXxXxXxXxXxXxXxXx"
+  accents: "XxXxXxXxXxXxXxXxXx"
 ---
 
 <beat-bars v-bind="$frontmatter.simple" />

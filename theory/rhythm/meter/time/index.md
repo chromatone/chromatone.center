@@ -5,6 +5,7 @@ subtitle: Common time and half- and double-time changes
 date: 2021-10-06
 times:
   meters: [2/4, 4/4, 8/4]
+  accents: XxXxXxXx
 ---
 
 <beat-bars v-bind="$frontmatter.times" />

@@ -133,26 +133,26 @@ export function useSequence(
   });
 
 
+  const sounds = {
+    A: 'tongue',
+    B: 'synth',
+    C: 'seiko',
+    D: 'ping',
+    E: 'logic'
+  }
+
+  const urls = {}
+  for (let l in sounds) {
+    for (let i of [1, 2]) {
+      urls[`${l}${i}`] = `${sounds[l]}/${i == 1 ? 'high' : 'low'}.wav`
+    }
+  }
 
   const audio = shallowReactive({
     channel: createChannel(`sequence-${mode}-${order}`),
-    meter: null,
-    mic: null,
-    recorder: new Recorder(),
     panner: new PanVol(order % 2 == 1 ? -0.5 : 0.5, 0),
     synth: new Sampler({
-      urls: {
-        A1: "tongue/high.wav",
-        A2: "tongue/low.wav",
-        B1: "synth/high.wav",
-        B2: "synth/low.wav",
-        C1: "seiko/high.wav",
-        C2: "seiko/low.wav",
-        D1: "/ping/high.wav",
-        D2: "/ping/low.wav",
-        E1: "/logic/high.wav",
-        E2: "/logic/low.wav",
-      },
+      urls,
       volume: 1,
       envelope: {
         attack: 0.001,
@@ -160,13 +160,19 @@ export function useSequence(
       },
       baseUrl: "/audio/metronome/",
     }),
+    mic: new UserMedia(1),
+    meter: new Meter(),
+    recorder: new Recorder(),
   });
 
+  audio.synth.connect(audio.panner);
   audio.panner.connect(audio.channel);
 
-  audio.synth.connect(audio.panner);
+  audio.mic.connect(audio.meter);
+  audio.meter.connect(audio.recorder);
 
   const recorder = reactive({
+    started: false,
     recording: false,
     main: false,
     accent: false,
@@ -179,18 +185,24 @@ export function useSequence(
       recorder.recording = false;
     },
     async rec(pos = "main") {
+
       if (!recorder.recording) {
-        audio.meter = new Meter().connect(audio.recorder);
-        audio.mic = new UserMedia(1).connect(audio.meter);
-        audio.mic
-          .open()
-          .then(() => {
-            recorder.recording = pos;
-            audio.recorder.start();
-          })
-          .catch((e) => {
-            console.log("mic not open");
-          });
+        if (!recorder.started) {
+          audio.mic
+            .open()
+            .then(() => {
+              recorder.started = true
+              recorder.recording = pos;
+              audio.recorder.start();
+            })
+            .catch((e) => {
+              console.log("mic not open");
+            });
+        } else {
+          recorder.recording = pos;
+          audio.recorder.start();
+        }
+
       } else {
         let blob = await audio.recorder.stop();
         let arr = await blob.arrayBuffer();

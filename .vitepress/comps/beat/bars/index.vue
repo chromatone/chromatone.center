@@ -8,12 +8,12 @@ import { loops } from './loops';
 const props = defineProps({
   meters: { type: Array, default: null },
   patterns: { type: Object, default: null, },
-  accent: { type: String, default: '11111111111111111' },
+  accents: { type: String, default: 'XxXxXxXx' },
   mute: { type: String, delault: '' },
   secondary: { type: Boolean, default: false, },
 })
 
-const pattern = ref(props.accent)
+const pattern = ref(props.accents)
 
 const newLoop = reactive({
   over: 4,
@@ -22,23 +22,25 @@ const newLoop = reactive({
   sound: 'A'
 })
 
-if (props.meters) {
-  let nums = props.meters[0].split('/')
-  loops.value = [{
-    over: Number(nums[0]),
-    under: Number(nums[1]),
-    volume: props.secondary ? 0 : 1,
-    sound: 'A'
-  }]
-}
-
-watchEffect(() => {
-  if (props.patterns) {
-    pattern.value = Object.keys(props.patterns)[0]
+watch(() => props.meters, m => {
+  if (m) {
+    let nums = m[0].split('/')
+    loops.value = [{
+      over: Number(nums[0]),
+      under: Number(nums[1]),
+      volume: props.secondary ? 0 : 1,
+      sound: 'A'
+    }]
   }
-})
+}, { immediate: true })
 
+watch(() => props.patterns, p => pattern.value = Object.keys(p)[0], { immediate: true })
 
+function selectPattern(p, meter) {
+  pattern.value = p;
+  loops[0].over = p.length;
+  loops[0].under = meter ? meter.split('/')[1] : p.length
+}
 
 </script>
 
@@ -77,7 +79,7 @@ watchEffect(() => {
       button.text-button(
         :class="{ active: pattern == p }"
         v-for="(pat, p) in patterns"
-        @click="pattern = p; loops[0].over = p.length; loops[0].under = pat.meter ? pat.meter.split('/')[1] : p.length"
+        @click="selectPattern(p, pat.meter)"
       ) {{ pat?.names?.[0]?.name || p }}
 
     .flex.flex-col.p-2.my-2.is-group(v-if="patterns")

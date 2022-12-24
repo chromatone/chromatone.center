@@ -19,7 +19,7 @@ const props = defineProps({
   maxRatio: { type: Number, default: 1 },
   editable: { type: Boolean, default: false, },
   mute: { type: String, default: null, },
-  accent: { type: String, default: null }
+  accents: { type: String, default: null }
 });
 
 const { seq } = useSequence(props.loop, props.order, 'bars');
@@ -35,9 +35,13 @@ const proportion = computed(() => {
   return ratio >= props.maxRatio ? props.maxRatio : ratio
 })
 
-watch(() => props.accent, accent => {
-  if (accent) {
-    accent.split('').forEach((sign, m) => {
+watch(() => props.loop, l => {
+  seq.meter = { ...props.loop }
+}, { immediate: true })
+
+watch(() => props.accents, accents => {
+  if (accents) {
+    accents.split('').forEach((sign, m) => {
       seq.mutes[m] = (sign == 0 || sign == '.')
       seq.accents[m] = (sign == 2 || sign == 'X')
     })

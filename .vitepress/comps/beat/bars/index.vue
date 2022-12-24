@@ -34,18 +34,22 @@ watch(() => props.meters, m => {
   }
 }, { immediate: true })
 
-watch(() => props.patterns, p => pattern.value = Object.keys(p)[0], { immediate: true })
+watch(() => props.patterns, p => {
+  if (p) {
+    pattern.value = Object.keys(p)[0]
+  }
+}, { immediate: true })
 
 function selectPattern(p, meter) {
+  loops.value[0].over = p.length;
+  loops.value[0].under = meter ? meter.split('/')[1] : p.length
   pattern.value = p;
-  loops[0].over = p.length;
-  loops[0].under = meter ? meter.split('/')[1] : p.length
 }
 
 </script>
 
 <template lang="pug">
-.flex.flex-col.items-center.w-full.p-4.has-bg.rounded-xl#screen.relative.gap-6 {{ maxRatio }}
+.flex.flex-col.items-center.w-full.p-4.has-bg.rounded-xl#screen.relative.gap-6 {{ loops }}
   client-only 
     state-transport(v-if="!secondary" :secondary="true")
     beat-bar.my-1.rounded-3xl.shadow-lg(
@@ -56,7 +60,7 @@ function selectPattern(p, meter) {
       :maxRatio="maxRatio"
       @del="loops.splice(i, 1)"
       :editable="!meters"
-      :accent="pattern"
+      :accents="pattern"
       :mute="mute"
     )
     .flex.flex-wrap.justify-center.is-group.m-1.text-xl.p-2

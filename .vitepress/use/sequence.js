@@ -27,10 +27,90 @@ export function useSequence(
   mode = "bar"
 ) {
 
+  const seq = reactive({
+    metre: useStorage(`tempo-loop-${order}-${mode}`, initial),
+    current: '0-0',
+    steps: [["0-1"], ["1-1"], ["2-1"], ["3-1"]],
+    mutes: useStorage(`metro-${mode}-mutes-${order}`, []),
+    accents: useStorage(`metro-${mode}-accents-${order}`, [true]),
+    volume: useClamp(useStorage(`metro-${mode}-vol-${order}`, initial?.volume || 1), 0, 1),
+    pan: useClamp(useStorage(`metro-${mode}-pan-${order}`, order % 2 == 1 ? -0.5 : 0.5), -1, 1),
+    mutesCount: computed(() => seq.mutes.reduce((acc, val) => {
+      if (!val) { acc++ }
+      return acc
+    }, 0)),
+    currentSeq: computed(() => seq.mutes.reduce((acc, val) => val ? acc + '0' : acc + '1', '')),
+    euclidSeq: computed(() => seq.mutesCount > 0 && seq.mutesCount < seq.steps.length ? getEuclideanRhythm(seq.mutesCount, seq.steps.length) : new Array(seq.steps.length).fill('1').join('')),
+    isEuclidean: computed(() => seq.euclidSeq == seq.currentSeq),
+    reset() {
+      let arr = []
+      seq.euclidSeq.split('').forEach((e, i) => {
+        arr[i] = (e != false && e != null) ? false : true
+      })
+      seq.mutes = arr
+    }
+  })
 
-  const metre = useStorage(`tempo-loop-${order}-${mode}`, initial)
+  let sequence = new Sequence(
+    (time, step) => {
+      beatClick(step, time);
+    },
+    seq.steps,
+    seq.metre.under + "n"
+  ).start(0);
 
-  let pan = order % 2 == 1 ? -0.5 : 0.5;
+  seq.progress = computed(() => {
+    if (tempo.ticks) {
+      return sequence.progress;
+    } else {
+      return 0;
+    }
+  });
+
+  watch(
+    () => seq?.metre?.under,
+    () => {
+      sequence.stop().dispose();
+      sequence = new Sequence(
+        (time, step) => {
+          beatClick(step, time);
+        },
+        seq.steps,
+        seq.metre.under + "n"
+      ).start(0);
+    }
+  );
+
+  watch(
+    () => seq?.metre?.over,
+    () => {
+      seq.steps.length = 0;
+      for (let i = 0; i < seq.metre?.over; i++) {
+        seq.steps.push([`${i}-1`]);
+      }
+      sequence.events = seq.steps;
+    },
+    { immediate: true }
+  );
+
+  watchEffect(() => {
+    sequence.events = seq.steps;
+    seq.accents.length = seq.steps.length;
+    const muteL = seq.mutes.length
+    seq.mutes.length = seq.steps.length;
+    if (muteL < seq.steps.length) {
+      seq.mutes.fill(true, muteL)
+    }
+
+  });
+
+  watchEffect(() => {
+    if (tempo.stopped) {
+      seq.current = '1000-1'
+    }
+  });
+
+
 
   const audio = {
     meter: null,
@@ -40,10 +120,9 @@ export function useSequence(
     synth: null,
   };
 
-
-
   const { channel } = createChannel(`sequence-${mode}-${order}`)
-  audio.panner = new PanVol(pan, 0).connect(channel);
+
+  audio.panner = new PanVol(order % 2 == 1 ? -0.5 : 0.5, 0).connect(channel);
 
   audio.synth = new Sampler({
     urls: {
@@ -105,7 +184,7 @@ export function useSequence(
   });
 
   watch(
-    () => metre.value?.sound,
+    () => seq.metre.sound,
     (sound) => {
       if (sound != "F") {
         recorder.main = false;
@@ -114,85 +193,8 @@ export function useSequence(
     }
   );
 
-  const current = ref("0-0");
-  const steps = reactive([["0-1"], ["1-1"], ["2-1"], ["3-1"]]);
-  const mutes = useStorage(`metro-${mode}-mutes-${order}`, []);
-  const accents = useStorage(`metro-${mode}-accents-${order}`, [true]);
-  const volume = useClamp(useStorage(`metro-${mode}-vol-${order}`, metre.value?.volume || 1), 0, 1);
-  const panning = useClamp(useStorage(`metro-${mode}-pan-${order}`, pan), -1, 1);
-
-  const mutesCount = computed(() => mutes.value.reduce((acc, val) => {
-    if (!val) { acc++ }
-    return acc
-  }, 0))
-
-  const euclidSeq = computed(() => mutesCount.value > 0 && mutesCount.value < steps.length ? getEuclideanRhythm(mutesCount.value, steps.length) : new Array(steps.length).fill('1').join(''))
-
-  const currentSeq = computed(() => mutes.value.reduce((acc, val) => val ? acc + '0' : acc + '1', ''))
-
-  const isEuclidean = computed(() => euclidSeq.value == currentSeq.value)
-
-  function reset() {
-    let arr = []
-    euclidSeq.value.split('').forEach((e, i) => {
-      arr[i] = (e != false && e != null) ? false : true
-    })
-    mutes.value = arr
-  }
-
-  let sequence = new Sequence(
-    (time, step) => {
-      beatClick(step, time);
-    },
-    steps,
-    metre.value.under + "n"
-  ).start(0);
-
   watch(
-    () => metre.value?.under,
-    () => {
-      sequence.stop().dispose();
-      sequence = new Sequence(
-        (time, step) => {
-          beatClick(step, time);
-        },
-        steps,
-        metre.value.under + "n"
-      ).start(0);
-    }
-  );
-
-  watch(
-    () => metre.value?.over,
-    () => {
-      steps.length = 0;
-      for (let i = 0; i < metre.value?.over; i++) {
-        steps.push([`${i}-1`]);
-      }
-      sequence.events = steps;
-    },
-    { immediate: true }
-  );
-
-  watchEffect(() => {
-    sequence.events = steps;
-    accents.value.length = steps.length;
-    const muteL = mutes.value.length
-    mutes.value.length = steps.length;
-    if (muteL < steps.length) {
-      mutes.value.fill(true, muteL)
-    }
-
-  });
-
-  watchEffect(() => {
-    if (tempo.stopped) {
-      current.value = "1000-1";
-    }
-  });
-
-  watch(
-    volume,
+    () => seq.volume,
     (vol) => {
       audio.panner.volume.targetRampTo(gainToDb(vol), 1);
     },
@@ -200,36 +202,31 @@ export function useSequence(
   );
 
   watch(
-    panning,
+    () => seq.pan,
     (p) => {
       audio.panner.pan.targetRampTo(p, 1);
     },
     { immediate: true }
   );
 
-  const progress = computed(() => {
-    if (tempo.ticks) {
-      return sequence.progress;
-    } else {
-      return 0;
-    }
-  });
 
   function beatClick(step, time) {
     if (context.state == "suspended") {
       start();
     }
     let mainStep = typeof step == "string" ? + step.split("-")[0] : step;
+
     Draw.schedule(() => {
-      current.value = step;
+      seq.current = step
     }, time);
-    let accented = accents.value[mainStep] && step.split("-")[1] == "1";
-    if (mutes.value[mainStep]) return;
-    if (mutes.value[step]) return;
-    if (metre.value?.sound == "F" && !accented && !recorder.main) return;
-    if (metre.value?.sound == "F" && accented && !recorder.accent) return;
-    let note = `${metre.value?.sound}${accented ? 2 : 1}`;
-    audio.synth.triggerAttackRelease(note, metre.value?.under + "n", time);
+
+    let accented = seq.accents[mainStep] && step.split("-")[1] == "1";
+    if (seq.mutes[mainStep]) return;
+    if (seq.mutes[step]) return;
+    if (seq.metre?.sound == "F" && !accented && !recorder.main) return;
+    if (seq.metre?.sound == "F" && accented && !recorder.accent) return;
+    let note = `${seq.metre?.sound}${accented ? 2 : 1}`;
+    audio.synth.triggerAttackRelease(note, seq.metre?.under + "n", time);
     // midiOnce(notes[order * 2] + 3, { time: '+' + time })
   }
 
@@ -247,28 +244,18 @@ export function useSequence(
 
   tracks[order] = reactive({
     metre: computed(() => metre),
-    steps,
-    mutes,
-    accents,
-    mutesCount,
-    isEuclidean,
-    reset
+    steps: seq.steps,
+    mutes: seq.mutes,
+    accents: seq.accents,
+    mutesCount: seq.mutesCount,
+    isEuclidean: seq.isEuclidean,
+    reset: seq.reset
   });
 
   return {
-    progress,
-    current,
-    steps,
-    mutes,
-    accents,
-    volume,
-    panning,
     recorder,
     lastHit,
-    reset,
-    isEuclidean,
-    mutesCount,
-    metre
+    seq,
   };
 }
 

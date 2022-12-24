@@ -20,44 +20,35 @@ const props = defineProps({
 });
 
 const {
-  progress,
-  current,
-  steps,
-  mutes,
-  accents,
-  volume,
-  panning,
   recorder,
   lastHit,
-  mutesCount,
-  reset,
-  metre
+  seq
 } = useSequence(undefined, props.order, "circle");
 
 const soundLetters = ["A", "B", "C", "D", "E", "F"];
-const soundControl = ref(soundLetters.findIndex((el) => el == metre.value?.sound));
+const soundControl = ref(soundLetters.findIndex((el) => el == seq.metre?.sound));
 const controlRadius = computed(() => props.radius + 110);
 
 watch(soundControl, (num) => {
-  metre.value.sound = soundLetters[num]
+  seq.metre.sound = soundLetters[num]
 });
 
 const activeSteps = computed(() => {
-  return steps
-    .filter((step) => !mutes.value[step[0].split("-")[0]])
+  return seq?.steps
+    .filter((step) => !seq.mutes[step[0].split("-")[0]])
     .map((step) => Number(step[0].split("-")[0]));
 });
 
 const lineProgress = computed(() => {
-  if (progress.value > 0) {
-    return getCircleCoord(progress.value * 360, 360, props.radius + 50, 1000);
+  if (seq.progress > 0) {
+    return getCircleCoord(seq.progress * 360, 360, props.radius + 50, 1000);
   } else {
     return { x: 500, y: 100 };
   }
 });
 
 const lastLine = computed(() => {
-  if (progress.value > 0) {
+  if (seq.progress > 0) {
     return getCircleCoord(lastHit.value * 360, 360, props.radius + 50, 1000);
   } else {
     return { x: 500, y: 100 };
@@ -65,8 +56,8 @@ const lastLine = computed(() => {
 });
 
 function rotateAccents(num) {
-  accents.value = rotateArray(accents.value, num);
-  mutes.value = rotateArray(mutes.value, num);
+  seq.accents = rotateArray(seq.accents, num);
+  seq.mutes = rotateArray(seq.mutes, num);
 }
 
 const prevCC = ref(0);
@@ -81,12 +72,12 @@ watch(
       const diff = prevSteps.value - cc.raw;
       prevSteps.value = cc.raw;
       if (!diff) return;
-      const can = mutes.value.length - mutesCount.value;
+      const can = seq.mutes.length - seq.mutesCount;
       if (can < 0) return;
-      if (diff > 0 && mutesCount.value <= 1) return;
-      const index = mutes.value.findIndex((mute) => mute == diff < 0);
-      mutes.value[index] = diff > 0;
-      reset();
+      if (diff > 0 && seq.mutesCount <= 1) return;
+      const index = seq.mutes.findIndex((mute) => mute == diff < 0);
+      seq.mutes[index] = diff > 0;
+      seq.reset();
     }
     if (cc.number == controls.cc[props.order].rotate) {
       const diff = prevCC.value - cc.raw;
@@ -113,38 +104,38 @@ g(
       stroke="currentColor"
     )
   g.steps(
-    :opacity="volume"
+    :opacity="seq.volume"
   )
     g(
       v-for="(step, s) in activeSteps"
       :key="step"
       )
       line(
-        :x1="getCircleCoord(step, steps.length, radius - 55, 1000).x"
-        :y1="getCircleCoord(step, steps.length, radius - 55, 1000).y"
-        :x2="getCircleCoord(activeSteps[s + 1] || activeSteps[0], steps.length, radius - 55, 1000).x"
-        :y2="getCircleCoord(activeSteps[s + 1] || activeSteps[0], steps.length, radius - 55, 1000).y"
+        :x1="getCircleCoord(step, seq.steps.length, radius - 55, 1000).x"
+        :y1="getCircleCoord(step, seq.steps.length, radius - 55, 1000).y"
+        :x2="getCircleCoord(activeSteps[s + 1] || activeSteps[0], seq.steps.length, radius - 55, 1000).x"
+        :y2="getCircleCoord(activeSteps[s + 1] || activeSteps[0], seq.steps.length, radius - 55, 1000).y"
         stroke-width="8"
-        :stroke="levelColor((step + (tempo.pitch / 12) * steps.length), steps.length, 1)"
+        :stroke="levelColor((step + (tempo.pitch / 12) * seq.steps.length), seq.steps.length, 1)"
       )
     loop-sector(
-      v-for="(step, s) in steps"
+      v-for="(step, s) in seq.steps"
       :key="step"
       :step="s"
-      :total="steps.length"
-      :active="!mutes[s] && step == current"
+      :total="seq.steps.length"
+      :active="!seq.mutes[s] && step == seq.current"
       :radius="radius - 5"
-      :muted="mutes[s]"
+      :muted="seq.mutes[s]"
       style="cursor:pointer"
-      @accent="accents[s] = !accents[s]"
-      @mute="mutes[s] = !mutes[s]"
-      :accented="Boolean(accents[s])"
+      @accent="seq.accents[s] = !seq.accents[s]"
+      @mute="seq.mutes[s] = !seq.mutes[s]"
+      :accented="Boolean(seq.accents[s])"
     )
   beat-control-sector.under(
     :radius="controlRadius"
     :start="16 + order * 11"
     :finish="90"
-    v-model="metre.under"
+    v-model="seq.metre.under"
     :step="1"
     font-size="30"
     :min="1"
@@ -157,13 +148,13 @@ g(
 
     :midiCC="controls.cc[order].under"
   )
-    text {{ metre?.under }}
+    text {{ seq.metre?.under }}
 
   beat-control-sector.over(
     :radius="controlRadius"
     :start="343 - order * 11"
     :finish="270"
-    v-model="metre.over"
+    v-model="seq.metre.over"
     :step="1"
     font-size="30"
     :min="2"
@@ -175,13 +166,13 @@ g(
     v-tooltip.top="'Number of steps'"
     :midiCC="controls.cc[order].over"
   )
-    text {{ metre?.over }}
+    text {{ seq.metre?.over }}
 
   beat-control-sector.vol(
     :radius="controlRadius"
     :start="98 + order * 6"
     :finish="130"
-    v-model="volume"
+    v-model="seq.volume"
     font-size="30"
     :fixed="1"
     :step="0.02"
@@ -198,7 +189,7 @@ g(
     :radius="controlRadius"
     :start="138 + order * 6"
     :finish="175"
-    v-model="panning"
+    v-model="seq.pan"
     font-size="30"
     :fixed="1"
     :step="0.05"
@@ -206,7 +197,6 @@ g(
     :max="1"
     show-center
     v-tooltip.bottom="'Track panning'"
-
     :midiCC="controls.cc[order].pan"
   )
     mdi-pan-horizontal(x="-18" y="-28")
@@ -229,7 +219,7 @@ g(
 
     :midiCC="controls.cc[order].sound"
   )
-    text {{ metre?.sound }}
+    text {{ seq.metre?.sound }}
 
   transition(name="fade")
     beat-recorder(
@@ -255,7 +245,7 @@ g(
         text-anchor="end",
         :x="-10",
         :y="-3",
-        ) {{ metre?.over }} 
+        ) {{ seq.metre?.over }} 
       text(
         fill="currentColor"
         font-family="Commissioner, sans-serif"
@@ -263,7 +253,7 @@ g(
         text-anchor="start",
         :x="10",
         :y="-3",
-        ) {{ metre?.under }} 
+        ) {{ seq.metre?.under }} 
     g.cursor-pointer.opacity-50.transition-all.duration-200.ease.hover_opacity-100(
       transform="translate(74,-10)"
       @mousedown="rotateAccents(-1)"

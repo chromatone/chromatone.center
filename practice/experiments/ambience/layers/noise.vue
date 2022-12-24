@@ -31,7 +31,7 @@ const options = useStorage("ambient-options", {
 
 const active = ref(false)
 
-const { channel } = createChannel('ambient-noise')
+const channel = createChannel('ambient-noise')
 
 const gain = new Gain(options.value.volume).connect(channel)
 const filter = new Filter({ type: 'lowpass', frequency: 1500, Q: 0 }).connect(gain)

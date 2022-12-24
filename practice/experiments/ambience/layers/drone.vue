@@ -36,7 +36,7 @@ const active = ref(false)
 const note = ref(0)
 const octave = ref(1)
 
-const { channel } = createChannel('ambient-drone')
+const channel = createChannel('ambient-drone')
 
 const gain = new Gain(options.value.volume).connect(channel)
 const filter = new Filter({ type: 'lowpass', frequency: 1500, Q: 0 }).connect(gain)

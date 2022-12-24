@@ -1,5 +1,4 @@
 import { tempo } from "#/use/tempo.js";
-import { onKeyStroke } from "@vueuse/core";
 import {
   Sequence,
   PanVol,
@@ -13,8 +12,22 @@ import {
   UserMedia,
 } from "tone";
 import { createChannel } from '#/use/audio'
+import { rotateArray } from "#/use/calculations";
 
+// List of all sequences
 export const tracks = reactive([]);
+
+// Maximum ratio of the meter to scale them accordingly
+export const maxRatio = computed(() => {
+  let max = 0
+  tracks.forEach(track => {
+    let ratio = track.meter.over / track.meter.under
+    if (ratio > max) {
+      max = ratio
+    }
+  })
+  return max
+})
 
 export function useSequence(
   initial = {
@@ -28,7 +41,7 @@ export function useSequence(
 ) {
 
   const seq = reactive({
-    metre: useStorage(`tempo-loop-${order}-${mode}`, initial),
+    meter: useStorage(`tempo-loop-${order}-${mode}`, initial),
     current: '0-0',
     steps: [["0-1"], ["1-1"], ["2-1"], ["3-1"]],
     mutes: useStorage(`metro-${mode}-mutes-${order}`, []),
@@ -39,6 +52,9 @@ export function useSequence(
       if (!val) { acc++ }
       return acc
     }, 0)),
+    activeSteps: computed(() => {
+      return seq.steps.filter(step => !seq.mutes[step[0].split('-')[0]]).map(step => Number(step[0].split('-')[0]))
+    }),
     currentSeq: computed(() => seq.mutes.reduce((acc, val) => val ? acc + '0' : acc + '1', '')),
     euclidSeq: computed(() => seq.mutesCount > 0 && seq.mutesCount < seq.steps.length ? getEuclideanRhythm(seq.mutesCount, seq.steps.length) : new Array(seq.steps.length).fill('1').join('')),
     isEuclidean: computed(() => seq.euclidSeq == seq.currentSeq),
@@ -48,15 +64,21 @@ export function useSequence(
         arr[i] = (e != false && e != null) ? false : true
       })
       seq.mutes = arr
+    },
+    rotateAccents(num) {
+      seq.accents = rotateArray(seq.accents, num);
+      seq.mutes = rotateArray(seq.mutes, num);
     }
   })
+
+  tracks[order] = seq;
 
   let sequence = new Sequence(
     (time, step) => {
       beatClick(step, time);
     },
     seq.steps,
-    seq.metre.under + "n"
+    seq.meter.under + "n"
   ).start(0);
 
   seq.progress = computed(() => {
@@ -68,7 +90,7 @@ export function useSequence(
   });
 
   watch(
-    () => seq?.metre?.under,
+    () => seq?.meter?.under,
     () => {
       sequence.stop().dispose();
       sequence = new Sequence(
@@ -76,16 +98,16 @@ export function useSequence(
           beatClick(step, time);
         },
         seq.steps,
-        seq.metre.under + "n"
+        seq.meter.under + "n"
       ).start(0);
     }
   );
 
   watch(
-    () => seq?.metre?.over,
+    () => seq?.meter?.over,
     () => {
       seq.steps.length = 0;
-      for (let i = 0; i < seq.metre?.over; i++) {
+      for (let i = 0; i < seq.meter?.over; i++) {
         seq.steps.push([`${i}-1`]);
       }
       sequence.events = seq.steps;
@@ -112,40 +134,37 @@ export function useSequence(
 
 
 
-  const audio = {
+  const audio = shallowReactive({
+    channel: createChannel(`sequence-${mode}-${order}`),
     meter: null,
     mic: null,
-    recorder: null,
-    panner: null,
-    synth: null,
-  };
+    recorder: new Recorder(),
+    panner: new PanVol(order % 2 == 1 ? -0.5 : 0.5, 0),
+    synth: new Sampler({
+      urls: {
+        A1: "tongue/high.wav",
+        A2: "tongue/low.wav",
+        B1: "synth/high.wav",
+        B2: "synth/low.wav",
+        C1: "seiko/high.wav",
+        C2: "seiko/low.wav",
+        D1: "/ping/high.wav",
+        D2: "/ping/low.wav",
+        E1: "/logic/high.wav",
+        E2: "/logic/low.wav",
+      },
+      volume: 1,
+      envelope: {
+        attack: 0.001,
+        release: 2,
+      },
+      baseUrl: "/audio/metronome/",
+    }),
+  });
 
-  const { channel } = createChannel(`sequence-${mode}-${order}`)
+  audio.panner.connect(audio.channel);
 
-  audio.panner = new PanVol(order % 2 == 1 ? -0.5 : 0.5, 0).connect(channel);
-
-  audio.synth = new Sampler({
-    urls: {
-      A1: "tongue/high.wav",
-      A2: "tongue/low.wav",
-      B1: "synth/high.wav",
-      B2: "synth/low.wav",
-      C1: "seiko/high.wav",
-      C2: "seiko/low.wav",
-      D1: "/ping/high.wav",
-      D2: "/ping/low.wav",
-      E1: "/logic/high.wav",
-      E2: "/logic/low.wav",
-    },
-    volume: 1,
-    envelope: {
-      attack: 0.001,
-      release: 2,
-    },
-    baseUrl: "/audio/metronome/",
-  }).connect(audio.panner);
-
-  audio.recorder = new Recorder();
+  audio.synth.connect(audio.panner);
 
   const recorder = reactive({
     recording: false,
@@ -184,7 +203,7 @@ export function useSequence(
   });
 
   watch(
-    () => seq.metre.sound,
+    () => seq.meter.sound,
     (sound) => {
       if (sound != "F") {
         recorder.main = false;
@@ -223,38 +242,23 @@ export function useSequence(
     let accented = seq.accents[mainStep] && step.split("-")[1] == "1";
     if (seq.mutes[mainStep]) return;
     if (seq.mutes[step]) return;
-    if (seq.metre?.sound == "F" && !accented && !recorder.main) return;
-    if (seq.metre?.sound == "F" && accented && !recorder.accent) return;
-    let note = `${seq.metre?.sound}${accented ? 2 : 1}`;
-    audio.synth.triggerAttackRelease(note, seq.metre?.under + "n", time);
+    if (seq.meter?.sound == "F" && !accented && !recorder.main) return;
+    if (seq.meter?.sound == "F" && accented && !recorder.accent) return;
+    let note = `${seq.meter?.sound}${accented ? 2 : 1}`;
+    audio.synth.triggerAttackRelease(note, seq.meter?.under + "n", time);
     // midiOnce(notes[order * 2] + 3, { time: '+' + time })
   }
-
-  const lastHit = ref(0)
-
-  onKeyStroke('Shift', () => {
-    lastHit.value = progress.value
-  })
 
   onBeforeUnmount(() => {
     sequence.stop().dispose();
     audio.panner.dispose();
     audio.synth.dispose();
-  });
-
-  tracks[order] = reactive({
-    metre: computed(() => metre),
-    steps: seq.steps,
-    mutes: seq.mutes,
-    accents: seq.accents,
-    mutesCount: seq.mutesCount,
-    isEuclidean: seq.isEuclidean,
-    reset: seq.reset
+    audio.recorder.dispose();
+    audio.channel.dispose()
   });
 
   return {
     recorder,
-    lastHit,
     seq,
   };
 }

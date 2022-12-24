@@ -58,7 +58,7 @@ export function createChannel(title = (Math.random() * 1000).toFixed(0), options
   channels[title] = channel
 
 
-  return { channel }
+  return channel
 }
 
 

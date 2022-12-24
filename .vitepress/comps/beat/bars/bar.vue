@@ -22,30 +22,24 @@ const props = defineProps({
   accent: { type: String, default: null }
 });
 
+const { seq } = useSequence(props.loop, props.order, 'bars');
+
 const sounds = ['A', 'B', 'C', 'D', 'E']
-const soundControl = ref(sounds.findIndex(el => el == props.loop?.sound))
+const soundControl = ref(sounds.findIndex(el => el == seq.meter?.sound))
 watch(soundControl, num => {
-  emit('sound', sounds[num])
+  seq.meter.sound = sounds[num]
 })
 
-const { progress, current, steps, mutes, accents, volume, panning, reset, isEuclidean } = useSequence(props.loop, props.order, 'bars');
-
-const proportion = computed(() => ((props.loop.over / props.loop.under) / props.maxRatio) / props.loop.over)
-
-const activeSteps = computed(() => {
-  return steps.filter(step => !mutes.value[step[0].split('-')[0]]).map(step => Number(step[0].split('-')[0]))
+const proportion = computed(() => {
+  const ratio = 1 / seq.meter.over
+  return ratio >= props.maxRatio ? props.maxRatio : ratio
 })
-
-function rotateAccents(num) {
-  accents.value = rotateArray(accents.value, num)
-  mutes.value = rotateArray(mutes.value, num)
-}
 
 watch(() => props.accent, accent => {
   if (accent) {
     accent.split('').forEach((sign, m) => {
-      mutes.value[m] = (sign == 0 || sign == '.')
-      accents.value[m] = (sign == 2 || sign == 'X')
+      seq.mutes[m] = (sign == 0 || sign == '.')
+      seq.accents[m] = (sign == 2 || sign == 'X')
     })
   }
 }, { immediate: true });
@@ -70,7 +64,7 @@ svg.w-full(
     transform="translate(40,15)"
   )
     beat-control-bar.over(
-      v-model="loop.over"
+      v-model="seq.meter.over"
       :width="340"
       :step="1"
       :min="2"
@@ -82,7 +76,7 @@ svg.w-full(
     )
     beat-control-bar.under(
       transform="translate(580,0)"
-      v-model="loop.under"
+      v-model="seq.meter.under"
       :width="340"
       :step="1"
       :min="1"
@@ -111,19 +105,19 @@ svg.w-full(
         font-size="40px"
         text-anchor="end",
         :x="-10",
-        ) {{ loop.over }} 
+        ) {{ seq.meter.over }} 
       text(
         fill="currentColor"
         font-family="Commissioner, sans-serif"
         font-size="40px"
         text-anchor="start",
         :x="10",
-        ) {{ loop.under }} 
+        ) {{ seq.meter.under }} 
 
     g.cursor-pointer.opacity-50.transition-all.duration-200.ease(
       class="hover_opacity-100"
       transform="translate(70,-10)"
-      @mousedown="rotateAccents(-1)"
+      @mousedown="seq.rotateAccents(-1)"
       v-tooltip.top="'Rotate pattern backward'"
     )
       circle(
@@ -138,7 +132,7 @@ svg.w-full(
     g.cursor-pointer.opacity-50.transition-all.duration-200.ease(
       class="hover_opacity-100"
       transform="translate(-70,-10)"
-      @mousedown="rotateAccents(1)"
+      @mousedown="seq.rotateAccents(1)"
       v-tooltip.top="'Rotate pattern forward'"
     )
       circle(
@@ -155,72 +149,72 @@ svg.w-full(
     style="user-select:none;transition:all 300ms ease"
   )
     g.steps(
-      :opacity="volume * 0.9 + 0.1"
+      :opacity="seq.volume * 0.9 + 0.1"
       transform="translate(0,90)"
     )
 
       g.lines(transform="translate(0,100)")
         line(
           :x1="pad"
-          :x2="proportion * (steps.length) * width + pad"
+          :x2="proportion * (seq.steps.length) * width + pad"
           stroke="currentColor"
           stroke-width="2"
         )
         line(
-          v-for="(step, s) in activeSteps" :key="step"
+          v-for="(step, s) in seq.activeSteps" :key="step"
           :x1="proportion * (step) * width + pad"
-          :x2="proportion * (activeSteps[s + 1] || steps.length) * width + pad"
+          :x2="proportion * (seq.activeSteps[s + 1] || seq.steps.length) * width + pad"
           stroke-width="6"
-          :stroke="levelColor((step + (tempo.pitch / 12) * steps.length), steps.length, 1)"
+          :stroke="levelColor((step + (tempo.pitch / 12) * seq.steps.length), seq.steps.length, 1)"
         )
       bar-step(
-        v-for="(step, s) in steps"
+        v-for="(step, s) in seq.steps"
         :key="s"
-        @mute="mutes[s] = !mutes[s]"
-        @subdivide="steps[s] = $event"
-        @accent="accents[s] = !accents[s]"
-        :muted="mutes[s]"
+        @mute="seq.mutes[s] = !seq.mutes[s]"
+        @subdivide="seq.steps[s] = $event"
+        @accent="seq.accents[s] = !seq.accents[s]"
+        :muted="seq.mutes[s]"
         :step="s"
-        :accented="Boolean(accents[s])"
-        :mutes="mutes"
-        :current="current"
+        :accented="Boolean(seq.accents[s])"
+        :mutes="seq.mutes"
+        :current="seq.current"
         :subdivisions="step"
         :proportion="proportion"
-        :total="steps.length"
+        :total="seq.steps.length"
         :width="width"
         :pad="pad"
       )
       g.arrows.pointer-events-none
-        line(
-          :transform="`translate(${pad + progress * width * proportion * loop.over}, 0)`"
+        line.progress(
+          :transform="`translate(${pad + seq.progress * width * proportion * seq.meter.over}, 0)`"
           stroke-width="4"
           stroke="currentColor"
           stroke-linecap="round"
           :y2="180"
         )
       circle(
-        :cx="proportion * (steps.length) * width + pad"
+        :cx="proportion * (seq.steps.length) * width + pad"
         :cy="100"
-        :r="!mutes[1] ? 8 : 4"
-        :fill="!mutes[1] ? noteColor(tempo.pitch, 4) : 'currentColor'"
+        :r="!seq.mutes[1] ? 8 : 4"
+        :fill="!seq.mutes[1] ? noteColor(tempo.pitch, 4) : 'currentColor'"
       )
     g.bottom(transform="translate(40,290)")
       beat-control-bar.volume(
-        v-model="volume"
+        v-model="seq.volume"
         :width="200"
         :step="0.01"
         v-tooltip.bottom="'Track volume'"
       )
         g(transform="translate(-20 -30)")
           la-volume-off(
-            v-if="volume == 0"
+            v-if="seq.volume == 0"
             ) 
           la-volume-up(
             v-else
             )
       beat-control-bar.pan(
         transform="translate(270,0)"
-        v-model="panning"
+        v-model="seq.pan"
         :min="-1"
         :max="1"
         :width="200"
@@ -243,12 +237,12 @@ svg.w-full(
         :every="1"
         v-tooltip.bottom="'Click sound select'"
         )
-        text {{ loop?.sound }}
+        text {{ seq.meter?.sound }}
       transition(name="fade")
         g.reset.cursor-pointer(
-          @mousedown="reset()"
+          @mousedown="seq.reset()"
           :transform="`translate(840, 0)`"
-          v-if="editable && !isEuclidean"
+          v-if="editable && !seq.isEuclidean"
           v-tooltip.bottom="'Reset to Euclidean pattern'"
           )
           rect(

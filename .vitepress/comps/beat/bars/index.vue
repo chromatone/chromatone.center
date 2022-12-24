@@ -2,7 +2,7 @@
 import BeatBar from './bar.vue'
 
 import { renderMidi } from '#/use/midiRender'
-import { tracks } from '#/use/sequence'
+import { tracks, maxRatio } from '#/use/sequence'
 import { loops } from './loops';
 
 const props = defineProps({
@@ -39,22 +39,11 @@ watchEffect(() => {
 })
 
 
-const maxRatio = computed(() => {
-  let max = 0
-  loops.value.forEach(loop => {
-    let ratio = loop.over / loop.under
-    if (ratio > max) {
-      max = ratio
-    }
-  })
-  return max
-})
-
 
 </script>
 
 <template lang="pug">
-.flex.flex-col.items-center.w-full.p-4.has-bg.rounded-xl#screen.relative.gap-6
+.flex.flex-col.items-center.w-full.p-4.has-bg.rounded-xl#screen.relative.gap-6 {{ maxRatio }}
   client-only 
     state-transport(v-if="!secondary" :secondary="true")
     beat-bar.my-1.rounded-3xl.shadow-lg(
@@ -64,7 +53,6 @@ const maxRatio = computed(() => {
       :loop="loop"
       :maxRatio="maxRatio"
       @del="loops.splice(i, 1)"
-      @sound="loop.sound = $event"
       :editable="!meters"
       :accent="pattern"
       :mute="mute"

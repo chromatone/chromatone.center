@@ -55,7 +55,7 @@ export function useLoop(order = 0) {
 
   loops[order] = loop;
 
-  const { channel } = createChannel(`grid-loop-${order}`)
+  const channel = createChannel(`grid-loop-${order}`)
   const panner = new PanVol(loop.pan, 0).connect(channel);
   const synth = new PolySynth({
     envelope: {

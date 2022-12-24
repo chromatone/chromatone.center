@@ -28,7 +28,7 @@ export function useMic() {
     input.connect(gate)
     gate.connect(compressor)
 
-    const { channel } = createChannel('mic')
+    const channel = createChannel('mic')
 
     watch(() => mic.open, o => {
       if (o) {

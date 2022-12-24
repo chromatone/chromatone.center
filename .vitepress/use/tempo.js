@@ -57,7 +57,7 @@ export function useTempo() {
 
   onMounted(() => {
 
-    const { channel } = createChannel('tempo-tick')
+    const channel = createChannel('tempo-tick')
     metro.channel = channel
     metro.pluck = new Sampler({
       urls: {

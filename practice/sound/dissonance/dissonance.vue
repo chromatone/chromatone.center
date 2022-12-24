@@ -61,7 +61,7 @@ let synthOne, synthTwo
 
 function initSynth() {
   if (!synth.started) {
-    const { channel } = createChannel('dissonance')
+    const channel = createChannel('dissonance')
 
     synthOne = new MonoSynth({
       oscillator: {

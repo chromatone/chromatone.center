@@ -7,7 +7,7 @@ import { createChannel } from "#/use/audio";
 
 
 export function useSynth(pitch, octave) {
-  const { channel } = createChannel('table')
+  const channel = createChannel('table')
   const panVol = new PanVol(0, -Infinity).connect(channel);
 
   const synth = new MonoSynth({

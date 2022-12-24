@@ -1,8 +1,10 @@
 <script setup>
+import { onKeyStroke } from "@vueuse/core";
+
 import LoopSector from "./loop-sector.vue";
 import BeatControlSector from './sector.vue'
 
-import { getCircleCoord, rotateArray } from "#/use/calculations";
+import { getCircleCoord } from "#/use/calculations";
 import { useSequence } from "#/use/sequence.js";
 import { isDark } from "#/theme/composables/state.js";
 import { levelColor } from "#/use/colors.js";
@@ -21,16 +23,20 @@ const props = defineProps({
 
 const {
   recorder,
-  lastHit,
   seq
 } = useSequence(undefined, props.order, "circle");
 
 const soundLetters = ["A", "B", "C", "D", "E", "F"];
-const soundControl = ref(soundLetters.findIndex((el) => el == seq.metre?.sound));
+const soundControl = ref(soundLetters.findIndex((el) => el == seq.meter?.sound));
 const controlRadius = computed(() => props.radius + 110);
+const lastHit = ref(0)
+
+onKeyStroke('Shift', () => {
+  lastHit.value = seq.progress
+})
 
 watch(soundControl, (num) => {
-  seq.metre.sound = soundLetters[num]
+  seq.meter.sound = soundLetters[num]
 });
 
 const activeSteps = computed(() => {
@@ -55,11 +61,6 @@ const lastLine = computed(() => {
   }
 });
 
-function rotateAccents(num) {
-  seq.accents = rotateArray(seq.accents, num);
-  seq.mutes = rotateArray(seq.mutes, num);
-}
-
 const prevCC = ref(0);
 const prevSteps = ref(4);
 
@@ -82,7 +83,7 @@ watch(
     if (cc.number == controls.cc[props.order].rotate) {
       const diff = prevCC.value - cc.raw;
       prevCC.value = cc.raw;
-      rotateAccents(diff);
+      seq.rotateAccents(diff);
     }
   }
 );
@@ -135,7 +136,7 @@ g(
     :radius="controlRadius"
     :start="16 + order * 11"
     :finish="90"
-    v-model="seq.metre.under"
+    v-model="seq.meter.under"
     :step="1"
     font-size="30"
     :min="1"
@@ -148,13 +149,13 @@ g(
 
     :midiCC="controls.cc[order].under"
   )
-    text {{ seq.metre?.under }}
+    text {{ seq.meter?.under }}
 
   beat-control-sector.over(
     :radius="controlRadius"
     :start="343 - order * 11"
     :finish="270"
-    v-model="seq.metre.over"
+    v-model="seq.meter.over"
     :step="1"
     font-size="30"
     :min="2"
@@ -166,7 +167,7 @@ g(
     v-tooltip.top="'Number of steps'"
     :midiCC="controls.cc[order].over"
   )
-    text {{ seq.metre?.over }}
+    text {{ seq.meter?.over }}
 
   beat-control-sector.vol(
     :radius="controlRadius"
@@ -219,7 +220,7 @@ g(
 
     :midiCC="controls.cc[order].sound"
   )
-    text {{ seq.metre?.sound }}
+    text {{ seq.meter?.sound }}
 
   transition(name="fade")
     beat-recorder(
@@ -231,7 +232,7 @@ g(
 
   g.info(
     :transform="`translate(500,${order * size + 50})`"
-    v-drag="rotateAccents"
+    v-drag="seq.rotateAccents"
   )
     g.signature(v-tooltip.top="'Time signature'")
       text(
@@ -245,7 +246,7 @@ g(
         text-anchor="end",
         :x="-10",
         :y="-3",
-        ) {{ seq.metre?.over }} 
+        ) {{ seq.meter?.over }} 
       text(
         fill="currentColor"
         font-family="Commissioner, sans-serif"
@@ -253,10 +254,10 @@ g(
         text-anchor="start",
         :x="10",
         :y="-3",
-        ) {{ seq.metre?.under }} 
+        ) {{ seq.meter?.under }} 
     g.cursor-pointer.opacity-50.transition-all.duration-200.ease.hover_opacity-100(
       transform="translate(74,-10)"
-      @mousedown="rotateAccents(-1)"
+      @mousedown="seq.rotateAccents(-1)"
       v-tooltip.top="'Rotate pattern forward'"
     )
       circle(
@@ -270,7 +271,7 @@ g(
       )
     g.cursor-pointer.opacity-50.transition-all.duration-200.ease.hover_opacity-100(
       transform="translate(-78,-10)"
-      @mousedown="rotateAccents(1)"
+      @mousedown="seq.rotateAccents(1)"
       v-tooltip.top="'Rotate pattern back'"
     )
       circle(

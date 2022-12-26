@@ -29,7 +29,7 @@ const midiNotes = computed(() => {
 })
 
 function coord(n = 0, q = 0.5) {
-  return getCircleCoord(n, 12, props.size * q, 0)
+  return getCircleCoord(n % 12, 12, props.size * q, 0)
 }
 
 const pressed = ref()
@@ -169,18 +169,29 @@ watchThrottled(loaded, l => {
                 ) {{ note.note }}
 
       g.spiral.pointer-events-none
-        g.note(v-for="(pitch, i) in midiNotes" :key="i")
-          circle(
-            style="transition: all 100ms ease-out"
-            :cx="coord(pitch, i/700+0.145).x" 
-            :cy="coord(pitch, i/700 +0.145).y" 
-            :fill="defaultScheme[pitch]"
-            :r="8" 
-            :opacity="midi.activeNotes[i] ? 1 : 0"
-            )
-          line(
-            :x1="coord()"
-          )
+        transition-group(name="fade")
+          g.interval(v-for="(bool, note) in midi.activeNotes" :key="note")
+            transition-group(name="fade")
+              line(
+                v-for="(bool2, note2) in midi.activeNotes" :key="note2"
+                :x1="coord((note-9)%12, note/700+0.145).x" 
+                :y1="coord((note-9)%12, note/700 +0.145).y" 
+                :x2="coord((note2-9)%12, note2/700+0.145).x" 
+                :y2="coord((note2-9)%12, note2/700 +0.145).y" 
+                :stroke="colord(scheme.custom[(note-9)%12]).mix(scheme.custom[(note2-9)%12]).toHex()"
+                stroke-width="10"
+                :style="{filter: `drop-shadow(0px 0px 4px ${colord(scheme.custom[(note-9)%12]).mix(scheme.custom[(note2-9)%12]).alpha(0.5).toHex()}`}"
+              )
+        transition-group(name="fade")
+          g.note(v-for="(bool, note) in midi.activeNotes" :key="note")
+            circle(
+              style="transition: all 100ms ease-out"
+              :cx="coord((note-9)%12, note/700+0.145).x" 
+              :cy="coord((note-9)%12, note/700 +0.145).y" 
+              :fill="scheme.custom[(note-9)%12]"
+              :r="12" 
+            )          
+        
 </template>
 
 <style scoped lang="postcss">

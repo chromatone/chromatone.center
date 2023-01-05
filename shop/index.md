@@ -283,6 +283,12 @@ cities:
   - city: Muskegon, MI
     country: USA
     coord: [43.23399152649921, -86.25687663413066]
+  - city: Orem, UT
+    country: USA
+    coord: [40.320147288228135, -111.7564163365697]
+  - city: Victoria, BC
+    country: Canada
+    coord: [48.46709822376857, -123.51123649990528]
 ---
 
 <script setup>

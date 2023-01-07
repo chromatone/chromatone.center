@@ -2,7 +2,7 @@
 import { useFullscreen } from '@vueuse/core'
 
 const props = defineProps({
-  el: { type: HTMLElement, default: null }
+  el: { type: Object, default: null }
 })
 
 const element = ref()

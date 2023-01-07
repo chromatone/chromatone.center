@@ -26,13 +26,13 @@ const hr = 1000 * 60 * 60
 
 <template lang='pug'>
 .flex.flex-col 
-	.flex.uppercase.tabular-nums.font-mono.flex-wrap
-		.p-2.flex.gap-2(v-for="d in date" :key="d")  
+	.flex.uppercase.tabular-nums.font-mono.flex-wrap.gap-1
+		.p-1.flex.gap-2(v-for="d in date" :key="d")  
 			.p-0 {{ d }}
-		.p-2 POS {{ transport[0] }}:{{ transport[1] }}
-		.p-2.min-w-32 TICK {{ tempo.ticks }}
+		.p-1 POS {{ transport[0] }}:{{ transport[1] }}
+		.p-1.min-w-32 TICK {{ tempo.ticks }}
 		.flex-auto
-		.p-2.flex.gap-1.items-center
+		.p-1.flex.gap-2.items-center.border-1.rounded-xl
 
 			la-divide(@click="tempo.bpm = tempo.bpm/2")
 			la-minus(@click="tempo.bpm--")

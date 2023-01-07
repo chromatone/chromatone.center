@@ -49,7 +49,7 @@ function selectPattern(p, meter) {
 </script>
 
 <template lang="pug">
-.flex.flex-col.items-center.w-full.p-4.has-bg.rounded-xl#screen.relative.gap-6 {{ loops }}
+.flex.flex-col.items-center.w-full.p-4.has-bg.rounded-xl#screen.relative.gap-6
   client-only 
     state-transport(v-if="!secondary" :secondary="true")
     beat-bar.my-1.rounded-3xl.shadow-lg(

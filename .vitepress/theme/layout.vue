@@ -29,7 +29,7 @@ watch(route, () => {
   shop-cart-panel
   state-dark.fixed.bottom-18.right-14px.z-1000
   nav-scroll.fixed.bottom-8.right-24px.z-1000
-  nav-bar.md_sticky.top-0(@toggle="openSideBar = !openSideBar")
+  nav-bar(@toggle="openSideBar = !openSideBar")
   .main
     client-only
       draw-layer.z-20

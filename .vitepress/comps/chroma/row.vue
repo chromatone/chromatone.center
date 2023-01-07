@@ -7,6 +7,7 @@ import { synthOnce } from '#/use/synth.js'
 import { midiOnce } from '#/use/midi.js'
 import { chordType, scaleType, intervals, notes } from '#/use/theory'
 import { globalScale, playChroma, stopChroma, } from '#/use/chroma'
+import { calcBg } from '#/use/colors'
 import { colord } from 'colord'
 
 const emit = defineEmits(['update:chroma'])
@@ -50,15 +51,6 @@ function toggleStep(i) {
   emit('update:chroma', chroma.join(''))
 }
 
-function calcBg(i, bit, hover) {
-  if (bit == 1) {
-    return noteColor((i + globalScale?.tonic) % 12, 3)
-  } else if (state.minor[(i + globalScale?.tonic) % 12] == '1') {
-    return 'hsla(0,0%,80%,0.3)'
-  } else {
-    return 'hsla(0,0%,20%,0.3)'
-  }
-}
 
 const allNotes = [...notes].map((n, i) => ({ name: n, pitch: i }))
 
@@ -110,7 +102,7 @@ function playNote(note = 0, octave = 0) {
   .flex.flex-col.items-start.w-full.relative.shadow-lg(
     :style="{ backgroundColor: colord(chromaColorMix(chroma, globalScale?.tonic).hsl).alpha(0.1).toHex() }"
     )
-    .flex.flex-wrap.items-center.justify-stretch.w-full.text-sm.px-2
+    .flex.flex-wrap.items-center.justify-stretch.w-full.text-sm.px-2.bg-dark-800.bg-opacity-10
       .p-2px {{ chroma }}
       .flex-1
       .flex.font-bold(title="Intervals")
@@ -124,8 +116,8 @@ function playNote(note = 0, octave = 0) {
     .flex.flex-wrap.items-center.justify-between.p-2(
       :class="{ 'w-full': true }"
       ) 
-      chroma-code(:chroma="chroma")
-      button.text-button.text-white.font-bold.text-sm.flex.gap-1(
+
+      button.text-button.text-white.font-bold.text-md.flex.gap-1(
         :style="{ backgroundColor: chromaColorMix(chroma, globalScale?.tonic).hsl }"
         @mousedown="playChroma(chroma)"
         @touchstart.prevent.stop="playChroma(chroma)"
@@ -134,8 +126,8 @@ function playNote(note = 0, octave = 0) {
         @mouseup="stopChroma(chroma)"
         @mouseleave="stopChroma(chroma)"
       ) 
-        foundation-sound
         span.mr-1 {{ globalScale?.note.name }}{{ state.chord.aliases[0] || ' ' + state.scale.name }}
+      chroma-code(:chroma="chroma")
       .flex-1
       button.text-button.text-sm(
         :style="{ borderColor: chromaColorMix(chroma, globalScale?.tonic).hsl }"

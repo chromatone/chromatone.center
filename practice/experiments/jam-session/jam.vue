@@ -1,15 +1,18 @@
 <script setup>
-import { globalScale } from '#/use/chroma';
-import { noteColor } from '#/use/colors';
-import { useTempo } from '#/use/tempo';
-import { scaleList } from '#/use/theory';
-const tempo = useTempo()
+import ScalePanel from './scale.vue'
+import ChromaPanel from './chroma.vue'
+import TimePanel from './time.vue'
 
 </script>
 
 <template lang='pug'>
-#screen
-	full-screen.absolute.-top-6.right-2
-	state-transport
-	p {{ scaleList.length }}
+#screen.flex.flex-col.gap-4.bg-light-900.dark_bg-dark-800.p-4.justify-between
+
+	time-panel
+		full-screen
+	//- state-transport
+	beat-bars-bar(:editable="true")
+	chroma-panel.flex-auto
+	scale-panel
+
 </template>

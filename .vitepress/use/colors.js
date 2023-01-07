@@ -1,4 +1,3 @@
-import { pitchColor, isInChroma } from "#/use/calculations";
 import { colord, extend } from "colord";
 import lchPlugin from "colord/plugins/lch";
 // https://www.npmjs.com/package/colord
@@ -7,6 +6,9 @@ import namesPlugin from "colord/plugins/names";
 import labPlugin from "colord/plugins/lab";
 import cmykPlugin from "colord/plugins/cmyk";
 import hwbPlugin from "colord/plugins/hwb";
+
+import { pitchColor, isInChroma } from "#/use/calculations";
+import { globalScale } from "#/use/chroma";
 
 extend([mixPlugin, lchPlugin, namesPlugin, labPlugin, cmykPlugin, hwbPlugin]);
 
@@ -31,6 +33,22 @@ export function noteColor(pitch = 0, octave = 2, velocity = 1, alpha = 1) {
     return c.alpha(alpha).toHex()
   } else {
     return pitchColor(pitch, octave, velocity, alpha)
+  }
+}
+
+const minor = "101101011010"
+export function calcBg(
+  i,
+  bit,
+  white = 'hsla(0,0%,100%,0.3)',
+  black = 'hsla(0,0%,10%,0.3)'
+) {
+  if (bit == 1) {
+    return noteColor((i + globalScale?.tonic) % 12, 3)
+  } else if (minor[(i + globalScale?.tonic) % 12] == '1') {
+    return white
+  } else {
+    return black
   }
 }
 

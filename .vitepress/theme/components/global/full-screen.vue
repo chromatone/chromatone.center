@@ -32,7 +32,7 @@ const supported = computed(() => full.value?.isSupported);
 </script>
 
 <template lang="pug">
-button.text-button(
+button(
   v-show="supported"
   @click="toggle()"
   v-tooltip.left="'Toggle fullscreen'"

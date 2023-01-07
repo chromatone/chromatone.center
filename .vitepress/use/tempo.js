@@ -1,5 +1,5 @@
 import { reactive, computed, watch, onMounted } from "vue";
-import { Transport, start, Frequency, Loop, Sampler, gainToDb } from "tone";
+import { Transport, start, Frequency, Loop, Sampler, gainToDb, Draw } from "tone";
 import { freqPitch } from "#/use/calculations";
 import { noteColor } from '#/use/colors'
 import { Note } from "@tonaljs/tonal";
@@ -75,15 +75,20 @@ export function useTempo() {
 
     metro.loop = new Loop((time) => {
       let even = metro.counter % 2 == 0
-      if (even)
-        tempo.blink = true
+      if (even) {
+        Draw.schedule(() => {
+          tempo.blink = true
+          setTimeout(() => {
+            tempo.blink = false;
+          }, 60);
+        }, time)
+      }
+
       if (!tempo.mute) {
         metro.pluck.triggerAttackRelease(even ? 'E1' : 'E2', '16n', time, even ? 1 : 0.2)
       }
       metro.counter++
-      setTimeout(() => {
-        tempo.blink = false;
-      }, 60);
+
     }, "8n").start(0);
 
     useRafFn(() => {

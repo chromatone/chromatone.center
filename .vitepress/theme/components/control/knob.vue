@@ -1,5 +1,6 @@
 <script setup>
 import { midi, learnCC } from '#/use/midi'
+import { useDrag } from '@vueuse/gesture'
 
 const props = defineProps({
   max: { type: Number, default: 100, },
@@ -13,9 +14,16 @@ const props = defineProps({
   channel: { type: Number, default: 0 },
 });
 
-
-
 const emit = defineEmits(["update:modelValue"]);
+
+const knob = ref()
+
+useDrag(event => {
+  handler(event)
+}, {
+  domTarget: knob,
+  preventWindowScrollY: true
+})
 
 const state = reactive({
   active: false,
@@ -89,9 +97,8 @@ function mapNumber(
 
 <template lang="pug">
 .knob(
-  v-drag="handler"
+  ref="knob"
   @dblclick="reset()"
-  :drag-options="{ preventWindowScrollY: true }"
 )
   .level(
     :style="{ height: state.internal + '%' }"

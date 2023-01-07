@@ -1,7 +1,9 @@
 <script setup>
 import { useFullscreen } from '@vueuse/core'
 
-const props = defineProps(['el'])
+const props = defineProps({
+  el: { type: HTMLElement, default: null }
+})
 
 const element = ref()
 
@@ -39,4 +41,5 @@ button.text-button(
 </template>
 
 <style lang="postcss" scoped>
+
 </style>

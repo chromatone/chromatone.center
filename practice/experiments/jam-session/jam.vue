@@ -2,7 +2,7 @@
 import ScalePanel from './scale.vue'
 import ChromaPanel from './chroma.vue'
 import TimePanel from './time.vue'
-
+import DatePanel from './date.vue'
 </script>
 
 <template lang='pug'>
@@ -10,6 +10,7 @@ import TimePanel from './time.vue'
 
 	time-panel
 		full-screen
+	date-panel
 	//- state-transport
 	beat-bars-bar(:editable="true")
 	chroma-panel.flex-auto

@@ -10,6 +10,7 @@
 		"type": "ko-fi",
 		"url": "https://ko-fi.com/davay"
 	},
+	"type": "module",
 	"license": "MIT",
 	"author": "Davay42",
 	"exports": {

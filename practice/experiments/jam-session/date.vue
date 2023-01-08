@@ -3,8 +3,8 @@ import { useNow, useDateFormat } from '@vueuse/core'
 import { useDrag } from '@vueuse/gesture';
 
 const now = useNow()
-const start = ref(useStorage('jam-start', 1673159010000), 0, now)
-const finish = useClamp(useStorage('jam-finish', 1673763810000), now, 2281598400000)
+const start = ref(useStorage('jam-start', Date.now() - 1000 * 60 * 60), 0, now)
+const finish = useClamp(useStorage('jam-finish', Date.now() + 1000 * 60 * 60), now, Date.now() + 1000 * 60 * 60 * 365)
 
 const elapsed = computed(() => now.value - start.value)
 const left = computed(() => finish.value - now.value)
@@ -64,7 +64,7 @@ function getDuration(time) {
 		g.start
 			rect.cursor-move(
 				ref="startPad"
-				width="200" 
+				width="150" 
 				height="100"
 				fill="#6663")
 			text.pointer-events-none(
@@ -89,8 +89,8 @@ function getDuration(time) {
 		g.finish
 			rect.cursor-move(
 				ref="finishPad"
-				x="800" 
-				:width="200" 
+				x="850" 
+				:width="150" 
 				height="100"
 				fill="#9993")
 			text.pointer-events-none(

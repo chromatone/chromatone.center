@@ -36,7 +36,7 @@ function toggle() {
 
 <style scoped >
 .nav-dropdown-link {
-  @apply relative h-36px overflow-hidden cursor-pointer lg_(h-auto overflow-visible);
+  @apply relative h-36px overflow-hidden cursor-pointer lg-(h-auto overflow-visible);
 }
 
 @screen lg {
@@ -50,7 +50,7 @@ function toggle() {
 }
 
 .button {
-  @apply block border-0 px-3 py-1.5 w-full text-left font-$font-family-base font-semibold text-$c-text whitespace-nowrap bg-transparent cursor-pointer lg_(border-b-2px border-transparent px-0 py-5 font-normal text-0.9rem);
+  @apply block border-0 px-3 py-1.5 w-full text-left font-$font-family-base font-semibold text-$c-text whitespace-nowrap bg-transparent cursor-pointer lg-(border-b-2px border-transparent px-0 py-5 font-normal text-0.9rem);
 }
 
 .button:focus {

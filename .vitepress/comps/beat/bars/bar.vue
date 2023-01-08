@@ -53,7 +53,7 @@ watch(() => props.accents, accents => {
 
 <template lang="pug">
 svg.w-full(
-  class="bg-light-300 dark_bg-dark-800"
+  class="bg-light-300 dark-bg-dark-800"
   version="1.1",
   baseProfile="full",
   :viewBox="`0 0 1000 350`",
@@ -119,7 +119,7 @@ svg.w-full(
         ) {{ seq.meter.under }} 
 
     g.cursor-pointer.opacity-50.transition-all.duration-200.ease(
-      class="hover_opacity-100"
+      class="hover-opacity-100"
       transform="translate(70,-10)"
       @mousedown="seq.rotateAccents(-1)"
       v-tooltip.top="'Rotate pattern backward'"
@@ -134,7 +134,7 @@ svg.w-full(
         y="-17"
       )
     g.cursor-pointer.opacity-50.transition-all.duration-200.ease(
-      class="hover_opacity-100"
+      class="hover-opacity-100"
       transform="translate(-70,-10)"
       @mousedown="seq.rotateAccents(1)"
       v-tooltip.top="'Rotate pattern forward'"

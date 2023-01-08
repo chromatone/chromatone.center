@@ -39,13 +39,13 @@ function filterAll() {
 .channel {
   @apply transition-all duration-100 select-none px-2px py-5px m-2px min-w-22px text-0.75rem text-center cursor-pointer border-1 rounded-lg line-through;
   flex: 1 1 10%;
+}
 
-  &.filtered {
-    @apply bg-light-900 dark_bg-dark-100 no-underline;
-  }
+.channel.filtered {
+  @apply bg-light-900 dark-bg-dark-100 no-underline;
+}
 
-  &.active {
-    @apply border-current filter dark_brightness-300;
-  }
+.channel.active {
+  @apply border-current filter dark-brightness-300;
 }
 </style>

@@ -2,7 +2,6 @@ import { defineConfig } from 'vite'
 import Components from 'unplugin-vue-components/vite'
 import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
-import WindiCSS from 'vite-plugin-windicss'
 
 import AutoImport from 'unplugin-auto-import/vite'
 import { VitePWA } from 'vite-plugin-pwa'
@@ -11,12 +10,15 @@ import Pages from "vite-plugin-pages";
 import { extendRoutes } from "vitepress-pages";
 import generateSitemap from 'vite-plugin-pages-sitemap'
 
+import Unocss from 'unocss/vite'
+import { transformerDirectives, presetIcons, presetUno, extractorSplit } from 'unocss'
+import extractorPug from '@unocss/extractor-pug'
+
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
-
 
 export default defineConfig({
   base: './',
@@ -65,13 +67,20 @@ export default defineConfig({
     Icons({
       defaultStyle: 'vertical-align: middle;',
     }),
-    WindiCSS({
-      scan: {
-        dirs: ['.vitepress', './'],
-        include: ['index.md'],
-        exclude: ['**/examples/**/*', '/node_modules/'],
-        fileExtensions: ['vue', 'ts', 'md'],
-      },
+    Unocss({
+      transformers: [
+        transformerDirectives(),
+      ],
+      presets: [
+        presetIcons({
+          scale: 2
+        }),
+        presetUno()
+      ],
+      extractors: [
+        extractorSplit,
+        extractorPug()
+      ]
     }),
     VitePWA({
       registerType: 'autoUpdate',

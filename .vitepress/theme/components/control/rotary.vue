@@ -113,11 +113,11 @@ const len = Math.PI * 2 * r - 50
 
 <style lang="postcss" scoped>
 .knob {
-  @apply p-1 cursor-move min-w-16 rounded-lg max-w-18 text-center border-dark-100/50 dark_(border-light-100/50) cursor-pointer select-none relative overflow-hidden;
+  @apply p-1 cursor-move min-w-16 rounded-lg max-w-18 text-center border-dark-100/50 dark-(border-light-100/50) cursor-pointer select-none relative overflow-hidden;
   touch-action: none;
 }
 
 .level {
-  @apply border-t-1 bg-dark-50/40 border-dark-100 dark_(border-light-100 bg-light-100/40) absolute bottom-0 w-full;
+  @apply border-t-1 bg-dark-50/40 border-dark-100 dark-(border-light-100 bg-light-100/40) absolute bottom-0 w-full;
 }
 </style>

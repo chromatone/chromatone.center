@@ -40,7 +40,7 @@ const colors = reactive({
   nav-row
   .flex.flex-col.items-center
     a.text-xl.p-4.flex.flex-col.items-center(
-      class="hover_no-underline"
+      class="hover-no-underline"
       href="/"
       )
       img.w-32(src="/media/logo/circle.svg")
@@ -50,25 +50,25 @@ const colors = reactive({
 
 <style lang="postcss" scoped>
 .next-and-prev-link {
-  @apply bg-dark-50/10 dark_bg-dark-800/90;
+  @apply bg-dark-50/10 dark-bg-dark-800/90;
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
+}
 
-  & a {
-    @apply text-dark-800 dark_text-light-300;
-  }
+.next-and-prev-link a {
+  @apply text-dark-800 dark-text-light-300;
 }
 
 .parent {
-  @apply p-4 flex items-center justify-center m-2 rounded-xl shadow-md transition-all duration-100 ease-out bg-light-400/40 dark_bg-dark-300/10 hover_no-underline hover_(bg-light-100/60 shadow-lg) dark_(hover_bg-dark-300);
+  @apply p-4 flex items-center justify-center m-2 rounded-xl shadow-md transition-all duration-100 ease-out bg-light-400/40 dark-bg-dark-300/10 hover-no-underline hover-(bg-light-100/60 shadow-lg) dark-(hover-bg-dark-300);
 }
 
 .row {
-  @apply mx-auto border-t-12 flex flex-col w-full py-4 px-4 xs_(flex-wrap flex-row);
+  @apply mx-auto border-t-12 flex flex-col w-full py-4 px-4 xs-(flex-wrap flex-row);
 }
 
 .pad {
-  @apply transition-all duration-200 ease-out m-2 rounded-xl shadow-lg hover_shadow-xl transition-all flex flex-row items-stretch;
+  @apply transition-all duration-200 ease-out m-2 rounded-xl shadow-lg hover-shadow-xl transition-all flex flex-row items-stretch;
   flex: 1 1 45%;
   filter: grayscale(40%) opacity(80%);
 }

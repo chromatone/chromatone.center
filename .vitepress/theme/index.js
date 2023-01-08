@@ -1,12 +1,15 @@
-import "virtual:windi.css";
+
 import { GesturePlugin } from "@vueuse/gesture";
 import FloatingVue from 'floating-vue'
 
+import '@unocss/reset/tailwind.css'
+import 'uno.css'
 import "./styles/vars.css";
 import "./styles/transitions.css";
 import "./styles/layout.postcss";
 import "./styles/custom-blocks.css";
 import 'floating-vue/dist/style.css'
+
 
 import VueAnimXyz from '@animxyz/vue3'
 import '@animxyz/core'

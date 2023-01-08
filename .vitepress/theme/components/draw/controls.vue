@@ -37,8 +37,8 @@ watch(() => midi.note, note => {
 </script>
 
 <template lang="pug">
-.flex.flex-wrap.text-xl.p-2.gap-2.rounded-md.bg-main.shadow.transition-opacity.duration-200.dark_border.dark_border-gray-400.dark_border-opacity-10.bg-light-300.dark_bg-dark-300.justify-center(
-  :class="drawingEnabled ? '' : drawingPinned ? 'opacity-40 hover_opacity-90' : 'opacity-0 pointer-events-none'", 
+.flex.flex-wrap.text-xl.p-2.gap-2.rounded-md.bg-main.shadow.transition-opacity.duration-200.dark-border.dark-border-gray-400.dark-border-opacity-10.bg-light-300.dark-bg-dark-300.justify-center(
+  :class="drawingEnabled ? '' : drawingPinned ? 'opacity-40 hover-opacity-90' : 'opacity-0 pointer-events-none'", 
   storage-key="slidev-drawing-pos", 
   :initial-x="10", 
   :initial-y="10"
@@ -105,13 +105,13 @@ watch(() => midi.note, note => {
 <style lang="postcss" scoped>
 button {
   transition: all 100ms ease-out;
-  @apply p-0.5 transform hover_bg-opacity-0 hover_bg-dark-900;
+  @apply p-0.5 transform hover-bg-opacity-0 hover-bg-dark-900;
+}
 
-  & svg,
-  & div {
-    transition: all 100ms ease-out;
-    @apply transform scale-80 hover_scale-120;
-  }
+button svg,
+button div {
+  transition: all 100ms ease-out;
+  @apply transform scale-80 hover-scale-120;
 }
 
 .active {

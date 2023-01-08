@@ -38,7 +38,7 @@ const positions = [[0, 0], [1, 0], [2, 0], [3, 0], [3, 1], [3, 2], [3, 3], [2, 3
       :transform="`translate(${pos[0] * 100} ${pos[1] * 100})`"
     )
       rect(
-        class="opacity-60 hover_(opacity-100) transition-all duration-200 ease"
+        class="opacity-60 hover-(opacity-100) transition-all duration-200 ease"
         style="filter:url(#shadowButton)"
         x="1"
         y="1"

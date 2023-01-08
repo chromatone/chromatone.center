@@ -19,8 +19,8 @@ const props = defineProps({
     .p-2(v-if="author?.interactions") 
       .font-bold.border-b-1.border-current.border-opacity-10 Available interactions
       .flex.gap-2.py-4.flex-wrap
-        .px-2.py-1.bg-light-400.rounded-xl.shadow.dark_bg-dark-400(v-for="interaction in author?.interactions" :key="interaction") {{ interaction }}
-  .p-2.bg-dark-200.bg-opacity-10.dark_bg-light-200.dark_bg-opacity-10
+        .px-2.py-1.bg-light-400.rounded-xl.shadow.dark-bg-dark-400(v-for="interaction in author?.interactions" :key="interaction") {{ interaction }}
+  .p-2.bg-dark-200.bg-opacity-10.dark-bg-light-200.dark-bg-opacity-10
     a.flex-button.font-bold.justify-center(:href="author.book" target="_blank" v-if="author.book")
       .p-2 BOOK A FREE TRIAL SESSION NOW
     author-social(:social="author.social" v-if="author.social")
@@ -35,7 +35,7 @@ svg.defs(style="height:0")
 
 <style lang="postcss" scoped>
 .author-card {
-  @apply max-w-65ch m-auto flex flex-col my-16 shadow-lg bg-light-100 dark_bg-dark-300;
+  @apply max-w-65ch m-auto flex flex-col my-16 shadow-lg bg-light-100 dark-bg-dark-300;
 }
 
 img.avatar {

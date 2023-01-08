@@ -22,9 +22,10 @@ const props = defineProps({
 
 <style lang="postcss" scoped>
 .button {
-  @apply flex items-center px-3 py-2 rounded-md font-bold mr-2 my-2 shadow-md bg-gray-300 dark_bg-gray-800;
-  & svg {
-    @apply mr-1;
-  }
+  @apply flex items-center px-3 py-2 rounded-md font-bold mr-2 my-2 shadow-md bg-gray-300 dark-bg-gray-800;
+}
+
+.button svg {
+  @apply mr-1;
 }
 </style>

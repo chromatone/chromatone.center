@@ -109,14 +109,14 @@ svg.select-none.max-w-12em.my-4.mx-auto(
 <style lang="postcss" scoped>
 .center {
   @apply transition-all duration-200 ease-in-out;
+}
 
-  &:hover {
-    @apply transform scale-105;
-  }
+.center:hover {
+  @apply transform scale-105;
+}
 
-  &.pressed {
-    @apply transform scale-100;
-    filter: brightness(1.1);
-  }
+.center.pressed {
+  @apply transform scale-100;
+  filter: brightness(1.1);
 }
 </style>

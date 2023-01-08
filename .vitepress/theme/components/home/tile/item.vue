@@ -37,11 +37,9 @@ const color = computed(() => lchToHsl(props.i, props.total));
 
 <style lang="postcss" scoped>
 .tile {
-  @apply bg-light-300 mx-2 sm_mx-4 shadow-lg dark_bg-dark-400 my-8 flex flex-col transition no-underline rounded-xl;
+  @apply bg-light-300 mx-2 sm-mx-4 shadow-lg dark-bg-dark-400 my-8 flex flex-col transition no-underline rounded-xl;
 
   flex: 1 1 50px;
-
-  &:hover {}
 }
 
 .cover {

@@ -68,7 +68,7 @@ onMounted(() => {
 .flex.flex-col.m-auto
   button(
     :style="{background: state.colorize ? 'linear-gradient(#e66465, #9198e5)': ''}" 
-    class="button fixed right-16 bottom-4 z-20000 p-2 bg-light-400 dark_bg-dark-400 rounded-xl shadow active_bg-red-100" 
+    class="button fixed right-16 bottom-4 z-20000 p-2 bg-light-400 dark-bg-dark-400 rounded-xl shadow active_bg-red-100" 
     @click="state.colorize = !state.colorize"
     ) Colorize notes
   svg-save.fixed.bottom-4.right-55(svg="paper" :deep="true")
@@ -77,7 +77,7 @@ onMounted(() => {
       v-for="(tune, name) in tunes" :key="name"
       @click="notation = tune"
     ) {{ name }}
-  textarea#abc.w-full.dark_bg-dark-800.p-4(
+  textarea#abc.w-full.dark-bg-dark-800.p-4(
     v-model="notation"
     rows="18"
   )

@@ -57,22 +57,22 @@ function isInChroma(pitch) {
   margin-top: 0.2em;
   margin-bottom: 1em;
   flex: 1;
+}
 
-  &.black {
-    @apply bg-gray-300 dark_(bg-gray-700) z-2;
-    padding: 1em 1em;
-    margin-left: -1.5em;
-    margin-right: -0.2em;
-    margin-bottom: 2.5em;
-    transform: translateX(25%);
-  }
+.key.black {
+  @apply bg-gray-300 dark-(bg-gray-700) z-2;
+  padding: 1em 1em;
+  margin-left: -1.5em;
+  margin-right: -0.2em;
+  margin-bottom: 2.5em;
+  transform: translateX(25%);
+}
 
-  &.tonic {
-    @apply opacity-100;
-  }
+.key.tonic {
+  @apply opacity-100;
+}
 
-  &:hover {
-    @apply shadow-md;
-  }
+.key:hover {
+  @apply shadow-md;
 }
 </style>

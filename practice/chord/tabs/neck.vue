@@ -111,13 +111,13 @@ function getNote(string, semitones) {
 <style lang="postcss" scoped>
 .note {
   @apply cursor-pointer;
+}
 
-  & text {
-    @apply transition-all ease-in-out duration-100;
-  }
+.note text {
+  @apply transition-all ease-in-out duration-100;
+}
 
-  &:hover text {
-    opacity: 1;
-  }
+.note:hover text {
+  opacity: 1;
 }
 </style>

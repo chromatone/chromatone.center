@@ -152,11 +152,9 @@ svg.select-none.min-w-8em.m-2(
 <style lang="postcss" scoped>
 .center {
   @apply transition-all duration-200 ease-in-out;
+}
 
-  &:hover {}
-
-  &.pressed {
-    filter: brightness(1.1);
-  }
+.center.pressed {
+  filter: brightness(1.1);
 }
 </style>

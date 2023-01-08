@@ -42,6 +42,6 @@ function saveSVG(pic, deep) {
 
 <style lang="postcss" scoped>
 .snapshot {
-  @apply flex cursor-pointer bg-gray-200 bg-opacity-70 dark_(bg-gray-800 bg-opacity-70) text-2xl -mt-1rem p-2 z-100 rounded-full;
+  @apply flex cursor-pointer bg-gray-200 bg-opacity-70 dark-(bg-gray-800 bg-opacity-70) text-2xl -mt-1rem p-2 z-100 rounded-full;
 }
 </style>

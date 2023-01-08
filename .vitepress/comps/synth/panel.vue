@@ -101,6 +101,6 @@ const frequency = computed(() => {
 }
 
 .panel {
-  @apply absolute right-0 top-$header-height w-full p-4 bg-light-300 dark_bg-dark-300 z-20 flex bg-opacity-90 dark_bg-opacity-90 flex-wrap items-center shadow-lg;
+  @apply absolute right-0 top-$header-height w-full p-4 bg-light-300 dark-bg-dark-300 z-20 flex bg-opacity-90 dark-bg-opacity-90 flex-wrap items-center shadow-lg;
 }
 </style>

@@ -158,7 +158,7 @@ function playNote(note = 0, octave = 0) {
 
 <style lang="postcss" scoped>
 .chroma-key {
-  @apply cursor-pointer transition-all duration-300 py-1 hover_(opacity-100) opacity-70 rounded flex justify-center px-1;
+  @apply cursor-pointer transition-all duration-300 py-1 hover-(opacity-100) opacity-70 rounded flex justify-center px-1;
   flex: 1 1 12px;
   box-shadow: 0 2px 0px rgba(0, 0, 0, 0.4);
 }

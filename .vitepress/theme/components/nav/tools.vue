@@ -81,6 +81,6 @@ button {
 }
 
 button.active {
-  @apply bg-light-700 dark_bg-dark-700;
+  @apply bg-light-700 dark-bg-dark-700;
 }
 </style>

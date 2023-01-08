@@ -18,7 +18,7 @@ import { controls } from './controls';
 		tr(v-for="(cc,control) in controls.cc[0]" :key="control")
 			td {{controls.params[control]}}
 			td(v-for="(n,i) in 2" :key="i")
-				input.dark_bg-light-100.dark_bg-opacity-10.p-2.rounded(
+				input.dark-bg-light-100.dark-bg-opacity-10.p-2.rounded(
 					type="number" 
 					v-model="controls.cc[i][control]" 
 					min="0" max="127"
@@ -27,7 +27,7 @@ import { controls } from './controls';
 		tr
 			td BPM
 			td(colspan="2")
-				input.dark_bg-light-100.dark_bg-opacity-10.p-2.rounded(
+				input.dark-bg-light-100.dark-bg-opacity-10.p-2.rounded(
 					type="number" 
 					v-model="controls.tempoCC" 
 					min="0" max="127"

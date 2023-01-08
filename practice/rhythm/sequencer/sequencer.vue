@@ -168,7 +168,7 @@ function borderColor(cell, r) {
 .flex.flex-col
   .flex.flex-wrap.items-center.justify-center
     control-scale.flex-1(v-tooltip.top="'Select root note and scale'")
-    .flex.flex-wrap.justify-center.flex-1.bg-light-900.p-4.rounded-2xl.dark_bg-dark-800.gap-2
+    .flex.flex-wrap.justify-center.flex-1.bg-light-900.p-4.rounded-2xl.dark-bg-dark-800.gap-2
 
       select(v-model="state.type" v-tooltip.top="'Pattern type'")
         option(
@@ -221,7 +221,7 @@ function borderColor(cell, r) {
 
 <style lang="postcss" scoped>
 .rows {
-  @apply my-4 mx-2 cursor-pointer select-none bg-light-900 rounded-xl overflow-hidden shadow-lg dark_bg-dark-700 dark_border-1 dark_border-opacity-10;
+  @apply my-4 mx-2 cursor-pointer select-none bg-light-900 rounded-xl overflow-hidden shadow-lg dark-bg-dark-700 dark-border-1 dark-border-opacity-10;
 }
 
 .row {
@@ -229,7 +229,7 @@ function borderColor(cell, r) {
 }
 
 .title {
-  @apply pr-2 text-right text-sm bg-dark-50 bg-opacity-40 dark_bg-dark-800 flex items-center justify-end;
+  @apply pr-2 text-right text-sm bg-dark-50 bg-opacity-40 dark-bg-dark-800 flex items-center justify-end;
   flex: 0 0 52px;
 }
 
@@ -237,39 +237,39 @@ function borderColor(cell, r) {
   @apply flex items-center justify-center py-2 text-center m-1px rounded-xl transition-all duration-200 ease-out box-border h-10;
   transition: all 200ms ease-out;
   flex: 1 1 20px;
+}
 
-  &.active .dot {
-    transform: scale(4);
-  }
+.cell.active .dot {
+  transform: scale(4);
+}
 
-  &:hover {
-    @apply !bg-dark-100 !dark_bg-dark-900;
-  }
+.cell:hover {
+  @apply !bg-dark-100 !dark-bg-dark-900;
+}
 
-  &.current .dot {
-    transform: scale(1.1);
-  }
+.cell.current .dot {
+  transform: scale(1.1);
+}
 
-  &:hover .dot {
-    background-color: currentColor !important;
-    transform: scale(6);
-  }
+.cell:hover .dot {
+  background-color: currentColor !important;
+  transform: scale(6);
+}
 
-  &.current.active .dot {
-    transform: scale(8);
-  }
+.cell.current.active .dot {
+  transform: scale(8);
+}
 
-  &.active.current {
-    @apply scale-110;
-  }
+.cell.active.current {
+  @apply scale-110;
+}
 
-  & .dot {
-    @apply bg-light-100 rounded-full w-1 h-1;
-    transition: all 200ms ease-out;
-  }
+.dot {
+  @apply bg-light-100 rounded-full w-1 h-1;
+  transition: all 200ms ease-out;
 }
 
 select {
-  @apply p-2 mx-2 rounded dark_bg-dark-100;
+  @apply p-2 mx-2 rounded dark-bg-dark-100;
 }
 </style>

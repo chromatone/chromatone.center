@@ -134,11 +134,11 @@ button {
 }
 
 .track {
-  @apply bg-light-900 border-1 p-1 dark_bg-dark-100 select-none cursor-pointer rounded;
+  @apply bg-light-900 border-1 p-1 dark-bg-dark-100 select-none cursor-pointer rounded;
 }
 
 .active {
-  @apply bg-light-100 border-current dark_bg-dark-900;
+  @apply bg-light-100 border-current dark-bg-dark-900;
 }
 </style>
 

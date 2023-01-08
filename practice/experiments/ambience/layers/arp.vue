@@ -101,6 +101,6 @@ watch(active, a => {
 
 <style lang="postcss" scoped>
 .active {
-  @apply bg-dark-100 text-light-200 dark_bg-light-200 dark_text-dark-200;
+  @apply bg-dark-100 text-light-200 dark-bg-light-200 dark-text-dark-200;
 }
 </style>

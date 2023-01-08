@@ -61,14 +61,17 @@
 		"vitepress-pages": "^0.8.7",
 		"vue": "^3.2.45",
 		"vue-stripe-js": "^1.0.1",
-		"webmidi": "^3.0.25"
+		"webmidi": "^3.0.25",
+		"@unocss/reset": "^0.48.2"
 	},
 	"devDependencies": {
 		"@iconify/json": "^2.2.3",
 		"@volar/vue-language-plugin-pug": "1.0.22",
+		"@unocss/extractor-pug": "^0.45.18",
 		"markdown-it-external-links": "^0.0.6",
 		"patch-vue-directive-ssr": "^0.0.1",
 		"pug": "3.0.2",
+		"unocss": "^0.45.18",
 		"unplugin-auto-import": "^0.12.1",
 		"unplugin-icons": "^0.15.1",
 		"unplugin-vue-components": "^0.22.12",
@@ -76,8 +79,6 @@
 		"vite-plugin-pages": "^0.28.0",
 		"vite-plugin-pages-sitemap": "^1.4.5",
 		"vite-plugin-pwa": "^0.14.1",
-		"vite-plugin-windicss": "^1.8.10",
-		"vitepress": "1.0.0-alpha.35",
-		"windicss": "3.5.6"
+		"vitepress": "1.0.0-alpha.35"
 	}
 }

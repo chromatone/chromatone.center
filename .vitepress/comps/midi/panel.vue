@@ -23,7 +23,7 @@ var isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
     span or 
     a.font-normal.underline(href="https://apps.apple.com/ru/app/web-midi-browser/id953846217" target="_blank") Web MIDI Browser on iOS
     span or 
-    .font-normal.text-dark-200.dark_text-light-100 use your PC keyboard
+    .font-normal.text-dark-200.dark-text-light-100 use your PC keyboard
 
   .flex.items-center.justify-center.flex-wrap.py-2.m-auto(v-else)
     .flex.m-2
@@ -80,7 +80,7 @@ var isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
 
 <style lang="postcss" scoped>
 .layer {
-  @apply bg-light-200 dark_bg-dark-900 rounded-xl;
+  @apply bg-light-200 dark-bg-dark-900 rounded-xl;
   backdrop-filter: blur(30px);
 }
 

@@ -90,11 +90,11 @@ const chordGroup = computed(() => {
 
 <style lang="postcss" scoped>
 .chord {
-  @apply p-1 transition-all cursor-pointer m-1 rounded-lg bg-light-100 dark_bg-dark-800 hover_bg-light-800 dark_(hover_bg-dark-300);
+  @apply p-1 transition-all cursor-pointer m-1 rounded-lg bg-light-100 dark-bg-dark-800 hover-bg-light-800 dark-(hover-bg-dark-300);
 }
 
 .chord.active {
-  @apply bg-dark-100 text-light-300 hover_bg-dark-900 dark_(text-dark-600 bg-light-200 hover_(bg-light-900));
+  @apply bg-dark-100 text-light-300 hover-bg-dark-900 dark-(text-dark-600 bg-light-200 hover-(bg-light-900));
 }
 
 .chord-group {

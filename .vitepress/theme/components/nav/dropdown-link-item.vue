@@ -10,8 +10,7 @@ a.item(:href="item.path")
 
 <style scoped >
 .item {
-  @apply block px-6 py-2 text-$c-text whitespace-nowrap text-0.95rem
-  md_(px-4 py-2 text-sm);
+  @apply block px-6 py-2 text-$c-text whitespace-nowrap text-0.95rem md-(px-4 py-2 text-sm);
 }
 
 @screen lg {

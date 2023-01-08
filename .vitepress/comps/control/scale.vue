@@ -36,7 +36,7 @@ const groupedScales = computed(() => {
 
 <style lang="postcss" scoped>
 select {
-  @apply p-2 bg-light-100 dark_bg-dark-300;
+  @apply p-2 bg-light-100 dark-bg-dark-300;
 }
 
 optgroup[label] {

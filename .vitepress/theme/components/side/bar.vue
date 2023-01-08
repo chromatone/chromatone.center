@@ -73,16 +73,20 @@ transition(name="fade")
 </template>
 
 <style lang="postcss" scoped>
+a {
+  @apply no-underline flex items-center px-2;
+}
+
 .panel {
   width: 16.4rem;
   flex: 1 0 16.4rem;
   overflow-y: auto;
   transition: all 300ms ease-out;
-  @apply pr-2 pl-1 fixed rounded-xl top-$header-height bottom-0 left-0 transform -translate-x-full lg_(static translate-x-0) shadow-xl bg-light-600 dark_bg-dark-700;
+  @apply pr-2 pl-1 fixed rounded-xl top-$header-height bottom-0 left-0 transform -translate-x-full lg-(static translate-x-0) shadow-xl bg-light-600 dark-bg-dark-700;
+}
 
-  & a {
-    @apply no-underline block flex;
-  }
+.panel a {
+  @apply no-underline block flex;
 }
 
 .panel.open {
@@ -90,11 +94,13 @@ transition(name="fade")
 }
 
 .level {
-  @apply my-1 ml-1 cursor-pointer flex flex-col border-l-2 transition-all duration-200 ease-in-out hover_border-l-4;
+  @apply my-1 ml-1 cursor-pointer flex flex-col border-l-2 transition-all duration-200 ease-in-out hover-border-l-4;
 
-  >a {
-    @apply py-2 flex px-2 font-normal;
-  }
+
+}
+
+.level>a {
+  @apply py-2 flex px-2 font-normal;
 }
 
 .first {
@@ -114,14 +120,14 @@ transition(name="fade")
 }
 
 [aria-current="page"] {
-  @apply border-l-6 font-bold bg-light-100/50 dark_bg-dark-100/50 hover_border-l-6;
+  @apply border-l-6 font-bold bg-light-100/50 dark-bg-dark-100/50 hover-border-l-6;
+}
 
-  >a {
-    @apply font-bold py-4;
-  }
+[aria-current="page"]>a {
+  @apply font-bold py-4;
 }
 
 .title {
-  @apply ml-4 mt-4 text-xl inline-flex items-center whitespace-nowrap hover_no-underline;
+  @apply ml-4 mt-4 text-xl inline-flex items-center whitespace-nowrap hover-no-underline;
 }
 </style>

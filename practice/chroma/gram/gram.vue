@@ -88,7 +88,7 @@ function clear() {
 <template lang="pug">
 .flex.flex-col.items-center.w-full
 
-  .flex.flex-col.justify-center.items-center.relative.bg-light-600.dark_bg-dark-700(ref="screen")
+  .flex.flex-col.justify-center.items-center.relative.bg-light-600.dark-bg-dark-700(ref="screen")
     control-start.absolute(v-if="!roll.initiated" @click="initiate()") Start
     full-screen.absolute.bottom-4.right-4.z-30(:el="screen")
     button.absolute.bottom-4.left-4.text-xl.text-white(@click="roll.direction ? roll.direction = 0 : roll.direction = 1")

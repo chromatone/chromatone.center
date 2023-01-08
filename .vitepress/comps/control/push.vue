@@ -44,20 +44,25 @@ function setValue(val) {
 
 <style lang="postcss" scoped>
 .btn {
-  @apply p-2 border-2 text-center flex flex-col place-items-center rounded-lg m-1 select-none cursor-pointer relative border-dark-100/50 dark_(border-light-100/50);
+  @apply p-2 border-2 text-center flex flex-col place-items-center rounded-lg m-1 select-none cursor-pointer relative border-dark-100/50 dark-(border-light-100/50);
 }
+
 .btn.active {
-  @apply transition-all duration-200 bg-dark-100/50 dark_(bg-light-100/50);
+  @apply transition-all duration-200 bg-dark-100/50 dark-(bg-light-100/50);
 }
+
 .toggle {
-  @apply relative h-20px border-1 absolute bottom-1 border-dark-100/50 dark_(border-light-100/50) left-1 right-1 rounded-10px;
+  @apply relative h-20px border-1 absolute bottom-1 border-dark-100/50 dark-(border-light-100/50) left-1 right-1 rounded-10px;
 }
+
 .toggler {
-  @apply transition-all duration-300 absolute  left-0 rounded-10px w-18px h-18px bg-dark-100/50 dark_(bg-light-100/50 );
+  @apply transition-all duration-300 absolute left-0 rounded-10px w-18px h-18px bg-dark-100/50 dark-(bg-light-100/50);
 }
+
 .active .toggle {
-  @apply bg-dark-100/30 dark_(bg-light-100/30);
+  @apply bg-dark-100/30 dark-(bg-light-100/30);
 }
+
 .active .toggler {
   @apply right-0 left-auto mix-blend-difference;
 }

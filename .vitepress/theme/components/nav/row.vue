@@ -22,9 +22,10 @@ const pages = getPages(routes)
 
 <style lang="postcss" scoped>
 .link {
-  @apply rounded-lg flex-auto text-center p-4 bg-light-400 bg-opacity-10 dark_bg-dark-700 dark_bg-opacity-10 hover_bg-light-200 dark_hover_bg-dark-50;
-  &.active {
-    @apply bg-light-100 bg-opacity-70 z-2 dark_bg-dark-200 dark_bg-opacity-70;
-  }
+  @apply rounded-lg flex-auto text-center p-4 bg-light-400 bg-opacity-10 dark-bg-dark-700 dark-bg-opacity-10 hover-bg-light-200 dark-hover-bg-dark-50;
+}
+
+.link.active {
+  @apply bg-light-100 bg-opacity-70 z-2 dark-bg-dark-200 dark-bg-opacity-70;
 }
 </style>

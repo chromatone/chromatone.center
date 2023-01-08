@@ -39,40 +39,40 @@ const props = defineProps({
 
 <style lang="postcss" scoped>
 .crd {
-  @apply relative bg-light-500 dark_bg-dark-800 flex flex-wrap items-stretch transition-all duration-200 static;
+  @apply relative bg-light-500 dark-bg-dark-800 flex flex-wrap items-stretch transition-all duration-200 static;
+}
 
-  & .container {
-    @apply flex flex-wrap min-w-full items-stretch w-full relative;
-    flex: 1 1 100%;
-  }
+.info {
+  @apply px-2 pt-4 pb-1 ml-2 m-2 z-4 max-w-24em bg-light-100 bg-opacity-80 dark-(bg-dark-600 bg-opacity-80) rounded-xl relative;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  flex: 1 1 100%;
+}
 
-  & .info {
-    @apply px-2 pt-4 pb-1 ml-2 m-2 z-4 max-w-24em bg-light-100 bg-opacity-80 dark_(bg-dark-600 bg-opacity-80) rounded-xl relative;
-    -webkit-backdrop-filter: blur(12px);
-    backdrop-filter: blur(12px);
-    flex: 1 1 100%;
-  }
+.title {
+  @apply flex items-center flex-wrap mt-2 !no-underline;
+}
 
-  & .title {
-    @apply flex items-center flex-wrap mt-2 !no-underline;
-  }
+.subtitle {
+  @apply mt-0 mb-2 p-2 font-normal w-full no-underline;
+}
 
-  & .subtitle {
-    @apply mt-0 mb-2 p-2 font-normal w-full no-underline;
-  }
+.cover {
+  @apply absolute top-0 w-full h-full bg-cover bg-center z-1;
 
-  & .cover {
-    @apply absolute top-0 w-full h-full bg-cover bg-center z-1;
+  filter: saturate(50%) brightness(160%) opacity(30%);
+  transition: all 900ms cubic-bezier(0.6, -0.1, 0, 1.1);
+  flex: 1 0 100%;
+  background: cover;
+}
 
-    filter: saturate(50%) brightness(160%) opacity(30%);
-    transition: all 900ms cubic-bezier(0.6, -0.1, 0, 1.1);
-    flex: 1 0 100%;
-    background: cover;
-  }
+.crd:hover .cover {
+  filter: saturate(100%) brightness(100%) opacity(90%);
+}
 
-  &:hover .cover {
-    filter: saturate(100%) brightness(100%) opacity(90%);
-  }
+.container {
+  @apply flex flex-wrap min-w-full items-stretch w-full relative;
+  flex: 1 1 100%;
 }
 
 .crd.seen {

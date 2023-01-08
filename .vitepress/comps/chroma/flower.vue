@@ -65,7 +65,7 @@ watchThrottled(loaded, l => {
 
 <template lang='pug'>
 .max-w-150.mx-auto.w-full.relative.flex.items-center.flex-col.justify-center
-  button.absolute.text-xl.opacity-30.hover_opacity-100.hover_scale-110.transition.cursor-pointer.transform(
+  button.absolute.text-xl.opacity-30.hover-opacity-100.hover-scale-110.transition.cursor-pointer.transform(
     v-tooltip.bottom="'Customize colors'"
     aria-label="Customize colors sitewide"
     @click="scheme.customize = !scheme.customize"
@@ -73,7 +73,7 @@ watchThrottled(loaded, l => {
     )
     la-cog
 
-  button.absolute.opacity-50.hover_opacity-100.transition.cursor-pointer.bottom-0.left-5.flex.items-center.gap-1.bg-light-100.dark_bg-dark-100.rounded-xl.p-2.shadow-lg(
+  button.absolute.opacity-50.hover-opacity-100.transition.cursor-pointer.bottom-0.left-5.flex.items-center.gap-1.bg-light-100.dark-bg-dark-100.rounded-xl.p-2.shadow-lg(
     v-tooltip.bottom="'Copy custom schema'"
     aria-label="Copy custom schema"
     @click="copy(JSON.stringify(scheme.custom))"
@@ -82,7 +82,7 @@ watchThrottled(loaded, l => {
     )
     la-copy.text-xl
     .p-0 COPY
-  .absolute.opacity-50.hover_opacity-100.transition.bottom-0.right-5.flex.items-center.gap-1.bg-light-100.dark_bg-dark-100.rounded-xl.shadow-lg(
+  .absolute.opacity-50.hover-opacity-100.transition.bottom-0.right-5.flex.items-center.gap-1.bg-light-100.dark-bg-dark-100.rounded-xl.shadow-lg(
     v-tooltip.bottom="'Paste custom schema'"
     aria-label="Paste custom schema"
     v-if="scheme.customize"

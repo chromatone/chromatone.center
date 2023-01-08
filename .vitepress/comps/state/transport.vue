@@ -6,17 +6,17 @@ const tempo = useTempo();
 const { init, tuner } = useTuner();
 
 const props = defineProps({
-  secondary: Boolean
-})
+  secondary: Boolean,
+});
 
 onKeyStroke(" ", (ev) => {
-  if (ev.target.nodeName == 'TEXTAREA' || props.secondary) return;
+  if (ev.target.nodeName == "TEXTAREA" || props.secondary) return;
   ev.preventDefault();
   tempo.playing = !tempo.playing;
 });
 
 onKeyStroke("Enter", (ev) => {
-  if (ev.target.nodeName == 'TEXTAREA' || props.secondary) return;
+  if (ev.target.nodeName == "TEXTAREA" || props.secondary) return;
   ev.preventDefault();
   tempo.stopped = true;
 });
@@ -24,7 +24,6 @@ onKeyStroke("Enter", (ev) => {
 function drag(event) {
   tempo.bpm += (event.delta[0] - event.delta[1]) / 16;
 }
-
 </script>
 
 <template lang="pug">
@@ -145,9 +144,9 @@ function drag(event) {
   justify-content: center;
   align-content: center;
   gap: 4px;
+}
 
-  button {
-    @apply justify-center flex items-center p-3 border-1 rounded-xl;
-  }
+button {
+  @apply justify-center flex items-center p-3 border-1 rounded-xl;
 }
 </style>

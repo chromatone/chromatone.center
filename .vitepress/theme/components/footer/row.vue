@@ -26,9 +26,9 @@ footer
       .text-2xl.text-center {{ site.title }}
 </template>
 
-<style scoped >
+<style scoped lang="postcss">
 footer {
-  @apply relative transition-all min-h-26vh z-1 bg-dark-50 dark_bg-dark-700 flex flex-col pt-16 pb-16 px-4 lg_hidden;
+  @apply relative transition-all min-h-26vh z-1 bg-dark-50 dark-bg-dark-700 flex flex-col pt-16 pb-16 px-4 lg-hidden;
 }
 
 nav {
@@ -40,11 +40,11 @@ nav {
 }
 
 a {
-  @apply transition-all opacity-60 text-dark-900 dark_text-dark-50 hover_(opacity-80 underline);
+  @apply transition-all opacity-60 text-dark-900 dark-text-dark-50 hover-(opacity-80 underline);
+}
 
-  &.active {
-    @apply font-bold text-$c-brand dark_text-$c-brand-light border-$c-brand;
-  }
+a.active {
+  @apply font-bold text-$c-brand dark-text-$c-brand-light border-$c-brand;
 }
 
 .noise {

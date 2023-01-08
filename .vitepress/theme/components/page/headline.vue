@@ -49,7 +49,7 @@ const lightColor = computed(() => lchToHsl(siblings.value.index, siblings.value.
 }
 
 .cover {
-  @apply fixed overflow-hidden transition-all ease-in-out duration-500 bg-cover bg-center bg-gray-100 dark_(bg-gray-700) absolute top-0 h-full left-0 right-0;
+  @apply fixed overflow-hidden transition-all ease-in-out duration-500 bg-cover bg-center bg-gray-100 dark-(bg-gray-700) absolute top-0 h-full left-0 right-0;
   filter: saturate(20%) sepia(5%) opacity(10%) blur(0px);
 }
 
@@ -68,7 +68,7 @@ const lightColor = computed(() => lchToHsl(siblings.value.index, siblings.value.
 }
 
 .meta {
-  @apply relative p-8 mb-8 bg-light-100 bg-opacity-80 z-3 max-w-65ch w-full mt-8 flex flex-col rounded-3xl shadow-xl dark_(bg-true-gray-800 bg-opacity-80);
+  @apply relative p-8 mb-8 bg-light-100 bg-opacity-80 z-3 max-w-65ch w-full mt-8 flex flex-col rounded-3xl shadow-xl dark-(bg-true-gray-800 bg-opacity-80);
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
 }

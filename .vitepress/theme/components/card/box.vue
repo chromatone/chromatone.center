@@ -46,10 +46,10 @@ const hoverShadow = computed(() => `
 <style lang="postcss" scoped>
 .block {
   @apply rounded-2xl overflow-hidden transition-all duration-150;
+}
 
-  &:hover {
-    @apply shadow-xl;
-    /* box-shadow: v-bind(hoverShadow); */
-  }
+.block:hover {
+  @apply shadow-xl;
+  /* box-shadow: v-bind(hoverShadow); */
 }
 </style>

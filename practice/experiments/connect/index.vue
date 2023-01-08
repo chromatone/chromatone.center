@@ -100,10 +100,10 @@ watch(() => user.pub, () => {
 
 <template lang='pug'>
 .flex.flex-col.gap-4(:key="user.is")
-  .flex.flex-wrap.gap-2.rounded-3xl.bg-light-800.dark_bg-dark-800.items-center.p-2(v-if="user?.is")
+  .flex.flex-wrap.gap-2.rounded-3xl.bg-light-800.dark-bg-dark-800.items-center.p-2(v-if="user?.is")
     .font-bold Me:
     img.avatar( :src="gunAvatar({ pub: user?.pub, size: 200 })")
-    input.dark_bg-dark-900.text-current.p-2.rounded-xl(type="text" v-model="name" placeholder="Your name")
+    input.dark-bg-dark-900.text-current.p-2.rounded-xl(type="text" v-model="name" placeholder="Your name")
     .flex-1
     button.flex-button(v-if="!guests[user.is.pub]" @click="enter()") Enter
     button.flex-button(@click="leave()") Leave
@@ -113,7 +113,7 @@ watch(() => user.pub, () => {
     button.flex-button(v-if="pair" @click="start()") Start
   .flex.flex-col.gap-2.select-none
     .font-bold Us ({{ totalOnliners }}/{{ totalGuests }})
-    .flex.items-center.p-2.gap-1.bg-light-800.dark_bg-dark-900.rounded-3xl.cursor-pointer(
+    .flex.items-center.p-2.gap-1.bg-light-800.dark-bg-dark-900.rounded-3xl.cursor-pointer(
       v-for="(guest, pub) in onliners" :key="guest"
       @mousedown="ping(pub)" @touchstart="ping(pub)"
       )

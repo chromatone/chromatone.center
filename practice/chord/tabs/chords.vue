@@ -125,22 +125,24 @@ function isInScale(list) {
 <style lang="postcss" scoped>
 button {
   @apply shadow m-1 rounded border-1 border-transparent transition-all duration-200;
+}
 
-  &.note {
-    @apply text-white p-2 font-bold opacity-50 border-2 rounded-lg;
+button.active {
+  @apply opacity-100 border-current;
+}
 
-    &.active {
-      @apply transform scale-125;
-    }
-  }
+button:hover {
+  @apply opacity-90;
+}
 
-  &.active {
-    @apply opacity-100 border-current;
-  }
+button.note {
+  @apply text-white p-2 font-bold opacity-50 border-2 rounded-lg;
 
-  &:hover {
-    @apply opacity-90;
-  }
+
+}
+
+button.note.active {
+  @apply transform scale-125;
 }
 
 .isin {

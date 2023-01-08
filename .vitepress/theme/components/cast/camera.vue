@@ -97,11 +97,11 @@ onMounted(fixPosition);
       volume="0", 
       :style="`transform: rotateY(180deg) scale(${zoom})`"
       )
-  .absolute.bottom-0.right-0.rounded-full.shadow-lg.shadow.z-30.p-2.bg-violet-500.bg-opacity-40.hover_bg-opacity-100(
+  .absolute.bottom-0.right-0.rounded-full.shadow-lg.shadow.z-30.p-2.bg-violet-500.bg-opacity-40.hover-bg-opacity-100(
     :style="zoomStyle", 
     v-drag="dragZoom"
     ) 
-  .absolute.bottom-0.right-0.rounded-full.shadow-lg.shadow.z-30.p-2.bg-purple-500.bg-opacity-40.hover_bg-opacity-100(
+  .absolute.bottom-0.right-0.rounded-full.shadow-lg.shadow.z-30.p-2.bg-purple-500.bg-opacity-40.hover-bg-opacity-100(
     ref="handler", 
     :style="handleStyle", 
     :class="handlerDown ? '!opacity-100' : ''"

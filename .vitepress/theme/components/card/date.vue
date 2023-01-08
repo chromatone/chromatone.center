@@ -45,6 +45,6 @@ const elapsed = useTimeAgo(new Date(props.date), {
 
 <style lang="postcss" scoped>
 .can {
-  @apply text-lg opacity-50 text-green-800 transition-all dark_text-green-200;
+  @apply text-lg opacity-50 text-green-800 transition-all dark-text-green-200;
 }
 </style>

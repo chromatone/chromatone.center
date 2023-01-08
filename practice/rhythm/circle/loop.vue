@@ -253,7 +253,7 @@ g(
         :x="10",
         :y="-3",
         ) {{ seq.meter?.under }} 
-    g.cursor-pointer.opacity-50.transition-all.duration-200.ease.hover_opacity-100(
+    g.cursor-pointer.opacity-50.transition-all.duration-200.ease.hover-opacity-100(
       transform="translate(74,-10)"
       @mousedown="seq.rotateAccents(-1)"
       v-tooltip.top="'Rotate pattern forward'"
@@ -267,7 +267,7 @@ g(
         x="-17"
         y="-17"
       )
-    g.cursor-pointer.opacity-50.transition-all.duration-200.ease.hover_opacity-100(
+    g.cursor-pointer.opacity-50.transition-all.duration-200.ease.hover-opacity-100(
       transform="translate(-78,-10)"
       @mousedown="seq.rotateAccents(1)"
       v-tooltip.top="'Rotate pattern back'"

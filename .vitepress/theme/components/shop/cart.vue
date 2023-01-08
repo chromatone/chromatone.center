@@ -6,7 +6,7 @@ import { cart, checkout, total, open, delivery, count } from '#/theme/composable
 .flex.flex-col.overflow-scroll.max-h-85vh.tabular-nums.gap-1(v-if="cart && Object.keys(cart).length > 0")
 	.flex.justify-between
 		.text-lg.px-4.pt-1 My shopping cart
-	table.text-left.m-0.mb-4.text-sm.md_text-lg
+	table.text-left.m-0.mb-4.text-sm.md-text-lg
 		tr.text-md
 			td Item
 			td.text-center Price
@@ -65,7 +65,7 @@ tr:nth-child(2n) {
 }
 
 .active {
-	@apply border-dark-700 dark_border-light-100 dark_bg-dark-400 bg-light-700;
+	@apply border-dark-700 dark-border-light-100 dark-bg-dark-400 bg-light-700;
 }
 
 .active .price {

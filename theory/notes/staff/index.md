@@ -49,8 +49,8 @@ G,2 x | x3 | x3 | x3 | x3 | x3 | x3 | x3 |$ x3 | x3 | x3 | x3 | x3 | x3 | x3 | x
 x3 | x3 | x3 | x3 | x3 | x3 |$ B,2 B, | C2 C | x3 | x3 | D,3 | x3 | x3 | x3 :| 
 `
 </script>
- 
-<button :style="{background: state.colorize ? 'linear-gradient(#e66465, #9198e5)': ''}" class="button fixed right-16 bottom-4 z-20000 p-2 bg-light-400 dark_bg-dark-400 rounded-xl shadow active_bg-red-100" 
+
+<button :style="{background: state.colorize ? 'linear-gradient(#e66465, #9198e5)': ''}" class="button fixed right-16 bottom-4 z-20000 p-2 bg-light-400 dark-bg-dark-400 rounded-xl shadow active_bg-red-100"
 @click="state.colorize = !state.colorize">Colorize notes</button>
 
 ![](./kvintcirklen.png)

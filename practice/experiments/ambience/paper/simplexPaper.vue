@@ -39,7 +39,7 @@ function dragZoom(drag) {
 
 <template lang='pug'>
 .relative.mx-6.flex
-  .absolute.px-1.dark_bg-light-100.bg-dark-100.bg-opacity-20.dark_bg-opacity-20.-left-4.bottom-0.rounded-xl(:style="{ height: zoom / 5 + '%' }") 
+  .absolute.px-1.dark-bg-light-100.bg-dark-100.bg-opacity-20.dark-bg-opacity-20.-left-4.bottom-0.rounded-xl(:style="{ height: zoom / 5 + '%' }") 
     .absolute.-left-2.text-xs {{ zoom.toFixed() }}
   canvas.rounded-xl.cursor-pointer.flex-auto.max-w-full(ref="canvas" :width="size" :height="size" v-drag="dragZoom" :drag-options="{ preventWindowScrollY: true }")
     paper-circle(v-for="track in tracks" :key="track" v-bind="track")

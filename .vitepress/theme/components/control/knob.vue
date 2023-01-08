@@ -110,11 +110,11 @@ function mapNumber(
 
 <style lang="postcss" scoped>
 .knob {
-  @apply shadow-md border-2 rounded-lg text-center border-dark-100/50 dark_(border-light-100/50) cursor-pointer select-none relative overflow-hidden;
+  @apply shadow-md border-2 rounded-lg text-center border-dark-100/50 dark-(border-light-100/50) cursor-pointer select-none relative overflow-hidden;
   touch-action: none;
 }
 
 .level {
-  @apply border-t-1 bg-dark-50/40 border-dark-100 dark_(border-light-100 bg-light-100/40) absolute bottom-0 w-full;
+  @apply border-t-1 bg-dark-50/40 border-dark-100 dark-(border-light-100 bg-light-100/40) absolute bottom-0 w-full;
 }
 </style>

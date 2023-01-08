@@ -57,6 +57,6 @@ ensureDevicesListPermissions();
 
 <style lang="postcss" scoped>
 select {
-  @apply px-2 w-full dark_bg-dark-200;
+  @apply px-2 w-full dark-bg-dark-200;
 }
 </style>

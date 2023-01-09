@@ -3,6 +3,9 @@ import { midi, stopAll, midiAttack, midiRelease } from "#/use/midi.js";
 import { onKeyStroke } from "@vueuse/core";
 import { noteColor } from '#/use/colors'
 import { synth } from "#/use/synth.js";
+import { useTempo } from '#/use/tempo'
+
+const tempo = useTempo()
 
 onKeyStroke(" ", (ev) => {
   if (ev.target.nodeName == 'TEXTAREA') return;
@@ -25,28 +28,32 @@ var isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
     span or 
     .font-normal.text-dark-200.dark-text-light-100 use your PC keyboard
 
-  .flex.items-center.justify-center.flex-wrap.py-2.m-auto(v-else)
-    .flex.m-2
-      a.font-normal.p-2.border.border-green-500.text-green-500.select-none.rounded-lg(href="/apps/midi/monitor/") 
-        span(v-if="midi.available") MIDI 
-        span(v-else) Plug in your MIDI device
-    .flex
-      .is-group
-        button.play.text-button(@click="midi.playing = !midi.playing")
-          .i-la-play(v-if="!midi.playing")
-          .i-la-pause(v-else)
-        button.text-button.border(@click="stopAll()")
-          .i-la-stop
-      .text-button.w-3em.transition-all.duration-50.cursor-pointer.flex(
-        @mousedown="midiAttack(midi.note)"
-        @mouseup="midiRelease(midi.note)"
-        v-if="midi.note?.name"
-        :style="{ borderColor: noteColor(midi.note.pitch, midi.note.octA), color: noteColor(midi.note.pitch, midi.note.octA) }"
-        ) 
-        .w-2em {{ midi.note.name }} 
-        .flex-1 {{ midi.note.accidental }}
-    .flex.flex-wrap
-      button.flex-button.border(
+  .flex.flex-col.gap-1.justify-center.flex-wrap.py-2.m-auto.bg-light-400.dark-bg-dark-400(v-else)
+    .flex.is-group
+      .flex.m-2
+        a.font-normal.p-2.border.border-green-500.text-green-500.select-none.rounded-lg(href="/practice/midi/monitor/") 
+          span(v-if="midi.available") MIDI 
+          span(v-else) Plug in your MIDI device
+      .flex
+        .is-group.flex
+          button.play.text-button(@click="midi.playing = !midi.playing")
+            .i-la-play(v-if="!midi.playing")
+            .i-la-pause(v-else)
+          button.text-button.border(@click="stopAll()")
+            .i-la-stop
+        .text-button.w-3em.transition-all.duration-50.cursor-pointer.flex(
+          @mousedown="midiAttack(midi.note)"
+          @mouseup="midiRelease(midi.note)"
+          v-if="midi.note?.name"
+          :style="{ borderColor: noteColor(midi.note.pitch, midi.note.octA), color: noteColor(midi.note.pitch, midi.note.octA) }"
+          ) 
+          .w-2em {{ midi.note.name }} 
+          .flex-1 {{ midi.note.accidental }}
+    .is-group
+      button.text-button.border(v-for="output in midi.outputs")  
+        span {{ output.name }}
+    .flex.flex-wrap.is-group
+      button.flex-button.border.opacity-30(
         @click="midi.keyboard = !midi.keyboard" 
         aria-label="Play MIDI with PC keyboard"
         :class="{ active: midi.keyboard }"
@@ -61,7 +68,14 @@ var isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
         ) 
         .i-fad-midiplug
         .m-0 MIDI OUT
-      button.flex-button.border(
+      button.flex-button.opacity-30(
+        @click="tempo.midiClock = !tempo.midiClock",
+        :class="{ active: tempo.midiClock }"
+        v-tooltip.bottom="'Output MIDI CLOCK to external devices'"
+        ) 
+        .i-la-clock
+        .m-0 CLOCK OUT
+      button.flex-button.border.opacity-30(
         @click="synth.state.midi = !synth.state.midi" 
         :class="{ active: synth.state.midi }"
         v-tooltip.bottom="'Play synth on MIDI input'"
@@ -69,11 +83,14 @@ var isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
         .i-bi-volume-up(v-if="synth.state.midi")
         .i-bi-volume-off(v-else)
         .m-0 MIDI Synth
+      button.flex-button(
+        v-tooltip.bottom="'Output MIDI channel'"
+        )
+        span OUT CH
+        select.bg-transparent.text-xl.font-bold(v-model="midi.channel")
+          option(v-for="n in 16" :key="n" :value="n") {{ n }}
 
-
-    button.text-button.border(v-for="output in midi.outputs")  
-      span {{ output.name }}
-    midi-filter-channels.mx-2(style="flex: 1 1 100px")
+    midi-filter-channels(style="flex: 1 1 100px")
 
     slot.is-group.mx-1.p-1
 </template>
@@ -88,11 +105,11 @@ input.ch {
   @apply pl-2 w-2.5em bg-transparent;
 }
 
-.button {
+button {
   @apply p-2 m-2 border flex items-center rounded cursor-pointer select-none;
 }
 
-.button.active {
+button.active {
   @apply opacity-100;
 }
 </style>

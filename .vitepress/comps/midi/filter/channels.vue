@@ -13,19 +13,15 @@ function filterAll() {
 </script>
 
 <template lang="pug">
-.flex.is-group.p-2.items-center.flex-wrap
-  .font-bold.mr-2 Channel filter
+.flex.is-group.p-2.items-center.flex-wrap.justify-between
+  .flex.flex-col.gap-1
+    .font-bold.mr-2 Channel filter
     .channel.filtered.flex.items-center.justify-center(
       @click="filterAll()"
       ) TOGGLE ALL
-    button.flex-button(
-      v-tooltip.bottom="'Output MIDI channel'"
-      )
-      span OUT CH
-      select.bg-transparent.text-xl.font-bold(v-model="midi.channel")
-        option(v-for="n in 16" :key="n" :value="n") {{ n }}
 
-  .grid.grid-cols-4
+
+  .grid.grid-cols-8
     .channel(
       v-for="ch in 16" :key="ch"
       :class="{ filtered: !midi.filter[ch], active: midi.note.channel == ch }"

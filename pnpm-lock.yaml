@@ -31,6 +31,7 @@ specifiers:
   meyda: ^5.5.1
   midi-writer-js: ^2.1.4
   ol: 7.2.2
+  ola: ^1.2.1
   paper: ^0.12.17
   patch-vue-directive-ssr: ^0.0.1
   pug: 3.0.2
@@ -75,6 +76,7 @@ dependencies:
   meyda: 5.5.1
   midi-writer-js: 2.1.4
   ol: 7.2.2
+  ola: 1.2.1
   paper: 0.12.17
   recordrtc: 5.6.2
   simplex-noise: 4.0.1
@@ -4577,6 +4579,10 @@ packages:
       ol-mapbox-style: 9.2.4
       pbf: 3.2.1
       rbush: 3.0.1
+    dev: false
+
+  /ola/1.2.1:
+    resolution: {integrity: sha512-richuePlugumsBC+ohk6NuVYkDPGQiVAHZU0qEkJ/Hy6oDaJCxCnuUQootYQ8T4k+pVeFf0Xdw7i17zTulKpTA==}
     dev: false
 
   /once/1.4.0:

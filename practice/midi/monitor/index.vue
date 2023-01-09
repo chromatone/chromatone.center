@@ -21,7 +21,6 @@ function sortNotes(notes) {
 <template lang="pug">
 .flex.flex-col
   midi-panel(:to-channel="false")
-    full-screen
   .fullscreen-container#screen(@mouseleave="active = false")
 
     .flex.w-full.h-full.mt-4

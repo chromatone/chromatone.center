@@ -7,12 +7,16 @@ import { useStorage } from "@vueuse/core";
 import { useRafFn } from "@vueuse/core";
 import { createChannel } from '#/use/audio'
 import { useClamp } from "@vueuse/math";
+import { WebMidi } from "webmidi";
+import { midi } from "./midi";
 
 
 
 export const tempo = reactive({
   initialized: false,
   bpm: useClamp(useStorage("tempo-bpm", 100), 10, 500),
+  clock: null,
+  midiClock: useStorage("midi-clock-out", true),
   blink: false,
   started: false,
   playing: false,
@@ -75,6 +79,12 @@ export function useTempo() {
       baseUrl: "/audio/metronome/",
     }).connect(channel)
 
+    metro.clock = new Loop(t => {
+      if (!tempo.midiClock) return
+
+      WebMidi.outputs.forEach(output => output.sendClock(t))
+
+    }, '8i').start(0)
 
     metro.loop = new Loop((time) => {
       let even = metro.counter % 2 == 0

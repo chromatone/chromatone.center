@@ -4,6 +4,7 @@ import { reactive, computed, watchEffect, onMounted, ref, watch } from 'vue'
 
 import { WebMidi, Note } from "webmidi"
 import { setupKeyboard } from './keyboard'
+import Ola from "ola";
 
 export const midi = reactive({
   enabled: false,
@@ -142,6 +143,7 @@ function initMidi() {
       name: input.name,
       manufacturer: input.manufacturer,
       forwarder: input.addForwarder(),
+      clock: 0,
       event: null,
       note: null,
       cc: null,
@@ -154,8 +156,25 @@ function initMidi() {
       midi.playing = false;
       midi.channels = {};
     });
+
+    const diffs = []
+    const avg = Ola({ value: 15 })
+
+    input.addListener('clock', ev => {
+      const diff = ev.timestamp - midi.inputs[input.id].clock
+      diffs.push(diff)
+
+      if (diffs.length > 50) diffs.shift()
+      avg.value = diffs.reduce((acc, d) => acc + d, 0) / diffs.length
+      midi.inputs[input.id].diff = avg.value;
+      midi.inputs[input.id].bpm = (1000 / avg.value / 24) * 60
+      midi.inputs[input.id].clock = ev.timestamp;
+
+    })
+
     input.addListener("midimessage", (ev) => {
-      if (ev?.message?.type == "clock") return;
+      if (ev?.message?.type == "clock") return
+
       midi.inputs[input.id].event = ev;
       midi.message = ev.message;
       midi.log.unshift(ev);

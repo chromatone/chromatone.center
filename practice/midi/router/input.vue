@@ -1,7 +1,7 @@
 <script setup>
 import { useMidi, forwardMidi } from "#/use/midi.js";
 import { noteColor } from "#/use/colors";
-import { computed } from "vue";
+import { computed, watch } from "vue";
 
 const props = defineProps({
   input: { type: Object, default: () => { } },
@@ -13,6 +13,7 @@ const { midi } = useMidi();
 const color = computed(() => props.input?.note?.velocity > 0
   ? noteColor(props.input.note?.pitch, null, 1, 0.4)
   : "#7773")
+
 
 </script>
 
@@ -41,10 +42,10 @@ const color = computed(() => props.input?.note?.velocity > 0
         i CH{{ input?.cc?.channel }} 
         i CC{{ input?.cc?.number }}
         i {{ input?.cc?.raw }}
-      //- .px-1.py-2px.rounded.border-1.border-current.w-16ch.flex.flex-col.justify-between.relative(v-if="input.event")
-      //-   i {{ input?.event?.message?.type }}
-      //-   .flex.justify-between
-      //-     i(v-for="byte in input?.event?.data" :key="byte") {{ byte }}
+      .display
+        .indicator
+        i {{ Math.floor(input?.bpm) }} BPM
+        i {{ Math.floor(input?.clock/1000) }}s
   .flex.flex-wrap.gap-3.mt-4.items-center
     .text-xs TO
     button.px-2.shadow-sm.rounded-xl.bg-light-200.dark-bg-dark-500.cursor-pointer.border-2.border-transparent.select-none(

@@ -3,7 +3,8 @@ import BarStep from './step.vue'
 
 import { useSequence } from '#/use/sequence.js'
 import { computed, ref, watch } from 'vue'
-import { noteColor } from '#/use/colors'
+import { noteColor, levelColor } from '#/use/colors'
+import { tempo } from '#/use/tempo'
 
 const width = 920
 const pad = (1000 - width) / 2

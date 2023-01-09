@@ -5,6 +5,7 @@ import { colord } from 'colord'
 import { isDark } from '#/theme/composables/state.js'
 import { tempo } from '#/use/tempo'
 import { computed, watch } from "vue";
+import { useClamp } from "@vueuse/math";
 
 const props = defineProps({
   proportion: {

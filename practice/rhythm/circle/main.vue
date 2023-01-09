@@ -44,7 +44,7 @@ watch(() => midi.cc, cc => {
       title="Reset to Euclidean"
       v-tooltip.right="'Reset to Euclidean pattern'"
       )
-      tabler-stairs
+      i-tabler-stairs
     beat-control-listen(transform="translate(10,900)")
     beat-control-tap(transform="translate(785,900)")
     beat-control-transport(transform="translate(910,-30)")
@@ -53,13 +53,13 @@ watch(() => midi.cc, cc => {
       transform="translate(10,750)"
       v-tooltip.right="'Toggle info overlay'"
       )
-      healthicons-question
+      i-healthicons-question
     beat-control-button(
       @click="renderMidi(tracks)"
       transform="translate(925,750)"
       v-tooltip.left="'Export MIDI file'"
       )
-      la-file-download
+      i-la-file-download
     circle-loop(
       v-for="(loop, i) in 2",
       :key="i"

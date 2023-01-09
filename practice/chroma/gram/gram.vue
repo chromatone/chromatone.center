@@ -92,10 +92,10 @@ function clear() {
     control-start.absolute(v-if="!roll.initiated" @click="initiate()") Start
     full-screen.absolute.bottom-4.right-4.z-30(:el="screen")
     button.absolute.bottom-4.left-4.text-xl.text-white(@click="roll.direction ? roll.direction = 0 : roll.direction = 1")
-      la-arrow-up(v-if="roll.direction == 1")
-      la-arrow-left(v-if="roll.direction == 0")
+      .i-la-arrow-up(v-if="roll.direction == 1")
+      .i-la-arrow-left(v-if="roll.direction == 0")
     button.absolute.top-4.right-4.text-xl.select-none.cursor-pointer(@mousedown="clear()")
-      la-trash-alt
+      .i-la-trash-alt
     .absolute.top-4.left-4.text-xl.text-white x{{ roll.speed }}
     canvas#spectrogram.w-full.rounded-2xl.cursor-pointer(
       v-drag="dragScreen"

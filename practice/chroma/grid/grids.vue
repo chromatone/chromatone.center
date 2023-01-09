@@ -29,11 +29,11 @@ const active = useStorage('pitch-bars-active', 0);
     button.text-button(
     @click="addLoop()"
     )
-      la-plus
+      .i-la-plus
     .flex-1
     full-screen
     button.text-button.flex.items-center(@click="renderMidi()")
-      la-file-download
+      .i-la-file-download
   .flex.flex-col.mb-4.mx-4.w-full.relative.h-840px
     transition-group(name="fade")
       pitch-grid.absolute.w-full(

@@ -45,8 +45,8 @@ const intervals = reactive({
         .p-1.text-xl {{ drone.freq.toFixed(2) }} Hz
       .controls.min-w-10em.flex-1.my-2.p-2.flex.flex-wrap.items-center.justify-center.is-group.gap-2
         button.text-button.text-3xl(@click="drone.stopped = !drone.stopped")
-          la-stop(v-if="!drone.stopped")
-          la-play(v-else)
+          .i-la-stop(v-if="!drone.stopped")
+          .i-la-play(v-else)
         .is-group.flex.p-2.gap-2
           control-rotary.w-4em(v-model="drone.volume" :min="0" :max="1" :step="0.05" param="VOL")
           control-rotary.w-4em(v-model="drone.filterFreq" :min="55" :max="12000" :step="0.05" :fixed="0" param="LP")

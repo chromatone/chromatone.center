@@ -33,19 +33,19 @@ const hr = 1000 * 60 * 60
 		.p-1.min-w-32 TICK {{ tempo.ticks }}
 		.flex-auto
 		.p-1.flex.gap-2.items-center.border-1.rounded.cursor-pointer.border-opacity-60.border-light-500
-			la-slash(@click="tempo.bpm = tempo.bpm/2")
-			la-minus(@click="tempo.bpm--")
+			.i-la-slash(@click="tempo.bpm = tempo.bpm/2")
+			.i-la-minus(@click="tempo.bpm--")
 			.p-0 {{ tempo.bpm }}
-			la-plus(@click="tempo.bpm++")
-			la-times(@click="tempo.bpm = tempo.bpm*2")
+			.i-la-plus(@click="tempo.bpm++")
+			.i-la-times(@click="tempo.bpm = tempo.bpm*2")
 		.pt-4px.pb-5px.px-2.flex.gap-1.items-center.border-1.rounded.border-opacity-60.border-light-500.mr-2
 			button(@click="tempo.stopped = true")
-				la-stop(:style="{transform:`rotate(${tempo.progress*90}deg)`}")
+				.i-la-stop(:style="{transform:`rotate(${tempo.progress*90}deg)`}")
 			button(
 				@click="tempo.playing = !tempo.playing"
 				)
-				la-play(v-if="!tempo.playing")
-				la-pause(v-else)
+				.i-la-play(v-if="!tempo.playing")
+				.i-la-pause(v-else)
 
 		slot
 </template>

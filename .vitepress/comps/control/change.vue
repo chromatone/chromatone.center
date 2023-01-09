@@ -111,12 +111,12 @@ function mapNumber(
   )
   .flex.items-center
     .pl-1.absolute(@mousedown="change(-1)")
-      la-minus
+      .i-la-minus
     .px-1.flex-1.text-center(@dblclick="reset()" )
       slot
         .text-lg.font-bold {{ modelValue.toFixed(fixed) }}{{ unit }}
     .pr-1.absolute.right-0(@mousedown="change(1)")
-      la-plus
+      .i-la-plus
 </template>
 
 <style lang="postcss" scoped>

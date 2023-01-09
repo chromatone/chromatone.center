@@ -60,7 +60,7 @@ export default defineConfig({
       exclude: [/node_modules/, /\.git/],
       resolvers: [
         IconsResolver({
-          componentPrefix: '',
+          componentPrefix: 'i',
         }),
       ],
     }),
@@ -73,9 +73,12 @@ export default defineConfig({
       ],
       presets: [
         presetIcons({
-          scale: 2
+          scale: 1.2,
+          extraProperties: {
+            'vertical-align': 'middle'
+          }
         }),
-        presetUno()
+        presetUno(),
       ],
       extractors: [
         extractorSplit,

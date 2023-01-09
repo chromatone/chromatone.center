@@ -36,7 +36,7 @@ function saveSVG(pic, deep) {
 
 <template lang="pug">
 .snapshot
-  la-camera(@click="saveSVG(svg, deep)")
+  .i-la-camera(@click="saveSVG(svg, deep)")
   a(ref="anchor",target="_blank",:download="download.file",:href="download.url", v-if="download.url")
 </template>
 

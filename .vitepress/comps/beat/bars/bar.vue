@@ -128,7 +128,7 @@ svg.w-full(
         r="18"
         fill="#5553"
       )
-      la-angle-right(
+      i-la-angle-right(
         font-size="28"
         x="-17"
         y="-17"
@@ -143,7 +143,7 @@ svg.w-full(
         r="18"
         fill="#5553"
       )
-      la-angle-left(
+      i-la-angle-left(
         font-size="28"
         x="-17"
         y="-17"
@@ -210,10 +210,10 @@ svg.w-full(
         v-tooltip.bottom="'Track volume'"
       )
         g(transform="translate(-20 -30)")
-          la-volume-off(
+          i-la-volume-off(
             v-if="seq.volume == 0"
             ) 
-          la-volume-up(
+          i-la-volume-up(
             v-else
             )
       beat-control-bar.pan(
@@ -226,7 +226,7 @@ svg.w-full(
         show-center
         v-tooltip.bottom="'Track panning'"
       )
-        mdi-pan-horizontal(
+        i-mdi-pan-horizontal(
           :x="-18"
           :y="-30"
         )
@@ -257,7 +257,7 @@ svg.w-full(
             rx="40"
             :fill="isDark ? 'hsla(0,0%,30%,1)' : 'hsla(0,0%,100%,1)'"
             )
-          tabler-stairs(
+          i-tabler-stairs(
             stroke-width=0
             y="9"
             x="9"
@@ -277,7 +277,7 @@ svg.w-full(
           rx="40"
           :fill="isDark ? 'hsla(0,0%,30%,1)' : 'hsla(0,0%,100%,1)'"
           )
-        la-trash(
+        i-la-trash(
           color="hsla(0,25%,50%,1)"
           stroke-width=0
           y="9"

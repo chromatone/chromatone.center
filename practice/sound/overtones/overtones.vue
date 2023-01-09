@@ -209,8 +209,8 @@ svg {
         @click="time.move = !time.move"
         v-tooltip.bottom="'Toggle animation'"
       )
-        la-play(v-if="!time.move")
-        la-pause(v-if="time.move")
+        .i-la-play(v-if="!time.move")
+        .i-la-pause(v-if="time.move")
       control-rotary(
         v-tooltip.bottom="'Number of harmonics'"
         :min="overtones.min"
@@ -248,7 +248,7 @@ svg {
       @click="sound.init()"
       v-if="!sound.enabled"
     )
-      bi-volume-up
+      .i-bi-volume-up
   svg#overtones.w-full.max-h-90vh(
     version="1.1"
     baseProfile="full"

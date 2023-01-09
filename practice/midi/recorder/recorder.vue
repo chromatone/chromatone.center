@@ -105,14 +105,14 @@ function play() {
   .text-2xl MIDI Recorder
   .flex.flex-wrap
     button(@click="play()")
-      la-play(v-if="!map.playing")
-      la-stop(v-else)
+      .i-la-play(v-if="!map.playing")
+      .i-la-stop(v-else)
     button(@click="map.recording = !map.recording")
-      la-circle(:style="{ color: map.recording ? 'red' : '' }")
+      .i-la-circle(:style="{ color: map.recording ? 'red' : '' }")
     button(@click="clear()")
-      la-trash-alt
+      .i-la-trash-alt
     button(@click="download")
-      la-download
+      .i-la-download
   //- .flex.flex-wrap
   //-   input(type="text" v-model="info.title" placeholder="Title")
   svg.h-30em.w-full(

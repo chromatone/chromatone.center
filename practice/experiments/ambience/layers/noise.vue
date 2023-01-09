@@ -56,8 +56,8 @@ watch(active, a => {
   .flex.items-center
     .font-bold NOISE
     button.p-2(@click="active = !active")
-      la-play(v-if="!active")
-      la-pause(v-else)
+      .i-la-play(v-if="!active")
+      .i-la-pause(v-else)
   .flex.flex-wrap.gap-4
     clamped-noise(
       title="Bit crusher" instrument="Noise"  

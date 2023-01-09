@@ -370,7 +370,7 @@ const points = reactive({
           r="22"
           fill="gray"
         )
-        la-trash.text-2xl
+        i-la-trash.text-2xl
     g.cursor-pointer(
       v-if="!started"
       @click.stop.prevent="startApp()"

@@ -36,7 +36,7 @@ function drag(event) {
       aria-label="Toggle metronome"
       v-tooltip.top="'Toggle metronome'"
       ) 
-      mdi-metronome.z-4(
+      .i-mdi-metronome.z-4(
         style="transition: all 300ms ease-out;"
         :transform="`scale(${!tempo.mute && tempo.blink ? 1.1 : 1})`"
         :style="{ opacity: tempo.mute ? 0.3 : 1 }"
@@ -47,20 +47,20 @@ function drag(event) {
       @click="tempo.playing = !tempo.playing"
       v-tooltip.top="'Play'"
       )
-      la-play(v-if="!tempo.playing")
-      la-pause(v-else)
+      .i-la-play(v-if="!tempo.playing")
+      .i-la-pause(v-else)
     button(style="grid-area: STOP" @click="tempo.stopped = true" v-tooltip.bottom="'Stop'")
-      la-stop
+      .i-la-stop
 
     button(style="grid-area: MINUS" @click="tempo.set(-1)" v-tooltip.bottom="'Subtract 1 BPM'")
-      la-minus
+      .i-la-minus
     button(style="grid-area: PLUS" @click="tempo.set(1)" v-tooltip.bottom="'Add 1 BPM'")
-      la-plus
+      .i-la-plus
 
     button(style="grid-area: DIVIDE" @click="tempo.set(-tempo.bpm / 2)" v-tooltip.top="'Half speed'")
-      la-slash
+      .i-la-slash
     button(style="grid-area: MULTIPLY" @click="tempo.set(tempo.bpm)" v-tooltip.top="'Double speed'")
-      la-times
+      .i-la-times
 
 
     button.relative.touch-none.text-center.flex( 
@@ -99,7 +99,7 @@ function drag(event) {
       :class="{ active: tempo.tap.last }"
       v-tooltip.bottom="'Tap tempo'"
       )
-      fluent-tap-double-20-regular.mt-1
+      .i-fluent-tap-double-20-regular.mt-1
     button(
       style="grid-area: TAPPED" 
       v-tooltip.bottom="'Click to set tap tempo'"
@@ -109,9 +109,9 @@ function drag(event) {
 
     button(style="grid-area: GUESS" @click="!tuner.initiated ? init() : (tuner.listen = !tuner.listen)" v-tooltip.top="'Guess tempo from audio'" )
       template(v-if="!tuner.listen")
-        tabler-ear
+        .i-tabler-ear
       template(v-else)
-        tabler-ear-off
+        .i-tabler-ear-off
     button.duration-100(
       style="grid-area: GUESSED" 
       v-tooltip.top="'Click to set guessed tempo'"

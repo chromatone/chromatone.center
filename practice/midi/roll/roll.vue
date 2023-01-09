@@ -139,8 +139,8 @@ function dragSpeed(drag) {
     control-start.absolute( @click="initiate()", v-if="!state.initiated") Start
     full-screen.absolute.bottom-2.right-2(:el="screen")
     button.text-button.absolute.top-2.right-2(@click="state.direction ? state.direction = 0 : state.direction = 1")
-      la-arrow-up(v-if="state.direction == 1")
-      la-arrow-left(v-if="state.direction == 0")
+      .i-la-arrow-up(v-if="state.direction == 1")
+      .i-la-arrow-left(v-if="state.direction == 0")
     .absolute.top-2.left-2.text-white.p-2
       .text-lg x{{ state.speed }}
     canvas#spectrogram.max-h-80vh.w-full.rounded-3xl.cursor-pointer(

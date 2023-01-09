@@ -123,10 +123,10 @@ function clear() {
       .p-1.w-1em {{ tuner.note?.octave }} 
       .p-1.mt-2.w-6em.text-sm {{ tuner.note.cents > 0 ? '+' : '' }}{{ tuner.note.cents }} cents
     .btn(@click="draw.running = !draw.running")
-      la-play(v-if="!draw.running")
-      la-pause(v-else)
+      .i-la-play(v-if="!draw.running")
+      .i-la-pause(v-else)
     .btn(@click="clear()")
-      la-times
+      .i-la-times
     .flex-1.text-center.font-bold  {{ tuner.bpm.toFixed(1) }} BPM
 
   .fullscreen-container.rounded-4xl.cursor-pointer#screen(
@@ -134,7 +134,7 @@ function clear() {
   )
     control-start.absolute(@click="start()", v-if="!tuner.running") Start rolling 
     .p-1.absolute.top-2.left-2.flex.items-center
-      la-angle-double-right
+      .i-la-angle-double-right
       span {{ draw.speed.toFixed(1) }}
     full-screen.absolute.bottom-2.right-2.z-30
     canvas.w-full.h-full.rounded-4xl(    

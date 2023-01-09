@@ -14,11 +14,11 @@ const { mic, input } = useMic();
       :class="{ active: mic.open }"
       v-tooltip.top="'Enable microphone'"
       )
-      ph-microphone.z-10.relative(v-if="!mic.opened")
-      ph-microphone-fill.z-10.relative(v-else)
+      .i-ph-microphone.z-10.relative(v-if="!mic.opened")
+      .i-ph-microphone-fill.z-10.relative(v-else)
       .m-0 Mic
     button.flex-button(:class="{ active: mic.monitor }" @click="mic.monitor = !mic.monitor" v-tooltip.top="'Connect microphone to output'")
-      ph-ear
+      .i-ph-ear
       .m-0 Monitoring
 
     control-rotary(
@@ -56,8 +56,8 @@ const { mic, input } = useMic();
       aria-label="Toggle mute"
       v-tooltip.top="'Toggle mute'"
       )
-      bi-volume-up(v-if="!audio.mute")
-      bi-volume-mute(v-else)
+      .i-bi-volume-up(v-if="!audio.mute")
+      .i-bi-volume-mute(v-else)
     control-level.mr-1(:meter="audio.meter")
 
   .flex.flex-wrap.items-center.is-group.p-2.gap-2(v-if="Object.keys(channels).length > 0")

@@ -27,14 +27,14 @@ button(
   :style="{ color: tempo.blink ? tempo.color : 'currentColor' }"
   v-tooltip.bottom="'Tempo options'"
   )
-  mdi-metronome.text-xl
+  .i-mdi-metronome.text-xl
 button(
   @click="open.midi = !open.midi" 
   aria-label="Toggle MIDI panel" 
   v-tooltip.bottom="'MIDI options'"
   :class="{ active: open.midi }"
   )
-  mdi-midi-input.transition-all.duration-200.text-xl(
+  .i-mdi-midi-input.transition-all.duration-200.text-xl(
     :style="{ color: noteColor(midi.note?.pitch) }"
     class="visible"
   )
@@ -44,22 +44,22 @@ button.text-xl(
   :class="{ active: open.synth }"
   v-tooltip.bottom="'Synth options'"
   )
-  la-wave-square
+  .i-la-wave-square
 button.text-xl(
   @click="open.audio = !open.audio"
   :class="{ active: open.audio }"
   aria-label="Toggle audio panel"
   v-tooltip.bottom="'Audio options'"
   )
-  bi-volume-up(v-if="!audio.mute")
-  bi-volume-mute(v-else)
+  .i-bi-volume-up(v-if="!audio.mute")
+  .i-bi-volume-mute(v-else)
 button(
   @click="open.record = !open.record"
   :class="{ active: open.record }"
   aria-label="Toggle record panel"
   v-tooltip.bottom-end="'Record options'"
   )
-  bi-record-circle
+  .i-bi-record-circle
 side-panel(v-model:open="open.midi")
   midi-panel
   img.mt-4(src="/media/apps/pc-keyboard-3.svg")

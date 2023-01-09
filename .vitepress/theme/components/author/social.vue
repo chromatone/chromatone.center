@@ -7,19 +7,19 @@ const props = defineProps({
 <template lang="pug">
 .social 
   a(v-if="social.instagram", :href="'https://instagram.com/' + social.instagram", target="_blank")
-    la-instagram.icon
+    .i-la-instagram.icon
     .name @{{ social.instagram }}
   a(v-if="social.telegram", :href="'https://t.me/' + social.telegram", target="_blank")
-    la-telegram.icon
+    .i-la-telegram.icon
     .name {{ social.telegram }}
   a(v-if="social.github", :href="'https://github.com/' + social.github", target="_blank")
-    la-github.icon
+    .i-la-github.icon
     .name {{ social.github }}
   a(v-if="social.email", :href="'mailto:' + social.email", target="_blank")
-    la-at.icon
+    .i-la-at.icon
     .name {{ social.email }}
   a(v-if="social.reddit", :href="'https://www.reddit.com/' + social.reddit", target="_blank")
-    la-reddit.icon
+    .i-la-reddit.icon
     .name {{ social.reddit }}
 </template>
 

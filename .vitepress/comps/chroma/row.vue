@@ -134,13 +134,13 @@ function playNote(note = 0, octave = 0) {
         v-if="state.chord.name || state.chord.aliases[0]" 
         @click="arpeggiate()"
         )  
-          la-play.-mt-1.mr-1
+          .i-la-play.-mt-1.mr-1
           span {{ globalScale?.note.name }} {{ state.chord.name || state.chord.aliases[0] }} 
       button.text-button.text-sm(
         :style="{ borderColor: chromaColorMix(chroma, globalScale?.tonic).hsl }"
         v-if="state.scale.name"  
         @click="arpeggiate(true)") 
-        la-play.-mt-1.mr-1
+        .i-la-play.-mt-1.mr-1
         span {{ globalScale?.note.name }} {{ state.scale.name }} scale
     .flex.justify-stretch.mx-auto.w-full.p-2
       .chroma-key.text-xs(

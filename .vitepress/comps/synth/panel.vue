@@ -38,14 +38,14 @@ const frequency = computed(() => {
       aria-label="Test synth sound"
       v-tooltip.top="'Test synth sound'"
       )
-      la-wave-square.text-xl
+      .i-la-wave-square.text-xl
       .m-0 Play synth
     button.flex-button(
       @click="synthReleaseAll()"
       aria-label="Panic synth release"
       v-tooltip.top="'Panic synth release'"
       )
-      la-ban.text-xl
+      .i-la-ban.text-xl
       .m-0 Stop synth
   .flex.flex-wrap.gap-2
     synth-oscillators.is-group(v-model="synth.params.oscillator.type" v-tooltip.top="'Select oscillator type'")
@@ -91,7 +91,7 @@ const frequency = computed(() => {
       v-tooltip.bottom="'Toggle synth on MIDI input'"
       :class="{ active: synth.state.midi }"
       )
-      mdi-midi-input.text-2xl
+      .i-mdi-midi-input.text-2xl
       .m-0 MIDI Synth
 </template>
 

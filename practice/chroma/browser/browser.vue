@@ -51,13 +51,13 @@ const sorted = computed(() => {
       ) {{ notes[i] }}
   .control-row
     .control(@click="control.count = !control.count") Notes 
-      la-arrows-alt-v(:style="{ opacity: control.count ? 1 : 0.3 }")
+      .i-la-arrows-alt-v(:style="{ opacity: control.count ? 1 : 0.3 }")
 
     .control(@click="control.chord = !control.chord", :class="{ active: control.chord }") Chord
-      la-filter.ml-2(:style="{ opacity: control.chord ? 1 : 0.3 }")
+      .i-la-filter.ml-2(:style="{ opacity: control.chord ? 1 : 0.3 }")
 
     .control(@click="control.scale = !control.scale") Scale
-      la-filter.ml-2(:style="{ opacity: control.scale ? 1 : 0.3 }")
+      .i-la-filter.ml-2(:style="{ opacity: control.scale ? 1 : 0.3 }")
 
   .flex.flex-col.items-start
     transition-group(name="list")

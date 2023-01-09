@@ -34,8 +34,8 @@ const emit = defineEmits(['update:modelValue'])
       :value="type"
       :class="{ active: modelValue == type }"
     )
-      ph-wave-sine-duotone(v-if="type == 'sine'")
-      ph-wave-triangle-duotone(v-if="type == 'triangle'")
-      ph-wave-square-duotone(v-if="type == 'square8'")
-      ph-wave-sawtooth-duotone(v-if="type == 'sawtooth8'")
+      .i-ph-wave-sine-duotone(v-if="type == 'sine'")
+      .i-ph-wave-triangle-duotone(v-if="type == 'triangle'")
+      .i-ph-wave-square-duotone(v-if="type == 'square8'")
+      .i-ph-wave-sawtooth-duotone(v-if="type == 'sawtooth8'")
 </template>

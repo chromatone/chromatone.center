@@ -37,7 +37,7 @@ button(
   @click="toggle()"
   v-tooltip.left="'Toggle fullscreen'"
 )
-  la-expand
+  .i-la-expand
 </template>
 
 <style lang="postcss" scoped>

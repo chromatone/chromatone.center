@@ -54,9 +54,9 @@ const loop = useLoop(props.order);
       )
     .is-group.flex.p-1.m-1
       button.text-button(@click="loop.rotate(-1)")
-        la-angle-left
+        .i-la-angle-left
       button.text-button(@click="loop.rotate()")
-        la-angle-right
+        .i-la-angle-right
     .is-group.p-1.flex.mx-1.transition-all.duration-300.ease(
       :style="{ borderColor: noteColor(loop.pitch, loop.octave) }"
     )
@@ -76,7 +76,7 @@ const loop = useLoop(props.order);
         :max="1"
         :fixed="2"
       )
-        la-dice.text-xl
+        .i-la-dice.text-xl
       control-change.w-4em(
         v-model="loop.pan"
         :step="0.01"
@@ -85,7 +85,7 @@ const loop = useLoop(props.order);
         :fixed="1"
         :ratio="2"
       )
-        mdi-pan-horizontal
+        .i-mdi-pan-horizontal
       control-change.w-4em(
         @dblclick="loop.volume > 0 ? loop.volume = 0 : loop.volume = 0.75"
         v-model="loop.volume"
@@ -95,12 +95,12 @@ const loop = useLoop(props.order);
         :fixed="1"
         :ratio="2"
       )
-        la-volume-up
+        .i-la-volume-up
     .flex-1
     button.text-button(@mousedown="loop.clear()")
-      la-trash-alt
+      .i-la-trash-alt
     button.text-button(@mousedown="$emit('del')")
-      la-times
+      .i-la-times
   svg.w-full.cursor-pointer(
     version="1.1",
     baseProfile="full",

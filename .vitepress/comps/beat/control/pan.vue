@@ -47,7 +47,7 @@ g.pan(
       :cy="0"
       :fill="isDark ? '#222' : '#f9f9f9'"
     )
-    mdi-pan-horizontal(
+    i-mdi-pan-horizontal(
       :x="-20"
       :y="-20"
     )

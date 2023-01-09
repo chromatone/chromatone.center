@@ -119,14 +119,14 @@ const sumColor = computed(() => {
       button(
         @click="moving = !moving"
       )
-        la-pause(v-if="moving")
-        la-play(v-else)
+        .i-la-pause(v-if="moving")
+        .i-la-play(v-else)
 
       button(
         @click="sounding = !sounding"
       )
-        la-volume-up(v-if="!sounding")
-        la-volume-off(v-else)
+        .i-la-volume-up(v-if="!sounding")
+        .i-la-volume-off(v-else)
       full-screen
   svg#chord-form(
     version="1.1",

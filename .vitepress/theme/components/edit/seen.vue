@@ -24,9 +24,10 @@ const dif = computed(() => {
 
 <template lang="pug">
 .flex(@click="setSeen()") 
-  la-check(v-if="dif > 0",:style="{ color: dif > 0 ? 'green' : 'gray' }")
+  .i-la-check(v-if="dif > 0",:style="{ color: dif > 0 ? 'green' : 'gray' }")
   card-date(v-else,:date="modified")
 </template>
 
 <style lang="postcss" scoped>
+
 </style>

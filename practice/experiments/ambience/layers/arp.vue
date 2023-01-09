@@ -66,8 +66,8 @@ watch(active, a => {
   .flex.items-center.flex-wrap
     .font-bold Pluck
     button.p-2(@click="active = !active")
-      la-play(v-if="!active")
-      la-pause(v-else)
+      .i-la-play(v-if="!active")
+      .i-la-pause(v-else)
     .flex.flex-wrap.gap-2
       button.p-1.text-xs(v-for="(n, i) in notes" :key="n" @click="note = i" :class="{ active: i == note }") {{ n }}
   .flex.flex-wrap.gap-4

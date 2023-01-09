@@ -182,7 +182,7 @@ g(
 
     :midiCC="controls.cc[order].vol"
   )
-    la-volume-up(x="-18" y="-28")
+    i-la-volume-up(x="-18" y="-28")
 
   beat-control-sector.pan(
     :radius="controlRadius"
@@ -198,7 +198,7 @@ g(
     v-tooltip.bottom="'Track panning'"
     :midiCC="controls.cc[order].pan"
   )
-    mdi-pan-horizontal(x="-18" y="-28")
+    i-mdi-pan-horizontal(x="-18" y="-28")
 
   beat-control-sector.sound(
     :radius="controlRadius"
@@ -262,7 +262,7 @@ g(
         r="18"
         fill="#5553"
       )
-      la-angle-right(
+      i-la-angle-right(
         font-size="28"
         x="-17"
         y="-17"
@@ -276,7 +276,7 @@ g(
         r="18"
         fill="#5553"
       )
-      la-angle-left(
+      i-la-angle-left(
         font-size="28"
         x="-17"
         y="-17"

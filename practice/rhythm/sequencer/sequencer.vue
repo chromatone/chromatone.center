@@ -184,14 +184,14 @@ function borderColor(cell, r) {
       .is-group
         button.text-button(:class="{ active: state.humanize }" @click="state.humanize = !state.humanize" v-tooltip.bottom="'Humanize rhythm'") HMN
         button.text-button(@click="clear()" v-tooltip.bottom="'Clear pattern'")
-          la-trash-alt
+          .i-la-trash-alt
       .is-group.flex.items-center
         button.text-button(@click="state.playing = true" v-if="!state.playing" v-tooltip.bottom="'Play'")
-          la-play
+          .i-la-play
         button.text-button(@click="state.playing = false" v-if="state.playing" v-tooltip.bottom="'Pause'")
-          la-pause
+          .i-la-pause
         button.text-button(@click="reset()" v-tooltip.bottom="'Stop'")
-          la-stop
+          .i-la-stop
   .rows(
     @mousedown="state.hover = true"
     @mouseleave.self="state.hover = false"

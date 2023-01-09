@@ -69,9 +69,9 @@ function selectPattern(p, meter) {
         v-if="!meters"
         v-tooltip.bottom="'Add new track'"
         )
-        la-plus
+        .i-la-plus
       button.text-button.flex.items-center(@click="renderMidi(tracks)" v-tooltip.bottom="'Export MIDI file'")
-        la-file-download
+        .i-la-file-download
       full-screen.text-md(v-tooltip.bottom="'Toggle fullscreen'")
       .is-group.m-2(v-if="meters && meters.length > 1")
 

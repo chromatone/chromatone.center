@@ -20,7 +20,7 @@ header.nav-bar.relative
 
 <style lang="postcss" scoped>
 .nav-bar {
-  @apply inset-x-0 z-4000 flex select-none border-b-1px border-$c-divider py-0.7rem px-4 z-10 h-$header-height bg-$c-bg md-px-5 lg-px-6;
+  @apply inset-x-0 z-500 flex select-none border-b-1px border-$c-divider py-0.7rem px-4 h-$header-height bg-$c-bg md-px-5 lg-px-6;
 }
 
 .nav-bar.root {

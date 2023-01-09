@@ -19,10 +19,10 @@ import { cart, checkout, total, open, delivery, count } from '#/theme/composable
 				.flex.justify-between.items-center
 					.flex.gap-2.items-center.flex-1.justify-center
 						button.text-sm.cursor-pointer.bg-light-900.bg-opacity-20.p-1.rounded-xl(@click="pos.quantity--")
-							la-minus
+							.i-la-minus
 						.font-bold {{pos.quantity}}
 						button.text-sm.cursor-pointer.bg-light-900.bg-opacity-20.p-1.rounded-xl(@click="pos.quantity++")
-							la-plus
+							.i-la-plus
 			td.w-6ch.text-right.font-bold ${{Number(pos.price) * Number(pos.quantity)}}
 		tr.text-center
 			td.font-bold 
@@ -47,7 +47,7 @@ import { cart, checkout, total, open, delivery, count } from '#/theme/composable
 					.text-md Order <b>2 or more</b> items and get a holographic Chromatone sticker <b>for free</b>! 
 			td.relative
 				.flex.items-center.justify-center
-					la-plus.absolute.-left-1.text-1rem(v-if="count>1")
+					.i-la-plus.absolute.-left-1.text-1rem(v-if="count>1")
 					img.h-8(src="/media/logo/holologo.svg")
 		tr.text-xl
 			td.font-bold Total

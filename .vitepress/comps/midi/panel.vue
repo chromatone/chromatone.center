@@ -33,10 +33,10 @@ var isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
     .flex
       .is-group
         button.play.text-button(@click="midi.playing = !midi.playing")
-          la-play(v-if="!midi.playing")
-          la-pause(v-else)
+          .i-la-play(v-if="!midi.playing")
+          .i-la-pause(v-else)
         button.text-button.border(@click="stopAll()")
-          la-stop
+          .i-la-stop
       .text-button.w-3em.transition-all.duration-50.cursor-pointer.flex(
         @mousedown="midiAttack(midi.note)"
         @mouseup="midiRelease(midi.note)"
@@ -52,22 +52,22 @@ var isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
         :class="{ active: midi.keyboard }"
         v-tooltip.bottom="'Play MIDI with PC keyboard'"
         )
-        tabler-keyboard
+        .i-tabler-keyboard
         .m-0 PC keyboard
       button.flex-button.opacity-30(
         @click="midi.out = !midi.out",
         :class="{ active: midi.out }"
         v-tooltip.bottom="'Output MIDI to external devices'"
         ) 
-        fad-midiplug
+        .i-fad-midiplug
         .m-0 MIDI OUT
       button.flex-button.border(
         @click="synth.state.midi = !synth.state.midi" 
         :class="{ active: synth.state.midi }"
         v-tooltip.bottom="'Play synth on MIDI input'"
         )
-        bi-volume-up(v-if="synth.state.midi")
-        bi-volume-off(v-else)
+        .i-bi-volume-up(v-if="synth.state.midi")
+        .i-bi-volume-off(v-else)
         .m-0 MIDI Synth
 
 

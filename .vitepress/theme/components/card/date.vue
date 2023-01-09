@@ -38,8 +38,8 @@ const elapsed = useTimeAgo(new Date(props.date), {
 
 <template lang="pug">
 .text-sm.rounded-full.flex.items-center(v-if="fresh")
-  mdi-watering-can.can(v-if="superFresh")
-  mdi-watering-can-outline.can(v-else)
+  .i-mdi-watering-can.can(v-if="superFresh")
+  .i-mdi-watering-can-outline.can(v-else)
   .flex-1.font-normal {{ elapsed }}
 </template>
 

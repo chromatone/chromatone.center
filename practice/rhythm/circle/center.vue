@@ -61,7 +61,7 @@ g.center(
         :radius="center.radius"
         :thickness="center.thick"
       )
-      la-plus(
+      i-la-plus(
         x="65"
         y="-15"
       )
@@ -79,7 +79,7 @@ g.center(
         :radius="center.radius"
         :thickness="center.thick"
       )
-      la-minus(
+      i-la-minus(
         x="-102"
         y="-15"
       )
@@ -97,7 +97,7 @@ g.center(
         :radius="center.radius"
         :thickness="center.thick"
       )
-      la-times(
+      i-la-times(
         x="-18"
         y="-104"
       )
@@ -115,7 +115,7 @@ g.center(
         :radius="center.radius"
         :thickness="center.thick"
       )
-      la-slash(
+      i-la-slash(
         x="-18"
         y="65"
       )

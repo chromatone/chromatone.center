@@ -11,6 +11,8 @@ import {
 import { useWindowSize } from '@vueuse/core'
 import { drawingEnabled } from '#/theme/components/draw/draw'
 
+import { useRecorder } from "#/use/recorder";
+
 const {
   streamCamera,
   showAvatar,
@@ -23,8 +25,6 @@ const {
 } = cast;
 
 const options = ref();
-
-import { useRecorder } from "#/use/recorder";
 
 const { record, recording: audioRecording, toggled, duration } = useRecorder();
 
@@ -42,10 +42,10 @@ const { width, height } = useWindowSize()
         v-if="!audioRecording"
         v-tooltip.top="'Start audio recording'"
         ) 
-        mdi-checkbox-blank-circle-outline
+        .i-mdi-checkbox-blank-circle-outline
         .m-0 Record audio
       button.flex-button.text-red-500(@click="record.stop()" v-else)  
-        mdi-checkbox-blank-circle.animate-pulse
+        .i-mdi-checkbox-blank-circle.animate-pulse
         .p-1 {{ (duration / 1000).toFixed() }} s
       button.flex-button(
         :class="{ 'text-red-500': recording }", 
@@ -53,8 +53,8 @@ const { width, height } = useWindowSize()
         @click="toggleRecording"
         v-tooltip.top="'Start screen recording'"
         )
-        carbon-stop-outline(v-if="recording")
-        carbon-video(v-else)
+        .i-carbon-stop-outline(v-if="recording")
+        .i-carbon-video(v-else)
         .m-0 Record screen {{ width }}x{{ height }}
         .p-1(v-if="recordingTime") {{ (recordingTime / 1000).toFixed() }}s
     .is-group.flex.flex-wrap
@@ -65,14 +65,14 @@ const { width, height } = useWindowSize()
         @click="toggleAvatar"
         v-tooltip.top="'Enable circular camera avatar'"
         )
-        carbon-user-avatar
+        .i-carbon-user-avatar
         .ml-0 Camera avatar
       button.flex-button(
         @click="options = !options"
         aria-label="Screencast options"
         v-tooltip.top="'Open screencast options'"
         )
-        la-cog
+        .i-la-cog
         .ml-0 Settings
   .flex.gap-2(v-if="options")
     .flex.flex-col.gap-2.py-2(style="flex: 1 1 100px")

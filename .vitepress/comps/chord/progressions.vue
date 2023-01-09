@@ -41,7 +41,7 @@ function getChords(degrees) {
     .flex.flex-col.text-center.mb-2.relative
       .text-2xl.font-bold.flex.mx-auto.items-center {{ globalScale.note.name }} {{ state.current.title }}
       a.p-2.text-2xl.absolute.right-2.top-2.rounded-full.shadow-xl(:href="state.current.link" target="_blank" v-if="state.current.link")
-        la-wikipedia-w
+        .i-la-wikipedia-w
       .text-lg {{ state.current.degrees }} 
     transition(name="fade" mode="out-in")
       .flex.flex-wrap(:key="state.current")

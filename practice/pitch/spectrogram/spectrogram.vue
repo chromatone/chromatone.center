@@ -103,10 +103,10 @@ function colorIt(freq, value) {
     full-screen.absolute.bottom-2.right-2
     .absolute.top-4.left-4.text-xl.select-none x{{ state.speed }}
     button.absolute.bottom-4.left-4.text-xl.select-none.cursor-pointer(@mousedown="paused = !paused")
-      la-play(v-if="paused")
-      la-pause(v-else)
+      .i-la-play(v-if="paused")
+      .i-la-pause(v-else)
     button.absolute.top-4.right-4.text-xl.select-none.cursor-pointer(@mousedown="clear()")
-      la-trash-alt
+      .i-la-trash-alt
 
 
 </template>

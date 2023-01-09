@@ -10,8 +10,9 @@ function scroll() {
 
 <template lang="pug">
 button(@click="scroll()" aria-label="Scroll to the top")
-  la-arrow-up
+  .i-la-arrow-up
 </template>
 
 <style scoped>
+
 </style>

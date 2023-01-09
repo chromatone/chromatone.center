@@ -11,12 +11,12 @@ const props = defineProps({
 <template lang="pug">
 .flex.flex-wrap.mt-4(v-if="buttons && buttons.length > 0")
   a.button(v-for="link in buttons", :key="link.url", :href="link.url", target="_blank", :style="{ backgroundColor: color }") 
-    la-link(v-if="link?.type == 'primary'")
-    la-github(v-if="link?.type == 'github'")
-    la-instagram(v-if="link?.type == 'instagram'")
-    la-heart(v-if="link?.type == 'heart'")
-    la-discord(v-if="link?.type == 'discord'")
-    la-reddit(v-if="link?.type == 'reddit'")
+    .i-la-link(v-if="link?.type == 'primary'")
+    .i-la-github(v-if="link?.type == 'github'")
+    .i-la-instagram(v-if="link?.type == 'instagram'")
+    .i-la-heart(v-if="link?.type == 'heart'")
+    .i-la-discord(v-if="link?.type == 'discord'")
+    .i-la-reddit(v-if="link?.type == 'reddit'")
     span {{ link.text }}
 </template>
 

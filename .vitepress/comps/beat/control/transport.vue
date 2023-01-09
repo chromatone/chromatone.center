@@ -24,10 +24,10 @@ g.transport(
     g(
       transform="translate(-2,4)"
     )
-      la-play(
+      i-la-play(
         v-if="!tempo.playing"
       )
-      la-pause(
+      i-la-pause(
         v-else
       )
   g.btn.cursor-pointer(
@@ -45,7 +45,7 @@ g.transport(
         width="70"
         height="80"
         )
-      la-stop(
+      i-la-stop(
       y="5"
     )
     

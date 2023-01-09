@@ -47,7 +47,7 @@ const semitones = computed(() => {
       :href="link"
       target="_blank"
       )
-      la-wikipedia-w
+      .i-la-wikipedia-w
     .text-2xl.font-bold.capitalize.mb-2(
       ) {{ notes[globalScale.tonic] }} {{ chord.name || chord.aliases[0] || scale.name }} {{ scale.aliases[0] ? `(${scale.aliases[0]})` : '' }}
   .flex.flex-wrap.w-full.items-center

@@ -16,8 +16,7 @@ import midiRoll from './roll.vue'
   <midi-panel style="margin-top: 2em;" />
 </client-only>
 
-
 1. Play some notes on your MIDI controller or computer keyboard and watch them appear on the endless roll.
 2. Drag over the canvas to change the roll speed.
-3. Press the <la-arrow-up /> (<la-arrow-left />) button to change the plot direction
-4. Press the <la-expand /> button to expand the app to full screen
+3. Press the <i class="p-3 mr-1 i-la-arrow-up"></i> (<i class="p-3 mr-1 i-la-arrow-left"></i> ) button to change the plot direction
+4. Press the <i class="p-3 mr-1 i-la-expand"></i> button to expand the app to full screen

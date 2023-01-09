@@ -1,4 +1,6 @@
 <script setup>
+import { reactive, watchEffect, computed } from 'vue'
+
 const props = defineProps({
   max: {
     type: Number,

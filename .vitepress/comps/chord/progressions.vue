@@ -4,6 +4,10 @@ import { noteNames } from '#/use/theory'
 import { globalScale, playChroma, stopChroma } from '#/use/chroma'
 import { Progression, Chord } from "@tonaljs/tonal";
 import { noteColor } from '#/use/colors'
+import { reactive, computed } from 'vue'
+import { useStorage } from '@vueuse/core';
+
+
 const props = defineProps({
   list: { type: Object, required: true },
   initial: { type: String, default: 'major' }

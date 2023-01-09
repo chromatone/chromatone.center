@@ -4,7 +4,7 @@ import { rotateArray } from '#/use/calculations'
 import { noteColor } from '#/use/colors'
 import { chordType, scaleType, notes } from '#/use/theory'
 import { colord } from 'colord'
-
+import { reactive, computed } from 'vue'
 
 const props = defineProps({
   chroma: { type: String, default: '100000000000' },

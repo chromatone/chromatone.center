@@ -4,6 +4,7 @@ import { notes } from '#/use/theory'
 import { chromaColorMix } from "#/use/colors";
 import { chordType, scaleType } from '#/use/theory'
 import { playChroma, stopChroma, globalScale } from '#/use/chroma'
+import { reactive, computed } from 'vue'
 
 const props = defineProps({
   title: { type: String, default: null },

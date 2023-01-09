@@ -1,6 +1,7 @@
 <script setup>
 import { midi, learnCC } from '#/use/midi'
 import { useDrag } from '@vueuse/gesture'
+import { reactive, ref, computed, watch, watchEffect } from 'vue'
 
 const props = defineProps({
   max: { type: Number, default: 100, },

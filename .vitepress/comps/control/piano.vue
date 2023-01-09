@@ -3,6 +3,8 @@ import { rotateArray } from '#/use/calculations'
 import { noteColor } from '#/use/colors'
 import { notes } from '#/use/theory'
 
+import { reactive } from 'vue'
+
 const emit = defineEmits(['update:pitch']);
 const props = defineProps({
   pitch: {

@@ -9,14 +9,14 @@ import LineString from 'ol/geom/LineString';
 import { Circle, Style, Stroke } from 'ol/style';
 import VectorSource from 'ol/source/Vector';
 import { Tile as TileLayer, Vector as VectorLayer } from 'ol/layer';
-import PinchZoom from 'ol/interaction/PinchZoom';
 
 
 import { noteColor } from "#/use/colors";
+import { onMounted } from 'vue';
 
 const props = defineProps({
-  center: { type: Array, default: [98.348, 7.915] },
-  cities: { type: Array, default: [] }
+  center: { type: Array, default: () => [98.348, 7.915] },
+  cities: { type: Array, default: () => [] }
 })
 
 onMounted(() => {

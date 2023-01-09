@@ -1,5 +1,8 @@
 <script setup>
 import { colord } from 'colord'
+import { useStorage } from '@vueuse/core';
+import { useClamp } from '@vueuse/math';
+import { reactive, ref, computed, watchEffect } from 'vue'
 
 const screen = ref()
 

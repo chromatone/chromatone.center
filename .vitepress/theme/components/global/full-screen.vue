@@ -1,5 +1,6 @@
 <script setup>
 import { useFullscreen } from '@vueuse/core'
+import { ref, onMounted, nextTick, computed } from 'vue';
 
 const props = defineProps({
   el: { type: Object, default: null }

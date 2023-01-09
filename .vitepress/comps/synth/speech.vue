@@ -1,4 +1,6 @@
 <script setup>
+import { onMounted } from 'vue';
+
 const props = defineProps({
   text: { type: String, default: 'Text-to-speech' }
 });
@@ -20,4 +22,5 @@ span(@click="speak()") {{ text }}
 </template>
 
 <style lang="postcss" scoped>
+
 </style>

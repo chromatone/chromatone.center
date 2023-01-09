@@ -1,9 +1,10 @@
 <script setup>
 import createGlobe from 'cobe'
+import { onMounted, ref } from 'vue';
 
 const props = defineProps({
-  dots: { type: Array, default: [] },
-  center: { type: Array, default: [0, 70] }
+  dots: { type: Array, default: () => [] },
+  center: { type: Array, default: () => [0, 70] }
 })
 
 const canvas = ref()
@@ -14,7 +15,7 @@ const markers = props.dots.map(dot => ({ location: dot, size: 0.05 }))
 
 
 onMounted(() => {
-  const globe = createGlobe(canvas.value, {
+  createGlobe(canvas.value, {
     devicePixelRatio: 2,
     width: 1000,
     height: 1000,

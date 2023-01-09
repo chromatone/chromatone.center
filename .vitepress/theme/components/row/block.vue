@@ -10,6 +10,7 @@ import {
 import {
   lchToHsl
 } from '#/use/colors.js'
+import { computed } from 'vue';
 
 const route = useRoute()
 

@@ -9,6 +9,7 @@ import { chordType, scaleType, intervals, notes } from '#/use/theory'
 import { globalScale, playChroma, stopChroma, } from '#/use/chroma'
 import { calcBg } from '#/use/colors'
 import { colord } from 'colord'
+import { reactive, computed } from 'vue'
 
 const emit = defineEmits(['update:chroma'])
 const props = defineProps({

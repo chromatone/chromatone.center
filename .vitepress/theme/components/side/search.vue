@@ -1,6 +1,7 @@
 <script setup>
 import { onClickOutside } from "@vueuse/core";
 import Fuse from "fuse.js";
+import { computed, ref } from "vue";
 import routes from "~pages";
 
 const fuse = new Fuse(routes, {

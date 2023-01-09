@@ -1,5 +1,6 @@
 <script setup>
 import { routes } from '#/theme/composables/pages'
+import { computed } from 'vue';
 const recent = computed(() => {
   let all = routes.filter(el => el.title && !el.hidden)
   let sorted = [...all].sort((a, b) => {

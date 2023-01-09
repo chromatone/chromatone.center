@@ -1,5 +1,6 @@
 <script setup>
 import { useTimestamp } from '@vueuse/core'
+import { computed, reactive, ref, watchEffect } from 'vue';
 
 const { timestamp: time, resume, pause } = useTimestamp({ offset: -Date.now(), controls: true })
 
@@ -47,6 +48,7 @@ svg(
     )
   circle(
     v-for="(circle,c) in circles"
+    :key="c"
     v-bind="circle"
     cy="35"
     stroke-width="0.5"
@@ -67,4 +69,5 @@ svg(
 </template>
 
 <style lang="postcss" scoped>
+
 </style>

@@ -2,6 +2,7 @@
 import { useSiblings, useParents, pages } from '#/theme/composables/pages'
 import { lchToHsl } from '#/use/colors.js'
 import { useRoute } from 'vitepress'
+import { computed, reactive } from 'vue';
 const route = useRoute()
 
 const siblings = computed(() => useSiblings(route.path))

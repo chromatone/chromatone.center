@@ -1,6 +1,7 @@
 <script setup>
 import { cart, open, total } from '#/theme/composables/cart'
 import { onClickOutside } from '@vueuse/core'
+import { ref } from 'vue';
 
 const target = ref()
 

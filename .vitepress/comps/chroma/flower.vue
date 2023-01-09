@@ -6,6 +6,7 @@ import { midi, playKey } from '#/use/midi'
 import { globalScale } from '#/use/chroma'
 import { colord } from "colord";
 import { useClipboard, watchThrottled } from '@vueuse/core'
+import { computed, ref } from 'vue'
 
 const props = defineProps({
   size: { type: Number, default: 1000 },

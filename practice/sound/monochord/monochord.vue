@@ -4,6 +4,9 @@ import { useTransition, TransitionPresets } from '@vueuse/core'
 import { useSynth } from '#/use/synth.js'
 import { Frequency } from 'tone'
 import Fraction from 'fraction.js'
+import { computed, reactive } from 'vue'
+import { useClamp } from '@vueuse/math'
+
 
 const state = reactive({
   ratio: useClamp(0.8, 0.05, 0.95),
@@ -59,7 +62,7 @@ const ratio = useTransition(computed(() => state.ratio), {
   transition: TransitionPresets.easeOutCubic,
 })
 
-const { synth, synthOnce } = useSynth();
+const { synthOnce } = useSynth();
 
 function dragFun(drag) {
   fundamental.freq += drag.delta[0] / 4
@@ -93,59 +96,109 @@ function calcCents(base, freq) {
     style="touch-action:none"
     )
     g#ruler(stroke-width="0.2" stroke="currentColor")
-      line(y1=30 y2=30 x2=100  )
-      line(y1=0 y2=30)
-      line(x1=100 x2=100 y1=0 y2=30)
+      line(
+        y1="30" 
+        y2="30" 
+        x2="100")
+      line(
+        y1="0" 
+        y2="30")
+      line(
+        x1="100" 
+        x2="100" 
+        y1="0" 
+        y2="30")
       line(
         :x1="100 * (1 - ratio)"
         :x2="100 * (1 - ratio)"
-        y1=0 y2=30
+        y1="0" 
+        y2="30"
         )
-      g#freqs(stroke="none",fill="currentColor")
+      g#freqs(
+        stroke="none",
+        fill="currentColor")
         g#left(text-anchor="end")
-          text( :x="100 * (1 - ratio) - 2" y=28) {{ part1.freq.toFixed(1) }} Hz
-          text( :x="100 * (1 - ratio) - 2" y=24) {{ part1.note }} ({{ part1.cents.toFixed() }} cents) 
+          text(
+            :x="100 * (1 - ratio) - 2" 
+            y="28") {{ part1.freq.toFixed(1) }} Hz
+          text( 
+            :x="100 * (1 - ratio) - 2" 
+            y="24") {{ part1.note }} ({{ part1.cents.toFixed() }} cents) 
         g#right(text-anchor="start")
-          text( :x="100 * (1 - ratio) + 2" y=28) {{ part2.freq.toFixed(1) }} Hz
-          text( :x="100 * (1 - ratio) + 2" y=24) {{ part2.note }} ({{ part2.cents.toFixed() }} cents) 
-      g#ratio.cursor-pointer(font-size="4px" fill="currentColor")
+          text( 
+            :x="100 * (1 - ratio) + 2" 
+            y="28") {{ part2.freq.toFixed(1) }} Hz
+          text( 
+            :x="100 * (1 - ratio) + 2" 
+            y="24") {{ part2.note }} ({{ part2.cents.toFixed() }} cents) 
+      g#ratio.cursor-pointer(
+        font-size="4px" 
+        fill="currentColor")
         g(@mousedown="synthOnce(fundamental.freq); synthOnce(part1.freq)")
           text(
             :x="100 * (1 - ratio) - 2"
-            y=8
+            y="8"
             text-anchor="end"
           ) {{ state.fraction }} 
         g(@mousedown="synthOnce(fundamental.freq); synthOnce(part2.freq)")
           text(
             :x="100 * (1 - ratio) + 2"
-            y=8
+            y="8"
             text-anchor="start"          
           ) {{ state.invFraction }} 
-    g#fundamental.cursor-pointer(@mouseover="synthOnce(fundamental.freq)" @mousedown="synthOnce(fundamental.freq)" v-drag="dragFun")
-      line(x2=100, stroke-width="4", :stroke="freqColor(fundamental.freq)" )
-      circle(r=1)
-      circle(cx=100,r=1)
-      text(x=50 font-weight="bold") {{ fundamental.note }}  {{ fundamental.freq.toFixed() }} Hz ({{ fundamental.cents.toFixed() }} cents)
-    g#divided.cursor-pointer(transform="translate(0,15)" v-drag="changeRatio" font-weight="bold")
-      g#part1(@mouseover="synthOnce(part1.freq)" @mousedown="synthOnce(part1.freq)")
+    g#fundamental.cursor-pointer(
+      v-drag="dragFun" 
+      @mouseover="synthOnce(fundamental.freq)" 
+      @mousedown="synthOnce(fundamental.freq)")
+      line(
+        x2="100", 
+        stroke-width="4", 
+        :stroke="freqColor(fundamental.freq)")
+      circle(r="1")
+      circle(
+        cx="100",
+        r="1")
+      text(
+        x="50" 
+        font-weight="bold") {{ fundamental.note }}  {{ fundamental.freq.toFixed() }} Hz ({{ fundamental.cents.toFixed() }} cents)
+    g#divided.cursor-pointer(
+      v-drag="changeRatio" 
+      transform="translate(0,15)" 
+      font-weight="bold")
+      g#part1(
+        @mouseover="synthOnce(part1.freq)" 
+        @mousedown="synthOnce(part1.freq)")
         line( 
           :stroke="freqColor(part1.freq)" 
           stroke-width="4",
           :x2="100 * (1 - ratio)"
         )
-        text(y=0.3, :x="100 * (1 - ratio) / 2") {{ part1.note }}
-      g#part2(@mouseover="synthOnce(part2.freq)" @mousedown="synthOnce(part2.freq)")
+        text(
+          y="0.3", 
+          :x="100 * (1 - ratio) / 2") {{ part1.note }}
+      g#part2(
+        @mouseover="synthOnce(part2.freq)" 
+        @mousedown="synthOnce(part2.freq)")
         line( 
           :stroke="freqColor(part2.freq)" 
           stroke-width="4",
           :x1="100 * (1 - ratio)"
-          x2=100
+          x2="100"
         )
-        text(y=0.3,:x="100 - 100 * (ratio) / 2") {{ part2.note }}
-        circle(:cx="100 * (1 - ratio)" r=1)
-      circle(r=1)
-      circle(r=1 cx=100)
+        text(
+          y="0.3",
+          :x="100 - 100 * (ratio) / 2") {{ part2.note }}
+        circle(
+          :cx="100 * (1 - ratio)" 
+          r="1")
+      circle(r="1")
+      circle(
+        r="1" 
+        cx="100")
 
   .flex.flex-wrap.justify-center.m-4
-    button.p-2.border-1.shadow.m-2(@click="state.ratio = frac" v-for="(frac, fName) in fractions" :key="fName") {{ fName }}
+    button.p-2.border-1.shadow.m-2(
+      v-for="(frac, fName) in fractions" 
+      :key="fName"
+      @click="state.ratio = frac" ) {{ fName }}
 </template>

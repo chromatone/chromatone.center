@@ -9,6 +9,7 @@ import {
   mimeType,
   getSupportedMimeTypes,
 } from "#/use/cast";
+import { computed } from "vue";
 
 const camerasItems = computed(() => [
   {

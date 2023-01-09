@@ -2,6 +2,7 @@
 import { scaleList, notes } from '#/use/theory'
 import { globalScale } from '#/use/chroma'
 import { noteColor } from "#/use/colors"
+import { computed } from 'vue';
 
 const sortedScales = computed(() => {
   return scaleList.sort((a, b) => {

@@ -2,6 +2,7 @@
 import { useData } from 'vitepress'
 import { lchToHsl } from '#/use/colors.js'
 import { pages } from '#/theme/composables/pages'
+import { computed } from 'vue';
 
 const props = defineProps({
   item: Object,

@@ -1,5 +1,5 @@
 <script setup>
-const props = defineProps({
+defineProps({
   size: {
     type: Number,
     default: 24
@@ -22,13 +22,19 @@ const props = defineProps({
   }
 });
 
-const id = 'myText' + Math.floor(Math.random() * 20);
+// const id = 'myText' + Math.floor(Math.random() * 20);
 </script>
 
 <template lang="pug">
 g  
   defs
-    path(:id="`myTextPath${r}`",:d="`M ${r},0 A ${r},${r} 0 0 1 -${r},0 A ${r},${r} 0 0 1 ${r},0`", :transform="`translate(${w / 2},${w / 2}), rotate(-90)`", fill="none", stroke="darkblue", stroke-width="2")
+    path(
+      :id="`myTextPath${r}`",
+      :d="`M ${r},0 A ${r},${r} 0 0 1 -${r},0 A ${r},${r} 0 0 1 ${r},0`", 
+      :transform="`translate(${w / 2},${w / 2}), rotate(-90)`", 
+      fill="none", 
+      stroke="darkblue", 
+      stroke-width="2")
   text(
     fill="currentColor"
     font-size="24px"
@@ -40,4 +46,5 @@ g
 </template>
 
 <style lang="postcss" scoped>
+
 </style>

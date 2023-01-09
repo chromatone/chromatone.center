@@ -3,6 +3,7 @@ import { useDraw } from './draw'
 import { midi } from '#/use/midi'
 import { noteColor } from "#/use/colors"
 import { useRoute } from 'vitepress'
+import { onMounted, watch } from 'vue';
 
 const route = useRoute()
 

@@ -1,4 +1,6 @@
 <script setup>
+import { ref } from 'vue';
+
 const props = defineProps({
   collection: {
     type: Object,
@@ -22,4 +24,5 @@ const current = ref(Object.keys(props.collection)[0])
 </template>
 
 <style lang="postcss" scoped>
+
 </style>

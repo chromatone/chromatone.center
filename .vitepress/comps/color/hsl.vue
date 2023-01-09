@@ -2,6 +2,8 @@
 import { getColorInfo } from '#/use/colors.js'
 import { colord } from 'colord'
 import { useTransition, TransitionPresets, useStorage } from '@vueuse/core'
+import { useClamp } from '@vueuse/math';
+import { reactive, ref, computed } from 'vue'
 
 const screen = ref()
 
@@ -172,7 +174,8 @@ function onDragS(drag) {
             stroke-width="0.6"
           )
           line(
-            v-for="angle in harmonies[mix.harmony]" :key="angle"
+            v-for="angle in harmonies[mix.harmony]" 
+            :key="angle"
             :y1="mix.sat * 0.27 + 18"
             :transform="`rotate(${angle})`"
           )
@@ -188,7 +191,10 @@ function onDragS(drag) {
           cy="50"
           r="18"
         )
-        color-svg-info(transform="scale(0.8) translate(12,5)" :color="mix.current" :y="40")
+        color-svg-info(
+          transform="scale(0.8) translate(12,5)" 
+          :color="mix.current" 
+          :y="40")
         text(
           x="50"
           y="64"

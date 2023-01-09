@@ -12,6 +12,7 @@ import { useWindowSize } from '@vueuse/core'
 import { drawingEnabled } from '#/theme/components/draw/draw'
 
 import { useRecorder } from "#/use/recorder";
+import { ref } from "vue";
 
 const {
   streamCamera,

@@ -5,6 +5,7 @@ import { colord } from 'colord'
 import { chromaColorMix } from "#/use/colors.js";
 import { chordType, scaleType, notes } from '#/use/theory'
 import { globalScale, playChroma, stopChroma } from '#/use/chroma'
+import { computed, ref } from 'vue';
 const pressed = ref(false);
 
 const props = defineProps({

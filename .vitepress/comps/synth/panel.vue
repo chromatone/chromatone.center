@@ -2,7 +2,8 @@
 import { useSynth, quantizeModes } from "#/use/synth";
 import { midi } from "#/use/midi";
 import { useCycleList } from '@vueuse/core'
-import { freqColor, pitchFreq } from '#/use/calculations'
+import { pitchFreq, freqColor } from '#/use/calculations'
+import { reactive, computed, watch } from 'vue'
 
 const { synth, synthOnce, init, synthReleaseAll } = useSynth();
 

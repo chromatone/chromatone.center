@@ -1,5 +1,6 @@
 <script setup>
 import { onClickOutside } from "@vueuse/core";
+import { ref } from "vue";
 
 const props = defineProps({
   open: Boolean,

@@ -5,6 +5,7 @@ import { noteColor } from '#/use/colors'
 import { colord } from 'colord'
 import { globalScale } from '#/use/chroma'
 import { chordType, scaleType, notes } from '#/use/theory'
+import { reactive, computed } from 'vue'
 
 const props = defineProps({
   instrument: { type: String, default: 'ukulele' },

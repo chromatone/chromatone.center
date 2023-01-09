@@ -1,12 +1,14 @@
+
 <script setup>
 import { pitchFreq, getCircleCoord } from '#/use/calculations'
 import { synthAttack, synthRelease } from '#/use/synth.js'
 import { noteColor } from "#/use/colors";
 import { colord } from 'colord'
+import { computed, ref } from 'vue';
 const props = defineProps({
-  R: Number,
-  w: Number,
-  note: Object,
+  r: { type: Number, default: 10 },
+  w: { type: Number, default: 10 },
+  note: { type: Object, default: () => { } },
   inner: {
     type: Number,
     default: 150,
@@ -34,7 +36,7 @@ function toggle() {
 }
 
 const coord = computed(() => {
-  return getCircleCoord(props.note.pitch, 12, props.R, props.w);
+  return getCircleCoord(props.note.pitch, 12, props.r, props.w);
 });
 
 const innerCoord = computed(() => {
@@ -42,11 +44,13 @@ const innerCoord = computed(() => {
 });
 </script>
 
+<!-- eslint-disable vue/no-v-html -->
+
 <template lang="pug">
 g.tet(
   style="cursor:pointer; transition: all 200ms ease-in-out"
-  @click="toggle()"
   :opacity="active ? 1 : 0.75"
+  @click="toggle()"
 )
   line(
     :stroke="color"

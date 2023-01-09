@@ -4,6 +4,7 @@ import tuningText from './text.vue'
 
 import { freqPitch } from '#/use/calculations'
 import { notes } from '#/use/theory'
+import { computed, reactive } from 'vue';
 
 const allNotes = [...notes].map((n, i) => ({ name: n, pitch: i }))
 
@@ -72,9 +73,9 @@ const pythNotes = computed(() => {
 });
 
 
-function rotate(arr, count = 1) {
-  return [...arr.slice(count, arr.length), ...arr.slice(0, count)];
-};
+// function rotate(arr, count = 1) {
+//   return [...arr.slice(count, arr.length), ...arr.slice(0, count)];
+// }
 
 </script>
 
@@ -86,36 +87,36 @@ svg#tuning-circle.w-full(
   xmlns="http://www.w3.org/2000/svg",
   )
   circle(
-    :cx=500,
-    :cy=500
+    v-for="r in circles",
+    :key="r"
+    :cx="500",
+    :cy="500"
     :r="r"
     stroke="gray"
     fill="none",
-    v-for="r in circles",
-    :key="r"
   )
   tuning-note(
-    :R="circles[2]"
-    :w="1000"
-    :note="note"
     v-for="(note, i) in allNotes", 
     :key="i",
+    :r="circles[2]"
+    :w="1000"
+    :note="note"
   )
   tuning-note(
-    :R="circles[1]"
+    v-for="(note, i) in limitNotes", 
+    :key="i",
+    :r="circles[1]"
     :w="1000"
     :level="2"
     :note="note"
-    v-for="(note, i) in limitNotes", 
-    :key="i",
   )
   tuning-note(
-    :R="circles[0]"
+    v-for="(note, i) in pythNotes", 
+    :key="i",
+    :r="circles[0]"
     :w="1000"
     :level="1"
     :note="note"
-    v-for="(note, i) in pythNotes", 
-    :key="i",
   )
   tuning-text(
     v-for="(r, tune) in tunings"

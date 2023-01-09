@@ -8,6 +8,7 @@ import { Frequency } from 'tone'
 import { synthOnce } from '#/use/synth.js'
 import { midiOnce } from '#/use/midi.js'
 import { colord } from 'colord'
+import { computed } from 'vue'
 
 
 const props = defineProps({

@@ -1,3 +1,5 @@
+import { useStorage } from "@vueuse/core";
+
 export const loops = useStorage('tempo-bar-loops', [
 	{
 		over: 8,

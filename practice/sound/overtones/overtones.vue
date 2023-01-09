@@ -6,6 +6,7 @@ import { freqColor, pitchFreq } from '#/use/calculations'
 import { Synth, start, Frequency } from "tone";
 import { globalScale } from '#/use/chroma'
 import { createChannel } from '#/use/audio'
+import { computed, reactive, watch } from 'vue';
 
 const box = reactive({
   width: 150,
@@ -70,7 +71,7 @@ const sound = reactive({
     if (!sound.enabled) return
     saw.triggerRelease()
   },
-  play(note, order, immediate) {
+  play(note, order) {
     if (!sound.enabled) {
       sound.init()
       return null
@@ -185,68 +186,65 @@ function calcWave(num, x, time) {
   return Math.sin(Math.PI * num * x / box.width) * Math.cos(time * num * 2 * Math.PI)
 }
 
-function calcSine(num, x, phase = 0) {
-  return Math.sin(Math.PI * 2 * phase + num / 2 * x / box.width * 2 * Math.PI)
-}
+// function calcSine(num, x, phase = 0) {
+//   return Math.sin(Math.PI * 2 * phase + num / 2 * x / box.width * 2 * Math.PI)
+// }
 
 function calcCents(base, freq) {
   return -(1200 / Math.log10(2)) * (Math.log10(base / freq)) % 1200
 }
 </script>
 
-<style lang="postcss" scoped>
-svg {
-  touch-action: none;
-  user-select: none;
-}
-</style>
-  
 <template lang="pug">
 .flex.flex-col.fullscreen-container.rounded-3xl#screen
   .controls.flex.flex-wrap.justify-center.-mb-8.z-2.mt-8
     .is-group.flex.items-center.mr-2.gap-2
       button.shadow.p-3.m-1.border-1.border-current.rounded(
-        @click="time.move = !time.move"
         v-tooltip.bottom="'Toggle animation'"
+        @click="time.move = !time.move"
+
       )
         .i-la-play(v-if="!time.move")
         .i-la-pause(v-if="time.move")
       control-rotary(
+        v-model="overtones.count"
         v-tooltip.bottom="'Number of harmonics'"
         :min="overtones.min"
         :max="overtones.max"
         :step="1"
         :fixed="0"
         param="count"
-        v-model="overtones.count"
+
         )
       control-rotary(
+        v-model="time.speed"
         v-tooltip.bottom="'Speed of animation'"
         :min="0.2"
         :max="2"
         :step="0.1"
         :fixed="1"
         param="speed"
-        v-model="time.speed"
         )
 
     .is-group.flex.items-center.gap-2
-      control-piano(v-model:pitch="globalScale.tonic" v-tooltip.bottom="'Fundamental pitch'")
+      control-piano(
+        v-model:pitch="globalScale.tonic" 
+        v-tooltip.bottom="'Fundamental pitch'")
       control-rotary(
+        v-model="fundamental.octave"
+        v-tooltip.bottom="'Octave of the fundamental pitch'"
         :min="1"
         :max="5"
         :step="1"
         :fixed="0"
         param="octave"
-        v-tooltip.bottom="'Octave of the fundamental pitch'"
-        v-model="fundamental.octave"
         )
     .is-group.flex.items-center.ml-2.p-2
       full-screen
   .relative.flex.flex-col.items-center
     button.shadow.p-3.m-1.border-1.border-current.rounded.absolute.top-80(
-      @click="sound.init()"
       v-if="!sound.enabled"
+      @click="sound.init()"
     )
       .i-bi-volume-up
   svg#overtones.w-full.max-h-90vh(
@@ -408,3 +406,10 @@ svg {
         :opacity="1 - i / (overtones.count + 2)"
       )
 </template>
+
+<style lang="postcss" scoped>
+svg {
+  touch-action: none;
+  user-select: none;
+}
+</style>

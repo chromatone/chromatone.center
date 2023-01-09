@@ -2,9 +2,10 @@
 import { freqColor } from '#/use/calculations'
 import { noteColor } from "#/use/colors";
 import { useSvgMouse } from '#/use/mouse.js'
-import { MonoSynth, gainToDb, Gain } from 'tone'
+import { MonoSynth, gainToDb } from 'tone'
 import { notes } from '#/use/theory'
 import { createChannel } from '#/use/audio';
+import { reactive, computed, watch } from 'vue'
 
 const box = {
   width: 1200,
@@ -88,7 +89,7 @@ watch(() => mouse.normY, y => {
 })
 
 
-watch([() => freq.hz, () => mouse.pressed], (hz) => {
+watch([() => freq.hz, () => mouse.pressed], () => {
   if (!synth.started) return
   if (mouse.pressed) {
     if (!synth.playing && mouse.inside) {
@@ -111,23 +112,28 @@ watch([() => freq.hz, () => mouse.pressed], (hz) => {
 .fullscreen-container#screen.rounded-3xl
   full-screen.absolute.top-2.right-2
   svg#dissonance.w-full.my-20.select-none(
+    ref="svg",
     version="1.1",
     baseProfile="full",
-    :viewBox="`${-box.padW} ${-box.padH} ${box.width + 2 * box.padW} ${box.height + box.padH}`",
-    xmlns="http://www.w3.org/2000/svg",
-    @mousemove="mouse.getCursorPosition"
-    ref="svg"
     style="touch-action:none"
+    :viewBox="`${-box.padW} ${-box.padH} ${box.width + 2 * box.padW} ${box.height + box.padH}`",
+    xmlns="http://www.w3.org/2000/svg"
+    @mousemove="mouse.getCursorPosition"
     )
     defs
       linearGradient#intervalGradient
-        stop(offset="0%" :stop-color="freqColor(freq.main)")
-        stop(offset="100%" :stop-color="freqColor(freq.hz)")
+        stop(
+          offset="0%" 
+          :stop-color="freqColor(freq.main)")
+        stop(
+          offset="100%" 
+          :stop-color="freqColor(freq.hz)")
     g.cursor-pointer(
       v-for="(fr, f) in [220, 440]"
       :key="fr"
-      @click="freq.main = fr"
+
       :transform="`translate(${10 + f * 140},0)`"
+      @click="freq.main = fr"
       )
       rect(
         x="0"
@@ -135,7 +141,6 @@ watch([() => freq.hz, () => mouse.pressed], (hz) => {
         width="130"
         height="60"
         fill="currentColor"
-        opacity="0.1"
         ry="20"
         :opacity="freq.main == fr ? 0.3 : 0.1"
       )
@@ -160,8 +165,8 @@ watch([() => freq.hz, () => mouse.pressed], (hz) => {
     g.cursor-pointer(
       v-for="(osc, o) in synth.oscs"
       :key="osc"
-      @click="synth.setOsc(osc)"
       :transform="`translate(${870 + o * 240},0)`"
+      @click="synth.setOsc(osc)"
       )
       rect(
         x="0"
@@ -169,7 +174,6 @@ watch([() => freq.hz, () => mouse.pressed], (hz) => {
         :width="osc.length * 26"
         height="60"
         fill="currentColor"
-        opacity="0.1"
         ry="20"
         :opacity="synth.osc == osc ? 0.3 : 0.1"
       )
@@ -357,11 +361,11 @@ watch([() => freq.hz, () => mouse.pressed], (hz) => {
     @click.stop.prevent="initSynth()"
     )
       rect(
-        x=400
-        y=200
-        width=400
-        height=100
-        rx=20
+        x="400"
+        y="200"
+        width="400"
+        height="100"
+        rx="20"
         fill="gray"
         stroke="white"
       )

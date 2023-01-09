@@ -4,6 +4,7 @@ import { noteColor } from "#/use/colors"
 import { now, PolySynth, Synth, Transport } from 'tone'
 import { createAndDownloadBlobFile } from '#/use/midiRender'
 import { useAudio } from '#/use/audio'
+import { reactive, computed } from 'vue'
 
 let midiData
 

@@ -4,6 +4,7 @@ import BeatBar from './bar.vue'
 import { renderMidi } from '#/use/midiRender'
 import { tracks, maxRatio } from '#/use/sequence'
 import { loops } from './loops';
+import { reactive, ref, watch } from 'vue'
 
 const props = defineProps({
   meters: { type: Array, default: null },

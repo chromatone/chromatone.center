@@ -1,7 +1,8 @@
 <script setup>
 import { noteColor } from "#/use/colors"
+import { ref } from "vue";
 const props = defineProps({
-  note: Object,
+  note: { type: Object, default: () => { } },
   active: Boolean
 });
 

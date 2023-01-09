@@ -1,4 +1,6 @@
 <script setup>
+import { useStorage } from '@vueuse/core';
+import { reactive } from 'vue'
 const state = reactive({
   chroma: useStorage('degrees-chroma', '101011010100'),
 });
@@ -15,4 +17,5 @@ const state = reactive({
 </template>
 
 <style lang="postcss" scoped>
+
 </style>

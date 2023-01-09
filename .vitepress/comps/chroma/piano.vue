@@ -3,6 +3,7 @@ import { rotateArray } from '#/use/calculations'
 import { noteColor } from '#/use/colors'
 import { notes } from '#/use/theory'
 import { globalScale } from '#/use/chroma'
+import { reactive, computed } from 'vue'
 
 const allNotes = [...notes].map((n, i) => ({ name: n, pitch: i }))
 

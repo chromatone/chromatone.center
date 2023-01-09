@@ -1,5 +1,9 @@
 <script setup>
-const props = defineProps(['length']);
+import { computed, reactive } from 'vue';
+
+defineProps({
+  length: { type: Number, default: 0 }
+});
 
 const fretboard = reactive({
   semitone: 1.05946309436,
@@ -33,8 +37,8 @@ g#guitar
     opacity="0.3"
   )
   rect#fretboard(
-    x=0
-    y=0
+    x="0"
+    y="0"
     :width="length * 0.702"
     height="12"
     fill="gray"
@@ -51,9 +55,9 @@ g#guitar
     stroke-width="1"
   )
   circle(
-    r=15
+    r="15"
     :cx="length * 0.8"
-    cy=6
+    cy="6"
     fill="hsla(0,0%,0%,0.1)"
   )
   circle(
@@ -100,4 +104,5 @@ g#guitar
 </template>
 
 <style lang="postcss" scoped>
+
 </style>

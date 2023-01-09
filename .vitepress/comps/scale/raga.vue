@@ -1,7 +1,7 @@
 <script setup>
-import { globalScale } from '#/use/chroma'
-import { noteColor } from "#/use/colors"
 import melakarta from '#/db/melakarta.json'
+import { useStorage } from '@vueuse/core';
+import { reactive, computed, watch } from 'vue'
 
 let mela = {}
 

@@ -1,5 +1,6 @@
 <script setup>
 import { midi, learnCC } from '#/use/midi'
+import { reactive, computed, watch, watchEffect } from 'vue'
 
 const props = defineProps({
   max: { type: Number, default: 100, },

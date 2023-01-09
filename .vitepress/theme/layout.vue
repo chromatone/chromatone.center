@@ -1,6 +1,8 @@
 <script setup>
 import { useRoute, useData } from "vitepress";
 import { drawingEnabled, drawingPinned } from '#/theme/components/draw/draw'
+import { ref, watch } from "vue";
+
 // generic state
 const route = useRoute();
 

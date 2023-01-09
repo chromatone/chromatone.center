@@ -1,4 +1,7 @@
 <script setup>
+
+import { reactive, computed } from 'vue'
+
 const props = defineProps({
   fill: { type: String, default: 'gray' },
   stroke: { type: String, default: 'none' },

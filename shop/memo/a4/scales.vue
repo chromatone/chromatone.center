@@ -2,8 +2,8 @@
 import drawKeys from './keys.vue'
 
 import { rotateArray } from '#/use/calculations'
-import { noteColor } from "#/use/colors";
 import { notes } from '#/use/theory'
+import { reactive } from 'vue';
 
 const box = reactive({
   width: 210,
@@ -48,16 +48,18 @@ const scales = {
     dominant-baseline="middle"
     )
     rect(
-      x=-2
+      x="-2"
       :y="- box.head"
       :width="box.width + box.padding.x"
       :height="box.height + box.head"
       stroke="none"
       stroke-width="0.2"
-      rx=4
+      rx="4"
       fill="none"
       )
-    g(font-size="4" font-weight="bold")
+    g(
+      font-size="4" 
+      font-weight="bold")
       text(
         :x="13"
         y="-2"
@@ -66,21 +68,36 @@ const scales = {
         :x="108"
         y="-2"
       ) Minor
-      line(x1="5" x2="93" y1="1" y2="1" stroke-width="0.25" stroke="black")
-      line(x1="100" x2="208" y1="1" y2="1" stroke-width="0.25" stroke="black")
+      line(
+        x1="5" 
+        x2="93" 
+        y1="1" 
+        y2="1" 
+        stroke-width="0.25" 
+        stroke="black")
+      line(
+        x1="100" 
+        x2="208" 
+        y1="1" 
+        y2="1" 
+        stroke-width="0.25" 
+        stroke="black")
     g(font-size="4")
       text(
-        v-for="(scale, i) in scales.major" :key="scale"
+        v-for="(scale, i) in scales.major" 
+        :key="scale"
         :x="box.padding.left + 12 + 22 * i"
         y="-2"
       ) {{ scale }}
       text(
-        v-for="(scale, i) in scales.minor" :key="scale"
+        v-for="(scale, i) in scales.minor" 
+        :key="scale"
         :x="box.padding.left + 108 + 22 * i"
         y="-2"
       ) {{ scale }}
     g(
       v-for="(tonic, pitch) in notes"
+      :key="pitch"
       :transform="`translate(0, ${pitch * (box.height - box.padding.y) / 12})`"
       ) 
       rect(
@@ -99,7 +116,8 @@ const scales = {
         :tonic="pitch"
       )
       chord-circle(
-        v-for="(chord, maj) in chords.majors" :key="chord"
+        v-for="(chord, maj) in chords.majors" 
+        :key="chord"
         :pitch="(chord.pitch + pitch) % 12"
         :chroma="chord.chroma"
         :transform="`translate(${maj * 22 + 12 + box.padding.left}, 14)`"
@@ -107,7 +125,8 @@ const scales = {
         :tonic="pitch"
       )
       chord-circle(
-        v-for="(chord, maj) in chords.minors" :key="chord"
+        v-for="(chord, maj) in chords.minors" 
+        :key="chord"
         :pitch="(chord.pitch + pitch) % 12"
         :chroma="chord.chroma"
         :transform="`translate(${maj * 22 + 108 + box.padding.left}, 14)`"

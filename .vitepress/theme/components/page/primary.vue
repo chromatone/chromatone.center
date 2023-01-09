@@ -1,11 +1,26 @@
 <script setup>
 import { useRoute } from 'vitepress'
-
+import { drawingEnabled, drawingPinned } from '#/theme/components/draw/draw'
 const route = useRoute()
 </script>
 
 <template lang="pug">
-main
+main#content
+  client-only
+    draw-layer.z-20
+    cast-camera
+    .bottom-0.fixed.w-full.z-3000.flex.justify-center(v-if="drawingEnabled || drawingPinned")
+      draw-controls
+    button.fixed.bottom-32.right-24px.text-xl.z-1000(
+      @click="drawingEnabled = !drawingEnabled"
+      :class="{ active: drawingEnabled }"
+      v-tooltip.top="'Draw on the screen'"
+      )
+      .i-carbon-pen
+  full-screen.text-xl.fixed.bottom-44.right-24px.z-1000
+  shop-cart-panel
+  state-dark.fixed.bottom-18.right-14px.z-1000
+  nav-scroll.fixed.bottom-8.right-24px.z-1000
   page-headline
   transition(name="fade")
     .content-container(:key="route.path")
@@ -24,6 +39,6 @@ main {
 }
 
 .content-container {
-  @apply flex flex-col flex-1 items-stretch;
+  @apply flex flex-col flex-1 items-stretch bg-light-400 dark-bg-dark-400;
 }
 </style>

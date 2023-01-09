@@ -7,28 +7,30 @@ const props = defineProps({
 })
 
 const element = ref()
-
-onMounted(() => {
-  nextTick(() => {
-    if (props.el) {
-      element.value = props.el
-    } else {
-      element.value = document.getElementById('screen')
-    }
-    full.value = useFullscreen(element.value)
-  })
-
-
-})
-
 const full = ref()
 
+onMounted(() => {
+  nextTick(init)
+})
+
 function toggle() {
-  if (!full.value) full.value = useFullscreen(element.value);
+  init()
   full.value.toggle()
 }
 
 const supported = computed(() => full.value?.isSupported);
+
+function init() {
+  if (props.el) {
+    element.value = props.el
+  } else {
+    element.value = document.getElementById('screen')
+  }
+  if (!element.value) element.value = document.getElementById('content')
+  full.value = useFullscreen(element.value)
+}
+
+
 
 </script>
 

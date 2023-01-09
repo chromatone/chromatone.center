@@ -3,7 +3,6 @@ import Components from 'unplugin-vue-components/vite'
 import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
 
-// import AutoImport from 'unplugin-auto-import/vite'
 import { VitePWA } from 'vite-plugin-pwa'
 
 import Pages from "vite-plugin-pages";
@@ -23,20 +22,6 @@ const dirname = path.dirname(filename);
 export default defineConfig({
   base: './',
   plugins: [
-    // AutoImport({
-    //   // targets to transform
-    //   include: [
-    //     /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
-    //     /\.vue\??/, // .vue
-    //   ],
-    //   imports: [
-    //     {
-    //       'vue': ['computed', 'ref', 'reactive', 'watch', 'watchEffect', 'onMounted', 'onBeforeUnmount', 'shallowRef', 'shallowReactive', 'nextTick'],
-    //       '@vueuse/core': ['useStorage', 'useRafFn', 'useDark'],
-    //       '@vueuse/math': ['useClamp',]
-    //     },
-    //   ],
-    // }),
     Pages({
       dirs: [
         { dir: ".", baseRoute: "." },

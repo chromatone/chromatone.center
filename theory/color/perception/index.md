@@ -8,21 +8,21 @@ cover: color-sensitivity.jpg
 
 ## Human eye
 
-![svg](./images/Eyesection.svg)
-
-![svg](./images/retina.jpg)
-
-![svg](./images/Human-visual-pathway.svg)
-
 The perception of color derives from the stimulation of cone cells in the human eye by visible light. Light, containing all spectral colors is perceived white. Color of an object depends on the range of wavelengths of light that are absorbed or reflected by its surface. The sense of a particular color is produced in nervous system by combining signal from three types of cones, sensitive to red, green and blue ranges of the spectrum.
+
+<img src="./images/Eyesection.svg" />
+
+<img src="./images/retina.jpg" />
+
+<img src="./images/Human-visual-pathway.svg" />
 
 ![](./images/Distribution_of_Cones_and_Rods_on_Human_Retina.png)
 
 The human eye with normal vision has three kinds of cone cells that sense light, having peaks of spectral sensitivity in short ("S", 420 nm – 440 nm), middle ("M", 530 nm – 540 nm), and long ("L", 560 nm – 580 nm) wavelengths. These cone cells underlie human color perception in conditions of medium and high brightness; in very dim light color vision diminishes, and the low-brightness, monochromatic "night vision" receptors, denominated "rod cells", become effective. Thus, three parameters corresponding to levels of stimulus of the three kinds of cone cells, in principle describe any human color sensation. Weighting a total light power spectrum by the individual spectral sensitivities of the three kinds of cone cells renders three effective values of stimulus; these three values compose a tristimulus specification of the objective color of the light spectrum. The three parameters, denoted "S", "M", and "L", are indicated using a 3-dimensional space denominated the "LMS color space", which is one of many color spaces devised to quantify human color vision.
 
-![](./color-sensitivity.jpg)
+<img src="./color-sensitivity.jpg" />
 
-![](./images/Cone-fundamentals-with-srgb-spectrum.svg)
+<img src="./images/Cone-fundamentals-with-srgb-spectrum.svg" />
 
 > <img src="./images/cie-1931.svg">
 >
@@ -34,7 +34,7 @@ The human eye with normal vision has three kinds of cone cells that sense light,
 
 ## Opposite color vision theory
 
-![](./images/Diagram_of_the_opponent_process.png)
+<img src="./images/Diagram_of_the_opponent_process.png" />
 
 ## Just noticable difference
 

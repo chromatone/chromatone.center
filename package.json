@@ -76,7 +76,6 @@
 		"patch-vue-directive-ssr": "^0.0.1",
 		"pug": "3.0.2",
 		"unocss": "^0.48.3",
-		"unplugin-auto-import": "^0.12.1",
 		"unplugin-icons": "^0.15.1",
 		"unplugin-vue-components": "^0.22.12",
 		"vite": "4.0.4",

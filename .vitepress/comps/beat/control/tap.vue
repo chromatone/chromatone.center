@@ -19,7 +19,7 @@ g.tap.cursor-pointer
       stroke-width="4"
       v-tooltip.left="'Tap tempo'"
     )
-    fluent-tap-double-20-regular(
+    i-fluent-tap-double-20-regular(
       font-size="55"
       transform="translate(2,8)"
       fill="currentColor"

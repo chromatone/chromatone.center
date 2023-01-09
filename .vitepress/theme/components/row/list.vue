@@ -26,6 +26,6 @@ const list = pages[route.path]
 
 <style lang="postcss" scoped>
 .list-blocks {
-  @apply flex flex-col max-w-65ch mx-auto w-full;
+  @apply flex flex-col max-w-65ch ml-8 w-full;
 }
 </style>

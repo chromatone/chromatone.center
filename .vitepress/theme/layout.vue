@@ -1,6 +1,6 @@
 <script setup>
 import { useRoute, useData } from "vitepress";
-import { drawingEnabled, drawingPinned } from '#/theme/components/draw/draw'
+
 import { ref, watch } from "vue";
 
 // generic state
@@ -18,23 +18,8 @@ watch(route, () => {
 
 <template lang="pug">
 .theme
-  client-only
-    cast-camera
-    .bottom-0.fixed.w-full.z-3000.flex.justify-center(v-if="drawingEnabled || drawingPinned")
-      draw-controls
-    button.fixed.bottom-32.right-24px.text-xl.z-1000(
-      @click="drawingEnabled = !drawingEnabled"
-      :class="{ active: drawingEnabled }"
-      v-tooltip.top="'Draw on the screen'"
-      )
-      .i-carbon-pen
-  shop-cart-panel
-  state-dark.fixed.bottom-18.right-14px.z-1000
-  nav-scroll.fixed.bottom-8.right-24px.z-1000
   nav-bar(@toggle="openSideBar = !openSideBar")
   .main
-    client-only
-      draw-layer.z-20
     side-bar(:open="openSideBar" @close="openSideBar = false")
     home(v-if="$frontmatter.template == 'home'")
     page-primary(v-else)

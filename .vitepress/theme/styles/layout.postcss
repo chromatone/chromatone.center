@@ -312,7 +312,7 @@ form {
 }
 
 .content {
-	@apply m-auto py-8 z-6 m-1 sm-m-2 md-m-4 lg-m-8 xl-(m-16);	
+	@apply m-2 py-8 z-6 m-1 sm-m-2 md-m-4 lg-m-8 xl-(m-16) .leading-loose;	
 }
 
 .content h1,
@@ -320,7 +320,7 @@ form {
 .content h3,
 .content h4,
 .content h5 {
-		@apply max-w-40rem mx-auto p-2 w-full;
+		@apply max-w-40rem mx-2 p-2 w-full;
 }
 
 .content h2 {
@@ -331,32 +331,41 @@ form {
 		line-height: 1.25;
 		font-size: 1.65rem;
 		/* overflow-x: auto; */
-	}
-	.content ul,
-	.content ol {
-		@apply w-full;
-	}
-	.content p,
-	.content ul,
-	.content ol,
-	.content blockquote,
-	.content pre {
-		@apply max-w-55ch h-auto flex-1 m-auto p-4;
-	}
-	.content h1 {
-		margin-top: 1.5rem;
-		font-size: 1.9rem;
-	}
-	.content > div {
-		@apply flex flex-col items-stretch text-left;
-	}
+}
+.content ul,
+.content ol {
+	@apply w-full;
+}
+
+.content li {
+	@apply list-outside list-disc leading-loose my-4 list-item;
+}
+
+.content ol li {
+	@apply list-decimal;
+}
+
+.content p,
+.content ul,
+.content ol,
+.content blockquote,
+.content pre {
+	@apply max-w-55ch h-auto flex-1 m-2 p-4 leading-loose;
+}
+.content h1 {
+	margin-top: 1.5rem;
+	font-size: 1.9rem;
+}
+.content > div {
+	@apply flex flex-col items-stretch text-left;
+}
 
 .content h2 + h3 {
-		margin-top: -1rem;
-	}
+	margin-top: -1rem;
+}
 
 .content table {
-	@apply w-full max-w-55ch mx-auto;
+	@apply w-full max-w-55ch mx-2;
 }
 
 .content code {
@@ -368,7 +377,7 @@ form {
 }
 
 .content img {
-	@apply my-4 mx-auto rounded-lg w-full;
+	@apply my-4 mx-2 rounded-lg w-full;
 }
 
 .content img[alt="svg"] {
@@ -389,4 +398,9 @@ em {
 
 .shop-button {
 	@apply p-2 shadow-md z-6 text-white rounded-md bg-purple-500 dark-(bg-purple-600) hover--translate-y-2px cursor-pointer transition transform active_translate-y-1px hover-shadow-md;
+}
+
+
+#content:fullscreen {
+	@apply overflow-y-scroll;
 }

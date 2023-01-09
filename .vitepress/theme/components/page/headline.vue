@@ -46,7 +46,7 @@ const lightColor = computed(() => lchToHsl(siblings.value.index, siblings.value.
 
 <style lang="postcss" scoped>
 .header {
-  @apply relative flex flex-col min-h-22rem pt-32 px-4 items-center overflow-hidden transition-all duration-400 ease-in;
+  @apply relative flex min-h-22rem pt-32 px-4 items-center overflow-hidden transition-all duration-400 ease-in;
 }
 
 .cover {
@@ -69,7 +69,7 @@ const lightColor = computed(() => lchToHsl(siblings.value.index, siblings.value.
 }
 
 .meta {
-  @apply relative p-8 mb-8 bg-light-100 bg-opacity-80 z-3 max-w-65ch w-full mt-8 flex flex-col rounded-3xl shadow-xl dark-(bg-true-gray-800 bg-opacity-80);
+  @apply relative p-8 mb-8 ml-8 bg-light-100 bg-opacity-80 z-3 max-w-65ch w-full mt-8 flex flex-col rounded-3xl shadow-xl dark-(bg-true-gray-800 bg-opacity-80);
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
 }

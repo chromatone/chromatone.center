@@ -22,7 +22,8 @@ g.recorder
       style="filter:url(#shadowButton);" 
       @mousedown="$emit('close')"
       )
-    i-la-times.pointer-events-none( font-size="40px" x="-25" y="-25")
+    g.pointer-events-none
+      i-la-times( font-size="40px" x="-25" y="-25")
   g.add(v-for="(sound, s) in ['main', 'accent']" :key="sound")
     rect(
       :x="40 + s * 300"

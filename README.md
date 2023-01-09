@@ -39,7 +39,7 @@ Current tasks and progress are open [at this ClickUp project](https://sharing.cl
 
 - [Vue 3](https://v3.vuejs.org/)
   - [VueUse](https://vueuse.org)
-  - [VueUse/gesture](https://gesture.vueuse.org)
+  - [VueUse/Gesture](https://gesture.vueuse.org)
   - [Floating Vue](https://floating-vue.starpad.dev)
 - [Vite](https://vitejs.dev/)
   - [unplugin-vue-components](https://github.com/antfu/unplugin-vue-components)
@@ -47,11 +47,11 @@ Current tasks and progress are open [at this ClickUp project](https://sharing.cl
     - [Icônes](https://icones.js.org/)
   - [Vitepress](https://vitepress.vuejs.org/guide/global-component.html#content)
     - i18n like in [vuepress](https://vuepress.vuejs.org/guide/i18n.html#default-theme-i18n-config)
-- [Windi CSS](https://windicss.org/)
+- [UnoCSS](https://github.com/unocss/unocss)
 - [Pug](https://pugjs.org/api/getting-started.html)
 - [TonalJs](https://github.com/tonaljs/tonal)
 - [AbcJs](https://paulrosen.github.io/abcjs/)
-- [WebMIDI.js](https://webmidijs.org/docs/)
+- [WebMidi.js](https://webmidijs.org/docs/)
 - graphics
   - [colord](https://www.npmjs.com/package/colord)
   - [PaperJs](http://paperjs.org)

@@ -1,5 +1,4 @@
 import { defineConfig } from 'vite'
-import AutoImport from 'unplugin-auto-import/vite'
 import { resolve } from 'path'
 
 
@@ -13,20 +12,7 @@ const dirname = path.dirname(filename);
 export default defineConfig({
   base: './',
   plugins: [
-    AutoImport({
-      // targets to transform
-      include: [
-        /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
-        /\.vue\??/, // .vue
-      ],
-      imports: [
-        'vue',
-        {
-          '@vueuse/core': ['useStorage', 'useRafFn', 'useDark'],
-          '@vueuse/math': ['useClamp',]
-        },
-      ],
-    }),
+
 
   ],
   optimizeDeps: {

@@ -17,7 +17,7 @@ var isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
 </script>
 
 <template lang="pug">
-.m-auto.layer.w-full.z-40.flex.flex-col
+.layer.w-full.z-40.flex.flex-col
   .p-2.border.border-red-500.text-red-500.flex.flex-wrap.gap-2.w-full(v-if="!midi.enabled") MIDI is not available. Please 
     template(v-if="isFirefox")
       a.font-normal.underline(href="/site_permissions_for_chromatonecenter-1.0-an+fx.xpi") Install site permission (recent Firefox)
@@ -28,7 +28,7 @@ var isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
     span or 
     .font-normal.text-dark-200.dark-text-light-100 use your PC keyboard
 
-  .flex.flex-col.gap-1.justify-center.flex-wrap.py-2.m-auto.bg-light-400.dark-bg-dark-400(v-else)
+  .flex.flex-col.gap-1.justify-center.flex-wrap.bg-light-400.dark-bg-dark-400(v-else)
     .flex.is-group
       .flex.m-2
         a.font-normal.p-2.border.border-green-500.text-green-500.select-none.rounded-lg(href="/practice/midi/monitor/") 

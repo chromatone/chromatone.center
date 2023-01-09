@@ -20,7 +20,6 @@ function dragZoom(ev) {
 <template lang="pug">
 .flex.flex-col
   #screen.flex.flex-col.w-full.items-stretch.relative.fullscreen-container.rounded-3xl.shadow-xl(v-drag="dragZoom")
-    full-screen.absolute.top-2.right-2
     .absolute.top-4.left-4.flex.items-center.select-none
       .i-la-times 
       .p-0 {{ radar.zoom }}

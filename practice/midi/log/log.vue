@@ -15,7 +15,7 @@ const { midi, } = useMidi();
 </script>
 
 <template lang="pug">
-.flex.flex-col.gap-1.mb-8.overflow-x-scroll.p-4.font-mono
+.flex.flex-col.gap-1.mb-8.overflow-x-scroll.p-4.font-mono#screen
   transition-group(
     name="fall" 
     mode="out-in")

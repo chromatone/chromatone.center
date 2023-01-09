@@ -16,7 +16,7 @@ export const tempo = reactive({
   initialized: false,
   bpm: useClamp(useStorage("tempo-bpm", 100), 10, 500),
   clock: null,
-  midiClock: useStorage("midi-clock-out", true),
+  midiClock: useStorage("midi-clock-out", false),
   blink: false,
   started: false,
   playing: false,
@@ -81,9 +81,9 @@ export function useTempo() {
 
     metro.clock = new Loop(t => {
       if (!tempo.midiClock) return
-
-      WebMidi.outputs.forEach(output => output.sendClock(t))
-
+      Draw.schedule(() => {
+        WebMidi.outputs.forEach(output => output.sendClock())
+      }, t)
     }, '8i').start(0)
 
     metro.loop = new Loop((time) => {

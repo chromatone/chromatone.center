@@ -11,8 +11,11 @@ import midiRouter from './router.vue'
 </script>
 
 <client-only>
-  <midi-panel class="mb-4" />
+<div id="screen">
+ 
   <midi-router class="mb-20" />
+   <midi-panel class="mb-4" />
+</div>
 </client-only>
 
 Click on the desired output under the input you want to send signals from.

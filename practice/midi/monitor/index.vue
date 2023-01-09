@@ -19,8 +19,8 @@ function sortNotes(notes) {
 </script>
 
 <template lang="pug">
-.flex.flex-col
-  midi-panel(:to-channel="false")
+.flex.flex-col.gap-4
+
   .fullscreen-container#screen(@mouseleave="active = false")
 
     .flex.w-full.h-full.mt-4
@@ -46,6 +46,7 @@ function sortNotes(notes) {
           :cc="cc"
           @update="setCC(cc, $event)"
         )
+  midi-panel(:to-channel="false")
 </template>
 
 <style lang="postcss"  scoped>

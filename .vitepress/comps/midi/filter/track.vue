@@ -1,5 +1,7 @@
 <script setup>
 import { reactive, computed } from 'vue'
+import { noteColor } from '#/use/colors'
+
 const props = defineProps({
   track: Object,
 });

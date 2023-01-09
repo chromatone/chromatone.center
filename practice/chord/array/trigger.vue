@@ -4,6 +4,7 @@ import { Frequency } from 'tone'
 import { synthAttack, synthRelease } from '#/use/synth'
 import { midiPlay, midiStop } from '#/use/midi'
 import { computed, ref } from 'vue';
+import { noteColor } from '#/use/colors'
 
 const props = defineProps({
   pressed: Boolean,

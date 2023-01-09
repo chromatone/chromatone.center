@@ -7,11 +7,12 @@
 		"url": "https://github.com/chromatone/chromatone.center.git"
 	},
 	"funding": {
-		"type": "ko-fi",
-		"url": "https://ko-fi.com/davay"
+		"type": "github",
+		"url": "https://github.com/sponsors/davay42"
 	},
 	"license": "MIT",
 	"author": "Davay42",
+	"type": "module",
 	"exports": {
 		".": {
 			"import": "./lib/chromatone-center.js",
@@ -37,7 +38,7 @@
 		"@stripe/stripe-js": "^1.46.0",
 		"@tonaljs/tonal": "^4.8.0",
 		"@tonejs/midi": "^2.0.28",
-		"@unocss/reset": "^0.48.2",
+		"@unocss/reset": "^0.48.3",
 		"@vueuse/core": "^9.10.0",
 		"@vueuse/gesture": "2.0.0-beta.1",
 		"@vueuse/math": "^9.10.0",
@@ -65,16 +66,16 @@
 		"webmidi": "^3.0.25"
 	},
 	"devDependencies": {
-		"@iconify/json": "^2.2.3",
-		"@unocss/extractor-pug": "^0.45.18",
-		"@volar/vue-language-plugin-pug": "1.0.22",
+		"@iconify/json": "^2.2.4",
+		"@unocss/extractor-pug": "^0.48.3",
+		"@volar/vue-language-plugin-pug": "1.0.24",
 		"eslint": "^8.31.0",
 		"eslint-plugin-vue": "^9.8.0",
 		"eslint-plugin-vue-pug": "^0.5.5",
 		"markdown-it-external-links": "^0.0.6",
 		"patch-vue-directive-ssr": "^0.0.1",
 		"pug": "3.0.2",
-		"unocss": "^0.45.18",
+		"unocss": "^0.48.3",
 		"unplugin-auto-import": "^0.12.1",
 		"unplugin-icons": "^0.15.1",
 		"unplugin-vue-components": "^0.22.12",

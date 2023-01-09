@@ -1,6 +1,8 @@
 <script setup>
-import { useRafFn } from "@vueuse/core";
+import { useRafFn, useStorage } from "@vueuse/core";
 import { midi } from "#/use/midi.js";
+import { computed, onMounted, reactive, ref, watch } from "vue";
+import { useClamp } from "@vueuse/math";
 
 const screen = ref();
 
@@ -58,7 +60,7 @@ onMounted(() => {
 function initiate() {
   if (state.initiated) return;
   state.initiated = true;
-  const { resume, pause } = useRafFn(onCanvasDraw);
+  useRafFn(onCanvasDraw);
 }
 
 function onCanvasDraw() {
@@ -136,7 +138,9 @@ function dragSpeed(drag) {
 <template lang="pug">
 .flex.flex-col.items-center.w-full
   .fullscreen-container.rounded-3xl(ref="screen")
-    control-start.absolute( @click="initiate()", v-if="!state.initiated") Start
+    control-start.absolute( 
+      v-if="!state.initiated", 
+      @click="initiate()") Start
     full-screen.absolute.bottom-2.right-2(:el="screen")
     button.text-button.absolute.top-2.right-2(@click="state.direction ? state.direction = 0 : state.direction = 1")
       .i-la-arrow-up(v-if="state.direction == 1")

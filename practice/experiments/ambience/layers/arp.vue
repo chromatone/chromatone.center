@@ -12,6 +12,8 @@ import {
 
 import { notes } from '#/use/theory'
 import { createChannel } from '#/use/audio'
+import { useStorage } from '@vueuse/core';
+import { ref, watch } from 'vue';
 
 const options = useStorage("ambient-arp-options", {
   attackNoise: 2,
@@ -61,7 +63,7 @@ watch(active, a => {
 
 </script>
 
-<template lang='pug'>
+<template lang="pug">
 .flex.flex-col.gap-4
   .flex.items-center.flex-wrap
     .font-bold Pluck
@@ -69,31 +71,42 @@ watch(active, a => {
       .i-la-play(v-if="!active")
       .i-la-pause(v-else)
     .flex.flex-wrap.gap-2
-      button.p-1.text-xs(v-for="(n, i) in notes" :key="n" @click="note = i" :class="{ active: i == note }") {{ n }}
+      button.p-1.text-xs(
+        v-for="(n, i) in notes" 
+        :key="n" 
+        :class="{ active: i == note }" 
+        @click="note = i") {{ n }}
   .flex.flex-wrap.gap-4
 
 
     clamped-noise(
-      title="Octave" instrument="Arp" 
-      :min="2" :max="6"
+      title="Octave" 
+      instrument="Arp" 
+      :min="2" 
+      :max="6"
       @random="octave = Math.round($event)"
       )
     clamped-noise(
-      title="Probability" instrument="Arp" 
+      title="Probability" 
+      instrument="Arp" 
       @random="loop.probability = $event"
       )
     clamped-noise(
-      title="Low pass" instrument="Arp" 
-      :min="50" :max="10000" 
+      title="Low pass" 
+      instrument="Arp" 
+      :min="50" 
+      :max="10000" 
       @random="filter.frequency.rampTo($event)"
       )
     clamped-noise(
-      title="Pan" instrument="Arp" 
+      title="Pan" 
+      instrument="Arp" 
       :min="-1" 
       @random="panner.pan.rampTo($event)"
       )
     clamped-noise(
-      title="Volume" instrument="Arp" 
+      title="Volume" 
+      instrument="Arp" 
       @random="gain.gain.rampTo($event)"
       )
 

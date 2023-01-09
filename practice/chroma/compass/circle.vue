@@ -1,13 +1,14 @@
 <script setup>
 import { isInChroma, getCircleCoord, rotateArray } from '#/use/calculations'
 import { noteColor } from '#/use/colors'
-import { lchToHsl, chromaColorMix } from "#/use/colors.js";
-import { Chord, Note } from '@tonaljs/tonal'
+import { chromaColorMix } from "#/use/colors.js";
+import { Note } from '@tonaljs/tonal'
 import { scaleType, chordType, notes } from '#/use/theory'
 import { globalScale } from '#/use/chroma'
 import { Frequency } from 'tone'
-import { midiOnce, midiAttack, midiRelease, midiPlay, midiStop } from '#/use/midi.js'
+import { midiOnce, midiPlay, midiStop } from '#/use/midi.js'
 import { synthOnce, synthAttack, synthRelease } from '#/use/synth.js'
+import { computed, nextTick, ref } from 'vue';
 
 const props = defineProps({
   chroma: {
@@ -30,9 +31,9 @@ const chord = computed(() => {
   return chordType.get(props.chroma)
 })
 
-const scaleList = computed(() => {
-  return Chord.chordScales(chord.value.aliases[0])
-})
+// const scaleList = computed(() => {
+//   return Chord.chordScales(chord.value.aliases[0])
+// })
 
 const scaleLines = computed(() => {
   let arr = rotateArray(props.scaleChroma.split(''), -globalScale.tonic)
@@ -175,11 +176,11 @@ svg.max-h-3xl.w-full.transition-all.duration-400.ease-in-out(
       :y2="getCircleCoord(globalScale.tonic + i).y"
     )
   g.around(
-    style="cursor:pointer"
-    v-for="(active, i) in chroma.split('')", 
-    :key="i",
-    @click="react(i)",
-    :opacity="isInChord(i) ? 1 : 0.3"
+    v-for="(active, i) in chroma.split('')"
+    :key="i", 
+    style="cursor:pointer",
+    :opacity="isInChord(i) ? 1 : 0.3",
+    @click="react(i)"
   )
     circle.note(
       style="transform-box: fill-box; transform-origin: center center;"
@@ -239,7 +240,6 @@ svg.max-h-3xl.w-full.transition-all.duration-400.ease-in-out(
     ) {{ !scaleType.get(chroma).empty ? scaleType.get(chroma).name : '' }}
   text(
     v-if="!scaleType.get(scaleChroma).empty"
-    @click="$emit('clearScale')"
     :fill="noteColor(globalScale.tonic)"
     x="50",
     y="63",
@@ -248,6 +248,7 @@ svg.max-h-3xl.w-full.transition-all.duration-400.ease-in-out(
     font-family="Commissioner, sans-serif"
     text-anchor="middle",
     dominant-baseline="middle"
+    @click="$emit('clearScale')"
     ) {{ !scaleType.get(scaleChroma).empty ? scaleType.get(scaleChroma).name : '' }} &times;
 
   line.line(

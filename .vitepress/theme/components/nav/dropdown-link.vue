@@ -34,7 +34,7 @@ function toggle() {
         
 </template>
 
-<style scoped >
+<style scoped lang="postcss">
 .nav-dropdown-link {
   @apply relative h-36px overflow-hidden cursor-pointer lg-(h-auto overflow-visible);
 }

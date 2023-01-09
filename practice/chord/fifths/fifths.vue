@@ -32,14 +32,14 @@ function playChord(note, qual = 'major') {
   let nts = Note.names(chord.notes.map(n => Note.simplify(n) + 4))
   playNote(nts)
 
-};
+}
 
 function stopChord(note, qual = 'major') {
   let type = qual == 'minor' ? 'm' : ''
   let chord = Chord.get(note + type)
   let nts = chord.notes.map(n => Note.simplify(n) + 4)
   stopNote(nts)
-};
+}
 
 </script>
 
@@ -59,9 +59,9 @@ function stopChord(note, qual = 'major') {
       :key="qual"
     )
       g.around(
-        style="cursor:pointer"
         v-for="(note, i) in scale", 
         :key="i",
+        style="cursor:pointer"
         @mousedown="playChord(note.name, qual)", 
         @touchstart="playChord(note.name, qual)", 
         @mouseleave="stopChord(note.name, qual)", 
@@ -84,8 +84,8 @@ function stopChord(note, qual = 'major') {
           :cy="getCircleCoord(i, 12, 42 - getRadius(qual) * 26).y",
           :r="2"
           :fill="noteColor(note.pitch, 4, 1, 1)"
-          @click="tonic = i; scaleType = qual"
           class="opacity-20 hover-opacity-80"
+          @click="tonic = i; scaleType = qual"
         )
         circle.note(
           style="transition: all 300ms ease-out;transform-box: fill-box; transform-origin: center center;"
@@ -121,20 +121,22 @@ function stopChord(note, qual = 'major') {
         fill="none"
       )
       circle.transition-all.duration-300.cursor-pointer(
+        v-if="scaleType != 'minor'"
         :cx="50"
         :cy="8"
         :r="2"
-        v-if="scaleType != 'minor'"
         :fill="noteColor(majors[tonic].pitch)"
       )
       circle.transition-all.duration-300.cursor-pointer(
+        v-if="scaleType != 'major'"
         :cx="50"
         :cy="34"
         :r="2"
-        v-if="scaleType != 'major'"
         :fill="noteColor(minors[tonic].pitch)"
       )
-      g(v-for="(level, idx) in steps[scaleType]" :key="idx")
+      g(
+        v-for="(level, idx) in steps[scaleType]" 
+        :key="idx")
         text.pointer-events-none(
           v-for="(step, n) in level"
           :key="step"

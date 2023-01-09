@@ -1,7 +1,8 @@
 <script setup>
 import paper from 'paper'
+import { onBeforeUnmount, ref } from 'vue';
 
-const layer = new paper.Layer({
+new paper.Layer({
   name: 'poiner'
 });
 const pos = ref([0, 0]);
@@ -44,5 +45,5 @@ onBeforeUnmount(() => {
 </script>
 
 <template lang="pug">
-
+div
 </template>

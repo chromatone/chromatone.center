@@ -20,7 +20,7 @@ function useDrag(channel) {
 </script>
 
 <template lang="pug">
-.fullscreen-container.mb-8.p-4.rounded-4xl.transition-all.duration-800.ease-out(ref="screen" :style="{ backgroundColor: mix.rgb }")
+.fullscreen-container.mb-8.p-4.rounded-3xl.transition-all.duration-800.ease-out(ref="screen" :style="{ backgroundColor: mix.rgb }")
   full-screen.absolute.top-2.right-2(:el="screen")
   svg.max-h-3xl.w-full(
     version="1.1",

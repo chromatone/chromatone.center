@@ -1,3 +1,6 @@
+import { reactive, computed } from 'vue'
+import { useStorage } from "@vueuse/core";
+
 import { colord, extend } from "colord";
 import lchPlugin from "colord/plugins/lch";
 // https://www.npmjs.com/package/colord
@@ -9,6 +12,7 @@ import hwbPlugin from "colord/plugins/hwb";
 
 import { pitchColor, isInChroma } from "#/use/calculations";
 import { globalScale } from "#/use/chroma";
+
 
 extend([mixPlugin, lchPlugin, namesPlugin, labPlugin, cmykPlugin, hwbPlugin]);
 

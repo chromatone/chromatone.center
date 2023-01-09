@@ -2,18 +2,18 @@
 import { Frequency } from 'tone'
 import { pitchFreq } from '#/use/calculations'
 import { noteColor } from '#/use/colors'
-import { synthAttack, synthRelease } from '#/use/synth.js'
 import { playNote, stopNote } from '#/use/chroma'
+import { computed, ref } from 'vue';
 
 const props = defineProps({
-  note: Object,
-  r: Number,
-  pressed: Boolean,
-  available: Boolean,
-  tonic: Number,
+  note: { type: Object, default: () => { } },
+  r: { type: Number, default: 10 },
+  pressed: { type: Boolean, default: false },
+  available: { type: Boolean, default: false },
+  tonic: { type: Number, default: 0 },
 });
 
-const emit = defineEmits(['update:pressed'])
+defineEmits(['update:pressed'])
 
 const playing = ref(false)
 
@@ -25,31 +25,31 @@ const noteName = computed(() => {
 function attack() {
   playing.value = true
   playNote(noteName.value)
-};
+}
 
 function release() {
   playing.value = false
   stopNote(noteName.value)
-};
+}
 
 </script>
 
 <template lang="pug">
 g.cursor-pointer
   circle.transition-all.duration-400(
+    :r="r", 
+    :cx="0", 
+    :cy="0",  
+    :stroke-width="tonic == note.pitch ? 4 : available ? 2 : 0",
+    stroke="white"
+    :fill="playing ? noteColor(note.pitch, 4) : available ? noteColor(note.pitch, 3) : noteColor(note.pitch, 2, 0.4)"
     @mousedown="attack()", 
     @touchstart="attack()",
     @mouseenter="pressed ? attack() : null"
     @mouseup="release()", 
     @mouseleave="release()", 
     @touchend="release()", 
-    @touchcancel="release()"
-    :r="r", 
-    :cx="0", 
-    :cy="0",  
-    :stroke-width="tonic == note.pitch ? 4 : available ? 2 : 0",
-    stroke="white"
-    :fill="playing ? noteColor(note.pitch, 4) : available ? noteColor(note.pitch, 3) : noteColor(note.pitch, 2, 0.4)")
+    @touchcancel="release()")
   text(
     style="user-select: none;pointer-events: none;"
     font-size="22px"

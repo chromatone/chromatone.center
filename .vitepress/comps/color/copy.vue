@@ -8,7 +8,7 @@ const props = defineProps({
 const { copied, copyTextToClipboard } = useCopy(props.text)
 </script>
 
-<template lang='pug'>
+<template lang="pug">
 tspan.font-mono(
 
 	@mousedown="copyTextToClipboard(text)" 

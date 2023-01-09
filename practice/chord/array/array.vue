@@ -5,6 +5,7 @@ import tonalTrigger from './trigger.vue'
 import { rotateArray } from '#/use/calculations'
 import { noteColor } from '#/use/colors'
 import { notes, scales } from '#/use/theory'
+import { computed, reactive } from 'vue'
 
 const allNotes = [...notes].map((n, i) => ({ name: n, pitch: i }))
 
@@ -61,18 +62,18 @@ function hasMajor(pitch) {
     !activeSteps.value[(pitch + 4) % 12] ||
     !activeSteps.value[(pitch + 7) % 12]
   )
-};
+}
 function hasMinor(pitch) {
   return (
     !activeSteps.value[pitch] ||
     !activeSteps.value[(pitch + 3) % 12] ||
     !activeSteps.value[(pitch + 7) % 12]
   )
-};
+}
 </script>
 
 <template lang="pug">
-svg#tonal-array.rounded-4xl(
+svg#tonal-array.rounded-3xl(
   viewBox="-80 -110 1040 770"
   version="1.1",
   baseProfile="full",
@@ -94,11 +95,14 @@ svg#tonal-array.rounded-4xl(
       :rx="20"
       )
   g(
-    clip-path="url(#grid-mask)", 
+
     v-for="(shift, n) in tonal.bgRows"
+    :key="shift"
+    clip-path="url(#grid-mask)", 
     )
     g(
       v-for="(note, i) in rotateArray(fifths, shift - 1).splice(0, 7)",
+      :key="note"
       :transform="`translate(${((i - 1) * 2 * tonal.dx + ((n + 1) % 2) * tonal.dx)}, ${(n - 1) * dy})`"
       )
       polygon.chord-triangle( 
@@ -123,32 +127,37 @@ svg#tonal-array.rounded-4xl(
         ) {{ note.name }}m
   g.cursor-crosshair(
     v-for="(shift, n) in tonal.rows"
+    :key="n"
     )
     g(
       v-for="(note, i) in rotateArray(fifths, shift).splice(0, 7)", 
+      :key="note"
       :transform="`translate(${(i * 2 * tonal.dx + (n % 2) * tonal.dx)}, ${n * dy})`"
       )
       tonal-trigger(
         v-for="(chord, p) in tonal.chords", 
         :key="p", 
-        :activeSteps="activeSteps", 
+        :active-steps="activeSteps", 
         :chord="chord", 
         :p="p", 
         :note="note"
         :pressed="tonal.pressed"
         )
-  g(v-for="(shift, n) in tonal.rows")
+  g(
+    v-for="(shift, n) in tonal.rows"
+    :key="n")
     g(
       v-for="(note, i) in rotateArray(fifths, shift).splice(0, 6)",
+      :key="i"
       :transform="'translate(' + (i * 2 * tonal.dx + (n % 2) * tonal.dx) + ',' + n * dy + ')'"
       )
       tonal-note(
+        v-model:pressed="tonal.pressed"
         :available="Boolean(activeSteps[note.pitch])", 
         :pressed="tonal.pressed"
         :tonic="tonic", 
         :note="note", 
         :r="tonal.r"
-        v-model:pressed="tonal.pressed"
         )
 </template>
 

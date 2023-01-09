@@ -4,6 +4,7 @@ import CircleOverlay from './overlay.vue'
 import CircleLoop from './loop.vue'
 import { midi } from '#/use/midi'
 import { tempo } from '#/use/tempo'
+import { ref, watch } from 'vue'
 
 import { renderMidi } from '#/use/midiRender'
 import { tracks } from '#/use/sequence'
@@ -28,7 +29,7 @@ watch(() => midi.cc, cc => {
 </script>
 
 <template lang="pug">
-#screen.flex.flex-col.items-center.w-full.relative.pb-12.p-4.fullscreen-container.rounded-4xl
+#screen.flex.flex-col.items-center.w-full.relative.pb-12.p-4.fullscreen-container.rounded-3xl
   full-screen.absolute.bottom-2.right-2
   svg#metronome.w-full.max-h-90vh(
     version="1.1",
@@ -39,25 +40,25 @@ watch(() => midi.cc, cc => {
     )
     beat-control-math(transform="translate(20,50)")
     beat-control-button(
-      @click="resetTracks()"
+      v-tooltip.right="'Reset to Euclidean pattern'"
       transform="translate(20,110) scale(0.75)"
       title="Reset to Euclidean"
-      v-tooltip.right="'Reset to Euclidean pattern'"
+      @click="resetTracks()"
       )
       i-tabler-stairs
     beat-control-listen(transform="translate(10,900)")
     beat-control-tap(transform="translate(785,900)")
     beat-control-transport(transform="translate(910,-30)")
     beat-control-button(
-      @click="overlay = true"
-      transform="translate(10,750)"
       v-tooltip.right="'Toggle info overlay'"
+      transform="translate(10,750)"
+      @click="overlay = true"
       )
       i-healthicons-question
     beat-control-button(
-      @click="renderMidi(tracks)"
-      transform="translate(925,750)"
       v-tooltip.left="'Export MIDI file'"
+      transform="translate(925,750)"
+      @click="renderMidi(tracks)"
       )
       i-la-file-download
     circle-loop(

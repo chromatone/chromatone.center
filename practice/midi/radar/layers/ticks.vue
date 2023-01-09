@@ -3,6 +3,7 @@ import paper from 'paper'
 import { midi } from '#/use/midi'
 import { noteColor } from "#/use/colors"
 import { polarXY, radar } from '../radar.js'
+import { onBeforeUnmount, watch } from 'vue';
 
 const props = defineProps({
   channel: { type: Number, default: 7 },
@@ -12,7 +13,7 @@ const props = defineProps({
   rounded: { type: Boolean, default: true },
 })
 
-const view = paper.view
+
 
 const maxPoints = 100
 const points = []
@@ -57,7 +58,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template lang="pug">
-
+div
 </template>
 
 <style lang="postcss" scoped>

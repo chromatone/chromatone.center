@@ -2,23 +2,26 @@
 import { noteColor } from "#/use/colors"
 import { useMidi } from '#/use/midi'
 import { Utilities } from 'webmidi'
-const active = ref(false)
 
-const { midi, midiAttack, midiRelease, setCC } = useMidi();
+const { midi, } = useMidi();
 
-function sortNotes(notes) {
-  if (!notes) return []
-  let arr = Object.values(notes)
-  return arr.sort((a, b) => {
-    return a.number < b.number ? -1 : 1
-  })
-}
+// function sortNotes(notes) {
+//   if (!notes) return []
+//   let arr = Object.values(notes)
+//   return arr.sort((a, b) => {
+//     return a.number < b.number ? -1 : 1
+//   })
+// }
 </script>
 
-<template lang='pug'>
+<template lang="pug">
 .flex.flex-col.gap-1.mb-8.overflow-x-scroll.p-4.font-mono
-  transition-group(name="fall" mode="out-in")
-    .flex.text-sm.fall.whitespace-nowrap(v-for="ev in midi.log" :key="ev")
+  transition-group(
+    name="fall" 
+    mode="out-in")
+    .flex.text-sm.fall.whitespace-nowrap(
+      v-for="ev in midi.log" 
+      :key="ev")
       .txt CH {{ ev.message?.channel }}
       .txt {{ ev.message?.type }}
       .txt {{ ev.data }}

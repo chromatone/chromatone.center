@@ -3,8 +3,9 @@ import { getCircleCoord } from '#/use/calculations'
 import { polarXY, radar } from '../radar.js'
 import { isDark } from '#/theme/composables/state'
 import paper from 'paper'
+import { onBeforeUnmount, reactive, watch } from 'vue';
 
-const props = defineProps({
+defineProps({
   zoom: { type: Number, default: 4 }
 })
 
@@ -63,19 +64,16 @@ watch(() => radar.zoom, zoom => {
 
 })
 
-watch(isDark, dark => {
+watch(isDark, () => {
   arrow.strokeColor = isDark.value ? '#eee' : '#888'
   center.fillColor = isDark.value ? '#eee' : '#888'
 })
 
-paper.view.on('resize', ev => {
+paper.view.on('resize', () => {
   arrow.firstSegment.point = paper.view.center
   center.position = paper.view.center
   octaves.forEach(ring => ring.position = view.center)
 })
-
-const maxPoints = 100
-const points = []
 
 watch(() => radar.angle, angle => {
   let p = polarXY(paper.view.center, 400, angle)
@@ -92,7 +90,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template lang="pug">
-
+div
 </template>
 
 <style lang="postcss" scoped>

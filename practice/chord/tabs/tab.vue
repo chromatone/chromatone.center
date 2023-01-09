@@ -2,14 +2,15 @@
 import { notes as noteList } from '#/use/theory'
 import { noteColor } from "#/use/colors"
 import { colord } from 'colord'
+import { computed, reactive } from 'vue';
 const props = defineProps({
-  frets: Array,
-  fingers: Array,
-  baseFret: Number,
-  barres: Array,
-  midi: Array,
-  name: String,
-  pitch: Number,
+  frets: { type: Array, default: () => [] },
+  fingers: { type: Array, default: () => [] },
+  baseFret: { type: Number, default: 0 },
+  barres: { type: Array, default: () => [] },
+  midi: { type: Array, default: () => [] },
+  name: { type: String, default: '' },
+  pitch: { type: Number, default: 0 },
 })
 const neck = reactive({
   stringWidth: 50,
@@ -39,10 +40,10 @@ svg.max-h-360px.min-w-100px.min-h-250px(
   dominant-baseline="middle"
 )
   text(
+    v-if="name"
     font-weight="bold"
     :fill="notes.chordColor"
     font-size="16px"
-    v-if="name"
     :x="neck?.width / 2"
     :y="-30"
   ) {{ name }}
@@ -55,7 +56,9 @@ svg.max-h-360px.min-w-100px.min-h-250px(
     stroke-linecap="square"
     :stroke-width="baseFret == 1 ? 8 : 2"
   )
-  g.frets(v-for="(fret, f) in 4" :key="fret")
+  g.frets(
+    v-for="(fret) in 4" 
+    :key="fret")
     text(
       :x="neck.width + 10"
       :y="fret * neck.fretHeight - neck.fretHeight / 2"
@@ -77,7 +80,9 @@ svg.max-h-360px.min-w-100px.min-h-250px(
       r="10"
       fill="gray"
     )
-  g.strings(v-for="(string, s) in frets" :key="s")
+  g.strings(
+    v-for="(string, s) in frets" 
+    :key="s")
     line(
       :x1="s * neck.stringWidth"
       :x2="s * neck.stringWidth"
@@ -103,7 +108,8 @@ svg.max-h-360px.min-w-100px.min-h-250px(
     ) {{ noteList[notes.list[s]] }}
   g.barres
     line(
-      v-for="barre in barres" :key="barre"
+      v-for="barre in barres" 
+      :key="barre"
       x1="0"
       :x2="neck.width"
       :y1="barre * neck.fretHeight - neck.fretHeight / 2"
@@ -113,7 +119,9 @@ svg.max-h-360px.min-w-100px.min-h-250px(
       stroke="gray"
       opacity="0.5"
     )
-  g.notes(v-for="(note, n) in frets" :key="n")
+  g.notes(
+    v-for="(note, n) in frets" 
+    :key="n")
     circle(
       v-if="note == 0"
       :cx="n * neck.stringWidth"
@@ -128,9 +136,19 @@ svg.max-h-360px.min-w-100px.min-h-250px(
       stroke-width="4px"
       :transform="`translate(${n * neck.stringWidth}, -15)`"
     )
-      line(x1="-10" x2="10" y1="-10" y2="10" stroke="currentColor"
+      line(
+        x1="-10" 
+        x2="10" 
+        y1="-10" 
+        y2="10" 
+        stroke="currentColor"
       )
-      line(x1="-10" x2="10" y1="10" y2="-10" stroke="currentColor"
+      line(
+        x1="-10" 
+        x2="10" 
+        y1="10" 
+        y2="-10" 
+        stroke="currentColor"
       )
     circle(
       v-if="note > 0"

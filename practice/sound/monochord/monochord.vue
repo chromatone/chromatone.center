@@ -77,7 +77,7 @@ function calcCents(base, freq) {
 </script>
 
 <template lang="pug">
-.flex.flex-col.fullscreen-container#screen.rounded-4xl
+.flex.flex-col.fullscreen-container#screen.rounded-3xl
   full-screen.absolute.top-2.right-2
   svg.py-8.select-none(
     version="1.1",

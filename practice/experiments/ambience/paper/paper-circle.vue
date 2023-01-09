@@ -1,10 +1,11 @@
 <script setup>
 import paper from "paper";
+import { onMounted, watch } from "vue";
 
 const props = defineProps({
-  polar: Object,
-  radius: Number,
-  random: Number,
+  polar: { type: Object, default: () => { } },
+  radius: { type: Number, default: 0 },
+  random: { type: Number, default: 0 },
 })
 
 onMounted(() => {
@@ -28,6 +29,6 @@ onMounted(() => {
 })
 </script>
 
-<template lang='pug'>
+<template lang="pug">
 span
 </template>

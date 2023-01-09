@@ -1,7 +1,7 @@
 <script setup>
 import { state } from './state.js'
 
-const props = defineProps({
+defineProps({
   top: Boolean,
 });
 
@@ -9,10 +9,16 @@ const props = defineProps({
 
 <template lang="pug">
 .flex.text-2xl.text-center.cursor-pointer.w-full
-  .btn.bg-gray-300(v-if="state.octave.range.bottom != state.octave.limit.bottom" class="dark-bg-gray-900",@click="state.octave.dec(top)") 
-    .i-la-chevron-down
-  .btn.bg-gray-50(v-if="state.octave.range.top != state.octave.limit.top" class="dark-bg-gray-500",@click="state.octave.inc(top)")
-    .i-la-chevron-up
+  .btn.bg-gray-300(
+    v-if="state.octave.range.bottom != state.octave.limit.bottom" 
+    class="dark-bg-gray-900",
+    @click="state.octave.dec(top)") 
+    .i-la-angle-down
+  .btn.bg-gray-50(
+    v-if="state.octave.range.top != state.octave.limit.top" 
+    class="dark-bg-gray-500",
+    @click="state.octave.inc(top)")
+    .i-la-angle-up
 </template>
 
 <style lang="postcss" scoped>

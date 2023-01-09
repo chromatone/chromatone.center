@@ -202,7 +202,7 @@ svg {
 </style>
   
 <template lang="pug">
-.flex.flex-col.fullscreen-container.rounded-4xl#screen
+.flex.flex-col.fullscreen-container.rounded-3xl#screen
   .controls.flex.flex-wrap.justify-center.-mb-8.z-2.mt-8
     .is-group.flex.items-center.mr-2.gap-2
       button.shadow.p-3.m-1.border-1.border-current.rounded(

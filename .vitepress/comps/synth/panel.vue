@@ -83,7 +83,7 @@ const frequency = computed(() => {
       :class="{ active: midi.keyboard }"
       v-tooltip.bottom="'Toggle synth on PC keyboard'"
       )
-      tabler-keyboard.text-2xl
+      .i-tabler-keyboard.text-2xl
       .m-0 Pc Keyboard
     button.flex-button.border(
       @click="synth.state.midi = !synth.state.midi" 

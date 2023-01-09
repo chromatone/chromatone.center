@@ -1,13 +1,14 @@
 <script setup>
 import { useStorage } from '@vueuse/core'
-import { Note, Interval, Chord } from '@tonaljs/tonal'
+import { Note, Interval } from '@tonaljs/tonal'
 import { freqColor } from '#/use/calculations'
 import { colord } from 'colord'
 import { synthOnce } from '#/use/synth.js'
 import { midiOnce } from '#/use/midi.js'
+import { computed, reactive, watch } from 'vue'
 
 const props = defineProps({
-  instruments: Object,
+  instruments: { type: Object, default: () => { } },
 })
 
 const instrument = useStorage('instrument-calc', {
@@ -19,9 +20,9 @@ const instrument = useStorage('instrument-calc', {
 
 const tab = reactive([])
 
-const chord = computed(() => {
-  return Chord.detect(tab)
-})
+// const chord = computed(() => {
+//   return Chord.detect(tab)
+// })
 
 function selectNote(note, num, string) {
   midiOnce(note);
@@ -64,23 +65,26 @@ function noteColor(note, semitones) {
     .flex.items-center.px-4
       .text-xl Instrument
       select.bg-transparent.text-xl.w-10rem.m-2.p-2(v-model="instrument.title")
-        option(v-for="(inst, key) in instruments", :key="key", :value="key") {{ key }}
+        option(
+          v-for="(inst, key) in instruments", 
+        :key="key", 
+        :value="key") {{ key }}
     .flex.items-center.px-4
       .text-xl Scale length
       input.bg-transparent.text-2xl.w-5rem.m-2.p-2(
-        type="number", 
+        v-model="instrument.l", 
+        type="number"
         inputmode="numeric"
         pattern="[0-9]*"
-        v-model="instrument.l"
         )
       .text-xl mm
     .flex.items-center.px-4
       .text-xl Frets
       input.bg-transparent.text-2xl.w-4rem.m-2.p-2(
-        type="number", 
+        v-model="instrument.frets", 
+        type="number"
         inputmode="numeric"
         pattern="[0-9]*"
-        v-model="instrument.frets"
         )
   .flex.flex-wrap
     svg#fretboard.flex-1.max-h-3xl.w-full.strings(
@@ -102,7 +106,7 @@ function noteColor(note, semitones) {
         ) {{ instrument.title }}
       line.string(
         v-for="(string, i) in instrument.tuning",
-        key="string"
+        :key="string"
         stroke="currentColor"
         stroke-width="1"
         stroke-linecap="round"
@@ -193,7 +197,8 @@ function noteColor(note, semitones) {
           :y="fret * 1000 - 8",
         ) {{ (fret * instrument.l).toFixed(2) }} mm
       g.note(
-        v-for="(string, i) in instrument.tuning", :key="string"
+        v-for="(string, i) in instrument.tuning", 
+        :key="string"
         )
         g(@click="selectNote(string, 0, i)")
           circle(

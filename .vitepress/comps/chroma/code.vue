@@ -15,7 +15,7 @@ const props = defineProps({
 
 </script>
 
-<template lang='pug'>
+<template lang="pug">
 .grid.gap-1.bg-dark-200.bg-opacity-10.p-1.rounded-lg(
 	:style="{gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`}"
 )

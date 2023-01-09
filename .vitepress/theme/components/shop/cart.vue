@@ -2,7 +2,7 @@
 import { cart, checkout, total, open, delivery, count } from '#/theme/composables/cart'
 </script>
 
-<template lang='pug'>
+<template lang="pug">
 .flex.flex-col.overflow-scroll.max-h-85vh.tabular-nums.gap-1(v-if="cart && Object.keys(cart).length > 0")
 	.flex.justify-between
 		.text-lg.px-4.pt-1 My shopping cart

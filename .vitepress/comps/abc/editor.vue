@@ -4,6 +4,7 @@ import { state } from './state.js'
 import { notes } from '#/use/theory'
 import { noteColor } from "#/use/colors"
 import tunes from './tunes.js'
+import { onMounted } from 'vue'
 const notation = useStorage('abc-notes', tunes['kalinka']);
 
 onMounted(() => {

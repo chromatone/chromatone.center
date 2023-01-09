@@ -3,9 +3,11 @@
 <script setup>
 import { getCircleCoord } from '#/use/calculations'
 import { isDark } from '#/theme/composables/state.js'
-import { levelColor } from "#/use/colors.js"
 import { midi } from '#/use/midi'
 import { controls } from './controls';
+import { ref, reactive, computed, watch } from 'vue'
+import { useClamp } from '@vueuse/math';
+
 
 const emit = defineEmits(['update:modelValue'])
 
@@ -19,7 +21,7 @@ const props = defineProps({
   radius: { type: Number, default: 300, },
   cx: { type: Number, default: 500, },
   cy: { type: Number, default: 500, },
-  vector: { type: Array, default: [1, -1], },
+  vector: { type: Array, default: () => [1, -1], },
   showPositions: { type: Boolean, default: false, },
   ratio: { type: Number, default: 200, },
   every: { type: Number, default: null, },
@@ -63,7 +65,6 @@ const prevCC = ref(0)
 
 watch(() => midi.cc, cc => {
   if (cc.channel != controls.channel || cc.number != props.midiCC) return
-  const diff = prevCC.value - cc.value
   prevCC.value = cc.value
   arc.inner = cc.value
 })
@@ -75,18 +76,25 @@ g.arc.cursor-pointer(
   v-drag="dragParam"
   )
   defs
-    filter#shadowButton(x="-50%" height="200%" width="300%")
-      feDropShadow(dx="0" dy="3" stdDeviation="3" flood-color="#2225")
+    filter#shadowButton(
+      x="-50%" 
+      height="200%" 
+      width="300%")
+      feDropShadow(
+        dx="0" 
+        dy="3" 
+        stdDeviation="3" 
+        flood-color="#2225")
   svg-ring.increase(
     :cx="500"
     :cy="500"
     :from="props.start"
     :to="arc.angle"
     :fill="isDark ? '#1111' : '#fff4'"
-    @mousedown="incParam(1)"
     :radius="radius"
     :thickness="50"
     round
+    @mousedown="incParam(1)"
     )
   svg-ring.decrease(
     :cx="500"
@@ -94,10 +102,10 @@ g.arc.cursor-pointer(
     :from="arc.angle"
     :to="showCenter ? (props.finish + props.start) / 2 : props.finish"
     :fill="isDark ? '#8882' : '#ddd9'"
-    @mousedown="incParam(-1)"
     :radius="radius"
     :thickness="50"
     round
+    @mousedown="incParam(-1)"
     )
   svg-ring.line.pointer-events-none(
     style="pointer-events:none"
@@ -124,7 +132,8 @@ g.arc.cursor-pointer(
     v-if="showPositions"
     )
     circle.pointer-events-none(
-      v-for="(st, s) in allSteps" :key="st"
+      v-for="(st, s) in allSteps" 
+      :key="st"
       :cx="st.x"
       :cy="st.y"
       :r="every && (s) % every == 0 ? 4 : 2"
@@ -144,7 +153,9 @@ g.arc.cursor-pointer(
       stroke-opacity="0.3"
       :fill="isDark ? '#333' : '#ddd'"
     )
-    g(transform="translate(0 10)" fill="currentColor")
+    g(
+      transform="translate(0 10)" 
+      fill="currentColor")
       slot
         text {{ modelValue.toFixed(2) }}
   

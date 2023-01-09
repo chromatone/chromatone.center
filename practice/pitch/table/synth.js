@@ -1,8 +1,8 @@
-import { gainToDb, PanVol, MonoSynth, connect } from "tone";
+import { gainToDb, PanVol, MonoSynth } from "tone";
 import { pitchFreq } from "#/use/calculations";
 import { state } from "./state.js";
 import { createChannel } from "#/use/audio";
-
+import { reactive, computed, onBeforeUnmount, watch } from 'vue'
 
 
 

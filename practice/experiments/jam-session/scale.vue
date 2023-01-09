@@ -1,8 +1,9 @@
 <script setup>
 import { globalScale } from '#/use/chroma';
 import { noteColor } from '#/use/colors';
-import { scaleList, notes } from '#/use/theory';
+import { scaleList } from '#/use/theory';
 import { onClickOutside } from '@vueuse/core';
+import { ref } from 'vue';
 
 const menu = ref()
 onClickOutside(menu, () => {
@@ -12,7 +13,7 @@ onClickOutside(menu, () => {
 const choose = ref(false)
 </script>
 
-<template lang='pug'>
+<template lang="pug">
 .flex.gap-2.items-center
 	.flex.gap-2.cursor-pointer(
 		@click="choose = !choose"
@@ -27,7 +28,9 @@ const choose = ref(false)
 			:style="{backgroundColor:noteColor(globalScale?.tonic)}"
 			) {{ globalScale?.note?.name }}
 	transition(name="fade")
-		.flex.flex-col.max-h-8em.overflow-scroll.absolute.bottom-4.bg-light-100.dark-bg-dark-100.rounded-xl.overscroll-contain.scroll-smooth.snap-y.snap-proximity(v-if="choose" ref="menu")
+		.flex.flex-col.max-h-8em.overflow-scroll.absolute.bottom-4.bg-light-100.dark-bg-dark-100.rounded-xl.overscroll-contain.scroll-smooth.snap-y.snap-proximity(
+			v-if="choose" 
+			ref="menu")
 			.text-md.flex-auto.flex.gap-2.cursor-pointer.hover-bg-light-400.hover-bg-opacity-10.p-2(
 				v-for="scale in scaleList"
 				:key="scale"

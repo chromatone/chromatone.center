@@ -1,4 +1,4 @@
-
+import { ref } from 'vue'
 
 function fallbackCopyTextToClipboard(text) {
 	var textArea = document.createElement("textarea");
@@ -25,10 +25,10 @@ function fallbackCopyTextToClipboard(text) {
 }
 
 
-export function useCopy(text) {
+export function useCopy() {
 	const copied = ref(false)
 
-	function copyTextToClipboard(text, callback = () => { }) {
+	function copyTextToClipboard(text) {
 		if (!navigator.clipboard) {
 			fallbackCopyTextToClipboard(text);
 			return;

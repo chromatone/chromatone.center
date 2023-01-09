@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { cast, showRecordingDialog } from "#/use/cast";
 
 const {
@@ -17,7 +17,5 @@ function toggleRecording() {
 </script>
 
 <template lang="pug">
-.
-
-      
+.a      
 </template>

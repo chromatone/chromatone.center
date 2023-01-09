@@ -3,8 +3,9 @@ import AudioMotionAnalyzer from 'audiomotion-analyzer'
 import { initGetUserMedia, master } from '#/use/audio'
 import { freqPitch } from '#/use/calculations'
 import { useMic } from '#/use/mic'
-import { UserMedia } from 'tone'
 import { onKeyStroke } from '@vueuse/core'
+import { ref, computed, reactive, onMounted } from 'vue'
+import { useClamp } from '@vueuse/math'
 
 const { mic, input } = useMic()
 
@@ -55,7 +56,7 @@ onMounted(() => {
 let audio
 
 function initiate() {
-  navigator.mediaDevices.getUserMedia({ audio: true, video: false }).then((stream) => {
+  navigator.mediaDevices.getUserMedia({ audio: true, video: false }).then(() => {
     state.initiated = true
     audio = new AudioMotionAnalyzer(null, {
       mode: 1,
@@ -93,13 +94,15 @@ function colorIt(freq, value) {
   
 <template lang="pug">
 .flex.flex-col.justify-center.text-white
-  .fullscreen-container.rounded-4xl.overflow-hidden#screen.m-4
+  .fullscreen-container.rounded-3xl.overflow-hidden#screen.m-4
     canvas#spectrogram.h-full.min-h-30em.w-full.rounded-md.cursor-pointer(
+      v-drag="dragScreen"
       :width="state.width"
       :height="state.height"
-      v-drag="dragScreen"
     )
-    control-start.absolute(v-if="!state.initiated" @click="initiate()")
+    control-start.absolute(
+      v-if="!state.initiated" 
+      @click="initiate()")
     full-screen.absolute.bottom-2.right-2
     .absolute.top-4.left-4.text-xl.select-none x{{ state.speed }}
     button.absolute.bottom-4.left-4.text-xl.select-none.cursor-pointer(@mousedown="paused = !paused")
@@ -107,8 +110,6 @@ function colorIt(freq, value) {
       .i-la-pause(v-else)
     button.absolute.top-4.right-4.text-xl.select-none.cursor-pointer(@mousedown="clear()")
       .i-la-trash-alt
-
-
 </template>
   
 <style lang="postcss" scoped>

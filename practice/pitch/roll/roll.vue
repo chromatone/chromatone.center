@@ -1,7 +1,9 @@
 <script setup>
-import { rotateArray } from '#/use/calculations'
+import { reactive, ref, watch, onMounted } from 'vue'
 import { useTuner } from '#/use/tuner'
 import { onKeyStroke } from '@vueuse/core'
+import { useClamp } from '@vueuse/math';
+import { useStorage } from '@vueuse/core';
 
 const draw = reactive({
   running: true,
@@ -33,9 +35,7 @@ function dragSpeed(drag) {
 
 const octaves = [0, 1, 2, 3, 4, 5, 6, 7, 8]
 
-const roller = ref(null)
-
-const { init, tuner, chain } = useTuner();
+const { init, tuner } = useTuner();
 
 
 
@@ -105,7 +105,7 @@ watch(() => tuner?.frame, frame => {
 function start() {
   init();
   draw.running = true
-};
+}
 
 function clear() {
   ctx.clearRect(0, 0, roll.value.width, roll.value.height)
@@ -129,25 +129,28 @@ function clear() {
       .i-la-times
     .flex-1.text-center.font-bold  {{ tuner.bpm.toFixed(1) }} BPM
 
-  .fullscreen-container.rounded-4xl.cursor-pointer#screen(
+  .fullscreen-container.rounded-3xl.cursor-pointer#screen(
 
   )
-    control-start.absolute(@click="start()", v-if="!tuner.running") Start rolling 
+    control-start.absolute(
+      v-if="!tuner.running", 
+      @click="start()") Start rolling 
     .p-1.absolute.top-2.left-2.flex.items-center
       .i-la-angle-double-right
       span {{ draw.speed.toFixed(1) }}
     full-screen.absolute.bottom-2.right-2.z-30
-    canvas.w-full.h-full.rounded-4xl(    
-      @dblclick="clear()"
+    canvas.w-full.h-full.rounded-3xl(    
+      ref="roll"
       v-drag="dragSpeed"
       :width="1920"
       :height="1080"
-      ref="roll" )
+      @dblclick="clear()"
+      )
 </template>
 
 <style lang="postcss" scoped>
 .button {
-  @apply p-4 m-8 shadow-lg cursor-pointer transition-all duration-300 rounded-4xl text-4xl bg-light-700 text-center font-bold dark-(bg-dark-400);
+  @apply p-4 m-8 shadow-lg cursor-pointer transition-all duration-300 rounded-3xl text-4xl bg-light-700 text-center font-bold dark-(bg-dark-400);
 }
 
 .btn {

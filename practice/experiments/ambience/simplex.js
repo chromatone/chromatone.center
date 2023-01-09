@@ -1,5 +1,8 @@
+import { useRafFn } from '@vueuse/core';
 import { useStorage } from '@vueuse/core';
+import { useClamp } from '@vueuse/math';
 import { createNoise2D } from 'simplex-noise';
+import { ref, reactive, watch, computed } from 'vue'
 
 export const simplex = createNoise2D();
 
@@ -12,11 +15,11 @@ useRafFn(() => {
   count.value += 1
 })
 
-export function useSimplex({ title = 'simplex', size = 10, minSpeed = 0.001, maxSpeed = 10000 } = {}) {
+export function useSimplex({ title = 'simplex', size = 1, minSpeed = 0.001, maxSpeed = 10000 } = {}) {
 
   const progress = ref(0)
 
-  const radius = useClamp(useStorage(title + '-radius', Math.random() * 250), 1, 250)
+  const radius = useClamp(useStorage(title + '-radius', Math.random() * 250 * size), 1, 250)
 
   const speed = useClamp(useStorage(title, Math.random() * 1000), minSpeed, maxSpeed)
 

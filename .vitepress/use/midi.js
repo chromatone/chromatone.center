@@ -1,3 +1,7 @@
+import { useStorage } from '@vueuse/core';
+import { useClamp } from '@vueuse/math';
+import { reactive, computed, watchEffect, onMounted, ref, watch } from 'vue'
+
 import { WebMidi, Note } from "webmidi"
 import { setupKeyboard } from './keyboard'
 
@@ -43,7 +47,7 @@ export const midi = reactive({
   })
 });
 
-export function learnCC({ param, number, channel } = {}) {
+export function learnCC({ number, channel } = {}) {
   const val = ref(0)
   watch(() => midi.cc, cc => {
     if (channel && cc.channel != channel) return
@@ -110,7 +114,7 @@ export function useMidi() {
 function setupMidi() {
 
   WebMidi.enable();
-  WebMidi.addListener("enabled", (e) => {
+  WebMidi.addListener("enabled", () => {
     midi.enabled = true;
     initMidi();
   });
@@ -119,7 +123,7 @@ function setupMidi() {
   //   initMidi();
   // }, 3000);
 
-  WebMidi.addListener("connected", (e) => {
+  WebMidi.addListener("connected", () => {
     initMidi();
   });
 

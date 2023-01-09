@@ -5,10 +5,11 @@ import { context, start } from 'tone'
 import { useSynth } from './synth.js'
 import { notes } from '#/use/theory'
 import { noteColor } from "#/use/colors";
+import { reactive, computed } from 'vue';
 
 
 const props = defineProps({
-  pitch: Number,
+  pitch: { type: Number, default: 0 },
   octave: {
     default: 3,
     type: Number,
@@ -30,7 +31,7 @@ const dragHandler = (dragEvent) => {
   if (context.state == 'suspended') {
     start()
   }
-  let { movement: [x, y], dragging, tap } = dragEvent
+  let { movement: [x, y], tap } = dragEvent
   if (!tap) {
     synth.vol += -y / 20
     if (synth.vol > 100) synth.vol = 100
@@ -68,10 +69,7 @@ const textColor = computed(() => {
 .cell(
   v-drag="dragHandler",
   :drag-options="dragOptions",
-  :style=`{
-    backgroundColor: color,
-    color: textColor
-  }`, 
+  :style="{backgroundColor: color, color: textColor }", 
   :class="{ active: synth.active }")
   .absolute.w-full.h-full.top-0.left-0.bottom-0(v-show="synth.vol > 0")
     .volume(
@@ -82,7 +80,10 @@ const textColor = computed(() => {
       :style="{ left: synth.pan + '%' }"
     ) 
 
-  cell-info(:name="notes[pitch]",:hz="synth.freq", :octave="octave")
+  cell-info(
+    :name="notes[pitch]",
+    :hz="synth.freq", 
+    :octave="octave")
 </template>
 
 <style lang="postcss" scoped>

@@ -4,6 +4,6 @@ const props = defineProps({
 })
 </script>
 
-<template lang='pug'>
+<template lang="pug">
 
 </template>

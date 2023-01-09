@@ -5,11 +5,12 @@ import { notes } from '#/use/theory'
 import { useTuner } from '#/use/tuner.js'
 import { useClamp } from '@vueuse/math'
 import { useDrag } from '@vueuse/gesture'
+import { ref } from 'vue'
 
 const stage = ref()
 
 
-const { init, tuner, chain } = useTuner();
+const { init, tuner } = useTuner();
 
 const blur = useClamp(0, 0, 1)
 const radius = useClamp(2, 0.5, 3)
@@ -29,21 +30,35 @@ function getAmmount(ammount) {
 </script>
 
 <template lang="pug">
-.fullscreen-container.rounded-4xl
-  control-start.absolute(v-if="!tuner.initiated" @click="init()") Start
+.fullscreen-container.rounded-3xl
+  control-start.absolute(
+    v-if="!tuner.initiated" 
+  @click="init()") Start
   full-screen.absolute.bottom-6.right-6.z-30
   svg.max-h-100vh.w-full#screen.cursor-pointer.touch-none(
+    ref="stage"
     version="1.1",
     baseProfile="full",
     viewBox="0 0 100 100",
     xmlns="http://www.w3.org/2000/svg",
-    ref="stage"
     )
     defs 
-      filter#blur(x="-1" y="-1" width="3" height="3")
-        feGaussianBlur(in="SourceGraphic" :stdDeviation="blur / 2")
-      filter#blur-more(x="-1" y="-1" width="3" height="3")
-        feGaussianBlur(in="SourceGraphic" :stdDeviation="blur * 4")
+      filter#blur(
+        x="-1" 
+        y="-1" 
+        width="3" 
+        height="3")
+        feGaussianBlur(i
+        n="SourceGraphic" 
+        :stdDeviation="blur / 2")
+      filter#blur-more(
+        x="-1" 
+        y="-1" 
+        width="3" 
+        height="3")
+        feGaussianBlur(
+          in="SourceGraphic" 
+          :stdDeviation="blur * 4")
     g    
       circle.note(
         style="transition: all 500ms ease-in-out;transform-box: fill-box; transform-origin: center center;"
@@ -66,10 +81,10 @@ function getAmmount(ammount) {
         :opacity="tuner.note.silent ? 0 : 1"
         ) {{ tuner.note.name }} 
       g.around(
-        style="cursor:pointer"
         v-for="(ammount, i) in rotateArray(tuner.chroma, -3)", 
         :key="i",
         :transform="`translate(${getCircleCoord(i).x},${getCircleCoord(i).y})`"
+        style="cursor:pointer"
       )
         circle.note(
           style="transition: all 400ms ease-in-out;transform-box: fill-box; transform-origin: center center;"

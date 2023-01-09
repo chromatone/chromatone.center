@@ -4,7 +4,7 @@ import { calcBg } from '#/use/colors'
 import { notes } from '#/use/theory';
 </script>
 
-<template lang='pug'>
+<template lang="pug">
 .flex.flex.gap-1
 	.flex 
 	.p-2.flex-1.text-white.rounded.cursor-pointer(

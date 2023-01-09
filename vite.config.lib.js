@@ -1,15 +1,7 @@
 import { defineConfig } from 'vite'
-import Components from 'unplugin-vue-components/vite'
-import Icons from 'unplugin-icons/vite'
-import IconsResolver from 'unplugin-icons/resolver'
-import WindiCSS from 'vite-plugin-windicss'
 import AutoImport from 'unplugin-auto-import/vite'
-import { VitePWA } from 'vite-plugin-pwa'
 import { resolve } from 'path'
 
-import Pages from "vite-plugin-pages";
-import { extendRoutes } from "vitepress-pages";
-import generateSitemap from 'vite-plugin-pages-sitemap'
 
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -49,7 +41,7 @@ export default defineConfig({
   build: {
     outDir: "lib",
     lib: {
-      entry: resolve(__dirname, '.vitepress/use/index.js'),
+      entry: resolve(dirname, '.vitepress/use/index.js'),
       name: 'chromatone.center',
       fileName: 'chromatone-center',
       formats: ["es"],

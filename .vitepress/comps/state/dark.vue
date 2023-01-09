@@ -5,6 +5,6 @@ import { isDark } from '#/theme/composables/state.js'
 
 <template lang="pug">
 button.p-2.text-xl(@click="isDark = !isDark" aria-label="Toggle dark mode")
-  carbon-moon(v-show="isDark")
-  ion-ios-sunny(v-show="!isDark")
+  .i-carbon-moon(v-show="isDark")
+  .i-ion-ios-sunny(v-show="!isDark")
 </template>

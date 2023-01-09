@@ -17,7 +17,7 @@ const emit = defineEmits(['update:modelValue'])
 
 </script>
 
-<template lang='pug'>
+<template lang="pug">
 .flex.flex-wrap.justify-center.max-w-max
   .flex-auto.w-full.text-sm.text-center.border-b-1.border-dark-300.dark-border-light-300 OSC
   .flex.relative.flex-auto(v-for="(abbr, type) in types" :key="type")

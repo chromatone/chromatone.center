@@ -3,10 +3,11 @@ import { Pcset } from '@tonaljs/tonal'
 import { noteColor } from "#/use/colors"
 import { chordType, scaleType, notes } from '#/use/theory'
 import { globalScale } from '#/use/chroma'
+import { useStorage } from '@vueuse/core';
+import { computed } from 'vue';
 
 
 const tonic = useStorage('chroma-tonic', 0)
-const search = useStorage('chroma-browser-search', '')
 const control = useStorage('chroma-browser-filter', {
   scale: false,
   chord: true,
@@ -44,16 +45,18 @@ const sorted = computed(() => {
 .flex.flex-col.m-auto.items-center.w-full.max-w-65ch
   .keys
     .key(
-      @click="globalScale.tonic = i"
       v-for="(bit, i) in '101101011010'"
       :key="i"
       :style="{ backgroundColor: i == globalScale.tonic ? noteColor(i) : bit == '1' ? 'hsla(0,0%,80%,0.4)' : 'hsla(0,0%,10%,0.4)' }"
+      @click="globalScale.tonic = i"
       ) {{ notes[i] }}
   .control-row
     .control(@click="control.count = !control.count") Notes 
       .i-la-arrows-alt-v(:style="{ opacity: control.count ? 1 : 0.3 }")
 
-    .control(@click="control.chord = !control.chord", :class="{ active: control.chord }") Chord
+    .control(
+      :class="{ active: control.chord }", 
+      @click="control.chord = !control.chord") Chord
       .i-la-filter.ml-2(:style="{ opacity: control.chord ? 1 : 0.3 }")
 
     .control(@click="control.scale = !control.scale") Scale
@@ -62,9 +65,9 @@ const sorted = computed(() => {
   .flex.flex-col.items-start
     transition-group(name="list")
       chroma-row.mb-6(
-        :twoRow="false"
         v-for="(set) in sorted",
         :key="set.chroma",
+        :two-row="false"
         :chroma="set.chroma",
         :tonic="tonic",
         )

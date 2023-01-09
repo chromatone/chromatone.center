@@ -1,3 +1,6 @@
+import { useStorage } from '@vueuse/core'
+import { reactive, computed } from 'vue'
+
 export const state = reactive({
   show: {
     letters: useStorage('table-letters', true),

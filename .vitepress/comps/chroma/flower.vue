@@ -63,7 +63,7 @@ watchThrottled(loaded, l => {
 
 </script>
 
-<template lang='pug'>
+<template lang="pug">
 .max-w-150.mx-auto.w-full.relative.flex.items-center.flex-col.justify-center
   button.absolute.text-xl.opacity-30.hover-opacity-100.hover-scale-110.transition.cursor-pointer.transform(
     v-tooltip.bottom="'Customize colors'"

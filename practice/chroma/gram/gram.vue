@@ -1,8 +1,10 @@
 <script setup>
-import { useRafFn } from '@vueuse/core'
+import { useRafFn, useStorage } from '@vueuse/core'
 import { rotateArray } from '#/use/calculations'
 import { useTuner } from '#/use/tuner.js'
-const { init, tuner, chain } = useTuner();
+import { computed, onMounted, reactive, ref } from 'vue';
+import { useClamp } from '@vueuse/math';
+const { init, tuner } = useTuner();
 
 const screen = ref()
 
@@ -36,7 +38,7 @@ function initiate() {
   if (roll.initiated) return
   roll.initiated = true
   init()
-  const { resume, pause } = useRafFn(onCanvasDraw)
+  useRafFn(onCanvasDraw)
 }
 
 function onCanvasDraw() {
@@ -89,7 +91,9 @@ function clear() {
 .flex.flex-col.items-center.w-full
 
   .flex.flex-col.justify-center.items-center.relative.bg-light-600.dark-bg-dark-700(ref="screen")
-    control-start.absolute(v-if="!roll.initiated" @click="initiate()") Start
+    control-start.absolute(
+      v-if="!roll.initiated" 
+    @click="initiate()") Start
     full-screen.absolute.bottom-4.right-4.z-30(:el="screen")
     button.absolute.bottom-4.left-4.text-xl.text-white(@click="roll.direction ? roll.direction = 0 : roll.direction = 1")
       .i-la-arrow-up(v-if="roll.direction == 1")

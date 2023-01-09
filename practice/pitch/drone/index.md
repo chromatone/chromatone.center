@@ -7,7 +7,7 @@ cover: drone.png
 ---
 
 <script setup>
-import pitchDrone from './drone.vue'
+import pitchDrone from './drone-app.vue'
 </script>
 
 <client-only >

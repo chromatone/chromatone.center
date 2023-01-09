@@ -1,4 +1,4 @@
-import { computed, markRaw, nextTick, reactive, ref, watch } from 'vue'
+import { computed, markRaw, nextTick, reactive, ref, watch, onMounted } from 'vue'
 import { createDrauu } from 'drauu'
 import { toReactive, useStorage } from '@vueuse/core'
 import { useCycleList } from '@vueuse/core'
@@ -35,7 +35,6 @@ export const brush = toReactive(useStorage('drawing-brush', {
 }))
 
 const _mode = ref('stylus')
-const syncUp = computed(() => isPresenter.value)
 let disableDump = false
 
 export const drawingMode = computed({
@@ -157,7 +156,7 @@ export function useDraw() {
   return {
     brush, brushColors, brushSizes, canClear,
     canRedo, canUndo, clearDrauu, currentPage,
-    drauu, drawingEnabled, drawingMode, drawingPinned, drauu, drawingEnabled, loadCanvas
+    drauu, drawingEnabled, drawingMode, drawingPinned, loadCanvas
   }
 }
 

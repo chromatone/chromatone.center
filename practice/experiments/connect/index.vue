@@ -1,9 +1,10 @@
 <script setup>
-import { useGun, useUser, useSpace, SEA, gunAvatar, updateProfile } from '@gun-vue/composables'
+import { useGun, useUser, SEA, gunAvatar, updateProfile } from '@gun-vue/composables'
 import { midi, playKey } from '#/use/midi'
 import { noteColor } from "#/use/colors"
 import { notes } from '#/use/theory'
-import { synthOnce } from '#/use/synth'
+import { computed, nextTick, reactive, ref, watch } from 'vue';
+
 
 
 const TIMEOUT = 10000
@@ -84,7 +85,7 @@ watch(() => user.pub, () => {
 
   setTimeout(() => {
     if (!user.pub) return
-    db.get('ping').get(user.pub).on(d => {
+    db.get('ping').get(user.pub).on(() => {
       let note = notes[midi.note.pitch]
       playKey(note, undefined)
       setTimeout(() => {
@@ -98,24 +99,33 @@ watch(() => user.pub, () => {
 
 </script>
 
-<template lang='pug'>
+<template lang="pug">
 .flex.flex-col.gap-4(:key="user.is")
   .flex.flex-wrap.gap-2.rounded-3xl.bg-light-800.dark-bg-dark-800.items-center.p-2(v-if="user?.is")
     .font-bold Me:
     img.avatar( :src="gunAvatar({ pub: user?.pub, size: 200 })")
-    input.dark-bg-dark-900.text-current.p-2.rounded-xl(type="text" v-model="name" placeholder="Your name")
+    input.dark-bg-dark-900.text-current.p-2.rounded-xl(
+      v-model="name" 
+      type="text" 
+      placeholder="Your name")
     .flex-1
-    button.flex-button(v-if="!guests[user.is.pub]" @click="enter()") Enter
+    button.flex-button(
+      v-if="!guests[user.is.pub]" 
+      @click="enter()") Enter
     button.flex-button(@click="leave()") Leave
   .flex(v-else)
     button.flex-button(@click="generate()") Generate
     img.avatar(:src="gunAvatar({ pub: pair?.pub, size: 200 })")
-    button.flex-button(v-if="pair" @click="start()") Start
+    button.flex-button(
+      v-if="pair" 
+      @click="start()") Start
   .flex.flex-col.gap-2.select-none
     .font-bold Us ({{ totalOnliners }}/{{ totalGuests }})
     .flex.items-center.p-2.gap-1.bg-light-800.dark-bg-dark-900.rounded-3xl.cursor-pointer(
-      v-for="(guest, pub) in onliners" :key="guest"
-      @mousedown="ping(pub)" @touchstart="ping(pub)"
+      v-for="(guest, pub) in onliners" 
+      :key="guest"
+      @mousedown="ping(pub)" 
+      @touchstart="ping(pub)"
       )
       img.avatar(:src="gunAvatar({ pub: pub, size: 100 })")
       .p-2.capitalize.font-bold {{ guest.name }}
@@ -125,7 +135,7 @@ watch(() => user.pub, () => {
 
 <style lang="postcss" scoped>
 .avatar {
-  @apply max-w-20 max-h-20 !rounded-4xl !m-0;
+  @apply max-w-20 max-h-20 !rounded-3xl !m-0;
 }
 </style>
 

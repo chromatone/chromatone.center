@@ -9,6 +9,7 @@ import ukulele from '#/db/ukulele.json'
 import guitar from '#/db/guitar.json'
 import { useStorage } from '@vueuse/core'
 import { Chord } from '@tonaljs/tonal'
+import { computed, reactive } from 'vue'
 
 const instruments = {
   ukulele, guitar
@@ -25,6 +26,7 @@ const state = reactive({
     if (tabs) {
       return tabs.find(tab => tab.suffix == state.suffix)
     }
+    return {}
   }),
   chords: computed(() => {
     return state.instrument?.suffixes.map(suffix => {
@@ -61,24 +63,21 @@ function isInScale(list) {
 
 <template lang="pug">
 .flex.flex-col.items-center
-
-
   .is-group.flex.flex-col.items-center.p-2
     .text-xl.font-bold.mt-2 Instrument
     .flex.flex-wrap.justify-center.my-2
       button.p-4.text-xl.capitalize(
-        v-for="(instrument, name) in instruments" :key="name"
+        v-for="(instrument, name) in instruments" 
+        :key="name"
         :class="{ active: state.instrument.main.name == name }"
         @click="current = name"
         ) {{ name }}
-
-
   .is-group.flex.flex-col.items-center.p-2.my-2
     .text-xl.font-bold.mt-4 Scale
     control-scale.flex-1.mb-4
     tab-neck.my-8.min-w-150(
       :instrument="current"
-      :chordNotes="Chord.get(state.key + state.suffix).notes"
+      :chord-notes="Chord.get(state.key + state.suffix).notes"
       )
   .is-group.flex.flex-col.items-center.p-2
 
@@ -86,31 +85,36 @@ function isInScale(list) {
     .text-xl.font-bold.mb-2 Chord
     .flex.flex-wrap.justify-center.my-2
       button.note(
+        v-for="(key, k) in state.instrument.keys" 
+        :key="key"
         :style="{ backgroundColor: noteColor(k, 3, rotateArray(globalScale.full?.chroma, -globalScale.tonic)[k] == '1' ? 1 : 0.05) }"
         :class="{ active: state.key == key }"
-        v-for="(key, k) in state.instrument.keys" :key="key"
         @click="state.pitch = k"
       ) {{ key }}
 
     .flex.flex-wrap.border-b-1.border-current.p-2
       .p-1.text-button.cursor-pointer(
+        v-for="noteNum in Object.keys(state.byNotes)" 
+        :key="noteNum"
         :class="{ active: noteNum == state.chordType }"
-        v-for="noteNum in Object.keys(state.byNotes)" :key="noteNum"
         @click="state.chordType = noteNum"
         ) {{ noteNum }}
 
     .flex.flex-wrap.justify-center.items-center.mt-4
       button.text-button(
+        v-for="chord in state.byNotes[state.chordType]" 
+        :key="chord.suffix"
         :style="{ opacity: isInScale(chord.notes) }"
         :class="{ active: state.suffix == chord.suffix, isin: isInScale(chord.notes) == 1.2 }"
-        v-for="chord in state.byNotes[state.chordType]" :key="chord.suffix"
         @click="state.suffix = chord.suffix"
         )  {{ chord.symbol || chord.suffix }}
 
   .is-group.flex.flex-col.items-center.my-2
     .p-2.text-2xl.font-bold.my-2 {{ state.key }} {{ state.suffix }} tabs
     .flex.flex-wrap.justify-center
-      .tab(v-for="(pos, n) in state.tabs?.positions" :key="pos" )
+      .tab(
+        v-for="(pos, n) in state.tabs?.positions" 
+      :key="pos" )
         string-tab( 
           :id="state.key + state.suffix + n"
           :name="state.key + state.suffix"

@@ -1,4 +1,5 @@
 import { useMousePressed, useMouseInElement } from '@vueuse/core'
+import { reactive, ref, onMounted, watch } from 'vue'
 
 export function useSvgMouse() {
   const svg = ref(null)

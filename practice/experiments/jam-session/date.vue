@@ -1,6 +1,8 @@
 <script setup>
-import { useNow, useDateFormat } from '@vueuse/core'
+import { useNow, useDateFormat, useStorage } from '@vueuse/core'
 import { useDrag } from '@vueuse/gesture';
+import { useClamp } from '@vueuse/math';
+import { computed, ref } from 'vue';
 
 const now = useNow()
 const start = ref(useStorage('jam-start', Date.now() - 1000 * 60 * 60), 0, now)
@@ -40,7 +42,6 @@ function getDuration(time) {
 	const m = Math.floor(s / 60)
 	const h = Math.floor(m / 60)
 	const d = Math.floor(h / 24)
-	let duration = ``
 	if (d > 0) return `${d}d ${h - d * 24}hr`
 	if (h > 0) return `${h}hr ${m - h * 60}min`
 	if (m > 0) return `${m}min ${s - m * 60}s`
@@ -50,7 +51,7 @@ function getDuration(time) {
 
 </script>
 
-<template lang='pug'>
+<template lang="pug">
 .flex.flex-col
 	svg.w-full(
 		viewBox="0 0 1000 100"
@@ -58,9 +59,11 @@ function getDuration(time) {
 		g
 			rect(
 				stroke="currentColor"
-				x="0" y="0" 
+				x="0" 
+				y="0" 
 				fill="transparent"
-				width="1000" height="100")
+				width="1000" 
+				height="100")
 		g.start
 			rect.cursor-move(
 				ref="startPad"

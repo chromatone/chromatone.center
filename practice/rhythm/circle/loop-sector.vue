@@ -1,7 +1,7 @@
 <script setup>
 import { levelColor } from "#/use/colors.js"
 import { getCircleCoord } from '#/use/calculations'
-import { colord } from 'colord'
+import { computed } from 'vue'
 import { tempo } from '#/use/tempo'
 
 const props = defineProps({
@@ -12,6 +12,8 @@ const props = defineProps({
   muted: { type: Boolean, default: false, },
   accented: { type: Boolean, default: false, },
 });
+
+defineEmits('mute')
 
 const color = computed(() => {
   return levelColor(props.step + (tempo.pitch / 12) * props.total, props.total, 1)
@@ -33,7 +35,7 @@ const lineCoord = computed(() => {
 <template lang="pug">
 g(
   @mousedown="$emit('mute')"
-)
+  )
   svg-ring(
     :from="step / total * 360"
     :to="(step + 1) / total * 360"
@@ -55,7 +57,7 @@ g(
     :cx="stepCoord.x"
     :cy="stepCoord.y"
     :r="25"
-    :stroke ="active ? 'currentColor' : color"
+    :stroke="active ? 'currentColor' : color"
     :fill="active ? 'currentColor' : accented ? color : 'transparent'"
     :opacity="muted ? 0 : 1"
     stroke-width="4"
@@ -66,7 +68,7 @@ g(
     :cx="getCircleCoord(step, total, radius - 50, 1000).x"
     :cy="getCircleCoord(step, total, radius - 50, 1000).y"
     :r="muted ? 4 : 8"
-    :stroke ="active ? 'currentColor' : muted ? 'transparent' : color"
+    :stroke="active ? 'currentColor' : muted ? 'transparent' : color"
     :fill="muted ? 'currentColor' : color"
     :opacity="muted ? 0.5 : 1"
     stroke-width="4"

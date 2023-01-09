@@ -13,7 +13,7 @@ const length = computed(() => radius.value * Math.PI * 2)
 
 </script>
 
-<template lang='pug'>
+<template lang="pug">
 svg(
   version="1.1",
   baseProfile="full",

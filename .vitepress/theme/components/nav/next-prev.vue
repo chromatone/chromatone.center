@@ -19,13 +19,13 @@ const colors = reactive({
   .row(:style="{ borderColor: colors.current }")
     .pad.prev(v-if="siblings.prev")
       a.link( :href="siblings.prev.path" :style="{ backgroundColor: colors.prev }")
-        carbon-arrow-left.icon.icon-prev
+        .i-carbon-arrow-left.icon.icon-prev
         span.text {{ siblings.prev.title }}
 
     .pad.next(v-if="siblings.next")
       a.link( :href="siblings.next.path" :style="{ backgroundColor: colors.next }")
         span.text {{ siblings.next.title }}
-        carbon-arrow-right.icon.icon-next     
+        .i-carbon-arrow-right.icon.icon-next     
   .flex.flex-col.items-justify
     .flex.flex-col.items-justify.mx-4
       a.parent(
@@ -35,7 +35,7 @@ const colors = reactive({
         :href="parent.path"
         :style="{ order: 100 - p }"
         )
-        carbon-chevron-up.mr-1
+        .i-carbon-chevron-up.mr-1
         .p-1 {{ parent.title }}
   nav-row
   .flex.flex-col.items-center
@@ -101,6 +101,7 @@ const colors = reactive({
   display: inline;
   width: 1.5rem;
   height: 1.5rem;
+  padding: 1rem;
   color: var(--c-text);
   transform: translateY(-2px);
 }

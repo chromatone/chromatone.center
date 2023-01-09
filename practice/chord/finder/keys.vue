@@ -2,7 +2,7 @@
 import { notes } from '#/use/theory'
 import { noteColor } from "#/use/colors"
 const props = defineProps({
-  accord: Object,
+  accord: { type: Object, default: () => { } },
 });
 
 defineEmits([
@@ -28,9 +28,9 @@ svg.max-h-sm.w-full(
   xmlns="http://www.w3.org/2000/svg",
   )
   g(
-    style="cursor:pointer; transition:all 300ms ease"
     v-for="(note, pitch) in notes"
     :key="pitch"
+    style="cursor:pointer; transition:all 300ms ease"
     @click="$emit('selectRoot', pitch)"
   )
     rect(

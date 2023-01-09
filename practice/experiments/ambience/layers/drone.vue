@@ -2,20 +2,16 @@
 import ClampedNoise from '../clampedNoise.vue';
 import {
   FMSynth,
-  gainToDb,
-  dbToGain,
-  FFT,
   Gain,
-  AutoFilter,
-  AutoPanner,
   Reverb,
-  PanVol,
   Panner,
   Filter
 } from "tone";
 
 import { notes } from '#/use/theory'
 import { createChannel } from '#/use/audio'
+import { useStorage } from '@vueuse/core';
+import { ref, watch } from 'vue';
 
 
 const options = useStorage("ambient-synth-options", {
@@ -61,7 +57,7 @@ watch(note, n => {
 
 </script>
 
-<template lang='pug'>
+<template lang="pug">
 .flex.flex-col.gap-4
   .flex.items-center.flex-wrap
     .font-bold Bass
@@ -69,12 +65,28 @@ watch(note, n => {
       .i-la-play(v-if="!active")
       .i-la-pause(v-else)
     .flex.flex-wrap.gap-2
-      button.p-1.text-xs(v-for="(n, i) in notes" :key="n" @click="note = i" :class="{ active: i == note }") {{ n }}
+      button.p-1.text-xs(
+        v-for="(n, i) in notes" 
+        :key="n" 
+        :class="{ active: i == note }" 
+        @click="note = i") {{ n }}
   .flex.flex-wrap.gap-4
 
-    clamped-noise(title="Low pass" instrument="FM"  :min="50" :max="10000" @random="filter.frequency.rampTo($event)")
-    clamped-noise(title="Pan" instrument="FM"  :min="-1" @random="panner.pan.rampTo($event)")
-    clamped-noise(title="Volume" instrument="FM"  @random="gain.gain.rampTo($event)")
+    clamped-noise(
+      title="Low pass" 
+      instrument="FM"  
+      :min="50" 
+      :max="10000" 
+      @random="filter.frequency.rampTo($event)")
+    clamped-noise(
+      title="Pan" 
+      instrument="FM"  
+      :min="-1" 
+      @random="panner.pan.rampTo($event)")
+    clamped-noise(
+      title="Volume" 
+      instrument="FM"  
+      @random="gain.gain.rampTo($event)")
 
 </template>
 

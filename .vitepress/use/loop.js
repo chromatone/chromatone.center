@@ -1,3 +1,4 @@
+import { reactive, computed, watch, watchEffect, onBeforeUnmount } from 'vue'
 import { tempo } from "#/use/tempo.js";
 import { rotateArray } from "#/use/calculations";
 import { globalScale } from "#/use/chroma";
@@ -16,6 +17,7 @@ import {
 import { midiPlay } from "#/use/midi";
 import { createAndDownloadBlobFile } from "#/use/midiRender";
 import { createChannel } from '#/use/audio'
+import { useStorage } from '@vueuse/core'
 
 const loops = reactive([]);
 

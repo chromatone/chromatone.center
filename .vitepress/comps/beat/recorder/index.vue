@@ -6,7 +6,7 @@ const props = defineProps({
 const emit = defineEmits(['close'])
 </script>
 
-<template lang='pug'>
+<template lang="pug">
 g.recorder
   rect(
     style="filter:url(#shadowButton);"

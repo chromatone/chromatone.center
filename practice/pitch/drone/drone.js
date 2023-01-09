@@ -3,6 +3,10 @@ import { Frequency, Synth, PanVol, gainToDb, LFO, Meter, Filter, Gain } from "to
 import { useRafFn, onKeyStroke } from "@vueuse/core";
 import { createChannel } from '#/use/audio'
 import { learnCC } from "../../../.vitepress/use/midi";
+import { reactive, computed, shallowReactive, onBeforeUnmount, watch } from 'vue'
+import { useClamp } from "@vueuse/math";
+import { useStorage } from "@vueuse/core";
+
 
 const drone = reactive({
   base: 55,

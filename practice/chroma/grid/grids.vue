@@ -4,6 +4,7 @@ import pitchGrid from './grid.vue'
 import { lchToHsl } from '#/use/colors'
 import { isDark } from '#/theme/composables/state'
 import { renderMidi } from '#/use/loop'
+import { useStorage } from '@vueuse/core';
 
 const loops = useStorage('pitch-bars', [1])
 
@@ -16,13 +17,14 @@ const active = useStorage('pitch-bars-active', 0);
 </script>
 
 <template lang="pug">
-#screen.flex.flex-col.items-center.rounded-4xl.fullscreen-container.p-2
+#screen.flex.flex-col.items-center.rounded-3xl.fullscreen-container.p-2
   .flex.flex-wrap.mt-4.w-full.justify-start.px-6
     button.px-2.rounded-t-xl.mx-2px.transition-all.duration-300.ease.flex.items-center(
-      v-for="(loop, l) in loops" :key="loop"
-      @mousedown="active = l"
+      v-for="(loop, l) in loops" 
+      :key="loop"
       :class="{ active: active == l }"
       :style="{ backgroundColor: lchToHsl(l, loops.length, active == l ? 1 : 0.3) }"
+      @mousedown="active = l"
     ) 
       .px-4.py-2 {{ l }}
 
@@ -37,7 +39,8 @@ const active = useStorage('pitch-bars-active', 0);
   .flex.flex-col.mb-4.mx-4.w-full.relative.h-840px
     transition-group(name="fade")
       pitch-grid.absolute.w-full(
-        v-for="(loop, l) in loops" :key="loop"
+        v-for="(loop, l) in loops" 
+        :key="loop"
         :order="l"
         :active="active == l"
         :color="lchToHsl(l, loops.length, isDark ? 0.3 : 1)"

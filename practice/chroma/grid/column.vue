@@ -1,12 +1,13 @@
 <script setup>
-import { isDark } from '#/theme/composables/state'
 import { globalScale } from '#/use/chroma'
 import { noteColor } from "#/use/colors"
 import { Frequency } from 'tone'
 import { Chord } from "@tonaljs/tonal"
+import { useClamp } from '@vueuse/math';
+import { computed, watch } from 'vue';
 
 const props = defineProps({
-  step: { type: Array, default: [{}] },
+  step: { type: Array, default: () => { [] } },
   pos: { type: Number, default: 0 },
   width: { type: Number, default: 100, },
   height: { type: Number, default: 500, },
@@ -57,11 +58,13 @@ g.col(
   :transform="`translate(${pos * width} 0)`"      
   )
   g.cell(
-    v-for="(cell, c) in 25" :key="c"
+    v-for="(cell, c) in 25" 
+    :key="c"
     :transform="`translate(0 ${height - cell * height / 25})`"
   )
     g.sub(
-      v-for="(sub, s) in step" :key="sub"
+      v-for="(sub, s) in step" 
+      :key="sub"
     )
       rect.transition-all.duration-200.ease-out(
         stroke-width="0"
@@ -82,10 +85,9 @@ g.col(
         :stroke="sub[c] ? 'black' : noteColor(cell + globalScale.tonic - 1, 3, doubleScale[c] == 1 ? 1 : 0.1, sub[c] ? 1 : 0.5)"
       )
   g.subs(
-
-    :transform="`translate(0 ${height})`"
     v-show="active"
-  )
+    :transform="`translate(0 ${height})`"
+    )
     rect(
       v-drag="dragDiv"
       :width="width"
@@ -93,8 +95,9 @@ g.col(
       fill="transparent"
     )
     g.pointer-events-none(
+      v-for="(sub, s) in step"
+      :key="sub" 
       :transform="`translate(${s * width / step.length} 0)`"
-      v-for="(sub, s) in step" :key="sub"
     )
       rect(
         :data-pos="pos"

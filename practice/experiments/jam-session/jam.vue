@@ -5,7 +5,7 @@ import TimePanel from './time.vue'
 import DatePanel from './date.vue'
 </script>
 
-<template lang='pug'>
+<template lang="pug">
 #screen.flex.flex-col.gap-4.bg-light-900.dark-bg-dark-800.p-4.justify-between.relative
 	time-panel
 		full-screen

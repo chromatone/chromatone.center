@@ -1,5 +1,5 @@
 <script setup>
-import { reactive, computed } from 'vue'
+import { reactive, ref } from 'vue'
 import { UserMedia, Waveform, FFT } from 'tone'
 import { useRafFn } from '@vueuse/core'
 import { useTuner } from '#/use/tuner.js'
@@ -31,7 +31,7 @@ function initiate() {
     init()
     audio.initiated = true
     console.log('mic open')
-    const { resume, pause } = useRafFn(() => {
+    useRafFn(() => {
       audio.fft = fft.getValue()
       audio.wave = wave.getValue()
       audio.points = Array.from(audio.wave).map((val, i) => `${i},${120 + 280 * val}`).join(' ')
@@ -48,7 +48,9 @@ function initiate() {
   
 <template lang="pug">
 .fullscreen-container(ref="screen")
-  control-start.absolute(v-if="!tuner.initiated"  @click="initiate()") Start
+  control-start.absolute(
+    v-if="!tuner.initiated"  
+    @click="initiate()") Start
   full-screen.absolute.bottom-6.right-6.z-30(:el="screen")
   svg#pitch-spectrum.rounded-xl.w-full.h-full.min-h-2xl.-z3(
     version="1.1",
@@ -58,9 +60,9 @@ function initiate() {
     )
     g.lines(v-if="audio.fft.length > 0")
       line(
-        style="transition:all 500ms ease; "
-        v-for="(bar, i) in audio.bands",
+        v-for="(bar, i) in audio.bands"
         :key="i",
+        style="transition:all 500ms ease; ",
         :stroke="noteColor(freqPitch(bar), 3, 1 - i / 256)"
         stroke-linecap="round"
         stroke-width="0.5"

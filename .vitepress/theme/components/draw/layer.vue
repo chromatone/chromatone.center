@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { onBeforeUnmount, onMounted, ref } from 'vue';
 import { useDraw } from './draw'
 
 const svg = ref()
@@ -15,7 +16,6 @@ onBeforeUnmount(() => {
 })
 </script>
 
-<template>
-  <svg ref="svg" class="absolute w-full h-full top-0 bottom-0 left-0 right-0"
-    :class="{ 'pointer-events-none': !drawingEnabled, 'touch-none': drawingEnabled }" />
+<template lang="pug">
+svg.absolute.w-full.h-full.top-0.bottom-0.left-0.right-0(ref="svg" :class="{ 'pointer-events-none': !drawingEnabled, 'touch-none': drawingEnabled }")
 </template>

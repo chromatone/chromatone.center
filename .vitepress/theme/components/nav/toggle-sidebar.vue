@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 const emit = defineEmits(['toggle'])
 </script>
 
@@ -8,7 +8,7 @@ const emit = defineEmits(['toggle'])
   </div>
 </template>
 
-<style>
+<style scoped lang="postcss">
 .sidebar-button {
   @apply cursor-pointer h-full inline-flex px-2 items-center lg-hidden;
 }

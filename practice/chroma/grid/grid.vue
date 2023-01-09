@@ -1,11 +1,10 @@
 <script setup>
 import gridColumn from './column.vue'
 
-import { isDark } from '#/theme/composables/state'
 import { noteColor } from "#/use/colors"
 import { notes } from '#/use/theory'
 import { useLoop } from '#/use/loop'
-import { Frequency } from 'tone'
+import { reactive } from 'vue';
 
 const props = defineProps({
   order: { type: Number, default: 0, },
@@ -21,7 +20,7 @@ const grid = reactive({
   footer: 60,
 })
 
-const emit = defineEmits(['del']);
+defineEmits(['del']);
 
 const loop = useLoop(props.order);
 
@@ -87,13 +86,13 @@ const loop = useLoop(props.order);
       )
         .i-mdi-pan-horizontal
       control-change.w-4em(
-        @dblclick="loop.volume > 0 ? loop.volume = 0 : loop.volume = 0.75"
         v-model="loop.volume"
         :step="0.01"
         :min="0"
         :max="1"
         :fixed="1"
         :ratio="2"
+        @dblclick="loop.volume > 0 ? loop.volume = 0 : loop.volume = 0.75"
       )
         .i-la-volume-up
     .flex-1
@@ -102,13 +101,13 @@ const loop = useLoop(props.order);
     button.text-button(@mousedown="$emit('del')")
       .i-la-times
   svg.w-full.cursor-pointer(
+    ref="svg"
     version="1.1",
     baseProfile="full",
     :viewBox="`0 0 ${grid.width} ${grid.height + grid.footer}`",
     xmlns="http://www.w3.org/2000/svg",
     style="user-select:none;touch-action:none"
     :opacity="loop.volume"
-    ref="svg"
     )
     clipPath#grid-mask
       rect(
@@ -132,7 +131,8 @@ const loop = useLoop(props.order);
           :height="grid.height"
         )
         line(
-          v-for="beat in loop.metre.over" :key="beat"
+          v-for="beat in loop.metre.over" 
+          :key="beat"
           :y2="grid.height"
           :stroke-width="beat % loop.metre.under == 0 ? 8 : beat % 4 == 0 ? 4 : active ? 1 : 0"
           :stroke="color"
@@ -146,7 +146,8 @@ const loop = useLoop(props.order);
         )
 
       grid-column(
-        v-for="(step, s) in loop.steps" :key="s"
+        v-for="(step, s) in loop.steps" 
+        :key="s"
         :step="step"
         :pos="s"
         :color="color"

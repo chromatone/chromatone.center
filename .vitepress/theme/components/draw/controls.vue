@@ -47,24 +47,24 @@ watch(() => midi.note, note => {
     .bg-current.rounded-full(:style="{ width: brush.size + 4 + 'px', height: brush.size + 4 + 'px', backgroundColor: brush.color }")
   .is-group.flex.gap-2.px-2.py-1
     button(:class="{ active: drawingMode == 'stylus' }", @click="setDrawingMode('stylus')")
-      carbon:pen
+      .i-carbon-pen
 
     button(:class="{ active: drawingMode == 'line' }", @click="setDrawingMode('line')")
       svg.-mt-1(width="1em", height="1em", preserveAspectRatio="xMidYMid meet", viewBox="0 0 24 24")
         path(d="M21.71 3.29a1 1 0 0 0-1.42 0l-18 18a1 1 0 0 0 0 1.42a1 1 0 0 0 1.42 0l18-18a1 1 0 0 0 0-1.42z", fill="currentColor")
     button(:class="{ active: drawingMode == 'arrow' }", @click="setDrawingMode('arrow')")
-      carbon:arrow-up-right
+      .i-carbon-arrow-up-right
 
     button(:class="{ active: drawingMode == 'ellipse' }", @click="setDrawingMode('ellipse')")
-      carbon:radio-button
+      .i-carbon-radio-button
 
     button(:class="{ active: drawingMode == 'rectangle' }", @click="setDrawingMode('rectangle')")
-      carbon:checkbox
+      .i-carbon-checkbox
 
   //  TODO: not sure why it's not working! 
   //
     <button class="icon-btn" :class="{ shallow: drawingMode != 'eraseLine' }" @click="setDrawingMode('eraseLine')">
-      <carbon:erase />
+      <i-carbon-erase />
       </button> 
 
   .is-group.flex.flex-wrap
@@ -80,24 +80,21 @@ watch(() => midi.note, note => {
 
 
   button(:class="{ disabled: !canUndo }", @click="undo()")
-    carbon:undo
+    .i-carbon-undo
   button(:class="{ disabled: !canRedo }", @click="redo()")
-    carbon:redo
+    .i-carbon-redo
 
   button(:class="{ disabled: !canClear }", @click="clearDrauu()")
-    carbon:delete
+    .i-carbon-delete
 
   button(:class="{ shallow: !drawingPinned }", @click="drawingPinned = !drawingPinned")
-    carbon:pin-filled.transform.-rotate-45(v-show="drawingPinned")
-    carbon:pin(v-show="!drawingPinned")
+    .i-carbon-pin-filled.transform.-rotate-45(v-show="drawingPinned")
+    .i-carbon-pin(v-show="!drawingPinned")
 
 
   button(v-if="drawingEnabled", :class="{ shallow: !drawingEnabled }", @click="drawingEnabled = !drawingEnabled")
-    carbon:error(v-show="drawingPinned")
-    carbon:close-outline(v-show="!drawingPinned")
-
-
-            
+    .i-carbon-error(v-show="drawingPinned")
+    .i-carbon-close-outline(v-show="!drawingPinned")
             
 </template>
 

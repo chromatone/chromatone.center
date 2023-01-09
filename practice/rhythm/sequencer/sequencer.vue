@@ -1,8 +1,8 @@
 <script setup>
 import { noteColor } from "#/use/colors"
-import { Scale, ScaleType, Midi, Note } from '@tonaljs/tonal'
-import { useRafFn, onKeyStroke } from '@vueuse/core'
-import { scaleList, notes } from '#/use/theory'
+import { Scale, Midi, Note } from '@tonaljs/tonal'
+import { onKeyStroke, useStorage } from '@vueuse/core'
+import { notes } from '#/use/theory'
 import { globalScale } from '#/use/chroma'
 import { Pattern, start, Transport, Draw } from 'tone'
 import { synthOnce } from '#/use/synth.js'
@@ -10,6 +10,7 @@ import { midiOnce } from '#/use/midi.js'
 import { pianoOnce, init } from '#/use/piano'
 import { tempo } from '#/use/tempo'
 import { isDark } from '#/theme/composables/state'
+import { computed, onBeforeUnmount, onMounted, reactive, watch, watchEffect } from 'vue'
 
 const state = reactive({
   started: false,
@@ -67,7 +68,7 @@ onMounted(() => {
 })
 
 
-watch(() => state.steps, len => {
+watch(() => state.steps, () => {
   if (state.mounted) {
     setPatterns()
   }
@@ -170,27 +171,74 @@ function borderColor(cell, r) {
     control-scale.flex-1(v-tooltip.top="'Select root note and scale'")
     .flex.flex-wrap.justify-center.flex-1.bg-light-900.p-4.rounded-2xl.dark-bg-dark-800.gap-2
 
-      select(v-model="state.type" v-tooltip.top="'Pattern type'")
+      select(
+        v-model="state.type" 
+        v-tooltip.top="'Pattern type'")
         option(
           v-for="(type) in patternTypes" 
-          :key="type" :value="type"
+          :key="type" 
+          :value="type"
           ) {{ type }}
       .is-group.flex.flex-wrap.p-2
-        control-rotary(v-model="state.octave" :max="4" :min="2" :fixed="0" param="OCTAVE" v-tooltip.top="'Octave'")
         control-rotary(
-          v-model="state.steps" :max="32" :min="4" :step="1" :fixed="0" param="steps" v-tooltip.top="'Number of steps'")
-        control-rotary(v-model="state.probability" :max="1" :min="0" :step="0.01" :fixed="2" param="prob" v-tooltip.top="'Probability'")
-        control-rotary(v-model="tempo.bpm" :step="1" :max="400" :min="10" :fixed="0" param="BPM" v-tooltip.top="'Set tempo'")
+          v-model="state.octave" 
+          v-tooltip.top="'Octave'"
+          :max="4" 
+          :min="2" 
+          :fixed="0" 
+          param="OCTAVE" 
+          )
+        control-rotary(
+          v-model="state.steps" 
+          v-tooltip.top="'Number of steps'"
+          :max="32" 
+          :min="4" 
+          :step="1" 
+          :fixed="0" 
+          param="steps" 
+          )
+        control-rotary(
+          v-model="state.probability" 
+          v-tooltip.top="'Probability'"
+          :max="1" 
+          :min="0" 
+          :step="0.01" 
+          :fixed="2" 
+          param="prob" 
+          )
+        control-rotary(
+          v-model="tempo.bpm" 
+          v-tooltip.top="'Set tempo'"
+          :step="1" 
+          :max="400" 
+          :min="10" 
+          :fixed="0" 
+          param="BPM"
+          )
       .is-group
-        button.text-button(:class="{ active: state.humanize }" @click="state.humanize = !state.humanize" v-tooltip.bottom="'Humanize rhythm'") HMN
-        button.text-button(@click="clear()" v-tooltip.bottom="'Clear pattern'")
+        button.text-button(
+          v-tooltip.bottom="'Humanize rhythm'"
+          :class="{ active: state.humanize }" 
+          @click="state.humanize = !state.humanize" 
+          ) HMN
+        button.text-button(
+          v-tooltip.bottom="'Clear pattern'" 
+          @click="clear()")
           .i-la-trash-alt
       .is-group.flex.items-center
-        button.text-button(@click="state.playing = true" v-if="!state.playing" v-tooltip.bottom="'Play'")
+        button.text-button(
+          v-if="!state.playing" 
+          v-tooltip.bottom="'Play'" 
+          @click="state.playing = true")
           .i-la-play
-        button.text-button(@click="state.playing = false" v-if="state.playing" v-tooltip.bottom="'Pause'")
+        button.text-button(
+          v-if="state.playing" 
+          v-tooltip.bottom="'Pause'" 
+          @click="state.playing = false")
           .i-la-pause
-        button.text-button(@click="reset()" v-tooltip.bottom="'Stop'")
+        button.text-button(
+          v-tooltip.bottom="'Stop'" 
+          @click="reset()")
           .i-la-stop
   .rows(
     @mousedown="state.hover = true"
@@ -199,17 +247,15 @@ function borderColor(cell, r) {
     )
     .row
       .title
-    .row(v-for="(row, r) in rows" :key="row")
+    .row(
+      v-for="(row, r) in rows" 
+      :key="row")
       .title.m-1.rounded-md.shadow(:style="{ color: noteColor(state.pitches[r]), backgroundColor: state.range[r].length > 2 ? '#0005' : '#aaa5' }") {{ state.range[r] }}
       .cell(
-        v-for="(cell, c) in row" :key="cell" 
-        :id="`c${r}-${c}`"
-        :style=`{
-          color: noteColor(state.pitches[r]),
-          borderColor: borderColor(cell, r),
-          backgroundColor: cell.cell == positions[r] ? cell.active ? noteColor(state.pitches[r], 3) : isDark ? '#0005' : '#fff5' : 'transparent',
-          marginRight: c % 4 == 3 ? '12px' : '1px'
-        }`
+        v-for="(cell, c) in row" 
+        :id="`c${r}-${c}`" 
+        :key="cell"
+        :style="{ color: noteColor(state.pitches[r]), borderColor: borderColor(cell, r),backgroundColor: cell.cell == positions[r] ? cell.active ? noteColor(state.pitches[r], 3) : isDark ? '#0005' : '#fff5' : 'transparent', marginRight: c % 4 == 3 ? '12px' : '1px' }"
         :class="{ active: cell?.active, current: cell.cell == positions[r] }"
         @mousedown.prevent="toggle(r, c, true, $event)"
         @mouseenter="toggle(r, c, false, $event)"

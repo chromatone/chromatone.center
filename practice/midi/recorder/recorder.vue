@@ -1,11 +1,12 @@
 <script setup>
 import { Midi } from '@tonejs/midi'
 import { noteColor } from "#/use/colors"
-import { now, PolySynth, Synth, Transport } from 'tone'
+import { now, PolySynth, Synth } from 'tone'
 import { midi } from '#/use/midi'
 import { useAudio } from '#/use/audio'
+import { computed, reactive, watch } from 'vue'
 
-let midiData = new Midi()
+new Midi()
 
 const info = reactive({
   title: '',
@@ -121,10 +122,13 @@ function play() {
     :viewBox="`0 0 ${map.width} ${map.height}`",
     xmlns="http://www.w3.org/2000/svg",
   )
-    g(v-for="(track, t) in info.tracks" :key="track")
+    g(
+      v-for="(track) in info.tracks"
+      :key="track")
       rect(
+        v-for="note in track.notes"
+        :key="note" 
         rx="0.4"
-        v-for="note in track.notes" :key="note"
         :x="calcX(note.timestamp)"
         :y="calcY(note.number)"
         :width="note.duration * 1000 / (info.last - info.first)"

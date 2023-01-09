@@ -3,6 +3,7 @@ import paper from "paper";
 import { midi } from "#/use/midi";
 import { noteColor } from '#/use/colors'
 import { polarXY, radar } from "../radar.js";
+import { ref, watch, onBeforeUnmount } from "vue";
 
 const props = defineProps({
   channel: { type: Number, default: 7 },
@@ -160,7 +161,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template lang="pug">
-
+div
 </template>
 
 <style lang="postcss" scoped>

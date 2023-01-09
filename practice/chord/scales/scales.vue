@@ -3,6 +3,7 @@ import { chordList, scaleList, notes } from '#/use/theory'
 import { globalScale } from '#/use/chroma'
 import { rotateArray } from '#/use/calculations'
 import { noteColor } from '#/use/colors'
+import { computed } from 'vue';
 
 const scaleChords = computed(() => scaleList
   .map(scale => {
@@ -34,15 +35,15 @@ function findChords(chroma = '101010010100') {
   return chordList.filter(chord => checkChord(chroma, chord.chroma))
 }
 
-function countDegrees(chroma = '101010010100') {
-  return chroma.split('').reduce((curr, prev) => Number(prev) + Number(curr))
-}
+// function countDegrees(chroma = '101010010100') {
+//   return chroma.split('').reduce((curr, prev) => Number(prev) + Number(curr))
+// }
 
 const currentScale = computed(() => scaleChords.value.find(sc => sc.chroma == globalScale.chroma))
 
 </script>
 
-<template lang='pug'>
+<template lang="pug">
 .flex.flex-col
   .bg-dark-100.bg-opacity-20.p-3.m-3
     control-scale.flex-1.mb-4
@@ -50,8 +51,9 @@ const currentScale = computed(() => scaleChords.value.find(sc => sc.chroma == gl
     .flex-col.flex.flex-1.gap-2
       .flex.flex-wrap.gap-2.overflow-x-scroll.max-w-full
         .flex.flex-col.flex-1.rounded-2xl.border-2.gap-2.relative(
-          v-for="degree in currentScale.degrees" :key="degree"
-            :style="{ borderColor: noteColor((degree + globalScale.tonic) % 12) }"
+          v-for="degree in currentScale.degrees" 
+          :key="degree"
+          :style="{ borderColor: noteColor((degree + globalScale.tonic) % 12) }"
           ) 
           .font-bold.px-2.rounded-xl.flex.items-center(
             :style="{ backgroundColor: noteColor((degree + globalScale.tonic) % 12) }"
@@ -59,8 +61,12 @@ const currentScale = computed(() => scaleChords.value.find(sc => sc.chroma == gl
             .flex-1
             .text-sm {{ degree }}
           .flex.flex-wrap.gap-2.justify-center
-            .p-0.text-sm.flex.flex-wrap.justify-center(v-for="chord in currentScale.degreeChords[degree]" :key="chord")
-              chroma-keys.w-24(:chroma="chord.chroma", :pitch="(degree + globalScale.tonic) % 12")
+            .p-0.text-sm.flex.flex-wrap.justify-center(
+              v-for="chord in currentScale.degreeChords[degree]" 
+              :key="chord")
+              chroma-keys.w-24(
+                :chroma="chord.chroma", 
+                :pitch="(degree + globalScale.tonic) % 12")
 
 </template>
 

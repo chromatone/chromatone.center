@@ -3,6 +3,7 @@ import finderKeys from './keys.vue'
 
 import { noteColor } from "#/use/colors"
 import { notes, chords } from '#/use/theory'
+import { computed, reactive } from 'vue';
 
 const accord = reactive({
   root: 0,
@@ -41,13 +42,15 @@ function compareChords(a, b) {
     .chord(
       v-for="chord in chordList", 
       :key="chord?.handle", 
-      @click="accord.info = chord",
-      :class="{ active: chord?.handle == accord.info.handle }") {{ chord?.handle }}
+      :class="{ active: chord?.handle == accord.info.handle }",
+      @click="accord.info = chord") {{ chord?.handle }}
   .text-6xl.my-4.text-center.font-bold(
     :style="{ color: noteColor(accord.root) }"
   ) {{ notes[accord?.root] }}{{ accord?.info.handle }}
   .relative.m-auto
-    finder-keys#chord-keys(:accord="accord", @selectRoot="accord.root = $event")
+    finder-keys#chord-keys(
+      :accord="accord", 
+      @select-root="accord.root = $event")
 </template>
 
 <style lang="postcss" scoped>

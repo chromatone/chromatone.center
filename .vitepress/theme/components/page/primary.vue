@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { useRoute } from 'vitepress'
 
 const route = useRoute()

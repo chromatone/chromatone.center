@@ -2,6 +2,7 @@ import Aubio from "./aubio.js";
 import { noteColor } from '#/use/colors'
 import { initGetUserMedia } from '#/use/audio'
 import Meyda from "meyda";
+import { reactive, computed, watch } from 'vue'
 
 const noteStrings = [
   "C",

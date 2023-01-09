@@ -30,7 +30,6 @@ export default defineConfig({
         /\.vue\??/, // .vue
       ],
       imports: [
-
         {
           'vue': ['computed', 'ref', 'reactive', 'watch', 'watchEffect', 'onMounted', 'onBeforeUnmount', 'shallowRef', 'shallowReactive', 'nextTick'],
           '@vueuse/core': ['useStorage', 'useRafFn', 'useDark'],

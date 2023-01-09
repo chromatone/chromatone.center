@@ -1,6 +1,7 @@
 <script setup>
 import midiNote from './note.vue'
 import midiCc from './cc.vue'
+import { ref } from 'vue';
 
 import { useMidi } from '#/use/midi.js'
 const active = ref(false)
@@ -19,23 +20,27 @@ function sortNotes(notes) {
 
 <template lang="pug">
 .flex.flex-col
-  midi-panel(:toChannel="false")
+  midi-panel(:to-channel="false")
     full-screen
   .fullscreen-container#screen(@mouseleave="active = false")
 
     .flex.w-full.h-full.mt-4
-      .flex.flex-col.flex-1.text-center(v-for="ch in midi.channels", :key="ch.num")
+      .flex.flex-col.flex-1.text-center(
+        v-for="ch in midi.channels", 
+        :key="ch.num")
         .header {{ ch.num }}
         midi-note(
           v-for="note in sortNotes(ch.notes)", 
           :key="note.number"
-          :note="note"
           v-model:active="active"
+          :note="note"
           @play="midiAttack(note)"
           @stop="midiRelease(note)"
         )
     .flex.w-full
-      .flex.flex-col.flex-1.text-center(v-for="ch in midi.channels", :key="ch.num")
+      .flex.flex-col.flex-1.text-center(
+        v-for="ch in midi.channels", 
+        :key="ch.num")
         midi-cc(
           v-for="cc in ch.cc"
           :key="cc.number"

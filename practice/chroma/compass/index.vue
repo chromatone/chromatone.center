@@ -1,11 +1,12 @@
 <script setup>
 import compassCircle from './circle.vue'
 
-import { noteColor } from "#/use/colors"
 import { chromaColorMix } from '#/use/colors.js'
-import { Chord, ScaleType, Interval } from '@tonaljs/tonal'
-import { chordType, scaleType, chordList, notes } from '#/use/theory'
+import { Chord, ScaleType } from '@tonaljs/tonal'
+import { chordType, chordList, notes } from '#/use/theory'
 import { globalScale } from '#/use/chroma'
+import { computed, ref } from 'vue'
+import { useStorage } from '@vueuse/core'
 
 const screen = ref()
 
@@ -31,7 +32,6 @@ const chordScales = computed(() => {
 
 const scale = useStorage('scale', chordScales.value[0])
 function clearScale() { scale.value = '' }
-const scaleTonic = useStorage('scaleTonic', 0)
 
 const scaleChroma = computed(() => {
   return ScaleType.get(scale.value).chroma
@@ -47,13 +47,13 @@ const chordGroup = computed(() => {
 </script>
 
 <template lang="pug">
-.fullscreen-container.rounded-4xl(ref="screen")
+.fullscreen-container.rounded-3xl(ref="screen")
   full-screen.absolute.top-2.right-2.z-10(:el="screen")
   .relative.w-full.m-auto
     compass-circle#chroma-compass(
       v-model:chroma="chroma"
-      :scaleChroma="scaleChroma"
-      @clearScale="clearScale()"
+      :scale-chroma="scaleChroma"
+      @clear-scale="clearScale()"
       )
   .max-w-65ch.m-auto.flex.flex-col.items-center
     chroma-keys.m-auto(
@@ -70,21 +70,21 @@ const chordGroup = computed(() => {
 
       .flex.flex-wrap.justify-center
         .chord(
-          :style="{ color: chord?.chroma == chroma ? 'white' : chromaColorMix(chord.chroma, globalScale.tonic).hsl, backgroundColor: chord?.chroma == chroma ? chromaColorMix(chord.chroma, globalScale.tonic).hsl : '' }"
-          v-for="chord in chordGroup", 
-          :key="chord?.aliases[0]", 
-          @click="chroma = chord.chroma",
-          :class="{ active: chord?.chroma == chroma }") {{ notes[globalScale.tonic] + chord?.aliases[0] }}
+          v-for="ch in chordGroup"
+          :key="ch?.aliases[0]", 
+          :style="{ color: ch?.chroma == chroma ? 'white' : chromaColorMix(ch.chroma, globalScale.tonic).hsl, backgroundColor: ch?.chroma == chroma ? chromaColorMix(ch.chroma, globalScale.tonic).hsl : '' }", 
+          :class="{ active: ch?.chroma == chroma }",
+          @click="chroma = ch.chroma") {{ notes[globalScale.tonic] + ch?.aliases[0] }}
 
       .flex.flex-wrap.justify-center
         .min-w-full.text-center.my-4
           .mx-auto.w-auto.text-sm.border-b-1.border-current It may be the root chord in these scales:
         .chord(
           v-for="name in chordScales",
-          :style="{ color: scale == name ? 'white' : chromaColorMix(ScaleType.get(name).chroma, globalScale.tonic).hsl, backgroundColor: scale == name ? chromaColorMix(ScaleType.get(name).chroma, globalScale.tonic).hsl : '' }"
           :key="name"
-          @click="scale = name"
+          :style="{ color: scale == name ? 'white' : chromaColorMix(ScaleType.get(name).chroma, globalScale.tonic).hsl, backgroundColor: scale == name ? chromaColorMix(ScaleType.get(name).chroma, globalScale.tonic).hsl : '' }"
           :class="{ active: scale == name }"
+          @click="scale = name"
           ) {{ notes[globalScale.tonic] }} {{ name }}
 </template>
 

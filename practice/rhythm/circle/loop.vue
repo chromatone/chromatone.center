@@ -6,12 +6,12 @@ import BeatControlSector from './sector.vue'
 
 import { getCircleCoord } from "#/use/calculations";
 import { useSequence } from "#/use/sequence.js";
-import { isDark } from "#/theme/composables/state.js";
 import { levelColor } from "#/use/colors.js";
 import { tempo } from "#/use/tempo";
 import { midi } from "#/use/midi";
 // import { useUrlSearchParams } from '@vueuse/core'
 import { controls } from './controls'
+import { ref, computed, watch } from 'vue'
 
 const props = defineProps({
   radius: { type: Number, default: 400 },
@@ -126,15 +126,16 @@ g(
       :radius="radius - 5"
       :muted="seq.mutes[s]"
       style="cursor:pointer"
+      :accented="Boolean(seq.accents[s])"
       @accent="seq.accents[s] = !seq.accents[s]"
       @mute="seq.mutes[s] = !seq.mutes[s]"
-      :accented="Boolean(seq.accents[s])"
     )
   beat-control-sector.under(
+    v-model="seq.meter.under"
+    v-tooltip.top="'Measure subdivision'"
     :radius="controlRadius"
     :start="16 + order * 11"
     :finish="90"
-    v-model="seq.meter.under"
     :step="1"
     font-size="30"
     :min="1"
@@ -143,17 +144,16 @@ g(
     show-positions
     :ratio="800"
     :every="4"
-    v-tooltip.top="'Measure subdivision'"
-
-    :midiCC="controls.cc[order].under"
+    :midi-c-c="controls.cc[order].under"
   )
     text {{ seq.meter?.under }}
 
   beat-control-sector.over(
+    v-model="seq.meter.over"
+    v-tooltip.top="'Number of steps'"
     :radius="controlRadius"
     :start="343 - order * 11"
     :finish="270"
-    v-model="seq.meter.over"
     :step="1"
     font-size="30"
     :min="2"
@@ -162,8 +162,7 @@ g(
     show-positions
     :ratio="1000"
     :every="4"
-    v-tooltip.top="'Number of steps'"
-    :midiCC="controls.cc[order].over"
+    :midi-c-c="controls.cc[order].over"
   )
     text {{ seq.meter?.over }}
 

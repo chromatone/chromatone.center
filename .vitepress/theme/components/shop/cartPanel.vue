@@ -8,7 +8,7 @@ onClickOutside(target, () => { open.value = false })
 
 </script>
 
-<template lang='pug'>
+<template lang="pug">
 button.-mr-1.fixed.bottom-44.right-24px.text-2xl.z-1000(@click="open = !open" v-if="Object.keys(cart).length > 0")
 	shop-cart-icon
 transition(name="slide")

@@ -1,9 +1,10 @@
 <script setup>
-import { freqColor, freqPitch, pitchFreq } from '#/use/calculations'
+import { freqColor, freqPitch } from '#/use/calculations'
 import { notes } from '#/use/theory'
 import { MonoSynth, start } from 'tone'
 import { useSvgMouse } from '#/use/mouse.js'
 import { createChannel } from '#/use/audio'
+import { ref, reactive, computed } from 'vue'
 
 const started = ref(false)
 function startApp() {
@@ -57,7 +58,7 @@ const points = reactive({
   list: [],
   add() {
     if (!channel) {
-      ; ({ channel } = createChannel('loudness'))
+      channel = createChannel('loudness')
     }
     let hz = freq.toHz(mouse.normX)
     let synth = new MonoSynth({
@@ -105,11 +106,11 @@ const points = reactive({
 </script>
 
 <template lang="pug">
-.fullscreen-container.rounded-4xl#screen.p-4.mb-8
+.fullscreen-container.rounded-3xl#screen.p-4.mb-8
   full-screen.absolute.right-2.top-2
   svg.w-full.select-none(
-    version="1.1",
     ref="svg"
+    version="1.1",
     baseProfile="full",
     viewBox="-50 -50 1000 720",
     xmlns="http://www.w3.org/2000/svg",
@@ -218,7 +219,7 @@ const points = reactive({
             y="20"
           ) C{{ o }}
         g(
-          v-for="(mark, i) in freq.marks"
+          v-for="(mark) in freq.marks"
           :key="mark"
         )
           line(
@@ -232,12 +233,13 @@ const points = reactive({
           )
         text(
           v-for="num in freq.nums"
-            fill="currentColor"
-            font-family="Commissioner, sans-serif"
-            font-size="12px"
-            text-anchor="middle"
-            :x="900 * freq.toNormX(num)"
-            y="625"
+          :key="num"
+          fill="currentColor"
+          font-family="Commissioner, sans-serif"
+          font-size="12px"
+          text-anchor="middle"
+          :x="900 * freq.toNormX(num)"
+          y="625"
           ) {{ num }} Hz
         g(
           :transform="`translate(${mouse.x}, 0)`"
@@ -281,10 +283,10 @@ const points = reactive({
         d="M82.6,19.38l10.11,16,22,38.26,20.7,35.62c.09.16.18.31.28.46l19.74,29.17a5.39,5.39,0,0,0,.4.54l19.74,24.36,21.84,24.37,13.08,13.58.38.36,16.34,14.85,18.13,15.25.38.3,14.75,10.94c.13.1.28.2.42.29l14.68,9.46,18.19,11,18.43,10.1,18.18,9.47,14.79,6.83c.16.08.32.14.49.21L367.09,299l16.75,5.7.6.18L398,308.35l10.49,2.59.5.11,12.13,2.18.49.07,11.11,1.29a7.83,7.83,0,0,0,1.28,0l9.1-.43a8,8,0,0,0,1.94-.33l13.56-4.18a5.52,5.52,0,0,0,.53-.18l16.53-6.4a9.37,9.37,0,0,1,1-.31l10.53-2.49a8.3,8.3,0,0,1,1.4-.21l8-.42a8,8,0,0,1,1.77.11l5.71,1a7.77,7.77,0,0,1,2.57.93l8.44,4.85a7.5,7.5,0,0,1,.88.59l11.07,8.51,11,7.88c.19.14.38.26.58.38l5.94,3.52a7.35,7.35,0,0,0,1.2.58l2.9,1.11a7.31,7.31,0,0,0,1.59.42l1.06.17a7.91,7.91,0,0,0,4.19-.49l2.49-1a7.85,7.85,0,0,0,2.88-2l6.58-7.32c.11-.12.21-.24.31-.37l10.33-13c.17-.22.33-.44.48-.67l10.38-16.32L599,272c.12-.2.25-.39.39-.58l6-8.19a8,8,0,0,1,2-1.9l4.94-3.26a7.82,7.82,0,0,1,2.92-1.18l4.58-.84a8,8,0,0,1,2.84,0l2.29.42a7.89,7.89,0,0,1,4.23,2.27l5.54,5.72a7.3,7.3,0,0,1,1,1.19l8.2,12.64a7.52,7.52,0,0,0,1.11,1.35l1.92,1.87a7.87,7.87,0,0,0,5.68,2.24h0a7.93,7.93,0,0,0,3.93-1.16l3-1.82a7.87,7.87,0,0,0,2.35-2.21l6-8.59a7.84,7.84,0,0,0,1-2l5.5-16.27a7.38,7.38,0,0,0,.31-1.23l1.55-9.33a8.18,8.18,0,0,1,.33-1.27l6.35-18.44"
         )
       rect(
-        style="cursor:none"
         ref="area"
-        x=0
-        y=0
+        style="cursor:none"
+        x="0"
+        y="0"
         width="900"
         height="600"
         fill="hsla(0,0%,100%,0.1)"
@@ -360,10 +362,10 @@ const points = reactive({
           :y="point.y + 8"
           ) {{ point.note }} 
       g.cursor-pointer(
+        v-if="points.list.length > 0"
         transform="translate(860,560)"
         @click.stop.prevent="points.clear()"
-        v-if="points.list.length > 0"
-      )
+        )
         circle(
           cx="14"
           cy="14"
@@ -376,11 +378,11 @@ const points = reactive({
       @click.stop.prevent="startApp()"
       )
       rect(
-        x=250
-        y=200
-        width=400
-        height=100
-        rx=20
+        x="250"
+        y="200"
+        width="400"
+        height="100"
+        rx="20"
         fill="gray"
         stroke="white"
       )

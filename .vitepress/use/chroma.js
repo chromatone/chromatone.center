@@ -1,9 +1,12 @@
 import { Frequency } from "tone";
-import { midiPlay, midiStop } from "./midi.js";
+import { midiPlay, midiStop, midiOnce } from "./midi.js";
 import { synthOnce, synthAttack, synthRelease } from "./synth.js";
 import { rotateArray } from "#/use/calculations";
 import { notes } from '#/use/theory'
-import { Note, ChordType, ScaleType, Scale, Pcset } from "@tonaljs/tonal";
+import { Note, ScaleType, Scale, Pcset } from "@tonaljs/tonal";
+import { reactive, computed } from 'vue'
+import { useStorage } from "@vueuse/core";
+import { useClamp } from "@vueuse/math";
 
 const allNotes = [...notes].map((n, i) => ({ name: n, pitch: i }))
 
@@ -22,7 +25,7 @@ export const globalScale = reactive({
 
 function getChromaNotes(chroma = "100010010000", tonic = globalScale.tonic) {
   let shiftChroma = rotateArray(chroma.split(""), -tonic);
-  let chOct = rotateArray(allNotes, -tonic).map((n, i) => {
+  let chOct = rotateArray(allNotes, -tonic).map((n) => {
     let noteName = Frequency(n.pitch + tonic + 57, "midi").toNote();
     return noteName;
   });
@@ -37,7 +40,7 @@ function getChromaNotes(chroma = "100010010000", tonic = globalScale.tonic) {
 export function playChromaOnce(chroma, tonic) {
   let notes = getChromaNotes(chroma, tonic);
 
-  notes.forEach((name, i) => {
+  notes.forEach((name) => {
     midiOnce(name);
   });
   synthOnce(notes, "4n");

@@ -11,7 +11,7 @@ const parents = computed(() => useParents(route.path))
 <template lang="pug">
 .tabs
   a.link(v-for="page in parents", :key="page.path" :href="page.path") 
-    carbon-chevron-left.mr-1
+    .i-carbon-chevron-left.mr-1
     span {{ page?.title }}
 </template>
   

@@ -2,19 +2,15 @@
 import ClampedNoise from '../clampedNoise.vue';
 import {
   NoiseSynth,
-  gainToDb,
-  dbToGain,
-  FFT,
   Gain,
-  AutoFilter,
-  AutoPanner,
   BitCrusher,
-  Reverb,
   Panner,
   Filter
 } from "tone";
 
 import { createChannel } from '#/use/audio'
+import { useStorage } from '@vueuse/core';
+import { ref, watch } from 'vue';
 
 const options = useStorage("ambient-options", {
   noise: {
@@ -51,7 +47,7 @@ watch(active, a => {
 
 </script>
 
-<template lang='pug'>
+<template lang="pug">
 .flex.flex-col.gap-4
   .flex.items-center
     .font-bold NOISE
@@ -60,22 +56,29 @@ watch(active, a => {
       .i-la-pause(v-else)
   .flex.flex-wrap.gap-4
     clamped-noise(
-      title="Bit crusher" instrument="Noise"  
-      :min="2" :max="8" 
+      title="Bit crusher" 
+      instrument="Noise"  
+      :min="2" 
+      :max="8" 
       @random="bitCrusher.bits.rampTo($event)"
       )
     clamped-noise(
-      title="Low pass" instrument="Noise" 
-      :min="50" :max="10000" 
+      title="Low pass" 
+      instrument="Noise" 
+      :min="50" 
+      :max="10000" 
       @random="filter.frequency.rampTo($event)"
       )
     clamped-noise(
-      title="Pan" instrument="Noise" 
-      :min="-1" :max="1"
+      title="Pan" 
+      instrument="Noise" 
+      :min="-1" 
+      :max="1"
       @random="panner.pan.rampTo($event)"
       )
     clamped-noise(
-      title="Volume" instrument="Noise" 
+      title="Volume" 
+      instrument="Noise" 
       @random="gain.gain.rampTo($event)"
       )
 </template>

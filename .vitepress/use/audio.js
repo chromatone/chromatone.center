@@ -1,5 +1,8 @@
-import { getDestination, start, gainToDb, Meter, context, Reverb, Limiter, Channel, Solo, Gain } from "tone";
+import { getDestination, start, gainToDb, Meter, context, Reverb, Limiter } from "tone";
 import { useRecorder } from "./recorder";
+import { shallowReactive, reactive, watchEffect } from 'vue'
+import { useRafFn, useStorage } from "@vueuse/core";
+import { useClamp } from "@vueuse/math";
 
 const audio = reactive({
   initiated: false,

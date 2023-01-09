@@ -1,4 +1,4 @@
-import { reactive, computed, watch, onMounted } from "vue";
+import { reactive, computed, watch, onMounted, shallowReactive } from "vue";
 import { Transport, start, Frequency, Loop, Sampler, gainToDb, Draw } from "tone";
 import { freqPitch } from "#/use/calculations";
 import { noteColor } from '#/use/colors'
@@ -6,6 +6,9 @@ import { Note } from "@tonaljs/tonal";
 import { useStorage } from "@vueuse/core";
 import { useRafFn } from "@vueuse/core";
 import { createChannel } from '#/use/audio'
+import { useClamp } from "@vueuse/math";
+
+
 
 export const tempo = reactive({
   initialized: false,
@@ -99,7 +102,7 @@ export function useTempo() {
 
   });
 
-  watch(() => tempo.volume, vol => metro.pluck.volume.rampTo(gainToDb(tempo.volume)))
+  watch(() => tempo.volume, () => metro.pluck.volume.rampTo(gainToDb(tempo.volume)))
 
   watch(
     () => tempo.bpm,

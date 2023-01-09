@@ -1,8 +1,9 @@
 <script setup>
 import { Note, Interval, Pcset } from '@tonaljs/tonal'
-import { freqColor, freqPitch } from '#/use/calculations'
+import { freqColor } from '#/use/calculations'
 import { colord } from 'colord'
 import { globalScale } from '#/use/chroma'
+import { computed, reactive } from 'vue';
 
 const props = defineProps({
   instrument: {
@@ -11,7 +12,7 @@ const props = defineProps({
   },
   chordNotes: {
     type: Array,
-    default: []
+    default: () => []
   }
 });
 
@@ -60,7 +61,9 @@ function getNote(string, semitones) {
         y1="0"
         :y2="neck.height"
       )
-      g.fret(v-for="fret in neck.fretNum" :key="fret")
+      g.fret(
+        v-for="fret in neck.fretNum" 
+        :key="fret")
         line(
           :y1="neck.height"
           :x1="fret * neck.fretWidth"
@@ -90,7 +93,8 @@ function getNote(string, semitones) {
           opacity="0.5"
         )
         g.note(
-          v-for="(note, n) in neck.fretNum + 1" :key="note"
+          v-for="(note, n) in neck.fretNum + 1" 
+          :key="note"
           :transform="`translate(${(n - 0.5) * neck.fretWidth},0)`"
         )
           circle(

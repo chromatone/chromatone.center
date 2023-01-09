@@ -1,6 +1,7 @@
 <script setup>
 import { useTempo } from '#/use/tempo';
 import { useNow, useDateFormat } from '@vueuse/core'
+import { computed, reactive } from 'vue';
 
 const tempo = useTempo()
 
@@ -21,13 +22,14 @@ const transport = computed(() => {
 	return tempo?.position?.split(':').splice(0, 2)
 })
 
-const hr = 1000 * 60 * 60
 </script>
 
-<template lang='pug'>
+<template lang="pug">
 .flex.flex-col 
 	.flex.uppercase.tabular-nums.font-mono.flex-wrap.gap-1.items-center
-		.p-1.flex.gap-2(v-for="d in date" :key="d")  
+		.p-1.flex.gap-2(
+			v-for="d in date" 
+			:key="d")  
 			.p-0 {{ d }}
 		.p-1 POS {{ transport[0] }}:{{ transport[1] }}
 		.p-1.min-w-32 TICK {{ tempo.ticks }}
@@ -46,6 +48,5 @@ const hr = 1000 * 60 * 60
 				)
 				.i-la-play(v-if="!tempo.playing")
 				.i-la-pause(v-else)
-
 		slot
 </template>

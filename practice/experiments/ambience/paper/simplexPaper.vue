@@ -4,6 +4,7 @@ import { simplex, tracks, zoom } from '../simplex';
 
 import paper from "paper";
 import PaperCircle from "./paper-circle.vue";
+import { onBeforeUnmount, onMounted, ref, watch } from 'vue';
 
 const canvas = ref()
 const size = 512
@@ -37,10 +38,18 @@ function dragZoom(drag) {
 
 </script>
 
-<template lang='pug'>
+<template lang="pug">
 .relative.mx-6.flex
   .absolute.px-1.dark-bg-light-100.bg-dark-100.bg-opacity-20.dark-bg-opacity-20.-left-4.bottom-0.rounded-xl(:style="{ height: zoom / 5 + '%' }") 
     .absolute.-left-2.text-xs {{ zoom.toFixed() }}
-  canvas.rounded-xl.cursor-pointer.flex-auto.max-w-full(ref="canvas" :width="size" :height="size" v-drag="dragZoom" :drag-options="{ preventWindowScrollY: true }")
-    paper-circle(v-for="track in tracks" :key="track" v-bind="track")
+  canvas.rounded-xl.cursor-pointer.flex-auto.max-w-full(
+    ref="canvas" 
+    v-drag="dragZoom" 
+    :width="size" 
+    :height="size" 
+    :drag-options="{ preventWindowScrollY: true }")
+    paper-circle(
+      v-for="track in tracks" 
+      :key="track" 
+      v-bind="track")
 </template>

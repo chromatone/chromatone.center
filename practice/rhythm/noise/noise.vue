@@ -8,11 +8,13 @@ const {
 
 <template lang="pug">
 .row.is-group.gap-2
-  control-push(v-model="active" title="NOISE")
+  control-push(
+    v-model="active" 
+    title="NOISE")
   control-rotary(
+    v-model="options.volume"
     :min="0"
     :max="1"
-    v-model="options.volume"
     :step="0.01"
     param="DRY"
   )
@@ -22,32 +24,32 @@ const {
   )
   .is-group.flex.flex-wrap.p-1
     control-rotary(
+      v-model="options.envelope.attack"
       :min="0.005"
       :max="4"
       :step="0.01"
       param="ATT"
-      v-model="options.envelope.attack"
     )
     control-rotary(
+      v-model="options.envelope.decay"
       :min="0.005"
       :max="6"
       :step="0.01"
       param="DEC"
-      v-model="options.envelope.decay"
     )
     control-rotary(
+      v-model="options.envelope.sustain"
       :min="0.005"
       :max="1"
       :step="0.01"
       param="SUS"
-      v-model="options.envelope.sustain"
     )
     control-rotary(
+      v-model="options.envelope.release"
       :min="0.005"
       :max="10"
       :step="0.01"
       param="REL"
-      v-model="options.envelope.release"
     )
   svg.w-8rem.border-1.rounded-lg.m-1(
     version="1.1",
@@ -69,50 +71,52 @@ const {
 .row.is-group.gap-2
   .flex.flex-wrap.gap-2
     control-push(
-      title="FILTER"
       v-model="filterOptions.on"
+      title="FILTER"
     )
     control-rotary(
+      v-model="filterOptions.volume"
       param="VOL"
       :min="0"
       :max="1"
       :step="0.01"
       :fixed="1"
-      v-model="filterOptions.volume"
     )
     control-rotary(
+      v-model="filterOptions.baseFrequency"
       param="FREQ"
       :min="10"
       :max="999"
       :step="1"
       :fixed="0"
       unit="hz"
-      v-model="filterOptions.baseFrequency"
-    )
+
+      )
     control-rotary(
+      v-model="filterOptions.octaves"
       param="OCT"
       :min="0.1"
       :max="7"
       :step="0.1"
       :fixed="1"
-      v-model="filterOptions.octaves"
-    )
+
+      )
     control-rotary(
+      v-model="filterOptions.filter.Q"
       param="Q"
       :min="0.1"
       :max="20"
       :step="0.1"
       :fixed="1"
-      v-model="filterOptions.filter.Q"
     )
     control-rotary(
+      v-model="filterOptions.wet"
       param="WET"
       :min="0"
       :max="1"
       :step="0.1"
       :fixed="1"
       unit=""
-      v-model="filterOptions.wet"
     )
     control-choose(
       v-model="filterOptions.filter.type"
@@ -120,26 +124,26 @@ const {
     ) 
   .flex.flex-wrap.gap-2
     control-push(
-      title="PLAY"
       v-model="filterOptions.play"
+      title="PLAY"
     )
     control-rotary(
+      v-model="filterOptions.frequency"
       param="LFO"
       :min="0.01"
       :max="4"
       :step="0.01"
       :fixed="2"
       unit="hz"
-      v-model="filterOptions.frequency"
     )
     control-rotary(
+      v-model="filterOptions.depth"
       param="DPTH"
       :min="0"
       :max="1"
       :step="0.1"
       :fixed="1"
       unit=""
-      v-model="filterOptions.depth"
     )
     control-choose(
       v-model="filterOptions.type"
@@ -147,78 +151,78 @@ const {
     )
 .row.is-group.gap-2
   control-push(
-    title="BITCRUSHER"
     v-model="crusherOptions.on"
+    title="BITCRUSHER"
     )
 
   control-rotary(
+    v-model="crusherOptions.volume"
     param="VOL"
     :min="0.01"
     :max="1"
     :step="0.01"
     :fixed="1"
-    v-model="crusherOptions.volume"
   )
   control-rotary(
+    v-model="crusherOptions.bits"
     param="BITS"
     :min="1"
     :max="16"
     :step="0.01"
     :fixed="2"
-    v-model="crusherOptions.bits"
   )
   control-rotary(
+    v-model="crusherOptions.wet"
     param="WET"
     :min="0"
     :max="1"
     :step="0.1"
     :fixed="1"
     unit=""
-    v-model="crusherOptions.wet"
   )
 .row.is-group.gap-2
   control-push(
-    title="PAN"
     v-model="pannerOptions.on"
+    title="PAN"
     )
   control-push(
-    title="PLAY"
     v-model="pannerOptions.play"
+    title="PLAY"
     )
   control-rotary(
+    v-model="pannerOptions.volume"
     param="VOL"
     :min="0.01"
     :max="1"
     :step="0.01"
     :fixed="1"
-    v-model="pannerOptions.volume"
   )
   control-rotary(
+    v-model="pannerOptions.frequency"
     param="LFO"
     :min="0.01"
     :max="4"
     :step="0.01"
     :fixed="2"
     unit="hz"
-    v-model="pannerOptions.frequency"
   )
   control-rotary(
+    v-model="pannerOptions.depth"
     param="DPTH"
     :min="0"
     :max="1"
     :step="0.1"
     :fixed="1"
     unit=""
-    v-model="pannerOptions.depth"
   )
   control-rotary(
+    v-model="pannerOptions.wet"
     param="WET"
     :min="0"
     :max="1"
     :step="0.1"
     :fixed="1"
     unit=""
-    v-model="pannerOptions.wet"
   )
 
 

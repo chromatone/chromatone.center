@@ -1,7 +1,7 @@
 <script setup>
-const props = defineProps({
-  label: String,
-  state: Boolean,
+defineProps({
+  label: { type: String, default: '' },
+  state: { type: Boolean, default: false },
 });
 </script>
 

@@ -1,8 +1,9 @@
 <script setup>
 import { Midi } from '@tonejs/midi'
 import { noteColor } from "#/use/colors"
-import { now, PolySynth, Synth, Transport } from 'tone'
+import { now, PolySynth, Synth } from 'tone'
 import { createAndDownloadBlobFile } from '#/use/midiRender'
+import { computed, reactive } from 'vue';
 
 let midiData
 
@@ -95,7 +96,10 @@ function play() {
     button
       label(for="upload")
         .i-la-upload
-      input#upload.p-2.w-18em.cursor-pointer(@change="uploaded" type="file" accept="audio/midi")
+      input#upload.p-2.w-18em.cursor-pointer(
+        type="file" 
+        accept="audio/midi"
+        @change="uploaded" )
     button(@click="play()")
       .i-la-play(v-if="!map.playing")
       .i-la-stop(v-else)
@@ -104,10 +108,12 @@ function play() {
     button(@click="download")
       .i-la-download
   .flex.flex-wrap
-    .p-1(v-for="(track, t) in info.tracks" :key="track") 
+    .p-1(
+      v-for="(track, t) in info.tracks" 
+      :key="track") 
       .track(
-        @click="map.hiddenTracks[t] = !map.hiddenTracks[t]"
         :class="{ active: !map.hiddenTracks[t] }"
+        @click="map.hiddenTracks[t] = !map.hiddenTracks[t]"
         ) {{ track.channel }}: {{ track.name }} {{ track.instrument.family }}
   svg#visual.max-h-70vh(
     version="1.1",
@@ -115,10 +121,13 @@ function play() {
     :viewBox="`0 0 ${map.width} ${map.height}`",
     xmlns="http://www.w3.org/2000/svg",
   )
-    g(v-for="(track, t) in info.filteredTracks" :key="track")
+    g(
+      v-for="(track) in info.filteredTracks" 
+      :key="track")
       rect(
+        v-for="note in track.notes"
+        :key="note" 
         rx="0.4"
-        v-for="note in track.notes" :key="note"
         :x="note.time"
         :y="127 - note.midi"
         :width="note.duration"

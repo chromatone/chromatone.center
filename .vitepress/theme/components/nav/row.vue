@@ -9,7 +9,7 @@ const pages = getPages(routes)
 
 </script>
 
-<template lang='pug'>
+<template lang="pug">
 .flex.flex-wrap.flex-1.gap-2.m-4
   a.link.no-underline.transition-all.duration-300.text-xl.justify-center(
     v-for="page in pages['/']"

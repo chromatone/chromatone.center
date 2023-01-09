@@ -23,8 +23,8 @@ g.listen(
     g.icon(
       transform="translate(6,12)"
     )
-      tabler-ear(v-if="!tuner.listen")
-      tabler-ear-off(v-else)
+      i-tabler-ear(v-if="!tuner.listen")
+      i-tabler-ear-off(v-else)
   g.bpm.transition-all.duration-200.ease-out(
     @click="tempo.bpm = tuner.bpm"
     v-if="tuner.listen"

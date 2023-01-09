@@ -1,5 +1,8 @@
 import { loadStripe } from '@stripe/stripe-js';
 import { useStorage } from '@vueuse/core';
+import { useClamp } from '@vueuse/math';
+import { ref, computed, reactive, watch } from 'vue'
+
 
 const stripeKey = 'pk_live_51M1WfLBJnUXQERocrGtVUDvfIdzMmecoAClLVFLSi2VG2cNF2kS6bVsR4uUVtMYvusv4lkBMaDuOzgVJUuNMWndm00CVS3obG3'
 
@@ -90,7 +93,7 @@ export async function checkout() {
 		quantity: 1
 	})
 
-	const { error } = await stripe.redirectToCheckout({
+	await stripe.redirectToCheckout({
 		lineItems,
 		mode: 'payment',
 		successUrl: 'https://chromatone.center/shop/success.html',

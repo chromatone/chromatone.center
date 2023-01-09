@@ -1,9 +1,11 @@
 <script setup>
 import { noteColor } from "#/use/colors"
 import { notes } from '#/use/theory'
-import { useTimestamp, onKeyStroke } from '@vueuse/core'
+import { useTimestamp, onKeyStroke, useStorage } from '@vueuse/core'
 import { chromaColorMix } from "#/use/colors.js";
 import { useSynth } from '#/use/synth.js'
+import { computed, ref, watch, watchEffect } from "vue";
+import { useClamp } from "@vueuse/math";
 
 const frequencies = []
 for (let f = 0; f < 13; f++) {
@@ -105,14 +107,14 @@ const sumColor = computed(() => {
 </script>
 
 <template lang="pug">
-.flex.flex-col.items-center#screen.fullscreen-container.rounded-4xl
+.flex.flex-col.items-center#screen.fullscreen-container.rounded-3xl
   .flex.flex-wrap.mt-6
     .note(
       v-for="(note, pitch) in notes"
       :key="note"
-      @click="select(pitch)"
       :class="{ active: activeNotes[pitch] }"
       :style="{ backgroundColor: activeNotes[pitch] ? noteColor(pitch) : note.length == 2 ? '#333' : '#aaa' }"
+      @click="select(pitch)"
     ) {{ note }}
   .p-4.flex.flex-wrap.items-center
     .is-group.flex
@@ -129,12 +131,12 @@ const sumColor = computed(() => {
         .i-la-volume-off(v-else)
       full-screen
   svg#chord-form(
+    v-drag="modify"
     version="1.1",
     baseProfile="full",
     viewBox="0 0 1260 800",
     xmlns="http://www.w3.org/2000/svg",
-    v-drag="modify"
-  )
+    )
     g.zoom
       text(
         y="760"

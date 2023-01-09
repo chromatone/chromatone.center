@@ -1,13 +1,13 @@
 <script setup>
 const props = defineProps({
-  cc: Object
+  cc: { type: Object, default: () => { } }
 });
 
 const emit = defineEmits(['update'])
 
 let prev = 0
 
-function dragger({ movement: [x, y], dragging }) {
+function dragger({ movement: [x], dragging }) {
   let diff = x / 2 - prev
   prev = x / 2
   if (!dragging) prev = 0
@@ -30,6 +30,6 @@ function dragger({ movement: [x, y], dragging }) {
 
 <style lang="postcss" scoped>
 .cc {
-  @apply relative flex-1 flex  items-center  m-1px transition-all duration-200  cursor-pointer select-none;
+  @apply relative flex-1 flex items-center m-1px transition-all duration-200 cursor-pointer select-none;
 }
 </style>

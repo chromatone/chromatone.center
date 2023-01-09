@@ -1,6 +1,5 @@
 import {
   NoiseSynth,
-  gainToDb,
   dbToGain,
   FFT,
   Gain,
@@ -9,8 +8,8 @@ import {
   BitCrusher,
 } from "tone";
 import { useStorage, useRafFn, onKeyStroke } from "@vueuse/core";
-import { useAudio } from '#/use/audio'
 import { createChannel } from "./audio";
+import { ref, watch, onBeforeUnmount } from 'vue'
 
 const types = { brown: "brown", pink: "pink", white: "white" };
 
@@ -95,7 +94,7 @@ export function useNoise() {
     .connect(crusher);
   const synth = new NoiseSynth(options.value).connect(gain).connect(filter);
 
-  const { pause, resume } = useRafFn(() => {
+  useRafFn(() => {
     let arr = fft.getValue();
     for (let j = 0; j < 32; j++) {
       fftData.value[j] = dbToGain(arr[j]) * 10;
@@ -113,7 +112,7 @@ export function useNoise() {
 
   onKeyStroke(
     " ",
-    (e) => {
+    () => {
       active.value = false;
     },
     { eventName: "keyup" }

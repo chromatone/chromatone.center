@@ -20,8 +20,8 @@ function vol(drag) {
 
 <template lang="pug">
 .py-16.flex-1.relative.cursor-pointer.rounded-xl.overflow-hidden.text-center.font-bold.border-6.touch-none(
-  :style="{ borderColor: voice.play ? voice.color : '#3333' }"
   v-drag="vol"
+  :style="{ borderColor: voice.play ? voice.color : '#3333' }"
 ) 
   .vol.-z-5.absolute.left-0.right-0.bottom-0.bg-dark-100.bg-opacity-30.border-t-4(
     :style="{ borderColor: voice.color, height: voice.vol * 100 + '%', opacity: voice.play ? 1 : 0.2 }"
@@ -36,4 +36,5 @@ function vol(drag) {
 </template>
 
 <style lang="postcss" scoped>
+
 </style>

@@ -1,14 +1,9 @@
 <script setup>
 import { noteColor } from "#/use/colors"
 import { useTuner } from '#/use/tuner.js'
+import { computed } from 'vue'
 
-const display = ref(null)
-
-const { init, tuner, chain } = useTuner();
-
-const bars = computed(() => {
-  return tuner.frequencyData || []
-})
+const { init, tuner, } = useTuner();
 
 const background = computed(() => {
   const note = getRawNote(tuner.note?.frequency)
@@ -28,8 +23,10 @@ function getRawNote(frequency) {
 </script>
 
 <template lang="pug">
-.fullscreen-container#screen.rounded-4xl.overflow-hidden.mb-4
-  control-start.absolute.z-20(@click="start()", v-if="!tuner.running") Start tuner
+.fullscreen-container#screen.rounded-3xl.overflow-hidden.mb-4
+  control-start.absolute.z-20(
+    v-if="!tuner.running", 
+    @click="start()") Start tuner
   full-screen.absolute.bottom-6.right-6.z-3
   svg#tuner.w-full.min-h-full(
   :opacity="tuner.running ? 1 : 0.3"
@@ -39,22 +36,37 @@ function getRawNote(frequency) {
   xmlns="http://www.w3.org/2000/svg",
   )
     defs
-      linearGradient#grad(x1=0 x2=0 y1=0 y2=1)
-        stop(:stop-color="background" stop-opacity="1" offset="0%")
-        stop(:stop-color="background" stop-opacity="1" offset="30%")
-        stop(:stop-color="background" stop-opacity="0.8" offset="60%")
-        stop(:stop-color="background" stop-opacity="0.2" offset="100%")
+      linearGradient#grad(
+        x1="0" 
+        x2="0" 
+        y1="0" 
+        y2="1")
+        stop(
+          :stop-color="background" 
+          stop-opacity="1" 
+          offset="0%")
+        stop(
+          :stop-color="background" 
+          stop-opacity="1" 
+          offset="30%")
+        stop(
+          :stop-color="background" 
+          stop-opacity="0.8" 
+          offset="60%")
+        stop(
+          :stop-color="background" 
+          stop-opacity="0.2" 
+          offset="100%")
     rect(
-
       width="400"
       height="300"
       rx="5"
       fill="url(#grad)"
     )
     line(
-      style="transition:all 200ms ease; "
       v-for="(bar, i) in tuner.spec.slice(0, 100)",
       :key="i",
+      style="transition:all 200ms ease; "
       stroke="white"
       stroke-linecap="round"
       stroke-width="2"

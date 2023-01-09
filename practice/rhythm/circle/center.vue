@@ -1,6 +1,8 @@
 <script setup>
 import { useTempo } from '#/use/tempo'
 import { isDark } from '#/theme/composables/state.js'
+import { reactive, computed } from 'vue'
+
 const fill = computed(() => isDark.value ? '#333' : '#eee');
 
 const tempo = useTempo()
@@ -23,8 +25,8 @@ g.center(
 )
   g.bpm.cursor-pointer(
     v-drag="drag"
-    @dblclick="tempo.bpm = 120"
     v-tooltip.bottom="'Drag to change BPM'"
+    @dblclick="tempo.bpm = 120"
   )
     circle.transition-all.duration-100.ease-out(
       stroke-width="6"
@@ -48,8 +50,8 @@ g.center(
     font-size="30"
   )
     g.arc.plus(
-      @mousedown="tempo.set(1)"
       v-tooltip.right="'Add 1'"
+      @mousedown="tempo.set(1)"
     )
       svg-ring(
         :cx="0"
@@ -66,8 +68,8 @@ g.center(
         y="-15"
       )
     g.arc.minus(
-      @mousedown="tempo.set(-1)"
       v-tooltip.left="'Subtract 1'"
+      @mousedown="tempo.set(-1)"
     )
       svg-ring(
         :cx="0"
@@ -84,8 +86,8 @@ g.center(
         y="-15"
       )
     g.arc.multiply(
-      @mousedown="tempo.set(tempo.bpm)"
       v-tooltip.top="'Multiply by 2'"
+      @mousedown="tempo.set(tempo.bpm)"
     )
       svg-ring(
         :cx="0"
@@ -102,8 +104,8 @@ g.center(
         y="-104"
       )
     g.arc.multiply(
-      @mousedown="tempo.set(-tempo.bpm / 2)"
       v-tooltip.bottom="'Divide by 2'"
+      @mousedown="tempo.set(-tempo.bpm / 2)"
     )
       svg-ring(
         :cx="0"

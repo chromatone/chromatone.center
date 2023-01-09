@@ -1,7 +1,7 @@
 import { Recorder } from 'tone';
 import { useLastChanged, useTimestamp } from '@vueuse/core'
 import { getFilename } from './cast';
-
+import { ref, computed } from 'vue'
 
 
 export let recorder
@@ -21,7 +21,6 @@ export const record = {
     recording.value = true
   },
   async stop() {
-    const date = new Date()
     recording.value = false
     // the recorded audio is returned as a blob
     const rec = await recorder.stop();

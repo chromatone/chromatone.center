@@ -7,7 +7,7 @@ cover: loudness.png
 ---
 
 <script setup>
-import pitchLoudness from './loudness.vue'
+import pitchLoudness from './loudness-curve.vue'
 </script>
 
 <pitch-loudness />

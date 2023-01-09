@@ -1,3 +1,4 @@
+import { shallowReactive, reactive, computed, watch, watchEffect, onBeforeUnmount } from 'vue'
 import { tempo } from "#/use/tempo.js";
 import {
   Sequence,
@@ -13,6 +14,9 @@ import {
 } from "tone";
 import { createChannel } from '#/use/audio'
 import { rotateArray } from "#/use/calculations";
+import { useStorage } from '@vueuse/core';
+import { useClamp } from '@vueuse/math';
+
 
 // List of all sequences
 export const tracks = reactive([]);
@@ -195,7 +199,7 @@ export function useSequence(
               recorder.recording = pos;
               audio.recorder.start();
             })
-            .catch((e) => {
+            .catch(() => {
               console.log("mic not open");
             });
         } else {

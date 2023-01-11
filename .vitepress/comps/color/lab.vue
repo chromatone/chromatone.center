@@ -4,8 +4,6 @@ import { useStorage } from '@vueuse/core';
 import { useClamp } from '@vueuse/math';
 import { reactive, ref, computed, watchEffect } from 'vue'
 
-const screen = ref()
-
 const range = useClamp(useStorage('lab-range', 100), 100, 300)
 const rangeLow = computed(() => -range.value / 2)
 const rangeHigh = computed(() => range.value / 2)
@@ -81,8 +79,7 @@ watchEffect(() => {
 </script>
 
 <template lang="pug">
-.fullscreen-container.mb-8.p-4.rounded-xl.transition-all.duration-400.ease-in-out(ref="screen" :style="{ backgroundColor: mix.hex }")
-  full-screen.absolute.top-2.right-2(:el="screen")
+#screen.fullscreen-container.mb-8.p-4.rounded-xl.transition-all.duration-400.ease-in-out( :style="{ backgroundColor: mix.hex }")
   svg.max-h-3xl.w-full.select-none(
     version="1.1",
     baseProfile="full",

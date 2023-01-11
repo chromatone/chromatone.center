@@ -45,7 +45,6 @@ function stopChord(note, qual = 'major') {
 
 <template lang="pug">
 .fullscreen-container#screen
-  full-screen.absolute.top-2.right-2
   svg#fifths.h-full.max-h-80vh.w-full(
     style="flex: 1 1 600px;touch-action:none"
     version="1.1",

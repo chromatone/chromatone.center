@@ -8,7 +8,6 @@ import { ref } from 'vue';
 
 const scale = useStorage('array-scale', scales.minor);
 
-const screen = ref();
 </script>
 
 <template lang="pug">
@@ -26,8 +25,7 @@ const screen = ref();
         :style="{ fontWeight: scale.handle == sc.handle ? 'bold' : 'normal' }"
         @click="scale = sc"
         ) {{ sc.name }}
-    full-screen(:el="screen")
-  .fullscreen-container.rounded-3xl(ref="screen")
+  #screen.fullscreen-container.rounded-3xl
     tonal-array(
       :tonic="globalScale.tonic", 
       :scale="scale")    

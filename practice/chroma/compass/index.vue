@@ -8,8 +8,6 @@ import { globalScale } from '#/use/chroma'
 import { computed, ref } from 'vue'
 import { useStorage } from '@vueuse/core'
 
-const screen = ref()
-
 const chroma = useStorage('chroma-chroma', chordList[0].chroma)
 
 const groupNames = ['Intervals', 'Triads', 'Tetrads', 'Pentads', 'Hexads', 'Heptads']
@@ -47,8 +45,7 @@ const chordGroup = computed(() => {
 </script>
 
 <template lang="pug">
-.fullscreen-container.rounded-3xl(ref="screen")
-  full-screen.absolute.top-2.right-2.z-10(:el="screen")
+#screen.fullscreen-container.rounded-3xl
   .relative.w-full.m-auto
     compass-circle#chroma-compass(
       v-model:chroma="chroma"

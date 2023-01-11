@@ -11,6 +11,6 @@ date: 2021-09-06
 
 The stickers are printed with high pigment ink on a premium quality vinyl film and coated with thick matte lamination, then precut for ease of application. Durable colors stay vivid for long.
 
-<img src="./op-12.jpg">
-
 <img src="./op-1.jpg">
+
+![](./op-12.jpg)

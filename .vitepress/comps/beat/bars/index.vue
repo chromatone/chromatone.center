@@ -73,7 +73,6 @@ function selectPattern(p, meter) {
         .i-la-plus
       button.text-button.flex.items-center(@click="renderMidi(tracks)" v-tooltip.bottom="'Export MIDI file'")
         .i-la-file-download
-      full-screen.text-md(v-tooltip.bottom="'Toggle fullscreen'")
       .is-group.m-2(v-if="meters && meters.length > 1")
 
         button.text-button(

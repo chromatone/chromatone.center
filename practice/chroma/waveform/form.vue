@@ -129,7 +129,6 @@ const sumColor = computed(() => {
       )
         .i-la-volume-up(v-if="!sounding")
         .i-la-volume-off(v-else)
-      full-screen
   svg#chord-form(
     v-drag="modify"
     version="1.1",

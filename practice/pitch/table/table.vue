@@ -56,8 +56,7 @@ control-scale.mb-4
       @click="state.stopped = !state.stopped"
     )
   .flex-1
-  full-screen(:el="table")
-.fullscreen-container(ref="table")
+.fullscreen-container#screen
   table-shift(:top="true")
   .flex.w-full(
     v-for="octave in state.octave.list", 

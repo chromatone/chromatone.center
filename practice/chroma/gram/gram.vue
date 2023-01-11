@@ -6,8 +6,6 @@ import { computed, onMounted, reactive, ref } from 'vue';
 import { useClamp } from '@vueuse/math';
 const { init, tuner } = useTuner();
 
-const screen = ref()
-
 let canvas, ctx, tempCanvas, tempCtx
 const roll = reactive({
   initiated: false,
@@ -90,11 +88,10 @@ function clear() {
 <template lang="pug">
 .flex.flex-col.items-center.w-full
 
-  .flex.flex-col.justify-center.items-center.relative.bg-light-600.dark-bg-dark-700(ref="screen")
+  #screen.flex.flex-col.justify-center.items-center.relative.bg-light-600.dark-bg-dark-700
     control-start.absolute(
       v-if="!roll.initiated" 
     @click="initiate()") Start
-    full-screen.absolute.bottom-4.right-4.z-30(:el="screen")
     button.absolute.bottom-4.left-4.text-xl.text-white(@click="roll.direction ? roll.direction = 0 : roll.direction = 1")
       .i-la-arrow-up(v-if="roll.direction == 1")
       .i-la-arrow-left(v-if="roll.direction == 0")

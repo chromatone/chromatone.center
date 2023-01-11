@@ -14,8 +14,6 @@ const mix = reactive({
   rgb: computed(() => `rgb(${mix.r},${mix.g},${mix.b})`)
 });
 
-const screen = ref()
-
 function useDrag(channel) {
   return (drag) => {
     mix[channel] = Number(mix[channel]) + (Number(drag.delta[0]) - Number(drag.delta[1]))
@@ -24,8 +22,7 @@ function useDrag(channel) {
 </script>
 
 <template lang="pug">
-.fullscreen-container.mb-8.p-4.rounded-3xl.transition-all.duration-800.ease-out(ref="screen" :style="{ backgroundColor: mix.rgb }")
-  full-screen.absolute.top-2.right-2(:el="screen")
+#screen.fullscreen-container.mb-8.p-4.rounded-3xl.transition-all.duration-800.ease-out(:style="{ backgroundColor: mix.rgb }")
   svg.max-h-3xl.w-full(
     version="1.1",
     baseProfile="full",

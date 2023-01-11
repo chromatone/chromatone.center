@@ -8,7 +8,6 @@ import DatePanel from './date.vue'
 <template lang="pug">
 #screen.flex.flex-col.gap-4.bg-light-900.dark-bg-dark-800.p-4.justify-between.relative
 	time-panel
-		full-screen
 	date-panel
 	//- state-transport
 	beat-bars-bar(:editable="true")

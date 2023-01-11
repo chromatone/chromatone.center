@@ -30,11 +30,10 @@ function getAmmount(ammount) {
 </script>
 
 <template lang="pug">
-.fullscreen-container.rounded-3xl
+#screen.fullscreen-container.rounded-3xl
   control-start.absolute(
     v-if="!tuner.initiated" 
-  @click="init()") Start
-  full-screen.absolute.bottom-6.right-6.z-30
+    @click="init()") Start
   svg.max-h-100vh.w-full#screen.cursor-pointer.touch-none(
     ref="stage"
     version="1.1",

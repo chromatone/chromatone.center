@@ -103,7 +103,6 @@ function colorIt(freq, value) {
     control-start.absolute(
       v-if="!state.initiated" 
       @click="initiate()")
-    full-screen.absolute.bottom-2.right-2
     .absolute.top-4.left-4.text-xl.select-none x{{ state.speed }}
     button.absolute.bottom-4.left-4.text-xl.select-none.cursor-pointer(@mousedown="paused = !paused")
       .i-la-play(v-if="paused")

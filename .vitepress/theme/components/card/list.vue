@@ -26,10 +26,10 @@ function getColor(i, total) {
 
 <style lang="postcss" scoped>
 .list {
-  @apply bg-light-400 dark-bg-dark-400 rounded-3xl p-2 md-p-4 flex flex-col flex-auto m-1;
+  @apply bg-light-400 dark-bg-dark-400 rounded-3xl p-1 md-p-2 flex flex-col flex-auto m-1 gap-12;
 }
 
 .inset {
-  @apply rounded-2xl overflow-hidden shadow-md mx-1 my-6 sm-(mx-2) md-(mx-4) lg-(my-8) hover-(shadow-lg);
+  @apply rounded-2xl overflow-hidden shadow-md hover-(shadow-lg);
 }
 </style>

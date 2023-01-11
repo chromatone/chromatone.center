@@ -65,7 +65,7 @@ const colors = reactive({
 }
 
 .row {
-  @apply mx-auto border-t-12 flex flex-col w-full py-4 px-4 xs-(flex-wrap flex-row);
+  @apply mx-auto border-t-12 flex flex-col w-full py-4 px-4 md-(flex-wrap flex-row);
 }
 
 .pad {

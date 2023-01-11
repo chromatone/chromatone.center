@@ -6,8 +6,6 @@ import { useTuner } from '#/use/tuner.js'
 import { freqPitch } from '#/use/calculations'
 import { noteColor } from '#/use/colors'
 
-const screen = ref()
-
 const { init, tuner } = useTuner()
 
 const wave = new Waveform(512)
@@ -47,11 +45,10 @@ function initiate() {
 </script>
   
 <template lang="pug">
-.fullscreen-container(ref="screen")
+#screen.fullscreen-container
   control-start.absolute(
     v-if="!tuner.initiated"  
     @click="initiate()") Start
-  full-screen.absolute.bottom-6.right-6.z-30(:el="screen")
   svg#pitch-spectrum.rounded-xl.w-full.h-full.min-h-2xl.-z3(
     version="1.1",
     baseProfile="full",

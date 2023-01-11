@@ -26,7 +26,7 @@ main#content
     .content-container(:key="route.path")
       content.content.flex-auto.z-10
       shop-message
-      row-list.mb-32.max-w-full.mx-0
+      row-list.mb-32.max-w-full
   nav-next-prev
   //- footer-row
 </template>

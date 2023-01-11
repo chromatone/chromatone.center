@@ -27,7 +27,6 @@ function getRawNote(frequency) {
   control-start.absolute.z-20(
     v-if="!tuner.running", 
     @click="start()") Start tuner
-  full-screen.absolute.bottom-6.right-6.z-3
   svg#tuner.w-full.min-h-full(
   :opacity="tuner.running ? 1 : 0.3"
   version="1.1",

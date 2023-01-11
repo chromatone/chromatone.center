@@ -138,7 +138,6 @@ function clear() {
     .p-1.absolute.top-2.left-2.flex.items-center
       .i-la-angle-double-right
       span {{ draw.speed.toFixed(1) }}
-    full-screen.absolute.bottom-2.right-2.z-30
     canvas.w-full.h-full.rounded-3xl(    
       ref="roll"
       v-drag="dragSpeed"

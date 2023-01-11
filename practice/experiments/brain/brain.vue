@@ -14,8 +14,6 @@ const height = ref(300)
 #screen.h-600px.w-full.transition(
   :style="{ backgroundColor: noteColor(midi?.note?.pitch, midi.note?.octA, 1, midi.note?.attack) }"
 )
-full-screen.absolute.right-4.top-4()
-
 
 .relative.hidden
   svg-save(svg="brain")

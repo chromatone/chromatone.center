@@ -5,8 +5,6 @@ import { useTransition, TransitionPresets, useStorage } from '@vueuse/core'
 import { useClamp } from '@vueuse/math';
 import { reactive, ref, computed } from 'vue'
 
-const screen = ref()
-
 const harmonies = {
   monochromatic: [0],
   diad: [0, 60],
@@ -81,8 +79,7 @@ function onDragS(drag) {
 </script>
 
 <template lang="pug">
-.fullscreen-container.mb-8.p-4.rounded-xl.transition-all.duration-800.ease-out(ref="screen" :style="{ backgroundColor: mix.current }")
-  full-screen.absolute.top-2.right-2(:el="screen")
+.fullscreen-container.mb-8.p-4.rounded-xl.transition-all.duration-800.ease-out#screen(:style="{ backgroundColor: mix.current }")
   svg.min-h-xl.max-h-3xl.w-full(
     version="1.1",
     baseProfile="full",

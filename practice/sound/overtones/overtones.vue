@@ -239,8 +239,6 @@ function calcCents(base, freq) {
         :fixed="0"
         param="octave"
         )
-    .is-group.flex.items-center.ml-2.p-2
-      full-screen
   .relative.flex.flex-col.items-center
     button.shadow.p-3.m-1.border-1.border-current.rounded.absolute.top-80(
       v-if="!sound.enabled"

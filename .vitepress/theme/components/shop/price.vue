@@ -46,7 +46,7 @@ const props = defineProps({
 
 <style lang="postcss" scoped>
 .shop-action {
-  @apply flex justify-center items-center gap-2;
+  @apply flex justify-center items-center gap-2 mb-1;
 }
 
 .price {

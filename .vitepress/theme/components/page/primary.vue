@@ -11,22 +11,22 @@ main#content
     cast-camera
     .bottom-0.fixed.w-full.z-3000.flex.justify-center(v-if="drawingEnabled || drawingPinned")
       draw-controls
-    button.fixed.bottom-32.right-24px.text-xl.z-1000(
-      @click="drawingEnabled = !drawingEnabled"
-      :class="{ active: drawingEnabled }"
-      v-tooltip.top="'Draw on the screen'"
-      )
-      .i-carbon-pen
-  full-screen.text-xl.fixed.bottom-44.right-24px.z-1000
   shop-cart-panel
-  state-dark.fixed.bottom-18.right-14px.z-1000
-  nav-scroll.fixed.bottom-8.right-24px.z-1000
+  full-screen.text-xl.fixed.bottom-44.right-5.z-1000
+  button.fixed.bottom-32.right-5.text-xl.z-1000(
+    @click="drawingEnabled = !drawingEnabled"
+    :class="{ active: drawingEnabled }"
+    v-tooltip.top="'Draw on the screen'"
+    )
+    .i-carbon-pen
+  state-dark.fixed.bottom-18.right-3.z-1000
+  nav-scroll.fixed.bottom-8.right-6.z-1000
   page-headline
   transition(name="fade")
     .content-container(:key="route.path")
-      content.content.flex-1.z-10
+      content.content.flex-auto.z-10
       shop-message
-      row-list.mb-32
+      row-list.mb-32.max-w-full.mx-0
   nav-next-prev
   //- footer-row
 </template>

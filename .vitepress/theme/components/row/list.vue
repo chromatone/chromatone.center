@@ -11,7 +11,7 @@ const list = pages[route.path]
 
 <template lang="pug">
 .list-blocks(v-if="list")
-  .my-8.mx-2(
+  .my-4(
     v-for="(block, i) in list",
     :key="block.title", 
     :id="block.title"
@@ -26,6 +26,6 @@ const list = pages[route.path]
 
 <style lang="postcss" scoped>
 .list-blocks {
-  @apply flex flex-col max-w-65ch ml-8 w-full;
+  @apply flex flex-col max-w-full mx-1;
 }
 </style>

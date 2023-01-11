@@ -69,7 +69,7 @@ const lightColor = computed(() => lchToHsl(siblings.value.index, siblings.value.
 }
 
 .meta {
-  @apply relative p-8 mb-8 ml-8 bg-light-100 bg-opacity-80 z-3 max-w-65ch w-full mt-8 flex flex-col rounded-3xl shadow-xl dark-(bg-true-gray-800 bg-opacity-80);
+  @apply relative p-8 mb-8 ml-2 bg-light-100 bg-opacity-80 z-3 max-w-65ch w-full mt-8 flex flex-col rounded-3xl shadow-xl dark-(bg-true-gray-800 bg-opacity-80);
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
 }

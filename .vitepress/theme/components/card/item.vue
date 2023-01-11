@@ -12,7 +12,7 @@ const props = defineProps({
 .crd(
   :title="item.lastModified",
   )
-  a.container.no-underline(:href="item.path" :class="{ 'pt-32': item?.cover, backgroundColor: color }")
+  a.container.no-underline(:href="item.path" :class="{ 'pt-32': item?.cover }" :style="{backgroundColor: color}")
     .cover(v-if="item?.cover", :style="{ backgroundImage: `url(${item.cover})` }") 
     .info
       .title

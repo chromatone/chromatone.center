@@ -1,16 +1,11 @@
 <script setup>
-import {
-  useData,
-  useRoute
-} from 'vitepress'
-import {
-  pages,
-  usePage
-} from '#/theme/composables/pages'
-import {
-  lchToHsl
-} from '#/use/colors.js'
+import { useData, useRoute } from 'vitepress'
+import { pages, usePage } from '#/theme/composables/pages'
+import { lchToHsl } from '#/use/colors.js'
 import { computed } from 'vue';
+import { isDark } from '#/theme/composables/state'
+
+import { colord } from 'colord'
 
 const route = useRoute()
 
@@ -55,7 +50,10 @@ const bg = computed(() => `url(${props.item?.cover}`);
         :product="item?.product" 
         :color="'color'"
         )
-  card-list(v-if="pages[item.path]",:cards="pages[item.path]" ) {{ item.title }}
+  card-list(
+    v-if="pages[item.path]",
+    :cards="pages[item.path]"
+    ) {{ item.title }}
 </template>
 
 <style lang="postcss" scoped>

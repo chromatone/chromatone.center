@@ -289,6 +289,9 @@ cities:
   - city: Victoria, BC
     country: Canada
     coord: [48.46709822376857, -123.51123649990528]
+  - city: Bakersfield, CA
+    country: USA
+    coord: [35.38269183637649, -119.03723688836575]
 ---
 
 <script setup>

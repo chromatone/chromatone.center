@@ -8,14 +8,14 @@ links:
   - https://habr.com/ru/post/278265/
 ---
 
-<client-only >
-  <beat-circle />
-</client-only >
-
 <script setup>
 import BeatCircle from './main.vue'
 import MidiControls from './midi.vue'
 </script>
+
+<client-only >
+  <beat-circle />
+</client-only >
 
 ## Welcome to the all-mighty Chromatone circular metronome!
 

@@ -68,6 +68,7 @@
 	},
 	"devDependencies": {
 		"@iconify/json": "^2.2.4",
+		"@tauri-apps/cli": "^1.2.2",
 		"@unocss/extractor-pug": "^0.48.3",
 		"@volar/vue-language-plugin-pug": "1.0.24",
 		"eslint": "^8.31.0",

@@ -6,7 +6,7 @@ defineEmits(["toggle"]);
 </script>
 
 <template lang="pug">
-img.top-4.left-4.fixed.z-1000.cursor-pointer.mr-3.h-30px(v-if="theme.icon", :src="theme.icon", alt="Chromatone logo" @click="$emit('toggle')")
+img.top-16px.left-4.fixed.z-1000.cursor-pointer.mr-3.h-30px(v-if="theme.icon", :src="theme.icon", alt="Chromatone logo" @click="$emit('toggle')")
 header.nav-bar.relative
   .nav-bar-title
     a.title.ml-10.no-underline(href="/", :aria-label="`${site.title}, go to main page`") {{ site.title }}

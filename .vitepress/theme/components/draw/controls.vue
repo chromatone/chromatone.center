@@ -38,7 +38,7 @@ watch(() => midi.note, note => {
 </script>
 
 <template lang="pug">
-.flex.flex-wrap.text-xl.p-2.gap-2.rounded-md.bg-main.shadow.transition-opacity.duration-200.dark-border.dark-border-gray-400.dark-border-opacity-10.bg-light-300.dark-bg-dark-300.justify-center(
+.panel(
   :class="drawingEnabled ? '' : drawingPinned ? 'opacity-40 hover-opacity-90' : 'opacity-0 pointer-events-none'", 
   storage-key="slidev-drawing-pos", 
   :initial-x="10", 
@@ -101,6 +101,10 @@ watch(() => midi.note, note => {
 
 
 <style lang="postcss" scoped>
+.panel {
+  @apply flex flex-wrap text-xl p-2 gap-2 rounded-md bg-main shadow transition-opacity duration-200 dark-border dark-border-gray-400 dark-border-opacity-10 bg-light-300 dark-bg-dark-300 justify-center;
+}
+
 button {
   transition: all 100ms ease-out;
   @apply p-0.5 transform hover-bg-opacity-0 hover-bg-dark-900;

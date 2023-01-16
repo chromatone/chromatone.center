@@ -17,7 +17,7 @@ const route = useRoute();
 <template lang="pug">
 transition(name="fade")
   .sidebar-mask.z-50.overscroll-contain(v-show="open", @click="$emit('close')")
-.panel.z-51.overscroll-contain(:class="{ open }")
+.panel(:class="{ open }")
   //- a.title(href="/", :aria-label="`${site.title}, назад в начало`") {{ site.title }}
   side-search.m-3
   .flex.flex-col.gap-8
@@ -82,7 +82,7 @@ a {
   flex: 1 0 16.4rem;
   overflow-y: auto;
   transition: all 300ms ease-out;
-  @apply pr-2 pl-1 fixed rounded-xl top-$header-height bottom-0 left-0 transform -translate-x-full lg-(static translate-x-0) shadow-xl bg-light-600 dark-bg-dark-700;
+  @apply max-h-100vh pr-2 pl-1 fixed rounded-xl top-0 bottom-0 left-0 transform -translate-x-full lg-(sticky translate-x-0) shadow-xl bg-light-600 dark-bg-dark-700 overscroll-contain z-51;
 }
 
 .panel a {

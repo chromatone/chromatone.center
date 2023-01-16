@@ -6,21 +6,6 @@ const route = useRoute()
 
 <template lang="pug">
 main#content
-  client-only
-    draw-layer.z-20
-    cast-camera
-    .bottom-0.fixed.w-full.z-3000.flex.justify-center(v-if="drawingEnabled || drawingPinned")
-      draw-controls
-  shop-cart-panel
-  full-screen.text-xl.fixed.bottom-44.right-5.z-1000
-  button.fixed.bottom-32.right-5.text-xl.z-1000(
-    @click="drawingEnabled = !drawingEnabled"
-    :class="{ active: drawingEnabled }"
-    v-tooltip.top="'Draw on the screen'"
-    )
-    .i-carbon-pen
-  state-dark.fixed.bottom-18.right-3.z-1000
-  nav-scroll.fixed.bottom-8.right-6.z-1000
   page-headline
   transition(name="fade")
     .content-container(:key="route.path")

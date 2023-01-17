@@ -2,7 +2,7 @@ name: Release from Pages
 on:
   push:
     tags:
-      - "app*"
+      - "v*"
   workflow_dispatch:
 
 jobs:

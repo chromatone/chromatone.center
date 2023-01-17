@@ -8,9 +8,11 @@ cover: hooks_and_banners.png
 
 ## Medieval neumes c. 500–1400
 
-<audio class="mx-auto my-4" controls>
-<source src="/audio/Dies.Irae.mp3" type="audio/mpeg">
-</audio>
+<client-only>
+	<audio class="mx-auto my-4" controls>
+		<source src="/audio/Dies.Irae.mp3" type="audio/mpeg">
+	</audio>
+</client-only>
 
 ![](./images/Dies_irae_ms_fragm.jpg)
 ![](./images/Dies_irae.gif)

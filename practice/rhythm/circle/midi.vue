@@ -6,7 +6,6 @@ import { controls } from './controls';
 <template lang="pug">
 .flex
 	table
-
 		tr
 			th Parameter 
 			th.text-center(colspan="2") CC
@@ -22,7 +21,7 @@ import { controls } from './controls';
 			td(
 				v-for="(n,i) in 2" 
 				:key="i")
-				input.dark-bg-light-100.dark-bg-opacity-10.p-2.rounded(
+				input.dark-bg-light-100.dark-bg-opacity-10.p-2.rounded.max-w-20(
 					v-model="controls.cc[i][control]" 
 					type="number" 
 					min="0" 
@@ -32,7 +31,7 @@ import { controls } from './controls';
 		tr
 			td BPM
 			td(colspan="2")
-				input.dark-bg-light-100.dark-bg-opacity-10.p-2.rounded(
+				input.dark-bg-light-100.dark-bg-opacity-10.p-2.rounded.max-w-22(
 					v-model="controls.tempoCC" 
 					type="number" 
 					min="0" 

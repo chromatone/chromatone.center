@@ -20,47 +20,48 @@ const open = reactive({
 </script>
 
 <template lang="pug">
-button(
-  style="transition: all 100ms ease-out"
-  @click="open.tempo = !open.tempo"  
-  :class="{ active: open.tempo }" 
-  aria-label="Toggle tempo panel"
-  :style="{ color: tempo.blink ? tempo.color : 'currentColor' }"
-  v-tooltip.bottom="'Tempo options'"
-  )
-  .i-mdi-metronome.text-xl
-button(
-  @click="open.midi = !open.midi" 
-  aria-label="Toggle MIDI panel" 
-  v-tooltip.bottom="'MIDI options'"
-  :class="{ active: open.midi }"
-  )
-  .i-mdi-midi-input.transition-all.duration-200.text-xl(
-    :style="{ color: noteColor(midi.note?.pitch) }"
-    class="visible"
-  )
-button.text-xl(
-  @click="open.synth = !open.synth"
-  aria-label="Toggle synth panel"
-  :class="{ active: open.synth }"
-  v-tooltip.bottom="'Synth options'"
-  )
-  .i-la-wave-square
-button.text-xl(
-  @click="open.audio = !open.audio"
-  :class="{ active: open.audio }"
-  aria-label="Toggle audio panel"
-  v-tooltip.bottom="'Audio options'"
-  )
-  .i-bi-volume-up(v-if="!audio.mute")
-  .i-bi-volume-mute(v-else)
-button(
-  @click="open.record = !open.record"
-  :class="{ active: open.record }"
-  aria-label="Toggle record panel"
-  v-tooltip.bottom-end="'Record options'"
-  )
-  .i-bi-record-circle
+.buttons.fixed.top-3.right-2.opacity-30.hover-opacity-100.transition.flex.items-center.gap-1
+  button(
+    style="transition: all 100ms ease-out"
+    @click="open.tempo = !open.tempo"  
+    :class="{ active: open.tempo }" 
+    aria-label="Toggle tempo panel"
+    :style="{ color: tempo.blink ? tempo.color : 'currentColor' }"
+    v-tooltip.bottom="'Tempo options'"
+    )
+    .i-mdi-metronome.text-xl
+  button(
+    @click="open.midi = !open.midi" 
+    aria-label="Toggle MIDI panel" 
+    v-tooltip.bottom="'MIDI options'"
+    :class="{ active: open.midi }"
+    )
+    .i-mdi-midi-input.transition-all.duration-200.text-xl(
+      :style="{ color: noteColor(midi.note?.pitch) }"
+      class="visible"
+    )
+  button.text-xl(
+    @click="open.synth = !open.synth"
+    aria-label="Toggle synth panel"
+    :class="{ active: open.synth }"
+    v-tooltip.bottom="'Synth options'"
+    )
+    .i-la-wave-square
+  button.text-xl(
+    @click="open.audio = !open.audio"
+    :class="{ active: open.audio }"
+    aria-label="Toggle audio panel"
+    v-tooltip.bottom="'Audio options'"
+    )
+    .i-bi-volume-up(v-if="!audio.mute")
+    .i-bi-volume-mute(v-else)
+  button(
+    @click="open.record = !open.record"
+    :class="{ active: open.record }"
+    aria-label="Toggle record panel"
+    v-tooltip.bottom-end="'Record options'"
+    )
+    .i-bi-record-circle
 side-panel(v-model:open="open.midi")
   midi-panel
   img.mt-4(src="/media/apps/pc-keyboard-3.svg")

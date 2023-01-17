@@ -29,7 +29,9 @@
 		"build-lib": "vite --config vite.config.lib.js build",
 		"deploy": "sh deploy.sh",
 		"dev": "vitepress dev --host --port 3242",
-		"serve": "vitepress serve --port 3200"
+		"serve": "vitepress serve --port 3200",
+		"td": "tauri dev",
+		"tb": "tauri build"
 	},
 	"dependencies": {
 		"@animxyz/core": "0.6.6",
@@ -68,11 +70,13 @@
 	},
 	"devDependencies": {
 		"@iconify/json": "^2.2.4",
+		"@tauri-apps/cli": "2.0.0-alpha.1",
 		"@unocss/extractor-pug": "^0.48.3",
 		"@volar/vue-language-plugin-pug": "1.0.24",
 		"eslint": "^8.31.0",
 		"eslint-plugin-vue": "^9.8.0",
 		"eslint-plugin-vue-pug": "^0.5.5",
+		"internal-ip": "^7.0.0",
 		"markdown-it-external-links": "^0.0.6",
 		"patch-vue-directive-ssr": "^0.0.1",
 		"pug": "3.0.2",

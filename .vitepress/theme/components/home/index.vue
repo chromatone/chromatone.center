@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { pages } from '#/theme/composables/pages'
 </script>
 
@@ -15,7 +15,7 @@ main.home(aria-labelledby="main-title")
           :alt="$frontmatter.heroAlt"
           )
   content.content.z-2
-  .flex.flex-col.max-w-65ch.mx-auto
+  .flex.flex-col.max-w-65ch.ml-2
     home-tile-item(
       v-for="(area, i) in pages['/']", 
       :key="area.title", 
@@ -25,7 +25,7 @@ main.home(aria-labelledby="main-title")
       )  
 </template>
 
-<style scoped >
+<style scoped lang="postcss">
 .home {
   @apply w-full relative pb-16 flex flex-col items-stretch bg-light-500 dark-(bg-dark-500) transition-all duration-600 ease-out;
 }

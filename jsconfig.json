@@ -1,11 +1,9 @@
 {
 	"allowJs": true,
-  "vueCompilerOptions": {
-		"plugins": [
-			"@volar/vue-language-plugin-pug"
-		]
-  },
-  "compilerOptions": {
+	"vueCompilerOptions": {
+		"plugins": ["@volar/vue-language-plugin-pug"]
+	},
+	"compilerOptions": {
 		"baseUrl": ".",
 		"paths": {
 			"#/*": ["./.vitepress/*"]

@@ -15,8 +15,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-        with:
-          path: tauri
 
       - name: Node.js setup
         uses: actions/setup-node@v3

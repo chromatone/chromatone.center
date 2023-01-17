@@ -27,7 +27,7 @@ main.home(aria-labelledby="main-title")
 
 <style scoped lang="postcss">
 .home {
-  @apply w-full relative pb-16 flex flex-col items-stretch bg-light-500 dark-(bg-dark-500) transition-all duration-600 ease-out;
+  @apply w-full relative pb-16 flex flex-col items-center bg-light-500 dark-(bg-dark-500) transition-all duration-600 ease-out;
 }
 
 .noise {

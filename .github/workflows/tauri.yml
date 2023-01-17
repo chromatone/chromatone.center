@@ -24,6 +24,9 @@ jobs:
       - name: Install Rust (Stable)
         run: curl https://sh.rustup.rs -sSf | sh -s -- -y
 
+      - name: Install target
+        run: rustup target add aarch64-apple-darwin
+
       - uses: pnpm/action-setup@v2
         name: Install pnpm
         id: pnpm-install

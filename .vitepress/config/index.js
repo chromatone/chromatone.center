@@ -1,6 +1,8 @@
 import { metaData } from './constants.js'
 import head from './head.js'
 
+import mdExternal from 'markdown-it-external-links'
+
 const config = {
   title: metaData.title,
   description: metaData.description,
@@ -41,9 +43,7 @@ const config = {
   },
   markdown: {
     config: (md) => {
-      md.use(require('markdown-it-classy'))
-      md.use(require('markdown-it-container'), 'card')
-      md.use(require('markdown-it-external-links'), {
+      md.use(mdExternal, {
         internalDomains: ['localhost', 'chromatone.center'],
       })
     },

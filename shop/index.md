@@ -292,6 +292,9 @@ cities:
   - city: Bakersfield, CA
     country: USA
     coord: [35.38269183637649, -119.03723688836575]
+  - city: Almaty
+    country: Kazakhstan
+    coord: [43.248382260038504, 76.88898539828217]
 ---
 
 <script setup>

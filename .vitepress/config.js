@@ -6,6 +6,7 @@ import mdLinks from "markdown-it-external-links";
 
 export default defineConfig({
   title: metaData.title,
+  titleTemplate: metaData.titleTemplate,
   description: metaData.description,
   lang: metaData.locale,
   head,

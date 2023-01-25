@@ -33,7 +33,6 @@ export const midi = reactive({
   activeNotes: computed(() => {
     let notes = {}
     for (let ch in midi.channels) {
-
       for (let num in midi.channels[ch].activeNotes) {
         notes[num] = midi.channels[ch].activeNotes[num]
       }
@@ -154,10 +153,11 @@ function initMidi() {
     input.removeListener();
     input.addListener("start", () => {
       midi.playing = true;
+      midi.stopped = false
     });
     input.addListener("stop", () => {
       midi.playing = false;
-      midi.channels = {};
+      midi.stopped = Date.now()
     });
 
     const diffs = []
@@ -347,7 +347,6 @@ export function setCC(cc, value) {
 }
 
 export function stopAll() {
-  console.log('stop')
   if (!midi.out) return;
   midi.channels = {};
   midi.playing = false;

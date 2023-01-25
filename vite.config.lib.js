@@ -27,7 +27,7 @@ export default defineConfig({
   build: {
     outDir: "lib",
     lib: {
-      entry: resolve(dirname, '.vitepress/use/index.js'),
+      entry: resolve(dirname, '.vitepress/use/index.ts'),
       name: 'chromatone.center',
       fileName: 'chromatone-center',
       formats: ["es"],

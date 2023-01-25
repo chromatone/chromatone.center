@@ -3,7 +3,7 @@ import pitchGrid from './grid.vue'
 
 import { lchToHsl } from '#/use/colors'
 import { isDark } from '#/theme/composables/state'
-import { renderMidi } from '#/use/loop'
+import { renderMidiFile } from '#/use/loop'
 import { useStorage } from '@vueuse/core';
 
 const loops = useStorage('pitch-bars', [1])
@@ -33,7 +33,7 @@ const active = useStorage('pitch-bars-active', 0);
     )
       .i-la-plus
     .flex-1
-    button.text-button.flex.items-center(@click="renderMidi()")
+    button.text-button.flex.items-center(@click="renderMidiFile()")
       .i-la-file-download
   .flex.flex-col.mb-4.mx-4.w-full.relative.h-840px
     transition-group(name="fade")

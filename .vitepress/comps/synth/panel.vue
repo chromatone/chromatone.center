@@ -5,7 +5,7 @@ import { useCycleList } from '@vueuse/core'
 import { pitchFreq, freqColor } from '#/use/calculations'
 import { reactive, computed, watch } from 'vue'
 
-const { synth, synthOnce, init, synthReleaseAll } = useSynth();
+const { synth, synthOnce, synthReleaseAll } = useSynth();
 
 let count = 0;
 

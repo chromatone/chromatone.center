@@ -166,7 +166,7 @@ export function useLoop(order = 0) {
 import { Writer, Track, NoteEvent } from "midi-writer-js";
 
 
-export function renderMidi() {
+export function renderMidiFile() {
   let render = [];
   loops.forEach((loop, l) => {
     let division = 512 / loop.metre.under;

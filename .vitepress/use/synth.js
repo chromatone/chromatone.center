@@ -72,10 +72,10 @@ export function useSynth() {
       if (!play) synthReleaseAll()
     })
   }
-  return { init, synth, synthOnce, synthAttack, synthRelease, synthReleaseAll }
+  return { synthInit, synth, synthOnce, synthAttack, synthRelease, synthReleaseAll }
 }
 
-export function init() {
+export function synthInit() {
   start()
   if (synth?.poly) return
   const channel = createChannel('synth')
@@ -93,22 +93,22 @@ export function init() {
 }
 
 export function synthOnce(note = 'A4', duration = '8n', time) {
-  if (!synth.poly || synth.state.mute) return init()
+  if (!synth.poly || synth.state.mute) return synthInit()
   synth.poly.triggerAttackRelease(note, duration, time)
 }
 
 export function synthAttack(note, velocity) {
-  if (!synth.poly || synth.state.mute) return init()
+  if (!synth.poly || synth.state.mute) return synthInit()
   synth.poly.triggerAttack(note, synth.state.quantize.state, velocity)
 }
 
 export function synthRelease(note) {
-  if (!synth.poly || synth.state.mute) return init()
+  if (!synth.poly || synth.state.mute) return synthInit()
   synth.poly.triggerRelease(note, synth.state.quantize.state)
 }
 
 export function synthReleaseAll() {
-  if (!synth.poly || synth.state.mute) return init()
+  if (!synth.poly || synth.state.mute) return synthInit()
   synth.poly.releaseAll()
 }
 

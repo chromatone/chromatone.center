@@ -35,10 +35,9 @@ export function useRadar() {
       if (midi.playing) {
         radar.angle += 360 / 192 / radar.zoom;
       } else {
-        if (!tempo.playing) {
+        if (!tempo.playing || midi.stopped) {
           radar.angle = 0;
         }
-
       }
     }
   );

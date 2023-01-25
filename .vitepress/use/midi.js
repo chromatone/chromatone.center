@@ -10,7 +10,7 @@ export const midi = reactive({
   enabled: false,
   initiated: false,
   playing: false,
-  paused: false,
+  stopped: false,
   out: true,
   inputs: {},
   outputs: {},
@@ -100,6 +100,7 @@ export function useMidi() {
         })
       }
     });
+    midi.stopped = false
     midi.initiated = true;
   }
 
@@ -310,6 +311,7 @@ export function midiStop(note, options) {
       output.sendAllNotesOff();
       output.sendAllSoundOff({ time: "+1" });
     });
+    midi.stopped = true
   }
 }
 
@@ -355,6 +357,7 @@ export function stopAll() {
     output.sendReset();
     output.sendSongPosition(0)
   });
+  midi.stopped = true
 }
 
 export function forwardMidi(iid, oid) {

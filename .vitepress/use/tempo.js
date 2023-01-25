@@ -118,7 +118,7 @@ export function useTempo() {
     onKeyStroke("Enter", (ev) => {
       if (ev.target.nodeName == "TEXTAREA") return;
       ev.preventDefault();
-      tempo.stopped = true;
+      tempo.stopped = Date.now();
     });
 
   });

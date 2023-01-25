@@ -3,7 +3,7 @@
 	"vueCompilerOptions": {
 		"plugins": ["@volar/vue-language-plugin-pug"]
 	},
-	"include": ["**/*"],
+	"include": ["**/*", ".vitepress/**/*"],
 	"exclude": ["node_modules", "lib", "src-tauri"],
 	"compilerOptions": {
 		"baseUrl": ".",

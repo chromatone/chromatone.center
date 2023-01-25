@@ -1,7 +1,6 @@
 <script setup>
 import { useTempo, tap } from "#/use/tempo.js";
 import { useTuner } from "#/use/tuner.js";
-import { onKeyStroke, useCycleList } from "@vueuse/core";
 const tempo = useTempo();
 const { init, tuner } = useTuner();
 
@@ -9,23 +8,11 @@ const props = defineProps({
   secondary: Boolean,
 });
 
-onKeyStroke(" ", (ev) => {
-  if (ev.target.nodeName == "TEXTAREA" || props.secondary) return;
-  ev.preventDefault();
-  tempo.playing = !tempo.playing;
-});
-
-onKeyStroke("Enter", (ev) => {
-  if (ev.target.nodeName == "TEXTAREA" || props.secondary) return;
-  ev.preventDefault();
-  tempo.stopped = true;
-});
-
 function drag(event) {
   tempo.bpm += (event.delta[0] - event.delta[1]) / 16;
 }
 </script>
-
+ 
 <template lang="pug">
 .flex.flex-col.w-full.mx-auto.justify-center.gap-2
   .tempo-grid.text-xl
@@ -49,7 +36,7 @@ function drag(event) {
       )
       .i-la-play(v-if="!tempo.playing")
       .i-la-pause(v-else)
-    button(style="grid-area: STOP" @click="tempo.stopped = true" v-tooltip.bottom="'Stop'")
+    button(style="grid-area: STOP" @click="tempo.stopped = Date.now()" v-tooltip.bottom="'Stop'")
       .i-la-stop
 
     button(style="grid-area: MINUS" @click="tempo.set(-1)" v-tooltip.bottom="'Subtract 1 BPM'")

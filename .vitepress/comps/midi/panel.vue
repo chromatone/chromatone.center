@@ -1,17 +1,11 @@
 <script setup>
 import { midi, stopAll, midiAttack, midiRelease } from "#/use/midi.js";
-import { onKeyStroke } from "@vueuse/core";
+
 import { noteColor } from '#/use/colors'
 import { synth } from "#/use/synth.js";
 import { useTempo } from '#/use/tempo'
 
 const tempo = useTempo()
-
-onKeyStroke(" ", (ev) => {
-  if (ev.target.nodeName == 'TEXTAREA') return;
-  ev.preventDefault()
-  midi.playing = !midi.playing;
-});
 
 var isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
 </script>

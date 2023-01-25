@@ -1,6 +1,6 @@
 <script setup>
 import { useRafFn, useStorage } from "@vueuse/core";
-import { midi } from "#/use/midi.js";
+import { midi, stopAll } from "#/use/midi.js";
 import { computed, onMounted, reactive, ref, watch } from "vue";
 import { useClamp } from "@vueuse/math";
 
@@ -131,24 +131,42 @@ function colorIt(pitch = 0, value = 1, opacity = 1) {
 
 function dragSpeed(drag) {
   let diff = drag.delta[0] - drag.delta[1];
-  state.rawSpeed += diff / 500
+  if (diff != 0) {
+    state.rawSpeed += diff / 500
+  } else if (drag.active) {
+    midi.playing = !midi.playing
+  }
 }
+
+function wheelHandler(wheel) {
+  state.rawSpeed += wheel.delta[1] / 50
+}
+
 </script>
 
 <template lang="pug">
-.flex.flex-col.items-center.w-full
+.flex.flex-col.items-center.w-full.touch-none.select-none
   .fullscreen-container.rounded-3xl#screen
     control-start.absolute( 
       v-if="!state.initiated", 
       @click="initiate()") Start
-    button.text-button.absolute.top-2.right-2(@click="state.direction ? state.direction = 0 : state.direction = 1")
+    button.p-2.absolute.top-2.right-2(@click="state.direction ? state.direction = 0 : state.direction = 1")
       .i-la-arrow-up(v-if="state.direction == 1")
       .i-la-arrow-left(v-if="state.direction == 0")
-    .absolute.top-2.left-2.text-white.p-2
+    button.absolute.bottom-2.right-2.p-2(@click="midi.playing = !midi.playing")
+      .i-la-play(v-if="!midi.playing")
+      .i-la-pause(v-else)
+    button.absolute.bottom-2.left-2.p-2(@click="stopAll()")
+      .i-la-stop
+    .absolute.top-2.left-2.text-white.p-2(
+
+      )
       .text-lg x{{ state.speed }}
-    canvas#spectrogram.max-h-80vh.w-full.rounded-3xl.cursor-pointer(
+    canvas#spectrogram.max-h-100vh.w-full.rounded-3xl.cursor-pointer(
       v-drag="dragSpeed"
+      v-wheel="wheelHandler"
       :width="state.width"
-      :height="state.height"  
-    )
+      :height="state.height"
+      @dblclick="stopAll()"
+      )
 </template>

@@ -9,11 +9,12 @@ import Ola from "ola";
 export const midi = reactive({
   enabled: false,
   initiated: false,
+  playing: false,
+  paused: false,
   out: true,
   inputs: {},
   outputs: {},
   forwards: {},
-  playing: false,
   channels: {},
   channel: useStorage("global-midi-channel", 1),
   note: {
@@ -45,7 +46,8 @@ export const midi = reactive({
       chroma[(num - 9) % 12] = num
     }
     return chroma
-  })
+  }),
+  stopAll: stopAll
 });
 
 export function learnCC({ number, channel } = {}) {
@@ -95,7 +97,7 @@ export function useMidi() {
       } else {
         outs.forEach((output) => {
           output.sendStop();
-        });
+        })
       }
     });
     midi.initiated = true;
@@ -343,13 +345,15 @@ export function setCC(cc, value) {
 }
 
 export function stopAll() {
+  console.log('stop')
   if (!midi.out) return;
   midi.channels = {};
   midi.playing = false;
   WebMidi.outputs.forEach((output) => {
     output.sendAllNotesOff();
-    output.sendAllSoundOff({ time: "+1" });
+    output.sendAllSoundOff();
     output.sendReset();
+    output.sendSongPosition(0)
   });
 }
 

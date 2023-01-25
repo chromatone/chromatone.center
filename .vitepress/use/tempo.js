@@ -3,8 +3,7 @@ import { Transport, start, Frequency, Loop, Sampler, gainToDb, Draw } from "tone
 import { freqPitch } from "#/use/calculations";
 import { noteColor } from '#/use/colors'
 import { Note } from "@tonaljs/tonal";
-import { useStorage } from "@vueuse/core";
-import { useRafFn } from "@vueuse/core";
+import { useStorage, onKeyStroke, useRafFn } from "@vueuse/core";
 import { createChannel } from '#/use/audio'
 import { useClamp } from "@vueuse/math";
 import { WebMidi } from "webmidi";
@@ -110,6 +109,18 @@ export function useTempo() {
       tempo.progress = metro.loop.progress
     })
 
+    onKeyStroke(" ", (ev) => {
+      if (ev.target.nodeName == 'TEXTAREA') return;
+      ev.preventDefault()
+      tempo.playing = !tempo.playing;
+    });
+
+    onKeyStroke("Enter", (ev) => {
+      if (ev.target.nodeName == "TEXTAREA") return;
+      ev.preventDefault();
+      tempo.stopped = true;
+    });
+
   });
 
   watch(() => tempo.volume, () => metro.pluck.volume.rampTo(gainToDb(tempo.volume)))
@@ -125,6 +136,7 @@ export function useTempo() {
     (stop) => {
       if (stop) {
         Transport.stop();
+        midi.stopAll()
         tempo.playing = false;
       }
     }
@@ -140,8 +152,9 @@ export function useTempo() {
         }
         tempo.stopped = false;
         Transport.start();
-
+        midi.playing = true
       } else {
+        midi.playing = false
         Transport.pause();
       }
     }, {

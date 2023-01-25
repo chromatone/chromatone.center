@@ -40,10 +40,10 @@
 		"@stripe/stripe-js": "^1.46.0",
 		"@tonaljs/tonal": "^4.10.0",
 		"@tonejs/midi": "^2.0.28",
-		"@unocss/reset": "^0.48.4",
-		"@vueuse/core": "^9.11.0",
+		"@unocss/reset": "^0.48.5",
+		"@vueuse/core": "^9.11.1",
 		"@vueuse/gesture": "2.0.0-beta.1",
-		"@vueuse/math": "^9.11.0",
+		"@vueuse/math": "^9.11.1",
 		"abcjs": "^6.1.8",
 		"audio-recorder-polyfill": "^0.4.1",
 		"audiomotion-analyzer": "3.6.1",
@@ -69,9 +69,9 @@
 		"webmidi": "^3.1.2"
 	},
 	"devDependencies": {
-		"@iconify/json": "^2.2.9",
+		"@iconify/json": "^2.2.12",
 		"@tauri-apps/cli": "2.0.0-alpha.1",
-		"@unocss/extractor-pug": "^0.48.4",
+		"@unocss/extractor-pug": "^0.48.5",
 		"@volar/vue-language-plugin-pug": "1.0.24",
 		"eslint": "^8.32.0",
 		"eslint-plugin-vue": "^9.9.0",
@@ -80,13 +80,13 @@
 		"markdown-it-external-links": "^0.0.6",
 		"patch-vue-directive-ssr": "^0.0.1",
 		"pug": "3.0.2",
-		"unocss": "^0.48.4",
+		"unocss": "^0.48.5",
 		"unplugin-icons": "^0.15.1",
 		"unplugin-vue-components": "^0.22.12",
 		"vite": "4.0.4",
 		"vite-plugin-pages": "^0.28.0",
 		"vite-plugin-pages-sitemap": "^1.4.5",
 		"vite-plugin-pwa": "^0.14.1",
-		"vitepress": "1.0.0-alpha.38"
+		"vitepress": "1.0.0-alpha.40"
 	}
 }

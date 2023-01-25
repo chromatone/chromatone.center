@@ -49,7 +49,7 @@ specifiers:
   vite-plugin-pages-sitemap: ^1.4.5
   vite-plugin-pwa: ^0.14.1
   vitepress: 1.0.0-alpha.40
-  vitepress-pages: ^1.0.0
+  vitepress-pages: ^1.0.1
   vue: ^3.2.45
   vue-stripe-js: ^1.0.1
   webmidi: ^3.1.2
@@ -84,7 +84,7 @@ dependencies:
   simplex-noise: 4.0.1
   thousands-counter: 2.1.1
   tone: 14.8.49
-  vitepress-pages: 1.0.0_vite-plugin-pages@0.28.0
+  vitepress-pages: 1.0.1_vite-plugin-pages@0.28.0
   vue: 3.2.45
   vue-stripe-js: 1.0.1
   webmidi: 3.1.2
@@ -5972,8 +5972,8 @@ packages:
     optionalDependencies:
       fsevents: 2.3.2
 
-  /vitepress-pages/1.0.0_vite-plugin-pages@0.28.0:
-    resolution: {integrity: sha512-KkggaIeBEEec29W/qr00PULCvNurs9YLxm0+4wfvleUA/IcsCZ+mPJ4Y7Y88rfsqvUPjC1j2VbQgDt2LXTnhoA==}
+  /vitepress-pages/1.0.1_vite-plugin-pages@0.28.0:
+    resolution: {integrity: sha512-zNinNWyd88fZd/yj440xfNrCRCo0r3HAXYvhHxZ07dHHtYZzziMHA9icfHRDh1xO/T4Ub+Wi1MozrevAeqqL7Q==}
     peerDependencies:
       vite-plugin-pages: ^0.28.0
     dependencies:

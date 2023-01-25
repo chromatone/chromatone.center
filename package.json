@@ -64,7 +64,7 @@
 		"simplex-noise": "^4.0.1",
 		"thousands-counter": "^2.1.1",
 		"tone": "^14.8.49",
-		"vitepress-pages": "^1.0.0",
+		"vitepress-pages": "^1.0.1",
 		"vue": "^3.2.45",
 		"vue-stripe-js": "^1.0.1",
 		"webmidi": "^3.1.2"

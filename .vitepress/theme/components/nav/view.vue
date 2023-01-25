@@ -4,7 +4,7 @@ import { drawingEnabled, drawingPinned } from '#/theme/components/draw/draw'
 
 <template lang='pug'>
 .z-4000.fixed.right-4.bottom-4.flex.flex-col.items-center.gap-4
-	shop-cart-panel.opacity-30.hover-opacity-100.transition
+	shop-cart-panel
 	full-screen.text-xl.opacity-30.hover-opacity-100.transition
 	button.text-xl.opacity-30.hover-opacity-100.transition(
 		@click="drawingEnabled = !drawingEnabled"

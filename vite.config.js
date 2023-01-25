@@ -16,8 +16,7 @@ import extractorPug from '@unocss/extractor-pug'
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-const filename = fileURLToPath(import.meta.url);
-const dirname = path.dirname(filename);
+const dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   base: './',
@@ -29,6 +28,7 @@ export default defineConfig({
       exclude: ['**/node_modules/**/*.*', '**/!(index).md', '**/shop/success.md', '**/shop/cancel.md'],
       extensions: ['md'],
       ...extendRoutes({
+        root: dirname,
         mediaTypes: {
           cover: { size: 1200, height: 800, fit: "inside" },
         }

@@ -21,12 +21,13 @@
 	},
 	"main": "./lib/chromatone-center.js",
 	"module": "./lib/chromatone-center.js",
+	"types": "./lib/types/",
 	"files": [
 		"lib"
 	],
 	"scripts": {
 		"build": "vitepress build ",
-		"build-lib": "vite --config vite.config.lib.js build",
+		"build-lib": "vite --config vite.config.lib.js build && tsc",
 		"deploy": "sh deploy.sh",
 		"dev": "vitepress dev --host --port 3242",
 		"serve": "vitepress serve --port 3200",

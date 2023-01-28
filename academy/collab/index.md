@@ -1,5 +1,5 @@
 ---
-title: Cases
+title: Collaborations
 subtitle: Commercial partnerships, institutional associations and artistic collaborations
 date: 2021-01-01
 ---

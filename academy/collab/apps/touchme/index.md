@@ -1,5 +1,5 @@
 ---
-title: TouchMe Experience
+title: Playtronica TouchMe experience
 subtitle: Online synthesizer and MIDI visualizer for Playtronica
 cover: touchme.png
 date: 2022-04-15

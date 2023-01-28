@@ -151,3 +151,7 @@ Change of key is not possible in the full chromatic or the twelve tone technique
 Though modulation generally refers to changes of key, any parameter may be modulated, particularly in music of the 20th and 21st century. Metric modulation (known also as tempo modulation) is the most common, while timbral modulation (gradual changes in tone color), and spatial modulation (changing the location from which sound occurs) are also used.
 
 Modulation may also occur from a single tonality to a polytonality, often by beginning with a duplicated tonic chord and modulating the chords in contrary motion until the desired polytonality is reached.
+
+## Chromatic mediant changes
+
+https://youtu.be/mjFACmJ5ON8

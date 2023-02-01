@@ -1,5 +1,5 @@
 <script setup>
-import { tempo, tap } from '#/use/tempo.js'
+import { tempo, tap } from '#/use/tempo'
 </script>
 
 <template lang="pug">

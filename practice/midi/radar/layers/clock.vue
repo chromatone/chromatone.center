@@ -1,6 +1,6 @@
 <script setup>
 import { getCircleCoord } from '#/use/calculations'
-import { polarXY, radar } from '../radar.js'
+import { polarXY, radar } from '../radar'
 import { isDark } from '#/theme/composables/state'
 import paper from 'paper'
 import { onBeforeUnmount, reactive, watch } from 'vue';

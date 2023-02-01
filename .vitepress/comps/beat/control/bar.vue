@@ -1,5 +1,5 @@
 <script setup>
-import { isDark } from '#/theme/composables/state.js'
+import { isDark } from '#/theme/composables/state'
 import { levelColor } from "#/use/colors.js"
 import { useClamp } from '@vueuse/math';
 import { computed, reactive, watch } from 'vue'

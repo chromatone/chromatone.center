@@ -1,5 +1,5 @@
 <script setup>
-import { tempo } from '#/use/tempo.js'
+import { tempo } from '#/use/tempo'
 
 function drag(event) {
   tempo.bpm += (event.delta[0] - event.delta[1]) / 16

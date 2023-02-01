@@ -1,5 +1,5 @@
 <script setup>
-import { levelColor } from '#/use/colors.js'
+import { levelColor } from '#/use/colors'
 const props = defineProps({
   list: Object,
   langs: Object,

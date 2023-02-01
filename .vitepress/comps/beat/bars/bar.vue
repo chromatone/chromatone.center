@@ -1,7 +1,7 @@
 <script setup>
 import BarStep from './step.vue'
 
-import { useSequence } from '#/use/sequence.js'
+import { useSequence } from '#/use/sequence'
 import { computed, ref, watch } from 'vue'
 import { noteColor, levelColor } from '#/use/colors'
 import { tempo } from '#/use/tempo'

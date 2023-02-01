@@ -2,7 +2,7 @@
 
 <script setup>
 import { getCircleCoord } from '#/use/calculations'
-import { isDark } from '#/theme/composables/state.js'
+import { isDark } from '#/theme/composables/state'
 import { midi } from '#/use/midi'
 import { controls } from './controls';
 import { ref, reactive, computed, watch } from 'vue'

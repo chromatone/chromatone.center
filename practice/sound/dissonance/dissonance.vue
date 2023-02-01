@@ -1,7 +1,7 @@
 <script setup>
 import { freqColor } from '#/use/calculations'
 import { noteColor } from "#/use/colors";
-import { useSvgMouse } from '#/use/mouse.js'
+import { useSvgMouse } from '#/use/mouse'
 import { MonoSynth, gainToDb } from 'tone'
 import { notes } from '#/use/theory'
 import { createChannel } from '#/use/audio';

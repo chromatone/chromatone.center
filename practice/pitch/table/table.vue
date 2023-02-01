@@ -4,7 +4,7 @@ import tableCell from './cell.vue'
 import tableSwitch from './switch.vue'
 
 import { notes } from '#/use/theory'
-import { state } from './state.js'
+import { state } from './state'
 import { globalScale } from '#/use/chroma'
 import { onKeyStroke } from '@vueuse/core'
 import { ref } from 'vue'

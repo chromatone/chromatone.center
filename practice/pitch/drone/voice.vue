@@ -1,5 +1,5 @@
 <script setup>
-import { useVoice } from './drone.js'
+import { useVoice } from './drone'
 
 const props = defineProps({
   interval: { type: Number, default: 0, },

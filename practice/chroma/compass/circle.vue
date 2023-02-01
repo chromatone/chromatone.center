@@ -7,7 +7,7 @@ import { scaleType, chordType, notes } from '#/use/theory'
 import { globalScale } from '#/use/chroma'
 import { Frequency } from 'tone'
 import { midiOnce, midiPlay, midiStop } from '#/use/midi'
-import { synthOnce, synthAttack, synthRelease } from '#/use/synth.js'
+import { synthOnce, synthAttack, synthRelease } from '#/use/synth'
 import { computed, nextTick, ref } from 'vue';
 
 const props = defineProps({

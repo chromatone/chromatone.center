@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useData } from 'vitepress'
 import { computed } from 'vue';
-import { useLocaleLinks } from '../../composables/nav.js'
+import { useLocaleLinks } from '../../composables/nav'
 import { pages } from '../../composables/pages'
 
 

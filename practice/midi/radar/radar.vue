@@ -1,5 +1,5 @@
 <script setup>
-import { useRadar } from './radar.js'
+import { useRadar } from './radar'
 import Circles from './layers/circles.vue'
 import Clock from './layers/clock.vue'
 import Pointer from './layers/pointer.vue'

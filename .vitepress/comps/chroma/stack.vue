@@ -1,11 +1,11 @@
 <script setup>
 import { rotateArray } from '#/use/calculations'
-import { noteNames, chordType, scaleType, notes } from '#/use/theory.js'
+import { noteNames, chordType, scaleType, notes } from '#/use/theory'
 import { playChroma, stopChroma, globalScale } from '#/use/chroma'
 import { chromaColorMix, noteColor } from "#/use/colors.js"
 import { Progression, Chord } from "@tonaljs/tonal"
 import { Frequency } from 'tone'
-import { synthOnce } from '#/use/synth.js'
+import { synthOnce } from '#/use/synth'
 import { midiOnce } from '#/use/midi'
 import { colord } from 'colord'
 import { computed } from 'vue'

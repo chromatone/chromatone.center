@@ -2,7 +2,7 @@
 import { reactive, ref } from 'vue'
 import { UserMedia, Waveform, FFT } from 'tone'
 import { useRafFn } from '@vueuse/core'
-import { useTuner } from '#/use/tuner.js'
+import { useTuner } from '#/use/tuner'
 import { freqPitch } from '#/use/calculations'
 import { noteColor } from '#/use/colors'
 

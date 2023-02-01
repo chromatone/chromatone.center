@@ -1,5 +1,5 @@
 <script setup>
-import { state } from './state.js'
+import { state } from './state'
 
 defineProps({
   top: Boolean,

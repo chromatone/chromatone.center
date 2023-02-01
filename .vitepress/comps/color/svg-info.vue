@@ -1,5 +1,5 @@
 <script setup>
-import { getColorInfo } from '#/use/colors.js'
+import { getColorInfo } from '#/use/colors'
 import { computed } from 'vue';
 const props = defineProps({
   color: {

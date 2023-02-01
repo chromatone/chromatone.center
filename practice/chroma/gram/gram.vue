@@ -1,7 +1,7 @@
 <script setup>
 import { useRafFn, useStorage } from '@vueuse/core'
 import { rotateArray } from '#/use/calculations'
-import { useTuner } from '#/use/tuner.js'
+import { useTuner } from '#/use/tuner'
 import { computed, onMounted, reactive, ref } from 'vue';
 import { useClamp } from '@vueuse/math';
 const { init, tuner } = useTuner();

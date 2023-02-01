@@ -2,7 +2,7 @@
 import { rotateArray, getCircleCoord } from '#/use/calculations'
 import { noteColor } from '#/use/colors'
 import { notes } from '#/use/theory'
-import { useTuner } from '#/use/tuner.js'
+import { useTuner } from '#/use/tuner'
 import { useClamp } from '@vueuse/math'
 import { useDrag } from '@vueuse/gesture'
 import { ref } from 'vue'

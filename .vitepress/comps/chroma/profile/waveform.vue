@@ -2,7 +2,7 @@
 import { rotateArray } from '#/use/calculations'
 import { useStorage, useRafFn, useTransition, TransitionPresets } from '@vueuse/core'
 import { chromaColorMix, noteColor } from "#/use/colors.js";
-import { useSynth } from '#/use/synth.js'
+import { useSynth } from '#/use/synth'
 import { playChroma, stopChroma, globalScale } from '#/use/chroma'
 import { ref, watchEffect, computed } from 'vue';
 const frequencies = []

@@ -1,6 +1,6 @@
 <script setup>
 import { useData } from 'vitepress'
-import { lchToHsl } from '#/use/colors.js'
+import { lchToHsl } from '#/use/colors'
 import { pages } from '#/theme/composables/pages'
 import { computed } from 'vue';
 

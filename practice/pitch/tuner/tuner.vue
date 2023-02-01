@@ -1,6 +1,6 @@
 <script setup>
 import { noteColor } from "#/use/colors"
-import { useTuner } from '#/use/tuner.js'
+import { useTuner } from '#/use/tuner'
 import { computed } from 'vue'
 
 const { init, tuner, } = useTuner();

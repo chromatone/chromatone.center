@@ -8,7 +8,7 @@ export function renderMidi(tracks) {
   tracks.forEach((track, t) => {
     let division = 512 / track.metre.under;
     let midiTrack = new Track();
-    midiTrack.setTempo(tempo.bpm);
+    midiTrack.setTempo(tempo.bpm,0);
     midiTrack.addInstrumentName("116");
     midiTrack.addTrackName("Chromatone beat " + t);
     midiTrack.setTimeSignature(4, 4);
@@ -23,9 +23,9 @@ export function renderMidi(tracks) {
         }
         midiTrack.addEvent(
           new NoteEvent({
-            pitch: track.accents[s]
+            pitch:( track.accents[s]
               ? notes[t * 2] + "2"
-              : notes[t * 2 + 1] + "2",
+              : notes[t * 2 + 1] + "2") as 'C2' ,
             duration: `T${subdivision}`,
             startTick: division * beat + subStep,
             velocity: track.accents[s] || track.accents[code] ? 100 : 64,
@@ -56,8 +56,9 @@ export function renderMidi(tracks) {
 export function createAndDownloadBlobFile(body, filename, extension = "mid") {
   const blob = new Blob([body]);
   const fileName = `${filename}.${extension}`;
+  //@ts-expect-error MS IE
   if (navigator.msSaveBlob) {
-    // IE 10+
+    //@ts-expect-error IE 10+
     navigator.msSaveBlob(blob, fileName);
   } else {
     const link = document.createElement("a");

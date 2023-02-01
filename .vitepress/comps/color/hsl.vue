@@ -1,5 +1,5 @@
 <script setup>
-import { getColorInfo } from '#/use/colors.js'
+import { getColorInfo } from '#/use/colors'
 import { colord } from 'colord'
 import { useTransition, TransitionPresets, useStorage } from '@vueuse/core'
 import { useClamp } from '@vueuse/math';

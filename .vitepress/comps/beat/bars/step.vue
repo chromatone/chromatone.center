@@ -2,7 +2,7 @@
 import { levelColor } from "#/use/colors.js"
 import { colord } from 'colord'
 
-import { isDark } from '#/theme/composables/state.js'
+import { isDark } from '#/theme/composables/state'
 import { tempo } from '#/use/tempo'
 import { computed, watch } from "vue";
 import { useClamp } from "@vueuse/math";

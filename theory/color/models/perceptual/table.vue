@@ -1,5 +1,5 @@
 <script setup>
-import { lchToHsl, levelColor } from '#/use/colors.js'
+import { lchToHsl, levelColor } from '#/use/colors'
 
 </script>
 

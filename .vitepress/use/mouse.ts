@@ -24,7 +24,7 @@ export function useSvgMouse() {
     })
   })
 
-  function getCursorPosition(event, svgElement = svg.value, rect = area.value) {
+  function getCursorPosition(event:MouseEvent, svgElement = svg.value, rect = area.value) {
     if (!svgElement) return
     var svgPoint = svgElement.createSVGPoint()
     svgPoint.x = event.clientX

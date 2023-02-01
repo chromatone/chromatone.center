@@ -1,5 +1,5 @@
-import { metaData } from './constants.js'
-import head from './head.js'
+import { metaData } from './constants'
+import head from './head'
 
 import mdExternal from 'markdown-it-external-links'
 

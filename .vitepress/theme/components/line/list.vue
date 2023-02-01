@@ -1,6 +1,6 @@
 <script setup>
 
-import { lchToHsl } from '#/use/colors.js'
+import { lchToHsl } from '#/use/colors'
 import { isDark } from '#/theme/composables/state'
 import { pages } from '#/theme/composables/pages'
 

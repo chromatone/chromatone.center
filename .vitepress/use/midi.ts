@@ -2,11 +2,62 @@ import { useStorage } from '@vueuse/core';
 import { useClamp } from '@vueuse/math';
 import { reactive, computed, watchEffect, onMounted, ref, watch } from 'vue'
 
-import { WebMidi, Note } from "webmidi"
+import { WebMidi, Note, Forwarder,  } from "webmidi"
+import type {Input, Output, Event, Message, MessageEvent} from 'webmidi'
 import { setupKeyboard } from './keyboard'
 import Ola from "ola";
 
-export const midi = reactive({
+export interface MidiInterface {
+  enabled: boolean
+  initiated: boolean
+  playing: boolean
+  stopped: boolean | number
+  keyboard: boolean
+  out: boolean
+  inputs: Record<string, {
+    name: string,
+    manufacturer: string,
+    forwarder: Forwarder,
+    clock: number,
+    note: null,
+    cc: {
+      channel: number
+      timestamp:number
+      number:number
+      value:number
+      raw: number
+      port: string
+    },
+    diff?: number
+    bpm?: number
+    event?: Event
+  }>
+  outputs: Record<string, {
+    name: string
+    manufacturer: string
+  }>
+  forwards: Record<string, Record<string,boolean>>
+  channels: Record<number, { notes: {}, activeNotes: {}, cc: {} }>
+  activeNotes: Record<number, boolean>
+  note: {
+    pitch: number
+    channel: number
+  }
+  cc?: {
+    channel?: number
+    number?: number
+    value?: number
+  }
+  offset: number
+  time?: number
+  clock?:number
+  log: MessageEvent[]
+  message: Message
+  filter?: {}
+  channel: number
+}
+
+export const midi:MidiInterface = reactive({
   enabled: false,
   initiated: false,
   playing: false,
@@ -42,14 +93,18 @@ export const midi = reactive({
   activeChroma: computed(() => {
     let chroma = new Array(12)
     for (let num in midi.activeNotes) {
-      chroma[(num - 9) % 12] = num
+      const n = (Number(num) - 9) % 12
+      chroma[n] = num
     }
     return chroma
   }),
   stopAll: stopAll
 });
 
-export function learnCC({ number, channel } = {}) {
+export function learnCC({ number, channel }: {
+  number: number
+  channel: number
+}) {
   const val = ref(0)
   watch(() => midi.cc, cc => {
     if (channel && cc.channel != channel) return
@@ -59,7 +114,7 @@ export function learnCC({ number, channel } = {}) {
   return val
 }
 
-export function playKey(name, offset = 0, off, velocity = 1) {
+export function playKey(name: string, offset = 0, off?: boolean, velocity: number = 1) {
   let noteName = name + (4 + offset + midi.offset)
   const note = new Note(noteName, {
     attack: off ? 0 : velocity,
@@ -110,7 +165,6 @@ export function useMidi() {
     midiRelease,
     midiOnce,
     setCC,
-    WebMidi,
   };
 }
 
@@ -144,6 +198,7 @@ function initMidi() {
     midi.inputs[input.id] = {
       name: input.name,
       manufacturer: input.manufacturer,
+      //@ts-expect-error We configure the output later
       forwarder: input.addForwarder(),
       clock: 0,
       event: null,
@@ -187,17 +242,13 @@ function initMidi() {
       "noteon",
       (ev) => {
         midi.inputs[input.id].note = noteInOn(ev);
-      },
-      {
-        channels: "all",
       }
     );
     input.addListener(
       "noteoff",
       (ev) => {
         midi.inputs[input.id].note = noteInOn(ev);
-      },
-      { channels: "all" }
+      }
     );
 
     input.addListener(
@@ -207,9 +258,6 @@ function initMidi() {
         if (!cc) return;
         midi.inputs[input.id].cc = cc;
         midi.cc = cc;
-      },
-      {
-        channels: "all",
       }
     );
 
@@ -266,7 +314,7 @@ function ccIn(ev) {
   return cc;
 }
 
-function createChannel(ch) {
+function createChannel(ch:number) {
   if (!midi.channels[ch]) {
     midi.channels[ch] = reactive({ num: ch, activeNotes: {}, notes: {}, cc: {} });
   }
@@ -359,7 +407,7 @@ export function stopAll() {
   midi.stopped = true
 }
 
-export function forwardMidi(iid, oid) {
+export function forwardMidi(iid: string, oid: string) {
   const output = WebMidi.outputs.find((out) => out.id == oid);
   const destinations = midi.inputs[iid].forwarder.destinations;
   const index = destinations.indexOf(output);

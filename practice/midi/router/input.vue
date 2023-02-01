@@ -1,5 +1,5 @@
 <script setup>
-import { useMidi, forwardMidi } from "#/use/midi.js";
+import { useMidi, forwardMidi } from "#/use/midi";
 import { noteColor } from "#/use/colors";
 import { computed, watch } from "vue";
 

@@ -4,16 +4,19 @@ import { resolve } from 'path'
 
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { checker } from 'vite-plugin-checker';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
 
 export default defineConfig({
-  base: './',
   plugins: [
-
-
+    checker({
+      typescript: {
+        buildMode: true
+      }
+    }),
   ],
   optimizeDeps: {
     include: ['vue', '@vueuse/core', 'tone', '@tonaljs/tonal', 'colord'],
@@ -26,10 +29,11 @@ export default defineConfig({
   },
   build: {
     outDir: "lib",
+    emptyOutDir:false,
     lib: {
       entry: resolve(dirname, '.vitepress/use/index.ts'),
-      name: 'chromatone.center',
-      fileName: 'chromatone-center',
+      name: 'use-chromatone',
+      fileName: 'use-chromatone',
       formats: ["es"],
     },
     chunkSizeWarningLimit: 100000,

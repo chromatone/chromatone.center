@@ -4,7 +4,7 @@ import { chromaColorMix, noteColor } from "#/use/colors.js";
 import { Note, Pcset, Interval } from '@tonaljs/tonal'
 import { Frequency } from 'tone'
 import { synthOnce } from '#/use/synth.js'
-import { midiOnce } from '#/use/midi.js'
+import { midiOnce } from '#/use/midi'
 import { chordType, scaleType, intervals, notes } from '#/use/theory'
 import { globalScale, playChroma, stopChroma, } from '#/use/chroma'
 import { calcBg } from '#/use/colors'

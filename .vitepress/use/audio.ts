@@ -1,19 +1,29 @@
 import { getDestination, start, gainToDb, Meter, context, Reverb, Limiter } from "tone";
 import { useRecorder } from "./recorder";
-import { shallowReactive, reactive, watchEffect } from 'vue'
+import { shallowReactive, reactive, watchEffect, markRaw } from 'vue'
 import { useRafFn, useStorage } from "@vueuse/core";
 import { useClamp } from "@vueuse/math";
 
-const audio = reactive({
+const audio: {
+  initiated: boolean
+  mute: boolean
+  volume: number
+  meter: number | number[]
+} = reactive({
   initiated: false,
   mute: useStorage("mute", false),
   volume: useClamp(useStorage("main-vol", 1), 0, 2),
   meter: 0
 });
 
-export const master = shallowReactive({})
+export const master: {
+  stream?: MediaStreamAudioDestinationNode
+  meter?: Meter
+  limiter?: Limiter
+  reverb?: Reverb
+} = reactive({})
 
-export const channels = shallowReactive({})
+export const channels: {} = shallowReactive({})
 
 export function useAudio() {
   if (!audio.initiated) {
@@ -21,9 +31,8 @@ export function useAudio() {
 
     const { recorder } = useRecorder()
 
-    master.stream = context.createMediaStreamDestination()
-
-    master.meter = new Meter().toDestination();
+    master.stream = markRaw(context.createMediaStreamDestination())
+    master.meter = markRaw(new Meter().toDestination())
     master.meter.normalRange = true
     master.meter.connect(master.stream)
     master.meter.connect(recorder)
@@ -32,13 +41,14 @@ export function useAudio() {
       audio.meter = master.meter.getValue()
     })
 
-    master.limiter = new Limiter(-18).connect(master.meter)
+    master.limiter = markRaw(new Limiter(-18).connect(master.meter))
 
 
-    master.reverb = new Reverb({
+    master.reverb = markRaw(new Reverb({
       decay: 1,
       wet: 0.5
-    }).connect(master.meter)
+    }).connect(master.meter))
+
     master.limiter.connect(master.reverb)
 
 
@@ -66,13 +76,15 @@ export function createChannel(title = (Math.random() * 1000).toFixed(0), options
 
 
 export function initGetUserMedia() {
-  window.AudioContext = window.AudioContext || window.webkitAudioContext;
+  //@ts-expect-error Polyfill for webkit
+  window.AudioContext = window.AudioContext || window?.webkitAudioContext;
   if (!window.AudioContext) {
     return alert("AudioContext not supported");
   }
 
   // Older browsers might not implement mediaDevices at all, so we set an empty object first
   if (navigator.mediaDevices === undefined) {
+    //@ts-expect-error Fallback
     navigator.mediaDevices = {};
   }
 
@@ -82,6 +94,7 @@ export function initGetUserMedia() {
   if (navigator.mediaDevices.getUserMedia === undefined) {
     navigator.mediaDevices.getUserMedia = function (constraints) {
       // First get ahold of the legacy getUserMedia, if present
+      //@ts-expect-error mozGetUserMedia
       const getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
       // Some browsers just don't implement it - return a rejected promise with an error

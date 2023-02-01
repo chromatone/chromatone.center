@@ -1,5 +1,5 @@
 import { Frequency } from "tone";
-import { midiPlay, midiStop, midiOnce } from "./midi.js";
+import { midiPlay, midiStop, midiOnce } from "./midi";
 import { synthOnce, synthAttack, synthRelease } from "./synth.js";
 import { rotateArray } from "#/use/calculations";
 import { notes } from '#/use/theory'

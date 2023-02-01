@@ -1,6 +1,6 @@
 <script setup>
 import { useRafFn, useStorage } from "@vueuse/core";
-import { midi, stopAll } from "#/use/midi.js";
+import { midi, stopAll } from "#/use/midi";
 import { computed, onMounted, reactive, ref, watch } from "vue";
 import { useClamp } from "@vueuse/math";
 

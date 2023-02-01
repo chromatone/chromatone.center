@@ -1,8 +1,8 @@
 <script setup>
-import { midi, stopAll, midiAttack, midiRelease } from "#/use/midi.js";
+import { midi, stopAll, midiAttack, midiRelease } from "#/use/midi";
 
 import { noteColor } from '#/use/colors'
-import { synth } from "#/use/synth.js";
+import { synth } from "#/use/synth";
 import { useTempo } from '#/use/tempo'
 
 const tempo = useTempo()

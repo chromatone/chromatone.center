@@ -1,6 +1,6 @@
 <script setup>
 import midiInput from './input.vue'
-import { useMidi } from "#/use/midi.js";
+import { useMidi } from "#/use/midi";
 const { midi } = useMidi();
 
 </script>

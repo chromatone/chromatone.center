@@ -1,5 +1,5 @@
 <script setup>
-import { useMidi } from "#/use/midi.js";
+import { useMidi } from "#/use/midi";
 import { noteColor } from '#/use/colors'
 import { useAudio } from "#/use/audio";
 import { useSynth, quantizeModes } from "#/use/synth";

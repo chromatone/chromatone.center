@@ -3,7 +3,7 @@ import midiNote from './note.vue'
 import midiCc from './cc.vue'
 import { ref } from 'vue';
 
-import { useMidi } from '#/use/midi.js'
+import { useMidi } from '#/use/midi'
 const active = ref(false)
 
 const { midi, midiAttack, midiRelease, setCC } = useMidi();

@@ -3,8 +3,8 @@ import { useStorage } from '@vueuse/core'
 import { Note, Interval } from '@tonaljs/tonal'
 import { freqColor } from '#/use/calculations'
 import { colord } from 'colord'
-import { synthOnce } from '#/use/synth.js'
-import { midiOnce } from '#/use/midi.js'
+import { synthOnce } from '#/use/synth'
+import { midiOnce } from '#/use/midi'
 import { computed, reactive, watch } from 'vue'
 
 const props = defineProps({

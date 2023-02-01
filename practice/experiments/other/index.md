@@ -73,6 +73,9 @@ links:
   - url: http://science-to-touch.com/LaLaLab/
     title: "Science to touch: LaLaLab"
     subtitle: A collection of visual mathematical tools to explore music possibilities
+  - url: http://www.musanim.com/HarmonicColoring/
+    title: Harmonic Coloring
+    subtitle: A method for assigning colors to musical pitches
 date: 2018-09-08
 ---
 

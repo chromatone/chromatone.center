@@ -9,22 +9,19 @@
 		"paths": {
 			"#/*": ["./.vitepress/*"]
 		},
-		"target": "ESNext",
-		"module": "esnext",
-		// Tells TypeScript to read JS files, as
-		// normally they are ignored as source files
+		"esModuleInterop": true,
+		"target": "es2020",
+		"moduleResolution": "node",
+		"resolveJsonModule": true,
 		"allowJs": true,
-		// Generate d.ts files
+		"isolatedModules": true,
 		"declaration": true,
-		// This compiler run should
-		// only output d.ts files
 		"emitDeclarationOnly": true,
-		// Types should go into this directory.
-		// Removing this would place the .d.ts files
-		// next to the .js files
-		"outDir": "lib/types",
-		// go to js file when using IDE functions like
-		// "Go to Definition" in VSCode
-		"declarationMap": true
+		"declarationMap": true,
+		"declarationDir": "lib/types",
+		"skipLibCheck": true,
+		"module": "ESNext",
+		"allowSyntheticDefaultImports": true,
+		"outDir": "lib/types"
 	}
 }

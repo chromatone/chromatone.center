@@ -1,5 +1,5 @@
 import { shallowReactive, reactive, computed, watch, watchEffect, onBeforeUnmount } from 'vue'
-import { tempo } from "#/use/tempo.js";
+import { tempo } from "#/use/tempo";
 import {
   Sequence,
   PanVol,

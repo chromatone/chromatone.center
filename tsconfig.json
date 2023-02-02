@@ -9,8 +9,7 @@
 		"paths": {
 			"#/*": ["./.vitepress/*"]
 		},
-		"esModuleInterop": true,
-		"target": "es2020",
+		"target": "esnext",
 		"moduleResolution": "node",
 		"resolveJsonModule": true,
 		"allowJs": true,

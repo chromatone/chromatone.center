@@ -4,7 +4,6 @@ import { resolve } from 'path'
 
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { checker } from 'vite-plugin-checker';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -12,11 +11,6 @@ const dirname = path.dirname(filename);
 
 export default defineConfig({
   plugins: [
-    checker({
-      typescript: {
-        buildMode: true
-      }
-    }),
   ],
   optimizeDeps: {
     include: ['vue', '@vueuse/core', 'tone', '@tonaljs/tonal', 'colord'],
@@ -29,7 +23,6 @@ export default defineConfig({
   },
   build: {
     outDir: "lib",
-    emptyOutDir:false,
     lib: {
       entry: resolve(dirname, '.vitepress/use/index.ts'),
       name: 'use-chromatone',

@@ -27,7 +27,7 @@
 	],
 	"scripts": {
 		"build": "vitepress build",
-		"build-lib": "vite --config vite.config.lib.js build",
+		"build-lib": "vite --config vite.config.lib.js build && tsc",
 		"deploy": "sh deploy.sh",
 		"dev": "vitepress dev --host --port 3242",
 		"serve": "vitepress serve --port 3200",
@@ -86,10 +86,10 @@
 		"unplugin-icons": "^0.15.2",
 		"unplugin-vue-components": "^0.23.0",
 		"vite": "4.0.4",
-		"vite-plugin-checker": "^0.5.5",
 		"vite-plugin-pages": "^0.28.0",
 		"vite-plugin-pages-sitemap": "^1.4.5",
 		"vite-plugin-pwa": "^0.14.1",
-		"vitepress": "1.0.0-alpha.45"
+		"vitepress": "1.0.0-alpha.45",
+		"@typescript-eslint/eslint-plugin": "^5.50.0"
 	}
 }

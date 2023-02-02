@@ -1,4 +1,4 @@
-import { getDestination, start, gainToDb, Meter, context, Reverb, Limiter } from "tone";
+import { getDestination, start, gainToDb, Meter, context, Reverb, Limiter, LimiterOptions } from "tone";
 import { useRecorder } from "./recorder";
 import { shallowReactive, reactive, watchEffect, markRaw } from 'vue'
 import { useRafFn, useStorage } from "@vueuse/core";
@@ -65,7 +65,7 @@ export function useAudio() {
   return { audio, master, channels };
 }
 
-export function createChannel(title = (Math.random() * 1000).toFixed(0), options) {
+export function createChannel(title = (Math.random() * 1000).toFixed(0), options?: LimiterOptions) {
   const { master } = useAudio()
   const channel = new Limiter(options).connect(master.limiter)
   channels[title] = channel

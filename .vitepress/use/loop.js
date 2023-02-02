@@ -1,5 +1,5 @@
 import { reactive, computed, watch, watchEffect, onBeforeUnmount } from 'vue'
-import { tempo } from "#/use/tempo.js";
+import { tempo } from "#/use/tempo";
 import { rotateArray } from "#/use/calculations";
 import { globalScale } from "#/use/chroma";
 import {

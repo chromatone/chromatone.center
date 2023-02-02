@@ -1,6 +1,6 @@
 import { Writer, Track, NoteEvent } from "midi-writer-js";
 import { Midi } from "@tonejs/midi";
-import { tempo } from "#/use/tempo.js";
+import { tempo } from "#/use/tempo";
 let notes = ["C", "E", "G", "B", "D", "F", "A", "C#", "D#", "F#", "G#", "A#"];
 
 export function renderMidi(tracks) {
@@ -8,7 +8,7 @@ export function renderMidi(tracks) {
   tracks.forEach((track, t) => {
     let division = 512 / track.metre.under;
     let midiTrack = new Track();
-    midiTrack.setTempo(tempo.bpm,0);
+    midiTrack.setTempo(tempo.bpm as number, 0);
     midiTrack.addInstrumentName("116");
     midiTrack.addTrackName("Chromatone beat " + t);
     midiTrack.setTimeSignature(4, 4);
@@ -23,9 +23,9 @@ export function renderMidi(tracks) {
         }
         midiTrack.addEvent(
           new NoteEvent({
-            pitch:( track.accents[s]
+            pitch: (track.accents[s]
               ? notes[t * 2] + "2"
-              : notes[t * 2 + 1] + "2") as 'C2' ,
+              : notes[t * 2 + 1] + "2") as 'C2',
             duration: `T${subdivision}`,
             startTick: division * beat + subStep,
             velocity: track.accents[s] || track.accents[code] ? 100 : 64,

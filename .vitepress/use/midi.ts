@@ -2,8 +2,8 @@ import { useStorage } from '@vueuse/core';
 import { useClamp } from '@vueuse/math';
 import { reactive, computed, watchEffect, onMounted, ref, watch } from 'vue'
 
-import { WebMidi, Note, Forwarder,  } from "webmidi"
-import type {Input, Output, Event, Message, MessageEvent} from 'webmidi'
+import { WebMidi, Note, Forwarder, } from "webmidi"
+import type { Input, Output, Event, Message, MessageEvent } from 'webmidi'
 import { setupKeyboard } from './keyboard'
 import Ola from "ola";
 
@@ -22,9 +22,9 @@ export interface MidiInterface {
     note: null,
     cc: {
       channel: number
-      timestamp:number
-      number:number
-      value:number
+      timestamp: number
+      number: number
+      value: number
       raw: number
       port: string
     },
@@ -36,7 +36,7 @@ export interface MidiInterface {
     name: string
     manufacturer: string
   }>
-  forwards: Record<string, Record<string,boolean>>
+  forwards: Record<string, Record<string, boolean>>
   channels: Record<number, { notes: {}, activeNotes: {}, cc: {} }>
   activeNotes: Record<number, boolean>
   note: {
@@ -50,14 +50,15 @@ export interface MidiInterface {
   }
   offset: number
   time?: number
-  clock?:number
+  clock?: number
   log: MessageEvent[]
   message: Message
   filter?: {}
   channel: number
+  stopAll: Function
 }
 
-export const midi:MidiInterface = reactive({
+export const midi: MidiInterface = reactive({
   enabled: false,
   initiated: false,
   playing: false,
@@ -98,7 +99,7 @@ export const midi:MidiInterface = reactive({
     }
     return chroma
   }),
-  stopAll: stopAll
+  stopAll
 });
 
 export function learnCC({ number, channel }: {
@@ -314,7 +315,7 @@ function ccIn(ev) {
   return cc;
 }
 
-function createChannel(ch:number) {
+function createChannel(ch: number) {
   if (!midi.channels[ch]) {
     midi.channels[ch] = reactive({ num: ch, activeNotes: {}, notes: {}, cc: {} });
   }

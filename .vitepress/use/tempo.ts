@@ -1,19 +1,51 @@
-import { reactive, computed, watch, onMounted, shallowReactive } from "vue";
-import { Transport, start, Frequency, Loop, Sampler, gainToDb, Draw } from "tone";
+import { reactive, computed, watch, onMounted, shallowReactive, Ref } from "vue";
+import { Transport, start, Frequency, Loop, Sampler, gainToDb, Draw, Time } from "tone";
 import { freqPitch } from "#/use/calculations";
 import { noteColor } from '#/use/colors'
 import { Note } from "@tonaljs/tonal";
-import { useStorage, onKeyStroke, useRafFn } from "@vueuse/core";
+import { useStorage, onKeyStroke, useRafFn, RemovableRef } from "@vueuse/core";
 import { createChannel } from '#/use/audio'
 import { useClamp } from "@vueuse/math";
 import { WebMidi } from "webmidi";
 import { midi } from "./midi";
 
+export interface Tempo {
+  initialized: boolean
+  bpm: number
+  hz: string | Ref<string>
+  note: string | Ref<string>
+  digit: number | Ref<number>
+  color: string | Ref<string>
+  clock?: number
+  midiClock: boolean | RemovableRef<boolean>
+  blink: boolean
+  started: boolean
+  playing: boolean
+  stopped: boolean | number
+  mute: boolean | RemovableRef<boolean>
+  volume: number | RemovableRef<number>
+  progress: number
+  position: string
+  ticks: number
+  set: (diff: number) => void
+  metre: {
+    over: number
+    under: number
+    num: string | Ref<string>
+  }
+  tap: {
+    last: number
+    diff: number
+    times: number[]
+    timeout: number
+    bpm: number
+    tap: Function
+  }
+}
 
-
-export const tempo = reactive({
+export const tempo: Tempo = reactive({
   initialized: false,
-  bpm: useClamp(useStorage("tempo-bpm", 100), 10, 500),
+  bpm: useClamp(useStorage("tempo-bpm", 100), 10, 500) as unknown as number,
   clock: null,
   midiClock: useStorage("midi-clock-out", false),
   blink: false,
@@ -23,7 +55,7 @@ export const tempo = reactive({
   mute: useStorage("tempo-mute", true),
   volume: useClamp(useStorage("tempo-volume", 0.5), 0, 1),
   progress: 0,
-  position: 0,
+  position: null,
   ticks: 0,
   metre: {
     over: 4,
@@ -32,33 +64,36 @@ export const tempo = reactive({
       (tempo.metre.over / (tempo.metre.under / 4)).toFixed(2)
     ),
   },
-  hz: computed(() => (tempo.bpm / 60).toFixed(2)),
-  note: computed(() => Note.pitchClass(Frequency(tempo.hz).toNote())),
+  hz: computed(() => (tempo.bpm as number / 60).toFixed(2)),
+  note: computed(() => Note.pitchClass(Frequency(tempo.hz as string).toNote())),
   tune: computed(() => {
-    return Note.pitchClass(tempo.note) + 4;
+    return Note.pitchClass(tempo.note as string) + 4;
   }),
   pitch: computed(() => freqPitch(tempo.hz)),
-  digit: computed(() => (Frequency(tempo.hz).toMidi() + 12 * 10 + 3) % 12),
-  color: computed(() => noteColor(tempo.digit)),
+  digit: computed(() => (Frequency(tempo.hz as string).toMidi() + 12 * 10 + 3) % 12),
+  color: computed(() => noteColor(tempo.digit as number)),
   tap: {
     last: 0,
     diff: 0,
     timeout: 2000,
     times: [],
     bpm: null,
+    tap
   },
-  set(diff) {
-    tempo.bpm = Math.round(diff + tempo.bpm)
+  set(diff: number) {
+    tempo.bpm = Math.round(diff + (tempo.bpm as number))
   }
 });
-
-
 
 export function useTempo() {
   if (tempo.initialized) return tempo
 
   const metro = shallowReactive({
-    counter: 0
+    counter: 0,
+    pluck: null,
+    channel: null,
+    clock: null,
+    loop: null
   })
 
   onMounted(() => {
@@ -71,10 +106,8 @@ export function useTempo() {
         E2: "/logic/low.wav",
       },
       volume: -20,
-      envelope: {
-        attack: 0.001,
-        release: 2,
-      },
+      attack: 0.001,
+      release: 2,
       baseUrl: "/audio/metronome/",
     }).connect(channel)
 
@@ -104,30 +137,32 @@ export function useTempo() {
     }, "8n").start(0);
 
     useRafFn(() => {
-      tempo.position = Transport.position;
+      tempo.position = Transport.position as string;
       tempo.ticks = Transport.ticks;
       tempo.progress = metro.loop.progress
     })
 
     onKeyStroke(" ", (ev) => {
-      if (ev.target.nodeName == 'TEXTAREA') return;
+      const elem = ev.target as HTMLElement
+      if (["TEXTAREA", "INPUT"].includes(elem.nodeName)) return;
       ev.preventDefault()
       tempo.playing = !tempo.playing;
     });
 
     onKeyStroke("Enter", (ev) => {
-      if (ev.target.nodeName == "TEXTAREA") return;
+      const elem = ev.target as HTMLElement
+      if (["TEXTAREA", "INPUT"].includes(elem.nodeName)) return;
       ev.preventDefault();
       tempo.stopped = Date.now();
     });
 
   });
 
-  watch(() => tempo.volume, () => metro.pluck.volume.rampTo(gainToDb(tempo.volume)))
+  watch(() => tempo.volume, (volume) => metro.pluck.volume.rampTo(gainToDb(volume as number)))
 
   watch(
     () => tempo.bpm,
-    (bpm) => Transport.bpm.rampTo(bpm, "4n"),
+    (bpm) => Transport.bpm.rampTo(bpm as number, "4n"),
     { immediate: true }
   );
 

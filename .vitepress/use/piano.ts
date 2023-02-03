@@ -2,7 +2,7 @@ import { Sampler, start, now } from 'tone'
 import { createChannel } from '#/use/audio'
 
 
-let piano
+let piano: Sampler
 
 export function usePiano() {
   init()
@@ -53,17 +53,17 @@ export function init() {
 
 }
 
-export function pianoOnce(note = 'A4', duration = '8n', time) {
+export function pianoOnce(note = 'A4', duration = '8n', time: string) {
   if (!piano) return init()
   piano.triggerAttackRelease(note, duration, time)
 }
 
-export function pianoAttack(note, velocity) {
+export function pianoAttack(note = "A4", velocity: number) {
   if (!piano) return init()
   piano.triggerAttack(note, now(), velocity)
 }
 
-export function pianoRelease(note) {
+export function pianoRelease(note = "A4") {
   if (!piano) return init()
   piano.triggerRelease(note)
 }

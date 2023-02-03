@@ -69,7 +69,7 @@ export const tempo: Tempo = reactive({
   tune: computed(() => {
     return Note.pitchClass(tempo.note as string) + 4;
   }),
-  pitch: computed(() => freqPitch(tempo.hz)),
+  pitch: computed(() => freqPitch(Number(tempo.hz))),
   digit: computed(() => (Frequency(tempo.hz as string).toMidi() + 12 * 10 + 3) % 12),
   color: computed(() => noteColor(tempo.digit as number)),
   tap: {

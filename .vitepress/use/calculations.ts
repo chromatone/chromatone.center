@@ -1,6 +1,6 @@
 export const midiA = 69
 
-export function pitchNoteOctave(pitch) {
+export function pitchNoteOctave(pitch: number) {
   return {
     note: pitch > 0 ? pitch % 12 : 12 + (pitch % 12),
     octave: Math.floor(pitch / 12) + 4,
@@ -25,7 +25,7 @@ export function pitchFreq(
   return hz
 }
 
-export function pitchColor(pitch = 0, octave, velocity = 1, alpha = 1) {
+export function pitchColor(pitch = 0, octave?: number, velocity = 1, alpha = 1) {
   if (octave === undefined) {
     octave = Math.floor(pitch / 12) + 4
   }
@@ -33,12 +33,12 @@ export function pitchColor(pitch = 0, octave, velocity = 1, alpha = 1) {
     }%,${alpha})`
 }
 
-export function freqColor(freq) {
+export function freqColor(freq: number) {
   return pitchColor(freqPitch(freq))
 }
 
-export function freqPitch(freq, middleA = 440) {
-  return 12 * (Math.log(freq / middleA) / Math.log(2))
+export function freqPitch(freq: number | string, middleA = 440) {
+  return 12 * (Math.log(Number(freq) / middleA) / Math.log(2))
 }
 
 export function isInChroma(chroma, tonic, note) {
@@ -53,15 +53,15 @@ export function getCircleCoord(n = 0, total = 12, radius = 35, width = 100) {
   return { x, y }
 }
 
-export function rotateArray(arr, count = 1) {
+export function rotateArray(arr: any[], count = 1) {
   return [...arr.slice(count, arr.length), ...arr.slice(0, count)]
 }
 
-export function clampNum(main, delta, min = 0, max = 100) {
+export function clampNum(main: number, delta: number, min = 0, max = 100) {
   return Math.max(min, Math.min(Number(main) + Number(delta), max));
 }
 
-export function getCents(frequency, pitch) {
+export function getCents(frequency: number, pitch: number) {
   return Math.floor(
     (1200 * Math.log(frequency / getStandardFrequency(pitch))) / Math.log(2)
   );

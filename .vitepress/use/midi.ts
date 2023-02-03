@@ -42,6 +42,7 @@ export interface MidiInterface {
   note: {
     pitch: number
     channel: number
+    velocity?: number
   }
   cc?: {
     channel?: number
@@ -71,7 +72,8 @@ export const midi: MidiInterface = reactive({
   channel: useStorage("global-midi-channel", 1),
   note: {
     pitch: 0,
-    channel: 1
+    channel: 1,
+    velocity: 0,
   },
   offset: useClamp(0, -2, 2),
   keyboard: true,
@@ -300,7 +302,14 @@ function noteInOn(ev) {
 }
 
 
-function ccIn(ev) {
+function ccIn(ev): {
+  channel: number;
+  timestamp: number;
+  number: number;
+  value: number;
+  raw: number;
+  port: string;
+} {
   if (midi.filter[ev.target.number]) return;
   let cc = {
     channel: ev.target.number,
@@ -339,7 +348,7 @@ export function midiAttack(note, options) {
   });
 }
 
-export function midiPlay(note, options) {
+export function midiPlay(note: string, options?: {}) {
   if (!midi.out) return;
   WebMidi.outputs.forEach((output) => {
     output.playNote(note, {
@@ -349,7 +358,7 @@ export function midiPlay(note, options) {
   });
 }
 
-export function midiStop(note, options) {
+export function midiStop(note: string, options?: {}) {
   if (!midi.out) return;
   if (note) {
     WebMidi.outputs.forEach((output) => {
@@ -380,7 +389,7 @@ export function midiRelease(note) {
   }
 }
 
-export function midiOnce(note, options) {
+export function midiOnce(note: string, options?: {}) {
   if (!midi.out || midi.filter[midi.channel]) return;
   midiPlay(note, options);
   setTimeout(() => {

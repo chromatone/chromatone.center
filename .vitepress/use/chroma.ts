@@ -37,17 +37,18 @@ function getChromaNotes(chroma = "100010010000", tonic = globalScale.tonic) {
   return Note.sortedNames(filtered);
 }
 
-export function playChromaOnce(chroma, tonic) {
+export function playChromaOnce(chroma: string, tonic: number) {
   let notes = getChromaNotes(chroma, tonic);
 
   notes.forEach((name) => {
     midiOnce(name);
   });
+  //@ts-expect-error conver synth to ts first
   synthOnce(notes, "4n");
   // pianoOnce(notes, '4n')
 }
 
-export function playChroma(chroma, tonic) {
+export function playChroma(chroma: string, tonic: number): void {
   let notes = getChromaNotes(chroma, tonic);
   notes.forEach((name) => {
     midiPlay(name);

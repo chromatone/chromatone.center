@@ -3,7 +3,7 @@ import { Transport, start, Frequency, Loop, Sampler, gainToDb, Draw, Time } from
 import { freqPitch } from "#/use/calculations";
 import { noteColor } from '#/use/colors'
 import { Note } from "@tonaljs/tonal";
-import { useStorage, onKeyStroke, useRafFn, RemovableRef } from "@vueuse/core";
+import { useStorage, onKeyStroke, useRafFn, RemovableRef, MaybeComputedRef } from "@vueuse/core";
 import { createChannel } from '#/use/audio'
 import { useClamp } from "@vueuse/math";
 import { WebMidi } from "webmidi";
@@ -12,18 +12,18 @@ import { midi } from "./midi";
 export interface Tempo {
   initialized: boolean
   bpm: number
-  hz: string | Ref<string>
-  note: string | Ref<string>
-  digit: number | Ref<number>
-  color: string | Ref<string>
+  hz: MaybeComputedRef<string>
+  note: MaybeComputedRef<string>
+  digit: MaybeComputedRef<number>
+  color: MaybeComputedRef<string>
   clock?: number
-  midiClock: boolean | RemovableRef<boolean>
+  midiClock: MaybeComputedRef<boolean>
   blink: boolean
   started: boolean
   playing: boolean
   stopped: boolean | number
-  mute: boolean | RemovableRef<boolean>
-  volume: number | RemovableRef<number>
+  mute: MaybeComputedRef<boolean>
+  volume: MaybeComputedRef<number>
   progress: number
   position: string
   ticks: number
@@ -31,7 +31,7 @@ export interface Tempo {
   metre: {
     over: number
     under: number
-    num: string | Ref<string>
+    num: MaybeComputedRef<string>
   }
   tap: {
     last: number

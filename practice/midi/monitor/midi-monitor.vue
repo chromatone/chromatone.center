@@ -3,18 +3,10 @@ import midiNote from './note.vue'
 import midiCc from './cc.vue'
 import { ref } from 'vue';
 
-import { useMidi } from '#/use/midi'
+import { useMidi, sortNotes } from '#/use/midi'
 const active = ref(false)
 
 const { midi, midiAttack, midiRelease, setCC } = useMidi();
-
-function sortNotes(notes) {
-  if (!notes) return []
-  let arr = Object.values(notes)
-  return arr.sort((a, b) => {
-    return a.number > b.number ? -1 : 1
-  })
-}
 
 </script>
 

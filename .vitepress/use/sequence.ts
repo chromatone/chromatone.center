@@ -17,6 +17,7 @@ import { rotateArray } from "#/use/calculations";
 import { MaybeComputedRef, useStorage } from '@vueuse/core';
 import { useClamp } from '@vueuse/math';
 import { Time } from 'tone/build/esm/core/type/Units';
+import { mic } from './mic';
 
 export interface ClickSampler {
   started: boolean
@@ -56,24 +57,43 @@ export function useSequence(
   mode = "bar"
 ) {
 
+  let sequence: Sequence
+
   const seq = reactive({
-    meter: useStorage(`tempo-loop-${order}-${mode}`, initial),
+    meter: {
+      over: useClamp(4, 1, 128),
+      under: useClamp(4, 1, 128),
+      sound: useStorage(`tempo-loop-${order}-${mode}-sound`, 'A'),
+      volume: useClamp(1, 0, 1),
+    },
+
     current: '0-0',
+
     steps: [["0-1"], ["1-1"], ["2-1"], ["3-1"]],
+
     mutes: useStorage(`metro-${mode}-mutes-${order}`, []),
+
     accents: useStorage(`metro-${mode}-accents-${order}`, [true]),
+
     volume: useClamp(useStorage(`metro-${mode}-vol-${order}`, initial?.volume || 1), 0, 1),
+
     pan: useClamp(useStorage(`metro-${mode}-pan-${order}`, order % 2 == 1 ? -0.5 : 0.5), -1, 1),
+
     mutesCount: computed(() => seq.mutes.reduce((acc: number, val: number) => {
       if (!val) { acc++ }
       return acc
     }, 0)),
+
     activeSteps: computed(() => {
       return seq.steps.filter((step: string[]) => !seq.mutes[step[0].split('-')[0]]).map((step: string[]) => Number(step[0].split('-')[0]))
     }),
+
     currentSeq: computed(() => seq.mutes.reduce((acc: string, val: any): string => val ? acc + '0' : acc + '1', '')),
+
     euclidSeq: computed(() => seq.mutesCount > 0 && seq.mutesCount < seq.steps.length ? getEuclideanRhythm(seq.mutesCount, seq.steps.length).join('') : new Array(seq.steps.length).fill('1').join('')),
+
     isEuclidean: computed(() => seq.euclidSeq == seq.currentSeq),
+
     reset() {
       let arr = []
       seq.euclidSeq.split('').forEach((e: boolean, i: string | number) => {
@@ -81,25 +101,19 @@ export function useSequence(
       })
       seq.mutes = arr
     },
+
     rotateAccents(num: number) {
       seq.accents = rotateArray(seq.accents, num);
       seq.mutes = rotateArray(seq.mutes, num);
     }
+
   })
 
   tracks[order] = seq;
 
-  let sequence = new Sequence(
-    (time, step) => {
-      beatClick(step, time);
-    },
-    seq.steps,
-    seq.meter.under + "n"
-  ).start(0);
-
   seq.progress = computed(() => {
     if (tempo.ticks) {
-      return sequence.progress;
+      return sequence?.progress;
     } else {
       return 0;
     }
@@ -108,15 +122,14 @@ export function useSequence(
   watch(
     () => seq?.meter?.under,
     () => {
-      sequence.stop().dispose();
+      sequence?.stop()?.dispose();
       sequence = new Sequence(
-        (time, step) => {
-          beatClick(step, time);
-        },
+        beatClick,
         seq.steps,
         seq.meter.under + "n"
       ).start(0);
-    }
+    },
+    { immediate: true }
   );
 
   watch(
@@ -131,13 +144,19 @@ export function useSequence(
     { immediate: true }
   );
 
+  /**
+   * Updates sequence steps when seq.steps change and it triggers the accents and mutes to follow the steps length. 
+   * Mutes are filled with false values - it means these notes will be active.
+   */
   watchEffect(() => {
+
     sequence.events = seq.steps;
     seq.accents.length = seq.steps.length;
+
     const muteL = seq.mutes.length
     seq.mutes.length = seq.steps.length;
     if (muteL < seq.steps.length) {
-      seq.mutes.fill(true, muteL)
+      seq.mutes.fill(false, muteL)
     }
 
   });
@@ -174,60 +193,15 @@ export function useSequence(
       release: 2,
       baseUrl: "/audio/metronome/",
     }),
-    mic: new UserMedia(1),
-    meter: new Meter(),
-    recorder: new Recorder(),
+
+
+
   });
 
   audio.synth.connect(audio.panner);
   audio.panner.connect(audio.channel);
 
-  audio.mic.connect(audio.meter);
-  audio.meter.connect(audio.recorder);
-
-
-  const sampler: ClickSampler = reactive({
-    started: false,
-    recording: false,
-    main: false,
-    accent: false,
-    both: computed((): boolean => sampler.main && sampler.accent),
-    async load(pos = "main", blob: Blob) {
-      let arr = await blob.arrayBuffer();
-      let buff = await audio.recorder.context.decodeAudioData(arr);
-      audio.synth.add(pos == "main" ? "F1" : "F2", buff);
-      sampler[pos] = true;
-      sampler.recording = false;
-    },
-    async rec(pos = "main") {
-
-      if (!sampler.recording) {
-        if (!sampler.started) {
-          audio.mic
-            .open()
-            .then(() => {
-              sampler.started = true
-              sampler.recording = pos;
-              audio.recorder.start();
-            })
-            .catch(() => {
-              console.log("mic not open");
-            });
-        } else {
-          sampler.recording = pos;
-          audio.recorder.start();
-        }
-
-      } else {
-        let blob = await audio.recorder.stop();
-        let arr = await blob.arrayBuffer();
-        let buff = await audio.recorder.context.decodeAudioData(arr);
-        audio.synth.add(pos == "main" ? "F1" : "F2", buff);
-        sampler[pos] = true;
-        sampler.recording = false;
-      }
-    },
-  });
+  const { sampler, micRec } = useSampler(audio.synth)
 
   watch(
     () => seq.meter.sound,
@@ -256,7 +230,7 @@ export function useSequence(
   );
 
 
-  function beatClick(step: string, time: Time) {
+  function beatClick(time: Time, step: string) {
     if (context.state == "suspended") {
       start();
     }
@@ -278,16 +252,70 @@ export function useSequence(
 
   onBeforeUnmount(() => {
     sequence.stop().dispose();
-    audio.panner.dispose();
-    audio.synth.dispose();
-    audio.recorder.dispose();
-    audio.channel.dispose()
+    [audio, micRec].forEach(c => {
+      Object.values(c).forEach(n => n.dispose())
+    })
+
   });
 
   return {
     sampler,
     seq,
   };
+}
+
+function useSampler(synth: Sampler) {
+  const micRec = {
+    mic: new UserMedia(1),
+    meter: new Meter(),
+    recorder: new Recorder(),
+  }
+  micRec.mic.connect(micRec.meter);
+  micRec.meter.connect(micRec.recorder);
+
+  const sampler: ClickSampler = reactive({
+    started: false,
+    recording: false,
+    main: false,
+    accent: false,
+    both: computed((): boolean => sampler.main && sampler.accent),
+    async load(pos = "main", blob: Blob) {
+      let arr = await blob.arrayBuffer();
+      let buff = await micRec.recorder.context.decodeAudioData(arr);
+      synth.add(pos == "main" ? "F1" : "F2", buff);
+      sampler[pos] = true;
+      sampler.recording = false;
+    },
+    async rec(pos = "main") {
+
+      if (!sampler.recording) {
+        if (!sampler.started) {
+          micRec.mic
+            .open()
+            .then(() => {
+              sampler.started = true
+              sampler.recording = pos;
+              micRec.recorder.start();
+            })
+            .catch(() => {
+              console.log("mic not open");
+            });
+        } else {
+          sampler.recording = pos;
+          micRec.recorder.start();
+        }
+
+      } else {
+        let blob = await micRec.recorder.stop();
+        let arr = await blob.arrayBuffer();
+        let buff = await micRec.recorder.context.decodeAudioData(arr);
+        synth.add(pos == "main" ? "F1" : "F2", buff);
+        sampler[pos] = true;
+        sampler.recording = false;
+      }
+    },
+  });
+  return { sampler, micRec }
 }
 
 function _getEuclideanRhythm(m: number, k: number, input: number[]): number[] {

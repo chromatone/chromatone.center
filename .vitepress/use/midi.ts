@@ -2,8 +2,8 @@ import { useStorage } from '@vueuse/core';
 import { useClamp } from '@vueuse/math';
 import { reactive, computed, watchEffect, onMounted, ref, watch } from 'vue'
 
-import { WebMidi, Note, Forwarder, } from "webmidi"
-import type { Input, Output, Event, Message, MessageEvent } from 'webmidi'
+import { WebMidi, Note, Forwarder, ControlChangeMessageEvent, } from "webmidi"
+import type { Input, Output, Event, Message, MessageEvent, InputChannel } from 'webmidi'
 import { setupKeyboard } from './keyboard'
 import Ola from "ola";
 
@@ -19,7 +19,7 @@ export interface MidiInterface {
     manufacturer: string,
     forwarder: Forwarder,
     clock: number,
-    note: null,
+    note: ChromaNote,
     cc: {
       channel: number
       timestamp: number
@@ -57,6 +57,10 @@ export interface MidiInterface {
   filter?: {}
   channel: number
   stopAll: Function
+  attack: Function,
+  release: Function,
+  once: Function,
+  setCC: Function,
 }
 
 export const midi: MidiInterface = reactive({
@@ -101,7 +105,11 @@ export const midi: MidiInterface = reactive({
     }
     return chroma
   }),
-  stopAll
+  stopAll,
+  attack: midiAttack,
+  release: midiRelease,
+  once: midiOnce,
+  setCC
 });
 
 export function learnCC({ number, channel }: {
@@ -126,9 +134,11 @@ export function playKey(name: string, offset = 0, off?: boolean, velocity: numbe
   const ev = {
     type: off ? "noteoff" : "noteon",
     note,
-    port: { id: "PC Keyboard" },
+    port: { id: "PC Keyboard" } as Input,
     timestamp: midi.time,
-    target: { number: 0 },
+    target: { number: 0 } as InputChannel,
+    channel: 0,
+    message: {} as Message
   };
   noteInOn(ev);
 }
@@ -278,12 +288,39 @@ function initMidi() {
   });
 }
 
-function noteInOn(ev) {
-  let note = ev.note;
-  note.port = ev.port.id;
-  note.type = ev.type;
-  note.timestamp = ev.timestamp;
-  note.channel = ev.target.number;
+export interface NoteMessageEvent extends MessageEvent {
+  channel: number;
+  note: Note;
+  port: Input;
+  target: Input | InputChannel;
+}
+
+export interface ChromaNote {
+  port: string
+  type: string
+  timestamp: number
+  channel: number
+  number: number
+  velocity: number
+  pitch: number
+  octA: number
+}
+
+function noteInOn(ev: NoteMessageEvent) {
+
+  const note: ChromaNote = {
+    ...ev.note,
+    port: ev.port.id,
+    type: ev.type,
+    timestamp: ev.timestamp,
+    //@ts-expect-error type bug?
+    channel: ev.target.number,
+    velocity: 0,
+    number: ev.note.number,
+    pitch: (ev.note.number + 3) % 12,
+    octA: Math.floor((ev.note.number + 3) / 12) - 1,
+  };
+
   if (midi.filter[note.channel]) return;
   createChannel(note.channel);
   midi.channels[note.channel].notes[note.number] = note;
@@ -294,27 +331,25 @@ function noteInOn(ev) {
     note.velocity = 120 * (ev.note.attack || 1);
     midi.channels[note.channel].activeNotes[note.number] = true
   }
-  note.pitch = (note.number + 3) % 12;
-  note.octA = Math.floor((note.number + 3) / 12) - 1;
   midi.note = note;
   return note;
 }
 
 
-function ccIn(ev): {
-  channel: number;
-  timestamp: number;
-  number: number;
-  value: number;
-  raw: number;
-  port: string;
+function ccIn(ev: ControlChangeMessageEvent): {
+  channel: number
+  timestamp: number
+  number: number
+  value: number
+  raw: number
+  port: string
 } {
-  if (midi.filter[ev.target.number]) return;
+  if (midi.filter[ev.controller.number]) return;
   let cc = {
-    channel: ev.target.number,
+    channel: ev.controller.number,
     timestamp: ev.timestamp,
     number: ev.controller.number,
-    value: ev.value,
+    value: Number(ev.value),
     raw: ev.rawValue,
     port: ev.port.id,
   };
@@ -329,13 +364,13 @@ function createChannel(ch: number) {
   }
 }
 
-function setVelocity(channel, note, velocity) {
+function setVelocity(channel: number, note: string | number, velocity: number) {
   if (midi.channels?.[channel]?.notes?.[note]) {
     midi.channels[channel].notes[note].velocity = velocity;
   }
 }
 
-export function midiAttack(note, options) {
+export function midiAttack(note: { channel: number; number: string | number }, options: { channels?: number | number[]; duration?: number; attack?: number; rawAttack?: number; release?: number; rawRelease?: number; time?: string | number; }) {
   if (!midi.out) return;
   let channel = note?.channel || midi.channel;
   setVelocity(channel, note?.number, 100);
@@ -347,7 +382,7 @@ export function midiAttack(note, options) {
   });
 }
 
-export function midiPlay(note: string, options?: {}) {
+export function midiPlay(note: string | number | number[] | Note | string[] | Note[], options?: { duration?: number; attack?: any; channels?: number | number[]; rawAttack?: number; release?: number; rawRelease?: number; time?: string | number; }) {
   if (!midi.out) return;
   WebMidi.outputs.forEach((output) => {
     output.playNote(note, {
@@ -357,7 +392,7 @@ export function midiPlay(note: string, options?: {}) {
   });
 }
 
-export function midiStop(note: string, options?: {}) {
+export function midiStop(note?: string | number | number[] | Note | string[] | Note[], options?: { channels?: number | number[]; release?: number; rawRelease?: number; time?: string | number; }) {
   if (!midi.out) return;
   if (note) {
     WebMidi.outputs.forEach((output) => {
@@ -372,7 +407,7 @@ export function midiStop(note: string, options?: {}) {
   }
 }
 
-export function midiRelease(note) {
+export function midiRelease(note: { channel: number; number: string | number }) {
   if (!midi.out) return;
   if (note) {
     let channel = note?.channel || midi.channel;
@@ -388,7 +423,7 @@ export function midiRelease(note) {
   }
 }
 
-export function midiOnce(note: string, options?: {}) {
+export function midiOnce(note: string | number | number[] | Note | string[] | Note[], options?: { duration?: number; attack?: any; channels: number | number[]; rawAttack?: number; release: number; rawRelease: number; time: string | number; }) {
   if (!midi.out || midi.filter[midi.channel]) return;
   midiPlay(note, options);
   setTimeout(() => {
@@ -396,7 +431,7 @@ export function midiOnce(note: string, options?: {}) {
   }, 300);
 }
 
-export function setCC(cc, value) {
+export function setCC(cc: { number: number | string; channel: { channels?: number | number[]; time?: string | number; }; }, value: number) {
   if (!midi.out) return;
   WebMidi.outputs.forEach((output) => {
     output.sendControlChange(Number(cc.number), value, cc.channel);
@@ -436,3 +471,14 @@ export function forwardMidi(iid: string, oid: string) {
 }
 
 
+export function sortNotes(notes: Note, reverse = false) {
+  if (!notes) return []
+  let arr = Object.values(notes)
+  return arr.sort((a, b) => {
+    let diff = a.number > b.number ? -1 : 1
+    if (reverse) {
+      diff *= -1
+    }
+    return diff
+  })
+}

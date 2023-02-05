@@ -72,9 +72,10 @@
 	"devDependencies": {
 		"@iconify/json": "^2.2.16",
 		"@tauri-apps/cli": "2.0.0-alpha.2",
+		"@typescript-eslint/parser": "^5.50.0",
 		"@typescript-eslint/eslint-plugin": "^5.50.0",
 		"@unocss/extractor-pug": "^0.49.4",
-		"@volar/vue-language-plugin-pug": "1.0.24",
+		"@volar/vue-language-plugin-pug": "latest",
 		"eslint": "^8.33.0",
 		"eslint-plugin-vue": "^9.9.0",
 		"eslint-plugin-vue-pug": "^0.5.5",

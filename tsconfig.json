@@ -13,7 +13,7 @@
 		"moduleResolution": "node",
 		"resolveJsonModule": true,
 		"allowJs": true,
-		"isolatedModules": true,
+		"isolatedModules": false,
 		"declaration": true,
 		"emitDeclarationOnly": true,
 		"declarationMap": true,

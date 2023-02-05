@@ -14,7 +14,7 @@ declare module '@vue/runtime-core' {
     AuthorCard: typeof import('./.vitepress/theme/components/author/card.vue')['default']
     AuthorSocial: typeof import('./.vitepress/theme/components/author/social.vue')['default']
     BeatBars: typeof import('./.vitepress/comps/beat/bars/index.vue')['default']
-    BeatBarsBar: typeof import('./.vitepress/comps/beat/bars/bar.vue')['default']
+    BeatBarsBeatBar: typeof import('./.vitepress/comps/beat/bars/beat-bar.vue')['default']
     BeatBarsLoops: typeof import('./.vitepress/comps/beat/bars/loops.js')['default']
     BeatBarsStep: typeof import('./.vitepress/comps/beat/bars/step.vue')['default']
     BeatControlBar: typeof import('./.vitepress/comps/beat/control/bar.vue')['default']

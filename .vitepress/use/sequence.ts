@@ -1,5 +1,5 @@
 import { shallowReactive, reactive, computed, watch, watchEffect, onBeforeUnmount } from 'vue'
-import { tempo } from "#/use/tempo";
+import { tempo } from "./tempo";
 import {
   Sequence,
   PanVol,
@@ -14,8 +14,20 @@ import {
 } from "tone";
 import { createChannel } from '#/use/audio'
 import { rotateArray } from "#/use/calculations";
-import { useStorage } from '@vueuse/core';
+import { MaybeComputedRef, useStorage } from '@vueuse/core';
 import { useClamp } from '@vueuse/math';
+import { Time } from 'tone/build/esm/core/type/Units';
+
+export interface ClickSampler {
+  started: boolean
+  recording: boolean | string
+  main: boolean
+  accent: boolean
+  both: MaybeComputedRef<boolean>
+  load: Function
+  rec: Function
+}
+
 
 
 // List of all sequences
@@ -52,24 +64,24 @@ export function useSequence(
     accents: useStorage(`metro-${mode}-accents-${order}`, [true]),
     volume: useClamp(useStorage(`metro-${mode}-vol-${order}`, initial?.volume || 1), 0, 1),
     pan: useClamp(useStorage(`metro-${mode}-pan-${order}`, order % 2 == 1 ? -0.5 : 0.5), -1, 1),
-    mutesCount: computed(() => seq.mutes.reduce((acc, val) => {
+    mutesCount: computed(() => seq.mutes.reduce((acc: number, val: number) => {
       if (!val) { acc++ }
       return acc
     }, 0)),
     activeSteps: computed(() => {
-      return seq.steps.filter(step => !seq.mutes[step[0].split('-')[0]]).map(step => Number(step[0].split('-')[0]))
+      return seq.steps.filter((step: string[]) => !seq.mutes[step[0].split('-')[0]]).map((step: string[]) => Number(step[0].split('-')[0]))
     }),
-    currentSeq: computed(() => seq.mutes.reduce((acc, val) => val ? acc + '0' : acc + '1', '')),
-    euclidSeq: computed(() => seq.mutesCount > 0 && seq.mutesCount < seq.steps.length ? getEuclideanRhythm(seq.mutesCount, seq.steps.length) : new Array(seq.steps.length).fill('1').join('')),
+    currentSeq: computed(() => seq.mutes.reduce((acc: string, val: any): string => val ? acc + '0' : acc + '1', '')),
+    euclidSeq: computed(() => seq.mutesCount > 0 && seq.mutesCount < seq.steps.length ? getEuclideanRhythm(seq.mutesCount, seq.steps.length).join('') : new Array(seq.steps.length).fill('1').join('')),
     isEuclidean: computed(() => seq.euclidSeq == seq.currentSeq),
     reset() {
       let arr = []
-      seq.euclidSeq.split('').forEach((e, i) => {
+      seq.euclidSeq.split('').forEach((e: boolean, i: string | number) => {
         arr[i] = (e != false && e != null) ? false : true
       })
       seq.mutes = arr
     },
-    rotateAccents(num) {
+    rotateAccents(num: number) {
       seq.accents = rotateArray(seq.accents, num);
       seq.mutes = rotateArray(seq.mutes, num);
     }
@@ -158,10 +170,8 @@ export function useSequence(
     synth: new Sampler({
       urls,
       volume: 1,
-      envelope: {
-        attack: 0.001,
-        release: 2,
-      },
+      attack: 0.001,
+      release: 2,
       baseUrl: "/audio/metronome/",
     }),
     mic: new UserMedia(1),
@@ -175,35 +185,36 @@ export function useSequence(
   audio.mic.connect(audio.meter);
   audio.meter.connect(audio.recorder);
 
-  const recorder = reactive({
+
+  const sampler: ClickSampler = reactive({
     started: false,
     recording: false,
     main: false,
     accent: false,
-    both: computed(() => recorder.main && recorder.accent),
-    async load(pos = "main", blob) {
+    both: computed((): boolean => sampler.main && sampler.accent),
+    async load(pos = "main", blob: Blob) {
       let arr = await blob.arrayBuffer();
       let buff = await audio.recorder.context.decodeAudioData(arr);
       audio.synth.add(pos == "main" ? "F1" : "F2", buff);
-      recorder[pos] = true;
-      recorder.recording = false;
+      sampler[pos] = true;
+      sampler.recording = false;
     },
     async rec(pos = "main") {
 
-      if (!recorder.recording) {
-        if (!recorder.started) {
+      if (!sampler.recording) {
+        if (!sampler.started) {
           audio.mic
             .open()
             .then(() => {
-              recorder.started = true
-              recorder.recording = pos;
+              sampler.started = true
+              sampler.recording = pos;
               audio.recorder.start();
             })
             .catch(() => {
               console.log("mic not open");
             });
         } else {
-          recorder.recording = pos;
+          sampler.recording = pos;
           audio.recorder.start();
         }
 
@@ -212,8 +223,8 @@ export function useSequence(
         let arr = await blob.arrayBuffer();
         let buff = await audio.recorder.context.decodeAudioData(arr);
         audio.synth.add(pos == "main" ? "F1" : "F2", buff);
-        recorder[pos] = true;
-        recorder.recording = false;
+        sampler[pos] = true;
+        sampler.recording = false;
       }
     },
   });
@@ -222,8 +233,8 @@ export function useSequence(
     () => seq.meter.sound,
     (sound) => {
       if (sound != "F") {
-        recorder.main = false;
-        recorder.accent = false;
+        sampler.main = false;
+        sampler.accent = false;
       }
     }
   );
@@ -245,7 +256,7 @@ export function useSequence(
   );
 
 
-  function beatClick(step, time) {
+  function beatClick(step: string, time: Time) {
     if (context.state == "suspended") {
       start();
     }
@@ -258,8 +269,8 @@ export function useSequence(
     let accented = seq.accents[mainStep] && step.split("-")[1] == "1";
     if (seq.mutes[mainStep]) return;
     if (seq.mutes[step]) return;
-    if (seq.meter?.sound == "F" && !accented && !recorder.main) return;
-    if (seq.meter?.sound == "F" && accented && !recorder.accent) return;
+    if (seq.meter?.sound == "F" && !accented && !sampler.main) return;
+    if (seq.meter?.sound == "F" && accented && !sampler.accent) return;
     let note = `${seq.meter?.sound}${accented ? 2 : 1}`;
     audio.synth.triggerAttackRelease(note, seq.meter?.under + "n", time);
     // midiOnce(notes[order * 2] + 3, { time: '+' + time })
@@ -274,12 +285,12 @@ export function useSequence(
   });
 
   return {
-    recorder,
+    sampler,
     seq,
   };
 }
 
-function _getEuclideanRhythm(m, k, input) {
+function _getEuclideanRhythm(m: number, k: number, input: number[]): number[] {
   input = input || new Array(m).fill('1').concat(new Array(k).fill('0'));
   const output = [];
 
@@ -294,6 +305,6 @@ function _getEuclideanRhythm(m, k, input) {
   return output.concat(input);
 }
 
-export function getEuclideanRhythm(x, total) {
-  return _getEuclideanRhythm(x, total - x).join('');
+export function getEuclideanRhythm(x: number, total: number): number[] {
+  return _getEuclideanRhythm(x, total - x, null);
 }

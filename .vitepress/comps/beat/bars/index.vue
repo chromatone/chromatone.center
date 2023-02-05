@@ -1,5 +1,5 @@
 <script setup>
-import BeatBar from './bar.vue'
+import BeatBar from './beat-bar.vue'
 
 import { renderMidi } from '#/use/midiRender'
 import { tracks, maxRatio } from '#/use/sequence'

@@ -1,13 +1,10 @@
 <script setup>
 import BarStep from './step.vue'
-
+import { isDark } from '#/theme/composables/state'
 import { useSequence } from '#/use/sequence'
 import { computed, ref, watch } from 'vue'
 import { noteColor, levelColor } from '#/use/colors'
 import { tempo } from '#/use/tempo'
-
-const width = 920
-const pad = (1000 - width) / 2
 
 const emit = defineEmits(['del', 'sound']);
 
@@ -17,8 +14,11 @@ const props = defineProps({
   maxRatio: { type: Number, default: 1 },
   editable: { type: Boolean, default: false, },
   mute: { type: String, default: null, },
-  accents: { type: String, default: null }
+  accents: { type: String, default: null },
+  width: { type: Number, default: 920 }
 });
+
+const pad = computed(() => (1000 - props.width) / 2)
 
 const { seq } = useSequence(props.loop, props.order, 'bars');
 
@@ -64,7 +64,7 @@ svg.w-full(
   g.meter-bars(
     v-if="editable"
     transform="translate(40,15)"
-  )
+    )
     beat-control-bar.over(
       v-model="seq.meter.over"
       :width="340"

@@ -55,8 +55,9 @@ watch(() => midi.note, note => {
 
 function calcX(time) {
   let fromStart = time - info.first
-  let fullLength = info.last - info.first
-  return (fromStart / fullLength) * map.width
+  let fullLength = (info.last - info.first) || 1
+  let x = (fromStart / fullLength) * map.width
+  return x
 }
 
 function calcY(number) {
@@ -114,29 +115,13 @@ function play() {
       .i-la-trash-alt
     button(@click="download")
       .i-la-download
-  //- .flex.flex-wrap
-  //-   input(type="text" v-model="info.title" placeholder="Title")
-  svg.h-30em.w-full(
-    version="1.1",
-    baseProfile="full",
-    :viewBox="`0 0 ${map.width} ${map.height}`",
-    xmlns="http://www.w3.org/2000/svg",
-  )
-    g(
-      v-for="(track) in info.tracks"
-      :key="track")
-      rect(
-        v-for="note in track.notes"
-        :key="note" 
-        rx="0.4"
-        :x="calcX(note.timestamp)"
-        :y="calcY(note.number)"
-        :width="note.duration * 1000 / (info.last - info.first)"
-        :height="map.height / (info.top - info.bottom)"
-        :fill="noteColor((note.number + 3) % 12)"
-        )
-  //- .flex.flex-wrap
-  //-   .p-1 {{ info.top }} - {{ info.bottom }}
+  // .flex.flex-wrap
+  // input(type="text" v-model="info.title" placeholder="Title")
+  svg.h-30em.w-full(version="1.1" baseProfile="full" :viewBox="`0 0 ${map.width} ${map.height}`" xmlns="http://www.w3.org/2000/svg")
+    g(v-for="(track) in info.tracks" :key="track")
+      rect(v-for="note in track.notes" :key="note" rx="0.4" :x="calcX(note.timestamp)" :y="calcY(note.number)" :width="note.duration * 1000 / (info.last - info.first)" :height="map.height / (info.top - info.bottom)" :fill="noteColor((note.number + 3) % 12)")
+  // .flex.flex-wrap
+  // .p-1 {{ info.top }} - {{ info.bottom }}
 </template>
 
 <style lang="postcss" scoped>

@@ -84,7 +84,7 @@ export const midi: MidiInterface = reactive({
   clock: 0,
   filter: useStorage("global-midi-filter", {}),
   available: computed(() => Object.entries(midi.outputs).length > 0),
-  activeNotes: computed(() => {
+  activeNotes: computed((): { [key: number]: boolean } => {
     let notes = {}
     for (let ch in midi.channels) {
       for (let num in midi.channels[ch].activeNotes) {
@@ -93,7 +93,7 @@ export const midi: MidiInterface = reactive({
     }
     return notes
   }),
-  activeChroma: computed(() => {
+  activeChroma: computed((): number[] => {
     let chroma = new Array(12)
     for (let num in midi.activeNotes) {
       const n = (Number(num) - 9) % 12
@@ -136,9 +136,8 @@ export function playKey(name: string, offset = 0, off?: boolean, velocity: numbe
 export function useMidi() {
   if (!midi.initiated) {
 
-    setupKeyboard()
-
     onMounted(() => {
+      setupKeyboard()
       if (WebMidi.supported) {
         setupMidi();
       }
@@ -416,7 +415,11 @@ export function stopAll() {
   });
   midi.stopped = true
 }
-
+/**
+ * Sets a forwarding route from an Input to an Output
+ * @param iid Input ID
+ * @param oid Output ID
+ */
 export function forwardMidi(iid: string, oid: string) {
   const output = WebMidi.outputs.find((out) => out.id == oid);
   const destinations = midi.inputs[iid].forwarder.destinations;

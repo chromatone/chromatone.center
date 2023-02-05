@@ -5,7 +5,7 @@ import LoopSector from "./loop-sector.vue";
 import BeatControlSector from './sector.vue'
 
 import { getCircleCoord } from "#/use/calculations";
-import { useSequence } from "#/use/sequence.js";
+import { useSequence } from "#/use/sequence";
 import { levelColor } from "#/use/colors.js";
 import { tempo } from "#/use/tempo";
 import { midi } from "#/use/midi";
@@ -20,7 +20,7 @@ const props = defineProps({
 });
 
 const {
-  recorder,
+  sampler,
   seq
 } = useSequence(undefined, props.order, "circle");
 
@@ -103,7 +103,7 @@ g(
       stroke="currentColor"
     )
   g.steps(
-    :opacity="seq.volume"
+    :opacity="seq?.volume"
   )
     g(
       v-for="(step, s) in activeSteps"
@@ -222,8 +222,8 @@ g(
   transition(name="fade")
     beat-recorder(
       :transform="`translate(200 ${800 - order * 220})`" 
-      v-if="soundControl == 5 && !recorder.both"
-      :recorder="recorder"
+      v-if="soundControl == 5 && !sampler.both"
+      :recorder="sampler"
       @close="soundControl--"
     )
 

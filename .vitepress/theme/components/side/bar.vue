@@ -16,10 +16,8 @@ const route = useRoute();
 
 onMounted(() => {
   watch(() => route.data, d => {
-    console.log(d.title)
     const link = document.getElementById(d?.title)
     if (!link) return
-    console.log(link)
     setTimeout(() => {
       link.scrollIntoView({
         behavior: "smooth",

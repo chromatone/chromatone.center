@@ -26,7 +26,7 @@
 		"lib"
 	],
 	"scripts": {
-		"build": "vitepress build",
+		"build": "typedoc && vitepress build",
 		"build-lib": "vite --config vite.config.lib.js build && tsc && typedoc",
 		"deploy": "sh deploy.sh",
 		"dev": "vitepress dev --host --port 3242",

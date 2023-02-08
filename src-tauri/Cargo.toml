@@ -1,6 +1,6 @@
 [package]
 name = "app"
-version = "1.10.6"
+version = "1.10.8"
 description = "Chromatone app"
 authors = ["davay42"]
 license = "MIT"

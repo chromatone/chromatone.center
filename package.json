@@ -37,7 +37,7 @@
 	"dependencies": {
 		"@animxyz/core": "0.6.6",
 		"@animxyz/vue3": "^0.6.7",
-		"@gun-vue/composables": "^0.12.10",
+		"@gun-vue/composables": "^0.13.1",
 		"@stripe/stripe-js": "^1.46.0",
 		"@tonaljs/tonal": "^4.10.0",
 		"@tonejs/midi": "^2.0.28",
@@ -70,10 +70,10 @@
 		"webmidi": "^3.1.4"
 	},
 	"devDependencies": {
-		"@iconify/json": "^2.2.16",
+		"@iconify/json": "^2.2.19",
 		"@tauri-apps/cli": "2.0.0-alpha.2",
-		"@typescript-eslint/parser": "^5.50.0",
-		"@typescript-eslint/eslint-plugin": "^5.50.0",
+		"@typescript-eslint/eslint-plugin": "^5.51.0",
+		"@typescript-eslint/parser": "^5.51.0",
 		"@unocss/extractor-pug": "^0.49.4",
 		"@volar/vue-language-plugin-pug": "latest",
 		"eslint": "^8.33.0",
@@ -83,6 +83,8 @@
 		"markdown-it-external-links": "^0.0.6",
 		"patch-vue-directive-ssr": "^0.0.1",
 		"pug": "3.0.2",
+		"typedoc": "^0.23.24",
+		"typedoc-plugin-markdown": "^3.14.0",
 		"typescript": "^4.9.5",
 		"unocss": "^0.49.4",
 		"unplugin-icons": "^0.15.2",
@@ -90,10 +92,8 @@
 		"vite": "4.1.1",
 		"vite-plugin-pages": "^0.28.0",
 		"vite-plugin-pages-sitemap": "^1.4.5",
-		"vite-plugin-pwa": "^0.14.1",
+		"vite-plugin-pwa": "^0.14.3",
 		"vitepress": "1.0.0-alpha.45",
-		"vue-eslint-parser": "^9.1.0",
-		"typedoc": "^0.23.24",
-		"typedoc-plugin-markdown": "^3.14.0"
+		"vue-eslint-parser": "^9.1.0"
 	}
 }

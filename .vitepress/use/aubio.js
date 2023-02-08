@@ -1,3 +1,8 @@
+/**
+ * @module Aubio
+ * @description The audio analysis library from https://github.com/qiuxiang/aubiojs
+ */
+
 var Aubio = function (Aubio) {
   Aubio = Aubio || {}
 
@@ -72,9 +77,9 @@ var Aubio = function (Aubio) {
         ? (c.arguments = scriptArgs)
         : 'undefined' != typeof arguments && (c.arguments = arguments),
       'function' === typeof quit &&
-        (c.quit = function (a) {
-          quit(a)
-        })
+      (c.quit = function (a) {
+        quit(a)
+      })
   else if (u || v) {
     if (u) {
       var fa = this._currentScript
@@ -109,10 +114,10 @@ var Aubio = function (Aubio) {
     }
   }
   var ha =
-      c.print ||
-      ('undefined' !== typeof console
-        ? console.log.bind(console)
-        : 'undefined' !== typeof print
+    c.print ||
+    ('undefined' !== typeof console
+      ? console.log.bind(console)
+      : 'undefined' !== typeof print
         ? print
         : null),
     x =
@@ -128,13 +133,13 @@ var Aubio = function (Aubio) {
     return Math.ceil(a / b) * b
   }
   var ja = {
-      'f64-rem': function (a, b) {
-        return a % b
-      },
-      debugger: function () {
-        debugger
-      },
+    'f64-rem': function (a, b) {
+      return a % b
     },
+    debugger: function () {
+      debugger
+    },
+  },
     ka = 0
   function assert(a, b) {
     a || y('Assertion failed: ' + b)
@@ -157,8 +162,8 @@ var Aubio = function (Aubio) {
   function ya() {
     y(
       'Cannot enlarge memory arrays. Either (1) compile with  -s TOTAL_MEMORY=X  with X higher than the current value ' +
-        E +
-        ', (2) compile with  -s ALLOW_MEMORY_GROWTH=1  which allows increasing the size at runtime, or (3) if you want malloc to return NULL (0) instead of this abort, compile with  -s ABORTING_MALLOC=0 ',
+      E +
+      ', (2) compile with  -s ALLOW_MEMORY_GROWTH=1  which allows increasing the size at runtime, or (3) if you want malloc to return NULL (0) instead of this abort, compile with  -s ABORTING_MALLOC=0 ',
     )
   }
   var za = c.TOTAL_STACK || 5242880,
@@ -166,25 +171,25 @@ var Aubio = function (Aubio) {
   E < za &&
     x(
       'TOTAL_MEMORY should be larger than TOTAL_STACK, was ' +
-        E +
-        '! (TOTAL_STACK=' +
-        za +
-        ')',
+      E +
+      '! (TOTAL_STACK=' +
+      za +
+      ')',
     )
   c.buffer
     ? (buffer = c.buffer)
     : ('object' === typeof WebAssembly &&
       'function' === typeof WebAssembly.Memory
-        ? ((c.wasmMemory = new WebAssembly.Memory({
-            initial: E / 65536,
-            maximum: E / 65536,
-          })),
-          (buffer = c.wasmMemory.buffer))
-        : (buffer = new ArrayBuffer(E)),
+      ? ((c.wasmMemory = new WebAssembly.Memory({
+        initial: E / 65536,
+        maximum: E / 65536,
+      })),
+        (buffer = c.wasmMemory.buffer))
+      : (buffer = new ArrayBuffer(E)),
       (c.buffer = buffer))
   ra()
   function Aa(a) {
-    for (; 0 < a.length; ) {
+    for (; 0 < a.length;) {
       var b = a.shift()
       if ('function' == typeof b) b()
       else {
@@ -218,7 +223,7 @@ var Aubio = function (Aubio) {
       ? a.startsWith('data:application/octet-stream;base64,')
       : 0 === a.indexOf('data:application/octet-stream;base64,')
   }
-  ;(function () {
+  ; (function () {
     function a() {
       try {
         if (c.wasmBinary) return new Uint8Array(c.wasmBinary)
@@ -231,16 +236,16 @@ var Aubio = function (Aubio) {
     function b() {
       return c.wasmBinary || (!u && !v) || 'function' !== typeof fetch
         ? new Promise(function (b) {
-            b(a())
-          })
+          b(a())
+        })
         : fetch(f, { credentials: 'same-origin' })
-            .then(function (a) {
-              if (!a.ok) throw "failed to load wasm binary file at '" + f + "'"
-              return a.arrayBuffer()
-            })
-            .catch(function () {
-              return a()
-            })
+          .then(function (a) {
+            if (!a.ok) throw "failed to load wasm binary file at '" + f + "'"
+            return a.arrayBuffer()
+          })
+          .catch(function () {
+            return a()
+          })
     }
     function d(a) {
       function d(a) {
@@ -263,7 +268,7 @@ var Aubio = function (Aubio) {
         c.monitorRunDependencies && c.monitorRunDependencies(F)
         0 == F &&
           (null !== Ja && (clearInterval(Ja), (Ja = null)),
-          G && ((a = G), (G = null), a()))
+            G && ((a = G), (G = null), a()))
       }
       function e(a) {
         d(a.instance)
@@ -298,20 +303,20 @@ var Aubio = function (Aubio) {
           )
         }
       c.wasmBinary ||
-      'function' !== typeof WebAssembly.instantiateStreaming ||
-      Ka(f) ||
-      'function' !== typeof fetch
+        'function' !== typeof WebAssembly.instantiateStreaming ||
+        Ka(f) ||
+        'function' !== typeof fetch
         ? g(e)
         : WebAssembly.instantiateStreaming(
-            fetch(f, { credentials: 'same-origin' }),
-            h,
-          )
-            .then(e)
-            .catch(function (a) {
-              x('wasm streaming compile failed: ' + a)
-              x('falling back to ArrayBuffer instantiation')
-              g(e)
-            })
+          fetch(f, { credentials: 'same-origin' }),
+          h,
+        )
+          .then(e)
+          .catch(function (a) {
+            x('wasm streaming compile failed: ' + a)
+            x('falling back to ArrayBuffer instantiation')
+            g(e)
+          })
       return {}
     }
     var e = 'aubio.wast',
@@ -354,13 +359,13 @@ var Aubio = function (Aubio) {
         var e = c.wasmMaxTableSize
         b.table =
           'object' === typeof WebAssembly &&
-          'function' === typeof WebAssembly.Table
+            'function' === typeof WebAssembly.Table
             ? void 0 !== e
               ? new WebAssembly.Table({
-                  initial: a,
-                  maximum: e,
-                  element: 'anyfunc',
-                })
+                initial: a,
+                maximum: e,
+                element: 'anyfunc',
+              })
               : new WebAssembly.Table({ initial: a, element: 'anyfunc' })
             : Array(a)
         c.wasmTable = b.table
@@ -414,69 +419,69 @@ var Aubio = function (Aubio) {
       a = 0
       J.J ||
         ((J.J = [null, [], []]),
-        (J.P = function (a, b) {
-          var d = J.J[a]
-          assert(d)
-          if (0 === b || 10 === b) {
-            a = 1 === a ? ha : x
-            a: {
-              for (var e = (b = 0); d[e]; ) ++e
-              if (16 < e - b && d.subarray && la)
-                b = la.decode(d.subarray(b, e))
-              else
-                for (e = ''; ; ) {
-                  var f = d[b++]
-                  if (!f) {
-                    b = e
-                    break a
-                  }
-                  if (f & 128) {
-                    var k = d[b++] & 63
-                    if (192 == (f & 224))
-                      e += String.fromCharCode(((f & 31) << 6) | k)
-                    else {
-                      var l = d[b++] & 63
-                      if (224 == (f & 240)) f = ((f & 15) << 12) | (k << 6) | l
+          (J.P = function (a, b) {
+            var d = J.J[a]
+            assert(d)
+            if (0 === b || 10 === b) {
+              a = 1 === a ? ha : x
+              a: {
+                for (var e = (b = 0); d[e];) ++e
+                if (16 < e - b && d.subarray && la)
+                  b = la.decode(d.subarray(b, e))
+                else
+                  for (e = ''; ;) {
+                    var f = d[b++]
+                    if (!f) {
+                      b = e
+                      break a
+                    }
+                    if (f & 128) {
+                      var k = d[b++] & 63
+                      if (192 == (f & 224))
+                        e += String.fromCharCode(((f & 31) << 6) | k)
                       else {
-                        var h = d[b++] & 63
-                        if (240 == (f & 248))
-                          f = ((f & 7) << 18) | (k << 12) | (l << 6) | h
+                        var l = d[b++] & 63
+                        if (224 == (f & 240)) f = ((f & 15) << 12) | (k << 6) | l
                         else {
-                          var bb = d[b++] & 63
-                          if (248 == (f & 252))
-                            f =
-                              ((f & 3) << 24) |
-                              (k << 18) |
-                              (l << 12) |
-                              (h << 6) |
-                              bb
+                          var h = d[b++] & 63
+                          if (240 == (f & 248))
+                            f = ((f & 7) << 18) | (k << 12) | (l << 6) | h
                           else {
-                            var m = d[b++] & 63
-                            f =
-                              ((f & 1) << 30) |
-                              (k << 24) |
-                              (l << 18) |
-                              (h << 12) |
-                              (bb << 6) |
-                              m
+                            var bb = d[b++] & 63
+                            if (248 == (f & 252))
+                              f =
+                                ((f & 3) << 24) |
+                                (k << 18) |
+                                (l << 12) |
+                                (h << 6) |
+                                bb
+                            else {
+                              var m = d[b++] & 63
+                              f =
+                                ((f & 1) << 30) |
+                                (k << 24) |
+                                (l << 18) |
+                                (h << 12) |
+                                (bb << 6) |
+                                m
+                            }
                           }
                         }
+                        65536 > f
+                          ? (e += String.fromCharCode(f))
+                          : ((f -= 65536),
+                            (e += String.fromCharCode(
+                              55296 | (f >> 10),
+                              56320 | (f & 1023),
+                            )))
                       }
-                      65536 > f
-                        ? (e += String.fromCharCode(f))
-                        : ((f -= 65536),
-                          (e += String.fromCharCode(
-                            55296 | (f >> 10),
-                            56320 | (f & 1023),
-                          )))
-                    }
-                  } else e += String.fromCharCode(f)
-                }
-            }
-            a(b)
-            d.length = 0
-          } else d.push(b)
-        }))
+                    } else e += String.fromCharCode(f)
+                  }
+              }
+              a(b)
+              d.length = 0
+            } else d.push(b)
+          }))
       for (b = 0; b < f; b++) {
         for (
           var l = A[(e + 8 * b) >> 2], h = A[(e + (8 * b + 4)) >> 2], k = 0;
@@ -507,7 +512,7 @@ var Aubio = function (Aubio) {
   }
   var Ra = void 0
   function K(a) {
-    for (var b = ''; z[a]; ) b += Ra[z[a++]]
+    for (var b = ''; z[a];) b += Ra[z[a++]]
     return b
   }
   var L = {},
@@ -524,8 +529,8 @@ var Aubio = function (Aubio) {
     return new Function(
       'body',
       'return function ' +
-        a +
-        '() {\n    "use strict";    return body.apply(this, arguments);\n};\n',
+      a +
+      '() {\n    "use strict";    return body.apply(this, arguments);\n};\n',
     )(b)
   }
   function Va(a) {
@@ -596,10 +601,10 @@ var Aubio = function (Aubio) {
     delete Sa[a]
     L.hasOwnProperty(a) &&
       ((b = L[a]),
-      delete L[a],
-      b.forEach(function (a) {
-        a()
-      }))
+        delete L[a],
+        b.forEach(function (a) {
+          a()
+        }))
   }
   function Za(a) {
     P(a.a.f.b.name + ' instance already deleted')
@@ -607,13 +612,13 @@ var Aubio = function (Aubio) {
   var $a = void 0,
     ab = []
   function cb() {
-    for (; ab.length; ) {
+    for (; ab.length;) {
       var a = ab.pop()
       a.a.s = !1
       a['delete']()
     }
   }
-  function R() {}
+  function R() { }
   var db = {}
   function eb(a, b, d) {
     if (void 0 === a[b].j) {
@@ -622,12 +627,12 @@ var Aubio = function (Aubio) {
         a[b].j.hasOwnProperty(arguments.length) ||
           P(
             "Function '" +
-              d +
-              "' called with an invalid number of arguments (" +
-              arguments.length +
-              ') - expects one of (' +
-              a[b].j +
-              ')!',
+            d +
+            "' called with an invalid number of arguments (" +
+            arguments.length +
+            ') - expects one of (' +
+            a[b].j +
+            ')!',
           )
         return a[b].j[arguments.length].apply(this, arguments)
       }
@@ -640,9 +645,9 @@ var Aubio = function (Aubio) {
       ? (P("Cannot register public name '" + a + "' twice"),
         eb(c, a, a),
         c.hasOwnProperty(void 0) &&
-          P(
-            'Cannot register multiple overloads of a function with the same number of arguments (undefined)!',
-          ),
+        P(
+          'Cannot register multiple overloads of a function with the same number of arguments (undefined)!',
+        ),
         (c[a].j[void 0] = b))
       : (c[a] = b)
   }
@@ -658,13 +663,13 @@ var Aubio = function (Aubio) {
     this.Z = []
   }
   function hb(a, b, d) {
-    for (; b !== d; )
+    for (; b !== d;)
       b.w ||
         P(
           'Expected null or instance of ' +
-            d.name +
-            ', got an instance of ' +
-            b.name,
+          d.name +
+          ', got an instance of ' +
+          b.name,
         ),
         (a = b.w(a)),
         (b = b.i)
@@ -692,26 +697,26 @@ var Aubio = function (Aubio) {
       b.a.f.C &&
       P(
         'Cannot convert argument of type ' +
-          (b.a.h ? b.a.h.name : b.a.f.name) +
-          ' to parameter type ' +
-          this.name,
+        (b.a.h ? b.a.h.name : b.a.f.name) +
+        ' to parameter type ' +
+        this.name,
       )
     d = hb(b.a.c, b.a.f.b, this.b)
     if (this.D)
       switch (
-        (void 0 === b.a.g &&
-          P('Passing raw pointer to smart pointer is illegal'),
+      (void 0 === b.a.g &&
+        P('Passing raw pointer to smart pointer is illegal'),
         this.ba)
       ) {
         case 0:
           b.a.h === this
             ? (d = b.a.g)
             : P(
-                'Cannot convert argument of type ' +
-                  (b.a.h ? b.a.h.name : b.a.f.name) +
-                  ' to parameter type ' +
-                  this.name,
-              )
+              'Cannot convert argument of type ' +
+              (b.a.h ? b.a.h.name : b.a.f.name) +
+              ' to parameter type ' +
+              this.name,
+            )
           break
         case 1:
           d = b.a.g
@@ -741,9 +746,9 @@ var Aubio = function (Aubio) {
     b.a.f.C &&
       P(
         'Cannot convert argument of type ' +
-          b.a.f.name +
-          ' to parameter type ' +
-          this.name,
+        b.a.f.name +
+        ' to parameter type ' +
+        this.name,
       )
     return hb(b.a.c, b.a.f.b, this.b)
   }
@@ -758,12 +763,12 @@ var Aubio = function (Aubio) {
   }
   var pb = {}
   function qb(a, b) {
-    for (void 0 === b && P('ptr should not be undefined'); a.i; )
+    for (void 0 === b && P('ptr should not be undefined'); a.i;)
       (b = a.w(b)), (a = a.i)
     return pb[b]
   }
   function rb(a, b) {
-    ;(b.f && b.c) || Xa('makeClassHandle requires ptr and ptrType')
+    ; (b.f && b.c) || Xa('makeClassHandle requires ptr and ptrType')
     !!b.h !== !!b.g && Xa('Both smartPtrType and smartPtr must be specified')
     b.count = { value: 1 }
     return Object.create(a, { a: { value: b } })
@@ -797,7 +802,7 @@ var Aubio = function (Aubio) {
       d = c.asm['dynCall_' + a]
       void 0 === d &&
         ((d = c.asm['dynCall_' + a.replace(/f/g, 'd')]),
-        void 0 === d && P('No dynCall invoker for signature: ' + a))
+          void 0 === d && P('No dynCall invoker for signature: ' + a))
       for (var e = [], f = 1; f < a.length; ++f) e.push('a' + f)
       f =
         'return function ' +
@@ -837,7 +842,7 @@ var Aubio = function (Aubio) {
     return d
   }
   function zb(a) {
-    for (; a.length; ) {
+    for (; a.length;) {
       var b = a.pop()
       a.pop()(b)
     }
@@ -847,10 +852,10 @@ var Aubio = function (Aubio) {
     if (!(b instanceof Function))
       throw new TypeError(
         'new_ called with constructor type ' +
-          typeof b +
-          ' which is not a function',
+        typeof b +
+        ' which is not a function',
       )
-    var d = Ua(b.name || 'unknownFunctionName', function () {})
+    var d = Ua(b.name || 'unknownFunctionName', function () { })
     d.prototype = b.prototype
     d = new d()
     a = b.apply(d, a)
@@ -903,27 +908,27 @@ var Aubio = function (Aubio) {
       case 0:
         return d
           ? function (a) {
-              return ma[a]
-            }
+            return ma[a]
+          }
           : function (a) {
-              return z[a]
-            }
+            return z[a]
+          }
       case 1:
         return d
           ? function (a) {
-              return na[a >> 1]
-            }
+            return na[a >> 1]
+          }
           : function (a) {
-              return oa[a >> 1]
-            }
+            return oa[a >> 1]
+          }
       case 2:
         return d
           ? function (a) {
-              return A[a >> 2]
-            }
+            return A[a >> 2]
+          }
           : function (a) {
-              return B[a >> 2]
-            }
+            return B[a >> 2]
+          }
       default:
         throw new TypeError('Unknown integer type: ' + a)
     }
@@ -947,8 +952,8 @@ var Aubio = function (Aubio) {
     var b = this.a.f.b,
       d = this.a.c,
       e = a.a.f.b
-    for (a = a.a.c; b.i; ) (d = b.w(d)), (b = b.i)
-    for (; e.i; ) (a = e.w(a)), (e = e.i)
+    for (a = a.a.c; b.i;) (d = b.w(d)), (b = b.i)
+    for (; e.i;) (a = e.w(a)), (e = e.i)
     return b === e && d === a
   }
   R.prototype.clone = function () {
@@ -1028,8 +1033,8 @@ var Aubio = function (Aubio) {
     return null === f
       ? b.call(this)
       : this.D
-      ? rb(e.b.u, { f: e, c: f, h: this, g: a })
-      : rb(e.b.u, { f: e, c: f })
+        ? rb(e.b.u, { f: e, c: f, h: this, g: a })
+        : rb(e.b.u, { f: e, c: f })
   }
   c.getInheritedInstanceCount = function () {
     return Object.keys(pb).length
@@ -1154,12 +1159,12 @@ var Aubio = function (Aubio) {
           if (void 0 === a)
             throw new O(
               'Tried to invoke ctor of ' +
-                g +
-                ' with invalid number of parameters (' +
-                arguments.length +
-                ') - expected (' +
-                Object.keys(m.m).toString() +
-                ') parameters instead!',
+              g +
+              ' with invalid number of parameters (' +
+              arguments.length +
+              ') - expected (' +
+              Object.keys(m.m).toString() +
+              ') parameters instead!',
             )
           return a.apply(this, arguments)
         })
@@ -1184,10 +1189,10 @@ var Aubio = function (Aubio) {
         if (void 0 !== a.b.m[b - 1])
           throw new O(
             'Cannot register multiple constructors with identical number of parameters (' +
-              (b - 1) +
-              ") for class '" +
-              a.name +
-              "'! Overload resolution is currently only performed using the parameter count, not actual type info!",
+            (b - 1) +
+            ") for class '" +
+            a.name +
+            "'! Overload resolution is currently only performed using the parameter count, not actual type info!",
           )
         a.b.m[b - 1] = function () {
           xb('Cannot construct ' + a.name + ' due to unbound types', h)
@@ -1197,10 +1202,10 @@ var Aubio = function (Aubio) {
             arguments.length !== b - 1 &&
               P(
                 d +
-                  ' called with ' +
-                  arguments.length +
-                  ' arguments, expected ' +
-                  (b - 1),
+                ' called with ' +
+                arguments.length +
+                ' arguments, expected ' +
+                (b - 1),
               )
             var a = [],
               h = Array(b)
@@ -1230,7 +1235,7 @@ var Aubio = function (Aubio) {
         var p = a.b.u,
           t = p[b]
         void 0 === t ||
-        (void 0 === t.j && t.className !== a.name && t.A === d - 2)
+          (void 0 === t.j && t.className !== a.name && t.A === d - 2)
           ? ((e.A = d - 2), (e.className = a.name), (p[b] = e))
           : (eb(p, b, f), (p[b].j[d - 2] = e))
         Ya([], m, function (e) {
@@ -1302,7 +1307,7 @@ var Aubio = function (Aubio) {
             for (g = t ? 1 : 2; g < e.length; ++g)
               (q = 1 === g ? 'thisWired' : 'arg' + (g - 2) + 'Wired'),
                 null !== e[g].l &&
-                  ((k += q + '_dtor(' + q + '); // ' + e[g].name + '\n'),
+                ((k += q + '_dtor(' + q + '); // ' + e[g].name + '\n'),
                   N.push(q + '_dtor'),
                   m.push(e[g].l))
           mb && (k += 'var ret = retType.fromWireType(rv);\nreturn ret;\n')
@@ -1354,7 +1359,7 @@ var Aubio = function (Aubio) {
         return a
       }
       b = K(b)
-      ;-1 === f && (f = 4294967295)
+        ; -1 === f && (f = 4294967295)
       var h = Qa(d)
       if (0 === e) {
         var k = 32 - 8 * d
@@ -1372,14 +1377,14 @@ var Aubio = function (Aubio) {
           if (d < e || d > f)
             throw new TypeError(
               'Passing a number "' +
-                S(d) +
-                '" from JS side to C/C++ side to an argument of type "' +
-                b +
-                '", which is outside the valid range [' +
-                e +
-                ', ' +
-                f +
-                ']!',
+              S(d) +
+              '" from JS side to C/C++ side to an argument of type "' +
+              b +
+              '", which is outside the valid range [' +
+              e +
+              ', ' +
+              f +
+              ']!',
             )
           return m ? d >>> 0 : d | 0
         },
@@ -1438,12 +1443,12 @@ var Aubio = function (Aubio) {
           b instanceof Uint8Array
             ? (h = d)
             : b instanceof Uint8ClampedArray
-            ? (h = d)
-            : b instanceof Int8Array
-            ? (h = d)
-            : 'string' === typeof b
-            ? (h = e)
-            : P('Cannot pass non-string to std::string')
+              ? (h = d)
+              : b instanceof Int8Array
+                ? (h = d)
+                : 'string' === typeof b
+                  ? (h = e)
+                  : P('Cannot pass non-string to std::string')
           var k = b.length,
             m = Kb(4 + k)
           B[m >> 2] = k
@@ -1451,7 +1456,7 @@ var Aubio = function (Aubio) {
             var g = h(b, p)
             255 < g &&
               (X(m),
-              P('String has UTF-16 code units that do not fit in 8 bits'))
+                P('String has UTF-16 code units that do not fit in 8 bits'))
             z[m + 4 + p] = g
           }
           null !== a && a.push(X, m)
@@ -1476,7 +1481,7 @@ var Aubio = function (Aubio) {
           ((e = function () {
             return B
           }),
-          (f = 2))
+            (f = 2))
       Q(a, {
         name: d,
         fromWireType: function (a) {
@@ -1512,8 +1517,8 @@ var Aubio = function (Aubio) {
         da: !0,
         name: b,
         argPackAdvance: 0,
-        fromWireType: function () {},
-        toWireType: function () {},
+        fromWireType: function () { },
+        toWireType: function () { },
       })
     },
     __emval_as: function (a, b, d) {
@@ -1576,8 +1581,8 @@ var Aubio = function (Aubio) {
   var Lb = c.asm(c.N, c.O, buffer)
   c.asm = Lb
   var Oa = (c.__GLOBAL__sub_I_bind_cpp = function () {
-      return c.asm.__GLOBAL__sub_I_bind_cpp.apply(null, arguments)
-    }),
+    return c.asm.__GLOBAL__sub_I_bind_cpp.apply(null, arguments)
+  }),
     La = (c.__GLOBAL__sub_I_fft_cc = function () {
       return c.asm.__GLOBAL__sub_I_fft_cc.apply(null, arguments)
     }),

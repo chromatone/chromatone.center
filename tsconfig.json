@@ -8,10 +8,6 @@
 	"include": [
 		".vitepress/use/*"
 	],
-	"exclude": [
-		".vitepress/dist",
-		".vitepress/cache"
-	],
 	"compilerOptions": {
 		"baseUrl": ".",
 		"target": "esnext",
@@ -38,7 +34,8 @@
 		"name": "Use-chromatone documentation",
 		"defaultCategory": "Chomatone",
 		"exclude": [
-			"**/index.ts"
+			"**/index.ts",
+			"**/aubio.js"
 		],
 		"readme": ".vitepress/use/README.md"
 	}

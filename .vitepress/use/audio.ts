@@ -1,29 +1,40 @@
+/**
+ * @module Audio
+ * @description Main audio bus controller
+ */
+
+
 import { getDestination, start, gainToDb, Meter, context, Reverb, Limiter, LimiterOptions } from "tone";
 import { useRecorder } from "./recorder";
 import { shallowReactive, reactive, watchEffect, markRaw } from 'vue'
 import { useRafFn, useStorage } from "@vueuse/core";
 import { useClamp } from "@vueuse/math";
 
-const audio: {
+
+export interface AudioInterface {
   initiated: boolean
   mute: boolean
   volume: number
   meter: number | number[]
-} = reactive({
+}
+
+export interface MasterInterface {
+  stream?: MediaStreamAudioDestinationNode
+  meter?: Meter
+  limiter?: Limiter
+  reverb?: Reverb
+}
+
+const audio: AudioInterface = reactive({
   initiated: false,
   mute: useStorage("mute", false),
   volume: useClamp(useStorage("main-vol", 1), 0, 2),
   meter: 0
 });
 
-export const master: {
-  stream?: MediaStreamAudioDestinationNode
-  meter?: Meter
-  limiter?: Limiter
-  reverb?: Reverb
-} = reactive({})
+export const master: MasterInterface = reactive({})
 
-export const channels: {} = shallowReactive({})
+export const channels: Record<string, Limiter> = shallowReactive({})
 
 export function useAudio() {
   if (!audio.initiated) {
@@ -69,8 +80,6 @@ export function createChannel(title = (Math.random() * 1000).toFixed(0), options
   const { master } = useAudio()
   const channel = new Limiter(options).connect(master.limiter)
   channels[title] = channel
-
-
   return channel
 }
 

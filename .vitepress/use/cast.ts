@@ -1,4 +1,4 @@
-import { useDevicesList, useEventListener, useStorage, useTimestamp } from '@vueuse/core'
+import { RemovableRef, useDevicesList, useEventListener, useStorage, useTimestamp } from '@vueuse/core'
 import { master } from './audio'
 import { ref, reactive, shallowRef, computed, watch, nextTick } from 'vue'
 
@@ -8,7 +8,7 @@ export const showRecordingDialog = ref()
 
 export const recordingName = ref('')
 export const recordCamera = ref(true)
-export const mimeType = useStorage('slidev-record-mimetype', 'video/webm')
+export const mimeType: RemovableRef<string> = useStorage('slidev-record-mimetype', 'video/webm')
 
 export const mimeExtMap = {
   'video/webm': 'webm',
@@ -16,7 +16,7 @@ export const mimeExtMap = {
   'video/x-matroska;codecs=avc1': 'mkv',
 }
 
-export function getFilename(media, mimeType) {
+export function getFilename(media: string, mimeType?: string) {
   const d = new Date()
 
   const pad = (v) => `${v}`.padStart(2, '0')
@@ -150,7 +150,7 @@ export function useRecording() {
     }
   })
 
-  async function startRecording(customConfig) {
+  async function startRecording(customConfig?: {}) {
     await ensureDevicesListPermissions()
     const { default: Recorder } = await import('recordrtc')
     await startCameraStream()
@@ -161,8 +161,8 @@ export function useRecording() {
         frameRate: 30,
         width: 3840,
         height: 2160,
-        cursor: 'motion',
-        resizeMode: 'crop-and-scale',
+        // cursor: 'motion',
+        // resizeMode: 'crop-and-scale',
       },
     })
     streamCapture.value.addEventListener('inactive', stopRecording)
@@ -204,7 +204,7 @@ export function useRecording() {
       if (recordCamera.value) {
         const blob = recorderCamera.value.getBlob()
         const url = URL.createObjectURL(blob)
-        download(getFilename('camera', config.mimeType), url)
+        download(getFilename('camera', mimeType.value), url)
         window.URL.revokeObjectURL(url)
       }
       recorderCamera.value = undefined
@@ -214,7 +214,7 @@ export function useRecording() {
     recorderSlides.value?.stopRecording(() => {
       const blob = recorderSlides.value.getBlob()
       const url = URL.createObjectURL(blob)
-      download(getFilename('screen', config.mimeType), url)
+      download(getFilename('screen', mimeType.value), url)
       window.URL.revokeObjectURL(url)
       closeStream(streamCapture)
       closeStream(streamSlides)

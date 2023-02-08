@@ -1,12 +1,26 @@
+/**
+ * @module Calculations
+ * @description All the basic math for note-frequency convertion
+ */
+
+/**
+ * Note 0 in MIDI
+ */
 export const midiA = 69
 
-export function pitchNoteOctave(pitch: number) {
+/**
+ * Convert an unbound pitch to 0-11 pitch + octave
+ */
+export function pitchNoteOctave(pitch: number): { note: number, octave: number } {
   return {
     note: pitch > 0 ? pitch % 12 : 12 + (pitch % 12),
     octave: Math.floor(pitch / 12) + 4,
   }
 }
 
+/**
+ * Determine a frequency in Hz out of a pitch with octave and optional tuning info
+ */
 export function pitchFreq(
   pitch = 0,
   octave = 3,
@@ -25,6 +39,9 @@ export function pitchFreq(
   return hz
 }
 
+/**
+ * Get a color for any given pitch and octave (velocity and alpha are also configurable)
+ */
 export function pitchColor(pitch = 0, octave?: number, velocity = 1, alpha = 1) {
   if (octave === undefined) {
     octave = Math.floor(pitch / 12) + 4
@@ -33,19 +50,31 @@ export function pitchColor(pitch = 0, octave?: number, velocity = 1, alpha = 1) 
     }%,${alpha})`
 }
 
+/** 
+ * Get a color for a certain pitch frequency in Hz 
+ * */
 export function freqColor(freq: number) {
   return pitchColor(freqPitch(freq))
 }
 
+/**
+ * Get a pitch from a frequency
+ */
 export function freqPitch(freq: number | string, middleA = 440) {
   return 12 * (Math.log(Number(freq) / middleA) / Math.log(2))
 }
 
-export function isInChroma(chroma, tonic, note) {
+/**
+ * Check if a note in included in a chroma string
+ */
+export function isInChroma(chroma: string, tonic: number, note: number): boolean {
   return chroma.split('')[(24 + note - tonic) % 12] == '1'
 }
 
-export function getCircleCoord(n = 0, total = 12, radius = 35, width = 100) {
+/**
+ * Radial coordinates calculation
+ */
+export function getCircleCoord(n = 0, total = 12, radius = 35, width = 100): { x: number, y: number } {
   let angle = ((n - total / 4) / (total / 2)) * Math.PI // Calculate the angle at which the element will be placed.
   // For a semicircle, we would use (i / numNodes) * Math.PI.
   let x = radius * Math.cos(angle) + width / 2 // Calculate the x position of the element.
@@ -53,20 +82,29 @@ export function getCircleCoord(n = 0, total = 12, radius = 35, width = 100) {
   return { x, y }
 }
 
+/** Rotate and array by a number of steps */
 export function rotateArray(arr: any[], count = 1) {
   return [...arr.slice(count, arr.length), ...arr.slice(0, count)]
 }
 
-export function clampNum(main: number, delta: number, min = 0, max = 100) {
-  return Math.max(min, Math.min(Number(main) + Number(delta), max));
+/**
+ * Lock a number in a max and min range
+ */
+export function clampNum(main: number, delta: number, min = 0, max = 100): number {
+  return Math.max(min, Math.min(main + delta, max));
 }
 
+/**
+ * Get cents difference between a certain pitch and an arbitrary frequency
+ */
 export function getCents(frequency: number, pitch: number) {
   return Math.floor(
     (1200 * Math.log(frequency / getStandardFrequency(pitch))) / Math.log(2)
   );
 }
-
-export function getStandardFrequency(pitch, middleA = 440) {
+/**
+ * Get a frequency for any given pitch
+ */
+export function getStandardFrequency(pitch: number, middleA = 440): number {
   return middleA * Math.pow(2, (pitch - 69) / 12);
 }

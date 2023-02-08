@@ -15,11 +15,13 @@ ChordType.add(['1P', '6M'], ['6M'], 'major sixth')
 ChordType.add(['1P', '7m'], ['7m'], 'minor seventh')
 ChordType.add(['1P', '7M'], ['7M'], 'major seventh')
 
-export const chordType = ChordType
-export const scaleType = ScaleType
+export const chordType: typeof ChordType = ChordType
+export const scaleType: typeof ScaleType = ScaleType
 
-export const chordList = ChordType.all()
-export const scaleList = ScaleType.all()
+//@ts-expect-error
+export const chordList: typeof ChordType[] = ChordType.all()
+//@ts-expect-error
+export const scaleList: typeof ScaleType[] = ScaleType.all()
 
 export const intervals = ['1P', '2m', '2M', '3m', '3M', '4P', 'TT', '5P', '6m', '6M', '7m', '7M']
 

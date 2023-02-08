@@ -1,6 +1,6 @@
 import { ref } from 'vue'
 
-function fallbackCopyTextToClipboard(text) {
+function fallbackCopyTextToClipboard(text: string) {
 	var textArea = document.createElement("textarea");
 	textArea.value = text;
 

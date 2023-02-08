@@ -1,6 +1,6 @@
 <script setup>
 import { rotateArray } from '#/use/calculations'
-import { chromaColorMix, noteColor } from "#/use/colors.js";
+import { chromaColorMix, noteColor } from "#/use/colors";
 import { Note, Pcset, Interval } from '@tonaljs/tonal'
 import { Frequency } from 'tone'
 import { synthOnce } from '#/use/synth'

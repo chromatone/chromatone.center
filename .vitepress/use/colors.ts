@@ -10,8 +10,8 @@ import labPlugin from "colord/plugins/lab";
 import cmykPlugin from "colord/plugins/cmyk";
 import hwbPlugin from "colord/plugins/hwb";
 
-import { pitchColor, isInChroma } from "#/use/calculations";
-import { globalScale } from "#/use/chroma";
+import { pitchColor, isInChroma } from "./calculations";
+import { globalScale } from "./chroma";
 
 
 extend([mixPlugin, lchPlugin, namesPlugin, labPlugin, cmykPlugin, hwbPlugin]);
@@ -82,9 +82,9 @@ export function getColorInfo(color) {
 export function levelColor(
   i = 0,
   n = 3,
-  a = "0.5",
-  s = "0.8",
-  l = "0.5",
+  a = 0.5,
+  s = 0.8,
+  l = 0.5,
   reverse = false
 ) {
   if (reverse) {

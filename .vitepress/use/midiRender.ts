@@ -1,6 +1,6 @@
 import { Writer, Track, NoteEvent } from "midi-writer-js";
 import { Midi } from "@tonejs/midi";
-import { tempo } from "#/use/tempo";
+import { tempo } from "./tempo";
 let notes = ["C", "E", "G", "B", "D", "F", "A", "C#", "D#", "F#", "G#", "A#"];
 
 export function renderMidi(tracks) {

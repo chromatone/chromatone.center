@@ -2,7 +2,7 @@
 import { rotateArray, getCircleCoord } from '#/use/calculations'
 import { noteColor } from '#/use/colors'
 import { colord } from 'colord'
-import { chromaColorMix } from "#/use/colors.js";
+import { chromaColorMix } from "#/use/colors";
 import { chordType, scaleType, notes } from '#/use/theory'
 import { globalScale, playChroma, stopChroma } from '#/use/chroma'
 import { computed, ref } from 'vue';

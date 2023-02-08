@@ -1,8 +1,8 @@
-<script setup>
+<script setup lang="ts">
 import { useStorage, watchDebounced } from '@vueuse/core'
 import { state } from './state'
-import { notes } from '#/use/theory'
-import { noteColor } from "#/use/colors"
+import { notes } from '../../use/theory'
+import { noteColor } from "../../use/colors"
 import tunes from './tunes'
 import { onMounted } from 'vue'
 const notation = useStorage('abc-notes', tunes['kalinka']);
@@ -10,21 +10,24 @@ const notation = useStorage('abc-notes', tunes['kalinka']);
 onMounted(() => {
   import('abcjs').then(ABCJS => {
     new ABCJS.Editor("abc", {
-
       canvas_id: "paper",
       warnings_id: "warnings",
-      staffwidth: 200,
       synth: {
         el: "#audio",
-        options: { displayLoop: true, displayRestart: true, displayPlay: true, displayProgress: true, displayWarp: true }
+        cursorControl: { beatSubDivision: 4 },
+        options: {}
+        // options: { displayLoop: true, displayRestart: true, displayPlay: true, displayProgress: true, displayWarp: true }
       },
-      abcjsParams: {}
+      abcjsParams: {
+        staffwidth: 200,
+      }
     });
   })
   watchDebounced([notation, state], n => {
 
     const nodes = document.querySelectorAll('[data-name]')
     nodes.forEach(node => {
+      if (!(node instanceof HTMLElement)) return
       if (state.colorize) {
         const note = { pitch: 0, acc: 0, octave: 4 }
         const { name } = node.dataset
@@ -46,7 +49,7 @@ onMounted(() => {
               if (pitch < 0) break
               if (name[i] == notes[pitch].toLowerCase()) note.octave++
               note.pitch = pitch
-              node.dataset.pitch = pitch
+              node.dataset.pitch = String(pitch)
               break
           }
         }

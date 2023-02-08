@@ -1,6 +1,6 @@
 import Aubio from "./aubio.js";
-import { noteColor } from '#/use/colors'
-import { initGetUserMedia } from '#/use/audio'
+import { noteColor } from './colors'
+import { initGetUserMedia } from './audio'
 import Meyda from "meyda";
 import { reactive, computed, watch } from 'vue'
 
@@ -51,12 +51,20 @@ export const tuner = reactive({
   prevBeat: 0,
   blink: false,
   chroma: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  chromaAvg: computed(() => tuner.chroma.reduce((a, b) => a + b, 0) / 12),
+  chromaAvg: computed(() => tuner.chroma.reduce((a: any, b: any) => a + b, 0) / 12),
   spec: [],
   rms: 0,
 });
 
-const chain = {};
+const chain = {
+  audioContext: null,
+  analyser: null,
+  scriptProcessor: null,
+  beatProcessor: null,
+  meyda: null,
+  pitchDetector: null,
+  tempoAnalyzer: null
+};
 
 export function useTuner() {
   initGetUserMedia();
@@ -102,7 +110,7 @@ function init() {
     source: chain.analyser,
     bufferSize: 4096,
     featureExtractors: ["chroma", "amplitudeSpectrum", "rms"],
-    callback: (features) => {
+    callback: (features: { rms: any; chroma: any; amplitudeSpectrum: any; }) => {
       tuner.rms = features.rms;
       tuner.chroma = features.chroma;
       tuner.spec = features.amplitudeSpectrum;
@@ -113,7 +121,7 @@ function init() {
 
   tuner.frequencyData = new Uint8Array(chain.analyser.frequencyBinCount);
 
-  Aubio().then(function (aubio) {
+  Aubio().then(function (aubio: { Pitch: new (arg0: string, arg1: any, arg2: number, arg3: any) => any; Tempo: new (arg0: number, arg1: any, arg2: any) => any; }) {
     chain.pitchDetector = new aubio.Pitch(
       "default",
       tuner.bufferSize,
@@ -143,7 +151,7 @@ function start() {
       chain.analyser.connect(chain.beatProcessor);
       chain.scriptProcessor.connect(chain.audioContext.destination);
       chain.beatProcessor.connect(chain.audioContext.destination);
-      chain.beatProcessor.addEventListener("audioprocess", (e) => {
+      chain.beatProcessor.addEventListener("audioprocess", (e: { inputBuffer: { getChannelData: (arg0: number) => any; }; }) => {
         const tempo = chain.tempoAnalyzer.do(e.inputBuffer.getChannelData(0));
         if (tempo) {
           tuner.beat++;
@@ -151,7 +159,7 @@ function start() {
           tuner.bpm = chain.tempoAnalyzer.getBpm();
         }
       });
-      chain.scriptProcessor.addEventListener("audioprocess", function (event) {
+      chain.scriptProcessor.addEventListener("audioprocess", function (event: { inputBuffer: { getChannelData: (arg0: number) => any; }; }) {
         const frequency = chain.pitchDetector.do(
           event.inputBuffer.getChannelData(0)
         );
@@ -162,7 +170,7 @@ function start() {
             name: noteStrings[note % 12],
             value: note,
             cents: getCents(frequency, note),
-            octave: parseInt(note / 12) - 1,
+            octave: Math.floor(note / 12) - 1,
             frequency: frequency,
             color: freqColor(frequency),
             silent: false,
@@ -177,29 +185,29 @@ function start() {
     });
 }
 
-function getNote(frequency) {
+function getNote(frequency: number): number {
   const note = 12 * (Math.log(frequency / tuner.middleA) / Math.log(2));
   return Math.round(note) + tuner.semitone;
 }
 
-function getStandardFrequency(note) {
+function getStandardFrequency(note: number) {
   return tuner.middleA * Math.pow(2, (note - tuner.semitone) / 12);
 }
 
-function getCents(frequency, note) {
+function getCents(frequency: number, note: number) {
   return Math.floor(
     (1200 * Math.log(frequency / getStandardFrequency(note))) / Math.log(2)
   );
 }
 
-function freqColor(frequency) {
+function freqColor(frequency: number) {
   const note = getRawNote(frequency);
   if (!note) return "#333";
-  const octave = parseInt(note / 12) + 2;
+  const octave = Math.floor(note / 12) + 2;
   const color = noteColor(note, octave);
   return color;
 }
 
-function getRawNote(frequency) {
+function getRawNote(frequency: number): number {
   return (12 * (Math.log(frequency / settings.middleA) / Math.log(2))) % 12;
 }

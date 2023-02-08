@@ -1,7 +1,7 @@
 <script setup>
 import { isInChroma, getCircleCoord, rotateArray } from '#/use/calculations'
 import { noteColor } from '#/use/colors'
-import { chromaColorMix } from "#/use/colors.js";
+import { chromaColorMix } from "#/use/colors";
 import { Note } from '@tonaljs/tonal'
 import { scaleType, chordType, notes } from '#/use/theory'
 import { globalScale } from '#/use/chroma'

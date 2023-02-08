@@ -1,10 +1,10 @@
 import { reactive, computed, watch, onMounted, shallowReactive, Ref } from "vue";
 import { Transport, start, Frequency, Loop, Sampler, gainToDb, Draw, Time } from "tone";
-import { freqPitch } from "#/use/calculations";
-import { noteColor } from '#/use/colors'
+import { freqPitch } from "./calculations";
+import { noteColor } from './colors'
 import { Note } from "@tonaljs/tonal";
 import { useStorage, onKeyStroke, useRafFn, RemovableRef, MaybeComputedRef } from "@vueuse/core";
-import { createChannel } from '#/use/audio'
+import { createChannel } from './audio'
 import { useClamp } from "@vueuse/math";
 import { WebMidi } from "webmidi";
 import { midi } from "./midi";

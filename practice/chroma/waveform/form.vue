@@ -2,7 +2,7 @@
 import { noteColor } from "#/use/colors"
 import { notes } from '#/use/theory'
 import { useTimestamp, onKeyStroke, useStorage } from '@vueuse/core'
-import { chromaColorMix } from "#/use/colors.js";
+import { chromaColorMix } from "#/use/colors";
 import { useSynth } from '#/use/synth'
 import { computed, ref, watch, watchEffect } from "vue";
 import { useClamp } from "@vueuse/math";

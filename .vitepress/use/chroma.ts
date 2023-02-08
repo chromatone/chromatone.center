@@ -1,8 +1,8 @@
 import { Frequency } from "tone";
 import { midiPlay, midiStop, midiOnce } from "./midi";
-import { synthOnce, synthAttack, synthRelease } from "./synth.js";
-import { rotateArray } from "#/use/calculations";
-import { notes } from '#/use/theory'
+import { synthOnce, synthAttack, synthRelease } from "./synth";
+import { rotateArray } from "./calculations";
+import { notes } from './theory'
 import { Note, ScaleType, Scale, Pcset } from "@tonaljs/tonal";
 import { reactive, computed } from 'vue'
 import { useStorage } from "@vueuse/core";

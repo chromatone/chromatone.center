@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { computed, reactive, watch } from 'vue';
 import { useMidi, useSequence, useTempo, pitchColor } from '../../../.vitepress/use/';
 import { Transport, Part } from 'tone'
@@ -15,9 +15,7 @@ track.addNote({
 
 const { midi } = useMidi()
 
-const { seq } = useSequence({
-	mode: 'row'
-})
+const { seq } = useSequence(null, 1, 'row')
 const tempo = useTempo()
 
 const row = reactive({

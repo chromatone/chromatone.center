@@ -1,5 +1,5 @@
 <script setup>
-import { levelColor } from "#/use/colors.js"
+import { levelColor } from "#/use/colors"
 import { colord } from 'colord'
 
 import { isDark } from '#/theme/composables/state'

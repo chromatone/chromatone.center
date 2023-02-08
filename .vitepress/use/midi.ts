@@ -43,6 +43,7 @@ export interface MidiInterface {
     pitch: number
     channel: number
     velocity?: number
+    number?: number
   }
   cc?: {
     channel?: number

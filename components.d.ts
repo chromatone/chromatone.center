@@ -9,8 +9,8 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AbcEditor: typeof import('./.vitepress/comps/abc/editor.vue')['default']
     AbcRender: typeof import('./.vitepress/comps/abc/render.vue')['default']
-    AbcState: typeof import('./.vitepress/comps/abc/state.js')['default']
-    AbcTunes: typeof import('./.vitepress/comps/abc/tunes.js')['default']
+    AbcState: typeof import('./.vitepress/comps/abc/state.ts')['default']
+    AbcTunes: typeof import('./.vitepress/comps/abc/tunes.ts')['default']
     AuthorCard: typeof import('./.vitepress/theme/components/author/card.vue')['default']
     AuthorSocial: typeof import('./.vitepress/theme/components/author/social.vue')['default']
     BeatBars: typeof import('./.vitepress/comps/beat/bars/index.vue')['default']

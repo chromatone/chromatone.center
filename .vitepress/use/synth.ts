@@ -41,6 +41,12 @@ export const synth = {
       octaves: 5
     }
   }),
+  poly: null,
+  widener: null,
+  delay: null,
+  reverb: null,
+  pan: null,
+  compressor: null
 }
 
 export function useSynth() {
@@ -83,10 +89,12 @@ export function synthInit() {
   synth.widener = new StereoWidener(0.7).connect(channel)
 
   synth.reverb = new Reverb(3).connect(synth.widener)
+  //@ts-expect-error
   synth.delay = new PingPongDelay({ delayTime: '16n', feedback: 0.3, wet: 0.3, maxDelay: '4n' }).connect(synth.widener)
 
   synth.pan = new AutoPanner({ frequency: '4n', depth: 0.4 }).connect(synth.reverb).connect(synth.delay).connect(synth.widener)
   synth.compressor = new Compressor().connect(synth.pan)
+  //@ts-expect-error Tone!!
   synth.poly = new PolySynth(MonoSynth, synth.params).connect(synth.compressor)
 
   synth.pan.start()
@@ -97,7 +105,7 @@ export function synthOnce(note = 'A4', duration = '8n', time) {
   synth.poly.triggerAttackRelease(note, duration, time)
 }
 
-export function synthAttack(note, velocity) {
+export function synthAttack(note: string | number | string[], velocity?: number) {
   if (!synth.poly || synth.state.mute) return synthInit()
   synth.poly.triggerAttack(note, synth.state.quantize.state, velocity)
 }

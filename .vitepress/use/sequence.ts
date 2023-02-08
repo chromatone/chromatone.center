@@ -12,8 +12,8 @@ import {
   Meter,
   UserMedia,
 } from "tone";
-import { createChannel } from '#/use/audio'
-import { rotateArray } from "#/use/calculations";
+import { createChannel } from './audio'
+import { rotateArray } from "./calculations";
 import { MaybeComputedRef, useStorage } from '@vueuse/core';
 import { useClamp } from '@vueuse/math';
 import { Time } from 'tone/build/esm/core/type/Units';

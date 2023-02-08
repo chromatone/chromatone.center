@@ -1,19 +1,24 @@
 {
 	"allowJs": true,
 	"vueCompilerOptions": {
-		"plugins": ["@volar/vue-language-plugin-pug"]
+		"plugins": [
+			"@volar/vue-language-plugin-pug"
+		]
 	},
-	"include": [".vitepress/use/**/*"],
+	"include": [
+		".vitepress/use/*"
+	],
+	"exclude": [
+		".vitepress/dist",
+		".vitepress/cache"
+	],
 	"compilerOptions": {
 		"baseUrl": ".",
-		"paths": {
-			"#/*": ["./.vitepress/*"]
-		},
 		"target": "esnext",
 		"moduleResolution": "node",
 		"resolveJsonModule": true,
 		"allowJs": true,
-		"isolatedModules": false,
+		"isolatedModules": true,
 		"declaration": true,
 		"emitDeclarationOnly": true,
 		"declarationMap": true,

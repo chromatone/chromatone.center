@@ -6,7 +6,7 @@ import BeatControlSector from './sector.vue'
 
 import { getCircleCoord } from "#/use/calculations";
 import { useSequence } from "#/use/sequence";
-import { levelColor } from "#/use/colors.js";
+import { levelColor } from "#/use/colors";
 import { tempo } from "#/use/tempo";
 import { midi } from "#/use/midi";
 // import { useUrlSearchParams } from '@vueuse/core'
@@ -19,10 +19,7 @@ const props = defineProps({
   order: { type: Number, default: 0 },
 });
 
-const {
-  sampler,
-  seq
-} = useSequence(undefined, props.order, "circle");
+const { sampler, seq } = useSequence(undefined, props.order, "circle");
 
 const soundLetters = ["A", "B", "C", "D", "E", "F"];
 const soundControl = ref(soundLetters.findIndex((el) => el == seq.meter?.sound));

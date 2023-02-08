@@ -1,6 +1,6 @@
-<script setup>
-import { noteColor } from "#/use/colors"
-import { notes } from '#/use/theory'
+<script setup lang="ts">
+import { noteColor } from "../../use/colors"
+import { notes } from '../../use/theory'
 import { onMounted, watchEffect } from "vue";
 import { state } from './state'
 
@@ -41,6 +41,7 @@ onMounted(() => {
       if (!state.colorize) return
       const nodes = document.querySelectorAll('[data-name]')
       nodes.forEach(node => {
+        if (!(node instanceof HTMLElement)) return
         const note = { pitch: 0, acc: 0, octave: 4 }
         const { name } = node.dataset
         if (name.length > 3 || /^\d+$/.test(name) || name == 'bar') return
@@ -61,7 +62,7 @@ onMounted(() => {
               const pitch = notes.findIndex(note => note == name[i]?.toUpperCase())
               if (pitch < 0) break
               note.pitch = pitch
-              node.dataset.pitch = pitch
+              node.dataset.pitch = String(pitch)
               break
           }
         }

@@ -1,7 +1,7 @@
 import { reactive, computed, watch, watchEffect, onBeforeUnmount } from 'vue'
-import { tempo } from "#/use/tempo";
-import { rotateArray } from "#/use/calculations";
-import { globalScale } from "#/use/chroma";
+import { tempo } from "./tempo";
+import { rotateArray } from "./calculations";
+import { globalScale } from "./chroma";
 import {
   Sequence,
   PanVol,
@@ -14,9 +14,9 @@ import {
   Frequency,
   Time,
 } from "tone";
-import { midiPlay } from "#/use/midi";
-import { createAndDownloadBlobFile } from "#/use/midiRender";
-import { createChannel } from '#/use/audio'
+import { midiPlay } from "./midi";
+import { createAndDownloadBlobFile } from "./midiRender";
+import { createChannel } from './audio'
 import { useStorage } from '@vueuse/core'
 
 const loops = reactive([]);
@@ -59,16 +59,7 @@ export function useLoop(order = 0) {
 
   const channel = createChannel(`grid-loop-${order}`)
   const panner = new PanVol(loop.pan, 0).connect(channel);
-  const synth = new PolySynth({
-    envelope: {
-      attack: 0.5,
-      release: 0.2,
-    },
-    filterEnvelope: {
-      attack: 0.1,
-      release: 0.2,
-    },
-  }).connect(panner);
+  const synth = new PolySynth().connect(panner);
 
   synth.maxPolyphony = 100;
 
@@ -139,6 +130,7 @@ export function useLoop(order = 0) {
       .filter(Number);
 
     synth.triggerAttackRelease(
+      //@ts-expect-error connect midi and tone
       notes,
       { [loop.metre.under + "n"]: 1 / (step.sub || 1) },
       time
@@ -171,7 +163,7 @@ export function renderMidiFile() {
   loops.forEach((loop, l) => {
     let division = 512 / loop.metre.under;
     let midiTrack = new Track();
-    midiTrack.setTempo(tempo.bpm);
+    midiTrack.setTempo(tempo.bpm, 0);
     midiTrack.addInstrumentName("piano");
     midiTrack.addTrackName("Chromatone grid " + l);
     midiTrack.setTimeSignature(4, 4);
@@ -188,6 +180,7 @@ export function renderMidiFile() {
           .map((midi) => Frequency(midi, "midi").toNote());
         midiTrack.addEvent(
           new NoteEvent({
+            //@ts-expect-error connect midi and tone
             pitch: notes,
             duration: `T${subdivision}`,
             startTick: division * beat + sub * subdivision,

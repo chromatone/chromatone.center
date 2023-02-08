@@ -2,7 +2,7 @@
 import { rotateArray } from '#/use/calculations'
 import { noteNames, chordType, scaleType, notes } from '#/use/theory'
 import { playChroma, stopChroma, globalScale } from '#/use/chroma'
-import { chromaColorMix, noteColor } from "#/use/colors.js"
+import { chromaColorMix, noteColor } from "#/use/colors"
 import { Progression, Chord } from "@tonaljs/tonal"
 import { Frequency } from 'tone'
 import { synthOnce } from '#/use/synth'

@@ -1,5 +1,5 @@
 <script setup>
-import { levelColor } from "#/use/colors.js"
+import { levelColor } from "#/use/colors"
 import { getCircleCoord } from '#/use/calculations'
 import { computed } from 'vue'
 import { tempo } from '#/use/tempo'

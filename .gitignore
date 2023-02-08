@@ -61,3 +61,5 @@ public/sitemap.xml
 public/media_files
 
 .vitepress/cache/
+support/code/**
+!support/code/index.md

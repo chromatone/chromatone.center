@@ -8,4 +8,6 @@ date: 2020-02-02
 	import MidiRows from './midi-rows.vue'
 </script>
 
+<client-only>
 <MidiRows/>
+</client-only>

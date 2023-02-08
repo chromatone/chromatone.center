@@ -7,12 +7,18 @@ import { reactive, watch } from 'vue'
 import { useStorage } from '@vueuse/core'
 import { useClamp } from '@vueuse/math'
 
-
-
 export const quantizeModes = ['+0', '@8n', '@16n', '@32n']
 
-
-export const synth = {
+export const synth: {
+  state: any
+  params: any
+  poly: any
+  widener: any
+  delay: any
+  reverb: any
+  pan: any
+  compressor: any
+} = {
   state: reactive({
     midi: useStorage('synth-midi', true),
     initiated: false,
@@ -66,7 +72,7 @@ export function useSynth() {
 
 
     watch(() => midi.note, note => {
-      if (!synth.state.midi) return
+      if (!synth?.state?.midi) return
       if (note.velocity > 0) {
         synthAttack(Midi(note.number).toFrequency(), note.velocity / 127)
       } else {
@@ -94,7 +100,6 @@ export function synthInit() {
 
   synth.pan = new AutoPanner({ frequency: '4n', depth: 0.4 }).connect(synth.reverb).connect(synth.delay).connect(synth.widener)
   synth.compressor = new Compressor().connect(synth.pan)
-  //@ts-expect-error Tone!!
   synth.poly = new PolySynth(MonoSynth, synth.params).connect(synth.compressor)
 
   synth.pan.start()

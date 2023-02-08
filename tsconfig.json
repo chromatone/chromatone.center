@@ -27,5 +27,19 @@
 		"module": "ESNext",
 		"allowSyntheticDefaultImports": true,
 		"outDir": "lib/types"
+	},
+	"typedocOptions": {
+		"entryPoints": [
+			".vitepress/use/"
+		],
+		"out": "support/code/docs/",
+		"githubPages": false,
+		"entryPointStrategy": "expand",
+		"name": "Use-chromatone documentation",
+		"defaultCategory": "Chomatone",
+		"exclude": [
+			"**/index.ts"
+		],
+		"readme": ".vitepress/use/README.md"
 	}
 }

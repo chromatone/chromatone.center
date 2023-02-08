@@ -27,7 +27,7 @@
 	],
 	"scripts": {
 		"build": "vitepress build",
-		"build-lib": "vite --config vite.config.lib.js build && tsc",
+		"build-lib": "vite --config vite.config.lib.js build && tsc && typedoc",
 		"deploy": "sh deploy.sh",
 		"dev": "vitepress dev --host --port 3242",
 		"serve": "vitepress serve --port 3200",
@@ -92,6 +92,8 @@
 		"vite-plugin-pages-sitemap": "^1.4.5",
 		"vite-plugin-pwa": "^0.14.1",
 		"vitepress": "1.0.0-alpha.45",
-		"vue-eslint-parser": "^9.1.0"
+		"vue-eslint-parser": "^9.1.0",
+		"typedoc": "^0.23.24",
+		"typedoc-plugin-markdown": "^3.14.0"
 	}
 }

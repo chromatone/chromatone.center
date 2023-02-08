@@ -16,6 +16,7 @@ import extractorPug from '@unocss/extractor-pug'
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
+//@ts-expect-error
 const dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
@@ -31,6 +32,7 @@ export default defineConfig({
         root: dirname,
         mediaTypes: {
           cover: { size: 1200, height: 800, fit: "inside" },
+          icon: { width: 200, height: 200, fit: "inside" }
         }
       }),
       onRoutesGenerated: routes => (generateSitemap({ routes, hostname: 'https://chromatone.center' })),

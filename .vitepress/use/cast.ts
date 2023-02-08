@@ -1,3 +1,7 @@
+/**
+ * @module Cast - the video broadcasting setup
+ */
+
 import { RemovableRef, useDevicesList, useEventListener, useStorage, useTimestamp } from '@vueuse/core'
 import { master } from './audio'
 import { ref, reactive, shallowRef, computed, watch, nextTick } from 'vue'

@@ -1,3 +1,8 @@
+/**
+ * @module Chroma
+ * @description Global scale info and chroma
+ */
+
 import { Frequency } from "tone";
 import { midiPlay, midiStop, midiOnce } from "./midi";
 import { synthOnce, synthAttack, synthRelease } from "./synth";

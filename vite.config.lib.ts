@@ -5,6 +5,7 @@ import { resolve } from 'path'
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
+//@ts-expect-error
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 

@@ -4,15 +4,6 @@ import { useMidi, useSequence, useTempo, pitchColor } from '../../../.vitepress/
 import { Transport, Part } from 'tone'
 import { Midi } from '@tonejs/midi'
 
-const midiFile = new Midi()
-midiFile.name = 'Chromatone recording'
-const track = midiFile.addTrack()
-track.addNote({
-	ticks: 100,
-	midi: 60,
-	duration: 1
-})
-
 const { midi } = useMidi()
 
 const { seq } = useSequence(null, 1, 'row')
@@ -29,22 +20,43 @@ const totalTicks = computed(() => (seq.meter.over * Transport.PPQ * 4 / seq.mete
 
 const circularTicks = computed(() => tempo.ticks % totalTicks.value)
 
-const part = new Part(note => {
+const part = new Part((time, note) => {
 	console.log(note)
-})
+}).set({
+	loop: true,
+	loopEnd: '800i',
+	loopStart: 0,
+	playbackRate: 1,
+	probability: 1
+}).start(0)
 
+const activeNotes = reactive({})
 
 watch(() => midi.note, note => {
 	if (!row.recording) return
-	track.addNote({
-		midi: note.number,
-		ticks: circularTicks.value
-	})
-	console.log(track.notes)
+	if (note.velocity > 0) {
+		activeNotes[note.number] = circularTicks.value
+	} else {
+		const n = {
+			value: note.number,
+			time: activeNotes?.[note.number] || 0,
+			end: circularTicks.value,
+		}
+		part.add({ time: circularTicks.value + 'i', value: note.number, duration: '16n' })
+		console.log(n)
+	}
+	// part.add({ time: circularTicks.value + 'i', value: note.number })
 })
 
-function startRecording() {
-	console.log('recording started')
+function useMidiTracks() {
+	const midiFile = new Midi()
+	midiFile.name = 'Chromatone recording'
+	const track = midiFile.addTrack()
+	track.addNote({
+		ticks: 100,
+		midi: 60,
+		duration: 1
+	})
 }
 </script>
 

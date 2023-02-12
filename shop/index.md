@@ -295,6 +295,12 @@ cities:
   - city: Almaty
     country: Kazakhstan
     coord: [43.248382260038504, 76.88898539828217]
+  - city: Belfast
+    country: UK
+    coord: [54.571930969805635, -5.932298472643656]
+  - city: Richland, WA
+    country: USA
+    coord: [46.264036172197365, -119.25549633054989]
 ---
 
 <script setup>

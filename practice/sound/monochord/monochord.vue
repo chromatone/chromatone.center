@@ -62,7 +62,7 @@ const ratio = useTransition(computed(() => state.ratio), {
   transition: TransitionPresets.easeOutCubic,
 })
 
-const { synthOnce } = useSynth();
+const { once } = useSynth();
 
 function dragFun(drag) {
   fundamental.freq += drag.delta[0] / 4
@@ -133,13 +133,13 @@ function calcCents(base, freq) {
       g#ratio.cursor-pointer(
         font-size="4px" 
         fill="currentColor")
-        g(@mousedown="synthOnce(fundamental.freq); synthOnce(part1.freq)")
+        g(@mousedown="once(fundamental.freq); once(part1.freq)")
           text(
             :x="100 * (1 - ratio) - 2"
             y="8"
             text-anchor="end"
           ) {{ state.fraction }} 
-        g(@mousedown="synthOnce(fundamental.freq); synthOnce(part2.freq)")
+        g(@mousedown="once(fundamental.freq); once(part2.freq)")
           text(
             :x="100 * (1 - ratio) + 2"
             y="8"
@@ -147,8 +147,8 @@ function calcCents(base, freq) {
           ) {{ state.invFraction }} 
     g#fundamental.cursor-pointer(
       v-drag="dragFun" 
-      @mouseover="synthOnce(fundamental.freq)" 
-      @mousedown="synthOnce(fundamental.freq)")
+      @mouseover="once(fundamental.freq)" 
+      @mousedown="once(fundamental.freq)")
       line(
         x2="100", 
         stroke-width="4", 
@@ -165,8 +165,8 @@ function calcCents(base, freq) {
       transform="translate(0,15)" 
       font-weight="bold")
       g#part1(
-        @mouseover="synthOnce(part1.freq)" 
-        @mousedown="synthOnce(part1.freq)")
+        @mouseover="once(part1.freq)" 
+        @mousedown="once(part1.freq)")
         line( 
           :stroke="freqColor(part1.freq)" 
           stroke-width="4",
@@ -176,8 +176,8 @@ function calcCents(base, freq) {
           y="0.3", 
           :x="100 * (1 - ratio) / 2") {{ part1.note }}
       g#part2(
-        @mouseover="synthOnce(part2.freq)" 
-        @mousedown="synthOnce(part2.freq)")
+        @mouseover="once(part2.freq)" 
+        @mousedown="once(part2.freq)")
         line( 
           :stroke="freqColor(part2.freq)" 
           stroke-width="4",

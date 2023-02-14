@@ -1,3 +1,7 @@
+/**
+ * @module Keyboard
+ */
+
 import { midi, playKey } from "./midi"
 
 const noteKeys = {

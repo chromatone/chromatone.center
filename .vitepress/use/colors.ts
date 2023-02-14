@@ -1,3 +1,8 @@
+/**
+ * @module Colors
+ */
+
+
 import { reactive, computed } from 'vue'
 import { useStorage } from "@vueuse/core";
 

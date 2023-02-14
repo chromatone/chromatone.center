@@ -35,13 +35,13 @@ const activeNotes = useStorage('chord-notes-obj', {})
 
 
 const sounding = ref(false)
-const { synthAttack, synthReleaseAll } = useSynth()
+const { attack, releaseAll } = useSynth()
 watchEffect(() => {
-  synthReleaseAll()
+  releaseAll()
   if (sounding.value) {
     for (let note in activeNotes.value) {
       let oct = note < 3 ? 3 : 4;
-      synthAttack(notes[note] + oct)
+      attack(notes[note] + oct)
     }
   }
 })

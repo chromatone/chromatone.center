@@ -5,7 +5,7 @@ import { useCycleList } from '@vueuse/core'
 import { pitchFreq, freqColor } from '#/use/calculations'
 import { reactive, computed, watch } from 'vue'
 
-const { synth, synthOnce, synthReleaseAll } = useSynth();
+const { synth, once, releaseAll } = useSynth();
 
 let count = 0;
 
@@ -35,14 +35,14 @@ const frequency = computed(() => {
   .flex.flex-wrap
     button.flex-button(
       :class="{ active: synth.state.initiated }"
-      @click="synthOnce()" 
+      @click="once()" 
       aria-label="Test synth sound"
       v-tooltip.top="'Test synth sound'"
       )
       .i-la-wave-square.text-xl
       .m-0 Play synth
     button.flex-button(
-      @click="synthReleaseAll()"
+      @click="releaseAll()"
       aria-label="Panic synth release"
       v-tooltip.top="'Panic synth release'"
       )

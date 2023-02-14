@@ -1,3 +1,7 @@
+/**
+ * @module Noise-Synthesis
+ */
+
 import {
   NoiseSynth,
   dbToGain,

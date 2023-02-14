@@ -1,4 +1,8 @@
-import { PolySynth, MonoSynth, start, Midi, AutoPanner, Reverb, gainToDb, StereoWidener, PingPongDelay, Compressor } from 'tone'
+/**
+ * @module Synth
+ */
+
+import { PolySynth, MonoSynth, start, Midi, AutoPanner, Reverb, gainToDb, StereoWidener, PingPongDelay, Compressor, Delay } from 'tone'
 import { midi } from './midi'
 import { useCycleList } from '@vueuse/core'
 import { onKeyDown } from '@vueuse/core'
@@ -12,12 +16,12 @@ export const quantizeModes = ['+0', '@8n', '@16n', '@32n']
 export const synth: {
   state: any
   params: any
-  poly: any
-  widener: any
-  delay: any
-  reverb: any
-  pan: any
-  compressor: any
+  poly: PolySynth
+  widener: StereoWidener
+  delay: Delay
+  reverb: Reverb
+  pan: AutoPanner
+  compressor: Compressor
 } = {
   state: reactive({
     midi: useStorage('synth-midi', true),
@@ -84,7 +88,7 @@ export function useSynth() {
       if (!play) synthReleaseAll()
     })
   }
-  return { synthInit, synth, synthOnce, synthAttack, synthRelease, synthReleaseAll }
+  return { init: synthInit, synth, once: synthOnce, attack: synthAttack, release: synthRelease, releaseAll: synthReleaseAll }
 }
 
 export function synthInit() {

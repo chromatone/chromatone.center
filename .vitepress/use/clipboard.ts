@@ -1,3 +1,7 @@
+/**
+ * @module Clipboard
+ */
+
 import { ref } from 'vue'
 
 function fallbackCopyTextToClipboard(text: string) {
@@ -28,7 +32,7 @@ function fallbackCopyTextToClipboard(text: string) {
 export function useCopy() {
 	const copied = ref(false)
 
-	function copyTextToClipboard(text) {
+	function copyTextToClipboard(text: string) {
 		if (!navigator.clipboard) {
 			fallbackCopyTextToClipboard(text);
 			return;

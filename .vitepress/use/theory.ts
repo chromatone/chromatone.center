@@ -1,3 +1,6 @@
+/**
+ * @module MusicTheory
+ */
 
 import { ChordType, ScaleType } from '@tonaljs/tonal'
 

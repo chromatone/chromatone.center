@@ -1,10 +1,14 @@
+/**
+ * @module AudioRecorder
+ */
+
 import { Recorder } from 'tone';
 import { useLastChanged, useTimestamp } from '@vueuse/core'
 import { getFilename } from './cast';
 import { ref, computed } from 'vue'
 
 
-export let recorder
+export let recorder: Recorder
 
 export const recording = ref(false)
 

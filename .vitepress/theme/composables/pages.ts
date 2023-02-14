@@ -1,5 +1,6 @@
+//@ts-expect-error
 import routes from '~pages'
-
+//@ts-expect-error
 import { getPages, getPage, getParents, getSiblings } from 'vitepress-pages/browser'
 
 const pages = getPages(routes)

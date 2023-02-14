@@ -1,8 +1,14 @@
+/**
+ * @module Tuner - pitch detection
+ * @description Audio analysis on the fly using Aubio.js and Meyda
+ */
+
 import Aubio from "./aubio.js";
 import { noteColor } from './colors'
 import { initGetUserMedia } from './audio'
 import Meyda from "meyda";
 import { reactive, computed, watch } from 'vue'
+import type { MeydaAnalyzer } from "meyda/dist/esm/meyda-wa";
 
 const noteStrings = [
   "C",
@@ -56,15 +62,23 @@ export const tuner = reactive({
   rms: 0,
 });
 
-const chain = {
-  audioContext: null,
-  analyser: null,
-  scriptProcessor: null,
-  beatProcessor: null,
-  meyda: null,
-  pitchDetector: null,
-  tempoAnalyzer: null
-};
+export interface AubioFeature {
+  do: (data: Uint16Array) => number
+  getConfidence: () => number
+  getBpm: () => number
+}
+
+export interface Chain {
+  audioContext?: AudioContext,
+  analyser?: AnalyserNode,
+  scriptProcessor?: ScriptProcessorNode,
+  beatProcessor?: ScriptProcessorNode,
+  meyda?: MeydaAnalyzer,
+  pitchDetector?: AubioFeature,
+  tempoAnalyzer?: AubioFeature
+}
+
+const chain: Chain = {};
 
 export function useTuner() {
   initGetUserMedia();
@@ -121,7 +135,7 @@ function init() {
 
   tuner.frequencyData = new Uint8Array(chain.analyser.frequencyBinCount);
 
-  Aubio().then(function (aubio: { Pitch: new (arg0: string, arg1: any, arg2: number, arg3: any) => any; Tempo: new (arg0: number, arg1: any, arg2: any) => any; }) {
+  Aubio().then(function (aubio) {
     chain.pitchDetector = new aubio.Pitch(
       "default",
       tuner.bufferSize,
@@ -152,6 +166,7 @@ function start() {
       chain.scriptProcessor.connect(chain.audioContext.destination);
       chain.beatProcessor.connect(chain.audioContext.destination);
       chain.beatProcessor.addEventListener("audioprocess", (e: { inputBuffer: { getChannelData: (arg0: number) => any; }; }) => {
+        if (!chain.tempoAnalyzer) return
         const tempo = chain.tempoAnalyzer.do(e.inputBuffer.getChannelData(0));
         if (tempo) {
           tuner.beat++;
@@ -160,6 +175,7 @@ function start() {
         }
       });
       chain.scriptProcessor.addEventListener("audioprocess", function (event: { inputBuffer: { getChannelData: (arg0: number) => any; }; }) {
+        if (!chain.pitchDetector) return
         const frequency = chain.pitchDetector.do(
           event.inputBuffer.getChannelData(0)
         );

@@ -9,6 +9,12 @@
 		".vitepress/use/*"
 	],
 	"compilerOptions": {
+		"paths": {
+			"#": [
+				".vitepress"
+			]
+		},
+		"esModuleInterop": true,
 		"baseUrl": ".",
 		"target": "esnext",
 		"moduleResolution": "node",
@@ -20,7 +26,7 @@
 		"declarationMap": true,
 		"declarationDir": "lib/types",
 		"skipLibCheck": true,
-		"module": "ESNext",
+		"module": "esnext",
 		"allowSyntheticDefaultImports": true,
 		"outDir": "lib/types"
 	},

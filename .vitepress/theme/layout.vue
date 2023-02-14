@@ -1,7 +1,7 @@
-<script setup>
+<script setup lang="ts">
 import { useRoute, useData } from "vitepress";
 
-import { drawingEnabled, drawingPinned } from '#/theme/components/draw/draw'
+import { drawingEnabled, drawingPinned } from './components/draw/draw'
 
 import { ref, watch } from "vue";
 
@@ -20,7 +20,6 @@ watch(route, () => {
 .theme
   nav-bar(@toggle="openSideBar = !openSideBar")
   nav-view
-
   .main
     side-bar(:open="openSideBar" @close="openSideBar = false")
     home(v-if="$frontmatter.template == 'home'")

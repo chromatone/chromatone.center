@@ -66,7 +66,7 @@ watch(cart, c => {
 	}
 }, { deep: true })
 
-export function addToCart(title, product = {}) {
+export function addToCart(title: string, product = { id: '', price: 0 }) {
 	const { id, price } = product
 	if (cart.value[id]) {
 		cart.value[id].quantity++

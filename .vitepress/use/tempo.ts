@@ -1,5 +1,9 @@
+/**
+ * @module Tempo
+ */
+
 import { reactive, computed, watch, onMounted, shallowReactive, Ref } from "vue";
-import { Transport, start, Frequency, Loop, Sampler, gainToDb, Draw, Time } from "tone";
+import { Transport, start, Frequency, Loop, Sampler, gainToDb, Draw, Time, Limiter } from "tone";
 import { freqPitch } from "./calculations";
 import { noteColor } from './colors'
 import { Note } from "@tonaljs/tonal";
@@ -88,7 +92,13 @@ export const tempo: Tempo = reactive({
 export function useTempo() {
   if (tempo.initialized) return tempo
 
-  const metro = shallowReactive({
+  const metro: {
+    counter: number
+    pluck: Sampler
+    channel: Limiter
+    clock: Loop
+    loop: Loop
+  } = shallowReactive({
     counter: 0,
     pluck: null,
     channel: null,
@@ -162,7 +172,7 @@ export function useTempo() {
 
   watch(
     () => tempo.bpm,
-    (bpm) => Transport.bpm.rampTo(bpm as number, "4n"),
+    (bpm) => Transport.bpm.rampTo(bpm, "4n"),
     { immediate: true }
   );
 

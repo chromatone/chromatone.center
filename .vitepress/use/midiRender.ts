@@ -1,3 +1,7 @@
+/**
+ * @module MidiRender
+ */
+
 import { Writer, Track, NoteEvent } from "midi-writer-js";
 import { Midi } from "@tonejs/midi";
 import { tempo } from "./tempo";

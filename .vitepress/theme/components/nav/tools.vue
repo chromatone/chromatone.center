@@ -2,11 +2,8 @@
 import { useMidi } from "#/use/midi";
 import { noteColor } from '#/use/colors'
 import { useAudio } from "#/use/audio";
-import { useSynth, quantizeModes } from "#/use/synth";
 import { tempo } from '#/use/tempo'
 import { reactive } from 'vue'
-
-const { synthInit } = useSynth();
 
 const { midi } = useMidi();
 const { audio } = useAudio();

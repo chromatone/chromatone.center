@@ -1,3 +1,7 @@
+/**
+ * @module Piano
+ */
+
 import { Sampler, start, now } from 'tone'
 import { createChannel } from './audio'
 
@@ -6,7 +10,7 @@ let piano: Sampler
 
 export function usePiano() {
   init()
-  return { init, piano, pianoOnce, pianoAttack, pianoRelease, pianoReleaseAll }
+  return { init, piano, once: pianoOnce, attack: pianoAttack, release: pianoRelease, releaseAll: pianoReleaseAll }
 }
 
 export function init() {

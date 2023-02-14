@@ -1,3 +1,7 @@
+/**
+ * @module Mouse
+ */
+
 import { useMousePressed, useMouseInElement } from '@vueuse/core'
 import { reactive, ref, onMounted, watch } from 'vue'
 
@@ -24,7 +28,7 @@ export function useSvgMouse() {
     })
   })
 
-  function getCursorPosition(event:MouseEvent, svgElement = svg.value, rect = area.value) {
+  function getCursorPosition(event: MouseEvent, svgElement = svg.value, rect = area.value) {
     if (!svgElement) return
     var svgPoint = svgElement.createSVGPoint()
     svgPoint.x = event.clientX

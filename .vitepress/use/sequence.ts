@@ -1,3 +1,8 @@
+/**
+ * @module Sequence
+ * The beat loops
+ */
+
 import { shallowReactive, reactive, computed, watch, watchEffect, onBeforeUnmount } from 'vue'
 import { tempo } from "./tempo";
 import {
@@ -28,8 +33,6 @@ export interface ClickSampler {
   load: Function
   rec: Function
 }
-
-
 
 // List of all sequences
 export const tracks = reactive([]);

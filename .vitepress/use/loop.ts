@@ -1,3 +1,7 @@
+/**
+ * @module Loop
+ */
+
 import { reactive, computed, watch, watchEffect, onBeforeUnmount } from 'vue'
 import { tempo } from "./tempo";
 import { rotateArray } from "./calculations";
@@ -167,7 +171,7 @@ export function renderMidiFile() {
     midiTrack.addInstrumentName("piano");
     midiTrack.addTrackName("Chromatone grid " + l);
     midiTrack.setTimeSignature(4, 4);
-    loop.steps.forEach((step, s) => {
+    loop.steps.forEach((step: any[], s: number) => {
       step.forEach((code, c) => {
         let sub = c;
         let beat = s;

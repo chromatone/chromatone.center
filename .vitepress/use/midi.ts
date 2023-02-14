@@ -1,3 +1,7 @@
+/**
+ * @module MIDI
+ */
+
 import { useStorage } from '@vueuse/core';
 import { useClamp } from '@vueuse/math';
 import { reactive, computed, watchEffect, onMounted, ref, watch } from 'vue'

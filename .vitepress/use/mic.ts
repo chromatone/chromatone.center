@@ -1,3 +1,7 @@
+/**
+ * @module Microphone
+ */
+
 import { reactive, watch } from 'vue'
 import { useRafFn, useStorage } from "@vueuse/core"
 import { useClamp } from "@vueuse/math"

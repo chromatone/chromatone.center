@@ -1,4 +1,4 @@
-cd .vitepress/dist
+cd dist
 
 git init
 git remote add origin git@github.com:chromatone/chromatone.center.git 

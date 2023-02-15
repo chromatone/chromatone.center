@@ -130,11 +130,12 @@ export function learnCC({ number, channel }: {
   return val
 }
 
-export function playKey(name: string, offset = 0, off?: boolean, velocity: number = 1) {
+export function playKey(name: string, offset = 0, off?: boolean, velocity: number = 1, duration?: number) {
   let noteName = name + (4 + offset + midi.offset)
   const note = new Note(noteName, {
     attack: off ? 0 : velocity,
     release: off ? 0 : velocity,
+    duration
   });
   const ev = {
     type: off ? "noteoff" : "noteon",
@@ -182,6 +183,8 @@ export function useMidi() {
     midiRelease,
     midiOnce,
     setCC,
+    midiPlay,
+    midiStop
   };
 }
 
@@ -387,9 +390,20 @@ export function midiAttack(note: { channel: number; number: string | number }, o
   });
 }
 
-export function midiPlay(note: string | number | number[] | Note | string[] | Note[], options?: { duration?: number; attack?: any; channels?: number | number[]; rawAttack?: number; release?: number; rawRelease?: number; time?: string | number; }) {
+export function midiPlay(
+  note: string | number | number[] | Note | string[] | Note[],
+  options?: {
+    duration?: number;
+    attack?: number;
+    channels?: number | number[];
+    rawAttack?: number;
+    release?: number;
+    rawRelease?: number;
+    time?: string | number;
+  }) {
   if (!midi.out) return;
   WebMidi.outputs.forEach((output) => {
+    console.log(note, options)
     output.playNote(note, {
       channels: midi.channel,
       ...options,

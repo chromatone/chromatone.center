@@ -8,12 +8,17 @@
  */
 export const midiA = 69
 
+export function midiColor(note: number) {
+  const { pitch, octave } = pitchNoteOctave(note - midiA)
+  return pitchColor(pitch, octave)
+}
+
 /**
  * Convert an unbound pitch to 0-11 pitch + octave
  */
-export function pitchNoteOctave(pitch: number): { note: number, octave: number } {
+export function pitchNoteOctave(pitch: number): { pitch: number, octave: number } {
   return {
-    note: pitch > 0 ? pitch % 12 : 12 + (pitch % 12),
+    pitch: pitch > 0 ? pitch % 12 : 12 + (pitch % 12),
     octave: Math.floor(pitch / 12) + 4,
   }
 }
@@ -85,13 +90,6 @@ export function getCircleCoord(n = 0, total = 12, radius = 35, width = 100): { x
 /** Rotate and array by a number of steps */
 export function rotateArray(arr: any[], count = 1) {
   return [...arr.slice(count, arr.length), ...arr.slice(0, count)]
-}
-
-/**
- * Lock a number in a max and min range
- */
-export function clampNum(main: number, delta: number, min = 0, max = 100): number {
-  return Math.max(min, Math.min(main + delta, max));
 }
 
 /**

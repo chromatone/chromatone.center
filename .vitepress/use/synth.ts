@@ -109,9 +109,9 @@ export function synthInit() {
   synth.pan.start()
 }
 
-export function synthOnce(note = 'A4', duration = '8n', time) {
+export function synthOnce(note: string | number | string[], duration: string | number, time?: string | number) {
   if (!synth.poly || synth.state.mute) return synthInit()
-  synth.poly.triggerAttackRelease(note, duration, time)
+  synth.poly.triggerAttackRelease(note || 'A4', duration, 0)
 }
 
 export function synthAttack(note: string | number | string[], velocity?: number) {

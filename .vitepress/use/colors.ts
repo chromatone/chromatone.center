@@ -70,9 +70,9 @@ export function lchToHsl(n = 0, total = 12, a = 1, s = 20, lightness = 60) {
 
 // export const currentColor = useStorage("main-color", "#333333");
 
-export function getColorInfo(color) {
+export function getColorInfo(color: string) {
   const cld = colord(color);
-  let info = {
+  return {
     dark: cld.isDark(),
     hex: cld.toHex(),
     rgb: cld.toRgbString(),
@@ -80,8 +80,7 @@ export function getColorInfo(color) {
     cmyk: cld.toCmykString(),
     hsl: cld.toHslString(),
     lab: cld.toLab(),
-  };
-  return info;
+  }
 }
 
 export function levelColor(

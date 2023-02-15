@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { computed, reactive, watch } from 'vue';
-import { useMidi, useSequence, useTempo, pitchColor } from '../../../.vitepress/use/';
+import { useMidi, useSequence, useTempo, pitchColor, useSynth, synthOnce } from '../../../.vitepress/use/';
 import { Transport, Part } from 'tone'
 import { Midi } from '@tonejs/midi'
 
+const { synth } = useSynth()
 const { midi } = useMidi()
-
 const { seq } = useSequence(null, 1, 'row')
 const tempo = useTempo()
 
@@ -21,7 +21,12 @@ const totalTicks = computed(() => (seq.meter.over * Transport.PPQ * 4 / seq.mete
 const circularTicks = computed(() => tempo.ticks % totalTicks.value)
 
 const part = new Part((time, note) => {
+	// midiPlay(note.midi, {
+	// 	duration: 2,
+	// 	attack: 1
+	// })
 	console.log(note)
+	synthOnce(note.midi, note.duration + 'i')
 }).set({
 	loop: true,
 	loopEnd: '800i',
@@ -32,32 +37,46 @@ const part = new Part((time, note) => {
 
 const activeNotes = reactive({})
 
+const { track, midiFile } = useMidiTracks()
+
 watch(() => midi.note, note => {
-	if (!row.recording) return
+	if (!row.recording || !tempo.playing) return
 	if (note.velocity > 0) {
 		activeNotes[note.number] = circularTicks.value
 	} else {
-		const n = {
-			value: note.number,
-			time: activeNotes?.[note.number] || 0,
-			end: circularTicks.value,
+
+		const start = activeNotes?.[note.number]
+		const stop = circularTicks.value
+		let duration: number
+		if (stop > start) {
+			duration = stop - start
+		} else {
+			duration = totalTicks.value - start + stop
 		}
-		part.add({ time: circularTicks.value + 'i', value: note.number, duration: '16n' })
-		console.log(n)
+		track.addNote({
+			ticks: circularTicks.value,
+			midi: note.number,
+			duration
+		})
+		part.add({
+			time: circularTicks.value + 'i',
+			midi: note.number,
+			duration
+		})
+
 	}
-	// part.add({ time: circularTicks.value + 'i', value: note.number })
 })
 
 function useMidiTracks() {
 	const midiFile = new Midi()
 	midiFile.name = 'Chromatone recording'
 	const track = midiFile.addTrack()
-	track.addNote({
-		ticks: 100,
-		midi: 60,
-		duration: 1
-	})
+	return {
+		midiFile, track
+	}
 }
+
+
 </script>
 
 <template lang='pug'>
@@ -65,10 +84,13 @@ function useMidiTracks() {
 	.text-2xl MIDI ROWS {{ circularTicks }} 
 	.flex.flex-wrap 
 		button(@click="row.recording = !row.recording")
-			.i-la-circle
+			.i-la-circle(v-if="!row.recording")
+			.i-mdi-checkbox-blank-circle(v-else)
 		button(@click="tempo.playing = !tempo.playing")
 			.i-la-play(v-if="!tempo.playing")
 			.i-la-pause(v-else)
+		button(@click="tempo.stopped = Date.now()")
+			.i-la-stop
 		button(@click="seq.meter.over++")
 			.i-la-plus
 		.p-1 {{ seq.meter.over }}
@@ -121,10 +143,13 @@ function useMidiTracks() {
 					stroke-width="0.1"
 					)
 				text(y="3" x="1" font-size="2") {{ Number(step[0].split('-')[0])+1 }}
+	.flex {{ track.notes }}
 	.grid.grid-cols-3.text-xs.gap-2 
 		pre {{ seq }}
 		pre {{ tempo }}
 		pre 
-			p {{ midi.note }}
+			p  {{ track }}
 			p {{ midi.clock }}
+			p {{ midi.note }}
+
 </template>

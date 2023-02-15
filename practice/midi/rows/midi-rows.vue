@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, reactive, watch } from 'vue';
 import { useMidi, useSequence, useTempo, pitchColor, useSynth, synthOnce } from '../../../.vitepress/use/';
-import { Transport, Part } from 'tone'
+import { Transport, Part, Frequency } from 'tone'
 import { Midi } from '@tonejs/midi'
 
 const { synth } = useSynth()
@@ -21,12 +21,8 @@ const totalTicks = computed(() => (seq.meter.over * Transport.PPQ * 4 / seq.mete
 const circularTicks = computed(() => tempo.ticks % totalTicks.value)
 
 const part = new Part((time, note) => {
-	// midiPlay(note.midi, {
-	// 	duration: 2,
-	// 	attack: 1
-	// })
 	console.log(note)
-	synthOnce(note.midi, note.duration + 'i')
+	synthOnce(Frequency(note.midi, "midi").toNote(), note.duration + 'i')
 }).set({
 	loop: true,
 	loopEnd: '800i',
@@ -37,14 +33,16 @@ const part = new Part((time, note) => {
 
 const activeNotes = reactive({})
 
+const allNotes = reactive([])
+
 const { track, midiFile } = useMidiTracks()
 
 watch(() => midi.note, note => {
+	synthOnce(Frequency(note.number, "midi").toNote() + '', '196i')
 	if (!row.recording || !tempo.playing) return
 	if (note.velocity > 0) {
 		activeNotes[note.number] = circularTicks.value
 	} else {
-
 		const start = activeNotes?.[note.number]
 		const stop = circularTicks.value
 		let duration: number
@@ -53,9 +51,12 @@ watch(() => midi.note, note => {
 		} else {
 			duration = totalTicks.value - start + stop
 		}
-		track.addNote({
+		allNotes.push({
 			ticks: circularTicks.value,
 			midi: note.number,
+			channel: note.channel,
+			start,
+			stop,
 			duration
 		})
 		part.add({
@@ -63,7 +64,6 @@ watch(() => midi.note, note => {
 			midi: note.number,
 			duration
 		})
-
 	}
 })
 
@@ -76,12 +76,11 @@ function useMidiTracks() {
 	}
 }
 
-
 </script>
 
 <template lang='pug'>
 .flex.flex-col 
-	.text-2xl MIDI ROWS {{ circularTicks }} 
+	.text-2xl MIDI ROWS {{ circularTicks }}/{{ totalTicks }} 
 	.flex.flex-wrap 
 		button(@click="row.recording = !row.recording")
 			.i-la-circle(v-if="!row.recording")
@@ -91,6 +90,8 @@ function useMidiTracks() {
 			.i-la-pause(v-else)
 		button(@click="tempo.stopped = Date.now()")
 			.i-la-stop
+		button(@click="track.notes = []")
+			.i-la-trash-alt
 		button(@click="seq.meter.over++")
 			.i-la-plus
 		.p-1 {{ seq.meter.over }}
@@ -143,7 +144,7 @@ function useMidiTracks() {
 					stroke-width="0.1"
 					)
 				text(y="3" x="1" font-size="2") {{ Number(step[0].split('-')[0])+1 }}
-	.flex {{ track.notes }}
+	.flex.text-xs.p-4 {{ allNotes }}
 	.grid.grid-cols-3.text-xs.gap-2 
 		pre {{ seq }}
 		pre {{ tempo }}

@@ -111,6 +111,7 @@ export function synthInit() {
 
 export function synthOnce(note: string | number | string[], duration: string | number, time?: string | number) {
   if (!synth.poly || synth.state.mute) return synthInit()
+  console.log(note, duration)
   synth.poly.triggerAttackRelease(note || 'A4', duration, 0)
 }
 

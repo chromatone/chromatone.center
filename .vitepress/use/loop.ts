@@ -167,7 +167,7 @@ export function renderMidiFile() {
   loops.forEach((loop, l) => {
     let division = 512 / loop.metre.under;
     let midiTrack = new Track();
-    midiTrack.setTempo(tempo.bpm, 0);
+    midiTrack.setTempo(tempo.bpm as number, 0);
     midiTrack.addInstrumentName("piano");
     midiTrack.addTrackName("Chromatone grid " + l);
     midiTrack.setTimeSignature(4, 4);

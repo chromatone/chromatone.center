@@ -48,7 +48,6 @@ export function playChromaOnce(chroma: string, tonic: number) {
   notes.forEach((name) => {
     midiOnce(name);
   });
-  //@ts-expect-error conver synth to ts first
   synthOnce(notes, "4n");
   // pianoOnce(notes, '4n')
 }

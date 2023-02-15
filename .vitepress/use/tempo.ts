@@ -15,7 +15,7 @@ import { midi } from "./midi";
 
 export interface Tempo {
   initialized: boolean
-  bpm: number
+  bpm: MaybeComputedRef<number>
   hz: MaybeComputedRef<string>
   note: MaybeComputedRef<string>
   digit: MaybeComputedRef<number>
@@ -49,7 +49,7 @@ export interface Tempo {
 
 export const tempo: Tempo = reactive({
   initialized: false,
-  bpm: useClamp(useStorage("tempo-bpm", 100), 10, 500) as unknown as number,
+  bpm: useClamp(useStorage("tempo-bpm", 100), 10, 500),
   clock: null,
   midiClock: useStorage("midi-clock-out", false),
   blink: false,
@@ -69,12 +69,15 @@ export const tempo: Tempo = reactive({
     ),
   },
   hz: computed(() => (tempo.bpm as number / 60).toFixed(2)),
-  note: computed(() => Note.pitchClass(Frequency(tempo.hz as string).toNote())),
+  //@ts-expect-error
+  note: computed(() => Note.pitchClass(Frequency(tempo.hz).toNote())),
   tune: computed(() => {
-    return Note.pitchClass(tempo.note as string) + 4;
+    //@ts-expect-error
+    return Note.pitchClass(tempo.note) + 4;
   }),
   pitch: computed(() => freqPitch(Number(tempo.hz))),
-  digit: computed(() => (Frequency(tempo.hz as string).toMidi() + 12 * 10 + 3) % 12),
+  //@ts-expect-error
+  digit: computed(() => (Frequency(tempo.hz).toMidi() + 12 * 10 + 3) % 12),
   color: computed(() => noteColor(tempo.digit as number)),
   tap: {
     last: 0,
@@ -147,7 +150,8 @@ export function useTempo() {
     }, "8n").start(0);
 
     useRafFn(() => {
-      tempo.position = Transport.position as string;
+      //@ts-expect-error
+      tempo.position = Transport.position;
       tempo.ticks = Transport.ticks;
       tempo.progress = metro.loop.progress
     })
@@ -168,11 +172,11 @@ export function useTempo() {
 
   });
 
-  watch(() => tempo.volume, (volume) => metro.pluck.volume.rampTo(gainToDb(volume as number)))
+  watch(() => tempo.volume, (volume: number) => metro.pluck.volume.rampTo(gainToDb(volume)))
 
   watch(
     () => tempo.bpm,
-    (bpm) => Transport.bpm.rampTo(bpm, "4n"),
+    (bpm: number) => Transport.bpm.rampTo(bpm, "4n"),
     { immediate: true }
   );
 

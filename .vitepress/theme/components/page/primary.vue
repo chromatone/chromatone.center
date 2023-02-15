@@ -24,6 +24,6 @@ main {
 }
 
 .content-container {
-  @apply flex flex-col flex-1 items-stretch bg-light-400 dark-bg-dark-400;
+  @apply flex flex-col p-0 sm-p-4 flex-1 items-stretch bg-light-400 dark-bg-dark-400;
 }
 </style>

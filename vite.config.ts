@@ -8,6 +8,7 @@ import { VitePWA } from 'vite-plugin-pwa'
 import Pages from "vite-plugin-pages";
 import { extendRoutes } from "vitepress-pages";
 import generateSitemap from 'vite-plugin-pages-sitemap'
+import ViteYaml from '@modyfi/vite-plugin-yaml';
 
 import Unocss from 'unocss/vite'
 import { transformerDirectives, presetIcons, presetUno, extractorSplit } from 'unocss'
@@ -16,12 +17,14 @@ import extractorPug from '@unocss/extractor-pug'
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
+
 //@ts-expect-error
 const dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   base: './',
   plugins: [
+    ViteYaml(),
     Pages({
       dirs: [
         { dir: ".", baseRoute: "." },

@@ -70,6 +70,7 @@
 		"webmidi": "^3.1.4"
 	},
 	"devDependencies": {
+		"@modyfi/vite-plugin-yaml": "^1.0.4",
 		"@iconify/json": "^2.2.19",
 		"@tauri-apps/cli": "2.0.0-alpha.2",
 		"@typescript-eslint/eslint-plugin": "^5.51.0",

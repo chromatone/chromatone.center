@@ -5,6 +5,7 @@ specifiers:
   '@animxyz/vue3': ^0.6.7
   '@gun-vue/composables': ^0.13.1
   '@iconify/json': ^2.2.19
+  '@modyfi/vite-plugin-yaml': ^1.0.4
   '@stripe/stripe-js': ^1.46.0
   '@tauri-apps/cli': 2.0.0-alpha.2
   '@tonaljs/tonal': ^4.10.0
@@ -97,6 +98,7 @@ dependencies:
 
 devDependencies:
   '@iconify/json': 2.2.19
+  '@modyfi/vite-plugin-yaml': 1.0.4_vite@4.1.1
   '@tauri-apps/cli': 2.0.0-alpha.2
   '@typescript-eslint/eslint-plugin': 5.51.0_b635kmla6dsb4frxfihkw4m47e
   '@typescript-eslint/parser': 5.51.0_4vsywjlpuriuw3tl5oq6zy5a64
@@ -1858,6 +1860,19 @@ packages:
   /@mapbox/unitbezier/0.0.0:
     resolution: {integrity: sha512-HPnRdYO0WjFjRTSwO3frz1wKaU649OBFPX3Zo/2WZvuRi6zMiRGui8SnPQiQABgqCf8YikDe5t3HViTVw1WUzA==}
     dev: false
+
+  /@modyfi/vite-plugin-yaml/1.0.4_vite@4.1.1:
+    resolution: {integrity: sha512-qkT0KiR3AQQRfUvDzLv4+1rYAzXj+QmGhAbyUd0Ordf9xynK76i758lk5GiEfxuQxbvdqDaJ9oXkH/KacbSjQQ==}
+    peerDependencies:
+      vite: ^2.6.0 || ^3.0.0 || ^4.0.0
+    dependencies:
+      '@rollup/pluginutils': 5.0.2
+      js-yaml: 4.1.0
+      tosource: 2.0.0-alpha.3
+      vite: 4.1.1
+    transitivePeerDependencies:
+      - rollup
+    dev: true
 
   /@nodelib/fs.scandir/2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -6876,6 +6891,11 @@ packages:
   /torrent-piece/2.0.1:
     resolution: {integrity: sha512-JLSOyvQVLI6JTWqioY4vFL0JkEUKQcaHQsU3loxkCvPTSttw8ePs2tFwsP4XIjw99Fz8EdOzt/4faykcbnPbCQ==}
     dev: false
+
+  /tosource/2.0.0-alpha.3:
+    resolution: {integrity: sha512-KAB2lrSS48y91MzFPFuDg4hLbvDiyTjOVgaK7Erw+5AmZXNq4sFRVn8r6yxSLuNs15PaokrDRpS61ERY9uZOug==}
+    engines: {node: '>=10'}
+    dev: true
 
   /totalist/3.0.0:
     resolution: {integrity: sha512-eM+pCBxXO/njtF7vdFsHuqb+ElbxqtI4r5EAvk6grfAFyJ6IvWlSkfZ5T9ozC6xWw3Fj1fGoSmrl0gUs46JVIw==}

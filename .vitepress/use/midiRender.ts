@@ -27,9 +27,10 @@ export function renderMidi(tracks) {
         }
         midiTrack.addEvent(
           new NoteEvent({
+            //@ts-expect-error
             pitch: (track.accents[s]
               ? notes[t * 2] + "2"
-              : notes[t * 2 + 1] + "2") as 'C2',
+              : notes[t * 2 + 1] + "2"),
             duration: `T${subdivision}`,
             startTick: division * beat + subStep,
             velocity: track.accents[s] || track.accents[code] ? 100 : 64,

@@ -19,6 +19,9 @@ const props = defineProps({
   cities: { type: Array, default: () => [] }
 })
 
+
+
+
 onMounted(() => {
   const cities = props.cities.map((city, c) => {
     let feature = new Feature({

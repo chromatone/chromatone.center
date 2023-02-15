@@ -52,5 +52,5 @@ g.recorder
       foreignObject.p-4(width="110" height="110")
         label.transition-all.duration-200.ease.cursor-pointer.text-4xl.rounded-full.px-4.pb-6.pt-2(:for="sound" class="hover-bg-light-200 dark-(hover-bg-dark-100) bg-light-400 shadow-lg dark-bg-dark-300")
           i-la-upload
-        input.hidden(type="file" :id="sound" @change="recorder.load(sound, ($event.target as HTMLInputElement).files[0])")
+        input.hidden(type="file" :id="sound" @change="recorder.load(sound, ($event.target).files[0])")
 </template>

@@ -31,11 +31,11 @@ export default defineConfig({
       image = 'media_files/cover/' + url.split('/').join('-') + ctx.pageData.frontmatter?.cover
     }
     return [
-      ['meta', { property: 'og:title', content: ctx.pageData.title }],
+      ['meta', { property: 'og:title', content: ctx.pageData.title+ '| Chromatone' }],
       ['meta', { property: 'og:description', content: ctx.pageData.description }],
       ['meta', { property: 'og:url', content: site + url }],
       ['meta', { property: 'og:image', content: site + image }],
-      ['meta', { name: 'twitter:title', content: ctx.pageData.title }],
+      ['meta', { name: 'twitter:title', content: ctx.pageData.title + '| Chromatone' }],
       ['meta', { name: 'twitter:description', content: ctx.pageData.description }],
       ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
       ['meta', { name: 'twitter:site', content: `@${metaData?.author}` }],

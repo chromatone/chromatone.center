@@ -1,6 +1,6 @@
 ---
 title: Counting
-subtitle: A system of regularly occurring sounds that serve to assist with the performance or audition of music by allowing the easy identification of the beat.
+description: A system of regularly occurring sounds that serve to assist with the performance or audition of music by allowing the easy identification of the beat.
 
 date: 2021-10-13
 ---

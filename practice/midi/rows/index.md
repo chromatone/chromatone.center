@@ -1,6 +1,6 @@
 ---
 title: Rows
-subtitle: Measurewise MIDI recorder
+description: Measurewise MIDI recorder
 date: 2020-02-02
 ---
 

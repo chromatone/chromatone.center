@@ -1,6 +1,6 @@
 ---
 title: Nonchord tones
-subtitle: Notes in a piece of music or song that are not part of the chord set out by the harmonic framework
+description: Notes in a piece of music or song that are not part of the chord set out by the harmonic framework
 date: 2021-08-10
 ---
 

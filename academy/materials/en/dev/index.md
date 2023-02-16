@@ -1,6 +1,6 @@
 ---
 title: Chromatone dev blog
-subtitle: Short video streams about the build process of this web-site
+description: Short video streams about the build process of this web-site
 date: 2022-06-18
 ---
 

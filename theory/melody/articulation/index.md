@@ -1,6 +1,6 @@
 ---
 title: Articulation and ornamentation
-subtitle: String techniques and way to play
+description: String techniques and way to play
 date: 2021-09-30
 ---
 

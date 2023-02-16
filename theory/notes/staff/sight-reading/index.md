@@ -1,6 +1,6 @@
 ---
 title: Sight reading
-subtitle: The complexity of perfecting staff notaion reading
+description: The complexity of perfecting staff notaion reading
 
 date: 2021-09-02
 cover: Michelangelo_Caravaggio_026.jpg

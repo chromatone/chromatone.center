@@ -1,6 +1,6 @@
 ---
 title: Scale degrees
-subtitle: Positions of notes on a scale
+description: Positions of notes on a scale
 date: 2021-09-10
 ---
 

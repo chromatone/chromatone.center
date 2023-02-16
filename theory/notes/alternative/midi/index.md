@@ -1,6 +1,6 @@
 ---
 title: MIDI
-subtitle: Standard for digital music communication
+description: Standard for digital music communication
 
 date: 2021-09-12
 cover: GM_Standard_Drum_Map_on_the_keyboard.svg

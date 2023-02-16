@@ -1,6 +1,6 @@
 ---
 title: tsoop
-subtitle: Using interactive visualizations as the base for improvisational music videos
+description: Using interactive visualizations as the base for improvisational music videos
 date: 2021-01-01
 cover: tsoop-room.jpg
 ---

@@ -42,7 +42,7 @@ const bg = computed(() => `url(${props.item?.cover}`);
             .i-radix-icons-text-align-left
         .flex-1
         card-date(v-if="!item?.product",:date="item.lastModified")
-      .text-md.mt-4.mb-2.font-normal.w-full(v-if="item.subtitle") {{ item.subtitle }}
+      .text-md.mt-4.mb-2.font-normal.w-full(v-if="item?.description") {{ item.description }}
       page-buttons(:buttons="item?.buttons" :color="color")
       shop-price.my-2(
         v-if="item?.product"

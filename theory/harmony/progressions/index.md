@@ -1,6 +1,6 @@
 ---
 title: Chord progressions
-subtitle: Successive chord loops as the foundation of modern music
+description: Successive chord loops as the foundation of modern music
 date: 2021-10-12
 
 progressions:

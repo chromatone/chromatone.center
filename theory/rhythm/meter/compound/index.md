@@ -1,6 +1,6 @@
 ---
 title: Compound meters
-subtitle: Rhythmic meters
+description: Rhythmic meters
 
 date: 2021-10-10
 compound:

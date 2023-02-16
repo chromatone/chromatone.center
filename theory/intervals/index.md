@@ -1,6 +1,6 @@
 ---
 title: Intervals
-subtitle: Different kinds of relations between two notes
+description: Different kinds of relations between two notes
 
 cover: chromatic.svg
 date: 2021-09-15

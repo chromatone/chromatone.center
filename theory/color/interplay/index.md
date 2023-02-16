@@ -1,6 +1,6 @@
 ---
 title: Modal interplay
-subtitle: Exploring the physical, physiological, neurological and psychological links between sight and hearing – the two main modalities of human perception.
+description: Exploring the physical, physiological, neurological and psychological links between sight and hearing – the two main modalities of human perception.
 date: 2021-01-19
 cover: logo.svg
 ---

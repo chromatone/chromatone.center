@@ -1,6 +1,6 @@
 ---
 title: Programmable art exhibition 2022
-subtitle: 03 Nov 2022 - 08 Jan 2023 @ Krasnoholmskaya gallery, Moscow, Russia
+description: 03 Nov 2022 - 08 Jan 2023 @ Krasnoholmskaya gallery, Moscow, Russia
 date: 2022-11-03
 cover: program-art.jpg
 ---

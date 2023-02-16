@@ -1,6 +1,6 @@
 ---
 title: Materials
-subtitle: The lectures, courses and other educational content using Chromatone system
+description: The lectures, courses and other educational content using Chromatone system
 date: 2022-05-20
 ---
 

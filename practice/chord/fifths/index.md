@@ -1,6 +1,6 @@
 ---
 title: Circle of fifths
-subtitle: 12 major chords organized in a sequence of perfect fifths along with their relative minors
+description: 12 major chords organized in a sequence of perfect fifths along with their relative minors
 
 date: 2021-06-05
 cover: fifths.png

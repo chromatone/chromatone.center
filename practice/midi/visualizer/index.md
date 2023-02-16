@@ -1,6 +1,6 @@
 ---
 title: File visualizer
-subtitle: Render a MIDI-file to a colorful picture
+description: Render a MIDI-file to a colorful picture
 date: 2021-05-20
 
 cover: midi-visual.svg

@@ -41,5 +41,5 @@ const { midi, } = useMidi();
 
 <route lang="yaml">
 title: Log
-subtitle: by Chromatone 
+description: by Chromatone 
 </route>

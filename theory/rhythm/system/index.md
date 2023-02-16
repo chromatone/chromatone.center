@@ -1,6 +1,6 @@
 ---
 title: Rhythmic systems
-subtitle: Different systems of rhythmic organisation
+description: Different systems of rhythmic organisation
 
 date: 2021-10-02
 links:

@@ -1,6 +1,6 @@
 ---
 title: Common time
-subtitle: Common time and half- and double-time changes
+description: Common time and half- and double-time changes
 
 date: 2021-10-06
 times:

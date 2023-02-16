@@ -1,6 +1,6 @@
 ---
 title: Atonality and serialism
-subtitle: Arnold Schoenberg and his explorations of 12 tone composition techniques
+description: Arnold Schoenberg and his explorations of 12 tone composition techniques
 
 date: 2021-11-12
 ---

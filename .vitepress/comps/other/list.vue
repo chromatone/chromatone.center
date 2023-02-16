@@ -10,8 +10,9 @@ const props = defineProps({
     a.flex.flex-col.py-2(:href="tool.url", target="_blank") 
       .text-xl.mr-2 {{ tool.title }}
       .opacity-80.font-normal.underline {{ tool.url }}
-    .text-md {{ tool.subtitle }}
+    .text-md {{ tool.description }}
 </template>
 
 <style lang="postcss" scoped>
+
 </style>

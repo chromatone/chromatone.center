@@ -1,6 +1,6 @@
 ---
 title: Compass
-subtitle: Explore any combination of 12 tone equal temperament pitches
+description: Explore any combination of 12 tone equal temperament pitches
 
 cover: compass.svg
 date: 2021-04-20

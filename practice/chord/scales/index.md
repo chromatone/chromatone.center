@@ -1,6 +1,6 @@
 ---
 title: Scale chords
-subtitle: Find all available chords for all degrees of any scale
+description: Find all available chords for all degrees of any scale
 date: 2022-06-15
 ---
 

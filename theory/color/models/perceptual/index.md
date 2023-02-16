@@ -1,6 +1,6 @@
 ---
 title: Perceptual color models
-subtitle: Color spaces based on the "standard observer" perception of colors
+description: Color spaces based on the "standard observer" perception of colors
 
 date: 2021-08-08
 cover: CIE_1976_UCS.png

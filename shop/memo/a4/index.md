@@ -1,6 +1,6 @@
 ---
 title: A4 cheat-sheet WIP
-subtitle: A comprehesive guide to colorful notes - WIP
+description: A comprehesive guide to colorful notes - WIP
 cover: a4-scales.svg
 ---
 

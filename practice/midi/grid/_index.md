@@ -1,6 +1,6 @@
 ---
 title: Grid
-subtitle: All MIDI notes on one screen
+description: All MIDI notes on one screen
 date: 2021-05-01
 ---
 

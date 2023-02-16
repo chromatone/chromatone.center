@@ -1,6 +1,6 @@
 ---
 title: Polytonality
-subtitle: The musical use of more than one key simultaneously.
+description: The musical use of more than one key simultaneously.
 date: 2021-09-20
 ---
 

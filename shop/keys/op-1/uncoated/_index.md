@@ -1,6 +1,6 @@
 ---
 title: OP-1 stickers uncoated
-subtitle: Key cap stickers without lamination
+description: Key cap stickers without lamination
 product:
   price: 10
   link: https://ko-fi.com/s/e1242d6365

@@ -1,6 +1,6 @@
 ---
 title: Electromagnetic radiation
-subtitle: EM-waves propagationg through space
+description: EM-waves propagationg through space
 
 date: 2021-08-24
 cover: emwavepropagation.jpg

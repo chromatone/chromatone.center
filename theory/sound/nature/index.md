@@ -1,6 +1,6 @@
 ---
 title: Nature of sound
-subtitle: The acoustic waves - their sources and mediums.
+description: The acoustic waves - their sources and mediums.
 
 date: 2021-08-30
 cover: sound-waves.jpg

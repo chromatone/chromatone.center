@@ -1,6 +1,6 @@
 ---
 title: Modulation
-subtitle: Changing keys during the composition
+description: Changing keys during the composition
 date: 2021-09-12
 ---
 

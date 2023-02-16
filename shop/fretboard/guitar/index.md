@@ -1,6 +1,6 @@
 ---
 title: Guitar fretboard stickers
-subtitle: A set of 21 narrow strips of colorful notes for all the frets
+description: A set of 21 narrow strips of colorful notes for all the frets
 product:
   price: 10
   link: https://ko-fi.com/s/fec06a7b2d

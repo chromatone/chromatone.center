@@ -1,6 +1,6 @@
 ---
 title: Apps
-subtitle: Web-apps and multiplatform tools for visual music explorations
+description: Web-apps and multiplatform tools for visual music explorations
 date: 2022-11-30
 cover: touchme/pie.png
 ---

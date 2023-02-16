@@ -1,6 +1,6 @@
 ---
 title: Ukulele fretboard stickers v.1
-subtitle: A set of 13 narrow strips to be put under your ukulele strings plus a set of 12 circular notes for the side of it’s neck
+description: A set of 13 narrow strips to be put under your ukulele strings plus a set of 12 circular notes for the side of it’s neck
 product:
   price: 8
   link: https://ko-fi.com/s/5e951d8b89

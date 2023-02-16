@@ -65,3 +65,16 @@ Current tasks and progress are open [at this ClickUp project](https://sharing.cl
   - [Essentia.js](https://mtg.github.io/essentia.js/docs/api/index.html) TBD ([WAC2021](https://www.youtube.com/watch?v=p23DfQ86SVM))
 - [OpenLayers](https://github.com/openlayers/openlayers)
 - [RecordRTC](https://recordrtc.org/)
+
+
+----
+P.S.
+
+Small tweak: I directly patched the HTML template of the Vitepress site to have main og:title and og:description tags rendered too. I change it in the file node_modules/vitepress/dist/node/serve-ebe7f464.js. Will try to make a PR for that later.
+
+```html
+  <title>${title}</title>
+  <meta name="og:title" property="og:title" content="${title}">
+  <meta name="description" content="${description}">
+  <meta name="og:description" property="og:description" content="${description}">
+```

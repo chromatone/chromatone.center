@@ -1,6 +1,6 @@
 ---
 title: Subtractive color models
-subtitle: The colors produced by materials absorbing certain light frequencies. RYB and CMYK
+description: The colors produced by materials absorbing certain light frequencies. RYB and CMYK
 
 date: 2021-08-20
 cover: cmyk.svg

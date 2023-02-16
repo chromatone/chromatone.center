@@ -1,6 +1,6 @@
 ---
 title: Pythagorean tuning
-subtitle: 3-limit tuning based on the 3:2 ratio
+description: 3-limit tuning based on the 3:2 ratio
 
 date: 2021-08-20
 cover: Tetractys.svg

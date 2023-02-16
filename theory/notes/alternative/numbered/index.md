@@ -1,6 +1,6 @@
 ---
 title: Numbered notation
-subtitle: A simplified notation using numbers to show scale degrees
+description: A simplified notation using numbers to show scale degrees
 
 date: 2021-09-29
 ---

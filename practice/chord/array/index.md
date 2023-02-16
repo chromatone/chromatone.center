@@ -1,6 +1,6 @@
 ---
 title: Tonal array
-subtitle: Harmonic table note layout - symmetrical hexagonal pattern of interval sequences
+description: Harmonic table note layout - symmetrical hexagonal pattern of interval sequences
 cover: array.png
 ---
 

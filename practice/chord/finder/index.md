@@ -1,6 +1,6 @@
 ---
 title: Finder
-subtitle: Easily find different chords note colors
+description: Easily find different chords note colors
 cover: chord.svg
 ---
 

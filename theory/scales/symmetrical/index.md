@@ -1,6 +1,6 @@
 ---
 title: Symmetrical scales
-subtitle: Modes of limited transpostions and interval cycles
+description: Modes of limited transpostions and interval cycles
 date: 2021-09-12
 
 limited:

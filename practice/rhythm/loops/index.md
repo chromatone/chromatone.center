@@ -1,6 +1,6 @@
 ---
 title: Bars
-subtitle: A linear metronome and polyrhythm exploration tool
+description: A linear metronome and polyrhythm exploration tool
 
 date: 2021-10-01
 cover: metro-bars.png

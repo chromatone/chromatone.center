@@ -1,6 +1,6 @@
 ---
 title: Contemporary art
-subtitle: Artistic collaborations with individuals, groups and institutions
+description: Artistic collaborations with individuals, groups and institutions
 date: 2022-11-20
 cover: suzdal/suzdal.jpg
 ---

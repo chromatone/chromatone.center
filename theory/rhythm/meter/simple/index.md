@@ -1,6 +1,6 @@
 ---
 title: Simple meters
-subtitle: Rhythmic meters
+description: Rhythmic meters
 
 date: 2021-10-12
 simple:

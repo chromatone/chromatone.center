@@ -1,6 +1,6 @@
 ---
 title: Grid
-subtitle: Write note sequences in flexible grids
+description: Write note sequences in flexible grids
 
 date: 2021-11-02
 cover: grid.png

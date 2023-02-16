@@ -1,6 +1,6 @@
 ---
 title: Spectrogram
-subtitle: 2.5D representation on frequency domain in time
+description: 2.5D representation on frequency domain in time
 
 date: 2022-06-16
 cover: spectrogram.png

@@ -1,6 +1,6 @@
 ---
 title: Triads
-subtitle: Chords consisting of three notes
+description: Chords consisting of three notes
 
 date: 2021-09-22
 majmin:

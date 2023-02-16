@@ -1,6 +1,6 @@
 ---
 title: Waveform
-subtitle: Visualization of the sum waveform of any chroma note combination
+description: Visualization of the sum waveform of any chroma note combination
 
 date: 2021-04-12
 cover: chromaform.png

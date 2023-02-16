@@ -1,6 +1,6 @@
 ---
 title: Melody study
-subtitle: What is melody and how can we understand it
+description: What is melody and how can we understand it
 date: 2021-12-01
 ---
 

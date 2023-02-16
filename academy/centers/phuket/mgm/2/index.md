@@ -1,6 +1,6 @@
 ---
 title: MGM#2 @ 2022-12-29
-subtitle: Circular metronome on the table
+description: Circular metronome on the table
 date: 2022-12-29
 cover: cover.png
 ---

@@ -1,6 +1,6 @@
 ---
 title: Academy
-subtitle: People are great in helping other people learn. We teach and inspire diving deep on music.
+description: People are great in helping other people learn. We teach and inspire diving deep on music.
 date: 2021-06-04
 ---
 

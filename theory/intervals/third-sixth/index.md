@@ -1,6 +1,6 @@
 ---
 title: Third and sixth
-subtitle: The imperfect consonant intervals
+description: The imperfect consonant intervals
 date: 2021-09-06
 ---
 

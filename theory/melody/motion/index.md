@@ -1,6 +1,6 @@
 ---
 title: Motion
-subtitle: Melodic motion of the voice
+description: Melodic motion of the voice
 
 date: 2021-11-24
 ---

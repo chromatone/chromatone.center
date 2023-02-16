@@ -1,6 +1,6 @@
 ---
 title: Parsons code
-subtitle: A simple notation used to identify a piece of music through melodic motion
+description: A simple notation used to identify a piece of music through melodic motion
 
 date: 2021-09-17
 ---

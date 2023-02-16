@@ -1,6 +1,6 @@
 ---
 title: OP-1 stickers
-subtitle: Full key cap colors with note letters
+description: Full key cap colors with note letters
 product:
   price: 14
   link: https://ko-fi.com/s/e1242d6365

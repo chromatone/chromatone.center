@@ -1,6 +1,6 @@
 ---
 title: Timbre and overtones
-subtitle: The character of sound
+description: The character of sound
 
 date: 2021-08-26
 cover: overtones.svg

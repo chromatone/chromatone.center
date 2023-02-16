@@ -1,6 +1,6 @@
 ---
 title: Study
-subtitle: Different approaches to harmony in music and everything else
+description: Different approaches to harmony in music and everything else
 date: 2021-11-10
 ---
 

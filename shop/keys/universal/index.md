@@ -1,6 +1,6 @@
 ---
 title: Universal instrument stickers
-subtitle: 144 tiny color accents
+description: 144 tiny color accents
 product:
   price: 14
   link: https://ko-fi.com/s/a2d14d2c25

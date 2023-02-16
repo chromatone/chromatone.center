@@ -1,6 +1,6 @@
 ---
 title: Circles
-subtitle: A circular rhythm and polyrhythm exploration tool
+description: A circular rhythm and polyrhythm exploration tool
 
 date: 2021-10-02
 cover: tempo.png

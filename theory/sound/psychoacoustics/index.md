@@ -1,6 +1,6 @@
 ---
 title: Psychoacoustics
-subtitle: The science of percieved sound
+description: The science of percieved sound
 
 date: 2021-08-29
 cover: hearing.svg

@@ -1,6 +1,6 @@
 ---
 title: Integer notation
-subtitle: System that uses numbers to show notes
+description: System that uses numbers to show notes
 
 date: 2021-09-14
 ---

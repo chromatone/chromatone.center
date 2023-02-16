@@ -1,6 +1,6 @@
 ---
 title: MGM#6 @ 01.27
-subtitle: Bottle guitar and exploring A
+description: Bottle guitar and exploring A
 date: 2023-01-27
 cover: cover.jpg
 ---

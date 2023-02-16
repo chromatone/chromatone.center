@@ -7,7 +7,7 @@ import routes from "~pages";
 const fuse = new Fuse(routes, {
   includeScore: true,
   ignoreLocation: true,
-  keys: ["title", "subtitle", "city", "place"],
+  keys: ["title", "description", "city", "place"],
 });
 
 const input = ref("");
@@ -30,7 +30,7 @@ const candidates = computed(() => fuse.search(input.value));
       :style="{ opacity: 1 - candidate.score / 2 }"
     ) 
       .font-bold {{ candidate.item?.title }}
-      .text-sm.font-normal {{ candidate.item?.subtitle }} 
+      .text-sm.font-normal {{ candidate.item?.description }} 
       .text-sm.inline-flex(v-if="candidate.item?.city || candidate.item?.place")
         .font-bold.whitespace-nowrap {{ candidate.item?.city }} 
         .ml-2 {{ candidate.item?.place }}

@@ -1,6 +1,6 @@
 ---
 title: Don't despond, my soul
-subtitle: 04 Sep 2022 - 06 Nov 2022 @ Myra center, Suzdal, Russia
+description: 04 Sep 2022 - 06 Nov 2022 @ Myra center, Suzdal, Russia
 date: 2022-09-04
 cover: suzdal.jpg
 ---

@@ -1,6 +1,6 @@
 ---
 title: Generative theory of tonal music
-subtitle:
+description:
 date: 2021-11-13
 ---
 

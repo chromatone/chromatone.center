@@ -1,6 +1,6 @@
 ---
 title: Tabulature
-subtitle: Explicit note playing instructions for the instrument
+description: Explicit note playing instructions for the instrument
 
 date: 2021-09-30
 ---

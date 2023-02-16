@@ -1,6 +1,6 @@
 ---
 title: Official
-subtitle: All the ways to communicate Chromatone center
+description: All the ways to communicate Chromatone center
 date: 2021-01-19
 cover: smooth.svg
 org:

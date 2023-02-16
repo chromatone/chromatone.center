@@ -1,6 +1,6 @@
 ---
 title: Light spectrum
-subtitle: Spectrum of solar radiation
+description: Spectrum of solar radiation
 
 date: 2021-08-29
 cover: sun-spectrum.svg

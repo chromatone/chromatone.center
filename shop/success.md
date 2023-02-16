@@ -1,6 +1,6 @@
 ---
 title: Successful purchase
-subtitle: Thank you for your order!
+description: Thank you for your order!
 misc: true
 ---
 

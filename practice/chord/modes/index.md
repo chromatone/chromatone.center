@@ -1,6 +1,6 @@
 ---
 title: Mode degrees
-subtitle: Chords of diatonic mode degrees
+description: Chords of diatonic mode degrees
 date: 2021-06-10
 
 modes:

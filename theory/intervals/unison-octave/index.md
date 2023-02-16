@@ -1,6 +1,6 @@
 ---
 title: Unison and octave
-subtitle: Intervals inside the same pitch class
+description: Intervals inside the same pitch class
 
 date: 2021-09-10
 ---

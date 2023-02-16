@@ -14,8 +14,8 @@ export const metaData = {
   locale: "en",
   icon: "/media/logo/holologo.svg",
   image: "/media/logo/cardtw.png",
-  author: "davay",
-  twitter: "www.chromatone.center",
+  author: "davay42",
+  twitter: "Chromatone.center",
   tags: "color, music, stickers, posters, theory, webapp, science",
 };
 
@@ -27,7 +27,7 @@ export default defineConfig({
   lang: metaData.locale,
   head: [
     ["script", { async: 'true', defer: 'true', "data-website-id": "0abe9f0f-2fc2-4df1-8f42-0844ddcb2042", src: "https://stats.defucc.me/umami.js" }],
-
+    ['meta', { name: 'robots', content: 'index, follow' }],
     ['meta', { name: 'author', content: metaData?.author }],
     ['meta', { name: 'keywords', content: metaData?.tags }],
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
@@ -61,22 +61,22 @@ export default defineConfig({
     ['meta', { name: 'HandheldFriendly', content: 'True' }],
     ['meta', { name: 'MobileOptimized', content: '320' }],
     ['meta', { name: 'theme-color', content: '#0ea5e9' }],
-
-    ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
-    ['meta', { name: 'twitter:site', content: metaData?.site }],
-    ['meta', { name: 'twitter:title', value: metaData?.twitter }],
-    ['meta', { name: 'twitter:description', value: metaData.description }],
+    ['meta', { name: 'twitter:card', content: 'summary' }],
+    ['meta', { name: 'twitter:site', content: `@${metaData.author}` }],
+    ['meta', { name: 'twitter:creator', content: `@${metaData.author}` }],
+    // ['meta', { name: 'twitter:title', value: metaData?.twitter }],
+    // ['meta', { name: 'twitter:description', value: metaData.description }],
     //@ts-ignore
     ['meta', { name: 'twitter:image', content: metaData?.image }],
 
-    ['meta', { property: 'og:type', content: 'website' }],
+    ['meta', { property: 'og:type', content: 'article' }],
     ['meta', { property: 'og:locale', content: metaData.locale }],
     ['meta', { property: 'og:site', content: metaData.site }],
     ['meta', { property: 'og:site_name', content: metaData.title }],
-    ['meta', { property: 'og:title', content: metaData.title }],
+    // ['meta', { property: 'og:title', content: metaData.title }],
     //@ts-ignore
     ['meta', { property: 'og:image', content: metaData?.image }],
-    ['meta', { property: 'og:description', content: metaData.description }],
+    // ['meta', { property: 'og:description', content: metaData.description }],
 
     // ['link', { rel: 'dns-prefetch', href: 'https://fonts.gstatic.com' }],
     // ['link', { rel: 'preconnect', crossorigin: 'anonymous', href: 'https://fonts.gstatic.com' }],

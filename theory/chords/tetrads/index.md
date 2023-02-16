@@ -1,6 +1,6 @@
 ---
 title: Tetrads
-subtitle: All musically meaningful combinations of 4 notes
+description: All musically meaningful combinations of 4 notes
 
 date: 2021-09-10
 tertian:

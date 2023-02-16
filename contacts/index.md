@@ -1,6 +1,6 @@
 ---
 title: Contacts
-subtitle: The project and it's author
+description: The project and it's author
 date: 2021-01-01
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Sound
-subtitle: Exploration of sound and hearing
+description: Exploration of sound and hearing
 
 date: 2021-12-18
 ---

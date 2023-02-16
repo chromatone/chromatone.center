@@ -1,6 +1,6 @@
 ---
 title: Cancelled purchase
-subtitle: May be try again?
+description: May be try again?
 misc: true
 ---
 

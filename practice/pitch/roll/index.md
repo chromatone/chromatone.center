@@ -1,6 +1,6 @@
 ---
 title: Roll
-subtitle: Plot main pitch of any incoming audio on an endless roll
+description: Plot main pitch of any incoming audio on an endless roll
 
 cover: roll.png
 date: 2022-06-12

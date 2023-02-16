@@ -1,6 +1,6 @@
 ---
 title: Equal loudness contour
-subtitle: Build you own loudness contours
+description: Build you own loudness contours
 date: 2021-11-12
 
 cover: loudness.png

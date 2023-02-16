@@ -1,6 +1,6 @@
 ---
 title: Ukulele fretboard stickers
-subtitle: A sheet of transparent vinyl with precut uv-printed stickers
+description: A sheet of transparent vinyl with precut uv-printed stickers
 product:
   price: 14
   link: https://ko-fi.com/s/9ed8d980c0

@@ -34,7 +34,7 @@ const lightColor = computed(() => lchToHsl(siblings.value.index, siblings.value.
       .mr-2 {{ page?.title }}
       .flex-1
       .mx-2.my-4.text-6xl(v-if="page?.emoji") {{ page.emoji }}
-    .font-bold.mt-2.mb-4(v-if="page?.subtitle") {{ page?.subtitle }}
+    .font-bold.mt-2.mb-4(v-if="page?.description") {{ page.description }}
     page-buttons(:buttons="page?.buttons")
     .absolute.-bottom-2rem.right-2rem
       shop-price(

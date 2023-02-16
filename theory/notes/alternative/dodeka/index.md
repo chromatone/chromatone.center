@@ -1,6 +1,6 @@
 ---
 title: Dodeka
-subtitle: Keyboard and notation redesigned for consistence and ease of use
+description: Keyboard and notation redesigned for consistence and ease of use
 
 date: 2021-09-18
 cover: dodeka-keys.jpg

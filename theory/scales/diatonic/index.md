@@ -1,6 +1,6 @@
 ---
 title: Diatonic scales
-subtitle: The seven 7-notes set rotations
+description: The seven 7-notes set rotations
 
 date: 2021-09-15
 diatonic:

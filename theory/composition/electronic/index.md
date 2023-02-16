@@ -1,6 +1,6 @@
 ---
 title: Electronic minimalism
-subtitle: Ways to produce compelling electronic compositions
+description: Ways to produce compelling electronic compositions
 date: 2021-07-03
 ---
 

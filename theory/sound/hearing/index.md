@@ -1,6 +1,6 @@
 ---
 title: Human auditory system
-subtitle: Explore the intricate and inredibly complicated mechanism of converting acoustic vibrations to electrical nerve signals.
+description: Explore the intricate and inredibly complicated mechanism of converting acoustic vibrations to electrical nerve signals.
 
 date: 2021-08-30
 cover: auditory-system.png

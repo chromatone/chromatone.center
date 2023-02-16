@@ -1,6 +1,6 @@
 ---
 title: Color models
-subtitle: Different ways to measure and quantify colors
+description: Different ways to measure and quantify colors
 
 date: 2021-08-10
 cover: color-models.svg

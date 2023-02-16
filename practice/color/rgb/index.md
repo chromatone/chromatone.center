@@ -1,6 +1,6 @@
 ---
 title: RGB
-subtitle: Additive color mixer
+description: Additive color mixer
 date: 2021-10-22
 
 cover: rgb.png

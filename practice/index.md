@@ -1,6 +1,6 @@
 ---
 title: Practice
-subtitle: Web apps for music education and independent research
+description: Web apps for music education and independent research
 date: 2021-07-02
 ---
 

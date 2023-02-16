@@ -1,6 +1,6 @@
 ---
 title: Educational content
-subtitle: Commercial partnerships, institutional associations and artistic collaborations
+description: Commercial partnerships, institutional associations and artistic collaborations
 date: 2022-11-10
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Pentatonic scales
-subtitle: 5 very consonant notes to play easily together
+description: 5 very consonant notes to play easily together
 date: 2021-09-16
 
 pentatonics:

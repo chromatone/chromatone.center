@@ -1,6 +1,6 @@
 ---
 title: Bilinear notation
-subtitle: Upgraded staff notation by Jose A. Sotorrio
+description: Upgraded staff notation by Jose A. Sotorrio
 date: 2021-09-25
 ---
 

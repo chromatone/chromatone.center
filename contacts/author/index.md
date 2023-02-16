@@ -1,6 +1,6 @@
 ---
 title: Author
-subtitle:  Hi! I'm Denis Starov - the founder of Chromatone system
+description:  Hi! I'm Denis Starov - the founder of Chromatone system
 
 date: 2021-01-10
 cover: starov.jpg

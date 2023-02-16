@@ -1,6 +1,6 @@
 ---
 title: Music video production
-subtitle: Building tools to see the music playing and using them to create complex multimedia experiences
+description: Building tools to see the music playing and using them to create complex multimedia experiences
 date: 2022-11-01
 ---
 

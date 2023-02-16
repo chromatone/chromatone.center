@@ -1,6 +1,6 @@
 ---
 title: Song structure
-subtitle: The form variations of a songwriting process
+description: The form variations of a songwriting process
 date: 2021-10-12
 ---
 

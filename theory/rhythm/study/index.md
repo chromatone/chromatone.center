@@ -1,6 +1,6 @@
 ---
 title: Rhythm, timeline, ostinato
-subtitle: Definitions of the temporal dimension in music
+description: Definitions of the temporal dimension in music
 
 date: 2021-10-16
 ---

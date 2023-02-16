@@ -1,6 +1,6 @@
 ---
 title: Musical form
-subtitle: The structure of a musical composition or performance
+description: The structure of a musical composition or performance
 
 date: 2021-11-02
 links:

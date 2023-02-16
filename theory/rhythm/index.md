@@ -1,6 +1,6 @@
 ---
 title: Rhythm
-subtitle: Musical exploration of time
+description: Musical exploration of time
 date: 2021-08-24
 
 links:

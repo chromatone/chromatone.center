@@ -17,7 +17,7 @@ card-box.px-4.py-3.ml-4.sm-mx-auto.mr-16.mb-16.flex.flex-col.max-w-65ch.gap-2.bg
   v-slot="{ color }"
   )
   .text-md.font-bold {{page?.title}}
-  //- .text-sm.mb-2 {{page?.subtitle}}
+  //- .text-sm.mb-2 {{page?.description}}
   .flex(v-if="page?.product")
     shop-price.flex-1(
       :product="page?.product" 

@@ -1,6 +1,6 @@
 ---
 title: Synesthesia
-subtitle: Neurological phenomenon of interlinked sensory signals
+description: Neurological phenomenon of interlinked sensory signals
 date: 2021-08-25
 
 cover: Number_Form-synesthesia.jpg

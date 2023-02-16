@@ -1,6 +1,6 @@
 ---
 title: ABC notation
-subtitle: A shorthand form of musical notation for computers
+description: A shorthand form of musical notation for computers
 
 date: 2021-09-15
 ---

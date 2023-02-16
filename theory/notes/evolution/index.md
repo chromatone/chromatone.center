@@ -1,6 +1,6 @@
 ---
 title: Evolution of european notation systems
-subtitle: From neumes to staves
+description: From neumes to staves
 date: 2021-08-19
 
 cover: hooks_and_banners.png

@@ -1,6 +1,6 @@
 ---
 title: Follow and share
-subtitle: Keep in touch with our updates and share your creations with others!
+description: Keep in touch with our updates and share your creations with others!
 buttons:
   - url: https://www.instagram.com/chromatone.center
     text: "chromatone.center"

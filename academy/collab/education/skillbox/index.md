@@ -1,6 +1,6 @@
 ---
 title: SkillBox video course
-subtitle: Full course of visual music theory
+description: Full course of visual music theory
 date: 2021-01-01
 cover: course.webp
 ---

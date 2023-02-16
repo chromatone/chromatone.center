@@ -1,6 +1,6 @@
 ---
 title: Jam session
-subtitle: A visual guide for collaborative music events
+description: A visual guide for collaborative music events
 date: 2023-01-01
 ---
 

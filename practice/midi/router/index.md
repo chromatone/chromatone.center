@@ -1,6 +1,6 @@
 ---
 title: Router
-subtitle: Forward all MIDI messages from one device to another
+description: Forward all MIDI messages from one device to another
 
 cover: midi-router.png
 date: 2022-06-08

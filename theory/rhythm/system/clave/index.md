@@ -1,6 +1,6 @@
 ---
 title: Afro-Cuban clave
-subtitle: African, Cuban and Latin American rhythm patterns
+description: African, Cuban and Latin American rhythm patterns
 
 date: 2021-10-21
 urls:

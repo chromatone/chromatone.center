@@ -1,6 +1,6 @@
 ---
 title: Educators
-subtitle: Teachers and guides ready to help you find your own way into music
+description: Teachers and guides ready to help you find your own way into music
 date: 2022-07-03
 buttons:
   - url: https://airtable.com/shrFbtdCJR07jDsaM

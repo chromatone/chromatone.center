@@ -1,6 +1,6 @@
 ---
 title: Chromatic staff
-subtitle: Extension of the regular staff to have room for all the 12 notes
+description: Extension of the regular staff to have room for all the 12 notes
 
 date: 2021-09-22
 ---

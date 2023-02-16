@@ -26,7 +26,7 @@ const color = computed(() => lchToHsl(props.i, props.total));
     .text-5xl.mb-4(
       :style="{ color: lchToHsl(i, total) }"
     ) {{ item.title }}
-    .font-normal {{ item.subtitle }}
+    .font-normal {{ item.description }}
   .flex.flex-wrap.py-2
     a.cursor-pointer.m-2.shadow-md.rounded-xl.border-4.no-underline(
       :style="{ borderColor: lchToHsl(p, pages[item.path].length) }",

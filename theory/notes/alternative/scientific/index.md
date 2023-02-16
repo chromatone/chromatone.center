@@ -1,6 +1,6 @@
 ---
 title: Standard pitch notation
-subtitle: American SPN
+description: American SPN
 
 date: 2021-09-14
 ---

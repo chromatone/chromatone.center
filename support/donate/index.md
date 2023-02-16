@@ -1,6 +1,6 @@
 ---
 title: Sponsorship
-subtitle: You can support Chromatone development as a free and open source ecosytem of visual music
+description: You can support Chromatone development as a free and open source ecosytem of visual music
 date: 2022-04-17
 buttons:
   - url: https://github.com/sponsors/davay42

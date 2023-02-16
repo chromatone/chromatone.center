@@ -1,6 +1,6 @@
 ---
 title: MGM#5 @ 01.19
-subtitle: New guitar strings
+description: New guitar strings
 date: 2023-01-19
 cover: music.jpg
 ---

@@ -1,6 +1,6 @@
 ---
 title: Frequency and pitch
-subtitle: The human perception of sound frequency as a place of it at a scale
+description: The human perception of sound frequency as a place of it at a scale
 
 date: 2021-08-28
 ---

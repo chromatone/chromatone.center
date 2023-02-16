@@ -1,6 +1,6 @@
 ---
 title: Emancipation of dissonance
-subtitle: The process of gradual acceptance of the more dissonant intervals as consonant and musical
+description: The process of gradual acceptance of the more dissonant intervals as consonant and musical
 
 date: 2021-03-04
 ---

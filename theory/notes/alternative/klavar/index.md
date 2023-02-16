@@ -1,6 +1,6 @@
 ---
 title: Klavarskribo
-subtitle: Vertical chromatic staff notation by Cornelis Pot
+description: Vertical chromatic staff notation by Cornelis Pot
 
 date: 2021-09-20
 ---

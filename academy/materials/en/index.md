@@ -1,6 +1,6 @@
 ---
 title: In English
-subtitle: Educational content for international audience
+description: Educational content for international audience
 date: 2022-06-18
 ---
 

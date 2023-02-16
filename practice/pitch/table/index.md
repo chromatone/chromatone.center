@@ -1,6 +1,6 @@
 ---
 title: Table
-subtitle: Every possible note in a huge expandable table
+description: Every possible note in a huge expandable table
 
 cover: table.png
 date: 2022-06-02

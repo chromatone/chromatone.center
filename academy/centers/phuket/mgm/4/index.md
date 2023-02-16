@@ -1,6 +1,6 @@
 ---
 title: MGM#4 @ 01.12
-subtitle: Inventing the format
+description: Inventing the format
 date: 2023-01-12
 cover: cover.jpg
 ---

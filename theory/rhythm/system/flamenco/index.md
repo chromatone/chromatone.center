@@ -1,6 +1,6 @@
 ---
 title: Flamenco compás
-subtitle: A variety of both contemporary and traditional musical styles typical of southern Spain
+description: A variety of both contemporary and traditional musical styles typical of southern Spain
 
 date: 2021-10-16
 urls:

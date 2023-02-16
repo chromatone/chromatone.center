@@ -1,6 +1,6 @@
 ---
 title: Harmonic movements
-subtitle: Ways to move chords
+description: Ways to move chords
 date: 2021-09-02
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Equal temperament
-subtitle: 12-TET and other equal divisions of an octave
+description: 12-TET and other equal divisions of an octave
 date: 2021-08-10
 
 cover: zhu-zaiyu-1154.jpg

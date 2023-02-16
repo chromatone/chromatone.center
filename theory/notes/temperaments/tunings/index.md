@@ -1,6 +1,6 @@
 ---
 title: Tunings comparison
-subtitle: Ways to juxtapose and compare different tuning methods side by side
+description: Ways to juxtapose and compare different tuning methods side by side
 date: 2021-08-05
 cover: tuning-circle.svg
 ---

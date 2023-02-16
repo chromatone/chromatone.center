@@ -1,6 +1,6 @@
 ---
 title: Chromatic spectrum
-subtitle: The model in which musical octave meets color spectrum.
+description: The model in which musical octave meets color spectrum.
 cover: spectrum.svg
 date: 2021-08-24
 ---

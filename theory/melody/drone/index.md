@@ -1,6 +1,6 @@
 ---
 title: Drone
-subtitle: A harmonic or monophonic effect or accompaniment where a note or chord is continuously sounded throughout most or all of a piece
+description: A harmonic or monophonic effect or accompaniment where a note or chord is continuously sounded throughout most or all of a piece
 cover: s-l1600.jpg
 date: 2021-10-14
 ---

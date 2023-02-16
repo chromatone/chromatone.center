@@ -1,6 +1,6 @@
 ---
 title: Interval cycles
-subtitle: Collection of pitch classes created from a sequence of the same interval class
+description: Collection of pitch classes created from a sequence of the same interval class
 date: 2021-02-03
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Chords with 5 notes and more
-subtitle: Extended chords, added tone chords and other complex interval combinations
+description: Extended chords, added tone chords and other complex interval combinations
 
 date: 2021-09-01
 five:

@@ -1,6 +1,6 @@
 ---
 title: Piano roll
-subtitle: A common form of music in modern DAWs
+description: A common form of music in modern DAWs
 
 date: 2021-09-13
 ---

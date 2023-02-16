@@ -1,6 +1,6 @@
 ---
 title: Contribute code
-subtitle: Post issues and submit pull requests at GitHub
+description: Post issues and submit pull requests at GitHub
 date: 2022-03-17
 buttons:
   - url: https://github.com/chromatone

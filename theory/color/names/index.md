@@ -1,6 +1,6 @@
 ---
 title: Color names
-subtitle: Know how to name any color of 12 equally spaced hues
+description: Know how to name any color of 12 equally spaced hues
 
 date: 2021-08-01
 cover: color-names.svg

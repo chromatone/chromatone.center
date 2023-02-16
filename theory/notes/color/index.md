@@ -1,6 +1,6 @@
 ---
 title: Chromatone color notation
-subtitle: Different ways to implementing the color-frequency equations for writing and reading music
+description: Different ways to implementing the color-frequency equations for writing and reading music
 
 date: 2021-06-01
 cover: midi-roll.png

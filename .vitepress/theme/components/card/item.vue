@@ -22,10 +22,10 @@ const props = defineProps({
             slot
         .flex-1
         card-date.mr-2(v-if="!item?.product",:date="item.lastModified")
-      .subtitle(
-        v-if="item.subtitle" 
+      .description(
+        v-if="item.description" 
 
-        ) {{ item.subtitle }}
+        ) {{ item.description }}
       shop-price.float-left(
         v-if="item?.product"
         :title="item?.title"
@@ -53,7 +53,7 @@ const props = defineProps({
   @apply flex items-center flex-wrap mt-2 !no-underline;
 }
 
-.subtitle {
+.description {
   @apply mt-0 mb-2 p-2 font-normal w-full no-underline;
 }
 

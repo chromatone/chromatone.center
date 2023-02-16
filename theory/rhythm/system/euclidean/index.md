@@ -1,6 +1,6 @@
 ---
 title: Euclidean rhythms
-subtitle: Mathematical algorithm to create well-formed rhythm patterns
+description: Mathematical algorithm to create well-formed rhythm patterns
 date: 2022-05-11
 cover: 8.png
 ---

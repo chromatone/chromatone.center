@@ -1,6 +1,6 @@
 ---
 title: Drum rudiments
-subtitle: Basic patterns played with drum sticks
+description: Basic patterns played with drum sticks
 
 date: 2021-06-30
 ---

@@ -1,6 +1,6 @@
 ---
 title: Pulse, beat and tempo
-subtitle: Time feeling of humans
+description: Time feeling of humans
 
 date: 2021-10-16
 ---

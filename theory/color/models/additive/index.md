@@ -1,6 +1,6 @@
 ---
 title: Additive color models
-subtitle: The colors created by combining colored lights
+description: The colors created by combining colored lights
 date: 2021-08-18
 cover: rgb.svg
 ---

@@ -1,81 +1,81 @@
 ---
 title: Other online music tools
-subtitle: There's a plenty of opportunities to dive into different aspects of music theory and practice online
+description: There's a plenty of opportunities to dive into different aspects of music theory and practice online
 
 cover: other.png
 links:
   - url: https://github.com/willianjusten/awesome-audio-visualization
     title: Awesome audio visualization
-    subtitle: A huge collection of materials on music visualization. With free webapps and downloads.
+    description: A huge collection of materials on music visualization. With free webapps and downloads.
   - url: https://musiclab.chromeexperiments.com/Song-Maker/
     title: Google song maker
-    subtitle: To make a song, add notes by clicking the grid. Then, share your song with a link. You can also use a MIDI keyboard or sing a note into your mic.
+    description: To make a song, add notes by clicking the grid. Then, share your song with a link. You can also use a MIDI keyboard or sing a note into your mic.
   - url: https://experiments.withgoogle.com/seeing-music
     title: Seeing music Google experiment
-    subtitle: This is a tool for visualizing music. You can turn on your mic to sing or play sounds. You can also drop in your own audio or video file. Some modes – like Hilbert Scope and Spectrogram – show the subtle textures of sound. Others show the paths and shapes of different melodies.
+    description: This is a tool for visualizing music. You can turn on your mic to sing or play sounds. You can also drop in your own audio or video file. Some modes – like Hilbert Scope and Spectrogram – show the subtle textures of sound. Others show the paths and shapes of different melodies.
   - url: https://learningmusic.ableton.com/
     title: Ableton - learning music
-    subtitle: In these lessons, you'll learn the basics of music making. No prior experience or equipment is required; you'll do everything right here in your browser.
+    description: In these lessons, you'll learn the basics of music making. No prior experience or equipment is required; you'll do everything right here in your browser.
   - url: http://www.sengpielaudio.com/Calculations03.htm
     title: Music calculations online
-    subtitle: A collection of useful music math tools of Alexander Sengpiel
+    description: A collection of useful music math tools of Alexander Sengpiel
   - url: https://www.earbeater.com
     title: Free Online Ear Training
-    subtitle: With EarBeater you can train your musical ear in more than 200 individual exercises covering intervals, chords and scales.
+    description: With EarBeater you can train your musical ear in more than 200 individual exercises covering intervals, chords and scales.
   - url: http://saebekassebil.github.io/teoria/
     title: Teoria
-    subtitle: It's a demo of a JS lib for music theory. It shows the compound waveform of any given chord. Once it sould be ported to Chromatone.center
+    description: It's a demo of a JS lib for music theory. It shows the compound waveform of any given chord. Once it sould be ported to Chromatone.center
   - url: https://songcraft.io/
     title: Songcraft
-    subtitle: The first all-in-one online platform for songwriters. 5 songs limited free plan.
+    description: The first all-in-one online platform for songwriters. 5 songs limited free plan.
   - url: https://github.com/hisschemoller/music-pattern-generator
     title: Music pattern generator
-    subtitle: Music Pattern Generator is an app to create musical rhythms. It sends MIDI data, so it won’t make any sounds by itself. For that you need to connect it to MIDI soft- or hardware that can handle MIDI data to produce sound.
+    description: Music Pattern Generator is an app to create musical rhythms. It sends MIDI data, so it won’t make any sounds by itself. For that you need to connect it to MIDI soft- or hardware that can handle MIDI data to produce sound.
   - url: https://shorstok.github.io/3k-project/
     title: Инструменты для преподавания и исследования музыки на русском
-    subtitle: Кварто-квинтовый круг, аппликатуры, клавиши, с возможностью скачать нарисованное
+    description: Кварто-квинтовый круг, аппликатуры, клавиши, с возможностью скачать нарисованное
   - url: http://www.gootar.com/
     title: Gootar
-    subtitle: A huge online toolbox for guitar players by goddess 401
+    description: A huge online toolbox for guitar players by goddess 401
   - url: https://www.abcjs.net/
     title: Computer readable notation
-    subtitle: A format for typing music information in plain text files
+    description: A format for typing music information in plain text files
   - url: https://www.themusiclab.org/
     title: The Music Lab
-    subtitle: We do citizen science to learn how the human mind creates and perceives music. Pick a game to get started!
+    description: We do citizen science to learn how the human mind creates and perceives music. Pick a game to get started!
   - url: https://ukebuddy.com/
     title: Uke Buddy
-    subtitle: A comprehensive tool to explore ukulele chords, scales and song tabs.
+    description: A comprehensive tool to explore ukulele chords, scales and song tabs.
   - url: https://www.sequencer64.com
     title: Sequencer64
-    subtitle: Sequencer64 is a progressive web application that allows you to quickly sequence a 64-step pattern for a 9-sound sampler.
+    description: Sequencer64 is a progressive web application that allows you to quickly sequence a 64-step pattern for a 9-sound sampler.
   - url: https://tonejs.github.io/demos
     title: Tone.js demos
-    subtitle: A collection of interactive WebAudio online apps built with Tone.js library
+    description: A collection of interactive WebAudio online apps built with Tone.js library
   - url: https://www.webaudiomodules.org/wamsynths/obxd
     title: Online synths by WebAudioModules
-    subtitle: OBXD and other synths and effects
+    description: OBXD and other synths and effects
   - url: https://farplay.io/
     title: FarPlay
-    subtitle: The easiest, fastest & safest low-latency audio on the internet.
+    description: The easiest, fastest & safest low-latency audio on the internet.
   - url: https://noisecraft.app/
     title: NoiseCraft
-    subtitle: NoiseCraft is an open source, visual programming language and platform for sound synthesis and music making, with the goal of creating a community for the open exchange of musical ideas.
+    description: NoiseCraft is an open source, visual programming language and platform for sound synthesis and music making, with the goal of creating a community for the open exchange of musical ideas.
   - url: https://gibber.cc
     title: Gibber
-    subtitle: Audio-visual live coding web environment
+    description: Audio-visual live coding web environment
   - url: https://glicol.org/
     title: Glicol
-    subtitle: Next-generation computer music language
+    description: Next-generation computer music language
   - url: https://ludotune.com/
     title: Ludotune
-    subtitle: A 3D musical toy for making music with cubes
+    description: A 3D musical toy for making music with cubes
   - url: http://science-to-touch.com/LaLaLab/
     title: "Science to touch: LaLaLab"
-    subtitle: A collection of visual mathematical tools to explore music possibilities
+    description: A collection of visual mathematical tools to explore music possibilities
   - url: http://www.musanim.com/HarmonicColoring/
     title: Harmonic Coloring
-    subtitle: A method for assigning colors to musical pitches
+    description: A method for assigning colors to musical pitches
 date: 2018-09-08
 ---
 

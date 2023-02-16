@@ -1,6 +1,6 @@
 ---
 title: Composers
-subtitle: Interviews and retrospectives
+description: Interviews and retrospectives
 date: 2021-10-02
 ---
 

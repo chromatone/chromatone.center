@@ -1,6 +1,6 @@
 ---
 title: Profile
-subtitle: Get info for any possible chroma combination
+description: Get info for any possible chroma combination
 
 date: 2021-05-12
 cover: profile.png

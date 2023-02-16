@@ -1,6 +1,6 @@
 ---
 title: Chord-scale system
-subtitle: Harmony oragnization using different scales for the sounding chord
+description: Harmony oragnization using different scales for the sounding chord
 date: 2021-08-12
 ---
 

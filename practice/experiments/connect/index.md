@@ -1,6 +1,6 @@
 ---
 title: Connect
-subtitle: Experiments with Gun connectivity
+description: Experiments with Gun connectivity
 date: 2022-01-01
 ---
 

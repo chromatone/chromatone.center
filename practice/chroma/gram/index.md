@@ -1,6 +1,6 @@
 ---
 title: Сhromagram
-subtitle: Visual representation of any audio chroma content
+description: Visual representation of any audio chroma content
 date: 2022-06-12
 cover: chromagram.png
 ---

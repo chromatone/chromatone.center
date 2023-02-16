@@ -1,6 +1,6 @@
 ---
 title: Complex meters
-subtitle: Asymmetric, irregular, unusual, or odd meters
+description: Asymmetric, irregular, unusual, or odd meters
 
 date: 2021-10-08
 complex:

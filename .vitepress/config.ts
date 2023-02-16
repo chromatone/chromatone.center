@@ -4,7 +4,7 @@ import mdLinks from "markdown-it-external-links";
 
 const isProd = process.env.NODE_ENV === "production";
 
-const site = isProd ? "https://www.chromatone.center" : "http://localhost:3000";
+const site = isProd ? "https://chromatone.center/" : "http://localhost:3000";
 
 export const metaData = {
   title: "Chromatone",
@@ -25,6 +25,24 @@ export default defineConfig({
   titleTemplate: metaData.titleTemplate,
   description: metaData.description,
   lang: metaData.locale,
+  transformHead(ctx) {
+    const url = ctx.pageData.relativePath.split('index.md')[0]
+    let image = metaData?.image
+    if (ctx.pageData.frontmatter?.cover) {
+      image = 'media_files/cover/' + url.split('/').join('-') + ctx.pageData.frontmatter?.cover
+    }
+    return [
+      ['meta', { property: 'og:title', content: ctx.pageData.title }],
+      ['meta', { property: 'og:description', content: ctx.pageData.description }],
+      ['meta', { property: 'og:url', content: site + url }],
+      ['meta', { property: 'og:image', content: site + image }],
+      ['meta', { name: 'twitter:title', content: ctx.pageData.title }],
+      ['meta', { name: 'twitter:description', content: ctx.pageData.description }],
+      ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
+      ['meta', { name: 'twitter:site', content: `@${metaData?.author}` }],
+      ['meta', { name: 'twitter:creator', content: `@${metaData?.author}` }],
+    ]
+  },
   head: [
     ["script", { async: 'true', defer: 'true', "data-website-id": "0abe9f0f-2fc2-4df1-8f42-0844ddcb2042", src: "https://stats.defucc.me/umami.js" }],
     ['meta', { name: 'robots', content: 'index, follow' }],
@@ -61,11 +79,6 @@ export default defineConfig({
     ['meta', { name: 'HandheldFriendly', content: 'True' }],
     ['meta', { name: 'MobileOptimized', content: '320' }],
     ['meta', { name: 'theme-color', content: '#0ea5e9' }],
-    ['meta', { name: 'twitter:card', content: 'summary' }],
-    ['meta', { name: 'twitter:site', content: `@${metaData.author}` }],
-    ['meta', { name: 'twitter:creator', content: `@${metaData.author}` }],
-    // ['meta', { name: 'twitter:title', value: metaData?.twitter }],
-    // ['meta', { name: 'twitter:description', value: metaData.description }],
     //@ts-ignore
     ['meta', { name: 'twitter:image', content: metaData?.image }],
 
@@ -73,14 +86,6 @@ export default defineConfig({
     ['meta', { property: 'og:locale', content: metaData.locale }],
     ['meta', { property: 'og:site', content: metaData.site }],
     ['meta', { property: 'og:site_name', content: metaData.title }],
-    // ['meta', { property: 'og:title', content: metaData.title }],
-    //@ts-ignore
-    ['meta', { property: 'og:image', content: metaData?.image }],
-    // ['meta', { property: 'og:description', content: metaData.description }],
-
-    // ['link', { rel: 'dns-prefetch', href: 'https://fonts.gstatic.com' }],
-    // ['link', { rel: 'preconnect', crossorigin: 'anonymous', href: 'https://fonts.gstatic.com' }],
-    // ['link', { href: 'https://fonts.googleapis.com/css2?family=Commissioner:wght@200;400;500;600&display=swap', rel: 'stylesheet' }],
   ],
   themeConfig: {
     logo: "/media/logo/holologo.svg",

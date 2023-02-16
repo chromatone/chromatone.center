@@ -13,12 +13,11 @@ export const metaData = {
   site,
   locale: "en",
   icon: "/media/logo/holologo.svg",
-  image: "/media/logo/cardtw.png",
+  image: "media/logo/cardtw.png",
   author: "davay42",
   twitter: "Chromatone.center",
   tags: "color, music, stickers, posters, theory, webapp, science",
 };
-
 
 export default defineConfig({
   title: metaData.title,
@@ -90,7 +89,7 @@ export default defineConfig({
   themeConfig: {
     logo: "/media/logo/holologo.svg",
     //@ts-expect-error custom icon
-    icon: "/media/logo/icon.svg",
+    icon: metaData.icon,
     repo: "https://github.com/chromatone/chromatone.center",
   },
   markdown: {

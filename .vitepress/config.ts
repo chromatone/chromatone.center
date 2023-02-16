@@ -40,6 +40,7 @@ export default defineConfig({
       ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
       ['meta', { name: 'twitter:site', content: `@${metaData?.author}` }],
       ['meta', { name: 'twitter:creator', content: `@${metaData?.author}` }],
+      ['meta', { name: 'twitter:image', content: site + image }],
     ]
   },
   head: [
@@ -78,9 +79,6 @@ export default defineConfig({
     ['meta', { name: 'HandheldFriendly', content: 'True' }],
     ['meta', { name: 'MobileOptimized', content: '320' }],
     ['meta', { name: 'theme-color', content: '#0ea5e9' }],
-    //@ts-ignore
-    ['meta', { name: 'twitter:image', content: metaData?.image }],
-
     ['meta', { property: 'og:type', content: 'article' }],
     ['meta', { property: 'og:locale', content: metaData.locale }],
     ['meta', { property: 'og:site', content: metaData.site }],

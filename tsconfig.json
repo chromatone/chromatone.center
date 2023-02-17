@@ -8,17 +8,14 @@
 		".vitepress/use/*"
 	],
 	"compilerOptions": {
+		"baseUrl": ".",
 		"paths": {
 			"#/*": [
-				"./*"
-			],
-			"#/use/*": [
-				"./use/*"
+				".vitepress/*"
 			]
 		},
 		"jsx": "preserve",
 		"esModuleInterop": true,
-		"baseUrl": "",
 		"target": "esnext",
 		"moduleResolution": "node",
 		"resolveJsonModule": true,

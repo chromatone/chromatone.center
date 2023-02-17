@@ -133,6 +133,7 @@ declare module '@vue/runtime-core' {
     SideBar: typeof import('./.vitepress/theme/components/side/bar.vue')['default']
     SidePanel: typeof import('./.vitepress/theme/components/side/panel.vue')['default']
     SideSearch: typeof import('./.vitepress/theme/components/side/search.vue')['default']
+    SideSideBarLevel: typeof import('./.vitepress/theme/components/side/SideBarLevel.vue')['default']
     Spacer: typeof import('./.vitepress/theme/components/global/spacer.vue')['default']
     StateDark: typeof import('./.vitepress/comps/state/dark.vue')['default']
     StateSound: typeof import('./.vitepress/comps/state/sound.vue')['default']

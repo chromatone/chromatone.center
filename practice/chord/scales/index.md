@@ -1,7 +1,7 @@
 ---
 title: Scale chords
 description: Find all available chords for all degrees of any scale
-date: 2022-06-15
+date: 2020-06-15
 ---
 
 <script setup>

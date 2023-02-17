@@ -3,7 +3,7 @@ import { rotateArray } from '#/use/calculations'
 import { noteNames, chordType, scaleType, notes } from '#/use/theory'
 import { playChroma, stopChroma, globalScale } from '#/use/chroma'
 import { chromaColorMix, noteColor } from "#/use/colors"
-import { Progression, Chord } from "@tonaljs/tonal"
+import { Progression, Chord } from "tonal"
 import { Frequency } from 'tone'
 import { synthOnce } from '#/use/synth'
 import { midiOnce } from '#/use/midi'
@@ -75,6 +75,4 @@ function playNote(note = 0, octave = 0) {
     ) 
 </template>
 
-<style lang="postcss" scoped>
-
-</style>
+<style lang="postcss" scoped></style>

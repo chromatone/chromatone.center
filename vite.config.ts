@@ -17,7 +17,6 @@ import extractorPug from '@unocss/extractor-pug'
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-
 //@ts-expect-error
 const dirname = path.dirname(fileURLToPath(import.meta.url));
 

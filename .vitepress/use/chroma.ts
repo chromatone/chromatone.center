@@ -8,7 +8,7 @@ import { midiPlay, midiStop, midiOnce } from "./midi";
 import { synthOnce, synthAttack, synthRelease } from "./synth";
 import { rotateArray } from "./calculations";
 import { notes } from './theory'
-import { Note, ScaleType, Scale, Pcset } from "@tonaljs/tonal";
+import { Note, ScaleType, Scale, Pcset } from "tonal";
 import { reactive, computed } from 'vue'
 import { useStorage } from "@vueuse/core";
 import { useClamp } from "@vueuse/math";

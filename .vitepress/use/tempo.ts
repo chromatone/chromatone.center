@@ -6,7 +6,7 @@ import { reactive, computed, watch, onMounted, shallowReactive, Ref } from "vue"
 import { Transport, start, Frequency, Loop, Sampler, gainToDb, Draw, Time, Limiter } from "tone";
 import { freqPitch } from "./calculations";
 import { noteColor } from './colors'
-import { Note } from "@tonaljs/tonal";
+import { Note } from "tonal";
 import { useStorage, onKeyStroke, useRafFn, RemovableRef, MaybeComputedRef } from "@vueuse/core";
 import { createChannel } from './audio'
 import { useClamp } from "@vueuse/math";

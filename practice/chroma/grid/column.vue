@@ -2,7 +2,7 @@
 import { globalScale } from '#/use/chroma'
 import { noteColor } from "#/use/colors"
 import { Frequency } from 'tone'
-import { Chord } from "@tonaljs/tonal"
+import { Chord } from "tonal"
 import { useClamp } from '@vueuse/math';
 import { computed, watch } from 'vue';
 

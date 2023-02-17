@@ -14,7 +14,7 @@ export default defineConfig({
   plugins: [
   ],
   optimizeDeps: {
-    include: ['vue', '@vueuse/core', 'tone', '@tonaljs/tonal', 'colord'],
+    include: ['vue', '@vueuse/core', 'tone', 'tonal', 'colord'],
   },
   publicDir: false,
   resolve: {

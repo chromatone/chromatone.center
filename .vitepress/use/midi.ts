@@ -403,7 +403,6 @@ export function midiPlay(
   }) {
   if (!midi.out) return;
   WebMidi.outputs.forEach((output) => {
-    console.log(note, options)
     output.playNote(note, {
       channels: midi.channel,
       ...options,

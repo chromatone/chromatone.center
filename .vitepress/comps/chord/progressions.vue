@@ -2,7 +2,7 @@
 import { rotateArray } from '#/use/calculations'
 import { noteNames } from '#/use/theory'
 import { globalScale, playChroma, stopChroma } from '#/use/chroma'
-import { Progression, Chord } from "@tonaljs/tonal";
+import { Progression, Chord } from "tonal";
 import { noteColor } from '#/use/colors'
 import { reactive, computed } from 'vue'
 import { useStorage } from '@vueuse/core';

@@ -1,5 +1,4 @@
 {
-	"allowJs": true,
 	"vueCompilerOptions": {
 		"plugins": [
 			"@volar/vue-language-plugin-pug"
@@ -10,12 +9,16 @@
 	],
 	"compilerOptions": {
 		"paths": {
-			"#": [
-				".vitepress"
+			"#/*": [
+				"./*"
+			],
+			"#/use/*": [
+				"./use/*"
 			]
 		},
+		"jsx": "preserve",
 		"esModuleInterop": true,
-		"baseUrl": ".",
+		"baseUrl": "",
 		"target": "esnext",
 		"moduleResolution": "node",
 		"resolveJsonModule": true,

@@ -1,6 +1,6 @@
-<script setup lang="ts">
-import { useTempo, tap } from "../../use/tempo";
-import { useTuner } from "../../use/tuner";
+<script setup>
+import { useTempo, tap } from "#/use/tempo";
+import { useTuner } from "#/use/tuner";
 const tempo = useTempo();
 const { init, tuner } = useTuner();
 
@@ -50,9 +50,9 @@ function drag(event) {
         <div class="flex-1 -mt-2 font-bold font-mono">{{ tempo.hz }}</div>
         <div class="text-sm mt-1px absolute bottom-3">Hz</div>
       </button><control-knob class="font-bold w-full" style="grid-area: NOTE" v-model="tempo.volume" :min="0" :max="1"
-        :step="0.01" param="VOL" :cc="16" v-tooltip.top="'Metronome volume'"></control-knob><button
-        style="grid-area: TAP" @mousedown.stop.prevent="tap()" @touchstart.stop.prevent="tap()"
-        :class="{ active: tempo.tap.last }" v-tooltip.bottom="'Tap tempo'">
+        :step="0.01" param="VOL" :cc="16" v-tooltip.top="'Metronome volume'"></control-knob><button style="grid-area: TAP"
+        @mousedown.stop.prevent="tap()" @touchstart.stop.prevent="tap()" :class="{ active: tempo.tap.last }"
+        v-tooltip.bottom="'Tap tempo'">
         <div class="i-fluent-tap-double-20-regular mt-1"></div>
       </button><button style="grid-area: TAPPED" v-tooltip.bottom="'Click to set tap tempo'"
         @click="tempo.tap.bpm && tempo.tap.last ? tempo.bpm = tempo.tap.bpm : tap()">

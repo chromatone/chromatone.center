@@ -352,9 +352,9 @@ function ccIn(ev: ControlChangeMessageEvent): {
   raw: number
   port: string
 } {
-  if (midi.filter[ev.controller.number]) return;
+  if (midi.filter[ev.message.channel]) return;
   let cc = {
-    channel: ev.controller.number,
+    channel: ev.message.channel,
     timestamp: ev.timestamp,
     number: ev.controller.number,
     value: Number(ev.value),

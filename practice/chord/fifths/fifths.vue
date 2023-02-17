@@ -29,7 +29,9 @@ function getRadius(qual) {
 function playChord(note, qual = 'major') {
   let type = qual == 'minor' ? 'm' : ''
   let chord = Chord.get(note + type)
+
   let nts = Note.names(chord.notes.map(n => Note.simplify(n) + 4))
+  console.log(chord, nts)
   playNote(nts)
 
 }
@@ -150,6 +152,4 @@ function stopChord(note, qual = 'major') {
         ) {{ step }}
 </template>
 
-<style lang="postcss" scoped>
-
-</style>
+<style lang="postcss" scoped></style>

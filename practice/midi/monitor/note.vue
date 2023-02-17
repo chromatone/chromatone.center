@@ -45,11 +45,13 @@ function change() {
   @mousemove="change()"
   @touchmove="change()"
   :style="{ backgroundColor: noteColor(note.pitch, note.octA - 1, note.velocity) }"
-  ) {{ note.name }}{{ note.accidental }} {{ note?.number }}
+  ) 
+    .font-bold {{ note?._name }}{{ note?._accidental }} 
+    .text-sm {{ note?.number }}
 </template>
 
 <style lang="postcss" scoped>
 .note {
-  @apply flex-1 p-2 m-1px transition-all duration-200 ease-out items-center flex justify-center cursor-pointer text-light-100 select-none;
+  @apply flex-1 gap-1 p-2 m-1px transition-all duration-200 ease-out items-center flex justify-center cursor-pointer text-light-100 select-none;
 }
 </style>

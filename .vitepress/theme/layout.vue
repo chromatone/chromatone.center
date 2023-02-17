@@ -11,9 +11,6 @@ const route = useRoute();
 // sidebar
 const openSideBar = ref(false);
 
-watch(route, () => {
-  openSideBar.value = false;
-});
 </script>
 
 <template lang="pug">

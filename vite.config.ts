@@ -22,13 +22,14 @@ const dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   base: './',
+  envPrefix: ['VITE_', 'TAURI_'],
   plugins: [
     ViteYaml(),
     Pages({
       dirs: [
         { dir: ".", baseRoute: "." },
       ],
-      exclude: ['**/node_modules/**/*.*', '**/!(index).md', '**/shop/success.md', '**/shop/cancel.md'],
+      exclude: ['**/node_modules/**/*.*', '**/!(index).md', '**/shop/success.md', '**/shop/cancel.md', 'src-tauri/**/*.*'],
       extensions: ['md'],
       ...extendRoutes({
         root: dirname,

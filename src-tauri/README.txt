@@ -10,3 +10,8 @@ https://github.com/chromatone/chromatone.center here's the repo with tauri build
 There's the crate [midir](https://github.com/Boddlnagg/midir) and the starter. 
 
 Some elaborations [by boonier](https://gist.github.com/boonier/9ea4deb9c0a8d38f124536680943d95b)
+
+
+## Resources
+ - [ Build a Menubar app with Tauri ](https://www.youtube.com/watch?v=Jm5dzewv3gA) 
+  - https://github.com/rust-adventure/yt-tauri-menubar-example

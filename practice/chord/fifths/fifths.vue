@@ -50,10 +50,6 @@ const chordShapes = {
   major: [0, 4, 7, 11]
 }
 
-const chords = computed(() => {
-  const list = Object.keys(midi.activeNotes).map(n => Midi.midiToNoteName(n, { sharps: true }))
-  return list.length > 2 ? Chord.detect(list) : []
-})
 
 function getRadius(qual) {
   return qual == 'minor' ? 1 : 0;
@@ -106,7 +102,7 @@ function stopChord(note, qual = 'major', inv) {
       dominant-baseline="middle"
       font-weight="bold"
       )
-      text {{ chords[0] }}
+      text {{ midi.guessChords[0] }}
     g.cursor-pointer(
       transform="translate(10,90)"
       @click="state.seventh = !state.seventh"

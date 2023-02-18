@@ -13,5 +13,17 @@ Some elaborations [by boonier](https://gist.github.com/boonier/9ea4deb9c0a8d38f1
 
 
 ## Resources
- - [ Build a Menubar app with Tauri ](https://www.youtube.com/watch?v=Jm5dzewv3gA) 
+- [tauri plugins video](https://www.youtube.com/watch?v=pTJhJGbjFzg)
+- [midir Docs](https://docs.rs/midir/latest/midir/#modules)
+- [ Build a Menubar app with Tauri ](https://www.youtube.com/watch?v=Jm5dzewv3gA) 
   - https://github.com/rust-adventure/yt-tauri-menubar-example
+
+## Audio
+- https://rustwasm.github.io/docs/wasm-bindgen/examples/web-audio.html
+- https://timdaub.github.io/wasm-synth/ 
+  + https://timdaub.github.io/2020/02/19/wasm-synth/
+  + https://github.com/TimDaub/wasm-synth
+- https://github.com/a-cordier/wasm-audio
+- https://github.com/stephanepericat/rust-wasm-simple-synth
+- https://github.com/h1romas4/rust-synth-emulation
+- https://github.com/wildyeast/wasm-fm-synth

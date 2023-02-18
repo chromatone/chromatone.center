@@ -302,3 +302,9 @@ cities:
   - city: Seattle, WA
     country: USA
     coord: [47.651177482229784, -122.40659301697279]
+  - city: Lisboa
+    country: Portugal
+    coord: [38.72492867297487, -9.15467683729957]
+  - city: Portland, OR
+    country: USA
+    coord: [45.52109957021652, -122.69760518805865]

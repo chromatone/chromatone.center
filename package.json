@@ -35,6 +35,7 @@
 		"td": "tauri dev"
 	},
 	"dependencies": {
+		"@tauri-apps/api": "^1.2.0",
 		"@animxyz/core": "0.6.6",
 		"@animxyz/vue3": "^0.6.7",
 		"@gun-vue/composables": "^0.13.1",

@@ -10,6 +10,7 @@ import { WebMidi, Note, Forwarder, ControlChangeMessageEvent, } from "webmidi"
 import type { Input, Output, Event, Message, MessageEvent, InputChannel } from 'webmidi'
 import { setupKeyboard } from './keyboard'
 import Ola from "ola";
+import { Chord, Midi } from 'tonal'
 
 export interface MidiInterface {
   enabled: boolean
@@ -43,6 +44,7 @@ export interface MidiInterface {
   forwards: Record<string, Record<string, boolean>>
   channels: Record<number, { notes: {}, activeNotes: {}, cc: {} }>
   activeNotes: Record<number, boolean>
+  guessChords: string[]
   note: {
     pitch: number
     channel: number
@@ -101,6 +103,10 @@ export const midi: MidiInterface = reactive({
       }
     }
     return notes
+  }),
+  guessChords: computed(() => {
+    const list = Object.keys(midi.activeNotes).map(n => Midi.midiToNoteName(Number(n), { sharps: true }))
+    return list.length > 2 ? Chord.detect(list) : []
   }),
   activeChroma: computed((): number[] => {
     let chroma = new Array(12)

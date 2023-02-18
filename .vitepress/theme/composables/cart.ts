@@ -2,6 +2,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import { useStorage } from '@vueuse/core';
 import { useClamp } from '@vueuse/math';
 import { ref, computed, reactive, watch } from 'vue'
+import { open as openWindow } from '@tauri-apps/api/shell'
 
 
 const stripeKey = 'pk_live_51M1WfLBJnUXQERocrGtVUDvfIdzMmecoAClLVFLSi2VG2cNF2kS6bVsR4uUVtMYvusv4lkBMaDuOzgVJUuNMWndm00CVS3obG3'
@@ -92,14 +93,22 @@ export async function checkout() {
 		price: delivery.selected.id,
 		quantity: 1
 	})
+	try {
+		await stripe.redirectToCheckout({
+			lineItems,
+			mode: 'payment',
+			successUrl: 'https://chromatone.center/shop/success.html',
+			cancelUrl: 'https://chromatone.center/shop/cancel.html',
+			shippingAddressCollection: { allowedCountries: allowedCountries() }
+		})
+	} catch (e) {
+		//@ts-expect-error
+		if (window?.__TAURI_IPC__) {
+			openWindow('https://chromatone.center/shop/')
+		}
+	}
 
-	await stripe.redirectToCheckout({
-		lineItems,
-		mode: 'payment',
-		successUrl: 'https://chromatone.center/shop/success.html',
-		cancelUrl: 'https://chromatone.center/shop/cancel.html',
-		shippingAddressCollection: { allowedCountries: allowedCountries() }
-	})
+
 }
 
 function allowedCountries() {

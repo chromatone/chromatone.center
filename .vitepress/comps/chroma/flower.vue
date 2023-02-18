@@ -73,6 +73,12 @@ watchThrottled(loaded, l => {
     :class="{customize: scheme.customize}"
     )
     .i-la-cog
+  transition(name="fade")
+    .absolute.mt-18.text-xl.opacity-70.hover-opacity-100.font-bold(
+      :key="midi.guessChords[0]"
+      v-tooltip.bottom="midi.guessChords.length>1 && 'or ' + midi.guessChords.slice(1).join(', ')"
+      :aria-label="'Guessed chord: '+ midi.guessChords[0]"
+      ) {{ midi.guessChords[0] }}
 
   button.absolute.opacity-50.hover-opacity-100.transition.cursor-pointer.bottom-0.left-5.flex.items-center.gap-1.bg-light-100.dark-bg-dark-100.rounded-xl.p-2.shadow-lg(
     v-tooltip.bottom="'Copy custom schema'"

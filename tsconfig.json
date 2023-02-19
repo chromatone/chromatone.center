@@ -1,9 +1,4 @@
 {
-	"vueCompilerOptions": {
-		"plugins": [
-			"@volar/vue-language-plugin-pug"
-		]
-	},
 	"include": [
 		".vitepress/use/*"
 	],
@@ -11,13 +6,13 @@
 		"baseUrl": ".",
 		"paths": {
 			"#/*": [
-				".vitepress/*"
+				"./.vitepress/*"
 			]
 		},
 		"jsx": "preserve",
 		"esModuleInterop": true,
 		"target": "esnext",
-		"moduleResolution": "node",
+		"moduleResolution": "Node",
 		"resolveJsonModule": true,
 		"allowJs": true,
 		"isolatedModules": true,
@@ -29,6 +24,11 @@
 		"module": "esnext",
 		"allowSyntheticDefaultImports": true,
 		"outDir": "lib/types"
+	},
+	"vueCompilerOptions": {
+		"plugins": [
+			"@volar/vue-language-plugin-pug"
+		]
 	},
 	"typedocOptions": {
 		"entryPoints": [

@@ -6,7 +6,7 @@ date: 2021-06-02
 
 <script setup>
 import mapOl from './map-ol.vue'
-import map from './map.yml'
+import map from '#/db/map.yml'
 </script>
 
 We are the growing global community of more than **{{map.cities.length +10}}** musicians worldwide who've already implemented Chromatone into our daily music practice. Join us today!

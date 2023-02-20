@@ -6,7 +6,7 @@ date: 2021-05-30
 
 <script setup> 
 import mapGlobe from './globe.vue'
-import map from '../shop/map.yml'
+import map from '#/db/map.yml'
 const dots = map.cities.map(city=>city.coord)
 </script>
 

@@ -4,8 +4,8 @@ import { useClamp } from '@vueuse/math';
 import { ref, computed, reactive, watch } from 'vue'
 import { open as openWindow } from '@tauri-apps/api/shell'
 
-
-const stripeKey = 'pk_live_51M1WfLBJnUXQERocrGtVUDvfIdzMmecoAClLVFLSi2VG2cNF2kS6bVsR4uUVtMYvusv4lkBMaDuOzgVJUuNMWndm00CVS3obG3'
+//@ts-expect-error
+const stripeKey = import.meta.env.VITE_STRIPE_KEY
 
 
 export interface CartItem {

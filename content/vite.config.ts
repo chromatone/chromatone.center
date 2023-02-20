@@ -26,6 +26,7 @@ export default defineConfig(
   {
     base: './',
     envPrefix: ['VITE_', 'TAURI_'],
+    envDir: '../',
     plugins: [
       ViteYaml(),
       Pages({
@@ -41,7 +42,7 @@ export default defineConfig(
             icon: { width: 200, height: 200, fit: "inside" }
           }
         }),
-        onRoutesGenerated: routes => (generateSitemap({ routes, hostname: 'https://chromatone.center' })),
+        onRoutesGenerated: routes => (generateSitemap({ routes, hostname: 'https://chromatone.center', dest: "content/public" })),
       }),
       Components({
         dirs: ['../components', '../theme/components'],

@@ -35,9 +35,6 @@ bower_components
 .DS_Store
 Thumbs.db
 
-# Ignore built ts files
-dist/
-
 # Don't ignore example files
 !test/assets/**
 # ignore yarn.lock
@@ -61,5 +58,5 @@ lib
 public/sitemap.xml
 public/media_files
 
-support/code/**
-!support/code/index.md
+content/support/code/**
+content/!support/code/index.md

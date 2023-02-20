@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { isDark } from '#/theme/composables/state'
 import { levelColor } from "#/use/colors"
 import { useClamp } from '@vueuse/math';
@@ -34,6 +34,7 @@ const bar = reactive({
 });
 
 function dragParam(drag) {
+  //@ts-expect-error
   bar.inner += (props.vector[0] * drag.delta[0] + props.vector[1] * drag.delta[1]) / props.ratio
 }
 
@@ -124,6 +125,4 @@ g.bar.cursor-pointer(
         text {{ modelValue }}  
 </template>
 
-<style lang="postcss" scoped>
-
-</style>
+<style lang="postcss" scoped></style>

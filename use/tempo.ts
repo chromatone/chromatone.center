@@ -7,19 +7,21 @@ import { Transport, start, Frequency, Loop, Sampler, gainToDb, Draw, Time, Limit
 import { freqPitch } from "./calculations";
 import { noteColor } from './colors'
 import { Note } from "tonal";
-import { useStorage, onKeyStroke, useRafFn, RemovableRef, MaybeComputedRef } from "@vueuse/core";
+import { useStorage, onKeyStroke, useRafFn, RemovableRef, MaybeComputedRef, MaybeRef } from "@vueuse/core";
 import { createChannel } from './audio'
 import { useClamp } from "@vueuse/math";
 import { WebMidi } from "webmidi";
 import { midi } from "./midi";
 
-export interface Tempo {
+
+export const tempo: {
   initialized: boolean
-  bpm: MaybeComputedRef<number>
+  bpm: MaybeRef<number>
   hz: MaybeComputedRef<string>
   note: MaybeComputedRef<string>
   digit: MaybeComputedRef<number>
   color: MaybeComputedRef<string>
+  pitch: MaybeComputedRef<number>
   clock?: number
   midiClock: MaybeComputedRef<boolean>
   blink: boolean
@@ -45,9 +47,7 @@ export interface Tempo {
     bpm: number
     tap: Function
   }
-}
-
-export const tempo: Tempo = reactive({
+} = reactive({
   initialized: false,
   bpm: useClamp(useStorage("tempo-bpm", 100), 10, 500),
   clock: null,

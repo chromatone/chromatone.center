@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { tempo } from '#/use/tempo'
 import { useTuner } from '#/use/tuner'
 const { init, tuner } = useTuner();

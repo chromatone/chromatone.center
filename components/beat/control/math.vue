@@ -45,6 +45,4 @@ g.math.cursor-pointer(
 ) {{ tempo.note }}
 </template>
 
-<style lang="postcss" scoped>
-
-</style>
+<style lang="postcss" scoped></style>

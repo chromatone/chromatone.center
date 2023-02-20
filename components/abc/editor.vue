@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { useStorage, watchDebounced } from '@vueuse/core'
 import { state } from './state'
-import { notes } from '../../use/theory'
-import { noteColor } from "../../use/colors"
+import { notes } from '#/use/theory'
+import { noteColor } from "#/use/colors"
 import tunes from './tunes'
 import { onMounted } from 'vue'
 const notation = useStorage('abc-notes', tunes['kalinka']);

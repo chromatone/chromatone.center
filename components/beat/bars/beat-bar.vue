@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import BarStep from './step.vue'
 import { isDark } from '#/theme/composables/state'
 import { useSequence } from '#/use/sequence'
@@ -20,6 +20,7 @@ const props = defineProps({
 
 const pad = computed(() => (1000 - props.width) / 2)
 
+//@ts-expect-error
 const { seq } = useSequence(props.loop, props.order, 'bars');
 
 const sounds = ['A', 'B', 'C', 'D', 'E']
@@ -40,8 +41,8 @@ watch(() => props.loop, l => {
 watch(() => props.accents, accents => {
   if (accents) {
     accents.split('').forEach((sign, m) => {
-      seq.mutes[m] = (sign == 0 || sign == '.')
-      seq.accents[m] = (sign == 2 || sign == 'X')
+      seq.mutes[m] = (sign == '0' || sign == '.')
+      seq.accents[m] = (sign == '2' || sign == 'X')
     })
   }
 }, { immediate: true });
@@ -167,7 +168,7 @@ svg.w-full(
           :x1="proportion * (step) * width + pad"
           :x2="proportion * (seq.activeSteps[s + 1] || seq.steps.length) * width + pad"
           stroke-width="6"
-          :stroke="levelColor((step + (tempo.pitch / 12) * seq.steps.length), seq.steps.length, 1)"
+          :stroke="levelColor((step + (Number(tempo.pitch) / 12) * seq.steps.length), seq.steps.length, 1)"
         )
       bar-step(
         v-for="(step, s) in seq.steps"
@@ -198,7 +199,7 @@ svg.w-full(
         :cx="proportion * (seq.steps.length) * width + pad"
         :cy="100"
         :r="!seq.mutes[1] ? 8 : 4"
-        :fill="!seq.mutes[1] ? noteColor(tempo.pitch, 4) : 'currentColor'"
+        :fill="!seq.mutes[1] ? noteColor(Number(tempo.pitch), 4) : 'currentColor'"
       )
     g.bottom(transform="translate(40,290)")
       beat-control-bar.volume(

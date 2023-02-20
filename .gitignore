@@ -56,7 +56,7 @@ lib
 **/.obsidian/
 
 public/sitemap.xml
-public/media_files
+content/public/media_files
 
 content/support/code/**
 !content/support/code/index.md

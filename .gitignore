@@ -35,9 +35,6 @@ bower_components
 .DS_Store
 Thumbs.db
 
-# Ignore built ts files
-dist/
-
 # Don't ignore example files
 !test/assets/**
 # ignore yarn.lock
@@ -47,7 +44,8 @@ yarn.lock
 dist
 **/dist
 wiki/
-.vitepress/.temp
+content/.vitepress/.temp
+content/.vitepress/cache
 
 lib
 
@@ -57,9 +55,8 @@ lib
 # Obsidian
 **/.obsidian/
 
-public/sitemap.xml
-public/media_files
+content/public/sitemap.xml
+content/public/media_files
 
-.vitepress/cache/
-support/code/**
-!support/code/index.md
+content/support/code/**
+!content/support/code/index.md

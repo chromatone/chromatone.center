@@ -1,9 +1,15 @@
 {
+	"include": [
+		"."
+	],
 	"compilerOptions": {
 		"baseUrl": ".",
 		"paths": {
-			"#/*": [
-				"./*"
+			"#/use/*": [
+				"../use/*"
+			],
+			"#/theme/composables/*": [
+				"../theme/composables/*"
 			]
 		},
 		"jsx": "preserve",

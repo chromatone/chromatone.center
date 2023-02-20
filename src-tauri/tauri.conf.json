@@ -4,11 +4,11 @@
     "beforeBuildCommand": "npm run build",
     "beforeDevCommand": "npm run dev",
     "devPath": "http://localhost:3242",
-    "distDir": "../.vitepress/dist/"
+    "distDir": "../dist/"
   },
   "package": {
     "productName": "Chromatone",
-    "version": "1.11.0"
+    "version": "2.0.0"
   },
   "tauri": {
     "systemTray": {

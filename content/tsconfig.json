@@ -1,9 +1,26 @@
 {
+	"include": [
+		"."
+	],
+	"typedocOptions": {
+		"entryPoints": [
+			"../use/"
+		],
+		"out": "support/code/docs/",
+		"githubPages": false,
+		"entryPointStrategy": "expand",
+		"name": "Use-chromatone documentation",
+		"defaultCategory": "Chomatone",
+		"exclude": [
+			"**/aubio.js"
+		],
+		"readme": "use/README.md"
+	},
 	"compilerOptions": {
 		"baseUrl": ".",
 		"paths": {
 			"#/*": [
-				"./*"
+				"../*"
 			]
 		},
 		"jsx": "preserve",

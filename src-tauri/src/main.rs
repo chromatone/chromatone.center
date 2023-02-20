@@ -97,10 +97,10 @@ fn on_system_tray_event(
                           item_handle.set_title("Show").unwrap();
                         },
                         Ok(false) => {
-                          window.show();
+                          window.show().unwrap();
                           item_handle.set_title("Hide").unwrap();
                         },
-                        Err(e) => unimplemented!("what kind of errors happen here?"),
+                        Err(_e) => unimplemented!("what kind of errors happen here?"),
                     }
                 }
                 "quit" => app.exit(0),

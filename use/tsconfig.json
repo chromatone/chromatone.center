@@ -1,11 +1,9 @@
 {
+	"include": [
+		"."
+	],
 	"compilerOptions": {
 		"baseUrl": ".",
-		"paths": {
-			"#/*": [
-				"./*"
-			]
-		},
 		"jsx": "preserve",
 		"esModuleInterop": true,
 		"target": "esnext",
@@ -16,15 +14,24 @@
 		"declaration": true,
 		"emitDeclarationOnly": true,
 		"declarationMap": true,
-		"declarationDir": "lib/types",
+		"declarationDir": "../lib/types",
 		"skipLibCheck": true,
 		"module": "esnext",
 		"allowSyntheticDefaultImports": true,
-		"outDir": "lib/types"
+		"outDir": "../lib/types"
 	},
-	"vueCompilerOptions": {
-		"plugins": [
-			"@volar/vue-language-plugin-pug"
-		]
+	"typedocOptions": {
+		"entryPoints": [
+			"./*"
+		],
+		"out": "../content/support/code/docs/",
+		"githubPages": false,
+		"entryPointStrategy": "expand",
+		"name": "Use-chromatone documentation",
+		"defaultCategory": "Chomatone",
+		"exclude": [
+			"**/aubio.js"
+		],
+		"readme": "./README.md"
 	}
 }

@@ -1,9 +1,14 @@
 {
+	"extends": "../tsconfig.json",
+	"include": [
+		"composables",
+		"components"
+	],
 	"compilerOptions": {
 		"baseUrl": ".",
 		"paths": {
 			"#/*": [
-				"./*"
+				"../*"
 			]
 		},
 		"jsx": "preserve",

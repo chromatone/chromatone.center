@@ -18,13 +18,13 @@ export default defineConfig({
   publicDir: false,
   resolve: {
     alias: {
-      "#": path.resolve(dirname, "./"),
+      "#": path.resolve(dirname, "../"),
     }
   },
   build: {
-    outDir: "lib",
+    outDir: "../lib",
     lib: {
-      entry: resolve(dirname, 'use/index.ts'),
+      entry: resolve(dirname, './index.ts'),
       name: 'use-chromatone',
       fileName: 'use-chromatone',
       formats: ["es"],

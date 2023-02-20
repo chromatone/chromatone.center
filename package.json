@@ -27,7 +27,7 @@
 	],
 	"scripts": {
 		"build": "vitepress build content",
-		"build-lib": "vite --config vite.config.lib.ts build && tsc --project use/tsconfig.json && cd use && typedoc",
+		"build-lib": "cd use && vite build --emptyOutDir && tsc && typedoc",
 		"deploy": "sh deploy.sh",
 		"dev": "vitepress dev content --host --port 3242",
 		"serve": "vitepress serve content --port 3200",

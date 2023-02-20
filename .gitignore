@@ -59,4 +59,4 @@ public/sitemap.xml
 public/media_files
 
 content/support/code/**
-content/!support/code/index.md
+!content/support/code/index.md

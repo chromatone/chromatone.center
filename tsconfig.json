@@ -26,19 +26,5 @@
 		"plugins": [
 			"@volar/vue-language-plugin-pug"
 		]
-	},
-	"typedocOptions": {
-		"entryPoints": [
-			"use/"
-		],
-		"out": "content/support/code/docs/",
-		"githubPages": false,
-		"entryPointStrategy": "expand",
-		"name": "Use-chromatone documentation",
-		"defaultCategory": "Chomatone",
-		"exclude": [
-			"**/aubio.js"
-		],
-		"readme": "use/README.md"
 	}
 }

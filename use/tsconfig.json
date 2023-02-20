@@ -19,5 +19,19 @@
 		"module": "esnext",
 		"allowSyntheticDefaultImports": true,
 		"outDir": "../lib/types"
+	},
+	"typedocOptions": {
+		"entryPoints": [
+			"./*"
+		],
+		"out": "../content/support/code/docs/",
+		"githubPages": false,
+		"entryPointStrategy": "expand",
+		"name": "Use-chromatone documentation",
+		"defaultCategory": "Chomatone",
+		"exclude": [
+			"**/aubio.js"
+		],
+		"readme": "./README.md"
 	}
 }

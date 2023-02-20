@@ -5,7 +5,6 @@ import { resolve } from 'path'
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-//@ts-expect-error
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
@@ -19,13 +18,13 @@ export default defineConfig({
   publicDir: false,
   resolve: {
     alias: {
-      "#": path.resolve(dirname, ".vitepress/"),
+      "#": path.resolve(dirname, "./"),
     }
   },
   build: {
     outDir: "lib",
     lib: {
-      entry: resolve(dirname, '.vitepress/use/index.ts'),
+      entry: resolve(dirname, 'use/index.ts'),
       name: 'use-chromatone',
       fileName: 'use-chromatone',
       formats: ["es"],

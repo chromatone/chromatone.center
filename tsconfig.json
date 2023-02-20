@@ -1,12 +1,9 @@
 {
-	"include": [
-		".vitepress/use/*"
-	],
 	"compilerOptions": {
 		"baseUrl": ".",
 		"paths": {
 			"#/*": [
-				"./.vitepress/*"
+				"./*"
 			]
 		},
 		"jsx": "preserve",
@@ -32,17 +29,16 @@
 	},
 	"typedocOptions": {
 		"entryPoints": [
-			".vitepress/use/"
+			"use/"
 		],
-		"out": "support/code/docs/",
+		"out": "content/support/code/docs/",
 		"githubPages": false,
 		"entryPointStrategy": "expand",
 		"name": "Use-chromatone documentation",
 		"defaultCategory": "Chomatone",
 		"exclude": [
-			"**/index.ts",
 			"**/aubio.js"
 		],
-		"readme": ".vitepress/use/README.md"
+		"readme": "use/README.md"
 	}
 }

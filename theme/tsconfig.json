@@ -1,0 +1,35 @@
+{
+	"extends": "../tsconfig.json",
+	"include": [
+		"composables",
+		"components"
+	],
+	"compilerOptions": {
+		"baseUrl": ".",
+		"paths": {
+			"#/*": [
+				"../*"
+			]
+		},
+		"jsx": "preserve",
+		"esModuleInterop": true,
+		"target": "esnext",
+		"moduleResolution": "Node",
+		"resolveJsonModule": true,
+		"allowJs": true,
+		"isolatedModules": true,
+		"declaration": true,
+		"emitDeclarationOnly": true,
+		"declarationMap": true,
+		"declarationDir": "lib/types",
+		"skipLibCheck": true,
+		"module": "esnext",
+		"allowSyntheticDefaultImports": true,
+		"outDir": "lib/types"
+	},
+	"vueCompilerOptions": {
+		"plugins": [
+			"@volar/vue-language-plugin-pug"
+		]
+	}
+}

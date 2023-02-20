@@ -47,7 +47,8 @@ yarn.lock
 dist
 **/dist
 wiki/
-.vitepress/.temp
+content/.vitepress/.temp
+content/.vitepress/cache
 
 lib
 
@@ -60,6 +61,5 @@ lib
 public/sitemap.xml
 public/media_files
 
-.vitepress/cache/
 support/code/**
 !support/code/index.md

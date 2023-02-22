@@ -9,6 +9,9 @@ import { initGetUserMedia } from './audio'
 import Meyda from "meyda";
 import { reactive, computed, watch } from 'vue'
 import type { MeydaAnalyzer } from "meyda/dist/esm/meyda-wa";
+import { rotateArray } from "./calculations";
+import { note } from "tonal";
+
 
 const noteStrings = [
   "C",
@@ -57,7 +60,17 @@ export const tuner = reactive({
   prevBeat: 0,
   blink: false,
   chroma: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  aChroma: computed(() => rotateArray(tuner.chroma, -3)),
   chromaAvg: computed(() => tuner.chroma.reduce((a: any, b: any) => a + b, 0) / 12),
+  // activeNotes: computed(() => {
+  //   const notes = []
+  //   for (let n in tuner.aChroma) {
+  //     if (tuner.aChroma[n] > 0.8) {
+  //       notes.push(n)
+  //     }
+  //   }
+  //   return notes
+  // }),
   spec: [],
   rms: 0,
 });

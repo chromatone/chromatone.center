@@ -80,7 +80,7 @@ function getAmmount(ammount) {
         :opacity="tuner.note.silent ? 0 : 1"
         ) {{ tuner.note.name }} 
       g.around(
-        v-for="(ammount, i) in rotateArray(tuner.chroma, -3)", 
+        v-for="(ammount, i) in tuner.aChroma", 
         :key="i",
         :transform="`translate(${getCircleCoord(i).x},${getCircleCoord(i).y})`"
         style="cursor:pointer"

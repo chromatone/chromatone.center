@@ -4,6 +4,7 @@ import { defaultScheme, scheme, noteColor } from '#/use/colors'
 import { getCircleCoord } from '#/use/calculations'
 import { midi, playKey } from '#/use/midi'
 import { globalScale } from '#/use/chroma'
+import { useTuner } from '#/use/tuner'
 import { colord } from "colord";
 import { useClipboard, watchThrottled } from '@vueuse/core'
 import { computed, ref } from 'vue'
@@ -24,6 +25,12 @@ const flower = computed(() => {
     }
   })
 })
+
+const { init, tuner } = useTuner();
+
+function getAmmount(ammount) {
+  return ammount > tuner.chromaAvg ? tuner.note.silent ? 0 : ammount : 0
+}
 
 const midiNotes = computed(() => {
   return new Array(127).fill(null).map((c, n) => (n + 3) % 12)
@@ -62,23 +69,12 @@ watchThrottled(loaded, l => {
   }
 })
 
+
+
 </script>
 
 <template lang="pug">
 .max-w-150.mx-auto.w-full.relative.flex.items-center.flex-col.justify-center
-  button.absolute.text-xl.opacity-30.hover-opacity-100.hover-scale-110.transition.cursor-pointer.transform(
-    v-tooltip.bottom="'Customize colors'"
-    aria-label="Customize colors sitewide"
-    @click="scheme.customize = !scheme.customize"
-    :class="{customize: scheme.customize}"
-    )
-    .i-la-cog
-  transition(name="fade")
-    .absolute.mt-18.text-xl.opacity-70.hover-opacity-100.font-bold(
-      :key="midi.guessChords[0]"
-      v-tooltip.bottom="midi.guessChords.length>1 && 'or ' + midi.guessChords.slice(1).join(', ')"
-      :aria-label="'Guessed chord: '+ midi.guessChords[0]"
-      ) {{ midi.guessChords[0] }}
 
   button.absolute.opacity-50.hover-opacity-100.transition.cursor-pointer.bottom-0.left-5.flex.items-center.gap-1.bg-light-100.dark-bg-dark-100.rounded-xl.p-2.shadow-lg(
     v-tooltip.bottom="'Copy custom schema'"
@@ -89,6 +85,7 @@ watchThrottled(loaded, l => {
     )
     .i-la-copy.text-xl
     .p-0 COPY
+
   .absolute.opacity-50.hover-opacity-100.transition.bottom-0.right-5.flex.items-center.gap-1.bg-light-100.dark-bg-dark-100.rounded-xl.shadow-lg(
     v-tooltip.bottom="'Paste custom schema'"
     aria-label="Paste custom schema"
@@ -99,6 +96,9 @@ watchThrottled(loaded, l => {
       v-model="loaded" placeholder="PASTE"
       :style="{backgroundColor: err ? 'red' : ''}"
       )
+
+
+
   svg.w-full.min-w-full(
     version="1.1",
     baseProfile="full",
@@ -107,6 +107,7 @@ watchThrottled(loaded, l => {
     text-anchor="middle" 
     dominant-baseline="middle" 
     )
+
     defs
       filter#shadow
         feDropShadow(
@@ -115,7 +116,47 @@ watchThrottled(loaded, l => {
           stdDeviation="8"
           flood-opacity="0.3"
         )
+      filter#blur(
+        x="-1" 
+        y="-1" 
+        width="300" 
+        height="300")
+        feGaussianBlur(i
+        n="SourceGraphic" 
+        :stdDeviation="35")
+
     g(:transform="`translate(${size / 2}, ${size / 2}) `")
+      g.controls
+        g.mic.opacity-50.hover-opacity-100.transition.cursor-pointer(
+          v-tooltip.bottom="tuner.initiated ? 'Analysing incoming audio':'Start input audio analysis'"
+          aria-label="Start input audio analysis"
+          @click="init()"
+          )
+          circle(r='32' cy="-80" fill="#3333")
+          text(
+            v-if="tuner.initiated"
+            y="-78"
+            v-show="!tuner.note?.silent"
+            font-size="30"
+            ) {{ tuner.note.name }}
+          i-la-microphone(
+            font-size="42"
+            x="-25"
+            y="-105"
+            v-else
+            )
+        g.customize.opacity-50.hover-opacity-100.transition.cursor-pointer(
+          @click="scheme.customize = !scheme.customize"
+          v-tooltip.bottom="'Customize colors'"
+          aria-label="Customize colors sitewide"
+          )
+          circle(r='32' cy="80" fill="#3333")
+          i-la-cog(
+            font-size="42"
+            x="-25"
+            y="55"
+            :class="{customize: scheme.customize}"
+            )
       g.keys(v-for="(note, pitch) in flower" :key="note")
         g.key.cursor-pointer(
           @mousedown="keyPlay(pitch, $event);"
@@ -164,6 +205,12 @@ watchThrottled(loaded, l => {
               :fill="noteColor(pitch, midi.activeChroma[pitch] ? 4 : 2)"
               :r="size / 12"
               )
+            circle(
+              style="transition: all 100ms ease-out"
+              :fill="noteColor(pitch,7,1, getAmmount(tuner.aChroma[pitch]))"
+              :r="size / 14"
+              filter="url(#blur)"
+              )
             text.transition(
               :font-size="size / 20"
               font-weight="bold"
@@ -198,14 +245,28 @@ watchThrottled(loaded, l => {
               :fill="scheme.custom[(note-9)%12]"
               :r="12" 
             )          
-        
+
+      g.chord.cursor-pointer(
+        v-tooltip.bottom.center="midi.guessChords.length>1 && 'or ' + midi.guessChords.slice(1).join(', ') || copied ? 'Copied!' : 'Click to copy'"
+        :aria-label="'Guessed chord: '+ midi.guessChords[0]"
+        @click="copy(midi.guessChords[0])"
+        v-if="midi.guessChords[0]"
+        )
+        rect(
+          fill="#0001"
+          x="-100" 
+          y="-30" 
+          width="200" 
+          height="70"
+          rx="10"
+          )
+        text(
+          y="10"
+          font-size="40"
+        ) {{ midi.guessChords[0] }}
 </template>
 
 <style scoped lang="postcss">
-button.customize {
-  @apply transform scale-150;
-}
-
 input[type="color"] {
   width: 3rem;
   height: 3rem;

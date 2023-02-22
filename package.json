@@ -26,13 +26,13 @@
 		"lib"
 	],
 	"scripts": {
-		"build": "vitepress build content",
-		"build-lib": "cd use && vite build --emptyOutDir && tsc && typedoc",
-		"deploy": "sh deploy.sh",
 		"dev": "vitepress dev content --host --port 3242",
+		"build-lib": "cd use && vite build --emptyOutDir && tsc && typedoc",
 		"serve": "vitepress serve content --port 3200",
-		"tb": "tauri build",
-		"td": "tauri dev"
+		"build": "vitepress build content",
+		"deploy": "sh deploy.sh",
+		"td": "tauri dev",
+		"tb": "tauri build"
 	},
 	"dependencies": {
 		"@animxyz/core": "0.6.6",

@@ -68,9 +68,6 @@ watchThrottled(loaded, l => {
     console.error('Loaded color scheme is not valid')
   }
 })
-
-
-
 </script>
 
 <template lang="pug">
@@ -96,8 +93,6 @@ watchThrottled(loaded, l => {
       v-model="loaded" placeholder="PASTE"
       :style="{backgroundColor: err ? 'red' : ''}"
       )
-
-
 
   svg.w-full.min-w-full(
     version="1.1",
@@ -132,12 +127,13 @@ watchThrottled(loaded, l => {
           aria-label="Start input audio analysis"
           @click="init()"
           )
-          circle(r='32' cy="-80" fill="#3333")
+          circle(r='32' cy="-80" stroke-width="4" fill="#3333" :stroke="!tuner.note?.silent && tuner.initiated ? tuner.note.color : '#3333'")
           text(
             v-if="tuner.initiated"
             y="-78"
             v-show="!tuner.note?.silent"
-            font-size="30"
+            font-size="28"
+            fill="currentColor"
             ) {{ tuner.note.name }}
           i-la-microphone(
             font-size="42"
@@ -263,6 +259,7 @@ watchThrottled(loaded, l => {
         text(
           y="10"
           font-size="40"
+          fill="currentColor"
         ) {{ midi.guessChords[0] }}
 </template>
 

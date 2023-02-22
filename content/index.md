@@ -8,7 +8,9 @@ altActionText: Войти
 
 ---
 
+<client-only>
 <chroma-flower />
+</client-only>
 
 # Visual music language to learn, explore and express with
 

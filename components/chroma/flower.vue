@@ -122,7 +122,7 @@ watchThrottled(loaded, l => {
         height="300")
         feGaussianBlur(i
         n="SourceGraphic" 
-        :stdDeviation="35")
+        :stdDeviation="20")
       filter#blur-less(
         x="-1" 
         y="-1" 
@@ -191,7 +191,7 @@ watchThrottled(loaded, l => {
             text.transition(
               :font-size="size / 20"
               font-weight="bold"
-              :fill="colord(noteColor(pitch, midi.activeChroma[pitch] ? 4 : 2)).isDark() ? 'white' : 'black'"
+              :fill="!midi.activeChroma[pitch] ? 'white' : 'black'"
               )
               tspan(
                 dy="5"
@@ -239,7 +239,6 @@ watchThrottled(loaded, l => {
             y="-90")
         g.tuner.transition(
           v-if="tunr?.tuner?.initiated"
-          v-tooltip.top="'Calculated fundamental frequency'"
           aria-label="Calculated fundamental frequency"
           )
           circle.transition(
@@ -248,7 +247,7 @@ watchThrottled(loaded, l => {
             r='32' 
             cy="0"
             :fill="!tunr.tuner.note?.silent && tunr.tuner.initiated ? noteColor((tunr.tuner.note.value+3)%12,4) : 'transparent'")
-          text.opacity-50(
+          text.opacity-50.select-none(
             v-if="tunr?.tuner?.initiated"
             y="-67"
             v-show="!tunr.tuner.note?.silent"
@@ -282,7 +281,7 @@ watchThrottled(loaded, l => {
           rx="10"
           )
         text(
-          y="8"
+          y="6"
           font-size="40"
           fill="currentColor"
         ) {{ midi.guessChords[0] }}

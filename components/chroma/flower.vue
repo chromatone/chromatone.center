@@ -123,41 +123,16 @@ watchThrottled(loaded, l => {
         feGaussianBlur(i
         n="SourceGraphic" 
         :stdDeviation="35")
+      filter#blur-less(
+        x="-1" 
+        y="-1" 
+        width="300" 
+        height="300")
+        feGaussianBlur(i
+        n="SourceGraphic" 
+        :stdDeviation="15")
 
     g(:transform="`translate(${size / 2}, ${size / 2}) `")
-      g.controls
-        g.mic.opacity-50.hover-opacity-100.transition.cursor-pointer(
-          v-if="tunr?.tuner"
-          v-tooltip.bottom="tunr.tuner.initiated ? 'Analysing incoming audio':'Start input audio analysis'"
-          aria-label="Start input audio analysis"
-          @click="tunr.init()"
-          )
-          circle(r='32' cy="-80" stroke-width="4" fill="#3333" :stroke="!tunr.tuner.note?.silent && tunr.tuner.initiated ? tunr.tuner.note.color : '#3333'")
-          text(
-            v-if="tunr?.tuner?.initiated"
-            y="-78"
-            v-show="!tunr.tuner.note?.silent"
-            font-size="28"
-            fill="currentColor"
-            ) {{ tunr.tuner.note.name }}
-          i-la-microphone(
-            font-size="42"
-            x="-25"
-            y="-105"
-            v-else
-            )
-        g.customize.opacity-50.hover-opacity-100.transition.cursor-pointer(
-          @click="scheme.customize = !scheme.customize"
-          v-tooltip.bottom="'Customize colors'"
-          aria-label="Customize colors sitewide"
-          )
-          circle(r='32' cy="80" fill="#3333")
-          i-la-cog(
-            font-size="42"
-            x="-25"
-            y="55"
-            :class="{customize: scheme.customize}"
-            )
       g.keys(v-for="(note, pitch) in flower" :key="note")
         g.key.cursor-pointer(
           @mousedown="keyPlay(pitch, $event);"
@@ -208,9 +183,9 @@ watchThrottled(loaded, l => {
               )
             g(v-if="tunr?.tuner?.initiated")
               circle(
-                style="transition: all 100ms ease-out"
+                style="transition: all 80ms ease-out"
                 :fill="noteColor(pitch,7,1, getAmmount(tunr.tuner.aChroma[pitch]))"
-                :r="size / 14"
+                :r="size / 12"
                 filter="url(#blur)"
                 )
             text.transition(
@@ -247,9 +222,53 @@ watchThrottled(loaded, l => {
               :fill="scheme.custom[(note-9)%12]"
               :r="12" 
             )          
-
+      g.controls
+        g.mic.transition.cursor-pointer.opacity-50.hover-opacity-100(
+          v-if="tunr?.tuner && !tunr.tuner.initiated"
+          v-tooltip.top="'Start input audio analysis'"
+          aria-label="Start input audio analysis"
+          @click="tunr.init()"
+          )
+          circle.transition(
+            r='32' 
+            cy="-68"
+            fill="#3331")
+          i-la-microphone(
+            font-size="42"
+            x="-25"
+            y="-90")
+        g.tuner.transition(
+          v-if="tunr?.tuner?.initiated"
+          v-tooltip.top="'Calculated fundamental frequency'"
+          aria-label="Calculated fundamental frequency"
+          )
+          circle.transition(
+            filter="url(#blur)"
+            style="transition:all 500ms ease"
+            r='32' 
+            cy="0"
+            :fill="!tunr.tuner.note?.silent && tunr.tuner.initiated ? noteColor((tunr.tuner.note.value+3)%12,4) : 'transparent'")
+          text.opacity-50(
+            v-if="tunr?.tuner?.initiated"
+            y="-67"
+            v-show="!tunr.tuner.note?.silent"
+            font-size="28"
+            fill="currentColor"
+            ) {{ tunr.tuner.note.name }}
+        g.customize.opacity-20.hover-opacity-100.transition.cursor-pointer(
+          @click="scheme.customize = !scheme.customize"
+          v-tooltip.top="'Customize colors'"
+          aria-label="Customize colors sitewide"
+          )
+          circle(r='32' cy="70" fill="#3333")
+          i-la-cog(
+            font-size="42"
+            x="-25"
+            y="44"
+            :class="{customize: scheme.customize}"
+            )
       g.chord.cursor-pointer(
-        v-tooltip.bottom.center="midi.guessChords.length>1 && 'or ' + midi.guessChords.slice(1).join(', ') || copied ? 'Copied!' : 'Click to copy'"
+        v-tooltip.top="midi.guessChords.length>1 && 'or ' + midi.guessChords.slice(1).join(', ') || copied ? 'Copied!' : 'Click to copy'"
         :aria-label="'Guessed chord: '+ midi.guessChords[0]"
         @click="copy(midi.guessChords[0])"
         v-if="midi.guessChords[0]"
@@ -257,16 +276,21 @@ watchThrottled(loaded, l => {
         rect(
           fill="#0001"
           x="-100" 
-          y="-30" 
+          y="-32" 
           width="200" 
           height="70"
           rx="10"
           )
         text(
-          y="10"
+          y="8"
           font-size="40"
           fill="currentColor"
         ) {{ midi.guessChords[0] }}
+      g.center(v-else)
+        circle(
+          r="3" 
+          fill="currentColor"
+          )
 </template>
 
 <style scoped lang="postcss">

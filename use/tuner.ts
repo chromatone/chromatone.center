@@ -103,7 +103,7 @@ export function useTuner() {
 }
 
 function init() {
-  tuner.initiated = true;
+  if (tuner.initiated) return
   chain.audioContext = new window.AudioContext();
   chain.analyser = chain.audioContext.createAnalyser();
   chain.scriptProcessor = chain.audioContext.createScriptProcessor(
@@ -163,6 +163,7 @@ function init() {
     tuner.running = true;
     start();
   });
+  tuner.initiated = true;
 }
 
 function start() {

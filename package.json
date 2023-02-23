@@ -28,8 +28,8 @@
 	"scripts": {
 		"dev": "vitepress dev content --host --port 3242",
 		"build-lib": "cd use && vite build --emptyOutDir && tsc && typedoc",
-		"serve": "vitepress serve content --port 3200",
 		"build": "vitepress build content",
+		"serve": "vitepress serve content --port 3200",
 		"deploy": "sh deploy.sh",
 		"td": "tauri dev",
 		"tb": "tauri build"

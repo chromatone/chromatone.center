@@ -7,7 +7,7 @@ import { globalScale } from '#/use/chroma'
 import { useTuner } from '#/use/tuner'
 import { colord } from "colord";
 import { useClipboard, watchThrottled } from '@vueuse/core'
-import { computed, ref } from 'vue'
+import { computed, onMounted, ref, shallowRef } from 'vue'
 
 const props = defineProps({
   size: { type: Number, default: 1000 },
@@ -26,10 +26,14 @@ const flower = computed(() => {
   })
 })
 
-const { init, tuner } = useTuner();
+
+const tunr = shallowRef()
+onMounted(() => {
+  tunr.value = useTuner()
+})
 
 function getAmmount(ammount) {
-  return ammount > tuner.chromaAvg ? tuner.note.silent ? 0 : ammount : 0
+  return ammount > tunr.value.tuner.chromaAvg ? tunr.value.tuner.note.silent ? 0 : ammount : 0
 }
 
 const midiNotes = computed(() => {
@@ -123,18 +127,19 @@ watchThrottled(loaded, l => {
     g(:transform="`translate(${size / 2}, ${size / 2}) `")
       g.controls
         g.mic.opacity-50.hover-opacity-100.transition.cursor-pointer(
-          v-tooltip.bottom="tuner.initiated ? 'Analysing incoming audio':'Start input audio analysis'"
+          v-if="tunr?.tuner"
+          v-tooltip.bottom="tunr.tuner.initiated ? 'Analysing incoming audio':'Start input audio analysis'"
           aria-label="Start input audio analysis"
-          @click="init()"
+          @click="tunr.init()"
           )
-          circle(r='32' cy="-80" stroke-width="4" fill="#3333" :stroke="!tuner.note?.silent && tuner.initiated ? tuner.note.color : '#3333'")
+          circle(r='32' cy="-80" stroke-width="4" fill="#3333" :stroke="!tunr.tuner.note?.silent && tunr.tuner.initiated ? tunr.tuner.note.color : '#3333'")
           text(
-            v-if="tuner.initiated"
+            v-if="tunr?.tuner?.initiated"
             y="-78"
-            v-show="!tuner.note?.silent"
+            v-show="!tunr.tuner.note?.silent"
             font-size="28"
             fill="currentColor"
-            ) {{ tuner.note.name }}
+            ) {{ tunr.tuner.note.name }}
           i-la-microphone(
             font-size="42"
             x="-25"
@@ -201,12 +206,13 @@ watchThrottled(loaded, l => {
               :fill="noteColor(pitch, midi.activeChroma[pitch] ? 4 : 2)"
               :r="size / 12"
               )
-            circle(
-              style="transition: all 100ms ease-out"
-              :fill="noteColor(pitch,7,1, getAmmount(tuner.aChroma[pitch]))"
-              :r="size / 14"
-              filter="url(#blur)"
-              )
+            g(v-if="tunr?.tuner?.initiated")
+              circle(
+                style="transition: all 100ms ease-out"
+                :fill="noteColor(pitch,7,1, getAmmount(tunr.tuner.aChroma[pitch]))"
+                :r="size / 14"
+                filter="url(#blur)"
+                )
             text.transition(
               :font-size="size / 20"
               font-weight="bold"

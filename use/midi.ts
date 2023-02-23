@@ -4,7 +4,7 @@
 
 import { useStorage } from '@vueuse/core';
 import { useClamp } from '@vueuse/math';
-import { reactive, computed, watchEffect, onMounted, ref, watch } from 'vue'
+import { reactive, computed, watchEffect, onMounted, ref, watch, shallowReactive } from 'vue'
 
 import { WebMidi, Note, Forwarder, ControlChangeMessageEvent, } from "webmidi"
 import type { Input, Output, Event, Message, MessageEvent, InputChannel } from 'webmidi'
@@ -206,7 +206,7 @@ function setupMidi() {
   //   initMidi();
   // }, 3000);
 
-  WebMidi.addListener("connected", () => {
+  WebMidi.addListener("connected", (ev) => {
     initMidi();
   });
 
@@ -217,10 +217,9 @@ function setupMidi() {
 }
 
 function initMidi() {
-  midi.inputs = reactive({});
-
+  midi.inputs = shallowReactive({});
+  midi.enabled = true;
   WebMidi.inputs.forEach((input) => {
-    midi.enabled = true;
     midi.inputs[input.id] = {
       name: input.name,
       manufacturer: input.manufacturer,
@@ -293,7 +292,7 @@ function initMidi() {
     });
   });
 
-  midi.outputs = reactive({});
+  midi.outputs = shallowReactive({});
   WebMidi.outputs.forEach((output) => {
     midi.outputs[output.id] = {
       name: output.name,

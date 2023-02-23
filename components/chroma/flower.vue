@@ -223,7 +223,7 @@ watchThrottled(loaded, l => {
               :r="12" 
             )          
       g.controls
-        g.mic.transition.cursor-pointer.opacity-50.hover-opacity-100(
+        g.mic.transition.cursor-pointer.opacity-40.hover-opacity-100(
           v-if="tunr?.tuner && !tunr.tuner.initiated"
           v-tooltip.top="'Start input audio analysis'"
           aria-label="Start input audio analysis"

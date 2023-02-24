@@ -13,9 +13,22 @@ import { reactive, computed } from 'vue'
 import { useStorage } from "@vueuse/core";
 import { useClamp } from "@vueuse/math";
 
-const allNotes = [...notes].map((n, i) => ({ name: n, pitch: i }))
+export interface NamedPitch {
+  name: string
+  pitch: number
+}
 
-export const globalScale = reactive({
+const allNotes = [...notes].map((n, i): NamedPitch => ({ name: n, pitch: i }))
+
+export const globalScale: {
+  tonic: number
+  note: NamedPitch
+  chroma: string
+  set: any
+  full: any
+  pcs: string[]
+  isIn: (noteName: string) => boolean
+} = reactive({
   tonic: useClamp(useStorage("global-tonic", 0), 0, 11),
   note: computed(() => allNotes[globalScale.tonic]),
   chroma: useStorage("global-chroma", "101011010101"),

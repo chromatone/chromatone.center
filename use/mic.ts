@@ -19,7 +19,7 @@ export const mic = reactive({
   gate: useClamp(useStorage('mic-gate', -60), -100, -40)
 })
 
-let meter, input, gate, compressor
+let meter: Meter, input: UserMedia, gate: Gate, compressor: Compressor
 
 export function useMic() {
   if (!mic.initiated) {
@@ -29,7 +29,6 @@ export function useMic() {
     input = new UserMedia()
     compressor = new Compressor({ threshold: -20, ratio: 2 }).connect(meter)
     gate = new Gate({ threshold: -60, smoothing: 1 })
-
 
     input.connect(gate)
     gate.connect(compressor)
@@ -41,6 +40,7 @@ export function useMic() {
         input.open().then(() => {
           mic.opened = true
           useRafFn(() => {
+            //@ts-expect-error
             mic.meter = meter.getValue()
           })
         })

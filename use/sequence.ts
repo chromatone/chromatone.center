@@ -187,7 +187,7 @@ export function useSequence(
   }
 
   const audio = shallowReactive({
-    channel: createChannel(`sequence-${mode}-${order}`),
+    channel: createChannel(`sequence-${mode}-${order}`).channel,
     panner: new PanVol(order % 2 == 1 ? -0.5 : 0.5, 0),
     synth: new Sampler({
       urls,

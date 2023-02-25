@@ -13,6 +13,7 @@ export const mic = reactive({
   initiated: false,
   open: false,
   opened: false,
+  recording: true,
   monitor: false,
   meter: 0,
   volume: useClamp(useStorage('mic-vol', 1), 0, 2),
@@ -33,7 +34,7 @@ export function useMic() {
     input.connect(gate)
     gate.connect(compressor)
 
-    const channel = createChannel('mic')
+    const { channel } = createChannel('mic')
 
     watch(() => mic.open, o => {
       if (o) {

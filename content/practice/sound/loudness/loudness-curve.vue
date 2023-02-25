@@ -58,7 +58,7 @@ const points = reactive({
   list: [],
   add() {
     if (!channel) {
-      channel = createChannel('loudness')
+      channel = createChannel('loudness').channel
     }
     let hz = freq.toHz(mouse.normX)
     let synth = new MonoSynth({

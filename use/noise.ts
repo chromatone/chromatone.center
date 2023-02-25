@@ -77,7 +77,7 @@ export function useNoise(): any {
   const fftData = ref([]);
   const fftFreq = ref([]);
 
-  const channel = createChannel('noise')
+  const { channel } = createChannel('noise')
 
   const fft = new FFT({ size: 512, smoothing: 0.2 }).connect(channel);
 

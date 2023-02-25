@@ -70,11 +70,11 @@ export function useAudio() {
 
 export function createChannel(title = (Math.random() * 1000).toFixed(0), options?: LimiterOptions) {
   const { master } = useAudio()
-  const channel = new Limiter(options).connect(master.limiter)
   const { recorder } = useRecorder()
+  const channel = new Limiter(options).connect(master.limiter)
   channel.connect(recorder)
   channels[title] = channel
-  return channel
+  return { channel }
 }
 
 

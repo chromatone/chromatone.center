@@ -36,7 +36,7 @@ const audio = shallowReactive({
 });
 
 function initAudio() {
-  const channel = createChannel('drone')
+  const { channel } = createChannel('drone')
   audio.channel = channel
   audio.gain = new Gain(drone.volume).connect(channel)
   audio.filter = new Filter(drone.filterFreq).connect(audio.gain)

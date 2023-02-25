@@ -16,7 +16,7 @@ export function usePiano() {
 export function init() {
   start()
   if (piano) return
-  const channel = createChannel('piano')
+  const { channel } = createChannel('piano')
   piano = new Sampler({
     urls: {
       A0: 'A0.mp3',

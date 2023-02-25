@@ -94,7 +94,7 @@ export function useSynth() {
 export function synthInit() {
   start()
   if (synth?.poly) return
-  const channel = createChannel('synth')
+  const { channel } = createChannel('synth')
 
   synth.widener = new StereoWidener(0.7).connect(channel)
 

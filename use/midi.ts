@@ -335,7 +335,7 @@ function noteInOn(ev: NoteMessageEvent) {
   };
 
   if (midi.filter[note.channel]) return;
-  createChannel(note.channel);
+  createMidiChannel(note.channel);
   midi.channels[note.channel].notes[note.number] = note;
   if (ev.type == "noteoff") {
     note.velocity = 0;
@@ -366,12 +366,12 @@ function ccIn(ev: ControlChangeMessageEvent): {
     raw: ev.rawValue,
     port: ev.port.id,
   };
-  createChannel(cc.channel);
+  createMidiChannel(cc.channel);
   midi.channels[cc.channel].cc[cc.number] = cc;
   return cc;
 }
 
-function createChannel(ch: number) {
+function createMidiChannel(ch: number) {
   if (!midi.channels[ch]) {
     midi.channels[ch] = reactive({ num: ch, activeNotes: {}, notes: {}, cc: {} });
   }

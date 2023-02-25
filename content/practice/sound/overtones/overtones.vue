@@ -34,7 +34,7 @@ const sound = reactive({
     sound.started = true
     sound.enabled = true
 
-    const channel = createChannel('overtones')
+    const { channel } = createChannel('overtones')
     sine = new Synth({
       oscillator: {
         type: 'sine',

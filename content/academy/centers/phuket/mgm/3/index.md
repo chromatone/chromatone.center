@@ -1,5 +1,5 @@
 ---
-title: MGM#3 @ 2023.01.06
+title: MGM#3 @ 01.06
 description: New Year fun
 date: 2023-01-06
 cover: thumbnail.jpg

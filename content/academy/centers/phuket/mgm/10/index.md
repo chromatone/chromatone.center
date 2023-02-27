@@ -1,9 +1,11 @@
 ---
-title: MGM#10 @ 23.02
+title: MGM#10 @ 02.23
 description: Chromatone 2.0 presentation
 date: 2023-02-23
 cover: 2023-02-23-Music-geeks-meetup.jpg
 ---
+
+<youtube-embed video="blgN4Rn_0o4"></youtube-embed>
 
 ![](./MGM10.png)
 

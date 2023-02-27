@@ -44,7 +44,7 @@ export function useSynth(pitch, octave) {
   watch(
     () => voice.vol,
     (vol) => {
-      panVol.volume.targetRampTo(gainToDb((vol * 0.4) / 100));
+      panVol.volume.targetRampTo(gainToDb((vol * 0.4) / 100), '16n');
     }
   );
 
@@ -52,7 +52,7 @@ export function useSynth(pitch, octave) {
     () => voice.pan,
     (pan) => {
       let place = ((pan - 50) / 100) * 2;
-      panVol.pan.targetRampTo(place);
+      panVol.pan.targetRampTo(place, '16n');
     }
   );
 

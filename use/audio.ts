@@ -3,7 +3,7 @@
  * @description Main audio bus controller
  */
 
-import { getDestination, start, gainToDb, Meter, context, Reverb, Limiter, LimiterOptions } from "tone"
+import { getDestination, start, gainToDb, Meter, context, Reverb, Limiter, LimiterOptions, Volume } from "tone"
 import { useRecorder } from "./recorder"
 import { shallowReactive, reactive, watchEffect, markRaw } from 'vue'
 import { useRafFn, useStorage } from "@vueuse/core"
@@ -28,7 +28,7 @@ export const master: {
   reverb?: Reverb
 } = reactive({})
 
-export const channels: Record<string, Limiter> = shallowReactive({})
+export const channels: Record<string, { channel: Limiter, volume: Volume }> = shallowReactive({})
 
 export function useAudio() {
   if (!audio.initiated) {
@@ -64,17 +64,16 @@ export function useAudio() {
     });
     audio.initiated = true;
   }
-
   return { audio, master, channels }
 }
 
 export function createChannel(title = (Math.random() * 1000).toFixed(0), options?: LimiterOptions) {
   const { master } = useAudio()
+  const volume = new Volume().connect(master.limiter)
   const { recorder } = useRecorder()
-  const channel = new Limiter(options).connect(master.limiter)
-  channel.connect(recorder)
-  channels[title] = channel
-  return { channel }
+  volume.connect(recorder)
+  const channel = new Limiter(options).connect(volume)
+  return channels[title] = { channel, volume }
 }
 
 

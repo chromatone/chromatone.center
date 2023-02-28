@@ -2,6 +2,7 @@
 title: Finder
 description: Easily find different chords note colors
 cover: chord.svg
+date: 2022-01-20
 ---
 
 <script setup>

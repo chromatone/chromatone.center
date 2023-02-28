@@ -66,3 +66,5 @@ Current tasks and progress are open [at this ClickUp project](https://sharing.cl
 - [OpenLayers](https://github.com/openlayers/openlayers)
 - [RecordRTC](https://recordrtc.org/)
 
++ gpg verified commits
+

@@ -1,7 +1,7 @@
 ---
 title: Academy
 description: People are great in helping other people learn. We teach and inspire diving deep on music.
-date: 2021-06-04
+date: 2021-06-01
 ---
 
 Chromatone is an international music education platform for everyone to gain knowledge and new pleasant experience. The knowledge is stored in the articles and apps, but it's compressed and dryed out to be light and compact. But there's so much to dive in! And that's where guidance may be incredibly helpful.

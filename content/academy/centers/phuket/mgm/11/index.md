@@ -11,3 +11,5 @@ Hi! We are a growing international community of music learners and explorers. We
 
 See you this Thursday! https://goo.gl/maps/GCMkq3vuTaw8PM68A
 
+https://fb.me/e/IsDaYbo5 
+

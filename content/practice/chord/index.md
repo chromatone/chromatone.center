@@ -1,7 +1,6 @@
 ---
 title: Chords
 description: Three and more note collections
-
 date: 2021-09-25
 ---
 

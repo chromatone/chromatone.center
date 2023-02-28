@@ -1,8 +1,7 @@
 ---
 title: Circle of fifths
 description: 12 major chords organized in a sequence of perfect fifths along with their relative minors
-
-date: 2023-06-05
+date: 2023-02-27
 cover: fifths.png
 ---
 
@@ -10,7 +9,9 @@ cover: fifths.png
 import chordFifths from './fifths.vue'
 </script>
 
+<client-only>
 <chord-fifths />
+</client-only>
 
 ## The double circle of fifths as a tool to explore chords in tonal space
 

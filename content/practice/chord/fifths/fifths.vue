@@ -8,6 +8,8 @@ import { Chord, Note, Range, Midi } from 'tonal'
 import { playNote, stopNote } from '#/use/chroma'
 import { reactive, computed } from 'vue'
 import { midi } from '#/use/midi'
+import { colord } from 'colord'
+
 
 
 onKeyDown('Shift', (ev) => {
@@ -179,7 +181,7 @@ function stopChord(note, qual = 'major', inv) {
             :radius="40 - 12 * getRadius(qual) -5*(j>1 ? 0 :1)"
             :thickness="5"
             :op="Math.abs(tonic - i) == 11 || Math.abs(tonic - i) % 12 <= 1 ? 0.8 : 0.1"
-            :fill="Math.abs(tonic - i) == 11 || Math.abs(tonic - i) % 12 <= 1 ? noteColor(note.pitch+deg) : noteColor(note.pitch+deg, 4, 1)"
+            :fill="Math.abs(tonic - i) == 11 || Math.abs(tonic - i) % 12 <= 1 ? noteColor(note.pitch+deg,4) : noteColor(note.pitch+deg, 5, 1)"
             )
         circle.transition(
           :cx="getCircleCoord(i, 12, 42 - getRadius(qual) * 26).x",
@@ -203,11 +205,11 @@ function stopChord(note, qual = 'major', inv) {
             :cx="getCircleCoord(i, 12, 35 - getRadius(qual) * 12).x",
             :cy="getCircleCoord(i, 12, 35 - getRadius(qual) * 12).y",
             r="5",
-            :fill="Math.abs(tonic - i) == 11 || Math.abs(tonic - i) % 12 <= 1 ? noteColor(note.pitch) : noteColor(note.pitch, 4, 1, 0.5)",
+            :fill="Math.abs(tonic - i) == 11 || Math.abs(tonic - i) % 12 <= 1 ? noteColor(note.pitch,4) : noteColor(note.pitch, 5, 1, 0.5)",
           )
           text(
             style="user-select:none;transition:all 300ms ease"
-            fill="currentColor"
+            :fill="colord(noteColor(note.pitch,4)).isDark() ? 'white' : 'black'"
             font-size="3px"
             text-anchor="middle",
             dominant-baseline="middle"
@@ -236,14 +238,14 @@ function stopChord(note, qual = 'major', inv) {
         :cx="50"
         :cy="8"
         :r="2"
-        :fill="noteColor(majors[tonic].pitch)"
+        :fill="noteColor(majors[tonic].pitch,4)"
       )
       circle.transition-all.duration-300.cursor-pointer(
         v-if="scaleType != 'major'"
         :cx="50"
         :cy="34"
         :r="2"
-        :fill="noteColor(minors[tonic].pitch)"
+        :fill="noteColor(minors[tonic].pitch,4)"
       )
       g(
         v-for="(level, idx) in steps[scaleType]" 

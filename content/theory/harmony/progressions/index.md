@@ -3,70 +3,7 @@ title: Chord progressions
 description: Successive chord loops as the foundation of modern music
 date: 2021-10-12
 
-progressions:
-  jazz:
-    title: Jazz
-    degrees: iim7-V7-I
-  backdoor:
-    title: Backdoor Jazz
-    link: https://en.wikipedia.org/wiki/Backdoor_progression
-    degrees: ivm7-bVII7-I
-  trioneJazz:
-    title: Jazz with tritone substitution
-    degrees: iim-bII7-I
-  subJazz:
-    title: Jazz with dominant substitution
-    degrees: iim-bIII+-I
-  ragtime:
-    title: Ragtime
-    degrees: viio7-V-I
-  three1:
-    title: Three-chord 1
-    link: https://en.wikipedia.org/wiki/Three-chord_song
-    degrees: I-IV-V-V
-  three2:
-    title: Three-chord 2
-    link: https://en.wikipedia.org/wiki/Three-chord_song
-    degrees: I-I-IV-V
-  three3:
-    title: Three-chord 3
-    link: https://en.wikipedia.org/wiki/Three-chord_song
-    degrees: I-IV-I-V
-  three4:
-    title: Three-chord 4
-    link: https://en.wikipedia.org/wiki/Three-chord_song
-    degrees: I-IV-V-IV
-  circle:
-    title: Circle progression
-    link: https://en.wikipedia.org/wiki/Vi%E2%80%93ii%E2%80%93V%E2%80%93I
-    degrees: vim-iim-V-I
-  bigCircle:
-    title: Big circle progression
-    link: https://en.wikipedia.org/wiki/Vi%E2%80%93ii%E2%80%93V%E2%80%93I
-    degrees: I-IV-viio-iiim-vim-iim-V-I
-  popPunk:
-    title: Pop-punk progression
-    link: https://en.wikipedia.org/wiki/I–V–vi–IV_progression
-    degrees: I-V-vim-IV
-  fifties:
-    title: Doo-wop
-    link: https://en.wikipedia.org/wiki/%2750s_progression
-    degrees: I-vim-IV-V
-  major:
-    title: Major
-    degrees: I-IV-bVII-IV
-  andalusian:
-    title: Andalusian cadence
-    link: https://en.wikipedia.org/wiki/Andalusian_cadence
-    degrees: im-bVII-bVI-V
-  royal:
-    title: Royal road progression
-    link: https://en.wikipedia.org/wiki/IV%E2%96%B37%E2%80%93V7%E2%80%93iii7%E2%80%93vi_progression
-    degrees: IVmaj7-V7-IIIm7-VIm7
-  romanesca:
-    title: Romanesca
-    link: https://en.wikipedia.org/wiki/Romanesca
-    degrees: III-VII-im-V-III-VII-V-im
+
 web:
   - https://autochords.com/
   - https://schollz.github.io/chords/ - https://github.com/schollz/chords
@@ -78,4 +15,8 @@ web:
   - https://github.com/ology/Data-Dataset-ChordProgressions/blob/master/share/Chord-Progressions.csv
 ---
 
-<chord-progressions :list="$frontmatter.progressions" />
+<script setup>
+  import progressions from '#/db/chord/progressions.yaml'
+</script>
+
+<chord-progressions :list="progressions" />

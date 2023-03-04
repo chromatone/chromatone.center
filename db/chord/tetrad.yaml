@@ -1,0 +1,41 @@
+tertian:
+  maj7:
+    title: Major Seventh
+    chroma: "100010010001"
+  min7:
+    title: Minor Seventh
+    chroma: "100100010010"
+  "7":
+    title: Dominant Seventh
+    chroma: "100010010010"
+  dim7:
+    title: Diminished Seventh
+    chroma: "100100100100"
+  m7b5:
+    title: Half-diminished
+    chroma: "100100100010"
+  mMaj7:
+    title: Minor Major Seventh
+    chroma: "100100010001"
+  augM7:
+    title: Augmented Seventh
+    chroma: "100010001001"
+nontertian:
+  M7b5:
+    title: Major Seventh b13
+    chroma: "100010001010"
+  m6:
+    title: Minor Sixth
+    chroma: "100100010100"
+  "6":
+    title: Sixth
+    chroma: "100010010100"
+  "4":
+    title: Fourth
+    chroma: "100101000010"
+  sus24:
+    title: Sus24
+    chroma: "101001010000"
+  Madd9:
+    title: Major add9
+    chroma: "101010010000"

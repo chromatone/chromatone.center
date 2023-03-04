@@ -4,7 +4,15 @@ description: Ways to move chords
 date: 2021-09-02
 ---
 
-## Chord substitution
+## Harmony is in changes
+
+We build harmony out of different chords as steps of the emotional ladder but what really counts is the movement itself. We can go down and up, slow down or speed up, jump and even fly above if we want to. This is the story the composer tells to the listeners and it's vowen with movements.
+
+The functional relations between chords in a scale can be expanded quite drastically with deeper analysis of underlying intevals, that create the desired change in the mood of the music. Many new relations appear to build up into a huge landscape of the tonal space. 
+
+<youtube-embed video="RcUXObvRLb4" />
+
+## Chord substitutions
 
 In music theory, [chord substitution](https://en.wikipedia.org/wiki/Chord_substitution) is the technique of using a chord in place of another in a progression of chords, or a chord progression. Much of the European classical repertoire and the vast majority of blues, jazz and rock music songs are based on chord progressions. "A chord substitution occurs when a chord is replaced by another that is made to function like the original. Usually substituted chords possess two pitches in common with the triad that they are replacing."
 

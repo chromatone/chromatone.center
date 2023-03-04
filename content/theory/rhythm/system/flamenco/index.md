@@ -6,38 +6,14 @@ date: 2021-10-16
 urls:
   - https://en.wikipedia.org/wiki/Flamenco
   - http://www.compas-flamenco.com/en/palos.html#Table
-flamenco:
-  meters: [16/16]
-  patterns:
-    "X..x..x..x..":
-      names:
-        - name: Fandango
-    "X..x..x.x.x.":
-      names:
-        - name: Guajira
-    "X.x.x..x..x.":
-      names:
-        - name: Seguiriya
-    "..x...xx.x.X":
-      names:
-        - name: Bulería
-    "..x..x.x.x.X":
-      names:
-        - name: Soleá
-    "X..x.xx..x..":
-      names:
-        - name: Tientos
-    ".x.x.x":
-      meter: 8/12
-      names:
-        - name: Buleria on 6 (A)
-    "..x..x":
-      meter: 8/12
-      names:
-        - name: Buleria on 6 (B)
+
 ---
 
-<beat-bars v-bind="$frontmatter.flamenco" />
+<script setup>
+import flamenco from '#/db/rhythm/flamenco.yaml'
+</script>
+
+<beat-bars v-bind="flamenco" />
 
 Flamenco (Spanish pronunciation: [flaˈmeŋko]), in its strictest sense, is an art form based on the various folkloric music traditions of southern Spain, developed within the gitano subculture of the region of Andalusia, but also having a historical presence in Extremadura and Murcia. In a wider sense, it is a portmanteau term used to refer to a variety of both contemporary and traditional musical styles typical of southern Spain. Flamenco is closely associated to the gitanos of the Romani ethnicity who have contributed significantly to its origination and professionalization. However, its style is uniquely Andalusian and flamenco artists have historically included Spaniards of both gitano and non-gitano heritage.
 

@@ -1,14 +1,14 @@
 ---
 title: Simple meters
 description: Rhythmic meters
-
 date: 2021-10-12
-simple:
-  meters: [2/2, 2/4, 4/4, 4/8]
-  accents: "XxXxXxXxXxXxXxXxXx"
 ---
 
-<beat-bars v-bind="$frontmatter.simple" />
+<script setup>
+import rhythm from '#/db/rhythm/meters.yaml'
+</script>
+
+<beat-bars v-bind="rhythm.simple" />
 
 Simple metre (or simple time) is a metre in which each beat of the bar divides naturally into two (as opposed to three) equal parts. The top number in the time signature will be 2, 3, 4, 5, etc.
 

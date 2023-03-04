@@ -2,35 +2,11 @@
 title: Symmetrical scales
 description: Modes of limited transpostions and interval cycles
 date: 2021-09-12
-
-limited:
-  second:
-    title: Second
-    link: https://en.wikipedia.org/wiki/Octatonic_scale
-    chroma: "110110110110"
-    description: The second mode, also called the octatonic, diminished, whole-half, or half-whole scale, is divided into four groups of three notes each. It contains the intervals semitone, tone, semitone, tone, semitone, tone, semitone, tone – it has three transpositions, like the diminished 7th chord, and two modes.
-  third:
-    title: Third
-    link: https://en.wikipedia.org/wiki/Mode_of_limited_transposition
-    chroma: "101110111011"
-    description: The third mode is divided into three groups of four notes each. It contains the intervals tone, semitone, semitone, tone, semitone, semitone, tone, semitone, semitone – it has four transpositions, like the augmented triad, and three modes.
-  fourth:
-    title: Fourth
-    chroma: "111001111001"
-    description: The fourth mode contains the intervals semitone, semitone, minor third, semitone, semitone, semitone, minor third, semitone – it has six transpositions, like the tritone, and four modes.
-  fifth:
-    title: Fifth
-    chroma: "110001110001"
-    description: The fifth mode contains the intervals semitone, major third, semitone, semitone, major third, semitone – it has six transpositions, like the tritone, and three modes.
-  sixth:
-    title: Sixth
-    chroma: "101011101011"
-    description: The sixth mode has the intervals tone, tone, semitone, semitone, tone, tone, semitone, semitone – it has six transpositions, like the tritone, and four modes.
-  seven:
-    title: Seventh
-    chroma: "111101111101"
-    description: The seventh mode contains the intervals semitone, semitone, semitone, tone, semitone, semitone, semitone, semitone, tone, semitone – it has six transpositions, like the tritone, and five modes.
 ---
+
+<script setup>
+import limited from '#/db/scale/limited.yaml'
+</script>
 
 Asymmetric scales are "far more common" than symmetric scales and this may be accounted for by the inability of symmetric scales to possess the property of uniqueness (containing each interval class a unique number of times) which assists with determining the location of notes in relation to the first note of the scale.
 
@@ -72,4 +48,4 @@ The rāga Sahera in Hindustani classical music uses the same intervals as the wh
 
 ### From second to the seventh modes
 
-<chroma-profile-collection :collection="$frontmatter.limited" />
+<chroma-profile-collection :collection="limited" />

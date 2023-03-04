@@ -4,47 +4,13 @@ description: The Indian rhythmic language and art of konnakkol
 
 cover: five-gandharva.jpg
 date: 2021-10-19
-tala:
-  meters: [4/4]
-  patterns:
-    "Xxxx":
-      meter: 8/4
-      names:
-        - name: Eka
-    "XxXxxx":
-      meter: 8/4
-      names:
-        - name: Rupaka
-        - name: Chaturasra-nadai Chaturasra-jaati Rupaka tala
-    "XxxXxXx":
-      meter: 8/4
-      names:
-        - name: Triputa
-    "XxxxxxxXXx":
-      meter: 8/4
-      names:
-        - name: Jhampa
-    "XxxxXxXxxxXxxx":
-      meter: 8/4
-      names:
-        - name: Dhruva
-    "XxxxXxXxxx":
-      meter: 8/4
-      names:
-        - name: Matya
-    "XxxxxXxxxxXxXx":
-      meter: 8/4
-      names:
-        - name: Atta
-        - name: Chatusra-nadai Khanda-jati Ata tala
-    "XxxxXxXx":
-      meter: 8/4
-      names:
-        - name: Adi tala
-        - name: Chaturasra-nadai Chaturasra-jaati Triputa tala
 ---
 
-<beat-bars v-bind="$frontmatter.tala" />
+<script setup>
+import tala from '#/db/rhythm/tala.yaml'
+</script>
+
+<beat-bars v-bind="tala" />
 
 ## Tala
 

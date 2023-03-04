@@ -1,14 +1,14 @@
 ---
 title: Compound meters
 description: Rhythmic meters
-
 date: 2021-10-10
-compound:
-  meters: [6/4, 6/8, 6/16, 12/4, 12/8, 12/16, 9/4, 9/8, 9/16]
-  accents: "XxxXxxXxxXxxXxxXxxXxx"
 ---
 
-<beat-bars v-bind="$frontmatter.compound" />
+<script setup>
+  import rhythm from '#/db/rhythm/meters.yaml'
+</script>
+
+<beat-bars v-bind="rhythm.compound" />
 
 Compound metre (or compound time), is a metre in which each beat of the bar divides naturally into three equal parts. That is, each beat contains a triple pulse. The top number in the time signature will be 6, 9, 12, 15, 18, 24, etc.
 

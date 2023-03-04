@@ -1,0 +1,37 @@
+meters: [4/4]
+patterns:
+  "Xxxx":
+    meter: 8/4
+    names:
+      - name: Eka
+  "XxXxxx":
+    meter: 8/4
+    names:
+      - name: Rupaka
+      - name: Chaturasra-nadai Chaturasra-jaati Rupaka tala
+  "XxxXxXx":
+    meter: 8/4
+    names:
+      - name: Triputa
+  "XxxxxxxXXx":
+    meter: 8/4
+    names:
+      - name: Jhampa
+  "XxxxXxXxxxXxxx":
+    meter: 8/4
+    names:
+      - name: Dhruva
+  "XxxxXxXxxx":
+    meter: 8/4
+    names:
+      - name: Matya
+  "XxxxxXxxxxXxXx":
+    meter: 8/4
+    names:
+      - name: Atta
+      - name: Chatusra-nadai Khanda-jati Ata tala
+  "XxxxXxXx":
+    meter: 8/4
+    names:
+      - name: Adi tala
+      - name: Chaturasra-nadai Chaturasra-jaati Triputa tala

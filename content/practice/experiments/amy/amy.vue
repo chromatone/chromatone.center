@@ -1,5 +1,8 @@
 <script setup>
-import { onKeyDown, onKeyUp } from '@vueuse/core';
+import {
+  onKeyDown, onKeyUp, useStorage, onKeyStroke
+} from '@vueuse/core';
+import { useClamp } from '@vueuse/math';
 import { ref } from 'vue';
 
 
@@ -134,31 +137,58 @@ function stopAudio() {
 
 }
 
-const rngPatch = ref(180)
+const rngPatch = useClamp(useStorage('amy-patch', 180), 0, 1024)
 const rngRatio = ref(1.0)
 
 function piano_down(note) {
   startAudio()
-  let mess = "v54l1w8n" + note + "p" + rngPatch.value + "I" + rngRatio.value;
+  let mess = `v1l1w8n${note}p${rngPatch.value}I${rngRatio.value}`;
   if (amy_started) amy_play_message(mess);
 }
 function piano_up(note) {
   startAudio()
-  let mess = "v54l0";
+  let mess = "v1l0";
   if (amy_started) amy_play_message(mess);
 }
 
+const count = ref(0)
+
 onKeyDown('a', () => {
   piano_down(80)
+  count.value++
 })
 
 onKeyUp('a', () => {
   piano_up(80)
 })
 
+onKeyStroke('ArrowLeft', () => {
+  rngPatch.value--
+})
+
+onKeyStroke('ArrowRight', () => {
+  rngPatch.value++
+})
+
 </script>
 
 <template lang='pug'>
-p AMY
-button(@click="send('0')") SEND
+.p-0
+  .flex.flex-row.flex-wrap.gap-2.items-center.p-4
+    .font-bold Patch
+    button.i-la-arrow-left(@click="rngPatch--")
+    input(
+      type="range"
+      v-model="rngPatch"
+      min="0"
+      max="1024"
+    )
+    button.i-la-arrow-right(@click="rngPatch++")
+    .p-0  {{ rngPatch }}
+
+  button.p-4.rounded-xl.bg-green-300.dark-bg-green-900.active-font-bold(
+    @mousedown="piano_down(65);count++"
+    @mouseup="piano_up(65)"
+    ) PLAY
+  p {{ count }}
 </template>

@@ -16,6 +16,7 @@ function locateFile(path) {
   if (Module["locateFile"]) {
     return Module["locateFile"](path, scriptDirectory);
   }
+  //NOTE - I had to modify this line in order to have the wasm file loaded from the root of the site that gets content from the public
   return '/' + path
   return scriptDirectory + path;
 }

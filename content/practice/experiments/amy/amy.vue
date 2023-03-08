@@ -134,7 +134,7 @@ function stopAudio() {
 
 }
 
-const rngPatch = ref(498)
+const rngPatch = ref(180)
 const rngRatio = ref(1.0)
 
 function piano_down(note) {

@@ -139,7 +139,7 @@ declare module '@vue/runtime-core' {
     SideSearch: typeof import('./../theme/components/side/search.vue')['default']
     SideSideBarLevel: typeof import('./../theme/components/side/SideBarLevel.vue')['default']
     Spacer: typeof import('./../theme/components/global/spacer.vue')['default']
-    StateDark: typeof import('./../components/state/dark.vue')['default']
+    StateDark: typeof import('./../theme/components/state/dark.vue')['default']
     StateSound: typeof import('./../components/state/sound.vue')['default']
     StateTransport: typeof import('./../components/state/transport.vue')['default']
     SvgLogo: typeof import('./../components/svg/logo.vue')['default']

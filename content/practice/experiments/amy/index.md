@@ -12,7 +12,7 @@ date: 2023-03-05
 
 ### the Additive Music synthesizer librarY 
 
-Highly experimental. 
+Highly experimental. [Issue pending](https://github.com/bwhitman/amy/issues/35)
 
 <client-only>
 <AmySynth />

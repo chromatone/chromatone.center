@@ -37,7 +37,7 @@ import('./amy.js').then(amy => {
   // l and r are float arrays for the left and right channels that need to be filled
   callback = function audioCallback(l) {
     // lazy loading of the audio buffer we use to talk to c++/emscripten
-    if (dataHeap == null) {
+    if (dataHeap == null || dataHeap.length == 0) {
       data = new Float32Array(l.length);
       // Get data byte size, allocate memory on Emscripten heap, and get pointer
       var nDataBytes = data.length * data.BYTES_PER_ELEMENT;

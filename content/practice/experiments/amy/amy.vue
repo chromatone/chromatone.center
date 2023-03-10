@@ -111,7 +111,7 @@ function setupAudio(fn) {
     return
   }
   audioCtx = new AudioContext({
-    sampleRate: 48000
+    sampleRate: 44100
   });
   source = audioCtx.createBufferSource();
   scriptNode = audioCtx.createScriptProcessor(256, 0, 1);

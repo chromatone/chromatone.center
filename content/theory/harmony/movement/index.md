@@ -4,13 +4,6 @@ description: Ways to move chords
 date: 2021-09-02
 ---
 
-## Harmony is in changes
-
-We build harmony out of different chords as steps of the emotional ladder but what really counts is the movement itself. We can go down and up, slow down or speed up, jump and even fly above if we want to. This is the story the composer tells to the listeners and it's vowen with movements.
-
-The functional relations between chords in a scale can be expanded quite drastically with deeper analysis of underlying intevals, that create the desired change in the mood of the music. Many new relations appear to build up into a huge landscape of the tonal space. 
-
-<youtube-embed video="RcUXObvRLb4" />
 
 ## Chord substitutions
 

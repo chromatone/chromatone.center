@@ -4,7 +4,7 @@ import {
 } from '@vueuse/core';
 import { useClamp } from '@vueuse/math';
 import { context } from 'tone';
-import { onMounted, reactive, computed, ref, shallowReactive, watch, toRef } from 'vue';
+import { onMounted, reactive, computed, watch } from 'vue';
 //@ts-expect-error
 import AMYCodes from '#/db/amy-codes.yaml'
 import { midi } from '#/use/midi'

@@ -147,27 +147,27 @@ export function useTempo() {
       }
       metro.counter++
 
-    }, "8n").start(0);
+    }, "8n").start(0)
 
     useRafFn(() => {
       //@ts-expect-error
-      tempo.position = Transport.position;
-      tempo.ticks = Transport.ticks;
+      tempo.position = Transport.position
+      tempo.ticks = Transport.ticks
       tempo.progress = metro.loop.progress
     })
 
     onKeyStroke(" ", (ev) => {
       const elem = ev.target as HTMLElement
-      if (["TEXTAREA", "INPUT"].includes(elem.nodeName)) return;
+      if (["TEXTAREA", "INPUT"].includes(elem.nodeName)) return
       ev.preventDefault()
-      tempo.playing = !tempo.playing;
+      tempo.playing = !tempo.playing
     });
 
     onKeyStroke("Enter", (ev) => {
       const elem = ev.target as HTMLElement
-      if (["TEXTAREA", "INPUT"].includes(elem.nodeName)) return;
-      ev.preventDefault();
-      tempo.stopped = Date.now();
+      if (["TEXTAREA", "INPUT"].includes(elem.nodeName)) return
+      ev.preventDefault()
+      tempo.stopped = Date.now()
     });
 
   });
@@ -210,6 +210,9 @@ export function useTempo() {
     immediate: true
   }
   );
+
+  watch(() => midi.playing, p => tempo.playing = p)
+  watch(() => midi.stopped, s => tempo.stopped = s)
 
   tempo.initialized = true
   return tempo;

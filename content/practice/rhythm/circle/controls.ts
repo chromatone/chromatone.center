@@ -1,7 +1,7 @@
 import { useStorage } from "@vueuse/core";
-import { reactive } from 'vue'
+import { reactive, Ref } from 'vue'
 
-export const loops = useStorage('tempo-circle-loops', [
+export const loops: Ref = useStorage('tempo-circle-loops', [
 	{
 		over: 8,
 		under: 8,

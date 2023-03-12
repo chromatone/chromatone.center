@@ -12,6 +12,8 @@ import { createChannel } from './audio'
 import { useClamp } from "@vueuse/math";
 import { WebMidi } from "webmidi";
 import { midi } from "./midi";
+import { useBroadcastChannel } from '@vueuse/core'
+import { send } from "vite";
 
 
 export const tempo: {
@@ -170,7 +172,22 @@ export function useTempo() {
       tempo.stopped = Date.now()
     });
 
+
+
   });
+
+
+  const broadCast = reactive({
+    playing: false,
+    stopped: false
+  })
+
+  const { data, post, } = useBroadcastChannel({ name: 'chromatone-tempo' })
+
+  watch(data, (d: typeof broadCast) => {
+    tempo.playing = !!d?.playing
+    tempo.stopped = !!d?.stopped
+  })
 
   watch(() => tempo.volume, (volume: number) => metro.pluck.volume.rampTo(gainToDb(volume)))
 
@@ -187,6 +204,7 @@ export function useTempo() {
         Transport.stop();
         midi.stopAll()
         tempo.playing = false;
+        post({ stopped: stop })
       }
     }
   );
@@ -202,9 +220,11 @@ export function useTempo() {
         tempo.stopped = false;
         Transport.start();
         midi.playing = true
+        post({ playing: true })
       } else {
         midi.playing = false
         Transport.pause();
+        post({ playing: false })
       }
     }, {
     immediate: true

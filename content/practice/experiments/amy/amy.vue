@@ -1,6 +1,6 @@
 <script setup>
 import {
-  onKeyDown, onKeyUp, useStorage, onKeyStroke, useRefHistory
+  onKeyDown, onKeyUp, useStorage, onKeyStroke
 } from '@vueuse/core';
 import { useClamp } from '@vueuse/math';
 import { context } from 'tone';

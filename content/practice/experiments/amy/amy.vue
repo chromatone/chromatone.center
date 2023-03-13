@@ -23,6 +23,7 @@ const amy = reactive({
     const arr = []
     arr.push(`w${amy.wave}`)
     arr.push(`p${amy.patch}`)
+    arr.push(`V${amy.volume}`)
     arr.push('A0,0.2,150,1,250,0T59')
     // for (let key in amy.knobs) {
     //   arr.push(`${key}${amy.knobs[key].current.value}`)
@@ -34,7 +35,7 @@ const amy = reactive({
   patch: useClamp(useStorage('amy-patch', 248), 0, 1024),
   wave: useClamp(useStorage('amy-waveform', 7), 0, 11),
   waveforms: ['SINE', 'PULSE', 'SAW_DOWN', 'SAW_UP', 'TRIANGLE', 'NOISE', 'KS', 'PCM', 'ALGO', 'PARTIAL', 'PARTIALS'],
-
+  volume: useClamp(useStorage('amy-volume', 1), 0, 10),
 
   history: []
   // knobs: computed(() => {
@@ -59,6 +60,7 @@ function useAMY() {
   })
 
   watch(() => amy.message, m => {
+    amy_play_message('S100000')
     amy_play_message(m)
     amy.history.unshift(m)
   })
@@ -161,7 +163,7 @@ function useAMY() {
 
   amy.play = (note, velocity = 0) => {
     if (!amy_started) startAudio()
-    let osc = `v${note * 10}`
+    let osc = `v${note * 20}`
     if (velocity > 0) {
       let setup = osc + amy.message
       amy_play_message(setup)
@@ -182,68 +184,60 @@ useAMY()
 </script>
 
 <template lang='pug'>
-.p-0.select-none
-  .flex.flex-row.flex-wrap.gap-2.items-center.p-4
-    .font-bold Waveform
-    button.i-la-arrow-left(@click="amy.wave--")
-    input(
-      type="range"
-      v-model="amy.wave"
-      min="0"
-      step="1"
-      max="11"
-    )
-    button.i-la-arrow-right(@click="amy.wave++")
-    .p-0  {{ amy.wave }}
+.p-2.rounded-xl.border-1.m-2.select-none.flex.flex-wrap
+  control-rotary(
+    :min="1"
+    :max="11"
+    param="Wave"
+    v-model="amy.wave"
+    :fixed="0"
+  )
+  control-rotary(
+    :min="1"
+    :max="1024"
+    param="Patch"
+    v-model="amy.patch"
+    :fixed="0"
+  )
+  control-rotary(
+    :min="1"
+    :max="127"
+    param="Note"
+    v-model="amy.note"
+    :fixed="0"
+  )
+  control-rotary(
+    :min="0"
+    :max="10"
+    param="Volume"
+    v-model="amy.volume"
+    :fixed="1"
+    :step="0.01"
+  )
+button.select-none.p-4.rounded-xl.bg-green-300.dark-bg-green-900.active-font-bold(
+  @mousedown.prevent.stop="amy.play(amy.note,1)"
+  @touchstart.prevent.stop="amy.play(amy.note,1)"
+  @mouseup.prevent.stop="amy.play(amy.note,0)"
+  @touchend.prevent.stop="amy.play(amy.note,0)"
+  )
+  .i-la-play.text-4xl
 
-  .flex.flex-row.flex-wrap.gap-2.items-center.p-4
-    .font-bold Patch
-    button.i-la-arrow-left(@click="amy.patch--")
-    input(
-      type="range"
-      v-model="amy.patch"
-      min="0"
-      max="1024"
-    )
-    button.i-la-arrow-right(@click="amy.patch++")
-    .p-0  {{ amy.patch }}
+.p-4.flex.items-center.font-mono {{ amy.message }}
 
-  .flex.flex-row.flex-wrap.gap-2.items-center.p-4
-    .font-bold Note
-    button.i-la-arrow-down(@click="amy.note--")
-    input(
-      type="range"
-      v-model="amy.note"
-      min="0"
-      max="120"
-    )
-    button.i-la-arrow-right(@click="amy.note++")
-    .p-0  {{ amy.note }}
-
-  button.select-none.p-4.rounded-xl.bg-green-300.dark-bg-green-900.active-font-bold(
-    @mousedown.prevent.stop="amy.play(amy.note,1)"
-    @touchstart.prevent.stop="amy.play(amy.note,1)"
-    @mouseup.prevent.stop="amy.play(amy.note,0)"
-    @touchend.prevent.stop="amy.play(amy.note,0)"
-    )
-    .i-la-play.text-4xl
-
-  .p-4.flex.items-center.font-mono {{ amy.message }}
-
-  .top-16.right-4.p-4.w-80.max-h-80vh.overflow-hidden.flex.flex-col.opacity-30.pointer-events-none.font-mono.text-sm.fixed
-    .font-bold {{ amy.message }}
-    .p-0(v-for="rec in amy.history" :key="rec") {{ rec }}
-  //- .flex.flex-wrap.gap-4
-  //-   .text-2xl Floats
-  //-   .p-2.flex(v-for="(knob,key) in amy.knobs" :key="key") 
-  //-     .text-xl {{ key }}: {{ knob.name}}
-  //-       control-knob(
-  //-         :param="knob.name"
-  //-         :min="knob.min"
-  //-         :max="knob.max"
-  //-         v-model="knob.current.value"
-  //-         :step="0.01"
-  //-       )
-  //- pre {{ amy.knobs }}
-  //TODO - string, uint, mask
+.top-16.right-4.p-4.w-80.max-h-80vh.overflow-hidden.flex.flex-col.opacity-30.pointer-events-none.font-mono.text-sm.fixed
+  .font-bold {{ amy.message }}
+  .p-0(v-for="rec in amy.history" :key="rec") {{ rec }}
+//- .flex.flex-wrap.gap-4
+//-   .text-2xl Floats
+//-   .p-2.flex(v-for="(knob,key) in amy.knobs" :key="key") 
+//-     .text-xl {{ key }}: {{ knob.name}}
+//-       control-knob(
+//-         :param="knob.name"
+//-         :min="knob.min"
+//-         :max="knob.max"
+//-         v-model="knob.current.value"
+//-         :step="0.01"
+//-       )
+//- pre {{ amy.knobs }}
+//TODO - string, uint, mask
 </template>

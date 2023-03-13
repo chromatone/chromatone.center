@@ -75,7 +75,7 @@ watchThrottled(loaded, l => {
 </script>
 
 <template lang="pug">
-.max-w-150.mx-auto.w-full.relative.flex.items-center.flex-col.justify-center
+.max-w-150.relative.flex.items-center.flex-col.justify-center
 
   button.absolute.opacity-50.hover-opacity-100.transition.cursor-pointer.bottom-0.left-5.flex.items-center.gap-1.bg-light-100.dark-bg-dark-100.rounded-xl.p-2.shadow-lg(
     v-tooltip.bottom="'Copy custom schema'"

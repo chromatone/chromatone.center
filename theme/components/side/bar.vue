@@ -44,11 +44,11 @@ transition(name="fade")
 <style lang="postcss" scoped>
 .panel {
   width: 16.4rem;
-  flex: 1 0 16.4rem;
+  flex: 0 0 16.4rem;
   overflow-y: auto;
   scroll-padding-top: 4em;
   transition: all 300ms ease-out;
-  @apply max-h-100vh pr-2 pl-1 fixed top-0 bottom-0 left-0 transform -translate-x-full lg-(sticky translate-x-0) shadow-xl bg-light-600 dark-bg-dark-700 overscroll-contain z-51 scroll-ma-xl;
+  @apply w-30 max-h-100vh pr-2 pl-1 fixed top-0 bottom-0 left-0 transform -translate-x-full lg-(sticky translate-x-0) shadow-xl bg-light-600 dark-bg-dark-700 overscroll-contain z-51 scroll-ma-xl;
 }
 
 .panel a {

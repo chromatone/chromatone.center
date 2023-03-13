@@ -16,6 +16,6 @@ Chromatone is an open source initiative made not to be a proprietary standard, b
 
 If you're a designer, JS developer, audio analysis library or know how else the site may be better - [Contribute code](./code/index.md) to our open GitHub repository.
 
-If you find Chromatone system helpful in your music learning or teaching process, please share love with a [Donation](./donate/index.md) to the site author.
+If you find Chromatone system helpful in your music learning or teaching process, please share love and start your Chromatone [Sponsorship](./sponsor/index.md) today.
 
 We have a subreddit to hang around and an Instagram account to tag in your posts. And it's important to let more people join the growing community of visual musicians. So [follow us](./follow/index.md) and spread the word about Chromatone through your social media and beyond.

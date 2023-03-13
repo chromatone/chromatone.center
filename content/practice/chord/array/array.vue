@@ -4,7 +4,7 @@ import tonalTrigger from './trigger.vue'
 
 import { rotateArray } from '#/use/calculations'
 import { noteColor } from '#/use/colors'
-import { notes, scales } from '#/use/theory'
+import { notes } from '#/use/theory'
 import { computed, reactive } from 'vue'
 
 const allNotes = [...notes].map((n, i) => ({ name: n, pitch: i }))
@@ -33,14 +33,16 @@ const props = defineProps({
     type: Number,
     default: 0
   },
-  scale: {
-    type: Object,
-    default: scales.minor
+  chroma: {
+    type: String,
+    default: '100000000000'
   }
 })
 
+
 const activeSteps = computed(() => {
-  let activeSteps = rotateArray(props.scale.steps, -props.tonic)
+  let chromaSteps = props.chroma.split('').map(Number)
+  let activeSteps = rotateArray(chromaSteps, -props.tonic)
   return activeSteps
 })
 

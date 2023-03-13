@@ -107,7 +107,7 @@ export function useNoise(): any {
   });
 
   onKeyStroke(
-    " ",
+    "a",
     (e) => {
       e.preventDefault();
       active.value = true;
@@ -116,7 +116,7 @@ export function useNoise(): any {
   );
 
   onKeyStroke(
-    " ",
+    "a",
     () => {
       active.value = false;
     },

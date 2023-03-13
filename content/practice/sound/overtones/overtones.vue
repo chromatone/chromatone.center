@@ -248,21 +248,21 @@ function calcCents(base, freq) {
   svg#overtones.w-full.max-h-90vh(
     version="1.1"
     baseProfile="full"
-    :viewBox="`${-box.padX} ${-2 * box.padY} ${box.width + 2 * box.padX} ${box.height + 4 * box.padY}`"
+    :viewBox="`${-box.padX} ${-3 * box.padY} ${box.width + 2 * box.padX} ${box.height + 3*box.padY}`"
     xmlns="http://www.w3.org/2000/svg"
     font-family="Commissioner, sans-serif"
     @mouseleave="sound.stop()"
     )
     overtones-guitar(
       :length="box.width"
-      :transform="`translate(0,${box.height}) rotate(180) translate(-150, -12)`"
+      :transform="`translate(0,-1) rotate(180) translate(-150, -12)`"
     )
     g#edges
       line(
         x1="0"
         x2="0"
         y1="0"
-        :y2="box.height"
+        :y2="box.height-8"
         stroke="gray"
         stroke-width="0.2"
       )
@@ -270,7 +270,7 @@ function calcCents(base, freq) {
         :x1="box.width"
         :x2="box.width"
         y1="0"
-        :y2="box.height"
+        :y2="box.height-8"
         stroke="gray"
         stroke-width="0.2"
       )
@@ -398,7 +398,7 @@ function calcCents(base, freq) {
         :x1="dot"
         :x2="dot"
         :y1="(i + 1) * (box.height - box.padY) / (overtones.count)"
-        :y2="box.height + 12"
+        :y2="0"
         :stroke="overtone.stroke"
         stroke-width="0.2"
         :opacity="1 - i / (overtones.count + 2)"

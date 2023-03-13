@@ -36,17 +36,29 @@ function getChords(degrees) {
 
 <template lang="pug">
 .flex.flex-col
+
+  .flex.flex-wrap.mx-auto.my-4
+    control-choose(v-model="state.mode" :variants="variants")
   .flex.flex-col.items-stretch.my-2.p-8.border-2.rounded-xl(
     :style="{ borderColor: noteColor(globalScale.tonic, 2), backgroundColor: noteColor(globalScale.tonic, 2, 1, 0.05) }"
     )
-    .flex.flex-wrap.mx-auto.my-4
-      control-choose(v-model="state.mode" :variants="variants")
+
+
     chroma-keys.w-20em.mx-auto(:chroma="globalScale.chroma", v-model:pitch="globalScale.tonic")
-    .flex.flex-col.text-center.mb-2.relative
-      .text-2xl.font-bold.flex.mx-auto.items-center {{ globalScale.note.name }} {{ state.current.title }}
-      a.p-2.text-2xl.absolute.right-2.top-2.rounded-full.shadow-xl(:href="state.current.link" target="_blank" v-if="state.current.link")
-        .i-la-wikipedia-w
-      .text-lg {{ state.current.degrees }} 
+
+      .flex.flex-col.text-center.mb-2.relative.p-1
+        .text-2xl.font-bold.flex.mx-auto.items-center {{ globalScale.note.name }} {{ state.current.title }}
+        a.p-1.text-2xl.absolute.right-2.top-2.rounded-full.shadow-xl(:href="state.current.link" target="_blank" v-if="state.current.link")
+          .i-la-wikipedia-w
+        .text-lg {{ state.current.degrees }} 
+    .flex.flex-wrap.justify-center.p-4
+      button.text-button.flex.flex-col(
+        v-for="(progression, name) in list" :key="progression"
+        @click="state.selected = name"
+        :class="{ active: progression == state.current }"
+      ) 
+        .font-bold.px-1.mb-1 {{ progression.title }}
+        //- .text-sm {{ progression.degrees }} 
     transition(name="fade" mode="out-in")
       .flex.flex-wrap(:key="state.current")
         .flex-1.flex.flex-col.items-center.select-none(v-for="(chord, c) in getChords(state.current.degrees)" :key="c")
@@ -55,6 +67,7 @@ function getChords(degrees) {
             :pitch="chord.tonicPitch"
             :roman="state.current.degrees.split('-')[c]"
             v-if="state.mode == 'piano'"
+            :playAll="true"
             )
           chord-tab.max-w-10em(
             instrument="ukulele"
@@ -86,12 +99,5 @@ function getChords(degrees) {
             :pitch="chord.tonicPitch" 
             :roman="state.current.degrees.split('-')[c]"
           )
-  .flex.flex-wrap.justify-center.p-4
-    button.text-button.flex.flex-col(
-      v-for="(progression, name) in list" :key="progression"
-      @click="state.selected = name"
-      :class="{ active: progression == state.current }"
-    ) 
-      .font-bold.px-1.mb-1 {{ progression.title }}
-      .text-sm {{ progression.degrees }} 
+
 </template>

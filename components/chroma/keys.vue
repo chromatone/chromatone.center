@@ -12,7 +12,8 @@ const props = defineProps({
   pitch: { type: Number, default: 0 },
   scale: { type: String },
   roman: { type: String, default: '' },
-  title: { type: Boolean, default: true }
+  title: { type: Boolean, default: true },
+  playAll: { type: Boolean, default: false }
 });
 
 const emit = defineEmits(['update:pitch'])
@@ -49,11 +50,11 @@ function keyColor(key, off) {
 
 <template lang="pug">
 .flex.flex-col.m-1.rounded-2xl.cursor-pointer.transition-all.duration-300.ease.relative.select-none.touch-none(
-  @mousedown="playChroma(chroma, pitch)"
-  @touchend="stopChroma(chroma, pitch)"
-  @touchcancel="stopChroma(chroma, pitch)"
-  @mouseup="stopChroma(chroma, pitch)"
-  @mouseleave="stopChroma(chroma, pitch)"
+  @mousedown="playAll && playChroma(chroma, pitch)"
+  @touchend="playAll && stopChroma(chroma, pitch)"
+  @touchcancel="playAll && stopChroma(chroma, pitch)"
+  @mouseup="playAll && stopChroma(chroma, pitch)"
+  @mouseleave="playAll && stopChroma(chroma, pitch)"
   :style="{ backgroundColor: noteColor(pitch, 2, 1, 0.5) }"
 )
   .flex.justify-center.my-2.px-2(v-if="title")

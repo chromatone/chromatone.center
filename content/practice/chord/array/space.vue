@@ -1,34 +1,17 @@
 <script setup>
 import tonalArray from './array.vue'
-import { useStorage } from '@vueuse/core'
-import { scales } from '#/use/theory'
 import { globalScale } from '#/use/chroma'
-import { ref } from 'vue';
-
-
-const scale = useStorage('array-scale', scales.minor);
 
 </script>
 
 <template lang="pug">
 .flex.flex-col
-  .flex.flex-wrap.my-4.items-center.justify-center
-    chroma-keys.w-250px(
-      v-model:pitch="globalScale.tonic"
-      :title="false"
-      chroma="100000000000"
-      )
-    .scales
-      .p-2.flex-1.cursor-pointer.whitespace-nowrap(
-        v-for="sc in scales"
-        :key="sc.handle"
-        :style="{ fontWeight: scale.handle == sc.handle ? 'bold' : 'normal' }"
-        @click="scale = sc"
-        ) {{ sc.name }}
+  control-scale
   #screen.fullscreen-container.rounded-3xl
     tonal-array(
       :tonic="globalScale.tonic", 
-      :scale="scale")    
+      :chroma="globalScale.chroma"
+      )
 </template>
 
 <style lang="postcss" scoped>

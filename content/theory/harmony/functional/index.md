@@ -4,7 +4,7 @@ description: Relating chords by their interval content
 date: 2023-03-11
 ---
 
-**Functional** means based on [functions](https://en.wikipedia.org/wiki/Function_(music)), **tonal** means based on [tonality](https://en.wikipedia.org/wiki/Tonality), harmony means lively movement through all that space.
+**Functional** means based on [functions](https://en.wikipedia.org/wiki/Function_(music)), **tonal** means based on [tonality](https://en.wikipedia.org/wiki/Tonality), harmony means lively movement through all that emotional space.
 
 ## Functional Tonal Harmony 1 
 

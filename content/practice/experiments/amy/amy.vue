@@ -21,36 +21,27 @@ const amy = reactive({
 
   message: computed(() => {
     const arr = []
-    arr.push(`w${amy.wave}`)
-    arr.push(`p${amy.patch}`)
-    arr.push(`V${amy.volume}`)
+    for (let p in amy.knobs) {
+      arr.push(`${p}${amy.knobs[p]}`)
+    }
     arr.push('A0,0.2,150,1,250,0T59')
-    // for (let key in amy.knobs) {
-    //   arr.push(`${key}${amy.knobs[key].current.value}`)
-    // }
+
     return arr.join('')
   }),
+  waveforms: ['SINE', 'PULSE', 'SAW_DOWN', 'SAW_UP', 'TRI', 'NOISE', 'KS', 'PCM', 'ALGO', 'PARTIAL', 'PARTIALS'],
 
+  knobs: {
+    p: useClamp(useStorage('amy-patch', 248), 0, 1024),
+    w: useClamp(useStorage('amy-waveform', 7), 0, 11),
+    V: useClamp(useStorage('amy-volume', 1), 0, 10),
+    d: useClamp(useStorage('amy-duty', 0.5), 0.001, 0.999),
+    o: useClamp(useStorage('amy-algo', 1), 1, 32),
+    b: useClamp(useStorage('amy-feedback', 0), 0, 1),
+  },
   note: useClamp(60, 10, 127),
-  patch: useClamp(useStorage('amy-patch', 248), 0, 1024),
-  wave: useClamp(useStorage('amy-waveform', 7), 0, 11),
-  waveforms: ['SINE', 'PULSE', 'SAW_DOWN', 'SAW_UP', 'TRIANGLE', 'NOISE', 'KS', 'PCM', 'ALGO', 'PARTIAL', 'PARTIALS'],
-  volume: useClamp(useStorage('amy-volume', 1), 0, 10),
+
 
   history: []
-  // knobs: computed(() => {
-  //   const kbs = {}
-  //   for (let key in amy.codes) {
-  //     const code = amy.codes[key]
-  //     if (code.type != 'float') continue
-  //     kbs[key] = {
-  //       ...code,
-  //       key,
-  //       current: useClamp(useStorage(`amy-${code.name}`, code.default), code.min, code.max)
-  //     }
-  //   }
-  //   return kbs
-  // })
 })
 
 function useAMY() {
@@ -60,16 +51,15 @@ function useAMY() {
   })
 
   watch(() => amy.message, m => {
-    amy_play_message('S100000')
     amy_play_message(m)
     amy.history.unshift(m)
   })
 
-  onKeyDown('a', () => { amy.play(rngNote.value, 1) })
-  onKeyUp('a', () => { amy.play(rngNote.value, 0) })
+  onKeyDown('a', () => { amy.play(amy.note, 1) })
+  onKeyUp('a', () => { amy.play(amy.note, 0) })
 
-  onKeyStroke('ArrowLeft', () => { amy.patch-- })
-  onKeyStroke('ArrowRight', () => { amy.patch++ })
+  onKeyStroke('ArrowLeft', () => { amy.knobs.patch-- })
+  onKeyStroke('ArrowRight', () => { amy.knobs.patch++ })
 
   onKeyStroke('ArrowUp', (e) => { e.preventDefault(); amy.note++ })
   onKeyStroke('ArrowDown', (e) => { e.preventDefault(); amy.note-- })
@@ -175,6 +165,12 @@ function useAMY() {
     amy_play_message(msg)
   }
 
+  amy.reset = (n = 100000) => {
+    let msg = `S${n}`
+    amy.history.unshift(msg)
+    amy_play_message(msg)
+  }
+
   return amy
 }
 
@@ -184,49 +180,83 @@ useAMY()
 </script>
 
 <template lang='pug'>
-.p-2.rounded-xl.border-1.m-2.select-none.flex.flex-wrap
-  control-rotary(
-    :min="1"
-    :max="11"
-    param="Wave"
-    v-model="amy.wave"
-    :fixed="0"
-  )
-  control-rotary(
-    :min="1"
-    :max="1024"
-    param="Patch"
-    v-model="amy.patch"
-    :fixed="0"
-  )
+.p-2.rounded-xl.border-1.m-2.select-none.flex.flex-wrap.gap-2
+  transition-group(name="fade")
+    control-rotary(
+      :min="0"
+      :max="11"
+      param="Wave"
+      v-model="amy.knobs.w"
+      :fixed="0"
+      :unit="amy.waveforms[amy.knobs.w]"
+    )
+    control-rotary(
+      :min="1"
+      :max="1024"
+      param="Patch"
+      v-model="amy.knobs.p"
+      v-if="amy.knobs.w > 6"
+      :fixed="0"
+    )
+    control-rotary(
+      :min="0.001"
+      :max=".999"
+      param="Duty"
+      :step="0.01"
+      v-if="amy.knobs.w == 1"
+      v-model="amy.knobs.d"
+      :fixed="2"
+    )
+    control-rotary(
+      :min="1"
+      :max="32"
+      param="ALGO"
+      v-if="amy.knobs.w == 8"
+      v-model="amy.knobs.o"
+      :fixed="0"
+    )
+    control-rotary(
+      :min="0"
+      :max="1"
+      param="Feedback"
+      v-model="amy.knobs.b"
+      v-if="amy.knobs.w>5"
+      :fixed="1"
+      :step="0.01"
+    )
+    control-rotary(
+      :min="0"
+      :max="10"
+      param="Volume"
+      v-model="amy.knobs.V"
+      :fixed="1"
+      :step="0.01"
+    )
+    .flex-auto
+    button.text-button(@click="amy.reset()") RESET
+.p-2.rounded-xl.border-1.m-2.select-none.flex.flex-wrap.gap-4
   control-rotary(
     :min="1"
     :max="127"
     param="Note"
     v-model="amy.note"
     :fixed="0"
-  )
-  control-rotary(
-    :min="0"
-    :max="10"
-    param="Volume"
-    v-model="amy.volume"
-    :fixed="1"
-    :step="0.01"
-  )
-button.select-none.p-4.rounded-xl.bg-green-300.dark-bg-green-900.active-font-bold(
-  @mousedown.prevent.stop="amy.play(amy.note,1)"
-  @touchstart.prevent.stop="amy.play(amy.note,1)"
-  @mouseup.prevent.stop="amy.play(amy.note,0)"
-  @touchend.prevent.stop="amy.play(amy.note,0)"
-  )
-  .i-la-play.text-4xl
+    unit="MIDI"
+    )
+  button.flex.items-center.gap-4.select-none.p-4.rounded-xl.bg-green-300.dark-bg-green-900.active-font-bold(
+    @mousedown.prevent.stop="amy.play(amy.note,1)"
+    @touchstart.prevent.stop="amy.play(amy.note,1)"
+    @mouseup.prevent.stop="amy.play(amy.note,0)"
+    @touchend.prevent.stop="amy.play(amy.note,0)"
+    )
+    .i-la-play.text-4xl
 
 .p-4.flex.items-center.font-mono {{ amy.message }}
 
 .top-16.right-4.p-4.w-80.max-h-80vh.overflow-hidden.flex.flex-col.opacity-30.pointer-events-none.font-mono.text-sm.fixed
-  .font-bold {{ amy.message }}
-  .p-0(v-for="rec in amy.history" :key="rec") {{ rec }}
+  .font-bold.border-b-2 {{ amy.message }}
+  transition-group(name="fade")
+    .p-0(v-for="rec in amy.history" :key="rec") {{ rec }}
 //- .flex.flex-wrap.gap-4
 //-   .text-2xl Floats
 //-   .p-2.flex(v-for="(knob,key) in amy.knobs" :key="key") 

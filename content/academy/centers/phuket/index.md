@@ -7,6 +7,8 @@ cover: cover.jpg
 
 ## Makerspace on the island
 
-Thanks to Glenn Miller there's Pirate Bay - the new local space for makers of different crafts to meet at the tropical island of Phuket. It's located at Phuket Town and hosts a number of regular meetups for local communities.
+Thanks to Glenn Miller at the tropical island of Phuket there's Pirate Bay - the new fablab space for makers of different crafts to meet and collaborate on creative projects. It is located in the middle of Phuket Town and hosts a number of regular meetups for local communities. 
 
 [Pirate Bay Facebook page](https://www.facebook.com/piratebayphuket)
+
+[32, 198 Phoonpon Rd, Tambon Talat Nuea, Mueang Phuket District, Phuket](https://goo.gl/maps/fNEg5spC2Mj11L1u7)

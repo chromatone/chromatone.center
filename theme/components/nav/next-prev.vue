@@ -39,14 +39,6 @@ const colors = reactive({
         .i-carbon-chevron-up.mr-1
         .p-1 {{ parent.title }}
   nav-row
-  .flex.flex-col.items-center
-    a.text-xl.p-4.flex.flex-col.items-center(
-      class="hover-no-underline"
-      href="/"
-      )
-      img.w-32(src="/media/logo/circle.svg")
-      .p-2 Chromatone
-
 </template>
 
 <style lang="postcss" scoped>

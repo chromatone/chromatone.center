@@ -13,7 +13,7 @@ main#content
       shop-message
       row-list.mb-32.max-w-full
   nav-next-prev
-  //- footer-row
+  footer-row
 </template>
 
 <style lang="postcss" scoped>

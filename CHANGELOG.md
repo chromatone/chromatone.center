@@ -1,3 +1,24 @@
+## v2.0.4
+
+[compare changes](https://github.com/chromatone/chromatone.center/compare/v2.0.4...v2.1.0)
+
+
+### 🚀 Enhancements
+
+  - Successful AMY synth experiment ([a7aa0d57](https://github.com/chromatone/chromatone.center/commit/a7aa0d57))
+  - Amy controls start ([bb1d8084](https://github.com/chromatone/chromatone.center/commit/bb1d8084))
+  - Midi sync ([86fd4806](https://github.com/chromatone/chromatone.center/commit/86fd4806))
+  - Start/stop sync across tabs! ([9c7d5af7](https://github.com/chromatone/chromatone.center/commit/9c7d5af7))
+
+### 🩹 Fixes
+
+  - Heap bug fixed ([01017c7e](https://github.com/chromatone/chromatone.center/commit/01017c7e))
+  - 44100 is correct ([d50a7338](https://github.com/chromatone/chromatone.center/commit/d50a7338))
+
+### ❤️  Contributors
+
+- Davay ([@davay42](http://github.com/davay42))
+
 ## Unreleased (2022-06-14)
 
 ### New feature:

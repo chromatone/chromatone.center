@@ -34,15 +34,13 @@ Any scale having the same number of modes as notes is not a mode of limited tran
 
 ### Whole tone scale
 
-<chroma-profile link="https://en.wikipedia.org/wiki/Whole_tone_scale" :chroma="'101010101010'" />
-
 Interval cycle 2 (C2).
 
 A whole-tone scale is a scale in which each note is separated from its neighbors by the interval of a whole tone. In twelve-tone equal temperament, there are only two complementary whole-tone scales, both six-note or hexatonic scales. A single whole tone scale can also be thought of as a "six-tone equal temperament".
 
 The whole-tone scale has no leading tone and because all tones are the same distance apart, "no single tone stands out, and the scale creates a blurred, indistinct effect". This effect is especially emphasised by the fact that triads built on such scale tones are all augmented triads. Indeed, all six tones of a whole-tone scale can be played simply with two augmented triads whose roots are a major second apart. Since they are symmetrical, whole-tone scales do not give a strong impression of the tonic or tonality.
 
-Whole tone scale was used notably by Bach and Mozart, Glinka and Rimsky-Korsakov. H. C. Colles names as the "childhood of the whole-tone scale" the music of Berlioz and Schubert in France and Austria and then Russians Glinka and Dargomyzhsky.[9] Claude Debussy, who had been influenced by Russians, along with other impressionist composers made extensive use of whole tone scales. Voiles, the second piece in Debussy's first book of Préludes, is almost entirely within one whole-tone scale.
+Whole tone scale was used notably by Bach and Mozart, Glinka and Rimsky-Korsakov. H. C. Colles names as the "childhood of the whole-tone scale" the music of Berlioz and Schubert in France and Austria and then Russians Glinka and Dargomyzhsky. Claude Debussy, who had been influenced by Russians, along with other impressionist composers made extensive use of whole tone scales. Voiles, the second piece in Debussy's first book of Préludes, is almost entirely within one whole-tone scale.
 
 The rāga Sahera in Hindustani classical music uses the same intervals as the whole-tone scale.
 

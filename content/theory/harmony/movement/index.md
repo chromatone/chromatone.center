@@ -4,6 +4,11 @@ description: Ways to move chords
 date: 2021-09-02
 ---
 
+## Descending fifths progressions
+
+<youtube-embed video="v=fJvxaIfX6V4"></youtube-embed>
+
+Discusses chord progressions whose roots move by descending fifth, especially as they appear in Jazz standards.
 
 ## Chord substitutions
 

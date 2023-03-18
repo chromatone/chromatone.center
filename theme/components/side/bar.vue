@@ -48,7 +48,7 @@ transition(name="fade")
   overflow-y: auto;
   scroll-padding-top: 4em;
   transition: all 300ms ease-out;
-  @apply w-30 max-h-100vh pr-2 pl-1 fixed top-0 bottom-0 left-0 transform -translate-x-full lg-(sticky translate-x-0) shadow-xl bg-light-600 dark-bg-dark-700 overscroll-contain z-51 scroll-ma-xl;
+  @apply min-w-30 max-h-100vh pr-2 pl-1 fixed top-0 bottom-0 left-0 transform -translate-x-full lg-(sticky translate-x-0) shadow-xl bg-light-600 dark-bg-dark-700 overscroll-contain z-51 scroll-ma-xl;
 }
 
 .panel a {

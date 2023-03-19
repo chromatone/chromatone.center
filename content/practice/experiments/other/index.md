@@ -79,6 +79,15 @@ links:
   - url: https://severak.github.io/cyber-music-studio/
     title: Cyber Music Studio
     description: When finished, Cyber Music Studio will be standalone in-browser app for recording and mixing music. But it's not finished yet, so now there are only these handful of instruments.
+  - url: https://davidlu.me/tech/
+    title: David Lu Tech projects
+    description: Software engineer. Electronic musician. Media artist. aCtUaL uNiCoRn 
+  - url: https://strudel.tidalcycles.org/
+    title: Strudel
+    description: Strudel, a new live coding platform to write dynamic music pieces in the browser! It is free and open-source and made for beginners and experts alike.
+  - url: https://teropa.info/blog/2016/07/28/javascript-systems-music.html
+    title: JavaScript Systems Music
+    description: Learning Web Audio by Recreating The Works of Steve Reich and Brian Eno
 date: 2018-09-08
 ---
 

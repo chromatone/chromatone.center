@@ -43,7 +43,7 @@ export interface MidiInterface {
   }>
   forwards: Record<string, Record<string, boolean>>
   channels: Record<number, { notes: {}, activeNotes: {}, cc: {} }>
-  activeNotes: Record<number, boolean>
+  activeNotes: Record<number, boolean | number>
   guessChords: string[]
   note: {
     pitch: number
@@ -342,7 +342,7 @@ function noteInOn(ev: NoteMessageEvent) {
     delete midi.channels[note.channel].activeNotes[note.number]
   } else {
     note.velocity = 120 * (ev.note.attack || 1);
-    midi.channels[note.channel].activeNotes[note.number] = true
+    midi.channels[note.channel].activeNotes[note.number] = ev.note.attack
   }
   midi.note = note;
   return note;

@@ -58,7 +58,7 @@ const bg = computed(() => `url(${props.item?.cover}`);
 
 <style lang="postcss" scoped>
 .row {
-  @apply bg-light-500 w-full dark-bg-dark-500 flex flex-col transition-all duration-300 ease no-underline rounded-3xl overflow-hidden shadow-lg;
+  @apply bg-light-500 w-full dark-bg-dark-500 flex flex-col transition-all duration-300 ease no-underline rounded-3xl overflow-hidden shadow-lg max-w-65ch;
   flex: 1 1 200px;
 }
 

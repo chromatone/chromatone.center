@@ -2,6 +2,7 @@
 title: Support
 description: Share links, contribute code or donate money to the open source development
 date: 2021-05-10
+topContent: true
 ---
 
 <script setup> 

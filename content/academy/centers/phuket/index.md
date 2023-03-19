@@ -3,6 +3,7 @@ title: Pirate Bay @ Phuket, Thailand
 description: Weekly music geeks meetups at an island makerspace.
 date: 2022-12-22
 cover: cover.jpg
+topContent: true
 ---
 
 ## Makerspace on the island

@@ -1,7 +1,11 @@
 <script setup>
-import { useRoute } from 'vitepress'
+import { useRoute, useData } from 'vitepress'
+import { computed } from 'vue';
 
 const route = useRoute()
+const data = useData()
+
+const topContent = computed(() => data.frontmatter.value?.topContent) 
 </script>
 
 <template lang="pug">
@@ -9,9 +13,10 @@ main#content
   page-headline
   transition(name="fade")
     .content-container(:key="route.path")
+      row-list.my-2.max-w-full(v-if="!topContent")
       content.content.flex-auto.z-10
       shop-message
-      row-list.mb-32.max-w-full
+      row-list.my-2.max-w-full(v-if="topContent")
   nav-next-prev
   footer-row
 </template>

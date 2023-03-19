@@ -2,7 +2,7 @@
 import { globalScale, playChroma, stopChroma } from '#/use/chroma'
 import { rotateArray } from '#/use/calculations'
 import { noteColor } from '#/use/colors'
-import { chordType, scaleType, notes } from '#/use/theory'
+import { chordType, scaleType, notes, flats } from '#/use/theory'
 import { colord } from 'colord'
 import { reactive, computed } from 'vue'
 
@@ -49,7 +49,7 @@ function keyColor(key, off) {
 </script>
 
 <template lang="pug">
-.flex.flex-col.m-1.rounded-2xl.cursor-pointer.transition-all.duration-300.ease.relative.select-none.touch-none(
+.flex.flex-col.m-1.rounded-2xl.cursor-pointer.transition-all.duration-300.ease.relative.select-none.touch-none.px-2(
   @mousedown="playAll && playChroma(chroma, pitch)"
   @touchend="playAll && stopChroma(chroma, pitch)"
   @touchcancel="playAll && stopChroma(chroma, pitch)"
@@ -66,7 +66,7 @@ function keyColor(key, off) {
     :viewBox="`-10 -20 720 360`",
     xmlns="http://www.w3.org/2000/svg",
     font-family="Commissioner, sans-serif"
-    font-weight="600"
+    font-weight="200"
     font-size="40"
     text-anchor="middle",
     dominant-baseline="middle"
@@ -102,8 +102,7 @@ function keyColor(key, off) {
           :fill="colord(noteColor(key)).isDark() ? 'white' : 'black'"
         ) 
           tspan(    
-            text-anchor="middle",
-            dominant-baseline="middle"
+            :font-weight="key == pitch ? 800 : 200"
             ) {{ notes[key] }}
     g.black 
       g.key(
@@ -132,14 +131,11 @@ function keyColor(key, off) {
         )
         text.pointer-events-none(
           v-show="isInChroma(key)"
-          y="180"
-          x="45"
           :fill="colord(noteColor(key)).isDark() ? 'white' : 'black'"
+          :font-weight="key == pitch ? 800 : 200"
         ) 
-          tspan(    
-            text-anchor="middle",
-            dominant-baseline="middle"
-            ) {{ notes[key] }}
+          tspan(y="176" x="45") {{ notes[key] }}
+          tspan(y="50" x="45" ) {{ flats[key] }}
   slot
 </template>
 

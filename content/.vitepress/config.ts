@@ -18,7 +18,7 @@ export const metaData = {
   description: "Universal color music notation and communication",
   site,
   locale: "en",
-  icon: "/media/logo/holologo.svg",
+  icon: "/media/logo/click-logo.svg",
   image: "media/logo/cardtw.png",
   author: "davay42",
   twitter: "Chromatone.center",

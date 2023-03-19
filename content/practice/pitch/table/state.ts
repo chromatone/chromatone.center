@@ -36,6 +36,8 @@ export const state = reactive({
   },
 })
 
+
+
 function decOctave(top) {
   let pos = top ? 'top' : 'bottom'
   let other = top ? 'bottom' : 'top'

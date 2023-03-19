@@ -3,17 +3,31 @@ import { noteColor } from "#/use/colors";
 import { midi } from '#/use/midi';
 import { notes } from '#/use/theory';
 import { colord } from 'colord';
-import { ref } from "vue";
+import { computed, ref } from "vue";
 
 
 const width = ref(300)
 const height = ref(300)
+
+const activeColors = computed(() => Object.entries(midi.activeNotes)?.map(([n, v]) => noteColor(n, 0, v.toFixed(2), v.toFixed(2))))
+
+const mix = computed(() => activeColors.value?.reduce((prev, next) => prev.mix(next), colord(activeColors.value[0])))
+
 </script>
 
 <template lang="pug">
-#screen.h-600px.w-full.transition(
-  :style="{ backgroundColor: noteColor(midi?.note?.pitch, midi.note?.octA, 1, midi.note?.attack) }"
+#screen.h-600px.w-full.transition.flex.flex-col(
+  :style="{ backgroundColor: '' }"
 )
+  .flex.flex-1
+    .flex-1.transition.py-16(
+      v-for="(color,c) in activeColors" :key="c"
+        :style="{ backgroundColor: color }"
+      )
+
+  .flex-1.transition(
+    :style="{ backgroundColor: mix.toHex() }"
+  )
 
 .relative.hidden
   svg-save(svg="brain")

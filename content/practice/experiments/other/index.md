@@ -76,6 +76,9 @@ links:
   - url: http://www.musanim.com/HarmonicColoring/
     title: Harmonic Coloring
     description: A method for assigning colors to musical pitches
+  - url: https://severak.github.io/cyber-music-studio/
+    title: Cyber Music Studio
+    description: When finished, Cyber Music Studio will be standalone in-browser app for recording and mixing music. But it's not finished yet, so now there are only these handful of instruments.
 date: 2018-09-08
 ---
 

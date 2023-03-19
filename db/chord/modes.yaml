@@ -19,9 +19,9 @@ aeolian:
 locrian:
   title: Locrian
   degrees: Im7b5-bIImaj7-bIIIm7-IVm7-bVmaj7-bVI7-bVIIm7
-natural:
-  title: Natural minor
-  degrees: Im7-IIm7b5-IIImaj7-IVm7-Vm7-VImaj7-VII7
+# natural:
+#   title: Natural minor
+#   degrees: Im7-IIm7b5-IIImaj7-IVm7-Vm7-VImaj7-VII7
 harmonic:
   title: Harmonic minor
   degrees: ImMaj7-IIm7b5-III+maj7-IVm7-V7-VImaj7-VIIo7

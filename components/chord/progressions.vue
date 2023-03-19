@@ -2,7 +2,7 @@
 import { rotateArray } from '#/use/calculations'
 import { noteNames } from '#/use/theory'
 import { globalScale, playChroma, stopChroma } from '#/use/chroma'
-import { Progression, Chord } from "tonal";
+import { Progression, Chord, Scale } from "tonal";
 import { noteColor } from '#/use/colors'
 import { reactive, computed } from 'vue'
 import { useStorage } from '@vueuse/core';
@@ -16,7 +16,9 @@ const props = defineProps({
 const state = reactive({
   mode: useStorage('progresions-mode', 'bars'),
   selected: props.initial,
-  current: computed(() => props.list[state.selected])
+  current: computed(() => props.list[state.selected]),
+  scaleString: computed(() => `${globalScale.note.name} ${props.list[state.selected].title}`.toLowerCase()),
+  scale: computed(() => Scale.get(state.scaleString))
 })
 
 const variants = { ukulele: 'Ukulele', guitar: 'Guitar', piano: 'Piano', circles: 'Circles', squares: 'Squares', bars: 'Bars' }
@@ -32,36 +34,40 @@ function getChords(degrees) {
   })
   return chords
 }
+
 </script>
 
 <template lang="pug">
 .flex.flex-col
-
   .flex.flex-wrap.mx-auto.my-4
     control-choose(v-model="state.mode" :variants="variants")
-  .flex.flex-col.items-stretch.my-2.p-8.border-2.rounded-xl(
+  .flex.flex-wrap.items-stretch.my-2.p-8.gap-4.border-2.rounded-xl(
     :style="{ borderColor: noteColor(globalScale.tonic, 2), backgroundColor: noteColor(globalScale.tonic, 2, 1, 0.05) }"
     )
-
-
-    chroma-keys.w-20em.mx-auto(:chroma="globalScale.chroma", v-model:pitch="globalScale.tonic")
-
-      .flex.flex-col.text-center.mb-2.relative.p-1
+    chroma-keys.w-20em.mx-auto(
+      :chroma="globalScale.chroma", 
+      style="flex: 1 1 3rem;"
+      v-model:pitch="globalScale.tonic")
+      .flex.flex-col.text-center.mb-2.relative.p-1()
         .text-2xl.font-bold.flex.mx-auto.items-center {{ globalScale.note.name }} {{ state.current.title }}
         a.p-1.text-2xl.absolute.right-2.top-2.rounded-full.shadow-xl(:href="state.current.link" target="_blank" v-if="state.current.link")
           .i-la-wikipedia-w
         .text-lg {{ state.current.degrees }} 
-    .flex.flex-wrap.justify-center.p-4
+    .flex.flex-wrap.p-4.items-start(
+      style="flex: 1 1 6rem;"
+    )
       button.text-button.flex.flex-col(
         v-for="(progression, name) in list" :key="progression"
-        @click="state.selected = name"
+        @click="state.selected = name; globalScale.chroma = state.scale.chroma"
         :class="{ active: progression == state.current }"
       ) 
         .font-bold.px-1.mb-1 {{ progression.title }}
         //- .text-sm {{ progression.degrees }} 
     transition(name="fade" mode="out-in")
-      .flex.flex-wrap(:key="state.current")
-        .flex-1.flex.flex-col.items-center.select-none(v-for="(chord, c) in getChords(state.current.degrees)" :key="c")
+      .flex.flex-wrap.gap-2(:key="state.current")
+        .flex.flex-col.select-none.max-w-16rem(
+          style="flex: 1 1 10rem;"
+          v-for="(chord, c) in getChords(state.current.degrees)" :key="c")
           chroma-keys.flex-1.p-1.min-w-150px(
             :chroma="chord.chroma"
             :pitch="chord.tonicPitch"
@@ -69,17 +75,11 @@ function getChords(degrees) {
             v-if="state.mode == 'piano'"
             :playAll="true"
             )
-          chord-tab.max-w-10em(
-            instrument="ukulele"
+          chord-tab(
+            :instrument="state.mode"
             :chroma="chord.chroma"
             :pitch="chord.tonicPitch"
-            v-if="state.mode == 'ukulele'"
-            )
-          chord-tab.max-w-10em(
-            instrument="guitar"
-            :chroma="chord.chroma"
-            :pitch="chord.tonicPitch"
-            v-if="state.mode == 'guitar'"
+            v-if="state.mode == 'guitar' || state.mode == 'ukulele'"
             )
           chroma-circle.min-w-8em(
             :chroma="chord.chroma" 
@@ -101,3 +101,5 @@ function getChords(degrees) {
           )
 
 </template>
+
+//TODO - voicings https://github.com/tonaljs/tonal/tree/main/packages/voicing

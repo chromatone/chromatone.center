@@ -1,6 +1,8 @@
 <script setup>
 import { notes } from '#/use/theory'
 import { noteColor } from "#/use/colors"
+import { globalScale } from '#/use/chroma';
+
 const props = defineProps({
   accord: { type: Object, default: () => { } },
 });
@@ -10,7 +12,7 @@ defineEmits([
 ])
 
 function isInChord(n) {
-  return props.accord.info.semitones.includes((24 + n - props.accord.root) % 12)
+  return props.accord.info.semitones.includes((24 + n - globalScale.tonic) % 12)
 }
 
 function getNoteColor(n) {
@@ -38,7 +40,7 @@ svg.max-h-sm.w-full(
       :x="20 * ((12 - 3 + Number(pitch)) % 12)"
       :y="2"
       :width="18"
-      :stroke-width="accord?.root == pitch ? 1 : 0"
+      :stroke-width="globalScale.tonic == pitch ? 1 : 0"
       stroke="#000"
       :height="note.length == 2 ? 70 : 90"
       :rx="5"
@@ -59,6 +61,4 @@ svg.max-h-sm.w-full(
 
 </template>
 
-<style lang="postcss" scoped>
-
-</style>
+<style lang="postcss" scoped></style>

@@ -311,3 +311,6 @@ cities:
   - city: Cherepovets
     country: Russia
     coord: [59.13087654316835, 37.935468540949174]
+  - city: Hamden, CT
+    country: USA
+    coord: [41.34315358630149, -72.91758954426835]

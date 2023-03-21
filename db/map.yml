@@ -308,3 +308,6 @@ cities:
   - city: Portland, OR
     country: USA
     coord: [45.52109957021652, -122.69760518805865]
+  - city: Cherepovets
+    country: Russia
+    coord: [59.13087654316835, 37.935468540949174]

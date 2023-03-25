@@ -78,7 +78,7 @@
 		"@typescript-eslint/eslint-plugin": "^5.55.0",
 		"@typescript-eslint/parser": "^5.55.0",
 		"@unocss/extractor-pug": "^0.50.6",
-		"@volar/vue-language-plugin-pug": "latest",
+		"@volar/vue-language-plugin-pug": "^1.2.0",
 		"eslint": "^8.36.0",
 		"eslint-plugin-vue": "^9.9.0",
 		"eslint-plugin-vue-pug": "^0.6.0",

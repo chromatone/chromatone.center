@@ -314,3 +314,6 @@ cities:
   - city: Hamden, CT
     country: USA
     coord: [41.34315358630149, -72.91758954426835]
+  - city: Portland, OR
+    country: USA
+    coord: [45.58119561544355, -122.68165727307998]

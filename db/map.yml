@@ -317,3 +317,6 @@ cities:
   - city: Portland, OR
     country: USA
     coord: [45.58119561544355, -122.68165727307998]
+  - city: Northridge,CA
+    country: USA
+    coord: [34.228423010586646, -118.52193938488283]

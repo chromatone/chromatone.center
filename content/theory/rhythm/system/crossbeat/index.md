@@ -39,7 +39,7 @@ The cross-rhythmic ratio three-over-two (3:2) or vertical [hemiola](https://en.w
 > We have to grasp the fact that if from childhood you are brought up to regard beating 3 against 2 as being just as normal as beating in synchrony, then you develop a two dimensional attitude to rhythm... This bi-podal conception is... part of the African's nature  
 > — Jones (1959: 102)
 
-Novotney observes: "The 3:2 relationship (and [its] permutations) is the foundation of most typical polyrhythmic textures found in West African musics." 3:2 is the generative or theoretic form of sub-Saharan rhythmic principles. Agawu succinctly states: "[The] resultant [3:2] rhythm holds the key to understanding … there is no independence here, because 2 and 3 belong to a single Gestalt."
+Novotney observes: "The 3:2 relationship (and [its] permutations) is the foundation of most typical polyrhythmic textures found in West African musics." 3:2 is the generative or theoretic form of sub-Saharan rhythmic principles. Agawu succinctly states: "[The] resultant (3:2) rhythm holds the key to understanding … there is no independence here, because 2 and 3 belong to a single Gestalt."
 
 African Xylophones such as the balafon and gyil play cross-rhythms, which are often the basis of ostinato melodies. In the following example, a Ghanaian gyil sounds the three-against-two cross-rhythm. The left hand (lower notes) sounds the two main beats, while the right hand (upper notes) sounds the three cross-beats. (Clave Matrix p. 22)
 Ghanaian gyil

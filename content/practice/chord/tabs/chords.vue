@@ -8,7 +8,7 @@ import { globalScale } from '#/use/chroma'
 import ukulele from '#/db/ukulele.yaml'
 import guitar from '#/db/guitar.yaml'
 import { useStorage } from '@vueuse/core'
-import { Chord } from '@tonaljs/tonal'
+import { Chord, note } from '@tonaljs/tonal'
 import { computed, reactive } from 'vue'
 
 const instruments = {
@@ -58,56 +58,59 @@ function isInScale(list) {
   }
 }
 
+function selectNote(n) {
+  console.log((note(n).midi + 3) % 12)
+}
+
 </script>
 
 
 <template lang="pug">
-.flex.flex-col.items-center
-  .is-group.flex.flex-col.items-center.p-2
-    .text-xl.font-bold.mt-2 Instrument
-    .flex.flex-wrap.justify-center.my-2
-      button.p-4.text-xl.capitalize(
-        v-for="(instrument, name) in instruments" 
-        :key="name"
-        :class="{ active: state.instrument.main.name == name }"
-        @click="current = name"
-        ) {{ name }}
-  .is-group.flex.flex-col.items-center.p-2.my-2
-    .text-xl.font-bold.mt-4 Scale
-    control-scale.flex-1.mb-4
-    tab-neck.my-8.min-w-150(
+.flex.flex-col
+  .is-group.flex.flex-col.p-2.my-2
+    tab-neck.my-8(
       :instrument="current"
+      @note="state.pitch = (note($event).midi + 3) % 12"
       :chord-notes="Chord.get(state.key + state.suffix).notes"
       )
-  .is-group.flex.flex-col.items-center.p-2
+  .is-group.flex.flex-wrap.items-center.p-2
+    .flex-0
+      .text-xl.font-bold.m-4 Scale
+      control-scale.flex-1.mb-4
+      .flex.flex-wrap.my-2
+        button.p-4.text-xl.capitalize(
+          v-for="(instrument, name) in instruments" 
+          :key="name"
+          :class="{ active: state.instrument.main.name == name }"
+          @click="current = name"
+          ) {{ name }}
+    .is-group.flex-1.p-2.flex.flex-col.gap-2
+      .text-xl.font-bold.mb-2 Chord
+      .flex.flex-wrap.my-2
+        button.note(
+          v-for="(key, k) in state.instrument.keys" 
+          :key="key"
+          :style="{ backgroundColor: noteColor(k, 3, rotateArray(globalScale.full?.chroma, -globalScale.tonic)[k] == '1' ? 1 : 0.05) }"
+          :class="{ active: state.key == key }"
+          @click="state.pitch = k"
+        ) {{ key }}
 
+      .flex.flex-wrap.border-b-1.border-current
+        .text-button.cursor-pointer(
+          v-for="noteNum in Object.keys(state.byNotes)" 
+          :key="noteNum"
+          :class="{ active: noteNum == state.chordType }"
+          @click="state.chordType = noteNum"
+          ) {{ noteNum }}
 
-    .text-xl.font-bold.mb-2 Chord
-    .flex.flex-wrap.justify-center.my-2
-      button.note(
-        v-for="(key, k) in state.instrument.keys" 
-        :key="key"
-        :style="{ backgroundColor: noteColor(k, 3, rotateArray(globalScale.full?.chroma, -globalScale.tonic)[k] == '1' ? 1 : 0.05) }"
-        :class="{ active: state.key == key }"
-        @click="state.pitch = k"
-      ) {{ key }}
-
-    .flex.flex-wrap.border-b-1.border-current.p-2
-      .p-1.text-button.cursor-pointer(
-        v-for="noteNum in Object.keys(state.byNotes)" 
-        :key="noteNum"
-        :class="{ active: noteNum == state.chordType }"
-        @click="state.chordType = noteNum"
-        ) {{ noteNum }}
-
-    .flex.flex-wrap.justify-center.items-center.mt-4
-      button.text-button(
-        v-for="chord in state.byNotes[state.chordType]" 
-        :key="chord.suffix"
-        :style="{ opacity: isInScale(chord.notes) }"
-        :class="{ active: state.suffix == chord.suffix, isin: isInScale(chord.notes) == 1.2 }"
-        @click="state.suffix = chord.suffix"
-        )  {{ chord.symbol || chord.suffix }}
+      .flex.flex-wrap.items-center.mt-4
+        button.text-button(
+          v-for="chord in state.byNotes[state.chordType]" 
+          :key="chord.suffix"
+          :style="{ opacity: isInScale(chord.notes) }"
+          :class="{ active: state.suffix == chord.suffix, isin: isInScale(chord.notes) == 1.2 }"
+          @click="state.suffix = chord.suffix"
+          )  {{ chord.symbol || chord.suffix }}
 
   .is-group.flex.flex-col.items-center.my-2
     .p-2.text-2xl.font-bold.my-2 {{ state.key }} {{ state.suffix }} tabs
@@ -140,7 +143,7 @@ button:hover {
 }
 
 button.note {
-  @apply text-white p-2 font-bold opacity-50 border-2 rounded-lg;
+  @apply text-white p-1 w-8 font-bold text-sm opacity-50 border-2 rounded-lg;
 
 
 }

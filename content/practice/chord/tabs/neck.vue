@@ -16,6 +16,8 @@ const props = defineProps({
   }
 });
 
+const emit = defineEmits(['note'])
+
 const instruments = {
   guitar: ['E2', 'A2', 'D3', 'G3', 'B3', 'E4'],
   ukulele: ['G4', 'C4', 'E4', 'A4']
@@ -30,7 +32,7 @@ const neck = reactive({
   isInChord: computed(() => Pcset.isNoteIncludedIn(props.chordNotes)),
   noteSize: 36,
   fretWidth: 50,
-  fretNum: 20,
+  fretNum: 12,
 });
 
 function noteColor(note, semitones) {
@@ -43,11 +45,11 @@ function getNote(string, semitones) {
 </script>
 
 <template lang="pug">
-.flex.flex-col.w-full
+.flex.flex-col
   svg#fretboard.max-h-3xl.w-full(
     version="1.1",
     baseProfile="full",
-    :viewBox="`-50 -30 ${neck.width + 100} ${neck.height + 60}`",
+    :viewBox="`-50 -30 ${neck.width + 60} ${neck.height + 60}`",
     xmlns="http://www.w3.org/2000/svg",
     font-family="Commissioner, sans-serif"
     font-size="20px"
@@ -62,7 +64,7 @@ function getNote(string, semitones) {
         :y2="neck.height"
       )
       g.fret(
-        v-for="fret in neck.fretNum" 
+        v-for="(fret,f) in neck.fretNum" 
         :key="fret")
         line(
           :y1="neck.height"
@@ -72,6 +74,13 @@ function getNote(string, semitones) {
           stroke-width="2"
           opacity="0.5"
           )
+        text(
+          :x="fret * neck.fretWidth"
+          :y="-15"
+          font-size="0.7em"
+          fill="currentColor"
+          opacity="0.5"
+        ) {{ fret }}
         circle.inlay(
           v-if="inlays.find(fr => fr == fret)"
           :cx="(fret - 0.5) * neck.fretWidth"
@@ -96,11 +105,12 @@ function getNote(string, semitones) {
           v-for="(note, n) in neck.fretNum + 1" 
           :key="note"
           :transform="`translate(${(n - 0.5) * neck.fretWidth},0)`"
+          @click="$emit('note',getNote(string,n))"
         )
           circle(
             :opacity="globalScale.isIn(getNote(string, n)) ? 1 : 0.1"
             :stroke="neck.isInChord(getNote(string, n)) ? 'currentColor' : 'none'"
-            stroke-width="5"
+            stroke-width="3"
             :r="neck.isInChord(getNote(string, n)) ? neck.noteSize / 2 - 4 : neck.noteSize / 2 - 8"
             :fill="noteColor(string, n+24)"
           )

@@ -75,7 +75,7 @@ function getNote(string, semitones) {
           opacity="0.5"
           )
         text(
-          :x="fret * neck.fretWidth"
+          :x="fret * neck.fretWidth - 6"
           :y="-15"
           font-size="0.7em"
           fill="currentColor"

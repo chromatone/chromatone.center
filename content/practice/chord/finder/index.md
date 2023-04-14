@@ -26,11 +26,11 @@ To get a chord notes select it's type and then click on the root note circle.
 </client-only >
 
 
-### Secondary chords
+<!-- ### Secondary chords
 
 
 <chroma-keys class="max-w-80" v-model:pitch="globalScale.tonic"></chroma-keys>
 
  {{ chords }}
 
-<pre class="text-xs">{{ chordsInfo }}</pre> 
+<pre class="text-xs">{{ chordsInfo }}</pre>  -->

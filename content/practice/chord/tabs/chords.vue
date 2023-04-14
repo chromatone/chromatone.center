@@ -8,7 +8,7 @@ import { globalScale } from '#/use/chroma'
 import ukulele from '#/db/ukulele.yaml'
 import guitar from '#/db/guitar.yaml'
 import { useStorage } from '@vueuse/core'
-import { Chord, note } from '@tonaljs/tonal'
+import { Chord, Note } from '@tonaljs/tonal'
 import { computed, reactive } from 'vue'
 
 const instruments = {
@@ -70,7 +70,7 @@ function selectNote(n) {
   .is-group.flex.flex-col.p-2.my-2
     tab-neck.my-8(
       :instrument="current"
-      @note="state.pitch = (note($event).midi + 3) % 12"
+      @note="state.pitch = (Note.midi($event) + 3) % 12"
       :chord-notes="Chord.get(state.key + state.suffix).notes"
       )
   .is-group.flex.flex-wrap.items-center.p-2

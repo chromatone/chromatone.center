@@ -1,3 +1,23 @@
+## v.2.0.6 (2023-04-15)
+
+### New feature:
+
+- neck fret numbers([`914f569`](https://github.com/chromatone/chromatone.center/commit/914f5698a09f83856d09c3c15abf118011d94756)) (by davay)
+- better tabs([`30c3360`](https://github.com/chromatone/chromatone.center/commit/30c336033303720a7660d863e226633a288a09ed)) (by davay)
+- less colorful UI([`c9dd9aa`](https://github.com/chromatone/chromatone.center/commit/c9dd9aa942911b27af9714cea7c8268c9bf6d12b)) (by davay)
+- moved academy materials([`58adc41`](https://github.com/chromatone/chromatone.center/commit/58adc410d33af6d78fec4d3c623998ea95b2353c)) (by davay)
+- 5 March meetups completed([`a7911c6`](https://github.com/chromatone/chromatone.center/commit/a7911c6278f26c2963c22f197a991beb991113fa)) (by davay)
+- rearranged meetups([`ebf3b07`](https://github.com/chromatone/chromatone.center/commit/ebf3b07bbc9d4ef9ac6ff2f5302473d922677fb3)) (by davay)
+- secondary chords finder in progress([`532b33b`](https://github.com/chromatone/chromatone.center/commit/532b33ba516c8150d864759e14b968ab91bc83c6)) (by davay)
+- better progressions([`29f2316`](https://github.com/chromatone/chromatone.center/commit/29f2316f4bb3986c612f550cbcfb6cf2edb1444d)) (by davay)
+- cleaner pitch table and scale select([`a136d45`](https://github.com/chromatone/chromatone.center/commit/a136d45c8c23db00338c603e247330feda7a6711)) (by davay)
+
+### Bugs fixed:
+
+- clean build (3:2) css error fixed([`4c0769c`](https://github.com/chromatone/chromatone.center/commit/4c0769c2bacfc1d15eb9fb904d526263e82a0dd1)) (by davay)
+
+-------
+
 ## v2.0.5 (2023-03-19)
 
 ### New feature:

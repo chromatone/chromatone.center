@@ -9,10 +9,11 @@ const props = defineProps({
 </script>
 
 <template lang="pug">
-.crd(
+.crd.border-l-4(
   :title="item.lastModified",
+  :style="{borderColor: color}"
   )
-  a.container.no-underline(:href="item.path" :class="{ 'pt-32': item?.cover }" :style="{backgroundColor: color}")
+  a.container.no-underline(:href="item.path" :class="{ 'pt-32': item?.cover }" )
     .cover(v-if="item?.cover", :style="{ backgroundImage: `url(${item.cover})` }") 
     .info
       .title
@@ -39,7 +40,7 @@ const props = defineProps({
 
 <style lang="postcss" scoped>
 .crd {
-  @apply relative bg-light-500 dark-bg-dark-800 flex flex-wrap items-stretch transition-all duration-200 static;
+  @apply relative bg-light-500 dark-bg-dark-400 flex flex-wrap items-stretch transition-all duration-200 static;
 }
 
 .info {

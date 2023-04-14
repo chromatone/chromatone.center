@@ -1,7 +1,7 @@
 ---
 title: Visual music courses
 description: The lectures, courses and other educational materials
-date: 2022-01-03
+date: 2022-01-02
 ---
 
 In 2021 we've produced the first complete video [Music theory course with SkillBox](./skillbox/index.md) for Russian audience. Check it out!

@@ -14,7 +14,7 @@ function getColor(i, total) {
 </script>
 
 <template lang="pug">
-.list(:style="{ backgroundColor: isDark ? '#000a' : '#fffa' }")
+.list(:style="{ backgroundColor: isDark ? '#3335' : '#fff5' }")
   card-item.inset(
     v-for="(card, i) in cards", 
     :key="card.title", 

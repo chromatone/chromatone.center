@@ -16,7 +16,7 @@ const color = computed(() => lchToHsl(props.i, props.total));
 </script>
 
 <template lang="pug">
-.flex.p-4.flex-col.tile.border-t-16(:i="i", :total="total"
+.flex.p-4.flex-col.tile.border-l-12(:i="i", :total="total"
   :style="{ borderColor: lchToHsl(i, total) }",
 )
   // img.cover(:src="'/media/' + item.data.cover")

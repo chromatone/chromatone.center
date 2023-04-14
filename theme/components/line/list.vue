@@ -21,10 +21,10 @@ function getColor(i, total, b = 10) {
 
 <template lang="pug">
 .lines(v-if="list")
-  a.line.no-underline(
+  a.line.no-underline.border-l-4(
     v-for="(line, l) in list", 
     :key="line.title",
-    :style="{ backgroundColor: getColor(l, Object.keys(props.list).length) }"
+    :style="{ borderColor: getColor(l, Object.keys(props.list).length) }"
     :href="line.path",
     ) {{ line.title }}
     counter(:list="pages[line.path]") 

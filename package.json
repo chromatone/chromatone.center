@@ -39,7 +39,7 @@
 		"@animxyz/vue3": "^0.6.7",
 		"@gun-vue/composables": "^0.15.0",
 		"@stripe/stripe-js": "^1.52.1",
-		"@tauri-apps/api": "^1.2.0",
+		"@tauri-apps/api": "2.0.0-alpha.3",
 		"@tonaljs/tonal": "^4.10.0",
 		"@tonejs/midi": "^2.0.28",
 		"@unocss/reset": "^0.51.4",

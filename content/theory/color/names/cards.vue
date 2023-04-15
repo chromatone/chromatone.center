@@ -55,7 +55,7 @@ const positions = [[0, 0], [1, 0], [2, 0], [3, 0], [3, 1], [3, 2], [3, 3], [2, 3
         text.font-bold.text-14px(transform="translate(80 65)" text-anchor="end") {{ notes[p] }}
         g.other(
           v-for="(lang, l, i) in langs" :key="lang"
-          :transform="`translate(0 ${i * 12 + 16})`"
+          :transform="`translate(0 ${i * 12 + 8})`"
         )
           text(v-if="l != 'nm'")
             tspan.text-8px() {{ cards[p][l] }}

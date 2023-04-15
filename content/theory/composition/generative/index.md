@@ -1,6 +1,6 @@
 ---
 title: Generative theory of tonal music
-description:
+description: Formal description of the musical intuitions of a listener who is experienced in a musical idiom
 date: 2021-11-13
 ---
 

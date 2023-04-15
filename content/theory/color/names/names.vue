@@ -20,5 +20,8 @@ const props = defineProps({
 </template>
 
 <style lang="postcss" scoped>
-
+td {
+  @apply no-wrap break-keep p-4;
+  white-space: nowrap;
+}
 </style>

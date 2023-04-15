@@ -4,6 +4,7 @@ langs:
   fr: Français
   es: Español
   ru: Русский
+  th: ภาษาไทย
 colors:
   red:
     nm: 700 nm
@@ -11,69 +12,81 @@ colors:
     fr: Rouge
     es: Rojo
     ru: Красный
+    th: สีแดง
   orange:
     nm: 600 nm
     en: Orange
     fr: Orange
     es: Naranja
     ru: Оранжевый
+    th: สีส้ม
   yellow:
     nm: 570 nm
     en: Yellow
     fr: Jaune
     es: Amarillo
     ru: Желтый
+    th: สีเหลือง
   lime:
     nm: 564 nm
     en: Lime
     fr: Chartreuse
     es: Lima
     ru: Лаймовый
+    th: สีมะนาว
   green:
     nm: 525 nm
     en: Green
     fr: Vert
     es: Verde
     ru: Зеленый
+    th: สีเขียว
   mint:
     nm: 505 nm
     en: Mint
     fr: Turquoise
     es: Primavera
     ru: Мятный
+    th: สีเขียวมิ้นท์
   cyan:
     nm: 490 nm
     en: Cyan
     fr: Cyan
     es: Cian
     ru: Голубой
+    th: สีฟ้าอ่อน
   azure:
     nm: 488 nm
     en: Azure
     fr: Azure
     es: Azure
     ru: Лазурный
+    th: สีฟ้า
   blue:
     nm: 450 nm
     en: Blue
     fr: Bleu
     es: Azul
     ru: Синий
+    th: สีน้ำเงิน
   violet:
     nm: 400 nm
     en: Violet
     fr: Violet
     es: Violeta
     ru: Фиолетовый
+    th: สีม่วง
   magenta:
     nm: "-"
     en: Magenta
     fr: Magenta
     es: Magenta
     ru: Пурпурный
+    th: สีม่วงแดง
   rose:
     nm: "-"
     en: Rose
     fr: Cramoisi
     es: Carmesí
     ru: Малиновый
+    th: สีแดงเย็น

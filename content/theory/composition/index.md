@@ -1,7 +1,6 @@
 ---
 title: Composition
-subtitles: Methods and techniques for composing music
-
+description: The act of conceiving a piece of music, the art of creating music, or the finished product
 date: 2021-07-10
 ---
 

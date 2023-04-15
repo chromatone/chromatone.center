@@ -42,7 +42,7 @@ const sorted = computed(() => {
 </script>
 
 <template lang="pug">
-.flex.flex-col.m-auto.items-center.w-full.max-w-65ch
+.flex.flex-col.max-w-65ch
   .keys
     .key(
       v-for="(bit, i) in '101101011010'"
@@ -87,11 +87,11 @@ const sorted = computed(() => {
 }
 
 .keys {
-  @apply z-8 rounded-md p-1 grid grid-cols-6 xs-(grid-cols-12) w-full sticky top-$header-height bg-light-400 bg-opacity-80 dark-(bg-dark-300 bg-opacity-80);
+  @apply z-8 rounded-md p-1 grid grid-cols-6 xs-(grid-cols-12) w-full sticky top-$header-height bg-light-400 bg-opacity-80 dark-(bg-dark-300 bg-opacity-80) gap-2;
 }
 
 .key {
-  @apply transition-all text-center duration-300 p-2 m-1 sm-(p-3 m-1) rounded-lg cursor-pointer shadow-md;
+  @apply transition-all text-center duration-300 p-1 rounded-lg cursor-pointer shadow-md;
   flex: 1 1 1em;
 }
 

@@ -32,7 +32,7 @@ const scale = computed(() => scaleType.get(props.chroma).name)
 </script>
 
 <template lang="pug">
-svg.select-none.max-w-12em.my-4.mx-auto(
+svg.select-none(
   version="1.1",
   baseProfile="full",
   viewBox="-10 -10 20 20",

@@ -42,7 +42,7 @@ const semitones = computed(() => {
     :chroma="chroma" 
     )
   abc-render(v-if="abc" :abc="abc")
-  .flex.flex-col.items-center.justify-center.p-4.w-full.relative
+  .flex.w-full.relative.px-4
     a.p-2.absolute.top-8px.right-2em(
       v-if="link"
       :href="link"
@@ -51,18 +51,18 @@ const semitones = computed(() => {
       .i-la-wikipedia-w
     .text-2xl.font-bold.capitalize.mb-2(
       ) {{ notes[globalScale.tonic] }} {{ chord.name || chord.aliases[0] || scale.name }} {{ scale.aliases[0] ? `(${scale.aliases[0]})` : '' }}
-  .flex.flex-wrap.w-full.items-center
-    chroma-circle.flex-1.min-w-200px.pl-4(:chroma="chroma")
-    chroma-keys.w-240px.h-8rem.mx-auto.mb-4(:chroma="chroma" v-model:pitch="globalScale.tonic" :title="false")  
-  chroma-row.mb-4.mx-2(:chroma="chroma" :editable="editable")
-  chroma-stack.flex-1.mx-4.mb-4(:chroma="chroma")
-  chroma-square.w-12em.mx-4(:chroma="chroma" :editable="editable")
-  .flex.w-full.p-6(v-if="description") {{ description }}
+  .flex.flex-wrap.items-center.mx-2
+    chroma-keys(:chroma="chroma" v-model:pitch="globalScale.tonic" :title="false")  
+    chroma-circle.max-w-250px.flex-1.min-w-200px.pl-4(:chroma="chroma")
+  chroma-row.mx-4.mb-6(:chroma="chroma" :editable="editable")
+  //- chroma-stack.flex-1.mx-4(:chroma="chroma")
+  //- chroma-square.w-12em.mx-4(:chroma="chroma" :editable="editable")
+  //- .flex.w-full.p-6(v-if="description") {{ description }}
 
 </template>
 
 <style lang="postcss" scoped>
 .profile {
-  @apply flex flex-wrap justify-center max-w-55ch mx-auto text-center border-2 rounded-3xl shadow-lg bg-light-500 dark-bg-dark-500;
+  @apply flex flex-wrap max-w-55ch border-2 rounded-3xl shadow-lg bg-light-500 dark-bg-dark-500 gap-2;
 }
 </style>

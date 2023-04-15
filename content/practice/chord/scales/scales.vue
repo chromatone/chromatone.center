@@ -65,6 +65,7 @@ const currentScale = computed(() => scaleChords.value.find(sc => sc.chroma == gl
               v-for="chord in currentScale.degreeChords[degree]" 
               :key="chord")
               chroma-keys.w-24(
+                :playAll="true"
                 :chroma="chord.chroma", 
                 :pitch="(degree + globalScale.tonic) % 12")
 

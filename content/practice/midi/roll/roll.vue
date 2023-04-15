@@ -138,9 +138,6 @@ function dragSpeed(drag) {
   }
 }
 
-function wheelHandler(wheel) {
-  state.rawSpeed += wheel.delta[1] / 50
-}
 
 </script>
 
@@ -164,7 +161,6 @@ function wheelHandler(wheel) {
       .text-lg x{{ state.speed }}
     canvas#spectrogram.max-h-100vh.w-full.rounded-3xl.cursor-pointer(
       v-drag="dragSpeed"
-      v-wheel="wheelHandler"
       :width="state.width"
       :height="state.height"
       @dblclick="stopAll()"

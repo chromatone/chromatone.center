@@ -5,6 +5,11 @@ import { chromaColorMix, noteColor } from "#/use/colors";
 import { useSynth } from '#/use/synth'
 import { playChroma, stopChroma, globalScale } from '#/use/chroma'
 import { ref, watchEffect, computed } from 'vue';
+import { useClamp } from '@vueuse/math';
+import { useDrag } from '@vueuse/gesture'
+import { isDark } from '#/theme/composables/state';
+
+
 const frequencies = []
 for (let f = 0; f < 13; f++) {
   frequencies[f] = Math.pow(2, f / 12)
@@ -28,9 +33,20 @@ const ratio = width / numPoints
 const pressed = ref(false)
 const time = ref(0)
 const speed = ref(0)
+const speedRange = ref(2000)
+const waveContainer = ref()
+const transitionDuration = ref(1000)
+const speedOffset = useClamp(useStorage('waveform-speed', 1000), 0, speedRange)
+
+useDrag((d) => {
+  const delta = d.delta[0] - d.delta[1]
+  speedOffset.value += delta
+}, {
+  domTarget: waveContainer
+})
 
 const speeder = useTransition(speed, {
-  duration: 500,
+  duration: transitionDuration,
   transition: [.87, -0.04, .69, 1.13],
   onFinished: (() => {
     if (speed.value == 0) {
@@ -46,13 +62,16 @@ const { resume, pause } = useRafFn(() => {
 watchEffect(() => {
   if (pressed.value) {
     resume()
-    speed.value = 16
+    if (speed.value > 0) {
+      transitionDuration.value = 10
+    }
+    speed.value = speedOffset.value
+
   } else {
     speed.value = 0
+    transitionDuration.value = 1000
   }
 })
-
-
 
 const activeNotes = computed(() => {
   let active = []
@@ -105,11 +124,10 @@ const sumColor = computed(() => {
   return chromaColorMix(props.chroma, globalScale.tonic)
 });
 
-
 </script>
 
 <template lang="pug">
-.waveform
+.waveform(ref="waveContainer")
   svg.min-h-4em.w-full.cursor-pointer(
     version="1.1",
     baseProfile="full",
@@ -121,7 +139,21 @@ const sumColor = computed(() => {
     @touchcancel="stopChroma(chroma); pressed = false"
     @mouseup="stopChroma(chroma); pressed = false"
     @mouseleave="stopChroma(chroma); pressed = false"
-  )
+    )
+    g(
+      :transform="`translate(${(speedOffset)/(speedRange)*width} 10)`"
+      )
+      circle(
+        r="40"
+        :fill="sumColor.hsl"
+        )
+      text.select-none(
+        opacity="0.7"
+        font-size="80"
+        y="25"
+        x="50"
+        fill="currentColor"
+        ) {{ speedOffset*60 }} px/sec
     line(
       x1="0"
       x2="1200"
@@ -129,24 +161,24 @@ const sumColor = computed(() => {
       y2="400"
       stroke="gray"
       stroke-width="1"
-    )
+      )
     g(
       v-for="(note, n) in activeNotes"
       :key="n"
-    )
+      )
       polyline(
-        :stroke="noteColor(n, 2)"
+        :stroke="noteColor(n, isDark ? 8 :2)"
         :points="waves[n]"
         stroke-width="4"
         fill="none"
-        opacity="0.5"
-      )
+        opacity="0.9"
+        )
     polyline(
-      :stroke="sumColor.hsl"
+      :stroke="sumColor?.hsl"
       :points="sumLine"
-      stroke-width="16"
+      stroke-width="24"
       fill="none"
-    )
+      )
 </template>
 
 <style lang="postcss" scoped>

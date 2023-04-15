@@ -28,7 +28,7 @@ watch(() => state.current, raga => {
 </script>
 
 <template lang="pug">
-.flex.flex-col.items-center.max-w-55ch.mx-auto
+.flex.flex-col.max-w-55ch
   scale-degrees-circle.w-full(
     v-model:chroma="state.chroma"
     fixed5

@@ -320,3 +320,9 @@ cities:
   - city: Northridge,CA
     country: USA
     coord: [34.228423010586646, -118.52193938488283]
+  - city: Reykjavík
+    country: Iceland
+    coord: [64.1482583545403, -21.88271503197135]
+  - city: San Leandro, CA
+    country: USA
+    coord: [37.71906529949552, -122.15310627429379]

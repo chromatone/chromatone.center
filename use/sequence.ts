@@ -19,7 +19,7 @@ import {
 } from "tone";
 import { createChannel } from './audio'
 import { rotateArray } from "./calculations";
-import { MaybeComputedRef, useStorage } from '@vueuse/core';
+import { useStorage, MaybeRef } from '@vueuse/core';
 import { useClamp } from '@vueuse/math';
 import { Time } from 'tone/build/esm/core/type/Units';
 import { mic } from './mic';
@@ -29,7 +29,7 @@ export interface ClickSampler {
   recording: boolean | string
   main: boolean
   accent: boolean
-  both: MaybeComputedRef<boolean>
+  both: MaybeRef<boolean>
   load: Function
   rec: Function
 }

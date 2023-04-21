@@ -7,7 +7,7 @@ import { Transport, start, Frequency, Loop, Sampler, gainToDb, Draw, Time, Limit
 import { freqPitch } from "./calculations";
 import { noteColor } from './colors'
 import { Note } from "tonal";
-import { useStorage, onKeyStroke, useRafFn, RemovableRef, MaybeComputedRef, MaybeRef } from "@vueuse/core";
+import { useStorage, onKeyStroke, useRafFn, RemovableRef, MaybeRef } from "@vueuse/core";
 import { createChannel } from './audio'
 import { useClamp } from "@vueuse/math";
 import { WebMidi } from "webmidi";
@@ -19,19 +19,19 @@ import { send } from "vite";
 export const tempo: {
   initialized: boolean
   bpm: MaybeRef<number>
-  hz: MaybeComputedRef<string>
-  note: MaybeComputedRef<string>
-  digit: MaybeComputedRef<number>
-  color: MaybeComputedRef<string>
-  pitch: MaybeComputedRef<number>
+  hz: MaybeRef<string>
+  note: MaybeRef<string>
+  digit: MaybeRef<number>
+  color: MaybeRef<string>
+  pitch: MaybeRef<number>
   clock?: number
-  midiClock: MaybeComputedRef<boolean>
+  midiClock: MaybeRef<boolean>
   blink: boolean
   started: boolean
   playing: boolean
   stopped: boolean | number
-  mute: MaybeComputedRef<boolean>
-  volume: MaybeComputedRef<number>
+  mute: MaybeRef<boolean>
+  volume: MaybeRef<number>
   progress: number
   position: string
   ticks: number
@@ -39,7 +39,7 @@ export const tempo: {
   metre: {
     over: number
     under: number
-    num: MaybeComputedRef<string>
+    num: MaybeRef<string>
   }
   tap: {
     last: number
@@ -71,14 +71,14 @@ export const tempo: {
     ),
   },
   hz: computed(() => (tempo.bpm as number / 60).toFixed(2)),
-  //@ts-expect-error
+  //@ts-ignore
   note: computed(() => Note.pitchClass(Frequency(tempo.hz).toNote())),
   tune: computed(() => {
-    //@ts-expect-error
+    //@ts-ignore
     return Note.pitchClass(tempo.note) + 4;
   }),
   pitch: computed(() => freqPitch(Number(tempo.hz))),
-  //@ts-expect-error
+  //@ts-ignore
   digit: computed(() => (Frequency(tempo.hz).toMidi() + 12 * 10 + 3) % 12),
   color: computed(() => noteColor(tempo.digit as number)),
   tap: {

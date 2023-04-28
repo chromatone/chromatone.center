@@ -1,5 +1,5 @@
 ---
-title: December 2022
+title: 2022
 description: Starting from scratch
 date: 2022-12-01
 ---

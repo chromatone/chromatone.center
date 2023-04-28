@@ -1,7 +1,7 @@
 ---
 title: Educators
 description: Teachers and guides ready to help you find your own way into music
-date: 2022-07-03
+date: 2023-07-03
 buttons:
   - url: https://airtable.com/shrFbtdCJR07jDsaM
     text: Book a music theory lesson now

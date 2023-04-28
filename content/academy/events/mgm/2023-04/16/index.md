@@ -5,6 +5,7 @@ date: 2023-04-06
 cover: cover.jpeg
 ---
 
+<youtube-embed video="5zTBiza7fe4"></youtube-embed>
 
 Our first live stream on Chromatone YouTube channel. Just two subscribers, two viewers of the stream and just the two music geeks, who gathered this Thursday 06 April 2023 just before the Songkran festival here in Phuket, Thailand.
 

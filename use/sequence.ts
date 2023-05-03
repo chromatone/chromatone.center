@@ -64,8 +64,8 @@ export function useSequence(
 
   const seq = reactive({
     meter: {
-      over: useClamp(4, 1, 128),
-      under: useClamp(4, 1, 128),
+      over: useClamp(useStorage(`tempo-loop-${order}-${mode}-over`, 4), 1, 128),
+      under: useClamp(useStorage(`tempo-loop-${order}-${mode}-under`, 4), 1, 128),
       sound: useStorage(`tempo-loop-${order}-${mode}-sound`, 'A'),
       volume: useClamp(1, 0, 1),
     },

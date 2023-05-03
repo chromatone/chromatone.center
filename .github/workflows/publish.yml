@@ -1,15 +1,22 @@
-name: Deploy to GitHub Pages
+name: Publish to NPM
 
 on:
   push:
-    branches:
-      - release
+    tags:
+      - "v.*"
   workflow_dispatch:
 jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-
+    permissions:
+      id-token: write
+      contents: write
+      packages: write
+      pull-requests: write
+      issues: read
+    env:
+      NPM_CONFIG_PROVENANCE: true
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
@@ -17,9 +24,11 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
+          registry-url: https://registry.npmjs.org/
 
-      - uses: pnpm/action-setup@v2
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
         with:
           version: 7.27
           run_install: |
@@ -27,6 +36,12 @@ jobs:
 
       - name: Build project
         run: pnpm run build
+
+      - name: Publish composables
+        run: npm publish --provenance --access public
+        continue-on-error: true
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3

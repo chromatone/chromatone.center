@@ -17,7 +17,7 @@ declare module '@vue/runtime-core' {
     AuthorSocial: typeof import('./../theme/components/author/social.vue')['default']
     BeatBars: typeof import('./../components/beat/bars/index.vue')['default']
     BeatBarsBeatBar: typeof import('./../components/beat/bars/beat-bar.vue')['default']
-    BeatBarsLoops: typeof import('./../components/beat/bars/loops.js')['default']
+    BeatBarsLoops: typeof import('./../components/beat/bars/loops.ts')['default']
     BeatBarsStep: typeof import('./../components/beat/bars/step.vue')['default']
     BeatControlBar: typeof import('./../components/beat/control/bar.vue')['default']
     BeatControlButton: typeof import('./../components/beat/control/button.vue')['default']

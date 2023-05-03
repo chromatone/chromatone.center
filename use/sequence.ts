@@ -3,7 +3,7 @@
  * The beat loops
  */
 
-import { shallowReactive, reactive, computed, watch, watchEffect, onBeforeUnmount } from 'vue'
+import { shallowReactive, reactive, computed, watch, watchEffect, onBeforeUnmount, ref, UnwrapRef, ComputedRef } from 'vue'
 import { tempo } from "./tempo";
 import {
   Sequence,
@@ -33,6 +33,30 @@ export interface ClickSampler {
   load: Function
   rec: Function
 }
+
+// interface SequenceMeter {
+//   over: Ref<number>
+//   under: Ref<number>
+//   sound: Ref<string>
+//   volume: Ref<number>
+// }
+
+// export interface Seq {
+//   meter: SequenceMeter
+//   current: string
+//   steps: string[][]
+//   mutes: Ref<boolean[]>
+//   accents: Ref<boolean[]>
+//   volume: Ref<number>
+//   pan: Ref<number>
+//   mutesCount: ComputedRef<number>
+//   activeSteps: string[]
+//   currentSeq: string[]
+//   euclidSeq: string
+//   isEuclidean: boolean
+//   reset(): void
+//   rotateAccents(num: number): void
+// }
 
 // List of all sequences
 export const tracks = reactive([]);
@@ -64,23 +88,23 @@ export function useSequence(
 
   const seq = reactive({
     meter: {
-      over: useClamp(useStorage(`tempo-loop-${order}-${mode}-over`, 4), 1, 128),
+      over: useClamp(useStorage(`tempo-loop-${order} -${mode}-over`, 4), 1, 128),
       under: useClamp(useStorage(`tempo-loop-${order}-${mode}-under`, 4), 1, 128),
-      sound: useStorage(`tempo-loop-${order}-${mode}-sound`, 'A'),
-      volume: useClamp(1, 0, 1),
+      sound: useStorage(`tempo-loop-${order}-${mode} -sound`, 'A'),
+      volume: useClamp(useStorage(`tempo-loop-${order} -${mode}-volume`, 1), 0, 1),
     },
 
     current: '0-0',
 
     steps: [["0-1"], ["1-1"], ["2-1"], ["3-1"]],
 
-    mutes: useStorage(`metro-${mode}-mutes-${order}`, []),
+    mutes: useStorage(`metro-${mode}-mutes-${order} `, []),
 
     accents: useStorage(`metro-${mode}-accents-${order}`, [true]),
 
-    volume: useClamp(useStorage(`metro-${mode}-vol-${order}`, initial?.volume || 1), 0, 1),
+    volume: useClamp(useStorage(`metro - ${mode} -vol - ${order} `, initial?.volume || 1), 0, 1),
 
-    pan: useClamp(useStorage(`metro-${mode}-pan-${order}`, order % 2 == 1 ? -0.5 : 0.5), -1, 1),
+    pan: useClamp(useStorage(`metro - ${mode} -pan - ${order} `, order % 2 == 1 ? -0.5 : 0.5), -1, 1),
 
     mutesCount: computed(() => seq.mutes.reduce((acc: number, val: number) => {
       if (!val) { acc++ }
@@ -112,6 +136,8 @@ export function useSequence(
 
   })
 
+
+
   tracks[order] = seq;
 
   seq.progress = computed(() => {
@@ -140,7 +166,7 @@ export function useSequence(
     () => {
       seq.steps.length = 0;
       for (let i = 0; i < seq.meter?.over; i++) {
-        seq.steps.push([`${i}-1`]);
+        seq.steps.push([`${i} -1`]);
       }
       sequence.events = seq.steps;
     },
@@ -182,7 +208,7 @@ export function useSequence(
   const urls = {}
   for (let l in sounds) {
     for (let i of [1, 2]) {
-      urls[`${l}${i}`] = `${sounds[l]}/${i == 1 ? 'high' : 'low'}.wav`
+      urls[`${l}${i} `] = `${sounds[l]}/${i == 1 ? 'high' : 'low'}.wav`
     }
   }
 

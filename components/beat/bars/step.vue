@@ -17,8 +17,8 @@ const props = defineProps({
     default: 1
   },
   subdivisions: {
-    type: Array,
-    default: []
+    type: [Array, String],
+    default: ''
   },
   muted: {
     type: Boolean,

@@ -47,6 +47,10 @@ function selectPattern(p, meter) {
   pattern.value = p;
 }
 
+function addLoop() {
+  loops.value.push({ ...newLoop })
+}
+
 </script>
 
 <template lang="pug">
@@ -66,7 +70,7 @@ function selectPattern(p, meter) {
     )
     .flex.flex-wrap.justify-center.is-group.m-1.text-xl.p-2
       button.text-button(
-        @click="loops.push({ ...newLoop })"
+        @click="addLoop()"
         v-if="!meters"
         v-tooltip.bottom="'Add new track'"
         )

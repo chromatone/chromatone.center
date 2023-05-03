@@ -1,6 +1,7 @@
 import { useStorage } from "@vueuse/core";
+import { Ref } from "vue";
 
-export const loops = useStorage('tempo-bar-loops', [
+export const loops: Ref = useStorage('tempo-bar-loops', [
 	{
 		over: 8,
 		under: 8,

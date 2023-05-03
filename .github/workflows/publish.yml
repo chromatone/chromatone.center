@@ -35,16 +35,10 @@ jobs:
             - recursive: true
 
       - name: Build project
-        run: pnpm run build
+        run: pnpm run build-lib
 
       - name: Publish composables
         run: npm publish --provenance --access public
         continue-on-error: true
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist

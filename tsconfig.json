@@ -9,6 +9,7 @@
 		"jsx": "preserve",
 		"esModuleInterop": true,
 		"target": "esnext",
+		"module": "esnext",
 		"moduleResolution": "Node",
 		"resolveJsonModule": true,
 		"allowJs": true,
@@ -18,7 +19,7 @@
 		"declarationMap": true,
 		"declarationDir": "lib/types",
 		"skipLibCheck": true,
-		"module": "esnext",
+		"strict": true,
 		"allowSyntheticDefaultImports": true,
 		"outDir": "lib/types"
 	},

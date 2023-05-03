@@ -25,6 +25,7 @@ const { seq } = useSequence(props.loop, props.order, 'bars');
 
 const sounds = ['A', 'B', 'C', 'D', 'E']
 const soundControl = ref(sounds.findIndex(el => el == seq.meter?.sound))
+
 watch(soundControl, num => {
   seq.meter.sound = sounds[num]
 })
@@ -164,11 +165,11 @@ svg.w-full(
           stroke-width="2"
         )
         line(
-          v-for="(step, s) in seq.activeSteps" :key="step"
-          :x1="proportion * (step) * width + pad"
+          v-for="(step, s) in seq.activeSteps" :key="s"
+          :x1="proportion * Number(step) * width + pad"
           :x2="proportion * (seq.activeSteps[s + 1] || seq.steps.length) * width + pad"
           stroke-width="6"
-          :stroke="levelColor((step + (Number(tempo.pitch) / 12) * seq.steps.length), seq.steps.length, 1)"
+          :stroke="levelColor((Number(step) + (Number(tempo.pitch) / 12) * seq.steps.length), seq.steps.length, 1)"
         )
       bar-step(
         v-for="(step, s) in seq.steps"

@@ -94,7 +94,6 @@ g(
       cx="500"
       cy="500"
       :r="radius - 55"
-
       stroke-width="2"
       fill="transparent"
       stroke="currentColor"
@@ -103,7 +102,7 @@ g(
     :opacity="seq?.volume"
   )
     g(
-      v-for="(step, s) in activeSteps"
+      v-for="(step, s) in seq.activeSteps"
       :key="step"
       )
       line(
@@ -113,7 +112,7 @@ g(
         :y2="getCircleCoord(activeSteps[s + 1] || activeSteps[0], seq.steps.length, radius - 55, 1000).y"
         stroke-width="8"
         :stroke="levelColor((step + (tempo.pitch / 12) * seq.steps.length), seq.steps.length, 1)"
-      )
+        )
     loop-sector(
       v-for="(step, s) in seq.steps"
       :key="step"

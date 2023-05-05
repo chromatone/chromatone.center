@@ -90,21 +90,21 @@ export function useSequence(
     meter: {
       over: useClamp(useStorage(`tempo-loop-${order} -${mode}-over`, 4), 1, 128),
       under: useClamp(useStorage(`tempo-loop-${order}-${mode}-under`, 4), 1, 128),
-      sound: useStorage(`tempo-loop-${order}-${mode} -sound`, 'A'),
-      volume: useClamp(useStorage(`tempo-loop-${order} -${mode}-volume`, 1), 0, 1),
+      sound: useStorage(`tempo-loop-${order}-${mode}-sound`, 'A'),
+      volume: useClamp(useStorage(`tempo-loop-${order}-${mode}-volume`, 1), 0, 1),
     },
 
     current: '0-0',
 
     steps: [["0-1"], ["1-1"], ["2-1"], ["3-1"]],
 
-    mutes: useStorage(`metro-${mode}-mutes-${order} `, []),
+    mutes: useStorage(`metro-${mode}-mutes-${order}`, []),
 
     accents: useStorage(`metro-${mode}-accents-${order}`, [true]),
 
-    volume: useClamp(useStorage(`metro - ${mode} -vol - ${order} `, initial?.volume || 1), 0, 1),
+    volume: useClamp(useStorage(`metro-${mode}-vol-${order}`, initial?.volume || 1), 0, 1),
 
-    pan: useClamp(useStorage(`metro - ${mode} -pan - ${order} `, order % 2 == 1 ? -0.5 : 0.5), -1, 1),
+    pan: useClamp(useStorage(`metro-${mode}-pan-${order}`, order % 2 == 1 ? -0.5 : 0.5), -1, 1),
 
     mutesCount: computed(() => seq.mutes.reduce((acc: number, val: number) => {
       if (!val) { acc++ }
@@ -166,7 +166,7 @@ export function useSequence(
     () => {
       seq.steps.length = 0;
       for (let i = 0; i < seq.meter?.over; i++) {
-        seq.steps.push([`${i} -1`]);
+        seq.steps.push([`${i}-1`]);
       }
       sequence.events = seq.steps;
     },

@@ -26,6 +26,7 @@ export const tempo: {
   pitch: MaybeRef<number>
   clock?: number
   midiClock: MaybeRef<boolean>
+  tabSync: MaybeRef<boolean>
   blink: boolean
   started: boolean
   playing: boolean
@@ -54,6 +55,7 @@ export const tempo: {
   bpm: useClamp(useStorage("tempo-bpm", 100), 10, 500),
   clock: null,
   midiClock: useStorage("midi-clock-out", false),
+  tabSync: useStorage("tab-sync", false),
   blink: false,
   started: false,
   playing: false,
@@ -185,6 +187,7 @@ export function useTempo() {
   const { data, post, } = useBroadcastChannel({ name: 'chromatone-tempo' })
 
   watch(data, (d: typeof broadCast) => {
+    if (!tempo.tabSync) return
     tempo.playing = !!d?.playing
     tempo.stopped = !!d?.stopped
   })
@@ -204,7 +207,9 @@ export function useTempo() {
         Transport.stop();
         midi.stopAll()
         tempo.playing = false;
-        post({ stopped: stop })
+        if (tempo.tabSync) {
+          post({ stopped: stop })
+        }
       }
     }
   );
@@ -220,11 +225,16 @@ export function useTempo() {
         tempo.stopped = false;
         Transport.start();
         midi.playing = true
-        post({ playing: true })
+
+        if (tempo.tabSync) {
+          post({ playing: true })
+        }
       } else {
         midi.playing = false
         Transport.pause();
-        post({ playing: false })
+        if (tempo.tabSync) {
+          post({ playing: false })
+        }
       }
     }, {
     immediate: true

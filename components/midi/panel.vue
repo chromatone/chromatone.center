@@ -69,6 +69,13 @@ var isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
         ) 
         .i-la-clock
         .m-0 CLOCK OUT
+      button.flex-button.opacity-30(
+        @click="tempo.tabSync = !tempo.tabSync",
+        :class="{ active: tempo.tabSync }"
+        v-tooltip.bottom="'Sync multiple tabs transpost'"
+        ) 
+        .i-la-sync
+        .m-0 SYNC TABS
       button.flex-button.border.opacity-30(
         @click="synth.state.midi = !synth.state.midi" 
         :class="{ active: synth.state.midi }"

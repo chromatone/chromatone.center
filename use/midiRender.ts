@@ -9,8 +9,9 @@ let notes = ["C", "E", "G", "B", "D", "F", "A", "C#", "D#", "F#", "G#", "A#"];
 
 export function renderMidi(tracks) {
   let render = [];
+  console.log(tracks)
   tracks.forEach((track, t) => {
-    let division = 512 / track.metre.under;
+    let division = 512 / track?.meter?.under;
     let midiTrack = new Track();
     midiTrack.setTempo(tempo.bpm as number, 0);
     midiTrack.addInstrumentName("116");

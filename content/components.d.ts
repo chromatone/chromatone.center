@@ -93,6 +93,7 @@ declare module '@vue/runtime-core' {
     ILaTimes: typeof import('~icons/la/times')['default']
     ILaTrash: typeof import('~icons/la/trash')['default']
     ILaUpload: typeof import('~icons/la/upload')['default']
+    ILaVolumeMute: typeof import('~icons/la/volume-mute')['default']
     ILaVolumeOff: typeof import('~icons/la/volume-off')['default']
     ILaVolumeUp: typeof import('~icons/la/volume-up')['default']
     IMdiPanHorizontal: typeof import('~icons/mdi/pan-horizontal')['default']

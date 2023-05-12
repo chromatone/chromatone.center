@@ -37,6 +37,16 @@ watch(() => midi.cc, cc => {
     xmlns="http://www.w3.org/2000/svg",
     style="user-select:none;touch-action:none"
     )
+    defs
+      filter#shadowButton(
+        x="-50%" 
+        height="200%" 
+        width="300%")
+        feDropShadow(
+          dx="0" 
+          dy="3" 
+          stdDeviation="3" 
+          flood-color="#2225")
     beat-control-math(transform="translate(20,50)")
     beat-control-button(
       v-tooltip.right="'Reset to Euclidean pattern'"

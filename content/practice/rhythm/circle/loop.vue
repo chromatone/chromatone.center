@@ -2,7 +2,7 @@
 import { onKeyStroke } from "@vueuse/core";
 
 import LoopSector from "./loop-sector.vue";
-import BeatControlSector from './sector.vue'
+import ControlSector from './control-sector.vue'
 
 import { getCircleCoord } from "#/use/calculations";
 import { useSequence } from "#/use/sequence";
@@ -12,6 +12,9 @@ import { midi } from "#/use/midi";
 // import { useUrlSearchParams } from '@vueuse/core'
 import { controls } from './controls'
 import { ref, computed, watch } from 'vue'
+import { gainToDb } from "tone";
+import { isDark } from "#/theme/composables/state";
+
 
 const props = defineProps({
   radius: { type: Number, default: 400 },
@@ -19,7 +22,7 @@ const props = defineProps({
   order: { type: Number, default: 0 },
 });
 
-const { sampler, seq } = useSequence(undefined, props.order, "circle");
+const { sampler, seq, audio } = useSequence(undefined, props.order, "circle");
 
 const soundLetters = ["A", "B", "C", "D", "E", "F"];
 const soundControl = ref(soundLetters.findIndex((el) => el == seq.meter?.sound));
@@ -126,7 +129,7 @@ g(
       @accent="seq.accents[s] = !seq.accents[s]"
       @mute="seq.mutes[s] = !seq.mutes[s]"
     )
-  beat-control-sector.under(
+  control-sector.under(
     v-model="seq.meter.under"
     v-tooltip.top="'Measure subdivision'"
     :radius="controlRadius"
@@ -144,7 +147,7 @@ g(
   )
     text {{ seq.meter?.under }}
 
-  beat-control-sector.over(
+  control-sector.over(
     v-model="seq.meter.over"
     v-tooltip.top="'Number of steps'"
     :radius="controlRadius"
@@ -162,7 +165,7 @@ g(
   )
     text {{ seq.meter?.over }}
 
-  beat-control-sector.vol(
+  control-sector.vol(
     :radius="controlRadius"
     :start="98 + order * 6"
     :finish="130"
@@ -174,12 +177,26 @@ g(
     :max="1"
     :vector="[1, -1]"
     v-tooltip.bottom="'Track volume'"
-
     :midiCC="controls.cc[order].vol"
   )
     i-la-volume-up(x="-18" y="-28")
 
-  beat-control-sector.pan(
+  g.mute.opacity-30.hover-opacity-60.transition.cursor-pointer(
+    :transform="`translate(${850-order*147},${800-order*128})`"
+    @click="seq.mute = !seq.mute"
+    :style="{opacity: seq.mute? 1 : ''}"
+    )
+    circle(
+      style="filter:url(#shadowButton);"
+      r="25"
+      stroke-width="3"
+      :stroke-opacity="seq.mute ? 1 : 0"
+      :stroke="isDark ? '#ddd' : '#333'"
+      :fill="isDark ? '#333' : '#ddd'"
+      )
+    i-la-volume-mute.text-4xl(x="-20" y="-21")
+
+  control-sector.pan(
     :radius="controlRadius"
     :start="138 + order * 6"
     :finish="175"
@@ -195,7 +212,7 @@ g(
   )
     i-mdi-pan-horizontal(x="-18" y="-28")
 
-  beat-control-sector.sound(
+  control-sector.sound(
     :radius="controlRadius"
     v-model="soundControl"
     :vector="[1, 1]"

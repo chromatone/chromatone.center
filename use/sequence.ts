@@ -104,6 +104,8 @@ export function useSequence(
 
     volume: useClamp(useStorage(`metro-${mode}-vol-${order}`, initial?.volume || 1), 0, 1),
 
+    mute: false,
+
     pan: useClamp(useStorage(`metro-${mode}-pan-${order}`, order % 2 == 1 ? -0.5 : 0.5), -1, 1),
 
     mutesCount: computed(() => seq.mutes.reduce((acc: number, val: number) => {
@@ -213,7 +215,7 @@ export function useSequence(
   }
 
   const audio = shallowReactive({
-    channel: createChannel(`sequence-${mode}-${order}`).channel,
+    ...createChannel(`sequence-${mode}-${order}`),
     panner: new PanVol(order % 2 == 1 ? -0.5 : 0.5, 0),
     synth: new Sampler({
       urls,
@@ -222,15 +224,17 @@ export function useSequence(
       release: 2,
       baseUrl: "/audio/metronome/",
     }),
-
-
-
   });
 
   audio.synth.connect(audio.panner);
   audio.panner.connect(audio.channel);
 
   const { sampler, micRec } = useSampler(audio.synth)
+
+
+  watch(() => seq.mute, m => {
+    audio.volume.mute = m
+  })
 
   watch(
     () => seq.meter.sound,
@@ -289,7 +293,7 @@ export function useSequence(
 
   return {
     sampler,
-    seq,
+    seq
   };
 }
 

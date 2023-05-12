@@ -5,7 +5,7 @@
 
 import { getDestination, start, gainToDb, Meter, context, Reverb, Limiter, LimiterOptions, Volume } from "tone"
 import { useRecorder } from "./recorder"
-import { shallowReactive, reactive, watchEffect, markRaw } from 'vue'
+import { shallowReactive, reactive, watchEffect, markRaw, ref, Ref, watch } from 'vue'
 import { useRafFn, useStorage } from "@vueuse/core"
 import { useClamp } from "@vueuse/math"
 
@@ -73,6 +73,7 @@ export function createChannel(title = (Math.random() * 1000).toFixed(0), options
   const { recorder } = useRecorder()
   volume.connect(recorder)
   const channel = new Limiter(options).connect(volume)
+
   return channels[title] = { channel, volume }
 }
 

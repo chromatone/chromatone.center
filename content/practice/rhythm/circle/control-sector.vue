@@ -72,7 +72,7 @@ watch(() => midi.cc, cc => {
 </script>
 
 <template lang="pug">
-g.arc.cursor-pointer(
+g.arc.cursor-grab.active-cursor-grabbing(
   v-drag="dragParam"
   )
   defs
@@ -161,6 +161,4 @@ g.arc.cursor-pointer(
   
 </template>
 
-<style lang="postcss" scoped>
-
-</style>
+<style lang="postcss" scoped></style>

@@ -9,7 +9,7 @@ const props = defineProps({
 </script>
 
 <template lang="pug">
-.crd.border-l-4(
+.crd.border-l-6.overflow-hidden(
   :title="item.lastModified",
   :style="{borderColor: color}"
   )
@@ -44,7 +44,7 @@ const props = defineProps({
 }
 
 .info {
-  @apply px-2 pt-4 pb-1 ml-2 m-2 z-4 max-w-24em bg-light-100 bg-opacity-80 dark-(bg-dark-600 bg-opacity-80) rounded-xl relative;
+  @apply px-2 pt-4 pb-1 ml-2 m-2 z-4 max-w-24em bg-light-100 bg-opacity-80 dark-(bg-dark-600 bg-opacity-80) rounded-xl relative shadow-md;
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   flex: 1 1 100%;
@@ -61,8 +61,8 @@ const props = defineProps({
 .cover {
   @apply absolute top-0 w-full h-full bg-cover bg-center z-1;
 
-  filter: saturate(50%) brightness(160%) opacity(30%);
-  transition: all 900ms cubic-bezier(0.6, -0.1, 0, 1.1);
+  filter: saturate(50%) brightness(120%) opacity(40%);
+  transition: all 600ms cubic-bezier(0.6, -0.1, 0, 1.1);
   flex: 1 0 100%;
   background: cover;
 }

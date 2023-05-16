@@ -48,7 +48,7 @@ const bg = computed(() => `url(${props.item?.cover}`);
         v-if="item?.product"
         :title="item.title"
         :product="item?.product" 
-        :color="'color'"
+        :color="color"
         )
   card-list(
     v-if="pages[item.path]",
@@ -58,7 +58,7 @@ const bg = computed(() => `url(${props.item?.cover}`);
 
 <style lang="postcss" scoped>
 .row {
-  @apply bg-light-500 w-full dark-bg-dark-500 flex flex-col transition-all duration-300 ease no-underline rounded-3xl overflow-hidden shadow-lg max-w-65ch border-l-4;
+  @apply bg-light-500 w-full dark-bg-dark-500 flex flex-col transition-all duration-300 ease no-underline rounded-lg overflow-hidden shadow-lg max-w-65ch border-l-8;
   flex: 1 1 200px;
 }
 
@@ -71,13 +71,13 @@ const bg = computed(() => `url(${props.item?.cover}`);
 }
 
 .info {
-  @apply m-2 relative max-w-500px flex self-stretch flex-wrap items-center p-4 md-(px-5 py-4) bg-light-100 bg-opacity-70 dark-(bg-dark-100 bg-opacity-70) rounded-3xl;
+  @apply m-2 relative max-w-500px flex self-stretch flex-wrap items-center p-4 md-(px-5 py-4) bg-light-100 bg-opacity-70 dark-(bg-dark-100 bg-opacity-70) rounded-xl text-dark-100 dark-text-light-100 shadow-md;
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 }
 
 .cover {
-  @apply absolute w-full top-0 h-full rounded-xl;
+  @apply absolute w-full top-0 h-full;
   filter: saturate(50%) opacity(30%);
   transition: all 450ms ease-in-out;
   flex: 1 1 30%;

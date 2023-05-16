@@ -30,6 +30,6 @@ function getColor(i, total) {
 }
 
 .inset {
-  @apply rounded-2xl overflow-hidden shadow-md hover-(shadow-lg);
+  @apply rounded-md overflow-hidden shadow-md hover-(shadow-lg);
 }
 </style>

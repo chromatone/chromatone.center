@@ -6,4 +6,4 @@ date: 2022-11-01
 
 ### tsoop
 
-[tsoop.ru](https://tsoop.ru) is an improvisational electronic music project with visualizations based on Chromatone system. There's a couple of albums published, but the main focus is on live collaborative music events. It's the research about what else can we can perform together. 🥁
+[tsoop.com](https://tsoop.com) is an improvisational electronic music project with visualizations based on Chromatone system. There's a couple of albums published, but the main focus is on live collaborative music events. It's the research about what else can we can perform together. 🥁

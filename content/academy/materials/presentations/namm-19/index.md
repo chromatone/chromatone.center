@@ -6,7 +6,7 @@ cover: fest-sokolniki-1.jpg
 ---
 
 
-At [NAMM Musikmesse](https://namm-musikmesse-russia.ru.messefrankfurt.com/moscow/ru/visitors/namm_musikmesse_2019y.html) music gear exhibition at [MusicMag](https://mmag.ru/) company stand in September 2019 we had a presentation of the Chromatone system developments. Overall review of theory, apps, stickers and cheat-sheets in a noisy hall at Sokolniki, Moscow. And then - a live set by [tsoop](https://tsoop.ru).
+At [NAMM Musikmesse](https://namm-musikmesse-russia.ru.messefrankfurt.com/moscow/ru/visitors/namm_musikmesse_2019y.html) music gear exhibition at [MusicMag](https://mmag.ru/) company stand in September 2019 we had a presentation of the Chromatone system developments. Overall review of theory, apps, stickers and cheat-sheets in a noisy hall at Sokolniki, Moscow. And then - a live set by [tsoop](https://tsoop.com).
 
 <youtube-embed video="3_815sW-ZKY" />
 

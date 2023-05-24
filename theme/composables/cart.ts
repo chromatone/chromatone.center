@@ -14,13 +14,20 @@ export interface CartItem {
 	quantity: number
 }
 
+export interface Way { id: string, title: string, desc: string, price: number }
+
 const MaxQuantity = 5
 
 export const cartInitilized = ref(false)
 export const open = ref(false)
 export const cart: RemovableRef<Record<string, CartItem>> = useStorage('shopping-cart', {})
 
-export const delivery = reactive({
+
+export const delivery: {
+	current: string,
+	selected: Way,
+	ways: Record<string, Way>
+} = reactive({
 	current: useStorage('delivery-way', 'regular'),
 	selected: computed(() => delivery.ways[delivery.current]),
 	ways: {
@@ -102,7 +109,7 @@ export async function checkout() {
 		quantity: 1
 	})
 	try {
-		await stripe.redirectToCheckout({
+		await stripe?.redirectToCheckout({
 			lineItems,
 			mode: 'payment',
 			successUrl: 'https://chromatone.center/shop/success.html',

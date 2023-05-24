@@ -1,27 +1,25 @@
 <script setup>
 import { onMounted, ref, shallowRef } from 'vue';
-import bh from './blowhole.ck?raw'
 import { Chuck } from 'webchuck'
+
+const examples = import.meta.glob('./examples/*.ck', { as: 'raw', eager: true })
+
+function getFileName(path) {
+  return path.match(/([^./]+)(?=\.[^.]*$|$)/)[1];
+}
 
 const webChuck = shallowRef()
 const initiated = ref(false)
-const command = ref(bh)
+const command = ref(examples['./examples/brass.ck'])
 
 onMounted(async () => {
   webChuck.value = await Chuck.init([]);
-  initiated.value = true
-  webChuck.value.addEventListener('processorerror', e => {
+
+  webChuck.value.onprocessorerror = e => {
     console.warn(e)
-  })
+  }
+  initiated.value = true
 })
-
-async function runChuck() {
-  webChuck.value?.runCode(command.value);
-}
-
-function stopChuck() {
-  webChuck.value?.removeLastCode()
-}
 
 </script>
 
@@ -32,6 +30,13 @@ function stopChuck() {
   textarea.font-mono.text-sm.p-2.w-full.dark-bg-dark-200.rounded-lg(v-model="command" cols="55" rows="20")
   .flex.flex-wrap.gap-2
     .p-2.text-green-600.dark-text-green-300(v-if="initiated") READY
-    button.text-button.flex-1(@click="runChuck()") RUN 
-    button.text-button.flex-1(@click="stopChuck()") STOP 
+    .p-2.text-orange-600.dark-text-orange-300(v-else) INIT
+    button.text-button.flex-1(@click="webChuck.runCode(command)") RUN
+    button.text-button.flex-1(@click="webChuck.replaceCode(command)") RERUN 
+    button.text-button.flex-1(@click="webChuck.removeLastCode()") STOP
+  .flex.flex-wrap.gap-2 
+    .p-2(
+      v-for="(example,path) in examples" :key="example"
+      @click="command = example"
+      ) {{ getFileName(path) }} 
 </template>

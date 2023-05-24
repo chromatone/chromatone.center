@@ -27,5 +27,6 @@ ChucK is a programming language for real-time sound synthesis and music creation
 - https://chuck.stanford.edu/doc/examples/
 - https://artful.design/stuff/samples/chuck.pdf
 - https://github.com/ccrma/webchuck
+- https://github.com/ccrma/webchuck/blob/main/docs/classes/Chuck.md
 
 <youtube-embed video="2rpk461T6l4"/>

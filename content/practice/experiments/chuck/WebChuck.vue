@@ -21,6 +21,10 @@ onMounted(async () => {
   initiated.value = true
 })
 
+async function init() {
+  webChuck.value = await Chuck.init([]);
+}
+
 </script>
 
 <template lang='pug'>
@@ -30,13 +34,20 @@ onMounted(async () => {
   textarea.font-mono.text-sm.p-2.w-full.dark-bg-dark-200.rounded-lg(v-model="command" cols="55" rows="20")
   .flex.flex-wrap.gap-2
     .p-2.text-green-600.dark-text-green-300(v-if="initiated") READY
-    .p-2.text-orange-600.dark-text-orange-300(v-else) INIT
+    .p-2.text-orange-600.dark-text-orange-300(v-else @click="init()") INIT
     button.text-button.flex-1(@click="webChuck.runCode(command)") RUN
     button.text-button.flex-1(@click="webChuck.replaceCode(command)") RERUN 
     button.text-button.flex-1(@click="webChuck.removeLastCode()") STOP
   .flex.flex-wrap.gap-2 
-    .p-2(
+    .p-2.border-1.rounded-lg.border-dark-200.cursor-pointer(
+      :class="{active:example == command}"
       v-for="(example,path) in examples" :key="example"
       @click="command = example"
       ) {{ getFileName(path) }} 
 </template>
+
+<style lang="postcss" scoped>
+.active {
+  @apply border-light-100
+}
+</style>

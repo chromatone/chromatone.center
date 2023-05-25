@@ -7,7 +7,7 @@ ModalBar bar  => JCRev r => dac;
 .02 => r.mix;
 
 // scale
-[0, 2, 5, 7, 8, 11] @=> int scale[];
+[-1,0, 2, 5, 7, 8, 11] @=> int scale[];
 
 // infinite time loop
 while( true )
@@ -19,11 +19,11 @@ while( true )
     Math.random2f( 0.2, 0.8 ) => bar.vibratoGain;
     Math.random2f( 1, 60 ) => bar.vibratoFreq;
     Math.random2f( 0.2, 0.8 ) => bar.volume;
-    Math.random2f( .5, .9 ) => bar.directGain;
-    Math.random2f( .5, .9 ) => bar.masterGain;
+    Math.random2f( .3, .9 ) => bar.directGain;
+    Math.random2f( .2, .9 ) => bar.masterGain;
+
 
     // print
-    <<< "---", "" >>>;
     <<< "preset:", bar.preset() >>>;
 
     // set freq

@@ -1,8 +1,8 @@
 // patch
-BlowHole hole => dac;
+BlowHole hole => JCRev rev => dac;
 
 // scale
-[0, 2, 4, 7, 9, 11] @=> int scale[];
+[0, 2, 5, 7] @=> int scale[];
 
 <<< "reed stiffness:", hole.reed() >>>;
 <<< "noise gain:", hole.noiseGain() >>>;
@@ -16,11 +16,11 @@ while( true )
   // change parameters
   if( Math.random2f(0,1) > .75 )
   {
-    Math.random2f( 0, 1 ) => hole.reed;
-    Math.random2f( 0, 1 ) => hole.noiseGain;
-    Math.random2f( 0, 1 ) => hole.tonehole;
-    Math.random2f( 0, 1 ) => hole.vent;
-    Math.random2f( 0, 1 ) => hole.pressure;
+    Math.random2f( 0.6, 0.8 ) => hole.reed;
+    Math.random2f( 0, 0.8 ) => hole.noiseGain;
+    Math.random2f( 0.8, 1 ) => hole.tonehole;
+    Math.random2f( 0, 0.2 ) => hole.vent;
+    Math.random2f( 0, 0.7 ) => hole.pressure;
 
     // print
     <<< "going...", "" >>>;
@@ -33,12 +33,13 @@ while( true )
 
   // set freq
   scale[Math.random2(0,scale.size()-1)] => int note;
-  33 + Math.random2(0,4)*12 + note => Std.mtof => hole.freq;
+  36 + Math.random2(0,1)*12 + note => Std.mtof => hole.freq;
   <<< "note: ", Std.ftom( hole.freq() ) >>>;
 
   // go
-  .8 => hole.noteOn;
-
+  .2 => hole.noteOn;
+  Math.random2(1,8)*.25::second => now;
+  1 => hole.noteOff;
   // advance time
-  1::second => now;
+  Math.random2(0,8)*.5::second => now;
 }

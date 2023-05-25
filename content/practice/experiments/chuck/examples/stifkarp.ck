@@ -6,7 +6,7 @@ StifKarp m => NRev r => dac;
 .02 => r.mix;
 
 // our notes
-[ 61, 63, 65, 66, 68, 66, 65, 63 ] @=> int notes[];
+[ 0, 2, 5, 7, 9 ] @=> int notes[];
 
 // infinite time-loop
 while( true )
@@ -21,12 +21,12 @@ while( true )
     <<< "stretch:", m.stretch() >>>;
 
     // factor
-    Math.random2f( 1, 4 ) => float factor;
+    Math.random2( 1, 4 ) => int factor;
 
     for( int i; i < notes.size(); i++ )
     {
-        play( Math.random2(0,2)*12 + notes[i], Math.random2f( .6, .9 ) );
-        100::ms * factor => now;
+        play( 44 +  Math.random2(0,2)*12 + notes[i], Math.random2f( .6, .9 ) );
+        125::ms * factor => now;
     }
 }
 

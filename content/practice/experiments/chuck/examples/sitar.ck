@@ -1,13 +1,15 @@
 // patch
-Sitar sit => PRCRev r => dac;
+Sitar sit => JCRev r => dac;
 .05 => r.mix;
+
+[0, 2, 5, 7, 9] @=> int scale[];
 
 // time loop
 while( true )
 {
     // freq
-    Math.random2( 0, 11 ) => float winner;
-    Std.mtof( 57 + Math.random2(0,3) * 12 + winner ) => sit.freq;
+    scale[Math.random2(0,scale.size()-1)] => int winner;
+    Std.mtof( 44 + Math.random2(0,2) * 12 + winner ) => sit.freq;
 
     // pluck!
     Math.random2f( 0.4, 0.9 ) => sit.noteOn;

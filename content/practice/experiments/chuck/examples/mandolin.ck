@@ -3,10 +3,10 @@
 // patch
 Mandolin m => JCRev r => dac;
 .75 => r.gain;
-.025 => r.mix;
+.125 => r.mix;
 
 // our notes
-[ 61, 63, 65, 66, 68, 66, 65, 63 ] @=> int notes[];
+[ 0, 2, 5, 7, 9 ] @=> int notes[];
 
 // infinite time-loop
 while( true )
@@ -25,12 +25,12 @@ while( true )
     <<< "string detune:", m.stringDetune() >>>;
 
     // factor
-    Math.random2f( 1, 4 ) => float factor;
+    Math.random2( 1, 5 ) => int factor;
 
     for( int i; i < notes.size(); i++ )
     {
-        play( Math.random2(0,2)*12 + notes[i], Math.random2f( .6, .9 ) );
-        100::ms * factor => now;
+        play( 44 + Math.random2(0,2)*12 + notes[i], Math.random2f( .6, .9 ) );
+        62.5::ms * factor => now;
     }
 }
 

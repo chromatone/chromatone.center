@@ -10,14 +10,14 @@ Wurley voc=> JCRev r => dac;
 .1 => r.mix;
 
 // scale
-[ 0, 3, 7, 8, 11 ] @=> int scale[];
+[ 0, 2, 7, 9, 11 ] @=> int scale[];
 
 // our main time loop
 while( true )
 {
     // scale
     scale[Math.random2(0,scale.size()-1)] => int freq;
-    Std.mtof( ( 45 + Math.random2(0,1) * 12 + freq ) ) => voc.freq;
+    Std.mtof( ( 44 + Math.random2(0,1) * 12 + freq ) ) => voc.freq;
     Math.random2f( 0.6, 0.8 ) => voc.noteOn;
 
     // note: Math.randomf() returns value between 0 and 1

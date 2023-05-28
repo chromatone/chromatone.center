@@ -53,5 +53,5 @@ const openSideBar = ref(false);
   @apply bg-gray-800 bg-opacity-60;
 }
 </style>
-
-.i-mdi-checkbox-blank-circle-outline .i-mdi-checkbox-blank-circle
+<!-- 
+.i-mdi-checkbox-blank-circle-outline .i-mdi-checkbox-blank-circle -->

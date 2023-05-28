@@ -7,9 +7,6 @@ import Components from 'unplugin-vue-components/vite'
 import Icons from 'unplugin-icons/vite'
 import IconsResolver from 'unplugin-icons/resolver'
 
-import { VitePWA } from 'vite-plugin-pwa'
-
-
 import ViteYaml from '@modyfi/vite-plugin-yaml';
 
 import Unocss from 'unocss/vite'
@@ -78,45 +75,7 @@ export default defineConfig(
           extractorPug()
         ]
       }),
-      // VitePWA({
-      //   registerType: 'autoUpdate',
-      //   includeAssets: ['favicon.svg', 'favicon.ico', 'robots.txt', 'apple-touch-icon.png'],
-      //   manifest: {
-      //     name: 'Chromatone',
-      //     short_name: 'The visual music language',
-      //     description: 'Universal color music notation and communication',
-      //     "display": "standalone",
-      //     "homepage_url": "https://chromatone.center",
-      //     theme_color: '#333333',
-      //     "providedBy": {
-      //       "name": "Chromatone",
-      //       "url": "https://chromatone.center"
-      //     },
-      //     icons: [
-      //       {
-      //         "src": "./media/logo/holologo.svg",
-      //         "type": "image/svg+xml",
-      //         "sizes": "512x512"
-      //       },
-      //       {
-      //         src: 'pwa-192x192.png',
-      //         sizes: '192x192',
-      //         type: 'image/png',
-      //       },
-      //       {
-      //         src: 'pwa-512x512.png',
-      //         sizes: '512x512',
-      //         type: 'image/png',
-      //       },
-      //       {
-      //         src: 'pwa-512x512.png',
-      //         sizes: '512x512',
-      //         type: 'image/png',
-      //         purpose: 'any maskable',
-      //       }
-      //     ]
-      //   }
-      // }),
+
     ],
     resolve: {
       alias: {

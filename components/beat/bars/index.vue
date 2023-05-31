@@ -26,12 +26,14 @@ const newLoop = reactive({
 watch(() => props.meters, m => {
   if (m) {
     let nums = m[0].split('/')
-    loops.value = [{
-      over: Number(nums[0]),
-      under: Number(nums[1]),
-      volume: props.secondary ? 0 : 1,
-      sound: 'A'
-    }]
+    loops.value = {
+      0: {
+        over: Number(nums[0]),
+        under: Number(nums[1]),
+        volume: props.secondary ? 0 : 1,
+        sound: 'A'
+      }
+    }
   }
 }, { immediate: true })
 
@@ -48,27 +50,40 @@ function selectPattern(p, meter) {
 }
 
 function addLoop() {
-  loops.value.push({ ...newLoop })
+  loops.value[Math.floor(Math.random() * 10000)] = { ...newLoop }
 }
 
 </script>
 
 <template lang="pug">
-.flex.flex-col.items-center.w-full.p-4.has-bg.rounded-xl#screen.relative.gap-6
+.flex.flex-wrap.items-center.w-full.p-4.has-bg.rounded-xl#screen.relative.gap-6.bg-light-600.dark-bg-dark-500
   client-only 
     state-transport(v-if="!secondary" :secondary="true")
-    beat-bar.my-1.rounded-3xl.shadow-lg(
-      v-for="(loop, i) in loops",
-      :key="loop"
+    beat-bar.my-1.rounded-3xl.shadow-lg.min-h-36.max-h-30vh(
+      style="flex: 1 1 420px"
+      v-for="(loop, i) in loops"
+      :key="i"
       :order="i"
       :loop="loop"
       :maxRatio="maxRatio"
-      @del="loops.splice(i, 1)"
+      @del="delete loops[i]"
       :editable="!meters"
       :accents="pattern"
       :mute="mute"
-    )
-    .flex.flex-wrap.justify-center.is-group.m-1.text-xl.p-2
+      ) 
+    .flex.flex-col.p-2.my-2.is-group(v-if="patterns")
+      .flex.flex
+        .flex-1.p-1.border-1.border-current.rounded-lg.m-1.opacity-50(
+          v-for="(accent, a) in pattern" :key="a"
+          :style="{ opacity: accent == 'X' ? 1 : 0.5, backgroundColor: accent == '1' || accent == 'X' || accent == 'x' ? 'currentColor' : 'transparent' }"
+          )
+      .flex.flex-wrap.justify-center
+        .p-1(v-for="pt in patterns[pattern]?.names" :key="pt") 
+          span.font-bold.mx-2 {{ pt.name }}  
+          span(v-if="pt.place") ({{ pt.place }})
+    .flex.flex-wrap.justify-center.is-group.m-1.text-xl.p-2(
+      style="flex: 1 1 100%"
+      )
       button.text-button(
         @click="addLoop()"
         v-if="!meters"
@@ -82,24 +97,15 @@ function addLoop() {
         button.text-button(
           v-for="met in meters"
           @click="loops = [{ over: met.split('/')[0], under: met.split('/')[1], sound: 'A', volume: 1 }]"
-        ) {{ met }}
+          ) {{ met }}
 
       button.text-button(
         :class="{ active: pattern == p }"
         v-for="(pat, p) in patterns"
         @click="selectPattern(p, pat.meter)"
-      ) {{ pat?.names?.[0]?.name || p }}
+        ) {{ pat?.names?.[0]?.name || p }}
 
-    .flex.flex-col.p-2.my-2.is-group(v-if="patterns")
-      .flex.flex
-        .flex-1.p-1.border-1.border-current.rounded-lg.m-1.opacity-50(
-          v-for="(accent, a) in pattern" :key="a"
-          :style="{ opacity: accent == 'X' ? 1 : 0.5, backgroundColor: accent == '1' || accent == 'X' || accent == 'x' ? 'currentColor' : 'transparent' }"
-        )
-      .flex.flex-wrap.justify-center
-        .p-1(v-for="pt in patterns[pattern]?.names" :key="pt") 
-          span.font-bold.mx-2 {{ pt.name }}  
-          span(v-if="pt.place") ({{ pt.place }})
+    
 
 </template>
 

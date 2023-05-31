@@ -27,7 +27,7 @@ const props = defineProps({
         v-if="item.description" 
 
         ) {{ item.description }}
-      shop-price.float-left(
+      shop-price(
         v-if="item?.product"
         :title="item?.title"
         :product="item?.product"

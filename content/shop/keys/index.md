@@ -1,6 +1,6 @@
 ---
 title: Keyboard stickers
-description: High quality vynil stickers for the piano and synthesizers - instruments with keys to press
+description: High quality vinyl stickers for the piano and synthesizers - instruments with keys to press. There are versatile kits to cover almost any possible instrument set.
 date: 2021-09-06
 ---
 

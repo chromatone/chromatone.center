@@ -5,17 +5,13 @@ import mdLinks from "markdown-it-external-links";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-//@ts-expect-error
-const dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const isProd = process.env.NODE_ENV === "production";
-
-const site = isProd ? "https://chromatone.center/" : "http://localhost:3000";
+const site = "https://chromatone.center/"
 
 export const metaData = {
   title: "Chromatone",
-  titleTemplate: 'Chromatone center',
-  description: "Universal color music notation and communication",
+  titleTemplate: 'Chromatone.center',
+  description: "Visual music language",
   site,
   locale: "en",
   icon: "/media/logo/click-logo.svg",

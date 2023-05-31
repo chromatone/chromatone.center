@@ -44,7 +44,7 @@ const bg = computed(() => `url(${props.item?.cover}`);
         card-date(v-if="!item?.product",:date="item.lastModified")
       .text-md.mt-4.mb-2.font-normal.w-full(v-if="item?.description") {{ item.description }}
       page-buttons(:buttons="item?.buttons" :color="color")
-      shop-price.my-2(
+      shop-price.w-full(
         v-if="item?.product"
         :title="item.title"
         :product="item?.product" 

@@ -1,12 +1,13 @@
 ---
 title: Sponsorship
-description: You can support Chromatone development as a free and open source ecosytem of visual music
+description: "You can support Chromatone development as a free and open source ecosytem of visual music"
 date: 2022-04-17
 buttons:
-  - url: https://github.com/sponsors/chromatone/
-    text: Sponsor us at GitHub
+  - url: "https://github.com/sponsors/chromatone/"
+    text: "Sponsor us at GitHub"
     type: heart
 ---
+
 
 Chromatone is an open source initiative and we are based on voluntary contributions of code, time and money. You can become a part of the development by even a small donation – it really gives us energy to continue it further.
 

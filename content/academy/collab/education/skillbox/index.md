@@ -3,6 +3,10 @@ title: SkillBox video course
 description: Full course of visual music theory
 date: 2021-01-01
 cover: course.webp
+buttons:
+  - url: https://go.redav.online/6d5aee6d0864fb10
+    text: Buy the course now
+    type: primary
 ---
 
 In 2021 we've been working with the educational platform called [SkillBox](https://skillbox.ru) on an **11 modules video course** that leads beginners from basic light and sound physics through intervals and scales up to the level of music composition techniques. Each module consists of 3-5 lessons 15-30 minutes each. We go through all the topics with the use of Chromatone web-apps and different instruments. Learners get custom designed sticker sheets from the company by mail and have some instrumental videos to shoot for the homework.

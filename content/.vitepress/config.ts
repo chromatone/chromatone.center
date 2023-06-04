@@ -34,6 +34,7 @@ export default defineConfig({
       image = 'media_files/cover/' + url.split('/').join('-') + ctx.pageData.frontmatter?.cover
     }
     return [
+      process.env.NODE_ENV === "production" ? ["script", { async: 'true', defer: 'true', "data-website-id": "0abe9f0f-2fc2-4df1-8f42-0844ddcb2042", src: "https://stats.defucc.me/umami.js" }] : null,
       ['meta', { property: 'og:title', content: ctx.pageData.title + ' | Chromatone' }],
       ['meta', { property: 'og:description', content: ctx.pageData.description }],
       ['meta', { property: 'og:url', content: site + url }],
@@ -47,7 +48,6 @@ export default defineConfig({
     ]
   },
   head: [
-    ["script", { async: 'true', defer: 'true', "data-website-id": "0abe9f0f-2fc2-4df1-8f42-0844ddcb2042", src: "https://stats.defucc.me/umami.js" }],
     ['meta', { name: 'robots', content: 'index, follow' }],
     ['meta', { name: 'author', content: metaData?.author }],
     ['meta', { name: 'keywords', content: metaData?.tags }],

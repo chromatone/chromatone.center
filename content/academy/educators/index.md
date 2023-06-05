@@ -7,10 +7,10 @@ buttons:
     text: Book a music theory lesson now
 teachers:
   - avatar: /img/starov.jpg
-    name: Denis K Starov
-    pos: Founder, designer and developer
+    name: Denis Starov
+    pos: Author of the Chromatone system
     place: Based in Phuket, Thailand
-    about: I'm a broad range designer and enthusiastic open source developer. So I explore music with the web browser. And share my experiments and explorations with everyone here.
+    about: I've took the job to bring the colorful music concepts to a level of modern human understanding. I use illustrations, videos and interactive web-apps to teach people of all ages and any level of prior music knowledge. I can visualize almost any music theory concept on which we can elaborate to produce a much deeper understanding of these concepts in your mind. My main focus is on live improvisation skills that can be developed gradually and with comfort of modern technology. So I hope to help grow more free and independent musicianship. 
     interactions:
       - Online guidance
       - One-on-one sessions

@@ -12,7 +12,6 @@ defineProps({
 
 defineEmits(['close'])
 
-
 const route = useRoute();
 
 onMounted(() => {

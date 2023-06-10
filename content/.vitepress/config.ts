@@ -1,7 +1,5 @@
 import { defineConfig } from 'vitepress'
 
-import mdLinks from "markdown-it-external-links";
-
 import { createWriteStream } from 'node:fs'
 import { resolve } from 'node:path'
 import { SitemapStream } from 'sitemap'
@@ -42,13 +40,6 @@ export default defineConfig({
     //@ts-expect-error custom icon
     icon: metaData.url + metaData.icon,
     repo: metaData.repo,
-  },
-  markdown: {
-    config: (md) => {
-      md.use(mdLinks, {
-        internalDomains: ["localhost", "chromatone.center"],
-      });
-    },
   },
   transformHead: generateMeta(metaData),
   transformHtml: (_, id, { pageData }) => {

@@ -34,7 +34,7 @@ transition(name="fade")
           :href="dot.url" 
           :id="dot?.frontmatter?.title" 
 
-          :style="{ color: level==0 ? lchToHsl(d, children.length)  : ''}") 
+          :style="{ color: level==0 ? lchToHsl(d, children.length)  : 'currentColor'}") 
           .flex-auto(:class="{'text-xl font-bold': level==0}") {{ dot?.frontmatter?.title }}
           .flex-1
           .p-0(v-if="pages?.[cleanLink(dot.url)]") {{ pages?.[cleanLink(dot.url)]?.length }}

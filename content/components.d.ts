@@ -108,7 +108,6 @@ declare module 'vue' {
     NavDropdownLink: typeof import('./../theme/components/nav/dropdown-link.vue')['default']
     NavDropdownLinkItem: typeof import('./../theme/components/nav/dropdown-link-item.vue')['default']
     NavLink: typeof import('./../theme/components/nav/link.vue')['default']
-    NavLinks: typeof import('./../theme/components/nav/links.vue')['default']
     NavNextPrev: typeof import('./../theme/components/nav/next-prev.vue')['default']
     NavRow: typeof import('./../theme/components/nav/row.vue')['default']
     NavScroll: typeof import('./../theme/components/nav/scroll.vue')['default']

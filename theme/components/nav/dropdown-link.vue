@@ -1,14 +1,14 @@
 <script setup >
 import { ref, watch } from 'vue';
 
-const props = defineProps(['item'])
+const props = defineProps(['item', 'children'])
 
 import { useRoute } from 'vitepress'
 import { data } from '../../../content/pages.data.js'
-import { cleanLink, usePages, usePage } from 'vitepress-pages'
+import { cleanLink, useChildren } from 'vitepress-pages'
 
 const route = useRoute();
-const { children } = usePages({ path: props?.item?.url }, data)
+const children = useChildren({ path: props?.item?.url }, data)
 
 
 const open = ref(false)
@@ -28,7 +28,7 @@ function toggle() {
 <template lang="pug">
 .nav-dropdown-link(:class="{ open }")
   button.button(:aria-label="item?.frontmatter?.title", @click="toggle")
-    a.button-text.no-underline(:href="item?.url") {{ item?.frontmatter?.title }}
+    a.button-text.no-underline(:href="cleanLink(item?.url)") {{ item?.frontmatter?.title }}
     span.button-arrow(:class="open ? 'down' : 'right'").
 
 

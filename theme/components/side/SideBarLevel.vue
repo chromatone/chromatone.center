@@ -31,7 +31,7 @@ transition(name="fade")
         :style="{ borderColor: lchToHsl(d, children.length) }"
         )
         a(
-          :href="dot.url" 
+          :href="cleanLink(dot.url)" 
           :id="dot?.frontmatter?.title" 
 
           :style="{ color: level==0 ? lchToHsl(d, children.length)  : 'currentColor'}") 

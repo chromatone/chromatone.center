@@ -151,12 +151,6 @@ devDependencies:
   internal-ip:
     specifier: 7.0.0
     version: 7.0.0
-  markdown-it-external-links:
-    specifier: 0.0.6
-    version: 0.0.6
-  patch-vue-directive-ssr:
-    specifier: 0.0.1
-    version: 0.0.1
   pug:
     specifier: 3.0.2
     version: 3.0.2
@@ -3632,6 +3626,7 @@ packages:
 
   /markdown-it-external-links@0.0.6:
     resolution: {integrity: sha512-b0fsXGsf0higb7DEthr8ZKYErRB4ftIw1iklUZz0iN3leZxIZMEiFspfFdKrzpfblleZMnitz6ETTDgphjCSuA==}
+    dev: false
 
   /markdown-it@13.0.1:
     resolution: {integrity: sha512-lTlxriVoy2criHP0JKRhO2VDG9c2ypWCsT237eDiLqi09rmbKoUetyGHq2uOIRoRS//kfoJckS0eUzzkDR+k2Q==}
@@ -3987,11 +3982,6 @@ packages:
       queue-microtask: 1.2.3
       uint8-util: 2.1.9
     dev: false
-
-  /patch-vue-directive-ssr@0.0.1:
-    resolution: {integrity: sha512-n84llktHah+EXUGo+RvmTJcAQJQVW0kHHHiJ34ZSLijzhHi32zCMjCc5VAFv4jmdC91bpaYGPk0cDW1D8hQ3GQ==}
-    requiresBuild: true
-    dev: true
 
   /path-exists@4.0.0:
     resolution: {integrity: sha512-ak9Qy5Q7jYb2Wwcey5Fpvg2KoAc/ZIhLSLOSBmRmygPsGwkVVt0fZa0qrtMz+m6tJTAHfZQ8FnmB4MG4LWy7/w==}

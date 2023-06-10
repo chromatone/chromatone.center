@@ -5,7 +5,7 @@ const props = defineProps(['item'])
 
 <template lang="pug">
 .nav-link
-  a.item(:href="item.path") {{ item.title }}
+  a.item(:href="item.url") {{ item?.frontmatter?.title }}
 </template>
 
 <style scoped lang="postcss">

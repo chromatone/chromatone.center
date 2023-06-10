@@ -1,11 +1,14 @@
 <script setup>
-import { useData } from 'vitepress'
-import { pages } from '#/theme/composables/pages'
+import { useData, useRoute } from 'vitepress'
+import { data } from '../../../content/pages.data.js'
+import { cleanLink, useChildren, usePage } from 'vitepress-pages'
 
 const props = defineProps({
   item: Object,
   color: String
 });
+
+const children = useChildren({ path: props.item?.url }, data)
 </script>
 
 <template lang="pug">
@@ -13,29 +16,29 @@ const props = defineProps({
   :title="item.lastModified",
   :style="{borderColor: color}"
   )
-  a.container.no-underline(:href="item.path" :class="{ 'pt-32': item?.cover }" )
-    .cover(v-if="item?.cover", :style="{ backgroundImage: `url(${item.cover})` }") 
+  a.container.no-underline(:href="item.url" :class="{ 'pt-32': item?.frontmatter?.cover }" )
+    .cover(v-if="item?.frontmatter?.cover", :style="{ backgroundImage: `url(${item?.frontmatter?.cover})` }") 
     .info
       .title
-        .mr-2.text-2xl(v-if="item.emoji") {{ item.emoji }}
-        .text-2xl.p-2 {{ item.title }}
+        .mr-2.text-2xl(v-if="item?.frontmatter?.emoji") {{ item?.frontmatter?.emoji }}
+        .text-2xl.p-2 {{ item?.frontmatter?.title }}
           .absolute.top-10px.text-sm.font-normal.opacity-50
             slot
         .flex-1
-        card-date.mr-2(v-if="!item?.product",:date="item.lastModified")
+        card-date.mr-2(v-if="!item?.frontmatter?.product",:date="item.lastModified")
       .description(
-        v-if="item.description" 
+        v-if="item?.frontmatter?.description" 
 
-        ) {{ item.description }}
+        ) {{ item?.frontmatter?.description }}
       shop-price(
-        v-if="item?.product"
-        :title="item?.title"
-        :product="item?.product"
+        v-if="item?.frontmatter?.product"
+        :title="item?.frontmatter?.title"
+        :product="item?.frontmatter?.product"
         :color="color"
         )
 
-  page-buttons.m-2(:buttons="item?.buttons")
-  line-list(:list="pages[item.path]")
+  page-buttons.m-2(:buttons="item?.frontmatter?.buttons")
+  line-list(:list="children")
 </template>
 
 <style lang="postcss" scoped>

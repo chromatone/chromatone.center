@@ -1,13 +1,4 @@
 <script setup lang="ts">
-import '@unocss/reset/tailwind.css'
-import 'uno.css'
-import "./styles/vars.css";
-import "./styles/transitions.css";
-import "./styles/layout.postcss";
-import "./styles/custom-blocks.css";
-import 'floating-vue/dist/style.css'
-
-
 import { useRoute, useData } from "vitepress";
 
 import { drawingEnabled, drawingPinned } from '../theme/components/draw/draw'

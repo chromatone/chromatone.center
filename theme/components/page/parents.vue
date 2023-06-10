@@ -1,22 +1,20 @@
 <script setup>
-import { useParents } from '#/theme/composables/pages'
 import { useRoute } from 'vitepress'
-import { computed } from 'vue';
+import { data } from '../../../content/pages.data.js'
+import { cleanLink, useParents } from 'vitepress-pages'
 
 const route = useRoute()
-
-const parents = computed(() => useParents(route.path))
-
+const parents = useParents(route, data)
 </script>
 
 <template lang="pug">
 .tabs
   a.link(
     v-for="page in parents", 
-    :key="page.path" 
-    :href="page.path") 
+    :key="page.url" 
+    :href="page.url") 
     .i-carbon-chevron-left.mr-1
-    span {{ page?.title }}
+    span {{ page?.frontmatter?.title }}
 </template>
   
 <style lang="postcss" scoped>

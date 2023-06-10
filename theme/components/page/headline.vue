@@ -1,15 +1,16 @@
 <script setup>
-import { useSiblings, usePage } from '../../composables/pages'
 import { lchToHsl } from '#/use/colors'
 import { isDark } from '#/theme/composables/state'
-import { useRoute } from 'vitepress'
 import { computed } from 'vue';
 
-const route = useRoute()
+import { useRoute, useData } from 'vitepress'
+import { data } from '../../../content/pages.data.js'
+import { cleanLink, usePages, usePage } from 'vitepress-pages'
 
-const page = computed(() => usePage(route.path))
+const route = useRoute();
+const { siblings, parents } = usePages(route, data)
 
-const siblings = computed(() => useSiblings(route.path));
+const page = usePage(route, data)
 
 const pageColor = computed(() => {
   let l = isDark.value ? 40 : 60
@@ -23,23 +24,23 @@ const lightColor = computed(() => lchToHsl(siblings.value.index, siblings.value.
 <template lang="pug">
 .header(
   v-if="!$frontmatter.misc"
-  :class="{ 'has-cover': page?.cover || page?.icon }"
+  :class="{ 'has-cover': page?.frontmatter?.cover || page?.frontmatter?.icon }"
   :style="{ backgroundColor: pageColor }"
   )
-  .cover(v-if="page?.cover",:style="{ backgroundImage: `url(${page.cover})`, backgroundColor: pageColor }")
-  img.icon(v-if="page?.icon",:src="page.icon")
+  .cover(v-if="page?.frontmatter?.cover",:style="{ backgroundImage: `url(${page?.frontmatter?.cover})`, backgroundColor: pageColor }")
+  img.icon(v-if="page?.frontmatter?.icon",:src="page?.frontmatter?.icon")
   .meta(:style="{ borderColor: pageColor }")
     page-parents.text-xl.mb-4
-    .text-4xl.font-bold.mb-4.flex.flex-wrap.items-center(v-if="page?.title" :key="page.path") 
-      .mr-2 {{ page?.title }}
+    .text-4xl.font-bold.mb-4.flex.flex-wrap.items-center(v-if="page?.title" :key="page.url") 
+      .mr-2 {{ page?.frontmatter?.title }}
       .flex-1
-      .mx-2.my-4.text-6xl(v-if="page?.emoji") {{ page.emoji }}
-    .font-bold.mt-2.mb-4(v-if="page?.description") {{ page.description }}
-    page-buttons(:buttons="page?.buttons")
+      .mx-2.my-4.text-6xl(v-if="page?.frontmatter?.emoji") {{ page?.frontmatter?.emoji }}
+    .font-bold.mt-2.mb-4(v-if="page?.frontmatter?.description") {{ page?.frontmatter?.description }}
+    page-buttons(:buttons="page?.frontmatter?.buttons")
     .absolute.-bottom-2rem.right-2rem
       shop-price(
-        :product="page?.product" 
-        :title="page?.title" 
+        :product="page?.frontmatter?.product" 
+        :title="page?.frontmatter?.title" 
         :color="lightColor"
         )
 </template>

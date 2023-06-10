@@ -1,11 +1,11 @@
 <script setup>
-import { useRoute } from 'vitepress'
-import { pages } from '#/theme/composables/pages'
 import { lchToHsl } from '#/use/colors'
+import { useRoute } from 'vitepress'
+import { data } from '../../../content/pages.data.js'
+import { cleanLink, useChildren } from 'vitepress-pages'
 
 const route = useRoute()
-
-const list = pages[route.path]
+const parents = useChildren(route, data)
 
 </script>
 
@@ -13,8 +13,8 @@ const list = pages[route.path]
 .list-blocks(v-if="list")
   .my-0(
     v-for="(block, i) in list",
-    :key="block.title", 
-    :id="block.title"
+    :key="block.url", 
+    :id="block.url"
     :i="i"
     :total="list.length"
     )

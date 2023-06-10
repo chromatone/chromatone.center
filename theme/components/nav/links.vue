@@ -1,22 +1,26 @@
-<script setup lang="ts">
-import { useData } from 'vitepress'
+<script setup>
 import { computed } from 'vue';
 import { useLocaleLinks } from '../../composables/nav'
-import { pages } from '../../composables/pages'
+
+import { useRoute, useData } from 'vitepress'
+import { data } from '../../../content/pages.data.js'
+import { cleanLink, usePages, usePage } from 'vitepress-pages'
+
+const route = useRoute();
+const { children, pages } = usePages({ path: '/' }, data)
 
 
 const site = useData()
 const localeLinks = useLocaleLinks()
 
 
-const links = computed(() => pages['/'])
 </script>
 
 <template lang="pug">
 nav.nav-links
-  template(v-if="links")
-    .item(v-for="item in links", :key="item.text")
-      nav-dropdown-link(v-if="pages[item.path]", :item="item")
+  template(v-if="children")
+    .item(v-for="item in children", :key="item.url")
+      nav-dropdown-link(v-if="pages[cleanLink(item.url)]", :item="item")
       nav-link(v-else, :item="item").
 
   .item(v-if="localeLinks")

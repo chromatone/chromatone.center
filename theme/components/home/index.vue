@@ -1,5 +1,9 @@
 <script setup>
-import { pages } from '#/theme/composables/pages'
+import { useData, useRoute } from 'vitepress'
+import { data } from '../../../content/pages.data.js'
+import { cleanLink, usePages, usePage } from 'vitepress-pages'
+
+const { pages, children } = usePages({ path: '/' }, data)
 </script>
 
 <template lang="pug">
@@ -17,11 +21,11 @@ main.home(aria-labelledby="main-title")
   content.content.z-2
   .flex.flex-col.max-w-65ch.ml-2
     home-tile-item(
-      v-for="(area, i) in pages['/']", 
-      :key="area.title", 
+      v-for="(area, i) in children", 
+      :key="area.url", 
       :item="area", 
       :i="i",
-      :total="pages['/'].length",
+      :total="children.length",
       )  
 </template>
 

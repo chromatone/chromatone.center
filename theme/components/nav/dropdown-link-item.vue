@@ -4,8 +4,8 @@ const props = defineProps(['item'])
 </script>
 
 <template lang="pug">
-a.item(:href="item.path")
-  span.inline-flex.items-center.font-normal {{ item.title }}
+a.item(:href="item.url")
+  span.inline-flex.items-center.font-normal {{ item?.frontmatter?.title }}
 </template>
 
 <style scoped lang="postcss">

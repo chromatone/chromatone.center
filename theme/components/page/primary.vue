@@ -5,7 +5,7 @@ import { computed } from 'vue';
 const route = useRoute()
 const data = useData()
 
-const topContent = computed(() => data.frontmatter.value?.topContent) 
+const topContent = computed(() => data?.frontmatter.value?.topContent) 
 </script>
 
 <template lang="pug">

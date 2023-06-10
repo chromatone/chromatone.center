@@ -1,8 +1,10 @@
 <script setup>
 import { computed } from "vue";
-import { useData, useRoute } from "vitepress";
-import { pages } from "#/theme/composables/pages";
 import { lchToHsl } from "#/use/colors";
+
+import { useData, useRoute } from 'vitepress'
+import { data } from '../../../content/pages.data.js'
+import { cleanLink, usePages } from 'vitepress-pages'
 
 
 const props = defineProps({
@@ -10,35 +12,35 @@ const props = defineProps({
   level: { type: Number, default: 0 }
 })
 
-const list = computed(() => pages[props.path])
-
 const route = useRoute();
+
+const { pages, children } = usePages({ path: props.path }, data)
 </script>
 
 <template lang='pug'>
 transition(name="fade")
   .flex.flex-col(
-    v-show="route.path.includes(path) && pages[path] && pages[path].length > 0"
+    v-show="children && children.length > 0"
     :style="{gap: level==0 ? '1em': '0'}"
     )
     transition-group(name="fade")
       .level(
-        v-for="(dot, d) in pages[path]" 
-        :key="dot.path"
-        :aria-current="route.path.includes(dot.path) ? 'page' : false"
-        :style="{ borderColor: lchToHsl(d, pages[path].length) }"
+        v-for="(dot, d) in children" 
+        :key="dot.url"
+        :aria-current="route.path.includes(cleanLink(dot.url)) ? 'page' : false"
+        :style="{ borderColor: lchToHsl(d, children.length) }"
         )
         a(
-          :href="dot.path" 
-          :id="dot.title" 
+          :href="dot.url" 
+          :id="dot?.frontmatter?.title" 
 
-          :style="{ color: level==0 ? lchToHsl(d, pages[path].length)  : ''}") 
-          .flex-auto(          :class="{'text-xl font-bold': level==0}") {{ dot.title }}
+          :style="{ color: level==0 ? lchToHsl(d, children.length)  : ''}") 
+          .flex-auto(:class="{'text-xl font-bold': level==0}") {{ dot?.frontmatter?.title }}
           .flex-1
-          .p-0(v-if="pages?.[dot.path]") {{ pages?.[dot.path]?.length }}
+          .p-0(v-if="pages?.[cleanLink(dot.url)]") {{ pages?.[cleanLink(dot.url)]?.length }}
 
-        .flex.flex-col(v-show="route.path.includes(dot.path) && pages[dot.path] && pages[dot.path].length > 0")
-          SideBarLevel(:path="dot.path" :level="level+1")
+        .flex.flex-col(v-show="route.path.includes(cleanLink(dot.url)) && pages[cleanLink(dot.url)] && pages[cleanLink(dot.url)].length > 0")
+          SideBarLevel(:path="dot.url" :level="level+1")
 </template>
 
 <style lang="postcss" scoped>

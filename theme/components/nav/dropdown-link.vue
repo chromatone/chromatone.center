@@ -1,11 +1,15 @@
 <script setup >
-import { useRoute } from 'vitepress'
-import { pages } from '#/theme/composables/pages'
 import { ref, watch } from 'vue';
 
-defineProps(['item'])
+const props = defineProps(['item'])
 
-const route = useRoute()
+import { useRoute } from 'vitepress'
+import { data } from '../../../content/pages.data.js'
+import { cleanLink, usePages, usePage } from 'vitepress-pages'
+
+const route = useRoute();
+const { children } = usePages({ path: props?.item?.url }, data)
+
 
 const open = ref(false)
 
@@ -23,13 +27,13 @@ function toggle() {
 
 <template lang="pug">
 .nav-dropdown-link(:class="{ open }")
-  button.button(:aria-label="item.title", @click="toggle")
-    a.button-text.no-underline(:href="item?.path") {{ item.title }}
+  button.button(:aria-label="item?.frontmatter?.title", @click="toggle")
+    a.button-text.no-underline(:href="item?.url") {{ item?.frontmatter?.title }}
     span.button-arrow(:class="open ? 'down' : 'right'").
 
 
   ul.dialog
-    li.dialog-item(v-for="item in pages[item.path]", :key="item.text")
+    li.dialog-item(v-for="item in children", :key="item.url")
       nav-dropdown-link-item(:item="item")
         
         

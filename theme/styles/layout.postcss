@@ -315,7 +315,7 @@ form {
 }
 
 .content {
-	@apply m-2 py-8 z-6 leading-loose md-mx-8;
+	@apply m-2 py-8 z-6 leading-loose md-mx-8 overflow-x-hidden;
 }
 
 .content h1,
@@ -385,6 +385,10 @@ form {
 
 .content img[alt="svg"] {
 	@apply w-80vw;
+}
+
+.content code {
+	@apply break-all overflow-hidden;
 }
 
 em {

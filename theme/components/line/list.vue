@@ -11,7 +11,7 @@ import { data } from '../../../content/pages.data.js'
 import { cleanLink, usePages, usePage } from 'vitepress-pages'
 
 const route = useRoute();
-const { pages } = usePages({ path: props.item.url }, data)
+const { pages } = usePages(route, data)
 
 function getColor(i, total, b = 10) {
   let l = isDark.value ? 40 : 85
@@ -45,6 +45,6 @@ function getColor(i, total, b = 10) {
 }
 
 .line {
-  @apply m-1 shadow-md flex flex-col gap-4 rounded-md font-normal items-center px-4 py-2 transition-all bg-gray-50 dark-bg-gray-800 hover-(no-underline shadow-lg);
+  @apply m-1 shadow-md flex flex-wrap gap-4 rounded-md font-normal items-center px-4 py-2 transition-all bg-gray-50 dark-bg-gray-800 hover-(no-underline shadow-lg);
 }
 </style>

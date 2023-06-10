@@ -5,12 +5,10 @@ import { drawingEnabled, drawingPinned } from '../theme/components/draw/draw'
 
 import { ref, watch } from "vue";
 
-// generic state
 const route = useRoute();
 
 const { frontmatter } = useData()
 
-// sidebar
 const openSideBar = ref(false);
 
 </script>
@@ -21,8 +19,10 @@ const openSideBar = ref(false);
   nav-view
   .main
     side-bar(:open="openSideBar" @close="openSideBar = false")
-    home(v-if="frontmatter.template == 'home'")
-    page-primary(v-else)
+
+    layout-home(v-if="frontmatter.template == 'home'")
+    layout-page(v-else)
+
     client-only
       draw-layer.z-100
       cast-camera

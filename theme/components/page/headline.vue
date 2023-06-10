@@ -1,24 +1,5 @@
 <script setup>
-import { lchToHsl } from '#/use/colors'
-import { isDark } from '#/theme/composables/state'
-import { computed } from 'vue';
-
-import { useRoute, useData } from 'vitepress'
-import { data } from '../../../content/pages.data.js'
-import { cleanLink, usePages, usePage } from 'vitepress-pages'
-
-const route = useRoute();
-const { siblings, parents } = usePages(route, data)
-
-const page = usePage(route, data)
-
-const pageColor = computed(() => {
-  let l = isDark.value ? 40 : 60
-  return lchToHsl(siblings.value.index, siblings.value.total, 1, 20, l)
-});
-
-const lightColor = computed(() => lchToHsl(siblings.value.index, siblings.value.total, 1, 70, 60));
-
+const props = defineProps(['pageColor', 'lightColor', 'page'])
 </script>
 
 <template lang="pug">
@@ -30,8 +11,10 @@ const lightColor = computed(() => lchToHsl(siblings.value.index, siblings.value.
   .cover(v-if="page?.frontmatter?.cover",:style="{ backgroundImage: `url(${page?.frontmatter?.cover})`, backgroundColor: pageColor }")
   img.icon(v-if="page?.frontmatter?.icon",:src="page?.frontmatter?.icon")
   .meta(:style="{ borderColor: pageColor }")
-    page-parents.text-xl.mb-4
-    .text-4xl.font-bold.mb-4.flex.flex-wrap.items-center(v-if="page?.title" :key="page.url") 
+
+    slot
+
+    .text-4xl.font-bold.mb-4.flex.flex-wrap.items-center(v-if="page?.frontmatter?.title" :key="page.url") 
       .mr-2 {{ page?.frontmatter?.title }}
       .flex-1
       .mx-2.my-4.text-6xl(v-if="page?.frontmatter?.emoji") {{ page?.frontmatter?.emoji }}

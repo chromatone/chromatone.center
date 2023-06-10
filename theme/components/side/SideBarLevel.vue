@@ -39,7 +39,7 @@ transition(name="fade")
           .flex-1
           .p-0(v-if="pages?.[cleanLink(dot.url)]") {{ pages?.[cleanLink(dot.url)]?.length }}
 
-        .flex.flex-col(v-show="route.path.includes(cleanLink(dot.url)) && pages[cleanLink(dot.url)] && pages[cleanLink(dot.url)].length > 0")
+        .flex.flex-col(v-show="route.path.includes(cleanLink(dot.url))")
           SideBarLevel(:path="dot.url" :level="level+1")
 </template>
 

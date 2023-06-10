@@ -16,6 +16,7 @@ import "./styles/layout.postcss";
 import "./styles/custom-blocks.css";
 import 'floating-vue/dist/style.css'
 
+
 const theme = {
   Layout,
   NotFound,

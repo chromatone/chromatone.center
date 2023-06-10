@@ -1,31 +1,23 @@
 <script setup>
 import { lchToHsl } from '#/use/colors'
-import { useRoute } from 'vitepress'
-import { data } from '../../../content/pages.data.js'
-import { cleanLink, useChildren } from 'vitepress-pages'
 
-const route = useRoute()
-const parents = useChildren(route, data)
+const props = defineProps(['children'])
 
 </script>
 
 <template lang="pug">
-.list-blocks(v-if="list")
+.flex.flex-col.max-w-full.mx-1.md-mx-2.gap-16.mt-8(v-if="children")
   .my-0(
-    v-for="(block, i) in list",
+    v-for="(block, i) in children",
     :key="block.url", 
     :id="block.url"
     :i="i"
-    :total="list.length"
+    :total="children.length"
     )
     row-block(
       :item="block", 
-      :color="lchToHsl(i, list.length)"
+      :color="lchToHsl(i, children.length)"
       )  
 </template>
 
-<style lang="postcss" scoped>
-.list-blocks {
-  @apply flex flex-col max-w-full mx-1 md-mx-2 gap-16 mt-8;
-}
-</style>
+<style></style>

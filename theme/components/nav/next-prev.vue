@@ -2,18 +2,12 @@
 import { lchToHsl } from '#/use/'
 import { computed, reactive } from 'vue';
 
-
-import { useRoute, useData } from 'vitepress'
-import { data } from '../../../content/pages.data.js'
-import { cleanLink, usePages, usePage } from 'vitepress-pages'
-
-const route = useRoute();
-const { siblings, parents } = usePages(route, data)
+const props = defineProps(['parents', 'siblings'])
 
 const colors = reactive({
-  current: computed(() => lchToHsl(siblings.value.index, siblings.value.total)),
-  prev: computed(() => lchToHsl(siblings.value.index - 1, siblings.value.total)),
-  next: computed(() => lchToHsl(siblings.value.index + 1, siblings.value.total))
+  current: computed(() => lchToHsl(props.siblings.index, props.siblings.total)),
+  prev: computed(() => lchToHsl(props.siblings.index - 1, props.siblings.total)),
+  next: computed(() => lchToHsl(props.siblings.index + 1, props.siblings.total))
 });
 </script>
 
@@ -33,7 +27,7 @@ const colors = reactive({
     .flex.flex-col.items-justify.mx-4
       a.parent(
         style="flex:1 1"
-        v-for="(parent, p) in [...parents].slice(1)" :key="parent"
+        v-for="(parent, p) in [...parents].slice(1,-1)" :key="parent"
         :href="parent.url"
         :style="{ order: 100 - p }"
         )

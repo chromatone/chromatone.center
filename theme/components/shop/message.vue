@@ -1,13 +1,7 @@
 <script setup>
 import { cart, checkout } from '#/theme/composables/cart'
 
-import { useRoute } from 'vitepress'
-import { data } from '../../../content/pages.data.js'
-import { cleanLink, useSiblings, usePage } from 'vitepress-pages'
-
-const route = useRoute()
-const siblings = useSiblings(route, data)
-const page = usePage(route, data)
+const props = defineProps(['page', 'siblings'])
 
 </script>
 

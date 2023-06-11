@@ -135,8 +135,8 @@ watchThrottled(loaded, l => {
     g(:transform="`translate(${size / 2}, ${size / 2}) `")
       g.keys(v-for="(note, pitch) in flower" :key="note")
         g.key.cursor-pointer(
-          @mousedown="keyPlay(pitch, $event);"
-          @mouseup="keyPlay(pitch, $event, true)"
+          @mousedown.passive="keyPlay(pitch, $event);"
+          @mouseup.passive="keyPlay(pitch, $event, true)"
           @touchstart.prevent.stop="keyPlay(pitch, $event)"
           @touchend.prevent.stop="keyPlay(pitch, $event, true)"
           @mouseleave="keyPlay(pitch, $event, true)"
@@ -200,19 +200,18 @@ watchThrottled(loaded, l => {
                 ) {{ note.note }}
 
       g.spiral.pointer-events-none
-        transition-group(name="fade")
-          g.interval(v-for="(bool, note) in midi.activeNotes" :key="note")
-            transition-group(name="fade")
-              line(
-                v-for="(bool2, note2) in midi.activeNotes" :key="note2"
-                :x1="coord((note-9)%12, note/700+0.145).x" 
-                :y1="coord((note-9)%12, note/700 +0.145).y" 
-                :x2="coord((note2-9)%12, note2/700+0.145).x" 
-                :y2="coord((note2-9)%12, note2/700 +0.145).y" 
-                :stroke="colord(scheme.custom[(note-9)%12]).mix(scheme.custom[(note2-9)%12]).toHex()"
-                stroke-width="10"
-                :style="{filter: `drop-shadow(0px 0px 4px ${colord(scheme.custom[(note-9)%12]).mix(scheme.custom[(note2-9)%12]).alpha(0.5).toHex()}`}"
-              )
+        g.interval(v-for="(bool, note) in midi.activeNotes" :key="note")
+          transition-group(name="fade")
+            line(
+              v-for="(bool2, note2) in midi.activeNotes" :key="note2"
+              :x1="coord((note-9)%12, note/700+0.145).x" 
+              :y1="coord((note-9)%12, note/700 +0.145).y" 
+              :x2="coord((note2-9)%12, note2/700+0.145).x" 
+              :y2="coord((note2-9)%12, note2/700 +0.145).y" 
+              :stroke="colord(scheme.custom[(note-9)%12]).mix(scheme.custom[(note2-9)%12]).toHex()"
+              stroke-width="10"
+              :style="{filter: `drop-shadow(0px 0px 4px ${colord(scheme.custom[(note-9)%12]).mix(scheme.custom[(note2-9)%12]).alpha(0.5).toHex()}`}"
+            )
         transition-group(name="fade")
           g.note(v-for="(bool, note) in midi.activeNotes" :key="note")
             circle(

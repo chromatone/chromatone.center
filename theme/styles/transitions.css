@@ -1,129 +1,125 @@
 .list-enter-active {
-  transition: all 0.3s ease-out;
+	transition: all 0.3s ease-out;
 }
 .list-enter-from {
-  opacity: 0;
-  z-index: 20;
-  transform: translateY(-100%);
+	opacity: 0;
+	z-index: 20;
+	transform: translateY(-100%);
 }
 
 .list-leave-to {
-  opacity: 0;
-  transform: translateY(30px);
+	opacity: 0;
+	transform: translateY(30px);
 }
 
 .list-leave-active {
-  transition: all 0.4s ease-in;
+	transition: all 0.4s ease-in;
 }
 .list-move {
-  transition: transform 0.8s ease-in-out;
+	transition: transform 0.8s ease-in-out;
 }
 .list-item {
-  z-index: 1;
+	z-index: 1;
 }
 
 .panel-enter-active {
-  transition: all 0.1s ease-out;
+	transition: all 0.1s ease-out;
 }
 .panel-enter-from {
-  opacity: 0;
-  z-index: -20;
-  transform: translateY(-100%);
+	opacity: 0;
+	z-index: -20;
+	transform: translateY(-100%);
 }
 
 .panel-leave-to {
-  opacity: 0;
-  transform: translateY(-100px);
+	opacity: 0;
+	transform: translateY(-100px);
 }
 
 .panel-leave-active {
-  transition: all 0.4s ease-in;
+	transition: all 0.4s ease-in;
 }
 .panel-move {
-  transition: transform 0.8s ease-in-out;
+	transition: transform 0.8s ease-in-out;
 }
 .panel-item {
-  z-index: -20;
+	z-index: -20;
 }
 
 .slide-enter-active,
 .slide-leave-active {
-  transition: all 500ms ease-in-out;
+	transition: all 500ms ease-in-out;
 }
 
 .slide-enter-to {
-  transform: translateY(0);
+	transform: translateY(0);
 }
 
 .slide-enter-from {
-  transform: translateY(100%);
+	transform: translateY(100%);
 }
 
 .slide-leave-to {
-  transform: translateY(100%);
+	transform: translateY(100%);
 }
 
 .slide-leave-from {
-  transform: translateY(0%);
+	transform: translateY(0%);
 }
 
 .scale-slide-enter-active,
 .scale-slide-leave-active {
-  transition: all 0.85s ease;
+	transition: all 0.85s ease;
 }
 
 .scale-slide-enter-from {
-  top: -100%;
+	top: -100%;
 }
 
 .scale-slide-enter-to {
-  top: 0%;
+	top: 0%;
 }
 
 .scale-slide-leave-from {
-  transform: scale(1);
+	transform: scale(1);
 }
 
 .scale-slide-leave-to {
-  transform: scale(0.8);
+	transform: scale(0.8);
 }
 
 .fade-enter-active {
-  transition: all 0.5s ease;
-}
-.fade-leave-active {
-  opacity: 0;
+	transition: all 0.5s ease;
 }
 
 .fade-leave-to {
-  opacity: 0;
+	opacity: 0;
 }
 
 .fade-enter-from {
-  opacity: 0;
+	opacity: 0;
 }
 
-
 .fall {
-  background-color: hsla(0,0%,80%,0.2);
+	background-color: hsla(0, 0%, 80%, 0.2);
 }
 
 .fall-enter-active {
-  transition: all 0.9s ease-out;
+	transition: all 0.9s ease-out;
 }
 .fall-leave-active {
-  transform: scale(0.95);
+	transform: scale(0.95);
 }
 
 .fall-leave-to {
-  transform: scale(0.95);
+	transform: scale(0.95);
 }
 
 .fall-enter-from {
-  background-color: white;
-  transform: translatey(-10px);
+	background-color: white;
+	transform: translatey(-10px);
 }
 
 .dark .fall-enter-from {
-  background-color: black;
+	background-color: black;
 }

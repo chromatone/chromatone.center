@@ -109,10 +109,10 @@ export function synthInit() {
   synth.pan.start()
 }
 
-export function synthOnce(note: string | number | string[], duration: string | number, time?: string | number) {
+export function synthOnce(note: string | number | string[], duration: string | number = '16n', time?: string | number) {
   if (!synth.poly || synth.state.mute) return synthInit()
   console.log(note, duration)
-  synth.poly.triggerAttackRelease(note || 'A4', duration, 0)
+  synth.poly.triggerAttackRelease(note || 'A4', duration, time)
 }
 
 export function synthAttack(note: string | number | string[], velocity?: number) {

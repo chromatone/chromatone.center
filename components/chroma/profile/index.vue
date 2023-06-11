@@ -15,6 +15,7 @@ const props = defineProps({
   editable: { type: Boolean, default: false }
 });
 
+const emit = defineEmits(['update:chroma'])
 
 const info = reactive({
   chord: computed(() => chordType.get(props.chroma)),
@@ -32,6 +33,18 @@ const semitones = computed(() => {
   }
   return arr
 });
+
+function toggleNote(ev) {
+  console.log(ev, props.chroma, globalScale.tonic)
+  let ch = props.chroma
+  const diff = (12 - globalScale.tonic + ev) % 12
+  console.log(diff)
+  if (diff == 0) return
+  let sp = ch.split('')
+  sp[diff] = sp[diff] == '0' ? '1' : '0'
+  emit('update:chroma', sp.join(''))
+
+}
 </script>
 
 <template lang="pug">
@@ -41,7 +54,7 @@ const semitones = computed(() => {
   chroma-profile-waveform(
     :chroma="chroma" 
     )
-  abc-render(v-if="abc" :abc="abc")
+
   .flex.w-full.relative.px-4
     a.p-2.absolute.top-8px.right-2em(
       v-if="link"
@@ -50,14 +63,28 @@ const semitones = computed(() => {
       )
       .i-la-wikipedia-w
     .text-2xl.font-bold.capitalize.mb-2(
-      ) {{ notes[globalScale.tonic] }} {{ chord.name || chord.aliases[0] || scale.name }} {{ scale.aliases[0] ? `(${scale.aliases[0]})` : '' }}
-  .flex.flex-wrap.items-center.mx-2
-    chroma-keys(:chroma="chroma" v-model:pitch="globalScale.tonic" :title="false")  
-    chroma-circle.max-w-250px.flex-1.min-w-200px.pl-4(:chroma="chroma")
-  chroma-row.mx-4.mb-6(:chroma="chroma" :editable="editable")
+      ) {{ notes[globalScale.tonic] }} {{ chord.name || chord.aliases[0] || scale.name || '?' }} {{ scale.aliases[0] ? `(${scale.aliases[0]})` : '' }}
+
+  abc-render(v-if="abc" :abc="abc")
+
+  .flex.items-center.mx-2.w-full
+
+    chroma-keys(
+      style="flex: 1 1 400px;"
+      :chroma="chroma" @update:chroma="$emit('update:chroma',$event)" :pitch="globalScale.tonic" :title="false" @update:pitch="toggleNote" :playAll="true") 
+
+    .flex-1 
+
+    chroma-circle.pl-4(
+      style="flex: 1 1 250px;"
+      :chroma="chroma") 
+
+
+
+  chroma-row.mx-4.mb-6(
+    :chroma="chroma" @update:chroma="$emit('update:chroma',$event)" :editable="editable")
   //- chroma-stack.flex-1.mx-4(:chroma="chroma")
   //- chroma-square.w-12em.mx-4(:chroma="chroma" :editable="editable")
-  //- .flex.w-full.p-6(v-if="description") {{ description }}
 
 </template>
 

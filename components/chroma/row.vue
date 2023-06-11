@@ -114,10 +114,10 @@ function playNote(note = 0, octave = 0) {
       .flex-1
 
       .p-1(title="Pcset number") # {{ state.num }}
-    .flex.flex-wrap.items-center.justify-between.p-2(
+    .flex.flex-wrap.items-center.justify-between.p-2.gap-2(
       :class="{ 'w-full': true }"
       ) 
-
+      chroma-code(:chroma="chroma")
       button.text-button.text-white.font-bold.text-md.flex.gap-1(
         :style="{ backgroundColor: chromaColorMix(chroma, globalScale?.tonic).hsl }"
         @mousedown="playChroma(chroma)"
@@ -128,15 +128,15 @@ function playNote(note = 0, octave = 0) {
         @mouseleave="stopChroma(chroma)"
       ) 
         span.mr-1 {{ globalScale?.note.name }}{{ state.chord.aliases[0] || ' ' + state.scale.name }}
-      chroma-code(:chroma="chroma")
+
       .flex-1
-      button.text-button.text-sm(
+      button.text-sm.flex.items-center.gap-1.border-2.p-2.rounded-xl(
         :style="{ borderColor: chromaColorMix(chroma, globalScale?.tonic).hsl }"
         v-if="state.chord.name || state.chord.aliases[0]" 
         @click="arpeggiate()"
         )  
-          .i-la-play.-mt-1.mr-1
-          span {{ globalScale?.note.name }} {{ state.chord.name || state.chord.aliases[0] }} 
+          .i-la-play
+          .font-bold.-mt-2px {{ globalScale?.note.name }} {{ state.chord.name || state.chord.aliases[0] }} 
       button.text-button.text-sm(
         :style="{ borderColor: chromaColorMix(chroma, globalScale?.tonic).hsl }"
         v-if="state.scale.name"  

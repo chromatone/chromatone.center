@@ -5,7 +5,9 @@ import { colord } from 'colord'
 import { chromaColorMix } from "#/use/colors";
 import { chordType, scaleType, notes } from '#/use/theory'
 import { globalScale, playChroma, stopChroma } from '#/use/chroma'
+import { pitchFreq } from '#/use/calculations'
 import { computed, ref } from 'vue';
+import { synthOnce } from '#/use/synth';
 const pressed = ref(false);
 
 const props = defineProps({
@@ -23,11 +25,17 @@ const actualPitch = computed(() => {
   }
 })
 
+
 const actualChroma = computed(() => {
   return rotateArray(props.chroma.split(''), -actualPitch.value)
 })
 const chord = computed(() => chordType.get(props.chroma));
 const scale = computed(() => scaleType.get(props.chroma).name)
+
+function toggleNote(n) {
+  synthOnce(pitchFreq(n, 2))
+  globalScale.tonic = n;
+}
 
 </script>
 
@@ -63,7 +71,7 @@ svg.select-none(
   g.cursor-pointer(
     v-for="(note, n) in actualChroma" :key="n"
     :transform="`translate(${getCircleCoord(n, 12, 8, 0).x}, ${getCircleCoord(n, 12, 8, 0).y})`"
-    @mousedown="globalScale.tonic = n"
+    @mousedown="toggleNote(n)"
   )
     circle(
       x="0" 

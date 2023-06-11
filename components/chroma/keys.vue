@@ -4,7 +4,7 @@ import { rotateArray } from '#/use/calculations'
 import { noteColor } from '#/use/colors'
 import { chordType, scaleType, notes, flats } from '#/use/theory'
 import { colord } from 'colord'
-import { reactive, computed } from 'vue'
+import { reactive, computed, nextTick } from 'vue'
 
 const props = defineProps({
   chroma: { type: String, default: '100000000000' },
@@ -17,8 +17,6 @@ const props = defineProps({
 });
 
 const emit = defineEmits(['update:pitch'])
-
-
 
 const keys = reactive({
   white: [3, 5, 7, 8, 10, 0, 2],
@@ -50,11 +48,11 @@ function keyColor(key, off) {
 
 <template lang="pug">
 .flex.flex-col.m-1.rounded-2xl.cursor-pointer.transition-all.duration-300.ease.relative.select-none.touch-none.px-2(
-  @mousedown="playAll && playChroma(chroma, pitch)"
-  @touchend="playAll && stopChroma(chroma, pitch)"
-  @touchcancel="playAll && stopChroma(chroma, pitch)"
-  @mouseup="playAll && stopChroma(chroma, pitch)"
-  @mouseleave="playAll && stopChroma(chroma, pitch)"
+  @mousedown="playAll && nextTick(playChroma(chroma, pitch))"
+  @touchend="playAll && nextTick(stopChroma(chroma, pitch))"
+  @touchcancel="playAll && nextTick(stopChroma(chroma, pitch))"
+  @mouseup="playAll && nextTick(stopChroma(chroma, pitch))"
+  @mouseleave="playAll && nextTick(stopChroma(chroma, pitch))"
   :style="{ backgroundColor: noteColor(pitch, 2, 1, 0.5) }"
 )
   .flex.justify-center.my-2.px-2(v-if="title")
@@ -79,9 +77,9 @@ function keyColor(key, off) {
       g.key(
         v-for="(key, k) in keys.white" :key="key"
         :transform="`translate(${k * 100 + 5} 30)`"
+        @mousedown.stop="$emit('update:pitch', key)"
       )
         rect.transition-all.duration-300.ease-out(
-          @click="$emit('update:pitch', key)"
           width="90"
           height="290"
           rx="45"
@@ -89,7 +87,7 @@ function keyColor(key, off) {
           style="filter:url(#shadowButton);"
         )
         circle.transition-all.duration-300.ease-out(
-          @click="$emit('update:pitch', key)"
+
           cy="245"
           cx="45"
           r="45"
@@ -108,9 +106,9 @@ function keyColor(key, off) {
       g.key(
         v-for="(key, k) in keys.black" :key="key"
         :transform="`translate(${k * 100 + 55} -10)`"
+        @mousedown.stop="$emit('update:pitch', key)"
       )
         rect.transition-all.duration-300.ease-out(
-          @click="$emit('update:pitch', key)"
           v-if="key"
           width="90"
           height="220"
@@ -120,7 +118,6 @@ function keyColor(key, off) {
           :data-check="key"
         )
         circle.transition-all.duration-300.ease-out(
-          @click="$emit('update:pitch', key)"
           v-if="key"
           cy="175"
           cx="45"

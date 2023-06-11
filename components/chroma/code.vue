@@ -18,13 +18,11 @@ const props = defineProps({
 <template lang="pug">
 .grid.gap-1.bg-dark-200.bg-opacity-10.p-1.rounded-lg(
 	:style="{gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`}"
-)
-	.p-6px.rounded(
+	)
+	.p-2.rounded(
 		v-for="(active,i) in chroma"
 		:key="i"
 		:style="{backgroundColor: calcBg(i,active), transform:`scale(${active == 1 ? 1 : 0.5})` }")
 </template>
 
-<style lang="postcss" scoped>
-
-</style>
+<style lang="postcss" scoped></style>

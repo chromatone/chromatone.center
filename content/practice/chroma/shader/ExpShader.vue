@@ -23,8 +23,8 @@ const notes = computed(() => {
 })
 
 const output = useTransition(notes, {
-  duration: 100,
-  transition: TransitionPresets.easeOutCubic
+  duration: 200,
+  transition: TransitionPresets.easeOutExpo
 })
 
 const notesMat4 = computed(() => {

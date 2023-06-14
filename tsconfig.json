@@ -21,7 +21,10 @@
 		"skipLibCheck": true,
 		"strict": true,
 		"allowSyntheticDefaultImports": true,
-		"outDir": "lib/types"
+		"outDir": "lib/types",
+		"types": [
+			"vite/client"
+		]
 	},
 	"vueCompilerOptions": {
 		"plugins": [

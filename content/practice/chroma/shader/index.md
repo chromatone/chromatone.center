@@ -1,6 +1,6 @@
 ---
 title: GPU shader
-description: A MIDI reactive GLSL shader as a direct visual mathematical interpretation of musical notes.
+description: A MIDI reactive GLSL shader as a direct visual mathematical interpretation of musical notes
 date: 2021-04-22
 ---
 
@@ -15,5 +15,3 @@ const ExpShader = defineClientComponent(() => {
 </script>
 
 <ExpShader></ExpShader>
-
-Let's use GPU power to visualize music notes!

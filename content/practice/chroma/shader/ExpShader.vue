@@ -49,7 +49,7 @@ const debounced = refDebounced(resized, 100)
 </script>
 
 <template lang='pug'>
-.min-h-80vh.h-100vh#screen.rounded-lg.overflow-hidden()
+.min-h-80svh.h-100svh#screen.rounded-lg.overflow-hidden.pointer-events-auto.touch-revert()
   gl-canvas(@update="glslUpdate" :key="debounced")
     gl-program(name="main", :code="shaderCode")
       gl-float(name="u_light", :value="light")

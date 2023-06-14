@@ -2,7 +2,8 @@
 	"extends": "../tsconfig.json",
 	"include": [
 		"composables",
-		"components"
+		"components",
+		"."
 	],
 	"compilerOptions": {
 		"baseUrl": ".",
@@ -26,10 +27,5 @@
 		"module": "esnext",
 		"allowSyntheticDefaultImports": true,
 		"outDir": "lib/types"
-	},
-	"vueCompilerOptions": {
-		"plugins": [
-			"@volar/vue-language-plugin-pug"
-		]
 	}
 }

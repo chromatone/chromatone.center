@@ -1,3 +1,5 @@
+/// <reference types="vite/client" />
+
 
 import { GesturePlugin } from "@vueuse/gesture";
 import FloatingVue from 'floating-vue'
@@ -11,10 +13,17 @@ import NotFound from "./not-found.vue";
 const theme = {
   Layout,
   NotFound,
-  enhanceApp({ app }) {
-    app.use(GesturePlugin);
+  //@ts-expect-error
+  async enhanceApp({ app }) {
+
     app.use(FloatingVue)
-    app.use(VueAnimXyz)
+    app.use(GesturePlugin);
+
+    if (!import.meta.env.SSR) {
+      //@ts-expect-error
+      const glsl = await import('vue-glsl')
+      app.use(glsl.default);
+    }
   },
 };
 

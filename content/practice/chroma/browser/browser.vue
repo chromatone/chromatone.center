@@ -42,7 +42,7 @@ const sorted = computed(() => {
 </script>
 
 <template lang="pug">
-.flex.flex-col.max-w-65ch
+.flex.flex-col.max-w-60ch
   .keys
     .key(
       v-for="(bit, i) in '101101011010'"

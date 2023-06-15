@@ -32,9 +32,9 @@ body {
 	width: 100%;
 	min-width: 320px;
 	min-height: 100vh;
-	line-height: 1.4;
+	line-height: 1.3;
 	font-family: var(--font-family-base);
-	font-size: 18px;
+	font-size: 1em;
 	font-weight: 400;
 	color: var(--c-text);
 	direction: ltr;
@@ -44,10 +44,6 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 	transition: all 600ms ease;
 	overscroll-behavior-y: none;
-}
-
-main {
-	display: block;
 }
 
 hr {
@@ -123,7 +119,7 @@ p,
 ol,
 ul {
 	margin: 1rem 0;
-	line-height: 1.7;
+	line-height: 1.4;
 }
 
 ul {
@@ -353,7 +349,7 @@ form {
 .content ol,
 .content blockquote,
 .content pre {
-	@apply max-w-55ch h-auto flex-1 m-2 p-4 leading-loose;
+	@apply max-w-60ch h-auto flex-1 m-2 p-2 leading-loose;
 }
 .content h1 {
 	margin-top: 1.5rem;
@@ -368,7 +364,7 @@ form {
 }
 
 .content table {
-	@apply w-full max-w-55ch mx-2;
+	@apply w-full max-w-60ch mx-2;
 }
 
 .content code {

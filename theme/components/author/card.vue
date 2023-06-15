@@ -35,7 +35,7 @@ svg.defs(style="height:0")
 
 <style lang="postcss" scoped>
 .author-card {
-  @apply max-w-55ch flex flex-col my-8 shadow-lg bg-light-100 dark-bg-dark-300;
+  @apply max-w-60ch flex flex-col my-8 shadow-lg bg-light-100 dark-bg-dark-300;
 }
 
 img.avatar {

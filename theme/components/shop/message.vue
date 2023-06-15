@@ -6,7 +6,7 @@ const props = defineProps(['page', 'siblings'])
 </script>
 
 <template lang="pug">
-card-box.px-4.py-3.ml-4.sm-mx-auto.mr-16.mb-16.flex.flex-col.max-w-65ch.gap-2.bg_light-100.bg-light-200.dark-bg-dark-200.my-8.opacity-80.hover-opacity-100.transition(
+card-box.px-4.py-3.ml-4.flex.flex-col.max-w-60ch.gap-2.bg_light-100.bg-light-200.dark-bg-dark-200.my-8.opacity-80.hover-opacity-100.transition.right-16.fixed.bottom-8.z-100(
   v-if="page?.frontmatter?.product"
   :i="siblings.index"
   :total="siblings.total"

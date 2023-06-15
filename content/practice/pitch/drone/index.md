@@ -11,7 +11,7 @@ import pitchDrone from './drone-app.vue'
 </script>
 
 <client-only >
-  <pitch-drone />
+  <pitch-drone class="max-w-55ch" />
 </client-only >
 
 ## Multipurpose rich harmonic sound generator

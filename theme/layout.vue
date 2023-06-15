@@ -38,7 +38,7 @@ const lightColor = computed(() => lchToHsl(siblings.value.index, siblings.value.
       main.home(aria-labelledby="main-title")
         .noise
         content.content.z-2
-        .flex.flex-col.max-w-65ch.ml-2
+        .flex.flex-col.max-w-60ch.ml-2
           home-tile(
             v-for="(area, i) in children", 
             :key="area.url", 
@@ -48,7 +48,7 @@ const lightColor = computed(() => lchToHsl(siblings.value.index, siblings.value.
             )  
 
     template(v-else)
-      main#content
+      main#content.w-full
         page-headline(:pageColor="pageColor", :lightColor="lightColor" :page="page")
           page-parents.text-xl.mb-4(:parents="parents.slice(0,-1)")
 

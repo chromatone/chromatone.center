@@ -17,7 +17,7 @@ const children = useChildren({ path: props.item?.url }, data)
   :style="{borderColor: color}"
   )
   a.container.no-underline(:href="item.url" :class="{ 'pt-32': item?.frontmatter?.cover }" )
-    .cover(v-if="item?.frontmatter?.cover", :style="{ backgroundImage: `url(${item?.frontmatter?.cover})` }") 
+    .cover(v-if="item?.frontmatter?.cover", :style="{ backgroundImage: item?.frontmatter?.cover.split(';')[0] ? `url(${item?.frontmatter?.cover})` : '' }") 
     .info
       .title
         .mr-2.text-2xl(v-if="item?.frontmatter?.emoji") {{ item?.frontmatter?.emoji }}
@@ -43,11 +43,11 @@ const children = useChildren({ path: props.item?.url }, data)
 
 <style lang="postcss" scoped>
 .crd {
-  @apply relative bg-light-500 dark-bg-dark-400 flex flex-wrap items-stretch transition-all duration-200 static;
+  @apply relative bg-light-500 dark-bg-dark-400 flex flex-wrap items-stretch transition-all duration-200 static hover-text-current;
 }
 
 .info {
-  @apply px-2 pt-4 pb-1 ml-2 m-2 z-4 max-w-24em bg-light-100 bg-opacity-80 dark-(bg-dark-600 bg-opacity-80) rounded-xl relative shadow-md;
+  @apply px-2 pt-4 pb-2 ml-2 m-2 z-4 bg-light-100 bg-opacity-80 dark-(bg-dark-600 bg-opacity-80) rounded-lg relative shadow-md;
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   flex: 1 1 100%;
@@ -58,7 +58,7 @@ const children = useChildren({ path: props.item?.url }, data)
 }
 
 .description {
-  @apply mt-0 mb-2 p-2 font-normal w-full no-underline;
+  @apply mt-0 mb-2 px-2 font-normal w-full no-underline;
 }
 
 .cover {

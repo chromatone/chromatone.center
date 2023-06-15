@@ -26,7 +26,7 @@ function getColor(i, total) {
 
 <style lang="postcss" scoped>
 .list {
-  @apply bg-light-400 dark-bg-dark-400 rounded-3xl p-1 md-p-2 flex flex-col flex-auto m-1 gap-12;
+  @apply bg-light-400 dark-bg-dark-400 rounded-3xl p-1 md-p-2 flex flex-col flex-auto m-1 gap-4;
 }
 
 .inset {

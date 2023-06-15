@@ -2,7 +2,6 @@
 title: Classic European music staff notation
 description: How the sheet notes are written and read from classic era till today
 date: 2021-08-12
-
 cover: kvintcirklen.png
 ---
 

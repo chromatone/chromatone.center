@@ -84,14 +84,14 @@ function clickListener(elem, tune, classes, analysis, drag) {
 </script>
 
 <template lang="pug">
-.flex.flex-col.items-center.b1
-  .render(:id="id") {{ abc }}
+.flex
+  .abc-render(:id="id") {{ abc }}
   svg-save(:svg="id" v-if="save")
 </template>
  
 <style lang="postcss" scoped>
-.render {
-  @apply pb-0;
+.abc-render {
+  @apply pb-70;
 }
 </style>
 

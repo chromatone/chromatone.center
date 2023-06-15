@@ -38,7 +38,7 @@ const bg = computed(() => `url(${props.item?.frontmatter?.cover}`);
       .flex.items-center.w-full
         .mr-2.text-2xl(v-if="item?.frontmatter?.emoji") {{ item?.frontmatter?.emoji }}
         h3
-          span.text-3xl {{ item?.frontmatter?.title }} 
+          span.text-2xl {{ item?.frontmatter?.title }} 
           span.px-2.mt-2(v-if="item?.frontmatter?.more") 
             .i-radix-icons-text-align-left
         .flex-1
@@ -59,7 +59,7 @@ const bg = computed(() => `url(${props.item?.frontmatter?.cover}`);
 
 <style lang="postcss" scoped>
 .row {
-  @apply bg-light-500 w-full dark-bg-dark-500 flex flex-col transition-all duration-300 ease no-underline rounded-lg overflow-hidden shadow-lg max-w-65ch border-l-8;
+  @apply bg-light-500 w-full dark-bg-dark-500 flex flex-col transition-all duration-300 ease no-underline rounded-lg overflow-hidden shadow-lg max-w-60ch border-l-8;
   flex: 1 1 200px;
 }
 
@@ -72,7 +72,7 @@ const bg = computed(() => `url(${props.item?.frontmatter?.cover}`);
 }
 
 .info {
-  @apply m-2 relative max-w-500px flex self-stretch flex-wrap items-center p-4 md-(px-5 py-4) bg-light-100 bg-opacity-70 dark-(bg-dark-100 bg-opacity-70) rounded-xl text-dark-100 dark-text-light-100 shadow-md;
+  @apply m-2 relative flex self-stretch flex-wrap items-center p-4 md-(px-5 py-4) bg-light-100 bg-opacity-70 dark-(bg-dark-100 bg-opacity-70) rounded-lg text-dark-100 dark-text-light-100 shadow-md;
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 }

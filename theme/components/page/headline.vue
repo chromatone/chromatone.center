@@ -14,7 +14,7 @@ const props = defineProps(['pageColor', 'lightColor', 'page'])
 
     slot
 
-    .text-4xl.font-bold.mb-4.flex.flex-wrap.items-center(v-if="page?.frontmatter?.title" :key="page.url") 
+    .text-4xl.font-bold.mb-1.flex.flex-wrap.items-center(v-if="page?.frontmatter?.title" :key="page.url") 
       .mr-2 {{ page?.frontmatter?.title }}
       .flex-1
       .mx-2.my-4.text-6xl(v-if="page?.frontmatter?.emoji") {{ page?.frontmatter?.emoji }}
@@ -30,7 +30,7 @@ const props = defineProps(['pageColor', 'lightColor', 'page'])
 
 <style lang="postcss" scoped>
 .header {
-  @apply relative flex min-h-22rem pt-32 px-4 items-center overflow-hidden transition-all duration-400 ease-in;
+  @apply relative flex min-h-120 p-4 items-end overflow-hidden transition-all duration-400 ease-in;
 }
 
 .cover {
@@ -53,7 +53,7 @@ const props = defineProps(['pageColor', 'lightColor', 'page'])
 }
 
 .meta {
-  @apply relative p-8 mb-8 ml-2 bg-light-100 bg-opacity-80 z-3 max-w-65ch w-full mt-8 flex flex-col rounded-3xl shadow-xl dark-(bg-true-gray-800 bg-opacity-80);
+  @apply relative p-8 mb-6 bg-light-100 bg-opacity-80 z-3 max-w-60ch w-full flex flex-col rounded-3xl shadow-xl dark-(bg-true-gray-800 bg-opacity-80);
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
 }

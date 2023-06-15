@@ -90,6 +90,6 @@ function toggleNote(ev) {
 
 <style lang="postcss" scoped>
 .profile {
-  @apply flex flex-wrap max-w-55ch border-2 rounded-3xl shadow-lg bg-light-500 dark-bg-dark-500 gap-2;
+  @apply flex flex-wrap max-w-60ch border-2 rounded-3xl shadow-lg bg-light-500 dark-bg-dark-500 gap-2;
 }
 </style>

@@ -7,7 +7,7 @@ const state = reactive({
 </script>
 
 <template lang="pug">
-.flex.flex-col.items-center.max-w-55ch.mx-auto.w-full
+.flex.flex-col.items-center.max-w-60ch.mx-auto.w-full
   scale-degrees-circle(
     v-model:chroma="state.chroma"
   )
@@ -16,6 +16,4 @@ const state = reactive({
   )
 </template>
 
-<style lang="postcss" scoped>
-
-</style>
+<style lang="postcss" scoped></style>

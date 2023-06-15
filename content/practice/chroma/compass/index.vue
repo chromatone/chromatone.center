@@ -52,7 +52,7 @@ const chordGroup = computed(() => {
       :scale-chroma="scaleChroma"
       @clear-scale="clearScale()"
       )
-  .max-w-65ch.m-auto.flex.flex-col.items-center
+  .max-w-60ch.m-auto.flex.flex-col.items-center
     chroma-keys.m-auto(
       v-model:pitch="globalScale.tonic"
       :chroma="chroma") 

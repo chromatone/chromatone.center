@@ -14,20 +14,20 @@ defineEmits(['close'])
 
 const route = useRoute();
 
-onMounted(() => {
-  watch(() => route.data, d => {
-    const link = document.getElementById(d?.title)
-    if (!link) return
-    setTimeout(() => {
-      link.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-        inline: "start"
-      })
-    }, 150)
+// onMounted(() => {
+//   watch(() => route.data, d => {
+//     const link = document.getElementById(d?.title)
+//     if (!link) return
+//     setTimeout(() => {
+//       link.scrollIntoView({
+//         behavior: "smooth",
+//         block: "start",
+//         inline: "start"
+//       })
+//     }, 150)
 
-  }, { immediate: true })
-})
+//   }, { immediate: true })
+// })
 
 </script>
 

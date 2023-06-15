@@ -4,6 +4,9 @@ import { useTuner } from '#/use/tuner'
 import { onKeyStroke } from '@vueuse/core'
 import { useClamp } from '@vueuse/math';
 import { useStorage } from '@vueuse/core';
+import { colord } from 'colord';
+
+
 
 const draw = reactive({
   running: true,
@@ -70,7 +73,7 @@ watch(() => tuner?.frame, frame => {
   if (!tuner.note.silent) {
     const y = roll.value.height - (tuner.note.value - draw.minPlotNote) / (draw.maxPlotNote - draw.minPlotNote) * roll.value.height
     ctx.arc(x - 8, y, 8, 0, 4 * Math.PI)
-    ctx.fillStyle = tuner.note.color
+    ctx.fillStyle = colord(tuner.note.color).lighten(.3).toHex()
     ctx.fill()
   }
 
@@ -110,8 +113,6 @@ function start() {
 function clear() {
   ctx.clearRect(0, 0, roll.value.width, roll.value.height)
 }
-
-
 
 </script>
 

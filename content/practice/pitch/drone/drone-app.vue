@@ -25,7 +25,7 @@ const intervals = reactive({
 </script>
 
 <template lang="pug">
-.mx-auto.flex.flex-col.items-stretch.w-full.transition-all.duration-500.ease-out.select-none.rounded-3xl.shadow-xl.border-8(
+.flex.flex-col.items-stretch.w-full.transition-all.duration-500.ease-out.select-none.rounded-3xl.shadow-xl.border-8(
   :style="{ borderColor: drone.color }"
 )
   .drone.w-full.flex-1.justify-center.flex.flex-col.p-2
@@ -75,6 +75,4 @@ const intervals = reactive({
       ) {{ note }}
 </template>
 
-<style lang="postcss" scoped>
-
-</style>
+<style lang="postcss" scoped></style>

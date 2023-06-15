@@ -23,24 +23,24 @@ transition(name="fade")
     v-show="children && children.length > 0"
     :style="{gap: level==0 ? '1em': '0'}"
     )
-    transition-group(name="fade")
-      .level(
-        v-for="(dot, d) in children" 
-        :key="dot.url"
-        :aria-current="route.path.includes(cleanLink(dot.url)) ? 'page' : false"
-        :style="{ borderColor: lchToHsl(d, children.length) }"
-        )
-        a(
-          :href="cleanLink(dot.url)" 
-          :id="dot?.frontmatter?.title" 
 
-          :style="{ color: level==0 ? lchToHsl(d, children.length)  : 'currentColor'}") 
-          .flex-auto(:class="{'text-xl font-bold': level==0}") {{ dot?.frontmatter?.title }}
-          .flex-1
-          .p-0(v-if="pages?.[cleanLink(dot.url)]") {{ pages?.[cleanLink(dot.url)]?.length }}
+    .level(
+      v-for="(dot, d) in children" 
+      :key="dot.url"
+      :aria-current="route.path.includes(cleanLink(dot.url)) ? 'page' : false"
+      :style="{ borderColor: lchToHsl(d, children.length) }"
+      )
+      a(
+        :href="cleanLink(dot.url)" 
+        :id="dot?.frontmatter?.title" 
 
-        .flex.flex-col(v-show="route.path.includes(cleanLink(dot.url))")
-          SideBarLevel(:path="dot.url" :level="level+1")
+        :style="{ color: level==0 ? lchToHsl(d, children.length)  : 'currentColor'}") 
+        .flex-auto(:class="{'text-xl font-bold': level==0}") {{ dot?.frontmatter?.title }}
+        .flex-1
+        .p-0(v-if="pages?.[cleanLink(dot.url)]") {{ pages?.[cleanLink(dot.url)]?.length }}
+
+      .flex.flex-col(v-show="route.path.includes(cleanLink(dot.url))")
+        SideBarLevel(:path="dot.url" :level="level+1")
 </template>
 
 <style lang="postcss" scoped>
@@ -53,7 +53,7 @@ a {
 }
 
 .level a {
-  @apply py-2 flex px-2 no-underline block flex w-full text-0.85em;
+  @apply py-2 flex px-2 no-underline block flex w-full text-0.9em;
 }
 
 [aria-current="page"] {

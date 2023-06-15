@@ -24,7 +24,7 @@ const recent = computed(() => {
 
 <template lang="pug">
 .flex.flex-col.mx-4.items-center
-  .max-w-55ch
+  .max-w-60ch
     .text-xl Recent updates
     card-list(:rows="recent")
 </template>

@@ -2,6 +2,7 @@
 template: home
 title: Chromatone
 description: Visual music language
+topContent: true
 ---
 
 <chroma-flower />

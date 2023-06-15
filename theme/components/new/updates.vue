@@ -1,10 +1,18 @@
 <script setup>
-import { routes } from '#/theme/composables/pages'
 import { computed } from 'vue';
+
+import { useRoute, useData } from 'vitepress'
+import { data } from '../../../content/pages.data.js'
+import { cleanLink, usePages, usePage } from 'vitepress-pages'
+
+const route = useRoute();
+const { routes } = usePages(route, data)
+
+
 const recent = computed(() => {
-  let all = routes.filter(el => el.title && !el.hidden)
+  let all = routes.filter(el => el?.frontmatter.title && !el?.frontmatter.hidden)
   let sorted = [...all].sort((a, b) => {
-    if (a.date < b.date) {
+    if (a?.frontmatter?.date < b?.frontmatter?.date) {
       return 1
     } else {
       return -1
@@ -21,6 +29,4 @@ const recent = computed(() => {
     card-list(:rows="recent")
 </template>
 
-<style lang="postcss" scoped>
-
-</style>
+<style lang="postcss" scoped></style>

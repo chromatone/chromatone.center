@@ -1,17 +1,13 @@
 <script setup>
-import { useSiblings, useParents, pages } from '#/theme/composables/pages'
 import { lchToHsl } from '#/use/'
-import { useRoute } from 'vitepress'
 import { computed, reactive } from 'vue';
-const route = useRoute()
 
-const siblings = computed(() => useSiblings(route.path))
-const parents = computed(() => useParents(route.path))
+const props = defineProps(['parents', 'siblings'])
 
 const colors = reactive({
-  current: computed(() => lchToHsl(siblings.value.index, siblings.value.total)),
-  prev: computed(() => lchToHsl(siblings.value.index - 1, siblings.value.total)),
-  next: computed(() => lchToHsl(siblings.value.index + 1, siblings.value.total))
+  current: computed(() => lchToHsl(props.siblings.index, props.siblings.total)),
+  prev: computed(() => lchToHsl(props.siblings.index - 1, props.siblings.total)),
+  next: computed(() => lchToHsl(props.siblings.index + 1, props.siblings.total))
 });
 </script>
 
@@ -19,25 +15,24 @@ const colors = reactive({
 .next-and-prev-link
   .row(:style="{ borderColor: colors.current }")
     .pad.prev(v-if="siblings.prev")
-      a.link( :href="siblings.prev.path" :style="{ backgroundColor: colors.prev }")
+      a.link( :href="siblings.prev.url" :style="{ backgroundColor: colors.prev }")
         .i-carbon-arrow-left.icon.icon-prev
-        span.text {{ siblings.prev.title }}
+        span.text {{ siblings.prev?.frontmatter?.title }}
 
     .pad.next(v-if="siblings.next")
-      a.link( :href="siblings.next.path" :style="{ backgroundColor: colors.next }")
-        span.text {{ siblings.next.title }}
+      a.link( :href="siblings.next.url" :style="{ backgroundColor: colors.next }")
+        span.text {{ siblings.next?.frontmatter?.title }}
         .i-carbon-arrow-right.icon.icon-next     
   .flex.flex-col.items-justify
     .flex.flex-col.items-justify.mx-4
       a.parent(
         style="flex:1 1"
-
-        v-for="(parent, p) in [...parents].slice(1)" :key="parent"
-        :href="parent.path"
+        v-for="(parent, p) in [...parents].slice(1,-1)" :key="parent"
+        :href="parent.url"
         :style="{ order: 100 - p }"
         )
         .i-carbon-chevron-up.mr-1
-        .p-1 {{ parent.title }}
+        .p-1 {{ parent?.frontmatter?.title }}
   nav-row
 </template>
 

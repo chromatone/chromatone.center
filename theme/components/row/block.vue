@@ -1,15 +1,13 @@
 <script setup>
-import { useData, useRoute } from 'vitepress'
-import { pages, usePage } from '#/theme/composables/pages'
+
 import { lchToHsl } from '#/use/colors'
 import { computed } from 'vue';
 import { isDark } from '#/theme/composables/state'
-
 import { colord } from 'colord'
 
-const route = useRoute()
-
-const page = usePage(route.path)
+import { useRoute, useData } from 'vitepress'
+import { data } from '../../../content/pages.data.js'
+import { cleanLink, useChildren } from 'vitepress-pages'
 
 const props = defineProps({
   item: Object,
@@ -19,7 +17,10 @@ const props = defineProps({
   }
 });
 
-const bg = computed(() => `url(${props.item?.cover}`);
+const route = useRoute();
+const children = useChildren({ path: props.item?.url }, data)
+
+const bg = computed(() => `url(${props.item?.frontmatter?.cover}`);
 </script>
 
 <template lang="pug">
@@ -27,33 +28,33 @@ const bg = computed(() => `url(${props.item?.cover}`);
   :style="{ borderColor: color }"
   )
   a.header.no-underline(
-    :href="item.path"
-    :class="{ 'pt-48': item?.cover }"
+    :href="item.url"
+    :class="{ 'pt-48': item?.frontmatter?.cover }"
   )
     .cover(
       :style="{ backgroundImage: bg }"
       )
     .info 
       .flex.items-center.w-full
-        .mr-2.text-2xl(v-if="item.emoji") {{ item.emoji }}
+        .mr-2.text-2xl(v-if="item?.frontmatter?.emoji") {{ item?.frontmatter?.emoji }}
         h3
-          span.text-3xl {{ item.title }} 
-          span.px-2.mt-2(v-if="item.more") 
+          span.text-3xl {{ item?.frontmatter?.title }} 
+          span.px-2.mt-2(v-if="item?.frontmatter?.more") 
             .i-radix-icons-text-align-left
         .flex-1
-        card-date(v-if="!item?.product",:date="item.lastModified")
-      .text-md.mt-4.mb-2.font-normal.w-full(v-if="item?.description") {{ item.description }}
-      page-buttons(:buttons="item?.buttons" :color="color")
+        card-date(v-if="!item?.frontmatter?.product",:date="item.lastModified")
+      .text-md.mt-4.mb-2.font-normal.w-full(v-if="item?.frontmatter?.description") {{ item?.frontmatter?.description }}
+      page-buttons(:buttons="item?.frontmatter?.buttons" :color="color")
       shop-price.w-full(
-        v-if="item?.product"
-        :title="item.title"
-        :product="item?.product" 
+        v-if="item?.frontmatter?.product"
+        :title="item?.frontmatter?.title"
+        :product="item?.frontmatter?.product" 
         :color="color"
         )
   card-list(
-    v-if="pages[item.path]",
-    :cards="pages[item.path]"
-    ) {{ item.title }}
+    v-if="children",
+    :cards="children"
+    ) {{ item?.frontmatter?.title }}
 </template>
 
 <style lang="postcss" scoped>

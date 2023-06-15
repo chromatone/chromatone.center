@@ -1,7 +1,5 @@
 <script setup>
-import { useData } from 'vitepress'
 import { lchToHsl } from '#/use/colors'
-import { pages } from '#/theme/composables/pages'
 import { computed } from 'vue';
 
 const props = defineProps({
@@ -10,7 +8,12 @@ const props = defineProps({
   total: Number,
 });
 
-const { theme } = useData();
+import { useRoute } from 'vitepress'
+import { data } from '../../../content/pages.data.js'
+import { cleanLink, useChildren } from 'vitepress-pages'
+
+const route = useRoute();
+const children = useChildren({ path: props.item.url }, data)
 
 const color = computed(() => lchToHsl(props.i, props.total));
 </script>
@@ -21,19 +24,19 @@ const color = computed(() => lchToHsl(props.i, props.total));
 )
   // img.cover(:src="'/media/' + item.data.cover")
   a.flex.flex-col.p-2.no-underline(
-    :href="item.path", 
+    :href="item.url", 
     )
     .text-5xl.mb-4(
       :style="{ color: lchToHsl(i, total) }"
-    ) {{ item.title }}
-    .font-normal {{ item.description }}
+    ) {{ item?.frontmatter?.title }}
+    .font-normal {{ item?.frontmatter?.description }}
   .flex.flex-wrap.py-2
     a.cursor-pointer.m-2.shadow-md.rounded-xl.border-4.no-underline(
-      :style="{ borderColor: lchToHsl(p, pages[item.path].length) }",
-      :href="page.path",
-      v-for="(page, p) in pages[item.path]" :key="page.path"
+      :style="{ borderColor: lchToHsl(p, children.length) }",
+      :href="page.url",
+      v-for="(page, p) in children" :key="page.url"
       )
-      .m-2.p-2(:i="p", :total="pages[item.path].length") {{ page?.title }}
+      .m-2.p-2(:i="p", :total="children.length") {{ page?.frontmatter?.title }}
 </template>
 
 <style lang="postcss" scoped>

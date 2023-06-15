@@ -6,9 +6,8 @@ const props = defineProps({
 </script>
 
 <template lang="pug">
-.flex.items-center.mx-2.text-sm.rounded-full.py-1.px-2(class="text-$c-brand bg-$c-bg-secondary",v-if="list") 
+.flex.items-center.text-sm.rounded-full.py-1.px-2.bg-light-900.dark-bg-dark-800(v-if="list") 
   .flex-1 {{ list.length }}
 </template>
 
-<style lang="postcss" scoped>
-</style>
+<style lang="postcss" scoped></style>

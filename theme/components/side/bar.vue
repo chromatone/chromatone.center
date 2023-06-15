@@ -1,6 +1,5 @@
 <script setup>
 import { lchToHsl } from "#/use/colors";
-import { pages } from "#/theme/composables/pages";
 import { useData, useRoute } from "vitepress";
 import { onMounted, watch } from "vue";
 import SideBarLevel from "./SideBarLevel.vue";
@@ -12,7 +11,6 @@ defineProps({
 });
 
 defineEmits(['close'])
-
 
 const route = useRoute();
 

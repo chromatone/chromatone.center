@@ -1,11 +1,13 @@
 <script setup>
-const props = defineProps(['item'])
+import { cleanLink } from 'vitepress-pages';
 
+const props = defineProps(['item'])
+cleanLink
 </script>
 
 <template lang="pug">
-a.item(:href="item.path")
-  span.inline-flex.items-center.font-normal {{ item.title }}
+a.item(:href="cleanLink(item.url)")
+  span.inline-flex.items-center.font-normal {{ item?.frontmatter?.title }}
 </template>
 
 <style scoped lang="postcss">

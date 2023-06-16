@@ -67,19 +67,17 @@ function toggleNote(ev) {
 
   abc-render(v-if="abc" :abc="abc")
 
-  .flex.items-center.mx-2.w-full
+  .flex.items-center.mx-2.w-full.gap-2
 
     chroma-keys(
       style="flex: 1 1 400px;"
       :chroma="chroma" @update:chroma="$emit('update:chroma',$event)" :pitch="globalScale.tonic" :title="false" @update:pitch="toggleNote" :playAll="true") 
 
-    .flex-1 
-
-    chroma-circle.pl-4(
+    chroma-circle(
       style="flex: 1 1 250px;"
       :chroma="chroma") 
 
-
+    chroma-code(:chroma="chroma" @update:chroma="$emit('update:chroma',$event)")
 
   chroma-row.mx-4.mb-6(
     :chroma="chroma" @update:chroma="$emit('update:chroma',$event)" :editable="editable")

@@ -117,7 +117,7 @@ function playNote(note = 0, octave = 0) {
     .flex.flex-wrap.items-center.justify-between.p-2.gap-2(
       :class="{ 'w-full': true }"
       ) 
-      chroma-code(:chroma="chroma")
+
       button.text-button.text-white.font-bold.text-md.flex.gap-1(
         :style="{ backgroundColor: chromaColorMix(chroma, globalScale?.tonic).hsl }"
         @mousedown="playChroma(chroma)"
@@ -137,7 +137,7 @@ function playNote(note = 0, octave = 0) {
         )  
           .i-la-play
           .font-bold.-mt-2px {{ globalScale?.note.name }} {{ state.chord.name || state.chord.aliases[0] }} 
-      button.text-button.text-sm(
+      button.text-button.text-sm.flex.items-center(
         :style="{ borderColor: chromaColorMix(chroma, globalScale?.tonic).hsl }"
         v-if="state.scale.name"  
         @click="arpeggiate(true)") 

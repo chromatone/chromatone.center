@@ -4,6 +4,8 @@ import shader from './chromatone.glsl?raw'
 import { TransitionPresets, refDebounced, useTransition } from '@vueuse/core';
 import { useMidi } from '#/use/midi'
 import { useWindowSize } from '@vueuse/core'
+import { useTuner } from '#/use';
+const { tuner } = useTuner()
 
 const { width, height } = useWindowSize()
 
@@ -17,9 +19,10 @@ const notes = computed(() => {
   let chroma = new Array(12).fill(0)
   for (let num in midi?.activeNotes) {
     const n = (Number(num) - 9) % 12
-    chroma[n] += midi?.activeNotes[num] || 0
+    chroma[n] += midi?.activeNotes[num]
   }
-  return chroma
+
+  return chroma.map((el, i) => el + tuner.aChroma[i])
 })
 
 const output = useTransition(notes, {

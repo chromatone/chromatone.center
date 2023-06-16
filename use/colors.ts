@@ -47,8 +47,8 @@ export function noteColor(pitch = 0, octave = 2, velocity = 1, alpha = 1) {
 
 const minor = "101101011010"
 export function calcBg(
-  i,
-  bit,
+  i: number,
+  bit: number,
   white = 'hsla(0,0%,100%,0.3)',
   black = 'hsla(0,0%,10%,0.3)'
 ) {

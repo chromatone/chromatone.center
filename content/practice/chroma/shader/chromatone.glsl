@@ -109,7 +109,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
     for(float j = 1.; j < 12.; j++) {
       float velocity1 = u_notes[int(i / 4.)][int(mod(i, 4.))];
       float velocity2 = u_notes[int(j / 4.)][int(mod(j, 4.))];
-      if(velocity1 > 0.01 && velocity2 > 0.01) {
+      if(velocity1 > 0.1 && velocity2 > 0.1) {
         vec4 lineColor = vec4(mix(colors[int(i)], colors[int(j)], 0.4), .75);
 
         // float lineAlpha = drawLine(positions[int(i)], positions[int(j)], 3., lineColor, fragCoord);

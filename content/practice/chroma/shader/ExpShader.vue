@@ -5,11 +5,14 @@ import { TransitionPresets, refDebounced, useTransition } from '@vueuse/core';
 import { useMidi } from '#/use/midi'
 import { useWindowSize } from '@vueuse/core'
 import { useTuner } from '#/use';
-const { tuner } = useTuner()
+
+const { tuner, init } = useTuner()
 
 const { width, height } = useWindowSize()
 
 const light = ref(0)
+
+const initiated = ref(false)
 
 const { midi } = useMidi()
 
@@ -22,7 +25,10 @@ const notes = computed(() => {
     chroma[n] += midi?.activeNotes[num]
   }
 
-  return chroma.map((el, i) => el + tuner.aChroma[i])
+  return chroma.map((el, i) => {
+    let input = tuner.aChroma[i] > tuner.chromaAvg && !tuner.note.silent ? tuner.aChroma[i] : 0
+    return el + input
+  })
 })
 
 const output = useTransition(notes, {
@@ -49,12 +55,33 @@ const resized = computed(() => {
 
 const debounced = refDebounced(resized, 100)
 
+const feedbackCode = computed(() => `
+  // uniform sampler2D u_mainOutput;
+
+  void main() {
+    vec2 uv = gl_FragCoord.xy / iResolution.xy;
+    vec4 mainOutput = texture2D(u_mainOutput, uv);
+
+    // Perform any operations on mainOutput as needed
+
+    gl_FragColor = mainOutput;
+  }
+`);
+
 </script>
 
 <template lang='pug'>
-.min-h-70svh.h-80svh#screen.rounded-lg.overflow-hidden.pointer-events-auto.touch-revert()
+.relative.min-h-70svh.h-80svh#screen.rounded-lg.overflow-hidden.pointer-events-auto.touch-revert()    
+  button.absolute.z-200.text-2xl.top-2.right-2.opacity-30.hover-opacity-100.transition(
+    v-tooltip="'Enable audio input'"
+    v-if="!initiated" 
+    @click="init();initiated=true;")
+    .i-la-microphone
   gl-canvas(@update="glslUpdate" :key="debounced")
-    gl-program(name="main", :code="shaderCode")
+    gl-program(name="buffer0", :code="shaderCode")
       gl-float(name="u_light", :value="light")
       gl-mat4(name="u_notes", :value="notesMat4")
+      gl-image(name="u_mainOutput", value="feedbackProgram")
+    gl-program(name="main" :code="feedbackCode")
+      gl-image(name="u_mainOutput", value="buffer0")
 </template>

@@ -108,8 +108,16 @@ export const midi: MidiInterface = reactive({
     const list = Object.keys(midi.activeNotes).map(n => Midi.midiToNoteName(Number(n), { sharps: true }))
     return list.length > 2 ? Chord.detect(list) : []
   }),
-  activeChroma: computed((): number[] => {
-    let chroma = new Array(12)
+  activeChroma: computed((): string => {
+    let chroma = new Array(12).fill(0)
+    for (let num in midi.activeNotes) {
+      const n = (Number(num) - 9) % 12
+      chroma[n] = midi.activeNotes[num]
+    }
+    return chroma.join('')
+  }),
+  activeChromaMidi: computed((): number[] => {
+    let chroma = new Array(12).fill(0)
     for (let num in midi.activeNotes) {
       const n = (Number(num) - 9) % 12
       chroma[n] = num

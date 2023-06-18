@@ -4,6 +4,8 @@ import { pitchFreq } from '#/use/calculations'
 import { noteColor } from '#/use/colors'
 import { playNote, stopNote } from '#/use/chroma'
 import { computed, ref } from 'vue';
+import { useMidi } from '#/use'
+const { midi } = useMidi()
 
 const props = defineProps({
   note: { type: Object, default: () => { } },
@@ -18,7 +20,7 @@ defineEmits(['update:pressed'])
 const playing = ref(false)
 
 const noteName = computed(() => {
-  let octave = props.tonic + 3 > props.note.pitch + 3 ? 4 : 3
+  let octave = props.tonic > props.note.pitch ? 3 : 2
   return Frequency(pitchFreq(props.note.pitch, octave)).toNote()
 })
 
@@ -36,13 +38,13 @@ function release() {
 
 <template lang="pug">
 g.cursor-pointer
-  circle.transition-all.duration-400(
+  circle.transition-all.duration-50(
     :r="r", 
     :cx="0", 
     :cy="0",  
     :stroke-width="tonic == note.pitch ? 4 : available ? 2 : 0",
     stroke="white"
-    :fill="playing ? noteColor(note.pitch, 4) : available ? noteColor(note.pitch, 3) : noteColor(note.pitch, 2, 0.4)"
+    :fill="noteColor(note.pitch, playing || midi.activeChroma?.[note.pitch] > 0 ? 5 : available ? 3 : 2, playing || midi.activeChroma?.[note.pitch] > 0 ? 1 : 0.4  )"
     @mousedown="attack()", 
     @touchstart="attack()",
     @mouseenter="pressed ? attack() : null"
@@ -59,6 +61,4 @@ g.cursor-pointer
     :y="8") {{ note.name }}
 </template>
 
-<style lang="postcss" scoped>
-
-</style>
+<style lang="postcss" scoped></style>

@@ -5,6 +5,9 @@ import { synthAttack, synthRelease } from '#/use/synth'
 import { midiPlay, midiStop } from '#/use/midi'
 import { computed, ref } from 'vue';
 import { noteColor } from '#/use/colors'
+import { useMidi } from '#/use'
+import { watch } from 'vue';
+const { midi } = useMidi()
 
 const props = defineProps({
   pressed: Boolean,
@@ -31,6 +34,19 @@ const active = computed(() => {
   return active
 });
 
+const activeMidi = computed(() => {
+  let active = true
+  let chord = chordPitches.value.map((x) => (x > 11 ? x % 12 : x))
+  chord.forEach(note => {
+    if (midi.activeChroma[note] != '1') {
+      active = false
+    }
+  })
+  return active
+});
+
+
+
 const chordNames = computed(() => {
   return chordPitches.value.map(pitch => {
     return Frequency(pitchFreq(pitch)).transpose(-12).toNote()
@@ -51,13 +67,17 @@ function stopChord() {
   midiStop(chordNames.value)
 }
 
+watch(() => midi.activeChroma, an => {
+  console.log(an)
+})
+
 </script>
 
 <template lang="pug">
 polygon.chord-trigger(
   style="mix-blend-mode: screen;"
   :transform="'rotate(' + 60 * p + ')'", 
-  :fill="playing ? noteColor(note.pitch) : active ? noteColor(note.pitch, 0.5) : noteColor(note.pitch, -2, 0.1)",
+  :fill="noteColor(note.pitch, playing || activeMidi ? 5 : active ? 0.5 : -2, active ? 1 : 0.2) ",
   :opacity="1"
   :stroke-width="active ? 4 : 0.5"
   stroke="hsla(0,0%,100%,0.5)"
@@ -71,6 +91,4 @@ polygon.chord-trigger(
   @touchcancel="stopChord()")
 </template>
 
-<style lang="postcss" scoped>
-
-</style>
+<style lang="postcss" scoped></style>

@@ -60,10 +60,7 @@ header.nav-bar.relative(data-tauri-drag-region="true")
     padding: 2px 0 0;
     align-items: center;
     border-bottom: 0;
-  }
-
-  .item+.item {
-    padding-left: 24px;
+    gap: 0.7em;
   }
 }
 </style>

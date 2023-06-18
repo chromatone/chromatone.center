@@ -7,6 +7,7 @@ import { noteColor } from '#/use/colors'
 import { notes } from '#/use/theory'
 import { computed, reactive } from 'vue'
 
+
 const allNotes = [...notes].map((n, i) => ({ name: n, pitch: i }))
 
 const tonal = reactive({
@@ -168,7 +169,7 @@ svg#tonal-array.rounded-3xl(
 .note-circle,
 .chord-trigger,
 .chord-triangle {
-  transition: all 300ms ease-out;
+  transition: all 150ms ease-out;
 }
 
 .chord-name {

@@ -144,7 +144,7 @@ watchThrottled(loaded, l => {
           g.petal(
             :transform="`rotate(${pitch * 30}) translate(2,-120) `"
             :fill="note.note.length > 1 ? '#222' : '#eee'"
-            :opacity="midi.activeChroma[pitch] ? 1 : 0.9"
+            :opacity="midi.activeChromaMidi[pitch] ? 1 : 0.9"
             style="transition: all 100ms ease-out"
             filter="url(#shadow)"
             ) 
@@ -178,7 +178,7 @@ watchThrottled(loaded, l => {
             )
             circle(
               style="transition: all 100ms ease-out"
-              :fill="noteColor(pitch, midi.activeChroma[pitch] ? 4 : 2)"
+              :fill="noteColor(pitch, midi.activeChromaMidi[pitch] ? 4 : 2)"
               :r="size / 12"
               )
             g(v-if="tunr?.tuner?.initiated")
@@ -191,7 +191,7 @@ watchThrottled(loaded, l => {
             text.transition(
               :font-size="size / 20"
               font-weight="bold"
-              :fill="!midi.activeChroma[pitch] ? 'white' : 'black'"
+              :fill="!midi.activeChromaMidi[pitch] ? 'white' : 'black'"
               )
               tspan(
                 dy="5"

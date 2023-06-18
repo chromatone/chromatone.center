@@ -160,7 +160,7 @@ function stopChord(note, qual = 'major', inv) {
           :radius="40 - 12 * getRadius(qual)"
           :thickness="10"
           :op="Math.abs(tonic - i) == 11 || Math.abs(tonic - i) % 12 <= 1 ? 0.8 : 0.1"
-          :fill="Math.abs(tonic - i) == 11 || Math.abs(tonic - i) % 12 <= 1 ? noteColor(note.pitch) : noteColor(note.pitch, 5, 1)"
+          :fill="Math.abs(tonic - i) == 11 || Math.abs(tonic - i) % 12 <= 1 ? noteColor(note.pitch) : noteColor(note.pitch, 2, 1)"
           )
         g.quadro(
           @mousedown="playChord(note.name, qual,j)", 
@@ -181,7 +181,7 @@ function stopChord(note, qual = 'major', inv) {
             :radius="40 - 12 * getRadius(qual) -5*(j>1 ? 0 :1)"
             :thickness="5"
             :op="Math.abs(tonic - i) == 11 || Math.abs(tonic - i) % 12 <= 1 ? 0.8 : 0.1"
-            :fill="Math.abs(tonic - i) == 11 || Math.abs(tonic - i) % 12 <= 1 ? noteColor(note.pitch+deg,4) : noteColor(note.pitch+deg, 5, 1)"
+            :fill="Math.abs(tonic - i) == 11 || Math.abs(tonic - i) % 12 <= 1 ? noteColor(note.pitch+deg,5) : noteColor(note.pitch+deg, 5, 1)"
             )
         circle.transition(
           :cx="getCircleCoord(i, 12, 42 - getRadius(qual) * 26).x",

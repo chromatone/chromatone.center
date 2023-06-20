@@ -1,7 +1,7 @@
 ---
 title: Chords with 5 notes and more
 description: Extended chords, added tone chords and other complex interval combinations
-
+cover: gabriel-gurrola.jpg
 date: 2021-09-01
 
 ---

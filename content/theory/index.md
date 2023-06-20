@@ -1,7 +1,7 @@
 ---
 title: Theory
 description: All the knowledge of music becoming visible with the simple color coding system
-cover: tonnetz.svg
+cover: manuel-nageli.jpg
 date: 2021-10-30
 topContent: true
 ---

@@ -1,7 +1,7 @@
 ---
 title: Frequency and pitch
 description: The human perception of sound frequency as a place of it at a scale
-
+cover: jacek-ulinski.jpg
 date: 2021-08-28
 ---
 

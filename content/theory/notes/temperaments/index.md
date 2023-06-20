@@ -1,7 +1,7 @@
 ---
 title: Temperaments
 description: Tuning systems
-
+cover: derek-story.jpg
 date: 2021-09-20
 ---
 

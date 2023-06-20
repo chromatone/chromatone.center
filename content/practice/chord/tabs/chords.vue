@@ -10,6 +10,9 @@ import guitar from '#/db/guitar.yaml'
 import { useStorage } from '@vueuse/core'
 import { Chord, Note } from '@tonaljs/tonal'
 import { computed, reactive } from 'vue'
+import { notes } from '#/use'
+
+
 
 const instruments = {
   ukulele, guitar
@@ -36,6 +39,27 @@ const state = reactive({
       }
     })
   }),
+  allChords: computed(() => {
+    const ch = notes.map(note => {
+      const list = state.instrument?.suffixes
+        .map(suffix => {
+          return {
+            ...Chord.get(note + suffix),
+            suffix,
+          }
+        })
+        .filter(chord => !chord.empty)
+        .filter(chord => {
+          console.log(chord.notes)
+          return chord.notes.reduce((prev, next) => prev && globalScale
+            .isIn(next), true)
+        })
+      return list
+    }).filter(list => list.length > 0)
+
+    console.log(ch)
+    return ch
+  }),
   byNotes: {
     'Triads': computed(() => state.chords.filter(chord => chord.notes.length == 3)),
     'Tetrads': computed(() => state.chords.filter(chord => chord.notes.length == 4)),
@@ -58,21 +82,13 @@ function isInScale(list) {
   }
 }
 
-function selectNote(n) {
-  console.log((note(n).midi + 3) % 12)
-}
 
 </script>
 
 
 <template lang="pug">
 .flex.flex-col
-  .is-group.flex.flex-col.p-2.my-2
-    tab-neck.my-8(
-      :instrument="current"
-      @note="state.pitch = (Note.midi($event) + 3) % 12"
-      :chord-notes="Chord.get(state.key + state.suffix).notes"
-      )
+
   .is-group.flex.flex-wrap.items-center.p-2
     .flex-0
       .text-xl.font-bold.m-4 Scale
@@ -85,32 +101,45 @@ function selectNote(n) {
           @click="current = name"
           ) {{ name }}
     .is-group.flex-1.p-2.flex.flex-col.gap-2
-      .text-xl.font-bold.mb-2 Chord
+      .text-xl.font-bold.mb-2 Chords
       .flex.flex-wrap.my-2
-        button.note(
+        template(
           v-for="(key, k) in state.instrument.keys" 
           :key="key"
-          :style="{ backgroundColor: noteColor(k, 3, rotateArray(globalScale.full?.chroma, -globalScale.tonic)[k] == '1' ? 1 : 0.05) }"
-          :class="{ active: state.key == key }"
-          @click="state.pitch = k"
-        ) {{ key }}
+          )
+          button.note(
+            v-if="rotateArray(globalScale.full?.chroma, -globalScale.tonic)[k] == '1' "
+            :style="{ backgroundColor: noteColor(k, 3, rotateArray(globalScale.full?.chroma, -globalScale.tonic)[k] == '1' ? 1 : 0.05) }"
+            :class="{ active: state.key == key }"
+            @click="state.pitch = k"
+            ) {{ key }}
 
-      .flex.flex-wrap.border-b-1.border-current
-        .text-button.cursor-pointer(
-          v-for="noteNum in Object.keys(state.byNotes)" 
-          :key="noteNum"
-          :class="{ active: noteNum == state.chordType }"
-          @click="state.chordType = noteNum"
-          ) {{ noteNum }}
+      .flex.flex-wrap.gap-2
+        .px-1.flex.flex-wrap(
+          v-for="(note,n) in state.allChords" :key="n"
+          ) 
+          .px-1(
+            v-for="(chord,ch) in note" :key="chord.setNum"
+            ) {{ chord.symbol || chord.suffix }}
 
       .flex.flex-wrap.items-center.mt-4
-        button.text-button(
-          v-for="chord in state.byNotes[state.chordType]" 
+        template(
+          v-for="chord in state.chords" 
           :key="chord.suffix"
-          :style="{ opacity: isInScale(chord.notes) }"
-          :class="{ active: state.suffix == chord.suffix, isin: isInScale(chord.notes) == 1.2 }"
-          @click="state.suffix = chord.suffix"
-          )  {{ chord.symbol || chord.suffix }}
+          )
+          button.text-button(
+            v-if="isInScale(chord.notes) == 1.2"
+            :style="{ opacity: isInScale(chord.notes) }"
+            :class="{ active: state.suffix == chord.suffix, isin: isInScale(chord.notes) == 1.2 }"
+            @click="state.suffix = chord.suffix"
+            )  {{ chord.symbol || chord.suffix }}
+
+  .is-group.flex.flex-col.p-2.my-2
+    tab-neck.my-8(
+      :instrument="current"
+      @note="state.pitch = (Note.midi($event) + 3) % 12"
+      :chord-notes="Chord.get(state.key + state.suffix).notes"
+      )
 
   .is-group.flex.flex-col.items-center.my-2
     .p-2.text-2xl.font-bold.my-2 {{ state.key }} {{ state.suffix }} tabs

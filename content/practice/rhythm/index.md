@@ -3,7 +3,7 @@ title: Rhythm
 description: From chaotic noise to delicate patterns of beat and groove
 
 date: 2021-11-15
-cover: circle/tempo.png
+cover: abimael-ahumada.jpg
 ---
 
 The smallest piece of rhythm is just an event in time marked by any sound, [Noise](./noise/index.md) is quite nice for that.

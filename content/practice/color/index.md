@@ -1,7 +1,7 @@
 ---
 title: Color
 description: Tools to work with color models
-
+cover: daniel-apodaca.jpg
 date: 2021-12-28
 ---
 

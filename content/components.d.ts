@@ -109,6 +109,7 @@ declare module 'vue' {
     NavNextPrev: typeof import('./../theme/components/nav/next-prev.vue')['default']
     NavRow: typeof import('./../theme/components/nav/row.vue')['default']
     NavScroll: typeof import('./../theme/components/nav/scroll.vue')['default']
+    NavSearch: typeof import('./../theme/components/nav/search.vue')['default']
     NavToggleSidebar: typeof import('./../theme/components/nav/toggle-sidebar.vue')['default']
     NavTools: typeof import('./../theme/components/nav/tools.vue')['default']
     NavView: typeof import('./../theme/components/nav/view.vue')['default']

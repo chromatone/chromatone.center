@@ -8,6 +8,7 @@ import { reactive } from 'vue'
 const { midi } = useMidi();
 const { audio } = useAudio();
 const open = reactive({
+  search: false,
   midi: false,
   synth: false,
   tempo: false,
@@ -17,7 +18,15 @@ const open = reactive({
 </script>
 
 <template lang="pug">
-.buttons.fixed.top-3.right-2.opacity-30.hover-opacity-100.transition.flex.items-center.gap-1
+.buttons.fixed.top-3.right-2.opacity-30.hover-opacity-100.transition.flex.items-center.gap-
+  button(
+    style="transition: all 100ms ease-out"
+    @click="open.search = !open.search"  
+    :class="{ active: open.search }" 
+    aria-label="Search across the site"
+    v-tooltip.bottom="'Search'"
+    )
+    .i-la-search.text-xl
   button(
     style="transition: all 100ms ease-out"
     @click="open.tempo = !open.tempo"  
@@ -59,6 +68,8 @@ const open = reactive({
     v-tooltip.bottom-end="'Record options'"
     )
     .i-bi-record-circle
+side-panel(v-model:open="open.search")
+  nav-search(@close="open.search=false")
 side-panel(v-model:open="open.midi")
   midi-panel
   img.mt-4(src="/media/apps/pc-keyboard-3.svg")

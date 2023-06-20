@@ -2,6 +2,7 @@
 title: Harmony
 description: Chord progressions and accompaniment
 date: 2021-08-18
+cover: omar-flores.jpg
 ---
 
 What is [Harmony](./study/index.md)? How the [Chord Progressions](./progressions/index.md) are built from individual chords? 

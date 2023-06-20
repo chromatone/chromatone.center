@@ -1,7 +1,7 @@
 ---
 title: MIDI
 description: Seeing digital music information streams
-
+cover: puk-khantho.jpg
 date: 2021-09-10
 ---
 

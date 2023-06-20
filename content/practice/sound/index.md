@@ -1,7 +1,7 @@
 ---
 title: Sound
 description: Exploration of sound and hearing
-
+cover: dylann-hendricks.jpg
 date: 2021-12-18
 ---
 

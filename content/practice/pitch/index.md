@@ -1,7 +1,7 @@
 ---
 title: Pitch
 description: Explorations of the acoustic frequency domain
-
+cover: jukka-aalho.jpg
 date: 2021-09-30
 ---
 

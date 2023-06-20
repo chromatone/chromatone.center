@@ -38,7 +38,7 @@ header.nav-bar.relative(data-tauri-drag-region="true")
 
 <style lang="postcss" scoped>
 .nav-bar {
-  @apply inset-x-0 z-500 flex select-none border-b-1px border-$c-divider py-0.7rem px-4 h-$header-height bg-$c-bg md-px-5 lg-px-6;
+  @apply inset-x-0 z-500 flex select-none border-b-1px border-$c-divider py-0.7rem px-4 h-$header-height bg-$c-bg md-px-5 lg-px-6 gap-2;
 }
 
 .nav-bar.root {
@@ -46,7 +46,7 @@ header.nav-bar.relative(data-tauri-drag-region="true")
 }
 
 .nav-bar-title {
-  @apply text-xl font-semibold text-$c-text inline-flex items-center whitespace-nowrap hover-no-underline;
+  @apply text-md sm-text-xl font-semibold text-$c-text inline-flex items-center whitespace-nowrap hover-no-underline;
 }
 
 .nav-links {

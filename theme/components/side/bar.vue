@@ -35,7 +35,9 @@ const route = useRoute();
 transition(name="fade")
   .sidebar-mask.z-50.overscroll-contain(v-show="open", @click="$emit('close')")
 .panel(:class="{ open }")
-  side-search.m-3
+  .mt-4.ml-3.mb-4.text-xl.opacity-30.hover-opacity-80.transition
+    a.title.ml-10.no-underline(href="/", :aria-label="`${site.title}, go to main page`") {{ site.title }}
+
   SideBarLevel(path="/" :level="0")
 </template>
 

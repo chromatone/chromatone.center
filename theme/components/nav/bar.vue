@@ -46,7 +46,7 @@ header.nav-bar.relative(data-tauri-drag-region="true")
 }
 
 .nav-bar-title {
-  @apply text-md sm-text-xl font-semibold text-$c-text inline-flex items-center whitespace-nowrap hover-no-underline;
+  @apply text-lg sm-text-xl font-semibold text-$c-text inline-flex items-center whitespace-nowrap hover-no-underline;
 }
 
 .nav-links {
@@ -60,7 +60,7 @@ header.nav-bar.relative(data-tauri-drag-region="true")
     padding: 2px 0 0;
     align-items: center;
     border-bottom: 0;
-    gap: 0.7em;
+    gap: 1em;
   }
 }
 </style>

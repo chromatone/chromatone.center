@@ -1,7 +1,7 @@
 ---
 title: Drum rudiments
 description: Basic patterns played with drum sticks
-
+cover: josh-sorenson.jpg
 date: 2021-06-30
 ---
 

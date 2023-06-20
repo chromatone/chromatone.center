@@ -40,7 +40,7 @@ const state = reactive({
     })
   }),
   allChords: computed(() => {
-    const ch = notes.map(note => {
+    const ch = rotateArray(notes, globalScale.tonic).map(note => {
       const list = state.instrument?.suffixes
         .map(suffix => {
           return {
@@ -50,14 +50,11 @@ const state = reactive({
         })
         .filter(chord => !chord.empty)
         .filter(chord => {
-          console.log(chord.notes)
           return chord.notes.reduce((prev, next) => prev && globalScale
             .isIn(next), true)
         })
       return list
     }).filter(list => list.length > 0)
-
-    console.log(ch)
     return ch
   }),
   byNotes: {
@@ -87,72 +84,63 @@ function isInScale(list) {
 
 
 <template lang="pug">
-.flex.flex-col
 
-  .is-group.flex.flex-wrap.items-center.p-2
-    .flex-0
-      .text-xl.font-bold.m-4 Scale
-      control-scale.flex-1.mb-4
-      .flex.flex-wrap.my-2
-        button.p-4.text-xl.capitalize(
-          v-for="(instrument, name) in instruments" 
-          :key="name"
-          :class="{ active: state.instrument.main.name == name }"
-          @click="current = name"
-          ) {{ name }}
-    .is-group.flex-1.p-2.flex.flex-col.gap-2
-      .text-xl.font-bold.mb-2 Chords
-      .flex.flex-wrap.my-2
-        template(
-          v-for="(key, k) in state.instrument.keys" 
-          :key="key"
-          )
-          button.note(
-            v-if="rotateArray(globalScale.full?.chroma, -globalScale.tonic)[k] == '1' "
-            :style="{ backgroundColor: noteColor(k, 3, rotateArray(globalScale.full?.chroma, -globalScale.tonic)[k] == '1' ? 1 : 0.05) }"
-            :class="{ active: state.key == key }"
-            @click="state.pitch = k"
-            ) {{ key }}
 
-      .flex.flex-wrap.gap-2
-        .px-1.flex.flex-wrap(
-          v-for="(note,n) in state.allChords" :key="n"
-          ) 
-          .px-1(
-            v-for="(chord,ch) in note" :key="chord.setNum"
-            ) {{ chord.symbol || chord.suffix }}
+.is-group.flex.flex-col.items-stretch.p-2
 
-      .flex.flex-wrap.items-center.mt-4
-        template(
-          v-for="chord in state.chords" 
-          :key="chord.suffix"
-          )
-          button.text-button(
-            v-if="isInScale(chord.notes) == 1.2"
-            :style="{ opacity: isInScale(chord.notes) }"
-            :class="{ active: state.suffix == chord.suffix, isin: isInScale(chord.notes) == 1.2 }"
-            @click="state.suffix = chord.suffix"
-            )  {{ chord.symbol || chord.suffix }}
+  .flex.flex-wrap.max-w-100
+    control-scale.flex-1.mb-4
 
   .is-group.flex.flex-col.p-2.my-2
+    .flex.flex-wrap.my-2
+      button.p-4.text-xl.capitalize(
+        v-for="(instrument, name) in instruments" 
+        :key="name"
+        :class="{ active: state.instrument.main.name == name }"
+        @click="current = name"
+        ) {{ name }}
     tab-neck.my-8(
       :instrument="current"
       @note="state.pitch = (Note.midi($event) + 3) % 12"
       :chord-notes="Chord.get(state.key + state.suffix).notes"
       )
+  .flex.max-h-90svh
+    .is-group.flex.flex-col.items-center.my-2.overflow-y-scroll(
+      style="flex: 3 1 65%;"
+    )
+      .p-2.text-2xl.font-bold.my-2 {{ state.key }} {{ state.suffix }} tabs
+      .flex.flex-wrap.justify-center
+        .tab(
+          v-for="(pos, n) in state.tabs?.positions" 
+        :key="pos" )
+          string-tab( 
+            :id="state.key + state.suffix + n"
+            :name="state.key + state.suffix"
+            :pitch="state.pitch"
+            v-bind="pos"
+            )
+    .is-group.flex-1.p-2.flex.flex-col.gap-2.overflow-y-scroll(
+      style="flex: 1 1 35%;"
+    )
 
-  .is-group.flex.flex-col.items-center.my-2
-    .p-2.text-2xl.font-bold.my-2 {{ state.key }} {{ state.suffix }} tabs
-    .flex.flex-wrap.justify-center
-      .tab(
-        v-for="(pos, n) in state.tabs?.positions" 
-      :key="pos" )
-        string-tab( 
-          :id="state.key + state.suffix + n"
-          :name="state.key + state.suffix"
-          :pitch="state.pitch"
-          v-bind="pos"
-          )
+
+      .px-1.inline-flex.flex-wrap.items-center.gap-1.rounded-lg.p-1(
+        v-for="(note,n) in state.allChords" :key="n"
+        :style="{backgroundColor:noteColor(notes.findIndex(el=>el == note[0].tonic),1)}"
+        )
+        .text-lg.font-bold.p-1.rounded(
+          ) {{ n+1 }}: {{ note[0]?.tonic }}
+
+        button.text-black.dark-text-light-200.px-1.bg-light-200.bg-opacity-80.dark-bg-dark-200.dark-bg-opacity-40(
+          style="margin:0"
+          v-for="(chord,ch) in note" :key="chord.setNum"
+            @click="state.suffix = chord.suffix; state.pitch= notes.findIndex(el=>el == note[0].tonic)"
+            :class="{active: state.suffix == chord.suffix && state.pitch== notes.findIndex(el=>el == note[0].tonic)}"
+          ) {{ chord.symbol || chord.suffix }}
+
+
+
+
       //- svg-save(:svg="pos.frets.join('')" :file="state.tabs?.key + state.tabs?.suffix + n")
 </template>
 
@@ -160,11 +148,11 @@ function isInScale(list) {
 
 <style lang="postcss" scoped>
 button {
-  @apply shadow m-1 rounded border-1 border-transparent transition-all duration-200;
+  @apply shadow m-1 rounded border-1 border-transparent transition-all duration-200 opacity-70;
 }
 
 button.active {
-  @apply opacity-100 border-current;
+  @apply opacity-100 border-current font-bold;
 }
 
 button:hover {
@@ -186,7 +174,7 @@ button.note.active {
 }
 
 .tab {
-  @apply relative flex justify-center;
+  @apply relative flex justify-center select-none;
   flex: 1 1 100px;
 }
 </style>

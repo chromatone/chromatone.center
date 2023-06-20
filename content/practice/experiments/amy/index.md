@@ -2,6 +2,7 @@
 title: AMY synth
 description: Wasm synth playground
 date: 2023-03-05
+cover: dx7_algorithms.jpg
 ---
 
 <script setup>

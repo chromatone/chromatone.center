@@ -1,7 +1,7 @@
 ---
 title: Pulse, beat and tempo
 description: Time feeling of humans
-
+cover: austin-ban.jpg
 date: 2021-10-16
 ---
 

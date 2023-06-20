@@ -2,6 +2,7 @@
 title: Brain stimulation research
 description: Full screen colors react to midi notes to explore the cross stimulation of the brain
 date: 2021-04-05
+cover: milad-fakurian.jpg
 ---
 
 <script setup>

@@ -1,7 +1,7 @@
 ---
 title: Rhythm, timeline, ostinato
 description: Definitions of the temporal dimension in music
-
+cover: roger-hoover.jpg
 date: 2021-10-16
 ---
 

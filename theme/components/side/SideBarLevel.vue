@@ -45,7 +45,7 @@ transition(name="fade")
 
 <style lang="postcss" scoped>
 .level {
-  @apply my-1 ml-1 cursor-pointer flex flex-col border-l-2 transition-all duration-200 ease-in-out hover-border-l-4 items-stretch;
+  @apply my-1 ml-1 cursor-pointer rounded-sm flex flex-col border-l-2 transition-all duration-200 ease-in-out hover-border-l-4 items-stretch bg-light-100/90 dark-bg-dark-100/90;
 }
 
 a {
@@ -57,7 +57,7 @@ a {
 }
 
 [aria-current="page"] {
-  @apply border-l-6 font-bold bg-light-100/50 dark-bg-dark-100/50 hover-border-l-6;
+  @apply border-l-6 font-bold bg-light-100/90 dark-bg-dark-100/90 hover-border-l-6;
 }
 
 [aria-current="page"]>a {

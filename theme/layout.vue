@@ -54,13 +54,13 @@ const lightColor = computed(() => lchToHsl(siblings.value.index, siblings.value.
 
         transition(name="fade")
           .content-container(:key="route.path")
-            row-list.my-2.max-w-full(v-if="!frontmatter?.topContent" :children="children")
+            row-list.px-2.my-2.max-w-full(v-if="!frontmatter?.topContent" :children="children")
 
             content.content.flex-auto.z-10
 
             shop-message(:page="page", :siblings="siblings")
 
-            row-list.my-2.max-w-full(v-if="frontmatter?.topContent" :children="children")
+            row-list.px-2.my-2.max-w-full(v-if="frontmatter?.topContent" :children="children")
 
         nav-next-prev(:siblings="siblings" :parents="parents")
         page-footer

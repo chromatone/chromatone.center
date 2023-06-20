@@ -2,6 +2,7 @@
 title: Afro-Cuban clave
 description: African, Cuban and Latin American rhythm patterns
 date: 2021-10-21
+cover: yuting-gao.jpg
 urls:
   - https://en.wikipedia.org/wiki/Tumbao
   - https://en.wikipedia.org/wiki/Clave_(rhythm)

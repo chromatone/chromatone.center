@@ -1,7 +1,7 @@
 ---
 title: African cross-beats
 description: Combinations of two and more rhuthms as a basis of music
-
+cover: african-drums.jpg
 date: 2021-10-13
 ---
 

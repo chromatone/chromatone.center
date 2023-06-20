@@ -1,7 +1,7 @@
 ---
 title: Flamenco compás
 description: A variety of both contemporary and traditional musical styles typical of southern Spain
-
+cover: flam.jpg
 date: 2021-10-16
 urls:
   - https://en.wikipedia.org/wiki/Flamenco

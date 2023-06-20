@@ -1,7 +1,7 @@
 ---
 title: Rhythmic systems
 description: Different systems of rhythmic organisation
-
+cover: korean-drums.jpg
 date: 2021-10-02
 links:
   - https://en.wikipedia.org/wiki/Isorhythm

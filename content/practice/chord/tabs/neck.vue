@@ -49,7 +49,7 @@ function getNote(string, semitones) {
   svg#fretboard.max-h-3xl.w-full(
     version="1.1",
     baseProfile="full",
-    :viewBox="`-50 -30 ${neck.width + 60} ${neck.height + 60}`",
+    :viewBox="`-50 -30 ${neck.width + 100} ${neck.height + 60}`",
     xmlns="http://www.w3.org/2000/svg",
     font-family="Commissioner, sans-serif"
     font-size="20px"
@@ -108,11 +108,11 @@ function getNote(string, semitones) {
           @click="$emit('note',getNote(string,n))"
         )
           circle(
-            :opacity="globalScale.isIn(getNote(string, n)) ? 1 : 0.1"
+            :opacity="globalScale.isIn(getNote(string, n)) ? 1 : 0"
             :stroke="neck.isInChord(getNote(string, n)) ? 'currentColor' : 'none'"
             stroke-width="3"
-            :r="neck.isInChord(getNote(string, n)) ? neck.noteSize / 2 - 4 : neck.noteSize / 2 - 8"
-            :fill="noteColor(string, n+24)"
+            :r="neck.isInChord(getNote(string, n)) ? neck.noteSize /1.7 - 4 : neck.noteSize / 2 - 8"
+            :fill="noteColor(string, n)"
           )
           text(
             opacity="0"

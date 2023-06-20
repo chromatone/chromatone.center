@@ -9,7 +9,7 @@ import { computed, ref } from "vue";
 const width = ref(300)
 const height = ref(300)
 
-const activeColors = computed(() => Object.entries(midi.activeNotes)?.map(([n, v]) => noteColor(n, 0, v.toFixed(2), v.toFixed(2))))
+const activeColors = computed(() => Object.entries(midi.activeNotes)?.map(([n, v]) => noteColor(+n + 3, -2, v.toFixed(2), v.toFixed(2))))
 
 const mix = computed(() => activeColors.value?.reduce((prev, next) => prev.mix(next), colord(activeColors.value[0])))
 

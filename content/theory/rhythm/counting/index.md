@@ -1,7 +1,7 @@
 ---
 title: Counting
 description: A system of regularly occurring sounds that serve to assist with the performance or audition of music by allowing the easy identification of the beat.
-
+cover: claire-brear.jpg
 date: 2021-10-13
 ---
 

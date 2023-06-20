@@ -35,10 +35,10 @@ const route = useRoute();
 transition(name="fade")
   .sidebar-mask.z-50.overscroll-contain(v-show="open", @click="$emit('close')")
 .panel(:class="{ open }")
-  .mt-4.ml-3.mb-4.text-xl.opacity-30.hover-opacity-80.transition
-    a.title.ml-10.no-underline(href="/", :aria-label="`${site.title}, go to main page`") {{ site.title }}
+  //- .mt-4.ml-3.mb-4.text-xl.opacity-30.hover-opacity-80.transition
+  //-   a.title.ml-10.no-underline(href="/", :aria-label="`${site.title}, go to main page`") {{ site.title }}
 
-  SideBarLevel(path="/" :level="0")
+  SideBarLevel.sticky.top-16(path="/" :level="0")
 </template>
 
 <style lang="postcss" scoped>
@@ -48,7 +48,7 @@ transition(name="fade")
   overflow-y: auto;
   scroll-padding-top: 4em;
   transition: all 300ms ease-out;
-  @apply min-w-30 max-h-100vh pr-2 pl-1 fixed top-0 bottom-0 left-0 transform -translate-x-full lg-(sticky translate-x-0) shadow-xl bg-light-600 dark-bg-dark-700 overscroll-contain z-51 scroll-ma-xl;
+  @apply min-w-30 max-h-100vh pr-2 pl-1 fixed top-0 bottom-0 left-0 transform -translate-x-full pt-18 lg-pt-8 lg-(sticky translate-x-0) shadow-xl bg-light-600 dark-bg-dark-200 overscroll-contain z-51 scroll-ma-xl;
 }
 
 .panel a {

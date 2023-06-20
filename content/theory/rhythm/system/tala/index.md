@@ -2,7 +2,7 @@
 title: Indian tala
 description: The Indian rhythmic language and art of konnakkol
 
-cover: five-gandharva.jpg
+cover: ricky-singh.jpg
 date: 2021-10-19
 ---
 

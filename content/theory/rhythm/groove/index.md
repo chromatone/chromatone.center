@@ -1,7 +1,7 @@
 ---
 title: Syncopation, swing and groove
 description: The propulsive quality or "feel" of a rhythm and swung notes to serve it
-
+cover: jadson-thomas.jpg
 date: 2021-09-05
 ---
 

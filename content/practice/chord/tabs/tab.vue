@@ -29,7 +29,7 @@ const notes = reactive({
 </script>
 
 <template lang="pug">
-svg.max-h-360px.min-w-100px.min-h-250px(
+svg.max-h-360px.min-w-80px.min-h-220px(
   version="1.1",
   baseProfile="full",
   :viewBox="`${-neck.padX} ${-neck.padY} ${neck.width + 2 * neck.padX} ${neck.height + 2 * neck.padY}`",
@@ -166,6 +166,4 @@ svg.max-h-360px.min-w-100px.min-h-250px(
     ) {{ fingers[n] }}
 </template>
 
-<style lang="postcss" scoped>
-
-</style>
+<style lang="postcss" scoped></style>

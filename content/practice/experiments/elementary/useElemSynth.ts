@@ -20,8 +20,6 @@ export function useElemSynth() {
 
     core.on('load', function () {
       console.log('loaded')
-      // core.render(el.cycle(220), el.cycle(110));
-
     });
 
     let node = await core.initialize(ctx, {
@@ -38,7 +36,23 @@ export function useElemSynth() {
 
       if (list.length > 0) {
 
-        let sum = el.add(...list.map(v => el.mul(v.gain / list.length, el.cycle(v.freq))))
+        let sum = el.add(...list.map((v, i) => {
+          let gate = el.const({ value: v.gain ? 1 : 0 });
+
+          let env = el.smooth(
+            el.select(
+              gate,
+              el.tau2pole(2.1), // For when the gate is "high" (meaning 1, our attack phase)
+              el.tau2pole(3.8), // For when the gate is "low" (meaning 0, our release phase)
+            ),
+            gate,
+          );
+
+          let s = el.mul(1 / list.length, env, el.blepsaw(v.freq))
+
+          return el.mul(elemOptions.volume, s)
+        }))
+
 
         const result = el.mul(sum, elemOptions.volume)
 

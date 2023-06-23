@@ -37,6 +37,8 @@
 	"dependencies": {
 		"@animxyz/core": "0.6.6",
 		"@animxyz/vue3": "0.6.7",
+		"@elemaudio/core": "^2.0.1",
+		"@elemaudio/web-renderer": "^2.0.1",
 		"@gun-vue/composables": "0.18.1",
 		"@stripe/stripe-js": "1.54.0",
 		"@tauri-apps/api": "2.0.0-alpha.3",

@@ -1,8 +1,8 @@
 ---
 title: Other online music tools
 description: There's a plenty of opportunities to dive into different aspects of music theory and practice online
-
 cover: other.png
+date: 2018-09-08
 links:
   - url: https://github.com/willianjusten/awesome-audio-visualization
     title: Awesome audio visualization
@@ -88,7 +88,7 @@ links:
   - url: https://teropa.info/blog/2016/07/28/javascript-systems-music.html
     title: JavaScript Systems Music
     description: Learning Web Audio by Recreating The Works of Steve Reich and Brian Eno
-date: 2018-09-08
+
 ---
 
 <other-list :tools="$frontmatter.links" />

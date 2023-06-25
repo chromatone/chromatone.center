@@ -6,10 +6,8 @@ import { useMidi } from '#/use/midi'
 import { master, pitchFreq } from '#/use';
 import { watchEffect } from 'vue';
 //@ts-ignore
-import IR from './BatteryPowell.wav'
+// import IR from './BatteryPowell.wav'
 import { onKeyDown, onKeyUp } from '@vueuse/core';
-
-console.log(IR)
 
 export function useElemSynth() {
 

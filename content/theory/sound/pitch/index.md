@@ -65,6 +65,8 @@ For example, one might refer to the A above middle C as a′, A4, or 440 Hz. In 
 
 This creates a linear pitch space in which octaves have size 12, semitones (the distance between adjacent keys on the piano keyboard) have size 1, and A440 is assigned the number 69. Distance in this space corresponds to musical intervals as understood by musicians. An equal-tempered semitone is subdivided into 100 cents. The system is flexible enough to include "microtones" not found on standard piano keyboards. For example, the pitch halfway between C (60) and C♯ (61) can be labeled 60.5.
 
+<youtube-embed video="Y7TesKMSE74" />
+
 ## Pitch standards and standard pitch
 
 A pitch standard (also concert pitch) is the conventional pitch reference a group of musical instruments are tuned to for a performance. Concert pitch may vary from ensemble to ensemble, and has varied widely over musical history.

@@ -45,11 +45,11 @@ export function useElemSynth() {
     let filtered = el.lowpass(el.add(400, el.mul(3000, env)), 1.4, summed)
     let delayed = el.mul(0.3, el.delay({ size: 44100 }, el.ms2samps(200), 0.2, filtered))
     let wetdry1 = el.add(filtered, delayed)
-    let reverbed = el.mul(0.3, el.convolve({ path: 'sample0' }, wetdry1))
-    let wetdry2 = el.add(wetdry1, reverbed)
+    // let reverbed = el.mul(0.3, el.convolve({ path: 'sample0' }, wetdry1))
+    // let wetdry2 = el.add(wetdry1, reverbed)
 
     // OUTPUT
-    let output = el.mul(wetdry2, volume)
+    let output = el.mul(wetdry1, volume)
     return output
   })
 
@@ -60,13 +60,13 @@ export function useElemSynth() {
 
     core.on('load', async function () {
       console.log('loaded')
-      let file = await fetch(IR)
-      let buff = await file.arrayBuffer()
-      let sampleBuffer = await ctx.decodeAudioData(buff);
+      // let file = await fetch(IR)
+      // let buff = await file.arrayBuffer()
+      // let sampleBuffer = await ctx.decodeAudioData(buff);
 
-      core.updateVirtualFileSystem({
-        'sample0': sampleBuffer.getChannelData(0),
-      });
+      // core.updateVirtualFileSystem({
+      //   'sample0': sampleBuffer.getChannelData(0),
+      // });
 
       watch(audio, a => {
         core.render(a, a)

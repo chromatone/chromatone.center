@@ -19,14 +19,16 @@ const open = reactive({
 
 <template lang="pug">
 .buttons.fixed.top-3.right-2.opacity-30.hover-opacity-100.transition.flex.items-center.gap-
-  button(
-    style="transition: all 100ms ease-out"
-    @click="open.search = !open.search"  
-    :class="{ active: open.search }" 
-    aria-label="Search across the site"
-    v-tooltip.bottom="'Search'"
-    )
-    .i-la-search.text-xl
+  //- label(for="search")
+  //-   button(
+  //-     style="transition: all 100ms ease-out"
+  //-     @click="open.search = !open.search"  
+  //-     :class="{ active: open.search }" 
+  //-     aria-label="Search across the site"
+  //-     v-tooltip.bottom="'Search'"
+  //-     )
+  //-     .i-la-search.text-xl
+  nav-search.ml-14
   button(
     style="transition: all 100ms ease-out"
     @click="open.tempo = !open.tempo"  
@@ -61,13 +63,6 @@ const open = reactive({
     )
     .i-bi-volume-up(v-if="!audio.mute")
     .i-bi-volume-mute(v-else)
-  button(
-    @click="open.record = !open.record"
-    :class="{ active: open.record }"
-    aria-label="Toggle record panel"
-    v-tooltip.bottom-end="'Record options'"
-    )
-    .i-bi-record-circle
 side-panel(v-model:open="open.search")
   nav-search(@close="open.search=false")
 side-panel(v-model:open="open.midi")
@@ -79,8 +74,6 @@ side-panel(v-model:open="open.tempo")
   state-transport
 side-panel(v-model:open="open.audio")
   state-sound
-side-panel(v-model:open="open.record")
-  cast-panel
 
 midi-notes
 </template>

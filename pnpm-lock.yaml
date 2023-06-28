@@ -20,6 +20,9 @@ dependencies:
   '@gun-vue/composables':
     specifier: 0.18.1
     version: 0.18.1
+  '@nick-thompson/drumsynth':
+    specifier: 0.4.0
+    version: 0.4.0
   '@stripe/stripe-js':
     specifier: 1.54.0
     version: 1.54.0
@@ -147,7 +150,7 @@ devDependencies:
     version: 0.53.1(pug@3.0.2)
   '@vue/language-plugin-pug':
     specifier: latest
-    version: 1.8.1
+    version: 1.8.2
   eslint:
     specifier: 8.43.0
     version: 8.43.0
@@ -874,6 +877,12 @@ packages:
     transitivePeerDependencies:
       - rollup
     dev: true
+
+  /@nick-thompson/drumsynth@0.4.0:
+    resolution: {integrity: sha512-W/FgmwzXhSSjWImUWwlR3tl1aqM1+An2dI9914soN5SfaTpELy5mhHpIjH5KUZ8B1c9WNKTsenq6G9ho7Iov0Q==}
+    dependencies:
+      '@elemaudio/core': 2.0.1
+    dev: false
 
   /@nodelib/fs.scandir@2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -1700,8 +1709,8 @@ packages:
       muggle-string: 0.2.2
     dev: true
 
-  /@volar/source-map@1.7.8:
-    resolution: {integrity: sha512-g2dtC2kOghvfzMDWeODIo4HO1Ml4hxzPTZyAFDz+YhRF9HjZYJSCaWaVuPZ+z0kY+T2daOHYA10GdrWQ5q0teA==}
+  /@volar/source-map@1.7.9:
+    resolution: {integrity: sha512-bLizh8HIAzbq7OdxfyoG18dXJJF9FNXBcaiRj7eqg2Bq+DkgkYHabaY+xobgaXeKFOp93Tg1KfMM7qyR2KXHmQ==}
     dependencies:
       muggle-string: 0.3.1
     dev: true
@@ -1785,10 +1794,10 @@ packages:
   /@vue/devtools-api@6.5.0:
     resolution: {integrity: sha512-o9KfBeaBmCKl10usN4crU53fYtC1r7jJwdGKjPT24t348rHxgfpZ0xL3Xm/gLUYnc0oTp8LAmrxOeLyu6tbk2Q==}
 
-  /@vue/language-plugin-pug@1.8.1:
-    resolution: {integrity: sha512-mZHhzaKJquINp73SEzjRxeInV3/yEW44Y/ZXmmXPDzvKhzCtC5Lcao4wb9VEjArQsmi93ASm/Zin2fUDsOvf4A==}
+  /@vue/language-plugin-pug@1.8.2:
+    resolution: {integrity: sha512-Oh9WooxGphkdaizekEgLqhFoult1Z1RanKQ3KoJeBsTKnwrAutwEQ/qnA3OZyhuYGOC/4D4KYCgHUuImKsHHmw==}
     dependencies:
-      '@volar/source-map': 1.7.8
+      '@volar/source-map': 1.7.9
       volar-service-pug: 0.0.8
     dev: true
 
@@ -5500,7 +5509,7 @@ packages:
     resolution: {integrity: sha512-rDYhhPFmo726oN8wCZs7+Cm/L3u1h7Nkz68PN1fBIdaBhcKPaPIDtGOW4mEpYw1A1sGm6GrklVkQ03p7clXGkQ==}
     dependencies:
       '@volar/language-service': 1.5.4
-      '@volar/source-map': 1.7.8
+      '@volar/source-map': 1.7.9
       muggle-string: 0.3.1
       pug-lexer: 5.0.1
       pug-parser: 6.0.0

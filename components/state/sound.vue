@@ -29,6 +29,7 @@ const { mic, input } = useMic();
   .flex.flex-wrap.items-center.is-group.p-2.gap-2(v-if="Object.keys(channels).length > 0")
     .p-1.font-bold Channels
     .p-1.text-sm(v-for="(channel, title) in channels", :key="title") {{ title }}
+  cast-panel
 </template>
 
 <style lang="postcss" scoped></style>

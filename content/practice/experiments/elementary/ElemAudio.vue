@@ -50,7 +50,7 @@ function useElemSynth({
 
       // OUTPUT
       // let output = el.mul(wetdry1, ctrl.volume)
-      const env = el.adsr({ key: `${voice.key}:env` }, 0.001, .3, .4, 8, voice.gate)
+      const env = el.adsr({ key: `${voice.key}:env` }, 100, .3, .4, 8, voice.gate)
       const osc = el.blepsquare({ key: `${voice.key}:osc` }, voice.freq)
       const envOsc = el.mul(env, osc)
       const noise = el.mul(env, el.noise())
@@ -62,17 +62,19 @@ function useElemSynth({
       return output
     },
     startNote(num, velocity) {
-      do {
+      while (es.voices[es.nextVoice].gate == 1) {
         es.nextVoice++
         if (es.nextVoice >= es.voices.length) {
           es.nextVoice = 0
         }
-      } while (es.voices[es.nextVoice].gate == 1)
-
-      es.voices[es.nextVoice].gate = 1
-      es.voices[es.nextVoice].vel = velocity / 127
-      es.voices[es.nextVoice].freq = pitchFreq(num - 69)
-      es.voices[es.nextVoice].midi = num
+      }
+      const voice = {
+        gate: 1,
+        vel: velocity / 127,
+        freq: pitchFreq(num - 69),
+        midi: num
+      }
+      es.voices[es.nextVoice] = voice
     },
     stopNote(num) {
       es.voices.filter((v) => v.midi == num).map(v => v.gate = 0)

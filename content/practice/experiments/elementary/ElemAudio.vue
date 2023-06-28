@@ -4,10 +4,7 @@ import { el } from '@elemaudio/core';
 import WebRenderer from '@elemaudio/web-renderer';
 import { onMounted, watch, computed, ref, reactive } from 'vue'
 import { useMidi } from '#/use/midi'
-import { pitchFreq } from '#/use';
-
-//@ts-ignore
-// import IR from './BatteryPowell.wav'
+import { pitchFreq, pitchColor } from '#/use/calculations';
 import { useStorage } from '@vueuse/core';
 import { useClamp } from '@vueuse/math';
 
@@ -19,7 +16,7 @@ function useElemSynth({
     { name: 'osc1Gain', value: .5, min: 0, max: 1, step: .01 },
     { name: 'noiseGain', value: .5, min: 0, max: 1, step: .01 },
     { name: 'attack', value: .01, min: 0.001, max: 5, step: .01 },
-    { name: 'decay', value: .01, min: 0.001, max: 2, step: .01 },
+    { name: 'decay', value: .01, min: 0.001, max: 4, step: .01 },
     { name: 'sustain', value: .5, min: 0, max: 1, step: .01 },
     { name: 'release', value: .01, min: 0.001, max: 10, step: .01 },
   ]
@@ -46,14 +43,18 @@ function useElemSynth({
     params,
     control: genControl(),
     nextVoice: 0,
+    overflow: 0,
     voices: Array(numVoices).fill(true).map((_, i) => ({ gate: 0.0, freq: 440, key: `v${i}`, midi: 69, vel: 0 })),
     startNote(num, velocity) {
       do {
         es.nextVoice++
         if (es.nextVoice >= es.voices.length) {
           es.nextVoice = 0
+          es.overflow++
         }
+        if (es.overflow > 3) break;
       } while (es.voices[es.nextVoice].gate == 1)
+      es.overflow = 0
       Object.assign(es.voices[es.nextVoice], {
         gate: 1,
         vel: velocity / 127,
@@ -63,7 +64,7 @@ function useElemSynth({
 
     },
     stopNote(num) {
-      es.voices.filter((v) => v.midi == num).forEach(v => Object.assign(v, { gate: 0, vel: 0 })
+      es.voices.filter((v) => v.midi == num).forEach(v => Object.assign(v, { gate: 0 })
       )
     }
   })
@@ -85,30 +86,57 @@ function useElemSynth({
             g.voiceCount,
             el.add(...es.voices.map(
               voice => {
-                const v = {
-                  vel: el.const({ key: `${voice.key}:vel`, value: voice.vel }),
-                  freq: el.const({ key: `${voice.key}:freq`, value: voice.freq })
+                const v = {}
+                for (let p in voice) {
+                  v[p] = el.const({
+                    key: `${voice.key}:${p}`,
+                    value: voice[p]
+                  })
                 }
 
-                v.env = el.adsr(
-                  ctrl.value.attack,
-                  ctrl.value.decay,
-                  ctrl.value.sustain,
-                  ctrl.value.release,
-                  v.vel)
+                v.env = el.mul(
+                  v.vel,
+                  el.adsr(
+                    ctrl.value.attack,
+                    ctrl.value.decay,
+                    ctrl.value.sustain,
+                    ctrl.value.release,
+                    v.gate)
+                )
 
-                v.osc = el.lowpass(el.mul(4, v.freq), 1.1, el.blepsaw(v.freq))
+                v.envOsc = el.mul(
+                  v.env,
+                  el.lowpass(
+                    el.mul(4, v.freq),
+                    1.1,
+                    el.blepsaw(v.freq)))
 
-                v.envOsc = el.mul(v.env, v.osc)
+                v.noise = el.mul(
+                  v.env,
+                  el.bandpass(v.freq, 50, el.noise()))
 
-                v.noise = el.mul(v.env, el.bandpass(v.freq, 50.9, el.noise()))
-
-                v.summed = el.add(el.mul(ctrl.value.osc1Gain, v.envOsc), el.mul(ctrl.value.noiseGain, v.noise))
+                v.summed = el.add(
+                  el.mul(ctrl.value.osc1Gain, v.envOsc),
+                  el.mul(ctrl.value.noiseGain, v.noise))
 
                 return v.summed
               }))))
-        g.out = el.add(g.synth, el.mul(0.3, el.delay({ size: 44100 }, el.ms2samps(300), .2, g.synth)))
-        core.render(g.out, g.out)
+
+        function pingPong(x) {
+          return Array(2).fill(null).map((n, i) => el.add(
+            x,
+            el.mul(
+              0.3,
+              el.delay(
+                { size: 44100 },
+                el.ms2samps(300 * (1 + i * .75)),
+                .2,
+                x))))
+        }
+
+        const [outR, outL] = pingPong(g.synth)
+
+        core.render(outR, outL)
       })
     });
 
@@ -158,8 +186,14 @@ watch(() => midi.note, n => {
     @touchend.prevent.stop="es.stopNote(60)"
     @mouseleave="es.stopNote(60)"
     ) PRESS TO PLAY A SOUND
+
   .flex.flex-col.gap-1.font-mono
-    .text-xs.flex(v-for="voice in es.voices" :key="voice") 
-      .p-1(v-for="(value,param) in voice" :key="param") {{ param }}:{{ value }}
+    .text-xs.flex(
+      v-for="voice in es.voices" :key="voice"
+      :style="{color:pitchColor(voice.midi-9), opacity: voice.gate ? 1:0.5}") 
+      .p-1(
+        v-for="(value,param) in voice" :key="param"
+
+        ) {{ param }}:{{ value }}
 
 </template>

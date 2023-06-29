@@ -1,5 +1,5 @@
 <script setup>
-import { onClickOutside, useFocus } from "@vueuse/core";
+import { onClickOutside, onKeyPressed, onKeyStroke, useFocus } from "@vueuse/core";
 import Fuse from "fuse.js";
 import { computed, nextTick, onMounted, ref } from "vue";
 import { data } from '../../../content/pages.data.js'
@@ -17,13 +17,14 @@ const candidates = computed(() => fuse.search(input.value));
 
 const inputEl = ref()
 
-onClickOutside(inputEl, () => input.value = '')
-
 const { focused } = useFocus(inputEl)
 
 onMounted(() => {
   nextTick(focused.value = true)
 })
+
+onClickOutside(inputEl, () => input.value = '')
+onKeyStroke('Escape', () => { input.value = '', focused.value = false })
 </script>
 
 <template lang="pug">

@@ -33,11 +33,18 @@ function useElemSynth({
 } = {}) {
 
   const es = reactive({
-    params,
-    control: genControl(params),
     nextVoice: 0,
     overflow: 0,
     voices: Array(numVoices).fill(true).map((_, i) => ({ key: `v${i}`, gate: 0.0, midi: 69, vel: 0 })),
+    params,
+    control: genControl(params),
+    ctrl: computed(() => {
+      const ctrl = {}
+      for (let c in es.control) {
+        ctrl[c] = el.smooth(el.tau2pole(0.001), el.const({ key: `ctrl:${c}`, value: es.control[c] }))
+      }
+      return ctrl
+    }),
     cycleNote(num, velocity) {
       if (velocity) {
         do {
@@ -50,9 +57,8 @@ function useElemSynth({
         } while (es.voices[es.nextVoice].gate == 1)
         es.overflow = 0
         es.voices[es.nextVoice].gate = 1;
-        es.voices[es.nextVoice].vel = velocity / 127;
         es.voices[es.nextVoice].midi = num;
-
+        es.voices[es.nextVoice].vel = velocity / 127;
       } else {
         es.voices.forEach(v => {
           if (v.midi == num) {
@@ -66,14 +72,34 @@ function useElemSynth({
       es.voices.forEach(v => Object.assign(v, { gate: 0 })
       )
     },
-    ctrl: computed(() => {
-      const ctrl = {}
-      for (let c in es.control) {
-        ctrl[c] = el.const({ key: `ctrl:${c}`, value: es.control[c] })
-      }
-      return ctrl
-    }),
-    synth: (voices = es.voices) =>
+
+    voice: (voice) => {
+      let frequency = midiFrequency(voice.midi, voice.key)
+      let envelope = el.mul(
+        el.const({ key: `${voice.key}:vel`, value: voice.vel }),
+        el.adsr(
+          es.ctrl.attack,
+          es.ctrl.decay,
+          es.ctrl.sustain,
+          es.ctrl.release,
+          el.const({ key: `${voice.key}:gate`, value: voice.gate })))
+
+      let osc = el.mul(
+        es.ctrl.osc1Gain,
+        envelope,
+        el.lowpass(
+          el.mul(4, frequency),
+          1.1,
+          el.blepsaw(frequency)))
+
+      let noise = el.mul(
+        es.ctrl.noiseGain,
+        envelope,
+        el.bandpass(frequency, 50, el.noise()))
+
+      return el.add(osc, noise)
+    },
+    combined: (voices = es.voices) =>
       el.mul(
         es.ctrl.volume,
         el.mul(
@@ -82,49 +108,17 @@ function useElemSynth({
               key: 'voice-count',
               value: 1 / voices.length
             })),
-          el.add(...voices.map(
-            (voice, i) => {
-              let frequency = midiFrequency(voice.midi, voice.key)
-
-              let envelope = el.mul(
-                el.const({ key: `${voice.key}:vel`, value: voice.vel }),
-                el.adsr(
-                  es.ctrl.attack,
-                  es.ctrl.decay,
-                  es.ctrl.sustain,
-                  es.ctrl.release,
-                  el.const({ key: `${voice.key}:gate`, value: voice.gate })))
-
-              let osc = el.mul(
-                es.ctrl.osc1Gain,
-                envelope,
-                el.lowpass(
-                  el.mul(4, frequency),
-                  1.1,
-                  el.blepsaw(frequency)))
-
-              let noise = el.mul(
-                es.ctrl.noiseGain,
-                envelope,
-                el.bandpass(frequency, 50, el.noise()))
-
-              return el.add(osc, noise)
-            })))),
+          el.add(...voices.map(voice => es.voice(voice))))),
 
     async init() {
-      const ctx = new AudioContext();
-      const core = new WebRenderer({
-
-      });
+      const ctx = new AudioContext()
+      const core = new WebRenderer()
 
       core.on('load', async function () {
 
         watch(es, () => {
-          console.log('reacted')
-
-          const [outR, outL] = pingPong(es.synth(es.voices))
-
-          core.render(outR, outL)
+          console.log('rendering')
+          core.render(...pingPong(es.combined(es.voices)))
         })
       });
 

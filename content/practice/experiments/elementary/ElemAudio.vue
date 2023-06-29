@@ -7,17 +7,7 @@ import { pitchColor } from '#/use/calculations';
 import { useStorage } from '@vueuse/core';
 import { useClamp } from '@vueuse/math';
 
-
 import { midiFrequency, pingPong } from './toolbox';
-
-
-function genControl(ps) {
-  const control = {}
-  ps.forEach(p => {
-    control[p.name] = useClamp(useStorage(`es:${p.name}`, p.value), p.min, p.max)
-  })
-  return control
-}
 
 function useElemSynth({
   numVoices = 8,
@@ -32,6 +22,14 @@ function useElemSynth({
   ]
 } = {}) {
 
+  function genControl(ps) {
+    const control = {}
+    ps.forEach(p => {
+      control[p.name] = useClamp(useStorage(`es:${p.name}`, p.value), p.min, p.max)
+    })
+    return control
+  }
+
   const es = reactive({
     nextVoice: 0,
     overflow: 0,
@@ -41,7 +39,7 @@ function useElemSynth({
     ctrl: computed(() => {
       const ctrl = {}
       for (let c in es.control) {
-        ctrl[c] = el.smooth(el.tau2pole(0.001), el.const({ key: `ctrl:${c}`, value: es.control[c] }))
+        ctrl[c] = el.smooth(el.tau2pole(0.01), el.const({ key: `ctrl:${c}`, value: es.control[c] }))
       }
       return ctrl
     }),
@@ -64,15 +62,12 @@ function useElemSynth({
           if (v.midi == num) {
             v.gate = 0
           }
-        }
-        )
+        })
       }
     },
     stopAll(num) {
-      es.voices.forEach(v => Object.assign(v, { gate: 0 })
-      )
+      es.voices.forEach(v => v.gate = 0)
     },
-
     voice: (voice) => {
       let frequency = midiFrequency(voice.midi, voice.key)
       let envelope = el.mul(
@@ -116,10 +111,12 @@ function useElemSynth({
 
       core.on('load', async function () {
 
-        watch(es, () => {
+        function render() {
           console.log('rendering')
           core.render(...pingPong(es.combined(es.voices)))
-        })
+        }
+
+        watch(es, render)
       });
 
       const node = await core.initialize(ctx, {
@@ -143,9 +140,11 @@ const es = useElemSynth()
 
 const { midi } = useMidi()
 
-watch(() => midi.note, n => {
+watch(() => midi.note, playMidiNote)
+
+function playMidiNote(n) {
   es.cycleNote(n.number, n.velocity)
-})
+}
 
 </script>
 

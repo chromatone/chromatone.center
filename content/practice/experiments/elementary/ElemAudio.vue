@@ -77,8 +77,9 @@ function useElemSynth({
     core.on('load', async function () {
 
       watch(es, () => {
+        console.log('reacted')
         const g = {
-          voiceCount: el.const({ key: 'voice-count', value: 1 / Math.sqrt(es.voices.length) })
+          voiceCount: el.sqrt(el.const({ key: 'voice-count', value: 1 / es.voices.length }))
         }
 
         g.synth = el.mul(

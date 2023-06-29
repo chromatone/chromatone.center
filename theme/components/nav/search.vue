@@ -17,6 +17,8 @@ const candidates = computed(() => fuse.search(input.value));
 
 const inputEl = ref()
 
+onClickOutside(inputEl, () => input.value = '')
+
 const { focused } = useFocus(inputEl)
 
 onMounted(() => {
@@ -28,7 +30,6 @@ onMounted(() => {
 .flex.items-center.flex-col.w-full
   .flex.items-center
     input.w-full.p-2.rounded-xl.z-20.bg-light-100.dark-bg-dark-100.shadow.top-8(
-
       ref="inputEl"
       id="search"
       v-model="input" 

@@ -68,7 +68,7 @@ function useElemSynth({
     stopAll(num) {
       es.voices.forEach(v => v.gate = 0)
     },
-    voice: (voice) => {
+    voice(voice) {
       let frequency = midiFrequency(voice.midi, voice.key)
       let envelope = el.mul(
         el.const({ key: `${voice.key}:vel`, value: voice.vel }),

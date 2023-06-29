@@ -9,7 +9,7 @@ import { useStorage } from '@vueuse/core';
 import { useClamp } from '@vueuse/math';
 import { watchEffect } from 'vue';
 
-import { pingPong } from './toolbox';
+import { midiFrequency, pingPong } from './toolbox';
 
 
 function genControl(ps) {
@@ -40,7 +40,7 @@ function useElemSynth({
     control: genControl(params),
     nextVoice: 0,
     overflow: 0,
-    voices: Array(numVoices).fill(true).map((_, i) => ({ gate: 0.0, freq: 440, key: `v${i}`, midi: 69, vel: 0 })),
+    voices: Array(numVoices).fill(true).map((_, i) => ({ gate: 0.0, key: `v${i}`, midi: 69, vel: 0 })),
     cycleNote(num, velocity) {
       if (velocity) {
         do {
@@ -55,7 +55,6 @@ function useElemSynth({
         Object.assign(es.voices[es.nextVoice], {
           gate: 1,
           vel: velocity / 127,
-          freq: pitchFreq(num - 69),
           midi: num
         })
       } else {
@@ -91,6 +90,8 @@ function useElemSynth({
                 v[p] = el.const({ key: `${vc.key}:${p}`, value: vc[p] })
               }
 
+              v.frequency = midiFrequency(vc.midi, vc.key)
+
               v.env = el.mul(
                 v.vel,
                 el.adsr(
@@ -104,17 +105,18 @@ function useElemSynth({
                 es.ctrl.osc1Gain,
                 v.env,
                 el.lowpass(
-                  el.mul(4, v.freq),
+                  el.mul(4, v.frequency),
                   1.1,
-                  el.blepsaw(v.freq)))
+                  el.blepsaw(v.frequency)))
 
               v.noise = el.mul(
                 es.ctrl.noiseGain,
                 v.env,
-                el.bandpass(v.freq, 50, el.noise()))
+                el.bandpass(v.frequency, 50, el.noise()))
 
               return el.add(v.envOsc, v.noise)
             })))),
+
     async init() {
       const ctx = new AudioContext();
       const core = new WebRenderer({
@@ -123,7 +125,7 @@ function useElemSynth({
 
       core.on('load', async function () {
 
-        watchEffect(() => {
+        watch(es, () => {
           console.log('reacted')
 
           const [outR, outL] = pingPong(es.synth(es.voices))

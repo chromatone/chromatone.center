@@ -12,3 +12,11 @@ export function pingPong(x: NodeRepr_t): (number | NodeRepr_t)[] {
         .2,
         x))))
 }
+
+export function midiFrequency(num: number, key: string): (number | NodeRepr_t) {
+  return el.mul(
+    440,
+    el.pow(
+      2,
+      el.const({ key: `${key}:frequency`, value: (num - 69) / 12 })))
+}

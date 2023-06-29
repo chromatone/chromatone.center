@@ -22,13 +22,7 @@ function useElemSynth({
   ]
 } = {}) {
 
-  const ctrl = computed(() => {
-    const ctrl = {}
-    for (let c in es.control) {
-      ctrl[c] = el.const({ key: `ctrl:${c}`, value: es.control[c] })
-    }
-    return ctrl
-  })
+
 
 
   function genControl() {
@@ -42,6 +36,13 @@ function useElemSynth({
   const es = reactive({
     params,
     control: genControl(),
+    ctrl: computed(() => {
+      const ctrl = {}
+      for (let c in es.control) {
+        ctrl[c] = el.const({ key: `ctrl:${c}`, value: es.control[c] })
+      }
+      return ctrl
+    }),
     nextVoice: 0,
     overflow: 0,
     voices: Array(numVoices).fill(true).map((_, i) => ({ gate: 0.0, freq: 440, key: `v${i}`, midi: 69, vel: 0 })),
@@ -81,7 +82,7 @@ function useElemSynth({
         }
 
         g.synth = el.mul(
-          ctrl.value.volume,
+          es.ctrl.volume,
           el.mul(
             g.voiceCount,
             el.add(...es.voices.map(
@@ -97,10 +98,10 @@ function useElemSynth({
                 v.env = el.mul(
                   v.vel,
                   el.adsr(
-                    ctrl.value.attack,
-                    ctrl.value.decay,
-                    ctrl.value.sustain,
-                    ctrl.value.release,
+                    es.ctrl.attack,
+                    es.ctrl.decay,
+                    es.ctrl.sustain,
+                    es.ctrl.release,
                     v.gate)
                 )
 
@@ -116,8 +117,8 @@ function useElemSynth({
                   el.bandpass(v.freq, 50, el.noise()))
 
                 v.summed = el.add(
-                  el.mul(ctrl.value.osc1Gain, v.envOsc),
-                  el.mul(ctrl.value.noiseGain, v.noise))
+                  el.mul(es.ctrl.osc1Gain, v.envOsc),
+                  el.mul(es.ctrl.noiseGain, v.noise))
 
                 return v.summed
               }))))

@@ -1,13 +1,12 @@
 <script setup>
-
 import { el } from '@elemaudio/core';
 import WebRenderer from '@elemaudio/web-renderer';
 import { onMounted, watch, computed, ref, reactive } from 'vue'
 import { useMidi } from '#/use/midi'
-import { pitchFreq, pitchColor } from '#/use/calculations';
+import { pitchColor } from '#/use/calculations';
 import { useStorage } from '@vueuse/core';
 import { useClamp } from '@vueuse/math';
-import { watchEffect } from 'vue';
+
 
 import { midiFrequency, pingPong } from './toolbox';
 
@@ -17,8 +16,6 @@ function genControl(ps) {
   ps.forEach(p => {
     control[p.name] = useClamp(useStorage(`es:${p.name}`, p.value), p.min, p.max)
   })
-  // ps.reduce((obj, p) => ({ ...obj, [p.name]: useClamp(useStorage(`es:${p.name}`, p.value), p.min, p.max) }), {})
-
   return control
 }
 
@@ -40,7 +37,7 @@ function useElemSynth({
     control: genControl(params),
     nextVoice: 0,
     overflow: 0,
-    voices: Array(numVoices).fill(true).map((_, i) => ({ gate: 0.0, key: `v${i}`, midi: 69, vel: 0 })),
+    voices: Array(numVoices).fill(true).map((_, i) => ({ key: `v${i}`, gate: 0.0, midi: 69, vel: 0 })),
     cycleNote(num, velocity) {
       if (velocity) {
         do {
@@ -52,13 +49,16 @@ function useElemSynth({
           if (es.overflow > 3) break;
         } while (es.voices[es.nextVoice].gate == 1)
         es.overflow = 0
-        Object.assign(es.voices[es.nextVoice], {
-          gate: 1,
-          vel: velocity / 127,
-          midi: num
-        })
+        es.voices[es.nextVoice].gate = 1;
+        es.voices[es.nextVoice].vel = velocity / 127;
+        es.voices[es.nextVoice].midi = num;
+
       } else {
-        es.voices.filter((v) => v.midi == num).forEach(v => Object.assign(v, { gate: 0 })
+        es.voices.forEach(v => {
+          if (v.midi == num) {
+            v.gate = 0
+          }
+        }
         )
       }
     },
@@ -73,7 +73,6 @@ function useElemSynth({
       }
       return ctrl
     }),
-
     synth: (voices = es.voices) =>
       el.mul(
         es.ctrl.volume,
@@ -84,37 +83,32 @@ function useElemSynth({
               value: 1 / voices.length
             })),
           el.add(...voices.map(
-            (vc, i) => {
-              const v = {}
-              for (let p in vc) {
-                v[p] = el.const({ key: `${vc.key}:${p}`, value: vc[p] })
-              }
+            (voice, i) => {
+              let frequency = midiFrequency(voice.midi, voice.key)
 
-              v.frequency = midiFrequency(vc.midi, vc.key)
-
-              v.env = el.mul(
-                v.vel,
+              let envelope = el.mul(
+                el.const({ key: `${voice.key}:vel`, value: voice.vel }),
                 el.adsr(
                   es.ctrl.attack,
                   es.ctrl.decay,
                   es.ctrl.sustain,
                   es.ctrl.release,
-                  v.gate))
+                  el.const({ key: `${voice.key}:gate`, value: voice.gate })))
 
-              v.envOsc = el.mul(
+              let osc = el.mul(
                 es.ctrl.osc1Gain,
-                v.env,
+                envelope,
                 el.lowpass(
-                  el.mul(4, v.frequency),
+                  el.mul(4, frequency),
                   1.1,
-                  el.blepsaw(v.frequency)))
+                  el.blepsaw(frequency)))
 
-              v.noise = el.mul(
+              let noise = el.mul(
                 es.ctrl.noiseGain,
-                v.env,
-                el.bandpass(v.frequency, 50, el.noise()))
+                envelope,
+                el.bandpass(frequency, 50, el.noise()))
 
-              return el.add(v.envOsc, v.noise)
+              return el.add(osc, noise)
             })))),
 
     async init() {

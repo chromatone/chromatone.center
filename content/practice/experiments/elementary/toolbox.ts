@@ -18,5 +18,13 @@ export function midiFrequency(num: number, key: string): (number | NodeRepr_t) {
     440,
     el.pow(
       2,
-      el.const({ key: `${key}:frequency`, value: (num - 69) / 12 })))
+      el.smooth(el.tau2pole(0.001),
+        el.const(
+          {
+            key: `${key}:frequency`,
+            value: (num - 69) / 12
+          })
+      )
+    )
+  )
 }

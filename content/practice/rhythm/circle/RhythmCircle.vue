@@ -1,7 +1,7 @@
 <script setup>
-import CircleCenter from './center.vue'
-import CircleOverlay from './overlay.vue'
-import CircleLoop from './loop.vue'
+import CircleCenter from './CircleCenter.vue'
+import CircleOverlay from './CircleOverlay.vue'
+import CircleLoop from './CircleLoop.vue'
 import { midi } from '#/use/midi'
 import { tempo } from '#/use/tempo'
 import { ref, watch } from 'vue'

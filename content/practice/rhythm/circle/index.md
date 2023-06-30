@@ -1,7 +1,6 @@
 ---
-title: Circles
-description: A circular rhythm and polyrhythm exploration tool
-
+title: Circular metronome
+description: Looped rhythm and polyrhythm exploration tool
 date: 2021-10-02
 cover: tempo.png
 links:
@@ -9,15 +8,15 @@ links:
 ---
 
 <script setup>
-import BeatCircle from './main.vue'
-import MidiControls from './midi.vue'
+import RhythmCircle from './RhythmCircle.vue'
+import MidiControls from './MidiControls.vue'
 </script>
 
 <client-only >
-  <beat-circle />
+  <rhythm-circle />
 </client-only >
 
-## Welcome to the all-mighty Chromatone circular metronome!
+## Welcome to the all-mighty Chromatone circular metronome
 
 It's the center for deep exploration of any kind of rhythmic patterns. We have two independent wheels ready to hold any variety of looping beats. Here's how you operate it:
 

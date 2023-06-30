@@ -1,8 +1,8 @@
 <script setup>
 import { onKeyStroke } from "@vueuse/core";
 
-import LoopSector from "./loop-sector.vue";
-import ControlSector from './control-sector.vue'
+import LoopSector from "./LoopSector.vue";
+import LoopControl from './LoopControl.vue'
 
 import { getCircleCoord } from "#/use/calculations";
 import { useSequence } from "#/use/sequence";
@@ -129,7 +129,7 @@ g(
       @accent="seq.accents[s] = !seq.accents[s]"
       @mute="seq.mutes[s] = !seq.mutes[s]"
     )
-  control-sector.under(
+  loop-control.under(
     v-model="seq.meter.under"
     v-tooltip.top="'Measure subdivision'"
     :radius="controlRadius"
@@ -147,7 +147,7 @@ g(
   )
     text {{ seq.meter?.under }}
 
-  control-sector.over(
+  loop-control.over(
     v-model="seq.meter.over"
     v-tooltip.top="'Number of steps'"
     :radius="controlRadius"
@@ -165,7 +165,7 @@ g(
   )
     text {{ seq.meter?.over }}
 
-  control-sector.vol(
+  loop-control.vol(
     :radius="controlRadius"
     :start="98 + order * 6"
     :finish="130"
@@ -196,7 +196,7 @@ g(
       )
     i-la-volume-mute.text-4xl(x="-20" y="-21")
 
-  control-sector.pan(
+  loop-control.pan(
     :radius="controlRadius"
     :start="138 + order * 6"
     :finish="175"
@@ -212,7 +212,7 @@ g(
   )
     i-mdi-pan-horizontal(x="-18" y="-28")
 
-  control-sector.sound(
+  loop-control.sound(
     :radius="controlRadius"
     v-model="soundControl"
     :vector="[1, 1]"

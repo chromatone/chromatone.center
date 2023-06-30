@@ -81,15 +81,16 @@ export function useSequence(
     volume: 1,
   },
   order = 0,
-  mode = "bar"
+  mode = "bar",
+  maxSteps = 64
 ) {
 
   let sequence: Sequence
 
   const seq = reactive({
     meter: {
-      over: useClamp(useStorage(`tempo-loop-${order} -${mode}-over`, 4), 1, 128),
-      under: useClamp(useStorage(`tempo-loop-${order}-${mode}-under`, 4), 1, 128),
+      over: useClamp(useStorage(`tempo-loop-${order} -${mode}-over`, 4), 2, maxSteps),
+      under: useClamp(useStorage(`tempo-loop-${order}-${mode}-under`, 4), 2, maxSteps),
       sound: useStorage(`tempo-loop-${order}-${mode}-sound`, 'A'),
       volume: useClamp(useStorage(`tempo-loop-${order}-${mode}-volume`, 1), 0, 1),
     },
@@ -186,7 +187,7 @@ export function useSequence(
 
     const muteL = seq.mutes.length
     seq.mutes.length = seq.steps.length;
-    if (muteL < seq.steps.length) {
+    if (seq.mutes.length < seq.steps.length) {
       seq.mutes.fill(false, muteL)
     }
 

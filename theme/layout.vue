@@ -36,7 +36,7 @@ const lightColor = computed(() => lchToHsl(siblings.value.index, siblings.value.
 
     template(v-if="frontmatter.template == 'home'")
       main.home(aria-labelledby="main-title")
-        .noise
+
         content.content.z-2
         .flex.flex-col.max-w-60ch.ml-2
           home-tile(

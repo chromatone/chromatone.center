@@ -94,7 +94,7 @@ function useElemSynth({
 
       return el.add(osc, noise)
     },
-    combined: (voices = es.voices) =>
+    poly: (voices = es.voices) =>
       el.mul(
         es.ctrl.volume,
         el.mul(
@@ -106,14 +106,17 @@ function useElemSynth({
           el.add(...voices.map(voice => es.voice(voice))))),
 
     async init() {
-      const ctx = new AudioContext()
+      const ctx = new (AudioContext || webkitAudioContext)();
       const core = new WebRenderer()
 
       core.on('load', async function () {
 
         function render() {
           console.log('rendering')
-          core.render(...pingPong(es.combined(es.voices)))
+          if (ctx.state === 'suspended') {
+            ctx.resume();
+          }
+          core.render(...pingPong(es.poly(es.voices)))
         }
 
         watch(es, render)

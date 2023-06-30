@@ -5,7 +5,10 @@ date: 1987-06-30
 ---
 
 <script setup>
-import RhythmWheels from './RhythmWheels.vue'
+import { defineClientComponent } from 'vitepress'
+const RhythmWheels = defineClientComponent(() => {
+  return import('./RhythmWheels.vue')
+})
 </script>
 
 <RhythmWheels />

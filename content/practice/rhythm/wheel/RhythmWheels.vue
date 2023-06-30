@@ -7,8 +7,10 @@ import { levelColor } from "#/use/colors";
 import { ref, computed, watch, reactive } from 'vue'
 import RhythmWheel from './RhythmWheel.vue';
 import { wheels } from './state'
+import CircleCenter from '../circle/CircleCenter.vue';
 
 const numWheels = ref(2)
+
 
 </script>
 
@@ -31,11 +33,14 @@ const numWheels = ref(2)
           dy="3" 
           stdDeviation="3" 
           flood-color="#2225")
-    RhythmWheel(v-for="(_,w) in numWheels" :key="w" :order="w" :total="numWheels")
+
+    rhythm-wheel(v-for="(_,w) in numWheels" :key="w" :order="w" :total="numWheels")
+
     line(
       :y2="-450" 
       stroke-width="4"
       stroke-linecap="round"
     stroke="currentColor"
     )
+    CircleCenter
 </template>

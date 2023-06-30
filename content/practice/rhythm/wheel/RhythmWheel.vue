@@ -23,7 +23,7 @@ const wheel = reactive({
   radius: computed(() => (450 / props.total) * props.order)
 })
 
-const radius = computed(() => (props.order + 1) * 450 / props.total)
+const radius = computed(() => (250 + (props.order) * 250 / props.total))
 
 
 const { seq } = useSequence({ over: 8, under: 8, sound: props.order == 1 ? 'A' : 'E', volume: 1 }, props.order, 'wheel')
@@ -47,9 +47,9 @@ g.wheel(
       @click="seq.mutes[s]= !seq.mutes[s]"
       :from="s / seq.meter.over * 360"
       :to="(s + 1) / seq.meter.over * 360"
-      :fill="levelColor(s,seq.meter.over,1,!seq.mutes[s] ? 1:0.2)"
+      :fill="levelColor(s+(tempo.pitch / 12) * seq.meter.over,seq.meter.over,1,!seq.mutes[s] ? 1:0.2)"
       :radius="radius"
-      :thickness="450/total"
+      :thickness="250/total"
       )
   svg-ring(
     :cx="0"
@@ -59,7 +59,7 @@ g.wheel(
     :to="359.9"
     fill="gray"
     :radius="radius"
-    :thickness="80"
+    :thickness="50"
     )
   line( 
     :y1="-450/total*(order)"

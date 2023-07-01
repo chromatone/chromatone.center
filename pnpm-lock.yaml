@@ -12,11 +12,11 @@ dependencies:
     specifier: 0.6.7
     version: 0.6.7(vue@3.3.4)
   '@elemaudio/core':
-    specifier: ^2.0.1
-    version: 2.0.1
+    specifier: 2.0.2
+    version: 2.0.2
   '@elemaudio/web-renderer':
-    specifier: ^2.0.1
-    version: 2.0.1
+    specifier: 2.0.2
+    version: 2.0.2
   '@gun-vue/composables':
     specifier: 0.18.1
     version: 0.18.1
@@ -108,8 +108,8 @@ dependencies:
     specifier: 14.8.49
     version: 14.8.49
   vitepress-pages:
-    specifier: 2.0.0-beta.14
-    version: 2.0.0-beta.14(vitepress@1.0.0-beta.2)
+    specifier: 2.0.0
+    version: 2.0.0(vitepress@1.0.0-beta.3)
   vue:
     specifier: 3.3.4
     version: 3.3.4
@@ -150,7 +150,7 @@ devDependencies:
     version: 0.53.1(pug@3.0.2)
   '@vue/language-plugin-pug':
     specifier: latest
-    version: 1.8.2
+    version: 1.8.3
   eslint:
     specifier: 8.43.0
     version: 8.43.0
@@ -191,8 +191,8 @@ devDependencies:
     specifier: 4.3.9
     version: 4.3.9(@types/node@20.3.1)
   vitepress:
-    specifier: 1.0.0-beta.2
-    version: 1.0.0-beta.2(@algolia/client-search@4.17.0)(@types/node@20.3.1)(drauu@0.3.2)(fuse.js@6.6.2)(search-insights@2.6.0)
+    specifier: 1.0.0-beta.3
+    version: 1.0.0-beta.3(@algolia/client-search@4.17.0)(@types/node@20.3.1)(drauu@0.3.2)(fuse.js@6.6.2)(search-insights@2.6.0)
   vue-eslint-parser:
     specifier: ^9.3.1
     version: 9.3.1(eslint@8.43.0)
@@ -470,17 +470,17 @@ packages:
     dependencies:
       perfect-freehand: 1.2.0
 
-  /@elemaudio/core@2.0.1:
-    resolution: {integrity: sha512-3CIEnSpzFArUMXzlJWuFfapbAWUyCXU2KyYnTQVX8BBgMLYuPrQszRBJX2m325MDiseqzlGYCMJIkQXWhEkMIA==}
+  /@elemaudio/core@2.0.2:
+    resolution: {integrity: sha512-SYc6ykv+VajXBhfJ29SWb7HK72RoE1WJcIi9IGMV2SikCYXEa6ysqrxLqwBcgK4KXuoMcapGK8bmwT2DbMB97A==}
     dependencies:
       invariant: 2.2.4
       shallowequal: 1.1.0
     dev: false
 
-  /@elemaudio/web-renderer@2.0.1:
-    resolution: {integrity: sha512-bsx0KJl1xqH9jnkQmKuwqqO4rkGATNfOZ2eULfqE/A3ZUjDGKY94yYEhuYh/Ut2VDaJpkr6yRWWuh02JHxEbTQ==}
+  /@elemaudio/web-renderer@2.0.2:
+    resolution: {integrity: sha512-6qQUiga2lHZgdjxqllPsPeFhmLARQ04MIboTGwlQoX33TlRj3da5ttgTrVIrrzpp1Kp21DxeEUeg3VG8mosMcA==}
     dependencies:
-      '@elemaudio/core': 2.0.1
+      '@elemaudio/core': 2.0.2
       '@types/events': 3.0.0
       events: 3.3.0
     dev: false
@@ -881,7 +881,7 @@ packages:
   /@nick-thompson/drumsynth@0.4.0:
     resolution: {integrity: sha512-W/FgmwzXhSSjWImUWwlR3tl1aqM1+An2dI9914soN5SfaTpELy5mhHpIjH5KUZ8B1c9WNKTsenq6G9ho7Iov0Q==}
     dependencies:
-      '@elemaudio/core': 2.0.1
+      '@elemaudio/core': 2.0.2
     dev: false
 
   /@nodelib/fs.scandir@2.1.5:
@@ -1709,8 +1709,8 @@ packages:
       muggle-string: 0.2.2
     dev: true
 
-  /@volar/source-map@1.7.9:
-    resolution: {integrity: sha512-bLizh8HIAzbq7OdxfyoG18dXJJF9FNXBcaiRj7eqg2Bq+DkgkYHabaY+xobgaXeKFOp93Tg1KfMM7qyR2KXHmQ==}
+  /@volar/source-map@1.7.10:
+    resolution: {integrity: sha512-FBpLEOKJpRxeh2nYbw1mTI5sZOPXYU8LlsCz6xuBY3yNtAizDTTIZtBHe1V8BaMpoSMgRysZe4gVxMEi3rDGVA==}
     dependencies:
       muggle-string: 0.3.1
     dev: true
@@ -1794,10 +1794,10 @@ packages:
   /@vue/devtools-api@6.5.0:
     resolution: {integrity: sha512-o9KfBeaBmCKl10usN4crU53fYtC1r7jJwdGKjPT24t348rHxgfpZ0xL3Xm/gLUYnc0oTp8LAmrxOeLyu6tbk2Q==}
 
-  /@vue/language-plugin-pug@1.8.2:
-    resolution: {integrity: sha512-Oh9WooxGphkdaizekEgLqhFoult1Z1RanKQ3KoJeBsTKnwrAutwEQ/qnA3OZyhuYGOC/4D4KYCgHUuImKsHHmw==}
+  /@vue/language-plugin-pug@1.8.3:
+    resolution: {integrity: sha512-n3C+1ZKGRTntamNc7GDFHfJ+VAhj+pVxONC46e7ewcOi5C+z9rV+0bFjIM3DzTeok+smtX/WDhBpShikrsRGBQ==}
     dependencies:
-      '@volar/source-map': 1.7.9
+      '@volar/source-map': 1.7.10
       volar-service-pug: 0.0.8
     dev: true
 
@@ -5435,18 +5435,18 @@ packages:
     optionalDependencies:
       fsevents: 2.3.2
 
-  /vitepress-pages@2.0.0-beta.14(vitepress@1.0.0-beta.2):
-    resolution: {integrity: sha512-eBfGchLH2/4XSsauXnypeoAm3wPyNMV49+xgJz65rze1Luhb3xRUnV4dulruBpWduDWj2cjsGAa30jaPNCRhgw==}
+  /vitepress-pages@2.0.0(vitepress@1.0.0-beta.3):
+    resolution: {integrity: sha512-CsQ/JzfNJqHRPREC1FMQolBmJgLicMt26MD1+EhVhdg1oBmavENV6P5gdtj+7PjuSZmcx23wAXXgrPrzee5x1A==}
     peerDependencies:
       vitepress: ^1.0.0-beta.1
     dependencies:
       sharp: 0.32.1
-      vitepress: 1.0.0-beta.2(@algolia/client-search@4.17.0)(@types/node@20.3.1)(drauu@0.3.2)(fuse.js@6.6.2)(search-insights@2.6.0)
+      vitepress: 1.0.0-beta.3(@algolia/client-search@4.17.0)(@types/node@20.3.1)(drauu@0.3.2)(fuse.js@6.6.2)(search-insights@2.6.0)
       vue: 3.3.4
     dev: false
 
-  /vitepress@1.0.0-beta.2(@algolia/client-search@4.17.0)(@types/node@20.3.1)(drauu@0.3.2)(fuse.js@6.6.2)(search-insights@2.6.0):
-    resolution: {integrity: sha512-DBXYjtYbm3W1IPPJ2TiCaK/XK+o/2XmL2+jslOGKm+txcbmG0kbeB+vadC5tCUZA9NdA+9Ywj3M4548c7t/SDg==}
+  /vitepress@1.0.0-beta.3(@algolia/client-search@4.17.0)(@types/node@20.3.1)(drauu@0.3.2)(fuse.js@6.6.2)(search-insights@2.6.0):
+    resolution: {integrity: sha512-GR5Pvr/o343NN1M4Na1shhDYZRrQbjmLq7WE0lla0H8iDPAsHE8agTHLWfu3FWx+3q2KA29sv16+0O9RQKGjlA==}
     hasBin: true
     dependencies:
       '@docsearch/css': 3.5.1
@@ -5509,7 +5509,7 @@ packages:
     resolution: {integrity: sha512-rDYhhPFmo726oN8wCZs7+Cm/L3u1h7Nkz68PN1fBIdaBhcKPaPIDtGOW4mEpYw1A1sGm6GrklVkQ03p7clXGkQ==}
     dependencies:
       '@volar/language-service': 1.5.4
-      '@volar/source-map': 1.7.9
+      '@volar/source-map': 1.7.10
       muggle-string: 0.3.1
       pug-lexer: 5.0.1
       pug-parser: 6.0.0

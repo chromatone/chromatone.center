@@ -38,8 +38,8 @@ onKeyStroke('Escape', () => { input.value = '', focused.value = false })
       )
     button.-m-6.z-400(v-if="input" @click="input =''")
       .i-la-times.text-lg
-  .absolute.top-16.flex.flex-col.max-h-80vh.overflow-y-scroll.shadow-lg.mt-2.rounded-lg.z-2000.top-10(v-if="input")
-    a.px-3.py-3.bg-light-400.dark-bg-dark-400.hover-bg-light-100.dark-hover-bg-dark-600.border-1.border-light-100.border-opacity-20(
+  .absolute.left-1.right-1.top-16.flex.flex-col.max-h-80vh.overflow-y-scroll.shadow-lg.mt-2.rounded-lg.z-2000.top-10.bg-light-400.bg-opacity-75.backdrop-blur-xl(v-if="input")
+    a.px-3.py-3.dark-bg-dark-400.hover-bg-light-100.dark-hover-bg-dark-600.border-1.border-light-100.border-opacity-20(
       :href="candidate.item.url"
       @click="input = ''; $emit('close')"
       v-for="candidate in candidates" :key="candidate"

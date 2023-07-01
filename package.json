@@ -37,8 +37,8 @@
 	"dependencies": {
 		"@animxyz/core": "0.6.6",
 		"@animxyz/vue3": "0.6.7",
-		"@elemaudio/core": "^2.0.1",
-		"@elemaudio/web-renderer": "^2.0.1",
+		"@elemaudio/core": "2.0.2",
+		"@elemaudio/web-renderer": "2.0.2",
 		"@nick-thompson/drumsynth": "0.4.0",
 		"@gun-vue/composables": "0.18.1",
 		"@stripe/stripe-js": "1.54.0",
@@ -69,7 +69,7 @@
 		"thousands-counter": "2.1.1",
 		"tonal": "5.0.0",
 		"tone": "14.8.49",
-		"vitepress-pages": "2.0.0-beta.14",
+		"vitepress-pages": "2.0.0",
 		"vue": "3.3.4",
 		"vue-glsl": "^1.1.27",
 		"vue-stripe-js": "1.0.1",
@@ -98,7 +98,7 @@
 		"unplugin-icons": "^0.16.3",
 		"unplugin-vue-components": "0.25.1",
 		"vite": "4.3.9",
-		"vitepress": "1.0.0-beta.2",
+		"vitepress": "1.0.0-beta.3",
 		"vue-eslint-parser": "^9.3.1"
 	}
 }

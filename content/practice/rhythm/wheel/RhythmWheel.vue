@@ -66,7 +66,7 @@ g.wheel(
     :y2="-450/total*(order+1)"
     stroke="currentColor"
     stroke-width="4"
-)
+  )
 
   //- text(fill="currentColor" x="0" :y="order*30+40") {{ seq }}
 </template>

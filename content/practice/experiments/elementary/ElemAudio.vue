@@ -23,43 +23,48 @@ function useElemSynth({
   ]
 } = {}) {
 
-  const es = reactive({
-    params,
-    voices: Array(numVoices).fill(true).map((_, i) => ({ key: `v${i}`, gate: 0.0, midi: 69, vel: 0 })),
-    nextVoice: 0,
-    overflow: 0,
+  const analyser = reactive({
+    data: undefined,
+  })
 
-    control: ((ps) => {
+  const ui = reactive({
+    controls: ((ps) => {
       const control = {}
       ps.forEach(p => {
         control[p.name] = useClamp(useStorage(`es:${p.name}`, p.value), p.min, p.max)
       })
       return control
     })(params),
+  })
 
+  const synth = reactive({
+    params,
+    voices: Array(numVoices).fill(true).map((_, i) => ({ key: `v${i}`, gate: 0.0, midi: 69, vel: 0 })),
+    nextVoice: 0,
+    overflow: 0,
     ctrl: computed(() => {
       const ctrl = {}
-      for (let c in es.control) {
-        ctrl[c] = el.smooth(el.tau2pole(0.01), el.const({ key: `ctrl:${c}`, value: es.control[c] }))
+      for (let c in ui.controls) {
+        ctrl[c] = el.smooth(el.tau2pole(0.01), el.const({ key: `ctrl:${c}`, value: ui.controls[c] }))
       }
       return ctrl
     }),
     cycleNote(num, velocity) {
       if (velocity) {
         do {
-          es.nextVoice++
-          if (es.nextVoice >= es.voices.length) {
-            es.nextVoice = 0
-            es.overflow++
+          synth.nextVoice++
+          if (synth.nextVoice >= synth.voices.length) {
+            synth.nextVoice = 0
+            synth.overflow++
           }
-          if (es.overflow > 3) break;
-        } while (es.voices[es.nextVoice].gate == 1)
-        es.overflow = 0
-        es.voices[es.nextVoice].gate = 1;
-        es.voices[es.nextVoice].midi = num;
-        es.voices[es.nextVoice].vel = velocity / 127;
+          if (synth.overflow > 3) break;
+        } while (synth.voices[synth.nextVoice].gate == 1)
+        synth.overflow = 0
+        synth.voices[synth.nextVoice]['gate'] = 1;
+        synth.voices[synth.nextVoice]['midi'] = num;
+        synth.voices[synth.nextVoice]['vel'] = velocity / 127;
       } else {
-        es.voices.forEach(v => {
+        synth.voices.forEach(v => {
           if (v.midi == num) {
             v.gate = 0
           }
@@ -67,21 +72,21 @@ function useElemSynth({
       }
     },
     stopAll(num) {
-      es.voices.forEach(v => v.gate = 0)
+      synth.voices.forEach(v => v.gate = 0)
     },
     voice(voice) {
       let frequency = midiFrequency(voice.midi, voice.key)
       let envelope = el.mul(
         el.const({ key: `${voice.key}:vel`, value: voice.vel }),
         el.adsr(
-          es.ctrl.attack,
-          es.ctrl.decay,
-          es.ctrl.sustain,
-          es.ctrl.release,
+          synth.ctrl.attack,
+          synth.ctrl.decay,
+          synth.ctrl.sustain,
+          synth.ctrl.release,
           el.const({ key: `${voice.key}:gate`, value: voice.gate })))
 
       let osc = el.mul(
-        es.ctrl.osc1Gain,
+        synth.ctrl.osc1Gain,
         envelope,
         el.lowpass(
           el.mul(4, frequency),
@@ -89,42 +94,42 @@ function useElemSynth({
           el.scope(el.blepsaw(frequency))))
 
       let noise = el.mul(
-        es.ctrl.noiseGain,
+        synth.ctrl.noiseGain,
         envelope,
         el.bandpass(frequency, 50, el.noise()))
 
       return el.add(osc, noise)
     },
-    poly: (voices = es.voices) =>
+    poly: (voices = synth.voices) =>
       el.mul(
-        es.ctrl.volume,
+        synth.ctrl.volume,
         el.mul(
           el.sqrt(
             el.const({
               key: 'voice-count',
               value: 1 / voices.length
             })),
-          el.add(...voices.map(voice => es.voice(voice))))),
+          el.add(...voices.map(voice => synth.voice(voice))))),
 
     async init() {
       const ctx = new (AudioContext || webkitAudioContext)();
       const core = new WebRenderer()
 
       core.on('load', async function () {
-        // core.on('scope', (e) => {
-        //   console.log(e?.data);
-        // })
+        core.on('scope', (e) => {
+          analyser.data = e?.data
+        })
 
         function render() {
           console.log('rendering')
           if (ctx.state === 'suspended') {
             ctx.resume()
           }
-          const stereo = pingPong(es.poly(es.voices)).map(v => el.tanh(v))
+          const stereo = pingPong(synth.poly(synth.voices)).map(v => el.tanh(v))
           core.render(...stereo)
         }
 
-        watch(es, render)
+        watch(synth, render)
       })
 
       const node = await core.initialize(ctx, {
@@ -144,22 +149,22 @@ function useElemSynth({
   })
 
   onMounted(async () => {
-    es.init()
+    synth.init()
 
 
   })
 
-  return es
+  return { synth, analyser, ui }
 }
 
-const es = useElemSynth()
+const { synth, analyser, ui } = useElemSynth()
 
 const { midi } = useMidi()
 
 watch(() => midi.note, playMidiNote)
 
 function playMidiNote(n) {
-  es.cycleNote(n.number, n.velocity)
+  synth.cycleNote(n.number, n.velocity)
 }
 
 </script>
@@ -169,9 +174,9 @@ function playMidiNote(n) {
   .text-2xl.p-2 Elementary 
   .flex.flex-wrap.is-group.p-2.gap-2
     control-rotary(
-      v-for="param in es.params" :key="param.name"
+      v-for="param in synth.params" :key="param.name"
       :step="param.step"
-      v-model="es.control[param.name]"
+      v-model="ui.controls[param.name]"
       :min="param.min"
       :max="param.max"
       :param="param.name"
@@ -179,17 +184,17 @@ function playMidiNote(n) {
 
   .flex.gap-4
     button.text-button.text-2xl.flex-1(
-      @mousedown.passive="es.cycleNote(60, 120)"
-      @mouseup.passive="es.cycleNote(60)"
-      @touchstart.prevent.stop="es.cycleNote(60, 120)"
-      @touchend.prevent.stop="es.cycleNote(60)"
-      @mouseleave="es.cycleNote(60)"
+      @mousedown.passive="synth.cycleNote(60, 120)"
+      @mouseup.passive="synth.cycleNote(60)"
+      @touchstart.prevent.stop="synth.cycleNote(60, 120)"
+      @touchend.prevent.stop="synth.cycleNote(60)"
+      @mouseleave="synth.cycleNote(60)"
       ) PRESS TO PLAY A NOTE
-    button.text-button.text-2xl(@click="es.stopAll()") STOP ALL
+    button.text-button.text-2xl(@click="synth.stopAll()") STOP ALL
 
   .flex.flex-col.gap-1.font-mono
     .text-xs.flex(
-      v-for="voice in es.voices" :key="voice"
+      v-for="voice in synth.voices" :key="voice"
       :style="{color:pitchColor(voice.midi-9), opacity: voice.gate ? 1:0.5}") 
       .p-1(
         v-for="(value,param) in voice" :key="param"

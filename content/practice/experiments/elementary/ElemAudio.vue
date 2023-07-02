@@ -1,11 +1,12 @@
 <script setup>
-import { el } from '@elemaudio/core';
-import WebRenderer from '@elemaudio/web-renderer';
 import { onMounted, watch, computed, ref, reactive } from 'vue'
 import { useMidi } from '#/use/midi'
 import { pitchColor } from '#/use/calculations';
 import { useStorage } from '@vueuse/core';
 import { useClamp } from '@vueuse/math';
+
+import { el } from '@elemaudio/core';
+import WebRenderer from '@elemaudio/web-renderer';
 
 import { midiFrequency, pingPong } from './toolbox';
 
@@ -22,20 +23,20 @@ function useElemSynth({
   ]
 } = {}) {
 
-  function genControl(ps) {
-    const control = {}
-    ps.forEach(p => {
-      control[p.name] = useClamp(useStorage(`es:${p.name}`, p.value), p.min, p.max)
-    })
-    return control
-  }
-
   const es = reactive({
+    params,
+    voices: Array(numVoices).fill(true).map((_, i) => ({ key: `v${i}`, gate: 0.0, midi: 69, vel: 0 })),
     nextVoice: 0,
     overflow: 0,
-    voices: Array(numVoices).fill(true).map((_, i) => ({ key: `v${i}`, gate: 0.0, midi: 69, vel: 0 })),
-    params,
-    control: genControl(params),
+
+    control: ((ps) => {
+      const control = {}
+      ps.forEach(p => {
+        control[p.name] = useClamp(useStorage(`es:${p.name}`, p.value), p.min, p.max)
+      })
+      return control
+    })(params),
+
     ctrl: computed(() => {
       const ctrl = {}
       for (let c in es.control) {
@@ -85,7 +86,7 @@ function useElemSynth({
         el.lowpass(
           el.mul(4, frequency),
           1.1,
-          el.blepsaw(frequency)))
+          el.scope(el.blepsaw(frequency))))
 
       let noise = el.mul(
         es.ctrl.noiseGain,
@@ -110,30 +111,42 @@ function useElemSynth({
       const core = new WebRenderer()
 
       core.on('load', async function () {
+        // core.on('scope', (e) => {
+        //   console.log(e?.data);
+        // })
 
         function render() {
           console.log('rendering')
           if (ctx.state === 'suspended') {
-            ctx.resume();
+            ctx.resume()
           }
-          core.render(...pingPong(es.poly(es.voices)))
+          const stereo = pingPong(es.poly(es.voices)).map(v => el.tanh(v))
+          core.render(...stereo)
         }
 
         watch(es, render)
-      });
+      })
 
       const node = await core.initialize(ctx, {
-        numberOfInputs: 0,
+        numberOfInputs: 1,
         numberOfOutputs: 1,
         outputChannelCount: [2],
-      });
+      })
 
-      node.connect(ctx.destination);
+      node.connect(ctx.destination)
+
+      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        let micStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        let streamSource = ctx.createMediaStreamSource(micStream);
+        streamSource.connect(node);
+      }
     }
   })
 
   onMounted(async () => {
     es.init()
+
+
   })
 
   return es

@@ -24,7 +24,8 @@ function useElemSynth({
 } = {}) {
 
   const analyser = reactive({
-    data: undefined,
+    osc: [0, 0],
+    oscPoints: computed(() => analyser.osc.map((v, i) => [i, v * 25].join(',')).join(' '))
   })
 
   const ui = reactive({
@@ -91,7 +92,7 @@ function useElemSynth({
         el.lowpass(
           el.mul(4, frequency),
           1.1,
-          el.scope(el.blepsaw(frequency))))
+          el.blepsaw(frequency)))
 
       let noise = el.mul(
         synth.ctrl.noiseGain,
@@ -101,7 +102,7 @@ function useElemSynth({
       return el.add(osc, noise)
     },
     poly: (voices = synth.voices) =>
-      el.mul(
+      el.scope({ name: 'osc', size: 512 }, el.mul(
         synth.ctrl.volume,
         el.mul(
           el.sqrt(
@@ -109,7 +110,7 @@ function useElemSynth({
               key: 'voice-count',
               value: 1 / voices.length
             })),
-          el.add(...voices.map(voice => synth.voice(voice))))),
+          el.add(...voices.map(voice => synth.voice(voice)))))),
 
     async init() {
       const ctx = new (AudioContext || webkitAudioContext)();
@@ -117,7 +118,11 @@ function useElemSynth({
 
       core.on('load', async function () {
         core.on('scope', (e) => {
-          analyser.data = e?.data
+          if (e?.source == 'osc') {
+            let arr = [...e?.data[0].values()]
+            // let zeroCross = arr.findIndex((v, i) => v * arr[i + 1] < 0)
+            analyser.osc = arr //.slice(zeroCross)
+          }
         })
 
         function render() {
@@ -150,8 +155,6 @@ function useElemSynth({
 
   onMounted(async () => {
     synth.init()
-
-
   })
 
   return { synth, analyser, ui }
@@ -172,6 +175,14 @@ function playMidiNote(n) {
 <template lang="pug">
 .p-4.bg-light-200.dark-bg-dark-200.shadow.rounded.flex.flex-col.gap-4
   .text-2xl.p-2 Elementary 
+  //- .text-xs.pre {{ analyser.osc }}
+  svg(ref="svgElem" viewBox="0 -25 500 50")
+    polyline(
+      stroke-width="2"
+      stroke="currentColor"
+      fill="transparent"
+      :points="analyser.oscPoints"
+      )
   .flex.flex-wrap.is-group.p-2.gap-2
     control-rotary(
       v-for="param in synth.params" :key="param.name"

@@ -7,7 +7,11 @@ cover: lockup.svg
 ---
 
 <script setup>
-import ElemAudio from './ElemAudio.vue'
+import { defineClientComponent } from 'vitepress'
+
+const ElemAudio = defineClientComponent(() => {
+  return import('./ElemAudio.vue')
+})
 </script>
 
 <ElemAudio />

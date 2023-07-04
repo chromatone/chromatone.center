@@ -1,14 +1,17 @@
 <script setup>
-import { pitchColor } from "#/use/calculations";
+import { pitchColor } from "#/use/calculations"
+import { useAnalyser } from "./useAnalyser";
+import { useMic } from "./useMic";
+import { useSynth } from "./useSynth"
 
-import { useSynth } from "./useSynth";
-
-const { synth, analyser, audio, ui, mic } = useSynth();
+const { synth, ui } = useSynth()
+const mic = useMic()
+const analyser = useAnalyser()
 </script>
 
 <template lang="pug">
 .p-4.bg-light-200.dark-bg-dark-200.shadow.rounded.flex.flex-col.gap-4
-  .text-2xl.p-2 Elementary
+  .text-2xl.p-2 Elementary audio
   svg(ref="svgElem" viewBox="0 -25 500 50")
     polyline(
       stroke-width="2"

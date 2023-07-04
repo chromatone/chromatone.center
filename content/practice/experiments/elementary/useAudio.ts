@@ -7,7 +7,7 @@ export const audio = shallowReactive({
   ctx: null,
   core: null,
   node: null,
-  render(...channels) {
+  render(...channels: (NodeRepr_t | number)[]) {
     console.log('rendering graph')
     if (audio.ctx.state === 'suspended') { audio.ctx.resume() }
     audio.core.render(...channels)
@@ -15,15 +15,12 @@ export const audio = shallowReactive({
   async init() {
     //@ts-expect-error
     audio.ctx = new (AudioContext || webkitAudioContext)()
-
     audio.core = new WebRenderer()
-
     audio.node = await audio.core.initialize(audio.ctx, {
       numberOfInputs: 1,
       numberOfOutputs: 1,
       outputChannelCount: [2],
     })
-
     audio.node.connect(audio.ctx.destination)
   }
 })

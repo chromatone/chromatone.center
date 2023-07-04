@@ -9,8 +9,10 @@ export const audio = shallowReactive({
   node: null,
   render(...channels: (NodeRepr_t | number)[]) {
     console.log('rendering graph')
-    if (audio.ctx.state === 'suspended') { audio.ctx.resume() }
-    audio.core.render(...channels)
+    if (audio.ctx.state === 'suspended') { audio.ctx.resume() } else {
+      audio.core.render(...channels)
+    }
+
   },
   async init() {
     //@ts-expect-error

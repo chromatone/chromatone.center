@@ -146,10 +146,12 @@ const synth = reactive({
 })
 
 export function useSynth() {
-  if (!synth.initiated) {
-    synth.init()
-    synth.initiated = true
-  }
+  // if (!synth.initiated) {
+  //   synth.init()
+  //   synth.initiated = true
+  // }
+
+  synth.init()
 
   const { midi } = useMidi()
   watch(() => midi.note, playMidiNote)

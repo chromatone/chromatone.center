@@ -1,12 +1,15 @@
 <script setup>
 import { pitchColor } from "#/use/calculations"
 import { useAnalyser } from "./useAnalyser";
+import { useAudio } from "./useAudio";
 import { useMic } from "./useMic";
 import { useSynth } from "./useSynth"
 
 const { synth, ui } = useSynth()
 const mic = useMic()
 const analyser = useAnalyser()
+
+const audio = useAudio()
 </script>
 
 <template lang="pug">

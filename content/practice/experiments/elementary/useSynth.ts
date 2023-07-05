@@ -124,24 +124,19 @@ const synth = reactive({
           .2,
           x))))
   },
-  async init() {
-
+  render() {
     const audio = useAudio()
+    const main = el.scope(
+      { name: 'osc', size: 512 },
+      synth.poly(synth.voices))
 
-    function render() {
-      console.log('rendering')
 
-      const main = el.scope(
-        { name: 'osc', size: 512 },
-        el.add(
-          el.in({ channel: 0 }),
-          synth.poly(synth.voices)))
+    audio.layers.synth = synth.pingPong(main)
 
-      const stereo = synth.pingPong(main).map(v => el.tanh(v))
-      audio.render(...stereo)
-    }
-
-    watch(synth, render)
+    audio.render()
+  },
+  async init() {
+    watch(synth, synth.render)
   }
 })
 

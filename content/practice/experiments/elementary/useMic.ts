@@ -1,5 +1,6 @@
 import { onMounted, watch, computed, ref, reactive, shallowReactive } from 'vue'
 import { useAudio } from './useAudio'
+import { el } from '@elemaudio/core';
 
 const mic = shallowReactive({
   isOpen: false,
@@ -24,6 +25,7 @@ export function useMic() {
       mic.open()
     }
   })
-
+  const audio = useAudio()
+  audio.layers.mic = [el.in({ channel: 0 }), el.in({ channel: 0 })]
   return mic
 }

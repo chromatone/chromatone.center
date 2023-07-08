@@ -2,11 +2,9 @@ import { loadStripe } from '@stripe/stripe-js';
 import { MaybeRef, RemovableRef, useStorage } from '@vueuse/core';
 import { useClamp } from '@vueuse/math';
 import { ref, computed, reactive, watch } from 'vue'
-import { open as openWindow } from '@tauri-apps/api/shell'
 
-//@ts-expect-error
+
 const stripeKey = import.meta.env.VITE_STRIPE_KEY
-
 
 export interface CartItem {
 	title: string
@@ -117,13 +115,8 @@ export async function checkout() {
 			shippingAddressCollection: { allowedCountries: allowedCountries() }
 		})
 	} catch (e) {
-		//@ts-expect-error
-		if (window?.__TAURI_IPC__) {
-			openWindow('https://chromatone.center/shop/')
-		}
+		alert('checkout failed')
 	}
-
-
 }
 
 function allowedCountries() {

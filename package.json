@@ -73,8 +73,8 @@
 		"vue": "3.3.4",
 		"vue-glsl": "^1.1.27",
 		"vue-stripe-js": "1.0.1",
-		"webchuck": "^1.2.2",
-		"webmidi": "^3.1.6"
+		"webchuck": "1.2.2",
+		"webmidi": "3.1.6"
 	},
 	"devDependencies": {
 		"@iconify/json": "^2.2.79",
@@ -91,11 +91,11 @@
 		"internal-ip": "8.0.0",
 		"pug": "3.0.2",
 		"sitemap": "7.1.1",
-		"typedoc": "^0.24.8",
+		"typedoc": "0.24.8",
 		"typedoc-plugin-markdown": "3.15.3",
-		"typescript": "^5.1.3",
-		"unocss": "^0.53.1",
-		"unplugin-icons": "^0.16.3",
+		"typescript": "5.1.3",
+		"unocss": "0.53.1",
+		"unplugin-icons": "0.16.3",
 		"unplugin-vue-components": "0.25.1",
 		"vite": "4.3.9",
 		"vitepress": "1.0.0-beta.3",

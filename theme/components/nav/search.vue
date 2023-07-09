@@ -17,11 +17,11 @@ const candidates = computed(() => fuse.search(input.value));
 
 const inputEl = ref()
 
-const { focused } = useFocus(inputEl)
+// const { focused } = useFocus(inputEl)
 
-onMounted(() => {
-  nextTick(focused.value = true)
-})
+// onMounted(() => {
+//   nextTick(focused.value = true)
+// })
 
 onClickOutside(inputEl, () => input.value = '')
 onKeyStroke('Escape', () => { input.value = '', focused.value = false })

@@ -9,20 +9,21 @@ export const audio = shallowReactive({
   node: null,
   layers: {
     synth: null,
-    mic: null
+    mic: null,
+    seq: null
   },
   render() {
     if (audio.ctx.state === 'suspended') { audio.ctx.resume() } else {
-      let sum = [0, 0]
+      let stereo = [0, 0]
       for (let l in audio.layers) {
         let layer = audio.layers[l]
         if (layer) {
           for (let ch in layer) {
-            sum[ch] = el.add(sum[ch], layer[ch])
+            stereo[ch] = el.add(stereo[ch], layer[ch])
           }
         }
       }
-      audio.core.render(...sum.map(v => el.tanh(v)))
+      audio.core.render(...stereo.map(v => el.tanh(v)))
     }
   },
   async init() {

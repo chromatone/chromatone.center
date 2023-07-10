@@ -1,43 +1,32 @@
 import { onMounted, watch, computed, ref, reactive } from 'vue'
 import { useMidi } from '#/use/midi'
-import { pitchColor } from '#/use/calculations';
-import { useStorage } from '@vueuse/core';
-import { useClamp } from '@vueuse/math';
 
 import { NodeRepr_t, el } from '@elemaudio/core';
 
 import { midiFrequency } from './toolbox';
 import { useAudio } from './useAudio'
-
+import { generateUI } from './shared';
 
 const params = [
+  //MAIN
   { name: 'main:volume', value: .2, min: 0, max: 1, step: .01 },
-  { name: 'main:pingPong', value: .3, min: 0, max: 1, step: .01 },
+  //OSC
   { name: 'osc:gain', value: .5, min: 0, max: 1, step: .01 },
-  { name: 'noise:gain', value: .5, min: 0, max: 1, step: .01 },
   { name: 'osc:attack', value: .01, min: 0.001, max: 5, step: .01 },
   { name: 'osc:decay', value: .01, min: 0.001, max: 4, step: .01 },
   { name: 'osc:sustain', value: .5, min: 0, max: 1, step: .01 },
   { name: 'osc:release', value: .01, min: 0.001, max: 10, step: .01 },
+  // NOISE
+  { name: 'noise:gain', value: .5, min: 0, max: 1, step: .01 },
+  { name: 'noise:attack', value: .01, min: 0.001, max: 5, step: .01 },
+  { name: 'noise:decay', value: .01, min: 0.001, max: 4, step: .01 },
+  { name: 'noise:sustain', value: .5, min: 0, max: 1, step: .01 },
+  { name: 'noise:release', value: .01, min: 0.001, max: 10, step: .01 },
+  // FX
+  { name: 'fx:pingPong', value: .3, min: 0, max: 1, step: .01 },
 ]
 
-const ui = reactive({
-  controls: ((ps) => {
-    const control = {}
-    ps.forEach(p => {
-      control[p.name] = useClamp(useStorage(`es:${p.name}`, p.value), p.min, p.max)
-    })
-    return control
-  })(params),
-  groups: computed(() => params.reduce((acc, val) => {
-    const title = val.name.split(':')
-    const name = title.pop()
-    const group = title.pop()
-    acc[group] = acc[group] || []
-    acc[group].push(val)
-    return acc
-  }, {}))
-})
+const ui = generateUI(params)
 
 const synth = reactive({
   initiated: false,
@@ -48,7 +37,12 @@ const synth = reactive({
   ctrl: computed(() => {
     const ctrl = {}
     for (let c in ui.controls) {
-      ctrl[c] = el.smooth(el.tau2pole(0.01), el.const({ key: `ctrl:${c}`, value: ui.controls[c] }))
+      ctrl[c] = el.smooth(
+        el.tau2pole(0.01),
+        el.const({
+          key: `ctrl:${c}`,
+          value: ui.controls[c]
+        }))
     }
     return ctrl
   }),
@@ -74,23 +68,21 @@ const synth = reactive({
       })
     }
   },
-  stopAll(num) {
+  stopAll(num: number) {
     synth.voices.forEach(v => v.gate = 0)
   },
-  voice(voice) {
+  voice(voice: { key: string, gate: number, midi: number, vel: number, }) {
     let frequency = midiFrequency(voice.midi, voice.key)
-    let envelope = el.mul(
+
+    let osc = el.mul(
+      synth.ctrl['osc:gain'],
       el.const({ key: `${voice.key}:vel`, value: voice.vel }),
       el.adsr(
         synth.ctrl['osc:attack'],
         synth.ctrl['osc:decay'],
         synth.ctrl['osc:sustain'],
         synth.ctrl['osc:release'],
-        el.const({ key: `${voice.key}:gate`, value: voice.gate })))
-
-    let osc = el.mul(
-      synth.ctrl['osc:gain'],
-      envelope,
+        el.const({ key: `${voice.key}:gate`, value: voice.gate })),
       el.lowpass(
         el.mul(4, frequency),
         1.1,
@@ -98,7 +90,13 @@ const synth = reactive({
 
     let noise = el.mul(
       synth.ctrl['noise:gain'],
-      envelope,
+      el.const({ key: `${voice.key}:vel`, value: voice.vel }),
+      el.adsr(
+        synth.ctrl['noise:attack'],
+        synth.ctrl['noise:decay'],
+        synth.ctrl['noise:sustain'],
+        synth.ctrl['noise:release'],
+        el.const({ key: `${voice.key}:gate`, value: voice.gate })),
       el.bandpass(frequency, 50, el.noise()))
 
     return el.add(osc, noise)
@@ -117,7 +115,7 @@ const synth = reactive({
     return Array(2).fill(null).map((n, i) => el.add(
       x,
       el.mul(
-        synth.ctrl['main:pingPong'],
+        synth.ctrl['fx:pingPong'],
         el.delay(
           { size: 44100 },
           el.ms2samps(300 * (1 + i * .75)),

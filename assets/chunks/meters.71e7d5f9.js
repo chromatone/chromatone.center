@@ -1,0 +1,1 @@
+const x={simple:{meters:["2/2","2/4","4/4","4/8"],accents:"XxXxXxXxXxXxXxXxXx"},complex:{meters:["5/4","5/8","7/4","7/8","9/4","9/8","11/8"],accents:"XxxXxXxXxXxXxXxXxXx"},compound:{meters:["6/4","6/8","6/16","12/4","12/8","12/16","9/4","9/8","9/16"],accents:"XxxXxxXxxXxxXxxXxxXxx"},times:{meters:["2/4","4/4","8/4"],accents:"XxXxXxXx"}};export{x as d};

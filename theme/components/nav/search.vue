@@ -1,5 +1,5 @@
 <script setup>
-import { onClickOutside, onKeyStroke, useFocus } from "@vueuse/core";
+import { onClickOutside, onKeyStroke } from "@vueuse/core";
 import Fuse from "fuse.js";
 import { computed, nextTick, onMounted, ref } from "vue";
 import { data } from '../../../content/pages.data.js'

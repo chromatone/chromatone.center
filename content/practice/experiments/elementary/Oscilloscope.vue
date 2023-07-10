@@ -1,5 +1,7 @@
 <script setup>
+import { useAnalyser } from './useAnalyser';
 
+const analyser = useAnalyser()
 </script>
 
 <template lang='pug'>

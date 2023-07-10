@@ -1,5 +1,5 @@
 import { loadStripe } from '@stripe/stripe-js';
-import { MaybeRef, RemovableRef, useStorage } from '@vueuse/core';
+import { type RemovableRef, useStorage } from '@vueuse/core';
 import { useClamp } from '@vueuse/math';
 import { ref, computed, reactive, watch } from 'vue'
 

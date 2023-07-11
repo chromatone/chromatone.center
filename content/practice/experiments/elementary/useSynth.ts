@@ -125,7 +125,7 @@ const synth = reactive({
   render() {
     const audio = useAudio()
     const main = el.scope(
-      { name: 'osc', size: 512 },
+      { name: 'synth', size: 512 },
       synth.poly(synth.voices))
 
 

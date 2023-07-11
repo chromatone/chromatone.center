@@ -52,30 +52,32 @@ export function useSequencer() {
         key: 'seq:volume',
         value: sequencer.volume
       }),
-      el.add(
-        kickSynth(50, 0.104, 0.05, 0.4, 4,
-          el.or(
-            el.const({
-              key: 'hit:kick',
-              value: sequencer.hit.kick
-            }),
-            el.seq2({
-              key: 'seq:kick',
-              seq: [...s.tracks.kick]
-            }, sequencer.train, reset))),
-        clapSynth(800, 0.005, 0.204,
-          el.or(
-            el.const({
-              key: 'hit:clap',
-              value: sequencer.hit.clap
-            }), el.seq2({ key: 'seq:clap', seq: [...s.tracks.clap] }, sequencer.train, reset))),
-        hatSynth(317, 12000, 0.005, 0.1,
-          el.or(
-            el.const({
-              key: 'hit:hhat',
-              value: sequencer.hit.hhat
-            }), el.seq2({ key: 'seq:hh', seq: [...s.tracks.hhat] }, sequencer.train, reset))),
-      ))
+      el.scope(
+        { name: 'drums', size: 512 },
+        el.add(
+          kickSynth(30, 0.254, 0.05, 0.4, 4,
+            el.or(
+              el.const({
+                key: 'hit:kick',
+                value: sequencer.hit.kick
+              }),
+              el.seq2({
+                key: 'seq:kick',
+                seq: [...s.tracks.kick]
+              }, sequencer.train, reset))),
+          clapSynth(800, 0.005, 0.204,
+            el.or(
+              el.const({
+                key: 'hit:clap',
+                value: sequencer.hit.clap
+              }), el.seq2({ key: 'seq:clap', seq: [...s.tracks.clap] }, sequencer.train, reset))),
+          hatSynth(317, 12000, 0.005, 0.1,
+            el.or(
+              el.const({
+                key: 'hit:hhat',
+                value: sequencer.hit.hhat
+              }), el.seq2({ key: 'seq:hh', seq: [...s.tracks.hhat] }, sequencer.train, reset))),
+        )))
 
     audio.layers.seq = [all, all]
 

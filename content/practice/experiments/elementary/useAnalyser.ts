@@ -1,24 +1,25 @@
 import { onMounted, watch, computed, ref, reactive } from 'vue'
 import { useAudio } from './useAudio'
 
-const analyser = reactive({
-  initiated: false,
-  osc: [0, 0],
-  oscPoints: computed(() => analyser.osc.map((v: number, i: number) => [i, v * 25].join(',')).join(' ')),
-  async init() {
-    const audio = useAudio()
+export function useAnalyser(name = 'osc') {
 
-    audio.core.on('scope', (e) => {
-      if (e?.source == 'osc') {
-        let arr = [...e?.data[0].values()]
-        // let zeroCross = arr.findIndex((v, i) => v * arr[i + 1] < 0)
-        analyser.osc = arr //.slice(zeroCross)
-      }
-    })
-  }
-})
+  const analyser = reactive({
+    initiated: false,
+    data: [0, 0],
+    points: computed(() => analyser.data.map((v: number, i: number) => [i, v * 25].join(',')).join(' ')),
+    async init() {
+      const audio = useAudio()
 
-export function useAnalyser() {
+      audio.core.on('scope', (e) => {
+        if (e?.source == name) {
+          let arr = [...e?.data[0].values()]
+          // let zeroCross = arr.findIndex((v, i) => v * arr[i + 1] < 0)
+          analyser.data = arr //.slice(zeroCross)
+        }
+      })
+    }
+  })
+
   if (!analyser.initiated) {
     analyser.init()
     analyser.initiated = true

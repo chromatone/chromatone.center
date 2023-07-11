@@ -2,6 +2,7 @@
 title: Song structure
 description: The form variations of a songwriting process
 date: 2021-10-12
+cover: structure.jpg
 ---
 
 [Song structure](https://en.wikipedia.org/wiki/Song_structure) is the arrangement of a song, and is a part of the songwriting process. It is typically sectional, which uses repeating forms in songs. Common forms include bar form, 32-bar form, verse–chorus form, ternary form, strophic form, and the 12-bar blues. Popular music songs traditionally use the same music for each verse or stanza of lyrics (as opposed to songs that are "through-composed"—an approach used in classical music art songs). Pop and traditional forms can be used even with songs that have structural differences in melodies.[clarification needed] The most common format in modern popular music is introduction (intro), verse, pre-chorus, chorus (or refrain), verse, pre-chorus, chorus, bridge ("middle eight"), verse, chorus and outro. In rock music styles, notably heavy metal music, there is usually one or more guitar solos in the song, often found after the middle chorus part. In pop music, there may be a guitar solo, or a solo may be performed by a synthesizer player or sax player.
@@ -9,6 +10,8 @@ date: 2021-10-12
 The foundation of popular music is the "verse" and "chorus" structure. Some writers use a simple "verse, hook, verse, hook, bridge, hook" method. "Pop and rock songs nearly always have both a verse and a chorus. The primary difference between the two is that when the music of the verse returns, it is almost always given a new set of lyrics, whereas the chorus usually retains the same set of lyrics every time its music appears." Both are essential elements, with the verse usually played first (exceptions abound, of course, with "She Loves You" by The Beatles being an early example in the rock music genre). Each verse usually employs the same melody (possibly with some slight modifications), while the lyrics usually change for each verse. The chorus (or "refrain") usually consists of a melodic and lyrical phrase that repeats. Pop songs may have an introduction and coda ("tag"), but these elements are not essential to the identity of most songs. Pop songs often connect the verse and chorus via a pre-chorus, with a bridge section usually appearing after the second chorus.
 
 The verse and chorus are usually repeated throughout a song, while the intro, bridge, and coda (also called an "outro") are usually only used once. Some pop songs may have a solo section, particularly in rock or blues-influenced pop. During the solo section, one or more instruments play a melodic line which may be the melody used by the singer, or, in blues or jazz improvised.
+
+![Anatomy of songs](./structure.jpg)
 
 ## Elements
 

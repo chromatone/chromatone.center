@@ -2,6 +2,7 @@
 title: Generative theory of tonal music
 description: Formal description of the musical intuitions of a listener who is experienced in a musical idiom
 date: 2021-11-13
+cover: Analysis-of-the-beginning-of-Bachs-chorale-Ermuntre-Dich-mein-schwacher-Geist_Q320.jpg
 ---
 
 A [generative theory of tonal music](https://en.wikipedia.org/wiki/Generative_theory_of_tonal_music) (GTTM) is a theory of music conceived by American composer and music theorist Fred Lerdahl and American linguist Ray Jackendoff and presented in the 1983 book of the same title. It constitutes a "formal description of the musical intuitions of a listener who is experienced in a musical idiom" with the aim of illuminating the unique human capacity for musical understanding.

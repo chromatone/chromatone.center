@@ -1,7 +1,7 @@
 ---
 title: Musical form
 description: The structure of a musical composition or performance
-
+cover: 100122828-0232_Lohse_Zwei_Themen_web.jpg
 date: 2021-11-02
 links:
   - https://en.wikipedia.org/wiki/List_of_classical_music_genres
@@ -206,7 +206,9 @@ Each section of Sonata Form movement has its own function:
 - Following the introduction, the exposition is the first required section. It lays out the thematic material in its basic version. There are usually two themes or theme groups in the exposition, and they are often in contrast styles and keys and connected by a transition. In the end of the exposition, there is a closing theme which concludes the section.
 - The exposition is followed by the development section in which the material in the exposition is developed.
 - After the development section, there is a returning section called recapitulation where the thematic material returns in the tonic key.
-- At the end of the movement, there may be a coda, after the recapitulation.[13]
+- At the end of the movement, there may be a coda, after the recapitulation.
+
+<youtube-embed video="HzHS7QL-B-c" />
 
 ## Forms used in Western popular music
 

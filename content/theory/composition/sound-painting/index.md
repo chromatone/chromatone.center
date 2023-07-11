@@ -5,6 +5,8 @@ date: 2023-07-11
 cover: stage.jpg
 ---
 
+<youtube-embed video="YJQf0MDsNaA" />
+
 ## Introduction
 
 [Soundpainting](http://www.soundpainting.com) is the universal multidisciplinary live composing sign language for musicians, actors, dancers, and visual Artists. Presently (2023) the language comprises more than 1500 gestures that are signed by the Soundpainter (composer) to indicate the type of material desired of the performers. The creation of the composition is realized, by the Soundpainter, through the parameters of each set of signed gestures. The Soundpainting language was created by Walter Thompson in Woodstock, New York in 1974.
@@ -13,7 +15,7 @@ cover: stage.jpg
 
 Soundpainting is an essential method for engaging students of all ages, ability levels, and art forms in the creative process. Unlike learning to create within a single style, Soundpainting develops the creative voices of students through an array of structural parameters allowing individual choice and stylistic parameters. Using the composer, or “Soundpainter,” as teacher, the innate creativity of students is drawn out and developed constructively by way of the gestural choices of the Soundpainter, enabling each individual, each group, to express their own character in an experiential learning format.
 
-<youtube-embed video="YJQf0MDsNaA" />
+<youtube-embed video="hp_AxCgtD1M" />
 
 ## Analysis
 
@@ -70,6 +72,8 @@ There are four Imaginary Regions the Soundpainter utilizes when signing gestures
 3. **The Imaginary Staff:** An imaginary vertical field 1 and ½ meters (3 ½ feet) just in front of the Soundpainter that indicates low to high pitch range with sound and slow to fast movement with certain gestures such as a Long Tone. Note: The name Imaginary Staff is derived from music language. It is related to the music staff, which is a set of five parallel lines with spaces between them, on which notes are written to indicate their pitch.
 
 4. **The Imaginary Stage:** A horizontal field (like a small square table top) approximately ¾ of a meter for each side (3/4 of a yard squared) at waist height positioned just in front of the Soundpainter. The Imaginary Stage is the region in which the Soundpainter indicates movement directions on the stage – where the movement will travel to and from. Such gestures as Directions and Space Fader are both signed on the Imaginary Stage.
+
+<youtube-embed video="tKFjZEUbYdU" />
 
 ![Walter Thompson](./walter.jpg)
 

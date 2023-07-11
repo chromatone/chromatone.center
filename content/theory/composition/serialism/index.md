@@ -1,7 +1,7 @@
 ---
 title: Atonality and serialism
 description: Arnold Schoenberg and his explorations of 12 tone composition techniques
-
+cover: Richard-Paul-Lohse.jpg
 date: 2021-11-12
 ---
 

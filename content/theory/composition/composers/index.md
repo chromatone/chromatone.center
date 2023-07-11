@@ -2,6 +2,7 @@
 title: Composers
 description: Interviews and retrospectives
 date: 2021-10-02
+cover: brian-eno-A-Year-with-Swollen-Appendices-faber-book.jpg
 ---
 
 ## Steve Reich

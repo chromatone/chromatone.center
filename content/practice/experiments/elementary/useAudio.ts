@@ -20,11 +20,12 @@ export const audio = shallowReactive({
         let layer = audio.layers[l]
         if (layer) {
           for (let ch in layer) {
-            stereo[ch] = el.add(stereo[ch], layer[ch])
+            stereo[ch] = el.tanh(el.add(stereo[ch], layer[ch]))
           }
         }
       }
-      audio.core.render(...stereo.map(v => el.tanh(v)))
+
+      audio.core.render(stereo[0], el.fft({ key: 'main:fft', name: 'fft', size: 1024 }, stereo[1]))
     }
   },
   async init() {

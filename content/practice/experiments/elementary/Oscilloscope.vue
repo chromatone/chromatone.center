@@ -1,11 +1,38 @@
-<script setup>
-import { useAnalyser } from './useAnalyser';
+<script setup lang="ts">
+import { onMounted, watch, computed, ref, reactive } from 'vue'
+import { useAudio } from './useAudio'
 
 const props = defineProps({
   name: { default: 'osc', type: String }
 })
 
-const analyser = useAnalyser(props.name)
+function useScope(name = 'osc') {
+
+  const analyser = reactive({
+    initiated: false,
+    data: [],
+    points: computed(() => analyser.data.map((v: number, i: number) => [i, v * 25].join(',')).join(' ')),
+    async init() {
+      const audio = useAudio()
+
+      audio.core.on('scope', (e) => {
+        if (e?.source == name) {
+          let arr = [...e?.data[0].values()]
+          // let zeroCross = arr.findIndex((v, i) => v * arr[i + 1] < 0)
+          analyser.data = arr //.slice(zeroCross)
+        }
+      })
+    }
+  })
+
+  if (!analyser.initiated) {
+    analyser.init()
+    analyser.initiated = true
+  }
+  return analyser
+}
+
+const analyser = useScope(props.name)
 </script>
 
 <template lang='pug'>

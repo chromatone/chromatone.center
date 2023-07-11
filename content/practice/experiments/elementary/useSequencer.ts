@@ -1,6 +1,5 @@
 import { reactive } from 'vue';
 import { useAudio } from './useAudio';
-import ds from '@nick-thompson/drumsynth'
 import { el } from '@elemaudio/core';
 import { computed } from 'vue';
 import { watch } from 'vue';
@@ -10,12 +9,6 @@ import { kickSynth, hatSynth, clapSynth } from './useDrums'
 
 export function useSequencer() {
   const audio = useAudio()
-
-  // audio.core.on('scope', ev => {
-  //   if (ev.source == 'seq:kick') {
-  //     console.log(ev)
-  //   }
-  // })
 
   const sequencer = reactive({
     mute: false,

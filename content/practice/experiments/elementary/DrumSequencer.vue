@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useDrums } from './useDrums';
 import { useSequencer } from './useSequencer';
 
 const { sequencer } = useSequencer()
@@ -7,7 +8,6 @@ const { sequencer } = useSequencer()
 
 <template lang='pug'>
 .p-0.flex.flex-col.gap-4
-  .p-2 SEQ 
   .is-group.flex.flex-wrap
     ControlRotary(
       param="BPM"
@@ -34,6 +34,11 @@ const { sequencer } = useSequencer()
     .flex.items-center.gap-1(
       v-for="(track,t) in sequencer.tracks" :key="t")
       .step(
+        :class="{active:sequencer.hit[t]}"
+        @mousedown="sequencer.hit[t]=1"
+        @mouseup="sequencer.hit[t]=0"
+        ) {{ t }}
+      .step(
         v-for="(step,s) in track" :key="s"
         :class="{active: step == 1}"
         @click="track[s] = step ==1 ? 0: 1") 
@@ -41,10 +46,10 @@ const { sequencer } = useSequencer()
 
 <style scoped lang="postcss">
 .step {
-  @apply flex-1 rounded min-h-8 bg-light-900;
+  @apply justify-center text-center flex-1 rounded min-h-8 bg-light-900 dark-bg-dark-50 select-none;
 }
 
 .active {
-  @apply bg-dark-50;
+  @apply bg-dark-50 dark-bg-light-900;
 }
 </style>

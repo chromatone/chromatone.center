@@ -1,16 +1,10 @@
 <script setup>
 
-import { useMic } from "./useMic";
-
 import OscilloScope from "./OscilloScope.vue";
-import { useAudio } from "./useAudio";
 import DrumSequencer from "./DrumSequencer.vue";
 import ElemSynth from "./ElemSynth.vue";
+import ElemInput from "./ElemInput.vue";
 
-
-const mic = useMic();
-
-const audio = useAudio()
 </script>
 
 <template lang="pug">
@@ -18,7 +12,7 @@ const audio = useAudio()
   .text-2xl.p-2 Elementary audio
   DrumSequencer
   OscilloScope
-  button.text-button(@click="mic.isOpen = !mic.isOpen" :class="{['text-red-500']:mic.isOpen}") Open mic
+  ElemInput
   ElemSynth
 
 </template>

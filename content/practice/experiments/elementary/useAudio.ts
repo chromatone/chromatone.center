@@ -10,7 +10,8 @@ export const audio = shallowReactive({
   layers: {
     synth: null,
     mic: null,
-    seq: null
+    seq: null,
+    drums: null,
   },
   render() {
     if (audio.ctx.state === 'suspended') { audio.ctx.resume() } else {

@@ -20,12 +20,17 @@ const mic = shallowReactive({
 })
 
 export function useMic() {
+  const audio = useAudio()
+
+  audio.layers.mic = [el.in({ channel: 0 }), el.in({ channel: 0 })]
+
   watch(() => mic.isOpen, open => {
     if (open) {
       mic.open()
+    } else {
+      mic.close()
     }
   })
-  const audio = useAudio()
-  audio.layers.mic = [el.in({ channel: 0 }), el.in({ channel: 0 })]
+
   return mic
 }

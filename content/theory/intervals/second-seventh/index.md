@@ -11,9 +11,7 @@ cover: Epogdoon.jpg
 
 <abc-render abc="[A4B] AB" />
 
-<chroma-circle :chroma="'101000000000'" type="+M2" />
-
-<chroma-row :chroma="'101000000000'" />
+<chroma-profile :chroma="'101000000000'" />
 
 A major second (sometimes also called **whole tone** or a **whole step**) is a second spanning two semitones. The major second is the interval that occurs between the first and second degrees of a major scale, the tonic and the supertonic.
 

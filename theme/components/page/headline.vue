@@ -5,27 +5,26 @@ const props = defineProps(['pageColor', 'lightColor', 'page'])
 <template lang="pug">
 .header(
   v-if="!$frontmatter.misc"
-  :class="{ 'has-cover': page?.frontmatter?.cover || page?.frontmatter?.icon }"
+  :class="{ 'has-cover': page?.cover || page?.icon }"
   :style="{ backgroundColor: pageColor }"
   )
-  .cover(v-if="page?.frontmatter?.cover",:style="{ backgroundImage: `url(${page?.frontmatter?.cover})`, backgroundColor: pageColor }")
-  img.icon(v-if="page?.frontmatter?.icon",:src="page?.frontmatter?.icon")
+  .cover(v-if="page?.cover",:style="{ backgroundImage: `url(${page?.cover})`, backgroundColor: pageColor }")
+  img.icon(v-if="page?.icon",:src="page?.icon")
   .meta(:style="{ borderColor: pageColor }")
 
     slot
 
-    .text-4xl.font-bold.mb-1.flex.flex-wrap.items-center(v-if="page?.frontmatter?.title" :key="page.url") 
-      .mr-2 {{ page?.frontmatter?.title }}
+    .text-4xl.font-bold.mb-1.flex.flex-wrap.items-center(v-if="page?.title" :key="page.url") 
+      .mr-2 {{ page?.title }}
       .flex-1
-      .mx-2.my-4.text-6xl(v-if="page?.frontmatter?.emoji") {{ page?.frontmatter?.emoji }}
-    .font-bold.mt-2.mb-4(v-if="page?.frontmatter?.description") {{ page?.frontmatter?.description }}
-    page-buttons(:buttons="page?.frontmatter?.buttons")
+      .mx-2.my-4.text-6xl(v-if="page?.emoji") {{ page?.emoji }}
+    .font-bold.mt-2.mb-4(v-if="page?.description") {{ page?.description }}
+    page-buttons(:buttons="page?.buttons")
     .absolute.-bottom-2rem.right-2rem
       shop-price(
-        :product="page?.frontmatter?.product" 
-        :title="page?.frontmatter?.title" 
-        :color="lightColor"
-        )
+        :product="page?.product" 
+        :title="page?.title" 
+        :color="lightColor")
 </template>
 
 <style lang="postcss" scoped>

@@ -79,7 +79,7 @@ function toggleNote(ev) {
 
     chroma-code(:chroma="chroma" @update:chroma="$emit('update:chroma',$event)")
 
-  chroma-row.mx-4.mb-6(
+  chroma-row.mx-2.mb-2(
     :chroma="chroma" @update:chroma="$emit('update:chroma',$event)" :editable="editable")
   //- chroma-stack.flex-1.mx-4(:chroma="chroma")
   //- chroma-square.w-12em.mx-4(:chroma="chroma" :editable="editable")

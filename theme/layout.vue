@@ -49,11 +49,11 @@ const lightColor = computed(() => lchToHsl(siblings.value.index, siblings.value.
 
     template(v-else)
       main#content.w-full
-        page-headline(:pageColor="pageColor", :lightColor="lightColor" :page="page")
+        page-headline(:pageColor="pageColor", :lightColor="lightColor" :page="page.frontmatter")
           page-parents.text-xl.mb-4(:parents="parents.slice(0,-1)")
 
         transition(name="fade")
-          .content-container(:key="route.path")
+          .content-container.pb-8(:key="route.path")
             row-list.px-2.my-2.max-w-full(v-if="!frontmatter?.topContent" :children="children")
 
             content.content.flex-auto.z-10

@@ -13,7 +13,7 @@ org:
     email: support@chromatone.center
     github: chromatone
     reddit: r/chromatone
-author:
+topContent: true
 
 ---
 

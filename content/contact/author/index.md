@@ -1,5 +1,5 @@
 ---
-title: Author of the system
+title: Author
 description: Denis Starov has developed his visual way through music theory starting from early 2016
 date: 1987-03-07
 author:
@@ -21,9 +21,7 @@ Hey! My name is Denis Starov. I'm a designer in a broad scence. And I widen it b
 
 And first steps were quite difficult! All the lines and dots of solfeggio and 18th century music didn't make sense in our modern LED screen society. School just couldn't give me the tools I laked to understand all the intricacies of harmonic relationships. Tonal world is vast and vivid, and there should be tools to navigate it. And I got one for some time before - the metal memo from one of my USSR riun explorations. And I used it for some early guitar experiences in University years. So I knew there are shortcuts and more systematic approaches to music.
 
-[./memo.jpg]
-
-[./twosides.jpg]
+![](./memo.jpg)
 
 And around 2016 I started my research about using visual design approach for my personal music theory research. The initial phase took about 6 months while I was looking for any kind of visual cue that I could use as a design system basis. Then I came to the idea of combining color and pitch. Around 2016 I was finally convinced by all the evidence from my wide range study that assigning red color to the note A and having 12 chromatic notes have 12 spectal colors was the right choice.
 
@@ -32,3 +30,5 @@ My main goal at that time was to put up some visual memo system that could help 
 After some practice with these accesories I got the sense of real value of this simple setup. It enables you to readily play chords of any given scale without extensive and rigirous learning, but also was discovered as a perfect tool for fast and effective communication between unprofessional musicians. So this system may be very helpful for music learners and explorers from all over the world. And also you can't print and cut only 1 high quality sticker sheet, the printshop demands to order at least 10. So I found that I can share this system with the world! So I started selling stickers and cheat-sheets from a custom Wordpress web-site by the end of 2021.
 
 The system proved to be extremely versatile.
+
+![](./twosides.jpg)

@@ -1,4 +1,4 @@
-import { shallowReactive } from 'vue';
+import { shallowReactive, watch } from 'vue';
 import { NodeRepr_t, el } from '@elemaudio/core';
 import WebRenderer from '@elemaudio/web-renderer';
 
@@ -25,11 +25,15 @@ export const audio = shallowReactive({
             stereo[ch] = el.tanh(el.add(stereo[ch], layer[ch]))
           }
         }
-
-
       }
 
-      audio.core.render(stereo[0], el.fft({ key: 'main:fft', name: 'fft', size: 2048 }, stereo[1]))
+      audio.core.render(
+        stereo[0],
+        el.fft({
+          key: 'main:fft',
+          name: 'fft',
+          size: 2048
+        }, stereo[1]))
     }
   },
   async init() {
@@ -50,5 +54,8 @@ export function useAudio() {
     audio.init()
     audio.initiated = true
   }
+  watch(audio, layers => {
+    console.log(audio.layers)
+  }, { deep: true })
   return audio
 }

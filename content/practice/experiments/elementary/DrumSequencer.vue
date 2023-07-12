@@ -8,7 +8,7 @@ const { sequencer } = useSequencer()
 </script>
 
 <template lang='pug'>
-.p-0.flex.flex-col.gap-4
+.flex.flex-col.gap-2.is-group.p-2.bg-light-200.dark-bg-dark-200.shadow.rounded.gap-4
   .is-group.flex.flex-wrap
     ControlRotary(
       param="BPM"

@@ -86,7 +86,7 @@ export const midi: MidiInterface = reactive({
     channel: 1,
     velocity: 0,
   },
-  offset: useClamp(0, -2, 2),
+  offset: useClamp(0, -3, 3),
   keyboard: true,
   cc: {},
   ccLearn: {},

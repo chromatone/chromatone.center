@@ -17,7 +17,7 @@ function cycle() {
 
 const partials = reactive([1, 0.2, 1, 0, 0, 1, 0.2, 0.2])
 
-const octaves = useCycleList([-2, -1, 0, 1, 2], { initialValue: midi.offset })
+const octaves = useCycleList([-3, -2, -1, 0, 1, 2, 3], { initialValue: midi.offset })
 
 watch(partials, () => {
   synth.poly.set({ oscillator: { partials: [...partials] } })

@@ -25,7 +25,7 @@ export const audio = shallowReactive({
         }
       }
 
-      audio.core.render(stereo[0], el.fft({ key: 'main:fft', name: 'fft', size: 1024 }, stereo[1]))
+      audio.core.render(stereo[0], el.fft({ key: 'main:fft', name: 'fft', size: 2048 }, stereo[1]))
     }
   },
   async init() {

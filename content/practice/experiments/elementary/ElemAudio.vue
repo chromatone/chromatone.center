@@ -1,16 +1,29 @@
 <script setup>
-import DrumSequencer from "./DrumSequencer.vue";
+import ElemSequencer from "./ElemSequencer.vue";
 import ElemSynth from "./ElemSynth.vue";
 import ElemInput from "./ElemInput.vue";
-import FFTScope from "./FFTScope.vue";
+import ElemFFT from "./ElemFFT.vue";
+import { useAudio } from "./useAudio";
+import { ref } from "vue";
+const audio = useAudio()
 
+const scope = ref([])
+
+audio.core.on('scope', e => {
+  if (e?.source == 'main:scope') {
+    let arr = [...e?.data[0].values()]
+    // let zeroCross = arr.findIndex((v, i) => v * arr[i + 1] < 0)
+    scope.value = arr //.slice(zeroCross)
+  }
+})
 </script>
 
 <template lang="pug">
 .p-4.flex.flex-col.gap-4
   .text-2xl.p-2 Elementary audio
-  FFTScope
-  DrumSequencer
+  p {{ scope[0] }}
+  ElemFFT
+  ElemSequencer
   ElemInput
   ElemSynth
 

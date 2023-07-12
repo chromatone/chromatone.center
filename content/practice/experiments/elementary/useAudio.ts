@@ -17,7 +17,7 @@ export const audio = shallowReactive({
     if (audio.ctx.state === 'suspended') { audio.ctx.resume() } else if (!audio.initiated) {
       audio.init()
     } else {
-      let stereo = [0, 0]
+      let stereo = [el.mul(0, el.scope({ key: 'main:scope', name: 'main:scope', size: 256 }, el.time())), 0]
       for (let l in audio.layers) {
         let layer = audio.layers[l]
         if (layer) {

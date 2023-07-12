@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import OscilloScope from './Oscilloscope.vue';
+import ElemOSC from './ElemOSC.vue';
 import { useDrums } from './useDrums';
 import { useSequencer } from './useSequencer';
 
@@ -30,7 +30,7 @@ const { sequencer } = useSequencer()
       :max="1"
       :step=".001"
       v-model="sequencer.volume")
-    OscilloScope.flex-1.max-h-30(name="drums")
+    ElemOSC.flex-1.max-h-30(name="drums")
   .flex.flex-col.gap-2 
     .flex.items-center.gap-1(
       v-for="(track,t) in sequencer.tracks" :key="t")

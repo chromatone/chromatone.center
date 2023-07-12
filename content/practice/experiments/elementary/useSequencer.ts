@@ -8,7 +8,7 @@ import { useClamp } from '@vueuse/math';
 import { kickSynth, hatSynth, clapSynth } from './useDrums'
 
 export function useSequencer() {
-  const audio = useAudio()
+
 
   const sequencer = reactive({
     mute: false,
@@ -36,6 +36,7 @@ export function useSequencer() {
   })
 
   watch(sequencer, s => {
+    const audio = useAudio()
 
     // const metro = el.metro({ interval: s.interval })
     const reset = el.const({ key: 'seq:reset', value: sequencer.reset })
@@ -75,7 +76,7 @@ export function useSequencer() {
     audio.layers.seq = [all, all]
 
     audio.render()
-  }, { immediate: true })
+  })
 
   return { sequencer }
 }

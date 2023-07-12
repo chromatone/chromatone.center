@@ -38,15 +38,15 @@ const FFT = useFFT(props.name)
 </script>
 
 <template lang='pug'>
-svg.max-h-30.mix-blend-difference(ref="svgElem" :viewBox="`0 0 ${100*Math.log2(FFT?.data[0].length+1)} 100`")
+svg.max-h-30(ref="svgElem" :viewBox="`0 0 ${100*Math.log2(FFT?.data[0].length+1)} 100`")
   g
     rect(
-      fill="white"
+      fill="currentColor"
       v-for="(val,v) in FFT?.total" :key="v" 
       :x="100*Math.log2(v+1)" 
-      y="98"
+      :y="98 -val*10"
       :width="100*(Math.log2(v+2)-Math.log2(v+1))"  
-      :style="{transform:`translateY(${-val*10}px)`}"
+      rx="10"
       :height="200")
     
 </template>

@@ -14,7 +14,9 @@ export const audio = shallowReactive({
     drums: null,
   },
   render() {
-    if (audio.ctx.state === 'suspended') { audio.ctx.resume() } else {
+    if (audio.ctx.state === 'suspended') { audio.ctx.resume() } else if (!audio.initiated) {
+      audio.init()
+    } else {
       let stereo = [0, 0]
       for (let l in audio.layers) {
         let layer = audio.layers[l]
@@ -23,6 +25,8 @@ export const audio = shallowReactive({
             stereo[ch] = el.tanh(el.add(stereo[ch], layer[ch]))
           }
         }
+
+
       }
 
       audio.core.render(stereo[0], el.fft({ key: 'main:fft', name: 'fft', size: 2048 }, stereo[1]))

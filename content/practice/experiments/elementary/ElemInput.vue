@@ -1,5 +1,5 @@
 <script setup>
-import OscilloScope from "./OscilloScope.vue";
+import OscilloScope from "./Oscilloscope.vue";
 import { useMic } from "./useMic";
 
 const mic = useMic()

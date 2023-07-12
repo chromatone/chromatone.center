@@ -2,6 +2,7 @@ import { onMounted, watch, computed, ref, reactive, shallowReactive } from 'vue'
 import { useAudio } from './useAudio'
 import { el } from '@elemaudio/core';
 import { useClamp } from '@vueuse/math';
+import { watchEffect } from 'vue';
 
 const mic = shallowReactive({
   isOpen: false,
@@ -24,7 +25,7 @@ const mic = shallowReactive({
 export function useMic() {
   const audio = useAudio()
 
-  watch(mic.gain, g => {
+  watchEffect(() => {
     const input = el.scope(
       { name: 'mic', size: 512 },
       el.mul(
@@ -33,7 +34,7 @@ export function useMic() {
       )
     )
 
-    audio.layers.mic = [input, input]
+    audio.layers.mic = mic.isOpen ? [input, input] : [0, 0]
     audio.render()
   })
 
@@ -41,7 +42,10 @@ export function useMic() {
     if (open) {
       mic.open()
     } else {
-      mic.close()
+
+      setTimeout(() => {
+        mic.close()
+      }, 400);
     }
   })
 

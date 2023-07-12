@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { onMounted, watch, computed, ref, reactive } from 'vue'
 import { useAudio } from './useAudio'
-import { Analyser } from 'tone';
-import { relay } from '@gun-vue/composables';
 
 const props = defineProps({
   name: { default: 'fft', type: String }

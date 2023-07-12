@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import OscilloScope from './OscilloScope.vue';
+import OscilloScope from './Oscilloscope.vue';
 import { useDrums } from './useDrums';
 import { useSequencer } from './useSequencer';
 

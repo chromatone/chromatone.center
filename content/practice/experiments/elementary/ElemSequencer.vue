@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import ElemOSC from './ElemOSC.vue';
-import { useDrums } from './useDrums';
-import { useSequencer } from './useSequencer';
+import { useDrums, useSequencer } from './useDrums';
 
 const { sequencer } = useSequencer()
 

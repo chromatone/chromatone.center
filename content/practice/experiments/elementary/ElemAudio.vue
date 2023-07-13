@@ -4,11 +4,10 @@ import ElemSynth from "./ElemSynth.vue";
 import ElemInput from "./ElemInput.vue";
 import ElemFFT from "./ElemFFT.vue";
 import { useElemAudio } from "./useElemAudio";
+import ElemTime from "./ElemTime.vue";
 
 
 const { audio, render, meters } = useElemAudio()
-
-
 
 </script>
 
@@ -18,6 +17,7 @@ const { audio, render, meters } = useElemAudio()
   button.text-button(@click="render()") RENDER
   pre {{ audio.initiated }} {{ audio.started }}
   .text-xs {{ meters }}
+  ElemTime
   //- ElemFFT
   //- ElemSequencer
   //- ElemInput

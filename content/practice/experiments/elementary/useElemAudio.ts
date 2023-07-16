@@ -22,21 +22,12 @@ const meters: Record<string, { min: number, max: number }> = reactive({})
 
 const silence = el.const({ key: 'main:silence', value: 0 })
 
-const time = el.mul(
-  silence,
-  el.meter({ name: 'main:time', key: 'main:time' }, el.time()))
-
-let l: NodeRepr_t | number = silence
-let r: NodeRepr_t | number = silence
-
 let signal: (NodeRepr_t | number)[] = [silence, silence]
 
-const layers: Record<string, any> = reactive({
-  time: { mute: true, signal: [silence, time] }
-})
+const layers: Record<string, any> = reactive({})
+
 
 export function useElemAudio() {
-
   onMounted(async () => {
     console.log('mounted')
     if (!audio.initiated) {
@@ -48,7 +39,7 @@ export function useElemAudio() {
   })
 
   return {
-    audio, meters, layers, init, start, render
+    audio, meters, layers, init, start, render, silence,
   }
 }
 
@@ -56,9 +47,12 @@ function render() {
   start()
   for (let name in layers) {
     let layer = layers[name];
-    signal = signal.map((ch, i) => el.mul(
-      el.const({ key: `${name}:volume`, value: layer?.volume || 0 }),
-      el.add(ch, layer.signal[i]))
+    signal = signal.map((ch, i) =>
+      el.add(
+        ch,
+        el.mul(
+          el.const({ key: `${name}:volume`, value: layer?.muted ? 0 : layer?.volume || 0 }),
+          layer.signal[i]))
     )
   }
   console.log('rendering');

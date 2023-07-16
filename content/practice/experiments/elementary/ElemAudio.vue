@@ -13,10 +13,11 @@ const { audio, render, meters } = useElemAudio()
 
 <template lang="pug">
 .p-4.flex.flex-col.gap-4
-  .text-2xl.p-2 Elementary audio
+  .p-2.flex.gap-2.items-center 
+    .text-2xl Elementary audio
+    .i-la-plug(v-if="audio.initiated")
+    .i-la-volume-up(v-if="audio.started")
   button.text-button(@click="render()") RENDER
-  pre {{ audio.initiated }} {{ audio.started }}
-  .text-xs {{ meters }}
   ElemTime
   //- ElemFFT
   //- ElemSequencer

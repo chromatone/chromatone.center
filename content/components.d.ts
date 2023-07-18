@@ -88,6 +88,7 @@ declare module 'vue' {
     ILaStop: typeof import('~icons/la/stop')['default']
     ILaTimes: typeof import('~icons/la/times')['default']
     ILaTrash: typeof import('~icons/la/trash')['default']
+    ILaUpload: typeof import('~icons/la/upload')['default']
     ILaVolumeMute: typeof import('~icons/la/volume-mute')['default']
     ILaVolumeOff: typeof import('~icons/la/volume-off')['default']
     ILaVolumeUp: typeof import('~icons/la/volume-up')['default']

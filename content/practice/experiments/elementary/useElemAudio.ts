@@ -59,7 +59,11 @@ function render() {
       el.add(
         ch,
         el.mul(
-          el.const({ key: `${name}:volume`, value: layer?.muted ? 0 : layer?.volume || 0 }),
+          el.sm(
+            el.const({
+              key: `${name}:volume`,
+              value: layer?.muted ? 0 : layer?.volume || 0
+            })),
           layer.signal[i]))
     )
   }

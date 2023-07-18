@@ -10,12 +10,12 @@ export interface Param {
   step: number
 }
 
-export function generateUI(params: Param[]) {
+export function generateUI(params: Param[], title = 'es') {
   return reactive({
     controls: ((ps) => {
       const control = {}
       ps.forEach(p => {
-        control[p.name] = useClamp(useStorage(`es:${p.name}`, p.value), p.min, p.max)
+        control[p.name] = useClamp(useStorage(`${title}:${p.name}`, p.value), p.min, p.max)
       })
       return control
     })(params),

@@ -3,11 +3,13 @@
  * @description Main audio bus controller
  */
 
-import { getDestination, start, gainToDb, Meter, context, Reverb, Limiter, LimiterOptions, Volume } from "tone"
+import { getDestination, start, gainToDb, Meter, context, Reverb, Limiter, LimiterOptions, Volume, Context, BaseContext, Destination } from "tone"
 import { useRecorder } from "./recorder"
 import { shallowReactive, reactive, watchEffect, markRaw, ref, Ref, watch } from 'vue'
 import { useRafFn, useStorage } from "@vueuse/core"
 import { useClamp } from "@vueuse/math"
+import { AnyAudioContext } from "tone/build/esm/core/context/AudioContext"
+
 
 const audio: {
   initiated: boolean
@@ -26,6 +28,8 @@ export const master: {
   meter?: Meter
   limiter?: Limiter
   reverb?: Reverb
+  context?: AnyAudioContext
+  destination?: typeof Destination
 } = reactive({})
 
 export const channels: Record<string, { channel: Limiter, volume: Volume }> = shallowReactive({})
@@ -33,7 +37,8 @@ export const channels: Record<string, { channel: Limiter, volume: Volume }> = sh
 export function useAudio() {
   if (!audio.initiated) {
     start()
-
+    master.context = new Context().rawContext
+    master.destination = getDestination()
     const { recorder } = useRecorder()
 
     master.stream = markRaw(context.createMediaStreamDestination())
@@ -41,6 +46,7 @@ export function useAudio() {
     master.meter.normalRange = true
     master.meter.connect(master.stream)
     master.meter.connect(recorder)
+
 
     useRafFn(() => {
       audio.meter = master.meter.getValue()
@@ -56,11 +62,11 @@ export function useAudio() {
     master.limiter.connect(master.reverb)
 
     watchEffect(() => {
-      getDestination().mute = audio.mute;
+      master.destination.mute = audio.mute;
     });
 
     watchEffect(() => {
-      getDestination().volume.targetRampTo(gainToDb(audio.volume), 0.1);
+      master.destination.volume.targetRampTo(gainToDb(audio.volume), 0.1);
     });
     audio.initiated = true;
   }

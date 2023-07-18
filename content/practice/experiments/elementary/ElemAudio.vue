@@ -1,11 +1,10 @@
 <script setup>
 import ElemSequencer from "./ElemSequencer.vue";
-import ElemSynth from "./ElemSynth.vue";
-import ElemInput from "./ElemInput.vue";
-import ElemFFT from "./ElemFFT.vue";
+// import ElemSynth from "./ElemSynth.vue";
+// import ElemInput from "./ElemInput.vue";
+// import ElemFFT from "./ElemFFT.vue";
 import { useElemAudio } from "./useElemAudio";
 import ElemTime from "./ElemTime.vue";
-
 
 const { audio, render, meters } = useElemAudio()
 
@@ -22,6 +21,7 @@ const { audio, render, meters } = useElemAudio()
   //- ElemFFT
   //- ElemSequencer
   //- ElemInput
-  //- ElemSynth
+  //- ElemSynth(title="one")
+  //- ElemSynth(title="two")
 
 </template>

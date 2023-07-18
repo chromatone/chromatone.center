@@ -20,6 +20,10 @@ const audio = shallowReactive({
 
 const meters: Record<string, { min: number, max: number }> = reactive({})
 
+const scopes: Record<string, number[]> = reactive({})
+
+const FFTs: Record<string, number[][]> = reactive({})
+
 const silence = el.const({ key: 'main:silence', value: 0 })
 
 let signal: (NodeRepr_t | number)[] = [silence, silence]
@@ -28,15 +32,9 @@ const layers: Record<string, any> = reactive({})
 
 
 export function useElemAudio() {
-  onMounted(async () => {
-    console.log('mounted')
-    if (!audio.initiated) {
-      await init()
-      audio.core.on('meter', e => {
-        meters[e.source] = { max: e.max, min: e.min }
-      })
-    }
-  })
+  if (!audio.initiated) {
+    init()
+  }
 
   return {
     audio, meters, layers, init, start, render, silence,
@@ -66,6 +64,8 @@ function start() {
 }
 
 async function init() {
+  console.log('initiated')
+  audio.initiated = true
   //@ts-expect-error
   audio.ctx = new (AudioContext || webkitAudioContext)()
   audio.core = new WebRenderer()
@@ -75,6 +75,20 @@ async function init() {
     outputChannelCount: [2],
   })
   audio.node.connect(audio.ctx.destination)
-  audio.initiated = true
-  console.log('initiated')
+
+
+
+  audio.core.on('meter', e => {
+    meters[e.source] = { max: e.max, min: e.min }
+  })
+
+  audio.core.on('scope', e => {
+    scopes[e.source] = [...e?.data[0].values()]
+  })
+
+  audio.core.on('fft', e => {
+    FFTs[e.source] = [[...e?.data.real.values()], [...e?.data.imag.values()]]
+  })
+
+
 }

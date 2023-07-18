@@ -1,16 +1,22 @@
 <script setup lang="ts">
 import { notes } from "#/use";
 import { pitchColor } from "#/use/calculations";
-import ElemOSC from "./ElemOSC.vue";
+import ElemScope from "./ElemScope.vue";
 import { useSynth } from "./useSynth";
-const { synth, ui } = useSynth()
+
+const props = defineProps({
+  title: { type: String, default: () => Math.random().toString(36).slice(2, 7) }
+})
+
+const { synth, ui } = useSynth(props.title)
 
 </script>
 
 <template lang='pug'>
-.flex.flex-col.gap-2.is-group.p-2.bg-light-200.dark-bg-dark-200.shadow.rounded.gap-4
+.flex.flex-col.gap-2.is-group.p-2.bg-light-200.dark-bg-dark-200.shadow.rounded.gap-4 
+  .absolute {{ title }}
   .flex.flex-col.relative.mb-3.select-none
-    ElemOSC.absolute.-top-4.pointer-events-none(name="synth")
+    ElemScope.absolute.-top-4.pointer-events-none(:title="title")
     .flex.flex-wrap.gap-1.font-mono.w-full.justify-around
       .text-md.flex.w-8.h-8.text-center.rounded-full.justify-center.items-center.transition.cursor-pointer(
         v-for="voice in synth.voices" :key="voice"

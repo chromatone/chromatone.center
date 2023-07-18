@@ -3,10 +3,10 @@ import { onMounted, watch, computed, ref, reactive } from 'vue'
 import { useAudio } from './useAudio'
 
 const props = defineProps({
-  name: { default: 'osc', type: String }
+  title: { default: 'osc', type: String }
 })
 
-function useScope(name = 'osc') {
+function useScope(title = 'osc') {
 
   const analyser = reactive({
     initiated: false,
@@ -16,23 +16,23 @@ function useScope(name = 'osc') {
       const audio = useAudio()
 
       audio.core.on('scope', (e) => {
-        if (e?.source == name) {
+        if (e?.source == title) {
           let arr = [...e?.data[0].values()]
           // let zeroCross = arr.findIndex((v, i) => v * arr[i + 1] < 0)
           analyser.data = arr //.slice(zeroCross)
         }
       })
+      analyser.initiated = true
     }
   })
 
-  if (!analyser.initiated) {
-    analyser.init()
-    analyser.initiated = true
-  }
+
+  analyser.init()
+
   return analyser
 }
 
-const analyser = useScope(props.name)
+const analyser = useScope(props.title)
 </script>
 
 <template lang='pug'>

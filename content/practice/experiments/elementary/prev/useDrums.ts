@@ -7,11 +7,39 @@ import { useAudio } from './useAudio';
 import { computed } from 'vue';
 import { useStorage } from '@vueuse/core';
 import { useClamp } from '@vueuse/math';
+import { useElemAudio } from './useElemAudio';
+
+
+const params = [
+  //Kick
+  { name: 'kick:volume', value: .2, min: 0, max: 1, step: .01 },
+  { name: 'kick:pitch', value: 50, min: 20, max: 110, step: .001 },
+  { name: 'kick:click', value: .1, min: 0.005, max: 1, step: .001 },
+  { name: 'kick:attack', value: .1, min: 0.005, max: .4, step: .001 },
+  { name: 'kick:decay', value: .1, min: 0.005, max: 5, step: .001 },
+  { name: 'kick:drive', value: 1, min: 1, max: 10, step: .001 },
+]
+
+const { controls, groups, cv } = generateUI(params, 'drums')
+
+export function useDrums() {
+  const { audio } = useElemAudio()
+
+  const hit = reactive({
+    kick: 0,
+    clap: 0,
+    hhat: 0
+  })
+
+  watch(hit, h => {
+    console.log('hit', h)
+  })
+
+  return { hit, controls, groups, cv }
+}
 
 
 export function useSequencer() {
-
-
   const sequencer = reactive({
     mute: false,
     playing: false,
@@ -38,7 +66,7 @@ export function useSequencer() {
   })
 
   watch(sequencer, s => {
-    const audio = useAudio()
+    const { audio, layers } = useElemAudio()
 
     // const metro = el.metro({ interval: s.interval })
     const reset = el.const({ key: 'seq:reset', value: sequencer.reset })
@@ -75,44 +103,18 @@ export function useSequencer() {
               }), el.seq2({ key: 'seq:hh', seq: [...s.tracks.hhat] }, sequencer.train, reset))),
         )))
 
-    audio.layers.seq = [all, all]
+    layers.seq = { volume: 1, signal: [all, all] }
 
-    audio.render()
   })
 
-  return { sequencer }
+  return { sequencer, controls, groups }
 }
 
 type Signal = number | NodeRepr_t
 
-const params = [
-  //Kick
-  { name: 'kick:volume', value: .2, min: 0, max: 1, step: .01 },
-  { name: 'kick:pitch', value: 50, min: 20, max: 110, step: .001 },
-  { name: 'kick:click', value: .1, min: 0.005, max: 1, step: .001 },
-  { name: 'kick:attack', value: .1, min: 0.005, max: .4, step: .001 },
-  { name: 'kick:decay', value: .1, min: 0.005, max: 5, step: .001 },
-  { name: 'kick:drive', value: 1, min: 1, max: 10, step: .001 },
-]
 
-const ui = generateUI(params)
 
-export function useDrums() {
-  const audio = useAudio()
 
-  const hit = reactive({
-    kick: 0,
-    clap: 0,
-    hhat: 0
-  })
-
-  watch(hit, h => {
-    console.log('hit', h)
-
-  })
-
-  return { hit, ui }
-}
 
 
 /**

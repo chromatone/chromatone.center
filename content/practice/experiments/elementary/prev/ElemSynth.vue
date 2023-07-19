@@ -30,13 +30,13 @@ const { synth, controls, groups, params } = useSynth(props.title)
       .i-la-stop
     .flex.flex-wrap.is-group.p-2.gap-2.items-center.relative(v-for="(group,title) in groups" :key="title") 
       .text-sm.uppercase.absolute.-top-4.bg-light-300.dark-bg-dark-300.p-1.rounded {{ title }}
-      control-rotary(
-        v-for="(param,p) in group" :key="p"
-        :step="param.step"
-        v-model="controls[param.name]"
-        :min="param.min"
-        :max="param.max"
-        :param="String(param.name).split(':').pop()")
+      //- control-rotary(
+      //-   v-for="(param,p) in group" :key="p"
+      //-   :step="params[p].step"
+      //-   v-model="controls[p]"
+      //-   :min="params[p].min"
+      //-   :max="params[p].max"
+      //-   :param="String(p).split(':').pop()")
     .flex.gap-4.flex-1
       //- button.text-button.flex-1(
         @mousedown.passive="synth.cycleNote(60, 120)"

@@ -1,46 +1,24 @@
 <script setup lang="ts">
 import { onMounted, watch, computed, ref, reactive } from 'vue'
-import { useAudio } from './useAudio'
+import { useElemAudio } from './useElemAudio'
 
 const props = defineProps({
   title: { default: 'osc', type: String }
 })
 
-function useScope(title = 'osc') {
+const { scopes } = useElemAudio()
 
-  const analyser = reactive({
-    initiated: false,
-    data: [],
-    points: computed(() => analyser.data.map((v: number, i: number) => [i, v * 25].join(',')).join(' ')),
-    async init() {
-      const audio = useAudio()
-
-      audio.core.on('scope', (e) => {
-        if (e?.source == title) {
-          let arr = [...e?.data[0].values()]
-          // let zeroCross = arr.findIndex((v, i) => v * arr[i + 1] < 0)
-          analyser.data = arr //.slice(zeroCross)
-        }
-      })
-      analyser.initiated = true
-    }
-  })
+const points = computed(() => scopes?.[props.title]?.map((v: number, i: number) => [i, v * 25].join(',')).join(' '))
 
 
-  analyser.init()
-
-  return analyser
-}
-
-const analyser = useScope(props.title)
 </script>
 
 <template lang='pug'>
-svg.mix-blend-difference(ref="svgElem" v-show="analyser.data.length>2" :viewBox="`0 -25 ${analyser.data.length} 50`")
+svg.mix-blend-difference(ref="svgElem" v-show="scopes?.[title]?.length>2" :viewBox="`0 -25 ${scopes?.[title]?.length} 50`")
   polyline(
     stroke-width="2"
     stroke="currentColor"
     fill="transparent"
-    :points="analyser.points"
+    :points="points"
     )
 </template>

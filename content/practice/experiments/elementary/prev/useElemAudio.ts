@@ -5,8 +5,7 @@ import { reactive } from 'vue';
 import { onMounted } from 'vue';
 
 export type AudioLayer = {
-  component: string
-  volume?: number
+  volume: number
   signal: (number | NodeRepr_t)[]
   mute?: boolean
 }
@@ -48,11 +47,13 @@ export function useElemAudio() {
   }
 
   return {
-    audio, meters, layers, scopes, init, render
+    audio, meters, layers, init, render, silence,
   }
 }
 
+const silence = el.const({ key: 'main:silence', value: 0 })
 
+let signal: (NodeRepr_t | number)[] = [silence, silence]
 
 const layers: Record<string, AudioLayer> = reactive({})
 
@@ -66,8 +67,6 @@ function render(lrs: Record<string, AudioLayer> = layers) {
     console.log('not initiated yet')
     return
   }
-  const silence = el.const({ key: 'main:silence', value: 0 })
-  let signal: (NodeRepr_t | number)[] = [silence, silence]
   for (let name in lrs) {
     let layer = lrs[name];
     signal = signal.map((ch, i) =>
@@ -77,7 +76,7 @@ function render(lrs: Record<string, AudioLayer> = layers) {
           el.sm(
             el.const({
               key: `${name}:volume`,
-              value: layer?.mute ? 0 : layer?.volume || 1
+              value: layer?.mute ? 0 : layer?.volume || 0
             })),
           layer.signal[i]))
     )

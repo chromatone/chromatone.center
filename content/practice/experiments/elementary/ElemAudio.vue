@@ -1,26 +1,28 @@
 <script setup>
-import ElemSequencer from "./ElemSequencer.vue";
+// import ElemSequencer from "./ElemSequencer.vue";
 import ElemSynth from "./ElemSynth.vue";
-import ElemInput from "./ElemInput.vue";
-import ElemFFT from "./ElemFFT.vue";
-import { useElemAudio } from "./useElemAudio";
-import ElemTime from "./ElemTime.vue";
+// import ElemInput from "./ElemInput.vue";
+// import ElemFFT from "./ElemFFT.vue";
 
-const { audio, render, meters } = useElemAudio()
+// import ElemTime from "./ElemTime.vue";
+
+import { useElemAudio } from "./useElemAudio"
+
+const { audio, render, meters, } = useElemAudio()
 
 </script>
 
 <template lang="pug">
 .p-4.flex.flex-col.gap-4
   .p-2.flex.gap-2.items-center 
-    .text-2xl Elementary audio
-    .i-la-plug(v-if="audio.initiated")
-  button.text-button(@click="render()") RENDER
-  ElemTime
+
+  button.text-button.flex.gap-2.items-center(@click="render()") RENDER
+    .i-la-plug(v-if="audio?.initiated")
+  //- ElemTime
   //- ElemFFT
   //- ElemSequencer
   //- ElemInput
-  //- ElemSynth(title="one")
+  ElemSynth(title="one")
   //- ElemSynth(title="two")
 
 </template>

@@ -5,7 +5,6 @@ import { reactive } from 'vue';
 import { onMounted } from 'vue';
 
 export type AudioLayer = {
-  component: string
   volume?: number
   signal: (number | NodeRepr_t)[]
   mute?: boolean
@@ -52,8 +51,6 @@ export function useElemAudio() {
   }
 }
 
-
-
 const layers: Record<string, AudioLayer> = reactive({})
 
 watch(layers, ls => {
@@ -63,7 +60,6 @@ watch(layers, ls => {
 function render(lrs: Record<string, AudioLayer> = layers) {
   if (audio?.ctx?.state === 'suspended') { audio?.ctx?.resume() }
   if (!audio.initiated) {
-    console.log('not initiated yet')
     return
   }
   const silence = el.const({ key: 'main:silence', value: 0 })
@@ -82,14 +78,11 @@ function render(lrs: Record<string, AudioLayer> = layers) {
           layer.signal[i]))
     )
   }
-  console.log('rendering', lrs);
   signal = signal.map(c => el.tanh(c))
   audio.core.render(...signal)
 }
 
 async function init() {
-  console.log('initiated')
-
   //@ts-expect-error
   audio.ctx = new (AudioContext || webkitAudioContext)()
   audio.core = new WebRenderer()

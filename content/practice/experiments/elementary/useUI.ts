@@ -44,7 +44,7 @@ export function useUI(params: Param[], title = 'es') {
           value: controls[c]
         }))
 
-      console.log(`${title}:${c}`, controls[c])
+      // console.log(`${title}:${c}`, controls[c])
     }
   }, { immediate: true })
 

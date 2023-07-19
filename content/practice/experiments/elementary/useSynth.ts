@@ -140,7 +140,6 @@ export function useSynth(title = 'es') {
 
 
       layers[title] = {
-        component: 'elem-synth',
         volume: 1,
         signal: synth.pingPong(main)
       }

@@ -16,7 +16,7 @@ const { synth, controls, groups, params } = useSynth(props.title)
 .flex.flex-col.gap-2.is-group.p-2.bg-light-200.dark-bg-dark-200.shadow.rounded.gap-4 
   .absolute {{ title }}
   .flex.flex-col.relative.mb-3.select-none
-    ElemScope.absolute.-top-4.pointer-events-none(:title="title")
+    //- ElemScope.absolute.-top-4.pointer-events-none(:title="title")
     .flex.flex-wrap.gap-1.font-mono.w-full.justify-around
       .text-md.flex.w-8.h-8.text-center.rounded-full.justify-center.items-center.transition.cursor-pointer(
         v-for="voice in synth.voices" :key="voice"

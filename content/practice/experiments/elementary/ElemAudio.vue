@@ -4,11 +4,11 @@ import ElemSynth from "./ElemSynth.vue";
 // import ElemInput from "./ElemInput.vue";
 // import ElemFFT from "./ElemFFT.vue";
 
-// import ElemTime from "./ElemTime.vue";
+import ElemTime from "./ElemTime.vue";
 
 import { useElemAudio } from "./useElemAudio"
 
-const { audio, render, meters, } = useElemAudio()
+const { audio, render, meters } = useElemAudio()
 
 </script>
 
@@ -18,7 +18,7 @@ const { audio, render, meters, } = useElemAudio()
 
   button.text-button.flex.gap-2.items-center(@click="render()") RENDER
     .i-la-plug(v-if="audio?.initiated")
-  //- ElemTime
+  ElemTime
   //- ElemFFT
   //- ElemSequencer
   //- ElemInput

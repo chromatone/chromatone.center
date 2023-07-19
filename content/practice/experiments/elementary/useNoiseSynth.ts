@@ -108,7 +108,6 @@ export function useSynth(title = 'noise') {
 
 
       layers[title] = {
-        component: 'elem-synth',
         volume: 1,
         signal: synth.pingPong(main)
       }

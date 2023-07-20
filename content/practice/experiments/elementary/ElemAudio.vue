@@ -1,28 +1,30 @@
 <script setup>
-// import ElemSequencer from "./ElemSequencer.vue";
+import ElemSequencer from "./ElemSequencer.vue";
 import ElemSynth from "./ElemSynth.vue";
-// import ElemInput from "./ElemInput.vue";
-// import ElemFFT from "./ElemFFT.vue";
+import ElemInput from "./ElemInput.vue";
+import ElemFFT from "./ElemFFT.vue";
+import { useAudio } from "./useAudio";
+import { ref } from "vue";
+const audio = useAudio()
 
-import ElemTime from "./ElemTime.vue";
+const scope = ref([])
 
-import { useElemAudio } from "./useElemAudio"
-
-const { audio, render, meters } = useElemAudio()
-
+audio.core.on('scope', e => {
+  if (e?.source == 'main:scope') {
+    let arr = [...e?.data[0].values()]
+    // let zeroCross = arr.findIndex((v, i) => v * arr[i + 1] < 0)
+    scope.value = arr //.slice(zeroCross)
+  }
+})
 </script>
 
 <template lang="pug">
 .p-4.flex.flex-col.gap-4
-  .p-2.flex.gap-2.items-center 
-
-  button.text-button.flex.gap-2.items-center(@click="render()") RENDER
-    .i-la-plug(v-if="audio?.initiated")
-  ElemTime
-  //- ElemFFT
-  //- ElemSequencer
-  //- ElemInput
-  ElemSynth(title="one")
-  //- ElemSynth(title="two")
+  .text-2xl.p-2 Elementary audio
+  p {{ scope[0] }}
+  ElemFFT
+  ElemSequencer
+  ElemInput
+  ElemSynth
 
 </template>

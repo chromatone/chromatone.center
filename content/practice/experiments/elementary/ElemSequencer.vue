@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import ElemScope from './ElemScope.vue';
-import { useDrums, useSequencer } from './useDrums';
+import ElemOSC from './ElemOSC.vue';
+import { useDrums } from './useDrums';
+import { useSequencer } from './useSequencer';
 
-const { sequencer, controls, groups } = useSequencer()
+const { sequencer } = useSequencer()
 
 </script>
 
@@ -29,7 +30,7 @@ const { sequencer, controls, groups } = useSequencer()
       :max="1"
       :step=".001"
       v-model="sequencer.volume")
-    ElemScope.flex-1.max-h-30(name="drums")
+    ElemOSC.flex-1.max-h-30(name="drums")
   .flex.flex-col.gap-2 
     .flex.items-center.gap-1(
       v-for="(track,t) in sequencer.tracks" :key="t")
@@ -42,14 +43,7 @@ const { sequencer, controls, groups } = useSequencer()
         v-for="(step,s) in track" :key="s"
         :class="{active: step == 1}"
         @click="track[s] = step ==1 ? 0: 1") 
-  .is-group.flex.flex-wrap.gap-2 
-    .font-mono.text-xs {{ groups }}
-    ControlRotary(
-      param="Vol"
-      :min="0"
-      :max="1"
-      :step="0.01"
-      v-model="controls['kick:volume']")
+
 </template>
 
 <style scoped lang="postcss">

@@ -16,6 +16,10 @@ const ElemAudio = defineClientComponent(() => {
 
 <ElemAudio />
 
+## Modular synth
+
+Built with JS, but operated by WASM lib in a separate audio thread. Construction started around June 2023 and is ongoing till then. Supposed to gradually substitute the sitewide Tone.js synth that's used  now.
+
 ## Links
 
 - https://www.elementary.audio/docs/guides/Understanding_Keys

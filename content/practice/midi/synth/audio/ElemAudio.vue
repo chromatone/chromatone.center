@@ -19,12 +19,11 @@ audio.core.on('scope', e => {
 </script>
 
 <template lang="pug">
-.p-4.flex.flex-col.gap-4
-  .text-2xl.p-2 Elementary audio
-  p {{ scope[0] }}
+.flex.flex-col.gap-4
   ElemFFT
   ElemSequencer
   MicInput
   MainSynth
+  p {{ scope[0] }}
 
 </template>

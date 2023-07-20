@@ -1,8 +1,8 @@
 <script setup>
-import ElemSequencer from "./drums/ElemSequencer.vue";
-import MainSynth from "./synth/SynthMain.vue";
-import MicInput from "./input/MicInput.vue";
-import ElemFFT from "./analysis/AnalysisFFT.vue";
+import ElemSequencer from "../drums/ElemSequencer.vue";
+import MainSynth from "../synth/SynthMain.vue";
+import MicInput from "../input/MicInput.vue";
+import ElemFFT from "../analysis/AnalysisFFT.vue";
 import { useAudio } from "./useAudio";
 import { ref } from "vue";
 const { audio } = useAudio()

@@ -3,9 +3,9 @@ import { useMidi } from '#/use/midi'
 
 import { NodeRepr_t, el } from '@elemaudio/core';
 
-import { midiFrequency } from '../toolbox';
-import { useAudio } from '../useAudio'
-import { useUI } from './useUI';
+import { midiFrequency } from '../tools/toolbox';
+import { useAudio } from '../audio/useAudio'
+import { useUI } from '../tools/useUI';
 
 import params from './params.json'
 import { useVoices, Voice } from './useVoices';

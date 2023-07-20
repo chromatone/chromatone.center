@@ -1,5 +1,5 @@
 import { onMounted, watch, computed, ref, reactive, shallowReactive } from 'vue'
-import { useAudio } from '../useAudio'
+import { useAudio } from '../audio/useAudio'
 import { el } from '@elemaudio/core';
 import { useClamp } from '@vueuse/math';
 import { watchEffect } from 'vue';

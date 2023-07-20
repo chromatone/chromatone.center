@@ -1,5 +1,5 @@
 import { reactive } from 'vue';
-import { useAudio } from './useAudio';
+import { useAudio } from '../useAudio';
 import { el } from '@elemaudio/core';
 import { computed } from 'vue';
 import { watch } from 'vue';
@@ -36,10 +36,10 @@ export function useSequencer() {
   })
 
   watch(sequencer, s => {
-    const audio = useAudio()
+    const { audio, render } = useAudio()
 
     // const metro = el.metro({ interval: s.interval })
-    const reset = el.const({ key: 'seq:reset', value: sequencer.reset })
+    const reset = el.const({ key: 'seq:reset', value: 0 })
 
     const all = el.mul(
       el.const({
@@ -75,7 +75,7 @@ export function useSequencer() {
 
     audio.layers.seq = [all, all]
 
-    audio.render()
+    render()
   })
 
   return { sequencer }

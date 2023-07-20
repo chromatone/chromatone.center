@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted, watch, computed, ref, reactive } from 'vue'
-import { useAudio } from './useAudio'
+import { useAudio } from '../useAudio'
 
 const props = defineProps({
   name: { default: 'fft', type: String }
@@ -13,7 +13,7 @@ function useFFT(name = 'fft') {
     data: [[], []],
     total: computed(() => FFT.data[0].map((val, v) => Math.log2(1 + Math.abs(val) + Math.abs(FFT.data[1][v])))),
     async init() {
-      const audio = useAudio()
+      const { audio } = useAudio()
 
       audio.core.on('fft', e => {
         if (e?.source == name) {

@@ -1,0 +1,8 @@
+{
+	"kick:volume": { "value": 0.2, "min": 0, "max": 1, "step": 0.01 },
+	"kick:pitch": { "value": 50, "min": 20, "max": 110, "step": 0.001 },
+	"kick:click": { "value": 0.1, "min": 0.005, "max": 1, "step": 0.001 },
+	"kick:attack": { "value": 0.1, "min": 0.005, "max": 0.4, "step": 0.001 },
+	"kick:decay": { "value": 0.1, "min": 0.005, "max": 5, "step": 0.001 },
+	"kick:drive": { "value": 1, "min": 1, "max": 10, "step": 0.001 }
+}

@@ -1,11 +1,11 @@
 <script setup>
-import ElemSequencer from "./ElemSequencer.vue";
-import ElemSynth from "./ElemSynth.vue";
-import ElemInput from "./ElemInput.vue";
-import ElemFFT from "./ElemFFT.vue";
+import ElemSequencer from "./drums/ElemSequencer.vue";
+import MainSynth from "./synth/SynthMain.vue";
+import MicInput from "./input/MicInput.vue";
+import ElemFFT from "./analysis/AnalysisFFT.vue";
 import { useAudio } from "./useAudio";
 import { ref } from "vue";
-const audio = useAudio()
+const { audio } = useAudio()
 
 const scope = ref([])
 
@@ -24,7 +24,7 @@ audio.core.on('scope', e => {
   p {{ scope[0] }}
   ElemFFT
   ElemSequencer
-  ElemInput
-  ElemSynth
+  MicInput
+  MainSynth
 
 </template>

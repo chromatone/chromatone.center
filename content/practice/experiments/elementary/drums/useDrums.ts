@@ -1,25 +1,15 @@
 import { NodeRepr_t, el } from '@elemaudio/core';
-import { useAudio } from './useAudio';
+import { useAudio } from '../useAudio';
 import { reactive } from 'vue';
-import { generateUI } from './shared';
+import { generateUI } from '../shared';
 import { watch } from 'vue';
 
 type Signal = number | NodeRepr_t
 
-const params = [
-  //Kick
-  { name: 'kick:volume', value: .2, min: 0, max: 1, step: .01 },
-  { name: 'kick:pitch', value: 50, min: 20, max: 110, step: .001 },
-  { name: 'kick:click', value: .1, min: 0.005, max: 1, step: .001 },
-  { name: 'kick:attack', value: .1, min: 0.005, max: .4, step: .001 },
-  { name: 'kick:decay', value: .1, min: 0.005, max: 5, step: .001 },
-  { name: 'kick:drive', value: 1, min: 1, max: 10, step: .001 },
-]
-
-const ui = generateUI(params)
+import params from './params.json'
 
 export function useDrums() {
-  const audio = useAudio()
+  const { audio } = useAudio()
 
   const hit = reactive({
     kick: 0,
@@ -29,10 +19,9 @@ export function useDrums() {
 
   watch(hit, h => {
     console.log('hit', h)
-
   })
 
-  return { hit, ui }
+  return { hit }
 }
 
 

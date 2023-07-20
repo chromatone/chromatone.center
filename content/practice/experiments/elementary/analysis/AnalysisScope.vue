@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted, watch, computed, ref, reactive } from 'vue'
-import { useAudio } from './useAudio'
+import { useAudio } from '../useAudio'
 
 const props = defineProps({
   name: { default: 'osc', type: String }
@@ -13,7 +13,7 @@ function useScope(name = 'osc') {
     data: [],
     points: computed(() => analyser.data.map((v: number, i: number) => [i, v * 25].join(',')).join(' ')),
     async init() {
-      const audio = useAudio()
+      const { audio } = useAudio()
 
       audio.core.on('scope', (e) => {
         if (e?.source == name) {

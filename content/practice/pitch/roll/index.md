@@ -1,5 +1,5 @@
 ---
-title: Roll
+title: Pitch Roll
 description: Plot main pitch of any incoming audio on an endless roll
 
 cover: roll.png

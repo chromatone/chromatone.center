@@ -1,5 +1,5 @@
 ---
-title: Monitor
+title: MIDI Monitor
 description: See everything that's happening on your MIDI-bus right in the browser
 
 cover: monitor.png

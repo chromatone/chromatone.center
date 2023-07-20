@@ -1,5 +1,5 @@
 ---
-title: Roll
+title: MIDI Roll
 description: Record all MIDI notes on an infinite roll
 
 cover: midi-roll.png

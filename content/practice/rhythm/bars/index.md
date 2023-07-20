@@ -1,5 +1,5 @@
 ---
-title: Bars
+title: Rhythm Bars
 description: A linear metronome and polyrhythm exploration tool
 
 date: 2021-10-01

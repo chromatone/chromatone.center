@@ -1,5 +1,5 @@
 ---
-title: Radar
+title: MIDI Radar
 description: Circular MIDI visualisation experiment
 
 date: 2021-11-09
@@ -16,7 +16,7 @@ import midiRadar from './radar.vue'
   <midi-panel class="mb-4" />
 </client-only>
 
-### See all the MIDI signals on the clock.
+### See all the MIDI signals on the clock
 
 Press play on your sequencer to start run the radar by incoming MIDI-clock signal, or just press `spacebar` to start internal metronome, that will drive the radar clocks.
 

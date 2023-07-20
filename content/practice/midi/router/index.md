@@ -1,5 +1,5 @@
 ---
-title: Router
+title: MIDI Router
 description: Forward all MIDI messages from one device to another
 
 cover: midi-router.png
@@ -12,7 +12,7 @@ import midiRouter from './router.vue'
 
 <client-only>
 <div id="screen">
- 
+
   <midi-router class="mb-20" />
    <midi-panel class="mb-4" />
 </div>

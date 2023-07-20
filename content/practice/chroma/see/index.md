@@ -1,5 +1,5 @@
 ---
-title: See it
+title: See Chroma
 description: Let's look at the relative amounts of all pitch class frequencies in any audio signal in real time.
 cover: chroma.png
 date: 2022-06-16
@@ -15,7 +15,8 @@ import chromaSee from './see.vue'
 
 ---
 
-Features: 
+Features:
+
 - Drag over the scene horizontally to adjust circles blur
 - Drag over the scene vertically to adjust circles size
 

@@ -1,7 +1,6 @@
 import { NodeRepr_t, el } from '@elemaudio/core';
 import { useAudio } from '../audio/useAudio';
 import { reactive } from 'vue';
-import { generateUI } from '../shared';
 import { watch } from 'vue';
 
 type Signal = number | NodeRepr_t

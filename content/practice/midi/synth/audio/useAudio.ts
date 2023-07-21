@@ -11,6 +11,7 @@ export type AudioLayer = {
 const layers: Record<string, AudioLayer> = reactive({})
 
 export const audio = shallowReactive({
+  initiating: false,
   initiated: false,
   ctx: null,
   core: null,
@@ -20,26 +21,52 @@ export const audio = shallowReactive({
     mic: null,
     seq: null,
     drums: null,
+    time: null,
   },
-
-
 })
+
+const meters: Record<string, { max: number, min: number }> = reactive({})
+
+const scopes: Record<string, number[]> = reactive({})
+
+const FFTs: Record<string, number[][]> = reactive({})
 
 export function useAudio() {
 
-  init()
+  init().then(() => {
+    if (audio.initiated) return
+    audio.initiated = true
+    audio.core.on('meter', e => {
+      meters[e.source] = { max: e.max, min: e.min }
+    })
 
-  watch([audio, layers], render)
-  return { audio, init, render, layers }
+    audio.core.on('scope', e => {
+      scopes[e.source] = [...e?.data[0].values()]
+    })
+
+    audio.core.on('fft', e => {
+      FFTs[e.source] = [[...e?.data.real.values()], [...e?.data.imag.values()]]
+    })
+
+
+  })
+
+  watch(audio, render)
+
+  return { audio, init, render, layers, meters }
 }
 
-function render() {
+function render(place) {
+  console.log(place)
   if (audio.ctx.state === 'suspended') { audio.ctx.resume() } else {
     let stereo = [el.mul(0, el.scope({ key: 'main:scope', name: 'main:scope', size: 256 }, el.time())), 0]
+    console.log({ place, layers })
     for (let l in audio.layers) {
       let layer = audio.layers[l]
       if (layer) {
+
         for (let ch in layer) {
+
           stereo[ch] = el.tanh(el.add(stereo[ch], layer[ch]))
         }
       }
@@ -56,8 +83,8 @@ function render() {
 }
 
 async function init() {
-  if (audio.initiated) return
-  audio.initiated = true
+  if (audio.initiating) return
+  audio.initiating = true
   //@ts-expect-error
   audio.ctx = new (AudioContext || webkitAudioContext)()
   audio.core = new WebRenderer()

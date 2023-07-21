@@ -73,9 +73,9 @@ export function useSequencer() {
               }), el.seq2({ key: 'seq:hh', seq: [...s.tracks.hhat] }, sequencer.train, reset))),
         )))
 
-    audio.layers.seq = [all, all]
+    audio.layers.seq = { signal: [all, all] }
 
-    render()
+    render('sequencer')
   })
 
   return { sequencer }

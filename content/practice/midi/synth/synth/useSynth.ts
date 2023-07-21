@@ -23,7 +23,7 @@ export function useSynth() {
       { name: 'synth', size: 512 },
       poly(voices.list)))
 
-    render()
+    render('synth')
   })
 
   const { midi } = useMidi()

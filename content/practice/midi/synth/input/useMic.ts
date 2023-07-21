@@ -35,7 +35,7 @@ export function useMic() {
     )
 
     audio.layers.mic = mic.isOpen ? [input, input] : [0, 0]
-    render()
+    render('mic')
   })
 
   watch(() => mic.isOpen, open => {

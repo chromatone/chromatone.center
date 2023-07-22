@@ -15,37 +15,37 @@ const params = {
   'time:steps': { value: 4, min: 1, max: 16, step: 1 },
 }
 
+const { controls, groups, cv } = useUI(params, 'time')
+
+const { audio, meters, render } = useAudio()
+
+const time = computed(() => Object.fromEntries(Object.entries(meters).filter(v => v[0].startsWith('time:')).map(v => [v[0].slice(5), v[1].max])))
+
 export function useTime() {
-
-  const { controls, groups, cv } = useUI(params, 'time')
-
-  const { audio, render } = useAudio()
-
-
-  const time = el.meter({ name: 'time:time', }, el.time())
-
-  const sec = el.meter({ name: 'time:sec', }, el.div(time, el.sr()))
-
-  watch(controls, () => {
-    const bpm = el.meter({ name: 'time:bpm' }, cv['time:bpm'])
-
-    const bps = el.meter({ name: 'time:bps' }, el.div(bpm, 60))
-
-    const beats = el.meter({ name: 'time:beats' }, el.mod(el.mul(sec, bps), cv['time:steps']))
-
-    const steps = el.meter({ name: 'time:steps' }, cv['time:steps'])
-
-    const measures = el.meter({ name: "time:measures" }, el.div(beats, steps))
-
-    const progress = el.meter({ name: "time:progress" }, el.mod(measures, 1))
-
-    const signal = el.add(sec, progress, time)
-
-    audio.layers.time = { signal: [0, signal], volume: 0 }
-
-    render('time')
-
-  })
-
-  return { controls, groups, params }
+  return { controls, groups, params, time }
 }
+
+const timer = el.meter({ name: 'time:time', }, el.time())
+
+const seconds = el.meter({ name: 'time:seconds', }, el.div(timer, el.sr()))
+
+watch(controls, () => {
+  const bpm = el.meter({ name: 'time:bpm' }, cv['time:bpm'])
+
+  const bps = el.meter({ name: 'time:bps' }, el.div(bpm, 60))
+
+  const beats = el.meter({ name: 'time:beats' }, el.mul(seconds, bps))
+
+  const steps = el.meter({ name: 'time:steps' }, cv['time:steps'])
+
+  const measures = el.meter({ name: "time:measures" }, el.div(beats, steps))
+
+  const progress = el.meter({ name: "time:measure" }, el.mod(measures, 1))
+
+  const signal = el.mul(0, el.add(progress, timer))
+
+  audio.layers.time = { signal: [0, signal], volume: 0 }
+
+  render('time')
+
+}, { immediate: true })

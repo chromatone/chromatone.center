@@ -64,10 +64,11 @@ function render(place) {
       if (layer) {
         for (let ch in layer.signal) {
           let signal = el.mul(
-            el.const({
-              key: `${layer}:volume`,
-              value: layer.mute ? 0 : layer?.volume || 1
-            }),
+            el.sm(
+              el.const({
+                key: `${layer}:volume`,
+                value: layer.mute ? 0 : layer?.volume || 1
+              })),
             layer.signal[ch])
 
           stereo[ch] = el.tanh(el.add(stereo[ch], signal))

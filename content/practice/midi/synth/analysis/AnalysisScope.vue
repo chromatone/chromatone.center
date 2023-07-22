@@ -23,7 +23,7 @@ const analyser = useScope(props.name)
 </script>
 
 <template lang='pug'>
-svg.mix-blend-difference(ref="svgElem" v-show="analyser?.data?.length>2" :viewBox="`0 -25 ${analyser.data.length} 50`")
+svg(ref="svgElem" v-show="analyser?.data?.length>2" :viewBox="`0 -25 ${analyser.data.length} 50`")
   polyline(
     stroke-width="2"
     :stroke="color"

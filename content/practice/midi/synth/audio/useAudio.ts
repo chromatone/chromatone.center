@@ -57,8 +57,7 @@ export function useAudio() {
 }
 
 function render(place) {
-
-  if (audio.ctx.state === 'suspended') { audio.ctx.resume() } else {
+  if (audio.ctx.state === 'suspended') { audio.ctx.resume() } else if (!audio.initiated) { init() } else {
     let stereo = [0, 0]
     for (let l in audio.layers) {
       let layer = audio.layers[l]

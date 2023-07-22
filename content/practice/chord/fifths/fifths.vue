@@ -87,7 +87,7 @@ function stopChord(note, qual = 'major', inv) {
 </script>
 
 <template lang="pug">
-.fullscreen-container#screen
+.fullscreen-container#screen.select-none.touch-manipulation
   svg#fifths.h-full.max-h-80vh.w-full(
     style="flex: 1 1 600px;touch-action:none"
     version="1.1",
@@ -207,15 +207,15 @@ function stopChord(note, qual = 'major', inv) {
             r="5",
             :fill="Math.abs(tonic - i) == 11 || Math.abs(tonic - i) % 12 <= 1 ? noteColor(note.pitch,4) : noteColor(note.pitch, 5, 1, 0.5)",
           )
-          text(
-            style="user-select:none;transition:all 300ms ease"
-            :fill="colord(noteColor(note.pitch,4)).isDark() ? 'white' : 'black'"
-            font-size="3px"
-            text-anchor="middle",
-            dominant-baseline="middle"
-            :x="getCircleCoord(i, 12, 35 - getRadius(qual) * 12).x",
-            :y="getCircleCoord(i, 12, 35 - getRadius(qual) * 12).y + 0.5",
-          ) {{ note.name }}{{ getChordType(qual) }}
+        text.pointer-events-none(
+          style="user-select:none;transition:all 300ms ease"
+          :fill="colord(noteColor(note.pitch,4)).isDark() ? 'white' : 'white'"
+          font-size="3px"
+          text-anchor="middle",
+          dominant-baseline="middle"
+          :x="getCircleCoord(i, 12, 35 - getRadius(qual) * 12).x",
+          :y="getCircleCoord(i, 12, 35 - getRadius(qual) * 12).y + 0.5",
+        ) {{ note.name }}{{ getChordType(qual) }}
 
     g.transition-all.duration-300.ease-out(
       ref="selector"

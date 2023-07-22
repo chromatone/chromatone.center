@@ -42,8 +42,10 @@ export function useTime() {
     const signal = el.add(sec, progress, time)
 
     audio.layers.time = { signal: [0, signal], volume: 0 }
+
     render('time')
-  }, { immediate: true })
+
+  })
 
   return { controls, groups, params }
 }

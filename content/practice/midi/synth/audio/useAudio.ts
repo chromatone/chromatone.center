@@ -58,7 +58,7 @@ export function useAudio() {
 
 function render(place) {
   if (audio.ctx.state === 'suspended') { audio.ctx.resume() } else if (!audio.initiated) { init() } else {
-    let stereo = [0, 0]
+    let stereo = [0, el.mul(0, el.meter({ name: 'main:sample-rate' }, el.sr()))]
     for (let l in audio.layers) {
       let layer = audio.layers[l]
       if (layer) {

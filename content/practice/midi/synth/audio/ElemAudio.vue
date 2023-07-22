@@ -9,8 +9,9 @@ import ElemTime from "../time/ElemTime.vue";
 <template lang="pug">
 .flex.flex-col.gap-4
   ElemFFT
+  MainSynth
   ElemSequencer
   ElemTime
   MicInput
-  MainSynth
+
 </template>

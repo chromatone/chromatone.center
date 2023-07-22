@@ -36,6 +36,9 @@ export function useAudio() {
   init().then(() => {
     if (audio.initiated) return
     audio.initiated = true
+
+    watch(() => audio.layers, render)
+
     audio.core.on('meter', e => {
       meters[e.source] = { max: e.max, min: e.min }
     })
@@ -48,37 +51,37 @@ export function useAudio() {
       FFTs[e.source] = [[...e?.data.real.values()], [...e?.data.imag.values()]]
     })
 
-
   })
 
-  watch(audio, render)
-
-  return { audio, init, render, layers, meters }
+  return { audio, init, render, layers, meters, scopes, FFTs }
 }
 
 function render(place) {
-  console.log(place)
+
   if (audio.ctx.state === 'suspended') { audio.ctx.resume() } else {
-    let stereo = [el.mul(0, el.scope({ key: 'main:scope', name: 'main:scope', size: 256 }, el.time())), 0]
-    console.log({ place, layers })
+    let stereo = [0, 0]
     for (let l in audio.layers) {
       let layer = audio.layers[l]
       if (layer) {
+        for (let ch in layer.signal) {
+          let signal = el.mul(
+            el.const({
+              key: `${layer}:volume`,
+              value: layer.mute ? 0 : layer?.volume || 1
+            }),
+            layer.signal[ch])
 
-        for (let ch in layer) {
-
-          stereo[ch] = el.tanh(el.add(stereo[ch], layer[ch]))
+          stereo[ch] = el.tanh(el.add(stereo[ch], signal))
         }
       }
     }
 
     audio.core.render(
-      stereo[0],
+      stereo[1],
       el.fft({
-        key: 'main:fft',
-        name: 'fft',
+        name: 'main:fft',
         size: 2048
-      }, stereo[1]))
+      }, stereo[0]))
   }
 }
 

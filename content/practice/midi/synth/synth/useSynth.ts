@@ -19,10 +19,12 @@ export function useSynth() {
   const { voices, cycleNote, stopAll } = useVoices()
 
   watch([voices, controls], () => {
-    audio.layers.synth = pingPong(el.scope(
-      { name: 'synth', size: 512 },
-      poly(voices.list)))
-
+    audio.layers.synth = {
+      volume: 1,
+      signal: pingPong(el.scope(
+        { name: 'synth', size: 512 },
+        poly(voices.list)))
+    }
     render('synth')
   })
 

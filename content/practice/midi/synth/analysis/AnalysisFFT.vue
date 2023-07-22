@@ -3,32 +3,18 @@ import { onMounted, watch, computed, ref, reactive } from 'vue'
 import { useAudio } from '../audio/useAudio'
 
 const props = defineProps({
-  name: { default: 'fft', type: String }
+  name: { default: 'main:fft', type: String }
 })
 
-function useFFT(name = 'fft') {
+function useFFT(name = 'main:fft') {
+
+  const { FFTs } = useAudio()
 
   const FFT = reactive({
-    initiated: false,
-    data: [[], []],
+    data: computed(() => FFTs[name] || [[], []]),
     total: computed(() => FFT.data[0].map((val, v) => Math.log2(1 + Math.abs(val) + Math.abs(FFT.data[1][v])))),
-    async init() {
-      const { audio } = useAudio()
-
-      audio.core.on('fft', e => {
-        if (e?.source == name) {
-          FFT.data[0] = [...e?.data.real.values()]
-          FFT.data[1] = [...e?.data.imag.values()]
-          // let zeroCross = arr.findIndex((v, i) => v * arr[i + 1] < 0)
-        }
-      })
-    }
   })
 
-  if (!FFT.initiated) {
-    FFT.init()
-    FFT.initiated = true
-  }
   return FFT
 }
 
@@ -36,7 +22,7 @@ const FFT = useFFT(props.name)
 </script>
 
 <template lang='pug'>
-.flex.flex-col.gap-2.is-group.p-2.bg-light-200.dark-bg-dark-200.shadow.rounded.gap-4
+.flex.flex-col.gap-2.is-group.p-2.bg-light-200.dark-bg-dark-200.shadow.rounded.gap-4 
   svg.max-h-30(ref="svgElem" :viewBox="`0 0 ${100*Math.log2(FFT?.data[0].length+1)} 100`")
     g
       rect(

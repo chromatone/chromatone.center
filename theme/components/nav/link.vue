@@ -1,11 +1,11 @@
 <script setup >
 const props = defineProps(['item'])
-
+import { cleanLink } from 'vitepress-pages'
 </script>
 
 <template lang="pug">
 .nav-link
-  a.item(:href="item.url") {{ item?.frontmatter?.title }}
+  a.item(:href="cleanLink(item.url)") {{ item?.frontmatter?.title }}
 </template>
 
 <style scoped lang="postcss">

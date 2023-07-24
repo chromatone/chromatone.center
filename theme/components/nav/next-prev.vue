@@ -1,6 +1,7 @@
 <script setup>
 import { lchToHsl } from '#/use/'
 import { computed, reactive } from 'vue';
+import { cleanLink } from 'vitepress-pages'
 
 const props = defineProps(['parents', 'siblings'])
 
@@ -15,12 +16,13 @@ const colors = reactive({
 .next-and-prev-link
   .row(:style="{ borderColor: colors.current }")
     .pad.prev(v-if="siblings.prev")
-      a.link( :href="siblings.prev.url" :style="{ backgroundColor: colors.prev }")
+      a.link( 
+        :href="cleanLink(siblings.prev.url)" :style="{ backgroundColor: colors.prev }")
         .i-carbon-arrow-left.icon.icon-prev
         span.text {{ siblings.prev?.frontmatter?.title }}
 
     .pad.next(v-if="siblings.next")
-      a.link( :href="siblings.next.url" :style="{ backgroundColor: colors.next }")
+      a.link( :href="cleanLink(siblings.next.url)" :style="{ backgroundColor: colors.next }")
         span.text {{ siblings.next?.frontmatter?.title }}
         .i-carbon-arrow-right.icon.icon-next     
   .flex.flex-col.items-justify
@@ -28,7 +30,7 @@ const colors = reactive({
       a.parent(
         style="flex:1 1"
         v-for="(parent, p) in [...parents].slice(1,-1)" :key="parent"
-        :href="parent.url"
+        :href="cleanLink(parent.url)"
         :style="{ order: 100 - p }"
         )
         .i-carbon-chevron-up.mr-1

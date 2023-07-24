@@ -28,7 +28,7 @@ const bg = computed(() => `url(${props.item?.frontmatter?.cover}`);
   :style="{ borderColor: color }"
   )
   a.header.no-underline(
-    :href="item.url"
+    :href="cleanLink(item.url)"
     :class="{ 'pt-70': item?.frontmatter?.cover }"
   )
     .cover(

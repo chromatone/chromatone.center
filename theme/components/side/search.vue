@@ -3,6 +3,7 @@ import { onClickOutside } from "@vueuse/core";
 import Fuse from "fuse.js";
 import { computed, ref } from "vue";
 import { data } from '../../../content/pages.data.js'
+import { cleanLink } from 'vitepress-pages'
 
 const fuse = new Fuse(data, {
   includeScore: true,
@@ -24,7 +25,7 @@ const candidates = computed(() => fuse.search(input.value));
       .i-la-times.text-lg
   .flex.flex-col.max-h-80vh.overflow-y-scroll.shadow-lg.mt-2.rounded-lg.absolute.z-2000.top-10
     a.px-3.py-3.bg-light-400.dark-bg-dark-400.hover-bg-light-100.dark-hover-bg-dark-600.border-1.border-light-100.border-opacity-20(
-      :href="candidate.item.url"
+      :href="cleanLink(candidate.item.url)"
       @click="input = ''"
       v-for="candidate in candidates" :key="candidate"
       :style="{ opacity: 1 - candidate.score / 2 }"

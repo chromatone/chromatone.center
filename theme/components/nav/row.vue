@@ -14,7 +14,7 @@ const { pages, children } = usePages(route, data)
   a.link.no-underline.transition-all.duration-300.text-xl.justify-center(
     v-for="page in pages['/']"
     :key= "page.url"
-    :href="page.url"
+    :href="cleanLink(page.url)"
     :class="{ active: route.path.includes(cleanLink(page.url)) }"
     )
     .text-lg {{ page?.frontmatter?.title }} 

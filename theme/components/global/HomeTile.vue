@@ -24,7 +24,7 @@ const color = computed(() => lchToHsl(props.i, props.total));
 )
   // img.cover(:src="'/media/' + item.data.cover")
   a.flex.flex-col.p-2.no-underline(
-    :href="item.url", 
+    :href="cleanLink(item.url)", 
     )
     .text-5xl.mb-4(
       :style="{ color: lchToHsl(i, total) }"
@@ -33,7 +33,7 @@ const color = computed(() => lchToHsl(props.i, props.total));
   .flex.flex-wrap.py-2
     a.cursor-pointer.m-2.shadow-md.rounded-xl.border-4.no-underline(
       :style="{ borderColor: lchToHsl(p, children.length) }",
-      :href="page.url",
+      :href="cleanLink(page.url)",
       v-for="(page, p) in children" :key="page.url"
       )
       .m-2.p-2(:i="p", :total="children.length") {{ page?.frontmatter?.title }}

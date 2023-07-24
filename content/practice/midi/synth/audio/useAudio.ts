@@ -4,7 +4,8 @@ import WebRenderer from '@elemaudio/web-renderer'
 
 export type AudioLayer = {
   mute?: boolean
-  volume?: number
+  volume?: number,
+  pan?: number,
   signal: (number | NodeRepr_t)[]
 }
 

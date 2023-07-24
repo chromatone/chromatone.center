@@ -38,7 +38,6 @@ export function useSynth() {
 
     let osc = el.mul(
       cv['osc:gain'],
-      el.const({ key: `${voice.key}:vel`, value: voice.vel }),
       el.adsr(
         cv['osc:attack'],
         cv['osc:decay'],
@@ -46,22 +45,28 @@ export function useSynth() {
         cv['osc:release'],
         el.const({ key: `${voice.key}:gate`, value: voice.gate })),
       el.lowpass(
-        el.mul(4, frequency),
-        1.1,
+        el.mul(
+          cv['osc:cut-off'],
+          frequency),
+        cv['osc:cut-q'],
         el.blepsaw(frequency)))
 
     let noise = el.mul(
       cv['noise:gain'],
-      el.const({ key: `${voice.key}:vel`, value: voice.vel }),
       el.adsr(
         cv['noise:attack'],
         cv['noise:decay'],
         cv['noise:sustain'],
         cv['noise:release'],
         el.const({ key: `${voice.key}:gate`, value: voice.gate })),
-      el.bandpass(frequency, 50, el.noise()))
+      el.bandpass(
+        frequency,
+        cv['noise:band-q'],
+        el.noise()))
 
-    return el.add(osc, noise)
+    return el.mul(
+      el.const({ key: `${voice.key}:vel`, value: voice.vel }),
+      el.add(osc, noise))
   }
 
   function poly(vs = voices.list) {

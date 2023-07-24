@@ -8,6 +8,7 @@ import { tempoToMs } from '../tools/utils'
 import { watchEffect } from 'vue'
 import { useUI } from '../tools/useUI';
 import { watch } from 'vue';
+import { freqPitch } from '#/use';
 
 const params = {
   //Kick
@@ -40,9 +41,13 @@ watch(controls, () => {
 
   const measures = el.meter({ name: "time:measures" }, el.div(beats, steps))
 
-  const progress = el.meter({ name: "time:measure" }, el.mod(measures, 1))
+  const measure = el.meter({ name: "time:measure" }, el.mod(measures, 1))
 
-  const signal = el.mul(0, el.add(progress, timer))
+  const beat = el.meter({ name: 'time:beat' }, el.mod(beats, 1))
+
+  const pitch = el.meter({ name: 'time:pitch' }, el.const({ key: 'time:pitch', value: freqPitch(controls['time:bpm'] / 60) }))
+
+  const signal = el.mul(0, el.add(measure, beat, pitch))
 
   audio.layers.time = { signal: [0, signal], volume: 0 }
 

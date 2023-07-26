@@ -34,49 +34,27 @@ export function useTime() {
 }
 
 watch(controls, () => {
-
   let pitch = el.meter({ name: 'time:pitch' }, el.mod(el.const({ key: 'time:pitch', value: freqPitch(controls['time:bpm'] / 60) }), 12))
-
   let timer = el.meter({ name: 'time:time', }, el.time())
-
   let sampleRate = el.meter({ name: 'time:sample-rate', }, el.sr())
-
   let seconds = el.meter({ name: 'time:seconds', }, el.div(timer, sampleRate))
-
   let bpm = el.meter({ name: 'time:bpm' }, cv['time:bpm'])
-
   let bps = el.meter({ name: 'time:bps' }, el.div(bpm, 60))
-
   let beats = el.meter({ name: 'time:beats' }, el.mul(seconds, bps))
-
   let steps = el.meter({ name: 'time:steps' }, cv['time:steps'])
-
   let measures = el.meter({ name: "time:measures" }, el.div(beats, steps))
-
   let measure = el.meter({ name: "time:measure" }, el.mod(measures, 1))
-
   let beat = el.meter({ name: 'time:beat' }, el.mod(beats, 1))
-
   let pulse = el.meter({ name: 'time:pulse' }, el.le(beat, 0.5))
-
   let step = el.meter({ name: 'time:step' }, el.mod(beats, steps))
-
   let stepNum = el.meter({ name: 'time:step-num' }, el.floor(step))
-
   let firstStep = el.meter({ name: 'time:step-first' }, el.le(stepNum, 1))
-
   let stepOdd = el.meter({ name: 'time:step-odd' }, el.mod(stepNum, 2))
-
   let stepEven = el.meter({ name: 'time:step-even' }, el.eq(stepOdd, 0))
-
+  let hat = hatSynth(pitch, el.add(1000, el.mul(1500, stepOdd)), 0.001, el.add(0.01, el.mul(0.06, firstStep)), el.mul(controls['time:click'], pulse))
+  let metronome = el.mul(cv['time:volume'], hat)
   let silent = el.mul(0, el.add(measure, pitch, stepEven, pulse))
 
-  let hat = hatSynth(220, el.add(2000, el.mul(2000, stepOdd)), 0.001, el.add(0.01, el.mul(0.1, firstStep)), controls['time:click'] == 1 ? pulse : 0)
-
-  let metronome = el.mul(cv['time:volume'], hat)
-
   audio.layers.time = { signal: [metronome, el.add(metronome, silent)], volume: 1 }
-
   render('time')
-
 }, { immediate: true })

@@ -23,9 +23,13 @@ Built with JS, but operated by WASM lib in a separate audio thread. Construction
 ## Links
 
 - https://www.elementary.audio/docs/guides/Understanding_Keys
+- https://www.elementary.audio/docs/reference/Math
 - https://github.com/elemaudio/web-examples
 - https://github.com/bgins/coincident-spectra/blob/main/src/lib/audio/audio.ts
 - https://github.com/teetow/elementary_grid
+- https://www.nickwritesablog.com/drum-synthesis-in-javascript/
+- https://github.com/elemaudio/web-examples/blob/master/planets/app.js
+- https://github.com/teetow/elementary_grid/blob/master/src/lib/useSynth.tsx
   
 ## Resources
 
@@ -38,6 +42,10 @@ Built with JS, but operated by WASM lib in a separate audio thread. Construction
 - https://www.earlevel.com/main/
 - http://www.willpirkle.com/
 - https://www.hackaudio.com/
+- https://maxgraf.space/code/2020/04/22/e2e-piano-epiano.html
+- https://maxgraf.space/code/2020/06/05/pitch-aware-granular-synth.html
+- https://maxgraf.space/code/2020/06/05/karplus-strong-synth.html
+- https://ccrma.stanford.edu/~jos/pasp/Feedback_Comb_Filters.html
 
 ## Snippets
 

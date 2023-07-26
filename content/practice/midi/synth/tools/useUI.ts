@@ -10,6 +10,8 @@ export interface Param {
   min?: number
   max?: number
   step?: number
+  smooth?: number
+  fixed?: number
 }
 
 export function useUI(params: { [key: string]: Param }, title = 'es') {
@@ -35,7 +37,7 @@ export function useUI(params: { [key: string]: Param }, title = 'es') {
   watch(controls, () => {
     for (let c in controls) {
       cv[c] = el.smooth(
-        el.tau2pole(0.01),
+        el.tau2pole(params[c]?.smooth || 0.01),
         el.const({
           key: `${title}:${c}`,
           value: controls[c]

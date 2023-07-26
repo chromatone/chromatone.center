@@ -85,7 +85,7 @@ function cycle(freq, phaseOffset) {
  * @param decay - Decay time in seconds, tuned for [0.005s, 4.0s]
  * @param gate - The pulse train which triggers the amp envelope
  */
-export function hatSynth(pitch: Signal, tone: Signal, attack: Signal, decay: Signal, gate: Signal) {
+export function hatSynth(pitch: Signal = 0, tone: Signal = 1000, attack: Signal = 10, decay: Signal = 800, gate: Signal) {
   // Synthesis
   let m2 = el.noise();
   let m1 = cycle(el.mul(2, pitch), el.mul(2, m2));
@@ -97,7 +97,7 @@ export function hatSynth(pitch: Signal, tone: Signal, attack: Signal, decay: Sig
 
   // Finally we have the amp envelope with an attack in [5ms, 200ms] and a
   // decay in [5ms, 4000ms]
-  let env = el.adsr(attack, decay, 0.0, 0.1, gate);
+  let env = el.adsr(attack, decay, 0.0, 0.1, el.ge(gate, 0.5));
 
   return el.mul(f, env);
 }

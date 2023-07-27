@@ -21,7 +21,7 @@ const children = useChildren({ path: props.item?.url }, data)
     .cover(
       v-if="item?.frontmatter?.cover", 
       :style="{ backgroundImage: item?.frontmatter?.cover.split(';')[0] ? `url(${item?.frontmatter?.cover})` : '' }") 
-    .info
+    .info.flex.flex-col.gap-1 
       .title
         .mr-2.text-2xl(v-if="item?.frontmatter?.emoji") {{ item?.frontmatter?.emoji }}
         .text-2xl.p-2 {{ item?.frontmatter?.title }}
@@ -30,7 +30,7 @@ const children = useChildren({ path: props.item?.url }, data)
         .flex-1
         card-date.mr-2(v-if="!item?.frontmatter?.product",:date="item.lastModified")
       .description(v-if="item?.frontmatter?.description") {{ item?.frontmatter?.description }}
-      shop-price.mt-6(
+      shop-price.pb-2(
         v-if="item?.frontmatter?.product"
         :title="item?.frontmatter?.title"
         :product="item?.frontmatter?.product"

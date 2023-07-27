@@ -24,7 +24,7 @@ const pageColor = computed(() => {
   return lchToHsl(siblings.value.index, siblings.value.total, 1, 20, l)
 });
 
-const lightColor = computed(() => lchToHsl(siblings.value.index, siblings.value.total, 1, 70, 60));
+const lightColor = computed(() => lchToHsl(siblings.value.index, siblings.value.total, 1, 40, 60));
 </script>
 
 <template lang="pug">

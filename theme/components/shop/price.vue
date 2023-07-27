@@ -15,8 +15,8 @@ const props = defineProps({
 </script>
 
 <template lang="pug">
-.shop-action.text-xl
-  .price.p-2.text-2xl.bg-light-200.bg-opacity-70.rounded-md.dark-bg-dark-400.dark-bg-opacity-70.backdrop-blur-lg(
+.shop-action.text-xl(style="font-weight: normal;")
+  .price.p-2.text-2xl.bg-light-200.bg-opacity-70.rounded-md.dark-bg-dark-400.dark-bg-opacity-70.backdrop-blur-lg.font-bold(
     v-if="product",
     :style="{ color: color }"
   ) ${{ product?.price }}
@@ -29,7 +29,7 @@ const props = defineProps({
     @click.prevent.stop="addToCart(title, product)") 
 
     shop-cart-icon.scale-120(:id="product?.id")
-    .font-bold.cart-text Add to cart
+    .cart-text Add to cart
   //- a.shop-button.flex.items-center(
   //-   v-if="product?.link",
   //-   :href="product?.link", 
@@ -47,12 +47,12 @@ const props = defineProps({
 }
 
 .price {
-  @apply tracking-widest font-bold tabular-nums;
+  @apply tracking-widest tabular-nums;
   flex: 0;
 }
 
 .cart-text {
-  @apply flex-1 text-xl ml-2 transition-all duration-300;
+  @apply flex-1 text-xl font-bold ml-2 transition-all duration-300;
 
 }
 

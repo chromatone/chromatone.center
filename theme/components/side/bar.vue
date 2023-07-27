@@ -34,7 +34,7 @@ const route = useRoute();
 <template lang="pug">
 transition(name="fade")
   .sidebar-mask.z-50.overscroll-contain(v-show="open", @click="$emit('close')")
-.panel.sticky.top-16(:class="{ open }")
+.panel.pt-16(:class="{ open }")
   //- .-mt-4.ml-5.mb-4.text-xl.opacity-10.hover-opacity-80.transition
   //-   a.title.ml-10.no-underline(href="/", :aria-label="`${site.title}, go to main page`") Home
   SideBarLevel(path="/" :level="0")

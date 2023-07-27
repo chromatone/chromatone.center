@@ -14,10 +14,13 @@ const children = useChildren({ path: props.item?.url }, data)
 <template lang="pug">
 .crd.border-l-6.overflow-hidden(
   :title="item.lastModified",
-  :style="{borderColor: color}"
-  )
-  a.container.no-underline(:href="item.url" :class="{ 'pt-32': item?.frontmatter?.cover }" )
-    .cover(v-if="item?.frontmatter?.cover", :style="{ backgroundImage: item?.frontmatter?.cover.split(';')[0] ? `url(${item?.frontmatter?.cover})` : '' }") 
+  :style="{borderColor: color}")
+  a.container.no-underline(
+    :href="item.url" 
+    :class="{ 'pt-72': item?.frontmatter?.cover }")
+    .cover(
+      v-if="item?.frontmatter?.cover", 
+      :style="{ backgroundImage: item?.frontmatter?.cover.split(';')[0] ? `url(${item?.frontmatter?.cover})` : '' }") 
     .info
       .title
         .mr-2.text-2xl(v-if="item?.frontmatter?.emoji") {{ item?.frontmatter?.emoji }}
@@ -26,11 +29,8 @@ const children = useChildren({ path: props.item?.url }, data)
             slot
         .flex-1
         card-date.mr-2(v-if="!item?.frontmatter?.product",:date="item.lastModified")
-      .description(
-        v-if="item?.frontmatter?.description" 
-
-        ) {{ item?.frontmatter?.description }}
-      shop-price(
+      .description(v-if="item?.frontmatter?.description") {{ item?.frontmatter?.description }}
+      shop-price.mt-6(
         v-if="item?.frontmatter?.product"
         :title="item?.frontmatter?.title"
         :product="item?.frontmatter?.product"
@@ -47,7 +47,7 @@ const children = useChildren({ path: props.item?.url }, data)
 }
 
 .info {
-  @apply px-2 pt-4 pb-2 ml-2 m-2 z-4 bg-light-100 bg-opacity-80 dark-(bg-dark-600 bg-opacity-80) rounded-lg relative shadow-md;
+  @apply px-2 pt-4 pb-2 z-4 bg-light-600 bg-opacity-80 dark-(bg-dark-600 bg-opacity-80) relative shadow-md;
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   flex: 1 1 100%;
@@ -64,10 +64,14 @@ const children = useChildren({ path: props.item?.url }, data)
 .cover {
   @apply absolute top-0 w-full h-full bg-cover bg-center z-1;
 
-  filter: saturate(50%) brightness(120%) opacity(40%);
-  transition: all 600ms cubic-bezier(0.6, -0.1, 0, 1.1);
+  filter: saturate(50%) brightness(50%) opacity(80%);
+  transition: all 300ms cubic-bezier(0.6, -0.1, 0, 1.1);
   flex: 1 0 100%;
   background: cover;
+}
+
+.dark .cover {
+  filter: saturate(50%) brightness(70%) opacity(70%);
 }
 
 .crd:hover .cover {

@@ -18,12 +18,21 @@ const props = defineProps({
 .shop-action.text-xl(
   @click.prevent.stop="addToCart(title, product)"
   )
-  .shop-button.price(
+  .price.p-2.text-2xl.bg-light-200.bg-opacity-90.rounded-md(
     v-if="product",
-    :style="{ backgroundColor: color }"
+    :style="{ color: color }"
 
   ) ${{ product?.price }}
 
+  .flex-auto
+  .shop-button.flex.items-center(
+    style="flex: 0 0 140px;"
+    v-if="product?.id"
+    :style="{ backgroundColor: color }"
+
+    ) 
+    shop-cart-icon(:id="product?.id")
+    .font-bold.cart-text Add to cart
   //- a.shop-button.flex.items-center(
   //-   v-if="product?.link",
   //-   :href="product?.link", 
@@ -32,21 +41,12 @@ const props = defineProps({
   //-   )
   //-   eva-shopping-bag-outline.order
   //-   span.cart-text(v-if="showButton") Buy
-  .shop-button.flex.items-center(
-    style="flex: 3;"
-    v-if="product?.id"
-    :style="{ backgroundColor: color }"
-
-    ) 
-    shop-cart-icon(:id="product?.id")
-    .font-bold.cart-text Add to cart
-
 </template>
 
 
 <style lang="postcss" scoped>
 .shop-action {
-  @apply flex justify-center items-center gap-2 mb-1;
+  @apply flex items-center gap-2 mb-1;
 }
 
 .price {

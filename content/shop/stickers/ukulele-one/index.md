@@ -6,7 +6,7 @@ product:
   link: https://ko-fi.com/s/5e951d8b89
   id: price_1M3cKMBJnUXQERocq77GJw4x
 cover: uke.jpg
-date: 2021-09-01
+date: 2021-03-01
 ---
 
 A very handy tool to feel the colors of note strings and vice versa. Ukulele is very portable, easy to learn and pleasant to hear. Just drop in some colors to make learning and practicing music a lot more fun. It’s like you really start seeing the notes you play.

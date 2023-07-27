@@ -7,7 +7,7 @@ product:
   link: https://ko-fi.com/s/e5f5c23a30
   id: price_1M1XuQBJnUXQERoc5nVjpAX6
 cover: main.jpeg
-date: 2021-09-02
+date: 2023-07-01
 ---
 
 ![](./angle.jpeg)
@@ -17,7 +17,7 @@ The combination of 3 smaller sticker kits on a precut sheet of high quality tran
 - acoustic or electric guitar
 - ukulele (any kind)
 - keys of a piano, synth or a MIDI-keyboard
-- - some nice memos and Chromatone logos.
+  - - some nice memos and Chromatone logos.
 
 ![](./close.jpeg)
 

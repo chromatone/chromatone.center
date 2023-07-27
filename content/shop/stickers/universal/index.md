@@ -6,7 +6,7 @@ product:
   link: https://ko-fi.com/s/a2d14d2c25
   id: uni
 cover: op-z-sheet.jpg
-date: 2021-09-04
+date: 2023-07-27
 ---
 
 The most concentrated form of colorful instrument stickers. A small A6 sheet includes 144 various precut stickers for you to get creative with. There are two octaves of named note circles and much more pure colors. They come in the form of a circle, a ring, a semiring and a straight line.

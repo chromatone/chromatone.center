@@ -15,13 +15,10 @@ const props = defineProps({
 </script>
 
 <template lang="pug">
-.shop-action.text-xl(
-  @click.prevent.stop="addToCart(title, product)"
-  )
-  .price.p-2.text-2xl.bg-light-200.bg-opacity-90.rounded-md(
+.shop-action.text-xl
+  .price.p-2.text-2xl.bg-light-200.bg-opacity-70.rounded-md.dark-bg-dark-400.dark-bg-opacity-70.backdrop-blur-lg(
     v-if="product",
     :style="{ color: color }"
-
   ) ${{ product?.price }}
 
   .flex-auto
@@ -29,9 +26,9 @@ const props = defineProps({
     style="flex: 0 0 140px;"
     v-if="product?.id"
     :style="{ backgroundColor: color }"
+    @click.prevent.stop="addToCart(title, product)") 
 
-    ) 
-    shop-cart-icon(:id="product?.id")
+    shop-cart-icon.scale-120(:id="product?.id")
     .font-bold.cart-text Add to cart
   //- a.shop-button.flex.items-center(
   //-   v-if="product?.link",

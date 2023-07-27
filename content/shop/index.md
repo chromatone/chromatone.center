@@ -10,7 +10,7 @@ import mapOl from './map-ol.vue'
 import map from '#/db/map.yml'
 </script>
 
-<map-ol :cities="map.cities" />
+<map-ol class="mx-4" :cities="map.cities" />
 
 We are the growing global community of more than **{{map.cities.length +10}}** musicians worldwide who've already implemented Chromatone into our daily music practice. Join us today!
 

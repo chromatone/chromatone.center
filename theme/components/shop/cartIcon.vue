@@ -20,5 +20,6 @@ const quantity = computed(() => {
 </script>
 
 <template lang="pug">
-.-top-1.right-0.text-xs.absolute.bg-purple-600.bg-opacity-90.px-1.rounded-full.text-white {{quantity}}
+.-top-1.right-0.text-xs.absolute.bg-light-900.bg-opacity-90.text-center.rounded-full.text-black.w-5.h-5.dark-bg-dark-300.dark-text-white.dark-bg-opacity-60.backdrop-blur-md
+	.p-0 {{quantity || '+'}}
 </template>

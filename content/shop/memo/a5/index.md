@@ -7,6 +7,7 @@ product:
   link: https://ko-fi.com/s/93da4887a5
   id: a5-memo
 cover: a5-front.png
+date: 2023-07-27
 ---
 
 The great companion for our colorful stickers – a small and durable cheat sheet with all 12 relative major and minor keys along with all main chords they contain. All chords show not only their root notes and names, but also notes they consist of.

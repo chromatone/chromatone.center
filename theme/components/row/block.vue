@@ -79,7 +79,7 @@ const bg = computed(() => `url(${props.item?.frontmatter?.cover}`);
 
 .cover {
   @apply absolute w-full top-0 h-full;
-  filter: saturate(50%) opacity(30%);
+  filter: saturate(50%) opacity(50%) brightness(50%);
   transition: all 450ms ease-in-out;
   flex: 1 1 30%;
   background-size: cover;

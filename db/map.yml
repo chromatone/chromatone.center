@@ -332,3 +332,6 @@ cities:
   - city: Istanbul
     country: Turkey
     coord: [41.078823658374375, 28.996954341353025]
+  - city: Los Angeles, CA
+    country: USA
+    coord: [34.12414810517873, -118.20212041661163]

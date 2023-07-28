@@ -16,3 +16,7 @@ Imagine if once we agree on a certain way to connect notes and colors? It can em
 We're creating the visual [music theory study](./theory/index.md), that helps beginners learn complex music concepts in color. [Interactive web-apps](./practice/index.md) expand the knowledge and grow deeper music awareness.
 
 For those, who want to touch and feel the colorful notes we have a [Sticker shop](./shop/index.md). While those who are interested in further project development may consider [supporting](./support/index.md) [us](contact/index.md) today.
+
+And it's all open source!
+
+<a class="github-button" href="https://github.com/chromatone/chromatone.center" data-color-scheme="no-preference: light; light: light; dark: dark;" data-size="large" data-show-count="true" aria-label="Star chromatone/chromatone.center on GitHub">Star</a>

@@ -1,5 +1,5 @@
 ---
-title: Chromatone presentation at NAMM 2019
+title: Presentation at NAMM 2019
 description: Презентация на выставке NAMM 2019 в Москве. Краткая презентация системы Хроматон и живое выступление проекта tsoop
 date: 2019-09-12
 cover: fest-sokolniki-1.jpg

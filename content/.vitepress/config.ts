@@ -41,6 +41,9 @@ export default defineConfig({
     icon: metaData.url + metaData.icon,
     repo: metaData.repo,
   },
+  head: [
+    ['script', { defer: '', async: '', src: "https://buttons.github.io/buttons.js" }]
+  ],
   transformHead: generateMeta(metaData),
   transformHtml: (_, id, { pageData }) => {
     if (!/[\\/]404\.html$/.test(id))

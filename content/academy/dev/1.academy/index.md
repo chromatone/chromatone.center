@@ -1,25 +1,17 @@
 ---
-title: Chromatone dev blog
-description: Short video streams about the build process of this web-site
-date: 2022-06-18
+title: Academy update
+description: Major updates to the Chromatone web-site, May 2022
+date: 2022-05-18
+cover: cover.png
 ---
-
-### 2022-06-18: Add blur to chroma detect web-app 
-
-<youtube-embed video="Q34-E1c9fe0" />
-
-______
-
-### 2022-05-18: Academy update
 
 <youtube-embed video="ltMBUZFM20s" />
 
-Chromatone got some significant updates this may. Now it's not just a web-site to learn and explore music theory. It's a whole ecosystem of tools to learn, teach and analyze music. Besides all the articles and interactive apps now we have the audio and video recording tools to produce educational content right in the browser. Play notes with your mouse, touch, keyboard or MIDI controller. Connect your mic, synth or audio interface and have the the sound analyzed, processed and recorded along with the video of your front camera and the screen. 
+### 2022-05-18: Academy update
+
+Chromatone got some significant updates this may. Now it's not just a web-site to learn and explore music theory. It's a whole ecosystem of tools to learn, teach and analyze music. Besides all the articles and interactive apps now we have the audio and video recording tools to produce educational content right in the browser. Play notes with your mouse, touch, keyboard or MIDI controller. Connect your mic, synth or audio interface and have the the sound analyzed, processed and recorded along with the video of your front camera and the screen.
 
 It's a musician toolbox that is the foundation for the whole Chromatone academy - the community of educators and their materials to learn with. The next goal is to start teaching and verifying new Chromatone educators all over the world to bring it to any remote region in any language and musical culture.
-
-https://chromatone.center
-
 
     00:00 Chromatone - the visual way to learn music
     00:40 Music theory web experience

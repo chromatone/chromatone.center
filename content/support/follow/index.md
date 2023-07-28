@@ -1,6 +1,6 @@
 ---
 title: Follow and share
-description: Keep in touch with our updates and share your creations with others!
+description: Keep in touch with our updates and share your Chromatone experiences with others
 buttons:
   - url: https://www.instagram.com/chromatone.center
     text: "chromatone.center"
@@ -8,6 +8,9 @@ buttons:
   - url: https://www.reddit.com/r/chromatone
     text: r/chromatone
     type: reddit
+  - url: https://github.com/chromatone/
+    text: chromatone.center
+    type: github
 date: 2022-05-17
 ---
 
@@ -18,6 +21,3 @@ date: 2022-05-17
 ## <i class="p-6 mr-1 i-la-reddit"></i> [r/chromatone](https://www.reddit.com/r/chromatone)
 
 We are those, who learn, teach, explore and produce music with help of the new clean visual language. And it's getting better with every contribution. Say hi and someone will reply. Everything starts from the first step. More to build together!
-
-
-

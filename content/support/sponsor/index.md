@@ -1,6 +1,6 @@
 ---
-title: Sponsorship
-description: "You can support Chromatone development as a free and open source ecosytem of visual music"
+title: Sponsor us
+description: "You can support Chromatone development to continue as a free and open source ecosytem of visual music"
 date: 2022-04-17
 buttons:
   - url: "https://github.com/sponsors/chromatone/"

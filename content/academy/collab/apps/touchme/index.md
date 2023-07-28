@@ -8,7 +8,7 @@ buttons:
     text: touchme.chromatone.center
     type: primary
   - url: https://github.com/chromatone/touchme
-    text: Repo
+    text: chromatone/touchme
     type: github
 ---
 

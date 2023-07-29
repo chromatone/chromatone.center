@@ -3,6 +3,7 @@ title: Shop
 description: Vinyl stickers for musical instruments and paper posters, memos and more to print! The stickers are satisfyingly durable and are cut in very optimized layouts. One sheet can cover many instruments, so you can share your set with friends. 
 date: 2021-05-20
 topContent: true
+cover: shop.jpg
 ---
 
 <script setup>

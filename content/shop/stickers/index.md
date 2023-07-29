@@ -12,3 +12,5 @@ The [Universal stickers](./universal/index.md) and [A5 MAX](./a5max/index.md) ar
 Upgrade your [Guitar](./guitar/index.md) or [Ukulele](./ukulele/index.md) with color notes strip stickers.
 
 The newer [A5 MULTI stickers](./a5multi/index.md) are printed on transparent vinyl and are more useful for more experienced musicians.
+
+The holographic [Holocircle](./holocircle/index.md) is just a nice visual aid to recall all the 12 notes and colors to play with.

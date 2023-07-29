@@ -7,7 +7,7 @@ product:
   link: https://ko-fi.com/s/1f0f4da547
   id: price_1M1YpEBJnUXQERocQ8NTipAV
 cover: main.jpeg
-date: 2021-09-01
+date: 2022-03-01
 ---
 
 The absolute maximum quantity of stickers that can fit into a standard A5 sheet. 29 octaves of 6 shapes to put at almost any music instrument.

@@ -52,18 +52,16 @@ g
   circle(
     cx="0"
     cy="0"
-    r="5"
-    :fill="pitch === false ? 'none' : chromaColorMix(chroma, pitch)"
+    r="3.5"
+    :fill="pitch === false ? 'none' : colord(noteColor(tonic)).toHex()"
     )
   text(
     y="0.3"
-    font-size="3px"
+    font-size="2"
     font-weight="bold"
     fill="white"
     ) {{ pitch === false ? '' : typeof pitch == 'string' ? pitch : notes?.[pitch % 12] }}{{ type }}
   
 </template>
 
-<style lang="postcss" scoped>
-
-</style>
+<style lang="postcss" scoped></style>

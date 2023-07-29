@@ -6,7 +6,7 @@ product:
   link: https://ko-fi.com/s/1903d23e3b
   id: price_1M3cQ2BJnUXQERocvuNAF9JD
 cover: holologo.svg
-date: 2023-07-20
+date: 2022-01-20
 ---
 
 A rather small sticker to be put on your instrument case or any other flat surface. It’s highly durable print and vinyl holographic film make it the best portable format for visual music learning.

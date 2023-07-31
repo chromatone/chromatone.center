@@ -10,10 +10,11 @@ date: 2021-08-09
 The A4 cheat-sheet is currently in a design process.. It will be available to buy as a printable PDF soon.
 
 <script setup>
-import drawScales from './scales.vue'
+import PrintScales from './PrintScales.vue'
 </script>
 
 ## Diatonic scales and modes
 
-<draw-scales   width="100%" class="max-w-55ch" />
-<!-- <svg-save svg="diatonic"/> -->
+<print-scales   width="100%" class="max-w-55ch" />
+<save-svg svg="diatonic"/>
+<save-pdf svg="diatonic"/>

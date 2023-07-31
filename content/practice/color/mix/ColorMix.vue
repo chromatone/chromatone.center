@@ -30,7 +30,7 @@ const mix = computed(() => activeColors.value?.reduce((prev, next) => prev.mix(n
   )
 
 .relative.hidden
-  svg-save(svg="brain")
+  save-svg(svg="brain")
   svg#brain.w-full(
     :width="width * 3 + 30"
     :height="height * 4 + 40"

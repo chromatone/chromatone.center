@@ -141,7 +141,7 @@ function isInScale(list) {
 
 
 
-      //- svg-save(:svg="pos.frets.join('')" :file="state.tabs?.key + state.tabs?.suffix + n")
+      //- save-svg(:svg="pos.frets.join('')" :file="state.tabs?.key + state.tabs?.suffix + n")
 </template>
 
 

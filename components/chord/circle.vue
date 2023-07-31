@@ -53,8 +53,8 @@ g
     cx="0"
     cy="0"
     r="3.5"
-    :fill="pitch === false ? 'none' : colord(noteColor(tonic)).toHex()"
-    )
+    :fill="pitch === false ? 'none' : colord(noteColor(pitch)).toHex()")
+
   text(
     y="0.3"
     font-size="2"

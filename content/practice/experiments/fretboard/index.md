@@ -88,4 +88,4 @@ import fretboardTool from './tool.vue'
 </script>
 
 <fretboard-tool :instruments="$frontmatter.instruments" />
-<svg-save svg="fretboard" />
+<save-svg svg="fretboard" />

@@ -86,7 +86,7 @@ function clickListener(elem, tune, classes, analysis, drag) {
 <template lang="pug">
 .flex
   .abc-render(:id="id") {{ abc }}
-  svg-save(:svg="id" v-if="save")
+  save-svg(:svg="id" v-if="save")
 </template>
  
 <style lang="postcss" scoped>

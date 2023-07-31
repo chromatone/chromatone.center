@@ -134,7 +134,7 @@ function play() {
         height="1"
         :fill="noteColor((note.midi + 3) % 12)"
         )  
-  svg-save(svg="visual")  
+  save-svg(svg="visual")  
 </template>
 
 <style lang="postcss" scoped>

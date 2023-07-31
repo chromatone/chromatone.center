@@ -3,10 +3,13 @@ import { colord } from 'colord'
 import { noteColor } from "#/use/colors"
 import { notes } from '#/use/theory'
 const props = defineProps({
+  pitch: { type: Number, default: 0 },
   chroma: { type: String, default: '100100010010' },
+  type: { type: String, default: '' },
+  tonic: { type: Number, default: 0 },
 });
 
-const allNotes = [...notes].map((n, i) => ({ name: n, pitch: i }))
+const allNotes = [...notes].map((n, i) => ({ name: n, pitch: i, pos: [1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0][n] ? 1 : 0 }))
 
 const whites = [3, 5, 7, 8, 10, 0, 2].map(n => allNotes[n])
 const blacks = [4, 6, false, 9, 11, 1].map(n => allNotes[n])
@@ -20,8 +23,9 @@ function isInChord(n) {
 function getNoteColor(n) {
   if (isInChord(n % 12)) return noteColor(n % 12)
   else if ([1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0][n]) return 'hsl(0,0%,90%)'
-  else return 'hsl(0,0%,50%)'
+  else return '#aaaa'
 }
+
 </script>
 
 <template lang="pug">
@@ -52,9 +56,14 @@ g
         text-anchor="middle",
         dominant-baseline="middle"
         :x="25 * (i % 12) + 11 + 13 * k",
-        :y="note?.pos == 1 ? 55 : 88",
+        :y="![1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0][note.pitch] ? 55 : 88",
       ) {{ note?.name }}
-
+    text(
+      text-anchor="start",
+      x="2"
+      y="-15"
+      font-size="22"
+    ) {{notes[pitch]}}{{ type }}
 </template>
 
 <style lang="postcss" scoped></style>

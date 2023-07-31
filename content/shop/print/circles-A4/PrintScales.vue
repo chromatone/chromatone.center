@@ -1,5 +1,5 @@
 <script setup>
-import drawKeys from './keys.vue'
+import printKeys from '../PrintKeys.vue'
 
 import { rotateArray } from '#/use/calculations'
 import { notes } from '#/use/theory'
@@ -97,8 +97,7 @@ svg#diatonic.m-8.select-none(
   g(
     v-for="(tonic, pitch) in notes"
     :key="pitch"
-    :transform="`translate(0, ${pitch * (box.height - box.padding.y) / 12})`"
-    ) 
+    :transform="`translate(0, ${pitch * (box.height - box.padding.y) / 12})`") 
     rect(
       :x="0"
       :y="box.padding.y - 1"
@@ -106,14 +105,12 @@ svg#diatonic.m-8.select-none(
       :width="box.width"
       height="22"
       opacity="0.2"
-      :fill="pitch % 2 ? '#333' : '#eee'"
-    )
+      :fill="pitch % 2 ? '#333' : '#eee'")
     chord-circle(
       :pitch="pitch + 3"
       transform="translate(12,14)"
       chroma="101101011010"
-      :tonic="pitch"
-    )
+      :tonic="pitch")
     chord-circle(
       v-for="(chord, maj) in chords.majors" 
       :key="chord"
@@ -121,8 +118,8 @@ svg#diatonic.m-8.select-none(
       :chroma="chord.chroma"
       :transform="`translate(${maj * 22 + 12 + box.padding.left}, 14)`"
       :type="chord.type"
-      :tonic="pitch"
-    )
+      :tonic="pitch")
+
     chord-circle(
       v-for="(chord, maj) in chords.minors" 
       :key="chord"
@@ -130,12 +127,20 @@ svg#diatonic.m-8.select-none(
       :chroma="chord.chroma"
       :transform="`translate(${maj * 22 + 108 + box.padding.left}, 14)`"
       :type="chord.type"
-      :tonic="pitch"
-    )
-    draw-keys(
+      :tonic="pitch")
+
+    print-keys(
+      v-for="(chord, maj) in chords.majors" 
+      :key="chord"
+      :type="chord.type"
+      :pitch="(chord.pitch + pitch) % 12"
+      :transform="`translate(${maj * 22 + 3+ box.padding.left}, 9) scale(0.11) `"
+      :chroma="rotateArray(chord.chroma.split(''), -pitch).join('')")
+
+    print-keys(
       :transform="`scale(0.15) translate(${600 + box.padding.left},${pitch * 0.1 + box.padding.y + 44})`"
-      :chroma="rotateArray(chords.scale.split(''), -pitch).join('')"
-    )
+      :chroma="rotateArray(chords.scale.split(''), -pitch).join('')")
+
   line(
     :x1="box.padding.left"
     :x2="box.padding.left"

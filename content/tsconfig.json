@@ -4,7 +4,8 @@
 	],
 	"typedocOptions": {
 		"entryPoints": [
-			"../use/"
+			"../use/",
+			"./"
 		],
 		"out": "support/code/docs/",
 		"githubPages": false,

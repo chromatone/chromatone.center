@@ -9,10 +9,6 @@ product:
   digital: true
 ---
 
-## WORK IN PROGRESS
-
-The A4 cheat-sheet is currently in a design process.. It will be available to buy as a printable PDF soon.
-
 <script setup>
 import PrintScales from './PrintScales.vue'
 </script>
@@ -20,5 +16,4 @@ import PrintScales from './PrintScales.vue'
 ## Diatonic scales and modes
 
 <print-scales   width="100%" class="max-w-55ch" />
-<save-svg svg="diatonic"/>
-<save-pdf svg="diatonic"/>
+<save-buttons svg="diatonic" password="circle-a4-99tuD"/>

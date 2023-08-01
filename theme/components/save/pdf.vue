@@ -5,7 +5,7 @@ const props = defineProps({
   x: { type: Number },
   y: { type: Number },
   width: { type: Number, default: 210 },
-  height: { type: Number, default: 270 },
+  height: { type: Number, default: 297 },
 });
 
 const anchor = ref('')
@@ -40,13 +40,14 @@ async function savePDF(pic) {
 </script>
 
 <template lang="pug">
-.snapshot
-  .i-la-file-download(@click="savePDF(svg)")
-  a(ref="anchor",target="_blank",:download="download.file",:href="download.url", v-if="download.url")
+.snapshot(@click="savePDF(svg)")
+  .i-la-file-download
+  .text-xs.font-bold PDF
+a(ref="anchor",target="_blank",:download="download.file",:href="download.url", v-if="download.url")
 </template>
 
 <style lang="postcss" scoped>
 .snapshot {
-  @apply flex cursor-pointer bg-gray-200 bg-opacity-70 dark-(bg-gray-800 bg-opacity-70) text-2xl -mt-1rem p-2 z-100 rounded-full;
+  @apply flex items-center gap-2 cursor-pointer bg-light-400 dark-bg-dark-800 py-1 px-4 z-100 rounded-full;
 }
 </style>

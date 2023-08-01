@@ -125,6 +125,7 @@ declare module 'vue' {
     Quote: typeof import('./../theme/components/global/quote.vue')['default']
     RowBlock: typeof import('./../theme/components/row/block.vue')['default']
     RowList: typeof import('./../theme/components/row/list.vue')['default']
+    SaveButtons: typeof import('./../theme/components/save/buttons.vue')['default']
     SavePdf: typeof import('./../theme/components/save/pdf.vue')['default']
     SaveSvg: typeof import('./../theme/components/save/svg.vue')['default']
     ScaleDegrees: typeof import('./../components/scale/degrees/index.vue')['default']

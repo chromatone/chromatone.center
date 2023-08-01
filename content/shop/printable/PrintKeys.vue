@@ -41,8 +41,10 @@ function isInScale(note) {
 
 function keyColor(key, off) {
   if (key == null) return 'transparent'
-  if (key == props.pitch) return colord(noteColor(key, 4)).toHex()
-  return isInChroma(key) && !off ? colord(noteColor(key, 3.5)).toHex() : notes[key].length != 2 ? '#eee' : '#999'
+  if (key == props.pitch) return colord(noteColor(key, 3)).toHex()
+  if (isInChroma(key) && !off) return colord(noteColor(key, 3.5)).toHex()
+
+  return notes[key].length != 2 ? '#eee' : '#999'
 }
 
 </script>
@@ -54,9 +56,8 @@ function keyColor(key, off) {
 svg.w-full.mt-2#chroma-keys(
   version="1.1",
   baseProfile="full",
-  :viewBox="`-10 -80 720 450`",
+  :viewBox="`-10 -150 720 500`",
   xmlns="http://www.w3.org/2000/svg",
-  font-family="Commissioner, sans-serif"
   font-weight="200"
   font-size="40"
   text-anchor="middle",
@@ -68,19 +69,19 @@ svg.w-full.mt-2#chroma-keys(
       feDropShadow(dx="0" dy="3" stdDeviation="4" flood-color="#2225")
 
   rect(
-    y="-90"
+    y="-150"
     width="710" 
-    height="440" 
+    height="500" 
     rx="60"
-    :fill="noteColor(pitch, 2, 2, 1)")
+    :fill="colord(noteColor(pitch, 1, 2, 1)).toHex()")
 
   text(
     font-weight="bold"
     fill="white"
-    text-anchor="start",
-    x="40"
-    y="-30"
-    font-size="62" ) {{notes[pitch]}}{{ type }}
+    text-anchor="middle",
+    x="350"
+    y="-50"
+    font-size="90" ) {{notes[pitch]}}{{ type }}
 
   g.white
     g.key(
@@ -114,23 +115,23 @@ svg.w-full.mt-2#chroma-keys(
   g.black 
     g.key(
       v-for="(key, k) in keys.black" :key="key"
-      :transform="`translate(${k * 100 + 55} 10)`"
+      :transform="`translate(${k * 95 + 80} 10)`"
       @mousedown.stop="$emit('update:pitch', key)"
       )
       rect.transition-all.duration-300.ease-out(
         v-if="key"
-        width="90"
-        height="220"
-        rx="45"
+        width="80"
+        height="200"
+        rx="40"
         style="filter:url(#shadowButton);"
         :fill="keyColor(key, true)"
         :data-check="key"
         )
       circle.transition-all.duration-300.ease-out(
         v-if="key"
-        cy="175"
-        cx="45"
-        r="45"
+        cy="160"
+        cx="40"
+        r="40"
         :fill="keyColor(key)"
         stroke-width="8"
         :stroke="isInScale(key) ? noteColor(key, 3) : 'transparent'"
@@ -140,8 +141,8 @@ svg.w-full.mt-2#chroma-keys(
         :fill="colord(noteColor(key)).isDark() ? 'white' : 'black'"
         :font-weight="key == pitch ? 800 : 200"
         ) 
-        tspan(y="176" x="45") {{ notes[key] }}
-        tspan(y="50" x="45" ) {{ flats[key] }}
+        tspan(y="165" x="42") {{ notes[key] }}
+        tspan(y="50" x="42" ) {{ flats[key] }}
 </template>
 
 <style lang="postcss" scoped>

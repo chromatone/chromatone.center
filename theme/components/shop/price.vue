@@ -22,10 +22,9 @@ const route = useRoute()
   v-if="product",
   )
   .price.p-2.text-2xl.bg-light-200.bg-opacity-70.rounded-md.dark-bg-dark-400.dark-bg-opacity-70.backdrop-blur-lg.font-bold(
-
     :style="{ color: color }"
   ) ${{ product?.price }} {{  }}
-  .price.p-2.text-2xl.bg-light-200.bg-opacity-70.rounded-md.dark-bg-dark-400.dark-bg-opacity-70.backdrop-blur-lg.font-bold(v-if="product?.digital")
+  .price.p-2.text-2xl.bg-light-200.bg-opacity-70.rounded-md.dark-bg-dark-400.dark-bg-opacity-70.backdrop-blur-lg.font-bold(v-if="product?.digital" v-tooltip="'This is a digital good. You will receive a link to download the file and will be able to print it by yourself.'")
     .i-la-file-download
 
   .flex-auto

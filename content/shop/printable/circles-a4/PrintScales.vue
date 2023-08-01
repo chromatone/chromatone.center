@@ -129,17 +129,11 @@ svg#diatonic.m-8.select-none(
       :type="chord.type"
       :tonic="pitch")
 
-    print-keys(
-      v-for="(chord, maj) in chords.majors" 
-      :key="chord"
-      :type="chord.type"
-      :pitch="(chord.pitch + pitch) % 12"
-      :transform="`translate(${maj * 22 + 3+ box.padding.left}, 9) scale(0.11) `"
-      :chroma="rotateArray(chord.chroma.split(''), -pitch).join('')")
 
     print-keys(
-      :transform="`scale(0.15) translate(${600 + box.padding.left},${pitch * 0.1 + box.padding.y + 44})`"
-      :chroma="rotateArray(chords.scale.split(''), -pitch).join('')")
+      :pitch="pitch"
+      :transform="`scale(0.12) translate(${750 + box.padding.left},-45)`"
+      :chroma="chords.scale")
 
   line(
     :x1="box.padding.left"

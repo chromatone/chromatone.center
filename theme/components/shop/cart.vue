@@ -16,7 +16,10 @@ import { cart, checkout, total, open, delivery, count } from '#/theme/composable
 			tr(v-for="(pos,id) in cart" :key="id")
 				td.font-bold.flex-1.text-left.flex.items-center.gap-1 
 					a.cursor-pointer.no-underline(:href="pos.path" @click="open = false") {{pos.title}}
-					.i-la-file-download.text-sm(v-if="pos.digital")
+					.i-la-file-download.text-sm(
+						v-if="pos.digital"
+						v-tooltip="'This is a digital good. You will receive a link to download the file and will be able to print it by yourself.'"
+						)
 				td.text-center ${{pos.price}}
 				td
 					.flex.justify-between.items-center

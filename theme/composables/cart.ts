@@ -126,7 +126,7 @@ export async function checkout() {
 			mode: 'payment',
 			successUrl: 'https://chromatone.center/shop/success.html',
 			cancelUrl: 'https://chromatone.center/shop/cancel.html',
-			shippingAddressCollection: { allowedCountries: allowedCountries() }
+			shippingAddressCollection: delivery.needed ? { allowedCountries: allowedCountries() } : undefined
 		})
 	} catch (e) {
 		alert('checkout failed')

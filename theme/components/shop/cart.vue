@@ -15,7 +15,7 @@ import { cart, checkout, total, open, delivery, count } from '#/theme/composable
 				td.text-right Total
 			tr(v-for="(pos,id) in cart" :key="id")
 				td.font-bold.flex-1.text-left.flex.items-center.gap-1 
-					a.cursor-pointer(:href="pos.path") {{pos.title}}
+					a.cursor-pointer.no-underline(:href="pos.path" @click="open = false") {{pos.title}}
 					.i-la-file-download.text-sm(v-if="pos.digital")
 				td.text-center ${{pos.price}}
 				td

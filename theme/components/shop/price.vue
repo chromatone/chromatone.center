@@ -1,5 +1,6 @@
 <script setup>
 import { cart, addToCart } from '#/theme/composables/cart'
+import { useRoute } from 'vitepress';
 
 const props = defineProps({
   title: String,
@@ -11,6 +12,7 @@ const props = defineProps({
   color: { type: String, default: '' }
 });
 
+const route = useRoute()
 
 </script>
 
@@ -22,7 +24,7 @@ const props = defineProps({
   .price.p-2.text-2xl.bg-light-200.bg-opacity-70.rounded-md.dark-bg-dark-400.dark-bg-opacity-70.backdrop-blur-lg.font-bold(
 
     :style="{ color: color }"
-  ) ${{ product?.price }}
+  ) ${{ product?.price }} {{  }}
   .price.p-2.text-2xl.bg-light-200.bg-opacity-70.rounded-md.dark-bg-dark-400.dark-bg-opacity-70.backdrop-blur-lg.font-bold(v-if="product?.digital")
     .i-la-file-download
 
@@ -31,7 +33,7 @@ const props = defineProps({
     style="flex: 0 0 140px;"
     v-if="product?.id"
     :style="{ backgroundColor: color }"
-    @click.prevent.stop="addToCart(title, product)") 
+    @click.prevent.stop="addToCart(title, {...product, path:route.path})") 
 
     shop-cart-icon.scale-120(:id="product?.id")
     .cart-text Add to cart

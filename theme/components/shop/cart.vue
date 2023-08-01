@@ -7,14 +7,16 @@ import { cart, checkout, total, open, delivery, count } from '#/theme/composable
 	.flex.justify-between
 		.text-lg.px-4.pt-1.pb-2 My shopping cart
 	.overflow-y-scroll.max-h-60vh.overscroll-contain
-		table.text-left.m-0.mb-4.text-sm.md-text-lg
+		table.text-left.m-0.mb-4.text-sm.md-text-lg.w-full
 			tr.text-md.sticky.top-0.z-20
 				td Item
 				td.text-center Price
 				td.text-center Quantity
 				td.text-right Total
 			tr(v-for="(pos,id) in cart" :key="id")
-				td.font-bold.flex-1.text-left {{pos.title}}
+				td.font-bold.flex-1.text-left.flex.items-center.gap-1 
+					a.cursor-pointer(:href="pos.path") {{pos.title}}
+					.i-la-file-download.text-sm(v-if="pos.digital")
 				td.text-center ${{pos.price}}
 				td
 					.flex.justify-between.items-center
@@ -25,7 +27,7 @@ import { cart, checkout, total, open, delivery, count } from '#/theme/composable
 							button.cursor-pointer.text-sm.cursor-pointer.bg-light-900.bg-opacity-20.p-1.rounded-xl(@click="pos.quantity++")
 								.i-la-plus
 				td.w-6ch.text-right.font-bold ${{Number(pos.price) * Number(pos.quantity)}}
-			tr
+			tr(v-if="delivery.needed")
 				td.font-bold 
 					.flex.gap-2 
 						p Worldwide delivery
@@ -44,7 +46,7 @@ import { cart, checkout, total, open, delivery, count } from '#/theme/composable
 								.font-normal.text-left {{way.title}}
 								.i-la-info-circle.absolute.top-2.right-2(v-tooltip.top="{content:way.desc, distance:8, delay:200, triggers:['hover']}")
 				td.text-right.font-bold ${{delivery?.selected?.price}}
-			tr(:style="{opacity: count > 1 ? 1: .3}")
+			tr(:style="{opacity: count > 1 ? 1: .3}" v-if="delivery.needed")
 				td(colspan="1")
 					.flex.gap-4
 						.text-md <b>Free</b> Holographic Chromatone sticker for <b>2 or more</b> items!
@@ -56,7 +58,7 @@ import { cart, checkout, total, open, delivery, count } from '#/theme/composable
 						img.h-8(src="/media/logo/holologo.svg")
 			tr.sticky.bottom-0
 				td.font-bold(colspan="2") Total
-				td.font-bold.text-center {{ count + (count>=2 ? 1 : 0) }} items
+				td.font-bold.text-center {{ count + (delivery.needed && count>=2 ? 1 : 0) }} items
 				td.font-bold.text-right ${{total}}
 
 .flex.gap-2.mt-2

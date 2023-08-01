@@ -1,8 +1,12 @@
 ---
-title: Piano chords A4
+title: Printable A4 piano chords
 description: All chords for all scales on one page
 cover: cover.png
 date: 2023-08-02
+product:
+  price: 10
+  id: print-piano-a4
+  digital: true
 ---
 
 ## WORK IN PROGRESS

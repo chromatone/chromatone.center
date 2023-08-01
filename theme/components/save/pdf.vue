@@ -41,7 +41,7 @@ async function savePDF(pic) {
 
 <template lang="pug">
 .snapshot
-  .i-la-file(@click="savePDF(svg)")
+  .i-la-file-download(@click="savePDF(svg)")
   a(ref="anchor",target="_blank",:download="download.file",:href="download.url", v-if="download.url")
 </template>
 

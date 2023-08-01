@@ -7,9 +7,13 @@ import { ref, computed, reactive, watch } from 'vue'
 const stripeKey = import.meta.env.VITE_STRIPE_KEY
 
 export interface CartItem {
+	id: string
 	title: string
+	path: string
 	price: number
 	quantity: number
+	digital?: boolean
+
 }
 
 export interface Way { id: string, title: string, desc: string, price: number }
@@ -24,10 +28,17 @@ export const cart: RemovableRef<Record<string, CartItem>> = useStorage('shopping
 export const delivery: {
 	current: string,
 	selected: Way,
+	needed: boolean,
 	ways: Record<string, Way>
 } = reactive({
 	current: useStorage('delivery-way', 'regular'),
 	selected: computed(() => delivery.ways[delivery.current]),
+	needed: computed(() => {
+		let need = false
+		for (let row in cart.value)
+			need = need || !cart.value[row].digital
+		return need
+	}),
 	ways: {
 		// default: {
 		// 	id: 'price_1M2c5LBJnUXQERocesvg8j1O',
@@ -41,8 +52,7 @@ export const delivery: {
 			price: 6,
 		},
 		registered: {
-			id:
-				'parcel',
+			id: 'parcel',
 			title: 'Registered mail',
 			desc: "Sending parcels with tracking numbers from Thailand is surprisingly costly. But it's more reliable and transparent as you and us can check the progress of the delivery. It usually takes about 2-3 weeks to ship.",
 			price: 16
@@ -63,7 +73,8 @@ export const total = computed(() => {
 	for (let id in cart.value) {
 		sum += Number(cart.value?.[id]?.price) * Number(cart.value?.[id]?.quantity)
 	}
-	sum += delivery?.selected?.price
+	if (delivery.needed)
+		sum += delivery?.selected?.price
 	return sum
 })
 
@@ -80,12 +91,12 @@ watch(cart, c => {
 
 
 
-export function addToCart(title: string, product = { id: '', price: 0 }) {
-	const { id, price } = product
+export function addToCart(title: string, product: CartItem) {
+	const { id, price, digital, path } = product
 	if (cart.value[id]) {
 		cart.value[id].quantity++
 	} else {
-		cart.value[id] = { title, price, quantity: useClamp(1, 0, MaxQuantity).value }
+		cart.value[id] = { id, title, price, quantity: useClamp(1, 0, MaxQuantity).value, digital, path }
 	}
 	open.value = true
 }
@@ -102,10 +113,13 @@ export async function checkout() {
 		})
 	}
 	// delivery
-	lineItems.push({
-		price: delivery.selected.id,
-		quantity: 1
-	})
+	if (delivery.needed) {
+		lineItems.push({
+			price: delivery.selected.id,
+			quantity: 1
+		})
+	}
+
 	try {
 		await stripe?.redirectToCheckout({
 			lineItems,

@@ -15,11 +15,16 @@ const props = defineProps({
 </script>
 
 <template lang="pug">
-.shop-action.text-xl(style="font-weight: normal;")
+.shop-action.text-xl(
+  style="font-weight: normal;"
+  v-if="product",
+  )
   .price.p-2.text-2xl.bg-light-200.bg-opacity-70.rounded-md.dark-bg-dark-400.dark-bg-opacity-70.backdrop-blur-lg.font-bold(
-    v-if="product",
+
     :style="{ color: color }"
   ) ${{ product?.price }}
+  .price.p-2.text-2xl.bg-light-200.bg-opacity-70.rounded-md.dark-bg-dark-400.dark-bg-opacity-70.backdrop-blur-lg.font-bold(v-if="product?.digital")
+    .i-la-file-download
 
   .flex-auto
   .shop-button.flex.items-center(

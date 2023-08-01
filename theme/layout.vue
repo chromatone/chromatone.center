@@ -44,8 +44,7 @@ const lightColor = computed(() => lchToHsl(siblings.value.index, siblings.value.
             :key="area.url", 
             :item="area", 
             :i="i",
-            :total="children.length",
-            )  
+            :total="children.length")  
 
     template(v-else)
       main#content.w-full

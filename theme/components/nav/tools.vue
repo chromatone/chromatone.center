@@ -19,16 +19,14 @@ const open = reactive({
 
 <template lang="pug">
 .buttons.fixed.top-3.right-2.opacity-30.hover-opacity-100.transition.flex.items-center.gap-
-  //- label(for="search")
-  //-   button(
-  //-     style="transition: all 100ms ease-out"
-  //-     @click="open.search = !open.search"  
-  //-     :class="{ active: open.search }" 
-  //-     aria-label="Search across the site"
-  //-     v-tooltip.bottom="'Search'"
-  //-     )
-  //-     .i-la-search.text-xl
-  nav-search.ml-14
+  button(
+    style="transition: all 100ms ease-out"
+    @click="open.search = !open.search"  
+    :class="{ active: open.search }" 
+    aria-label="Toggle tempo panel"
+    v-tooltip.bottom="'Search sitewide'"
+    )
+    .i-la-search.text-xl
   button(
     style="transition: all 100ms ease-out"
     @click="open.tempo = !open.tempo"  
@@ -64,7 +62,7 @@ const open = reactive({
     .i-bi-volume-up(v-if="!audio.mute")
     .i-bi-volume-mute(v-else)
 side-panel(v-model:open="open.search")
-  nav-search(@close="open.search=false")
+  nav-search(@close="open.search=false" :focus="open.search")
 side-panel(v-model:open="open.midi")
   midi-panel
   img.mt-4(src="/media/apps/pc-keyboard-3.svg")

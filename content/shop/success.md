@@ -2,14 +2,17 @@
 title: Successful purchase
 description: Thank you for your order!
 misc: true
+topContent: true
 ---
 
-## Thank you
+## Welcome to the club! ✨
 
-Your payment is now processing.
+Thank you for your payment!
 
-We will send you the parcel in 2 business days and get in touch with you by e-mail.
+Your order is now being processed.
 
-If you have any questions about your order, please feel free to reach us at [support@chromatone.center](mailto:support@chromatone.center).
+We will send your parcel whithin 2 business days. You will be notified you by e-mail. Digital goods are delivered in hours, s
 
-[Go back to shop](/shop/)
+In case of any questions feel free to reach us at [support@chromatone.center](mailto:support@chromatone.center).
+
+[Go to main](/)

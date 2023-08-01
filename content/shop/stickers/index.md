@@ -5,6 +5,8 @@ date: 2021-09-06
 cover: cover.jpg
 ---
 
+The stickers are satisfyingly durable and are cut in very optimized layouts. One sheet can cover many instruments, so you can share your set with friends.
+
 The first generation of instrument stickers consists of [OP-1 stickers](./op-1/index.md) and [Regular piano stickers](./piano/index.md).
 
 The [Universal stickers](./universal/index.md) and [A5 MAX](./a5max/index.md) are newer and more evolved and may be useful for more advanced music learners and teachers.

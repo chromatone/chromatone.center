@@ -1,7 +1,7 @@
 ---
 title: Cancelled purchase
 description: May be try again?
-misc: true
+topContent: true
 ---
 
 # Changed your mind?

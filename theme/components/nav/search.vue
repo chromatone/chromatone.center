@@ -1,7 +1,7 @@
 <script setup>
-import { onClickOutside, onKeyStroke } from "@vueuse/core";
+import { onClickOutside, onKeyStroke, useFocus } from "@vueuse/core";
 import Fuse from "fuse.js";
-import { computed, nextTick, onMounted, ref } from "vue";
+import { computed, nextTick, onMounted, ref, watch } from "vue";
 import { data } from '../../../content/pages.data.js'
 import { cleanLink } from 'vitepress-pages'
 
@@ -11,6 +11,10 @@ const fuse = new Fuse(data, {
   keys: ["frontmatter.title", "frontmatter.description", "frontmatter.city", "frontmatter.place"],
 });
 
+const props = defineProps({
+  focus: { type: Boolean }
+})
+
 const emit = defineEmits(['close'])
 
 const input = ref('');
@@ -18,32 +22,34 @@ const candidates = computed(() => fuse.search(input.value));
 
 const inputEl = ref()
 
-// const { focused } = useFocus(inputEl)
+const { focused } = useFocus(inputEl)
 
-// onMounted(() => {
-//   nextTick(focused.value = true)
-// })
+watch(() => props.focus, (f) => {
+  if (!f) return
+  setTimeout(() => {
+    focused.value = true
+  }, 200)
+}, { immediate: true })
 
 onClickOutside(inputEl, () => input.value = '')
 onKeyStroke('Escape', () => { input.value = '', focused.value = false })
 </script>
 
 <template lang="pug">
-.flex.items-center.flex-col.w-full
-  .flex.items-center
-    input.w-full.p-2.rounded-xl.z-20.bg-light-100.dark-bg-dark-100.shadow.top-8(
-      ref="inputEl"
-      id="search"
-      v-model="input" 
-      placeholder="Search"
-      )
-    button.-m-6.z-400(v-if="input" @click="input =''")
-      .i-la-times.text-lg
-  .absolute.left-1.right-1.top-16.flex.flex-col.max-h-80vh.overflow-y-scroll.shadow-lg.mt-2.rounded-lg.z-2000.top-10.bg-light-400.bg-opacity-75.backdrop-blur-xl(v-if="input")
-    a.px-3.py-3.dark-bg-dark-400.hover-bg-light-100.dark-hover-bg-dark-600.border-1.border-light-100.border-opacity-20(
+.flex.flex-col.w-full.gap-2
+  input.w-full.p-2.rounded-lg.z-20.bg-light-100.dark-bg-dark-100.shadow.top-8(
+    ref="inputEl"
+    id="search"
+    v-model="input" 
+    placeholder="Search"
+    )
+  button.z-400.absolute.right-6.top-6(v-if="input" @click="input ='';$emit('close')")
+    .i-la-times.text-lg
+  .flex.flex-col.w-full.gap-2.max-h-80dvh.overflow-y-scroll
+    a.px-3.py-3.bg-light-600.rounded.shadow.dark-bg-dark-300.hover-bg-light-100.dark-hover-bg-dark-600.border-1.dark-border-dark-50.border-opacity-20.no-underline(
       :href="cleanLink(candidate.item.url)"
       @click="input = ''; $emit('close')"
-      v-for="candidate in candidates" :key="candidate"
+      v-for="candidate in candidates.filter(c=>c.score<.3)" :key="candidate"
       :style="{ opacity: 1 - candidate.score / 2 }"
       ) 
       .font-bold {{ candidate.item?.frontmatter?.title }}

@@ -13,7 +13,7 @@ const box = reactive({
   padding: {
     x: 4,
     y: 4,
-    left: 38
+    left: 31.2
   }
 });
 const chords = {
@@ -46,16 +46,29 @@ svg#diatonic.m-8.select-none(
   text-anchor="middle",
   dominant-baseline="middle"
   )
-  rect(
+  rect.page(
     x="-2"
     :y="- box.head"
     :width="box.width + box.padding.x"
     :height="box.height + box.head"
     stroke="none"
     stroke-width="0.2"
-    rx="4"
-    fill="none"
+    rx="1"
+    fill="#fff"
     )
+  g.stripe(
+    v-for="(tonic, pitch) in notes"
+    :key="pitch"
+    :transform="`translate(0, ${pitch * (box.height - box.padding.y) / 12})`") 
+    rect(
+      :x="0"
+      :y="box.padding.y - 1"
+      rx="4"
+      :width="box.width"
+      height="22"
+      opacity="1"
+      :fill="pitch % 2 ? '#ddd' : '#eee'")
+
   g(
     font-size="4" 
     font-weight="bold")
@@ -81,6 +94,7 @@ svg#diatonic.m-8.select-none(
       y2="1" 
       stroke-width="0.25" 
       stroke="black")
+
   g(font-size="4")
     text(
       v-for="(scale, i) in scales.major" 
@@ -94,25 +108,18 @@ svg#diatonic.m-8.select-none(
       :x="box.padding.left + 88 + 22 * i"
       y="-2"
     ) {{ scale }}
+
   g(
     v-for="(tonic, pitch) in notes"
     :key="pitch"
     :transform="`translate(0, ${pitch * (box.height - box.padding.y) / 12})`") 
-    rect(
-      :x="0"
-      :y="box.padding.y - 1"
-      rx="4"
-      :width="box.width"
-      height="22"
-      opacity="0.2"
-      :fill="pitch % 2 ? '#333' : '#eee'")
 
     print-keys(
       v-for="(chord, maj) in chords.minors" 
       :key="chord"
       :type="chord.type"
       :pitch="(chord.pitch + pitch) % 12"
-      :transform="`translate(${maj * 22 + 78+ box.padding.left}, 9) scale(0.11) `"
+      :transform="`scale(0.1) translate(${maj * 240 + 1090+ box.padding.left})  `"
       :chroma="rotateArray(chord.chroma.split(''), -pitch).join('')")
 
     print-keys(
@@ -120,13 +127,12 @@ svg#diatonic.m-8.select-none(
       :key="chord"
       :type="chord.type"
       :pitch="(chord.pitch + pitch) % 12"
-      :transform="`translate(${maj * 22 + 3+ box.padding.left}, 9) scale(0.11) `"
+      :transform="`scale(0.1) translate(${maj * 240 + 340+ box.padding.left}, 0)  `"
       :chroma="rotateArray(chord.chroma.split(''), -pitch).join('')")
 
     print-keys(
-
       :pitch="pitch"
-      :transform="`scale(0.15) translate(${0 + box.padding.left},${pitch * 0.1 + box.padding.y + 44})`"
+      :transform="`scale(0.1) translate(${0 + box.padding.left},${pitch * 0.1})`"
       :chroma="rotateArray(chords.scale.split(''), -pitch).join('')")
 
   line(

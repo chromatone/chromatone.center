@@ -20,7 +20,7 @@ const props = defineProps({
 const route = useRoute();
 const children = useChildren({ path: props.item?.url }, data)
 
-const bg = computed(() => `url(${props.item?.frontmatter?.cover}`);
+const bg = computed(() => `url(${props.item?.frontmatter?.cover})`);
 </script>
 
 <template lang="pug">

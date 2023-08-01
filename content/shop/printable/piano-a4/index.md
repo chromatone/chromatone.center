@@ -12,11 +12,13 @@ product:
 ## WORK IN PROGRESS
 
 <script setup>
+import PrintKeys  from '../PrintKeys.vue'
 import PianoChords from './PianoChords.vue'
 </script>
 
 ## Diatonic scales and modes
 
+<print-keys pitch="4" type="major" chroma="1001010010110" class="max-w-70" letters="true"/>
 <piano-chords width="100%" class="max-w-55ch" />
-<save-svg svg="diatonic"/>
-<save-pdf svg="diatonic"/>
+<!-- <save-svg svg="diatonic"/>
+<save-pdf svg="diatonic"/> -->

@@ -4,6 +4,7 @@ import { noteColor } from '#/use/colors'
 import { useAudio } from "#/use/audio";
 import { tempo } from '#/use/tempo'
 import { reactive } from 'vue'
+import { onKeyStroke } from "@vueuse/core";
 
 const { midi } = useMidi();
 const { audio } = useAudio();
@@ -15,6 +16,12 @@ const open = reactive({
   audio: false,
   record: false,
 });
+
+onKeyStroke('Escape', () => {
+  for (let p in open) {
+    open[p] = false
+  }
+})
 </script>
 
 <template lang="pug">

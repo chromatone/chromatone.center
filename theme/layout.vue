@@ -62,6 +62,7 @@ const lightColor = computed(() => lchToHsl(siblings.value.index, siblings.value.
             row-list.px-2.my-2.max-w-full(v-if="frontmatter?.topContent" :children="children")
 
         nav-next-prev(:siblings="siblings" :parents="parents")
+        nav-row
         page-footer
 
     client-only

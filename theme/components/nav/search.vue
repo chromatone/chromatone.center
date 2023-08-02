@@ -4,7 +4,10 @@ import Fuse from "fuse.js";
 import { computed, nextTick, onMounted, ref, watch } from "vue";
 import { data } from '../../../content/pages.data.js'
 import { cleanLink } from 'vitepress-pages'
+import { useRouter } from "vitepress";
 
+
+const router = useRouter()
 const fuse = new Fuse(data, {
   includeScore: true,
   ignoreLocation: true,
@@ -47,6 +50,8 @@ onKeyStroke('Escape', () => { input.value = '', focused.value = false })
     .i-la-times.text-lg
   .flex.flex-col.w-full.gap-2.max-h-80dvh.overflow-y-scroll
     a.px-3.py-3.bg-light-600.rounded.shadow.dark-bg-dark-300.hover-bg-light-100.dark-hover-bg-dark-600.border-1.dark-border-dark-50.border-opacity-20.no-underline(
+      tabindex="0"
+      @keyup.enter="router.go(cleanLink(candidate.item.url))"
       :href="cleanLink(candidate.item.url)"
       @click="input = ''; $emit('close')"
       v-for="candidate in candidates.filter(c=>c.score<.3)" :key="candidate"

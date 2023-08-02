@@ -1,5 +1,5 @@
 ---
-title: Study
+title: Harmony study
 description: Different approaches to harmony in music and everything else
 date: 2021-11-10
 ---
@@ -46,7 +46,7 @@ For Pythagoreans, harmony signified the "unification of a multifarious compositi
 > — Horat. Epist. I,12 (23-20 BCE)
 
 > Temporis angusti mansit concordia discors
-> Paxque fuit non sponte ducum  … 
+> Paxque fuit non sponte ducum  …
 > — Lucan. Bell. civ. I, vers.98-99 (48-65 AD)
 
 ## Discordia concors

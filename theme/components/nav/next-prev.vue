@@ -35,7 +35,6 @@ const colors = reactive({
         )
         .i-carbon-chevron-up.mr-1
         .p-1 {{ parent?.frontmatter?.title }}
-  nav-row
 </template>
 
 <style lang="postcss" scoped>

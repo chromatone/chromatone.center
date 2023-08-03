@@ -15,7 +15,7 @@ const dots = map.cities.map(city=>city.coord)
 
 Chromatone is an open source initiative made not to be a proprietary standard, but to become a wide spread language, used by musicians, visual artists along with music gear companies and app developers all over the world.
 
-If you're a designer, JS developer, audio analysis library or know how else the site may be better - [Contribute code](code/index) to our open GitHub repository. Or at least press that star button in the right top corner.
+If you're a designer, JS developer, audio analysis library or know how else the site may be better - [Contribute code](./code/index.md) to our open GitHub repository. Or at least press that star button in the right top corner.
 
 [![Star History Chart](https://api.star-history.com/svg?repos=chromatone/chromatone.center&type=Date)](https://star-history.com/#chromatone/chromatone.center&Date)
 

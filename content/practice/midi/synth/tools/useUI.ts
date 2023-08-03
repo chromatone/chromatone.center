@@ -12,6 +12,8 @@ export interface Param {
   step?: number
   smooth?: number
   fixed?: number
+  nostore?: boolean
+  hidden?: boolean
 }
 
 export function useUI(params: { [key: string]: Param }, title = 'es') {
@@ -20,13 +22,14 @@ export function useUI(params: { [key: string]: Param }, title = 'es') {
   const gs = {}
   for (let p in params) {
     const param = params[p]
-    cs[p] = useClamp(useStorage(`${title}:${p}`, param.value), param.min, param.max)
-
-    const split = p.split(':')
-    const name = split.pop()
-    const group = split.pop()
-    gs[group] = gs[group] || {}
-    gs[group][name] = param
+    cs[p] = useClamp(param?.nostore ? param.value : useStorage(`${title}:${p}`, param.value), param.min, param.max)
+    if (!param?.hidden) {
+      const split = p.split(':')
+      const name = split.pop()
+      const group = split.pop()
+      gs[group] = gs[group] || {}
+      gs[group][name] = param
+    }
   }
 
   const controls: { [key: string]: number } = reactive(cs)

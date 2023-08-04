@@ -63,8 +63,8 @@ const loop = reactive({
         .text-md {{ param?.toFixed(2) }} 
   .flex.flex-wrap.m-2.is-group.flex.flex-wrap
     .p-1.rounded-full(:style="{backgroundColor:time.pulse ? 'currentColor' : 'transparent'}")
-    button.text-button(@click="transport.isPlaying ? transport.pause() : transport.play()")
-      .i-la-play(v-if="!transport.isPlaying")
+    button.text-button(@click="time.isPlaying ? transport.pause() : transport.play()")
+      .i-la-play(v-if="!time.isPlaying")
       .i-la-pause(v-else)
     button.text-button(@click="transport.stop()")
       .i-la-stop

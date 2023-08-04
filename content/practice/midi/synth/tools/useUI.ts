@@ -35,7 +35,7 @@ export function useUI(params: { [key: string]: Param }, title = 'es') {
   const controls: { [key: string]: number } = reactive(cs)
   const groups: { [key: string]: { [key: string]: Param } } = reactive(gs)
 
-  const cv: { [key: string]: NodeRepr_t } = {}
+  const cv: { [key: string]: NodeRepr_t } = reactive({})
 
   watch(controls, () => {
     for (let c in controls) {

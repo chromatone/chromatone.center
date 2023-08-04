@@ -16,7 +16,7 @@ export const mic = reactive({
   recording: true,
   monitor: false,
   meter: 0,
-  volume: useClamp(useStorage('mic-vol', 1), 0, 2),
+  volume: useClamp(useStorage('mic-vol', 1), 0, 5),
   gate: useClamp(useStorage('mic-gate', -60), -100, -40)
 })
 

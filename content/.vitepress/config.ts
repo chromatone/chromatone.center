@@ -25,8 +25,8 @@ export const metaData = {
   tags: "color, music, stickers, posters, theory, webapp, science",
   color: '#cccccc',
   mediaFolder: 'media_files',
-  umamiId: "0abe9f0f-2fc2-4df1-8f42-0844ddcb2042",
-  umamiScript: "https://stats.defucc.me/umami.js"
+  umamiId: "165ab64e-7686-4726-8013-3fa8340dccef",
+  umamiScript: "https://stats.chromatone.center/script.js"
 };
 
 export default defineConfig({

@@ -335,3 +335,6 @@ cities:
   - city: Los Angeles, CA
     country: USA
     coord: [34.12414810517873, -118.20212041661163]
+  - city: Indianapolis, IN
+    country: USA
+    coord: [39.81284107214478, -86.15505243086642]

@@ -16,7 +16,7 @@ const { mic, input } = useMic();
     button.flex-button(:class="{ active: mic.monitor }", @click="mic.monitor = !mic.monitor", v-tooltip.top="'Connect microphone to output'")
       .i-ph-ear
       .m-0 Monitoring
-    control-rotary(v-model="mic.volume", :min="0", :max="2", :step="0.001", param="GAIN", v-tooltip.bottom="'Microphone volume'")
+    control-rotary(v-model="mic.volume", :min="0", :max="5", :step="0.001", param="GAIN", v-tooltip.bottom="'Microphone volume'")
     control-rotary(v-model="mic.gate", :min="-100", :max="-40", :step="1", param="GATE", unit="dB", :fixed="0", v-tooltip.bottom="'Noise gate'")
     control-level.mr-1(:meter="mic.meter")
   .flex.flex-wrap.is-group.items-center.p-2.gap-2

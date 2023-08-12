@@ -50,6 +50,9 @@ dependencies:
   cobe:
     specifier: 0.6.3
     version: 0.6.3
+  color-name-list:
+    specifier: ^10.10.0
+    version: 10.10.0
   colord:
     specifier: 2.9.3
     version: 2.9.3
@@ -77,6 +80,9 @@ dependencies:
   midi-writer-js:
     specifier: 2.1.4
     version: 2.1.4
+  nearest-color:
+    specifier: 0.4.4
+    version: 0.4.4
   ol:
     specifier: 7.4.0
     version: 7.4.0
@@ -86,6 +92,9 @@ dependencies:
   paper:
     specifier: 0.12.17
     version: 0.12.17
+  poline:
+    specifier: ^0.7.0
+    version: 0.7.0
   recordrtc:
     specifier: 5.6.2
     version: 5.6.2
@@ -2223,6 +2232,11 @@ packages:
     resolution: {integrity: sha512-6exeENAqBTuIR1wIo36mR8xVVBv6l1hSLd7Qmvf6158Ld1L15/dbahR9VUOiX7GmGJBCnQyS0EY+I8x+wa7egg==}
     dev: false
 
+  /color-name-list@10.10.0:
+    resolution: {integrity: sha512-pyDI9/AD6LgpTQ+dmczNhqtPrlFVjbdsnRjtff1B/nA3bhnGdbucK/XRldJPTwkGCdbwJ05RHIPfG0MnnfjVHg==}
+    engines: {node: '>=16', npm: '>=8.11.0'}
+    dev: false
+
   /color-name@1.1.4:
     resolution: {integrity: sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==}
     dev: false
@@ -3335,6 +3349,10 @@ packages:
     dev: false
     optional: true
 
+  /nearest-color@0.4.4:
+    resolution: {integrity: sha512-orhcaIORC10tf41Ld2wwlcC+FaAavHG87JHWB3eHH5p7v2k9Tzym2XNEZzLAm5YJwGv6Q38WWc7SOb+Qfu/4NQ==}
+    dev: false
+
   /neo-async@2.6.2:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
     dev: true
@@ -3557,6 +3575,10 @@ packages:
       mlly: 1.4.0
       pathe: 1.1.1
     dev: true
+
+  /poline@0.7.0:
+    resolution: {integrity: sha512-ZLlkJKNmzRRARYyWLu8JuWolS23oKQP3FA7vrq9TB+R55bbb0Dfo3zyL69jMWddn88SFl88JWFYhtqe1TXOrEw==}
+    dev: false
 
   /postcss@8.4.25:
     resolution: {integrity: sha512-7taJ/8t2av0Z+sQEvNzCkpDynl0tX3uJMCODi6nT3PfASC7dYCWV9aQ+uiCf+KBD4SEFcu+GvJdGdwzQ6OSjCw==}

@@ -69,10 +69,10 @@ export default defineConfig(
       }
     },
     optimizeDeps: {
-      include: ['vue', '@vueuse/core', 'tone', '@tonaljs/tonal', 'colord'],
+      include: ['vue', '@vueuse/core', 'tone', '@tonaljs/tonal', 'colord', 'color-names-list'],
     },
     ssr: {
-      noExternal: ['audiomotion-analyzer', 'fraction.js', 'tone', 'ol', 'cobe', '@gun-vue/composables', 'drauu', '@tonejs/midi', 'midi-writer-js', 'webchuck']
+      noExternal: ['audiomotion-analyzer', 'fraction.js', 'tone', 'ol', 'cobe', '@gun-vue/composables', 'drauu', '@tonejs/midi', 'midi-writer-js', 'webchuck', 'color-names-list']
     },
     build: {
       chunkSizeWarningLimit: 100000,

@@ -85,7 +85,7 @@ svg.w-full.select-none.cursor-grab.active-cursor-grabbing(
         text(x="40" :y="h.row/2" text-anchor="middle")  {{c+1}}
         text(x="80" :y="h.row/2")  {{ nearest(colord(toHSL(color)).toHex()).name }}
         text(:x="box.w-200" :y="h.row/2" ) {{ colord(toHSL(color)).toHex() }}
-    rect(:y="h.control" :width="box.w" :height="h.row*(options.numPoints+2)" fill="transparent" v-drag="dragSteps")
+    rect(:y="h.control" :width="box.w" :height="h.row*(options.numPoints+2)" fill="transparent" opacity="0" v-drag="dragSteps")
 
   g.controls()
     g.control(

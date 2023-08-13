@@ -16,7 +16,10 @@ import ColorPalette from './ColorPalette.vue'
 </script>
 
 <client-only>
-  <color-palette class="max-w-58ch rounded-2xl overflow-hidden" />
+  <color-palette id="palette" class="max-w-58ch rounded-2xl overflow-hidden" />
+  <div class="mt-4 max-w-20">
+    <save-svg svg="palette" />
+  </div>
 </client-only>
 
 - Drag top and bottom rectangles to change Hue, Saturation and Lightness of both start and end colors of your palette.

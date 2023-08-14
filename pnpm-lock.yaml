@@ -6,11 +6,11 @@ settings:
 
 dependencies:
   '@elemaudio/core':
-    specifier: 2.0.2
-    version: 2.0.2
+    specifier: 2.1.0
+    version: 2.1.0
   '@elemaudio/web-renderer':
-    specifier: 2.0.2
-    version: 2.0.2
+    specifier: 2.1.0
+    version: 2.1.0
   '@gun-vue/composables':
     specifier: 0.18.1
     version: 0.18.1
@@ -389,19 +389,18 @@ packages:
   /@drauu/core@0.3.3:
     resolution: {integrity: sha512-dW/5w8hTF4pnAGc+Q0Y+pzI0fP/FyDq9vJGUrBzk/vPjxta+qWTbbLbg7rOgDnRr4y97DjTKzegczyXd1e9HOg==}
 
-  /@elemaudio/core@2.0.2:
-    resolution: {integrity: sha512-SYc6ykv+VajXBhfJ29SWb7HK72RoE1WJcIi9IGMV2SikCYXEa6ysqrxLqwBcgK4KXuoMcapGK8bmwT2DbMB97A==}
+  /@elemaudio/core@2.1.0:
+    resolution: {integrity: sha512-bbqh7riWhVYPyUPOo2m2GQmF6T8swc+XZQqE+ty5kMElMrFAv7c4x6P0vnN0lLouS4Lg4GyXA+YeMIAhxux1Fw==}
     dependencies:
+      events: 3.3.0
       invariant: 2.2.4
       shallowequal: 1.1.0
     dev: false
 
-  /@elemaudio/web-renderer@2.0.2:
-    resolution: {integrity: sha512-6qQUiga2lHZgdjxqllPsPeFhmLARQ04MIboTGwlQoX33TlRj3da5ttgTrVIrrzpp1Kp21DxeEUeg3VG8mosMcA==}
+  /@elemaudio/web-renderer@2.1.0:
+    resolution: {integrity: sha512-46YMLbDIY5Q/g6pwKosVzfjZeR6J8Bn9TmMf7MA5B08ms1zVW2WPRcgSbn897fTI+ARL7EQWhCrHg9Rg2FXZxQ==}
     dependencies:
-      '@elemaudio/core': 2.0.2
-      '@types/events': 3.0.0
-      events: 3.3.0
+      '@elemaudio/core': 2.1.0
     dev: false
 
   /@esbuild/android-arm64@0.18.11:
@@ -1151,10 +1150,6 @@ packages:
   /@types/estree@1.0.1:
     resolution: {integrity: sha512-LG4opVs2ANWZ1TJoKc937iMmNstM/d0ae1vNbnBvBhqCSezgVUOzcLCqbI5elV8Vy6WKwKjaqR+zO9VKirBBCA==}
     dev: true
-
-  /@types/events@3.0.0:
-    resolution: {integrity: sha512-EaObqwIvayI5a8dCzhFrjKzVwKLxjoG9T6Ppd5CEo07LRKfQ8Yokw54r5+Wq7FaBQ+yXRvQAYPrHwya1/UFt9g==}
-    dev: false
 
   /@types/node@17.0.45:
     resolution: {integrity: sha512-w+tIMs3rq2afQdsPJlODhoUEKzFP1ayaoyl1CcnwtIlsVe7K7bA1NGm4s3PraqTLlXnbIN84zuBlxBWo1u9BLw==}

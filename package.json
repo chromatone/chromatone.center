@@ -35,8 +35,8 @@
 		"tb": "tauri build"
 	},
 	"dependencies": {
-		"@elemaudio/core": "2.0.2",
-		"@elemaudio/web-renderer": "2.0.2",
+		"@elemaudio/core": "2.1.0",
+		"@elemaudio/web-renderer": "2.1.0",
 		"@gun-vue/composables": "0.18.1",
 		"@stripe/stripe-js": "1.54.0",
 		"@tauri-apps/api": "2.0.0-alpha.3",

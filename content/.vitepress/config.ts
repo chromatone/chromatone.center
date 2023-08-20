@@ -1,14 +1,7 @@
 import { defineConfig } from 'vitepress'
 
-import { createWriteStream } from 'node:fs'
-import { resolve } from 'node:path'
-import { SitemapStream } from 'sitemap'
-
 //@ts-ignore
 import generateMeta from 'vitepress-pages/head'
-
-const links = []
-
 
 export const metaData = {
   title: "Chromatone",
@@ -30,6 +23,10 @@ export const metaData = {
 };
 
 export default defineConfig({
+  lastUpdated: true,
+  sitemap: {
+    hostname: 'https://chromatone.center'
+  },
   outDir: "../dist",
   title: metaData.title,
   titleTemplate: metaData.titleTemplate,
@@ -44,22 +41,12 @@ export default defineConfig({
   head: [
     ['script', { defer: '', async: '', src: "https://buttons.github.io/buttons.js" }]
   ],
-  transformHead: generateMeta(metaData),
-  transformHtml: (_, id, { pageData }) => {
-    if (!/[\\/]404\.html$/.test(id))
-      links.push({
-        // you might need to change this if not using clean urls mode
-        url: pageData.relativePath?.replace(/((^|\/)index)?\.md$/, '$2'),
-        lastmod: pageData?.lastUpdated,
-        changefreq: 'weekly'
-      })
+  transformPageData(pageData) {
+    if (pageData.frontmatter.dynamic) {
+
+      pageData.frontmatter = { ...pageData.frontmatter, ...pageData.params, cover: pageData.params?.cover ? 'https://db.chromatone.center/assets/' + pageData.params?.cover : '' }
+    }
   },
-  buildEnd: async ({ outDir }) => {
-    const sitemap = new SitemapStream({ hostname: metaData.url })
-    const writeStream = createWriteStream(resolve(outDir, 'sitemap.xml'))
-    sitemap.pipe(writeStream)
-    links.forEach((link) => sitemap.write(link))
-    sitemap.end()
-    await new Promise((r) => writeStream.on('finish', r))
-  }
+  transformHead: generateMeta(metaData),
+
 });

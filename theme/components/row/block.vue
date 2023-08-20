@@ -37,7 +37,7 @@ const bg = computed(() => `url(${props.item?.frontmatter?.cover})`);
     .info 
       .flex.items-center.w-full
         .mr-2.text-2xl(v-if="item?.frontmatter?.emoji") {{ item?.frontmatter?.emoji }}
-        h3
+        .text-xl.mt-2
           span.text-2xl {{ item?.frontmatter?.title }} 
           span.px-2.mt-2(v-if="item?.frontmatter?.more") 
             .i-radix-icons-text-align-left

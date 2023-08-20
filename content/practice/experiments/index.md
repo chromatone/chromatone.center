@@ -15,5 +15,3 @@ Here's the universal [Fretboard calculator](./fretboard/index.md) that may help 
 We haven't ported the fabulous [MIDI Paper](./paper/index.md) visualizer yet, but you may play with it standalone. The [Sound Laboratory](./lab/index.md) is another powerful standalone tool to explore basic sound synthesis and effect chains. Some even more old experiments are at [Dev](./dev/index.md).
 
 The [Spectrum analyzer](./spectrum/index.md) is a basic sound analysis visualization to build upon..
-
-And there's a ever growing collection of [Other music web-apps](./other/index.md) found on the internet.

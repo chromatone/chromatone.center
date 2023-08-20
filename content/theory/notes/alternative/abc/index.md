@@ -28,4 +28,7 @@ After a surge of renewed interest in clarifying some ambiguities in the 2.0 draf
 
 <youtube-embed video="H8hWKP5cEXE" />
 
-https://abcnotation.com/learn
+## More links
+
+- https://abcnotation.com/learn
+- https://www.abcjs.net/

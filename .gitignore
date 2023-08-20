@@ -60,3 +60,5 @@ content/public/media_files
 
 content/support/code/**
 !content/support/code/index.md
+
+**/*.mjs

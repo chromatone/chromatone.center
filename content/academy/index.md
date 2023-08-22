@@ -14,10 +14,10 @@ Chromatone as the music itself is totally international and doesn't rely on any 
 
 First step is to establish the convenient way for [educators](./educators/index.md) to meet their students. Then educators will start creating their own content with all the tools available. In any language and for any age and any level of prior musical knowledge.
 
-Second step is for all the educated people to gather together and play some amazing live music. Once you're in, you know it's a whole experience bringing deep joy of being in sync with each other! For that we hold meetups and other events at [centers](./centers/index.md), of which there's only one for now. It's our testing ground for new music collaboration formats.
+Second step is for all the educated people to gather together and play some amazing live music. Once you're in, you know it's a whole experience bringing deep joy of being in sync with each other! For that we hold meetups and other events. It's our testing ground for new music collaboration formats.
 
 Third step is to make such musical gatherings a part of the new post-scarcity culture worldwide. Chromatone makes music much easier for visual people to learn and practice, so it enables significantly more musicians in any given place. So there's always someone to jam with! 🤩 And everyone should be able to meet other musicians and improvise together for a couple of hours at least once a week or two. 🪗
 
 ---
 
-On this journey we meet great [partners](./collab/index.md) that start implementing the Chromatone music notation system and it's code. It's becoming more and more developed and ready to use in many new ways.
+On this journey we meet great partners that start implementing the Chromatone music notation system and it's code. It's becoming more and more developed and ready to use in many new ways.

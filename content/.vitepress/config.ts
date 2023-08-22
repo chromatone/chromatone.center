@@ -42,9 +42,8 @@ export default defineConfig({
     ['script', { defer: '', async: '', src: "https://buttons.github.io/buttons.js" }]
   ],
   transformPageData(pageData) {
-    if (pageData.frontmatter.dynamic) {
-
-      pageData.frontmatter = { ...pageData.frontmatter, ...pageData.params, cover: pageData.params?.cover ? 'https://db.chromatone.center/assets/' + pageData.params?.cover : '' }
+    if (pageData.frontmatter?.dynamic) {
+      pageData.frontmatter = { ...pageData.frontmatter, ...pageData.params, cover: pageData.params?.cover ? `https://db.chromatone.center/assets/${pageData.params?.cover}?fit=cover&format=webp&width=1000` : '' }
     }
   },
   transformHead: generateMeta(metaData),

@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { isDark } from '#/theme/composables/state'
 import { useRoute, useData } from "vitepress";
 import { lchToHsl } from '#/use/colors'
-import { data } from '../content/pages.data.js'
+import { data } from '../content/pages.data'
 import { cleanLink, usePages, usePage } from 'vitepress-pages'
 import { drawingEnabled, drawingPinned } from '../theme/components/draw/draw'
 

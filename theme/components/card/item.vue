@@ -1,6 +1,6 @@
 <script setup>
 import { useData, useRoute } from 'vitepress'
-import { data } from '../../../content/pages.data.js'
+import { data } from '../../../content/pages.data'
 import { cleanLink, useChildren, usePage } from 'vitepress-pages'
 
 const props = defineProps({

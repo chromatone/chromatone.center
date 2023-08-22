@@ -3,7 +3,7 @@ import { computed } from "vue";
 import { lchToHsl } from "#/use/colors";
 
 import { useData, useRoute } from 'vitepress'
-import { data } from '../../../content/pages.data.js'
+import { data } from '../../../content/pages.data'
 import { cleanLink, usePages } from 'vitepress-pages'
 
 

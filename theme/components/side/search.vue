@@ -2,7 +2,7 @@
 import { onClickOutside } from "@vueuse/core";
 import Fuse from "fuse.js";
 import { computed, ref } from "vue";
-import { data } from '../../../content/pages.data.js'
+import { data } from '../../../content/pages.data'
 import { cleanLink } from 'vitepress-pages'
 
 const fuse = new Fuse(data, {

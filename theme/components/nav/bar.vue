@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { useLocaleLinks } from '../../composables/nav'
 
 import { useRoute, useData } from 'vitepress'
-import { data } from '../../../content/pages.data.js'
+import { data } from '../../../content/pages.data'
 import { cleanLink, usePages, usePage } from 'vitepress-pages'
 
 const { theme, site, localePath } = useData();

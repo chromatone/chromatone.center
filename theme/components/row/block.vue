@@ -6,7 +6,7 @@ import { isDark } from '#/theme/composables/state'
 import { colord } from 'colord'
 
 import { useRoute, useData } from 'vitepress'
-import { data } from '../../../content/pages.data.js'
+import { data } from '../../../content/pages.data'
 import { cleanLink, useChildren } from 'vitepress-pages'
 
 const props = defineProps({

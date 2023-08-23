@@ -1,0 +1,1 @@
+import{o as t,c as _,I as o,h as s,_ as n}from"./framework.233ced2b.js";const c={class:"button"};function a(e,d){return t(),_("button",c,[o(e.$slots,"default",{},()=>[s("Start")],!0)])}const r={},u=n(r,[["render",a],["__scopeId","data-v-5d8dfd17"]]);export{u as _};

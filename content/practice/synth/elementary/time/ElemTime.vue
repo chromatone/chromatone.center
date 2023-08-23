@@ -55,7 +55,6 @@ const loop = reactive({
         :x1="time.measure*loop.width"
         :x2="time.measure*loop.width"
         :y2="loop.height")
-  pre {{ transport }}
   .text-xs.p-2.gap-2.flex.flex-col
     .flex.flex-wrap.font-mono.gap-2
       .rounded.p-1.flex.flex-col.gap-1.bg-light-100.dark-bg-dark-200(v-for="(param,p) in time" :key="p")

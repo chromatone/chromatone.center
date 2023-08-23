@@ -3,6 +3,7 @@ title: Support
 description: Share links, contribute code or donate money to the open source development
 date: 2021-05-05
 topContent: true
+cover: diego-catto.jpg
 ---
 
 <script setup>

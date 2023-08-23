@@ -6,6 +6,12 @@ export default {
     const projects = await useItems('projects', {
       fields: [
         '*',
+        {
+          events: [
+            '*',
+            { project: ['title'] }
+          ]
+        }
       ]
     })
 

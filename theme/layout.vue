@@ -48,7 +48,8 @@ const lightColor = computed(() => lchToHsl(siblings.value.index, siblings.value.
 
     template(v-else)
       main#content.w-full
-        page-headline(:pageColor="pageColor", :lightColor="lightColor" :page="frontmatter")
+        page-headline(:pageColor="pageColor", :lightColor="lightColor" :page="frontmatter" :cover="frontmatter.dynamic ? frontmatter?.cover || frontmatter?.poster || '' : page?.frontmatter?.cover ")
+
           page-parents.text-xl.mb-4(:parents="frontmatter.dynamic ? parents : parents.slice(0,-1)")
 
         transition(name="fade")

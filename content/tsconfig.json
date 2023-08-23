@@ -1,6 +1,7 @@
 {
 	"include": [
-		"**/*.*"
+		"**/*.*",
+		"*.md"
 	],
 	"typedocOptions": {
 		"entryPoints": [

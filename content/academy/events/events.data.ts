@@ -15,7 +15,10 @@ export default {
         sort: ['-date'],
         fields: [
           '*',
-          { place: ['title'] }
+          {
+            place: ['title'],
+            project: ['title']
+          },
         ]
       })
     return {

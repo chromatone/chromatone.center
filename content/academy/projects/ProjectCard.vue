@@ -10,10 +10,14 @@ const props = defineProps({
   poster: { type: String, default: '' },
   slug: { type: String, default: '' },
   youtube_video: { type: String, default: '' },
+  start_date: { type: String, default: '' },
+  end_date: { type: String, default: '' },
+  field: { type: Array, default: [] },
+  events: { type: Array, default: [] },
 })
 
-const formatted = useDateFormat(() => props.event?.date, 'DD MMMM YYYY')
-
+const from = useDateFormat(() => props?.start_date, 'DD MMM YYYY')
+const to = props?.end_date ? useDateFormat(() => props?.end_date, 'DD MMM YYYY',) : 'Present'
 
 </script>
 
@@ -25,10 +29,12 @@ a.overflow-hidden.flex.flex-wrap.shadow-lg.hover-shadow-xl.transition.flex-1.dar
       style="margin:0"
       :src="`https://db.chromatone.center/assets/${props.cover || props.poster}?fit=cover&width=300&height=300&format=webp`")
   .flex.flex-col.p-4.gap-2(style="flex: 1 1 100px")
-    .text-xs {{ formatted }}
+    .text-sm {{ from }} – {{ to }}
     .text-2xl.font-bold.flex.items-center.gap-2 {{ title }}
-    .flex-1
-    .text-md {{ description }}
+    .flex.flex-wrap.gap-2.items-center.capitalize
+      .px-2.bg-light-800.dark-bg-dark-800.rounded(v-for="tag in field" :key="tag") {{ tag }} 
+      .px-2.bg-light-500.dark-bg-dark-500.rounded(v-if="events.length>0") {{ events.length }} event{{ (events.length % 10 === 1 && events.length !== 11) ? '' : 's' }}
+    .text-md.leading-normal {{ description }}
 
 
 </template>

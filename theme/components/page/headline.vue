@@ -8,7 +8,7 @@ const props = defineProps(['pageColor', 'lightColor', 'page'])
   :class="{ 'has-cover': page?.cover || page?.icon }"
   :style="{ backgroundColor: pageColor }"
   )
-  .cover(v-if="page?.cover",:style="{ backgroundImage: `url(${page?.cover})`, backgroundColor: pageColor }")
+  .cover(v-if="page?.cover",:style="{ backgroundImage: `url(${page?.cover || page?.poster || ''})`, backgroundColor: pageColor }")
   img.icon(v-if="page?.icon",:src="page?.icon")
   .meta(:style="{ borderColor: pageColor }")
 

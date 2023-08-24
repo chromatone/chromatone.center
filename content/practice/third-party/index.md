@@ -6,7 +6,7 @@ date: 2018-09-08
 ---
 
 <script setup>
-import ToolsList from './ToolsList.vue'
+import { data } from './tools.data'
 </script>
 
-<ToolsList class="p-4" />
+<ToolsList class="p-4" :data="data" />

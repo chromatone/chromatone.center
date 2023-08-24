@@ -5,6 +5,8 @@ import { noteColor } from '#/use/colors'
 import { chordType, scaleType, notes, flats } from '#/use/theory'
 import { colord } from 'colord'
 import { reactive, computed, nextTick } from 'vue'
+import { useMidi } from '#/use/midi'
+
 
 const props = defineProps({
   chroma: { type: String, default: '100000000000' },
@@ -17,6 +19,8 @@ const props = defineProps({
 });
 
 const emit = defineEmits(['update:pitch'])
+
+const { midi } = useMidi()
 
 const keys = reactive({
   white: [3, 5, 7, 8, 10, 0, 2],
@@ -38,7 +42,7 @@ function isInScale(note) {
   return props.scale && note != null && keys.chroma[note] == '1'
 }
 
-function keyColor(key, off) {
+function keyColor(key, off, velocity) {
   if (key == null) return 'transparent'
   if (key == props.pitch) return colord(noteColor(key, 4)).toHex()
   return isInChroma(key) && !off ? colord(noteColor(key, 3.5)).toHex() : notes[key].length != 2 ? '#eee' : '#999'
@@ -133,7 +137,7 @@ function keyColor(key, off) {
         ) 
           tspan(y="176" x="45") {{ notes[key] }}
           tspan(y="50" x="45" ) {{ flats[key] }}
-  slot
+  slot 
 </template>
 
 <style lang="postcss" scoped>

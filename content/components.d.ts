@@ -150,6 +150,7 @@ declare module 'vue' {
     SynthOscillators: typeof import('./../components/synth/oscillators.vue')['default']
     SynthPanel: typeof import('./../components/synth/panel.vue')['default']
     SynthSpeech: typeof import('./../components/synth/speech.vue')['default']
+    ToolsList: typeof import('./../components/tools/list.vue')['default']
     YoutubeEmbed: typeof import('./../theme/components/global/youtube-embed.vue')['default']
   }
 }

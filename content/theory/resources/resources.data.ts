@@ -6,7 +6,7 @@ export default {
       sort: ['title'],
       filter: {
         type: {
-          _eq: 'tool'
+          _eq: 'resource'
         }
       }
     })

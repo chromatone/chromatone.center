@@ -4,7 +4,7 @@ import { data } from './tools.data'
 
 <template lang='pug'>
 .flex.flex-wrap.gap-4.max-w-60ch
-  a.p-2.flex.gap-2.bg-light-200.hover-bg-light-100.shadow-md.hover-shadow-lg.dark-bg-dark-300.dark-hover-bg-dark-400.rounded.border-1.dark-border-dark-100(
+  a.no-underline.p-2.flex.gap-2.bg-light-200.hover-bg-light-100.shadow-md.hover-shadow-lg.dark-bg-dark-300.dark-hover-bg-dark-400.rounded.border-1.dark-border-dark-100(
     v-for="tool in data" :key="tool"
     :href="tool.url"
     target="_blank"

@@ -3,6 +3,7 @@ dynamic: true
 ---
 
 <script setup>
+import ProjectCard from '../projects/ProjectCard.vue'
 import { useData } from 'vitepress'
 const { params, frontmatter } = useData()
 </script>
@@ -17,6 +18,10 @@ Your browser does not support the audio element.
 </audio>
 
 <!-- @content -->
+
+## Project
+
+<ProjectCard class="m-4 max-w-55ch" v-bind="frontmatter?.project" />
 
 <!-- <pre class="text-xs">{{ frontmatter }}</pre> -->
 

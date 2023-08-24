@@ -16,6 +16,9 @@ const events = computed(()=>[...frontmatter.value?.events].sort((a,b)=>a.date<b.
 <!-- @content -->
 
 <!-- <pre class="text-xs">{{ frontmatter }}</pre> -->
-<div class="m-4 flex flex-col gap-4">
+
+## Events
+
+<div class="m-4 flex flex-col gap-8">
   <EventCard v-for="event in events" :key="event.id" v-bind="event" />
 </div>

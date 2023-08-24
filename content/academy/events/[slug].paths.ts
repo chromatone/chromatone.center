@@ -6,7 +6,10 @@ export default {
     const events = await useItems('events', {
       fields: [
         '*',
-        { place: ['title', 'city', 'country', { logo: ['id'] }] }
+        {
+          place: ['title', 'city', 'country', { logo: ['id'] }],
+          project: ['*']
+        }
       ]
     })
 

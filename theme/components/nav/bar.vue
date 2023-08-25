@@ -22,7 +22,7 @@ header.nav-bar.relative(data-tauri-drag-region="true")
   .nav-bar-title
     a.title.ml-10.no-underline(href="/", :aria-label="`${site.title}, go to main page`") {{ site.title }}
 
-  nav.nav-links.hidden.lg-flex.px-3.ml-4.lg-ml-10
+  nav.nav-links.hidden.lg-flex.px-3.ml-4.lg-ml-10.gap-4
     template(v-if="children")
       .item(v-for="item in children", :key="item.url")
         nav-dropdown-link(v-if="pages[cleanLink(item.url)]", :item="item")

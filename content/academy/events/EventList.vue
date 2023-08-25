@@ -1,7 +1,9 @@
 <script setup>
-import { data } from './events.data'
 import EventCard from './EventCard.vue'
-const events = data.events
+
+const props = defineProps({
+  events: { type: Array, defualt: () => ([]) }
+})
 </script>
 
 <template lang="pug">

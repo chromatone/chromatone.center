@@ -5,8 +5,6 @@ import { noteColor } from "#/use/colors"
 import { notes } from '#/use/theory'
 import { computed, nextTick, reactive, ref, watch } from 'vue';
 
-
-
 const TIMEOUT = 10000
 
 const gun = useGun()

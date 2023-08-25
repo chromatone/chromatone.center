@@ -1,7 +1,9 @@
 <script setup>
-import { data } from './projects.data'
 import ProjectCard from './ProjectCard.vue'
-const projects = data.projects
+
+const props = defineProps({
+  projects: { type: Array, default: () => ([]) }
+})
 </script>
 
 <template lang="pug">

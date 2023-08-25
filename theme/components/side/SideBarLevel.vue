@@ -37,7 +37,7 @@ transition(name="fade")
         :style="{ color: level==0 ? lchToHsl(d, children.length)  : 'currentColor'}") 
         .flex-auto(:class="{'text-xl font-bold': level==0}") {{ dot?.frontmatter?.title }}
         .flex-1
-        .p-0(v-if="pages?.[cleanLink(dot.url)]") {{ pages?.[cleanLink(dot.url)]?.length }}
+        .px-1.flex.items-center(v-if="pages?.[cleanLink(dot.url)]") {{ pages?.[cleanLink(dot.url)]?.length }}
 
       .flex.flex-col(v-show="route.path.includes(cleanLink(dot.url))")
         SideBarLevel(:path="dot.url" :level="level+1")

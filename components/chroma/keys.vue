@@ -20,8 +20,6 @@ const props = defineProps({
 
 const emit = defineEmits(['update:pitch'])
 
-const { midi } = useMidi()
-
 const keys = reactive({
   white: [3, 5, 7, 8, 10, 0, 2],
   black: [4, 6, null, 9, 11, 1],
@@ -34,6 +32,8 @@ const keys = reactive({
   })
 });
 
+const { midi } = useMidi()
+
 function isInChroma(note) {
   return note != null && keys.chroma[note] == '1'
 }
@@ -42,7 +42,7 @@ function isInScale(note) {
   return props.scale && note != null && keys.chroma[note] == '1'
 }
 
-function keyColor(key, off, velocity) {
+function keyColor(key, off) {
   if (key == null) return 'transparent'
   if (key == props.pitch) return colord(noteColor(key, 4)).toHex()
   return isInChroma(key) && !off ? colord(noteColor(key, 3.5)).toHex() : notes[key].length != 2 ? '#eee' : '#999'
@@ -58,7 +58,7 @@ function keyColor(key, off, velocity) {
   @mouseup="playAll && nextTick(stopChroma(chroma, pitch))"
   @mouseleave="playAll && nextTick(stopChroma(chroma, pitch))"
   :style="{ backgroundColor: noteColor(pitch, 2, 1, 0.5) }"
-)
+  )
   .flex.justify-center.my-2.px-2(v-if="title")
     .absolute.right-4 {{ roman }}
     .font-bold.text-xl.flex-1.text-center {{ notes[pitch] }}{{ keys.title }}
@@ -82,36 +82,43 @@ function keyColor(key, off, velocity) {
         v-for="(key, k) in keys.white" :key="key"
         :transform="`translate(${k * 100 + 5} 30)`"
         @mousedown.stop="$emit('update:pitch', key)"
-      )
+        )
         rect.transition-all.duration-300.ease-out(
           width="90"
           height="290"
           rx="45"
           :fill="keyColor(key, true)"
           style="filter:url(#shadowButton);"
-        )
+          )
         circle.transition-all.duration-300.ease-out(
 
           cy="245"
           cx="45"
           r="45"
           :fill="keyColor(key)"
-        )
+          )
         text.pointer-events-none(
           v-show="isInChroma(key)"
           y="250"
           x="45"
           :fill="colord(noteColor(key)).isDark() ? 'white' : 'black'"
-        ) 
+          ) 
           tspan(    
             :font-weight="key == pitch ? 800 : 200"
             ) {{ notes[key] }}
+        circle.transition-all.duration-100(
+          :style="{opacity: midi.activeChroma[key]==1 ? 1:0}"
+          cy="245"
+          cx="45"
+          r="18"
+          fill="#3339"
+          )
     g.black 
       g.key(
         v-for="(key, k) in keys.black" :key="key"
         :transform="`translate(${k * 100 + 55} -10)`"
         @mousedown.stop="$emit('update:pitch', key)"
-      )
+        )
         rect.transition-all.duration-300.ease-out(
           v-if="key"
           width="90"
@@ -120,7 +127,7 @@ function keyColor(key, off, velocity) {
           style="filter:url(#shadowButton);"
           :fill="keyColor(key, true)"
           :data-check="key"
-        )
+          )
         circle.transition-all.duration-300.ease-out(
           v-if="key"
           cy="175"
@@ -134,10 +141,17 @@ function keyColor(key, off, velocity) {
           v-show="isInChroma(key)"
           :fill="colord(noteColor(key)).isDark() ? 'white' : 'black'"
           :font-weight="key == pitch ? 800 : 200"
-        ) 
+          ) 
           tspan(y="176" x="45") {{ notes[key] }}
           tspan(y="50" x="45" ) {{ flats[key] }}
-  slot 
+        circle.transition-all.duration-100(
+          :style="{opacity: midi.activeChroma[key]==1 ? 1:0}"
+          cy="175"
+          cx="45"
+          r="18"
+          fill="#3339"
+          )
+  slot
 </template>
 
 <style lang="postcss" scoped>

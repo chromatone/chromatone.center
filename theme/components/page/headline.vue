@@ -1,5 +1,27 @@
 <script setup>
+import { computed } from 'vue';
+
 const props = defineProps(['pageColor', 'lightColor', 'page', 'cover'])
+
+const buttons = computed(() => {
+  if (props.page?.buttons) return props.page?.buttons
+  const btns = []
+  if (props.page?.url) {
+    btns.push({
+      url: props.page.url,
+      text: props.page.url,
+      type: 'primary'
+    })
+  }
+  if (props.page?.github) {
+    btns.push({
+      url: props.page.github,
+      text: props.page.github,
+      type: 'github'
+    })
+  }
+  return btns
+})
 </script>
 
 <template lang="pug">
@@ -19,7 +41,7 @@ const props = defineProps(['pageColor', 'lightColor', 'page', 'cover'])
       .flex-1
       .mx-2.my-4.text-6xl(v-if="page?.emoji") {{ page?.emoji }}
     .font-bold.mt-2.mb-4(v-if="page?.description") {{ page?.description }}
-    page-buttons(:buttons="page?.buttons")
+    page-buttons(:buttons="buttons")
     .absolute.-bottom-2rem.right-2rem
       shop-price(
         :product="page?.product" 

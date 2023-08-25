@@ -22,7 +22,7 @@ const props = defineProps({
 
 <style lang="postcss" scoped>
 .button {
-  @apply flex items-center px-3 py-2 rounded-md font-bold mr-2 my-2 shadow-md bg-gray-300 dark-bg-gray-800;
+  @apply flex items-center gap-2 p-2 pr-3 rounded-md font-bold mr-2 my-2 shadow-md bg-gray-300 dark-bg-gray-800;
 }
 
 .button svg {

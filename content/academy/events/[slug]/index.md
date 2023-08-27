@@ -3,7 +3,7 @@ dynamic: true
 ---
 
 <script setup>
-import ProjectCard from '../projects/ProjectCard.vue'
+import ProjectCard from '../../projects/ProjectCard.vue'
 import { useData } from 'vitepress'
 const { params, frontmatter } = useData()
 </script>

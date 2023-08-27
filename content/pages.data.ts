@@ -2,7 +2,8 @@ import { createContentLoader } from 'vitepress'
 //@ts-ignore
 import VPMedia from 'vitepress-pages/media'
 
-const pages = createContentLoader('./**/*/index.md', {
+
+const pages = createContentLoader('./**/[!/[]*/index.md', {
   includeSrc: true,
   transform: VPMedia({
     root: new URL('./', import.meta.url),

@@ -12,13 +12,13 @@ export default {
             { project: ['title'] }
           ]
         }
-      ]
+      ],
     })
 
-    return projects.map(ev => {
-      let content = ev.content
-      delete ev.content
-      return { params: ev, content }
+    return projects.map(p => {
+      let content = p.content
+      delete p.content
+      return { params: p, content }
     })
   }
 }

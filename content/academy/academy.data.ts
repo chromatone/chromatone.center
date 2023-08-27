@@ -17,7 +17,7 @@ export default {
           '*',
           {
             place: ['title'],
-            project: ['title']
+            project: ['title', 'slug']
           },
         ]
       })

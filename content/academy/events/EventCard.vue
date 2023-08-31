@@ -14,7 +14,7 @@ const props = defineProps({
   date: { type: String, default: '' },
 })
 
-const formatted = useDateFormat(() => props?.date, 'DD MMMM YYYY')
+const formatted = useDateFormat(() => props?.date, 'DD MMMM YYYY (dddd)')
 
 </script>
 
@@ -26,10 +26,11 @@ a.overflow-hidden.flex.flex-wrap.shadow-lg.hover-shadow-xl.transition.flex-1.dar
       style="margin:0"
       :src="`https://db.chromatone.center/assets/${props.cover || props.poster}?fit=cover&width=300&height=300&format=webp`")
   .flex.flex-col.p-4.gap-2(style="flex: 1 1 100px")
-    .text-sm {{ formatted }}
-    .text-2xl.font-bold.flex.items-center.gap-2 {{ title }}
     .text-sm.-mx-1
       span.bg-light-900.dark-bg-dark-600.px-1.py-1.rounded {{ project?.title }} 
+    .text-2xl.font-bold.flex.items-center.gap-2 {{ title }}
+    .text-lg {{ formatted }}
+
     .flex-1 
     .text-md {{ description }}
 

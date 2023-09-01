@@ -12,7 +12,12 @@ const mic = shallowReactive({
   async open() {
     const { audio } = useAudio()
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-      mic.stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      mic.stream = await navigator.mediaDevices.getUserMedia({
+        audio: {
+          echoCancellation: false,
+          noiseSuppression: false,
+        }
+      });
       mic.streamSource = audio.ctx.createMediaStreamSource(mic.stream);
       mic.streamSource.connect(audio.node);
     }

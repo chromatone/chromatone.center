@@ -12,8 +12,8 @@ const { params, frontmatter: f } = useData()
 
 {{ params.announce ? '> ' + params.announce : ''}}
 
- <audio controls v-if="f.audio">
-  <source :src="`https://db.chromatone.center/assets/${frontmatter.audio}`" type="audio/mpeg">
+ <audio controls v-if="f?.audio">
+  <source :src="`https://db.chromatone.center/assets/${f.audio}`" type="audio/mpeg">
 Your browser does not support the audio element.
 </audio>
 

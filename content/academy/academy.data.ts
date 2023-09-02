@@ -17,7 +17,7 @@ export default {
           '*',
           {
             place: ['title'],
-            project: ['title', 'slug']
+            project: ['title', 'slug'],
           },
         ]
       })
@@ -34,8 +34,20 @@ export default {
         ]
       })
 
+    const partners = await useItems('partners',
+      {
+        filter: {
+          status: {
+            _eq: 'published'
+          }
+        },
+        fields: [
+          '*'
+        ]
+      })
+
     return {
-      events, projects
+      events, projects, partners
     }
   }
 }

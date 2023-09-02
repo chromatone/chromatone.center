@@ -7,7 +7,8 @@ export default {
       fields: [
         '*',
         {
-          place: ['title', 'city', 'country', { logo: ['id'] }],
+          media: ['*', { directus_files_id: ['*'] }],
+          place: ['title', 'city', 'country', 'slug', { logo: ['id'] }],
           project: ['*']
         }
       ]

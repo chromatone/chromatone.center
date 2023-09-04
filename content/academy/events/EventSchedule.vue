@@ -7,8 +7,8 @@ const props = defineProps({
 <template lang='pug'>
 table.max-w-55ch(v-if="schedule")
   tbody
-    tr.text-xl.font-bold
-      td.p-4(colspan="3") Event schedule
+    tr.font-bold
+      td.p-4.text-xl(colspan="2") Event schedule
     tr
       th Time
       th Activity

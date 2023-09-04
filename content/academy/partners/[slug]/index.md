@@ -4,7 +4,7 @@ dynamic: true
 
 <script setup>
 import EventCard from '../../events/EventCard.vue'
-  
+import ProjectCard from '../../projects/ProjectCard.vue'
 import { useData } from 'vitepress'
 import { computed } from 'vue'
 const { params, frontmatter: f } = useData()
@@ -22,4 +22,8 @@ const { params, frontmatter: f } = useData()
   <EventCard v-for="event in f.events" :key="event.id" v-bind="event" />
 </div>
 
-<!-- <pre class="text-xs">{{ f }}</pre> -->
+<h2 v-if="f.projects.length>0"> {{ f.projects.length }} projects </h2>
+
+<div class="flex flex-col gap-4 mx-4">
+<ProjectCard v-for="project in f?.projects" :key="project" v-bind="project?.projects_id"  >{{project}}</ProjectCard>
+</div>

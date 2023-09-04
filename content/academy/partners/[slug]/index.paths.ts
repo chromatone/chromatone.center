@@ -7,6 +7,7 @@ export default {
       fields: [
         '*',
         {
+          projects: ['*', { projects_id: ['*'] }],
           events: [
             '*',
             { project: ['title'] }

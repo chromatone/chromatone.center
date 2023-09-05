@@ -52,9 +52,12 @@ function meter(name: string, node: number | NodeRepr_t) {
 }
 
 const signal = computed(() => {
-  let pitch = meter('pitch', el.mod(el.const({ key: 'time:pitch', value: freqPitch(controls['time:bpm'] / 60) }), 12))
+
   let timer = meter('time', el.time())
   let sampleRate = el.meter({ name: 'time:sample-rate', }, el.sr())
+
+  let pitch = meter('pitch', el.mod(el.const({ key: 'time:pitch', value: freqPitch(controls['time:bpm'] / 60) }), 12))
+
   let seconds = meter('seconds', el.div(timer, sampleRate))
 
   let started = meter('start', el.const({ key: 'time:start', value: transport.started }))

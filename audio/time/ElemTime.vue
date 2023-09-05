@@ -68,7 +68,7 @@ const loop = reactive({
     button.text-button(@click="transport.stop()")
       .i-la-stop
     button.text-button(@click="controls['time:click'] = controls['time:click']? 0 : 1")
-      .i-la-volume-up(v-if="!controls['time:click']")
+      .i-la-volume-up(v-if="controls['time:click']")
       .i-la-volume-mute(v-else)
     template(v-for="(group,title) in groups" :key="title") 
       ControlRotary(

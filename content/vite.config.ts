@@ -27,6 +27,7 @@ export default defineConfig(
         dirs: ['../components', '../theme/components'],
         extensions: ['vue', 'ts', 'js'],
         directoryAsNamespace: true,
+        collapseSamePrefixes: true,
         globalNamespaces: ['global'],
         include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
         exclude: [/node_modules/, /\.git/],

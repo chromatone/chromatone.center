@@ -15,7 +15,12 @@ author:
     github: davay42
 ---
 
-<author-card :author="$frontmatter?.author"  />
+<script setup>
+import { useData } from 'vitepress'
+const { frontmatter: f } = useData()
+</script>
+
+<author-card :author="f?.author"  />
 
 Hey! My name is Denis Starov. I'm a designer in a broad scence. And I widen it being involved in multimedia projects. I was practicing drums since 2010 and it got me 3 years just to get a little over the early challenges in paradiddles. Learning music may be quite hard! Studying rhythm I saw how much practice it takes to aquire enough instrument skills and prepared myself to take a step into the landcape of tonal harmony.
 

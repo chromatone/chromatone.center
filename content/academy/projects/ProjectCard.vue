@@ -23,12 +23,12 @@ const to = props?.end_date ? useDateFormat(() => props?.end_date, 'DD MMM YYYY',
 
 <template lang='pug'>
 a.overflow-hidden.flex.flex-wrap.shadow-lg.hover-shadow-xl.transition.flex-1.dark-bg-dark-300.max-w-150( :href="`/academy/projects/${slug}/`" style="padding-bottom:0;padding-left:0; padding-right:0; flex: 1 1 auto" )
-  .p-0.min-w-50.relative(style="flex: 0 0 ")
+  .p-0.min-w-50.relative(style="flex: 1 1 ")
     .text-100px.flex.gap-2.absolute.top-11.left-10.p-2.opacity-80.i-ic-round-play-circle(v-if="youtube_video")
     img(
       style="margin:0"
-      :src="`https://db.chromatone.center/assets/${props.cover || props.poster}?fit=cover&width=300&height=300&format=webp`")
-  .flex.flex-col.p-4.gap-2(style="flex: 1 1 100px")
+      :src="`https://db.chromatone.center/assets/${props.cover || props.poster}?fit=cover&width=600&height=600&format=webp`")
+  .flex.flex-col.p-4.gap-2(style="flex: 1 1 200px")
     .text-sm {{ from }} – {{ to }}
     .text-2xl.font-bold.flex.items-center.gap-2 {{ title }}
     .flex.flex-wrap.gap-2.items-center.capitalize

@@ -17,11 +17,6 @@ const { params, frontmatter: f } = useData()
 
 <EventDetails v-bind="f" />
 
-<div v-if="params?.announcement"  
-  class="max-w-150 bg-light-700 dark-bg-dark-300 m-4 p-8 shadow rounded-lg">
-  {{ params.announcement }}
-</div>
-
 <!-- @content -->
 
 <youtube-embed v-if="f.youtube_video" :video="f.youtube_video"></youtube-embed>

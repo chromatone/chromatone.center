@@ -4,6 +4,7 @@ import { useDateFormat } from '@vueuse/core';
 const props = defineProps({
   title: { type: String, default: '' },
   description: { type: String, default: '' },
+  announcement: { type: String, default: '' },
   poster: { type: String, default: '' },
   cover: { type: String, default: '' },
   date: { type: String, default: '' },
@@ -41,5 +42,10 @@ const weekDay = useDateFormat(props.date, 'dddd')
       .p-0.font-bold {{ place?.title }},
       .p-0 {{ place?.city }},
       .p-0 {{ place?.country }}
+
+
+.max-w-150.bg-light-100.dark-bg-dark-300.m-4.p-4.shadow.rounded-xl.flex.flex-col.gap-4(v-if="announcement")
   img(v-if="cover" style="margin:0;" :src="cover")
+  .p-0 {{ announcement }}
+  
 </template>

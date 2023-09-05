@@ -6,10 +6,6 @@ cover: tuner.svg
 date: 2022-06-18
 ---
 
-<script setup>
-import pitchTuner from './tuner.vue'
-</script>
-
 <ClientOnly>
   <pitch-tuner />
 </ClientOnly>

@@ -6,10 +6,6 @@ cover: roll.png
 date: 2022-06-12
 ---
 
-<script setup>
-import pitchRoll from './roll.vue'
-</script>
-
 <client-only>
   <pitch-roll />
 </client-only>

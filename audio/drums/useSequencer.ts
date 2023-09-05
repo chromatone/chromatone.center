@@ -1,5 +1,5 @@
 import { reactive } from 'vue';
-import { useAudio } from '../audio/useAudio';
+import { useAudio } from '../useAudio';
 import { el } from '@elemaudio/core';
 import { computed } from 'vue';
 import { watch } from 'vue';

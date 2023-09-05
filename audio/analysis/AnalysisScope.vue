@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted, watch, computed, ref, reactive } from 'vue'
-import { useAudio } from '../audio/useAudio'
+import { useAudio } from '../useAudio'
 
 const props = defineProps({
   name: { default: 'osc', type: String },

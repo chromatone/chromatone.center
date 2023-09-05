@@ -1,5 +1,5 @@
 import { NodeRepr_t, el } from '@elemaudio/core';
-import { useAudio } from '../audio/useAudio';
+import { useAudio } from '../useAudio';
 import { reactive } from 'vue';
 import { watch } from 'vue';
 

@@ -1,5 +1,5 @@
 import { onMounted, watch, computed, ref, reactive } from 'vue'
-import { useAudio } from '../audio/useAudio'
+import { useAudio } from '../useAudio'
 import { freqColor } from '#/use';
 
 export function useFFT(name = 'main:fft') {

@@ -1,11 +1,7 @@
 import { reactive, computed } from 'vue';
 import { useAudio }
-  from '../audio/useAudio';
+  from '../useAudio';
 import { NodeRepr_t, el } from '@elemaudio/core';
-import { useClamp } from '@vueuse/math';
-import { useStorage } from '@vueuse/core';
-import { tempoToMs } from '../tools/utils'
-import { watchEffect } from 'vue'
 import { Param, useUI } from '../tools/useUI';
 import { watch } from 'vue';
 import { freqPitch } from '#/use';

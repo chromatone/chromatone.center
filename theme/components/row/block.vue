@@ -51,7 +51,7 @@ const bg = computed(() => `url(${props.item?.frontmatter?.cover})`);
         :product="item?.frontmatter?.product" 
         :color="color"
         )
-  card-list(
+  //- card-list(
     v-if="children",
     :cards="children"
     ) {{ item?.frontmatter?.title }}

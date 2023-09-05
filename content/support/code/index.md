@@ -2,6 +2,7 @@
 title: Contribute code
 description: Post issues and submit pull requests at GitHub
 date: 2022-03-17
+cover: mohammad-rahmani.jpg
 buttons:
   - url: https://github.com/chromatone/chromatone.center
     text: GitHub/Chromatone

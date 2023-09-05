@@ -59,7 +59,7 @@ const lightColor = computed(() => lchToHsl(siblings.value.index, siblings.value.
 
             content.content.flex-auto.z-10(v-if="f?.topContent")
 
-            row-list.px-2.my-2.max-w-full(v-if="f?.topContent" :children="children")
+            row-list.px-2.my-2.max-w-full( :children="children")
 
             content.content.flex-auto.z-10(v-if="!f?.topContent")
 

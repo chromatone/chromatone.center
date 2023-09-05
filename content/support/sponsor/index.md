@@ -2,6 +2,7 @@
 title: Sponsor us
 description: "You can support Chromatone development to continue as a free and open source ecosytem of visual music"
 date: 2022-04-17
+cover: diego-ph.jpg
 buttons:
   - url: "https://github.com/sponsors/chromatone/"
     text: "Sponsor us at GitHub"

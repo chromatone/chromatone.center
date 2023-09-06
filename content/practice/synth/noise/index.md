@@ -6,12 +6,8 @@ date: 2021-06-22
 cover: noise.jpg
 ---
 
-<script setup>
-import noiseLab from './noise.vue'
-</script>
-
 <client-only>
-  <noise-lab />
+  <synth-noise />
 </client-only >
 
 ## Noise generation tool

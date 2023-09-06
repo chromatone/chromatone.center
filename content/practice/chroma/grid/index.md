@@ -12,13 +12,10 @@ todo:
   - synth
 ---
 
-<script setup>
-import pitchGrids from './grids.vue'
-</script>
 
 <client-only >
   <control-scale />
-  <pitch-grids />
+  <chroma-grids />
   <state-transport />
 
 </client-only>

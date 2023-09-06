@@ -12,10 +12,6 @@ status: alpha
 version: 0.1
 ---
 
-<script setup>
-import midiRecorder from './recorder.vue'
-</script>
-
 <client-only>
   <midi-recorder />
 </client-only>

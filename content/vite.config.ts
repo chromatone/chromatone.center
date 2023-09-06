@@ -67,6 +67,7 @@ export default defineConfig(
         "#/use": path.resolve(dirname, "../use"),
         "#/components/": path.resolve(dirname, "../components"),
         "#/db": path.resolve(dirname, "../db"),
+        "#/data": path.resolve(dirname, "../data"),
       }
     },
     optimizeDeps: {

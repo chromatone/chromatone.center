@@ -6,10 +6,6 @@ date: 2022-06-06
 cover: drone.png
 ---
 
-<script setup>
-import pitchDrone from './drone-app.vue'
-</script>
-
 <client-only >
   <pitch-drone class="max-w-55ch" />
 </client-only >

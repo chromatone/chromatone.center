@@ -6,12 +6,7 @@ cover: midi-roll.png
 date: 2022-06-16
 ---
 
-<script setup>
-import midiRoll from './roll.vue'
-</script>
-
 <client-only >
-
   <midi-roll />
   <midi-panel style="margin-top: 1em;" />
 </client-only>

@@ -8,15 +8,12 @@ cover: color-names.svg
 ---
 
 <script setup>
-import colorCards from './cards.vue'
-import colorNames from './names.vue'
 import col from '#/db/colors.yaml'
-
 </script>
 
-<color-cards :list="col.colors" :langs="col.langs" />
+<ColorCards :list="col.colors" :langs="col.langs" />
 
-<color-names :list="col.colors" :langs="col.langs" />
+<ColorNames :list="col.colors" :langs="col.langs" />
 
 <img src="./color-names.svg">
 

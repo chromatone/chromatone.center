@@ -1,4 +1,4 @@
-import { useItems } from "../../../../db"
+import { useItems } from "../../../../data"
 
 export default {
   async paths() {

@@ -5,10 +5,6 @@ date: 2022-06-12
 cover: chromagram.png
 ---
 
-<script setup>
-import chromaGram from './gram.vue'
-</script>
-
 <client-only >
   <chroma-gram class="mb-16" />
 </client-only>

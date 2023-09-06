@@ -6,7 +6,7 @@ cover: hannah-busing.jpg
 ---
 
 <script setup>
-import { data } from '../academy.data'
+import { data } from '#/data/academy.data'
 </script>
 
 <div class="flex flex-wrap gap-2 max-w-150">

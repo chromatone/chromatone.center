@@ -13,13 +13,6 @@ links:
 ---
 
 
-<script setup>
-import { defineClientComponent } from 'vitepress'
-
-const ExpShader = defineClientComponent(() => {
-  return import('./ExpShader.vue')
-})
-
-</script>
-
-<ExpShader></ExpShader>
+<client-only>
+<GpuShader />
+</client-only>

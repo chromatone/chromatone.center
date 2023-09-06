@@ -7,7 +7,7 @@ date: 2019-02-02
 
 
 <script setup>
-import { data } from './resources.data'
+import { data } from '#/data/resources.data'
 </script>
 
 <ToolsList class="p-4" :data="data" />

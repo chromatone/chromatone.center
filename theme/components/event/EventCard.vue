@@ -19,7 +19,7 @@ const formatted = useDateFormat(() => props?.date, 'DD MMMM YYYY (dddd)')
 </script>
 
 <template lang='pug'>
-a.overflow-hidden.flex.flex-wrap.shadow-lg.hover-shadow-xl.transition.flex-1.dark-bg-dark-300.max-w-150( :href="`/academy/events/${slug}/`" style="padding-bottom:0;padding-left:0; padding-right:0; flex: 1 1 auto" )
+a.overflow-hidden.flex.flex-wrap.shadow-lg.hover-shadow-xl.transition.flex-1.dark-bg-dark-300.max-w-150.no-underline( :href="`/academy/events/${slug}/`" style="padding-bottom:0;padding-left:0; padding-right:0; flex: 1 1 auto" )
   .p-0.min-w-50.relative.flex.items-center.justify-center(style="flex: 1 0 ")
     .text-120px.flex.gap-2.absolute.p-2.opacity-80.invert.i-ic-round-play-circle( v-if="youtube_video")
     img(

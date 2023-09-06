@@ -6,10 +6,6 @@ cover: midi-router.png
 date: 2022-06-08
 ---
 
-<script setup>
-import midiRouter from './router.vue'
-</script>
-
 <client-only>
 <div id="screen">
 

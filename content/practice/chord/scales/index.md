@@ -4,9 +4,6 @@ description: Find all available chords for all degrees of any scale
 date: 2020-06-15
 ---
 
-<script setup>
-import ChordScales from './scales.vue'
-</script>
 
 <chord-scales />
 

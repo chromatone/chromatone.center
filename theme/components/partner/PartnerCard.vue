@@ -8,7 +8,7 @@ const props = defineProps({
 </script>
 
 <template lang='pug'>
-a.p-4.flex.items-center(
+a.p-4.flex.items-center.no-underline(
   style="flex:1 1 160px;" 
   :title="title"
   :href="`/academy/partners/${slug}/`")

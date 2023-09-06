@@ -6,9 +6,6 @@ date: 2021-04-12
 cover: chromaform.png
 ---
 
-<script setup>
-import chromaForm from './form.vue'
-</script>
 
 Choose any of the notes to see the wavefrom of their combination.
 

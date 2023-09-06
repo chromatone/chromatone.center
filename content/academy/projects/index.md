@@ -6,7 +6,7 @@ cover: caught-in-joy.jpg
 ---
 
 <script setup>
-import { data } from '../academy.data'
+import { data } from '#/data/academy.data'
 </script>
 
 <ProjectList :projects="data?.projects"/>

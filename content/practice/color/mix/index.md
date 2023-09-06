@@ -5,9 +5,6 @@ date: 2021-04-05
 cover: milad-fakurian.jpg
 ---
 
-<script setup>
-import ColorMix from './ColorMix.vue'
-</script>
 
 <client-only>
   <color-mix />

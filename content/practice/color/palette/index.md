@@ -11,10 +11,6 @@ links:
   - https://github.com/meodai/color-names
 ---
 
-<script setup>
-import ColorPalette from './ColorPalette.vue'
-</script>
-
 <client-only>
   <color-palette id="palette" class="max-w-58ch rounded-2xl overflow-hidden" />
   <div class="mt-4 max-w-20">

@@ -37,9 +37,9 @@ const bg = computed(() => `url(${props.item?.frontmatter?.cover})`);
     .info 
       .flex.items-center.w-full
         .mr-2.text-2xl(v-if="item?.frontmatter?.emoji") {{ item?.frontmatter?.emoji }}
-        .text-xl.mt-2
+        .mt-1
           span.text-2xl {{ item?.frontmatter?.title }} 
-          span.px-2.mt-2(v-if="item?.frontmatter?.more") 
+          span.text-xl.px-2.mt-2(v-if="item?.frontmatter?.more") 
             .i-radix-icons-text-align-left
         .flex-1
         card-date(v-if="!item?.frontmatter?.product",:date="item.lastModified")
@@ -51,10 +51,6 @@ const bg = computed(() => `url(${props.item?.frontmatter?.cover})`);
         :product="item?.frontmatter?.product" 
         :color="color"
         )
-  //- card-list(
-    v-if="children",
-    :cards="children"
-    ) {{ item?.frontmatter?.title }}
 </template>
 
 <style lang="postcss" scoped>
@@ -80,7 +76,7 @@ const bg = computed(() => `url(${props.item?.frontmatter?.cover})`);
 .cover {
   @apply absolute w-full top-0 h-full;
   filter: saturate(50%) opacity(50%) brightness(50%);
-  transition: all 450ms ease-in-out;
+  transition: all 250ms ease-in-out;
   flex: 1 1 30%;
   background-size: cover;
 }

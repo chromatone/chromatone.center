@@ -96,7 +96,6 @@ declare module 'vue' {
     ITablerEar: typeof import('~icons/tabler/ear')['default']
     ITablerEarOff: typeof import('~icons/tabler/ear-off')['default']
     ITablerStairs: typeof import('~icons/tabler/stairs')['default']
-    LineList: typeof import('./../theme/components/line/list.vue')['default']
     MidiFilterChannels: typeof import('./../components/midi/filter/channels.vue')['default']
     MidiFilterGrid: typeof import('./../components/midi/filter/grid.vue')['default']
     MidiFilterTrack: typeof import('./../components/midi/filter/track.vue')['default']

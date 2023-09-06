@@ -1,16 +1,16 @@
 <script setup>
 import EventCard from './EventCard.vue'
-import { data } from '../academy.data'
 import { reactive } from 'vue';
 import { computed } from 'vue';
 
 const props = defineProps({
-  events: { type: Array, default: () => ([]) }
+  events: { type: Array, default: () => ([]) },
+  projects: { type: Array, default: () => ([]) },
 })
 
-const projects = computed(() => data.projects.filter(p => p.events.length > 0))
+const projects = computed(() => props.projects.filter(p => p.events.length > 0))
 
-const filters = reactive(projects.value.map(p => p.slug))
+const filters = reactive(props.projects.map(p => p.slug))
 
 const filtered = computed(() => props.events.filter(ev => filters.includes(ev.project.slug)))
 

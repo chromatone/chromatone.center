@@ -23,7 +23,6 @@ tutors:
 ---
 
 <script setup>
-import EventCard from '../events/EventCard.vue'
 import { useData } from 'vitepress'
 const { params, frontmatter } = useData()
 </script>

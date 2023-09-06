@@ -6,7 +6,6 @@ cover: hannah-busing.jpg
 ---
 
 <script setup>
-import PartnerCard from './PartnerCard.vue'
 import { data } from '../academy.data'
 </script>
 

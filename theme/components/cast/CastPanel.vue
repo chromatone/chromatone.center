@@ -9,7 +9,7 @@ import {
 } from "#/use/cast";
 
 import { useWindowSize } from '@vueuse/core'
-import { drawingEnabled } from '#/theme/components/draw/draw'
+import { drawingEnabled } from '#/theme/composables/draw'
 
 import { useRecorder } from "#/use/recorder";
 import { ref } from "vue";

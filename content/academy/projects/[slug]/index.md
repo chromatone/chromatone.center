@@ -3,8 +3,6 @@ dynamic: true
 ---
 
 <script setup>
-import EventCard from '../../events/EventCard.vue'
-import PartnerCard from '../../partners/PartnerCard.vue'
 import { useData } from 'vitepress'
 import { computed } from 'vue'
 const { params, frontmatter: f } = useData()

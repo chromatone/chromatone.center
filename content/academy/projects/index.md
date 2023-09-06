@@ -6,7 +6,6 @@ cover: caught-in-joy.jpg
 ---
 
 <script setup>
-import ProjectList from './ProjectList.vue'
 import { data } from '../academy.data'
 </script>
 

@@ -1,5 +1,5 @@
 <script setup>
-import { drawingEnabled, drawingPinned } from '../draw/draw'
+import { drawingEnabled, drawingPinned } from '../../composables/draw'
 </script>
 
 <template lang='pug'>
@@ -14,6 +14,6 @@ import { drawingEnabled, drawingPinned } from '../draw/draw'
 	state-dark.opacity-30.hover-opacity-100.transition
 
 
-	full-screen.text-xl.opacity-30.hover-opacity-100.transition
+	FullScreen.text-xl.opacity-30.hover-opacity-100.transition
 	nav-scroll.opacity-30.hover-opacity-100.transition
 </template>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref } from 'vue';
-import { useDraw } from './draw'
+import { useDraw } from '#/theme/composables/draw'
 
 const svg = ref()
 

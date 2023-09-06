@@ -4,9 +4,6 @@ page_type: event
 ---
 
 <script setup>
-import EventCard from '../../events/EventCard.vue'
-import ProjectCard from '../../projects/ProjectCard.vue'
-import PartnerDetails from '../PartnerDetails.vue'
 import { useData } from 'vitepress'
 import { computed } from 'vue'
 const { params, frontmatter: f } = useData()

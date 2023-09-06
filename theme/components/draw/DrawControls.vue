@@ -1,5 +1,5 @@
 <script setup>
-import { useDraw } from './draw'
+import { useDraw } from '#/theme/composables/draw'
 import { midi } from '#/use/midi'
 import { noteColor } from "#/use/colors"
 import { useRoute } from 'vitepress'

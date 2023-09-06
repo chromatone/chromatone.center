@@ -5,7 +5,7 @@ import { useRoute, useData } from "vitepress";
 import { lchToHsl } from '#/use/colors'
 import { data } from '../content/pages.data'
 import { cleanLink, usePages, usePage } from 'vitepress-pages'
-import { drawingEnabled, drawingPinned } from '../theme/components/draw/draw'
+import { drawingEnabled, drawingPinned } from '../theme/composables/draw'
 
 import { ref, watch } from "vue";
 

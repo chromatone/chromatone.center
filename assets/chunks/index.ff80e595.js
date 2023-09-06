@@ -1,1 +1,0 @@
-import{Z as f,b as u,$ as s,a0 as e,x as p}from"./framework.18a7d3ba.js";function l(t,a,o){if(typeof t=="function"||f(t))return u(()=>s(e(t),e(a),e(o)));const r=p(t);return u({get(){return r.value=s(r.value,e(a),e(o))},set(n){r.value=s(n,e(a),e(o))}})}export{l as u};

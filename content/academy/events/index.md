@@ -7,8 +7,7 @@ cover: hulki-okan-tabak.jpg
 
 
 <script setup>
-import EventList from './EventList.vue'
-import { data } from '../academy.data'
+import { data } from '#/data/academy.data'
 </script>
 
-<EventList :events="data?.events"/>
+<EventList :events="data?.events" :projects="data?.projects"/>

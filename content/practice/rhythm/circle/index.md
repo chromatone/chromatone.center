@@ -7,11 +7,6 @@ links:
   - https://habr.com/ru/post/278265/
 ---
 
-<script setup>
-import RhythmCircle from './RhythmCircle.vue'
-import MidiControls from './MidiControls.vue'
-</script>
-
 <client-only >
   <rhythm-circle />
 </client-only >
@@ -41,5 +36,5 @@ It's the center for deep exploration of any kind of rhythmic patterns. We have t
 19. You can also control all the parameters of the metronome with your MIDI-controller. Use the knobs to send the **CC messages number 1-16** on **channel 1** for it. Two loops are independently controlled by these MIDI commands. You can easily change the CC numbers here.
 
 <client-only >
-  <midi-controls />
+  <rhythm-circle-midi-controls />
 </client-only >

@@ -1,7 +1,7 @@
 ---
 title: Posters and cheatsheets
 description: Memos to have around
-
+cover: kam-idris.jpg
 date: 2021-07-02
 ---
 

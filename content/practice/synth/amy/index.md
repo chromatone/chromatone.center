@@ -5,26 +5,20 @@ date: 2023-03-05
 cover: dx7_algorithms.jpg
 ---
 
-<script setup>
-import AmySynth from './amy.vue'
-</script>
-
 ## AMY Synth
 
-### the Additive Music synthesizer librarY 
+### the Additive Music synthesizer librarY
 
 Highly experimental. [Issue pending](https://github.com/bwhitman/amy/issues/35)
 
 <client-only>
-<AmySynth />
+<SynthAmy />
 </client-only>
 
 - Press `A` on your keyboard to play a note. Or push the PLAY button.
 - Use <i class="p-3 i-la-arrow-left"></i> and <i class="p-3 i-la-arrow-right"></i> keys to browse patches
 
-
-[AMY repository](https://github.com/bwhitman/amy) 
-
+[AMY repository](https://github.com/bwhitman/amy)
 
 AMY accepts commands in ASCII, like so:
 

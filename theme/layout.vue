@@ -5,13 +5,13 @@ import { useRoute, useData } from "vitepress";
 import { lchToHsl } from '#/use/colors'
 import { data } from '../content/pages.data'
 import { cleanLink, usePages, usePage } from 'vitepress-pages'
-import { drawingEnabled, drawingPinned } from '../theme/components/draw/draw'
+import { drawingEnabled, drawingPinned } from '../theme/composables/draw'
 
 import { ref, watch } from "vue";
 
 const route = useRoute();
 
-const { frontmatter } = useData()
+const { frontmatter: f } = useData()
 
 const openSideBar = ref(false);
 
@@ -34,7 +34,7 @@ const lightColor = computed(() => lchToHsl(siblings.value.index, siblings.value.
   .main
     side-bar(:open="openSideBar" @close="openSideBar = false")
 
-    template(v-if="frontmatter.template == 'home'")
+    template(v-if="f.template == 'home'")
       main.home(aria-labelledby="main-title")
 
         content.content.z-2
@@ -48,19 +48,22 @@ const lightColor = computed(() => lchToHsl(siblings.value.index, siblings.value.
 
     template(v-else)
       main#content.w-full
-        page-headline(:pageColor="pageColor", :lightColor="lightColor" :page="frontmatter" :cover="frontmatter.dynamic ? frontmatter?.cover || frontmatter?.poster || '' : page?.frontmatter?.cover ")
+        page-headline(
+          v-if="f.page_type!='event'"
+          :pageColor="pageColor", :lightColor="lightColor" :page="f" :cover="f.dynamic ? f?.cover || f?.poster || '' : page?.frontmatter?.cover ")
 
-          page-parents.text-xl.mb-4(:parents="frontmatter.dynamic ? parents : parents.slice(0,-1)")
+          page-parents.text-xl.mb-4(:parents="f.dynamic ? parents : parents.slice(0,-1)")
 
         transition(name="fade")
-          .content-container.pb-8.relative(:key="route.path")
-            row-list.px-2.my-2.max-w-full(v-if="!frontmatter?.topContent" :children="children")
+          .pb-8.relative(:key="route.path")
 
-            content.content.flex-auto.z-10
+            content.content.flex-auto.z-10(v-if="f?.topContent")
+
+            row-list.px-2.my-2.max-w-full( :children="children")
+
+            content.content.flex-auto.z-10(v-if="!f?.topContent")
 
             shop-message(:page="page", :siblings="siblings")
-
-            row-list.px-2.my-2.max-w-full(v-if="frontmatter?.topContent" :children="children")
 
         nav-next-prev(:siblings="siblings" :parents="parents")
         nav-row

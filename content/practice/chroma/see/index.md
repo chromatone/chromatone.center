@@ -5,10 +5,6 @@ cover: chroma.png
 date: 2022-06-16
 ---
 
-<script setup>
-import chromaSee from './see.vue'
-</script>
-
 <client-only>
   <chroma-see />
 </client-only>

@@ -6,9 +6,6 @@ date: 2021-08-30
 cover: sound-waves.jpg
 ---
 
-<script setup>
-import soundVibrations from './vibrations.vue'
-</script>
 
 ## What is sound?
 

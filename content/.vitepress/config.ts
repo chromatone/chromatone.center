@@ -1,9 +1,6 @@
 import { defineConfig } from 'vitepress'
 
-//@ts-ignore
-import generateMeta from 'vitepress-pages/head'
-
-export const metaData = {
+export const meta = {
   title: "Chromatone",
   titleTemplate: 'Chromatone.center',
   description: "Visual music language",
@@ -28,24 +25,59 @@ export default defineConfig({
     hostname: 'https://chromatone.center'
   },
   outDir: "../dist",
-  title: metaData.title,
-  titleTemplate: metaData.titleTemplate,
-  description: metaData.description,
-  lang: metaData.locale,
+  title: meta.title,
+  titleTemplate: meta.titleTemplate,
+  description: meta.description,
+  lang: meta.locale,
   themeConfig: {
     logo: "/media/logo/holologo.svg",
     //@ts-expect-error custom icon
-    icon: metaData.url + metaData.icon,
-    repo: metaData.repo,
+    icon: meta.url + meta.icon,
+    repo: meta.repo,
   },
   head: [
-    ['script', { defer: '', async: '', src: "https://buttons.github.io/buttons.js" }]
+    ["meta", { property: "og:type", content: "website" }],
+    ["meta", { name: "apple-mobile-web-app-status-bar-style", content: "white-translucent", },],
+    ["meta", { name: "apple-mobile-web-app-capable", content: "yes" }],
+    ["meta", { name: "HandheldFriendly", content: "True" }],
+    ["meta", { name: "MobileOptimized", content: "320" }],
   ],
   transformPageData(pageData) {
     if (pageData.frontmatter?.dynamic) {
+      pageData.title = pageData.params?.title
+      pageData.description = pageData.params?.description
       pageData.frontmatter = { ...pageData.frontmatter, ...pageData.params, cover: pageData.params?.cover ? `https://db.chromatone.center/assets/${pageData.params?.cover}?fit=cover&format=webp&width=1000` : '' }
     }
   },
-  transformHead: generateMeta(metaData),
+  //@ts-ignore
+  transformHead(ctx) {
+    const url = ctx.pageData.relativePath.split('index.md')[0]
+    let image = meta?.image
+    if (ctx.pageData.frontmatter?.cover) {
+      if (ctx.pageData.frontmatter.dynamic) {
+        image = ctx.pageData.frontmatter?.cover
+      } else {
+        image = meta.url + 'media_files/cover/' + url.split('/').join('-') + ctx.pageData.frontmatter?.cover
+      }
+    }
+    return [
+      process.env.NODE_ENV === "production" ? ["script", { async: true, defer: true, "data-website-id": "165ab64e-7686-4726-8013-3fa8340dccef", src: "https://stats.chromatone.center/script.js" }] : null,
 
+      meta.icon ? ["link", { rel: "icon", type: "image/svg+xml", href: meta.url + meta.icon }] : null,
+      meta?.author ? ["meta", { name: "author", content: meta?.author }] : null,
+      meta?.tags ? ["meta", { name: "keywords", content: meta?.tags }] : null,
+      meta.color ? ["meta", { name: "theme-color", content: meta.color }] : null,
+
+      ['meta', { property: 'og:title', content: ctx.pageData.title + ' | Chromatone.center' }],
+      ['meta', { property: 'og:description', content: ctx.pageData.description }],
+      ['meta', { property: 'og:url', content: meta.url + url }],
+      ['meta', { property: 'og:image', content: image }],
+      ['meta', { name: 'twitter:title', content: ctx.pageData.title + ' | Chromatone.center' }],
+      ['meta', { name: 'twitter:description', content: ctx.pageData.description }],
+      ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
+      ['meta', { name: 'twitter:site', content: `@${meta.author}` }],
+      ['meta', { name: 'twitter:creator', content: `@${meta.author}` }],
+      ['meta', { name: 'twitter:image', content: image }],
+    ]
+  },
 });

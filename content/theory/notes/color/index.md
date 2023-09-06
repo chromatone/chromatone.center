@@ -18,13 +18,13 @@ First and the most obvious use of color in music is a simple coloring the regula
 
 The extension of the ancient method of linking finger phalanges and musical notes. We can make it consistent enough to use intuitively after a little practice.
 
-<img src="./note-hand.svg">
+![Chromatic hand](./note-hand.svg)
 
-## Integer notation adoption
+## Interval hand
 
-Numbers are already widely used in music - they indicate rhythmic meters, interval sizes and scale steps. It may sound too much to use numbers for the actual notes, but it happens to be a nice way to make music even more easy to study. In any case nowadays music is stored in some kind of digital format. May be if we add colors to our music notation we can add the numbers without any confusion? So any properly colored number will have a distinct frequency to play (in 12-TET or beyond)?
+The 12 phalanges of fingers are ideal to reason not only about notes, but intervals too. Assume the tip of your index finger as a tonic note and build any interval, chord, or even scale just with your thumb. It enables you to practice melodies, progressions and more in any moment, at any place.
 
-<img src="./hand.svg">
+![Interval hand](./hand.svg)
 
 ## Colorful piano rolls
 
@@ -37,3 +37,5 @@ Try the [Pitch-roll](../../../practice/pitch/roll/index.md) to see the main note
 Adding the colors to a regular spectrogram makes you see much more about the musical contents of any sound. You can easily see the fundamental pitch and the colors of all the main overtones for simple sounds.
 
 Try the [Colorful spectrogram](../../../practice/pitch/spectrogram/index.md) online now.
+
+![Both hands](./hands.svg)

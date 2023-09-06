@@ -10,7 +10,7 @@ cover: lockup.svg
 import { defineClientComponent } from 'vitepress'
 
 const ElemAudio = defineClientComponent(() => {
-  return import('./audio/ElemAudio.vue')
+  return import('../../../../audio/ElemAudio.vue')
 })
 </script>
 

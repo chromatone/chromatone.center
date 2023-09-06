@@ -5,10 +5,6 @@ date: 2021-08-05
 cover: tuning-circle.svg
 ---
 
-<script setup>
-import tuningCircle from './circle.vue'
-</script>
-
 <img src="./et-limits.svg" />
 
 ## Circle of tunings

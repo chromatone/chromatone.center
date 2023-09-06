@@ -6,10 +6,6 @@ date: 2021-11-09
 cover: geometry.png
 ---
 
-<script setup>
-import midiRadar from './radar.vue'
-</script>
-
 <client-only >
 
   <midi-radar />

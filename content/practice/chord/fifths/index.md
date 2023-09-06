@@ -5,10 +5,6 @@ date: 2022-06-02
 cover: fifths.png
 ---
 
-<script setup>
-import chordFifths from './fifths.vue'
-</script>
-
 <client-only>
 <chord-fifths />
 </client-only>

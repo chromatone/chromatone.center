@@ -5,10 +5,6 @@ cover: array.png
 date: 2022-02-01
 ---
 
-<script setup>
-import tonalSpace from './space.vue'
-</script>
-
 <client-only>
   <tonal-space />
 </client-only>

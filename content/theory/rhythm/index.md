@@ -1,8 +1,8 @@
 ---
 title: Rhythm
 description: Musical exploration of time
-date: 2021-08-24
-
+date: 2021-10-15
+cover: brent-ninaber.jpg
 links:
   - https://en.wikipedia.org/wiki/Rhythm
   - https://en.wikipedia.org/wiki/Beat_(music)

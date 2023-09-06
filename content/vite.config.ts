@@ -27,6 +27,7 @@ export default defineConfig(
         dirs: ['../components', '../theme/components'],
         extensions: ['vue', 'ts', 'js'],
         directoryAsNamespace: true,
+        collapseSamePrefixes: true,
         globalNamespaces: ['global'],
         include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
         exclude: [/node_modules/, /\.git/],
@@ -66,6 +67,7 @@ export default defineConfig(
         "#/use": path.resolve(dirname, "../use"),
         "#/components/": path.resolve(dirname, "../components"),
         "#/db": path.resolve(dirname, "../db"),
+        "#/data": path.resolve(dirname, "../data"),
       }
     },
     optimizeDeps: {

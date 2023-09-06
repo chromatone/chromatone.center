@@ -11,6 +11,7 @@ const props = defineProps({
   start_time: { type: String, default: '' },
   duration: { type: String, default: '' },
   place: { type: Object, default: () => ({}) },
+  url: { type: String, default: '' },
 })
 
 const formattedDate = useDateFormat(props.date, 'DD MMMM')
@@ -43,8 +44,13 @@ const weekDay = useDateFormat(props.date, 'dddd')
       .p-0 {{ place?.city }},
       .p-0 {{ place?.country }}
 
+  a.p-4.shadow-lg.bg-purple-800.hover-bg-purple-700.text-light-200.font-bold.rounded-lg.text-center.no-underline.cursor-pointer.text-light-900.hover-text-white(
+    target="_blank"
+    :href="url"
+    v-if="url"
+  ) Get tickets
 
-.max-w-150.bg-light-100.dark-bg-dark-300.m-4.p-4.shadow.rounded-xl.flex.flex-col.gap-4(v-if="announcement")
+.max-w-150.bg-light-100.dark-bg-dark-300.m-4.p-4.shadow.rounded-xl.flex.flex-col.gap-4(v-if="announcement || cover")
   img(v-if="cover" style="margin:0;" :src="cover")
   .p-0 {{ announcement }}
   

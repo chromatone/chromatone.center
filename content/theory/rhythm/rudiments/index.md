@@ -7,7 +7,10 @@ date: 2021-06-30
 
 <youtube-embed video="WSC7iujjg_o" />
 
+### [Practice drum rudiments online](../../../practice/rhythm/rudiments/index.md)
+
 ## Historical organization
+
 (NARD Standard 26 American Drum Rudiments of 1933)
 
 ### Thirteen "essential" rudiments
@@ -64,6 +67,7 @@ In 1984, the Percussive Arts Society added 14 more rudiments to extend the list 
 <youtube-embed video="roT6Imp7lSg" />
 
 ## Terminology
+
 ### Single stroke
 
 A stroke performs a single percussive note. There are four basic single strokes.
@@ -102,8 +106,11 @@ A flam consists of two single strokes played by alternating hands (rL or lR). Th
 A charge stroke is a special variation on an open flam in which one or both of the notes are accented to provide a driving feel that can create the illusion that the downbeat has moved earlier in time. The two major types are French  Lr or Rl and Swiss LR or RL with the first note preceding the downbeat, which falls on the second note, in both types. Charge strokes can be combined with flams or drags to create complex grace note figures preceding a downbeat.
 
 ### Roll
-Drum rolls are various techniques employed to produce a sustained, continuous sound. 
+
+Drum rolls are various techniques employed to produce a sustained, continuous sound.
 
 https://en.wikipedia.org/wiki/Drum_rudiment
 
 https://www.drumeo.com/beat/rudiments/
+
+### [Practice drum rudiments online](../../../practice/rhythm/rudiments/index.md)

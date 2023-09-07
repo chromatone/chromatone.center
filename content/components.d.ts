@@ -186,6 +186,7 @@ declare module 'vue' {
     RhythmCircleLoopSector: typeof import('./../components/rhythm/circle/LoopSector.vue')['default']
     RhythmCircleMidiControls: typeof import('./../components/rhythm/circle/RhythmCircleMidiControls.vue')['default']
     RhythmCircleOverlay: typeof import('./../components/rhythm/circle/CircleOverlay.vue')['default']
+    RhythmDrumRudiments: typeof import('./../components/rhythm/RhythmDrumRudiments.vue')['default']
     RhythmWheels: typeof import('./../components/rhythm/wheels/RhythmWheels.vue')['default']
     RhythmWheelsRhythmWheel: typeof import('./../components/rhythm/wheels/RhythmWheel.vue')['default']
     RhythmWheelsState: typeof import('./../components/rhythm/wheels/state.ts')['default']

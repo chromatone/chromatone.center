@@ -22,21 +22,13 @@ jobs:
 
       - name: Setup Node
         uses: actions/setup-node@v3
-        with:
-          node-version: 20
 
       - uses: pnpm/action-setup@v2
         with:
-          version: 8
-          run_install: |
-            - recursive: true
+          run_install: true
 
       - name: Build project
         run: pnpm run build
-        env: # Or as an environment variable
-          VITE_CMS_KEY: ${{ secrets.VITE_CMS_KEY }}
-          VITE_STRIPE_KEY: ${{secrets.VITE_STRIPE_KEY}}
-          VITE_DB_URL: ${{secrets.VITE_DB_URL}}
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3

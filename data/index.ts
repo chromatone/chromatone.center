@@ -3,7 +3,7 @@ import { loadEnv } from 'vitepress'
 
 const env = loadEnv('', process.cwd())
 
-export const client = createDirectus('https://db.chromatone.center/').with(rest()).with(staticToken(env.VITE_CMS_KEY))
+export const client = createDirectus('https://db.chromatone.center/').with(rest()).with(staticToken('W12HVtPiXYK3V5baFBO28I0XwgkGH9YY'))
 
 export async function useItems(collection, query?) {
   try {

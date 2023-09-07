@@ -13,6 +13,10 @@
 	"license": "MIT",
 	"author": "Davay42",
 	"type": "module",
+	"engines": {
+		"node": "20.x"
+	},
+	"packageManager": "pnpm@8.6.12",
 	"exports": {
 		".": {
 			"import": "./lib/use-chromatone.js",

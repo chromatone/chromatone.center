@@ -50,14 +50,14 @@ export default defineConfig({
     }
   },
   //@ts-ignore
-  transformHead(ctx) {
-    const url = ctx.pageData.relativePath.split('index.md')[0]
+  transformHead({ pageData }) {
+    const url = pageData.relativePath.split('index.md')[0]
     let image = meta?.image
-    if (ctx.pageData.frontmatter?.cover) {
-      if (ctx.pageData.frontmatter.dynamic) {
-        image = ctx.pageData.frontmatter?.cover
+    if (pageData.frontmatter?.cover) {
+      if (pageData.frontmatter.dynamic) {
+        image = pageData.frontmatter?.cover
       } else {
-        image = meta.url + 'media_files/cover/' + url.split('/').join('-') + ctx.pageData.frontmatter?.cover
+        image = meta.url + 'media_files/cover/' + url.split('/').join('-') + pageData.frontmatter?.cover
       }
     }
     return [
@@ -68,12 +68,12 @@ export default defineConfig({
       meta?.tags ? ["meta", { name: "keywords", content: meta?.tags }] : null,
       meta.color ? ["meta", { name: "theme-color", content: meta.color }] : null,
 
-      ['meta', { property: 'og:title', content: ctx.pageData.title + ' | Chromatone.center' }],
-      ['meta', { property: 'og:description', content: ctx.pageData.description }],
+      ['meta', { property: 'og:title', content: pageData.title + ' | Chromatone.center' }],
+      ['meta', { property: 'og:description', content: pageData.description }],
       ['meta', { property: 'og:url', content: meta.url + url }],
       ['meta', { property: 'og:image', content: image }],
-      ['meta', { name: 'twitter:title', content: ctx.pageData.title + ' | Chromatone.center' }],
-      ['meta', { name: 'twitter:description', content: ctx.pageData.description }],
+      ['meta', { name: 'twitter:title', content: pageData.title + ' | Chromatone.center' }],
+      ['meta', { name: 'twitter:description', content: pageData.description }],
       ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
       ['meta', { name: 'twitter:site', content: `@${meta.author}` }],
       ['meta', { name: 'twitter:creator', content: `@${meta.author}` }],

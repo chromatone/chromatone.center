@@ -1,6 +1,7 @@
 <script setup>
 import { lchToHsl } from '#/use/colors'
-import { isDark } from '#/theme/composables/state'
+import { useData } from 'vitepress'
+const { isDark } = useData()
 import { computed } from 'vue';
 
 const props = defineProps({

@@ -7,7 +7,8 @@ import { playChroma, stopChroma, globalScale } from '#/use/chroma'
 import { ref, watchEffect, computed } from 'vue';
 import { useClamp } from '@vueuse/math';
 import { useDrag } from '@vueuse/gesture'
-import { isDark } from '#/theme/composables/state';
+import { useData } from 'vitepress'
+const { isDark } = useData()
 
 
 const frequencies = []

@@ -19,7 +19,7 @@ const dirname = path.dirname(fileURLToPath(import.meta.url));
 export default defineConfig(
   {
     base: './',
-    envPrefix: ['VITE_', 'TAURI_'],
+    envPrefix: ['VITE_'],
     envDir: '../',
     plugins: [
       ViteYaml(),

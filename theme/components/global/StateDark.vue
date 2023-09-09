@@ -1,5 +1,6 @@
 <script setup>
-import { isDark } from '#/theme/composables/state'
+import { useData } from 'vitepress'
+const { isDark } = useData()
 
 </script>
 

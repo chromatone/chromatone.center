@@ -1,9 +1,5 @@
 <script setup>
-
-import { lchToHsl } from '#/use/colors'
 import { computed } from 'vue';
-import { isDark } from '#/theme/composables/state'
-import { colord } from 'colord'
 
 import { useRoute, useData } from 'vitepress'
 import { data } from '../../../content/pages.data'

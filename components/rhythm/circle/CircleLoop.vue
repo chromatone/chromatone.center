@@ -13,7 +13,8 @@ import { midi } from "#/use/midi";
 import { controls } from './controls'
 import { ref, computed, watch } from 'vue'
 import { gainToDb } from "tone";
-import { isDark } from "#/theme/composables/state";
+import { useData } from 'vitepress'
+const { isDark } = useData()
 
 
 const props = defineProps({

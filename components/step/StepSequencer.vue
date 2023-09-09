@@ -9,7 +9,8 @@ import { synthOnce } from '#/use/synth'
 import { midiOnce } from '#/use/midi'
 import { pianoOnce, init } from '#/use/piano'
 import { tempo } from '#/use/tempo'
-import { isDark } from '#/theme/composables/state'
+import { useData } from 'vitepress'
+const { isDark } = useData()
 import { computed, onBeforeUnmount, onMounted, reactive, watch, watchEffect } from 'vue'
 
 const state = reactive({

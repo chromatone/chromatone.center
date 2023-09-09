@@ -30,9 +30,8 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: 7.27
-          run_install: |
-            - recursive: true
+          version: 9
+          run_install: true
 
       - name: Build project
         run: pnpm run build-lib

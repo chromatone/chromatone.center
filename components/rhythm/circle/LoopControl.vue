@@ -2,7 +2,8 @@
 
 <script setup>
 import { getCircleCoord } from '#/use/calculations'
-import { isDark } from '#/theme/composables/state'
+import { useData } from 'vitepress'
+const { isDark } = useData()
 import { midi } from '#/use/midi'
 import { controls } from './controls';
 import { ref, reactive, computed, watch } from 'vue'

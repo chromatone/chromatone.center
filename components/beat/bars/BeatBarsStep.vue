@@ -2,7 +2,8 @@
 import { levelColor } from "#/use/colors"
 import { colord } from 'colord'
 
-import { isDark } from '#/theme/composables/state'
+import { useData } from 'vitepress'
+const { isDark } = useData()
 import { tempo } from '#/use/tempo'
 import { computed, watch } from "vue";
 import { useClamp } from "@vueuse/math";

@@ -1,7 +1,8 @@
 <script setup>
 import { getCircleCoord } from '#/use/calculations'
 import { polarXY, radar } from '../useRadar'
-import { isDark } from '#/theme/composables/state'
+import { useData } from 'vitepress'
+const { isDark } = useData()
 import paper from 'paper'
 import { onBeforeUnmount, reactive, watch } from 'vue';
 

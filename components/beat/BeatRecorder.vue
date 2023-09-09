@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { isDark } from '../../theme/composables/state'
+import { useData } from 'vitepress'
+const { isDark } = useData()
 const props = defineProps({
   recorder: Object,
 })

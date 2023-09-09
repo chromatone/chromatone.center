@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { isDark } from '#/theme/composables/state'
+import { useData } from 'vitepress'
+const { isDark } = useData()
 import { levelColor } from "#/use/colors"
 import { useClamp } from '@vueuse/math';
 import { computed, reactive, watch } from 'vue'

@@ -4,6 +4,10 @@ description: Durable vinyl stickers for musical instruments along with printed a
 date: 2021-05-20
 topContent: true
 cover: shop.jpg
+buttons:
+  - url: "https://shop.chromatone.center/"
+    text: "Try our new dedicated shop"
+    type: heart
 ---
 
 <script setup>

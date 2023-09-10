@@ -214,7 +214,7 @@ declare module 'vue' {
     SoundOvertonesGuitar: typeof import('./../components/sound/SoundOvertonesGuitar.vue')['default']
     SoundVibrations: typeof import('./../components/sound/SoundVibrations.vue')['default']
     Spacer: typeof import('./../theme/components/global/Spacer.vue')['default']
-    StateDark: typeof import('./../theme/components/state/StateDark.vue')['default']
+    StateDark: typeof import('./../theme/components/global/StateDark.vue')['default']
     StateSound: typeof import('./../components/state/StateSound.vue')['default']
     StateTransport: typeof import('./../components/state/StateTransport.vue')['default']
     StepSequencer: typeof import('./../components/step/StepSequencer.vue')['default']

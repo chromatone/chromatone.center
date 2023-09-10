@@ -14,4 +14,4 @@ Music has many faces and it grows through a number of different modes of percept
 
 All 12 pitch classes form the so called [Chroma](./chroma/index.md) space, where numerous combinations of notes combine to become intervals, [chords](./chord/index.md) and scales. We can interact with the notes via [MIDI](./midi/index.md) protocol commands, or build our own [experimental](./experiments/index.md) visual music tools.
 
-And there's a ever growing collection of [third party music web-apps](./third-party/index.md) found on the internet.
+And there's a ever growing collection of [external music web-apps](./external/index.md) found on the internet.

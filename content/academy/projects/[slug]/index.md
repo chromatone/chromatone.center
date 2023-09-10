@@ -15,7 +15,7 @@ const events = computed(()=>[...f.value?.events].sort((a,b)=>(new Date(a.date)).
 
 <!-- @content -->
 
-<h2 v-if="f.partners">Partners</h2>
+<h2 v-if="f.partners.length>0">Partners</h2>
 
 <div class="flex bg-light-200/50 rounded-xl flex-wrap gap-2 max-w-150">
 <PartnerCard v-for="partner in f?.partners" v-bind="partner?.partners_id" ></PartnerCard>

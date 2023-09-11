@@ -1,7 +1,7 @@
 ---
 title: Triads
 description: Chords consisting of three notes
-
+cover: austin-prock.jpg
 date: 2021-09-22
 
 ---

@@ -1,7 +1,8 @@
 ---
 title: Tone clusters
-description:
+description: Multiple adjacent tones played simultaneously
 date: 2021-08-20
+cover: matthew-ball.jpg
 ---
 
 A tone cluster is a musical chord comprising at least three adjacent tones in a scale. Prototypical tone clusters are based on the chromatic scale and are separated by semitones. For instance, three adjacent piano keys (such as C, C♯, and D) struck simultaneously produce a tone cluster. Variants of the tone cluster include chords comprising adjacent tones separated diatonically, pentatonically, or microtonally. On the piano, such clusters often involve the simultaneous striking of neighboring white or black keys.

@@ -2,6 +2,7 @@
 title: Composition
 description: The act of conceiving a piece of music, the art of creating music, or the finished product
 date: 2021-07-10
+cover: dayne-topkin.jpg
 links:
   - https://www.researchgate.net/publication/353829597_Visualizing_music_structure_using_Spotify_data
   - https://jobsavelsberg.com/musicstructure/

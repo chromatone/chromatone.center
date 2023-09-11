@@ -2,7 +2,7 @@
 title: Intervals
 description: Different kinds of relations between two notes
 
-cover: chromatic.svg
+cover: guang-yang.jpg
 date: 2021-09-15
 ---
 

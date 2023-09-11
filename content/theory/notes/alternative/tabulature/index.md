@@ -1,8 +1,8 @@
 ---
 title: Tabulature
 description: Explicit note playing instructions for the instrument
-
-date: 2021-09-30
+cover: capirola2.png
+date: 2020-03-30
 ---
 
 Tablature (or tabulature, or tab for short) is a form of musical notation indicating instrument fingering rather than musical pitches. The word tablature originates from the Latin word tabulatura. Tabula is a table or slate, in Latin. To tabulate something means to put it into a table or chart.

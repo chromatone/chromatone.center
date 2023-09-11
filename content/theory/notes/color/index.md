@@ -2,7 +2,7 @@
 title: Chromatone color notation
 description: Different ways to implementing the color-frequency equations for writing and reading music
 
-date: 2021-06-01
+date: 2021-02-01
 cover: midi-roll.png
 ---
 

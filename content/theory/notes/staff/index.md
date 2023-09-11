@@ -3,6 +3,8 @@ title: Classic European music staff notation
 description: How the sheet notes are written and read from classic era till today
 date: 2021-08-12
 cover: kvintcirklen.png
+links:
+  - https://en.wikibooks.org/wiki/Music_Theory/Music_Notation_Systems
 ---
 
 <script setup>
@@ -11,9 +13,9 @@ import { state } from '../../../../components/abc/state'
 const minuet = `
 X:409
 T:Minuet in G Major
-T:BWV Anhang 114 
+T:BWV Anhang 114
 C:Christian Petzold (1677-1733)
-C:Formerly attributed to J. S. Bach 
+C:Formerly attributed to J. S. Bach
 C:(Guitar chords added)
 Z:ClassicMan at musescore.com
 Z:abc-edited-by: AW
@@ -22,30 +24,30 @@ M:3/4
 I:linebreak $
 K:G
 V:1 treble %nm="Piano"
-V:2 treble 
-V:3 bass 
-V:4 bass 
+V:2 treble
+V:3 bass
+V:4 bass
 V:1
 "G"d G/A/"D7/a"B/c/ | "G/b"d .G .G | "C"e Mc/d/e/f/ | "G/b"g .G .G | \
-"Am"Mc d/c/""B/A/ | "G"B c/B/A/G/ | "D"F "G"G/A/B/G/ |"D    D7"{B} A3 |$ 
+"Am"Mc d/c/""B/A/ | "G"B c/B/A/G/ | "D"F "G"G/A/B/G/ |"D    D7"{B} A3 |$
 "G"d G/A/"D7/a"B/c/ | "G/b"d .G .G | "C"e Mc/d/e/f/ | "G/b"g .G .G | \
-"Am"Mc d/c/"D/f#"B/A/ | "G"B c/B/"G/b"A/G/ | "Am/c"A "G/d"B/A/"D"G/F/ | "G"G3 ::$ 
+"Am"Mc d/c/"D/f#"B/A/ | "G"B c/B/"G/b"A/G/ | "Am/c"A "G/d"B/A/"D"G/F/ | "G"G3 ::$
 %
 "G"b g/a/b/g/ | "D/f#"a d/e/f/d/ | "Em"g e/f/g/d/ | "A"^c B/c/ A | \
-"A"A/B/^c/d/e/f/ | "G/b"g "D"f "A/c#"e | "D"f "D/f#"A "A"^c | "D       D7"d3 |$ 
+"A"A/B/^c/d/e/f/ | "G/b"g "D"f "A/c#"e | "D"f "D/f#"A "A"^c | "D       D7"d3 |$
 "G/b"d G/F/ G | "C"e G/F/ G | "G/b"d "D/a"c "G"B | "D"A/G/F/G/ A | \
-"D"D/E/F/G/A/B/ | "C/e"c "G"PB "D/f#"A | "G"B/d/ "G/b"G "D"F | "G"G3 :| 
+"D"D/E/F/G/A/B/ | "C/e"c "G"PB "D/f#"A | "G"B/d/ "G/b"G "D"F | "G"G3 :|
 V:2
-x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 |$ x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 ::$ x3 | x3 | x3 | 
-x3 | x3 | x3 | x3 | x3 |$ x3 | x3 | x3 | x3 | x3 | x3 | x3 | [B,D]3 :| 
+x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 |$ x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 ::$ x3 | x3 | x3 |
+x3 | x3 | x3 | x3 | x3 |$ x3 | x3 | x3 | x3 | x3 | x3 | x3 | [B,D]3 :|
 V:3
-[B,D]2 A, | B,3 | C3 | B,3 | A,3 | G,3 | D B, G, | D D,/C/B,/A,/ |$ B,2 A, | G, .B, .G, | C3 | 
-B, C/B,/A,/G,/ | A,2 F, | G,2 B, | C D D, | G,2 G,, ::$ G,3 | F,3 | E, G, E, | A,2 A,, | A,3 | 
-B, D ^C | D F, A, | D D, =C |$ z D2 | z E2 | B, A, G, | D2 z | z z F, | E, G, F, | G, B,, D, | 
-G, D, G,, :| 
+[B,D]2 A, | B,3 | C3 | B,3 | A,3 | G,3 | D B, G, | D D,/C/B,/A,/ |$ B,2 A, | G, .B, .G, | C3 |
+B, C/B,/A,/G,/ | A,2 F, | G,2 B, | C D D, | G,2 G,, ::$ G,3 | F,3 | E, G, E, | A,2 A,, | A,3 |
+B, D ^C | D F, A, | D D, =C |$ z D2 | z E2 | B, A, G, | D2 z | z z F, | E, G, F, | G, B,, D, |
+G, D, G,, :|
 V:4
-G,2 x | x3 | x3 | x3 | x3 | x3 | x3 | x3 |$ x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 ::$ x3 | x3 | 
-x3 | x3 | x3 | x3 | x3 | x3 |$ B,2 B, | C2 C | x3 | x3 | D,3 | x3 | x3 | x3 :| 
+G,2 x | x3 | x3 | x3 | x3 | x3 | x3 | x3 |$ x3 | x3 | x3 | x3 | x3 | x3 | x3 | x3 ::$ x3 | x3 |
+x3 | x3 | x3 | x3 | x3 | x3 |$ B,2 B, | C2 C | x3 | x3 | D,3 | x3 | x3 | x3 :|
 `
 </script>
 
@@ -53,6 +55,22 @@ x3 | x3 | x3 | x3 | x3 | x3 |$ B,2 B, | C2 C | x3 | x3 | D,3 | x3 | x3 | x3 :|
 @click="state.colorize = !state.colorize">Colorize notes</button>
 
 ![](./kvintcirklen.png)
+
+Standard notation is used to demonstrate how a piece is played. Unlike tablature, it applies to any instrument. It indicates key signatures, time signatures, rhythms, tempo, dynamics (how loud each instrument should be), and so on. A highly trained musician can sometimes take a piece of sheet music written in standard notation, look it over once or twice, and then play the song as though he or she had been playing it his or her whole life.
+
+For instance, below is the C major scale, including a C at the end, in standard notation.
+
+The standard notation staff has five lines and four spaces. From bottom to top the five lines are E G B D F, which is commonly memorized as an acrostic such as:
+
+- **E**very
+- **G**ood
+- **B**oy
+- **D**oes
+- **F**ine
+
+The four spaces between the five lines are F, A, C, and E, which should surely be easy for an English speaker to remember, because together they spell "face".
+
+But what about the first two notes, which are below the staff? Well, the second note is just below the E, so it must be D. The first is below that, so it must be C. It also has a line through it to indicate it is placed on an "invisible" line. This line is called a ledger line. A note could be placed below this ledger line, which would be B. Or a note could be placed below that, on another ledger line, and it would be A. Notes can continue to be placed on ledger lines above and below the staff infinitely, but extending too far from the staff is impractical, because the pitches will become very hard to read.
 
 ## Clefs
 
@@ -135,6 +153,8 @@ Whole note = 2 half notes = 4 quarter notes = 8 eighth notes = 16 sixteenth note
 Note colorization is very useful to build connections between classic and Chromatone music theory visualizations.
 <abc-render responsive :abc="minuet" />
 
-[Play with the ABC notations editor](../alternative/abc/index.md)
+[Play with the ABC notations editor](../computer/abc/index.md)
 
 [Sight reading](./sight-reading/index.md)
+
+[European tradition](./evolution/index.md)

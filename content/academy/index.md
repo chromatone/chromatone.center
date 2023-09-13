@@ -3,13 +3,36 @@ title: Academy
 description: People are great in helping other people learn. We teach and inspire diving deep on music.
 date: 2021-06-05
 cover: wes-hicks.jpg
+topContent: true
 ---
+
+## Upcoming events
+
+<script setup>
+import { computed } from 'vue'
+import { useDateFormat, useNow } from '@vueuse/core'
+import { data } from '#/data/academy.data'
+
+const today = useDateFormat(useNow(), 'YYYY-MM-DD')
+const upcoming = computed(()=>data.events.filter(ev=>ev.date>today.value))
+</script>
+
+<div class="m-4 flex flex-col gap-8" >
+<EventCard
+v-for="event in upcoming" :key="event"
+v-bind="event"
+ >{{event.date > '2023-09-01'}}</EventCard>
+</div>
+
+## Where is Chromatone now
 
 Chromatone is an international music education platform for everyone to gain knowledge and new pleasant experience. The knowledge is stored in the articles and apps, but it's compressed and dryed out to be light and compact. But there's so much to dive in! And that's where guidance may be incredibly helpful.
 
 We're building from the ground up, educating ourselves and the ones who want to participate in the early development. While Chromatone is developed for more than 4 years it's still a long way to have it finished. It becomes more of a process of distilling and transfering knowledge and joy.
 
 Chromatone as the music itself is totally international and doesn't rely on any language (except JavaScript 😇). Our goal is to create an international community of teachers, learners and practitioners of our visual music approach. It has already recommended itself in music theory educational video production and the time has come for it expand worldwide. [Project](./projects/index.md) by project.
+
+## Where are we going
 
 First step is to establish the convenient way for [tutors](./tutors/index.md) to meet their students. Then educators will start creating their own content with all the tools available. In any language and for any age and any level of prior musical knowledge.
 

@@ -33,7 +33,7 @@ a.overflow-hidden.flex.flex-wrap.shadow-lg.hover-shadow-xl.transition.flex-1.dar
 
     .flex-1 
     .text-md {{ description }}
-
+    slot
 
 </template>
 

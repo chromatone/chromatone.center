@@ -36,11 +36,7 @@ Chromatone is an open source initiative made not to be a proprietary standard, b
 
 We have a subreddit to hang around and an Instagram account to tag in your posts. And it's important to let more people join the growing community of visual musicians. So follow us and spread the word about Chromatone through your social media and beyond.
 
-<a href="https://www.producthunt.com/posts/chromatone?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-chromatone" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=381642&theme=neutral" alt="Chromatone - Visual&#0032;music&#0032;language&#0032;to&#0032;learn&#0044;&#0160;explore&#0032;and&#0032;express&#0032;with | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
-
-## <i class="p-6 mr-1 i-la-instagram"></i> [@chromatone.center](https://instagram.com/chromatone.center)
-
-## <i class="p-6 mr-1 i-la-reddit"></i> [r/chromatone](https://www.reddit.com/r/chromatone)
+<!-- <a href="https://www.producthunt.com/posts/chromatone?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-chromatone" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=381642&theme=neutral" alt="Chromatone - Visual&#0032;music&#0032;language&#0032;to&#0032;learn&#0044;&#0160;explore&#0032;and&#0032;express&#0032;with | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a> -->
 
 We are those, who learn, teach, explore and produce music with help of the new clean visual language. And it's getting better with every contribution. Say hi and someone will reply. Everything starts from the first step. More to build together!
 
@@ -59,5 +55,3 @@ In future the project will grow big enough to become an Open Collective to be ev
 If you're a designer, JS developer, audio analysis library or know how else the site may be better - contribute code to our open GitHub repository. Or at least press that star button in the right top corner.
 
 [![Star History Chart](https://api.star-history.com/svg?repos=chromatone/chromatone.center&type=Date)](https://star-history.com/#chromatone/chromatone.center&Date)
-
-<a class="github-button" href="https://github.com/chromatone/chromatone.center" data-color-scheme="no-preference: light; light: light; dark: dark;" data-size="large" data-show-count="true" aria-label="Star chromatone/chromatone.center on GitHub">Star</a>

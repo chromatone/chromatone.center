@@ -27,7 +27,7 @@ function toggle() {
 
 <template lang="pug">
 .nav-dropdown-link(:class="{ open }")
-  button.button(:aria-label="item?.frontmatter?.title", @click="toggle")
+  .button(:aria-label="item?.frontmatter?.title", @click="toggle")
     a.button-text.no-underline(:href="cleanLink(item?.url)") {{ item?.frontmatter?.title }}
     span.button-arrow(:class="open ? 'down' : 'right'").
 

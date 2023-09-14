@@ -25,7 +25,7 @@
 			"./*"
 		],
 		"out": "../content/support/docs/",
-		"githubPages": false,
+		"githubPages": true,
 		"entryPointStrategy": "expand",
 		"name": "Use-chromatone documentation",
 		"defaultCategory": "Chomatone",

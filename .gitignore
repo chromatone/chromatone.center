@@ -58,7 +58,7 @@ lib
 content/public/sitemap.xml
 content/public/media_files
 
-content/support/code/docs/
-!content/support/code/index.md
+content/support/docs/
+!content/support/docs/index.md
 
 **/*.mjs

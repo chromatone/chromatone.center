@@ -2,17 +2,18 @@
 import { computed } from "vue";
 import { lchToHsl } from "#/use/colors";
 
-import { useData, useRoute } from 'vitepress'
+import { useRoute } from 'vitepress'
 import { data } from '../../../content/pages.data'
 import { cleanLink, usePages } from 'vitepress-pages'
 
+
+const route = useRoute();
 
 const props = defineProps({
   path: { type: String, default: '' },
   level: { type: Number, default: 0 }
 })
 
-const route = useRoute();
 
 const { pages, children } = usePages({ path: props.path }, data)
 </script>

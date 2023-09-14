@@ -24,7 +24,7 @@
 		"entryPoints": [
 			"./*"
 		],
-		"out": "../content/support/code/docs/",
+		"out": "../content/support/docs/",
 		"githubPages": false,
 		"entryPointStrategy": "expand",
 		"name": "Use-chromatone documentation",

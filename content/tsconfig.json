@@ -9,7 +9,7 @@
 			"../use/",
 			"./"
 		],
-		"out": "support/code/docs/",
+		"out": "support/docs/",
 		"githubPages": false,
 		"entryPointStrategy": "expand",
 		"name": "Use-chromatone documentation",

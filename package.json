@@ -39,8 +39,6 @@
 	"dependencies": {
 		"@elemaudio/core": "2.1.0",
 		"@elemaudio/web-renderer": "2.1.0",
-		"@gun-vue/composables": "0.18.1",
-		"@stripe/stripe-js": "2.1.2",
 		"@tonaljs/tonal": "4.10.0",
 		"@tonejs/midi": "2.0.28",
 		"@unocss/reset": "0.55.7",

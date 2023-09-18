@@ -1,7 +1,7 @@
 ---
 title: Practice
 description: Web apps for music education and independent research
-date: 2021-07-02
+date: 2021-07-07
 cover: soundtrap.jpg
 topContent: true
 ---

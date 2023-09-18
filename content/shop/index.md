@@ -1,7 +1,7 @@
 ---
 title: Shop
 description: Durable vinyl stickers for musical instruments along with printed and printable music theory memos and cheat-sheets
-date: 2021-05-20
+date: 2021-04-20
 topContent: true
 cover: shop.jpg
 buttons:

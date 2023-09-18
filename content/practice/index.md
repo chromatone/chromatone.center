@@ -3,7 +3,6 @@ title: Practice
 description: Web apps for music education and independent research
 date: 2021-07-07
 cover: soundtrap.jpg
-topContent: true
 ---
 
 Here's a growing collection of free and open source interactive web experiences for everyone to explore. You can have a direct experience of natural patterns in [human sound perception](./sound/index.md) with just your laptop or a smartphone.

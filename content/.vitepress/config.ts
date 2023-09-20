@@ -9,7 +9,7 @@ export const meta = {
   repo: "https://github.com/chromatone/chromatone.center",
   locale: "en",
   icon: "media/logo/click-logo.svg",
-  image: "media/logo/cardtw.png",
+  image: "https://chromatone.center/media/logo/cardtw.png",
   author: "davay42",
   twitter: "Chromatone.center",
   tags: "color, music, stickers, posters, theory, webapp, science",

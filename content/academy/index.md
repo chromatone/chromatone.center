@@ -4,7 +4,9 @@ description: Community projects and events creating new opportunities for Chroma
 date: 2021-07-05
 cover: wes-hicks.jpg
 topContent: true
-
+buttons:
+  - url: "https://academy.chromatone.center/"
+    text: "academy.chromatone.center"
 ---
 
 ## Where is Chromatone now
@@ -15,6 +17,6 @@ We're building from the ground up, educating ourselves and the ones who want to 
 
 Chromatone as the music itself is totally international and doesn't rely on any language (except JavaScript 😇). Our goal is to create an international community of tutors, students and practitioners of our visual music approach in their own creative process. The system has already proven itself extremely useful in many cases. And it's about time for it start growing worldwide. Project by project.
 
-<div class="m-16 ">
-<a target="_blank" href="https://academy.chromatone.center" class="p-8 bg-purple-500 rounded-lg shadow-lg no-underline hover-bg-purple-300 hover-dark-text-white text-2xl font-bold">Enter Academy</a>
+<div class="my-16 mx-6 ">
+<a target="_blank" href="https://academy.chromatone.center" class="p-8 bg-purple-400 rounded-lg shadow-lg no-underline hover-bg-purple-300 hover-dark-text-white text-2xl font-bold">Enter Chromatone Academy</a>
 </div>

@@ -1,7 +1,7 @@
 ---
 title: Double harmonic
 description: Balanced heptatonic scales with two augmented second intervals
-date: 2021-09-14
+date: 2021-09-13
 ---
 
 The double harmonic major scale is a musical scale with a flattened second and sixth degree. This is also known as Mayamalavagowla, Bhairav Raga, Byzantine scale, Arabic (Hijaz Kar), and Gypsy major. It can be likened to a gypsy scale because of the diminished step between the 1st and 2nd degrees. Arabic scale may also refer to any Arabic mode, the simplest of which, however, to Westerners, resembles the double harmonic major scale.

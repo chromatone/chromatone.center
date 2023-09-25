@@ -63,7 +63,7 @@ function toggleNote(ev) {
       )
       .i-la-wikipedia-w
     .text-2xl.font-bold.capitalize.mb-2(
-      ) {{ notes[globalScale.tonic] }} {{ chord.name || chord.aliases[0] || scale.name || '?' }} {{ scale.aliases[0] ? `(${scale.aliases[0]})` : '' }}
+      ) {{ notes[globalScale.tonic] }} {{ chord.name || chord.aliases[0] || scale.name || title  }} {{ scale.aliases[0] ? `(${scale.aliases[0]})` : '' }}
 
   abc-render(v-if="abc" :abc="abc")
 
@@ -83,7 +83,7 @@ function toggleNote(ev) {
     :chroma="chroma" @update:chroma="$emit('update:chroma',$event)" :editable="editable")
   //- chroma-stack.flex-1.mx-4(:chroma="chroma")
   //- chroma-square.w-12em.mx-4(:chroma="chroma" :editable="editable")
-
+  .p-4 {{ description }}
 </template>
 
 <style lang="postcss" scoped>

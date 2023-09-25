@@ -12,7 +12,7 @@ const current = ref(Object.keys(props.collection)[0])
 </script>
 
 <template lang="pug">
-.flex.flex-wrap.flex-col
+.flex.flex-wrap.flex-col.max-w-150.mx-2.sm-mx-4
   .flex.flex-wrap
     button.text-button(
       @click="current = c", 

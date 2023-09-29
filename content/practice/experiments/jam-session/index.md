@@ -5,7 +5,7 @@ date: 2023-01-01
 ---
 
 <script setup>
-import JamSession from './jam.vue'
+import JamSession from './JamSession.vue'
 </script>
 
 <client-only>

@@ -9,5 +9,6 @@ date: 2022-06-12
 
 
 <client-only>
+  <midi-panel :to-channel="false" />
   <midi-monitor />
 </client-only>

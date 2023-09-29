@@ -24,15 +24,15 @@ const chords = computed(() => {
 </script>
 
 <template lang="pug">
-.flex.flex-col.gap-4 
-  midi-panel(:to-channel="false")
+.flex.flex-col.gap-4.items-start 
   .fullscreen-container#screen(@mouseleave="active = false")
     .flex.w-full.h-full.mt-4
-      .flex.flex-col.flex-1.text-center(
+      .flex.flex-col.flex-1.text-center.relative(
         v-for="(ch, chNum) in midi.channels", 
         :key="ch.num")
-        .header {{ chords[chNum]?.[0] || Object.keys(ch.activeNotes).map(n => Midi.midiToNoteName(n, { sharps: true })).join(' ') || ch.num }} 
-        midi-note(
+        .header.absolute.w-full.text-center {{ chords[chNum]?.[0] || Object.keys(ch.activeNotes).map(n => Midi.midiToNoteName(n, { sharps: true })).join(' ') || ch.num }}
+        .p-6 
+        midi-monitor-note(
           v-for="note in sortNotes(ch.notes)", 
           :key="note.number"
           v-model:active="active"
@@ -44,7 +44,7 @@ const chords = computed(() => {
       .flex.flex-col.flex-1.text-center(
         v-for="ch in midi.channels", 
         :key="ch.num") 
-        midi-cc(
+        midi-monitor-cc(
           v-for="cc in ch.cc"
           :key="cc"
           :cc="cc"

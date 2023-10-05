@@ -42,11 +42,7 @@ const buttons = computed(() => {
       .mx-2.my-4.text-6xl(v-if="page?.emoji") {{ page?.emoji }}
     .font-bold.mt-2.mb-4(v-if="page?.description") {{ page?.description }}
     page-buttons(:buttons="buttons")
-    .absolute.-bottom-2rem.right-2rem
-      shop-price(
-        :product="page?.product" 
-        :title="page?.title" 
-        :color="lightColor")
+
 </template>
 
 <style lang="postcss" scoped>

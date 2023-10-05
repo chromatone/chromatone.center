@@ -106,8 +106,8 @@ function keyColor(key, off) {
           tspan(    
             :font-weight="key == pitch ? 800 : 200"
             ) {{ notes[key] }}
-        circle.transition-all.duration-100(
-          :style="{opacity: midi.activeChroma[key]==1 ? 1:0}"
+        circle.transition(
+          :style="{opacity: midi.activeChromaMidi[key] ? 1:0}"
           cy="245"
           cx="45"
           r="18"
@@ -145,7 +145,7 @@ function keyColor(key, off) {
           tspan(y="176" x="45") {{ notes[key] }}
           tspan(y="50" x="45" ) {{ flats[key] }}
         circle.transition-all.duration-100(
-          :style="{opacity: midi.activeChroma[key]==1 ? 1:0}"
+          :style="{opacity: midi.activeChromaMidi[key] ? 1:0}"
           cy="175"
           cx="45"
           r="18"

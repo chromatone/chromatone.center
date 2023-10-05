@@ -14,5 +14,5 @@ links:
 
 
 <client-only>
-<GpuShader />
+<GpuShader class="min-h-70svh h-80svh" />
 </client-only>

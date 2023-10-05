@@ -33,12 +33,13 @@ const toggleChar = (str, pos) => str.slice(0, pos) + (str[pos] === '1' ? '0' : '
 </script>
 
 <template lang="pug">
-.flex.flex-col-reverse.gap-1.bg-dark-200.bg-opacity-30.dark-bg-light-900.dark-bg-opacity-40.p-1.rounded-lg
+.flex.flex-col-reverse.gap-1.bg-dark-200.bg-opacity-30.dark-bg-light-900.dark-bg-opacity-40.p-2.rounded-lg
 	.flex.gap-1(v-for="(row,r) in rows" :key="row")
-		.w-6.h-6.flex.flex-col.items-center.justify-center.rounded.text-xs.font-bold.select-none.cursor-pointer(
+		.flex.flex-col.items-center.justify-center.rounded.text-md.p-1.font-bold.select-none.cursor-pointer(
 			@click="$emit('update:chroma',toggleChar(chroma,(r*cols+col) % 12))"
 			v-tooltip="`${notes[(tonic+r*4+col) % 12]}`"
 			v-for="(active,col) in row" :key="col"
+			style="flex: 1 1 50px"
 			:style="{backgroundColor: active ? noteColor(tonic+r*cols+col) : minor.split('')[(tonic+r*cols+col) % 12] == '1' ? 'hsla(0,0%,100%,0.5)' :  'hsla(0,0%,10%,0.5)',opacity:`${active == 1 ? 1 : 0.4}` }") {{ intervals[(r*4+col) % 12] }}
 </template>
 

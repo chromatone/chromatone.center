@@ -71,7 +71,7 @@ const feedbackCode = computed(() => `
 </script>
 
 <template lang='pug'>
-.relative.min-h-70svh.h-80svh#screen.rounded-lg.overflow-hidden.pointer-events-auto.touch-revert()    
+.relative#screen.rounded-lg.overflow-hidden.pointer-events-auto.touch-revert()    
   button.absolute.z-200.text-2xl.top-2.right-2.opacity-30.hover-opacity-100.transition(
     v-tooltip="'Enable audio input'"
     v-if="!initiated" 

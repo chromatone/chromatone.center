@@ -52,9 +52,10 @@ function getDuration(time) {
 </script>
 
 <template lang="pug">
-.flex.flex-col
+.flex.flex-col.w-full
 	svg.w-full(
 		viewBox="0 0 1000 100"
+		font-size="22"
 		)
 		g
 			rect(
@@ -67,6 +68,7 @@ function getDuration(time) {
 		g.start
 			rect.cursor-move(
 				ref="startPad"
+				@dblclick="start =  Date.now() "
 				width="150" 
 				height="100"
 				fill="#6663")
@@ -92,6 +94,7 @@ function getDuration(time) {
 		g.finish
 			rect.cursor-move(
 				ref="finishPad"
+				@dblclick="finish =  Date.now() + 1000 * 60 * 20"
 				x="850" 
 				:width="150" 
 				height="100"

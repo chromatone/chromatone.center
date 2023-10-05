@@ -1,4 +1,5 @@
 <script setup>
+import { midi } from '#/use';
 import { globalScale } from '#/use/chroma';
 import { noteColor } from '#/use/colors';
 import { scaleList } from '#/use/theory';
@@ -14,31 +15,39 @@ const choose = ref(false)
 </script>
 
 <template lang="pug">
-.flex.gap-2.items-center
-	.flex.gap-2.cursor-pointer(
+.flex.gap-4.items-center
+	.w-full.flex.gap-4.cursor-pointer.bg-dark-900.bg-opacity-40.p-2.rounded-xl.items-center(
 		@click="choose = !choose"
 		)
-		chroma-code(
+		.p-0.text-2xl.font-bold.flex.items-center.gap-4 {{ globalScale?.note?.name }} {{ globalScale?.set?.name }}
+		.flex-1
+		.text-lg.i-la-angle-down
+	.w-60.text-lg.tabular-nums.font-mono {{ midi.guessChords[0] }}
+
+		//- chroma-code(
+
 			:chroma="globalScale?.chroma"
 			:cols="12")  
-		.p-0 {{ globalScale?.note?.name }} {{ globalScale?.set?.name }}
-	.flex-auto
-	.flex.items-center.gap-2
+
+	//- .flex.items-center.gap-2
 		.p-2.w-12.text-center.rounded.font-bold(
 			:style="{backgroundColor:noteColor(globalScale?.tonic)}"
 			) {{ globalScale?.note?.name }}
+
 	transition(name="fade")
-		.flex.flex-col.max-h-8em.overflow-scroll.absolute.bottom-4.bg-light-100.dark-bg-dark-100.rounded-xl.overscroll-contain.scroll-smooth.snap-y.snap-proximity(
-			v-if="choose" 
+		.flex.flex-col.max-h-40vh.overflow-scroll.absolute.bg-light-100.dark-bg-dark-100.rounded-xl.overscroll-contain.scroll-smooth.snap-y.snap-proximity.z-100(
+			v-show="choose" 
 			ref="menu")
-			.text-md.flex-auto.flex.gap-2.cursor-pointer.hover-bg-light-400.hover-bg-opacity-10.p-2(
+			.text-md.flex-auto.flex.items-center.gap-2.cursor-pointer.hover-bg-light-400.hover-bg-opacity-10.p-2(
 				v-for="scale in scaleList"
 				:key="scale"
 				@click="globalScale.chroma = scale.chroma; choose = false"
-				) 
+				)
+				.p-0.text-xl {{ scale.name }}
+				.flex-1
 				chroma-code(
 					:chroma="scale.chroma"
 					:cols="12"
 					)  
-				.p-0 {{ scale.name }}
+				
 </template>

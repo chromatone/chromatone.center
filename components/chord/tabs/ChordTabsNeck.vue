@@ -4,7 +4,10 @@ import { freqColor } from '#/use/calculations'
 import { colord } from 'colord'
 import { globalScale } from '#/use/chroma'
 import { computed, reactive } from 'vue';
+import { midi } from '#/use/midi';
+import { useData } from 'vitepress';
 
+const { isDark } = useData()
 const props = defineProps({
   instrument: {
     type: String,
@@ -36,7 +39,8 @@ const neck = reactive({
 });
 
 function noteColor(note, semitones) {
-  return colord(freqColor(Note.freq(Note.transpose(note, Interval.fromSemitones(semitones))))).toHex()
+  const theNote = Note.transpose(note, Interval.fromSemitones(semitones))
+  return colord(freqColor(Note.freq(theNote))).toHex()
 }
 
 function getNote(string, semitones) {
@@ -113,6 +117,11 @@ function getNote(string, semitones) {
             stroke-width="3"
             :r="neck.isInChord(getNote(string, n)) ? neck.noteSize /1.7 - 4 : neck.noteSize / 2 - 8"
             :fill="noteColor(string, n)"
+          )
+          circle(
+            :fill="isDark ? 'white' : 'black'"
+            :opacity="midi.activeNotes[Note.midi(Note.transpose(string, Interval.fromSemitones(n)))] ? 1: 0"
+            :r="neck.isInChord(getNote(string, n)) ? neck.noteSize /1.7 - 4 : neck.noteSize / 2 - 14"
           )
           text(
             opacity="0"

@@ -64,8 +64,6 @@ const lightColor = computed(() => lchToHsl(siblings.value.index, siblings.value.
 
             content.content.flex-auto.z-10(v-if="!f?.topContent")
 
-            shop-message(:page="page", :siblings="siblings")
-
         nav-next-prev(:siblings="siblings" :parents="parents")
         nav-row
         page-footer

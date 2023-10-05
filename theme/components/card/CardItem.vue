@@ -30,12 +30,6 @@ const children = useChildren({ path: props.item?.url }, data)
         .flex-1
         card-date.mr-2(v-if="!item?.frontmatter?.product",:date="item.lastModified")
       .description(v-if="item?.frontmatter?.description") {{ item?.frontmatter?.description }}
-      shop-price.pb-2(
-        v-if="item?.frontmatter?.product"
-        :title="item?.frontmatter?.title"
-        :product="item?.frontmatter?.product"
-        :color="color"
-        )
 
   page-buttons.m-2(:buttons="item?.frontmatter?.buttons")
   line-list(:list="children")

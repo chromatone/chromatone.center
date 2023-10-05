@@ -1,0 +1,1 @@
+import{o as e,c as o,O as _,I as n,_ as s}from"./framework.c4c6940e.js";const c={class:"button"};function r(t,d){return e(),o("button",c,[_(t.$slots,"default",{},()=>[n("Start")],!0)])}const a={},u=s(a,[["render",r],["__scopeId","data-v-fb351d24"]]);export{u as _};

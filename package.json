@@ -16,7 +16,7 @@
 	"engines": {
 		"node": "20.x"
 	},
-	"packageManager": "pnpm@8.7.6",
+	"packageManager": "pnpm@8.8.0",
 	"exports": {
 		".": {
 			"import": "./lib/use-chromatone.js",
@@ -37,17 +37,17 @@
 		"deploy": "sh deploy.sh"
 	},
 	"dependencies": {
-		"@elemaudio/core": "2.1.0",
-		"@elemaudio/web-renderer": "2.1.0",
+		"@elemaudio/core": "3.0.0-alpha.0",
+		"@elemaudio/web-renderer": "3.0.0-alpha.0",
 		"@tonaljs/tonal": "4.10.0",
 		"@tonejs/midi": "2.0.28",
-		"@unocss/reset": "0.56.2",
+		"@unocss/reset": "0.56.5",
 		"@vueuse/core": "10.4.1",
 		"@vueuse/gesture": "2.0.0-beta.1",
 		"@vueuse/math": "10.4.1",
 		"abcjs": "6.2.2",
 		"audio-recorder-polyfill": "0.4.1",
-		"audiomotion-analyzer": "4.2.0",
+		"audiomotion-analyzer": "4.3.0",
 		"cobe": "0.6.3",
 		"color-name-list": "^10.14.0",
 		"colord": "2.9.3",
@@ -58,7 +58,7 @@
 		"hidpi-canvas": "1.0.10",
 		"jspdf": "^2.5.1",
 		"meyda": "5.6.2",
-		"midi-writer-js": "3.0.1",
+		"midi-writer-js": "3.1.1",
 		"nearest-color": "0.4.4",
 		"ol": "8.1.0",
 		"ola": "1.2.1",
@@ -77,20 +77,20 @@
 		"webmidi": "3.1.6"
 	},
 	"devDependencies": {
-		"@directus/sdk": "^12.0.0",
-		"@iconify/json": "^2.2.120",
+		"@directus/sdk": "^12.0.1",
+		"@iconify/json": "^2.2.125",
 		"@modyfi/vite-plugin-yaml": "1.0.4",
-		"@types/node": "20.6.5",
-		"@unocss/extractor-pug": "0.56.2",
-		"@vue/language-plugin-pug": "1.8.13",
+		"@types/node": "20.8.2",
+		"@unocss/extractor-pug": "0.56.5",
+		"@vue/language-plugin-pug": "1.8.15",
 		"pug": "3.0.2",
 		"typedoc": "0.25.1",
 		"typedoc-plugin-markdown": "3.16.0",
 		"typescript": "5.2.2",
-		"unocss": "0.56.2",
+		"unocss": "0.56.5",
 		"unplugin-icons": "0.17.0",
 		"unplugin-vue-components": "0.25.2",
-		"vite": "4.4.9",
+		"vite": "4.4.11",
 		"vitepress": "1.0.0-rc.20"
 	}
 }

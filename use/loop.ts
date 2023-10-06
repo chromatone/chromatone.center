@@ -159,18 +159,18 @@ export function useLoop(order = 0) {
   return loop;
 }
 
-import { Writer, Track, NoteEvent } from "midi-writer-js";
+import MidiWriter from "midi-writer-js";
 
 
 export function renderMidiFile() {
   let render = [];
   loops.forEach((loop, l) => {
     let division = 512 / loop.metre.under;
-    let midiTrack = new Track();
+    let midiTrack = new MidiWriter.Track();
     midiTrack.setTempo(tempo.bpm as number, 0);
     midiTrack.addInstrumentName("piano");
     midiTrack.addTrackName("Chromatone grid " + l);
-    midiTrack.setTimeSignature(4, 4);
+    midiTrack.setTimeSignature(4, 4, 24, 8);
     loop.steps.forEach((step: any[], s: number) => {
       step.forEach((code, c) => {
         let sub = c;
@@ -183,8 +183,7 @@ export function renderMidiFile() {
           .filter((n) => Number(n))
           .map((midi) => Frequency(midi, "midi").toNote());
         midiTrack.addEvent(
-          new NoteEvent({
-            //@ts-expect-error connect midi and tone
+          new MidiWriter.NoteEvent({
             pitch: notes,
             duration: `T${subdivision}`,
             startTick: division * beat + sub * subdivision,
@@ -205,7 +204,7 @@ export function renderMidiFile() {
     render[l] = midiTrack;
   });
 
-  var write = new Writer(render);
+  var write = new MidiWriter.Writer(render);
 
   createAndDownloadBlobFile(write.buildFile(), "Chromatone-grid");
 }

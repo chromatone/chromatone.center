@@ -2,7 +2,7 @@
  * @module MidiRender
  */
 
-import { Writer, Track, NoteEvent } from "midi-writer-js";
+import MidiWriter from "midi-writer-js";
 import { Midi } from "@tonejs/midi";
 import { tempo } from "./tempo";
 let notes = ["C", "E", "G", "B", "D", "F", "A", "C#", "D#", "F#", "G#", "A#"];
@@ -12,11 +12,11 @@ export function renderMidi(tracks) {
   console.log(tracks)
   tracks.forEach((track, t) => {
     let division = 512 / track?.meter?.under;
-    let midiTrack = new Track();
+    let midiTrack = new MidiWriter.Track();
     midiTrack.setTempo(tempo.bpm as number, 0);
     midiTrack.addInstrumentName("116");
     midiTrack.addTrackName("Chromatone beat " + t);
-    midiTrack.setTimeSignature(4, 4);
+    midiTrack.setTimeSignature(4, 4, 24, 8);
     track.steps.forEach((step, s) => {
       step.forEach((code) => {
         if (track.mutes[s] || track.mutes[code]) return;
@@ -27,8 +27,8 @@ export function renderMidi(tracks) {
           subStep = sub * subdivision;
         }
         midiTrack.addEvent(
-          new NoteEvent({
-            //@ts-expect-error
+          new MidiWriter.NoteEvent({
+
             pitch: (track.accents[s]
               ? notes[t * 2] + "2"
               : notes[t * 2 + 1] + "2"),
@@ -50,7 +50,7 @@ export function renderMidi(tracks) {
     render[t] = midiTrack;
   });
 
-  var write = new Writer(render);
+  var write = new MidiWriter.Writer(render);
   let midiData = new Midi(write.buildFile());
   midiData.tracks.forEach((track, t) => {
     midiData.tracks[t].instrument.number = 119;

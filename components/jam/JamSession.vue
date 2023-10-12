@@ -1,9 +1,4 @@
 <script setup>
-import JamScale from './JamScale.vue'
-import JamChroma from './JamChroma.vue'
-import JamTime from './JamTime.vue'
-import JamDate from './JamDate.vue'
-import JamNow from './JamNow.vue'
 import { globalScale } from '#/use'
 </script>
 

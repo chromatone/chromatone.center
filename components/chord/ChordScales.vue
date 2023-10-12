@@ -44,30 +44,28 @@ const currentScale = computed(() => scaleChords.value.find(sc => sc.chroma == gl
 </script>
 
 <template lang="pug">
-.flex.flex-col
-  .bg-dark-100.bg-opacity-20.p-3.m-3
-    control-scale.flex-1.mb-4
-  .p-4.bg-dark-50.bg-opacity-20.m-2.flex.flex-col.gap-2
-    .flex-col.flex.flex-1.gap-2
-      .flex.flex-wrap.gap-2.overflow-x-scroll.max-w-full
-        .flex.flex-col.flex-1.rounded-2xl.border-2.gap-2.relative(
-          v-for="degree in currentScale.degrees" 
-          :key="degree"
-          :style="{ borderColor: noteColor((degree + globalScale.tonic) % 12) }"
-          ) 
-          .font-bold.px-2.rounded-xl.flex.items-center(
-            :style="{ backgroundColor: noteColor((degree + globalScale.tonic) % 12) }"
-          ) {{ notes[(degree + globalScale.tonic) % 12] }}
-            .flex-1
-            .text-sm {{ degree }}
-          .flex.flex-wrap.gap-2.justify-center
-            .p-0.text-sm.flex.flex-wrap.justify-center(
-              v-for="chord in currentScale.degreeChords[degree]" 
-              :key="chord")
-              chroma-keys.w-24(
-                :playAll="true"
-                :chroma="chord.chroma", 
-                :pitch="(degree + globalScale.tonic) % 12")
+.p-4.bg-dark-50.bg-opacity-20.m-2.flex.flex-col.gap-2
+  .flex.flex-wrap.gap-2
+    .flex.flex-col.rounded-2xl.border-2.gap-2.relative.max-h-50.overflow-y-scroll.overflow-x-hidden.overscroll-none(
+      style="scroll-snap-type: y mandatory;flex: 1 1 100px"
+      v-for="degree in currentScale.degrees" 
+      :key="degree"
+      :style="{ borderColor: noteColor((degree + globalScale.tonic) % 12) }"
+      ) 
+      .z-10.sticky.top-0.font-bold.px-2.rounded-xl.flex.items-center.text-black(
+        :style="{ backgroundColor: noteColor((degree + globalScale.tonic) % 12) }"
+      ) {{ notes[(degree + globalScale.tonic) % 12] }}
+        .flex-1
+        .text-sm {{ degree }}
+
+      .p-0.text-sm.flex.flex-wrap.justify-center(
+        style="scroll-snap-align: center;"
+        v-for="chord in currentScale.degreeChords[degree]" 
+        :key="chord")
+        chroma-keys(
+          :playAll="true"
+          :chroma="chord.chroma", 
+          :pitch="(degree + globalScale.tonic) % 12")
 
 </template>
 

@@ -10,7 +10,7 @@ import { useMidi } from '#/use/midi'
 
 const props = defineProps({
   chroma: { type: String, default: '100000000000' },
-  letters: { type: Boolean, defualt: false },
+  letters: { type: Boolean, default: false },
   pitch: { type: Number, default: 0 },
   scale: { type: String },
   roman: { type: String, default: '' },
@@ -51,18 +51,18 @@ function keyColor(key, off) {
 </script>
 
 <template lang="pug">
-.flex.flex-col.m-1.rounded-2xl.cursor-pointer.transition-all.duration-300.ease.relative.select-none.touch-none.px-2(
+.flex.flex-col.m-1.rounded-lg.cursor-pointer.transition-all.duration-300.ease.relative.select-none.touch-none(
   @mousedown="playAll && nextTick(playChroma(chroma, pitch))"
   @touchend="playAll && nextTick(stopChroma(chroma, pitch))"
   @touchcancel="playAll && nextTick(stopChroma(chroma, pitch))"
   @mouseup="playAll && nextTick(stopChroma(chroma, pitch))"
   @mouseleave="playAll && nextTick(stopChroma(chroma, pitch))"
-  :style="{ backgroundColor: noteColor(pitch, 2, 1, 0.5) }"
+  :style="{ backgroundColor: noteColor(pitch, 2, 1, 0.5), color: colord(noteColor(pitch, 2, 1, 1).isDark()? 'white':'black') }"
   )
   .flex.justify-center.my-2.px-2(v-if="title")
     .absolute.right-4 {{ roman }}
-    .font-bold.text-xl.flex-1.text-center {{ notes[pitch] }}{{ keys.title }}
-  svg.w-full.mt-2#chroma-keys(
+    .font-bold.text-lg.flex-1.text-center {{ notes[pitch] }}{{ keys.title }}
+  svg.w-full#chroma-keys(
     version="1.1",
     baseProfile="full",
     :viewBox="`-10 -20 720 360`",
@@ -81,7 +81,7 @@ function keyColor(key, off) {
       g.key(
         v-for="(key, k) in keys.white" :key="key"
         :transform="`translate(${k * 100 + 5} 30)`"
-        @mousedown.stop="$emit('update:pitch', key)"
+        @mousedown="$emit('update:pitch', key)"
         )
         rect.transition-all.duration-300.ease-out(
           width="90"
@@ -117,7 +117,7 @@ function keyColor(key, off) {
       g.key(
         v-for="(key, k) in keys.black" :key="key"
         :transform="`translate(${k * 100 + 55} -10)`"
-        @mousedown.stop="$emit('update:pitch', key)"
+        @mousedown="$emit('update:pitch', key)"
         )
         rect.transition-all.duration-300.ease-out(
           v-if="key"

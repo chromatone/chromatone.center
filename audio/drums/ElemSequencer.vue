@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import AnalysisScope from '../analysis/AnalysisScope.vue';
 import { useDrums } from './useDrums';
 import { useSequencer } from './useSequencer';

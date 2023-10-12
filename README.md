@@ -12,22 +12,11 @@ Cards and short overviews on physics and physiology of vision and hearing and th
 
 Useful tools to have in the pocket like a pack of interactive cards to learn and use in everyday music practice. These are open source web-experiments with different aspects of sound and color.
 
-## Shop
-
-- Stickers for musical instruments to physically map notes and pitch classes with corresponding colors.
-- Posters and memos to use for better memorization of fundamental music concepts.
-
-## Community
-
-Join our subreddit [r/chromatone](https://www.reddit.com/r/chromatone/)
-
-Learners, sharing their experiences and setups. Musical and visual projects and performers, who implement Chromatone system in practice. Jams and other community events and
-
 ## Contact
 
 Contact the author and the headquarter of the project.
 
-## Road map
+## Roadmap
 
 We've ported almost all separate apps into the main website. It becomes more and more integrated tool. But there's more!
 

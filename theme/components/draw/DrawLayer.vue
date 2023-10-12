@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { onBeforeUnmount, onMounted, ref } from 'vue';
 import { useDraw } from '#/theme/composables/draw'
 
@@ -7,7 +7,7 @@ const svg = ref()
 const { drauu, drawingEnabled, loadCanvas } = useDraw()
 
 onMounted(() => {
-  drauu.mount(svg.value, svg.value.parentElement!)
+  drauu.mount(svg.value, svg.value.parentElement)
   loadCanvas()
 })
 

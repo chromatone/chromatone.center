@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { useData } from 'vitepress'
 const { isDark } = useData()
 import { useSequence } from '#/use/sequence'

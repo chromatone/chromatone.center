@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { useMidi, notes } from "#/use";
 import { pitchColor } from "#/use/calculations";
 import { computed } from "vue";

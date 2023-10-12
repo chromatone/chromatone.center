@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { reactive } from 'vue'
 import { useTime } from './useTime'
 import { levelColor, pitchColor } from '#/use'

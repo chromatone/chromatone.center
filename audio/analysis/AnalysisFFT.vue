@@ -3,7 +3,7 @@
   canvas.max-h-30.max-w-full(ref="canvas" width="2048")
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { ref, onMounted, watch } from 'vue';
 import { useFFT } from './useFFT';
 

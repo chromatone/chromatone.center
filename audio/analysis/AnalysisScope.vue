@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { onMounted, watch, computed, ref, reactive } from 'vue'
 import { useAudio } from '../useAudio'
 
@@ -13,7 +13,7 @@ function useScope(name = 'osc') {
 
   const analyser = reactive({
     data: computed(() => scopes[name] || []),
-    points: computed(() => analyser.data.map((v: number, i: number) => [i, v * 25].join(',')).join(' ')),
+    points: computed(() => analyser.data.map((v, i) => [i, v * 25].join(',')).join(' ')),
   })
 
   return analyser

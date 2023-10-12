@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { midi } from '#/use/midi'
 import { tempo } from '#/use/tempo'
 import { tracks } from '#/use/sequence'

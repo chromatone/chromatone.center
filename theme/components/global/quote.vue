@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 defineProps({
   author: { type: String, default: null },
 });

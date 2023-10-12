@@ -1,6 +1,8 @@
+- removed TS with https://sucrase.io/#transforms=typescript&disableESTransforms=true&compareWithBabel=false&code= (2023-10-12)
+
 ## v.2.0.6 (2023-04-15)
 
-### New feature:
+### New feature
 
 - neck fret numbers([`914f569`](https://github.com/chromatone/chromatone.center/commit/914f5698a09f83856d09c3c15abf118011d94756)) (by davay)
 - better tabs([`30c3360`](https://github.com/chromatone/chromatone.center/commit/30c336033303720a7660d863e226633a288a09ed)) (by davay)
@@ -12,7 +14,7 @@
 - better progressions([`29f2316`](https://github.com/chromatone/chromatone.center/commit/29f2316f4bb3986c612f550cbcfb6cf2edb1444d)) (by davay)
 - cleaner pitch table and scale select([`a136d45`](https://github.com/chromatone/chromatone.center/commit/a136d45c8c23db00338c603e247330feda7a6711)) (by davay)
 
-### Bugs fixed:
+### Bugs fixed
 
 - clean build (3:2) css error fixed([`4c0769c`](https://github.com/chromatone/chromatone.center/commit/4c0769c2bacfc1d15eb9fb904d526263e82a0dd1)) (by davay)
 
@@ -20,7 +22,7 @@
 
 ## v2.0.5 (2023-03-19)
 
-### New feature:
+### New feature
 
 - better browsing UX([`18bbfeb`](https://github.com/chromatone/chromatone.center/commit/18bbfeb48890ced97bf12acdcfeda79720eb76c2)) (by davay)
 - active midi notes velocity([`07a98ea`](https://github.com/chromatone/chromatone.center/commit/07a98ea4f02b8d2b8b0ff3b96f71a56aa4e21b1c)) (by davay)
@@ -31,7 +33,7 @@
 - amy controls start([`bb1d808`](https://github.com/chromatone/chromatone.center/commit/bb1d8084ca278a7f7c1e5eda298b668b1a8d1760)) (by davay)
 - successful AMY synth experiment([`a7aa0d5`](https://github.com/chromatone/chromatone.center/commit/a7aa0d574a621fe8203f2b3a7dbbb911627bbc5d)) (by davay)
 
-### Bugs fixed:
+### Bugs fixed
 
 - correct sidebar width([`e0c1bd6`](https://github.com/chromatone/chromatone.center/commit/e0c1bd682dc97c4a06dc10e33fe6c913bc45d189)) (by davay)
 - 44100 is correct([`d50a733`](https://github.com/chromatone/chromatone.center/commit/d50a73388e52af5a04e5afb0065be218e6ff0ae4)) (by davay)
@@ -39,22 +41,22 @@
 
 ## v2.0.4 (2023-03-04)
 
-### New feature:
+### New feature
 
 - rhythm db([`043dbd2`](https://github.com/chromatone/chromatone.center/commit/043dbd27323f86fec880f88f801f415d069d2e04)) (by davay)
 - chord db([`9e35d7d`](https://github.com/chromatone/chromatone.center/commit/9e35d7d8f7a638e265e510adff7d178f4bf2bc3c)) (by davay)
 
-### Bugs fixed:
+### Bugs fixed
 
 - calm flower([`f88a0ff`](https://github.com/chromatone/chromatone.center/commit/f88a0ffdd61c3ca92e88fce0c5e1551144e462bf)) (by davay)
 
 ## v2.0.3 (2023-02-23)
 
-### New feature:
+### New feature
 
 - power flower!([`8e7d050`](https://github.com/chromatone/chromatone.center/commit/8e7d0505f8ab13749eb5d6cbf9f0c3d29247d0a8)) (by davay)
 
-### Bugs fixed:
+### Bugs fixed
 
 - ssr flower([`6415585`](https://github.com/chromatone/chromatone.center/commit/6415585bbb8ab397c58b97df57f6f589a2bc3626)) (by davay)
 - logo ssr safe([`bfacb91`](https://github.com/chromatone/chromatone.center/commit/bfacb915e2c30c02a7fb5322941933f6689a6b83)) (by davay)
@@ -63,7 +65,7 @@
 
 ## v2.0.1 (2023-02-20)
 
-### New feature:
+### New feature
 
 - monitor detects chords([`e4404e2`](https://github.com/chromatone/chromatone.center/commit/e4404e2b5c694881bfd175c19f2ad8a66741e024)) (by davay)
 
@@ -73,13 +75,13 @@
 
 ## v1.10.9 (2023-02-08)
 
-### New feature:
+### New feature
 
 - docs build([`d95a8ef`](https://github.com/chromatone/chromatone.center/commit/d95a8efb0a9abf6c539920da86c4e21f9e72c82c)) (by davay)
 
 ## v1.10.8 (2023-02-08)
 
-### New feature:
+### New feature
 
 - typedocs embedded in site([`0528381`](https://github.com/chromatone/chromatone.center/commit/05283811e6a5de993d322ffd6b699c68748d0fae)) (by davay)
 
@@ -105,35 +107,35 @@
 
 ## v1.9.5 (2022-12-22)
 
-### New feature:
+### New feature
 
 - two delivery prices([`d3a32f0`](https://github.com/chromatone/chromatone.center/commit/d3a32f05457b0ecfc7fd973d8ce9b5af6cbb8d9d)) (by davay)
 - modify midi cc controls([`b63e548`](https://github.com/chromatone/chromatone.center/commit/b63e548242f62c224c199213918f7aa9688ba3bd)) (by davay)
 
-### Bugs fixed:
+### Bugs fixed
 
 - shop rearranged([`ef9a16e`](https://github.com/chromatone/chromatone.center/commit/ef9a16e7fd540702e3f6a5ab1f458faa69b13dab)) (by davay)
 
 ## v1.9.4 (2022-10-28)
 
-### New feature:
+### New feature
 
 - customizable colors UI([`549eeb8`](https://github.com/chromatone/chromatone.center/commit/549eeb8f845d4bb3004d95fc8cddb5c7f33eca1a)) (by davay)
 - :art: save svg sheet music([`8d43457`](https://github.com/chromatone/chromatone.center/commit/8d43457fe6a0a6aa70d126177dcabf3426bd7e85)) (by davay)
 - :sparkles: colorize abcjs notes!([`59f0113`](https://github.com/chromatone/chromatone.center/commit/59f0113105f7242c88298d4caaa9fef1b71c4f70)) (by davay)
 
-### Bugs fixed:
+### Bugs fixed
 
 - noteColor is in use/colors([`d8f34d1`](https://github.com/chromatone/chromatone.center/commit/d8f34d18ce4d45c108d0b293c5679f2af90de227)) (by davay)
 
 ## v1.9.3 (2022-09-13)
 
-### New feature:
+### New feature
 
 - :sparkles: better lab color picker with copy([`42c1b0c`](https://github.com/chromatone/chromatone.center/commit/42c1b0c1517213c7ba1dccc570ffc03889c964f6)) (by davay)
 - internal clock radar([`baabe96`](https://github.com/chromatone/chromatone.center/commit/baabe961765fbfc158657b4d2587b830fa827554)) (by davay)
 
-### Bugs fixed:
+### Bugs fixed
 
 - no need for mix-blend-mode([`3e569c1`](https://github.com/chromatone/chromatone.center/commit/3e569c1c0daca666d35041a9f4a48d734cf61b97)) (by davay)
 - :bug: color pickers optimized([`8107185`](https://github.com/chromatone/chromatone.center/commit/810718560676b0896e737955132944ce6f79fcb4)) (by davay)
@@ -143,14 +145,14 @@
 
 ## v1.9.1 (2022-08-23)
 
-### New feature:
+### New feature
 
 - vite 3!([`c777dbf`](https://github.com/chromatone/chromatone.center/commit/c777dbf5c29878ac11799eb63286330f7ca2b8a7)) (by davay)
 - tauri app action([`088ef6b`](https://github.com/chromatone/chromatone.center/commit/088ef6b3a5f0371288a60fb9fea0d9913a4e38b7)) (by davay)
 - npm package([`677bf66`](https://github.com/chromatone/chromatone.center/commit/677bf66c41e0b240b4154c20e7ef29d22f4cd83a)) (by davay)
 - blur and radius control on chroma detect([`e7a9c67`](https://github.com/chromatone/chromatone.center/commit/e7a9c67fa6f887cec28e2d0b07cad9166dfccc1d)) (by davay)
 
-### Bugs fixed:
+### Bugs fixed
 
 - fix gun-vue composables([`5cf09e0`](https://github.com/chromatone/chromatone.center/commit/5cf09e0cbbdf31b702678ad40a602cf391c02e5b)) (by davay)
 - path([`95c3e9a`](https://github.com/chromatone/chromatone.center/commit/95c3e9ad2c4cb7e3887fb022b8dd4dbe545cff12)) (by davay)
@@ -164,13 +166,13 @@
 
 ## v1.8.1 (2022-06-17)
 
-### New feature:
+### New feature
 
 - get all chords for all scale degrees([`1199f69`](https://github.com/chromatone/chromatone.center/commit/1199f6918f85b880fe6f2e49529e08b71dc621b7)) (by davay)
 - scale chords([`141c2a5`](https://github.com/chromatone/chromatone.center/commit/141c2a5dd1380130da2dc05a40bbb902b8a943e5)) (by davay)
 - :sparkles: bump dependencies([`e4ead0e`](https://github.com/chromatone/chromatone.center/commit/e4ead0ee2cf9f32ee5625eb6ece89c1b1d6cd1a5)) (by davay)
 
-### Bugs fixed:
+### Bugs fixed
 
 - links to chroma roll([`cbf0d42`](https://github.com/chromatone/chromatone.center/commit/cbf0d426b5add7dca238f2ba91107057de5d374c)) (by davay)
 - once time([`11bb6dd`](https://github.com/chromatone/chromatone.center/commit/11bb6dd062a5c6dad685e3c0f210fb6612e8d207)) (by davay)

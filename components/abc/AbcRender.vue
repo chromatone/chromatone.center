@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { noteColor } from "../../use/colors"
 import { notes } from '../../use/theory'
 import { onMounted, watchEffect } from "vue";

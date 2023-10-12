@@ -25,14 +25,13 @@
 	},
 	"main": "./lib/use-chromatone.js",
 	"module": "./lib/use-chromatone.js",
-	"types": "./lib/types/",
 	"files": [
 		"lib"
 	],
 	"scripts": {
 		"dev": "vitepress dev content --host --port 3242",
-		"build-lib": "cd use && vite build --emptyOutDir && tsc && typedoc --plugin typedoc-plugin-markdown",
-		"build": "cd use && typedoc --plugin typedoc-plugin-markdown && cd .. &&  vitepress build content",
+		"build-lib": "cd use && vite build --emptyOutDir",
+		"build": "vitepress build content",
 		"serve": "vitepress serve content --port 3200",
 		"deploy": "sh deploy.sh"
 	},
@@ -80,13 +79,9 @@
 		"@directus/sdk": "^12.0.1",
 		"@iconify/json": "^2.2.125",
 		"@modyfi/vite-plugin-yaml": "1.0.4",
-		"@types/node": "20.8.2",
 		"@unocss/extractor-pug": "0.56.5",
 		"@vue/language-plugin-pug": "1.8.15",
 		"pug": "3.0.2",
-		"typedoc": "0.25.1",
-		"typedoc-plugin-markdown": "3.16.0",
-		"typescript": "5.2.2",
 		"unocss": "0.56.5",
 		"unplugin-icons": "0.17.0",
 		"unplugin-vue-components": "0.25.2",

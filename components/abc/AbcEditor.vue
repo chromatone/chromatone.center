@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { useStorage, watchDebounced } from '@vueuse/core'
 import { state } from './state'
 import { notes } from '#/use/theory'

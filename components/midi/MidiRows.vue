@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { computed, reactive, watch } from 'vue';
 import { useMidi, useSequence, useTempo, pitchColor, useSynth, synthOnce } from '#/use/index';
 import { Transport, Part, Frequency } from 'tone'
@@ -45,7 +45,7 @@ watch(() => midi.note, note => {
 	} else {
 		const start = activeNotes?.[note.number]
 		const stop = circularTicks.value
-		let duration: number
+		let duration
 		if (stop > start) {
 			duration = stop - start
 		} else {

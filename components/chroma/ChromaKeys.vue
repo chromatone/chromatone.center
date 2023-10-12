@@ -57,7 +57,7 @@ function keyColor(key, off) {
   @touchcancel="playAll && nextTick(stopChroma(chroma, pitch))"
   @mouseup="playAll && nextTick(stopChroma(chroma, pitch))"
   @mouseleave="playAll && nextTick(stopChroma(chroma, pitch))"
-  :style="{ backgroundColor: noteColor(pitch, 2, 1, 0.5), color: colord(noteColor(pitch, 2, 1, 1).isDark()? 'white':'black') }"
+  :style="{ backgroundColor: noteColor(pitch, 2, 1, 0.5), color: colord(noteColor(pitch, 2, 1, 1)).isDark()? 'white':'black' }"
   )
   .flex.justify-center.my-2.px-2(v-if="title")
     .absolute.right-4 {{ roman }}

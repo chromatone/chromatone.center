@@ -1,7 +1,7 @@
 <script setup>
 import { notes } from '#/use/theory'
 import { defaultScheme, scheme, noteColor } from '#/use/colors'
-import { getCircleCoord } from '#/use/calculations'
+import { getCircleCoord, rotateArray } from '#/use/calculations'
 import { midi, playKey } from '#/use/midi'
 import { globalScale } from '#/use/chroma'
 import { useTuner } from '#/use/tuner'
@@ -10,6 +10,7 @@ import { useClipboard, watchThrottled } from '@vueuse/core'
 import { computed, onMounted, ref, shallowRef } from 'vue'
 
 const props = defineProps({
+  letters: { type: Boolean, default: true },
   size: { type: Number, default: 1000 },
   pad: { type: Number, default: 50 },
 })
@@ -173,22 +174,22 @@ watchThrottled(loaded, l => {
               foreignObject(x="10" y="10" width="100" height="100")
                 input.h-30.w-30.rounded-xl(type="color" v-model="scheme.custom[pitch]")
           g.note.select-none(
-
             :transform="`translate(${note.coord.x}, ${note.coord.y})`"
             )
             circle(
               style="transition: all 100ms ease-out"
-              :fill="noteColor(pitch, midi.activeChromaMidi[pitch] ? 4 : 2)"
+              :fill="noteColor(pitch, midi.activeChromaMidi[pitch] ? 4 : 3)"
               :r="size / 12"
               )
             g(v-if="tunr?.tuner?.initiated")
               circle(
                 style="transition: all 80ms ease-out"
-                :fill="noteColor(pitch,7,1, getAmmount(tunr.tuner.aChroma[pitch]))"
+                :fill="noteColor(pitch,7,2, getAmmount(tunr.tuner.aChroma[pitch]))"
                 :r="size / 12"
                 filter="url(#blur)"
                 )
             text.transition(
+              v-if="letters"
               :font-size="size / 20"
               font-weight="bold"
               :fill="!midi.activeChromaMidi[pitch] ? 'white' : 'black'"
@@ -208,10 +209,11 @@ watchThrottled(loaded, l => {
               :y1="coord((note-9)%12, note/700 +0.145).y" 
               :x2="coord((note2-9)%12, note2/700+0.145).x" 
               :y2="coord((note2-9)%12, note2/700 +0.145).y" 
-              :stroke="colord(scheme.custom[(note-9)%12]).mix(scheme.custom[(note2-9)%12]).toHex()"
-              stroke-width="10"
-              :style="{filter: `drop-shadow(0px 0px 4px ${colord(scheme.custom[(note-9)%12]).mix(scheme.custom[(note2-9)%12]).alpha(0.5).toHex()}`}"
-            )
+              :stroke="colord(noteColor(note-9,2)).mix(noteColor(note2-9,2)).toHex()"
+              stroke-width="20"
+              stroke-linecap="round"
+              :style="{filter: `drop-shadow(0px 0px 4px ${colord(noteColor(note-9,3)).mix(noteColor(note2-9,3)).alpha(0.5).toHex()}`}"
+              )
         transition-group(name="fade")
           g.note(v-for="(bool, note) in midi.activeNotes" :key="note")
             circle(
@@ -220,7 +222,7 @@ watchThrottled(loaded, l => {
               :cy="coord((note-9)%12, note/700 +0.145).y" 
               :fill="scheme.custom[(note-9)%12]"
               :r="12" 
-            )          
+              )          
       g.controls
         g.mic.transition.cursor-pointer.opacity-40.hover-opacity-100(
           v-if="tunr?.tuner && !tunr.tuner.initiated"

@@ -14,13 +14,28 @@ import { globalScale } from '#/use'
 		//- jam-time
 		//- jam-date
 		//- jam-now
-		.transform.-scale-y-100.-scale-x-100.flex.p-4.gap-4.items-center.flex-wrap.w-full
-			chord-scales
+		.flex.p-4.gap-4.items-center.flex-wrap.w-full
+			gpu-shader.w-60.h-60
+			chroma-keys.flex-1.max-h-60.transform.-scale-y-100.-scale-x-100(
+				:chroma="globalScale.chroma"
+				:pitch="globalScale.tonic"
+				)
+
+
+		jam-date
 		jam-scale
 		jam-chroma.flex-auto
 
 		.flex.p-4.gap-4.items-center.w-full
-			chord-scales
+			jam-time
+			chroma-keys.flex-1.max-h-60(
+				:chroma="globalScale.chroma"
+				:pitch="globalScale.tonic"
+				)
+			chroma-flower.w-60.op-70(
+				:letters="false"
+				:chroma="true"
+			)
 		//- state-transport
 
 		//- midi-roll.-z-10.absolute.bottom-2.w-full

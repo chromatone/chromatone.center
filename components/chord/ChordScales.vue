@@ -46,24 +46,25 @@ const currentScale = computed(() => scaleChords.value.find(sc => sc.chroma == gl
 <template lang="pug">
 .p-4.bg-dark-50.bg-opacity-20.m-2.flex.flex-col.gap-2
   .flex.flex-wrap.gap-2
-    .flex.flex-col.rounded-2xl.border-2.gap-2.relative.max-h-50.overflow-y-scroll.overflow-x-hidden.overscroll-none(
-      style="scroll-snap-type: y mandatory;flex: 1 1 100px"
+    .flex.flex-col.rounded-2xl.border-2.gap-2.relative.max-h-60.overflow-y-scroll.overflow-x-hidden.overscroll-none.max-w-80(
+      style="scroll-snap-type: y proximity;flex: 1 1 200px"
       v-for="degree in currentScale.degrees" 
       :key="degree"
-      :style="{ borderColor: noteColor((degree + globalScale.tonic) % 12) }"
+      :style="{ borderColor: noteColor((degree + globalScale.tonic) % 12,2) }"
       ) 
       .z-10.sticky.top-0.font-bold.px-2.rounded-xl.flex.items-center.text-black(
-        :style="{ backgroundColor: noteColor((degree + globalScale.tonic) % 12) }"
+        :style="{ backgroundColor: noteColor((degree + globalScale.tonic) % 12,2) }"
       ) {{ notes[(degree + globalScale.tonic) % 12] }}
         .flex-1
         .text-sm {{ degree }}
 
-      .p-0.text-sm.flex.flex-wrap.justify-center(
+      .p-0.text-sm.flex.flex-col.justify-center(
         style="scroll-snap-align: center;"
         v-for="chord in currentScale.degreeChords[degree]" 
         :key="chord")
         chroma-keys(
           :playAll="true"
+          :letters="false"
           :chroma="chord.chroma", 
           :pitch="(degree + globalScale.tonic) % 12")
 

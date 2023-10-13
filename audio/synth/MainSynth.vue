@@ -24,7 +24,7 @@ const color = computed(() => Object.entries(midi.activeNotes).reduce((acc, en) =
     .flex.flex-wrap.gap-1.font-mono.w-full.justify-around
       .text-md.flex.w-8.h-8.text-center.rounded-full.justify-center.items-center.transition.cursor-pointer(
         v-for="(voice,v) in voices.list" :key="v"
-        :style="{backgroundColor:pitchColor(voice.midi-9-24,undefined,undefined,voice.gate ? 1:0.2), opacity: voice.gate ? 1:0.5}"
+        :style="{backgroundColor:pitchColor(voice.midi-9-24,3,undefined,voice.gate ? 1:0.2), opacity: voice.gate ? 1:0.5}"
         @mousedown="voice.gate = 1"
         @mouseup="voice.gate = 0"
         @mouseleave="voice.gate=0"

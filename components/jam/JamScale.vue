@@ -23,7 +23,7 @@ const choose = ref(false)
 		.flex-1
 		.text-lg.i-la-angle-down
 	.w-60.text-lg.tabular-nums.font-mono {{ midi.guessChords[0] }}
-
+	slot
 		//- chroma-code(
 
 			:chroma="globalScale?.chroma"

@@ -1,16 +1,9 @@
 import { reactive } from 'vue'
 
-
-
-
-
-
-[]
-
-export function useVoices() {
+export function useVoices(count = 12) {
 
   const voices = reactive({
-    list: Array(8).fill(true).map((_, i) => ({ key: `v${i}`, gate: 0.0, midi: 69, vel: 0 })),
+    list: Array(count).fill(true).map((_, i) => ({ key: `v${i}`, gate: 0.0, midi: 69, vel: 0 })),
     next: 0,
     overflow: 0,
   })

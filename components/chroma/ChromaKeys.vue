@@ -10,7 +10,7 @@ import { useMidi } from '#/use/midi'
 
 const props = defineProps({
   chroma: { type: String, default: '100000000000' },
-  letters: { type: Boolean, default: false },
+  letters: { type: Boolean, default: true },
   pitch: { type: Number, default: 0 },
   scale: { type: String },
   roman: { type: String, default: '' },
@@ -100,7 +100,7 @@ function keyColor(key, off) {
           :fill="keyColor(key)"
           )
         text.pointer-events-none(
-          v-show="isInChroma(key)"
+          v-show="isInChroma(key) && letters"
           y="250"
           x="45"
           :fill="colord(noteColor(key)).isDark() ? 'white' : 'black'"
@@ -140,7 +140,7 @@ function keyColor(key, off) {
           :stroke="isInScale(key) ? noteColor(key, 3) : 'transparent'"
         )
         text.pointer-events-none(
-          v-show="isInChroma(key)"
+          v-show="isInChroma(key) && letters"
           :fill="colord(noteColor(key)).isDark() ? 'white' : 'black'"
           :font-weight="key == pitch ? 800 : 200"
           ) 

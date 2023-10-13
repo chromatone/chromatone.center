@@ -111,7 +111,7 @@ function getNote(string, semitones) {
           circle(
             :opacity="neck.chroma[(n + string) % 12] == 1 ? 1 : 0"
             :r="neck.noteSize / 2 - 8"
-            :fill="pitchColor(string+n)"
+            :fill="pitchColor(string+n,2)"
           )
           text(
             :opacity="neck.chroma[(n + string) % 12] == 1 ? 1 : 0"

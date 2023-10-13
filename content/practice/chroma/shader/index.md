@@ -2,6 +2,7 @@
 title: GPU shader
 description: A MIDI reactive GLSL shader as a direct visual mathematical interpretation of musical notes
 date: 2021-04-22
+cover: shader.png
 links:
   - https://github.com/kongxiaojian123/vue-glsl#readme
   - https://registry.khronos.org/OpenGL-Refpages/gl4/index.php

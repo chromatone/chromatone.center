@@ -22,12 +22,12 @@ import { globalScale } from '#/use'
 				)
 
 
-		jam-date
+
 		jam-scale
 		jam-chroma.flex-auto
 
 		.flex.p-4.gap-4.items-center.w-full
-			jam-time
+			//- jam-time
 			chroma-keys.flex-1.max-h-60(
 				:chroma="globalScale.chroma"
 				:pitch="globalScale.tonic"
@@ -35,8 +35,8 @@ import { globalScale } from '#/use'
 			chroma-flower.w-60.op-70(
 				:letters="false"
 				:chroma="true"
-			)
+				)
 		//- state-transport
-
+		jam-date
 		//- midi-roll.-z-10.absolute.bottom-2.w-full
 </template>

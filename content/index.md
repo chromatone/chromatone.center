@@ -16,3 +16,5 @@ Imagine if once we agree on a certain way to connect notes and colors? It can em
 We're creating the visual [music theory study](./theory/index.md), that helps beginners learn complex music concepts in color. [Interactive web-apps](./practice/index.md) expand the knowledge and grow deeper music awareness.
 
 For those, who want to touch and feel the colorful notes we have a [Sticker shop](./shop/index.md). While those who are interested in further project development may consider [supporting](./support/index) [us](contacts/index.md) today.
+
+<youtube-embed video="qthKClCRIl0" />

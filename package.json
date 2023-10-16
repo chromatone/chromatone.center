@@ -16,7 +16,7 @@
 	"engines": {
 		"node": "20.x"
 	},
-	"packageManager": "pnpm@8.8.0",
+	"packageManager": "pnpm@8.9.2",
 	"exports": {
 		".": {
 			"import": "./lib/use-chromatone.js",
@@ -36,23 +36,23 @@
 		"deploy": "sh deploy.sh"
 	},
 	"dependencies": {
-		"@elemaudio/core": "3.0.0-alpha.0",
-		"@elemaudio/web-renderer": "3.0.0-alpha.0",
+		"@elemaudio/core": "3.0.0",
+		"@elemaudio/web-renderer": "3.0.0",
 		"@tonaljs/tonal": "4.10.0",
 		"@tonejs/midi": "2.0.28",
 		"@unocss/reset": "0.56.5",
-		"@vueuse/core": "10.4.1",
+		"@vueuse/core": "10.5.0",
 		"@vueuse/gesture": "2.0.0-beta.1",
-		"@vueuse/math": "10.4.1",
+		"@vueuse/math": "10.5.0",
 		"abcjs": "6.2.2",
 		"audio-recorder-polyfill": "0.4.1",
 		"audiomotion-analyzer": "4.3.0",
 		"cobe": "0.6.3",
-		"color-name-list": "^10.14.0",
+		"color-name-list": "^10.16.0",
 		"colord": "2.9.3",
 		"drauu": "0.3.7",
 		"floating-vue": "2.0.0-beta.24",
-		"fraction.js": "4.3.6",
+		"fraction.js": "4.3.7",
 		"fuse.js": "6.6.2",
 		"hidpi-canvas": "1.0.10",
 		"jspdf": "^2.5.1",
@@ -77,15 +77,15 @@
 	},
 	"devDependencies": {
 		"@directus/sdk": "^12.0.1",
-		"@iconify/json": "^2.2.125",
+		"@iconify/json": "^2.2.129",
 		"@modyfi/vite-plugin-yaml": "1.0.4",
 		"@unocss/extractor-pug": "0.56.5",
-		"@vue/language-plugin-pug": "1.8.15",
+		"@vue/language-plugin-pug": "1.8.19",
 		"pug": "3.0.2",
 		"unocss": "0.56.5",
 		"unplugin-icons": "0.17.0",
 		"unplugin-vue-components": "0.25.2",
 		"vite": "4.4.11",
-		"vitepress": "1.0.0-rc.20"
+		"vitepress": "1.0.0-rc.22"
 	}
 }

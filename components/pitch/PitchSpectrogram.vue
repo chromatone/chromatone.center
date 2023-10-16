@@ -33,7 +33,8 @@ const state = reactive({
   width: 800,
   height: 240,
   speed: computed(() => Math.floor(state.speedCount / 100)),
-  speedCount: useClamp(100, 100, 300)
+  speedCount: useClamp(100, 100, 300),
+  vertical: true
 })
 
 function dragScreen(drag) {
@@ -70,13 +71,24 @@ function initiate() {
         let bars = instance.getBars()
         for (let i = 0; i < bars.length; i++) {
           ctx.fillStyle = colorIt((bars[i].freqLo + bars[i].freqHi) / 2, bars[i].value[0])
-          ctx.fillRect(state.width - state.speed, state.height - i * (state.height / bars.length), state.speed, 1)
+          if (state.vertical) {
+            ctx.fillRect(i * (state.width / bars.length), 0, state.width / bars.length, state.speed)
+          } else {
+            ctx.fillRect(state.width - state.speed, state.height - (i + 1) * (state.height / bars.length), state.speed, state.height / bars.length)
+          }
         }
-        ctx.translate(-state.speed, 0)
+        if (state.vertical) {
+          ctx.translate(0, state.speed)
+        } else {
+          ctx.translate(-state.speed, 0)
+        }
         ctx.drawImage(tempCanvas, 0, 0, state.width, state.height)
         ctx.setTransform(1, 0, 0, 1, 0, 0);
       }
     })
+
+
+
     mic.open = true
     audio.connectInput(input)
   }).catch((e) => {
@@ -107,10 +119,11 @@ function colorIt(freq, value) {
     button.absolute.bottom-4.left-4.text-xl.select-none.cursor-pointer(@mousedown="paused = !paused")
       .i-la-play(v-if="paused")
       .i-la-pause(v-else)
+    button.absolute.bottom-4.right-4.text-xl.select-none.cursor-pointer(@mousedown="state.vertical = !state.vertical")
+      .i-la-arrow-left(v-if="!state.vertical")
+      .i-la-arrow-down(v-else)
     button.absolute.top-4.right-4.text-xl.select-none.cursor-pointer(@mousedown="clear()")
       .i-la-trash-alt
 </template>
   
-<style lang="postcss" scoped>
-
-</style>
+<style lang="postcss" scoped></style>

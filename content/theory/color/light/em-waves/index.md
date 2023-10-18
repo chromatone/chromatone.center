@@ -6,6 +6,8 @@ date: 2021-08-24
 cover: emwavepropagation.jpg
 ---
 
+<youtube-embed video="FWCN_uI5ygY" />
+
 Synchronised oscillations (or their quanta, photons) of the electric and magnetic fields, propagating through space at the speed of ~300,000 km/s.
 
 ![](./emwavepropagation.jpg)

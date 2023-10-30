@@ -27,11 +27,10 @@ jobs:
           node-version: 18
           registry-url: https://registry.npmjs.org/
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 9
-          run_install: true
+      - name: Enable Corepack
+        run: |
+          corepack enable
+          corepack pnpm install
 
       - name: Build project
         run: pnpm run build-lib

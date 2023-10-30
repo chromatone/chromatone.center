@@ -1,6 +1,7 @@
 ---
 title: Academy
 description: Community projects and events creating new opportunities for Chromatone to shine
+layout: app
 date: 2021-07-05
 cover: wes-hicks.jpg
 topContent: true
@@ -10,10 +11,6 @@ buttons:
 ---
 
  <iframe height="800" src="https://academy.chromatone.center" title="Academy"></iframe>
-
-<div class="my-16 mx-6 ">
-<a target="_blank" href="https://academy.chromatone.center" class="p-8 bg-purple-400 rounded-lg shadow-lg no-underline hover-bg-purple-300 hover-dark-text-white text-2xl font-bold">Enter Chromatone Academy</a>
-</div>
 
 ## Where are we now
 

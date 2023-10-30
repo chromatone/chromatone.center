@@ -2,6 +2,7 @@
 title: Scale chords
 description: Find all available chords for all degrees of any scale
 date: 2020-06-15
+layout: app
 ---
 
 <control-scale />

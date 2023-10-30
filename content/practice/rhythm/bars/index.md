@@ -1,9 +1,10 @@
 ---
 title: Rhythm Bars
 description: A linear metronome and polyrhythm exploration tool
-
+layout: app
 date: 2021-10-01
 cover: metro-bars.png
+component: beat-bars
 ---
 
 <client-only >

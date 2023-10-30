@@ -1,7 +1,7 @@
 ---
 title: Profile
 description: Get info for any possible chroma combination
-
+layout: app
 date: 2021-05-12
 cover: profile.png
 ---

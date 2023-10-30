@@ -1,7 +1,7 @@
 ---
 title: Drone
 description: Digital shruti box or tanpura tool online
-
+layout: app
 date: 2022-06-06
 cover: drone.png
 ---

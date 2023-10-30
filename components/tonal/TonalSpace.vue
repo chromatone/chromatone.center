@@ -4,13 +4,13 @@ import { globalScale } from '#/use/chroma'
 </script>
 
 <template lang="pug">
-.flex.flex-col
-  control-scale
+.flex.flex-col.gap-4
   #screen.fullscreen-container.rounded-3xl
     tonal-array(
       :tonic="globalScale.tonic", 
       :chroma="globalScale.chroma"
       )
+  control-scale Choose a tonic note and scale
 </template>
 
 <style lang="postcss" scoped>

@@ -2,7 +2,7 @@
 title: Equal loudness contour
 description: Build you own loudness contours
 date: 2021-11-12
-
+layout: app
 cover: loudness.png
 ---
 

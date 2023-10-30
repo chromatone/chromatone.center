@@ -1,7 +1,7 @@
 ---
 title: MIDI Router
 description: Forward all MIDI messages from one device to another
-
+layout: app
 cover: midi-router.png
 date: 2022-06-08
 ---

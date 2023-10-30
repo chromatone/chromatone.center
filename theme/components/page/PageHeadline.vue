@@ -32,22 +32,20 @@ const buttons = computed(() => {
   )
   .cover(v-if="cover",:style="{ backgroundImage: `url(${cover})`, backgroundColor: pageColor }")
   img.icon(v-if="page?.icon",:src="page?.icon")
+  slot
   .meta(:style="{ borderColor: pageColor }")
-
-    slot
-
-    .text-4xl.font-bold.mb-1.flex.flex-wrap.items-center(v-if="page?.title" :key="page.url") 
-      .mr-2 {{ page?.title }}
+    .text-2xl.md-text-3xl.font-bold.flex.flex-wrap.items-center(v-if="page?.title" :key="page.url") 
+      .mr-0 {{ page?.title }}
       .flex-1
-      .mx-2.my-4.text-6xl(v-if="page?.emoji") {{ page?.emoji }}
-    .font-bold.mt-2.mb-4(v-if="page?.description") {{ page?.description }}
+      .mx-2.my-0.text-6xl(v-if="page?.emoji") {{ page?.emoji }}
+    .mt-0.mb-0(v-if="page?.description") {{ page?.description }}
     page-buttons(:buttons="buttons")
 
 </template>
 
 <style lang="postcss" scoped>
 .header {
-  @apply relative flex min-h-120 p-4 items-end overflow-hidden transition-all duration-400 ease-in;
+  @apply p-2 relative flex flex-col gap-1 min-h-38svh items-start justify-end overflow-hidden transition-all duration-400 ease-in;
 }
 
 .cover {
@@ -70,7 +68,7 @@ const buttons = computed(() => {
 }
 
 .meta {
-  @apply relative p-8 mb-6 bg-light-100 bg-opacity-80 z-3 max-w-60ch w-full flex flex-col rounded-3xl shadow-xl dark-(bg-true-gray-800 bg-opacity-80);
+  @apply gap-2 relative p-6 bg-light-100 bg-opacity-80 z-3 max-w-60ch w-full flex flex-col rounded-xl shadow-xl dark-(bg-true-gray-800 bg-opacity-80);
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
 }

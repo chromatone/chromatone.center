@@ -6,7 +6,7 @@ import { data } from '../content/pages.data'
 import { cleanLink, usePages, usePage } from 'vitepress-pages'
 import { drawingEnabled, drawingPinned } from '../theme/composables/draw'
 
-const { isDark } = useData()
+const { isDark, theme } = useData()
 
 import { ref, watch } from "vue";
 
@@ -30,7 +30,9 @@ const lightColor = computed(() => lchToHsl(siblings.value.index, siblings.value.
 
 <template lang="pug">
 .theme
-  nav-bar(@toggle="openSideBar = !openSideBar")
+  img.top-16px.left-4.fixed.z-1000.cursor-pointer.mr-3.h-30px(v-if="theme.icon", :src="theme.icon", alt="Chromatone logo" @click="openSideBar = !openSideBar")
+  client-only
+    nav-tools
   nav-view
   .main
     side-bar(:open="openSideBar" @close="openSideBar = false")
@@ -48,12 +50,15 @@ const lightColor = computed(() => lchToHsl(siblings.value.index, siblings.value.
             :total="children.length")  
 
     template(v-else)
-      main#content.w-full
+      main#content.w-full.relative
         page-headline(
-          v-if="f.page_type!='event'"
+          v-if="f.layout!='app'"
           :pageColor="pageColor", :lightColor="lightColor" :page="f" :cover="f.dynamic ? f?.cover || f?.poster || '' : page?.frontmatter?.cover ")
 
-          page-parents.text-xl.mb-4(:parents="f.dynamic ? parents : parents.slice(0,-1)")
+          page-parents.mb-1.ml-6(:parents="f.dynamic ? parents : parents.slice(0,-1)")
+        .z-100.text-md.p-2.flex.flex-wrap.gap-2.items-center.bg-light-200.bg-opacity-60.dark-bg-dark-200.dark-bg-opacity-60.backdrop-blur-xl.rounded.m-1.mt-0.pl-14.lg-pl-8.min-h-15(v-else)
+          h2.font-bold {{ f?.title }}
+          .p-0 {{ f?.description }}
 
         transition(name="fade")
           .pb-8.relative(:key="route.path")
@@ -65,8 +70,7 @@ const lightColor = computed(() => lchToHsl(siblings.value.index, siblings.value.
             content.content.flex-auto.z-10(v-if="!f?.topContent")
 
         nav-next-prev(:siblings="siblings" :parents="parents")
-        nav-row
-        page-footer
+        nav-row.p-4
 
     client-only
       draw-layer.z-100

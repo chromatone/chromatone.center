@@ -3,6 +3,7 @@ title: ChucK
 description: Music programming language
 date: 2022-05-23
 cover: ch.png
+layout: app
 ---
 
 ## Strongly-timed | Concurrent | On-the-fly

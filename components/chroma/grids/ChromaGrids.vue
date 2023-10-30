@@ -34,9 +34,10 @@ const active = useStorage('pitch-bars-active', 0);
     .flex-1
     button.text-button.flex.items-center(@click="renderMidiFile()")
       .i-la-file-download
-  .flex.flex-col.mb-4.mx-4.w-full.relative.h-840px
+  .flex.flex-col.mb-4.mx-4.w-full.relative
     transition-group(name="fade")
-      chroma-grids-grid.absolute.w-full(
+      chroma-grids-grid.w-full(
+        :class="{absolute: l>0}"
         v-for="(loop, l) in loops" 
         :key="loop"
         :order="l"

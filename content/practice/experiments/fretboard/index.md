@@ -1,7 +1,7 @@
 ---
 title: Fretboard calculator
 description: A tool to get distances between frets for any scale length of any string instrument
-
+layout: app
 date: 2021-04-09
 cover: fretboard.svg
 instruments:

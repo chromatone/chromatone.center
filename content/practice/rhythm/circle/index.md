@@ -2,13 +2,16 @@
 title: Circular metronome
 description: Looped rhythm and polyrhythm exploration tool
 date: 2021-10-02
+layout: app
 cover: tempo.png
 links:
   - https://habr.com/ru/post/278265/
 ---
 
 <client-only >
+
   <rhythm-circle />
+
 </client-only >
 
 ## Welcome to the all-mighty Chromatone circular metronome

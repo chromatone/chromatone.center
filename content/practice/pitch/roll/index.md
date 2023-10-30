@@ -1,7 +1,7 @@
 ---
 title: Pitch Roll
 description: Plot main pitch of any incoming audio on an endless roll
-
+layout: app
 cover: roll.png
 date: 2022-06-12
 ---

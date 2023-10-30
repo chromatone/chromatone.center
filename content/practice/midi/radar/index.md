@@ -1,7 +1,7 @@
 ---
 title: MIDI Radar
 description: Circular MIDI visualisation experiment
-
+layout: app
 date: 2021-11-09
 cover: geometry.png
 ---

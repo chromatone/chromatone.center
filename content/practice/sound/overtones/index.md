@@ -2,7 +2,7 @@
 title: String overtones
 description: String standing waves interactive visualization
 date: 2021-08-12
-
+layout: app
 cover: overtones.png
 ---
 

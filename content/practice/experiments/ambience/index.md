@@ -3,6 +3,7 @@ title: Ambient drone box
 description: A generative instrument for creating meditative sound landscapes
 date: 2022-04-28
 cover: ambience.png
+layout: app
 ---
 
 <script setup>

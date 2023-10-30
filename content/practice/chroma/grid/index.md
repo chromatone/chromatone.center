@@ -1,7 +1,7 @@
 ---
 title: Chroma Grid
 description: Write note sequences in flexible grids
-
+layout: app
 date: 2021-11-02
 cover: grid.png
 todo:
@@ -14,8 +14,10 @@ todo:
 
 
 <client-only >
-  <control-scale />
+  
   <chroma-grids />
-  <state-transport />
-
+  <div class="flex flex-wrap">
+  <control-scale style="flex: 1 1 20px" />
+  <state-transport style="flex: 1 1 20px" />
+</div>
 </client-only>

@@ -1,7 +1,7 @@
 ---
 title: Tuner
 description: Fast and precise instrument tuner web-app
-
+layout: app
 cover: tuner.svg
 date: 2022-06-18
 ---

@@ -87,9 +87,9 @@ function stopChord(note, qual = 'major', inv) {
 </script>
 
 <template lang="pug">
-.fullscreen-container#screen.select-none.touch-manipulation
-  svg#fifths.h-full.max-h-80vh.w-full(
-    style="flex: 1 1 600px;touch-action:none"
+.fullscreen-container#screen.select-none.touch-manipulation.h-full
+  svg#fifths.w-full.max-h-90svh(
+    style="flex: 1 1 auto;touch-action:none"
     version="1.1",
     baseProfile="full",
     viewBox="0 0 100 100",

@@ -10,14 +10,20 @@ const { pages, children } = usePages(route, data)
 </script>
 
 <template lang="pug">
-.flex.flex-wrap.flex-1.gap-2.m-4
-  a.link.no-underline.transition-all.duration-300.text-xl.justify-center(
+.flex.flex-wrap.gap-2.bg-dark-100.bg-opacity-30
+  a.text-lg.flex.items-center.no-underline(
+    class="hover-no-underline"
+    href="/"
+    )
+    img.w-8(src="/media/logo/click-logo.svg")
+    .p-2 Chromatone
+  a.link.no-underline.transition-all.duration-300.justify-center(
     v-for="page in pages['/']"
     :key= "page.url"
     :href="cleanLink(page.url)"
     :class="{ active: route.path.includes(cleanLink(page.url)) }"
     )
-    .text-lg {{ page?.frontmatter?.title }} 
+    .p-0 {{ page?.frontmatter?.title }} 
 </template>
 
 <style lang="postcss" scoped>

@@ -2,6 +2,7 @@
 import { noteColor } from "#/use/colors";
 import { midi } from '#/use/midi';
 import { notes } from '#/use/theory';
+import { watchOnce } from "@vueuse/core";
 import { colord } from 'colord';
 import { computed, ref } from "vue";
 
@@ -13,21 +14,27 @@ const activeColors = computed(() => Object.entries(midi.activeNotes)?.map(([n, v
 
 const mix = computed(() => activeColors.value?.reduce((prev, next) => prev.mix(next), colord(activeColors.value[0])))
 
+const started = ref(false)
+
+watchOnce(() => midi.note, () => started.value = true)
+
 </script>
 
 <template lang="pug">
-#screen.h-600px.w-full.transition.flex.flex-col(
+#screen.h-80svh.w-full.transition.flex.flex-col.relative(
   :style="{ backgroundColor: '' }"
-)
+  )
+  transition(name="fade")
+    .absolute.top-30.text-xl.max-w-120.p-8.font-bold(v-if="!started") Play any notes on your keyboard to see their colors and how they mix together
   .flex.flex-1
     .flex-1.transition.py-16(
       v-for="(color,c) in activeColors" :key="c"
         :style="{ backgroundColor: color }"
-      )
+        )
 
   .flex-1.transition(
     :style="{ backgroundColor: mix.toHex() }"
-  )
+    )
 
 .relative.hidden
   save-svg(svg="brain")

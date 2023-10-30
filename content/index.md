@@ -5,7 +5,7 @@ description: Visual music language
 topContent: true
 ---
 
-<chroma-flower />
+<chroma-flower class="mt-16" />
 
 ## Visual music language to learn, explore and express with
 

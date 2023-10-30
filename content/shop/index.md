@@ -1,8 +1,9 @@
 ---
 title: Shop
-description: Durable vinyl stickers for musical instruments along with printed and printable music theory memos and cheat-sheets
+description: Durable vinyl stickers for musical instruments and other printed and printable music theory memos
 date: 2021-04-20
 topContent: true
+layout: app
 cover: shop.jpg
 buttons:
   - url: "https://shop.chromatone.center/"

@@ -1,14 +1,13 @@
 ---
 title: MIDI Roll
 description: Record all MIDI notes on an infinite roll
-
+layout: app
 cover: midi-roll.png
 date: 2022-06-16
 ---
 
 <client-only >
   <midi-roll />
-  <midi-panel style="margin-top: 1em;" />
 </client-only>
 
 1. Play some notes on your MIDI controller or computer keyboard and watch them appear on the endless roll.

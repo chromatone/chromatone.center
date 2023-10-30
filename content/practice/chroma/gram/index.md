@@ -3,6 +3,7 @@ title: Сhromagram
 description: Visual representation of any audio chroma content
 date: 2022-06-12
 cover: chromagram.png
+layout: app
 ---
 
 <client-only >

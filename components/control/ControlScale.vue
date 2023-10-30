@@ -41,6 +41,8 @@ const groupedScales = computed(() => {
 
 <template lang="pug">
 chroma-keys.w-300px(v-model:pitch="globalScale.tonic" :chroma="globalScale.set.chroma" :title="false")
+  .px-2
+    slot
   select.m-2.rounded-xl(v-model="globalScale.chroma")
     optgroup(:label="len + ' notes'" v-for="(group, len) in groupedScales" :key="group")
       option(v-for="scale in group" :key="scale.chroma" :value="scale.chroma") {{ notes[globalScale.tonic] }} {{ scale.name }}

@@ -1,7 +1,7 @@
 ---
 title: Sensory dissonance curve
 description: The harmonic relations of notes
-
+layout: app
 date: 2021-08-22
 cover: dissonance.svg
 links:

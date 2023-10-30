@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import { withPwa } from '@vite-pwa/vitepress'
 
 export const meta = {
   title: "Chromatone",
@@ -19,7 +20,7 @@ export const meta = {
   umamiScript: "https://stats.chromatone.center/script.js"
 };
 
-export default defineConfig({
+export default withPwa(defineConfig({
   lastUpdated: true,
   sitemap: {
     hostname: 'https://chromatone.center'
@@ -49,7 +50,31 @@ export default defineConfig({
       pageData.frontmatter = { ...pageData.frontmatter, ...pageData.params, cover: pageData.params?.cover ? `https://db.chromatone.center/assets/${pageData.params?.cover}?fit=cover&format=webp&width=1000` : '' }
     }
   },
-  //@ts-ignore
+  pwa: {
+    base: '/',
+    scope: '/',
+    outDir: '../dist/',
+    registerType: 'autoUpdate',
+    // injectRegister: 'inline',
+    includeAssets: ['/media/logo/logo.svg'],
+    workbox: {
+      globPatterns: ['**/*.{css,js,html,svg,png,webp,ico,txt,woff2}'],
+    },
+    manifest: {
+      name: 'Chromatone - The Visual Music Language',
+      short_name: 'Chromatone',
+      theme_color: '#883088',
+      display: "standalone",
+      icons: [
+        {
+          src: '/media/logo/holologo.png',
+          sizes: '512x512',
+          type: 'image/png',
+          purpose: 'any maskable',
+        },
+      ],
+    },
+  },
   transformHead({ pageData }) {
     const url = pageData.relativePath.split('index.md')[0]
     let image = meta?.image
@@ -80,4 +105,4 @@ export default defineConfig({
       ['meta', { name: 'twitter:image', content: image }],
     ]
   },
-});
+}))

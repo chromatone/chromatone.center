@@ -7,34 +7,42 @@ const props = defineProps(['parents', 'siblings'])
 
 const colors = reactive({
   current: computed(() => lchToHsl(props.siblings.index, props.siblings.total)),
-  prev: computed(() => lchToHsl(props.siblings.index - 1, props.siblings.total)),
-  next: computed(() => lchToHsl(props.siblings.index + 1, props.siblings.total))
+  prev: computed(() => lchToHsl(props.siblings.index - 1, props.siblings.total, 0.8, 20, 40)),
+  next: computed(() => lchToHsl(props.siblings.index + 1, props.siblings.total, 0.8, 20, 40))
 });
 </script>
 
 <template lang="pug">
 .next-and-prev-link
   .row(:style="{ borderColor: colors.current }")
-    .pad.prev(v-if="siblings.prev")
-      a.link( 
-        :href="cleanLink(siblings.prev.url)" :style="{ backgroundColor: colors.prev }")
+    a.pad.prev(
+      v-if="siblings.prev" 
+      :href="cleanLink(siblings.prev.url)"
+      :style="{ backgroundColor: colors.prev, backgroundImage: `url(${siblings.prev?.frontmatter?.cover})` }"
+      )
+      .link( )
         .i-carbon-arrow-left.icon.icon-prev
         span.text {{ siblings.prev?.frontmatter?.title }}
 
-    .pad.next(v-if="siblings.next")
-      a.link( :href="cleanLink(siblings.next.url)" :style="{ backgroundColor: colors.next }")
+    a.pad.next(
+      v-if="siblings.next"
+      :href="cleanLink(siblings.next.url)"
+      :style="{ backgroundColor: colors.next, backgroundImage: `url(${siblings.next?.frontmatter?.cover})` }"
+      )
+      .link(  )
         span.text {{ siblings.next?.frontmatter?.title }}
         .i-carbon-arrow-right.icon.icon-next     
   .flex.flex-col.items-justify
     .flex.flex-col.items-justify.mx-4
-      a.parent(
+      a.pad(
         style="flex:1 1"
         v-for="(parent, p) in [...parents].slice(1,-1)" :key="parent"
         :href="cleanLink(parent.url)"
-        :style="{ order: 100 - p }"
+        :style="{ order: 100 - p,backgroundColor: colors.next, backgroundImage: `url(${parent?.frontmatter?.cover})` }"
         )
-        .i-carbon-chevron-up.mr-1
-        .p-1 {{ parent?.frontmatter?.title }}
+        .link
+          .i-carbon-arrow-up.mr-1
+          .text {{ parent?.frontmatter?.title }}
 </template>
 
 <style lang="postcss" scoped>
@@ -49,7 +57,7 @@ const colors = reactive({
 }
 
 .parent {
-  @apply p-4 flex items-center justify-center m-2 rounded-xl shadow-md transition-all duration-100 ease-out bg-light-400/40 dark-bg-dark-300/10 hover-no-underline hover-(bg-light-100/60 shadow-lg) dark-(hover-bg-dark-300);
+  @apply p-4 flex items-center justify-start m-2 rounded-xl shadow-md transition-all duration-100 ease-out bg-light-400/40 dark-bg-dark-300/10 no-underline hover-(bg-light-100/60 shadow-lg) dark-(hover-bg-dark-300);
 }
 
 .row {
@@ -57,7 +65,7 @@ const colors = reactive({
 }
 
 .pad {
-  @apply transition-all duration-200 ease-out m-2 rounded-xl shadow-lg hover-shadow-xl transition-all flex flex-row items-stretch;
+  @apply no-underline bg-cover bg-center p-4 pt-24 transition-all duration-200 ease-out m-2 rounded-xl shadow-lg hover-shadow-xl transition-all;
   flex: 1 1 45%;
   filter: grayscale(40%) opacity(80%);
 }
@@ -73,11 +81,13 @@ const colors = reactive({
 .next {
   justify-content: flex-end;
   text-align: right;
+  float: right;
 }
 
 .link {
-  @apply items-center no-underline w-full rounded-xl p-8 text-2xl max-w-88vw;
+  @apply p-4 flex items-center no-underline w-full rounded-lg text-xl max-w-88vw backdrop-blur-sm bg-light-200 bg-opacity-70 dark-bg-dark-700 dark-bg-opacity-60;
   font-weight: 500;
+  max-width: fit-content
 }
 
 .text {

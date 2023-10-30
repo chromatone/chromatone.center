@@ -16,7 +16,7 @@
 	"engines": {
 		"node": "20.x"
 	},
-	"packageManager": "pnpm@8.9.2",
+	"packageManager": "pnpm@8.10.0",
 	"exports": {
 		".": {
 			"import": "./lib/use-chromatone.js",
@@ -76,16 +76,17 @@
 		"webmidi": "3.1.6"
 	},
 	"devDependencies": {
-		"@directus/sdk": "^12.0.1",
-		"@iconify/json": "^2.2.129",
+		"@directus/sdk": "^13.0.1",
+		"@iconify/json": "^2.2.135",
 		"@modyfi/vite-plugin-yaml": "1.0.4",
 		"@unocss/extractor-pug": "0.56.5",
+		"@vite-pwa/vitepress": "^0.2.3",
 		"@vue/language-plugin-pug": "1.8.19",
 		"pug": "3.0.2",
 		"unocss": "0.56.5",
 		"unplugin-icons": "0.17.0",
 		"unplugin-vue-components": "0.25.2",
 		"vite": "4.4.11",
-		"vitepress": "1.0.0-rc.22"
+		"vitepress": "1.0.0-rc.24"
 	}
 }

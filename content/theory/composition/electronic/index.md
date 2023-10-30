@@ -34,3 +34,24 @@ Simple grooves become endlesly listenable when you add 1 or 2 polymeters to them
 Evolve the global story of the track to build up tension and then release that tension. Make them want it, tease them, drive them crazy! Use contrast (busy vs sparse). Use reversed reverb tails as buildups.
 
 <youtube-embed video="B_D3dCSylCg" />
+
+## Making minimalist music
+
+> Only Having What You Need
+
+Write as little as possible.
+
+### Rule of three
+
+At maximum three layers of music can have listeners attention.
+
+### Avoid habits and answer questions
+
+- Why am I doing this?
+- What is doing this adding to the final result?
+- Is this really making any difference?
+- Is it really necessary?
+
+Minimalism and why it might be the most effective way to finish more music.
+
+<youtube-embed video="8FNmtguAJGE" />

@@ -1,7 +1,7 @@
 ---
 title: Waveform
 description: Visualization of the sum waveform of any chroma note combination
-
+layout: app
 date: 2021-04-12
 cover: chromaform.png
 ---

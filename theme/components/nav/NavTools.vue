@@ -25,7 +25,7 @@ onKeyStroke('Escape', () => {
 </script>
 
 <template lang="pug">
-.buttons.fixed.top-3.right-2.opacity-30.hover-opacity-100.transition.flex.items-center.gap-
+.buttons.fixed.top-3.right-2.opacity-30.hover-opacity-100.transition.flex.items-center.gap-0.z-400.bg-light-300.rounded-xl.bg-opacity-20.backdrop-blur-md.dark-bg-dark-200.dark-bg-opacity-20
   button(
     style="transition: all 100ms ease-out"
     @click="open.search = !open.search"  
@@ -68,16 +68,16 @@ onKeyStroke('Escape', () => {
     )
     .i-bi-volume-up(v-if="!audio.mute")
     .i-bi-volume-mute(v-else)
-side-panel(v-model:open="open.search")
+side-panel.z-400(v-model:open="open.search")
   nav-search(@close="open.search=false" :focus="open.search")
-side-panel(v-model:open="open.midi")
+side-panel.z-400(v-model:open="open.midi")
   midi-panel
   img.mt-4(src="/media/apps/pc-keyboard-3.svg")
-side-panel(v-model:open="open.synth")
+side-panel.z-400(v-model:open="open.synth")
   synth-panel
-side-panel(v-model:open="open.tempo")
+side-panel.z-400(v-model:open="open.tempo")
   state-transport
-side-panel(v-model:open="open.audio")
+side-panel.z-400(v-model:open="open.audio")
   state-sound
 
 midi-notes

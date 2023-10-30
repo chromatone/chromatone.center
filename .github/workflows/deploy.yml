@@ -23,12 +23,12 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 20
+          node-version: 18
 
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 8
-          run_install: true
+      - name: Enable Corepack
+        run: |
+          corepack enable
+          corepack pnpm install
 
       - name: Build project
         run: pnpm run build

@@ -26,22 +26,22 @@ const color = computed(() => lchToHsl(props.i, props.total));
   a.flex.flex-col.p-2.no-underline(
     :href="cleanLink(item.url)", 
     )
-    .text-5xl.mb-4(
+    .text-4xl.mb-4(
       :style="{ color: lchToHsl(i, total) }"
     ) {{ item?.frontmatter?.title }}
     .font-normal {{ item?.frontmatter?.description }}
   .flex.flex-wrap.py-2
-    a.cursor-pointer.m-2.shadow-md.rounded-xl.border-4.no-underline(
+    a.cursor-pointer.m-2.shadow-md.rounded.border-l-8.no-underline.hover-shadow-lg(
       :style="{ borderColor: lchToHsl(p, children.length) }",
       :href="cleanLink(page.url)",
       v-for="(page, p) in children" :key="page.url"
       )
-      .m-2.p-2(:i="p", :total="children.length") {{ page?.frontmatter?.title }}
+      .m-2.p-1(:i="p", :total="children.length") {{ page?.frontmatter?.title }}
 </template>
 
 <style lang="postcss" scoped>
 .tile {
-  @apply bg-light-300 mx-2 sm-mx-4 shadow-lg dark-bg-dark-400 my-8 flex flex-col transition no-underline rounded-xl;
+  @apply bg-light-300 mx-2 sm-mx-4 shadow-lg hover-shadow-xl dark-bg-dark-400 my-8 flex flex-col transition no-underline rounded-lg;
 
   flex: 1 1 50px;
 }

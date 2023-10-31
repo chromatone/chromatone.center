@@ -39,8 +39,11 @@ const lightColor = computed(() => lchToHsl(siblings.value.index, siblings.value.
 
     template(v-if="f.template == 'home'")
       main.home(aria-labelledby="main-title")
-
-        content.content.z-2
+        chroma-flower.mt-16
+        .p-8.gap-1.flex.flex-col
+          .text-3rem.font-bold Chromatone
+          .text-2rem Visual Music Language
+          .text-xl To Learn, Explore and Express With 
         .flex.flex-col.max-w-60ch.ml-2
           home-tile(
             v-for="(area, i) in children", 
@@ -48,7 +51,8 @@ const lightColor = computed(() => lchToHsl(siblings.value.index, siblings.value.
             :item="area", 
             :i="i",
             :total="children.length")  
-
+          youtube-embed(:video="f?.youtube" v-if="f?.youtube")
+        content.content.z-2
     template(v-else)
       main#content.w-full.relative
         page-headline(
@@ -59,7 +63,10 @@ const lightColor = computed(() => lchToHsl(siblings.value.index, siblings.value.
         .z-100.text-md.p-2.flex.flex-wrap.gap-2.items-center.bg-light-200.bg-opacity-60.dark-bg-dark-200.dark-bg-opacity-60.backdrop-blur-xl.rounded.m-1.mt-0.pl-14.lg-pl-8.min-h-15(v-else)
           h2.font-bold {{ f?.title }}
           .p-0 {{ f?.description }}
-
+        iframe.min-h-80svh.w-full.max-w-100svw(
+          v-if="f?.iframe"
+          :src="f.iframe"
+          )
         transition(name="fade")
           .pb-8.relative(:key="route.path")
 

@@ -168,6 +168,30 @@ function borderColor(cell, r) {
 
 <template lang="pug">
 .flex.flex-col
+
+  .rows(
+    @mousedown="state.hover = true"
+    @mouseleave.self="state.hover = false"
+    @mouseup="state.hover = false"
+    )
+    .row
+      .title
+    .row(
+      v-for="(row, r) in rows" 
+      :key="row")
+      .title.m-1.rounded-md.shadow(:style="{ color: noteColor(state.pitches[r]), backgroundColor: state.range[r].length > 2 ? '#0005' : '#aaa5' }") {{ state.range[r] }}
+      .cell(
+        v-for="(cell, c) in row" 
+        :id="`c${r}-${c}`" 
+        :key="cell"
+        :style="{ color: noteColor(state.pitches[r]), borderColor: borderColor(cell, r),backgroundColor: cell.cell == positions[r] ? cell.active ? noteColor(state.pitches[r], 3) : isDark ? '#0005' : '#fff5' : 'transparent', marginRight: c % 4 == 3 ? '12px' : '1px' }"
+        :class="{ active: cell?.active, current: cell.cell == positions[r] }"
+        @mousedown.prevent="toggle(r, c, true, $event)"
+        @mouseenter="toggle(r, c, false, $event)"
+        )
+        .dot(
+          :style="{ backgroundColor: cell.active ? noteColor(state.pitches[r]) : cell.cell == positions[r] ? 'currentColor' : '#4448' }"
+        )
   .flex.flex-wrap.items-center.justify-center
     control-scale.flex-1(v-tooltip.top="'Select root note and scale'")
     .flex.flex-wrap.justify-center.flex-1.bg-light-900.p-4.rounded-2xl.dark-bg-dark-800.gap-2
@@ -241,29 +265,7 @@ function borderColor(cell, r) {
           v-tooltip.bottom="'Stop'" 
           @click="reset()")
           .i-la-stop
-  .rows(
-    @mousedown="state.hover = true"
-    @mouseleave.self="state.hover = false"
-    @mouseup="state.hover = false"
-    )
-    .row
-      .title
-    .row(
-      v-for="(row, r) in rows" 
-      :key="row")
-      .title.m-1.rounded-md.shadow(:style="{ color: noteColor(state.pitches[r]), backgroundColor: state.range[r].length > 2 ? '#0005' : '#aaa5' }") {{ state.range[r] }}
-      .cell(
-        v-for="(cell, c) in row" 
-        :id="`c${r}-${c}`" 
-        :key="cell"
-        :style="{ color: noteColor(state.pitches[r]), borderColor: borderColor(cell, r),backgroundColor: cell.cell == positions[r] ? cell.active ? noteColor(state.pitches[r], 3) : isDark ? '#0005' : '#fff5' : 'transparent', marginRight: c % 4 == 3 ? '12px' : '1px' }"
-        :class="{ active: cell?.active, current: cell.cell == positions[r] }"
-        @mousedown.prevent="toggle(r, c, true, $event)"
-        @mouseenter="toggle(r, c, false, $event)"
-        )
-        .dot(
-          :style="{ backgroundColor: cell.active ? noteColor(state.pitches[r]) : cell.cell == positions[r] ? 'currentColor' : '#4448' }"
-        )
+  
 </template>
 
 <style lang="postcss" scoped>

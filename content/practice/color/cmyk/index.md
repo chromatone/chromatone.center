@@ -7,6 +7,6 @@ cover: cmyk.png
 ---
 <client-only>
 
-<color-cmyk />
+<color-cmyk class="max-h-90svh" />
 
 </client-only>

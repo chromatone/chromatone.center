@@ -15,6 +15,21 @@ const table = ref();
 </script>
 
 <template lang="pug">
+
+
+.fullscreen-container#screen
+  pitch-table-shift(:top="true")
+  .flex.w-full(
+    v-for="octave in state.octave.list", 
+    :key="octave")
+    pitch-table-cell(
+      v-for="(note, pitch) in notes" 
+      :key="note", 
+      :class="{ dim: !globalScale.isIn(note) }", 
+      :pitch="pitch", 
+      :octave="octave") 
+  pitch-table-shift
+
 .flex.flex-wrap
   control-scale.mb-4.flex-auto(
     style="flex: 1 1 2rem;"
@@ -56,20 +71,6 @@ const table = ref();
         v-model="state.middleA" 
         type="number")
       .p-1 Hz
-
-.fullscreen-container#screen
-  pitch-table-shift(:top="true")
-  .flex.w-full(
-    v-for="octave in state.octave.list", 
-    :key="octave")
-    pitch-table-cell(
-      v-for="(note, pitch) in notes" 
-      :key="note", 
-      :class="{ dim: !globalScale.isIn(note) }", 
-      :pitch="pitch", 
-      :octave="octave") 
-  pitch-table-shift
-
 </template>
 
 <style lang="postcss" scoped>

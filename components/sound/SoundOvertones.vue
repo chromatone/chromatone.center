@@ -195,54 +195,6 @@ function calcCents(base, freq) {
 
 <template lang="pug">
 .flex.flex-col.fullscreen-container.rounded-3xl#screen
-  .controls.flex.flex-wrap.justify-center.-mb-8.z-2.mt-8
-    .is-group.flex.items-center.mr-2.gap-2
-      button.shadow.p-3.m-1.border-1.border-current.rounded(
-        v-tooltip.bottom="'Toggle animation'"
-        @click="time.move = !time.move"
-
-      )
-        .i-la-play(v-if="!time.move")
-        .i-la-pause(v-if="time.move")
-      control-rotary(
-        v-model="overtones.count"
-        v-tooltip.bottom="'Number of harmonics'"
-        :min="overtones.min"
-        :max="overtones.max"
-        :step="1"
-        :fixed="0"
-        param="count"
-
-        )
-      control-rotary(
-        v-model="time.speed"
-        v-tooltip.bottom="'Speed of animation'"
-        :min="0.2"
-        :max="2"
-        :step="0.1"
-        :fixed="1"
-        param="speed"
-        )
-
-    .is-group.flex.items-center.gap-2
-      control-piano(
-        v-model:pitch="globalScale.tonic" 
-        v-tooltip.bottom="'Fundamental pitch'")
-      control-rotary(
-        v-model="fundamental.octave"
-        v-tooltip.bottom="'Octave of the fundamental pitch'"
-        :min="1"
-        :max="5"
-        :step="1"
-        :fixed="0"
-        param="octave"
-        )
-  .relative.flex.flex-col.items-center
-    button.shadow.p-3.m-1.border-1.border-current.rounded.absolute.top-80(
-      v-if="!sound.enabled"
-      @click="sound.init()"
-    )
-      .i-bi-volume-up
   svg#overtones.w-full.max-h-90vh(
     version="1.1"
     baseProfile="full"
@@ -251,7 +203,7 @@ function calcCents(base, freq) {
     font-family="Commissioner, sans-serif"
     @mouseleave="sound.stop()"
     )
-    overtones-guitar(
+    sound-overtones-guitar(
       :length="box.width"
       :transform="`translate(0,-1) rotate(180) translate(-150, -12)`"
     )
@@ -401,6 +353,56 @@ function calcCents(base, freq) {
         stroke-width="0.2"
         :opacity="1 - i / (overtones.count + 2)"
       )
+
+  .controls.flex.flex-wrap.justify-center.-mb-8.z-2.mt-8
+    .is-group.flex.items-center.mr-2.gap-2
+      button.shadow.p-3.m-1.border-1.border-current.rounded(
+        v-tooltip.bottom="'Toggle animation'"
+        @click="time.move = !time.move"
+
+      )
+        .i-la-play(v-if="!time.move")
+        .i-la-pause(v-if="time.move")
+      control-rotary(
+        v-model="overtones.count"
+        v-tooltip.bottom="'Number of harmonics'"
+        :min="overtones.min"
+        :max="overtones.max"
+        :step="1"
+        :fixed="0"
+        param="count"
+
+        )
+      control-rotary(
+        v-model="time.speed"
+        v-tooltip.bottom="'Speed of animation'"
+        :min="0.2"
+        :max="2"
+        :step="0.1"
+        :fixed="1"
+        param="speed"
+        )
+
+    .is-group.flex.items-center.gap-2
+      control-piano(
+        v-model:pitch="globalScale.tonic" 
+        v-tooltip.bottom="'Fundamental pitch'")
+      control-rotary(
+        v-model="fundamental.octave"
+        v-tooltip.bottom="'Octave of the fundamental pitch'"
+        :min="1"
+        :max="5"
+        :step="1"
+        :fixed="0"
+        param="octave"
+        )
+  .relative.flex.flex-col.items-center
+    button.shadow.p-3.m-1.border-1.border-current.rounded.absolute.top-80(
+      v-if="!sound.enabled"
+      @click="sound.init()"
+    )
+      .i-bi-volume-up
+  
 </template>
 
 <style lang="postcss" scoped>

@@ -7,6 +7,6 @@ cover: lab.png
 ---
 <client-only>
 
-<color-lab />
+<color-lab class="max-h-90svh" />
 
 </client-only>

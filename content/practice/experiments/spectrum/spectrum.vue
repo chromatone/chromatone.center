@@ -66,7 +66,7 @@ function initiate() {
         :x1="512 * bar / 1500",
         :y1="300",
         :x2="512 * bar / 1500",
-        :y2="- audio.fft[i] * 1.5"
+        :y2="-(audio?.fft?.[i] * 1.5) || 1"
       )
     polyline(
       v-if="audio.points"
@@ -77,6 +77,4 @@ function initiate() {
     )
 </template>
   
-<style lang="postcss" scoped>
-
-</style>
+<style lang="postcss" scoped></style>

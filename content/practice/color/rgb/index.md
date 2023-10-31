@@ -7,7 +7,7 @@ cover: rgb.png
 ---
 
 <client-only>
-<color-rgb />
+<color-rgb class="max-h-90svh" />
 </client-only>
 
 Mix Red, Green and Blue lights in the dark to get any given color accessible whithin this color space

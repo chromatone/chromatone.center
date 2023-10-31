@@ -92,6 +92,9 @@ dependencies:
   simplex-noise:
     specifier: 4.0.1
     version: 4.0.1
+  smplr:
+    specifier: ^0.11.1
+    version: 0.11.1
   svg2pdf.js:
     specifier: ^2.2.2
     version: 2.2.2(jspdf@2.5.1)
@@ -144,7 +147,7 @@ devDependencies:
     version: 3.0.2
   unocss:
     specifier: 0.56.5
-    version: 0.56.5(postcss@8.4.29)(rollup@2.79.1)(vite@4.4.11)
+    version: 0.56.5(postcss@8.4.31)(rollup@2.79.1)(vite@4.4.11)
   unplugin-icons:
     specifier: 0.17.0
     version: 0.17.0
@@ -156,7 +159,7 @@ devDependencies:
     version: 4.4.11
   vitepress:
     specifier: 1.0.0-rc.24
-    version: 1.0.0-rc.24(@algolia/client-search@4.19.1)(drauu@0.3.7)(fuse.js@6.6.2)(postcss@8.4.29)(search-insights@2.8.2)
+    version: 1.0.0-rc.24(@algolia/client-search@4.19.1)(drauu@0.3.7)(fuse.js@6.6.2)(postcss@8.4.31)(search-insights@2.8.2)
 
 packages:
 
@@ -2249,7 +2252,7 @@ packages:
       sirv: 2.0.3
     dev: true
 
-  /@unocss/postcss@0.56.5(postcss@8.4.29):
+  /@unocss/postcss@0.56.5(postcss@8.4.31):
     resolution: {integrity: sha512-oDY1vCdrCQZx/oxDkq3z77a0RoO+WVQT090oDZzLFO/cPWH3elSOHwnoJU/KzrpJLbUFpyTQKZ/k3VbBaEdGTA==}
     engines: {node: '>=14'}
     peerDependencies:
@@ -2261,7 +2264,7 @@ packages:
       css-tree: 2.3.1
       fast-glob: 3.3.1
       magic-string: 0.30.3
-      postcss: 8.4.29
+      postcss: 8.4.31
     dev: true
 
   /@unocss/preset-attributify@0.56.5:
@@ -4997,6 +5000,11 @@ packages:
       totalist: 3.0.1
     dev: true
 
+  /smplr@0.11.1:
+    resolution: {integrity: sha512-LuhFzqlS8K8NS9XRPQfTPrUsClhytz2uEE0MZWftp4QO/wXteqv85t9nmJTK5Gt8tdzBwb9+lv8rUYysoRs88g==}
+    engines: {node: '>=14.0.0'}
+    dev: false
+
   /source-map-js@1.0.2:
     resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==}
     engines: {node: '>=0.10.0'}
@@ -5427,7 +5435,7 @@ packages:
     engines: {node: '>= 10.0.0'}
     dev: true
 
-  /unocss@0.56.5(postcss@8.4.29)(rollup@2.79.1)(vite@4.4.11):
+  /unocss@0.56.5(postcss@8.4.31)(rollup@2.79.1)(vite@4.4.11):
     resolution: {integrity: sha512-tO+9St4CntSjHpLXZqBo0/etS06MtvFF1NEny/qFJCL9sCopWwmDKuzW6/LIb4wfqZLdMpVFoEACMNv8nP849A==}
     engines: {node: '>=14'}
     peerDependencies:
@@ -5443,7 +5451,7 @@ packages:
       '@unocss/cli': 0.56.5(rollup@2.79.1)
       '@unocss/core': 0.56.5
       '@unocss/extractor-arbitrary-variants': 0.56.5
-      '@unocss/postcss': 0.56.5(postcss@8.4.29)
+      '@unocss/postcss': 0.56.5(postcss@8.4.31)
       '@unocss/preset-attributify': 0.56.5
       '@unocss/preset-icons': 0.56.5
       '@unocss/preset-mini': 0.56.5
@@ -5667,11 +5675,11 @@ packages:
       vitepress: ^1.0.0-beta.1
     dependencies:
       sharp: 0.32.5
-      vitepress: 1.0.0-rc.24(@algolia/client-search@4.19.1)(drauu@0.3.7)(fuse.js@6.6.2)(postcss@8.4.29)(search-insights@2.8.2)
+      vitepress: 1.0.0-rc.24(@algolia/client-search@4.19.1)(drauu@0.3.7)(fuse.js@6.6.2)(postcss@8.4.31)(search-insights@2.8.2)
       vue: 3.3.4
     dev: false
 
-  /vitepress@1.0.0-rc.24(@algolia/client-search@4.19.1)(drauu@0.3.7)(fuse.js@6.6.2)(postcss@8.4.29)(search-insights@2.8.2):
+  /vitepress@1.0.0-rc.24(@algolia/client-search@4.19.1)(drauu@0.3.7)(fuse.js@6.6.2)(postcss@8.4.31)(search-insights@2.8.2):
     resolution: {integrity: sha512-RpnL8cnOGwiRlBbrYQUm9sYkJbtyOt/wYXk2diTcokY4yvks/5lq9LuSt+MURWB6ZqwpSNHvTmxgaSfLoG0/OA==}
     hasBin: true
     peerDependencies:
@@ -5693,7 +5701,7 @@ packages:
       focus-trap: 7.5.4
       mark.js: 8.11.1
       minisearch: 6.1.0
-      postcss: 8.4.29
+      postcss: 8.4.31
       shiki: 0.14.5
       vite: 4.5.0
       vue: 3.3.7

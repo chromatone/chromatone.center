@@ -8,6 +8,7 @@ import { WebMidi, Note, } from "webmidi";
 import { setupKeyboard } from './keyboard';
 import Ola from "ola";
 import { Chord, Midi } from 'tonal';
+
 export const midi = reactive({
   enabled: false,
   initiated: false,
@@ -68,6 +69,7 @@ export const midi = reactive({
   once: midiOnce,
   setCC
 });
+
 export function learnCC({ number, channel }) {
   const val = ref(0);
   watch(() => midi.cc, cc => {
@@ -78,6 +80,7 @@ export function learnCC({ number, channel }) {
   });
   return val;
 }
+
 export function playKey(name, offset = 0, off, velocity = 1, duration) {
   let noteName = name + (4 + offset + midi.offset);
   const note = new Note(noteName, {
@@ -96,6 +99,7 @@ export function playKey(name, offset = 0, off, velocity = 1, duration) {
   };
   noteInOn(ev);
 }
+
 export function useMidi() {
   if (!midi.initiated) {
     onMounted(() => {
@@ -132,6 +136,7 @@ export function useMidi() {
     midiStop
   };
 }
+
 function setupMidi() {
   WebMidi.enable();
   WebMidi.addListener("enabled", () => {
@@ -149,6 +154,7 @@ function setupMidi() {
   });
   midi.initiated = true;
 }
+
 function initMidi() {
   midi.inputs = shallowReactive({});
   midi.enabled = true;
@@ -220,6 +226,8 @@ function initMidi() {
     };
   });
 }
+
+
 function noteInOn(ev) {
   const note = {
     ...ev.note,
@@ -248,6 +256,8 @@ function noteInOn(ev) {
   midi.note = note;
   return note;
 }
+
+
 function ccIn(ev) {
   if (midi.filter[ev.message.channel])
     return;
@@ -263,11 +273,15 @@ function ccIn(ev) {
   midi.channels[cc.channel].cc[cc.number] = cc;
   return cc;
 }
+
+
 function createMidiChannel(ch) {
   if (!midi.channels[ch]) {
     midi.channels[ch] = reactive({ num: ch, activeNotes: {}, notes: {}, cc: {} });
   }
 }
+
+
 function setVelocity(channel, note, velocity) {
   var _a, _b, _c;
   if ((_c = (_b = (_a = midi.channels) === null || _a === void 0 ? void 0 : _a[channel]) === null || _b === void 0 ? void 0 : _b.notes) === null || _c === void 0 ? void 0 : _c[note]) {
@@ -286,6 +300,8 @@ export function midiAttack(note, options) {
     });
   });
 }
+
+
 export function midiPlay(note, options) {
   if (!midi.out)
     return;
@@ -296,6 +312,8 @@ export function midiPlay(note, options) {
     });
   });
 }
+
+
 export function midiStop(note, options) {
   if (!midi.out)
     return;
@@ -312,6 +330,8 @@ export function midiStop(note, options) {
     midi.stopped = true;
   }
 }
+
+
 export function midiRelease(note) {
   if (!midi.out)
     return;
@@ -329,6 +349,8 @@ export function midiRelease(note) {
     });
   }
 }
+
+
 export function midiOnce(note, options) {
   if (!midi.out || midi.filter[midi.channel])
     return;
@@ -344,6 +366,8 @@ export function setCC(cc, value) {
     output.sendControlChange(Number(cc.number), value, cc.channel);
   });
 }
+
+
 export function stopAll() {
   if (!midi.out)
     return;
@@ -357,6 +381,8 @@ export function stopAll() {
   });
   midi.stopped = true;
 }
+
+
 /**
  * Sets a forwarding route from an Input to an Output
  * @param iid Input ID
@@ -377,6 +403,8 @@ export function forwardMidi(iid, oid) {
     (_b = (_a = midi.forwards) === null || _a === void 0 ? void 0 : _a[iid]) === null || _b === void 0 ? true : delete _b[oid];
   }
 }
+
+
 export function sortNotes(notes, reverse = false) {
   if (!notes)
     return [];

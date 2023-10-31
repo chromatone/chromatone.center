@@ -3,6 +3,7 @@ title: Musical transport
 description: How we subdivide time to have a rhythm
 date: 2023-10-30
 layout: app
+cover: cover.png
 ---
 
 <script setup>

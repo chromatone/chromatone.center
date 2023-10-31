@@ -4,6 +4,7 @@ description: A 8 channel MIDI visualization app, simulating drawing on a fading 
 cover: paper.png
 layout: app
 date: 2021-04-05
+iframe: https://paper.chromatone.center
 buttons:
   - url: https://paper.chromatone.center
     text: paper.chromatone.center

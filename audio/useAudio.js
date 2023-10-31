@@ -7,6 +7,7 @@ const layers = reactive({})
 export const audio = shallowReactive({
   initiating: false,
   initiated: false,
+  started: false,
   ctx: null,
   core: null,
   node: null,
@@ -27,9 +28,8 @@ const FFTs = reactive({})
 
 export function useAudio() {
 
-  init().then(() => {
+  initAudio().then(() => {
     if (audio.initiated) return
-    audio.initiated = true
 
     watch(() => audio.layers, render)
 
@@ -45,13 +45,14 @@ export function useAudio() {
       FFTs[e.source] = [[...e?.data.real.values()], [...e?.data.imag.values()]]
     })
 
+    audio.initiated = true
   })
 
-  return { audio, init, render, layers, meters, scopes, FFTs }
+  return { audio, initAudio, render, layers, meters, scopes, FFTs }
 }
 
 function render(place) {
-  if (audio.ctx.state === 'suspended') { audio.ctx.resume() } else if (!audio.initiated) { init() } else {
+  if (audio.ctx.state === 'suspended') { audio.ctx.resume() } if (!audio.initiated) { initAudio() } else {
     let stereo = [0, el.mul(0, el.meter({ name: 'main:sample-rate' }, el.sr()))]
     for (let l in audio.layers) {
       let layer = audio.layers[l]
@@ -76,10 +77,11 @@ function render(place) {
         name: 'main:fft',
         size: 2048
       }, stereo[0]))
+    audio.started = audio.started || Date.now()
   }
 }
 
-async function init() {
+export async function initAudio() {
   if (audio.initiating) return
   audio.initiating = true
   //@ts-expect-error
@@ -91,4 +93,5 @@ async function init() {
     outputChannelCount: [2],
   })
   audio.node.connect(audio.ctx.destination)
+
 }

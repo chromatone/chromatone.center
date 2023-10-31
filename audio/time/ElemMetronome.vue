@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted, reactive, ref } from 'vue'
 import { useTime } from './useTime'
-import { levelColor, pitchColor } from '#/use'
+import { levelColor, notes, pitchColor } from '#/use'
 import { useAudio } from '../useAudio';
 
 const { time, controls, groups, transport } = useTime()
@@ -13,16 +13,10 @@ const loop = reactive({
 
 const { render, audio } = useAudio()
 
-
-
 </script>
 
 <template lang='pug'>
-.is-group.flex.flex-col(@click="render()")
-  .p-4.absolute.bg-light-300.shadow-lg.m-8(
-
-    v-if="!audio.started"
-    ) START
+.is-group.flex.flex-col.bg-light-200.bg-opacity-40.dark-bg-dark-400.dark-bg-opacity-40.backdrop-blur(v-if="audio?.started")
   svg.m-2(:viewBox="`0 0 ${loop.width} ${loop.height}`")
     rect(
       fill="#8881"
@@ -64,11 +58,8 @@ const { render, audio } = useAudio()
         :x1="time.measure*loop.width"
         :x2="time.measure*loop.width"
         :y2="loop.height")
-  //- .text-xs.p-2.gap-2.flex.flex-col
-  //-   .flex.flex-wrap.font-mono.gap-2
-  //-     .rounded.p-1.flex.flex-col.gap-1.bg-light-100.dark-bg-dark-200(v-for="(param,p) in time" :key="p")
-  //-       .text-xs {{ p }}
-  //-       .text-md {{ param?.toFixed(2) }} 
+
+
   .flex.flex-wrap.m-2.is-group.flex.flex-wrap
     .p-1.rounded-full(:style="{backgroundColor:time.pulse ? 'currentColor' : 'transparent'}")
     button.text-button(@click="time.isPlaying ? transport.pause() : transport.play()")
@@ -89,3 +80,9 @@ const { render, audio } = useAudio()
         :param="String(p)"
         )
 </template>
+
+<style scoped lang="postcss">
+.active {
+  @apply bg-dark-300 dark-bg-light-300 bg-opacity-40 dark-bg-opacity-40;
+}
+</style>

@@ -9,7 +9,7 @@ import { hatSynth } from '../drums/useDrums';
 
 const params = {
   //Kick
-  'time:bpm': { value: 120, min: 30, max: 250, step: .5, smooth: 0.1 },
+  'time:bpm': { value: 120, min: 30, max: 250, step: 1, smooth: 0.1 },
   'time:steps': { value: 4, min: 1, max: 16, step: 1 },
   'time:click': { value: 0, min: 0, max: 1, step: 1 },
   'time:volume': { value: 0, min: 0, max: 1, step: 0.001 },
@@ -60,29 +60,44 @@ const signal = computed(() => {
 
   let seconds = meter('seconds', el.div(timer, sampleRate))
 
+  let minutes = meter('minutes', el.div(seconds, 60))
+
+  let hours = meter('hours', el.div(minutes, 60))
+
   let started = meter('start', el.const({ key: 'time:start', value: transport.started }))
+
   let paused = meter('pause', el.const({ key: 'time:pause', value: transport.paused }))
+
   let isStarted = meter('isStarted', el.ge(started, 0))
+
   let isPaused = meter('isPaused', el.ge(paused, 0))
+
   let isPlaying = meter('isPlaying', el.and(isStarted, el.sub(1, isPaused)))
+
   let current = meter('current', el.select(isStarted, el.select(isPaused, el.sub(paused, started), el.sub(seconds, started)), 0))
 
   let bpm = meter('bpm', cv['time:bpm'])
   let bps = meter('bps', el.div(bpm, 60))
+
   let beats = meter('beats', el.mul(current, bps))
+  let beat = meter('beat', el.mod(beats, 1))
+  let pulse = meter('pulse', el.le(beat, 0.5))
+
   let steps = meter('steps', cv['time:steps'])
   let measures = el.meter({ name: "time:measures" }, el.div(beats, steps))
   let measure = el.meter({ name: "time:measure" }, el.mod(measures, 1))
-  let beat = meter('beat', el.mod(beats, 1))
-  let pulse = meter('pulse', el.le(beat, 0.5))
+
   let step = meter('step', el.mod(beats, steps))
   let stepNum = meter('step-num', el.floor(step))
   let firstStep = meter('step-first', el.le(stepNum, 1))
-  let stepOdd = meter('step-odd', el.mod(stepNum, 2))
-  let stepEven = meter('step-even', el.eq(stepOdd, 0))
-  let hat = hatSynth(pitch, el.add(1000, el.mul(1500, stepOdd)), 0.001, el.add(0.01, el.mul(0.06, firstStep)), el.mul(controls['time:click'], pulse))
+  let stepEven = meter('step-even', el.mod(stepNum, 2))
+  let stepOdd = meter('step-odd', el.eq(stepEven, 0))
+
+  let hat = hatSynth(pitch, el.add(1000, el.mul(1500, stepEven)), 0.001, el.add(0.01, el.mul(0.06, firstStep)), el.mul(controls['time:click'], pulse))
   let metronome = el.mul(cv['time:volume'], hat)
-  let silent = el.mul(0, el.add(measure, pitch, stepEven, pulse, current, isPlaying))
+
+  let silent = el.mul(0, el.add(measure, pitch, stepOdd, pulse, current, isPlaying, minutes, hours))
+
   return [metronome, el.add(metronome, silent)]
 })
 

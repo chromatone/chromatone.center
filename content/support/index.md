@@ -6,20 +6,17 @@ topContent: true
 cover: diego-catto.jpg
 buttons:
   - url: "https://instagram.com/chromatone.center"
-    text: "Chromatone.center"
+    text: "@chromatone.center"
     type: instagram
   - url: "https://www.reddit.com/r/chromatone"
-    text: "Chromatone"
+    text: r/chromatone
     type: reddit
   - url: "https://github.com/chromatone/"
-    text: "Organisation"
+    text: "GitHub Organisation"
     type: github
   - url: "https://github.com/sponsors/chromatone/"
-    text: "Sponsors"
+    text: "GitHub Sponsors"
     type: github
-  - url: "/support/docs/modules.html"
-    text: "Docs"
-
 ---
 
 <script setup>

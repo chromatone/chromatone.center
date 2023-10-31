@@ -4,6 +4,6 @@ description: An modular web app to explore sound synthesis and processing right 
 layout: app
 cover: lab.jpg
 date: 2021-03-25
+iframe: https://lab.chromatone.center
 ---
 
-## [lab.chromatone.center](https://lab.chromatone.center)

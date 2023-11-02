@@ -1,5 +1,5 @@
 ---
-title: Rhythm Bars
+title: Rhythm bars
 description: A linear metronome and polyrhythm exploration tool
 layout: app
 date: 2021-10-01

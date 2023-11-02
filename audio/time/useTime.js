@@ -3,7 +3,7 @@ import { useAudio }
   from '../useAudio';
 import { el } from '@elemaudio/core';
 import { useUI } from '../tools/useUI';
-import { watch } from 'vue';
+import { watch, onMounted } from 'vue';
 import { freqPitch } from '#/use';
 import { hatSynth } from '../drums/useDrums';
 
@@ -102,11 +102,15 @@ const signal = computed(() => {
 })
 
 export function useTime() {
+  onMounted(() => {
+    watch([controls, transport], () => {
+
+      audio.layers.time = { signal: signal.value, volume: 1 }
+      render('time')
+    }, { immediate: true })
+
+  })
+
   return { controls, groups, params, time, transport }
 }
 
-watch([controls, transport], () => {
-
-  audio.layers.time = { signal: signal.value, volume: 1 }
-  render('time')
-}, { immediate: true })

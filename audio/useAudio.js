@@ -1,4 +1,4 @@
-import { shallowReactive, watch, reactive } from 'vue'
+import { shallowReactive, watch, reactive, onMounted } from 'vue'
 import { el } from '@elemaudio/core'
 import WebRenderer from '@elemaudio/web-renderer'
 
@@ -27,32 +27,34 @@ const scopes = reactive({})
 const FFTs = reactive({})
 
 export function useAudio() {
+  onMounted(() => {
+    initAudio().then(() => {
+      if (audio.initiated) return
 
-  initAudio().then(() => {
-    if (audio.initiated) return
+      watch(() => audio.layers, render)
 
-    watch(() => audio.layers, render)
+      audio.core.on('meter', e => {
+        meters[e.source] = { max: e.max, min: e.min }
+      })
 
-    audio.core.on('meter', e => {
-      meters[e.source] = { max: e.max, min: e.min }
+      audio.core.on('scope', e => {
+        scopes[e.source] = [...e?.data[0].values()]
+      })
+
+      audio.core.on('fft', e => {
+        FFTs[e.source] = [[...e?.data.real.values()], [...e?.data.imag.values()]]
+      })
+
+      audio.initiated = true
     })
-
-    audio.core.on('scope', e => {
-      scopes[e.source] = [...e?.data[0].values()]
-    })
-
-    audio.core.on('fft', e => {
-      FFTs[e.source] = [[...e?.data.real.values()], [...e?.data.imag.values()]]
-    })
-
-    audio.initiated = true
   })
+
 
   return { audio, initAudio, render, layers, meters, scopes, FFTs }
 }
 
 function render(place) {
-  if (audio.ctx.state === 'suspended') { audio.ctx.resume() } if (!audio.initiated) { initAudio() } else {
+  if (audio?.ctx?.state === 'suspended') { audio?.ctx?.resume() } if (!audio.initiated) { initAudio() } else {
     let stereo = [0, el.mul(0, el.meter({ name: 'main:sample-rate' }, el.sr()))]
     for (let l in audio.layers) {
       let layer = audio.layers[l]

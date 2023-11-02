@@ -24,7 +24,7 @@ export default defineConfig(
     plugins: [
       ViteYaml(),
       Components({
-        dirs: ['../components', '../theme/components'],
+        dirs: ['../components', '../theme/components', '../audio'],
         extensions: ['vue', 'ts', 'js'],
         directoryAsNamespace: true,
         collapseSamePrefixes: true,

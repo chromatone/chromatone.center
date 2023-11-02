@@ -6,8 +6,6 @@ import { useClamp } from '@vueuse/math';
 import { useStorage } from '@vueuse/core';
 import { colord } from 'colord';
 
-
-
 const draw = reactive({
   running: true,
   speed: useClamp(useStorage('pitch-roll-speed', 4), 4, 20),
@@ -118,21 +116,7 @@ function clear() {
 
 <template lang="pug">
 .flex.flex-col.mb-8
-  .flex.p-8.items-center(v-if="tuner.note")
-    .flex-1.text-center.font-bold.text-4xl.transition-all.duration-200.flex.items-center(:style="{ color: tuner.note.color }") 
-      .p-1.w-2em {{ tuner.note?.name }}
-      .p-1.w-1em {{ tuner.note?.octave }} 
-      .p-1.mt-2.w-6em.text-sm {{ tuner.note.cents > 0 ? '+' : '' }}{{ tuner.note.cents }} cents
-    .btn(@click="draw.running = !draw.running")
-      .i-la-play(v-if="!draw.running")
-      .i-la-pause(v-else)
-    .btn(@click="clear()")
-      .i-la-times
-    .flex-1.text-center.font-bold  {{ tuner.bpm.toFixed(1) }} BPM
-
-  .fullscreen-container.rounded-3xl.cursor-pointer#screen(
-
-  )
+  .fullscreen-container.rounded-3xl.cursor-pointer#screen
     control-start.absolute(
       v-if="!tuner.running", 
       @click="start()") Start rolling 
@@ -146,6 +130,18 @@ function clear() {
       :height="1080"
       @dblclick="clear()"
       )
+  .flex.p-8.items-center(v-if="tuner.note")
+    .flex-1.text-center.font-bold.text-4xl.transition-all.duration-200.flex.items-center(:style="{ color: tuner.note.color }") 
+      .p-1.w-2em {{ tuner.note?.name }}
+      .p-1.w-1em {{ tuner.note?.octave }} 
+      .p-1.mt-2.w-6em.text-sm {{ tuner.note.cents > 0 ? '+' : '' }}{{ tuner.note.cents }} cents
+    .btn(@click="draw.running = !draw.running")
+      .i-la-play(v-if="!draw.running")
+      .i-la-pause(v-else)
+    .btn(@click="clear()")
+      .i-la-times
+    .flex-1.text-center.font-bold  {{ tuner.bpm.toFixed(1) }} BPM
+
 </template>
 
 <style lang="postcss" scoped>

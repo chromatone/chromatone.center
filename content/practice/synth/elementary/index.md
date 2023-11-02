@@ -15,18 +15,7 @@ links:
   - https://github.com/teetow/elementary_grid/blob/master/src/lib/useSynth.tsx
 ---
 
-<script setup>
-import { defineClientComponent } from 'vitepress'
-
-const ElemAudio = defineClientComponent(() => {
-  return import('../../../../audio/ElemAudio.vue')
-})
-</script>
 
 <client-only>
 <ElemAudio />
 </client-only>
-
-## Modular synth
-
-Built with JS, but operated by WASM lib in a separate audio thread. Construction started around June 2023 and is ongoing till then. Supposed to be gradually substituting the sitewide Tone.js synth used by now.

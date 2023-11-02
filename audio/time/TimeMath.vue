@@ -178,7 +178,7 @@ const started = useDateFormat(() => audio.started, 'YYYY MMM DD @ HH:MM:ss  ')
     .text-right Even step:
     .p-0.font-bold(:class="{['active']: time?.['step-even']}") {{time?.['step-even'] }}
     .text-left.text-sm Not Odd
-  ElemMetronome.fixed.bottom-2.z-1000
+  ElemMetronome
 </template>
 
 <style scoped lang="postcss">

@@ -26,7 +26,7 @@ export const synth = {
     oscillator: {
       type: useStorage('synth-osc', 'sawtooth8'),
     },
-    volume: -30,
+    volume: -20,
     envelope: {
       attack: 0.01,
       decay: 0.1,
@@ -90,7 +90,6 @@ export function synthInit() {
   synth.widener = new StereoWidener(0.7).connect(channel)
 
   synth.reverb = new Reverb(3).connect(synth.widener)
-  //@ts-expect-error
   synth.delay = new PingPongDelay({ delayTime: '16n', feedback: 0.3, wet: 0.3, maxDelay: '4n' }).connect(synth.widener)
 
   synth.pan = new AutoPanner({ frequency: '4n', depth: 0.4 }).connect(synth.reverb).connect(synth.delay).connect(synth.widener)

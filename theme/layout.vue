@@ -81,7 +81,6 @@ const lightColor = computed(() => lchToHsl(siblings.value.index, siblings.value.
 
         nav-next-prev(:siblings="siblings" :parents="parents")
         nav-row.p-4
-        #teleport
     client-only
       draw-layer.z-100
       cast-camera

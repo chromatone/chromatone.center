@@ -23,7 +23,7 @@ export const channels = shallowReactive({})
 export function useAudio() {
   if (!audio.initiated) {
     start()
-    master.context = new Context().rawContext
+    master.context = markRaw(new AudioContext())
     master.destination = getDestination()
     const { recorder } = useRecorder()
 

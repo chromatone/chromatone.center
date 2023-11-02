@@ -107,7 +107,7 @@ function colorIt(freq, value) {
 <template lang="pug">
 .flex.flex-col.justify-center.text-white
   .fullscreen-container.rounded-3xl.overflow-hidden#screen.m-4
-    canvas#spectrogram.h-full.min-h-30em.w-full.rounded-md.cursor-pointer(
+    canvas#spectrogram.h-full.min-h-70svh.w-full.rounded-md.cursor-pointer(
       v-drag="dragScreen"
       :width="state.width"
       :height="state.height"

@@ -2,16 +2,25 @@
 //https://danigb.github.io/smplr/
 //https://github.com/danigb/smplr
 
+import { useAudio } from "#/use/audio";
 import { midi } from "#/use/midi";
 import { useStorage } from "@vueuse/core";
-import { SplendidGrandPiano, Soundfont, getSoundfontNames, getSoundfontKits, Reverb, } from "smplr";
-import { ref, watch, computed } from "vue";
+import { Soundfont, getSoundfontNames, Reverb, } from "smplr";
+import { ref, watch, computed, reactive } from "vue";
 
 const instrument = useStorage('sound-font', 'marimba')
 
+const cached = reactive([])
+
+const { master } = useAudio()
+
+watch(instrument, instr => {
+  cached[instr] = true
+})
+
 const loaded = ref(false)
 
-const ctx = new AudioContext()
+const ctx = master.context
 
 const reverb = new Reverb(ctx);
 
@@ -39,15 +48,15 @@ watch(() => midi.note, note => {
 
 <template lang='pug'>
 .flex.flex-col.gap-2 
-  .p-2.flex.flex-wrap.gap-2 SOUND FONT:   
-    .font-bold {{ inst.config.instrument }}
-    .flex
-      .p-0(v-if="!loaded") Loading...
-      .p-0(v-else) Loaded!
-  .flex.flex-wrap.gap-1
-    .bg-light-900.dark-bg-dark-900.p-1.text-xs(
+  .p-2.flex.flex.gap-2.items-center.justify-center
+    .font-bold.capitalize {{ inst.config.instrument.replaceAll('_', ' ') }}
+    .flex.text-xs
+      .i-la-spinner.animate-pulse(v-if="!loaded")
+      .i-la-check(v-else) Loaded!
+  .flex.flex-wrap.gap-1.px-8
+    button.transition.p-1.text-sm.cursor-pointer.border-1.border-dark-900.border-opacity-10.rounded.shadow.flex-auto.capitalize.dark-border-light-200.dark-border-opacity-20(
       v-for="name in getSoundfontNames()" :key="name"
       @click="instrument = name"
-      :class="{['font-bold']:name == instrument}"
-      ) {{ name }}
+      :class="{['border-opacity-100 dark-border-opacity-90 scale-150']:name == instrument, ['opacity-50']:name == instrument && !loaded,['bg-light-100 dark-bg-dark-900']:!cached[name], ['bg-light-900 dark-bg-dark-100']:cached?.[name]}"
+      ) {{ name.replaceAll('_', ' ') }}
 </template>

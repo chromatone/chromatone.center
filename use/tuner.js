@@ -5,13 +5,10 @@
 
 import Aubio from "./aubio.js";
 import { noteColor } from './colors'
-import { initGetUserMedia } from './audio'
+import { initGetUserMedia, useAudio } from './audio'
 import Meyda from "meyda";
 import { reactive, computed, watch } from 'vue'
-
 import { rotateArray } from "./calculations";
-
-
 
 const noteStrings = [
   "C",
@@ -88,7 +85,8 @@ export function useTuner() {
 
 function init() {
   if (tuner.initiated) return
-  chain.audioContext = new window.AudioContext();
+  const { master } = useAudio()
+  chain.audioContext = master.context;
   chain.analyser = chain.audioContext.createAnalyser();
   chain.scriptProcessor = chain.audioContext.createScriptProcessor(
     tuner.bufferSize,

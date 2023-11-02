@@ -8,16 +8,18 @@ const { time, controls, groups, transport } = useTime()
 
 const loop = reactive({
   width: 100,
-  height: 5
+  height: 22
 })
 
 const { render, audio } = useAudio()
 
+
 </script>
 
 <template lang='pug'>
-.is-group.flex.flex-col.bg-light-200.bg-opacity-40.dark-bg-dark-400.dark-bg-opacity-40.backdrop-blur(v-if="audio?.started")
-  svg.m-2(:viewBox="`0 0 ${loop.width} ${loop.height}`")
+.flex.flex-col.gap-2.bg-light-200.bg-opacity-40.dark-bg-dark-400.dark-bg-opacity-40.backdrop-blur.pt-2.px-2.rounded-xl.shadow-xl.border-1.border-dark-200.border-opacity-20.dark-border-light-200.dark-border-opacity-30(v-if="audio?.started")
+  .p-1.rounded-full(:style="{backgroundColor:time.pulse ? 'currentColor' : 'transparent'}")
+  svg.w-full.rounded(:viewBox="`0 0 ${loop.width} ${loop.height}`")
     rect(
       fill="#8881"
       stroke="#aaa"
@@ -38,9 +40,9 @@ const { render, audio } = useAudio()
           stroke-width=".3"
           :y2="loop.height")
         text(
-          x="1"
-          y="2.5"
-          font-size="2"
+          :x="2-controls['time:steps']/10"
+          :y="loop.height-2"
+          :font-size="16-controls['time:steps']/1.5"
           :fill="b==Math.floor(time.step) ? 'currentColor' : levelColor(b+(time.pitch/12)*controls['time:steps'],controls['time:steps'],1)"
           :font-weight="b==Math.floor(time.step) ? 'bold' : 'normal'"
         ) {{ s }}
@@ -54,31 +56,31 @@ const { render, audio } = useAudio()
       line(
         stroke="currentColor"
 
-        stroke-width=".2"
+        stroke-width="1"
         :x1="time.measure*loop.width"
         :x2="time.measure*loop.width"
         :y2="loop.height")
 
-
-  .flex.flex-wrap.m-2.is-group.flex.flex-wrap
-    .p-1.rounded-full(:style="{backgroundColor:time.pulse ? 'currentColor' : 'transparent'}")
-    button.text-button(@click="time.isPlaying ? transport.pause() : transport.play()")
-      .i-la-play(v-if="!time.isPlaying")
-      .i-la-pause(v-else)
-    button.text-button(@click="transport.stop()")
-      .i-la-stop
-    button.text-button(@click="controls['time:click'] = controls['time:click']? 0 : 1")
-      .i-la-volume-up(v-if="controls['time:click']")
-      .i-la-volume-mute(v-else)
-    template(v-for="(group,title) in groups" :key="title") 
-      ControlRotary(
-        v-for="(param, p) in group" :key="p"
-        :min="param.min"
-        :max="param.max"
-        :step="param.step"
-        v-model="controls[`${title}:${p}`]"
-        :param="String(p)"
-        )
+  .flex.flex-wrap.m-2.flex.flex-wrap.gap-4
+    .is-group.items-center.flex.p-2.flex-wrap
+      button.text-button(@click="time.isPlaying ? transport.pause() : transport.play()")
+        .i-la-play(v-if="!time.isPlaying")
+        .i-la-pause(v-else)
+      button.text-button(@click="transport.stop()")
+        .i-la-stop
+      button.text-button(@click="controls['time:click'] = controls['time:click']? 0 : 1")
+        .i-la-volume-up(v-if="controls['time:click']")
+        .i-la-volume-mute(v-else)
+    .is-group.flex.flex-wrap.p-2(v-for="(group,title) in groups" :key="title")
+      template(v-for="(param, p) in group" :key="p")
+        ControlRotary(
+          v-if="p != 'click'"
+          :min="param.min"
+          :max="param.max"
+          :step="param.step"
+          v-model="controls[`${title}:${p}`]"
+          :param="String(p)"
+          )
 </template>
 
 <style scoped lang="postcss">

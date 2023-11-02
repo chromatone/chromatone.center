@@ -67,7 +67,7 @@ function keyColor(key, off) {
   svg.w-full#chroma-keys(
     version="1.1",
     baseProfile="full",
-    :viewBox="`-10 -20 720 250`",
+    :viewBox="`-10 -20 720 360`",
     xmlns="http://www.w3.org/2000/svg",
     font-family="Commissioner, sans-serif"
     font-weight="200"
@@ -87,21 +87,21 @@ function keyColor(key, off) {
         )
         rect.transition-all.duration-300.ease-out(
           width="90"
-          height="190"
+          height="290"
           rx="45"
           :fill="keyColor(key, true)"
           style="filter:url(#shadowButton);"
           )
         circle.transition-all.duration-300.ease-out(
 
-          cy="145"
+          cy="245"
           cx="45"
           r="45"
           :fill="keyColor(key)"
           )
         text.pointer-events-none(
           v-show="isInChroma(key) && letters"
-          y="152"
+          y="250"
           x="45"
           :fill="colord(noteColor(key)).isDark() ? 'white' : 'black'"
           ) 
@@ -124,7 +124,7 @@ function keyColor(key, off) {
         rect.transition-all.duration-300.ease-out(
           v-if="key"
           width="90"
-          height="150"
+          height="220"
           rx="45"
           style="filter:url(#shadowButton);"
           :fill="keyColor(key, true)"
@@ -132,7 +132,7 @@ function keyColor(key, off) {
           )
         circle.transition-all.duration-300.ease-out(
           v-if="key"
-          cy="105"
+          cy="175"
           cx="45"
           r="45"
           :fill="keyColor(key)"
@@ -144,8 +144,8 @@ function keyColor(key, off) {
           :fill="colord(noteColor(key)).isDark() ? 'white' : 'black'"
           :font-weight="key == pitch ? 800 : 200"
           ) 
-          tspan(y="111" x="45") {{ notes[key] }}
-          tspan(y="40" x="45" ) {{ flats[key] }}
+          tspan(y="176" x="45") {{ notes[key] }}
+          tspan(y="50" x="45" ) {{ flats[key] }}
         circle.transition-all.duration-100(
           :style="{opacity: midi.activeChromaMidi[key] ? 1:0}"
           cy="175"

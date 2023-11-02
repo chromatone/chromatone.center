@@ -1,5 +1,6 @@
 <script setup>
 import { rotateArray } from '#/use/calculations'
+import { globalScale } from '#/use/chroma';
 import { noteColor } from '#/use/colors'
 import { notes } from '#/use/theory'
 import { computed, reactive } from 'vue'
@@ -26,21 +27,10 @@ const tonal = reactive({
 })
 
 
-const props = defineProps({
-  tonic: {
-    type: Number,
-    default: 0
-  },
-  chroma: {
-    type: String,
-    default: '100000000000'
-  }
-})
-
 
 const activeSteps = computed(() => {
-  let chromaSteps = props.chroma.split('').map(Number)
-  let activeSteps = rotateArray(chromaSteps, -props.tonic)
+  let chromaSteps = globalScale.chroma.split('').map(Number)
+  let activeSteps = rotateArray(chromaSteps, -globalScale.tonic)
   return activeSteps
 })
 
@@ -155,7 +145,7 @@ svg#tonal-array.rounded-3xl(
         v-model:pressed="tonal.pressed"
         :available="Boolean(activeSteps[note.pitch])", 
         :pressed="tonal.pressed"
-        :tonic="tonic", 
+        :tonic="globalScale.tonic", 
         :note="note", 
         :r="tonal.r"
         )

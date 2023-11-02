@@ -6,9 +6,9 @@ import { cleanLink } from 'vitepress-pages'
 const props = defineProps(['parents', 'siblings'])
 
 const colors = reactive({
-  current: computed(() => lchToHsl(props.siblings.index, props.siblings.total)),
-  prev: computed(() => lchToHsl(props.siblings.index - 1, props.siblings.total, 0.8, 20, 40)),
-  next: computed(() => lchToHsl(props.siblings.index + 1, props.siblings.total, 0.8, 20, 40))
+  current: computed(() => lchToHsl(props.siblings.index, props.siblings.total, 0.9, 20, 50)),
+  prev: computed(() => lchToHsl(props.siblings.index - 1, props.siblings.total, 0.8, 20, 50)),
+  next: computed(() => lchToHsl(props.siblings.index + 1, props.siblings.total, 0.8, 20, 50))
 });
 </script>
 
@@ -61,7 +61,7 @@ const colors = reactive({
 }
 
 .row {
-  @apply mx-auto border-t-12 flex flex-col w-full py-4 px-4 md-(flex-wrap flex-row);
+  @apply mx-auto border-t-220 flex flex-col w-full py-4 px-4 md-(flex-wrap flex-row);
 }
 
 .pad {

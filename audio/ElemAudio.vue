@@ -13,7 +13,8 @@ onBeforeUnmount(() => {
 
 <template lang="pug">
 .flex.flex-col.gap-4
-  AnalysisFFT
+
   SynthMain
+  AnalysisFFT
   InputMic
 </template>

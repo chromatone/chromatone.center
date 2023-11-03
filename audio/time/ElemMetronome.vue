@@ -3,7 +3,7 @@ import { onMounted, reactive, computed } from 'vue'
 import { useTime } from './useTime'
 import { levelColor, notes, pitchColor } from '#/use'
 import { useAudio } from '../useAudio';
-import ControlKnob from '@slipmatio/control-knob'
+// import ControlKnob from '@slipmatio/control-knob'
 
 const { time, controls, groups, transport } = useTime()
 
@@ -77,7 +77,7 @@ const steps = computed(() => Math.round(controls['time:steps']))
     .is-group.flex.flex-wrap.p-2.gap-2(v-for="(group,title) in groups" :key="title")
       .select-none.relative.flex.flex-col.gap-4.items-center(v-for="(param, p) in group" :key="p")
 
-        ControlKnob.cursor-pointer.-mt-2.mb-1(
+        //- ControlKnob.cursor-pointer.-mt-2.mb-1(
           v-model="controls[`${title}:${p}`]"
           :style="{color: `hsl(${360*((controls[`${title}:${p}`]-param.min)/(param.max-param.min))}deg,30%,60%)`}"
           :options=`{
@@ -103,15 +103,15 @@ const steps = computed(() => Math.round(controls['time:steps']))
           valueTextY: 75,
           valueTextClass: 'font-bold font-mono text-2xl text-black dark-text-white',
           }`)
-        .font-mono.absolute.-bottom-4.capitalize {{ p }}
-  //- ControlRotary(
-    v-if="p != 'click'"
-    :min="param.min"
-    :max="param.max"
-    :step="param.step"
-    v-model="controls[`${title}:${p}`]"
-    :param="String(p)"
-    )
+        //- .font-mono.absolute.-bottom-4.capitalize {{ p }}
+        ControlRotary(
+          v-if="p != 'click'"
+          :min="param.min"
+          :max="param.max"
+          :step="param.step"
+          v-model="controls[`${title}:${p}`]"
+          :param="String(p)"
+          )
 </template>
 
 <style scoped lang="postcss">

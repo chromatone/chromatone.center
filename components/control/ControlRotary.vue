@@ -1,6 +1,9 @@
 <script setup>
 import { midi, learnCC } from '#/use/midi'
-import { reactive, computed, watch, watchEffect } from 'vue'
+import { reactive, ref, computed, watch, watchEffect, onMounted } from 'vue'
+
+import { useGesture } from '@vueuse/gesture'
+import { useClamp } from '@vueuse/math'
 
 const props = defineProps({
   max: { type: Number, default: 100, },
@@ -14,18 +17,20 @@ const props = defineProps({
   channel: { type: Number, default: 0 },
 });
 
-
-
 const emit = defineEmits(["update:modelValue"]);
 
 const state = reactive({
   active: false,
-  internal: 0,
+  internal: useClamp(0, 0, 100),
   initial: 0,
   external: computed(() => {
     return mapOutput(state.internal);
   }),
 });
+
+onMounted(() => {
+  state.initial = mapInput(props.modelValue);
+})
 
 const midiVal = learnCC({
   param: props.param,
@@ -38,20 +43,37 @@ watch(midiVal, v => {
   emit("update:modelValue", state.external);
 })
 
-function handler(event) {
-  const {
+const knob = ref()
+
+useGesture({
+  onDrag({
     delta: [x, y],
     dragging,
     shiftKey,
-  } = event;
-  state.active = dragging;
-  let diff = shiftKey ? 12 : 4;
-  state.internal -= y / diff;
-  state.internal += x / diff;
-  if (state.internal > 100) state.internal = 100;
-  if (state.internal < 0) state.internal = 0;
-  emit("update:modelValue", state.external);
-}
+  }) {
+    state.active = dragging;
+    let diff = shiftKey ? 12 : 2;
+    state.internal -= y / diff;
+    state.internal += x / diff;
+    emit("update:modelValue", state.external);
+  },
+  onWheel({
+    delta: [x, y],
+    dragging,
+    shiftKey,
+    event
+  }) {
+    event.preventDefault()
+    let diff = shiftKey ? 12 : 8;
+    state.internal += y / diff;
+    state.internal -= x / diff;
+    emit("update:modelValue", state.external);
+  }
+}, {
+  drag: { preventWindowScrollY: true },
+  eventOptions: { capture: false, passive: false },
+  domTarget: knob
+})
 
 watchEffect(() => {
   state.internal = mapInput(props.modelValue);
@@ -67,12 +89,12 @@ function mapInput(val) {
 }
 
 function mapOutput(val) {
-  return mapNumber(val, 0, 100, props.min, props.max, props.step);
+  return Math.round(mapNumber(val, 0, 100, props.min, props.max, props.step) / props.step) * props.step;
 }
 
 function mapNumber(val, inputmin = 0, inputmax = 100, rangemin = 0, rangemax = 100, step = 1) {
   let result = ((val - inputmin) * (rangemax - rangemin)) / (inputmax - inputmin) + rangemin;
-  return Math.round(result / step) * step;
+  return result;
 }
 
 const r = 45
@@ -82,23 +104,26 @@ const len = Math.PI * 2 * r - 50
 
 <template lang="pug">
 .knob(
-  v-drag="handler"
+  ref="knob"
   @dblclick="reset()"
-  :drag-options="{ preventWindowScrollY: true }"
   )
-  svg(viewBox="0 0 100 120")
+  svg(
+    viewBox="0 0 100 120"
+    )
     g(stroke="currentColor")
       path(d="M25,90 a 45,45,1,1,1,50,0" 
-      fill="none"
-      stroke="#9996"
-      stroke-width="8" stroke-linecap="round"
-      )
-      path(d="M25,90 a 45,45,1,1,1,50,0" 
-      fill="none"
-      stroke-width="8" stroke-linecap="round"
-      :stroke-dasharray="len"
-      :stroke-dashoffset="len - (len * (state.internal / 100))"
-      )
+        fill="none"
+        stroke="#9996"
+        stroke-width="8" stroke-linecap="round"
+        )
+      path(
+        d="M25,90 a 45,45,1,1,1,50,0" 
+        fill="none"
+        :stroke="`hsla(${state.internal*3.6}deg,70%,50%,0.8)`"
+        stroke-width="12" stroke-linecap="round"
+        :stroke-dasharray="len"
+        :stroke-dashoffset="len - (len * (state.internal / 100))"
+        )
       g(:transform="`translate(50,52.5) rotate(${state.internal * 2.9}) `")
         circle(stroke-width="2" fill="none" :r="38" opacity="0.6")
         //- circle(r="4" cx="-15" cy="25" fill="currentColor" opacity="0.8")
@@ -114,7 +139,7 @@ const len = Math.PI * 2 * r - 50
 
 <style lang="postcss" scoped>
 .knob {
-  @apply p-1 cursor-move min-w-16 rounded-lg max-w-18 text-center border-dark-100/50 dark-(border-light-100/50) cursor-pointer select-none relative overflow-hidden;
+  @apply p-1 cursor-grab active-cursor-grabbing min-w-16 rounded-lg max-w-18 text-center border-dark-100/50 dark-(border-light-100/50) cursor-pointer select-none relative overflow-hidden;
   touch-action: none;
 }
 

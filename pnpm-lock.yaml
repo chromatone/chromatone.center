@@ -11,6 +11,9 @@ dependencies:
   '@elemaudio/web-renderer':
     specifier: 3.0.0
     version: 3.0.0
+  '@slipmatio/control-knob':
+    specifier: ^0.1.0
+    version: 0.1.0
   '@tonaljs/tonal':
     specifier: 4.10.0
     version: 4.10.0
@@ -1930,6 +1933,10 @@ packages:
       picomatch: 2.3.1
       rollup: 2.79.1
     dev: true
+
+  /@slipmatio/control-knob@0.1.0:
+    resolution: {integrity: sha512-mIBBLHrlwV6Lbeezy7I5wlxbf7FEG6pRTjf1aD0DBhpjakGOtWAHMVQJ9z0OWd+t/S40hzWE13Yiy8DmGNc3WA==}
+    dev: false
 
   /@surma/rollup-plugin-off-main-thread@2.2.3:
     resolution: {integrity: sha512-lR8q/9W7hZpMWweNiAKU7NQerBnzQQLvi8qnTDU/fxItPhtZVMbPV3lbCwjhIlNBe9Bbr5V+KHshvWmVSG9cxQ==}

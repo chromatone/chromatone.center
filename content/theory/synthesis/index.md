@@ -22,3 +22,5 @@ cover: 35-54d35.jpg
   - Phase inversion
 - Hard sync
 - Granular
+
+<youtube-embed video="Gn5yixqjmN8" />

@@ -11,7 +11,7 @@ const params = {
   //Kick
   'time:bpm': { value: 120, min: 30, max: 250, step: 1, smooth: 0.1 },
   'time:steps': { value: 4, min: 1, max: 16, step: 1 },
-  'time:click': { value: 0, min: 0, max: 1, step: 1 },
+  'time:click': { value: 0, min: 0, max: 1, step: 1, hidden: true },
   'time:volume': { value: 0, min: 0, max: 1, step: 0.001 },
   'time:playing': { value: 0, nostore: true, hidden: true },
 }

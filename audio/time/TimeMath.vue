@@ -24,7 +24,9 @@ const started = useDateFormat(() => audio.started, 'YYYY MMM DD @ HH:MM:ss  ')
 .absolute.top-18.bg-light-200.p-8.z-200.w-full.cursor-pointer.rounded-lg.text-xl.font-bold.border-1.dark-bg-dark-400(
   @click="render()"
   v-if="!audio.started") Click to start watching time passing
-.flex.flex-col.gap-8.font-mono.text-center.max-w-60ch.items-stretch(
+
+ElemMetronome.fixed.bottom-0.min-w-70vw.z-100.max-w-60ch
+.flex.flex-col.gap-8.font-mono.text-center.max-w-60ch.items-stretc.z(
   @click="render()"
   :style="{opacity: audio?.started ? 1 : 0.4}"
 )
@@ -178,7 +180,7 @@ const started = useDateFormat(() => audio.started, 'YYYY MMM DD @ HH:MM:ss  ')
     .text-right Even step:
     .p-0.font-bold(:class="{['active']: time?.['step-even']}") {{time?.['step-even'] }}
     .text-left.text-sm Not Odd
-  ElemMetronome
+  
 </template>
 
 <style scoped lang="postcss">

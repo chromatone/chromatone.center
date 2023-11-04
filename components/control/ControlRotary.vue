@@ -63,9 +63,10 @@ useGesture({
     shiftKey,
     event
   }) {
+    state.active = dragging;
     event.preventDefault()
     let diff = shiftKey ? 12 : 8;
-    state.internal += y / diff;
+    state.internal -= y / diff;
     state.internal -= x / diff;
     emit("update:modelValue", state.external);
   }

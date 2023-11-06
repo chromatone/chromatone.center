@@ -12,9 +12,11 @@ const roll = reactive({
   width: 1920,
   height: 1080,
   speed: computed(() => Math.floor(roll.speedCount / 100)),
-  direction: useStorage('chroma-roll-direction', 0),
+  direction: useStorage('chromagram-direction', 0),
   notes: computed(() => rotateArray(tuner.chroma, -3)),
-  speedCount: useClamp(useStorage('chroma-roll-speed', 100), 100, 1200),
+  speedCount: useClamp(useStorage('chromagram-speed', 100), 100, 1200),
+  pow: useStorage('chromagram-pow', 3),
+  offset: useStorage('chromagram-offset', 0),
 })
 
 onMounted(() => {
@@ -76,7 +78,8 @@ function drawHorizontal() {
 }
 
 function colorIt(pitch = 0, value = 1, opacity = 1) {
-  return `hsla(${pitch * 30}, ${value * 100}%, ${value * 60}%, ${opacity})`
+  let v = Math.pow(value + roll.offset, roll.pow)
+  return `hsla(${pitch * 30}, ${v * 100}%, ${v * 60}%, ${opacity})`
 }
 
 function clear() {
@@ -103,9 +106,11 @@ function clear() {
       :width="roll.width"
       :height="roll.height"  
       )
+  .flex.items-center.gap-2.px-8.flex-wrap
+    .is-group.flex.flex-wrap.gap-2
+      ControlRotary(v-model="roll.pow" :min="1" :max="10" :step="1" :fixed="0" param="POW")
+      ControlRotary(v-model="roll.offset" :min="-.25" :max=".25" :step=".0001" param="OFFSET" :fixed="2")
 </template>
 
-<style lang="postcss" scoped>
-
-</style>
+<style lang="postcss" scoped></style>
 

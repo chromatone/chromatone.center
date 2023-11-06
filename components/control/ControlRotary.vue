@@ -71,7 +71,7 @@ useGesture({
     emit("update:modelValue", state.external);
   }
 }, {
-  drag: { preventWindowScrollY: true },
+  drag: { preventWindowScrollY: true, },
   eventOptions: { capture: false, passive: false },
   domTarget: knob
 })

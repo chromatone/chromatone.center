@@ -26,7 +26,8 @@ const notes = computed(() => {
   }
 
   return chroma.map((el, i) => {
-    let input = tuner.aChroma[i] > tuner.chromaAvg && !tuner.note.silent ? tuner.aChroma[i] : 0
+    let val = Math.pow(tuner.aChroma[i], 2)
+    let input = val > tuner.chromaAvg && !tuner.note.silent ? val : 0
     return el + input
   })
 })

@@ -7,7 +7,7 @@ const {
 
 
 <template lang="pug">
-.row.is-group.gap-2
+.row.is-group.gap-2.select-none
   control-push(
     v-model="active" 
     title="NOISE")
@@ -17,11 +17,11 @@ const {
     :max="1"
     :step="0.01"
     param="DRY"
-  )
+    )
   control-choose(
     v-model="options.noise.type"
     :variants="types"
-  )
+    )
   .is-group.flex.flex-wrap.p-1
     control-rotary(
       v-model="options.envelope.attack"
@@ -29,34 +29,34 @@ const {
       :max="4"
       :step="0.01"
       param="ATT"
-    )
+      )
     control-rotary(
       v-model="options.envelope.decay"
       :min="0.005"
       :max="6"
       :step="0.01"
       param="DEC"
-    )
+      )
     control-rotary(
       v-model="options.envelope.sustain"
       :min="0.005"
       :max="1"
       :step="0.01"
       param="SUS"
-    )
+      )
     control-rotary(
       v-model="options.envelope.release"
       :min="0.005"
       :max="10"
       :step="0.01"
       param="REL"
-    )
+      )
   svg.w-8rem.border-1.rounded-lg.m-1(
     version="1.1",
     baseProfile="full",
     viewBox="0 0 32 10",
     xmlns="http://www.w3.org/2000/svg",
-  )
+    )
     line(
       v-for="(fr, i) in fftFreq"
       :key="fr"
@@ -67,13 +67,13 @@ const {
       :y2="10"
       :y1="10 - fftData[i] * 50"
       :title="fftFreq[i]"
-    )
+      )
 .row.is-group.gap-2
   .flex.flex-wrap.gap-2
     control-push(
       v-model="filterOptions.on"
       title="FILTER"
-    )
+      )
     control-rotary(
       v-model="filterOptions.volume"
       param="VOL"
@@ -81,7 +81,7 @@ const {
       :max="1"
       :step="0.01"
       :fixed="1"
-    )
+      )
     control-rotary(
       v-model="filterOptions.baseFrequency"
       param="FREQ"
@@ -108,7 +108,7 @@ const {
       :max="20"
       :step="0.1"
       :fixed="1"
-    )
+      )
     control-rotary(
       v-model="filterOptions.wet"
       param="WET"
@@ -117,16 +117,16 @@ const {
       :step="0.1"
       :fixed="1"
       unit=""
-    )
+      )
     control-choose(
       v-model="filterOptions.filter.type"
       :variants="filterTypes"
-    ) 
+      ) 
   .flex.flex-wrap.gap-2
     control-push(
       v-model="filterOptions.play"
       title="PLAY"
-    )
+      )
     control-rotary(
       v-model="filterOptions.frequency"
       param="LFO"
@@ -135,7 +135,7 @@ const {
       :step="0.01"
       :fixed="2"
       unit="hz"
-    )
+      )
     control-rotary(
       v-model="filterOptions.depth"
       param="DPTH"
@@ -144,11 +144,11 @@ const {
       :step="0.1"
       :fixed="1"
       unit=""
-    )
+      )
     control-choose(
       v-model="filterOptions.type"
       :variants="filterLFOTypes"
-    )
+      )
 .row.is-group.gap-2
   control-push(
     v-model="crusherOptions.on"
@@ -162,7 +162,7 @@ const {
     :max="1"
     :step="0.01"
     :fixed="1"
-  )
+    )
   control-rotary(
     v-model="crusherOptions.bits"
     param="BITS"
@@ -170,7 +170,7 @@ const {
     :max="16"
     :step="0.01"
     :fixed="2"
-  )
+    )
   control-rotary(
     v-model="crusherOptions.wet"
     param="WET"
@@ -179,7 +179,7 @@ const {
     :step="0.1"
     :fixed="1"
     unit=""
-  )
+    )
 .row.is-group.gap-2
   control-push(
     v-model="pannerOptions.on"
@@ -205,7 +205,7 @@ const {
     :step="0.01"
     :fixed="2"
     unit="hz"
-  )
+    )
   control-rotary(
     v-model="pannerOptions.depth"
     param="DPTH"
@@ -214,7 +214,7 @@ const {
     :step="0.1"
     :fixed="1"
     unit=""
-  )
+    )
   control-rotary(
     v-model="pannerOptions.wet"
     param="WET"
@@ -223,8 +223,7 @@ const {
     :step="0.1"
     :fixed="1"
     unit=""
-  )
-
+    )
 
 </template>
 

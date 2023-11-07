@@ -146,10 +146,10 @@ function colorIt(freq, value) {
   .flex.items-center.gap-2.px-8.flex-wrap
     .is-group.flex.flex-wrap.gap-2
       ControlRotary(v-model="state.pow" :min="1" :max="10" :step="1" :fixed="0" param="POW")
-      ControlRotary(v-model="state.offset" :min="-.25" :max=".25" :step=".0001" param="OFFSET" :fixed="2")
+      ControlRotary(v-model="state.offset" :min="-.5" :max=".5" :step=".0001" param="OFFSET" :fixed="2")
 
     .max-w-180.mx-auto.relative
-      .absolute.p-4.opacity-70 Right click here to open the spectrogram in Picture-In-Picture mode
+      .absolute.p-4.opacity-70.touch-none.select-none Right click here to open the spectrogram in Picture-In-Picture mode
         .opacity-50 You may need to press play in the floating window to see the spectrogram
       video.max-h-40(ref="video")  
 </template>

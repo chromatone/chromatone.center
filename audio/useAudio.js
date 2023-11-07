@@ -8,6 +8,7 @@ export const audio = shallowReactive({
   initiating: false,
   initiated: false,
   started: false,
+  running: false,
   ctx: null,
   core: null,
   node: null,
@@ -55,7 +56,11 @@ export function useAudio() {
 
 function render(place) {
   if (audio?.ctx?.state === 'suspended') { audio?.ctx?.resume() } if (!audio.initiated) { initAudio() } else {
-    let stereo = [0, el.mul(0, el.meter({ name: 'main:sample-rate' }, el.sr()))]
+
+    const sampleRate = el.mul(0, el.meter({ name: 'main:sample-rate' }, el.sr()))
+
+    let stereo = [0, sampleRate]
+
     for (let l in audio.layers) {
       let layer = audio.layers[l]
       if (layer) {

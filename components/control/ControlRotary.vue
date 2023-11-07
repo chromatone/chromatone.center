@@ -66,12 +66,13 @@ useGesture({
     state.active = dragging;
     event.preventDefault()
     let diff = shiftKey ? 12 : 8;
-    state.internal -= y / diff;
+    state.internal += y / diff;
     state.internal -= x / diff;
     emit("update:modelValue", state.external);
   }
 }, {
   drag: { preventWindowScrollY: true, },
+  wheel: { preventWindowScrollY: true, },
   eventOptions: { capture: false, passive: false },
   domTarget: knob
 })

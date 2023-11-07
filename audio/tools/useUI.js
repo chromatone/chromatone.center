@@ -6,8 +6,8 @@ import { el } from '@elemaudio/core';
 
 export function useUI(params, title = 'es') {
 
-  const cs = {}
-  const gs = {}
+  const cs = {} // controls
+  const gs = {} // groups of controls
   for (let p in params) {
     const param = params[p]
     cs[p] = useClamp(param?.nostore ? param.value : useStorage(`${title}:${p}`, param.value), param.min, param.max)

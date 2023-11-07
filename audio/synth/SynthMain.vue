@@ -1,10 +1,19 @@
 <script setup>
-import { useMidi, notes } from "#/use";
+import { useMidi, notes, synth as AppSynth } from "#/use";
 import { pitchColor } from "#/use/calculations";
 import { computed } from "vue";
 import AnalysisScope from "../analysis/AnalysisScope.vue";
 import { useSynth } from "./useSynth";
 import { colord } from "colord";
+import { onBeforeUnmount, onMounted } from "vue";
+
+onMounted(() => {
+  AppSynth.state.midi = false
+})
+
+onBeforeUnmount(() => {
+  AppSynth.state.midi = true
+})
 
 const { groups, controls, voices, cycleNote, stopAll } = useSynth()
 
@@ -18,17 +27,19 @@ const color = computed(() => Object.entries(midi.activeNotes).reduce((acc, en) =
 </script>
 
 <template lang='pug'>
-.flex.flex-col.gap-2.is-group.p-2.bg-light-200.dark-bg-dark-200.shadow.rounded.gap-4 
-  .flex.flex-col.relative.mb-3.select-none
-    AnalysisScope.absolute.-top-4.pointer-events-none(name="synth" :color="color")
-    .flex.flex-wrap.gap-1.font-mono.w-full.justify-around
-      .text-md.flex.w-8.h-8.text-center.rounded-full.justify-center.items-center.transition.cursor-pointer(
-        v-for="(voice,v) in voices.list" :key="v"
-        :style="{backgroundColor:pitchColor(voice.midi-9-24,3,undefined,voice.gate ? 1:0.2), opacity: voice.gate ? 1:0.5}"
-        @mousedown="voice.gate = 1"
-        @mouseup="voice.gate = 0"
-        @mouseleave="voice.gate=0"
-        ) {{ notes[(voice.midi-9)%12] }}
+.flex.flex-col.gap-2.is-group.p-2.bg-light-200.dark-bg-dark-200.shadow.rounded.gap-6.select-none
+  .flex.flex-col.relative.select-none.gap-4
+    AnalysisFFT
+    AnalysisScope.absolute.top-8.pointer-events-none(name="synth" :color="color")
+  .flex.flex-wrap.gap-1.font-mono.w-full.justify-around
+    .text-sm.flex.min-w-6.min-h-4.flex-1.text-center.rounded-full.justify-center.items-center.transition.cursor-pointer(
+      v-for="(voice,v) in voices.list" :key="v"
+      :style="{backgroundColor:pitchColor(voice.midi-9-24,3,undefined,voice.gate ? 1:0.2), opacity: voice.gate ? 1:0.5}"
+      @mousedown="voice.gate = 1"
+      @mouseup="voice.gate = 0"
+      @mouseleave="voice.gate=0"
+      )
+      //-  {{ notes[(voice.midi-9)%12] }}
 
   .flex.flex-wrap.gap-2.flex-1
     button.text-button(
@@ -52,6 +63,5 @@ const color = computed(() => Object.entries(midi.activeNotes).reduce((acc, en) =
         :min="param.min"
         :max="param.max"
         :param="p")
-    .flex.gap-4.flex-1
-     
+    
 </template>

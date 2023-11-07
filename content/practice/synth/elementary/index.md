@@ -17,5 +17,5 @@ links:
 
 
 <client-only>
-<ElemAudio />
+<SynthMain />
 </client-only>

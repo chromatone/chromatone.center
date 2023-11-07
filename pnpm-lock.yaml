@@ -9,11 +9,8 @@ dependencies:
     specifier: 3.0.0
     version: 3.0.0
   '@elemaudio/web-renderer':
-    specifier: 3.0.0
-    version: 3.0.0
-  '@slipmatio/control-knob':
-    specifier: ^0.1.0
-    version: 0.1.0
+    specifier: 3.0.1
+    version: 3.0.1
   '@tonaljs/tonal':
     specifier: 4.10.0
     version: 4.10.0
@@ -45,7 +42,7 @@ dependencies:
     specifier: 0.6.3
     version: 0.6.3
   color-name-list:
-    specifier: ^10.16.0
+    specifier: 10.16.0
     version: 10.16.0
   colord:
     specifier: 2.9.3
@@ -66,7 +63,7 @@ dependencies:
     specifier: 1.0.10
     version: 1.0.10
   jspdf:
-    specifier: ^2.5.1
+    specifier: 2.5.1
     version: 2.5.1
   meyda:
     specifier: 5.6.2
@@ -87,7 +84,7 @@ dependencies:
     specifier: 0.12.17
     version: 0.12.17
   poline:
-    specifier: ^0.7.0
+    specifier: 0.7.0
     version: 0.7.0
   recordrtc:
     specifier: 5.6.2
@@ -96,10 +93,10 @@ dependencies:
     specifier: 4.0.1
     version: 4.0.1
   smplr:
-    specifier: ^0.11.1
+    specifier: 0.11.1
     version: 0.11.1
   svg2pdf.js:
-    specifier: ^2.2.2
+    specifier: 2.2.2
     version: 2.2.2(jspdf@2.5.1)
   thousands-counter:
     specifier: 2.1.1
@@ -112,12 +109,12 @@ dependencies:
     version: 14.8.49
   vitepress-pages:
     specifier: 2.0.1
-    version: 2.0.1(vitepress@1.0.0-rc.24)
+    version: 2.0.1(vitepress@1.0.0-rc.25)
   vue:
     specifier: 3.3.4
     version: 3.3.4
   vue-glsl:
-    specifier: ^1.1.27
+    specifier: 1.1.27
     version: 1.1.27
   webchuck:
     specifier: 1.2.3
@@ -128,10 +125,10 @@ dependencies:
 
 devDependencies:
   '@directus/sdk':
-    specifier: ^13.0.1
+    specifier: 13.0.1
     version: 13.0.1
   '@iconify/json':
-    specifier: ^2.2.135
+    specifier: 2.2.135
     version: 2.2.135
   '@modyfi/vite-plugin-yaml':
     specifier: 1.0.4
@@ -140,7 +137,7 @@ devDependencies:
     specifier: 0.56.5
     version: 0.56.5(pug@3.0.2)
   '@vite-pwa/vitepress':
-    specifier: ^0.2.3
+    specifier: 0.2.3
     version: 0.2.3(vite-plugin-pwa@0.16.6)
   '@vue/language-plugin-pug':
     specifier: 1.8.19
@@ -161,8 +158,8 @@ devDependencies:
     specifier: 4.4.11
     version: 4.4.11
   vitepress:
-    specifier: 1.0.0-rc.24
-    version: 1.0.0-rc.24(@algolia/client-search@4.19.1)(drauu@0.3.7)(fuse.js@6.6.2)(postcss@8.4.31)(search-insights@2.8.2)
+    specifier: 1.0.0-rc.25
+    version: 1.0.0-rc.25(@algolia/client-search@4.19.1)(drauu@0.3.7)(fuse.js@6.6.2)(postcss@8.4.31)(search-insights@2.8.2)
 
 packages:
 
@@ -1537,8 +1534,8 @@ packages:
       shallowequal: 1.1.0
     dev: false
 
-  /@elemaudio/web-renderer@3.0.0:
-    resolution: {integrity: sha512-4Y1xw6TsNhnlSjmZe+5b1ihv3X3l8JJrWYW3m70btsQAHEYSSeJKjBKkvOIrlKh+FaAiAku3jRSdONzorTJiyw==}
+  /@elemaudio/web-renderer@3.0.1:
+    resolution: {integrity: sha512-ai5RC2TfRXrT2DeiOK9/JSU4OlDRI4ti77j46TKLrS/+p81bEeyq0U/naTzNOdzGYvuGnjIqlHRnWxQxeyt+gA==}
     dependencies:
       '@elemaudio/core': 3.0.0
     dev: false
@@ -1933,10 +1930,6 @@ packages:
       picomatch: 2.3.1
       rollup: 2.79.1
     dev: true
-
-  /@slipmatio/control-knob@0.1.0:
-    resolution: {integrity: sha512-mIBBLHrlwV6Lbeezy7I5wlxbf7FEG6pRTjf1aD0DBhpjakGOtWAHMVQJ9z0OWd+t/S40hzWE13Yiy8DmGNc3WA==}
-    dev: false
 
   /@surma/rollup-plugin-off-main-thread@2.2.3:
     resolution: {integrity: sha512-lR8q/9W7hZpMWweNiAKU7NQerBnzQQLvi8qnTDU/fxItPhtZVMbPV3lbCwjhIlNBe9Bbr5V+KHshvWmVSG9cxQ==}
@@ -5671,23 +5664,23 @@ packages:
         optional: true
     dependencies:
       esbuild: 0.18.20
-      postcss: 8.4.29
+      postcss: 8.4.31
       rollup: 3.29.0
     optionalDependencies:
       fsevents: 2.3.3
 
-  /vitepress-pages@2.0.1(vitepress@1.0.0-rc.24):
+  /vitepress-pages@2.0.1(vitepress@1.0.0-rc.25):
     resolution: {integrity: sha512-MKARqtwnTtzApWNAPSe4mLCTkxAtPQPjFtBt5qSb9HCnCniNbpud575c0ool+c0svci79EnszS5I/YKXL1xT0g==}
     peerDependencies:
       vitepress: ^1.0.0-beta.1
     dependencies:
       sharp: 0.32.5
-      vitepress: 1.0.0-rc.24(@algolia/client-search@4.19.1)(drauu@0.3.7)(fuse.js@6.6.2)(postcss@8.4.31)(search-insights@2.8.2)
+      vitepress: 1.0.0-rc.25(@algolia/client-search@4.19.1)(drauu@0.3.7)(fuse.js@6.6.2)(postcss@8.4.31)(search-insights@2.8.2)
       vue: 3.3.4
     dev: false
 
-  /vitepress@1.0.0-rc.24(@algolia/client-search@4.19.1)(drauu@0.3.7)(fuse.js@6.6.2)(postcss@8.4.31)(search-insights@2.8.2):
-    resolution: {integrity: sha512-RpnL8cnOGwiRlBbrYQUm9sYkJbtyOt/wYXk2diTcokY4yvks/5lq9LuSt+MURWB6ZqwpSNHvTmxgaSfLoG0/OA==}
+  /vitepress@1.0.0-rc.25(@algolia/client-search@4.19.1)(drauu@0.3.7)(fuse.js@6.6.2)(postcss@8.4.31)(search-insights@2.8.2):
+    resolution: {integrity: sha512-1dqWiHNThNrVZ08ixmfEDBEH+764KOgnev9oXga/x6cN++Vb9pnuu8p3K6DQP+KZrYcG+WiX7jxal0iSNpAWuQ==}
     hasBin: true
     peerDependencies:
       markdown-it-mathjax3: ^4.3.2

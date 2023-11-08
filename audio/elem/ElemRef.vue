@@ -30,7 +30,8 @@ button.text-button(v-if="!started" @click="render(); started = true") RENDER
 .flex.flex-col.gap-4(v-else)
   .p-0 Synth {{ controls.freq }}
   input(type="range" v-model="controls['ref:frequency']" :min="30" :max="6000" )
-  input(type="range" v-model="controls['ref:volume']" :min="0" :max="1" :step="0.01")
+  //- input(type="range" v-model="controls['ref:volume']" :min="0" :max="1" :step="0.01")
+  ControlRotary( v-model="controls['ref:volume']" :min="0" :max="1" :step="0.01")
   AnalysisFFT
 
 </template>

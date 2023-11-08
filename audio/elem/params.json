@@ -1,4 +1,5 @@
 {
 	"ref:frequency": { "value": 110, "min": 30, "max": 5000, "step": 1 },
+
 	"ref:volume": { "value": 0.2, "min": 0, "max": 1, "step": 0.01 }
 }

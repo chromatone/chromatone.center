@@ -12,13 +12,7 @@ export const audio = shallowReactive({
   ctx: null,
   core: null,
   node: null,
-  layers: {
-    synth: null,
-    mic: null,
-    seq: null,
-    drums: null,
-    time: null,
-  },
+  layers: {},
 })
 
 const meters = reactive({})

@@ -6,8 +6,8 @@ import { useStorage } from '@vueuse/core';
 
 const { audio } = useAudio()
 
-
 export function useParams(params, title = 'ref') {
+
   const controls = reactive({})
   const cv = {}
   const setters = {}
@@ -28,6 +28,7 @@ export function useParams(params, title = 'ref') {
 
   watch(controls, cs => {
     for (let c in cs) {
+      if (!setters[c]) continue
       setters[c]({ value: cs[c] })
     }
   })

@@ -5,6 +5,6 @@ date: 2019-11-03
 ---
 
 <client-only>
-<InputMic />
-<AnalysisFFT />
+<AudioInputMic />
+<AudioAnalysisFFT />
 </client-only>

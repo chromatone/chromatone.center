@@ -5,7 +5,7 @@ import { levelColor, notes, pitchColor } from '#/use'
 import { useAudio } from '../useAudio';
 import { useDateFormat } from '@vueuse/core';
 
-import ElemMetronome from './ElemMetronome.vue'
+import AudioTimeMetronome from './AudioTimeMetronome.vue'
 
 const { time, controls, groups, transport } = useTime()
 
@@ -25,7 +25,7 @@ const started = useDateFormat(() => audio.started, 'YYYY MMM DD @ HH:MM:ss  ')
   @click="render()"
   v-if="!audio.started") Click to start watching time passing
 
-ElemMetronome.fixed.bottom-0.min-w-70vw.z-100.max-w-60ch
+AudioTimeMetronome.fixed.bottom-0.min-w-70vw.z-100.max-w-60ch
 .flex.flex-col.gap-8.font-mono.text-center.max-w-60ch.items-stretc.z(
   @click="render()"
   :style="{opacity: audio?.started ? 1 : 0.4}"

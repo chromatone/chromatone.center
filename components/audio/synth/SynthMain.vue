@@ -2,7 +2,6 @@
 import { useMidi, notes, synth as AppSynth } from "#/use";
 import { pitchColor } from "#/use/calculations";
 import { computed } from "vue";
-import AnalysisScope from "../analysis/AnalysisScope.vue";
 import { useSynth } from "./useSynth";
 import { colord } from "colord";
 import { onBeforeUnmount, onMounted } from "vue";
@@ -29,8 +28,8 @@ const color = computed(() => Object.entries(midi.activeNotes).reduce((acc, en) =
 <template lang='pug'>
 .flex.flex-col.gap-2.is-group.p-2.bg-light-200.dark-bg-dark-200.shadow.rounded.gap-6.select-none
   .flex.flex-col.relative.select-none.gap-4
-    AnalysisFFT
-    AnalysisScope.absolute.top-8.pointer-events-none(name="synth" :color="color")
+    AudioAnalysisFFT
+    AudioAnalysisScope.absolute.top-8.pointer-events-none(name="synth" :color="color")
   .flex.flex-wrap.gap-1.font-mono.w-full.justify-around
     .text-sm.flex.min-w-6.min-h-4.flex-1.text-center.rounded-full.justify-center.items-center.transition.cursor-pointer(
       v-for="(voice,v) in voices.list" :key="v"

@@ -32,6 +32,6 @@ button.text-button(v-if="!started" @click="render(); started = true") RENDER
   input(type="range" v-model="controls['ref:frequency']" :min="30" :max="6000" )
   //- input(type="range" v-model="controls['ref:volume']" :min="0" :max="1" :step="0.01")
   ControlRotary( v-model="controls['ref:volume']" :min="0" :max="1" :step="0.01")
-  AnalysisFFT
+  AudioAnalysisFFT
 
 </template>

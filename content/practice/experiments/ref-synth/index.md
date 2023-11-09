@@ -5,7 +5,7 @@ date: 2010-11-07
 ---
 
 <client-only>
-<ElemRef />
+<AudioElemRef />
 </client-only>
 
 ## Links

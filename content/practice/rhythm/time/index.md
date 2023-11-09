@@ -9,5 +9,5 @@ links: https://discord.com/channels/826071713426178078/834787928688689172/112795
 
 
 <client-only>
-<TimeMath />
+<AudioTimeMath />
 </client-only>

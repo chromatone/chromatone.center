@@ -6,4 +6,6 @@ cover: hands.png
 layout: app
 ---
 
-<ChromaHand v-for="right in [false,true]" :style="{position:right? 'absolute' : 'block', transform: right?`translateX(200px) scaleX(-100%) ` : ''}" :right="right" />
+<div class="flex">
+<ChromaHand v-for="right in [false,true]" :style="{transform: right?`translateX(0px) scaleX(-100%) ` : ''}" :right="right" />
+</div>

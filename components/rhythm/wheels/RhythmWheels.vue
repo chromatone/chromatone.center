@@ -16,7 +16,7 @@ const numWheels = ref(2)
 
 <template lang='pug'>
 #screen.flex.flex-col.items-center.w-full.relative.pb-12.p-4.fullscreen-container.rounded-3xl
-  svg#metronome.w-full.max-h-90vh(
+  svg#metronome.w-full.min-h-80svh.max-h-100svh.w-full(
     version="1.1",
     baseProfile="full",
     viewBox="-500 -500 1000 1000",

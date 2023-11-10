@@ -45,7 +45,7 @@ const buttons = computed(() => {
 
 <style lang="postcss" scoped>
 .header {
-  @apply p-2 relative flex flex-col gap-1 min-h-38svh items-start justify-end overflow-hidden transition-all duration-400 ease-in;
+  @apply p-2 relative flex flex-col gap-1 min-h-38svh items-center justify-end overflow-hidden transition-all duration-400 ease-in;
 }
 
 .cover {

@@ -39,12 +39,12 @@ const lightColor = computed(() => lchToHsl(siblings.value.index, siblings.value.
     side-bar(:open="openSideBar" @close="openSideBar = false")
 
     template(v-if="f.template == 'home'")
-      main.home(aria-labelledby="main-title")
-        chroma-flower.mt-16
-        .p-8.gap-1.flex.flex-col
-          .text-3rem.font-bold Chromatone
+      main.home.items-center(aria-labelledby="main-title")
+        chroma-flower.mt-16.w-full
+        .p-8.gap-1.flex.flex-col.items-center.text-center
+          .text-4rem.font-bold Chromatone
           .text-2rem Visual Music Language
-          .text-xl To Learn, Explore and Express With 
+          .text-xl to learn, explore and express with 
         .flex.flex-col.max-w-60ch.ml-2
           home-tile(
             v-for="(area, i) in children", 
@@ -54,6 +54,7 @@ const lightColor = computed(() => lchToHsl(siblings.value.index, siblings.value.
             :total="children.length")  
           youtube-embed(:video="f?.youtube" v-if="f?.youtube")
         content.content.z-2
+
     template(v-else)
       main#content.w-full.relative
         page-headline(
@@ -61,7 +62,7 @@ const lightColor = computed(() => lchToHsl(siblings.value.index, siblings.value.
           :pageColor="pageColor", :lightColor="lightColor" :page="f" :cover="f.dynamic ? f?.cover || f?.poster || '' : page?.frontmatter?.cover ")
 
           page-parents.mb-1.ml-6(:parents="f.dynamic ? parents : parents.slice(0,-1)")
-        .z-100.text-md.p-2.flex.flex-wrap.gap-2.items-center.bg-light-200.bg-opacity-60.dark-bg-dark-200.dark-bg-opacity-60.backdrop-blur-xl.pt-2.pl-14.lg-pl-8.min-h-15(
+        .z-100.text-md.p-2.flex.flex-col.gap-2.items-center.bg-light-200.bg-opacity-60.dark-bg-dark-200.dark-bg-opacity-60.backdrop-blur-xl.pt-2.pl-14.lg-pl-8.min-h-15(
           :style="{backgroundColor:pageColor}"
           v-else)
           h2.font-bold {{ f?.title }}
@@ -71,11 +72,11 @@ const lightColor = computed(() => lchToHsl(siblings.value.index, siblings.value.
           :src="f.iframe"
           )
         transition(name="fade")
-          .pb-8.relative(:key="route.path")
+          .pb-8.relative.flex.flex-col.items-center.w-full(:key="route.path")
 
             content.content.flex-auto.z-10(v-if="f?.topContent")
 
-            row-list.px-2.my-2.max-w-full( :children="children")
+            row-list.px-2.my-2.max-w-200( :children="children")
 
             content.content.flex-auto.z-10(v-if="!f?.topContent")
 

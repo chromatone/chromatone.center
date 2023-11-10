@@ -5,5 +5,5 @@ date: 2019-11-02
 ---
 
 <client-only>
-<drums-sequencer />
+<audio-drums-sequencer />
 </client-only>

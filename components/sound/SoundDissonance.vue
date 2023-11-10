@@ -110,7 +110,7 @@ watch([() => freq.hz, () => mouse.pressed], () => {
 
 <template lang="pug">
 .fullscreen-container#screen.rounded-3xl
-  svg#dissonance.w-full.my-20.select-none(
+  svg#dissonance.min-h-80svh.max-h-100svh.w-full.select-none(
     ref="svg",
     version="1.1",
     baseProfile="full",

@@ -80,7 +80,7 @@ watchEffect(() => {
 
 <template lang="pug">
 #screen.fullscreen-container.mb-8.p-4.rounded-xl.transition-all.duration-400.ease-in-out( :style="{ backgroundColor: mix.hex }")
-  svg.max-h-3xl.w-full.select-none(
+  svg.min-h-80svh.max-h-100svh.w-full.select-none(
     version="1.1",
     baseProfile="full",
     viewBox="-20 -20 140 130",

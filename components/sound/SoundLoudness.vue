@@ -107,7 +107,7 @@ const points = reactive({
 
 <template lang="pug">
 .fullscreen-container.rounded-3xl#screen.p-4.mb-8
-  svg.w-full.select-none(
+  svg.min-h-80svh.max-h-100svh.w-full.select-none(
     ref="svg"
     version="1.1",
     baseProfile="full",

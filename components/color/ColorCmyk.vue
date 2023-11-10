@@ -25,8 +25,8 @@ function useDrag(channel) {
 </script>
 
 <template lang="pug">
-.fullscreen-container.mb-8.p-4.rounded-3xl.transition-all.duration-800.ease-out#screen(:style="{ backgroundColor: mix.hex }")
-  svg.max-h-3xl.w-full(
+.fullscreen-container.mb-8.p-4.rounded-3xl.transition-all.duration-800.ease-out.w-full#screen(:style="{ backgroundColor: mix.hex }")
+  svg.min-h-80svh.max-h-100svh.w-full(
     version="1.1",
     baseProfile="full",
     viewBox="0 0 100 100",
@@ -146,6 +146,4 @@ function useDrag(channel) {
   //-     input(type="range" v-model="mix.k" min="0" max="100" id="black")
 </template>
 
-<style lang="postcss" scoped>
-
-</style>
+<style lang="postcss" scoped></style>

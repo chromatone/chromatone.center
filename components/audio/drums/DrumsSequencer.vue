@@ -1,5 +1,5 @@
 <script setup>
-import AudioAnalysisScope from '../analysis/AudioAnalysisScope.vue';
+import AudioAnalysisScope from '../analysis/AnalysisScope.vue';
 import { useDrums } from './useDrums';
 import { useSequencer } from './useSequencer';
 
@@ -8,7 +8,7 @@ const { sequencer } = useSequencer()
 </script>
 
 <template lang='pug'>
-.flex.flex-col.gap-2.is-group.p-2.bg-light-200.dark-bg-dark-200.shadow.rounded.gap-4
+.flex.flex-col.gap-2.is-group.p-2.bg-light-200.dark-bg-dark-200.shadow.rounded.gap-4.min-w-full
   .is-group.flex.flex-wrap
     ControlRotary(
       param="BPM"
@@ -48,7 +48,7 @@ const { sequencer } = useSequencer()
 
 <style scoped lang="postcss">
 .step {
-  @apply justify-center text-center flex-1 rounded min-h-8 bg-light-900 dark-bg-dark-50 select-none;
+  @apply justify-center text-center flex-1 rounded min-h-8 flex-1 p-2 sm-p-4 bg-light-900 dark-bg-dark-50 select-none;
 }
 
 .active {

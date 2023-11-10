@@ -43,5 +43,5 @@ onMounted(() => {
 </script>
 
 <template lang="pug">
-canvas.w-full.h-500px.m-auto.rounded-2xl(ref="canvas")
+canvas.-z-4.top-0.right-0.scale-150.opacity-30.absolute.max-w-500px.h-500px.m-auto.rounded-2xl(ref="canvas")
 </template>

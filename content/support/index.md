@@ -20,7 +20,6 @@ buttons:
 ---
 
 <script setup>
-import mapGlobe from './globe.vue'
 import map from '#/db/map.yml'
 const dots = map.cities.map(city=>city.coord)
 </script>

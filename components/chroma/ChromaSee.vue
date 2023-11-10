@@ -34,7 +34,7 @@ function getAmmount(ammount) {
   control-start.absolute(
     v-if="!tuner.initiated" 
     @click="init()") Start
-  svg.max-h-100vh.w-full#screen.cursor-pointer.touch-none(
+  svg.min-h-80svh.max-h-100svh.w-full.w-full#screen.cursor-pointer.touch-none(
     ref="stage"
     version="1.1",
     baseProfile="full",

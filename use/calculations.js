@@ -51,8 +51,7 @@ export function pitchColor(pitch = 0, octave = 0, velocity = 1, alpha = 1) {
   if (octave === undefined) {
     octave = Math.floor(pitch / 12) + 4
   }
-  return `hsla(${(pitch % 12) * 30},${velocity * 100}%,${Math.abs(octave + 2) *
-    8}%,${alpha})`
+  return `hsla(${(pitch % 12) * 30},${velocity * 100}%,${Math.abs(octave + 2) * 8}%,${alpha})`
 }
 
 /**

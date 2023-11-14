@@ -33,10 +33,10 @@ function clear() {
 
 const state = reactive({
   initiated: false,
-  width: 800,
-  height: 240,
+  width: 1600,
+  height: 1600,
   speed: computed(() => Math.floor(state.speedCount / 100)),
-  speedCount: useClamp(100, 100, 300),
+  speedCount: useClamp(100, 100, 500),
   vertical: useStorage('spectrogram-is-vertical', true),
   pow: useStorage('spectrogram-pow', 3),
   offset: useStorage('spectrogram-offset', 0),
@@ -123,7 +123,7 @@ function colorIt(freq, value) {
 <template lang="pug">
 .flex.flex-col.justify-center
 
-  .fullscreen-container.text-white.rounded-3xl.overflow-hidden#screen.m-4
+  .fullscreen-container.text-white.rounded-3xl.overflow-hidden#screen.m-4.max-h-90svh
 
     canvas#spectrogram.h-full.min-h-70svh.w-full.rounded-md.cursor-pointer(
       ref="canvasElement"
@@ -148,10 +148,9 @@ function colorIt(freq, value) {
       ControlRotary(v-model="state.pow" :min="1" :max="10" :step="1" :fixed="0" param="POW")
       ControlRotary(v-model="state.offset" :min="-.5" :max=".5" :step=".0001" param="OFFSET" :fixed="2")
 
-    .max-w-180.mx-auto.relative.text-white
-      .absolute.p-4.opacity-70.touch-none.select-none Right click here to open the spectrogram in Picture-In-Picture mode
-        .opacity-50 You may need to press play in the floating window to see the spectrogram
-      video.max-h-40(ref="video")  
+    .max-w-180.mx-auto.relative.text-white 
+      .absolute.p-4.opacity-70.touch-none.select-none Right click here to enter Picture-In-Picture mode
+      video.max-h-50(ref="video")  
 </template>
   
 <style lang="postcss" scoped></style>

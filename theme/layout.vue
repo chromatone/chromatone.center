@@ -30,12 +30,11 @@ const lightColor = computed(() => lchToHsl(siblings.value.index, siblings.value.
 
 <template lang="pug">
 .theme
-  img.top-16px.left-4.fixed.z-1000.cursor-pointer.mr-3.h-30px(v-if="theme.icon", :src="theme.icon", alt="Chromatone logo" @click="openSideBar = !openSideBar")
+  img.top-16px.left-4.fixed.z-1000.cursor-pointer.mr-3.h-30px(v-if="theme.logo", :src="theme.logo", alt="Chromatone logo" @click="openSideBar = !openSideBar")
   client-only
     nav-tools
   nav-view
   .main
-
     side-bar(:open="openSideBar" @close="openSideBar = false")
 
     template(v-if="f.template == 'home'")

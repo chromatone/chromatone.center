@@ -12,7 +12,6 @@ const pressed = ref(false);
 
 const octaves = ref(4)
 
-
 </script>
 
 <template lang="pug">

@@ -109,6 +109,7 @@ const len = Math.PI * 2 * r - 50
   ref="knob"
   @dblclick="reset()"
   )
+  .i-ph-arrows-horizontal.absolute.text-10px.top-14px.opacity-70
   svg(
     viewBox="0 0 100 120"
     )
@@ -141,7 +142,7 @@ const len = Math.PI * 2 * r - 50
 
 <style lang="postcss" scoped>
 .knob {
-  @apply p-1 cursor-grab active-cursor-grabbing min-w-16 rounded-lg max-w-18 text-center border-dark-100/50 dark-(border-light-100/50) cursor-pointer select-none relative overflow-hidden;
+  @apply p-1 flex flex-col items-center cursor-grab active-cursor-grabbing min-w-16 rounded-lg max-w-18 text-center border-dark-100/50 dark-(border-light-100/50) cursor-pointer select-none relative overflow-hidden relative;
   touch-action: none;
 }
 

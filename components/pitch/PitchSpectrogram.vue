@@ -37,8 +37,8 @@ const state = reactive({
   height: 1600,
   speed: computed(() => Math.floor(state.speedCount / 100)),
   speedCount: useClamp(100, 100, 500),
-  vertical: useStorage('spectrogram-is-vertical', true),
-  pow: useStorage('spectrogram-pow', 3),
+  vertical: useStorage('spectrogram-vertical', false),
+  pow: useStorage('spectrogram-power', 1),
   offset: useStorage('spectrogram-offset', 0),
 })
 

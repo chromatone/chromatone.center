@@ -31,7 +31,7 @@ export default withPwa(defineConfig({
   description: meta.description,
   lang: meta.locale,
   themeConfig: {
-    logo: "/media/logo/holologo.svg",
+    logo: "/media/logo/click-logo.svg",
     //@ts-expect-error custom icon
     icon: meta.url + meta.icon,
     repo: meta.repo,

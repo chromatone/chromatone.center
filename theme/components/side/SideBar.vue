@@ -1,7 +1,7 @@
 <script setup>
 import { lchToHsl } from "#/use/colors";
 import { useData, useRoute } from "vitepress";
-import { onMounted, watch } from "vue";
+import { onMounted, ref, watch } from "vue";
 import SideBarLevel from "./SideBarLevel.vue";
 
 const { site } = useData();
@@ -13,6 +13,8 @@ defineProps({
 defineEmits(['close'])
 
 const route = useRoute();
+
+const search = ref(false)
 
 // onMounted(() => {
 //   watch(() => route.data, d => {
@@ -37,6 +39,7 @@ transition(name="fade")
 .panel(:class="{ open }")
   .mt-17px.ml-52px.text-xl.mb-4
     a.no-underline(href="/", :aria-label="`${site.title}, go to main page`") {{ site.title }}
+  nav-search(@close="search=false" :focus="search")
   SideBarLevel(path="/" :level="0")
   .flex-1
   a.opacity-20.p-4.mt-1.hover-opacity-80.flex.items-center.gap-2(href="/" v-if="route.path!='/'") 

@@ -79,15 +79,15 @@ watch(() => midi.note, note => {
         :style="drawingEnabled ? { background: color } : { borderColor: color }"
         )
 
+  .is-group.flex.gap-2.px-2
+    button(:class="{ disabled: !canUndo }", @click="undo()")
+      .i-carbon-undo
+    button(:class="{ disabled: !canRedo }", @click="redo()")
+      .i-carbon-redo
 
-  button(:class="{ disabled: !canUndo }", @click="undo()")
-    .i-carbon-undo
-  button(:class="{ disabled: !canRedo }", @click="redo()")
-    .i-carbon-redo
-
-  button(:class="{ disabled: !canClear }", @click="clearDrauu()")
-    .i-carbon-delete
-
+    button(:class="{ disabled: !canClear }", @click="clearDrauu()")
+      .i-carbon-delete
+  .flex-1
   button(:class="{ shallow: !drawingPinned }", @click="drawingPinned = !drawingPinned")
     .i-carbon-pin-filled.transform.-rotate-45(v-show="drawingPinned")
     .i-carbon-pin(v-show="!drawingPinned")
@@ -102,7 +102,7 @@ watch(() => midi.note, note => {
 
 <style lang="postcss" scoped>
 .panel {
-  @apply flex flex-wrap text-xl p-2 gap-2 rounded-md bg-main shadow transition-opacity duration-200 dark-border dark-border-gray-400 dark-border-opacity-10 bg-light-300 dark-bg-dark-300 justify-center;
+  @apply z-500 flex flex-wrap text-xl p-2 gap-2 rounded-md bg-main shadow transition-opacity duration-200 dark-border dark-border-gray-400 dark-border-opacity-10 bg-light-300 dark-bg-dark-300 justify-center;
 }
 
 button {

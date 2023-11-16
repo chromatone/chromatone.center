@@ -40,14 +40,16 @@ onKeyStroke('Escape', () => { input.value = '', focused.value = false })
 
 <template lang="pug">
 .flex.flex-col.w-full.gap-2
-  input.w-full.p-2.rounded-lg.z-20.bg-light-100.dark-bg-dark-100.shadow.top-8(
-    ref="inputEl"
-    id="search"
-    v-model="input" 
-    placeholder="Search"
-    )
-  button.z-400.absolute.right-6.top-6(v-if="input" @click="input ='';$emit('close')")
-    .i-la-times.text-lg
+  .flex.items-center.gap-2.relative
+    .i-la-search.text-xl.absolute.z-400.left-2
+    input.w-full.p-2.rounded-lg.z-20.bg-light-100.dark-bg-dark-100.shadow.pl-10(
+      ref="inputEl"
+      id="search"
+      v-model="input" 
+      placeholder="Search"
+      )
+    button.z-400.absolute.right-2(v-if="input" @click="input ='';$emit('close')")
+      .i-la-times.text-lg
   .flex.flex-col.w-full.gap-2.max-h-80dvh.overflow-y-scroll
     a.px-3.py-3.bg-light-600.rounded.shadow.dark-bg-dark-300.hover-bg-light-100.dark-hover-bg-dark-600.border-1.dark-border-dark-50.border-opacity-20.no-underline(
       tabindex="0"

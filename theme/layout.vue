@@ -61,7 +61,7 @@ const lightColor = computed(() => lchToHsl(siblings.value.index, siblings.value.
           :pageColor="pageColor", :lightColor="lightColor" :page="f" :cover="f.dynamic ? f?.cover || f?.poster || '' : page?.frontmatter?.cover ")
 
           page-parents.mb-1.ml-6(:parents="f.dynamic ? parents : parents.slice(0,-1)")
-        .z-100.text-md.p-2.flex.flex-col.gap-2.items-center.bg-light-200.bg-opacity-60.dark-bg-dark-200.dark-bg-opacity-60.backdrop-blur-xl.pt-2.pl-14.lg-pl-8.min-h-15(
+        .z-100.text-md.p-2.flex.flex-wrap.gap-2.items-center.bg-light-200.bg-opacity-60.dark-bg-dark-200.dark-bg-opacity-60.backdrop-blur-xl.pt-2.pl-14.lg-pl-8.min-h-15(
           :style="{backgroundColor:pageColor}"
           v-else)
           h2.font-bold {{ f?.title }}

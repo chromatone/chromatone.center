@@ -132,11 +132,12 @@ const len = Math.PI * 2 * r - 50
         //- circle(r="4" cx="-15" cy="25" fill="currentColor" opacity="0.8")
     g(transform="translate(50,50)" text-anchor="middle" dominant-baseline="middle" fill="currentColor")
       text.font-bold.text-2xl(:transform="`translate(0,${unit ? -3 : 5})`")
-        tspan(dominant-baseline="middle") {{ modelValue.toFixed(fixed) }}
+        slot
+          tspan {{ modelValue.toFixed(fixed) }}
       text(transform="translate(0,20)")
-        tspan(dominant-baseline="middle") {{ unit }}
+        tspan() {{ unit }}
       text.font-bold(transform="translate(0,58)")
-        tspan(dominant-baseline="middle")  {{ param.toUpperCase() }}
+        tspan()  {{ param.toUpperCase() }}
 
 </template>
 

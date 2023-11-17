@@ -71,7 +71,7 @@ const lightColor = computed(() => lchToHsl(siblings.value.index, siblings.value.
           :src="f.iframe"
           )
         transition(name="fade")
-          .pb-8.relative.flex.flex-col.items-center.w-full(:key="route.path")
+          .pb-8.relative.flex.flex-col.items-stretch.w-full(:key="route.path")
 
             content.content.flex-auto.z-10(v-if="f?.topContent")
 

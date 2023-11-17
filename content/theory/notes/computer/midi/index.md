@@ -19,3 +19,21 @@ A MIDI message is an instruction that controls some aspect of the receiving devi
 Channel Voice messages transmit real-time performance data over a single channel. Examples include "note-on" messages which contain a MIDI note number that specifies the note's pitch, a velocity value that indicates how forcefully the note was played, and the channel number; "note-off" messages that end a note; program change messages that change a device's patch; and control changes that allow adjustment of an instrument's parameters. MIDI notes are numbered from 0 to 127 assigned to C−1 to G9. This corresponds to a range of 8.175799 to 12543.85 Hz (assuming equal temperament and 440 Hz A4) and extends beyond the 88 note piano range from A0 to C8. Middle C has the number 60. A4 (A440) – 69.
 
 ![svg](./GM_Standard_Drum_Map_on_the_keyboard.svg)
+
+## MIDI clock
+
+MIDI beat clock, or simply MIDI clock, is a clock signal that is broadcast via MIDI to ensure that several MIDI-enabled devices such as a synthesizer or music sequencer stay in synchronization. Clock events are sent at a rate of 24 pulses per quarter note. Those pulses are used to maintain a synchronized tempo for synthesizers that have BPM-dependent voices and also for arpeggiator synchronization.
+
+MIDI beat clock differs from MIDI timecode in that MIDI beat clock is tempo-dependent.
+
+Location information can be specified using MIDI Song Position Pointer (SPP, see below), although many simple MIDI devices ignore this message.
+Messages
+
+MIDI beat clock defines the following real-time messages:
+
+- clock (decimal 248, hex 0xF8)
+- start (decimal 250, hex 0xFA)
+- continue (decimal 251, hex 0xFB)
+- stop (decimal 252, hex 0xFC)
+
+MIDI also specifies a System Common message called Song Position Pointer (SPP). SPP can be used in conjunction with the above realtime messages for complete sync. This message consists of 3 bytes; a status byte (decimal 242, hex 0xF2), followed by two 7-bit data bytes (least significant byte first) forming a 14-bit value which specifies the number of "MIDI beats" (1 MIDI beat = a 16th note = 6 clock pulses) since the start of the song. This message only needs to be sent once if a jump to a different position in the song is needed. Thereafter only realtime clock messages need to be sent to advance the song position one tick at a time.

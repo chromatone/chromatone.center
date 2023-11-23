@@ -4,14 +4,14 @@ import { computed, onMounted, ref, watchEffect } from "vue";
 import { cast, currentCamera } from "#/use/cast";
 import { useClamp } from '@vueuse/math'
 
-const size = useStorage(
+const size = useClamp(useStorage(
   "cast-cam-size",
   Math.round(Math.min(window.innerHeight, window.innerWidth / 4))
-);
+), 140, 600);
 
 const zoom = useClamp(useStorage('cast-cam-zoom', 1), 1, 3)
 
-const position = useStorage("cast-cam-pos", {
+const position = ref({
   x: window.innerWidth - size.value - 30,
   y: window.innerHeight - size.value - 30,
 });
@@ -84,7 +84,9 @@ onMounted(fixPosition);
 
 <template lang="pug">
 .avatar.fixed.z-1000(
+
   v-if="streamCamera && showAvatar && currentCamera !== 'none'", 
+
   :style="containerStyle"
   )
   .rounded-full.shadow.bg-gray-400.bg-opacity-10.overflow-hidden.object-cover.shadow-lg(
@@ -102,13 +104,11 @@ onMounted(fixPosition);
     :style="zoomStyle", 
     v-drag="dragZoom"
     ) 
-  .absolute.bottom-0.right-0.rounded-full.shadow-lg.shadow.z-30.p-2.bg-purple-500.bg-opacity-40.hover-bg-opacity-100(
+  .absolute.bottom-0.right-0.rounded-full.shadow-lg.shadow.z-300.p-2.bg-purple-500.bg-opacity-40.hover-bg-opacity-100(
     ref="handler", 
     :style="handleStyle", 
     :class="handlerDown ? '!opacity-100' : ''"
     ) 
 </template>
 
-<style lang="postcss" scoped>
-
-</style>
+<style lang="postcss" scoped></style>

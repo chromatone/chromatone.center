@@ -2,6 +2,7 @@
 title: Distortion 
 description: Linear and non-linear harmonic distortion
 date: 2023-10-12
+cover: bernie-almanzar.jpg
 ---
 
 <youtube-embed video="4QeqSYIXDr4" />

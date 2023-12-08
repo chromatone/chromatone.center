@@ -73,7 +73,10 @@ export function getParents(path: string, routes: ContentData[]) {
 
 
 export function getSiblings(path: string, routes: ContentData[]) {
-  let prev: ContentData, next: ContentData, index: number, total: number
+  let prev: ContentData | null = null
+  let next: ContentData | null = null
+  let index: number = 0
+  let total: number = 0
   const folder = normalize(path.split("/").slice(0, -2).join("/"));
   const list = getPages(routes)[folder]
 

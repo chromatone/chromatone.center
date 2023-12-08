@@ -1,6 +1,6 @@
 <script setup>
 import { lchToHsl } from '#/use/colors'
-import { cleanLink } from 'vitepress-pages';
+import { cleanLink } from '../../../pages/index';
 const props = defineProps(['children'])
 
 </script>

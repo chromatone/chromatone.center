@@ -13,8 +13,7 @@ const initiated = ref(false)
 const command = ref(examples['./examples/brass.ck'])
 
 onMounted(async () => {
-  webChuck.value = await Chuck.init([]);
-
+  await init()
   webChuck.value.onprocessorerror = e => {
     console.warn(e)
   }

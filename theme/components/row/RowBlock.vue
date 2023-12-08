@@ -3,7 +3,7 @@ import { computed } from 'vue';
 
 import { useRoute, useData } from 'vitepress'
 import { data } from '../../../content/pages.data'
-import { cleanLink, useChildren } from 'vitepress-pages'
+import { cleanLink, useChildren } from '../../../pages/index'
 
 const props = defineProps({
   item: Object,

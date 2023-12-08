@@ -1,7 +1,7 @@
 <script setup>
 import { lchToHsl } from '#/use/'
 import { computed, reactive } from 'vue';
-import { cleanLink } from 'vitepress-pages'
+import { cleanLink } from '../../../pages/index'
 
 const props = defineProps(['parents', 'siblings'])
 

@@ -10,7 +10,7 @@ const props = defineProps({
 
 import { useRoute } from 'vitepress'
 import { data } from '../../../content/pages.data'
-import { cleanLink, useChildren } from 'vitepress-pages'
+import { cleanLink, useChildren } from '../../../pages/index'
 
 const route = useRoute();
 const children = useChildren({ path: props.item.url }, data)

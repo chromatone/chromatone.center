@@ -1,5 +1,5 @@
 <script setup>
-import { cleanLink } from 'vitepress-pages'
+import { cleanLink } from '../../../pages/index'
 const props = defineProps(['parents'])
 </script>
 

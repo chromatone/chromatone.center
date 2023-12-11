@@ -1,1 +1,0 @@
-import{o as e,c as o,I as _,y as n,_ as s}from"./framework.5d1030ab.js";const c={class:"button"};function r(t,d){return e(),o("button",c,[_(t.$slots,"default",{},()=>[n("Start")],!0)])}const a={},u=s(a,[["render",r],["__scopeId","data-v-fb351d24"]]);export{u as _};

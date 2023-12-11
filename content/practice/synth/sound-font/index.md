@@ -20,4 +20,5 @@ onBeforeUnmount(() => {
 
 <client-only>
 <Synth-font />
+<MidiKeys />
 </client-only>

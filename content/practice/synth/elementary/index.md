@@ -18,4 +18,5 @@ links:
 
 <client-only>
 <AudioSynthMain />
+<MidiKeys />
 </client-only>

@@ -133,7 +133,8 @@ export function useMidi() {
     midiOnce,
     setCC,
     midiPlay,
-    midiStop
+    midiStop,
+    playKey
   };
 }
 

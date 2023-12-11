@@ -6,4 +6,4 @@ layout: app
 ---
 
 
-<MidiKeys />
+<MidiKeys class="mt-10" />

@@ -43,7 +43,7 @@ export function useRange() {
     onWheel(ev) {
       ev.event.preventDefault()
       let val = end.value - ev.velocities[0] / 5
-      if (val > begin.value) end.value = val
+      if (val - 1 > begin.value) end.value = val
     }
   }, {
     domTarget: endControl,

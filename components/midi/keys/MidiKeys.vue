@@ -7,6 +7,8 @@ import { useRange } from './useRange.js'
 import { useGesture } from '@vueuse/gesture';
 import { globalScale } from '#/use/chroma';
 import { useClamp } from '@vueuse/math'
+import { useStorage } from '@vueuse/core'
+import { intervals } from '#/use/theory';
 
 const width = ref(1200)
 const height = ref(500)
@@ -83,7 +85,7 @@ watch(scaleChroma, scale => {
   globalScale.chroma = scale.chroma
 })
 
-const filterScale = ref(false)
+const filterScale = useStorage('filter-keys', true)
 
 const keys = computed(() => filterScale.value ? rawKeys.value.filter(key => {
   return globalScale.isIn(notes[(key + 3) % 12])
@@ -120,83 +122,18 @@ svg.rounded-xl.w-full.cursor-pointer.fullscreen-container.overflow-hidden.select
         :transform="`translate(${(begin/127)* width/5},0)`"
         stroke="white"
         )
-      line(
-        opacity='0.4'
-        :y1="-controlOffset"
-        :y2="-controlOffset+20"
-        stroke-width="8"
-        stroke-linecap="round"
-        :transform="`translate(${ + (end/127)* width/5},0)`"
-        stroke="white"
-        )
-
-    g.tonic(ref="tonicControl")
-      rect(
-        :x="width/5"
-        :y="-controlOffset"
-        :height="controlOffset"
-        :width="width/5"
-        :fill="noteColor(globalScale.tonic,2,.8)"
-      )
-      text.font-bold.text-6xl(
-        :x="width*1.5/5"
-        text-anchor="middle"
-        :y="-controlOffset/4"
-        ) {{ notes[(globalScale.tonic)%12] }}
-      line.transition(
-        :y1="-controlOffset"
-        :y2="-controlOffset+20"
-        stroke-width="8"
-        stroke-linecap="round"
-        :transform="`translate(${width/5 + (globalScale.tonic/12)* width/5 +width/120},0)`"
-        stroke="white"
-        )
-
-
-    g.scale(
-      ref="scaleControl"
-      )
-      rect(
-        :x="width*2/5"
-        :y="-controlOffset"
-        :width="width*2/5"
-        :height="controlOffset"
-        fill="#aaa"
-        )
-      text.text-4xl(
-        :x="width*2/5+30"
-        :y="-controlOffset/3.2"
-        ) {{ scaleChroma.name }}
-      line(
-        :y1="-controlOffset"
-        :y2="-controlOffset+20"
-        stroke-width="8"
-        stroke-linecap="round"
-        :transform="`translate(${width*2/5 + scaleCurrent/scaleList.length* width*2/5},0)`"
-        stroke="white"
-        )
-
-    g.show(@click="filterScale=!filterScale")
-      circle(
-        :cx="width*4/5-50"
-        :cy="-controlOffset/2"
-        r="20"
-        :fill="filterScale? 'black' : 'transparent'"
-        :stroke="'black'"
-        :stroke-width="4"
-      )
 
     g.end(ref="endControl")
 
       rect(
-        :x="width*4/5"
+        :x="width/5"
         :y="-controlOffset"
         :height="controlOffset"
         :width="width/5"
         :fill="noteColor(end+3,null,midi.activeNotes[end] ? 1 : 0.1)"
         )
       text.font-bold.text-6xl(
-        :x="width-10"
+        :x="width*2/5-20"
         text-anchor="end"
         :y="-controlOffset/4"
         ) {{ notes[(end+3)%12] }}{{ Math.floor((end+3)/12)-1 }}
@@ -205,22 +142,73 @@ svg.rounded-xl.w-full.cursor-pointer.fullscreen-container.overflow-hidden.select
         :y2="-controlOffset+20"
         stroke-width="8"
         stroke-linecap="round"
-        :transform="`translate(${width*4/5 + (end/127)* width/5},0)`"
+        :transform="`translate(${width/5 + (end/127)* width/5},0)`"
         stroke="white"
         )
-      line(
-        opacity=".5"
+
+    g.tonic(ref="tonicControl")
+      rect(
+        :x="width*2/5"
+        :y="-controlOffset"
+        :height="controlOffset"
+        :width="width/5"
+        :fill="noteColor(globalScale.tonic,2,.8)"
+      )
+      text.font-bold.text-6xl(
+        :x="width*2.5/5"
+        text-anchor="middle"
+        :y="-controlOffset/4"
+        ) {{ notes[(globalScale.tonic)%12] }}
+      line.transition(
         :y1="-controlOffset"
         :y2="-controlOffset+20"
         stroke-width="8"
         stroke-linecap="round"
-        :transform="`translate(${width*4/5 + (begin/127)* width/5},0)`"
+        :transform="`translate(${width*2/5 + (globalScale.tonic/12)* width/5 +width/120},0)`"
         stroke="white"
         )
+
+
+    g.scale(
+      ref="scaleControl"
+      )
+      rect(
+        :x="width*3/5"
+        :y="-controlOffset"
+        :width="width*2/5"
+        :height="controlOffset"
+        fill="#aaa"
+        )
+      text.text-4xl(
+        :x="width*3/5+30"
+        :y="-controlOffset/3.2"
+        ) {{ scaleChroma.name }}
+      line(
+        :y1="-controlOffset"
+        :y2="-controlOffset+20"
+        stroke-width="8"
+        stroke-linecap="round"
+        :transform="`translate(${width*3/5 + scaleCurrent/scaleList.length* width*2/5},0)`"
+        stroke="white"
+        )
+
+    g.show(@click="filterScale=!filterScale")
+      circle(
+        :cx="width-50"
+        :cy="-controlOffset/2"
+        r="20"
+        :fill="filterScale? 'black' : 'transparent'"
+        :stroke="'black'"
+        :stroke-width="4"
+      )
+
+
   g.keys
     g.key(v-for="(key,k) in keys" :key="key"
       :transform="`translate(${k*width/keys.length},0)`"
+      text-anchor="middle",
       )
+
       rect(
         :width="width/keys.length"
         :height="height"
@@ -233,13 +221,20 @@ svg.rounded-xl.w-full.cursor-pointer.fullscreen-container.overflow-hidden.select
         @touchend="stopNote(key+3)", 
         @touchcancel="stopNote(key+3)"
         )
-      circle(
+
+      circle.pointer-events-none(
         :r="globalScale.tonic == (key+3)%12 ? width/keys.length/3 : width/keys.length/8"
         :cx="width/keys.length/2"
         :cy="height-width/keys.length/2"
         :opacity="midi.activeNotes[key] ? 1 :.3"
         :fill="globalScale.isIn(notes[(key+3)%12]) ? 'white' : 'black'"
         )
+
+      text.text-2xl.opacity-75.pointer-events-none(
+        :x="width/keys.length/2"
+        :y="height-width/keys.length*1.1"
+        ) {{ intervals[(key+3 -globalScale.tonic)%12] }}
+
       line.pointer-events-none(
         :x1="width/keys.length/2",
         :x2="width/keys.length/2"
@@ -249,16 +244,16 @@ svg.rounded-xl.w-full.cursor-pointer.fullscreen-container.overflow-hidden.select
         :opacity=".9"
         :stroke="midi.activeNotes[key] ? 'white' : noteColor(key+3, -1, 1,1)"
         v-if="globalScale.tonic == (key+3)%12"
-      )
+        )
+
       text.pointer-events-none(
         :fill="globalScale.isIn(notes[(key+3)%12]) ?  'black' : '#777e'"
-        text-anchor="middle",
+
         :y="width/keys.length/2+10"
         :x="width/keys.length/2"
         :font-size="width/keys.length*.5"
         :font-weight="globalScale.tonic == (key+3)%12 ? 'bold' : 'normal'"
-
-      ) {{ notes[(key+3)%12] }}
+        ) {{ notes[(key+3)%12] }}
 </template>
 
 <style scoped>

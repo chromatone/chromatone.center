@@ -15,7 +15,7 @@ cover: noise.jpg
 A simple tool to generate some noise. Let's look at the possibilities.
 
 1. The **noise generator** section
-   1. You can start the noise by tapping the **NOISE** button at the top left. There's a latch in the bottom of this button to fix the noise playing. Click it again to unlatch the sound playing. The other way is to press **spacebar** – the sound will play as long as you hold it.
+   1. You can start the noise by tapping the **NOISE** button at the top left. There's a latch in the bottom of this button to fix the noise playing. Click it again to unlatch the sound playing. The other way is to press **A** – the sound will play as long as you hold it.
    2. The **DRY** slider determines the volume of the initial noise source.
    3. Choose the type of the noise (it's 'color') between Brown, Pink and White.
       1. [White noise](https://en.wikipedia.org/wiki/White_noise) is a random signal having equal intensity at different frequencies, giving it a constant power spectral density.

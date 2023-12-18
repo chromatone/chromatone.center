@@ -115,39 +115,8 @@ svg.w-full.cursor-pointer.fullscreen-container.overflow-hidden.select-none.touch
 
 
 
-    g.begin(
-      ref="beginControl"
-      )
-      rect(
-        :height="controlOffset"
-        :width="width/5"
-        :fill="noteColor(begin+3,null,midi.activeNotes[begin] ? 1 : 0.1)"
-        )
-      text.font-bold.text-6xl(
-        :x="10"
-        :y="controlOffset*.75"
-        ) {{ notes[(begin+3)%12] }}{{ Math.floor((Math.round(begin)+3)/12)-1 }}
-      line.pointer-events-none(
-        v-for="(note,n) in end"
-        :transform="`translate(${((n)/(end))*width/5},0)`"
-        :y2="16"
-        opacity=".3"
-        stroke-width="2"
-        stroke-linecap="round"
-        :stroke="`white`"
-        )
-      line(
-        :y2="20"
-        stroke-width="8"
-        stroke-linecap="round"
-        :transform="`translate(${(begin/end)* width/5},0)`"
-        stroke="white"
-        )
-
-
     g.tonic(
       ref="tonicControl"
-      :transform="`translate(${width/5},0)`"
       )
       rect(
 
@@ -179,7 +148,7 @@ svg.w-full.cursor-pointer.fullscreen-container.overflow-hidden.select-none.touch
 
     g.scale(
       ref="scaleControl"
-      :transform="`translate(${width*2/5},0)`"
+      :transform="`translate(${width/5},0)`"
       )
       rect(
         :width="width*2/5"
@@ -207,16 +176,47 @@ svg.w-full.cursor-pointer.fullscreen-container.overflow-hidden.select-none.touch
         stroke="white"
         )
 
-    g.show(
-      :transform="`translate(${width*4/5-50},0)`"
-      @click="filterScale=!filterScale"
+      g.show(
+        :transform="`translate(${width*2/5-50},10)`"
+        @click="filterScale=!filterScale"
+        )
+        circle(
+          :cy="controlOffset*.5"
+          r="20"
+          :fill="filterScale? 'black' : 'transparent'"
+          :stroke="'black'"
+          :stroke-width="4"
+          )
+
+
+    g.begin(
+      ref="beginControl"
+        :transform="`translate(${width*3/5},0)`"
       )
-      circle(
-        :cy="controlOffset*.5"
-        r="20"
-        :fill="filterScale? 'black' : 'transparent'"
-        :stroke="'black'"
-        :stroke-width="4"
+      rect(
+        :height="controlOffset"
+        :width="width/5"
+        :fill="noteColor(begin+3,null,midi.activeNotes[begin] ? 1 : 0.1)"
+        )
+      text.font-bold.text-6xl(
+        :x="10"
+        :y="controlOffset*.75"
+        ) {{ notes[(begin+3)%12] }}{{ Math.floor((Math.round(begin)+3)/12)-1 }}
+      line.pointer-events-none(
+        v-for="(note,n) in end"
+        :transform="`translate(${((n)/(end))*width/5},0)`"
+        :y2="16"
+        opacity=".3"
+        stroke-width="2"
+        stroke-linecap="round"
+        :stroke="`white`"
+        )
+      line(
+        :y2="20"
+        stroke-width="8"
+        stroke-linecap="round"
+        :transform="`translate(${(begin/end)* width/5},0)`"
+        stroke="white"
         )
 
 
@@ -279,6 +279,17 @@ svg.w-full.cursor-pointer.fullscreen-container.overflow-hidden.select-none.touch
         :opacity="midi.activeNotes[key] ? 1 :.3"
         :fill="globalScale.isIn(notes[(key+3)%12]) ? 'white' : 'black'"
         )
+      svg-ring(
+        :cx="width/keys.length/2"
+        :cy="height-width/keys.length/2"
+        :radius=" width/keys.length/3 "
+        :from="0"
+        :opacity=".4"
+        :to="30*((key+globalScale.tonic-9)%12)"
+        :thickness="width/keys.length/5"
+        :round="true"
+        fill="white"
+      )
 
       text.opacity-75.pointer-events-none(
         :x="width/keys.length/2"

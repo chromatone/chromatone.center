@@ -67,11 +67,11 @@ const colors = reactive({
 .pad {
   @apply no-underline bg-cover bg-center p-4 pt-24 transition-all duration-200 ease-out m-2 rounded-xl shadow-lg hover-shadow-xl transition-all;
   flex: 1 1 45%;
-  filter: grayscale(40%) opacity(80%);
+  filter: grayscale(50%) opacity(50%) contrast(80%);
 }
 
 .pad:hover {
-  filter: grayscale(0%) opacity(100%);
+  filter: grayscale(0%) opacity(100%) contrast(100%);
 }
 
 .prev {

@@ -5,6 +5,10 @@ import { lchToHsl } from '#/use/colors'
 import { data } from '../content/pages.data'
 import { cleanLink, usePages, usePage } from '../pages/index'
 import { drawingEnabled, drawingPinned } from '../theme/composables/draw'
+import { useUrlSearchParams } from '@vueuse/core'
+
+const params = useUrlSearchParams('history')
+
 
 const { isDark, theme } = useData()
 
@@ -34,8 +38,11 @@ const lightColor = computed(() => lchToHsl(siblings.value.index, siblings.value.
   client-only
     nav-tools
   nav-view
-  .main
-    side-bar(:open="openSideBar" @close="openSideBar = false")
+  .main 
+    side-bar(
+      :open="openSideBar" 
+      @close="openSideBar = false"
+      )
 
     template(v-if="f.template == 'home'")
       main.home.items-center(aria-labelledby="main-title")
@@ -55,13 +62,13 @@ const lightColor = computed(() => lchToHsl(siblings.value.index, siblings.value.
         content.content.z-2
 
     template(v-else)
-      main#content.w-full.relative
+      main#content.w-full.relative.flex.flex-col
         page-headline(
           v-if="f.layout!='app'"
           :pageColor="pageColor", :lightColor="lightColor" :page="f" :cover="f.dynamic ? f?.cover || f?.poster || '' : page?.frontmatter?.cover ")
 
           page-parents.mb-1.ml-6(:parents="f.dynamic ? parents : parents.slice(0,-1)")
-        .z-100.text-md.p-2.flex.flex-wrap.gap-2.items-center.bg-light-200.bg-opacity-60.dark-bg-dark-200.dark-bg-opacity-60.backdrop-blur-xl.pt-2.pl-14.lg-pl-8.min-h-15(
+        .z-100.text-md.p-2.flex.flex-wrap.gap-2.items-center.bg-light-200.bg-opacity-60.dark-bg-dark-200.dark-bg-opacity-60.backdrop-blur-xl.pt-2.pl-14.min-h-15(
           :style="{backgroundColor:pageColor}"
           v-else)
           h2.font-bold {{ f?.title }}
@@ -71,7 +78,7 @@ const lightColor = computed(() => lchToHsl(siblings.value.index, siblings.value.
           :src="f.iframe"
           )
         transition(name="fade")
-          .pb-8.relative.flex.flex-col.items-stretch.w-full(:key="route.path")
+          .pb-8.relative.flex.flex-col.items-stretch.w-full.flex-auto(:key="route.path")
 
             content.content.flex-auto.z-10(v-if="f?.topContent")
 
@@ -79,7 +86,11 @@ const lightColor = computed(() => lchToHsl(siblings.value.index, siblings.value.
 
             content.content.flex-auto.z-10(v-if="!f?.topContent")
 
-        nav-next-prev(:siblings="siblings" :parents="parents")
+        nav-next-prev(
+          :siblings="siblings" 
+          :parents="parents"
+          v-if="!params.nonextprev"
+          )
         nav-row.p-4
     client-only
       draw-layer.z-100

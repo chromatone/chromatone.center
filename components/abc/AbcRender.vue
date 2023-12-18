@@ -84,7 +84,7 @@ function clickListener(elem, tune, classes, analysis, drag) {
 </script>
 
 <template lang="pug">
-.flex
+.flex.mx-auto
   .abc-render(:id="id") {{ abc }}
   save-svg(:svg="id" v-if="save")
 </template>

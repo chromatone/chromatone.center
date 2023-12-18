@@ -1,8 +1,11 @@
 ---
-title: Sampled soundfonts
-description: SMPLR - A modern soundfont library explorations
+title: Soundfont sampler synth
+description: Open source sample-based online synthesizer
 date: 2021-10-31
+layout: app
 cover: cover.png
+links:
+  - https://github.com/danigb/smplr
 ---
 
 <script setup>
@@ -19,6 +22,8 @@ onBeforeUnmount(() => {
 </script>
 
 <client-only>
-<Synth-font />
-<MidiKeys />
+<Synth-font class="mb-2" />
+<MidiKeys >
+
+</MidiKeys>
 </client-only>

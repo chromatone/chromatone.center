@@ -10,9 +10,12 @@ import { useClamp } from '@vueuse/math'
 import { useStorage } from '@vueuse/core'
 import { intervals } from '#/use/theory';
 
-const width = ref(1200)
-const height = ref(500)
-const controlOffset = ref(100)
+const props = defineProps({
+  width: { type: Number, default: 1200 },
+  height: { type: Number, default: 500 },
+  controlOffset: { type: Number, default: 100 },
+  slotOffset: { type: Number, default: 0 }
+})
 
 const { midi, playKey } = useMidi()
 
@@ -94,114 +97,161 @@ const keys = computed(() => filterScale.value ? rawKeys.value.filter(key => {
 </script>
 
 <template lang='pug'>
-svg.rounded-xl.w-full.cursor-pointer.fullscreen-container.overflow-hidden.select-none.touch-none#screen(
-  :viewBox="`0 -${controlOffset} ${width} ${height + controlOffset}`"
+svg.w-full.cursor-pointer.fullscreen-container.overflow-hidden.select-none.touch-none(
+  :viewBox="`0 -${controlOffset+slotOffset} ${width} ${height + controlOffset}`"
   version="1.1",
   baseProfile="full",
   xmlns="http://www.w3.org/2000/svg",
   style="touch-action:none"
   ref="keyboard"
   )
-  g.offset
-    g.begin(ref="beginControl")
+  g.slot(
+    :transform="`translate(0,${-slotOffset-controlOffset})`"
+    )
+    slot
+  g.offset(  
+    :transform="`translate(0,${-controlOffset})`"
+    )
+
+
+
+    g.begin(
+      ref="beginControl"
+      )
       rect(
-        :y="-controlOffset"
         :height="controlOffset"
         :width="width/5"
         :fill="noteColor(begin+3,null,midi.activeNotes[begin] ? 1 : 0.1)"
         )
       text.font-bold.text-6xl(
         :x="10"
-        :y="-controlOffset/4"
+        :y="controlOffset*.75"
         ) {{ notes[(begin+3)%12] }}{{ Math.floor((Math.round(begin)+3)/12)-1 }}
+      line.pointer-events-none(
+        v-for="(note,n) in end"
+        :transform="`translate(${((n)/(end))*width/5},0)`"
+        :y2="16"
+        opacity=".3"
+        stroke-width="2"
+        stroke-linecap="round"
+        :stroke="`white`"
+        )
       line(
-        :y1="-controlOffset"
-        :y2="-controlOffset+20"
+        :y2="20"
         stroke-width="8"
         stroke-linecap="round"
-        :transform="`translate(${(begin/127)* width/5},0)`"
+        :transform="`translate(${(begin/end)* width/5},0)`"
         stroke="white"
         )
 
-    g.end(ref="endControl")
 
+    g.tonic(
+      ref="tonicControl"
+      :transform="`translate(${width/5},0)`"
+      )
       rect(
-        :x="width/5"
-        :y="-controlOffset"
-        :height="controlOffset"
-        :width="width/5"
-        :fill="noteColor(end+3,null,midi.activeNotes[end] ? 1 : 0.1)"
-        )
-      text.font-bold.text-6xl(
-        :x="width*2/5-20"
-        text-anchor="end"
-        :y="-controlOffset/4"
-        ) {{ notes[(end+3)%12] }}{{ Math.floor((end+3)/12)-1 }}
-      line(
-        :y1="-controlOffset"
-        :y2="-controlOffset+20"
-        stroke-width="8"
-        stroke-linecap="round"
-        :transform="`translate(${width/5 + (end/127)* width/5},0)`"
-        stroke="white"
-        )
 
-    g.tonic(ref="tonicControl")
-      rect(
-        :x="width*2/5"
-        :y="-controlOffset"
         :height="controlOffset"
         :width="width/5"
         :fill="noteColor(globalScale.tonic,2,.8)"
-      )
+        )
       text.font-bold.text-6xl(
-        :x="width*2.5/5"
+        :x="width/10"
         text-anchor="middle"
-        :y="-controlOffset/4"
+        :y="controlOffset*.75"
         ) {{ notes[(globalScale.tonic)%12] }}
+      line(
+        v-for="(note,n) in notes"
+        :transform="`translate(${(n/12 + 1/24)*width/5},0)`"
+        :y2="16"
+        stroke-width="2"
+        stroke-linecap="round"
+        :stroke="noteColor(n,5,.4)"
+        )
       line.transition(
-        :y1="-controlOffset"
-        :y2="-controlOffset+20"
+        :y2="20"
         stroke-width="8"
         stroke-linecap="round"
-        :transform="`translate(${width*2/5 + (globalScale.tonic/12)* width/5 +width/120},0)`"
+        :transform="`translate(${(globalScale.tonic/12)* width/5 +width/120},0)`"
         stroke="white"
         )
 
 
     g.scale(
       ref="scaleControl"
+      :transform="`translate(${width*2/5},0)`"
       )
       rect(
-        :x="width*3/5"
-        :y="-controlOffset"
         :width="width*2/5"
         :height="controlOffset"
         fill="#aaa"
         )
       text.text-4xl(
-        :x="width*3/5+30"
-        :y="-controlOffset/3.2"
+        :x="30"
+        :y="controlOffset*.75"
         ) {{ scaleChroma.name }}
       line(
-        :y1="-controlOffset"
-        :y2="-controlOffset+20"
+        v-for="(note,n) in scaleList.length"
+        :transform="`translate(${(n/scaleList.length + 1/(scaleList.length))*width*2/5},0)`"
+        :y2="36"
+        :opacity="note == Math.round(scaleCurrent) ? 1:.2"
+        stroke-width="2"
+        stroke-linecap="round"
+        :stroke="`white`"
+        )
+      line(
+        :y2="20"
         stroke-width="8"
         stroke-linecap="round"
-        :transform="`translate(${width*3/5 + scaleCurrent/scaleList.length* width*2/5},0)`"
+        :transform="`translate(${scaleCurrent/scaleList.length* width*2/5},0)`"
         stroke="white"
         )
 
-    g.show(@click="filterScale=!filterScale")
+    g.show(
+      :transform="`translate(${width*4/5-50},0)`"
+      @click="filterScale=!filterScale"
+      )
       circle(
-        :cx="width-50"
-        :cy="-controlOffset/2"
+        :cy="controlOffset*.5"
         r="20"
         :fill="filterScale? 'black' : 'transparent'"
         :stroke="'black'"
         :stroke-width="4"
+        )
+
+
+    g.end(
+      ref="endControl"
+      :transform="`translate(${width*4/5},0)`"
       )
 
+      rect(
+        :height="controlOffset"
+        :width="width/5"
+        :fill="noteColor(end+3,null,midi.activeNotes[end] ? 1 : 0.1)"
+        )
+      text.font-bold.text-6xl.pointer-events-none(
+        :x="width/5-20"
+        text-anchor="end"
+        :y="controlOffset*.75"
+        ) {{ notes[(end+3)%12] }}{{ Math.floor((end+3)/12)-1 }}
+
+      line.pointer-events-none(
+        v-for="(note,n) in Number(127-begin)"
+        :transform="`translate(${((n)/(127-begin))*width/5},0)`"
+        :y2="16"
+        opacity=".3"
+        stroke-width="2"
+        stroke-linecap="round"
+        :stroke="`white`"
+        )
+      line.pointer-events-none(
+        :y2="20"
+        stroke-width="8"
+        stroke-linecap="round"
+        stroke="white"
+        :transform="`translate(${((end-begin)/(127-begin))* width/5},0)`"
+        )
 
   g.keys
     g.key(v-for="(key,k) in keys" :key="key"
@@ -230,9 +280,10 @@ svg.rounded-xl.w-full.cursor-pointer.fullscreen-container.overflow-hidden.select
         :fill="globalScale.isIn(notes[(key+3)%12]) ? 'white' : 'black'"
         )
 
-      text.text-2xl.opacity-75.pointer-events-none(
+      text.opacity-75.pointer-events-none(
         :x="width/keys.length/2"
         :y="height-width/keys.length*1.1"
+        :font-size="width/keys.length*.5"
         ) {{ intervals[(key+3 -globalScale.tonic)%12] }}
 
       line.pointer-events-none(
@@ -245,6 +296,12 @@ svg.rounded-xl.w-full.cursor-pointer.fullscreen-container.overflow-hidden.select
         :stroke="midi.activeNotes[key] ? 'white' : noteColor(key+3, -1, 1,1)"
         v-if="globalScale.tonic == (key+3)%12"
         )
+
+      text.opacity-75.pointer-events-none(
+        :x="width/keys.length/2"
+        :y="width/keys.length+10"
+        :font-size="width/keys.length*.333"
+        ) {{ key }}
 
       text.pointer-events-none(
         :fill="globalScale.isIn(notes[(key+3)%12]) ?  'black' : '#777e'"

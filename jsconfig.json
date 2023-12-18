@@ -2,7 +2,7 @@
 	"include": [
 		"**/*.*",
 		"*.md",
-		"*.vue"
+		"**/*.vue"
 	],
 	"compilerOptions": {
 		"baseUrl": ".",

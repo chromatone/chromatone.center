@@ -1,0 +1,7 @@
+import{m as o,c as s,f as e,n as c,a as t,B as i,h as l,o as d,g as u,ai as h,a4 as m}from"./chunks/framework.HVt1h3pg.js";import{_ as p}from"./chunks/YoutubeEmbed.ntQKxQUK.js";const f=t("h2",{id:"strongly-timed-concurrent-on-the-fly",tabindex:"-1"},[i("Strongly-timed | Concurrent | On-the-fly "),t("a",{class:"header-anchor",href:"#strongly-timed-concurrent-on-the-fly","aria-label":'Permalink to "Strongly-timed | Concurrent | On-the-fly"'},"​")],-1),_=l("",3),v=JSON.parse('{"title":"ChucK","description":"Music programming language","frontmatter":{"title":"ChucK","description":"Music programming language","date":"2022-05-23T00:00:00.000Z","cover":"ch.png","layout":"app"},"headers":[],"relativePath":"practice/synth/chuck/index.md","filePath":"practice/synth/chuck/index.md","lastUpdated":1702893856000}'),g={name:"practice/synth/chuck/index.md"},T=Object.assign(g,{setup(k){const a=h(()=>m(()=>import("./chunks/SynthChuck.SANMp5FA.js"),__vite__mapDeps([0,1])));return(b,y)=>{const r=o("client-only"),n=p;return d(),s("div",null,[f,e(r,null,{default:c(()=>[e(u(a))]),_:1}),_,e(n,{video:"2rpk461T6l4"})])}}});export{v as __pageData,T as default};
+function __vite__mapDeps(indexes) {
+  if (!__vite__mapDeps.viteFileDeps) {
+    __vite__mapDeps.viteFileDeps = ["assets/chunks/SynthChuck.SANMp5FA.js","assets/chunks/framework.HVt1h3pg.js"]
+  }
+  return indexes.map((i) => __vite__mapDeps.viteFileDeps[i])
+}

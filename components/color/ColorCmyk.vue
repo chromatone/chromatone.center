@@ -3,6 +3,7 @@ import { useStorage } from '@vueuse/core';
 import { useClamp } from '@vueuse/math';
 import { reactive, ref, computed } from 'vue'
 import { colord } from 'colord'
+import { useGesture } from '@vueuse/gesture';
 
 
 const mix = reactive({
@@ -18,10 +19,40 @@ const mix = reactive({
 });
 
 function useDrag(channel) {
-  return (drag) => {
-    mix[channel] = Number(mix[channel]) + (Number(drag.delta[0]) - Number(drag.delta[1]))
+  return (delta) => {
+    mix[channel] = Number(mix[channel]) + (Number(delta[0]) - Number(delta[1]))
   }
 }
+
+const controlC = ref()
+const controlM = ref()
+const controlY = ref()
+const controlK = ref()
+
+const controls = {
+  c: controlC,
+  m: controlM,
+  y: controlY,
+  k: controlK
+}
+
+for (let control in controls) {
+  useGesture({
+    onDrag(ev) {
+      ev?.event?.preventDefault()
+      useDrag(control)(ev.delta)
+    },
+    onWheel(ev) {
+      ev?.event?.preventDefault()
+      useDrag(control)(ev.velocities.map(v => -v))
+    }
+  }, {
+    domTarget: controls[control],
+    eventOptions: { passive: false }
+  })
+}
+
+
 </script>
 
 <template lang="pug">
@@ -73,7 +104,7 @@ function useDrag(channel) {
     )
       circle#c.mix-blend-multiply.cursor-pointer(
         :r="mix.radius"
-        v-drag="useDrag('c')"
+        ref="controlC"
         stroke="cyan"
         :stroke-dashoffset="mix.len - mix.len * (mix.c / mix.max)"
         :stroke-dasharray="mix.len"
@@ -82,7 +113,7 @@ function useDrag(channel) {
       )
       circle#m.mix-blend-multiply.cursor-pointer(
         :r="mix.radius"
-        v-drag="useDrag('m')"
+        ref="controlM"
         stroke="magenta"
         :stroke-dashoffset="mix.len - mix.len * (mix.m / mix.max)"
         :stroke-dasharray="mix.len"
@@ -91,7 +122,7 @@ function useDrag(channel) {
       )
       circle#y.mix-blend-multiply.cursor-pointer(
         :r="mix.radius"
-        v-drag="useDrag('y')"
+        ref="controlY"
         stroke="yellow"
         :stroke-dashoffset="mix.len - mix.len * (mix.y / mix.max)"
         :stroke-dasharray="mix.len"
@@ -99,7 +130,7 @@ function useDrag(channel) {
         :fill="`hsla(60,100%,50%,${mix.y / 100})`"
       )
       circle#k.mix-blend-multiply(
-        v-drag="useDrag('k')"
+        ref="controlK"
         r="18"
         stroke="black"
         transform="translate(50,50) rotate(90)"

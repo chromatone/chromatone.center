@@ -2,7 +2,7 @@
 import { useStorage } from '@vueuse/core';
 import { useClamp } from '@vueuse/math';
 import { reactive, ref, computed } from 'vue'
-
+import { useGesture } from '@vueuse/gesture';
 
 const mix = reactive({
   radius: 30,
@@ -15,10 +15,58 @@ const mix = reactive({
 });
 
 function useDrag(channel) {
-  return (drag) => {
-    mix[channel] = Number(mix[channel]) + (Number(drag.delta[0]) - Number(drag.delta[1]))
+  return (delta) => {
+    mix[channel] = Number(mix[channel]) + (Number(delta[0]) - Number(delta[1]))
   }
 }
+
+const controlR = ref()
+const controlG = ref()
+const controlB = ref()
+
+useGesture({
+  onDrag(ev) {
+    ev?.event?.preventDefault()
+    useDrag('r')(ev.delta)
+  },
+  onWheel(ev) {
+    ev?.event?.preventDefault()
+    useDrag('r')(ev.velocities.map(v => -v))
+  }
+}, {
+  domTarget: controlR,
+  eventOptions: { passive: false }
+})
+
+useGesture({
+  onDrag(ev) {
+    ev?.event?.preventDefault()
+    useDrag('g')(ev.delta)
+  },
+  onWheel(ev) {
+    ev?.event?.preventDefault()
+    useDrag('g')(ev.velocities.map(v => -v))
+  }
+}, {
+  domTarget: controlG,
+  eventOptions: { passive: false }
+})
+
+useGesture({
+  onDrag(ev) {
+    ev?.event?.preventDefault()
+    useDrag('b')(ev.delta)
+  },
+  onWheel(ev) {
+    ev?.event?.preventDefault()
+    useDrag('b')(ev.velocities.map(v => -v))
+  }
+}, {
+  domTarget: controlB,
+  eventOptions: { passive: false }
+})
+
+
 </script>
 
 <template lang="pug">
@@ -36,7 +84,7 @@ function useDrag(channel) {
       r="50"
       cx=50
       cy=50
-    )
+      )
     g#sources
       circle(
         r=8
@@ -60,32 +108,32 @@ function useDrag(channel) {
 
       stroke-linecap="round"
       :stroke-dasharray="mix.len"
-    )
+      )
       circle#r.mix-blend-lighten(
         :r="mix.radius"
-        v-drag="useDrag('r')"
+        ref="controlR"
         :fill="`rgb(${mix.r},0,0)`"
         stroke="#ff0000"
         :stroke-dashoffset="mix.len - mix.len * (mix.r / mix.max)"
         transform="translate(35,40) rotate(-150)"
-      )
+        )
 
       circle#g.mix-blend-lighten(
         :r="mix.radius"
-        v-drag="useDrag('g')"
+        ref="controlG"
         :fill="`rgb(0,${mix.g},0)`"
         stroke="#00ff00"
         :stroke-dashoffset="mix.len - mix.len * (mix.g / mix.max)"
         transform="translate(65,40) rotate(-30)"
-      )
+        )
       circle#b.mix-blend-lighten(
         :r="mix.radius"
-        v-drag="useDrag('b')"
+        ref="controlB"
         :fill="`rgb(0,0,${mix.b})`"
         stroke="#0000ff"
         :stroke-dashoffset="mix.len - mix.len * (mix.b / mix.max)"
         transform="translate(50,68) rotate(90)"
-      )
+        )
     g#text.font-bold.text-xs.select-none
       text(
         x="15"

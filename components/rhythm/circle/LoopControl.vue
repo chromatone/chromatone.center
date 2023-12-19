@@ -8,6 +8,7 @@ import { midi } from '#/use/midi'
 import { controls } from './controls';
 import { ref, reactive, computed, watch } from 'vue'
 import { useClamp } from '@vueuse/math';
+import { useGesture } from '@vueuse/gesture';
 
 
 const emit = defineEmits(['update:modelValue'])
@@ -39,8 +40,26 @@ const arc = reactive({
   center: computed(() => getCircleCoord(props.finish - (props.finish - props.start) / 2, 360, props.radius - 25, 1000))
 });
 
+const control = ref()
+
+useGesture({
+  onDrag(ev) {
+    ev?.event?.preventDefault()
+    arc.inner += (props.vector[0] * (ev.delta[0]) + props.vector[1] * (ev.delta[1])) / props.ratio
+  },
+  onWheel(ev) {
+    ev?.event?.preventDefault()
+
+    arc.inner += (props.vector[0] * (-ev.velocities[0]) + props.vector[1] * (-ev.velocities[1])) / props.ratio
+  }
+}, {
+  domTarget: control,
+  eventOptions: { passive: false }
+})
+
+
 function dragParam(drag) {
-  arc.inner += (props.vector[0] * drag.delta[0] + props.vector[1] * drag.delta[1]) / props.ratio
+  arc.inner += (props.vector[0] * (drag.delta[0]) + props.vector[1] * (drag.delta[1])) / props.ratio
 }
 
 function incParam(diff) {
@@ -74,7 +93,7 @@ watch(() => midi.cc, cc => {
 
 <template lang="pug">
 g.arc.cursor-grab.active-cursor-grabbing(
-  v-drag="dragParam"
+  ref="control"
   )
   defs
     filter#shadowButton(

@@ -1,5 +1,7 @@
 <script setup>
 import { useVoice } from './useDrone'
+import { ref } from 'vue'
+import { useGesture } from '@vueuse/gesture';
 
 const props = defineProps({
   interval: { type: Number, default: 0, },
@@ -7,20 +9,36 @@ const props = defineProps({
 
 const voice = useVoice(props.interval)
 
-function vol(drag) {
+function vol(drag, delta) {
   if (drag.tap) {
     voice.play = !voice.play
     voice.active = voice.play
   }
-  voice.vol -= drag.delta[1] / 400
-  voice.pan += drag.delta[0] / 100
+  voice.vol -= delta[1] / 400
+  voice.pan += delta[0] / 100
 }
+
+const control = ref()
+
+useGesture({
+  onDrag(ev) {
+    ev?.event?.preventDefault()
+    vol(ev, ev.delta)
+  },
+  onWheel(ev) {
+    ev?.event?.preventDefault()
+    vol(ev, ev.velocities.map(v => -v))
+  }
+}, {
+  domTarget: control,
+  eventOptions: { passive: false }
+})
 
 </script>
 
 <template lang="pug">
 .py-16.flex-1.relative.cursor-pointer.rounded-xl.overflow-hidden.text-center.font-bold.border-6.touch-none(
-  v-drag="vol"
+  ref="control"
   :style="{ borderColor: voice.play ? voice.color : '#3333' }"
 ) 
   .vol.-z-5.absolute.left-0.right-0.bottom-0.bg-dark-100.bg-opacity-30.border-t-4(

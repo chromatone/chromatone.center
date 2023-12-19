@@ -37,7 +37,6 @@ const lightColor = computed(() => lchToHsl(siblings.value.index, siblings.value.
   img.top-16px.left-4.fixed.z-1000.cursor-pointer.mr-3.h-30px(v-if="theme.logo", :src="theme.logo", alt="Chromatone logo" @click="openSideBar = !openSideBar")
   client-only
     nav-tools
-  nav-view
   .main 
     side-bar(
       :open="openSideBar" 

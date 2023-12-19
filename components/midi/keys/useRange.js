@@ -5,8 +5,8 @@ import { computed, ref } from 'vue';
 
 export function useRange() {
 
-  const begin = useClamp(useStorage('midi-keys-begin', 0), 0, 127)
-  const end = useClamp(useStorage('midi-keys-end', 44), begin, 127)
+  const begin = useClamp(useStorage('midi-keys-begin', 45), 0, 127)
+  const end = useClamp(useStorage('midi-keys-end', 83), begin, 127)
   const roundBegin = useRound(begin)
   const roundEnd = useRound(end)
   const beginControl = ref()

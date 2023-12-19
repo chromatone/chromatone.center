@@ -1,14 +1,15 @@
 <script setup>
-import { reactive } from 'vue'
-
+import { reactive, ref } from 'vue'
+import { useGesture } from '@vueuse/gesture';
 import { noteColor } from "#/use/colors";
 import { notes } from "#/use/theory";
 import { useDrone } from "./useDrone";
 
+
 const drone = useDrone();
 
-function setFreq(drag) {
-  drone.freq += drag.delta[0] / 10;
+function setFreq(delta) {
+  drone.freq += delta[0] / 10;
 }
 
 const intervals = reactive({
@@ -21,6 +22,24 @@ const intervals = reactive({
     voices: [-12, 0, 12],
   },
 });
+
+const pitchControl = ref()
+
+useGesture({
+  onDrag(ev) {
+    ev?.event?.preventDefault()
+    drone.freq += ev.delta[0] / 10;
+  },
+  onWheel(ev) {
+    ev?.event?.preventDefault()
+    drone.freq -= ev.velocities[0] / 10;
+  }
+}, {
+  domTarget: pitchControl,
+  eventOptions: { passive: false }
+})
+
+
 </script>
 
 <template lang="pug">
@@ -41,7 +60,7 @@ const intervals = reactive({
           )
     .info.my-4.flex.flex-wrap.justify-stretch.items-center.touch-none
       .flex.flex-wrap.p-4.mx-2.flex-1.min-w-10em.items-center.rounded-xl.text-white.p-2.cursor-pointer.transition-all.duration-500.ease-out(
-        v-drag="setFreq" 
+        ref="pitchControl"
         :style="{ backgroundColor: drone.color }")
         .p-1.text-4xl.font-bold {{ drone.note }} 
         .p-1 {{ drone.centDiff }}

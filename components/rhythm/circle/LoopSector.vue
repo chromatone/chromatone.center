@@ -13,7 +13,7 @@ const props = defineProps({
   accented: { type: Boolean, default: false, },
 });
 
-defineEmits('mute')
+defineEmits(['mute'])
 
 const color = computed(() => {
   return levelColor(props.step + (tempo.pitch / 12) * props.total, props.total, 1)

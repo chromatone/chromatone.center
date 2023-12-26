@@ -1,1 +1,0 @@
-import{o as e,c as o,N as n,B as s,_ as c}from"./framework.1uYGFCry.js";const r={class:"button"};function a(t,d){return e(),o("button",r,[n(t.$slots,"default",{},()=>[s("Start")],!0)])}const _={},u=c(_,[["render",a],["__scopeId","data-v-fb351d24"]]);export{u as _};

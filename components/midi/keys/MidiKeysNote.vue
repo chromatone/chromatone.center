@@ -71,11 +71,11 @@ g.note(
     text.opacity-75.number(
       :x="width/2"
       :y="width*1.8"
-      :font-size="width*.4"
+      :font-size="width*.333"
       ) {{ intervals[(note+3 -globalScale.tonic)%12] }}
-    text.opacity-75(
+    text.opacity-55(
       :x="width/2"
-      :y="width+10"
+      :y="width+14"
       :font-size="width*.333"
       ) {{ note }}
     text(

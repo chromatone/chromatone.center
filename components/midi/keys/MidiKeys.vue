@@ -35,8 +35,6 @@ useGesture({
   domTarget: svg,
 })
 
-
-
 const tonicControl = ref()
 const tonicCents = ref(globalScale.tonic * 100)
 
@@ -137,8 +135,6 @@ svg.w-full.cursor-pointer.fullscreen-container.overflow-hidden.select-none.touch
         :transform="`translate(${(((tonicCents/1200)%1+1)%1)* width/5 +width/120},0)`"
         stroke="white"
         )
-
-
     g.scale(
       ref="scaleControl"
       :transform="`translate(${width/5},0)`"
@@ -159,7 +155,7 @@ svg.w-full.cursor-pointer.fullscreen-container.overflow-hidden.select-none.touch
         :opacity="note == Math.round(scaleCurrent) ? 1:.2"
         stroke-width="2"
         stroke-linecap="round"
-        :stroke="`white`"
+        :stroke="`currentColor`"
         )
       line(
         :y2="20"
@@ -245,7 +241,6 @@ svg.w-full.cursor-pointer.fullscreen-container.overflow-hidden.select-none.touch
         stroke="white"
         :transform="`translate(${(end/127)* width*2/5},0)`"
         )
-
 
   g.keys(
     ref="area"

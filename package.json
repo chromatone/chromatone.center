@@ -76,6 +76,7 @@
 		"webmidi": "^3.1.7"
 	},
 	"devDependencies": {
+		"workbox-window": "^7.0.0",
 		"@directus/sdk": "^13.0.2",
 		"@iconify/json": "^2.2.156",
 		"@modyfi/vite-plugin-yaml": "^1.0.4",

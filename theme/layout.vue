@@ -43,6 +43,8 @@ const lightColor = computed(() => lchToHsl(siblings.value.index, siblings.value.
       @close="openSideBar = false"
       )
 
+    RegisterSW
+
     template(v-if="f.template == 'home'")
       main.home.items-center(aria-labelledby="main-title")
         chroma-flower.mt-16.w-full

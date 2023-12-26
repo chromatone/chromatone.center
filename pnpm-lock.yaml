@@ -160,6 +160,9 @@ devDependencies:
   vitepress:
     specifier: ^1.0.0-rc.31
     version: 1.0.0-rc.31(@algolia/client-search@4.20.0)(drauu@0.3.7)(fuse.js@7.0.0)(postcss@8.4.32)(search-insights@2.11.0)
+  workbox-window:
+    specifier: ^7.0.0
+    version: 7.0.0
 
 packages:
 

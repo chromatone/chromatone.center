@@ -7,7 +7,7 @@ const props = defineProps({
 </script>
 
 <template lang="pug">
-.rounded-2xl.author-card.m-4.overflow-hidden(v-if="author" :i="i" :total="total" :height="8")
+.rounded-2xl.author-card.mx-auto.overflow-hidden(v-if="author" :i="i" :total="total" :height="8")
   .flex.flex-wrap.items-center.p-4
     img.avatar(:src="author.avatar")
     .flex.flex-col.justify-center(style="flex: 10 1 220px")
@@ -24,8 +24,6 @@ const props = defineProps({
     a.flex-button.font-bold.justify-center(:href="author.book" target="_blank" v-if="author.book")
       .p-2 BOOK A FREE TRIAL SESSION NOW
     author-social(:social="author.social" v-if="author.social")
-
-
 
 svg.defs(style="height:0")
   defs

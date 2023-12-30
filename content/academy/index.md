@@ -1,7 +1,7 @@
 ---
 title: Academy
 description: Community projects and events creating new opportunities for Chromatone to shine
-layout: app
+layout: iframe
 date: 2021-07-05
 cover: wes-hicks.jpg
 topContent: true

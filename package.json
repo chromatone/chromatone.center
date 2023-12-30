@@ -16,7 +16,7 @@
 	"engines": {
 		"node": "^18.x"
 	},
-	"packageManager": "pnpm@8.12.0",
+	"packageManager": "pnpm@8.13.1",
 	"exports": {
 		".": {
 			"import": "./lib/use-chromatone.js",
@@ -40,15 +40,15 @@
 		"@elemaudio/web-renderer": "^3.0.1",
 		"@tonaljs/tonal": "^4.10.0",
 		"@tonejs/midi": "^2.0.28",
-		"@unocss/reset": "^0.58.0",
-		"@vueuse/core": "^10.7.0",
+		"@unocss/reset": "^0.58.2",
+		"@vueuse/core": "^10.7.1",
 		"@vueuse/gesture": "^2.0.0-beta.1",
-		"@vueuse/math": "^10.7.0",
+		"@vueuse/math": "^10.7.1",
 		"abcjs": "^6.2.3",
 		"audio-recorder-polyfill": "^0.4.1",
 		"audiomotion-analyzer": "^4.3.0",
 		"cobe": "^0.6.3",
-		"color-name-list": "^10.17.0",
+		"color-name-list": "^10.18.0",
 		"colord": "^2.9.3",
 		"drauu": "^0.3.7",
 		"floating-vue": "^2.0.0-beta.24",
@@ -65,30 +65,30 @@
 		"poline": "^0.7.0",
 		"recordrtc": "^5.6.2",
 		"simplex-noise": "^4.0.1",
-		"smplr": "^0.11.3",
+		"smplr": "^0.12.1",
 		"svg2pdf.js": "^2.2.3",
 		"thousands-counter": "^2.1.1",
 		"tonal": "^5.1.2",
 		"tone": "^14.8.49",
-		"vue": "^3.3.11",
+		"vue": "^3.4.1",
 		"vue-glsl": "^1.1.27",
 		"webchuck": "^1.2.6",
-		"webmidi": "^3.1.7"
+		"webmidi": "^3.1.8"
 	},
 	"devDependencies": {
-		"workbox-window": "^7.0.0",
-		"@directus/sdk": "^13.0.2",
-		"@iconify/json": "^2.2.156",
+		"@directus/sdk": "^14.0.0",
+		"@iconify/json": "^2.2.163",
 		"@modyfi/vite-plugin-yaml": "^1.0.4",
-		"@unocss/extractor-pug": "^0.58.0",
+		"@unocss/extractor-pug": "^0.58.2",
 		"@vite-pwa/vitepress": "^0.3.1",
-		"@vue/language-plugin-pug": "^1.8.25",
+		"@vue/language-plugin-pug": "^1.8.27",
 		"pug": "^3.0.2",
-		"sharp": "^0.33.0",
-		"unocss": "^0.58.0",
+		"sharp": "^0.33.1",
+		"unocss": "^0.58.2",
 		"unplugin-icons": "^0.18.1",
 		"unplugin-vue-components": "^0.26.0",
-		"vite": "^5.0.7",
-		"vitepress": "^1.0.0-rc.31"
+		"vite": "^5.0.10",
+		"vitepress": "^1.0.0-rc.33",
+		"workbox-window": "^7.0.0"
 	}
 }

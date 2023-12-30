@@ -1,11 +1,13 @@
 <script setup>
-import { midi, stopAll, midiAttack, midiRelease } from "#/use/midi";
+import { useMidi } from "#/use/midi";
 
 import { noteColor } from '#/use/colors'
 import { synth } from "#/use/synth";
 import { useTempo } from '#/use/tempo'
 
 const tempo = useTempo()
+
+const { midi, stopAll, midiAttack, midiRelease } = useMidi()
 
 var isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
 </script>

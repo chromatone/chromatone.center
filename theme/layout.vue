@@ -9,7 +9,6 @@ import { useUrlSearchParams } from '@vueuse/core'
 
 const params = useUrlSearchParams('history')
 
-
 const { isDark, theme } = useData()
 
 import { ref, watch } from "vue";
@@ -33,76 +32,81 @@ const lightColor = computed(() => lchToHsl(siblings.value.index, siblings.value.
 </script>
 
 <template lang="pug">
-.theme
-  img.top-16px.left-4.fixed.z-1000.cursor-pointer.mr-3.h-30px(v-if="theme.logo", :src="theme.logo", alt="Chromatone logo" @click="openSideBar = !openSideBar")
-  client-only
-    nav-tools
-  .main 
-    side-bar(
-      :open="openSideBar" 
-      @close="openSideBar = false"
+
+img.top-16px.left-2.fixed.z-1000.cursor-pointer.mr-3.h-30px(v-if="theme.logo", :src="theme.logo", alt="Chromatone logo" @click="openSideBar = !openSideBar")
+
+bar-bar
+.main
+  side-bar(
+    :open="openSideBar" 
+    @close="openSideBar = false"
+    )
+
+  RegisterSW
+
+  template(v-if="f.layout == 'iframe'")
+    iframe.min-h-80svh.w-full.max-w-100svw(
+      v-if="f?.iframe"
+      :src="f.iframe"
       )
 
-    RegisterSW
+  template(v-else-if="f.layout == 'home'")
+    main.home.items-center(aria-labelledby="main-title")
+      chroma-flower.mt-16.w-full
+      .p-8.gap-1.flex.flex-col.items-center.text-center
+        .text-3rem.md-text-4rem.font-bold Chromatone
+        .text-2rem Visual Music Language
+        .text-xl to learn, explore and express with 
+      .flex.flex-col.max-w-60ch.ml-2
+        home-tile(
+          v-for="(area, i) in children", 
+          :key="area.url", 
+          :item="area", 
+          :i="i",
+          :total="children.length")  
+        youtube-embed(:video="f?.youtube" v-if="f?.youtube")
+      content.content.z-2
 
-    template(v-if="f.template == 'home'")
-      main.home.items-center(aria-labelledby="main-title")
-        chroma-flower.mt-16.w-full
-        .p-8.gap-1.flex.flex-col.items-center.text-center
-          .text-4rem.font-bold Chromatone
-          .text-2rem Visual Music Language
-          .text-xl to learn, explore and express with 
-        .flex.flex-col.max-w-60ch.ml-2
-          home-tile(
-            v-for="(area, i) in children", 
-            :key="area.url", 
-            :item="area", 
-            :i="i",
-            :total="children.length")  
-          youtube-embed(:video="f?.youtube" v-if="f?.youtube")
-        content.content.z-2
+  template(v-else)
+    main#content.w-full.relative.flex.flex-col
+      page-headline(
+        v-if="f.layout!='app'"
+        :pageColor="pageColor", :lightColor="lightColor" :page="f" :cover="f.dynamic ? f?.cover || f?.poster || '' : page?.frontmatter?.cover ")
 
-    template(v-else)
-      main#content.w-full.relative.flex.flex-col
-        page-headline(
-          v-if="f.layout!='app'"
-          :pageColor="pageColor", :lightColor="lightColor" :page="f" :cover="f.dynamic ? f?.cover || f?.poster || '' : page?.frontmatter?.cover ")
+        page-parents.mb-1.ml-6(:parents="f.dynamic ? parents : parents.slice(0,-1)")
+      .z-100.text-md.p-2.flex.flex-wrap.gap-2.items-center.bg-light-200.bg-opacity-60.dark-bg-dark-200.dark-bg-opacity-60.backdrop-blur-xl.pt-2.pl-4.min-h-15(
+        :style="{backgroundColor:pageColor}"
+        v-else)
+        h2.font-bold {{ f?.title }}
+        .p-0 {{ f?.description }}
+      iframe.min-h-80svh.w-full.max-w-100svw(
+        v-if="f?.iframe"
+        :src="f.iframe"
+        )
+      transition(name="fade")
+        .pb-8.relative.flex.flex-col.items-stretch.w-full.flex-auto(:key="route.path")
 
-          page-parents.mb-1.ml-6(:parents="f.dynamic ? parents : parents.slice(0,-1)")
-        .z-100.text-md.p-2.flex.flex-wrap.gap-2.items-center.bg-light-200.bg-opacity-60.dark-bg-dark-200.dark-bg-opacity-60.backdrop-blur-xl.pt-2.pl-14.min-h-15(
-          :style="{backgroundColor:pageColor}"
-          v-else)
-          h2.font-bold {{ f?.title }}
-          .p-0 {{ f?.description }}
-        iframe.min-h-80svh.w-full.max-w-100svw(
-          v-if="f?.iframe"
-          :src="f.iframe"
-          )
-        transition(name="fade")
-          .pb-8.relative.flex.flex-col.items-stretch.w-full.flex-auto(:key="route.path")
+          content.content.flex-auto.z-10(v-if="f?.topContent")
 
-            content.content.flex-auto.z-10(v-if="f?.topContent")
+          row-list.px-2.my-2.max-w-200( :children="children")
 
-            row-list.px-2.my-2.max-w-200( :children="children")
+          content.content.flex-auto.z-10(v-if="!f?.topContent")
 
-            content.content.flex-auto.z-10(v-if="!f?.topContent")
-
-        nav-next-prev(
-          :siblings="siblings" 
-          :parents="parents"
-          v-if="!params.nonextprev"
-          )
-        nav-row.p-4
-    client-only
-      draw-layer.z-100
-      cast-camera
-      draw-controls.fixed.bottom-4.left-4.right-16.z-100(v-if="drawingEnabled || drawingPinned")
-//debug
+      nav-next-prev(
+        :siblings="siblings" 
+        :parents="parents"
+        v-if="!params.nonextprev"
+        )
+      //- nav-row.p-4
+  client-only
+    draw-layer.z-100
+    cast-camera
+    draw-controls.fixed.bottom-4.left-4.right-16.z-100(v-if="drawingEnabled || drawingPinned")
 </template>
 
 <style lang="postcss">
 .main {
-  @apply relative flex items-stretch min-h-screen bg-cover bg-center bg-fixed;
+  @apply relative flex items-stretch min-h-screen bg-cover bg-center bg-fixed ml-12;
 }
 
 .sidebar-mask {

@@ -1,5 +1,5 @@
 ---
-template: home
+layout: home
 title: Chromatone
 description: Visual music language
 topContent: true

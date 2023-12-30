@@ -52,19 +52,19 @@
 }
 
 .slide-enter-to {
-	transform: translateY(0);
+	transform: translateX(0);
 }
 
 .slide-enter-from {
-	transform: translateY(100%);
+	transform: translateX(-100%);
 }
 
 .slide-leave-to {
-	transform: translateY(100%);
+	transform: translateX(-100%);
 }
 
 .slide-leave-from {
-	transform: translateY(0%);
+	transform: translateX(0%);
 }
 
 .scale-slide-enter-active,

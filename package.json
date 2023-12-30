@@ -70,14 +70,14 @@
 		"thousands-counter": "^2.1.1",
 		"tonal": "^5.1.2",
 		"tone": "^14.8.49",
-		"vue": "^3.4.0",
+		"vue": "^3.4.1",
 		"vue-glsl": "^1.1.27",
 		"webchuck": "^1.2.6",
 		"webmidi": "^3.1.8"
 	},
 	"devDependencies": {
 		"@directus/sdk": "^14.0.0",
-		"@iconify/json": "^2.2.162",
+		"@iconify/json": "^2.2.163",
 		"@modyfi/vite-plugin-yaml": "^1.0.4",
 		"@unocss/extractor-pug": "^0.58.2",
 		"@vite-pwa/vitepress": "^0.3.1",

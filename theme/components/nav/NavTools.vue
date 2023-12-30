@@ -27,14 +27,6 @@ onKeyStroke('Escape', () => {
 
 <template lang="pug">
 .buttons.fixed.top-3.right-2.opacity-30.hover-opacity-100.transition.flex.items-center.gap-0.z-400.bg-light-300.rounded-xl.bg-opacity-20.backdrop-blur-md.dark-bg-dark-200.dark-bg-opacity-20
-  FullScreen.text-xl.opacity-70.hover-opacity-100.transition
-  state-dark.opacity-70.hover-opacity-100.transition
-  button.text-xl.opacity-80.hover-opacity-100.transition(
-    @click="drawingEnabled = !drawingEnabled"
-    :class="{ active: drawingEnabled }"
-    v-tooltip.top="'Draw on the screen'"
-    )
-    .i-carbon-pen
 
   button(
     style="transition: all 100ms ease-out"

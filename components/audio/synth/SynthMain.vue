@@ -6,13 +6,8 @@ import { useSynth } from "./useSynth";
 import { colord } from "colord";
 import { onBeforeUnmount, onMounted } from "vue";
 
-onMounted(() => {
-  AppSynth.state.midi = false
-})
-
-onBeforeUnmount(() => {
-  AppSynth.state.midi = true
-})
+onMounted(() => AppSynth.state.midi = false)
+onBeforeUnmount(() => AppSynth.state.midi = true)
 
 const { groups, controls, voices, cycleNote, stopAll } = useSynth()
 

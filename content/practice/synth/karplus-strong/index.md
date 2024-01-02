@@ -5,4 +5,4 @@ date: 2013-11-14
 cover: ksa.png
 ---
 
-<AudioSynthKarplus />
+<AudioStringSynth />

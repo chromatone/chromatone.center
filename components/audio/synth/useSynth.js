@@ -32,7 +32,6 @@ export function useSynth() {
 
   watch(() => midi.note, n => cycleNote(n.number, n.velocity))
 
-
   function genVoice(voice) {
     let frequency = midiFrequency(voice.midi, voice.key)
 

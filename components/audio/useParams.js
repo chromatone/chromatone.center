@@ -1,4 +1,4 @@
-import { useAudio } from '../useAudio.js';
+import { useAudio } from './useAudio.js';
 import { reactive, ref, watch } from 'vue';
 
 import { useClamp } from '@vueuse/math';
@@ -29,6 +29,7 @@ export function useParams(params, title = 'ref') {
   watch(controls, cs => {
     for (let c in cs) {
       if (!setters[c]) continue
+      console.log(c)
       setters[c]({ value: cs[c] })
     }
   })

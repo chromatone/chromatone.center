@@ -5,7 +5,7 @@ import { ref, watch } from 'vue';
 
 import params from './params.json'
 
-import { useParams } from './useParams.js';
+import { useParams } from '../useParams.js';
 
 const { audio, render } = useAudio()
 

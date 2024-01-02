@@ -33,7 +33,10 @@ watch(() => audio.initiated, () => {
 
   let freq = el.mul(440, el.pow(2, el.div(el.sub(cv['string:midi'], 69), 12)))
 
-  let delTime = el.mul(el.div(1, freq), 1000)
+  let delTime = el.mul(
+    el.div(1, freq),
+    1000
+  )
   let adsr = el.adsr(0.0001, .2, 0.01, .2, cv['string:trigger'])
   let synth = el.mul(adsr, el.noise(), cv['string:velocity'])
   let filtered = el.lowpass(1880, 6, synth)
@@ -49,6 +52,17 @@ watch(() => audio.initiated, () => {
     el.ms2samps(delTime),
     el.add(0.995),
     filtered)
+
+  // let dll = el.tapOut(
+  //   { name: 'x' },
+  //   el.smooth(
+  //     0.5,
+  //     el.mul(
+  //       0.99,
+  //       el.add(filtered, el.delay({ size: 44100 }, el.ms2samps(delTime), 0, el.tapIn({ name: 'x' })))
+  //     )
+  //   )
+  // );
 
   let both = el.add(dl, osc)
   let signal = el.tanh(both)

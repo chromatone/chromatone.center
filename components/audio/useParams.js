@@ -29,7 +29,6 @@ export function useParams(params, title = 'ref') {
   watch(controls, cs => {
     for (let c in cs) {
       if (!setters[c]) continue
-      console.log(c)
       setters[c]({ value: cs[c] })
     }
   })

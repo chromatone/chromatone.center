@@ -57,7 +57,7 @@ useGesture({
 })
 
 const scaleControl = ref()
-const scaleCurrent = useClamp(10, 1, scaleList.length - 1)
+const scaleCurrent = useClamp(useStorage('midikeys-scale', 1), 1, scaleList.length - 1)
 
 useGesture({
   onDrag(ev) {

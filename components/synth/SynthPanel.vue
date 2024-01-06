@@ -77,23 +77,7 @@ const frequency = computed(() => {
       @click="midi.offset = octaves.next()"
       ) Octave
       .font-bold {{ midi.offset > 0 ? '+' : '' }}{{ midi.offset }}
-  .flex.flex-wrap
-    button.flex-button.border(
-      @click="midi.keyboard = !midi.keyboard" 
-      aria-label="Play MIDI with PC keyboard"
-      :class="{ active: midi.keyboard }"
-      v-tooltip.bottom="'Toggle synth on PC keyboard'"
-      )
-      .i-tabler-keyboard.text-2xl
-      .m-0 Pc Keyboard
-    button.flex-button.border(
-      @click="synth.state.midi = !synth.state.midi" 
-      aria-label="Play synth on MIDI input"
-      v-tooltip.bottom="'Toggle synth on MIDI input'"
-      :class="{ active: synth.state.midi }"
-      )
-      .i-mdi-midi-input.text-2xl
-      .m-0 MIDI Synth
+
 </template>
 
 <style lang="postcss" scoped>

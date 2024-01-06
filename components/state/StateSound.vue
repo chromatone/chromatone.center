@@ -7,7 +7,7 @@ const { mic, input } = useMic();
 </script>
 
 <template lang="pug">
-.flex.flex-col.w-full.gap-2
+.flex.flex-wrap.w-full.gap-2
   .is-group.flex.p-2.gap-2
     button.flex-button.relative.overflow-hidden(@click="mic.open = !mic.open", :class="{ active: mic.open }", v-tooltip.top="'Enable microphone'")
       .i-ph-microphone.z-10.relative(v-if="!mic.opened")

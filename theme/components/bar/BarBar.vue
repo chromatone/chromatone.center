@@ -117,14 +117,17 @@ client-only
       ref="settingsPanel"
       v-show="settingsOpen"
       )
-      h2 Synth
-      synth-panel
+
       h2 MIDI
       midi-panel
+      h2 Synth
+      synth-panel
       h2 Transport
       state-transport
       h2 Sound
       state-sound
+
+
 
 transition(name="slide")
   .panel(
@@ -169,7 +172,7 @@ a.button {
 }
 
 .panel {
-  @apply transition fixed bg-light-200 z-900 top-0 bottom-0 left-0 shadow-lg ml-12 overflow-scroll p-2 dark-bg-dark-200 max-w-90vw;
+  @apply transition fixed bg-light-200 z-900 top-0 bottom-0 left-0 shadow-lg ml-12 overflow-scroll p-2 dark-bg-dark-200 max-w-480px pb-8;
 
   & h2 {
     @apply my-4 text-2xl

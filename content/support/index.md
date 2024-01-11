@@ -14,9 +14,6 @@ buttons:
   - url: "https://github.com/chromatone/"
     text: "GitHub Organisation"
     type: github
-  - url: "https://github.com/sponsors/chromatone/"
-    text: "GitHub Sponsors"
-    type: github
 ---
 
 <script setup>
@@ -39,15 +36,7 @@ We have a subreddit to hang around and an Instagram account to tag in your posts
 
 We are those, who learn, teach, explore and produce music with help of the new clean visual language. And it's getting better with every contribution. Say hi and someone will reply. Everything starts from the first step. More to build together!
 
-## Sponsor us
-
-If you find Chromatone system helpful in your music learning or teaching process, please share love and start your Chromatone Sponsorship today.
-
-Chromatone is an open source initiative and we are based on voluntary contributions of code, time and money. You can become a part of the development by even a small donation – it really gives us energy to continue it further.
-
-You can start supporting the project today by sponsoring it's author at GitHub.
-
-[Go to GutHub Sponsors](https://github.com/sponsors/chromatone/)
+## Give us a star
 
 In future the project will grow big enough to become an Open Collective to be even more transparent about all the funding and expenses. We'll need to get at least 100 stars for [the repository at GitHub](https://github.com/chromatone/chromatone.center). Let's do it together!
 

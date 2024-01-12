@@ -36,12 +36,12 @@ We have a subreddit to hang around and an Instagram account to tag in your posts
 
 We are those, who learn, teach, explore and produce music with help of the new clean visual language. And it's getting better with every contribution. Say hi and someone will reply. Everything starts from the first step. More to build together!
 
-## Give us a star
-
-In future the project will grow big enough to become an Open Collective to be even more transparent about all the funding and expenses. We'll need to get at least 100 stars for [the repository at GitHub](https://github.com/chromatone/chromatone.center). Let's do it together!
-
-[![Star History Chart](https://api.star-history.com/svg?repos=chromatone/chromatone.center&type=Date)](https://star-history.com/#chromatone/chromatone.center&Date)
-
 ## Contribute code
 
 If you're a designer, JS developer, audio analysis library or know how else the site may be better - contribute code to our open [GitHub repository](https://github.com/chromatone). Or at least press that star button in the right top corner.
+
+## Give us a star
+
+In future the project will grow big enough to become an Open Collective to be transparent about all the funding and expenses. We need to have at least 100 stars at [the repository on GitHub](https://github.com/chromatone/chromatone.center). Let's do it!
+
+[![Star History Chart](https://api.star-history.com/svg?repos=chromatone/chromatone.center&type=Date)](https://star-history.com/#chromatone/chromatone.center&Date)

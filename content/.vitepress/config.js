@@ -77,7 +77,7 @@ export default withPwa(defineConfig({
   },
   transformHead({ pageData }) {
     const url = pageData.relativePath.split('index.md')[0]
-    let image = meta?.image
+    let image = `https://og.chromatone.center/api/image/?text=${encodeURIComponent(pageData?.frontmatter?.title) || ''}`
     if (pageData.frontmatter?.cover) {
       if (pageData.frontmatter.dynamic) {
         image = pageData.frontmatter?.cover

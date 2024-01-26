@@ -58,7 +58,7 @@ function getNote(string, semitones) {
 )
   .flex.justify-center
     .text-2x.font-bold {{ notes[pitch] }}{{ neck.title }}
-  svg#fretboard.max-h-3xl.w-full.my-2(
+  svg#fretboard.-rotate-90.max-h-3xl.w-full.my-2(
     version="1.1",
     baseProfile="full",
     :viewBox="`-50 -50 ${neck.height + 100} ${neck.width + 60}`",

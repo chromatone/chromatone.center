@@ -59,11 +59,6 @@ function keyColor(key, off) {
   @mouseleave="playAll && nextTick(stopChroma(chroma, pitch))"
   :style="{ backgroundColor: noteColor(pitch, 2, 1, 0.5) }"
   )
-  .flex.justify-center.my-2.px-2(
-    :style="{color: colord(noteColor(pitch, 2, 1, 1)).isDark()? 'white':'black'}"
-    v-if="title")
-    .absolute.right-4 {{ roman }}
-    .font-bold.text-lg.flex-1.text-center {{ notes[pitch] }}{{ keys.title }}
   svg.w-full#chroma-keys(
     version="1.1",
     baseProfile="full",
@@ -153,7 +148,13 @@ function keyColor(key, off) {
           r="18"
           fill="#3339"
           )
+  .flex.justify-center.my-2.px-2(
+    :style="{color: colord(noteColor(pitch, 2, 1, 1)).isDark()? 'white':'black'}"
+    v-if="title")
+    .absolute.right-4 {{ roman }}
+    .font-bold.text-lg.flex-1.text-center {{ notes[pitch] }}{{ keys.title }}
   slot
+
 </template>
 
 <style lang="postcss" scoped>

@@ -1,12 +1,20 @@
 <script setup>
 import { ref } from 'vue'
+import { useSortable } from '@vueuse/integrations/useSortable'
 
 import { globalScale } from '#/use'
 import { intervals } from '#/use/theory';
+import { useStorage } from '@vueuse/core';
 
-const progression = ref([])
+const list = ref()
+const progression = useStorage('jam-progression', [])
 const choosing = ref(false)
 
+const animation = 200
+const { option } = useSortable(list, progression)
+
+option('animation', animation)
+const instrument = ref('guitar')
 </script>
 
 <template lang="pug">
@@ -26,30 +34,44 @@ const choosing = ref(false)
 
 		.flex.gap-4.items-center.flex-wrap.w-full
 			control-scale(style="flex: 1 1 30%")
+				select.p-2.m-2.rounded-lg.font-bold.dark-bg-dark-300(v-model="instrument")
+					option(value="guitar") Guitar
+					option(value="ukulele") Ukulele
 			chord-tabs-neck(style="flex: 4 1 300px" instrument="guitar")
 		//- state-transport
-		.flex.flex-wrap.items-center.border-1.rounded-xl.p-4.gap-4
+
+		.flex.flex-wrap.items-center.border-1.rounded-xl.p-4.gap-4(ref="list")
 			.p-0.relative.flex.flex-col.gap-4(
 				style="flex: 1 1 100px"
-				v-for="(chord,c) in progression" :key="chord"
+				v-for="(chord,c) in progression" :key="chord")
 
-				)
-
-				.flex.items-center.z-20.absolute.bottom-2.left-2.text-xl {{ intervals[chord.degree] }}
-				button.flex.items-center.z-20.absolute.bottom-2.right-2.text-xl(
-					@click="progression.splice(c,1)"
-					)
-					.i-la-times
-				chroma-keys.max-h-30(
+				.relative
+					chroma-keys.max-h-30(
 					:chroma="chord.chroma"
-					:pitch="(globalScale.tonic+chord.degree)%12"
-					)
+					:pitch="(globalScale.tonic+chord.degree)%12")
+					.flex.items-center.z-20.absolute.bottom-2.left-2.text-xl {{ intervals[chord.degree] }}
+					button.flex.items-center.z-20.absolute.bottom-2.right-2.text-xl(
+					@click="progression.splice(c,1)")
+						.i-la-trash
 				chord-tab.max-h-60(
 					:chroma="chord.chroma" 
 					:pitch="(globalScale.tonic+chord.degree)%12"
-					instrument="guitar")
-		chord-scales(@chord="progression.push($event); choosing=false" v-show="choosing || progression.length == 0")
-		button.text-button.flex-1.cursor-pointer.font-bold.text-xl(v-show="!choosing" @click="choosing = true") ADD CHORDS
+					:instrument="instrument")
+
+		.fixed.bottom-0.bg-light-900.bg-opacity-80.backdrop-blur.p-4.dark-bg-dark-300.dark-bg-opacity-80
+
+			button.flex-1.cursor-pointer.font-bold.bg-light-300.dark-bg-dark-300.flex.items-center(@click="choosing = !choosing")
+				.i-la-plus.text-6xl(v-if="!choosing")
+				.i-la-times.text-6xl(v-else)
+				.p-0.text-3xl ADD A CHORD
+
+			chord-scales.overflow-scroll.z-1000.max-w-80vw(
+			@chord="progression.push($event); choosing=false" 
+			v-show="choosing || progression.length == 0")
+
+
+
 		//- midi-roll.-z-10.absolute.bottom-2.w-full
 		jam-date
+
 </template>

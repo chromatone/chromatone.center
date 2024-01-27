@@ -48,7 +48,7 @@ const currentScale = computed(() => scaleChords.value.find(sc => sc.chroma == gl
 
 <template lang="pug">
 .flex.gap-2
-  .flex.flex-col.border-2.gap-2.relative.max-h-60.overflow-y-scroll.overflow-x-hidden.overscroll-none.max-w-80.rounded(
+  .flex.flex-col.border-2.gap-2.relative.max-h-120.overflow-y-scroll.overflow-x-hidden.overscroll-none.max-w-80.rounded(
     style="scroll-snap-type: y proximity;flex: 1 1 200px"
     v-for="degree in currentScale.degrees" 
     :key="degree"

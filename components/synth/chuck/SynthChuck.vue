@@ -2,7 +2,9 @@
 import { onMounted, ref, shallowRef } from 'vue';
 import { Chuck } from 'webchuck'
 
-const examples = import.meta.glob('./examples/*.ck', { as: 'raw', eager: true })
+const examples = import.meta.glob('./examples/*.ck', { query: '?raw', eager: true })
+
+console.log(examples)
 
 function getFileName(path) {
   return path.match(/([^./]+)(?=\.[^.]*$|$)/)[1];
@@ -10,7 +12,7 @@ function getFileName(path) {
 
 const webChuck = shallowRef()
 const initiated = ref(false)
-const command = ref(examples['./examples/brass.ck'])
+const command = ref(examples['./examples/brass.ck']?.default)
 
 onMounted(async () => {
   await init()
@@ -39,9 +41,9 @@ async function init() {
     button.text-button.flex-1(@click="webChuck.removeLastCode()") STOP
   .flex.flex-wrap.gap-2 
     .p-2.border-1.rounded-lg.border-dark-200.cursor-pointer(
-      :class="{active:example == command}"
+      :class="{active:example?.default == command}"
       v-for="(example,path) in examples" :key="example"
-      @click="command = example"
+      @click="command = example?.default"
       ) {{ getFileName(path) }} 
 </template>
 

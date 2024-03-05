@@ -74,7 +74,6 @@ side-panel.z-400(v-model:open="open.tempo")
 side-panel.z-400(v-model:open="open.audio")
   state-sound
 
-midi-notes
 </template>
 
 <style lang="postcss" scoped>

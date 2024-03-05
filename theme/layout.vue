@@ -36,6 +36,7 @@ const lightColor = computed(() => lchToHsl(siblings.value.index, siblings.value.
 img.top-16px.left-2.fixed.z-1000.cursor-pointer.mr-3.h-30px(v-if="theme.logo", :src="theme.logo", alt="Chromatone logo" @click="openSideBar = !openSideBar")
 
 bar-bar
+midi-notes
 .main
   side-bar(
     :open="openSideBar" 
@@ -102,6 +103,7 @@ bar-bar
     draw-layer.z-100
     cast-camera
     draw-controls.fixed.bottom-4.left-4.right-16.z-100(v-if="drawingEnabled || drawingPinned")
+    
 </template>
 
 <style lang="postcss">

@@ -74,7 +74,7 @@ function play() {
   const { master } = useAudio()
   if (map.playing) {
     const noww = now() + 0.5
-    info.filteredTracks.forEach(track => {
+    Object.values(info?.tracks)?.forEach(track => {
       //create a synth for each track
       const synth = new PolySynth(Synth, {
         envelope: {
@@ -86,8 +86,8 @@ function play() {
       }).connect(master.limiter)
       synths.push(synth)
       //schedule all of the events
-      track.notes.forEach(note => {
-        synth.triggerAttackRelease(note.name, note.duration, note.time + noww, note.velocity)
+      track?.notes?.forEach(note => {
+        synth.triggerAttackRelease(note.name, note.duration || 0.5, note.time + noww, note.velocity)
       })
     })
   } else {
@@ -137,4 +137,3 @@ button {
   @apply bg-light-100 border-current;
 }
 </style>
-

@@ -1,7 +1,7 @@
 ---
 title: ChucK
 description: Music programming language
-date: 2022-05-23
+date: 2012-05-23
 cover: ch.png
 layout: app
 ---

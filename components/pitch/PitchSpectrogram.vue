@@ -119,11 +119,11 @@ function colorIt(freq, value) {
 
 
 </script>
-  
+
 <template lang="pug">
 .flex.flex-col.justify-center
 
-  .fullscreen-container.text-white.rounded-3xl.overflow-hidden#screen.m-4.max-h-90svh
+  .fullscreen-container.text-white#screen.max-h-90svh
 
     canvas#spectrogram.h-full.min-h-70svh.w-full.rounded-md.cursor-pointer(
       ref="canvasElement"
@@ -152,5 +152,5 @@ function colorIt(freq, value) {
       .absolute.p-4.opacity-70.touch-none.select-none Right click here to enter Picture-In-Picture mode
       video.max-h-50(ref="video")  
 </template>
-  
+
 <style lang="postcss" scoped></style>

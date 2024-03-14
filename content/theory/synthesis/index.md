@@ -24,3 +24,7 @@ cover: 35-54d35.jpg
 - Granular
 
 <youtube-embed video="Gn5yixqjmN8" />
+
+## DSP
+
+https://github.com/olilarkin/awesome-musicdsp

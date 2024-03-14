@@ -7,6 +7,10 @@ import { cleanLink, usePages, usePage } from '../pages/index'
 import { drawingEnabled, drawingPinned } from '../theme/composables/draw'
 import { useUrlSearchParams } from '@vueuse/core'
 
+import { useWindowScroll } from '@vueuse/core'
+
+const { y } = useWindowScroll()
+
 const params = useUrlSearchParams('history')
 
 const { isDark, theme } = useData()
@@ -70,16 +74,19 @@ midi-notes
 
   template(v-else)
     main#content.w-full.relative.flex.flex-col
-      page-headline(
-        v-if="f.layout!='app'"
-        :pageColor="pageColor", :lightColor="lightColor" :page="f" :cover="f.dynamic ? f?.cover || f?.poster || '' : page?.frontmatter?.cover ")
+      transition(name="fade")
+        page-headline(
+          v-if="f.layout!='app'"
+          :pageColor="pageColor", :lightColor="lightColor" :page="f" :cover="f.dynamic ? f?.cover || f?.poster || '' : page?.frontmatter?.cover ")
 
-        page-parents.mb-1.ml-6(:parents="f.dynamic ? parents : parents.slice(0,-1)")
-      .z-100.text-md.p-2.flex.flex-wrap.gap-2.items-center.bg-light-200.bg-opacity-60.dark-bg-dark-200.dark-bg-opacity-60.backdrop-blur-xl.pt-2.pl-4.min-h-15(
-        :style="{backgroundColor:pageColor}"
-        v-else)
-        h2.font-bold {{ f?.title }}
-        .p-0 {{ f?.description }}
+          page-parents.mb-1.ml-6(:parents="f.dynamic ? parents : parents.slice(0,-1)")
+        .fixed.w-full.z-100.text-md.p-2.flex.flex-wrap.gap-2.items-center.bg-light-200.bg-opacity-20.dark-bg-dark-200.dark-bg-opacity-10.backdrop-blur-lg.pt-2.pl-4.min-h-15.border-t-4.op-90.transition.select-none.pointer-events-none(
+          :style="{borderColor:pageColor}"
+          v-else-if="y>100")
+          h2.font-bold {{ f?.title }} 
+          .p-0 {{ f?.description }}
+
+
       iframe.min-h-80svh.w-full.max-w-100svw(
         v-if="f?.iframe"
         :src="f.iframe"

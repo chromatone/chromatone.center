@@ -1,7 +1,7 @@
 ---
 title: Soundfont sampler synth
 description: Open source sample-based online synthesizer
-date: 2021-10-31
+date: 2023-10-31
 layout: app
 cover: cover.png
 links:

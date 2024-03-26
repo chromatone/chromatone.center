@@ -26,6 +26,7 @@ function usePanel() {
   return { open, panel }
 }
 
+
 </script>
 
 <template lang='pug'>
@@ -38,16 +39,16 @@ nav.bar
     img.cursor-pointer.mt-4.mx-2.mb-2(v-if="theme.logo", :src="theme.logo", alt="Chromatone logo" title="Chromatone")
 
   button(
-    @click="theoryOpen=!theoryOpen"
-    :class="{active: theoryOpen || route.path.includes('theory')}"
+    @click="theoryOpen = !theoryOpen"
+    :class="{ active: theoryOpen || route.path.includes('theory') }"
     title="Theory"
     aria-label="Toggle theory navigation panel"
     v-tooltip.right="'Theory'"
     )
     .i-la-book
   button(
-    @click="practiceOpen=!practiceOpen"
-    :class="{active: practiceOpen|| route.path.includes('practice')}"
+    @click="practiceOpen = !practiceOpen"
+    :class="{ active: practiceOpen || route.path.includes('practice') }"
     title="Practice"
     aria-label="Toggle practice navigation panel"
     v-tooltip.right="'Practice'"
@@ -56,21 +57,21 @@ nav.bar
   a.button(
     title="Academy"
     href="/academy/"
-    :class="{active: route.path.includes('academy')}"
+    :class="{ active: route.path.includes('academy') }"
     v-tooltip.right="'Academy'"
     )
     .i-la-chalkboard-teacher
   a.button(
     title="Shop"
     href="/shop/"
-    :class="{active: route.path.includes('shop')}"
+    :class="{ active: route.path.includes('shop') }"
     v-tooltip.right="'Shop'"
     )
     .i-la-shopping-bag
   a.button(
     title="Contacts"
     href="/contacts/"
-    :class="{active: route.path.includes('contacts')}"
+    :class="{ active: route.path.includes('contacts') }"
     v-tooltip.right="'Contacts'"
     )
     .i-la-at
@@ -79,8 +80,8 @@ nav.bar
 
   button(
     title="Search"
-    @click="searchOpen=!searchOpen"
-    :class="{active: searchOpen}"
+    @click="searchOpen = !searchOpen"
+    :class="{ active: searchOpen }"
     v-tooltip.right="'Search'"
     aria-label="Toggle search panel"
     )
@@ -89,7 +90,7 @@ nav.bar
   .spacer 
   .flex-auto
   button(
-    @click="settingsOpen=!settingsOpen"  
+    @click="settingsOpen = !settingsOpen"  
     :class="{ active: settingsOpen }" 
     aria-label="Toggle settings panel"
     v-tooltip.right="'Settings'"
@@ -134,7 +135,7 @@ transition(name="slide")
     ref="searchPanel"
     v-if="searchOpen"
     )
-    nav-search.mt-4(@close="searchOpen=false" :focus="searchOpen")
+    nav-search.mt-4(@close="searchOpen = false" :focus="searchOpen")
 
 transition(name="slide")
   .panel(

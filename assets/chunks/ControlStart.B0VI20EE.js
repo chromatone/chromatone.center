@@ -1,0 +1,1 @@
+import{E as e,F as o,H as n,$ as s,D as r}from"./framework.BtWLkna7.js";const a={class:"button"};function c(t,d){return e(),o("button",a,[n(t.$slots,"default",{},()=>[s("Start")],!0)])}const _={},u=r(_,[["render",c],["__scopeId","data-v-fb351d24"]]);export{u as _};

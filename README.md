@@ -56,4 +56,8 @@ Current tasks and progress are open [at this ClickUp project](https://sharing.cl
 - [OpenLayers](https://github.com/openlayers/openlayers)
 - [RecordRTC](https://recordrtc.org/)
 
+- TODO:
+  - https://baianat.github.io/leaps/reveal.html#example
+  - https://vuexyz.org/primitives/useArc.html
+
 https://codesandbox.io/p/github/chromatone/chromatone.center/

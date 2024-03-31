@@ -18,7 +18,7 @@ export const tempo = reactive({
   initialized: false,
   bpm: useClamp(useStorage("tempo-bpm", 100), 10, 500),
   clock: null,
-  midiClock: useStorage("midi-clock-out", false),
+  midiClock: false,
   tabSync: useStorage("tab-sync", false),
   blink: false,
   started: false,

@@ -30,7 +30,7 @@ const bg = computed(() => `url(${props.item?.frontmatter?.cover})`);
     .cover(
       :style="{ backgroundImage: bg }"
       )
-    .info 
+    .info.flex-1
       .flex.items-center.w-full
         .mr-2.text-2xl(v-if="item?.frontmatter?.emoji") {{ item?.frontmatter?.emoji }}
         .mt-1
@@ -45,7 +45,7 @@ const bg = computed(() => `url(${props.item?.frontmatter?.cover})`);
 
 <style lang="postcss" scoped>
 .row {
-  @apply bg-light-500 w-full dark-bg-dark-500 flex flex-col transition-all duration-300 ease no-underline rounded overflow-hidden shadow-lg max-w-60ch border-l-6 mx-auto;
+  @apply bg-light-500 w-full dark-bg-dark-500 flex flex-col transition-all duration-300 ease no-underline rounded overflow-hidden shadow-lg max-w-60ch border-b-12;
   flex: 1 1 200px;
 }
 

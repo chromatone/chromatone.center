@@ -1,5 +1,5 @@
-<svg class="max-w-150 mx-auto" version="1.1" baseProfile="full" viewBox="-50 -50 1100 1100"
-  xmlns="http://www.w3.org/2000/svg" text-anchor="middle" dominant-baseline="middle">
+<svg class="max-w-150" version="1.1" baseProfile="full" viewBox="-50 -50 1100 1100" xmlns="http://www.w3.org/2000/svg"
+  text-anchor="middle" dominant-baseline="middle">
   <defs>
     <filter id="shadow">
       <feDropShadow dx="0" dy="0" stdDeviation="8" flood-opacity="0.3"></feDropShadow>

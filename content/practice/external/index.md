@@ -9,4 +9,4 @@ date: 2018-09-08
 import { data } from '#/data/tools.data'
 </script>
 
-<ToolsList class="mx-auto" :data="data" />
+<ToolsList :data="data" />

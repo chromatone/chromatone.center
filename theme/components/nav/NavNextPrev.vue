@@ -36,9 +36,9 @@ const colors = reactive({
     .flex.flex-col.items-justify.mx-4
       a.pad(
         style="flex:1 1"
-        v-for="(parent, p) in [...parents].slice(1,-1)" :key="parent"
+        v-for="(parent, p) in [...parents].slice(1, -1)" :key="parent"
         :href="cleanLink(parent.url)"
-        :style="{ order: 100 - p,backgroundColor: colors.next, backgroundImage: `url(${parent?.frontmatter?.cover})` }"
+        :style="{ order: 100 - p, backgroundColor: colors.next, backgroundImage: `url(${parent?.frontmatter?.cover})` }"
         )
         .link
           .i-carbon-arrow-up.mr-1
@@ -85,7 +85,7 @@ const colors = reactive({
 }
 
 .link {
-  @apply p-4 flex items-center no-underline w-full rounded-lg text-xl max-w-88vw backdrop-blur-sm bg-light-200 bg-opacity-70 dark-bg-dark-700 dark-bg-opacity-60;
+  @apply p-4 flex items-center no-underline w-full rounded-lg text-lg max-w-88vw backdrop-blur-sm bg-light-200 bg-opacity-70 dark-bg-dark-700 dark-bg-opacity-60;
   font-weight: 500;
   max-width: fit-content
 }
@@ -97,6 +97,7 @@ const colors = reactive({
 }
 
 .icon {
+  @apply mt-2;
   display: inline;
   width: 1.5rem;
   height: 1.5rem;

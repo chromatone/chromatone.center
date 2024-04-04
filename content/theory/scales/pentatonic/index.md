@@ -52,7 +52,7 @@ Omitting the third and seventh degrees of the C major scale obtains the notes fo
 
 The black keys on a piano keyboard comprise a G-flat major (or equivalently, F-sharp major) pentatonic scale: G-flat, A-flat, B-flat, D-flat, and E-flat, which is exploited in Chopin's black key étude.
 
-<audio class="mx-auto my-4" controls>
+<audio class="my-4" controls>
 <source src="/audio/Frederic_Chopin_-_Opus_10_-_Twelve_Grand_Etudes_-_G_Flat_Major.mp3" type="audio/mpeg">
 </audio>
 

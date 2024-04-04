@@ -76,13 +76,13 @@ midi-notes
     main#content.w-full.relative.flex.flex-col
       transition(name="fade")
         page-headline(
-          v-if="f.layout!='app'"
-          :pageColor="pageColor", :lightColor="lightColor" :page="f" :cover="f.dynamic ? f?.cover || f?.poster || '' : page?.frontmatter?.cover ")
+          v-if="f.layout != 'app'"
+          :pageColor="pageColor", :lightColor="lightColor" :page="f" :cover="f.dynamic ? f?.cover || f?.poster || '' : page?.frontmatter?.cover")
 
-          page-parents.mb-1.ml-6(:parents="f.dynamic ? parents : parents.slice(0,-1)")
+          page-parents(:parents="f.dynamic ? parents : parents.slice(0, -1)")
         .fixed.w-full.z-100.text-md.p-2.flex.flex-wrap.gap-2.items-center.bg-light-200.bg-opacity-20.dark-bg-dark-200.dark-bg-opacity-10.backdrop-blur-lg.pt-2.pl-4.min-h-15.border-t-4.op-90.transition.select-none.pointer-events-none(
-          :style="{borderColor:pageColor}"
-          v-else-if="y>100")
+          :style="{ borderColor: pageColor }"
+          v-else-if="y > 100")
           h2.font-bold {{ f?.title }} 
           .p-0 {{ f?.description }}
 

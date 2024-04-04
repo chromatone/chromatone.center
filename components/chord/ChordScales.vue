@@ -50,9 +50,9 @@ const currentScale = computed(() => scaleChords.value.find(sc => sc.chroma == gl
 .flex.gap-2
   .flex.flex-col.border-2.gap-2.relative.max-h-120.overflow-y-scroll.overflow-x-hidden.overscroll-none.max-w-80.rounded(
     style="scroll-snap-type: y proximity;flex: 1 1 200px"
-    v-for="degree in currentScale.degrees" 
+    v-for="degree in currentScale?.degrees" 
     :key="degree"
-    :style="{ borderColor: noteColor((degree + globalScale.tonic) % 12,2) }"
+    :style="{ borderColor: noteColor((degree + globalScale.tonic) % 12, 2) }"
     ) 
     .z-10.sticky.top-0.font-bold.px-2.flex.items-center.text-white() {{ notes[(degree + globalScale.tonic) % 12] }}
       .flex-1
@@ -63,11 +63,10 @@ const currentScale = computed(() => scaleChords.value.find(sc => sc.chroma == gl
       v-for="chord in currentScale.degreeChords[degree]" 
       :key="chord")
       chroma-keys(
-        @click="emit('chord', {chroma: chord.chroma, degree })"
+        @click="emit('chord', { chroma: chord.chroma, degree })"
         :playAll="true"
         :letters="false"
         :chroma="chord.chroma", 
         :pitch="(degree + globalScale.tonic) % 12")
 
 </template>
-

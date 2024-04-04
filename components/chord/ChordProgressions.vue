@@ -39,7 +39,7 @@ function getChords(degrees) {
 
 <template lang="pug">
 .flex.flex-col
-  .flex.flex-wrap.mx-auto.my-4
+  .flex.flex-wrap.my-4
     control-choose(v-model="state.mode" :variants="variants")
   .flex.flex-wrap.items-stretch.my-2.p-8.gap-4.border-2.rounded-xl(
     :style="{ borderColor: noteColor(globalScale.tonic, 2), backgroundColor: noteColor(globalScale.tonic, 2, 1, 0.05) }"

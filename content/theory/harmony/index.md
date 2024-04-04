@@ -5,7 +5,7 @@ date: 2021-08-18
 cover: omar-flores.jpg
 ---
 
-What is [Harmony](./study/index.md)? How the [Chord Progressions](./progressions/index.md) are built from individual chords?
+What is [Harmony](./study/index.md)?
 
 May two or more scales [Sound nice simultaneously](./polytonality/index.md)? Or how to [Transition from one key to another](./modulation/index.md)? Let's explore all the possible [Harmonic movements](./movement/index.md) in different frames like [Chord-scale system](./chord-scale/index.md) or the [Chord and nonchord tones approach](./non-chord/index.md)
 

@@ -7,7 +7,7 @@ cover: drone.png
 ---
 
 <client-only >
-  <pitch-drone class="max-w-55ch mx-auto" />
+  <pitch-drone class="max-w-55ch" />
 </client-only >
 
 ## Multipurpose rich harmonic sound generator

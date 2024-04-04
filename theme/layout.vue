@@ -62,7 +62,7 @@ midi-notes
         .text-3rem.md-text-4rem.font-bold Chromatone
         .text-2rem Visual Music Language
         .text-xl to learn, explore and express with 
-      .flex.flex-col.max-w-60ch.ml-2
+      .flex.flex-wrap.ml-2
         home-tile(
           v-for="(area, i) in children", 
           :key="area.url", 

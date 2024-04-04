@@ -19,7 +19,9 @@ const color = computed(() => lchToHsl(props.i, props.total));
 </script>
 
 <template lang="pug">
-.flex.p-4.flex-col.tile.border-l-12(:i="i", :total="total"
+.flex.p-4.flex-col.tile.border-b-12(
+  style="flex: 1 1 320px;"
+  :i="i", :total="total"
   :style="{ borderColor: lchToHsl(i, total) }",
 )
   // img.cover(:src="'/media/' + item.data.cover")
@@ -30,13 +32,14 @@ const color = computed(() => lchToHsl(props.i, props.total));
       :style="{ color: lchToHsl(i, total) }"
     ) {{ item?.frontmatter?.title }}
     .font-normal {{ item?.frontmatter?.description }}
-  .flex.flex-wrap.py-2
-    a.cursor-pointer.m-2.shadow-md.rounded.border-l-8.no-underline.hover-shadow-lg(
+  .flex.flex-wrap.py-2.gap-2
+    a.cursor-pointer.shadow-md.rounded.border-b-8.no-underline.hover-shadow-lg.dark-bg-dark-700.bg-light-100(
+
       :style="{ borderColor: lchToHsl(p, children.length) }",
       :href="cleanLink(page.url)",
       v-for="(page, p) in children" :key="page.url"
       )
-      .m-2.p-1(:i="p", :total="children.length") {{ page?.frontmatter?.title }}
+      .m-2(:i="p", :total="children.length") {{ page?.frontmatter?.title }}
 </template>
 
 <style lang="postcss" scoped>

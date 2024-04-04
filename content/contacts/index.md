@@ -33,7 +33,7 @@ import { useData } from 'vitepress'
 const { frontmatter: f } = useData()
 </script>
 
-<author-card :author="f?.org" />
+<author-card :author="f?.org"  />
 
 Chromatone is a self sustaining ecosystem of music learners, music teachers and new tools to learn, practice, compose and perform music visually. The source code for them is open and is developed as an internationally funded social initiative.
 
@@ -41,4 +41,4 @@ Our mission is to build a complete visual music ecosystem built by international
 
 The stickers and printable files sales bring fuel to feed the research and development process. Charity funding is very welcome! We are building a whole language here - and the wider we can reach and share the joy of playing Visual Music together. ✨
 
-<author-card :author="f?.author"  />
+<author-card :author="f?.author" />

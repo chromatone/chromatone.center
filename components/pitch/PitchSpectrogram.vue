@@ -143,13 +143,13 @@ function colorIt(freq, value) {
       .i-la-arrow-down(v-else)
     button.absolute.top-4.right-4.text-xl.select-none.cursor-pointer(@mousedown="clear()")
       .i-la-trash-alt
-  .flex.items-center.gap-2.px-8.flex-wrap
-    .is-group.flex.flex-wrap.gap-2
+  .flex.items-center.gap-2.px-2.flex-wrap
+    .is-group.flex.flex-wrap.gap-2.flex-1.p-2
       ControlRotary(v-model="state.pow" :min="1" :max="10" :step="1" :fixed="0" param="POW")
       ControlRotary(v-model="state.offset" :min="-.5" :max=".5" :step=".0001" param="OFFSET" :fixed="2")
 
-    .max-w-180.mx-auto.relative.text-white 
-      .absolute.p-4.opacity-70.touch-none.select-none Right click here to enter Picture-In-Picture mode
+    .max-w-120.scale-75.max-h-60.overflow-clip.relative.text-white 
+      .absolute.p-2.opacity-70.touch-none.select-none.text-md Right click here to enter Picture-In-Picture mode
       video.max-h-50(ref="video")  
 </template>
 

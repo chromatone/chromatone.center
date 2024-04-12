@@ -25,11 +25,12 @@ const started = useDateFormat(() => audio.started, 'YYYY MMM DD @ HH:MM:ss  ')
   @click="render()"
   v-if="!audio.started") Click to start watching time passing
 
-AudioTimeMetronome.fixed.bottom-0.z-100.max-w-200
-.flex.flex-col.gap-8.font-mono.text-center.max-w-60ch.items-stretc.w-full(
+AudioTimeMetronome.fixed.bottom-0.z-100.max-w-200.m-4
+
+.p-2.flex.flex-wrap.gap-4.font-mono.text-center.items-stretc.w-full(
   @click="render()"
   :style="{opacity: audio?.started ? 1 : 0.4}"
-)
+  )
   h2 From samples to beats and measures
 
   .sheet
@@ -187,6 +188,7 @@ AudioTimeMetronome.fixed.bottom-0.z-100.max-w-200
 .sheet {
   @apply border-1 border-dark-200 dark-border-light-200 dark-bg-dark-400 rounded-xl grid gap-2 text-md items-center justify-center shadow-lg bg-light-200 dark-bg-dark-400;
   grid-template-columns: 3fr 3fr 3fr;
+  flex: 1 1 350px;
 }
 
 .active {
@@ -198,6 +200,6 @@ button {
 }
 
 .row {
-  @apply font-bold mt-2 col-span-3 border-b-1 border-dark-200 dark-border-light-200 opacity-90;
+  @apply font-bold mt-2 col-span-3 border-b-1 border-dark-200 dark-border-light-200 opacity-90 px-2;
 }
 </style>

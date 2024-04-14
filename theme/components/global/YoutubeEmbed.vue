@@ -16,6 +16,7 @@ defineProps(['video']);
 
 <style lang="postcss" scoped>
 .iframe-container {
+  max-width: 65ch;
   overflow: hidden;
   /* 16:9 aspect ratio */
   padding-top: 56.25%;

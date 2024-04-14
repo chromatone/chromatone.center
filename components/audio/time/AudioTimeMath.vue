@@ -27,14 +27,16 @@ const started = useDateFormat(() => audio.started, 'YYYY MMM DD @ HH:MM:ss  ')
 
 AudioTimeMetronome.fixed.bottom-0.z-100.max-w-200.m-4
 
-.p-2.flex.flex-wrap.gap-4.font-mono.text-center.items-stretc.w-full(
+.p-2.flex.flex-wrap.gap-4.font-mono.items-stretc.w-full(
   @click="render()"
   :style="{opacity: audio?.started ? 1 : 0.4}"
   )
-  h2 From samples to beats and measures
+  .flex(style="flex: 1 1 350px")
+    h2 From samples to beats and measures
+
 
   .sheet
-    .row So now we're watching time passing
+    .row We have a timer ever increasing at a fixed rate 
 
     .text-right Started at: 
     .p-0.font-bold {{ Number(audio?.started).toLocaleString() }}
@@ -43,16 +45,13 @@ AudioTimeMetronome.fixed.bottom-0.z-100.max-w-200.m-4
     .text-right Local time: 
     .p-0.col-span-2.font-bold {{ started }}
 
-  .sheet
-    .row We have a timer ever increasing at a fixed rate 
-
+    .text-right Sample Rate: 
+    .p-0.font-bold {{ Number(time?.['sample-rate']|| 44100).toLocaleString()  }}
+    .text-left.text-sm samples per second
     .text-right Timer: 
     .p-0.font-bold {{ Number(time?.time || 0 ).toLocaleString()}}
     .text-left.text-sm samples
 
-    .text-right Sample Rate: 
-    .p-0.font-bold {{ Number(time?.['sample-rate']|| 44100).toLocaleString()  }}
-    .text-left.text-sm samples per second
   .sheet
     .row Divide the sample count by the sample rate to get elapsed seconds 
 

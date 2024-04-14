@@ -321,6 +321,22 @@ form {
 	@apply max-w-40rem mx-4 p-2 w-full;
 }
 
+.content h1 + p,
+.content h2 + p,
+.content h3 + p,
+.content h4 + p,
+.content h5 + p,
+.content div + p,
+.content img + p {
+	font-weight: 450;
+}
+
+.content p + p,
+.content p + ul,
+.content ul + p {
+	opacity: 90;
+}
+
 .content h2 {
 	margin-top: 1.5rem;
 	margin-bottom: 1.25rem;

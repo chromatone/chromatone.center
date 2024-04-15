@@ -25,15 +25,15 @@ const started = useDateFormat(() => audio.started, 'YYYY MMM DD @ HH:MM:ss  ')
   @click="render()"
   v-if="!audio.started") Click to start watching time passing
 
-AudioTimeMetronome.fixed.bottom-0.z-100.max-w-200.m-4
+
 
 .p-2.flex.flex-wrap.gap-4.font-mono.items-stretc.w-full(
   @click="render()"
   :style="{opacity: audio?.started ? 1 : 0.4}"
   )
-  .flex(style="flex: 1 1 350px")
+  .flex.flex-wrap(style="flex: 1 1 350px")
     h2 From samples to beats and measures
-
+    AudioTimeMetronome.sticky.top-2.z-100.w-full
 
   .sheet
     .row We have a timer ever increasing at a fixed rate 

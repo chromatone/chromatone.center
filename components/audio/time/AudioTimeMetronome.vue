@@ -65,7 +65,9 @@ const steps = computed(() => Math.round(controls['time:steps']))
         :y2="loop.height")
 
   .flex.flex-wrap.m-2.flex.flex-wrap.gap-4
-    .is-group.items-center.flex.p-2.flex-wrap
+    .is-group.items-center.flex.p-2.flex-wrap(
+      style="flex: 160px"
+    )
       button.text-button(@click="time.isPlaying ? transport.pause() : transport.play()")
         .i-la-play(v-if="!time.isPlaying")
         .i-la-pause(v-else)
@@ -74,7 +76,9 @@ const steps = computed(() => Math.round(controls['time:steps']))
       button.text-button(@click="controls['time:click'] = controls['time:click']? 0 : 1")
         .i-la-volume-up(v-if="controls['time:click']")
         .i-la-volume-mute(v-else)
-    .is-group.flex.flex-wrap.p-2.gap-2(v-for="(group,title) in groups" :key="title")
+    .is-group.flex.flex-wrap.items-center(
+      style="flex: 180px"
+      v-for="(group,title) in groups" :key="title")
       .select-none.relative.flex.flex-col.gap-4.items-center(v-for="(param, p) in group" :key="p")
 
         //- ControlKnob.cursor-pointer.-mt-2.mb-1(

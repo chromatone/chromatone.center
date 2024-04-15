@@ -16,7 +16,7 @@
 	"engines": {
 		"node": "^20.x"
 	},
-	"packageManager": "pnpm@8.15.5",
+	"packageManager": "pnpm@8.15.7",
 	"exports": {
 		".": {
 			"import": "./lib/use-chromatone.js",
@@ -36,11 +36,11 @@
 		"deploy": "sh deploy.sh"
 	},
 	"dependencies": {
-		"@elemaudio/core": "^3.1.0",
-		"@elemaudio/web-renderer": "^3.1.0",
+		"@elemaudio/core": "^3.2.1",
+		"@elemaudio/web-renderer": "^3.2.3",
 		"@tonaljs/tonal": "^4.10.0",
 		"@tonejs/midi": "^2.0.28",
-		"@unocss/reset": "^0.58.6",
+		"@unocss/reset": "^0.59.2",
 		"@vueuse/core": "^10.9.0",
 		"@vueuse/gesture": "^2.0.0",
 		"@vueuse/integrations": "^10.9.0",
@@ -49,7 +49,7 @@
 		"audio-recorder-polyfill": "^0.4.1",
 		"audiomotion-analyzer": "^4.4.0",
 		"cobe": "^0.6.3",
-		"color-name-list": "^10.20.2",
+		"color-name-list": "^10.21.0",
 		"colord": "^2.9.3",
 		"drauu": "^0.4.0",
 		"floating-vue": "^5.2.2",
@@ -66,31 +66,31 @@
 		"poline": "^0.7.0",
 		"recordrtc": "^5.6.2",
 		"simplex-noise": "^4.0.1",
-		"smplr": "^0.12.2",
+		"smplr": "^0.13.3",
 		"sortablejs": "^1.15.2",
 		"svg2pdf.js": "^2.2.3",
 		"thousands-counter": "^2.1.1",
-		"tonal": "^6.0.0",
+		"tonal": "^6.0.1",
 		"tone": "^14.8.49",
 		"vue": "^3.4.21",
 		"vue-glsl": "^1.1.27",
-		"webchuck": "^1.2.6",
+		"webchuck": "^1.2.7",
 		"webmidi": "^3.1.8"
 	},
 	"devDependencies": {
-		"@directus/sdk": "^15.0.3",
-		"@iconify/json": "^2.2.196",
+		"@directus/sdk": "^15.1.0",
+		"@iconify/json": "^2.2.200",
 		"@modyfi/vite-plugin-yaml": "^1.1.0",
-		"@unocss/extractor-pug": "^0.58.6",
+		"@unocss/extractor-pug": "^0.59.2",
 		"@vite-pwa/vitepress": "^0.4.0",
-		"@vue/language-plugin-pug": "^2.0.7",
+		"@vue/language-plugin-pug": "^2.0.13",
 		"pug": "^3.0.2",
 		"sharp": "^0.33.3",
-		"unocss": "^0.58.6",
+		"unocss": "^0.59.2",
 		"unplugin-icons": "^0.18.5",
 		"unplugin-vue-components": "^0.26.0",
-		"vite": "^5.1.7",
-		"vitepress": "^1.0.1",
+		"vite": "^5.2.8",
+		"vitepress": "^1.1.0",
 		"workbox-window": "^7.0.0"
 	}
 }

@@ -6,10 +6,10 @@ topContent: true
 youtube: qthKClCRIl0
 ---
 
-Chromatone is an ongoing research and experiment to use induced a synchronised artificial synesthesia for personal music learning and exploration along with collective practice and performance.
+Chromatone is an open source design research to develop and implement a scientific way of visual music education, communication and performance.
 
-Imagine if once we agree on a certain way to connect notes and colors? It can empower our music perception with vision, the main modality for most of humans. Let's try to do it now!
+Imagine if once we agree on a certain way to link notes and colors? It can empower our music perception with vision, the primary sensory channel for most humans,especially nowadays. So we're doing it today! Let's explore 12 notes, 12 colors and infinite amount of their possible combinations.
 
-We're creating the visual [music theory study](./theory/index.md), that helps beginners learn complex music concepts in color. [Interactive web-apps](./practice/index.md) expand the knowledge and grow deeper music awareness.
+We're creating the visual music [Theory](./theory/index.md)  study, that helps beginners learn complex music concepts in color. Interactive web-apps in the [Practice](./practice/index.md) section expand the knowledge and grow deeper music awareness. Those, who want to go beyond personal explorations and get guided educational programs and community learning experience, can become members of Chromatone [Academy](/academy/). And we are just getting started! Also for those, who want to touch and feel the colorful notes we have a cozy [Sticker Shop](./shop/index.md).
 
-For those, who want to touch and feel the colorful notes we have a [Sticker shop](./shop/index.md). While those who are interested in further project development may dive into [Chromatone Academy](/academy/) and also [sponsor](./support/index) [us](contacts/index.md) today.
+If you have any questions or ideas to share - feel free to  [contact us](contacts/index.md) today.

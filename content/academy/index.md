@@ -1,6 +1,6 @@
 ---
 title: Academy
-description: Community projects and events creating new opportunities for Chromatone to shine
+description: Research and study platform to provide collaborative online education experience for global community of Academy members
 layout: iframe
 date: 2021-07-05
 cover: wes-hicks.jpg

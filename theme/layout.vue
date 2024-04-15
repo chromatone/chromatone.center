@@ -56,12 +56,16 @@ midi-notes
       )
 
   template(v-else-if="f.layout == 'home'")
-    main.home.items-center(aria-labelledby="main-title")
-      chroma-flower.mt-16.w-full
-      .p-8.gap-1.flex.flex-col.items-center.text-center
+    main.home.items-center.justify-center.overflow-clip(aria-labelledby="main-title")
+      .flex-1.p-8.gap-1.flex.flex-col.lg-scale-120.origin-left(
+        style="flex: 1 1 400px"
+        )
         .text-3rem.md-text-4rem.font-bold Chromatone
-        .text-2rem Visual Music Language
-        .text-xl to learn, explore and express with 
+        .text-2rem.md-ml-1 Visual Music Language
+        .text-xl.md-ml-1 to learn, explore and express with 
+      chroma-flower.mt-8.flex.justify-center(
+        style="flex: 1 0 420px"
+        )
       .flex.flex-wrap.ml-2
         home-tile(
           v-for="(area, i) in children", 
@@ -70,7 +74,7 @@ midi-notes
           :i="i",
           :total="children.length")  
         youtube-embed(:video="f?.youtube" v-if="f?.youtube")
-      content.content.z-2
+      content.content.z-2.flex-auto
 
   template(v-else)
     main#content.w-full.relative.flex.flex-col
@@ -128,7 +132,7 @@ midi-notes
 }
 
 .home {
-  @apply w-full relative pb-16 flex flex-col bg-light-500 dark-(bg-dark-500) transition-all duration-600 ease-out;
+  @apply w-full relative pb-16 flex flex-wrap bg-light-500 dark-(bg-dark-500) transition-all duration-600 ease-out;
 }
 
 .noise {

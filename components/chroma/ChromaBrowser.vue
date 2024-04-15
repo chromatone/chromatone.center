@@ -5,6 +5,8 @@ import { chordType, scaleType, notes } from '#/use/theory'
 import { globalScale } from '#/use/chroma'
 import { useStorage } from '@vueuse/core';
 import { computed } from 'vue';
+import ChromaBrowserRow from './ChromaBrowserRow.vue';
+import VirtualList from 'vue3-virtual-scroll-list';
 
 
 const tonic = useStorage('chroma-tonic', 0)
@@ -42,7 +44,7 @@ const sorted = computed(() => {
 </script>
 
 <template lang="pug">
-.flex.flex-col.max-w-60ch
+.flex.flex-col.max-w-60ch.gap-6
   .keys
     .key(
       v-for="(bit, i) in '101101011010'"
@@ -59,11 +61,19 @@ const sorted = computed(() => {
       @click="control.chord = !control.chord") Chord
       .i-la-filter.ml-2(:style="{ opacity: control.chord ? 1 : 0.3 }")
 
-    .control(@click="control.scale = !control.scale") Scale
+    .control(
+      :class="{ active: control.scale }", 
+      @click="control.scale = !control.scale") Scale
       .i-la-filter.ml-2(:style="{ opacity: control.scale ? 1 : 0.3 }")
 
   .flex.flex-col.items-start
     transition-group(name="list")
+    VirtualList.w-full(
+    style="height: 80vh; overflow-y: auto; overscroll: contain;"
+    :data-key="'chroma'"
+    :data-sources="sorted"
+    :data-component="ChromaBrowserRow"
+    )
       chroma-row.mb-6(
         v-for="(set) in sorted",
         :key="set.chroma",
@@ -75,11 +85,11 @@ const sorted = computed(() => {
 
 <style lang="postcss" scoped>
 .control-row {
-  @apply p-4 flex flex-wrap;
+  @apply p-2 flex flex-wrap gap-2;
 }
 
 .control {
-  @apply m-2 p-4 rounded bg-light-400 dark-bg-dark-400 cursor-pointer;
+  @apply p-2 rounded bg-light-400 dark-bg-dark-400 cursor-pointer flex items-center;
 }
 
 .control.active {
@@ -87,7 +97,7 @@ const sorted = computed(() => {
 }
 
 .keys {
-  @apply z-8 rounded-md p-1 grid grid-cols-6 xs-(grid-cols-12) w-full sticky top-$header-height bg-light-400 bg-opacity-80 dark-(bg-dark-300 bg-opacity-80) gap-2;
+  @apply z-8 rounded-md p-2 grid grid-cols-12 sm-(grid-cols-12) w-full bg-light-400 bg-opacity-80 dark-(bg-dark-300 bg-opacity-80) gap-2;
 }
 
 .key {

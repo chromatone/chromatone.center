@@ -13,7 +13,7 @@ import { reactive, computed } from 'vue'
 
 const emit = defineEmits(['update:chroma'])
 const props = defineProps({
-  chroma: { type: String, },
+  chroma: { type: String, default: '' },
   twoRow: { type: Boolean, default: true, },
   editable: { type: Boolean, default: false, }
 });

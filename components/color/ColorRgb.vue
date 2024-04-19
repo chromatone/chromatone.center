@@ -134,7 +134,7 @@ useGesture({
         :stroke-dashoffset="mix.len - mix.len * (mix.b / mix.max)"
         transform="translate(50,68) rotate(90)"
         )
-    g#text.font-bold.text-xs.select-none
+    g#text.font-bold.text-xs.select-none.pointer-events-none
       text(
         x="15"
         y="33"

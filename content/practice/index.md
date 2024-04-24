@@ -11,6 +11,6 @@ We are building tools for everyone to use in many ways. Some may consider them a
 
 Music has many faces and it grows through a number of different modes of perception and comprehension. It's a multi-axis space that is build on the sensory and cognitive phenomena. One of the main is time. It gets quite emphasized with note durations and evolving [rhythmic structures](./rhythm/index.md) of organized [noise](./synth/noise/index.md). It demonstrates and utilizes our ability to recognize patterns in repetitions of sounds at frequency range between tens and thousands of events per minute. With higher oscillation speeds we get to a distinct mode of [pitch perception](./pitch/index.md).
 
-All 12 pitch classes form the so called [Chroma](./chroma/index.md) space, where numerous combinations of notes combine to become intervals, [chords](./chord/index.md) and scales. We can interact with the notes via [MIDI](./midi/index.md) protocol commands, or build our own [experimental](./experiments/index.md) visual music tools.
+All 12 pitch classes form the so called [Chroma](./chroma/index.md) space, where numerous combinations of notes combine to become intervals, [chords](./chord/index.md) and scales. We can interact with the notes via [MIDI](./midi/index.md) protocol commands, or build our own [experimental](./experiments/index.md) visual music tools. There are also some apps for [Jamming](./jam/index.md) together in harmony and in sync.
 
 And there's a ever growing collection of [external music web-apps](./external/index.md) found on the internet.

@@ -1,7 +1,7 @@
 ---
 title: Jam session
 description: A visual guide for collaborative music events
-date: 2023-01-01
+date: 2021-03-30
 topContent: true
 cover: cover.png
 layout: app

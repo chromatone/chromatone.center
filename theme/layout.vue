@@ -57,15 +57,15 @@ midi-notes
 
   template(v-else-if="f.layout == 'home'")
     main.home.items-center.justify-center.overflow-clip(aria-labelledby="main-title")
+
+      chroma-flower.mt-8.flex.justify-center(
+        style="flex: 1 0 420px")
       .flex-1.p-8.gap-1.flex.flex-col.lg-scale-120.origin-left(
         style="flex: 1 1 400px"
         )
         .text-3rem.md-text-4rem.font-bold Chromatone
         .text-2rem.md-ml-1 Visual Music Language
         .text-xl.md-ml-1 to learn, explore and express with 
-      chroma-flower.mt-8.flex.justify-center(
-        style="flex: 1 0 420px"
-        )
       .flex.flex-wrap.ml-2
         home-tile(
           v-for="(area, i) in children", 

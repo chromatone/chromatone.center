@@ -25,6 +25,7 @@ export default withPwa(defineConfig({
   sitemap: {
     hostname: 'https://chromatone.center'
   },
+
   outDir: "../dist",
   title: meta.title,
   titleTemplate: meta.titleTemplate,
@@ -51,6 +52,7 @@ export default withPwa(defineConfig({
     }
   },
   pwa: {
+    selfDestroying: true,
     base: '/',
     scope: '/',
     outDir: '../dist/',

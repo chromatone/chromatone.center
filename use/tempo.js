@@ -95,12 +95,19 @@ export function useTempo() {
 
     metro.loop = new Loop((time) => {
       let even = metro.counter % 2 == 0
-      if (even) {
+      if (!even) {
         Draw.schedule(() => {
           tempo.blink = true
-          setTimeout(() => {
-            tempo.blink = false;
-          }, 60);
+          // setTimeout(() => {
+          //   tempo.blink = false;
+          // }, 60);
+        }, time)
+      } else {
+        Draw.schedule(() => {
+          tempo.blink = false
+          // setTimeout(() => {
+          //   tempo.blink = false;
+          // }, 60);
         }, time)
       }
 

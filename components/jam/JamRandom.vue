@@ -4,6 +4,8 @@ import { globalScale, tempo } from '#/use'
 import { useClamp } from '@vueuse/math';
 import { TransitionPresets, useTransition } from '@vueuse/core'
 import { noteColor } from '#/use/colors'
+import { colord } from 'colord';
+
 
 var meanTempo = 102; // Среднее значение темпа
 var stdDevTempo = 20; // Стандартное отклонение темпа
@@ -43,53 +45,53 @@ const position = computed(() => tempo.position?.split(':').map(Number))
 
 const progress = computed(() => position.value?.[0] / limitMeasures.value)
 
+const colorMix = computed(() => colord(tempo?.color).mix(noteColor(globalScale.tonic)).toHex())
+
 </script>
 
 <template lang="pug">
 #screen.bg-light-900.dark-bg-dark-800
-  .flex.flex-col.gap-6.p-4.justify-between.relative.items-stretch.min-h-100vh.transition.duration-1000(
+  .flex.flex-col.gap-0.p-4.justify-between.relative.items-stretch.min-h-100vh.transition.duration-1000(
   :style="{backgroundColor:`hsla(${30*globalScale.tonic}, 80%, 50%, 0.05)`}"
   )
     .text-4xl.text-center RANDOM JAM 
     .text-sm.text-center 
     .flex
-      button.text-4xl.bg-dark-400.text-white.p-4.rounded-full.shadow-xl.mx-auto(@click="randomize()")
+      button.transition.duration-1000.text-4xl.bg-dark-400.text-white.p-4.rounded-full.shadow-xl.mx-auto(@click="randomize()" :style="{backgroundColor:colorMix}")
         .p-0(:class="{'animate-spin':spin}")
           .i-system-uicons-reset.-scale-y-100
-    .flex.w-full.justify-center.relative
 
 
-
-    .flex.gap-4.text-center.relative.items-center
-      .text-4xl.flex-1.tabular-nums.border-b-4(:style="{borderColor: tempo.color}") {{ output.toFixed() }} BPM
-
-      //- .absolute.flex-1.p-2.rounded-full.bg-dark-300.dark-bg-light-100(:style="{opacity: tempo.blink ? 1 : 0, backgroundColor:tempo.color}")
+    .flex.flex-col.gap-2.mx-auto.w-full
       .text-4xl.flex-1.border-b-4(:style="{borderColor: noteColor(globalScale.tonic)}") {{ globalScale.note.name }} {{ globalScale?.set?.name }}
-
-    .flex.flex-col.gap-1
-      .border-b-0.border-solid.border-black.dark-border-light-900.w-full.relative.flex.flex-col.gap-1
-
-        .py-5.bg-dark-400.transition.duration-300(:style="{backgroundColor: noteColor(globalScale.tonic) ,width: `${progress*100}%`}")
-        .py-1.op-80.bg-dark-400.transition.duration-300(:style="{backgroundColor: tempo.color ,width: `${((position[0]%256)+1)*25/64}%`}")
-        .py-1.op-80.bg-dark-400.transition.duration-300(:style="{backgroundColor: tempo.color ,width: `${((position[0]%64)+1)*25/16}%`}")
-        .py-1.op-80.bg-dark-400.transition.duration-300(:style="{backgroundColor: tempo.color ,width: `${((position[0]%16)+1)*25/4}%`}")
-        .py-1.op-80.bg-dark-400.transition.duration-300(:style="{backgroundColor: tempo.color ,width: `${((position[0]%8)+1)*25/2}%`}")
-        .py-1.op-80.bg-dark-400.transition.duration-300(:style="{backgroundColor: tempo.color ,width: `${(position[0]%4+1)*25}%`}")
-        .py-2px.op-80.bg-dark-400.transition.duration-300(:style="{backgroundColor: tempo.color ,width: `${(position[1]+1)*25}%`}")
-        .py-2px.op-80.bg-dark-400.transition.duration-300(:style="{backgroundColor: tempo.color ,width: `${(position[2])*25}%`}")
-
-      .flex.p-0.text-center.font-mono.text-sm
-        .flex-1  {{ position[0] }}/{{ limitMeasures }} measures 
-        .flex-1 ({{(position[0]/16).toFixed(1)}}/{{ limitMeasures/16 }} parts)
-        .flex-1  {{ (progress*100).toFixed(1) }}%
-        .flex-1 {{ (position[0]/tempo.bpm).toFixed(1) }}/{{ (limitMeasures/tempo.bpm).toFixed(1) }} min
-
-    chroma-keys(
+    chroma-keys.max-h-40vh(
       :chroma="globalScale.chroma"
       :pitch="globalScale.tonic")
-      .p-0
-         
 
-    
+    .flex.flex-wrap.gap-4.text-center.relative.items-center.justify-stretch
+      .flex.flex-col.gap-2.w-full
+        .text-4xl.flex-1.tabular-nums.border-b-4(:style="{borderColor: tempo.color}") {{ output.toFixed() }} BPM
+        .flex.flex-col.gap-2.w-full
+          .flex.gap-2.w-full
+            .p-1.flex-1.transition.ease-in-out.rounded-lg(v-for="i in 4" :style="{backgroundColor: i-1 ==position[1] ? tempo.color : 'transparent' }")
 
+          .flex.gap-2.w-full
+            .p-2.flex-1.transition.ease-in-out.rounded-lg(v-for="i in 4" :style="{backgroundColor: i-1 ==position[0]%4 ? tempo.color : 'transparent' }")
+
+          .flex.gap-2.w-full
+            .p-3.flex-1.transition.ease-in-out.rounded-lg(v-for="i in 4" :style="{backgroundColor: i-1 ==(Math.floor(position[0]/4))%4 ? tempo.color : 'transparent' }")
+
+          .flex.gap-2.w-full
+            .p-4.flex-1.transition.ease-in-out.rounded-lg(v-for="i in 4" :style="{backgroundColor: i-1 ==(Math.floor(position[0]/4/4))%4 ? tempo.color : 'transparent' }")
+
+          .flex.gap-2.w-full
+            .p-5.flex-1.transition.ease-in-out.rounded-lg(v-for="i in 4" :style="{backgroundColor: i-1 ==(Math.floor(position[0]/4/4/4))%4 ? tempo.color : 'transparent' }")
+
+          .flex.gap-2.w-full
+            .p-6.flex-1.transition.ease-in-out.rounded-lg(v-for="i in 4" :style="{backgroundColor: i-1 ==(Math.floor(position[0]/4/4/4/4))%4 ? tempo.color : 'transparent' }")
+
+          .flex.gap-2.w-full
+            .p-7.flex-1.transition.ease-in-out.rounded-lg(v-for="i in 4" :style="{backgroundColor: i-1 ==(Math.floor(position[0]/4/4/4/4/4))%4 ? tempo.color : 'transparent' }")
+
+      .py-5.bg-dark-400.transition.duration-300.rounded-lg(:style="{backgroundColor: colorMix ,width: `${progress*100}%`}")
 </template>

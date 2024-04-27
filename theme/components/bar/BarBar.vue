@@ -4,6 +4,8 @@ import { useRoute, useData } from "vitepress";
 import { drawingEnabled, drawingPinned } from '../../composables/draw'
 import { ref } from "vue";
 
+import FullScreen from '../global/FullScreen.vue'
+
 const route = useRoute()
 const { isDark, theme } = useData()
 

@@ -36,13 +36,10 @@ function init() {
 
 <template lang="pug">
 button(
-  v-show="supported"
   @click="toggle()"
   v-tooltip.left="'Toggle fullscreen'"
-)
+  )
   .i-la-expand
 </template>
 
-<style lang="postcss" scoped>
-
-</style>
+<style lang="postcss" scoped></style>

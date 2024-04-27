@@ -101,12 +101,11 @@ export function playKey(name, offset = 0, off, velocity = 1, duration) {
 }
 
 export function useMidi() {
+
   if (!midi.initiated) {
     onMounted(() => {
       setupKeyboard();
-      if (WebMidi.supported) {
-        setupMidi();
-      }
+      setupMidi();
     });
     watchEffect(() => {
       if (!midi.out)
@@ -134,12 +133,15 @@ export function useMidi() {
     setCC,
     midiPlay,
     midiStop,
-    playKey
+    playKey,
+    stopAll
   };
 }
 
 function setupMidi() {
   WebMidi.enable();
+  if (!WebMidi.supported) return
+
   WebMidi.addListener("enabled", () => {
     midi.enabled = true;
     initMidi();
@@ -163,7 +165,6 @@ function initMidi() {
     midi.inputs[input.id] = {
       name: input.name,
       manufacturer: input.manufacturer,
-      //@ts-expect-error We configure the output later
       forwarder: input.addForwarder(),
       clock: 0,
       event: null,
@@ -390,6 +391,7 @@ export function stopAll() {
  * @param oid Output ID
  */
 export function forwardMidi(iid, oid) {
+  console.log(iid, oid)
   var _a, _b;
   const output = WebMidi.outputs.find((out) => out.id == oid);
   const destinations = midi.inputs[iid].forwarder.destinations;

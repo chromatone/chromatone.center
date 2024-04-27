@@ -18,7 +18,8 @@ const { anchor, download, saveSVG } = useSVGFile(props.file || props.svg)
 <template lang="pug">
 .snapshot(@click="saveSVG(svg, deep)")
   .i-la-camera
-  .font-bold SVG
+  slot
+    .font-bold SVG
 a(ref="anchor",target="_blank",:download="download?.file",:href="download?.url", v-if="download?.url") 
 </template>
 

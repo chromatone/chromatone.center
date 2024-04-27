@@ -34,15 +34,15 @@ var isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
             .i-la-pause(v-else)
           button.text-button.border(@click="stopAll()")
             .i-la-stop
-        .text-button.w-3em.transition-all.duration-50.cursor-pointer.flex(
+        .text-button.items-center.flex.w-4em.transition-all.duration-50.cursor-pointer.flex(
           @mousedown="midiAttack(midi.note)"
           @mouseup="midiRelease(midi.note)"
-          v-if="midi.note?.name"
+          v-if="midi.note?._name"
           :style="{ borderColor: noteColor(midi.note.pitch, midi.note.octA), color: noteColor(midi.note.pitch, midi.note.octA) }"
           ) 
-          .w-2em {{ midi.note.name }} 
-          .flex-1 {{ midi.note.accidental }}
-    .is-group
+          .w-2em {{ midi.note._name }} 
+          .flex-1 {{ midi.note._accidental }}
+    .is-group.flex.flex-wrap
       button.text-button.border(v-for="output in midi.outputs")  
         span {{ output.name }}
     .flex.flex-wrap.is-group

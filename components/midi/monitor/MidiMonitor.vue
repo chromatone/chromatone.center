@@ -24,8 +24,8 @@ const chords = computed(() => {
 </script>
 
 <template lang="pug">
-.flex.flex-col.gap-4.items-start 
-  .fullscreen-container#screen(@mouseleave="active = false")
+.flex.flex-col.gap-4.items-start
+  .fullscreen-container.w-full#screen(@mouseleave="active = false")
     .flex.w-full.h-full.mt-4
       .flex.flex-col.flex-1.text-center.relative(
         v-for="(ch, chNum) in midi.channels", 
@@ -53,7 +53,7 @@ const chords = computed(() => {
 
 </template>
 
-<style lang="postcss"  scoped>
+<style lang="postcss" scoped>
 .header {
   @apply p-2 m-1px font-bold bg-gray-500 bg-opacity-50;
 }

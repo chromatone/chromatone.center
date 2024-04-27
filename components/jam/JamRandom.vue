@@ -55,43 +55,47 @@ const colorMix = computed(() => colord(tempo?.color).mix(noteColor(globalScale.t
   :style="{backgroundColor:`hsla(${30*globalScale.tonic}, 80%, 50%, 0.05)`}"
   )
     .text-4xl.text-center RANDOM JAM 
-    .text-sm.text-center 
     .flex
       button.transition.duration-1000.text-4xl.bg-dark-400.text-white.p-4.rounded-full.shadow-xl.mx-auto(@click="randomize()" :style="{backgroundColor:colorMix}")
         .p-0(:class="{'animate-spin':spin}")
           .i-system-uicons-reset.-scale-y-100
 
-
-    .flex.flex-col.gap-2.mx-auto.w-full
-      .text-4xl.flex-1.border-b-4(:style="{borderColor: noteColor(globalScale.tonic)}") {{ globalScale.note.name }} {{ globalScale?.set?.name }}
-    chroma-keys.max-h-40vh(
-      :chroma="globalScale.chroma"
-      :pitch="globalScale.tonic")
-
     .flex.flex-wrap.gap-4.text-center.relative.items-center.justify-stretch
       .flex.flex-col.gap-2.w-full
-        .text-4xl.flex-1.tabular-nums.border-b-4(:style="{borderColor: tempo.color}") {{ output.toFixed() }} BPM
+        .text-4xl.flex-1.tabular-nums.border-b-4.p-1(:style="{borderColor: tempo.color}") {{ output.toFixed() }} BPM
         .flex.flex-col.gap-2.w-full
           .flex.gap-2.w-full
-            .p-1.flex-1.transition.ease-in-out.rounded-lg(v-for="i in 4" :style="{backgroundColor: i-1 ==position[1] ? tempo.color : 'transparent' }")
+            .p-1.bit(v-for="i in 4" :style="{backgroundColor: i-1 ==position[1] ? tempo.color : 'transparent' }")
 
           .flex.gap-2.w-full
-            .p-2.flex-1.transition.ease-in-out.rounded-lg(v-for="i in 4" :style="{backgroundColor: i-1 ==position[0]%4 ? tempo.color : 'transparent' }")
+            .p-2.bit(v-for="i in 4" :style="{backgroundColor: i-1 ==position[0]%4 ? tempo.color : 'transparent' }")
 
           .flex.gap-2.w-full
-            .p-3.flex-1.transition.ease-in-out.rounded-lg(v-for="i in 4" :style="{backgroundColor: i-1 ==(Math.floor(position[0]/4))%4 ? tempo.color : 'transparent' }")
+            .p-3.bit(v-for="i in 4" :style="{backgroundColor: i-1 ==(Math.floor(position[0]/4))%4 ? tempo.color : 'transparent' }")
 
           .flex.gap-2.w-full
-            .p-4.flex-1.transition.ease-in-out.rounded-lg(v-for="i in 4" :style="{backgroundColor: i-1 ==(Math.floor(position[0]/4/4))%4 ? tempo.color : 'transparent' }")
+            .p-4.bit(v-for="i in 4" :style="{backgroundColor: i-1 ==(Math.floor(position[0]/4/4))%4 ? tempo.color : 'transparent' }")
 
           .flex.gap-2.w-full
-            .p-5.flex-1.transition.ease-in-out.rounded-lg(v-for="i in 4" :style="{backgroundColor: i-1 ==(Math.floor(position[0]/4/4/4))%4 ? tempo.color : 'transparent' }")
+            .p-5.bit(v-for="i in 4" :style="{backgroundColor: i-1 ==(Math.floor(position[0]/4/4/4))%4 ? tempo.color : 'transparent' }")
 
           .flex.gap-2.w-full
-            .p-6.flex-1.transition.ease-in-out.rounded-lg(v-for="i in 4" :style="{backgroundColor: i-1 ==(Math.floor(position[0]/4/4/4/4))%4 ? tempo.color : 'transparent' }")
+            .p-6.bit(v-for="i in 4" :style="{backgroundColor: i-1 ==(Math.floor(position[0]/4/4/4/4))%4 ? tempo.color : 'transparent' }")
 
           .flex.gap-2.w-full
-            .p-7.flex-1.transition.ease-in-out.rounded-lg(v-for="i in 4" :style="{backgroundColor: i-1 ==(Math.floor(position[0]/4/4/4/4/4))%4 ? tempo.color : 'transparent' }")
+            .p-7.bit(v-for="i in 4" :style="{backgroundColor: i-1 ==(Math.floor(position[0]/4/4/4/4/4))%4 ? tempo.color : 'transparent' }")
 
       .py-5.bg-dark-400.transition.duration-300.rounded-lg(:style="{backgroundColor: colorMix ,width: `${progress*100}%`}")
+
+    .flex.flex-col.gap-2.mx-auto.w-full
+      .text-4xl.flex-1.border-b-4.text-center.p-1(:style="{borderColor: noteColor(globalScale.tonic)}") {{ globalScale.note.name }} {{ globalScale?.set?.name }}
+    chroma-keys.max-h-35vh(
+      :chroma="globalScale.chroma"
+      :pitch="globalScale.tonic")
 </template>
+
+<style scoped lang="postcss">
+.bit {
+  @apply flex-1 transition ease-in-out rounded-lg border-1 dark-border-light-900 dark-border-op-30
+}
+</style>

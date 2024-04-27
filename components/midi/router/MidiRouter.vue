@@ -5,7 +5,8 @@ const { midi } = useMidi();
 </script>
 
 <template lang="pug">
-.flex.flex-wrap.gap-4.justify-center
+.flex.flex-wrap.gap-4.justify-center.p-4
+
   midi-router-input(
     v-for="(input, iid) in midi.inputs"
     :key="iid"

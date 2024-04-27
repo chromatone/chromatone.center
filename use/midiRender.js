@@ -7,7 +7,6 @@ import { tempo } from "./tempo";
 let notes = ["C", "E", "G", "B", "D", "F", "A", "C#", "D#", "F#", "G#", "A#"];
 export function renderMidi(tracks) {
   let render = [];
-  console.log(tracks);
   tracks.forEach((track, t) => {
     var _a;
     let division = 512 / ((_a = track === null || track === void 0 ? void 0 : track.meter) === null || _a === void 0 ? void 0 : _a.under);

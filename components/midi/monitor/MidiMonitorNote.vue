@@ -52,6 +52,6 @@ function change() {
 
 <style lang="postcss" scoped>
 .note {
-  @apply flex-1 gap-1 p-2 m-1px transition-all duration-200 ease-out items-center flex justify-center cursor-pointer text-light-100 select-none;
+  @apply flex-1 gap-1 px-2 m-1px transition-all duration-200 ease-out items-center flex justify-center cursor-pointer text-light-100 select-none;
 }
 </style>

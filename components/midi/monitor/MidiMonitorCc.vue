@@ -22,7 +22,7 @@ function dragger({ movement: [x], dragging }) {
 .cc(
   v-drag="dragger"
 )
-  .p-1.text-center.flex-1 {{ cc?.number }}
+  .px-1.text-center.flex-1 {{ cc?.number }}
   .absolute.h-full.z-10.bg-gray-500.top-0.bg-opacity-40.self-start(
     :style="{ width: cc?.value * 100 + '%' }"
   )

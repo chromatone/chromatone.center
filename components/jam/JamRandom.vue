@@ -71,7 +71,9 @@ const finishAt = computed(() => startedAt.value + dist.value)
 
 const now = useTimestamp()
 
-const dur = computed(() => [Math.floor((now.value - startedAt.value) / (1000 * 60)), Math.round(((now.value - startedAt.value) % (1000 * 60)) / 1000)])
+const fromStart = computed(() => [Math.floor((now.value - startedAt.value) / (1000 * 60)), Math.round(((now.value - startedAt.value) % (1000 * 60)) / 1000)])
+
+const tillFinish = computed(() => [Math.floor((finishAt.value - now.value) / (1000 * 60)), Math.round(((finishAt.value - now.value) % (1000 * 60)) / 1000)])
 
 watch(now, n => {
   if (n > finishAt.value) {
@@ -104,11 +106,11 @@ watch(now, n => {
 
 
     .overflow-clip.rounded-lg.flex.items-center.border-1.relative.border-dark-200.border-op-30.dark-border-light-200.dark-border-op-40.py-6
-      .absolute.left-2.z-10 {{ new Date(startedAt).toTimeString().slice(0,5) }}
-      .absolute.right-2.z-10 {{ new Date(finishAt).toTimeString().slice(0,5) }}
+      .absolute.left-2.z-10 {{fromStart.filter(Boolean).join(' m ')}} s
+      .absolute.right-2.z-10 -{{ tillFinish.filter(Boolean).join(' m ')}} s
 
       .bg-dark-400.transition.duration-300.top-0.bottom-0.left-0.absolute.flex.items-center(:style="{backgroundColor: colorMix ,width: `${progress*100}%`}")
-        .px-2.z-10.mx-auto.tabular-nums.absolute.-right-18.dark-bg-dark-200.text-right.text-nowrap.bg-light-300.rounded-xl.op-90() {{dur.join(' m ')}} s / {{ duration.join(' m ') }} s
+
     .flex.flex-wrap.gap-4.text-center.relative.items-center.justify-stretch.mb-8
       .flex.flex-col.gap-2.w-full.max-h-30vh
         .flex.flex-col.gap-2.w-full

@@ -1,0 +1,26 @@
+---
+title: Scale list
+description: List of All Scales
+date: 2004-04-30
+---
+
+
+<script setup>
+  import {computed, reactive} from 'vue'
+import scaleList from '../../../../db/scale/scale-list.yaml'
+
+const scales = {}
+
+scaleList.forEach(s=> {
+  scales[s.n_notes] = scales[s.n_notes] || {}
+  let chroma = ''
+
+  scales[s.n_notes][s.mode_name] = String(s.semitones).split('').map(Number).map(n=>[1,...Array(n-1).fill(0)]).flat().join('')
+  
+})
+
+</script>
+
+<textarea class="m-8 p-4 text-xs h-100">
+{{scales}}
+</textarea>

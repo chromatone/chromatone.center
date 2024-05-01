@@ -6,11 +6,13 @@ import { el } from '@elemaudio/core';
 import { midiFrequency } from '../tools/toolbox';
 import { useAudio } from '../useAudio'
 import { useUI } from '../tools/useUI';
-
+import { useTempo } from '../../../use/tempo.js'
 import params from './params.json'
 import { useVoices, } from './useVoices';
 
 export function useSynth() {
+
+  const tempo = useTempo()
 
   const { audio, render } = useAudio()
 
@@ -48,7 +50,10 @@ export function useSynth() {
           cv['osc:cut-off'],
           frequency),
         cv['osc:cut-q'],
-        el.blepsaw(frequency)))
+        el.add(
+          el.mul(el.sub(1, cv['osc:shape']), el.blepsquare(frequency)),
+          el.mul(cv['osc:shape'], el.blepsaw(frequency)),
+        )))
 
     let noise = el.mul(
       cv['noise:gain'],
@@ -85,10 +90,14 @@ export function useSynth() {
       x,
       el.mul(
         cv['fx:pingPong'],
+        cv['fx:feedback'],
         el.delay(
           { size: 44100 },
-          el.ms2samps(300 * (1 + i * .75)),
-          .2,
+          el.ms2samps(el.mul(
+            60000 / tempo?.bpm,
+            el.add(1, el.mul(i == 0 ? -.5 : .5, cv['fx:shift']))
+          )),
+          cv['fx:feedback'],
           x))))
   }
 

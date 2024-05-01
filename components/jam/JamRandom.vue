@@ -19,7 +19,6 @@ function randomNormalDistribution(mean, stdDev) {
 }
 
 
-
 const output = useTransition(() => tempo.bpm, {
   duration: 1000,
   transition: TransitionPresets.easeInOutCubic,
@@ -80,6 +79,8 @@ watch(now, n => {
     randomize()
   }
 })
+
+const started = ref(false)
 
 </script>
 

@@ -58,6 +58,24 @@ const frequency = computed(() => {
       param="VOL"
       v-tooltip.top="'Synth volume'"
       )
+    .is-group.flex.relative
+      .text-sm.absolute.-top-4.bg-light-300.px-1.rounded.dark-bg-dark-400 Delay
+      control-rotary(
+        :min="0"
+        :max="1"
+        :step="0.001"
+        v-model="synth.delayParams.feedback"
+        param="Feedback"
+        v-tooltip.top="'Synth delay feedback ratio'"
+        )
+      control-rotary(
+        :min="0"
+        :max="1"
+        :step="0.001"
+        v-model="synth.delayParams.wet"
+        param="Wet"
+        v-tooltip.top="'Synth delay wet'"
+        )
   .flex.flex-wrap
     .p-1(v-for="(part, p) in partials" :key="p")
       control-knob.w-10.transition(

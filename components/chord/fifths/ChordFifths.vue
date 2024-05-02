@@ -66,7 +66,8 @@ function getChordNotes(note, qual = "major", inv) {
   const chord = Chord.get(note + type)
 
   if (inv !== undefined) {
-    return Range.numeric([0 + inv, 3 + inv]).map(Chord.steps([note + 3, type]));
+    const result = Range.numeric([1 + inv, 4 + inv]).map(Chord.degrees(type || 'major', note + '3'));
+    return result
   } else {
     return Note.names(chord.notes.map(n => Note.simplify(n) + 4))
   }
@@ -75,7 +76,6 @@ function getChordNotes(note, qual = "major", inv) {
 
 function playChord(note, qual = 'major', inv) {
   playNote(getChordNotes(note, qual, inv))
-
 }
 
 function stopChord(note, qual = 'major', inv) {
@@ -221,7 +221,7 @@ function stopChord(note, qual = 'major', inv) {
       ref="selector"
       transform-origin="50 50"
       :style="{ transform: `rotate(${tonic / 12 * 360}deg)` }"
-    )
+      )
       svg-ring(
         :cx="50"
         :cy="50"
@@ -232,7 +232,7 @@ function stopChord(note, qual = 'major', inv) {
         stroke-width="0.5"
         stroke="gray"
         fill="none"
-      )
+        )
       circle.transition-all.duration-300.cursor-pointer(
         v-if="scaleType != 'minor'"
         :cx="50"

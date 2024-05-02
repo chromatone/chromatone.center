@@ -21,6 +21,10 @@ export const synth = {
     quantize: useCycleList(quantizeModes, { initialValue: '+0' }),
     volume: useClamp(1, 0, 2)
   }),
+  delayParams: reactive({
+    feedback: 0.3,
+    wet: 0.3,
+  }),
   params: reactive({
     maxPolyphony: 50,
     oscillator: {
@@ -65,6 +69,11 @@ export function useSynth() {
       }
     }, { deep: true, immediate: true })
 
+    watch(synth.delayParams, d => {
+
+      synth.delay?.set(d)
+    })
+
 
     watch(() => midi.note, note => {
       if (!synth?.state?.midi) return
@@ -90,7 +99,7 @@ export function synthInit() {
   synth.widener = new StereoWidener(0.7).connect(channel)
 
   synth.reverb = new Reverb(3).connect(synth.widener)
-  synth.delay = new PingPongDelay({ delayTime: '16n', feedback: 0.3, wet: 0.3, maxDelay: '4n' }).connect(synth.widener)
+  synth.delay = new PingPongDelay({ delayTime: '16n', feedback: 0.3, wet: 0.3, maxDelay: '1m' }).connect(synth.widener)
 
   synth.pan = new AutoPanner({ frequency: '4n', depth: 0.4 }).connect(synth.reverb).connect(synth.delay).connect(synth.widener)
   synth.compressor = new Compressor().connect(synth.pan)

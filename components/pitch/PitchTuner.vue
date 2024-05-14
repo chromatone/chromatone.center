@@ -23,7 +23,7 @@ function getRawNote(frequency) {
 </script>
 
 <template lang="pug">
-.fullscreen-container#screen.rounded-3xl.overflow-hidden.mb-4
+.fullscreen-container#screen.overflow-clip
   control-start.absolute.z-20(
     v-if="!tuner.running", 
     @click="start()") Start tuner

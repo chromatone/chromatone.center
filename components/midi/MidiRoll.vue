@@ -143,7 +143,7 @@ function dragSpeed(drag) {
 
 <template lang="pug">
 .flex.flex-col.items-center.w-full.touch-none.select-none
-  .fullscreen-container.rounded-3xl#screen
+  .fullscreen-container#screen
     control-start.absolute( 
       v-if="!state.initiated", 
       @click="initiate()") Start
@@ -159,7 +159,7 @@ function dragSpeed(drag) {
 
       )
       .text-lg x{{ state.speed }}
-    canvas#spectrogram.max-h-100vh.w-full.rounded-3xl.cursor-pointer(
+    canvas#spectrogram.max-h-100vh.w-full.cursor-pointer(
       v-drag="dragSpeed"
       :width="state.width"
       :height="state.height"

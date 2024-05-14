@@ -125,7 +125,7 @@ function colorIt(freq, value) {
 
   .fullscreen-container.text-white#screen.max-h-90svh
 
-    canvas#spectrogram.h-full.min-h-70svh.w-full.rounded-md.cursor-pointer(
+    canvas#spectrogram.h-full.min-h-70svh.w-full.cursor-pointer(
       ref="canvasElement"
       v-drag="dragScreen"
       :width="state.width"

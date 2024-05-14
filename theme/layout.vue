@@ -9,7 +9,7 @@ import { useUrlSearchParams } from '@vueuse/core'
 
 import { useWindowScroll } from '@vueuse/core'
 
-const { y } = useWindowScroll()
+const { x, y } = useWindowScroll()
 
 const params = useUrlSearchParams('history')
 
@@ -33,6 +33,11 @@ const pageColor = computed(() => {
 });
 
 const lightColor = computed(() => lchToHsl(siblings.value.index, siblings.value.total, 1, 40, 60));
+
+function scrollTop() {
+  y.value = 0
+}
+
 </script>
 
 <template lang="pug">
@@ -59,23 +64,37 @@ midi-notes
     main.home.items-center.justify-center.overflow-clip(aria-labelledby="main-title")
 
       chroma-flower.mt-8.flex.justify-center(
-        style="flex: 1 0 420px")
+        style="flex: 1 1 420px")
       .flex-1.p-8.gap-1.flex.flex-col.lg-scale-120.origin-left(
         style="flex: 1 1 400px"
         )
         .text-3rem.md-text-4rem.font-bold Chromatone
         .text-2rem.md-ml-1 Visual Music Language
         .text-xl.md-ml-1 to learn, explore and express with 
-      .flex.flex-wrap.ml-2
-        home-tile(
-          v-for="(area, i) in children", 
-          :key="area.url", 
-          :item="area", 
-          :i="i",
-          :total="children.length")  
-        youtube-embed(:video="f?.youtube" v-if="f?.youtube")
-      content.content.z-2.flex-auto
+      .flex.flex-wrap.items-start.px-4.gap-4
+        .flex.flex-wrap.gap-4.items-stretch(
+          style="flex: 1 1 280px;"
+          )
+          home-tile(
+            style="flex: 1 1 280px;"
+            v-for="(area, i) in children", 
+            :key="area.url", 
+            :item="area", 
+            :i="i",
+            :total="children.length")  
+        .flex.flex-col.gap-4(style="flex: 1 1 280px;")
+          .p-0(v-if="f?.youtube")
+            youtube-embed(:video="f?.youtube" )
+          content.content.z-2.flex-auto
+      .bg-light-900.dark-bg-dark-800.px-4.w-full.flex.items-end.py-8
 
+        .flex.items-center.gap-4
+          img.w-16(v-if="theme.logo", :src="theme.logo", alt="Chromatone logo" title="Chromatone")
+          .flex.flex-col
+            .text-3xl.font-bold Chromatone 
+            .text-xl Visual Music Language 
+        .flex-1
+        .text-md 2017-Present
   template(v-else)
     main#content.w-full.relative.flex.flex-col
       transition(name="fade")
@@ -84,12 +103,13 @@ midi-notes
           :pageColor="pageColor", :lightColor="lightColor" :page="f" :cover="f.dynamic ? f?.cover || f?.poster || '' : page?.frontmatter?.cover")
 
           page-parents(:parents="f.dynamic ? parents : parents.slice(0, -1)")
-        .fixed.w-full.z-100.text-md.p-2.flex.flex-wrap.gap-2.items-center.bg-light-200.bg-opacity-20.dark-bg-dark-200.dark-bg-opacity-10.backdrop-blur-lg.pt-2.pl-4.min-h-15.border-t-4.op-90.transition.select-none.pointer-events-none(
+        .fixed.top-0.left-12.right-0.z-100.text-md.p-2.flex.gap-2.items-center.bg-light-200.bg-opacity-20.dark-bg-dark-200.dark-bg-opacity-10.backdrop-blur-lg.pt-2.pl-4.min-h-15.border-t-4.op-90.transition(
           :style="{ borderColor: pageColor }"
           v-else-if="y > 100")
-          h2.font-bold {{ f?.title }} 
-          .p-0 {{ f?.description }}
+          h2.font-bold.select-none.pointer-events-none {{ f?.title }} 
+          .p-0.select-none.pointer-events-none.flex-1 {{ f?.description }}
 
+          .i-la-angle-up.w-6(@click="scrollTop()")
 
       iframe.min-h-80svh.w-full.max-w-100svw(
         v-if="f?.iframe"
@@ -132,7 +152,7 @@ midi-notes
 }
 
 .home {
-  @apply w-full relative pb-16 flex flex-wrap bg-light-500 dark-(bg-dark-500) transition-all duration-600 ease-out;
+  @apply w-full relative flex flex-wrap gap-8 bg-light-500 dark-(bg-dark-500) transition-all duration-600 ease-out;
 }
 
 .noise {

@@ -69,7 +69,7 @@ function copyColor(str) {
 </script>
 
 <template lang='pug'>
-svg.my-6.w-full.select-none.cursor-grab.active-cursor-grabbing(
+svg.select-none.cursor-grab.active-cursor-grabbing(
   version="1.1",
   baseProfile="full",
   :viewBox="`0 0 ${box.w} ${box.h+box.pad*2}`",

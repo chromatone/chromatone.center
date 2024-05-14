@@ -8,7 +8,7 @@ const { sequencer } = useSequencer()
 </script>
 
 <template lang='pug'>
-.flex.flex-col.gap-2.is-group.p-2.bg-light-200.dark-bg-dark-200.shadow.rounded.gap-4.min-w-full
+.flex.flex-col.gap-2.is-group.p-2.bg-light-200.dark-bg-dark-200.shadow.rounded.gap-4
   .is-group.flex.flex-wrap
     ControlRotary(
       param="BPM"
@@ -30,7 +30,7 @@ const { sequencer } = useSequencer()
       :max="1"
       :step=".001"
       v-model="sequencer.volume")
-    AudioAnalysisScope.flex-1.max-h-30(name="drums")
+    AudioAnalysisScope.max-h-30(style="flex: 1 1 200px" name="drums")
   .flex.flex-col.gap-2 
     .flex.items-center.gap-1(
       v-for="(track,t) in sequencer.tracks" :key="t")

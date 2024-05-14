@@ -116,14 +116,14 @@ function clear() {
 
 <template lang="pug">
 .flex.flex-col.mb-8
-  .fullscreen-container.rounded-3xl.cursor-pointer#screen
+  .fullscreen-container.cursor-pointer#screen
     control-start.absolute(
       v-if="!tuner.running", 
       @click="start()") Start rolling 
     .p-1.absolute.top-2.left-2.flex.items-center
       .i-la-angle-double-right
       span {{ draw.speed.toFixed(1) }}
-    canvas.w-full.h-full.rounded-3xl(    
+    canvas.w-full.h-full(    
       ref="roll"
       v-drag="dragSpeed"
       :width="1920"

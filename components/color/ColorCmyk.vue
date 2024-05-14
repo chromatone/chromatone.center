@@ -56,7 +56,7 @@ for (let control in controls) {
 </script>
 
 <template lang="pug">
-.fullscreen-container.mb-8.p-4.rounded-3xl.transition-all.duration-800.ease-out.w-full#screen(:style="{ backgroundColor: mix.hex }")
+.fullscreen-container.p-4.transition-all.duration-800.ease-out.w-full#screen(:style="{ backgroundColor: mix.hex }")
   svg.min-h-80svh.max-h-100svh.w-full(
     version="1.1",
     baseProfile="full",

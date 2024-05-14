@@ -1,17 +1,19 @@
 <script setup>
-import { useCopy } from '#/use/clipboard'
-
+import { useClipboard } from '@vueuse/core'
+import { computed } from 'vue';
 const props = defineProps({
 	text: String
 })
 
-const { copied, copyTextToClipboard } = useCopy(props.text)
+const source = computed(() => props.text)
+const { copy, copied } = useClipboard({ source })
+
+
 </script>
 
 <template lang="pug">
-tspan.font-mono(
-
-	@mousedown="copyTextToClipboard(text)" 
+tspan.font-mono.cursor-pointer(
+	@mousedown="copy()" 
 	:class="{active: copied}"
 	) {{ text }} {{ copied ? 'copied!' : '' }}
 </template>

@@ -162,7 +162,7 @@ transition(name="slide")
 
 <style lang="postcss" scoped>
 nav.bar {
-  @apply bg-light-800 dark-bg-dark-400 fixed z-1000 top-0 bottom-0 w-12 shadow flex flex-col max-h-100dvh pb-2;
+  @apply bg-light-800 dark-bg-dark-400 fixed z-1000 top-0 bottom-0 w-12 shadow flex flex-col max-h-100dvh pb-2 overflow-scroll;
 }
 
 button,

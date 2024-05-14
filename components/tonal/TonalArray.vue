@@ -63,7 +63,7 @@ function hasMinor(pitch) {
 </script>
 
 <template lang="pug">
-svg#tonal-array.rounded-3xl.min-h-80svh.max-h-100svh.w-full(
+svg#tonal-array.min-h-80svh.max-h-100svh(
   viewBox="-80 -110 1040 770"
   version="1.1",
   baseProfile="full",
@@ -81,8 +81,6 @@ svg#tonal-array.rounded-3xl.min-h-80svh.max-h-100svh.w-full(
       :y="-110", 
       :width="1040", 
       :height="770", 
-      :ry="20", 
-      :rx="20"
       )
   g(
 

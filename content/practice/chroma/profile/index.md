@@ -6,7 +6,7 @@ date: 2021-05-12
 cover: profile.png
 ---
 
-<chroma-profile v-model:chroma="chroma" :editable="true" />
+<chroma-profile v-model:chroma="chroma"  class="m-2" :editable="true" />
 
 <script setup>
 import {ref} from 'vue'

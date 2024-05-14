@@ -70,7 +70,7 @@ useGesture({
 </script>
 
 <template lang="pug">
-#screen.fullscreen-container.mb-8.p-4.rounded-xl.transition-all.duration-800.ease-out(:style="{ backgroundColor: mix.rgb }")
+#screen.fullscreen-container.mb-8.p-4.transition-all.duration-800.ease-out(:style="{ backgroundColor: mix.rgb }")
   svg.min-h-80svh.max-h-100svh.w-full(
     version="1.1",
     baseProfile="full",
@@ -153,7 +153,7 @@ useGesture({
         text-anchor="middle"
         fill="white"
       ) G
-      color-svg-info(transform="scale(0.7) translate(21,12)" :color="mix.rgb" :y="46")
+    color-svg-info(transform="scale(0.7) translate(21,12)" :color="mix.rgb" :y="46")
 </template>
 
 <style lang="postcss" scoped></style>

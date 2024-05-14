@@ -3,8 +3,8 @@ defineProps(['video']);
 </script>
 
 <template lang="pug">
-.iframe-container.my-4
-  iframe.shadow-2xl.rounded-2xl.overflow-hidden(
+.iframe-container.shadow-lg.rounded-lg
+  iframe.overflow-hidden(
     loading="lazy"
     :src="`https://www.youtube.com/embed/${video}`", 
     title="YouTube video player", 

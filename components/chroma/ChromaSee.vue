@@ -30,7 +30,7 @@ function getAmmount(ammount) {
 </script>
 
 <template lang="pug">
-#screen.fullscreen-container.rounded-3xl
+#screen.fullscreen-container
   control-start.absolute(
     v-if="!tuner.initiated" 
     @click="init()") Start

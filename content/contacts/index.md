@@ -16,7 +16,7 @@ org:
     reddit: r/chromatone
 author:
   avatar: /img/starov.jpg
-  name: Denis K Starov
+  name: Denis Starov
   pos: Founder, designer and developer
   place: Born in 1987 and dwelling
   about: I'm a broad range designer and enthusiastic open source developer. So I explore music with the web browser. And share my experiments and explorations with everyone here.

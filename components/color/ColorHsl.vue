@@ -79,8 +79,8 @@ function onDragS(drag) {
 </script>
 
 <template lang="pug">
-.fullscreen-container.mb-8.p-4.rounded-xl.transition-all.duration-800.ease-out#screen(:style="{ backgroundColor: mix.current }")
-  svg.min-h-xl.max-h-3xl.w-full(
+.fullscreen-container.p-4.transition-all.duration-800.ease-out#screen(:style="{ backgroundColor: mix.current }")
+  svg.max-h-3xl.w-full(
     version="1.1",
     baseProfile="full",
     viewBox="-15 -5 130 115",
@@ -249,16 +249,17 @@ function onDragS(drag) {
           y="-3"
         ) {{ paramNames[mix.space][1] }} {{ mix.sat.toFixed(1) }}
   .flex.flex-wrap.items-center.justify-center(:style="{ color: mix.info.dark ? '#FFF' : '#000' }")
-    .p-2.font-bold.text-xl Harmony
+    .p-0.font-bold.text-xl Harmony
     button.p-1.capitalize.border-2.shadow-md.m-2.rounded-lg.border-dark-300(
+      style="flex: 1 1 180px"
       v-for="(angles, harm) in harmonies" :key="harm"
       :class="{ active: harm == mix.harmony }"
       :style="{ backgroundColor: mix.info.dark ? '#333e' : '#eeee' }"
       @click="mix.harmony = harm"
 
-    ) 
-      .p-1.mb-1 {{ harm }}
-      .flex.justify-center
+      ) 
+      .p-0 {{ harm }}
+      .flex.justify-center.gap-1
         .p-4.flex-1.rounded(
           v-for="(step) in harmonies[harm]" :key="step" 
           :style="{ backgroundColor: generateTone(mix.hue + step).toHex() }"

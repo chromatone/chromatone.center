@@ -29,7 +29,7 @@ watch(() => midi.cc, cc => {
 </script>
 
 <template lang="pug">
-#screen.flex.flex-col.items-center.w-full.relative.pb-12.p-4.fullscreen-container.rounded-3xl
+#screen.flex.flex-col.items-center.w-full.relative.pb-12.p-4.fullscreen-container
   svg#metronome.min-h-80svh.max-h-100svh.w-full.select-none(
     version="1.1",
     baseProfile="full",

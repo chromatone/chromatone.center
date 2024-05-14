@@ -101,16 +101,15 @@ function clear() {
     button.absolute.top-4.right-4.text-xl.select-none.cursor-pointer(@mousedown="clear()")
       .i-la-trash-alt
     .absolute.top-4.left-4.text-xl.text-white x{{ roll.speed }}
-    canvas#spectrogram.w-full.rounded-2xl.cursor-pointer(
+    canvas#spectrogram.w-full.cursor-pointer.max-h-100svh(
       v-drag="dragScreen"
       :width="roll.width"
       :height="roll.height"  
       )
-  .flex.items-center.gap-2.px-8.flex-wrap
+  .flex.items-center.gap-2.p-2.flex-wrap
     .is-group.flex.flex-wrap.gap-2
       ControlRotary(v-model="roll.pow" :min="1" :max="10" :step="1" :fixed="0" param="POW")
       ControlRotary(v-model="roll.offset" :min="-.25" :max=".25" :step=".0001" param="OFFSET" :fixed="2")
 </template>
 
 <style lang="postcss" scoped></style>
-

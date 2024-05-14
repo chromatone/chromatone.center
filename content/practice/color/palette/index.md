@@ -14,7 +14,7 @@ links:
 
 <client-only>
 
-  <color-palette id="palette" class="max-w-60ch rounded-2xl overflow-hidden" />
+  <color-palette id="palette" class="max-w-60ch m-2" />
   <div class="my-4  max-w-90 transform">
     <save-svg class="" svg="palette" />
   </div>

@@ -3,7 +3,7 @@ title: Chord progressions
 description: Successive chord loops as the foundation of modern music
 date: 2021-10-12
 cover: progressions.png
-
+layout: app
 web:
   - https://autochords.com/
   - https://schollz.github.io/chords/ - https://github.com/schollz/chords

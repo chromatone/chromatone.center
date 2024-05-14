@@ -26,7 +26,7 @@ const chords = computed(() => {
 <template lang="pug">
 .flex.flex-col.gap-4.items-start
   .fullscreen-container.w-full#screen(@mouseleave="active = false")
-    .flex.w-full.h-full.mt-4
+    .flex.w-full.h-full
       .flex.flex-col.flex-1.text-center.relative(
         v-for="(ch, chNum) in midi.channels", 
         :key="ch.num")

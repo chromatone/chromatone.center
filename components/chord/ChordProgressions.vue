@@ -39,14 +39,12 @@ function getChords(degrees) {
 
 <template lang="pug">
 .flex.flex-col
-  .flex.flex-wrap.my-4
-    control-choose(v-model="state.mode" :variants="variants")
-  .flex.flex-wrap.items-stretch.my-2.p-8.gap-4.border-2.rounded-xl(
+  .flex.flex-wrap.items-stretch.p-8.gap-4(
     :style="{ borderColor: noteColor(globalScale.tonic, 2), backgroundColor: noteColor(globalScale.tonic, 2, 1, 0.05) }"
     )
     chroma-keys.w-20em.mx-auto(
       :chroma="globalScale.chroma", 
-      style="flex: 1 1 3rem;"
+      style="flex: 1 1 100px;"
       v-model:pitch="globalScale.tonic")
       .flex.flex-col.text-center.mb-2.relative.p-1()
         .text-2xl.font-bold.flex.mx-auto.items-center {{ globalScale.note.name }} {{ state.current.title }}
@@ -54,8 +52,10 @@ function getChords(degrees) {
           .i-la-wikipedia-w
         .text-lg {{ state.current.degrees }} 
     .flex.flex-wrap.p-4.items-start(
-      style="flex: 1 1 6rem;"
-    )
+      style="flex: 1 1 600px"
+      )
+      .flex.flex-wrap.my-4.w-full
+        control-choose(v-model="state.mode" :variants="variants")
       button.text-button.flex.flex-col(
         v-for="(progression, name) in list" :key="progression"
         @click="state.selected = name; globalScale.chroma = state.scale.chroma"
@@ -64,7 +64,7 @@ function getChords(degrees) {
         .font-bold.px-1.mb-1 {{ progression.title }}
         //- .text-sm {{ progression.degrees }} 
     transition(name="fade" mode="out-in")
-      .flex.flex-wrap.gap-2(:key="state.current")
+      .flex.flex-wrap.gap-2.w-full(:key="state.current")
         .flex.flex-col.select-none.max-w-16rem(
           style="flex: 1 1 10rem;"
           v-for="(chord, c) in getChords(state.current.degrees)" :key="c")
@@ -99,7 +99,6 @@ function getChords(degrees) {
             :pitch="chord.tonicPitch" 
             :roman="state.current.degrees.split('-')[c]"
           )
-
 </template>
 
 //TODO - voicings https://github.com/tonaljs/tonal/tree/main/packages/voicing

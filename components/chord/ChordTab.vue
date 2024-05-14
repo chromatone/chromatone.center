@@ -57,7 +57,7 @@ function getNote(string, semitones) {
   :style="{ backgroundColor: pitchColor(pitch, 3, 1, 0.3) }")
   .flex.justify-center
     .text-2x.font-bold {{ notes[pitch] }}{{ neck.title }}
-  svg#fretboard.-rotate-90.max-h-3xl.w-full.my-2(
+  svg#fretboard.max-h-3xl.w-full.my-2(
     version="1.1",
     baseProfile="full",
     :viewBox="`-50 -50 ${neck.height + 100} ${neck.width + 60}`",
@@ -112,7 +112,7 @@ function getNote(string, semitones) {
             :r="neck.noteSize / 2 - 8"
             :fill="pitchColor(string+n,2)"
           )
-          text.rotate-90(
+          text(
             :opacity="neck.chroma[(n + string) % 12] == 1 ? 1 : 0"
             fill="white"
             font-size="18"

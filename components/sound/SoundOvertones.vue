@@ -194,7 +194,7 @@ function calcCents(base, freq) {
 </script>
 
 <template lang="pug">
-.flex.flex-col.fullscreen-container.rounded-3xl#screen
+.flex.flex-col.fullscreen-container#screen
   svg#overtones.w-full.max-h-90vh(
     version="1.1"
     baseProfile="full"
@@ -354,7 +354,7 @@ function calcCents(base, freq) {
         :opacity="1 - i / (overtones.count + 2)"
       )
 
-  .controls.flex.flex-wrap.justify-center.-mb-8.z-2.mt-8
+  .controls.flex.flex-wrap.justify-center.mb-8.z-2.-mt-2
     .is-group.flex.items-center.mr-2.gap-2
       button.shadow.p-3.m-1.border-1.border-current.rounded(
         v-tooltip.bottom="'Toggle animation'"

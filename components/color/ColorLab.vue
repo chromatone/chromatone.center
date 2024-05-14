@@ -79,7 +79,7 @@ watchEffect(() => {
 </script>
 
 <template lang="pug">
-#screen.fullscreen-container.mb-8.p-4.rounded-xl.transition-all.duration-400.ease-in-out( :style="{ backgroundColor: mix.hex }")
+#screen.fullscreen-container.p-4.transition-all.duration-400.ease-in-out( :style="{ backgroundColor: mix.hex }")
   svg.min-h-80svh.max-h-100svh.w-full.select-none(
     version="1.1",
     baseProfile="full",
@@ -259,5 +259,3 @@ watchEffect(() => {
       text.uppercase AB RANGE {{ range }}
     
 </template>
-
-

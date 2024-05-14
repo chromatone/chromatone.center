@@ -109,7 +109,7 @@ watch([() => freq.hz, () => mouse.pressed], () => {
 </script>
 
 <template lang="pug">
-.fullscreen-container#screen.rounded-3xl
+.fullscreen-container#screen
   svg#dissonance.min-h-80svh.max-h-100svh.w-full.select-none(
     ref="svg",
     version="1.1",

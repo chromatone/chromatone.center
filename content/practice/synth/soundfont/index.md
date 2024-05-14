@@ -22,7 +22,7 @@ onBeforeUnmount(() => {
 </script>
 
 <client-only>
-<Synth-font class="mb-2" />
+<Synth-font class="m-2" />
 <MidiKeys >
 
 </MidiKeys>

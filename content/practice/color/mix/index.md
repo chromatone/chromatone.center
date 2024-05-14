@@ -1,7 +1,7 @@
 ---
 title: MIDI color mixing
 description: Full screen colors react to midi notes to explore the cross stimulation of the brain
-date: 2021-04-05
+date: 2011-04-05
 cover: milad-fakurian.jpg
 layout: app
 ---

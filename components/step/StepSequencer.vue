@@ -192,9 +192,9 @@ function borderColor(cell, r) {
         .dot(
           :style="{ backgroundColor: cell.active ? noteColor(state.pitches[r]) : cell.cell == positions[r] ? 'currentColor' : '#4448' }"
         )
-  .flex.flex-wrap.items-center.justify-center
-    control-scale.flex-1(v-tooltip.top="'Select root note and scale'")
-    .flex.flex-wrap.justify-center.flex-1.bg-light-900.p-4.rounded-2xl.dark-bg-dark-800.gap-2
+  .flex.flex-wrap.items-center.justify-center.mx-2.gap-2
+    control-scale(style="flex: 1 1 100px" v-tooltip.top="'Select root note and scale'")
+    .flex.flex-wrap.items-center.justify-center.bg-light-900.p-4.rounded-2xl.dark-bg-dark-800.gap-2(style="flex: 5 1 200px")
 
       select(
         v-model="state.type" 
@@ -240,7 +240,7 @@ function borderColor(cell, r) {
           :fixed="0" 
           param="BPM"
           )
-      .is-group
+      .is-group.flex.items-center
         button.text-button(
           v-tooltip.bottom="'Humanize rhythm'"
           :class="{ active: state.humanize }" 

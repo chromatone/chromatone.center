@@ -2346,11 +2346,11 @@
     Dozenal:
       - DUSian
 "637":
-  title: Debussy's Heptatonic
+  title: Debussys Heptatonic
   chroma: "100111110100"
   names:
     Named After Composers:
-      - Debussy's Heptatonic
+      - Debussys Heptatonic
     Bedwell:
       - Alt 2576
     Zeitler:
@@ -3231,7 +3231,7 @@
       - Messiaen Mode 3 Truncated
     Named After Composers:
       - Ode To Napoleon Hexachord
-      - Liszt's Prometheus
+      - Liszts Prometheus
     Zeitler:
       - Aerythimic
     Dozenal:
@@ -4017,7 +4017,7 @@
     Carnatic:
       - Mela Dhavalambari
     Named After Composers:
-      - Foulds' Mantra Of Will Scale
+      - Foulds Mantra Of Will Scale
     Zeitler:
       - Thogian
     Dozenal:
@@ -4894,9 +4894,9 @@
       - Yu
       - Yùdiào
     Korean:
-      - P'yongjo-kyemyonjo
+      - Pyongjo-kyemyonjo
     Japanese:
-      - Min'yō
+      - Minyō
     Vietnamese:
       - Lai Yai
       - Lai Noi
@@ -5918,11 +5918,11 @@
     Dozenal:
       - IPOian
 "1403":
-  title: Espla's Scale
+  title: Esplas Scale
   chroma: "101011110110"
   names:
     Named After Composers:
-      - Espla's Scale
+      - Esplas Scale
     Exoticisms:
       - Eight-tone Spanish
     Western:
@@ -7042,11 +7042,11 @@
     Dozenal:
       - KAGian
 "1621":
-  title: Scriabin's Prometheus
+  title: Scriabins Prometheus
   chroma: "110010101010"
   names:
     Named After Composers:
-      - Scriabin's Prometheus
+      - Scriabins Prometheus
       - Mystic
     Western:
       - Prometheus
@@ -7430,7 +7430,7 @@
     Western Modern:
       - Mixolydian Hexatonic
     Korean:
-      - P'yongjo
+      - Pyongjo
     Unknown / Unsorted:
       - Yosen
       - Narayani
@@ -7694,7 +7694,7 @@
       - Ganavaridhi
       - Chayanata
     Jazz and Blues:
-      - Bluesy Rock 'n Roll
+      - Bluesy Rock n Roll
     Zeitler:
       - Ionycrian
     Dozenal:
@@ -12343,7 +12343,7 @@
       - Melodic 5
       - Melodic 5
     Named After Composers:
-      - Jeths' Mode
+      - Jeths Mode
     Zeitler:
       - Gamian
     Dozenal:
@@ -12814,7 +12814,7 @@
     Thailand:
       - Thang Phiang Aw Bon
     Arabic:
-      - "'Ajam 'Ushayran"
+      - "Ajam Ushayran"
       - Ajam Ashiran
     Ancient Greek:
       - Greek Lydian
@@ -13311,7 +13311,7 @@
     Gregorian Numbered:
       - Gregorian Number 5
     Exoticisms:
-      - Kubilai's Mongol Scale
+      - Kubilais Mongol Scale
     Zeitler:
       - Zylyllic
     Dozenal:
@@ -13925,7 +13925,7 @@
       - Messiaen Mode 2 Inverse
     Named After Composers:
       - Modus Conjunctus
-      - Pijper's Scale
+      - Pijpers Scale
     Exoticisms:
       - Arabian A
     Zeitler:
@@ -14299,7 +14299,7 @@
       - Major Bebop
       - Bebop Major
     Named After Composers:
-      - Harris' Diminished 6th
+      - Harris Diminished 6th
     Western Modern:
       - Altered Mixolydian
     Zeitler:
@@ -16186,15 +16186,15 @@
     zeitler:
       - Zodimic
 "3379":
-  title: Verdi's Scala Enigmatica Descending
+  title: Verdis Scala Enigmatica Descending
   chroma: "110100110011"
   names:
     Named After Composers:
-      - Verdi's Scala Enigmatica Descending
+      - Verdis Scala Enigmatica Descending
     Bedwell:
       - Ionian +26
     Western:
-      - Verdi's Enigmatic Descending
+      - Verdis Enigmatic Descending
       - Enigmatic Decending
     Zeitler:
       - Sothian
@@ -16362,7 +16362,7 @@
     Bedwell:
       - Enigmatic
     Named After Composers:
-      - Verdi's Scala Enigmatica Ascending
+      - Verdis Scala Enigmatica Ascending
     Carnatic:
       - Vishvambhari
     Zeitler:
@@ -16541,11 +16541,11 @@
     zeitler:
       - Aeolyptian
 "3443":
-  title: Verdi's Scala Enigmatica
+  title: Verdis Scala Enigmatica
   chroma: "110101110011"
   names:
     Named After Composers:
-      - Verdi's Scala Enigmatica
+      - Verdis Scala Enigmatica
     Azerbaijan:
       - Mugham Saränc
     Zeitler:

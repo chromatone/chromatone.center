@@ -38,7 +38,7 @@ export default defineConfig({
       output: {
         manualChunks: {
           tone: ['tone', '@tonejs/midi'],
-          webmidi: ['webmidi', 'midi-writer-js'],
+          webmidi: ['webmidi'],
         },
       },
     },

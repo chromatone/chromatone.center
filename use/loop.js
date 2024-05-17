@@ -155,52 +155,54 @@ export function useLoop(order = 0) {
   return loop;
 }
 
-import MidiWriter from "midi-writer-js";
+
 
 
 export function renderMidiFile() {
-  let render = [];
-  loops.forEach((loop, l) => {
-    let division = 512 / loop.metre.under;
-    let midiTrack = new MidiWriter.Track();
-    midiTrack.setTempo(tempo.bpm, 0);
-    midiTrack.addInstrumentName("piano");
-    midiTrack.addTrackName("Chromatone grid " + l);
-    midiTrack.setTimeSignature(4, 4, 24, 8);
-    loop.steps.forEach((step, s) => {
-      step.forEach((code, c) => {
-        let sub = c;
-        let beat = s;
-        let subdivision = division / step.length;
-        let notes = Object.entries(code)
-          .map((entry) =>
-            entry[1] == true ? Number(entry[0]) + loop.tonic : null
-          )
-          .filter((n) => Number(n))
-          .map((midi) => Frequency(midi, "midi").toNote());
-        midiTrack.addEvent(
-          new MidiWriter.NoteEvent({
-            pitch: notes,
-            duration: `T${subdivision}`,
-            startTick: division * beat + sub * subdivision,
-            velocity: loop.volume * 100,
-          })
-        );
+  import("midi-writer-js").then(MidiWriter => {
+    let render = [];
+    loops.forEach((loop, l) => {
+      let division = 512 / loop.metre.under;
+      let midiTrack = new MidiWriter.Track();
+      midiTrack.setTempo(tempo.bpm, 0);
+      midiTrack.addInstrumentName("piano");
+      midiTrack.addTrackName("Chromatone grid " + l);
+      midiTrack.setTimeSignature(4, 4, 24, 8);
+      loop.steps.forEach((step, s) => {
+        step.forEach((code, c) => {
+          let sub = c;
+          let beat = s;
+          let subdivision = division / step.length;
+          let notes = Object.entries(code)
+            .map((entry) =>
+              entry[1] == true ? Number(entry[0]) + loop.tonic : null
+            )
+            .filter((n) => Number(n))
+            .map((midi) => Frequency(midi, "midi").toNote());
+          midiTrack.addEvent(
+            new MidiWriter.NoteEvent({
+              pitch: notes,
+              duration: `T${subdivision}`,
+              startTick: division * beat + sub * subdivision,
+              velocity: loop.volume * 100,
+            })
+          );
+        });
       });
+      // --- LOOP HACK ---
+      // midiTrack.addEvent(
+      //   new NoteEvent({
+      //     pitch: 0,
+      //     duration: `T1`,
+      //     startTick: division * (track.steps.length - 1),
+      //     velocity: 1,
+      //   })
+      // )
+      render[l] = midiTrack;
     });
-    // --- LOOP HACK ---
-    // midiTrack.addEvent(
-    //   new NoteEvent({
-    //     pitch: 0,
-    //     duration: `T1`,
-    //     startTick: division * (track.steps.length - 1),
-    //     velocity: 1,
-    //   })
-    // )
-    render[l] = midiTrack;
-  });
 
-  var write = new MidiWriter.Writer(render);
+    var write = new MidiWriter.Writer(render);
 
-  createAndDownloadBlobFile(write.buildFile(), "Chromatone-grid");
+    createAndDownloadBlobFile(write.buildFile(), "Chromatone-grid");
+  })
 }

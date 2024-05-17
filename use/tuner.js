@@ -6,7 +6,6 @@
 import Aubio from "./aubio.js";
 import { noteColor } from './colors'
 import { initGetUserMedia, useAudio } from './audio'
-import Meyda from "meyda";
 import { reactive, computed, watch } from 'vue'
 import { rotateArray } from "./calculations";
 
@@ -32,6 +31,7 @@ const settings = {
 
 export const tuner = reactive({
   initiated: false,
+  initiating: false,
   stream: null,
   middleA: settings.middleA,
   semitone: settings.semitone,
@@ -83,8 +83,9 @@ export function useTuner() {
   };
 }
 
-function init() {
+async function init() {
   if (tuner.initiated) return
+  tuner.initiating = true
   const { master } = useAudio()
   chain.audioContext = master.context;
   chain.analyser = chain.audioContext.createAnalyser();
@@ -113,7 +114,8 @@ function init() {
     }
   );
 
-  //MEYDA
+  const Meyda = await import('meyda')
+
   chain.meyda = Meyda.createMeydaAnalyzer({
     audioContext: chain.audioContext,
     source: chain.analyser,
@@ -126,7 +128,6 @@ function init() {
     },
   });
   chain.meyda.start();
-  // END of MEYDA
 
   tuner.frequencyData = new Uint8Array(chain.analyser.frequencyBinCount);
 
@@ -146,6 +147,7 @@ function init() {
     start();
   });
   tuner.initiated = true;
+  tuner.initiating = false
 }
 
 function start() {

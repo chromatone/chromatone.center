@@ -1,5 +1,4 @@
 <script setup>
-import AudioMotionAnalyzer from 'audiomotion-analyzer'
 import { initGetUserMedia, master } from '#/use/audio'
 import { freqPitch } from '#/use/calculations'
 import { useMic } from '#/use/mic'
@@ -72,8 +71,9 @@ onMounted(() => {
 let audio
 
 function initiate() {
-  navigator.mediaDevices.getUserMedia({ audio: true, video: false }).then(() => {
-    state.initiated = true
+  navigator.mediaDevices.getUserMedia({ audio: true, video: false }).then(async () => {
+    const { AudioMotionAnalyzer } = await import('audiomotion-analyzer')
+
     audio = new AudioMotionAnalyzer(null, {
       mode: 1,
       connectSpeakers: false,
@@ -103,9 +103,11 @@ function initiate() {
         ctx.setTransform(1, 0, 0, 1, 0, 0);
       }
     })
-
+    state.initiated = true
     mic.open = true
     audio.connectInput(input)
+
+
   }).catch((e) => {
     console.log('mic denied', e)
   })

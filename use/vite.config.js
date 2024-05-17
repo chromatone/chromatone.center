@@ -37,7 +37,8 @@ export default defineConfig({
       external: ['vue'],
       output: {
         manualChunks: {
-          tone: ['tone']
+          tone: ['tone', '@tonejs/midi'],
+          webmidi: ['webmidi', 'midi-writer-js'],
         },
       },
     },

@@ -8,7 +8,7 @@ cover: color-names.svg
 ---
 
 <script setup>
-import col from '#/db/colors.yaml'
+import col from '#/db/colors/colors.yaml'
 </script>
 
 <ColorCards :list="col.colors" :langs="col.langs" />

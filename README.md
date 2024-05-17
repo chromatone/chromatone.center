@@ -61,3 +61,5 @@ Current tasks and progress are open [at this ClickUp project](https://sharing.cl
   - https://vuexyz.org/primitives/useArc.html
 
 https://codesandbox.io/p/github/chromatone/chromatone.center/
+
+## Scale names

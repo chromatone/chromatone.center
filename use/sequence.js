@@ -9,54 +9,20 @@ import {
   Sequence,
   PanVol,
   gainToDb,
-  Draw,
+  getDraw,
   Sampler,
   context,
   start,
   Recorder,
   Meter,
   UserMedia,
+  getContext,
 } from "tone";
 import { createChannel } from './audio'
 import { rotateArray } from "./calculations";
 import { useStorage, } from '@vueuse/core';
 import { useClamp } from '@vueuse/math';
 
-
-
-
-
-
-
-
-
-
-
-
-
-// interface SequenceMeter {
-//   over: Ref<number>
-//   under: Ref<number>
-//   sound: Ref<string>
-//   volume: Ref<number>
-// }
-
-// export interface Seq {
-//   meter: SequenceMeter
-//   current: string
-//   steps: string[][]
-//   mutes: Ref<boolean[]>
-//   accents: Ref<boolean[]>
-//   volume: Ref<number>
-//   pan: Ref<number>
-//   mutesCount: ComputedRef<number>
-//   activeSteps: string[]
-//   currentSeq: string[]
-//   euclidSeq: string
-//   isEuclidean: boolean
-//   reset(): void
-//   rotateAccents(num: number): void
-// }
 
 // List of all sequences
 export const tracks = reactive([]);
@@ -265,11 +231,11 @@ export function useSequence(
 
 
   function beatClick(time, step) {
-    if (context.state == "suspended") {
+    if (getContext().state == "suspended") {
       start();
     }
     let mainStep = typeof step == "string" ? + step.split("-")[0] : step;
-
+    const Draw = getDraw()
     Draw.schedule(() => {
       seq.current = step
     }, time);

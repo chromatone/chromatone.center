@@ -61,6 +61,7 @@ nav.bar
     href="/academy/"
     :class="{ active: route.path.includes('academy') }"
     v-tooltip.right="'Academy'"
+    aria-label="Academy"
     )
     .i-la-chalkboard-teacher
   a.button(
@@ -68,6 +69,7 @@ nav.bar
     href="/shop/"
     :class="{ active: route.path.includes('shop') }"
     v-tooltip.right="'Shop'"
+    aria-label="Shop"
     )
     .i-la-shopping-bag
   a.button(
@@ -75,6 +77,7 @@ nav.bar
     href="/contacts/"
     :class="{ active: route.path.includes('contacts') }"
     v-tooltip.right="'Contacts'"
+    aria-label="Contacts"
     )
     .i-la-at
 

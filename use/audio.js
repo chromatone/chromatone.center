@@ -3,7 +3,7 @@
  * @description Main audio bus controller
  */
 
-import { getDestination, start, gainToDb, Meter, context, Reverb, Limiter, Volume, Context, } from "tone"
+import { getDestination, start, gainToDb, Meter, Reverb, Limiter, Volume, getContext } from "tone"
 import { useRecorder } from "./recorder"
 import { shallowReactive, reactive, watchEffect, markRaw } from 'vue'
 import { useRafFn, useStorage } from "@vueuse/core"
@@ -27,7 +27,7 @@ export function useAudio() {
     master.destination = getDestination()
     const { recorder } = useRecorder()
 
-    master.stream = markRaw(context.createMediaStreamDestination())
+    master.stream = markRaw(getContext().createMediaStreamDestination())
     master.meter = markRaw(new Meter().toDestination())
     master.meter.normalRange = true
     master.meter.connect(master.stream)

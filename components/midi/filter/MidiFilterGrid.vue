@@ -1,10 +1,12 @@
 <script setup>
 import { Midi } from '@tonejs/midi'
 import { noteColor } from "#/use/colors"
-import { now, PolySynth, Synth, Transport } from 'tone'
+import { now, PolySynth, Synth, getTransport } from 'tone'
 import { createAndDownloadBlobFile } from '#/use/midiRender'
 import { useAudio } from '#/use/audio'
 import { reactive, computed } from 'vue'
+
+const Transport = getTransport()
 
 let midiData
 
@@ -135,4 +137,3 @@ button {
   @apply bg-light-100 border-current dark-bg-dark-900;
 }
 </style>
-

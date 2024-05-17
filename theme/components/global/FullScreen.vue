@@ -36,6 +36,7 @@ function init() {
 
 <template lang="pug">
 button(
+  aria-label="Fullscreen toggle"
   @click="toggle()"
   v-tooltip.left="'Toggle fullscreen'"
   )

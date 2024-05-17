@@ -1,4 +1,4 @@
-function _optionalChain(ops) { let lastAccessLHS = undefined; let value = ops[0]; let i = 1; while (i < ops.length) { const op = ops[i]; const fn = ops[i + 1]; i += 2; if ((op === 'optionalAccess' || op === 'optionalCall') && value == null) { return undefined; } if (op === 'access' || op === 'optionalAccess') { lastAccessLHS = value; value = fn(value); } else if (op === 'call' || op === 'optionalCall') { value = fn((...args) => value.call(lastAccessLHS, ...args)); lastAccessLHS = undefined; } } return value; }/**
+/**
  * @module Loop
  */
 
@@ -10,13 +10,13 @@ import {
   Sequence,
   PanVol,
   gainToDb,
-  Draw,
+  getDraw,
   PolySynth,
-  context,
   start,
   Midi,
   Frequency,
   Time,
+  getContext,
 } from "tone";
 import { midiPlay } from "./midi";
 import { createAndDownloadBlobFile } from "./midiRender";
@@ -42,13 +42,7 @@ export function useLoop(order = 0) {
     }),
     steps: useStorage(`grid-${order}-steps`, []),
     current: [],
-    progress: computed(() => {
-      if (tempo.ticks) {
-        return _optionalChain([sequence, 'optionalAccess', _ => _.progress]);
-      } else {
-        return 0;
-      }
-    }),
+    progress: computed(() => tempo.ticks ? sequence?.progress : 0),
     clear() {
       loop.steps.forEach((step, s) => {
         loop.steps[s] = [{}];
@@ -122,7 +116,7 @@ export function useLoop(order = 0) {
   });
 
   function beatClick(step, time) {
-    if (context.state == "suspended") {
+    if (getContext().state == "suspended") {
       start();
     }
 
@@ -139,6 +133,8 @@ export function useLoop(order = 0) {
       { [loop.metre.under + "n"]: 1 / (step.sub || 1) },
       time
     );
+
+    const Draw = getDraw()
 
     Draw.schedule(() => {
       let dur = Time({

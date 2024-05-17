@@ -2,7 +2,15 @@
  * @module MusicTheory
  */
 
-import { ChordType, ScaleType } from '@tonaljs/tonal'
+import { ChordType, ScaleType, Pcset } from '@tonaljs/tonal'
+
+import scaleNames from '../db/scale/scale-names.yaml'
+
+for (let s in scaleNames) {
+  const scale = scaleNames[s]
+  const intervals = Pcset.intervals(scale.chroma)
+  ScaleType.add(intervals, scale.title, Object.values(scale.names).flat())
+}
 
 
 ChordType.add(['1P', '2m'], ['2m'], 'minor second')
@@ -21,9 +29,9 @@ ChordType.add(['1P', '7M'], ['7M'], 'major seventh')
 export const chordType = ChordType
 export const scaleType = ScaleType
 
-//@ts-expect-error
+
 export const chordList = ChordType.all()
-//@ts-expect-error
+
 export const scaleList = ScaleType.all()
 
 export const intervals = ['1P', '2m', '2M', '3m', '3M', '4P', 'TT', '5P', '6m', '6M', '7m', '7M']

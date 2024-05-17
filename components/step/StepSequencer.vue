@@ -4,7 +4,7 @@ import { Scale, Midi, Note } from '@tonaljs/tonal'
 import { onKeyStroke, useStorage } from '@vueuse/core'
 import { notes } from '#/use/theory'
 import { globalScale } from '#/use/chroma'
-import { Pattern, start, Transport, Draw } from 'tone'
+import { Pattern, start, getTransport, getDraw } from 'tone'
 import { synthOnce } from '#/use/synth'
 import { midiOnce } from '#/use/midi'
 import { pianoOnce, init } from '#/use/piano'
@@ -12,6 +12,9 @@ import { tempo } from '#/use/tempo'
 import { useData } from 'vitepress'
 const { isDark } = useData()
 import { computed, onBeforeUnmount, onMounted, reactive, watch, watchEffect } from 'vue'
+
+const Draw = getDraw()
+const Transport = getTransport()
 
 const state = reactive({
   started: false,

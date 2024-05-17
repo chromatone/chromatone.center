@@ -1,8 +1,10 @@
 <script setup>
 import { computed, reactive, watch } from 'vue';
 import { useMidi, useSequence, useTempo, pitchColor, useSynth, synthOnce } from '#/use/index';
-import { Transport, Part, Frequency } from 'tone'
+import { getTransport, Part, Frequency } from 'tone'
 import { Midi } from '@tonejs/midi'
+
+const Transport = getTransport()
 
 const { synth } = useSynth()
 const { midi } = useMidi()

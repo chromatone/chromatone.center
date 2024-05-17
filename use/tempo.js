@@ -3,7 +3,7 @@
  */
 
 import { reactive, computed, watch, onMounted, shallowReactive, } from "vue";
-import { Transport, start, Frequency, Loop, Sampler, gainToDb, Draw, } from "tone";
+import { getTransport, start, Frequency, Loop, Sampler, gainToDb, getDraw, } from "tone";
 import { freqPitch } from "./calculations";
 import { noteColor } from './colors'
 import { Note } from "tonal";
@@ -72,13 +72,13 @@ export function useTempo() {
   })
 
   onMounted(() => {
-
+    const Draw = getDraw()
     const { channel } = createChannel('tempo-tick')
     metro.channel = channel
     metro.pluck = new Sampler({
       urls: {
-        E1: "/logic/high.wav",
-        E2: "/logic/low.wav",
+        E1: "logic/high.wav",
+        E2: "logic/low.wav",
       },
       volume: -20,
       attack: 0.001,
@@ -119,9 +119,9 @@ export function useTempo() {
     }, "8n").start(0)
 
     useRafFn(() => {
-      //@ts-expect-error
-      tempo.position = Transport.position
-      tempo.ticks = Transport.ticks
+
+      tempo.position = getTransport().position
+      tempo.ticks = getTransport().ticks
       tempo.progress = metro.loop.progress
     })
 
@@ -161,7 +161,7 @@ export function useTempo() {
 
   watch(
     () => tempo.bpm,
-    (bpm) => Transport.bpm.rampTo(bpm, "4n"),
+    (bpm) => getTransport().bpm.rampTo(bpm, "4n"),
     { immediate: true }
   );
 
@@ -169,7 +169,8 @@ export function useTempo() {
     () => tempo.stopped,
     (stop) => {
       if (stop) {
-        Transport.stop();
+
+        getTransport().stop();
         midi.stopAll()
         tempo.playing = false;
         if (tempo.tabSync) {
@@ -188,7 +189,7 @@ export function useTempo() {
           tempo.started = true;
         }
         tempo.stopped = false;
-        Transport.start();
+        getTransport().start();
         midi.playing = true
 
         if (tempo.tabSync) {
@@ -196,7 +197,7 @@ export function useTempo() {
         }
       } else {
         midi.playing = false
-        Transport.pause();
+        getTransport().pause();
         if (tempo.tabSync) {
           post({ playing: false })
         }

@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import { resolve } from 'path'
+import ViteYaml from '@modyfi/vite-plugin-yaml';
 
 
 import path from "path";
@@ -11,6 +12,7 @@ const dirname = path.dirname(filename);
 
 export default defineConfig({
   plugins: [
+    ViteYaml(),
   ],
   optimizeDeps: {
     include: ['vue', '@vueuse/core', 'tone', 'tonal', 'colord'],
@@ -22,6 +24,7 @@ export default defineConfig({
     }
   },
   build: {
+    minify: true,
     outDir: "../lib",
     lib: {
       entry: resolve(dirname, './index.js'),

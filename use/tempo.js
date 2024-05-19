@@ -37,14 +37,11 @@ export const tempo = reactive({
     ),
   },
   hz: computed(() => (tempo.bpm / 60).toFixed(2)),
-  //@ts-ignore
   note: computed(() => Note.pitchClass(Frequency(tempo.hz).toNote())),
   tune: computed(() => {
-    //@ts-ignore
     return Note.pitchClass(tempo.note) + 4;
   }),
   pitch: computed(() => freqPitch(Number(tempo.hz))),
-  //@ts-ignore
   digit: computed(() => (Frequency(tempo.hz).toMidi() + 12 * 10 + 3) % 12),
   color: computed(() => noteColor(tempo.digit)),
   tap: {

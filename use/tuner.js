@@ -8,21 +8,9 @@ import { noteColor } from './colors'
 import { initGetUserMedia, useAudio } from './audio'
 import { reactive, computed, watch } from 'vue'
 import { rotateArray } from "./calculations";
+import { notes } from './theory.js'
 
-const noteStrings = [
-  "C",
-  "C♯",
-  "D",
-  "D♯",
-  "E",
-  "F",
-  "F♯",
-  "G",
-  "G♯",
-  "A",
-  "A♯",
-  "B",
-];
+const noteStrings = rotateArray(notes, 3)
 
 const settings = {
   middleA: 440,

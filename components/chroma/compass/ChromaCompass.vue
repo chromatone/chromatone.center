@@ -1,25 +1,25 @@
 <script setup>
 import { chromaColorMix } from '#/use/colors'
-import { Chord, ScaleType } from '@tonaljs/tonal'
-import { chordType, chordList, notes } from '#/use/theory'
+import { ChordType, Chord, ScaleType } from '@tonaljs/tonal'
+import { notes } from '#/use/theory'
 import { globalScale } from '#/use/chroma'
 import { computed, ref } from 'vue'
 import { useStorage } from '@vueuse/core'
 
-const chroma = useStorage('chroma-chroma', chordList[0].chroma)
+const chroma = useStorage('chroma-chroma', ChordType.all()[0].chroma)
 
 const groupNames = ['Intervals', 'Triads', 'Tetrads', 'Pentads', 'Hexads', 'Heptads']
 
 const chordGroups = computed(() => {
   let arr = []
   for (let i = 0; i < 6; i++) {
-    arr[i] = chordList.filter(get => get.intervals.length === i + 2)
+    arr[i] = ChordType.all().filter(get => get.intervals.length === i + 2)
   }
   return arr
 })
 
 const chord = computed(() => {
-  return chordType.get(chroma.value)
+  return ChordType.get(chroma.value)
 })
 
 const chordScales = computed(() => {
@@ -38,7 +38,7 @@ const numNotes = computed(() => {
 })
 
 const chordGroup = computed(() => {
-  return chordList.filter(get => get.intervals.length === numNotes.value)
+  return ChordType.all().filter(get => get.intervals.length === numNotes.value)
 });
 </script>
 

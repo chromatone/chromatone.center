@@ -2,10 +2,11 @@
 import { globalScale, playChroma, stopChroma } from '#/use/chroma'
 import { rotateArray } from '#/use/calculations'
 import { noteColor } from '#/use/colors'
-import { chordType, scaleType, notes, flats } from '#/use/theory'
+import { notes, flats } from '#/use/theory'
 import { colord } from 'colord'
 import { reactive, computed, nextTick } from 'vue'
 import { useMidi } from '#/use/midi'
+import { ChordType, ScaleType } from '@tonaljs/tonal'
 
 
 const props = defineProps({
@@ -26,8 +27,8 @@ const keys = reactive({
   chroma: computed(() => rotateArray(props.chroma.split(''), -props.pitch)),
   scale: computed(() => rotateArray(globalScale.chroma.split(''), -props.pitch)),
   title: computed(() => {
-    if (!chordType.get(props.chroma)?.empty) return chordType.get(props.chroma).aliases[0]
-    if (!scaleType.get(props.chroma)?.empty) return scaleType.get(props.chroma).aliases[0]
+    if (!ChordType.get(props.chroma)?.empty) return ChordType.get(props.chroma).aliases[0]
+    if (!ScaleType.get(props.chroma)?.empty) return ScaleType.get(props.chroma).aliases[0]
     else return ''
   })
 });

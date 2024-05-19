@@ -1,6 +1,6 @@
 <script setup>
 import { rotateArray } from '#/use/calculations'
-import { noteNames, chordType, scaleType, notes } from '#/use/theory'
+import { noteNames, notes } from '#/use/theory'
 import { playChroma, stopChroma, globalScale } from '#/use/chroma'
 import { chromaColorMix, noteColor } from "#/use/colors"
 import { Progression, Chord } from "tonal"
@@ -9,6 +9,7 @@ import { synthOnce } from '#/use/synth'
 import { midiOnce } from '#/use/midi'
 import { colord } from 'colord'
 import { computed } from 'vue'
+import { ChordType, ScaleType } from '@tonaljs/tonal'
 
 
 const props = defineProps({
@@ -30,8 +31,8 @@ const actualPitch = computed(() => {
     return globalScale.tonic
   }
 })
-const chord = computed(() => chordType.get(props.chroma));
-const scale = computed(() => scaleType.get(props.chroma))
+const chord = computed(() => ChordType.get(props.chroma));
+const scale = computed(() => ScaleType.get(props.chroma))
 
 const steps = computed(() => {
   let arr = rotateArray(props.chroma.split(''), -actualPitch.value);

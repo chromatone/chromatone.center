@@ -3,12 +3,13 @@ import { isInChroma, getCircleCoord, rotateArray } from '#/use/calculations'
 import { noteColor } from '#/use/colors'
 import { chromaColorMix } from "#/use/colors";
 import { Note } from '@tonaljs/tonal'
-import { scaleType, chordType, notes } from '#/use/theory'
+import { notes } from '#/use/theory'
 import { globalScale } from '#/use/chroma'
 import { Frequency } from 'tone'
 import { midiOnce, midiPlay, midiStop } from '#/use/midi'
 import { synthOnce, synthAttack, synthRelease } from '#/use/synth'
 import { computed, nextTick, ref } from 'vue';
+import { ChordType, ScaleType } from '@tonaljs/tonal'
 
 const props = defineProps({
   chroma: {
@@ -28,7 +29,7 @@ const colors = computed(() => {
 })
 
 const chord = computed(() => {
-  return chordType.get(props.chroma)
+  return ChordType.get(props.chroma)
 })
 
 // const scaleList = computed(() => {
@@ -237,9 +238,9 @@ svg.max-h-3xl.w-full.transition-all.duration-400.ease-in-out(
     font-family="Commissioner, sans-serif"
     text-anchor="middle",
     dominant-baseline="middle"
-    ) {{ !scaleType.get(chroma).empty ? scaleType.get(chroma).name : '' }}
+    ) {{ !ScaleType.get(chroma).empty ? ScaleType.get(chroma).name : '' }}
   text(
-    v-if="!scaleType.get(scaleChroma).empty"
+    v-if="!ScaleType.get(scaleChroma).empty"
     :fill="noteColor(globalScale.tonic)"
     x="50",
     y="63",
@@ -249,7 +250,7 @@ svg.max-h-3xl.w-full.transition-all.duration-400.ease-in-out(
     text-anchor="middle",
     dominant-baseline="middle"
     @click="$emit('clearScale')"
-    ) {{ !scaleType.get(scaleChroma).empty ? scaleType.get(scaleChroma).name : '' }} &times;
+    ) {{ !ScaleType.get(scaleChroma).empty ? ScaleType.get(scaleChroma).name : '' }} &times;
 
   line.line(
     v-for="(line, i) in scaleLines",

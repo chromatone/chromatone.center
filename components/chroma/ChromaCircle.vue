@@ -3,11 +3,14 @@ import { rotateArray, getCircleCoord } from '#/use/calculations'
 import { noteColor } from '#/use/colors'
 import { colord } from 'colord'
 import { chromaColorMix } from "#/use/colors";
-import { chordType, scaleType, notes } from '#/use/theory'
+import { notes } from '#/use/theory'
 import { globalScale, playChroma, stopChroma } from '#/use/chroma'
 import { pitchFreq } from '#/use/calculations'
 import { computed, ref } from 'vue';
 import { synthOnce } from '#/use/synth';
+import { ChordType, ScaleType } from '@tonaljs/tonal'
+
+
 const pressed = ref(false);
 
 const props = defineProps({
@@ -29,8 +32,8 @@ const actualPitch = computed(() => {
 const actualChroma = computed(() => {
   return rotateArray(props.chroma.split(''), -actualPitch.value)
 })
-const chord = computed(() => chordType.get(props.chroma));
-const scale = computed(() => scaleType.get(props.chroma).name)
+const chord = computed(() => ChordType.get(props.chroma));
+const scale = computed(() => ScaleType.get(props.chroma).name)
 
 function toggleNote(n) {
   synthOnce(pitchFreq(n, 2))

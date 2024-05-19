@@ -1,7 +1,7 @@
 <script setup>
 import { noteColor } from '#/use/colors';
 import { useMidi } from '#/use/midi';
-import { notes, scaleList } from '#/use/theory';
+import { notes } from '#/use/theory';
 import { computed, ref, watch } from 'vue';
 
 import { useGesture } from '@vueuse/gesture';

@@ -2,9 +2,10 @@
 import { rotateArray, getCircleCoord } from '#/use/calculations'
 import { colord } from 'colord'
 import { chromaColorMix, noteColor } from "#/use/colors";
-import { chordType, scaleType, intervals, notes } from '#/use/theory'
+import { intervals, notes } from '#/use/theory'
 import { playChroma, stopChroma, globalScale } from '#/use/chroma'
 import { computed, reactive, ref } from 'vue';
+import { ChordType, ScaleType } from '@tonaljs/tonal'
 
 const emit = defineEmits(['update:chroma'])
 
@@ -34,8 +35,8 @@ const actualPitch = computed(() => {
     return globalScale.tonic
   }
 })
-const chord = computed(() => chordType.get(props.chroma));
-const scale = computed(() => scaleType.get(props.chroma).name)
+const chord = computed(() => ChordType.get(props.chroma));
+const scale = computed(() => ScaleType.get(props.chroma).name)
 
 function getRect(n, w = state.width, h = state.height) {
   let posX, posY, x, y

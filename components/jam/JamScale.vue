@@ -2,9 +2,9 @@
 import { midi } from '#/use';
 import { globalScale } from '#/use/chroma';
 import { noteColor } from '#/use/colors';
-import { scaleList } from '#/use/theory';
 import { onClickOutside } from '@vueuse/core';
 import { ref } from 'vue';
+import { ScaleType } from '@tonaljs/tonal'
 
 const menu = ref()
 onClickOutside(menu, () => {
@@ -39,7 +39,7 @@ const choose = ref(false)
 			v-show="choose" 
 			ref="menu")
 			.text-md.flex-auto.flex.items-center.gap-2.cursor-pointer.hover-bg-light-400.hover-bg-opacity-10.p-2(
-				v-for="scale in scaleList"
+				v-for="scale in ScaleType.all()"
 				:key="scale"
 				@click="globalScale.chroma = scale.chroma; choose = false"
 				)

@@ -1,5 +1,6 @@
 <script setup>
-import { chordList, scaleList, notes, intervals } from '#/use/theory'
+import { notes, intervals } from '#/use/theory'
+import { ChordType, ScaleType } from '@tonaljs/tonal'
 import { globalScale } from '#/use/chroma'
 import { rotateArray } from '#/use/calculations'
 import { noteColor } from '#/use/colors'
@@ -7,7 +8,7 @@ import { computed } from 'vue';
 
 const emit = defineEmits(['chord'])
 
-const scaleChords = computed(() => scaleList
+const scaleChords = computed(() => ScaleType.all()
   .map(scale => {
     const degrees = [0, ...scale.chroma.split('').map((step, s) => step == 1 ? s : false).filter(Boolean)]
     let degreeChords = {}
@@ -35,7 +36,7 @@ function checkChord(scale = '101010010100', chord = '100010010000') {
 }
 
 function findChords(chroma = '101010010100') {
-  return chordList.filter(chord => checkChord(chroma, chord.chroma))
+  return ChordType.all().filter(chord => checkChord(chroma, chord.chroma))
 }
 
 // function countDegrees(chroma = '101010010100') {

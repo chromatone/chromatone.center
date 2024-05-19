@@ -2,9 +2,9 @@
 import { Interval, Pcset } from '@tonaljs/tonal'
 import { notes } from '#/use/theory'
 import { chromaColorMix } from "#/use/colors";
-import { chordType, scaleType } from '#/use/theory'
 import { playChroma, stopChroma, globalScale } from '#/use/chroma'
 import { reactive, computed } from 'vue'
+import { ChordType, ScaleType } from '@tonaljs/tonal'
 
 const props = defineProps({
   title: { type: String, default: null },
@@ -18,12 +18,12 @@ const props = defineProps({
 const emit = defineEmits(['update:chroma'])
 
 const info = reactive({
-  chord: computed(() => chordType.get(props.chroma)),
-  scale: computed(() => scaleType.get(props.chroma)),
+  chord: computed(() => ChordType.get(props.chroma)),
+  scale: computed(() => ScaleType.get(props.chroma)),
 })
 
-const chord = computed(() => chordType.get(props.chroma));
-const scale = computed(() => scaleType.get(props.chroma));
+const chord = computed(() => ChordType.get(props.chroma));
+const scale = computed(() => ScaleType.get(props.chroma));
 const intervals = computed(() => Pcset.intervals(props.chroma));
 const semitones = computed(() => {
   let arr = []

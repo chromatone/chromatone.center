@@ -1,10 +1,10 @@
 <script setup>
-import { Note, Interval, Pcset } from '@tonaljs/tonal'
+import { Note, Interval, Pcset, ChordType, ScaleType, } from '@tonaljs/tonal'
 import { freqColor, freqPitch, rotateArray, pitchColor } from '#/use/calculations'
 import { noteColor } from '#/use/colors'
 import { colord } from 'colord'
 import { globalScale } from '#/use/chroma'
-import { chordType, scaleType, notes } from '#/use/theory'
+import { notes } from '#/use/theory'
 import { reactive, computed } from 'vue'
 
 const props = defineProps({
@@ -34,8 +34,8 @@ const neck = reactive({
   chroma: computed(() => rotateArray(props.chroma.split(''), -props.pitch)),
   scale: computed(() => rotateArray(globalScale.chroma.split(''), -props.pitch)),
   title: computed(() => {
-    if (!chordType.get(props.chroma)?.empty) return chordType.get(props.chroma).aliases[0]
-    if (!scaleType.get(props.chroma)?.empty) return scaleType.get(props.chroma)
+    if (!ChordType.all().get(props.chroma)?.empty) return ChordType.get(props.chroma).aliases[0]
+    if (!ScaleType.all().get(props.chroma)?.empty) return ScaleType.get(props.chroma)
     else return ''
   }),
   noteSize: 50,

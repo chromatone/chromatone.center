@@ -1,7 +1,7 @@
 <script setup>
 import { noteColor } from '#/use/colors';
 import { useMidi } from '#/use/midi';
-import { notes, scaleList } from '#/use/theory';
+import { notes } from '#/use/theory';
 import { computed, ref, watch } from 'vue';
 import { useRange } from './useRange.js'
 import { useGesture } from '@vueuse/gesture';
@@ -9,6 +9,7 @@ import { globalScale } from '#/use/chroma';
 import { useClamp } from '@vueuse/math'
 import { useStorage } from '@vueuse/core'
 import { intervals } from '#/use/theory';
+import { ScaleType } from '@tonaljs/tonal'
 
 const props = defineProps({
   width: { type: Number, default: 1200 },
@@ -57,7 +58,7 @@ useGesture({
 })
 
 const scaleControl = ref()
-const scaleCurrent = useClamp(useStorage('midikeys-scale', 1), 1, scaleList.length - 1)
+const scaleCurrent = useClamp(useStorage('midikeys-scale', 1), 1, ScaleType.all().length - 1)
 
 useGesture({
   onDrag(ev) {
@@ -75,7 +76,7 @@ useGesture({
 
 const scaleChroma = computed(() => {
   let num = Math.round(scaleCurrent.value)
-  return scaleList[num]
+  return ScaleType.all()[num]
 })
 
 watch(scaleChroma, scale => {
@@ -149,8 +150,8 @@ svg.w-full.cursor-pointer.fullscreen-container.overflow-hidden.select-none.touch
         :y="controlOffset*.75"
         ) {{ scaleChroma.name }}
       line(
-        v-for="(note,n) in scaleList.length"
-        :transform="`translate(${(n/scaleList.length + 1/(scaleList.length))*width*2/5},0)`"
+        v-for="(note,n) in ScaleType.all().length"
+        :transform="`translate(${(n/ScaleType.all().length + 1/(ScaleType.all().length))*width*2/5},0)`"
         :y2="36"
         :opacity="note == Math.round(scaleCurrent) ? 1:.2"
         stroke-width="2"
@@ -161,7 +162,7 @@ svg.w-full.cursor-pointer.fullscreen-container.overflow-hidden.select-none.touch
         :y2="20"
         stroke-width="8"
         stroke-linecap="round"
-        :transform="`translate(${scaleCurrent/scaleList.length* width*2/5},0)`"
+        :transform="`translate(${scaleCurrent/ScaleType.all().length* width*2/5},0)`"
         stroke="white"
         )
 

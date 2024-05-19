@@ -1,11 +1,12 @@
 <script setup>
-import { scaleList, notes } from '#/use/theory'
+import { notes } from '#/use/theory'
 import { globalScale } from '#/use/chroma'
 import { noteColor } from "#/use/colors"
 import { computed } from 'vue';
+import { ScaleType } from '@tonaljs/tonal'
 
 const sortedScales = computed(() => {
-  return scaleList.sort((a, b) => {
+  return ScaleType.all().sort((a, b) => {
     if (a.intervals.length > b.intervals.length) {
       return 1
     } else if (a.intervals.length < b.intervals.length) {
@@ -18,7 +19,7 @@ const sortedScales = computed(() => {
 
 const groupedScales = computed(() => {
   let groups = {}
-  scaleList.forEach(scale => {
+  ScaleType.all().forEach(scale => {
     let len = scale.intervals.length
     groups[len] = groups[len] || []
     groups[len].push(scale)

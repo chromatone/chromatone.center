@@ -1,7 +1,7 @@
 <script setup>
-import { Pcset } from '@tonaljs/tonal'
+import { Pcset, ChordType, ScaleType } from '@tonaljs/tonal'
 import { noteColor } from "#/use/colors"
-import { chordType, scaleType, notes } from '#/use/theory'
+import { notes } from '#/use/theory'
 import { globalScale } from '#/use/chroma'
 import { useStorage } from '@vueuse/core';
 import { computed } from 'vue';
@@ -23,10 +23,10 @@ const allSets = Pcset.chromas().map(chroma => Pcset.get(chroma));
 const filtered = computed(() => {
   let arr = allSets
   if (control.value.chord) {
-    arr = arr.filter(e => !chordType.get(e.chroma).empty)
+    arr = arr.filter(e => !ChordType.get(e.chroma).empty)
   }
   if (control.value.scale) {
-    arr = arr.filter(e => !scaleType.get(e.chroma).empty)
+    arr = arr.filter(e => !ScaleType.get(e.chroma).empty)
   }
   return arr
 });

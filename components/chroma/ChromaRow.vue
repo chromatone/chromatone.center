@@ -1,11 +1,11 @@
 <script setup>
 import { rotateArray } from '#/use/calculations'
 import { chromaColorMix, noteColor } from "#/use/colors";
-import { Note, Pcset, Interval } from '@tonaljs/tonal'
+import { Note, Pcset, Interval, ChordType, ScaleType } from '@tonaljs/tonal'
 import { Frequency } from 'tone'
 import { synthOnce } from '#/use/synth'
 import { midiOnce } from '#/use/midi'
-import { chordType, scaleType, intervals, notes } from '#/use/theory'
+import { notes } from '#/use/theory'
 import { globalScale, playChroma, stopChroma, } from '#/use/chroma'
 import { calcBg } from '#/use/colors'
 import { colord } from 'colord'
@@ -20,8 +20,8 @@ const props = defineProps({
 
 const state = reactive({
   minor: "101101011010",
-  chord: computed(() => chordType.get(props.chroma)),
-  scale: computed(() => scaleType.get(props.chroma)),
+  chord: computed(() => ChordType.get(props.chroma)),
+  scale: computed(() => ScaleType.get(props.chroma)),
   num: computed(() => Pcset.num(props.chroma)),
   intervals: computed(() => Pcset.intervals(props.chroma)),
   semitones: computed(() => {

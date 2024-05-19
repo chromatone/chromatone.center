@@ -1,8 +1,10 @@
 <script setup>
 import { noteColor } from "#/use/colors"
-import { notes, chords } from '#/use/theory'
+import { notes } from '#/use/theory'
 import { globalScale } from '#/use/chroma';
 import { computed, reactive } from 'vue';
+
+import chords from '../../../db/chord/choice.yaml'
 
 const accord = reactive({
   root: 0,

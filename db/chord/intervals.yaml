@@ -1,0 +1,44 @@
+minor second:
+  - - 1P
+    - 2m
+  - - 2m
+major second:
+  - - 1P
+    - 2M
+  - - 2M
+minor third:
+  - - 1P
+    - 3m
+  - - 3m
+major third:
+  - - 1P
+    - 3M
+  - - 3M
+perfect fourth:
+  - - 1P
+    - 4P
+  - - 4P
+tritone:
+  - - 1P
+    - 5d
+  - - TT
+perfect fifth:
+  - - 1P
+    - 5P
+  - - 5P
+minor sixth:
+  - - 1P
+    - 6m
+  - - 6m
+major sixth:
+  - - 1P
+    - 6M
+  - - 6M
+minor seventh:
+  - - 1P
+    - 7m
+  - - 7m
+major seventh:
+  - - 1P
+    - 7M
+  - - 7M

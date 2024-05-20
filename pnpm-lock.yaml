@@ -35,6 +35,9 @@ importers:
       abcjs:
         specifier: ^6.3.0
         version: 6.3.0
+      aubiojs:
+        specifier: ^0.2.1
+        version: 0.2.1
       audio-recorder-polyfill:
         specifier: ^0.4.1
         version: 0.4.1
@@ -1736,6 +1739,9 @@ packages:
     resolution: {integrity: sha512-Wm6ukoaOGJi/73p/cl2GvLjTI5JM1k/O14isD73YML8StrH/7/lRFgmg8nICZgD3bZZvjwCGxtMOD3wWNAu8cg==}
     engines: {node: '>= 4.5.0'}
     hasBin: true
+
+  aubiojs@0.2.1:
+    resolution: {integrity: sha512-lTMm5j/UMGlCvmZlBfBe9KM+tMdvnxm93fwaMugcPak/zUJfFMtkXf5azC4gG/V1FWXGmh1ejsa5sdm+Nlxs8w==}
 
   audio-recorder-polyfill@0.4.1:
     resolution: {integrity: sha512-SS4qVOzuVwlS/tjQdd0uR+9cCKBTkx4jsAdjM+rMNqoTEWf6bMnBSTfv+FO4Zn9ngxviJOxhkgRWWXsAMqM96Q==}
@@ -5159,6 +5165,8 @@ snapshots:
   at-least-node@1.0.0: {}
 
   atob@2.1.2: {}
+
+  aubiojs@0.2.1: {}
 
   audio-recorder-polyfill@0.4.1: {}
 

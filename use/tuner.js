@@ -118,13 +118,13 @@ async function init() {
 
   tuner.frequencyData = new Uint8Array(chain.analyser.frequencyBinCount);
 
-  const { default: Aubio } = await import('./aubio.js')
+  const { default: Aubio } = await import('aubiojs/build/aubio.esm.js')
 
   Aubio().then(function (aubio) {
     chain.pitchDetector = new aubio.Pitch(
       "default",
+      tuner.bufferSize * 4,
       tuner.bufferSize,
-      1,
       chain.audioContext.sampleRate
     );
     chain.tempoAnalyzer = new aubio.Tempo(

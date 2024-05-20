@@ -44,6 +44,7 @@
 		"@vueuse/integrations": "^10.9.0",
 		"@vueuse/math": "^10.9.0",
 		"abcjs": "^6.3.0",
+		"aubiojs": "^0.2.1",
 		"audio-recorder-polyfill": "^0.4.1",
 		"audiomotion-analyzer": "^4.5.0",
 		"cobe": "^0.6.3",

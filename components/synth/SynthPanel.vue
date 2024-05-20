@@ -48,8 +48,15 @@ const frequency = computed(() => {
       )
       .i-la-ban.text-xl
       .m-0 Stop synth
+    button.flex-button.border.opacity-30(
+      @click="synth.state.midi = !synth.state.midi" 
+      :class="{ active: synth.state.midi }"
+      v-tooltip.bottom="'Play synth on MIDI input'"
+      )
+      .i-bi-volume-up(v-if="synth.state.midi")
+      .i-bi-volume-off(v-else)
+      .m-0 MIDI Synth
   .flex.flex-wrap.gap-2
-    synth-oscillators.is-group(v-model="synth.params.oscillator.type" v-tooltip.top="'Select oscillator type'")
     control-rotary(
       :min="0"
       :max="2"
@@ -58,31 +65,33 @@ const frequency = computed(() => {
       param="VOL"
       v-tooltip.top="'Synth volume'"
       )
-    .is-group.flex.relative
-      .text-sm.absolute.-top-4.bg-light-300.px-1.rounded.dark-bg-dark-400 Delay
-      control-rotary(
-        :min="0"
-        :max="1"
-        :step="0.001"
-        v-model="synth.delayParams.feedback"
-        param="Feedback"
-        v-tooltip.top="'Synth delay feedback ratio'"
-        )
-      control-rotary(
-        :min="0"
-        :max="1"
-        :step="0.001"
-        v-model="synth.delayParams.wet"
-        param="Wet"
-        v-tooltip.top="'Synth delay wet'"
-        )
+    synth-oscillators.is-group(v-model="synth.params.oscillator.type" v-tooltip.top="'Select oscillator type'")
+
   .flex.flex-wrap
     .p-1(v-for="(part, p) in partials" :key="p")
-      control-knob.w-10.transition(
+      control-knob.transition(
         :min="0" :max="1" :step="0.01" 
         v-model="partials[p]" :param="p + ''" 
         :style="{ color: freqColor(frequency * (p + 1)) }"
         )
+  .is-group.flex.relative
+    .text-sm.absolute.-top-4.bg-light-300.px-1.rounded.dark-bg-dark-400 Delay
+    control-rotary(
+      :min="0"
+      :max="1"
+      :step="0.001"
+      v-model="synth.delayParams.feedback"
+      param="Feedback"
+      v-tooltip.top="'Synth delay feedback ratio'"
+      )
+    control-rotary(
+      :min="0"
+      :max="1"
+      :step="0.001"
+      v-model="synth.delayParams.wet"
+      param="Wet"
+      v-tooltip.top="'Synth delay wet'"
+      )
   .flex.is-group
     button.flex-button(
       @click="synth.state.quantize.next()"
@@ -105,5 +114,13 @@ const frequency = computed(() => {
 
 .panel {
   @apply absolute right-0 top-$header-height w-full p-4 bg-light-300 dark-bg-dark-300 z-20 flex bg-opacity-90 dark-bg-opacity-90 flex-wrap items-center shadow-lg;
+}
+
+button {
+  @apply p-2 m-2 border flex items-center rounded cursor-pointer select-none;
+}
+
+button.active {
+  @apply opacity-100;
 }
 </style>

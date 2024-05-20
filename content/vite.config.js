@@ -70,20 +70,10 @@ export default defineConfig(
         "#/data": path.resolve(dirname, "../data"),
       }
     },
-    optimizeDeps: {
-      include: ['vue', '@vueuse/core', 'tone', 'tonal', 'colord'],
-    },
     ssr: {
-      noExternal: ['audiomotion-analyzer', 'fraction.js', 'tone', 'ol', 'cobe', '@gun-vue/composables', 'drauu', '@tonejs/midi', 'midi-writer-js', 'webchuck']
+      noExternal: ['audiomotion-analyzer', 'fraction.js', 'ol', 'cobe', '@gun-vue/composables', 'drauu', '@tonejs/midi', 'midi-writer-js', 'webchuck']
     },
     build: {
       chunkSizeWarningLimit: 100000,
-      rollupOptions: {
-        output: {
-          manualChunks: {
-            tone: ['tone']
-          },
-        },
-      },
     },
   })

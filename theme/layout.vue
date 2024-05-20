@@ -86,15 +86,7 @@ midi-notes
           .p-0(v-if="f?.youtube")
             youtube-embed(:video="f?.youtube" )
           content.content.z-2.flex-auto
-      .bg-light-900.dark-bg-dark-800.px-4.w-full.flex.items-end.py-8
-
-        .flex.items-center.gap-4
-          img.w-16(v-if="theme.logo", :src="theme.logo", alt="Chromatone logo" title="Chromatone")
-          .flex.flex-col
-            .text-3xl.font-bold Chromatone 
-            .text-xl Visual Music Language 
-        .flex-1
-        .text-md 2017-Present
+      page-footer
   template(v-else)
     main#content.w-full.relative.flex.flex-col
       transition(name="fade")
@@ -130,6 +122,7 @@ midi-notes
         v-if="!params.nonextprev"
         )
       //- nav-row.p-4
+      page-footer
   client-only
     draw-layer.z-100
     cast-camera

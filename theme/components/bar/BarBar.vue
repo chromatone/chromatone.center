@@ -3,6 +3,9 @@ import { onClickOutside, onKeyDown } from "@vueuse/core";
 import { useRoute, useData } from "vitepress";
 import { drawingEnabled, drawingPinned } from '../../composables/draw'
 import { ref } from "vue";
+import { tempo } from "#/use/tempo";
+import { globalScale, noteColor } from "#/use";
+import { mic } from "#/use/mic";
 
 import FullScreen from '../global/FullScreen.vue'
 
@@ -13,6 +16,8 @@ const { open: searchOpen, panel: searchPanel } = usePanel()
 const { open: practiceOpen, panel: practicePanel } = usePanel()
 const { open: theoryOpen, panel: theoryPanel } = usePanel()
 const { open: settingsOpen, panel: settingsPanel } = usePanel()
+const { open: transportOpen, panel: transportPanel } = usePanel()
+const { open: pianoOpen, panel: pianoPanel } = usePanel()
 
 function usePanel() {
   const open = ref(false)
@@ -92,16 +97,33 @@ nav.bar
     )
     .i-la-search
 
-  .spacer 
   .flex-auto
+  .spacer 
+
+  button(
+  @click="pianoOpen = !pianoOpen"  
+  :class="{ active: pianoOpen }" 
+  aria-label="Toggle synth panel"
+  v-tooltip.right="'Synth settings'"
+  :style="{color: noteColor(globalScale.tonic)}"
+  )
+    .i-mdi-piano
+  button(
+    @click="transportOpen = !transportOpen"  
+    :class="{ active: transportOpen }" 
+    aria-label="Toggle transport panel"
+    v-tooltip.right="'Transport'"
+    :style="{color: tempo.blink ? tempo.color : ''}"
+    )
+    .i-mdi-metronome
   button(
     @click="settingsOpen = !settingsOpen"  
     :class="{ active: settingsOpen }" 
-    aria-label="Toggle settings panel"
-    v-tooltip.right="'Settings'"
+    aria-label="Toggle audio input/output panel"
+    v-tooltip.right="'Audio input/output'"
+    :style="{color: mic.opened ? 'red': ''}"
     )
-    .i-la-cog
-
+    .i-la-microphone
 
   .spacer
 
@@ -120,17 +142,24 @@ nav.bar
 client-only
   transition(name="slide")
     .panel(
+      ref="pianoPanel"
+      v-show="pianoOpen"
+      )
+      control-scale.w-full
+      synth-panel
+  transition(name="slide")
+    .panel(
+      ref="transportPanel"
+      v-show="transportOpen"
+      )
+      state-transport
+      midi-panel
+
+  transition(name="slide")
+    .panel(
       ref="settingsPanel"
       v-show="settingsOpen"
       )
-
-      h2 MIDI
-      midi-panel
-      h2 Synth
-      synth-panel
-      h2 Transport
-      state-transport
-      h2 Sound
       state-sound
 
 
@@ -178,7 +207,7 @@ a.button {
 }
 
 .panel {
-  @apply transition fixed bg-light-200 z-900 top-0 bottom-0 left-0 shadow-lg ml-12 overflow-scroll p-2 dark-bg-dark-200 max-w-480px pb-8;
+  @apply flex flex-col gap-4 transition fixed bg-light-200 z-900 top-0 bottom-0 left-0 shadow-lg ml-12 overflow-scroll p-2 dark-bg-dark-200 max-w-340px pb-8;
 
   & h2 {
     @apply my-4 text-2xl

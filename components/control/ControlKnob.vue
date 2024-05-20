@@ -104,14 +104,14 @@ function mapNumber(
   .level(
     :style="{ height: state.internal + '%' }"
   )
-  .p-1
-    .text-lg.font-bold {{ modelValue.toFixed(fixed) }}{{ unit }}
+  .py-2.px-1
+    .text-md {{ modelValue.toFixed(fixed) }}{{ unit }}
     .text-sm {{ param.toUpperCase() }}
 </template>
 
 <style lang="postcss" scoped>
 .knob {
-  @apply shadow-md border-2 rounded-lg text-center border-dark-100/50 dark-(border-light-100/50) cursor-pointer select-none relative overflow-hidden;
+  @apply flex shadow-md border-2 rounded-lg text-center border-dark-100/50 dark-(border-light-100/50) cursor-pointer select-none relative overflow-hidden;
   touch-action: none;
 }
 

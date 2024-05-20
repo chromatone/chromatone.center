@@ -1,6 +1,6 @@
 <script setup>
 import { noteColor } from '#/use/colors';
-import { useMidi } from '#/use/midi';
+import { midiAttack, midiRelease, useMidi } from '#/use/midi';
 import { notes } from '#/use/theory';
 import { computed, ref, watch } from 'vue';
 
@@ -22,12 +22,13 @@ const { midi, playKey } = useMidi()
 
 function startNote(note) {
   let velocity = globalScale.isIn(notes[(note) % 12]) ? 1 : 0.3
-
-  playKey(note - 7, 0, 0, velocity)
+  playKey(note - 7, 0, false, velocity)
+  midiAttack({ number: note - 3 })
 }
 
 function stopNote(note) {
-  playKey(note - 7, 0, 1, 0)
+  playKey(note - 7, 0, true, 0)
+  midiRelease({ number: note - 3 })
 }
 
 const noteKey = ref()

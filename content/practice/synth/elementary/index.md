@@ -1,7 +1,7 @@
 ---
 title: Elementary synth
 description: MIDI enabled synthesizer built with Elementary audio library
-date: 2023-06-23
+date: 2024-06-23
 cover: lockup.svg
 layout: app
 links:

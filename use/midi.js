@@ -291,11 +291,12 @@ function setVelocity(channel, note, velocity) {
     midi.channels[channel].notes[note].velocity = velocity;
   }
 }
+
 export function midiAttack(note, options) {
   if (!midi.out)
     return;
   let channel = (note === null || note === void 0 ? void 0 : note.channel) || midi.channel;
-  setVelocity(channel, note === null || note === void 0 ? void 0 : note.number, 100);
+  setVelocity(channel, note?.number, 100);
   WebMidi.outputs.forEach((output) => {
     output.playNote(note.number, {
       channels: channel,

@@ -1,9 +1,9 @@
 ---
-title: MIDI keys
+title: MIDI Keys
 description: Reactive colorful virtual piano keyboard
-date: 2020-10-06
+date: 2023-10-06
 layout: app
 ---
 
 
-<MidiKeys class="mt-10" />
+<MidiKeys />

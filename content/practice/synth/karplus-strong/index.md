@@ -1,7 +1,7 @@
 ---
 title: Karplus–Strong synthesis
 description: Pratical KS synth
-date: 2023-11-14
+date: 2024-06-01
 cover: ksa.png
 layout: app
 ---

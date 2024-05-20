@@ -8,6 +8,7 @@ import { WebMidi, Note, } from "webmidi";
 import { setupKeyboard } from './keyboard';
 import Ola from "ola";
 import { Chord, Midi } from 'tonal';
+import { Frequency } from 'tone';
 
 export const midi = reactive({
   enabled: false,
@@ -81,7 +82,7 @@ export function learnCC({ number, channel }) {
   return val;
 }
 
-export function playKey(name, offset = 0, off, velocity = 1, duration) {
+export function playKey(name = 'A', offset = 0, off = false, velocity = 1, duration) {
   let noteName = name + (4 + offset + midi.offset);
   const note = new Note(noteName, {
     attack: off ? 0 : velocity,

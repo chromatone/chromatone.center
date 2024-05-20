@@ -64,17 +64,19 @@ function polarToCartesian(centerX, centerY, radius, angleInDegrees) {
 </script>
 
 <template lang="pug">
-path(
-  :d="round ? pill : d" 
-  :fill="fill" 
-  :stroke="stroke" 
-  :stroke-width="sWidth"
-  fill-rule="evenodd"
-  stroke-linejoin="round"
-  :fill-opacity="op"
-  :transform-origin="`${cx} ${cy}`"
-  )
-  slot
+g
+  path(
+    :d="round ? pill : d" 
+    :fill="fill" 
+    :stroke="stroke" 
+    :stroke-width="sWidth"
+    fill-rule="evenodd"
+    stroke-linejoin="round"
+    :fill-opacity="op"
+    :transform-origin="`${cx} ${cy}`"
+    )
+  g(:transform="`translate(${getPolar((arc.from+arc.to)/2,radius-thickness/2).x} ${getPolar((arc.from+arc.to)/2,radius-thickness/2).y})`")
+    slot
 </template>
 
 <style lang="postcss" scoped></style>

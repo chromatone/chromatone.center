@@ -1,39 +1,85 @@
 <script setup>
 import { noteColor } from '#/use/colors'
-import { computed, reactive, ref } from 'vue';
+import { computed, nextTick, reactive, ref, watch } from 'vue';
 import { notes } from '#/use/theory';
 import { useData } from 'vitepress'
 
-import SvgRing from '../svg/SvgRing.vue';
+import { midi, rotateArray, playKey, globalScale, midiAttack, midiRelease } from '#/use';
 
 const { isDark } = useData()
 
 const octaves = ref(4)
-
-const box = { w: 100, h: 100, pad: 5, r: 50 }
+const startOctave = ref(2)
+const box = { pad: 0.5, r: 50 }
 const svg = ref()
 
 const touches = reactive({})
 
-function handleTouch(t) {
-  for (let touch of t.changedTouches) {
-    if (['touchend', 'touchcancel'].includes(t.type)) {
+const voices = computed(() => {
+  const list = {}
+  for (let t in touches) {
+    const { angle, distance } = touches[t]
+    const pitch = Math.ceil((angle - 15) / 30) % 12
+    const octave = Math.floor((1 - distance) * octaves.value + startOctave.value - 2)
+    const num = (octave + 4) * 12 + pitch - 3
+    list[t] = { pitch, octave, num }
+  }
+  return list
+})
+
+function getPoint({ clientX, clientY }) {
+  const point = svg.value.createSVGPoint()
+  point.x = clientX
+  point.y = clientY
+  let { x, y } = point.matrixTransform(svg.value.getScreenCTM().inverse())
+  return {
+    x,
+    y,
+    angle: 180 * (Math.PI - Math.atan2(x, y)) / Math.PI,
+    distance: Math.hypot(x, y) / box.r,
+  }
+}
+
+function handleMouse(ev) {
+  if (ev.type == 'mousedown') {
+    touches['mouse'] = getPoint(ev)
+  } else if (['mouseup', 'mouseleave', 'mouseout'].includes(ev.type)) {
+    delete touches['mouse']
+  } else if (touches['mouse'] && ev.type == 'mousemove') {
+    touches['mouse'] = getPoint(ev)
+  }
+}
+
+function handleTouch(ev) {
+  for (let touch of ev.changedTouches) {
+    if (['touchend', 'touchcancel'].includes(ev.type)) {
       delete touches[touch.identifier]
     } else {
-      const { clientX, clientY } = touch
-      const point = svg.value.createSVGPoint()
-      point.x = clientX
-      point.y = clientY
-      let correct = point.matrixTransform(svg.value.getScreenCTM().inverse())
-      touches[touch.identifier] = {
-        x: correct.x,
-        y: correct.y,
-        angle: 180 * (Math.PI - Math.atan2(correct.x, correct.y)) / Math.PI,
-        distance: Math.hypot(correct.x, correct.y) / box.r,
-      }
+      touches[touch.identifier] = getPoint(touch)
     }
   }
 }
+
+watch(voices, (vs, prev) => {
+  for (let v in vs) {
+    if (vs[v]?.num != prev[v]?.num) {
+      playKey(notes[vs[v]?.pitch], vs[v]?.octave - startOctave.value + (vs[v]?.pitch >= 3 ? 1 : 0))
+      midiAttack({ number: vs[v]?.num })
+      // synthAttack(Frequency(vs[v]?.num, 'midi').toFrequency())
+    }
+  }
+  nextTick(() => {
+    for (let p in prev) {
+      if (prev[p]?.num != vs[p]?.num) {
+        playKey(notes[prev[p]?.pitch], prev[p]?.octave - startOctave.value + (prev[p]?.pitch >= 3 ? 1 : 0), true)
+        midiRelease({ number: prev[p]?.num })
+        // synthRelease(Frequency(prev[p]?.num, 'midi').toFrequency())
+      }
+    }
+  })
+
+
+})
 
 </script>
 
@@ -53,17 +99,14 @@ function handleTouch(t) {
     @touchmove="handleTouch"
     @touchend="handleTouch"
     @touchcancel="handleTouch"
+    @mouseenter="handleMouse"
+    @mousemove="handleMouse"
+    @mousedown="handleMouse"
+    @mouseup="handleMouse"
+    @mouseleave="handleMouse"
     )
-
     g.octaves
-      g.octave.op-20(v-for="(octave,oct) in octaves" :key="octave")
-        circle(
-          cx="0"
-          cy="0"
-          :r="box.r - oct*((box.r)/octaves)"
-          opacity="0.5"
-          :fill="`hsl(0deg,0%,${oct*100}%)`"
-          )
+      g.octave.op-90(v-for="(octave,oct) in octaves" :key="octave")
 
         g(v-for="(note,n) in notes" :key="note")
           SvgRing(
@@ -73,8 +116,11 @@ function handleTouch(t) {
             :thickness="box.r/octaves"
             :from="n*30-15"
             :to="(n+1)*30-15"
-            :fill="noteColor(n,oct+3)"
-          ) 
+            :fill="noteColor(n,oct+startOctave,rotateArray(globalScale.chroma, -globalScale.tonic)[n]==1 ? 1 : 0.5,midi.activeNotes[(n+((oct+startOctave+1)*12)+9)] ? 1: 0.8)"
+            ) 
+            text.fill-black.text-4px(
+              :style="{fontWeight: rotateArray(globalScale.chroma, -globalScale.tonic)[n]==1  ? 'bold' : 'normal', fontSize: globalScale.tonic == n ? '8px' : '4px'}"
+              y="1" v-if="oct==0") {{ note }}
       g.touches
         g.touch(v-for="(touch,t) in touches" :key="t")
           line(
@@ -87,10 +133,9 @@ function handleTouch(t) {
               r="2"
               :fill="isDark ? '#fff3': '#3333'"
               )
-            text.fill-white.text-2px(
-              y="-4"
-            ) {{ touch.angle.toFixed() }}&deg; , {{ touch.distance.toFixed(2) }}
-    
+    text.fill-black.text-6px {{ midi?.guessChords?.[0] }}
+chroma-keys.max-w-100.mt-10(v-model:pitch="globalScale.tonic")
+  jam-scale.min-w-full
 </template>
 
 <style lang="postcss" scoped>

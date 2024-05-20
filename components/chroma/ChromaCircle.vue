@@ -8,7 +8,7 @@ import { globalScale, playChroma, stopChroma } from '#/use/chroma'
 import { pitchFreq } from '#/use/calculations'
 import { computed, ref } from 'vue';
 import { synthOnce } from '#/use/synth';
-import { ChordType, ScaleType } from '@tonaljs/tonal'
+import { ChordType, ScaleType } from 'tonal'
 
 
 const pressed = ref(false);

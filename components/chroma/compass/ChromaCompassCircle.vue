@@ -2,14 +2,14 @@
 import { isInChroma, getCircleCoord, rotateArray } from '#/use/calculations'
 import { noteColor } from '#/use/colors'
 import { chromaColorMix } from "#/use/colors";
-import { Note } from '@tonaljs/tonal'
+import { Note } from 'tonal'
 import { notes } from '#/use/theory'
 import { globalScale } from '#/use/chroma'
 import { Frequency } from 'tone'
 import { midiOnce, midiPlay, midiStop } from '#/use/midi'
 import { synthOnce, synthAttack, synthRelease } from '#/use/synth'
 import { computed, nextTick, ref } from 'vue';
-import { ChordType, ScaleType } from '@tonaljs/tonal'
+import { ChordType, ScaleType } from 'tonal'
 
 const props = defineProps({
   chroma: {

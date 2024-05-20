@@ -1,7 +1,7 @@
 <script setup>
 import { rotateArray } from '#/use/calculations'
 import { chromaColorMix, noteColor } from "#/use/colors";
-import { Note, Pcset, Interval, ChordType, ScaleType } from '@tonaljs/tonal'
+import { Note, Pcset, Interval, ChordType, ScaleType } from 'tonal'
 import { Frequency } from 'tone'
 import { synthOnce } from '#/use/synth'
 import { midiOnce } from '#/use/midi'

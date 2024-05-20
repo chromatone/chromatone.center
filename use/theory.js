@@ -39,7 +39,7 @@ export const notes = naturals
 //   ScaleType.add(intervals, scale.title, Object.values(scale.names).flat())
 // }
 
-// import { ChordType } from '@tonaljs/tonal'
+// import { ChordType } from 'tonal'
 
 // import intervalList from '../db/chord/intervals.yaml'
 

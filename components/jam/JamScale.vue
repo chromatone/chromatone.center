@@ -4,7 +4,7 @@ import { globalScale } from '#/use/chroma';
 import { noteColor } from '#/use/colors';
 import { onClickOutside } from '@vueuse/core';
 import { ref } from 'vue';
-import { ScaleType } from '@tonaljs/tonal'
+import { ScaleType } from 'tonal'
 
 const menu = ref()
 onClickOutside(menu, () => {

@@ -14,9 +14,6 @@ importers:
       '@elemaudio/web-renderer':
         specifier: ^3.2.3
         version: 3.2.3
-      '@tonaljs/tonal':
-        specifier: ^4.10.0
-        version: 4.10.0
       '@tonejs/midi':
         specifier: ^2.0.28
         version: 2.0.28
@@ -888,8 +885,8 @@ packages:
   '@elemaudio/web-renderer@3.2.3':
     resolution: {integrity: sha512-ZIOlHCqHq7SWJeuH5ma1bMwAg/6mLdyOVnOsHalDmXDa/CJeksv7qoshHPvjUYyDk1Gi8Ut8NmYBkslUJ0+XFA==}
 
-  '@emnapi/runtime@1.1.1':
-    resolution: {integrity: sha512-3bfqkzuR1KLx57nZfjr2NLnFOobvyS0aTszaEGCGqmYMVDRaGvgIZbjGSV/MHSSmLgQ/b9JFHQ5xm5WRZYd+XQ==}
+  '@emnapi/runtime@1.2.0':
+    resolution: {integrity: sha512-bV21/9LQmcQeCPEg3BDFtvwL6cwiTMksYNWQQ4KOxCZikEGalWtenoZ0wCiukJINlGCIi2KXx01g4FoH/LxpzQ==}
 
   '@esbuild/aix-ppc64@0.20.2':
     resolution: {integrity: sha512-D+EBOJHXdNZcLJRBkhENNG8Wji2kgc9AZ9KiPr1JuZjsNtyHzrsfLRrY0tk2H2aoFu6RANO1y1iPPUCDYWkb5g==}
@@ -1340,14 +1337,8 @@ packages:
   '@tonaljs/chord-detect@4.8.5':
     resolution: {integrity: sha512-sH4WBP9wk70YcFAcb02vd6C5odRXj+aoIgf6WaHHFmp/8AH5aK+Vr3uLVavw7u/1mf0B4XK5hGdGEUuQynGTrw==}
 
-  '@tonaljs/chord-type@4.8.2':
-    resolution: {integrity: sha512-GzSTjQmZjkUdPhyesFDeJbxpW8R7L/bAE34E8ApGAh9FMcKYpRdX3Tn+gkluRsXOiRMfW07p3E0Adx4bjtyN+Q==}
-
   '@tonaljs/chord-type@5.0.5':
     resolution: {integrity: sha512-Rne/7YwXgPAQSt8DM6/yb61Hfp8stQR4SrhbePjzB/oVwVIzUL+uxH29uwd/KxDkIEITaHXS3v5ntRcVXCQYnA==}
-
-  '@tonaljs/chord@4.10.2':
-    resolution: {integrity: sha512-Zlqtq6c6T4y+EqvwHRQp9icEjHqyniCpnIwwCFg5amgAQwXmWzarouOOSmcdJ1Is92eEvcPVuCoLiVUtajS30A==}
 
   '@tonaljs/chord@6.0.0':
     resolution: {integrity: sha512-lWTSynCzPO5rV6CQUoM7b5DqmO0VYq3hEwSwo5d+tEdocYwUvfDbPl1JHq2un9f+5nEnNRkb8AfRsbi9wyVsIg==}
@@ -1355,17 +1346,11 @@ packages:
   '@tonaljs/collection@4.8.1':
     resolution: {integrity: sha512-2TaiK9QEjOCkV7jW2B9uo5FPetNoiS9//nNPWXOWjB/E9KGd2SV1THEuxLx1Ew3uXUQpezup5adNljbZtOHbrA==}
 
-  '@tonaljs/core@4.10.0':
-    resolution: {integrity: sha512-+AH7NP9iiAGil+X7NlKGlQvls/KByQmxR51d5O+y6IjHltOkVUXk74oZuxW7zF0IsKchFn8Okr0sxqFmgsQmpA==}
-
   '@tonaljs/core@5.0.0':
     resolution: {integrity: sha512-vifjXX+xKidK+q1xGgcfGX79HtIMydXp1NrdGG5VshYHC3TRpVNti4HJDb/6qOjokQp9as/iOCyaAmcWIq0ZUA==}
 
   '@tonaljs/duration-value@4.8.1':
     resolution: {integrity: sha512-/jP8Q+z2h+2+IBeTsyF9KWedqu8Jffhvp17/H6pxUJ7b1U+HNdn5G7KfXbblEqhykYSKTSKK/m+86M7j4RnAgw==}
-
-  '@tonaljs/interval@4.8.0':
-    resolution: {integrity: sha512-R+1OvqRS0lFqzmzorbL0cwqZLVRnDw2kmwNtgF17A2vqcZI9aDDH/XELPLLUcZ7ykeIu4X9t/v+yTwREj+nUrA==}
 
   '@tonaljs/interval@5.0.0':
     resolution: {integrity: sha512-WXmi0TdijggCzREc2B0RN3ZtgUQhu8E7DXVqL/lVLAZA8zaVfsFAv4k1NdXr7bkmcCM4yzhXeGzBo8L2QJR1SA==}
@@ -1414,9 +1399,6 @@ packages:
 
   '@tonaljs/time-signature@4.8.1':
     resolution: {integrity: sha512-P3h2S1M006LpmPkwuAVS/pP02Hns6pSzKP2ghyit4Lszj4ppwNwcyJ1hgT/TVkiwMbUVbNltTKDraonG+2Xe/g==}
-
-  '@tonaljs/tonal@4.10.0':
-    resolution: {integrity: sha512-F2T9Fiy+j0MVped89kCrX1XF68mQOLUnny4pDOHrIf+OkrjtLQOzzaSOrX1tx0o72WUwQm1knz6D1d57b9X1HA==}
 
   '@tonaljs/voice-leading@5.0.3':
     resolution: {integrity: sha512-SFG0YPnuTyyW2tb5bKe2+InJGDb7SGGsfjIxIiIm+B3lhCuQKL9ugOUUgD47uUO3ppidGkbbLZhDABKbLmkvWg==}
@@ -2470,10 +2452,6 @@ packages:
   lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
 
-  lru-cache@6.0.0:
-    resolution: {integrity: sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==}
-    engines: {node: '>=10'}
-
   magic-string@0.25.9:
     resolution: {integrity: sha512-RmF0AsMzgt25qzqqLc1+MbHmhdx0ojF2Fvs4XnOqz2ZOBXzzkEwc/dJQZCYHAn7v1jbVOjAZfK8msRn4BxO4VQ==}
 
@@ -2839,8 +2817,8 @@ packages:
     resolution: {integrity: sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==}
     hasBin: true
 
-  semver@7.6.0:
-    resolution: {integrity: sha512-EnwXhrlwXMk9gKu5/flx5sv/an57AkRplG3hTK68W7FRDN+k+OWBj65M7719OkA82XLBxrcX0KSHj+X5COhOVg==}
+  semver@7.6.2:
+    resolution: {integrity: sha512-FNAIBWCx9qcRhoHcgcJ0gvU7SN1lYU2ZXuSfl04bSC5OpvDHFyJCjdNHomPXxjQlCBU67YW64PzY7/VIEH7F2w==}
     engines: {node: '>=10'}
     hasBin: true
 
@@ -3386,9 +3364,6 @@ packages:
 
   yallist@3.1.1:
     resolution: {integrity: sha512-a4UGQaWPH59mOXUYnAG2ewncQS4i4F43Tv3JoAM+s2VDAmS9NsK8GpDMLrCHPksFT7h3K6TOoUNn2pb7RoXx4g==}
-
-  yallist@4.0.0:
-    resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}
 
   yocto-queue@0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
@@ -4284,7 +4259,7 @@ snapshots:
     dependencies:
       '@elemaudio/core': 3.2.1
 
-  '@emnapi/runtime@1.1.1':
+  '@emnapi/runtime@1.2.0':
     dependencies:
       tslib: 2.6.2
     optional: true
@@ -4453,7 +4428,7 @@ snapshots:
 
   '@img/sharp-wasm32@0.33.4':
     dependencies:
-      '@emnapi/runtime': 1.1.1
+      '@emnapi/runtime': 1.2.0
     optional: true
 
   '@img/sharp-win32-ia32@0.33.4':
@@ -4639,24 +4614,10 @@ snapshots:
       '@tonaljs/core': 5.0.0
       '@tonaljs/pcset': 4.9.2
 
-  '@tonaljs/chord-type@4.8.2':
-    dependencies:
-      '@tonaljs/core': 4.10.0
-      '@tonaljs/pcset': 4.9.2
-
   '@tonaljs/chord-type@5.0.5':
     dependencies:
       '@tonaljs/core': 5.0.0
       '@tonaljs/pcset': 4.9.2
-
-  '@tonaljs/chord@4.10.2':
-    dependencies:
-      '@tonaljs/chord-detect': 4.8.5
-      '@tonaljs/chord-type': 4.8.2
-      '@tonaljs/collection': 4.8.1
-      '@tonaljs/core': 4.10.0
-      '@tonaljs/pcset': 4.9.2
-      '@tonaljs/scale-type': 4.8.5
 
   '@tonaljs/chord@6.0.0':
     dependencies:
@@ -4671,8 +4632,6 @@ snapshots:
 
   '@tonaljs/collection@4.8.1': {}
 
-  '@tonaljs/core@4.10.0': {}
-
   '@tonaljs/core@5.0.0':
     dependencies:
       '@tonaljs/pitch': 5.0.2
@@ -4681,10 +4640,6 @@ snapshots:
       '@tonaljs/pitch-note': 6.0.0
 
   '@tonaljs/duration-value@4.8.1': {}
-
-  '@tonaljs/interval@4.8.0':
-    dependencies:
-      '@tonaljs/core': 4.10.0
 
   '@tonaljs/interval@5.0.0':
     dependencies:
@@ -4766,28 +4721,6 @@ snapshots:
       '@tonaljs/scale-type': 4.8.5
 
   '@tonaljs/time-signature@4.8.1': {}
-
-  '@tonaljs/tonal@4.10.0':
-    dependencies:
-      '@tonaljs/abc-notation': 4.8.3
-      '@tonaljs/array': 4.8.3
-      '@tonaljs/chord': 4.10.2
-      '@tonaljs/chord-type': 4.8.2
-      '@tonaljs/collection': 4.8.1
-      '@tonaljs/core': 4.10.0
-      '@tonaljs/duration-value': 4.8.1
-      '@tonaljs/interval': 4.8.0
-      '@tonaljs/key': 4.9.4
-      '@tonaljs/midi': 4.9.3
-      '@tonaljs/mode': 4.8.4
-      '@tonaljs/note': 4.10.3
-      '@tonaljs/pcset': 4.9.2
-      '@tonaljs/progression': 4.8.4
-      '@tonaljs/range': 4.8.4
-      '@tonaljs/roman-numeral': 4.8.3
-      '@tonaljs/scale': 4.12.6
-      '@tonaljs/scale-type': 4.8.5
-      '@tonaljs/time-signature': 4.8.1
 
   '@tonaljs/voice-leading@5.0.3':
     dependencies:
@@ -5992,10 +5925,6 @@ snapshots:
     dependencies:
       yallist: 3.1.1
 
-  lru-cache@6.0.0:
-    dependencies:
-      yallist: 4.0.0
-
   magic-string@0.25.9:
     dependencies:
       sourcemap-codec: 1.4.8
@@ -6395,9 +6324,7 @@ snapshots:
 
   semver@6.3.1: {}
 
-  semver@7.6.0:
-    dependencies:
-      lru-cache: 6.0.0
+  semver@7.6.2: {}
 
   serialize-javascript@4.0.0:
     dependencies:
@@ -6422,7 +6349,7 @@ snapshots:
     dependencies:
       color: 4.2.3
       detect-libc: 2.0.3
-      semver: 7.6.0
+      semver: 7.6.2
     optionalDependencies:
       '@img/sharp-darwin-arm64': 0.33.4
       '@img/sharp-darwin-x64': 0.33.4
@@ -7112,8 +7039,6 @@ snapshots:
   xml-utils@1.7.0: {}
 
   yallist@3.1.1: {}
-
-  yallist@4.0.0: {}
 
   yocto-queue@0.1.0: {}
 

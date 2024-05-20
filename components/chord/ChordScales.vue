@@ -1,6 +1,6 @@
 <script setup>
 import { notes, intervals } from '#/use/theory'
-import { ChordType, ScaleType } from '@tonaljs/tonal'
+import { ChordType, ScaleType } from 'tonal'
 import { globalScale } from '#/use/chroma'
 import { rotateArray } from '#/use/calculations'
 import { noteColor } from '#/use/colors'

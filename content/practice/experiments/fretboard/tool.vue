@@ -1,6 +1,6 @@
 <script setup>
 import { useStorage } from '@vueuse/core'
-import { Note, Interval } from '@tonaljs/tonal'
+import { Note, Interval } from 'tonal'
 import { freqColor } from '#/use/calculations'
 import { colord } from 'colord'
 import { synthOnce } from '#/use/synth'

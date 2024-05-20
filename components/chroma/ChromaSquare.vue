@@ -5,7 +5,7 @@ import { chromaColorMix, noteColor } from "#/use/colors";
 import { intervals, notes } from '#/use/theory'
 import { playChroma, stopChroma, globalScale } from '#/use/chroma'
 import { computed, reactive, ref } from 'vue';
-import { ChordType, ScaleType } from '@tonaljs/tonal'
+import { ChordType, ScaleType } from 'tonal'
 
 const emit = defineEmits(['update:chroma'])
 

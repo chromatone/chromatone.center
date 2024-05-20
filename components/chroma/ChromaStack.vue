@@ -9,7 +9,7 @@ import { synthOnce } from '#/use/synth'
 import { midiOnce } from '#/use/midi'
 import { colord } from 'colord'
 import { computed } from 'vue'
-import { ChordType, ScaleType } from '@tonaljs/tonal'
+import { ChordType, ScaleType } from 'tonal'
 
 
 const props = defineProps({

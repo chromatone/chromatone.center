@@ -5,7 +5,7 @@ import { globalScale } from '#/use/chroma'
 import ukulele from '#/db/tabs/ukulele.yaml'
 import guitar from '#/db/tabs/guitar.yaml'
 import { useStorage } from '@vueuse/core'
-import { Chord, Note } from '@tonaljs/tonal'
+import { Chord, Note } from 'tonal'
 import { computed, reactive } from 'vue'
 import { notes } from '#/use'
 

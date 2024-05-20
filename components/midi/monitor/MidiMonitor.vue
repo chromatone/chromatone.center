@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed } from 'vue';
-import { Chord, Midi } from '@tonaljs/tonal';
+import { Chord, Midi } from 'tonal';
 
 
 import { useMidi, sortNotes } from '#/use/midi'

@@ -1,5 +1,5 @@
 <script setup>
-import { Note, Interval, Pcset, ChordType, ScaleType, } from '@tonaljs/tonal'
+import { Note, Interval, Pcset, ChordType, ScaleType, } from 'tonal'
 import { freqColor, freqPitch, rotateArray, pitchColor } from '#/use/calculations'
 import { noteColor } from '#/use/colors'
 import { colord } from 'colord'

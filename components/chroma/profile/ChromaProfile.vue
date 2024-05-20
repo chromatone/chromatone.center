@@ -1,10 +1,10 @@
 <script setup>
-import { Interval, Pcset } from '@tonaljs/tonal'
+import { Interval, Pcset } from 'tonal'
 import { notes } from '#/use/theory'
 import { chromaColorMix } from "#/use/colors";
 import { playChroma, stopChroma, globalScale } from '#/use/chroma'
 import { reactive, computed } from 'vue'
-import { ChordType, ScaleType } from '@tonaljs/tonal'
+import { ChordType, ScaleType } from 'tonal'
 
 const props = defineProps({
   title: { type: String, default: null },

@@ -1,6 +1,6 @@
 <script setup>
 import { chromaColorMix } from '#/use/colors'
-import { ChordType, Chord, ScaleType } from '@tonaljs/tonal'
+import { ChordType, Chord, ScaleType } from 'tonal'
 import { notes } from '#/use/theory'
 import { globalScale } from '#/use/chroma'
 import { computed, ref } from 'vue'

@@ -1,6 +1,6 @@
 <script setup>
 import { noteColor } from "#/use/colors"
-import { Scale, Midi, Note } from '@tonaljs/tonal'
+import { Scale, Midi, Note } from 'tonal'
 import { onKeyStroke, useStorage } from '@vueuse/core'
 import { notes } from '#/use/theory'
 import { globalScale } from '#/use/chroma'

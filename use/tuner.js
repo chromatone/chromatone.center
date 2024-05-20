@@ -3,7 +3,6 @@
  * @description Audio analysis on the fly using Aubio.js and Meyda
  */
 
-import Aubio from "./aubio.js";
 import { noteColor } from './colors'
 import { initGetUserMedia, useAudio } from './audio'
 import { reactive, computed, watch } from 'vue'
@@ -118,6 +117,8 @@ async function init() {
   chain.meyda.start();
 
   tuner.frequencyData = new Uint8Array(chain.analyser.frequencyBinCount);
+
+  const { default: Aubio } = await import('./aubio.js')
 
   Aubio().then(function (aubio) {
     chain.pitchDetector = new aubio.Pitch(

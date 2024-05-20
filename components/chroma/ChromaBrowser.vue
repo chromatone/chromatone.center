@@ -1,5 +1,5 @@
 <script setup>
-import { Pcset, ChordType, ScaleType } from '@tonaljs/tonal'
+import { Pcset, ChordType, ScaleType } from 'tonal'
 import { noteColor } from "#/use/colors"
 import { notes } from '#/use/theory'
 import { globalScale } from '#/use/chroma'

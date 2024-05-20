@@ -3,7 +3,7 @@ import { notes } from '#/use/theory'
 import { globalScale } from '#/use/chroma'
 import { noteColor } from "#/use/colors"
 import { computed } from 'vue';
-import { ScaleType } from '@tonaljs/tonal'
+import { ScaleType } from 'tonal'
 
 const sortedScales = computed(() => {
   return ScaleType.all().sort((a, b) => {

@@ -9,7 +9,7 @@ import { globalScale } from '#/use/chroma';
 import { useClamp } from '@vueuse/math'
 import { useStorage } from '@vueuse/core'
 import { intervals } from '#/use/theory';
-import { ScaleType } from '@tonaljs/tonal'
+import { ScaleType } from 'tonal'
 
 const props = defineProps({
   width: { type: Number, default: 1200 },

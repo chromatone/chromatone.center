@@ -37,7 +37,6 @@
 	"dependencies": {
 		"@elemaudio/core": "^3.2.1",
 		"@elemaudio/web-renderer": "^3.2.3",
-		"@tonaljs/tonal": "^4.10.0",
 		"@tonejs/midi": "^2.0.28",
 		"@unocss/reset": "^0.60.3",
 		"@vueuse/core": "^10.9.0",

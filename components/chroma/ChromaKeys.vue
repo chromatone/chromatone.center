@@ -6,7 +6,7 @@ import { notes, flats } from '#/use/theory'
 import { colord } from 'colord'
 import { reactive, computed, nextTick } from 'vue'
 import { useMidi } from '#/use/midi'
-import { ChordType, ScaleType } from '@tonaljs/tonal'
+import { ChordType, ScaleType } from 'tonal'
 
 
 const props = defineProps({

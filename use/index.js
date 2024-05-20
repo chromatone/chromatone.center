@@ -1,4 +1,3 @@
-export * from './aubio'
 export * from './audio'
 export * from './calculations'
 export * from './cast'

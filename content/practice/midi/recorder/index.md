@@ -10,6 +10,7 @@ sources:
   - https://webmidijs.org/docs/v3.0.0-alpha.10/index.html
 status: alpha
 version: 0.1
+cover: cover.png
 ---
 
 <client-only>

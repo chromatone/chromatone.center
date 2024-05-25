@@ -68,6 +68,14 @@ nav.bar
     v-tooltip.right="'Academy'"
     aria-label="Academy"
     )
+    .i-cil-education
+  a.button(
+    title="tutor"
+    href="/tutor/"
+    :class="{ active: route.path.includes('tutor') }"
+    v-tooltip.right="'Tutorship'"
+    aria-label="Private Tutorship"
+    )
     .i-la-chalkboard-teacher
   a.button(
     title="Shop"

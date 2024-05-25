@@ -73,8 +73,8 @@ nav.bar
     title="tutor"
     href="/tutor/"
     :class="{ active: route.path.includes('tutor') }"
-    v-tooltip.right="'Tutorship'"
-    aria-label="Private Tutorship"
+    v-tooltip.right="'Tutor'"
+    aria-label="Private Tutor"
     )
     .i-la-chalkboard-teacher
   a.button(

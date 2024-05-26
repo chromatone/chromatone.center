@@ -1,22 +1,46 @@
 import { Engine, Render, Body, Bodies, World, MouseConstraint, Composites, Query, Runner, Events } from 'matter-js'
 import { engine } from './engine';
-import { reactive } from 'vue';
-
+import { reactive, watch } from 'vue';
+import { midi } from '#/use/midi'
 
 export const settings = reactive({
-  friction: 0.001,
-  bounce: .7,
+  friction: 0.008,
+  bounce: 0.98,
 })
 
 
-function createShape(x, y) {
-  return Bodies.circle(x, y, 25, {
-    frictionAir: settings.friction,
-    restitution: settings.bounce + 0.0001,
-  })
-};
-
 export function initMouse(canvas) {
+
+  const box = canvas.value.getBoundingClientRect()
+  let w = box.width;
+  let h = box.height;
+
+  function createShape(x, y, note) {
+    return Bodies.circle(x, y, 25, {
+      frictionAir: settings.friction * Math.random(),
+      restitution: settings.bounce,
+      note,
+      plugin: {
+        wrap: {
+          min: {
+            x: 0,
+            y: 0
+          },
+          max: {
+            x: w,
+            y: h
+          }
+        }
+      }
+      // collisionFilter: {
+      //   category: balls,
+      // },
+      // collisionFilter: {
+      //   mask: [walls]
+      // }
+    })
+  };
+
 
   const mouseControl = MouseConstraint.create(engine, {
     element: canvas.value,
@@ -40,16 +64,24 @@ export function initMouse(canvas) {
     const hoveredShapes = Query.point(initialShapes.bodies, mouse.position);
 
     hoveredShapes.forEach(shape => {
-      shape.render.fillStyle = "orange"
-      shape.render.lineWidth = 0
+      shape.scale = 1.1
     });
 
   })
 
   Events.on(mouseControl, 'mousedown', ({ mouse }) => {
-    const shape = createShape(mouse.position.x, mouse.position.y);
+    const shape = createShape(mouse.position.x, mouse.position.y, 0);
     initialShapes.bodies.push(shape);
     World.add(engine.world, shape);
   })
+
+  watch(() => midi.note, note => {
+    if (!note.velocity) return
+    const shape = createShape(w * Math.random(), h * Math.random(), note.number);
+    initialShapes.bodies.push(shape);
+    World.add(engine.world, shape);
+  })
+
+
 }
 

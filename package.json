@@ -59,6 +59,7 @@
 		"hidpi-canvas": "^1.0.10",
 		"jspdf": "^2.5.1",
 		"matter-js": "^0.19.0",
+		"matter-wrap": "^0.2.0",
 		"meyda": "^5.6.3",
 		"midi-writer-js": "^3.1.1",
 		"nearest-color": "^0.4.4",

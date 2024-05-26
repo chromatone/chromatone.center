@@ -1,14 +1,19 @@
 import { onBeforeUnmount, onMounted, reactive, ref, shallowReactive, watch } from 'vue';
-import { Engine, Render, Body, Bodies, World, MouseConstraint, Composites, Query, Runner } from 'matter-js'
+import Matter, { Engine, Render, Body, Bodies, World, MouseConstraint, Composites, Query, Runner } from 'matter-js'
 import { useResizeObserver } from '@vueuse/core'
 import { useThrottleFn } from '@vueuse/core'
 import { updateBoundaries } from './boundaries';
-
+import MatterWrap from 'matter-wrap'
 export let engine
 export let renderer
 
-export function initEngine(canvas, w, h) {
+export function initEngine(canvas) {
 
+  Matter.use(MatterWrap)
+
+  const box = canvas.value.getBoundingClientRect()
+  let w = box.width;
+  let h = box.height;
   engine = Engine.create()
   renderer = Render.create({
     element: canvas.value,
@@ -44,7 +49,7 @@ export function initEngine(canvas, w, h) {
       max: { x: width, y: height }
     });
 
-    updateBoundaries(width, height);
+    // updateBoundaries(width, height);
 
   }, 100, true));
 }

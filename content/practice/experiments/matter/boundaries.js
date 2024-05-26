@@ -1,11 +1,16 @@
 import { Body, Bodies, World } from 'matter-js'
 import { engine } from './engine';
 
+var walls = 0x0001
+
 const wallOptions = {
   isStatic: true,
   render: {
     visible: true
-  }
+  },
+  collisionFilter: {
+    category: walls,
+  },
 };
 
 const bThickness = 200

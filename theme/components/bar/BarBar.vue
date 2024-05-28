@@ -62,21 +62,14 @@ nav.bar
     )
     .i-la-hand-point-up
   a.button(
-    title="Academy"
-    href="/academy/"
-    :class="{ active: route.path.includes('academy') }"
-    v-tooltip.right="'Academy'"
-    aria-label="Academy"
-    )
-    .i-cil-education
-  a.button(
     title="tutor"
     href="/tutor/"
     :class="{ active: route.path.includes('tutor') }"
-    v-tooltip.right="'Tutor'"
-    aria-label="Private Tutor"
+    v-tooltip.right="'Tutorship'"
+    aria-label="Tutorship"
     )
     .i-la-chalkboard-teacher
+
   a.button(
     title="Shop"
     href="/shop/"
@@ -85,6 +78,15 @@ nav.bar
     aria-label="Shop"
     )
     .i-la-shopping-bag
+
+  a.button(
+    title="Academy"
+    href="/academy/"
+    :class="{ active: route.path.includes('academy') }"
+    v-tooltip.right="'Academy'"
+    aria-label="Academy"
+    )
+    .i-cil-education
   a.button(
     title="Contacts"
     href="/contacts/"

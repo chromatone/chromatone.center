@@ -1,9 +1,10 @@
 import { ref, reactive, watch, onMounted, onBeforeUnmount } from 'vue';
-import Matter, { Render, Body, Bodies, World, Runner, Events, Engine, Query, MouseConstraint, Composites, Common, Vector } from 'matter-js';
+import Matter, { Render, Body, Bodies, Composite, Runner, Events, Engine, Query, MouseConstraint, Composites, Common, Vector } from 'matter-js';
 import { useResizeObserver } from '@vueuse/core';
 import MatterWrap from 'matter-wrap';
-import { midi, playKey } from '#/use/midi';
+import { midi, midiPlay, midiStop, playKey } from '#/use/midi';
 import { Note } from 'tonal';
+import { globalScale } from '#/use';
 
 Matter.use(MatterWrap);
 
@@ -18,8 +19,6 @@ const box = reactive({ w: 100, h: 100 })
 export function useMatter() {
 
   const setupMatterJs = () => {
-    resizeBox()
-    useResizeObserver(canvas, resizeBox)
     engine = Engine.create();
     engine.gravity.scale = 0;
 
@@ -37,11 +36,14 @@ export function useMatter() {
 
     Runner.run(engine);
     Render.run(renderer);
+
+    resizeBox()
+    useResizeObserver(canvas, resizeBox)
   };
 
   const clearMatterJs = () => {
     Events.off(engine);
-    World.clear(engine?.world);
+    Composite.clear(engine?.world);
     Engine.clear(engine);
     Render.stop(renderer);
     renderer?.canvas?.remove();
@@ -96,7 +98,7 @@ function useCircles() {
     },
   });
 
-  World.add(engine.world, [mouseControl]);
+  Composite.add(engine.world, [mouseControl]);
 
   const circles = Composites.stack();
 
@@ -104,17 +106,20 @@ function useCircles() {
     circles.bodies.forEach(circle => {
       const forceX = box.w / 2 - circle.position.x;
       const forceY = box.h / 2 - circle.position.y;
-
-      // Apply a small force towards the center
-      const strength = 0.01; // Adjust this value to control the pull strength
+      const strength = 0.01
       Body.applyForce(circle, circle.position, { x: forceX * strength, y: forceY * strength });
     })
   })
 
-  function createShape(x, y, note = Math.floor(Common.random(50, 100))) {
+  function createShape(x, y, note = globalScale.tonic + 45) {
+
+    let noteName = Common.choose(globalScale.pcs) + Common.choose([2, 3, 4])
+
+    note = Note.midi(noteName)
+
     const strokeStyle = `hsl(${((note + 3) % 12) * 30}deg, ${(note + 3)}%, 50%)`;
 
-    const circle = Bodies.circle(x, y, 120 - note, {
+    const circle = Bodies.circle(x, y, (120 - note) / 2, {
       frictionAir: 0.0000008,
       density: 10,
       restitution: 0.98,
@@ -144,25 +149,28 @@ function useCircles() {
     if (hoveredShapes.length > 0) return
     const shape = createShape(mouse.position.x, mouse.position.y);
     circles.bodies.push(shape);
-    World.add(engine.world, shape);
+    Composite.add(engine.world, shape);
   });
 
   Events.on(engine, 'collisionStart', (event) => {
     for (const pair of event.pairs) {
       for (let body of ['bodyA', 'bodyB']) {
-        if (!pair[body]?.data) continue
+
         const hitBody = pair[body]
         const originalStyle = hitBody.render.strokeStyle;
-        if (hitBody.render.fillStyle != 'transparent') continue;
+
+        // if (hitBody.render.fillStyle != 'transparent') continue;
 
         hitBody.render.fillStyle = originalStyle;
-        const note = Note.fromMidi(hitBody.data?.note)
+        const note = Note.fromMidi(pair[body].isStatic ? 33 + globalScale.tonic : hitBody.data?.note)
 
         playKey(note.slice(0, -1), parseInt(note.slice(-1)) - 4, false, 1, 0.5)
+        midiPlay(hitBody.data?.note || 33 + globalScale.tonic)
 
         setTimeout(() => {
           hitBody.render.fillStyle = 'transparent'
           playKey(note.slice(0, -1), parseInt(note.slice(-1)) - 4, true)
+          midiStop(hitBody.data?.note || 33 + globalScale.tonic)
         }, 30);
       }
 
@@ -179,18 +187,20 @@ function useCircles() {
 
 function useCenter() {
 
+  const strokeStyle = `hsl(${globalScale.tonic * 30}deg, 50%, 50%)`
+
   const center = Bodies.polygon(box.w / 2, box.h / 2, 3, Math.min(box.w / 4, box.h / 4), {
     isStatic: true,
     restitution: 100,
     render: {
-      lineWidth: 0,
-      strokeStyle: 'yellow',
-      fillStyle: 'yellow',
+      lineWidth: 2,
+      strokeStyle,
+      fillStyle: 'transparent',
       visible: true,
     },
   });
 
-  World.add(engine?.world, [center]);
+  Composite.add(engine?.world, [center]);
 
   watch(box, ({ w, h }) => {
     Body.setPosition(center, { x: w / 2, y: h / 2 });

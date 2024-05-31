@@ -1,5 +1,7 @@
 <script setup>
+import { flats, naturals, noteColor } from '#/use';
 import ChordSheetJS from 'chordsheetjs'
+import { Chord } from 'tonal';
 import { computed, ref, watch } from 'vue';
 
 const parser = new ChordSheetJS.ChordsOverWordsParser()
@@ -36,6 +38,23 @@ watch(chordSheet, ch => {
 
 const result = computed(() => formatter.format(song.value))
 
+const parsed = computed(() => {
+       const p = (new DOMParser).parseFromString(result.value, "text/html")
+       const chords = p.querySelectorAll('.chord')
+       chords.forEach(chord => {
+
+              let c = chord?.innerHTML
+              if (!c) return
+              let tonic = Chord.get(c).tonic
+              let pitch = naturals.findIndex(t => t == tonic)
+              if (pitch == -1) pitch = flats.findIndex(t => t == tonic)
+              chord.style.color = noteColor(pitch)
+       })
+       const final = (new XMLSerializer()).serializeToString(p)
+       return final
+})
+
+
 
 </script>
 
@@ -45,7 +64,7 @@ const result = computed(() => formatter.format(song.value))
        button.text-button(@click="song = song.transposeDown()") Transpose Down
 .flex.gap-2.p-4.gap-4.flex-wrap.chords
        textarea.p-4.min-h-90(autoresize style="flex: 1 1 200px" v-model="chordSheet")
-       .p-4.bg-light-100.dark-bg-dark-300.shadow-xl.rounded-xl(style="flex: 1 1 300px" v-html="result")
+       .p-4.bg-light-100.dark-bg-dark-300.shadow-xl.rounded-xl(style="flex: 1 1 300px" v-html="parsed")
 </template>
 
 <style>
@@ -76,6 +95,7 @@ const result = computed(() => formatter.format(song.value))
 
 .chords .chord {
        min-height: 20px;
+       font-weight: bold;
 }
 
 .chords .chord.clickable {

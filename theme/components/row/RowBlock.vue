@@ -27,7 +27,7 @@ const bg = computed(() => `url(${props.item?.frontmatter?.cover})`);
     :href="cleanLink(item.url)"
     :class="{ 'pt-70': item?.frontmatter?.cover }"
   )
-    .cover(
+    .cover.bg-center(
       :style="{ backgroundImage: bg }"
       )
     .info.flex-1

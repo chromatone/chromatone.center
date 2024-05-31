@@ -2,6 +2,7 @@
 title: Chord Sheets Lab
 description: Chordsheetjs experiments
 date: 2024-05-25
+cover: cover.png
 links:
   - https://snyk.io/advisor/npm-package/chordsheetjs/example
   - https://martijnversluis.github.io/ChordFiddle/

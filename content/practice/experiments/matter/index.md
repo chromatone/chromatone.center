@@ -3,6 +3,7 @@ title: Physical sequencer
 description: 2D rigid body physics simulator
 date: 2024-05-24
 layout: app
+cover: cover.png
 links: 
   - https://codepen.io/tt9/pen/xxEmmRO
   - https://www.paulie.dev/posts/2020/08/react-hooks-and-matter-js/

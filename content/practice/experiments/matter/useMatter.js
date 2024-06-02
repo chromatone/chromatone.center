@@ -1,14 +1,16 @@
-import { ref, reactive, watch, onMounted, onBeforeUnmount } from 'vue';
-import Matter, { Render, Body, Bodies, Composite, Runner, Events, Engine, Query, MouseConstraint, Composites, Common, Vector } from 'matter-js';
+import { ref, reactive, watch, onMounted, onBeforeUnmount, nextTick } from 'vue';
+import { Render, Body, Bodies, Composite, Runner, Events, Engine, Query, MouseConstraint, Composites, Common } from 'matter-js';
 import { useResizeObserver } from '@vueuse/core';
-import MatterWrap from 'matter-wrap';
+
 import { midi, midiPlay, midiStop, playKey } from '#/use/midi';
 import { Note } from 'tonal';
 import { globalScale } from '#/use';
 
-Matter.use(MatterWrap);
 
-let engine;
+//import MatterWrap from 'matter-wrap';
+// Matter.use(MatterWrap);
+
+export let engine;
 let renderer;
 
 const canvas = ref(null);
@@ -55,6 +57,8 @@ export function useMatter() {
     setupMatterJs();
     const { center } = useCenter()
     const { circles } = useCircles()
+    const { generateBoundaries } = useBoundaries()
+
   });
 
   onBeforeUnmount(() => {
@@ -119,10 +123,10 @@ function useCircles() {
 
     const strokeStyle = `hsl(${((note + 3) % 12) * 30}deg, ${(note + 3)}%, 50%)`;
 
-    const circle = Bodies.circle(x, y, (120 - note) / 2, {
-      frictionAir: 0.0000008,
+    const circle = Bodies.circle(x, y, (120 - note) / 4, {
+      frictionAir: 0,
       density: 10,
-      restitution: 0.98,
+      restitution: 1,
       render: {
         lineWidth: 2,
         strokeStyle,
@@ -164,8 +168,11 @@ function useCircles() {
         hitBody.render.fillStyle = originalStyle;
         const note = Note.fromMidi(pair[body].isStatic ? 33 + globalScale.tonic : hitBody.data?.note)
 
-        playKey(note.slice(0, -1), parseInt(note.slice(-1)) - 4, false, 1, 0.5)
-        midiPlay(hitBody.data?.note || 33 + globalScale.tonic)
+        setTimeout(() => {
+          playKey(note.slice(0, -1), parseInt(note.slice(-1)) - 4, false, 1, 0.5)
+          midiPlay(hitBody.data?.note || 33 + globalScale.tonic)
+        }, 2)
+
 
         setTimeout(() => {
           hitBody.render.fillStyle = 'transparent'
@@ -189,9 +196,9 @@ function useCenter() {
 
   const strokeStyle = `hsl(${globalScale.tonic * 30}deg, 50%, 50%)`
 
-  const center = Bodies.polygon(box.w / 2, box.h / 2, 3, Math.min(box.w / 4, box.h / 4), {
+  const center = Bodies.polygon(box.w / 2, box.h / 2, 4, Math.min(box.w / 20, box.h / 20), {
     isStatic: true,
-    restitution: 100,
+    restitution: 1,
     render: {
       lineWidth: 2,
       strokeStyle,
@@ -210,7 +217,7 @@ function useCenter() {
   let time = 0;
   Events.on(engine, 'afterUpdate', () => {
     time += 0.001;
-    Body.rotate(center, 0.01);
+    Body.rotate(center, 0.05);
   })
 
 
@@ -219,3 +226,106 @@ function useCenter() {
     center
   }
 }
+
+
+//* Boundaries */
+
+export function useBoundaries() {
+
+  var walls = 0x0001
+  const bThickness = 300
+  let ground, ceiling, leftWall, rightWall;
+
+  function generateBoundaries(w, h) {
+
+    const wallOptions = {
+      isStatic: true,
+      render: {
+        visible: true
+      },
+      collisionFilter: {
+        category: walls,
+      },
+    };
+    ground = Bodies.rectangle(w / 2, h + bThickness / 2, w + 2 * bThickness, bThickness, wallOptions);
+    ceiling = Bodies.rectangle(w / 2, -50, w + 100, 100, wallOptions);
+    leftWall = Bodies.rectangle(-50, h / 2, 100, h + 100, wallOptions);
+    rightWall = Bodies.rectangle(w + 50, h / 2, 100, h + 100, wallOptions);
+
+
+    Composite.add(engine.world, [
+      ground,
+      ceiling,
+      leftWall,
+      rightWall,
+    ]);
+  }
+
+  function generateVertices(type, width, height) {
+    switch (type) {
+      case 'ground':
+        return [
+          { x: -width / 2, y: height },
+          { x: width + width / 2, y: height },
+          { x: width + width / 2, y: height + 2 * bThickness },
+          { x: -width / 2, y: height + 2 * bThickness }
+        ];
+      case 'ceiling':
+        return [
+          { x: -width / 2, y: -bThickness },
+          { x: width + width / 2, y: -bThickness },
+          { x: width + width / 2, y: bThickness },
+          { x: -width / 2, y: bThickness }
+        ];
+      case 'leftWall':
+        return [
+          { x: -bThickness, y: -height / 2 },
+          { x: bThickness, y: -height / 2 },
+          { x: bThickness, y: height + height / 2 },
+          { x: -bThickness, y: height + height / 2 }
+        ];
+      case 'rightWall':
+        return [
+          { x: width - bThickness, y: -height / 2 },
+          { x: width + bThickness, y: -height / 2 },
+          { x: width + bThickness, y: height + height / 2 },
+          { x: width - bThickness, y: height + height / 2 }
+        ];
+      default:
+        return [];
+    }
+  }
+
+  function setBoundary(boundary, type, width, height) {
+    const position = {
+      ground: { x: width / 2, y: height + bThickness },
+      ceiling: { x: width / 2, y: -bThickness },
+      leftWall: { x: -bThickness, y: height / 2 },
+      rightWall: { x: width + bThickness, y: height / 2 }
+    }[type];
+
+    const vertices = generateVertices(type, width, height, bThickness);
+
+    Body.setPosition(boundary, position);
+    Body.setVertices(boundary, vertices);
+  }
+
+  function updateBoundaries(width, height) {
+    setBoundary(ground, 'ground', width, height, bThickness);
+    setBoundary(ceiling, 'ceiling', width, height, bThickness);
+    setBoundary(leftWall, 'leftWall', width, height, bThickness);
+    setBoundary(rightWall, 'rightWall', width, height, bThickness);
+  }
+
+
+  generateBoundaries(box.w, box.h)
+  watch(box, b => updateBoundaries(b.w, b.h))
+
+  return {
+    generateBoundaries,
+    updateBoundaries,
+    setBoundary,
+    generateVertices,
+  }
+}
+

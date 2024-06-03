@@ -6,6 +6,8 @@ topContent: true
 youtube: qthKClCRIl0
 ---
 
+<a href="/theory/color/interplay/spectrum/" ><img class="w-full" alt="Chromatic Spectrum" src="/img/spectrum.svg" /></a>
+
 Chromatone is an open source research and design project to explore, develop and implement the scientific way of visual music education, communication and performance.
 
 Imagine if we once agree on a standard way to interconnect colors and notes? It will empower our music perception with vision, most humans primary sensory channel, especially in our modern screen time. Why not view music the visual way today? Let's explore 12 notes, 12 colors and infinite space of their possible combinations.

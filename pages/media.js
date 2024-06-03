@@ -2,7 +2,6 @@ import url from "url";
 import fs from "fs";
 import path from "path";
 import sharp from "sharp";
-import type { ContentData } from "vitepress";
 
 import { cleanLink } from "./";
 
@@ -15,17 +14,17 @@ export default function (
 			cover: { size: 1200, height: 1000, fit: "inside", webp: false },
 		},
 	} = {
-		root: new URL("../", import.meta.url),
-		publicFolder: "public",
-		mediaFolder: "media_files",
-		mediaTypes: {
-			cover: { size: 1200, height: 1000, fit: "inside", webp: false },
-		},
-	}
+			root: new URL("../", import.meta.url),
+			publicFolder: "public",
+			mediaFolder: "media_files",
+			mediaTypes: {
+				cover: { size: 1200, height: 1000, fit: "inside", webp: false },
+			},
+		}
 ) {
 	const appRoot = url.fileURLToPath(root);
 
-	return async function transform(routes: ContentData[]) {
+	return async function transform(routes) {
 		for (let r in routes) {
 			const page = routes[r];
 			const data = page.frontmatter;

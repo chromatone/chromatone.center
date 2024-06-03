@@ -1,7 +1,6 @@
 import { computed, ref } from 'vue'
-import type { Route, ContentData } from 'vitepress'
 
-export function usePages(route: Route, routes: ContentData[]) {
+export function usePages(route, routes) {
 
   const rs = ref(routes)
 
@@ -13,31 +12,31 @@ export function usePages(route: Route, routes: ContentData[]) {
   return { pages, siblings, children, parents }
 }
 
-export function useChildren(route: Route, routes: ContentData[]) {
+export function useChildren(route, routes) {
   return computed(() => getPages(routes)[cleanLink(route.path)])
 }
 
-export function useParents(route: Route, routes: ContentData[]) {
+export function useParents(route, routes) {
   return computed(() => getParents(route.path, routes))
 }
 
-export function useSiblings(route: Route, routes: ContentData[]) {
+export function useSiblings(route, routes) {
   return computed(() => getSiblings(route.path, routes))
 }
 
-export function usePage(route: Route, routes: ContentData[]) {
+export function usePage(route, routes) {
   return computed(() => getPage(route.path, routes))
 }
 
 
-export function getPage(path: string, routes: ContentData[]) {
+export function getPage(path, routes) {
   return routes.find((p) => {
     return cleanLink(p.url) == cleanLink(path)
   });
 }
 
-export function getPages(routes: ContentData[]) {
-  let pageList: Record<string, ContentData[]> = {}
+export function getPages(routes) {
+  let pageList = {}
   for (let route of routes) {
     const folder = normalize(route.url.split("/").slice(0, -2).join("/"))
     pageList[folder] = pageList[folder] || [];
@@ -56,7 +55,7 @@ export function getPages(routes: ContentData[]) {
 }
 
 
-export function getParents(path: string, routes: ContentData[]) {
+export function getParents(path, routes) {
   path = cleanLink(path)
   const parents = [];
   const url = path.split("/").filter(Boolean);
@@ -72,11 +71,11 @@ export function getParents(path: string, routes: ContentData[]) {
 }
 
 
-export function getSiblings(path: string, routes: ContentData[]) {
-  let prev: ContentData | null = null
-  let next: ContentData | null = null
-  let index: number = 0
-  let total: number = 0
+export function getSiblings(path, routes) {
+  let prev = null
+  let next = null
+  let index = 0
+  let total = 0
   const folder = normalize(path.split("/").slice(0, -2).join("/"));
   const list = getPages(routes)[folder]
 
@@ -94,14 +93,14 @@ export function getSiblings(path: string, routes: ContentData[]) {
 }
 
 
-export function normalize(url: string) {
+export function normalize(url) {
   return (url += url.endsWith("/") ? "" : "/");
 }
 
-export function cleanLink(url: string) {
+export function cleanLink(url) {
   return (url || '').replace(/\/[^/]*\.(html)$/, '/')
 }
 
-export function webP(file: string) {
+export function webP(file) {
   return (file || '').replace(/\.[^.]+$/, '.webp')
 }

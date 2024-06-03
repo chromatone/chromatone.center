@@ -1,21 +1,4 @@
-export default function (metaData: {
-  title: string,
-  description: string,
-  site?: string,
-  url?: string,
-  repo?: string,
-  mediaFolder?: string,
-  locale?: string,
-  icon?: string,
-  logo?: string,
-  image?: string,
-  color?: string,
-  author?: string,
-  tags?: string,
-  webp?: boolean,
-  umamiScript?: string,
-  umamiId?: string,
-}) {
+export default function (metaData) {
   return function transformHead({ pageData }) {
     const url = pageData.relativePath.split('index.md')[0]
     let image = metaData?.image

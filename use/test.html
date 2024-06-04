@@ -29,13 +29,16 @@
   </div>
 
   <script type="module">
-    import { createApp, ref } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
-    import { useMidi } from 'https://unpkg.com/use-chromatone'
+    import { createApp, ref, watch } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+    import { useMidi, useSynth } from 'https://unpkg.com/use-chromatone'
 
     createApp({
       setup() {
         const message = ref('Hello Vue!')
         const { midi } = useMidi()
+
+        useSynth()
+
         return {
           message, midi
         }

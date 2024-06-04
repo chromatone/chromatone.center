@@ -128,6 +128,9 @@ importers:
       tone:
         specifier: ^15.0.4
         version: 15.0.4
+      universal-base64url:
+        specifier: ^1.1.0
+        version: 1.1.0
       vite-plugin-top-level-await:
         specifier: ^1.4.1
         version: 1.4.1(rollup@2.79.1)(vite@5.2.11(@types/node@20.9.2)(terser@5.24.0))
@@ -3203,6 +3206,12 @@ packages:
   unique-string@2.0.0:
     resolution: {integrity: sha512-uNaeirEPvpZWSgzwsPGtU2zVSTrn/8L5q/IexZmH0eH6SA73CmAA5U4GwORTxQAZs95TAXLNqeLoPPNO5gZfWg==}
     engines: {node: '>=8'}
+
+  universal-base64@2.1.0:
+    resolution: {integrity: sha512-WeOkACVnIXJZr/qlv7++Rl1zuZOHN96v2yS5oleUuv8eJOs5j9M5U3xQEIoWqn1OzIuIcgw0fswxWnUVGDfW6g==}
+
+  universal-base64url@1.1.0:
+    resolution: {integrity: sha512-qWv2+8KCaAWdpqqXwU8W0Yj9pflYDXP37/a3kec6Y4Je7bYzgIfxEVRjZWeLR67be7iot1lGCy5Nuo+xB0fojA==}
 
   universalify@2.0.1:
     resolution: {integrity: sha512-gptHNQghINnc/vTGIk0SOFGFNXw7JVrlRUtConJRlvaw6DuX0wO5Jeko9sWrMBhh+PsYAZ7oXAiOnf/UKogyiw==}
@@ -6856,6 +6865,12 @@ snapshots:
   unique-string@2.0.0:
     dependencies:
       crypto-random-string: 2.0.0
+
+  universal-base64@2.1.0: {}
+
+  universal-base64url@1.1.0:
+    dependencies:
+      universal-base64: 2.1.0
 
   universalify@2.0.1: {}
 

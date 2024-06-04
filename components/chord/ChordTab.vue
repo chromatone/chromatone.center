@@ -8,6 +8,7 @@ import { notes } from '#/use/theory'
 import { reactive, computed } from 'vue'
 
 const props = defineProps({
+  title: { type: Boolean, default: true },
   instrument: { type: String, default: 'ukulele' },
   chroma: { type: String, default: '100000000000' },
   pitch: { type: Number, default: 0 },
@@ -34,8 +35,8 @@ const neck = reactive({
   chroma: computed(() => rotateArray(props.chroma.split(''), -props.pitch)),
   scale: computed(() => rotateArray(globalScale.chroma.split(''), -props.pitch)),
   title: computed(() => {
-    if (!ChordType.all().get(props.chroma)?.empty) return ChordType.get(props.chroma).aliases[0]
-    if (!ScaleType.all().get(props.chroma)?.empty) return ScaleType.get(props.chroma)
+    if (!ChordType?.get(props.chroma)?.empty) return ChordType.get(props.chroma).aliases[0]
+    if (!ScaleType.get(props.chroma)?.empty) return ScaleType.get(props.chroma)
     else return ''
   }),
   noteSize: 50,
@@ -55,7 +56,7 @@ function getNote(string, semitones) {
 <template lang="pug">
 .flex.flex-col.items-center.justify-center.rounded-3xl.py-2(
   :style="{ backgroundColor: pitchColor(pitch, 3, 1, 0.3) }")
-  .flex.justify-center
+  .flex.justify-center(v-if="title")
     .text-2x.font-bold {{ notes[pitch] }}{{ neck.title }}
   svg#fretboard.max-h-3xl.w-full.my-2(
     version="1.1",

@@ -76,6 +76,7 @@
 		"thousands-counter": "^2.1.1",
 		"tonal": "^6.0.1",
 		"tone": "^15.0.4",
+		"universal-base64url": "^1.1.0",
 		"vite-plugin-top-level-await": "^1.4.1",
 		"vite-plugin-wasm": "^3.3.0",
 		"vue": "^3.4.27",

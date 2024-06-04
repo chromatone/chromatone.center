@@ -1,11 +1,14 @@
 import { ref, reactive, watch, onMounted, onBeforeUnmount, nextTick } from 'vue';
-import { Render, Body, Bodies, Composite, Runner, Events, Engine, Query, MouseConstraint, Composites, Common, Collision, World } from 'matter-js';
+import { Render, Body, Bodies, Composite, Runner, Events, Engine, Query, MouseConstraint, Composites, Common, Collision, World, use } from 'matter-js';
 import { useResizeObserver } from '@vueuse/core';
 
 import { midi, midiPlay, midiStop, playKey } from '#/use/midi';
 import { Note } from 'tonal';
 import { globalScale } from '#/use';
 
+import MatterAttractors from 'matter-attractors'
+use(MatterAttractors);
+MatterAttractors.Attractors.gravityConstant = 0.00005
 
 //import MatterWrap from 'matter-wrap';
 // Matter.use(MatterWrap);
@@ -106,14 +109,14 @@ function useCircles() {
 
   const circles = Composites.stack();
 
-  Events.on(engine, 'afterUpdate', () => {
-    circles.bodies.forEach(circle => {
-      const forceX = box.w / 2 - circle.position.x;
-      const forceY = box.h / 2 - circle.position.y;
-      const strength = 0.01
-      Body.applyForce(circle, circle.position, { x: forceX * strength, y: forceY * strength });
-    })
-  })
+  // Events.on(engine, 'afterUpdate', () => {
+  //   circles.bodies.forEach(circle => {
+  //     const forceX = box.w / 2 - circle.position.x;
+  //     const forceY = box.h / 2 - circle.position.y;
+  //     const strength = 0.01
+  //     Body.applyForce(circle, circle.position, { x: forceX * strength, y: forceY * strength });
+  //   })
+  // })
 
   function createShape(x, y, note = globalScale.tonic + 45) {
 
@@ -125,7 +128,7 @@ function useCircles() {
 
     const circle = Bodies.circle(x, y, (120 - note) / 2, {
       label: 'particle',
-      frictionAir: 0.00001,
+      frictionAir: 0.000001,
       friction: 0.4,
       frictionStatic: 0.001,
       density: 10,
@@ -136,6 +139,9 @@ function useCircles() {
         fillStyle: 'transparent'
       },
       plugin: {
+        attractors: [
+          MatterAttractors.Attractors.gravity
+        ],
         wrap: {
           min: { x: 0, y: 0 },
           max: { x: box.w, y: box.h },
@@ -279,6 +285,11 @@ function useCenter() {
     restitution: .3,
     friction: 0.4,
     frictionStatic: 0.001,
+    // plugin: {
+    //   attractors: [
+    //     MatterAttractors.Attractors.gravity
+    //   ],
+    // },
     render: {
       lineWidth: 2,
       strokeStyle,
@@ -287,7 +298,7 @@ function useCenter() {
     },
   });
 
-  Composite.add(engine?.world, [center]);
+  // Composite.add(engine?.world, [center]);
 
   watch(box, ({ w, h }) => {
     Body.setPosition(center, { x: w / 2, y: h / 2 });

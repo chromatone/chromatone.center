@@ -77,6 +77,9 @@ importers:
       jspdf:
         specifier: ^2.5.1
         version: 2.5.1
+      matter-attractors:
+        specifier: ^0.1.6
+        version: 0.1.6
       matter-js:
         specifier: ^0.19.0
         version: 0.19.0
@@ -2583,6 +2586,9 @@ packages:
 
   mark.js@8.11.1:
     resolution: {integrity: sha512-1I+1qpDt4idfgLQG+BNWmrqku+7/2bi5nLf4YwF8y8zXvmfiTBY3PV3ZibfrjBueCByROpuBjLLFCajqkgYoLQ==}
+
+  matter-attractors@0.1.6:
+    resolution: {integrity: sha512-vGFsFHS9m0hXnaswfKXT2nKfPXJs4lwnQJwkGrs1IHrVldKAmlBKBb4OcYh0rwQga3CFWGUq3JvKpWZvZuqlDQ==}
 
   matter-js@0.19.0:
     resolution: {integrity: sha512-v2huwvQGOHTGOkMqtHd2hercCG3f6QAObTisPPHg8TZqq2lz7eIY/5i/5YUV8Ibf3mEioFEmwibcPUF2/fnKKQ==}
@@ -6152,6 +6158,8 @@ snapshots:
       '@jridgewell/sourcemap-codec': 1.4.15
 
   mark.js@8.11.1: {}
+
+  matter-attractors@0.1.6: {}
 
   matter-js@0.19.0: {}
 

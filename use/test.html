@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>use-chromatone tests</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@unocss/reset/tailwind.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/@unocss/runtime"></script>
+  <script type="importmap">
+    {
+      "imports": {
+        "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <div class="p-4 flex flex-col items-start gap-8" id="app">
+    <div class="flex flex-wrap">
+      <div class="border-2 border-dark-300 rounded-xl p-4" v-for="input in midi.inputs" :key="input">
+
+        <h2>{{input.name}}</h2>
+        <h3 class="op-60">{{input.manufacturer}}</h3>
+      </div>
+    </div>
+    <div class="p-2 bg-light-900 rounded-xl">MIDI NOTE: {{midi.note?.number}}</div>
+  </div>
+
+  <script type="module">
+    import { createApp, ref } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+    import { useMidi } from 'https://unpkg.com/use-chromatone'
+
+    createApp({
+      setup() {
+        const message = ref('Hello Vue!')
+        const { midi } = useMidi()
+        return {
+          message, midi
+        }
+      }
+    }).mount('#app')
+  </script>
+</body>
+
+</html>

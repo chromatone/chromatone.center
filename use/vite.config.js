@@ -15,7 +15,7 @@ export default defineConfig({
     ViteYaml(),
   ],
   optimizeDeps: {
-    include: ['vue', '@vueuse/core', 'tone', 'tonal', 'colord'],
+    include: ['vue', '@vueuse/core', 'tone', 'tonal', 'colord', 'zzfx'],
   },
   publicDir: false,
   resolve: {

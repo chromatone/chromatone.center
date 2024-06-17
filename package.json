@@ -61,6 +61,7 @@
 		"hidpi-canvas": "^1.0.10",
 		"jisg": "^0.9.8",
 		"jspdf": "^2.5.1",
+		"mathjs": "^13.0.0",
 		"matter-attractors": "^0.1.6",
 		"matter-js": "^0.19.0",
 		"matter-wrap": "^0.2.0",

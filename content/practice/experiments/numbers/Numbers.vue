@@ -61,16 +61,17 @@ watch(seqName, name => {
   .flex.flex-wrap.gap-4.items-center
     .text-2xl Number sequence: 
 
-    select.p-2(v-model="seqName")
+    select.dark-bg-dark-200.rounded-xl.p-2(v-model="seqName")
       option(v-for="seq in sequences" :key="seq") {{ seq }}
     a(:href="`https://oeis.org/${seqName}`" target="_blank") {{ seqName }} at OEIS
   button.text-button.disabled-op-50(@click="playSequence()" :disabled="ended") Generate next number
-  .text-2xl {{ noteArray }}
+  .text-2xl.flex.gap-2
+    .p-0(v-for="note in noteArray" :key="note") {{ note }}
   .text-xl {{ midiArray }}
   .text-xl {{ numArray }}
   .text-xl {{ num }}
-  .flex.flex-wrap.gap-2
-    .text-xs(
+  .flex.flex-wrap.gap-1
+    button.text-xs.p-1.bg-light-900.dark-bg-dark-900(
       @click="num = number"
       v-for="number in sequence" :key="number") {{ number }}
 </template>

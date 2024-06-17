@@ -1,7 +1,7 @@
 
 import { computed, onMounted, reactive, onBeforeUnmount, watch } from "vue";
 
-import { synth as AppSynth, midi } from "./";
+import { synth as AppSynth, midi } from "#/use";
 
 let synth
 

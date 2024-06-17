@@ -47,6 +47,9 @@ importers:
       audiomotion-analyzer:
         specifier: ^4.5.0
         version: 4.5.0
+      big-integer:
+        specifier: ^1.6.52
+        version: 1.6.52
       chordsheetjs:
         specifier: ^10.1.0
         version: 10.1.0
@@ -74,6 +77,9 @@ importers:
       hidpi-canvas:
         specifier: ^1.0.10
         version: 1.0.10
+      jisg:
+        specifier: ^0.9.8
+        version: 0.9.8
       jspdf:
         specifier: ^2.5.1
         version: 2.5.1
@@ -1923,6 +1929,10 @@ packages:
     resolution: {integrity: sha512-I3yl4r9QB5ZRY3XuJVEPfc2XhZO6YweFPI+UovAzn+8/hb3oJ6lnysaFcjVpkCPfVWFUDvoZ8kmVDP7WyRtYtQ==}
     engines: {node: '>= 0.6.0'}
 
+  big-integer@1.6.52:
+    resolution: {integrity: sha512-QxD8cf2eVqJOOz63z6JIN9BzvVs/dlySa5HGSBH5xtR8dPteIRQnBxxKqkNTiT6jbDTF6jAfrd4oMcND9RGbQg==}
+    engines: {node: '>=0.6'}
+
   binary-extensions@2.2.0:
     resolution: {integrity: sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==}
     engines: {node: '>=8'}
@@ -2513,6 +2523,11 @@ packages:
   jest-worker@26.6.2:
     resolution: {integrity: sha512-KWYVV1c4i+jbMpaBC+U++4Va0cp8OisU185o73T1vo99hqi7w8tSJfUXYswwqqrjzwxa6KpRK54WhPvwf5w6PQ==}
     engines: {node: '>= 10.13.0'}
+
+  jisg@0.9.8:
+    resolution: {integrity: sha512-Tifj73ss2ZAllzILxcC0v55L+xmY/eKD8JySKfDvKIdpOTt+QIAVvK57ifi+fkp2HMrVHEOcojR4WHuFtSDE1g==}
+    engines: {node: '>14'}
+    hasBin: true
 
   jiti@1.21.0:
     resolution: {integrity: sha512-gFqAIbuKyyso/3G2qhiO2OM6shY6EPP/R0+mkDbyspxKazh8BXDC5FiFsUjlczgdNz/vfra0da2y+aHrusLG/Q==}
@@ -5544,6 +5559,8 @@ snapshots:
   base64-arraybuffer@1.0.2:
     optional: true
 
+  big-integer@1.6.52: {}
+
   binary-extensions@2.2.0: {}
 
   brace-expansion@1.1.11:
@@ -6184,6 +6201,8 @@ snapshots:
       '@types/node': 20.9.2
       merge-stream: 2.0.0
       supports-color: 7.2.0
+
+  jisg@0.9.8: {}
 
   jiti@1.21.0: {}
 

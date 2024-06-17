@@ -1,5 +1,5 @@
 <script setup>
-import { useZZFX } from "#/use";
+import { useZZFX } from "./zzfx.js";
 
 
 const { sound, limits } = useZZFX()

@@ -5,12 +5,22 @@ date: 2024-06-16
 layout: app
 links:
   - https://github.com/KilledByAPixel/ZzFX
+  - https://killedbyapixel.github.io/ZzFX/
+  - https://keithclark.github.io/ZzFXM/#note-code-1
+  - https://github.com/keithclark/ZzFXM
+  - https://github.com/js13kGames
 ---
 
-<client-only>
-<SynthZzfx></SynthZzfx>
+<script setup>
+import { defineClientComponent } from 'vitepress'
 
-</client-only>
+const SynthZzfx = defineClientComponent(() => {
+  return import('./SynthZzfx.vue')
+})
+</script>
+
+<SynthZzfx/>
+
 
 ## ZzFX
 

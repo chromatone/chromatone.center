@@ -37,3 +37,5 @@ date: 2014-06-02
 * [Structured Audio Orchestra Language](https://en.wikipedia.org/wiki/Structured_Audio_Orchestra_Language "Structured Audio Orchestra Language") (SAOL), part of the [MPEG-4 Structured Audio](https://en.wikipedia.org/wiki/MPEG-4_Structured_Audio "MPEG-4 Structured Audio") standard
 * [SuperCollider](https://en.wikipedia.org/wiki/SuperCollider "SuperCollider")
 * [SynthEdit](https://en.wikipedia.org/wiki/SynthEdit "SynthEdit"), a modular visual programming language for signal processing aimed at creating [audio plug-ins](https://en.wikipedia.org/wiki/Audio_plug-in "Audio plug-in")
+* [melo](https://github.com/dy/melo) - Micro language for floatbeats and audio, it has smooth operator and organic sugar. Compiles to compact 0-runtime WASM with linear memory. 
+* [topos](https://github.com/Bubobubobubobubo/topos?) - A Web-Based Algorithmic Sequencer. Topos is a web based live coding environment designed to be installation-free, independant and fun. 

@@ -37,7 +37,7 @@ function usePendulum(octaveOffset = 0) {
   const coords = ref([])
 
   useRafFn(({ delta }) => {
-    pendulum.value.tick(delta / 4000)
+    pendulum.value.tick(delta / 8000)
     coords.value = pendulum.value.coordinates
   })
 

@@ -3,6 +3,7 @@ title: ZZFX
 description:  Zuper Zmall Zound Zynth
 date: 2024-06-16
 layout: app
+cover: cover.png
 links:
   - https://github.com/KilledByAPixel/ZzFX
   - https://killedbyapixel.github.io/ZzFX/

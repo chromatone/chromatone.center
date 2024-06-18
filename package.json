@@ -16,7 +16,7 @@
 	"engines": {
 		"node": "^20.x"
 	},
-	"packageManager": "pnpm@9.3.0",
+	"packageManager": "pnpm@9.4.0",
 	"exports": {
 		".": {
 			"import": "./lib/use-chromatone.js",
@@ -45,7 +45,7 @@
 		"@vueuse/gesture": "^2.0.0",
 		"@vueuse/integrations": "^10.11.0",
 		"@vueuse/math": "^10.11.0",
-		"abcjs": "^6.3.0",
+		"abcjs": "^6.4.1",
 		"aubiojs": "^0.2.1",
 		"audio-recorder-polyfill": "^0.4.1",
 		"audiomotion-analyzer": "^4.5.0",
@@ -76,7 +76,7 @@
 		"simplex-noise": "^4.0.1",
 		"smplr": "^0.15.1",
 		"sortablejs": "^1.15.2",
-		"svg2pdf.js": "^2.2.3",
+		"svg2pdf.js": "^2.2.4",
 		"thousands-counter": "^2.1.1",
 		"tonal": "^6.0.1",
 		"tone": "^15.0.4",
@@ -91,7 +91,7 @@
 	},
 	"devDependencies": {
 		"@directus/sdk": "^16.1.0",
-		"@iconify/json": "^2.2.219",
+		"@iconify/json": "^2.2.220",
 		"@modyfi/vite-plugin-yaml": "^1.1.0",
 		"@unocss/extractor-pug": "^0.61.0",
 		"@vite-pwa/vitepress": "^0.5.0",

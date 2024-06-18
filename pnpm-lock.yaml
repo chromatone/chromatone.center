@@ -36,8 +36,8 @@ importers:
         specifier: ^10.11.0
         version: 10.11.0(vue@3.4.29)
       abcjs:
-        specifier: ^6.3.0
-        version: 6.3.0
+        specifier: ^6.4.1
+        version: 6.4.1
       aubiojs:
         specifier: ^0.2.1
         version: 0.2.1
@@ -129,8 +129,8 @@ importers:
         specifier: ^1.15.2
         version: 1.15.2
       svg2pdf.js:
-        specifier: ^2.2.3
-        version: 2.2.3(jspdf@2.5.1)
+        specifier: ^2.2.4
+        version: 2.2.4(jspdf@2.5.1)
       thousands-counter:
         specifier: ^2.1.1
         version: 2.1.1
@@ -169,8 +169,8 @@ importers:
         specifier: ^16.1.0
         version: 16.1.0
       '@iconify/json':
-        specifier: ^2.2.219
-        version: 2.2.219
+        specifier: ^2.2.220
+        version: 2.2.220
       '@modyfi/vite-plugin-yaml':
         specifier: ^1.1.0
         version: 1.1.0(rollup@2.79.1)(vite@5.3.1(@types/node@20.9.2)(terser@5.24.0))
@@ -1095,8 +1095,8 @@ packages:
   '@floating-ui/utils@0.1.6':
     resolution: {integrity: sha512-OfX7E2oUDYxtBvsuS4e/jSn4Q9Qb6DzgeYtsAdkPZ47znpoNsMgZw0+tVijiv3uGNR6dgNlty6r9rzIzHjtd/A==}
 
-  '@iconify/json@2.2.219':
-    resolution: {integrity: sha512-q8asqbM61woVZ9rJGm/gvW46i5vdeHrq4TqZQ/5wF5ypk4pAZU9+4qVa5NQE2MZngYkMPeO68PDGGl7WaEV8jQ==}
+  '@iconify/json@2.2.220':
+    resolution: {integrity: sha512-EpKZAK99E5qmgeOS5XOxzlzPaYXOkhLneypLFvbKIU3/KGmxGS/k6pgaEX6wTId4oF2HPGBDJnXyvckHiOHQiA==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -1828,8 +1828,8 @@ packages:
   '@vueuse/shared@10.11.0':
     resolution: {integrity: sha512-fyNoIXEq3PfX1L3NkNhtVQUSRtqYwJtJg+Bp9rIzculIZWHTkKSysujrOk2J+NrRulLTQH9+3gGSfYLWSEWU1A==}
 
-  abcjs@6.3.0:
-    resolution: {integrity: sha512-cXYvACLCJ/PGMh2LLtRB8Ks+tDbDySTaNNPXFsChBIFoscZFoTE4Ks4JIYru2nELjZujZBnfN0Syk5VLtzJuMQ==}
+  abcjs@6.4.1:
+    resolution: {integrity: sha512-E8hkfcwInZrKenI1io9PH78G66bvsOA8pqbuw0oENB4VZw8cTwUXUgY+eLdYpUiBb63qcnsiqBO/Y5nYhdVGOA==}
 
   acorn@7.4.1:
     resolution: {integrity: sha512-nQyp0o1/mNdbTO1PO6kHkwSrmgZ0MT/jCCpNiwbUjGoRN4dlBhqJtoQuCnEOKzgTVwg0ZWiCoQy6SxMebQVh8A==}
@@ -3165,8 +3165,8 @@ packages:
     resolution: {integrity: sha512-qsjeeq5YjBZ5eMdFuUa4ZosMLxgr5RZ+F+Y1OrDhuOCEInRMA3x74XdBtggJcj9kOeInz0WE+LgCPDkZFlBYJw==}
     engines: {node: '>=12.0.0'}
 
-  svg2pdf.js@2.2.3:
-    resolution: {integrity: sha512-PqOkKIy+zzU3DQQnPpzvwpjqtonCiPz8bAUVzXlz0f25p7pFvGTnj8IGwoFBV9bBlhLk50FABDzTW8JZNOyQaQ==}
+  svg2pdf.js@2.2.4:
+    resolution: {integrity: sha512-ujf+KqVpwAk/MPpTQqv4psV5eVLX/SoIJVHqe2ZhcqZfLd4DF48TzJBC95dVyoZSLqGbXp+GnfwotvCsJwrXXQ==}
     peerDependencies:
       jspdf: ^2.0.0
 
@@ -4657,7 +4657,7 @@ snapshots:
 
   '@floating-ui/utils@0.1.6': {}
 
-  '@iconify/json@2.2.219':
+  '@iconify/json@2.2.220':
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 1.1.2
@@ -5477,7 +5477,7 @@ snapshots:
       - '@vue/composition-api'
       - vue
 
-  abcjs@6.3.0: {}
+  abcjs@6.4.1: {}
 
   acorn@7.4.1: {}
 
@@ -6659,7 +6659,7 @@ snapshots:
 
   regenerator-transform@0.15.2:
     dependencies:
-      '@babel/runtime': 7.24.4
+      '@babel/runtime': 7.24.7
 
   regexp.prototype.flags@1.5.1:
     dependencies:
@@ -6927,7 +6927,7 @@ snapshots:
   svg-pathdata@6.0.3:
     optional: true
 
-  svg2pdf.js@2.2.3(jspdf@2.5.1):
+  svg2pdf.js@2.2.4(jspdf@2.5.1):
     dependencies:
       cssesc: 3.0.0
       font-family-papandreou: 0.2.0-patch2
@@ -7389,7 +7389,7 @@ snapshots:
       '@apideck/better-ajv-errors': 0.3.6(ajv@8.12.0)
       '@babel/core': 7.24.7
       '@babel/preset-env': 7.23.3(@babel/core@7.24.7)
-      '@babel/runtime': 7.24.4
+      '@babel/runtime': 7.24.7
       '@rollup/plugin-babel': 5.3.1(@babel/core@7.24.7)(rollup@2.79.1)
       '@rollup/plugin-node-resolve': 11.2.1(rollup@2.79.1)
       '@rollup/plugin-replace': 2.4.2(rollup@2.79.1)

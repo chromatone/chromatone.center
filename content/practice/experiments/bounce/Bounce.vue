@@ -9,6 +9,7 @@ import { noteNames } from '#/use/theory.js';
 import { pitchColor } from '#/use/calculations.js';
 
 import { Range, Scale } from "tonal";
+import { tempo } from '#/use';
 
 const svg = ref()
 const box = reactive({ w: 1000, h: 1000 })
@@ -18,23 +19,18 @@ useResizeObserver(svg, s => {
   box.h = s[0].contentRect.height
 })
 
-
-const time = useTimestamp({ offset: -Date.now() })
-
 const scaleLength = computed(() => globalScale.pcs.length)
 
-const n = computed(() => scaleLength.value * 2 + 1)
-
-const notes = computed(() => Range.numeric([0, n.value]).map(Scale.steps(globalScale.full.name)))
+const notes = computed(() => Range.numeric([-scaleLength.value, scaleLength.value]).map(Scale.steps(globalScale.full.name)))
 
 const nodes = reactive([])
 
 watchEffect(() => {
   nodes.length = 0
-  for (let node = 0; node <= n.value; node++) {
+  for (let node = 0; node < notes.value.length; node++) {
     const nod = {
-      x: (node + 1) / (n.value + 2),
-      y: Math.abs(Math.sin(-10 + time.value / (1000 + node * 10))),
+      x: (node + 1) / (notes.value.length + 2),
+      y: Math.abs(Math.sin(Math.PI / 2 + Math.PI * tempo.ticks / (192 * 4 + node * 8))),
       note: notes.value[node],
       midi: Note.midi(notes.value[node])
     }
@@ -70,7 +66,14 @@ function playNote(note) {
 </script>
 
 <template lang='pug'>
-p.absolute.text-xs {{ time }}
+.absolute.flex.flex-wrap.gap-1.w-full.p-1
+  button.p-2.border-1.border-dark-100.dark-border-light-300(@click="tempo.stopped = true")
+    .i-la-stop
+  button.p-2.border-1.border-dark-100.dark-border-light-300(@click="tempo.playing = !tempo.playing")
+    .i-la-play(v-if="!tempo.playing")
+    .i-la-pause(v-else)
+  .flex-1
+  .p-2.text-xs.font-mono.border-1.border-dark-100.dark-border-light-300 {{ tempo.ticks }}
 svg#bounce.select-none.min-h-100svh.min-w-full(
   ref="svg"
   version="1.1",
@@ -82,57 +85,43 @@ svg#bounce.select-none.min-h-100svh.min-w-full(
   rect(:width="box.w" :height="box.h" stroke="white" fill="#2222")
 
   g(v-for="(node, b) in nodes" :key="node")
-    rect(
-      :transform="`translate(${-box.w / n / 2} 0)`"
-      stroke-width="2"
-      stroke="currentColor"
-      :x="node.x * box.w + 5" 
+    rect.op-80.transition(
+      stroke-width="1"
+      :stroke="pitchColor(noteNames[globalScale.pcs[b % globalScale.pcs.length]], 5, 1, 0.5)"
+      :x="node.x * box.w" 
       :y="box.h - 100" :y2="box.h - 100"
-      :width="box.w / (n + 2) - 10"
+      :width="box.w / (notes.length + 2) - 10"
       :height="40"
       rx="2"
       :fill="active[node.note] ? pitchColor(node.midi + 3, 4) : 'transparent'"
       )
+  g(
+    v-for="(node, b) in nodes" :key="node"
+    :transform="`translate(${box.w / (notes.length + 4) / 2} 0)`"
+    )    
+    line.op-20(
+      :transform="`translate(${node.x * box.w} 0)`"
+      :y1="box.h / 3 - 100"
+      :y2="box.h - 100"
+      stroke="currentColor"
+      )
     line(
       stroke-width="1"
-      stroke="currentColor" 
+      :stroke="pitchColor(noteNames[globalScale.pcs[b % globalScale.pcs.length]], 5)"
       v-if="b > 0"
       :x1="nodes[b - 1].x * box.w"
       :y1="-nodes[b - 1].y * box.h / 1.5 + box.h - 100"
       :x2="node.x * box.w"
       :y2="-node.y * box.h / 1.5 + box.h - 100"
       )
+  g(
+    v-for="(node, b) in nodes" :key="node"
+    :transform="`translate(${box.w / (notes.length + 4) / 2} 0)`"
+    )
     circle(
       :cx="node.x * box.w" 
       :cy="-node.y * box.h / 1.5 + box.h - 100" 
       :r="8" 
       :fill="pitchColor(noteNames[globalScale.pcs[b % globalScale.pcs.length]], 5)")
 
-
-
-//- line.transition(
-//-   :x1="box.w / 2" 
-//-   :x2="box.w / 2" 
-//-   :y1="0" 
-//-   :y2="box.h" 
-//-   :stroke="midi.note.velocity > 0 ? pitchColor(midi.note.pitch) : '#999'")
-
-
-  //- g(v-for="(pen, p) in bouncers" :key="pen")
-  //-   g(v-for="(coord, c) in pen.coords" :key="coord")
-  //-     line( v-if="c !== 0"
-  //-       :x1="box.w / 2 + pen.coords[c - 1].x * box.h / (n + 1)"
-  //-       :y1="box.h / 10 - pen.coords[c - 1].y * box.h / (n + 1)"
-  //-       :x2="box.w / 2 + coord.x * box.h / (n + 1)"
-  //-       :y2="box.h / 10 - coord.y * box.h / (n + 1)"
-  //-       :stroke-width="(p * 2 + 1) * 2"
-  //-       stroke="currentColor")
-  //-   g(v-for="(coord, c) in pen" :key="coord")
-  //-     circle(
-  //-       style="transform-origin: center; transform-box: fill-box; transition: transform 1s ease-in-out;"
-  //-       :style="{ transform: `scale(${pen.active[globalScale.full.notes[c]] ? 2 : 1})` }"
-  //-       :fill="pitchColor(noteNames[globalScale.pcs[c]], 4)" 
-  //-       :cx="box.w / 2 + coord.x * box.h / (n + 1)" 
-  //-       :cy="box.h / 10 - coord.y * box.h / (n + 1)" 
-  //-       :r="(p + 1) * 10")
 </template>

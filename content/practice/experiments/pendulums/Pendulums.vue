@@ -8,10 +8,11 @@ import { midi, midiPlay, midiStop, playKey } from '#/use/midi.js';
 import { Note } from 'tonal';
 import { noteNames } from '#/use/theory.js';
 import { pitchColor } from '#/use/calculations.js';
+import { tempo } from '#/use/tempo.js';
 
 const svg = ref()
 const box = reactive({ w: 1000, h: 1000 })
-const n = computed(() => globalScale.full.notes.length)
+const n = computed(() => globalScale.pcs.length)
 
 useResizeObserver(svg, s => {
   box.w = s[0].contentRect.width
@@ -29,15 +30,16 @@ function usePendulum(octaveOffset = 0) {
   const active = reactive({})
 
   const pendulum = computed(() => new Pendulum(
-    n.value,
-    Array(n.value).fill(1).map(() => Math.random() * Math.PI),
-    Array(n.value).fill(1).map(() => Math.random() * Math.PI)
+    globalScale.pcs.length,
+    Array(globalScale.pcs.length).fill(1).map(() => Math.PI + Math.random() * Math.PI / 2),
+    Array(globalScale.pcs.length).fill(1).map(() => -Math.random() * 2)
   ))
 
   const coords = ref([])
 
-  useRafFn(({ delta }) => {
-    pendulum.value.tick(delta / 8000)
+  watch(() => tempo.ticks, (ts, to) => {
+    if (ts < to) ts = to + 1
+    pendulum.value.tick((ts - to) * 0.0005)
     coords.value = pendulum.value.coordinates
   })
 
@@ -74,7 +76,14 @@ function usePendulum(octaveOffset = 0) {
 </script>
 
 <template lang='pug'>
-pre.absolute.text-xs 
+.absolute.flex.flex-wrap.gap-1.w-full.p-1
+  button.p-2.border-1.border-dark-100.dark-border-light-300(@click="tempo.stopped = true")
+    .i-la-stop
+  button.p-2.border-1.border-dark-100.dark-border-light-300(@click="tempo.playing = !tempo.playing")
+    .i-la-play(v-if="!tempo.playing")
+    .i-la-pause(v-else)
+  .flex-1
+  .p-2.text-xs.font-mono.border-1.border-dark-100.dark-border-light-300 {{ tempo.ticks }}
 svg#metronome.select-none.min-h-100svh.min-w-full(
   ref="svg"
   version="1.1",

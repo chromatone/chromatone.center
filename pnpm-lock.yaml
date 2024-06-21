@@ -122,9 +122,6 @@ importers:
       recordrtc:
         specifier: ^5.6.2
         version: 5.6.2
-      scribbletune:
-        specifier: ^5.0.2
-        version: 5.0.2
       similar-english-words:
         specifier: ^2.0.0
         version: 2.0.0
@@ -2372,9 +2369,6 @@ packages:
     resolution: {integrity: sha512-ax7ZYomf6jqPTQ4+XCpUGyXKHk5WweS+e05MBO4/y3WJ5RkmPXNKvX+bx1behVILVwr6JSQvZAku021CHPXG3Q==}
     engines: {node: '>=10'}
 
-  harmonics@1.1.0:
-    resolution: {integrity: sha512-LHSh7D6gn75NxvGog5qkdvBRweQVVNcncQhRgO/MW6pg749qZ78Q5EJV9xjr9Emqm/gIDQRdQIMo1xsrwruSQQ==}
-
   has-bigints@1.0.2:
     resolution: {integrity: sha512-tSvCKtBr9lkF0Ex0aQiP9N+OpV4zi2r/Nee5VkRDbaqv35RLYMzbwQfFSZZH0kR+Rd6302UJZ2p/bJCEoR3VoQ==}
 
@@ -2586,9 +2580,6 @@ packages:
     resolution: {integrity: sha512-OYu7XEzjkCQ3C5Ps3QIZsQfNpqoJyZZA99wd9aWd05NCtC5pWOkShK2mkL6HXQR6/Cy2lbNdPlZBpuQHXE63gA==}
     engines: {node: '>=4'}
     hasBin: true
-
-  jsmidgen@0.1.5:
-    resolution: {integrity: sha512-AcfpCk5gtBkCeWed8eYbzMa/B/AYLXgJfLb+j7C46wEUrwRvTQw/GvdT9daJFoFRCJCuf598wnPeyB2TstpBxA==}
 
   json-schema-traverse@1.0.0:
     resolution: {integrity: sha512-NM8/P9n3XjXhIZn1lLhkFaACTOURQXjWhV4BA/RnOv8xvgqtqpAX9IO4mRQxSx1Rlo4tqzeqb0sOlruaOy3dug==}
@@ -3031,10 +3022,6 @@ packages:
 
   safe-regex-test@1.0.0:
     resolution: {integrity: sha512-JBUUzyOgEwXQY1NuPtvcj/qcBDbDmEvWufhlnXZIm75DEHp+afM1r1ujJpJsV/gSM4t59tpDyPi1sd6ZaPFfsA==}
-
-  scribbletune@5.0.2:
-    resolution: {integrity: sha512-UXdGiibR8XxOOwGdzpM0ImDC/HCTBF7b2DSgCenB5C6GBy2vT9jQ0VNuzhjA6SX4f5LArFiwXIyAGjY6hoTzbQ==}
-    engines: {node: '>8.x.x'}
 
   search-insights@2.11.0:
     resolution: {integrity: sha512-Uin2J8Bpm3xaZi9Y8QibSys6uJOFZ+REMrf42v20AA3FUDUrshKkMEP6liJbMAHCm71wO6ls4mwAf7a3gFVxLw==}
@@ -6108,8 +6095,6 @@ snapshots:
     dependencies:
       duplexer: 0.1.2
 
-  harmonics@1.1.0: {}
-
   has-bigints@1.0.2: {}
 
   has-flag@3.0.0: {}
@@ -6293,8 +6278,6 @@ snapshots:
   jsesc@0.5.0: {}
 
   jsesc@2.5.2: {}
-
-  jsmidgen@0.1.5: {}
 
   json-schema-traverse@1.0.0: {}
 
@@ -6780,11 +6763,6 @@ snapshots:
       call-bind: 1.0.5
       get-intrinsic: 1.2.2
       is-regex: 1.1.4
-
-  scribbletune@5.0.2:
-    dependencies:
-      harmonics: 1.1.0
-      jsmidgen: 0.1.5
 
   search-insights@2.11.0: {}
 

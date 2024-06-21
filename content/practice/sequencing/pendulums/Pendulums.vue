@@ -1,7 +1,6 @@
 <script setup>
-import { ref, reactive, onMounted, watch, computed } from 'vue';
-import { useRafFn, useResizeObserver, useTimestamp } from '@vueuse/core';
-import { Pendulum } from './pendulum.js'
+import { ref, reactive, watch, computed } from 'vue';
+import { useResizeObserver, } from '@vueuse/core';
 
 import { globalScale } from '#/use/chroma.js';
 import { midi, midiPlay, midiStop, playKey } from '#/use/midi.js';
@@ -9,6 +8,8 @@ import { Note } from 'tonal';
 import { noteNames } from '#/use/theory.js';
 import { pitchColor } from '#/use/calculations.js';
 import { tempo } from '#/use/tempo.js';
+
+import { Pendulum } from './pendulum.js'
 
 const svg = ref()
 const box = reactive({ w: 1000, h: 1000 })
@@ -23,7 +24,6 @@ const pendulums = reactive([])
 for (let i = 0; i < 2; i++) {
   pendulums[i] = usePendulum(-i)
 }
-
 
 function usePendulum(octaveOffset = 0) {
 

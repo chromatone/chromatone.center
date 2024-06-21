@@ -6,8 +6,6 @@ import bigInt from 'big-integer'
 import { Note } from 'tonal';
 import { globalScale, midiPlay, midiStop, playKey } from '#/use';
 
-const { A000045 } = jisg
-
 const sequences = Object.keys(jisg).filter((seq => seq[0] == 'A'))
 
 const seqName = ref('A000045')

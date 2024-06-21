@@ -1,0 +1,84 @@
+<script setup>
+import { useClamp } from '@vueuse/math';
+import { onMounted, shallowRef, ref, computed } from 'vue'
+import { Interval, Range, Scale } from 'tonal';
+import { globalScale } from '#/use';
+import { Part } from 'tone';
+import { useSynth } from '#/use';
+
+const vowels = ["e", "i", "a", "o", "u", "y"]
+const consonants = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z"]
+
+const allNotes = computed(() => Range.numeric([-7, 13]).map(Scale.steps(globalScale.full.name)))
+
+const words = shallowRef([])
+const loaded = ref(false)
+const currentIndex = useClamp(0, 0, () => words.value.length)
+const currentWord = computed(() => words.value[currentIndex.value])
+
+const vowelFreqs = computed(() => getFreqs(vowels))
+const orderedVowels = computed(() => vowels.toSorted((a, b) => vowelFreqs.value[a] >= vowelFreqs.value[b] ? -1 : 1))
+
+const consonantFreqs = computed(() => getFreqs(consonants))
+const orderedConsonants = computed(() => consonants.toSorted((a, b) => consonantFreqs.value[a] >= consonantFreqs.value[b] ? -1 : 1))
+
+const { once } = useSynth()
+
+const part = computed(() => {
+  let par = new Part((time, val) => {
+
+    once(val.note, val.duration, time)
+  }, [{ time: 0, duration: '16n', note: allNotes.value[0] }]).start('+0')
+  par.loop = true
+  return par
+})
+
+onMounted(async () => {
+  let { default: ws } = await import('an-array-of-english-words')
+  words.value = ws
+
+  loaded.value = true
+  randomWord()
+})
+
+function randomWord() {
+  currentIndex.value = Math.floor(Math.random() * words.value.length)
+}
+
+function getFreqs(arr) {
+  const freqs = {}
+  arr.forEach(v => freqs[v] = 0)
+  words.value.forEach(word => {
+    for (let letter of word) {
+      if (letter in freqs) {
+        freqs[letter]++
+      }
+    }
+  })
+  let full = Object.values(freqs).reduce((prev, val) => prev + val, 0)
+
+  for (let freq in freqs) {
+    freqs[freq] = freqs[freq] / full
+  }
+  return freqs
+}
+</script>
+
+<template lang='pug'>
+.flex.flex-col.gap-4.p-2
+  .text-2xl.flex.gap-2 WORDS {{ part }}
+    .p-0(v-if="!loaded") Loading...
+  .text-xl.font-mono {{ currentIndex }}/{{ words?.length }} 
+  .flex.is-group
+    button.text-button(@click="currentIndex--") Prev
+    button.text-button(@click="randomWord()") Pick random
+    button.text-button(@click="currentIndex++") Next
+  .text-2xl {{ currentWord }}
+  .flex.gap-2.is-group.p-2
+    .bg-light-100.p-1.text-md(v-for="(vowel) in orderedVowels" :key="vowel" :style="{ flex: `${vowelFreqs[vowel]}` }") {{ vowel.toUpperCase() }} 
+      .op-50 {{ (vowelFreqs[vowel] * 100).toFixed() }}%
+  .flex.flex-wrap.gap-2.is-group.p-2
+    .p-1.bg-light-100(v-for="(cons, c) in orderedConsonants" :key="cons" :style="{ flex: `${(consonantFreqs[cons] * 1000).toFixed(1)}` }") {{ cons }} 
+      .op-30 {{ allNotes[c] }}
+      .op-50 {{ (consonantFreqs[cons] * 100).toFixed(1) }}%
+</template>

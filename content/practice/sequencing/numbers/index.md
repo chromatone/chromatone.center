@@ -1,7 +1,7 @@
 ---
 title: Number Sequences
 description: Playing with mathematical wonders
-date: 2024-06-17
+date: 2024-04-08
 layout: app
 cover: cover.png
 links: 

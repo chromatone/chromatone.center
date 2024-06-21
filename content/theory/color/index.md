@@ -11,6 +11,6 @@ Then we dive deep into the physiology of [Human color perception](./perception/i
 
 [Color models](./models/index.md) study shows the research and the maths behind modern methods of reproducing any given color on the screen or on printed media.
 
-We list 12 [Main colors names](./names/index.md) to make sure we can use them later as 12 notes correspondents. And here comes the [Modal interplay](./interplay/index.md) approach that we use to expand average human music potential with visual aid.
+We list 12 [Main colors names](./names/index.md) to make sure we can use them later as 12 notes correspondents.
 
 <YoutubeEmbed video="1i8s8knHFTs" />

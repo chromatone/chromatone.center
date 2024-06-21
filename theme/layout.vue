@@ -70,7 +70,7 @@ midi-notes
         )
         .text-3rem.md-text-4rem.font-bold Chromatone
         .text-2rem.md-ml-1 Visual Music Language
-        .text-xl.md-ml-1 to learn, explore and express with 
+        .text-xl.md-ml-1 to learn, explore and communicate with 
       .flex.flex-wrap.items-start.px-4.gap-4
         .flex.flex-wrap.gap-4.items-stretch(
           style="flex: 1 1 280px;"

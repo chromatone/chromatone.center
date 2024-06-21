@@ -1,7 +1,7 @@
 ---
 title: Modal interplay
 description: Exploring the physical, physiological, neurological and psychological links between sight and hearing – the two main modalities of human perception.
-date: 2021-01-19
+date: 2021-10-19
 cover: logo.svg
 ---
 
@@ -11,7 +11,7 @@ Chromatone is a term composed of two parts. "Chroma" is an Ancient Greek word χ
 
 <img src="./logo.svg">
 
-A is the lowest frequency note and red is the lowest frequency color. It’s the starting point. Then we divide the [Light spectrum](./spectrum/index.md) into 12 parts and get scientifically correspondent colors for every note in an octave. Now we can see the circle of musical intervals with our eyes and use it to remember all the musical semitones. It may be like an artificial [Synesthesia](./synesthesia/index.md) to be developed to improve music learning and performing skills.
+A is the lowest frequency note and red is the lowest frequency color. It’s the starting point. Then we divide the [Light spectrum](./spectrum/index.md) into 12 parts and get scientifically correspondent colors for every note in an octave. Now we can see the circle of musical intervals with our eyes and use it to remember all the musical semitones. It may be like an artificial [Synesthesia](./synesthesia/index.md) to be developed to improve music learning and performing skills. Learn more about history of [Visual Music with Michael Filimowicz](./visual-music/index.md).
 
 - https://en.wikipedia.org/wiki/Colored_music_notation
 - https://en.wikipedia.org/wiki/Visual_music

@@ -1,37 +1,23 @@
 <script setup>
-import { onClickOutside, onKeyDown } from "@vueuse/core";
 import { useRoute, useData } from "vitepress";
-import { drawingEnabled, drawingPinned } from '../../composables/draw'
+import { drawingEnabled } from '../../composables/draw'
 import { ref } from "vue";
 import { tempo } from "#/use/tempo";
 import { globalScale, noteColor } from "#/use";
 import { mic } from "#/use/mic";
 
 import FullScreen from '../global/FullScreen.vue'
+import BarPanel from "./BarPanel.vue";
 
 const route = useRoute()
-const { isDark, theme } = useData()
+const { theme } = useData()
 
-const { open: searchOpen, panel: searchPanel } = usePanel()
-const { open: practiceOpen, panel: practicePanel } = usePanel()
-const { open: theoryOpen, panel: theoryPanel } = usePanel()
-const { open: settingsOpen, panel: settingsPanel } = usePanel()
-const { open: transportOpen, panel: transportPanel } = usePanel()
-const { open: pianoOpen, panel: pianoPanel } = usePanel()
-
-function usePanel() {
-  const open = ref(false)
-  const panel = ref()
-
-  onClickOutside(panel, () => {
-    open.value = false
-  })
-
-  onKeyDown('Escape', () => {
-    open.value = false
-  })
-  return { open, panel }
-}
+const searchOpen = ref()
+const practiceOpen = ref()
+const theoryOpen = ref()
+const settingsOpen = ref()
+const transportOpen = ref()
+const pianoOpen = ref()
 
 
 </script>
@@ -115,7 +101,7 @@ nav.bar
   :class="{ active: pianoOpen }" 
   aria-label="Toggle synth panel"
   v-tooltip.right="'Synth settings'"
-  :style="{color: noteColor(globalScale.tonic)}"
+  :style="{ color: noteColor(globalScale.tonic) }"
   )
     .i-mdi-piano
   button(
@@ -123,7 +109,7 @@ nav.bar
     :class="{ active: transportOpen }" 
     aria-label="Toggle transport panel"
     v-tooltip.right="'Transport'"
-    :style="{color: tempo.blink ? tempo.color : ''}"
+    :style="{ color: tempo.blink ? tempo.color : '' }"
     )
     .i-mdi-metronome
   button(
@@ -131,7 +117,7 @@ nav.bar
     :class="{ active: settingsOpen }" 
     aria-label="Toggle audio input/output panel"
     v-tooltip.right="'Audio input/output'"
-    :style="{color: mic.opened ? 'red': ''}"
+    :style="{ color: mic.opened ? 'red' : '' }"
     )
     .i-la-microphone
 
@@ -150,52 +136,27 @@ nav.bar
 
 
 client-only
-  transition(name="slide")
-    .panel(
-      ref="pianoPanel"
-      v-show="pianoOpen"
-      )
-      control-scale.w-full
-      synth-panel
-  transition(name="slide")
-    .panel(
-      ref="transportPanel"
-      v-show="transportOpen"
-      )
-      state-transport
-      midi-panel
+  BarPanel(v-model="pianoOpen")
+    control-scale.w-full
+    synth-panel
 
-  transition(name="slide")
-    .panel(
-      ref="settingsPanel"
-      v-show="settingsOpen"
-      )
-      state-sound
+  BarPanel(v-model="transportOpen")
+    state-transport
+    midi-panel
 
+  BarPanel(v-model="settingsOpen")
+    state-sound
 
-
-transition(name="slide")
-  .panel(
-    ref="searchPanel"
-    v-if="searchOpen"
-    )
+  BarPanel(v-model="searchOpen")
     nav-search.mt-4(@close="searchOpen = false" :focus="searchOpen")
 
-transition(name="slide")
-  .panel(
-    ref="theoryPanel"
-    v-if="theoryOpen"
-    )
+  BarPanel(v-model="theoryOpen")
     a.text-xl.p-2.my-2.block(
       href="/theory/"
       ) Theory
     BarLevel(path="/theory/" :level="0")
 
-transition(name="slide")
-  .panel(
-    ref="practicePanel"
-    v-if="practiceOpen"
-    )
+  BarPanel(v-model="practiceOpen")
     a.text-xl.p-2.my-2.block(
       href="/practice/"
       ) Practice
@@ -222,6 +183,7 @@ a.button {
   & h2 {
     @apply my-4 text-2xl
   }
+
 }
 
 .spacer {

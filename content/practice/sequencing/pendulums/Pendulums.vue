@@ -84,6 +84,9 @@ function usePendulum(octaveOffset = 0) {
     .i-la-pause(v-else)
   .flex-1
   .p-2.text-xs.font-mono.border-1.border-dark-100.dark-border-light-300 {{ tempo.ticks }}
+
+.absolute.bottom-0.top-0.left-0.right-0.flex.items-center.justify-center.text-2xl.z-100(@click="tempo.playing = true" v-if="!tempo.started") Press anywhere
+
 svg#metronome.select-none.min-h-100svh.min-w-full(
   ref="svg"
   version="1.1",

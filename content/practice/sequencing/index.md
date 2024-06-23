@@ -2,6 +2,7 @@
 title: Sequencing
 description: Digital music composition
 date: 2021-04-09
+cover: anton-shuvalov.jpg
 links:
   - https://blog.native-instruments.com/what-is-a-sequencer-in-music/
 ---

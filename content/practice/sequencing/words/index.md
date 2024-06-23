@@ -3,6 +3,7 @@ title: Words sequencing
 desctiption: Decomposing words into riffs and melodies
 data: 2024-06-21
 layout: app
+cover: cover.png
 links:
   - https://github.com/words/similar-english-words?tab=readme-ov-file
   - https://github.com/words/an-array-of-english-words?tab=readme-ov-file

@@ -10,6 +10,7 @@ import { pitchColor } from '#/use/calculations.js';
 
 import { Range, Scale } from "tonal";
 import { tempo } from '#/use';
+import { useClamp } from '@vueuse/math';
 
 const svg = ref()
 const box = reactive({ w: 1000, h: 1000 })
@@ -25,12 +26,18 @@ const notes = computed(() => Range.numeric([-scaleLength.value, scaleLength.valu
 
 const nodes = reactive([])
 
+const shift = useClamp(1, 0, 16)
+
+function dragShift(ev) {
+  shift.value += (ev.delta[0] / 100) - (ev.delta[1] / 100)
+}
+
 watchEffect(() => {
   nodes.length = 0
   for (let node = 0; node < notes.value.length; node++) {
     const nod = {
       x: (node + 1) / (notes.value.length + 2),
-      y: Math.abs(Math.sin(Math.PI / 2 + Math.PI * tempo.ticks / (192 * 4 + node * 8))),
+      y: Math.abs(Math.sin(Math.PI / 2 + Math.PI * tempo.ticks / (192 * 4 + shift.value * node * 8))),
       note: notes.value[node],
       midi: Note.midi(notes.value[node])
     }
@@ -66,12 +73,13 @@ function playNote(note) {
 </script>
 
 <template lang='pug'>
-.absolute.flex.flex-wrap.gap-1.w-full.p-1
+.absolute.flex.flex-wrap.gap-1.w-full.p-1.select-none
   button.p-2.border-1.border-dark-100.dark-border-light-300(@click="tempo.stopped = true")
     .i-la-stop
   button.p-2.border-1.border-dark-100.dark-border-light-300(@click="tempo.playing = !tempo.playing")
     .i-la-play(v-if="!tempo.playing")
     .i-la-pause(v-else)
+  .cursor-pointer.p-2.border-1.border-dark-100.dark-border-light-300(v-drag="dragShift") {{ shift.toFixed(2) }}
   .flex-1
   .p-2.text-xs.font-mono.border-1.border-dark-100.dark-border-light-300 {{ tempo.ticks }}
 svg#bounce.select-none.min-h-100svh.min-w-full(

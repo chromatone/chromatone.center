@@ -11,11 +11,25 @@ export function useCircles() {
   const mouseControl = MouseConstraint.create(engine, {
     element: canvas.value,
     constraint: {
-      render: { visible: false },
+      render: { visible: true },
     },
   });
 
+
   Composite.add(engine.world, [mouseControl]);
+
+  const hole = Bodies.circle(box.w / 2, box.h / 2, 20, {
+    isSensor: true,
+    isStatic: true,
+    label: 'hole',
+    render: {
+      lineWidth: 10,
+      strokeStyle: '#5558',
+      fillStyle: 'transparent'
+    },
+  })
+
+  Composite.add(engine.world, hole);
 
   const circles = Composites.stack();
 
@@ -84,6 +98,14 @@ export function useCircles() {
 
         const hitBody = pair[body]
         const originalStyle = hitBody.render.strokeStyle;
+
+        if (hitBody.label == 'hole') {
+
+          let other = body == 'bodyA' ? pair['bodyB'] : pair['bodyA']
+          if (other.label == 'particle') {
+            World.remove(engine.world, other);
+          }
+        }
 
         // // if (hitBody.render.fillStyle != 'transparent') continue;
         // if (hitBody.data?.count !== undefined) {

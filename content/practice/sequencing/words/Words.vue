@@ -15,6 +15,7 @@ const words = shallowRef([])
 const loaded = ref(false)
 const currentIndex = useClamp(0, 0, () => words.value.length)
 const currentWord = computed(() => words.value[currentIndex.value])
+const splittedWord = computed(() => splitWord(currentWord.value))
 
 const vowelFreqs = computed(() => getFreqs(vowels))
 const orderedVowels = computed(() => vowels.toSorted((a, b) => vowelFreqs.value[a] >= vowelFreqs.value[b] ? -1 : 1))
@@ -62,23 +63,50 @@ function getFreqs(arr) {
   }
   return freqs
 }
+
+function splitWord(word) {
+  if (!word) return []
+  const regex = /(?<consonant>[^aeiouy]?)(?<vowel>[aeiouy]*)/g;
+  const matches = Array.from(word.matchAll(regex));
+  return matches.reduce((acc, match) => {
+    const consonant = match.groups.consonant;
+    const vowels = match.groups.vowel;
+    if (consonant || vowels) {
+      acc.push([consonant || '', vowels || '']);
+    }
+    return acc;
+  }, []);
+}
+
+
+
+
 </script>
 
 <template lang='pug'>
+//- .text-12px.font-mono
+//-   span.p-1(v-for="word in words.slice(0, 800)" :key="word") {{ word }}
 .flex.flex-col.gap-4.p-2
   .text-2xl.flex.gap-2 WORDS {{ part }}
     .p-0(v-if="!loaded") Loading...
-  .text-xl.font-mono {{ currentIndex }}/{{ words?.length }} 
+
   .flex.is-group
     button.text-button(@click="currentIndex--") Prev
     button.text-button(@click="randomWord()") Pick random
     button.text-button(@click="currentIndex++") Next
+  .op-50.text-sm.font-mono {{ currentIndex }}/{{ words?.length }} 
   .text-2xl {{ currentWord }}
+  .flex.gap-2
+    .p-0.flex.gap-2px(v-for="syllable in splittedWord" :key="syllable") 
+      .p-0(v-for="letter in syllable" :key="letter") {{ letter }}
+
+  hr
+  .text-xl Letter frequencies in all {{ words?.length }}  words
   .flex.gap-2.is-group.p-2
-    .bg-light-100.p-1.text-md(v-for="(vowel) in orderedVowels" :key="vowel" :style="{ flex: `${vowelFreqs[vowel]}` }") {{ vowel.toUpperCase() }} 
+    .bg-light-100.dark-bg-dark-200.p-1.text-md(v-for="(vowel) in orderedVowels" :key="vowel" :style="{ flex: `${vowelFreqs[vowel]}` }") {{ vowel.toUpperCase() }} 
       .op-50 {{ (vowelFreqs[vowel] * 100).toFixed() }}%
   .flex.flex-wrap.gap-2.is-group.p-2
-    .p-1.bg-light-100(v-for="(cons, c) in orderedConsonants" :key="cons" :style="{ flex: `${(consonantFreqs[cons] * 1000).toFixed(1)}` }") {{ cons }} 
+    .p-1.bg-light-100.dark-bg-dark-200(v-for="(cons, c) in orderedConsonants" :key="cons" :style="{ flex: `${(consonantFreqs[cons] * 1000).toFixed(1)}` }") {{ cons }} 
       .op-30 {{ allNotes[c] }}
       .op-50 {{ (consonantFreqs[cons] * 100).toFixed(1) }}%
 </template>

@@ -3,6 +3,7 @@ import { colord } from 'colord'
 import { useStorage } from '@vueuse/core';
 import { useClamp } from '@vueuse/math';
 import { reactive, ref, computed, watchEffect } from 'vue'
+import { useGesture } from '@vueuse/gesture';
 
 const range = useClamp(useStorage('lab-range', 100), 100, 300)
 const rangeLow = computed(() => -range.value / 2)
@@ -39,30 +40,98 @@ function getSteps(count) {
   return [...Array(count)].map((_, i) => (i - count / 2) / count)
 }
 
-function onDrag(drag) {
-  mix.b -= drag.delta[1] / 2
-  mix.a += drag.delta[0] / 2
-}
+const controlCenter = ref()
+useGesture({
+  onDrag(ev) {
+    ev.event.preventDefault()
+    mix.b -= ev.delta[1] / 4
+    mix.a += ev.delta[0] / 4
+  },
+  onWheel(ev) {
+    ev.event.preventDefault()
+    mix.b += ev.delta[1] / 4
+    mix.a -= ev.delta[0] / 4
+  }
+}, {
+  domTarget: controlCenter,
+  eventOptions: { passive: false }
+})
 
-function onDragRes(drag) {
-  mix.res += drag.delta[0]
-}
+const controlRes = ref()
+useGesture({
+  onDrag(ev) {
+    ev.event.preventDefault()
+    mix.res += ev.delta[0]
+  },
+  onWheel(ev) {
+    ev.event.preventDefault()
+    mix.res -= ev.delta[0]
+  }
+}, {
+  domTarget: controlRes,
+  eventOptions: { passive: false }
+})
 
-function onDragRange(drag) {
-  range.value += drag.delta[0]
-}
+const controlRange = ref()
+useGesture({
+  onDrag(ev) {
+    ev.event.preventDefault()
+    range.value += ev.delta[0]
+  },
+  onWheel(ev) {
+    ev.event.preventDefault()
+    range.value -= ev.delta[0]
+  }
+}, {
+  domTarget: controlRange,
+  eventOptions: { passive: false }
+})
 
-function onDragL(drag) {
-  mix.l -= drag.delta[1] / 8
-}
+const controlLight = ref()
+useGesture({
+  onDrag(ev) {
+    ev.event.preventDefault()
+    mix.l -= ev.delta[1] / 8
+  },
+  onWheel(ev) {
+    ev.event.preventDefault()
+    mix.l += ev.delta[1] / 8
+  }
+}, {
+  domTarget: controlLight,
+  eventOptions: { passive: false }
+})
 
-function onDragA(drag) {
-  mix.a += drag.delta[0] / 2
-}
+const controlA = ref()
+useGesture({
+  onDrag(ev) {
+    ev.event.preventDefault()
+    mix.a += ev.delta[0] / 4
+  },
+  onWheel(ev) {
+    ev.event.preventDefault()
+    mix.a -= ev.delta[0] / 4
+  }
+}, {
+  domTarget: controlA,
+  eventOptions: { passive: false }
+})
 
-function onDragB(drag) {
-  mix.b -= drag.delta[1] / 2
-}
+const controlB = ref()
+useGesture({
+  onDrag(ev) {
+    ev.event.preventDefault()
+    mix.b -= ev.delta[1] / 4
+  },
+  onWheel(ev) {
+    ev.event.preventDefault()
+    mix.b += ev.delta[1] / 4
+  }
+}, {
+  domTarget: controlB,
+  eventOptions: { passive: false }
+})
+
 
 function selectColor(l, a, b) {
   mix.a = a * range.value
@@ -90,30 +159,30 @@ watchEffect(() => {
     text-anchor="middle",
     dominant-baseline="middle"
     style="touch-action: none; user-select:none"
-    :style="{color:mix.dark ?'white' : 'black'}"
+    :style="{ color: mix.dark ? 'white' : 'black' }"
     )
     defs
       linearGradient#gray(x1="0" x2="0" y1="0" y2="1")
         stop(
-          v-for="(step,i) in 10" :key="step"
+          v-for="(step, i) in 10" :key="step"
           :stop-color="colord({ l: 100 - 10 * i, a: mix.a, b: mix.b, alpha: 1 }).toHex()" :offset="i * 10 + '%'"
           )
       linearGradient#green-red(x1="0" x2="1" y1="0" y2="0")
         stop(
-          v-for="(step,i) in 10" :key="step"
+          v-for="(step, i) in 10" :key="step"
           :stop-color="colord({ l: mix.l, a: i * range / 10 - range / 2, b: mix.b, alpha: 1 }).toHex()" :offset="i * 10 + '%'"
           )
       linearGradient#blue-yellow(x1="0" x2="0" y1="0" y2="1")
         stop(
-          v-for="(step,i) in 10" :key="step"
+          v-for="(step, i) in 10" :key="step"
           :stop-color="colord({ l: mix.l, a: mix.a, b: (10 - i) * range / 10 - range / 2, alpha: 1 }).toHex()" :offset="i * 10 + '%'"
           )
-    g#square(v-drag="onDrag")
+    g#square(ref="controlCenter")
       g.row(
-        v-for="(a,an) in mix.steps.a" :key="a + an"
+        v-for="(a, an) in mix.steps.a" :key="a + an"
         )
         rect.cursor-pointer(
-          v-for="(b,bn) in mix.steps.b" :key="b + bn"
+          v-for="(b, bn) in mix.steps.b" :key="b + bn"
           :x="an * mix.width / (mix.res)"
           :y="bn * mix.height / (mix.res)"
           :rx="mix.current == getHex(mix.l, a, b) ? 10 : 0"
@@ -125,16 +194,16 @@ watchEffect(() => {
           :stroke="getHex(mix.l, a, b)"
           stroke-width="0.1px"
         )
-      transition(name="fade")
-        g#current.cursor-pointer
-          rect(
-            :x="30"
-            :y="30"
-            :width="40"
-            :height="40"
-            :fill="mix.hex"
-          )
-          color-svg-info(:color="mix.lab" :y="36")        
+    transition(name="fade")
+      g#current.cursor-pointer
+        rect(
+          :x="30"
+          :y="30"
+          :width="40"
+          :height="40"
+          :fill="mix.hex"
+        )
+        color-svg-info(:color="mix.lab" :y="36")        
 
     g#b-range.cursor-pointer
       rect#b(
@@ -143,7 +212,7 @@ watchEffect(() => {
         width="10"
         height="100"
         fill="url(#blue-yellow)"
-        v-drag="onDragB"
+        ref="controlB"
       )
       g.pointer-events-none(
         :transform="`translate(0,${100 * (-mix.b + range / 2) / (range)})`"
@@ -175,7 +244,7 @@ watchEffect(() => {
         width="10"
         height="100"
         fill="url(#gray)"
-        v-drag="onDragL"
+        ref="controlLight"
       )
       g.pointer-events-none(
         :transform="`translate(0,${100 - mix.l})`"
@@ -200,7 +269,7 @@ watchEffect(() => {
         width="100"
         height="10"
         fill="url(#green-red)"
-        v-drag="onDragA"
+        ref="controlA"
       )
       g.pointer-events-none(
         :transform="`translate(${100 * (mix.a + range / 2) / (range)},0)`"
@@ -228,7 +297,7 @@ watchEffect(() => {
     g#res.cursor-pointer(
       :transform="`translate(20, 105)`"
       font-size="2"
-      v-drag="onDragRes"
+      ref="controlRes"
     )
       rect(
         x="-20" y="-2.5" 
@@ -244,7 +313,7 @@ watchEffect(() => {
     g#range.cursor-pointer(
       :transform="`translate(80, 105)`"
       font-size="2"
-      v-drag="onDragRange"
+      ref="controlRange"
     )
       rect(
         x="-20" y="-2.5" 

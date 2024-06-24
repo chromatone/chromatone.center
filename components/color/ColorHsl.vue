@@ -4,6 +4,9 @@ import { colord } from 'colord'
 import { useTransition, TransitionPresets, useStorage } from '@vueuse/core'
 import { useClamp } from '@vueuse/math';
 import { reactive, ref, computed } from 'vue'
+import { useGesture } from '@vueuse/gesture';
+
+import { useSpring } from 'vue-use-spring'
 
 const harmonies = {
   monochromatic: [0],
@@ -43,10 +46,7 @@ const paramNames = {
   HWB: ['Hue', 'B', 'W',]
 }
 
-const angle = useTransition(computed(() => mix.hue), {
-  duration: 400,
-  transition: TransitionPresets.easeInOutCubic,
-})
+const angle = useSpring(mix)
 
 function generateTone(hue = mix.hue, sat = mix.sat, light = mix.light) {
   if (mix.space == 'Lch') {
@@ -58,23 +58,67 @@ function generateTone(hue = mix.hue, sat = mix.sat, light = mix.light) {
   }
 }
 
-function onDragSteps(drag) {
-  mix.hueCount += drag.delta[0]
-}
+const stepsControl = ref()
+useGesture({
+  onDrag(ev) {
+    ev?.event?.preventDefault()
+    mix.hueCount += ev.delta[0]
+  },
+  onWheel(ev) {
+    ev?.event?.preventDefault()
+    mix.hueCount -= ev.delta[0]
+  }
+}, {
+  domTarget: stepsControl,
+  eventOptions: { passive: false }
+})
 
-function onDrag(drag) {
-  mix.light -= drag.delta[1] / 8
-  mix.sat += drag.delta[0] / 8
-}
+const lightControl = ref()
+useGesture({
+  onDrag(ev) {
+    ev?.event?.preventDefault()
+    mix.light -= ev.delta[1] / 8
+  },
+  onWheel(ev) {
+    ev?.event?.preventDefault()
+    mix.light += ev.delta[1] / 8
+  }
+}, {
+  domTarget: lightControl,
+  eventOptions: { passive: false }
+})
 
-function onDragL(drag) {
-  mix.light -= drag.delta[1] / 8
-}
+const satControl = ref()
+useGesture({
+  onDrag(ev) {
+    ev?.event?.preventDefault()
+    mix.sat -= ev.delta[1] / 8
+  },
+  onWheel(ev) {
+    ev?.event?.preventDefault()
+    mix.sat += ev.delta[1] / 8
+  }
+}, {
+  domTarget: satControl,
+  eventOptions: { passive: false }
+})
 
-function onDragS(drag) {
-  mix.sat -= drag.delta[1] / 8
-}
-
+const centerControl = ref()
+useGesture({
+  onDrag(ev) {
+    ev?.event?.preventDefault()
+    mix.hue += ev.delta[0] / 8
+    mix.sat -= ev.delta[1] / 8
+  },
+  onWheel(ev) {
+    ev?.event?.preventDefault()
+    mix.hue -= ev.delta[0] / 8
+    mix.sat += ev.delta[1] / 8
+  }
+}, {
+  domTarget: centerControl,
+  eventOptions: { passive: false }
+})
 
 </script>
 
@@ -90,7 +134,7 @@ function onDragS(drag) {
     text-anchor="middle",
     dominant-baseline="middle"
     style="touch-action: none; user-select:none"
-    :style="{color: mix.dark ? 'white': 'black'}"
+    :style="{ color: mix.dark ? 'white' : 'black' }"
     )
     defs
       linearGradient#sat(x1="0" x2="0" y1="0" y2="1")
@@ -119,8 +163,8 @@ function onDragS(drag) {
     g#count.cursor-pointer(
       :transform="`translate(50, 102)`"
       font-size="2"
-      v-drag="onDragSteps"
-    )
+      ref="stepsControl"
+      )
       rect(
         x="-20" y="-2.5" 
         width="40" height="4" 
@@ -132,12 +176,12 @@ function onDragS(drag) {
         fill="#aaa" stroke="currentColor"
         stroke-width="0.2")
       text.uppercase {{ mix.hueCount }} HUE STEPS 
-    g#circle.cursor-pointer(v-drag="onDrag" :drag-options="{ filterTaps: true }")
+    g#circle.cursor-pointer(ref="centerControl")
       g.arc(
         v-for="(arc, i) in mix.hueArcs" :key="arc"
         :data-from="arc.from"
         :data-to="arc.to"
-      )
+        )
         svg-ring.sector(
           :cx="50"
           :cy="50"
@@ -149,8 +193,8 @@ function onDragS(drag) {
           @mousedown="mix.hue = arc.from"
           @touchstart="mix.hue = arc.from"
         )
-      g#coords.pointer-events-none(
-        :stroke="mix.info.dark ? 'white' : 'black'"
+    g#coords.pointer-events-none(
+      :stroke="mix.info.dark ? 'white' : 'black'"
       )
         circle(
           :cx="50"
@@ -160,7 +204,7 @@ function onDragS(drag) {
           stroke-width="0.2"
         )
         g#lines(
-          :transform="`translate(50,50) rotate(${angle - 180 + 180 / mix.hueCount})`" 
+          :transform="`translate(50,50) rotate(${angle.hue - 180 + 180 / mix.hueCount})`" 
           stroke-width="0.4"
           )
           line(
@@ -176,28 +220,31 @@ function onDragS(drag) {
             :y1="mix.sat * 0.27 + 18"
             :transform="`rotate(${angle})`"
           )
-          circle.transition-all.duration-400(
+          circle(
             :cy="mix.sat * 0.27 + 18"
-            r=3
+            r="3"
             :fill="mix.current"
           )
-      g#current
-        circle(
-          :fill="mix.current"
-          cx="50"
-          cy="50"
-          r="18"
+    g#current(
+
+      )
+      circle(
+        :fill="mix.current"
+        cx="50"
+        cy="50"
+        r="18"
+
         )
-        color-svg-info(
-          transform="scale(0.8) translate(12,5)" 
-          :color="mix.current" 
-          :y="40")
-        text(
-          x="50"
-          y="64"
-          font-size="4"
-          fill="currentColor"
-        ) {{ mix.hue.toFixed(0) }}&deg;
+      color-svg-info(
+        transform="scale(0.8) translate(12,5)" 
+        :color="mix.current" 
+        :y="40")
+      text(
+        x="50"
+        y="64"
+        font-size="4"
+        fill="currentColor"
+      ) {{ mix.hue.toFixed(0) }}&deg;
     g#l-range.cursor-pointer
       rect#light(
         x="100"
@@ -205,7 +252,7 @@ function onDragS(drag) {
         width="10"
         height="100"
         fill="url(#light)"
-        v-drag="onDragL"
+        ref="lightControl"
       )
       g.pointer-events-none(
         :transform="`translate(0,${100 - mix.light})`"
@@ -230,7 +277,7 @@ function onDragS(drag) {
         width="10"
         height="100"
         fill="url(#sat)"
-        v-drag="onDragS"
+        ref="satControl"
       )
       g.pointer-events-none(
         :transform="`translate(0,${100 - mix.sat})`"
@@ -249,7 +296,6 @@ function onDragS(drag) {
           y="-3"
         ) {{ paramNames[mix.space][1] }} {{ mix.sat.toFixed(1) }}
   .flex.flex-wrap.items-center.justify-center(:style="{ color: mix.info.dark ? '#FFF' : '#000' }")
-    .p-0.font-bold.text-xl Harmony
     button.p-1.capitalize.border-2.shadow-md.m-2.rounded-lg.border-dark-300(
       style="flex: 1 1 180px"
       v-for="(angles, harm) in harmonies" :key="harm"
@@ -259,11 +305,11 @@ function onDragS(drag) {
 
       ) 
       .p-0 {{ harm }}
-      .flex.justify-center.gap-1
-        .p-4.flex-1.rounded(
+      .flex.flex-wrap.justify-center.gap-1
+        .p-4.flex-1.rounded.text-sm.font-mono.uppercase(
           v-for="(step) in harmonies[harm]" :key="step" 
           :style="{ backgroundColor: generateTone(mix.hue + step).toHex() }"
-        )
+        ) {{ generateTone(mix.hue + step).toHex() }}
 </template>
 
 <style lang="postcss" scoped>

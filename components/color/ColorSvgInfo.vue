@@ -22,7 +22,7 @@ const dy = 4.8
 
 <template lang="pug">
 g
-  text.select-none(
+  text(
 
     v-if="info"
     :x="x"
@@ -34,13 +34,11 @@ g
     color-copy.font-bold.text-3px(x="51" dy="1" :text="info.hex")
     tspan.font-bold.text-4px(x="50" dy="5") {{ info.name }} 
 
-    color-copy(x="51" :dy="dy+3" :text="info.rgb")
+    color-copy(x="51" :dy="dy + 3" :text="info.rgb")
     color-copy(x="51" :dy="dy" :text="info.hsl") 
-    color-copy(x="51" :dy="dy" :text="` lab(${ info.lab.l }, ${ info.lab.a }, ${ info.lab.b })`")
+    color-copy(x="51" :dy="dy" :text="` lab(${info.lab.l}, ${info.lab.a}, ${info.lab.b})`")
     color-copy(x="51" :dy="dy" :text="info.cmyk.slice(7)")
 
 </template>
 
-<style lang="postcss" scoped>
-
-</style>
+<style lang="postcss" scoped></style>

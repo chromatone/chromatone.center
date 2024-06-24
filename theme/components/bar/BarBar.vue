@@ -31,7 +31,9 @@ nav.bar
     )
     img.cursor-pointer.mt-4.mx-2.mb-2(v-if="theme.logo", :src="theme.logo", alt="Chromatone logo" title="Chromatone")
 
+
   button(
+    :inert="theoryOpen"
     @click="theoryOpen = !theoryOpen"
     :class="{ active: theoryOpen || route.path.includes('theory') }"
     title="Theory"
@@ -40,6 +42,7 @@ nav.bar
     )
     .i-la-book
   button(
+    :inert="practiceOpen"
     @click="practiceOpen = !practiceOpen"
     :class="{ active: practiceOpen || route.path.includes('practice') }"
     title="Practice"
@@ -47,7 +50,11 @@ nav.bar
     v-tooltip.right="'Practice'"
     )
     .i-la-hand-point-up
+
+  .spacer
+
   a.button(
+
     title="tutor"
     href="/tutor/"
     :class="{ active: route.path.includes('tutor') }"
@@ -73,38 +80,40 @@ nav.bar
     aria-label="Academy"
     )
     .i-cil-education
-  a.button(
-    title="Contacts"
-    href="/contacts/"
-    :class="{ active: route.path.includes('contacts') }"
-    v-tooltip.right="'Contacts'"
-    aria-label="Contacts"
-    )
-    .i-la-at
-
+  //- a.button(
+  //-   title="Contacts"
+  //-   href="/contacts/"
+  //-   :class="{ active: route.path.includes('contacts') }"
+  //-   v-tooltip.right="'Contacts'"
+  //-   aria-label="Contacts"
+  //-   )
+  //-   .i-la-at
   .spacer
-
   button(
     title="Search"
+    :inert="searchOpen"
     @click="searchOpen = !searchOpen"
-    :class="{ active: searchOpen }"
+    :class="{ active: searchOpen, 'touch-action-none': searchOpen }"
     v-tooltip.right="'Search'"
     aria-label="Toggle search panel"
     )
     .i-la-search
 
+
   .flex-auto
   .spacer 
 
   button(
-  @click="pianoOpen = !pianoOpen"  
-  :class="{ active: pianoOpen }" 
-  aria-label="Toggle synth panel"
-  v-tooltip.right="'Synth settings'"
-  :style="{ color: noteColor(globalScale.tonic) }"
-  )
+    :inert="pianoOpen"
+    @click="pianoOpen = !pianoOpen"  
+    :class="{ active: pianoOpen }" 
+    aria-label="Toggle synth panel"
+    v-tooltip.right="'Synth settings'"
+    :style="{ color: noteColor(globalScale.tonic) }"
+    )
     .i-mdi-piano
   button(
+    :inert="transportOpen"
     @click="transportOpen = !transportOpen"  
     :class="{ active: transportOpen }" 
     aria-label="Toggle transport panel"
@@ -113,6 +122,7 @@ nav.bar
     )
     .i-mdi-metronome
   button(
+    :inert="settingsOpen"
     @click="settingsOpen = !settingsOpen"  
     :class="{ active: settingsOpen }" 
     aria-label="Toggle audio input/output panel"

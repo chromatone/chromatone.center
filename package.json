@@ -87,6 +87,7 @@
 		"vite-plugin-wasm": "^3.3.0",
 		"vue": "^3.4.29",
 		"vue-glsl": "^1.1.27",
+		"vue-use-spring": "^0.3.3",
 		"webchuck": "^1.2.7",
 		"webmidi": "^3.1.9",
 		"zzfx": "^1.2.3"

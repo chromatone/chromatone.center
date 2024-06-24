@@ -161,6 +161,9 @@ importers:
       vue-glsl:
         specifier: ^1.1.27
         version: 1.1.27
+      vue-use-spring:
+        specifier: ^0.3.3
+        version: 0.3.3(vue@3.4.29)
       webchuck:
         specifier: ^1.2.7
         version: 1.2.7
@@ -3506,6 +3509,15 @@ packages:
     resolution: {integrity: sha512-7+iqOueLU7uc9NrMfrzbG8hwMqchfVfSzpVlCMeJQe4pyibqyoifDNbKTZvwxZKDvGkB+PdFeKvnGZMoEb8esg==}
     peerDependencies:
       vue: ^3.0.0
+
+  vue-use-spring@0.3.3:
+    resolution: {integrity: sha512-738mdx7XwDHrmP22T5SqKltKTRfvjHS0D/4p9XEuxgUE/gYDC/PqlxUTnRtG3i05oT1cwwU1e9ZNLsxDbJJVvw==}
+    peerDependencies:
+      '@vue/composition-api': ^1.4.0
+      vue: ^2.6.12 || ^3.0.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
 
   vue@3.4.29:
     resolution: {integrity: sha512-8QUYfRcYzNlYuzKPfge1UWC6nF9ym0lx7mpGVPJYNhddxEf3DD0+kU07NTL0sXuiT2HuJuKr/iEO8WvXvT0RSQ==}
@@ -7324,6 +7336,11 @@ snapshots:
   vue-resize@2.0.0-alpha.1(vue@3.4.29):
     dependencies:
       vue: 3.4.29
+
+  vue-use-spring@0.3.3(vue@3.4.29):
+    dependencies:
+      vue: 3.4.29
+      vue-demi: 0.14.8(vue@3.4.29)
 
   vue@3.4.29:
     dependencies:

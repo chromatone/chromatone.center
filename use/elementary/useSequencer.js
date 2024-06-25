@@ -1,14 +1,11 @@
-import { reactive } from 'vue';
-import { useAudio } from '../useAudio';
+import { reactive, computed, watch } from 'vue';
 import { el } from '@elemaudio/core';
-import { computed } from 'vue';
-import { watch } from 'vue';
 import { useStorage } from '@vueuse/core';
 import { useClamp } from '@vueuse/math';
 import { kickSynth, hatSynth, clapSynth } from './useDrums'
+import { useElementary } from './useElementary';
 
 export function useSequencer() {
-
 
   const sequencer = reactive({
     mute: false,
@@ -36,7 +33,7 @@ export function useSequencer() {
   })
 
   watch(sequencer, s => {
-    const { audio, render } = useAudio()
+    const { audio, render } = useElementary()
 
     // const metro = el.metro({ interval: s.interval })
     const reset = el.const({ key: 'seq:reset', value: 0 })

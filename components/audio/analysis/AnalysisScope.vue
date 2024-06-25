@@ -1,6 +1,6 @@
 <script setup>
-import { onMounted, watch, computed, ref, reactive } from 'vue'
-import { useAudio } from '../useAudio'
+import { computed, reactive } from 'vue'
+import { useElementary } from '#/use/elementary/useElementary';
 
 const props = defineProps({
   name: { default: 'osc', type: String },
@@ -9,7 +9,7 @@ const props = defineProps({
 
 function useScope(name = 'osc') {
 
-  const { scopes } = useAudio()
+  const { scopes } = useElementary()
 
   const analyser = reactive({
     data: computed(() => scopes[name] || []),
@@ -23,7 +23,7 @@ const analyser = useScope(props.name)
 </script>
 
 <template lang='pug'>
-svg(ref="svgElem" v-show="analyser?.data?.length>2" :viewBox="`0 -25 ${analyser.data.length} 50`")
+svg(ref="svgElem" v-show="analyser?.data?.length > 2" :viewBox="`0 -25 ${analyser.data.length} 50`")
   polyline(
     stroke-width="2"
     :stroke="color"

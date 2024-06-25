@@ -1,11 +1,10 @@
 import { reactive, computed } from 'vue';
-import { useAudio }
-  from '../useAudio';
 import { el } from '@elemaudio/core';
-import { useUI } from '../tools/useUI';
+import { useUI } from './tools/useUI';
 import { watch, onMounted } from 'vue';
 import { freqPitch } from '#/use';
-import { hatSynth } from '../drums/useDrums';
+import { hatSynth } from './useDrums';
+import { useElementary } from './useElementary';
 
 const params = {
   //Kick
@@ -18,7 +17,7 @@ const params = {
 
 const { controls, groups, cv } = useUI(params, 'time')
 
-const { audio, meters, render } = useAudio()
+const { audio, meters, render } = useElementary()
 
 const time = computed(() => Object.fromEntries(Object.entries(meters).filter(v => v[0].startsWith('time:')).map(v => [v[0].slice(5), v[1].max]).sort((a, b) => a[0] < b[0] ? 0 : 1)))
 

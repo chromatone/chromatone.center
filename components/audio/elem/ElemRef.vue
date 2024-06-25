@@ -1,13 +1,13 @@
 <script setup>
 import { el } from '@elemaudio/core';
-import { useAudio } from '../useAudio.js';
 import { ref, watch } from 'vue';
 
 import params from './params.json'
 
-import { useParams } from '../useParams.js';
+import { useElementary } from '#/use/elementary/useElementary.js';
+import { useParams } from '#/use/elementary/useParams.js';
 
-const { audio, render } = useAudio()
+const { audio, render } = useElementary()
 
 const started = ref(false)
 

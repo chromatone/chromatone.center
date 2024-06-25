@@ -1,8 +1,10 @@
 <script setup>
 import { onMounted, reactive, computed } from 'vue'
-import { useTime } from './useTime'
+
 import { levelColor, notes, pitchColor } from '#/use'
-import { useAudio } from '../useAudio';
+
+import { useElementary } from '#/use/elementary/useElementary';
+import { useTime } from '#/use/elementary/useTime';
 // import ControlKnob from '@slipmatio/control-knob'
 
 const { time, controls, groups, transport } = useTime()
@@ -12,7 +14,7 @@ const loop = reactive({
   height: 22
 })
 
-const { render, audio } = useAudio()
+const { render, audio } = useElementary()
 
 
 const steps = computed(() => Math.round(controls['time:steps']))
@@ -21,7 +23,7 @@ const steps = computed(() => Math.round(controls['time:steps']))
 
 <template lang='pug'>
 #screen.flex.flex-col.gap-2.bg-light-200.bg-opacity-40.dark-bg-dark-400.dark-bg-opacity-40.backdrop-blur.pt-2.px-2.rounded-xl.shadow-xl.border-1.border-dark-200.border-opacity-20.dark-border-light-200.dark-border-opacity-30(v-if="audio?.started")
-  .p-1.rounded-full(:style="{backgroundColor:time.pulse ? 'currentColor' : 'transparent'}")
+  .p-1.rounded-full(:style="{ backgroundColor: time.pulse ? 'currentColor' : 'transparent' }")
   svg.w-full.rounded.select-none(:viewBox="`0 0 ${loop.width} ${loop.height}`")
     rect(
       fill="#8881"
@@ -32,36 +34,36 @@ const steps = computed(() => Math.round(controls['time:steps']))
 
     g.beats   
       g.beat(
-        v-for="(s,b) in steps" :key="b"
-        :transform="`translate(${b*loop.width/steps},0)`" )
+        v-for="(s, b) in steps" :key="b"
+        :transform="`translate(${b * loop.width / steps},0)`" )
         rect(
-          :width="loop.width/steps"
+          :width="loop.width / steps"
           :height="loop.height"
-          :fill="b!=Math.floor(time.step) ? '#6662' : levelColor(b+(time.pitch/12)*steps,steps,1)")
+          :fill="b != Math.floor(time.step) ? '#6662' : levelColor(b + (time.pitch / 12) * steps, steps, 1)")
         line(
-          :stroke="levelColor(b+(time.pitch/12)*steps,steps)"
+          :stroke="levelColor(b + (time.pitch / 12) * steps, steps)"
           stroke-width=".3"
           :y2="loop.height")
         text(
-          :x="2-steps/10"
-          :y="loop.height-2"
-          :font-size="16-steps/1.5"
-          :fill="b==Math.floor(time.step) ? 'currentColor' : levelColor(b+(time.pitch/12)*steps,steps,1)"
-          :font-weight="b==Math.floor(time.step) ? 'bold' : 'normal'"
+          :x="2 - steps / 10"
+          :y="loop.height - 2"
+          :font-size="16 - steps / 1.5"
+          :fill="b == Math.floor(time.step) ? 'currentColor' : levelColor(b + (time.pitch / 12) * steps, steps, 1)"
+          :font-weight="b == Math.floor(time.step) ? 'bold' : 'normal'"
         ) {{ s }}
 
     g.progress
       rect(
         :fill="pitchColor(time.pitch)"
         fill-opacity=".2"
-        :width="time.measure*loop.width"
+        :width="time.measure * loop.width"
         :height="loop.height")
       line(
         stroke="currentColor"
 
         stroke-width="1"
-        :x1="time.measure*loop.width"
-        :x2="time.measure*loop.width"
+        :x1="time.measure * loop.width"
+        :x2="time.measure * loop.width"
         :y2="loop.height")
 
   .flex.flex-wrap.m-2.flex.flex-wrap.gap-4
@@ -73,12 +75,12 @@ const steps = computed(() => Math.round(controls['time:steps']))
         .i-la-pause(v-else)
       button.text-button(@click="transport.stop()")
         .i-la-stop
-      button.text-button(@click="controls['time:click'] = controls['time:click']? 0 : 1")
+      button.text-button(@click="controls['time:click'] = controls['time:click'] ? 0 : 1")
         .i-la-volume-up(v-if="controls['time:click']")
         .i-la-volume-mute(v-else)
     .is-group.flex.flex-wrap.items-center(
       style="flex: 180px"
-      v-for="(group,title) in groups" :key="title")
+      v-for="(group, title) in groups" :key="title")
       .select-none.relative.flex.flex-col.gap-4.items-center(v-for="(param, p) in group" :key="p")
 
         //- ControlKnob.cursor-pointer.-mt-2.mb-1(

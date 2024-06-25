@@ -7,7 +7,7 @@
 
 <script setup>
 import { ref, onMounted, watch } from 'vue';
-import { useFFT } from './useFFT';
+import { useFFT } from '#/use/elementary/useFFT';
 
 const props = defineProps({
   name: { default: 'main:fft', type: String }

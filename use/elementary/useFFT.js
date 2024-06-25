@@ -1,10 +1,10 @@
 import { computed, reactive } from 'vue'
-import { useAudio } from '../useAudio'
 import { freqColor } from '#/use';
+import { useElementary } from './useElementary';
 
 export function useFFT(name = 'main:fft') {
 
-  const { FFTs, meters } = useAudio()
+  const { FFTs, meters } = useElementary()
 
   const FFT = reactive({
     sr: computed(() => meters['main:sample-rate']?.max || 44100),

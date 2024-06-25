@@ -1,10 +1,10 @@
 import { el } from '@elemaudio/core';
-import { useAudio } from '../useAudio';
 import { reactive } from 'vue';
 import { watch } from 'vue';
+import { useElementary } from './useElementary';
 
 export function useDrums() {
-  const { audio } = useAudio()
+  const { audio } = useElementary()
 
   const hit = reactive({
     kick: 0,

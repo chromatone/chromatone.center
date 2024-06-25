@@ -1,7 +1,7 @@
 import { watch, shallowReactive } from 'vue'
-import { useAudio } from '../useAudio'
 import { el } from '@elemaudio/core';
 import { useClamp } from '@vueuse/math';
+import { useElementary } from './useElementary';
 
 
 const mic = shallowReactive({
@@ -10,7 +10,7 @@ const mic = shallowReactive({
   streamSource: null,
   gain: useClamp(1, 0, 10),
   async open() {
-    const { audio } = useAudio()
+    const { audio } = useElementary()
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
       mic.stream = await navigator.mediaDevices.getUserMedia({
         audio: {
@@ -28,7 +28,7 @@ const mic = shallowReactive({
 })
 
 export function useMic() {
-  const { audio, render } = useAudio()
+  const { audio, render } = useElementary()
 
 
 

@@ -1,7 +1,7 @@
 <script setup>
+import { useSequencer } from '#/use/elementary/useSequencer';
 import AudioAnalysisScope from '../analysis/AnalysisScope.vue';
-import { useDrums } from './useDrums';
-import { useSequencer } from './useSequencer';
+
 
 const { sequencer } = useSequencer()
 
@@ -33,16 +33,16 @@ const { sequencer } = useSequencer()
     AudioAnalysisScope.max-h-30(style="flex: 1 1 200px" name="drums")
   .flex.flex-col.gap-2 
     .flex.items-center.gap-1(
-      v-for="(track,t) in sequencer.tracks" :key="t")
+      v-for="(track, t) in sequencer.tracks" :key="t")
       .step(
-        :class="{active:sequencer.hit[t]}"
-        @mousedown="sequencer.hit[t]=1"
-        @mouseup="sequencer.hit[t]=0"
+        :class="{ active: sequencer.hit[t] }"
+        @mousedown="sequencer.hit[t] = 1"
+        @mouseup="sequencer.hit[t] = 0"
         ) {{ t }}
       .step(
-        v-for="(step,s) in track" :key="s"
-        :class="{active: step == 1}"
-        @click="track[s] = step ==1 ? 0: 1") 
+        v-for="(step, s) in track" :key="s"
+        :class="{ active: step == 1 }"
+        @click="track[s] = step == 1 ? 0 : 1") 
 
 </template>
 

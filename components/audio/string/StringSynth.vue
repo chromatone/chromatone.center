@@ -1,14 +1,14 @@
 <script setup>
 import { ref, watch, onBeforeUnmount, onMounted } from 'vue';
 import { el } from '@elemaudio/core';
-
+import { useElementary } from '#/use/elementary/useElementary.js';
+import { useParams } from '#/use/elementary/useParams.js';
 import { useMidi, synth as AppSynth } from "#/use";
 
 onMounted(() => AppSynth.state.midi = false)
 onBeforeUnmount(() => AppSynth.state.midi = true)
 
-import { useAudio } from '../useAudio.js';
-import { useParams } from '../useParams.js';
+
 
 const { midi } = useMidi()
 
@@ -24,7 +24,7 @@ const midiParams = {
   "string:velocity": { "value": 0, "min": 1, "max": 127, "step": 1, nostore: true },
 }
 
-const { audio, render } = useAudio()
+const { audio, render } = useElementary()
 
 const { controls, cv } = useParams(params, 'string')
 
@@ -80,20 +80,20 @@ button.p-40.text-2xl.font-bold.bg-light-900.dark-bg-dark-700(v-if="!audio.starte
   AudioAnalysisFFT
   .flex.flex-wrap.p-2.gap-4
     control-rotary(
-      v-for="(param,p) in params"
+      v-for="(param, p) in params"
       :param="p.split(':')[1]" v-model="controls[p]" :min="param.min" :max="param.max" :fixed="param.fixed" :step="param.step")
 
   MidiKeys
 </template>
 
 
-  // let dll = el.tapOut(
-  //   { name: 'x' },
-  //   el.smooth(
-  //     0.5,
-  //     el.mul(
-  //       0.99,
-  //       el.add(filtered, el.delay({ size: 44100 }, el.ms2samps(delTime), 0, el.tapIn({ name: 'x' })))
-  //     )
-  //   )
-  // );
+// let dll = el.tapOut(
+// { name: 'x' },
+// el.smooth(
+// 0.5,
+// el.mul(
+// 0.99,
+// el.add(filtered, el.delay({ size: 44100 }, el.ms2samps(delTime), 0, el.tapIn({ name: 'x' })))
+// )
+// )
+// );

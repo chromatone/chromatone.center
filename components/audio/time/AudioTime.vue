@@ -1,8 +1,9 @@
 <script setup>
 import { onMounted, reactive, ref } from 'vue'
-import { useTime } from './useTime'
+
 import { levelColor, pitchColor } from '#/use'
-import { useAudio } from '../useAudio';
+import { useElementary } from '#/use/elementary/useElementary';
+import { useTime } from '#/use/elementary/useTime';
 
 const { time, controls, groups, transport } = useTime()
 
@@ -11,7 +12,7 @@ const loop = reactive({
   height: 5
 })
 
-const { render, audio } = useAudio()
+const { render, audio } = useElementary()
 
 
 
@@ -33,36 +34,36 @@ const { render, audio } = useAudio()
 
     g.beats   
       g.beat(
-        v-for="(s,b) in controls['time:steps']" :key="b"
-        :transform="`translate(${b*loop.width/controls['time:steps']},0)`" )
+        v-for="(s, b) in controls['time:steps']" :key="b"
+        :transform="`translate(${b * loop.width / controls['time:steps']},0)`" )
         rect(
-          :width="loop.width/controls['time:steps']"
+          :width="loop.width / controls['time:steps']"
           :height="loop.height"
-          :fill="b!=Math.floor(time.step) ? '#6662' : levelColor(b+(time.pitch/12)*controls['time:steps'],controls['time:steps'],1)")
+          :fill="b != Math.floor(time.step) ? '#6662' : levelColor(b + (time.pitch / 12) * controls['time:steps'], controls['time:steps'], 1)")
         line(
-          :stroke="levelColor(b+(time.pitch/12)*controls['time:steps'],controls['time:steps'])"
+          :stroke="levelColor(b + (time.pitch / 12) * controls['time:steps'], controls['time:steps'])"
           stroke-width=".3"
           :y2="loop.height")
         text(
           x="1"
           y="2.5"
           font-size="2"
-          :fill="b==Math.floor(time.step) ? 'currentColor' : levelColor(b+(time.pitch/12)*controls['time:steps'],controls['time:steps'],1)"
-          :font-weight="b==Math.floor(time.step) ? 'bold' : 'normal'"
+          :fill="b == Math.floor(time.step) ? 'currentColor' : levelColor(b + (time.pitch / 12) * controls['time:steps'], controls['time:steps'], 1)"
+          :font-weight="b == Math.floor(time.step) ? 'bold' : 'normal'"
         ) {{ s }}
 
     g.progress
       rect(
         :fill="pitchColor(time.pitch)"
         fill-opacity=".2"
-        :width="time.measure*loop.width"
+        :width="time.measure * loop.width"
         :height="loop.height")
       line(
         stroke="currentColor"
 
         stroke-width=".2"
-        :x1="time.measure*loop.width"
-        :x2="time.measure*loop.width"
+        :x1="time.measure * loop.width"
+        :x2="time.measure * loop.width"
         :y2="loop.height")
   //- .text-xs.p-2.gap-2.flex.flex-col
   //-   .flex.flex-wrap.font-mono.gap-2
@@ -70,16 +71,16 @@ const { render, audio } = useAudio()
   //-       .text-xs {{ p }}
   //-       .text-md {{ param?.toFixed(2) }} 
   .flex.flex-wrap.m-2.is-group.flex.flex-wrap
-    .p-1.rounded-full(:style="{backgroundColor:time.pulse ? 'currentColor' : 'transparent'}")
+    .p-1.rounded-full(:style="{ backgroundColor: time.pulse ? 'currentColor' : 'transparent' }")
     button.text-button(@click="time.isPlaying ? transport.pause() : transport.play()")
       .i-la-play(v-if="!time.isPlaying")
       .i-la-pause(v-else)
     button.text-button(@click="transport.stop()")
       .i-la-stop
-    button.text-button(@click="controls['time:click'] = controls['time:click']? 0 : 1")
+    button.text-button(@click="controls['time:click'] = controls['time:click'] ? 0 : 1")
       .i-la-volume-up(v-if="controls['time:click']")
       .i-la-volume-mute(v-else)
-    template(v-for="(group,title) in groups" :key="title") 
+    template(v-for="(group, title) in groups" :key="title") 
       ControlRotary(
         v-for="(param, p) in group" :key="p"
         :min="param.min"

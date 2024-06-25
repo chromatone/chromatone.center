@@ -1,10 +1,10 @@
-import { useAudio } from './useAudio.js';
 import { reactive, ref, watch } from 'vue';
 
 import { useClamp } from '@vueuse/math';
 import { useStorage } from '@vueuse/core';
+import { useElementary } from './useElementary.js';
 
-const { audio } = useAudio()
+const { audio } = useElementary()
 
 export function useParams(params, title = 'ref') {
 

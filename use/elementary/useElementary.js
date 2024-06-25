@@ -21,7 +21,7 @@ const scopes = reactive({})
 
 const FFTs = reactive({})
 
-export function useAudio() {
+export function useElementary() {
   onMounted(() => {
     initAudio().then(() => {
       if (audio.initiated) return

@@ -3,18 +3,18 @@ import { useMidi } from '#/use/midi'
 
 import { el } from '@elemaudio/core';
 
-import { midiFrequency } from '../tools/toolbox';
-import { useAudio } from '../useAudio'
-import { useUI } from '../tools/useUI';
-import { useTempo } from '../../../use/tempo.js'
-import params from './params.json'
+import { midiFrequency } from './tools/toolbox';
+import { useUI } from './tools/useUI';
+import { useTempo } from '#/use/tempo'
+import params from './synthParams.json'
 import { useVoices, } from './useVoices';
+import { useElementary } from './useElementary';
 
 export function useSynth() {
 
   const tempo = useTempo()
 
-  const { audio, render } = useAudio()
+  const { audio, render } = useElementary()
 
   const { controls, groups, cv } = useUI(params, 'synth')
 

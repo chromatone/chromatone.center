@@ -2,9 +2,10 @@
 import { useMidi, notes, synth as AppSynth } from "#/use";
 import { pitchColor } from "#/use/calculations";
 import { computed } from "vue";
-import { useSynth } from "./useSynth";
+
 import { colord } from "colord";
 import { onBeforeUnmount, onMounted } from "vue";
+import { useSynth } from "#/use/elementary/useSynth";
 
 onMounted(() => AppSynth.state.midi = false)
 onBeforeUnmount(() => AppSynth.state.midi = true)
@@ -27,11 +28,11 @@ const color = computed(() => Object.entries(midi.activeNotes).reduce((acc, en) =
     AudioAnalysisScope.absolute.top-8.pointer-events-none(name="synth" :color="color")
   .flex.flex-wrap.gap-1.font-mono.w-full.justify-around
     .text-sm.flex.min-w-6.min-h-4.flex-1.text-center.rounded-full.justify-center.items-center.transition.cursor-pointer(
-      v-for="(voice,v) in voices.list" :key="v"
-      :style="{backgroundColor:pitchColor(voice.midi-9-24,3,undefined,voice.gate ? 1:0.2), opacity: voice.gate ? 1:0.5}"
+      v-for="(voice, v) in voices.list" :key="v"
+      :style="{ backgroundColor: pitchColor(voice.midi - 9 - 24, 3, undefined, voice.gate ? 1 : 0.2), opacity: voice.gate ? 1 : 0.5 }"
       @mousedown="voice.gate = 1"
       @mouseup="voice.gate = 0"
-      @mouseleave="voice.gate=0"
+      @mouseleave="voice.gate = 0"
       )
       //-  {{ notes[(voice.midi-9)%12] }}
 
@@ -48,10 +49,10 @@ const color = computed(() => Object.entries(midi.activeNotes).reduce((acc, en) =
     button.text-button(@click="stopAll()")
       .i-la-stop
 
-    .flex.flex-wrap.is-group.p-2.gap-2.items-center.relative(v-for="(group,title) in groups" :key="title") 
+    .flex.flex-wrap.is-group.p-2.gap-2.items-center.relative(v-for="(group, title) in groups" :key="title") 
       .text-sm.uppercase.absolute.-top-4.bg-light-300.dark-bg-dark-300.p-1.rounded {{ title }}
       control-rotary(
-        v-for="(param,p) in group" :key="p"
+        v-for="(param, p) in group" :key="p"
         :step="param.step"
         v-model="controls[`${title}:${p}`]"
         :min="param.min"

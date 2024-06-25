@@ -2,7 +2,8 @@ import { ref, watch } from 'vue';
 import { Body, Bodies, Composite, Events, Vector, Render } from 'matter-js';
 import { globalScale } from '#/use';
 import { engine, box, running, renderer } from './useMatter';
-import { onKeyDown, onKeyUp } from '@vueuse/core';
+import { pressedKeys, joystick } from './useControls'
+
 
 export function useCenter() {
 
@@ -24,18 +25,16 @@ export function useCenter() {
 
   Composite.add(engine?.world, [center]);
 
-  const pressedKeys = ref({});
-
-  const steer = 0.03
+  const steer = 0.07
   const thrust = 10;
 
   const handleControl = () => {
 
-    let acc = pressedKeys.value.ArrowUp ? -thrust : (pressedKeys.value.ArrowDown ? thrust : 0);
+    let acc = pressedKeys.ArrowUp ? -thrust : (pressedKeys.ArrowDown ? thrust : 0);
 
+    acc -= joystick.y * thrust
 
-
-    Body.setAngularVelocity(center, pressedKeys.value.ArrowLeft ? -steer : (pressedKeys.value.ArrowRight ? steer : 0))
+    Body.setAngularVelocity(center, pressedKeys.ArrowLeft ? -steer : (pressedKeys.ArrowRight ? steer : 0) + joystick.x * steer)
 
     const force = Vector.create(Math.cos(center.angle) * acc, Math.sin(center.angle) * acc)
 
@@ -48,13 +47,6 @@ export function useCenter() {
 
   Events.on(engine, 'beforeUpdate', handleControl);
 
-  const handleKeyPress = (event) => {
-    if (['ArrowDown', 'ArrowUp', 'ArrowLeft', 'ArrowRight'].includes(event.key)) event.preventDefault();
-    pressedKeys.value[event.key] = event.type === 'keydown';
-  };
-
-  onKeyDown(handleKeyPress);
-  onKeyUp(handleKeyPress);
 
 
   return {

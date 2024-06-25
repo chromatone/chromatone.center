@@ -1,11 +1,15 @@
 
-import { Body, Bodies, Composite, Events, Query, MouseConstraint, Composites, Common, Collision, World, } from 'matter-js';
+import { Body, Bodies, Composite, Events, Query, MouseConstraint, Composites, Common, Collision, World } from 'matter-js';
 
 import { midi, midiPlay, midiStop, playKey } from '#/use/midi';
 import { Note } from 'tonal';
 import { globalScale } from '#/use';
 import { engine, canvas, box, running } from './useMatter';
 
+// import MatterAttractors from 'matter-attractors'
+
+// MatterAttractors.Attractors.gravityConstant = 0.00001
+// use(MatterAttractors);
 
 export function useCircles() {
   const mouseControl = MouseConstraint.create(engine, {

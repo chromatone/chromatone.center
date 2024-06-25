@@ -6,10 +6,6 @@ import { useCenter } from './useCenter';
 import { useBoundaries } from './useBoundaries';
 
 
-// import MatterAttractors from 'matter-attractors'
-// use(MatterAttractors);
-// MatterAttractors.Attractors.gravityConstant = 0.00005
-
 //import MatterWrap from 'matter-wrap';
 // Matter.use(MatterWrap);
 
@@ -23,7 +19,7 @@ export const box = reactive({ w: 100, h: 100 })
 
 export function useMatter() {
 
-  const setupMatterJs = () => {
+  function setupMatterJs() {
     engine = Engine.create();
     engine.gravity.scale = 0;
 
@@ -40,7 +36,8 @@ export function useMatter() {
       },
     });
 
-    Runner.run(engine);
+    const runner = Runner.create()
+    Runner.run(runner, engine);
     Render.run(renderer);
 
     resizeBox()

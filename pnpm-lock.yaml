@@ -149,6 +149,9 @@ importers:
       universal-base64url:
         specifier: ^1.1.0
         version: 1.1.0
+      uqr:
+        specifier: ^0.1.2
+        version: 0.1.2
       vite-plugin-top-level-await:
         specifier: ^1.4.1
         version: 1.4.1(rollup@2.79.1)(vite@5.3.1(@types/node@20.9.2)(terser@5.24.0))
@@ -3376,6 +3379,9 @@ packages:
     hasBin: true
     peerDependencies:
       browserslist: '>= 4.21.0'
+
+  uqr@0.1.2:
+    resolution: {integrity: sha512-MJu7ypHq6QasgF5YRTjqscSzQp/W11zoUk6kvmlH+fmWEs63Y0Eib13hYFwAzagRJcVY8WVnlV+eBDUGMJ5IbA==}
 
   uri-js@4.4.1:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
@@ -7192,6 +7198,8 @@ snapshots:
       browserslist: 4.22.2
       escalade: 3.1.1
       picocolors: 1.0.0
+
+  uqr@0.1.2: {}
 
   uri-js@4.4.1:
     dependencies:

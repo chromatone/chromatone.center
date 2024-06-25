@@ -11,3 +11,9 @@ buttons:
     text: "tutor.chromatone.center"
 ---
 
+<!-- 
+<script setup>
+import Tutor from './Tutor.vue'
+</script>
+
+<Tutor /> -->

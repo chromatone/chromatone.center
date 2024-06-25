@@ -10,7 +10,7 @@ import params from './synthParams.json'
 import { useVoices, } from './useVoices';
 import { useElementary } from './useElementary';
 
-export function useSynth() {
+export function useElemSynth() {
 
   const tempo = useTempo()
 

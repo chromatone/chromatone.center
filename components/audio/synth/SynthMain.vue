@@ -5,12 +5,12 @@ import { computed } from "vue";
 
 import { colord } from "colord";
 import { onBeforeUnmount, onMounted } from "vue";
-import { useSynth } from "#/use/elementary/useSynth";
+import { useElemSynth } from "#/use/elementary/useElemSynth";
 
 onMounted(() => AppSynth.state.midi = false)
 onBeforeUnmount(() => AppSynth.state.midi = true)
 
-const { groups, controls, voices, cycleNote, stopAll } = useSynth()
+const { groups, controls, voices, cycleNote, stopAll } = useElemSynth()
 
 const { midi } = useMidi()
 

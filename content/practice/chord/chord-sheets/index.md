@@ -1,7 +1,7 @@
 ---
 title: Chord Sheets Lab
 description: Chordsheetjs experiments
-date: 2024-05-25
+date: 2021-07-03
 cover: cover.png
 layout: app
 links:

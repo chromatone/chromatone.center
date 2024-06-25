@@ -27,6 +27,5 @@ Joystick.fixed.bottom-4.right-4.op-50(
   @move="move"
   @stop="stop"
   )
-pre.absolute {{ joystick }}
 section.w-full.h-100svh(ref="canvas")
 </template>

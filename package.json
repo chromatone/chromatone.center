@@ -60,6 +60,7 @@
 		"fraction.js": "^4.3.7",
 		"fuse.js": "^7.0.0",
 		"hidpi-canvas": "^1.0.10",
+		"hydra-synth": "^1.3.29",
 		"jisg": "^0.9.8",
 		"jspdf": "^2.5.1",
 		"mathjs": "^13.0.0",

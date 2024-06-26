@@ -22,6 +22,9 @@ export default defineConfig(
     base: './',
     envPrefix: ['VITE_'],
     envDir: '../',
+    define: {
+      global: {}
+    },
     plugins: [
       ViteYaml(),
       Components({

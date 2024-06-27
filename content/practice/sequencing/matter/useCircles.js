@@ -1,35 +1,36 @@
 
-import { Body, Bodies, Composite, Events, Query, MouseConstraint, Composites, Common, Collision, World } from 'matter-js';
+import { Body, Bodies, Composite, Events, Query, MouseConstraint, Composites, Common, Collision, World, use } from 'matter-js';
 
 import { midi, midiPlay, midiStop, playKey } from '#/use/midi';
 import { Note } from 'tonal';
 import { globalScale } from '#/use';
-import { engine, canvas, box, running } from './useMatter';
+import { engine, canvas, box, running, mouse, score } from './useMatter';
 
 // import MatterAttractors from 'matter-attractors'
 
-// MatterAttractors.Attractors.gravityConstant = 0.00001
+// MatterAttractors.Attractors.gravityConstant = 0.000001
 // use(MatterAttractors);
 
+let isDragging = false;
+let draggedBody = null;
+
 export function useCircles() {
+
   const mouseControl = MouseConstraint.create(engine, {
+    mouse,
     element: canvas.value,
-    constraint: {
-      render: { visible: true },
-    },
+    collisionFilter: -1,
   });
 
+  Composite.add(engine.world, [mouseControl])
 
-  Composite.add(engine.world, [mouseControl]);
-
-  const hole = Bodies.circle(box.w / 2, box.h / 2, 20, {
-    isSensor: true,
+  const hole = Bodies.circle(box.w / 2, box.h / 2, 40, {
     isStatic: true,
     label: 'hole',
     render: {
       lineWidth: 10,
       strokeStyle: '#5558',
-      fillStyle: 'transparent'
+      fillStyle: '#111'
     },
   })
 
@@ -37,14 +38,14 @@ export function useCircles() {
 
   const circles = Composites.stack();
 
-  // Events.on(engine, 'afterUpdate', () => {
-  //   circles.bodies.forEach(circle => {
-  //     const forceX = box.w / 2 - circle.position.x;
-  //     const forceY = box.h / 2 - circle.position.y;
-  //     const strength = 0.01
-  //     Body.applyForce(circle, circle.position, { x: forceX * strength, y: forceY * strength });
-  //   })
-  // })
+  Events.on(engine, 'afterUpdate', () => {
+    circles.bodies.forEach(circle => {
+      const forceX = box.w / 2 - circle.position.x;
+      const forceY = box.h / 2 - circle.position.y;
+      const strength = 0.001
+      Body.applyForce(circle, circle.position, { x: forceX * strength, y: forceY * strength });
+    })
+  })
 
   function createShape(x, y, note = globalScale.tonic + 45) {
 
@@ -54,12 +55,12 @@ export function useCircles() {
 
     const strokeStyle = `hsl(${((note + 3) % 12) * 30}deg, ${(note + 3)}%, 50%)`;
 
-    const circle = Bodies.circle(x, y, (120 - note) / 2, {
+    const circle = Bodies.circle(x, y, (120 - note) / 4, {
       label: 'particle',
       frictionAir: 0.000001,
       friction: 0.4,
       frictionStatic: 0.001,
-      density: 10,
+      density: 50,
       restitution: .8,
       render: {
         lineWidth: 2,
@@ -83,17 +84,39 @@ export function useCircles() {
 
   Events.on(mouseControl, 'mousemove', ({ mouse }) => {
     const hoveredShapes = Query.point(circles.bodies, mouse.position);
-    hoveredShapes.forEach((shape) => { shape.scale = 1.1; });
+    if (isDragging && draggedBody) {
+      const dx = mouse.position.x - draggedBody.position.x;
+      const dy = mouse.position.y - draggedBody.position.y;
+
+      const forceMagnitude = 0.1;
+      Body.applyForce(draggedBody, draggedBody.position, {
+        x: dx * forceMagnitude,
+        y: dy * forceMagnitude
+      });
+    } else {
+      // hoveredShapes.forEach((shape) => { Body.scale(shape, 1.1, 1.1) });
+    }
   })
 
   Events.on(mouseControl, 'mousedown', ({ mouse }) => {
     const hoveredShapes = Query.point(circles.bodies, mouse.position);
-    if (hoveredShapes.length > 0) return
+    if (hoveredShapes.length > 0) {
+      isDragging = true;
+      draggedBody = hoveredShapes[0];
+      return;
+    }
     const shape = createShape(mouse.position.x, mouse.position.y);
     circles.bodies.push(shape);
     Composite.add(engine.world, shape);
     running.value = true
+    isDragging = true;
+    draggedBody = shape
   })
+
+  Events.on(mouseControl, 'mouseup', () => {
+    isDragging = false;
+    draggedBody = null;
+  });
 
   Events.on(engine, 'collisionStart', (event) => {
     for (const pair of event.pairs) {
@@ -108,6 +131,7 @@ export function useCircles() {
           let other = body == 'bodyA' ? pair['bodyB'] : pair['bodyA']
           if (other.label == 'particle') {
             World.remove(engine.world, other);
+            score.value++
           }
         }
 
@@ -119,7 +143,10 @@ export function useCircles() {
         // if (hitBody?.label == 'particle') reduceRadius(hitBody);
 
 
-        hitBody.render.fillStyle = originalStyle;
+        if (!['hole', 'wall'].includes(hitBody.label)) {
+          hitBody.render.fillStyle = originalStyle;
+        }
+
         const note = Note.fromMidi(pair[body].isStatic ? 33 + globalScale.tonic : hitBody.data?.note || 33 + globalScale.tonic)
 
         setTimeout(() => {
@@ -131,10 +158,13 @@ export function useCircles() {
 
 
         setTimeout(() => {
-          hitBody.render.fillStyle = 'transparent'
+          if (!['hole', 'wall'].includes(hitBody.label)) {
+            hitBody.render.fillStyle = 'transparent'
+          }
+
           playKey(note.slice(0, -1), parseInt(note.slice(-1)) - 4, true)
           midiStop(hitBody.data?.note || 33 + globalScale.tonic)
-        }, 30);
+        }, 50);
       }
 
     }

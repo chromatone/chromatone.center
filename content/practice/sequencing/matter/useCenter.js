@@ -1,8 +1,9 @@
 import { ref, watch } from 'vue';
-import { Body, Bodies, Composite, Events, Vector, Render } from 'matter-js';
+import { Body, Bodies, Composite, Events, Vector, Render, Mouse } from 'matter-js';
 import { globalScale } from '#/use';
-import { engine, box, running, renderer } from './useMatter';
+import { engine, box, running, render } from './useMatter';
 import { pressedKeys, joystick } from './useControls'
+
 
 
 export function useCenter() {
@@ -14,7 +15,7 @@ export function useCenter() {
     restitution: .95,
     friction: 0.4,
     frictionStatic: 0.001,
-    density: 80,
+    density: 150,
     render: {
       lineWidth: 2,
       strokeStyle,
@@ -22,6 +23,15 @@ export function useCenter() {
       visible: true,
     },
   });
+
+  Events.on(engine, 'afterUpdate', () => {
+
+    const forceX = box.w / 2 - center.position.x;
+    const forceY = box.h / 2 - center.position.y;
+    const strength = 0.01
+    Body.applyForce(center, center.position, { x: forceX * strength, y: forceY * strength });
+
+  })
 
   Composite.add(engine?.world, [center]);
 
@@ -38,14 +48,16 @@ export function useCenter() {
 
     const force = Vector.create(Math.cos(center.angle) * acc, Math.sin(center.angle) * acc)
 
-    // Render.lookAt(renderer, center, { x: 200, y: 200 });
-
     Body.applyForce(center, center.position, force);
+
+    Render.lookAt(render, center.position, { x: box.w / 2, y: box.h / 2 });
   };
 
   // Create Matter engine, world, circle, and renderer (same as before)
 
   Events.on(engine, 'beforeUpdate', handleControl);
+
+
 
 
 

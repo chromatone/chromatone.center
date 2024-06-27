@@ -11,6 +11,7 @@ export function useBoundaries() {
   function generateBoundaries(w, h) {
 
     const wallOptions = {
+      label: 'wall',
       isStatic: true,
       restitution: 1,
       friction: 0,

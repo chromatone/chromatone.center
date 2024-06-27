@@ -23,4 +23,4 @@ const Matter = defineClientComponent(() => {
 })
 </script>
 
-<Matter/>
+<Matter />

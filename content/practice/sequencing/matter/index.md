@@ -1,5 +1,5 @@
 ---
-title: Physical sequencer
+title: Matter physics
 description: 2D rigid body physics simulator
 date: 2024-05-24
 layout: app

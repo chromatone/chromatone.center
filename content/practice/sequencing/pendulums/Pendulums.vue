@@ -31,15 +31,15 @@ function usePendulum(octaveOffset = 0) {
 
   const pendulum = computed(() => new Pendulum(
     globalScale.pcs.length,
-    Array(globalScale.pcs.length).fill(1).map(() => Math.PI + Math.random() * Math.PI / 2),
-    Array(globalScale.pcs.length).fill(1).map(() => -Math.random() * 2)
+    Array(globalScale.pcs.length).fill(1).map((el, i) => Math.PI + (octaveOffset != 0 ? 1 : -2) * Math.PI * (1 - Math.random() / (i + 1)) / 4),
+    Array(globalScale.pcs.length).fill(1).map(() => (octaveOffset != 0 ? -4 : 2) * Math.random() + 0.5)
   ))
 
   const coords = ref([])
 
   watch(() => tempo.ticks, (ts, to) => {
     if (ts < to) ts = to + 1
-    pendulum.value.tick((ts - to) * 0.0005)
+    pendulum.value.tick((ts - to) * 0.0015)
     coords.value = pendulum.value.coordinates
   })
 

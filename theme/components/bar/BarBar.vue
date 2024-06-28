@@ -3,7 +3,7 @@ import { useRoute, useData } from "vitepress";
 import { drawingEnabled } from '../../composables/draw'
 import { ref } from "vue";
 import { tempo } from "#/use/tempo";
-import { globalScale, noteColor } from "#/use";
+import { globalScale, midi, noteColor, notes } from "#/use";
 import { mic } from "#/use/mic";
 
 import FullScreen from '../global/FullScreen.vue'
@@ -18,6 +18,9 @@ const theoryOpen = ref()
 const settingsOpen = ref()
 const transportOpen = ref()
 const pianoOpen = ref()
+const scaleOpen = ref()
+
+const instrument = ref('guitar')
 
 
 </script>
@@ -103,24 +106,36 @@ nav.bar
   .flex-auto
   .spacer 
 
+  button.rounded-full.scale-70(
+    :inert="scaleOpen"
+    @click="scaleOpen = !scaleOpen"  
+    :class="{ active: scaleOpen }" 
+    aria-label="Toggle synth panel"
+    v-tooltip.right="'Synth settings'"
+    :style="{ backgroundColor: noteColor(globalScale.tonic) }"
+    ) {{ notes[globalScale.tonic] }}
+
+
+  button.scale-70.rounded-lg.flex.flex-col.gap-1(
+    :inert="transportOpen"
+    @click="transportOpen = !transportOpen"  
+    :class="{ active: transportOpen }" 
+    aria-label="Toggle transport panel"
+    v-tooltip.right="'Transport'"
+    :style="{ backgroundColor: !tempo.blink ? tempo.color : '' }"
+    ) 
+    //- .i-mdi-metronome
+    .pb-1 {{ tempo.bpm.toFixed() }}
+
   button(
     :inert="pianoOpen"
     @click="pianoOpen = !pianoOpen"  
     :class="{ active: pianoOpen }" 
     aria-label="Toggle synth panel"
     v-tooltip.right="'Synth settings'"
-    :style="{ color: noteColor(globalScale.tonic) }"
     )
     .i-mdi-piano
-  button(
-    :inert="transportOpen"
-    @click="transportOpen = !transportOpen"  
-    :class="{ active: transportOpen }" 
-    aria-label="Toggle transport panel"
-    v-tooltip.right="'Transport'"
-    :style="{ color: tempo.blink ? tempo.color : '' }"
-    )
-    .i-mdi-metronome
+
   button(
     :inert="settingsOpen"
     @click="settingsOpen = !settingsOpen"  
@@ -147,8 +162,18 @@ nav.bar
 
 client-only
   BarPanel(v-model="pianoOpen")
+    //- synth-panel
+    audio-synth-main
+
+  BarPanel(v-model="scaleOpen")
     control-scale.w-full
-    synth-panel
+    chord-tabs-neck.h-90dvh(
+      :instrument="instrument"
+      )
+    .is-group.flex.gap-1.p-2.mb-8
+      button.text-button(:class="{ active: instrument == 'guitar' }" @click="instrument = 'guitar'") Guitar
+      button.text-button(:class="{ active: instrument == 'ukulele' }" @click="instrument = 'ukulele'") Ukulele
+
 
   BarPanel(v-model="transportOpen")
     state-transport
@@ -178,13 +203,16 @@ nav.bar {
   @apply bg-light-800 dark-bg-dark-400 fixed z-1000 top-0 bottom-0 w-12 shadow flex flex-col max-h-100dvh pb-2 overflow-scroll;
 }
 
-button,
-a.button {
-  @apply transition text-2xl p-2 flex flex-col items-center opacity-70 hover-opacity-100;
+nav button,
+nav a.button {
+  @apply transition text-2xl p-2 flex flex-col items-center opacity-70 hover-opacity-100 grayscale-30;
 
-  &.active {
-    @apply bg-light-200 dark-bg-dark-200 opacity-100
-  }
+
+}
+
+button.active,
+.button.active {
+  @apply bg-light-200 dark-bg-dark-200 opacity-100 grayscale-0
 }
 
 .panel {

@@ -30,8 +30,8 @@ const inlays = [3, 5, 7, 10, 12, 15, 17, 19, 21]
 
 const neck = reactive({
   strings: computed(() => instruments[props.instrument]),
-  height: computed(() => (neck.strings.length - 1) * neck.noteSize),
-  width: computed(() => neck.fretNum * neck.fretWidth),
+  width: computed(() => (neck.strings.length - 1) * neck.noteSize),
+  height: computed(() => neck.fretNum * neck.fretWidth),
   isInChord: computed(() => Pcset.isNoteIncludedIn(props.chordNotes)),
   noteSize: 36,
   fretWidth: 50,
@@ -49,11 +49,11 @@ function getNote(string, semitones) {
 </script>
 
 <template lang="pug">
-.flex.flex-col
-  svg#fretboard.max-h-3xl.w-full(
+.flex.flex-col.items-center
+  svg#fretboard.max-w-3xl.max-h-90dvh.h-full(
     version="1.1",
     baseProfile="full",
-    :viewBox="`-50 -30 ${neck.width + 100} ${neck.height + 60}`",
+    :viewBox="`-30 -50 ${neck.width + 60} ${neck.height + 100}`",
     xmlns="http://www.w3.org/2000/svg",
     font-family="Commissioner, sans-serif"
     font-size="20px"
@@ -64,31 +64,31 @@ function getNote(string, semitones) {
       line(
         stroke="currentColor"
         stroke-width="10"
-        y1="0"
-        :y2="neck.height"
+        x1="0"
+        :x2="neck.width"
       )
       g.fret(
-        v-for="(fret,f) in neck.fretNum" 
+        v-for="(fret, f) in neck.fretNum" 
         :key="fret")
         line(
-          :y1="neck.height"
-          :x1="fret * neck.fretWidth"
-          :x2="fret * neck.fretWidth"
+          :x1="neck.width"
+          :y1="fret * neck.fretWidth"
+          :y2="fret * neck.fretWidth"
           stroke="currentColor"
           stroke-width="2"
           opacity="0.5"
           )
         text(
-          :x="fret * neck.fretWidth - 6"
-          :y="-15"
+          :y="fret * neck.fretWidth - 6"
+          :x="-15"
           font-size="0.7em"
           fill="currentColor"
           opacity="0.5"
         ) {{ fret }}
         circle.inlay(
           v-if="inlays.find(fr => fr == fret)"
-          :cx="(fret - 0.5) * neck.fretWidth"
-          :cy="neck.height / 2"
+          :cy="(fret - 0.5) * neck.fretWidth"
+          :cx="neck.width / 2"
           r="5"
           opacity="0.8"
           fill="currentColor"
@@ -97,10 +97,10 @@ function getNote(string, semitones) {
       g.string(
         v-for="(string, s) in neck.strings" 
         :key="string"
-        :transform="`translate(0,${neck.height - s * neck.noteSize})`"
+        :transform="`translate(${neck.width - s * neck.noteSize}, 0)`"
         )
         line(
-          :x2="neck.width"
+          :y2="neck.height"
           stroke-width="4"
           stroke="currentColor"
           opacity="0.5"
@@ -108,20 +108,20 @@ function getNote(string, semitones) {
         g.note(
           v-for="(note, n) in neck.fretNum + 1" 
           :key="note"
-          :transform="`translate(${(n - 0.5) * neck.fretWidth},0)`"
-          @click="$emit('note',getNote(string,n))"
+          :transform="`translate(0, ${(n - 0.5) * neck.fretWidth})`"
+          @click="$emit('note', getNote(string, n))"
         )
           circle(
             :opacity="globalScale.isIn(getNote(string, n)) ? 1 : 0"
             :stroke="neck.isInChord(getNote(string, n)) ? 'currentColor' : 'none'"
             stroke-width="3"
-            :r="neck.isInChord(getNote(string, n)) ? neck.noteSize /1.7 - 4 : neck.noteSize / 2 - 8"
+            :r="neck.isInChord(getNote(string, n)) ? neck.noteSize / 1.7 - 4 : neck.noteSize / 2 - 8"
             :fill="noteColor(string, n)"
           )
           circle(
             :fill="isDark ? 'white' : 'black'"
-            :opacity="midi.activeNotes[Note.midi(Note.transpose(string, Interval.fromSemitones(n)))] ? 1: 0"
-            :r="neck.isInChord(getNote(string, n)) ? neck.noteSize /1.7 - 4 : neck.noteSize / 2 - 14"
+            :opacity="midi.activeNotes[Note.midi(Note.transpose(string, Interval.fromSemitones(n)))] ? 1 : 0"
+            :r="neck.isInChord(getNote(string, n)) ? neck.noteSize / 1.7 - 4 : neck.noteSize / 2 - 14"
           )
           text(
             opacity="0"

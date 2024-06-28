@@ -104,9 +104,9 @@ function keyColor(key, off) {
           tspan(    
             :font-weight="key == pitch ? 800 : 200"
             ) {{ notes[key] }}
-        circle.transition(
-          :style="{opacity: midi.activeChromaMidi[key] ? 1:0}"
-          cy="245"
+        circle(
+          :style="{ opacity: midi.activeChroma[key] == 1 ? 1 : 0 }"
+          cy="145"
           cx="45"
           r="18"
           fill="#3339"
@@ -142,16 +142,16 @@ function keyColor(key, off) {
           ) 
           tspan(y="111" x="45") {{ notes[key] }}
           tspan(y="40" x="45" ) {{ flats[key] }}
-        circle.transition-all.duration-100(
-          :style="{opacity: midi.activeChromaMidi[key] ? 1:0}"
-          cy="175"
+        circle(
+          :style="{ opacity: midi.activeChroma[key] == 1 ? 1 : 0 }"
+          cy="75"
           cx="45"
           r="18"
           fill="#3339"
           )
   slot
     .flex.justify-center.my-2.px-2(
-      :style="{color: colord(noteColor(pitch, 2, 1, 1)).isDark()? 'white':'black'}"
+      :style="{ color: colord(noteColor(pitch, 2, 1, 1)).isDark() ? 'white' : 'black' }"
       v-if="title")
       .absolute.right-4 {{ roman }}
       .font-bold.text-lg.flex-1.text-center {{ notes[pitch] }}{{ keys.title }}

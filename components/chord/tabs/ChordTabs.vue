@@ -12,6 +12,7 @@ import { notes } from '#/use'
 const instruments = {
   ukulele, guitar
 }
+
 const current = useStorage('string-instrument', 'ukulele')
 const state = reactive({
   instrument: computed(() => instruments[current.value]),
@@ -80,29 +81,29 @@ function isInScale(list) {
 
 <template lang="pug">
 
+.flex.flex-wrap.max-w-100
+  control-scale.flex-1.mb-4
+.is-group.flex.flex-wrap.items-stretch.p-2
 
-.is-group.flex.flex-col.items-stretch.p-2
 
-  .flex.flex-wrap.max-w-100
-    control-scale.flex-1.mb-4
 
   .is-group.flex.flex-col.p-2.my-2
-    .flex.flex-wrap.my-2
-      button.p-4.text-xl.capitalize(
+    .flex.flex-wrap
+      button.p-2.text-xl.capitalize(
         v-for="(instrument, name) in instruments" 
         :key="name"
         :class="{ active: state.instrument.main.name == name }"
         @click="current = name"
         ) {{ name }}
-    chord-tabs-neck.my-8(
+    chord-tabs-neck.my-8.h-90dvh(
       :instrument="current"
       @note="state.pitch = (Note.midi($event) + 3) % 12"
       :chord-notes="Chord.get(state.key + state.suffix).notes"
       )
-  .flex.max-h-90svh
+  .flex.max-h-90svh(style="flex: 3 1;")
     .is-group.flex.flex-col.items-center.my-2.overflow-y-scroll(
-      style="flex: 3 1 65%;"
-    )
+      style="flex: 3 1;"
+      )
       .p-2.text-2xl.font-bold.my-2 {{ state.key }} {{ state.suffix }} tabs
       .flex.flex-wrap.justify-center
         .tab(
@@ -120,17 +121,17 @@ function isInScale(list) {
 
 
       .px-1.inline-flex.flex-wrap.items-center.gap-1.rounded-lg.p-1(
-        v-for="(note,n) in state.allChords" :key="n"
-        :style="{backgroundColor:noteColor(notes.findIndex(el=>el == note[0].tonic),1)}"
+        v-for="(note, n) in state.allChords" :key="n"
+        :style="{ backgroundColor: noteColor(notes.findIndex(el => el == note[0].tonic), 1) }"
         )
         .text-lg.font-bold.p-1.rounded(
-          ) {{ n+1 }}: {{ note[0]?.tonic }}
+          ) {{ n + 1 }}: {{ note[0]?.tonic }}
 
         button.text-black.dark-text-light-200.px-1.bg-light-200.bg-opacity-80.dark-bg-dark-200.dark-bg-opacity-40(
           style="margin:0"
-          v-for="(chord,ch) in note" :key="chord.setNum"
-            @click="state.suffix = chord.suffix; state.pitch= notes.findIndex(el=>el == note[0].tonic)"
-            :class="{active: state.suffix == chord.suffix && state.pitch== notes.findIndex(el=>el == note[0].tonic)}"
+          v-for="(chord, ch) in note" :key="chord.setNum"
+            @click="state.suffix = chord.suffix; state.pitch = notes.findIndex(el => el == note[0].tonic)"
+            :class="{ active: state.suffix == chord.suffix && state.pitch == notes.findIndex(el => el == note[0].tonic) }"
           ) {{ chord.symbol || chord.suffix }}
 
 

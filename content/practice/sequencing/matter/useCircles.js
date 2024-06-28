@@ -1,5 +1,5 @@
 
-import { Body, Bodies, Composite, Events, Query, MouseConstraint, Composites, Common, Collision, World, use } from 'matter-js';
+import { Body, Bodies, Composite, Events, Query, MouseConstraint, Composites, Common, Collision, World } from 'matter-js';
 
 import { midi, midiPlay, midiStop, playKey } from '#/use/midi';
 import { Note } from 'tonal';

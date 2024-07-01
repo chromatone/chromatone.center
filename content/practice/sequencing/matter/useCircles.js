@@ -5,6 +5,7 @@ import { midi, midiPlay, midiStop, playKey } from '#/use/midi';
 import { Note } from 'tonal';
 import { globalScale } from '#/use';
 import { engine, canvas, box, running, mouse, score } from './useMatter';
+import { setTimeout } from 'worker-timers';
 
 // import MatterAttractors from 'matter-attractors'
 

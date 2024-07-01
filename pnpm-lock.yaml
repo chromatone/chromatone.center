@@ -179,6 +179,9 @@ importers:
       webmidi:
         specifier: ^3.1.9
         version: 3.1.9
+      worker-timers:
+        specifier: ^8.0.0
+        version: 8.0.0
       zzfx:
         specifier: ^1.2.3
         version: 1.2.3
@@ -2246,6 +2249,10 @@ packages:
   fast-json-stable-stringify@2.1.0:
     resolution: {integrity: sha512-lhd/wF+Lk98HZoTCtlVraHtfh5XYijIjalXck7saUtuanSDyLMxnHhSXEDJqHxD7msR8D0uCmqlkwjCV8xvwHw==}
 
+  fast-unique-numbers@9.0.5:
+    resolution: {integrity: sha512-wVA1YcLQn0eAo4P1DXu4UI3wx68Llwm2/iCtpoOGuTi3jm/13KFYjCt3Nlq2fseSuyaBz43RKimj5G68GDzjjg==}
+    engines: {node: '>=18.2.0'}
+
   fastq@1.15.0:
     resolution: {integrity: sha512-wBrocU2LCXXa+lWBt8RoIRD89Fi8OdABODa/kEnyeyjS5aZO5/GNvI5sEINADqP/h8M29UHTHUb53sUu5Ihqdw==}
 
@@ -3619,6 +3626,15 @@ packages:
 
   workbox-window@7.1.0:
     resolution: {integrity: sha512-ZHeROyqR+AS5UPzholQRDttLFqGMwP0Np8MKWAdyxsDETxq3qOAyXvqessc3GniohG6e0mAqSQyKOHmT8zPF7g==}
+
+  worker-timers-broker@7.0.1:
+    resolution: {integrity: sha512-M2ZYaxYUl/D/JCoioltkZMcnSWREoo/mhdyyTPLyeAxjgwrARgsXn+yFssr1LbDmq4GlaASxReeEx/jdsfA8Xg==}
+
+  worker-timers-worker@8.0.0:
+    resolution: {integrity: sha512-smUw4cwY+OczC2rUmg5Zw58boDqq9WnR6m5CoOBmm0zGQgHo4HjxZ3LE2gPLpx1NWf5NSlAd2Ec5TEwgokxQFA==}
+
+  worker-timers@8.0.0:
+    resolution: {integrity: sha512-ZPC5n62AFD9RmwP5c9dFVFRsEWohJ04bSImT2pTD3GZg45+qyaiznrYf34UwNAJ6oB0HxSjpqkJdh4CoPi+Mog==}
 
   wrappy@1.0.2:
     resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}
@@ -5943,6 +5959,11 @@ snapshots:
 
   fast-json-stable-stringify@2.1.0: {}
 
+  fast-unique-numbers@9.0.5:
+    dependencies:
+      '@babel/runtime': 7.24.7
+      tslib: 2.6.2
+
   fastq@1.15.0:
     dependencies:
       reusify: 1.0.4
@@ -7512,6 +7533,25 @@ snapshots:
     dependencies:
       '@types/trusted-types': 2.0.6
       workbox-core: 7.1.0
+
+  worker-timers-broker@7.0.1:
+    dependencies:
+      '@babel/runtime': 7.24.7
+      fast-unique-numbers: 9.0.5
+      tslib: 2.6.2
+      worker-timers-worker: 8.0.0
+
+  worker-timers-worker@8.0.0:
+    dependencies:
+      '@babel/runtime': 7.24.7
+      tslib: 2.6.2
+
+  worker-timers@8.0.0:
+    dependencies:
+      '@babel/runtime': 7.24.7
+      tslib: 2.6.2
+      worker-timers-broker: 7.0.1
+      worker-timers-worker: 8.0.0
 
   wrappy@1.0.2: {}
 

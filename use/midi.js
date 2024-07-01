@@ -9,6 +9,7 @@ import { setupKeyboard } from './keyboard';
 import Ola from "ola";
 import { Chord, Midi } from 'tonal';
 import { Frequency } from 'tone';
+import { setTimeout } from 'worker-timers';
 
 export const midi = reactive({
   enabled: false,

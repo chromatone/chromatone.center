@@ -1,6 +1,7 @@
 <script setup>
 import { ref, reactive, onMounted, watch, computed, watchEffect } from 'vue';
 import { useRafFn, useResizeObserver, useTimestamp } from '@vueuse/core';
+import { setTimeout } from 'worker-timers';
 
 import { globalScale, } from '#/use/chroma.js';
 import { midi, midiPlay, midiStop, playKey } from '#/use/midi.js';

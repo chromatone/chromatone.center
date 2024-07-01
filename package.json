@@ -93,6 +93,7 @@
 		"vue-use-spring": "^0.3.3",
 		"webchuck": "^1.2.7",
 		"webmidi": "^3.1.9",
+		"worker-timers": "^8.0.0",
 		"zzfx": "^1.2.3"
 	},
 	"devDependencies": {

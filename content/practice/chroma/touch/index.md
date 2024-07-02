@@ -1,7 +1,7 @@
 ---
 title: Chroma Touch
 description: Intuitive and performant WebMIDI intstrument
-date: 2024-05-20
+date: 2021-04-20
 layout: app
 cover: cover.png
 ---

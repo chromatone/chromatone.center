@@ -4,14 +4,11 @@ description: A generative instrument for creating meditative sound landscapes
 date: 2022-04-28
 cover: ambience.png
 layout: app
+hidden: true
+head:
+- - meta
+  - http-equiv: refresh
+    content: "0; url=/practice/generative/ambience/"
 ---
 
-<script setup>
-import AmbientDrone from './ambience.vue'
-</script>
-
-<client-only>
-<ambient-drone />
-</client-only>
-
-### Work in progress
+This page is moved to https://chromatone.center/practice/generative/ambience/

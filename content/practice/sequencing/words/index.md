@@ -4,18 +4,11 @@ desctiption: Decomposing words into riffs and melodies
 data: 2024-06-21
 layout: app
 cover: cover.png
-links:
-  - https://github.com/words/similar-english-words?tab=readme-ov-file
-  - https://github.com/words/an-array-of-english-words?tab=readme-ov-file
+hidden: true
+head:
+- - meta
+  - http-equiv: refresh
+    content: "0; url=/practice/generative/words/"
 ---
 
-
-<script setup>
-import { defineClientComponent } from 'vitepress'
-
-const Words = defineClientComponent(() => {
-  return import('./Words.vue')
-})
-</script>
-
-<Words/>
+This page is moved to https://chromatone.center/practice/generative/words/

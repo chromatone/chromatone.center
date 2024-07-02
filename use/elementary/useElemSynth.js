@@ -1,4 +1,4 @@
-import { watch, } from 'vue'
+import { reactive, ref, watch, } from 'vue'
 import { useMidi } from '#/use/midi'
 
 import { el } from '@elemaudio/core';
@@ -9,6 +9,8 @@ import { useTempo } from '#/use/tempo'
 import params from './synthParams.json'
 import { useVoices, } from './useVoices';
 import { useElementary } from './useElementary';
+
+let initialized
 
 export function useElemSynth() {
 

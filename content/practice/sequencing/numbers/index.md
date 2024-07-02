@@ -4,16 +4,11 @@ description: Playing with mathematical wonders
 date: 2024-04-08
 layout: app
 cover: cover.png
-links: 
-  - https://www.npmjs.com/package/jisg
+hidden: true
+head:
+- - meta
+  - http-equiv: refresh
+    content: "0; url=/practice/generative/numbers/"
 ---
 
-<script setup>
-import { defineClientComponent } from 'vitepress'
-
-const Numbers = defineClientComponent(() => {
-  return import('./Numbers.vue')
-})
-</script>
-
-<Numbers/>
+This page is moved to https://chromatone.center/practice/generative/numbers/

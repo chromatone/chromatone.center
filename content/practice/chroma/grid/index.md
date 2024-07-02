@@ -4,20 +4,11 @@ description: Write note sequences in flexible grids
 layout: app
 date: 2021-11-02
 cover: grid.png
-todo:
-  - MIDI out channels
-  - midi out on-off
-  - solo
-  - mutes
-  - synth
+hidden: true
+head:
+- - meta
+  - http-equiv: refresh
+    content: "0; url=/practice/sequencing/grid"
 ---
 
-
-<client-only >
-  
-  <chroma-grids />
-  <div class="flex flex-wrap">
-  <control-scale style="flex: 1 1 20px" />
-  <state-transport style="flex: 1 1 20px" />
-</div>
-</client-only>
+This page moved to https://chromatone/practice/sequencing/grid/

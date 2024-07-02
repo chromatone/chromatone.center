@@ -39,6 +39,7 @@ export function getPages(routes) {
   let pageList = {}
   for (let route of routes) {
     const folder = normalize(route.url.split("/").slice(0, -2).join("/"))
+    if (route.frontmatter?.hidden) continue
     pageList[folder] = pageList[folder] || [];
     pageList[folder].push(route);
   }

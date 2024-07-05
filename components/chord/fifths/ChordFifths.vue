@@ -44,8 +44,10 @@ const steps = {
 }
 
 const chordShapes = {
-  minor: [0, 3, 7, 10],
-  major: [0, 4, 7, 11]
+  minor: [0, 3, 7, 12],
+  major: [0, 4, 7, 12],
+  minor7: [0, 3, 7, 10],
+  major7: [0, 4, 7, 11]
 }
 
 
@@ -78,15 +80,12 @@ function stopChord(note, qual = 'major', inv) {
   stopNote(getChordNotes(note, qual, inv))
 }
 
-
-
 </script>
 
 <template lang="pug">
-pre.absolute.z-100 {{ midi?.activeChroma }}
 .fullscreen-container#screen.select-none.touch-manipulation.h-full
   svg#fifths.w-full.max-h-90svh.min-h-80svh.max-h-100svh(
-    style="flex: 1 1 auto;touch-action:none"
+    style="flex: 1 1 auto; touch-action:none;user-select: none; -webkit-user-select: none; -webkit-touch-callout: none;"
     version="1.1",
     baseProfile="full",
     viewBox="0 0 100 100",
@@ -160,13 +159,13 @@ pre.absolute.z-100 {{ midi?.activeChroma }}
           :fill="Math.abs(tonic - i) == 11 || Math.abs(tonic - i) % 12 <= 1 ? noteColor(note.pitch) : noteColor(note.pitch, 2, 1)"
           )
         g.quadro(
-          @mousedown="playChord(note.name, qual, j)", 
-          @touchstart="playChord(note.name, qual, j)", 
+          @mousedown.stop.prevent="playChord(note.name, qual, j)", 
+          @touchstart.stop.prevent="playChord(note.name, qual, j)", 
           @mouseleave="stopChord(note.name, qual, j)", 
           @mouseup="stopChord(note.name, qual, j)", 
           @touchend="stopChord(note.name, qual, j)", 
           @touchcancel="stopChord(note.name, qual, j)"
-          v-for="(deg, j) in chordShapes[qual]"
+          v-for="(deg, j) in chordShapes[qual + (state.seventh ? '7' : '')]"
           :key="j"
           )
           svg-ring.transition(
@@ -225,7 +224,7 @@ pre.absolute.z-100 {{ midi?.activeChroma }}
         :to="(+ 1) / 12 * 360 + 15"
         :radius="44.5"
         :thickness="31"
-        sWidth=".5"
+        :sWidth=".5"
         stroke="#fff3"
         fill="none"
         )

@@ -10,8 +10,6 @@ import { reactive, computed } from 'vue'
 import { midi } from '#/use/midi'
 import { colord } from 'colord'
 
-
-
 onKeyDown('Shift', (ev) => {
   state.seventh = !state.seventh
 })
@@ -39,8 +37,6 @@ const state = reactive({
   seventh: false,
   main: true
 })
-
-const actives = computed(() => Object.keys(midi.activeNotes).map(n => n % 12))
 
 const steps = {
   minor: [['VI', 'III', 'VII'], ['iv', 'i', 'v']],
@@ -87,6 +83,7 @@ function stopChord(note, qual = 'major', inv) {
 </script>
 
 <template lang="pug">
+pre.absolute.z-100 {{ midi?.activeChroma }}
 .fullscreen-container#screen.select-none.touch-manipulation.h-full
   svg#fifths.w-full.max-h-90svh.min-h-80svh.max-h-100svh(
     style="flex: 1 1 auto;touch-action:none"
@@ -122,7 +119,7 @@ function stopChord(note, qual = 'major', inv) {
         r="3"
         fill="transparent"
         stroke="currentColor"
-        :stroke-width="state.seventh ? 0.8 :0.4"
+        :stroke-width="state.seventh ? 0.8 : 0.4"
         )
     g.cursor-pointer(
       transform="translate(90,90)"
@@ -141,7 +138,7 @@ function stopChord(note, qual = 'major', inv) {
         r="3"
         fill="transparent"
         stroke="currentColor"
-        :stroke-width="state.main ? 0.8 :0.4"
+        :stroke-width="state.main ? 0.8 : 0.4"
         )
     g(
       v-for="(scale, qual) in scales"
@@ -163,25 +160,24 @@ function stopChord(note, qual = 'major', inv) {
           :fill="Math.abs(tonic - i) == 11 || Math.abs(tonic - i) % 12 <= 1 ? noteColor(note.pitch) : noteColor(note.pitch, 2, 1)"
           )
         g.quadro(
-          @mousedown="playChord(note.name, qual,j)", 
-          @touchstart="playChord(note.name, qual,j)", 
-          @mouseleave="stopChord(note.name, qual,j)", 
-          @mouseup="stopChord(note.name, qual,j)", 
-          @touchend="stopChord(note.name, qual,j)", 
-          @touchcancel="stopChord(note.name, qual,j)"
-          v-for="(deg,j) in chordShapes[qual]"
+          @mousedown="playChord(note.name, qual, j)", 
+          @touchstart="playChord(note.name, qual, j)", 
+          @mouseleave="stopChord(note.name, qual, j)", 
+          @mouseup="stopChord(note.name, qual, j)", 
+          @touchend="stopChord(note.name, qual, j)", 
+          @touchcancel="stopChord(note.name, qual, j)"
+          v-for="(deg, j) in chordShapes[qual]"
           :key="j"
-          :class="{active: actives.includes((note.pitch-3+deg)%12)}"
           )
-          svg-ring.opacity-20.transition(
+          svg-ring.transition(
             :cx="50"
             :cy="50"
-            :from="(i - 1) / 12 * 360 + 15+ 15*(j%2)"
-            :to="(i) / 12 * 360+ 15*(j%2)"
-            :radius="40 - 12 * getRadius(qual) -5*(j>1 ? 0 :1)"
+            :from="(i - 1) / 12 * 360 + 15 + 15 * (j % 2)"
+            :to="(i) / 12 * 360 + 15 * (j % 2)"
+            :radius="40 - 12 * getRadius(qual) - 5 * (j > 1 ? 0 : 1)"
             :thickness="5"
-            :op="Math.abs(tonic - i) == 11 || Math.abs(tonic - i) % 12 <= 1 ? 0.8 : 0.1"
-            :fill="Math.abs(tonic - i) == 11 || Math.abs(tonic - i) % 12 <= 1 ? noteColor(note.pitch+deg,5) : noteColor(note.pitch+deg, 5, 1)"
+            :op="Math.abs(tonic - i) == 11 || Math.abs(tonic - i) % 12 <= 1 ? midi.activeChroma[(note.pitch + deg) % 12] == 1 ? .7 : .3 : midi.activeChroma[(note.pitch + deg) % 12] == 1 ? .2 : 0.1"
+            :fill="Math.abs(tonic - i) == 11 || Math.abs(tonic - i) % 12 <= 1 ? noteColor(note.pitch + deg, 5) : noteColor(note.pitch + deg, 5, 1)"
             )
         circle.transition(
           :cx="getCircleCoord(i, 12, 42 - getRadius(qual) * 26).x",
@@ -205,11 +201,11 @@ function stopChord(note, qual = 'major', inv) {
             :cx="getCircleCoord(i, 12, 35 - getRadius(qual) * 12).x",
             :cy="getCircleCoord(i, 12, 35 - getRadius(qual) * 12).y",
             r="5",
-            :fill="Math.abs(tonic - i) == 11 || Math.abs(tonic - i) % 12 <= 1 ? noteColor(note.pitch,4) : noteColor(note.pitch, 5, 1, 0.5)",
+            :fill="Math.abs(tonic - i) == 11 || Math.abs(tonic - i) % 12 <= 1 ? noteColor(note.pitch, 4) : noteColor(note.pitch, 5, 1, 0.5)",
           )
         text.pointer-events-none(
           style="user-select:none;transition:all 300ms ease"
-          :fill="colord(noteColor(note.pitch,4)).isDark() ? 'white' : 'white'"
+          :fill="colord(noteColor(note.pitch, 4)).isDark() ? 'white' : 'white'"
           font-size="3px"
           text-anchor="middle",
           dominant-baseline="middle"
@@ -229,8 +225,8 @@ function stopChord(note, qual = 'major', inv) {
         :to="(+ 1) / 12 * 360 + 15"
         :radius="44.5"
         :thickness="31"
-        stroke-width="0.5"
-        stroke="gray"
+        sWidth=".5"
+        stroke="#fff3"
         fill="none"
         )
       circle.transition-all.duration-300.cursor-pointer(
@@ -238,14 +234,14 @@ function stopChord(note, qual = 'major', inv) {
         :cx="50"
         :cy="8"
         :r="2"
-        :fill="noteColor(majors[tonic].pitch,4)"
+        :fill="noteColor(majors[tonic].pitch, 4)"
       )
       circle.transition-all.duration-300.cursor-pointer(
         v-if="scaleType != 'major'"
         :cx="50"
         :cy="34"
         :r="2"
-        :fill="noteColor(minors[tonic].pitch,4)"
+        :fill="noteColor(minors[tonic].pitch, 4)"
       )
       g(
         v-for="(level, idx) in steps[scaleType]" 

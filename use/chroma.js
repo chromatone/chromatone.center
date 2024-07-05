@@ -4,8 +4,7 @@
  */
 
 import { Frequency } from "tone";
-import { midiPlay, midiStop, midiOnce } from "./midi";
-import { synthOnce, synthAttack, synthRelease } from "./synth";
+import { midiPlay, midiStop, playKey } from "./midi";
 import { rotateArray } from "./calculations";
 import { notes } from './theory'
 import { Note, ScaleType, Scale, Pcset } from "tonal";
@@ -44,40 +43,47 @@ function getChromaNotes(chroma = "100010010000", tonic = globalScale.tonic) {
 
 export function playChromaOnce(chroma, tonic) {
   let notes = getChromaNotes(chroma, tonic);
-
-  notes.forEach((name) => {
-    midiOnce(name);
-  });
-  synthOnce(notes, "4n");
-  // pianoOnce(notes, '4n')
+  playNote(notes)
+  setTimeout(() => stopNote(notes), 300)
 }
 
 export function playChroma(chroma, tonic) {
   let notes = getChromaNotes(chroma, tonic);
-  notes.forEach((name) => {
-    midiPlay(name);
-  });
-  synthAttack(notes);
-  // pianoAttack(notes)
+  playNote(notes)
 }
 
 export function stopChroma(chroma, tonic) {
   let notes = getChromaNotes(chroma, tonic);
-  notes.forEach((name) => {
-    midiStop(name);
-  });
-  synthRelease(notes);
-  // pianoRelease(notes)
+  stopNote(notes)
 }
 
 export function playNote(name) {
-  midiPlay(name);
-  synthAttack(name);
-  // pianoAttack(notes)
+
+  if (Array.isArray(name)) {
+    name.forEach(note => {
+      setTimeout(() => {
+        const midiNote = Note.midi(note)
+        playKey(note.slice(0, -1), parseInt(note.slice(-1)) - 4, false, 0.5, 0.5)
+        midiPlay(midiNote, {
+          attack: 2
+        })
+      }, 0)
+
+    })
+  }
 }
 
 export function stopNote(name) {
-  midiStop(name);
-  synthRelease(name);
-  // pianoRelease(notes)
+
+  if (Array.isArray(name)) {
+    name.forEach(note => {
+      setTimeout(() => {
+        const midiNote = Note.midi(note)
+        playKey(note.slice(0, -1), parseInt(note.slice(-1)) - 4, true, 1)
+        midiStop(midiNote, {
+          attack: 1
+        })
+      }, 0)
+    })
+  }
 }

@@ -53,7 +53,7 @@ export const midi = reactive({
     let chroma = new Array(12).fill(0);
     for (let num in midi.activeNotes) {
       const n = (Number(num) - 9) % 12;
-      chroma[n] = midi.activeNotes[num];
+      chroma[n] = midi.activeNotes[num] ? 1 : 0;
     }
     return chroma.join('');
   }),

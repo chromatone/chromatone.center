@@ -1,1 +1,0 @@
-import{e as t,f as o,q as n,a2 as s,_ as a}from"./framework.De1wmbud.js";const r={class:"button"};function c(e,d){return t(),o("button",r,[n(e.$slots,"default",{},()=>[s("Start")],!0)])}const _={},u=a(_,[["render",c],["__scopeId","data-v-fb351d24"]]);export{u as _};

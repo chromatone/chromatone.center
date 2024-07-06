@@ -2,12 +2,17 @@
 title: Elementary Refs
 description: Implementing the new rendering technique for Elementary 3
 date: 2010-11-07
+layout: app
+links:
+  - https://www.elementary.audio/docs/guides/using_refs
 ---
 
-<client-only>
-<AudioElemRef />
-</client-only>
+<script setup>
+import { defineClientComponent } from 'vitepress'
 
-## Links
+const ElemRef = defineClientComponent(() => {
+  return import('./ElemRef.vue')
+})
+</script>
 
-- https://www.elementary.audio/docs/guides/using_refs
+<ElemRef />

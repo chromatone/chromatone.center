@@ -6,15 +6,28 @@ cover: dx7_algorithms.jpg
 layout: app
 ---
 
+<script setup>
+import { defineClientComponent } from 'vitepress'
+
+const SynthAmy = defineClientComponent(() => {
+  return import('./SynthAmy.vue')
+})
+
+import { onBeforeUnmount, onMounted } from "vue";
+import { synthActive } from "#/use";
+
+onMounted(() => synthActive.value = false)
+onBeforeUnmount(() => synthActive.value = true)
+</script>
+
+<SynthAmy/>
+
 ## AMY Synth
 
 ### the Additive Music synthesizer librarY
 
 Highly experimental. [Issue pending](https://github.com/bwhitman/amy/issues/35)
 
-<client-only>
-<SynthAmy />
-</client-only>
 
 - Press `A` on your keyboard to play a note. Or push the PLAY button.
 - Use <i class="p-3 i-la-arrow-left"></i> and <i class="p-3 i-la-arrow-right"></i> keys to browse patches

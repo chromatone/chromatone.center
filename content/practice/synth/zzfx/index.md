@@ -1,7 +1,7 @@
 ---
 title: ZZFX
 description:  Zuper Zmall Zound Zynth
-date: 2024-06-16
+date: 2022-06-16
 layout: app
 cover: cover.png
 links:
@@ -18,6 +18,12 @@ import { defineClientComponent } from 'vitepress'
 const SynthZzfx = defineClientComponent(() => {
   return import('./SynthZzfx.vue')
 })
+
+import { onBeforeUnmount, onMounted } from "vue";
+import { synthActive } from "#/use";
+
+onMounted(() => synthActive.value = false)
+onBeforeUnmount(() => synthActive.value = true)
 </script>
 
 <SynthZzfx/>

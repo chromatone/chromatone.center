@@ -11,20 +11,29 @@ export function useParams(params, title = 'ref') {
   const controls = reactive({})
   const cv = {}
   const setters = {}
+  const groups = {}
+
 
   for (let p in params) {
     let param = params[p]
     controls[p] = useClamp(param?.nostore ? param.value : useStorage(`${title}:${p}`, param.value), param.min, param.max)
+    if (!param?.hidden) {
+      const split = p.split(':')
+      const name = split.pop()
+      const group = split.pop()
+      groups[group] = groups[group] || {}
+      groups[group][name] = param
+    }
   }
 
-  watch(() => audio.initiated, (i) => {
-    if (!i) return
+  watch(() => audio.initiated, () => {
+    if (!audio.initiated) return
     for (let p in params) {
-      let [val, setter] = audio.core.createRef("const", { value: controls[p] }, []);
-      cv[p] = val
+      let [node, setter] = audio.core.createRef("const", { value: controls[p] }, []);
+      cv[p] = node
       setters[p] = setter
     }
-  })
+  }, { immediate: true })
 
   watch(controls, cs => {
     for (let c in cs) {
@@ -33,5 +42,5 @@ export function useParams(params, title = 'ref') {
     }
   })
 
-  return { controls, cv, setters }
+  return { controls, cv, setters, groups }
 }

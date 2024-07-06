@@ -1,6 +1,6 @@
 
 import { computed, onMounted, reactive, onBeforeUnmount, watch } from "vue";
-
+import { zzfx, ZZFX } from 'zzfx'
 import { synth as AppSynth, midi } from "#/use";
 
 let synth
@@ -11,10 +11,10 @@ export function useZZFX() {
     volume: 1,
     randomness: 0,
     frequency: 220,
+    shape: 1,
     attack: 0.12,
     sustain: 0.53,
     release: 0.15,
-    shape: 1,
     shapeCurve: 0.76,
     slide: 0,
     deltaSlide: 0,
@@ -27,7 +27,8 @@ export function useZZFX() {
     delay: 0,
     sustainVolume: 0.39,
     decay: 0.02,
-    tremolo: 0
+    tremolo: 0,
+    // filter: 0
   });
 
   const soundArray = computed(() => prepareParams(sound))
@@ -66,7 +67,8 @@ export function useZZFX() {
     delay: { min: 0, max: 2, default: 0, step: 0.01 },
     sustainVolume: { min: 0, max: 1, default: 1, step: 0.01 },
     decay: { min: 0, max: 2, default: 0.1, step: 0.01 },
-    tremolo: { min: 0, max: 1, default: 0, step: 0.01 }
+    tremolo: { min: 0, max: 1, default: 0, step: 0.01 },
+    // filter: { min: -1, max: 1, default: 0, step: 0.01 },
   };
 
   function randomize() {
@@ -86,9 +88,7 @@ export function useZZFX() {
     if (note?.type == 'noteoff') return
     if (note?.type == 'noteon') sound.frequency = Math.pow(2, (note.number - 69) / 12) * 440;
     if (!synth) {
-      await import('zzfx').then(({ zzfx }) => {
-        synth = zzfx
-      })
+      synth = zzfx
     }
 
     synth(...soundArray.value)
@@ -116,6 +116,7 @@ export function useZZFX() {
       exp.sustainVolume ?? 1, // sustainVolume
       exp.decay ?? 0, // decay
       exp.tremolo ?? 0, // tremolo
+      // exp.filter ?? 0
     ];
   }
 

@@ -9,16 +9,12 @@ links:
 ---
 
 <script setup>
-import { synth as AppSynth } from "#/use";
-  import { onBeforeUnmount, onMounted } from "vue";
 
-onMounted(() => {
-  AppSynth.state.midi = false
-})
+import { onBeforeUnmount, onMounted } from "vue";
+import { synthActive } from "#/use";
 
-onBeforeUnmount(() => {
-  AppSynth.state.midi = true
-})
+onMounted(() => synthActive.value = false)
+onBeforeUnmount(() => synthActive.value = true)
 </script>
 
 <client-only>

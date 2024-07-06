@@ -4,8 +4,6 @@ import { Chuck } from 'webchuck'
 
 const examples = import.meta.glob('./examples/*.ck', { query: '?raw', eager: true })
 
-console.log(examples)
-
 function getFileName(path) {
   return path.match(/([^./]+)(?=\.[^.]*$|$)/)[1];
 }
@@ -29,7 +27,7 @@ async function init() {
 </script>
 
 <template lang='pug'>
-.flex.flex-col.gap-2
+.flex.flex-col.gap-2.p-4
   .text-3xl CHUCK 
   .text-sm Paste any ChucK code and press Run to hear generated sound. 
   textarea.font-mono.text-sm.p-2.w-full.dark-bg-dark-200.rounded-lg(v-model="command" cols="55" rows="20")
@@ -41,8 +39,8 @@ async function init() {
     button.text-button.flex-1(@click="webChuck.removeLastCode()") STOP
   .flex.flex-wrap.gap-2 
     .p-2.border-1.rounded-lg.border-dark-200.cursor-pointer(
-      :class="{active:example?.default == command}"
-      v-for="(example,path) in examples" :key="example"
+      :class="{ active: example?.default == command }"
+      v-for="(example, path) in examples" :key="example"
       @click="command = example?.default"
       ) {{ getFileName(path) }} 
 </template>

@@ -12,6 +12,8 @@ import { useElementary } from './useElementary';
 
 let initialized
 
+export const synthActive = ref(true)
+
 export function useElemSynth() {
 
   const tempo = useTempo()
@@ -23,6 +25,9 @@ export function useElemSynth() {
   const { voices, cycleNote, stopAll } = useVoices()
 
   watch([voices, controls], () => {
+
+    if (!synthActive.value) return
+
     audio.layers.synth = {
       volume: 1,
       signal: pingPong(el.scope(

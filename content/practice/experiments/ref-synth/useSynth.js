@@ -43,7 +43,6 @@ export function useSynth() {
       x,
       el.mul(
         cv['fx:pingPong'],
-        cv['fx:feedback'],
         el.delay(
           { size: 44100 },
           el.ms2samps(el.mul(

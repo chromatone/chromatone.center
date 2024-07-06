@@ -70,6 +70,14 @@ export function playNote(name) {
       }, 0)
 
     })
+  } else {
+    setTimeout(() => {
+      const midiNote = Note.midi(name)
+      playKey(name.slice(0, -1), parseInt(name.slice(-1)) - 4, false, 1, 0.5)
+      midiPlay(midiNote, {
+        attack: 2
+      })
+    }, 0)
   }
 }
 
@@ -85,5 +93,13 @@ export function stopNote(name) {
         })
       }, 0)
     })
+  } else {
+    setTimeout(() => {
+      const midiNote = Note.midi(name)
+      playKey(name.slice(0, -1), parseInt(name.slice(-1)) - 4, true)
+      midiStop(midiNote, {
+        attack: 2
+      })
+    }, 0)
   }
 }

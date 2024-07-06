@@ -62,4 +62,14 @@ Current tasks and progress are open [at this ClickUp project](https://sharing.cl
 
 https://codesandbox.io/p/github/chromatone/chromatone.center/
 
-## Scale names
+## TBD
+
+- Tauri desktop build
+  - https://github.com/NicolaSpadari/nuxtor
+  - https://github.com/ZaneH/piano-trainer/blob/master/src-tauri/Cargo.toml
+  - https://www.youtube.com/watch?v=RFFSYgdeczw
+  - https://github.com/ruohki/tauri-midi-example/blob/main/src-tauri/src/main.rs
+- Popover panels
+  - https://caniuse.com/?search=popover
+  - https://frontendmasters.com/blog/popovers-work-pretty-nicely-as-slide-out-drawers/
+  - https://caniuse.com/css-text-wrap-balance

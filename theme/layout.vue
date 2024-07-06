@@ -58,6 +58,7 @@ midi-notes
     iframe.min-h-80svh.w-full.max-w-100svw(
       v-if="f?.iframe"
       :src="f.iframe"
+      allow="midi *"
       )
 
   template(v-else-if="f.layout == 'home'")

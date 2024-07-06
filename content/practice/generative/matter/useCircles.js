@@ -28,6 +28,10 @@ export function useCircles() {
   const hole = Bodies.circle(box.w / 2, box.h / 2, 40, {
     isStatic: true,
     label: 'hole',
+    collisionFilter: {
+      category: 0x0008,
+      mask: 0x0004 | 0x0002
+    },
     render: {
       lineWidth: 10,
       strokeStyle: '#5558',
@@ -67,6 +71,10 @@ export function useCircles() {
         lineWidth: 2,
         strokeStyle,
         fillStyle: 'transparent'
+      },
+      collisionFilter: {
+        category: 0x0004,
+        mask: 0x0004 | 0x0008 | 0x0002
       },
       plugin: {
         // attractors: [

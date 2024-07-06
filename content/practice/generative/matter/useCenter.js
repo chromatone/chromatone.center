@@ -10,12 +10,16 @@ export function useCenter() {
 
   const strokeStyle = `hsl(${globalScale.tonic * 30}deg, 50%, 50%)`
 
-  const center = Bodies.polygon(box.w / 2, box.h / 2, 3, Math.min(box.w / 40, box.h / 40), {
+  const center = Bodies.polygon(box.w / 2, box.h / 2, 3, Math.min(20), {
     label: 'player',
     restitution: .95,
     friction: 0.4,
     frictionStatic: 0.001,
-    density: 150,
+    density: 60,
+    collisionFilter: {
+      category: 0x0002,
+      mask: 0x0004 | 0x0002
+    },
     render: {
       lineWidth: 2,
       strokeStyle,
@@ -28,7 +32,7 @@ export function useCenter() {
 
     const forceX = box.w / 2 - center.position.x;
     const forceY = box.h / 2 - center.position.y;
-    const strength = 0.01
+    const strength = 0.02
     Body.applyForce(center, center.position, { x: forceX * strength, y: forceY * strength });
 
   })

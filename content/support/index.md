@@ -17,6 +17,12 @@ buttons:
 ---
 
 <script setup>
+import { defineClientComponent } from 'vitepress'
+
+const MapGlobe = defineClientComponent(() => {
+  return import('./MapGlobe.vue')
+})
+
 import map from '#/db/map.yml'
 const dots = map.cities.map(city=>city.coord)
 </script>

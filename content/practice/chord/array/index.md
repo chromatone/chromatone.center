@@ -7,7 +7,7 @@ layout: app
 ---
 
 <client-only>
-  <tonal-space />
+  <tonal-array />
 </client-only>
 
 [wiki](https://en.wikipedia.org/wiki/Harmonic_table_note_layout)

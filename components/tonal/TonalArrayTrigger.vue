@@ -1,12 +1,10 @@
 <script setup>
 import { pitchFreq } from '#/use/calculations'
 import { Frequency } from 'tone'
-import { synthAttack, synthRelease } from '#/use/synth'
 import { midiPlay, midiStop } from '#/use/midi'
 import { computed, ref } from 'vue';
 import { noteColor } from '#/use/colors'
-import { useMidi } from '#/use'
-import { watch } from 'vue';
+import { playNote, stopNote, useMidi } from '#/use'
 const { midi } = useMidi()
 
 const props = defineProps({
@@ -46,30 +44,23 @@ const activeMidi = computed(() => {
 });
 
 
-
 const chordNames = computed(() => {
   return chordPitches.value.map(pitch => {
     return Frequency(pitchFreq(pitch)).transpose(-12).toNote()
   })
 })
 
-
-
 function playChord() {
   playing.value = true
-  synthAttack(chordNames.value)
+  playNote(chordNames.value)
   midiPlay(chordNames.value)
 }
 
 function stopChord() {
   playing.value = false
-  synthRelease(chordNames.value)
+  stopNote(chordNames.value)
   midiStop(chordNames.value)
 }
-
-watch(() => midi.activeChroma, an => {
-  console.log(an)
-})
 
 </script>
 

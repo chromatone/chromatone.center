@@ -4,6 +4,7 @@ import { useResizeObserver } from '@vueuse/core';
 import { useCircles } from './useCircles';
 import { useCenter } from './useCenter';
 import { useBoundaries } from './useBoundaries';
+import { useStars } from './useStars';
 
 
 //import MatterWrap from 'matter-wrap';
@@ -64,7 +65,7 @@ export function useMatter() {
     initiated.value = true;
     setupMatterJs();
 
-
+    useStars()
     useCircles()
     // useBoundaries()
     useCenter()

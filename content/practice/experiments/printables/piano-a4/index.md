@@ -4,6 +4,7 @@ description: All chords for all scales on one page
 cover: piano.png
 date: 2023-08-02
 layout: app
+hidden: true
 product:
   price: 10
   id: print-piano-a4

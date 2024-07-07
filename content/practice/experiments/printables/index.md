@@ -4,6 +4,7 @@ description: Hand crafted PDF files for you to print locally
 date: 2020-08-10
 cover: bank-phrom.jpg
 topContent: true
+hidden: true
 ---
 
 New way to enjoy Chromatone yourself and share with friends, even offline. Printable PDF cheat-sheets and posters are a growing collection of digital goods, that will be made available in upcoming weeks and months.

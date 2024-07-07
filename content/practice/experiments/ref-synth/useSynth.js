@@ -1,5 +1,5 @@
 import { el } from '@elemaudio/core';
-import { ref, watch } from 'vue';
+import { ref, watch, reactive, watchEffect } from 'vue';
 
 import params from './params.json'
 
@@ -7,16 +7,14 @@ import { useElementary } from '#/use/elementary/useElementary.js';
 import { useParams } from '#/use/elementary/useParams.js';
 import { useMidi, useTempo } from '#/use';
 
-import { useVoices } from './useVoices';
-
 export function useSynth() {
   const started = ref(false)
 
   const { controls, cv, groups } = useParams(params, 'ref')
 
   const tempo = useTempo()
-  watch(() => tempo.bpm, bpm => {
-    controls['fx:bpm'] = bpm
+  watchEffect(() => {
+    controls['fx:bpm'] = tempo.bpm
   })
 
   const { midi } = useMidi()
@@ -54,4 +52,43 @@ export function useSynth() {
   }
 
   return { controls, cv, groups, audio, render, started, voices, cycleNote }
+}
+
+
+
+export function useVoices(count = 12) {
+
+  const voices = reactive(Array(count).fill(true).map((_, i) => ({ key: `v${i}`, gate: 0.0, midi: 69, vel: 0 })))
+
+  const next = ref(0)
+  const overflow = ref(0)
+
+  function cycleNote(num = 60, velocity = 0) {
+    if (velocity) {
+      do {
+        next.value++
+        if (next.value >= voices.length) {
+          next.value = 0
+          overflow.value++
+        }
+        if (overflow.value > 3) break;
+      } while (voices[next.value].gate == 1)
+      overflow.value = 0
+      voices[next.value]['gate'] = 1;
+      voices[next.value]['midi'] = num;
+      voices[next.value]['vel'] = velocity / 127;
+    } else {
+      voices.forEach(v => {
+        if (v.midi == num) {
+          v.gate = 0
+        }
+      })
+    }
+  }
+
+  function stopAll(num) {
+    voices.forEach(v => v.gate = 0)
+  }
+
+  return { voices, cycleNote, stopAll }
 }

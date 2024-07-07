@@ -3,7 +3,6 @@ import { useMidi } from '#/use/midi'
 
 import { el } from '@elemaudio/core';
 
-import { midiFrequency } from './tools/toolbox';
 import { useUI } from './tools/useUI';
 import { useTempo } from '#/use/tempo'
 import params from './synthParams.json'
@@ -42,7 +41,11 @@ export function useElemSynth() {
   watch(() => midi.note, n => cycleNote(n.number, n.velocity))
 
   function genVoice(voice) {
-    let frequency = midiFrequency(voice.midi, voice.key)
+    let frequency = midiFrequency(el.const(
+      {
+        key: `${voice.key}:frequency`,
+        value: voice.midi
+      }), voice.key)
 
     let osc = el.mul(
       cv['osc:gain'],
@@ -109,4 +112,20 @@ export function useElemSynth() {
   }
 
   return { groups, controls, voices, cycleNote, stopAll }
+}
+
+function midiFrequency(x) {
+  return el.mul(
+    440,
+    el.pow(
+      2,
+      el.smooth(
+        el.tau2pole(0.001),
+        el.div(
+          el.sub(x, 69),
+          12
+        )
+      )
+    )
+  )
 }

@@ -9,8 +9,6 @@ import params from './synthParams.json'
 import { useVoices, } from './useVoices';
 import { useElementary } from './useElementary';
 
-let initialized
-
 export const synthActive = ref(true)
 
 export function useElemSynth() {

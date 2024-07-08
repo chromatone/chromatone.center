@@ -1,4 +1,4 @@
-import { shallowReactive, watch, reactive, onMounted, getCurrentInstance } from 'vue'
+import { shallowReactive, watch, reactive, onMounted, getCurrentInstance, markRaw } from 'vue'
 import { el } from '@elemaudio/core'
 import WebRenderer from '@elemaudio/web-renderer'
 
@@ -26,14 +26,23 @@ export function useElementary() {
     })
   }
 
+  watch(() => audio.layers, () => {
+    if (audio.initiated) render()
+  })
+
   return { audio, initAudio, render, meters, scopes, FFTs }
 }
 
+
 function render() {
+
+  if (!audio.initiated) { initAudio() }
 
   if (audio?.ctx?.state === 'suspended') { audio?.ctx?.resume() }
 
-  if (!audio.initiated) { initAudio() }
+  if (audio.started) return
+
+  console.log('renders')
 
   const sampleRate = el.mul(0, el.meter({ name: 'main:sample-rate' }, el.sr()))
 
@@ -55,32 +64,30 @@ function render() {
       }
     }
 
-
-    audio.core.render(
-      stereo[1],
-      el.fft({
-        name: 'main:fft',
-        size: 2048
-      }, stereo[0]))
-    audio.started = audio.started || Date.now()
   }
+  audio?.core?.render(
+    stereo[1],
+    el.fft({
+      name: 'main:fft',
+      size: 2048
+    }, stereo[0]))
+  audio.started = audio.started || Date.now()
+
 }
 
 export async function initAudio() {
   if (audio.initiating || audio.initiated) return
   audio.initiating = true
   //@ts-expect-error
-  audio.ctx = new (AudioContext || webkitAudioContext)()
-  audio.core = new WebRenderer()
-  audio.node = await audio.core.initialize(audio.ctx, {
+  audio.ctx = markRaw(new (AudioContext || webkitAudioContext)())
+  audio.core = markRaw(new WebRenderer())
+  audio.node = markRaw(await audio.core.initialize(audio.ctx, {
     numberOfInputs: 1,
     numberOfOutputs: 1,
     outputChannelCount: [2],
-  })
+  }))
   audio.node.connect(audio.ctx.destination)
 
-
-  watch(() => audio.layers, render)
 
   audio.core.on('meter', e => {
     meters[e.source] = { max: e.max, min: e.min }

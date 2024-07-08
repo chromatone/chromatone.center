@@ -3,10 +3,10 @@ import { ref, watch, onBeforeUnmount, onMounted } from 'vue';
 import { el } from '@elemaudio/core';
 import { useElementary } from '#/use/elementary/useElementary.js';
 import { useParams } from '#/use/elementary/useParams.js';
-import { useMidi, synthActive } from "#/use";
+import { useMidi, synthEnabled } from "#/use";
 
-onMounted(() => synthActive.value = false)
-onBeforeUnmount(() => synthActive.value = true)
+onMounted(() => synthEnabled.value = false)
+onBeforeUnmount(() => synthEnabled.value = true)
 
 const { midi } = useMidi()
 

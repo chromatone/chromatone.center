@@ -7,12 +7,8 @@ links:
   - https://www.elementary.audio/docs/guides/using_refs
 ---
 
-<script setup>
-import { defineClientComponent } from 'vitepress'
 
-const ElemRef = defineClientComponent(() => {
-  return import('./ElemRef.vue')
-})
-</script>
+<client-only >
+<AudioSynthRef />
 
-<ElemRef />
+</client-only>

@@ -71,7 +71,7 @@ export function useSequencer() {
         )))
 
     audio.layers.seq = { signal: [all, all] }
-
+    audio.started = false
     render('sequencer')
   })
 

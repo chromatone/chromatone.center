@@ -105,6 +105,7 @@ export function useTime() {
     watch([controls, transport], () => {
 
       audio.layers.time = { signal: signal.value, volume: 1 }
+      audio.started = false
       render('time')
     }, { immediate: true })
 

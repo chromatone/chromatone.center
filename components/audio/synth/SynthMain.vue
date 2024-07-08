@@ -1,15 +1,11 @@
 <script setup>
-import { useMidi, notes, synth as AppSynth } from "#/use";
+import { useMidi, } from "#/use";
 import { pitchColor } from "#/use/calculations";
 import { computed } from "vue";
 
 import { colord } from "colord";
-import { onBeforeUnmount, onMounted } from "vue";
 import { useElemSynth } from "#/use/elementary/useElemSynth";
 import { onKeyDown } from "@vueuse/core";
-
-onMounted(() => AppSynth.state.midi = false)
-onBeforeUnmount(() => AppSynth.state.midi = true)
 
 const { groups, controls, voices, cycleNote, stopAll } = useElemSynth()
 

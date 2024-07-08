@@ -42,6 +42,7 @@ export function useMic() {
       signal: mic.isOpen ? [el.scope(
         { name: 'mic', size: 512 }, input), input] : [0, 0]
     }
+    audio.started = false
     render('mic')
   })
 

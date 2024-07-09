@@ -14,10 +14,10 @@ const SynthAmy = defineClientComponent(() => {
 })
 
 import { onBeforeUnmount, onMounted } from "vue";
-import { synthActive } from "#/use";
+import { synthEnabled } from "#/use";
 
-onMounted(() => synthActive.value = false)
-onBeforeUnmount(() => synthActive.value = true)
+onMounted(() => synthEnabled.value = false)
+onBeforeUnmount(() => synthEnabled.value = true)
 </script>
 
 <SynthAmy/>

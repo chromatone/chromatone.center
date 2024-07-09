@@ -4,7 +4,7 @@ import { colord } from "colord";
 
 
 import { pitchColor, useMidi } from '#/use';
-import { useRefSynth } from '#/use/elementary'
+import { useRefSynth, useFFT, useScope } from '#/use/elementary/ref/useRefSynth'
 import { onKeyDown } from "@vueuse/core";
 
 
@@ -21,12 +21,17 @@ const color = computed(() => Object.entries(midi.activeNotes).reduce((acc, en) =
   return acc
 }, '#888'))
 
+const FFT = useFFT()
+
+const scope = useScope('synth')
+
 </script>
 
 <template lang="pug">
 .flex.flex-wrap.gap-4
-  AudioAnalysisFFT
-  AudioAnalysisScope.absolute.top-8.pointer-events-none(name="synth" :color="color")
+  .border-b-2(:style="{ borderColor: color }")
+    AudioRefFFT(:fft="FFT")
+  AudioRefScope.absolute.top-8.left-0.right-0.pointer-events-none(:data="scope" )
 
   .flex.is-group.p-2
     button.text-button(@click="synthEnabled = !synthEnabled") {{ synthEnabled ? 'ON' : 'OFF' }}

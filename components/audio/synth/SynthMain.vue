@@ -7,7 +7,7 @@ import { colord } from "colord";
 import { useElemSynth } from "#/use/elementary/useElemSynth";
 import { onKeyDown } from "@vueuse/core";
 
-const { groups, controls, voices, cycleNote, stopAll } = useElemSynth()
+const { groups, controls, voices, cycleNote, stopAll, FFTs } = useElemSynth()
 
 onKeyDown('Escape', () => {
   stopAll()

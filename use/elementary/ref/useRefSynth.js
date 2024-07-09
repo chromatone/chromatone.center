@@ -1,10 +1,129 @@
+import { shallowReactive, watch, reactive, onMounted, getCurrentInstance, markRaw, watchEffect, ref, computed } from 'vue'
 import { el } from '@elemaudio/core';
-import { ref, watch, reactive, watchEffect } from 'vue';
 import { useClamp } from '@vueuse/math';
 import { useStorage } from '@vueuse/core';
+import WebRenderer from '@elemaudio/web-renderer'
 
-import { useElementary } from '#/use/elementary/useElementary.js';
+import { freqColor } from '#/use';
 import { useMidi, useTempo } from '#/use';
+
+const audio = shallowReactive({
+  initiating: false,
+  initiated: false,
+  started: false,
+  running: false,
+  ctx: null,
+  core: null,
+  node: null,
+  layers: {},
+})
+
+const layers = shallowReactive({})
+
+const meters = reactive({})
+
+const scopes = reactive({})
+
+const FFTs = reactive({})
+
+export function useElementary() {
+  if (getCurrentInstance()) {
+    onMounted(() => {
+      initAudio()
+    })
+  }
+
+  watch(layers, () => {
+    if (audio.initiated) render()
+  })
+
+  return { audio, initAudio, render, meters, scopes, FFTs }
+}
+
+
+function render() {
+
+  if (!audio.initiated) { initAudio() }
+
+  if (audio?.ctx?.state === 'suspended') { audio?.ctx?.resume() }
+
+  if (audio.started) return
+
+  const sampleRate = el.mul(0, el.meter({ name: 'main:sample-rate' }, el.sr()))
+
+  let stereo = [0, sampleRate]
+
+  for (let l in layers) {
+    let layer = layers[l]
+    if (layer) {
+      for (let ch in layer.signal) {
+        let signal = layer.signal[ch]
+
+        stereo[ch] = el.tanh(el.add(stereo[ch], signal))
+      }
+    }
+  }
+
+  audio?.core?.render(
+    stereo[1],
+    el.fft({
+      name: 'main:fft',
+      size: 2048
+    }, stereo[0]))
+  audio.started = audio.started || Date.now()
+
+}
+
+export async function initAudio() {
+  if (audio.initiating || audio.initiated) return
+  audio.initiating = true
+  //@ts-expect-error
+  audio.ctx = markRaw(new (AudioContext || webkitAudioContext)())
+  audio.core = markRaw(new WebRenderer())
+  audio.node = markRaw(await audio.core.initialize(audio.ctx, {
+    numberOfInputs: 1,
+    numberOfOutputs: 1,
+    outputChannelCount: [2],
+  }))
+  audio.node.connect(audio.ctx.destination)
+
+
+  audio.core.on('meter', e => {
+    meters[e.source] = { max: e.max, min: e.min }
+  })
+
+  audio.core.on('scope', e => {
+    scopes[e.source] = [...e?.data[0].values()]
+  })
+
+  audio.core.on('fft', e => {
+    FFTs[e.source] = [[...e?.data.real.values()], [...e?.data.imag.values()]]
+  })
+
+  audio.initiated = true
+}
+
+
+
+export function useFFT(name = 'main:fft') {
+
+  const { FFTs, meters } = useElementary()
+
+  const FFT = reactive({
+    sr: computed(() => meters['main:sample-rate']?.max || 44100),
+    freq: computed(() => FFT.data[0].map((val, v) => v * FFT.sr / (FFT.data[0].length || 1))),
+    colors: computed(() => FFT.freq.map(freqColor)),
+    data: computed(() => FFTs?.[name] || [[], []]),
+    total: computed(() => FFT.data[0].map((val, v) => Math.log2(1 + Math.abs(val) + Math.abs(FFT.data[1][v])))),
+  })
+
+  return FFT
+}
+
+export function useScope(name = "synth") {
+
+  return computed(() => scopes[name])
+}
 
 const params = {
   "osc:volume": { "value": 0.8, "min": 0, "max": 1, "step": 0.01 },
@@ -32,31 +151,60 @@ const params = {
 
 export const synthEnabled = ref(true)
 
+const started = ref(false)
+
+const voiceParams = {}
+
+for (let num = 0; num < 12; num++) {
+  voiceParams[`v${num}:gate`] = { value: 0, min: 0, max: 1, step: 1, nostore: true }
+  voiceParams[`v${num}:midi`] = { value: 0, min: 0, max: 127, step: 1, nostore: true }
+  voiceParams[`v${num}:vel`] = { value: 0, min: 0, max: 127, step: 1, nostore: true }
+}
+
+const voices = reactive(Array(12).fill(true).map((_, i) => ({
+  key: `v${i}`,
+  gate: 0.0,
+  midi: 69,
+  vel: 0
+})))
+
+const next = ref(0)
+const overflow = ref(0)
+
+function cycleNote(num = 60, velocity = 0) {
+  if (velocity) {
+    do {
+      next.value++
+      if (next.value >= voices.length) {
+        next.value = 0
+        overflow.value++
+      }
+      if (overflow.value > 3) break;
+    } while (voices[next.value].gate == 1)
+    overflow.value = 0
+    voices[next.value]['gate'] = 1;
+    voices[next.value]['midi'] = num;
+    voices[next.value]['vel'] = velocity;
+  } else {
+    voices.forEach(v => {
+      if (v.midi == num) {
+        v.gate = 0
+      }
+    })
+  }
+}
+
+function stopAll(num) {
+  voices.forEach(v => v.gate = 0)
+}
+
 
 export function useRefSynth(count = 12) {
   const { audio, render } = useElementary()
 
-  const started = ref(false)
-
   const { controls, cv, groups } = useParams(params, 'ref')
 
-  const voiceParams = {}
-
-  for (let num = 0; num < count; num++) {
-    voiceParams[`v${num}:gate`] = { value: 0, min: 0, max: 1, step: 1, nostore: true }
-    voiceParams[`v${num}:midi`] = { value: 0, min: 0, max: 127, step: 1, nostore: true }
-    voiceParams[`v${num}:vel`] = { value: 0, min: 0, max: 127, step: 1, nostore: true }
-  }
-
-  const { controls: voiceControls, cv: voiceCVs, groups: voiceGroups } = useParams(voiceParams, 'ref')
-
-  const voices = reactive(Array(count).fill(true).map((_, i) => ({
-    key: `v${i}`,
-    gate: 0.0,
-    midi: 69,
-    vel: 0
-  })))
-
+  const { controls: voiceControls, cv: voiceCVs } = useParams(voiceParams, 'ref')
 
   watch(voices, vs => {
     for (let voice of vs) {
@@ -66,35 +214,7 @@ export function useRefSynth(count = 12) {
     }
   })
 
-  const next = ref(0)
-  const overflow = ref(0)
 
-  function cycleNote(num = 60, velocity = 0) {
-    if (velocity) {
-      do {
-        next.value++
-        if (next.value >= voices.length) {
-          next.value = 0
-          overflow.value++
-        }
-        if (overflow.value > 3) break;
-      } while (voices[next.value].gate == 1)
-      overflow.value = 0
-      voices[next.value]['gate'] = 1;
-      voices[next.value]['midi'] = num;
-      voices[next.value]['vel'] = velocity;
-    } else {
-      voices.forEach(v => {
-        if (v.midi == num) {
-          v.gate = 0
-        }
-      })
-    }
-  }
-
-  function stopAll(num) {
-    voices.forEach(v => v.gate = 0)
-  }
 
   const tempo = useTempo()
   watchEffect(() => {
@@ -114,7 +234,7 @@ export function useRefSynth(count = 12) {
   watchEffect(() => {
     if (audio.initiated) {
 
-      audio.layers.synth = {
+      layers.synth = {
         volume: 1,
         signal: pingPong(
           el.scope(
@@ -269,7 +389,7 @@ export function useParams(params, title = 'ref') {
 
   watch(controls, cs => {
     for (let c in cs) {
-      if (!setters[c]) continue
+      if (!setters[c] || !audio.initiated) continue
       setters[c]({ value: cs[c] })
     }
   })

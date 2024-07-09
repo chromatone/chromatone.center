@@ -17,6 +17,9 @@ links:
 
 
 <client-only>
-<AudioSynthMain />
+
 <MidiKeys />
 </client-only>
+
+
+Tune the synth in the sidebar, panel will slide out if you click the piano icon.

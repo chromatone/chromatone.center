@@ -1,1 +1,0 @@
-import{C as e,D as o,O as n,a2 as s,B as a}from"./framework.C3LH_Uf3.js";const r={class:"button"};function c(t,d){return e(),o("button",r,[n(t.$slots,"default",{},()=>[s("Start")],!0)])}const _={},u=a(_,[["render",c],["__scopeId","data-v-fb351d24"]]);export{u as _};

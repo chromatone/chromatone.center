@@ -1,0 +1,1 @@
+import{C as e,D as o,O as n,ar as s,B as r}from"./framework.D0WAkjk4.js";const a={class:"button"};function c(t,d){return e(),o("button",a,[n(t.$slots,"default",{},()=>[s("Start")],!0)])}const _={},u=r(_,[["render",c],["__scopeId","data-v-fb351d24"]]);export{u as _};

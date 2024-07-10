@@ -15,15 +15,11 @@ const audio = shallowReactive({
   ctx: null,
   core: null,
   node: null,
-  layers: {},
 })
 
 const layers = shallowReactive({})
-
 const meters = reactive({})
-
 const scopes = reactive({})
-
 const FFTs = reactive({})
 
 export function useElementary() {
@@ -42,11 +38,8 @@ export function useElementary() {
 
 
 function render() {
-
   if (!audio.initiated) { initAudio() }
-
   if (audio?.ctx?.state === 'suspended') { audio?.ctx?.resume() }
-
   if (audio.started) return
 
   const sampleRate = el.mul(0, el.meter({ name: 'main:sample-rate' }, el.sr()))

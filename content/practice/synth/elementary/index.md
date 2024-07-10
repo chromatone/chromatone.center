@@ -22,4 +22,4 @@ links:
 </client-only>
 
 
-Tune the synth in the sidebar, panel will slide out if you click the piano icon.
+Elementary synth is now default at Chromatone! To change synthesis parameters use the piano keys icon to open the slide out panel. And browse any page you may just play along.

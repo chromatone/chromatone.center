@@ -40,10 +40,10 @@ watchEffect(() => {
       x: (node + 1) / (notes.value.length + 2),
       y: Math.abs(Math.sin(Math.PI / 2 + Math.PI * tempo.ticks / (192 * 4 + shift.value * node * 8))),
       note: notes.value[node],
-      midi: Note.midi(notes.value[node])
+      midi: Note.midi(notes.value[node]),
     }
 
-    if (nod.y < 0.05) {
+    if (nod.y < 0.02) {
       playNote(nod.note)
     }
 
@@ -82,7 +82,7 @@ function playNote(note) {
     .i-la-pause(v-else)
   .cursor-pointer.p-2.border-1.border-dark-100.dark-border-light-300(v-drag="dragShift") {{ shift.toFixed(2) }}
   .flex-1
-  .p-2.text-xs.font-mono.border-1.border-dark-100.dark-border-light-300 {{ tempo.ticks }}
+  .px-4.text-sm.font-mono.border-1.border-dark-100.dark-border-light-300.flex.items-center {{ tempo.ticks }}
 svg#bounce.select-none.min-h-100svh.min-w-full(
   ref="svg"
   version="1.1",

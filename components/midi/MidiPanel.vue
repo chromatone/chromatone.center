@@ -14,12 +14,14 @@ var isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
 
 <template lang="pug">
 .layer.w-full.z-40.flex.flex-col
-  .p-2.border.border-red-500.text-red-500.flex.flex-wrap.gap-2.w-full(v-if="!midi.enabled") MIDI is not available. Please 
-    a.font-normal.underline(href="https://caniuse.com/?search=midi" target="_blank") use a compatible browser
-    span or 
-    a.font-normal.underline(href="https://apps.apple.com/ru/app/web-midi-browser/id953846217" target="_blank") Web MIDI Browser on iOS
-    span or 
-    .font-normal.text-dark-200.dark-text-light-100 just use your PC keyboard
+  .flex.flex-col.gap-2(v-if="!midi.enabled")
+    .p-2.border.border-red-500.flex.flex-wrap.gap-2.w-full.op-60 MIDI is not available.
+      a.font-normal.underline(href="https://caniuse.com/?search=midi" target="_blank") Use compatible browser
+      span on desktop. 
+      a.font-normal.underline(href="https://apps.apple.com/ru/app/web-midi-browser/id953846217" target="_blank") Use  Web MIDI Browser 
+      span on iOS
+      .font-normal.text-dark-200.dark-text-light-100 or just use your PC keyboard
+    img(src="/media/apps/pc-keyboard-3.svg")
 
   .flex.flex-col.gap-1.justify-center.flex-wrap.bg-light-400.dark-bg-dark-400(v-else)
     .flex.is-group
@@ -97,7 +99,7 @@ var isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
 
 <style lang="postcss" scoped>
 .layer {
-  @apply bg-light-200 dark-bg-dark-900 rounded-xl;
+  @apply rounded-xl;
   backdrop-filter: blur(30px);
 }
 

@@ -3,8 +3,9 @@ import { useRoute, useData } from "vitepress";
 import { drawingEnabled } from '../../composables/draw'
 import { ref } from "vue";
 import { tempo } from "#/use/tempo";
-import { globalScale, midi, noteColor, notes } from "#/use";
+import { globalScale, noteColor, notes } from "#/use";
 import { mic } from "#/use/mic";
+import { midi } from "#/use/midi"
 
 import FullScreen from '../global/FullScreen.vue'
 import BarPanel from "./BarPanel.vue";
@@ -133,7 +134,8 @@ nav.bar
     :class="{ active: pianoOpen }" 
     aria-label="Toggle synth panel"
     v-tooltip.right="'Synth settings'"
-    )
+    :style="{ color: midi.note.velocity > 0 ? noteColor(midi.note.pitch, 4, midi.note.velocity) : 'currentColor' }"
+    ) 
     .i-mdi-piano
 
   button(
@@ -167,7 +169,7 @@ client-only
 
   BarPanel(v-model="scaleOpen")
     control-scale.w-full
-    chord-tabs-neck.h-90dvh(
+    chord-tabs-neck.max-h-80dvh(
       :instrument="instrument"
       )
     .is-group.flex.gap-1.p-2.mb-8
@@ -212,7 +214,12 @@ nav a.button {
 
 button.active,
 .button.active {
-  @apply bg-light-200 dark-bg-dark-200 opacity-100 grayscale-0
+  @apply opacity-100 grayscale-0
+}
+
+
+.text-button.active {
+  @apply bg-light-200 bg-dark-200 opacity-100 grayscale-0
 }
 
 .panel {

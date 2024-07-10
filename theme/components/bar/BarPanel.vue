@@ -19,7 +19,7 @@ onKeyDown('Escape', () => {
 
 <template lang='pug'>
 transition-group(name="slide")
-  button.cursor-pointer.bg-op-70.backdrop-blur.dark-bg-op-70.fixed.bg-light-900.dark-bg-dark-200.p-3.z-1000(v-show="open" key="arrow")
+  button.cursor-pointer.bg-op-30.backdrop-blur-xl.dark-bg-op-70.fixed.bg-light-900.dark-bg-dark-200.p-3.z-1000(v-show="open" key="arrow")
     .i-la-angle-left.text-2xl
   .panel(
     ref="panel"
@@ -31,7 +31,7 @@ transition-group(name="slide")
 
 <style scoped lang="postcss">
 .panel {
-  @apply flex flex-col gap-4 transition fixed bg-light-200 z-900 top-0 bottom-0 left-0 shadow-lg ml-12 overflow-scroll p-2 dark-bg-dark-200 max-w-340px pb-8;
+  @apply flex flex-col gap-4 transition fixed bg-light-200 bg-op-60 z-900 top-0 bottom-0 left-0 shadow-lg ml-12 overflow-scroll p-2 dark-bg-dark-200 dark-bg-op-60 max-w-340px pb-8 backdrop-blur;
 
   & h2 {
     @apply my-4 text-2xl

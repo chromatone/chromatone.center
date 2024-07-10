@@ -34,18 +34,18 @@ transition(name="fade")
         :href="cleanLink(dot.url)" 
         :id="dot?.frontmatter?.title" 
 
-        :style="{ color: level==0 ? lchToHsl(d, children.length)  : 'currentColor'}") 
-        .flex-auto(:class="{'text-lg font-bold': level==0}") {{ dot?.frontmatter?.title }}
+        :style="{ color: level == 0 ? lchToHsl(d, children.length) : 'currentColor' }") 
+        .flex-auto(:class="{ 'text-lg font-bold': level == 0 }") {{ dot?.frontmatter?.title }}
         .flex-1.min-w-10
         .px-1.flex.items-center(v-if="pages?.[cleanLink(dot.url)]") {{ pages?.[cleanLink(dot.url)]?.length }}
 
       .flex.flex-col(v-show="route.path.includes(cleanLink(dot.url))")
-        SideBarLevel(:path="dot.url" :level="level+1")
+        SideBarLevel(:path="dot.url" :level="level + 1")
 </template>
 
 <style lang="postcss" scoped>
 .level {
-  @apply my-1 ml-1 cursor-pointer rounded-sm flex flex-col border-l-2 transition-all duration-200 ease-in-out hover-border-l-4 items-stretch bg-light-100/90 dark-bg-dark-100/90;
+  @apply my-1 ml-1 cursor-pointer rounded-sm flex flex-col border-l-2 transition-all duration-200 ease-in-out hover-border-l-4 items-stretch bg-light-100/60 backdrop-blur-lx dark-bg-dark-100/60;
 }
 
 a {
@@ -57,7 +57,7 @@ a {
 }
 
 [aria-current="page"] {
-  @apply border-l-6 font-bold bg-light-100/90 dark-bg-dark-100/90 hover-border-l-6;
+  @apply border-l-6 font-bold bg-light-100/70 dark-bg-dark-100/70 hover-border-l-6 backdrop-blur;
 }
 
 [aria-current="page"]>a {

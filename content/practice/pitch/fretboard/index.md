@@ -83,9 +83,14 @@ instruments:
     tuning: [E1, A1, D2, G2]
 ---
 
+
 <script setup>
-import fretboardTool from './tool.vue'
+import { defineClientComponent } from 'vitepress'
+
+const FretboardTool = defineClientComponent(() => {
+  return import('./FretboardTool.vue')
+})
 </script>
 
-<fretboard-tool :instruments="$frontmatter.instruments" />
+<FretboardTool :instruments="$frontmatter.instruments" />
 <save-svg svg="fretboard" />

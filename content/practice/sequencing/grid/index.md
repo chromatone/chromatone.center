@@ -12,10 +12,17 @@ todo:
   - synth
 ---
 
+<script setup>
+import { defineClientComponent } from 'vitepress'
+
+const ChromaGrids = defineClientComponent(() => {
+  return import('./ChromaGrids.vue')
+})
+</script>
 
 <client-only >
   
-  <chroma-grids />
+  <ChromaGrids/>
   <div class="flex flex-wrap">
   <control-scale style="flex: 1 1 20px" />
   <state-transport style="flex: 1 1 20px" />

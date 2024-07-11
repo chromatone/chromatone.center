@@ -7,7 +7,12 @@ cover: jam.png
 layout: app
 ---
 
+<script setup>
+import { defineClientComponent } from 'vitepress'
 
-<client-only>
-  <jam-random />
-</client-only>
+const JamRandom = defineClientComponent(() => {
+  return import('./JamRandom.vue')
+})
+</script>
+
+<JamRandom />

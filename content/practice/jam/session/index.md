@@ -7,7 +7,12 @@ cover: cover.png
 layout: app
 ---
 
+<script setup>
+import { defineClientComponent } from 'vitepress'
 
-<client-only>
-  <jam-session />
-</client-only>
+const JamSession = defineClientComponent(() => {
+  return import('./JamSession.vue')
+})
+</script>
+
+<JamSession />

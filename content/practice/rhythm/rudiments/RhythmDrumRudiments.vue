@@ -1,6 +1,6 @@
 <script setup>
 import { computed, reactive, ref } from 'vue';
-import db from '../../db/rhythm/40-rudiments.yaml'
+import db from '#/db/rhythm/40-rudiments.yaml'
 import { tempo } from '#/use/tempo';
 
 const box = reactive({

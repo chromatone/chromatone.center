@@ -4,6 +4,8 @@ import { globalScale } from '#/use/chroma';
 import { noteColor } from '#/use/colors'
 import { notes } from '#/use/theory'
 import { computed, reactive } from 'vue'
+import TonalArrayNote from './TonalArrayNote.vue';
+import TonalArrayTrigger from './TonalArrayTrigger.vue';
 
 
 const allNotes = [...notes].map((n, i) => ({ name: n, pitch: i }))

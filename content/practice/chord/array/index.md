@@ -6,8 +6,14 @@ date: 2022-02-01
 layout: app
 ---
 
-<client-only>
-  <tonal-array />
-</client-only>
+<script setup>
+import { defineClientComponent } from 'vitepress'
+
+const TonalArray = defineClientComponent(() => {
+  return import('./TonalArray.vue')
+})
+</script>
+
+<TonalArray/>
 
 [wiki](https://en.wikipedia.org/wiki/Harmonic_table_note_layout)

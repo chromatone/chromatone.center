@@ -3,6 +3,7 @@ import { noteColor } from "#/use/colors"
 import { notes } from '#/use/theory'
 import { useLoop } from '#/use/loop'
 import { reactive } from 'vue';
+import ChromaGridsColumn from "./ChromaGridsColumn.vue";
 
 const props = defineProps({
   order: { type: Number, default: 0, },

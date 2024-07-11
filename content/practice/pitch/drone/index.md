@@ -6,9 +6,16 @@ date: 2022-06-06
 cover: drone.png
 ---
 
-<client-only >
-  <pitch-drone class="max-w-55ch m-2" />
-</client-only >
+<script setup>
+import { defineClientComponent } from 'vitepress'
+
+const PitchDrone = defineClientComponent(() => {
+  return import('./PitchDrone.vue')
+})
+</script>
+
+<PitchDrone class="max-w-55ch m-2" />
+
 
 ## Multipurpose rich harmonic sound generator
 

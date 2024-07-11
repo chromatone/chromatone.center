@@ -6,8 +6,6 @@ date: 2021-09-03
 cover: five-gandharva.jpg
 ---
 
-<scale-raga />
-
 A raga or raag (IAST: rāga; also raaga or ragam; literally "coloring, tingeing, dyeing") is a melodic framework for improvisation akin to a melodic mode in Indian classical music. The rāga is a unique and central feature of the classical Indian music tradition, and as a result has no direct translation to concepts in classical European music. Each rāga is an array of melodic structures with musical motifs, considered in the Indian tradition to have the ability to "colour the mind" and affect the emotions of the audience.
 
 Each rāga provides the musician with a musical framework within which to improvise. Improvisation by the musician involves creating sequences of notes allowed by the rāga in keeping with rules specific to the rāga. Rāgas range from small rāgas like Bahar and Shahana that are not much more than songs to big rāgas like Malkauns, Darbari and Yaman, which have great scope for improvisation and for which performances can last over an hour. Rāgas may change over time, with an example being Marwa, the primary development of which has been going down into the lower octave, in contrast with the traditional middle octave. Each rāga traditionally has an emotional significance and symbolic associations such as with season, time and mood. The rāga is considered a means in the Indian musical tradition to evoking specific feelings in an audience. Hundreds of rāga are recognized in the classical tradition, of which about 30 are common, and each rāga has its "own unique melodic personality".
@@ -64,12 +62,12 @@ Translation: na (न), nya (ञ) and a (अ)-s, i.e., vowels represent zero. The
 
 Explanation: The assignment of letters to the numerals are as per the following arrangement (In Devanagari, Kannada, Telugu & Malayalam respectively)
 
-| 1          | 2           | 3          | 4           | 5             | 6           | 7           | 8          | 9           | 0           |
-| ---------- | ----------- | ---------- | ----------- | ------------- | ----------- | ----------- | ---------- | ----------- | ----------- |
+| 1          | 2           | 3          | 4           | 5            | 6           | 7           | 8          | 9           | 0           |
+| ---------- | ----------- | ---------- | ----------- | ------------ | ----------- | ----------- | ---------- | ----------- | ----------- |
 | ka क ಕ క ക | kha ख ಖ ఖ ഖ | ga ग ಗ గ ഗ | gha घ ಘ ఘ ഘ | nga ङ ಙ జ్ఞ ങ | ca च ಚ చ ച  | cha छ ಛ ఛ ഛ | ja ज ಜ జ ജ | jha झ ಝ ఝ ഝ | nya ञ ಞ ఞ ഞ |
-| ṭa ट ಟ ట ട | ṭha ठ ಠ ఠ ഠ | ḍa ड ಡ డ ഡ | ḍha ढ ಢ ఢ ഢ | ṇa ण ಣ ణ ണ    | ta त ತ త ത  | tha थ ಥ థ ഥ | da द ದ ద ദ | dha ध ಧ ధ ധ | na न ನ న ന  |
-| pa प ಪ ప പ | pha फ ಫ ఫ ഫ | ba ब బ ബ   | bha भ ಭ భ ഭ | ma म ಮ మ മ    | –           | –           | –          | –           | –           |
-| ya य ಯ య യ | ra र ರ ర ര  | la ल ల ల ല | va व ವ వ വ  | śha श ಶ శ ശ   | sha ष ಷ ష ഷ | sa स ಸ స സ  | ha ह ಹ హ ഹ | –           | –           |
+| ṭa ट ಟ ట ട | ṭha ठ ಠ ఠ ഠ | ḍa ड ಡ డ ഡ | ḍha ढ ಢ ఢ ഢ | ṇa ण ಣ ణ ണ   | ta त ತ త ത  | tha थ ಥ థ ഥ | da द ದ ద ദ | dha ध ಧ ధ ധ | na न ನ న ന  |
+| pa प ಪ ప പ | pha फ ಫ ఫ ഫ | ba ब బ ബ   | bha भ ಭ భ ഭ | ma म ಮ మ മ   | –           | –           | –          | –           | –           |
+| ya य ಯ య യ | ra र ರ ర ര  | la ल ల ల ല | va व ವ వ വ  | śha श ಶ శ ശ  | sha ष ಷ ష ഷ | sa स ಸ స സ  | ha ह ಹ హ ഹ | –           | –           |
 
 - Consonants have numerals assigned as per the above table. For example, ba (ब) is always 3 whereas 5 can be represented by either nga (ङ) or ṇa (ण) or ma (म) or śha (श).
 - All stand-alone vowels like a (अ) and ṛ (ऋ) are assigned to zero.

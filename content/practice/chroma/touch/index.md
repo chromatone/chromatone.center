@@ -6,4 +6,12 @@ layout: app
 cover: cover.png
 ---
 
+<script setup>
+import { defineClientComponent } from 'vitepress'
+
+const ChromaTouch = defineClientComponent(() => {
+  return import('./ChromaTouch.vue')
+})
+</script>
+
 <ChromaTouch  />

@@ -6,7 +6,14 @@ layout: app
 cover: overtones.png
 ---
 
+<script setup>
+import { defineClientComponent } from 'vitepress'
 
-<sound-overtones />
+const SoundOvertones = defineClientComponent(() => {
+  return import('./SoundOvertones.vue')
+})
+</script>
+
+<SoundOvertones />
 
 A string fixed from both ends produces a harmonic set of incremental frequency partials, also called harmonics.

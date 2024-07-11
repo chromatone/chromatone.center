@@ -7,6 +7,12 @@ date: 2022-06-02
 ---
 
 
-<client-only>
-  <pitch-table />
-</client-only>
+<script setup>
+import { defineClientComponent } from 'vitepress'
+
+const PitchTable = defineClientComponent(() => {
+  return import('./PitchTable.vue')
+})
+</script>
+
+<PitchTable  />

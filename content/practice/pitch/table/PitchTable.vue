@@ -4,6 +4,9 @@ import { state } from './state'
 import { globalScale } from '#/use/chroma'
 import { onKeyStroke } from '@vueuse/core'
 import { ref } from 'vue'
+import PitchTableShift from './PitchTableShift.vue'
+import PitchTableSwitch from './PitchTableSwitch.vue'
+import PitchTableCell from './PitchTableCell.vue'
 
 onKeyStroke('Enter', (e) => {
   e.preventDefault()
@@ -28,7 +31,7 @@ const table = ref();
       :class="{ dim: !globalScale.isIn(note) }", 
       :pitch="pitch", 
       :octave="octave") 
-  pitch-table-shift
+  PitchTableShift
 
 .flex.flex-wrap
   control-scale.mb-4.flex-auto(

@@ -6,6 +6,14 @@ cover: hands.png
 layout: app
 ---
 
+<script setup>
+import { defineClientComponent } from 'vitepress'
+
+const ChromaHand = defineClientComponent(() => {
+  return import('./ChromaHand.vue')
+})
+</script>
+
 <div class="flex">
 <ChromaHand v-for="right in [false,true]" :style="{transform: right?`translateX(0px) scaleX(-100%) ` : ''}" :right="right" />
 </div>

@@ -6,7 +6,7 @@ import { Sampler, start, now } from 'tone'
 import { createChannel } from './audio'
 
 
-let piano
+export let piano
 
 export function usePiano() {
   init()
@@ -51,7 +51,7 @@ export function init() {
       C8: 'C8.mp3',
     },
     release: 1,
-    volume: -10,
+    volume: 1,
     baseUrl: '/audio/piano/',
   }).connect(channel)
 

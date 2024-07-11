@@ -6,6 +6,12 @@ cover: cover.png
 layout: app
 ---
 
-<client-only>
-  <jam-table />
-</client-only>
+<script setup>
+import { defineClientComponent } from 'vitepress'
+
+const JamTable = defineClientComponent(() => {
+  return import('./JamTable.vue')
+})
+</script>
+
+<JamTable />

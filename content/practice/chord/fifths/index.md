@@ -6,9 +6,15 @@ cover: fifths.png
 layout: app
 ---
 
-<client-only>
-<chord-fifths />
-</client-only>
+<script setup>
+import { defineClientComponent } from 'vitepress'
+
+const ChordFifths = defineClientComponent(() => {
+  return import('./ChordFifths.vue')
+})
+</script>
+
+<ChordFifths/>
 
 ## The double circle of fifths as a tool to explore chords in tonal space
 

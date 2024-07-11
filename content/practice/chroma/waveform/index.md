@@ -9,6 +9,12 @@ cover: chromaform.png
 
 Choose any of the notes to see the wavefrom of their combination.
 
-<client-only >
-  <chroma-form />
-</client-only>
+<script setup>
+import { defineClientComponent } from 'vitepress'
+
+const ChromaForm = defineClientComponent(() => {
+  return import('./ChromaForm.vue')
+})
+</script>
+
+<ChromaForm />

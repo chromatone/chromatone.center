@@ -6,9 +6,15 @@ cover: roll.png
 date: 2022-06-12
 ---
 
-<client-only>
-  <pitch-roll />
-</client-only>
+<script setup>
+import { defineClientComponent } from 'vitepress'
+
+const PitchRoll = defineClientComponent(() => {
+  return import('./PitchRoll.vue')
+})
+</script>
+
+<PitchRoll />
 
 This app listens to the incoming audio and analyzes it for the base pitch and tempo. The note with the cents difference is show at the top left. Tempo is shown at the top right. The pitch is plotted on the vertical axis with colored circles while beats are drawn as vertical lines.
 

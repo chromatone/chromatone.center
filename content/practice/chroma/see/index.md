@@ -6,9 +6,16 @@ date: 2022-06-16
 layout: app
 ---
 
-<client-only>
-  <chroma-see />
-</client-only>
+
+<script setup>
+import { defineClientComponent } from 'vitepress'
+
+const ChromaSee = defineClientComponent(() => {
+  return import('./ChromaSee.vue')
+})
+</script>
+
+<ChromaSee  />
 
 ---
 

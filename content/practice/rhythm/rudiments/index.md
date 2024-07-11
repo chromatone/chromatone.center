@@ -5,5 +5,12 @@ date: 2003-09-07
 cover: daniel-shapiro.jpg
 layout: app
 ---
+<script setup>
+import { defineClientComponent } from 'vitepress'
 
-<RhythmDrumRudiments />
+const RhythmDrumRudiments = defineClientComponent(() => {
+  return import('./RhythmDrumRudiments.vue')
+})
+</script>
+
+<RhythmDrumRudiments   />

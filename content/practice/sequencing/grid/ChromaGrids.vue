@@ -4,6 +4,7 @@ import { useData } from 'vitepress'
 const { isDark } = useData()
 import { renderMidiFile } from '#/use/loop'
 import { useStorage } from '@vueuse/core';
+import ChromaGridsGrid from './ChromaGridsGrid.vue';
 
 const loops = useStorage('pitch-bars', [1])
 
@@ -37,7 +38,7 @@ const active = useStorage('pitch-bars-active', 0);
   .flex.flex-col.mb-4.mx-4.w-full.relative
     transition-group(name="fade")
       chroma-grids-grid.w-full(
-        :class="{absolute: l>0}"
+        :class="{ absolute: l > 0 }"
         v-for="(loop, l) in loops" 
         :key="loop"
         :order="l"

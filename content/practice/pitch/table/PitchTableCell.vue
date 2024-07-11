@@ -4,7 +4,7 @@ import { useSynth } from './synth'
 import { notes } from '#/use/theory'
 import { noteColor } from "#/use/colors";
 import { reactive, computed } from 'vue';
-
+import PitchTableCellInfo from './PitchTableCellInfo.vue'
 
 const props = defineProps({
   pitch: { type: Number, default: 0 },

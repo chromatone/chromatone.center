@@ -11,9 +11,16 @@ links:
     title: Python formulas for dissonance curves
 ---
 
-<client-only>
-  <sound-dissonance />
-</client-only>
+<script setup>
+import { defineClientComponent } from 'vitepress'
+
+const SoundDissonance = defineClientComponent(() => {
+  return import('./SoundDissonance.vue')
+})
+</script>
+
+<SoundDissonance />
+
 
 A simple curve for two sine waves is readily established and then we can calculate and explore sensory dissonance curves for complex sounds as the sum of interactions between their partials.
 

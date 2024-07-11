@@ -5,6 +5,7 @@ import { Synth, start, Frequency } from "tone";
 import { globalScale } from '#/use/chroma'
 import { createChannel } from '#/use/audio'
 import { computed, reactive, watch } from 'vue';
+import SoundOvertonesGuitar from './SoundOvertonesGuitar.vue';
 
 const box = reactive({
   width: 150,
@@ -198,7 +199,7 @@ function calcCents(base, freq) {
   svg#overtones.w-full.max-h-90vh(
     version="1.1"
     baseProfile="full"
-    :viewBox="`${-box.padX} ${-3 * box.padY} ${box.width + 2 * box.padX} ${box.height + 3*box.padY}`"
+    :viewBox="`${-box.padX} ${-3 * box.padY} ${box.width + 2 * box.padX} ${box.height + 3 * box.padY}`"
     xmlns="http://www.w3.org/2000/svg"
     font-family="Commissioner, sans-serif"
     @mouseleave="sound.stop()"
@@ -212,7 +213,7 @@ function calcCents(base, freq) {
         x1="0"
         x2="0"
         y1="0"
-        :y2="box.height-8"
+        :y2="box.height - 8"
         stroke="gray"
         stroke-width="0.2"
       )
@@ -220,7 +221,7 @@ function calcCents(base, freq) {
         :x1="box.width"
         :x2="box.width"
         y1="0"
-        :y2="box.height-8"
+        :y2="box.height - 8"
         stroke="gray"
         stroke-width="0.2"
       )

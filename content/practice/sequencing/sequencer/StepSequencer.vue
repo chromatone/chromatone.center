@@ -6,15 +6,17 @@ import { notes } from '#/use/theory'
 import { globalScale } from '#/use/chroma'
 import { Pattern, start, getTransport, getDraw } from 'tone'
 import { synthOnce } from '#/use/synth'
-import { midiOnce } from '#/use/midi'
-import { pianoOnce, init } from '#/use/piano'
+import { midiOnce, playKey } from '#/use/midi'
+import { pianoOnce, init, piano } from '#/use/piano'
 import { tempo } from '#/use/tempo'
 import { useData } from 'vitepress'
 const { isDark } = useData()
-import { computed, onBeforeUnmount, onMounted, reactive, watch, watchEffect } from 'vue'
+import { computed, onBeforeUnmount, onMounted, reactive, ref, watch, watchEffect } from 'vue'
 
 const Draw = getDraw()
 const Transport = getTransport()
+
+const pianoVolume = ref(0)
 
 const state = reactive({
   started: false,
@@ -71,6 +73,10 @@ onMounted(() => {
   setPatterns()
 })
 
+watch(pianoVolume, v => {
+  piano.volume.setValueAtTime(v, 0)
+})
+
 
 watch(() => state.steps, () => {
   if (state.mounted) {
@@ -90,10 +96,15 @@ function setPatterns() {
         positions[index] = cell?.cell
         if (cell?.active) {
           midiOnce(cell?.note)
+
+          playKey(cell.note.slice(0, -1), cell.note.slice(-1) - 4)
+          setTimeout(() => {
+            playKey(cell.note.slice(0, -1), cell.note.slice(-1) - 4, true)
+          }, 200)
         }
       }, time)
       if (cell?.active) {
-        synthOnce(cell.note, state.interval, time)
+        // synthOnce(cell.note, state.interval, time)
         pianoOnce(cell.note, state.interval, time)
       }
     }, rows[index], state.type).start(0);
@@ -187,7 +198,7 @@ function borderColor(cell, r) {
         v-for="(cell, c) in row" 
         :id="`c${r}-${c}`" 
         :key="cell"
-        :style="{ color: noteColor(state.pitches[r]), borderColor: borderColor(cell, r),backgroundColor: cell.cell == positions[r] ? cell.active ? noteColor(state.pitches[r], 3) : isDark ? '#0005' : '#fff5' : 'transparent', marginRight: c % 4 == 3 ? '12px' : '1px' }"
+        :style="{ color: noteColor(state.pitches[r]), borderColor: borderColor(cell, r), backgroundColor: cell.cell == positions[r] ? cell.active ? noteColor(state.pitches[r], 3) : isDark ? '#0005' : '#fff5' : 'transparent', marginRight: c % 4 == 3 ? '12px' : '1px' }"
         :class="{ active: cell?.active, current: cell.cell == positions[r] }"
         @mousedown.prevent="toggle(r, c, true, $event)"
         @mouseenter="toggle(r, c, false, $event)"
@@ -244,6 +255,15 @@ function borderColor(cell, r) {
           param="BPM"
           )
       .is-group.flex.items-center
+        control-rotary(
+          v-model="pianoVolume" 
+          v-tooltip.top="'Set piano volume'"
+          :step="0.1" 
+          :max="10" 
+          :min="-20" 
+          :fixed="0" 
+          param="PIANO"
+          )
         button.text-button(
           v-tooltip.bottom="'Humanize rhythm'"
           :class="{ active: state.humanize }" 

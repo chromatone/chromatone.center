@@ -4,7 +4,7 @@ import { useGesture } from '@vueuse/gesture';
 import { noteColor } from "#/use/colors";
 import { notes } from "#/use/theory";
 import { useDrone } from "./useDrone";
-
+import PitchDroneVoice from './PitchDroneVoice.vue';
 
 const drone = useDrone();
 

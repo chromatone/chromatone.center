@@ -6,5 +6,12 @@ date: 2021-08-19
 cover: sequencer.png
 ---
 
+<script setup>
+import { defineClientComponent } from 'vitepress'
 
-<step-sequencer />
+const StepSequencer = defineClientComponent(() => {
+  return import('./StepSequencer.vue')
+})
+</script>
+
+<StepSequencer />

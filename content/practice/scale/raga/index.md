@@ -3,6 +3,7 @@ title: Indian ragas
 description: Interactive scaleset used in Melakarta raga
 date: 2022-07-11
 cover: saubhagya-gandharv.jpg
+layout: app
 ---
 
 <script setup>

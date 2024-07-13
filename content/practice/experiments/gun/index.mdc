@@ -1,0 +1,18 @@
+---
+title: GUN p2p graph db
+description: Reactive graph database as a collaboration platform
+date: 2014-07-13
+---
+
+
+<script setup>
+import { defineClientComponent } from 'vitepress'
+
+import {ChatRoom} from '@gun-vue/components'
+
+const GunSpace = defineClientComponent(() => {
+  return import('./GunSpace.vue')
+})
+</script>
+
+<ChatRoom/>

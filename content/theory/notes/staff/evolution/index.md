@@ -267,4 +267,7 @@ In Twenty-Five Pages, and in other works, Brown used what he called "time notati
 
 In 1959, with Hodograph I, Brown sketched the contour and character abstractly in what he called "implicit areas" of the piece. This graphic style was more gestural and calligraphic than the geometric abstraction of December 1952. Beginning with Available Forms I, Brown used this graphic notation on the staff in some sections of the score.
 
-![](./images/parallels.jpg)
+![parallels](./images/parallels.jpg)
+
+
+![3d notes](./images/notes-3d.jpg)

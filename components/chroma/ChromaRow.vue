@@ -6,7 +6,7 @@ import { Frequency } from 'tone'
 import { synthOnce } from '#/use/synth'
 import { midiOnce } from '#/use/midi'
 import { notes } from '#/use/theory'
-import { globalScale, playChroma, stopChroma, } from '#/use/chroma'
+import { globalScale, playChroma, playNote, stopChroma, stopNote, } from '#/use/chroma'
 import { calcBg } from '#/use/colors'
 import { colord } from 'colord'
 import { reactive, computed } from 'vue'
@@ -36,12 +36,12 @@ const state = reactive({
 
 function hover(i, bit) {
   if (bit == 1) {
-    playNote(i + globalScale?.tonic)
+    playsNote(i + globalScale?.tonic)
   }
 }
 
 function toggleStep(i) {
-  if (!props.editable) return
+  if (!props.editable || i == 0) return
   let chroma = [...props.chroma.split('')]
   if (chroma[i] == '1') {
     chroma[i] = '0'
@@ -72,7 +72,8 @@ function playChordOnce() {
   chordNotes.value.forEach((name) => {
     midiOnce(name)
   })
-  synthOnce(chordNotes.value, '4n')
+  // synthOnce(chordNotes.value, '4n')
+  playOnce(chordNotes.value)
 }
 
 function arpeggiate(octave = false) {
@@ -83,15 +84,22 @@ function arpeggiate(octave = false) {
     playedNotes = [...playedNotes, ...back]
   }
   playedNotes.forEach((note, i) => {
-    synthOnce(note, '8n', `+${i / 3}`)
+    // synthOnce(note, '8n', `+${i / 3}`)
     midiOnce(note, { time: `+${i / 3}` })
+    playOnce(note)
   })
 }
 
-function playNote(note = 0, octave = 0) {
+function playsNote(note = 0, octave = 0) {
   let freq = Frequency(note + 57, 'midi')
   midiOnce(freq.toNote())
-  synthOnce(freq.toNote())
+  playOnce(freq.toNote())
+  // synthOnce(freq.toNote())
+}
+
+function playOnce(note) {
+  setTimeout(() => playNote(note), 2)
+  setTimeout(() => stopNote(note), 300)
 }
 
 </script>
@@ -130,6 +138,7 @@ function playNote(note = 0, octave = 0) {
         span.mr-1 {{ globalScale?.note.name }}{{ state.chord.aliases[0] || ' ' + state.scale.name }}
 
       .flex-1
+        slot
       button.text-sm.flex.items-center.gap-1.border-2.p-2.rounded-xl(
         :style="{ borderColor: chromaColorMix(chroma, globalScale?.tonic).hsl }"
         v-if="state.chord.name || state.chord.aliases[0]" 

@@ -2,6 +2,7 @@
 title: Visuals
 description: Apps that don't produce sound, but show pictures and react to sound or midi
 date: 2021-03-25
+cover: cover.png
 ---
 
 Chromatone can be very precise in assigning colors to frequencies and we can use it to analyze and communicate music. But we can use this new music communication layer as a base for new visual explorations. Visual apps reacting to audio and MIDI are created here.

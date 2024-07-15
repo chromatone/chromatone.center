@@ -5,6 +5,29 @@ import { ref } from 'vue';
 
 import defaultSong from './songs/index?raw'
 
+const instrumentParams = {
+  volume: "VOL",
+  randomness: "RND",
+  frequency: "FRQ",
+  attack: "ATT",
+  sustain: "SUS",
+  release: "REL",
+  shape: "SHP",
+  shapeCurve: "SHC",
+  slide: "SLI",
+  deltaSlide: "DLS",
+  pitchJump: "PJM",
+  pitchJumpTime: "PJT",
+  repeatTime: "RPT",
+  noise: "NOI",
+  modulation: "MOD",
+  bitCrush: "BIT",
+  delay: "DEL",
+  sustainVolume: "SUV",
+  decay: "DEC",
+  tremolo: "TRM",
+}
+
 const song = ref(parse(defaultSong))
 const isPlaying = ref(false)
 let node
@@ -49,21 +72,37 @@ function parse(str) {
     button.text-button.p-8.text-xl(@click="play()") PLAY
     button.text-button.p-8.text-xl(@click="stop()") STOP
   .flex.flex-col.gap-2
-    .p-2.flex.flex-col.gap-2
-      .text-xl Instruments
-      input.dark-bg-dark-8.p-2.rounded-lg(disabled v-for="(instrument, ins) in song[0]" :key="instrument" v-model="song[0][ins]")
-    .p-2.flex.flex-col.gap-2 
-      .text-xl Patterns
-      input.dark-bg-dark-8.p-2.rounded-lg(disabled v-for="(instrument, ins) in song[1]" :key="instrument" v-model="song[1][ins]")
+
+    .p-4.flex.flex-col.gap-2.overflow-x-scroll
+      .text-xl.sticky.left-0 Instrument list
+      .p-0.flex.gap-1
+        .p-0(v-for="(param, p) in instrumentParams" :key="param")
+          .text-center.text-sm.dark-bg-dark-8.py-1.rounded-lg.w-10(:title="p" v-tooltip="p") {{ param }}
+      .p-0.flex.gap-1(v-for="(instrument, ins) in song[0]" :key="instrument")
+        .p-0(v-for="(param, p) in 20" :key="param")
+          input.text-center.text-sm.dark-bg-dark-8.py-1.rounded-lg.w-10(  v-model="song[0][ins][p]" )
+
+    .p-2.flex.flex-col.gap-4
+      .text-xl Pattern list
+      .flex.gap-1.flex-col.overflow-x-scroll.py-2(v-for="(track, t) in song[1]" :key="t") 
+        .p-0.flex.gap-1(v-for="(pattern, p) in track" :key="p")
+          .p-0(v-for="(step, s) in pattern" :key="s") 
+            input.text-center.text-sm.dark-bg-dark-8.py-1.rounded-lg.w-10(v-model="song[1][t][p][s]")
+
     .p-2.flex.flex-col.gap-2 
       .text-xl Sequence
-      input.dark-bg-dark-8.p-2.rounded-lg(disabled  v-model="song[2]")
+      .flex.gap-1.overflow-x-scroll.py-2
+        input.text-center.text-sm.dark-bg-dark-8.py-1.rounded-lg.w-10(v-for="seq in song[2]" :key="seq"  v-model="song[2][seq]")
     .p-2.flex.flex-col.gap-2 
       .text-xl Speed
       input.dark-bg-dark-8.p-2.rounded-lg(
         v-model="song[3]")
     .p-2.flex.flex-col.gap-2 
-      .text-xl Metadata
-      .font-mono.dark-bg-dark-8.p-2.rounded-lg {{ song[4] }}
+      .text-xl Metadata 
+      .flex.flex-col.gap-4 
+        .p-0.flex.gap-2(v-for="(param, p) in song[4]" :key="p")
+          .text-lg.capitalize {{ p }}:
+          input(v-model="song[4][p]")
+
 
 </template>

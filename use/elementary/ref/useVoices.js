@@ -1,4 +1,4 @@
-import { reactive, watch } from "vue";
+import { reactive, watch, ref } from "vue";
 import { useElementary } from "./useElementary";
 import { el } from "@elemaudio/core";
 
@@ -14,6 +14,35 @@ export function useSynthVoices() {
   );
 
   const { audio } = useElementary()
+
+  const next = ref(0)
+  const overflow = ref(0)
+
+  function cycleNote(num = 60, velocity = 0) {
+    if (velocity) {
+      do {
+        next.value++
+        if (next.value >= voiceRefs.length) {
+          next.value = 0
+          overflow.value++
+        }
+        if (overflow.value > 3) break;
+      } while (voiceRefs[next.value].gate.value == 1)
+      overflow.value = 0
+
+      updateVoice(next.value, { gate: velocity > 0 ? 1 : 0, midi: num, vel: velocity });
+    } else {
+      voiceRefs.forEach((v, i) => {
+        if (v.midi.value == num) {
+          updateVoice(i, { gate: 0 });
+        }
+      })
+    }
+  }
+
+  function stopAll() {
+    voiceRefs.forEach((_, i) => updateVoice(i, { gate: 0 }))
+  }
 
   // Initialize refs when audio is ready
   watch(() => audio.initiated, (initiated) => {
@@ -55,6 +84,7 @@ export function useSynthVoices() {
   return {
     voiceRefs,
     updateVoice,
-    getVoiceParam
+    getVoiceParam,
+    cycleNote, stopAll
   };
 }

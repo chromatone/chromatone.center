@@ -13,36 +13,7 @@ const started = ref(false)
 export function useRefSynth(count = 12) {
   const { audio, render } = useElementary()
   const { controls, cv, groups } = useParams(params, 'ref')
-  const { voiceRefs, updateVoice, getVoiceParam } = useSynthVoices();
-
-  const next = ref(0)
-  const overflow = ref(0)
-
-  function cycleNote(num = 60, velocity = 0) {
-    if (velocity) {
-      do {
-        next.value++
-        if (next.value >= voiceRefs.length) {
-          next.value = 0
-          overflow.value++
-        }
-        if (overflow.value > 3) break;
-      } while (voiceRefs[next.value].gate.value == 1)
-      overflow.value = 0
-
-      updateVoice(next.value, { gate: velocity > 0 ? 1 : 0, midi: num, vel: velocity });
-    } else {
-      voiceRefs.forEach((v, i) => {
-        if (v.midi.value == num) {
-          updateVoice(i, { gate: 0 });
-        }
-      })
-    }
-  }
-
-  function stopAll() {
-    voiceRefs.forEach((_, i) => updateVoice(i, { gate: 0 }))
-  }
+  const { voiceRefs, cycleNote, stopAll, getVoiceParam } = useSynthVoices();
 
   const tempo = useTempo()
   watchEffect(() => {
@@ -77,9 +48,11 @@ export function useRefSynth(count = 12) {
     return el.mul(
       el.sqrt(el.div(1, el.const({ key: 'voice-count', value: voiceRefs.length }))),
       el.add(...voiceRefs.map((_, i) => {
+
         const gate = getVoiceParam(i, 'gate');
         const midi = getVoiceParam(i, 'midi');
         const vel = getVoiceParam(i, 'vel');
+
         let osc = el.mul(
           cv['osc:volume'],
           el.adsr(cv["osc:attack"], cv["osc:decay"], cv["osc:sustain"], cv["osc:release"], gate),

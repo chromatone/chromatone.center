@@ -4,11 +4,13 @@ import { colord } from "colord";
 
 
 import { pitchColor, useMidi } from '#/use';
-import { useRefSynth, useFFT, useScope } from '#/use/elementary/ref/useRefSynth'
+import { useRefSynth } from '#/use/elementary/ref/useRefSynth'
+import { useScope } from "#/use/elementary/ref/useScope";
+import { useFFT } from "#/use/elementary/ref/useFFT.js";
 import { onKeyDown } from "@vueuse/core";
 
 
-const { controls, groups, render, voices, stopAll, cycleNote, synthEnabled } = useRefSynth()
+const { controls, groups, render, voiceRefs: voices, stopAll, cycleNote, synthEnabled } = useRefSynth()
 
 onKeyDown('Escape', () => {
   stopAll()
@@ -48,7 +50,7 @@ const scope = useScope('synth')
       .i-la-stop
 
   .grid.gap-1.p-1.grid-cols-4.items-center
-    .p-1.flex-1.rounded-xl(v-for="voice in voices" :key="voice" :style="{ backgroundColor: pitchColor(voice.midi - 9, 3, voice.gate ? 1 : 0) }")
+    .p-1.flex-1.rounded-xl(v-for="voice in voices" :key="voice" :style="{ backgroundColor: pitchColor(voice.midi.value - 9, 3, voice.gate.value ? 1 : 0) }")
 
   .flex.flex-wrap.gap-2.is-group.p-2.relative(
     v-for="(group, g) in groups" :key="group"

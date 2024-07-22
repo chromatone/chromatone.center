@@ -1,4 +1,4 @@
-import { shallowReactive, watch, reactive, onMounted, getCurrentInstance, markRaw } from 'vue'
+import { shallowReactive, watch, onMounted, getCurrentInstance, markRaw } from 'vue'
 import WebRenderer from '@elemaudio/web-renderer'
 import { el } from '@elemaudio/core';
 import { meters } from './useMeter'
@@ -17,73 +17,74 @@ const audio = shallowReactive({
 
 const layers = shallowReactive({})
 
-export function useElementary() {
-  if (getCurrentInstance()) {
-    onMounted(() => {
-      initAudio()
-    })
-  }
-
-  watch(layers, () => {
-    if (audio.initiated) render()
-  })
-
-  return { audio, initAudio, render, meters, scopes, FFTs, layers }
-}
-
-async function initAudio() {
+function initAudio() {
   if (audio.initiating || audio.initiated) return
   audio.initiating = true
   audio.ctx = markRaw(new (window.AudioContext || window.webkitAudioContext)())
   audio.core = markRaw(new WebRenderer())
-  audio.node = markRaw(await audio.core.initialize(audio.ctx, {
+  return audio.core.initialize(audio.ctx, {
     numberOfInputs: 1,
     numberOfOutputs: 1,
     outputChannelCount: [2],
-  }))
-  audio.node.connect(audio.ctx.destination)
+  }).then(node => {
+    audio.node = markRaw(node)
+    audio.node.connect(audio.ctx.destination)
 
-  audio.core.on('meter', e => {
-    meters[e.source] = { max: e.max, min: e.min }
+    audio.core.on('meter', handleMeter)
+    audio.core.on('scope', handleScope)
+    audio.core.on('fft', handleFFT)
+
+    audio.initiated = true
+    audio.initiating = false
   })
+}
 
-  audio.core.on('scope', e => {
-    scopes[e.source] = [...e?.data[0].values()]
-  })
+function handleMeter(e) {
+  meters[e.source] = { max: e.max, min: e.min }
+}
 
-  audio.core.on('fft', e => {
-    FFTs[e.source] = [[...e?.data.real.values()], [...e?.data.imag.values()]]
-  })
+function handleScope(e) {
+  scopes[e.source] = Array.from(e?.data[0].values())
+}
 
-  audio.initiated = true
+function handleFFT(e) {
+  FFTs[e.source] = [Array.from(e?.data.real.values()), Array.from(e?.data.imag.values())]
 }
 
 function render() {
-  if (!audio.initiated) { initAudio() }
-  if (audio?.ctx?.state === 'suspended') { audio?.ctx?.resume() }
-  if (!audio.initiated || audio.started) return
+  if (!audio.initiated) return initAudio().then(render)
+  if (audio?.ctx?.state === 'suspended') audio.ctx.resume()
+  if (audio.started) return
 
   const sampleRate = el.mul(0, el.meter({ name: 'main:sample-rate' }, el.sr()))
-
   const stereo = [0, sampleRate]
 
-  for (let l in layers) {
-    let layer = layers[l]
+  Object.values(layers).forEach(layer => {
     if (layer) {
-      for (let ch in layer.signal) {
-        let signal = layer.signal[ch]
+      layer.signal.forEach((signal, ch) => {
         stereo[ch] = el.tanh(el.add(stereo[ch], signal))
-      }
+      })
     }
-  }
+  })
 
-  audio?.core?.render(
+  audio.core.render(
     stereo[1],
     el.fft({
       name: 'main:fft',
       size: 2048
-    }, stereo[0]))
-  audio.started = audio.started || Date.now()
+    }, stereo[0])
+  )
+  audio.started = Date.now()
+}
+
+export function useElementary() {
+  if (getCurrentInstance()) {
+    onMounted(initAudio)
+  }
+
+  watch(layers, render, { deep: true })
+
+  return { audio, initAudio, render, meters, scopes, FFTs, layers }
 }
 
 export { audio, layers }

@@ -10,7 +10,7 @@ import { useFFT } from "#/use/elementary/ref/useFFT.js";
 import { onKeyDown } from "@vueuse/core";
 
 
-const { controls, groups, render, voiceRefs: voices, stopAll, cycleNote, synthEnabled } = useRefSynth()
+const { controls, groups, voiceRefs: voices, stopAll, cycleNote, synthEnabled } = useRefSynth()
 
 onKeyDown('Escape', () => {
   stopAll()

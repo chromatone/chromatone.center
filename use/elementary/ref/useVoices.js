@@ -2,89 +2,87 @@ import { reactive, watch, ref } from "vue";
 import { useElementary } from "./useElementary";
 import { el } from "@elemaudio/core";
 
-const VOICE_COUNT = 12; // Or however many voices you want
+const VOICE_COUNT = 12;
 
 export function useSynthVoices() {
-  const voiceRefs = reactive(
-    Array(VOICE_COUNT).fill(null).map((_, i) => ({
-      gate: { value: 0, ref: null, setter: null },
-      midi: { value: 0, ref: null, setter: null },
-      vel: { value: 0, ref: null, setter: null }
-    }))
-  );
+  const { audio } = useElementary();
 
-  const { audio } = useElementary()
+  const voiceRefs = reactive(Array(VOICE_COUNT).fill(null).map(() => createVoice()));
 
-  const next = ref(0)
-  const overflow = ref(0)
+  const nextVoiceIndex = ref(0);
 
-  function cycleNote(num = 60, velocity = 0) {
-    if (velocity) {
-      do {
-        next.value++
-        if (next.value >= voiceRefs.length) {
-          next.value = 0
-          overflow.value++
-        }
-        if (overflow.value > 3) break;
-      } while (voiceRefs[next.value].gate.value == 1)
-      overflow.value = 0
+  watch(() => audio.initiated, (initiated) => initializeRefs(initiated, audio, voiceRefs), { immediate: true });
 
-      updateVoice(next.value, { gate: velocity > 0 ? 1 : 0, midi: num, vel: velocity });
+  function cycleNote(num, velocity) {
+    if (velocity > 0) {
+      const index = findNextAvailableVoice(voiceRefs, nextVoiceIndex);
+      updateVoice(voiceRefs, index, { gate: 1, midi: num, vel: velocity });
     } else {
-      voiceRefs.forEach((v, i) => {
-        if (v.midi.value == num) {
-          updateVoice(i, { gate: 0 });
-        }
-      })
+      releaseVoices(voiceRefs, num);
     }
   }
 
   function stopAll() {
-    voiceRefs.forEach((_, i) => updateVoice(i, { gate: 0 }))
+    voiceRefs.forEach((_, i) => updateVoice(voiceRefs, i, { gate: 0 }));
   }
 
-  // Initialize refs when audio is ready
-  watch(() => audio.initiated, (initiated) => {
-    if (!initiated) return;
+  function getVoiceParam(index, param) {
+    return voiceRefs[index][param].ref || el.const({ value: voiceRefs[index][param].value });
+  }
 
-    voiceRefs.forEach((voice, i) => {
-      for (const param of ['gate', 'midi', 'vel']) {
-        const [ref, setter] = audio.core.createRef(
-          'const',
-          { value: voice[param].value },
-          []
-        );
-        voice[param].ref = ref;
-        voice[param].setter = setter;
-      }
-    });
-  }, { immediate: true });
+  return { voiceRefs, updateVoice: (index, params) => updateVoice(voiceRefs, index, params), getVoiceParam, cycleNote, stopAll };
+}
 
-
-  const updateVoice = (index, { gate, midi, vel }) => {
-    const voice = voiceRefs[index];
-    if (gate !== undefined) {
-      voice.gate.value = gate;
-      voice.gate.setter?.({ value: gate });
-    }
-    if (midi !== undefined) {
-      voice.midi.value = midi;
-      voice.midi.setter?.({ value: midi });
-    }
-    if (vel !== undefined) {
-      voice.vel.value = vel;
-      voice.vel.setter?.({ value: vel });
-    }
-  };
-
-  // Helper function to get Elementary node for a voice parameter
-  const getVoiceParam = (index, param) => voiceRefs[index][param].ref || el.const({ value: voiceRefs[index][param].value });
-
+function createVoice() {
   return {
-    voiceRefs,
-    updateVoice,
-    getVoiceParam,
-    cycleNote, stopAll
+    gate: { value: 0, ref: null, setter: null },
+    midi: { value: 0, ref: null, setter: null },
+    vel: { value: 0, ref: null, setter: null }
   };
+}
+
+function initializeRefs(initiated, audio, voiceRefs) {
+  if (!initiated) return;
+
+  voiceRefs.forEach(voice => {
+    ['gate', 'midi', 'vel'].forEach(param => {
+      const [ref, setter] = audio.core.createRef('const', { value: voice[param].value }, []);
+      voice[param].ref = ref;
+      voice[param].setter = setter;
+    });
+  });
+}
+
+function findNextAvailableVoice(voiceRefs, nextVoiceIndex) {
+  const startIndex = nextVoiceIndex.value;
+  let index = startIndex;
+
+  do {
+    if (voiceRefs[index].gate.value === 0) {
+      nextVoiceIndex.value = (index + 1) % VOICE_COUNT;
+      return index;
+    }
+    index = (index + 1) % VOICE_COUNT;
+  } while (index !== startIndex);
+
+  nextVoiceIndex.value = (startIndex + 1) % VOICE_COUNT;
+  return startIndex;
+}
+
+function updateVoice(voiceRefs, index, params) {
+  const voice = voiceRefs[index];
+  Object.entries(params).forEach(([param, value]) => {
+    if (param in voice && value !== undefined) {
+      voice[param].value = value;
+      voice[param].setter?.({ value });
+    }
+  });
+}
+
+function releaseVoices(voiceRefs, midiNote) {
+  voiceRefs.forEach((v, i) => {
+    if (v.midi.value === midiNote) {
+      updateVoice(voiceRefs, i, { gate: 0 });
+    }
+  });
 }

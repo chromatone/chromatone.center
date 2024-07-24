@@ -64,9 +64,10 @@ export function useRefSynth(count = 12) {
 
   function createOscillator(gate, midi, vel) {
     const envelope = el.adsr(cv["osc:attack"], cv["osc:decay"], cv["osc:sustain"], cv["osc:release"], gate);
-    const oscillator = el.add(
-      el.mul(el.sub(1, cv['osc:shape']), el.blepsquare(midiFrequency(midi))),
-      el.mul(cv['osc:shape'], el.blepsaw(midiFrequency(midi)))
+    const oscillator = el.select(
+      cv['osc:shape'],
+      el.blepsquare(midiFrequency(midi)),
+      el.blepsaw(midiFrequency(midi))
     );
     const filter = el.lowpass(
       el.mul(cv['osc:cut-off'], midiFrequency(midi)),

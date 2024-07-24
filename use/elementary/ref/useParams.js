@@ -51,7 +51,7 @@ export function useParams(params, title = 'ref') {
 
   initParams(params, title, controls, groups);
 
-  watch(function () { return audio.initiated; }, function (initiated) {
+  watch(() => audio.initiated, function (initiated) {
     if (initiated) {
       initAudioRefs(audio, params, controls, cv, setters);
     }

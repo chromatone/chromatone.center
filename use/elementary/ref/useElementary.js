@@ -18,7 +18,7 @@ const audio = shallowReactive({
 const layers = shallowReactive({})
 
 function initAudio() {
-  if (audio.initiating || audio.initiated) return
+  if (audio.initiating || audio.initiated) return Promise.resolve(false);
   audio.initiating = true
   audio.ctx = markRaw(new (window.AudioContext || window.webkitAudioContext)())
   audio.core = markRaw(new WebRenderer())

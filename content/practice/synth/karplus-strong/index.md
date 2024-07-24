@@ -6,4 +6,13 @@ cover: ksa.png
 layout: app
 ---
 
-<AudioStringSynth />
+
+<script setup>
+import { defineClientComponent } from 'vitepress'
+
+const StringSynth = defineClientComponent(() => {
+  return import('./StringSynth.vue')
+})
+</script>
+
+<StringSynth />

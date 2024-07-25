@@ -1,11 +1,38 @@
 import { ref, watchEffect, watch } from 'vue';
 import { el } from '@elemaudio/core';
 import { useMidi, useTempo } from '#/use';
-import params from './params.json';
 import { midiFrequency } from './utils';
 import { useParams } from './useParams';
 import { useSynthVoices } from './useVoices';
 import { useElementary, layers } from './useElementary';
+
+const params = {
+  "osc:volume": { "value": 0.8, "min": 0, "max": 1, "step": 0.01 },
+  "osc:shape": { "value": 0.2, "min": 0, "max": 1, "step": 0.01 },
+  "osc:cut-off": { "value": 4, "min": 0.25, "max": 32, "step": 0.01 },
+  "osc:cut-q": { "value": 1.1, "min": 0, "max": 5, "step": 0.01 },
+  "osc:attack": { "value": 0.01, "min": 0.001, "max": 5, "step": 0.01 },
+  "osc:decay": { "value": 0.01, "min": 0.001, "max": 4, "step": 0.01 },
+  "osc:sustain": { "value": 0.5, "min": 0, "max": 1, "step": 0.01 },
+  "osc:release": { "value": 0.1, "min": 0.001, "max": 10, "step": 0.01 },
+
+
+  "noise:gain": { "value": 0.5, "min": 0, "max": 1, "step": 0.01 },
+  "noise:band-q": { "value": 50, "min": 0, "max": 100, "step": 0.1 },
+  "noise:cut-off": { "value": 4, "min": 0.25, "max": 32, "step": 0.001 },
+  "noise:cut-q": { "value": 1.1, "min": 0, "max": 5, "step": 0.01 },
+  "noise:attack": { "value": 0.01, "min": 0.001, "max": 5, "step": 0.01 },
+  "noise:decay": { "value": 0.01, "min": 0.001, "max": 4, "step": 0.01 },
+  "noise:sustain": { "value": 0.5, "min": 0, "max": 1, "step": 0.01 },
+  "noise:release": { "value": 0.01, "min": 0.001, "max": 10, "step": 0.01 },
+
+
+  "fx:pingPong": { "value": 0.1, "min": 0, "max": 1, "step": 0.01 },
+  "fx:feedback": { "value": 0.1, "min": 0, "max": 1, "step": 0.01 },
+  "fx:shift": { "value": 0.4, "min": 0, "max": 1, "step": 0.01 },
+
+  "fx:bpm": { "value": 120, "min": 10, "max": 500, "step": 1, "hidden": true }
+}
 
 export const synthEnabled = ref(true);
 
@@ -83,7 +110,13 @@ export function useRefSynth(count = 12) {
     const noiseSrc = el.noise();
     const filter = el.bandpass(midiFrequency(midi), cv['noise:band-q'], noiseSrc);
 
-    return el.mul(cv['noise:gain'], envelope, filter);
+    const lowpass = el.lowpass(
+      el.mul(cv['noise:cut-off'], midiFrequency(midi)),
+      cv['noise:cut-q'],
+      filter
+    );
+
+    return el.mul(cv['noise:gain'], envelope, lowpass);
   }
 
   function pingPong(input) {

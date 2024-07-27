@@ -1,1 +1,0 @@
-import{v as e,x as o,I as n,ar as s,q as r}from"./framework.CBUNEF-3.js";const a={class:"button"};function c(t,d){return e(),o("button",a,[n(t.$slots,"default",{},()=>[s("Start")],!0)])}const _={},u=r(_,[["render",c],["__scopeId","data-v-fb351d24"]]);export{u as _};

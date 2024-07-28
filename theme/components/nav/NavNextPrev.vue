@@ -13,36 +13,38 @@ const colors = reactive({
 </script>
 
 <template lang="pug">
-.next-and-prev-link
-  .row(:style="{ borderColor: colors.current }")
-    a.pad.prev(
-      v-if="siblings.prev" 
-      :href="cleanLink(siblings.prev.url)"
-      :style="{ backgroundColor: colors.prev, backgroundImage: `url(${siblings.prev?.frontmatter?.cover})` }"
-      )
-      .link( )
-        .i-carbon-arrow-left.icon.icon-prev
-        span.text {{ siblings.prev?.frontmatter?.title }}
+.flex.flex-wrap.gap-2.p-2(:style="{ borderColor: colors.current }")
+  a.pad(
+    style="flex:1 1"
+    v-if="siblings.prev" 
+    :href="cleanLink(siblings.prev.url)"
+    :style="{ backgroundColor: colors.prev, backgroundImage: `url(${siblings.prev?.frontmatter?.cover})` }"
+    )
+    .link( )
+      .i-la-angle-double-left.icon.icon-prev
+      span.text.-mt-1 {{ siblings.prev?.frontmatter?.title }}
 
-    a.pad.next(
-      v-if="siblings.next"
-      :href="cleanLink(siblings.next.url)"
-      :style="{ backgroundColor: colors.next, backgroundImage: `url(${siblings.next?.frontmatter?.cover})` }"
-      )
-      .link(  )
-        span.text {{ siblings.next?.frontmatter?.title }}
-        .i-carbon-arrow-right.icon.icon-next     
-  .flex.flex-col.items-justify
-    .flex.flex-col.items-justify.mx-4
-      a.pad(
-        style="flex:1 1"
-        v-for="(parent, p) in [...parents].slice(1, -1)" :key="parent"
-        :href="cleanLink(parent.url)"
-        :style="{ order: 100 - p, backgroundColor: colors.next, backgroundImage: `url(${parent?.frontmatter?.cover})` }"
-        )
-        .link
-          .i-carbon-arrow-up.mr-1
-          .text {{ parent?.frontmatter?.title }}
+  a.pad(
+    style="flex:1 1"
+    v-for="(parent, p) in [...parents].slice(1, -1)" :key="parent"
+    :href="cleanLink(parent.url)"
+    :style="{ backgroundColor: colors.next, backgroundImage: `url(${parent?.frontmatter?.cover})` }"
+    )
+    .link
+      .i-la-angle-double-up.mr-1
+      .text.-mt-1 {{ parent?.frontmatter?.title }}
+
+  a.pad(
+    style="flex:1 1"
+    v-if="siblings.next"
+    :href="cleanLink(siblings.next.url)"
+    :style="{ backgroundColor: colors.next, backgroundImage: `url(${siblings.next?.frontmatter?.cover})` }"
+    )
+    .link
+      span.text.-mt-1 {{ siblings.next?.frontmatter?.title }}
+      .i-la-angle-double-right.icon.icon-next
+
+      
 </template>
 
 <style lang="postcss" scoped>
@@ -57,7 +59,7 @@ const colors = reactive({
 }
 
 .parent {
-  @apply p-4 flex items-center justify-start m-2 rounded-xl shadow-md transition-all duration-100 ease-out bg-light-400/40 dark-bg-dark-300/10 no-underline hover-(bg-light-100/60 shadow-lg) dark-(hover-bg-dark-300);
+  @apply p-2 flex items-center justify-start m-2 rounded-xl shadow-md transition-all duration-100 ease-out bg-light-400/40 dark-bg-dark-300/10 no-underline hover-(bg-light-100/60 shadow-lg) dark-(hover-bg-dark-300);
 }
 
 .row {
@@ -65,7 +67,7 @@ const colors = reactive({
 }
 
 .pad {
-  @apply no-underline bg-cover bg-center p-4 pt-24 transition-all duration-200 ease-out m-2 rounded-xl shadow-lg hover-shadow-xl transition-all;
+  @apply no-underline bg-cover bg-center p-4 transition-all duration-200 ease-out rounded-xl shadow-lg hover-shadow-xl transition-all;
   flex: 1 1 45%;
   filter: grayscale(50%) opacity(50%) contrast(80%);
 }
@@ -85,26 +87,16 @@ const colors = reactive({
 }
 
 .link {
-  @apply p-4 flex items-center no-underline w-full rounded-lg text-lg max-w-88vw backdrop-blur-sm bg-light-200 bg-opacity-70 dark-bg-dark-700 dark-bg-opacity-60;
+  @apply p-2 flex items-center no-underline w-full rounded-lg text-lg max-w-88vw backdrop-blur-sm bg-light-200 bg-opacity-70 dark-bg-dark-700 dark-bg-opacity-60;
   font-weight: 500;
   max-width: fit-content
 }
 
 .text {
-  @apply font-bold;
+  @apply text-md;
   overflow: hidden;
-  text-overflow: ellipsis;
 }
 
-.icon {
-  @apply mt-2;
-  display: inline;
-  width: 1.5rem;
-  height: 1.5rem;
-  padding: 1rem;
-  color: var(--c-text);
-  transform: translateY(-2px);
-}
 
 .icon-prev {
   margin-right: 8px;

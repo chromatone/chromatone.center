@@ -109,7 +109,7 @@ midi-notes
         :src="f.iframe"
         )
       transition(name="fade")
-        .pb-8.relative.flex.flex-col.items-stretch.w-full.flex-auto(:key="route.path")
+        .relative.flex.flex-col.items-stretch.w-full.flex-auto(:key="route.path")
 
           content.content.flex-auto.z-10(v-if="f?.topContent")
 
@@ -117,7 +117,7 @@ midi-notes
 
           content.content.flex-auto.z-10(v-if="!f?.topContent")
 
-      nav-next-prev(
+      nav-next-prev.mt-10(
         :siblings="siblings" 
         :parents="parents"
         v-if="!params.nonextprev"

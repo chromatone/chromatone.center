@@ -6,6 +6,8 @@ import { colord } from 'colord'
 import { globalScale } from '#/use/chroma'
 import { notes } from '#/use/theory'
 import { reactive, computed } from 'vue'
+import { useData } from 'vitepress'
+const { isDark } = useData()
 
 const props = defineProps({
   title: { type: Boolean, default: true },
@@ -42,7 +44,7 @@ const neck = reactive({
   noteSize: 60,
   fretWidth: 55,
   fretNum: 7,
-  color: computed(() => chromaColorMix(rotateArray(props.chroma.split(''), -props.pitch).join(''), props.pitch, 0.2, 2)),
+  color: computed(() => chromaColorMix(rotateArray(props.chroma.split(''), -props.pitch).join(''), props.pitch, 0.3, isDark.value ? 4 : 12)),
 });
 
 function isInChord(note) {
@@ -56,7 +58,7 @@ function getNote(string, semitones) {
 
 <template lang="pug">
 .flex.flex-col.items-center.justify-center.rounded-3xl.py-2(
-  :style="{ backgroundColor: neck.color.hsl }")
+  :style="{ backgroundColor: neck.color.lch }")
   .flex.justify-center(v-if="title")
     .text-2x.font-bold {{ notes[pitch] }}{{ neck.title }}
   svg#fretboard.max-h-3xl.w-full.my-2(

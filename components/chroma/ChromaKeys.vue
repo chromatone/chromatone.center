@@ -8,7 +8,8 @@ import { reactive, computed, nextTick } from 'vue'
 import { useMidi } from '#/use/midi'
 import { ChordType, ScaleType } from 'tonal'
 import { chromaColorMix } from "#/use/colors";
-
+import { useData } from 'vitepress'
+const { isDark } = useData()
 
 const props = defineProps({
   chroma: { type: String, default: '100000000000' },
@@ -27,7 +28,7 @@ const keys = reactive({
   black: [4, 6, null, 9, 11, 1],
   chroma: computed(() => rotateArray(props.chroma.split(''), -props.pitch)),
   scale: computed(() => rotateArray(globalScale.chroma.split(''), -props.pitch)),
-  color: computed(() => chromaColorMix(rotateArray(props.chroma.split(''), -props.pitch).join(''), props.pitch, 0.2, 2)),
+  color: computed(() => chromaColorMix(rotateArray(props.chroma.split(''), -props.pitch).join(''), props.pitch, 0.3, isDark.value ? 4 : 12)),
   title: computed(() => {
     if (!ChordType.get(props.chroma)?.empty) return ChordType.get(props.chroma).aliases[0]
     if (!ScaleType.get(props.chroma)?.empty) return ScaleType.get(props.chroma).aliases[0]
@@ -60,7 +61,7 @@ function keyColor(key, off) {
   @touchcancel="playAll && nextTick(stopChroma(chroma, pitch))"
   @mouseup="playAll && nextTick(stopChroma(chroma, pitch))"
   @mouseleave="playAll && nextTick(stopChroma(chroma, pitch))"
-  :style="{ backgroundColor: keys.color.hsl }"
+  :style="{ backgroundColor: keys.color.lch }"
   )
   svg.w-full#chroma-keys(
     version="1.1",

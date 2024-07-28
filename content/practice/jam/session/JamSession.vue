@@ -19,26 +19,9 @@ const instrument = ref('guitar')
 
 <template lang="pug">
 #screen.bg-light-900.dark-bg-dark-800
-	.flex.gap-6.p-4.justify-between.relative.items-stretch.flex-col(
+	.flex.gap-6.p-4.justify-between.relative.items-stretch.flex-wrap(
 	:style="{ backgroundColor: `hsla(${30 * globalScale.tonic}, 80%, 50%, 0.1)` }"
-	)
-
-		//- .flex.w-full
-			rhythm-circle(style="flex: 1 0 50%")
-			midi-monitor(style="flex: 1 1 25%")
-		//- jam-time
-		//- jam-date
-		//- jam-now
-		//- jam-scale
-		//- jam-chroma.flex-auto
-
-		.flex.gap-4.items-center.flex-wrap.w-full
-			control-scale(style="flex: 10 1 30%")
-				select.p-2.m-2.rounded-lg.font-bold.dark-bg-dark-300(v-model="instrument")
-					option(value="guitar") Guitar
-					option(value="ukulele") Ukulele
-			chord-tabs-neck(style="flex: 4 1 100px" instrument="guitar")
-		//- state-transport
+		)
 
 		.flex.flex-wrap.items-center.border-1.rounded-xl.p-4.gap-4(ref="list")
 			.p-0.relative.flex.flex-col.gap-4(
@@ -59,18 +42,25 @@ const instrument = ref('guitar')
 					:pitch="(globalScale.tonic + chord.degree) % 12"
 					:instrument="instrument")
 
-		.fixed.bottom-0.bg-light-900.bg-opacity-80.backdrop-blur.p-4.dark-bg-dark-300.dark-bg-opacity-80
+		//- .flex.w-full
+			rhythm-circle(style="flex: 1 0 50%")
+			midi-monitor(style="flex: 1 1 25%")
+		//- jam-time
+		//- jam-date
+		//- jam-now
+		//- jam-scale
+		//- jam-chroma.flex-auto
 
-			button.flex-1.cursor-pointer.font-bold.bg-light-300.dark-bg-dark-300.flex.items-center(@click="choosing = !choosing")
-				.i-la-plus.text-6xl(v-if="!choosing")
-				.i-la-times.text-6xl(v-else)
-				.p-0.text-3xl ADD A CHORD
-
+		.flex.gap-4.items-center.flex-col.w-full(style="flex: 1 1 200px")
+			control-scale
+				select.p-2.m-2.rounded-lg.font-bold.dark-bg-dark-300(v-model="instrument")
+					option(value="guitar") Guitar
+					option(value="ukulele") Ukulele
 			chord-scales.overflow-scroll.z-1000.max-w-80vw(
-			@chord="progression.push($event); choosing = false" 
-			v-show="choosing || progression.length == 0")
-
-
+				@chord="progression.push($event)" )
+		.p(style="flex: 1 1 200px")
+			chord-tabs-neck(style="flex: 4 1 100px" :instrument)
+		//- state-transport
 
 		//- midi-roll.-z-10.absolute.bottom-2.w-full
 		jam-date

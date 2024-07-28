@@ -16,7 +16,7 @@ export function useStars() {
       },
       render: {
         lineWidth: 0,
-        fillStyle: '#fff'
+        fillStyle: 'currentColor'
       },
     })
     Sleeping.set(star, true);

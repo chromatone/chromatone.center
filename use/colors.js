@@ -100,12 +100,12 @@ export function levelColor(
 
 export function chromaColorMix(chroma, tonic, part = 0.2, octave = 4) {
   let hsl = colord(pitchColor(tonic))
-  let lch = colord(lchToHsl(tonic, 12, 1))
+  let lch = colord(lchToHsl(tonic, 12, 1, 40, 6 * octave))
 
   chroma.split("").forEach((bit, i) => {
     if (isInChroma(chroma, tonic, i)) {
       hsl = hsl.mix(pitchColor(i, octave), part)
-      lch = lch.mix(lchToHsl(i, 12, 1), part)
+      lch = lch.mix(lchToHsl(i, 12, 1, 40, 6 * octave), part)
     }
   })
   return {

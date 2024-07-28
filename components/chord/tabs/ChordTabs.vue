@@ -8,6 +8,9 @@ import { useStorage } from '@vueuse/core'
 import { Chord, Note } from 'tonal'
 import { computed, reactive } from 'vue'
 import { notes } from '#/use'
+import { useData } from 'vitepress'
+
+const { isDark } = useData()
 
 const instruments = {
   ukulele, guitar
@@ -104,7 +107,7 @@ function isInScale(list) {
 
         button.text-black.dark-text-light-200.px-1.bg-light-200.bg-opacity-80.dark-bg-dark-200.dark-bg-opacity-40.min-w-16(
           style="margin:0"
-          :style="{ backgroundColor: chromaColorMix(chord.chroma, notes.findIndex(v => v == chord.tonic)).hsl }"
+          :style="{ backgroundColor: chromaColorMix(chord.chroma, notes.findIndex(v => v == chord.tonic), 0.3, isDark ? 2 : 8).lch }"
           v-for="(chord, ch) in note" :key="chord.setNum"
             @mousedown="playChroma(chord.chroma, notes.findIndex(v => v == chord.tonic));"
             @mouseup="stopChroma(chord.chroma, notes.findIndex(v => v == chord.tonic));"

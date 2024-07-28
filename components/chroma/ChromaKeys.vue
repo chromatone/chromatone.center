@@ -7,6 +7,7 @@ import { colord } from 'colord'
 import { reactive, computed, nextTick } from 'vue'
 import { useMidi } from '#/use/midi'
 import { ChordType, ScaleType } from 'tonal'
+import { chromaColorMix } from "#/use/colors";
 
 
 const props = defineProps({
@@ -26,6 +27,7 @@ const keys = reactive({
   black: [4, 6, null, 9, 11, 1],
   chroma: computed(() => rotateArray(props.chroma.split(''), -props.pitch)),
   scale: computed(() => rotateArray(globalScale.chroma.split(''), -props.pitch)),
+  color: computed(() => chromaColorMix(rotateArray(props.chroma.split(''), -props.pitch).join(''), props.pitch, 0.2, 2)),
   title: computed(() => {
     if (!ChordType.get(props.chroma)?.empty) return ChordType.get(props.chroma).aliases[0]
     if (!ScaleType.get(props.chroma)?.empty) return ScaleType.get(props.chroma).aliases[0]
@@ -58,7 +60,7 @@ function keyColor(key, off) {
   @touchcancel="playAll && nextTick(stopChroma(chroma, pitch))"
   @mouseup="playAll && nextTick(stopChroma(chroma, pitch))"
   @mouseleave="playAll && nextTick(stopChroma(chroma, pitch))"
-  :style="{ backgroundColor: noteColor(pitch, 2, 1, 0.5) }"
+  :style="{ backgroundColor: keys.color.hsl }"
   )
   svg.w-full#chroma-keys(
     version="1.1",
@@ -103,7 +105,7 @@ function keyColor(key, off) {
           ) 
           tspan(    
             :font-weight="key == pitch ? 800 : 200"
-            ) {{ notes[key] }}
+            ) {{ notes[key] }} 
         circle(
           :style="{ opacity: midi.activeChroma[key] == 1 ? 1 : 0 }"
           cy="145"

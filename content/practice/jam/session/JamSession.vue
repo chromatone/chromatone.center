@@ -20,7 +20,7 @@ const instrument = ref('guitar')
 <template lang="pug">
 #screen.bg-light-900.dark-bg-dark-800
 	.flex.gap-6.p-4.justify-between.relative.items-stretch.flex-col(
-	:style="{backgroundColor:`hsla(${30*globalScale.tonic}, 80%, 50%, 0.1)`}"
+	:style="{ backgroundColor: `hsla(${30 * globalScale.tonic}, 80%, 50%, 0.1)` }"
 	)
 
 		//- .flex.w-full
@@ -33,29 +33,30 @@ const instrument = ref('guitar')
 		//- jam-chroma.flex-auto
 
 		.flex.gap-4.items-center.flex-wrap.w-full
-			control-scale(style="flex: 1 1 30%")
+			control-scale(style="flex: 10 1 30%")
 				select.p-2.m-2.rounded-lg.font-bold.dark-bg-dark-300(v-model="instrument")
 					option(value="guitar") Guitar
 					option(value="ukulele") Ukulele
-			chord-tabs-neck(style="flex: 4 1 300px" instrument="guitar")
+			chord-tabs-neck(style="flex: 4 1 100px" instrument="guitar")
 		//- state-transport
 
 		.flex.flex-wrap.items-center.border-1.rounded-xl.p-4.gap-4(ref="list")
 			.p-0.relative.flex.flex-col.gap-4(
 				style="flex: 1 1 100px"
-				v-for="(chord,c) in progression" :key="chord")
+				v-for="(chord, c) in progression" :key="chord")
 
 				.relative
 					chroma-keys.max-h-30(
 					:chroma="chord.chroma"
-					:pitch="(globalScale.tonic+chord.degree)%12")
+					:playAll="true"
+					:pitch="(globalScale.tonic + chord.degree) % 12")
 					.flex.items-center.z-20.absolute.bottom-2.left-2.text-xl {{ intervals[chord.degree] }}
 					button.flex.items-center.z-20.absolute.bottom-2.right-2.text-xl(
-					@click="progression.splice(c,1)")
+					@click="progression.splice(c, 1)")
 						.i-la-trash
 				chord-tab.max-h-60(
 					:chroma="chord.chroma" 
-					:pitch="(globalScale.tonic+chord.degree)%12"
+					:pitch="(globalScale.tonic + chord.degree) % 12"
 					:instrument="instrument")
 
 		.fixed.bottom-0.bg-light-900.bg-opacity-80.backdrop-blur.p-4.dark-bg-dark-300.dark-bg-opacity-80
@@ -66,7 +67,7 @@ const instrument = ref('guitar')
 				.p-0.text-3xl ADD A CHORD
 
 			chord-scales.overflow-scroll.z-1000.max-w-80vw(
-			@chord="progression.push($event); choosing=false" 
+			@chord="progression.push($event); choosing = false" 
 			v-show="choosing || progression.length == 0")
 
 

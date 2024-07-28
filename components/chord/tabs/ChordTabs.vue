@@ -1,7 +1,7 @@
 <script setup>
 import { rotateArray } from '#/use/calculations'
-import { noteColor } from '#/use/colors'
-import { globalScale } from '#/use/chroma'
+import { chromaColorMix, noteColor } from '#/use/colors'
+import { globalScale, playChroma, playChromaOnce, stopChroma } from '#/use/chroma'
 import ukulele from '#/db/tabs/ukulele.yaml'
 import guitar from '#/db/tabs/guitar.yaml'
 import { useStorage } from '@vueuse/core'
@@ -80,61 +80,68 @@ function isInScale(list) {
 
 
 <template lang="pug">
-
-.flex.flex-wrap.max-w-100
-  control-scale.flex-1.mb-4
-.is-group.flex.flex-wrap.items-stretch.p-2
-
-
-
-  .is-group.flex.flex-col.p-2.my-2
-    .flex.flex-wrap
-      button.p-2.text-xl.capitalize(
-        v-for="(instrument, name) in instruments" 
-        :key="name"
-        :class="{ active: state.instrument.main.name == name }"
-        @click="current = name"
-        ) {{ name }}
-    chord-tabs-neck.my-8.h-90dvh(
-      :instrument="current"
-      @note="state.pitch = (Note.midi($event) + 3) % 12"
-      :chord-notes="Chord.get(state.key + state.suffix).notes"
-      )
-  .flex.max-h-90svh(style="flex: 3 1;")
-    .is-group.flex.flex-col.items-center.my-2.overflow-y-scroll(
-      style="flex: 3 1;"
-      )
-      .p-2.text-2xl.font-bold.my-2 {{ state.key }} {{ state.suffix }} tabs
-      .flex.flex-wrap.justify-center
-        .tab(
-          v-for="(pos, n) in state.tabs?.positions" 
-        :key="pos" )
-          chord-tabs-tab( 
-            :id="state.key + state.suffix + n"
-            :name="state.key + state.suffix"
-            :pitch="state.pitch"
-            v-bind="pos"
-            )
-    .is-group.flex-1.p-2.flex.flex-col.gap-2.overflow-y-scroll(
-      style="flex: 1 1 35%;"
+.flex.flex-wrap.items-start.p-2.gap-2
+  .is-group.flex-1.p-2.flex.flex-wrap.gap-2(
+    style="flex: 1 1 120px;"
     )
+    control-scale
+      .flex.flex-wrap.bg-light-300.m-2.rounded-md.dark-bg-dark-300
+        button.p-2.text-xl.capitalize(
+          v-for="(instrument, name) in instruments" 
+          :key="name"
+          :class="{ active: state.instrument.main.name == name }"
+          @click="current = name"
+          ) {{ name }}
+    .flex.flex-wrap.gap-1(
+      style="flex: 1 1 300px;"
+      )
+      template(v-for="(note, n) in state.allChords" :key="n")
+        .px-1.inline-flex.flex-wrap.items-center.gap-1.rounded-lg.p-1(
+          :style="{ backgroundColor: noteColor(notes.findIndex(el => el == note[0].tonic), 1) }"
+          )
+          .text-lg.font-bold.p-1.rounded.text-white(
+            ) {{ n + 1 }}: {{ note[0]?.tonic }}
 
-
-      .px-1.inline-flex.flex-wrap.items-center.gap-1.rounded-lg.p-1(
-        v-for="(note, n) in state.allChords" :key="n"
-        :style="{ backgroundColor: noteColor(notes.findIndex(el => el == note[0].tonic), 1) }"
-        )
-        .text-lg.font-bold.p-1.rounded(
-          ) {{ n + 1 }}: {{ note[0]?.tonic }}
-
-        button.text-black.dark-text-light-200.px-1.bg-light-200.bg-opacity-80.dark-bg-dark-200.dark-bg-opacity-40(
+        button.text-black.dark-text-light-200.px-1.bg-light-200.bg-opacity-80.dark-bg-dark-200.dark-bg-opacity-40.min-w-16(
           style="margin:0"
+          :style="{ backgroundColor: chromaColorMix(chord.chroma, notes.findIndex(v => v == chord.tonic)).hsl }"
           v-for="(chord, ch) in note" :key="chord.setNum"
-            @click="state.suffix = chord.suffix; state.pitch = notes.findIndex(el => el == note[0].tonic)"
+            @mousedown="playChroma(chord.chroma, notes.findIndex(v => v == chord.tonic));"
+            @mouseup="stopChroma(chord.chroma, notes.findIndex(v => v == chord.tonic));"
+            @mouseleave="stopChroma(chord.chroma, notes.findIndex(v => v == chord.tonic));"
+            @touchstart="playChroma(chord.chroma, notes.findIndex(v => v == chord.tonic));"
+            @touchend="stopChroma(chord.chroma, notes.findIndex(v => v == chord.tonic));"
+            @click=" state.suffix = chord.suffix; state.pitch = notes.findIndex(el => el == note[0].tonic)"
             :class="{ active: state.suffix == chord.suffix && state.pitch == notes.findIndex(el => el == note[0].tonic) }"
           ) {{ chord.symbol || chord.suffix }}
 
 
+
+  .is-group.flex.flex-col.items-center.overflow-y-scroll.max-h-100svh(
+    style="flex: 1 1 200px;"
+    )
+    .p-2.text-2xl.font-bold.my-2 {{ state.key }} {{ state.suffix }} tabs
+    .flex.flex-wrap.justify-center
+      .tab(
+        v-for="(pos, n) in state.tabs?.positions" 
+      :key="pos" )
+        chord-tabs-tab( 
+          style="flex: 1 1 40px"
+          :id="state.key + state.suffix + n"
+          :name="state.key + state.suffix"
+          :pitch="state.pitch"
+          v-bind="pos"
+          )
+
+  .is-group.flex.flex-col.p-2(
+    style="flex: 0 1 100px;"
+    )
+
+    chord-tabs-neck.my-8.h-80svh(
+      :instrument="current"
+      @note="state.pitch = (Note.midi($event) + 3) % 12"
+      :chord-notes="Chord.get(state.key + state.suffix).notes"
+      )
 
 
       //- save-svg(:svg="pos.frets.join('')" :file="state.tabs?.key + state.tabs?.suffix + n")

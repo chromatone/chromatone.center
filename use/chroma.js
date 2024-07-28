@@ -27,7 +27,7 @@ export const globalScale = reactive({
   isIn: computed(() => Pcset.isNoteIncludedIn(globalScale.pcs)),
 });
 
-function getChromaNotes(chroma = "100010010000", tonic = globalScale.tonic) {
+function getChromaNotes(chroma = globalScale.chroma, tonic = globalScale.tonic) {
   let shiftChroma = rotateArray(chroma.split(""), -tonic);
   let chOct = rotateArray(allNotes, -tonic).map((n) => {
     let noteName = Frequency(n.pitch + tonic + 57, "midi").toNote();

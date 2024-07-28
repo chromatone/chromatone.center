@@ -1,7 +1,7 @@
 <script setup>
 import { Note, Interval, Pcset, ChordType, ScaleType, } from 'tonal'
 import { freqColor, freqPitch, rotateArray, pitchColor } from '#/use/calculations'
-import { noteColor } from '#/use/colors'
+import { chromaColorMix, noteColor } from '#/use/colors'
 import { colord } from 'colord'
 import { globalScale } from '#/use/chroma'
 import { notes } from '#/use/theory'
@@ -39,9 +39,10 @@ const neck = reactive({
     if (!ScaleType.get(props.chroma)?.empty) return ScaleType.get(props.chroma)
     else return ''
   }),
-  noteSize: 50,
-  fretWidth: 50,
-  fretNum: 5,
+  noteSize: 60,
+  fretWidth: 55,
+  fretNum: 7,
+  color: computed(() => chromaColorMix(rotateArray(props.chroma.split(''), -props.pitch).join(''), props.pitch, 0.2, 2)),
 });
 
 function isInChord(note) {
@@ -55,7 +56,7 @@ function getNote(string, semitones) {
 
 <template lang="pug">
 .flex.flex-col.items-center.justify-center.rounded-3xl.py-2(
-  :style="{ backgroundColor: pitchColor(pitch, 3, 1, 0.3) }")
+  :style="{ backgroundColor: neck.color.hsl }")
   .flex.justify-center(v-if="title")
     .text-2x.font-bold {{ notes[pitch] }}{{ neck.title }}
   svg#fretboard.max-h-3xl.w-full.my-2(
@@ -111,7 +112,7 @@ function getNote(string, semitones) {
           circle(
             :opacity="neck.chroma[(n + string) % 12] == 1 ? 1 : 0"
             :r="neck.noteSize / 2 - 8"
-            :fill="pitchColor(string+n,2)"
+            :fill="pitchColor(string + n, 2)"
           )
           text(
             :opacity="neck.chroma[(n + string) % 12] == 1 ? 1 : 0"

@@ -1,16 +1,19 @@
 <script setup>
-import { useRafFn, useStorage } from '@vueuse/core'
+import { useRafFn, useStorage, useWindowSize } from '@vueuse/core'
 import { rotateArray } from '#/use/calculations'
 import { useTuner } from '#/use/tuner'
-import { computed, onMounted, reactive, ref } from 'vue';
+import { computed, onMounted, reactive, ref, watch, watchEffect } from 'vue';
 import { useClamp } from '@vueuse/math';
+
+const { width, height } = useWindowSize()
+
 const { init, tuner } = useTuner();
 
 let canvas, ctx, tempCanvas, tempCtx
 const roll = reactive({
   initiated: false,
-  width: 1920,
-  height: 1080,
+  width,
+  height,
   speed: computed(() => Math.floor(roll.speedCount / 100)),
   direction: useStorage('chromagram-direction', 0),
   notes: computed(() => rotateArray(tuner.chroma, -3)),
@@ -29,6 +32,12 @@ onMounted(() => {
   ctx.fillStyle = '#333'
   ctx.fillRect(0, 0, roll.width, roll.height)
 });
+
+watch([width, height], () => {
+  if (!tempCanvas) return
+  tempCanvas.width = width.value
+  tempCanvas.height = height.value
+})
 
 function dragScreen(drag) {
   roll.speedCount += drag.delta[0] - drag.delta[1]
@@ -89,24 +98,24 @@ function clear() {
 </script>
 
 <template lang="pug">
-.flex.flex-col.items-center.w-full
+.flex.flex-col.items-center.w-full.relative
 
   #screen.flex.flex-col.justify-center.items-center.relative.bg-light-600.dark-bg-dark-700
     control-start.absolute(
       v-if="!roll.initiated" 
     @click="initiate()") Start
-    button.absolute.bottom-4.left-4.text-xl.text-white(@click="roll.direction ? roll.direction = 0 : roll.direction = 1")
+    button.absolute.bottom-4.left-4.text-xl.text-white(@click="roll.direction ? roll.direction = 0 : roll.direction = 1; clear()")
       .i-la-arrow-up(v-if="roll.direction == 1")
       .i-la-arrow-left(v-if="roll.direction == 0")
     button.absolute.top-4.right-4.text-xl.select-none.cursor-pointer(@mousedown="clear()")
       .i-la-trash-alt
     .absolute.top-4.left-4.text-xl.text-white x{{ roll.speed }}
-    canvas#spectrogram.w-full.cursor-pointer.max-h-100svh(
+    canvas#spectrogram.w-full.cursor-pointer(
       v-drag="dragScreen"
-      :width="roll.width"
-      :height="roll.height"  
+      :width="width"
+      :height="height"  
       )
-  .flex.items-center.gap-2.p-2.flex-wrap
+  .flex.items-center.gap-2.p-2.flex-wrap.absolute.bottom-4.right-4
     .is-group.flex.flex-wrap.gap-2
       ControlRotary(v-model="roll.pow" :min="1" :max="10" :step="1" :fixed="0" param="POW")
       ControlRotary(v-model="roll.offset" :min="-.25" :max=".25" :step=".0001" param="OFFSET" :fixed="2")

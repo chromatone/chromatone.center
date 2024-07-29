@@ -2,8 +2,8 @@
 import { initGetUserMedia, master } from '#/use/audio'
 import { freqPitch } from '#/use/calculations'
 import { useMic } from '#/use/mic'
-import { onKeyStroke, useStorage } from '@vueuse/core'
-import { ref, computed, reactive, onMounted } from 'vue'
+import { onKeyStroke, useStorage, useWindowSize } from '@vueuse/core'
+import { ref, computed, reactive, onMounted, watch, onUnmounted } from 'vue'
 import { useClamp } from '@vueuse/math'
 
 const canvasElement = ref()
@@ -30,10 +30,12 @@ function clear() {
   ctx.fillRect(0, 0, state.width, state.height)
 }
 
+const { width, height } = useWindowSize()
+
 const state = reactive({
   initiated: false,
-  width: 1600,
-  height: 1600,
+  width,
+  height,
   speed: computed(() => Math.floor(state.speedCount / 100)),
   speedCount: useClamp(100, 100, 500),
   vertical: useStorage('spectrogram-vertical', false),
@@ -45,6 +47,15 @@ function dragScreen(drag) {
   if (drag.tap) paused.value = !paused.value
   state.speedCount -= drag.delta[0] / 2
 }
+
+watch([width, height], ([newWidth, newHeight]) => {
+  if (canvas && tempCanvas) {
+    canvas.width = newWidth
+    canvas.height = newHeight
+    tempCanvas.width = newWidth
+    tempCanvas.height = newHeight
+  }
+})
 
 onMounted(() => {
   initGetUserMedia()
@@ -66,7 +77,9 @@ onMounted(() => {
     .catch(error => console.error(error));
 });
 
-
+// onUnmounted(() => {
+//   audio.stop()
+// })
 
 let audio
 
@@ -119,15 +132,15 @@ function colorIt(freq, value) {
   return `hsl(${freqPitch(freq) * 30}, ${v * 100}%, ${v * 70}%)`
 }
 
-
 </script>
 
 <template lang="pug">
 .flex.flex-col.justify-center
 
-  .fullscreen-container.text-white#screen.max-h-90svh
+  .fullscreen-container.text-white#screen
 
-    canvas#spectrogram.h-full.min-h-70svh.w-full.cursor-pointer(
+    canvas#spectrogram.cursor-pointer(
+
       ref="canvasElement"
       v-drag="dragScreen"
       :width="state.width"
@@ -145,12 +158,12 @@ function colorIt(freq, value) {
       .i-la-arrow-down(v-else)
     button.absolute.top-4.right-4.text-xl.select-none.cursor-pointer(@mousedown="clear()")
       .i-la-trash-alt
-  .flex.items-center.gap-2.px-2.flex-wrap
-    .is-group.flex.flex-wrap.gap-2.flex-1.p-2
+  .absolute.w-full.bottom-2.flex.items-center.gap-2.px-2.flex-wrap 
+    .is-group.flex.flex-wrap.gap-2.flex-0.p-2.op-20.hover-op-80.transition
       ControlRotary(v-model="state.pow" :min="1" :max="10" :step="1" :fixed="0" param="POW")
       ControlRotary(v-model="state.offset" :min="-.5" :max=".5" :step=".0001" param="OFFSET" :fixed="2")
-
-    .max-w-120.scale-75.max-h-60.overflow-clip.relative.text-white 
+    .flex-1
+    .scale-75.max-h-60.overflow-clip.relative.text-white.op-20.hover-op-80.transition 
       .absolute.p-2.opacity-70.touch-none.select-none.text-md Right click here to enter Picture-In-Picture mode
       video.max-h-50(ref="video")  
 </template>

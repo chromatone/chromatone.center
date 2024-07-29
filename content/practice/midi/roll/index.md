@@ -5,10 +5,17 @@ layout: app
 cover: midi-roll.png
 date: 2022-06-16
 ---
+<script setup>
+import { defineClientComponent } from 'vitepress'
 
-<client-only >
-  <midi-roll />
-</client-only>
+const MidiRoll = defineClientComponent(() => {
+  return import('./MidiRoll.vue')
+})
+</script>
+
+<MidiRoll style="position: sticky; top: 0;" />
+
+::: info
 
 1. Play some notes on your MIDI controller or computer keyboard and watch them appear on the endless roll.
 2. Drag or scroll over the canvas to change the roll speed.
@@ -17,3 +24,5 @@ date: 2022-06-16
 5. Press the <i class="p-3 mr-1 i-la-play"></i>/<i class="p-3 mr-1 i-la-pause"></i> icon or anywhere on the canvas to send MIDI play/pause signal to all connected MIDI devices
 6. Press the <i class="p-3 mr-1 i-la-stop"></i> icon or double click on the canvas to send MIDI play/pause signal to all connected MIDI devices
 7. Use MIDI channel filter to show only the desired channels.
+
+:::

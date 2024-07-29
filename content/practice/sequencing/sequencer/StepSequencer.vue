@@ -183,13 +183,11 @@ function borderColor(cell, r) {
 <template lang="pug">
 .flex.flex-col
 
-  .rows(
+  .rows.sticky.top-2.h-96svh(
     @mousedown="state.hover = true"
     @mouseleave.self="state.hover = false"
     @mouseup="state.hover = false"
     )
-    .row
-      .title
     .row(
       v-for="(row, r) in rows" 
       :key="row")
@@ -206,9 +204,10 @@ function borderColor(cell, r) {
         .dot(
           :style="{ backgroundColor: cell.active ? noteColor(state.pitches[r]) : cell.cell == positions[r] ? 'currentColor' : '#4448' }"
         )
-  .flex.flex-wrap.items-center.justify-center.mx-2.gap-2
+
+  .info.p-2.flex.flex-wrap.items-center.justify-center.mx-2.gap-4
     control-scale(style="flex: 1 1 100px" v-tooltip.top="'Select root note and scale'")
-    .flex.flex-wrap.items-center.justify-center.bg-light-900.p-4.rounded-2xl.dark-bg-dark-800.gap-2(style="flex: 5 1 200px")
+    .flex.flex-wrap.items-center.justify-center.bg-light-900.p-4.rounded-2xl.dark-bg-dark-800.gap-2(style="flex: 5 1 300px")
 
       select(
         v-model="state.type" 
@@ -293,11 +292,11 @@ function borderColor(cell, r) {
 
 <style lang="postcss" scoped>
 .rows {
-  @apply my-4 mx-2 cursor-pointer select-none bg-light-900 rounded-xl overflow-hidden shadow-lg dark-bg-dark-700 dark-border-1 dark-border-opacity-10;
+  @apply my-4 mx-2 cursor-pointer select-none bg-light-900 rounded-xl overflow-hidden shadow-lg dark-bg-dark-700 dark-border-1 dark-border-opacity-10 flex flex-col;
 }
 
 .row {
-  @apply flex w-full;
+  @apply flex w-full flex-1;
 }
 
 .title {
@@ -306,9 +305,9 @@ function borderColor(cell, r) {
 }
 
 .cell {
-  @apply flex items-center justify-center py-2 text-center m-1px rounded-xl transition-all duration-200 ease-out box-border h-10;
+  @apply flex items-center justify-center py-2 text-center m-1px rounded-xl transition-all duration-200 ease-out box-border;
   transition: all 200ms ease-out;
-  flex: 1 1 20px;
+  flex: 1 1 30px;
 }
 
 .cell.active .dot {

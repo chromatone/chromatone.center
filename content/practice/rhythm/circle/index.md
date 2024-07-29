@@ -8,11 +8,20 @@ links:
   - https://habr.com/ru/post/278265/
 ---
 
+<style scoped> 
+.info {
+  @apply bg-light-400 dark-bg-dark-400 z-10 max-w-65ch rounded-xl bg-op-60 dark-bg-op-60 backdrop-blur-md;
+}
+</style>
+
 <client-only >
 
-  <rhythm-circle />
+  <rhythm-circle style="position: sticky; top: 0;" />
 
 </client-only >
+
+
+::: info
 
 ## Welcome to the all-mighty Chromatone circular metronome
 
@@ -38,6 +47,13 @@ It's the center for deep exploration of any kind of rhythmic patterns. We have t
 18. Explore our [rhythm theory section](../../../theory/rhythm/index.md) for inspiration about what to dial into the loops. This app can act as a simple visual and audial cue for your music practice or become a tool to explore the enormous space of possible rhythmic combinations. Polyrhythms have never been so easy to see and internalise. The colors and the form of the metronome can help sticking to the tempo even in silence. Be creative and feel the power of this rhythm visualisation tool.
 19. You can also control all the parameters of the metronome with your MIDI-controller. Use the knobs to send the **CC messages number 1-16** on **channel 1** for it. Two loops are independently controlled by these MIDI commands. You can easily change the CC numbers here.
 
+:::
+
+::: info
+
 <client-only >
   <rhythm-circle-midi-controls />
 </client-only >
+
+:::
+

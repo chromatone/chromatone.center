@@ -1,10 +1,12 @@
 <script setup>
 import { reactive, ref, watch, onMounted } from 'vue'
 import { useTuner } from '#/use/tuner'
-import { onKeyStroke } from '@vueuse/core'
+import { onKeyStroke, useWindowSize } from '@vueuse/core'
 import { useClamp } from '@vueuse/math';
 import { useStorage } from '@vueuse/core';
 import { colord } from 'colord';
+
+const { width, height } = useWindowSize()
 
 const draw = reactive({
   running: true,
@@ -115,7 +117,7 @@ function clear() {
 </script>
 
 <template lang="pug">
-.flex.flex-col.mb-8
+.flex.flex-col.mb-8.relative
   .fullscreen-container.cursor-pointer#screen
     control-start.absolute(
       v-if="!tuner.running", 
@@ -126,21 +128,24 @@ function clear() {
     canvas.w-full.h-full(    
       ref="roll"
       v-drag="dragSpeed"
-      :width="1920"
-      :height="1080"
+      :width
+      :height
       @dblclick="clear()"
       )
-  .flex.p-8.items-center(v-if="tuner.note")
-    .flex-1.text-center.font-bold.text-4xl.transition-all.duration-200.flex.items-center(:style="{ color: tuner.note.color }") 
-      .p-1.w-2em {{ tuner.note?.name }}
-      .p-1.w-1em {{ tuner.note?.octave }} 
-      .p-1.mt-2.w-6em.text-sm {{ tuner.note.cents > 0 ? '+' : '' }}{{ tuner.note.cents }} cents
+  .flex.gap-2.w-full.p-2.items-center.absolute.bottom-4(v-if="tuner.note")
     .btn(@click="draw.running = !draw.running")
       .i-la-play(v-if="!draw.running")
       .i-la-pause(v-else)
     .btn(@click="clear()")
       .i-la-times
-    .flex-1.text-center.font-bold  {{ tuner.bpm.toFixed(1) }} BPM
+    .flex-1
+    .flex-1.text-center.font-bold.text-4xl.transition-all.duration-200.flex.items-center(:style="{ color: tuner.note.color }") 
+      .p-1.w-2em {{ tuner.note?.name }}
+      .p-1.w-1em {{ tuner.note?.octave }} 
+      .p-1.mt-2.w-6em.text-sm {{ tuner.note.cents > 0 ? '+' : '' }}{{ tuner.note.cents }} cents
+
+    .flex-1
+    .flex-0.text-center {{ tuner.bpm.toFixed(1) }} BPM
 
 </template>
 

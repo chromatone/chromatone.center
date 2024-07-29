@@ -7,5 +7,5 @@ cover: lch.png
 ---
 
 <client-only>
-<color-hsl />
+<color-hsl style="position: sticky; top: 0;" />
 </client-only>

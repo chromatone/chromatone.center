@@ -72,7 +72,7 @@ function copyColor(str) {
 svg.select-none.cursor-grab.active-cursor-grabbing(
   version="1.1",
   baseProfile="full",
-  :viewBox="`0 0 ${box.w} ${box.h+box.pad*2}`",
+  :viewBox="`0 0 ${box.w} ${box.h + box.pad * 2}`",
   xmlns="http://www.w3.org/2000/svg",
   stroke-width="2px"
   dominant-baseline="middle"
@@ -81,20 +81,20 @@ svg.select-none.cursor-grab.active-cursor-grabbing(
 
   defs
     mask#myMask
-      rect(fill="#fff", rx="30", :y="h.control+box.pad", :width="box.w", :height="h.row*(options.numPoints+2)")
+      rect(fill="#fff", rx="30", :y="h.control + box.pad", :width="box.w", :height="h.row * (options.numPoints + 2)")
 
     mask#maskControl1
       rect(fill="#fff", rx="30", :y="0", :width="box.w", :height="h.control")
 
     mask#maskControl2
-      rect(fill="#fff", rx="20", :y="h.control+box.pad", :width="box.w", :height="h.row*(options.numPoints+2)")
+      rect(fill="#fff", rx="20", :y="h.control + box.pad", :width="box.w", :height="h.row * (options.numPoints + 2)")
 
 
   g.steps(font-size="40" mask="url(#myMask)")
-    rect(:y="h.control" :width="box.w" :height="h.row*(options.numPoints+2)" fill="transparent" opacity="0" v-drag="dragSteps")
+    rect(:y="h.control" :width="box.w" :height="h.row * (options.numPoints + 2)" fill="transparent" opacity="0" v-drag="dragSteps")
     g.step( 
-      v-for="(color,c) in palette" :key="c" 
-      :transform="`translate(0,${ c*h.row+h.control+box.pad })`"
+      v-for="(color, c) in palette" :key="c" 
+      :transform="`translate(0,${c * h.row + h.control + box.pad})`"
       )
       rect.pointer-events-none(
         :width="box.w" :height="h.row" 
@@ -102,56 +102,56 @@ svg.select-none.cursor-grab.active-cursor-grabbing(
         )
       g.text(
         :fill="colord(toHSL(color)).isDark() ? '#fff' : '#000'")
-        text.pointer-events-none(x="40" :y="h.row/2" text-anchor="middle")  {{c+1}}
+        text.pointer-events-none(x="40" :y="h.row / 2" text-anchor="middle")  {{ c + 1 }}
         text(
           @click="copyColor(nearest(colord(toHSL(color)).toHex()).name)"
-          x="80" :y="h.row/2")  {{ nearest(colord(toHSL(color)).toHex()).name }}
+          x="80" :y="h.row / 2")  {{ nearest(colord(toHSL(color)).toHex()).name }}
         text.cursor-pointer(
           @click="copyColor(colord(toHSL(color)).toHex())"
-          :x="box.w-200" :y="h.row/2" ) {{ colord(toHSL(color)).toHex() }}
+          :x="box.w - 200" :y="h.row / 2" ) {{ colord(toHSL(color)).toHex() }}
 
   g.controls()
     g.control(
       mask="url(#maskControl1)"
-      :fill="colord(toHSL(ctrl == 0 ? palette[0] : palette[palette.length-1])).toHex()" 
-      v-for="(ctrl,c) in [0,1]" :key="ctrl"
-      :transform="`translate(0,${ctrl==0 ? 0 : box.h-h.control + c*box.pad*2})`"
+      :fill="colord(toHSL(ctrl == 0 ? palette[0] : palette[palette.length - 1])).toHex()" 
+      v-for="(ctrl, c) in [0, 1]" :key="ctrl"
+      :transform="`translate(0,${ctrl == 0 ? 0 : box.h - h.control + c * box.pad * 2})`"
       )
 
       defs
         linearGradient(:id="`sat${c}`" x1="0" x2="0" y1="1" y2="0")
-          stop(offset="5%", :stop-color="`hsl(${options.anchorColors[c][0]},${0}%,${options.anchorColors[c][2]*100}%)`")
-          stop(offset="95%", :stop-color="`hsl(${options.anchorColors[c][0]},${100}%,${options.anchorColors[c][2]*100}%)`")
+          stop(offset="5%", :stop-color="`hsl(${options.anchorColors[c][0]},${0}%,${options.anchorColors[c][2] * 100}%)`")
+          stop(offset="95%", :stop-color="`hsl(${options.anchorColors[c][0]},${100}%,${options.anchorColors[c][2] * 100}%)`")
 
         linearGradient(:id="`light${c}`" x1="0" x2="0" y1="1" y2="0")
           stop(offset="5%", :stop-color="`hsl(${options.anchorColors[c][0]},${0}%,${0}%)`")
-          stop(offset="50%", :stop-color="`hsl(${options.anchorColors[c][0]},${options.anchorColors[c][1] *100}%,${50}%)`")
-          stop(offset="95%", :stop-color="`hsl(${options.anchorColors[c][0]},${options.anchorColors[c][1] *100}%,${100}%)`")
+          stop(offset="50%", :stop-color="`hsl(${options.anchorColors[c][0]},${options.anchorColors[c][1] * 100}%,${50}%)`")
+          stop(offset="95%", :stop-color="`hsl(${options.anchorColors[c][0]},${options.anchorColors[c][1] * 100}%,${100}%)`")
 
 
-      rect(:fill="`url(#sat${c})`" :width="box.w*options.anchorColors[ctrl][0]/360" :height="h.control" v-drag="dragHandler(ctrl,0)")
-      rect(:fill="`url(#light${c})`" :x="box.w*options.anchorColors[ctrl][0]/360" :width="box.w*(1-options. anchorColors[ctrl][0]/360)" :height="h.control" v-drag="dragHandler(ctrl,1)")
+      rect(:fill="`url(#sat${c})`" :width="box.w * options.anchorColors[ctrl][0] / 360" :height="h.control" v-drag="dragHandler(ctrl, 0)")
+      rect(:fill="`url(#light${c})`" :x="box.w * options.anchorColors[ctrl][0] / 360" :width="box.w * (1 - options.anchorColors[ctrl][0] / 360)" :height="h.control" v-drag="dragHandler(ctrl, 1)")
 
-      g.stroked.pointer-events-none(:stroke="colord(toHSL(ctrl == 0 ? palette[0] : palette[palette.length-1])).isDark() ? '#fff' : '#000'" stroke-width="4")
-        line(:y2="h.control" :transform="`translate(${box.w*options.anchorColors[ctrl][0]/360},0)`")
-        line(:x1="0" :x2="box.w*options.anchorColors[ctrl][0]/360" :transform="`translate(0,${h.control*(1-options.anchorColors[ctrl][1])})`")
-        line(:x2="box.w" :x1="box.w*options.anchorColors[ctrl][0]/360" :transform="`translate(0,${h.control*(1-options.anchorColors[ctrl][2])})`")
+      g.stroked.pointer-events-none(:stroke="colord(toHSL(ctrl == 0 ? palette[0] : palette[palette.length - 1])).isDark() ? '#fff' : '#000'" stroke-width="4")
+        line(:y2="h.control" :transform="`translate(${box.w * options.anchorColors[ctrl][0] / 360},0)`")
+        line(:x1="0" :x2="box.w * options.anchorColors[ctrl][0] / 360" :transform="`translate(0,${h.control * (1 - options.anchorColors[ctrl][1])})`")
+        line(:x2="box.w" :x1="box.w * options.anchorColors[ctrl][0] / 360" :transform="`translate(0,${h.control * (1 - options.anchorColors[ctrl][2])})`")
         //- line(:x2="box.w" :transform="`translate(0,${ctrl ==0 ? h.control : 0})`")
 
       g.texts.pointer-events-none(
-        :fill="colord(toHSL(ctrl == 0 ? palette[0] : palette[palette.length-1])).isDark() ? '#fff' : '#000'")
+        :fill="colord(toHSL(ctrl == 0 ? palette[0] : palette[palette.length - 1])).isDark() ? '#fff' : '#000'")
 
-        text(:x="20" :y="-40+h.control* (1-options.anchorColors[ctrl][1])" font-size="40" :transform="`translate(0,${options.anchorColors[ctrl][1] > .6 ? 80:0})`") S {{ (options.anchorColors[ctrl][1]*100).toFixed(1) }}%
+        text(:x="20" :y="-40 + h.control * (1 - options.anchorColors[ctrl][1])" font-size="40" :transform="`translate(0,${options.anchorColors[ctrl][1] > .6 ? 80 : 0})`") S {{ (options.anchorColors[ctrl][1] * 100).toFixed(1) }}%
 
-        text(:x="box.w-180" :y="-40+h.control* (1-options.anchorColors[ctrl][2])" font-size="40" :transform="`translate(0,${options.anchorColors[ctrl][2] > .6 ? 80:0})`") L {{ (options.anchorColors[ctrl][2]*100).toFixed(1) }}%
+        text(:x="box.w - 180" :y="-40 + h.control * (1 - options.anchorColors[ctrl][2])" font-size="40" :transform="`translate(0,${options.anchorColors[ctrl][2] > .6 ? 80 : 0})`") L {{ (options.anchorColors[ctrl][2] * 100).toFixed(1) }}%
 
         text(
-          :y="-40+h.control* (1-options.anchorColors[ctrl][2])" 
-          :x="20+box.w*options.anchorColors[ctrl][0]/360" y="40" font-size="40" :transform="`translate(0,${options.anchorColors[ctrl][0] > .6 ? 80:0})`") H {{ options.anchorColors[ctrl][0].toFixed(1) }}&deg;   
+          :y="-40 + h.control * (1 - options.anchorColors[ctrl][2])" 
+          :x="20 + box.w * options.anchorColors[ctrl][0] / 360" y="40" font-size="40" :transform="`translate(0,${options.anchorColors[ctrl][0] > .6 ? 80 : 0})`") H {{ options.anchorColors[ctrl][0].toFixed(1) }}&deg;   
   transition(name="fade")
     g.copied.text-2xl(
       v-show="copied"
-      :transform="`translate(${box.w/2-100},${h.control+box.pad/2})`"
+      :transform="`translate(${box.w / 2 - 100},${h.control + box.pad / 2})`"
       )
-      text.fill-white() Copied '{{text}}''
+      text.fill-white() Copied '{{ text }}''
 </template>

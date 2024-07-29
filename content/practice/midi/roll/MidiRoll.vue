@@ -1,10 +1,10 @@
 <script setup>
-import { useRafFn, useStorage } from "@vueuse/core";
+import { useRafFn, useStorage, useWindowSize } from "@vueuse/core";
 import { midi, stopAll } from "#/use/midi";
 import { computed, onMounted, reactive, ref, watch } from "vue";
 import { useClamp } from "@vueuse/math";
 
-const screen = ref();
+const { width, height } = useWindowSize()
 
 const score = reactive({
   notes: computed(() => {
@@ -38,12 +38,18 @@ let canvas, ctx, tempCanvas, tempCtx;
 
 const state = reactive({
   initiated: false,
-  width: 1200,
-  height: 800,
+  width,
+  height,
   speed: computed(() => Math.round(state.rawSpeed * 2) / 2),
   rawSpeed: useClamp(useStorage("midi-roll-speed", 1), 1, 3),
   direction: useStorage("midi-roll-direction", 1),
 });
+
+watch([width, height], () => {
+  if (!tempCanvas) return
+  tempCanvas.width = state.width;
+  tempCanvas.height = state.height;
+})
 
 onMounted(() => {
   canvas = document.getElementById("spectrogram");

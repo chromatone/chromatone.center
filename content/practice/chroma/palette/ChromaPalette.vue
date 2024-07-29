@@ -72,11 +72,11 @@ const feedbackCode = computed(() => `
 </script>
 
 <template lang='pug'>
-.relative#screen.rounded-lg.overflow-hidden.pointer-events-auto.touch-revert()    
+.relative#screen.rounded-lg.overflow-hidden.pointer-events-auto.touch-revert.h-screen   
   button.absolute.z-200.text-2xl.top-2.right-2.opacity-30.hover-opacity-100.transition(
     v-tooltip="'Enable audio input'"
     v-if="!initiated" 
-    @click="init();initiated=true;")
+    @click="init(); initiated = true;")
     .i-la-microphone
   gl-canvas(@update="glslUpdate" :key="debounced")
     gl-program(name="buffer0", :code="shaderCode")

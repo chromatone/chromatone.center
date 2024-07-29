@@ -15,4 +15,4 @@ const ChromaPaletteFeedback = defineClientComponent(() => {
 })
 </script>
 
-<ChromaPaletteFeedback class="min-h-70svh h-80svh" />
+<ChromaPaletteFeedback class="h-screen" />

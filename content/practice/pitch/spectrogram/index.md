@@ -18,7 +18,11 @@ const PitchSpectrogram = defineClientComponent(() => {
 })
 </script>
 
-<PitchSpectrogram  />
+<PitchSpectrogram style="position: sticky; top: 0;" />
+
+
+
+::: info
 
 The colorful spectrogram is a powerful tool for visual audio analysis. Each particular frequency in the spectrum gets it's own position on the vertical axis along with the corresponding Chromatone color. The pitch spectrum is continous and the graph shows all the partials in a rather high resolution. The colors of the lines help differentiate pitches and overtones in any incoming audio signal. The quality of analysis is based primarily on the quality of the signal – thus a good microphone is recommended for best experience.
 
@@ -31,3 +35,5 @@ The colorful spectrogram is a powerful tool for visual audio analysis. Each part
 5. POW control changes the Power to which we raise the value of each band. It accentuates louder frequencies and dampens noise.
 6. OFFSET control is for tuning the values before the raising to the power. It can help adjust the brightness and sensitivity of the spectroscope.
 7. Right click the small video to open the spectrogram in Picture-In-Picture mode. You may need to press play in the floating window to see the spectrogram running.
+
+:::

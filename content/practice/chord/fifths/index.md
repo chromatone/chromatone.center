@@ -14,9 +14,13 @@ const ChordFifths = defineClientComponent(() => {
 })
 </script>
 
-<ChordFifths/>
+<ChordFifths style="position: sticky; top: 0;" />
 
-## The double circle of fifths as a tool to explore chords in tonal space
+
+
+::: info
+
+## The double circle of fifths. A tool to explore chords in tonal space
 
 The circle of fifths organizes pitches in a sequence of perfect fifths, generally shown as a circle with the pitches (and their corresponding keys) in a clockwise progression. Musicians and composers often use the circle of fifths to describe the musical relationships between pitches. Its design is helpful in composing and harmonizing melodies, building chords, and modulating to different keys within a composition.
 
@@ -29,3 +33,5 @@ The highlighted sector of 90 degrees includes 6 points of the circle that repres
 So for C major scale you'll get C major chord as the tonic I degree, F major to the left as the IV subdominant degree, and G major chord as the dominant V degree to the right of the tonic. The inner circle will show you the Dm chord for the ii degree, Am as the vi degree and the tonic of the parallel minor scale and Em as the iii degree of the C major scale. The next step of the inner circle shows Bm and it can represent the vi degree – the leading tone and it's diminished chord Bdim (Bb5).
 
 This scheme helps find interesting chord progressions either in one predefined key or traversing different keys in complex modulation movements. Neighbouring sectors include scales that are easy to borrow chords from and to travel to with simple moves like common-chord modulation. Once you find any other path from one key to another you can trace it's form on the circle and transpose it to any key you're in or you want to move to. The article about [secondary chords](https://en.wikipedia.org/wiki/Secondary_chord) is a good starting poing in this exploration.
+
+:::

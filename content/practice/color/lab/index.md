@@ -7,6 +7,6 @@ cover: lab.png
 ---
 <client-only>
 
-<color-lab class="max-h-90svh" />
+<color-lab class="max-h-90svh" style="position: sticky; top: 0;" />
 
 </client-only>

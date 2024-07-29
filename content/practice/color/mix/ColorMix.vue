@@ -21,14 +21,14 @@ watchOnce(() => midi.note, () => started.value = true)
 </script>
 
 <template lang="pug">
-#screen.h-80svh.w-full.transition.flex.flex-col.relative(
+#screen.h-98svh.w-full.transition.flex.flex-col.relative(
   :style="{ backgroundColor: '' }"
   )
   transition(name="fade")
     .absolute.top-30.text-xl.max-w-120.p-8.font-bold(v-if="!started") Play any notes on your keyboard to see their colors and how they mix together
   .flex.flex-1
     .flex-1.transition.py-16(
-      v-for="(color,c) in activeColors" :key="c"
+      v-for="(color, c) in activeColors" :key="c"
         :style="{ backgroundColor: color }"
         )
 

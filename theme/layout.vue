@@ -90,15 +90,15 @@ midi-notes
       page-footer
   template(v-else)
     main#content.w-full.relative.flex.flex-col
-      transition(name="fade")
+      transition-group(name="fade")
         page-headline(
           v-if="f.layout != 'app'"
           :pageColor="pageColor", :lightColor="lightColor" :page="f" :cover="f.dynamic ? f?.cover || f?.poster || '' : page?.frontmatter?.cover")
 
           page-parents(:parents="f.dynamic ? parents : parents.slice(0, -1)")
-        .fixed.top-0.left-12.right-0.z-100.text-md.p-2.flex.gap-2.items-center.bg-light-200.bg-opacity-20.dark-bg-dark-200.dark-bg-opacity-10.backdrop-blur-lg.pt-2.pl-4.min-h-15.border-t-4.op-90.transition(
+        .fixed.top-0.left-14.right-2.z-100.text-md.p-2.flex.gap-2.items-center.bg-light-200.bg-opacity-20.dark-bg-dark-200.dark-bg-opacity-10.backdrop-blur-lg.pt-2.pl-4.min-h-15.border-t-4.op-90.transition.rounded-xl(
           :style="{ borderColor: pageColor }"
-          v-else-if="y > 100")
+          v-if="y > 100")
           h2.font-bold.select-none.pointer-events-none {{ f?.title }} 
           .p-0.select-none.pointer-events-none.flex-1 {{ f?.description }}
 
@@ -117,7 +117,7 @@ midi-notes
 
           content.content.flex-auto.z-10(v-if="!f?.topContent")
 
-      nav-next-prev.mt-10(
+      nav-next-prev.mt-8(
         :siblings="siblings" 
         :parents="parents"
         v-if="!params.nonextprev"
@@ -155,6 +155,10 @@ midi-notes
     url(/img/noise.svg);
   opacity: 0.2;
   filter: contrast(100%) grayscale(100%);
+}
+
+.content .info {
+  @apply m-2 bg-light-400 dark-bg-dark-400 z-10 max-w-55ch rounded-xl bg-op-80 dark-bg-op-80 backdrop-blur-md;
 }
 </style>
 <!-- 

@@ -14,7 +14,10 @@ const PitchDrone = defineClientComponent(() => {
 })
 </script>
 
-<PitchDrone class="max-w-55ch m-2" />
+<PitchDrone class="max-w-55ch m-2 mb-12" style="position: sticky; top: 1em;"  />
+
+
+::: info
 
 
 ## Multipurpose rich harmonic sound generator
@@ -30,3 +33,5 @@ You choose the pitch and the app plays 3 octaves and 3 fifths intervals for it. 
 5. Listen to the tone to evolve and breathe with harmonics. Try singing to it, tuning your instruments or just feeling the vibrations.
 6. If the it's too much of the high frequency content you can adjust it with the **LP** slider – it sets the frequency of the drone Low-pass filter.
 7. Press **stop** button to mute the voices and press **play** to unmute them back. The **spacebar** key of your keyboard does exactly the same here.
+
+:::

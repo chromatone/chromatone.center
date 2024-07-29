@@ -14,4 +14,4 @@ const StepSequencer = defineClientComponent(() => {
 })
 </script>
 
-<StepSequencer />
+<StepSequencer style="position: sticky; top: 1em;" />

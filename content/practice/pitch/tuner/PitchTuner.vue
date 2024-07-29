@@ -3,6 +3,10 @@ import { noteColor } from "#/use/colors"
 import { useTuner } from '#/use/tuner'
 import { computed } from 'vue'
 
+import { useWindowSize } from '@vueuse/core'
+
+const { width, height } = useWindowSize()
+
 const { init, tuner, } = useTuner();
 
 const background = computed(() => {
@@ -20,20 +24,26 @@ function start() {
 function getRawNote(frequency) {
   return 12 * (Math.log(frequency / tuner.middleA) / Math.log(2)) % 12
 }
+
+
 </script>
 
 <template lang="pug">
-.fullscreen-container#screen.overflow-clip
+.fullscreen-container#screen.overflow-clip 
   control-start.absolute.z-20(
     v-if="!tuner.running", 
     @click="start()") Start tuner
-  svg#tuner.w-full.min-h-full(
-  :opacity="tuner.running ? 1 : 0.3"
-  version="1.1",
-  baseProfile="full",
-  viewBox="0 0 400 300",
-  xmlns="http://www.w3.org/2000/svg",
-  )
+  svg#tuner(
+    :opacity="tuner.running ? 1 : 0.3"
+    version="1.1",
+    baseProfile="full",
+    font-family="Commissioner, sans-serif"
+    stroke-linecap="round"
+    dominant-baseline="middle"
+    text-anchor="middle",
+    :viewBox="`0 0 ${width} ${height}`",
+    xmlns="http://www.w3.org/2000/svg",
+    )
     defs
       linearGradient#grad(
         x1="0" 
@@ -47,103 +57,116 @@ function getRawNote(frequency) {
         stop(
           :stop-color="background" 
           stop-opacity="1" 
-          offset="30%")
+          offset="10%")
         stop(
           :stop-color="background" 
           stop-opacity="0.8" 
-          offset="60%")
+          offset="50%")
         stop(
           :stop-color="background" 
           stop-opacity="0.2" 
           offset="100%")
+
     rect(
-      width="400"
-      height="300"
+      :width
+      :height
       rx="5"
       fill="url(#grad)"
-    )
+      )
+
     line(
       v-for="(bar, i) in tuner.spec.slice(0, 100)",
       :key="i",
       style="transition:all 200ms ease; "
-      stroke="white"
-      stroke-linecap="round"
+      stroke="currentColor"
       stroke-width="2"
-      :x1="i * 4",
-      :y1="300",
-      :x2="i * 4",
-      :y2="300 - bar"
+      :x1="i * width / 100",
+      :y1="height",
+      :x2="i * width / 100",
+      :y2="height - bar * 4"
     )
-    g(
-      v-for="(n) in 11",
-      :key="n",
-      :style="{ transform: `translateX(${40 * (n - 6)}px)` }"
-    )
-      line(
-        stroke="gray"
-        opacity="0.7"
-        stroke-linecap="round"
-        stroke-width="1"
-        :x1="200"
-        :x2="200"
-        :y1="20"
-        :y2="80"
+    g.center(
+      :transform="`translate(${width / 2},0)`"
       )
+      circle.op-20(
+        r="8"
+        fill="currentColor"
+        :cy="height * .3"
+        )
+      g(
+        v-for="(n) in 11",
+        :key="n",
+        :style="{ transform: `translateX(${width / 12 * (n - 6)}px)` }"
+        )
+        line(
+          stroke="gray"
+          opacity="0.7"
+          stroke-width="2"
+          :y1="60"
+          :y2="height * .3"
+        )
+        text(
+          style="user-select:none;transition:all 300ms ease; "
+          fill="gray"
+          font-size="20px"
+          text-anchor="middle",
+
+          y="40"
+        ) {{ (n - 6) * 10 }} 
+      g.meter(
+        style="user-select:none;transition:all 600ms ease; "
+        :style="{ transform: `translateX(${(width / 100) * tuner.note?.cents}px)` }"
+        )
+
+        line(
+          stroke="black"
+          stroke-linecap="round"
+          stroke-width="2"
+          :y1="60"
+          :y2="height * .3"
+          )
+        circle.filter.brightness-120(
+          r="8"
+          :fill="tuner.note.color"
+          :cy="height * .3"
+          )
+        //- text(
+        //-   style="user-select:none;transition:all 300ms ease; "
+        //-   fill="currentColor"
+        //-   font-size="12px"
+        //-   :y="height * .25"
+        //-   ) {{ tuner.note?.cents > 0 ? '+' : '' }}{{ tuner.note?.cents }}
       text(
         style="user-select:none;transition:all 300ms ease; "
-        fill="gray"
-        font-family="Commissioner, sans-serif"
-        font-size="6px"
-        text-anchor="middle",
-        dominant-baseline="middle"
-        x="200"
-        y="10"
-      ) {{ (n - 6) * 10 }} 
-    g.meter(
-      style="user-select:none;transition:all 600ms ease; "
-      :style="{ transform: `translateX(${5 * tuner.note?.cents}px)` }"
-    )
-      line(
-        stroke="black"
-        stroke-linecap="round"
-        stroke-width="2"
-        :x1="200"
-        :x2="200"
-        :y1="20"
-        :y2="80"
-      )
-    text(
-      style="user-select:none;transition:all 300ms ease; "
-      fill="black"
-      font-family="Commissioner, sans-serif"
-      font-size="12px"
-      text-anchor="middle",
-      dominant-baseline="middle"
-      x="200"
-      y="94"
-    ) {{ tuner.note?.cents > 0 ? '+' : '' }}{{ tuner.note?.cents }} 
-    text(
-      style="user-select:none;transition:all 300ms ease; "
-      fill="black"
-      font-family="Commissioner, sans-serif"
-      font-size="3rem"
-      font-weight="bold" 
-      text-anchor="middle",
-      dominant-baseline="middle"
-      x="200"
-      y="140"
-    ) {{ tuner.note?.name }}{{ tuner.note?.octave }}
-    text(
-      style="user-select:none;transition:all 300ms ease; "
-      fill="black"
-      font-family="Commissioner, sans-serif"
-      font-size="1rem"
-      font-weight="bold"
-      text-anchor="middle",
-      dominant-baseline="middle"
-      x="200"
-      y="180"
-    ) {{ tuner.note?.frequency.toFixed(2) }} Hz
+        fill="currentColor"
+        font-size="6rem"
+        :y="height * 0.4"
+        ) {{ tuner.note?.name }}
+
+      text.op-80(
+        style="user-select:none;transition:all 300ms ease; "
+        fill="currentColor"
+        font-size="2rem"
+        :y="height * 0.46"
+        ) {{ tuner.note?.octave }}
+
+      text.font-mono.op-70(
+        style="user-select:none;transition:all 300ms ease; "
+        fill="currentColor"
+        font-size="2rem"
+        text-anchor="end",
+
+        :x="80"
+        :y="height * 0.6"
+        ) {{ tuner.note?.frequency.toFixed(2) }} Hz
+      text.font-mono.op-50(
+        style="user-select:none;transition:all 300ms ease; "
+        fill="currentColor"
+        font-size="2rem"
+        text-anchor="end",
+        :x="80"
+        :y="height * 0.55"
+        ) {{ tuner.note?.cents > 0 ? '+' : '' }}{{ tuner.note?.cents }}  cents
 </template>
 
 <style lang="postcss" scoped>

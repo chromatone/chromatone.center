@@ -1,7 +1,7 @@
 ---
 title: Meters
 description: Recurring patterns of accents
-
+cover: rachel-loughman.jpg
 date: 2021-10-12
 ---
 

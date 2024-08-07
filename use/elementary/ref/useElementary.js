@@ -17,26 +17,26 @@ const audio = shallowReactive({
 
 const layers = shallowReactive({})
 
-function initAudio() {
+async function initAudio() {
   if (audio.initiating || audio.initiated) return Promise.resolve(false);
   audio.initiating = true
   audio.ctx = markRaw(new (window.AudioContext || window.webkitAudioContext)())
   audio.core = markRaw(new WebRenderer())
-  return audio.core.initialize(audio.ctx, {
+  const node = await audio.core.initialize(audio.ctx, {
     numberOfInputs: 1,
     numberOfOutputs: 1,
     outputChannelCount: [2],
-  }).then(node => {
-    audio.node = markRaw(node)
-    audio.node.connect(audio.ctx.destination)
-
-    audio.core.on('meter', handleMeter)
-    audio.core.on('scope', handleScope)
-    audio.core.on('fft', handleFFT)
-
-    audio.initiated = true
-    audio.initiating = false
   })
+  audio.node = markRaw(node)
+  audio.node.connect(audio.ctx.destination)
+
+  audio.core.on('meter', handleMeter)
+  audio.core.on('scope', handleScope)
+  audio.core.on('fft', handleFFT)
+
+  audio.initiated = true
+  audio.initiating = false
+  return Promise.resolve(true)
 }
 
 function handleMeter(e) {

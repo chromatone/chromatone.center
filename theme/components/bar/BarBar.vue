@@ -83,7 +83,7 @@ nav.bar
     v-tooltip.right="'Academy'"
     aria-label="Academy"
     )
-    .i-cil-education
+    .scale-85.i-mdi-pillar
   //- a.button(
   //-   title="Contacts"
   //-   href="/contacts/"

@@ -73,18 +73,32 @@ function getRawNote(frequency) {
       rx="5"
       fill="url(#grad)"
       )
+    g.spectrum
+      line(
+        v-for="(bar, i) in tuner.spec.slice(0, 100)",
+        :key="i",
+        style="transition:all 200ms ease; "
+        stroke="currentColor"
+        stroke-width="2"
+        :x1="i * width / 100",
+        :y1="height",
+        :x2="i * width / 100",
+        :y2="height - bar * 4"
+        )
 
-    line(
-      v-for="(bar, i) in tuner.spec.slice(0, 100)",
-      :key="i",
-      style="transition:all 200ms ease; "
-      stroke="currentColor"
-      stroke-width="2"
-      :x1="i * width / 100",
-      :y1="height",
-      :x2="i * width / 100",
-      :y2="height - bar * 4"
-    )
+    g.clock(:style="{ transform: `translate(${width / 2}px,${height * .75}px)` }")
+      circle.center(r="4" fill="currentColor")
+      g.notes
+        circle(
+          v-for="n in 12" :key="n" r="8" 
+          :fill="noteColor(n, 4)"
+          cy="-100"
+          :transform="`rotate(${n * 30})`"
+          )
+      g.transition.duration-700(:style="{ transform: `rotate(${(tuner.note.value + 3) * 30}deg)` }")
+        line( y2="-100" stroke="currentColor" stroke-width="4" )
+        line.transition.duration-700( y2="-80" stroke="currentColor" stroke-width="2" :style="{ transform: `rotate(${tuner.note.cents * 3.6}deg)` }")
+
     g.center(
       :transform="`translate(${width / 2},0)`"
       )
@@ -136,12 +150,14 @@ function getRawNote(frequency) {
         //-   font-size="12px"
         //-   :y="height * .25"
         //-   ) {{ tuner.note?.cents > 0 ? '+' : '' }}{{ tuner.note?.cents }}
+
+
       text(
         style="user-select:none;transition:all 300ms ease; "
         fill="currentColor"
         font-size="6rem"
         :y="height * 0.4"
-        ) {{ tuner.note?.name }}
+        ) {{ tuner.note?.name }} {{ (tuner.note.value + 3) % 12 }}
 
       text.op-80(
         style="user-select:none;transition:all 300ms ease; "
@@ -157,7 +173,7 @@ function getRawNote(frequency) {
         text-anchor="end",
 
         :x="80"
-        :y="height * 0.6"
+        :y="height * 0.55"
         ) {{ tuner.note?.frequency.toFixed(2) }} Hz
       text.font-mono.op-50(
         style="user-select:none;transition:all 300ms ease; "
@@ -165,7 +181,7 @@ function getRawNote(frequency) {
         font-size="2rem"
         text-anchor="end",
         :x="80"
-        :y="height * 0.55"
+        :y="height * 0.5"
         ) {{ tuner.note?.cents > 0 ? '+' : '' }}{{ tuner.note?.cents }}  cents
 </template>
 

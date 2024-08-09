@@ -2,7 +2,7 @@ import { ref, reactive, watch, onMounted, onBeforeUnmount, nextTick } from 'vue'
 import { Render, Composite, Runner, Events, Engine, Mouse, } from 'matter-js';
 import { useResizeObserver } from '@vueuse/core';
 import { useCircles } from './useCircles';
-import { useCenter } from './useCenter';
+import { usePlayer } from './usePlayer';
 import { useBoundaries } from './useBoundaries';
 import { useStars } from './useStars';
 import { useGrid } from './useGrid';
@@ -70,7 +70,7 @@ export function useMatter() {
     useStars()
     useCircles()
     // useBoundaries()
-    const { center } = useCenter()
+    const { center } = usePlayer()
     Events.on(engine, 'beforeUpdate', () => {
       updateMouse(engine, render);
       position.value.x = center.position.x - box.w / 2

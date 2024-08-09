@@ -6,7 +6,7 @@ import { pressedKeys, joystick } from './useControls'
 
 
 
-export function useCenter() {
+export function usePlayer() {
 
   const strokeStyle = `hsl(${globalScale.tonic * 30}deg, 50%, 50%)`
 

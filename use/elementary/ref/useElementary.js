@@ -1,4 +1,4 @@
-import { shallowReactive, watch, onMounted, getCurrentInstance, markRaw } from 'vue'
+import { shallowReactive, watch, onMounted, getCurrentInstance, markRaw, onBeforeUnmount } from 'vue'
 import WebRenderer from '@elemaudio/web-renderer'
 import { el } from '@elemaudio/core';
 import { meters } from './useMeter'
@@ -20,14 +20,14 @@ const layers = shallowReactive({})
 async function initAudio() {
   if (audio.initiating || audio.initiated) return Promise.resolve(false);
   audio.initiating = true
-  audio.ctx = markRaw(new (window.AudioContext || window.webkitAudioContext)())
-  audio.core = markRaw(new WebRenderer())
-  const node = await audio.core.initialize(audio.ctx, {
+  audio.ctx = new (window.AudioContext || window.webkitAudioContext)()
+  audio.core = audio.core || new WebRenderer()
+  audio.node = await audio.core.initialize(audio.ctx, {
     numberOfInputs: 1,
     numberOfOutputs: 1,
     outputChannelCount: [2],
   })
-  audio.node = markRaw(node)
+
   audio.node.connect(audio.ctx.destination)
 
   audio.core.on('meter', handleMeter)
@@ -80,6 +80,9 @@ function render() {
 export function useElementary() {
   if (getCurrentInstance()) {
     onMounted(initAudio)
+    onBeforeUnmount(() => {
+      audio.core && audio.core.reset()
+    })
   }
 
   watch(layers, render, { deep: true })

@@ -5,6 +5,7 @@ import { useCircles } from './useCircles';
 import { useCenter } from './useCenter';
 import { useBoundaries } from './useBoundaries';
 import { useStars } from './useStars';
+import { useGrid } from './useGrid';
 
 
 //import MatterWrap from 'matter-wrap';
@@ -19,6 +20,7 @@ export const initiated = ref(false);
 export const running = ref(false)
 export const box = reactive({ w: 100, h: 100 })
 export const score = ref(0)
+export const position = ref({ x: 0, y: 0 })
 
 export function useMatter() {
 
@@ -64,13 +66,15 @@ export function useMatter() {
     if (initiated.value) return;
     initiated.value = true;
     setupMatterJs();
-
+    // useGrid()
     useStars()
     useCircles()
     // useBoundaries()
-    useCenter()
+    const { center } = useCenter()
     Events.on(engine, 'beforeUpdate', () => {
       updateMouse(engine, render);
+      position.value.x = center.position.x - box.w / 2
+      position.value.y = center.position.y - box.h / 2
     })
   });
 
@@ -87,7 +91,7 @@ export function useMatter() {
 
 
   return {
-    canvas, initiated, running, score
+    canvas, initiated, running, score, position
   };
 }
 
@@ -108,7 +112,7 @@ function resizeBox() {
 }
 
 function updateMouse(render) {
-  console.log(render.bounds)
+  // console.log(render.bounds)
   // Mouse.setOffset(mouse, render.bounds?.min);
   // Mouse.setScale(mouse, {
   //   x: (render?.bounds.max.x - render?.bounds.min.x) / render.options.width,

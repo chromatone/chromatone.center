@@ -4,14 +4,13 @@ import { globalScale } from '#/use';
 import { engine, box, running, render } from './useMatter';
 import { pressedKeys, joystick } from './useControls'
 
-
-
 export function usePlayer() {
 
   const strokeStyle = `hsl(${globalScale.tonic * 30}deg, 50%, 50%)`
 
-  const center = Bodies.polygon(box.w / 2, box.h / 2, 3, Math.min(20), {
+  const player = Bodies.polygon(box.w / 2, box.h / 2, 3, Math.min(20), {
     label: 'player',
+    frictionAir: 0.03,
     restitution: .95,
     friction: 0.4,
     frictionStatic: 0.001,
@@ -29,7 +28,7 @@ export function usePlayer() {
   });
 
   // Rocket engine (square) body
-  const engineBody = Bodies.rectangle(center.position.x, center.position.y + 30, 10, 20, {
+  const engineBody = Bodies.rectangle(player.position.x, player.position.y + 30, 10, 20, {
     label: 'engine',
     isStatic: false,
     collisionFilter: {
@@ -44,44 +43,42 @@ export function usePlayer() {
     },
   });
 
-  // Constraint to attach engine to main body
-  const engineConstraint1 = Constraint.create({
-    bodyA: center,
+  const constraintOptions = {
+    bodyA: player,
     bodyB: engineBody,
-    pointA: { x: 10, y: -5 }, // Attach to the bottom center of the triangle
-    pointB: { x: -10, y: -10 }, // Attach to the top center of the engine
-    stiffness: 0.05,
+    stiffness: 0.5,
     length: 1,
     render: {
       visible: false,
     },
+  }
+
+  // Constraint to attach engine to main body
+  const engineConstraint1 = Constraint.create({
+    ...constraintOptions,
+    pointA: { x: 10, y: -5 },
+    pointB: { x: -10, y: -10 },
   });
 
   const engineConstraint2 = Constraint.create({
-    bodyA: center,
-    bodyB: engineBody,
-    pointA: { x: 10, y: 5 }, // Attach to the bottom center of the triangle
-    pointB: { x: -10, y: 10 }, // Attach to the top center of the engine
-    stiffness: 0.05,
-    length: 1,
-    render: {
-      visible: false,
-    },
+    ...constraintOptions,
+    pointA: { x: 10, y: 5 },
+    pointB: { x: -10, y: 10 },
   });
 
   Events.on(engine, 'afterUpdate', () => {
 
-    const forceX = (box.w / 2 - center.position.x) / center.position.x;
-    const forceY = (box.h / 2 - center.position.y) / center.position.y;
+    const forceX = (box.w / 2 - player.position.x) / player.position.x;
+    const forceY = (box.h / 2 - player.position.y) / player.position.y;
     const strength = 0.002
-    Body.applyForce(center, center.position, { x: forceX * strength, y: forceY * strength });
+    Body.applyForce(player, player.position, { x: forceX * strength, y: forceY * strength });
 
   })
 
-  Composite.add(engine?.world, [center, engineBody, engineConstraint1, engineConstraint2]);
+  Composite.add(engine?.world, [player, engineBody, engineConstraint1, engineConstraint2]);
 
-  const steer = 0.07
-  const thrust = 10;
+  const steer = 0.05
+  const thrust = 30;
 
   const handleControl = () => {
 
@@ -89,25 +86,19 @@ export function usePlayer() {
 
     acc -= joystick.y * thrust
 
-    Body.setAngularVelocity(center, pressedKeys.ArrowLeft ? -steer : (pressedKeys.ArrowRight ? steer : 0) + joystick.x * steer)
+    Body.setAngularVelocity(player, pressedKeys.ArrowLeft ? -steer : (pressedKeys.ArrowRight ? steer : 0) + joystick.x * steer)
 
-    const force = Vector.create(Math.cos(center.angle) * acc, Math.sin(center.angle) * acc)
+    const force = Vector.create(Math.cos(player.angle) * acc, Math.sin(player.angle) * acc)
 
-    Body.applyForce(center, center.position, force);
+    Body.applyForce(player, player.position, force);
 
-    Render.lookAt(render, center.position, { x: box.w / 2, y: box.h / 2 });
+    Render.lookAt(render, player.position, { x: box.w / 2, y: box.h / 2 });
   };
-
-  // Create Matter engine, world, circle, and renderer (same as before)
 
   Events.on(engine, 'beforeUpdate', handleControl);
 
-
-
-
-
   return {
     running,
-    center
+    player
   }
 }

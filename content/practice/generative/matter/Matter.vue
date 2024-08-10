@@ -26,9 +26,7 @@ function move(ev) {
     .flex-1
     .text-sm {{ score }}
     .flex-1 
-    .flex.flex-col.font-mono
-      .text-sm x: {{ position.x.toFixed() }}
-      .text-sm y: {{ -position.y.toFixed() }}
+
 
   Joystick.op-50.fixed.bottom-8.mx-auto(
     :size="80"

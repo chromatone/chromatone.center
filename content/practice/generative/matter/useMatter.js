@@ -6,6 +6,7 @@ import { usePlayer } from './usePlayer';
 import { useBoundaries } from './useBoundaries';
 import { useStars } from './useStars';
 import { useGrid } from './useGrid';
+import { useNavigator } from './useNavigator';
 
 
 //import MatterWrap from 'matter-wrap';
@@ -69,12 +70,14 @@ export function useMatter() {
     // useGrid()
     useStars()
     useCircles()
+
     // useBoundaries()
-    const { center } = usePlayer()
+    const { player } = usePlayer()
+    useNavigator(player)
     Events.on(engine, 'beforeUpdate', () => {
       updateMouse(engine, render);
-      position.value.x = center.position.x - box.w / 2
-      position.value.y = center.position.y - box.h / 2
+      position.value.x = player.position.x - box.w / 2
+      position.value.y = player.position.y - box.h / 2
     })
   });
 

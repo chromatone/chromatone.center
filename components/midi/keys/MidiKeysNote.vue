@@ -20,70 +20,88 @@ const props = defineProps({
 
 const { midi, playKey } = useMidi()
 
-function startNote(note) {
-  let velocity = globalScale.isIn(notes[(note) % 12]) ? 1 : 0.3
-  playKey(note - 7, 0, false, velocity)
-  midiAttack({ number: note - 3 })
+function logCurve(x, factor = 10) {
+  // Ensure x is between 0 and 1
+  x = Math.max(0, Math.min(1, x));
+  // Apply logarithmic curve and normalize to 0-1 range
+  return Math.log(1 + factor * x) / Math.log(1 + factor);
 }
 
-function stopNote(note) {
+function startNote(note, event) {
+  event?.preventDefault()
+  const rect = event.target.getBoundingClientRect();
+  const relativeY = event.clientY - rect.top;
+  const height = rect.height;
+  const linearVelocity = (relativeY / height);
+  const logVelocity = logCurve(linearVelocity);
+  const adjustedVelocity = 0.3 + (logVelocity * 0.7);
+  const scaleFactor = globalScale.isIn(notes[(note) % 12]) ? 1 : 0.3;
+  const finalVelocity = adjustedVelocity * scaleFactor;
+
+  playKey(note - 7, 0, false, finalVelocity);
+  midiAttack({ number: note - 3, velocity: Math.round(finalVelocity * 127) });
+}
+
+function stopNote(note, event) {
   playKey(note - 7, 0, true, 0)
   midiRelease({ number: note - 3 })
+
 }
 
 const noteKey = ref()
+
 </script>
 
 <template lang='pug'>
 g.note(
-  :transform="`translate(${step*width},0)`"
+  :transform="`translate(${step * width},0)`"
   text-anchor="middle",
   ref="noteKey"
   )
   rect(
     :width="width"
     :height="height"
-    :fill="noteColor(note+3, null, midi.activeNotes[note] ? 1 : 0.1,globalScale.isIn(notes[(note+3)%12]) ? 1 : .4)"
-    @pointerdown.prevent="startNote(note+3)", 
-    @pointerenter="pressed ? startNote(note+3) : null"
-    @pointerleave="stopNote(note+3)", 
-    @pointerup.prevent="stopNote(note+3)", 
-    @touchcancel="stopNote(note+3)"
+    :fill="noteColor(note + 3, null, midi.activeNotes[note] ? 1 : 0.1, globalScale.isIn(notes[(note + 3) % 12]) ? 1 : .4)"
+    @pointerdown.prevent="startNote(note + 3, $event)", 
+    @pointerenter="pressed ? startNote(note + 3, $event) : null"
+    @pointerleave="stopNote(note + 3, $event)", 
+    @pointerup.prevent="stopNote(note + 3, $event)", 
+    @touchcancel="stopNote(note + 3, $event)"
     )
   g.marks.pointer-events-none
     line(
-      :x1="width/2",
-      :x2="width/2"
+      :x1="width / 2",
+      :x2="width / 2"
       :y1="0"
       :y2="height"
       stroke-width="6"
       :opacity=".9"
-      :stroke="midi.activeNotes[note] ? 'white' : noteColor(note+3, -1, 1,1)"
-      v-if="globalScale.tonic == (note+3)%12"
+      :stroke="midi.activeNotes[note] ? 'white' : noteColor(note + 3, -1, 1, 1)"
+      v-if="globalScale.tonic == (note + 3) % 12"
       )
     circle(
-      :r="globalScale.tonic == (note+3)%12 ? width/3 : width/8"
-      :cx="width/2"
-      :cy="height-width/2"
-      :opacity="midi.activeNotes[note] ? 1 :.3"
-      :fill="globalScale.isIn(notes[(note+3)%12]) ? 'white' : 'black'"
+      :r="globalScale.tonic == (note + 3) % 12 ? width / 3 : width / 8"
+      :cx="width / 2"
+      :cy="height - width / 2"
+      :opacity="midi.activeNotes[note] ? 1 : .3"
+      :fill="globalScale.isIn(notes[(note + 3) % 12]) ? 'white' : 'black'"
       )
 
     text.opacity-75.number(
-      :x="width/2"
-      :y="width*1.8"
-      :font-size="width*.333"
-      ) {{ intervals[(note+3 -globalScale.tonic)%12] }}
+      :x="width / 2"
+      :y="width * 1.8"
+      :font-size="width * .333"
+      ) {{ intervals[(note + 3 - globalScale.tonic) % 12] }}
     text.opacity-55(
-      :x="width/2"
-      :y="width+14"
-      :font-size="width*.333"
+      :x="width / 2"
+      :y="width + 14"
+      :font-size="width * .333"
       ) {{ note }}
     text(
-      :fill="globalScale.isIn(notes[(note+3)%12]) ?  'black' : '#777e'"
-      :y="width/2+10"
-      :x="width/2"
-      :font-size="width*.5"
-      :font-weight="globalScale.tonic == (note+3)%12 ? 'bold' : 'normal'"
-      ) {{ notes[(note+3)%12] }}
+      :fill="globalScale.isIn(notes[(note + 3) % 12]) ? 'black' : '#777e'"
+      :y="width / 2 + 10"
+      :x="width / 2"
+      :font-size="width * .5"
+      :font-weight="globalScale.tonic == (note + 3) % 12 ? 'bold' : 'normal'"
+      ) {{ notes[(note + 3) % 12] }}
 </template>

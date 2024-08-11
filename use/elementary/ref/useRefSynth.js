@@ -15,7 +15,11 @@ const params = {
   "osc:decay": { "value": 0.01, "min": 0.001, "max": 4, "step": 0.01 },
   "osc:sustain": { "value": 0.5, "min": 0, "max": 1, "step": 0.01 },
   "osc:release": { "value": 0.1, "min": 0.001, "max": 10, "step": 0.01 },
-
+  "osc:f-env": { "value": 0.5, "min": 0, "max": 1, "step": 0.01 },
+  "osc:f-attack": { "value": 0.01, "min": 0.001, "max": 5, "step": 0.01 },
+  "osc:f-decay": { "value": 0.1, "min": 0.001, "max": 4, "step": 0.01 },
+  "osc:f-sustain": { "value": 0.5, "min": 0, "max": 1, "step": 0.01 },
+  "osc:f-release": { "value": 0.2, "min": 0.001, "max": 10, "step": 0.01 },
 
   "noise:gain": { "value": 0.5, "min": 0, "max": 1, "step": 0.01 },
   "noise:band-q": { "value": 50, "min": 0, "max": 100, "step": 0.1 },
@@ -25,6 +29,11 @@ const params = {
   "noise:decay": { "value": 0.01, "min": 0.001, "max": 4, "step": 0.01 },
   "noise:sustain": { "value": 0.5, "min": 0, "max": 1, "step": 0.01 },
   "noise:release": { "value": 0.01, "min": 0.001, "max": 10, "step": 0.01 },
+  "noise:f-env": { "value": 0.5, "min": 0, "max": 1, "step": 0.01 },
+  "noise:f-attack": { "value": 0.01, "min": 0.001, "max": 5, "step": 0.01 },
+  "noise:f-decay": { "value": 0.1, "min": 0.001, "max": 4, "step": 0.01 },
+  "noise:f-sustain": { "value": 0.5, "min": 0, "max": 1, "step": 0.01 },
+  "noise:f-release": { "value": 0.2, "min": 0.001, "max": 10, "step": 0.01 },
 
 
   "fx:pingPong": { "value": 0.1, "min": 0, "max": 1, "step": 0.01 },
@@ -72,10 +81,10 @@ export function useRefSynth(count = 12) {
   }
 
   function createPoly() {
-    return el.mul(
+    return el.tanh(el.mul(
       el.sqrt(el.div(1, el.const({ key: 'voice-count', value: voiceRefs.length }))),
       el.add(...voiceRefs.map((_, i) => createVoice(i)))
-    );
+    ));
   }
 
   function createVoice(index) {
@@ -91,32 +100,72 @@ export function useRefSynth(count = 12) {
 
   function createOscillator(gate, midi, vel) {
     const envelope = el.adsr(cv["osc:attack"], cv["osc:decay"], cv["osc:sustain"], cv["osc:release"], gate);
-    const oscillator = el.select(
-      cv['osc:shape'],
-      el.blepsquare(midiFrequency(midi)),
-      el.blepsaw(midiFrequency(midi))
+
+    const filterEnvelope = el.adsr(
+      cv["osc:f-attack"],
+      cv["osc:f-decay"],
+      cv["osc:f-sustain"],
+      cv["osc:f-release"],
+      gate
     );
-    const filter = el.lowpass(
+
+    const squareOsc = el.blepsquare(midiFrequency(midi));
+    const sawOsc = el.blepsaw(midiFrequency(midi));
+
+    const squareGain = el.cos(el.mul(cv['osc:shape'], Math.PI / 2));
+    const sawGain = el.sin(el.mul(cv['osc:shape'], Math.PI / 2));
+
+    const oscillator = el.add(
+      el.mul(squareGain, squareOsc),
+      el.mul(sawGain, sawOsc)
+    );
+
+    const filterCutoff = el.add(
       el.mul(cv['osc:cut-off'], midiFrequency(midi)),
+      el.mul(
+        el.mul(cv['osc:f-env'], 20000),
+        filterEnvelope
+      )
+    );
+
+    const filter = el.lowpass(
+      el.max(20, el.min(20000, filterCutoff)),
       cv['osc:cut-q'],
       oscillator
     );
 
-    return el.mul(cv['osc:volume'], envelope, el.div(vel, 127), filter);
+    return el.tanh(el.mul(cv['osc:volume'], envelope, el.div(vel, 127), filter))
   }
 
   function createNoise(gate, midi) {
     const envelope = el.adsr(cv['noise:attack'], cv['noise:decay'], cv['noise:sustain'], cv['noise:release'], gate);
+
+    const filterEnvelope = el.adsr(
+      cv["noise:f-attack"],
+      cv["noise:f-decay"],
+      cv["noise:f-sustain"],
+      cv["noise:f-release"],
+      gate
+    )
+
     const noiseSrc = el.noise();
     const filter = el.bandpass(midiFrequency(midi), cv['noise:band-q'], noiseSrc);
 
-    const lowpass = el.lowpass(
+    const filterCutoff = el.add(
       el.mul(cv['noise:cut-off'], midiFrequency(midi)),
+      el.mul(
+        el.mul(cv['noise:f-env'], 20000),
+        filterEnvelope
+      )
+    );
+
+    const lowpass = el.lowpass(
+      el.max(20, el.min(20000, filterCutoff)),
       cv['noise:cut-q'],
       filter
     );
 
-    return el.mul(cv['noise:gain'], envelope, lowpass);
+    return el.tanh(el.mul(cv['noise:gain'], envelope, lowpass))
   }
 
   function pingPong(input) {

@@ -46,7 +46,7 @@ const activeMidi = computed(() => {
 
 const chordNames = computed(() => {
   return chordPitches.value.map(pitch => {
-    return Frequency(pitchFreq(pitch)).transpose(-12).toNote()
+    return Frequency(pitchFreq(pitch)).transpose(-12 + 12 * midi.offset).toNote()
   })
 })
 
@@ -68,7 +68,7 @@ function stopChord() {
 polygon.chord-trigger(
   style="mix-blend-mode: screen;"
   :transform="'rotate(' + 60 * p + ')'", 
-  :fill="noteColor(note.pitch, playing || activeMidi ? 5 : active ? 0.5 : -2, active ? 1 : 0.2) ",
+  :fill="noteColor(note.pitch, playing || activeMidi ? 5 : active ? 0.5 : -2, active ? 1 : 0.2)",
   :opacity="1"
   :stroke-width="active ? 4 : 0.5"
   stroke="hsla(0,0%,100%,0.5)"

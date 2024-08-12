@@ -35,7 +35,8 @@ const scaleType = useStorage('scale-type', 'major')
 
 const state = reactive({
   seventh: false,
-  main: true
+  main: true,
+  pressed: false,
 })
 
 const steps = {
@@ -64,7 +65,7 @@ function getChordNotes(note, qual = "major", inv) {
   const chord = Chord.get(note + type)
 
   if (inv !== undefined) {
-    const result = Range.numeric([1 + inv, 4 + inv]).map(Chord.degrees(type || 'major', note + '3'));
+    const result = Range.numeric([1 + inv, 4 + inv]).map(Chord.degrees(type || 'major', note + `3`));
     return result
   } else {
     return Note.names(chord.notes.map(n => Note.simplify(n) + 4))
@@ -84,6 +85,7 @@ function stopChord(note, qual = 'major', inv) {
 
 <template lang="pug">
 .fullscreen-container#screen.select-none.touch-manipulation.h-full.max-h-screen
+  pre.text-xs.fixed.top-0.right-0 {{ midi.offset }}
   svg#fifths.w-full(
     style="flex: 1 1 auto; touch-action:none;user-select: none; -webkit-user-select: none; -webkit-touch-callout: none;"
     version="1.1",
@@ -91,6 +93,7 @@ function stopChord(note, qual = 'major', inv) {
     viewBox="0 0 100 100",
     xmlns="http://www.w3.org/2000/svg",
     font-family="Commissioner, sans-serif"
+
     )
     g(
       fill="currentColor"
@@ -139,78 +142,83 @@ function stopChord(note, qual = 'major', inv) {
         stroke="currentColor"
         :stroke-width="state.main ? 0.8 : 0.4"
         )
-    g(
-      v-for="(scale, qual) in scales"
-      :key="qual"
-    )
-      g.around(
-        v-for="(note, i) in scale", 
-        :key="i",
-        style="cursor:pointer"
+    g.rings(
+
+      )
+      g.ring(
+        v-for="(scale, qual) in scales"
+        :key="qual"
         )
-        svg-ring(
-          :cx="50"
-          :cy="50"
-          :from="(i - 1) / 12 * 360 + 15"
-          :to="(i) / 12 * 360 + 15"
-          :radius="40 - 12 * getRadius(qual)"
-          :thickness="10"
-          :op="Math.abs(tonic - i) == 11 || Math.abs(tonic - i) % 12 <= 1 ? 0.8 : 0.1"
-          :fill="Math.abs(tonic - i) == 11 || Math.abs(tonic - i) % 12 <= 1 ? noteColor(note.pitch) : noteColor(note.pitch, 2, 1)"
+        g.around(
+          v-for="(note, i) in scale", 
+          :key="i",
+          style="cursor:pointer"
           )
-        g.quadro(
-          @mousedown.stop.prevent="playChord(note.name, qual, j)", 
-          @touchstart.stop.prevent="playChord(note.name, qual, j)", 
-          @mouseleave="stopChord(note.name, qual, j)", 
-          @mouseup="stopChord(note.name, qual, j)", 
-          @touchend="stopChord(note.name, qual, j)", 
-          @touchcancel="stopChord(note.name, qual, j)"
-          v-for="(deg, j) in chordShapes[qual + (state.seventh ? '7' : '')]"
-          :key="j"
-          )
-          svg-ring.transition(
+          svg-ring(
             :cx="50"
             :cy="50"
-            :from="(i - 1) / 12 * 360 + 15 + 15 * (j % 2)"
-            :to="(i) / 12 * 360 + 15 * (j % 2)"
-            :radius="40 - 12 * getRadius(qual) - 5 * (j > 1 ? 0 : 1)"
-            :thickness="5"
-            :op="Math.abs(tonic - i) == 11 || Math.abs(tonic - i) % 12 <= 1 ? midi.activeChroma[(note.pitch + deg) % 12] == 1 ? .7 : .3 : midi.activeChroma[(note.pitch + deg) % 12] == 1 ? .2 : 0.1"
-            :fill="Math.abs(tonic - i) == 11 || Math.abs(tonic - i) % 12 <= 1 ? noteColor(note.pitch + deg, 5) : noteColor(note.pitch + deg, 5, 1)"
+            :from="(i - 1) / 12 * 360 + 15"
+            :to="(i) / 12 * 360 + 15"
+            :radius="40 - 12 * getRadius(qual)"
+            :thickness="10"
+            :op="Math.abs(tonic - i) == 11 || Math.abs(tonic - i) % 12 <= 1 ? 0.8 : 0.1"
+            :fill="Math.abs(tonic - i) == 11 || Math.abs(tonic - i) % 12 <= 1 ? noteColor(note.pitch) : noteColor(note.pitch, 2, 1)"
             )
-        circle.transition(
-          :cx="getCircleCoord(i, 12, 42 - getRadius(qual) * 26).x",
-          :cy="getCircleCoord(i, 12, 42 - getRadius(qual) * 26).y",
-          :r="2"
-          :fill="noteColor(note.pitch, 4, 1, 1)"
-          class="opacity-20 hover-opacity-80"
-          @click="tonic = i; scaleType = qual"
-          )
-        g(
-          v-if="state.main"
-          @mousedown="playChord(note.name, qual)", 
-          @touchstart="playChord(note.name, qual)", 
-          @mouseleave="stopChord(note.name, qual)", 
-          @mouseup="stopChord(note.name, qual)", 
-          @touchend="stopChord(note.name, qual)", 
-          @touchcancel="stopChord(note.name, qual)"
-          )
-          circle.note.opacity-80.hover-opacity-100(
-            style="transition: all 300ms ease-out;transform-box: fill-box; transform-origin: center center;"
-            :cx="getCircleCoord(i, 12, 35 - getRadius(qual) * 12).x",
-            :cy="getCircleCoord(i, 12, 35 - getRadius(qual) * 12).y",
-            r="5",
-            :fill="Math.abs(tonic - i) == 11 || Math.abs(tonic - i) % 12 <= 1 ? noteColor(note.pitch, 4) : noteColor(note.pitch, 5, 1, 0.5)",
-          )
-        text.pointer-events-none(
-          style="user-select:none;transition:all 300ms ease"
-          :fill="colord(noteColor(note.pitch, 4)).isDark() ? 'white' : 'white'"
-          font-size="3px"
-          text-anchor="middle",
-          dominant-baseline="middle"
-          :x="getCircleCoord(i, 12, 35 - getRadius(qual) * 12).x",
-          :y="getCircleCoord(i, 12, 35 - getRadius(qual) * 12).y + 0.5",
-        ) {{ note.name }}{{ getChordType(qual) }}
+          g.quadro(
+            @mouseenter="state.pressed && playChord(note.name, qual, j)"
+            @mousedown.stop.prevent="state.pressed = true; playChord(note.name, qual, j)", 
+            @touchstart.stop.prevent="state.pressed = true; playChord(note.name, qual, j)", 
+            @mouseleave="stopChord(note.name, qual, j)", 
+            @mouseup="state.pressed = false; stopChord(note.name, qual, j)", 
+            @touchend="state.pressed = false; stopChord(note.name, qual, j)", 
+            @touchcancel="state.pressed = false; stopChord(note.name, qual, j)"
+            v-for="(deg, j) in chordShapes[qual + (state.seventh ? '7' : '')]"
+            :key="j"
+            )
+            svg-ring.transition(
+              :cx="50"
+              :cy="50"
+              :from="(i - 1) / 12 * 360 + 15 + 15 * (j % 2)"
+              :to="(i) / 12 * 360 + 15 * (j % 2)"
+              :radius="40 - 12 * getRadius(qual) - 5 * (j > 1 ? 0 : 1)"
+              :thickness="5"
+              :op="Math.abs(tonic - i) == 11 || Math.abs(tonic - i) % 12 <= 1 ? midi.activeChroma[(note.pitch + deg) % 12] == 1 ? .7 : .3 : midi.activeChroma[(note.pitch + deg) % 12] == 1 ? .2 : 0.1"
+              :fill="Math.abs(tonic - i) == 11 || Math.abs(tonic - i) % 12 <= 1 ? noteColor(note.pitch + deg, 5) : noteColor(note.pitch + deg, 5, 1)"
+              )
+          circle.transition(
+            :cx="getCircleCoord(i, 12, 42 - getRadius(qual) * 26).x",
+            :cy="getCircleCoord(i, 12, 42 - getRadius(qual) * 26).y",
+            :r="2"
+            :fill="noteColor(note.pitch, 4, 1, 1)"
+            class="opacity-20 hover-opacity-80"
+            @click="tonic = i; scaleType = qual"
+            )
+          g(
+            v-if="state.main"
+            @mousedown="playChord(note.name, qual)", 
+            @touchstart="playChord(note.name, qual)", 
+            @mouseleave="stopChord(note.name, qual)", 
+            @mouseenter="state.pressed && playChord(note.name, qual)"
+            @mouseup="stopChord(note.name, qual)", 
+            @touchend="stopChord(note.name, qual)", 
+            @touchcancel="stopChord(note.name, qual)"
+            )
+            circle.note.opacity-80.hover-opacity-100(
+              style="transition: all 300ms ease-out;transform-box: fill-box; transform-origin: center center;"
+              :cx="getCircleCoord(i, 12, 35 - getRadius(qual) * 12).x",
+              :cy="getCircleCoord(i, 12, 35 - getRadius(qual) * 12).y",
+              r="5",
+              :fill="Math.abs(tonic - i) == 11 || Math.abs(tonic - i) % 12 <= 1 ? noteColor(note.pitch, 4) : noteColor(note.pitch, 5, 1, 0.5)",
+            )
+          text.pointer-events-none(
+            style="user-select:none;transition:all 300ms ease"
+            :fill="colord(noteColor(note.pitch, 4)).isDark() ? 'white' : 'white'"
+            font-size="3px"
+            text-anchor="middle",
+            dominant-baseline="middle"
+            :x="getCircleCoord(i, 12, 35 - getRadius(qual) * 12).x",
+            :y="getCircleCoord(i, 12, 35 - getRadius(qual) * 12).y + 0.5",
+          ) {{ note.name }}{{ getChordType(qual) }}
 
     g.transition-all.duration-300.ease-out(
       ref="selector"

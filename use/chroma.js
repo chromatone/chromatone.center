@@ -65,7 +65,7 @@ export function playNote(name) {
         const midiNote = Note.midi(note)
         playKey(note.slice(0, -1), parseInt(note.slice(-1)) - 4, false, 0.5, 0.5)
         midiPlay(midiNote, {
-          attack: 2
+          attack: 0.9
         })
       }, 0)
 
@@ -75,7 +75,7 @@ export function playNote(name) {
       const midiNote = Note.midi(name)
       playKey(name.slice(0, -1), parseInt(name.slice(-1)) - 4, false, 1, 0.5)
       midiPlay(midiNote, {
-        attack: 2
+        attack: 0.9
       })
     }, 0)
   }

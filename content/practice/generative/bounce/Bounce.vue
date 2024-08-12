@@ -1,5 +1,5 @@
 <script setup>
-import { ref, reactive, onMounted, watch, computed, watchEffect } from 'vue';
+import { ref, reactive, onMounted, watch, computed } from 'vue';
 import { useRafFn, useResizeObserver, useTimestamp } from '@vueuse/core';
 import { setTimeout } from 'worker-timers';
 
@@ -33,26 +33,40 @@ function dragShift(ev) {
   shift.value += (ev.delta[0] / 100) - (ev.delta[1] / 100)
 }
 
-watchEffect(() => {
-  nodes.length = 0
-  for (let node = 0; node < notes.value.length; node++) {
-    const nod = {
-      x: (node + 1) / (notes.value.length + 2),
-      y: Math.abs(Math.sin(Math.PI / 2 + Math.PI * tempo.ticks / (192 * 4 + shift.value * node * 8))),
-      note: notes.value[node],
-      midi: Note.midi(notes.value[node]),
-    }
-
-    if (nod.y < 0.02) {
-      playNote(nod.note)
-    }
-
-    nodes.push(nod)
-  }
-
-})
+const mutes = reactive([])
 
 const active = reactive({})
+
+// Reuse this object to avoid creating new objects in the loop
+const nodeObject = {
+  x: 0,
+  y: 0,
+  note: '',
+  midi: 0,
+}
+
+// Convert watchEffect to computed property
+const computedNodes = computed(() => {
+  const result = []
+  for (let node = 0; node < notes.value.length; node++) {
+    nodeObject.x = (node + 1) / (notes.value.length + 2)
+    nodeObject.y = Math.abs(Math.sin(Math.PI / 2 + Math.PI * tempo.ticks / (192 * 4 + shift.value * node * 8)))
+    nodeObject.note = notes.value[node]
+    nodeObject.midi = Note.midi(notes.value[node])
+
+    if (nodeObject.y < 0.02 && !mutes[node]) {
+      playNote(nodeObject.note)
+    }
+
+    result.push({ ...nodeObject })
+  }
+  return result
+})
+
+// Update nodes reactively based on computedNodes
+watch(computedNodes, (newNodes) => {
+  nodes.splice(0, nodes.length, ...newNodes)
+})
 
 function playNote(note) {
   setTimeout(() => {
@@ -69,6 +83,10 @@ function playNote(note) {
       midiStop(midiNote)
     }, 120);
   }, 2)
+}
+
+function toggleMute(index) {
+  mutes[index] = !mutes[index]
 }
 
 </script>
@@ -93,24 +111,34 @@ svg#bounce.select-none.min-h-100svh.min-w-full(
 
   rect(:width="box.w" :height="box.h" stroke="white" fill="#2222")
 
-  g(v-for="(node, b) in nodes" :key="node")
-    rect.op-80.transition(
+  g(v-for="(node, b) in nodes" :key="b")
+    rect.op-80.transition-fill.duration-200(
+      stroke-width="0"
+      :x="node.x * box.w" 
+      :y="100"
+      :width="box.w / (notes.length + 2) - 10"
+      :height="box.h - 200"
+      :rx="box.w / (notes.length * 8)"
+      :fill="pitchColor(node.midi + 3, 4, undefined, active[node.note] ? 0.9 : mutes[b] ? 0 : 0.2)"
+      )
+    rect.op-80.transition.cursor-pointer(
       stroke-width="1"
+      @click="toggleMute(b)"
       :stroke="pitchColor(noteNames[globalScale.pcs[b % globalScale.pcs.length]], 5, 1, 0.5)"
       :x="node.x * box.w" 
       :y="box.h - 100" :y2="box.h - 100"
       :width="box.w / (notes.length + 2) - 10"
       :height="40"
-      rx="2"
-      :fill="active[node.note] ? pitchColor(node.midi + 3, 4) : 'transparent'"
+      :rx="box.w / (notes.length * 8)"
+      :fill="active[node.note] ? pitchColor(node.midi + 3, 4) : mutes[b] ? pitchColor(node.midi + 3, 3, 0, 0.2) : 'transparent'"
       )
   g(
-    v-for="(node, b) in nodes" :key="node"
+    v-for="(node, b) in nodes" :key="b"
     :transform="`translate(${box.w / (notes.length + 4) / 2} 0)`"
     )    
     line.op-20(
       :transform="`translate(${node.x * box.w} 0)`"
-      :y1="box.h / 3 - 100"
+      :y1="100"
       :y2="box.h - 100"
       stroke="currentColor"
       )
@@ -119,18 +147,18 @@ svg#bounce.select-none.min-h-100svh.min-w-full(
       :stroke="pitchColor(noteNames[globalScale.pcs[b % globalScale.pcs.length]], 5)"
       v-if="b > 0"
       :x1="nodes[b - 1].x * box.w"
-      :y1="-nodes[b - 1].y * box.h / 1.5 + box.h - 100"
+      :y1="box.h - 100 - nodes[b - 1].y * (box.h - 200)"
       :x2="node.x * box.w"
-      :y2="-node.y * box.h / 1.5 + box.h - 100"
+      :y2="box.h - 100 - node.y * (box.h - 200)"
       )
   g(
-    v-for="(node, b) in nodes" :key="node"
+    v-for="(node, b) in nodes" :key="b"
     :transform="`translate(${box.w / (notes.length + 4) / 2} 0)`"
     )
     circle(
       :cx="node.x * box.w" 
-      :cy="-node.y * box.h / 1.5 + box.h - 100" 
+      :cy="box.h - 100 - node.y * (box.h - 200)" 
       :r="8" 
-      :fill="pitchColor(noteNames[globalScale.pcs[b % globalScale.pcs.length]], 5)")
+      :fill="pitchColor(noteNames[globalScale.pcs[b % globalScale.pcs.length]], 5, mutes[b] ? 0 : 1)")
 
 </template>

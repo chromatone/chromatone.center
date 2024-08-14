@@ -34,7 +34,7 @@ function initAudioRefs(audio, params, controls, cv, setters) {
 }
 
 function updateParams(controls, setters, audio) {
-  Object.keys(controls).forEach(function (key) {
+  Object.keys(controls).forEach((key) => {
     if (setters[key] && audio.initiated) {
       setters[key]({ value: controls[key] });
     }

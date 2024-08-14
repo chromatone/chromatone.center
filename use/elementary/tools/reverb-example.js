@@ -1,4 +1,4 @@
-import { NodeRepr_t, el } from '@elemaudio/core';
+import { el } from '@elemaudio/core';
 
 const ctx = new (window.AudioContext || window.webkitAudioContext)();
 

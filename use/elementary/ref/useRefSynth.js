@@ -8,6 +8,7 @@ import { useElementary, layers } from './useElementary';
 
 import params from "./params.json"
 import { useStorage } from '@vueuse/core';
+import { hallReverb } from './useReverb';
 
 export const synthEnabled = useStorage('el-synth-enabled', true);
 
@@ -42,9 +43,21 @@ export function useRefSynth(count = 12) {
   });
 
   function createSynthSignal() {
-    const poly = createPoly();
-    return pingPong(el.scope({ name: 'synth', size: 512 }, poly));
+    const poly = el.scope({ name: 'synth', size: 512 }, createPoly());
+    const [reverbL, reverbR] = hallReverb(
+      'polyRev',
+      poly,
+      cv['fx:decay'],
+      undefined,
+      undefined,
+      el.div(cv['fx:bpm'], 60)
+    );
+
+    return pingPong(el.add(poly, reverbL), el.add(poly, reverbR));
   }
+
+  // "fx:reverb": { "value": 0.9, "min": 0, "max": 1, "step": 0.01 },
+
 
   function createPoly() {
     return el.tanh(el.mul(
@@ -134,9 +147,9 @@ export function useRefSynth(count = 12) {
     return el.tanh(el.mul(cv['noise:gain'], envelope, lowpass))
   }
 
-  function pingPong(input) {
+  function pingPong(left, right) {
     return [0, 1].map(i => el.add(
-      input,
+      i ? right || left : left,
       el.mul(
         cv['fx:pingPong'],
         el.delay(
@@ -146,7 +159,7 @@ export function useRefSynth(count = 12) {
             el.add(1, el.mul(i === 0 ? -.5 : .5, cv['fx:shift']))
           )),
           cv['fx:feedback'],
-          input
+          i ? right || left : left,
         )
       )
     ));

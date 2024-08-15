@@ -220,7 +220,7 @@ function calculateAndLogCollisionForce(pair) {
     }
 
     const a = 1; // Controls the steepness of the curve
-    const b = 14; // Controls the midpoint of the curve
+    const b = 8; // Controls the midpoint of the curve
 
     const normalizedForce = sigmoid(logForce, a, b);
 

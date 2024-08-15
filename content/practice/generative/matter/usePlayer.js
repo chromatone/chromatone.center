@@ -47,7 +47,7 @@ export function usePlayer() {
     bodyA: player,
     bodyB: engineBody,
     stiffness: 0.5,
-    length: 1,
+    length: 2,
     render: {
       visible: false,
     },

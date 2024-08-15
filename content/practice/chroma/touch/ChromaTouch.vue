@@ -1,16 +1,16 @@
 <script setup>
-import { noteColor } from '#/use/colors'
 import { computed, nextTick, reactive, ref, watch } from 'vue';
 import { notes } from '#/use/theory';
 import { useData } from 'vitepress'
 
-import { midi, rotateArray, playKey, globalScale, midiAttack, midiRelease } from '#/use';
+import { midi, playKey, midiAttack, midiRelease } from '#/use';
+import ChromaTouchSector from './ChromaTouchSector.vue';
 
 const { isDark } = useData()
 
 const octaves = ref(4)
-const startOctave = ref(2)
-const box = { pad: 0.5, r: 50 }
+const startOctave = ref(1)
+const box = { pad: 2, r: 50 }
 const svg = ref()
 
 const touches = reactive({})
@@ -65,7 +65,6 @@ watch(voices, (vs, prev) => {
     if (vs[v]?.num != prev[v]?.num) {
       playKey(notes[vs[v]?.pitch], vs[v]?.octave - startOctave.value + (vs[v]?.pitch >= 3 ? 1 : 0))
       midiAttack({ number: vs[v]?.num })
-      // synthAttack(Frequency(vs[v]?.num, 'midi').toFrequency())
     }
   }
   nextTick(() => {
@@ -73,7 +72,6 @@ watch(voices, (vs, prev) => {
       if (prev[p]?.num != vs[p]?.num) {
         playKey(notes[prev[p]?.pitch], prev[p]?.octave - startOctave.value + (prev[p]?.pitch >= 3 ? 1 : 0), true)
         midiRelease({ number: prev[p]?.num })
-        // synthRelease(Frequency(prev[p]?.num, 'midi').toFrequency())
       }
     }
   })
@@ -89,7 +87,7 @@ watch(voices, (vs, prev) => {
     ref="svg"
     version="1.1",
     baseProfile="full",
-    :viewBox="`${-box.r -box.pad} ${-box.r - box.pad} ${box.r*2 +2*box.pad} ${box.r*2 +2*box.pad}`",
+    :viewBox="`${-box.r - box.pad} ${-box.r - box.pad} ${box.r * 2 + 2 * box.pad} ${box.r * 2 + 2 * box.pad}`",
     xmlns="http://www.w3.org/2000/svg",
     style="touch-action:none; -webkit-user-select: none !important;  -webkit-touch-callout: none;"
     font-family="Commissioner, sans-serif"
@@ -106,23 +104,12 @@ watch(voices, (vs, prev) => {
     @mouseleave="handleMouse"
     )
     g.octaves
-      g.octave.op-90(v-for="(octave,oct) in octaves" :key="octave")
+      g.octave.op-90(v-for="(_, octave) in octaves" :key="octave")
+        g(v-for="(note, n) in notes" :key="note")
+          ChromaTouchSector(:n :note :octave :octaves :start-octave :size="box.r")
 
-        g(v-for="(note,n) in notes" :key="note")
-          SvgRing(
-            :cx="0"
-            :cy="0"
-            :radius="box.r - oct*(box.r/octaves)"
-            :thickness="box.r/octaves"
-            :from="n*30-15"
-            :to="(n+1)*30-15"
-            :fill="noteColor(n,oct+startOctave,rotateArray(globalScale.chroma, -globalScale.tonic)[n]==1 ? 1 : 0.5,midi.activeNotes[(n+((oct+startOctave+1)*12)+9)] ? 1: 0.8)"
-            ) 
-            text.fill-black.text-4px(
-              :style="{fontWeight: rotateArray(globalScale.chroma, -globalScale.tonic)[n]==1  ? 'bold' : 'normal', fontSize: globalScale.tonic == n ? '8px' : '4px'}"
-              y="1" v-if="oct==0") {{ note }}
       g.touches
-        g.touch(v-for="(touch,t) in touches" :key="t")
+        g.touch(v-for="(touch, t) in touches" :key="t")
           line(
             stroke-linecap="round"
             :stroke="`hsl(${touch.angle}deg, 50%,50%)`"
@@ -131,11 +118,10 @@ watch(voices, (vs, prev) => {
           g(:transform="`translate(${touch.x} ${touch.y})`")
             circle(
               r="2"
-              :fill="isDark ? '#fff3': '#3333'"
+              :fill="isDark ? '#fff3' : '#3333'"
               )
+
     text.fill-black.text-6px {{ midi?.guessChords?.[0] }}
-chroma-keys.max-w-100.mt-10(v-model:pitch="globalScale.tonic")
-  jam-scale.min-w-full
 </template>
 
 <style lang="postcss" scoped>

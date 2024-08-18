@@ -1,5 +1,5 @@
 <script setup>
-import { cleanLink } from '../../../pages/index'
+import { cleanLink } from '../../../theme/pages'
 const props = defineProps(['parents'])
 </script>
 
@@ -12,4 +12,3 @@ const props = defineProps(['parents'])
     :href="cleanLink(page.url)") 
     span.font-normal {{ page?.frontmatter?.title }}
 </template>
-  

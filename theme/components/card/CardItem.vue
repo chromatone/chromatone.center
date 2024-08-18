@@ -1,7 +1,7 @@
 <script setup>
 import { useData, useRoute } from 'vitepress'
 import { data } from '../../../content/pages.data'
-import { cleanLink, useChildren, usePage } from '../../../pages/index'
+import { cleanLink, useChildren, usePage } from '../../../theme/pages'
 
 const props = defineProps({
   item: Object,
@@ -14,7 +14,7 @@ const children = useChildren({ path: props.item?.url }, data)
 <template lang="pug">
 .crd.border-l-6.overflow-hidden(
   :title="item.lastModified",
-  :style="{borderColor: color}")
+  :style="{ borderColor: color }")
   a.container.no-underline(
     :href="item.url" 
     :class="{ 'pt-72': item?.frontmatter?.cover }")

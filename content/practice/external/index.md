@@ -6,7 +6,7 @@ date: 2018-09-08
 ---
 
 <script setup>
-import { data } from '#/data/tools.data'
+import { data } from './tools.data'
 </script>
 
 <ToolsList :data="data" />

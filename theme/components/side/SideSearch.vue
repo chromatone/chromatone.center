@@ -3,7 +3,7 @@ import { onClickOutside } from "@vueuse/core";
 import Fuse from "fuse.js";
 import { computed, ref } from "vue";
 import { data } from '../../../content/pages.data'
-import { cleanLink } from '../../../pages/index'
+import { cleanLink } from '../../../theme/pages'
 
 const fuse = new Fuse(data, {
   includeScore: true,

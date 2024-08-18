@@ -3,7 +3,7 @@ import fs from "fs";
 import path from "path";
 import sharp from "sharp";
 
-import { cleanLink } from "./";
+import { cleanLink } from "../theme/pages";
 
 export default function (
 	{

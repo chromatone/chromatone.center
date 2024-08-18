@@ -1,4 +1,4 @@
-import { useItems } from "./index"
+import { useItems } from "../../data"
 
 export default {
   async load() {
@@ -6,7 +6,7 @@ export default {
       sort: ['title'],
       filter: {
         type: {
-          _eq: 'tool'
+          _eq: 'resource'
         }
       }
     })

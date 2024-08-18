@@ -18,14 +18,12 @@ import 'floating-vue/dist/style.css'
 const theme = {
   Layout,
   NotFound,
-  //@ts-expect-error
   async enhanceApp({ app }) {
 
     app.use(FloatingVue)
     app.use(GesturePlugin);
 
     if (!import.meta.env.SSR) {
-      //@ts-expect-error
       const glsl = await import('vue-glsl')
       app.use(glsl.default);
     }

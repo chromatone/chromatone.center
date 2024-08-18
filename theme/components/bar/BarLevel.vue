@@ -4,7 +4,7 @@ import { lchToHsl } from "#/use/colors";
 
 import { useRoute } from 'vitepress'
 import { data } from '../../../content/pages.data'
-import { cleanLink, usePages } from '../../../pages/index'
+import { cleanLink, usePages } from '../../../theme/pages'
 
 
 const route = useRoute();

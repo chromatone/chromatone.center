@@ -3,7 +3,7 @@ import { onClickOutside, onKeyStroke, useFocus } from "@vueuse/core";
 import Fuse from "fuse.js";
 import { computed, nextTick, onMounted, ref, watch } from "vue";
 import { data } from '../../../content/pages.data'
-import { cleanLink } from '../../../pages/index'
+import { cleanLink } from '../../../theme/pages'
 import { useRouter } from "vitepress";
 
 

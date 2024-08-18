@@ -1,7 +1,7 @@
 <script setup>
 import { lchToHsl } from '#/use/'
 import { computed, reactive } from 'vue';
-import { cleanLink } from '../../../pages/index'
+import { cleanLink } from '../../../theme/pages'
 
 const props = defineProps(['parents', 'siblings'])
 

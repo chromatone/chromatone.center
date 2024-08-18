@@ -4,7 +4,7 @@ import { lchToHsl } from "#/use/colors";
 
 import { useRoute } from 'vitepress'
 import { data } from '../../../content/pages.data'
-import { cleanLink, usePages } from '../../../pages/index'
+import { cleanLink, usePages } from '../../../theme/pages'
 
 
 const route = useRoute();
@@ -22,7 +22,7 @@ const { pages, children } = usePages({ path: props.path }, data)
 transition(name="fade")
   .flex.flex-col(
     v-show="children && children.length > 0"
-    :style="{gap: level==0 ? '1em': '0'}"
+    :style="{ gap: level == 0 ? '1em' : '0' }"
     )
 
     .level(
@@ -35,13 +35,13 @@ transition(name="fade")
         :href="cleanLink(dot.url)" 
         :id="dot?.frontmatter?.title" 
 
-        :style="{ color: level==0 ? lchToHsl(d, children.length)  : 'currentColor'}") 
-        .flex-auto(:class="{'text-xl font-bold': level==0}") {{ dot?.frontmatter?.title }}
+        :style="{ color: level == 0 ? lchToHsl(d, children.length) : 'currentColor' }") 
+        .flex-auto(:class="{ 'text-xl font-bold': level == 0 }") {{ dot?.frontmatter?.title }}
         .flex-1
         .px-1.flex.items-center(v-if="pages?.[cleanLink(dot.url)]") {{ pages?.[cleanLink(dot.url)]?.length }}
 
       .flex.flex-col(v-show="route.path.includes(cleanLink(dot.url))")
-        SideBarLevel(:path="dot.url" :level="level+1")
+        SideBarLevel(:path="dot.url" :level="level + 1")
 </template>
 
 <style lang="postcss" scoped>

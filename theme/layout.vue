@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { useRoute, useData } from "vitepress";
 import { lchToHsl } from '#/use/colors'
 import { data } from '../content/pages.data'
-import { cleanLink, usePages, usePage } from '../pages/index'
+import { cleanLink, usePages, usePage } from './pages'
 import { drawingEnabled, drawingPinned } from '../theme/composables/draw'
 import { useUrlSearchParams } from '@vueuse/core'
 

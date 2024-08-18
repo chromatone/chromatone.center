@@ -63,7 +63,7 @@ export function playNote(name) {
     name.forEach(note => {
       setTimeout(() => {
         const midiNote = Note.midi(note)
-        playKey(note.slice(0, -1), parseInt(note.slice(-1)) - 4, false, 0.5, 0.5)
+        playKey(note.slice(0, -1), parseInt(note.slice(-1)) - 4, false, 0.9, 0.5)
         midiPlay(midiNote, {
           attack: 0.9
         })

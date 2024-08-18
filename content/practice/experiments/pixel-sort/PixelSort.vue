@@ -2,17 +2,54 @@
 import { ref, watch, computed, onMounted } from 'vue'
 import { useMouseInElement } from '@vueuse/core'
 import { useClamp } from '@vueuse/math'
-import { notes, midi } from '#/use'
+import { notes, midi, globalScale } from '#/use'
+import { rgbToHsl, extractColorsFromPixels, getHueIndex } from './utils'
+import { playNote, stopNote } from '#/use'
 
 const imageUrl = ref(null)
 const scanDirection = ref('horizontal')
 const canvasElement = ref(null)
-const { elementX: x, elementY: y, isOutside } = useMouseInElement(canvasElement)
+const { elementX: x, elementY: y, isOutside, elementHeight, elementWidth } = useMouseInElement(canvasElement)
 
-const colorCount = useClamp(ref(5), 5, 7)
+const colorCount = useClamp(ref(5), 1, 7)
 const extractedColors = ref([])
 
-const LINE_WIDTH = 20
+const lineWidth = ref(20)
+
+// Function to rotate array
+function rotateArray(arr, count = 1) {
+  return [...arr.slice(count, arr.length), ...arr.slice(0, count)]
+}
+
+// Compute the current scale chroma
+const currentScaleChroma = computed(() => {
+  if (!globalScale.value || !globalScale.value.chroma) {
+    // Default to chromatic scale if globalScale is not set
+    return [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+  }
+  const chromeArray = globalScale.value.chroma.split('').map(Number)
+  return rotateArray(chromeArray, -notes.indexOf(globalScale.value.tonic || 'C'))
+})
+
+function quantizeNote(noteName, octave) {
+  const noteIndex = notes.indexOf(noteName)
+  const scaleNotes = currentScaleChroma.value.map((val, index) => val ? notes[index] : null).filter(Boolean)
+
+  if (currentScaleChroma.value[noteIndex]) {
+    return `${noteName}${octave}`
+  }
+
+  let lowerNote = noteIndex
+  let upperNote = noteIndex
+  while (!currentScaleChroma.value[lowerNote] && !currentScaleChroma.value[upperNote]) {
+    lowerNote = (lowerNote - 1 + 12) % 12
+    upperNote = (upperNote + 1) % 12
+    if (currentScaleChroma.value[lowerNote]) return `${notes[lowerNote]}${octave}`
+    if (currentScaleChroma.value[upperNote]) return `${notes[upperNote]}${octave}`
+  }
+
+  return `${noteName}${octave}` // fallback to original note if something goes wrong
+}
 
 function handleFileUpload(event) {
   const file = event.target.files[0]
@@ -23,90 +60,10 @@ function handleFileUpload(event) {
 
 function getPixelsAlongLine(ctx, x, y, direction) {
   const imageData = direction === 'horizontal'
-    ? ctx.getImageData(0, y - LINE_WIDTH / 2, ctx.canvas.width, LINE_WIDTH)
-    : ctx.getImageData(x - LINE_WIDTH / 2, 0, LINE_WIDTH, ctx.canvas.height)
+    ? ctx.getImageData(0, y * ctx.canvas.height - lineWidth.value / 2, ctx.canvas.width, lineWidth.value)
+    : ctx.getImageData(x * ctx.canvas.width - lineWidth.value / 2, 0, lineWidth.value, ctx.canvas.height)
 
   return imageData.data
-}
-
-function extractColorsFromPixels(pixels) {
-  const colorMap = new Map()
-
-  for (let i = 0; i < pixels.length; i += 4) {
-    const r = pixels[i]
-    const g = pixels[i + 1]
-    const b = pixels[i + 2]
-    const [h, s, l] = rgbToHsl(r, g, b)
-    const hueIndex = getHueIndex(h)
-    if (hueIndex !== -1) {
-      const key = hueIndex
-      if (!colorMap.has(key)) {
-        colorMap.set(key, { count: 0, s: 0, l: 0 })
-      }
-      const color = colorMap.get(key)
-      color.count++
-      color.s += s
-      color.l += l
-    }
-  }
-
-  const sortedColors = Array.from(colorMap.entries())
-    .sort((a, b) => b[1].count - a[1].count)
-    .slice(0, colorCount.value)
-    .map(([hueIndex, { count, s, l }]) => ({
-      hueIndex,
-      s: s / count,
-      l: l / count,
-      percent: (count / (pixels.length / 4)) * 100
-    }))
-
-  const totalPercent = sortedColors.reduce((sum, color) => sum + color.percent, 0)
-  return sortedColors.map(color => ({
-    ...color,
-    percent: (color.percent / totalPercent) * 100
-  }))
-}
-
-function getHueIndex(h) {
-  const hue = h * 360
-  for (let i = 0; i < 12; i++) {
-    const centerHue = i * 30
-    const lowerBound = (centerHue - 15 + 360) % 360
-    const upperBound = (centerHue + 15) % 360
-
-    if (lowerBound > upperBound) {
-      if (hue >= lowerBound || hue < upperBound) {
-        return i
-      }
-    } else if (hue >= lowerBound && hue < upperBound) {
-      return i
-    }
-  }
-  return -1
-}
-
-function rgbToHsl(r, g, b) {
-  r /= 255
-  g /= 255
-  b /= 255
-  const max = Math.max(r, g, b)
-  const min = Math.min(r, g, b)
-  let h, s, l = (max + min) / 2
-
-  if (max === min) {
-    h = s = 0
-  } else {
-    const d = max - min
-    s = l > 0.5 ? d / (2 - max - min) : d / (max + min)
-    switch (max) {
-      case r: h = (g - b) / d + (g < b ? 6 : 0); break
-      case g: h = (b - r) / d + 2; break
-      case b: h = (r - g) / d + 4; break
-    }
-    h /= 6
-  }
-
-  return [h, s, l]
 }
 
 function getColor(hueIndex, s, l) {
@@ -116,18 +73,17 @@ function getColor(hueIndex, s, l) {
 
 function getNoteWithOctave(hueIndex, l) {
   const noteName = notes[hueIndex]
-  const octave = Math.floor(l * 3) - 1 + midi.offset
-  return `${noteName}${octave}`
+  const octave = Math.floor(l * 3) - 1 + 3 + midi.offset
+  return quantizeNote(noteName, octave)
 }
 
 watch([x, y], () => {
   if (isOutside.value || !canvasElement.value) return
 
   const ctx = canvasElement.value.getContext('2d')
-  const pixels = getPixelsAlongLine(ctx, x.value, y.value, scanDirection.value)
-  extractedColors.value = extractColorsFromPixels(pixels)
+  const pixels = getPixelsAlongLine(ctx, x.value / elementWidth.value, y.value / elementHeight.value, scanDirection.value)
+  extractedColors.value = extractColorsFromPixels(pixels, colorCount.value)
 })
-
 
 watch(imageUrl, async () => {
   if (imageUrl.value) {
@@ -138,49 +94,48 @@ watch(imageUrl, async () => {
     const canvas = canvasElement.value
     const ctx = canvas.getContext('2d')
 
-    // Set canvas size while maintaining aspect ratio
-    const aspectRatio = img.width / img.height
-    const maxWidth = 600 // You can adjust this value
-    const maxHeight = 600 // You can adjust this value
-
-    if (aspectRatio > maxWidth / maxHeight) {
-      canvas.width = maxWidth
-      canvas.height = maxWidth / aspectRatio
-    } else {
-      canvas.height = maxHeight
-      canvas.width = maxHeight * aspectRatio
-    }
-
     ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
   }
 })
 
+function handleClick(ev) {
+  const noteList = extractedColors.value.map(c => getNoteWithOctave(c.hueIndex, c.l))
+  playNote(noteList)
+  setTimeout(() => {
+    stopNote(noteList)
+  }, 200)
+}
+
 </script>
 
 <template lang="pug">
-.container.mx-auto.p-4
-  .mb-4
-    label.cursor-pointer.bg-blue-500.hover-bg-blue-600.text-white.font-bold.py-2.px-4.rounded(for="fileInput") Load Image
-    input#fileInput.hidden(type="file" accept="image/*" @change="handleFileUpload")
+.container.mx-auto
+  .relative.w-90vw.h-90vh.overflow-hidden(v-if="imageUrl")
+    canvas.w-full.h-full.max-w-screen.max-h-full(ref="canvasElement" width="1200" height="1200")
 
-  .mb-4
-    label.mr-2 Scan direction:
-    select(v-model="scanDirection")
-      option(value="horizontal") Horizontal
-      option(value="vertical") Vertical
-
-  .mb-4
-    label.mr-2 Color count:
-    input(type="range" v-model="colorCount" min="5" max="7" step="1")
-    span.ml-2 {{ colorCount }}
-
-  .relative.max-w-screen.max-h-full(v-if="imageUrl")
-
-    canvas.w-full.w-100(ref="canvasElement")
-
-    .absolute.flex(:class="{ 'w-full h-5': scanDirection === 'horizontal', 'h-full w-5 flex-col': scanDirection === 'vertical' }" :style="scanDirection === 'horizontal' ? `top: ${y - 10}px` : `left: ${x - 10}px`")
+    .absolute.flex(
+      @mousedown="handleClick"
+      @touchstart="handleClick"
+      :class="{ 'w-full h-5': scanDirection === 'horizontal', 'h-full w-5 flex-col': scanDirection === 'vertical' }" :style="scanDirection === 'horizontal' ? `top: ${Math.max(0, y - lineWidth / 2)}px` : `left: ${0}px`")
       .relative.flex.items-center.justify-center(v-for="color in extractedColors" :key="color.hueIndex" :style="{ flex: `1 1 ${color.percent}%`, backgroundColor: getColor(color.hueIndex, color.s, color.l) }")
-        span.text-xs.font-bold.text-white.text-shadow {{ getNoteWithOctave(color.hueIndex, color.l) }}
+        span.text-xs.font-bold.text-white.text-shadow.p-1 {{ getNoteWithOctave(color.hueIndex, color.l) }}
+
+  .p-4.flex.flex-wrap.gap-2
+    .m-0
+      label.cursor-pointer.bg-blue-500.hover-bg-blue-600.text-white.font-bold.py-2.px-4.rounded(for="fileInput") Load Image
+      input#fileInput.hidden(type="file" accept="image/*" @change="handleFileUpload")
+
+    .m-0
+      label.mr-2 Scan direction:
+      select(v-model="scanDirection")
+        option(value="horizontal") Horizontal
+        option(value="vertical") Vertical
+
+    .m-0
+      label.mr-2 Color count:
+      input(type="range" v-model="colorCount" min="1" max="7" step="1")
+      span.ml-2 {{ colorCount }}
+
 </template>
 
 <style scoped>

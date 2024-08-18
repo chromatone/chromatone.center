@@ -1,4 +1,4 @@
-import { useItems } from "../../data"
+import { useItems } from "../../../db/database"
 
 export default {
   async load() {

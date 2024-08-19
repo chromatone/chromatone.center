@@ -1,5 +1,5 @@
 <script setup>
-import { useString } from '#/use/elementary/ref/useString.js';
+import { useString } from '#/use/elem/useString.js';
 
 
 const { controls, groups, audio, render, isRendered } = useString();

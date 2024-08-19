@@ -2,19 +2,15 @@
 import { computed } from "vue";
 import { colord } from "colord";
 
-
 import { pitchColor, useMidi } from '#/use';
-import { useRefSynth } from '#/use/elementary/ref/useRefSynth'
-import { useScope } from "#/use/elementary/ref/useScope";
-import { useFFT } from "#/use/elementary/ref/useFFT.js";
+import { useRefSynth } from '#/use/elem/useRefSynth'
+import { useScope } from "#/use/elem/useScope";
+import { useFFT } from "#/use/elem/useFFT";
 import { onKeyDown } from "@vueuse/core";
-
 
 const { controls, groups, voiceRefs: voices, stopAll, cycleNote, synthEnabled } = useRefSynth()
 
-onKeyDown('Escape', () => {
-  stopAll()
-})
+onKeyDown('Escape', () => { stopAll() })
 
 const { midi } = useMidi()
 
@@ -32,8 +28,8 @@ const scope = useScope('synth')
 <template lang="pug">
 .flex.flex-wrap.gap-4
   .border-b-2(:style="{ borderColor: color }")
-    AudioRefFFT(:fft="FFT")
-  AudioRefScope.absolute.top-8.left-0.right-0.pointer-events-none(:data="scope" )
+    ElemFFT(:fft="FFT")
+  ElemScope.absolute.top-8.left-0.right-0.pointer-events-none(:data="scope" )
 
   .flex.is-group.p-2
     button.text-button(@click="synthEnabled = !synthEnabled") {{ synthEnabled ? 'ON' : 'OFF' }}
@@ -57,7 +53,5 @@ const scope = useScope('synth')
     )
     .text-sm.uppercase.absolute.-top-4.bg-light-300.dark-bg-dark-300.p-1.rounded {{ g }}
     ControlRotary(v-for="(param, p) in group" v-model="controls[`${g}:${p}`]" :min="param.min" :max="param.max" :step="param.step" :param="p")
-
-
 
 </template>

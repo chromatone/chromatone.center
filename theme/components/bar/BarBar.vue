@@ -165,7 +165,7 @@ nav.bar
 client-only
   BarPanel(v-model="pianoOpen")
     //- synth-panel
-    audio-ref-synth
+    elem-synth
 
   BarPanel(v-model="scaleOpen")
     control-scale.w-full

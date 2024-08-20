@@ -1,14 +1,15 @@
 <script setup>
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import { colord } from "colord";
 
-import { pitchColor, useMidi } from '#/use';
-import { useRefSynth } from '#/use/elem/useRefSynth'
+import { globalScale, pitchColor, useMidi } from '#/use';
+import { useElemSynth } from '#/use/elem/useElemSynth'
 import { useScope } from "#/use/elem/useScope";
 import { useFFT } from "#/use/elem/useFFT";
 import { onKeyDown } from "@vueuse/core";
+import ControlAdsr from "../control/ControlAdsr.vue";
 
-const { controls, groups, voiceRefs: voices, stopAll, cycleNote, synthEnabled } = useRefSynth()
+const { controls, groups, voiceRefs: voices, stopAll, cycleNote, synthEnabled, params } = useElemSynth()
 
 onKeyDown('Escape', () => { stopAll() })
 
@@ -26,32 +27,61 @@ const scope = useScope('synth')
 </script>
 
 <template lang="pug">
-.flex.flex-wrap.gap-4
+.flex.flex-wrap.gap-4.relative
   .border-b-2(:style="{ borderColor: color }")
     ElemFFT(:fft="FFT")
   ElemScope.absolute.top-8.left-0.right-0.pointer-events-none(:data="scope" )
 
+  .flex.gap-2.items-center.w-full.absolute.-top-1.left-0
+    .p-2px.flex-1.rounded-xl(v-for="voice in voices" :key="voice" :style="{ backgroundColor: pitchColor(voice.midi.value - 9, 3, undefined, voice.gate.value ? 1 : 0.1) }")
+
   .flex.is-group.p-2
-    button.text-button(@click="synthEnabled = !synthEnabled") {{ synthEnabled ? 'ON' : 'OFF' }}
     button.text-button(
-      @mousedown.passive="cycleNote(69, 120)"
-      @mouseup.passive="cycleNote(69)"
-      @touchstart.prevent.stop="cycleNote(69, 120)"
-      @touchend.prevent.stop="cycleNote(69)"
-      @mouseleave="cycleNote(69)"
+      :class="{ active: synthEnabled }"
+      @click="synthEnabled = !synthEnabled")
+      .i-la-power-off
+    button.text-button(
+      :style="{ backgroundColor: pitchColor(globalScale.tonic, 5) }"
+      @mousedown.passive="cycleNote(57 + globalScale.tonic + 12 * midi.offset, 120)"
+      @mouseup.passive="cycleNote(57 + globalScale.tonic + 12 * midi.offset)"
+      @touchstart.prevent.stop="cycleNote(57 + globalScale.tonic + 12 * midi.offset, 120)"
+      @touchend.prevent.stop="cycleNote(57 + globalScale.tonic + 12 * midi.offset)"
+      @mouseleave="cycleNote(57 + globalScale.tonic + 12 * midi.offset)"
       )
-      .i-la-play
-
+      .i-la-check
+    button.text-button(@click="midi.offset--")
+      .i-la-minus
+    .text-button {{ midi.offset }}
+    button.text-button(@click="midi.offset++")
+      .i-la-plus
     button.text-button(@click="stopAll()")
-      .i-la-stop
+      .i-la-times
 
-  .grid.gap-1.p-1.grid-cols-4.items-center
-    .p-1.flex-1.rounded-xl(v-for="voice in voices" :key="voice" :style="{ backgroundColor: pitchColor(voice.midi.value - 9, 3, voice.gate.value ? 1 : 0) }")
 
-  .flex.flex-wrap.gap-2.is-group.p-2.relative(
+  .flex.flex-wrap.is-group.p-2.relative(
     v-for="(group, g) in groups" :key="group"
     )
     .text-sm.uppercase.absolute.-top-4.bg-light-300.dark-bg-dark-300.p-1.rounded {{ g }}
-    ControlRotary(v-for="(param, p) in group" v-model="controls[`${g}:${p}`]" :min="param.min" :max="param.max" :step="param.step" :param="p")
 
+    .p-0.flex.items-center.flex-1.justify-center(v-for="(param, p) in group" :key="p" :style="{ order: p == 'f-env' ? 20 : 1 }")
+      ControlRotary(
+        v-model="controls[`${g}:${p}`]" :min="param.min" :max="param.max" :step="param.step" :param="p" )
+
+
+    .p-0(v-if="g == 'osc' || g == 'noise'" style="order:5; flex: 10")
+      ControlAdsr.bg-light-400.dark-bg-dark-400.bg-op-30.dark-bg-op-30.rounded-lg(
+        title="Amplitude"
+        v-model:a="controls[`${g}:attack`]"
+        v-model:d="controls[`${g}:decay`]"
+        v-model:s="controls[`${g}:sustain`]"
+        v-model:r="controls[`${g}:release`]"
+        )
+    .p-0(v-if="g == 'osc' || g == 'noise'" style="order:20;flex: 10")
+      ControlAdsr.bg-light-400.dark-bg-dark-400.bg-op-30.dark-bg-op-30.rounded-lg(
+        title="Filter"
+        v-model:a="controls[`${g}:f-attack`]"
+        v-model:d="controls[`${g}:f-decay`]"
+        v-model:s="controls[`${g}:f-sustain`]"
+        v-model:r="controls[`${g}:f-release`]"
+        )
 </template>

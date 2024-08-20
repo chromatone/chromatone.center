@@ -1,0 +1,138 @@
+{
+	"osc:volume": { "value": 0.8, "min": 0, "max": 1, "step": 0.01 },
+	"osc:shape": { "value": 0.2, "min": 0, "max": 1, "step": 0.01 },
+	"osc:cut-off": { "value": 200, "min": 10, "max": 10000, "step": 1 },
+	"osc:cut-q": { "value": 1.1, "min": 0, "max": 5, "step": 0.01 },
+	"osc:attack": {
+		"value": 1,
+		"min": 0.1,
+		"max": 10,
+		"step": 0.1,
+		"hidden": true
+	},
+	"osc:decay": {
+		"value": 1,
+		"min": 0.1,
+		"max": 10,
+		"step": 0.1,
+		"hidden": true
+	},
+	"osc:sustain": {
+		"value": 0.5,
+		"min": 0,
+		"max": 1,
+		"step": 0.01,
+		"hidden": true
+	},
+	"osc:release": {
+		"value": 1,
+		"min": 0.1,
+		"max": 10,
+		"step": 0.1,
+		"hidden": true
+	},
+	"osc:f-env": {
+		"value": 0.5,
+		"min": 0,
+		"max": 1,
+		"step": 0.01
+	},
+	"osc:f-attack": {
+		"value": 1,
+		"min": 0.1,
+		"max": 10,
+		"step": 0.1,
+		"hidden": true
+	},
+	"osc:f-decay": {
+		"value": 1,
+		"min": 0.1,
+		"max": 10,
+		"step": 0.1,
+		"hidden": true
+	},
+	"osc:f-sustain": {
+		"value": 0.5,
+		"min": 0,
+		"max": 1,
+		"step": 0.01,
+		"hidden": true
+	},
+	"osc:f-release": {
+		"value": 1,
+		"min": 0.01,
+		"max": 10,
+		"step": 0.1,
+		"hidden": true
+	},
+
+	"noise:gain": { "value": 0.5, "min": 0, "max": 1, "step": 0.01 },
+	"noise:band-q": { "value": 50, "min": 0, "max": 10, "step": 0.1 },
+	"noise:cut-off": { "value": 300, "min": 10, "max": 10000, "step": 1 },
+	"noise:cut-q": { "value": 1.1, "min": 0, "max": 5, "step": 0.01 },
+	"noise:attack": {
+		"value": 1,
+		"min": 0.1,
+		"max": 10,
+		"step": 0.1,
+		"hidden": true
+	},
+	"noise:decay": {
+		"value": 1,
+		"min": 0.1,
+		"max": 10,
+		"step": 0.1,
+		"hidden": true
+	},
+	"noise:sustain": {
+		"value": 0.5,
+		"min": 0,
+		"max": 1,
+		"step": 0.01,
+		"hidden": true
+	},
+	"noise:release": {
+		"value": 1,
+		"min": 0.1,
+		"max": 10,
+		"step": 0.1,
+		"hidden": true
+	},
+	"noise:f-env": { "value": 0.5, "min": 0, "max": 1, "step": 0.01 },
+	"noise:f-attack": {
+		"value": 1,
+		"min": 0.001,
+		"max": 10,
+		"step": 0.01,
+		"hidden": true
+	},
+	"noise:f-decay": {
+		"value": 1,
+		"min": 0.001,
+		"max": 10,
+		"step": 0.01,
+		"hidden": true
+	},
+	"noise:f-sustain": {
+		"value": 0.5,
+		"min": 0,
+		"max": 1,
+		"step": 0.01,
+		"hidden": true
+	},
+	"noise:f-release": {
+		"value": 1,
+		"min": 0.001,
+		"max": 10,
+		"step": 0.01,
+		"hidden": true
+	},
+
+	"fx:pingPong": { "value": 0.1, "min": 0, "max": 1, "step": 0.01 },
+	"fx:feedback": { "value": 0.1, "min": 0, "max": 1, "step": 0.01 },
+	"fx:shift": { "value": 0.4, "min": 0, "max": 1, "step": 0.01 },
+
+	"fx:decay": { "min": 0, "max": 0.99, "value": 0, "step": 0.01 },
+
+	"fx:bpm": { "value": 120, "min": 10, "max": 500, "step": 1, "hidden": true }
+}

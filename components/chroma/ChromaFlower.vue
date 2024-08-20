@@ -48,7 +48,6 @@ function coord(n = 0, q = 0.5) {
 const pressed = ref()
 
 function keyPlay(pitch, event, off, velocity) {
-  pressed.value = !off
   playKey(flower.value[pitch].note, pitch >= 3 ? 0 : -1, off, velocity)
 }
 
@@ -82,7 +81,7 @@ watchThrottled(loaded, l => {
     v-tooltip.bottom="'Copy custom schema'"
     aria-label="Copy custom schema"
     @click="copy(JSON.stringify(scheme.custom))"
-    :class="{customize: copied}"
+    :class="{ customize: copied }"
     v-if="scheme.customize"
     )
     .i-la-copy.text-xl
@@ -96,7 +95,7 @@ watchThrottled(loaded, l => {
     .i-la-paste.text-xl.absolute.ml-1
     input.w-25.p-2.pl-8.rounded-xl(
       v-model="loaded" placeholder="PASTE"
-      :style="{backgroundColor: err ? 'red' : ''}"
+      :style="{ backgroundColor: err ? 'red' : '' }"
       )
 
   svg.w-full.min-w-full(
@@ -106,6 +105,11 @@ watchThrottled(loaded, l => {
     xmlns="http://www.w3.org/2000/svg",
     text-anchor="middle" 
     dominant-baseline="middle" 
+    @touchstart="pressed = true"
+    @touchend="pressed = false"
+    @mousedown="pressed = true"
+    @mouseup="pressed = false"
+    @mouseleave="pressed = false"
     )
 
     defs
@@ -138,6 +142,7 @@ watchThrottled(loaded, l => {
         g.key.cursor-pointer(
           @mousedown.passive="keyPlay(pitch, $event);"
           @mouseup.passive="keyPlay(pitch, $event, true)"
+          @mouseenter.passive="pressed && keyPlay(pitch, $event);"
           @touchstart.prevent.stop="keyPlay(pitch, $event)"
           @touchend.prevent.stop="keyPlay(pitch, $event, true)"
           @mouseleave="keyPlay(pitch, $event, true)"
@@ -156,9 +161,9 @@ watchThrottled(loaded, l => {
             g.note.select-none(
               stroke-width="4"
               stroke-linecap="round"
-              v-if="scheme.custom[pitch]!=defaultScheme[pitch]"
+              v-if="scheme.custom[pitch] != defaultScheme[pitch]"
               :transform="`translate(${note.inside.x}, ${note.inside.y})`"
-              @click="scheme.custom[pitch]=defaultScheme[pitch]"
+              @click="scheme.custom[pitch] = defaultScheme[pitch]"
               )
               circle.transition(:fill="defaultScheme[pitch]" r="20" :opacity="scheme.customize ? 1 : 0.1" )
               g(
@@ -169,7 +174,7 @@ watchThrottled(loaded, l => {
                 line(stroke="black" x1="10" y1="-10" x2="-10" y2="10")
             g.note.select-none(
               v-if="scheme.customize"
-              :transform="`translate(${note.middle.x-36}, ${note.middle.y-36})`"
+              :transform="`translate(${note.middle.x - 36}, ${note.middle.y - 36})`"
               )
               foreignObject(x="10" y="10" width="100" height="100")
                 input.h-30.w-30.rounded-xl(type="color" v-model="scheme.custom[pitch]")
@@ -184,7 +189,7 @@ watchThrottled(loaded, l => {
             g(v-if="tunr?.tuner?.initiated")
               circle(
                 style="transition: all 80ms ease-out"
-                :fill="noteColor(pitch,7,2, getAmmount(tunr.tuner.aChroma[pitch]))"
+                :fill="noteColor(pitch, 7, 2, getAmmount(tunr.tuner.aChroma[pitch]))"
                 :r="size / 12"
                 filter="url(#blur)"
                 )
@@ -205,22 +210,22 @@ watchThrottled(loaded, l => {
           transition-group(name="fade")
             line(
               v-for="(bool2, note2) in midi.activeNotes" :key="note2"
-              :x1="coord((note-9)%12, note/700+0.145).x" 
-              :y1="coord((note-9)%12, note/700 +0.145).y" 
-              :x2="coord((note2-9)%12, note2/700+0.145).x" 
-              :y2="coord((note2-9)%12, note2/700 +0.145).y" 
-              :stroke="colord(noteColor(note-9,2)).mix(noteColor(note2-9,2)).toHex()"
+              :x1="coord((note - 9) % 12, note / 700 + 0.145).x" 
+              :y1="coord((note - 9) % 12, note / 700 + 0.145).y" 
+              :x2="coord((note2 - 9) % 12, note2 / 700 + 0.145).x" 
+              :y2="coord((note2 - 9) % 12, note2 / 700 + 0.145).y" 
+              :stroke="colord(noteColor(note - 9, 2)).mix(noteColor(note2 - 9, 2)).toHex()"
               stroke-width="20"
               stroke-linecap="round"
-              :style="{filter: `drop-shadow(0px 0px 4px ${colord(noteColor(note-9,3)).mix(noteColor(note2-9,3)).alpha(0.5).toHex()}`}"
+              :style="{ filter: `drop-shadow(0px 0px 4px ${colord(noteColor(note - 9, 3)).mix(noteColor(note2 - 9, 3)).alpha(0.5).toHex()}` }"
               )
         transition-group(name="fade")
           g.note(v-for="(bool, note) in midi.activeNotes" :key="note")
             circle(
               style="transition: all 100ms ease-out"
-              :cx="coord((note-9)%12, note/700+0.145).x" 
-              :cy="coord((note-9)%12, note/700 +0.145).y" 
-              :fill="scheme.custom[(note-9)%12]"
+              :cx="coord((note - 9) % 12, note / 700 + 0.145).x" 
+              :cy="coord((note - 9) % 12, note / 700 + 0.145).y" 
+              :fill="scheme.custom[(note - 9) % 12]"
               :r="12" 
               )          
       g.controls
@@ -247,7 +252,7 @@ watchThrottled(loaded, l => {
             style="transition:all 500ms ease"
             r='32' 
             cy="0"
-            :fill="!tunr.tuner.note?.silent && tunr.tuner.initiated ? noteColor((tunr.tuner.note.value+3)%12,4) : 'transparent'")
+            :fill="!tunr.tuner.note?.silent && tunr.tuner.initiated ? noteColor((tunr.tuner.note.value + 3) % 12, 4) : 'transparent'")
           text.opacity-50.select-none(
             v-if="tunr?.tuner?.initiated"
             y="-67"
@@ -265,11 +270,11 @@ watchThrottled(loaded, l => {
             font-size="42"
             x="-25"
             y="44"
-            :class="{customize: scheme.customize}"
+            :class="{ customize: scheme.customize }"
             )
       g.chord.cursor-pointer(
-        v-tooltip.top="midi.guessChords.length>1 && 'or ' + midi.guessChords.slice(1).join(', ') || copied ? 'Copied!' : 'Click to copy'"
-        :aria-label="'Guessed chord: '+ midi.guessChords[0]"
+        v-tooltip.top="midi.guessChords.length > 1 && 'or ' + midi.guessChords.slice(1).join(', ') || copied ? 'Copied!' : 'Click to copy'"
+        :aria-label="'Guessed chord: ' + midi.guessChords[0]"
         @click="copy(midi.guessChords[0])"
         v-if="midi.guessChords[0]"
         )

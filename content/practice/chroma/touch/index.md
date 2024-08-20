@@ -14,4 +14,4 @@ const ChromaTouch = defineClientComponent(() => {
 })
 </script>
 
-<ChromaTouch  />
+<ChromaTouch class=" w-full max-w-full h-100vh"  />

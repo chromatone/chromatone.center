@@ -6,13 +6,13 @@ import { useParams } from './useParams';
 import { useSynthVoices } from './useVoices';
 import { useElementary, layers } from './useElementary';
 
-import params from "./params.json"
+import params from "./synthParams.json"
 import { useStorage } from '@vueuse/core';
 import { hallReverb } from './useReverb';
 
 export const synthEnabled = useStorage('el-synth-enabled', true);
 
-export function useRefSynth(count = 12) {
+export function useElemSynth(count = 12) {
   const { audio, render } = useElementary();
   const { controls, cv, groups } = useParams(params, 'ref');
   const { voiceRefs, cycleNote, stopAll, getVoiceParam } = useSynthVoices();
@@ -78,13 +78,18 @@ export function useRefSynth(count = 12) {
   }
 
   function createOscillator(gate, midi, vel) {
-    const envelope = el.adsr(cv["osc:attack"], cv["osc:decay"], cv["osc:sustain"], cv["osc:release"], gate);
+    const envelope = el.adsr(
+      el.div(el.mul(15, cv["osc:attack"]), cv['fx:bpm']),
+      el.div(el.mul(15, cv["osc:decay"]), cv['fx:bpm']),
+      cv["osc:sustain"],
+      el.div(el.mul(15, cv["osc:release"]), cv['fx:bpm']),
+      gate);
 
     const filterEnvelope = el.adsr(
-      cv["osc:f-attack"],
-      cv["osc:f-decay"],
+      el.div(el.mul(15, cv["osc:f-attack"]), cv['fx:bpm']),
+      el.div(el.mul(15, cv["osc:f-decay"]), cv['fx:bpm']),
       cv["osc:f-sustain"],
-      cv["osc:f-release"],
+      el.div(el.mul(15, cv["osc:f-release"]), cv['fx:bpm']),
       gate
     );
 
@@ -100,7 +105,7 @@ export function useRefSynth(count = 12) {
     );
 
     const filterCutoff = el.add(
-      el.mul(cv['osc:cut-off'], midiFrequency(midi)),
+      cv['osc:cut-off'],
       el.mul(
         el.mul(cv['osc:f-env'], 20000),
         filterEnvelope
@@ -117,13 +122,18 @@ export function useRefSynth(count = 12) {
   }
 
   function createNoise(gate, midi) {
-    const envelope = el.adsr(cv['noise:attack'], cv['noise:decay'], cv['noise:sustain'], cv['noise:release'], gate);
+    const envelope = el.adsr(
+      el.div(el.mul(15, cv["noise:attack"]), cv['fx:bpm']),
+      el.div(el.mul(15, cv["noise:decay"]), cv['fx:bpm']),
+      cv["noise:sustain"],
+      el.div(el.mul(15, cv["noise:release"]), cv['fx:bpm']),
+      gate);
 
     const filterEnvelope = el.adsr(
-      cv["noise:f-attack"],
-      cv["noise:f-decay"],
+      el.div(el.mul(15, cv["noise:f-attack"]), cv['fx:bpm']),
+      el.div(el.mul(15, cv["noise:f-decay"]), cv['fx:bpm']),
       cv["noise:f-sustain"],
-      cv["noise:f-release"],
+      el.div(el.mul(15, cv["noise:f-release"]), cv['fx:bpm']),
       gate
     )
 
@@ -131,7 +141,7 @@ export function useRefSynth(count = 12) {
     const filter = el.bandpass(midiFrequency(midi), cv['noise:band-q'], noiseSrc);
 
     const filterCutoff = el.add(
-      el.mul(cv['noise:cut-off'], midiFrequency(midi)),
+      cv['noise:cut-off'],
       el.mul(
         el.mul(cv['noise:f-env'], 20000),
         filterEnvelope
@@ -165,5 +175,5 @@ export function useRefSynth(count = 12) {
     ));
   }
 
-  return { controls, cv, groups, audio, render, voiceRefs, cycleNote, stopAll, synthEnabled };
+  return { params, controls, cv, groups, audio, render, voiceRefs, cycleNote, stopAll, synthEnabled };
 }

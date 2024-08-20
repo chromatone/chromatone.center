@@ -5,7 +5,7 @@
 
 import { noteColor } from './colors'
 import { initGetUserMedia, useAudio } from './audio'
-import { reactive, computed, watch } from 'vue'
+import { reactive, computed, watch, onMounted } from 'vue'
 import { rotateArray } from "./calculations";
 import { notes } from './theory.js'
 
@@ -34,7 +34,6 @@ export const tuner = reactive({
   span: 64,
   bufferSize: 4096,
   tempoBufferSize: 512,
-  frequencyData: null,
   running: false,
   frame: 0,
   beat: 0,
@@ -63,6 +62,23 @@ const chain = {};
 
 export function useTuner() {
   initGetUserMedia();
+
+  onMounted(() => {
+    watch(
+      () => tuner.frame,
+      () => {
+        if (!tuner.listenBeat) return;
+        if (tuner.beat > tuner.prevBeat) {
+          tuner.prevBeat = tuner.beat;
+          tuner.blink = true;
+          setTimeout(() => {
+            tuner.blink = false;
+          }, 60);
+        }
+      }
+    );
+  });
+
   return {
     init,
     tuner,
@@ -76,30 +92,8 @@ async function init() {
   const { master } = useAudio()
   chain.audioContext = master.context;
   chain.analyser = chain.audioContext.createAnalyser();
-  chain.scriptProcessor = chain.audioContext.createScriptProcessor(
-    tuner.bufferSize,
-    1,
-    1
-  );
-  chain.beatProcessor = chain.audioContext.createScriptProcessor(
-    tuner.tempoBufferSize,
-    1,
-    1
-  );
-
-  watch(
-    () => tuner.frame,
-    () => {
-      if (!tuner.listen) return;
-      if (tuner.beat > tuner.prevBeat) {
-        tuner.prevBeat = tuner.beat;
-        tuner.blink = true;
-        setTimeout(() => {
-          tuner.blink = false;
-        }, 60);
-      }
-    }
-  );
+  chain.scriptProcessor = chain.audioContext.createScriptProcessor(tuner.bufferSize, 1, 1);
+  chain.beatProcessor = chain.audioContext.createScriptProcessor(tuner.tempoBufferSize, 1, 1);
 
   const Meyda = await import('meyda')
 
@@ -109,14 +103,14 @@ async function init() {
     bufferSize: 4096,
     featureExtractors: ["chroma", "amplitudeSpectrum", "rms"],
     callback: (features) => {
-      tuner.rms = features.rms;
-      tuner.chroma = features.chroma;
-      tuner.spec = features.amplitudeSpectrum;
+      Object.assign(tuner, {
+        rms: features.rms,
+        chroma: features.chroma,
+        spec: features.amplitudeSpectrum
+      })
     },
   });
   chain.meyda.start();
-
-  tuner.frequencyData = new Uint8Array(chain.analyser.frequencyBinCount);
 
   const { default: Aubio } = await import('aubiojs/build/aubio.esm.js')
 
@@ -140,6 +134,11 @@ async function init() {
 }
 
 function start() {
+  if (typeof navigator === 'undefined' || !navigator.mediaDevices) {
+    console.warn('MediaDevices API not available');
+    return;
+  }
+
   navigator.mediaDevices
     .getUserMedia({ audio: true })
     .then(function (stream) {
@@ -147,50 +146,52 @@ function start() {
       const mediaStream = chain.audioContext
         .createMediaStreamSource(stream)
         .connect(chain.analyser);
-      // mediaStream.connect(chain.scriptProcessor)
       chain.analyser.connect(chain.scriptProcessor);
       chain.analyser.connect(chain.beatProcessor);
       chain.scriptProcessor.connect(chain.audioContext.destination);
       chain.beatProcessor.connect(chain.audioContext.destination);
-      chain.beatProcessor.addEventListener("audioprocess", (e) => {
-        if (!chain.tempoAnalyzer) return
-        const tempo = chain.tempoAnalyzer.do(e.inputBuffer.getChannelData(0));
-        if (tempo) {
-          tuner.beat++;
-          tuner.confidence = chain.tempoAnalyzer.getConfidence();
-          tuner.bpm = chain.tempoAnalyzer.getBpm();
-        }
-      });
-      chain.scriptProcessor.addEventListener("audioprocess", function (event) {
-        if (!chain.pitchDetector) return
-        const frequency = chain.pitchDetector.do(
-          event.inputBuffer.getChannelData(0)
-        );
-        tuner.frame++;
-        if (frequency) {
-          const note = getNote(frequency);
-          tuner.note = {
-            name: noteStrings[note % 12],
-            value: note,
-            cents: getCents(frequency, note),
-            octave: Math.floor(note / 12) - 1,
-            frequency: frequency,
-            color: freqColor(frequency),
-            silent: false,
-          };
-        } else {
-          tuner.note.silent = true;
-        }
-      });
+      chain.beatProcessor.addEventListener("audioprocess", handleBeatProcess);
+      chain.scriptProcessor.addEventListener("audioprocess", handleAudioProcess);
     })
     .catch(function (error) {
       console.log(error.name + ": " + error.message);
     });
 }
 
+function handleBeatProcess(e) {
+  if (!chain.tempoAnalyzer) return
+  const tempo = chain.tempoAnalyzer.do(e.inputBuffer.getChannelData(0));
+  if (tempo) {
+    tuner.beat++;
+    tuner.confidence = chain.tempoAnalyzer.getConfidence();
+    tuner.bpm = chain.tempoAnalyzer.getBpm();
+  }
+}
+
+function handleAudioProcess(event) {
+  if (!chain.pitchDetector) return
+  const frequency = chain.pitchDetector.do(
+    event.inputBuffer.getChannelData(0)
+  );
+  tuner.frame++;
+  if (frequency) {
+    const note = getNote(frequency);
+    tuner.note = {
+      name: noteStrings[note % 12],
+      value: note,
+      cents: getCents(frequency, note),
+      octave: Math.floor(note / 12) - 1,
+      frequency: frequency,
+      color: freqColor(frequency),
+      silent: false,
+    };
+  } else {
+    tuner.note.silent = true;
+  }
+}
+
 function getNote(frequency) {
-  const note = 12 * (Math.log(frequency / tuner.middleA) / Math.log(2));
-  return Math.round(note) + tuner.semitone;
+  return Math.round(12 * (Math.log(frequency / tuner.middleA) / Math.log(2))) + tuner.semitone
 }
 
 function getStandardFrequency(note) {
@@ -205,10 +206,9 @@ function getCents(frequency, note) {
 
 function freqColor(frequency) {
   const note = getRawNote(frequency);
-  if (!note) return "#333";
+  if (typeof note !== 'number') return "#333";
   const octave = Math.floor(note / 12) + 2;
-  const color = noteColor(note, octave);
-  return color;
+  return noteColor(note, octave);
 }
 
 function getRawNote(frequency) {

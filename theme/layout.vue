@@ -64,7 +64,7 @@ midi-notes
   template(v-else-if="f.layout == 'home'")
     main.home.items-center.justify-center.overflow-clip(aria-labelledby="main-title")
 
-      chroma-flower.mt-8.flex.justify-center(
+      chroma-flower.flex.justify-center(
         style="flex: 1 1 420px")
       .flex-1.p-8.gap-1.flex.flex-col.lg-scale-120.origin-left(
         style="flex: 1 1 400px"

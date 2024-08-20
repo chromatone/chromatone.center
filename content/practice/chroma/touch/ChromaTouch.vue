@@ -82,46 +82,45 @@ watch(voices, (vs, prev) => {
 </script>
 
 <template lang="pug">
-.w-full.max-w-full.h-100vh
-  svg.select-none.touch-action-none.max-h-full(
-    ref="svg"
-    version="1.1",
-    baseProfile="full",
-    :viewBox="`${-box.r - box.pad} ${-box.r - box.pad} ${box.r * 2 + 2 * box.pad} ${box.r * 2 + 2 * box.pad}`",
-    xmlns="http://www.w3.org/2000/svg",
-    style="touch-action:none; -webkit-user-select: none !important;  -webkit-touch-callout: none;"
-    font-family="Commissioner, sans-serif"
-    text-anchor="middle",
-    dominant-baseline="middle"
-    @touchstart="handleTouch"
-    @touchmove="handleTouch"
-    @touchend="handleTouch"
-    @touchcancel="handleTouch"
-    @mouseenter="handleMouse"
-    @mousemove="handleMouse"
-    @mousedown="handleMouse"
-    @mouseup="handleMouse"
-    @mouseleave="handleMouse"
-    )
-    g.octaves
-      g.octave.op-90(v-for="(_, octave) in octaves" :key="octave")
-        g(v-for="(note, n) in notes" :key="note")
-          ChromaTouchSector(:n :note :octave :octaves :start-octave :size="box.r")
+svg.select-none.touch-action-none.max-h-full(
+  ref="svg"
+  version="1.1",
+  baseProfile="full",
+  :viewBox="`${-box.r - box.pad} ${-box.r - box.pad} ${box.r * 2 + 2 * box.pad} ${box.r * 2 + 2 * box.pad}`",
+  xmlns="http://www.w3.org/2000/svg",
+  style="touch-action:none; -webkit-user-select: none !important;  -webkit-touch-callout: none;"
+  font-family="Commissioner, sans-serif"
+  text-anchor="middle",
+  dominant-baseline="middle"
+  @touchstart="handleTouch"
+  @touchmove="handleTouch"
+  @touchend="handleTouch"
+  @touchcancel="handleTouch"
+  @mouseenter="handleMouse"
+  @mousemove="handleMouse"
+  @mousedown="handleMouse"
+  @mouseup="handleMouse"
+  @mouseleave="handleMouse"
+  )
+  g.octaves
+    g.octave.op-90(v-for="(_, octave) in octaves" :key="octave")
+      g(v-for="(note, n) in notes" :key="note")
+        ChromaTouchSector(:n :note :octave :octaves :start-octave :size="box.r")
 
-      g.touches
-        g.touch(v-for="(touch, t) in touches" :key="t")
-          line(
-            stroke-linecap="round"
-            :stroke="`hsl(${touch.angle}deg, 50%,50%)`"
-            :x2="touch.x" :y2="touch.y"
+    g.touches
+      g.touch(v-for="(touch, t) in touches" :key="t")
+        line(
+          stroke-linecap="round"
+          :stroke="`hsl(${touch.angle}deg, 50%,50%)`"
+          :x2="touch.x" :y2="touch.y"
+          )
+        g(:transform="`translate(${touch.x} ${touch.y})`")
+          circle(
+            r="2"
+            :fill="isDark ? '#fff3' : '#3333'"
             )
-          g(:transform="`translate(${touch.x} ${touch.y})`")
-            circle(
-              r="2"
-              :fill="isDark ? '#fff3' : '#3333'"
-              )
 
-    text.fill-black.text-6px {{ midi?.guessChords?.[0] }}
+  text.fill-black.text-6px {{ midi?.guessChords?.[0] }}
 </template>
 
 <style lang="postcss" scoped>

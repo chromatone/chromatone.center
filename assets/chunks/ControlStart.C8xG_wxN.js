@@ -1,1 +1,0 @@
-import{x as e,y as o,J as n,ac as s,q as a}from"./framework.Bi_5INRF.js";const c={class:"button"};function r(t,d){return e(),o("button",c,[n(t.$slots,"default",{},()=>[s("Start")],!0)])}const _={},u=a(_,[["render",r],["__scopeId","data-v-fb351d24"]]);export{u as _};

@@ -3,6 +3,8 @@ title: Draw on a canvas
 description: Atrament experiment
 date: 2024-08-21
 layout: app
+links:
+  - https://github.com/jakubfiala/atrament
 ---
 
 <script setup>

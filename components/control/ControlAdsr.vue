@@ -1,6 +1,7 @@
 <script setup>
 import { useGesture } from '@vueuse/gesture';
 import { computed, ref } from 'vue';
+import { roundCorners } from 'svg-round-corners'
 
 const props = defineProps({
   width: { type: Number, default: 60 },
@@ -14,13 +15,13 @@ const d = defineModel('d', { type: Number, default: 1 })
 const s = defineModel('s', { type: Number, default: 0.7 })
 const r = defineModel('r', { type: Number, default: 1 })
 
-const path = computed(() => `
+const path = computed(() => roundCorners(`
 M 0 ${props.height}
 l ${(props.width / 4) * a.value / 10} ${-props.height}
 l ${(props.width / 4) * d.value / 10} ${props.height * (1 - s.value)}
 L ${props.width - (props.width / 2) * (r.value / 10)} ${props.height * (1 - s.value)}
 L ${props.width} ${props.height}
-`)
+`, 2, 2).path)
 
 const attPan = ref();
 const decPan = ref();

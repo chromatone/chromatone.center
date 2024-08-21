@@ -75,7 +75,7 @@ export default defineConfig(
       }
     },
     ssr: {
-      noExternal: ['audiomotion-analyzer', 'fraction.js', 'ol', 'cobe', '@gun-vue/composables', 'drauu', '@tonejs/midi', 'midi-writer-js', 'webchuck']
+      noExternal: ['audiomotion-analyzer', 'fraction.js', 'ol', 'cobe', '@gun-vue/composables', 'drauu', '@tonejs/midi', 'midi-writer-js', 'webchuck', 'svg-round-corners']
     },
     build: {
       chunkSizeWarningLimit: 100000,

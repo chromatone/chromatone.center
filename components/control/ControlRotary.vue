@@ -52,7 +52,7 @@ useGesture({
   onDrag: handleInteraction,
   onWheel: handleInteraction
 }, {
-  drag: { preventWindowScrollY: true },
+  // drag: { preventWindowScrollY: true },
   wheel: { preventWindowScrollY: true },
   eventOptions: { capture: false, passive: false },
   domTarget: knob

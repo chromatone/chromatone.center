@@ -33,7 +33,7 @@ const susInt = interactionFactory(s, 0.01)
 const relInt = interactionFactory(r)
 
 const gestureOptions = {
-  drag: { preventWindowScrollY: true },
+  // drag: { preventWindowScrollY: true },
   wheel: { preventWindowScrollY: true },
   eventOptions: { capture: false, passive: false },
 }
@@ -79,14 +79,14 @@ function interactionFactory(param, scale = .1) {
     active.value = dragging || wheeling;
     if (!active.value) return
     const diff = shiftKey ? 12 : event.type === 'wheel' ? -8 : 2;
-    let step = y / diff
+    let step = y / diff - x / diff
     param.value += -step * scale
   }
 }
 </script>
 
 <template lang='pug'>
-svg.min-w-36.max-w-45.m-1(
+svg.min-w-45.max-w-55.m-1.touch-none(
   ref="knob"
   version="1.1",
   baseProfile="full",

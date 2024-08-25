@@ -29,14 +29,7 @@ const capitalize = s => s && s[0].toUpperCase() + s.slice(1)
     select.flex-1.min-w-2.p-1.bg-light-500.dark-bg-dark-500(v-model="instrument")
       option( v-for="name in getSoundfontNames()" :key="name" :value="name") {{ capitalize(name.replaceAll('_', ' ')) }} {{ cached[name] ? '✔' : '' }}
 
-
-    .flex.text-lg
-      .i-la-spinner.animate-pulse(v-if="!loaded")
-      .i-la-check(v-else) Loaded!
-
-
-
-    ControlRotary.scale-70.-m-5(v-model="volume" :max="1" :step="0.01" param="VOL")
+    ControlRotary.scale-80.-m-4(v-model="volume" :max="1" :step="0.01" param="VOL")
 
 
 </template>

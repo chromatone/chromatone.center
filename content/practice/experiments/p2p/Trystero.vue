@@ -1,19 +1,24 @@
 <script setup>
 import { joinRoom } from 'trystero'
-const room = joinRoom({ appId: 'trystero-lounge' }, '101')
+import { onMounted } from 'vue';
 
-room.onPeerJoin(console.log)
-room.onPeerLeave(console.log)
+onMounted(() => {
 
-const [sendMove, getMove] = room.makeAction('mouseMove')
-const [sendClick, getClick] = room.makeAction('click')
 
-window.addEventListener('mousemove', e => sendMove([e.clientX, e.clientY]))
-window.addEventListener('click', () => sendClick(10))
+  const room = joinRoom({ appId: 'chromatone' }, 'P2P Music Connections')
 
-getMove(([x, y], peerId) => console.log(x, y))
-getClick((fruit, peerId) => console.log(fruit))
+  room.onPeerJoin(peerId => console.log(`${peerId} joined`))
+  room.onPeerLeave(peerId => console.log(`${peerId} left`))
 
+  const [sendMove, getMove] = room.makeAction('mouseMove')
+  const [sendClick, getClick] = room.makeAction('click')
+
+  window.addEventListener('mousemove', e => sendMove([e.clientX, e.clientY]))
+  window.addEventListener('click', () => sendClick(10))
+
+  getMove(([x, y], peerId) => console.log(x, y, peerId))
+  getClick((fruit, peerId) => console.log(fruit, peerId))
+})
 </script>
 
 <template lang='pug'>

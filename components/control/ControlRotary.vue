@@ -1,13 +1,12 @@
 <script setup>
 import { midi, learnCC } from '#/use/midi'
-import { reactive, ref, computed, watch, onMounted } from 'vue'
+import { reactive, ref, computed, watch } from 'vue'
 import { useGesture } from '@vueuse/gesture'
 import { useClamp } from '@vueuse/math'
 
 const props = defineProps({
   max: { type: Number, default: 100 },
   min: { type: Number, default: 0 },
-  modelValue: { type: Number, default: 50 },
   step: { type: Number, default: 1 },
   param: { type: String, default: "param" },
   unit: { type: String, default: "" },
@@ -16,76 +15,43 @@ const props = defineProps({
   channel: { type: Number, default: 0 },
 });
 
-const emit = defineEmits(["update:modelValue"]);
+const model = defineModel({ default: 50 });
 
 const state = reactive({
-  active: false,
   internal: useClamp(0, 0, 100),
-  initial: 0,
+  initial: computed(() => ((model.value - props.min) / (props.max - props.min)) * 100)
 });
 
-const external = computed(() => mapOutput(state.internal));
-
-onMounted(() => {
-  state.initial = mapInput(props.modelValue);
-  state.internal = state.initial;
+const external = computed({
+  get: () => Math.round(((state.internal / 100) * (props.max - props.min) + props.min) / props.step) * props.step,
+  set: (val) => { state.internal = ((val - props.min) / (props.max - props.min)) * 100; }
 });
 
-const midiVal = learnCC({
-  param: props.param,
-  number: props.cc,
-  channel: props.channel
-});
-
-watch(midiVal, v => {
+watch(model, (newValue) => { external.value = newValue; }, { immediate: true });
+watch(learnCC({ param: props.param, number: props.cc, channel: props.channel }), v => {
   state.internal = v * 100;
-  emitValue();
+  model.value = external.value;
 });
-
-watch(() => props.modelValue, (newValue) => {
-  state.internal = mapInput(newValue);
-}, { immediate: true });
 
 const knob = ref();
 
 useGesture({
-  onDrag: handleInteraction,
-  onWheel: handleInteraction
+  onDrag: ({ delta: [x, y], dragging, shiftKey, event }) => {
+    if (event) event.preventDefault();
+    const diff = shiftKey ? 12 : event.type === 'wheel' ? -8 : 2;
+    state.internal = useClamp(0, state.internal - y / diff + x / diff, 100);
+    model.value = external.value;
+  },
+  onWheel: ({ delta: [x, y], event }) => {
+    if (event) event.preventDefault();
+    state.internal = useClamp(0, state.internal + y / 8 - x / 8, 100);
+    model.value = external.value;
+  }
 }, {
-  // drag: { preventWindowScrollY: true },
   wheel: { preventWindowScrollY: true },
   eventOptions: { capture: false, passive: false },
   domTarget: knob
 });
-
-function handleInteraction({ delta: [x, y], dragging, shiftKey, event }) {
-  if (event) event.preventDefault();
-  state.active = dragging;
-  const diff = shiftKey ? 12 : event.type === 'wheel' ? -8 : 2;
-  state.internal = useClamp(0, state.internal - y / diff + x / diff, 100);
-  emitValue();
-}
-
-function reset() {
-  state.internal = state.initial;
-  emitValue();
-}
-
-function emitValue() {
-  emit("update:modelValue", external.value);
-}
-
-function mapInput(val) {
-  return mapNumber(val, props.min, props.max, 0, 100, props.step);
-}
-
-function mapOutput(val) {
-  return Math.round(mapNumber(val, 0, 100, props.min, props.max, props.step) / props.step) * props.step;
-}
-
-function mapNumber(val, inputmin = 0, inputmax = 100, rangemin = 0, rangemax = 100, step = 1) {
-  return ((val - inputmin) * (rangemax - rangemin)) / (inputmax - inputmin) + rangemin;
-}
 
 const r = 45;
 const len = Math.PI * 2 * r - 50;
@@ -94,7 +60,7 @@ const len = Math.PI * 2 * r - 50;
 <template lang="pug">
 .knob(
   ref="knob"
-  @dblclick="reset()"
+  @dblclick="state.internal = state.initial; model = external"
 )
   .i-ph-arrows-horizontal.absolute.text-10px.top-14px.opacity-70
   svg(viewBox="0 0 100 120")

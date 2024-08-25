@@ -5,6 +5,8 @@ import { Note } from 'tonal';
 import { globalScale } from '#/use';
 import { engine, canvas, box, running, mouse, score } from './useMatter';
 import { setTimeout } from 'worker-timers';
+import { onKeyDown } from '@vueuse/core';
+import { watch } from 'vue';
 
 let isDragging = false;
 let draggedBody = null;
@@ -15,6 +17,20 @@ export function useCircles() {
     element: canvas.value,
     collisionFilter: -1,
   });
+
+  onKeyDown('Enter', () => {
+    const train = engine.world.constraints.find(body => body.label === 'train');
+    if (!train) return
+    train.bodyA.data.constraint = null
+    train.bodyB.data.constraint = null
+    Composite.remove(engine.world, train)
+  })
+
+  // watch(() => midi.note, note => {
+  //   const shape = createShape(mouse.position.x, mouse.position.y, note?.pitch + 57 || note);
+  //   circles.bodies.push(shape);
+  //   Composite.add(engine.world, shape);
+  // })
 
   Composite.add(engine.world, [mouseControl]);
 
@@ -36,29 +52,41 @@ export function useCircles() {
 
   const circles = Composites.stack();
 
+  const G = 6.67430; // Gravitational constant
+  const centerMass = 10; // Mass of the central body (black hole)
 
   Events.on(engine, 'afterUpdate', () => {
-    circles.bodies.forEach(circle => {
-      const forceX = - circle.position.x;
-      const forceY = - circle.position.y;
-      const strength = 0.0001
-      Body.applyForce(circle, circle.position, { x: forceX * strength, y: forceY * strength });
-    })
-  })
+    circles.bodies.forEach(gravitate);
+    gravitate(engine.world.bodies.find(b => b.label == 'player'))
+
+    function gravitate(body) {
+      if (!body) return
+      const dx = -body.position.x;
+      const dy = -body.position.y;
+      const distanceSquared = dx * dx + dy * dy;
+      const distance = Math.sqrt(distanceSquared);
+
+      // Newton's law of universal gravitation
+      const forceMagnitude = G * centerMass * body.mass / distanceSquared;
+
+      const forceX = forceMagnitude * dx / distance;
+      const forceY = forceMagnitude * dy / distance;
+
+      Body.applyForce(body, body.position, { x: forceX, y: forceY });
+    }
+  });
 
 
   function createShape(x, y, note = globalScale.tonic + 45) {
-    let noteName = Common.choose(globalScale.pcs) + Common.choose([2, 3, 4]);
-    note = Note.midi(noteName);
 
     const strokeStyle = `hsl(${((note + 3) % 12) * 30}deg, ${(note + 3)}%, 50%)`;
 
     const circle = Bodies.circle(x, y, (120 - note) / 4, {
       label: 'particle',
-      frictionAir: 0.06,
+      frictionAir: 0.03,
       friction: 0.4,
       frictionStatic: 0.001,
-      density: 0.1,
+      density: 1,
       restitution: .8,
       render: {
         lineWidth: 2,
@@ -72,6 +100,7 @@ export function useCircles() {
     });
 
     circle.data = { note, constraint: null };
+
     return circle;
   }
 
@@ -95,12 +124,15 @@ export function useCircles() {
       draggedBody = hoveredShapes[0];
       return;
     }
-    const shape = createShape(mouse.position.x, mouse.position.y);
+    let noteName = Common.choose(globalScale.pcs) + Common.choose([2, 3, 4, 5]);
+    let note = Note.midi(noteName);
+    const shape = createShape(mouse.position.x, mouse.position.y, note || midi?.note?.pitch + 69);
     circles.bodies.push(shape);
     Composite.add(engine.world, shape);
     running.value = true;
     isDragging = true;
     draggedBody = shape;
+
   });
 
   Events.on(mouseControl, 'mouseup', () => {
@@ -122,13 +154,13 @@ export function useCircles() {
               label: `train`,
               bodyA: hitBody,
               bodyB: other,
-              stiffness: .1,
-              length: 10,
+              stiffness: .8,
+              length: 20,
               render: {
                 visible: false,
               },
-              pointA: { x: 10, y: -5 },
-              pointB: { x: -10, y: -10 },
+              pointA: { x: 0, y: 0 },
+              pointB: { x: 0, y: 0 },
             });
             Composite.add(engine?.world, [engineConstraint]);
             hitBody.data = { ...hitBody.data, constraint: engineConstraint };

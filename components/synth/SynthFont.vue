@@ -2,62 +2,36 @@
 //https://danigb.github.io/smplr/
 //https://github.com/danigb/smplr
 
-import { useAudio } from "#/use/audio";
-import { midi } from "#/use/midi";
-import { useStorage } from "@vueuse/core";
-import { Soundfont, getSoundfontNames, Reverb, } from "smplr";
-import { ref, watch, computed, reactive } from "vue";
+import { useSoundFont } from '#/use';
 
-const instrument = useStorage('sound-font', 'marimba')
-
-const cached = reactive([])
-
-const { master } = useAudio()
-
-watch(instrument, instr => {
-  cached[instr] = true
-})
-
-const loaded = ref(false)
-
-const ctx = master.context
-
-const reverb = new Reverb(ctx);
-
-const inst = computed(() => {
-  loaded.value = false
-  const ins = new Soundfont(ctx, {
-    instrument: instrument.value,
-  })
-  ins.output.addEffect("reverb", reverb, 0.9);
-  ins.load.then(() => {
-    loaded.value = true
-  });
-  return ins
-})
-
-watch(() => midi.note, note => {
-  if (!loaded.value) return
-  if (note.type == "noteon") {
-    inst.value.start({ note: note.number, velocity: note.velocity });
-  } else {
-    inst.value.stop(note.number)
-  }
-})
+const { getSoundfontNames, inst, cached, loaded, instrument, fontEnabled, active, volume } = useSoundFont()
 </script>
 
 <template lang='pug'>
 .flex.flex-col.border.my-2.bg-light-900.dark-bg-dark-100.rounded-lg
-  .flex.flex-wrap.gap-1.p-2.max-h-40vh.overflow-scroll
+  .flex.flex-wrap.gap-1.p-2.overflow-scroll.max-w-full.max-h-full
     button.transition.p-1.text-sm.cursor-pointer.border-1.border-dark-900.border-opacity-10.rounded.shadow.flex-auto.capitalize.dark-border-light-200.dark-border-opacity-20(
       v-for="name in getSoundfontNames()" :key="name"
       @click="instrument = name"
       :class="{ ['border-opacity-100 dark-border-opacity-90 filter filter-invert']: name == instrument, ['opacity-50']: name == instrument && !loaded, ['bg-light-100 dark-bg-dark-900']: !cached[name], ['bg-light-900 dark-bg-dark-100']: cached?.[name] }"
       ) {{ name.replaceAll('_', ' ') }}
-  .flex.flex.gap-2.items-center.justify-center.p-2
-    .font-bold.capitalize.text-xl {{ inst.config.instrument.replaceAll('_', ' ') }}
-    .flex.text-
+  .flex.flex.gap-4.items-center.justify-start.p-2
+    button.flex.text-lg.transition.text-button(@click="fontEnabled = !fontEnabled"
+      :class="{ 'active': fontEnabled }"
+      )
+      .i-la-power-off
+
+
+    .font-bold.capitalize.text-lg {{ inst.config.instrument.replaceAll('_', ' ') }}
+
+
+    .flex.text-lg
       .i-la-spinner.animate-pulse(v-if="!loaded")
       .i-la-check(v-else) Loaded!
-  
+
+    .p-1.rounded-full.bg-current(:style="{ opacity: active ? 1 : 0.5 }")
+
+    ControlRotary.scale-70.-m-5(v-model="volume" :max="1" :step="0.01" param="VOL")
+
+
 </template>

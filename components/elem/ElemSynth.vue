@@ -65,12 +65,12 @@ const scope = useScope('synth')
 
     .p-0.flex.items-center.flex-1.justify-center(v-for="(param, p) in group" :key="p" :style="{ order: p == 'f-env' ? 20 : 1 }")
       ControlRotary(
-        v-model="controls[`${g}:${p}`]" :min="param.min" :max="param.max" :step="param.step" :param="p" )
+        v-model="controls[`${g}:${p}`]" :min="param.min" :max="param.max" :step="param.step" :param="p" :interpolation="p == 'cut-off' ? 'log2' : 'linear'" ) 
 
 
     .p-0(v-if="g == 'osc' || g == 'noise'" style="order:5; flex: 10")
       ControlAdsr.bg-light-400.dark-bg-dark-400.bg-op-30.dark-bg-op-30.rounded-lg(
-        title="Amplitude"
+        title="Amplitude Envelope"
         v-model:a="controls[`${g}:attack`]"
         v-model:d="controls[`${g}:decay`]"
         v-model:s="controls[`${g}:sustain`]"
@@ -78,7 +78,7 @@ const scope = useScope('synth')
         )
     .p-0(v-if="g == 'osc' || g == 'noise'" style="order:20;flex: 10")
       ControlAdsr.bg-light-400.dark-bg-dark-400.bg-op-30.dark-bg-op-30.rounded-lg(
-        title="Filter"
+        title="Filter Envelope"
         v-model:a="controls[`${g}:f-attack`]"
         v-model:d="controls[`${g}:f-decay`]"
         v-model:s="controls[`${g}:f-sustain`]"

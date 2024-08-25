@@ -40,8 +40,9 @@ export function useMatter() {
         background: "transparent",
         wireframes: false,
         pixelRatio: window.devicePixelRatio,
-        showAngleIndicator: true,
+        showAngleIndicator: false,
         hasBounds: true,
+        showVelocity: true,
       },
     });
 
@@ -90,8 +91,6 @@ export function useMatter() {
       clearMatterJs();
     });
   }
-
-
 
   return {
     canvas, initiated, running, score, position

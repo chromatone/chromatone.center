@@ -18,7 +18,7 @@ onBeforeUnmount(() => synthEnabled.value = true)
 </script>
 
 <client-only>
-<Synth-font class="m-2" />
+<Synth-font class="m-2 max-h-40" />
 <MidiKeys >
 
 </MidiKeys>

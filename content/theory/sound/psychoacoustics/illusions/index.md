@@ -4,6 +4,7 @@ description: Deeper explorations of subtle psychoacoustic effects
 
 date: 2021-11-10
 ---
+<youtube-embed video="Sn07AMCfaAI" />
 
 <youtube-embed video="OiW8gzBGz1A" />
 

@@ -1,6 +1,6 @@
 import { ref, watch } from 'vue';
 import { Body, Bodies, Composite, Events, Vector, Render, Mouse, Constraint } from 'matter-js';
-import { globalScale } from '#/use';
+import { globalScale, midi } from '#/use';
 import { engine, box, running, render } from './useMatter';
 import { pressedKeys, joystick } from './useControls'
 import { useSpring } from 'vue-use-spring'
@@ -12,7 +12,7 @@ export function usePlayer() {
 
   const strokeStyle = `hsl(${globalScale.tonic * 30}deg, 50%, 50%)`
 
-  const player = Bodies.polygon(box.w / 2, box.h / 2, 3, Math.min(20), {
+  const player = Bodies.polygon(box.w * Math.random(), box.h * Math.random(), 3, 20, {
     label: 'player',
     frictionAir: 0.03,
     restitution: .95,
@@ -31,8 +31,10 @@ export function usePlayer() {
     },
   });
 
+
+
   // Rocket engine (square) body
-  const engineBody = Bodies.rectangle(player.position.x, player.position.y + 30, 10, 20, {
+  const engineBody = Bodies.rectangle(player.position.x, player.position.y + 30, 20, 20, {
     label: 'engine',
     isStatic: false,
     collisionFilter: {
@@ -47,11 +49,18 @@ export function usePlayer() {
     },
   });
 
+  watch(() => midi.note, note => {
+    if (!note) return
+    let stroke = `hsl(${note?.pitch * 30}deg, 50%, 50%)`
+    player.render.strokeStyle = stroke
+    engineBody.render.strokeStyle = stroke
+  })
+
   const constraintOptions = {
     bodyA: player,
     bodyB: engineBody,
-    stiffness: 0.5,
-    length: 2,
+    stiffness: 0.99,
+    length: .4,
     render: {
       visible: false,
     },
@@ -60,8 +69,8 @@ export function usePlayer() {
   // Constraint to attach engine to main body
   const engineConstraint1 = Constraint.create({
     ...constraintOptions,
-    pointA: { x: 10, y: -5 },
-    pointB: { x: -10, y: -10 },
+    pointA: { x: 20, y: 0 },
+    pointB: { x: 0, y: 0 },
   });
 
   const engineConstraint2 = Constraint.create({
@@ -79,7 +88,7 @@ export function usePlayer() {
 
   })
 
-  Composite.add(engine?.world, [player, engineBody, engineConstraint1, engineConstraint2]);
+  Composite.add(engine?.world, [player, engineBody, engineConstraint1,]);
 
   const steer = 0.05
   const thrust = 30;
@@ -119,8 +128,15 @@ export function usePlayer() {
 
   Events.on(engine, 'beforeUpdate', handleControl);
 
+  const drop = () => {
+    const train = engine.world.constraints.find(body => body.label === 'train');
+    console.log(train)
+    // Composite.remove(engine.world, train);
+    // connectedBody.data.constraint = null;
+  }
+
   return {
     running,
-    player
+    player, drop
   }
 }

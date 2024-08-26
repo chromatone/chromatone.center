@@ -12,17 +12,7 @@ Cards and short overviews on physics and physiology of vision and hearing and th
 
 Useful tools to have in the pocket like a pack of interactive cards to learn and use in everyday music practice. These are open source web-experiments with different aspects of sound and color.
 
-## Contact
-
-Contact the author and the headquarter of the project.
-
-## Roadmap
-
-We've ported almost all separate apps into the main website. It becomes more and more integrated tool. But there's more!
-
-Current tasks and progress are open [at this ClickUp project](https://sharing.clickup.com/l/h/6-8826475-1/f14fd62f6465442)
-
-## Any other ideas? [Welcome to our subreddit](https://www.reddit.com/r/chromatone/)
+## Any ideas? [Share in our subreddit](https://www.reddit.com/r/chromatone/)
 
 ## STACK
 

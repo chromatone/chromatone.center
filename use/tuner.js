@@ -9,19 +9,19 @@ import { reactive, computed, watch, onMounted } from 'vue'
 import { rotateArray } from "./calculations";
 import { notes } from './theory.js'
 
-const noteStrings = rotateArray(notes, 3)
+const BUFFER_SIZE = 4096;
+const TEMPO_BUFFER_SIZE = 512;
+const MIDDLE_A = 440;
+const SEMITONE = 69;
 
-const settings = {
-  middleA: 440,
-  semitone: 69,
-};
+const noteStrings = rotateArray(notes, 3);
 
 export const tuner = reactive({
   initiated: false,
   initiating: false,
   stream: null,
-  middleA: settings.middleA,
-  semitone: settings.semitone,
+  middleA: MIDDLE_A,
+  semitone: SEMITONE,
   note: {
     name: "A",
     value: 69,
@@ -32,8 +32,8 @@ export const tuner = reactive({
     silent: false,
   },
   span: 64,
-  bufferSize: 4096,
-  tempoBufferSize: 512,
+  bufferSize: BUFFER_SIZE,
+  tempoBufferSize: TEMPO_BUFFER_SIZE,
   running: false,
   frame: 0,
   beat: 0,
@@ -42,18 +42,9 @@ export const tuner = reactive({
   listenBeat: false,
   prevBeat: 0,
   blink: false,
-  chroma: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  chroma: new Array(12).fill(0),
   aChroma: computed(() => rotateArray(tuner.chroma, -3)),
   chromaAvg: computed(() => tuner.chroma.reduce((a, b) => a + b, 0) / 12),
-  // activeNotes: computed(() => {
-  //   const notes = []
-  //   for (let n in tuner.aChroma) {
-  //     if (tuner.aChroma[n] > 0.8) {
-  //       notes.push(n)
-  //     }
-  //   }
-  //   return notes
-  // }),
   spec: [],
   rms: 0,
 });
@@ -64,19 +55,7 @@ export function useTuner() {
   initGetUserMedia();
 
   onMounted(() => {
-    watch(
-      () => tuner.frame,
-      () => {
-        if (!tuner.listenBeat) return;
-        if (tuner.beat > tuner.prevBeat) {
-          tuner.prevBeat = tuner.beat;
-          tuner.blink = true;
-          setTimeout(() => {
-            tuner.blink = false;
-          }, 60);
-        }
-      }
-    );
+    watch(() => tuner.frame, handleBeatDetection);
   });
 
   return {
@@ -86,51 +65,74 @@ export function useTuner() {
   };
 }
 
+function handleBeatDetection() {
+  if (!tuner.listenBeat || tuner.beat <= tuner.prevBeat) return;
+
+  tuner.prevBeat = tuner.beat;
+  tuner.blink = true;
+  setTimeout(() => {
+    tuner.blink = false;
+  }, 60);
+}
+
 async function init() {
-  if (tuner.initiated) return
-  tuner.initiating = true
-  const { master } = useAudio()
-  chain.audioContext = master.context;
+  if (tuner.initiated) return;
+  tuner.initiating = true;
+
+  const { master } = useAudio();
+  setupAudioChain(master.context);
+
+  await setupMeydaAnalyzer();
+  await setupAubio();
+
+  tuner.running = true;
+  start();
+  tuner.initiated = true;
+  tuner.initiating = false;
+}
+
+function setupAudioChain(audioContext) {
+  chain.audioContext = audioContext;
   chain.analyser = chain.audioContext.createAnalyser();
-  chain.scriptProcessor = chain.audioContext.createScriptProcessor(tuner.bufferSize, 1, 1);
-  chain.beatProcessor = chain.audioContext.createScriptProcessor(tuner.tempoBufferSize, 1, 1);
+  chain.scriptProcessor = chain.audioContext.createScriptProcessor(BUFFER_SIZE, 1, 1);
+  chain.beatProcessor = chain.audioContext.createScriptProcessor(TEMPO_BUFFER_SIZE, 1, 1);
+}
 
-  const Meyda = await import('meyda')
-
+async function setupMeydaAnalyzer() {
+  const Meyda = await import('meyda');
   chain.meyda = Meyda.createMeydaAnalyzer({
     audioContext: chain.audioContext,
     source: chain.analyser,
-    bufferSize: 4096,
+    bufferSize: BUFFER_SIZE,
     featureExtractors: ["chroma", "amplitudeSpectrum", "rms"],
-    callback: (features) => {
-      Object.assign(tuner, {
-        rms: features.rms,
-        chroma: features.chroma,
-        spec: features.amplitudeSpectrum
-      })
-    },
+    callback: updateTunerFeatures,
   });
   chain.meyda.start();
+}
 
-  const { default: Aubio } = await import('aubiojs/build/aubio.esm.js')
-
-  Aubio().then(function (aubio) {
-    chain.pitchDetector = new aubio.Pitch(
-      "default",
-      tuner.bufferSize * 4,
-      tuner.bufferSize,
-      chain.audioContext.sampleRate
-    );
-    chain.tempoAnalyzer = new aubio.Tempo(
-      tuner.tempoBufferSize * 4,
-      tuner.tempoBufferSize,
-      chain.audioContext.sampleRate
-    );
-    tuner.running = true;
-    start();
+function updateTunerFeatures(features) {
+  Object.assign(tuner, {
+    rms: features.rms,
+    chroma: features.chroma,
+    spec: features.amplitudeSpectrum
   });
-  tuner.initiated = true;
-  tuner.initiating = false
+}
+
+async function setupAubio() {
+  const { default: Aubio } = await import('aubiojs/build/aubio.esm.js');
+  const aubio = await Aubio();
+
+  chain.pitchDetector = new aubio.Pitch(
+    "default",
+    BUFFER_SIZE * 4,
+    BUFFER_SIZE,
+    chain.audioContext.sampleRate
+  );
+  chain.tempoAnalyzer = new aubio.Tempo(
+    TEMPO_BUFFER_SIZE * 4,
+    TEMPO_BUFFER_SIZE,
+    chain.audioContext.sampleRate
+  );
 }
 
 function start() {
@@ -141,25 +143,25 @@ function start() {
 
   navigator.mediaDevices
     .getUserMedia({ audio: true })
-    .then(function (stream) {
-      tuner.stream = stream;
-      const mediaStream = chain.audioContext
-        .createMediaStreamSource(stream)
-        .connect(chain.analyser);
-      chain.analyser.connect(chain.scriptProcessor);
-      chain.analyser.connect(chain.beatProcessor);
-      chain.scriptProcessor.connect(chain.audioContext.destination);
-      chain.beatProcessor.connect(chain.audioContext.destination);
-      chain.beatProcessor.addEventListener("audioprocess", handleBeatProcess);
-      chain.scriptProcessor.addEventListener("audioprocess", handleAudioProcess);
-    })
-    .catch(function (error) {
-      console.log(error.name + ": " + error.message);
-    });
+    .then(setupAudioStream)
+    .catch(error => console.log(`${error.name}: ${error.message}`));
+}
+
+function setupAudioStream(stream) {
+  tuner.stream = stream;
+  const mediaStream = chain.audioContext
+    .createMediaStreamSource(stream)
+    .connect(chain.analyser);
+  chain.analyser.connect(chain.scriptProcessor);
+  chain.analyser.connect(chain.beatProcessor);
+  chain.scriptProcessor.connect(chain.audioContext.destination);
+  chain.beatProcessor.connect(chain.audioContext.destination);
+  chain.beatProcessor.addEventListener("audioprocess", handleBeatProcess);
+  chain.scriptProcessor.addEventListener("audioprocess", handleAudioProcess);
 }
 
 function handleBeatProcess(e) {
-  if (!chain.tempoAnalyzer) return
+  if (!chain.tempoAnalyzer) return;
   const tempo = chain.tempoAnalyzer.do(e.inputBuffer.getChannelData(0));
   if (tempo) {
     tuner.beat++;
@@ -169,11 +171,13 @@ function handleBeatProcess(e) {
 }
 
 function handleAudioProcess(event) {
-  if (!chain.pitchDetector) return
-  const frequency = chain.pitchDetector.do(
-    event.inputBuffer.getChannelData(0)
-  );
+  if (!chain.pitchDetector) return;
+  const frequency = chain.pitchDetector.do(event.inputBuffer.getChannelData(0));
   tuner.frame++;
+  updateTunerNote(frequency);
+}
+
+function updateTunerNote(frequency) {
   if (frequency) {
     const note = getNote(frequency);
     tuner.note = {
@@ -191,7 +195,7 @@ function handleAudioProcess(event) {
 }
 
 function getNote(frequency) {
-  return Math.round(12 * (Math.log(frequency / tuner.middleA) / Math.log(2))) + tuner.semitone
+  return Math.round(12 * (Math.log(frequency / tuner.middleA) / Math.log(2))) + tuner.semitone;
 }
 
 function getStandardFrequency(note) {
@@ -199,9 +203,7 @@ function getStandardFrequency(note) {
 }
 
 function getCents(frequency, note) {
-  return Math.floor(
-    (1200 * Math.log(frequency / getStandardFrequency(note))) / Math.log(2)
-  );
+  return Math.floor((1200 * Math.log(frequency / getStandardFrequency(note))) / Math.log(2));
 }
 
 function freqColor(frequency) {
@@ -212,5 +214,5 @@ function freqColor(frequency) {
 }
 
 function getRawNote(frequency) {
-  return (12 * (Math.log(frequency / settings.middleA) / Math.log(2))) % 12;
+  return (12 * (Math.log(frequency / MIDDLE_A) / Math.log(2))) % 12;
 }

@@ -52,7 +52,6 @@ watch(() => props.accents, accents => {
 
 
 <template lang="pug">
-slot
 svg.w-full(
   class="bg-light-300 dark-bg-dark-800"
   version="1.1",

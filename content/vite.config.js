@@ -42,7 +42,9 @@ export default defineConfig(
         ],
       }),
       Icons({
+        compiler: 'vue3',
         defaultStyle: 'vertical-align: middle;',
+        autoInstall: true
       }),
       Unocss({
         transformers: [
@@ -51,6 +53,7 @@ export default defineConfig(
         presets: [
           presetIcons({
             scale: 1.2,
+            cdn: "https://esm.sh/",
             extraProperties: {
               'vertical-align': 'middle'
             }

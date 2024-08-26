@@ -1,0 +1,1 @@
+import{x as e,y as o,J as n,af as s,q as a}from"./framework.nFF1SKKu.js";const r={class:"button"};function c(t,d){return e(),o("button",r,[n(t.$slots,"default",{},()=>[s("Start")],!0)])}const _={},u=a(_,[["render",c],["__scopeId","data-v-fb351d24"]]);export{u as _};

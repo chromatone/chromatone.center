@@ -3,14 +3,9 @@ import { Render, Composite, Runner, Events, Engine, Mouse, } from 'matter-js';
 import { useResizeObserver } from '@vueuse/core';
 import { useCircles } from './useCircles';
 import { usePlayer } from './usePlayer';
-import { useBoundaries } from './useBoundaries';
 import { useStars } from './useStars';
 import { useGrid } from './useGrid';
 import { useNavigator } from './useNavigator';
-
-
-//import MatterWrap from 'matter-wrap';
-// Matter.use(MatterWrap);
 
 export let engine;
 export let render;

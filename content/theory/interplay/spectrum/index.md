@@ -30,3 +30,6 @@ Let's keep multiplying our A = 440 Hz by two until we reach the visible light sp
 <img src="./spectrum.svg" />
 
 We can conclude that it's a fundamental property of our perception to close perceived parts of any spectrum into a seamless circle. And these circles are not just illusions as the resonances and periodicities are based on fundamental principles of physics.
+
+
+<ColorSpectrum class="m-4" />

@@ -1,9 +1,9 @@
 <script setup>
 import { useAudio } from "#/use/audio";
-import { useMic } from "#/use/mic";
+import { useMicrophone } from "#/use/mic";
 
 const { audio, channels } = useAudio();
-const { mic, input } = useMic();
+const { mic, input } = useMicrophone();
 </script>
 
 <template lang="pug">

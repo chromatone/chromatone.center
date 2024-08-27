@@ -2,6 +2,8 @@
 import { freqPitch } from '#/use/calculations'
 import { notes } from '#/use/theory'
 import { computed, reactive } from 'vue';
+import TuningNote from './TuningNote.vue';
+import TuningText from './TuningText.vue';
 
 const allNotes = [...notes].map((n, i) => ({ name: n, pitch: i }))
 

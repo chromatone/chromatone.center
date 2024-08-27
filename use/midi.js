@@ -122,7 +122,35 @@ export function useMidi() {
   };
 }
 
+async function checkMidiPermission() {
+  if (navigator.permissions) {
+    try {
+      const result = await navigator.permissions.query({ name: 'midi', sysex: true });
+      result.addEventListener('change', ev => console.log(ev))
+      if (result.state === 'granted') {
+        console.log('MIDI permission already granted');
+        return true;
+      } else if (result.state === 'prompt') {
+        console.log('MIDI permission will be requested');
+        return null;
+      } else {
+        console.log('MIDI permission denied');
+        return false;
+      }
+    } catch (error) {
+      console.error('Error checking MIDI permission:', error);
+    }
+  }
+  return null; // Permission API not supported
+}
+
+
 async function setupMidi() {
+  const permissionStatus = await checkMidiPermission();
+  if (permissionStatus === false) {
+    console.error("MIDI permission denied. Please enable MIDI access in your browser settings.");
+    return;
+  }
   try {
     await WebMidi.enable({ sysex: true });
     midi.enabled = true;

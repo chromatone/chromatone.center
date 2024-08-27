@@ -22,7 +22,7 @@ export const mic = reactive({
 
 let meter, input, gate, compressor
 
-export function useMic() {
+export function useMicrophone() {
   if (!mic.initiated) {
 
     meter = new Meter()

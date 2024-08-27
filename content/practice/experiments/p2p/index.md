@@ -1,6 +1,6 @@
 ---
 title: P2P connections
-description: Trystero lab
+description: GUN database experiments
 date: 2014-07-30
 layout: app
 hidden: true
@@ -9,9 +9,9 @@ hidden: true
 <script setup>
 import { defineClientComponent } from 'vitepress'
 
-const Trystero = defineClientComponent(() => {
-  return import('./Trystero.vue')
+const GunP2p = defineClientComponent(() => {
+  return import('./GunP2p.vue')
 })
 </script>
 
-<Trystero/>
+<GunP2p/>

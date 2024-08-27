@@ -38,6 +38,7 @@
 	"dependencies": {
 		"@elemaudio/core": "^3.2.1",
 		"@elemaudio/web-renderer": "^3.2.3",
+		"@gun-vue/gun-es": "^0.2.1240",
 		"@tonejs/midi": "^2.0.28",
 		"@types/matter-js": "^0.19.7",
 		"@unocss/reset": "^0.62.3",
@@ -86,7 +87,6 @@
 		"thousands-counter": "^2.1.1",
 		"tonal": "^6.2.0",
 		"tone": "^15.0.4",
-		"trystero": "^0.20.0",
 		"universal-base64url": "^1.1.0",
 		"uqr": "^0.1.2",
 		"vite-plugin-top-level-await": "^1.4.4",

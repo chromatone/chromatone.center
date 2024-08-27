@@ -33,14 +33,9 @@
 		"resolveJsonModule": true,
 		"allowJs": true,
 		"isolatedModules": true,
-		"declaration": true,
-		"emitDeclarationOnly": true,
-		"declarationMap": true,
-		"declarationDir": "lib/types",
 		"skipLibCheck": true,
 		"module": "esnext",
 		"allowSyntheticDefaultImports": true,
-		"outDir": "lib/types"
 	},
 	"vueCompilerOptions": {
 		"plugins": [

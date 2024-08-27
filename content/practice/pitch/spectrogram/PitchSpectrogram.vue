@@ -1,7 +1,7 @@
 <script setup>
 import { initGetUserMedia, master } from '#/use/audio'
 import { freqPitch } from '#/use/calculations'
-import { useMic } from '#/use/mic'
+import { useMicrophone } from '#/use/mic'
 import { onKeyStroke, useElementSize, useStorage, useWindowSize } from '@vueuse/core'
 import { ref, computed, reactive, onMounted, watch, onUnmounted } from 'vue'
 import { useClamp } from '@vueuse/math'
@@ -10,7 +10,7 @@ const canvasElement = ref()
 const video = ref()
 const container = ref()
 
-const { mic, input } = useMic()
+const { mic, input } = useMicrophone()
 
 const paused = ref(false)
 

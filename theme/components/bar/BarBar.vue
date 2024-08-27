@@ -33,7 +33,7 @@ nav.bar
     v-tooltip.right="'Chromatone'"
     aria-label="Back to main page"
     )
-    img.cursor-pointer.mt-4.mx-2.mb-2(v-if="theme.logo", :src="theme.logo", alt="Chromatone logo" title="Chromatone")
+    img.cursor-pointer.mt-3.mb-2.w-8(v-if="theme.logo", :src="theme.logo", alt="Chromatone logo" title="Chromatone")
 
 
   button(
@@ -57,15 +57,17 @@ nav.bar
 
   .spacer
 
-  a.button(
-
-    title="tutor"
-    href="/tutor/"
-    :class="{ active: route.path.includes('tutor') }"
-    v-tooltip.right="'Tutorship'"
-    aria-label="Tutorship"
+  button(
+    title="Search"
+    :inert="searchOpen"
+    @click="searchOpen = !searchOpen"
+    :class="{ active: searchOpen, 'touch-action-none': searchOpen }"
+    v-tooltip.right="'Search'"
+    aria-label="Toggle search panel"
     )
-    .i-la-chalkboard-teacher
+    .i-la-search
+
+  .spacer
 
   a.button(
     title="Shop"
@@ -75,6 +77,16 @@ nav.bar
     aria-label="Shop"
     )
     .i-la-shopping-bag
+
+  a.button(
+
+    title="tutor"
+    href="/tutor/"
+    :class="{ active: route.path.includes('tutor') }"
+    v-tooltip.right="'Tutorship'"
+    aria-label="Tutorship"
+    )
+    .i-la-chalkboard-teacher
 
   a.button(
     title="Academy"
@@ -92,49 +104,41 @@ nav.bar
   //-   aria-label="Contacts"
   //-   )
   //-   .i-la-at
-  .spacer
-  button(
-    title="Search"
-    :inert="searchOpen"
-    @click="searchOpen = !searchOpen"
-    :class="{ active: searchOpen, 'touch-action-none': searchOpen }"
-    v-tooltip.right="'Search'"
-    aria-label="Toggle search panel"
-    )
-    .i-la-search
+
 
 
   .flex-auto
   .spacer 
 
-  button.rounded-full.scale-70(
+  button.rounded-full.scale-80.border-3.h-12.w-12(
     :inert="scaleOpen"
     @click="scaleOpen = !scaleOpen"  
     :class="{ active: scaleOpen }" 
     aria-label="Toggle synth panel"
     v-tooltip.right="'Synth settings'"
-    :style="{ backgroundColor: noteColor(globalScale.tonic) }"
-    ) {{ notes[globalScale.tonic] }}
+    :style="{ borderColor: noteColor(globalScale.tonic) }"
+    ) 
+      .-mt-2px.text-lg {{ notes[globalScale.tonic] }}
 
 
-  button.scale-70.rounded-lg.flex.flex-col.gap-1(
+  button.scale-80.rounded-lg.flex.flex-col.gap-1.border-3.h-12.relative(
     :inert="transportOpen"
     @click="transportOpen = !transportOpen"  
     :class="{ active: transportOpen }" 
     aria-label="Toggle transport panel"
     v-tooltip.right="'Transport'"
-    :style="{ backgroundColor: !tempo.blink ? tempo.color : '' }"
+    :style="{ borderColor: !tempo.blink ? tempo.color : '' }"
     ) 
-    //- .i-mdi-metronome
-    .pb-1 {{ tempo.bpm.toFixed() }}
+    .i-mdi-metronome.-mt-6px.mb-4px
+    .absolute.text-xs.-bottom-2px {{ tempo.bpm.toFixed() }}
 
-  button(
+  button.scale-80.rounded-lg.flex.flex-col.gap-1.border-3.h-12.relative(
     :inert="pianoOpen"
     @click="pianoOpen = !pianoOpen"  
     :class="{ active: pianoOpen }" 
     aria-label="Toggle synth panel"
     v-tooltip.right="'Synth settings'"
-    :style="{ color: midi.note.velocity > 0 ? noteColor(midi.note.pitch, 4, midi.note.velocity) : 'currentColor' }"
+    :style="{ borderColor: midi.note.velocity > 0 ? noteColor(midi.note.pitch, 4, midi.note.velocity) : 'currentColor' }"
     ) 
     .i-mdi-piano
 
@@ -202,7 +206,8 @@ client-only
 
 <style lang="postcss" scoped>
 nav.bar {
-  @apply bg-light-800 dark-bg-dark-400 fixed z-1000 top-0 bottom-0 w-12 shadow flex flex-col max-h-100dvh pb-2 overflow-scroll;
+  @apply bg-light-800 dark-bg-dark-400 fixed z-1000 top-0 bottom-0 w-12 shadow flex flex-col items-center max-h-100dvh pb-2 overflow-scroll;
+  scrollbar-width: none;
 }
 
 nav button,
@@ -232,6 +237,6 @@ button.active,
 }
 
 .spacer {
-  @apply bg-dark-200/40 dark-bg-light-100/30 p-0.5px my-1 mx-1
+  @apply w-full bg-dark-200/40 dark-bg-light-100/30 p-0.5px my-1
 }
 </style>

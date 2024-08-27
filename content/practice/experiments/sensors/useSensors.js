@@ -1,5 +1,6 @@
 // useSensors.js
-import { ref, onUnmounted } from 'vue'
+import { ref, computed } from 'vue'
+import { useDeviceMotion, useDeviceOrientation } from '@vueuse/core'
 
 const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent)
 const isMobile = /Mobi|Android/i.test(navigator.userAgent)
@@ -9,39 +10,57 @@ function requestPermission(type) {
     return DeviceMotionEvent.requestPermission().then(state => state === 'granted')
   }
   if (isMobile) {
-    // On mobile, we'll assume permission is granted if the API is available
     return Promise.resolve(type in window)
   }
-  // On desktop, we'll just resolve true as permissions are typically not required
   return Promise.resolve(true)
 }
 
 export function useSensors() {
-  const motion = ref({ x: 0, y: 0, z: 0 })
-  const orientation = ref({ alpha: 0, beta: 0, gamma: 0 })
   const isMotionActive = ref(false)
   const isOrientationActive = ref(false)
 
-  let motionHandler, orientationHandler
+  const {
+    acceleration,
+    rotationRate: rotation,
+  } = useDeviceMotion()
 
-  function handleMotion(event) {
-    const acc = event.accelerationIncludingGravity || event.acceleration
-    if (acc) {
-      motion.value = {
-        x: Math.abs(acc.x || 0),
-        y: Math.abs(acc.y || 0),
-        z: Math.abs(acc.z || 0)
-      }
-    }
-  }
+  const {
+    alpha,
+    beta,
+    gamma
+  } = useDeviceOrientation()
 
-  function handleOrientation(event) {
-    orientation.value = {
-      alpha: event.alpha || 0,
-      beta: event.beta || 0,
-      gamma: event.gamma || 0
-    }
-  }
+  const motion = computed(() => ({
+    x: Math.abs(acceleration.value?.x || 0),
+    y: Math.abs(acceleration.value?.y || 0),
+    z: Math.abs(acceleration.value?.z || 0)
+  }))
+
+  const orientation = computed(() => ({
+    alpha: alpha.value || 0,
+    beta: beta.value || 0,
+    gamma: gamma.value || 0
+  }))
+
+  const totalAcceleration = computed(() => {
+    return Math.sqrt(
+      Math.pow(motion.value.x, 2) +
+      Math.pow(motion.value.y, 2) +
+      Math.pow(motion.value.z, 2)
+    )
+  })
+
+  const isDeviceFlat = computed(() => {
+    return Math.abs(orientation.value.beta) < 5 && Math.abs(orientation.value.gamma) < 5
+  })
+
+  const deviceOrientation = computed(() => {
+    if (orientation.value.beta > 45 && orientation.value.beta < 135) return 'portrait'
+    if (orientation.value.beta < -45 && orientation.value.beta > -135) return 'portrait-upside-down'
+    if (orientation.value.gamma > 45) return 'landscape-left'
+    if (orientation.value.gamma < -45) return 'landscape-right'
+    return 'flat'
+  })
 
   function activateMotion() {
     if (isMotionActive.value) return Promise.resolve()
@@ -49,8 +68,6 @@ export function useSensors() {
     return requestPermission('DeviceMotionEvent')
       .then(granted => {
         if (granted) {
-          motionHandler = handleMotion
-          window.addEventListener('devicemotion', motionHandler)
           isMotionActive.value = true
         } else {
           console.warn('Motion events are not supported or permission denied')
@@ -67,8 +84,6 @@ export function useSensors() {
     return requestPermission('DeviceOrientationEvent')
       .then(granted => {
         if (granted) {
-          orientationHandler = handleOrientation
-          window.addEventListener('deviceorientation', orientationHandler)
           isOrientationActive.value = true
         } else {
           console.warn('Orientation events are not supported or permission denied')
@@ -80,23 +95,12 @@ export function useSensors() {
   }
 
   function deactivateMotion() {
-    if (motionHandler) {
-      window.removeEventListener('devicemotion', motionHandler)
-      isMotionActive.value = false
-    }
+    isMotionActive.value = false
   }
 
   function deactivateOrientation() {
-    if (orientationHandler) {
-      window.removeEventListener('deviceorientation', orientationHandler)
-      isOrientationActive.value = false
-    }
+    isOrientationActive.value = false
   }
-
-  onUnmounted(() => {
-    deactivateMotion()
-    deactivateOrientation()
-  })
 
   return {
     motion,
@@ -106,6 +110,10 @@ export function useSensors() {
     activateMotion,
     activateOrientation,
     deactivateMotion,
-    deactivateOrientation
+    deactivateOrientation,
+    totalAcceleration,
+    isDeviceFlat,
+    deviceOrientation,
+    rotation
   }
 }

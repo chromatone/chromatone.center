@@ -102,8 +102,8 @@ importers:
         specifier: ^2.5.1
         version: 2.5.1
       mathjs:
-        specifier: ^13.0.3
-        version: 13.0.3
+        specifier: ^13.1.0
+        version: 13.1.0
       matter-attractors:
         specifier: ^0.1.6
         version: 0.1.6
@@ -208,14 +208,14 @@ importers:
         specifier: ^1.1.22
         version: 1.1.22
       '@iconify-json/la':
-        specifier: ^1.1.8
-        version: 1.1.8
+        specifier: ^1.1.9
+        version: 1.1.9
       '@iconify-json/mdi':
         specifier: ^1.1.68
         version: 1.1.68
       '@iconify-json/tabler':
-        specifier: ^1.1.113
-        version: 1.1.113
+        specifier: ^1.1.120
+        version: 1.1.120
       '@modyfi/vite-plugin-yaml':
         specifier: ^1.1.0
         version: 1.1.0(rollup@4.13.0)(vite@5.4.2(@types/node@20.9.2)(terser@5.24.0))
@@ -928,6 +928,10 @@ packages:
     resolution: {integrity: sha512-7dRy4DwXwtzBrPbZflqxnvfxLF8kdZXPkhymtDeFoFqE6ldzjQFgYTtYIFARcLEYDrqfBfYcZt1WqFxRoyC9Rw==}
     engines: {node: '>=6.9.0'}
 
+  '@babel/runtime@7.25.4':
+    resolution: {integrity: sha512-DSgLeL/FNcpXuzav5wfYvHCGvynXkJbn3Zvc3823AEe9nPwW9IK4UoCSS5yGymmQzN0pCPvivtgS6/8U2kkm1w==}
+    engines: {node: '>=6.9.0'}
+
   '@babel/template@7.25.0':
     resolution: {integrity: sha512-aOOgh1/5XzKvg1jvVz7AVrx2piJ2XBi227DHmbY6y+bM9H2FlN+IfecYu4Xl0cNiiVejlsCri89LUsbj8vJD9Q==}
     engines: {node: '>=6.9.0'}
@@ -1310,14 +1314,14 @@ packages:
   '@iconify-json/healthicons@1.1.22':
     resolution: {integrity: sha512-3bDDV8OjfTQ8dnHvSpdEBliaXUHDOqD+cisr/h+HZ/IzNy7gfnIyThKt0V7Qp2lkHBfjEX9DfBB/fjdD8yZAUQ==}
 
-  '@iconify-json/la@1.1.8':
-    resolution: {integrity: sha512-67cXIkU4kg78OA52qcIzC5rIIHMf3K2rdl8GqiNgpiMbbX3o7n+yPh/0QWIIn8lDUQT6qT5d0ZkUCnwEYzxl2w==}
+  '@iconify-json/la@1.1.9':
+    resolution: {integrity: sha512-ec5MVvsD2NTbWYIbCgbIcPyY1D8U3VttU+EfG8RWIlwceMwAz2ZnLhvOuXUxB3wu7EBNrnXfnT7MBDNRJ83YVw==}
 
   '@iconify-json/mdi@1.1.68':
     resolution: {integrity: sha512-7//TKCiXLU6kNWeOJRTBbisofVO7rF1sD1TZTL4/V9nqlmVNczQ5IOY0GgKOTsitkcTnX9GXgrgbjw3OI5B69w==}
 
-  '@iconify-json/tabler@1.1.113':
-    resolution: {integrity: sha512-dT34D0gyqxgK2t91+8scQ+U387yZ/zb4r7/3CHqhmvaVMsnOT8DFtX0FhJzdr6ldnVH82pGAp59GGr97IT/UfQ==}
+  '@iconify-json/tabler@1.1.120':
+    resolution: {integrity: sha512-G9of3jPsYUfFkdaeqfILQF3xkCuZeitqJDjMkqmzjfJcWzl7JW/PoPJRby28dIUHTyO6eLqOlKhFP4/EQCg44Q==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -3369,8 +3373,8 @@ packages:
   mark.js@8.11.1:
     resolution: {integrity: sha512-1I+1qpDt4idfgLQG+BNWmrqku+7/2bi5nLf4YwF8y8zXvmfiTBY3PV3ZibfrjBueCByROpuBjLLFCajqkgYoLQ==}
 
-  mathjs@13.0.3:
-    resolution: {integrity: sha512-GpP9OW6swA5POZXvgpc/1FYkAr8lKgV04QHS1tIU60klFfplVCYaNzn6qy0vSp0hAQQN7shcx9CeB507dlLujA==}
+  mathjs@13.1.0:
+    resolution: {integrity: sha512-5BI//cQdcKtDgstJ3QbKYyrWLyUEEHY9ZQgA3laaPyTis+ca8Y7GCxbLFFLYv8nkpOFTIF55FLKoiqQaufj1dQ==}
     engines: {node: '>= 18'}
     hasBin: true
 
@@ -5464,6 +5468,10 @@ snapshots:
     dependencies:
       regenerator-runtime: 0.14.0
 
+  '@babel/runtime@7.25.4':
+    dependencies:
+      regenerator-runtime: 0.14.0
+
   '@babel/template@7.25.0':
     dependencies:
       '@babel/code-frame': 7.24.7
@@ -5732,7 +5740,7 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/la@1.1.8':
+  '@iconify-json/la@1.1.9':
     dependencies:
       '@iconify/types': 2.0.0
 
@@ -5740,7 +5748,7 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/tabler@1.1.113':
+  '@iconify-json/tabler@1.1.120':
     dependencies:
       '@iconify/types': 2.0.0
 
@@ -8087,9 +8095,9 @@ snapshots:
 
   mark.js@8.11.1: {}
 
-  mathjs@13.0.3:
+  mathjs@13.1.0:
     dependencies:
-      '@babel/runtime': 7.24.8
+      '@babel/runtime': 7.25.4
       complex.js: 2.1.1
       decimal.js: 10.4.3
       escape-latex: 1.2.0

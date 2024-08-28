@@ -23,7 +23,7 @@ const win = useWindowSize()
 const width = computed(() => props.width || win.width.value)
 const height = computed(() => props.height || win.height.value - 80)
 
-const { midi, playKey } = useMidi()
+const { midi } = useMidi()
 
 const { roundBegin: begin, roundEnd: end, beginControl, endControl, keys: rawKeys } = useRange()
 

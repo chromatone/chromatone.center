@@ -2,8 +2,8 @@
 import { notes } from '#/use/theory'
 import { defaultScheme, scheme, noteColor } from '#/use/colors'
 import { getCircleCoord, rotateArray } from '#/use/calculations'
-import { midi, playKey } from '#/use/midi'
-import { globalScale } from '#/use/chroma'
+import { midi } from '#/use/midi'
+import { globalScale, playNote, stopNote } from '#/use/chroma'
 import { useTuner } from '#/use/tuner'
 import { colord } from "colord";
 import { useClipboard, watchThrottled } from '@vueuse/core'
@@ -48,7 +48,13 @@ function coord(n = 0, q = 0.5) {
 const pressed = ref()
 
 function keyPlay(pitch, event, off, velocity) {
-  playKey(flower.value[pitch].note, pitch >= 3 ? 0 : -1, off, velocity)
+  let n = flower.value[pitch].note + (pitch >= 3 ? 4 : 3)
+  if (!off) {
+    playNote(n, velocity)
+  } else {
+    stopNote(n)
+  }
+
 }
 
 const { copy, copied } = useClipboard()

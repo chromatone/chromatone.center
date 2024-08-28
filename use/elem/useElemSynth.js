@@ -8,7 +8,6 @@ import { useElementary, layers } from './useElementary';
 
 import params from "./synthParams.json"
 import { useStorage } from '@vueuse/core';
-// import { hallReverb } from './useReverb';
 
 export const synthEnabled = useStorage('el-synth-enabled', true);
 
@@ -44,19 +43,8 @@ export function useElemSynth(count = 12) {
 
   function createSynthSignal() {
     const poly = el.scope({ name: 'synth', size: 512 }, createPoly());
-    // const [reverbL, reverbR] = hallReverb(
-    //   'polyRev',
-    //   poly,
-    //   cv['fx:decay'],
-    //   undefined,
-    //   undefined,
-    //   el.div(cv['fx:bpm'], 60)
-    // );
-
     return pingPong(poly);
   }
-
-  // "fx:reverb": { "value": 0.9, "min": 0, "max": 1, "step": 0.01 },
 
 
   function createPoly() {

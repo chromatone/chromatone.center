@@ -1,0 +1,1 @@
+import{f as t,g as o,x as n,ae as s,_ as a}from"./framework.B7TlvOs3.js";const r={class:"button"};function c(e,d){return t(),o("button",r,[n(e.$slots,"default",{},()=>[s("Start")],!0)])}const _={},u=a(_,[["render",c],["__scopeId","data-v-fb351d24"]]);export{u as _};

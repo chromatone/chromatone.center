@@ -3,10 +3,8 @@ import { rotateArray } from '#/use/calculations'
 import { chromaColorMix, noteColor } from "#/use/colors";
 import { Note, Pcset, Interval, ChordType, ScaleType } from 'tonal'
 import { Frequency } from 'tone'
-import { synthOnce } from '#/use/synth'
-import { midiOnce } from '#/use/midi'
 import { notes } from '#/use/theory'
-import { globalScale, playChroma, playNote, stopChroma, stopNote, } from '#/use/chroma'
+import { globalScale, playChroma, playNoteOnce, stopChroma } from '#/use/chroma'
 import { calcBg } from '#/use/colors'
 import { colord } from 'colord'
 import { reactive, computed } from 'vue'
@@ -68,13 +66,7 @@ const chordNotes = computed(() => {
   return Note.sortedNames(filtered)
 })
 
-function playChordOnce() {
-  chordNotes.value.forEach((name) => {
-    midiOnce(name)
-  })
-  // synthOnce(chordNotes.value, '4n')
-  playOnce(chordNotes.value)
-}
+
 
 function arpeggiate(octave = false) {
   let playedNotes = [...chordNotes.value]
@@ -84,23 +76,16 @@ function arpeggiate(octave = false) {
     playedNotes = [...playedNotes, ...back]
   }
   playedNotes.forEach((note, i) => {
-    // synthOnce(note, '8n', `+${i / 3}`)
-    midiOnce(note, { time: `+${i / 3}` })
-    playOnce(note)
+    playNoteOnce(note)
   })
 }
 
 function playsNote(note = 0, octave = 0) {
   let freq = Frequency(note + 57, 'midi')
-  midiOnce(freq.toNote())
-  playOnce(freq.toNote())
-  // synthOnce(freq.toNote())
+  playNoteOnce(freq.toNote())
 }
 
-function playOnce(note) {
-  setTimeout(() => playNote(note), 2)
-  setTimeout(() => stopNote(note), 300)
-}
+
 
 </script>
 

@@ -1,12 +1,9 @@
 <script setup>
 import { rotateArray } from '#/use/calculations'
-import { noteNames, notes } from '#/use/theory'
-import { playChroma, stopChroma, globalScale } from '#/use/chroma'
+import { notes } from '#/use/theory'
+import { playChroma, stopChroma, globalScale, playNoteOnce } from '#/use/chroma'
 import { chromaColorMix, noteColor } from "#/use/colors"
-import { Progression, Chord } from "tonal"
 import { Frequency } from 'tone'
-import { synthOnce } from '#/use/synth'
-import { midiOnce } from '#/use/midi'
 import { colord } from 'colord'
 import { computed } from 'vue'
 import { ChordType, ScaleType } from 'tonal'
@@ -19,7 +16,6 @@ const props = defineProps({
   tonic: { type: Number, default: 0 },
   roman: { type: String, default: '' },
 });
-
 
 
 const minor = '101101011010'.split('')
@@ -47,8 +43,7 @@ function hover(step) {
 
 function playNote(note = 0, octave = 0) {
   let freq = Frequency(note + 57, 'midi')
-  midiOnce(freq.toNote())
-  synthOnce(freq.toNote())
+  playNoteOnce(freq.toNote())
 }
 </script>
 
@@ -63,7 +58,7 @@ function playNote(note = 0, octave = 0) {
     @mouseleave="stopChroma(chroma, actualPitch); pressed = false"
 )
   .p-2.text-center.mb-2.rounded-lg.text-white(
-    :style="{ backgroundColor: noteColor(actualPitch, 3), color: colord(noteColor(actualPitch),3).isDark() ? 'white' : 'black' }"
+    :style="{ backgroundColor: noteColor(actualPitch, 3), color: colord(noteColor(actualPitch), 3).isDark() ? 'white' : 'black' }"
     )
     .font-bold {{ pitch === false ? '' : typeof pitch == 'string' ? pitch : notes[actualPitch] }}{{ chord.aliases[0] }}
     .text-sm(v-if="props.roman") {{ props.roman }}

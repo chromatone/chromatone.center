@@ -31,14 +31,12 @@
 
   <script type="module">
     import { createApp, ref, watch } from 'vue'
-    import { useMidi, useSynth } from 'use-chromatone'
+    import { useMidi } from 'use-chromatone'
 
     createApp({
       setup() {
         const message = ref('Hello Vue!')
         const { midi } = useMidi()
-
-        useSynth()
 
         return {
           message, midi

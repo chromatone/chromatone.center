@@ -2,14 +2,13 @@
 import { useClamp } from '@vueuse/math';
 import { onMounted, shallowRef, ref, computed } from 'vue'
 import { Interval, Range, Scale } from 'tonal';
-import { globalScale } from '#/use';
-import { Part } from 'tone';
-import { useSynth } from '#/use';
+import { globalScale, playNoteOnce } from '#/use';
+import { getDraw, Part } from 'tone';
 
 const vowels = ["e", "i", "a", "o", "u", "y"]
 const consonants = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z"]
 
-const allNotes = computed(() => Range.numeric([-7, 13]).map(Scale.steps(globalScale.full.name)))
+const allNotes = computed(() => Range.numeric([-7, 8]).map(Scale.steps(globalScale.full.name)))
 
 const words = shallowRef([])
 const loaded = ref(false)
@@ -23,14 +22,21 @@ const orderedVowels = computed(() => vowels.toSorted((a, b) => vowelFreqs.value[
 const consonantFreqs = computed(() => getFreqs(consonants))
 const orderedConsonants = computed(() => consonants.toSorted((a, b) => consonantFreqs.value[a] >= consonantFreqs.value[b] ? -1 : 1))
 
-const { once } = useSynth()
+
 
 const part = computed(() => {
-  let par = new Part((time, val) => {
+  const Draw = getDraw()
 
-    once(val.note, val.duration, time)
-  }, [{ time: 0, duration: '16n', note: allNotes.value[0] }]).start('+0')
+  let list = allNotes.value.map((n, i) => ({ time: i / 4, duration: '32n', note: n }))
+
+  let par = new Part((time, val) => {
+    Draw.schedule(() => {
+      playNoteOnce(val.note, val.duration)
+    }, time);
+  }, list).start('0')
   par.loop = true
+  par.loopStart = 0
+  par.loopEnd = '4m'
   return par
 })
 
@@ -77,9 +83,6 @@ function splitWord(word) {
     return acc;
   }, []);
 }
-
-
-
 
 </script>
 

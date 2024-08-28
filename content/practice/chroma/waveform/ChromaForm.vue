@@ -3,9 +3,9 @@ import { noteColor } from "#/use/colors"
 import { notes } from '#/use/theory'
 import { useTimestamp, onKeyStroke, useStorage } from '@vueuse/core'
 import { chromaColorMix } from "#/use/colors";
-import { useSynth } from '#/use/synth'
 import { computed, ref, watch, watchEffect } from "vue";
 import { useClamp } from "@vueuse/math";
+import { playNote, stopAll, stopNote } from "#/use";
 
 const frequencies = []
 for (let f = 0; f < 13; f++) {
@@ -35,14 +35,16 @@ const activeNotes = useStorage('chord-notes-obj', {})
 
 
 const sounding = ref(false)
-const { attack, releaseAll } = useSynth()
+
+
 watchEffect(() => {
-  releaseAll()
   if (sounding.value) {
     for (let note in activeNotes.value) {
       let oct = note < 3 ? 3 : 4;
-      attack(notes[note] + oct)
+      playNote(notes[note] + oct)
     }
+  } else {
+    stopAll()
   }
 })
 

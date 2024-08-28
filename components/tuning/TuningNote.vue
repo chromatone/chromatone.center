@@ -1,5 +1,3 @@
-
-
 <script setup>
 import { pitchFreq, getCircleCoord } from '#/use/calculations'
 import { synthAttack, synthRelease } from '#/use/synth'

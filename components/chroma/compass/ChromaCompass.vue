@@ -22,16 +22,16 @@ const chord = computed(() => {
   return ChordType.get(chroma.value)
 })
 
-const chordScales = computed(() => {
-  return Chord.chordScales(chord.value.aliases[0]) || []
-})
+// const chordScales = computed(() => {
+//   return Chord.chordScales(chord.value.aliases[0]) || []
+// })
 
-const scale = useStorage('scale', chordScales.value[0])
-function clearScale() { scale.value = '' }
+// const scale = ref(chordScales.value[0])
+// function clearScale() { scale.value = '' }
 
-const scaleChroma = computed(() => {
-  return ScaleType.get(scale.value).chroma
-})
+// const scaleChroma = computed(() => {
+//   return ScaleType.get(scale.value).chroma
+// })
 
 const numNotes = computed(() => {
   return chroma.value.split('').reduce((acc, val) => Number(acc) + Number(val))
@@ -71,7 +71,7 @@ const chordGroup = computed(() => {
           :class="{ active: ch?.chroma == chroma }",
           @click="chroma = ch.chroma") {{ notes[globalScale.tonic] + ch?.aliases[0] }}
 
-      .flex.flex-wrap.justify-center
+      //- .flex.flex-wrap.justify-center
         .min-w-full.text-center.my-4
           .mx-auto.w-auto.text-sm.border-b-1.border-current It may be the root chord in these scales:
         .chord(

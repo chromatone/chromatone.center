@@ -1,11 +1,14 @@
 <script setup>
 import { freqColor, freqPitch } from '#/use/calculations'
 import { useTransition, TransitionPresets } from '@vueuse/core'
-import { useSynth } from '#/use/synth'
 import { Frequency } from 'tone'
 import Fraction from 'fraction.js'
 import { computed, reactive } from 'vue'
 import { useClamp } from '@vueuse/math'
+
+function once(freq) {
+  console.log(freq)
+}
 
 
 const state = reactive({
@@ -62,7 +65,6 @@ const ratio = useTransition(computed(() => state.ratio), {
   transition: TransitionPresets.easeOutCubic,
 })
 
-const { once } = useSynth();
 
 function dragFun(drag) {
   fundamental.freq += drag.delta[0] / 4

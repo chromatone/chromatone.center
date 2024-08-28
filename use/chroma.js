@@ -4,11 +4,11 @@
  */
 
 import { Frequency } from "tone";
-import { midiPlay, midiStop, playKey } from "./midi";
+import { midiPlay, midiStop, playKey, stopAll } from "./midi";
 import { rotateArray } from "./calculations";
 import { notes } from './theory'
 import { Note, ScaleType, Scale, Pcset } from "tonal";
-import { reactive, computed } from 'vue'
+import { reactive, computed, nextTick } from 'vue'
 import { useStorage } from "@vueuse/core";
 import { useClamp } from "@vueuse/math";
 
@@ -43,8 +43,7 @@ function getChromaNotes(chroma = globalScale.chroma, tonic = globalScale.tonic) 
 
 export function playChromaOnce(chroma, tonic) {
   let notes = getChromaNotes(chroma, tonic);
-  playNote(notes)
-  setTimeout(() => stopNote(notes), 300)
+  playNoteOnce(notes)
 }
 
 export function playChroma(chroma, tonic) {
@@ -57,49 +56,36 @@ export function stopChroma(chroma, tonic) {
   stopNote(notes)
 }
 
-export function playNote(name) {
+export function playNoteOnce(note, velocity, duration = 300) {
+  playNote(note, velocity)
+  setTimeout(() => stopNote(note), duration)
+}
 
-  if (Array.isArray(name)) {
-    name.forEach(note => {
-      setTimeout(() => {
-        const midiNote = Note.midi(note)
-        playKey(note.slice(0, -1), parseInt(note.slice(-1)) - 4, false, 0.9, 0.5)
-        midiPlay(midiNote, {
-          attack: 0.9
-        })
-      }, 0)
 
-    })
+export function playNote(note, velocity = 0.9) {
+  if (Array.isArray(note)) {
+    note.forEach(n => playNote(n))
   } else {
+    const midiNote = Note.midi(note)
     setTimeout(() => {
-      const midiNote = Note.midi(name)
-      playKey(name.slice(0, -1), parseInt(name.slice(-1)) - 4, false, 1, 0.5)
-      midiPlay(midiNote, {
-        attack: 0.9
-      })
+      playKey(note.slice(0, -1), parseInt(note.slice(-1)) - 4, false, velocity)
+      midiPlay(midiNote, { attack: velocity })
     }, 0)
   }
 }
 
-export function stopNote(name) {
-
-  if (Array.isArray(name)) {
-    name.forEach(note => {
-      setTimeout(() => {
-        const midiNote = Note.midi(note)
-        playKey(note.slice(0, -1), parseInt(note.slice(-1)) - 4, true, 1)
-        midiStop(midiNote, {
-          attack: 1
-        })
-      }, 0)
-    })
+export function stopNote(note) {
+  if (!note) {
+    stopAll()
+    return
+  }
+  if (Array.isArray(note)) {
+    note.forEach(n => stopNote(n))
   } else {
     setTimeout(() => {
-      const midiNote = Note.midi(name)
-      playKey(name.slice(0, -1), parseInt(name.slice(-1)) - 4, true)
-      midiStop(midiNote, {
-        attack: 2
-      })
+      const midiNote = Note.midi(note)
+      playKey(note.slice(0, -1), parseInt(note.slice(-1)) - 4, true)
+      midiStop(midiNote, { attack: 2 })
     }, 0)
   }
 }

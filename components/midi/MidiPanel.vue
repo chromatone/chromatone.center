@@ -2,8 +2,8 @@
 import { useMidi } from "#/use/midi";
 
 import { noteColor } from '#/use/colors'
-import { synth } from "#/use/synth";
 import { useTempo } from '#/use/tempo'
+import { synthEnabled } from "#/use";
 
 const tempo = useTempo()
 
@@ -78,11 +78,11 @@ var isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
         .i-la-sync
         .m-0 SYNC TABS
       button.flex-button.border.opacity-30(
-        @click="synth.state.midi = !synth.state.midi" 
-        :class="{ active: synth.state.midi }"
+        @click="synthEnabled = !synthEnabled" 
+        :class="{ active: synthEnabled }"
         v-tooltip.bottom="'Play synth on MIDI input'"
         )
-        .i-bi-volume-up(v-if="synth.state.midi")
+        .i-bi-volume-up(v-if="synthEnabled")
         .i-bi-volume-off(v-else)
         .m-0 MIDI Synth
       button.flex-button(

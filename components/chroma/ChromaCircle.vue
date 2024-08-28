@@ -4,12 +4,9 @@ import { noteColor } from '#/use/colors'
 import { colord } from 'colord'
 import { chromaColorMix } from "#/use/colors";
 import { notes } from '#/use/theory'
-import { globalScale, playChroma, stopChroma } from '#/use/chroma'
-import { pitchFreq } from '#/use/calculations'
+import { globalScale, playChroma, playNoteOnce, stopChroma } from '#/use/chroma'
 import { computed, ref } from 'vue';
-import { synthOnce } from '#/use/synth';
 import { ChordType, ScaleType } from 'tonal'
-
 
 const pressed = ref(false);
 
@@ -36,7 +33,7 @@ const chord = computed(() => ChordType.get(props.chroma));
 const scale = computed(() => ScaleType.get(props.chroma).name)
 
 function toggleNote(n) {
-  synthOnce(pitchFreq(n, 2))
+  playNoteOnce(notes[n] + 3, 0.5, 200)
   globalScale.tonic = n;
 }
 

@@ -77,22 +77,19 @@ export function learnCC({ number, channel }) {
 }
 
 export function playKey(name = 'A', offset = 0, off = false, velocity = 1, duration) {
-  const noteName = `${name}${4 + offset + midi.offset}`;
-  const note = new Note(noteName, {
-    attack: off ? 0 : velocity,
-    release: off ? 0 : velocity,
-    duration
-  });
-  const ev = {
+  noteInOn({
     type: off ? "noteoff" : "noteon",
-    note,
-    port: { id: "PC Keyboard" },
+    note: new Note(`${name}${4 + offset + midi.offset}`, {
+      attack: off ? 0 : velocity,
+      release: off ? 0 : velocity,
+      duration
+    }),
+    port: { id: "Chromatone.center" },
     timestamp: midi.time,
     target: { number: 0 },
     channel: 0,
     message: {}
-  };
-  noteInOn(ev);
+  })
 }
 
 export function useMidi() {

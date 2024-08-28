@@ -3,9 +3,8 @@ import { useStorage } from '@vueuse/core'
 import { Note, Interval } from 'tonal'
 import { freqColor } from '#/use/calculations'
 import { colord } from 'colord'
-import { synthOnce } from '#/use/synth'
-import { midiOnce } from '#/use/midi'
 import { computed, reactive, watch } from 'vue'
+import { playNoteOnce } from '#/use'
 
 const props = defineProps({
   instruments: { type: Object, default: () => { } },
@@ -25,8 +24,7 @@ const tab = reactive([])
 // })
 
 function selectNote(note, num, string) {
-  midiOnce(note);
-  synthOnce(note)
+  playNoteOnce(note)
   tab[string] = note
 }
 

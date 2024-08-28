@@ -2,7 +2,6 @@
 import { rotateArray } from '#/use/calculations'
 import { useStorage, useRafFn, useTransition, TransitionPresets } from '@vueuse/core'
 import { chromaColorMix, noteColor } from "#/use/colors";
-import { useSynth } from '#/use/synth'
 import { playChroma, stopChroma, globalScale } from '#/use/chroma'
 import { ref, watchEffect, computed } from 'vue';
 import { useClamp } from '@vueuse/math';
@@ -142,7 +141,7 @@ const sumColor = computed(() => {
     @mouseleave="stopChroma(chroma); pressed = false"
     )
     g(
-      :transform="`translate(${(speedOffset)/(speedRange)*width} 10)`"
+      :transform="`translate(${(speedOffset) / (speedRange) * width} 10)`"
       )
       circle(
         r="40"
@@ -154,7 +153,7 @@ const sumColor = computed(() => {
         y="25"
         x="50"
         fill="currentColor"
-        ) {{ speedOffset*60 }} px/sec
+        ) {{ speedOffset * 60 }} px/sec
     line(
       x1="0"
       x2="1200"
@@ -168,7 +167,7 @@ const sumColor = computed(() => {
       :key="n"
       )
       polyline(
-        :stroke="noteColor(n, isDark ? 8 :2)"
+        :stroke="noteColor(n, isDark ? 8 : 2)"
         :points="waves[n]"
         stroke-width="4"
         fill="none"

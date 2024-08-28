@@ -1,12 +1,11 @@
 <script setup>
 import { computed, reactive, watch } from 'vue';
-import { useMidi, useSequence, useTempo, pitchColor, useSynth, synthOnce } from '#/use/index';
+import { useMidi, useSequence, useTempo, pitchColor, synthOnce } from '#/use/index';
 import { getTransport, Part, Frequency } from 'tone'
 import { Midi } from '@tonejs/midi'
 
 const Transport = getTransport()
 
-const { synth } = useSynth()
 const { midi } = useMidi()
 const { seq } = useSequence(null, 1, 'row')
 const tempo = useTempo()
@@ -138,14 +137,14 @@ function useMidiTracks() {
 				)
 			g(
 				v-for="step in seq.steps" :key="step"
-				:transform="`translate(${row.width*step[0].split('-')[0]/seq.steps.length})`"
+				:transform="`translate(${row.width * step[0].split('-')[0] / seq.steps.length})`"
 				)
 				line(
 					:y2="row.height"
 					stroke="black"
 					stroke-width="0.1"
 					)
-				text(y="3" x="1" font-size="2") {{ Number(step[0].split('-')[0])+1 }}
+				text(y="3" x="1" font-size="2") {{ Number(step[0].split('-')[0]) + 1 }}
 	.flex.text-xs.p-4 {{ allNotes }}
 	.grid.grid-cols-3.text-xs.gap-2 
 		pre {{ seq }}

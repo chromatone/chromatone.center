@@ -2,12 +2,11 @@
 import { isInChroma, getCircleCoord, rotateArray } from '#/use/calculations'
 import { noteColor } from '#/use/colors'
 import { chromaColorMix } from "#/use/colors";
-import { Note } from 'tonal'
+import { Chord, Note } from 'tonal'
 import { notes } from '#/use/theory'
-import { globalScale } from '#/use/chroma'
+import { globalScale, playNote, playNoteOnce, stopNote } from '#/use/chroma'
 import { Frequency } from 'tone'
 import { midiOnce, midiPlay, midiStop } from '#/use/midi'
-import { synthOnce, synthAttack, synthRelease } from '#/use/synth'
 import { computed, nextTick, ref } from 'vue';
 import { ChordType, ScaleType } from 'tonal'
 
@@ -66,7 +65,7 @@ function react(num) {
     playChordOnce()
     return
   }
-  playNote(num, props.chroma[n] == '1' ? 1 : 0)
+  playNoteNum(num, props.chroma[n] == '1' ? 1 : 0)
   if (Number(num) != globalScale.tonic) {
     let chroma = props.chroma + ''
     if (chroma[n] == '0') {
@@ -99,14 +98,13 @@ function getNoteColor(n) {
   else return 'hsla(0,0%,10%,1)'
 }
 
-function playNote(note = 0, octave = 0) {
+function playNoteNum(note = 0, octave = 0) {
   if (globalScale.tonic > 0 && note < globalScale.tonic) {
     note = note + 12
   }
   note = note + 12 * octave
   let freq = Frequency(note + 57, 'midi')
-  midiOnce(freq.toNote())
-  synthOnce(freq)
+  playNoteOnce(freq.toNote())
 }
 
 const chordNotes = computed(() => {
@@ -130,9 +128,11 @@ function playChordOnce() {
   })
   nextTick(() => {
     chordNotes.value.forEach((note, i) => {
-      synthOnce(note, '8n', `+${i / 3}`)
+      setTimeout(() => {
+        playNoteOnce(note)
+      }, 200)
+
     })
-    synthOnce(chordNotes.value, '4n', `+${(chordNotes.value.length + 1) / 3}`)
   });
 }
 
@@ -140,14 +140,14 @@ function playChord() {
   chordNotes.value.forEach(name => {
     midiPlay(name)
   })
-  synthAttack(chordNotes.value)
+  playNote(chordNotes.value)
 }
 
 function stopChord() {
   chordNotes.value.forEach(name => {
     midiStop(name)
   })
-  synthRelease(chordNotes.value)
+  stopNote(chordNotes.value)
 }
 
 </script>

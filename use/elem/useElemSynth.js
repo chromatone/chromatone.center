@@ -61,8 +61,9 @@ export function useElemSynth(count = 12) {
 
     const osc = createOscillator(gate, midi, vel);
     const noise = createNoise(gate, midi);
+    const string = createString(gate, midi)
 
-    return el.add(osc, noise);
+    return el.add(osc, noise, string);
   }
 
   function createOscillator(gate, midi, vel) {
@@ -107,6 +108,37 @@ export function useElemSynth(count = 12) {
     );
 
     return el.tanh(el.mul(cv['osc:volume'], envelope, el.div(vel, 127), filter))
+  }
+
+  function createString(gate, midi) {
+    // Convert MIDI note to frequency
+    let freq = el.mul(440, el.pow(2, el.div(el.sub(midi, 69), 12)))
+
+    // Calculate delay time in samples
+    let delTime = el.div(el.sr(), freq)
+
+    // Create a longer ADSR envelope
+    let adsr = el.adsr(0.005, 0.1, 0.3, 0.5, gate)
+
+    // Create initial excitation with noise
+    let excitation = el.mul(adsr, el.noise(), cv['string:noise'])
+
+    // Apply a bandpass filter centered at the fundamental frequency
+    let filtered = el.bandpass(freq, cv['string:q'], excitation)
+
+    // Create the delay line for Karplus-Strong algorithm
+    let dl = el.delay(
+      { size: 44100 },
+      delTime,
+      cv['string:feedback'],
+      filtered
+    )
+
+    // Apply smoothing to the delay line output
+    let smoothed = el.smooth(el.tau2pole(0.001), dl)
+
+    // Apply volume control and soft clipping
+    return el.mul(cv['string:volume'], el.tanh(dl))
   }
 
   function createNoise(gate, midi) {

@@ -1,6 +1,6 @@
 <script setup>
 import { pitchFreq, getCircleCoord } from '#/use/calculations'
-import { synthAttack, synthRelease } from '#/use/synth'
+import { synthAttack, synthRelease } from '#/use/tone/synth'
 import { noteColor } from "#/use/colors";
 import { colord } from 'colord'
 import { computed, ref } from 'vue';

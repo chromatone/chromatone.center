@@ -1,7 +1,7 @@
 
 import { computed, onMounted, reactive, onBeforeUnmount, watch } from "vue";
 import { zzfx, ZZFX } from 'zzfx'
-import { synth as AppSynth, midi } from "#/use";
+import { midi, synthEnabled } from "#/use";
 
 let synth
 
@@ -35,11 +35,11 @@ export function useZZFX() {
 
   onMounted(() => {
     ZZFX.volume = 0.3;
-    AppSynth.state.midi = false
+    synthEnabled.value = false
   });
 
   onBeforeUnmount(() => {
-    AppSynth.state.midi = true
+    synthEnabled.value = true
   })
 
   watch(() => midi.note, n => {

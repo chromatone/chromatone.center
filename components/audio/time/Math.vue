@@ -36,14 +36,15 @@ const started = useDateFormat(() => audio.started, 'YYYY MMM DD @ HH:MM:ss  ')
     AudioTimeMetronome.sticky.top-2.z-100.w-full
 
   .sheet
-    .row We have a timer ever increasing at a fixed rate 
-
-    .text-right Started at: 
-    .p-0.font-bold {{ Number(audio?.started).toLocaleString() }}
-    .text-left.text-sm milliseconds
+    .row We start a timer ever increasing at a fixed rate 
 
     .text-right Local time: 
-    .p-0.col-span-2.font-bold {{ started }}
+    .p-0.font-bold {{ started }}    
+    .text-left.text-sm seconds 
+
+    .text-right Unix time: 
+    .p-0.font-bold {{ Number(audio?.started).toLocaleString() }}
+    .text-left.text-sm milliseconds
 
     .text-right Sample Rate: 
     .p-0.font-bold {{ Number(time?.['sample-rate'] || 44100).toLocaleString() }}

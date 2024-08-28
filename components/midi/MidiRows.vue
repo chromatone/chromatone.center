@@ -1,6 +1,6 @@
 <script setup>
 import { computed, reactive, watch } from 'vue';
-import { useMidi, useSequence, useTempo, pitchColor, synthOnce } from '#/use/index';
+import { useMidi, useSequence, useTempo, playNoteOnce } from '#/use/index';
 import { getTransport, Part, Frequency } from 'tone'
 import { Midi } from '@tonejs/midi'
 
@@ -23,7 +23,7 @@ const circularTicks = computed(() => tempo.ticks % totalTicks.value)
 
 const part = new Part((time, note) => {
 	console.log(note)
-	synthOnce(Frequency(note.midi, "midi").toNote(), note.duration + 'i')
+	playNoteOnce(Frequency(note.midi, "midi").toNote())
 }).set({
 	loop: true,
 	loopEnd: '800i',
@@ -39,7 +39,7 @@ const allNotes = reactive([])
 const { track, midiFile } = useMidiTracks()
 
 watch(() => midi.note, note => {
-	synthOnce(Frequency(note.number, "midi").toNote() + '', '196i')
+	playNoteOnce(Frequency(note.midi, "midi").toNote())
 	if (!row.recording || !tempo.playing) return
 	if (note.velocity > 0) {
 		activeNotes[note.number] = circularTicks.value

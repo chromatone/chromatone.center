@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, reactive, computed } from 'vue'
+import { onMounted, reactive, computed, ref } from 'vue'
 
 import { levelColor, notes, pitchColor } from '#/use'
 
@@ -18,6 +18,8 @@ const { render, audio } = useElementary()
 
 
 const steps = computed(() => Math.round(controls['time:steps']))
+
+const started = ref(false)
 
 </script>
 
@@ -67,49 +69,20 @@ const steps = computed(() => Math.round(controls['time:steps']))
         :y2="loop.height")
 
   .flex.flex-wrap.m-2.flex.flex-wrap.gap-4
-    .is-group.items-center.flex.p-2.flex-wrap(
-      style="flex: 160px"
-    )
-      button.text-button(@click="time.isPlaying ? transport.pause() : transport.play()")
+    .is-group.items-center.flex.p-2.flex-wrap(style="flex: 160px")
+      button.text-button(@click="time.isPlaying ? transport.pause() : transport.play()" v-show="started")
         .i-la-play(v-if="!time.isPlaying")
         .i-la-pause(v-else)
-      button.text-button(@click="transport.stop()")
+      button.text-button(@click="transport.stop()" v-show="started")
         .i-la-stop
-      button.text-button(@click="controls['time:click'] = controls['time:click'] ? 0 : 1")
+      button.text-button(@click="started = true; controls['time:click'] = controls['time:click'] ? 0 : 1") 
         .i-la-volume-up(v-if="controls['time:click']")
         .i-la-volume-mute(v-else)
+      .p-2(v-show="!started") Press to start
     .is-group.flex.flex-wrap.items-center(
       style="flex: 180px"
       v-for="(group, title) in groups" :key="title")
       .select-none.relative.flex.flex-col.gap-4.items-center(v-for="(param, p) in group" :key="p")
-
-        //- ControlKnob.cursor-pointer.-mt-2.mb-1(
-          v-model="controls[`${title}:${p}`]"
-          :style="{color: `hsl(${360*((controls[`${title}:${p}`]-param.min)/(param.max-param.min))}deg,30%,60%)`}"
-          :options=`{
-          imageSize:60,
-          minValue: param.min,
-          maxValue: param.max,
-          showValue: true,
-          showTick: true,
-          bgClass: 'fill-light-300 dark-fill-dark-400 stroke-0',
-          valueArchClass: 'stroke-current stroke-cap-round',
-          rimClass: 'stroke-gray stroke-cap-round stroke-opacity-30',
-          tickClass: 'stroke-cap-round',
-          tickStroke: 8,
-          tickOffset:12,
-          svgClass: '',
-          wheelFactor: 1,
-          KeyFactor: 5,
-          rimStroke: 0,
-          ariaLabel: p,
-          hideDefaultValue: false,
-          tickLength: 40,
-          bgRadius:50,
-          valueTextY: 75,
-          valueTextClass: 'font-bold font-mono text-2xl text-black dark-text-white',
-          }`)
-        //- .font-mono.absolute.-bottom-4.capitalize {{ p }}
         ControlRotary(
           v-if="p != 'click'"
           :min="param.min"

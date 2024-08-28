@@ -77,9 +77,10 @@ const { render, audio } = useElementary()
       .i-la-pause(v-else)
     button.text-button(@click="transport.stop()")
       .i-la-stop
-    button.text-button(@click="controls['time:click'] = controls['time:click'] ? 0 : 1")
+    button.text-button(@click="controls['time:click'] = controls['time:click'] ? 0 : 1") Press
       .i-la-volume-up(v-if="controls['time:click']")
       .i-la-volume-mute(v-else)
+
     template(v-for="(group, title) in groups" :key="title") 
       ControlRotary(
         v-for="(param, p) in group" :key="p"

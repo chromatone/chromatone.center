@@ -128,6 +128,26 @@
 		"hidden": true
 	},
 
+	"string:volume": { "value": 0.8, "min": 0, "max": 1, "step": 0.01 },
+	"string:noise": {
+		"value": 0.95,
+		"min": 0,
+		"max": 1,
+		"step": 0.001
+	},
+	"string:q": {
+		"value": 1,
+		"min": 0,
+		"max": 50,
+		"step": 0.1
+	},
+	"string:feedback": {
+		"value": 0.95,
+		"min": 0.8,
+		"max": 0.99,
+		"step": 0.001
+	},
+
 	"fx:pingPong": { "value": 0.1, "min": 0, "max": 1, "step": 0.01 },
 	"fx:feedback": { "value": 0.1, "min": 0, "max": 1, "step": 0.01 },
 	"fx:shift": { "value": 0.4, "min": 0, "max": 1, "step": 0.01 },

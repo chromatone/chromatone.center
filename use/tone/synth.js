@@ -3,10 +3,10 @@
  */
 
 import { PolySynth, MonoSynth, start, Midi, AutoPanner, Reverb, gainToDb, StereoWidener, PingPongDelay, Compressor, } from 'tone'
-import { midi } from './midi'
+import { midi } from '../midi'
 import { useCycleList } from '@vueuse/core'
 import { onKeyDown } from '@vueuse/core'
-import { createChannel } from './audio'
+import { createChannel } from '../audio'
 import { reactive, watch } from 'vue'
 import { useStorage } from '@vueuse/core'
 import { useClamp } from '@vueuse/math'

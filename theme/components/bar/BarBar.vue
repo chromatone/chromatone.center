@@ -168,7 +168,7 @@ nav.bar
 
 client-only
   BarPanel(v-model="pianoOpen")
-    synth-font.max-h-30
+    synth-font.max-h-30.sticky.top-0.z-10
     elem-synth
 
   BarPanel(v-model="scaleOpen")

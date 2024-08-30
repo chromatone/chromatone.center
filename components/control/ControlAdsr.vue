@@ -110,7 +110,7 @@ svg.min-w-45.max-w-55.m-1.touch-none(
     text(:x="5 * width / 8") SUS
     text(:x="7 * width / 8") REL
 
-  path(fill="currentColor" fill-opacity="0.2" stroke="currentColor" :d="path" stroke-linecap="round" stroke-linejoin="round" stroke-width=".5")
+  path(fill="currentColor" fill-opacity="0.2" stroke="currentColor" :d="path" stroke-linecap="round" stroke-linejoin="round" :stroke-width="active ? 1: 0.5")
 
   g.levels.op-50(stroke="currentColor" stroke-linecap="round" stroke-width="0.5")
     line(:x2="width / 4" :transform="`translate(${0 * width / 4} ${height * (1 - a / 10)})`")

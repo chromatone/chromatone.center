@@ -61,9 +61,9 @@ const len = Math.PI * 2 * r - 50;
 .knob(
   ref="knob"
   @dblclick="state.internal = state.initial; model = external"
-)
+  ) 
   .i-ph-arrows-horizontal.absolute.text-10px.top-14px.opacity-70
-  svg(viewBox="0 0 100 120")
+  svg(viewBox="-2 -2 104 124")
     g(stroke="currentColor")
       path(
         d="M25,90 a 45,45,1,1,1,50,0" 

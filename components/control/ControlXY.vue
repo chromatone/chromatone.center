@@ -48,11 +48,11 @@ useGesture({
 });
 
 function handleInteraction(ev) {
-  
+
   const { delta, dragging, wheeling, shiftKey, event } = ev;
 
-   if (event) {event.preventDefault();}
-   
+  if (event) { event.preventDefault(); }
+
   active.value = dragging || wheeling;
   if (!active.value) return
   const diff = event.type === 'wheel' ? -8 : 2;
@@ -62,9 +62,6 @@ function handleInteraction(ev) {
   x.value = clampedX.value
   clampedY.value += stepY * props.stepY
   y.value = clampedY.value
-
-  console.log(clampedX.value, stepX * props.stepX)
-
 }
 
 </script>
@@ -86,7 +83,7 @@ svg.m-1.touch-none(
     stroke="currentColor" fill="transparent" stroke-dasharray="0.05 1" stroke-linecap="round" stroke-width="0.5"
     :x="pad"
     :y="pad"
-    :width="width "
+    :width="width"
     :height="height"
     :transform="`translate(${-pad} ${-pad})`"
     rx="3"
@@ -96,7 +93,7 @@ svg.m-1.touch-none(
   text(
     :x="2"
     :y="-pad / 2"
-    :font-size="pad*1.2"
+    :font-size="pad * 1.2"
     fill="currentColor"
   ) {{ title }}
 
@@ -131,14 +128,14 @@ svg.m-1.touch-none(
   // Display values
   text(
     :x="1"
-    :y="pad+2"
-    :font-size="pad*1.2"
+    :y="pad + 2"
+    :font-size="pad * 1.2"
     fill="currentColor"
   ) FREQ: {{ displayX }} Hz
   text(
     :x="1"
-    :y="3*pad+4"
-    :font-size="pad*1.2"
+    :y="3 * pad + 4"
+    :font-size="pad * 1.2"
     fill="currentColor"
   ) Q: {{ displayY }}
 </template>

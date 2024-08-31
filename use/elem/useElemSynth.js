@@ -111,33 +111,47 @@ export function useElemSynth(count = 12) {
   }
 
   function createString(gate, midi) {
-    // Convert MIDI note to frequency
+
     let freq = el.mul(440, el.pow(2, el.div(el.sub(midi, 69), 12)))
 
-    // Calculate delay time in samples
     let delTime = el.div(el.sr(), freq)
 
-    // Create a longer ADSR envelope
-    let adsr = el.adsr(0.005, 0.1, 0.3, 0.5, gate)
+    let adsr = el.adsr(cv['string:attack'], cv['string:decay'], cv['string:sustain'], cv['string:release'], gate)
 
-    // Create initial excitation with noise
     let excitation = el.mul(adsr, el.noise(), cv['string:noise'])
 
-    // Apply a bandpass filter centered at the fundamental frequency
-    let filtered = el.bandpass(freq, cv['string:q'], excitation)
+    let bandpass = el.bandpass(freq, cv['string:q'], excitation)
 
-    // Create the delay line for Karplus-Strong algorithm
+    const filterEnvelope = el.adsr(
+      el.div(el.mul(15, cv["string:f-attack"]), cv['fx:bpm']),
+      el.div(el.mul(15, cv["string:f-decay"]), cv['fx:bpm']),
+      cv["string:f-sustain"],
+      el.div(el.mul(15, cv["string:f-release"]), cv['fx:bpm']),
+      gate
+    )
+
+    const filterCutoff = el.add(
+      cv['string:cut-off'],
+      el.mul(
+        el.mul(cv['string:f-env'], 20000),
+        filterEnvelope
+      )
+    );
+
+    const filter = el.lowpass(
+      el.max(20, el.min(20000, filterCutoff)),
+      cv['string:cut-q'],
+      bandpass
+    );
+
+
     let dl = el.delay(
       { size: 44100 },
       delTime,
       cv['string:feedback'],
-      filtered
+      filter
     )
 
-    // Apply smoothing to the delay line output
-    let smoothed = el.smooth(el.tau2pole(0.001), dl)
-
-    // Apply volume control and soft clipping
     return el.mul(cv['string:volume'], el.tanh(dl))
   }
 

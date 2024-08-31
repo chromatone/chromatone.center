@@ -33,6 +33,9 @@ export const midi = reactive({
   log: [],
   clock: 0,
   filter: useStorage(MIDI_FILTER_STORAGE_KEY, {}),
+  monoAftertouch: {},
+  polyAftertouch: {},
+  pitchbend: {},
   available: computed(() => Object.keys(midi.outputs).length > 0),
   activeNotes: computed(() => {
     return Object.values(midi.channels).reduce((acc, channel) => {
@@ -65,6 +68,7 @@ export const midi = reactive({
   once: midiOnce,
   setCC
 });
+
 
 export function learnCC({ number, channel }) {
   const val = ref(0);
@@ -115,7 +119,11 @@ export function useMidi() {
     midiPlay,
     midiStop,
     playKey,
-    stopAll
+    stopAll,
+    getPitchBend,
+    sendPitchBend,
+    getMonoAftertouch: (channel) => midi.monoAftertouch[channel] || 0,
+    getPolyAftertouch: (channel, note) => midi.polyAftertouch[channel]?.[note] || 0,
   };
 }
 
@@ -140,7 +148,6 @@ async function checkMidiPermission() {
   }
   return null; // Permission API not supported
 }
-
 
 async function setupMidi() {
   const permissionStatus = await checkMidiPermission();
@@ -189,6 +196,9 @@ function setupInputListeners(input) {
     noteon: ev => midi.inputs[input.id].note = noteInOn(ev),
     noteoff: ev => midi.inputs[input.id].note = noteInOn(ev),
     controlchange: handleControlChange(input),
+    channelaftertouch: handleMonoAftertouch(input),
+    keyaftertouch: handlePolyAftertouch(input),
+    pitchbend: handlePitchBend(input),
   };
 
   Object.entries(listeners).forEach(([event, handler]) => {
@@ -229,6 +239,29 @@ function handleControlChange(input) {
   };
 }
 
+function handlePitchBend(input) {
+  return ev => {
+    midi.pitchbend[ev.port.name] = ev.value;
+  };
+}
+
+function handleMonoAftertouch(input) {
+  return ev => {
+    createMidiChannel(ev.channel)
+    midi.monoAftertouch[ev.channel] = ev.value;
+    midi.channels[ev.channel].monoAftertouch = ev.value;
+  };
+}
+
+function handlePolyAftertouch(input) {
+  return ev => {
+    createMidiChannel(ev.channel)
+    if (!midi.polyAftertouch[ev.channel]) midi.polyAftertouch[ev.channel] = {};
+    midi.polyAftertouch[ev.channel][ev.note.number] = ev.value;
+    midi.channels[ev.channel].polyAftertouch[ev.note.number] = ev.value;
+  };
+}
+
 function setupOutput(output) {
   midi.outputs[output.id] = {
     name: output.name,
@@ -258,6 +291,7 @@ function noteInOn(ev) {
   if (ev.type === "noteoff") {
     note.velocity = 0;
     delete midi.channels[note.channel].activeNotes[note.number];
+    delete midi.polyAftertouch[note.channel]?.[note.number];
   } else {
     note.velocity = 120 * (ev.note.attack || 1);
     midi.channels[note.channel].activeNotes[note.number] = ev.note.attack;
@@ -283,8 +317,20 @@ function ccIn(ev) {
 
 function createMidiChannel(ch) {
   if (!midi.channels[ch]) {
-    midi.channels[ch] = reactive({ num: ch, activeNotes: {}, notes: {}, cc: {} });
+    midi.channels[ch] = reactive({
+      num: ch,
+      activeNotes: {},
+      notes: {},
+      cc: {},
+      monoAftertouch: 0,
+      polyAftertouch: {},
+      pitchBend: 0,
+    });
   }
+}
+
+export function getPitchBend(channel) {
+  return midi.pitchBend[channel] || 0;
 }
 
 function setVelocity(channel, note, velocity) {
@@ -353,15 +399,26 @@ export function setCC(cc, value) {
   });
 }
 
+export function sendPitchBend(value, options = {}) {
+  if (!midi.out) return;
+  const channel = options.channel || midi.channel;
+  WebMidi.outputs.forEach(output => {
+    output.sendPitchBend(value, { channels: channel, ...options });
+  });
+}
+
 export function stopAll() {
   if (!midi.out) return;
   midi.channels = {};
+  midi.monoAftertouch = {};
+  midi.polyAftertouch = {};
   midi.playing = false;
   WebMidi.outputs.forEach(output => {
     output.sendAllNotesOff();
     output.sendAllSoundOff();
     output.sendReset();
     output.sendSongPosition(0);
+    output.sendPitchBend(0);
   });
   midi.stopped = true;
 }
@@ -387,3 +444,4 @@ export function sortNotes(notes, reverse = false) {
     return reverse ? -diff : diff;
   });
 }
+

@@ -68,7 +68,15 @@ const scope = useScope('synth')
         v-model="controls[`${g}:${p}`]" :min="param.min" :max="param.max" :step="param.step" :param="p" :interpolation="p == 'cut-off' ? 'log2' : 'linear'" ) 
 
 
-    .p-0(v-if="g == 'osc' || g == 'noise'" style="order:5; flex: 10")
+    .p-0.flex(v-if="g == 'osc' || g == 'noise' || g == 'string'" style="order:5; flex: 10")
+      ControlXY.h-30(
+        v-model:x="controls[`${g}:cut-off`]" 
+        :rangeX="[params[`${g}:cut-off`].min, params[`${g}:cut-off`].max]"
+        :stepX="50"
+        v-model:y="controls[`${g}:cut-q`]"
+        :rangeY="[params[`${g}:cut-q`].min, params[`${g}:cut-q`].max]"
+        :stepY="0.01"
+        )
       ControlAdsr.bg-light-400.dark-bg-dark-400.bg-op-30.dark-bg-op-30.rounded-lg(
         title="Amplitude Envelope"
         v-model:a="controls[`${g}:attack`]"
@@ -76,7 +84,7 @@ const scope = useScope('synth')
         v-model:s="controls[`${g}:sustain`]"
         v-model:r="controls[`${g}:release`]"
         )
-    .p-0(v-if="g == 'osc' || g == 'noise'" style="order:20;flex: 10")
+    .p-0(v-if="g == 'osc' || g == 'noise' || g == 'string'" style="order:20;flex: 10")
       ControlAdsr.bg-light-400.dark-bg-dark-400.bg-op-30.dark-bg-op-30.rounded-lg(
         title="Filter Envelope"
         v-model:a="controls[`${g}:f-attack`]"

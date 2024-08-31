@@ -9,6 +9,8 @@ import { globalScale } from '#/use/chroma';
 import { useClamp } from '@vueuse/math'
 import { useStorage } from '@vueuse/core'
 import { intervals } from '#/use/theory';
+import { playNote, stopNote } from '#/use/chroma'
+import { Note } from 'tonal';
 
 const props = defineProps({
   note: { type: Number, default: 0 },
@@ -27,7 +29,7 @@ function logCurve(x, factor = 10) {
   return Math.log(1 + factor * x) / Math.log(1 + factor);
 }
 
-function startNote(note, event) {
+function startKey(note, event) {
   event?.preventDefault()
   const rect = event.target.getBoundingClientRect();
   const relativeY = event.clientY - rect.top;
@@ -37,15 +39,11 @@ function startNote(note, event) {
   const adjustedVelocity = 0.3 + (logVelocity * 0.7);
   const scaleFactor = globalScale.isIn(notes[(note) % 12]) ? 1 : 0.3;
   const finalVelocity = adjustedVelocity * scaleFactor;
-
-  playKey(note - 7, 0, false, finalVelocity);
-  midiAttack({ number: note - 3, velocity: Math.round(finalVelocity * 127) });
+  playNote(Note.fromMidi(note), finalVelocity)
 }
 
-function stopNote(note, event) {
-  playKey(note - 7, 0, true, 0)
-  midiRelease({ number: note - 3 })
-
+function stopKey(note, event) {
+stopNote(Note.fromMidi(note))
 }
 
 const noteKey = ref()
@@ -62,11 +60,11 @@ g.note(
     :width="width"
     :height="height"
     :fill="noteColor(note + 3, null, midi.activeNotes[note] ? 1 : 0.1, globalScale.isIn(notes[(note + 3) % 12]) ? 1 : .4)"
-    @pointerdown.prevent="startNote(note + 3, $event)", 
-    @pointerenter="pressed ? startNote(note + 3, $event) : null"
-    @pointerleave="stopNote(note + 3, $event)", 
-    @pointerup.prevent="stopNote(note + 3, $event)", 
-    @touchcancel="stopNote(note + 3, $event)"
+    @pointerdown.prevent="startKey(note, $event)", 
+    @pointerenter="pressed ? startKey(note, $event) : null"
+    @pointerleave="stopKey(note, $event)", 
+    @pointerup.prevent="stopKey(note, $event)", 
+    @touchcancel="stopNote(note, $event)"
     )
   g.marks.pointer-events-none
     line(

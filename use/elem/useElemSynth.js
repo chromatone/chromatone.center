@@ -107,7 +107,7 @@ export function useElemSynth(count = 12) {
       oscillator
     );
 
-    return el.tanh(el.mul(cv['osc:volume'], envelope, el.div(vel, 127), filter))
+    return el.tanh(el.mul(cv['osc:on'], cv['osc:volume'], envelope, el.div(vel, 127), filter))
   }
 
   function createString(gate, midi) {
@@ -144,7 +144,6 @@ export function useElemSynth(count = 12) {
       bandpass
     );
 
-
     let dl = el.delay(
       { size: 44100 },
       delTime,
@@ -152,7 +151,7 @@ export function useElemSynth(count = 12) {
       filter
     )
 
-    return el.mul(cv['string:volume'], el.tanh(dl))
+    return el.mul(cv['string:on'], cv['string:volume'], el.tanh(dl))
   }
 
   function createNoise(gate, midi) {
@@ -188,13 +187,14 @@ export function useElemSynth(count = 12) {
       filter
     );
 
-    return el.tanh(el.mul(cv['noise:gain'], envelope, lowpass))
+    return el.tanh(el.mul(cv['noise:on'], cv['noise:gain'], envelope, lowpass))
   }
 
   function pingPong(left, right) {
     return [0, 1].map(i => el.add(
       i ? right || left : left,
       el.mul(
+        cv['fx:on'],
         cv['fx:pingPong'],
         el.delay(
           { size: 44100 },

@@ -63,6 +63,10 @@ const scope = useScope('synth')
     )
     .text-sm.uppercase.absolute.-top-4.bg-light-300.dark-bg-dark-300.p-1.rounded {{ g }}
 
+    button.text-button(
+      :class="{ active: controls[`${g}:on`] == 1 }"
+      @click="controls[`${g}:on`] == 1 ? (controls[`${g}:on`] = 0) : (controls[`${g}:on`] = 1)")
+      .i-la-power-off
     .p-0.flex.items-center.flex-1.justify-center(v-for="(param, p) in group" :key="p" :style="{ order: p == 'f-env' ? 20 : 1 }")
       ControlRotary(
         v-model="controls[`${g}:${p}`]" :min="param.min" :max="param.max" :step="param.step" :param="p" :interpolation="p == 'cut-off' ? 'log2' : 'linear'" ) 

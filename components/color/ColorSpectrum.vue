@@ -2,7 +2,7 @@
 import toColor from 'color-spectrum'
 import { pitchFreq, pitchColor } from '#/use'
 import { useClamp } from '@vueuse/math';
-import { useDrag } from '@vueuse/gesture';
+import { useDrag, useGesture } from '@vueuse/gesture';
 import { computed, ref } from 'vue';
 
 const notes = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A']
@@ -19,7 +19,7 @@ const pad = {
   left: 10
 }
 
-const baseFreq = useClamp(440, 400, 460)
+const baseFreq = useClamp(440, 300, 500)
 
 function tHzToNM(frequencyTHz) {
   const speedOfLight = 299792458 * 1e9; // nm/s
@@ -48,13 +48,21 @@ const freqs = computed(() => notes.map((name, pitch) => {
 
 const spectrum = ref()
 
-useDrag(ev => {
-  if (!ev.dragging) return
-  const delta = ev.delta[0]
-  baseFreq.value += delta / 10
+
+useGesture({
+  onDrag(ev) {
+    ev?.event?.preventDefault()
+    const delta = ev.delta[0]
+    baseFreq.value += delta / 10
+  },
+  onWheel(ev) {
+    ev?.event?.preventDefault()
+    const delta = ev.delta[0]
+    baseFreq.value -= delta / 10
+  }
 }, {
   domTarget: spectrum,
-
+  eventOptions: { passive: false }
 })
 
 </script>
@@ -84,10 +92,11 @@ svg.w-full.cursor-grab.active-cursor-grabbing.select-none(
 
   g(text-anchor="start" :transform="`translate(5 ${-115})`")
     text(fill="currentColor")
-      tspan -5th Octave
-      tspan(dy="25" x="0") 3rd Octave
-      tspan(dy="25" x="0") 4th Octave
-      tspan(dy="25" x="0") 44th Octave
+      tspan -5th octave, Hz
+      tspan(dy="25" x="0") 3rd octave, Hz
+      tspan(dy="25" x="0") 4th octave, Hz
+      //- tspan(dy="25" x="0") 8th octave, kHz
+      tspan(dy="25" x="0") 44th octave, THz
 
   g(
     v-for="note in freqs" :key="note"
@@ -111,11 +120,11 @@ svg.w-full.cursor-grab.active-cursor-grabbing.select-none(
 
   g(text-anchor="start" :transform="`translate(10 0})`")
     text(fill="currentColor")
-      tspan.font-bold(x="5" :y="-15") Frequency, Hz
+      tspan.font-bold(x="5" :y="-15") Frequency
       tspan(x="5" y="15") {{ range[0] }} Hz
       tspan(text-anchor="end" :x="box.width - 5" y="15") {{ range[1] }} Hz
       tspan(x="5" :y="box.height - 15") {{ tHzToNM(range[0]).toFixed(1) }} nm
       tspan(text-anchor="end" :x="box.width - 5" :y="box.height - 15") {{ tHzToNM(range[1]).toFixed(1) }} nm
-      tspan.font-bold(x="5" :y="box.height + 20") Wavelength, nm
+      tspan.font-bold(x="5" :y="box.height + 20") Wavelength
       
 </template>

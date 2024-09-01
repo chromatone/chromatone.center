@@ -102,8 +102,8 @@ importers:
         specifier: ^2.5.1
         version: 2.5.1
       mathjs:
-        specifier: ^13.1.0
-        version: 13.1.0
+        specifier: ^13.1.1
+        version: 13.1.1
       matter-attractors:
         specifier: ^0.1.6
         version: 0.1.6
@@ -192,8 +192,8 @@ importers:
         specifier: ^3.1.11
         version: 3.1.11
       worker-timers:
-        specifier: ^8.0.4
-        version: 8.0.4
+        specifier: ^8.0.5
+        version: 8.0.5
       zzfx:
         specifier: ^1.3.0
         version: 1.3.0
@@ -202,20 +202,20 @@ importers:
         specifier: ^17.0.0
         version: 17.0.0
       '@iconify-json/fluent':
-        specifier: ^1.1.63
-        version: 1.1.63
+        specifier: ^1.2.0
+        version: 1.2.0
       '@iconify-json/healthicons':
-        specifier: ^1.1.22
-        version: 1.1.22
+        specifier: ^1.2.0
+        version: 1.2.0
       '@iconify-json/la':
-        specifier: ^1.1.9
-        version: 1.1.9
+        specifier: ^1.2.0
+        version: 1.2.0
       '@iconify-json/mdi':
-        specifier: ^1.1.68
-        version: 1.1.68
+        specifier: ^1.2.0
+        version: 1.2.0
       '@iconify-json/tabler':
-        specifier: ^1.1.120
-        version: 1.1.120
+        specifier: ^1.2.0
+        version: 1.2.0
       '@modyfi/vite-plugin-yaml':
         specifier: ^1.1.0
         version: 1.1.0(rollup@4.13.0)(vite@5.4.2(@types/node@20.9.2)(terser@5.24.0))
@@ -229,8 +229,8 @@ importers:
         specifier: ^3.4.38
         version: 3.4.38
       '@vue/language-plugin-pug':
-        specifier: ^2.0.29
-        version: 2.0.29
+        specifier: ^2.1.4
+        version: 2.1.4
       pug:
         specifier: ^3.0.3
         version: 3.0.3
@@ -924,12 +924,12 @@ packages:
     resolution: {integrity: sha512-5F7SDGs1T72ZczbRwbGO9lQi0NLjQxzl6i4lJxLxfW9U5UluCSyEJeniWvnhl3/euNiqQVbo8zruhsDfid0esA==}
     engines: {node: '>=6.9.0'}
 
-  '@babel/runtime@7.25.0':
-    resolution: {integrity: sha512-7dRy4DwXwtzBrPbZflqxnvfxLF8kdZXPkhymtDeFoFqE6ldzjQFgYTtYIFARcLEYDrqfBfYcZt1WqFxRoyC9Rw==}
-    engines: {node: '>=6.9.0'}
-
   '@babel/runtime@7.25.4':
     resolution: {integrity: sha512-DSgLeL/FNcpXuzav5wfYvHCGvynXkJbn3Zvc3823AEe9nPwW9IK4UoCSS5yGymmQzN0pCPvivtgS6/8U2kkm1w==}
+    engines: {node: '>=6.9.0'}
+
+  '@babel/runtime@7.25.6':
+    resolution: {integrity: sha512-VBj9MYyDb9tuLq7yzqjgzt6Q+IBQLrGZfdjOekyEirZPHxXWoTSGUTMrpsfi58Up73d13NfYLv8HT9vmznjzhQ==}
     engines: {node: '>=6.9.0'}
 
   '@babel/template@7.25.0':
@@ -1308,20 +1308,20 @@ packages:
     resolution: {integrity: sha512-93zYdMES/c1D69yZiKDBj0V24vqNzB/koF26KPaagAfd3P/4gUlh3Dys5ogAK+Exi9QyzlD8x/08Zt7wIKcDcA==}
     deprecated: Use @eslint/object-schema instead
 
-  '@iconify-json/fluent@1.1.63':
-    resolution: {integrity: sha512-JmCfiMvxoCFOr0gOPA4uPl78DOVPsiL/TwE4hWIWG0io9NT69zbuNWiQbYPR4qpffNowB5HchQz7cQrIm0iLAQ==}
+  '@iconify-json/fluent@1.2.0':
+    resolution: {integrity: sha512-K4lsuOXlUM9TWapE4p8A/0l7mhcV3Rqp3b0NY3oIbP8IXM0YOTn4G5eZPhYmwTrhbZbQDqktGkI0BuETUhEbtw==}
 
-  '@iconify-json/healthicons@1.1.22':
-    resolution: {integrity: sha512-3bDDV8OjfTQ8dnHvSpdEBliaXUHDOqD+cisr/h+HZ/IzNy7gfnIyThKt0V7Qp2lkHBfjEX9DfBB/fjdD8yZAUQ==}
+  '@iconify-json/healthicons@1.2.0':
+    resolution: {integrity: sha512-CrNMxFlCJm7d28FNUCE4nlqf5FL1KD5aqO8yokh1LB+x78IXeZBggRTH7W1+QLoJiBmFsVtrAsRH+R4obs33BQ==}
 
-  '@iconify-json/la@1.1.9':
-    resolution: {integrity: sha512-ec5MVvsD2NTbWYIbCgbIcPyY1D8U3VttU+EfG8RWIlwceMwAz2ZnLhvOuXUxB3wu7EBNrnXfnT7MBDNRJ83YVw==}
+  '@iconify-json/la@1.2.0':
+    resolution: {integrity: sha512-YgZsqp/M361PwfO6hQcIN1LDYnqlINyCblDPQV/6yVoWdC0weTAu9cnAtwRYt3FzMUn+k0Gkqi32QI5d88NBgQ==}
 
-  '@iconify-json/mdi@1.1.68':
-    resolution: {integrity: sha512-7//TKCiXLU6kNWeOJRTBbisofVO7rF1sD1TZTL4/V9nqlmVNczQ5IOY0GgKOTsitkcTnX9GXgrgbjw3OI5B69w==}
+  '@iconify-json/mdi@1.2.0':
+    resolution: {integrity: sha512-E9/3l5Syg3wfuarorFodhn4s8YorxhH3U3U20LaNBNiqw1kFNIDWhF6HymuzAD35k7RH0OBasJ+ZUyFtVVV6eg==}
 
-  '@iconify-json/tabler@1.1.120':
-    resolution: {integrity: sha512-G9of3jPsYUfFkdaeqfILQF3xkCuZeitqJDjMkqmzjfJcWzl7JW/PoPJRby28dIUHTyO6eLqOlKhFP4/EQCg44Q==}
+  '@iconify-json/tabler@1.2.0':
+    resolution: {integrity: sha512-ke7ESt/wurkWr/VrMrAguN8jOmf8tD9LOOqhn3OwAx8kg0lYwMkOahV6jTGXh2zU90z1drsD34cKV7RoNe0PuQ==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -2034,17 +2034,14 @@ packages:
       vite: ^5.0.0
       vue: ^3.2.25
 
-  '@volar/language-core@2.4.0-alpha.15':
-    resolution: {integrity: sha512-mt8z4Fm2WxfQYoQHPcKVjLQV6PgPqyKLbkCVY2cr5RSaamqCHjhKEpsFX66aL4D/7oYguuaUw9Bx03Vt0TpIIA==}
+  '@volar/language-core@2.4.1':
+    resolution: {integrity: sha512-9AKhC7Qn2mQYxj7Dz3bVxeOk7gGJladhWixUYKef/o0o7Bm4an+A3XvmcTHVqZ8stE6lBVH++g050tBtJ4TZPQ==}
 
-  '@volar/language-service@2.4.0-alpha.15':
-    resolution: {integrity: sha512-H5T5JvvqvWhG0PvvKPTM0nczTbTKQ+U87a8r0eahlH/ySi2HvIHO/7PiNKLxKqLNsiT8SX4U3QcGC8ZaNcC07g==}
+  '@volar/language-service@2.4.1':
+    resolution: {integrity: sha512-Q3NVjZTAz0Vnco70Rgcryq2eDPWkFBdpzr84aYqOGvVC4SBjq1Wsx0d9NyA4seQHfHWwbZyzyviKRm+htyRlKg==}
 
-  '@volar/source-map@2.4.0-alpha.15':
-    resolution: {integrity: sha512-8Htngw5TmBY4L3ClDqBGyfLhsB8EmoEXUH1xydyEtEoK0O6NX5ur4Jw8jgvscTlwzizyl/wsN1vn0cQXVbbXYg==}
-
-  '@volar/source-map@2.4.0-alpha.18':
-    resolution: {integrity: sha512-MTeCV9MUwwsH0sNFiZwKtFrrVZUK6p8ioZs3xFzHc2cvDXHWlYN3bChdQtwKX+FY2HG6H3CfAu1pKijolzIQ8g==}
+  '@volar/source-map@2.4.1':
+    resolution: {integrity: sha512-Xq6ep3OZg9xUqN90jEgB9ztX5SsTz1yiV8wiQbcYNjWkek+Ie3dc8l7AVt3EhDm9mSIR58oWczHkzM2H6HIsmQ==}
 
   '@vscode/l10n@0.0.18':
     resolution: {integrity: sha512-KYSIHVmslkaCDyw013pphY+d7x1qV8IZupYfeIfzNA+nsaWHbn5uPuQRvdRFsa9zFzGeudPuoGoZ1Op4jrJXIQ==}
@@ -2070,8 +2067,8 @@ packages:
   '@vue/devtools-shared@7.3.8':
     resolution: {integrity: sha512-1NiJbn7Yp47nPDWhFZyEKpB2+5/+7JYv8IQnU0ccMrgslPR2dL7u1DIyI7mLqy4HN1ll36gQy0k8GqBYSFgZJw==}
 
-  '@vue/language-plugin-pug@2.0.29':
-    resolution: {integrity: sha512-aPJM/hs7GW6eSx7hxbs5oocsFzVQhKm/JKbKrwLUHK5QqjlGOYDxPm2jhI7FX0T2tiVbCF91wFyWgQr+gFeUbw==}
+  '@vue/language-plugin-pug@2.1.4':
+    resolution: {integrity: sha512-zGu21pneTOm92SLcbRnrM3MLZe83qJoJhHFQKGVH1KkgJJcvTO5e7OM4XYsaXpBTcjpcaGDZJa9ZP2e2ojQAAg==}
 
   '@vue/reactivity@3.4.38':
     resolution: {integrity: sha512-4vl4wMMVniLsSYYeldAKzbk72+D3hUnkw9z8lDeJacTxAkXeDAP1uE9xr2+aKIN0ipOL8EG2GPouVTH6yF7Gnw==}
@@ -2810,8 +2807,8 @@ packages:
   fast-levenshtein@2.0.6:
     resolution: {integrity: sha512-DCXu6Ifhqcks7TZKY3Hxp3y6qphY5SJZmrWMDrKcERSOXWQdMhU9Ig/PYrzyw/ul9jOIyh0N4M0tbC5hodg8dw==}
 
-  fast-unique-numbers@9.0.8:
-    resolution: {integrity: sha512-4InhXOXWm8LAYpxC4h9W4Yh3Mq86xVHRxuAxkf9zeA1GEZWFkXoNeQh37aLgcGoce/lcpRyXSDIuAqUhXGZh7g==}
+  fast-unique-numbers@9.0.9:
+    resolution: {integrity: sha512-XVGu/UFAjpclSMX6LD/GGiyRu+weUFb8kUxP09yiDmWA1ORxiO5gpOl13ZBqjeb+gg05JA2H7d37UvbSHfW+7w==}
     engines: {node: '>=18.2.0'}
 
   fastq@1.15.0:
@@ -3373,8 +3370,8 @@ packages:
   mark.js@8.11.1:
     resolution: {integrity: sha512-1I+1qpDt4idfgLQG+BNWmrqku+7/2bi5nLf4YwF8y8zXvmfiTBY3PV3ZibfrjBueCByROpuBjLLFCajqkgYoLQ==}
 
-  mathjs@13.1.0:
-    resolution: {integrity: sha512-5BI//cQdcKtDgstJ3QbKYyrWLyUEEHY9ZQgA3laaPyTis+ca8Y7GCxbLFFLYv8nkpOFTIF55FLKoiqQaufj1dQ==}
+  mathjs@13.1.1:
+    resolution: {integrity: sha512-duaSAy7m4F+QtP1Dyv8MX2XuxcqpNDDlGly0SdVTCqpAmwdOFWilDdQKbLdo9RfD6IDNMOdo9tIsEaTXkconlQ==}
     engines: {node: '>= 18'}
     hasBin: true
 
@@ -4117,6 +4114,9 @@ packages:
   tslib@2.6.3:
     resolution: {integrity: sha512-xNvxJEOUiWPGhUuUdQgAJPKOOJfGnIyKySOc09XkKsgdUV/3E2zvwZYdejjmRgPCgcym1juLH3226yA7sEFJKQ==}
 
+  tslib@2.7.0:
+    resolution: {integrity: sha512-gLXCKdN1/j47AiHiOkJN69hJmcbGTHI0ImLmbYLHykhgeN0jVGola9yVjFgzCUklsZQMW55o+dW7IXv3RCXDzA==}
+
   tsx@4.17.0:
     resolution: {integrity: sha512-eN4mnDA5UMKDt4YZixo9tBioibaMBpoxBkD+rIPAjVmYERSG0/dWEY1CEFuV89CgASlKL499q8AhmkMnnjtOJg==}
     engines: {node: '>=18.0.0'}
@@ -4364,16 +4364,16 @@ packages:
     resolution: {integrity: sha512-Dhxzh5HZuiHQhbvTW9AMetFfBHDMYpo23Uo9btPXgdYP+3T5S+p+jgNy7spra+veYhBP2dCSgxR/i2Y02h5/6w==}
     engines: {node: '>=0.10.0'}
 
-  volar-service-html@0.0.59:
-    resolution: {integrity: sha512-hEXOsYpILDlITZxnqRLV9OepVWD63GZBsyjMxszwdzlxvGZjzbGcBBinJGGJRwFIV8djdJwnt91bkdg1V5tj6Q==}
+  volar-service-html@0.0.62:
+    resolution: {integrity: sha512-Zw01aJsZRh4GTGUjveyfEzEqpULQUdQH79KNEiKVYHZyuGtdBRYCHlrus1sueSNMxwwkuF5WnOHfvBzafs8yyQ==}
     peerDependencies:
-      '@volar/language-service': ~2.4.0-alpha.12
+      '@volar/language-service': ~2.4.0
     peerDependenciesMeta:
       '@volar/language-service':
         optional: true
 
-  volar-service-pug@0.0.59:
-    resolution: {integrity: sha512-kmch7yoqeGNlJuDzpw/YL2b89ilzBmWDd0lJbpG412/RXc3PJVA4usUK+SQHdVoF+qi5IcZL6IDxlvRiIrDgWg==}
+  volar-service-pug@0.0.62:
+    resolution: {integrity: sha512-C0/O8uGnRfijWKE0zFXxJ/o7BbLebzretsEaiMkvBDIxm5oe7HRDzQr6CgknV/WVgiohZ74v+0CwBPl2YmcPUQ==}
 
   vscode-html-languageservice@5.3.0:
     resolution: {integrity: sha512-C4Z3KsP5Ih+fjHpiBc5jxmvCl+4iEwvXegIrzu2F5pktbWvQaBT3YkVPk8N+QlSSMk8oCG6PKtZ/Sq2YHb5e8g==}
@@ -4544,14 +4544,14 @@ packages:
   workbox-window@7.1.0:
     resolution: {integrity: sha512-ZHeROyqR+AS5UPzholQRDttLFqGMwP0Np8MKWAdyxsDETxq3qOAyXvqessc3GniohG6e0mAqSQyKOHmT8zPF7g==}
 
-  worker-timers-broker@7.1.1:
-    resolution: {integrity: sha512-WkRybQgmU4l8X4a6FajDc+qfq/7PO5VDBUJwWCfYRzSKQmrCbZEsN87QvnfuqfoQfUrGG1gl8Q5zFNhy6Nj2Cg==}
+  worker-timers-broker@7.1.2:
+    resolution: {integrity: sha512-2OTkiNCjwiHiRxyJ0IqJPDUebsnjDxEwSEJ51oKRb4u+u+JJm6mJtsIWU+AkwyBFMN3iahNA3fLyieCGN31hiw==}
 
-  worker-timers-worker@8.0.3:
-    resolution: {integrity: sha512-ENwYTUjlSxtb7MBzXTML9VsRkGCT6fpHELG9Rwu1aF6duB1sbM2+XGJIE/k8t7rdAPcB2JcUcGnayE/QYgeJ3w==}
+  worker-timers-worker@8.0.4:
+    resolution: {integrity: sha512-uNkFEffJvwYs/7S/DRoFNBT6ln5CBXMc3a6m5aB3YVU+uqSoE+LD/QU9hk7hn2zI4H6m8alWKGFygY6+/FZP6w==}
 
-  worker-timers@8.0.4:
-    resolution: {integrity: sha512-cMK5gPSf1emFVjAOp4LfECH51e8gxpvmOMd/t1ghyqO48FsJszFzjzzfa4TT3pH1j2RtrciITVCRP4fjO9JgNw==}
+  worker-timers@8.0.5:
+    resolution: {integrity: sha512-VQ4kUuRKpEbMu421o1/SdLhKk1YhNEFnZZLLe0h+r69CFd42C4R2WpC4afghsqwXebOY6t+a6nl7f35WzacZ9Q==}
 
   wrap-ansi@6.2.0:
     resolution: {integrity: sha512-r6lPcBGxZXlIcymEu7InxDMhdW0KDxpLgoFLcguasxCaJ/SOIZwINatK9KY/tf+ZrlywOKU0UDj3ATXUBfxJXA==}
@@ -5464,11 +5464,11 @@ snapshots:
     dependencies:
       regenerator-runtime: 0.14.0
 
-  '@babel/runtime@7.25.0':
+  '@babel/runtime@7.25.4':
     dependencies:
       regenerator-runtime: 0.14.0
 
-  '@babel/runtime@7.25.4':
+  '@babel/runtime@7.25.6':
     dependencies:
       regenerator-runtime: 0.14.0
 
@@ -5732,23 +5732,23 @@ snapshots:
 
   '@humanwhocodes/object-schema@2.0.3': {}
 
-  '@iconify-json/fluent@1.1.63':
+  '@iconify-json/fluent@1.2.0':
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/healthicons@1.1.22':
+  '@iconify-json/healthicons@1.2.0':
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/la@1.1.9':
+  '@iconify-json/la@1.2.0':
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/mdi@1.1.68':
+  '@iconify-json/mdi@1.2.0':
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/tabler@1.1.120':
+  '@iconify-json/tabler@1.2.0':
     dependencies:
       '@iconify/types': 2.0.0
 
@@ -6520,20 +6520,18 @@ snapshots:
       vite: 5.4.2(@types/node@20.9.2)(terser@5.24.0)
       vue: 3.4.38
 
-  '@volar/language-core@2.4.0-alpha.15':
+  '@volar/language-core@2.4.1':
     dependencies:
-      '@volar/source-map': 2.4.0-alpha.15
+      '@volar/source-map': 2.4.1
 
-  '@volar/language-service@2.4.0-alpha.15':
+  '@volar/language-service@2.4.1':
     dependencies:
-      '@volar/language-core': 2.4.0-alpha.15
+      '@volar/language-core': 2.4.1
       vscode-languageserver-protocol: 3.17.5
       vscode-languageserver-textdocument: 1.0.11
       vscode-uri: 3.0.8
 
-  '@volar/source-map@2.4.0-alpha.15': {}
-
-  '@volar/source-map@2.4.0-alpha.18': {}
+  '@volar/source-map@2.4.1': {}
 
   '@vscode/l10n@0.0.18': {}
 
@@ -6585,10 +6583,10 @@ snapshots:
     dependencies:
       rfdc: 1.4.1
 
-  '@vue/language-plugin-pug@2.0.29':
+  '@vue/language-plugin-pug@2.1.4':
     dependencies:
-      '@volar/source-map': 2.4.0-alpha.18
-      volar-service-pug: 0.0.59
+      '@volar/source-map': 2.4.1
+      volar-service-pug: 0.0.62
 
   '@vue/reactivity@3.4.38':
     dependencies:
@@ -6830,7 +6828,7 @@ snapshots:
 
   automation-events@7.0.4:
     dependencies:
-      '@babel/runtime': 7.24.8
+      '@babel/runtime': 7.25.4
       tslib: 2.6.3
 
   available-typed-arrays@1.0.5: {}
@@ -7536,10 +7534,10 @@ snapshots:
 
   fast-levenshtein@2.0.6: {}
 
-  fast-unique-numbers@9.0.8:
+  fast-unique-numbers@9.0.9:
     dependencies:
-      '@babel/runtime': 7.25.0
-      tslib: 2.6.3
+      '@babel/runtime': 7.25.6
+      tslib: 2.7.0
 
   fastq@1.15.0:
     dependencies:
@@ -8095,7 +8093,7 @@ snapshots:
 
   mark.js@8.11.1: {}
 
-  mathjs@13.1.0:
+  mathjs@13.1.1:
     dependencies:
       '@babel/runtime': 7.25.4
       complex.js: 2.1.1
@@ -8478,7 +8476,7 @@ snapshots:
 
   regenerator-transform@0.15.2:
     dependencies:
-      '@babel/runtime': 7.25.0
+      '@babel/runtime': 7.25.4
 
   regexp.prototype.flags@1.5.1:
     dependencies:
@@ -8969,6 +8967,8 @@ snapshots:
 
   tslib@2.6.3: {}
 
+  tslib@2.7.0: {}
+
   tsx@4.17.0:
     dependencies:
       esbuild: 0.23.0
@@ -9273,21 +9273,21 @@ snapshots:
 
   void-elements@3.1.0: {}
 
-  volar-service-html@0.0.59(@volar/language-service@2.4.0-alpha.15):
+  volar-service-html@0.0.62(@volar/language-service@2.4.1):
     dependencies:
       vscode-html-languageservice: 5.3.0
       vscode-languageserver-textdocument: 1.0.11
       vscode-uri: 3.0.8
     optionalDependencies:
-      '@volar/language-service': 2.4.0-alpha.15
+      '@volar/language-service': 2.4.1
 
-  volar-service-pug@0.0.59:
+  volar-service-pug@0.0.62:
     dependencies:
-      '@volar/language-service': 2.4.0-alpha.15
+      '@volar/language-service': 2.4.1
       muggle-string: 0.4.1
       pug-lexer: 5.0.1
       pug-parser: 6.0.0
-      volar-service-html: 0.0.59(@volar/language-service@2.4.0-alpha.15)
+      volar-service-html: 0.0.62(@volar/language-service@2.4.1)
       vscode-html-languageservice: 5.3.0
       vscode-languageserver-textdocument: 1.0.11
 
@@ -9436,7 +9436,7 @@ snapshots:
       '@apideck/better-ajv-errors': 0.3.6(ajv@8.12.0)
       '@babel/core': 7.25.2
       '@babel/preset-env': 7.23.3(@babel/core@7.25.2)
-      '@babel/runtime': 7.25.0
+      '@babel/runtime': 7.25.4
       '@rollup/plugin-babel': 5.3.1(@babel/core@7.25.2)(rollup@2.79.1)
       '@rollup/plugin-node-resolve': 11.2.1(rollup@2.79.1)
       '@rollup/plugin-replace': 2.4.2(rollup@2.79.1)
@@ -9542,24 +9542,24 @@ snapshots:
       '@types/trusted-types': 2.0.6
       workbox-core: 7.1.0
 
-  worker-timers-broker@7.1.1:
+  worker-timers-broker@7.1.2:
     dependencies:
-      '@babel/runtime': 7.25.0
-      fast-unique-numbers: 9.0.8
-      tslib: 2.6.3
-      worker-timers-worker: 8.0.3
+      '@babel/runtime': 7.25.6
+      fast-unique-numbers: 9.0.9
+      tslib: 2.7.0
+      worker-timers-worker: 8.0.4
 
-  worker-timers-worker@8.0.3:
+  worker-timers-worker@8.0.4:
     dependencies:
-      '@babel/runtime': 7.25.0
-      tslib: 2.6.3
+      '@babel/runtime': 7.25.6
+      tslib: 2.7.0
 
-  worker-timers@8.0.4:
+  worker-timers@8.0.5:
     dependencies:
-      '@babel/runtime': 7.25.0
-      tslib: 2.6.3
-      worker-timers-broker: 7.1.1
-      worker-timers-worker: 8.0.3
+      '@babel/runtime': 7.25.6
+      tslib: 2.7.0
+      worker-timers-broker: 7.1.2
+      worker-timers-worker: 8.0.4
 
   wrap-ansi@6.2.0:
     dependencies:

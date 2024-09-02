@@ -81,7 +81,8 @@
 
 	"noise:on": { "value": 1, "min": 0, "max": 1, "step": 1, "hidden": true },
 	"noise:gain": { "value": 0.5, "min": 0, "max": 1, "step": 0.01 },
-	"noise:band-q": { "value": 50, "min": 0, "max": 10, "step": 0.1 },
+	"noise:color": { "value": 0, "min": 0, "max": 1, "step": 0.01 },
+	"noise:band-q": { "value": 5, "min": 0, "max": 10, "step": 0.1 },
 	"noise:cut-off": {
 		"value": 300,
 		"min": 10,
@@ -248,10 +249,10 @@
 		"hidden": true
 	},
 
-	"fx:on": { "value": 1, "min": 0, "max": 1, "step": 1, "hidden": true },
-	"fx:pingPong": { "value": 0.1, "min": 0, "max": 1, "step": 0.01 },
-	"fx:feedback": { "value": 0.1, "min": 0, "max": 1, "step": 0.01 },
-	"fx:shift": { "value": 0.4, "min": 0, "max": 1, "step": 0.01 },
+	"ping-pong:on": { "value": 1, "min": 0, "max": 1, "step": 1, "hidden": true },
+	"ping-pong:gain": { "value": 0.1, "min": 0, "max": 1, "step": 0.01 },
+	"ping-pong:feedback": { "value": 0.1, "min": 0, "max": 1, "step": 0.01 },
+	"ping-pong:shift": { "value": 0.4, "min": 0, "max": 1, "step": 0.01 },
 
 	"fx:bpm": { "value": 120, "min": 10, "max": 500, "step": 1, "hidden": true }
 }

@@ -2,6 +2,7 @@ import { reactive, watch, computed } from "vue";
 import { useElementary } from './useElementary';
 import { useClamp } from "@vueuse/math";
 import { useStorage } from "@vueuse/core";
+import { el } from "@elemaudio/core";
 
 function initParams(params, title, controls, groups) {
   Object.keys(params).forEach(function (key) {
@@ -28,7 +29,9 @@ function initAudioRefs(audio, params, controls, cv, setters) {
   if (!audio.initiated) return;
   Object.keys(params).forEach(function (key) {
     let [node, setter] = audio.core.createRef("const", { value: controls[key] }, []);
-    cv[key] = node;
+    cv[key] = el.smooth(
+      el.tau2pole(0.01),
+      node);
     setters[key] = setter;
   });
 }

@@ -42,17 +42,21 @@ export function useElemSynth(count = 12) {
   });
 
   function createSynthSignal() {
-    const poly = el.scope({ name: 'synth', size: 512 }, createPoly());
+    const poly = el.scope(
+      { name: 'synth', size: 512 },
+      el.tanh(
+        el.mul(
+          el.sqrt(
+            el.div(
+              1,
+              el.const({ key: 'voice-count', value: voiceRefs.length }))),
+          el.add(
+            ...voiceRefs.map((_, i) => createVoice(i)))
+        ))
+    );
     return pingPong(poly);
   }
 
-
-  function createPoly() {
-    return el.tanh(el.mul(
-      el.sqrt(el.div(1, el.const({ key: 'voice-count', value: voiceRefs.length }))),
-      el.add(...voiceRefs.map((_, i) => createVoice(i)))
-    ));
-  }
 
   function createVoice(index) {
     const gate = getVoiceParam(index, 'gate');
@@ -67,6 +71,10 @@ export function useElemSynth(count = 12) {
   }
 
   function createOscillator(gate, midi, vel) {
+
+    const squareOsc = el.blepsquare(midiFrequency(midi));
+    const sawOsc = el.blepsaw(midiFrequency(midi));
+
     const envelope = el.adsr(
       el.div(el.mul(15, cv["osc:attack"]), cv['fx:bpm']),
       el.div(el.mul(15, cv["osc:decay"]), cv['fx:bpm']),
@@ -81,9 +89,6 @@ export function useElemSynth(count = 12) {
       el.div(el.mul(15, cv["osc:f-release"]), cv['fx:bpm']),
       gate
     );
-
-    const squareOsc = el.blepsquare(midiFrequency(midi));
-    const sawOsc = el.blepsaw(midiFrequency(midi));
 
     const squareGain = el.cos(el.mul(cv['osc:shape'], Math.PI / 2));
     const sawGain = el.sin(el.mul(cv['osc:shape'], Math.PI / 2));
@@ -107,7 +112,9 @@ export function useElemSynth(count = 12) {
       oscillator
     );
 
-    return el.tanh(el.mul(cv['osc:on'], cv['osc:volume'], envelope, el.div(vel, 127), filter))
+    const oscVoice = el.tanh(el.mul(cv['osc:on'], cv['osc:volume'], envelope, el.div(vel, 127), filter))
+
+    return oscVoice
   }
 
   function createString(gate, midi) {
@@ -170,7 +177,14 @@ export function useElemSynth(count = 12) {
       gate
     )
 
-    const noiseSrc = el.noise();
+    const whiteGain = el.cos(el.mul(cv['noise:color'], Math.PI / 2));
+    const pinkGain = el.sin(el.mul(cv['noise:color'], Math.PI / 2));
+
+    const noiseSrc = el.add(
+      el.mul(whiteGain, el.noise()),
+      el.mul(pinkGain, el.pinknoise())
+    );
+
     const filter = el.bandpass(midiFrequency(midi), cv['noise:band-q'], noiseSrc);
 
     const filterCutoff = el.add(
@@ -194,20 +208,22 @@ export function useElemSynth(count = 12) {
     return [0, 1].map(i => el.add(
       i ? right || left : left,
       el.mul(
-        cv['fx:on'],
-        cv['fx:pingPong'],
+        cv['ping-pong:on'],
+        cv['ping-pong:gain'],
         el.delay(
           { size: 44100 },
           el.ms2samps(el.mul(
             el.div(60000, cv['fx:bpm']),
-            el.add(1, el.mul(i === 0 ? -.5 : .5, cv['fx:shift']))
+            el.add(1, el.mul(i === 0 ? -.5 : .5, cv['ping-pong:shift']))
           )),
-          cv['fx:feedback'],
+          cv['ping-pong:feedback'],
           i ? right || left : left,
         )
       )
     ));
   }
+
+
 
   return { params, controls, cv, groups, audio, render, voiceRefs, cycleNote, stopAll, synthEnabled };
 }

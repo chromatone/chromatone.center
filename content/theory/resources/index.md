@@ -10,4 +10,4 @@ date: 2019-02-02
 import { data } from './resources.data'
 </script>
 
-<ToolsList  :data="data" />
+<ToolsList  v-if="data"  :data="data" />

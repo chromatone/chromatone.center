@@ -9,4 +9,4 @@ date: 2018-09-08
 import { data } from './tools.data'
 </script>
 
-<ToolsList :data="data" />
+<ToolsList v-if="data" :data="data" />

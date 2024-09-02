@@ -10,6 +10,6 @@ export default {
         }
       }
     })
-    return tools
+    return tools || []
   }
 }

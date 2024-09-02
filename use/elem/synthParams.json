@@ -249,6 +249,37 @@
 		"hidden": true
 	},
 
+	"sample:on": { "value": 0, "min": 0, "max": 1, "step": 1, "hidden": true },
+	"sample:gain": { "value": 0.4, "min": 0, "max": 2, "step": 0.01 },
+	"sample:attack": {
+		"value": 1,
+		"min": 0.01,
+		"max": 10,
+		"step": 0.01,
+		"hidden": true
+	},
+	"sample:decay": {
+		"value": 1,
+		"min": 0.1,
+		"max": 10,
+		"step": 0.1,
+		"hidden": true
+	},
+	"sample:sustain": {
+		"value": 0.5,
+		"min": 0,
+		"max": 1,
+		"step": 0.01,
+		"hidden": true
+	},
+	"sample:release": {
+		"value": 1,
+		"min": 0.1,
+		"max": 10,
+		"step": 0.1,
+		"hidden": true
+	},
+
 	"ping-pong:on": { "value": 1, "min": 0, "max": 1, "step": 1, "hidden": true },
 	"ping-pong:gain": { "value": 0.1, "min": 0, "max": 1, "step": 0.01 },
 	"ping-pong:feedback": { "value": 0.1, "min": 0, "max": 1, "step": 0.01 },

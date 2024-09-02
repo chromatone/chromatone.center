@@ -18,6 +18,8 @@ export function useElemSynth(count = 12) {
 
   const tempo = useTempo();
 
+
+
   watchEffect(() => {
     controls['fx:bpm'] = tempo.bpm;
   });
@@ -31,8 +33,9 @@ export function useElemSynth(count = 12) {
     }
   });
 
-  watchEffect(() => {
+  watchEffect(async () => {
     if (audio.initiated) {
+      await loadSamples()
       layers.synth = {
         volume: 1,
         signal: createSynthSignal()
@@ -40,6 +43,16 @@ export function useElemSynth(count = 12) {
       render('synth');
     }
   });
+
+  async function loadSamples() {
+    let res = await fetch('/audio/piano/A4.mp3');
+    let sampleBuffer = await audio.ctx.decodeAudioData(await res.arrayBuffer());
+
+    audio.core.updateVirtualFileSystem({
+      'piano': sampleBuffer.getChannelData(0),
+    });
+  }
+
 
   function createSynthSignal() {
     const poly = el.scope(
@@ -62,13 +75,35 @@ export function useElemSynth(count = 12) {
     const gate = getVoiceParam(index, 'gate');
     const midi = getVoiceParam(index, 'midi');
     const vel = getVoiceParam(index, 'vel');
+    const velocity = el.div(vel, 127)
 
-    const osc = createOscillator(gate, midi, vel);
-    const noise = createNoise(gate, midi);
-    const string = createString(gate, midi)
 
-    return el.add(osc, noise, string);
+    const osc = createOscillator(gate, midi, velocity);
+    const noise = createNoise(gate, midi, velocity);
+    const string = createString(gate, midi, velocity)
+    const sampler = createSampler(gate, midi, velocity)
+
+    return el.add(osc, noise, string, sampler);
   }
+
+  function createSampler(gate, midi, vel) {
+
+    const envelope = el.adsr(
+      el.div(el.mul(15, cv["sample:attack"]), cv['fx:bpm']),
+      el.div(el.mul(15, cv["sample:decay"]), cv['fx:bpm']),
+      cv["sample:sustain"],
+      el.div(el.mul(15, cv["sample:release"]), cv['fx:bpm']),
+      gate);
+
+
+    const sample = el.mul(el.sample({ path: 'piano' }, gate, el.div(midiFrequency(midi), 440)), vel, envelope, cv['sample:on'], cv['sample:gain'])
+
+
+
+    return el.mul(48, el.compress(10, 100, -48, 2, sample, sample))
+  }
+
+
 
   function createOscillator(gate, midi, vel) {
 
@@ -112,12 +147,12 @@ export function useElemSynth(count = 12) {
       oscillator
     );
 
-    const oscVoice = el.tanh(el.mul(cv['osc:on'], cv['osc:volume'], envelope, el.div(vel, 127), filter))
+    const oscVoice = el.tanh(el.mul(cv['osc:on'], cv['osc:volume'], envelope, vel, filter))
 
     return oscVoice
   }
 
-  function createString(gate, midi) {
+  function createString(gate, midi, vel) {
 
     let freq = el.mul(440, el.pow(2, el.div(el.sub(midi, 69), 12)))
 
@@ -158,10 +193,10 @@ export function useElemSynth(count = 12) {
       filter
     )
 
-    return el.mul(cv['string:on'], cv['string:volume'], el.tanh(dl))
+    return el.mul(cv['string:on'], cv['string:volume'], vel, el.tanh(dl))
   }
 
-  function createNoise(gate, midi) {
+  function createNoise(gate, midi, vel) {
     const envelope = el.adsr(
       el.div(el.mul(15, cv["noise:attack"]), cv['fx:bpm']),
       el.div(el.mul(15, cv["noise:decay"]), cv['fx:bpm']),
@@ -201,7 +236,7 @@ export function useElemSynth(count = 12) {
       filter
     );
 
-    return el.tanh(el.mul(cv['noise:on'], cv['noise:gain'], envelope, lowpass))
+    return el.tanh(el.mul(cv['noise:on'], cv['noise:gain'], vel, envelope, lowpass))
   }
 
   function pingPong(left, right) {

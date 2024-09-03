@@ -8,6 +8,8 @@ import { useElementary, layers } from './useElementary';
 
 import params from "./synthParams.json"
 import { useStorage } from '@vueuse/core';
+import srvb from './useSRVB';
+
 
 export const synthEnabled = useStorage('el-synth-enabled', true);
 
@@ -44,15 +46,6 @@ export function useElemSynth(count = 12) {
     }
   });
 
-  async function loadSamples() {
-    let res = await fetch('/audio/piano/A4.mp3');
-    let sampleBuffer = await audio.ctx.decodeAudioData(await res.arrayBuffer());
-
-    audio.core.updateVirtualFileSystem({
-      'piano': sampleBuffer.getChannelData(0),
-    });
-  }
-
 
   function createSynthSignal() {
     const poly = el.scope(
@@ -67,7 +60,19 @@ export function useElemSynth(count = 12) {
             ...voiceRefs.map((_, i) => createVoice(i)))
         ))
     );
-    return pingPong(poly);
+
+    const signal = pingPong(poly);
+
+    let rev = srvb({
+      key: 'srvb',
+      sampleRate: 44100,
+      size: cv['reverb:size'],
+      decay: cv['reverb:decay'],
+      mod: cv['reverb:mod'],
+      mix: el.mul(cv['reverb:mix'], cv['reverb:on']),
+    }, signal[0], signal[1])
+
+    return rev
   }
 
 
@@ -86,6 +91,15 @@ export function useElemSynth(count = 12) {
     return el.add(osc, noise, string, sampler);
   }
 
+  async function loadSamples() {
+    let res = await fetch('/audio/piano/A4.mp3');
+    let sampleBuffer = await audio.ctx.decodeAudioData(await res.arrayBuffer());
+
+    audio.core.updateVirtualFileSystem({
+      'piano': sampleBuffer.getChannelData(0),
+    });
+  }
+
   function createSampler(gate, midi, vel) {
 
     const envelope = el.adsr(
@@ -95,12 +109,11 @@ export function useElemSynth(count = 12) {
       el.div(el.mul(15, cv["sample:release"]), cv['fx:bpm']),
       gate);
 
+    const sample = el.sample({ path: 'piano' }, gate, el.div(midiFrequency(midi), 440))
 
-    const sample = el.mul(el.sample({ path: 'piano' }, gate, el.div(midiFrequency(midi), 440)), vel, envelope, cv['sample:on'], cv['sample:gain'])
+    const shaped = el.mul(sample, vel, envelope, cv['sample:on'], cv['sample:gain'])
 
-
-
-    return el.mul(48, el.compress(10, 100, -48, 2, sample, sample))
+    return el.mul(48, el.compress(10, 100, -48, 2, shaped, shaped))
   }
 
 
@@ -147,7 +160,7 @@ export function useElemSynth(count = 12) {
       oscillator
     );
 
-    const oscVoice = el.tanh(el.mul(cv['osc:on'], cv['osc:volume'], envelope, vel, filter))
+    const oscVoice = el.tanh(el.mul(cv['osc:on'], cv['osc:gain'], envelope, vel, filter))
 
     return oscVoice
   }
@@ -193,7 +206,7 @@ export function useElemSynth(count = 12) {
       filter
     )
 
-    return el.mul(cv['string:on'], cv['string:volume'], vel, el.tanh(dl))
+    return el.mul(cv['string:on'], cv['string:gain'], vel, el.tanh(dl))
   }
 
   function createNoise(gate, midi, vel) {

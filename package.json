@@ -50,6 +50,7 @@
 		"an-array-of-english-words": "^2.0.0",
 		"atrament": "^4.4.1",
 		"aubiojs": "^0.2.1",
+		"audio-decode": "^2.2.2",
 		"audio-recorder-polyfill": "^0.4.1",
 		"audiomotion-analyzer": "^4.5.0",
 		"big-integer": "^1.6.52",

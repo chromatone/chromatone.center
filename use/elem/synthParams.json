@@ -1,6 +1,6 @@
 {
 	"osc:on": { "value": 1, "min": 0, "max": 1, "step": 1, "hidden": true },
-	"osc:volume": { "value": 0.8, "min": 0, "max": 1, "step": 0.01 },
+	"osc:gain": { "value": 0.8, "min": 0, "max": 2, "step": 0.01 },
 	"osc:shape": { "value": 0.2, "min": 0, "max": 1, "step": 0.01 },
 	"osc:cut-off": {
 		"value": 200,
@@ -80,7 +80,7 @@
 	},
 
 	"noise:on": { "value": 1, "min": 0, "max": 1, "step": 1, "hidden": true },
-	"noise:gain": { "value": 0.5, "min": 0, "max": 1, "step": 0.01 },
+	"noise:gain": { "value": 0.5, "min": 0, "max": 2, "step": 0.01 },
 	"noise:color": { "value": 0, "min": 0, "max": 1, "step": 0.01 },
 	"noise:band-q": { "value": 5, "min": 0, "max": 10, "step": 0.1 },
 	"noise:cut-off": {
@@ -156,7 +156,7 @@
 	},
 
 	"string:on": { "value": 1, "min": 0, "max": 1, "step": 1, "hidden": true },
-	"string:volume": { "value": 0.8, "min": 0, "max": 1, "step": 0.01 },
+	"string:gain": { "value": 0.8, "min": 0, "max": 2, "step": 0.01 },
 	"string:noise": {
 		"value": 0.95,
 		"min": 0,
@@ -284,6 +284,12 @@
 	"ping-pong:gain": { "value": 0.1, "min": 0, "max": 1, "step": 0.01 },
 	"ping-pong:feedback": { "value": 0.1, "min": 0, "max": 1, "step": 0.01 },
 	"ping-pong:shift": { "value": 0.4, "min": 0, "max": 1, "step": 0.01 },
+
+	"reverb:on": { "value": 1, "min": 0, "max": 1, "step": 1, "hidden": true },
+	"reverb:size": { "value": 0.2, "min": 0, "max": 1, "step": 0.01 },
+	"reverb:decay": { "value": 0.5, "min": 0, "max": 1, "step": 0.01 },
+	"reverb:mod": { "value": 0.5, "min": 0, "max": 1, "step": 0.01 },
+	"reverb:mix": { "value": 0.5, "min": 0, "max": 1, "step": 0.01 },
 
 	"fx:bpm": { "value": 120, "min": 10, "max": 500, "step": 1, "hidden": true }
 }

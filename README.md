@@ -14,6 +14,15 @@ Useful tools to have in the pocket like a pack of interactive cards to learn and
 
 ## Any ideas? [Share in our subreddit](https://www.reddit.com/r/chromatone/)
 
+## NPM package
+
+https://www.npmjs.com/package/use-chromatone
+
+![NPM Version](https://img.shields.io/npm/v/use-chromatone)
+
+A collection of sound analysis and synthesis tools along with other useful media instruments to experiment with. 
+
+
 ## STACK
 
 - [Vue 3](https://v3.vuejs.org/)

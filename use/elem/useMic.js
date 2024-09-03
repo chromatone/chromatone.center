@@ -1,8 +1,3 @@
-// NEEDS TESTING
-
-
-
-
 import { watch, shallowReactive } from 'vue'
 import { el } from '@elemaudio/core';
 import { useClamp } from '@vueuse/math';
@@ -83,8 +78,6 @@ export function useMic() {
     }
     render();
   }
-
-  watch([() => mic.isOpen, () => mic.gain], updateMicLayer)
 
   return mic
 }

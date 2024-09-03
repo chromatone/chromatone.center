@@ -118,7 +118,7 @@ function dampFDN(name, sampleRate, size, decay, modDepth, ...ins) {
 // @param {number} props.mix in [0, 1]
 // @param {core.Node} xl input
 // @param {core.Node} xr input
-export default function srvb(props, xl, xr) {
+export function srvb(props, xl, xr) {
   // invariant(typeof props === 'object', 'Unexpected props object');
 
   const key = props.key;

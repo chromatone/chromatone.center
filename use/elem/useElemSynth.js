@@ -8,7 +8,7 @@ import { useElementary, layers } from './useElementary';
 
 import params from "./synthParams.json"
 import { useStorage } from '@vueuse/core';
-import srvb from './useSRVB';
+import { srvb } from './useSRVB';
 
 
 export const synthEnabled = useStorage('el-synth-enabled', true);

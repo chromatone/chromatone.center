@@ -334,6 +334,8 @@ export function getPitchBend(channel) {
 }
 
 function setVelocity(channel, note, velocity) {
+  midi.channels[channel] = midi.channels[channel] || { notes: {} }
+  midi.channels[channel].notes[note] = midi.channels[channel].notes[note] || { velocity: 0 }
   midi.channels[channel].notes[note].velocity = velocity;
 }
 

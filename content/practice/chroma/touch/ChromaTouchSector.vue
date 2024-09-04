@@ -8,7 +8,7 @@ const props = defineProps({
   startOctave: { type: Number, default: 1 },
   size: { type: Number, default: 50 },
   n: { type: Number, default: 0 },
-  note: { type: Number, default: 0 },
+  note: { type: String, default: '' },
 })
 </script>
 

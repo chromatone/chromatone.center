@@ -37,13 +37,13 @@ function startKey(note, event) {
   const linearVelocity = (relativeY / height);
   const logVelocity = logCurve(linearVelocity);
   const adjustedVelocity = 0.3 + (logVelocity * 0.7);
-  const scaleFactor = globalScale.isIn(notes[(note) % 12]) ? 1 : 0.3;
+  const scaleFactor = globalScale.isIn(notes[(note + 3) % 12]) ? 1 : 0.5;
   const finalVelocity = adjustedVelocity * scaleFactor;
   playNote(Note.fromMidi(note), finalVelocity)
 }
 
 function stopKey(note, event) {
-stopNote(Note.fromMidi(note))
+  stopNote(Note.fromMidi(note))
 }
 
 const noteKey = ref()

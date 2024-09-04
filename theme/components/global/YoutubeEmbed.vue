@@ -1,10 +1,21 @@
 <script setup>
+import { ref } from 'vue';
+
 defineProps(['video']);
+
+const loaded = ref(false)
+
+
 </script>
 
 <template lang="pug">
-.iframe-container.shadow-lg.rounded-lg
+.iframe-container.shadow-lg.rounded-lg.bg-cover()
+  .flex.items-center.relative.w-full.bg-cover.cursor-pointer.op-80.hover-op-100.transition(
+    v-if="!loaded"
+    :style="{ backgroundImage: `url(https://img.youtube.com/vi/${video}/hqdefault.jpg)` }" @click="loaded = true")
+    .i-la-play-circle.text-xl
   iframe.overflow-hidden(
+    v-else
     loading="lazy"
     :src="`https://www.youtube-nocookie.com/embed/${video}`", 
     title="YouTube video player", 
@@ -23,7 +34,8 @@ defineProps(['video']);
   position: relative;
 }
 
-.iframe-container iframe {
+.iframe-container iframe,
+.iframe-container div {
   border: 0;
   height: 100%;
   left: 0;

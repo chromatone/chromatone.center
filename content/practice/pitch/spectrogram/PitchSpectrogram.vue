@@ -2,13 +2,12 @@
 import { initGetUserMedia, master } from '#/use/audio'
 import { freqPitch } from '#/use/calculations'
 import { useMicrophone } from '#/use/mic'
-import { onKeyStroke, useElementSize, useStorage, useWindowSize } from '@vueuse/core'
+import { onKeyStroke, useStorage, useWindowSize } from '@vueuse/core'
 import { ref, computed, reactive, onMounted, watch, onUnmounted } from 'vue'
 import { useClamp } from '@vueuse/math'
 
 const canvasElement = ref()
 const video = ref()
-const container = ref()
 
 const { mic, input } = useMicrophone()
 
@@ -31,7 +30,7 @@ function clear() {
   ctx.fillRect(0, 0, state.width, state.height)
 }
 
-const { width, height } = useElementSize(container)
+const { width, height } = useWindowSize()
 
 const state = reactive({
   initiated: false,
@@ -138,9 +137,10 @@ function colorIt(freq, value) {
 <template lang="pug">
 .flex.flex-col.justify-center
 
-  .fullscreen-container.text-white#screen.w-full.min-h-100svh(ref="container")
+  .fullscreen-container.text-white#screen
 
-    canvas#spectrogram.cursor-pointer(
+    canvas#spectrogram.cursor-pointer.max-w-full(
+
       ref="canvasElement"
       v-drag="dragScreen"
       :width="state.width"

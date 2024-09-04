@@ -1,8 +1,8 @@
 
 import { Body, Bodies, Composite, Events, Query, MouseConstraint, Composites, Common, Collision, Constraint } from 'matter-js';
-import { midi, midiPlay, midiStop, playKey } from '#/use/midi';
+import { midi } from '#/use/midi';
 import { Note } from 'tonal';
-import { globalScale } from '#/use';
+import { globalScale, playNoteOnce } from '#/use';
 import { engine, canvas, box, running, mouse, score } from './useMatter';
 import { setTimeout } from 'worker-timers';
 import { onKeyDown } from '@vueuse/core';
@@ -186,21 +186,13 @@ export function useCircles() {
 
         const note = Note.fromMidi(pair[body].isStatic ? 33 + globalScale.tonic : hitBody.data?.note || 33 + globalScale.tonic);
 
-        setTimeout(() => {
-          playKey(note.slice(0, -1), parseInt(note.slice(-1)) - 4, false, velocity, 0.5);
-          midiPlay(hitBody.data?.note || 33 + globalScale.tonic, {
-            attack: velocity
-          });
-        }, 2);
+        playNoteOnce(note, velocity, 100)
 
         setTimeout(() => {
           if (!['hole', 'wall'].includes(hitBody.label)) {
             hitBody.render.fillStyle = 'transparent';
           }
-
-          playKey(note.slice(0, -1), parseInt(note.slice(-1)) - 4, true);
-          midiStop(hitBody.data?.note || 33 + globalScale.tonic);
-        }, 50);
+        }, 100);
       }
     }
   });

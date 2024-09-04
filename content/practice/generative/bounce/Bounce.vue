@@ -3,7 +3,7 @@ import { ref, reactive, onMounted, watch, computed } from 'vue';
 import { useRafFn, useResizeObserver, useTimestamp } from '@vueuse/core';
 import { setTimeout } from 'worker-timers';
 
-import { globalScale, } from '#/use/chroma.js';
+import { globalScale, playNoteOnce, } from '#/use/chroma.js';
 import { midi, midiPlay, midiStop, playKey } from '#/use/midi.js';
 import { Note } from 'tonal';
 import { noteNames } from '#/use/theory.js';
@@ -69,20 +69,13 @@ watch(computedNodes, (newNodes) => {
 })
 
 function playNote(note) {
+  active[note] = true
+  playNoteOnce(note)
   setTimeout(() => {
-    const midiNote = Note.midi(note)
-    if (active[note]) return
-    active[note] = true
-    playKey(note.slice(0, -1), parseInt(note.slice(-1)) - 4, false, 0.5, 0.5)
-    midiPlay(midiNote, {
-      attack: 1
-    })
-    setTimeout(() => {
-      active[note] = false
-      playKey(note.slice(0, -1), parseInt(note.slice(-1)) - 4, true)
-      midiStop(midiNote)
-    }, 120);
-  }, 2)
+    active[note] = false
+
+  }, 120);
+
 }
 
 function toggleMute(index) {

@@ -3,8 +3,8 @@ import { ref, reactive, watch, computed } from 'vue';
 import { useResizeObserver, } from '@vueuse/core';
 import { setTimeout } from 'worker-timers';
 
-import { globalScale } from '#/use/chroma.js';
-import { midi, midiPlay, midiStop, playKey } from '#/use/midi.js';
+import { globalScale, playNoteOnce } from '#/use/chroma.js';
+import { midi } from '#/use/midi.js';
 import { Note } from 'tonal';
 import { noteNames } from '#/use/theory.js';
 import { pitchColor } from '#/use/calculations.js';
@@ -48,21 +48,8 @@ function usePendulum(octaveOffset = 0) {
     newCoord.forEach((coord, c) => {
       if (coord.x * oldCoord?.[c]?.x < 0) {
         const note = globalScale.full.notes[c]
-
-        setTimeout(() => {
-          const midiNote = Note.midi(note)
-          active[note] = true
-          playKey(note.slice(0, -1), parseInt(note.slice(-1)) - 4 + octaveOffset, false, 1, 0.5)
-          midiPlay(midiNote + octaveOffset * 12, {
-            attack: 1
-          })
-          setTimeout(() => {
-            active[note] = false
-            playKey(note.slice(0, -1), parseInt(note.slice(-1)) - 4 + octaveOffset, true)
-            midiStop(midiNote + octaveOffset * 12)
-          }, 120);
-        }, 2)
-
+        active[note] = true
+        playNoteOnce(note)
       }
     })
   })

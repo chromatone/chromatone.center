@@ -2,7 +2,7 @@
 import { notes, intervals } from '#/use/theory'
 import { noteColor } from '#/use/colors'
 import { rotateArray } from '#/use/calculations'
-import { midi, playKey } from '#/use/midi'
+import { midi } from '#/use/midi'
 import { globalScale } from '#/use/chroma'
 import { colord } from "colord";
 import { computed, onMounted, ref, shallowRef } from 'vue'
@@ -55,13 +55,6 @@ const points = computed(() => {
 
 const pressed = ref()
 
-function keyPlay(pitch, event, off, velocity) {
-  pressed.value = !off
-  playKey(points.value[pitch].note, pitch >= 3 ? 0 : -1, off, velocity)
-}
-
-const loaded = ref('')
-const err = ref(null)
 
 </script>
 
@@ -88,7 +81,7 @@ svg.h-90.mr-auto.ml-4(
     filter="url(#shadow)"
     )
     line.finger(
-      v-for="(finger,f) in fingers"
+      v-for="(finger, f) in fingers"
       :key="finger"
       :x1="finger[0]"
       :x2="finger[0]"
@@ -107,7 +100,7 @@ svg.h-90.mr-auto.ml-4(
       )
   g.points
     g.point(
-      @click="right? null : globalScale.tonic = p"
+      @click="right ? null : globalScale.tonic = p"
       v-for="(point, p) in points"
       :opacity="midi.activeChromaMidi[point.pitch] ? 1 : 0.7"
       :transform="`translate(${point.x} ${point.y})`"
@@ -115,8 +108,8 @@ svg.h-90.mr-auto.ml-4(
       circle(
         style="transition: all 100ms ease-out"
         :alt="point.pitch"
-        :r="point.pitch == globalScale.tonic ? 60 :  point.r"
-        :fill="noteColor(point.pitch,midi.activeChromaMidi[point.pitch] ? 4 : 3,midi.activeChromaMidi[point.pitch] ? 1 : .6)"
+        :r="point.pitch == globalScale.tonic ? 60 : point.r"
+        :fill="noteColor(point.pitch, midi.activeChromaMidi[point.pitch] ? 4 : 3, midi.activeChromaMidi[point.pitch] ? 1 : .6)"
         )
       text.pointer-events-none(
         font-family="Commissioner"
@@ -124,7 +117,7 @@ svg.h-90.mr-auto.ml-4(
         font-size="40"
         fill="white"
         :opacity="midi.activeChromaMidi[point.pitch] ? 1 : 0"
-        :transform="`scale(${right? -1:1} 1)`"
+        :transform="`scale(${right ? -1 : 1} 1)`"
       ) {{ right ? intervals[p] : notes[p] }}
 
 

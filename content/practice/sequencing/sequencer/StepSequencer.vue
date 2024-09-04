@@ -3,10 +3,8 @@ import { noteColor } from "#/use/colors"
 import { Scale, Midi, Note } from 'tonal'
 import { onKeyStroke, useStorage } from '@vueuse/core'
 import { notes } from '#/use/theory'
-import { globalScale } from '#/use/chroma'
+import { globalScale, playNoteOnce } from '#/use/chroma'
 import { Pattern, start, getTransport, getDraw } from 'tone'
-import { midiOnce, playKey } from '#/use/midi'
-import { pianoOnce, init, piano } from '#/use/piano'
 import { tempo } from '#/use/tempo'
 import { useData } from 'vitepress'
 const { isDark } = useData()
@@ -14,8 +12,6 @@ import { computed, onBeforeUnmount, onMounted, reactive, ref, watch, watchEffect
 
 const Draw = getDraw()
 const Transport = getTransport()
-
-const pianoVolume = ref(0)
 
 const state = reactive({
   started: false,
@@ -68,12 +64,7 @@ watchEffect(() => {
 
 onMounted(() => {
   state.mounted = true
-  init()
   setPatterns()
-})
-
-watch(pianoVolume, v => {
-  piano.volume.setValueAtTime(v, 0)
 })
 
 
@@ -94,18 +85,10 @@ function setPatterns() {
       Draw.schedule(() => {
         positions[index] = cell?.cell
         if (cell?.active) {
-          midiOnce(cell?.note)
-
-          playKey(cell.note.slice(0, -1), cell.note.slice(-1) - 4)
-          setTimeout(() => {
-            playKey(cell.note.slice(0, -1), cell.note.slice(-1) - 4, true)
-          }, 200)
+          playNoteOnce(cell?.note)
         }
       }, time)
-      if (cell?.active) {
-        // synthOnce(cell.note, state.interval, time)
-        pianoOnce(cell.note, state.interval, time)
-      }
+
     }, rows[index], state.type).start(0);
     patterns[index].interval = state.interval
   })
@@ -253,15 +236,6 @@ function borderColor(cell, r) {
           param="BPM"
           )
       .is-group.flex.items-center
-        control-rotary(
-          v-model="pianoVolume" 
-          v-tooltip.top="'Set piano volume'"
-          :step="0.1" 
-          :max="10" 
-          :min="-20" 
-          :fixed="0" 
-          param="PIANO"
-          )
         button.text-button(
           v-tooltip.bottom="'Humanize rhythm'"
           :class="{ active: state.humanize }" 

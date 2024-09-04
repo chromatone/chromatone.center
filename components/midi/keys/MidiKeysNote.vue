@@ -20,7 +20,7 @@ const props = defineProps({
   pressed: { type: Boolean, default: false }
 })
 
-const { midi, playKey } = useMidi()
+const { midi } = useMidi()
 
 function logCurve(x, factor = 10) {
   // Ensure x is between 0 and 1

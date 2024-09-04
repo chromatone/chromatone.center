@@ -5,7 +5,7 @@ import { setTimeout } from 'worker-timers';
 import * as jisg from 'jisg';
 import bigInt from 'big-integer'
 import { Note } from 'tonal';
-import { globalScale, midiPlay, midiStop, playKey } from '#/use';
+import { globalScale, playNoteOnce } from '#/use';
 
 const sequences = Object.keys(jisg).filter((seq => seq[0] == 'A'))
 
@@ -32,16 +32,9 @@ watch(midiArray, arr => {
   arr.forEach((midiNote, i) => {
     const note = Note.fromMidi(midiNote)
     setTimeout(() => {
-      playKey(note.slice(0, -1), parseInt(note.slice(-1)) - 4, false, 1, 0.5)
-      midiPlay(midiNote, {
-        attack: 1
-      })
+      playNoteOnce(note)
     }, 150 * i + 2)
 
-    setTimeout(() => {
-      playKey(note.slice(0, -1), parseInt(note.slice(-1)) - 4, true)
-      midiStop(midiNote)
-    }, 150 * (i + 1));
   })
 })
 

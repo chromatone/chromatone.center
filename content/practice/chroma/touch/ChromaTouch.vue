@@ -3,7 +3,7 @@ import { computed, nextTick, reactive, ref, watch } from 'vue';
 import { notes } from '#/use/theory';
 import { useData } from 'vitepress'
 
-import { midi, playKey, midiAttack, midiRelease } from '#/use';
+import { midi, playKey, midiAttack, midiRelease, playNote, stopNote } from '#/use';
 import ChromaTouchSector from './ChromaTouchSector.vue';
 
 const { isDark } = useData()
@@ -63,15 +63,13 @@ function handleTouch(ev) {
 watch(voices, (vs, prev) => {
   for (let v in vs) {
     if (vs[v]?.num != prev[v]?.num) {
-      playKey(notes[vs[v]?.pitch], vs[v]?.octave - startOctave.value + (vs[v]?.pitch >= 3 ? 1 : 0))
-      midiAttack({ number: vs[v]?.num })
+      playNote(notes[vs[v]?.pitch] + (vs[v]?.octave + (vs[v]?.pitch >= 3 ? 4 : 3)))
     }
   }
   nextTick(() => {
     for (let p in prev) {
       if (prev[p]?.num != vs[p]?.num) {
-        playKey(notes[prev[p]?.pitch], prev[p]?.octave - startOctave.value + (prev[p]?.pitch >= 3 ? 1 : 0), true)
-        midiRelease({ number: prev[p]?.num })
+        stopNote(notes[prev[p]?.pitch] + (prev[p]?.octave + (prev[p]?.pitch >= 3 ? 4 : 3)))
       }
     }
   })

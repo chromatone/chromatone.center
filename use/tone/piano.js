@@ -3,7 +3,7 @@
  */
 
 import { Sampler, start, now } from 'tone'
-import { createChannel } from './audio'
+import { createChannel } from '../audio'
 
 
 export let piano

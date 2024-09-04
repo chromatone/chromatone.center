@@ -41,7 +41,6 @@ export function useMicrophone() {
         input.open().then(() => {
           mic.opened = true
           useRafFn(() => {
-            //@ts-expect-error
             mic.meter = meter.getValue()
           })
         })

@@ -5,11 +5,12 @@ import {
   cameras,
   ensureDevicesListPermissions,
   microphones,
-  mimeExtMap,
   mimeType,
   getSupportedMimeTypes,
-} from "#/use/cast";
+} from "#/theme/composables/cast";
+import { mimeExtMap } from "#/use/utils";
 import { computed } from "vue";
+
 
 const camerasItems = computed(() => [
   {

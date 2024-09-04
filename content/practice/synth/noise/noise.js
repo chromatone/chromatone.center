@@ -12,7 +12,7 @@ import {
   BitCrusher,
 } from "tone";
 import { useStorage, useRafFn, onKeyStroke } from "@vueuse/core";
-import { createChannel } from "./audio";
+import { createChannel } from "#/use/audio";
 import { ref, watch, onBeforeUnmount } from 'vue'
 
 const types = { brown: "brown", pink: "pink", white: "white" };

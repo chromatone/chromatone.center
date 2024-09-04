@@ -6,7 +6,7 @@ import {
   cast,
   recordingName,
   showRecordingDialog,
-} from "#/use/cast";
+} from "#/theme/composables/cast";
 
 import { useWindowSize } from '@vueuse/core'
 import { drawingEnabled } from '#/theme/composables/draw'

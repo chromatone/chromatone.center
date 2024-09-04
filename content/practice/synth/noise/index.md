@@ -6,9 +6,15 @@ date: 2021-06-22
 cover: noise.jpg
 ---
 
-<client-only>
-  <synth-noise />
-</client-only >
+<script setup>
+import { defineClientComponent } from 'vitepress'
+
+const SynthNoise = defineClientComponent(() => {
+  return import('./SynthNoise.vue')
+})
+</script>
+
+<SynthNoise />
 
 ## Noise generation tool
 

@@ -1,7 +1,7 @@
 <script setup>
 import { useDraggable, useEventListener, useStorage } from "@vueuse/core";
 import { computed, onMounted, ref, watchEffect } from "vue";
-import { cast, currentCamera } from "#/use/cast";
+import { cast, currentCamera } from "../../composables/cast";
 import { useClamp } from '@vueuse/math'
 
 const size = useClamp(useStorage(

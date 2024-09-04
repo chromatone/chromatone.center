@@ -1,5 +1,5 @@
 <script setup>
-import { cast, showRecordingDialog } from "#/use/cast";
+import { cast, showRecordingDialog } from "#/theme/composables/cast";
 
 const {
   currentCamera,

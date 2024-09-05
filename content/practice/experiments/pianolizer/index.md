@@ -8,7 +8,7 @@ hidden: true
 https://sysd.org/pianolizer/
 https://github.com/creaktive/pianolizer/tree/master
 
-<script setup>
+<!-- <script setup>
 import { defineClientComponent } from 'vitepress'
 
 const Pianolizer = defineClientComponent(() => {
@@ -16,4 +16,4 @@ const Pianolizer = defineClientComponent(() => {
 })
 </script>
 
-<!-- <Pianolizer/> -->
+<Pianolizer/> -->

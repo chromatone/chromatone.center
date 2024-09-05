@@ -2,6 +2,7 @@
 import { version } from '../../../package.json'
 import { useRoute, useData } from "vitepress";
 const { isDark, theme } = useData()
+const route = useRoute()
 </script>
 
 <template lang='pug'>
@@ -11,7 +12,16 @@ const { isDark, theme } = useData()
     img.w-6(v-if="theme.logo", :src="theme.logo", alt="Chromatone logo" title="Chromatone")
     .text-lg.font-bold.mr-2 Chromatone 
   .flex-1
-  .text-sm.mx-2 © 2017-Present
+  a.no-underline.flex.items-center(
+    v-tooltip="'Edit page on GitHub'"
+    :href="`https://github.com/chromatone/chromatone.center/tree/master/content${route.path}`" target="_blank")
+    .i-la-edit
+  a.no-underline.flex.items-center(
+    v-tooltip="'Report an issue'"
+    :href="`https://github.com/chromatone/chromatone.center/issues/new?title=${route.data?.title}&body=Issue at ${route.path}`" target="_blank") 
+    .i-la-exclamation-circle
+  .text-sm.mx-2 MIT © 2017-Present 
+
   a.no-underline.text-sm.flex.gap-1.items-center(href="https://www.npmjs.com/package/use-chromatone/" target="_blank") v.{{ version }}
   a.no-underline.text-md.flex.gap-1.items-center(href="https://github.com/chromatone/chromatone.center/" target="_blank") 
     .i-la-github

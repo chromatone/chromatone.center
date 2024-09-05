@@ -1,6 +1,6 @@
 // import invariant from 'invariant';
 import { el } from '@elemaudio/core';
-
+// import params from './srvbParams.json'
 
 // A size 8 Hadamard matrix constructed using Numpy and Scipy.
 //

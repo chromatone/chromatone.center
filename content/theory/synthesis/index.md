@@ -3,6 +3,8 @@ title: Synthesis
 description: Ways to generate musical sounds out of electric oscillations
 date: 2020-10-10
 cover: 35-54d35.jpg
+links:
+  - https://fokkie.home.xs4all.nl/IR.htm#Streets
 ---
 
 <youtube-embed video="Y7TesKMSE74" />

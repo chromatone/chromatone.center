@@ -66,11 +66,7 @@ export function playNote(note, velocity = 0.9) {
   if (Array.isArray(note)) {
     note.forEach(n => playNote(n))
   } else {
-    const midiNote = Note.midi(note)
-    setTimeout(() => {
-      playKey(note.slice(0, -1), parseInt(note.slice(-1)) - 4, false, velocity)
-      midiPlay(midiNote, { attack: velocity })
-    }, 0)
+    playKey(note, velocity)
   }
 }
 
@@ -82,10 +78,6 @@ export function stopNote(note) {
   if (Array.isArray(note)) {
     note.forEach(n => stopNote(n))
   } else {
-    setTimeout(() => {
-      const midiNote = Note.midi(note)
-      playKey(note.slice(0, -1), parseInt(note.slice(-1)) - 4, true)
-      midiStop(midiNote, { attack: 2 })
-    }, 0)
+    playKey(note, 0)
   }
 }

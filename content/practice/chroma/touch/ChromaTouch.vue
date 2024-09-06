@@ -3,7 +3,7 @@ import { computed, nextTick, reactive, ref, watch } from 'vue';
 import { notes } from '#/use/theory';
 import { useData } from 'vitepress'
 
-import { midi, playKey, midiAttack, midiRelease, playNote, stopNote } from '#/use';
+import { midi, playNote, stopNote } from '#/use';
 import ChromaTouchSector from './ChromaTouchSector.vue';
 
 const { isDark } = useData()

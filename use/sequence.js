@@ -140,17 +140,20 @@ export function useSequence(initial = { over: 4, under: 4, sound: "A", volume: 1
     if (getContext().state === "suspended") {
       start();
     }
-    const mainStep = typeof step === "string" ? +step.split("-")[0] : step;
+
+    const [mainStep, subStep] = step.split("-").map(Number);
     const Draw = getDraw();
     Draw.schedule(() => { seq.current = step; }, time);
 
-    const accented = seq.accents[mainStep] && step.split("-")[1] === "1";
     if (seq.mutes[mainStep] || seq.mutes[step]) return;
+
+    const accented = seq.accents[mainStep] && subStep === 1;
     if (seq.meter.sound === "F" && ((accented && !sampler.accent) || (!accented && !sampler.main))) return;
 
     const note = `${seq.meter.sound}${accented ? 2 : 1}`;
     audio.synth.triggerAttackRelease(note, `${seq.meter.under}n`, time);
   }
+
 
   onBeforeUnmount(() => {
     sequence.stop().dispose();

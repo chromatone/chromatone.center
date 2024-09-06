@@ -33,6 +33,7 @@ async function initAudio() {
   audio.core.on('meter', handleMeter)
   audio.core.on('scope', handleScope)
   audio.core.on('fft', handleFFT)
+  audio.core.on('error', err => console.log(err))
 
   audio.initiated = true
   audio.initiating = false

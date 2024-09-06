@@ -9,6 +9,7 @@ import { setupKeyboard } from './keyboard';
 import Ola from "ola";
 import { Chord, Midi } from 'tonal';
 import { setTimeout } from 'worker-timers';
+import { at } from 'color-spectrum/table';
 
 const MIDI_CHANNEL_STORAGE_KEY = "global-midi-channel";
 const MIDI_FILTER_STORAGE_KEY = "global-midi-filter";
@@ -80,20 +81,34 @@ export function learnCC({ number, channel }) {
   return val;
 }
 
-export function playKey(name = 'A', offset = 0, off = false, velocity = 1, duration) {
-  noteInOn({
-    type: off ? "noteoff" : "noteon",
-    note: new Note(`${name}${4 + offset + midi.offset}`, {
-      attack: off ? 0 : velocity,
-      release: off ? 0 : velocity,
-      duration
-    }),
-    port: { id: "Chromatone.center" },
-    timestamp: midi.time,
-    target: { number: 0 },
-    channel: 0,
-    message: {}
+export function playKeyOnce(note, attack, duration) {
+  playKey(note, attack, duration)
+  setTimeout(() => playKey(note, 0))
+}
+
+export function playKey(noteName = 'A4', attack = 0, duration = 1, midiOut = true) {
+  const note = new Note(noteName, {
+    attack,
+    release: attack,
+    duration
   })
+  setTimeout(() => {
+    noteInOn({
+      type: attack == 0 ? "noteoff" : "noteon",
+      note,
+      port: { id: "Chromatone.center" },
+      timestamp: midi.time,
+      target: { number: 0 },
+      channel: 0,
+      message: {}
+    })
+    if (!midiOut) return
+    if (attack > 0) {
+      midiPlay(note.number, { attack })
+    } else {
+      midiStop(note.number, { attack })
+    }
+  }, 0)
 }
 
 export function useMidi() {
@@ -119,6 +134,7 @@ export function useMidi() {
     midiPlay,
     midiStop,
     playKey,
+    playKeyOnce,
     stopAll,
     getPitchBend,
     sendPitchBend,

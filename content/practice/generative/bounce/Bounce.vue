@@ -1,10 +1,9 @@
 <script setup>
 import { ref, reactive, onMounted, watch, computed } from 'vue';
-import { useRafFn, useResizeObserver, useTimestamp } from '@vueuse/core';
+import { useResizeObserver } from '@vueuse/core';
 import { setTimeout } from 'worker-timers';
 
 import { globalScale, playNoteOnce, } from '#/use/chroma.js';
-import { midi, midiPlay, midiStop, playKey } from '#/use/midi.js';
 import { Note } from 'tonal';
 import { noteNames } from '#/use/theory.js';
 import { pitchColor } from '#/use/calculations.js';
@@ -45,7 +44,6 @@ const nodeObject = {
   midi: 0,
 }
 
-// Convert watchEffect to computed property
 const computedNodes = computed(() => {
   const result = []
   for (let node = 0; node < notes.value.length; node++) {
@@ -55,7 +53,7 @@ const computedNodes = computed(() => {
     nodeObject.midi = Note.midi(notes.value[node])
 
     if (nodeObject.y < 0.02 && !mutes[node]) {
-      playNote(nodeObject.note)
+      playActiveNote(nodeObject.note)
     }
 
     result.push({ ...nodeObject })
@@ -68,7 +66,7 @@ watch(computedNodes, (newNodes) => {
   nodes.splice(0, nodes.length, ...newNodes)
 })
 
-function playNote(note) {
+function playActiveNote(note) {
   active[note] = true
   playNoteOnce(note)
   setTimeout(() => {

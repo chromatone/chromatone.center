@@ -56,11 +56,11 @@ export function setupKeyboard() {
     if (e.repeat || !midi.keyboard || !noteKeys[e.code]) return
     if (e.ctrlKey || e.altKey || e.metaKey) return
     if (e.code == 'Slash') e.preventDefault()
-    playKey(noteKeys[e.code].note, noteKeys[e.code].offset)
+    playKey(noteKeys[e.code].note + (noteKeys[e.code].offset + 4 + midi.offset), 1, undefined, false)
   })
 
   document.addEventListener('keyup', e => {
     if (!noteKeys[e.code]) return
-    playKey(noteKeys[e.code].note, noteKeys[e.code].offset, true)
+    playKey(noteKeys[e.code].note + (noteKeys[e.code].offset + 4 + midi.offset), 0, undefined, false)
   })
 }

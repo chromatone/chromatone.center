@@ -3,19 +3,19 @@ import { computed } from 'vue';
 import { useRoute, useData } from "vitepress";
 import { lchToHsl } from '#/use/colors'
 import { data } from '../content/pages.data'
-import { cleanLink, usePages, usePage } from './pages'
+import { usePages, usePage } from './pages'
 import { drawingEnabled, drawingPinned } from '../theme/composables/draw'
 import { useUrlSearchParams } from '@vueuse/core'
 
 import { useWindowScroll } from '@vueuse/core'
 
-const { x, y } = useWindowScroll()
+const { y } = useWindowScroll()
 
 const params = useUrlSearchParams('history')
 
 const { isDark, theme } = useData()
 
-import { ref, watch } from "vue";
+import { ref } from "vue";
 
 const route = useRoute();
 
@@ -44,14 +44,12 @@ function scrollTop() {
 
 img.top-16px.left-2.fixed.z-1000.cursor-pointer.mr-3.h-30px(v-if="theme.logo", :src="theme.logo", alt="Chromatone logo" @click="openSideBar = !openSideBar")
 
-bar-bar
-midi-notes
-.main
-  side-bar(
-    :open="openSideBar" 
-    @close="openSideBar = false"
-    )
+bar-bar(v-if="!params.nobar")
 
+midi-notes
+
+.main(:style="{marginLeft: params.nobar ? 0 : ''}")
+  
   RegisterSW
 
   template(v-if="f.layout == 'iframe'")

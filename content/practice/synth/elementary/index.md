@@ -17,9 +17,8 @@ links:
 
 
 <client-only>
-
+<ElemSynth />
 <MidiKeys />
 </client-only>
 
-
-Elementary synth is now default at Chromatone! To change synthesis parameters use the piano keys icon to open the slide out panel. And browse any page you may just play along.
+Fully operational polyphonic synthesizer with square/sawtooth oscillator, noise oscillator, Karplus-Strong string simulation, simple sampler and notable ping-pong delay as well as an SRVB reverb.

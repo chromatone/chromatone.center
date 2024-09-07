@@ -132,15 +132,15 @@ nav.bar
     .i-mdi-metronome.-mt-6px.mb-4px
     .absolute.text-xs.-bottom-2px {{ tempo.bpm.toFixed() }}
 
-  button.scale-80.rounded-lg.flex.flex-col.gap-1.border-3.h-12.relative(
-    :inert="pianoOpen"
-    @click="pianoOpen = !pianoOpen"  
-    :class="{ active: pianoOpen }" 
-    aria-label="Toggle synth panel"
-    v-tooltip.right="'Synth settings'"
-    :style="{ borderColor: midi.note.velocity > 0 ? noteColor(midi.note.pitch, 4, midi.note.velocity) : 'currentColor' }"
-    ) 
-    .i-mdi-piano
+  //- button.scale-80.rounded-lg.flex.flex-col.gap-1.border-3.h-12.relative(
+  //-   :inert="pianoOpen"
+  //-   @click="pianoOpen = !pianoOpen"  
+  //-   :class="{ active: pianoOpen }" 
+  //-   aria-label="Toggle synth panel"
+  //-   v-tooltip.right="'Synth settings'"
+  //-   :style="{ borderColor: midi.note.velocity > 0 ? noteColor(midi.note.pitch, 4, midi.note.velocity) : 'currentColor' }"
+  //-   ) 
+  //-   .i-mdi-piano
 
   button(
     :inert="settingsOpen"
@@ -167,11 +167,9 @@ nav.bar
 
 
 client-only
-  BarPanel(v-model="pianoOpen")
-    synth-font.max-h-30.sticky.top-0.z-10
-    elem-synth
 
   BarPanel(v-model="scaleOpen")
+    synth-font.sticky.top-0.z-10
     control-scale.w-full
     chord-tabs-neck.max-h-80dvh(
       :instrument="instrument"

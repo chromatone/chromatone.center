@@ -8,7 +8,7 @@ import { useElementary, layers } from './useElementary';
 
 import params from "./synthParams.json"
 import { useStorage } from '@vueuse/core';
-// import { srvb } from './useSRVB';
+import { srvb } from './useSRVB';
 
 
 export const synthEnabled = useStorage('el-synth-enabled', true);
@@ -61,16 +61,16 @@ export function useElemSynth(count = 12) {
 
     const signal = pingPong(poly);
 
-    // let rev = srvb({
-    //   key: 'srvb',
-    //   sampleRate: 44100,
-    //   size: cv['reverb:size'],
-    //   decay: cv['reverb:decay'],
-    //   mod: cv['reverb:mod'],
-    //   mix: el.mul(cv['reverb:mix'], cv['reverb:on']),
-    // }, signal[0], signal[1])
+    let rev = srvb({
+      key: 'srvb',
+      sampleRate: 44100,
+      size: cv['reverb:size'],
+      decay: cv['reverb:decay'],
+      mod: cv['reverb:mod'],
+      mix: el.mul(cv['reverb:mix'], cv['reverb:on']),
+    }, signal[0], signal[1])
 
-    return signal
+    return rev
   }
 
 

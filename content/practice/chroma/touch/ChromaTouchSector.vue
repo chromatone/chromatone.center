@@ -1,5 +1,5 @@
 <script setup>
-import { globalScale, midi, noteColor, rotateArray } from '#/use';
+import { globalScale, activeNotes, noteColor, rotateArray } from '#/use';
 
 const props = defineProps({
   pressed: { type: Boolean, default: false },
@@ -21,7 +21,7 @@ g.sector
     :thickness="size / octaves"
     :from="n * 30 - 15"
     :to="(n + 1) * 30 - 15"
-    :fill="noteColor(n, octave + startOctave, rotateArray(globalScale.chroma, -globalScale.tonic)[n] == 1 ? 1 : 0.1, midi.activeNotes[(n + ((octave + startOctave + 2) * 12) + 9)] ? 1 : 0.6)"
+    :fill="noteColor(n, octave + startOctave, rotateArray(globalScale.chroma, -globalScale.tonic)[n] == 1 ? 1 : 0.1, activeNotes[(n + ((octave + startOctave + 2) * 12) + 9)] ? 1 : 0.6)"
     ) 
     text.fill-black.text-4px(
       :style="{ fontWeight: rotateArray(globalScale.chroma, -globalScale.tonic)[n] == 1 ? 'bold' : 'normal', fontSize: globalScale.tonic == n ? '8px' : '4px' }"

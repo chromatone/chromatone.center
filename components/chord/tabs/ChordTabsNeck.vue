@@ -4,7 +4,7 @@ import { freqColor } from '#/use/calculations'
 import { colord } from 'colord'
 import { globalScale } from '#/use/chroma'
 import { computed, reactive } from 'vue';
-import { midi } from '#/use/midi';
+import { activeNotes } from '#/use/midi';
 import { useData } from 'vitepress';
 
 const { isDark } = useData()
@@ -120,7 +120,7 @@ function getNote(string, semitones) {
           )
           circle(
             :fill="isDark ? 'white' : 'black'"
-            :opacity="midi.activeNotes[Note.midi(Note.transpose(string, Interval.fromSemitones(n)))] ? 1 : 0"
+            :opacity="activeNotes[Note.midi(Note.transpose(string, Interval.fromSemitones(n)))] ? 1 : 0"
             :r="neck.isInChord(getNote(string, n)) ? neck.noteSize / 1.7 - 4 : neck.noteSize / 2 - 14"
           )
           text(

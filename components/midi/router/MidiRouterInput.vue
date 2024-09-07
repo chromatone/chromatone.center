@@ -1,14 +1,14 @@
 <script setup>
 import { useMidi, forwardMidi } from "#/use/midi";
 import { noteColor } from "#/use/colors";
-import { computed, watch } from "vue";
+import { computed } from "vue";
 
 const props = defineProps({
   input: { type: Object, default: () => { } },
   iid: { type: [Number, String], default: 0 }
 })
 
-const { midi } = useMidi();
+const { outputs, forwards } = useMidi();
 
 const color = computed(() => props.input?.note?.velocity > 0
   ? noteColor(props.input.note?.pitch, null, 1, 0.4)
@@ -57,7 +57,7 @@ const color = computed(() => props.input?.note?.velocity > 0
             }}s
   .flex.flex-wrap.gap-3.mt-4.items-center
     .text-xs TO
-    button.px-2.shadow-sm.rounded-xl.bg-light-200.dark-bg-dark-500.cursor-pointer.border-2.border-transparent.select-none(v-for="(output, oid) in midi.outputs" v-show="input.name != output.name" :key="oid" :class="{ active: midi.forwards?.[iid]?.[oid] }" @click="forwardMidi(iid, oid)")
+    button.px-2.shadow-sm.rounded-xl.bg-light-200.dark-bg-dark-500.cursor-pointer.border-2.border-transparent.select-none(v-for="(output, oid) in outputs" v-show="input.name != output.name" :key="oid" :class="{ active: forwards?.[iid]?.[oid] }" @click="forwardMidi(iid, oid)")
       .text-sm {{ output.name }}
 </template>
 

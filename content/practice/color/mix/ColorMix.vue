@@ -1,6 +1,6 @@
 <script setup>
 import { noteColor } from "#/use/colors";
-import { midi } from '#/use/midi';
+import { midi, activeNotes } from '#/use/midi';
 import { notes } from '#/use/theory';
 import { watchOnce } from "@vueuse/core";
 import { colord } from 'colord';
@@ -10,7 +10,7 @@ import { computed, ref } from "vue";
 const width = ref(300)
 const height = ref(300)
 
-const activeColors = computed(() => Object.entries(midi.activeNotes)?.map(([n, v]) => noteColor(+n + 3, -2, v.toFixed(2), v.toFixed(2))))
+const activeColors = computed(() => Object.entries(activeNotes.value)?.map(([n, v]) => noteColor(+n + 3, -2, v.toFixed(2), v.toFixed(2))))
 
 const mix = computed(() => activeColors.value?.reduce((prev, next) => prev.mix(next), colord(activeColors.value[0])))
 

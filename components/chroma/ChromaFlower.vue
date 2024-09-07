@@ -2,7 +2,7 @@
 import { notes } from '#/use/theory'
 import { defaultScheme, scheme, noteColor } from '#/use/colors'
 import { getCircleCoord, rotateArray } from '#/use/calculations'
-import { midi } from '#/use/midi'
+import { midi, activeNotes } from '#/use/midi'
 import { globalScale, playNote, stopNote } from '#/use/chroma'
 import { useTuner } from '#/use/tuner'
 import { colord } from "colord";
@@ -212,10 +212,10 @@ watchThrottled(loaded, l => {
                 ) {{ note.note }}
 
       g.spiral.pointer-events-none
-        g.interval(v-for="(bool, note) in midi.activeNotes" :key="note")
+        g.interval(v-for="(bool, note) in activeNotes" :key="note")
           transition-group(name="fade")
             line(
-              v-for="(bool2, note2) in midi.activeNotes" :key="note2"
+              v-for="(bool2, note2) in activeNotes" :key="note2"
               :x1="coord((note - 9) % 12, note / 700 + 0.145).x" 
               :y1="coord((note - 9) % 12, note / 700 + 0.145).y" 
               :x2="coord((note2 - 9) % 12, note2 / 700 + 0.145).x" 
@@ -226,7 +226,7 @@ watchThrottled(loaded, l => {
               :style="{ filter: `drop-shadow(0px 0px 4px ${colord(noteColor(note - 9, 3)).mix(noteColor(note2 - 9, 3)).alpha(0.5).toHex()}` }"
               )
         transition-group(name="fade")
-          g.note(v-for="(bool, note) in midi.activeNotes" :key="note")
+          g.note(v-for="(bool, note) in activeNotes" :key="note")
             circle(
               style="transition: all 100ms ease-out"
               :cx="coord((note - 9) % 12, note / 700 + 0.145).x" 

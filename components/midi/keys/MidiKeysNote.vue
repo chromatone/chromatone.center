@@ -20,7 +20,7 @@ const props = defineProps({
   pressed: { type: Boolean, default: false }
 })
 
-const { midi } = useMidi()
+const { activeNotes } = useMidi()
 
 function logCurve(x, factor = 10) {
   // Ensure x is between 0 and 1
@@ -59,7 +59,7 @@ g.note(
   rect(
     :width="width"
     :height="height"
-    :fill="noteColor(note + 3, null, midi.activeNotes[note] ? 1 : 0.1, globalScale.isIn(notes[(note + 3) % 12]) ? 1 : .4)"
+    :fill="noteColor(note + 3, null, activeNotes[note] ? 1 : 0.1, globalScale.isIn(notes[(note + 3) % 12]) ? 1 : .4)"
     @pointerdown.prevent="startKey(note, $event)", 
     @pointerenter="pressed ? startKey(note, $event) : null"
     @pointerleave="stopKey(note, $event)", 
@@ -74,14 +74,14 @@ g.note(
       :y2="height"
       stroke-width="6"
       :opacity=".9"
-      :stroke="midi.activeNotes[note] ? 'white' : noteColor(note + 3, -1, 1, 1)"
+      :stroke="activeNotes[note] ? 'white' : noteColor(note + 3, -1, 1, 1)"
       v-if="globalScale.tonic == (note + 3) % 12"
       )
     circle(
       :r="globalScale.tonic == (note + 3) % 12 ? width / 3 : width / 8"
       :cx="width / 2"
       :cy="height - width / 2"
-      :opacity="midi.activeNotes[note] ? 1 : .3"
+      :opacity="activeNotes[note] ? 1 : .3"
       :fill="globalScale.isIn(notes[(note + 3) % 12]) ? 'white' : 'black'"
       )
 

@@ -1,6 +1,6 @@
 <script setup>
 import { useRafFn, useStorage, useWindowSize } from "@vueuse/core";
-import { midi, stopAll } from "#/use/midi";
+import { midi, stopAll, channels } from "#/use/midi";
 import { computed, onMounted, reactive, ref, watch } from "vue";
 import { useClamp } from "@vueuse/math";
 
@@ -9,9 +9,9 @@ const { width, height } = useWindowSize()
 const score = reactive({
   notes: computed(() => {
     let activeNotes = [];
-    for (let ch in midi.channels) {
-      for (let n in midi.channels[ch].notes) {
-        let note = midi.channels[ch].notes[n];
+    for (let ch in channels) {
+      for (let n in channels[ch].notes) {
+        let note = channels[ch].notes[n];
         if (note.velocity > 0) {
           activeNotes.push(note);
         }

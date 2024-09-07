@@ -23,7 +23,7 @@ const win = useWindowSize()
 const width = computed(() => props.width || win.width.value)
 const height = computed(() => props.height || win.height.value - 80)
 
-const { midi } = useMidi()
+const { activeNotes } = useMidi()
 
 const { roundBegin: begin, roundEnd: end, beginControl, endControl, keys: rawKeys } = useRange()
 
@@ -190,7 +190,7 @@ svg.w-full.cursor-pointer.fullscreen-container.overflow-hidden.select-none.touch
       rect(
         :height="controlOffset"
         :width="width / 5"
-        :fill="noteColor(begin + 3, null, midi.activeNotes[begin] ? 1 : 0.1)"
+        :fill="noteColor(begin + 3, null, activeNotes[begin] ? 1 : 0.1)"
         )
       text.font-bold.text-5xl.pointer-events-none(
         :x="10"
@@ -204,7 +204,7 @@ svg.w-full.cursor-pointer.fullscreen-container.overflow-hidden.select-none.touch
       rect(
         :height="controlOffset"
         :width="width / 5"
-        :fill="noteColor(end + 3, null, midi.activeNotes[end] ? 1 : 0.1)"
+        :fill="noteColor(end + 3, null, activeNotes[end] ? 1 : 0.1)"
         )
       text.font-bold.text-5xl.pointer-events-none(
         :x="width / 5 - 20"

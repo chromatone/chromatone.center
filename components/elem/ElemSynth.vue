@@ -12,9 +12,9 @@ const { controls, groups, voiceRefs: voices, stopAll, cycleNote, synthEnabled, p
 
 onKeyDown('Escape', () => { stopAll() })
 
-const { midi } = useMidi()
+const { midi, activeNotes } = useMidi()
 
-const color = computed(() => Object.entries(midi.activeNotes).reduce((acc, en) => {
+const color = computed(() => Object.entries(activeNotes.value).reduce((acc, en) => {
   acc = colord(acc).mix(pitchColor((Number(en[0]) - 9) % 12), Number(en[1]) / 3).toRgbString()
   return acc
 }, '#888'))

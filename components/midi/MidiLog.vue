@@ -3,7 +3,7 @@ import { noteColor } from "#/use/colors"
 import { useMidi } from '#/use/midi'
 import { Utilities } from 'webmidi'
 
-const { midi, } = useMidi();
+const { midi, log } = useMidi();
 
 // function sortNotes(notes) {
 //   if (!notes) return []
@@ -21,7 +21,7 @@ const { midi, } = useMidi();
     name="fall" 
     mode="out-in")
     .flex.text-sm.fall.whitespace-nowrap(
-      v-for="ev in midi.log" 
+      v-for="ev in log" 
       :key="ev"
       )
       .txt CH {{ ev.message?.channel }}

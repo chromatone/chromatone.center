@@ -9,12 +9,12 @@ import { useMidi, sortNotes } from '#/use/midi'
 
 const active = ref(false)
 
-const { midi, midiAttack, midiRelease, setCC } = useMidi();
+const { midi, midiAttack, midiRelease, setCC, channels } = useMidi();
 
 const chords = computed(() => {
   const chords = {}
-  for (let channel in midi.channels) {
-    const list = Object.keys(midi.channels[channel].activeNotes).map(n => Midi.midiToNoteName(n, { sharps: true }))
+  for (let channel in channels) {
+    const list = Object.keys(channels[channel].activeNotes).map(n => Midi.midiToNoteName(n, { sharps: true }))
     chords[channel] = list.length > 2 ? Chord.detect(list) : []
   }
 
@@ -28,7 +28,7 @@ const chords = computed(() => {
   .fullscreen-container.w-full#screen(@mouseleave="active = false")
     .flex.w-full.h-full
       .flex.flex-col.flex-1.text-center.relative(
-        v-for="(ch, chNum) in midi.channels", 
+        v-for="(ch, chNum) in channels", 
         :key="ch.num")
         .header.absolute.w-full.text-center {{ chords[chNum]?.[0] || Object.keys(ch.activeNotes).map(n => Midi.midiToNoteName(n, { sharps: true })).join(' ') || ch.num }}
         .p-6 
@@ -42,7 +42,7 @@ const chords = computed(() => {
         )
     .flex.w-full
       .flex.flex-col.flex-1.text-center(
-        v-for="ch in midi.channels", 
+        v-for="ch in channels", 
         :key="ch.num") 
         midi-monitor-cc(
           v-for="cc in ch.cc"

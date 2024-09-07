@@ -12,42 +12,49 @@ import { Chord, Midi } from 'tonal';
 const MIDI_CHANNEL_STORAGE_KEY = "global-midi-channel";
 const MIDI_FILTER_STORAGE_KEY = "global-midi-filter";
 
+export const channels = reactive({})
+
+const inputs = shallowReactive({})
+const outputs = shallowReactive({})
+const message = ref(null)
+const log = shallowReactive([])
+const forwards = shallowReactive({})
+
+const available = computed(() => Object.keys(outputs).length > 0)
+
+export const activeNotes = computed(() => {
+  return Object.values(channels).reduce((acc, channel) => {
+    return { ...acc, ...channel.activeNotes };
+  }, {});
+})
+
 export const midi = reactive({
   enabled: false,
   initiated: false,
   playing: false,
   stopped: false,
   out: true,
-  inputs: shallowReactive({}),
-  outputs: shallowReactive({}),
-  forwards: {},
-  channels: {},
+
   channel: useStorage(MIDI_CHANNEL_STORAGE_KEY, 1),
   note: { pitch: 0, channel: 1, velocity: 0 },
   offset: useClamp(0, -3, 3),
   keyboard: true,
   cc: {},
   ccLearn: {},
-  message: null,
-  log: [],
+
   clock: 0,
   filter: useStorage(MIDI_FILTER_STORAGE_KEY, {}),
   monoAftertouch: {},
   polyAftertouch: {},
   pitchbend: {},
-  available: computed(() => Object.keys(midi.outputs).length > 0),
-  activeNotes: computed(() => {
-    return Object.values(midi.channels).reduce((acc, channel) => {
-      return { ...acc, ...channel.activeNotes };
-    }, {});
-  }),
+
   guessChords: computed(() => {
-    const list = Object.keys(midi.activeNotes).map(n => Midi.midiToNoteName(Number(n), { sharps: true }));
+    const list = Object.keys(activeNotes.value).map(n => Midi.midiToNoteName(Number(n), { sharps: true }));
     return list.length > 2 ? Chord.detect(list) : [];
   }),
   activeChroma: computed(() => {
     const chroma = new Array(12).fill(0);
-    Object.keys(midi.activeNotes).forEach(num => {
+    Object.keys(activeNotes.value).forEach(num => {
       const n = (Number(num) - 9) % 12;
       chroma[n] = 1;
     });
@@ -55,7 +62,7 @@ export const midi = reactive({
   }),
   activeChromaMidi: computed(() => {
     const chroma = new Array(12).fill(0);
-    Object.keys(midi.activeNotes).forEach(num => {
+    Object.keys(activeNotes.value).forEach(num => {
       const n = (Number(num) - 9) % 12;
       chroma[n] = Number(num);
     });
@@ -85,12 +92,12 @@ export function playKeyOnce(note, attack, duration) {
 }
 
 export function playKey(noteName = 'A4', attack = 0, duration = 1, midiOut = true) {
-  const note = new Note(noteName, {
-    attack,
-    release: attack,
-    duration
-  })
   requestAnimationFrame(() => {
+    const note = new Note(noteName, {
+      attack,
+      release: attack,
+      duration
+    })
     noteInOn({
       type: attack == 0 ? "noteoff" : "noteon",
       note,
@@ -125,6 +132,12 @@ export function useMidi() {
   }
   return {
     midi,
+    channels,
+    inputs,
+    outputs,
+    forwards,
+    activeNotes,
+    available,
     midiAttack,
     midiRelease,
     midiOnce,
@@ -187,7 +200,7 @@ function initMidi() {
 }
 
 function setupInput(input) {
-  midi.inputs[input.id] = {
+  inputs[input.id] = {
     name: input.name,
     manufacturer: input.manufacturer,
     forwarder: input.addForwarder(),
@@ -207,8 +220,8 @@ function setupInputListeners(input) {
     stop: () => { midi.playing = false; midi.stopped = Date.now(); },
     clock: handleClock(input),
     midimessage: handleMidiMessage(input),
-    noteon: ev => midi.inputs[input.id].note = noteInOn(ev),
-    noteoff: ev => midi.inputs[input.id].note = noteInOn(ev),
+    noteon: ev => inputs[input.id].note = noteInOn(ev),
+    noteoff: ev => inputs[input.id].note = noteInOn(ev),
     controlchange: handleControlChange(input),
     channelaftertouch: handleMonoAftertouch(input),
     keyaftertouch: handlePolyAftertouch(input),
@@ -224,23 +237,23 @@ function handleClock(input) {
   const diffs = [];
   const avg = Ola({ value: 15 });
   return ev => {
-    const diff = ev.timestamp - midi.inputs[input.id].clock;
+    const diff = ev.timestamp - inputs[input.id].clock;
     diffs.push(diff);
     if (diffs.length > 50) diffs.shift();
     avg.value = diffs.reduce((acc, d) => acc + d, 0) / diffs.length;
-    midi.inputs[input.id].diff = avg.value;
-    midi.inputs[input.id].bpm = (1000 / avg.value / 24) * 60;
-    midi.inputs[input.id].clock = ev.timestamp;
+    inputs[input.id].diff = avg.value;
+    inputs[input.id].bpm = (1000 / avg.value / 24) * 60;
+    inputs[input.id].clock = ev.timestamp;
   };
 }
 
 function handleMidiMessage(input) {
   return ev => {
     if (ev?.message?.type === "clock") return;
-    midi.inputs[input.id].event = ev;
-    midi.message = ev.message;
-    midi.log.unshift(ev);
-    if (midi.log.length > 100) midi.log.pop();
+    inputs[input.id].event = ev;
+    message.value = ev.message;
+    log.unshift(ev);
+    if (log.length > 100) log.pop();
   };
 }
 
@@ -248,7 +261,7 @@ function handleControlChange(input) {
   return ev => {
     const cc = ccIn(ev);
     if (!cc) return;
-    midi.inputs[input.id].cc = cc;
+    inputs[input.id].cc = cc;
     midi.cc = cc;
   };
 }
@@ -263,7 +276,7 @@ function handleMonoAftertouch(input) {
   return ev => {
     createMidiChannel(ev.channel)
     midi.monoAftertouch[ev.channel] = ev.value;
-    midi.channels[ev.channel].monoAftertouch = ev.value;
+    channels[ev.channel].monoAftertouch = ev.value;
   };
 }
 
@@ -272,12 +285,12 @@ function handlePolyAftertouch(input) {
     createMidiChannel(ev.channel)
     if (!midi.polyAftertouch[ev.channel]) midi.polyAftertouch[ev.channel] = {};
     midi.polyAftertouch[ev.channel][ev.note.number] = ev.value;
-    midi.channels[ev.channel].polyAftertouch[ev.note.number] = ev.value;
+    channels[ev.channel].polyAftertouch[ev.note.number] = ev.value;
   };
 }
 
 function setupOutput(output) {
-  midi.outputs[output.id] = {
+  outputs[output.id] = {
     name: output.name,
     manufacturer: output.manufacturer,
   };
@@ -301,14 +314,14 @@ function noteInOn(ev) {
   };
   if (midi.filter[note.channel]) return;
   createMidiChannel(note.channel);
-  midi.channels[note.channel].notes[note.number] = note;
+  channels[note.channel].notes[note.number] = note;
   if (ev.type === "noteoff") {
     note.velocity = 0;
-    delete midi.channels[note.channel].activeNotes[note.number];
+    delete channels[note.channel].activeNotes[note.number];
     delete midi.polyAftertouch[note.channel]?.[note.number];
   } else {
     note.velocity = 120 * (ev.note.attack || 1);
-    midi.channels[note.channel].activeNotes[note.number] = ev.note.attack;
+    channels[note.channel].activeNotes[note.number] = ev.note.attack;
   }
   midi.note = note;
   return note;
@@ -325,32 +338,32 @@ function ccIn(ev) {
     port: ev.port.id,
   };
   createMidiChannel(cc.channel);
-  midi.channels[cc.channel].cc[cc.number] = cc;
+  channels[cc.channel].cc[cc.number] = cc;
   return cc;
 }
 
 function createMidiChannel(ch) {
-  if (!midi.channels[ch]) {
-    midi.channels[ch] = reactive({
+  if (!channels[ch]) {
+    channels[ch] = reactive({
       num: ch,
       activeNotes: {},
       notes: {},
       cc: {},
       monoAftertouch: 0,
       polyAftertouch: {},
-      pitchBend: 0,
+      pitchbend: 0,
     });
   }
 }
 
 export function getPitchBend(channel) {
-  return midi.pitchBend[channel] || 0;
+  return midi.pitchbend[channel] || 0;
 }
 
 function setVelocity(channel, note, velocity) {
-  midi.channels[channel] = midi.channels[channel] || { notes: {} }
-  midi.channels[channel].notes[note] = midi.channels[channel].notes[note] || { velocity: 0 }
-  midi.channels[channel].notes[note].velocity = velocity;
+  channels[channel] = channels[channel] || { notes: {} }
+  channels[channel].notes[note] = channels[channel].notes[note] || { velocity: 0 }
+  channels[channel].notes[note].velocity = velocity;
 }
 
 export function midiAttack(note, options, velocity = 100) {
@@ -425,7 +438,7 @@ export function sendPitchBend(value, options = {}) {
 
 export function stopAll() {
   if (!midi.out) return;
-  midi.channels = {};
+  Object.assign(channels, {})
   midi.monoAftertouch = {};
   midi.polyAftertouch = {};
   midi.playing = false;
@@ -441,15 +454,15 @@ export function stopAll() {
 
 export function forwardMidi(iid, oid) {
   const output = WebMidi.outputs.find(out => out.id === oid);
-  const destinations = midi.inputs[iid].forwarder.destinations;
+  const destinations = inputs[iid].forwarder.destinations;
   const index = destinations.indexOf(output);
   if (index === -1) {
     destinations.push(output);
-    midi.forwards[iid] = midi.forwards[iid] || {};
-    midi.forwards[iid][oid] = true;
+    forwards[iid] = forwards[iid] || {};
+    forwards[iid][oid] = true;
   } else {
     destinations.splice(index, 1);
-    delete midi.forwards[iid]?.[oid];
+    delete forwards[iid]?.[oid];
   }
 }
 

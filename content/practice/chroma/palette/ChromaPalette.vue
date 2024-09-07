@@ -14,15 +14,15 @@ const light = ref(0)
 
 const initiated = ref(false)
 
-const { midi } = useMidi()
+const { activeNotes } = useMidi()
 
 const shaderCode = computed(() => shader)
 
 const notes = computed(() => {
   let chroma = new Array(12).fill(0)
-  for (let num in midi?.activeNotes) {
+  for (let num in activeNotes.value) {
     const n = (Number(num) - 9) % 12
-    chroma[n] += midi?.activeNotes[num]
+    chroma[n] += activeNotes.value[num]
   }
 
   return chroma.map((el, i) => {

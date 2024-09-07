@@ -7,7 +7,7 @@ import { synthEnabled } from "#/use";
 
 const tempo = useTempo()
 
-const { midi, stopAll, midiAttack, midiRelease } = useMidi()
+const { midi, stopAll, midiAttack, midiRelease, outputs, available } = useMidi()
 
 var isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
 </script>
@@ -27,7 +27,7 @@ var isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
     .flex.is-group
       .flex.m-2
         a.font-normal.p-2.border.border-green-500.text-green-500.select-none.rounded-lg(href="/practice/midi/monitor/") 
-          span(v-if="midi.available") MIDI 
+          span(v-if="available") MIDI 
           span(v-else) Plug in your MIDI device
       .flex
         .is-group.flex
@@ -45,7 +45,7 @@ var isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
           .w-2em {{ midi.note._name }} 
           .flex-1 {{ midi.note._accidental }}
     .is-group.flex.flex-wrap
-      button.text-button.border(v-for="output in midi.outputs")  
+      button.text-button.border(v-for="output in outputs")  
         span {{ output.name }}
     .flex.flex-wrap.is-group
       button.flex-button.border.opacity-30(

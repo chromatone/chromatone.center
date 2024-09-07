@@ -1,6 +1,6 @@
 <script setup>
 import { useMidi } from "#/use/midi";
-const { midi } = useMidi();
+const { inputs } = useMidi();
 
 </script>
 
@@ -8,7 +8,7 @@ const { midi } = useMidi();
 .flex.flex-wrap.gap-4.justify-center.p-4
 
   midi-router-input(
-    v-for="(input, iid) in midi.inputs"
+    v-for="(input, iid) in inputs"
     :key="iid"
     :input="input" 
     :iid="iid"

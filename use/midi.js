@@ -8,8 +8,6 @@ import { WebMidi, Note } from "webmidi";
 import { setupKeyboard } from './keyboard';
 import Ola from "ola";
 import { Chord, Midi } from 'tonal';
-import { setTimeout } from 'worker-timers';
-import { at } from 'color-spectrum/table';
 
 const MIDI_CHANNEL_STORAGE_KEY = "global-midi-channel";
 const MIDI_FILTER_STORAGE_KEY = "global-midi-filter";
@@ -83,7 +81,7 @@ export function learnCC({ number, channel }) {
 
 export function playKeyOnce(note, attack, duration) {
   playKey(note, attack, duration)
-  setTimeout(() => playKey(note, 0))
+  requestAnimationFrame(() => playKey(note, 0))
 }
 
 export function playKey(noteName = 'A4', attack = 0, duration = 1, midiOut = true) {
@@ -92,7 +90,7 @@ export function playKey(noteName = 'A4', attack = 0, duration = 1, midiOut = tru
     release: attack,
     duration
   })
-  setTimeout(() => {
+  requestAnimationFrame(() => {
     noteInOn({
       type: attack == 0 ? "noteoff" : "noteon",
       note,
@@ -108,7 +106,7 @@ export function playKey(noteName = 'A4', attack = 0, duration = 1, midiOut = tru
     } else {
       midiStop(note.number, { attack })
     }
-  }, 0)
+  })
 }
 
 export function useMidi() {
@@ -402,12 +400,12 @@ export function midiRelease(note) {
   }
 }
 
-export function midiOnce(note, options) {
+export function midiOnce(note, options, duration = 300) {
   if (!midi.out || midi.filter[midi.channel]) return;
   midiPlay(note, options);
   setTimeout(() => {
     midiStop(note, options);
-  }, 300);
+  }, duration);
 }
 
 export function setCC(cc, value) {

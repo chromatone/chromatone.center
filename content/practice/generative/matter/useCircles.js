@@ -4,7 +4,6 @@ import { midi } from '#/use/midi';
 import { Note } from 'tonal';
 import { globalScale, playNoteOnce } from '#/use';
 import { engine, canvas, box, running, mouse, score } from './useMatter';
-import { setTimeout } from 'worker-timers';
 import { onKeyDown } from '@vueuse/core';
 import { watch } from 'vue';
 

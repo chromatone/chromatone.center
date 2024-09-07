@@ -1,6 +1,5 @@
 <script setup>
 import { computed, onMounted, ref, watch } from 'vue';
-import { setTimeout } from 'worker-timers';
 
 import * as jisg from 'jisg';
 import bigInt from 'big-integer'

@@ -1,7 +1,6 @@
 <script setup>
 import { ref, reactive, onMounted, watch, computed } from 'vue';
 import { useResizeObserver } from '@vueuse/core';
-import { setTimeout } from 'worker-timers';
 
 import { globalScale, playNoteOnce, } from '#/use/chroma.js';
 import { Note } from 'tonal';

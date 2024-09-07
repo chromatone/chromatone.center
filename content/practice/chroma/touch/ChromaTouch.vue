@@ -3,7 +3,7 @@ import { computed, nextTick, reactive, ref, watch } from 'vue';
 import { notes } from '#/use/theory';
 import { useData } from 'vitepress'
 
-import { midi, playNote, stopNote } from '#/use';
+import { guessChords, playNote, stopNote } from '#/use';
 import ChromaTouchSector from './ChromaTouchSector.vue';
 
 const { isDark } = useData()
@@ -118,7 +118,7 @@ svg.select-none.touch-action-none.max-h-full(
             :fill="isDark ? '#fff3' : '#3333'"
             )
 
-  text.fill-black.text-6px {{ midi?.guessChords?.[0] }}
+  text.fill-black.text-6px {{ guessChords?.[0] }}
 </template>
 
 <style lang="postcss" scoped>

@@ -2,7 +2,7 @@
 import { notes } from '#/use/theory'
 import { defaultScheme, scheme, noteColor } from '#/use/colors'
 import { getCircleCoord, rotateArray } from '#/use/calculations'
-import { midi, activeNotes } from '#/use/midi'
+import { midi, activeNotes, guessChords } from '#/use/midi'
 import { globalScale, playNote, stopNote } from '#/use/chroma'
 import { useTuner } from '#/use/tuner'
 import { colord } from "colord";
@@ -279,10 +279,10 @@ watchThrottled(loaded, l => {
             :class="{ customize: scheme.customize }"
             )
       g.chord.cursor-pointer(
-        v-tooltip.top="midi.guessChords.length > 1 && 'or ' + midi.guessChords.slice(1).join(', ') || copied ? 'Copied!' : 'Click to copy'"
-        :aria-label="'Guessed chord: ' + midi.guessChords[0]"
-        @click="copy(midi.guessChords[0])"
-        v-if="midi.guessChords[0]"
+        v-tooltip.top="guessChords.length > 1 && 'or ' + guessChords.slice(1).join(', ') || copied ? 'Copied!' : 'Click to copy'"
+        :aria-label="'Guessed chord: ' + guessChords[0]"
+        @click="copy(guessChords[0])"
+        v-if="guessChords[0]"
         )
         rect(
           fill="#0001"

@@ -7,7 +7,7 @@ import { noteColor } from '#/use/colors'
 import { Chord, Note, Range, Midi } from 'tonal'
 import { playNote, stopNote } from '#/use/chroma'
 import { reactive, computed } from 'vue'
-import { midi } from '#/use/midi'
+import { midi, guessChords } from '#/use/midi'
 import { colord } from 'colord'
 
 onKeyDown('Shift', (ev) => {
@@ -103,7 +103,7 @@ function stopChord(note, qual = 'major', inv) {
       dominant-baseline="middle"
       font-weight="bold"
       )
-      text {{ midi.guessChords[0] }}
+      text {{ guessChords[0] }}
     g.cursor-pointer(
       transform="translate(10,90)"
       @click="state.seventh = !state.seventh"

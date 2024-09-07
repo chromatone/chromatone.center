@@ -28,6 +28,20 @@ export const activeNotes = computed(() => {
   }, {});
 })
 
+const activeChroma = computed(() => {
+  const chroma = new Array(12).fill(0);
+  Object.keys(activeNotes.value).forEach(num => {
+    const n = (Number(num) - 9) % 12;
+    chroma[n] = 1;
+  });
+  return chroma.join('');
+})
+
+export const guessChords = computed(() => {
+  const list = Object.keys(activeNotes.value).map(n => Midi.midiToNoteName(Number(n), { sharps: true }));
+  return list.length > 2 ? Chord.detect(list) : [];
+})
+
 export const midi = reactive({
   enabled: false,
   initiated: false,
@@ -48,18 +62,6 @@ export const midi = reactive({
   polyAftertouch: {},
   pitchbend: {},
 
-  guessChords: computed(() => {
-    const list = Object.keys(activeNotes.value).map(n => Midi.midiToNoteName(Number(n), { sharps: true }));
-    return list.length > 2 ? Chord.detect(list) : [];
-  }),
-  activeChroma: computed(() => {
-    const chroma = new Array(12).fill(0);
-    Object.keys(activeNotes.value).forEach(num => {
-      const n = (Number(num) - 9) % 12;
-      chroma[n] = 1;
-    });
-    return chroma.join('');
-  }),
   activeChromaMidi: computed(() => {
     const chroma = new Array(12).fill(0);
     Object.keys(activeNotes.value).forEach(num => {
@@ -138,6 +140,8 @@ export function useMidi() {
     forwards,
     activeNotes,
     available,
+    guessChords,
+    activeChroma,
     midiAttack,
     midiRelease,
     midiOnce,

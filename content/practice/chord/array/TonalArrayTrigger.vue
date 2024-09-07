@@ -5,7 +5,7 @@ import { midiPlay, midiStop } from '#/use/midi'
 import { computed, ref } from 'vue';
 import { noteColor } from '#/use/colors'
 import { playNote, stopNote, useMidi } from '#/use'
-const { midi } = useMidi()
+const { midi, activeChroma } = useMidi()
 
 const props = defineProps({
   pressed: Boolean,
@@ -36,7 +36,7 @@ const activeMidi = computed(() => {
   let active = true
   let chord = chordPitches.value.map((x) => (x > 11 ? x % 12 : x))
   chord.forEach(note => {
-    if (midi.activeChroma[note] != '1') {
+    if (activeChroma.value[note] != '1') {
       active = false
     }
   })

@@ -2,7 +2,7 @@
 import { notes, intervals } from '#/use/theory'
 import { noteColor } from '#/use/colors'
 import { rotateArray } from '#/use/calculations'
-import { midi } from '#/use/midi'
+import { midi, guessChords } from '#/use/midi'
 import { globalScale } from '#/use/chroma'
 import { colord } from "colord";
 import { computed, onMounted, ref, shallowRef } from 'vue'
@@ -129,7 +129,7 @@ svg.h-90.mr-auto.ml-4(
         y="6"
         font-size="80"
         fill="currentColor"
-      ) {{ midi.guessChords[0] }}
+      ) {{ guessChords[0] }}
 
 </template>
 

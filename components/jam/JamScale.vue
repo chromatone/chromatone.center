@@ -1,5 +1,5 @@
 <script setup>
-import { midi } from '#/use';
+import { guessChords } from '#/use';
 import { globalScale } from '#/use/chroma';
 import { noteColor } from '#/use/colors';
 import { onClickOutside } from '@vueuse/core';
@@ -22,7 +22,7 @@ const choose = ref(false)
 		.p-0.text-2xl.font-bold.flex.items-center.gap-4 {{ globalScale?.note?.name }} {{ globalScale?.set?.name }}
 		.flex-1
 		.text-lg.i-la-angle-down
-	.w-60.text-lg.tabular-nums.font-mono {{ midi.guessChords[0] }}
+	.w-60.text-lg.tabular-nums.font-mono {{ guessChords[0] }}
 	slot
 		//- chroma-code(
 

@@ -1,3 +1,48 @@
+## v.2.8.5 (2024-09-07)
+
+
+### 🚀 Enhancements
+
+- Thai color names ([ffd39a38b](https://github.com/chromatone/chromatone.center/commit/ffd39a38b))
+- More theory on rhythms ([feca81d7d](https://github.com/chromatone/chromatone.center/commit/feca81d7d))
+- Events ([95f70a206](https://github.com/chromatone/chromatone.center/commit/95f70a206))
+- Auto publish tags ([8c9d10fad](https://github.com/chromatone/chromatone.center/commit/8c9d10fad))
+- Sync tabs toggle ([47c3ebc23](https://github.com/chromatone/chromatone.center/commit/47c3ebc23))
+- Toggle loop mutes in circle metronome ([aa9277897](https://github.com/chromatone/chromatone.center/commit/aa9277897))
+- Move mgm to tsoop.com ([98b37d81f](https://github.com/chromatone/chromatone.center/commit/98b37d81f))
+- Webchuck experiment ([3726b6ddb](https://github.com/chromatone/chromatone.center/commit/3726b6ddb))
+- WebChucK examples ([38cd973ef](https://github.com/chromatone/chromatone.center/commit/38cd973ef))
+- Basic conversion to vitepress-pages 2.0 beta ([e273f17bd](https://github.com/chromatone/chromatone.center/commit/e273f17bd))
+- GLSL shader colors ([690146dbd](https://github.com/chromatone/chromatone.center/commit/690146dbd))
+- Slick design ([977a40a14](https://github.com/chromatone/chromatone.center/commit/977a40a14))
+- Second rendering layer ([4a5db1a71](https://github.com/chromatone/chromatone.center/commit/4a5db1a71))
+- Nav-search and more covers ([47529afb2](https://github.com/chromatone/chromatone.center/commit/47529afb2))
+- Beautiful navigation ([7109d5b46](https://github.com/chromatone/chromatone.center/commit/7109d5b46))
+- More pics ([b2c87b7b1](https://github.com/chromatone/chromatone.center/commit/b2c87b7b1))
+- Rhythm wheel ([52d0eadab](https://github.com/chromatone/chromatone.center/commit/52d0eadab))
+- Centered content! ([6c1f500e6](https://github.com/chromatone/chromatone.center/commit/6c1f500e6))
+
+### 🩹 Fixes
+
+- Tauri 2.0 ([02ac2c7ac](https://github.com/chromatone/chromatone.center/commit/02ac2c7ac))
+- Layout fixes all around ([dea834f24](https://github.com/chromatone/chromatone.center/commit/dea834f24))
+- SkillBox course restructured ([839e71cdb](https://github.com/chromatone/chromatone.center/commit/839e71cdb))
+- Random spaces kinda fixed ([a02953911](https://github.com/chromatone/chromatone.center/commit/a02953911))
+- Midi render is back ([c50642103](https://github.com/chromatone/chromatone.center/commit/c50642103))
+- Better bars ([3e3362b63](https://github.com/chromatone/chromatone.center/commit/3e3362b63))
+- Cleaner theme components ([7cf674832](https://github.com/chromatone/chromatone.center/commit/7cf674832))
+- Small fixes ([b6e12a9d1](https://github.com/chromatone/chromatone.center/commit/b6e12a9d1))
+- Even less nesting in nav ([31cc98c43](https://github.com/chromatone/chromatone.center/commit/31cc98c43))
+- Better chroma profile ([01826832c](https://github.com/chromatone/chromatone.center/commit/01826832c))
+- Robust flower ([e924e96c1](https://github.com/chromatone/chromatone.center/commit/e924e96c1))
+- Elementary 2.0.2 fixes Firefox and Safari ([0366d3a60](https://github.com/chromatone/chromatone.center/commit/0366d3a60))
+
+### ❤️ Contributors
+
+- Davay ([@davay42](http://github.com/davay42))
+
+
+
 - removed TS with https://sucrase.io/#transforms=typescript&disableESTransforms=true&compareWithBabel=false&code= (2023-10-12)
 
 ## v.2.0.6 (2023-04-15)

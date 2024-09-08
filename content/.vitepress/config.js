@@ -40,7 +40,7 @@ export default withPwa(defineConfig({
   head: [
     ["meta", { property: "og:type", content: "website" }],
     ["meta", { name: "apple-mobile-web-app-status-bar-style", content: "white-translucent", },],
-    ["meta", { name: "apple-mobile-web-app-capable", content: "yes" }],
+    ["meta", { name: "mobile-web-app-capable", content: "yes" }],
     ["meta", { name: "HandheldFriendly", content: "True" }],
     ["meta", { name: "MobileOptimized", content: "320" }],
   ],

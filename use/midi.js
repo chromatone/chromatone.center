@@ -12,11 +12,30 @@ import { Chord, Midi } from 'tonal';
 const MIDI_CHANNEL_STORAGE_KEY = "global-midi-channel";
 const MIDI_FILTER_STORAGE_KEY = "global-midi-filter";
 
-export const channels = reactive({})
+export const midi = reactive({
+  enabled: false,
+  initiated: false,
+  playing: false,
+  stopped: false,
+  out: true,
+  channel: useStorage(MIDI_CHANNEL_STORAGE_KEY, 1),
+  note: { pitch: 0, channel: 1, velocity: 0 },
+  offset: useClamp(0, -3, 3),
+  keyboard: true,
+  cc: {},
+  ccLearn: {},
+  filter: useStorage(MIDI_FILTER_STORAGE_KEY, {}),
+  monoAftertouch: {},
+  polyAftertouch: {},
+  pitchbend: {}
+});
+
+const channels = reactive({})
 
 const inputs = shallowReactive({})
 const outputs = shallowReactive({})
 const message = ref(null)
+const clock = ref(0)
 const log = shallowReactive([])
 const forwards = shallowReactive({})
 
@@ -28,7 +47,7 @@ export const activeNotes = computed(() => {
   }, {});
 })
 
-const activeChroma = computed(() => {
+export const activeChroma = computed(() => {
   const chroma = new Array(12).fill(0);
   Object.keys(activeNotes.value).forEach(num => {
     const n = (Number(num) - 9) % 12;
@@ -42,40 +61,14 @@ export const guessChords = computed(() => {
   return list.length > 2 ? Chord.detect(list) : [];
 })
 
-export const midi = reactive({
-  enabled: false,
-  initiated: false,
-  playing: false,
-  stopped: false,
-  out: true,
-
-  channel: useStorage(MIDI_CHANNEL_STORAGE_KEY, 1),
-  note: { pitch: 0, channel: 1, velocity: 0 },
-  offset: useClamp(0, -3, 3),
-  keyboard: true,
-  cc: {},
-  ccLearn: {},
-
-  clock: 0,
-  filter: useStorage(MIDI_FILTER_STORAGE_KEY, {}),
-  monoAftertouch: {},
-  polyAftertouch: {},
-  pitchbend: {},
-
-  activeChromaMidi: computed(() => {
-    const chroma = new Array(12).fill(0);
-    Object.keys(activeNotes.value).forEach(num => {
-      const n = (Number(num) - 9) % 12;
-      chroma[n] = Number(num);
-    });
-    return chroma;
-  }),
-  stopAll,
-  attack: midiAttack,
-  release: midiRelease,
-  once: midiOnce,
-  setCC
-});
+export const activeChromaMidi = computed(() => {
+  const chroma = new Array(12).fill(0);
+  Object.keys(activeNotes.value).forEach(num => {
+    const n = (Number(num) - 9) % 12;
+    chroma[n] = Number(num);
+  });
+  return chroma;
+})
 
 
 export function learnCC({ number, channel }) {
@@ -133,7 +126,9 @@ export function useMidi() {
     midi.initiated = true;
   }
   return {
+    log,
     midi,
+    clock,
     channels,
     inputs,
     outputs,
@@ -142,6 +137,7 @@ export function useMidi() {
     available,
     guessChords,
     activeChroma,
+    activeChromaMidi,
     midiAttack,
     midiRelease,
     midiOnce,
@@ -161,23 +157,20 @@ export function useMidi() {
 async function checkMidiPermission() {
   if (navigator.permissions) {
     try {
-      const result = await navigator.permissions.query({ name: 'midi', sysex: true });
+      const result = await navigator.permissions.query({ name: 'midi', sysex: true })
       result.addEventListener('change', ev => console.log(ev))
       if (result.state === 'granted') {
-        console.log('MIDI permission already granted');
-        return true;
+        return true
       } else if (result.state === 'prompt') {
-        console.log('MIDI permission will be requested');
-        return null;
+        return null
       } else {
-        console.log('MIDI permission denied');
-        return false;
+        return false
       }
     } catch (error) {
       console.error('Error checking MIDI permission:', error);
     }
   }
-  return null; // Permission API not supported
+  return null
 }
 
 async function setupMidi() {
@@ -219,7 +212,7 @@ function setupInput(input) {
 }
 
 function setupInputListeners(input) {
-  const listeners = {
+  Object.entries({
     start: () => { midi.playing = true; midi.stopped = false; },
     stop: () => { midi.playing = false; midi.stopped = Date.now(); },
     clock: handleClock(input),
@@ -230,9 +223,7 @@ function setupInputListeners(input) {
     channelaftertouch: handleMonoAftertouch(input),
     keyaftertouch: handlePolyAftertouch(input),
     pitchbend: handlePitchBend(input),
-  };
-
-  Object.entries(listeners).forEach(([event, handler]) => {
+  }).forEach(([event, handler]) => {
     input.addListener(event, handler);
   });
 }
@@ -256,6 +247,7 @@ function handleMidiMessage(input) {
     if (ev?.message?.type === "clock") return;
     inputs[input.id].event = ev;
     message.value = ev.message;
+
     log.unshift(ev);
     if (log.length > 100) log.pop();
   };

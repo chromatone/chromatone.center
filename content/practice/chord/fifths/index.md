@@ -16,8 +16,6 @@ const ChordFifths = defineClientComponent(() => {
 
 <ChordFifths style="position: sticky; top: 0;" />
 
-
-
 ::: info
 
 ## The double circle of fifths. A tool to explore chords in tonal space

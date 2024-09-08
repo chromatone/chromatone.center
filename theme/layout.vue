@@ -42,7 +42,8 @@ function scrollTop() {
 
 <template lang="pug">
 
-img.top-16px.left-2.fixed.z-1000.cursor-pointer.mr-3.h-30px(v-if="theme.logo", :src="theme.logo", alt="Chromatone logo" @click="openSideBar = !openSideBar")
+a.top-16px.left-2.fixed.z-1000.cursor-pointer.mr-3(href="/")
+  img.h-30px(v-if="theme.logo", :src="theme.logo", alt="Chromatone logo")
 
 bar-bar(v-if="!params.nobar")
 

@@ -11,7 +11,7 @@ import { useStorage, onKeyStroke, useRafFn, } from "@vueuse/core";
 import { createChannel } from './audio'
 import { useClamp } from "@vueuse/math";
 import { WebMidi } from "webmidi";
-import { midi } from "./midi";
+import { midi, stopAll } from "./midi";
 import { useBroadcastChannel } from '@vueuse/core'
 
 export const tempo = reactive({
@@ -168,7 +168,7 @@ export function useTempo() {
       if (stop) {
 
         getTransport().stop();
-        midi.stopAll()
+        stopAll()
         tempo.playing = false;
         if (tempo.tabSync) {
           post({ stopped: stop })

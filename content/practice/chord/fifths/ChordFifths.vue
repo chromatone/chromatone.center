@@ -7,7 +7,7 @@ import { noteColor } from '#/use/colors'
 import { Chord, Note, Range, Midi } from 'tonal'
 import { playNote, stopNote } from '#/use/chroma'
 import { reactive, computed } from 'vue'
-import { midi, guessChords } from '#/use/midi'
+import { midi, guessChords, activeChroma } from '#/use/midi'
 import { colord } from 'colord'
 
 onKeyDown('Shift', (ev) => {
@@ -182,7 +182,7 @@ function stopChord(note, qual = 'major', inv) {
               :to="(i) / 12 * 360 + 15 * (j % 2)"
               :radius="40 - 12 * getRadius(qual) - 5 * (j > 1 ? 0 : 1)"
               :thickness="5"
-              :op="Math.abs(tonic - i) == 11 || Math.abs(tonic - i) % 12 <= 1 ? midi.activeChroma[(note.pitch + deg) % 12] == 1 ? .7 : .3 : midi.activeChroma[(note.pitch + deg) % 12] == 1 ? .2 : 0.1"
+              :op="Math.abs(tonic - i) == 11 || Math.abs(tonic - i) % 12 <= 1 ? activeChroma[(note.pitch + deg) % 12] == 1 ? .7 : .3 : activeChroma[(note.pitch + deg) % 12] == 1 ? .2 : 0.1"
               :fill="Math.abs(tonic - i) == 11 || Math.abs(tonic - i) % 12 <= 1 ? noteColor(note.pitch + deg, 5) : noteColor(note.pitch + deg, 5, 1)"
               )
           circle.transition(

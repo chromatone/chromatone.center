@@ -6,7 +6,7 @@ import { midi } from '#/use/midi'
 import { useAudio } from '#/use/audio'
 import { computed, reactive, watch } from 'vue'
 
-new Midi()
+const midiConverter = new Midi()
 
 const info = reactive({
   title: '',
@@ -115,9 +115,10 @@ function play() {
       .i-la-trash-alt
     button(@click="download")
       .i-la-download
+    save-svg(svg="rec")
   // .flex.flex-wrap
   // input(type="text" v-model="info.title" placeholder="Title")
-  svg.h-30em.w-full(version="1.1" baseProfile="full" :viewBox="`0 0 ${map.width} ${map.height}`" xmlns="http://www.w3.org/2000/svg")
+  svg#rec.h-30em.w-full(version="1.1" baseProfile="full" :viewBox="`0 0 ${map.width} ${map.height}`" xmlns="http://www.w3.org/2000/svg")
     g(v-for="(track) in info.tracks" :key="track")
       rect(v-for="note in track.notes" :key="note" rx="0.4" :x="calcX(note.timestamp)" :y="calcY(note.number)" :width="note.duration * 1000 / (info.last - info.first)" :height="map.height / (info.top - info.bottom)" :fill="noteColor((note.number + 3) % 12)")
   // .flex.flex-wrap

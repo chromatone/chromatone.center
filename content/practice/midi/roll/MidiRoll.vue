@@ -1,8 +1,10 @@
 <script setup>
 import { useRafFn, useStorage, useWindowSize } from "@vueuse/core";
-import { midi, stopAll, channels } from "#/use/midi";
+import { useMidi } from "#/use/midi";
 import { computed, onMounted, reactive, ref, watch } from "vue";
 import { useClamp } from "@vueuse/math";
+
+const { midi, stopAll, channels } = useMidi()
 
 const { width, height } = useWindowSize()
 

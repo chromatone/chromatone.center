@@ -1,4 +1,4 @@
-import { midi } from "#/use/midi";
+import { useMidi } from "#/use/midi";
 import { tempo } from '#/use/tempo'
 import paper from "paper";
 import { reactive, onMounted, onBeforeUnmount, watch, ref } from 'vue'
@@ -8,6 +8,8 @@ export const radar = reactive({
   loaded: false,
   zoom: 2,
 });
+
+const { midi, clock } = useMidi()
 
 export function useRadar() {
   const screen = ref();
@@ -24,13 +26,13 @@ export function useRadar() {
   });
 
   watch(() => tempo.ticks, t => {
-    if (!midi.playing) {
-      radar.angle = (t / (192 * 4)) * (360 / radar.zoom);
-    }
+
+    radar.angle = (t / (192 * 4)) * (360 / radar.zoom);
+
   })
 
   watch(
-    () => midi.clock,
+    clock,
     () => {
       if (midi.playing) {
         radar.angle += 360 / 192 / radar.zoom;

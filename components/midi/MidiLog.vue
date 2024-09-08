@@ -16,10 +16,9 @@ const { midi, log } = useMidi();
 
 <template lang="pug">
 .flex.flex-col.gap-1.mb-8.overflow-x-scroll.p-4.font-mono#screen
-  pre {{ midi.pitchbend }}
+  pre {{ midi.pitchbend }} 
   transition-group(
-    name="fall" 
-    mode="out-in")
+    name="fall")
     .flex.text-sm.fall.whitespace-nowrap(
       v-for="ev in log" 
       :key="ev"

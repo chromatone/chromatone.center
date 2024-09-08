@@ -8,9 +8,11 @@ cover: geometry.png
 
 <client-only >
 
-  <midi-radar />
-  <midi-panel class="mb-4" />
+  <midi-radar style="position: sticky; top: 0;"  />
+  <midi-panel class=" mx-2 max-w-55ch"  />
 </client-only>
+
+::: info
 
 ### See all the MIDI signals on the clock
 
@@ -21,3 +23,5 @@ Drag across the circle up and down to adjust temporal zoom - ther higher the zoo
 Use MIDI channel filter section to cut visualize the exact voices of a multichannel MIDI signal.
 
 You can toggle the internal synth on and off for using your MIDI-controller or enable audio input monitoring for your using your synths and sequencers.
+
+:::

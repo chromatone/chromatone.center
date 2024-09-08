@@ -2,7 +2,7 @@
 import { notes } from '#/use/theory'
 import { defaultScheme, scheme, noteColor } from '#/use/colors'
 import { getCircleCoord, rotateArray } from '#/use/calculations'
-import { midi, activeNotes, guessChords } from '#/use/midi'
+import { midi, activeNotes, guessChords, activeChromaMidi } from '#/use/midi'
 import { globalScale, playNote, stopNote } from '#/use/chroma'
 import { useTuner } from '#/use/tuner'
 import { colord } from "colord";
@@ -156,7 +156,7 @@ watchThrottled(loaded, l => {
           g.petal(
             :transform="`rotate(${pitch * 30}) translate(2,-120) `"
             :fill="note.note.length > 1 ? '#222' : '#eee'"
-            :opacity="midi.activeChromaMidi[pitch] ? 1 : 0.9"
+            :opacity="activeChromaMidi[pitch] ? 1 : 0.9"
             style="transition: all 100ms ease-out"
             filter="url(#shadow)"
             ) 
@@ -189,7 +189,7 @@ watchThrottled(loaded, l => {
             )
             circle(
               style="transition: all 100ms ease-out"
-              :fill="noteColor(pitch, midi.activeChromaMidi[pitch] ? 4 : 3)"
+              :fill="noteColor(pitch, activeChromaMidi[pitch] ? 4 : 3)"
               :r="size / 12"
               )
             g(v-if="tunr?.tuner?.initiated")
@@ -203,7 +203,7 @@ watchThrottled(loaded, l => {
               v-if="letters"
               :font-size="size / 20"
               font-weight="bold"
-              :fill="!midi.activeChromaMidi[pitch] ? 'white' : 'black'"
+              :fill="!activeChromaMidi[pitch] ? 'white' : 'black'"
               )
               tspan(
                 dy="5"

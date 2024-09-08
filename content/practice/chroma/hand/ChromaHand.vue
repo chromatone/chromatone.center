@@ -2,7 +2,7 @@
 import { notes, intervals } from '#/use/theory'
 import { noteColor } from '#/use/colors'
 import { rotateArray } from '#/use/calculations'
-import { midi, guessChords } from '#/use/midi'
+import { midi, guessChords, activeChromaMidi } from '#/use/midi'
 import { globalScale } from '#/use/chroma'
 import { colord } from "colord";
 import { computed, onMounted, ref, shallowRef } from 'vue'
@@ -102,21 +102,21 @@ svg.h-90.mr-auto.ml-4(
     g.point(
       @click="right ? null : globalScale.tonic = p"
       v-for="(point, p) in points"
-      :opacity="midi.activeChromaMidi[point.pitch] ? 1 : 0.7"
+      :opacity="activeChromaMidi[point.pitch] ? 1 : 0.7"
       :transform="`translate(${point.x} ${point.y})`"
       )
       circle(
         style="transition: all 100ms ease-out"
         :alt="point.pitch"
         :r="point.pitch == globalScale.tonic ? 60 : point.r"
-        :fill="noteColor(point.pitch, midi.activeChromaMidi[point.pitch] ? 4 : 3, midi.activeChromaMidi[point.pitch] ? 1 : .6)"
+        :fill="noteColor(point.pitch, activeChromaMidi[point.pitch] ? 4 : 3, activeChromaMidi[point.pitch] ? 1 : .6)"
         )
       text.pointer-events-none(
         font-family="Commissioner"
         font-weight="bold"
         font-size="40"
         fill="white"
-        :opacity="midi.activeChromaMidi[point.pitch] ? 1 : 0"
+        :opacity="activeChromaMidi[point.pitch] ? 1 : 0"
         :transform="`scale(${right ? -1 : 1} 1)`"
       ) {{ right ? intervals[p] : notes[p] }}
 

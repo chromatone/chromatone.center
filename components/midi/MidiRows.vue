@@ -6,7 +6,7 @@ import { Midi } from '@tonejs/midi'
 
 const Transport = getTransport()
 
-const { midi } = useMidi()
+const { midi, clock } = useMidi()
 const { seq } = useSequence(null, 1, 'row')
 const tempo = useTempo()
 
@@ -151,7 +151,7 @@ function useMidiTracks() {
 		pre {{ tempo }}
 		pre 
 			p  {{ track }}
-			p {{ midi.clock }}
+			p {{ clock }}
 			p {{ midi.note }}
 
 </template>

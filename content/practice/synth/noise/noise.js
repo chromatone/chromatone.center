@@ -92,11 +92,9 @@ export function useNoise() {
   const crusher = new BitCrusher(crusherOptions.value)
     .connect(crusherGain)
     .connect(panner);
-  //@ts-expect-error
   const filter = new AutoFilter(filterOptions.value)
     .connect(filterGain)
     .connect(crusher);
-  //@ts-expect-error types
   const synth = new NoiseSynth(options.value).connect(gain).connect(filter);
 
   useRafFn(() => {
@@ -132,7 +130,6 @@ export function useNoise() {
   });
 
   watch(options.value, () => {
-    //@ts-expect-error
     synth.set(options.value);
   });
 
@@ -154,7 +151,6 @@ export function useNoise() {
     } else {
       filterGain.gain.rampTo(0, 0.2);
     }
-    //@ts-expect-error types off
     filter.set(opt);
   });
 

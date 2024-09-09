@@ -9,7 +9,6 @@ import { useSequence } from "#/use/sequence";
 import { levelColor } from "#/use/colors";
 import { tempo } from "#/use/tempo";
 import { midi } from "#/use/midi";
-// import { useUrlSearchParams } from '@vueuse/core'
 import { controls } from './controls'
 import { ref, computed, watch } from 'vue'
 import { gainToDb } from "tone";
@@ -23,7 +22,7 @@ const props = defineProps({
   order: { type: Number, default: 0 },
 });
 
-const { sampler, seq, meter } = useSequence(undefined, props.order, "circle");
+const { sampler, seq, meter, current, steps, mutes, accents, volume, activeSteps, progress, mutesCount, pan, mute, reset, rotateAccents } = useSequence(undefined, props.order, "circle");
 
 const soundLetters = ["A", "B", "C", "D", "E", "F"];
 const soundControl = ref(soundLetters.findIndex((el) => el == meter?.sound));
@@ -31,29 +30,23 @@ const controlRadius = computed(() => props.radius + 110);
 const lastHit = ref(0)
 
 onKeyStroke('Shift', () => {
-  lastHit.value = seq.progress
+  lastHit.value = progress.value
 })
 
 watch(soundControl, (num) => {
   meter.sound = soundLetters[num]
 });
 
-const activeSteps = computed(() => {
-  return seq?.steps
-    .filter((step) => !seq.mutes[step[0].split("-")[0]])
-    .map((step) => Number(step[0].split("-")[0]));
-});
-
 const lineProgress = computed(() => {
-  if (seq.progress > 0) {
-    return getCircleCoord(seq.progress * 360, 360, props.radius + 50, 1000);
+  if (progress.value > 0) {
+    return getCircleCoord(progress.value * 360, 360, props.radius + 50, 1000);
   } else {
     return { x: 500, y: 100 };
   }
 });
 
 const lastLine = computed(() => {
-  if (seq.progress > 0) {
+  if (progress.value > 0) {
     return getCircleCoord(lastHit.value * 360, 360, props.radius + 50, 1000);
   } else {
     return { x: 500, y: 100 };
@@ -72,17 +65,17 @@ watch(
       const diff = prevSteps.value - cc.raw;
       prevSteps.value = cc.raw;
       if (!diff) return;
-      const can = seq.mutes.length - seq.mutesCount;
+      const can = mutes.value.length - mutesCount.value;
       if (can < 0) return;
-      if (diff > 0 && seq.mutesCount <= 1) return;
-      const index = seq.mutes.findIndex((mute) => mute == diff < 0);
-      seq.mutes[index] = diff > 0;
-      seq.reset();
+      if (diff > 0 && mutesCount.value <= 1) return;
+      const index = mutes.value.findIndex((mute) => mute == diff < 0);
+      mutes.value[index] = diff > 0;
+      reset();
     }
     if (cc.number == controls.cc[props.order].rotate) {
       const diff = prevCC.value - cc.raw;
       prevCC.value = cc.raw;
-      seq.rotateAccents(diff);
+      rotateAccents(diff);
     }
   }
 );
@@ -106,29 +99,29 @@ g(
     :opacity="seq?.volume"
   )
     g(
-      v-for="(step, s) in seq.activeSteps"
+      v-for="(step, s) in activeSteps"
       :key="step"
       )
       line(
-        :x1="getCircleCoord(step, seq.steps.length, radius - 55, 1000).x"
-        :y1="getCircleCoord(step, seq.steps.length, radius - 55, 1000).y"
-        :x2="getCircleCoord(activeSteps[s + 1] || activeSteps[0], seq.steps.length, radius - 55, 1000).x"
-        :y2="getCircleCoord(activeSteps[s + 1] || activeSteps[0], seq.steps.length, radius - 55, 1000).y"
+        :x1="getCircleCoord(step, steps.length, radius - 55, 1000).x"
+        :y1="getCircleCoord(step, steps.length, radius - 55, 1000).y"
+        :x2="getCircleCoord(activeSteps[s + 1] || activeSteps[0], steps.length, radius - 55, 1000).x"
+        :y2="getCircleCoord(activeSteps[s + 1] || activeSteps[0], steps.length, radius - 55, 1000).y"
         stroke-width="8"
-        :stroke="levelColor((step + (tempo.pitch / 12) * seq.steps.length), seq.steps.length, 1)"
+        :stroke="levelColor((step + (tempo.pitch / 12) * steps.length), steps.length, 1)"
         )
     loop-sector(
-      v-for="(step, s) in seq.steps"
+      v-for="(step, s) in steps"
       :key="step"
       :step="s"
-      :total="seq.steps.length"
-      :active="!seq.mutes[s] && step == seq.current"
+      :total="steps.length"
+      :active="!mutes[s] && step == current"
       :radius="radius - 5"
-      :muted="seq.mutes[s]"
+      :muted="mutes[s]"
       style="cursor:pointer"
-      :accented="Boolean(seq.accents[s])"
-      @accent="seq.accents[s] = !seq.accents[s]"
-      @mute="seq.mutes[s] = !seq.mutes[s]"
+      :accented="Boolean(accents[s])"
+      @accent="accents[s] = !accents[s]"
+      @mute="mutes[s] = !mutes[s]"
     )
   loop-control.under(
     v-model="meter.under"
@@ -170,7 +163,7 @@ g(
     :radius="controlRadius"
     :start="98 + order * 6"
     :finish="130"
-    v-model="seq.volume"
+    v-model="volume"
     font-size="30"
     :fixed="1"
     :step="0.02"
@@ -184,14 +177,14 @@ g(
 
   g.mute.opacity-30.hover-opacity-60.transition.cursor-pointer(
     :transform="`translate(${850-order*147},${800-order*128})`"
-    @click="seq.mute = !seq.mute"
-    :style="{opacity: seq.mute? 1 : ''}"
+    @click="mute = !mute"
+    :style="{opacity: mute? 1 : ''}"
     )
     circle(
       style="filter:url(#shadowButton);"
       r="25"
       stroke-width="3"
-      :stroke-opacity="seq.mute ? 1 : 0"
+      :stroke-opacity="mute ? 1 : 0"
       :stroke="isDark ? '#ddd' : '#333'"
       :fill="isDark ? '#333' : '#ddd'"
       )
@@ -201,7 +194,7 @@ g(
     :radius="controlRadius"
     :start="138 + order * 6"
     :finish="175"
-    v-model="seq.pan"
+    v-model="pan"
     font-size="30"
     :fixed="1"
     :step="0.05"
@@ -243,7 +236,7 @@ g(
 
   g.info(
     :transform="`translate(500,${order * size + 50})`"
-    v-drag="seq.rotateAccents"
+    v-drag="rotateAccents"
   )
     g.signature(v-tooltip.top="'Time signature'")
       text(
@@ -268,7 +261,7 @@ g(
         ) {{ meter?.under }} 
     g.cursor-pointer.opacity-50.transition-all.duration-200.ease.hover-opacity-100(
       transform="translate(74,-10)"
-      @mousedown="seq.rotateAccents(-1)"
+      @mousedown="rotateAccents(-1)"
       v-tooltip.top="'Rotate pattern forward'"
     )
       circle(
@@ -282,7 +275,7 @@ g(
       )
     g.cursor-pointer.opacity-50.transition-all.duration-200.ease.hover-opacity-100(
       transform="translate(-78,-10)"
-      @mousedown="seq.rotateAccents(1)"
+      @mousedown="rotateAccents(1)"
       v-tooltip.top="'Rotate pattern back'"
     )
       circle(

@@ -3,7 +3,7 @@
  * The beat loops
  */
 
-import { shallowReactive, reactive, computed, watch, watchEffect, onBeforeUnmount, markRaw } from 'vue'
+import { shallowReactive, reactive, computed, watch, watchEffect, onBeforeUnmount, markRaw, ref } from 'vue'
 import { tempo } from "./tempo";
 import { Sequence, PanVol, gainToDb, getDraw, Sampler, start, Recorder, Meter, UserMedia, getContext } from "tone";
 import { createChannel } from './audio'
@@ -19,6 +19,8 @@ const createStorageKey = (prefix, order, mode, suffix) => `${prefix}-${mode}-${s
 
 export function useSequence(initial = { over: 4, under: 4, sound: "A", volume: 1 }, order = 0, mode = "bar", maxSteps = 64) {
 
+  let sequence
+
   const storageKey = (suffix) => createStorageKey('tempo-loop', order, mode, suffix);
 
   const meter = reactive({
@@ -28,76 +30,65 @@ export function useSequence(initial = { over: 4, under: 4, sound: "A", volume: 1
     volume: useClamp(useStorage(storageKey('volume'), 1), 0, 1),
   })
 
-  const seq = reactive({
+  const current = ref('0-0')
+  const steps = computed(() => Array.from({ length: meter.over }, (_, i) => [`${i}-1`]))
+  const mutes = useStorage(createStorageKey('metro', order, mode, 'mutes'), [])
+  const accents = useStorage(createStorageKey('metro', order, mode, 'accents'), [true])
+  const volume = useClamp(useStorage(createStorageKey('metro', order, mode, 'vol'), initial?.volume || 1), 0, 1)
+  const activeSteps = computed(() => steps.value.filter((step, index) => !mutes.value[index]).map((step) => Number(step[0].split('-')[0])))
+  const mutesCount = computed(() => mutes.value.filter(val => !val).length)
+  const progress = computed(() => tempo.ticks ? sequence?.progress : 0)
+  const pan = useClamp(useStorage(createStorageKey('metro', order, mode, 'pan'), order % 2 ? -0.5 : 0.5), -1, 1)
+  const currentSeq = computed(() => mutes.value.map(val => val ? '0' : '1').join(''))
+  const euclidSeq = computed(() => mutesCount.value > 0 && mutesCount.value < steps.value.length ? getEuclideanRhythm(mutesCount.value, steps.value.length).join('') : '1'.repeat(steps.value.length))
+  const mute = ref(false)
+  const isEuclidean = computed(() => euclidSeq.value === currentSeq.value)
 
-    current: '0-0',
-    steps: computed(() => Array.from({ length: meter.over }, (_, i) => [`${i}-1`])),
-    mutes: useStorage(createStorageKey('metro', order, mode, 'mutes'), []),
-    accents: useStorage(createStorageKey('metro', order, mode, 'accents'), [true]),
-    volume: useClamp(useStorage(createStorageKey('metro', order, mode, 'vol'), initial?.volume || 1), 0, 1),
-    mute: false,
-    pan: useClamp(useStorage(createStorageKey('metro', order, mode, 'pan'), order % 2 ? -0.5 : 0.5), -1, 1),
-    mutesCount: computed(() => seq.mutes.filter(val => !val).length),
-    activeSteps: computed(() => seq.steps.filter((step, index) => !seq.mutes[index]).map((step) => Number(step[0].split('-')[0]))),
-    currentSeq: computed(() => seq.mutes.map(val => val ? '0' : '1').join('')),
-    euclidSeq: computed(() => seq.mutesCount > 0 && seq.mutesCount < seq.steps.length ? getEuclideanRhythm(seq.mutesCount, seq.steps.length).join('') : '1'.repeat(seq.steps.length)),
-    isEuclidean: computed(() => seq.euclidSeq === seq.currentSeq),
-    reset() {
-      seq.mutes = seq.euclidSeq.split('').map(e => e !== '1');
-    },
-    rotateAccents(num) {
-      seq.accents = rotateArray(seq.accents, num);
-      seq.mutes = rotateArray(seq.mutes, num);
-    }
-  });
+  tracks[order] = { meter, mutes, accents, steps, reset };
 
-  tracks[order] = { ...seq, meter };
+  function reset() {
+    mutes.value = euclidSeq.value.split('').map(e => e !== '1');
+  }
+
+  function rotateAccents(num) {
+    accents.value = rotateArray(accents.value, num);
+    mutes.value = rotateArray(mutes.value, num);
+  }
 
   const audio = createAudio(order, mode);
   const { sampler, micRec } = useSampler(audio.synth);
+  const Draw = getDraw()
 
-
-  let sequence;
-  createSequence();
-
-  const Draw = getDraw();
-
-  seq.progress = computed(() => tempo.ticks ? sequence?.progress : 0);
-
-  watch(() => meter.under, createSequence);
-  watch(() => meter.over, () => {
-    sequence.events = seq.steps;
-  }, { immediate: true });
-  watchEffect(updateSequenceEvents);
-  watchEffect(() => { if (tempo.stopped) seq.current = '1000-1'; });
-  watch(() => seq.mute, m => { audio.volume.mute = m; });
-  watch(() => meter.sound, sound => {
-    if (sound !== "F") {
-      sampler.main = false;
-      sampler.accent = false;
-    }
-  });
-  watch(() => seq.volume, vol => { audio.panner.volume.targetRampTo(gainToDb(vol), 1); }, { immediate: true });
-  watch(() => seq.pan, p => { audio.panner.pan.targetRampTo(p, 1); }, { immediate: true });
-
-  function createSequence() {
+  watch(() => meter.under, () => {
     sequence?.stop()?.dispose();
-    sequence = new Sequence(beatClick, seq.steps, `${meter.under}n`).start(0);
-  }
+    sequence = new Sequence(beatClick, steps.value, `${meter.under}n`).start(0);
+  }, { immediate: true })
+  watch(() => meter.over, () => { sequence.events = steps.value; }, { immediate: true });
+  watch(steps, s => {
+    sequence.events = s;
+    accents.value.length = s.length;
+    mutes.value.length = s.length;
+    mutes.value.fill(false, mutes.value.length);
+  }, { immediate: true });
+  watch(() => tempo.stopped, st => { if (st) current.value = '1000-1'; })
+  watch(mute, m => { audio.volume.mute = m; });
+  watch(() => meter.sound, sound => { if (sound !== "F") { sampler.main = false; sampler.accent = false; } });
+  watch(volume, vol => { audio.panner.volume.targetRampTo(gainToDb(vol), 1); }, { immediate: true });
+  watch(pan, p => { audio.panner.pan.targetRampTo(p, 1); }, { immediate: true });
 
-  function updateSequenceEvents() {
-    sequence.events = seq.steps;
-    seq.accents.length = seq.steps.length;
-    seq.mutes.length = seq.steps.length;
-    seq.mutes.fill(false, seq.mutes.length);
-  }
 
   function createAudio(order, mode) {
     const audio = shallowReactive({
       ...createChannel(`sequence-${mode}-${order}`),
       panner: markRaw(new PanVol(order % 2 ? -0.5 : 0.5, 0)),
       synth: markRaw(new Sampler({
-        urls: createSoundUrls(),
+        urls: Object.fromEntries(
+          Object.entries({ A: 'tongue', B: 'synth', C: 'seiko', D: 'ping', E: 'logic' })
+            .flatMap(([key, sound]) => [
+              [`${key}1`, `${sound}/high.wav`],
+              [`${key}2`, `${sound}/low.wav`]
+            ])
+        ),
         volume: 1,
         attack: 0.001,
         release: 2,
@@ -111,27 +102,15 @@ export function useSequence(initial = { over: 4, under: 4, sound: "A", volume: 1
     return audio;
   }
 
-  function createSoundUrls() {
-    const sounds = { A: 'tongue', B: 'synth', C: 'seiko', D: 'ping', E: 'logic' };
-    return Object.fromEntries(
-      Object.entries(sounds).flatMap(([key, sound]) => [
-        [`${key}1`, `${sound}/high.wav`],
-        [`${key}2`, `${sound}/low.wav`]
-      ])
-    );
-  };
-
   function beatClick(time, step) {
-    if (getContext().state === "suspended") {
-      start();
-    }
+    if (getContext().state === "suspended") { start(); }
     const [mainStep, subStep] = step.split("-").map(Number);
 
-    Draw.schedule(() => { seq.current = step; }, time);
+    Draw.schedule(() => { current.value = step }, time);
 
-    if (seq.mutes[mainStep] || seq.mutes[step]) return;
+    if (mutes.value[mainStep] || mutes.value[step]) return;
 
-    const accented = seq.accents[mainStep] && subStep === 1;
+    const accented = accents.value[mainStep] && subStep === 1;
     if (meter.sound === "F" && ((accented && !sampler.accent) || (!accented && !sampler.main))) return;
 
     audio.synth.triggerAttackRelease(
@@ -140,7 +119,6 @@ export function useSequence(initial = { over: 4, under: 4, sound: "A", volume: 1
       time);
   }
 
-
   onBeforeUnmount(() => {
     sequence.stop().dispose();
     [audio, micRec].forEach(c => {
@@ -148,7 +126,7 @@ export function useSequence(initial = { over: 4, under: 4, sound: "A", volume: 1
     });
   });
 
-  return { sampler, seq, meter };
+  return { sampler, meter, current, steps, mutes, accents, volume, activeSteps, progress, mutesCount, pan, mute, isEuclidean, rotateAccents, reset };
 }
 
 function useSampler(synth) {

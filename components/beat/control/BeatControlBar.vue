@@ -35,7 +35,6 @@ const bar = reactive({
 });
 
 function dragParam(drag) {
-  //@ts-expect-error
   bar.inner += (props.vector[0] * drag.delta[0] + props.vector[1] * drag.delta[1]) / props.ratio
 }
 

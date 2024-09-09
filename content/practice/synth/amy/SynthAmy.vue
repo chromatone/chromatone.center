@@ -5,7 +5,6 @@ import {
 import { useClamp } from '@vueuse/math';
 import { context } from 'tone';
 import { onMounted, reactive, computed, watch } from 'vue';
-//@ts-expect-error
 import AMYCodes from '#/db/amy-codes.yaml'
 import { midi } from '#/use/midi'
 
@@ -110,7 +109,6 @@ function useAMY() {
   function setupAudio(fn) {
 
     var AudioContext = window.AudioContext
-      //@ts-expect-error
       || window.webkitAudioContext
       || false;
 

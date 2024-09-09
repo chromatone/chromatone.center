@@ -7,13 +7,13 @@ import { Midi } from '@tonejs/midi'
 const Transport = getTransport()
 
 const { midi, clock } = useMidi()
-const { seq, meter } = useSequence(null, 1, 'row')
+const { seq, meter, steps, progress } = useSequence(null, 1, 'row')
 const tempo = useTempo()
 
 const row = reactive({
 	width: 100,
 	height: 30,
-	progress: computed(() => row.width * seq.progress),
+	progress: computed(() => row.width * progress.value),
 	recording: false
 })
 
@@ -136,8 +136,8 @@ function useMidiTracks() {
 				stroke="black"
 				)
 			g(
-				v-for="step in seq.steps" :key="step"
-				:transform="`translate(${row.width * step[0].split('-')[0] / seq.steps.length})`"
+				v-for="step in steps" :key="step"
+				:transform="`translate(${row.width * step[0].split('-')[0] / steps.length})`"
 				)
 				line(
 					:y2="row.height"

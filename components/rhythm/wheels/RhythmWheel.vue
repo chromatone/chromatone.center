@@ -25,7 +25,7 @@ const wheel = reactive({
 const radius = computed(() => (250 + (props.order) * 250 / props.total))
 
 
-const { seq, meter } = useSequence({ over: 8, under: 8, sound: props.order == 1 ? 'A' : 'E', volume: 1 }, props.order, 'wheel')
+const { seq, meter, steps, mutes, progress } = useSequence({ over: 8, under: 8, sound: props.order == 1 ? 'A' : 'E', volume: 1 }, props.order, 'wheel')
 
 let dragger = meter.over
 function drag({ delta }) {
@@ -36,17 +36,17 @@ function drag({ delta }) {
 
 <template lang='pug'>
 g.wheel(
-  @dblclick="seq.mutes.fill(seq.mutes[0] ? true : false)"
-  :transform="`rotate(${-seq.progress*360})`")
+  @dblclick="mutes.fill(mutes[0] ? true : false)"
+  :transform="`rotate(${-progress*360})`")
 
-  g.sector(v-for="(step,s) in seq.steps" :key="step" )
+  g.sector(v-for="(step,s) in steps" :key="step" )
     svg-ring(
       :cx="0"
       :cy="0"
-      @click="seq.mutes[s]= !seq.mutes[s]"
+      @click="mutes[s]= !mutes[s]"
       :from="s / meter.over * 360"
       :to="(s + 1) / meter.over * 360"
-      :fill="levelColor(s+(tempo.pitch / 12) * meter.over,meter.over,1,!seq.mutes[s] ? 1:0.2)"
+      :fill="levelColor(s+(tempo.pitch / 12) * meter.over,meter.over,1,!mutes[s] ? 1:0.2)"
       :radius="radius"
       :thickness="250/total"
       )

@@ -33,7 +33,6 @@ export default withPwa(defineConfig({
   lang: meta.locale,
   themeConfig: {
     logo: "/media/logo/click-logo.svg",
-    //@ts-expect-error custom icon
     icon: meta.url + meta.icon,
     repo: meta.repo,
   },

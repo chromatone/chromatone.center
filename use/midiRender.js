@@ -59,9 +59,7 @@ export function renderMidi(tracks) {
 export function createAndDownloadBlobFile(body, filename, extension = "mid") {
   const blob = new Blob([body]);
   const fileName = `${filename}.${extension}`;
-  //@ts-expect-error MS IE
   if (navigator.msSaveBlob) {
-    //@ts-expect-error IE 10+
     navigator.msSaveBlob(blob, fileName);
   }
   else {

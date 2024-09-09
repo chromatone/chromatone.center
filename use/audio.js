@@ -71,7 +71,6 @@ export function createChannel(title = (Math.random() * 1000).toFixed(0), options
 
 
 export function initGetUserMedia() {
-  //@ts-expect-error Polyfill for webkit
   window.AudioContext = window.AudioContext || window?.webkitAudioContext;
   if (!window.AudioContext) {
     return alert("AudioContext not supported");
@@ -79,7 +78,6 @@ export function initGetUserMedia() {
 
   // Older browsers might not implement mediaDevices at all, so we set an empty object first
   if (navigator.mediaDevices === undefined) {
-    //@ts-expect-error Fallback
     navigator.mediaDevices = {};
   }
 
@@ -89,7 +87,6 @@ export function initGetUserMedia() {
   if (navigator.mediaDevices.getUserMedia === undefined) {
     navigator.mediaDevices.getUserMedia = function (constraints) {
       // First get ahold of the legacy getUserMedia, if present
-      //@ts-expect-error mozGetUserMedia
       const getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
       // Some browsers just don't implement it - return a rejected promise with an error

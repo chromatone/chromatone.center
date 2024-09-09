@@ -78,7 +78,6 @@ function render() {
 export async function initAudio() {
   if (audio.initiating || audio.initiated) return
   audio.initiating = true
-  //@ts-expect-error
   audio.ctx = markRaw(new (AudioContext || webkitAudioContext)())
   audio.core = markRaw(new WebRenderer())
   audio.node = markRaw(await audio.core.initialize(audio.ctx, {

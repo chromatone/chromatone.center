@@ -7,7 +7,7 @@ import { Midi } from '@tonejs/midi'
 const Transport = getTransport()
 
 const { midi, clock } = useMidi()
-const { seq } = useSequence(null, 1, 'row')
+const { seq, meter } = useSequence(null, 1, 'row')
 const tempo = useTempo()
 
 const row = reactive({
@@ -17,7 +17,7 @@ const row = reactive({
 	recording: false
 })
 
-const totalTicks = computed(() => (seq.meter.over * Transport.PPQ * 4 / seq.meter.under))
+const totalTicks = computed(() => (meter.over * Transport.PPQ * 4 / meter.under))
 
 const circularTicks = computed(() => tempo.ticks % totalTicks.value)
 
@@ -93,16 +93,16 @@ function useMidiTracks() {
 			.i-la-stop
 		button(@click="track.notes = []")
 			.i-la-trash-alt
-		button(@click="seq.meter.over++")
+		button(@click="meter.over++")
 			.i-la-plus
-		.p-1 {{ seq.meter.over }}
-		button(@click="seq.meter.over--")
+		.p-1 {{ meter.over }}
+		button(@click="meter.over--")
 			.i-la-minus
 		.p-1 /
-		button(@click="seq.meter.under++")
+		button(@click="meter.under++")
 			.i-la-plus
-		.p-1 {{ seq.meter.under }}
-		button(@click="seq.meter.under--")
+		.p-1 {{ meter.under }}
+		button(@click="meter.under--")
 			.i-la-minus
 	.flex.flex-col 
 		svg(

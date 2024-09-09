@@ -23,10 +23,10 @@ const props = defineProps({
   order: { type: Number, default: 0 },
 });
 
-const { sampler, seq, audio } = useSequence(undefined, props.order, "circle");
+const { sampler, seq, meter } = useSequence(undefined, props.order, "circle");
 
 const soundLetters = ["A", "B", "C", "D", "E", "F"];
-const soundControl = ref(soundLetters.findIndex((el) => el == seq.meter?.sound));
+const soundControl = ref(soundLetters.findIndex((el) => el == meter?.sound));
 const controlRadius = computed(() => props.radius + 110);
 const lastHit = ref(0)
 
@@ -35,7 +35,7 @@ onKeyStroke('Shift', () => {
 })
 
 watch(soundControl, (num) => {
-  seq.meter.sound = soundLetters[num]
+  meter.sound = soundLetters[num]
 });
 
 const activeSteps = computed(() => {
@@ -131,7 +131,7 @@ g(
       @mute="seq.mutes[s] = !seq.mutes[s]"
     )
   loop-control.under(
-    v-model="seq.meter.under"
+    v-model="meter.under"
     v-tooltip.top="'Measure subdivision'"
     :radius="controlRadius"
     :start="16 + order * 11"
@@ -146,10 +146,10 @@ g(
     :every="4"
     :midi-c-c="controls.cc[order].under"
   )
-    text {{ seq.meter?.under }}
+    text {{ meter?.under }}
 
   loop-control.over(
-    v-model="seq.meter.over"
+    v-model="meter.over"
     v-tooltip.top="'Number of steps'"
     :radius="controlRadius"
     :start="343 - order * 11"
@@ -164,7 +164,7 @@ g(
     :every="4"
     :midi-c-c="controls.cc[order].over"
   )
-    text {{ seq.meter?.over }}
+    text {{ meter?.over }}
 
   loop-control.vol(
     :radius="controlRadius"
@@ -231,7 +231,7 @@ g(
 
     :midiCC="controls.cc[order].sound"
   )
-    text {{ seq.meter?.sound }}
+    text {{ meter?.sound }}
 
   transition(name="fade")
     beat-recorder(
@@ -257,7 +257,7 @@ g(
         text-anchor="end",
         :x="-10",
         :y="-3",
-        ) {{ seq.meter?.over }} 
+        ) {{ meter?.over }} 
       text(
         fill="currentColor"
         font-family="Commissioner, sans-serif"
@@ -265,7 +265,7 @@ g(
         text-anchor="start",
         :x="10",
         :y="-3",
-        ) {{ seq.meter?.under }} 
+        ) {{ meter?.under }} 
     g.cursor-pointer.opacity-50.transition-all.duration-200.ease.hover-opacity-100(
       transform="translate(74,-10)"
       @mousedown="seq.rotateAccents(-1)"

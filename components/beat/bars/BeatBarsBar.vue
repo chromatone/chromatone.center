@@ -21,22 +21,22 @@ const props = defineProps({
 const pad = computed(() => (1000 - props.width) / 2)
 
 //@ts-expect-error
-const { seq } = useSequence(props.loop, props.order, 'bars');
+const { seq, meter } = useSequence(props.loop, props.order, 'bars');
 
 const sounds = ['A', 'B', 'C', 'D', 'E']
-const soundControl = ref(sounds.findIndex(el => el == seq.meter?.sound))
+const soundControl = ref(sounds.findIndex(el => el == meter?.sound))
 
 watch(soundControl, num => {
-  seq.meter.sound = sounds[num]
+  meter.sound = sounds[num]
 })
 
 const proportion = computed(() => {
-  const ratio = 1 / seq.meter.over
+  const ratio = 1 / meter.over
   return ratio >= props.maxRatio ? props.maxRatio : ratio
 })
 
 watch(() => props.loop, l => {
-  seq.meter = { ...props.loop }
+  Object.assign(meter, { ...props.loop })
 }, { immediate: true })
 
 watch(() => props.accents, accents => {
@@ -68,7 +68,7 @@ svg.w-full(
     transform="translate(40,15)"
     )
     beat-control-bar.over(
-      v-model="seq.meter.over"
+      v-model="meter.over"
       :width="340"
       :step="1"
       :min="2"
@@ -80,7 +80,7 @@ svg.w-full(
     )
     beat-control-bar.under(
       transform="translate(580,0)"
-      v-model="seq.meter.under"
+      v-model="meter.under"
       :width="340"
       :step="1"
       :min="1"
@@ -109,14 +109,14 @@ svg.w-full(
         font-size="40px"
         text-anchor="end",
         :x="-10",
-        ) {{ seq.meter.over }} 
+        ) {{ meter.over }} 
       text(
         fill="currentColor"
         font-family="Commissioner, sans-serif"
         font-size="40px"
         text-anchor="start",
         :x="10",
-        ) {{ seq.meter.under }} 
+        ) {{ meter.under }} 
 
     g.cursor-pointer.opacity-50.transition-all.duration-200.ease(
       class="hover-opacity-100"
@@ -190,7 +190,7 @@ svg.w-full(
       )
       g.arrows.pointer-events-none
         line.progress(
-          :transform="`translate(${pad + seq.progress * width * proportion * seq.meter.over}, 0)`"
+          :transform="`translate(${pad + seq.progress * width * proportion * meter.over}, 0)`"
           stroke-width="4"
           stroke="currentColor"
           stroke-linecap="round"
@@ -241,7 +241,7 @@ svg.w-full(
         :every="1"
         v-tooltip.bottom="'Click sound select'"
         )
-        text {{ seq.meter?.sound }}
+        text {{ meter?.sound }}
       transition(name="fade")
         g.reset.cursor-pointer(
           @mousedown="seq.reset()"

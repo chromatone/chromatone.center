@@ -1,7 +1,6 @@
 <script setup>
 import { midi } from '#/use/midi'
 import { tempo } from '#/use/tempo'
-import { tracks } from '#/use/sequence'
 import { getCircleCoord } from "#/use/calculations";
 import { levelColor } from "#/use/colors";
 import { ref, computed, watch, reactive } from 'vue'

@@ -3,20 +3,9 @@
  * The beat loops
  */
 
-import { shallowReactive, reactive, computed, watch, watchEffect, onBeforeUnmount } from 'vue'
+import { shallowReactive, reactive, computed, watch, watchEffect, onBeforeUnmount, markRaw } from 'vue'
 import { tempo } from "./tempo";
-import {
-  Sequence,
-  PanVol,
-  gainToDb,
-  getDraw,
-  Sampler,
-  start,
-  Recorder,
-  Meter,
-  UserMedia,
-  getContext,
-} from "tone";
+import { Sequence, PanVol, gainToDb, getDraw, Sampler, start, Recorder, Meter, UserMedia, getContext } from "tone";
 import { createChannel } from './audio'
 import { rotateArray } from "./calculations";
 import { useStorage } from '@vueuse/core';
@@ -29,17 +18,20 @@ export const maxRatio = computed(() => Math.max(...tracks.map(track => track.met
 const createStorageKey = (prefix, order, mode, suffix) => `${prefix}-${mode}-${suffix}-${order}`;
 
 export function useSequence(initial = { over: 4, under: 4, sound: "A", volume: 1 }, order = 0, mode = "bar", maxSteps = 64) {
+
   const storageKey = (suffix) => createStorageKey('tempo-loop', order, mode, suffix);
 
+  const meter = reactive({
+    over: useClamp(useStorage(storageKey('over'), 4), 2, maxSteps),
+    under: useClamp(useStorage(storageKey('under'), 4), 1, maxSteps),
+    sound: useStorage(storageKey('sound'), 'A'),
+    volume: useClamp(useStorage(storageKey('volume'), 1), 0, 1),
+  })
+
   const seq = reactive({
-    meter: {
-      over: useClamp(useStorage(storageKey('over'), 4), 2, maxSteps),
-      under: useClamp(useStorage(storageKey('under'), 4), 1, maxSteps),
-      sound: useStorage(storageKey('sound'), 'A'),
-      volume: useClamp(useStorage(storageKey('volume'), 1), 0, 1),
-    },
+
     current: '0-0',
-    steps: [["0-1"], ["1-1"], ["2-1"], ["3-1"]],
+    steps: computed(() => Array.from({ length: meter.over }, (_, i) => [`${i}-1`])),
     mutes: useStorage(createStorageKey('metro', order, mode, 'mutes'), []),
     accents: useStorage(createStorageKey('metro', order, mode, 'accents'), [true]),
     volume: useClamp(useStorage(createStorageKey('metro', order, mode, 'vol'), initial?.volume || 1), 0, 1),
@@ -59,34 +51,38 @@ export function useSequence(initial = { over: 4, under: 4, sound: "A", volume: 1
     }
   });
 
-  tracks[order] = seq;
-
-  seq.progress = computed(() => tempo.ticks ? sequence?.progress : 0);
-
-  let sequence = createSequence();
-
-  watch(() => seq.meter.under, recreateSequence);
-  watch(() => seq.meter.over, updateSteps, { immediate: true });
-  watchEffect(updateSequenceEvents);
-  watchEffect(() => { if (tempo.stopped) seq.current = '1000-1'; });
+  tracks[order] = { ...seq, meter };
 
   const audio = createAudio(order, mode);
   const { sampler, micRec } = useSampler(audio.synth);
 
-  watchAudioSettings();
+
+  let sequence;
+  createSequence();
+
+  const Draw = getDraw();
+
+  seq.progress = computed(() => tempo.ticks ? sequence?.progress : 0);
+
+  watch(() => meter.under, createSequence);
+  watch(() => meter.over, () => {
+    sequence.events = seq.steps;
+  }, { immediate: true });
+  watchEffect(updateSequenceEvents);
+  watchEffect(() => { if (tempo.stopped) seq.current = '1000-1'; });
+  watch(() => seq.mute, m => { audio.volume.mute = m; });
+  watch(() => meter.sound, sound => {
+    if (sound !== "F") {
+      sampler.main = false;
+      sampler.accent = false;
+    }
+  });
+  watch(() => seq.volume, vol => { audio.panner.volume.targetRampTo(gainToDb(vol), 1); }, { immediate: true });
+  watch(() => seq.pan, p => { audio.panner.pan.targetRampTo(p, 1); }, { immediate: true });
 
   function createSequence() {
-    return new Sequence(beatClick, seq.steps, `${seq.meter.under}n`).start(0);
-  }
-
-  function recreateSequence() {
     sequence?.stop()?.dispose();
-    sequence = createSequence();
-  }
-
-  function updateSteps() {
-    seq.steps = Array.from({ length: seq.meter.over }, (_, i) => [`${i}-1`]);
-    sequence.events = seq.steps;
+    sequence = new Sequence(beatClick, seq.steps, `${meter.under}n`).start(0);
   }
 
   function updateSequenceEvents() {
@@ -99,14 +95,14 @@ export function useSequence(initial = { over: 4, under: 4, sound: "A", volume: 1
   function createAudio(order, mode) {
     const audio = shallowReactive({
       ...createChannel(`sequence-${mode}-${order}`),
-      panner: new PanVol(order % 2 ? -0.5 : 0.5, 0),
-      synth: new Sampler({
+      panner: markRaw(new PanVol(order % 2 ? -0.5 : 0.5, 0)),
+      synth: markRaw(new Sampler({
         urls: createSoundUrls(),
         volume: 1,
         attack: 0.001,
         release: 2,
         baseUrl: "/audio/metronome/",
-      }),
+      })),
     });
 
     audio.synth.connect(audio.panner);
@@ -117,41 +113,31 @@ export function useSequence(initial = { over: 4, under: 4, sound: "A", volume: 1
 
   function createSoundUrls() {
     const sounds = { A: 'tongue', B: 'synth', C: 'seiko', D: 'ping', E: 'logic' };
-    return Object.entries(sounds).reduce((acc, [key, sound]) => {
-      acc[`${key}1`] = `${sound}/high.wav`;
-      acc[`${key}2`] = `${sound}/low.wav`;
-      return acc;
-    }, {});
-  }
-
-  function watchAudioSettings() {
-    watch(() => seq.mute, m => { audio.volume.mute = m; });
-    watch(() => seq.meter.sound, sound => {
-      if (sound !== "F") {
-        sampler.main = false;
-        sampler.accent = false;
-      }
-    });
-    watch(() => seq.volume, vol => { audio.panner.volume.targetRampTo(gainToDb(vol), 1); }, { immediate: true });
-    watch(() => seq.pan, p => { audio.panner.pan.targetRampTo(p, 1); }, { immediate: true });
-  }
+    return Object.fromEntries(
+      Object.entries(sounds).flatMap(([key, sound]) => [
+        [`${key}1`, `${sound}/high.wav`],
+        [`${key}2`, `${sound}/low.wav`]
+      ])
+    );
+  };
 
   function beatClick(time, step) {
     if (getContext().state === "suspended") {
       start();
     }
-
     const [mainStep, subStep] = step.split("-").map(Number);
-    const Draw = getDraw();
+
     Draw.schedule(() => { seq.current = step; }, time);
 
     if (seq.mutes[mainStep] || seq.mutes[step]) return;
 
     const accented = seq.accents[mainStep] && subStep === 1;
-    if (seq.meter.sound === "F" && ((accented && !sampler.accent) || (!accented && !sampler.main))) return;
+    if (meter.sound === "F" && ((accented && !sampler.accent) || (!accented && !sampler.main))) return;
 
-    const note = `${seq.meter.sound}${accented ? 2 : 1}`;
-    audio.synth.triggerAttackRelease(note, `${seq.meter.under}n`, time);
+    audio.synth.triggerAttackRelease(
+      `${meter.sound}${accented ? 2 : 1}`,
+      `${meter.under}n`,
+      time);
   }
 
 
@@ -162,7 +148,7 @@ export function useSequence(initial = { over: 4, under: 4, sound: "A", volume: 1
     });
   });
 
-  return { sampler, seq };
+  return { sampler, seq, meter };
 }
 
 function useSampler(synth) {

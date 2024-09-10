@@ -4,7 +4,6 @@
 
 import { Recorder } from 'tone';
 import { useLastChanged, useTimestamp } from '@vueuse/core'
-import { getFilename } from './utils';
 import { ref, computed } from 'vue'
 
 
@@ -43,3 +42,24 @@ export function useRecorder() {
   return { recorder, record, recording, toggled, duration }
 }
 
+export const mimeExtMap = {
+  "video/webm": "webm",
+  "video/webm;codecs=h264": "mp4",
+  "video/x-matroska;codecs=avc1": "mkv"
+}
+
+export function getFilename(media, mimeType) {
+  const d = new Date()
+
+  const pad = v => `${v}`.padStart(2, "0")
+
+  const date = `${pad(d.getMonth() + 1)}${pad(d.getDate())}-${pad(
+    d.getHours()
+  )}${pad(d.getMinutes())}`
+
+  const ext = mimeType ? mimeExtMap[mimeType] : "webm"
+
+  return `${[date, media]
+    .filter(el => !!el)
+    .join("-")}.${ext}`
+}

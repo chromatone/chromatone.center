@@ -25,9 +25,6 @@ const FFT = useFFT()
 <template lang="pug">
 .flex.flex-wrap.gap-4.relative.p-4
 
-  .flex.gap-2.items-center.w-full.absolute.-top-1.left-0
-    .p-2px.flex-1.rounded-xl(v-for="voice in voices" :key="voice" :style="{ backgroundColor: pitchColor(voice.midi.value - 9, 3, undefined, voice.gate.value ? 1 : 0.1) }")
-
   .flex.is-group.p-2.items-center
     button.text-button(
       :class="{ active: synthEnabled }"
@@ -50,6 +47,8 @@ const FFT = useFFT()
     button.text-button(@click="stopAll()")
       .i-la-times
 
+  .flex.flex-wrap.gap-2.items-center
+    .p-2.flex-1.rounded-xl(v-for="voice in voices" :key="voice" :style="{ backgroundColor: pitchColor(voice.midi.value - 9, 3, undefined, voice.gate.value ? 1 : 0.1) }")
 
   .flex.flex-wrap.is-group.p-2.relative.items-center(
     v-for="(group, g) in groups" :key="group"

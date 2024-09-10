@@ -73,18 +73,18 @@ export function useElemSynth(count = 12) {
 
 
   function createVoice(index) {
-    const gate = getVoiceParam(index, 'gate');
-    const midi = getVoiceParam(index, 'midi');
-    const vel = getVoiceParam(index, 'vel');
+    const gate = getVoiceParam(index, 'gate')
+    const midi = getVoiceParam(index, 'midi')
+    const vel = getVoiceParam(index, 'vel')
     const velocity = el.div(vel, 127)
 
 
-    const osc = createOscillator(gate, midi, velocity);
-    const noise = createNoise(gate, midi, velocity);
+    const osc = createOscillator(gate, midi, velocity)
+    const noise = createNoise(gate, midi, velocity)
     const string = createString(gate, midi, velocity)
     const sampler = createSampler(gate, midi, velocity)
 
-    return el.add(osc, noise, string, sampler);
+    return el.scope({ name: `synth-voice-${index}`, size: 1024 }, el.add(osc, noise, string, sampler))
   }
 
   async function loadSamples() {

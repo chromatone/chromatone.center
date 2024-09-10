@@ -8,9 +8,9 @@
  */
 export const midiA = 69
 
-export function midiColor(note) {
+export function midiColor(note, velocity, alpha) {
   const { pitch, octave } = pitchNoteOctave(note - midiA)
-  return pitchColor(pitch, octave)
+  return pitchColor(pitch, octave, velocity, alpha)
 }
 
 /**

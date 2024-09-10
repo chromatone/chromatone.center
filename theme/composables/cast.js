@@ -9,7 +9,7 @@ import {
   useTimestamp
 } from "@vueuse/core"
 import { master } from "#/use/audio"
-import { getFilename } from "#/use/utils"
+import { getFilename } from "#/use/recorder"
 import { ref, reactive, shallowRef, computed, watch, nextTick } from "vue"
 
 export const currentCamera = useStorage("cast-camera", "default")

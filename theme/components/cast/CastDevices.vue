@@ -8,7 +8,7 @@ import {
   mimeType,
   getSupportedMimeTypes,
 } from "#/theme/composables/cast";
-import { mimeExtMap } from "#/use/utils";
+import { mimeExtMap } from "#/use/recorder";
 import { computed } from "vue";
 
 

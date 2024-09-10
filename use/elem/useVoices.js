@@ -27,7 +27,7 @@ export function useSynthVoices() {
   }
 
   function getVoiceParam(index, param) {
-    return voiceRefs[index][param].ref || el.const({ value: voiceRefs[index][param].value });
+    return el.meter({ name: `synth-voice-${index}-${param}` }, voiceRefs[index][param].ref || el.const({ value: voiceRefs[index][param].value }));
   }
 
   return { voiceRefs, updateVoice: (index, params) => updateVoice(voiceRefs, index, params), getVoiceParam, cycleNote, stopAll };

@@ -1,15 +1,13 @@
 import { ref, watchEffect, watch } from 'vue';
 import { el } from '@elemaudio/core';
 import { useMidi, useTempo } from '#/use';
-import { midiFrequency } from './utils';
+import { midiFrequency, srvb } from './nodes';
 import { useParams } from './useParams';
 import { useSynthVoices } from './useVoices';
 import { useElementary, layers } from './useElementary';
 
 import params from "./synthParams.json"
 import { useStorage } from '@vueuse/core';
-import { srvb } from './useSRVB';
-
 
 export const synthEnabled = useStorage('el-synth-enabled', true);
 

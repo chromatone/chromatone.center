@@ -1,7 +1,23 @@
-// import invariant from 'invariant';
 import { el } from '@elemaudio/core';
-// import params from './srvbParams.json'
 
+export function midiFrequency(x) {
+  return el.mul(
+    440,
+    el.pow(
+      2,
+      el.smooth(
+        el.tau2pole(0.001),
+        el.div(
+          el.sub(x, 69),
+          12
+        )
+      )
+    )
+  )
+}
+
+// SRVB REVERB
+//
 // A size 8 Hadamard matrix constructed using Numpy and Scipy.
 //
 // The Hadamard matrix satisfies the property H*H^T = nI, where n is the size
@@ -119,7 +135,6 @@ function dampFDN(name, sampleRate, size, decay, modDepth, ...ins) {
 // @param {core.Node} xl input
 // @param {core.Node} xr input
 export function srvb(props, xl, xr) {
-  // invariant(typeof props === 'object', 'Unexpected props object');
 
   const key = props.key;
   const sampleRate = props.sampleRate;

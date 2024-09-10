@@ -4,8 +4,7 @@ import { colord } from "colord";
 
 import { globalScale, pitchColor, useMidi } from '#/use';
 import { useElemSynth } from '#/use/elem/useElemSynth'
-import { useScope } from "#/use/elem/useScope";
-import { useFFT } from "#/use/elem/useFFT";
+import { useFFT } from "#/use/elem/useElementary";
 import { onKeyDown } from "@vueuse/core";
 
 const { controls, groups, voiceRefs: voices, stopAll, cycleNote, synthEnabled, params } = useElemSynth()
@@ -21,20 +20,15 @@ const color = computed(() => Object.entries(activeNotes.value).reduce((acc, en) 
 
 const FFT = useFFT()
 
-const scope = useScope('synth')
-
 </script>
 
 <template lang="pug">
-.flex.flex-wrap.gap-4.relative
-  .border-b-2(:style="{ borderColor: color }")
-    ElemFFT(:fft="FFT")
-  ElemScope.absolute.top-8.left-0.right-0.pointer-events-none(:data="scope" )
+.flex.flex-wrap.gap-4.relative.p-4
 
   .flex.gap-2.items-center.w-full.absolute.-top-1.left-0
     .p-2px.flex-1.rounded-xl(v-for="voice in voices" :key="voice" :style="{ backgroundColor: pitchColor(voice.midi.value - 9, 3, undefined, voice.gate.value ? 1 : 0.1) }")
 
-  .flex.is-group.p-2
+  .flex.is-group.p-2.items-center
     button.text-button(
       :class="{ active: synthEnabled }"
       @click="synthEnabled = !synthEnabled")
@@ -57,7 +51,7 @@ const scope = useScope('synth')
       .i-la-times
 
 
-  .flex.flex-wrap.is-group.p-2.relative(
+  .flex.flex-wrap.is-group.p-2.relative.items-center(
     v-for="(group, g) in groups" :key="group"
     )
     .text-sm.uppercase.absolute.-top-4.bg-light-300.dark-bg-dark-300.p-1.rounded {{ g }}

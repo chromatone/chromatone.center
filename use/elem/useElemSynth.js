@@ -14,7 +14,7 @@ import { srvb } from './useSRVB';
 export const synthEnabled = useStorage('el-synth-enabled', true);
 
 export function useElemSynth(count = 12) {
-  const { audio, render } = useElementary();
+  const { audio, render, meters } = useElementary();
   const { controls, cv, groups } = useParams(params, 'ref');
   const { voiceRefs, cycleNote, stopAll, getVoiceParam } = useSynthVoices();
 
@@ -63,7 +63,7 @@ export function useElemSynth(count = 12) {
 
     let rev = srvb({
       key: 'srvb',
-      sampleRate: 44100,
+      sampleRate: meters['main:sample-rate']?.max || 44100,
       size: cv['reverb:size'],
       decay: cv['reverb:decay'],
       mod: cv['reverb:mod'],

@@ -18,7 +18,7 @@ links:
 
 <client-only>
 <ElemSynth />
-<!-- <ElemFFT class="border-b-2" :fft="FFT" :style="{ borderColor: color }" /> -->
+<ElemFFT class="border-b-2"  />
 <ElemScope />
 <MidiKeys />
 </client-only>

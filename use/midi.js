@@ -97,7 +97,7 @@ export function playKey(noteName = 'A4', attack = 0, duration = 1, midiOut = tru
       type: attack == 0 ? "noteoff" : "noteon",
       note,
       port: { id: "Chromatone.center" },
-      timestamp: midi.time,
+      timestamp: clock.value,
       target: { number: 0 },
       channel: 0,
       message: {}

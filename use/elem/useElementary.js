@@ -1,9 +1,7 @@
-import { shallowReactive, watch, onMounted, getCurrentInstance, markRaw, onBeforeUnmount } from 'vue'
+import { shallowReactive, watch, onMounted, getCurrentInstance, markRaw, reactive, ref, onBeforeUnmount, computed } from 'vue'
 import WebRenderer from '@elemaudio/web-renderer'
 import { el } from '@elemaudio/core';
-import { meters } from './useMeter'
-import { scopes } from './useScope'
-import { FFTs } from './useFFT'
+import { freqColor } from "#/use/calculations"
 
 const audio = shallowReactive({
   initiating: false,
@@ -16,6 +14,11 @@ const audio = shallowReactive({
 })
 
 const layers = shallowReactive({})
+
+export const meters = reactive({})
+export const scopes = reactive({})
+export const FFTs = reactive({})
+
 
 async function initAudio() {
   if (audio.initiating || audio.initiated) return Promise.resolve(false);
@@ -30,9 +33,9 @@ async function initAudio() {
 
   audio.node.connect(audio.ctx.destination)
 
-  audio.core.on('meter', handleMeter)
-  audio.core.on('scope', handleScope)
-  audio.core.on('fft', handleFFT)
+  audio.core.on('meter', (e) => meters[e.source] = { max: e.max, min: e.min })
+  audio.core.on('scope', (e) => scopes[e.source] = Array.from(e?.data[0].values()))
+  audio.core.on('fft', (e) => FFTs[e.source] = [Array.from(e?.data.real.values()), Array.from(e?.data.imag.values())])
   audio.core.on('error', err => console.log(err))
 
   audio.initiated = true
@@ -40,17 +43,6 @@ async function initAudio() {
   return Promise.resolve(true)
 }
 
-function handleMeter(e) {
-  meters[e.source] = { max: e.max, min: e.min }
-}
-
-function handleScope(e) {
-  scopes[e.source] = Array.from(e?.data[0].values())
-}
-
-function handleFFT(e) {
-  FFTs[e.source] = [Array.from(e?.data.real.values()), Array.from(e?.data.imag.values())]
-}
 
 function render() {
   if (!audio.initiated) return initAudio().then(render)
@@ -92,3 +84,20 @@ export function useElementary() {
 }
 
 export { audio, layers }
+
+
+
+export function useFFT(name = 'main:fft') {
+
+  const { meters, FFTs } = useElementary()
+
+  const FFT = reactive({
+    sr: computed(() => meters['main:sample-rate']?.max || 44100),
+    data: computed(() => FFTs?.[name] || [[], []]),
+    freq: computed(() => FFT.data[0].map((val, v) => v * FFT.sr / (FFT.data[0].length || 1))),
+    colors: computed(() => FFT.freq.map(freqColor)),
+    total: computed(() => FFT.data[0].map((val, v) => Math.log2(1 + Math.abs(val) + Math.abs(FFT.data[1][v])))),
+  })
+
+  return FFT
+}

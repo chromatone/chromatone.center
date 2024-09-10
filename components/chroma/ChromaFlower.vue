@@ -296,7 +296,7 @@ watchThrottled(loaded, l => {
           y="6"
           font-size="40"
           fill="currentColor"
-        ) {{ midi.guessChords[0] }}
+        ) {{ guessChords[0] }}
       g.center(v-else)
         circle(
           r="3" 

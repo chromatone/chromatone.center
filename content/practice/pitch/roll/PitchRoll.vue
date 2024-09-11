@@ -5,6 +5,7 @@ import { onKeyStroke, useWindowSize } from '@vueuse/core'
 import { useClamp } from '@vueuse/math';
 import { useStorage } from '@vueuse/core';
 import { colord } from 'colord';
+import { noteColor } from '#/use';
 
 const { width, height } = useWindowSize()
 
@@ -66,14 +67,14 @@ watch(() => tuner?.frame, frame => {
   ctx.clearRect(x, 0, draw.speed, roll.value.height)
 
   ctx.beginPath()
-  ctx.fillStyle = tuner.note.color
+  ctx.fillStyle = noteColor(tuner.note.value - 9, 0)
   ctx.fillRect(x + draw.speed, 0, draw.runnerWidth, roll.value.height)
 
   //notes
   if (!tuner.note.silent) {
     const y = roll.value.height - (tuner.note.value - draw.minPlotNote) / (draw.maxPlotNote - draw.minPlotNote) * roll.value.height
     ctx.arc(x - 8, y, 8, 0, 4 * Math.PI)
-    ctx.fillStyle = colord(tuner.note.color).lighten(.3).toHex()
+    ctx.fillStyle = noteColor(tuner.note.value - 9, 0)
     ctx.fill()
   }
 

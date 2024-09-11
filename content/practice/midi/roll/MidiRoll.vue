@@ -3,6 +3,7 @@ import { useRafFn, useStorage, useWindowSize } from "@vueuse/core";
 import { useMidi } from "#/use/midi";
 import { computed, onMounted, reactive, ref, watch } from "vue";
 import { useClamp } from "@vueuse/math";
+import { noteColor } from "#/use";
 
 const { midi, stopAll, channels } = useMidi()
 
@@ -85,14 +86,14 @@ function drawVertical() {
   ctx.fillRect(0, state.height - state.speed, state.width, state.speed);
   for (let i = 0; i < 127; i++) {
     let num = (i * state.width) / 127;
-    ctx.fillStyle = colorIt((i + 3) % 12, 1, 0.1);
+    ctx.fillStyle = noteColor(i + 3, 0, .5, .25);
     ctx.fillRect(num, state.height - state.speed, 1, state.speed);
   }
   ctx.translate(0, -state.speed);
   ctx.drawImage(tempCanvas, 0, 0, state.width, state.height);
   score.notes.forEach((note) => {
     const size = 16 - note.channel;
-    ctx.fillStyle = colorIt((note.number + 3) % 12, 1);
+    ctx.fillStyle = noteColor(note.number - 9, 0, 1);
     ctx.fillRect(
       (note.number * state.width) / 127 - size / 2,
       state.height - state.speed,

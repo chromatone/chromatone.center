@@ -38,9 +38,7 @@ export function useSoundFont() {
     return ins
   })
 
-  watch(volume, v => inst.value.output.setVolume(v * 127), {
-    immediate: true
-  })
+  watch(volume, v => inst.value.output.setVolume(v * 127), { immediate: true })
 
   watch(() => midi.note, note => {
     if (!loaded.value || !fontEnabled.value) return

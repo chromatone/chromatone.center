@@ -6,6 +6,7 @@ import { learnCC } from "#/use/midi";
 import { reactive, computed, shallowReactive, onBeforeUnmount, watch } from 'vue'
 import { useClamp } from "@vueuse/math";
 import { useStorage } from "@vueuse/core";
+import { noteColor } from "#/use";
 
 
 const drone = reactive({
@@ -26,7 +27,7 @@ const drone = reactive({
   }),
   cents: computed(() => getCents(drone.freq) % 1200),
   centDiff: computed(() => drone.cents - drone.pitch * 100),
-  color: computed(() => freqColor(drone.freq)),
+  color: computed(() => noteColor(drone.pitch, 0)),
 });
 
 
@@ -87,7 +88,7 @@ export function useVoice(interval) {
     pan: useClamp(useStorage(`drone-${interval}-pan`, 0), -1, 1),
     freq: computed(() => drone.freq * Math.pow(2, interval / 12)),
     note: computed(() => Frequency(voice.freq).toNote()),
-    color: computed(() => freqColor(voice.freq)),
+    color: computed(() => noteColor(Frequency(voice.freq).toMidi() - 9, 0)),
     lfo: 0,
     panning: 0,
   });

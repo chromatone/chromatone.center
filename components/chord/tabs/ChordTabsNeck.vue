@@ -1,11 +1,11 @@
 <script setup>
 import { Note, Interval, Pcset } from 'tonal'
-import { freqColor } from '#/use/calculations'
-import { colord } from 'colord'
+import { noteColor as colorNote } from '#/use/colors'
 import { globalScale } from '#/use/chroma'
 import { computed, reactive } from 'vue';
 import { activeNotes } from '#/use/midi';
 import { useData } from 'vitepress';
+import { Frequency } from 'tone';
 
 const { isDark } = useData()
 const props = defineProps({
@@ -38,13 +38,13 @@ const neck = reactive({
   fretNum: 12,
 });
 
-function noteColor(note, semitones) {
-  const theNote = Note.transpose(note, Interval.fromSemitones(semitones))
-  return colord(freqColor(Note.freq(theNote))).toHex()
+function noteColor(string, semitones) {
+  const midiNote = Frequency(string).transpose(semitones).toMidi()
+  return colorNote(midiNote - 9, 0)
 }
 
 function getNote(string, semitones) {
-  return Note.transpose(string, Interval.fromSemitones(semitones))
+  return Frequency(string).transpose(semitones).toNote()
 }
 </script>
 
@@ -97,7 +97,7 @@ function getNote(string, semitones) {
       g.string(
         v-for="(string, s) in neck.strings" 
         :key="string"
-        :transform="`translate(${neck.width - s * neck.noteSize}, 0)`"
+        :transform="`translate(${s * neck.noteSize}, 0)`"
         )
         line(
           :y2="neck.height"

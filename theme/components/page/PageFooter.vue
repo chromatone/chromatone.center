@@ -24,10 +24,10 @@ const route = useRoute()
     .i-la-exclamation-circle
   .text-sm.mx-2 MIT © 2017-Present 
 
+  a.no-underline.flex.gap-1.items-center(href="https://github.com/chromatone/chromatone.center/releases" target="_blank") 
+    .text-sm v.{{ version }}
+  a.no-underline.text-xl.flex.gap-1.items-center(href="" target="_blank") 
+    .i-la-github
   a.no-underline.flex.gap-1.items-center(href="https://www.npmjs.com/package/use-chromatone/" target="_blank") 
     .i-la-npm.-mb-1
-    .text-sm v.{{ version }}
-  a.no-underline.text-xl.flex.gap-1.items-center(href="https://github.com/chromatone/chromatone.center/" target="_blank") 
-    .i-la-github
-
 </template>

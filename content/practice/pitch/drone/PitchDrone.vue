@@ -51,13 +51,13 @@ useGesture({
       .interval.flex.flex-col.m-1(
         v-for="interval in intervals" 
         :key="interval"
-      )
+        )
         .flex.flex-wrap
           pitch-drone-voice.m-2(
             v-for="voice in interval.voices" 
             :key="voice"
             :interval="voice"
-          )
+            )
     .info.my-4.flex.flex-wrap.justify-stretch.items-center.touch-none
       .flex.flex-wrap.p-4.mx-2.flex-1.min-w-10em.items-center.rounded-xl.text-white.p-2.cursor-pointer.transition-all.duration-500.ease-out(
         ref="pitchControl"

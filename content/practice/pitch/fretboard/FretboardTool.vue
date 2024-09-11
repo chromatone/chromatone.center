@@ -1,10 +1,10 @@
 <script setup>
 import { useStorage } from '@vueuse/core'
 import { Note, Interval } from 'tonal'
-import { freqColor } from '#/use/calculations'
-import { colord } from 'colord'
 import { computed, reactive, watch } from 'vue'
 import { playNoteOnce } from '#/use'
+import { Frequency } from 'tone'
+import { noteColor as colorNote } from '#/use'
 
 const props = defineProps({
   instruments: { type: Object, default: () => { } },
@@ -52,7 +52,7 @@ const frets = computed(() => {
 });
 
 function noteColor(note, semitones) {
-  return colord(freqColor(Note.freq(Note.transpose(note, Interval.fromSemitones(semitones))))).toHex()
+  return colorNote(Frequency(note).transpose(semitones).toMidi() - 9, -2)
 }
 
 </script>

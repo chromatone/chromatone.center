@@ -38,10 +38,8 @@ export const scheme = reactive({
 export function noteColor(pitch = 0, octave = 2, velocity = 1, alpha = 1) {
   octave += Math.floor(pitch / 12)
   const diff = octave - 2
-  if (scheme.custom[pitch] != scheme.default[pitch]) {
-    let c = colord(scheme.custom[pitch])
-    c = c.lighten(diff * 0.1)
-    return c.alpha(alpha).toHex()
+  if (scheme.custom[pitch % 12] != scheme.default[pitch % 12]) {
+    return colord(scheme.custom[pitch % 12]).lighten(diff * 0.1).alpha(alpha).toHex()
   } else {
     return pitchColor(pitch, octave, velocity, alpha)
   }

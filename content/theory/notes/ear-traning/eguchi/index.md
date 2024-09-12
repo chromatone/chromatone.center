@@ -4,6 +4,8 @@ description: Effective use of colors to train perfect pitch with kids
 date: 2024-09-10
 ---
 
+<youtube-embed video="l2Z6uEsx9lE"/>
+
 > https://www.washingtonpost.com/wp-dyn/content/article/2009/07/26/AR2009072602350.html?sid=ST2009072602370
 
 # An Elusive Musical Gift Could Be at Children's Fingertips

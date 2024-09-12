@@ -31,7 +31,7 @@ transition-group(name="slide")
 
 <style scoped lang="postcss">
 .panel {
-  @apply flex flex-col gap-4 transition fixed bg-light-200 bg-op-60 z-900 top-0 bottom-0 left-0 shadow-lg ml-12 overflow-scroll p-2 dark-bg-dark-200 dark-bg-op-60 max-w-340px pb-8 backdrop-blur;
+  @apply flex flex-col gap-4 transition fixed bg-light-200 bg-op-60 z-900 top-0 bottom-0 left-0 shadow-lg ml-12 overflow-scroll py-2 pr-4 dark-bg-dark-200 dark-bg-op-60 max-w-340px pb-8 backdrop-blur;
 
   & h2 {
     @apply my-4 text-2xl

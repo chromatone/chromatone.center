@@ -45,11 +45,11 @@ function scrollTop() {
 a.top-16px.left-2.fixed.z-1000.cursor-pointer.mr-3(href="/")
   img.h-30px(v-if="theme.logo", :src="theme.logo", alt="Chromatone logo")
 
-bar-bar(v-if="!params.nobar")
+bar-bar(v-if="!params.pure && !params.nobar")
 
-midi-notes
+midi-notes(v-if="!params.pure && !params.nokeys")
 
-.main(:style="{marginLeft: params.nobar ? 0 : ''}")
+.main(:style="{marginLeft: params.nobar || params.pure ? 0 : '48px'}")
   
   RegisterSW
 
@@ -86,7 +86,7 @@ midi-notes
           .p-0(v-if="f?.youtube")
             youtube-embed(:video="f?.youtube" )
           content.content.z-2.flex-auto
-      page-footer
+      page-footer(v-if="!params.pure && !params.nofooter")
   template(v-else)
     main#content.w-full.relative.flex.flex-col
       transition-group(name="fade")
@@ -119,10 +119,10 @@ midi-notes
       nav-next-prev.mt-8(
         :siblings="siblings" 
         :parents="parents"
-        v-if="!params.nonextprev"
+        v-if="!params.pure && !params.nonav"
         )
       //- nav-row.p-4
-      page-footer
+      page-footer(v-if="!params.pure && !params.nofooter")
   client-only
     draw-layer.z-100
     cast-camera
@@ -132,7 +132,7 @@ midi-notes
 
 <style lang="postcss">
 .main {
-  @apply relative flex items-stretch min-h-screen bg-cover bg-center bg-fixed ml-12;
+  @apply relative flex items-stretch min-h-screen bg-cover bg-center bg-fixed;
 }
 
 .sidebar-mask {

@@ -32,7 +32,7 @@ When the intensities for all the components are the same, the result is a shade 
 
 ### Interactive CMYK mixer
 
-Drag any of the color components up or right to increase it's value.
+Drag any of the color components up or right to increase its value.
 
 <color-cmyk />
 

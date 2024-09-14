@@ -10,7 +10,7 @@ The Sun, a 4.5 billion-year-old yellow dwarf star, is the center of our Solar sy
 
 The Sun has an absolute magnitude of +4.83, estimated to be brighter than about 85% of the stars in the Milky Way, most of which are red dwarfs.
 
-The Sun is a G-type main-sequence star that comprises about 99.86% of the mass of the Solar System. It's mass is estimated at 2 octillion tons, while it's losing 5 million tons of material each second in form of radiation and ionized corona flares that cool down in space and propagate as solar wind.
+The Sun is a G-type main-sequence star that comprises about 99.86% of the mass of the Solar System. Its mass is estimated at 2 octillion tons, while it's losing 5 million tons of material each second in form of radiation and ionized corona flares that cool down in space and propagate as solar wind.
 
 ![svg](./images/sun.svg)
 

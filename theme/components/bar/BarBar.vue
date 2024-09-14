@@ -169,7 +169,7 @@ nav.bar
 client-only
 
   BarPanel(v-model="scaleOpen")
-    synth-font.sticky.top-0.z-10
+    synth-font.sticky.top-0.z-100
     control-scale.w-full
     chord-tabs-neck.max-h-80dvh(
       :instrument="instrument"

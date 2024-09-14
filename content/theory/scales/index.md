@@ -12,7 +12,7 @@ links:
 
 Scales are collections of pitch classes to play together. There's a plenty of such known and used [Note combinations](./study/index.md).
 
-Five notes is enough to construct the most simple and pleasant sounding [Pentatonic scales](./pentatonic/index.md). The most common scales nowadays are the 2 sets of 7 notes patterns: the [diatonic](./diatonic/index.md) and the [jazz/melodic](./melodic/index.md) families of scales. Every note in such a scale has it's own distinct role as a [Scale degree](./degrees/index.md).
+Five notes is enough to construct the most simple and pleasant sounding [Pentatonic scales](./pentatonic/index.md). The most common scales nowadays are the 2 sets of 7 notes patterns: the [diatonic](./diatonic/index.md) and the [jazz/melodic](./melodic/index.md) families of scales. Every note in such a scale has its own distinct role as a [Scale degree](./degrees/index.md).
 
 Breaking the diatonic rule the modernism era has discovered all the strange [Symmetrical scales](./symmetrical/index.md) that bring us more complex emotional effects.
 

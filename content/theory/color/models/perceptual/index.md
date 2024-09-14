@@ -45,7 +45,7 @@ CIE-based Lch color spaces are transformations of the two chroma values (ab or u
 
 ## Interactive HSL, LCH and HWB color mixer
 
-Choose any of the models by clicking on it's name. You can define a hue for the color by clicking on it's sector and then change two other parameters either by dragging the bars on the side or just swiping across the circle. Top-down motion is for the L (W) component and right-left is for the other one.
+Choose any of the models by clicking on its name. You can define a hue for the color by clicking on its sector and then change two other parameters either by dragging the bars on the side or just swiping across the circle. Top-down motion is for the L (W) component and right-left is for the other one.
 
 <color-hsl />
 

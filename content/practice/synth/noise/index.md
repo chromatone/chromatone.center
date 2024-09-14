@@ -23,7 +23,7 @@ A simple tool to generate some noise. Let's look at the possibilities.
 1. The **noise generator** section
    1. You can start the noise by tapping the **NOISE** button at the top left. There's a latch in the bottom of this button to fix the noise playing. Click it again to unlatch the sound playing. The other way is to press **A** – the sound will play as long as you hold it.
    2. The **DRY** slider determines the volume of the initial noise source.
-   3. Choose the type of the noise (it's 'color') between Brown, Pink and White.
+   3. Choose the type of the noise (its 'color') between Brown, Pink and White.
       1. [White noise](https://en.wikipedia.org/wiki/White_noise) is a random signal having equal intensity at different frequencies, giving it a constant power spectral density.
       2. [Pink noise](https://en.wikipedia.org/wiki/Pink_noise) or 1⁄f noise is a signal or process with a frequency spectrum such that the power spectral density (power per frequency interval) is inversely proportional to the frequency of the signal. In pink noise, each octave interval (halving or doubling in frequency) carries an equal amount of noise energy. Pink noise is one of the most common signals in biological systems.
       3. The spectral density of the [Brown noise](https://en.wikipedia.org/wiki/Brownian_noise) is inversely proportional to f^2, meaning it has higher intensity at lower frequencies, even more so than pink noise. It decreases in intensity by 6 dB per octave (20 dB per decade) and, when heard, has a "damped" or "soft" quality compared to white and pink noise.

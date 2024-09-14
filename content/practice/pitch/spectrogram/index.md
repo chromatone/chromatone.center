@@ -24,7 +24,7 @@ const PitchSpectrogram = defineClientComponent(() => {
 
 ::: info
 
-The colorful spectrogram is a powerful tool for visual audio analysis. Each particular frequency in the spectrum gets it's own position on the vertical axis along with the corresponding Chromatone color. The pitch spectrum is continous and the graph shows all the partials in a rather high resolution. The colors of the lines help differentiate pitches and overtones in any incoming audio signal. The quality of analysis is based primarily on the quality of the signal – thus a good microphone is recommended for best experience.
+The colorful spectrogram is a powerful tool for visual audio analysis. Each particular frequency in the spectrum gets its own position on the vertical axis along with the corresponding Chromatone color. The pitch spectrum is continous and the graph shows all the partials in a rather high resolution. The colors of the lines help differentiate pitches and overtones in any incoming audio signal. The quality of analysis is based primarily on the quality of the signal – thus a good microphone is recommended for best experience.
 
 ## How to use the spectrogram
 

@@ -30,7 +30,7 @@ The first note of a melody is denoted with an asterisk (\*), although some Parso
 - d = "down", for when the note is lower than the previous note,
 - r = "repeat", for when the note has the same pitch as the previous note.
 
-[Search a melody by it's Parsons code at Musipedia](https://www.musipedia.org/melodic_contour.html)
+[Search a melody by its Parsons code at Musipedia](https://www.musipedia.org/melodic_contour.html)
 
 ### Some examples
 
@@ -41,4 +41,4 @@ The first note of a melody is denoted with an asterisk (\*), although some Parso
 - "White Christmas": \*udduuuu
 - First verse in Madonna's "Like a Virgin": \*rrurddrdrrurdudurrrrddrduuddrdu
 
-There are [studies](http://ismir2003.ismir.net/papers/Uitdenbogerd.pdf) showing that despite it's simplicity, Parsons code is still too hard for non-musicians to formulate and interpret the code for melody search. Yet it may be useful for more skilled musicians, but the audio-based search becomes more widely spread and adopted.
+There are [studies](http://ismir2003.ismir.net/papers/Uitdenbogerd.pdf) showing that despite its simplicity, Parsons code is still too hard for non-musicians to formulate and interpret the code for melody search. Yet it may be useful for more skilled musicians, but the audio-based search becomes more widely spread and adopted.

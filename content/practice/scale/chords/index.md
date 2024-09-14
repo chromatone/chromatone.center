@@ -13,4 +13,4 @@ layout: app
 1. Select a scale from the drop down menu.
 2. Select a tonic pitch with the top keyboard.
 3. Get lists of chords fit for each degree of the scale.
-4. Play a chord by pressing it's block.
+4. Play a chord by pressing its block.

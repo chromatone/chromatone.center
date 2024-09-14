@@ -7,7 +7,7 @@ cover: evie-s.jpg
 
 <YoutubeEmbed video="srRI7yMjGz0" />
 
-Here's very start of our journey to the visual music theory. First we learn about the phenomenon of [Light](./light/index.md), it's sources and it's main properties as an electromagnetic emission.
+Here's very start of our journey to the visual music theory. First we learn about the phenomenon of [Light](./light/index.md), its sources and its main properties as an electromagnetic emission.
 
 Then we dive deep into the physiology of [Human color perception](./perception/index.md) that defines the way we interpret colors of the nature.
 

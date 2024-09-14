@@ -49,7 +49,7 @@ bar-bar(v-if="!params.pure && !params.nobar")
 
 midi-notes(v-if="!params.pure && !params.nokeys")
 
-.main(:style="{marginLeft: params.nobar || params.pure ? 0 : '48px'}")
+.main(:style="{marginLeft: params.nobar || params.pure ? 0 : '48px'}" :class="{pure: params.pure}")
   
   RegisterSW
 
@@ -158,6 +158,10 @@ midi-notes(v-if="!params.pure && !params.nokeys")
 
 .content .info {
   @apply m-2 bg-light-400 dark-bg-dark-400 z-10 max-w-55ch rounded-xl bg-op-80 dark-bg-op-80 backdrop-blur-md;
+}
+
+.pure .content .info {
+  @apply hidden;
 }
 </style>
 <!-- 

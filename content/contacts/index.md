@@ -1,6 +1,6 @@
 ---
 title: Contacts
-description: The project and it's author
+description: The project and its author
 date: 2021-01-01
 cover: javier-balseiro.jpg
 org:

@@ -9,7 +9,7 @@ A color model is additive in the sense that the three light beams are added toge
 
 ## Interactive RGB color mixer
 
-Drag any of the color components up or right to increase it's value.
+Drag any of the color components up or right to increase its value.
 
 <color-rgb />
 

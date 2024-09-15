@@ -10,6 +10,8 @@ import Unocss from 'unocss/vite'
 import { transformerDirectives, presetIcons, presetUno, extractorSplit } from 'unocss'
 import extractorPug from '@unocss/extractor-pug'
 
+import { RssPlugin } from 'vitepress-plugin-rss'
+
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -27,6 +29,19 @@ export default defineConfig(
     },
     plugins: [
       ViteYaml(),
+      RssPlugin({
+        title: 'Chromatone',
+        baseUrl: 'https://chromatone.center',
+        copyright: 'Copyright (c) 2017-present, Denis Starov',
+        description: 'Visual Music Language development updates and more',
+        language: 'en-EN',
+        icon: true,
+        author: {
+          name: 'Denis Starov',
+          email: 'davay@chromatone.center',
+          link: 'https://starovdenis.com'
+        },
+      }),
       Components({
         dirs: ['../components', '../theme/components', '../audio'],
         extensions: ['vue', 'ts', 'js'],

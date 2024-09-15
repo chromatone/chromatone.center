@@ -35,6 +35,7 @@ export default withPwa(defineConfig({
     logo: "/media/logo/click-logo.svg",
     icon: meta.url + meta.icon,
     repo: meta.repo,
+    socialLinks: []
   },
   head: [
     ["meta", { property: "og:type", content: "website" }],

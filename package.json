@@ -102,6 +102,7 @@
 		"uqr": "^0.1.2",
 		"vite-plugin-top-level-await": "^1.4.4",
 		"vite-plugin-wasm": "^3.3.0",
+		"vitepress-plugin-rss": "^0.2.10",
 		"vue": "^3.5.1",
 		"vue-glsl": "^1.1.27",
 		"vue-joystick-component": "^0.1.3",

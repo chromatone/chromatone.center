@@ -41,6 +41,7 @@ export default defineConfig(
           email: 'davay@chromatone.center',
           link: 'https://starovdenis.com'
         },
+        log: false,
       }),
       Components({
         dirs: ['../components', '../theme/components', '../audio'],

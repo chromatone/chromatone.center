@@ -43,6 +43,7 @@ export default withPwa(defineConfig({
     ["meta", { name: "mobile-web-app-capable", content: "yes" }],
     ["meta", { name: "HandheldFriendly", content: "True" }],
     ["meta", { name: "MobileOptimized", content: "320" }],
+    ["link", { rel: "alternate", type: "application/rss+xml", href: '/feed.rss' }],
   ],
   transformPageData(pageData) {
     if (pageData.frontmatter?.dynamic) {

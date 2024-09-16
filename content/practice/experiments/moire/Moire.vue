@@ -1,38 +1,55 @@
 <script setup>
-import { useTimestamp } from '@vueuse/core';
+import { ref, onMounted, onUnmounted } from 'vue';
+import paper, { Group, Path, Point } from 'paper';
 import { createNoise2D } from 'simplex-noise';
-import { computed } from 'vue';
 
-const time = useTimestamp({ offset: -Date.now() })
-const noise = createNoise2D()
-const random1 = computed(() => noise(0, time.value / 100000))
-const random2 = computed(() => noise(10000, time.value / 50000))
+const canvasRef = ref(null);
+const noise = createNoise2D();
 
+onMounted(() => {
+  paper.setup(canvasRef.value);
+  const view = paper.view;
+
+  const createCircles = () => {
+    const group = new Group();
+    for (let cir = 1; cir <= 3; cir++) {
+      for (let c = 1; c <= 60; c++) {
+        const circle = new Path.Circle({
+          center: view.center,
+          radius: c * 20,
+          strokeColor: 'black',
+          strokeWidth: 1
+        });
+        group.addChild(circle);
+      }
+    }
+    return group;
+  };
+
+  const circles = createCircles();
+
+  view.onFrame = (event) => {
+    const time = event.time;
+
+    circles.children.forEach((circle, index) => {
+      const cir = Math.floor(index / 60) + 1;
+      const c = (index % 30) + 1;
+      const noise1 = noise(c / (50 * cir + time) + 10000, cir * time / 40);
+      const noise2 = noise(c / (30 + cir + time), cir * time / 40 + 100);
+      circle.position = view.center.add(new Point(200 * noise1, 200 * noise2));
+    });
+  };
+});
+
+onUnmounted(() => {
+  paper.project.clear();
+});
 </script>
 
-<template lang='pug'>
-svg.w-full.p-2(
-  version="1.1",
-  baseProfile="full",
-  :viewBox="`0 0 1000 1000`",
-  xmlns="http://www.w3.org/2000/svg",
-  style="user-select:none;touch-action:none"
-  stroke-width="1"
-  stroke="currentColor"
-  fill="none"
+<template lang="pug">
+canvas.w-full.h-screen#screen(
+  ref="canvasRef"
+  resize
+  :style="{ touchAction: 'none', userSelect: 'none' }"
   )
-  //- g.grid(
-    v-for="g in 2" :key="g"
-    :transform="`translate(500 500) rotate(${noise((g - 1), time / 100000) * 180}) translate(-500 -500) scale(${random1 + 2})`")
-    line(
-
-      v-for="l in 50" :key="l"
-      :y1="-200"
-      :y2="1200" :transform="`translate(${l * 5 * (noise(g * l / 50, time / 100000) + 2)})`")
-  g.circle(v-for="cir in 3" :key='cir')
-    circle(
-      :transform="`translate(${500 + 200 * noise(c / (50 * cir), cir * time / 12000)} ${500 + 200 * noise(c / (30 + cir), cir * time / 12000)})`"
-      :r="c * 10 * (noise(2, 10000) * .8 + 2)"
-      v-for="c in 20" :key="c")
-  rect(width="1000" height="1000" stroke-width="2")
 </template>

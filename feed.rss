@@ -4,7 +4,7 @@
         <title>Chromatone</title>
         <link>https://chromatone.center</link>
         <description>Visual Music Language development updates and more</description>
-        <lastBuildDate>Tue, 17 Sep 2024 12:17:19 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 17 Sep 2024 12:43:22 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en-EN</language>
@@ -13,7 +13,7 @@
             <title><![CDATA[Synth snippets]]></title>
             <link>https://chromatone.center/practice/synth/snippets.html</link>
             <guid>https://chromatone.center/practice/synth/snippets.html</guid>
-            <pubDate>Tue, 17 Sep 2024 12:15:23 GMT</pubDate>
+            <pubDate>Tue, 17 Sep 2024 12:41:22 GMT</pubDate>
             <description><![CDATA[Code pieces]]></description>
             <content:encoded><![CDATA[<h3 id="skew-by-upheaver" tabindex="-1">Skew by <a href="https://discord.com/channels/826071713426178078/834787928688689172/1123676571279048875" target="_blank" rel="noreferrer">upheaver</a> <a class="header-anchor" href="#skew-by-upheaver" aria-label="Permalink to &quot;Skew by [upheaver](https://discord.com/channels/826071713426178078/834787928688689172/1123676571279048875)&quot;"></a></h3>
 <p>Sharing a useful snippet. JUCE's logskew function in Typescript, if anyone wants to scale their parameter values (for example convert 0-1 range to 20-20000 hz in a non linear way) :</p>
@@ -39,7 +39,7 @@
             <title><![CDATA[Words sequencing]]></title>
             <link>https://chromatone.center/practice/generative/words/</link>
             <guid>https://chromatone.center/practice/generative/words/</guid>
-            <pubDate>Tue, 17 Sep 2024 12:15:23 GMT</pubDate>
+            <pubDate>Tue, 17 Sep 2024 12:41:22 GMT</pubDate>
             <description><![CDATA[&lt;script setup
 import { defineClientComponent } from 'vitepress'
 const Words = defineClientCompone]]></description>
@@ -50,7 +50,7 @@ const Words = defineClientCompone]]></description>
             <title><![CDATA[Words sequencing]]></title>
             <link>https://chromatone.center/practice/sequencing/words/</link>
             <guid>https://chromatone.center/practice/sequencing/words/</guid>
-            <pubDate>Tue, 17 Sep 2024 12:15:23 GMT</pubDate>
+            <pubDate>Tue, 17 Sep 2024 12:41:22 GMT</pubDate>
             <description><![CDATA[This page is moved to https://chromatone.center/practice/generative/words/]]></description>
             <content:encoded><![CDATA[<p>This page is moved to <a href="https://chromatone.center/practice/generative/words/" target="_blank" rel="noreferrer">https://chromatone.center/practice/generative/words/</a></p>
 ]]></content:encoded>
@@ -60,7 +60,7 @@ const Words = defineClientCompone]]></description>
             <title><![CDATA[ZZFXM]]></title>
             <link>https://chromatone.center/practice/sequencing/zzfxm/</link>
             <guid>https://chromatone.center/practice/sequencing/zzfxm/</guid>
-            <pubDate>Tue, 17 Sep 2024 12:15:23 GMT</pubDate>
+            <pubDate>Tue, 17 Sep 2024 12:41:22 GMT</pubDate>
             <description><![CDATA[&lt;script setup
 import { defineClientComponent } from 'vitepress'
 const ZzFxm = defineClientCompone]]></description>
@@ -72,7 +72,7 @@ const ZzFxm = defineClientCompone]]></description>
             <title><![CDATA[Reharmonization]]></title>
             <link>https://chromatone.center/theory/harmony/reharmonization/</link>
             <guid>https://chromatone.center/theory/harmony/reharmonization/</guid>
-            <pubDate>Tue, 17 Sep 2024 12:15:23 GMT</pubDate>
+            <pubDate>Tue, 17 Sep 2024 12:41:22 GMT</pubDate>
             <description><![CDATA[How to reharmonize a song]]></description>
             <content:encoded><![CDATA[<youtube-embed video="lz3WR-F_pnM" /><h2 id="reharmonization-chord-substitution-but-for-the-whole-chord-progression" tabindex="-1">Reharmonization = Chord substitution but for the whole chord progression <a class="header-anchor" href="#reharmonization-chord-substitution-but-for-the-whole-chord-progression" aria-label="Permalink to &quot;Reharmonization = Chord substitution but for the whole chord progression&quot;"></a></h2>
 <p>Reharmonization is used to:</p>
@@ -418,6 +418,7 @@ const ZzFxm = defineClientCompone]]></description>
 </table>
 <p>In addition, there are various solmization systems (including solfeggio, sargam, and numerical sight-singing) that assign specific syllables to different notes of the scale. Among other things, this makes it easier to hear how intervals sound in different contexts, such as starting on different notes of the same scale.</p>
 ]]></content:encoded>
+            <enclosure url="https://chromatone.center/indra-projects.jpg" length="0" type="image/jpg"/>
         </item>
         <item>
             <title><![CDATA[Ear training]]></title>
@@ -451,6 +452,7 @@ const ZzFxm = defineClientCompone]]></description>
 <h2 id="modern-training-methods" tabindex="-1">Modern training methods <a class="header-anchor" href="#modern-training-methods" aria-label="Permalink to &quot;Modern training methods&quot;"></a></h2>
 <p>For accurate identification and reproduction of musical intervals, scales, chords, rhythms, and other audible parameters a great deal of practice is often necessary. Exercises involving identification often require a knowledgeable partner to play the passages in question and to assess the answers given. Specialised music theory software can remove the need for a partner, customise the training to the user's needs and accurately track progress. Conservatories and university music departments often license commercial software for their students, such as Meludia, EarMaster, Auralia, and MacGAMUT, so that they can track and manage student scores on a computer network. Similar data tracking software such as MyMusicianship and SonicFit focus on ear training for singers and are licensed by schools and community choirs. A variety of free software also exists, either as browser-based applications or as downloadable executables. For example, free and open source software under the GPL, such as GNU Solfege, often provides many features comparable with those of popular proprietary products.[citation needed] Most ear-training software is MIDI-based, permitting the user to customise the instruments used and even to receive input from MIDI-compatible devices such as electronic keyboards. Interactive ear-training applications are also available for smartphones.</p>
 ]]></content:encoded>
+            <enclosure url="https://chromatone.center/robin-gislain-gessy.jpg" length="0" type="image/jpg"/>
         </item>
         <item>
             <title><![CDATA[Eguchi method]]></title>
@@ -540,6 +542,7 @@ By 2002, Kazuko and Ayako Eguchi had published four books about Eguchi method Pe
 Also other 500 students participate the training through the Internet perfect pitch program.
 So far, there a re total 20000 students who acquired the perfect pitch through the Eguchi Method Perfect Pitch Training System.</p>
 ]]></content:encoded>
+            <enclosure url="https://chromatone.center/book.png" length="0" type="image/png"/>
         </item>
         <item>
             <title><![CDATA[Absolute (Perfect) Pitch]]></title>
@@ -609,6 +612,7 @@ So far, there a re total 20000 students who acquired the perfect pitch through t
 <p>I do hope that Ella will like SM and that I will have encouraging updates to post soon about our experience with using this program.</p>
 </blockquote>
 ]]></content:encoded>
+            <enclosure url="https://chromatone.center/andrik-langfield.jpg" length="0" type="image/jpg"/>
         </item>
         <item>
             <title><![CDATA[Pianolizer]]></title>
@@ -9029,6 +9033,7 @@ const HydraSynth = defineClientCo]]></description>
 <li>sync with musical transport</li>
 </ul>
 ]]></content:encoded>
+            <enclosure url="https://chromatone.center/yianni-mathioudakis.jpg" length="0" type="image/jpg"/>
         </item>
         <item>
             <title><![CDATA[External resources]]></title>
@@ -9387,6 +9392,7 @@ const HydraSynth = defineClientCo]]></description>
 <RhythmWheels />
 </client-only>
 ]]></content:encoded>
+            <enclosure url="https://chromatone.center/cover.png" length="0" type="image/png"/>
         </item>
         <item>
             <title><![CDATA[Moire]]></title>

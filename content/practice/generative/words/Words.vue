@@ -22,8 +22,6 @@ const orderedVowels = computed(() => vowels.toSorted((a, b) => vowelFreqs.value[
 const consonantFreqs = computed(() => getFreqs(consonants))
 const orderedConsonants = computed(() => consonants.toSorted((a, b) => consonantFreqs.value[a] >= consonantFreqs.value[b] ? -1 : 1))
 
-
-
 const part = computed(() => {
   const Draw = getDraw()
 
@@ -84,6 +82,16 @@ function splitWord(word) {
   }, []);
 }
 
+
+const voices = speechSynthesis.getVoices();
+
+function speak() {
+  const utterance = new SpeechSynthesisUtterance(currentWord.value);
+  utterance.voice = voices[0];
+  speechSynthesis.speak(utterance);
+}
+
+
 </script>
 
 <template lang='pug'>
@@ -96,9 +104,11 @@ function splitWord(word) {
   .flex.is-group
     button.text-button(@click="currentIndex--") Prev
     button.text-button(@click="randomWord()") Pick random
+    button.text-button(@click="speak()") SAY
     button.text-button(@click="currentIndex++") Next
   .op-50.text-sm.font-mono {{ currentIndex }}/{{ words?.length }} 
   .text-2xl {{ currentWord }}
+
   .flex.gap-2
     .p-0.flex.gap-2px(v-for="syllable in splittedWord" :key="syllable") 
       .p-0(v-for="letter in syllable" :key="letter") {{ letter }}

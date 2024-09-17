@@ -39,7 +39,7 @@ onKeyStroke('Escape', () => { input.value = '', focused.value = false })
 </script>
 
 <template lang="pug">
-.flex.flex-col.w-full.gap-2
+.flex.flex-col.gap-2
   .flex.items-center.gap-2.relative
     .i-la-search.text-xl.absolute.z-400.left-2
     input.w-full.p-2.rounded-lg.z-20.bg-light-100.dark-bg-dark-100.shadow.pl-10(

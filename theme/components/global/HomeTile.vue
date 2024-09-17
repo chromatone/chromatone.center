@@ -39,7 +39,7 @@ const color = computed(() => lchToHsl(props.i, props.total));
         .i-la-at(v-if="item?.frontmatter?.title == 'Contacts'")
         .i-la-chalkboard-teacher(v-if="item?.frontmatter?.title == 'Tutorship'")
       .p-0.flex.flex-col.gap-2.flex-1
-        .text-4xl {{ item?.frontmatter?.title }}
+        .text-4xl.font-bold.underline.underline-4 {{ item?.frontmatter?.title }}
     .font-normal {{ item?.frontmatter?.description }}
   .flex.flex-wrap.py-2.gap-2.mt-2(v-if="children?.length>0")
     a.cursor-pointer.shadow-md.rounded.border-1.no-underline.hover-shadow-lg.dark-bg-dark-700.bg-light-100(

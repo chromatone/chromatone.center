@@ -187,16 +187,16 @@ client-only
     state-sound
 
   BarPanel(v-model="searchOpen")
-    nav-search.mt-4(@close="searchOpen = false" :focus="searchOpen")
+    nav-search.m-4(@close="searchOpen = false" :focus="searchOpen")
 
   BarPanel(v-model="theoryOpen")
-    a.text-xl.p-2.my-2.block(
+    a.text-xl.p-2.m-2.block.font-bold(
       href="/theory/"
       ) Theory
     BarLevel(path="/theory/" :level="0")
 
   BarPanel(v-model="practiceOpen")
-    a.text-xl.p-2.my-2.block(
+    a.text-xl.p-2.m-2.block.font-bold(
       href="/practice/"
       ) Practice
     BarLevel(path="/practice/" :level="0")

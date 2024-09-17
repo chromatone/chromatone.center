@@ -30,14 +30,13 @@ a.header.no-underline.row(
     )
   .info.flex-1
     .flex.items-center.w-full
-      .mr-2.text-2xl(v-if="item?.frontmatter?.emoji") {{ item?.frontmatter?.emoji }}
-      .mt-1
-        span.text-xl {{ item?.frontmatter?.title }} 
+      .mt-0
+        span.text-xl.font-bold {{ item?.frontmatter?.title }}
         span.text-xl.px-2.mt-2(v-if="item?.frontmatter?.more") 
           .i-radix-icons-text-align-left
       .flex-1
       card-date(v-if="!item?.frontmatter?.product",:date="item.lastModified")
-    .text-md.mt-4.mb-2.font-normal.w-full(v-if="item?.frontmatter?.description") {{ item?.frontmatter?.description }}
+    .text-md.mt-4.mb-2.font-normal.w-full.flex-1(v-if="item?.frontmatter?.description") {{ item?.frontmatter?.description }}
     page-buttons(:buttons="item?.frontmatter?.buttons" :color="color")
 </template>
 
@@ -56,7 +55,7 @@ a.header.no-underline.row(
 }
 
 .info {
-  @apply m-2 rounded-xl relative flex self-stretch flex-wrap items-center p-4 md-(px-5 py-4) bg-light-100 bg-opacity-70 dark-(bg-dark-100 bg-opacity-70) text-dark-100 dark-text-light-100 shadow-md;
+  @apply m-2 rounded-xl relative flex self-stretch flex-col items-center p-4 md-(px-5 py-4) bg-light-100 bg-opacity-70 dark-(bg-dark-100 bg-opacity-70) text-dark-100 dark-text-light-100 shadow-md;
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 }

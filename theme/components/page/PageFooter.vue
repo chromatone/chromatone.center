@@ -12,14 +12,14 @@ const route = useRoute()
     img.w-6(v-if="theme.logo", :src="theme.logo", alt="Chromatone logo" title="Chromatone")
     .text-lg.font-bold.mr-2 Chromatone 
   a.no-underline.text-xl.flex.gap-1.items-center(
-     v-tooltip="'Follow us on Instagram'"
+    v-tooltip="'Follow us on Instagram'"
     href="https://instagram.com/chromatone.center/" target="_blank")
     .i-la-instagram.-mb-1
 
   a.no-underline.flex.items-center(
     v-tooltip="'Read RSS Feed'"
     href="/feed.rss" target="_blank")
-    .i-la-rss
+    .i-la-rss.-mb-1
   .flex-1 
   a.no-underline.flex.items-center(
     v-tooltip="'Edit page on GitHub'"
@@ -31,10 +31,16 @@ const route = useRoute()
     .i-la-exclamation-circle
   .text-sm.mx-2 MIT © 2017-Present 
 
-  a.no-underline.flex.gap-1.items-center(href="https://github.com/chromatone/chromatone.center/releases" target="_blank") 
+  a.no-underline.flex.gap-1.items-center(
+    v-tooltip="'Chromatone releases on GitHub'"
+    href="https://github.com/chromatone/chromatone.center/releases" target="_blank") 
     .text-sm v.{{ version }}
-  a.no-underline.text-xl.flex.gap-1.items-center(href="https://github.com/chromatone/" target="_blank") 
+  a.no-underline.text-xl.flex.gap-1.items-center(
+    v-tooltip="'Chromatone GitHub organisation'"
+    href="https://github.com/chromatone/" target="_blank") 
     .i-la-github
-  a.no-underline.flex.gap-1.items-center(href="https://www.npmjs.com/package/use-chromatone/" target="_blank") 
+  a.no-underline.flex.gap-1.items-center(
+    v-tooltip="'Chromatone NPM package'"
+    href="https://www.npmjs.com/package/use-chromatone/" target="_blank") 
     .i-la-npm.-mb-1
 </template>

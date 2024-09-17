@@ -24,7 +24,7 @@ const children = useChildren({ path: props.item?.url }, data)
     .info.flex.flex-col.gap-1 
       .title
         .mr-2.text-2xl(v-if="item?.frontmatter?.emoji") {{ item?.frontmatter?.emoji }}
-        .text-2xl.p-2 {{ item?.frontmatter?.title }}
+        .text-2xl.p-2.font-bold {{ item?.frontmatter?.title }}
           .absolute.top-10px.text-sm.font-normal.opacity-50
             slot
         .flex-1

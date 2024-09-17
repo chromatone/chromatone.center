@@ -2,7 +2,7 @@
  * @module Tempo
  */
 
-import { reactive, computed, watch, onMounted, shallowReactive, } from "vue";
+import { reactive, computed, watch, onMounted, shallowReactive, ref, } from "vue";
 import { getTransport, start, Frequency, Loop, Sampler, gainToDb, getDraw, } from "tone";
 import { freqPitch } from "./calculations";
 import { noteColor } from './colors'
@@ -14,10 +14,11 @@ import { WebMidi } from "webmidi";
 import { midi, stopAll } from "./midi";
 import { useBroadcastChannel } from '@vueuse/core'
 
+export const bpm = useClamp(useStorage("tempo-bpm", 100), 10, 500)
+
 export const tempo = reactive({
   initialized: false,
-  bpm: useClamp(useStorage("tempo-bpm", 100), 10, 500),
-  clock: null,
+  bpm,
   midiClock: false,
   tabSync: useStorage("tab-sync", false),
   blink: false,
@@ -29,49 +30,32 @@ export const tempo = reactive({
   progress: 0,
   position: null,
   ticks: 0,
-  metre: {
-    over: 4,
-    under: 4,
-    num: computed(() =>
-      (tempo.metre.over / (tempo.metre.under / 4)).toFixed(2)
-    ),
-  },
   hz: computed(() => (tempo.bpm / 60).toFixed(2)),
   note: computed(() => Note.pitchClass(Frequency(tempo.hz).toNote())),
-  tune: computed(() => {
-    return Note.pitchClass(tempo.note) + 4;
-  }),
+  tune: computed(() => Note.pitchClass(tempo.note) + 4),
   pitch: computed(() => freqPitch(Number(tempo.hz))),
   digit: computed(() => (Frequency(tempo.hz).toMidi() + 12 * 10 + 3) % 12),
   color: computed(() => noteColor(tempo.digit)),
-  tap: {
-    last: 0,
-    diff: 0,
-    timeout: 2000,
-    times: [],
-    bpm: null,
-    tap
-  },
   set(diff) {
-    tempo.bpm = Math.round(diff + (tempo.bpm))
+    tempo.bpm = Math.round(diff + tempo.bpm)
   }
 });
 
 export function useTempo() {
   if (tempo.initialized) return tempo
 
+  const Draw = getDraw()
+  const transport = getTransport()
+
   const metro = shallowReactive({
     counter: 0,
     pluck: null,
-    channel: null,
     clock: null,
     loop: null
   })
 
   onMounted(() => {
-    const Draw = getDraw()
     const { channel } = createChannel('tempo-tick')
-    metro.channel = channel
     metro.pluck = new Sampler({
       urls: {
         E1: "logic/high.wav",
@@ -95,16 +79,10 @@ export function useTempo() {
       if (!even) {
         Draw.schedule(() => {
           tempo.blink = true
-          // setTimeout(() => {
-          //   tempo.blink = false;
-          // }, 60);
         }, time)
       } else {
         Draw.schedule(() => {
           tempo.blink = false
-          // setTimeout(() => {
-          //   tempo.blink = false;
-          // }, 60);
         }, time)
       }
 
@@ -116,9 +94,8 @@ export function useTempo() {
     }, "8n").start(0)
 
     useRafFn(() => {
-
-      tempo.position = getTransport().position
-      tempo.ticks = getTransport().ticks
+      tempo.position = transport.position
+      tempo.ticks = transport.ticks
       tempo.progress = metro.loop.progress
     })
 
@@ -136,17 +113,9 @@ export function useTempo() {
       tempo.stopped = Date.now()
     });
 
-
-
   });
 
-
-  const broadCast = reactive({
-    playing: false,
-    stopped: false
-  })
-
-  const { data, post, } = useBroadcastChannel({ name: 'chromatone-tempo' })
+  const { data, post } = useBroadcastChannel({ name: 'chromatone-tempo' })
 
   watch(data, (d) => {
     if (!tempo.tabSync) return
@@ -154,11 +123,10 @@ export function useTempo() {
     tempo.stopped = !!d?.stopped
   })
 
-  watch(() => tempo.volume, (volume) => metro.pluck.volume.rampTo(gainToDb(volume)))
+  watch(() => tempo.volume, (volume) => metro?.pluck?.volume?.rampTo(gainToDb(volume)), { immediate: true })
 
-  watch(
-    () => tempo.bpm,
-    (bpm) => getTransport().bpm.rampTo(bpm, "4n"),
+  watch(bpm,
+    (b) => transport.bpm.rampTo(b, "4n"),
     { immediate: true }
   );
 
@@ -167,7 +135,7 @@ export function useTempo() {
     (stop) => {
       if (stop) {
 
-        getTransport().stop();
+        transport.stop();
         stopAll()
         tempo.playing = false;
         if (tempo.tabSync) {
@@ -186,7 +154,7 @@ export function useTempo() {
           tempo.started = true;
         }
         tempo.stopped = false;
-        getTransport().start();
+        transport.start();
         midi.playing = true
 
         if (tempo.tabSync) {
@@ -194,7 +162,7 @@ export function useTempo() {
         }
       } else {
         midi.playing = false
-        getTransport().pause();
+        transport.pause();
         if (tempo.tabSync) {
           post({ playing: false })
         }
@@ -212,32 +180,41 @@ export function useTempo() {
 }
 
 
+// TAP TEMPO
+
+export const tapTempo = reactive({
+  timer: null,
+  last: 0,
+  diff: 0,
+  timeout: 2000,
+  times: [],
+  bpm: null,
+  tap,
+  refresh
+})
+
 export function tap() {
   var time = performance.now();
-  if (tempo.tap.last) {
-    tempo.tap.diff = time - tempo.tap.last;
-    tempo.tap.times.push(tempo.tap.diff);
+  if (tapTempo.last) {
+    tapTempo.diff = time - tapTempo.last;
+    tapTempo.times.push(tapTempo.diff);
     refresh();
   }
-  tempo.tap.last = time;
-  beginTimeout();
+  tapTempo.last = time;
+  clearTimeout(tapTempo.timer);
+  tapTempo.timer = setTimeout(function () {
+    tapTempo.times = [tapTempo.diff];
+    tapTempo.last = null;
+  }, tapTempo.timeout);
 }
 
 function refresh() {
-  if (tempo.tap.times.length > 2) {
+  if (tapTempo.times.length > 2) {
     var average =
-      tempo.tap.times.reduce((result, t) => (result += t)) /
-      tempo.tap.times.length;
+      tapTempo.times.reduce((result, t) => (result += t)) /
+      tapTempo.times.length;
     var bpm = (1 / (average / 1000)) * 60;
-    tempo.tap.bpm = bpm;
+    tapTempo.bpm = bpm;
   }
 }
 
-let timer = null;
-function beginTimeout() {
-  clearTimeout(timer);
-  timer = setTimeout(function () {
-    tempo.tap.times = [tempo.tap.diff];
-    tempo.tap.last = null;
-  }, tempo.tap.timeout);
-}

@@ -1,5 +1,5 @@
 <script setup>
-import { useTempo, tap } from "#/use/tempo";
+import { useTempo, tapTempo } from "#/use/tempo";
 import { useTuner } from "#/use/tuner";
 const tempo = useTempo();
 const { init, tuner } = useTuner();
@@ -13,7 +13,7 @@ function drag(event) {
 }
 
 </script>
- 
+
 <template lang="pug">
 .flex.flex-col.w-full.mx-auto.justify-center.gap-2
   .tempo-grid.text-xl
@@ -47,10 +47,10 @@ function drag(event) {
       .flex-1.-mt-2.font-bold.font-mono {{ tempo.hz }}
       .text-sm.mt-1px.absolute.bottom-3 Hz
     control-knob.font-bold.w-full(style="grid-area: NOTE", v-model="tempo.volume", :min="0", :max="1", :step="0.01", param="VOL", :cc="16", v-tooltip.top="'Metronome volume'")
-    button(style="grid-area: TAP", @mousedown.stop.prevent="tap()", @touchstart.stop.prevent="tap()", :class="{ active: tempo.tap.last }", v-tooltip.bottom="'Tap tempo'")
+    button(style="grid-area: TAP", @mousedown.stop.prevent="tapTempo.tap()", @touchstart.stop.prevent="tapTempo.tap()", :class="{ active: tapTempo.last }", v-tooltip.bottom="'Tap tempo'")
       .i-fluent-tap-double-20-regular.mt-1
-    button(style="grid-area: TAPPED", v-tooltip.bottom="'Click to set tap tempo'", @click="tempo.tap.bpm && tempo.tap.last ? tempo.bpm = tempo.tap.bpm : tap()")
-      .font-bold(v-if="tempo.tap.bpm && tempo.tap.last") {{ tempo.tap.bpm.toFixed(1) }}
+    button(style="grid-area: TAPPED", v-tooltip.bottom="'Click to set tap tempo'", @click="tapTempo.bpm && tapTempo.last ? tempo.bpm = tapTempo.bpm : tapTempo.tap()")
+      .font-bold(v-if="tapTempo.bpm && tapTempo.last") {{ tapTempo.bpm.toFixed(1) }}
       .opacity-40(v-else) TAP
     button(style="grid-area: GUESS", @click="!tuner.initiated ? init() : (tuner.listen = !tuner.listen)", v-tooltip.top="'Guess tempo from audio'")
       template(v-if="!tuner.listen")

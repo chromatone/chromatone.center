@@ -2,7 +2,7 @@
 import { lchToHsl } from '#/use/colors'
 import { useData } from 'vitepress'
 const { isDark } = useData()
-import { renderMidiFile } from '#/use/loop'
+import { renderLoopsMidiFile } from '#/use/loop'
 import { useStorage } from '@vueuse/core';
 import ChromaGridsGrid from './ChromaGridsGrid.vue';
 
@@ -25,15 +25,15 @@ const active = useStorage('pitch-bars-active', 0);
       :class="{ active: active == l }"
       :style="{ backgroundColor: lchToHsl(l, loops.length, active == l ? 1 : 0.3) }"
       @mousedown="active = l"
-    ) 
+      ) 
       .px-4.py-2 {{ l }}
 
     button.text-button(
-    @click="addLoop()"
-    )
+      @click="addLoop()"
+      )
       .i-la-plus
     .flex-1
-    button.text-button.flex.items-center(@click="renderMidiFile()")
+    button.text-button.flex.items-center(@click="renderLoopsMidiFile()")
       .i-la-file-download
   .flex.flex-col.mb-4.mx-4.w-full.relative
     transition-group(name="fade")

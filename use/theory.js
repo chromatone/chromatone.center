@@ -13,13 +13,9 @@ export const flats = ['Bbb', 'Bb', 'Cb', 'Dbb', 'Db', 'Ebb', 'Eb', 'Fb', 'Gbb', 
 
 export const noteNames = []
 
-naturals.forEach((note, n) => {
-  noteNames[note] = n
-})
-sharps.forEach((note, n) => {
-  noteNames[note] = n
-})
-flats.forEach((note, n) => {
+const all = [...naturals, ...sharps, ...flats]
+
+all.forEach((note, n) => {
   noteNames[note] = n
 })
 

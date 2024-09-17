@@ -134,7 +134,7 @@ export function useLoop(order = 0) {
   return loop;
 }
 
-export async function renderMidiFile() {
+export async function renderLoopsMidiFile() {
   const MidiWriter = await import("midi-writer-js");
 
   const render = loops.map((loop, l) => {

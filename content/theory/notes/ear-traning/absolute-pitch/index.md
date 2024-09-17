@@ -2,6 +2,7 @@
 title: Absolute (Perfect) Pitch
 description: Basic research on the ability to discern note frequencies without reference tone
 date: 2024-09-09
+cover: andrik-langfield.jpg
 ---
 
 > https://en.wikipedia.org/wiki/Absolute_pitch

@@ -2,6 +2,7 @@
 title: Ear training
 description: Aural skills development methods
 date: 2024-09-10
+cover: robin-gislain-gessy.jpg
 ---
 
 In music, ear training is the study and practice in which musicians learn various aural skills to detect and identify pitches, intervals, melody, chords, rhythms, solfeges, and other basic elements of music, solely by hearing. Someone who can identify pitch accurately without any context is said to have perfect pitch, while someone who can only identify pitch provided a reference tone or other musical context is said to have relative pitch. Someone that can't perceive these qualities at all is said to be tone deaf. The application of this skill is somewhat analogous to taking dictation in written/spoken language. As a process, ear training is in essence the inverse of reading music, which is the ability to decipher a musical piece by reading musical notation. Ear training is typically a component of formal musical training and is a fundamental, essential skill required in music schools and the mastery of music.

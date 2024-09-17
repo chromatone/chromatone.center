@@ -2,6 +2,7 @@
 title: Interval reference songs
 description: Popular songs that start or notably use intervals to be memorized and easily recognized
 date: 2024-09-11
+cover: indra-projects.jpg
 ---
 
 Interval recognition, the ability to name and reproduce musical intervals, is an important part of ear training, music transcription, musical intonation and sight-reading.  

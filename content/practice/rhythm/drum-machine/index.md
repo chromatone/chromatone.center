@@ -3,6 +3,7 @@ title: Drum machine
 description: Simple drum sequencer with synthesized sounds
 date: 2019-11-02
 layout: app
+cover: yianni-mathioudakis.jpg
 ---
 
 <client-only>

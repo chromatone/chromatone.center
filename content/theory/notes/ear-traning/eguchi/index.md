@@ -2,6 +2,7 @@
 title: Eguchi method
 description: Effective use of colors to train perfect pitch with kids
 date: 2024-09-10
+cover: book.png
 ---
 
 https://pganssle.github.io/cim/

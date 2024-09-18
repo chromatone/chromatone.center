@@ -3,6 +3,7 @@ title: P2P connections
 description: GUN database experiments
 date: 2014-07-30
 layout: app
+cover: p2p.png
 ---
 
 <script setup>

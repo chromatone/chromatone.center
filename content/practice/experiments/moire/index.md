@@ -3,6 +3,7 @@ title: Moire
 description: Lines and intersections experiment
 date: 1024-08-28
 layout: app
+cover: cover.png
 ---
 
 <script setup>

@@ -6,7 +6,7 @@ const { acceleration: acc, accelerationIncludingGravity, rotationRate, interval 
 const { isAbsolute, alpha, beta, gamma, } = useDeviceOrientation()
 
 function activate() {
-  DeviceMotionEvent.requestPermission()
+  DeviceMotionEvent?.requestPermission?.()
 }
 
 const lp = 0.9

@@ -2,6 +2,7 @@
 title: Dev experiments
 description: The playground for the color music theory education and exploration apps
 date: 2020-02-04
+cover: devs.png
 ---
 
 ## All related development experiments

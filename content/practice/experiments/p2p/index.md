@@ -14,3 +14,5 @@ const GunP2p = defineClientComponent(() => {
 </script>
 
 <GunP2p/>
+
+<MidiKeys class="mt-8" :height="200" />

@@ -92,6 +92,9 @@ importers:
       fuse.js:
         specifier: ^7.0.0
         version: 7.0.0
+      gun-avatar:
+        specifier: ^1.9.4
+        version: 1.9.4
       hidpi-canvas:
         specifier: ^1.0.10
         version: 1.0.10
@@ -1901,6 +1904,9 @@ packages:
   '@types/unist@3.0.2':
     resolution: {integrity: sha512-dqId9J8K/vGi5Zr7oo212BGii5m3q5Hxlkwy3WpYuKPklmBEvsbMYYyLxAQpSffdLl/gdW0XUpKWFvYmyoWCoQ==}
 
+  '@types/web-bluetooth@0.0.16':
+    resolution: {integrity: sha512-oh8q2Zc32S6gd/j50GowEjKLoOVOwHP/bWVjKJInBwQqdOYMdPrf1oVlelTlyfFK3CKxL1uahMDAr+vy8T7yMQ==}
+
   '@types/web-bluetooth@0.0.20':
     resolution: {integrity: sha512-g9gZnnXVq7gM7v3tJCWV/qw7w+KeOlSHAhgF9RytFyifW6AF61hdT2ucrYhPq9hLs5JIryeupHV3qGk95dH9ow==}
 
@@ -1973,6 +1979,9 @@ packages:
 
   '@unocss/preset-wind@0.62.4':
     resolution: {integrity: sha512-YOzfQ11AmAnl1ZkcWLMMxCdezLjRKavLNk38LumUMtcdsa0DAy+1JjTp+KEvVQAnD+Et/ld5X+YcBWJkVy5WFQ==}
+
+  '@unocss/reset@0.48.4':
+    resolution: {integrity: sha512-9WPoGwLrG5vZQzMxgd7/zJkUUmL06WYtrAiRdf5gYsCBbnpx6eq0II0TvU8PEzvseqgkhEpN19iSgnsuTZ34kA==}
 
   '@unocss/reset@0.62.4':
     resolution: {integrity: sha512-CtxjeDgN39fY/eZDLIXN4wy7C8W7+SD+41AlzGVU5JwhcXmnb1XoDpOd2lzMxc/Yy3F5dIJt2+MRDj9RnpX9Ew==}
@@ -2073,6 +2082,9 @@ packages:
   '@vueuse/core@11.1.0':
     resolution: {integrity: sha512-P6dk79QYA6sKQnghrUz/1tHi0n9mrb/iO1WTMk/ElLmTyNqgDeSZ3wcDf6fRBGzRJbeG1dxzEOvLENMjr+E3fg==}
 
+  '@vueuse/core@9.11.1':
+    resolution: {integrity: sha512-E/cizD1w9ILkq4axYjZrXLkKaBfzloaby2n3NMjUfd6yI/jkfTVgc6iwy/Cw2e++Ld4LphGbO+3MhzizvwUslQ==}
+
   '@vueuse/gesture@2.0.0':
     resolution: {integrity: sha512-+F0bhhd8j+gxHaXG4fJgfokrkFfWenQ10MtrWOJk68B5UaTwtJm4EpsZFiVdluA3jpKExG6H+HtroJpvO7Qx0A==}
     peerDependencies:
@@ -2129,8 +2141,14 @@ packages:
   '@vueuse/metadata@11.1.0':
     resolution: {integrity: sha512-l9Q502TBTaPYGanl1G+hPgd3QX5s4CGnpXriVBR5fEZ/goI6fvDaVmIl3Td8oKFurOxTmbXvBPSsgrd6eu6HYg==}
 
+  '@vueuse/metadata@9.11.1':
+    resolution: {integrity: sha512-ABjkrG+VXggNhjfGyw5e/sekxTZfXTwjrYXkkWQmQ7Biyv+Gq9UD6IDNfeGvQZEINI0Qzw6nfuO2UFCd3hlrxQ==}
+
   '@vueuse/shared@11.1.0':
     resolution: {integrity: sha512-YUtIpY122q7osj+zsNMFAfMTubGz0sn5QzE5gPzAIiCmtt2ha3uQUY1+JPyL4gRCTsLPX82Y9brNbo/aqlA91w==}
+
+  '@vueuse/shared@9.11.1':
+    resolution: {integrity: sha512-UTZYGAjT96hWn4buf4wstZbeheBVNcKPQuej6qpoSkjF1atdaeCD6kqm9uGL2waHfisSgH9mq0qCRiBOk5C/2w==}
 
   '@wasm-audio-decoders/common@9.0.5':
     resolution: {integrity: sha512-b9JNh9sPAvn8PVIizNh9D60WkfQong/u9ea873H47u7zvVDLctxYIp2aZw9CQqXaQdk7JB3MoU5UHiseO40swg==}
@@ -2976,6 +2994,13 @@ packages:
   gray-matter@4.0.3:
     resolution: {integrity: sha512-5v6yZd4JK3eMI3FqqCouswVqwugaA9r4dNZB1wwcmrD02QkV5H0y7XBQW8QwQqEaZY1pM9aqORSORhJRdNK44Q==}
     engines: {node: '>=6.0'}
+
+  gun-avatar@1.9.4:
+    resolution: {integrity: sha512-wOZPqjt0OuIOV2I+HOTmUUEupZhKzjAzf4me8fzhbw69GeHDIn3GjZVz5mjheaD7R3WQWvxGgkR5H5gm9X5Vxw==}
+
+  gun@0.2020.1239:
+    resolution: {integrity: sha512-e4BsRL4P6oLT1m7G+0H8VhhdfFEHhcPc5tOnmgTO6q9ZQrT+Q0B5XKrpAV3NcuLq3SpnOevlz6+Ul5CVaavcXQ==}
+    engines: {node: '>=0.8.4'}
 
   gun@0.2020.1240:
     resolution: {integrity: sha512-uhnyadZTywn0HHgBjS2DePqpcdwLeVm6nFeSZZBPJRltm9O8MjFPyltaxk2PBKS+O8wSZac9qlbCIriJDgQQog==}
@@ -4746,7 +4771,7 @@ snapshots:
   '@babel/code-frame@7.24.7':
     dependencies:
       '@babel/highlight': 7.24.7
-      picocolors: 1.0.1
+      picocolors: 1.1.0
 
   '@babel/compat-data@7.25.2': {}
 
@@ -4925,7 +4950,7 @@ snapshots:
       '@babel/helper-validator-identifier': 7.24.7
       chalk: 2.4.2
       js-tokens: 4.0.0
-      picocolors: 1.0.1
+      picocolors: 1.1.0
 
   '@babel/parser@7.25.3':
     dependencies:
@@ -6345,6 +6370,8 @@ snapshots:
 
   '@types/unist@3.0.2': {}
 
+  '@types/web-bluetooth@0.0.16': {}
+
   '@types/web-bluetooth@0.0.20': {}
 
   '@types/webmidi@2.1.0':
@@ -6461,6 +6488,8 @@ snapshots:
       '@unocss/core': 0.62.4
       '@unocss/preset-mini': 0.62.4
       '@unocss/rule-utils': 0.62.4
+
+  '@unocss/reset@0.48.4': {}
 
   '@unocss/reset@0.62.4': {}
 
@@ -6615,6 +6644,16 @@ snapshots:
       - '@vue/composition-api'
       - vue
 
+  '@vueuse/core@9.11.1(vue@3.5.6)':
+    dependencies:
+      '@types/web-bluetooth': 0.0.16
+      '@vueuse/metadata': 9.11.1
+      '@vueuse/shared': 9.11.1(vue@3.5.6)
+      vue-demi: 0.14.10(vue@3.5.6)
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - vue
+
   '@vueuse/gesture@2.0.0(vue@3.5.6)':
     dependencies:
       chokidar: 3.6.0
@@ -6648,7 +6687,16 @@ snapshots:
 
   '@vueuse/metadata@11.1.0': {}
 
+  '@vueuse/metadata@9.11.1': {}
+
   '@vueuse/shared@11.1.0(vue@3.5.6)':
+    dependencies:
+      vue-demi: 0.14.10(vue@3.5.6)
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - vue
+
+  '@vueuse/shared@9.11.1(vue@3.5.6)':
     dependencies:
       vue-demi: 0.14.10(vue@3.5.6)
     transitivePeerDependencies:
@@ -7725,6 +7773,27 @@ snapshots:
       kind-of: 6.0.3
       section-matter: 1.0.0
       strip-bom-string: 1.0.0
+
+  gun-avatar@1.9.4:
+    dependencies:
+      '@unocss/reset': 0.48.4
+      '@vueuse/core': 9.11.1(vue@3.5.6)
+      gun: 0.2020.1239
+      vue: 3.5.6
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - bufferutil
+      - typescript
+      - utf-8-validate
+
+  gun@0.2020.1239:
+    dependencies:
+      ws: 7.5.10
+    optionalDependencies:
+      '@peculiar/webcrypto': 1.5.0
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
 
   gun@0.2020.1240:
     dependencies:
@@ -9222,7 +9291,7 @@ snapshots:
     dependencies:
       browserslist: 4.23.2
       escalade: 3.1.2
-      picocolors: 1.0.1
+      picocolors: 1.1.0
 
   uqr@0.1.2: {}
 

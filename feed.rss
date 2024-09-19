@@ -4,7 +4,7 @@
         <title>Chromatone</title>
         <link>https://chromatone.center</link>
         <description>Visual Music Language development updates and more</description>
-        <lastBuildDate>Wed, 18 Sep 2024 15:11:53 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 19 Sep 2024 09:40:32 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en-EN</language>
@@ -13,7 +13,7 @@
             <title><![CDATA[Synth snippets]]></title>
             <link>https://chromatone.center/practice/synth/snippets.html</link>
             <guid>https://chromatone.center/practice/synth/snippets.html</guid>
-            <pubDate>Wed, 18 Sep 2024 15:09:38 GMT</pubDate>
+            <pubDate>Thu, 19 Sep 2024 09:38:29 GMT</pubDate>
             <description><![CDATA[Code pieces]]></description>
             <content:encoded><![CDATA[<h3 id="skew-by-upheaver" tabindex="-1">Skew by <a href="https://discord.com/channels/826071713426178078/834787928688689172/1123676571279048875" target="_blank" rel="noreferrer">upheaver</a> <a class="header-anchor" href="#skew-by-upheaver" aria-label="Permalink to &quot;Skew by [upheaver](https://discord.com/channels/826071713426178078/834787928688689172/1123676571279048875)&quot;"></a></h3>
 <p>Sharing a useful snippet. JUCE's logskew function in Typescript, if anyone wants to scale their parameter values (for example convert 0-1 range to 20-20000 hz in a non linear way) :</p>
@@ -39,7 +39,7 @@
             <title><![CDATA[Words sequencing]]></title>
             <link>https://chromatone.center/practice/generative/words/</link>
             <guid>https://chromatone.center/practice/generative/words/</guid>
-            <pubDate>Wed, 18 Sep 2024 15:09:38 GMT</pubDate>
+            <pubDate>Thu, 19 Sep 2024 09:38:29 GMT</pubDate>
             <description><![CDATA[&lt;script setup
 import { defineClientComponent } from 'vitepress'
 const Words = defineClientCompone]]></description>
@@ -50,7 +50,7 @@ const Words = defineClientCompone]]></description>
             <title><![CDATA[Words sequencing]]></title>
             <link>https://chromatone.center/practice/sequencing/words/</link>
             <guid>https://chromatone.center/practice/sequencing/words/</guid>
-            <pubDate>Wed, 18 Sep 2024 15:09:38 GMT</pubDate>
+            <pubDate>Thu, 19 Sep 2024 09:38:29 GMT</pubDate>
             <description><![CDATA[This page is moved to https://chromatone.center/practice/generative/words/]]></description>
             <content:encoded><![CDATA[<p>This page is moved to <a href="https://chromatone.center/practice/generative/words/" target="_blank" rel="noreferrer">https://chromatone.center/practice/generative/words/</a></p>
 ]]></content:encoded>
@@ -60,7 +60,7 @@ const Words = defineClientCompone]]></description>
             <title><![CDATA[ZZFXM]]></title>
             <link>https://chromatone.center/practice/sequencing/zzfxm/</link>
             <guid>https://chromatone.center/practice/sequencing/zzfxm/</guid>
-            <pubDate>Wed, 18 Sep 2024 15:09:38 GMT</pubDate>
+            <pubDate>Thu, 19 Sep 2024 09:38:29 GMT</pubDate>
             <description><![CDATA[&lt;script setup
 import { defineClientComponent } from 'vitepress'
 const ZzFxm = defineClientCompone]]></description>
@@ -72,7 +72,7 @@ const ZzFxm = defineClientCompone]]></description>
             <title><![CDATA[Reharmonization]]></title>
             <link>https://chromatone.center/theory/harmony/reharmonization/</link>
             <guid>https://chromatone.center/theory/harmony/reharmonization/</guid>
-            <pubDate>Wed, 18 Sep 2024 15:09:38 GMT</pubDate>
+            <pubDate>Thu, 19 Sep 2024 09:38:29 GMT</pubDate>
             <description><![CDATA[How to reharmonize a song]]></description>
             <content:encoded><![CDATA[<youtube-embed video="lz3WR-F_pnM" /><h2 id="reharmonization-chord-substitution-but-for-the-whole-chord-progression" tabindex="-1">Reharmonization = Chord substitution but for the whole chord progression <a class="header-anchor" href="#reharmonization-chord-substitution-but-for-the-whole-chord-progression" aria-label="Permalink to &quot;Reharmonization = Chord substitution but for the whole chord progression&quot;"></a></h2>
 <p>Reharmonization is used to:</p>
@@ -591,7 +591,7 @@ So far, there a re total 20000 students who acquired the perfect pitch through t
 <p>While very few people have the ability to name a pitch with no external reference, pitch memory can be activated by repeated exposure. People who are not skilled singers will often sing popular songs in the correct key, and can usually recognize when TV themes have been shifted into the wrong key. Members of the Venda culture in South Africa also sing familiar children's songs in the key in which the songs were learned.</p>
 <p>This phenomenon is apparently unrelated to musical training. The skill may be associated more closely with vocal production. Violin students learning the Suzuki method are required to memorize each composition in a fixed key and play it from memory on their instrument, but they are not required to sing. When tested, these students did not succeed in singing the memorized Suzuki songs in the original, fixed key.</p>
 <h2 id="possible-problems" tabindex="-1">Possible problems <a class="header-anchor" href="#possible-problems" aria-label="Permalink to &quot;Possible problems&quot;"></a></h2>
-<p>Musicians with absolute perception may experience difficulties which do not exist for other musicians. Because absolute listeners are capable of recognizing that a musical composition has been transposed from its original key, or that a pitch is being produced at a nonstandard frequency (either sharp or flat), a musician with absolute pitch may become confused upon perceiving tones believed to be &quot;wrong&quot; or hearing a piece of music &quot;in the wrong key&quot;. The relative pitch of the notes may be in tune to each other, but out of tune to the standard pitch or pitches the musician is familiar with or perceives as correct. This can especially apply to Baroque music, as many Baroque orchestras tune to A = 415 Hz as opposed to 440 Hz (i.e. roughly one standard semitone lower than the ISO standard for concert A), while other recordings of Baroque pieces (especially those of French Baroque music) are performed at 392 Hz. Historically, tuning forks for concert A used on keyboard instruments (which ensembles tune to when present), have varied widely in frequency, often between 415 Hz to 456.7 Hz.</p>
+<youtube-embed video="QRaACa1Mrd4" /><p>Musicians with absolute perception may experience difficulties which do not exist for other musicians. Because absolute listeners are capable of recognizing that a musical composition has been transposed from its original key, or that a pitch is being produced at a nonstandard frequency (either sharp or flat), a musician with absolute pitch may become confused upon perceiving tones believed to be &quot;wrong&quot; or hearing a piece of music &quot;in the wrong key&quot;. The relative pitch of the notes may be in tune to each other, but out of tune to the standard pitch or pitches the musician is familiar with or perceives as correct. This can especially apply to Baroque music, as many Baroque orchestras tune to A = 415 Hz as opposed to 440 Hz (i.e. roughly one standard semitone lower than the ISO standard for concert A), while other recordings of Baroque pieces (especially those of French Baroque music) are performed at 392 Hz. Historically, tuning forks for concert A used on keyboard instruments (which ensembles tune to when present), have varied widely in frequency, often between 415 Hz to 456.7 Hz.</p>
 <p>Variances in the sizes of intervals for different keys and the method of tuning instruments also can affect musicians in their perception of correct pitch, especially with music synthesized digitally using alternative tunings (e.g. unequal well temperaments and alternative meantone tunings such as 19-tone equal temperament and 31-tone equal temperament) as opposed to 12-tone equal temperament. An absolute listener may also use absolute strategies for tasks which are more efficiently accomplished with relative strategies, such as transposition or producing harmony that is microtonal or whose frequencies do not match standard 12-tone equal temperament. It is also possible for some musicians to have displaced absolute pitch, where all notes are slightly flat or slightly sharp of their respective pitch as defined by a given convention. This may arise from learning the pitch names from an instrument that was tuned to a concert pitch convention other than the one in use (e.g. A = 435 Hz, the Paris Opera convention of the late 19th and early 20th centuries, as opposed to the modern Euro-American convention for concert A = 442 Hz). Concert pitches have shifted higher for a brighter sound. When playing in groups with other musicians, this may lead to playing in a tonality that is slightly different from that of the rest of the group, such as when soloists tune slightly sharp of the rest of the ensemble to stand out or to compensate for loosening strings during longer performances.</p>
 <h2 id="synesthesia" tabindex="-1">Synesthesia <a class="header-anchor" href="#synesthesia" aria-label="Permalink to &quot;Synesthesia&quot;"></a></h2>
 <p>Absolute pitch shows a genetic overlap with music-related and non-music-related synesthesia/ideasthesia. They may associate certain notes or keys with different colors, enabling them to tell what any note or key is. In this study, about 20% of people with absolute pitch are also synesthetes.</p>
@@ -2128,6 +2128,7 @@ Adriano Banchieri (1628)</p>
             <pubDate>Wed, 10 Nov 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[Deeper explorations of subtle psychoacoustic effects]]></description>
             <content:encoded><![CDATA[<youtube-embed video="Sn07AMCfaAI" /><youtube-embed video="OiW8gzBGz1A" /><youtube-embed video="fBMli2YAR8k" /><youtube-embed video="TVsMiSrlSSc" /><youtube-embed video="WMHyYCk7OqE" /><youtube-embed video="YQNsCg4z6L8" />]]></content:encoded>
+            <enclosure url="https://chromatone.center/cover.png" length="0" type="image/png"/>
         </item>
         <item>
             <title><![CDATA[MIDI Radar]]></title>
@@ -4384,7 +4385,7 @@ Side view of a Tanjore-style rosewood tanpura bridge with cotton threads adjuste
 <li>1 Eighth Note and 2 Sixteenths: <strong>Ti-Tika / Ti-Tiri</strong></li>
 </ul>
 <p>This system allows the value of each note to be clearly represented no matter its placement within the beat/measure</p>
-]]></content:encoded>
+<youtube-embed video="1SMmc9gQmHQ" />]]></content:encoded>
             <enclosure url="https://chromatone.center/claire-brear.jpg" length="0" type="image/jpg"/>
         </item>
         <item>
@@ -5385,7 +5386,7 @@ C / K / D / T / E / F / H / G / P / A / V / B.</p>
 <p>Two notes sounding simultaneously or sequentially form the basic building block for all the emotional expressiveness of music. They form some kind of relationships that bring up some distinct feeling.</p>
 <p>The most basic is the 1:2 ratio of an <a href="./unison-octave/">Unison and octave</a>, that are foundational for cyclic nature of pitch class space. <a href="./fifth-fourth/">Perfect Fifth and Fourth</a> are the foundational consonances that bring joy of the simple 2:3 and 3:4 ratios. This is the root of the 12 note system as a whole.</p>
 <p><a href="./third-sixth/">Thirds and Sixth</a> are the imperfect consonances to evoke deeper feelings while the <a href="./second-seventh/">Seconds and Sevenths</a> are the sharper dissonances to spice everything up. We'll explore the process of the <a href="./emancipation/">Emancipation of dissonance</a> to find out how did we get at this point in our pitch pairs interpretation. And how science finally got <a href="./dissonance/">a measure for sound consonance</a>. And take a brief look at some mathematical implications of building <a href="./cycles/">interval chains</a>.</p>
-<YoutubeEmbed video="3sUpoSTy8zw" />]]></content:encoded>
+<youtube-embed video="3sUpoSTy8zw" /><youtube-embed video="cyW5z-M2yzw" />]]></content:encoded>
             <enclosure url="https://chromatone.center/guang-yang.jpg" length="0" type="image/jpg"/>
         </item>
         <item>
@@ -6790,8 +6791,9 @@ C / K / D / T / E / F / H / G / P / A / V / B.</p>
             <pubDate>Tue, 31 Aug 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[The acoustic waves - their sources and mediums.]]></description>
             <content:encoded><![CDATA[<h2 id="what-is-sound" tabindex="-1">What is sound? <a class="header-anchor" href="#what-is-sound" aria-label="Permalink to &quot;What is sound?&quot;"></a></h2>
-<p><img src="./Spherical_pressure_waves.gif" alt=""></p>
-<p>Acoustic vibrations propagate as mechanical waves of pressure in a transmission medium such as gas, liquid or solid. The speed of sound in air at 20 ºC is about 343 m/s (1,235 km/h) and complexly depends on density and pressure/stiffness of the medium. Audio range falls between infrasonic (&lt;20 Hz) and ultrasonic (&gt;20 kHz) frequencies.</p>
+<youtube-embed video="24yESm63tSY" /><p>Acoustic vibrations propagate as mechanical waves of pressure in a transmission medium such as gas, liquid or solid. The speed of sound in air at 20 ºC is about 343 m/s (1,235 km/h) and complexly depends on density and pressure/stiffness of the medium. Audio range falls between infrasonic (&lt;20 Hz) and ultrasonic (&gt;20 kHz) frequencies.</p>
+<youtube-embed video="XLfQpv2ZRPU" /><p><img src="./Spherical_pressure_waves.gif" alt=""></p>
+<youtube-embed video="px3oVGXr4mo" /><h2 id="acoustic-vibrations" tabindex="-1">Acoustic vibrations <a class="header-anchor" href="#acoustic-vibrations" aria-label="Permalink to &quot;Acoustic vibrations&quot;"></a></h2>
 <SoundVibrations class="my-16" id="sound-vibrations" /><h2 id="lindsay-s-wheel-of-acoustics" tabindex="-1">Lindsay's Wheel of Acoustics <a class="header-anchor" href="#lindsay-s-wheel-of-acoustics" aria-label="Permalink to &quot;Lindsay's Wheel of Acoustics&quot;"></a></h2>
 <p><img src="./Lindsays_Wheel_of_Acoustics.svg" alt=""></p>
 <p><img src="./atmosphere-speed-of-sound.png" alt=""></p>
@@ -6805,24 +6807,30 @@ C / K / D / T / E / F / H / G / P / A / V / B.</p>
             <pubDate>Mon, 30 Aug 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[Physiology and features of the eyes]]></description>
             <content:encoded><![CDATA[<h2 id="human-eye" tabindex="-1">Human eye <a class="header-anchor" href="#human-eye" aria-label="Permalink to &quot;Human eye&quot;"></a></h2>
-<p>The perception of color derives from the stimulation of cone cells in the human eye by visible light. Light, containing all spectral colors is perceived white. Color of an object depends on the range of wavelengths of light that are absorbed or reflected by its surface. The sense of a particular color is produced in nervous system by combining signal from three types of cones, sensitive to red, green and blue ranges of the spectrum.</p>
-<img src="./images/Eyesection.svg" />
-<img src="./images/retina.jpg" />
-<img src="./images/Human-visual-pathway.svg" />
-<p><img src="./images/Distribution_of_Cones_and_Rods_on_Human_Retina.png" alt=""></p>
-<p>The human eye with normal vision has three kinds of cone cells that sense light, having peaks of spectral sensitivity in short (&quot;S&quot;, 420 nm – 440 nm), middle (&quot;M&quot;, 530 nm – 540 nm), and long (&quot;L&quot;, 560 nm – 580 nm) wavelengths. These cone cells underlie human color perception in conditions of medium and high brightness; in very dim light color vision diminishes, and the low-brightness, monochromatic &quot;night vision&quot; receptors, denominated &quot;rod cells&quot;, become effective. Thus, three parameters corresponding to levels of stimulus of the three kinds of cone cells, in principle describe any human color sensation. Weighting a total light power spectrum by the individual spectral sensitivities of the three kinds of cone cells renders three effective values of stimulus; these three values compose a tristimulus specification of the objective color of the light spectrum. The three parameters, denoted &quot;S&quot;, &quot;M&quot;, and &quot;L&quot;, are indicated using a 3-dimensional space denominated the &quot;LMS color space&quot;, which is one of many color spaces devised to quantify human color vision.</p>
-<img src="./color-sensitivity.jpg" />
-<img src="./images/Cone-fundamentals-with-srgb-spectrum.svg" />
+<youtube-embed video="eySkNWTI03Q" /><p>Perception of color derives from the stimulation of cone cells in the human eye by visible light. Light, containing all spectral colors is perceived white. Color of an object depends on the range of wavelengths of light that are absorbed or reflected by its surface. The sense of a particular color is produced in nervous system by combining signal from three types of cones, sensitive to red, green and blue ranges of the spectrum.</p>
+<p><img src="./images/Eyesection.svg" alt="Eye section"></p>
+<h2 id="retina-cells" tabindex="-1">Retina cells <a class="header-anchor" href="#retina-cells" aria-label="Permalink to &quot;Retina cells&quot;"></a></h2>
+<ul>
+<li>Cones</li>
+<li>Rods</li>
+</ul>
+<youtube-embed video="_xKbjYBnHhc" /><p><img src="./images/retina.jpg" alt="Retina structure"></p>
+<p><img src="./images/Distribution_of_Cones_and_Rods_on_Human_Retina.png" alt="Distribution of cones and rods"></p>
+<h2 id="visual-pathway" tabindex="-1">Visual pathway <a class="header-anchor" href="#visual-pathway" aria-label="Permalink to &quot;Visual pathway&quot;"></a></h2>
+<youtube-embed video="ai7QnHS7C7g" /><p><img src="./images/Human-visual-pathway.svg" alt="Visual pathway"></p>
+<p>Human eye with normal vision has three kinds of cone cells that sense light, having peaks of spectral sensitivity in short (&quot;S&quot;, 420 nm – 440 nm), middle (&quot;M&quot;, 530 nm – 540 nm), and long (&quot;L&quot;, 560 nm – 580 nm) wavelengths. These cone cells underlie human color perception in conditions of medium and high brightness; in very dim light color vision diminishes, and the low-brightness, monochromatic &quot;night vision&quot; receptors, denominated &quot;rod cells&quot;, become effective. Thus, three parameters corresponding to levels of stimulus of the three kinds of cone cells, in principle describe any human color sensation. Weighting a total light power spectrum by the individual spectral sensitivities of the three kinds of cone cells renders three effective values of stimulus; these three values compose a tristimulus specification of the objective color of the light spectrum. The three parameters, denoted &quot;S&quot;, &quot;M&quot;, and &quot;L&quot;, are indicated using a 3-dimensional space denominated the &quot;LMS color space&quot;, which is one of many color spaces devised to quantify human color vision.</p>
+<p><img src="./color-sensitivity.jpg" alt="Color sensitivity"></p>
+<p><img src="./images/Cone-fundamentals-with-srgb-spectrum.svg" alt="Normalized cone response"></p>
 <blockquote>
-<img src="./images/cie-1931.svg">
+<p><img src="./images/cie-1931.svg" alt="The CIE XYZ standard observer color matching functions"></p>
 <p>The CIE XYZ standard observer color matching functions</p>
 </blockquote>
 <p><img src="./images/Eyesensitivity.svg" alt=""></p>
 <p><img src="./images/Line_of_purples.png" alt=""></p>
 <h2 id="opposite-color-vision-theory" tabindex="-1">Opposite color vision theory <a class="header-anchor" href="#opposite-color-vision-theory" aria-label="Permalink to &quot;Opposite color vision theory&quot;"></a></h2>
-<img src="./images/Diagram_of_the_opponent_process.png" />
+<youtube-embed video="l8_fZPHasdo" /><p><img src="./images/Diagram_of_the_opponent_process.png" alt="Opponent process diagram"></p>
 <h2 id="just-noticable-difference" tabindex="-1">Just noticable difference <a class="header-anchor" href="#just-noticable-difference" aria-label="Permalink to &quot;Just noticable difference&quot;"></a></h2>
-<p>Tolerancing concerns the question &quot;What is a set of colors that are imperceptibly/acceptably close to a given reference?&quot; If the distance measure is perceptually uniform, then the answer is simply &quot;the set of points whose distance to the reference is less than the just-noticeable-difference (JND) threshold.&quot; This requires a perceptually uniform metric in order for the threshold to be constant throughout the gamut (range of colors). Otherwise, the threshold will be a function of the reference color—cumbersome as a practical guide.</p>
+<youtube-embed video="IZsAD_nm-q4" /><p>Tolerancing concerns the question &quot;What is a set of colors that are imperceptibly/acceptably close to a given reference?&quot; If the distance measure is perceptually uniform, then the answer is simply &quot;the set of points whose distance to the reference is less than the just-noticeable-difference (JND) threshold.&quot; This requires a perceptually uniform metric in order for the threshold to be constant throughout the gamut (range of colors). Otherwise, the threshold will be a function of the reference color—cumbersome as a practical guide.</p>
 <p>In the CIE 1931 color space, for example, the tolerance contours are defined by the MacAdam ellipse, which holds L* (lightness) fixed. As can be observed on the adjacent diagram, the ellipses denoting the tolerance contours vary in size. It is partly this non-uniformity that led to the creation of CIELUV and CIELAB.</p>
 <blockquote>
 <p><img src="./images/CIExy1931_MacAdam.png" alt=""></p>
@@ -6905,16 +6913,16 @@ C / K / D / T / E / F / H / G / P / A / V / B.</p>
             <guid>https://chromatone.center/theory/sound/hearing/</guid>
             <pubDate>Mon, 30 Aug 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[Explore the intricate and inredibly complicated mechanism of converting acoustic vibrations to electrical nerve signals.]]></description>
-            <content:encoded><![CDATA[<h2 id="tonal-perception" tabindex="-1">Tonal perception <a class="header-anchor" href="#tonal-perception" aria-label="Permalink to &quot;Tonal perception&quot;"></a></h2>
+            <content:encoded><![CDATA[<youtube-embed video="eQEaiZ2j9oc" /><h2 id="tonal-perception" tabindex="-1">Tonal perception <a class="header-anchor" href="#tonal-perception" aria-label="Permalink to &quot;Tonal perception&quot;"></a></h2>
 <p>Sound is amplified and transformed into nerve signals by mechanically activated hair cells emitting glutamate neurotransmitter in a basilar membrane in the cochlea of the human inner ear. It happens in a spiral organ with 2.5 coils of tonotopically organized bone tissue resonating with different frequencies in its different locations.</p>
-<p><img src="./auditory-system.png" alt=""></p>
-<p><img src="./auditory-system-2.jpg" alt=""></p>
-<p><img src="./basilar-membrane.jpg" alt=""></p>
+<youtube-embed video="WeQluId1hnQ" /><p><img src="./auditory-system.png" alt="AUditory system anatomy"></p>
+<p><img src="./auditory-system-2.jpg" alt="Auditory system anatomy"></p>
+<p><img src="./basilar-membrane.jpg" alt="Basilar membrane"></p>
 <youtube-embed video="XsXIOBx6cwI" /><p>Hearing is a crucial aspect of human communication, as the ear transforms sound vibrations from the environment into nerve impulses that are interpreted as sounds by the brain. The cochlea, a part of the inner ear, is responsible for frequency analysis, with different sections resonating at different frequencies. The place theory of hearing suggests that each place in the cochlea corresponds to the perception of a given frequency.</p>
-<p>The just noticeable difference in frequency is about 1 Hz for frequencies lower than 1000 Hz for most people. However, the resonance curves of the cochlea are broad and overlap, making it difficult for the ear to pick out frequencies that are close together. The place theory of hearing cannot fully explain how we perceive different frequencies, as it does not account for the ability to hear sudden changes in frequency.</p>
+<youtube-embed video="XPHuiYInOsg" /><p>The just noticeable difference in frequency is about 1 Hz for frequencies lower than 1000 Hz for most people. However, the resonance curves of the cochlea are broad and overlap, making it difficult for the ear to pick out frequencies that are close together. The place theory of hearing cannot fully explain how we perceive different frequencies, as it does not account for the ability to hear sudden changes in frequency.</p>
 <p>The place theory of hearing is one of the two opposing theories that attempt to explain the perceptual processing of sound sensation, alongside the frequency theory explorable.com. The place theory suggests that each part of the cochlea resonates at a different frequency, with the stapes end resonating at high frequencies and the end furthest from the ossicles resonating at low frequencies. When a given frequency is presented to the cochlea, it causes motion in only one part, which sends a nerve impulse to the brain, enabling the perception of that frequency. However, the place theory has limitations, as the resonance curves are broad and overlap, making it difficult for the ear to distinguish frequencies that are close together.</p>
 <p>The temporal theory of hearing is another overlapping theory that aims to explain the richness of auditory phenomena experienced by humans. Unlike the place theory, the temporal theory focuses on the timing of neural activity, suggesting that the brain processes temporal information to perceive sound. This theory posits that the brain uses the timing of neural activity to distinguish between different frequencies, even when the resonance curves of the cochlea overlap. Combining the place theory and the temporal theory can help explain the complexity of human auditory perception and provide a more comprehensive understanding of how we perceive sound.</p>
-]]></content:encoded>
+<youtube-embed video="geSDcollRos" />]]></content:encoded>
             <enclosure url="https://chromatone.center/auditory-system.png" length="0" type="image/png"/>
         </item>
         <item>
@@ -6944,7 +6952,7 @@ C / K / D / T / E / F / H / G / P / A / V / B.</p>
             <guid>https://chromatone.center/theory/sound/psychoacoustics/</guid>
             <pubDate>Sun, 29 Aug 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[The science of percieved sound]]></description>
-            <content:encoded><![CDATA[<h2 id="equal-loudness-contour" tabindex="-1">Equal-loudness contour <a class="header-anchor" href="#equal-loudness-contour" aria-label="Permalink to &quot;Equal-loudness contour&quot;"></a></h2>
+            <content:encoded><![CDATA[<youtube-embed video="awiunFeiDuQ" /><h2 id="equal-loudness-contour" tabindex="-1">Equal-loudness contour <a class="header-anchor" href="#equal-loudness-contour" aria-label="Permalink to &quot;Equal-loudness contour&quot;"></a></h2>
 <p>The human auditory system is sensitive to frequencies from about 20 Hz to a maximum of around 20,000 Hz, although the upper hearing limit decreases with age. Within this range, the human ear is most sensitive between 2 and 5 kHz, largely due to the resonance of the ear canal and the transfer function of the ossicles of the middle ear.</p>
 <p><img src="./equal-loudness.svg" alt=""></p>
 <p>Fletcher and Munson first measured equal-loudness contours using headphones (1933). In their study, test subjects listened to pure tones at various frequencies and over 10 dB increments in stimulus intensity. For each frequency and intensity, the listener also listened to a reference tone at 1000 Hz. Fletcher and Munson adjusted the reference tone until the listener perceived that it was the same loudness as the test tone. Loudness, being a psychological quantity, is difficult to measure, so Fletcher and Munson averaged their results over many test subjects to derive reasonable averages. The lowest equal-loudness contour represents the quietest audible tone—the absolute threshold of hearing. The highest contour is the threshold of pain.</p>
@@ -7052,7 +7060,7 @@ C / K / D / T / E / F / H / G / P / A / V / B.</p>
 <p>The US time and frequency station WWV broadcasts a 440 Hz signal at two minutes past every hour, with WWVH broadcasting the same tone at the first minute past every hour. This was added in 1936 to aid orchestras in tuning their instruments.</p>
 <h2 id="history-of-pitch-standards-in-western-music" tabindex="-1">History of pitch standards in Western music <a class="header-anchor" href="#history-of-pitch-standards-in-western-music" aria-label="Permalink to &quot;History of pitch standards in Western music&quot;"></a></h2>
 <p>Historically, various standards have been used to fix the pitch of notes at certain frequencies. Various systems of musical tuning have also been used to determine the relative frequency of notes in a scale.</p>
-<h3 id="pre-19th-century" tabindex="-1">Pre-19th century <a class="header-anchor" href="#pre-19th-century" aria-label="Permalink to &quot;Pre-19th century&quot;"></a></h3>
+<youtube-embed video="si6QNVn40GM" /><h3 id="pre-19th-century" tabindex="-1">Pre-19th century <a class="header-anchor" href="#pre-19th-century" aria-label="Permalink to &quot;Pre-19th century&quot;"></a></h3>
 <p>Until the 19th century, there was no coordinated effort to standardize musical pitch, and the levels across Europe varied widely. Pitches did not just vary from place to place, or over time—pitch levels could vary even within the same city. The pitch used for an English cathedral organ in the 17th century, for example, could be as much as five semitones lower than that used for a domestic keyboard instrument in the same city.</p>
 <p>Even within one church, the pitch used could vary over time because of the way organs were tuned. Generally, the end of an organ pipe would be hammered inwards to a cone, or flared outwards, to raise or lower the pitch. When the pipe ends became frayed by this constant process they were all trimmed down, thus raising the overall pitch of the organ.</p>
 <p>From the early 18th century, pitch could also be controlled with the use of tuning forks (invented in 1711), although again there was variation. For example, a tuning fork associated with Handel, dating from 1740, is pitched at A = 422.5 Hz, while a later one from 1780 is pitched at A = 409 Hz, about a quarter-tone lower. A tuning fork that belonged to Ludwig van Beethoven around 1800, now in the British Library, is pitched at A = 455.4 Hz, well over a half-tone higher.</p>
@@ -7068,7 +7076,7 @@ C / K / D / T / E / F / H / G / P / A / V / B.</p>
 <p>In England the term low pitch was used from 1896 onward to refer to the new Philharmonic Society tuning standard of A = 439 Hz at 68 °F, while &quot;high pitch&quot; was used for the older tuning of A = 452.4 Hz at 60 °F. Although the larger London orchestras were quick to conform to the new, low pitch, provincial orchestras continued using the high pitch until at least the 1920s, and most brass bands were still using the high pitch in the mid-1960s. Highland pipe bands continue to use an even sharper tuning, around A = 470–480 Hz, over a semitone higher than A440. As a result, bagpipes are often perceived as playing in B♭ despite being notated in A (as if they were transposing instruments in D-flat), and are often tuned to match B♭ brass instruments when the two are required to play together.</p>
 <p>The Stuttgart Conference of 1834 recommended C264 (A440) as the standard pitch based on Scheibler's studies with his Tonometer. For this reason A440 has been referred to as Stuttgart pitch or Scheibler pitch.</p>
 <p>In 1939, an international conference recommended that the A above middle C be tuned to 440 Hz, now known as concert pitch. As a technical standard this was taken up by the International Organization for Standardization in 1955 and reaffirmed by them in 1975 as ISO 16. The difference between this and the diapason normal is due to confusion over the temperature at which the French standard should be measured. The initial standard was A = 439 Hz, but this was superseded by A = 440 Hz, possibly because 439 Hz was difficult to reproduce in a laboratory since 439 is a prime number.</p>
-]]></content:encoded>
+<youtube-embed video="EKTZ151yLnk" />]]></content:encoded>
             <enclosure url="https://chromatone.center/jacek-ulinski.jpg" length="0" type="image/jpg"/>
         </item>
         <item>
@@ -7423,7 +7431,7 @@ Guido (left) showing Tedald the monochord, depicted in an 11th-century medieval 
 <p>Guido is somewhat erroneously credited with the invention of the Guidonian hand, a widely used mnemonic system where note names are mapped to parts of the human hand. Only a rudimentary form of the Guidonian hand is actually described by Guido, and the fully elaborated system of natural, hard, and soft hexachords cannot be securely attributed to him.</p>
 <p><img src="./images/Guidonian_hand.jpg" alt=""></p>
 <p>In the 12th century, a development in teaching and learning music in a more efficient manner had arisen. Guido of Arezzo's alleged development of the Guidonian hand, more than a hundred years after his death, allowed for musicians to label a specific joint or fingertip with the gamut (also referred to as the hexachord in the modern era).[citation needed] Using specific joints of the hand and fingertips transformed the way one would learn and memorize solmization syllables. Not only did the Guidonian hand become a standard use in preparing music in the 12th century, its popularity grew more widespread well into the 17th and 18th century. The knowledge and use of the Guidonian hand would allow a musician to simply transpose, identify intervals, and aid in use of notation and the creation of new music. Musicians were able to sing and memorize longer sections of music and counterpoint during performances and the amount of time spent diminished dramatically.</p>
-<p><img src="./images/Guidonischehand.gif" alt=""></p>
+<p><img src="./images/Guidonischehand.gif" alt="Guido's hand"></p>
 <youtube-embed video="veJNu1fi8p4" /><blockquote>
 <p><strong>Ut</strong> queant laxis<br>
 <strong>Re</strong>sonare fibris,<br>
@@ -7433,11 +7441,11 @@ Guido (left) showing Tedald the monochord, depicted in an 11th-century medieval 
 <strong>La</strong>bii reatum,<br>
 <strong>S</strong>ancte <strong>J</strong>ohannes.</p>
 </blockquote>
-<p><img src="./images/Ut_Queant_Laxis_MT.png" alt=""></p>
+<p><img src="./images/Ut_Queant_Laxis_MT.png" alt="Ut_Queant_Laxis"></p>
 <hr>
 <h2 id="square-notation" tabindex="-1">Square notation <a class="header-anchor" href="#square-notation" aria-label="Permalink to &quot;Square notation&quot;"></a></h2>
-<p><img src="./images/gregorian.jpg" alt=""></p>
-<p>By the 13th century, the neumes of Gregorian chant were usually written in square notation on a staff with four lines and three spaces and a clef marker, as in the 14th–15th century Graduale Aboense shown here. In square notation, small groups of ascending notes on a syllable are shown as stacked squares, read from bottom to top, while descending notes are written with diamonds read from left to right. In melismatic chants, in which a syllable may be sung to a large number of notes, a series of smaller such groups of neumes are written in succession, read from left to right. A special symbol called the custos, placed at the end of a system, showed which pitch came next at the start of the following system. Special neumes such as the oriscus, quilisma, and liquescent neumes, indicate particular vocal treatments for these notes. This system of square notation is standard in modern chantbooks.</p>
+<p><img src="./images/gregorian.jpg" alt="Gregorian chant"></p>
+<youtube-embed video="QuRrd35kvUo" /><p>By the 13th century, the neumes of Gregorian chant were usually written in square notation on a staff with four lines and three spaces and a clef marker, as in the 14th–15th century Graduale Aboense shown here. In square notation, small groups of ascending notes on a syllable are shown as stacked squares, read from bottom to top, while descending notes are written with diamonds read from left to right. In melismatic chants, in which a syllable may be sung to a large number of notes, a series of smaller such groups of neumes are written in succession, read from left to right. A special symbol called the custos, placed at the end of a system, showed which pitch came next at the start of the following system. Special neumes such as the oriscus, quilisma, and liquescent neumes, indicate particular vocal treatments for these notes. This system of square notation is standard in modern chantbooks.</p>
 <p><img src="./images/Graduale_Aboense.jpg" alt=""></p>
 <hr>
 <h2 id="mensural-notation-of-renaissance-c-1400–1600" tabindex="-1">Mensural notation of Renaissance c. 1400–1600 <a class="header-anchor" href="#mensural-notation-of-renaissance-c-1400–1600" aria-label="Permalink to &quot;Mensural notation of Renaissance c. 1400–1600&quot;"></a></h2>

@@ -1,13 +1,11 @@
 ---
 layout: home
 title: Chromatone
-description: Visual music language
-topContent: true
+description: Visual Music Language Research Hub
 youtube: qthKClCRIl0
 ---
 
 <a href="/theory/interplay/spectrum/" ><img class="w-full" alt="Chromatic Spectrum" src="/img/spectrum.svg" /></a>
-
 
 Chromatone is an open source research and design project to explore, develop and implement the scientific way of visual music education, communication and performance.
 

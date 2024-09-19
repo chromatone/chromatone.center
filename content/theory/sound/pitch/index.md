@@ -101,6 +101,8 @@ The US time and frequency station WWV broadcasts a 440 Hz signal at two minutes 
 
 Historically, various standards have been used to fix the pitch of notes at certain frequencies. Various systems of musical tuning have also been used to determine the relative frequency of notes in a scale.
 
+<youtube-embed video="si6QNVn40GM" />
+
 ### Pre-19th century
 
 Until the 19th century, there was no coordinated effort to standardize musical pitch, and the levels across Europe varied widely. Pitches did not just vary from place to place, or over time—pitch levels could vary even within the same city. The pitch used for an English cathedral organ in the 17th century, for example, could be as much as five semitones lower than that used for a domestic keyboard instrument in the same city.
@@ -132,3 +134,5 @@ In England the term low pitch was used from 1896 onward to refer to the new Phil
 The Stuttgart Conference of 1834 recommended C264 (A440) as the standard pitch based on Scheibler's studies with his Tonometer. For this reason A440 has been referred to as Stuttgart pitch or Scheibler pitch.
 
 In 1939, an international conference recommended that the A above middle C be tuned to 440 Hz, now known as concert pitch. As a technical standard this was taken up by the International Organization for Standardization in 1955 and reaffirmed by them in 1975 as ISO 16. The difference between this and the diapason normal is due to confusion over the temperature at which the French standard should be measured. The initial standard was A = 439 Hz, but this was superseded by A = 440 Hz, possibly because 439 Hz was difficult to reproduce in a laboratory since 439 is a prime number.
+
+<youtube-embed video="EKTZ151yLnk" />

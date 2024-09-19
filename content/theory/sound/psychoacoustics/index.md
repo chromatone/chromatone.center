@@ -1,10 +1,13 @@
 ---
 title: Psychoacoustics
 description: The science of percieved sound
-
+topContent: true
 date: 2021-08-29
 cover: hearing.svg
 ---
+
+<youtube-embed video="awiunFeiDuQ" />
+
 
 ## Equal-loudness contour
 

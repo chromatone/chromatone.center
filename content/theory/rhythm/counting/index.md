@@ -166,3 +166,5 @@ This is a beat-function system used by some Kodály teachers that was developed 
 - 1 Eighth Note and 2 Sixteenths: **Ti-Tika / Ti-Tiri**
 
 This system allows the value of each note to be clearly represented no matter its placement within the beat/measure
+
+<youtube-embed video="1SMmc9gQmHQ" />

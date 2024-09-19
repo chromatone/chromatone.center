@@ -14,4 +14,7 @@ The most basic is the 1:2 ratio of an [Unison and octave](./unison-octave/index.
 
 [Thirds and Sixth](./third-sixth/index.md) are the imperfect consonances to evoke deeper feelings while the [Seconds and Sevenths](./second-seventh/index.md) are the sharper dissonances to spice everything up. We'll explore the process of the [Emancipation of dissonance](./emancipation/index.md) to find out how did we get at this point in our pitch pairs interpretation. And how science finally got [a measure for sound consonance](./dissonance/index.md). And take a brief look at some mathematical implications of building [interval chains](./cycles/index.md).
 
-<YoutubeEmbed video="3sUpoSTy8zw" />
+<youtube-embed video="3sUpoSTy8zw" />
+
+
+<youtube-embed video="cyW5z-M2yzw" />

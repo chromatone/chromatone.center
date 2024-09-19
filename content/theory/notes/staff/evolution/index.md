@@ -76,7 +76,7 @@ Guido is somewhat erroneously credited with the invention of the Guidonian hand,
 
 In the 12th century, a development in teaching and learning music in a more efficient manner had arisen. Guido of Arezzo's alleged development of the Guidonian hand, more than a hundred years after his death, allowed for musicians to label a specific joint or fingertip with the gamut (also referred to as the hexachord in the modern era).[citation needed] Using specific joints of the hand and fingertips transformed the way one would learn and memorize solmization syllables. Not only did the Guidonian hand become a standard use in preparing music in the 12th century, its popularity grew more widespread well into the 17th and 18th century. The knowledge and use of the Guidonian hand would allow a musician to simply transpose, identify intervals, and aid in use of notation and the creation of new music. Musicians were able to sing and memorize longer sections of music and counterpoint during performances and the amount of time spent diminished dramatically.
 
-![](./images/Guidonischehand.gif)
+![Guido's hand](./images/Guidonischehand.gif)
 
 <youtube-embed video="veJNu1fi8p4" />
 
@@ -88,13 +88,15 @@ In the 12th century, a development in teaching and learning music in a more effi
 >  **La**bii reatum,  
 >  **S**ancte **J**ohannes.
 
-![](./images/Ut_Queant_Laxis_MT.png)
+![Ut_Queant_Laxis](./images/Ut_Queant_Laxis_MT.png)
 
 ---
 
 ## Square notation
 
-![](./images/gregorian.jpg)
+![Gregorian chant](./images/gregorian.jpg)
+
+<youtube-embed video="QuRrd35kvUo" />
 
 By the 13th century, the neumes of Gregorian chant were usually written in square notation on a staff with four lines and three spaces and a clef marker, as in the 14th–15th century Graduale Aboense shown here. In square notation, small groups of ascending notes on a syllable are shown as stacked squares, read from bottom to top, while descending notes are written with diamonds read from left to right. In melismatic chants, in which a syllable may be sung to a large number of notes, a series of smaller such groups of neumes are written in succession, read from left to right. A special symbol called the custos, placed at the end of a system, showed which pitch came next at the start of the following system. Special neumes such as the oriscus, quilisma, and liquescent neumes, indicate particular vocal treatments for these notes. This system of square notation is standard in modern chantbooks.
 

@@ -1,7 +1,7 @@
 ---
 title: Audio illusions
 description: Deeper explorations of subtle psychoacoustic effects
-
+cover: cover.png
 date: 2021-11-10
 ---
 <youtube-embed video="Sn07AMCfaAI" />

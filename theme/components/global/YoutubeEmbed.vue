@@ -12,7 +12,8 @@ const loaded = ref(false)
 .iframe-container.shadow-lg.rounded-lg.bg-cover()
   .flex.items-center.relative.w-full.bg-cover.cursor-pointer.op-80.hover-op-100.transition(
     v-if="!loaded"
-    :style="{ backgroundImage: `url(https://img.youtube.com/vi/${video}/hqdefault.jpg)` }" @click="loaded = true")
+    @click="loaded = true")
+    img(:src="`https://img.youtube.com/vi/${video}/hqdefault.jpg`")
     .i-la-play-circle.text-xl
   iframe.overflow-hidden(
     v-else
@@ -30,7 +31,7 @@ const loaded = ref(false)
   max-width: 65ch;
   overflow: hidden;
   /* 16:9 aspect ratio */
-  padding-top: 56.25%;
+  padding-top: 34%;
   position: relative;
 }
 

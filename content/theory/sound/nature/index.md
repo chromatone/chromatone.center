@@ -15,12 +15,20 @@ const SoundVibrations = defineClientComponent(() => {
 })
 </script>
 
-
 ## What is sound?
+
+<youtube-embed video="24yESm63tSY" />
+
+
+Acoustic vibrations propagate as mechanical waves of pressure in a transmission medium such as gas, liquid or solid. The speed of sound in air at 20 ºC is about 343 m/s (1,235 km/h) and complexly depends on density and pressure/stiffness of the medium. Audio range falls between infrasonic (&lt;20 Hz) and ultrasonic (>20 kHz) frequencies.
+
+<youtube-embed video="XLfQpv2ZRPU" />
 
 ![](./Spherical_pressure_waves.gif)
 
-Acoustic vibrations propagate as mechanical waves of pressure in a transmission medium such as gas, liquid or solid. The speed of sound in air at 20 ºC is about 343 m/s (1,235 km/h) and complexly depends on density and pressure/stiffness of the medium. Audio range falls between infrasonic (&lt;20 Hz) and ultrasonic (>20 kHz) frequencies.
+<youtube-embed video="px3oVGXr4mo" />
+
+## Acoustic vibrations
 
 <SoundVibrations class="my-16" id="sound-vibrations" />
 

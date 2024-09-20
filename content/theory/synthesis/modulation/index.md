@@ -2,7 +2,10 @@
 title: Modulation techniques
 description: Signal cross relation
 date: 2023-10-18
+cover: FM-Synthesis-Yoast-1_2048x.webp
 ---
+
+![animated AM FM display](./Amfm3-en-de.gif)
 
 In electronics and telecommunications, modulation is the process of varying one or more properties of a periodic waveform, called the carrier signal, with a separate signal called the modulation signal that typically contains information to be transmitted. For example, the modulation signal might be an audio signal representing sound from a microphone, a video signal representing moving images from a video camera, or a digital signal representing a sequence of binary digits, a bitstream from a computer.
 

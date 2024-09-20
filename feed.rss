@@ -4,7 +4,7 @@
         <title>Chromatone</title>
         <link>https://chromatone.center</link>
         <description>Visual Music Language development updates and more</description>
-        <lastBuildDate>Fri, 20 Sep 2024 08:44:40 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 20 Sep 2024 09:13:46 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en-EN</language>
@@ -13,7 +13,7 @@
             <title><![CDATA[Synth snippets]]></title>
             <link>https://chromatone.center/practice/synth/snippets.html</link>
             <guid>https://chromatone.center/practice/synth/snippets.html</guid>
-            <pubDate>Fri, 20 Sep 2024 08:42:42 GMT</pubDate>
+            <pubDate>Fri, 20 Sep 2024 09:11:47 GMT</pubDate>
             <description><![CDATA[Code pieces]]></description>
             <content:encoded><![CDATA[<h3 id="skew-by-upheaver" tabindex="-1">Skew by <a href="https://discord.com/channels/826071713426178078/834787928688689172/1123676571279048875" target="_blank" rel="noreferrer">upheaver</a> <a class="header-anchor" href="#skew-by-upheaver" aria-label="Permalink to &quot;Skew by [upheaver](https://discord.com/channels/826071713426178078/834787928688689172/1123676571279048875)&quot;"></a></h3>
 <p>Sharing a useful snippet. JUCE's logskew function in Typescript, if anyone wants to scale their parameter values (for example convert 0-1 range to 20-20000 hz in a non linear way) :</p>
@@ -39,7 +39,7 @@
             <title><![CDATA[Words sequencing]]></title>
             <link>https://chromatone.center/practice/generative/words/</link>
             <guid>https://chromatone.center/practice/generative/words/</guid>
-            <pubDate>Fri, 20 Sep 2024 08:42:42 GMT</pubDate>
+            <pubDate>Fri, 20 Sep 2024 09:11:47 GMT</pubDate>
             <description><![CDATA[&lt;script setup
 import { defineClientComponent } from 'vitepress'
 const Words = defineClientCompone]]></description>
@@ -50,7 +50,7 @@ const Words = defineClientCompone]]></description>
             <title><![CDATA[Words sequencing]]></title>
             <link>https://chromatone.center/practice/sequencing/words/</link>
             <guid>https://chromatone.center/practice/sequencing/words/</guid>
-            <pubDate>Fri, 20 Sep 2024 08:42:42 GMT</pubDate>
+            <pubDate>Fri, 20 Sep 2024 09:11:47 GMT</pubDate>
             <description><![CDATA[This page is moved to https://chromatone.center/practice/generative/words/]]></description>
             <content:encoded><![CDATA[<p>This page is moved to <a href="https://chromatone.center/practice/generative/words/" target="_blank" rel="noreferrer">https://chromatone.center/practice/generative/words/</a></p>
 ]]></content:encoded>
@@ -60,7 +60,7 @@ const Words = defineClientCompone]]></description>
             <title><![CDATA[ZZFXM]]></title>
             <link>https://chromatone.center/practice/sequencing/zzfxm/</link>
             <guid>https://chromatone.center/practice/sequencing/zzfxm/</guid>
-            <pubDate>Fri, 20 Sep 2024 08:42:42 GMT</pubDate>
+            <pubDate>Fri, 20 Sep 2024 09:11:47 GMT</pubDate>
             <description><![CDATA[&lt;script setup
 import { defineClientComponent } from 'vitepress'
 const ZzFxm = defineClientCompone]]></description>
@@ -72,7 +72,7 @@ const ZzFxm = defineClientCompone]]></description>
             <title><![CDATA[Reharmonization]]></title>
             <link>https://chromatone.center/theory/harmony/reharmonization/</link>
             <guid>https://chromatone.center/theory/harmony/reharmonization/</guid>
-            <pubDate>Fri, 20 Sep 2024 08:42:42 GMT</pubDate>
+            <pubDate>Fri, 20 Sep 2024 09:11:47 GMT</pubDate>
             <description><![CDATA[How to reharmonize a song]]></description>
             <content:encoded><![CDATA[<youtube-embed video="lz3WR-F_pnM" /><h2 id="reharmonization-chord-substitution-but-for-the-whole-chord-progression" tabindex="-1">Reharmonization = Chord substitution but for the whole chord progression <a class="header-anchor" href="#reharmonization-chord-substitution-but-for-the-whole-chord-progression" aria-label="Permalink to &quot;Reharmonization = Chord substitution but for the whole chord progression&quot;"></a></h2>
 <p>Reharmonization is used to:</p>
@@ -935,10 +935,100 @@ v-for="(_,v) in 12"
             <guid>https://chromatone.center/theory/synthesis/modulation/</guid>
             <pubDate>Wed, 18 Oct 2023 00:00:00 GMT</pubDate>
             <description><![CDATA[Signal cross relation]]></description>
-            <content:encoded><![CDATA[<h2 id="analog-modulation" tabindex="-1">Analog Modulation <a class="header-anchor" href="#analog-modulation" aria-label="Permalink to &quot;Analog Modulation&quot;"></a></h2>
-<youtube-embed video="XnoHXyb7dkY" /><h3 id="am-amplitude-modulation" tabindex="-1">AM - Amplitude modulation <a class="header-anchor" href="#am-amplitude-modulation" aria-label="Permalink to &quot;AM - Amplitude modulation&quot;"></a></h3>
-<h3 id="fm-frequency-modulation" tabindex="-1">FM - Frequency modulation <a class="header-anchor" href="#fm-frequency-modulation" aria-label="Permalink to &quot;FM - Frequency modulation&quot;"></a></h3>
-<youtube-embed video="AzvxefRDT84" /><youtube-embed video="wn71QBApCRg" />]]></content:encoded>
+            <content:encoded><![CDATA[<p>In electronics and telecommunications, modulation is the process of varying one or more properties of a periodic waveform, called the carrier signal, with a separate signal called the modulation signal that typically contains information to be transmitted. For example, the modulation signal might be an audio signal representing sound from a microphone, a video signal representing moving images from a video camera, or a digital signal representing a sequence of binary digits, a bitstream from a computer.</p>
+<youtube-embed video="XnoHXyb7dkY" /><p>This carrier wave usually has a much higher frequency than the message signal does. This is because it is impractical to transmit signals with low frequencies. Generally, to receive a radio wave one needs a radio antenna with length that is one-fourth of wavelength. For low frequency radio waves, wavelength is on the scale of kilometers and building such a large antenna is not practical. In radio communication, the modulated carrier is transmitted through space as a radio wave to a radio receiver.</p>
+<p>Another purpose of modulation is to transmit multiple channels of information through a single communication medium, using frequency-division multiplexing (FDM). For example, in cable television (which uses FDM), many carrier signals, each modulated with a different television channel, are transported through a single cable to customers. Since each carrier occupies a different frequency, the channels do not interfere with each other. At the destination end, the carrier signal is demodulated to extract the information bearing modulation signal.</p>
+<p>A modulator is a device or circuit that performs modulation. A demodulator (sometimes detector) is a circuit that performs demodulation, the inverse of modulation. A modem (from modulator–demodulator), used in bidirectional communication, can perform both operations. The lower frequency band occupied by the modulation signal is called the baseband, while the higher frequency band occupied by the modulated carrier is called the passband.[citation needed]</p>
+<p>In analog modulation, an analog modulation signal is &quot;impressed&quot; on the carrier. Examples are amplitude modulation (AM) in which the amplitude (strength) of the carrier wave is varied by the modulation signal, and frequency modulation (FM) in which the frequency of the carrier wave is varied by the modulation signal. These were the earliest types of modulation[citation needed], and are used to transmit an audio signal representing sound in AM and FM radio broadcasting. More recent systems use digital modulation, which impresses a digital signal consisting of a sequence of binary digits (bits), a bitstream, on the carrier, by means of mapping bits to elements from a discrete alphabet to be transmitted. This alphabet can consist of a set of real or complex numbers, or sequences, like oscillations of different frequencies, so-called frequency-shift keying (FSK) modulation. A more complicated digital modulation method that employs multiple carriers, orthogonal frequency-division multiplexing (OFDM), is used in WiFi networks, digital radio stations and digital cable television transmission.</p>
+<h2 id="analog-modulation-methods" tabindex="-1">Analog modulation methods <a class="header-anchor" href="#analog-modulation-methods" aria-label="Permalink to &quot;Analog modulation methods&quot;"></a></h2>
+<p>In analog modulation, the modulation is applied continuously in response to the analog information signal. Common analog modulation techniques include:</p>
+<ul>
+<li>Amplitude modulation (AM) (here the amplitude of the carrier signal is varied in accordance with the instantaneous amplitude of the modulating signal)
+<ul>
+<li>Double-sideband modulation (DSB)
+<ul>
+<li>Double-sideband modulation with carrier (DSB-WC) (used on the AM radio broadcasting band)</li>
+<li>Double-sideband suppressed-carrier transmission (DSB-SC)</li>
+<li>Double-sideband reduced carrier transmission (DSB-RC)</li>
+</ul>
+</li>
+<li>Single-sideband modulation (SSB, or SSB-AM)
+<ul>
+<li>Single-sideband modulation with carrier (SSB-WC)</li>
+<li>Single-sideband modulation suppressed carrier modulation (SSB-SC)</li>
+</ul>
+</li>
+<li>Vestigial sideband modulation (VSB, or VSB-AM)</li>
+<li>Quadrature amplitude modulation (QAM)</li>
+</ul>
+</li>
+<li>Angle modulation, which is approximately constant envelope
+<ul>
+<li>Frequency modulation (FM) (here the frequency of the carrier signal is varied in accordance with the instantaneous amplitude of the modulating signal)</li>
+<li>Phase modulation (PM) (here the phase shift of the carrier signal is varied in accordance with the instantaneous amplitude of the modulating signal)</li>
+<li>Transpositional Modulation (TM), in which the waveform inflection is modified resulting in a signal where each quarter cycle is transposed in the modulation process. TM is a pseudo-analog modulation (AM). Where an AM carrier also carries a phase variable phase f(ǿ). TM is f(AM,ǿ)</li>
+</ul>
+</li>
+</ul>
+<h2 id="am-amplitude-modulation" tabindex="-1">AM - Amplitude modulation <a class="header-anchor" href="#am-amplitude-modulation" aria-label="Permalink to &quot;AM - Amplitude modulation&quot;"></a></h2>
+<p>...</p>
+<h2 id="fm-frequency-modulation" tabindex="-1">FM - Frequency modulation <a class="header-anchor" href="#fm-frequency-modulation" aria-label="Permalink to &quot;FM - Frequency modulation&quot;"></a></h2>
+<p>Frequency modulation synthesis (or FM synthesis) is a form of sound synthesis whereby the frequency of a waveform is changed by modulating its frequency with a modulator. The (instantaneous) frequency of an oscillator is altered in accordance with the amplitude of a modulating signal.</p>
+<p>FM synthesis can create both harmonic and inharmonic sounds. To synthesize harmonic sounds, the modulating signal must have a harmonic relationship to the original carrier signal. As the amount of frequency modulation increases, the sound grows progressively complex. Through the use of modulators with frequencies that are non-integer multiples of the carrier signal (i.e. inharmonic), inharmonic bell-like and percussive spectra can be created.</p>
+<youtube-embed video="AzvxefRDT84" /><h3 id="applications" tabindex="-1">Applications <a class="header-anchor" href="#applications" aria-label="Permalink to &quot;Applications&quot;"></a></h3>
+<p>FM synthesis using analog oscillators may result in pitch instability. However, FM synthesis can also be implemented digitally, which is more stable and became standard practice. Digital FM synthesis (equivalent to the phase modulation using the time integration of instantaneous frequency) was the basis of several musical instruments beginning as early as 1974. Yamaha built the first prototype digital synthesizer in 1974, based on FM synthesis, before commercially releasing the Yamaha GS-1 in 1980. The Synclavier I, manufactured by New England Digital Corporation beginning in 1978, included a digital FM synthesizer, using an FM synthesis algorithm licensed from Yamaha. Yamaha's groundbreaking Yamaha DX7 synthesizer, released in 1983, brought FM to the forefront of synthesis in the mid-1980s.</p>
+<h4 id="amusement-use-fm-sound-chips-on-pcs-arcades-game-consoles-and-mobile-phones" tabindex="-1">Amusement use: FM sound chips on PCs, arcades, game consoles, and mobile phones <a class="header-anchor" href="#amusement-use-fm-sound-chips-on-pcs-arcades-game-consoles-and-mobile-phones" aria-label="Permalink to &quot;Amusement use: FM sound chips on PCs, arcades, game consoles, and mobile phones&quot;"></a></h4>
+<p>FM synthesis also became the usual setting for games and software up until the mid-nineties. For IBM PC compatible systems, sound cards like the AdLib and Sound Blaster popularized Yamaha chips like the OPL2 and OPL3. Other computers such as the Sharp X68000 and MSX (Yamaha CX5M computer unit) use the OPM sound chip (which was also commonly used for arcade machines up to the mid-nineties) with later CX5M units using the OPP sound chip, and the NEC PC-88 and PC-98 computers use the OPN and OPNA. For arcade systems and game consoles, OPNB was used as main basic sound generator board in Taito's arcade boards (with a variant of the OPNB being used in the Taito Z System) and notably used in SNK's Neo Geo arcade (MVS) and home console (AES) machines. The related OPN2 was used in the Sega's Mega Drive (Genesis) and Fujitsu's FM Towns Marty as one of its sound generator chips. Throughout the 2000s, FM synthesis was also used on a wide range of phones to play ringtones and other sounds, typically in the Yamaha SMAF format.</p>
+<youtube-embed video="wn71QBApCRg" /><h2 id="history" tabindex="-1">History <a class="header-anchor" href="#history" aria-label="Permalink to &quot;History&quot;"></a></h2>
+<h3 id="don-buchla-mid-1960s" tabindex="-1">Don Buchla (mid-1960s) <a class="header-anchor" href="#don-buchla-mid-1960s" aria-label="Permalink to &quot;Don Buchla (mid-1960s)&quot;"></a></h3>
+<p>Don Buchla implemented FM on his instruments in the mid-1960s, prior to Chowning's patent. His 158, 258 and 259 dual oscillator modules had a specific FM control voltage input,[7] and the model 208 (Music Easel) had a modulation oscillator hard-wired to allow FM as well as AM of the primary oscillator.[8] These early applications used analog oscillators, and this capability was also followed by other modular synthesizers and portable synthesizers including Minimoog and ARP Odyssey.</p>
+<h3 id="john-chowning-late-1960s–1970s" tabindex="-1">John Chowning (late-1960s–1970s) <a class="header-anchor" href="#john-chowning-late-1960s–1970s" aria-label="Permalink to &quot;John Chowning (late-1960s–1970s)&quot;"></a></h3>
+<p>By the mid-20th century, frequency modulation (FM), a means of carrying sound, had been understood for decades and was being used to broadcast radio transmissions. FM synthesis was developed since 1967 at Stanford University, California, by John Chowning, who was trying to create sounds different from analog synthesis[citation needed]. His algorithm[citation needed] was licensed to Japanese company Yamaha in 1973. The implementation commercialized by Yamaha (US Patent 4018121 Apr 1977 or U.S. Patent 4,018,121) is actually based on phase modulation[citation needed], but the results end up being equivalent mathematically as both are essentially a special case of quadrature amplitude modulation[citation needed].</p>
+<h3 id="_1970s–1980s" tabindex="-1">1970s–1980s <a class="header-anchor" href="#_1970s–1980s" aria-label="Permalink to &quot;1970s–1980s&quot;"></a></h3>
+<h4 id="expansions-by-yamaha" tabindex="-1">Expansions by Yamaha <a class="header-anchor" href="#expansions-by-yamaha" aria-label="Permalink to &quot;Expansions by Yamaha&quot;"></a></h4>
+<p>Yamaha's engineers began adapting Chowning's algorithm for use in a commercial digital synthesizer, adding improvements such as the &quot;key scaling&quot; method to avoid the introduction of distortion that normally occurred in analog systems during frequency modulation[citation needed], though it would take several years before Yamaha released their FM digital synthesizers. In the 1970s, Yamaha were granted a number of patents, under the company's former name &quot;Nippon Gakki Seizo Kabushiki Kaisha&quot;, evolving Chowning's work. Yamaha built the first prototype FM digital synthesizer in 1974. Yamaha eventually commercialized FM synthesis technology with the Yamaha GS-1, the first FM digital synthesizer, released in 1980.
+FM digital synthesizer Yamaha DX7 (1983)</p>
+<p>FM synthesis was the basis of some of the early generations of digital synthesizers, most notably those from Yamaha, as well as New England Digital Corporation under license from Yamaha. Yamaha's DX7 synthesizer, released in 1983, was ubiquitous throughout the 1980s. Several other models by Yamaha provided variations and evolutions of FM synthesis during that decade.</p>
+<p>Yamaha had patented its hardware implementation of FM in the 1970s, allowing it to nearly monopolize the market for FM technology until the mid-1990s.</p>
+<h4 id="related-development-by-casio" tabindex="-1">Related development by Casio <a class="header-anchor" href="#related-development-by-casio" aria-label="Permalink to &quot;Related development by Casio&quot;"></a></h4>
+<p>Casio developed a related form of synthesis called phase distortion synthesis, used in its CZ range of synthesizers. It had a similar (but slightly differently derived) sound quality to the DX series.</p>
+<h3 id="_1990s" tabindex="-1">1990s <a class="header-anchor" href="#_1990s" aria-label="Permalink to &quot;1990s&quot;"></a></h3>
+<h4 id="popularization-after-the-expiration-of-patent" tabindex="-1">Popularization after the expiration of patent <a class="header-anchor" href="#popularization-after-the-expiration-of-patent" aria-label="Permalink to &quot;Popularization after the expiration of patent&quot;"></a></h4>
+<p>With the expiration of the Stanford University FM patent in 1995, digital FM synthesis can now be implemented freely by other manufacturers. The FM synthesis patent brought Stanford $20 million before it expired, making it (in 1994) &quot;the second most lucrative licensing agreement in Stanford's history&quot;. FM today is mostly found in software-based synths such as FM8 by Native Instruments or Sytrus by Image-Line, but it has also been incorporated into the synthesis repertoire of some modern digital synthesizers, usually coexisting as an option alongside other methods of synthesis such as subtractive, sample-based synthesis, additive synthesis, and other techniques. The degree of complexity of the FM in such hardware synths may vary from simple 2-operator FM, to the highly flexible 6-operator engines of the Korg Kronos and Alesis Fusion, to creation of FM in extensively modular engines such as those in the latest synthesisers by Kurzweil Music Systems.[citation needed]</p>
+<h4 id="realtime-convolution-modulation-afm-sample-and-formant-shaping-synthesis" tabindex="-1">Realtime Convolution &amp; Modulation (AFM + Sample) and Formant Shaping Synthesis <a class="header-anchor" href="#realtime-convolution-modulation-afm-sample-and-formant-shaping-synthesis" aria-label="Permalink to &quot;Realtime Convolution &amp; Modulation (AFM + Sample) and Formant Shaping Synthesis&quot;"></a></h4>
+<p>New hardware synths specifically marketed for their FM capabilities disappeared from the market after the release of the Yamaha SY99 and FS1R, and even those marketed their highly powerful FM abilities as counterparts to sample-based synthesis and formant synthesis respectively. However, well-developed FM synthesis options are a feature of Nord Lead synths manufactured by Clavia, the Alesis Fusion range, the Korg Oasys and Kronos and the Modor NF-1. Various other synthesizers offer limited FM abilities to supplement their main engines.</p>
+<p>Combining sets of 8 FM operators with multi-spectral wave forms began in 1999 by Yamaha in the FS1R. The FS1R had 16 operators, 8 standard FM operators and 8 additional operators that used a noise source rather than an oscillator as its sound source. By adding in tuneable noise sources the FS1R could model the sounds produced in the human voice and in a wind instrument, along with making percussion instrument sounds. The FS1R also contained an additional wave form called the Formant wave form. Formants can be used to model resonating body instrument sounds like the cello, violin, acoustic guitar, bassoon, English horn, or human voice. Formants can even be found in the harmonic spectrum of several brass instruments.</p>
+<h3 id="_2000s–present" tabindex="-1">2000s–present <a class="header-anchor" href="#_2000s–present" aria-label="Permalink to &quot;2000s–present&quot;"></a></h3>
+<h4 id="variable-phase-modulation-fm-x-synthesis-altered-fm-etc" tabindex="-1">Variable Phase Modulation, FM-X Synthesis, Altered FM, etc <a class="header-anchor" href="#variable-phase-modulation-fm-x-synthesis-altered-fm-etc" aria-label="Permalink to &quot;Variable Phase Modulation, FM-X Synthesis, Altered FM, etc&quot;"></a></h4>
+<p>In 2016, Korg released the Korg Volca FM, a, 3-voice, 6 operators FM iteration of the Korg Volca series of compact, affordable desktop modules,. More recently Korg released the opsix (2020) and opsix SE (2023) integrating 6 operators FM synthesis with subtractive, analogue modeling, additive, semi-modular and Waveshaping. Yamaha released the Montage, which combines a 128-voice sample-based engine with a 128-voice FM engine. This iteration of FM is called FM-X, and features 8 operators; each operator has a choice of several basic wave forms, but each wave form has several parameters to adjust its spectrum. The Yamaha Montage was followed by the more affordable Yamaha MODX in 2018, with 64-voice, 8 operators FM-X architecture in addition to a 128-voice sample-based engine. Elektron in 2018 launched the Digitone, an 8-voice, 4 operators FM synth featuring Elektron's renowned sequence engine.</p>
+<p>FM-X synthesis was introduced with the Yamaha Montage synthesizers in 2016. FM-X uses 8 operators. Each FM-X operator has a set of multi-spectral wave forms to choose from, which means each FM-X operator can be equivalent to a stack of 3 or 4 DX7 FM operators. The list of selectable wave forms includes sine waves, the All1 and All2 wave forms, the Odd1 and Odd2 wave forms, and the Res1 and Res2 wave forms. The sine wave selection works the same as the DX7 wave forms. The All1 and All2 wave forms are a saw-tooth wave form. The Odd1 and Odd2 wave forms are pulse or square waves. These two types of wave forms can be used to model the basic harmonic peaks in the bottom of the harmonic spectrum of most instruments. The Res1 and Res2 wave forms move the spectral peak to a specific harmonic and can be used to model either triangular or rounded groups of harmonics further up in the spectrum of an instrument. Combining an All1 or Odd1 wave form with multiple Res1 (or Res2) wave forms (and adjusting their amplitudes) can model the harmonic spectrum of an instrument or sound.</p>
+<h2 id="spectral-analysis" tabindex="-1">Spectral analysis <a class="header-anchor" href="#spectral-analysis" aria-label="Permalink to &quot;Spectral analysis&quot;"></a></h2>
+<p>There are multiple variations of FM synthesis, including:</p>
+<ul>
+<li>Various operator arrangements (known as &quot;FM Algorithms&quot; in Yamaha terminology)
+<ul>
+<li>2 operators</li>
+<li>Serial FM (multiple stages)</li>
+<li>Parallel FM (multiple modulators, multiple-carriers),</li>
+<li>Mix of them</li>
+</ul>
+</li>
+<li>Various waveform of operators
+<ul>
+<li>Sinusoidal waveform</li>
+<li>Other waveforms</li>
+</ul>
+</li>
+<li>Additional modulation
+<ul>
+<li>Linear FM</li>
+<li>Exponential FM (preceded by the anti-logarithm conversion for CV/oct. interface of analog synthesizers)</li>
+<li>Oscillator sync with FM</li>
+</ul>
+</li>
+</ul>
+<p>etc.</p>
+]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[Distortion]]></title>
@@ -9073,6 +9163,46 @@ const HydraSynth = defineClientCo]]></description>
             <description><![CDATA[There's a plenty of opportunities to dive into different aspects of music theory and practice online]]></description>
             <content:encoded><![CDATA[<ToolsList v-if="data" :data="data" />]]></content:encoded>
             <enclosure url="https://chromatone.center/other.png" length="0" type="image/png"/>
+        </item>
+        <item>
+            <title><![CDATA[Oscillator sync]]></title>
+            <link>https://chromatone.center/theory/synthesis/osc-sync/</link>
+            <guid>https://chromatone.center/theory/synthesis/osc-sync/</guid>
+            <pubDate>Sat, 20 Sep 2014 00:00:00 GMT</pubDate>
+            <description><![CDATA[Once oscillator resetting another as a technique to produce harmonically reach sounds]]></description>
+            <content:encoded><![CDATA[<p>Oscillator sync is a feature in some synthesizers with two or more VCOs, DCOs, or &quot;virtual&quot; oscillators. As one oscillator finishes a cycle, it resets the period of another oscillator, forcing the latter to have the same base frequency. This can produce a harmonically rich sound, the timbre of which can be altered by varying the synced oscillator's frequency. A synced oscillator that resets other oscillator(s) is called the master; the oscillators which it resets are called slaves. There are two common forms of oscillator sync which appear on synthesizers: Hard Sync and Soft Sync. According to Sound on Sound journalist Gordon Reid, oscillator sync is &quot;one of the least understood facilities on any synthesizer&quot;.</p>
+<h2 id="hard-sync" tabindex="-1">Hard Sync <a class="header-anchor" href="#hard-sync" aria-label="Permalink to &quot;Hard Sync&quot;"></a></h2>
+<p>The leader oscillator's pitch is generated by user input (typically the synthesizer's keyboard), and is arbitrary. The follower oscillator's pitch may be tuned to (or detuned from) this frequency, or may remain constant. Every time the leader oscillator's cycle repeats, the follower is retriggered, regardless of its position. If the follower is tuned to a lower frequency than the leader it will be forced to repeat before it completes an entire cycle, and if it is tuned to a higher frequency it will be forced to repeat partway through a second or third cycle. This technique ensures that the oscillators are technically playing at the same frequency, but the irregular cycle of the follower oscillator often causes complex timbres and the impression of harmony. If the tuning of the follower oscillator is swept, one may discern a harmonic sequence.</p>
+<p>This effect may be achieved by measuring the zero axis crossings of the leader oscillator and retriggering the follower oscillator after every other crossing.</p>
+<p>This form of oscillator sync is more common than soft sync, but is prone to generating aliasing in naive digital implementations.</p>
+<h2 id="soft-sync" tabindex="-1">Soft Sync <a class="header-anchor" href="#soft-sync" aria-label="Permalink to &quot;Soft Sync&quot;"></a></h2>
+<p>There are several other kinds of sync which may also be called Soft Sync. In a Hard Sync setup, the follower oscillator is forced to reset to some level and phase (for example, zero) with every cycle of the leader regardless of position or direction of the follower waveform, which often generates asymmetrical shapes.</p>
+<p>In some cases, Soft Sync refers to a process intended to nudge and lock the follower oscillator into the same or an integer or fractional multiple of the leader oscillator frequency when they both have similar phases, similar to a phase-locked loop.</p>
+<h3 id="reversing-sync" tabindex="-1">Reversing Sync <a class="header-anchor" href="#reversing-sync" aria-label="Permalink to &quot;Reversing Sync&quot;"></a></h3>
+<p>This form of oscillator sync is less common. This form is very similar to Hard Sync, with one small difference. In Reversing Soft Sync, rather than resetting to zero, the wave is inverted; that is, its direction is reversed. Reversing Soft Sync is more associated with analog triangle core oscillators than analog sawtooth core oscillators.</p>
+<h3 id="threshold-or-weak-sync" tabindex="-1">Threshold or Weak Sync <a class="header-anchor" href="#threshold-or-weak-sync" aria-label="Permalink to &quot;Threshold or Weak Sync&quot;"></a></h3>
+<p>Several kinds of Soft Sync use comparison thresholds:</p>
+<ul>
+<li>Hard Sync which is disabled when the frequency or amplitude of the follower crosses a user-defined threshold.</li>
+<li>Hard Sync which is disabled when the frequency of the follower extends too high above or too far below the frequency of the leader.</li>
+<li>Hard Sync which is disabled when the frequency of the follower is lower than the frequency of the leader.</li>
+</ul>
+<p>Soft Sync may accurately refer to any of these, depending on the synthesizer or manufacturer in question.</p>
+<h3 id="phase-advance-sync" tabindex="-1">Phase Advance 'Sync' <a class="header-anchor" href="#phase-advance-sync" aria-label="Permalink to &quot;Phase Advance 'Sync'&quot;"></a></h3>
+<p>The phase of the follower is advanced by some amount when the leader oscillator level crosses some threshold. Used for audio synthesis, this may give an audible effect similar to Soft Sync.</p>
+<h3 id="reset-inhibit-sync" tabindex="-1">Reset Inhibit Sync <a class="header-anchor" href="#reset-inhibit-sync" aria-label="Permalink to &quot;Reset Inhibit Sync&quot;"></a></h3>
+<p>When the leader oscillator crosses some threshold, the normal reset of the follower is disabled: it will stick at its final level, positive or negative. When the leader crosses back over some threshold, the follower is reset.</p>
+<h3 id="overlap-sync" tabindex="-1">Overlap Sync <a class="header-anchor" href="#overlap-sync" aria-label="Permalink to &quot;Overlap Sync&quot;"></a></h3>
+<p>In this method, the current wave completes but a new waveform is generated at the sync pulse. The tail of the old wave and the new wave are output summed if they overlap.</p>
+<h2 id="digital-implementation-aspects" tabindex="-1">Digital Implementation Aspects <a class="header-anchor" href="#digital-implementation-aspects" aria-label="Permalink to &quot;Digital Implementation Aspects&quot;"></a></h2>
+<p>Naive approaches to sync in digital oscillators will result in aliasing. To prevent this, band-limited methods such as additive synthesis, BLIT (Band-Limited Impulse Train) or BLEP (Band-Limited Step) must be adopted to avoid aliasing.</p>
+<p>In a digital oscillator, best practice is that the follower will not be reset to the identical phase each cycle, but to a phase advanced by an equivalent time to the phase of the leader at the reset. This prevents jitter in the follower frequency and provides truer synchronization.</p>
+<p>For digital oscillators, Reversing Sync may less frequently generate aliasing. This effect may be naively implemented by measuring the zero axis crossings of the leader oscillator and reversing the slope of the follower oscillator after every other crossing.</p>
+<p>For digital implementation, note that none of the Threshold or Weak Sync methods actually synthesize the waveform in a way different from Hard Sync (rather, they selectively deactivate it).</p>
+<p>Overlap sync is primarily a digital technique with simple implementation, such as used in FOF; an analog implementation could be a highly damped sine oscillator excited by the reset pulse.</p>
+<h2 id="sync-based-architectures" tabindex="-1">Sync-based Architectures <a class="header-anchor" href="#sync-based-architectures" aria-label="Permalink to &quot;Sync-based Architectures&quot;"></a></h2>
+<p>A variety of synthesis architectures are based on sync, often used in conjunction with amplitude, frequency, or phase modulation. Such architectures include VOSIM and physical modelling synthesis.</p>
+]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[P2P connections]]></title>

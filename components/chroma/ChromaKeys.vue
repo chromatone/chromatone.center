@@ -56,11 +56,10 @@ function keyColor(key, off) {
 
 <template lang="pug">
 .flex.flex-col.m-1.rounded-lg.cursor-pointer.transition-all.duration-300.ease.relative.select-none.touch-none(
-  @mousedown="playAll && nextTick(playChroma(chroma, pitch))"
-  @touchend="playAll && nextTick(stopChroma(chroma, pitch))"
-  @touchcancel="playAll && nextTick(stopChroma(chroma, pitch))"
-  @mouseup="playAll && nextTick(stopChroma(chroma, pitch))"
-  @mouseleave="playAll && nextTick(stopChroma(chroma, pitch))"
+  @pointerdown="playAll && nextTick(playChroma(chroma, pitch))"
+  @pointerup="playAll && nextTick(stopChroma(chroma, pitch))"
+  @pointerleave="playAll && nextTick(stopChroma(chroma, pitch))"
+  @pointerout="playAll && nextTick(stopChroma(chroma, pitch))"
   :style="{ backgroundColor: keys.color.lch }"
   )
   svg.w-full#chroma-keys(

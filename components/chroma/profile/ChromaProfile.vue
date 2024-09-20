@@ -63,31 +63,40 @@ function toggleNote(ev) {
       )
       .i-la-wikipedia-w
     .text-2xl.font-bold.capitalize.mb-2(
-      ) {{ notes[globalScale.tonic] }} {{  chord.aliases[0] || chord.name || scale.name || title }} {{ scale.aliases[0] ? `(${scale.aliases[0]})` : '' }}
+      ) {{ notes[globalScale.tonic] }} {{ chord.aliases[0] || chord.name || scale.name || title }} {{ scale.aliases[0] ? `(${scale.aliases[0]})` : '' }}
 
   abc-render(v-if="abc" :abc="abc")
 
-  .flex.items-center.mx-2.w-full.gap-2
-
-    chroma-keys(
-      style="flex: 1 1 400px;"
-      :chroma="chroma" @update:chroma="$emit('update:chroma', $event)" :pitch="globalScale.tonic" :title="false" @update:pitch="toggleNote" :playAll="true") 
+  .flex.items-center.mx-2.w-full.gap-4.flex-wrap
 
     chroma-circle(
-      style="flex: 1 1 250px;"
+      style="flex: 1 0 120px;"
       :chroma="chroma") 
 
-    chroma-code(:chroma="chroma" @update:chroma="$emit('update:chroma', $event)")
+    chroma-keys(
+      style="flex: 1 0 200px;"
+      :chroma="chroma" 
+      @update:chroma="$emit('update:chroma', $event)" 
+      :pitch="globalScale.tonic" 
+      :title="false" 
+      @update:pitch="toggleNote" 
+      :playAll="true") 
+
+
+
+    chroma-code(
+      style="flex: 1 0 120px;"
+      :chroma="chroma" @update:chroma="$emit('update:chroma', $event)")
 
   chroma-row.mx-2.mb-2(
     :chroma="chroma" @update:chroma="$emit('update:chroma', $event)" :editable="editable")
   //- chroma-stack.flex-1.mx-4(:chroma="chroma")
   //- chroma-square.w-12em.mx-4(:chroma="chroma" :editable="editable")
-  .p-4 {{ description }}
+  .p-4(v-if="description") {{ description }}
 </template>
 
 <style lang="postcss" scoped>
 .profile {
-  @apply flex flex-wrap max-w-60ch border-2 rounded-3xl shadow-lg bg-light-500 dark-bg-dark-500 gap-2;
+  @apply flex flex-wrap max-w-60ch border-2 rounded-3xl shadow-lg bg-light-500 dark-bg-dark-500 gap-4;
 }
 </style>

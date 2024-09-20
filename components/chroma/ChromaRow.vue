@@ -8,6 +8,7 @@ import { globalScale, playChroma, playNoteOnce, stopChroma } from '#/use/chroma'
 import { calcBg } from '#/use/colors'
 import { colord } from 'colord'
 import { reactive, computed } from 'vue'
+import { tempo } from '#/use';
 
 const emit = defineEmits(['update:chroma'])
 const props = defineProps({
@@ -55,9 +56,8 @@ const allNotes = [...notes].map((n, i) => ({ name: n, pitch: i }))
 
 const chordNotes = computed(() => {
   let shiftChroma = rotateArray(props.chroma.split(''), -globalScale?.tonic)
-  let chOct = rotateArray(allNotes, -globalScale?.tonic).map((n, i) => {
-    return Frequency(n.pitch + globalScale?.tonic + 57, 'midi').toNote()
-  })
+  let chOct = rotateArray(allNotes, -globalScale?.tonic).map((n, i) => Frequency(n.pitch + globalScale?.tonic + 57, 'midi').toNote()
+  )
   let filtered = chOct.filter((val, i) => {
     if (shiftChroma[i] == '1') {
       return true
@@ -76,7 +76,10 @@ function arpeggiate(octave = false) {
     playedNotes = [...playedNotes, ...back]
   }
   playedNotes.forEach((note, i) => {
-    playNoteOnce(note)
+
+    setTimeout(() => {
+      playNoteOnce(note)
+    }, i * 1000 / (2 * tempo.bpm / 60))
   })
 }
 
@@ -113,12 +116,10 @@ function playsNote(note = 0, octave = 0) {
 
       button.text-button.text-white.font-bold.text-md.flex.gap-1(
         :style="{ backgroundColor: chromaColorMix(chroma, globalScale?.tonic).hsl }"
-        @mousedown="playChroma(chroma)"
-        @touchstart.prevent.stop="playChroma(chroma)"
-        @touchend="stopChroma(chroma)"
-        @touchcancel="stopChroma(chroma)"
-        @mouseup="stopChroma(chroma)"
-        @mouseleave="stopChroma(chroma)"
+        @pointerdown.prevent.stop="playChroma(chroma)"
+        @pointerout="stopChroma(chroma)"
+        @pointerup="stopChroma(chroma)"
+        @pointerleave="stopChroma(chroma)"
       ) 
         span.mr-1 {{ globalScale?.note.name }}{{ state.chord.aliases[0] || ' ' + state.scale.name }}
 

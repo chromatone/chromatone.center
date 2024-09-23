@@ -56,7 +56,7 @@ const instrument = ref('guitar')
 				select.p-2.m-2.rounded-lg.font-bold.dark-bg-dark-300(v-model="instrument")
 					option(value="guitar") Guitar
 					option(value="ukulele") Ukulele
-			chord-scales.overflow-scroll.z-1000.max-w-80vw(
+			scale-chords.overflow-scroll.z-1000.max-w-80vw(
 				@chord="progression.push($event)" )
 		.p(style="flex: 1 1 200px")
 			chord-tabs-neck(style="flex: 4 1 100px" :instrument)

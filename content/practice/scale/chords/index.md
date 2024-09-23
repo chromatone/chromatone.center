@@ -6,7 +6,7 @@ layout: app
 ---
 
 <control-scale />
-<chord-scales />
+<scale-chords />
 
 ## How to use it
 

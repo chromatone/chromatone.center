@@ -49,7 +49,6 @@ const currentChord = ref()
 </script>
 
 <template lang="pug">
-p {{ currentChord }}
 .gap-2.p-4.items-center(
   style="display: grid;  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));") 
   template(

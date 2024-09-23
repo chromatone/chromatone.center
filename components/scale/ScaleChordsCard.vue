@@ -24,21 +24,22 @@ function getInversion(chord, degree, n) {
 </script>
 
 <template lang='pug'>
-button.text-sm.flex.flex-col.border-1.border-op-10.dark-border-light-900.dark-border-op-10.border-dark-200.rounded.overflow-hidden(
+button.text-sm.flex.flex-col.border-1.border-op-10.dark-border-light-900.dark-border-op-10.border-dark-200.rounded.overflow-hidden.select-none(
   style="scroll-snap-align: center; flex: 0 0 90px"
   :style="{ backgroundColor: chromaColorMix(chord.chroma, (degree + globalScale.tonic) % 12, 0.2, isDark ? 4 : 14).lch }"
   :class="{ active: chordMidi.filter(note => activeNotes[note]).length == chordMidi.length }") 
-  .p-1.text-start(  @pointerdown="playNote(chordMidi)"
-  @pointerup="stopNote(chordMidi)"
-  @pointerleave="stopNote(chordMidi)"
-  @pointerout="stopNote(chordMidi)"
-  @pointercancel="stopNote(chordMidi)") {{ notes[(degree + globalScale.tonic) % 12] }}{{ chord.aliases[0] }}
+  .p-1.text-start.w-full(  
+    @pointerdown.prevent="playNote(chordMidi)"
+    @pointerup="stopNote(chordMidi)"
+    @pointerleave="stopNote(chordMidi)"
+    @pointerout="stopNote(chordMidi)"
+    @pointercancel="stopNote(chordMidi)") {{ notes[(degree + globalScale.tonic) % 12] }}{{ chord.aliases[0] }}
   .flex.flex-1.w-full 
     .py-2.px-1.flex-1(
       v-for="(note, n) in chordMidi" 
       :key="note" 
       :style="{ backgroundColor: midiColor(note, activeNotes[note] ? 1 : .3) }"
-      @pointerdown="playNote(getInversion(chord, degree, n))"
+      @pointerdown.prevent="playNote(getInversion(chord, degree, n))"
       @pointerup="stopNote(getInversion(chord, degree, n))"
       @pointerleave="stopNote(getInversion(chord, degree, n))"
       @pointerout="stopNote(getInversion(chord, degree, n))"

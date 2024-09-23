@@ -49,6 +49,7 @@ const currentChord = ref()
 </script>
 
 <template lang="pug">
+p {{ currentChord }}
 .gap-2.p-4.items-center(
   style="display: grid;  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));") 
   template(
@@ -58,14 +59,14 @@ const currentChord = ref()
     .flex.items-center.gap-2.px-2
       .text-sm.w-4 {{ intervals[degree] }}
       .flex-1
-      .font-bold.w-8.h-8.rounded-full.flex.items-center.flex-col.cursor-pointer(
+      .font-bold.w-8.h-8.rounded-full.flex.items-center.flex-col.cursor-pointer.select-none(
         @pointerdown="playNote(degree + globalScale.tonic + 57 + midi.offset * 12)"
-        @pointerup="stopNote(degree + globalScale.tonic + 57 + midi.offset * 12)"
+        @pointerup.stop.prevent="stopNote(degree + globalScale.tonic + 57 + midi.offset * 12)"
         @pointercancel="stopNote(degree + globalScale.tonic + 57 + midi.offset * 12)"
         @pointerout="stopNote(degree + globalScale.tonic + 57 + midi.offset * 12)"
         :style="{ backgroundColor: noteColor((degree + globalScale.tonic) % 12, 2) }") {{ notes[(degree + globalScale.tonic) % 12] }}
     ScaleChordsCard(
-      @pointerdown="emit('chord', chord)"
+      @pointerdown="emit('chord', chord); currentChord = chord"
       v-for="chord in currentScale.degreeChords[degree].toSorted((a, b) => a.intervals.length > b.intervals.length ? 1 : -1)" 
       :key="chord"
       :chord

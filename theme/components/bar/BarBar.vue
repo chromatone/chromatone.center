@@ -170,6 +170,12 @@ client-only
 
   BarPanel(v-model="scaleOpen")
     synth-font.sticky.top-0.z-100
+    .flex.gap-2 
+      button.text-button(@click="midi.offset--")
+        .i-la-minus
+      .text-button {{ midi.offset }}
+      button.text-button(@click="midi.offset++")
+        .i-la-plus
     control-scale.w-full
     chord-tabs-neck.max-h-80dvh(
       :instrument="instrument"

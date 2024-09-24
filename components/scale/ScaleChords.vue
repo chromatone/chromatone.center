@@ -49,8 +49,8 @@ const currentChord = ref()
 </script>
 
 <template lang="pug">
-.gap-2.p-4.items-center(
-  style="display: grid;  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));") 
+.gap-2.p-4.items-center.select-none(
+  style="display: grid;  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));") 
   template(
     style="flex: 1"
     v-for="degree in currentScale?.degrees" 

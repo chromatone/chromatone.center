@@ -30,6 +30,9 @@ African cross-rhythm is most prevalent within the greater Niger-Congo linguistic
 > From the philosophical perspective of the African musician, cross-beats can symbolize the challenging moments or emotional stress we all encounter. Playing cross-beats while fully grounded in the main beats, prepares one for maintaining a life-purpose while dealing with life’s challenges. Many sub-Saharan languages do not have a word for rhythm, or even music. From the African viewpoint, the rhythms represent the very fabric of life itself; they are an embodiment of the people, symbolizing interdependence in human relationships.  
 > — Clave Matrix, p. 21
 
+
+<youtube-embed video="DHPDbkXQV0M"/> 
+
 ## Cross-rhythmic ratios
 
 ### 3:2

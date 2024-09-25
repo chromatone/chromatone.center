@@ -17,8 +17,11 @@ And there's so much to explore in practice while learning basic [Drum rudiments]
 ## Embodiment of music
 
 | Timescale   | Movement | Time        |
-|-------------|----------|-------------|
+| ----------- | -------- | ----------- |
 | Phrase      | Breath   | 2-8 sec     |
 | Pulse       | Walking  | 250-2000 ms |
 | Note        | Fingers  | 100-1000 ms |
 | Microrhythm | Talk     | 5-50 ms     |
+
+
+<youtube-embed video="UMFazztdbAI"/> 

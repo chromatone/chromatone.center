@@ -28,19 +28,20 @@ watch(() => state.current, raga => {
 </script>
 
 <template lang="pug">
-.flex.flex-col.max-w-60ch.embed
-  scale-degrees-circle.w-full(
-    v-model:chroma="state.chroma"
-    fixed5
-  )
-  .flex.flex-col.items-center(v-if="state.current")
-    .text-2xl.font-bold {{ state.current.title }}
-    .text-sm {{ state.current.telugu }}
-    chroma-line(:chroma="state.chroma")
-    .p-1 Arohana: {{ state.current.asc }}
-    .p-1 Avarohana: {{ state.current.dec }} 
+.flex.flex-wrap.embed
+  .flex.flex-col(style="flex: 1 1 600px")
+    scale-degrees-circle.w-full(
+      v-model:chroma="state.chroma"
+      fixed5
+    )
+    .flex.flex-col.items-center(v-if="state.current")
+      .text-2xl.font-bold {{ state.current.title }}
+      .text-sm {{ state.current.telugu }}
+      chroma-line(:chroma="state.chroma")
+      .p-1 Arohana: {{ state.current.asc }}
+      .p-1 Avarohana: {{ state.current.dec }} 
 
-  .flex.flex-col.my-4
+  .flex.flex-col.my-4(style="flex: 1 1 400px")
     .flex.flex-wrap.border-b-2.border-current.py-2
       .text-xl.m-2.cursor-pointer(
         v-for="(groups, cat) in mela" :key="cat"

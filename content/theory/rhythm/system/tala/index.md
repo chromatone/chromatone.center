@@ -909,7 +909,9 @@ Konnakol uses rhythmic solfege for different subdivisions of the beat called "So
 
 †'2' suffix signifies solfege syllable is held twice as long.
 
-<youtube-embed video="ZuZF8BaOt58"/>
+<youtube-embed video="ZuZF8BaOt58"/> 
+
+<youtube-embed video="iurhjlBum0o"/> 
 
 ## Tihai - the rhythmic cadence
 

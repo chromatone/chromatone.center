@@ -58,7 +58,7 @@ const currentChord = ref()
     .flex.items-center.gap-2.px-2
       .text-sm.w-4 {{ intervals[degree] }}
       .flex-1
-      .font-bold.w-8.h-8.rounded-full.flex.items-center.flex-col.cursor-pointer.select-none(
+      .font-bold.w-8.h-8.rounded-full.flex.items-center.flex-col.cursor-pointer.select-none.text-white(
         @pointerdown="playNote(degree + globalScale.tonic + 57 + midi.offset * 12)"
         @pointerup.stop.prevent="stopNote(degree + globalScale.tonic + 57 + midi.offset * 12)"
         @pointercancel="stopNote(degree + globalScale.tonic + 57 + midi.offset * 12)"

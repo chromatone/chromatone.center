@@ -49,8 +49,8 @@ bar-bar(v-if="!params.pure && !params.nobar")
 
 midi-notes(v-if="!params.pure && !params.nokeys")
 
-.main(:style="{marginLeft: params.nobar || params.pure ? 0 : '48px'}" :class="{pure: params.pure}")
-  
+.main(:style="{ marginLeft: params.nobar || params.pure ? 0 : '48px' }" :class="{ pure: params.pure }")
+
   RegisterSW
 
   template(v-if="f.layout == 'iframe'")
@@ -65,7 +65,7 @@ midi-notes(v-if="!params.pure && !params.nokeys")
 
       chroma-flower.flex.justify-center(
         style="flex: 1 1 420px")
-      .flex-1.p-8.gap-1.flex.flex-col.lg-scale-120.origin-left(
+      .flex-1.p-8.gap-1.flex.flex-col.origin-left(
         style="flex: 1 1 400px"
         )
         .text-3rem.md-text-4rem.font-bold Chromatone

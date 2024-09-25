@@ -42,6 +42,6 @@ const pressed = ref(false)
       @pointercancel="pressed = false; stopNote(getInversion(chord, degree, n, oct))"
       @pointerenter="pressed && playNote(getInversion(chord, degree, n, oct))"
       ) 
-        span.text-xs.absolute.z-100.top-1.left-1.text-white.pointer-events-none(v-if="oct == 1") {{ notes[(note - 9) % 12] }}
+        span.text-10px.absolute.z-100.top-0.left-1.text-white.pointer-events-none(v-if="oct == 1") {{ notes[(note - 9) % 12] }}
 
 </template>

@@ -7,13 +7,13 @@ const scale = computed(() => Object.values(scales).find(s => s.chroma == globalS
 </script>
 
 <template lang='pug'>
-.flex.flex-col.gap-2.p-2
+.flex.flex-col.gap-4.p-4
   .flex.flex-wrap
-    ChromaKeys.flex-1(
-      style="flex: 1 1 20%"
-      :chroma="globalScale.chroma")
+    ControlScale.flex-1(
+      style="flex: 0 1 300px"
+      )
     ChromaRow(
-      style="flex: 10 1 70%"
+      style="flex: 1 1 60%"
       v-model:chroma="globalScale.chroma" editable) 
       .text-xl {{ scale?.title }}
 

@@ -4,7 +4,7 @@
         <title>Chromatone</title>
         <link>https://chromatone.center</link>
         <description>Visual Music Language development updates and more</description>
-        <lastBuildDate>Tue, 24 Sep 2024 13:46:59 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 25 Sep 2024 10:01:31 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en-EN</language>
@@ -13,7 +13,7 @@
             <title><![CDATA[Synth snippets]]></title>
             <link>https://chromatone.center/practice/synth/snippets.html</link>
             <guid>https://chromatone.center/practice/synth/snippets.html</guid>
-            <pubDate>Tue, 24 Sep 2024 13:32:18 GMT</pubDate>
+            <pubDate>Wed, 25 Sep 2024 09:59:25 GMT</pubDate>
             <description><![CDATA[Code pieces]]></description>
             <content:encoded><![CDATA[<h3 id="skew-by-upheaver" tabindex="-1">Skew by <a href="https://discord.com/channels/826071713426178078/834787928688689172/1123676571279048875" target="_blank" rel="noreferrer">upheaver</a> <a class="header-anchor" href="#skew-by-upheaver" aria-label="Permalink to &quot;Skew by [upheaver](https://discord.com/channels/826071713426178078/834787928688689172/1123676571279048875)&quot;"></a></h3>
 <p>Sharing a useful snippet. JUCE's logskew function in Typescript, if anyone wants to scale their parameter values (for example convert 0-1 range to 20-20000 hz in a non linear way) :</p>
@@ -39,7 +39,7 @@
             <title><![CDATA[Words sequencing]]></title>
             <link>https://chromatone.center/practice/generative/words/</link>
             <guid>https://chromatone.center/practice/generative/words/</guid>
-            <pubDate>Tue, 24 Sep 2024 13:32:18 GMT</pubDate>
+            <pubDate>Wed, 25 Sep 2024 09:59:25 GMT</pubDate>
             <description><![CDATA[&lt;script setup
 import { defineClientComponent } from 'vitepress'
 const Words = defineClientCompone]]></description>
@@ -50,7 +50,7 @@ const Words = defineClientCompone]]></description>
             <title><![CDATA[Words sequencing]]></title>
             <link>https://chromatone.center/practice/sequencing/words/</link>
             <guid>https://chromatone.center/practice/sequencing/words/</guid>
-            <pubDate>Tue, 24 Sep 2024 13:32:18 GMT</pubDate>
+            <pubDate>Wed, 25 Sep 2024 09:59:25 GMT</pubDate>
             <description><![CDATA[This page is moved to https://chromatone.center/practice/generative/words/]]></description>
             <content:encoded><![CDATA[<p>This page is moved to <a href="https://chromatone.center/practice/generative/words/" target="_blank" rel="noreferrer">https://chromatone.center/practice/generative/words/</a></p>
 ]]></content:encoded>
@@ -60,7 +60,7 @@ const Words = defineClientCompone]]></description>
             <title><![CDATA[ZZFXM]]></title>
             <link>https://chromatone.center/practice/sequencing/zzfxm/</link>
             <guid>https://chromatone.center/practice/sequencing/zzfxm/</guid>
-            <pubDate>Tue, 24 Sep 2024 13:32:18 GMT</pubDate>
+            <pubDate>Wed, 25 Sep 2024 09:59:25 GMT</pubDate>
             <description><![CDATA[&lt;script setup
 import { defineClientComponent } from 'vitepress'
 const ZzFxm = defineClientCompone]]></description>
@@ -72,7 +72,7 @@ const ZzFxm = defineClientCompone]]></description>
             <title><![CDATA[Reharmonization]]></title>
             <link>https://chromatone.center/theory/harmony/reharmonization/</link>
             <guid>https://chromatone.center/theory/harmony/reharmonization/</guid>
-            <pubDate>Tue, 24 Sep 2024 13:32:18 GMT</pubDate>
+            <pubDate>Wed, 25 Sep 2024 09:59:25 GMT</pubDate>
             <description><![CDATA[How to reharmonize a song]]></description>
             <content:encoded><![CDATA[<youtube-embed video="lz3WR-F_pnM" /><h2 id="reharmonization-chord-substitution-but-for-the-whole-chord-progression" tabindex="-1">Reharmonization = Chord substitution but for the whole chord progression <a class="header-anchor" href="#reharmonization-chord-substitution-but-for-the-whole-chord-progression" aria-label="Permalink to &quot;Reharmonization = Chord substitution but for the whole chord progression&quot;"></a></h2>
 <p>Reharmonization is used to:</p>
@@ -1864,7 +1864,7 @@ This rule was taught by Bruckner to Schoenberg and Schenker, who both had follow
 <youtube-embed video="H3v9unphfi0" /><h2 id="melismatic-singing" tabindex="-1">Melismatic singing <a class="header-anchor" href="#melismatic-singing" aria-label="Permalink to &quot;Melismatic singing&quot;"></a></h2>
 <youtube-embed video="PRS2grauL4I" /><youtube-embed video="U8iJ6SCH6rU" /><h2 id="riffs-and-runs" tabindex="-1">Riffs and runs <a class="header-anchor" href="#riffs-and-runs" aria-label="Permalink to &quot;Riffs and runs&quot;"></a></h2>
 <youtube-embed video="EpLdMIA9QzQ" /><youtube-embed video="1V25bEVuulk" /><youtube-embed video="kkKuecXa5RQ" /><h3 id="vocal-techniques" tabindex="-1">Vocal techniques <a class="header-anchor" href="#vocal-techniques" aria-label="Permalink to &quot;Vocal techniques&quot;"></a></h3>
-<youtube-embed video="GC-tQl9HWp4" /><youtube-embed video="3-UgkKoOcAI" />]]></content:encoded>
+<youtube-embed video="GC-tQl9HWp4" /><youtube-embed video="3-UgkKoOcAI" /><youtube-embed video="Vc54taQsLxA" />]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[Rhythm]]></title>
@@ -2210,7 +2210,54 @@ Quod latet et tantum supra est hominemque deumque.
 <p><img src="./Banchieri1.jpg" alt="">
 Adriano Banchieri (1628)</p>
 </blockquote>
-<youtube-embed video="eRkgK4jfi6M" />]]></content:encoded>
+<youtube-embed video="eRkgK4jfi6M" /><h2 id="balkan-vocal-harmony" tabindex="-1">Balkan Vocal Harmony <a class="header-anchor" href="#balkan-vocal-harmony" aria-label="Permalink to &quot;Balkan Vocal Harmony&quot;"></a></h2>
+<youtube-embed video="AFgzzWT3zX4" /><h2 id="greece" tabindex="-1">Greece <a class="header-anchor" href="#greece" aria-label="Permalink to &quot;Greece&quot;"></a></h2>
+<youtube-embed video="dm1MWr0ZNdI" /><h2 id="georgia" tabindex="-1">Georgia <a class="header-anchor" href="#georgia" aria-label="Permalink to &quot;Georgia&quot;"></a></h2>
+<youtube-embed video="9HtdXXOTWlQ"/> <p>Georgian polyphonic singing encompasses several distinct regional styles, each with its own unique characteristics. The most prominent styles include Eastern Georgian and Western Georgian polyphony. Eastern Georgian polyphony, found in regions like Kartli and Kakheti, typically employs pedal drone polyphony. This style features two highly embellished melodic lines developing rhythmically free against a background of sustained pitches. In contrast, Western Georgian polyphony, prevalent in areas such as Achara, Imereti, Samegrelo, and Guria, utilizes contrapuntal techniques, often resulting in three and four-part harmonies with highly individualized melodic lines in each part.</p>
+<p>A key characteristic of Georgian polyphonic singing is its extensive use of sharp dissonant harmonies, including seconds, fourths, sevenths, and ninths. The so-called &quot;Georgian Triad&quot; (C-F-G), consisting of a fourth and a second above the bass note, is particularly common. Additionally, Georgian music is known for colorful modulations and unusual key changes. The vocal technique often involves male falsetto singers, known as &quot;krimanchuli,&quot; performing high-pitched melodies above the main melody. This creates a unique and ethereal quality to the music.</p>
+<p>Georgian polyphonic singing typically involves three main vocal parts: mtkmeli (second tenor), modzakhili (first tenor), and bani (baritone). Other specialized parts include krini (falsetto), dvrini (bass), gamqivani, shemkhmobari, and krimanchuli. While most songs are sung a cappella, some may feature instrumental accompaniment on traditional instruments like the chonguri or panduri. The polyphonic structure allows for partial improvisation, with singers often creating their own melodies and harmonies within the established framework, resulting in a dynamic and engaging musical dialogue between voices.</p>
+<h2 id="pygmy-music" tabindex="-1">Pygmy music <a class="header-anchor" href="#pygmy-music" aria-label="Permalink to &quot;Pygmy music&quot;"></a></h2>
+<youtube-embed video="fHNkSYXbVMI"/> <p>Pygmy music refers to the sub-Saharan African music traditions of the Central African foragers (or &quot;Pygmies&quot;), predominantly in the Congo, the Central African Republic and Cameroon.</p>
+<p>Pygmy groups include the Bayaka, the Mbuti, and the Batwa.</p>
+<p>Music is an important part of Pygmy life, and casual performances take place during many of the day's events. Music comes in many forms, including the spiritual likanos stories, vocable singing and music played from a variety of instruments including the bow harp (ieta), ngombi (harp zither) and limbindi (a string bow).</p>
+<p>Researchers who have studied Pygmy music include Simha Arom, Louis Sarno, Colin Turnbull and Jean-Pierre Hallet.</p>
+<h3 id="polyphonic-song" tabindex="-1">Polyphonic song <a class="header-anchor" href="#polyphonic-song" aria-label="Permalink to &quot;Polyphonic song&quot;"></a></h3>
+<p>The Mbenga (Aka/Benzele) and Baka peoples in the west and the Mbuti (Efé) in the east are particularly known for their dense contrapuntal communal improvisation. Simha Arom says that the level of polyphonic complexity of Mbenga–Mbuti music was reached in Europe only in the 14th century. The polyphonic singing of the Aka Pygmies was relisted on the Representative List of the Intangible Cultural Heritage of Humanity in 2008.</p>
+<p>Mbenga–Mbuti Pygmy music consists of up to four parts and can be described as an &quot;ostinato with variations&quot; similar to a passacaglia in that it is cyclical. It is based on repetition of periods of equal length that each singer divides using different rhythmic figures specific to different repertoires and songs. This creates a detailed surface and endless variations not only of the same period repeated but of various performances of the same piece of music. As in some Balinese gamelan music, these patterns are based on a super-pattern which is never heard. The Pygmies themselves do not learn or think of their music in this theoretical framework, but learn the music growing up.</p>
+<p>Polyphonic music is only characteristic of the Mbenga and Mbuti. The Gyele/Kola, Great Lakes Twa and Southern Twa have very different musical styles.</p>
+<blockquote>
+<youtube-embed video="zb0z0yOdY5E"/> <p>Most of the literature on Baka music concentrates on their “spirit dances”. What is actually meant by “spirit” is rarely, if ever, mentioned in the literature. In English the language for such things as “spirit” and “enchantment” have been heavily influenced by 1000 years of Christianity and given negative connotations, so the true meanings of words get lost in translation.There seems to be an underlying inference that belief in “spirits” is a primitive animistic practice, rather than a rational interpretation of a real phenomenon that is indirectly revered in Western society in art, performance and sport, but which is never spoken about. The Baka call this mé.
+With their combination of polyphonic singing, polyrhythmic percussion and masked dancers, the Baka are experts at manifesting mé. Each “Spirit Dance” creates its own unique emotions personified in the mé. By being present at these “spirit dances” from before they are born, aware of sounds and movements while still in their mother’s womb, Baka children grow up learning that the purpose of “musicking” is not about performing songs, but about manifesting mé for the good of all.</p>
+</blockquote>
+<h3 id="liquindi" tabindex="-1">Liquindi <a class="header-anchor" href="#liquindi" aria-label="Permalink to &quot;Liquindi&quot;"></a></h3>
+<youtube-embed video="ZNzX5t5S4Ls"/> <p>Liquindi is water drumming, typically practiced by Pygmy women and girls. The sound is produced by persons standing in water, and hitting the surface of the water with their hands, such as to trap air in the hands and produce a percussive effect that arises by sudden change in air pressure of the trapped air. The sound cannot exist entirely in water, since it requires the air-water boundary as a surface to be struck, so the sound is not hydraulophonic.</p>
+<youtube-embed video="8QyK0q1Kr-A"/> <h3 id="hindewhu" tabindex="-1">Hindewhu <a class="header-anchor" href="#hindewhu" aria-label="Permalink to &quot;Hindewhu&quot;"></a></h3>
+<p>Hindewhu is a style of singing/whistle-playing of the BaBenzélé pygmies of the Central African Republic. The term hindewhu is an onomatopoeia of the sound of a performer alternately singing pitched syllables and blowing into a single-pitch papaya-stem whistle, in an interlocked rhythm similar to the gutera-kwakira structure of the Burundian akazehe. Hindewhu announces the return from a hunt and is performed solo, duo or in groups.</p>
+<h3 id="western-popularization" tabindex="-1">Western popularization <a class="header-anchor" href="#western-popularization" aria-label="Permalink to &quot;Western popularization&quot;"></a></h3>
+<p>Colin M. Turnbull, an American anthropologist, wrote a book about the Efé Pygmies, The Forest People, in 1965. This introduced Mbuti culture to Western countries. Turnbull claimed that the Mbuti viewed the forest as a parental spirit with which they could communicate via song.</p>
+<p>Some of Turnbull's recordings of Efé music were commercially released and inspired more ethnomusicological study such as by Simha Arom, a French-Israeli who recorded hindewhu, and Luis Devin, an Italian ethnomusicologist who studied in depth the musical rituals and instruments of Baka Pygmies.</p>
+<p>Some popular musicians have used hindewhu in their music:</p>
+<ul>
+<li>&quot;Hunting&quot;, a song by Deep Forest from their album Made in Japan.</li>
+<li>&quot;Ba-Benzélé&quot;, a song by Jon Hassell and Brian Eno from the album Fourth World, Vol. 1: Possible Musics (1980).</li>
+<li>&quot;Fabulous&quot; (1983), a tune by John Oswald and Dick Hyman from the album plunderphonics (1989).</li>
+<li>Percussionist Bill Summers imitates hindewhu in the track &quot;Watermelon Man&quot; by Herbie Hancock from the 1973 album Head Hunters (see hocket).</li>
+<li>&quot;Sanctuary&quot;, a song by Madonna from the album Bedtime Stories (1994) samples the Herbie Hancock recording.</li>
+<li>In 1992 the popularization of Pygmy music spread with the release of Eric Mouquet and Michel Sanchez's Deep Forest. A percentage of the proceeds from each album were donated to the Pygmy Fund set up to aid Zaire's Pygmies. The album was nevertheless subject to controversy, as the project used samples recorded by ethnomusicologist Hugo Zemp without permission; further controversy was stirred by the lack of consideration given to the original performer - a Northern Malaitian woman named Afunakwa - by either party during the resultant legal battle.</li>
+<li>Also in 1992 Martin Cradick and Su Hart spent three months living with and recording Baka in Cameroon. result was the creation of the band Baka Beyond and the release of their collaboration with the Baka musicians, &quot;Spirit of the Forest&quot; alongside the album &quot;Heart of the Forest&quot;, and a musical relationship that has lasted over twenty years. Proceeds from both these albums have returned to the Baka musicians through the charity Global Music Exchange which continues to work with the Baka helping them in their rapidly changing environment.</li>
+<li>Pianist Pierre-Laurent Aimard programmed recordings of Pygmy songs (performed by the Aka Pygmies) with works of contemporary composers György Ligeti and Steve Reich on his African Rhythms (2003)</li>
+</ul>
+<h2 id="other-african-traditions" tabindex="-1">Other African traditions <a class="header-anchor" href="#other-african-traditions" aria-label="Permalink to &quot;Other African traditions&quot;"></a></h2>
+<h3 id="mbube-and-isicathamiya-south-africa" tabindex="-1">Mbube and Isicathamiya (South Africa) <a class="header-anchor" href="#mbube-and-isicathamiya-south-africa" aria-label="Permalink to &quot;Mbube and Isicathamiya (South Africa)&quot;"></a></h3>
+<p>Zulu a cappella singing styles featuring complex harmonies.</p>
+<youtube-embed video="FclwRECHoWc"/> <h3 id="khoikhoi-and-san-music-southern-africa" tabindex="-1">Khoikhoi and San Music (Southern Africa) <a class="header-anchor" href="#khoikhoi-and-san-music-southern-africa" aria-label="Permalink to &quot;Khoikhoi and San Music (Southern Africa)&quot;"></a></h3>
+<p>Features overlapping vocal parts and complex rhythms.</p>
+<youtube-embed video="dTL_TdONVBs"/> <h3 id="west-african-griot" tabindex="-1">West African Griot <a class="header-anchor" href="#west-african-griot" aria-label="Permalink to &quot;West African Griot&quot;"></a></h3>
+<p>While primarily melodic, some griot performances include harmonized choruses.</p>
+<blockquote>
+<youtube-embed video="Ig91Z0-rBfo"/> <p>Sona Jobarteh is the first female Kora virtuoso to come from a west African Griot family. The Kora is one of the most important instruments belonging to the Manding peoples of West Africa (Gambia, Senegal, Mali, Guinea and Guinea-Bissau). It belongs exclusively to griot families, and usually only men who are born into these families have the right to take up the instrument professionally. Sona Jobarteh combines various genres of African Music and western musical elements.</p>
+</blockquote>
+<youtube-embed video="--q1j2PExpE"/> ]]></content:encoded>
             <enclosure url="https://chromatone.center/Pythagoras_and_Philolaus.png" length="0" type="image/png"/>
         </item>
         <item>
@@ -3828,7 +3875,7 @@ Five Gandharvas (celestial musicians) from 4th-5th century CE, northwest Indian 
 </tbody>
 </table>
 <p>†'2' suffix signifies solfege syllable is held twice as long.</p>
-<youtube-embed video="ZuZF8BaOt58"/><h2 id="tihai-the-rhythmic-cadence" tabindex="-1">Tihai - the rhythmic cadence <a class="header-anchor" href="#tihai-the-rhythmic-cadence" aria-label="Permalink to &quot;Tihai - the rhythmic cadence&quot;"></a></h2>
+<youtube-embed video="ZuZF8BaOt58"/> <youtube-embed video="iurhjlBum0o"/> <h2 id="tihai-the-rhythmic-cadence" tabindex="-1">Tihai - the rhythmic cadence <a class="header-anchor" href="#tihai-the-rhythmic-cadence" aria-label="Permalink to &quot;Tihai - the rhythmic cadence&quot;"></a></h2>
 <p><a href="https://en.wikipedia.org/wiki/Tihai" target="_blank" rel="noreferrer">Tihai</a> (pronounced ti-'ha-yi) is a polyrhythmic technique found in Indian classical music, and often used to conclude a piece. Tihais can be either sung or played on an instrument. Tihais are sometimes used to distort the listeners’ perception of time, only to reveal the consistent underlying cycle at the sam.</p>
 <h3 id="definition" tabindex="-1">Definition <a class="header-anchor" href="#definition" aria-label="Permalink to &quot;Definition&quot;"></a></h3>
 <p>Tihai is the repetition of specific group of BOL or BEATS by three times.</p>
@@ -4257,7 +4304,7 @@ Meter is the measurement of the number of pulses between more or less regularly 
 </tr>
 </tbody>
 </table>
-]]></content:encoded>
+<youtube-embed video="UMFazztdbAI"/> ]]></content:encoded>
             <enclosure url="https://chromatone.center/brent-ninaber.jpg" length="0" type="image/jpg"/>
         </item>
         <item>
@@ -4506,7 +4553,7 @@ Side view of a Tanjore-style rosewood tanpura bridge with cotton threads adjuste
 <p>From the philosophical perspective of the African musician, cross-beats can symbolize the challenging moments or emotional stress we all encounter. Playing cross-beats while fully grounded in the main beats, prepares one for maintaining a life-purpose while dealing with life’s challenges. Many sub-Saharan languages do not have a word for rhythm, or even music. From the African viewpoint, the rhythms represent the very fabric of life itself; they are an embodiment of the people, symbolizing interdependence in human relationships.<br>
 — Clave Matrix, p. 21</p>
 </blockquote>
-<h2 id="cross-rhythmic-ratios" tabindex="-1">Cross-rhythmic ratios <a class="header-anchor" href="#cross-rhythmic-ratios" aria-label="Permalink to &quot;Cross-rhythmic ratios&quot;"></a></h2>
+<youtube-embed video="DHPDbkXQV0M"/> <h2 id="cross-rhythmic-ratios" tabindex="-1">Cross-rhythmic ratios <a class="header-anchor" href="#cross-rhythmic-ratios" aria-label="Permalink to &quot;Cross-rhythmic ratios&quot;"></a></h2>
 <h3 id="_3-2" tabindex="-1">3:2 <a class="header-anchor" href="#_3-2" aria-label="Permalink to &quot;3:2&quot;"></a></h3>
 <p>The cross-rhythmic ratio three-over-two (3:2) or vertical <a href="https://en.wikipedia.org/wiki/Hemiola" target="_blank" rel="noreferrer">hemiola</a>, is the most significant rhythmic cell found in sub-Saharan rhythms. The following measure is evenly divided by three beats and two beats. The two cycles do not share equal status though. The two bottom notes are the primary beats, the ground, the main temporal referent. The three notes above are the secondary beats. Typically, the dancer's feet mark the primary beats, while the secondary beats are accented musically.</p>
 <blockquote>
@@ -8067,7 +8114,7 @@ In music, texture is how the tempo, melodic, and harmonic materials are combined
             <link>https://chromatone.center/tutor/</link>
             <guid>https://chromatone.center/tutor/</guid>
             <pubDate>Mon, 05 Jul 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[Personal guidance through complexities of music with easy to grasp visual examples and web apps by the author and developer of Chromatone]]></description>
+            <description><![CDATA[Personal guidance through complexities of music with easy to grasp visuals and web apps]]></description>
             <content:encoded><![CDATA[<!-- 
 <script setup>
 import Tutor from './Tutor.vue'
@@ -8449,7 +8496,7 @@ Mill Stroke</p>
             <link>https://chromatone.center/academy/</link>
             <guid>https://chromatone.center/academy/</guid>
             <pubDate>Fri, 02 Apr 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[Research and study platform to provide collaborative online education experience for global community of Academy members]]></description>
+            <description><![CDATA[Research and study platform to provide collaborative online education experience for our global community]]></description>
             <enclosure url="https://chromatone.center/wes-hicks.jpg" length="0" type="image/jpg"/>
         </item>
         <item>
@@ -8924,6 +8971,7 @@ particular song. “And then ultimately you must find your own way.”</p>
 <li>Play a chord by pressing its block.</li>
 </ol>
 ]]></content:encoded>
+            <enclosure url="https://chromatone.center/cover.png" length="0" type="image/png"/>
         </item>
         <item>
             <title><![CDATA[Tabulature]]></title>

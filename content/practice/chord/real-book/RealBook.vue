@@ -1,8 +1,6 @@
 <script setup>
-import jazz from '#/db/corpus.yaml'
+import jazz from '#/db/chords/real-book.yaml'
 import { computed, ref } from 'vue';
-
-
 
 const sorted = computed(() => jazz.toSorted((a, b) => a.Title < b.Title ? -1 : 1))
 

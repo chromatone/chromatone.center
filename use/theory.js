@@ -11,12 +11,12 @@ export const sharps = ['G##', 'A#', 'A##', 'B#', 'C#', 'C##', 'D#', 'D##', 'E#',
 
 export const flats = ['Bbb', 'Bb', 'Cb', 'Dbb', 'Db', 'Ebb', 'Eb', 'Fb', 'Gbb', 'Gb', 'Abb', 'Ab']
 
-export const noteNames = []
+export const noteNames = {}
 
 const all = [...naturals, ...sharps, ...flats]
 
 all.forEach((note, n) => {
-  noteNames[note] = n
+  noteNames[note] = n % 12
 })
 
 export const notes = naturals

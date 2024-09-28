@@ -1,5 +1,5 @@
 <script setup>
-import jazz from '#/db/chords/real-book.yaml'
+import jazz from '#/db/chord/real-book.yaml'
 import { computed, ref } from 'vue';
 
 const sorted = computed(() => jazz.toSorted((a, b) => a.Title < b.Title ? -1 : 1))

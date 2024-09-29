@@ -20,7 +20,7 @@ const bg = computed(() => `url(${props.item?.frontmatter?.cover})`);
 
 function go(url) {
 
-  const popupWindow = window.open(url, '_blank', 'toolbar=no,location=no,menubar=no,status=no,scrollbars=no,width=800,height=600');
+  const popupWindow = window.open(url, '_blank', 'toolbar=no,location=no,menubar=no,status=no,scrollbars=no,width=800,height=800');
 
   // If the popup window was successfully created, focus on it
   if (popupWindow) {

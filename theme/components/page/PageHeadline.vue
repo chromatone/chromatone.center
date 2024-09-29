@@ -45,11 +45,11 @@ const buttons = computed(() => {
 
 <style lang="postcss" scoped>
 .header {
-  @apply p-2 pt-40 sticky relative flex flex-col gap-1 min-h-38svh justify-end overflow-hidden transition-all duration-400 ease-in;
+  @apply p-2 pt-40 relative flex flex-col gap-1 min-h-38svh justify-end overflow-hidden transition-all duration-400 ease-in;
 }
 
 .cover {
-  @apply fixed overflow-hidden transition-all ease-in-out duration-500 bg-cover bg-center bg-gray-100 dark-(bg-gray-700) absolute top-0 h-full left-0 right-0;
+  @apply overflow-hidden transition-all ease-in-out duration-500 bg-cover bg-center bg-gray-100 dark-(bg-gray-700) absolute top-0 h-full left-0 right-0;
   filter: saturate(20%) sepia(5%) opacity(10%) blur(0px);
 }
 
@@ -64,7 +64,7 @@ const buttons = computed(() => {
 }
 
 .icon {
-  @apply m-4 max-h-20em max-w-20em fixed;
+  @apply m-4 max-h-20em max-w-20em;
 }
 
 .meta {

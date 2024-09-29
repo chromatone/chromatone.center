@@ -43,22 +43,22 @@ useGesture({
 </script>
 
 <template lang="pug">
-.flex.flex-col.items-stretch.transition-all.duration-500.ease-out.select-none.rounded-3xl.shadow-xl.border-8(
-  :style="{ borderColor: drone.color }"
-)
-  .drone.w-full.flex-1.justify-center.flex.flex-col.p-2
-    .intervals.my-2
-      .interval.flex.flex-col.m-1(
+.flex.flex-col.items-stretch.transition-all.duration-500.ease-out.select-none.rounded-3xl.shadow-xl.border-8.w-full.h-screen(
+  :style="{ borderColor: drone.color }")
+
+  .h-full.w-full.flex-1.justify-center.flex.flex-col.p-2
+    .intervals.my-2.flex-1.flex.flex-col.gap-1
+      .interval.flex.flex-col.m-1.flex-1(
         v-for="interval in intervals" 
         :key="interval"
         )
-        .flex.flex-wrap
-          pitch-drone-voice.m-2(
+        .flex.flex-wrap.flex-1
+          pitch-drone-voice.m-2.flex-1(
             v-for="voice in interval.voices" 
             :key="voice"
             :interval="voice"
             )
-    .info.my-4.flex.flex-wrap.justify-stretch.items-center.touch-none
+    .my-4.flex.flex-wrap.justify-stretch.items-center.touch-none
       .flex.flex-wrap.p-4.mx-2.flex-1.min-w-10em.items-center.rounded-xl.text-white.p-2.cursor-pointer.transition-all.duration-500.ease-out(
         ref="pitchControl"
         :style="{ backgroundColor: drone.color }")

@@ -38,12 +38,21 @@ function scrollTop() {
   y.value = 0
 }
 
+function close() {
+  if (window.opener) {
+    window.close();
+    window.opener.focus();
+  }
+}
+
 </script>
 
 <template lang="pug">
 
-a.top-16px.left-2.fixed.z-1000.cursor-pointer.mr-3(href="/")
+a.top-16px.left-2.fixed.z-1000.cursor-pointer.mr-3.op-40.hover-op-100.transition(href="/" @click="close()")
   img.h-30px(v-if="theme.logo", :src="theme.logo", alt="Chromatone logo")
+
+full-screen.op-40.hover-op-80.active-op-100.transition.text-xl.fixed.bottom-2.right-2.z-10000(v-if="params?.pure")
 
 bar-bar(v-if="!params.pure && !params.nobar")
 
@@ -158,6 +167,12 @@ midi-notes(v-if="!params.pure && !params.nokeys")
 
 .content .info {
   @apply m-2 bg-light-400 dark-bg-dark-400 z-10 max-w-55ch rounded-xl bg-op-80 dark-bg-op-80 backdrop-blur-md;
+}
+
+.pure #content {
+  max-height: 100vh;
+  overflow: scroll;
+  overscroll-behavior: none;
 }
 
 .pure .content .info {

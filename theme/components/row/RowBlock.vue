@@ -17,6 +17,19 @@ const route = useRoute();
 const children = useChildren({ path: props.item?.url }, data)
 
 const bg = computed(() => `url(${props.item?.frontmatter?.cover})`);
+
+function go(url) {
+
+  const popupWindow = window.open(url, '_blank', 'toolbar=no,location=no,menubar=no,status=no,scrollbars=no,width=800,height=600');
+
+  // If the popup window was successfully created, focus on it
+  if (popupWindow) {
+    popupWindow.focus();
+  } else {
+    // Handle the case where the popup was blocked
+    console.warn('Popup window was blocked. Please enable popups in your browser settings.');
+  }
+}
 </script>
 
 <template lang="pug">
@@ -30,10 +43,12 @@ a.header.no-underline.row(
     )
   .info.flex-1
     .flex.items-center.w-full
-      .mt-0
+      .mt-0.flex.items-center.w-full
         span.text-xl.font-bold {{ item?.frontmatter?.title }}
         span.text-xl.px-2.mt-2(v-if="item?.frontmatter?.more") 
           .i-radix-icons-text-align-left
+        .flex-1
+        button.text-lg.op-40.hover-op-90.transition.i-la-external-link-square-alt(@click.stop.prevent="go(item.url + '?pure=true')")
       .flex-1
       card-date(v-if="!item?.frontmatter?.product",:date="item.lastModified")
     .text-md.mt-4.mb-2.font-normal.w-full.flex-1(v-if="item?.frontmatter?.description") {{ item?.frontmatter?.description }}
@@ -55,7 +70,7 @@ a.header.no-underline.row(
 }
 
 .info {
-  @apply m-2 rounded-xl relative flex self-stretch flex-col items-center p-4 md-(px-5 py-4) bg-light-100 bg-opacity-70 dark-(bg-dark-100 bg-opacity-70) text-dark-100 dark-text-light-100 shadow-md;
+  @apply m-2 rounded-xl relative flex self-stretch flex-col items-center p-4 bg-light-100 bg-opacity-70 dark-(bg-dark-100 bg-opacity-70) text-dark-100 dark-text-light-100 shadow-md;
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 }

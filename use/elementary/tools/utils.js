@@ -80,7 +80,7 @@ export const freqDeltaFromSeq = (triggerVal, freq) => {
 
 export const initArray = (...dimensions) => {
   const dim = dimensions.splice(0, 1)[0];
-  if (dimensions.length > 0) {
+  if (dimensions.length) {
     return Array(dim)
       .fill(0)
       .map(() => initArray(...dimensions));

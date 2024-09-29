@@ -28,13 +28,9 @@ export function useSoundFont() {
 
   const inst = computed(() => {
     loaded.value = false
-    const ins = new Soundfont(ctx, {
-      instrument: instrument.value,
-    })
+    const ins = new Soundfont(ctx, { instrument: instrument.value, })
     ins.output.addEffect("reverb", reverb, 0.9);
-    ins.load.then(() => {
-      loaded.value = true
-    });
+    ins.load.then(() => loaded.value = true);
     return ins
   })
 

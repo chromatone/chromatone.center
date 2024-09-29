@@ -30,7 +30,7 @@ export function useSvgMouse() {
 
   function getCursorPosition(event, svgElement = svg.value, rect = area.value) {
     if (!svgElement) return
-    var svgPoint = svgElement.createSVGPoint()
+    let svgPoint = svgElement.createSVGPoint()
     svgPoint.x = event.clientX
     svgPoint.y = event.clientY
     let correct = svgPoint.matrixTransform(svgElement.getScreenCTM().inverse())

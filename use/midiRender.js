@@ -10,7 +10,7 @@ export function renderMidi(tracks) {
   import("midi-writer-js").then(MidiWriter => {
     let render = [];
     tracks.forEach((track, t) => {
-      var _a;
+      let _a;
       let division = 512 / ((_a = track === null || track === void 0 ? void 0 : track.meter) === null || _a === void 0 ? void 0 : _a.under);
       let midiTrack = new MidiWriter.Track();
       midiTrack.setTempo(tempo.bpm, 0);
@@ -47,7 +47,7 @@ export function renderMidi(tracks) {
       // )
       render[t] = midiTrack;
     });
-    var write = new MidiWriter.Writer(render);
+    const write = new MidiWriter.Writer(render);
     let midiData = new Midi(write.buildFile());
     midiData.tracks.forEach((track, t) => {
       midiData.tracks[t].instrument.number = 119;

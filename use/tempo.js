@@ -194,7 +194,7 @@ export const tapTempo = reactive({
 })
 
 export function tap() {
-  var time = performance.now();
+  let time = performance.now();
   if (tapTempo.last) {
     tapTempo.diff = time - tapTempo.last;
     tapTempo.times.push(tapTempo.diff);
@@ -210,10 +210,10 @@ export function tap() {
 
 function refresh() {
   if (tapTempo.times.length > 2) {
-    var average =
+    let average =
       tapTempo.times.reduce((result, t) => (result += t)) /
       tapTempo.times.length;
-    var bpm = (1 / (average / 1000)) * 60;
+    let bpm = (1 / (average / 1000)) * 60;
     tapTempo.bpm = bpm;
   }
 }

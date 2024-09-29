@@ -17,7 +17,7 @@ export function useSVGFile(file) {
     const serializer = new XMLSerializer();
     let source = serializer.serializeToString(svg);
     source = '<?xml version="1.0" standalone="no"?>\r\n' + source;
-    var url = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(source);
+    let url = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(source);
     download.url = url
     download.file = toRaw(file)
 

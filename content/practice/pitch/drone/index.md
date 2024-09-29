@@ -14,7 +14,7 @@ const PitchDrone = defineClientComponent(() => {
 })
 </script>
 
-<PitchDrone class="max-w-55ch m-2 mb-12" style="position: sticky; top: 1em;"  />
+<PitchDrone  style="position: sticky; top: 1em;"  />
 
 
 ::: info

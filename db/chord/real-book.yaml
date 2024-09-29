@@ -68,6 +68,7 @@
     - 4
     - 4
   Bars: "32"
+  youtube: X6R81g95Cps
   chords:
     - - C
       - C7
@@ -1849,10 +1850,11 @@
     - 4
     - 4
   Bars: "20"
+  youtube: yQgv5bRqmnk
   chords:
     - - NC
       - NC
-      - NC NC NC NC NC NC NC AM13#11
+      - NCx6 AM13#11
       - AM13#11
     - - Bbm7/Eb
       - Eb7
@@ -3894,17 +3896,17 @@
     - 4
   Bars: "12"
   chords:
-    - - Ab7 NC NC NC
+    - - Ab7 NCx3
       - NC
-      - Ab7 NC NC NC
+      - Ab7 NCx3
       - NC
-    - - Db7 NC NC NC
+    - - Db7 NCx3
       - NC
-      - Ab7 NC NC NC
+      - Ab7 NCx3
       - NC
-    - - Bb7 NC NC NC
-      - A7 NC NC NC
-      - Ab7 NC NC NC
+    - - Bb7 NCx3
+      - A7 NCx3
+      - Ab7 NCx3
       - NC
 - filename: GirlOfMyDreams
   Title: Girl of My Dreams
@@ -7253,19 +7255,19 @@
   chords:
     - - F6 F/A
       - Bb6 Bo7
-      - F6 NC NC NC
+      - F6 NCx3
       - NC
     - - F6 F/A
       - Bb6 Bo7
-      - F6 NC NC NC
+      - F6 NCx3
       - NC
     - - F6 F/A
       - Bb6 Bo7
-      - F6 NC NC NC
+      - F6 NCx3
       - NC
     - - F6 F/A
       - Bb6 Bo7
-      - F6 NC NC NC
+      - F6 NCx3
       - NC
     - - Em7
       - Eb9
@@ -7277,11 +7279,11 @@
       - C7b9#11
     - - F6 F/A
       - Bb6 Bo7
-      - F6 NC NC NC
+      - F6 NCx3
       - NC
     - - F6 F/A
       - Bb6 Bo7
-      - F6 NC NC NC
+      - F6 NCx3
       - NC
 - filename: Theme
   Title: The Theme
@@ -7973,7 +7975,7 @@
     - - F9
       - E7#9
       - Am7
-      - Am7 NC NC NC
+      - Am7 NCx3
     - - Am7
       - Am7
       - Am7
@@ -7989,7 +7991,7 @@
     - - F9
       - E7#9
       - Am7
-      - Am7 NC NC NC
+      - Am7 NCx3
     - - Dm7
       - Dm7
       - Am7
@@ -7997,7 +7999,7 @@
     - - Dm7
       - Dm7
       - E7
-      - E7 NC NC NC
+      - E7 NCx3
     - - Am7
       - Am7
       - Am7
@@ -8013,7 +8015,7 @@
     - - F9
       - E7#9
       - Am7
-      - Am7 NC NC NC
+      - Am7 NCx3
 - filename: YourSong
   Title: Your Song
   ComposedBy: Elton John and Bernie Taupin
@@ -11982,6 +11984,7 @@
     - 4
     - 4
   Bars: "64"
+  youtube: HDP5unppydQ
   chords:
     - - FM7
       - Dm7
@@ -14349,7 +14352,7 @@
     - - Eb6
       - Cm7
       - F7
-      - Bb7 NC NC NC
+      - Bb7 NCx3
     - - Eb6
       - Eb6 Cm7
       - Fm7 Bb7
@@ -14742,7 +14745,7 @@
       - Eb7
     - - Ab7
       - Ab7
-      - Eb7 NC NC NC
+      - Eb7 NCx3
       - Bb7
     - - Eb7
       - Eb7
@@ -17871,6 +17874,7 @@
     - 4
     - 4
   Bars: "32"
+  youtube: aXPocQwKjNw
   chords:
     - - Eb
       - Eb
@@ -24911,7 +24915,7 @@
       - Bbm7/Eb Bbm7
       - Fm7 Fm7/Bb
       - Fm7 Fm7 Gb9 F13
-    - - NC NC NC NC NC NC NC Eb13
+    - - NCx6 Eb13
       - NC
       - Fm7 Fm7/Bb
       - Fm7 Fm7/Bb
@@ -29277,7 +29281,7 @@
       - Am7b5 Ab7
     - - Gm7
       - C7
-      - Fm7 NC NC NC
+      - Fm7 NCx3
       - Bb7b9
     - - Eb7 G7
       - Ab7 G7
@@ -29294,7 +29298,7 @@
     - - Cm7 CmM7
       - Cm7 F7
       - Fm7 Fm7 Fm7 Fm7 Fm7 Fm7 B7 Bb7
-      - NC NC NC Eb13
+      - NCx3 Eb13
     - - Eb7 G7
       - Ab7 G7
       - Cm7 Bbm7
@@ -32324,7 +32328,7 @@
     - - Ab
       - Ab
       - Db
-      - G7+ NC NC NC
+      - G7+ NCx3
     - - C Am7
       - Dm7 G7
       - AbM7
@@ -32360,7 +32364,7 @@
     - - Ab
       - Ab
       - Db
-      - G7+ NC NC NC
+      - G7+ NCx3
     - - C Am7
       - Dm7 G7
       - AbM7
@@ -36363,7 +36367,7 @@
     - - Ab6
       - Bbm7 Eb7
       - Ab6
-      - Ab6 NC NC NC
+      - Ab6 NCx3
     - - Bbm7 Eb7
       - Bbm7 Eb7
       - Bbm7 Eb7
@@ -36371,15 +36375,15 @@
     - - Ab6
       - Bbm7 Eb7
       - Ab6
-      - Ab6 NC NC NC
+      - Ab6 NCx3
     - - CM7
       - Bbm6
       - CM7
-      - CM7 NC NC NC
+      - CM7 NCx3
     - - CM7
       - Fm7 Bb7
       - Bbm7
-      - Eb7 NC NC NC
+      - Eb7 NCx3
     - - Bbm7 Eb7
       - Bbm7 Eb7
       - Bbm7 Eb7
@@ -36387,7 +36391,7 @@
     - - Ab6
       - Bbm7 Eb7
       - Ab6
-      - Ab6 NC NC NC
+      - Ab6 NCx3
 - filename: GetMeToTheChurchOnTime
   Title: Get Me To The Church On Time
   ComposedBy: Frederick Loewe
@@ -39314,7 +39318,7 @@
       - Bb7
     - - Ebm7 Ab7
       - Dm7b5 G7
-      - Cm6 NC NC NC
+      - Cm6 NCx3
       - NC
     - - C9
       - C9
@@ -39338,7 +39342,7 @@
       - Bb7
     - - Ebm7 Ab7
       - Dm7b5 G7
-      - Cm6 NC NC NC
+      - Cm6 NCx3
       - NC
 - filename: TwoCigarettesInTheDark
   Title: Two Cigarettes in the Dark
@@ -39512,7 +39516,7 @@
     - - Db/F
       - Db/D
       - Eb7b9
-      - Ab7#11 NC NC NC
+      - Ab7#11 NCx3
     - - Gm7b5
       - C7#9
       - Fm7
@@ -41477,21 +41481,21 @@
     - 4
   Bars: "64"
   chords:
-    - - NC NC NC NC Bb/F Bb/F Bb/F F
+    - - NCx4 Bb/F Bb/F Bb/F F
       - NC
-      - NC NC NC NC Bb/F Bb/F Bb/F F
+      - NCx4 Bb/F Bb/F Bb/F F
       - NC
-    - - NC NC NC NC Bb/F Bb/F Bb/F F
+    - - NCx4 Bb/F Bb/F Bb/F F
       - NC
-      - NC NC NC NC Bb/F Bb/F Bb/F F
+      - NCx4 Bb/F Bb/F Bb/F F
       - NC
-    - - NC NC NC NC Bb/F Bb/F Bb/F F
+    - - NCx4 Bb/F Bb/F Bb/F F
       - NC
-      - NC NC NC NC Bb/F Bb/F Bb/F F
+      - NCx4 Bb/F Bb/F Bb/F F
       - NC
-    - - NC NC NC NC Bb/F Bb/F Bb/F F
+    - - NCx4 Bb/F Bb/F Bb/F F
       - NC
-      - NC NC NC NC Bb/F Bb/F Bb/F F
+      - NCx4 Bb/F Bb/F Bb/F F
       - F Cm7b5 F7b9
     - - Bbm7 Ab9
       - G7b9 C7#9
@@ -41503,11 +41507,11 @@
       - C7
     - - C7 C7 C7 C7 Bb/F Bb/F Bb/F F
       - NC
-      - NC NC NC NC Bb/F Bb/F Bb/F F
+      - NCx4 Bb/F Bb/F Bb/F F
       - NC
-    - - NC NC NC NC Bb/F Bb/F Bb/F F
+    - - NCx4 Bb/F Bb/F Bb/F F
       - NC
-      - NC NC NC NC Bb/F Bb/F Bb/F F
+      - NCx4 Bb/F Bb/F Bb/F F
       - NC
     - - Fm7 Ab9
       - G7b9 C7#9
@@ -46592,6 +46596,7 @@
     - 4
     - 4
   Bars: "32"
+  youtube: CkIk507hmj0
   chords:
     - - CM7 Dm7
       - Em7 Ebo7
@@ -47563,7 +47568,7 @@
       - Eb7
     - - NC Bb NC Bb
       - NC Bb NC
-      - Eb NC NC NC Fm7 Fm7 Fm7 E7#9
+      - Eb NCx3 Fm7 Fm7 Fm7 E7#9
       - NC
 - filename: FreddieTheFreeloader
   Title: Freddie the Freeloader
@@ -51580,7 +51585,7 @@
     - - Dm7b5 Dm7b5/G
       - Dm7b5 Dm7b5/G
       - C#o7
-      - C#o7 NC NC NC
+      - C#o7 NCx3
     - - Fm7
       - Bb7
       - Ebm7
@@ -51598,7 +51603,7 @@
       - Dm7b5 Dm7b5/G
       - Dm7b5 Dm7b5/G
     - - C#o7
-      - C#o7 NC NC NC
+      - C#o7 NCx3
       - Fm7
       - Bb7
     - - Ebm7
@@ -51608,7 +51613,7 @@
     - - Cm7
       - F7b9
       - Ab7#11
-      - G7 NC NC NC
+      - G7 NCx3
     - - F9sus4 F9sus4 F9sus4 BbM7
       - NC
       - D9sus4 D9sus4 D9sus4 GM7
@@ -51625,7 +51630,7 @@
       - Fm9 Bb13
       - Eb
       - D7#9
-    - - Gadd9 NC NC NC
+    - - Gadd9 NCx3
       - NC
 - filename: YouWontSeeMe
   Title: You Won't See Me
@@ -65870,7 +65875,7 @@
     - - Cm7
       - Cm7
       - Cm7
-      - NC NC NC D7#5
+      - NCx3 D7#5
     - - Gm7
       - Gm7 Gm7 Gm7 C C C Gm7 Gm7
       - Gm7
@@ -71683,7 +71688,7 @@
       - F7
     - - Gm7
       - C7
-      - F6 NC NC NC
+      - F6 NCx3
       - NC
     - - F5
       - F5
@@ -72125,7 +72130,7 @@
     - - Em7 Eb9
       - Dm7b5 G7b9
       - FM7 FM7 Em7 Dm7
-      - C NC NC NC
+      - C NCx3
     - - Em7
       - A7
       - Dm7
@@ -72133,7 +72138,7 @@
     - - Em7 Eb9
       - Dm7b5 G7b9
       - FM7 FM7 Em7 Dm7
-      - C NC NC NC
+      - C NCx3
     - - Gm7
       - C7b9
       - FM7
@@ -72152,7 +72157,7 @@
       - Eb13
     - - AbM7
       - DbM7
-      - C NC NC NC
+      - C NCx3
       - NC
 - filename: WhatAWoderfulWorld
   Title: What A Wonderful World
@@ -72236,6 +72241,7 @@
     - 4
     - 4
   Bars: "32"
+  youtube: OQoP9uFV_LA
   chords:
     - - FM7 Ab7
       - DbM7 E7
@@ -74146,7 +74152,7 @@
     - - Cm7
       - Gm7
       - Eb7#9 Eb7#9 Eb7#9 D7#9 D7#9 D7#9 C#9 C#9
-      - C#9 NC NC NC NC NC NC NC
+      - C#9 NCx6
     - - Gm7
       - F/D
       - Gm7
@@ -74447,7 +74453,7 @@
       - Bbm6
     - - Am7 Am7 Am7 Dm7
       - Gm7 Gm7 Gm7 C7
-      - F6 NC NC NC
+      - F6 NCx3
       - NC C7 F6 F6
     - - F7
       - F7
@@ -74463,7 +74469,7 @@
       - Bbm6
     - - Am7 Am7 Am7 Dm7
       - Gm7 Gm7 Gm7 C7
-      - F6 NC NC NC
+      - F6 NCx3
       - NC C7 F6 F6
 - filename: BluePrelude
   Title: Blue Prelude
@@ -77769,7 +77775,7 @@
       - Fm/Bb
       - Eb/Bb Fm/Bb
       - Gm/Bb Fm/Bb
-    - - Eb NC NC NC
+    - - Eb NCx3
       - NC
 - filename: NoLine
   Title: No Line
@@ -78957,6 +78963,7 @@
     - 3
     - 4
   Bars: "40"
+  youtube: e038nE1XJnQ
   chords:
     - - G69
       - F69
@@ -80947,6 +80954,7 @@
     - 4
     - 4
   Bars: "68"
+  youtube: aJICcLiPChE
   chords:
     - - EbM7
       - Eb6
@@ -82752,10 +82760,10 @@
     - 4
   Bars: "40"
   chords:
-    - - FM7 NC NC NC NC NC NC NC
+    - - FM7 NCx6
       - Ebm7 Ebm7 Ab7 Ab7 Db6 Db6 Gb7 Gm7
       - NC
-      - B7 B7 NC NC NC NC Bb7 Bb7 NC NC NC A7+ A7+ A7+ A7+ A7+
+      - B7 B7 NCx4 Bb7 Bb7 NCx3 A7+ A7+ A7+ A7+ A7+
     - - A7+ A7+ A7#9 A7#9 A7#9 Ab7 Ab7 Ab7
       - Gm7
       - C7sus
@@ -82766,10 +82774,10 @@
       - Am7 AbM7
     - - Gm7 C7b9
       - FM7
-      - FM7 NC NC NC NC NC NC NC
+      - FM7 NCx6
       - Ebm7 Ebm7 Ab7 Ab7 Db6 Db6 Gb7 Gm7
     - - NC
-      - B7 B7 NC NC NC NC Bb7 Bb7 NC NC NC A7+ A7+ A7+ A7+ A7+
+      - B7 B7 NCx4 Bb7 Bb7 NCx3 A7+ A7+ A7+ A7+ A7+
       - A7+ A7+ A7#9 A7#9 A7#9 Ab7 Ab7 Ab7
       - Gm7
     - - C7sus
@@ -83846,11 +83854,11 @@
       - Bb7 Bb7 Bb/D Eb
     - - F NC Eb/F Eb/F Eb/F Eb/F Eb/F Eb/F
       - Bb NC Bb Bb Bb/D Bb/D Eb Eb
-      - F NC NC NC NC NC NC NC
+      - F NCx6
       - Cm7
     - - Dm7
       - Gm Gm Gm F Gm Gm Gm F
-      - Gm NC NC NC
+      - Gm NCx3
       - NC
 - filename: ShooFlyPieAndApplePanDowdy
   Title: Shoo Fly Pie and Apple Pan Dowdy
@@ -100394,9 +100402,9 @@
       - C7
       - F6 Ab7
       - Gm7 C7
-    - - F7 NC NC NC
-      - Bb7 NC NC NC
-      - F7 NC NC NC
+    - - F7 NCx3
+      - Bb7 NCx3
+      - F7 NCx3
       - NC
     - - Bb7
       - Bb7
@@ -103562,11 +103570,11 @@
   chords:
     - - NC
       - NC
-      - NC NC NC Gm7
+      - NCx3 Gm7
       - C7
     - - NC
       - NC
-      - NC NC NC Gm7
+      - NCx3 Gm7
       - C7
     - - C7
       - C7
@@ -107175,10 +107183,10 @@
     - - Fm7 Bb7+
       - Fm7
       - Ab6 Ab6 Ab6 Eb
-      - Ab Ab Ab Eb NC NC NC NC
+      - Ab Ab Ab Eb NCx4
     - - NC
       - NC
-      - NC NC NC A9
+      - NCx3 A9
       - Ab9
     - - Ab9
       - Eb6
@@ -109242,17 +109250,17 @@
     - 4
   Bars: "12"
   chords:
-    - - NC NC NC Eb7#9 Eb7#9 Eb7#9 Eb7#9 Eb7#9
+    - - NCx3 Eb7#9 Eb7#9 Eb7#9 Eb7#9 Eb7#9
       - NC
-      - NC NC NC Eb7#9 Eb7#9 Eb7#9 Eb7#9 Eb7#9
+      - NCx3 Eb7#9 Eb7#9 Eb7#9 Eb7#9 Eb7#9
       - NC
-    - - NC NC NC Ab7#11 Ab7#11 Ab7#11 Ab7#11 Ab7#11
+    - - NCx3 Ab7#11 Ab7#11 Ab7#11 Ab7#11 Ab7#11
       - NC
-      - NC NC NC Eb7#9 Eb7#9 Eb7#9 Eb7#9 Eb7#9
+      - NCx3 Eb7#9 Eb7#9 Eb7#9 Eb7#9 Eb7#9
       - NC
-    - - NC NC NC Bb7#9 Bb7#9 Bb7#9 Bb7#9 Bb7#9
+    - - NCx3 Bb7#9 Bb7#9 Bb7#9 Bb7#9 Bb7#9
       - NC
-      - NC NC NC Eb7#9 Eb7#9 Eb7#9 Eb7#9 Eb7#9
+      - NCx3 Eb7#9 Eb7#9 Eb7#9 Eb7#9 Eb7#9
       - NC
 - filename: MrPastorius
   Title: Mr. Pastorius

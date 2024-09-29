@@ -29,8 +29,8 @@ watch(() => midi.cc, cc => {
 </script>
 
 <template lang="pug">
-#screen.flex.flex-col.items-center.w-full.relative.pb-12.p-4.fullscreen-container
-  svg#metronome.min-h-80svh.max-h-100svh.w-full.select-none(
+#screen.flex.flex-col.items-center.w-full.relative.fullscreen-container
+  svg#metronome.min-h-80svh.max-h-98svh.w-full.select-none(
     version="1.1",
     baseProfile="full",
     viewBox="0 0 1000 1000",

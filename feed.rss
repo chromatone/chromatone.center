@@ -4,7 +4,7 @@
         <title>Chromatone</title>
         <link>https://chromatone.center</link>
         <description>Visual Music Language development updates and more</description>
-        <lastBuildDate>Sat, 28 Sep 2024 10:09:20 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 29 Sep 2024 09:22:49 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en-EN</language>
@@ -13,7 +13,7 @@
             <title><![CDATA[Synth snippets]]></title>
             <link>https://chromatone.center/practice/synth/snippets.html</link>
             <guid>https://chromatone.center/practice/synth/snippets.html</guid>
-            <pubDate>Sat, 28 Sep 2024 10:07:04 GMT</pubDate>
+            <pubDate>Sun, 29 Sep 2024 09:20:39 GMT</pubDate>
             <description><![CDATA[Code pieces]]></description>
             <content:encoded><![CDATA[<h3 id="skew-by-upheaver" tabindex="-1">Skew by <a href="https://discord.com/channels/826071713426178078/834787928688689172/1123676571279048875" target="_blank" rel="noreferrer">upheaver</a> <a class="header-anchor" href="#skew-by-upheaver" aria-label="Permalink to &quot;Skew by [upheaver](https://discord.com/channels/826071713426178078/834787928688689172/1123676571279048875)&quot;"></a></h3>
 <p>Sharing a useful snippet. JUCE's logskew function in Typescript, if anyone wants to scale their parameter values (for example convert 0-1 range to 20-20000 hz in a non linear way) :</p>
@@ -39,7 +39,7 @@
             <title><![CDATA[Words sequencing]]></title>
             <link>https://chromatone.center/practice/generative/words/</link>
             <guid>https://chromatone.center/practice/generative/words/</guid>
-            <pubDate>Sat, 28 Sep 2024 10:07:04 GMT</pubDate>
+            <pubDate>Sun, 29 Sep 2024 09:20:39 GMT</pubDate>
             <description><![CDATA[&lt;script setup
 import { defineClientComponent } from 'vitepress'
 const Words = defineClientCompone]]></description>
@@ -50,7 +50,7 @@ const Words = defineClientCompone]]></description>
             <title><![CDATA[Words sequencing]]></title>
             <link>https://chromatone.center/practice/sequencing/words/</link>
             <guid>https://chromatone.center/practice/sequencing/words/</guid>
-            <pubDate>Sat, 28 Sep 2024 10:07:04 GMT</pubDate>
+            <pubDate>Sun, 29 Sep 2024 09:20:39 GMT</pubDate>
             <description><![CDATA[This page is moved to https://chromatone.center/practice/generative/words/]]></description>
             <content:encoded><![CDATA[<p>This page is moved to <a href="https://chromatone.center/practice/generative/words/" target="_blank" rel="noreferrer">https://chromatone.center/practice/generative/words/</a></p>
 ]]></content:encoded>
@@ -60,7 +60,7 @@ const Words = defineClientCompone]]></description>
             <title><![CDATA[ZZFXM]]></title>
             <link>https://chromatone.center/practice/sequencing/zzfxm/</link>
             <guid>https://chromatone.center/practice/sequencing/zzfxm/</guid>
-            <pubDate>Sat, 28 Sep 2024 10:07:04 GMT</pubDate>
+            <pubDate>Sun, 29 Sep 2024 09:20:39 GMT</pubDate>
             <description><![CDATA[&lt;script setup
 import { defineClientComponent } from 'vitepress'
 const ZzFxm = defineClientCompone]]></description>
@@ -72,7 +72,7 @@ const ZzFxm = defineClientCompone]]></description>
             <title><![CDATA[Reharmonization]]></title>
             <link>https://chromatone.center/theory/harmony/reharmonization/</link>
             <guid>https://chromatone.center/theory/harmony/reharmonization/</guid>
-            <pubDate>Sat, 28 Sep 2024 10:07:04 GMT</pubDate>
+            <pubDate>Sun, 29 Sep 2024 09:20:39 GMT</pubDate>
             <description><![CDATA[How to reharmonize a song]]></description>
             <content:encoded><![CDATA[<youtube-embed video="lz3WR-F_pnM" /><h2 id="reharmonization-chord-substitution-but-for-the-whole-chord-progression" tabindex="-1">Reharmonization = Chord substitution but for the whole chord progression <a class="header-anchor" href="#reharmonization-chord-substitution-but-for-the-whole-chord-progression" aria-label="Permalink to &quot;Reharmonization = Chord substitution but for the whole chord progression&quot;"></a></h2>
 <p>Reharmonization is used to:</p>
@@ -1470,7 +1470,7 @@ Multiple stages of valve gain/clipping can be &quot;cascaded&quot; to produce a 
             <guid>https://chromatone.center/practice/pitch/drone/</guid>
             <pubDate>Mon, 06 Jun 2022 00:00:00 GMT</pubDate>
             <description><![CDATA[Digital shruti box or tanpura tool online]]></description>
-            <content:encoded><![CDATA[<PitchDrone class="max-w-55ch m-2 mb-12" style="position: sticky; top: 1em;"  /><div class="info custom-block"><p class="custom-block-title">INFO</p>
+            <content:encoded><![CDATA[<PitchDrone  style="position: sticky; top: 1em;"  /><div class="info custom-block"><p class="custom-block-title">INFO</p>
 <h2 id="multipurpose-rich-harmonic-sound-generator" tabindex="-1">Multipurpose rich harmonic sound generator <a class="header-anchor" href="#multipurpose-rich-harmonic-sound-generator" aria-label="Permalink to &quot;Multipurpose rich harmonic sound generator&quot;"></a></h2>
 <p>You choose the pitch and the app plays 3 octaves and 3 fifths intervals for it. The sound is generated with <a href="https://en.wikipedia.org/wiki/Sawtooth_wave" target="_blank" rel="noreferrer">sawtooth</a> oscillator synth and this gives the incredible amount of harmonic material to play with. Consider it as an electronic version of <a href="https://en.wikipedia.org/wiki/Tanpura" target="_blank" rel="noreferrer">indian tanpura</a> or simply the <a href="https://en.wikipedia.org/wiki/Shruti_box" target="_blank" rel="noreferrer">Shruti box</a>.</p>
 <h3 id="how-to-use-the-drone-app" tabindex="-1">How to use the drone app <a class="header-anchor" href="#how-to-use-the-drone-app" aria-label="Permalink to &quot;How to use the drone app&quot;"></a></h3>

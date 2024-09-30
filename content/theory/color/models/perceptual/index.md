@@ -7,7 +7,7 @@ cover: CIE_1976_UCS.png
 ---
 
 <script setup>
-import colorTable from './table.vue'
+import ColorTable from './ColorTable.vue'
 </script>
 
 ## Munsell color system

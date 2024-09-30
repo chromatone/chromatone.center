@@ -1,7 +1,12 @@
 <script setup>
 import { computed } from 'vue';
 
-const props = defineProps(['pageColor', 'lightColor', 'page', 'cover'])
+const props = defineProps({
+  pageColor: { type: String },
+  lightColor: { type: String },
+  cover: { type: String },
+  page: { type: Object }
+})
 
 const buttons = computed(() => {
   if (props.page?.buttons) return props.page?.buttons

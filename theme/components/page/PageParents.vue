@@ -1,6 +1,10 @@
 <script setup>
 import { cleanLink } from '../../../theme/pages'
-const props = defineProps(['parents'])
+const props = defineProps({
+  parents: { type: Array }
+})
+
+
 </script>
 
 <template lang="pug">

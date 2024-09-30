@@ -12,9 +12,9 @@ links:
 <script setup>
 import { defineClientComponent } from 'vitepress'
 
-const Pendulums = defineClientComponent(() => {
-  return import('./Pendulums.vue')
+const MultiPendulums = defineClientComponent(() => {
+  return import('./MultiPendulums.vue')
 })
 </script>
 
-<Pendulums/>
+<MultiPendulums/>

@@ -1,7 +1,10 @@
 <script setup>
 import { lchToHsl } from '#/use/colors'
 
-const props = defineProps(['children'])
+const props = defineProps({
+  children: { type: Array, default: () => ([]) }
+})
+
 function cleanLink(url) {
   return (url || '').replace(/\/[^/]*\.(html)$/, '/')
 }

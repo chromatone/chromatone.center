@@ -1,7 +1,9 @@
 <script setup>
 import { ref } from 'vue';
 
-defineProps(['video']);
+defineProps({
+  video: { type: String }
+});
 
 const loaded = ref(false)
 

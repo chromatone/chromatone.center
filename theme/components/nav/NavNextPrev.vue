@@ -3,7 +3,10 @@ import { lchToHsl } from '#/use/'
 import { computed, reactive } from 'vue';
 import { cleanLink } from '../../../theme/pages'
 
-const props = defineProps(['parents', 'siblings'])
+const props = defineProps({
+  parents: { type: Array },
+  siblings: { type: Object }
+})
 
 const colors = reactive({
   current: computed(() => lchToHsl(props.siblings.index, props.siblings.total, 0.9, 20, 50)),

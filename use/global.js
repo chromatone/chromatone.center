@@ -8,8 +8,8 @@ import { Chord, ScaleType, Scale, Pcset, Range } from "tonal";
 import { reactive, computed, nextTick, ref } from 'vue'
 import { useStorage } from "@vueuse/core";
 import { useClamp } from "@vueuse/math";
-
-
+import { chromaColorMix } from './colors';
+import { rotateArray } from './calculations';
 
 const allNotes = [...notes].map((n, i) => ({ name: n, pitch: i }))
 
@@ -30,5 +30,5 @@ export const globalChord = reactive({
   name: 'A',
   data: computed(() => Chord.get(globalChord.name)),
   steps: computed(() => Chord.steps(globalChord.name)),
-  pitch: computed(() => noteNames[globalChord.data.tonic])
+  pitch: computed(() => noteNames[globalChord.data.tonic]),
 })

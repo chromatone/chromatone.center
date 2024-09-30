@@ -57,10 +57,12 @@ function getNote(string, semitones) {
 </script>
 
 <template lang="pug">
-.flex.flex-col.items-center.justify-center.rounded-3xl.py-2(
+.flex.flex-col.justify-center.rounded-3xl.py-2(
   :style="{ backgroundColor: neck.color.lch }")
-  .flex.justify-center(v-if="title")
-    .text-2x.font-bold {{ notes[pitch] }}{{ neck.title }}
+  .flex.gap-1.p-2.text-lg(v-if="title")
+    .font-bold {{ notes[pitch] }}{{ neck.title }} 
+    .flex-1
+    .p-0.capitalize {{ instrument }}
   svg#fretboard.max-h-3xl.w-full.my-2(
     version="1.1",
     baseProfile="full",

@@ -19,7 +19,7 @@ composer: You later
 key: Am
 time: 4/4
 tempo: 110
-comment: your test chordsheet
+comment: your starter chordsheet
 chordsize: 120%
 textsize: 120%
 ---
@@ -116,7 +116,7 @@ const { copy, copied } = useClipboard({
                             :title="false"
                             :chroma="chord.chroma" :pitch="noteNames[chord.tonic]")
                      chord-tab.max-w-40(
-                            v-if="instrument == 'ukulele' || instrument =='guitar'"
+                            v-if="instrument == 'ukulele' || instrument == 'guitar'"
                             :instrument
                             :title="false"
                             :chroma="chord.chroma" :pitch="noteNames[chord.tonic]")

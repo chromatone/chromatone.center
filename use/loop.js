@@ -5,19 +5,8 @@
 import { reactive, computed, watch, watchEffect, onBeforeUnmount } from 'vue'
 import { tempo } from "./tempo";
 import { rotateArray } from "./calculations";
-import { globalScale } from "./chroma";
-import {
-  Sequence,
-  PanVol,
-  gainToDb,
-  getDraw,
-  PolySynth,
-  start,
-  Midi,
-  Frequency,
-  Time,
-  getContext,
-} from "tone";
+import { globalScale } from "./global";
+import { Sequence, PanVol, gainToDb, getDraw, PolySynth, start, Midi, Frequency, Time, getContext } from "tone";
 import { midiPlay } from "./midi";
 import { createAndDownloadBlobFile } from "./midiRender";
 import { createChannel } from './audio'

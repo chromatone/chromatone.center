@@ -2,7 +2,7 @@
 import { Pcset, ChordType, ScaleType } from 'tonal'
 import { noteColor } from "#/use/colors"
 import { notes } from '#/use/theory'
-import { globalScale } from '#/use/chroma'
+import { globalScale } from '#/use/global'
 import { useStorage } from '@vueuse/core';
 import { computed } from 'vue';
 import ChromaBrowserRow from './ChromaBrowserRow.vue';

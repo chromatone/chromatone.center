@@ -3,7 +3,8 @@ import { rotateArray, getCircleCoord } from '#/use/calculations'
 import { colord } from 'colord'
 import { chromaColorMix, noteColor } from "#/use/colors";
 import { intervals, notes } from '#/use/theory'
-import { playChroma, stopChroma, globalScale } from '#/use/chroma'
+import { playChroma, stopChroma } from '#/use/chroma'
+import { globalScale } from '#/use/global'
 import { computed, reactive, ref } from 'vue';
 import { ChordType, ScaleType } from 'tonal'
 

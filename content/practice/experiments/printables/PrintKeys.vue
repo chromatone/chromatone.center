@@ -1,5 +1,6 @@
 <script setup>
-import { globalScale, playChroma, stopChroma } from '#/use/chroma'
+import { playChroma, stopChroma } from '#/use/chroma'
+import { globalScale } from '#/use/global'
 import { rotateArray } from '#/use/calculations'
 import { noteColor } from '#/use/colors'
 import { notes, flats } from '#/use/theory'
@@ -82,7 +83,7 @@ svg.w-full.mt-2#chroma-keys(
     text-anchor="middle",
     x="350"
     y="-50"
-    font-size="90" ) {{notes[pitch]}}{{ type }}
+    font-size="90" ) {{ notes[pitch] }}{{ type }}
 
   g.white
     g.key(

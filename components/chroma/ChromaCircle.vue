@@ -4,7 +4,8 @@ import { noteColor } from '#/use/colors'
 import { colord } from 'colord'
 import { chromaColorMix } from "#/use/colors";
 import { notes } from '#/use/theory'
-import { globalScale, playChroma, playNoteOnce, stopChroma } from '#/use/chroma'
+import { playChroma, playNoteOnce, stopChroma } from '#/use/chroma'
+import { globalScale } from '#/use/global'
 import { computed, ref } from 'vue';
 import { ChordType, ScaleType } from 'tonal'
 

@@ -1,6 +1,6 @@
 <script setup>
 import { rotateArray } from '#/use/calculations'
-import { globalScale } from '#/use/chroma';
+import { globalScale } from '#/use/global';
 import { noteColor } from '#/use/colors'
 import { notes } from '#/use/theory'
 import { computed, reactive } from 'vue'

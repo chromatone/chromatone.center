@@ -1,7 +1,8 @@
 <script setup>
 import { rotateArray } from '#/use/calculations'
 import { notes } from '#/use/theory'
-import { playChroma, stopChroma, globalScale, playNoteOnce } from '#/use/chroma'
+import { playChroma, stopChroma, playNoteOnce } from '#/use/chroma'
+import { globalScale } from '#/use/global'
 import { chromaColorMix, noteColor } from "#/use/colors"
 import { Frequency } from 'tone'
 import { colord } from 'colord'

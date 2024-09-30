@@ -1,7 +1,8 @@
 <script setup>
 import { rotateArray } from '#/use/calculations'
 import { noteNames } from '#/use/theory'
-import { globalScale, playChroma, stopChroma } from '#/use/chroma'
+import { playChroma, stopChroma } from '#/use/chroma'
+import { globalScale } from '#/use/global'
 import { Progression, Chord, Scale } from "tonal";
 import { noteColor } from '#/use/colors'
 import { reactive, computed } from 'vue'

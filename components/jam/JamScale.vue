@@ -1,6 +1,6 @@
 <script setup>
 import { guessChords } from '#/use';
-import { globalScale } from '#/use/chroma';
+import { globalScale } from '#/use/global';
 import { noteColor } from '#/use/colors';
 import { onClickOutside } from '@vueuse/core';
 import { ref } from 'vue';

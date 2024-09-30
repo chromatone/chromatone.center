@@ -1,14 +1,16 @@
 <script setup>
-import { noteColor } from "#/use/colors"
-import { Scale, Midi, Note } from 'tonal'
-import { onKeyStroke, useStorage } from '@vueuse/core'
-import { notes } from '#/use/theory'
-import { globalScale, playNoteOnce } from '#/use/chroma'
-import { Pattern, start, getTransport, getDraw } from 'tone'
-import { tempo } from '#/use/tempo'
-import { useData } from 'vitepress'
-const { isDark } = useData()
 import { computed, onBeforeUnmount, onMounted, reactive, ref, watch, watchEffect } from 'vue'
+import { onKeyStroke, useStorage } from '@vueuse/core'
+import { Pattern, start, getTransport, getDraw } from 'tone'
+import { Scale, Midi, Note } from 'tonal'
+import { useData } from 'vitepress'
+import { globalScale } from '#/use/global'
+import { noteColor } from "#/use/colors"
+import { notes } from '#/use/theory'
+import { playNoteOnce } from '#/use/chroma'
+import { tempo } from '#/use/tempo'
+
+const { isDark } = useData()
 
 const Draw = getDraw()
 const Transport = getTransport()

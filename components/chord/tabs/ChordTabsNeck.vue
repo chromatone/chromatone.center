@@ -1,7 +1,7 @@
 <script setup>
 import { Note, Interval, Pcset } from 'tonal'
 import { noteColor as colorNote } from '#/use/colors'
-import { globalScale } from '#/use/chroma'
+import { globalScale } from '#/use/global'
 import { computed, reactive } from 'vue';
 import { activeNotes } from '#/use/midi';
 import { useData } from 'vitepress';

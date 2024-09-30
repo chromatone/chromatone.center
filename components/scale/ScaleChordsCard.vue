@@ -1,7 +1,7 @@
 <script setup>
 import { notes } from '#/use/theory'
 import { Interval, Chord, Note } from 'tonal'
-import { globalScale } from '#/use/chroma'
+import { globalScale } from '#/use/global'
 import { midiColor } from '#/use/calculations'
 import { chromaColorMix } from '#/use/colors'
 import { useData } from 'vitepress'

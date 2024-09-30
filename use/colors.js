@@ -15,7 +15,7 @@ import cmykPlugin from "colord/plugins/cmyk"
 import hwbPlugin from "colord/plugins/hwb"
 
 import { pitchColor, isInChroma } from "./calculations"
-import { globalScale } from "./chroma"
+import { globalScale } from "./global"
 
 extend([mixPlugin, lchPlugin, namesPlugin, labPlugin, cmykPlugin, hwbPlugin])
 

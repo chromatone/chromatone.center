@@ -1,7 +1,7 @@
 <script setup>
 import { notes } from '#/use/theory'
 import { state } from './state'
-import { globalScale } from '#/use/chroma'
+import { globalScale } from '#/use/global'
 import { onKeyStroke } from '@vueuse/core'
 import { ref } from 'vue'
 import PitchTableShift from './PitchTableShift.vue'

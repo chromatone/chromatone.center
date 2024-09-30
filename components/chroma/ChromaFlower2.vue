@@ -3,7 +3,7 @@ import { notes } from '#/use/theory'
 import { defaultScheme, scheme, noteColor } from '#/use/colors'
 import { getCircleCoord, rotateArray } from '#/use/calculations'
 import { midi, midiAttack, midiRelease, playKey } from '#/use/midi'
-import { globalScale } from '#/use/chroma'
+import { globalScale } from '#/use/global'
 import { useTuner } from '#/use/tuner'
 import { colord } from "colord";
 import { useClipboard, watchThrottled } from '@vueuse/core'

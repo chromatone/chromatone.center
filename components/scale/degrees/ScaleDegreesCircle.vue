@@ -1,6 +1,6 @@
 <script setup>
 import { intervals } from '#/use/theory'
-import { globalScale } from '#/use/chroma'
+import { globalScale } from '#/use/global'
 import { noteColor } from '#/use/colors'
 import { getCircleCoord, rotateArray } from '#/use/calculations'
 import { notes } from '#/use/theory'
@@ -235,7 +235,4 @@ svg.select-none.m-2(
 
 
 
-<style lang="postcss" scoped>
-
-</style>
-
+<style lang="postcss" scoped></style>

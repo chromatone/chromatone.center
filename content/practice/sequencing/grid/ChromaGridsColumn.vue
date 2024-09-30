@@ -1,5 +1,5 @@
 <script setup>
-import { globalScale } from '#/use/chroma'
+import { globalScale } from '#/use/global'
 import { noteColor } from "#/use/colors"
 import { Frequency } from 'tone'
 import { Chord } from "tonal"

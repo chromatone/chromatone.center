@@ -1,7 +1,8 @@
 <script setup>
 import { rotateArray } from '#/use/calculations'
 import { chromaColorMix, noteColor } from '#/use/colors'
-import { globalScale, playChroma, playChromaOnce, stopChroma } from '#/use/chroma'
+import { playChroma, playChromaOnce, stopChroma } from '#/use/chroma'
+import { globalScale } from '#/use/global'
 import ukulele from '#/db/tabs/ukulele.yaml'
 import guitar from '#/db/tabs/guitar.yaml'
 import { useStorage } from '@vueuse/core'

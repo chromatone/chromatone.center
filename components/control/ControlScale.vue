@@ -1,6 +1,6 @@
 <script setup>
 import { notes } from '#/use/theory'
-import { globalScale } from '#/use/chroma'
+import { globalScale } from '#/use/global'
 import { noteColor } from "#/use/colors"
 import { computed } from 'vue';
 import { ScaleType } from 'tonal'

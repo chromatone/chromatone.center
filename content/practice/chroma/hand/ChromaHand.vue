@@ -3,7 +3,7 @@ import { notes, intervals } from '#/use/theory'
 import { noteColor } from '#/use/colors'
 import { rotateArray } from '#/use/calculations'
 import { midi, guessChords, activeChromaMidi } from '#/use/midi'
-import { globalScale } from '#/use/chroma'
+import { globalScale } from '#/use/global'
 import { colord } from "colord";
 import { computed, onMounted, ref, shallowRef } from 'vue'
 import { useData } from 'vitepress'

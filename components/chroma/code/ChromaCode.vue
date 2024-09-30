@@ -1,6 +1,7 @@
 <script setup>
 import { computed } from 'vue';
-import { globalScale, playNoteOnce } from '#/use/chroma';
+import { playNoteOnce } from '#/use/chroma';
+import { globalScale } from '#/use/global'
 import ChromaCodeCell from './ChromaCodeCell.vue';
 
 const props = defineProps({

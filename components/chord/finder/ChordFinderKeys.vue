@@ -1,7 +1,7 @@
 <script setup>
 import { notes } from '#/use/theory'
 import { noteColor } from "#/use/colors"
-import { globalScale } from '#/use/chroma';
+import { globalScale } from '#/use/global';
 
 const props = defineProps({
   accord: { type: Object, default: () => { } },

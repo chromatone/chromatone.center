@@ -1,6 +1,6 @@
 <script setup>
 import { noteColor } from "#/use/colors"
-import { globalScale } from '#/use/chroma'
+import { globalScale } from '#/use/global'
 import { notes } from '#/use/theory'
 
 const props = defineProps({
@@ -39,6 +39,4 @@ svg.select-none.w-20rem.m-2(
 
 
 
-<style lang="postcss" scoped>
-
-</style>
+<style lang="postcss" scoped></style>

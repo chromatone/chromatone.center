@@ -2,7 +2,8 @@
 import { rotateArray } from '#/use/calculations'
 import { useStorage, useRafFn, useTransition, TransitionPresets } from '@vueuse/core'
 import { chromaColorMix, noteColor } from "#/use/colors";
-import { playChroma, stopChroma, globalScale } from '#/use/chroma'
+import { playChroma, stopChroma } from '#/use/chroma'
+import { globalScale } from '#/use/global'
 import { ref, watchEffect, computed } from 'vue';
 import { useClamp } from '@vueuse/math';
 import { useDrag } from '@vueuse/gesture'

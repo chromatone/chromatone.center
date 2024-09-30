@@ -2,7 +2,8 @@
 import { Interval, Pcset } from 'tonal'
 import { notes } from '#/use/theory'
 import { chromaColorMix } from "#/use/colors";
-import { playChroma, stopChroma, globalScale } from '#/use/chroma'
+import { playChroma, stopChroma } from '#/use/chroma'
+import { globalScale } from '#/use/global'
 import { reactive, computed } from 'vue'
 import { ChordType, ScaleType } from 'tonal'
 

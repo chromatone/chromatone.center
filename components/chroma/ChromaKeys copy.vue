@@ -1,5 +1,6 @@
 <script setup>
-import { globalScale, playChroma, stopChroma } from '#/use/chroma'
+import { playChroma, stopChroma } from '#/use/chroma'
+import { globalScale } from '#/use/global'
 import { rotateArray } from '#/use/calculations'
 import { noteColor } from '#/use/colors'
 import { notes, flats } from '#/use/theory'
@@ -61,7 +62,7 @@ function keyColor(key, off) {
   :style="{ backgroundColor: noteColor(pitch, 2, 1, 0.5) }"
   )
   .flex.justify-center.my-2.px-2(
-    :style="{color: colord(noteColor(pitch, 2, 1, 1)).isDark()? 'white':'black'}"
+    :style="{ color: colord(noteColor(pitch, 2, 1, 1)).isDark() ? 'white' : 'black' }"
     v-if="title")
     .absolute.right-4 {{ roman }}
     .font-bold.text-lg.flex-1.text-center {{ notes[pitch] }}{{ keys.title }}
@@ -110,7 +111,7 @@ function keyColor(key, off) {
             :font-weight="key == pitch ? 800 : 200"
             ) {{ notes[key] }}
         circle.transition(
-          :style="{opacity: activeChromaMidi[key] ? 1:0}"
+          :style="{ opacity: activeChromaMidi[key] ? 1 : 0 }"
           cy="245"
           cx="45"
           r="18"
@@ -148,7 +149,7 @@ function keyColor(key, off) {
           tspan(y="176" x="45") {{ notes[key] }}
           tspan(y="50" x="45" ) {{ flats[key] }}
         circle.transition-all.duration-100(
-          :style="{opacity: activeChromaMidi[key] ? 1:0}"
+          :style="{ opacity: activeChromaMidi[key] ? 1 : 0 }"
           cy="175"
           cx="45"
           r="18"

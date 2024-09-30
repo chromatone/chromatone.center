@@ -2,7 +2,7 @@
 import { chromaColorMix } from '#/use/colors'
 import { ChordType, Chord, ScaleType } from 'tonal'
 import { notes } from '#/use/theory'
-import { globalScale } from '#/use/chroma'
+import { globalScale } from '#/use/global'
 import { computed, ref } from 'vue'
 import { useStorage } from '@vueuse/core'
 

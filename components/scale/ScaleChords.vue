@@ -1,7 +1,8 @@
 <script setup>
 import { notes, intervals } from '#/use/theory'
 import { ChordType, Interval, ScaleType } from 'tonal'
-import { globalScale, playNote, stopNote } from '#/use/chroma'
+import { playNote, stopNote } from '#/use/chroma'
+import { globalScale } from '#/use/global'
 import { rotateArray } from '#/use/calculations'
 import { noteColor } from '#/use/colors'
 import { computed, ref } from 'vue';

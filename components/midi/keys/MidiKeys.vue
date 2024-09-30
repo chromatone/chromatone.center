@@ -5,7 +5,7 @@ import { notes } from '#/use/theory';
 import { computed, ref, watch } from 'vue';
 import { useRange } from './useRange.js'
 import { useGesture } from '@vueuse/gesture';
-import { globalScale } from '#/use/chroma';
+import { globalScale } from '#/use/global';
 import { useClamp } from '@vueuse/math'
 import { useStorage, useWindowSize } from '@vueuse/core'
 import { intervals } from '#/use/theory';

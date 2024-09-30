@@ -35,10 +35,10 @@ export const notes = naturals
 //   ScaleType.add(intervals, scale.title, Object.values(scale.names).flat())
 // }
 
-// import { ChordType } from 'tonal'
+import { ChordType } from 'tonal'
 
-// import intervalList from '../db/chord/intervals.yaml'
+import intervalList from '../db/chord/intervals.yaml'
 
-// for (let int in intervalList) {
-//   ChordType.add(...intervalList[int], int)
-// }
+for (let int in intervalList) {
+  ChordType.add(...intervalList[int], int)
+}

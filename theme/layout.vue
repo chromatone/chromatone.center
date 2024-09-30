@@ -107,8 +107,9 @@ midi-notes(v-if="!params.pure && !params.nokeys")
         .fixed.top-0.left-14.right-2.z-100.text-md.p-2.flex.gap-2.items-center.bg-light-200.bg-opacity-20.dark-bg-dark-200.dark-bg-opacity-10.backdrop-blur-lg.pt-2.pl-4.min-h-15.border-t-4.op-90.transition.rounded-xl(
           :style="{ borderColor: pageColor }"
           v-if="y > 100")
-          h2.font-bold.select-none.pointer-events-none {{ f?.title }} 
-          .p-0.select-none.pointer-events-none.flex-1 {{ f?.description }}
+          .flex-1.flex.flex-wrap.gap-2
+            h2.font-bold.select-none.pointer-events-none {{ f?.title }} 
+            .p-0.select-none.pointer-events-none {{ f?.description }}
 
           .i-la-angle-up.w-6(@click="scrollTop()")
 

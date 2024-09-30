@@ -5,6 +5,7 @@ import { computed, ref } from 'vue'
 import { useFuse } from '@vueuse/integrations/useFuse'
 import { Chord } from 'tonal';
 import { useStorage } from '@vueuse/core';
+import { globalChord } from '#/use/global'
 
 jazz.sort((a, b) => a.Title < b.Title ? -1 : 1)
 
@@ -21,7 +22,6 @@ const { results } = useFuse(searchText, jazz, {
   }
 })
 
-const currentChord = ref('')
 
 </script>
 
@@ -65,12 +65,12 @@ const currentChord = ref('')
         .flex.gap-2(v-for="line in currentSong.chords" :key="line")
           .flex-1.flex.gap-.rounded.overflow-hidden.cursor-pointer(v-for="chord in line" :key="chord") 
             .flex-1.p-1.flex.font-bold.text-sm.filter.hover-brightness-150(
-              @click="currentChord = ch"
+              @click="globalChord.name = ch"
               v-for="ch in chord.split(' ')" :key="ch"
               :style="{ backgroundColor: pitchColor(noteNames[Chord.get(ch).tonic], 4, 1, .3) }"
               ) {{ ch }} 
-        pre {{ currentChord }}
     youtube-embed.my-16(v-if="currentSong.youtube" :video="currentSong.youtube")
+  chord-sheet
 </template>
 
 <style lang="postcss" scoped>

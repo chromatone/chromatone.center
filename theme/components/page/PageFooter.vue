@@ -39,8 +39,8 @@ const route = useRoute()
     v-tooltip="'Chromatone GitHub organisation'"
     href="https://github.com/chromatone/" target="_blank") 
     .i-la-github
-  a.no-underline.flex.gap-1.items-center(
-    v-tooltip="'Chromatone NPM package'"
-    href="https://www.npmjs.com/package/use-chromatone/" target="_blank") 
-    .i-la-npm.-mb-1
+  //- a.no-underline.flex.gap-1.items-center(
+  //-   v-tooltip="'Chromatone NPM package'"
+  //-   href="https://www.npmjs.com/package/use-chromatone/" target="_blank") 
+  //-   .i-la-npm.-mb-1
 </template>

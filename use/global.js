@@ -3,12 +3,13 @@
  * @description Global state
  */
 
-
-import { notes } from './theory'
-import { Note, ScaleType, Scale, Pcset } from "tonal";
-import { reactive, computed, nextTick } from 'vue'
+import { noteNames, notes } from './theory'
+import { Chord, ScaleType, Scale, Pcset, Range } from "tonal";
+import { reactive, computed, nextTick, ref } from 'vue'
 import { useStorage } from "@vueuse/core";
 import { useClamp } from "@vueuse/math";
+
+
 
 const allNotes = [...notes].map((n, i) => ({ name: n, pitch: i }))
 
@@ -24,3 +25,10 @@ export const globalScale = reactive({
   pcs: computed(() => Scale.scaleNotes(globalScale.full.notes)),
   isIn: computed(() => Pcset.isNoteIncludedIn(globalScale.pcs)),
 });
+
+export const globalChord = reactive({
+  name: 'A',
+  data: computed(() => Chord.get(globalChord.name)),
+  steps: computed(() => Chord.steps(globalChord.name)),
+  pitch: computed(() => noteNames[globalChord.data.tonic])
+})

@@ -84,6 +84,7 @@ The musical notation is written usually immediately above, sometimes within, the
 ## Saptak - सप्तक - 7 svaras - Octave
 
 <table class="text-center text-sm">
+<thead>
 <tr>
   <th>Solfege</th>
   <th>Syllable</th>
@@ -94,6 +95,8 @@ The musical notation is written usually immediately above, sometimes within, the
   <th>Planet</th>
   <th>Chakra</th>
 </tr>
+</thead>
+<tbody>
 <tr v-for="svara in $frontmatter.svaras" :key="svara.name">
   <td> {{svara.solfege}}</td>
   <td class="font-bold"> {{svara.mnem}}</td>
@@ -104,6 +107,7 @@ The musical notation is written usually immediately above, sometimes within, the
   <td> {{svara.planet}}</td>
   <td> {{svara.chakra}}</td>
 </tr>
+</tbody>
 </table>
 
 https://en.wikipedia.org/wiki/Svara

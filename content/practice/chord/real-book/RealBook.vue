@@ -1,5 +1,5 @@
 <script setup>
-import jazz from '#/db/chord/real-book.yaml'
+import jazz from '#/db/chords/real-book.yaml'
 import { noteNames, pitchColor } from '#/use'
 import { computed, ref } from 'vue'
 import { useFuse } from '@vueuse/integrations/useFuse'
@@ -26,7 +26,8 @@ const { results } = useFuse(searchText, jazz, {
 </script>
 
 <template lang='pug'>
-.flex.gap-2.p-2.gap-1(style="line-height: 1.2em;")
+.flex.gap-1.justify-end(style="line-height: 1.2em;")
+  chord-sheet.z-100.fixed.bottom-2.right-2.max-w-88vw.min-w-80.max-h-90vh.overflow-scroll
   .flex.flex-col.max-h-100vh.overflow-scroll.gap-1.op-80.hover-op-100.transition.overscroll-none(
     style="flex: 0 0 160px")
     .flex.p-2.sticky.top-0.bg-light-400.dark-bg-dark-400.items-center.bg-op-80.dark-bg-op-80.backdrop-blur.z-1001
@@ -70,11 +71,10 @@ const { results } = useFuse(searchText, jazz, {
               :style="{ backgroundColor: pitchColor(noteNames[Chord.get(ch).tonic], 4, 1, .3) }"
               ) {{ ch }} 
     youtube-embed.my-16(v-if="currentSong.youtube" :video="currentSong.youtube")
-  chord-sheet
 </template>
 
 <style lang="postcss" scoped>
 .song.active {
-  @apply bg-dark-100 bg-op-20 dark-bg-dark-100 sticky top-13 bottom-6 z-100
+  @apply bg-light-900 bg-op-90 dark-bg-dark-100 sticky top-13 bottom-0 z-1000 backdrop-blur
 }
 </style>

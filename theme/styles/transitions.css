@@ -56,11 +56,11 @@
 }
 
 .slide-enter-from {
-	transform: translateX(-100%);
+	transform: translateY(110%);
 }
 
 .slide-leave-to {
-	transform: translateX(-100%);
+	transform: translateY(120%);
 }
 
 .slide-leave-from {

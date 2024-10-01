@@ -56,7 +56,7 @@ function keyColor(key, off) {
 </script>
 
 <template lang="pug">
-.flex.flex-col.m-1.rounded-lg.cursor-pointer.transition-all.duration-300.ease.relative.select-none.touch-none(
+.flex.flex-col.rounded-lg.cursor-pointer.transition-all.duration-300.ease.relative.select-none.touch-none(
   @pointerdown="playAll && nextTick(playChroma(chroma, pitch))"
   @pointerup="playAll && nextTick(stopChroma(chroma, pitch))"
   @pointerleave="playAll && nextTick(stopChroma(chroma, pitch))"

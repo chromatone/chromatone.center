@@ -7,7 +7,8 @@ date: 2021-10-19
 ---
 
 <script setup>
-import tala from '#/db/rhythm/tala.yaml'
+import rhythms from '#/db/rhythm/rhythms.yaml'
+const { tala } = rhythms
 </script>
 
 <beat-bars v-bind="tala" />

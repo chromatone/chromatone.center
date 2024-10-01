@@ -16,7 +16,8 @@ web:
 ---
 
 <script setup>
-  import progressions from '#/db/chord/progressions.yaml'
+  import progressions from '#/db/chords/progressions.yaml'
+  const { named } = progressions
 </script>
 
-<chord-progressions :list="progressions" />
+<chord-progressions :list="named" />

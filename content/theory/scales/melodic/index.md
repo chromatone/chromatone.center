@@ -9,7 +9,8 @@ A great deal of modern jazz harmony arises from the modes of the ascending form 
 ## The 7 modes of the Melodic Minor Scale
 
 <script setup>
-  import melodic from '#/db/scale/melodic.yaml'
+  import scales from '#/db/scales/scales.yaml'
+  const { melodic } = scales
 </script>
 
 <chroma-profile-collection :collection="melodic" />

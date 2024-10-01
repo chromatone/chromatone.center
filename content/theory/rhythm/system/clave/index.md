@@ -10,10 +10,11 @@ urls:
 ---
 
 <script setup>
-import afro from '#/db/rhythm/afro-cuban.yaml'
+import rhythms from '#/db/rhythm/rhythms.yaml'
+const { african } = rhythms
 </script>
 
-<beat-bars v-bind="afro" />
+<beat-bars v-bind="african" />
 
 ## Clave
 

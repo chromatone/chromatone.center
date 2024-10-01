@@ -58,7 +58,7 @@ bar-bar(v-if="!params.pure && !params.nobar")
 
 midi-notes(v-if="!params.pure && !params.nokeys")
 
-.main(:style="{ marginLeft: params.nobar || params.pure ? 0 : '48px' }" :class="{ pure: params.pure }")
+.main(:style="{ marginLeft: params.pure || params.nobar ? 0 : '48px' }" :class="{ pure: params.pure }")
 
   RegisterSW
 
@@ -122,7 +122,7 @@ midi-notes(v-if="!params.pure && !params.nokeys")
 
           content.content.flex-auto.z-10(v-if="f?.topContent")
 
-          row-list.px-2.my-2.max-w-200( :children="children")
+          row-list.px-2.my-2( v-if="children" :children="children")
 
           content.content.flex-auto.z-10(v-if="!f?.topContent")
 

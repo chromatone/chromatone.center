@@ -8,11 +8,12 @@ date: 2021-09-01
 
 
 <script setup>
-import pentad from '#/db/chord/pentad.yaml'
+import chords from '#/db/chords/chords.yaml'
+const { pentads } = chords
 </script>
 
 ## Pentads – the five note chords
 
-<chroma-profile-collection :collection="pentad" />
+<chroma-profile-collection :collection="pentads" />
 
 <youtube-embed video="RFH1LD4KdWs" />

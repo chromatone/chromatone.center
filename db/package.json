@@ -1,0 +1,50 @@
+{
+	"name": "chromatone-db",
+	"description": "Music theory knowledge database",
+	"version": "1.0.0",
+	"homepage": "https://chromatone.center",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/chromatone/chromatone.center.git"
+	},
+	"keywords": [
+		"music theory",
+		"music knowledge",
+		"music database",
+		"music",
+		"chords",
+		"scales",
+		"real book",
+		"chord progressions",
+		"scales"
+	],
+	"funding": {
+		"type": "github",
+		"url": "https://github.com/sponsors/davay42"
+	},
+	"license": "MIT",
+	"author": "Davay42",
+	"type": "module",
+	"engines": {
+		"node": "^20.x"
+	},
+	"packageManager": "pnpm@9.11.0",
+	"exports": {
+		".": {
+			"import": "./dist/index.js",
+			"browser": "./dist/index.js"
+		}
+	},
+	"main": "./dist/index.js",
+	"module": "./dist/index.js",
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "vite build --emptyOutDir"
+	},
+	"devDependencies": {
+		"@modyfi/vite-plugin-yaml": "^1.1.0",
+		"vite": "^5.4.8"
+	}
+}

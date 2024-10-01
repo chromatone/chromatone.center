@@ -5,7 +5,8 @@ date: 2021-09-12
 ---
 
 <script setup>
-import limited from '#/db/scale/limited.yaml'
+import scales from '#/db/scales/scales.yaml'
+const { limited } = scales
 </script>
 
 Asymmetric scales are "far more common" than symmetric scales and this may be accounted for by the inability of symmetric scales to possess the property of uniqueness (containing each interval class a unique number of times) which assists with determining the location of notes in relation to the first note of the scale.

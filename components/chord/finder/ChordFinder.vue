@@ -4,7 +4,7 @@ import { notes } from '#/use/theory'
 import { globalScale } from '#/use/global';
 import { computed, reactive } from 'vue';
 
-import chords from '../../../db/chord/choice.yaml'
+import chords from '../../../db/chordss/basic.yaml'
 
 const accord = reactive({
   root: 0,

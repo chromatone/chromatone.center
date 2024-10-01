@@ -17,9 +17,10 @@ Most textbooks name these chords formally by the type of triad and type of seven
 The most common chords are tertian, constructed using a sequence of major thirds (spanning 4 semitones) and/or minor thirds (3 semitones). Since there are 3 third intervals in a seventh chord (4 notes) and each can be major or minor, there are 8 possible combinations, however, only seven of them are commonly found in western music. The augmented augmented seventh chord, defined by a root, a major third, an augmented fifth, and an augmented seventh (i.e., a sequence of 3 major thirds, such as C–E–G♯–B♯), is a rarely used tertian seventh chord. The reason is that the augmented seventh interval is enharmonically equivalent to one entire octave (in equal temperament, 3 major thirds = 12 semitones = 1 octave) and is hence perfectly consonant with the chord root.
 
 <script setup>
-  import tetrad from '#/db/chord/tetrad.yaml'
+  import chords from '#/db/chords/chords.yaml'
+  const { tetrads } = chords
 </script>
-<chroma-profile-collection :collection="tetrad.tertian" />
+<chroma-profile-collection :collection="tetrads.tertian" />
 
 ---
 
@@ -27,4 +28,4 @@ The most common chords are tertian, constructed using a sequence of major thirds
 
 Seventh chords can also be constructed using augmented or diminished thirds. These chords are not tertian and can be used in non-tertian harmony. There are many (mathematically, 64) chords that can be built, however, only few of them are used.
 
-<chroma-profile-collection :collection="tetrad.nontertian" />
+<chroma-profile-collection :collection="tetrads.nontertian" />

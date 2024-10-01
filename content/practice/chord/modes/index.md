@@ -7,7 +7,7 @@ layout: app
 ---
 
 <script setup>
-  import modes from '#/db/chord/modes.yaml'
+  import modes from '#/db/chords/modes.yaml'
 </script>
 
 <chord-progressions :list="modes" />

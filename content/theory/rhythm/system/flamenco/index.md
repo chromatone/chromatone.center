@@ -10,7 +10,9 @@ urls:
 ---
 
 <script setup>
-import flamenco from '#/db/rhythm/flamenco.yaml'
+import rhythms from '#/db/rhythm/rhythms.yaml'
+
+const { flamenco } = rhythms
 </script>
 
 <beat-bars v-bind="flamenco" />

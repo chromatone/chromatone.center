@@ -41,8 +41,8 @@ const neck = reactive({
     if (!ScaleType.get(props.chroma)?.empty) return ScaleType.get(props.chroma)
     else return ''
   }),
-  noteSize: 60,
-  fretWidth: 55,
+  noteSize: 40,
+  fretWidth: 50,
   fretNum: 7,
   color: computed(() => chromaColorMix(rotateArray(props.chroma.split(''), -props.pitch).join(''), props.pitch, 0.3, isDark.value ? 4 : 12)),
 });
@@ -108,22 +108,23 @@ function getNote(string, semitones) {
           stroke-width="4"
           stroke="currentColor"
           opacity="0.5"
-        )
+          )
         g.note(
           v-for="(note, n) in neck.fretNum + 1" :key="note"
           :transform="`translate(0 ${(n - 0.5) * neck.fretWidth})`"
-        )
+          )
           circle(
             :opacity="neck.chroma[(n + string) % 12] == 1 ? 1 : 0"
-            :r="neck.noteSize / 2 - 8"
+            :r="neck.noteSize / 2 - 4"
             :fill="pitchColor(string + n, 2)"
-          )
+            )
           text(
+            y="2"
             :opacity="neck.chroma[(n + string) % 12] == 1 ? 1 : 0"
             fill="white"
             font-size="18"
             font-weight="bold"
-          ) {{ notes[(n + string) % 12] }}
+            ) {{ notes[(n + string) % 12] }}
 </template>
 
 <style lang="postcss" scoped>

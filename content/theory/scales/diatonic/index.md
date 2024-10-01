@@ -35,7 +35,8 @@ These scales always have a tonal center to which all the notes relate and lead t
 
 
 <script setup>
-  import diatonic from '#/db/scale/diatonic.yaml'
+  import scales from '#/db/scales/scales.yaml'
+  const { diatonic } = scales
 </script>
 
 <chroma-profile-collection :collection="diatonic" />

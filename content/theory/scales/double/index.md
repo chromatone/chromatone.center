@@ -9,7 +9,8 @@ The double harmonic major scale is a musical scale with a flattened second and s
 ## The 7 modes of the Double harmonic major
 
 <script setup>
-  import double from '#/db/scale/double.yaml'
+  import scales from '#/db/scales/scales.yaml'
+  const { double } = scales
 </script>
 
 <chroma-profile-collection :collection="double" />
@@ -48,16 +49,16 @@ I7M(#5) bII7 bii7M bii7 bii7(b5) III6 iv° V6(b5) bvi°
 
 Like all heptatonic (seven-pitch) scales, the double harmonic scale has a mode for each of its individual scale degrees. The most commonly known of these modes is the 4th mode, the Hungarian minor scale, most similar to the harmonic minor scale with a raised 4th degree. The modes are as follows:
 
-| Mode | Name of scale                                                                                                                                                                                                                                                                                                                                                                   | Degrees |
-| ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
-|  |
-| 1    | Double harmonic major                                                                                                                                                                                                                                                                                                                                                           | 1       | ♭2 | 3 | 4 | 5 | ♭6 | 7 | 8 |
-| 2    | Lydian ♯2 ♯6                                                                                                                                                                                                                                                                                                                                                                    | 1       | ♯2 | 3 | ♯4 | 5 | ♯6 | 7 | 8 |
-| 3    | Ultraphrygian                                                                                                                                                                                                                                                                                                                                                                   | 1       | ♭2 | ♭3 | ♭4 | 5 | ♭6 | 7 | 8 |
-| 4    | [Hungarian/Gypsy minor](https://en.wikipedia.org/wiki/Hungarian_minor_scale "Hungarian minor scale")                                                                                                                                                                                                                                                                            | 1       | 2 | ♭3 | ♯4 | 5 | ♭6 | 7 | 8 |
-| 5    | [Oriental](https://en.wikipedia.org/w/index.php?title=Oriental_mode&action=edit&redlink=1 "Oriental mode (page does not exist)")                                                                                                                                                                                                                                                | 1       | ♭2 | 3 | 4 | ♭5 | 6 | ♭7 | 8 |
-| 6    | Ionian ♯2 ♯5                                                                                                                                                                                                                                                                                                                                                                    | 1       | ♯2 | 3 | 4 | ♯5 | 6 | 7 | 8 |
-| 7    | Locrian bb3 bb7 | 1       | ♭2 | bb3 | 4 | ♭5 | ♭6 | bb7 | 8 |
+| Mode | Name of scale                                                                                                                    | Degrees |
+| ---- | -------------------------------------------------------------------------------------------------------------------------------- | ------- |
+|      |
+| 1    | Double harmonic major                                                                                                            | 1       | ♭2 | 3   | 4  | 5  | ♭6 | 7   | 8 |
+| 2    | Lydian ♯2 ♯6                                                                                                                     | 1       | ♯2 | 3   | ♯4 | 5  | ♯6 | 7   | 8 |
+| 3    | Ultraphrygian                                                                                                                    | 1       | ♭2 | ♭3  | ♭4 | 5  | ♭6 | 7   | 8 |
+| 4    | [Hungarian/Gypsy minor](https://en.wikipedia.org/wiki/Hungarian_minor_scale "Hungarian minor scale")                             | 1       | 2  | ♭3  | ♯4 | 5  | ♭6 | 7   | 8 |
+| 5    | [Oriental](https://en.wikipedia.org/w/index.php?title=Oriental_mode&action=edit&redlink=1 "Oriental mode (page does not exist)") | 1       | ♭2 | 3   | 4  | ♭5 | 6  | ♭7  | 8 |
+| 6    | Ionian ♯2 ♯5                                                                                                                     | 1       | ♯2 | 3   | 4  | ♯5 | 6  | 7   | 8 |
+| 7    | Locrian bb3 bb7                                                                                                                  | 1       | ♭2 | bb3 | 4  | ♭5 | ♭6 | bb7 | 8 |
 
 <youtube-embed video="LW6qGy3RtwY" />
 

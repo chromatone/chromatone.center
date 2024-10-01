@@ -18,7 +18,7 @@ onKeyDown('Escape', () => {
 </script>
 
 <template lang='pug'>
-transition-group(name="slide")
+transition-group(name="fade")
   button.cursor-pointer.bg-op-30.backdrop-blur-xl.dark-bg-op-70.fixed.bg-light-900.dark-bg-dark-200.p-3.z-1000(v-show="open" key="arrow")
     .i-la-angle-left.text-2xl
   .panel(

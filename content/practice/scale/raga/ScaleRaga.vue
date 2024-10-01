@@ -1,5 +1,5 @@
 <script setup>
-import melakarta from '#/db/scale/melakarta.yaml'
+import melakarta from '#/db/scales/melakarta.yaml'
 import { useStorage } from '@vueuse/core';
 import { reactive, computed, watch } from 'vue'
 

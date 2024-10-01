@@ -1,5 +1,5 @@
 <script setup>
-import scales from '#/db/scale/scale-names.yaml'
+import scales from '#/db/scales/scale-names.yaml'
 import { globalScale, rotateArray } from '#/use';
 import { computed } from 'vue';
 

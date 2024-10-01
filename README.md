@@ -20,19 +20,21 @@ Useful tools to have in the pocket like a pack of interactive cards to learn and
 
 [Visual Music Practice](./content/practice/index.md)
 
-## Database 
+## Use-chromatone package
+
+[![NPM Version and link to npmjs.com](https://img.shields.io/npm/v/use-chromatone)](https://www.npmjs.com/package/use-chromatone)
+
+A collection of sound analysis and synthesis tools along with other useful media instruments to experiment with. All in a form of convenient NPM package you can use in any JS project, both SSR and client-side. Ideal tool for modern audio researchers, educators and their students as we abstract all the low level details into simple building blocks that can be used for prototyping and concept verification.
+
+[Chromatone composables](./use/README.md)
+
+## Database package
 
 [![NPM Version and link to npmjs.com](https://img.shields.io/npm/v/chromatone-db)](https://www.npmjs.com/package/chromatone-db)
 
 We collect all the musical knowledge we can get so then we can build new insights on top of this pile. Lists of intervals, chords and scales, rhythmic patterns from different cultures and more data, neatly stored in YAML format and provided to be used as a standalone NPM package with treeshaking enabled.
 
 [Music Database](./db/README.md)
-
-## Use-chromatone package
-
-[![NPM Version and link to npmjs.com](https://img.shields.io/npm/v/use-chromatone)](https://www.npmjs.com/package/use-chromatone)
-
-A collection of sound analysis and synthesis tools along with other useful media instruments to experiment with. All in a form of convenient NPM package you can use in any JS project, both SSR and client-side. Ideal tool for modern audio researchers, educators and their students as we abstract all the low level details into simple building blocks that can be used for prototyping and concept verification.
 
 ## TECH STACK
 

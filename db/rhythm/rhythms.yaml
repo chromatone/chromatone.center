@@ -349,3 +349,59 @@ balkan:
           place: Bulgaria
         - name: Plovdivsko horo
           place: Bulgaria
+
+turkish:
+  meters: [5/16, 7/16, 9/16, 10/16, 11/16, 13/16, 15/16, 18/16, 25/16]
+  patterns:
+    "X.x..":
+      meter: 5/16
+      names:
+        - name: Türk Aksağı
+    "X..x.":
+      meter: 5/16
+      names:
+        - name: Hücum Semai
+    "X...x..":
+      meter: 7/16
+      names:
+        - name: Devr-i Hindi
+    "X.x.x..":
+      meter: 7/16
+      names:
+        - name: Devr-i Turan
+    "X.x.x.x..":
+      meter: 9/16
+      names:
+        - name: Aksak
+    "X..x..x..":
+      meter: 9/16
+      names:
+        - name: Evfer
+    "X....x...":
+      meter: 9/16
+      names:
+        - name: Ağır Düyek
+    "X.x.x.x.x.":
+      meter: 10/16
+      names:
+        - name: Aksak Semai
+    "X.x.x.x.x..":
+      meter: 11/16
+      names:
+        - name: Tek Vuruş
+    "X.x.x.x.x.x..":
+      meter: 13/16
+      names:
+        - name: Nim Evsat
+    "X.x.x.x..x.x..":
+      meter: 15/16
+      names:
+        - name: Raksan
+    "X.x.x..X.x..x.x..":
+      meter: 18/16
+      names:
+        - name: Türk Aksağı (compound)
+    "X.x.x..X.x.x..X.x.x..X.x..":
+      meter: 25/16
+      names:
+        - name: Kapalı Curcuna

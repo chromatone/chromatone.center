@@ -76,7 +76,7 @@ function addLoop() {
       :accents="pattern"
       :mute="mute"
       ) 
-    .flex.flex-col.p-2.my-2.is-group(v-if="patterns")
+    .flex.flex-col.p-2.my-2.is-group.w-full(v-if="patterns")
       .flex.flex
         .flex-1.p-1.border-1.border-current.rounded-lg.m-1.opacity-50(
           v-for="(accent, a) in pattern" :key="a"

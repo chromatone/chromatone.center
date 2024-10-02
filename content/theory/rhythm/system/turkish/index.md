@@ -2,6 +2,7 @@
 title: Turkish rhythms
 description: Usuls and aksaks
 date: 2014-10-03
+cover: Misirli_Ahmet.jpg
 links:
   - https://en.wikipedia.org/wiki/Aksak
   - https://en.wikipedia.org/wiki/Ottoman_music

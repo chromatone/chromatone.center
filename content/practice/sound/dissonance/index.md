@@ -19,11 +19,20 @@ const SoundDissonance = defineClientComponent(() => {
 })
 </script>
 
-<SoundDissonance />
 
+<client-only >
+
+  <SoundDissonance style="position: sticky; top: 0;" />
+
+</client-only >
+
+
+::: info
 
 A simple curve for two sine waves is readily established and then we can calculate and explore sensory dissonance curves for complex sounds as the sum of interactions between their partials.
 
 Try dragging the note to hear the exact interval. Toggle the plain sine and rich sawtooth waveforms. Compare the feeling of consonance and the dips in the curve yourself.
 
 [More info in the Theory research](../../../theory/intervals/dissonance/index.md).
+
+:::

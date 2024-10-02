@@ -42,9 +42,16 @@ watch(() => props.patterns, p => {
 }, { immediate: true })
 
 function selectPattern(p, meter) {
-  loops.value[0].over = p.length;
-  loops.value[0].under = meter ? meter.split('/')[1] : p.length
+  loops.value = {
+    0: {
+      over: p.length,
+      under: Number(meter ? meter.split('/')[1] : p.length),
+      volume: props.secondary ? 0 : 1,
+      sound: 'A'
+    }
+  }
   pattern.value = p;
+  console.log(loops.value)
 }
 
 function addLoop() {
@@ -61,7 +68,7 @@ function addLoop() {
       style="flex: 1 1 420px"
       v-for="(loop, i) in loops"
       :key="i"
-      :order="i"
+      :order="Number(i)"
       :loop="loop"
       :maxRatio="maxRatio"
       @del="delete loops[i]"
@@ -106,5 +113,3 @@ function addLoop() {
     
 
 </template>
-
-

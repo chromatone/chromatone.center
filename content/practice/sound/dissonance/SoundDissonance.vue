@@ -35,8 +35,8 @@ const freq = reactive({
 const synth = reactive({
   started: false,
   playing: false,
-  osc: 'sawtooth8',
-  oscs: ['sawtooth8', 'sine'],
+  osc: 'sine',
+  oscs: ['sine', 'sawtooth8'],
   envelope: {
     attack: 0.2,
     decay: 0.2,
@@ -69,14 +69,13 @@ function initSynth() {
         type: synth.osc
       },
       filterEnvelope: synth.envelope,
-      volume: 0
     }).connect(channel)
+
     synthTwo = new MonoSynth({
       oscillator: {
         type: synth.osc,
       },
       filterEnvelope: synth.envelope,
-      volume: 0
     }).connect(channel)
 
     synth.started = true
@@ -110,7 +109,7 @@ watch([() => freq.hz, () => mouse.pressed], () => {
 
 <template lang="pug">
 .fullscreen-container#screen
-  svg#dissonance.min-h-80svh.max-h-100svh.w-full.select-none(
+  svg#dissonance.max-h-100svh.w-full.select-none(
     ref="svg",
     version="1.1",
     baseProfile="full",
@@ -131,7 +130,7 @@ watch([() => freq.hz, () => mouse.pressed], () => {
       v-for="(fr, f) in [220, 440]"
       :key="fr"
 
-      :transform="`translate(${10 + f * 140},0)`"
+      :transform="`translate(${960 + f * 140},0)`"
       @click="freq.main = fr"
       )
       rect(
@@ -164,7 +163,7 @@ watch([() => freq.hz, () => mouse.pressed], () => {
     g.cursor-pointer(
       v-for="(osc, o) in synth.oscs"
       :key="osc"
-      :transform="`translate(${870 + o * 240},0)`"
+      :transform="`translate(${o * 120},0)`"
       @click="synth.setOsc(osc)"
       )
       rect(

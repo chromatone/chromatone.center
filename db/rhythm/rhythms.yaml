@@ -229,3 +229,123 @@ tala:
       names:
         - name: Adi tala
         - name: Chaturasra-nadai Chaturasra-jaati Triputa tala
+
+balkan:
+  meters:
+    [
+      5/16,
+      6/8,
+      7/16,
+      9/16,
+      11/16,
+      12/16,
+      13/16,
+      14/16,
+      15/16,
+      18/16,
+      22/16,
+      25/16,
+    ]
+  patterns:
+    "X.x..":
+      meter: 5/16
+      wiki: https://en.wikipedia.org/wiki/Paydushko_horo
+      youtube: fESztL_G54A
+      names:
+        - name: Paidushko horo
+        - name: Old Man’s Hobble
+    "X.X.x.":
+      meter: 6/8
+      wiki: https://en.wikipedia.org/wiki/Pravo_horo
+      names:
+        - name: Pravo horo
+          place: Bulgaria
+    "X.x.x..":
+      meter: 7/16
+      youtube: j5Vha9ppvYk
+      names:
+        - name: Rachenitsa
+          place: West Bulgaria
+    "X..x.x.":
+      meter: 7/16
+      wiki: https://en.wikipedia.org/wiki/Lesnoto
+      youtube: WYE3dO7LDRk
+      names:
+        - name: Lesno
+          place: Macedonia
+        - name: Pravoto
+          place: Macedonia
+        - name: Makedonsko horo
+          place: Bulgaria
+        - name: Chetvorno horo
+          place: Bulgaria
+    "X.x.x.X..":
+      meter: 9/16
+      wiki: https://en.wikipedia.org/wiki/Daychovo_horo
+      youtube: hx8omyfwlcA
+      names:
+        - name: Daychovo horo
+          place: Bulgaria
+    "X.x.X..x.x.":
+      meter: 11/16
+      wiki: https://en.wikipedia.org/wiki/Kopanitsa
+      youtube: WRdifDUq2EA
+      names:
+        - name: Gankino horo
+          place: North Bulgaria
+        - name: Kopanitsa
+          place: South Bulgaria
+    "X..x.x.x.x..":
+      meter: 12/16
+      wiki: https://en.wikipedia.org/wiki/Petrunino_horo
+      youtube: dqUe-8WOc2E
+      names:
+        - name: Petrunino horo
+          place: West Bulgaria
+    "X.x.x.X..x.x.":
+      meter: 13/16
+      youtube: rxiy5ZTzKMI
+      names:
+        - name: Krivo plovdivsko horo
+          place: Bulgaria
+        - name: Postupano
+          place: Macedonia
+    "X..x.x..X.x..":
+      meter: 13/16
+      names:
+        - name: Ispaychi
+          place: Bulgaria
+    "X.x.x.x..X.x..":
+      meter: 14/16
+      names:
+        - name: Elbasansko horo
+          place: Bulgaria
+    "X.x.x.x.X..x.x.":
+      meter: 15/16
+      youtube: xeGgdjY5oXI
+      names:
+        - name: Buchimish horo
+          place: South Bulgaria
+    "X..x.x.x.x.X..x.x.":
+      meter: 18/16
+      wiki: https://en.wikipedia.org/wiki/Yove_male_mome
+      youtube: S_-6SY7xGNw
+      names:
+        - name: Yovino horo
+          place: West Bulgaria
+        - name: Yove male mome
+          place: Bulgaria
+    "X.x.x.X..x.x.x.X..x.x.":
+      meter: 22/16
+      youtube: G5tSEbTsrQM
+      names:
+        - name: Sandansko horo
+          place: Bulgaria
+    "X..x.x.X..x.x.x.x.X..x.x.":
+      meter: 25/16
+      youtube: YG5MNYfJWmQ
+      names:
+        - name: Sedi Donka
+          place: Bulgaria
+        - name: Plovdivsko horo
+          place: Bulgaria

@@ -1,7 +1,7 @@
 {
 	"name": "chromatone-db",
 	"description": "Music theory knowledge database",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"homepage": "https://chromatone.center",
 	"repository": {
 		"type": "git",

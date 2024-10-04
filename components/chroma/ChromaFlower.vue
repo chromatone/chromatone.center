@@ -9,6 +9,7 @@ import { useTuner } from '#/use/tuner'
 import { colord } from "colord";
 import { useClipboard, watchThrottled } from '@vueuse/core'
 import { computed, onMounted, ref, shallowRef } from 'vue'
+import { Note } from 'tonal'
 
 const props = defineProps({
   letters: { type: Boolean, default: true },
@@ -21,6 +22,7 @@ const flower = computed(() => {
     return {
       note: note,
       pitch: n,
+      midi: n + 57 + (n < globalScale.tonic ? 12 : 0),
       coord: coord(n, 0.42),
       middle: coord(n, 0.28),
       inside: coord(n, 0.15),
@@ -38,24 +40,19 @@ function getAmmount(ammount) {
   return ammount > tunr.value.tuner.chromaAvg ? tunr.value.tuner.note.silent ? 0 : ammount : 0
 }
 
-const midiNotes = computed(() => {
-  return new Array(127).fill(null).map((c, n) => (n + 3) % 12)
-})
-
 function coord(n = 0, q = 0.5) {
   return getCircleCoord(n % 12, 12, props.size * q, 0)
 }
 
 const pressed = ref()
 
-function keyPlay(pitch, event, off, velocity) {
-  let n = flower.value[pitch].note + (pitch >= 3 ? 4 : 3)
+function keyPlay(midiNote, event, off, velocity) {
+  let n = Note.fromMidi(midiNote)
   if (!off) {
     playNote(n, velocity)
   } else {
     stopNote(n)
   }
-
 }
 
 const { copy, copied } = useClipboard()
@@ -147,12 +144,12 @@ watchThrottled(loaded, l => {
     g(:transform="`translate(${size / 2}, ${size / 2}) `")
       g.keys(v-for="(note, pitch) in flower" :key="note")
         g.key.cursor-pointer(
-          @mousedown.passive="keyPlay(pitch, $event);"
-          @mouseup.passive="keyPlay(pitch, $event, true)"
-          @mouseenter.passive="pressed && keyPlay(pitch, $event);"
-          @touchstart.prevent.stop="keyPlay(pitch, $event)"
-          @touchend.prevent.stop="keyPlay(pitch, $event, true)"
-          @mouseleave="keyPlay(pitch, $event, true)"
+          @mousedown.passive="keyPlay(note.midi, $event);"
+          @mouseup.passive="keyPlay(note.midi, $event, true)"
+          @mouseenter.passive="pressed && keyPlay(note.midi, $event);"
+          @touchstart.prevent.stop="keyPlay(note.midi, $event)"
+          @touchend.prevent.stop="keyPlay(note.midi, $event, true)"
+          @mouseleave="keyPlay(note.midi, $event, true)"
           )
           g.petal(
             :transform="`rotate(${pitch * 30}) translate(2,-120) `"
@@ -188,10 +185,10 @@ watchThrottled(loaded, l => {
           g.note.select-none(
             :transform="`translate(${note.coord.x}, ${note.coord.y})`"
             )
-            circle(
+            circle.transition(
               style="transition: all 100ms ease-out"
               :fill="noteColor(pitch, activeChromaMidi[pitch] ? 4 : 3)"
-              :r="size / 12"
+              :r="pitch == globalScale.tonic ? size / 11 : size / 12"
               )
             g(v-if="tunr?.tuner?.initiated")
               circle(

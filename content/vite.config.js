@@ -69,7 +69,7 @@ export default defineConfig(
         presets: [
           presetIcons({
             scale: 1.2,
-            cdn: "https://esm.sh/",
+            // cdn: "https://esm.sh/",
             extraProperties: {
               'vertical-align': 'middle'
             }

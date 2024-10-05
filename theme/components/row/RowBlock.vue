@@ -48,7 +48,9 @@ a.header.no-underline.row(
         span.text-xl.px-2.mt-2(v-if="item?.frontmatter?.more") 
           .i-radix-icons-text-align-left
         .flex-1
-        button.text-lg.op-40.hover-op-90.transition.i-la-external-link-square-alt(@click.stop.prevent="go(item.url + '?pure=true')")
+        button.op-30.hover-op-90.transition.i-la-external-link-square-alt(
+          v-if="item.frontmatter?.layout == 'app'"
+          @click.stop.prevent="go(item.url + '?pure=true')")
       .flex-1
       card-date(v-if="!item?.frontmatter?.product",:date="item.lastModified")
     .text-md.mt-4.mb-2.font-normal.w-full.flex-1(v-if="item?.frontmatter?.description") {{ item?.frontmatter?.description }}

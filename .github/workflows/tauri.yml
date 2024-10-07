@@ -59,5 +59,4 @@ jobs:
           releaseDraft: true
           prerelease: false
           distPath: ./dist/
-          tauriScript: pnpm tauri
           args: ${{ matrix.args }}

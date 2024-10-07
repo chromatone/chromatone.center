@@ -11,11 +11,11 @@ const loaded = ref(false)
 </script>
 
 <template lang="pug">
-.iframe-container.shadow-lg.rounded-lg.bg-cover()
+.iframe-container.shadow-lg.rounded-lg.bg-cover.min-h-60()
   .flex.items-center.relative.w-full.bg-cover.cursor-pointer.op-80.hover-op-100.transition(
     v-if="!loaded"
     @click="loaded = true")
-    img(:src="`https://img.youtube.com/vi/${video}/hqdefault.jpg`")
+    img.w-full(:src="`https://img.youtube.com/vi/${video}/hqdefault.jpg`")
     .i-la-play-circle.text-xl
   iframe.overflow-hidden(
     v-else

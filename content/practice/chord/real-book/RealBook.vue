@@ -6,7 +6,6 @@ import { useFuse } from '@vueuse/integrations/useFuse'
 import { Chord } from 'tonal';
 import { useStorage } from '@vueuse/core';
 
-
 const globalChord = ref('A')
 
 jazz.sort((a, b) => a.Title < b.Title ? -1 : 1)

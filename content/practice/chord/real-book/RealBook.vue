@@ -1,11 +1,13 @@
 <script setup>
 import jazz from '#/db/chords/real-book.yaml'
 import { noteNames, pitchColor } from '#/use'
-import { computed, ref } from 'vue'
+import { computed, ref, reactive } from 'vue'
 import { useFuse } from '@vueuse/integrations/useFuse'
 import { Chord } from 'tonal';
 import { useStorage } from '@vueuse/core';
-import { globalChord } from '#/use/global'
+
+
+const globalChord = ref('A')
 
 jazz.sort((a, b) => a.Title < b.Title ? -1 : 1)
 
@@ -27,7 +29,6 @@ const { results } = useFuse(searchText, jazz, {
 
 <template lang='pug'>
 .flex.gap-1.justify-end(style="line-height: 1.2em;")
-  chord-sheet.z-100.fixed.bottom-2.right-2.max-w-88vw.min-w-80.max-h-90vh.overflow-scroll
   .flex.flex-col.max-h-100vh.overflow-scroll.gap-1.op-80.hover-op-100.transition.overscroll-none(
     style="flex: 0 0 160px")
     .flex.p-2.sticky.top-0.bg-light-400.dark-bg-dark-400.items-center.bg-op-80.dark-bg-op-80.backdrop-blur.z-1001
@@ -66,11 +67,16 @@ const { results } = useFuse(searchText, jazz, {
         .flex.gap-2(v-for="line in currentSong.chords" :key="line")
           .flex-1.flex.gap-.rounded.overflow-hidden.cursor-pointer(v-for="chord in line" :key="chord") 
             .flex-1.p-1.flex.font-bold.text-sm.filter.hover-brightness-150(
-              @click="globalChord.name = ch"
+              @click="globalChord = ch"
               v-for="ch in chord.split(' ')" :key="ch"
               :style="{ backgroundColor: pitchColor(noteNames[Chord.get(ch).tonic], 4, 1, .3) }"
               ) {{ ch }} 
     youtube-embed.my-16(v-if="currentSong.youtube" :video="currentSong.youtube")
+    .flex-1
+    chord-sheet.z-100.sticky.bottom-2.right-2(
+      @reset="globalChord = ''"
+      :chord="globalChord"
+    )
 </template>
 
 <style lang="postcss" scoped>

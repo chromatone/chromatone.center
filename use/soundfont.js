@@ -1,5 +1,5 @@
 import { useAudio } from "#/use/audio";
-import { midi } from "#/use/midi";
+import { useMidi } from "#/use/midi";
 import { useStorage } from "@vueuse/core";
 import { useClamp } from "@vueuse/math";
 import { Soundfont, getSoundfontNames, Reverb, } from "smplr";
@@ -17,6 +17,8 @@ const fontEnabled = useStorage('sound-font-enabled', true)
 export function useSoundFont() {
 
   const { master } = useAudio()
+
+  const { midi } = useMidi()
 
   watch(instrument, instr => {
     cached[instr] = true

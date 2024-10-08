@@ -24,6 +24,7 @@ const { frontmatter: f } = useData()
 const openSideBar = ref(false);
 
 const { pages, children, siblings, parents } = usePages(route, data)
+
 const page = usePage(route, data)
 
 
@@ -83,7 +84,7 @@ midi-notes(v-if="!params.pure && !params.nokeys")
       .flex.flex-wrap.items-start.px-4.gap-4
         .flex.flex-wrap.gap-4.items-stretch(
           style="flex: 1 1 280px;"
-          )
+          ) 
           home-tile(
             style="flex: 1 1 280px;"
             v-for="(area, i) in children", 

@@ -2,7 +2,7 @@ import { createContentLoader } from 'vitepress'
 import VPMedia from '../theme/media'
 
 
-const pages = createContentLoader('./**/[!/[]*/index.md', {
+const pages = createContentLoader('./**/index.md', {
   includeSrc: true,
   transform: VPMedia({
     root: new URL('./', import.meta.url),
@@ -11,5 +11,7 @@ const pages = createContentLoader('./**/[!/[]*/index.md', {
     }
   })
 })
+
+
 
 export default pages

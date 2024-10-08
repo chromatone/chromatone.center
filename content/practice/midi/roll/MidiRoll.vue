@@ -5,7 +5,7 @@ import { computed, onMounted, reactive, ref, watch } from "vue";
 import { useClamp } from "@vueuse/math";
 import { noteColor } from "#/use";
 
-const { midi, stopAll, channels } = useMidi()
+const { midi, stopAll, channels, guessChords } = useMidi()
 
 const { width, height } = useWindowSize()
 
@@ -164,8 +164,9 @@ function dragSpeed(drag) {
       .i-la-pause(v-else)
     button.absolute.bottom-2.left-2.p-2(@click="stopAll()")
       .i-la-stop
+    .absolute.bottom-1.left-8.text-white.p-2
+      .text-lg {{ guessChords[0] }}
     .absolute.top-2.left-2.text-white.p-2(
-
       )
       .text-lg x{{ state.speed }}
     canvas#spectrogram.max-h-100vh.w-full.cursor-pointer(

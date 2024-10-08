@@ -64,16 +64,17 @@ const { results } = useFuse(searchText, jazz, {
     transition(name="fade" mode="out-in")
       .flex.flex-col.gap-4.p-2(:key="currentSong.Title")
         .flex.gap-2(v-for="line in currentSong.chords" :key="line")
-          .flex-1.flex.gap-.rounded.overflow-hidden.cursor-pointer(v-for="chord in line" :key="chord") 
-            .flex-1.flex.font-bold.text-sm.filter.hover-brightness-150.flex-col(
+          .flex-1.flex.gap-1.rounded.overflow-hidden.cursor-pointer(v-for="chord in line" :key="chord") 
+            .flex-1.flex.font-bold.text-sm.filter.flex-col(
               @pointerdown="playChroma(Chord.get(ch).chroma, noteNames[Chord.get(ch).tonic]); globalChord = ch"
               @pointerup="stopChroma(Chord.get(ch).chroma, noteNames[Chord.get(ch).tonic])"
               @pointerleave="stopChroma(Chord.get(ch).chroma, noteNames[Chord.get(ch).tonic])"
               v-for="ch in chord.split(' ')" :key="ch"
-              :style="{ backgroundColor: pitchColor(noteNames[Chord.get(ch).tonic], 4, 1, .3) }"
               ) 
-                .text-lg.p-2 {{ ch }}
-                .flex-1
+                .text-md.md-text-lg.p-2.flex-1.hover-brightness-150(
+                  :style="{ backgroundColor: pitchColor(noteNames[Chord.get(ch).tonic], 4, 1, .3) }"
+                ) {{ ch }}
+
                 .flex
                   .py-5px.flex-1(
                     :style="{ backgroundColor: pitchColor(pitch, 4, 1, 0.5) }"

@@ -77,7 +77,7 @@ function getChords(degrees) {
             :playAll="true"
             )
           chord-tab(
-            :instrument="state.mode"
+            v-model:instrument="state.mode"
             :chroma="chord.chroma"
             :pitch="chord.tonicPitch"
             v-if="state.mode == 'guitar' || state.mode == 'ukulele'"

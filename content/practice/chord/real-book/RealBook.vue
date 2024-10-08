@@ -1,9 +1,9 @@
 <script setup>
 import jazz from '#/db/chords/real-book.yaml'
-import { noteNames, pitchColor } from '#/use'
+import { noteNames, pitchColor, playChroma, playChromaOnce, stopChroma } from '#/use'
 import { computed, ref, reactive } from 'vue'
 import { useFuse } from '@vueuse/integrations/useFuse'
-import { Chord } from 'tonal';
+import { Chord, Range } from 'tonal';
 import { useStorage } from '@vueuse/core';
 
 const globalChord = ref('A')
@@ -62,20 +62,28 @@ const { results } = useFuse(searchText, jazz, {
         .text-sm  {{ currentSong.TimeSig[0] }}/{{ currentSong.TimeSig[1] }}, {{ currentSong.Bars }} bars 
 
     transition(name="fade" mode="out-in")
-      .flex.flex-col.gap-4(:key="currentSong.Title")
+      .flex.flex-col.gap-4.p-2(:key="currentSong.Title")
         .flex.gap-2(v-for="line in currentSong.chords" :key="line")
           .flex-1.flex.gap-.rounded.overflow-hidden.cursor-pointer(v-for="chord in line" :key="chord") 
-            .flex-1.p-1.flex.font-bold.text-sm.filter.hover-brightness-150(
-              @click="globalChord = ch"
+            .flex-1.flex.font-bold.text-sm.filter.hover-brightness-150.flex-col(
+              @pointerdown="playChroma(Chord.get(ch).chroma, noteNames[Chord.get(ch).tonic]); globalChord = ch"
+              @pointerup="stopChroma(Chord.get(ch).chroma, noteNames[Chord.get(ch).tonic])"
+              @pointerleave="stopChroma(Chord.get(ch).chroma, noteNames[Chord.get(ch).tonic])"
               v-for="ch in chord.split(' ')" :key="ch"
               :style="{ backgroundColor: pitchColor(noteNames[Chord.get(ch).tonic], 4, 1, .3) }"
-              ) {{ ch }} 
+              ) 
+                .text-lg.p-2 {{ ch }}
+                .flex-1
+                .flex
+                  .py-5px.flex-1(
+                    :style="{ backgroundColor: pitchColor(pitch, 4, 1, 0.5) }"
+                    v-for="pitch in Range.numeric([0, Chord.get(ch).notes.length - 1]).map(Chord.steps(ch)).map(n => noteNames[n])") 
     youtube-embed.my-16(v-if="currentSong.youtube" :video="currentSong.youtube")
     .flex-1
     chord-sheet.z-100.sticky.bottom-2.right-2(
       @reset="globalChord = ''"
       :chord="globalChord"
-    )
+      )
 </template>
 
 <style lang="postcss" scoped>

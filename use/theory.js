@@ -19,6 +19,8 @@ all.forEach((note, n) => {
   noteNames[note] = n % 12
 })
 
+noteNames['Fbb'] = 6
+
 export const notes = naturals
 
 // import ChordChoice from '../db/chords/basic.yaml'

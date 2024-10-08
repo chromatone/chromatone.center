@@ -117,7 +117,7 @@ const { copy, copied } = useClipboard({
                             :chroma="chord.chroma" :pitch="noteNames[chord.tonic]")
                      chord-tab.max-w-40(
                             v-if="instrument == 'ukulele' || instrument == 'guitar'"
-                            :instrument
+                            v-model:instrument="instrument"
                             :title="false"
                             :chroma="chord.chroma" :pitch="noteNames[chord.tonic]")
 

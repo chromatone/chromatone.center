@@ -40,7 +40,7 @@ const instrument = ref('guitar')
 				chord-tab.max-h-60(
 					:chroma="chord.chroma" 
 					:pitch="(globalScale.tonic + chord.degree) % 12"
-					:instrument="instrument")
+					v-model:instrument="instrument")
 
 		//- .flex.w-full
 			rhythm-circle(style="flex: 1 0 50%")

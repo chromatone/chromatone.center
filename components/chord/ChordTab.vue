@@ -1,8 +1,7 @@
 <script setup>
 import { Note, Interval, Pcset, ChordType, ScaleType, } from 'tonal'
-import { freqColor, freqPitch, rotateArray, pitchColor } from '#/use/calculations'
-import { chromaColorMix, noteColor } from '#/use/colors'
-import { colord } from 'colord'
+import { rotateArray, pitchColor } from '#/use/calculations'
+import { chromaColorMix } from '#/use/colors'
 import { globalScale } from '#/use/global'
 import { notes } from '#/use/theory'
 import { reactive, computed } from 'vue'
@@ -11,11 +10,12 @@ const { isDark } = useData()
 
 const props = defineProps({
   title: { type: Boolean, default: true },
-  instrument: { type: String, default: 'ukulele' },
   chroma: { type: String, default: '100000000000' },
   pitch: { type: Number, default: 0 },
   chordNotes: { type: Array, default: [] }
 });
+
+const instrument = defineModel('instrument', { default: 'guitar' })
 
 // const instruments = {
 //   guitar: ['E2', 'A2', 'D3', 'G3', 'B3', 'E4'],
@@ -30,7 +30,7 @@ const instruments = {
 const inlays = [3, 5, 7, 10, 12, 15, 17, 19, 21]
 
 const neck = reactive({
-  strings: computed(() => instruments[props.instrument]),
+  strings: computed(() => instruments[instrument.value]),
   height: computed(() => (neck.strings.length - 1) * neck.noteSize),
   width: computed(() => neck.fretNum * neck.fretWidth),
   isInChord: computed(() => Pcset.isNoteIncludedIn(props.chordNotes)),
@@ -62,7 +62,7 @@ function getNote(string, semitones) {
   .flex.gap-1.p-2.text-lg(v-if="title")
     .font-bold {{ notes[pitch] }}{{ neck.title }} 
     .flex-1
-    .p-0.capitalize {{ instrument }}
+    .p-0.capitalize.active-op-100.transition(v-for="(ins, i) in instruments" @click="instrument = i" :class="{ [i == instrument ? 'op-100' : 'op-40']: true }") {{ i }}
   svg#fretboard.max-h-3xl.w-full.my-2(
     version="1.1",
     baseProfile="full",

@@ -17780,8 +17780,8 @@
       - Bb13sus
     - - EbM9
       - G7#5b9
-      - CM9
-      - CM9
+      - Cmaj9
+      - Cmaj9
     - - C7#9 NC
       - NC
 - filename: TenderIsTheNight
@@ -19566,17 +19566,17 @@
     - 4
   Bars: "32"
   chords:
-    - - CM9
+    - - Cmaj9
       - G13b9
-      - CM9 G9#5
+      - Cmaj9 G9#5
       - CM7 E7#5
     - - Am7
       - D9
       - Dm7add11
       - G7
-    - - CM9
+    - - Cmaj9
       - G13b9
-      - CM9 G9#5
+      - Cmaj9 G9#5
       - CM7 E7#5
     - - Am7
       - D9
@@ -19590,9 +19590,9 @@
       - Bb9
       - Dm7b5
       - G7b9
-    - - CM9
+    - - Cmaj9
       - G13b9
-      - CM9 A9
+      - Cmaj9 A9
       - Dm7 Fm6
     - - Em7 Am7
       - D7 G13
@@ -27413,7 +27413,7 @@
       - F#m7add4
       - Bm7
       - E9sus4
-    - - CM9
+    - - Cmaj9
       - Am9
       - Bm7
       - E9sus4
@@ -27425,15 +27425,15 @@
       - F#m7add4
       - Bm7
       - E9sus4
-    - - CM9
+    - - Cmaj9
       - Am9
       - Bm7
       - E9sus4
-    - - CM9 CM7/B
+    - - Cmaj9 CM7/B
       - Am7 Am7/G
       - F#m7add4
       - G7add6
-    - - CM9 CM7/B
+    - - Cmaj9 CM7/B
       - Am7 Am7/G
       - F#m7add4 B9/F#
       - FM7#11 E7
@@ -28070,7 +28070,7 @@
     - - Dm9 Em7
       - FM7 G7sus4
       - CM7 G13sus4
-      - CM9 A7#5b9
+      - Cmaj9 A7#5b9
 - filename: ILikeTheLikesOfYou
   Title: I Like the Likes of You
   ComposedBy: Vernon Duke and E.Y. Harburg
@@ -29316,9 +29316,9 @@
     - 4
   Bars: "24"
   chords:
-    - - CM9 Dm7/G
+    - - Cmaj9 Dm7/G
       - CM7 Dm7/G
-      - CM9 Dm7/G
+      - Cmaj9 Dm7/G
       - CM7 Ab/Eb
     - - Gb/Ab Ab/Eb
       - Gb/Ab Ab/Eb
@@ -33599,7 +33599,7 @@
     - - GM7
       - Gb7alt
       - Bm7
-      - CM9#11
+      - Cmaj9#11
     - - Bm7
       - Bm/A
       - Abm7b5
@@ -52387,7 +52387,7 @@
       - BbM7 Bb6
       - Bb69
     - - Dm7b5 G7b9
-      - CM9
+      - Cmaj9
       - Cm7b5 F7b5
       - BbM9
     - - Bbm7b5 Eb7
@@ -52810,7 +52810,7 @@
     - - Bm7b5 E13b9
       - Amadd9 Am7
       - Dm7b5 G7#9
-      - CM9
+      - Cmaj9
     - - Fm7 Bb7
       - EbM7
       - Am7 D7
@@ -52828,7 +52828,7 @@
       - Em7/A A13b9
       - DM7/A
     - - Dm9/G G13b9
-      - CM9/G
+      - Cmaj9/G
       - Dm9/G G13
       - CM7/G C13
     - - B9 B7#5
@@ -52842,7 +52842,7 @@
     - - Dm7b5 G7#5#9
       - Cm9 Eb9sus4
       - AbM7 G7b9#11
-      - CM9
+      - Cmaj9
     - - Bm7b5 E13b9
       - Amadd9 Am7
       - Ab9sus4 Ab7b9
@@ -59413,10 +59413,10 @@
       - F#m7b5 Fm6
     - - Em7 Em7 A7#5b9 A7b9
       - D9 G7#5b9
-      - CM9 Db9
+      - Cmaj9 Db9
       - Dm9 Db9
-    - - CM9 Db9#11
-      - CM9
+    - - Cmaj9 Db9#11
+      - Cmaj9
 - filename: SummerPlace
   Title: A Summer Place
   ComposedBy: Max Steiner
@@ -60901,7 +60901,7 @@
   chords:
     - - Dm
       - G/D
-      - CM9
+      - Cmaj9
       - Am
     - - BbM7
       - Bb6
@@ -60909,7 +60909,7 @@
       - A7
     - - Dm
       - G/D
-      - CM9
+      - Cmaj9
       - Am
     - - BbM7
       - A7
@@ -68816,7 +68816,7 @@
       - E
     - - Am7
       - Bm7
-      - CM9
+      - Cmaj9
       - Bm7
     - - Am7
       - Bm7
@@ -74776,7 +74776,7 @@
       - Am/G
       - FM7
       - G13 G7b5 G7
-    - - CM9
+    - - Cmaj9
       - G
       - C C+ C6
       - CM7 CM7 Em
@@ -76484,22 +76484,22 @@
     - 4
   Bars: "32"
   chords:
-    - - CM9
+    - - Cmaj9
       - Gm7/C
-      - CM9
+      - Cmaj9
       - Gm7 Gm7 Gm7 F#9
     - - Cm9/F Cm9/F Cm9/F F9
       - Dm7 Ebm7
       - Em7 A7
       - Dm7 Dm7 G7b5b9 G9
-    - - CM9
+    - - Cmaj9
       - Gm7/C
-      - CM9
+      - Cmaj9
       - Gm7 Gm7 Gm7 F#9
     - - Cm9/F Cm9/F Cm9/F F9
       - Dm7 Ebm7
       - Dm7 Dm7 Dm7 Db9#11
-      - CM9
+      - Cmaj9
     - - F#m7b5 B7+
       - Em7 A7b9
       - F#m7 F#m7 F#m7 D/F#
@@ -76508,14 +76508,14 @@
       - F#m7b5 B7b9
       - Em7b5 A7#11
       - Dm7 Dm7 G7b5b9 G9
-    - - CM9
+    - - Cmaj9
       - Gm7/C
       - CM7
       - Gm7 Gm7 Gm7 F#9
     - - Cm9/F Cm9/F Cm9/F F9
       - Dm7 Ebm7
       - Dm7 Dm7 Dm7 Db9#11
-      - CM9
+      - Cmaj9
 - filename: SayIt
   Title: Say It (Over and Over Again
   ComposedBy: Frank Loesser and Jimmy McHugh
@@ -77325,29 +77325,29 @@
     - 4
   Bars: "32"
   chords:
-    - - CM9
-      - CM9
+    - - Cmaj9
+      - Cmaj9
       - Cm9
       - Cm9
     - - D7/C
       - DbM7/C
-      - CM9
+      - Cmaj9
       - A7alt
     - - Dm9
       - G13
-      - CM9
+      - Cmaj9
       - Gm9 C13
     - - Fm7
       - Bb7
       - EbM7
       - Dm7 G7
-    - - CM9
-      - CM9
+    - - Cmaj9
+      - Cmaj9
       - Cm9
       - Cm9
     - - D7/C
       - DbM7/C
-      - CM9
+      - Cmaj9
       - A7alt
     - - Dm7 Dm7/C
       - Bm7b5 E7b9
@@ -81080,37 +81080,37 @@
     - 4
   Bars: "32"
   chords:
-    - - CM9
-      - CM9 B7
+    - - Cmaj9
+      - Cmaj9 B7
       - E7+
       - E7+ E7
     - - A7+
       - A7+ A7
       - Dm7b5
       - G7
-    - - CM9
-      - CM9 Ebo7
+    - - Cmaj9
+      - Cmaj9 Ebo7
       - Dm7
       - G7
-    - - CM9
+    - - Cmaj9
       - Am7
       - Ab7
       - D7b9 G7
-    - - CM9
-      - CM9 B7
+    - - Cmaj9
+      - Cmaj9 B7
       - E7+
       - E7+ E7
     - - Am
       - Am7
       - D7
       - D7 Ab7
-    - - CM9
-      - CM9 Ebo7
+    - - Cmaj9
+      - Cmaj9 Ebo7
       - Dm7 G7
       - Em7b5 A7alt
     - - Dm7
       - G7
-      - CM9
+      - Cmaj9
       - Dm7 G7
 - filename: MatingCall
   Title: Mating Call
@@ -89833,7 +89833,7 @@
       - Em7 Am7 Dm7 G7sus4
       - Em7 Am7 FM7 BbM7
     - - Em7 EbM7 AbM7 DbM7
-      - CM9
+      - Cmaj9
 - filename: Nevertheless
   Title: Nevertheless
   ComposedBy: Bert Kalmar and Harry Ruby
@@ -90507,7 +90507,7 @@
     - - Bbm7 Abo7/Eb
       - AbM9
       - G13sus4 G13b9
-      - CM9
+      - Cmaj9
     - - F9sus4 Bbo7/F
       - BbM7/F E9#11
       - EbM7 A7alt
@@ -93919,7 +93919,7 @@
     - - F C9
       - F6 D#o7
       - C F#o7
-      - CM9 C
+      - Cmaj9 C
     - - C6 Em
       - Am C6
       - D7b5
@@ -97503,8 +97503,8 @@
       - C
     - - C/E Ebo7
       - Dm7 G7
-      - CM9
-      - CM9 Bb7 Bb7 Bb7
+      - Cmaj9
+      - Cmaj9 Bb7 Bb7 Bb7
     - - Eb Eb Eb Cm7
       - Cm7
       - Dm7b5
@@ -99312,7 +99312,7 @@
       - Am7/G
     - - Dm9
       - G13b9
-      - CM9
+      - Cmaj9
       - F13#11
     - - Bm9 Bbo7
       - Am9 D13b9
@@ -99328,7 +99328,7 @@
       - Am7/G
     - - Dm9
       - G13b9
-      - CM9
+      - Cmaj9
       - F13#11
     - - Bm9 Bbo7
       - Am9 D13b9
@@ -107279,11 +107279,11 @@
     - 4
   Bars: "28"
   chords:
-    - - CM9
+    - - Cmaj9
       - Db7
       - Db7
       - A13
-    - - CM9
+    - - Cmaj9
       - Db7
       - C7sus4
       - C7sus4
@@ -107291,11 +107291,11 @@
       - F11
       - F11
       - F11
-    - - CM9
+    - - Cmaj9
       - Db7
       - Db7
       - A13
-    - - CM9
+    - - Cmaj9
       - Db7
       - C7sus4
       - C7sus4
@@ -107303,7 +107303,7 @@
       - F11
       - F11
       - F11
-    - - CM9
+    - - Cmaj9
       - Db7
       - Db13 C13sus4
       - A13 DM7 DM7 DM7
@@ -107656,7 +107656,7 @@
       - FM7
       - G9 E7/G#
       - Am9 AbM7
-    - - CM9/G F#m7b5
+    - - Cmaj9/G F#m7b5
       - FM7 Eb69
       - D9 G7sus4
       - CM7
@@ -107673,7 +107673,7 @@
       - FM7
       - G9 E7/G#
     - - Am9 AbM7
-      - CM9/G F#m7b5
+      - Cmaj9/G F#m7b5
       - FM7 Eb69
       - D9 F/G
     - - CM7

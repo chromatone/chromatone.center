@@ -8,6 +8,7 @@ import { playKey, stopAll } from "./midi";
 import { rotateArray } from "./calculations";
 import { notes } from './theory'
 import { Note } from "tonal";
+import { globalScale } from "./global";
 
 const allNotes = [...notes].map((n, i) => ({ name: n, pitch: i }))
 

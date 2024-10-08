@@ -45,8 +45,8 @@ transition(name="slide")
         :pitch="pitch")
     chord-tab.max-h-50vh.cursor-pointer(
       style="flex: 1 1 120px"
-      @click="instrument == 'ukulele' ? instrument = 'guitar' : instrument = 'ukulele'"
       :chroma="data.chroma" 
-      :pitch="pitch" :instrument)
+      :pitch="pitch" 
+      v-model:instrument="instrument")
 
 </template>

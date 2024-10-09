@@ -2,7 +2,7 @@
 import { Frequency } from 'tone'
 import { pitchFreq } from '#/use/calculations'
 import { noteColor } from '#/use/colors'
-import { playNote, stopNote } from '#/use/chroma'
+import { playNote, stopNote } from '#/use/midi'
 import { computed, ref } from 'vue';
 import { useMidi } from '#/use'
 const { activeChroma } = useMidi()
@@ -44,7 +44,7 @@ g.cursor-pointer
     :cy="0",  
     :stroke-width="tonic == note.pitch ? 4 : available ? 2 : 0",
     stroke="white"
-    :fill="noteColor(note.pitch, playing || activeChroma?.[note.pitch] > 0 ? 5 : available ? 3 : 2, playing || activeChroma?.[note.pitch] > 0 ? 1 : 0.4  )"
+    :fill="noteColor(note.pitch, playing || activeChroma?.[note.pitch] > 0 ? 5 : available ? 3 : 2, playing || activeChroma?.[note.pitch] > 0 ? 1 : 0.4)"
     @mousedown="attack()", 
     @touchstart="attack()",
     @mouseenter="pressed ? attack() : null"

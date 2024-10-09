@@ -43,8 +43,9 @@
 		"dev": "vitepress dev content --host --port 3242",
 		"build-lib": "cd use && vite build --emptyOutDir",
 		"build-db": "cd db && vite build --emptyOutDir",
-		"build": "vitepress build content",
+		"build": "pnpm run docs && vitepress build content",
 		"serve": "vitepress serve content --port 3200",
+		"docs": "jsdoc2md use/*.js > content/support/docs/index.md",
 		"deploy": "sh deploy.sh"
 	},
 	"dependencies": {
@@ -132,6 +133,7 @@
 		"@vite-pwa/vitepress": "^0.5.3",
 		"@vue/compiler-sfc": "^3.5.11",
 		"@vue/language-plugin-pug": "^2.1.6",
+		"jsdoc-to-markdown": "^9.0.2",
 		"pug": "^3.0.3",
 		"sharp": "^0.33.5",
 		"unocss": "^0.63.4",

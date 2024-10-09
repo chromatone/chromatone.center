@@ -4,7 +4,7 @@
  */
 
 import { Frequency } from "tone";
-import { playKey, stopAll } from "./midi";
+import { playNote, playNoteOnce, stopNote } from "./midi";
 import { rotateArray } from "./calculations";
 import { notes } from './theory'
 import { Note } from "tonal";
@@ -41,28 +41,3 @@ export function stopChroma(chroma, tonic) {
   stopNote(notes)
 }
 
-export function playNoteOnce(note, velocity, duration = 300) {
-  playNote(note, velocity)
-  setTimeout(() => stopNote(note), duration)
-}
-
-
-export function playNote(note, velocity = 0.9) {
-  if (Array.isArray(note)) {
-    note.forEach(n => playNote(n))
-  } else {
-    playKey(note, velocity)
-  }
-}
-
-export function stopNote(note) {
-  if (!note) {
-    stopAll()
-    return
-  }
-  if (Array.isArray(note)) {
-    note.forEach(n => stopNote(n))
-  } else {
-    playKey(note, 0)
-  }
-}

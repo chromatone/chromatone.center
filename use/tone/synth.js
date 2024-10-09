@@ -6,7 +6,7 @@ import { PolySynth, MonoSynth, start, Midi, AutoPanner, Reverb, gainToDb, Stereo
 import { midi } from '../midi'
 import { useCycleList } from '@vueuse/core'
 import { onKeyDown } from '@vueuse/core'
-import { createChannel } from '../audio'
+import { createAudioChannel } from '../audio'
 import { reactive, watch } from 'vue'
 import { useStorage } from '@vueuse/core'
 import { useClamp } from '@vueuse/math'
@@ -94,7 +94,7 @@ export function useSynth() {
 export function synthInit() {
   start()
   if (synth?.poly) return
-  const { channel } = createChannel('synth')
+  const { channel } = createAudioChannel('synth')
 
   synth.widener = new StereoWidener(0.7).connect(channel)
 

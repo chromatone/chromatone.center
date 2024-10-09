@@ -4,12 +4,12 @@ import { chromaColorMix, noteColor } from "#/use/colors";
 import { Note, Pcset, Interval, ChordType, ScaleType } from 'tonal'
 import { Frequency } from 'tone'
 import { notes } from '#/use/theory'
-import { playChroma, playNoteOnce, stopChroma } from '#/use/chroma'
+import { playChroma, stopChroma } from '#/use/chroma'
 import { globalScale } from '#/use/global'
 import { calcBg } from '#/use/colors'
 import { colord } from 'colord'
 import { reactive, computed } from 'vue'
-import { tempo } from '#/use';
+import { playNoteOnce, tempo } from '#/use';
 
 const emit = defineEmits(['update:chroma'])
 const props = defineProps({

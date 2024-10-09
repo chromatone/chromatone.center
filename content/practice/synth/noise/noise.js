@@ -12,7 +12,7 @@ import {
   BitCrusher,
 } from "tone";
 import { useStorage, useRafFn, onKeyStroke } from "@vueuse/core";
-import { createChannel } from "#/use/audio";
+import { createAudioChannel } from "#/use/audio";
 import { ref, watch, onBeforeUnmount } from 'vue'
 
 const types = { brown: "brown", pink: "pink", white: "white" };
@@ -77,7 +77,7 @@ export function useNoise() {
   const fftData = ref([]);
   const fftFreq = ref([]);
 
-  const { channel } = createChannel('noise')
+  const { channel } = createAudioChannel('noise')
 
   const fft = new FFT({ size: 512, smoothing: 0.2 }).connect(channel);
 

@@ -8,7 +8,7 @@ import {
   Filter
 } from "tone";
 
-import { createChannel } from '#/use/audio'
+import { createAudioChannel } from '#/use/audio'
 import { useStorage } from '@vueuse/core';
 import { ref, watch } from 'vue';
 
@@ -27,7 +27,7 @@ const options = useStorage("ambient-options", {
 
 const active = ref(false)
 
-const { channel } = createChannel('ambient-noise')
+const { channel } = createAudioChannel('ambient-noise')
 
 const gain = new Gain(options.value.volume).connect(channel)
 const filter = new Filter({ type: 'lowpass', frequency: 1500, Q: 0 }).connect(gain)

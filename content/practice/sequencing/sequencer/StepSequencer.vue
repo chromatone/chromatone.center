@@ -7,7 +7,7 @@ import { useData } from 'vitepress'
 import { globalScale } from '#/use/global'
 import { noteColor } from "#/use/colors"
 import { notes } from '#/use/theory'
-import { playNoteOnce } from '#/use/chroma'
+import { playNoteOnce } from '#/use/midi'
 import { tempo } from '#/use/tempo'
 
 const { isDark } = useData()

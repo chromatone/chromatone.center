@@ -1,7 +1,7 @@
 import { freqColor, freqPitch, pitchFreq } from "#/use/calculations";
 import { Frequency, Synth, PanVol, gainToDb, LFO, Meter, Filter, Gain } from "tone";
 import { useRafFn, onKeyStroke } from "@vueuse/core";
-import { createChannel } from '#/use/audio'
+import { createAudioChannel } from '#/use/audio'
 import { learnCC } from "#/use/midi";
 import { reactive, computed, shallowReactive, onBeforeUnmount, watch } from 'vue'
 import { useClamp } from "@vueuse/math";
@@ -37,7 +37,7 @@ const audio = shallowReactive({
 });
 
 function initAudio() {
-  const { channel } = createChannel('drone')
+  const { channel } = createAudioChannel('drone')
   audio.channel = channel
   audio.gain = new Gain(drone.volume).connect(channel)
   audio.filter = new Filter(drone.filterFreq).connect(audio.gain)

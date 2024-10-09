@@ -8,7 +8,7 @@ import { freqPitch } from "./calculations";
 import { noteColor } from './colors'
 import { Note } from "tonal";
 import { useStorage, onKeyStroke, useRafFn, } from "@vueuse/core";
-import { createChannel } from './audio'
+import { createAudioChannel } from './audio'
 import { useClamp } from "@vueuse/math";
 import { WebMidi } from "webmidi";
 import { midi, stopAll } from "./midi";
@@ -55,7 +55,7 @@ export function useTempo() {
   })
 
   onMounted(() => {
-    const { channel } = createChannel('tempo-tick')
+    const { channel } = createAudioChannel('tempo-tick')
     metro.pluck = new Sampler({
       urls: {
         E1: "logic/high.wav",
@@ -193,7 +193,7 @@ export const tapTempo = reactive({
   refresh
 })
 
-export function tap() {
+function tap() {
   let time = performance.now();
   if (tapTempo.last) {
     tapTempo.diff = time - tapTempo.last;

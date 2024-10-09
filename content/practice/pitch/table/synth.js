@@ -1,13 +1,13 @@
 import { gainToDb, PanVol, MonoSynth } from "tone";
 import { pitchFreq } from "#/use/calculations";
 import { state } from "./state";
-import { createChannel } from "#/use/audio";
+import { createAudioChannel } from "#/use/audio";
 import { reactive, computed, onBeforeUnmount, watch } from 'vue'
 
 
 
 export function useSynth(pitch, octave) {
-  const { channel } = createChannel('table')
+  const { channel } = createAudioChannel('table')
   const panVol = new PanVol(0, -Infinity).connect(channel);
 
   const synth = new MonoSynth({

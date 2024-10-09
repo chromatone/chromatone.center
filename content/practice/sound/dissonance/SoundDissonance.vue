@@ -4,7 +4,7 @@ import { noteColor } from "#/use/colors";
 import { useSvgMouse } from '#/use/mouse'
 import { MonoSynth, gainToDb } from 'tone'
 import { notes } from '#/use/theory'
-import { createChannel } from '#/use/audio';
+import { createAudioChannel } from '#/use/audio';
 import { reactive, computed, watch } from 'vue'
 
 const box = {
@@ -62,7 +62,7 @@ let synthOne, synthTwo
 
 function initSynth() {
   if (!synth.started) {
-    const { channel } = createChannel('dissonance')
+    const { channel } = createAudioChannel('dissonance')
 
     synthOne = new MonoSynth({
       oscillator: {

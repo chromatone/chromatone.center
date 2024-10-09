@@ -4,7 +4,7 @@ import { noteColor } from '#/use/colors'
 import { chromaColorMix } from "#/use/colors";
 import { Chord, Note } from 'tonal'
 import { notes } from '#/use/theory'
-import { playNote, playNoteOnce, stopNote } from '#/use/chroma'
+import { playNote, playNoteOnce, stopNote } from '#/use/midi'
 import { globalScale } from '#/use/global'
 import { Frequency } from 'tone'
 import { midiOnce, midiPlay, midiStop } from '#/use/midi'

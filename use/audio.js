@@ -59,7 +59,7 @@ export function useAudio() {
   return { audio, master, channels }
 }
 
-export function createChannel(title = (Math.random() * 1000).toFixed(0), options) {
+export function createAudioChannel(title = (Math.random() * 1000).toFixed(0), options) {
   const { master } = useAudio()
   const volume = new Volume().connect(master.limiter)
   const { recorder } = useRecorder()

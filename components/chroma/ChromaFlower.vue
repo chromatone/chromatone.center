@@ -2,8 +2,8 @@
 import { notes } from '#/use/theory'
 import { defaultScheme, scheme, noteColor } from '#/use/colors'
 import { getCircleCoord, rotateArray } from '#/use/calculations'
-import { midi, activeNotes, guessChords, activeChromaMidi } from '#/use/midi'
-import { playNote, stopNote } from '#/use/chroma'
+import { activeNotes, guessChords, activeChromaMidi } from '#/use/midi'
+import { playNote, stopNote } from '#/use/midi'
 import { globalScale } from '#/use/global'
 import { useTuner } from '#/use/tuner'
 import { colord } from "colord";

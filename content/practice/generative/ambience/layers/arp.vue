@@ -11,7 +11,7 @@ import {
 } from "tone";
 
 import { notes } from '#/use/theory'
-import { createChannel } from '#/use/audio'
+import { createAudioChannel } from '#/use/audio'
 import { useStorage } from '@vueuse/core';
 import { ref, watch } from 'vue';
 
@@ -25,7 +25,7 @@ const active = ref(false)
 const note = ref(0)
 const octave = ref(4)
 
-const { channel } = createChannel('ambient-arp')
+const { channel } = createAudioChannel('ambient-arp')
 
 const gain = new Gain(options.value.volume).connect(channel)
 const filter = new Filter({ type: 'lowpass', frequency: 1500, Q: 0 }).connect(gain)

@@ -1,16 +1,14 @@
 <script setup>
-import { noteColor } from '#/use/colors';
-import { midiAttack, midiRelease, useMidi } from '#/use/midi';
-import { notes } from '#/use/theory';
-import { computed, ref, watch } from 'vue';
-
-import { useGesture } from '@vueuse/gesture';
-import { globalScale } from '#/use/global';
-import { useClamp } from '@vueuse/math'
-import { useStorage } from '@vueuse/core'
-import { intervals } from '#/use/theory';
-import { playNote, stopNote } from '#/use/chroma'
+import { ref } from 'vue';
 import { Note } from 'tonal';
+
+import { noteColor } from '#/use/colors';
+import { useMidi } from '#/use/midi';
+import { notes } from '#/use/theory';
+import { globalScale } from '#/use/global';
+import { intervals } from '#/use/theory';
+import { playNote, stopNote } from '#/use/midi'
+
 
 const props = defineProps({
   note: { type: Number, default: 0 },

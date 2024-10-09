@@ -6,7 +6,7 @@ import { reactive, watch } from 'vue'
 import { useRafFn, useStorage } from "@vueuse/core"
 import { useClamp } from "@vueuse/math"
 import { Meter, UserMedia, gainToDb, Gate, Compressor } from "tone"
-import { createChannel } from "./audio"
+import { createAudioChannel } from "./audio"
 
 
 export const mic = reactive({
@@ -34,7 +34,7 @@ export function useMicrophone() {
     input.connect(gate)
     gate.connect(compressor)
 
-    const { channel } = createChannel('mic')
+    const { channel } = createAudioChannel('mic')
 
     watch(() => mic.open, o => {
       if (o) {

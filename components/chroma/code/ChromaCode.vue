@@ -1,6 +1,6 @@
 <script setup>
 import { computed } from 'vue';
-import { playNoteOnce } from '#/use/chroma';
+import { playNoteOnce } from '#/use/midi';
 import { globalScale } from '#/use/global'
 import ChromaCodeCell from './ChromaCodeCell.vue';
 

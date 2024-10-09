@@ -470,3 +470,28 @@ export function sortNotes(notes, reverse = false) {
   });
 }
 
+export function playNoteOnce(note, velocity, duration = 300) {
+  playNote(note, velocity)
+  setTimeout(() => stopNote(note), duration)
+}
+
+
+export function playNote(note, velocity = 0.9) {
+  if (Array.isArray(note)) {
+    note.forEach(n => playNote(n))
+  } else {
+    playKey(note, velocity)
+  }
+}
+
+export function stopNote(note) {
+  if (!note) {
+    stopAll()
+    return
+  }
+  if (Array.isArray(note)) {
+    note.forEach(n => stopNote(n))
+  } else {
+    playKey(note, 0)
+  }
+}

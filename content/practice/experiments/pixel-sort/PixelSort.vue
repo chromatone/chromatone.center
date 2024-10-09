@@ -4,7 +4,7 @@ import { useMouseInElement } from '@vueuse/core'
 import { useClamp } from '@vueuse/math'
 import { notes, midi, globalScale } from '#/use'
 import { rgbToHsl, extractColorsFromPixels, getHueIndex } from './utils'
-import { playNote, stopNote } from '#/use'
+import { playNote, stopNote } from '#/use/midi'
 
 const imageUrl = ref(null)
 const scanDirection = ref('horizontal')

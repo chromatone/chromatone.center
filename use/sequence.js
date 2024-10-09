@@ -6,7 +6,7 @@
 import { shallowReactive, reactive, computed, watch, watchEffect, onBeforeUnmount, markRaw, ref } from 'vue'
 import { tempo } from "./tempo";
 import { Sequence, PanVol, gainToDb, getDraw, Sampler, start, Recorder, Meter, UserMedia, getContext } from "tone";
-import { createChannel } from './audio'
+import { createAudioChannel } from './audio'
 import { rotateArray } from "./calculations";
 import { useStorage } from '@vueuse/core';
 import { useClamp } from '@vueuse/math';
@@ -79,7 +79,7 @@ export function useSequence(initial = { over: 4, under: 4, sound: "A", volume: 1
 
   function createAudio(order, mode) {
     const audio = shallowReactive({
-      ...createChannel(`sequence-${mode}-${order}`),
+      ...createAudioChannel(`sequence-${mode}-${order}`),
       panner: markRaw(new PanVol(order % 2 ? -0.5 : 0.5, 0)),
       synth: markRaw(new Sampler({
         urls: Object.fromEntries(

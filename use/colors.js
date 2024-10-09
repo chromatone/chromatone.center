@@ -7,7 +7,6 @@ import { useStorage } from "@vueuse/core"
 
 import { colord, extend } from "colord"
 import lchPlugin from "colord/plugins/lch"
-// https://www.npmjs.com/package/colord
 import mixPlugin from "colord/plugins/mix"
 import namesPlugin from "colord/plugins/names"
 import labPlugin from "colord/plugins/lab"

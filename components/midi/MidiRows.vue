@@ -1,6 +1,6 @@
 <script setup>
 import { computed, reactive, watch } from 'vue';
-import { useMidi, useSequence, useTempo, playNoteOnce } from '#/use/index';
+import { useMidi, useSequence, useTempo, playNoteOnce } from '#/use/';
 import { getTransport, Part, Frequency } from 'tone'
 import { Midi } from '@tonejs/midi'
 

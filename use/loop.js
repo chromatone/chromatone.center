@@ -9,7 +9,7 @@ import { globalScale } from "./global";
 import { Sequence, PanVol, gainToDb, getDraw, PolySynth, start, Midi, Frequency, Time, getContext } from "tone";
 import { midiPlay } from "./midi";
 import { createAndDownloadBlobFile } from "./midiRender";
-import { createChannel } from './audio'
+import { createAudioChannel } from './audio'
 import { useStorage } from '@vueuse/core'
 
 const loops = reactive([]);
@@ -46,7 +46,7 @@ export function useLoop(order = 0) {
 
   loops[order] = loop;
 
-  const { channel } = createChannel(`grid-loop-${order}`);
+  const { channel } = createAudioChannel(`grid-loop-${order}`);
   const panner = new PanVol(loop.pan, 0).connect(channel);
   const synth = new PolySynth().connect(panner);
 

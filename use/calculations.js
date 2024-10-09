@@ -3,13 +3,9 @@
  * @description All the basic math for note-frequency convertion
  */
 
-/**
- * Note 0 in MIDI
- */
-export const midiA = 69
 
 export function midiColor(note, velocity, alpha) {
-  const { pitch, octave } = pitchNoteOctave(note - midiA)
+  const { pitch, octave } = pitchNoteOctave(note - 69)
   return pitchColor(pitch, octave, velocity, alpha)
 }
 

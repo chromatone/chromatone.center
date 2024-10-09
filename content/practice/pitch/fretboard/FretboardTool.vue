@@ -1,9 +1,11 @@
 <script setup>
+import { computed, reactive, watch } from 'vue'
 import { useStorage } from '@vueuse/core'
 import { Note, Interval } from 'tonal'
-import { computed, reactive, watch } from 'vue'
-import { playNoteOnce } from '#/use'
 import { Frequency } from 'tone'
+
+
+import { playNoteOnce } from '#/use/midi'
 import { noteColor as colorNote } from '#/use'
 
 const props = defineProps({

@@ -3,7 +3,7 @@ import { useStorage, useTimestamp } from '@vueuse/core'
 import { freqColor, pitchFreq } from '#/use/calculations'
 import { Synth, start, Frequency } from "tone";
 import { globalScale } from '#/use/global'
-import { createChannel } from '#/use/audio'
+import { createAudioChannel } from '#/use/audio'
 import { computed, reactive, watch } from 'vue';
 import SoundOvertonesGuitar from './SoundOvertonesGuitar.vue';
 
@@ -33,7 +33,7 @@ const sound = reactive({
     sound.started = true
     sound.enabled = true
 
-    const { channel } = createChannel('overtones')
+    const { channel } = createAudioChannel('overtones')
     sine = new Synth({
       oscillator: {
         type: 'sine',

@@ -1,13 +1,14 @@
 <script setup>
 import { rotateArray } from '#/use/calculations'
 import { notes } from '#/use/theory'
-import { playChroma, stopChroma, playNoteOnce } from '#/use/chroma'
+import { playChroma, stopChroma } from '#/use/chroma'
 import { globalScale } from '#/use/global'
 import { chromaColorMix, noteColor } from "#/use/colors"
 import { Frequency } from 'tone'
 import { colord } from 'colord'
 import { computed } from 'vue'
 import { ChordType, ScaleType } from 'tonal'
+import { playNoteOnce } from '#/use';
 
 
 const props = defineProps({

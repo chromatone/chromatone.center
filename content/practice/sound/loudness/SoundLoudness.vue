@@ -3,7 +3,7 @@ import { freqColor, freqPitch } from '#/use/calculations'
 import { notes } from '#/use/theory'
 import { MonoSynth, start } from 'tone'
 import { useSvgMouse } from '#/use/mouse'
-import { createChannel } from '#/use/audio'
+import { createAudioChannel } from '#/use/audio'
 import { ref, reactive, computed } from 'vue'
 
 const started = ref(false)
@@ -58,7 +58,7 @@ const points = reactive({
   list: [],
   add() {
     if (!channel) {
-      channel = createChannel('loudness').channel
+      channel = createAudioChannel('loudness').channel
     }
     let hz = freq.toHz(mouse.normX)
     let synth = new MonoSynth({

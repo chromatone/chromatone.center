@@ -2,7 +2,7 @@
 import { ref, reactive, watch, computed } from 'vue';
 import { useResizeObserver, } from '@vueuse/core';
 
-import { playNoteOnce } from '#/use/chroma.js';
+import { playNoteOnce } from '#/use/midi';
 import { globalScale } from '#/use/global'
 import { midi } from '#/use/midi.js';
 import { Note } from 'tonal';

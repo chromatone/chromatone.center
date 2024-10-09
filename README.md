@@ -38,32 +38,39 @@ We collect all the musical knowledge we can get so then we can build new insight
 
 ## TECH STACK
 
-- [Vue 3](https://v3.vuejs.org/) - Progressive JavaScript framework for building user interfaces
-- [VueUse](https://vueuse.org) - Collection of essential Vue Composition Utilities
-- [VueUse/Gesture](https://gesture.vueuse.org) - Vue Composables making your app interactive with gestures
-- [Floating Vue](https://floating-vue.starpad.dev) - Tooltips, dropdowns, and popovers made easy for Vue
+### JS UI
+
 - [Vite](https://vitejs.dev/) - Next generation frontend tooling for fast development and building
-- [unplugin-vue-components](https://github.com/antfu/unplugin-vue-components) - On-demand components auto-importing for Vue
-- [unplugin-icons](https://github.com/antfu/unplugin-icons) - Access thousands of icons as Vue components on-demand
-- [Icônes](https://icones.js.org/) - Icon explorer with instant searching and SVG downloading
-- [Vitepress](https://vitepress.vuejs.org/guide/global-component.html#content) - Vue-powered static site generator
-- i18n like in [vuepress](https://vuepress.vuejs.org/guide/i18n.html#default-theme-i18n-config) - Internationalization support for multi-language sites
+  - [unplugin-vue-components](https://github.com/antfu/unplugin-vue-components) - On-demand components auto-importing for Vue
+  - [unplugin-icons](https://github.com/antfu/unplugin-icons) - Access thousands of icons as Vue components on-demand
+  - [Icônes](https://icones.js.org/) - Icon explorer with instant searching and SVG downloading
+  - [Vitepress](https://vitepress.vuejs.org/guide/global-component.html#content) - Vue-powered static site generator
+
+- [Vue 3](https://v3.vuejs.org/) - Progressive JavaScript framework for building user interfaces
+  - [VueUse](https://vueuse.org) - Collection of essential Vue Composition Utilities
+  - [VueUse/Gesture](https://gesture.vueuse.org) - Vue Composables making your app interactive with gestures
+  - [Floating Vue](https://floating-vue.starpad.dev) - Tooltips, dropdowns, and popovers made easy for Vue
+
 - [UnoCSS](https://github.com/unocss/unocss) - Instant on-demand atomic CSS engine
 - [Pug](https://pugjs.org/api/getting-started.html) - Templating engine for concise HTML
-- [TonalJs](https://github.com/tonaljs/tonal) - Music theory library for JavaScript
-- [AbcJs](https://paulrosen.github.io/abcjs/) - JavaScript library for rendering music notation
-- [WebMidi.js](https://webmidijs.org/docs/) - Web MIDI API wrapper for easy MIDI device interaction
 
 ### Graphics
 
 - [colord](https://www.npmjs.com/package/colord) - Tiny color manipulation and conversion library
 - [PaperJs](http://paperjs.org) - Vector graphics scripting framework
 - [simplex-noise](https://github.com/jwagner/simplex-noise.js) - Simplex noise implementation for JavaScript
+- [hydra-synth](https://github.com/hydra-synth/hydra) - Livecoding networked visuals in the browser
+
+### Music
+
+- [TonalJs](https://github.com/tonaljs/tonal) - Music theory library for JavaScript
+- [AbcJs](https://paulrosen.github.io/abcjs/) - JavaScript library for rendering music notation
+- [WebMidi.js](https://webmidijs.org/docs/) - Web MIDI API wrapper for easy MIDI device interaction
 
 ### Audio
 
 - [Tone.js](https://tonejs.github.io) - Framework for creating interactive music in the browser
-- [@tonejs/midi](https://github.com/Tonejs/Midi) - Convert MIDI into Tone.js-friendly JSON
+  - [@tonejs/midi](https://github.com/Tonejs/Midi) - Convert MIDI into Tone.js-friendly JSON
 - [Meyda](https://meyda.js.org) - Audio feature extraction library for JavaScript
 - [AubioJs](https://github.com/qiuxiang/aubiojs) - WebAssembly port of Aubio, a library for audio analysis
 - [audiomotion-analyzer](https://www.npmjs.com/package/audiomotion-analyzer) - High-resolution real-time audio spectrum analyzer

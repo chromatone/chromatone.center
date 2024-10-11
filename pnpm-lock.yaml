@@ -87,8 +87,8 @@ importers:
         specifier: ^5.2.2
         version: 5.2.2(vue@3.5.11)
       fraction.js:
-        specifier: ^5.0.2
-        version: 5.0.2
+        specifier: ^5.0.6
+        version: 5.0.6
       fuse.js:
         specifier: ^7.0.0
         version: 7.0.0
@@ -205,41 +205,41 @@ importers:
         version: 1.3.0
     devDependencies:
       '@directus/sdk':
-        specifier: ^17.0.1
-        version: 17.0.1
+        specifier: ^17.0.2
+        version: 17.0.2
       '@iconify-json/bi':
-        specifier: ^1.2.0
-        version: 1.2.0
-      '@iconify-json/carbon':
         specifier: ^1.2.1
         version: 1.2.1
+      '@iconify-json/carbon':
+        specifier: ^1.2.2
+        version: 1.2.2
       '@iconify-json/fad':
         specifier: ^1.2.0
         version: 1.2.0
       '@iconify-json/fluent':
-        specifier: ^1.2.2
-        version: 1.2.2
+        specifier: ^1.2.3
+        version: 1.2.3
       '@iconify-json/healthicons':
         specifier: ^1.2.0
         version: 1.2.0
       '@iconify-json/ion':
-        specifier: ^1.2.0
-        version: 1.2.0
+        specifier: ^1.2.1
+        version: 1.2.1
       '@iconify-json/la':
         specifier: ^1.2.0
         version: 1.2.0
       '@iconify-json/mdi':
-        specifier: ^1.2.0
-        version: 1.2.0
+        specifier: ^1.2.1
+        version: 1.2.1
       '@iconify-json/ph':
-        specifier: ^1.2.0
-        version: 1.2.0
+        specifier: ^1.2.1
+        version: 1.2.1
       '@iconify-json/system-uicons':
-        specifier: ^1.2.0
-        version: 1.2.0
+        specifier: ^1.2.1
+        version: 1.2.1
       '@iconify-json/tabler':
-        specifier: ^1.2.4
-        version: 1.2.4
+        specifier: ^1.2.5
+        version: 1.2.5
       '@modyfi/vite-plugin-yaml':
         specifier: ^1.1.0
         version: 1.1.0(rollup@4.13.0)(vite@5.4.8(@types/node@20.9.2)(terser@5.24.0))
@@ -950,8 +950,8 @@ packages:
     resolution: {integrity: sha512-YTnYtra7W9e6/oAZEHj0bJehPRUlLH9/fbpT5LfB0NhQXyALCRkRs3zH9v07IYhkgpqX6Z78FnuccZr/l4Fs4Q==}
     engines: {node: '>=6.9.0'}
 
-  '@directus/sdk@17.0.1':
-    resolution: {integrity: sha512-6TorT8am/8q2YmhLhGY1yZks2rFr31my5WqbXUPZs+4hPWYkTNThns2lfhZQ8w2KBh9DZ7v5SaghZNSIswUOwA==}
+  '@directus/sdk@17.0.2':
+    resolution: {integrity: sha512-gKfWH6oQKnHw6mUl5lM32PTjtWrmSF6f09/zfN/74FKGPD853srCwip6rGif2R0GfdcrPHXwGHc7vTMXNDlniw==}
     engines: {node: '>=18.0.0'}
 
   '@docsearch/css@3.6.2':
@@ -1317,38 +1317,38 @@ packages:
     resolution: {integrity: sha512-93zYdMES/c1D69yZiKDBj0V24vqNzB/koF26KPaagAfd3P/4gUlh3Dys5ogAK+Exi9QyzlD8x/08Zt7wIKcDcA==}
     deprecated: Use @eslint/object-schema instead
 
-  '@iconify-json/bi@1.2.0':
-    resolution: {integrity: sha512-kaBV87cQlyeMkBBiMqsf3b43Nsxdk/rYKvR29dnktht57WUyHCnBAuH+ca/bscX856CzRpVX+sYs7arjrJD0qA==}
+  '@iconify-json/bi@1.2.1':
+    resolution: {integrity: sha512-wsIWb6bcnBkfN8/2puIIE2ul6NYVjclbE/nI7JZsPnfzBamd3NuRFstXQH9Ckkbrw9eiBTNKwHbH90w3UE5QIg==}
 
-  '@iconify-json/carbon@1.2.1':
-    resolution: {integrity: sha512-dIMY6OOY9LnwR3kOqAtfz4phGFG+KNfESEwSL6muCprBelSlSPpRXtdqvEEO/qWhkf5AJ9hWrOV3Egi5Z2IuKA==}
+  '@iconify-json/carbon@1.2.2':
+    resolution: {integrity: sha512-cmGo+PBMIuYWHML/vvZzKqc1XEqZCTxBIubTSWph5u8uT15oKilPyaqTxRw054k6JZ+n0mD0OIoUo2OEvec6kg==}
 
   '@iconify-json/fad@1.2.0':
     resolution: {integrity: sha512-4LEp5vIC1oZIakZ4diHNYGtQGQXrS/k7X+VnX/Ebrgof4w7JFghWAm3t/XDCW3Y8++Nbquu4+fWEDD7S1r4wqg==}
 
-  '@iconify-json/fluent@1.2.2':
-    resolution: {integrity: sha512-eYPjqGfTDno2VOyRWiEQkiNXb2RtjYsxfnzyEWWZYE9w35Svph4bPsZG3IXf7+D3r1mk9bYreX+h7Ywyy0L5RQ==}
+  '@iconify-json/fluent@1.2.3':
+    resolution: {integrity: sha512-+PGU0am5nGwDjO4aePf/TyMO6jHKb2CCxSC4sGdJVtbfTw5oGwJB2ZgCqTXpD/ftux3sI34EjGkSC74fLZ+rbQ==}
 
   '@iconify-json/healthicons@1.2.0':
     resolution: {integrity: sha512-CrNMxFlCJm7d28FNUCE4nlqf5FL1KD5aqO8yokh1LB+x78IXeZBggRTH7W1+QLoJiBmFsVtrAsRH+R4obs33BQ==}
 
-  '@iconify-json/ion@1.2.0':
-    resolution: {integrity: sha512-uyFGINF59wOZDgXNkUTXTnzL2qeTfwbjP45JidRwhFK2JvFH9wyhXHz+TXqrG80PbQsNCqhIgGfwHmASWbutsg==}
+  '@iconify-json/ion@1.2.1':
+    resolution: {integrity: sha512-33jiBdtP8+uBV0KRz8Z9g54QFujzssiT9W6wdNuY61VQM1s3cvoAX89yiczRs4/6b2xJE5vqqvsEJAQPqfY5JA==}
 
   '@iconify-json/la@1.2.0':
     resolution: {integrity: sha512-YgZsqp/M361PwfO6hQcIN1LDYnqlINyCblDPQV/6yVoWdC0weTAu9cnAtwRYt3FzMUn+k0Gkqi32QI5d88NBgQ==}
 
-  '@iconify-json/mdi@1.2.0':
-    resolution: {integrity: sha512-E9/3l5Syg3wfuarorFodhn4s8YorxhH3U3U20LaNBNiqw1kFNIDWhF6HymuzAD35k7RH0OBasJ+ZUyFtVVV6eg==}
+  '@iconify-json/mdi@1.2.1':
+    resolution: {integrity: sha512-dSkQU78gsZV6Yxnq78+LuX7jzeFC/5NAmz7O3rh558GimGFcwMVY/OtqRowIzjqJBmMmWZft7wkFV4TrwRXjlg==}
 
-  '@iconify-json/ph@1.2.0':
-    resolution: {integrity: sha512-013eLpgTmX1lACOuDnkuhC7gRHyYj9w/j8SyDmlyUYvsKQrwdRsv1otcXtwH3DevuDAzSkreeeRsCeez+gTyVA==}
+  '@iconify-json/ph@1.2.1':
+    resolution: {integrity: sha512-x0DNfwWrS18dbsBYOq3XGiZnGz4CgRyC+YSl/TZvMQiKhIUl1woWqUbMYqqfMNUBzjyk7ulvaRovpRsIlqIf8g==}
 
-  '@iconify-json/system-uicons@1.2.0':
-    resolution: {integrity: sha512-ZT3DX8FwfnP21Z6qBsdJlvi6qlSrtTaDEExAdo9XR34HN+FARzZIuZab12Y/UYyJgYoq/eCC5X4nT1hWz49U9g==}
+  '@iconify-json/system-uicons@1.2.1':
+    resolution: {integrity: sha512-P3CEr7GewtwcAWX/RZeRZw4Gkq+WS+w5iTh+0jDR30A2bEEhm98R1N0Pas3VUJSU/b/3EfsA6cAX18wrjcqwkw==}
 
-  '@iconify-json/tabler@1.2.4':
-    resolution: {integrity: sha512-8sUrdJQpNaX3ZfJ5Po4hhA6n+JougMZeRg3AFvh5OuAvhZ8hEAOzPHuY8OB96x6cZCqY/j5idsbZWqKDinxRbQ==}
+  '@iconify-json/tabler@1.2.5':
+    resolution: {integrity: sha512-BDDLgDCbJ2btwi6cPmBL04QyPyNmWy6H13ynUAX48xxpxqUuG+hT+yrqL+RCugFimrvuhcecbSfEKnFc0BW1Ng==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -3075,8 +3075,8 @@ packages:
   fraction.js@4.3.7:
     resolution: {integrity: sha512-ZsDfxO51wGAXREY55a7la9LScWpwv9RxIrYABrlvOFBlH/ShPnrtsXeuUIfXKKOVicNxQ+o8JTbJvjS4M89yew==}
 
-  fraction.js@5.0.2:
-    resolution: {integrity: sha512-yhtgw33pInOk1BaFks14x08ioJ+99VNUMcCEyeatyO31EypbTlitv7/IptkH/rvbSzzxmosHHjaV8rptt2kJCg==}
+  fraction.js@5.0.6:
+    resolution: {integrity: sha512-sQtpxkR+oTPCZ1RefIKCeytvMt7dkfdzvsQhCVe1kcZ6eOdB+d1QwxNfJLE8yf/+AlyH6coy7w6Hs3zKu3aSsw==}
     engines: {node: '>= 12'}
 
   fs-extra@9.1.0:
@@ -5880,7 +5880,7 @@ snapshots:
       '@babel/helper-validator-identifier': 7.24.7
       to-fast-properties: 2.0.0
 
-  '@directus/sdk@17.0.1': {}
+  '@directus/sdk@17.0.2': {}
 
   '@docsearch/css@3.6.2': {}
 
@@ -6118,11 +6118,11 @@ snapshots:
 
   '@humanwhocodes/object-schema@2.0.3': {}
 
-  '@iconify-json/bi@1.2.0':
+  '@iconify-json/bi@1.2.1':
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/carbon@1.2.1':
+  '@iconify-json/carbon@1.2.2':
     dependencies:
       '@iconify/types': 2.0.0
 
@@ -6130,7 +6130,7 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/fluent@1.2.2':
+  '@iconify-json/fluent@1.2.3':
     dependencies:
       '@iconify/types': 2.0.0
 
@@ -6138,7 +6138,7 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/ion@1.2.0':
+  '@iconify-json/ion@1.2.1':
     dependencies:
       '@iconify/types': 2.0.0
 
@@ -6146,19 +6146,19 @@ snapshots:
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/mdi@1.2.0':
+  '@iconify-json/mdi@1.2.1':
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/ph@1.2.0':
+  '@iconify-json/ph@1.2.1':
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/system-uicons@1.2.0':
+  '@iconify-json/system-uicons@1.2.1':
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/tabler@1.2.4':
+  '@iconify-json/tabler@1.2.5':
     dependencies:
       '@iconify/types': 2.0.0
 
@@ -8185,7 +8185,7 @@ snapshots:
 
   fraction.js@4.3.7: {}
 
-  fraction.js@5.0.2: {}
+  fraction.js@5.0.6: {}
 
   fs-extra@9.1.0:
     dependencies:

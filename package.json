@@ -45,7 +45,7 @@
 		"build-db": "cd db && vite build --emptyOutDir",
 		"build": "pnpm run docs && vitepress build content",
 		"serve": "vitepress serve content --port 3200",
-		"docs": "jsdoc2md use/*.js > use/index.md",
+		"docs": "jsdoc2md use/*.js > content/support/docs/index.md",
 		"deploy": "sh deploy.sh"
 	},
 	"dependencies": {

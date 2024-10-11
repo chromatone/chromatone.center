@@ -3,19 +3,31 @@ import { freqColor, freqPitch } from '#/use/calculations'
 import { useTransition, TransitionPresets } from '@vueuse/core'
 import { Frequency } from 'tone'
 import Fraction from 'fraction.js'
-import { computed, reactive } from 'vue'
+import { computed, reactive, ref } from 'vue'
 import { useClamp } from '@vueuse/math'
+import { useString } from '#/use'
 
-function once(freq) {
-  console.log(freq)
+const { note: noteC, init: initC } = useString('center')
+const { note: noteL, init: initL } = useString('left')
+const { note: noteR, init: initR } = useString('right')
+
+const started = ref(false)
+
+const strings = [noteC, noteL, noteR]
+
+function play(freq, string = 0) {
+  let midiCV = 69 + 12 * Math.log2(freq / 440);
+  Object.assign(strings[string], { number: midiCV.toFixed(3), velocity: 1 })
+
+  setTimeout(() => { strings[string].velocity = 0 }, 300)
 }
-
 
 const state = reactive({
   ratio: useClamp(0.8, 0.05, 0.95),
   fraction: computed(() => new Fraction(1 - state.ratio).simplify(0.001).toFraction(true)),
   invFraction: computed(() => new Fraction(state.ratio).simplify(0.001).toFraction(true)),
-});
+})
+
 const fundamental = reactive({
   freq: useClamp(220, 50, 2000),
   pitch: computed(() => freqPitch(fundamental.freq).toFixed()),
@@ -82,6 +94,8 @@ function calcCents(base, freq) {
 </script>
 
 <template lang="pug">
+button.p-40.text-2xl.font-bold.bg-light-900.dark-bg-dark-700.absolute.min-h-30.top-0.z-100.right-0.left-0(v-if="!started" @click="initC(); initL(); initR(); started = true") START 
+.flex.flex-col.gap-6.p-2(v-else)
 .flex.flex-col.fullscreen-container#screen
   svg.py-8.select-none(
     version="1.1",
@@ -135,13 +149,14 @@ function calcCents(base, freq) {
       g#ratio.cursor-pointer(
         font-size="4px" 
         fill="currentColor")
-        g(@mousedown="once(fundamental.freq); once(part1.freq)")
+        g(@mousedown="play(fundamental.freq); play(part1.freq, 1)")
           text(
             :x="100 * (1 - ratio) - 2"
             y="8"
             text-anchor="end"
           ) {{ state.fraction }} 
-        g(@mousedown="once(fundamental.freq); once(part2.freq)")
+        g(
+          @mousedown="play(fundamental.freq); play(part2.freq, 2)")
           text(
             :x="100 * (1 - ratio) + 2"
             y="8"
@@ -149,8 +164,8 @@ function calcCents(base, freq) {
           ) {{ state.invFraction }} 
     g#fundamental.cursor-pointer(
       v-drag="dragFun" 
-      @mouseover="once(fundamental.freq)" 
-      @mousedown="once(fundamental.freq)")
+      @mouseover="play(fundamental.freq, 0)" 
+      @mousedown="play(fundamental.freq, 0)")
       line(
         x2="100", 
         stroke-width="4", 
@@ -167,8 +182,8 @@ function calcCents(base, freq) {
       transform="translate(0,15)" 
       font-weight="bold")
       g#part1(
-        @mouseover="once(part1.freq)" 
-        @mousedown="once(part1.freq)")
+        @mouseover="play(part1.freq, 1)" 
+        @mousedown="play(part1.freq, 1)")
         line( 
           :stroke="freqColor(part1.freq)" 
           stroke-width="4",
@@ -178,8 +193,8 @@ function calcCents(base, freq) {
           y="0.3", 
           :x="100 * (1 - ratio) / 2") {{ part1.note }}
       g#part2(
-        @mouseover="once(part2.freq)" 
-        @mousedown="once(part2.freq)")
+        @mouseover="play(part2.freq, 2)" 
+        @mousedown="play(part2.freq, 2)")
         line( 
           :stroke="freqColor(part2.freq)" 
           stroke-width="4",

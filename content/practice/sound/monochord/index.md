@@ -9,11 +9,11 @@ cover: monochord.png
 <script setup>
 import { defineClientComponent } from 'vitepress'
 
-const SoundMonochord = defineClientComponent(() => {
-  return import('./SoundMonochord.vue')
+const MonoChord = defineClientComponent(() => {
+  return import('./MonoChord.vue')
 })
 </script>
 
-<SoundMonochord />
+<MonoChord />
 
 Drag the divider to explore the string divisions of a monochord, just like Pythagoras did.

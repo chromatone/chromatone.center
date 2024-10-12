@@ -7,7 +7,7 @@ import { useParams } from './useParams.js';
 // onBeforeUnmount(() => synthEnabled.value = true)
 
 const params = {
-  "string:volume": { "value": 0.8, "min": 0, "max": 1, "step": 0.01, nostore: true },
+  "string:volume": { "value": 0.4, "min": 0, "max": 1, "step": 0.01, nostore: true },
   "string:smooth": { "value": 0, "min": 0.0001, "max": .1, "step": 0.001, fixed: 3, nostore: true },
   "string:feedback": { "value": 0.995, "min": 0.9, "max": .9999, "step": 0.001, fixed: 3, nostore: true },
 }
@@ -49,7 +49,7 @@ export function useString(name = 'string' + Math.floor(Math.random() * 300)) {
     let filtered = el.lowpass(880, 6, synth)
     let adsrOsc = el.adsr(0.005, 0.2, 0, 0.1, 1)
 
-    let osc = el.mul(adsrOsc, el.cycle(el.mul(1, freq)), .2)
+    let osc = el.mul(adsrOsc, el.cycle(el.mul(1, freq)), .8)
 
     let dl = el.delay(
       { size: 44100 },
@@ -70,5 +70,5 @@ export function useString(name = 'string' + Math.floor(Math.random() * 300)) {
 
   }
 
-  return { audio, controls, note, render, init }
+  return { audio, controls, params, note, render, init }
 }

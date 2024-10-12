@@ -7,7 +7,7 @@ import { computed, reactive, ref } from 'vue'
 import { useClamp } from '@vueuse/math'
 import { useString } from '#/use'
 
-const { note: noteC, init: initC } = useString('center')
+const { note: noteC, init: initC, controls, params } = useString('center')
 const { note: noteL, init: initL } = useString('left')
 const { note: noteR, init: initR } = useString('right')
 
@@ -15,11 +15,12 @@ const started = ref(false)
 
 const strings = [noteC, noteL, noteR]
 
-function play(freq, string = 0) {
-  let midiCV = 69 + 12 * Math.log2(freq / 440);
-  Object.assign(strings[string], { number: midiCV.toFixed(3), velocity: 1 })
+const freqs = computed(() => [fundamental.freq, part1.freq, part2.freq])
 
-  setTimeout(() => { strings[string].velocity = 0 }, 300)
+const toMIDI = (freq) => 69 + 12 * Math.log2(freq / 440)
+
+function play(string = 0, vel = .5) {
+  Object.assign(strings[string], { number: toMIDI(freqs.value[string]).toFixed(4), velocity: vel })
 }
 
 const state = reactive({
@@ -90,7 +91,6 @@ function calcCents(base, freq) {
   return -(1200 / Math.log10(2)) * (Math.log10(base / freq)) % 1200
 }
 
-
 </script>
 
 <template lang="pug">
@@ -108,7 +108,6 @@ button.p-40.text-2xl.font-bold.bg-light-900.dark-bg-dark-700.absolute.min-h-30.t
     dominant-baseline="middle"
     stroke-linecap="round"
     fill="white"
-    style="touch-action:none"
     )
     g#ruler(stroke-width="0.2" stroke="currentColor")
       line(
@@ -164,8 +163,14 @@ button.p-40.text-2xl.font-bold.bg-light-900.dark-bg-dark-700.absolute.min-h-30.t
           ) {{ state.invFraction }} 
     g#fundamental.cursor-pointer(
       v-drag="dragFun" 
-      @mouseover="play(fundamental.freq, 0)" 
-      @mousedown="play(fundamental.freq, 0)")
+      @dblclick="fundamental.freq = 220"
+      @pointerdown="play(0, 1)"
+      @pointerenter="play(0, 1)"
+      @pointerover="play(0, 1)"
+      @pointercancel="play(0, 0)"
+      @pointerleave="play(0, 0)"
+      @pointerout="play(0, 0)"
+      )
       line(
         x2="100", 
         stroke-width="4", 
@@ -176,14 +181,19 @@ button.p-40.text-2xl.font-bold.bg-light-900.dark-bg-dark-700.absolute.min-h-30.t
         r="1")
       text(
         x="50" 
-        font-weight="bold") {{ fundamental.note }}  {{ fundamental.freq.toFixed() }} Hz ({{ fundamental.cents.toFixed() }} cents)
+        font-weight="bold") {{ fundamental.note }}  {{ fundamental.freq.toFixed(2) }} Hz ({{ fundamental.cents.toFixed() }} cents)
     g#divided.cursor-pointer(
       v-drag="changeRatio" 
       transform="translate(0,15)" 
       font-weight="bold")
       g#part1(
-        @mouseover="play(part1.freq, 1)" 
-        @mousedown="play(part1.freq, 1)")
+      @pointerdown="play(1, 1)"
+      @pointerenter="play(1, 1)"
+      @pointerover="play(1, 1)"
+      @pointercancel="play(1, 0)"
+      @pointerleave="play(1, 0)"
+      @pointerout="play(1, 0)"
+      )
         line( 
           :stroke="freqColor(part1.freq)" 
           stroke-width="4",
@@ -193,8 +203,13 @@ button.p-40.text-2xl.font-bold.bg-light-900.dark-bg-dark-700.absolute.min-h-30.t
           y="0.3", 
           :x="100 * (1 - ratio) / 2") {{ part1.note }}
       g#part2(
-        @mouseover="play(part2.freq, 2)" 
-        @mousedown="play(part2.freq, 2)")
+        @pointerdown="play(2, 1)"
+        @pointerenter="play(2, 1)"
+        @pointerover="play(2, 1)"
+        @pointercancel="play(2, 0)"
+        @pointerleave="play(2, 0)"
+        @pointerout="play(2, 0)"
+        )
         line( 
           :stroke="freqColor(part2.freq)" 
           stroke-width="4",
@@ -217,4 +232,10 @@ button.p-40.text-2xl.font-bold.bg-light-900.dark-bg-dark-700.absolute.min-h-30.t
       v-for="(frac, fName) in fractions" 
       :key="fName"
       @click="state.ratio = frac" ) {{ fName }}
+
+
+  .flex.flex-wrap.p-2.gap-4
+    control-rotary(
+      v-for="(param, p) in params"
+      :param="p.split(':')[1]" v-model="controls[p]" :min="param.min" :max="param.max" :fixed="param.fixed" :step="param.step")
 </template>

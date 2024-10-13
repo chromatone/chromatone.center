@@ -81,6 +81,10 @@ onMounted(() => {
 //   audio.stop()
 // })
 
+function increaseContrast(value, steepness = 10, midpoint = 0.5) {
+  return 1 / (1 + Math.exp(-steepness * (value - midpoint)));
+}
+
 let audio
 
 function initiate() {
@@ -99,7 +103,7 @@ function initiate() {
         let bars = instance.getBars()
         for (let i = 0; i < bars.length; i++) {
 
-          ctx.fillStyle = colorIt((bars[i].freqLo + bars[i].freqHi) / 2, bars[i].value[0])
+          ctx.fillStyle = colorIt((bars[i].freqLo + bars[i].freqHi) / 2, increaseContrast(bars[i].value[0]))
 
           if (state.vertical) {
             ctx.fillRect(i * (state.width / bars.length), 0, state.width / bars.length, state.speed)

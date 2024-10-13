@@ -53,8 +53,8 @@ export function pitchColor(pitch = 0, octave = 0, velocity = 1, alpha = 1) {
 /**
  * Get a color for a certain pitch frequency in Hz
  * */
-export function freqColor(freq) {
-  return pitchColor(freqPitch(freq), 3)
+export function freqColor(freq, vel, alpha) {
+  return pitchColor(freqPitch(freq), 3, vel, alpha)
 }
 
 /**

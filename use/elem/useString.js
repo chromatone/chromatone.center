@@ -1,15 +1,13 @@
-import { watch, reactive } from 'vue';
+import { watch, reactive, computed } from 'vue';
 import { el } from '@elemaudio/core';
 import { useElementary } from './useElementary.js';
 import { useParams } from './useParams.js';
 
-// onMounted(() => synthEnabled.value = false)
-// onBeforeUnmount(() => synthEnabled.value = true)
 
 const params = {
-  "string:volume": { "value": 0.4, "min": 0, "max": 1, "step": 0.01, nostore: true },
+  "string:volume": { "value": 0.9, "min": 0, "max": 1, "step": 0.01, nostore: true },
   "string:smooth": { "value": 0, "min": 0.0001, "max": .1, "step": 0.001, fixed: 3, nostore: true },
-  "string:feedback": { "value": 0.995, "min": 0.9, "max": .9999, "step": 0.001, fixed: 3, nostore: true },
+  "string:feedback": { "value": 0.990, "min": 0.9, "max": .9999, "step": 0.001, fixed: 3, nostore: true },
 }
 
 const midiParams = {
@@ -19,7 +17,7 @@ const midiParams = {
 }
 
 export function useString(name = 'string' + Math.floor(Math.random() * 300)) {
-  const { audio, layers, render } = useElementary()
+  const { audio, layers, render, meters } = useElementary()
   const { controls, cv } = useParams(params, 'string')
   const { controls: midiControls, cv: midiCV } = useParams(midiParams, `${name}-midi`)
 
@@ -30,10 +28,12 @@ export function useString(name = 'string' + Math.floor(Math.random() * 300)) {
   })
 
   watch(note, n => {
-    midiControls['string:trigger'] = n.velocity > 0 ? 1 : 0
+    midiControls['string:trigger'] = n.velocity
     midiControls['string:midi'] = n?.number;
     midiControls['string:velocity'] = n?.velocity
   })
+
+  const meter = computed(() => (Math.abs(meters[`${name}:volume`].min) + Math.abs(meters[`${name}:volume`].max)) / 2)
 
   // watch(() => audio.initiated, init)
 
@@ -47,21 +47,26 @@ export function useString(name = 'string' + Math.floor(Math.random() * 300)) {
     let adsr = el.adsr(0.0001, .2, 0.01, .2, midiCV['string:trigger'])
     let synth = el.mul(adsr, el.noise(), midiCV['string:velocity'])
     let filtered = el.lowpass(880, 6, synth)
-    let adsrOsc = el.adsr(0.005, 0.2, 0, 0.1, 1)
-
-    let osc = el.mul(adsrOsc, el.cycle(el.mul(1, freq)), .8)
 
     let dl = el.delay(
       { size: 44100 },
-      el.smooth(
-        el.tau2pole(cv['string:smooth']),
-        el.ms2samps(delTime)),
+      el.smooth(el.tau2pole(cv['string:smooth']), el.ms2samps(delTime)),
       cv['string:feedback'],
-      filtered)
+      filtered
+    )
 
-    let signal = el.tanh(el.add(dl, osc))
+    let bodyResonance = el.mul(0.3, el.add(
+      el.bandpass(el.mul(freq, 1), 1, dl),  // First formant
+      el.bandpass(el.mul(freq, 1.5), 2, dl),  // Second formant
+      el.bandpass(el.mul(freq, 3), 3, dl)   // Third formant
+    ))
 
-    const string = el.mul(cv['string:volume'], signal)
+    let adsrOsc = el.adsr(0.005, 0.2, 1, 0.7, midiCV['string:trigger'])
+    let osc = el.mul(adsrOsc, el.cycle(el.mul(1, freq)), .8)
+
+    let signal = el.tanh(el.add(el.mul(dl, 0.4), osc, bodyResonance))
+
+    const string = el.meter({ name: `${name}:volume` }, el.mul(cv['string:volume'], signal))
 
     layers[name] = {
       volume: 1,
@@ -70,5 +75,5 @@ export function useString(name = 'string' + Math.floor(Math.random() * 300)) {
 
   }
 
-  return { audio, controls, params, note, render, init }
+  return { audio, controls, params, note, render, init, meter }
 }

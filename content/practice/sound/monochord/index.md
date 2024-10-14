@@ -14,6 +14,10 @@ const MonoChord = defineClientComponent(() => {
 })
 </script>
 
-<MonoChord />
+<MonoChord style="position: sticky; top: 0;"  />
+
+::: info
 
 Drag the divider to explore the string divisions of a monochord, just like Pythagoras did.
+
+:::

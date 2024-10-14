@@ -33,7 +33,7 @@ export function useString(name = 'string' + Math.floor(Math.random() * 300)) {
     midiControls['string:velocity'] = n?.velocity
   })
 
-  const meter = computed(() => (Math.abs(meters[`${name}:volume`].min) + Math.abs(meters[`${name}:volume`].max)) / 2)
+  const meter = computed(() => (Math.abs(meters?.[`${name}:volume`]?.min) + Math.abs(meters?.[`${name}:volume`]?.max)) / 2)
 
   // watch(() => audio.initiated, init)
 

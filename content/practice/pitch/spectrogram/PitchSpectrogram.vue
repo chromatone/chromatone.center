@@ -83,7 +83,7 @@ const onCanvasDraw = (instance) => {
 const fftSize = useCycleList([4096, 8192, 16384, 32768], { initialValue: 8192 })
 watch(fftSize.state, size => audio && (audio.fftSize = size))
 
-const smoothing = useClamp(0.5, 0, 0.9)
+const smoothing = useClamp(useStorage('monochord-smoothing', 0.5), 0, 0.9)
 watch(smoothing, s => audio && (audio.smoothing = s))
 
 function initiate() {

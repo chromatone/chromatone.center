@@ -22,14 +22,12 @@ import { meters, midiColor } from '#/use'
 
 <client-only>
 
-
-
 <div class="relative bg-gray-500 bg-op-30 backdrop-blur-sm w-full sticky top-0 z-100 touch-action-none pointer-events-none">
-<ElemScope 
-class="absolute top-0 w-full " 
-v-for="(_,v) in 12" 
+<ElemScope
+class="absolute top-0 w-full "
+v-for="(_,v) in 12"
 :key="v"
-:color="midiColor(meters[`synth-voice-${v}-midi`]?.max,undefined,meters[`synth-voice-${v}-gate`]?.max,)"
+:color="midiColor(meters?.[`synth-voice-${v}-midi`]?.max,undefined,meters?.[`synth-voice-${v}-gate`]?.max,)"
 :name="`synth-voice-${v}`" />
 
 <ElemFFT class="border-b-2 mt-16"  />

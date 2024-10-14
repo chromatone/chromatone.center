@@ -1,10 +1,6 @@
 <script setup>
-import { computed, ref } from "vue";
-import { colord } from "colord";
-
 import { globalScale, pitchColor, useMidi } from '#/use';
 import { useElemSynth } from '#/use/elem/useElemSynth'
-import { useFFT } from "#/use/elem/useElementary";
 import { onKeyDown } from "@vueuse/core";
 
 const { controls, groups, voiceRefs: voices, stopAll, cycleNote, synthEnabled, params } = useElemSynth()
@@ -12,13 +8,6 @@ const { controls, groups, voiceRefs: voices, stopAll, cycleNote, synthEnabled, p
 onKeyDown('Escape', () => { stopAll() })
 
 const { midi, activeNotes } = useMidi()
-
-const color = computed(() => Object.entries(activeNotes.value).reduce((acc, en) => {
-  acc = colord(acc).mix(pitchColor((Number(en[0]) - 9) % 12), Number(en[1]) / 3).toRgbString()
-  return acc
-}, '#888'))
-
-const FFT = useFFT()
 
 </script>
 

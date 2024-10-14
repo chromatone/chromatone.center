@@ -27,7 +27,6 @@ export function useElemSynth(count = 12) {
   watch(() => midi.note, n => {
     if (synthEnabled.value) {
       cycleNote(n.number, n.velocity);
-      render();
     }
   });
 
@@ -59,16 +58,16 @@ export function useElemSynth(count = 12) {
 
     const signal = pingPong(poly);
 
-    let rev = srvb({
-      key: 'srvb',
-      sampleRate: meters['main:sample-rate']?.max || 44100,
-      size: cv['reverb:size'],
-      decay: cv['reverb:decay'],
-      mod: cv['reverb:mod'],
-      mix: el.mul(cv['reverb:mix'], cv['reverb:on']),
-    }, signal[0], signal[1])
+    // let rev = srvb({
+    //   key: 'srvb',
+    //   sampleRate: meters['main:sample-rate']?.max || 44100,
+    //   size: cv['reverb:size'],
+    //   decay: cv['reverb:decay'],
+    //   mod: cv['reverb:mod'],
+    //   mix: el.mul(cv['reverb:mix'], cv['reverb:on']),
+    // }, signal[0], signal[1])
 
-    return rev
+    return signal
   }
 
 
@@ -266,8 +265,6 @@ export function useElemSynth(count = 12) {
       )
     ));
   }
-
-
 
   return { params, controls, cv, groups, audio, render, voiceRefs, cycleNote, stopAll, synthEnabled };
 }

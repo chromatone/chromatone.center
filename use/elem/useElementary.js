@@ -85,17 +85,14 @@ export function useElementary() {
 
 export { audio, layers }
 
-
-
 export function useFFT(name = 'main:fft') {
 
   const { meters, FFTs } = useElementary()
-
   const FFT = reactive({
     sr: computed(() => meters['main:sample-rate']?.max || 44100),
     data: computed(() => FFTs?.[name] || [[], []]),
     freq: computed(() => FFT.data[0].map((val, v) => v * FFT.sr / (FFT.data[0].length || 1))),
-    colors: computed(() => FFT.freq.map(freqColor)),
+    colors: computed(() => FFT.freq.map(f => freqColor(f))),
     total: computed(() => FFT.data[0].map((val, v) => Math.log2(1 + Math.abs(val) + Math.abs(FFT.data[1][v])))),
   })
 

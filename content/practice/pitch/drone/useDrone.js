@@ -1,4 +1,4 @@
-import { freqColor, freqPitch, pitchFreq } from "#/use/calculations";
+import { freqPitch, pitchFreq } from "#/use/calculations";
 import { Frequency, Synth, PanVol, gainToDb, LFO, Meter, Filter, Gain } from "tone";
 import { useRafFn, onKeyStroke } from "@vueuse/core";
 import { createAudioChannel } from '#/use/audio'

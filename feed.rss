@@ -4,7 +4,7 @@
         <title>Chromatone</title>
         <link>https://chromatone.center</link>
         <description>Visual Music Language development updates and more</description>
-        <lastBuildDate>Mon, 14 Oct 2024 15:16:58 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 14 Oct 2024 16:31:42 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en-EN</language>
@@ -13,7 +13,7 @@
             <title><![CDATA[Synth snippets]]></title>
             <link>https://chromatone.center/practice/synth/snippets.html</link>
             <guid>https://chromatone.center/practice/synth/snippets.html</guid>
-            <pubDate>Mon, 14 Oct 2024 15:13:13 GMT</pubDate>
+            <pubDate>Mon, 14 Oct 2024 16:29:17 GMT</pubDate>
             <description><![CDATA[Code pieces]]></description>
             <content:encoded><![CDATA[<h3 id="skew-by-upheaver" tabindex="-1">Skew by <a href="https://discord.com/channels/826071713426178078/834787928688689172/1123676571279048875" target="_blank" rel="noreferrer">upheaver</a> <a class="header-anchor" href="#skew-by-upheaver" aria-label="Permalink to &quot;Skew by [upheaver](https://discord.com/channels/826071713426178078/834787928688689172/1123676571279048875)&quot;"></a></h3>
 <p>Sharing a useful snippet. JUCE's logskew function in Typescript, if anyone wants to scale their parameter values (for example convert 0-1 range to 20-20000 hz in a non linear way) :</p>
@@ -36,157 +36,10 @@
 </div>]]></content:encoded>
         </item>
         <item>
-            <title><![CDATA[Modules]]></title>
-            <link>https://chromatone.center/support/docs/</link>
-            <guid>https://chromatone.center/support/docs/</guid>
-            <pubDate>Mon, 14 Oct 2024 15:13:13 GMT</pubDate>
-            <description><![CDATA[&lt;dl
-&lt;dt&gt;&lt;a href="module_Audio"&gt;Audio&lt;/a&gt;&lt;/dt&gt;
-&lt;dd&gt;&lt;p&gt;Main aud]]></description>
-            <content:encoded><![CDATA[<h2 id="modules" tabindex="-1">Modules <a class="header-anchor" href="#modules" aria-label="Permalink to &quot;Modules&quot;"></a></h2>
-<dl>
-<dt><a href="#module_Audio">Audio</a></dt>
-<dd><p>Main audio bus controller</p>
-</dd>
-<dt><a href="#module_Calculations">Calculations</a></dt>
-<dd><p>All the basic math for note-frequency convertion</p>
-</dd>
-<dt><a href="#module_Chroma">Chroma</a></dt>
-<dd><p>Chroma</p>
-</dd>
-<dt><a href="#module_Colors">Colors</a></dt>
-<dd></dd>
-<dt><a href="#module_Global">Global</a></dt>
-<dd><p>Global state</p>
-</dd>
-<dt><a href="#module_Keyboard">Keyboard</a></dt>
-<dd></dd>
-<dt><a href="#module_Loop">Loop</a></dt>
-<dd></dd>
-<dt><a href="#module_Microphone">Microphone</a></dt>
-<dd></dd>
-<dt><a href="#module_MIDI">MIDI</a></dt>
-<dd></dd>
-<dt><a href="#module_MidiRender">MidiRender</a></dt>
-<dd></dd>
-<dt><a href="#module_Mouse">Mouse</a></dt>
-<dd></dd>
-<dt><a href="#module_AudioRecorder">AudioRecorder</a></dt>
-<dd></dd>
-<dt><a href="#Sequence
-The beat loopsmodule_">Sequence
-The beat loops</a></dt>
-<dd></dd>
-<dt><a href="#module_Tempo">Tempo</a></dt>
-<dd></dd>
-<dt><a href="#module_MusicTheory">MusicTheory</a></dt>
-<dd></dd>
-<dt><a href="#module_Tuner - pitch detection">Tuner - pitch detection</a></dt>
-<dd><p>Audio analysis on the fly using Aubio.js and Meyda</p>
-</dd>
-</dl>
-<p><a name="module_Audio"></a></p>
-<h2 id="audio" tabindex="-1">Audio <a class="header-anchor" href="#audio" aria-label="Permalink to &quot;Audio&quot;"></a></h2>
-<p>Main audio bus controller</p>
-<p><a name="module_Calculations"></a></p>
-<h2 id="calculations" tabindex="-1">Calculations <a class="header-anchor" href="#calculations" aria-label="Permalink to &quot;Calculations&quot;"></a></h2>
-<p>All the basic math for note-frequency convertion</p>
-<ul>
-<li><a href="#module_Calculations">Calculations</a>
-<ul>
-<li><a href="#module_Calculations.pitchNoteOctave">.pitchNoteOctave()</a></li>
-<li><a href="#module_Calculations.pitchFreq">.pitchFreq()</a></li>
-<li><a href="#module_Calculations.pitchColor">.pitchColor()</a></li>
-<li><a href="#module_Calculations.freqColor">.freqColor()</a></li>
-<li><a href="#module_Calculations.freqPitch">.freqPitch()</a></li>
-<li><a href="#module_Calculations.isInChroma">.isInChroma()</a></li>
-<li><a href="#module_Calculations.getCircleCoord">.getCircleCoord()</a></li>
-<li><a href="#module_Calculations.rotateArray">.rotateArray()</a></li>
-<li><a href="#module_Calculations.getCents">.getCents()</a></li>
-<li><a href="#module_Calculations.getStandardFrequency">.getStandardFrequency()</a></li>
-</ul>
-</li>
-</ul>
-<p><a name="module_Calculations.pitchNoteOctave"></a></p>
-<h3 id="calculations-pitchnoteoctave" tabindex="-1">Calculations.pitchNoteOctave() <a class="header-anchor" href="#calculations-pitchnoteoctave" aria-label="Permalink to &quot;Calculations.pitchNoteOctave()&quot;"></a></h3>
-<p>Convert an unbound pitch to 0-11 pitch + octave</p>
-<p><strong>Kind</strong>: static method of <a href="#module_Calculations"><code>Calculations</code></a><br>
-<a name="module_Calculations.pitchFreq"></a></p>
-<h3 id="calculations-pitchfreq" tabindex="-1">Calculations.pitchFreq() <a class="header-anchor" href="#calculations-pitchfreq" aria-label="Permalink to &quot;Calculations.pitchFreq()&quot;"></a></h3>
-<p>Determine a frequency in Hz out of a pitch with octave and optional tuning info</p>
-<p><strong>Kind</strong>: static method of <a href="#module_Calculations"><code>Calculations</code></a><br>
-<a name="module_Calculations.pitchColor"></a></p>
-<h3 id="calculations-pitchcolor" tabindex="-1">Calculations.pitchColor() <a class="header-anchor" href="#calculations-pitchcolor" aria-label="Permalink to &quot;Calculations.pitchColor()&quot;"></a></h3>
-<p>Get a color for any given pitch and octave (velocity and alpha are also configurable)</p>
-<p><strong>Kind</strong>: static method of <a href="#module_Calculations"><code>Calculations</code></a><br>
-<a name="module_Calculations.freqColor"></a></p>
-<h3 id="calculations-freqcolor" tabindex="-1">Calculations.freqColor() <a class="header-anchor" href="#calculations-freqcolor" aria-label="Permalink to &quot;Calculations.freqColor()&quot;"></a></h3>
-<p>Get a color for a certain pitch frequency in Hz</p>
-<p><strong>Kind</strong>: static method of <a href="#module_Calculations"><code>Calculations</code></a><br>
-<a name="module_Calculations.freqPitch"></a></p>
-<h3 id="calculations-freqpitch" tabindex="-1">Calculations.freqPitch() <a class="header-anchor" href="#calculations-freqpitch" aria-label="Permalink to &quot;Calculations.freqPitch()&quot;"></a></h3>
-<p>Get a pitch from a frequency</p>
-<p><strong>Kind</strong>: static method of <a href="#module_Calculations"><code>Calculations</code></a><br>
-<a name="module_Calculations.isInChroma"></a></p>
-<h3 id="calculations-isinchroma" tabindex="-1">Calculations.isInChroma() <a class="header-anchor" href="#calculations-isinchroma" aria-label="Permalink to &quot;Calculations.isInChroma()&quot;"></a></h3>
-<p>Check if a note in included in a chroma string</p>
-<p><strong>Kind</strong>: static method of <a href="#module_Calculations"><code>Calculations</code></a><br>
-<a name="module_Calculations.getCircleCoord"></a></p>
-<h3 id="calculations-getcirclecoord" tabindex="-1">Calculations.getCircleCoord() <a class="header-anchor" href="#calculations-getcirclecoord" aria-label="Permalink to &quot;Calculations.getCircleCoord()&quot;"></a></h3>
-<p>Radial coordinates calculation</p>
-<p><strong>Kind</strong>: static method of <a href="#module_Calculations"><code>Calculations</code></a><br>
-<a name="module_Calculations.rotateArray"></a></p>
-<h3 id="calculations-rotatearray" tabindex="-1">Calculations.rotateArray() <a class="header-anchor" href="#calculations-rotatearray" aria-label="Permalink to &quot;Calculations.rotateArray()&quot;"></a></h3>
-<p>Rotate and array by a number of steps</p>
-<p><strong>Kind</strong>: static method of <a href="#module_Calculations"><code>Calculations</code></a><br>
-<a name="module_Calculations.getCents"></a></p>
-<h3 id="calculations-getcents" tabindex="-1">Calculations.getCents() <a class="header-anchor" href="#calculations-getcents" aria-label="Permalink to &quot;Calculations.getCents()&quot;"></a></h3>
-<p>Get cents difference between a certain pitch and an arbitrary frequency</p>
-<p><strong>Kind</strong>: static method of <a href="#module_Calculations"><code>Calculations</code></a><br>
-<a name="module_Calculations.getStandardFrequency"></a></p>
-<h3 id="calculations-getstandardfrequency" tabindex="-1">Calculations.getStandardFrequency() <a class="header-anchor" href="#calculations-getstandardfrequency" aria-label="Permalink to &quot;Calculations.getStandardFrequency()&quot;"></a></h3>
-<p>Get a frequency for any given pitch</p>
-<p><strong>Kind</strong>: static method of <a href="#module_Calculations"><code>Calculations</code></a><br>
-<a name="module_Chroma"></a></p>
-<h2 id="chroma" tabindex="-1">Chroma <a class="header-anchor" href="#chroma" aria-label="Permalink to &quot;Chroma&quot;"></a></h2>
-<p>Chroma</p>
-<p><a name="module_Colors"></a></p>
-<h2 id="colors" tabindex="-1">Colors <a class="header-anchor" href="#colors" aria-label="Permalink to &quot;Colors&quot;"></a></h2>
-<p><a name="module_Global"></a></p>
-<h2 id="global" tabindex="-1">Global <a class="header-anchor" href="#global" aria-label="Permalink to &quot;Global&quot;"></a></h2>
-<p>Global state</p>
-<p><a name="module_Keyboard"></a></p>
-<h2 id="keyboard" tabindex="-1">Keyboard <a class="header-anchor" href="#keyboard" aria-label="Permalink to &quot;Keyboard&quot;"></a></h2>
-<p><a name="module_Loop"></a></p>
-<h2 id="loop" tabindex="-1">Loop <a class="header-anchor" href="#loop" aria-label="Permalink to &quot;Loop&quot;"></a></h2>
-<p><a name="module_Microphone"></a></p>
-<h2 id="microphone" tabindex="-1">Microphone <a class="header-anchor" href="#microphone" aria-label="Permalink to &quot;Microphone&quot;"></a></h2>
-<p><a name="module_MIDI"></a></p>
-<h2 id="midi" tabindex="-1">MIDI <a class="header-anchor" href="#midi" aria-label="Permalink to &quot;MIDI&quot;"></a></h2>
-<p><a name="module_MidiRender"></a></p>
-<h2 id="midirender" tabindex="-1">MidiRender <a class="header-anchor" href="#midirender" aria-label="Permalink to &quot;MidiRender&quot;"></a></h2>
-<p><a name="module_Mouse"></a></p>
-<h2 id="mouse" tabindex="-1">Mouse <a class="header-anchor" href="#mouse" aria-label="Permalink to &quot;Mouse&quot;"></a></h2>
-<p><a name="module_AudioRecorder"></a></p>
-<h2 id="audiorecorder" tabindex="-1">AudioRecorder <a class="header-anchor" href="#audiorecorder" aria-label="Permalink to &quot;AudioRecorder&quot;"></a></h2>
-<p><a name="Sequence
-The beat loopsmodule_"></a></p>
-<h2 id="sequence" tabindex="-1">Sequence <a class="header-anchor" href="#sequence" aria-label="Permalink to &quot;Sequence&quot;"></a></h2>
-<p>The beat loops
-<a name="module_Tempo"></a></p>
-<h2 id="tempo" tabindex="-1">Tempo <a class="header-anchor" href="#tempo" aria-label="Permalink to &quot;Tempo&quot;"></a></h2>
-<p><a name="module_MusicTheory"></a></p>
-<h2 id="musictheory" tabindex="-1">MusicTheory <a class="header-anchor" href="#musictheory" aria-label="Permalink to &quot;MusicTheory&quot;"></a></h2>
-<p><a name="module_Tuner - pitch detection"></a></p>
-<h2 id="tuner-pitch-detection" tabindex="-1">Tuner - pitch detection <a class="header-anchor" href="#tuner-pitch-detection" aria-label="Permalink to &quot;Tuner - pitch detection&quot;"></a></h2>
-<p>Audio analysis on the fly using Aubio.js and Meyda</p>
-]]></content:encoded>
-        </item>
-        <item>
             <title><![CDATA[Words sequencing]]></title>
             <link>https://chromatone.center/practice/generative/words/</link>
             <guid>https://chromatone.center/practice/generative/words/</guid>
-            <pubDate>Mon, 14 Oct 2024 15:13:13 GMT</pubDate>
+            <pubDate>Mon, 14 Oct 2024 16:29:17 GMT</pubDate>
             <description><![CDATA[&lt;script setup
 import { defineClientComponent } from 'vitepress'
 const Words = defineClientCompone]]></description>
@@ -197,7 +50,7 @@ const Words = defineClientCompone]]></description>
             <title><![CDATA[Words sequencing]]></title>
             <link>https://chromatone.center/practice/sequencing/words/</link>
             <guid>https://chromatone.center/practice/sequencing/words/</guid>
-            <pubDate>Mon, 14 Oct 2024 15:13:13 GMT</pubDate>
+            <pubDate>Mon, 14 Oct 2024 16:29:17 GMT</pubDate>
             <description><![CDATA[This page is moved to https://chromatone.center/practice/generative/words/]]></description>
             <content:encoded><![CDATA[<p>This page is moved to <a href="https://chromatone.center/practice/generative/words/" target="_blank" rel="noreferrer">https://chromatone.center/practice/generative/words/</a></p>
 ]]></content:encoded>
@@ -207,7 +60,7 @@ const Words = defineClientCompone]]></description>
             <title><![CDATA[ZZFXM]]></title>
             <link>https://chromatone.center/practice/sequencing/zzfxm/</link>
             <guid>https://chromatone.center/practice/sequencing/zzfxm/</guid>
-            <pubDate>Mon, 14 Oct 2024 15:13:13 GMT</pubDate>
+            <pubDate>Mon, 14 Oct 2024 16:29:17 GMT</pubDate>
             <description><![CDATA[&lt;script setup
 import { defineClientComponent } from 'vitepress'
 const ZzFxm = defineClientCompone]]></description>
@@ -219,7 +72,7 @@ const ZzFxm = defineClientCompone]]></description>
             <title><![CDATA[Reharmonization]]></title>
             <link>https://chromatone.center/theory/harmony/reharmonization/</link>
             <guid>https://chromatone.center/theory/harmony/reharmonization/</guid>
-            <pubDate>Mon, 14 Oct 2024 15:13:13 GMT</pubDate>
+            <pubDate>Mon, 14 Oct 2024 16:29:17 GMT</pubDate>
             <description><![CDATA[How to reharmonize a song]]></description>
             <content:encoded><![CDATA[<youtube-embed video="lz3WR-F_pnM" /><h2 id="reharmonization-chord-substitution-but-for-the-whole-chord-progression" tabindex="-1">Reharmonization = Chord substitution but for the whole chord progression <a class="header-anchor" href="#reharmonization-chord-substitution-but-for-the-whole-chord-progression" aria-label="Permalink to &quot;Reharmonization = Chord substitution but for the whole chord progression&quot;"></a></h2>
 <p>Reharmonization is used to:</p>

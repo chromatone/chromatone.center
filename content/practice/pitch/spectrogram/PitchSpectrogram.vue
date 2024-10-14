@@ -1,25 +1,19 @@
 <script setup>
-import { initGetUserMedia, master } from '#/use/audio'
-import { useMicrophone } from '#/use/mic'
-import { onKeyStroke, useCycleList, useStorage, useWindowSize } from '@vueuse/core'
 import { ref, computed, reactive, onMounted, watch, onUnmounted } from 'vue'
+import { onKeyStroke, useCycleList, useStorage, useWindowSize } from '@vueuse/core'
 import { useClamp } from '@vueuse/math'
 
-const canvasElement = ref()
-const video = ref()
+import { initGetUserMedia, master } from '#/use/audio'
+import { useMicrophone } from '#/use/mic'
+
+let canvas, ctx, tempCanvas, tempCtx, audio
 
 const { mic, input } = useMicrophone()
 const { width, height } = useWindowSize()
 
+const canvasElement = ref()
+const video = ref()
 const paused = ref(false)
-
-
-
-let canvas, ctx, tempCanvas, tempCtx
-let audio
-
-
-
 
 const state = reactive({
   initiated: false,
@@ -32,17 +26,11 @@ const state = reactive({
   offset: useStorage('spectrogram-offset', 0),
 })
 
-function dragScreen(drag) {
-  if (drag.tap) paused.value = !paused.value
-  state.speedCount -= drag.delta[0] / 2
-}
-
 watch([width, height], ([w, h]) => {
-  if (canvas && tempCanvas) {
-    canvas.width = tempCanvas.width = w
-    canvas.height = tempCanvas.height = h
-    clear()
-  }
+  if (!canvas && !tempCanvas) return
+  state.width = canvas.width = tempCanvas.width = w
+  state.height = canvas.height = tempCanvas.height = h
+  clear()
 })
 
 onMounted(() => {
@@ -68,11 +56,6 @@ const colorIt = (freq, value) => `hsl(${freqPitch(freq) * 30}, ${value * 100}%, 
 const steepness = useClamp(10, 3, 30)
 const midpoint = useClamp(0.5, 0, 1)
 const sigmoid = (value) => 1 / (1 + Math.exp(-steepness.value * (value - midpoint.value)))
-
-function clear() {
-  ctx.fillStyle = '#000';
-  ctx.fillRect(0, 0, state.width, state.height)
-}
 
 const onCanvasDraw = (instance) => {
   if (paused.value) return
@@ -104,7 +87,13 @@ const smoothing = useClamp(0.5, 0, 0.9)
 watch(smoothing, s => audio && (audio.smoothing = s))
 
 function initiate() {
-  navigator.mediaDevices.getUserMedia({ audio: true, video: false }).then(async () => {
+  navigator.mediaDevices.getUserMedia({
+    audio: {
+      echoCancellation: false,
+      autoGainControl: true,
+      noiseSuppression: false,
+    }, video: false
+  }).then(async () => {
     const { AudioMotionAnalyzer } = await import('audiomotion-analyzer')
 
     audio = new AudioMotionAnalyzer(null, {
@@ -125,17 +114,19 @@ function initiate() {
   })
 }
 
-onKeyStroke(' ', (e) => {
-  paused.value = !paused.value
-  e.preventDefault()
-})
+function clear() {
+  ctx.fillStyle = '#000';
+  ctx.fillRect(0, 0, state.width, state.height)
+}
 
-onKeyStroke('Enter', (e) => {
-  clear()
-  e.preventDefault()
-})
+function dragScreen(drag) {
+  if (drag.tap) paused.value = !paused.value
+  state.speedCount -= drag.delta[0] / 2
+}
 
+onKeyStroke(' ', (e) => { paused.value = !paused.value; e.preventDefault() })
 
+onKeyStroke('Enter', (e) => { clear(); e.preventDefault() })
 
 </script>
 
@@ -151,7 +142,9 @@ onKeyStroke('Enter', (e) => {
     control-start.absolute(
       v-if="!state.initiated" 
       @click="initiate()")
-    .absolute.top-4.left-4.text-xl.select-none.cursor-pointer(@pointerdown="fftSize.next()") x{{ state.speed }} {{ fftSize.state }}
+    .absolute.top-4.left-4.select-none.cursor-pointer.flex.items-baseline.gap-2(@pointerdown="fftSize.next()") 
+      .text-xl x{{ state.speed }} 
+      .op-50 {{ fftSize.state }} samples/frame
     button.absolute.bottom-4.left-4.text-xl.select-none.cursor-pointer(@pointerdown="paused = !paused")
       .i-la-play(v-if="paused")
       .i-la-pause(v-else)
@@ -162,9 +155,9 @@ onKeyStroke('Enter', (e) => {
       .i-la-trash-alt
   .absolute.w-full.bottom-2.flex.items-end.gap-2.px-2.flex-wrap()
     .is-group.flex.flex-wrap.gap-2.flex-0.p-2.op-20.hover-op-80.transition.ml-16(v-if="state.initiated")
-      ControlRotary(v-model="steepness" :min="3" :max="30" :step="0.0001" :fixed="2" param="STEEP")
-      ControlRotary(v-model="midpoint" :min="0" :max="1" :step=".0001" param="MID" :fixed="2")
-      ControlRotary(v-model="smoothing" :min="0" :max="1" :step=".0001" param="SMTH" :fixed="2")
+      ControlRotary(v-model="steepness" :min="3" :max="30" :step="0.0001" :fixed="2" param="CONTRAST")
+      ControlRotary(v-model="midpoint" :min="0" :max="1" :step=".0001" param="MIDPOINT" :fixed="2")
+      ControlRotary(v-model="smoothing" :min="0" :max="1" :step=".0001" param="SMOOTH" :fixed="2")
     .flex-1
     .scale-75.max-h-60.overflow-clip.relative.text-white.op-20.hover-op-80.transition 
       .absolute.p-2.opacity-70.touch-none.select-none.text-md Right click here to enter Picture-In-Picture mode

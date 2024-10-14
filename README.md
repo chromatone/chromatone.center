@@ -28,7 +28,7 @@ A collection of sound analysis and synthesis tools along with other useful media
 
 [Chromatone composables](./use/README.md)
 
-## Database package
+## Chromatone database package
 
 [![NPM Version and link to npmjs.com](https://img.shields.io/npm/v/chromatone-db)](https://www.npmjs.com/package/chromatone-db)
 

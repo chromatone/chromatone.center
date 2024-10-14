@@ -3,6 +3,7 @@ layout: home
 title: Chromatone
 description: Visual Music Language Research Hub
 youtube: qthKClCRIl0
+date: 2017-01-01
 ---
 
 <a href="/theory/interplay/spectrum/" ><img class="w-full" alt="Chromatic Spectrum" src="/img/spectrum.svg" /></a>

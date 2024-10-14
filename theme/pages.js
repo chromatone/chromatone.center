@@ -13,7 +13,7 @@ export function usePages(route, routes) {
 }
 
 export function useChildren(route, routes) {
-  return computed(() => getPages(routes)[cleanLink(route.path)])
+  return computed(() => getPages(routes)[route.path])
 }
 
 export function useParents(route, routes) {
@@ -39,7 +39,7 @@ export function getPages(routes) {
   let pageList = {}
   for (let route of routes) {
     const folder = normalize(route.url.split("/").slice(0, -2).join("/"))
-    if (route.frontmatter?.hidden) continue
+    if (route.frontmatter?.hidden || route.url == '/') continue
     pageList[folder] = pageList[folder] || [];
     pageList[folder].push(route);
   }

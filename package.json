@@ -41,11 +41,11 @@
 	],
 	"scripts": {
 		"dev": "vitepress dev content --host --port 3242",
-		"build-lib": "cd use && vite build --emptyOutDir",
+		"build-lib": "pnpm run docs && cd use && vite build --emptyOutDir",
 		"build-db": "cd db && vite build --emptyOutDir",
 		"build": "pnpm run docs && vitepress build content",
 		"serve": "vitepress serve content --port 3200",
-		"docs": "jsdoc2md use/*.js > content/support/docs/index.md",
+		"docs": "jsdoc2md use/*.js > use/index.md",
 		"deploy": "sh deploy.sh"
 	},
 	"dependencies": {

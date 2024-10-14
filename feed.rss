@@ -4,7 +4,7 @@
         <title>Chromatone</title>
         <link>https://chromatone.center</link>
         <description>Visual Music Language development updates and more</description>
-        <lastBuildDate>Mon, 14 Oct 2024 14:58:26 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 14 Oct 2024 15:16:58 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en-EN</language>
@@ -13,7 +13,7 @@
             <title><![CDATA[Synth snippets]]></title>
             <link>https://chromatone.center/practice/synth/snippets.html</link>
             <guid>https://chromatone.center/practice/synth/snippets.html</guid>
-            <pubDate>Mon, 14 Oct 2024 14:55:47 GMT</pubDate>
+            <pubDate>Mon, 14 Oct 2024 15:13:13 GMT</pubDate>
             <description><![CDATA[Code pieces]]></description>
             <content:encoded><![CDATA[<h3 id="skew-by-upheaver" tabindex="-1">Skew by <a href="https://discord.com/channels/826071713426178078/834787928688689172/1123676571279048875" target="_blank" rel="noreferrer">upheaver</a> <a class="header-anchor" href="#skew-by-upheaver" aria-label="Permalink to &quot;Skew by [upheaver](https://discord.com/channels/826071713426178078/834787928688689172/1123676571279048875)&quot;"></a></h3>
 <p>Sharing a useful snippet. JUCE's logskew function in Typescript, if anyone wants to scale their parameter values (for example convert 0-1 range to 20-20000 hz in a non linear way) :</p>
@@ -39,7 +39,7 @@
             <title><![CDATA[Modules]]></title>
             <link>https://chromatone.center/support/docs/</link>
             <guid>https://chromatone.center/support/docs/</guid>
-            <pubDate>Mon, 14 Oct 2024 14:55:47 GMT</pubDate>
+            <pubDate>Mon, 14 Oct 2024 15:13:13 GMT</pubDate>
             <description><![CDATA[&lt;dl
 &lt;dt&gt;&lt;a href="module_Audio"&gt;Audio&lt;/a&gt;&lt;/dt&gt;
 &lt;dd&gt;&lt;p&gt;Main aud]]></description>
@@ -186,7 +186,7 @@ The beat loopsmodule_"></a></p>
             <title><![CDATA[Words sequencing]]></title>
             <link>https://chromatone.center/practice/generative/words/</link>
             <guid>https://chromatone.center/practice/generative/words/</guid>
-            <pubDate>Mon, 14 Oct 2024 14:55:47 GMT</pubDate>
+            <pubDate>Mon, 14 Oct 2024 15:13:13 GMT</pubDate>
             <description><![CDATA[&lt;script setup
 import { defineClientComponent } from 'vitepress'
 const Words = defineClientCompone]]></description>
@@ -197,7 +197,7 @@ const Words = defineClientCompone]]></description>
             <title><![CDATA[Words sequencing]]></title>
             <link>https://chromatone.center/practice/sequencing/words/</link>
             <guid>https://chromatone.center/practice/sequencing/words/</guid>
-            <pubDate>Mon, 14 Oct 2024 14:55:47 GMT</pubDate>
+            <pubDate>Mon, 14 Oct 2024 15:13:13 GMT</pubDate>
             <description><![CDATA[This page is moved to https://chromatone.center/practice/generative/words/]]></description>
             <content:encoded><![CDATA[<p>This page is moved to <a href="https://chromatone.center/practice/generative/words/" target="_blank" rel="noreferrer">https://chromatone.center/practice/generative/words/</a></p>
 ]]></content:encoded>
@@ -207,7 +207,7 @@ const Words = defineClientCompone]]></description>
             <title><![CDATA[ZZFXM]]></title>
             <link>https://chromatone.center/practice/sequencing/zzfxm/</link>
             <guid>https://chromatone.center/practice/sequencing/zzfxm/</guid>
-            <pubDate>Mon, 14 Oct 2024 14:55:47 GMT</pubDate>
+            <pubDate>Mon, 14 Oct 2024 15:13:13 GMT</pubDate>
             <description><![CDATA[&lt;script setup
 import { defineClientComponent } from 'vitepress'
 const ZzFxm = defineClientCompone]]></description>
@@ -219,7 +219,7 @@ const ZzFxm = defineClientCompone]]></description>
             <title><![CDATA[Reharmonization]]></title>
             <link>https://chromatone.center/theory/harmony/reharmonization/</link>
             <guid>https://chromatone.center/theory/harmony/reharmonization/</guid>
-            <pubDate>Mon, 14 Oct 2024 14:55:47 GMT</pubDate>
+            <pubDate>Mon, 14 Oct 2024 15:13:13 GMT</pubDate>
             <description><![CDATA[How to reharmonize a song]]></description>
             <content:encoded><![CDATA[<youtube-embed video="lz3WR-F_pnM" /><h2 id="reharmonization-chord-substitution-but-for-the-whole-chord-progression" tabindex="-1">Reharmonization = Chord substitution but for the whole chord progression <a class="header-anchor" href="#reharmonization-chord-substitution-but-for-the-whole-chord-progression" aria-label="Permalink to &quot;Reharmonization = Chord substitution but for the whole chord progression&quot;"></a></h2>
 <p>Reharmonization is used to:</p>
@@ -806,11 +806,11 @@ const Pianolizer = defineClientComponent(() => {
             <description><![CDATA[MIDI enabled synthesizer built with Elementary audio library]]></description>
             <content:encoded><![CDATA[<client-only>
 <div class="relative bg-gray-500 bg-op-30 backdrop-blur-sm w-full sticky top-0 z-100 touch-action-none pointer-events-none">
-<ElemScope 
-class="absolute top-0 w-full " 
-v-for="(_,v) in 12" 
+<ElemScope
+class="absolute top-0 w-full "
+v-for="(_,v) in 12"
 :key="v"
-:color="midiColor(meters[`synth-voice-${v}-midi`]?.max,undefined,meters[`synth-voice-${v}-gate`]?.max,)"
+:color="midiColor(meters?.[`synth-voice-${v}-midi`]?.max,undefined,meters?.[`synth-voice-${v}-gate`]?.max,)"
 :name="`synth-voice-${v}`" />
 <ElemFFT class="border-b-2 mt-16"  /></div>
 <ElemSynth />

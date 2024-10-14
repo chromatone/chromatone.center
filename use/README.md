@@ -1,11 +1,7 @@
-## Welcome to use-chromatone lib!
-
+## Welcome to use-chromatone library
 
 It's a collection of Vue composables that power the [Chromatone.center](https://chromatone.center) web-site.
 
-### Useful links
+## Read the docs
 
-- https://github.com/Tonejs/Tone.js/wiki/Time
-- https://tonejs.github.io/docs/
-- https://github.com/Tonejs/Midi
-- https://webmidijs.org/api/
+[Go to docs](./docs/index.md)

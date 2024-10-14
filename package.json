@@ -45,7 +45,7 @@
 		"build-db": "cd db && vite build --emptyOutDir",
 		"build": "pnpm run docs && vitepress build content",
 		"serve": "vitepress serve content --port 3200",
-		"docs": "jsdoc2md use/*.js > use/index.md",
+		"docs": "jsdoc2md use/*.js > use/docs/index.md",
 		"deploy": "sh deploy.sh"
 	},
 	"dependencies": {
@@ -73,7 +73,7 @@
 		"color-spectrum": "^1.1.3",
 		"colord": "^2.9.3",
 		"drauu": "^0.4.1",
-		"extract-colors": "^4.0.8",
+		"extract-colors": "^4.1.0",
 		"floating-vue": "^5.2.2",
 		"fraction.js": "^5.0.6",
 		"fuse.js": "^7.0.0",
@@ -107,7 +107,7 @@
 		"vite-plugin-top-level-await": "^1.4.4",
 		"vite-plugin-wasm": "^3.3.0",
 		"vitepress-plugin-rss": "^0.2.10",
-		"vue": "^3.5.11",
+		"vue": "^3.5.12",
 		"vue-glsl": "^1.1.27",
 		"vue-joystick-component": "^0.1.3",
 		"vue-use-spring": "^0.3.3",
@@ -118,9 +118,9 @@
 	"devDependencies": {
 		"@directus/sdk": "^17.0.2",
 		"@iconify-json/bi": "^1.2.1",
-		"@iconify-json/carbon": "^1.2.2",
+		"@iconify-json/carbon": "^1.2.3",
 		"@iconify-json/fad": "^1.2.0",
-		"@iconify-json/fluent": "^1.2.3",
+		"@iconify-json/fluent": "^1.2.4",
 		"@iconify-json/healthicons": "^1.2.0",
 		"@iconify-json/ion": "^1.2.1",
 		"@iconify-json/la": "^1.2.0",
@@ -131,7 +131,7 @@
 		"@modyfi/vite-plugin-yaml": "^1.1.0",
 		"@unocss/extractor-pug": "^0.63.4",
 		"@vite-pwa/vitepress": "^0.5.3",
-		"@vue/compiler-sfc": "^3.5.11",
+		"@vue/compiler-sfc": "^3.5.12",
 		"@vue/language-plugin-pug": "^2.1.6",
 		"jsdoc-to-markdown": "^9.0.2",
 		"pug": "^3.0.3",
@@ -139,8 +139,8 @@
 		"unocss": "^0.63.4",
 		"unplugin-icons": "^0.19.3",
 		"unplugin-vue-components": "^0.27.4",
-		"vite": "^5.4.8",
-		"vitepress": "^1.4.0",
+		"vite": "^5.4.9",
+		"vitepress": "^1.4.1",
 		"workbox-window": "^7.1.0"
 	}
 }

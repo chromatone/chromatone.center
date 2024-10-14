@@ -17,7 +17,7 @@ export default defineConfig({
   optimizeDeps: {
     include: ['vue', '@vueuse/core', 'tone', 'tonal', 'colord', 'zzfx'],
   },
-  publicDir: false,
+  publicDir: 'docs',
   resolve: {
     alias: {
       "#": path.resolve(dirname, "../"),

@@ -14,7 +14,7 @@ const PitchDrone = defineClientComponent(() => {
 })
 </script>
 
-<PitchDrone  style="position: sticky; top: 1em;"  />
+<PitchDrone  style="position: sticky; top: 0"  />
 
 
 ::: info

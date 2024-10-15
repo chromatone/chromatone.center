@@ -37,7 +37,7 @@ useGesture({
 </script>
 
 <template lang="pug">
-.py-16.relative.cursor-pointer.rounded-xl.overflow-hidden.text-center.font-bold.border-6.touch-none(
+.relative.cursor-pointer.rounded-xl.overflow-hidden.text-center.font-bold.border-6.touch-none.flex.items-center.justify-center(
   ref="control"
   :style="{ borderColor: voice.play ? voice.color : '#3333' }"
 ) 

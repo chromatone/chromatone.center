@@ -9,14 +9,8 @@ import { Frequency } from 'tone';
 
 const { isDark } = useData()
 const props = defineProps({
-  instrument: {
-    type: String,
-    default: 'ukulele'
-  },
-  chordNotes: {
-    type: Array,
-    default: () => []
-  }
+  instrument: { type: String, default: 'ukulele' },
+  chordNotes: { type: Array, default: () => [] }
 });
 
 const emit = defineEmits(['note'])
@@ -40,7 +34,7 @@ const neck = reactive({
 
 function noteColor(string, semitones) {
   const midiNote = Frequency(string).transpose(semitones).toMidi()
-  return colorNote(midiNote - 9, 0)
+  return colorNote(midiNote - 9, -1)
 }
 
 function getNote(string, semitones) {
@@ -92,7 +86,7 @@ function getNote(string, semitones) {
           r="5"
           opacity="0.8"
           fill="currentColor"
-        )
+          )
     g#strings
       g.string(
         v-for="(string, s) in neck.strings" 
@@ -104,31 +98,29 @@ function getNote(string, semitones) {
           stroke-width="4"
           stroke="currentColor"
           opacity="0.5"
-        )
+          )
         g.note(
           v-for="(note, n) in neck.fretNum + 1" 
           :key="note"
           :transform="`translate(0, ${(n - 0.5) * neck.fretWidth})`"
-          @click="$emit('note', getNote(string, n))"
-        )
+          @pointerdown="$emit('note', getNote(string, n))"
+          )
           circle(
             :opacity="globalScale.isIn(getNote(string, n)) ? 1 : 0"
-            :stroke="neck.isInChord(getNote(string, n)) ? 'currentColor' : 'none'"
-            stroke-width="3"
-            :r="neck.isInChord(getNote(string, n)) ? neck.noteSize / 1.7 - 4 : neck.noteSize / 2 - 8"
+            :r="neck.isInChord(getNote(string, n)) ? neck.noteSize / 1.7 - 8 : neck.noteSize / 2 - 10"
             :fill="noteColor(string, n)"
-          )
+            )
           circle(
             :fill="isDark ? 'white' : 'black'"
             :opacity="activeNotes[Note.midi(Note.transpose(string, Interval.fromSemitones(n)))] ? 1 : 0"
-            :r="neck.isInChord(getNote(string, n)) ? neck.noteSize / 1.7 - 4 : neck.noteSize / 2 - 14"
-          )
+            :r="neck.isInChord(getNote(string, n)) ? neck.noteSize / 1.7 - 16 : neck.noteSize / 2 - 14"
+            )
           text(
             opacity="0"
             fill="white"
             font-size="14"
             font-weight="bold"
-          ) {{ getNote(string, n) }}
+            ) {{ getNote(string, n) }}
 </template>
 
 <style lang="postcss" scoped>

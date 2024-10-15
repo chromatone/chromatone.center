@@ -27,7 +27,7 @@ const { results } = useFuse(searchText, jazz, {
 </script>
 
 <template lang='pug'>
-.flex.gap-1.justify-end(style="line-height: 1.2em;")
+.flex.gap-1.justify-end.select-none.touch-action-manipulation(style="line-height: 1.2em;")
   .flex.flex-col.max-h-100vh.overflow-scroll.gap-1.op-80.hover-op-100.transition.overscroll-none(
     style="flex: 0 0 160px")
     .flex.p-2.sticky.top-0.bg-light-400.dark-bg-dark-400.items-center.bg-op-80.dark-bg-op-80.backdrop-blur.z-1001
@@ -66,14 +66,15 @@ const { results } = useFuse(searchText, jazz, {
         .flex.gap-2(v-for="line in currentSong.chords" :key="line")
           .flex-1.flex.gap-1.rounded.overflow-hidden.cursor-pointer(v-for="chord in line" :key="chord") 
             .flex-1.flex.font-bold.text-sm.filter.flex-col(
-              @pointerdown="playChroma(Chord.get(ch).chroma, noteNames[Chord.get(ch).tonic]); globalChord = ch"
+              @pointerdown="playChroma(Chord.get(ch).chroma, noteNames[Chord.get(ch).tonic])"
               @pointerup="stopChroma(Chord.get(ch).chroma, noteNames[Chord.get(ch).tonic])"
               @pointerleave="stopChroma(Chord.get(ch).chroma, noteNames[Chord.get(ch).tonic])"
               v-for="ch in chord.split(' ')" :key="ch"
               ) 
-                .text-md.md-text-lg.p-2.flex-1.hover-brightness-150(
-                  :style="{ backgroundColor: pitchColor(noteNames[Chord.get(ch).tonic], 4, 1, .3) }"
-                ) {{ ch }}
+                .flex.items-center(:style="{ backgroundColor: pitchColor(noteNames[Chord.get(ch).tonic], 4, 1, .3) }")
+                  .text-md.md-text-lg.p-2.flex-1.hover-brightness-150 {{ ch }}
+                  .flex-1 
+                  .i-la-info-circle.op-50.hover-op-100.transition(@click="globalChord = ch")
 
                 .flex
                   .py-5px.flex-1(

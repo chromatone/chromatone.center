@@ -1,13 +1,14 @@
 <script setup>
 import { noteColor } from "#/use/colors"
 import { useTuner } from '#/use/tuner'
-import { computed } from 'vue'
+import { computed, watch } from 'vue'
 
 import { useWindowSize } from '@vueuse/core'
+import { useSpring } from "vue-use-spring";
 
 const { width, height } = useWindowSize()
 
-const { init, tuner, } = useTuner();
+const { init, tuner } = useTuner()
 
 const background = computed(() => {
   const note = getRawNote(tuner.note?.frequency)
@@ -17,14 +18,9 @@ const background = computed(() => {
   return color
 })
 
-function start() {
-  init();
-}
-
 function getRawNote(frequency) {
   return 12 * (Math.log(frequency / tuner.middleA) / Math.log(2)) % 12
 }
-
 
 </script>
 
@@ -32,7 +28,7 @@ function getRawNote(frequency) {
 .fullscreen-container#screen.overflow-clip 
   control-start.absolute.z-20(
     v-if="!tuner.running", 
-    @click="start()") Start tuner
+    @click="init()") Start tuner
   svg#tuner(
     :opacity="tuner.running ? 1 : 0.3"
     version="1.1",

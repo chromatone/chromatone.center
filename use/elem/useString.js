@@ -2,10 +2,11 @@ import { watch, reactive, computed } from 'vue';
 import { el } from '@elemaudio/core';
 import { useElementary } from './useElementary.js';
 import { useParams } from './useParams.js';
+import { midiFrequency } from './nodes.js';
 
 
 const params = {
-  "string:volume": { "value": 0.9, "min": 0, "max": 1, "step": 0.01, nostore: true },
+  "string:volume": { "value": 0.7, "min": 0, "max": 1, "step": 0.01, nostore: true },
   "string:smooth": { "value": 0, "min": 0.0001, "max": .1, "step": 0.001, fixed: 3, nostore: true },
   "string:feedback": { "value": 0.990, "min": 0.9, "max": .9999, "step": 0.001, fixed: 3, nostore: true },
 }
@@ -33,7 +34,7 @@ export function useString(name = 'string' + Math.floor(Math.random() * 300)) {
     midiControls['string:velocity'] = n?.velocity
   })
 
-  const meter = computed(() => (Math.abs(meters?.[`${name}:volume`]?.min) + Math.abs(meters?.[`${name}:volume`]?.max)) / 2)
+  const meter = computed(() => (Math.abs(meters?.[`${name}:volume`]?.min || 0.5) + Math.abs(meters?.[`${name}:volume`]?.max || 0.5)) / 2)
 
   // watch(() => audio.initiated, init)
 
@@ -44,9 +45,9 @@ export function useString(name = 'string' + Math.floor(Math.random() * 300)) {
 
     let delTime = el.mul(el.div(1, freq), 1000)
 
-    let adsr = el.adsr(0.0001, .2, 0.01, .2, midiCV['string:trigger'])
+    let adsr = el.adsr(0.02, .7, 0.1, .9, midiCV['string:trigger'])
     let synth = el.mul(adsr, el.noise(), midiCV['string:velocity'])
-    let filtered = el.lowpass(880, 6, synth)
+    let filtered = el.lowpass(el.mul(4, midiFrequency(midiCV['string:midi'])), 6, synth)
 
     let dl = el.delay(
       { size: 44100 },
@@ -61,7 +62,7 @@ export function useString(name = 'string' + Math.floor(Math.random() * 300)) {
       el.bandpass(el.mul(freq, 3), 3, dl)   // Third formant
     ))
 
-    let adsrOsc = el.adsr(0.005, 0.2, 1, 0.7, midiCV['string:trigger'])
+    let adsrOsc = el.adsr(0.05, 0.2, 1, 1.2, midiCV['string:trigger'])
     let osc = el.mul(adsrOsc, el.cycle(el.mul(1, freq)), .8)
 
     let signal = el.tanh(el.add(el.mul(dl, 0.4), osc, bodyResonance))

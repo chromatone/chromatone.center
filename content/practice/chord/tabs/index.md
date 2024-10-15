@@ -6,4 +6,12 @@ cover: tabs.png
 layout: app
 ---
 
-<chord-tabs />
+<script setup>
+import { defineClientComponent } from 'vitepress'
+
+const ChordTabs = defineClientComponent(() => {
+  return import('./ChordTabs.vue')
+})
+</script>
+
+<ChordTabs />

@@ -1,4 +1,12 @@
-## Unreleased (2024-10-15)
+## v2.9.5 (2024-10-15)
+
+### New feature:
+
+- improved practice apps: Chord tabs, monochord, real book and tuner([`5173533`](https://github.com/chromatone/chromatone.center/commit/51735333e0c56df14ce5d9963a79554ec54b9994)) (by davay)
+
+### Bugs fixed:
+
+- better popups and monochord fix([`c29f930`](https://github.com/chromatone/chromatone.center/commit/c29f930bba4ca9a9dab4cd477c8673dc70f0482f)) (by davay)
 
 ## v2.9.4 (2024-10-14)
 

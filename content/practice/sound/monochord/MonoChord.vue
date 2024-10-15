@@ -1,6 +1,6 @@
 <script setup>
 import { freqColor, freqPitch } from "#/use/calculations";
-import { useTransition, TransitionPresets, useStorage } from "@vueuse/core";
+import { useTransition, TransitionPresets } from "@vueuse/core";
 import { Frequency } from "tone";
 import Fraction from "fraction.js";
 import { computed, reactive, ref } from "vue";
@@ -33,7 +33,7 @@ function play(string = 0, vel = 0.5) {
 }
 
 const state = reactive({
-  ratio: useClamp(useStorage(`monochord-ratio`, 0.66), 0.05, 0.95),
+  ratio: useClamp(0.66, 0.05, 0.95),
   fraction: computed(() =>
     new Fraction(state.ratio).simplify(0.001).toFraction(true)
   ),
@@ -43,7 +43,7 @@ const state = reactive({
 });
 
 const fundamental = reactive({
-  freq: useClamp(useStorage('monochord-freq', 220), 27.5, 3520),
+  freq: useClamp(220, 27.5, 3520),
   pitch: computed(() => freqPitch(fundamental.freq).toFixed()),
   note: computed(() => Frequency(fundamental.freq).toNote()),
   cents: computed(() =>
@@ -119,7 +119,7 @@ function calcCents(base, freq) {
 .flex.flex-col.fullscreen-container#screen
   button.p-40.text-2xl.font-bold.bg-light-900.dark-bg-dark-700.absolute.min-h-30.top-0.z-100.right-0.left-0.w-full.bg-op-30.dark-bg-op-30.backdrop-blur(v-if="!started" @pointerdown="start()") START 
   svg.py-8.select-none.touch-action-none.select-none(
-
+    v-else
     style="-webkit-overflow-scrolling: touch;"
     version="1.1",
     baseProfile="full",

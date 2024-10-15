@@ -116,7 +116,7 @@ function calcCents(base, freq) {
 </script>
 
 <template lang="pug">
-.flex.flex-col.fullscreen-container#screen
+.flex.flex-col.fullscreen-container.select-none#screen
   button.p-40.text-2xl.font-bold.bg-light-900.dark-bg-dark-700.absolute.min-h-30.top-0.z-100.right-0.left-0.w-full.bg-op-30.dark-bg-op-30.backdrop-blur(v-if="!started" @pointerdown="start()") START 
   svg.py-8.select-none.touch-action-none.select-none(
     v-else

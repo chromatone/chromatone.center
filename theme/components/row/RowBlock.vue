@@ -13,7 +13,6 @@ const props = defineProps({
   }
 });
 
-const route = useRoute();
 const children = useChildren({ path: props.item?.url }, data)
 
 const bg = computed(() => `url(${props.item?.frontmatter?.cover})`);
@@ -21,12 +20,9 @@ const bg = computed(() => `url(${props.item?.frontmatter?.cover})`);
 function go(url) {
 
   const popupWindow = window.open(url, '_blank', 'toolbar=no,location=no,menubar=no,status=no,scrollbars=no,width=800,height=800');
-
-  // If the popup window was successfully created, focus on it
   if (popupWindow) {
     popupWindow.focus();
   } else {
-    // Handle the case where the popup was blocked
     console.warn('Popup window was blocked. Please enable popups in your browser settings.');
   }
 }
@@ -37,17 +33,14 @@ a.header.no-underline.row(
   :style="{ borderColor: color }"
   :href="cleanLink(item.url)"
   :class="{ 'pt-30': item?.frontmatter?.cover }"
-)
-  .cover.bg-center(
-    :style="{ backgroundImage: bg }"
-    )
+  )
+  .cover.bg-center(:style="{ backgroundImage: bg }")
   .info.flex-1
     .flex.items-center.w-full
       .mt-0.flex.items-center.w-full
         span.text-xl.font-bold {{ item?.frontmatter?.title }}
-        span.text-xl.px-2.mt-2(v-if="item?.frontmatter?.more") 
-          .i-radix-icons-text-align-left
         .flex-1
+        span(v-if="children") {{ children.length }}
         button.op-30.hover-op-90.transition.i-la-external-link-square-alt(
           v-if="item.frontmatter?.layout == 'app'"
           @click.stop.prevent="go(item.url + '?pure=true')")

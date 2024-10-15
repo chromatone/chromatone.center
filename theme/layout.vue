@@ -6,27 +6,17 @@ import { data } from '../content/pages.data'
 import { usePages, usePage } from './pages'
 import { drawingEnabled, drawingPinned } from '../theme/composables/draw'
 import { useUrlSearchParams } from '@vueuse/core'
-
 import { useWindowScroll } from '@vueuse/core'
 
 const { y } = useWindowScroll()
-
 const params = useUrlSearchParams('history')
-
 const { isDark, theme } = useData()
-
-import { ref } from "vue";
-
 const route = useRoute();
-
 const { frontmatter: f } = useData()
-
-const openSideBar = ref(false);
 
 const { pages, children, siblings, parents } = usePages(route, data)
 
 const page = usePage(route, data)
-
 
 const pageColor = computed(() => {
   let l = isDark.value ? 40 : 60
@@ -35,9 +25,7 @@ const pageColor = computed(() => {
 
 const lightColor = computed(() => lchToHsl(siblings.value.index, siblings.value.total, 1, 40, 60));
 
-function scrollTop() {
-  y.value = 0
-}
+function scrollTop() { y.value = 0 }
 
 function close() {
   if (window.opener) {
@@ -49,7 +37,6 @@ function close() {
 </script>
 
 <template lang="pug">
-
 a.top-16px.left-2.fixed.z-1000.cursor-pointer.mr-3.op-40.hover-op-100.transition(href="/" @click="close()")
   img.h-30px(v-if="theme.logo", :src="theme.logo", alt="Chromatone logo")
 
@@ -59,7 +46,7 @@ bar-bar(v-if="!params.pure && !params.nobar")
 
 midi-notes(v-if="!params.pure && !params.nokeys")
 
-.main(:style="{ marginLeft: params.pure || params.nobar ? 0 : '48px' }" :class="{ pure: params.pure }")
+.main(:style="{ marginLeft: params?.pure ? 0 : '48px' }" :class="{ pure: params.pure }")
 
   RegisterSW
 

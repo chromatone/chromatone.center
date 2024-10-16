@@ -18,9 +18,9 @@ const { balkan } = rhythms
 
 <beat-bars v-bind="balkan" />
 
-Bulgaria is famous for dance rhythms featuring uneven beats.  Other Balkan countries also have some of these rhythms, but it is in Bulgaria that they are most common and intricate.  Uneven rhythms include 5/16, 7/16, 9/16, 11/16, 15/16, 18/16 (7/16+11/16), and 22/16 (9/16+13/16).   To be sure, the most common rhythm in Bulgaria is an even 2/4 or 6/8, (see Bulgarian Even Dance Rhythms) but uneven rhythms are also very common.
+Bulgaria is famous for dance rhythms featuring uneven beats. Other Balkan countries also have some of these rhythms, but it is in Bulgaria that they are most common and intricate.  Uneven rhythms include 5/16, 7/16, 9/16, 11/16, 15/16, 18/16 (7/16+11/16), and 22/16 (9/16+13/16). To be sure, the most common rhythm in Bulgaria is an even 2/4 or 6/8, (see Bulgarian Even Dance Rhythms) but uneven rhythms are also very common.
 
-Western musicians might be tempted when seeing an 11/16 time signature to count to 11, then start again, but that’s not the way a Bulgarian conceptualizes his or her 11-beat rhythm. Often the individual beats are very fast (up to 520 beats per minute, or more than 8 per second!), so the mind just can’t count that fast.  Also, Bulgarians were playing this music before Western concepts of what constitutes rhythm were developed.  The idea of 11/16 is a Western invention.
+Western musicians might be tempted when seeing an 11/16 time signature to count to 11, then start again, but that’s not the way a Bulgarian conceptualizes his or her 11-beat rhythm. Often the individual beats are very fast (up to 520 beats per minute, or more than 8 per second!), so the mind just can’t count that fast.  Also, Bulgarians were playing this music before Western concepts of what constitutes rhythm were developed. The idea of 11/16 is a Western invention.
 
 Bulgarian folk musicians think of beats as either “quick” or “slow”, with the “slow” beat being approximately 1 1/2 times as long as the “quick”.  Instead of trying to count a half beat,  it’s easier to count a “quick” beat as 2, and a “slow” beat as 3.  Ethnomusicologists have a couple of terms for dances and rhythms based on beats of uneven length.  The more general term is additive rhythms.  When applied to music from the Balkans the term aksak is also used.  Aksak is a Turkish word for “limping, stumbling, or slumping”, which is the effect felt by a dancer moving to these rhythms.
 
@@ -30,29 +30,33 @@ If you count a 5-beat uneven rhythm as a 2+3, you get 1,2,+1,2,3, or 1,2,1,2,3, 
 
 Bulgarians might know this rhythm as Quick-Slow, but more likely they would call it pajduško (pie-DOOSH-koh), because that’s name of the dance most commonly associated with this rhythm. See what pajduško looks like while you pick out the rhythm.
 
-https://www.youtube.com/watch?v=fESztL_G54A
+<youtube-embed video="fESztL_G54A" />
+
 
 ### 7/16 – Račenica
 
 By adding one more “Quick” beat to the front, you get Q,Q,S, or 1,2,1,2,1,2,3, or 7/16.  This uneven rhythm is commonly referred to as račenica (ruh-cheh-NEE-tsah), after the popular dance.  Račenica’s come in solo, couple, and choral dances, and vary greatly in speed from one region to the next.  Here’s a rather fast example of what one couple račenica looks and sounds like.  For the first 45 seconds you can watch the feet, as they keep the beat exactly.
 
-https://www.youtube.com/watch?v=xenjhHHBZkA
+<youtube-embed video="xenjhHHBZkA" />
 
 See also račenica under Living Dances for more examples of the dance at various speeds and configurations.
 
 ### 7/16 – Makedonsko, Pravoto
 
-https://www.youtube.com/watch?v=WYE3dO7LDRk
-
 Slow down the tempo, put the slow beat at the beginning, and you have a 7/16 rhythm that’s popular in Western Bulgaria and Macedonia.  Bulgarians call it Makedonsko (Macedonian), Macedonians call it Pravoto or Lesno, International Folk Dancers call it Lesnoto.  The pattern is S,Q,Q, OR 1,2,3,1,2,1,2.  Here’s what it sounds like, sung by the “Queen of Gypsy Music” Esma Redžepova.  The bass is (usually) hitting the first beat of 1,2,3,1,2,1,2.
+
+<youtube-embed video="WYE3dO7LDRk" />
 
 ### 7/16 Četvorno
 
 Speed up that SQQ pattern and you get četvorno (chet-VOHR-noh)
 
-https://www.youtube.com/watch?v=5u4jOtmmX_M
+<youtube-embed video="5u4jOtmmX_M" />
 
-https://www.youtube.com/watch?v=IolB6LVhJFE
+&nbsp;
+
+<youtube-embed video="IolB6LVhJFE" />
+
 
 ### 9/16 – Dajčovo
 
@@ -60,19 +64,19 @@ Add another Q to račenica‘s QQS and you get QQQS, or 1,2,1,2,1,2,1,2,3.  Here
 
 Here’s what dajčovo the basic dance looks like:
 
-https://www.youtube.com/watch?v=TtnYFUSpp5c
+<youtube-embed video="TtnYFUSpp5c" />
 
-Beware there are MANY ways to do this dance. See my posting on dajčovo
+Beware there are MANY ways to do this dance.
 
 ### 9/16 – Other Dances
 
 There are MANY other Bulgarian and non-Bulgarian dances that use this rhythm.  Here’s Djanguritsa from Pirin
 
-https://www.youtube.com/watch?v=HwrmWzjV1vc
+<youtube-embed video="HwrmWzjV1vc" />
 
 And Svornato from the Rhodope region
 
-https://www.youtube.com/watch?v=icRt4ku6R_8
+<youtube-embed video="icRt4ku6R_8" />
 
 ### 11/16 – Kopanica
 
@@ -80,55 +84,57 @@ Now it gets complicated.  Instead of the slow beat being at either end of the ch
 
 The dance below is Kopanica
 
-https://www.youtube.com/watch?v=i8Ao1o2uw3o
+<youtube-embed video="i8Ao1o2uw3o" />
 
 ### 11/16 – Gankino
 
 And here’s Gankino
 
-https://www.youtube.com/watch?v=WRdifDUq2EA
+<youtube-embed video="WRdifDUq2EA" />
+
 
 ### 12/16- Petrunino horo S,Q,Q,Q,S,
 
 Here, there’s a slow at both ends.
 
+<youtube-embed video="dqUe-8WOc2E" />
 
-https://www.youtube.com/watch?v=dqUe-8WOc2E
+&nbsp;
 
-https://www.youtube.com/watch?v=ESGWuxnDbXs
-
+<youtube-embed video="SGWuxnDbXs" />
 
 
 ### 13/16 – Krivo Sadovsko Horo  Q,Q,Q,S,Q,Q,
 
-https://youtu.be/rxiy5ZTzKMI
+<youtube-embed video="rxiy5ZTzKMI" />
 
 ### 13/16 –  Postupano  Q,Q,Q,S,Q,Q,
 
 Here’s, Postupano, from Macedonia.  One look at the physical demands of the dance, as shown in this film from 1948, shows why it’s not too popular among recreational dancers today.
 
-https://www.youtube.com/watch?v=YWY2zct7R-4
+<youtube-embed video="YWY2zct7R-4" />
 
 ### 15/16 – Bučimiš  “Q,Q,Q,Q,S,Q,Q,”
 
 See also article on [Bucimiš](https://folkdancefootnotes.org/dance/a-real-folk-dance-what-is-it/1st-generation-dances/bucimis-%d0%b1%d1%83%d1%87%d0%b8%d0%bc%d0%b8%d1%88-%d1%85%d0%be%d1%80%d0%be-bulgaria/)
 
-https://www.youtube.com/watch?v=xeGgdjY5oXI
+<youtube-embed video="xeGgdjY5oXI" />
 
 ### 18/16 – Jovino Horo or Jove Malaj Mome: 7/16+11/6 or “S,Q,Q,Q,Q,S,Q,Q,”
 
 See also article on [Jove Malaj Mome](https://folkdancefootnotes.org/dance/a-real-folk-dance-what-is-it/1st-generation-dances/jove-malaj-mome-jovino-horo-oro-kolo-bulgaria-serbia-macedonia/)
 
-https://www.youtube.com/watch?v=S_-6SY7xGNw
+<youtube-embed video="S_-6SY7xGNw" />
 
 ### 22/16 – Sandansko: 9/16 + 13/16 or “QQQS + QQQSQQ”
 
 See also  article on [Sandansko](https://folkdancefootnotes.org/dance/a-real-folk-dance-what-is-it/2nd-generation-dances/sandansko-horo-%d1%81%d0%b0%d0%bd%d0%b4%d0%b0%d0%bd%d1%81%d0%ba%d0%be-pirin-or-strandzha-thrace-bulgaria/)
 
-https://www.youtube.com/watch?v=G5tSEbTsrQM
+<youtube-embed video="G5tSEbTsrQM" />
+
 25/16 – Sedi Donka: 7/16 + 11/16 + 7/16 or S,Q,Q,S,Q,Q,Q,Q,S,Q,Q,
 
-https://www.youtube.com/watch?v=YG5MNYfJWmQ
+<youtube-embed video="YG5MNYfJWmQ" />
 
 _________________________
 

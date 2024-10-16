@@ -4,6 +4,9 @@
 		"*.md",
 		"**/*.vue"
 	],
+	"exclude": [
+		"node_modules"
+	],
 	"compilerOptions": {
 		"baseUrl": ".",
 		"paths": {

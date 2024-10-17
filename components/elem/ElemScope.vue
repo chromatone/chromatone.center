@@ -45,6 +45,7 @@ function findTriggerIndex(data, triggerLevel) {
 }
 
 function draw() {
+  if (!canvas.value) return
   const ctx = canvas.value.getContext('2d');
   const { width, height } = canvas.value;
   const samples = scopes[props.name];

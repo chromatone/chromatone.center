@@ -16,22 +16,22 @@ const colors = reactive({
 </script>
 
 <template lang="pug">
-.flex.flex-wrap.gap-2.p-2(:style="{ borderColor: colors.current }")
+.flex.flex-wrap.gap-2.p-2(:style="{ borderColor: colors?.current }")
   a.pad(
     style="flex:1 1"
-    v-if="siblings.prev" 
+    v-if="siblings?.prev" 
     :href="cleanLink(siblings.prev.url)"
-    :style="{ backgroundColor: colors.prev, backgroundImage: `url(${siblings.prev?.frontmatter?.cover})` }"
+    :style="{ backgroundColor: colors.prev, backgroundImage: `url(${siblings?.prev?.frontmatter?.cover})` }"
     )
     .link( )
       .i-la-angle-double-left.icon.icon-prev
-      span.text.-mt-1 {{ siblings.prev?.frontmatter?.title }}
+      span.text.-mt-1 {{ siblings?.prev?.frontmatter?.title }}
 
   a.pad(
     style="flex:1 1"
     v-for="(parent, p) in [...parents].slice(1, -1)" :key="parent"
-    :href="cleanLink(parent.url)"
-    :style="{ backgroundColor: colors.next, backgroundImage: `url(${parent?.frontmatter?.cover})` }"
+    :href="cleanLink(parent?.url)"
+    :style="{ backgroundColor: colors?.next, backgroundImage: `url(${parent?.frontmatter?.cover})` }"
     )
     .link
       .i-la-angle-double-up.mr-1
@@ -39,12 +39,12 @@ const colors = reactive({
 
   a.pad(
     style="flex:1 1"
-    v-if="siblings.next"
-    :href="cleanLink(siblings.next.url)"
-    :style="{ backgroundColor: colors.next, backgroundImage: `url(${siblings.next?.frontmatter?.cover})` }"
+    v-if="siblings?.next"
+    :href="cleanLink(siblings.next?.url)"
+    :style="{ backgroundColor: colors?.next, backgroundImage: `url(${siblings?.next?.frontmatter?.cover})` }"
     )
     .link
-      span.text.-mt-1 {{ siblings.next?.frontmatter?.title }}
+      span.text.-mt-1 {{ siblings?.next?.frontmatter?.title }}
       .i-la-angle-double-right.icon.icon-next
 
       

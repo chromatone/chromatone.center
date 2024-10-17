@@ -18,7 +18,6 @@ const practiceOpen = ref()
 const theoryOpen = ref()
 const settingsOpen = ref()
 const transportOpen = ref()
-const pianoOpen = ref()
 const scaleOpen = ref()
 
 const instrument = ref('guitar')

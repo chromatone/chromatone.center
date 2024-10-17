@@ -11,9 +11,7 @@ links:
 <script setup>
 import { defineClientComponent } from 'vitepress'
 
-const Atrament = defineClientComponent(() => {
-  return import('./Atrament.vue')
-})
+const Atrament = defineClientComponent(() => import('./Atrament.vue'))
 </script>
 
 <Atrament/>

@@ -4,7 +4,7 @@
         <title>Chromatone</title>
         <link>https://chromatone.center</link>
         <description>Visual Music Language development updates and more</description>
-        <lastBuildDate>Tue, 15 Oct 2024 16:35:54 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 17 Oct 2024 16:28:32 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en-EN</language>
@@ -13,7 +13,7 @@
             <title><![CDATA[Synth snippets]]></title>
             <link>https://chromatone.center/practice/synth/snippets.html</link>
             <guid>https://chromatone.center/practice/synth/snippets.html</guid>
-            <pubDate>Tue, 15 Oct 2024 16:33:26 GMT</pubDate>
+            <pubDate>Thu, 17 Oct 2024 16:26:02 GMT</pubDate>
             <description><![CDATA[Code pieces]]></description>
             <content:encoded><![CDATA[<h3 id="skew-by-upheaver" tabindex="-1">Skew by <a href="https://discord.com/channels/826071713426178078/834787928688689172/1123676571279048875" target="_blank" rel="noreferrer">upheaver</a> <a class="header-anchor" href="#skew-by-upheaver" aria-label="Permalink to &quot;Skew by [upheaver](https://discord.com/channels/826071713426178078/834787928688689172/1123676571279048875)&quot;"></a></h3>
 <p>Sharing a useful snippet. JUCE's logskew function in Typescript, if anyone wants to scale their parameter values (for example convert 0-1 range to 20-20000 hz in a non linear way) :</p>
@@ -39,7 +39,7 @@
             <title><![CDATA[Words sequencing]]></title>
             <link>https://chromatone.center/practice/generative/words/</link>
             <guid>https://chromatone.center/practice/generative/words/</guid>
-            <pubDate>Tue, 15 Oct 2024 16:33:26 GMT</pubDate>
+            <pubDate>Thu, 17 Oct 2024 16:26:02 GMT</pubDate>
             <description><![CDATA[&lt;script setup
 import { defineClientComponent } from 'vitepress'
 const Words = defineClientCompone]]></description>
@@ -50,7 +50,7 @@ const Words = defineClientCompone]]></description>
             <title><![CDATA[Words sequencing]]></title>
             <link>https://chromatone.center/practice/sequencing/words/</link>
             <guid>https://chromatone.center/practice/sequencing/words/</guid>
-            <pubDate>Tue, 15 Oct 2024 16:33:26 GMT</pubDate>
+            <pubDate>Thu, 17 Oct 2024 16:26:02 GMT</pubDate>
             <description><![CDATA[This page is moved to https://chromatone.center/practice/generative/words/]]></description>
             <content:encoded><![CDATA[<p>This page is moved to <a href="https://chromatone.center/practice/generative/words/" target="_blank" rel="noreferrer">https://chromatone.center/practice/generative/words/</a></p>
 ]]></content:encoded>
@@ -60,7 +60,7 @@ const Words = defineClientCompone]]></description>
             <title><![CDATA[ZZFXM]]></title>
             <link>https://chromatone.center/practice/sequencing/zzfxm/</link>
             <guid>https://chromatone.center/practice/sequencing/zzfxm/</guid>
-            <pubDate>Tue, 15 Oct 2024 16:33:26 GMT</pubDate>
+            <pubDate>Thu, 17 Oct 2024 16:26:02 GMT</pubDate>
             <description><![CDATA[&lt;script setup
 import { defineClientComponent } from 'vitepress'
 const ZzFxm = defineClientCompone]]></description>
@@ -72,7 +72,7 @@ const ZzFxm = defineClientCompone]]></description>
             <title><![CDATA[Reharmonization]]></title>
             <link>https://chromatone.center/theory/harmony/reharmonization/</link>
             <guid>https://chromatone.center/theory/harmony/reharmonization/</guid>
-            <pubDate>Tue, 15 Oct 2024 16:33:26 GMT</pubDate>
+            <pubDate>Thu, 17 Oct 2024 16:26:02 GMT</pubDate>
             <description><![CDATA[How to reharmonize a song]]></description>
             <content:encoded><![CDATA[<youtube-embed video="lz3WR-F_pnM" /><h2 id="reharmonization-chord-substitution-but-for-the-whole-chord-progression" tabindex="-1">Reharmonization = Chord substitution but for the whole chord progression <a class="header-anchor" href="#reharmonization-chord-substitution-but-for-the-whole-chord-progression" aria-label="Permalink to &quot;Reharmonization = Chord substitution but for the whole chord progression&quot;"></a></h2>
 <p>Reharmonization is used to:</p>
@@ -9351,62 +9351,46 @@ const HydraSynth = defineClientCo]]></description>
             <guid>https://chromatone.center/theory/rhythm/system/balkan/</guid>
             <pubDate>Thu, 02 Oct 2014 00:00:00 GMT</pubDate>
             <description><![CDATA[Bulgarian rhythms and more]]></description>
-            <content:encoded><![CDATA[<beat-bars v-bind="balkan" /><p>Bulgaria is famous for dance rhythms featuring uneven beats.  Other Balkan countries also have some of these rhythms, but it is in Bulgaria that they are most common and intricate.  Uneven rhythms include 5/16, 7/16, 9/16, 11/16, 15/16, 18/16 (7/16+11/16), and 22/16 (9/16+13/16).   To be sure, the most common rhythm in Bulgaria is an even 2/4 or 6/8, (see Bulgarian Even Dance Rhythms) but uneven rhythms are also very common.</p>
-<p>Western musicians might be tempted when seeing an 11/16 time signature to count to 11, then start again, but that’s not the way a Bulgarian conceptualizes his or her 11-beat rhythm. Often the individual beats are very fast (up to 520 beats per minute, or more than 8 per second!), so the mind just can’t count that fast.  Also, Bulgarians were playing this music before Western concepts of what constitutes rhythm were developed.  The idea of 11/16 is a Western invention.</p>
+            <content:encoded><![CDATA[<beat-bars v-bind="balkan" /><p>Bulgaria is famous for dance rhythms featuring uneven beats. Other Balkan countries also have some of these rhythms, but it is in Bulgaria that they are most common and intricate.  Uneven rhythms include 5/16, 7/16, 9/16, 11/16, 15/16, 18/16 (7/16+11/16), and 22/16 (9/16+13/16). To be sure, the most common rhythm in Bulgaria is an even 2/4 or 6/8, (see Bulgarian Even Dance Rhythms) but uneven rhythms are also very common.</p>
+<p>Western musicians might be tempted when seeing an 11/16 time signature to count to 11, then start again, but that’s not the way a Bulgarian conceptualizes his or her 11-beat rhythm. Often the individual beats are very fast (up to 520 beats per minute, or more than 8 per second!), so the mind just can’t count that fast.  Also, Bulgarians were playing this music before Western concepts of what constitutes rhythm were developed. The idea of 11/16 is a Western invention.</p>
 <p>Bulgarian folk musicians think of beats as either “quick” or “slow”, with the “slow” beat being approximately 1 1/2 times as long as the “quick”.  Instead of trying to count a half beat,  it’s easier to count a “quick” beat as 2, and a “slow” beat as 3.  Ethnomusicologists have a couple of terms for dances and rhythms based on beats of uneven length.  The more general term is additive rhythms.  When applied to music from the Balkans the term aksak is also used.  Aksak is a Turkish word for “limping, stumbling, or slumping”, which is the effect felt by a dancer moving to these rhythms.</p>
 <h3 id="_5-16-–-pajdusko" tabindex="-1">5/16 – Pajduško <a class="header-anchor" href="#_5-16-–-pajdusko" aria-label="Permalink to &quot;5/16 – Pajduško&quot;"></a></h3>
 <p>If you count a 5-beat uneven rhythm as a 2+3, you get 1,2,+1,2,3, or 1,2,1,2,3, or Quick, Slow, or Q,S. The Q,S, rhythm is repeated, like a rather rapid heartbeat.  Here’s what 5/16, or Q,S, sounds like.  Listen for the bass drum thump.</p>
 <p>Bulgarians might know this rhythm as Quick-Slow, but more likely they would call it pajduško (pie-DOOSH-koh), because that’s name of the dance most commonly associated with this rhythm. See what pajduško looks like while you pick out the rhythm.</p>
-<p><a href="https://www.youtube.com/watch?v=fESztL_G54A" target="_blank" rel="noreferrer">https://www.youtube.com/watch?v=fESztL_G54A</a></p>
-<h3 id="_7-16-–-racenica" tabindex="-1">7/16 – Račenica <a class="header-anchor" href="#_7-16-–-racenica" aria-label="Permalink to &quot;7/16 – Račenica&quot;"></a></h3>
+<youtube-embed video="fESztL_G54A" /><h3 id="_7-16-–-racenica" tabindex="-1">7/16 – Račenica <a class="header-anchor" href="#_7-16-–-racenica" aria-label="Permalink to &quot;7/16 – Račenica&quot;"></a></h3>
 <p>By adding one more “Quick” beat to the front, you get Q,Q,S, or 1,2,1,2,1,2,3, or 7/16.  This uneven rhythm is commonly referred to as račenica (ruh-cheh-NEE-tsah), after the popular dance.  Račenica’s come in solo, couple, and choral dances, and vary greatly in speed from one region to the next.  Here’s a rather fast example of what one couple račenica looks and sounds like.  For the first 45 seconds you can watch the feet, as they keep the beat exactly.</p>
-<p><a href="https://www.youtube.com/watch?v=xenjhHHBZkA" target="_blank" rel="noreferrer">https://www.youtube.com/watch?v=xenjhHHBZkA</a></p>
-<p>See also račenica under Living Dances for more examples of the dance at various speeds and configurations.</p>
+<youtube-embed video="xenjhHHBZkA" /><p>See also račenica under Living Dances for more examples of the dance at various speeds and configurations.</p>
 <h3 id="_7-16-–-makedonsko-pravoto" tabindex="-1">7/16 – Makedonsko, Pravoto <a class="header-anchor" href="#_7-16-–-makedonsko-pravoto" aria-label="Permalink to &quot;7/16 – Makedonsko, Pravoto&quot;"></a></h3>
-<p><a href="https://www.youtube.com/watch?v=WYE3dO7LDRk" target="_blank" rel="noreferrer">https://www.youtube.com/watch?v=WYE3dO7LDRk</a></p>
 <p>Slow down the tempo, put the slow beat at the beginning, and you have a 7/16 rhythm that’s popular in Western Bulgaria and Macedonia.  Bulgarians call it Makedonsko (Macedonian), Macedonians call it Pravoto or Lesno, International Folk Dancers call it Lesnoto.  The pattern is S,Q,Q, OR 1,2,3,1,2,1,2.  Here’s what it sounds like, sung by the “Queen of Gypsy Music” Esma Redžepova.  The bass is (usually) hitting the first beat of 1,2,3,1,2,1,2.</p>
-<h3 id="_7-16-cetvorno" tabindex="-1">7/16 Četvorno <a class="header-anchor" href="#_7-16-cetvorno" aria-label="Permalink to &quot;7/16 Četvorno&quot;"></a></h3>
+<youtube-embed video="WYE3dO7LDRk" /><h3 id="_7-16-cetvorno" tabindex="-1">7/16 Četvorno <a class="header-anchor" href="#_7-16-cetvorno" aria-label="Permalink to &quot;7/16 Četvorno&quot;"></a></h3>
 <p>Speed up that SQQ pattern and you get četvorno (chet-VOHR-noh)</p>
-<p><a href="https://www.youtube.com/watch?v=5u4jOtmmX_M" target="_blank" rel="noreferrer">https://www.youtube.com/watch?v=5u4jOtmmX_M</a></p>
-<p><a href="https://www.youtube.com/watch?v=IolB6LVhJFE" target="_blank" rel="noreferrer">https://www.youtube.com/watch?v=IolB6LVhJFE</a></p>
-<h3 id="_9-16-–-dajcovo" tabindex="-1">9/16 – Dajčovo <a class="header-anchor" href="#_9-16-–-dajcovo" aria-label="Permalink to &quot;9/16 – Dajčovo&quot;"></a></h3>
+<youtube-embed video="5u4jOtmmX_M" /><p> </p>
+<youtube-embed video="IolB6LVhJFE" /><h3 id="_9-16-–-dajcovo" tabindex="-1">9/16 – Dajčovo <a class="header-anchor" href="#_9-16-–-dajcovo" aria-label="Permalink to &quot;9/16 – Dajčovo&quot;"></a></h3>
 <p>Add another Q to račenica‘s QQS and you get QQQS, or 1,2,1,2,1,2,1,2,3.  Here’s the legendary Boris Karlov making it sound easy.</p>
 <p>Here’s what dajčovo the basic dance looks like:</p>
-<p><a href="https://www.youtube.com/watch?v=TtnYFUSpp5c" target="_blank" rel="noreferrer">https://www.youtube.com/watch?v=TtnYFUSpp5c</a></p>
-<p>Beware there are MANY ways to do this dance. See my posting on dajčovo</p>
+<youtube-embed video="TtnYFUSpp5c" /><p>Beware there are MANY ways to do this dance.</p>
 <h3 id="_9-16-–-other-dances" tabindex="-1">9/16 – Other Dances <a class="header-anchor" href="#_9-16-–-other-dances" aria-label="Permalink to &quot;9/16 – Other Dances&quot;"></a></h3>
 <p>There are MANY other Bulgarian and non-Bulgarian dances that use this rhythm.  Here’s Djanguritsa from Pirin</p>
-<p><a href="https://www.youtube.com/watch?v=HwrmWzjV1vc" target="_blank" rel="noreferrer">https://www.youtube.com/watch?v=HwrmWzjV1vc</a></p>
-<p>And Svornato from the Rhodope region</p>
-<p><a href="https://www.youtube.com/watch?v=icRt4ku6R_8" target="_blank" rel="noreferrer">https://www.youtube.com/watch?v=icRt4ku6R_8</a></p>
-<h3 id="_11-16-–-kopanica" tabindex="-1">11/16 – Kopanica <a class="header-anchor" href="#_11-16-–-kopanica" aria-label="Permalink to &quot;11/16 – Kopanica&quot;"></a></h3>
+<youtube-embed video="HwrmWzjV1vc" /><p>And Svornato from the Rhodope region</p>
+<youtube-embed video="icRt4ku6R_8" /><h3 id="_11-16-–-kopanica" tabindex="-1">11/16 – Kopanica <a class="header-anchor" href="#_11-16-–-kopanica" aria-label="Permalink to &quot;11/16 – Kopanica&quot;"></a></h3>
 <p>Now it gets complicated.  Instead of the slow beat being at either end of the chain of beats, it’s in the middle. QQSQQ</p>
 <p>The dance below is Kopanica</p>
-<p><a href="https://www.youtube.com/watch?v=i8Ao1o2uw3o" target="_blank" rel="noreferrer">https://www.youtube.com/watch?v=i8Ao1o2uw3o</a></p>
-<h3 id="_11-16-–-gankino" tabindex="-1">11/16 – Gankino <a class="header-anchor" href="#_11-16-–-gankino" aria-label="Permalink to &quot;11/16 – Gankino&quot;"></a></h3>
+<youtube-embed video="i8Ao1o2uw3o" /><h3 id="_11-16-–-gankino" tabindex="-1">11/16 – Gankino <a class="header-anchor" href="#_11-16-–-gankino" aria-label="Permalink to &quot;11/16 – Gankino&quot;"></a></h3>
 <p>And here’s Gankino</p>
-<p><a href="https://www.youtube.com/watch?v=WRdifDUq2EA" target="_blank" rel="noreferrer">https://www.youtube.com/watch?v=WRdifDUq2EA</a></p>
-<h3 id="_12-16-petrunino-horo-s-q-q-q-s" tabindex="-1">12/16- Petrunino horo S,Q,Q,Q,S, <a class="header-anchor" href="#_12-16-petrunino-horo-s-q-q-q-s" aria-label="Permalink to &quot;12/16- Petrunino horo S,Q,Q,Q,S,&quot;"></a></h3>
+<youtube-embed video="WRdifDUq2EA" /><h3 id="_12-16-petrunino-horo-s-q-q-q-s" tabindex="-1">12/16- Petrunino horo S,Q,Q,Q,S, <a class="header-anchor" href="#_12-16-petrunino-horo-s-q-q-q-s" aria-label="Permalink to &quot;12/16- Petrunino horo S,Q,Q,Q,S,&quot;"></a></h3>
 <p>Here, there’s a slow at both ends.</p>
-<p><a href="https://www.youtube.com/watch?v=dqUe-8WOc2E" target="_blank" rel="noreferrer">https://www.youtube.com/watch?v=dqUe-8WOc2E</a></p>
-<p><a href="https://www.youtube.com/watch?v=ESGWuxnDbXs" target="_blank" rel="noreferrer">https://www.youtube.com/watch?v=ESGWuxnDbXs</a></p>
-<h3 id="_13-16-–-krivo-sadovsko-horo-q-q-q-s-q-q" tabindex="-1">13/16 – Krivo Sadovsko Horo  Q,Q,Q,S,Q,Q, <a class="header-anchor" href="#_13-16-–-krivo-sadovsko-horo-q-q-q-s-q-q" aria-label="Permalink to &quot;13/16 – Krivo Sadovsko Horo  Q,Q,Q,S,Q,Q,&quot;"></a></h3>
-<p><a href="https://youtu.be/rxiy5ZTzKMI" target="_blank" rel="noreferrer">https://youtu.be/rxiy5ZTzKMI</a></p>
-<h3 id="_13-16-–-postupano-q-q-q-s-q-q" tabindex="-1">13/16 –  Postupano  Q,Q,Q,S,Q,Q, <a class="header-anchor" href="#_13-16-–-postupano-q-q-q-s-q-q" aria-label="Permalink to &quot;13/16 –  Postupano  Q,Q,Q,S,Q,Q,&quot;"></a></h3>
+<youtube-embed video="dqUe-8WOc2E" /><p> </p>
+<youtube-embed video="SGWuxnDbXs" /><h3 id="_13-16-–-krivo-sadovsko-horo-q-q-q-s-q-q" tabindex="-1">13/16 – Krivo Sadovsko Horo  Q,Q,Q,S,Q,Q, <a class="header-anchor" href="#_13-16-–-krivo-sadovsko-horo-q-q-q-s-q-q" aria-label="Permalink to &quot;13/16 – Krivo Sadovsko Horo  Q,Q,Q,S,Q,Q,&quot;"></a></h3>
+<youtube-embed video="rxiy5ZTzKMI" /><h3 id="_13-16-–-postupano-q-q-q-s-q-q" tabindex="-1">13/16 –  Postupano  Q,Q,Q,S,Q,Q, <a class="header-anchor" href="#_13-16-–-postupano-q-q-q-s-q-q" aria-label="Permalink to &quot;13/16 –  Postupano  Q,Q,Q,S,Q,Q,&quot;"></a></h3>
 <p>Here’s, Postupano, from Macedonia.  One look at the physical demands of the dance, as shown in this film from 1948, shows why it’s not too popular among recreational dancers today.</p>
-<p><a href="https://www.youtube.com/watch?v=YWY2zct7R-4" target="_blank" rel="noreferrer">https://www.youtube.com/watch?v=YWY2zct7R-4</a></p>
-<h3 id="_15-16-–-bucimis-q-q-q-q-s-q-q" tabindex="-1">15/16 – Bučimiš  “Q,Q,Q,Q,S,Q,Q,” <a class="header-anchor" href="#_15-16-–-bucimis-q-q-q-q-s-q-q" aria-label="Permalink to &quot;15/16 – Bučimiš  “Q,Q,Q,Q,S,Q,Q,”&quot;"></a></h3>
+<youtube-embed video="YWY2zct7R-4" /><h3 id="_15-16-–-bucimis-q-q-q-q-s-q-q" tabindex="-1">15/16 – Bučimiš  “Q,Q,Q,Q,S,Q,Q,” <a class="header-anchor" href="#_15-16-–-bucimis-q-q-q-q-s-q-q" aria-label="Permalink to &quot;15/16 – Bučimiš  “Q,Q,Q,Q,S,Q,Q,”&quot;"></a></h3>
 <p>See also article on <a href="https://folkdancefootnotes.org/dance/a-real-folk-dance-what-is-it/1st-generation-dances/bucimis-%d0%b1%d1%83%d1%87%d0%b8%d0%bc%d0%b8%d1%88-%d1%85%d0%be%d1%80%d0%be-bulgaria/" target="_blank" rel="noreferrer">Bucimiš</a></p>
-<p><a href="https://www.youtube.com/watch?v=xeGgdjY5oXI" target="_blank" rel="noreferrer">https://www.youtube.com/watch?v=xeGgdjY5oXI</a></p>
-<h3 id="_18-16-–-jovino-horo-or-jove-malaj-mome-7-16-11-6-or-s-q-q-q-q-s-q-q" tabindex="-1">18/16 – Jovino Horo or Jove Malaj Mome: 7/16+11/6 or “S,Q,Q,Q,Q,S,Q,Q,” <a class="header-anchor" href="#_18-16-–-jovino-horo-or-jove-malaj-mome-7-16-11-6-or-s-q-q-q-q-s-q-q" aria-label="Permalink to &quot;18/16 – Jovino Horo or Jove Malaj Mome: 7/16+11/6 or “S,Q,Q,Q,Q,S,Q,Q,”&quot;"></a></h3>
+<youtube-embed video="xeGgdjY5oXI" /><h3 id="_18-16-–-jovino-horo-or-jove-malaj-mome-7-16-11-6-or-s-q-q-q-q-s-q-q" tabindex="-1">18/16 – Jovino Horo or Jove Malaj Mome: 7/16+11/6 or “S,Q,Q,Q,Q,S,Q,Q,” <a class="header-anchor" href="#_18-16-–-jovino-horo-or-jove-malaj-mome-7-16-11-6-or-s-q-q-q-q-s-q-q" aria-label="Permalink to &quot;18/16 – Jovino Horo or Jove Malaj Mome: 7/16+11/6 or “S,Q,Q,Q,Q,S,Q,Q,”&quot;"></a></h3>
 <p>See also article on <a href="https://folkdancefootnotes.org/dance/a-real-folk-dance-what-is-it/1st-generation-dances/jove-malaj-mome-jovino-horo-oro-kolo-bulgaria-serbia-macedonia/" target="_blank" rel="noreferrer">Jove Malaj Mome</a></p>
-<p><a href="https://www.youtube.com/watch?v=S_-6SY7xGNw" target="_blank" rel="noreferrer">https://www.youtube.com/watch?v=S_-6SY7xGNw</a></p>
-<h3 id="_22-16-–-sandansko-9-16-13-16-or-qqqs-qqqsqq" tabindex="-1">22/16 – Sandansko: 9/16 + 13/16 or “QQQS + QQQSQQ” <a class="header-anchor" href="#_22-16-–-sandansko-9-16-13-16-or-qqqs-qqqsqq" aria-label="Permalink to &quot;22/16 – Sandansko: 9/16 + 13/16 or “QQQS + QQQSQQ”&quot;"></a></h3>
+<youtube-embed video="S_-6SY7xGNw" /><h3 id="_22-16-–-sandansko-9-16-13-16-or-qqqs-qqqsqq" tabindex="-1">22/16 – Sandansko: 9/16 + 13/16 or “QQQS + QQQSQQ” <a class="header-anchor" href="#_22-16-–-sandansko-9-16-13-16-or-qqqs-qqqsqq" aria-label="Permalink to &quot;22/16 – Sandansko: 9/16 + 13/16 or “QQQS + QQQSQQ”&quot;"></a></h3>
 <p>See also  article on <a href="https://folkdancefootnotes.org/dance/a-real-folk-dance-what-is-it/2nd-generation-dances/sandansko-horo-%d1%81%d0%b0%d0%bd%d0%b4%d0%b0%d0%bd%d1%81%d0%ba%d0%be-pirin-or-strandzha-thrace-bulgaria/" target="_blank" rel="noreferrer">Sandansko</a></p>
-<p><a href="https://www.youtube.com/watch?v=G5tSEbTsrQM" target="_blank" rel="noreferrer">https://www.youtube.com/watch?v=G5tSEbTsrQM</a>
-25/16 – Sedi Donka: 7/16 + 11/16 + 7/16 or S,Q,Q,S,Q,Q,Q,Q,S,Q,Q,</p>
-<p><a href="https://www.youtube.com/watch?v=YG5MNYfJWmQ" target="_blank" rel="noreferrer">https://www.youtube.com/watch?v=YG5MNYfJWmQ</a></p>
-<hr>
+<youtube-embed video="G5tSEbTsrQM" /><p>25/16 – Sedi Donka: 7/16 + 11/16 + 7/16 or S,Q,Q,S,Q,Q,Q,Q,S,Q,Q,</p>
+<youtube-embed video="YG5MNYfJWmQ" /><hr>
 <h2 id="against-the-odds-an-exploration-of-bulgarian-rhythms" tabindex="-1">Against The Odds: an Exploration of Bulgarian Rhythms <a class="header-anchor" href="#against-the-odds-an-exploration-of-bulgarian-rhythms" aria-label="Permalink to &quot;Against The Odds: an Exploration of Bulgarian Rhythms&quot;"></a></h2>
 <blockquote>
 <p>Vessela Stoyanova</p>
@@ -9497,6 +9481,14 @@ I started with WebMIDI even before</p>
 <h2 id="sync-based-architectures" tabindex="-1">Sync-based Architectures <a class="header-anchor" href="#sync-based-architectures" aria-label="Permalink to &quot;Sync-based Architectures&quot;"></a></h2>
 <p>A variety of synthesis architectures are based on sync, often used in conjunction with amplitude, frequency, or phase modulation. Such architectures include VOSIM and physical modelling synthesis.</p>
 ]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Elementary playground]]></title>
+            <link>https://chromatone.center/practice/experiments/elementary/</link>
+            <guid>https://chromatone.center/practice/experiments/elementary/</guid>
+            <pubDate>Thu, 21 Aug 2014 00:00:00 GMT</pubDate>
+            <description><![CDATA[Place to polish Elementary.audio scripting]]></description>
+            <content:encoded><![CDATA[<ElemPlayground/>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[P2P connections]]></title>

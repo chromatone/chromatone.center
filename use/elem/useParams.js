@@ -70,6 +70,5 @@ export function useParams(params, title = 'ref') {
     cv,
     setters,
     groups,
-
   };
 }

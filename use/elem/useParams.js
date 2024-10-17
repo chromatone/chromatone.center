@@ -26,14 +26,13 @@ export function useParams(params, title = "ref") {
     groups[group][name] = param;
   }
 
-  watch(
-    () => audio.initiated,
+  watch(() => audio.initiated,
     initiated => {
-      if (!initiated) return;
+      if (!initiated) return
       for (let key in params) {
         let [node, setter] = audio.core.createRef("const", { value: controls[key] }, []);
         cv[key] = el.smooth(el.tau2pole(0.01), node);
-        setters[key] = setter;
+        setters[key] = setter
       }
     },
     { immediate: true }

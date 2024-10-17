@@ -27,7 +27,7 @@
 	"engines": {
 		"node": "^20.x"
 	},
-	"packageManager": "pnpm@9.12.1",
+	"packageManager": "pnpm@9.12.2",
 	"exports": {
 		".": {
 			"import": "./lib/use-chromatone.js",

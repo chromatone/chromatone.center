@@ -26,9 +26,17 @@ let setTrig
 async function render() {
   if (!initiated.value) await initAudio()
   if (ctx.state === 'suspended') await ctx.resume()
+
   const [trigger, setTrigger] = core.createRef('const', { value: 0 }, [])
   setTrig = setTrigger
-  const signal = el.mul(el.smooth(el.tau2pole(0.01), trigger), el.cycle(220))
+
+
+  const signal = el.mul(
+    el.smooth(
+      el.tau2pole(0.01),
+      trigger),
+    el.cycle(220))
+
   core.render(signal, signal)
   started.value = true
 }

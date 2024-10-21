@@ -42,7 +42,7 @@ a.header.no-underline.row(
         .flex-1
         span(v-if="children") {{ children.length }}
         button.op-30.hover-op-90.transition.i-la-external-link-square-alt(
-          v-if="item.frontmatter?.layout == 'app'"
+          v-if="['app', 'iframe'].includes(item.frontmatter?.layout)"
           @click.stop.prevent="go(item.url + '?pure=true')")
       .flex-1
       card-date(v-if="!item?.frontmatter?.product",:date="item.lastModified")

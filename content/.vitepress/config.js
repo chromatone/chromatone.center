@@ -106,6 +106,7 @@ export default withPwa(defineConfig({
       ['meta', { name: 'twitter:site', content: `@${meta.author}` }],
       ['meta', { name: 'twitter:creator', content: `@${meta.author}` }],
       ['meta', { name: 'twitter:image', content: image }],
+      ['meta', { 'http-equiv': "Permissions-Policy", content: "microphone=src" }]
     ]
   },
 }))

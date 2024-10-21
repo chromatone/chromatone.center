@@ -1,89 +1,54 @@
 <script setup>
-import { ref, computed, reactive, onMounted, watch, onUnmounted } from 'vue'
-import { onKeyStroke, useCycleList, useStorage, useWindowSize } from '@vueuse/core'
-import { useClamp } from '@vueuse/math'
+import { ref, onMounted, watch } from 'vue'
+import { onKeyStroke, useFullscreen, useStorage, useWindowSize } from '@vueuse/core'
+import { useClamp } from '@vueuse/math';
+import { AudioMotionAnalyzer } from 'audiomotion-analyzer'
+import { initGetUserMedia } from '#/use';
 
-import { initGetUserMedia, master } from '#/use/audio'
-import { useMicrophone } from '#/use/mic'
+let ctx, tempCanvas, tempCtx, audio
 
-let canvas, ctx, tempCanvas, tempCtx, audio
-
-const { mic, input } = useMicrophone()
-const { width, height } = useWindowSize()
-
+const screen = ref()
 const canvasElement = ref()
 const video = ref()
-const paused = ref(false)
 
-const state = reactive({
-  initiated: false,
-  width,
-  height,
-  speed: computed(() => Math.floor(state.speedCount / 100)),
-  speedCount: useClamp(100, 100, 500),
-  vertical: useStorage('spectrogram-vertical', false),
-  pow: useStorage('spectrogram-power', 1),
-  offset: useStorage('spectrogram-offset', 0),
-})
+const { width, height } = useWindowSize()
+const { toggle } = useFullscreen(screen)
+
+const paused = ref(false)
+const showVideo = ref(false)
+const initiated = ref(false)
+const vertical = useStorage('vertical', false)
 
 watch([width, height], ([w, h]) => {
-  if (!canvas && !tempCanvas) return
-  state.width = canvas.width = tempCanvas.width = w
-  state.height = canvas.height = tempCanvas.height = h
+  if (!canvasElement.value && !tempCanvas) return
+  canvasElement.value.width = tempCanvas.width = w
+  canvasElement.value.height = tempCanvas.height = h
   clear()
 })
 
 onMounted(() => {
   initGetUserMedia()
-  canvas = canvasElement.value
-  ctx = canvas.getContext('2d')
+  ctx = canvasElement.value.getContext('2d')
   tempCanvas = document.createElement('canvas')
   tempCtx = tempCanvas.getContext('2d')
-  tempCanvas.width = state.width
-  tempCanvas.height = state.height
+  tempCanvas.width = width.value
+  tempCanvas.height = height.value
   clear()
-  const stream = canvasElement.value.captureStream();
-  video.value.srcObject = stream;
+  const videostream = canvasElement.value.captureStream();
+  video.value.srcObject = videostream;
   video.value.play()
     .then(() => video.value?.requestPictureInPicture?.())
     .catch(error => console.error(error));
 });
 
-const freqPitch = (freq) => 12 * (Math.log(Number(freq) / 440) / Math.log(2))
+const smoothing = useClamp(useStorage('smoothing', 0.5), 0, 0.9)
+const frame = useClamp(useStorage('frame', 2), 1, 4)
+const speed = useClamp(useStorage('speed', 1), 1, 4)
+const steepness = useClamp(useStorage('steepness', 10), 3, 30)
+const midpoint = useClamp(useStorage('midpoint', 0.5), 0, 1)
 
-const colorIt = (freq, value) => `hsl(${freqPitch(freq) * 30}, ${value * 100}%, ${value * 75}%)`
 
-const steepness = useClamp(10, 3, 30)
-const midpoint = useClamp(0.5, 0, 1)
-const sigmoid = (value) => 1 / (1 + Math.exp(-steepness.value * (value - midpoint.value)))
-
-const onCanvasDraw = (instance) => {
-  if (paused.value) return
-  tempCtx.drawImage(canvas, 0, 0, state.width, state.height)
-  let bars = instance.getBars()
-  for (let i = 0; i < bars.length; i++) {
-    const centerFreq = (bars[i].freqLo + bars[i].freqHi) / 2
-    ctx.fillStyle = colorIt(centerFreq, sigmoid(bars[i].value[0]))
-
-    if (state.vertical) {
-      ctx.fillRect(i * (state.width / bars.length), 0, state.width / bars.length, state.speed)
-    } else {
-      ctx.fillRect(state.width - state.speed, state.height - (i + 1) * (state.height / bars.length), state.speed, state.height / bars.length)
-    }
-  }
-  if (state.vertical) {
-    ctx.translate(0, state.speed)
-  } else {
-    ctx.translate(-state.speed, 0)
-  }
-  ctx.drawImage(tempCanvas, 0, 0, state.width, state.height)
-  ctx.setTransform(1, 0, 0, 1, 0, 0);
-}
-
-const fftSize = useCycleList([4096, 8192, 16384, 32768], { initialValue: 8192 })
-watch(fftSize.state, size => audio && (audio.fftSize = size))
-
-const smoothing = useClamp(useStorage('monochord-smoothing', 0.5), 0, 0.9)
+watch(frame, f => audio && (audio.fftSize = Math.pow(2, 11 + f)))
 watch(smoothing, s => audio && (audio.smoothing = s))
 
 function initiate() {
@@ -93,75 +58,132 @@ function initiate() {
       autoGainControl: true,
       noiseSuppression: false,
     }, video: false
-  }).then(async () => {
-    const { AudioMotionAnalyzer } = await import('audiomotion-analyzer')
+  }).then(async stream => {
 
     audio = new AudioMotionAnalyzer(null, {
       mode: 1,
       connectSpeakers: false,
       volume: 0,
-      fftSize: fftSize.state.value,
+      fftSize: 8192,
       smoothing: smoothing.value,
       useCanvas: false,
       onCanvasDraw,
-      source: master.meter,
     })
-    state.initiated = true
-    mic.open = true
-    audio.connectInput(input)
+
+    const micStream = audio.audioCtx.createMediaStreamSource(stream)
+    audio.connectInput(micStream)
+    initiated.value = true
   }).catch((e) => {
     console.log('mic denied', e)
   })
 }
 
+const freqPitch = (freq) => 12 * (Math.log(Number(freq) / 440) / Math.log(2))
+const colorIt = (freq, value) => `hsl(${freqPitch(freq) * 30}, ${value * 100}%, ${value * 75}%)`
+const sigmoid = (value) => 1 / (1 + Math.exp(-steepness.value * (value - midpoint.value)))
+
+let bars
+
+const onCanvasDraw = (instance) => {
+  if (paused.value) return
+  bars = instance.getBars()
+
+  tempCtx.drawImage(canvasElement.value, 0, 0, width.value, height.value)
+  for (let i = 0; i < bars.length; i++) {
+    ctx.fillStyle = colorIt((bars[i].freqLo + bars[i].freqHi) / 2, sigmoid(bars[i].value[0]))
+
+    if (vertical.value) {
+      ctx.fillRect(i * (width.value / bars.length), 0, width.value / bars.length, speed.value)
+    } else {
+      ctx.fillRect(width.value - speed.value, height.value - (i + 1) * (height.value / bars.length), speed.value, height.value / bars.length)
+    }
+  }
+  if (vertical.value) {
+    ctx.translate(0, speed.value)
+  } else {
+    ctx.translate(-speed.value, 0)
+  }
+  ctx.drawImage(tempCanvas, 0, 0, width.value, height.value)
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
+}
+
 function clear() {
   ctx.fillStyle = '#000';
-  ctx.fillRect(0, 0, state.width, state.height)
+  ctx.fillRect(0, 0, width.value, height.value)
 }
 
-function dragScreen(drag) {
-  if (drag.tap) paused.value = !paused.value
-  state.speedCount -= drag.delta[0] / 2
-}
+onKeyStroke(' ', (e) => { e.preventDefault(); paused.value = !paused.value })
 
-onKeyStroke(' ', (e) => { paused.value = !paused.value; e.preventDefault() })
-
-onKeyStroke('Enter', (e) => { clear(); e.preventDefault() })
+onKeyStroke('Enter', (e) => { e.preventDefault(); clear(); })
 
 </script>
 
 <template lang="pug">
-.flex.flex-col.justify-center
-  .fullscreen-container.text-white#screen
-    canvas#spectrogram.cursor-pointer.max-w-full(
+.flex.flex-col.justify-center.bg-black.relative
+  .fullscreen-container.text-white#screen(ref="screen")
+    canvas#spectrogram.max-w-full(
+      @pointerdown="paused = !paused"
       ref="canvasElement"
-      v-drag="dragScreen"
-      :width="state.width"
-      :height="state.height"
+      :width="width"
+      :height="height"
       )
-    control-start.absolute(
-      v-if="!state.initiated" 
-      @click="initiate()")
-    .absolute.top-4.left-4.select-none.cursor-pointer.flex.items-baseline.gap-2(@pointerdown="fftSize.next()") 
-      .text-xl x{{ state.speed }} 
-      .op-50 {{ fftSize.state }} samples/frame
-    button.absolute.bottom-4.left-4.text-xl.select-none.cursor-pointer(@pointerdown="paused = !paused")
+    button.absolute.m-auto.top-0.w-full.h-full(
+      v-if="!initiated" 
+      @click="initiate()") START
+
+  .flex.absolute.top-2.left-20
+    button.text-xl.select-none.cursor-pointer(@pointerdown="paused = !paused")
       .i-la-play(v-if="paused")
       .i-la-pause(v-else)
-    button.absolute.bottom-4.right-4.text-xl.select-none.cursor-pointer(@pointerdown="state.vertical = !state.vertical")
-      .i-la-arrow-left(v-if="!state.vertical")
+    button.text-xl.select-none.cursor-pointer(@pointerdown="vertical = !vertical")
+      .i-la-arrow-left(v-if="!vertical")
       .i-la-arrow-down(v-else)
-    button.absolute.top-4.right-4.text-xl.select-none.cursor-pointer(@pointerdown="clear()")
+    button.text-xl.select-none.cursor-pointer(@pointerdown="clear()")
       .i-la-trash-alt
-  .absolute.w-full.bottom-2.flex.items-end.gap-2.px-2.flex-wrap()
-    .is-group.flex.flex-wrap.gap-2.flex-0.p-2.op-20.hover-op-80.transition.ml-16(v-if="state.initiated")
+
+  .absolute.top-14.left-2.flex.flex-col.text-white.items-center.overscroll-none.overflow-x-hidden.overflow-y-scroll.bg-dark-900.bg-op-20.backdrop-blur.op-40.hover-op-100.transition(v-show="initiated") 
+    .is-group.flex.flex-col.gap-2
+      ControlRotary(v-model="speed" :min="1" :max="5" :step="1" :fixed="0" param="SPEED")
+      ControlRotary(v-model="frame" :min="1" :max="4" :step="1" :fixed="0" param="FRAME")
       ControlRotary(v-model="steepness" :min="3" :max="30" :step="0.0001" :fixed="2" param="CONTRAST")
       ControlRotary(v-model="midpoint" :min="0" :max="1" :step=".0001" param="MIDPOINT" :fixed="2")
       ControlRotary(v-model="smoothing" :min="0" :max="1" :step=".0001" param="SMOOTH" :fixed="2")
-    .flex-1
-    .scale-75.max-h-60.overflow-clip.relative.text-white.op-20.hover-op-80.transition 
+
+  button.absolute.bottom-4.left-4.text-xl.select-none.cursor-pointer.transition(
+  :style="{ opacity: showVideo ? 1 : 0.5 }"
+    @pointerdown="showVideo = !showVideo")
+    .i-la-external-link-square-alt
+
+  .fixed.overflow-clip.text-white.transition.bottom-2.left-30.rounded-xl.overflow-hidden(v-show="showVideo")
+    .relative
       .absolute.p-2.opacity-70.touch-none.select-none.text-md Right click here to enter Picture-In-Picture mode
-      video.max-h-50(ref="video")  
+      video.max-h-50.max-w-full(ref="video")
+    
 </template>
 
-<style lang="postcss" scoped></style>
+<style lang="postcss" scoped>
+button {
+  @apply p-4;
+}
+
+#screen {
+  @apply bg-black;
+  width: 100%;
+  min-width: 320px;
+  min-height: 100vh;
+  line-height: 1.3;
+  font-family: "Commissioner", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
+  font-size: 1em;
+  font-weight: 400;
+  color: var(--c-text);
+  direction: ltr;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: all 600ms ease;
+  overscroll-behavior-y: none;
+}
+</style>

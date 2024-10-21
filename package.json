@@ -17,10 +17,6 @@
 		"audio synthesis",
 		"synthesizer"
 	],
-	"funding": {
-		"type": "github",
-		"url": "https://github.com/sponsors/davay42"
-	},
 	"license": "MIT",
 	"author": "Davay42",
 	"type": "module",

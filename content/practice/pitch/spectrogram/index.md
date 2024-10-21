@@ -13,9 +13,7 @@ usefulLinks:
 <script setup>
 import { defineClientComponent } from 'vitepress'
 
-const PitchSpectrogram = defineClientComponent(() => {
-  return import('./PitchSpectrogram.vue')
-})
+const PitchSpectrogram = defineClientComponent(() => import('./PitchSpectrogram.vue'))
 </script>
 
 <PitchSpectrogram style="position: sticky; top: 0;" />

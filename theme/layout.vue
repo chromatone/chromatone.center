@@ -102,6 +102,7 @@ midi-notes(v-if="!params.pure && !params.nokeys")
           .i-la-angle-up.w-6(@click="scrollTop()")
 
       iframe.min-h-80svh.w-full.max-w-100svw(
+        allow="microphone"
         v-if="f?.iframe"
         :src="f.iframe"
         )

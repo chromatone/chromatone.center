@@ -54,7 +54,7 @@ midi-notes(v-if="!params.pure && !params.nokeys")
     iframe.min-h-80svh.w-full.max-w-100svw(
       v-if="f?.iframe"
       :src="f.iframe"
-      allow="midi *"
+      allow="midi;microphone;fullscreen;"
       )
 
   template(v-else-if="f.layout == 'home'")
@@ -102,7 +102,7 @@ midi-notes(v-if="!params.pure && !params.nokeys")
           .i-la-angle-up.w-6(@click="scrollTop()")
 
       iframe.min-h-80svh.w-full.max-w-100svw(
-        allow="microphone"
+        allow="midi;microphone;fullscreen;"
         v-if="f?.iframe"
         :src="f.iframe"
         )

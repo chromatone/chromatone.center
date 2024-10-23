@@ -4,7 +4,7 @@
         <title>Chromatone</title>
         <link>https://chromatone.center</link>
         <description>Visual Music Language development updates and more</description>
-        <lastBuildDate>Tue, 22 Oct 2024 16:43:45 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 23 Oct 2024 12:19:51 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en-EN</language>
@@ -13,7 +13,7 @@
             <title><![CDATA[Synth snippets]]></title>
             <link>https://chromatone.center/practice/synth/snippets.html</link>
             <guid>https://chromatone.center/practice/synth/snippets.html</guid>
-            <pubDate>Tue, 22 Oct 2024 16:41:08 GMT</pubDate>
+            <pubDate>Wed, 23 Oct 2024 09:56:50 GMT</pubDate>
             <description><![CDATA[Code pieces]]></description>
             <content:encoded><![CDATA[<h3 id="skew-by-upheaver" tabindex="-1">Skew by <a href="https://discord.com/channels/826071713426178078/834787928688689172/1123676571279048875" target="_blank" rel="noreferrer">upheaver</a> <a class="header-anchor" href="#skew-by-upheaver" aria-label="Permalink to &quot;Skew by [upheaver](https://discord.com/channels/826071713426178078/834787928688689172/1123676571279048875)&quot;"></a></h3>
 <p>Sharing a useful snippet. JUCE's logskew function in Typescript, if anyone wants to scale their parameter values (for example convert 0-1 range to 20-20000 hz in a non linear way) :</p>
@@ -39,7 +39,7 @@
             <title><![CDATA[Words sequencing]]></title>
             <link>https://chromatone.center/practice/generative/words/</link>
             <guid>https://chromatone.center/practice/generative/words/</guid>
-            <pubDate>Tue, 22 Oct 2024 16:41:08 GMT</pubDate>
+            <pubDate>Wed, 23 Oct 2024 09:56:50 GMT</pubDate>
             <description><![CDATA[&lt;script setup
 import { defineClientComponent } from 'vitepress'
 const Words = defineClientCompone]]></description>
@@ -50,7 +50,7 @@ const Words = defineClientCompone]]></description>
             <title><![CDATA[Words sequencing]]></title>
             <link>https://chromatone.center/practice/sequencing/words/</link>
             <guid>https://chromatone.center/practice/sequencing/words/</guid>
-            <pubDate>Tue, 22 Oct 2024 16:41:08 GMT</pubDate>
+            <pubDate>Wed, 23 Oct 2024 09:56:50 GMT</pubDate>
             <description><![CDATA[This page is moved to https://chromatone.center/practice/generative/words/]]></description>
             <content:encoded><![CDATA[<p>This page is moved to <a href="https://chromatone.center/practice/generative/words/" target="_blank" rel="noreferrer">https://chromatone.center/practice/generative/words/</a></p>
 ]]></content:encoded>
@@ -60,7 +60,7 @@ const Words = defineClientCompone]]></description>
             <title><![CDATA[ZZFXM]]></title>
             <link>https://chromatone.center/practice/sequencing/zzfxm/</link>
             <guid>https://chromatone.center/practice/sequencing/zzfxm/</guid>
-            <pubDate>Tue, 22 Oct 2024 16:41:08 GMT</pubDate>
+            <pubDate>Wed, 23 Oct 2024 09:56:50 GMT</pubDate>
             <description><![CDATA[&lt;script setup
 import { defineClientComponent } from 'vitepress'
 const ZzFxm = defineClientCompone]]></description>
@@ -72,7 +72,7 @@ const ZzFxm = defineClientCompone]]></description>
             <title><![CDATA[Reharmonization]]></title>
             <link>https://chromatone.center/theory/harmony/reharmonization/</link>
             <guid>https://chromatone.center/theory/harmony/reharmonization/</guid>
-            <pubDate>Tue, 22 Oct 2024 16:41:08 GMT</pubDate>
+            <pubDate>Wed, 23 Oct 2024 09:56:50 GMT</pubDate>
             <description><![CDATA[How to reharmonize a song]]></description>
             <content:encoded><![CDATA[<youtube-embed video="lz3WR-F_pnM" /><h2 id="reharmonization-chord-substitution-but-for-the-whole-chord-progression" tabindex="-1">Reharmonization = Chord substitution but for the whole chord progression <a class="header-anchor" href="#reharmonization-chord-substitution-but-for-the-whole-chord-progression" aria-label="Permalink to &quot;Reharmonization = Chord substitution but for the whole chord progression&quot;"></a></h2>
 <p>Reharmonization is used to:</p>
@@ -1363,20 +1363,18 @@ Multiple stages of valve gain/clipping can be &quot;cascaded&quot; to produce a 
             <link>https://chromatone.center/practice/pitch/spectrogram/</link>
             <guid>https://chromatone.center/practice/pitch/spectrogram/</guid>
             <pubDate>Thu, 16 Jun 2022 00:00:00 GMT</pubDate>
-            <description><![CDATA[2.5D representation on frequency domain in time]]></description>
-            <content:encoded><![CDATA[<PitchSpectrogram style="position: sticky; top: 0;" /><div class="info custom-block"><p class="custom-block-title">INFO</p>
-<p>The colorful spectrogram is a powerful tool for visual audio analysis. Each particular frequency in the spectrum gets its own position on the vertical axis along with the corresponding Chromatone color. The pitch spectrum is continous and the graph shows all the partials in a rather high resolution. The colors of the lines help differentiate pitches and overtones in any incoming audio signal. The quality of analysis is based primarily on the quality of the signal – thus a good microphone is recommended for best experience.</p>
+            <description><![CDATA[Time-frequency audiovisual analysis tool]]></description>
+            <content:encoded><![CDATA[<p>The colorful spectrogram is a powerful tool for visual audio analysis. Each particular frequency in the spectrum gets its own position on the vertical axis along with the corresponding Chromatone color. The pitch spectrum is continous and the graph shows all the partials in a rather high resolution. The colors of the lines help differentiate pitches and overtones in any incoming audio signal. The quality of analysis is based primarily on the quality of the signal – thus a good microphone is recommended for best experience.</p>
 <h2 id="how-to-use-the-spectrogram" tabindex="-1">How to use the spectrogram <a class="header-anchor" href="#how-to-use-the-spectrogram" aria-label="Permalink to &quot;How to use the spectrogram&quot;"></a></h2>
 <ol>
 <li>Drag across <i class="p-3 mr-1 i-la-hand-rock"></i> the spectrogram top change the roll speed. The actual setting is at the top-left corner.</li>
 <li>Press the <i class="p-3 mr-1 i-la-expand"></i> icon at the bottom-right corner make the spectrogram go full screen. Very useful mode for deep explorations and teaching.</li>
 <li>You can pause <i class="p-3 mr-1 i-la-pause"></i> and resume <i class="p-3 mr-1 i-la-play"></i> the roll either by clicking anywhere at the spectrogram or by pressing the <code>Spacebar</code> button on your keyboard. Useful when comparing two or more sound spectrums – record a sound spectrum on the roll, then pause it, take another instrument and record another. The roll can fit up to 10 segments or even more.</li>
 <li>Clear the canvas with the <i class="p-3 mr-1 i-la-trash-alt"></i> button at the top-right corner or by pressing the <code>Enter</code> button on your keyboard.</li>
-<li>POW control changes the Power to which we raise the value of each band. It accentuates louder frequencies and dampens noise.</li>
-<li>OFFSET control is for tuning the values before the raising to the power. It can help adjust the brightness and sensitivity of the spectroscope.</li>
+<li>CONTRAST control changes the steepness to which we raise the value of each band. It accentuates louder frequencies and dampens noise.</li>
+<li>MIDPOINT control is for tuning the values before the raising to the power. It can help adjust the brightness and sensitivity of the spectroscope.</li>
 <li>Right click the small video to open the spectrogram in Picture-In-Picture mode. You may need to press play in the floating window to see the spectrogram running.</li>
 </ol>
-</div>
 ]]></content:encoded>
             <enclosure url="https://chromatone.center/spectrogram.png" length="0" type="image/png"/>
         </item>

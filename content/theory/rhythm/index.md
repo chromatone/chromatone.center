@@ -6,6 +6,7 @@ cover: brent-ninaber.jpg
 links:
   - https://en.wikipedia.org/wiki/Rhythm
   - https://en.wikipedia.org/wiki/Beat_(music)
+  - https://youtu.be/6ikARx35U5A
 ---
 
 [What is Rhythm](./study/index.md) and how does the temporal dimension of music evolve? How we can conceptualize the human [Musical time feeling](./pulse/index.md)? How can we [Count fast enough](./counting/index.md) to understand the inner relations of different rhythmic patterns?

@@ -4,16 +4,49 @@
         <title>Chromatone</title>
         <link>https://chromatone.center</link>
         <description>Visual Music Language development updates and more</description>
-        <lastBuildDate>Wed, 23 Oct 2024 12:19:51 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 25 Oct 2024 05:16:21 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en-EN</language>
         <copyright>Copyright (c) 2017-present, Denis Starov</copyright>
         <item>
+            <title><![CDATA[Words sequencing]]></title>
+            <link>https://chromatone.center/practice/generative/words/</link>
+            <guid>https://chromatone.center/practice/generative/words/</guid>
+            <pubDate>Fri, 25 Oct 2024 05:13:59 GMT</pubDate>
+            <description><![CDATA[&lt;script setup
+import { defineClientComponent } from 'vitepress'
+const Words = defineClientCompone]]></description>
+            <content:encoded><![CDATA[<Words/>]]></content:encoded>
+            <enclosure url="https://chromatone.center/cover.png" length="0" type="image/png"/>
+        </item>
+        <item>
+            <title><![CDATA[Words sequencing]]></title>
+            <link>https://chromatone.center/practice/sequencing/words/</link>
+            <guid>https://chromatone.center/practice/sequencing/words/</guid>
+            <pubDate>Fri, 25 Oct 2024 05:13:59 GMT</pubDate>
+            <description><![CDATA[This page is moved to https://chromatone.center/practice/generative/words/]]></description>
+            <content:encoded><![CDATA[<p>This page is moved to <a href="https://chromatone.center/practice/generative/words/" target="_blank" rel="noreferrer">https://chromatone.center/practice/generative/words/</a></p>
+]]></content:encoded>
+            <enclosure url="https://chromatone.center/cover.png" length="0" type="image/png"/>
+        </item>
+        <item>
+            <title><![CDATA[ZZFXM]]></title>
+            <link>https://chromatone.center/practice/sequencing/zzfxm/</link>
+            <guid>https://chromatone.center/practice/sequencing/zzfxm/</guid>
+            <pubDate>Fri, 25 Oct 2024 05:13:59 GMT</pubDate>
+            <description><![CDATA[&lt;script setup
+import { defineClientComponent } from 'vitepress'
+const ZzFxm = defineClientCompone]]></description>
+            <content:encoded><![CDATA[<ZzFxm /><p>Work in progress. You can edit only the bpm value for now. Stay tuned!</p>
+]]></content:encoded>
+            <enclosure url="https://chromatone.center/cover.png" length="0" type="image/png"/>
+        </item>
+        <item>
             <title><![CDATA[Synth snippets]]></title>
             <link>https://chromatone.center/practice/synth/snippets.html</link>
             <guid>https://chromatone.center/practice/synth/snippets.html</guid>
-            <pubDate>Wed, 23 Oct 2024 09:56:50 GMT</pubDate>
+            <pubDate>Fri, 25 Oct 2024 05:13:59 GMT</pubDate>
             <description><![CDATA[Code pieces]]></description>
             <content:encoded><![CDATA[<h3 id="skew-by-upheaver" tabindex="-1">Skew by <a href="https://discord.com/channels/826071713426178078/834787928688689172/1123676571279048875" target="_blank" rel="noreferrer">upheaver</a> <a class="header-anchor" href="#skew-by-upheaver" aria-label="Permalink to &quot;Skew by [upheaver](https://discord.com/channels/826071713426178078/834787928688689172/1123676571279048875)&quot;"></a></h3>
 <p>Sharing a useful snippet. JUCE's logskew function in Typescript, if anyone wants to scale their parameter values (for example convert 0-1 range to 20-20000 hz in a non linear way) :</p>
@@ -36,43 +69,10 @@
 </div>]]></content:encoded>
         </item>
         <item>
-            <title><![CDATA[Words sequencing]]></title>
-            <link>https://chromatone.center/practice/generative/words/</link>
-            <guid>https://chromatone.center/practice/generative/words/</guid>
-            <pubDate>Wed, 23 Oct 2024 09:56:50 GMT</pubDate>
-            <description><![CDATA[&lt;script setup
-import { defineClientComponent } from 'vitepress'
-const Words = defineClientCompone]]></description>
-            <content:encoded><![CDATA[<Words/>]]></content:encoded>
-            <enclosure url="https://chromatone.center/cover.png" length="0" type="image/png"/>
-        </item>
-        <item>
-            <title><![CDATA[Words sequencing]]></title>
-            <link>https://chromatone.center/practice/sequencing/words/</link>
-            <guid>https://chromatone.center/practice/sequencing/words/</guid>
-            <pubDate>Wed, 23 Oct 2024 09:56:50 GMT</pubDate>
-            <description><![CDATA[This page is moved to https://chromatone.center/practice/generative/words/]]></description>
-            <content:encoded><![CDATA[<p>This page is moved to <a href="https://chromatone.center/practice/generative/words/" target="_blank" rel="noreferrer">https://chromatone.center/practice/generative/words/</a></p>
-]]></content:encoded>
-            <enclosure url="https://chromatone.center/cover.png" length="0" type="image/png"/>
-        </item>
-        <item>
-            <title><![CDATA[ZZFXM]]></title>
-            <link>https://chromatone.center/practice/sequencing/zzfxm/</link>
-            <guid>https://chromatone.center/practice/sequencing/zzfxm/</guid>
-            <pubDate>Wed, 23 Oct 2024 09:56:50 GMT</pubDate>
-            <description><![CDATA[&lt;script setup
-import { defineClientComponent } from 'vitepress'
-const ZzFxm = defineClientCompone]]></description>
-            <content:encoded><![CDATA[<ZzFxm /><p>Work in progress. You can edit only the bpm value for now. Stay tuned!</p>
-]]></content:encoded>
-            <enclosure url="https://chromatone.center/cover.png" length="0" type="image/png"/>
-        </item>
-        <item>
             <title><![CDATA[Reharmonization]]></title>
             <link>https://chromatone.center/theory/harmony/reharmonization/</link>
             <guid>https://chromatone.center/theory/harmony/reharmonization/</guid>
-            <pubDate>Wed, 23 Oct 2024 09:56:50 GMT</pubDate>
+            <pubDate>Fri, 25 Oct 2024 05:13:59 GMT</pubDate>
             <description><![CDATA[How to reharmonize a song]]></description>
             <content:encoded><![CDATA[<youtube-embed video="lz3WR-F_pnM" /><h2 id="reharmonization-chord-substitution-but-for-the-whole-chord-progression" tabindex="-1">Reharmonization = Chord substitution but for the whole chord progression <a class="header-anchor" href="#reharmonization-chord-substitution-but-for-the-whole-chord-progression" aria-label="Permalink to &quot;Reharmonization = Chord substitution but for the whole chord progression&quot;"></a></h2>
 <p>Reharmonization is used to:</p>
@@ -421,40 +421,6 @@ const ZzFxm = defineClientCompone]]></description>
             <enclosure url="https://chromatone.center/indra-projects.jpg" length="0" type="image/jpg"/>
         </item>
         <item>
-            <title><![CDATA[Ear training]]></title>
-            <link>https://chromatone.center/theory/notes/ear-traning/</link>
-            <guid>https://chromatone.center/theory/notes/ear-traning/</guid>
-            <pubDate>Tue, 10 Sep 2024 00:00:00 GMT</pubDate>
-            <description><![CDATA[Aural skills development methods]]></description>
-            <content:encoded><![CDATA[<p>In music, ear training is the study and practice in which musicians learn various aural skills to detect and identify pitches, intervals, melody, chords, rhythms, solfeges, and other basic elements of music, solely by hearing. Someone who can identify pitch accurately without any context is said to have perfect pitch, while someone who can only identify pitch provided a reference tone or other musical context is said to have relative pitch. Someone that can't perceive these qualities at all is said to be tone deaf. The application of this skill is somewhat analogous to taking dictation in written/spoken language. As a process, ear training is in essence the inverse of reading music, which is the ability to decipher a musical piece by reading musical notation. Ear training is typically a component of formal musical training and is a fundamental, essential skill required in music schools and the mastery of music.</p>
-<h2 id="functional-pitch-recognition" tabindex="-1">Functional pitch recognition <a class="header-anchor" href="#functional-pitch-recognition" aria-label="Permalink to &quot;Functional pitch recognition&quot;"></a></h2>
-<p>Functional pitch recognition involves identifying the function or role of a single pitch in the context of an established tonic. Once a tonic has been established, each subsequent pitch may be classified without direct reference to accompanying pitches. For example, once the tonic G has been established, listeners may recognize that the pitch D plays the role of the dominant in the key of G. No reference to any other pitch is required to establish this fact.</p>
-<p>Many musicians use functional pitch recognition in order to identify, understand, and appreciate the roles and meanings of pitches within a key. To this end, scale-degree numbers or movable-do solmization (do, re, mi, etc.) can be quite helpful. Using such systems, pitches with identical functions (the key note or tonic, for example) are associated with identical labels (1 or do, for example).</p>
-<p>Functional pitch recognition is not the same as fixed-do solfège, e.g. do, re, mi, etc. Functional pitch recognition emphasizes the role of a pitch with respect to the tonic, while fixed-do solfège symbols are labels for absolute pitch values (do=C, re=D, etc., in any key). In the fixed-do system (used in the conservatories of the Romance language nations, e.g. Paris, Madrid, Rome, as well as the Juilliard School and the Curtis Institute in the USA), solfège symbols do not describe the role of pitches relative to a tonic, but rather actual pitches. In the movable-do system, there happens to be a correspondence between the solfège symbol and a pitch's role. However, there is no requirement that musicians associate the solfège symbols with the scale degrees. In fact, musicians may utilize the movable-do system to label pitches while mentally tracking intervals to determine the sequence of solfège symbols.</p>
-<p>Functional pitch recognition has several strengths. Since a large body of music is tonal, the technique is widely applicable. Since reference pitches are not required, music may be broken up by complex and difficult to analyze pitch clusters, for example, a percussion sequence, and pitch analysis may resume immediately once an easier to identify pitch is played, for example, by a trumpet—no need to keep track of the last note of the previous line or solo nor any need to keep track of a series of intervals going back all the way to the start of a piece. Since the function of pitch classes is a key element, the problem of compound intervals with interval recognition is not an issue—whether the notes in a melody are played within a single octave or over many octaves is irrelevant.</p>
-<p>Functional pitch recognition has some weaknesses. Music with no tonic or ambiguous tonality does not provide the frame of reference necessary for this type of analysis. When dealing with key changes, a student must know how to account for pitch function recognition after the key changes: retain the original tonic or change the frame of reference to the new tonic. This last aspect in particular, requires an ongoing real-time (even anticipatory) analysis of the music that is complicated by modulations and is the chief detriment to the movable-do system.</p>
-<h2 id="interval-recognition" tabindex="-1">Interval recognition <a class="header-anchor" href="#interval-recognition" aria-label="Permalink to &quot;Interval recognition&quot;"></a></h2>
-<p>Interval recognition is also a useful skill for musicians: in order to determine the notes in a melody, a musician must have some ability to recognize intervals. Some music teachers teach their students relative pitch by having them associate each possible interval with the first two notes of a popular song. However, others have shown that such familiar-melody associations are quite limited in scope, applicable only to the specific scale-degrees found in each melody.</p>
-<p>In addition, there are various systems (including solfeggio, sargam, and numerical sight-singing) that assign specific syllables to different notes of the scale. Among other things, this makes it easier to hear how intervals sound in different contexts, such as starting on different notes of the same scale.</p>
-<h2 id="chord-recognition" tabindex="-1">Chord recognition <a class="header-anchor" href="#chord-recognition" aria-label="Permalink to &quot;Chord recognition&quot;"></a></h2>
-<p>Complementary to recognizing the melody of a song is hearing the harmonic structures that support it. Musicians often practice hearing different types of chords and their inversions out of context, just to hear the characteristic sound of the chord. They also learn chord progressions to hear how chords relate to one another in the context of a piece of music.</p>
-<h2 id="microtonal-chord-and-interval-recognition" tabindex="-1">Microtonal chord and interval recognition <a class="header-anchor" href="#microtonal-chord-and-interval-recognition" aria-label="Permalink to &quot;Microtonal chord and interval recognition&quot;"></a></h2>
-<p>The process is similar to twelve-tone ear training, but with many more intervals to distinguish. Aspects of microtonal ear training are covered in Harmonic Experience, by W. A. Mathieu, with sight-singing exercises, such as singing over a drone, to learn to recognize just intonation intervals. There are also software projects underway or completed geared to ear training or to assist in microtonal performance.</p>
-<p>Gro Shetelig at The Norwegian Academy of Music is working on the development of a Microtonal Ear Training method for singers[4] and has developed the software Micropalette,[5] a tool for listening to microtonal tones, chords and intervals. Aaron Hunt at Hi Pi instruments has developed Xentone,[6] another tool for microtonal ear training. Furthermore, Reel Ear Web Apps[7] have released a Melodic Microtone Ear Training App based on call and response dictations.</p>
-<h2 id="rhythm-recognition" tabindex="-1">Rhythm recognition <a class="header-anchor" href="#rhythm-recognition" aria-label="Permalink to &quot;Rhythm recognition&quot;"></a></h2>
-<p>One way musicians practise rhythms is by breaking them up into smaller, more easily identifiable sub-patterns. For example, one might start by learning the sound of all the combinations of four eighth notes and eighth rests, and then proceed to string different four-note patterns together.</p>
-<p>Another way to practise rhythms is by muscle memory, or teaching rhythm to different muscles in the body. One may start by tapping a rhythm with the hands and feet individually, or singing a rhythm on a syllable (e.g. &quot;ta&quot;). Later stages may combine keeping time with the hand, foot, or voice and simultaneously tapping out the rhythm, and beating out multiple overlapping rhythms.</p>
-<p>A metronome may be used to assist in maintaining accurate tempo.</p>
-<h2 id="timbre-recognition" tabindex="-1">Timbre recognition <a class="header-anchor" href="#timbre-recognition" aria-label="Permalink to &quot;Timbre recognition&quot;"></a></h2>
-<p>Each type of musical instrument has a characteristic sound quality that is largely independent of pitch or loudness. Some instruments have more than one timbre, e.g. the sound of a plucked violin is different from the sound of a bowed violin. Some instruments employ multiple manual or embouchure techniques to achieve the same pitch through a variety of timbres. If these timbres are essential to the melody or function, as in shakuhachi music, then pitch training alone will not be enough to fully recognize the music. Learning to identify and differentiate various timbres is an important musical skill that can be acquired and improved by training.</p>
-<h2 id="transcription" tabindex="-1">Transcription <a class="header-anchor" href="#transcription" aria-label="Permalink to &quot;Transcription&quot;"></a></h2>
-<p>Music teachers often recommend transcribing recorded music as a way to practise all of the above, including recognizing rhythm, melody and harmony. The teacher may also perform ('dictate') short compositions, with the pupil listening and transcribing them on to paper.</p>
-<h2 id="modern-training-methods" tabindex="-1">Modern training methods <a class="header-anchor" href="#modern-training-methods" aria-label="Permalink to &quot;Modern training methods&quot;"></a></h2>
-<p>For accurate identification and reproduction of musical intervals, scales, chords, rhythms, and other audible parameters a great deal of practice is often necessary. Exercises involving identification often require a knowledgeable partner to play the passages in question and to assess the answers given. Specialised music theory software can remove the need for a partner, customise the training to the user's needs and accurately track progress. Conservatories and university music departments often license commercial software for their students, such as Meludia, EarMaster, Auralia, and MacGAMUT, so that they can track and manage student scores on a computer network. Similar data tracking software such as MyMusicianship and SonicFit focus on ear training for singers and are licensed by schools and community choirs. A variety of free software also exists, either as browser-based applications or as downloadable executables. For example, free and open source software under the GPL, such as GNU Solfege, often provides many features comparable with those of popular proprietary products.[citation needed] Most ear-training software is MIDI-based, permitting the user to customise the instruments used and even to receive input from MIDI-compatible devices such as electronic keyboards. Interactive ear-training applications are also available for smartphones.</p>
-]]></content:encoded>
-            <enclosure url="https://chromatone.center/robin-gislain-gessy.jpg" length="0" type="image/jpg"/>
-        </item>
-        <item>
             <title><![CDATA[Eguchi method]]></title>
             <link>https://chromatone.center/theory/notes/ear-traning/eguchi/</link>
             <guid>https://chromatone.center/theory/notes/ear-traning/eguchi/</guid>
@@ -543,6 +509,40 @@ Also other 500 students participate the training through the Internet perfect pi
 So far, there a re total 20000 students who acquired the perfect pitch through the Eguchi Method Perfect Pitch Training System.</p>
 ]]></content:encoded>
             <enclosure url="https://chromatone.center/book.png" length="0" type="image/png"/>
+        </item>
+        <item>
+            <title><![CDATA[Ear training]]></title>
+            <link>https://chromatone.center/theory/notes/ear-traning/</link>
+            <guid>https://chromatone.center/theory/notes/ear-traning/</guid>
+            <pubDate>Tue, 10 Sep 2024 00:00:00 GMT</pubDate>
+            <description><![CDATA[Aural skills development methods]]></description>
+            <content:encoded><![CDATA[<p>In music, ear training is the study and practice in which musicians learn various aural skills to detect and identify pitches, intervals, melody, chords, rhythms, solfeges, and other basic elements of music, solely by hearing. Someone who can identify pitch accurately without any context is said to have perfect pitch, while someone who can only identify pitch provided a reference tone or other musical context is said to have relative pitch. Someone that can't perceive these qualities at all is said to be tone deaf. The application of this skill is somewhat analogous to taking dictation in written/spoken language. As a process, ear training is in essence the inverse of reading music, which is the ability to decipher a musical piece by reading musical notation. Ear training is typically a component of formal musical training and is a fundamental, essential skill required in music schools and the mastery of music.</p>
+<h2 id="functional-pitch-recognition" tabindex="-1">Functional pitch recognition <a class="header-anchor" href="#functional-pitch-recognition" aria-label="Permalink to &quot;Functional pitch recognition&quot;"></a></h2>
+<p>Functional pitch recognition involves identifying the function or role of a single pitch in the context of an established tonic. Once a tonic has been established, each subsequent pitch may be classified without direct reference to accompanying pitches. For example, once the tonic G has been established, listeners may recognize that the pitch D plays the role of the dominant in the key of G. No reference to any other pitch is required to establish this fact.</p>
+<p>Many musicians use functional pitch recognition in order to identify, understand, and appreciate the roles and meanings of pitches within a key. To this end, scale-degree numbers or movable-do solmization (do, re, mi, etc.) can be quite helpful. Using such systems, pitches with identical functions (the key note or tonic, for example) are associated with identical labels (1 or do, for example).</p>
+<p>Functional pitch recognition is not the same as fixed-do solfège, e.g. do, re, mi, etc. Functional pitch recognition emphasizes the role of a pitch with respect to the tonic, while fixed-do solfège symbols are labels for absolute pitch values (do=C, re=D, etc., in any key). In the fixed-do system (used in the conservatories of the Romance language nations, e.g. Paris, Madrid, Rome, as well as the Juilliard School and the Curtis Institute in the USA), solfège symbols do not describe the role of pitches relative to a tonic, but rather actual pitches. In the movable-do system, there happens to be a correspondence between the solfège symbol and a pitch's role. However, there is no requirement that musicians associate the solfège symbols with the scale degrees. In fact, musicians may utilize the movable-do system to label pitches while mentally tracking intervals to determine the sequence of solfège symbols.</p>
+<p>Functional pitch recognition has several strengths. Since a large body of music is tonal, the technique is widely applicable. Since reference pitches are not required, music may be broken up by complex and difficult to analyze pitch clusters, for example, a percussion sequence, and pitch analysis may resume immediately once an easier to identify pitch is played, for example, by a trumpet—no need to keep track of the last note of the previous line or solo nor any need to keep track of a series of intervals going back all the way to the start of a piece. Since the function of pitch classes is a key element, the problem of compound intervals with interval recognition is not an issue—whether the notes in a melody are played within a single octave or over many octaves is irrelevant.</p>
+<p>Functional pitch recognition has some weaknesses. Music with no tonic or ambiguous tonality does not provide the frame of reference necessary for this type of analysis. When dealing with key changes, a student must know how to account for pitch function recognition after the key changes: retain the original tonic or change the frame of reference to the new tonic. This last aspect in particular, requires an ongoing real-time (even anticipatory) analysis of the music that is complicated by modulations and is the chief detriment to the movable-do system.</p>
+<h2 id="interval-recognition" tabindex="-1">Interval recognition <a class="header-anchor" href="#interval-recognition" aria-label="Permalink to &quot;Interval recognition&quot;"></a></h2>
+<p>Interval recognition is also a useful skill for musicians: in order to determine the notes in a melody, a musician must have some ability to recognize intervals. Some music teachers teach their students relative pitch by having them associate each possible interval with the first two notes of a popular song. However, others have shown that such familiar-melody associations are quite limited in scope, applicable only to the specific scale-degrees found in each melody.</p>
+<p>In addition, there are various systems (including solfeggio, sargam, and numerical sight-singing) that assign specific syllables to different notes of the scale. Among other things, this makes it easier to hear how intervals sound in different contexts, such as starting on different notes of the same scale.</p>
+<h2 id="chord-recognition" tabindex="-1">Chord recognition <a class="header-anchor" href="#chord-recognition" aria-label="Permalink to &quot;Chord recognition&quot;"></a></h2>
+<p>Complementary to recognizing the melody of a song is hearing the harmonic structures that support it. Musicians often practice hearing different types of chords and their inversions out of context, just to hear the characteristic sound of the chord. They also learn chord progressions to hear how chords relate to one another in the context of a piece of music.</p>
+<h2 id="microtonal-chord-and-interval-recognition" tabindex="-1">Microtonal chord and interval recognition <a class="header-anchor" href="#microtonal-chord-and-interval-recognition" aria-label="Permalink to &quot;Microtonal chord and interval recognition&quot;"></a></h2>
+<p>The process is similar to twelve-tone ear training, but with many more intervals to distinguish. Aspects of microtonal ear training are covered in Harmonic Experience, by W. A. Mathieu, with sight-singing exercises, such as singing over a drone, to learn to recognize just intonation intervals. There are also software projects underway or completed geared to ear training or to assist in microtonal performance.</p>
+<p>Gro Shetelig at The Norwegian Academy of Music is working on the development of a Microtonal Ear Training method for singers[4] and has developed the software Micropalette,[5] a tool for listening to microtonal tones, chords and intervals. Aaron Hunt at Hi Pi instruments has developed Xentone,[6] another tool for microtonal ear training. Furthermore, Reel Ear Web Apps[7] have released a Melodic Microtone Ear Training App based on call and response dictations.</p>
+<h2 id="rhythm-recognition" tabindex="-1">Rhythm recognition <a class="header-anchor" href="#rhythm-recognition" aria-label="Permalink to &quot;Rhythm recognition&quot;"></a></h2>
+<p>One way musicians practise rhythms is by breaking them up into smaller, more easily identifiable sub-patterns. For example, one might start by learning the sound of all the combinations of four eighth notes and eighth rests, and then proceed to string different four-note patterns together.</p>
+<p>Another way to practise rhythms is by muscle memory, or teaching rhythm to different muscles in the body. One may start by tapping a rhythm with the hands and feet individually, or singing a rhythm on a syllable (e.g. &quot;ta&quot;). Later stages may combine keeping time with the hand, foot, or voice and simultaneously tapping out the rhythm, and beating out multiple overlapping rhythms.</p>
+<p>A metronome may be used to assist in maintaining accurate tempo.</p>
+<h2 id="timbre-recognition" tabindex="-1">Timbre recognition <a class="header-anchor" href="#timbre-recognition" aria-label="Permalink to &quot;Timbre recognition&quot;"></a></h2>
+<p>Each type of musical instrument has a characteristic sound quality that is largely independent of pitch or loudness. Some instruments have more than one timbre, e.g. the sound of a plucked violin is different from the sound of a bowed violin. Some instruments employ multiple manual or embouchure techniques to achieve the same pitch through a variety of timbres. If these timbres are essential to the melody or function, as in shakuhachi music, then pitch training alone will not be enough to fully recognize the music. Learning to identify and differentiate various timbres is an important musical skill that can be acquired and improved by training.</p>
+<h2 id="transcription" tabindex="-1">Transcription <a class="header-anchor" href="#transcription" aria-label="Permalink to &quot;Transcription&quot;"></a></h2>
+<p>Music teachers often recommend transcribing recorded music as a way to practise all of the above, including recognizing rhythm, melody and harmony. The teacher may also perform ('dictate') short compositions, with the pupil listening and transcribing them on to paper.</p>
+<h2 id="modern-training-methods" tabindex="-1">Modern training methods <a class="header-anchor" href="#modern-training-methods" aria-label="Permalink to &quot;Modern training methods&quot;"></a></h2>
+<p>For accurate identification and reproduction of musical intervals, scales, chords, rhythms, and other audible parameters a great deal of practice is often necessary. Exercises involving identification often require a knowledgeable partner to play the passages in question and to assess the answers given. Specialised music theory software can remove the need for a partner, customise the training to the user's needs and accurately track progress. Conservatories and university music departments often license commercial software for their students, such as Meludia, EarMaster, Auralia, and MacGAMUT, so that they can track and manage student scores on a computer network. Similar data tracking software such as MyMusicianship and SonicFit focus on ear training for singers and are licensed by schools and community choirs. A variety of free software also exists, either as browser-based applications or as downloadable executables. For example, free and open source software under the GPL, such as GNU Solfege, often provides many features comparable with those of popular proprietary products.[citation needed] Most ear-training software is MIDI-based, permitting the user to customise the instruments used and even to receive input from MIDI-compatible devices such as electronic keyboards. Interactive ear-training applications are also available for smartphones.</p>
+]]></content:encoded>
+            <enclosure url="https://chromatone.center/robin-gislain-gessy.jpg" length="0" type="image/jpg"/>
         </item>
         <item>
             <title><![CDATA[Absolute (Perfect) Pitch]]></title>
@@ -2740,17 +2740,6 @@ C|B C . C B . C .|B . C . B C . C||
             <enclosure url="https://chromatone.center/yuting-gao.jpg" length="0" type="image/jpg"/>
         </item>
         <item>
-            <title><![CDATA[Sound]]></title>
-            <link>https://chromatone.center/theory/sound/</link>
-            <guid>https://chromatone.center/theory/sound/</guid>
-            <pubDate>Wed, 20 Oct 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[The ingenious hearing system and its medium]]></description>
-            <content:encoded><![CDATA[<p>What's the ultimate <a href="./nature/">Nature of sound</a> and how do humans <a href="./hearing/">Percieve it aurally</a>? There's a whole science of <a href="./psychoacoustics/">Psychoacoustics</a> to answer these and even deeper questions about the sound and hearing phenomena.</p>
-<p>The main parameter that makes a sound musical is its <a href="./pitch/">Pitch</a> and its <a href="./timbre/">Overtones</a> composition.</p>
-<youtube-embed video="cD7YFUYLpDc" />]]></content:encoded>
-            <enclosure url="https://chromatone.center/waves.jpg" length="0" type="image/jpg"/>
-        </item>
-        <item>
             <title><![CDATA[CMYK]]></title>
             <link>https://chromatone.center/practice/color/cmyk/</link>
             <guid>https://chromatone.center/practice/color/cmyk/</guid>
@@ -2760,6 +2749,17 @@ C|B C . C B . C .|B . C . B C . C||
 <color-cmyk style="position: sticky; top: 0;"  /></client-only>
 ]]></content:encoded>
             <enclosure url="https://chromatone.center/cmyk.png" length="0" type="image/png"/>
+        </item>
+        <item>
+            <title><![CDATA[Sound]]></title>
+            <link>https://chromatone.center/theory/sound/</link>
+            <guid>https://chromatone.center/theory/sound/</guid>
+            <pubDate>Wed, 20 Oct 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[The ingenious hearing system and its medium]]></description>
+            <content:encoded><![CDATA[<p>What's the ultimate <a href="./nature/">Nature of sound</a> and how do humans <a href="./hearing/">Percieve it aurally</a>? There's a whole science of <a href="./psychoacoustics/">Psychoacoustics</a> to answer these and even deeper questions about the sound and hearing phenomena.</p>
+<p>The main parameter that makes a sound musical is its <a href="./pitch/">Pitch</a> and its <a href="./timbre/">Overtones</a> composition.</p>
+<youtube-embed video="cD7YFUYLpDc" />]]></content:encoded>
+            <enclosure url="https://chromatone.center/waves.jpg" length="0" type="image/jpg"/>
         </item>
         <item>
             <title><![CDATA[Modal interplay]]></title>
@@ -5314,17 +5314,6 @@ Twelve-tone Phrygian/Lydian polymode (C) C–D♭–D–E♭–E–F–F♯–G�
 ]]></content:encoded>
         </item>
         <item>
-            <title><![CDATA[Temperaments]]></title>
-            <link>https://chromatone.center/theory/notes/temperaments/</link>
-            <guid>https://chromatone.center/theory/notes/temperaments/</guid>
-            <pubDate>Mon, 20 Sep 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[Tuning systems]]></description>
-            <content:encoded><![CDATA[<p>There's a plenty of ways to get all the notes to play with. The natural <a href="./just/">Just intonation</a> is based on simple ratios. If we take only one ratio of 2:3 we can construct the <a href="./pythagorean/">Pythagorean</a> tuning.</p>
-<p>Logarithms are in the base of the modern <a href="./equal/">12-TET</a> and anyone can <a href="./tunings/">compare it</a> to other systems easily.</p>
-]]></content:encoded>
-            <enclosure url="https://chromatone.center/derek-story.jpg" length="0" type="image/jpg"/>
-        </item>
-        <item>
             <title><![CDATA[Klavarskribo]]></title>
             <link>https://chromatone.center/theory/notes/alternative/klavar/</link>
             <guid>https://chromatone.center/theory/notes/alternative/klavar/</guid>
@@ -5408,14 +5397,15 @@ Example</p>
 ]]></content:encoded>
         </item>
         <item>
-            <title><![CDATA[Notes]]></title>
-            <link>https://chromatone.center/theory/notes/</link>
-            <guid>https://chromatone.center/theory/notes/</guid>
-            <pubDate>Sat, 18 Sep 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[Historical and cultorological research on different notation systems]]></description>
-            <content:encoded><![CDATA[<YoutubeEmbed video="Eq3bUFgEcb4" /><p>Let's first learn about <a href="./temperaments/">Temperaments</a> as ways to divide an octave into distinct notes to play. Then let's find out how these notes got their names with <a href="./solmization/">Solmization</a> and how they were written down in <a href="./national/">National notation systems</a>. The West-European tradition and its <a href="./staff/">Classic staff notation</a> is one of the most influential worldwide, but still there's a plenty of ancient and modern <a href="./alternative/">Alternative notation systems</a> to explore and experiment with. There's a whole world of <a href="./computer/">Computer notation</a> in the digital realm.</p>
+            <title><![CDATA[Temperaments]]></title>
+            <link>https://chromatone.center/theory/notes/temperaments/</link>
+            <guid>https://chromatone.center/theory/notes/temperaments/</guid>
+            <pubDate>Mon, 20 Sep 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[Tuning systems]]></description>
+            <content:encoded><![CDATA[<p>There's a plenty of ways to get all the notes to play with. The natural <a href="./just/">Just intonation</a> is based on simple ratios. If we take only one ratio of 2:3 we can construct the <a href="./pythagorean/">Pythagorean</a> tuning.</p>
+<p>Logarithms are in the base of the modern <a href="./equal/">12-TET</a> and anyone can <a href="./tunings/">compare it</a> to other systems easily.</p>
 ]]></content:encoded>
-            <enclosure url="https://chromatone.center/Grand_staff.svg" length="0" type="image/svg"/>
+            <enclosure url="https://chromatone.center/derek-story.jpg" length="0" type="image/jpg"/>
         </item>
         <item>
             <title><![CDATA[Dodeka]]></title>
@@ -5445,6 +5435,16 @@ C / K / D / T / E / F / H / G / P / A / V / B.</p>
 <p><img src="./dodeka-keys.jpg" alt=""></p>
 ]]></content:encoded>
             <enclosure url="https://chromatone.center/dodeka-keys.jpg" length="0" type="image/jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Notes]]></title>
+            <link>https://chromatone.center/theory/notes/</link>
+            <guid>https://chromatone.center/theory/notes/</guid>
+            <pubDate>Sat, 18 Sep 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[Historical and cultorological research on different notation systems]]></description>
+            <content:encoded><![CDATA[<YoutubeEmbed video="Eq3bUFgEcb4" /><p>Let's first learn about <a href="./temperaments/">Temperaments</a> as ways to divide an octave into distinct notes to play. Then let's find out how these notes got their names with <a href="./solmization/">Solmization</a> and how they were written down in <a href="./national/">National notation systems</a>. The West-European tradition and its <a href="./staff/">Classic staff notation</a> is one of the most influential worldwide, but still there's a plenty of ancient and modern <a href="./alternative/">Alternative notation systems</a> to explore and experiment with. There's a whole world of <a href="./computer/">Computer notation</a> in the digital realm.</p>
+]]></content:encoded>
+            <enclosure url="https://chromatone.center/Grand_staff.svg" length="0" type="image/svg"/>
         </item>
         <item>
             <title><![CDATA[Parsons code]]></title>
@@ -5527,26 +5527,6 @@ C / K / D / T / E / F / H / G / P / A / V / B.</p>
             <enclosure url="https://chromatone.center/guang-yang.jpg" length="0" type="image/jpg"/>
         </item>
         <item>
-            <title><![CDATA[Diatonic scales]]></title>
-            <link>https://chromatone.center/theory/scales/diatonic/</link>
-            <guid>https://chromatone.center/theory/scales/diatonic/</guid>
-            <pubDate>Wed, 15 Sep 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[The seven 7-notes set rotations]]></description>
-            <content:encoded><![CDATA[<h1 id="all-diatonic-scales-and-modes" tabindex="-1">All diatonic scales and modes <a class="header-anchor" href="#all-diatonic-scales-and-modes" aria-label="Permalink to &quot;All diatonic scales and modes&quot;"></a></h1>
-<youtube-embed video="YJO-Fm7uRX4"></youtube-embed><h2 id="what-is-a-diatonic-scale" tabindex="-1">What Is a Diatonic Scale? <a class="header-anchor" href="#what-is-a-diatonic-scale" aria-label="Permalink to &quot;What Is a Diatonic Scale?&quot;"></a></h2>
-<p>A diatonic scale is a type of musical scale that contains seven tones of a note per octave (the distance between one note and the following note that also bears its name).</p>
-<h3 id="tones" tabindex="-1">Tones <a class="header-anchor" href="#tones" aria-label="Permalink to &quot;Tones&quot;"></a></h3>
-<p>Diatonic scales consist of five whole tones, also known as whole steps or the major second, and two half steps (semitones), which are the shortest musical intervals (the distance between tones) in Western music, separated by either two or three tones. A whole step on a piano keyboard represents two keys, while a half step is a single key.</p>
-<h3 id="letter-names" tabindex="-1">Letter names <a class="header-anchor" href="#letter-names" aria-label="Permalink to &quot;Letter names&quot;"></a></h3>
-<p>Also known as a heptatonic scale in music theory, diatonic scales use all seven letter names, or notes in a sequence. Chords built from the seven notes in each key are called diatonic chords. Tonality, or the system of organizing keys and chords in Western music, has been based on the diatonic system from the Middle Ages to the present day.</p>
-<h3 id="scales" tabindex="-1">Scales <a class="header-anchor" href="#scales" aria-label="Permalink to &quot;Scales&quot;"></a></h3>
-<p>Diatonic scales include both the major scale, or Ionian mode, which is the most frequently used musical scale, and the natural minor scale, or Aeolian mode, which uses the same number of notes as the major scale, but in a different pitch. Both scales are part of the six <a href="https://en.wikipedia.org/wiki/Mode_(music)" target="_blank" rel="noreferrer">“church mode”</a> scales established for religious music during the medieval period, which continue to form the basis for contemporary diatonic scales.</p>
-<h2 id="tonic-the-root-note" tabindex="-1">Tonic - the root note <a class="header-anchor" href="#tonic-the-root-note" aria-label="Permalink to &quot;Tonic - the root note&quot;"></a></h2>
-<p>These scales always have a tonal center to which all the notes relate and lead to in different ways. It is called the root note of the scale or tonic.</p>
-<h2 id="the-7-modes-of-the-diatonic-scale" tabindex="-1">The 7 Modes of the Diatonic Scale <a class="header-anchor" href="#the-7-modes-of-the-diatonic-scale" aria-label="Permalink to &quot;The 7 Modes of the Diatonic Scale&quot;"></a></h2>
-<chroma-profile-collection :collection="diatonic" />]]></content:encoded>
-        </item>
-        <item>
             <title><![CDATA[ABC notation]]></title>
             <link>https://chromatone.center/theory/notes/computer/abc/</link>
             <guid>https://chromatone.center/theory/notes/computer/abc/</guid>
@@ -5579,14 +5559,24 @@ C / K / D / T / E / F / H / G / P / A / V / B.</p>
 ]]></content:encoded>
         </item>
         <item>
-            <title><![CDATA[Melodic minor]]></title>
-            <link>https://chromatone.center/theory/scales/melodic/</link>
-            <guid>https://chromatone.center/theory/scales/melodic/</guid>
-            <pubDate>Tue, 14 Sep 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[The melodic minor scale is essentially a natural minor scale with raised sixth and seventh scale degrees.]]></description>
-            <content:encoded><![CDATA[<p>A great deal of modern jazz harmony arises from the modes of the ascending form of the melodic minor scale, also known as the jazz melodic minor scale. This scale is essentially a diatonic major scale with a lowered third, for example C–D–E♭–F–G–A–B–C. As with any other scale, the modes are derived from playing the scale from different root notes, causing a series of jazz scales to emerge.</p>
-<h2 id="the-7-modes-of-the-melodic-minor-scale" tabindex="-1">The 7 modes of the Melodic Minor Scale <a class="header-anchor" href="#the-7-modes-of-the-melodic-minor-scale" aria-label="Permalink to &quot;The 7 modes of the Melodic Minor Scale&quot;"></a></h2>
-<chroma-profile-collection :collection="melodic" />]]></content:encoded>
+            <title><![CDATA[Diatonic scales]]></title>
+            <link>https://chromatone.center/theory/scales/diatonic/</link>
+            <guid>https://chromatone.center/theory/scales/diatonic/</guid>
+            <pubDate>Wed, 15 Sep 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[The seven 7-notes set rotations]]></description>
+            <content:encoded><![CDATA[<h1 id="all-diatonic-scales-and-modes" tabindex="-1">All diatonic scales and modes <a class="header-anchor" href="#all-diatonic-scales-and-modes" aria-label="Permalink to &quot;All diatonic scales and modes&quot;"></a></h1>
+<youtube-embed video="YJO-Fm7uRX4"></youtube-embed><h2 id="what-is-a-diatonic-scale" tabindex="-1">What Is a Diatonic Scale? <a class="header-anchor" href="#what-is-a-diatonic-scale" aria-label="Permalink to &quot;What Is a Diatonic Scale?&quot;"></a></h2>
+<p>A diatonic scale is a type of musical scale that contains seven tones of a note per octave (the distance between one note and the following note that also bears its name).</p>
+<h3 id="tones" tabindex="-1">Tones <a class="header-anchor" href="#tones" aria-label="Permalink to &quot;Tones&quot;"></a></h3>
+<p>Diatonic scales consist of five whole tones, also known as whole steps or the major second, and two half steps (semitones), which are the shortest musical intervals (the distance between tones) in Western music, separated by either two or three tones. A whole step on a piano keyboard represents two keys, while a half step is a single key.</p>
+<h3 id="letter-names" tabindex="-1">Letter names <a class="header-anchor" href="#letter-names" aria-label="Permalink to &quot;Letter names&quot;"></a></h3>
+<p>Also known as a heptatonic scale in music theory, diatonic scales use all seven letter names, or notes in a sequence. Chords built from the seven notes in each key are called diatonic chords. Tonality, or the system of organizing keys and chords in Western music, has been based on the diatonic system from the Middle Ages to the present day.</p>
+<h3 id="scales" tabindex="-1">Scales <a class="header-anchor" href="#scales" aria-label="Permalink to &quot;Scales&quot;"></a></h3>
+<p>Diatonic scales include both the major scale, or Ionian mode, which is the most frequently used musical scale, and the natural minor scale, or Aeolian mode, which uses the same number of notes as the major scale, but in a different pitch. Both scales are part of the six <a href="https://en.wikipedia.org/wiki/Mode_(music)" target="_blank" rel="noreferrer">“church mode”</a> scales established for religious music during the medieval period, which continue to form the basis for contemporary diatonic scales.</p>
+<h2 id="tonic-the-root-note" tabindex="-1">Tonic - the root note <a class="header-anchor" href="#tonic-the-root-note" aria-label="Permalink to &quot;Tonic - the root note&quot;"></a></h2>
+<p>These scales always have a tonal center to which all the notes relate and lead to in different ways. It is called the root note of the scale or tonic.</p>
+<h2 id="the-7-modes-of-the-diatonic-scale" tabindex="-1">The 7 Modes of the Diatonic Scale <a class="header-anchor" href="#the-7-modes-of-the-diatonic-scale" aria-label="Permalink to &quot;The 7 Modes of the Diatonic Scale&quot;"></a></h2>
+<chroma-profile-collection :collection="diatonic" />]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[Integer notation]]></title>
@@ -5639,6 +5629,28 @@ C / K / D / T / E / F / H / G / P / A / V / B.</p>
 <img src="./Helmholtz-pitch-notation.svg">
 ]]></content:encoded>
             <enclosure url="https://chromatone.center/Scientific_pitch_notation_octaves_of_C.png" length="0" type="image/png"/>
+        </item>
+        <item>
+            <title><![CDATA[Melodic minor]]></title>
+            <link>https://chromatone.center/theory/scales/melodic/</link>
+            <guid>https://chromatone.center/theory/scales/melodic/</guid>
+            <pubDate>Tue, 14 Sep 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[The melodic minor scale is essentially a natural minor scale with raised sixth and seventh scale degrees.]]></description>
+            <content:encoded><![CDATA[<p>A great deal of modern jazz harmony arises from the modes of the ascending form of the melodic minor scale, also known as the jazz melodic minor scale. This scale is essentially a diatonic major scale with a lowered third, for example C–D–E♭–F–G–A–B–C. As with any other scale, the modes are derived from playing the scale from different root notes, causing a series of jazz scales to emerge.</p>
+<h2 id="the-7-modes-of-the-melodic-minor-scale" tabindex="-1">The 7 modes of the Melodic Minor Scale <a class="header-anchor" href="#the-7-modes-of-the-melodic-minor-scale" aria-label="Permalink to &quot;The 7 modes of the Melodic Minor Scale&quot;"></a></h2>
+<chroma-profile-collection :collection="melodic" />]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Piano roll]]></title>
+            <link>https://chromatone.center/theory/notes/computer/piano-roll/</link>
+            <guid>https://chromatone.center/theory/notes/computer/piano-roll/</guid>
+            <pubDate>Mon, 13 Sep 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[A common form of music in modern DAWs]]></description>
+            <content:encoded><![CDATA[<p>The Buffalo Convention of December 10, 1908 established two future roll formats for the US-producers of piano rolls for self-playing pianos. The two formats had different punchings of 65 and 88 notes, but the same width (11+1⁄4 inches or 286 millimetres); thus 65-note rolls would be perforated at 6 holes to the inch, and 88-note rolls at 9 holes to the inch, leaving margins at both ends for future developments. This made it possible to play the piano rolls on any self-playing instrument built according to the convention, albeit sometimes with a loss of special functionality. This format became a loose world standard.</p>
+<p><img src="./PlayerPianoRoll.jpg" alt=""></p>
+<p><img src="./FL.png" alt=""></p>
+]]></content:encoded>
+            <enclosure url="https://chromatone.center/PlayerPianoRoll.jpg" length="0" type="image/jpg"/>
         </item>
         <item>
             <title><![CDATA[Double harmonic]]></title>
@@ -5716,18 +5728,6 @@ C / K / D / T / E / F / H / G / P / A / V / B.</p>
 <youtube-embed video="LW6qGy3RtwY" /><h2 id="related-scales" tabindex="-1">Related scales <a class="header-anchor" href="#related-scales" aria-label="Permalink to &quot;Related scales&quot;"></a></h2>
 <p>Some of the closest existing scales to the double harmonic major scale are the Phrygian dominant scale, the fifth mode of the harmonic minor scale, as they are alike save for the Phrygian dominant's flattened seventh degree. The harmonic major scale (also known as major flat 6 and Ionian flat 6) is identical to the standard major scale aside from the sixth scale degree being flattened by a semitone, differing from the double harmonic major in having a natural second degree.</p>
 ]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[Piano roll]]></title>
-            <link>https://chromatone.center/theory/notes/computer/piano-roll/</link>
-            <guid>https://chromatone.center/theory/notes/computer/piano-roll/</guid>
-            <pubDate>Mon, 13 Sep 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[A common form of music in modern DAWs]]></description>
-            <content:encoded><![CDATA[<p>The Buffalo Convention of December 10, 1908 established two future roll formats for the US-producers of piano rolls for self-playing pianos. The two formats had different punchings of 65 and 88 notes, but the same width (11+1⁄4 inches or 286 millimetres); thus 65-note rolls would be perforated at 6 holes to the inch, and 88-note rolls at 9 holes to the inch, leaving margins at both ends for future developments. This made it possible to play the piano rolls on any self-playing instrument built according to the convention, albeit sometimes with a loss of special functionality. This format became a loose world standard.</p>
-<p><img src="./PlayerPianoRoll.jpg" alt=""></p>
-<p><img src="./FL.png" alt=""></p>
-]]></content:encoded>
-            <enclosure url="https://chromatone.center/PlayerPianoRoll.jpg" length="0" type="image/jpg"/>
         </item>
         <item>
             <title><![CDATA[Monochord]]></title>
@@ -5841,6 +5841,34 @@ Am 		Em 		Bm
 ]]></content:encoded>
         </item>
         <item>
+            <title><![CDATA[MIDI]]></title>
+            <link>https://chromatone.center/theory/notes/computer/midi/</link>
+            <guid>https://chromatone.center/theory/notes/computer/midi/</guid>
+            <pubDate>Sun, 12 Sep 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[Standard for digital music communication]]></description>
+            <content:encoded><![CDATA[<p>At the 1983 Winter NAMM Show, Smith demonstrated a MIDI connection between Prophet 600 and Roland JP-6 synthesizers. The MIDI specification was published in August 1983. The MIDI standard was unveiled by Kakehashi and Smith, who received Technical Grammy Awards in 2013 for their work. In 1982, the first instruments were released with MIDI, the Roland Jupiter-6 and the Prophet 600. In 1983, the first MIDI drum machine, the Roland TR-909, and the first MIDI sequencer, the Roland MSQ-700 were released. The first computer to support MIDI, the NEC PC-88 and PC-98, was released in 1982. The MIDI standard connected ground-breaking hardware like Yamaha’s DX7 synthesiser and Roland’s TR-909 drum machine.</p>
+<p><img src="./midi-notes.jpg" alt=""></p>
+<p>A MIDI message is an instruction that controls some aspect of the receiving device. A MIDI message consists of a status byte, which indicates the type of the message, followed by up to two data bytes that contain the parameters. MIDI messages can be channel messages sent on only one of the 16 channels and monitored only by devices on that channel, or system messages that all devices receive. Each receiving device ignores data not relevant to its function.There are five types of message: Channel Voice, Channel Mode, System Common, System Real-Time, and System Exclusive.</p>
+<p><img src="./midi_data.gif" alt=""></p>
+<p>Channel Voice messages transmit real-time performance data over a single channel. Examples include &quot;note-on&quot; messages which contain a MIDI note number that specifies the note's pitch, a velocity value that indicates how forcefully the note was played, and the channel number; &quot;note-off&quot; messages that end a note; program change messages that change a device's patch; and control changes that allow adjustment of an instrument's parameters. MIDI notes are numbered from 0 to 127 assigned to C−1 to G9. This corresponds to a range of 8.175799 to 12543.85 Hz (assuming equal temperament and 440 Hz A4) and extends beyond the 88 note piano range from A0 to C8. Middle C has the number 60. A4 (A440) – 69.</p>
+<p><img src="./GM_Standard_Drum_Map_on_the_keyboard.svg" alt="svg"></p>
+<h2 id="midi-clock" tabindex="-1">MIDI clock <a class="header-anchor" href="#midi-clock" aria-label="Permalink to &quot;MIDI clock&quot;"></a></h2>
+<p>MIDI beat clock, or simply MIDI clock, is a clock signal that is broadcast via MIDI to ensure that several MIDI-enabled devices such as a synthesizer or music sequencer stay in synchronization. Clock events are sent at a rate of 24 pulses per quarter note. Those pulses are used to maintain a synchronized tempo for synthesizers that have BPM-dependent voices and also for arpeggiator synchronization.</p>
+<p>MIDI beat clock differs from MIDI timecode in that MIDI beat clock is tempo-dependent.</p>
+<p>Location information can be specified using MIDI Song Position Pointer (SPP, see below), although many simple MIDI devices ignore this message.
+Messages</p>
+<p>MIDI beat clock defines the following real-time messages:</p>
+<ul>
+<li>clock (decimal 248, hex 0xF8)</li>
+<li>start (decimal 250, hex 0xFA)</li>
+<li>continue (decimal 251, hex 0xFB)</li>
+<li>stop (decimal 252, hex 0xFC)</li>
+</ul>
+<p>MIDI also specifies a System Common message called Song Position Pointer (SPP). SPP can be used in conjunction with the above realtime messages for complete sync. This message consists of 3 bytes; a status byte (decimal 242, hex 0xF2), followed by two 7-bit data bytes (least significant byte first) forming a 14-bit value which specifies the number of &quot;MIDI beats&quot; (1 MIDI beat = a 16th note = 6 clock pulses) since the start of the song. This message only needs to be sent once if a jump to a different position in the song is needed. Thereafter only realtime clock messages need to be sent to advance the song position one tick at a time.</p>
+]]></content:encoded>
+            <enclosure url="https://chromatone.center/GM_Standard_Drum_Map_on_the_keyboard.svg" length="0" type="image/svg"/>
+        </item>
+        <item>
             <title><![CDATA[Symmetrical scales]]></title>
             <link>https://chromatone.center/theory/scales/symmetrical/</link>
             <guid>https://chromatone.center/theory/scales/symmetrical/</guid>
@@ -5868,34 +5896,6 @@ Am 		Em 		Bm
 <p>The rāga Sahera in Hindustani classical music uses the same intervals as the whole-tone scale.</p>
 <h3 id="from-second-to-the-seventh-modes" tabindex="-1">From second to the seventh modes <a class="header-anchor" href="#from-second-to-the-seventh-modes" aria-label="Permalink to &quot;From second to the seventh modes&quot;"></a></h3>
 <chroma-profile-collection :collection="limited" />]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[MIDI]]></title>
-            <link>https://chromatone.center/theory/notes/computer/midi/</link>
-            <guid>https://chromatone.center/theory/notes/computer/midi/</guid>
-            <pubDate>Sun, 12 Sep 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[Standard for digital music communication]]></description>
-            <content:encoded><![CDATA[<p>At the 1983 Winter NAMM Show, Smith demonstrated a MIDI connection between Prophet 600 and Roland JP-6 synthesizers. The MIDI specification was published in August 1983. The MIDI standard was unveiled by Kakehashi and Smith, who received Technical Grammy Awards in 2013 for their work. In 1982, the first instruments were released with MIDI, the Roland Jupiter-6 and the Prophet 600. In 1983, the first MIDI drum machine, the Roland TR-909, and the first MIDI sequencer, the Roland MSQ-700 were released. The first computer to support MIDI, the NEC PC-88 and PC-98, was released in 1982. The MIDI standard connected ground-breaking hardware like Yamaha’s DX7 synthesiser and Roland’s TR-909 drum machine.</p>
-<p><img src="./midi-notes.jpg" alt=""></p>
-<p>A MIDI message is an instruction that controls some aspect of the receiving device. A MIDI message consists of a status byte, which indicates the type of the message, followed by up to two data bytes that contain the parameters. MIDI messages can be channel messages sent on only one of the 16 channels and monitored only by devices on that channel, or system messages that all devices receive. Each receiving device ignores data not relevant to its function.There are five types of message: Channel Voice, Channel Mode, System Common, System Real-Time, and System Exclusive.</p>
-<p><img src="./midi_data.gif" alt=""></p>
-<p>Channel Voice messages transmit real-time performance data over a single channel. Examples include &quot;note-on&quot; messages which contain a MIDI note number that specifies the note's pitch, a velocity value that indicates how forcefully the note was played, and the channel number; &quot;note-off&quot; messages that end a note; program change messages that change a device's patch; and control changes that allow adjustment of an instrument's parameters. MIDI notes are numbered from 0 to 127 assigned to C−1 to G9. This corresponds to a range of 8.175799 to 12543.85 Hz (assuming equal temperament and 440 Hz A4) and extends beyond the 88 note piano range from A0 to C8. Middle C has the number 60. A4 (A440) – 69.</p>
-<p><img src="./GM_Standard_Drum_Map_on_the_keyboard.svg" alt="svg"></p>
-<h2 id="midi-clock" tabindex="-1">MIDI clock <a class="header-anchor" href="#midi-clock" aria-label="Permalink to &quot;MIDI clock&quot;"></a></h2>
-<p>MIDI beat clock, or simply MIDI clock, is a clock signal that is broadcast via MIDI to ensure that several MIDI-enabled devices such as a synthesizer or music sequencer stay in synchronization. Clock events are sent at a rate of 24 pulses per quarter note. Those pulses are used to maintain a synchronized tempo for synthesizers that have BPM-dependent voices and also for arpeggiator synchronization.</p>
-<p>MIDI beat clock differs from MIDI timecode in that MIDI beat clock is tempo-dependent.</p>
-<p>Location information can be specified using MIDI Song Position Pointer (SPP, see below), although many simple MIDI devices ignore this message.
-Messages</p>
-<p>MIDI beat clock defines the following real-time messages:</p>
-<ul>
-<li>clock (decimal 248, hex 0xF8)</li>
-<li>start (decimal 250, hex 0xFA)</li>
-<li>continue (decimal 251, hex 0xFB)</li>
-<li>stop (decimal 252, hex 0xFC)</li>
-</ul>
-<p>MIDI also specifies a System Common message called Song Position Pointer (SPP). SPP can be used in conjunction with the above realtime messages for complete sync. This message consists of 3 bytes; a status byte (decimal 242, hex 0xF2), followed by two 7-bit data bytes (least significant byte first) forming a 14-bit value which specifies the number of &quot;MIDI beats&quot; (1 MIDI beat = a 16th note = 6 clock pulses) since the start of the song. This message only needs to be sent once if a jump to a different position in the song is needed. Thereafter only realtime clock messages need to be sent to advance the song position one tick at a time.</p>
-]]></content:encoded>
-            <enclosure url="https://chromatone.center/GM_Standard_Drum_Map_on_the_keyboard.svg" length="0" type="image/svg"/>
         </item>
         <item>
             <title><![CDATA[MIDI]]></title>
@@ -6940,6 +6940,27 @@ C / K / D / T / E / F / H / G / P / A / V / B.</p>
             <enclosure url="https://chromatone.center/sound-waves.jpg" length="0" type="image/jpg"/>
         </item>
         <item>
+            <title><![CDATA[The Sun]]></title>
+            <link>https://chromatone.center/theory/color/light/sun/</link>
+            <guid>https://chromatone.center/theory/color/light/sun/</guid>
+            <pubDate>Mon, 30 Aug 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[The Sun is the center of our Solar system and is the main source of all light on Earth.]]></description>
+            <content:encoded><![CDATA[<p>The Sun, a 4.5 billion-year-old yellow dwarf star, is the center of our Solar system and is the main source of light on Earth.</p>
+<p>The Sun has an absolute magnitude of +4.83, estimated to be brighter than about 85% of the stars in the Milky Way, most of which are red dwarfs.</p>
+<p>The Sun is a G-type main-sequence star that comprises about 99.86% of the mass of the Solar System. Its mass is estimated at 2 octillion tons, while it's losing 5 million tons of material each second in form of radiation and ionized corona flares that cool down in space and propagate as solar wind.</p>
+<p><img src="./images/sun.svg" alt="svg"></p>
+<p>The Sun is by far the brightest object in the Earth's sky, with an apparent magnitude of −26.74. This is about 13 billion times brighter than the next brightest star, Sirius, which has an apparent magnitude of −1.46.</p>
+<p><img src="./wind.gif" alt="wind"></p>
+<p>The Sun is about 149.6 million kilometers away from Earth. Light travels at a speed of about 299,792 kilometers per second. So, it takes about 8 minutes and 20 seconds for light to travel from the Sun to Earth.</p>
+<p><img src="./images/sun-granules.jpg" alt=""></p>
+<p>Thermonuclear reactions at temperatures about 14 million Kelvin in its core produce high energy gamma-rays that are absorbed and converted into lower energy radiation by ionized atoms in its relatively thin and much cooler (4000 - 6000 K) photosphere and chromosphere layers.</p>
+<p><img src="./images/Sunspot.jpg" alt=""></p>
+<h2 id="uv-radiation-of-the-sun" tabindex="-1">UV radiation of the Sun <a class="header-anchor" href="#uv-radiation-of-the-sun" aria-label="Permalink to &quot;UV radiation of the Sun&quot;"></a></h2>
+<p><img src="./images/extreme_ultraviolet_sun.jpg" alt=""></p>
+]]></content:encoded>
+            <enclosure url="https://chromatone.center/sun.jpg" length="0" type="image/jpg"/>
+        </item>
+        <item>
             <title><![CDATA[Human color perception]]></title>
             <link>https://chromatone.center/theory/color/perception/</link>
             <guid>https://chromatone.center/theory/color/perception/</guid>
@@ -7069,44 +7090,6 @@ C / K / D / T / E / F / H / G / P / A / V / B.</p>
             <enclosure url="https://chromatone.center/auditory-system.png" length="0" type="image/png"/>
         </item>
         <item>
-            <title><![CDATA[The Sun]]></title>
-            <link>https://chromatone.center/theory/color/light/sun/</link>
-            <guid>https://chromatone.center/theory/color/light/sun/</guid>
-            <pubDate>Mon, 30 Aug 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[The Sun is the center of our Solar system and is the main source of all light on Earth.]]></description>
-            <content:encoded><![CDATA[<p>The Sun, a 4.5 billion-year-old yellow dwarf star, is the center of our Solar system and is the main source of light on Earth.</p>
-<p>The Sun has an absolute magnitude of +4.83, estimated to be brighter than about 85% of the stars in the Milky Way, most of which are red dwarfs.</p>
-<p>The Sun is a G-type main-sequence star that comprises about 99.86% of the mass of the Solar System. Its mass is estimated at 2 octillion tons, while it's losing 5 million tons of material each second in form of radiation and ionized corona flares that cool down in space and propagate as solar wind.</p>
-<p><img src="./images/sun.svg" alt="svg"></p>
-<p>The Sun is by far the brightest object in the Earth's sky, with an apparent magnitude of −26.74. This is about 13 billion times brighter than the next brightest star, Sirius, which has an apparent magnitude of −1.46.</p>
-<p><img src="./wind.gif" alt="wind"></p>
-<p>The Sun is about 149.6 million kilometers away from Earth. Light travels at a speed of about 299,792 kilometers per second. So, it takes about 8 minutes and 20 seconds for light to travel from the Sun to Earth.</p>
-<p><img src="./images/sun-granules.jpg" alt=""></p>
-<p>Thermonuclear reactions at temperatures about 14 million Kelvin in its core produce high energy gamma-rays that are absorbed and converted into lower energy radiation by ionized atoms in its relatively thin and much cooler (4000 - 6000 K) photosphere and chromosphere layers.</p>
-<p><img src="./images/Sunspot.jpg" alt=""></p>
-<h2 id="uv-radiation-of-the-sun" tabindex="-1">UV radiation of the Sun <a class="header-anchor" href="#uv-radiation-of-the-sun" aria-label="Permalink to &quot;UV radiation of the Sun&quot;"></a></h2>
-<p><img src="./images/extreme_ultraviolet_sun.jpg" alt=""></p>
-]]></content:encoded>
-            <enclosure url="https://chromatone.center/sun.jpg" length="0" type="image/jpg"/>
-        </item>
-        <item>
-            <title><![CDATA[Psychoacoustics]]></title>
-            <link>https://chromatone.center/theory/sound/psychoacoustics/</link>
-            <guid>https://chromatone.center/theory/sound/psychoacoustics/</guid>
-            <pubDate>Sun, 29 Aug 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[The science of percieved sound]]></description>
-            <content:encoded><![CDATA[<youtube-embed video="awiunFeiDuQ" /><h2 id="equal-loudness-contour" tabindex="-1">Equal-loudness contour <a class="header-anchor" href="#equal-loudness-contour" aria-label="Permalink to &quot;Equal-loudness contour&quot;"></a></h2>
-<p>The human auditory system is sensitive to frequencies from about 20 Hz to a maximum of around 20,000 Hz, although the upper hearing limit decreases with age. Within this range, the human ear is most sensitive between 2 and 5 kHz, largely due to the resonance of the ear canal and the transfer function of the ossicles of the middle ear.</p>
-<p><img src="./equal-loudness.svg" alt=""></p>
-<p>Fletcher and Munson first measured equal-loudness contours using headphones (1933). In their study, test subjects listened to pure tones at various frequencies and over 10 dB increments in stimulus intensity. For each frequency and intensity, the listener also listened to a reference tone at 1000 Hz. Fletcher and Munson adjusted the reference tone until the listener perceived that it was the same loudness as the test tone. Loudness, being a psychological quantity, is difficult to measure, so Fletcher and Munson averaged their results over many test subjects to derive reasonable averages. The lowest equal-loudness contour represents the quietest audible tone—the absolute threshold of hearing. The highest contour is the threshold of pain.</p>
-<p><img src="./Audible.jpg" alt=""></p>
-<p>In 1956 Robinson and Dadson produced a new experimental determination that they believed was more accurate. It became the basis for a standard (ISO 226) that was considered definitive until 2003 when ISO revised the standard on the basis of recent assessments by research groups worldwide.</p>
-<p><a href="./illusions/">Audial illusions</a></p>
-<p><a href="https://en.wikipedia.org/wiki/Interaural_time_difference" target="_blank" rel="noreferrer">https://en.wikipedia.org/wiki/Interaural_time_difference</a></p>
-<youtube-embed video="Gc5eICzHkFU" />]]></content:encoded>
-            <enclosure url="https://chromatone.center/hearing.svg" length="0" type="image/svg"/>
-        </item>
-        <item>
             <title><![CDATA[Light spectrum]]></title>
             <link>https://chromatone.center/theory/color/light/spectrum/</link>
             <guid>https://chromatone.center/theory/color/light/spectrum/</guid>
@@ -7131,6 +7114,23 @@ C / K / D / T / E / F / H / G / P / A / V / B.</p>
 <img src="./images/spectral-lines.svg">
 <youtube-embed video="-Xx7sPPTu3Y" />]]></content:encoded>
             <enclosure url="https://chromatone.center/sun-spectrum.svg" length="0" type="image/svg"/>
+        </item>
+        <item>
+            <title><![CDATA[Psychoacoustics]]></title>
+            <link>https://chromatone.center/theory/sound/psychoacoustics/</link>
+            <guid>https://chromatone.center/theory/sound/psychoacoustics/</guid>
+            <pubDate>Sun, 29 Aug 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[The science of percieved sound]]></description>
+            <content:encoded><![CDATA[<youtube-embed video="awiunFeiDuQ" /><h2 id="equal-loudness-contour" tabindex="-1">Equal-loudness contour <a class="header-anchor" href="#equal-loudness-contour" aria-label="Permalink to &quot;Equal-loudness contour&quot;"></a></h2>
+<p>The human auditory system is sensitive to frequencies from about 20 Hz to a maximum of around 20,000 Hz, although the upper hearing limit decreases with age. Within this range, the human ear is most sensitive between 2 and 5 kHz, largely due to the resonance of the ear canal and the transfer function of the ossicles of the middle ear.</p>
+<p><img src="./equal-loudness.svg" alt=""></p>
+<p>Fletcher and Munson first measured equal-loudness contours using headphones (1933). In their study, test subjects listened to pure tones at various frequencies and over 10 dB increments in stimulus intensity. For each frequency and intensity, the listener also listened to a reference tone at 1000 Hz. Fletcher and Munson adjusted the reference tone until the listener perceived that it was the same loudness as the test tone. Loudness, being a psychological quantity, is difficult to measure, so Fletcher and Munson averaged their results over many test subjects to derive reasonable averages. The lowest equal-loudness contour represents the quietest audible tone—the absolute threshold of hearing. The highest contour is the threshold of pain.</p>
+<p><img src="./Audible.jpg" alt=""></p>
+<p>In 1956 Robinson and Dadson produced a new experimental determination that they believed was more accurate. It became the basis for a standard (ISO 226) that was considered definitive until 2003 when ISO revised the standard on the basis of recent assessments by research groups worldwide.</p>
+<p><a href="./illusions/">Audial illusions</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Interaural_time_difference" target="_blank" rel="noreferrer">https://en.wikipedia.org/wiki/Interaural_time_difference</a></p>
+<youtube-embed video="Gc5eICzHkFU" />]]></content:encoded>
+            <enclosure url="https://chromatone.center/hearing.svg" length="0" type="image/svg"/>
         </item>
         <item>
             <title><![CDATA[Scales]]></title>
@@ -7321,28 +7321,6 @@ A picture from the 2009 non-fiction book Wednesday Is Indigo Blue. Note the numb
             <enclosure url="https://chromatone.center/Number_Form-synesthesia.jpg" length="0" type="image/jpg"/>
         </item>
         <item>
-            <title><![CDATA[Chromatic spectrum]]></title>
-            <link>https://chromatone.center/theory/interplay/spectrum/</link>
-            <guid>https://chromatone.center/theory/interplay/spectrum/</guid>
-            <pubDate>Tue, 24 Aug 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[The model in which musical octave meets color spectrum.]]></description>
-            <content:encoded><![CDATA[<p>Sonic and electromagnetic waves have very different mediums as a carrier field. Sound is carried by air molecules, light travels through vacuum just because of ever present electromagnetic field.</p>
-<p>But they're stil oscillations, so we an compare their frequencies and wavelenghts. But what to choose? Let's try both!</p>
-<h2 id="frequency" tabindex="-1">Frequency <a class="header-anchor" href="#frequency" aria-label="Permalink to &quot;Frequency&quot;"></a></h2>
-<p><img src="./acoustic-spectrum.svg" alt="svg"></p>
-<p>Let's start with frequencies. What is <strong>1 Hz</strong>? It's one oscillation per second. For EM it corresponds to radiation far in the <strong>long radio spectrum</strong>. We can't hear such slow air oscillations and 1 Hz is in <strong>infrasonic</strong> range.</p>
-<img src="./em-acoustic.svg" >
-<p>This juxtaposition shows that electromagnetic and acoustic oscillations are of entirely different nature and can’t be matched just as they are. Audible frequencies of oscillating air correspond to long radio range of EM spectrum. If compared by the wavelengths our notes are situated somewhere around the FM radio range. In turn the visible light oscillations are so fast, that they can be matched only with hypersonic waves in some rigid bodies.</p>
-<p>These oscillations are so short that they are comparable with the size of atoms in a crystal grid. The faster atoms move – the more heat they carry. A heated body starts to emit electromagnetic waves, starting from infrared and coming to the visible light range after about 1000K. So we can say, that sound and light are two main forms of oscillating energy propagation mechanics. And the similarities between them can be better justified not by their physical nature, but by the nature of human perception of them.</p>
-<h1 id="_40th-octave-imaginary-sound" tabindex="-1">40th octave imaginary sound <a class="header-anchor" href="#_40th-octave-imaginary-sound" aria-label="Permalink to &quot;40th octave imaginary sound&quot;"></a></h1>
-<p>Let take it mathematically. Acoustic oscillations frequency multiplies by to with every octave. This means we can find an imaginary pitch for any given frequency. This means we can find rythm notes and also it's another way to bring light and sound together.</p>
-<p>Let's keep multiplying our A = 440 Hz by two until we reach the visible light spectrum – about 0.4–1 PHz. We can calculate all the notes frequencies and place them in the spectrogram. What we get is that A is near orange red, C is green and E is blue. Roughly. But If we consider a little lower base A frequency, we can see pretty nice corellation.</p>
-<img src="./spectrum.svg" />
-<p>We can conclude that it's a fundamental property of our perception to close perceived parts of any spectrum into a seamless circle. And these circles are not just illusions as the resonances and periodicities are based on fundamental principles of physics.</p>
-<ColorSpectrum class="m-4" />]]></content:encoded>
-            <enclosure url="https://chromatone.center/spectrum.svg" length="0" type="image/svg"/>
-        </item>
-        <item>
             <title><![CDATA[Electromagnetic fields]]></title>
             <link>https://chromatone.center/theory/color/light/em-field/</link>
             <guid>https://chromatone.center/theory/color/light/em-field/</guid>
@@ -7386,6 +7364,28 @@ A picture from the 2009 non-fiction book Wednesday Is Indigo Blue. Note the numb
 <img src="./em-acoustic.svg" >
 <youtube-embed video="V_jYXQFjCmA" />]]></content:encoded>
             <enclosure url="https://chromatone.center/emwavepropagation.jpg" length="0" type="image/jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Chromatic spectrum]]></title>
+            <link>https://chromatone.center/theory/interplay/spectrum/</link>
+            <guid>https://chromatone.center/theory/interplay/spectrum/</guid>
+            <pubDate>Tue, 24 Aug 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[The model in which musical octave meets color spectrum.]]></description>
+            <content:encoded><![CDATA[<p>Sonic and electromagnetic waves have very different mediums as a carrier field. Sound is carried by air molecules, light travels through vacuum just because of ever present electromagnetic field.</p>
+<p>But they're stil oscillations, so we an compare their frequencies and wavelenghts. But what to choose? Let's try both!</p>
+<h2 id="frequency" tabindex="-1">Frequency <a class="header-anchor" href="#frequency" aria-label="Permalink to &quot;Frequency&quot;"></a></h2>
+<p><img src="./acoustic-spectrum.svg" alt="svg"></p>
+<p>Let's start with frequencies. What is <strong>1 Hz</strong>? It's one oscillation per second. For EM it corresponds to radiation far in the <strong>long radio spectrum</strong>. We can't hear such slow air oscillations and 1 Hz is in <strong>infrasonic</strong> range.</p>
+<img src="./em-acoustic.svg" >
+<p>This juxtaposition shows that electromagnetic and acoustic oscillations are of entirely different nature and can’t be matched just as they are. Audible frequencies of oscillating air correspond to long radio range of EM spectrum. If compared by the wavelengths our notes are situated somewhere around the FM radio range. In turn the visible light oscillations are so fast, that they can be matched only with hypersonic waves in some rigid bodies.</p>
+<p>These oscillations are so short that they are comparable with the size of atoms in a crystal grid. The faster atoms move – the more heat they carry. A heated body starts to emit electromagnetic waves, starting from infrared and coming to the visible light range after about 1000K. So we can say, that sound and light are two main forms of oscillating energy propagation mechanics. And the similarities between them can be better justified not by their physical nature, but by the nature of human perception of them.</p>
+<h1 id="_40th-octave-imaginary-sound" tabindex="-1">40th octave imaginary sound <a class="header-anchor" href="#_40th-octave-imaginary-sound" aria-label="Permalink to &quot;40th octave imaginary sound&quot;"></a></h1>
+<p>Let take it mathematically. Acoustic oscillations frequency multiplies by to with every octave. This means we can find an imaginary pitch for any given frequency. This means we can find rythm notes and also it's another way to bring light and sound together.</p>
+<p>Let's keep multiplying our A = 440 Hz by two until we reach the visible light spectrum – about 0.4–1 PHz. We can calculate all the notes frequencies and place them in the spectrogram. What we get is that A is near orange red, C is green and E is blue. Roughly. But If we consider a little lower base A frequency, we can see pretty nice corellation.</p>
+<img src="./spectrum.svg" />
+<p>We can conclude that it's a fundamental property of our perception to close perceived parts of any spectrum into a seamless circle. And these circles are not just illusions as the resonances and periodicities are based on fundamental principles of physics.</p>
+<ColorSpectrum class="m-4" />]]></content:encoded>
+            <enclosure url="https://chromatone.center/spectrum.svg" length="0" type="image/svg"/>
         </item>
         <item>
             <title><![CDATA[Sensory dissonance curve]]></title>
@@ -7715,22 +7715,6 @@ I. Xenakis</p>
             <enclosure url="https://chromatone.center/hooks_and_banners.png" length="0" type="image/png"/>
         </item>
         <item>
-            <title><![CDATA[Harmony]]></title>
-            <link>https://chromatone.center/theory/harmony/</link>
-            <guid>https://chromatone.center/theory/harmony/</guid>
-            <pubDate>Wed, 18 Aug 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[Chord progressions and accompaniment]]></description>
-            <content:encoded><![CDATA[<p>What is <a href="./study/">Harmony</a>?</p>
-<p>May two or more scales <a href="./polytonality/">Sound nice simultaneously</a>? Or how to <a href="./modulation/">Transition from one key to another</a>? Let's explore all the possible <a href="./movement/">Harmonic movements</a> in different frames like <a href="./chord-scale/">Chord-scale system</a> or the <a href="./non-chord/">Chord and nonchord tones approach</a></p>
-<h2 id="harmonic-rhythm" tabindex="-1">Harmonic rhythm <a class="header-anchor" href="#harmonic-rhythm" aria-label="Permalink to &quot;Harmonic rhythm&quot;"></a></h2>
-<p>In music theory, harmonic rhythm, also known as harmonic tempo, is the rate at which the chords change (or progress) in a musical composition, in relation to the rate of notes. Thus a passage in common time with a stream of sixteenth notes and chord changes every measure has a slow harmonic rhythm and a fast surface or &quot;musical&quot; rhythm (16 notes per chord change), while a piece with a trickle of half notes and chord changes twice a measure has a fast harmonic rhythm and a slow surface rhythm (1 note per chord change). Harmonic rhythm may be described as strong or weak.</p>
-<p>According to William Russo harmonic rhythm is, &quot;the duration of each different chord...in a succession of chords.&quot; According to Joseph Swain (2002 p. 4) harmonic rhythm, &quot;is simply that perception of rhythm that depends on changes in aspects of harmony.&quot; According to Walter Piston (1944), &quot;the rhythmic life contributed to music by means of the underlying changes of harmony. The pattern of the harmonic rhythm of a given piece of music, derived by noting the root changes as they occur, reveals important and distinctive features affecting the style and texture.&quot;</p>
-<p>Strong harmonic rhythm is characterized by strong root progressions and emphasis of root positions, weak contrapuntal bass motion, strong rhythmic placement in the measure (especially downbeat), and relatively longer duration.</p>
-<p>&quot;The 'fastness' or 'slowness' of harmonic rhythm is not absolute, but relative,&quot;[self-published source] and thus analysts compare the overall pace of harmonic rhythm from one piece to another, or the amount of variation of harmonic rhythm within a piece. For example, a key stylistic difference between Baroque music and Classical-period music is that the latter exhibits much more variety of harmonic rhythm, even though the harmony itself is less complex.</p>
-]]></content:encoded>
-            <enclosure url="https://chromatone.center/omar-flores.jpg" length="0" type="image/jpg"/>
-        </item>
-        <item>
             <title><![CDATA[Additive color models]]></title>
             <link>https://chromatone.center/theory/color/models/additive/</link>
             <guid>https://chromatone.center/theory/color/models/additive/</guid>
@@ -7747,6 +7731,22 @@ I. Xenakis</p>
 <p>Use of the three primary colors is not sufficient to reproduce all colors; only colors within the color triangle defined by the chromaticities of the primaries can be reproduced by additive mixing of non-negative amounts of those colors of light.</p>
 ]]></content:encoded>
             <enclosure url="https://chromatone.center/rgb.svg" length="0" type="image/svg"/>
+        </item>
+        <item>
+            <title><![CDATA[Harmony]]></title>
+            <link>https://chromatone.center/theory/harmony/</link>
+            <guid>https://chromatone.center/theory/harmony/</guid>
+            <pubDate>Wed, 18 Aug 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[Chord progressions and accompaniment]]></description>
+            <content:encoded><![CDATA[<p>What is <a href="./study/">Harmony</a>?</p>
+<p>May two or more scales <a href="./polytonality/">Sound nice simultaneously</a>? Or how to <a href="./modulation/">Transition from one key to another</a>? Let's explore all the possible <a href="./movement/">Harmonic movements</a> in different frames like <a href="./chord-scale/">Chord-scale system</a> or the <a href="./non-chord/">Chord and nonchord tones approach</a></p>
+<h2 id="harmonic-rhythm" tabindex="-1">Harmonic rhythm <a class="header-anchor" href="#harmonic-rhythm" aria-label="Permalink to &quot;Harmonic rhythm&quot;"></a></h2>
+<p>In music theory, harmonic rhythm, also known as harmonic tempo, is the rate at which the chords change (or progress) in a musical composition, in relation to the rate of notes. Thus a passage in common time with a stream of sixteenth notes and chord changes every measure has a slow harmonic rhythm and a fast surface or &quot;musical&quot; rhythm (16 notes per chord change), while a piece with a trickle of half notes and chord changes twice a measure has a fast harmonic rhythm and a slow surface rhythm (1 note per chord change). Harmonic rhythm may be described as strong or weak.</p>
+<p>According to William Russo harmonic rhythm is, &quot;the duration of each different chord...in a succession of chords.&quot; According to Joseph Swain (2002 p. 4) harmonic rhythm, &quot;is simply that perception of rhythm that depends on changes in aspects of harmony.&quot; According to Walter Piston (1944), &quot;the rhythmic life contributed to music by means of the underlying changes of harmony. The pattern of the harmonic rhythm of a given piece of music, derived by noting the root changes as they occur, reveals important and distinctive features affecting the style and texture.&quot;</p>
+<p>Strong harmonic rhythm is characterized by strong root progressions and emphasis of root positions, weak contrapuntal bass motion, strong rhythmic placement in the measure (especially downbeat), and relatively longer duration.</p>
+<p>&quot;The 'fastness' or 'slowness' of harmonic rhythm is not absolute, but relative,&quot;[self-published source] and thus analysts compare the overall pace of harmonic rhythm from one piece to another, or the amount of variation of harmonic rhythm within a piece. For example, a key stylistic difference between Baroque music and Classical-period music is that the latter exhibits much more variety of harmonic rhythm, even though the harmony itself is less complex.</p>
+]]></content:encoded>
+            <enclosure url="https://chromatone.center/omar-flores.jpg" length="0" type="image/jpg"/>
         </item>
         <item>
             <title><![CDATA[String overtones]]></title>
@@ -8019,16 +8019,6 @@ Three-dimensional representation of the 1943 Munsell renotations (with portion c
             <enclosure url="https://chromatone.center/tuning-circle.svg" length="0" type="image/svg"/>
         </item>
         <item>
-            <title><![CDATA[Melody]]></title>
-            <link>https://chromatone.center/theory/melody/</link>
-            <guid>https://chromatone.center/theory/melody/</guid>
-            <pubDate>Wed, 04 Aug 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[Combinations of pitch and rhythm]]></description>
-            <content:encoded><![CDATA[<p><a href="./study/">Melody</a> as a linear succession of tones brings <a href="./motion/">Motion</a> to music and it originates from <a href="./singing/">singing</a>. The basis for the singer is created with a <a href="./drone/">Drone</a> and the brightest colors of the voice are discovered through <a href="./articulation/">Articulation and ornamentation</a>.</p>
-]]></content:encoded>
-            <enclosure url="https://chromatone.center/ani-adigyozalyan.jpg" length="0" type="image/jpg"/>
-        </item>
-        <item>
             <title><![CDATA[MIDI Recorder]]></title>
             <link>https://chromatone.center/practice/midi/recorder/</link>
             <guid>https://chromatone.center/practice/midi/recorder/</guid>
@@ -8041,6 +8031,16 @@ Three-dimensional representation of the 1943 Munsell renotations (with portion c
 <p>This app is a draft to be iterated on. The idea is to make a tool to record some kind of visual midi sketches and store them as mid files and also directly in the browser.</p>
 ]]></content:encoded>
             <enclosure url="https://chromatone.center/cover.png" length="0" type="image/png"/>
+        </item>
+        <item>
+            <title><![CDATA[Melody]]></title>
+            <link>https://chromatone.center/theory/melody/</link>
+            <guid>https://chromatone.center/theory/melody/</guid>
+            <pubDate>Wed, 04 Aug 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[Combinations of pitch and rhythm]]></description>
+            <content:encoded><![CDATA[<p><a href="./study/">Melody</a> as a linear succession of tones brings <a href="./motion/">Motion</a> to music and it originates from <a href="./singing/">singing</a>. The basis for the singer is created with a <a href="./drone/">Drone</a> and the brightest colors of the voice are discovered through <a href="./articulation/">Articulation and ornamentation</a>.</p>
+]]></content:encoded>
+            <enclosure url="https://chromatone.center/ani-adigyozalyan.jpg" length="0" type="image/jpg"/>
         </item>
         <item>
             <title><![CDATA[Tabs]]></title>
@@ -8356,6 +8356,15 @@ Mill Stroke</p>
             <enclosure url="https://chromatone.center/profile.png" length="0" type="image/png"/>
         </item>
         <item>
+            <title><![CDATA[Palette with feedback]]></title>
+            <link>https://chromatone.center/practice/chroma/palette/feedback/</link>
+            <guid>https://chromatone.center/practice/chroma/palette/feedback/</guid>
+            <pubDate>Thu, 22 Apr 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[More interesting and chaotic shader setup]]></description>
+            <content:encoded><![CDATA[<ChromaPaletteFeedback class="h-screen" />]]></content:encoded>
+            <enclosure url="https://chromatone.center/feedback.png" length="0" type="image/png"/>
+        </item>
+        <item>
             <title><![CDATA[Palette]]></title>
             <link>https://chromatone.center/practice/chroma/palette/</link>
             <guid>https://chromatone.center/practice/chroma/palette/</guid>
@@ -8376,15 +8385,6 @@ Mill Stroke</p>
             <description><![CDATA[A MIDI reactive GLSL shader as a direct visual mathematical interpretation of musical notes]]></description>
             <content:encoded><![CDATA[<p>This page is moved to <a href="https://chromatone.center/practice/chroma/palette/" target="_blank" rel="noreferrer">https://chromatone.center/practice/chroma/palette/</a></p>
 ]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[Palette with feedback]]></title>
-            <link>https://chromatone.center/practice/chroma/palette/feedback/</link>
-            <guid>https://chromatone.center/practice/chroma/palette/feedback/</guid>
-            <pubDate>Thu, 22 Apr 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[More interesting and chaotic shader setup]]></description>
-            <content:encoded><![CDATA[<ChromaPaletteFeedback class="h-screen" />]]></content:encoded>
-            <enclosure url="https://chromatone.center/feedback.png" length="0" type="image/png"/>
         </item>
         <item>
             <title><![CDATA[Compass]]></title>
@@ -8463,6 +8463,15 @@ Mill Stroke</p>
             <enclosure url="https://chromatone.center/gen.jpg" length="0" type="image/jpg"/>
         </item>
         <item>
+            <title><![CDATA[Fretboard calculator]]></title>
+            <link>https://chromatone.center/practice/pitch/fretboard/</link>
+            <guid>https://chromatone.center/practice/pitch/fretboard/</guid>
+            <pubDate>Fri, 09 Apr 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[A tool to get distances between frets for any scale length of any string instrument]]></description>
+            <content:encoded><![CDATA[<FretboardTool :instruments="$frontmatter.instruments" /><save-svg svg="fretboard" />]]></content:encoded>
+            <enclosure url="https://chromatone.center/fretboard.svg" length="0" type="image/svg"/>
+        </item>
+        <item>
             <title><![CDATA[Sequencing]]></title>
             <link>https://chromatone.center/practice/sequencing/</link>
             <guid>https://chromatone.center/practice/sequencing/</guid>
@@ -8481,15 +8490,6 @@ Mill Stroke</p>
 <p><a href="./pendulums/">Pendulums</a> are fun. Game like <a href="./matter/">Matter simulation</a> is even more fun. But orderly <a href="./bounce/">Bouncers</a> are a bit more pleasant to listen to. For weird vibes go for <a href="./numbers/">Number sequences</a> and English words sonification.</p>
 ]]></content:encoded>
             <enclosure url="https://chromatone.center/anton-shuvalov.jpg" length="0" type="image/jpg"/>
-        </item>
-        <item>
-            <title><![CDATA[Fretboard calculator]]></title>
-            <link>https://chromatone.center/practice/pitch/fretboard/</link>
-            <guid>https://chromatone.center/practice/pitch/fretboard/</guid>
-            <pubDate>Fri, 09 Apr 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[A tool to get distances between frets for any scale length of any string instrument]]></description>
-            <content:encoded><![CDATA[<FretboardTool :instruments="$frontmatter.instruments" /><save-svg svg="fretboard" />]]></content:encoded>
-            <enclosure url="https://chromatone.center/fretboard.svg" length="0" type="image/svg"/>
         </item>
         <item>
             <title><![CDATA[Paper]]></title>
@@ -8527,6 +8527,14 @@ Mill Stroke</p>
             <enclosure url="https://chromatone.center/cover.png" length="0" type="image/png"/>
         </item>
         <item>
+            <title><![CDATA[Sound laboratory]]></title>
+            <link>https://chromatone.center/practice/experiments/lab/</link>
+            <guid>https://chromatone.center/practice/experiments/lab/</guid>
+            <pubDate>Thu, 25 Mar 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[An modular web app to explore sound synthesis and processing right in the browser]]></description>
+            <enclosure url="https://chromatone.center/lab.jpg" length="0" type="image/jpg"/>
+        </item>
+        <item>
             <title><![CDATA[Visuals]]></title>
             <link>https://chromatone.center/practice/visual/</link>
             <guid>https://chromatone.center/practice/visual/</guid>
@@ -8537,14 +8545,6 @@ Mill Stroke</p>
 <p><a href="./hydra/">Hydra synth</a> is just a minimalistic experiment to run Hydra - the JS tool to live code shader effects with quite simple syntax.  Minimal working prototype is here, now anyone can use it as a starter template for their own creations. What direction will this take at Chromatone - we'll see sometime soon.</p>
 ]]></content:encoded>
             <enclosure url="https://chromatone.center/cover.png" length="0" type="image/png"/>
-        </item>
-        <item>
-            <title><![CDATA[Sound laboratory]]></title>
-            <link>https://chromatone.center/practice/experiments/lab/</link>
-            <guid>https://chromatone.center/practice/experiments/lab/</guid>
-            <pubDate>Thu, 25 Mar 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[An modular web app to explore sound synthesis and processing right in the browser]]></description>
-            <enclosure url="https://chromatone.center/lab.jpg" length="0" type="image/jpg"/>
         </item>
         <item>
             <title><![CDATA[Computer notation]]></title>
@@ -8790,6 +8790,8 @@ P  I  I 0  1  2  3  4  5  6  7  8  9 10 11  0
 </ul>
 <youtube-embed video="Gn5yixqjmN8" /><h2 id="dsp" tabindex="-1">DSP <a class="header-anchor" href="#dsp" aria-label="Permalink to &quot;DSP&quot;"></a></h2>
 <p><a href="https://github.com/olilarkin/awesome-musicdsp" target="_blank" rel="noreferrer">https://github.com/olilarkin/awesome-musicdsp</a></p>
+<h2 id="delays" tabindex="-1">Delays <a class="header-anchor" href="#delays" aria-label="Permalink to &quot;Delays&quot;"></a></h2>
+<p><a href="https://youtu.be/HGqFxjQI3is" target="_blank" rel="noreferrer">https://youtu.be/HGqFxjQI3is</a></p>
 ]]></content:encoded>
             <enclosure url="https://chromatone.center/35-54d35.jpg" length="0" type="image/jpg"/>
         </item>
@@ -9221,6 +9223,16 @@ const HydraSynth = defineClientCo]]></description>
             <description><![CDATA[There's a plenty of opportunities to dive into different aspects of music theory and practice online]]></description>
             <content:encoded><![CDATA[<ToolsList v-if="data" :data="data" />]]></content:encoded>
             <enclosure url="https://chromatone.center/other.png" length="0" type="image/png"/>
+        </item>
+        <item>
+            <title><![CDATA[Spectral synthesis]]></title>
+            <link>https://chromatone.center/theory/synthesis/spectral/</link>
+            <guid>https://chromatone.center/theory/synthesis/spectral/</guid>
+            <pubDate>Sun, 26 Oct 2014 00:00:00 GMT</pubDate>
+            <description><![CDATA[How to synthesise any sound with sine waves]]></description>
+            <content:encoded><![CDATA[<p>Spectral modeling synthesis (SMS) is an acoustic modeling approach for speech and other signals. SMS considers sounds as a combination of harmonic content and noise content. Harmonic components are identified based on peaks in the frequency spectrum of the signal, normally as found by the short-time Fourier transform. The signal that remains following removal of the spectral components, sometimes referred to as the residual, is then modeled as white noise passed through a time-varying filter. The output of the model, then, are the frequencies and levels of the detected harmonic components and the coefficients of the time-varying filter.</p>
+<p>Intuitively, the model can be applied to many types of audio signals. Speech signals, for example, include slowly changing harmonic sounds caused by vibration of the vocal cords plus wideband, noise-like sounds caused by the lips and mouth. Musical instruments also produce sounds containing both harmonic components and percussive, noise-like sounds when the notes are struck or changed.</p>
+]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[Turkish rhythms]]></title>

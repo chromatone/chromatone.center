@@ -16,31 +16,24 @@ export function useElemSynth(count = 12) {
   const { controls, cv, groups } = useParams(params, 'ref');
   const { voiceRefs, cycleNote, stopAll, getVoiceParam } = useSynthVoices();
 
-  const tempo = useTempo();
+  watch(() => audio.initiated, async (inited) => {
+    if (!inited) return
+    await loadSamples()
+    layers.synth = {
+      volume: 1,
+      signal: createSynthSignal()
+    };
+  }, { immediate: true });
 
-  watchEffect(() => {
-    controls['fx:bpm'] = tempo.bpm;
-  });
+  const tempo = useTempo();
+  watch(() => tempo.bpm, (bpm) => controls['fx:bpm'] = bpm, { immediate: true });
 
   const { midi } = useMidi();
-
   watch(() => midi.note, n => {
     if (synthEnabled.value) {
       cycleNote(n.number, n.velocity);
     }
   });
-
-  watchEffect(async () => {
-    if (audio.initiated) {
-      await loadSamples()
-      layers.synth = {
-        volume: 1,
-        signal: createSynthSignal()
-      };
-      render('synth');
-    }
-  });
-
 
   function createSynthSignal() {
     const poly = el.scope(
@@ -54,29 +47,27 @@ export function useElemSynth(count = 12) {
           el.add(
             ...voiceRefs.map((_, i) => createVoice(i)))
         ))
-    );
+    )
 
     const signal = pingPong(poly);
 
-    // let rev = srvb({
-    //   key: 'srvb',
-    //   sampleRate: meters['main:sample-rate']?.max || 44100,
-    //   size: cv['reverb:size'],
-    //   decay: cv['reverb:decay'],
-    //   mod: cv['reverb:mod'],
-    //   mix: el.mul(cv['reverb:mix'], cv['reverb:on']),
-    // }, signal[0], signal[1])
+    let rev = srvb({
+      key: 'srvb',
+      sampleRate: meters['main:sample-rate']?.max || 44100,
+      size: cv['reverb:size'],
+      decay: cv['reverb:decay'],
+      mod: cv['reverb:mod'],
+      mix: el.mul(cv['reverb:mix'], cv['reverb:on']),
+    }, ...signal)
 
-    return signal
+    return rev
   }
-
 
   function createVoice(index) {
     const gate = getVoiceParam(index, 'gate')
     const midi = getVoiceParam(index, 'midi')
     const vel = getVoiceParam(index, 'vel')
     const velocity = el.div(vel, 127)
-
 
     const osc = createOscillator(gate, midi, velocity)
     const noise = createNoise(gate, midi, velocity)
@@ -111,10 +102,7 @@ export function useElemSynth(count = 12) {
     return el.mul(48, el.compress(10, 100, -48, 2, shaped, shaped))
   }
 
-
-
   function createOscillator(gate, midi, vel) {
-
     const squareOsc = el.blepsquare(midiFrequency(midi));
     const sawOsc = el.blepsaw(midiFrequency(midi));
 

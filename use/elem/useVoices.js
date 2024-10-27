@@ -2,9 +2,7 @@ import { reactive, watch, ref } from "vue";
 import { useElementary } from "./useElementary";
 import { el } from "@elemaudio/core";
 
-const VOICE_COUNT = 12;
-
-export function useSynthVoices() {
+export function useSynthVoices(VOICE_COUNT = 12) {
   const { audio } = useElementary();
 
   const voiceRefs = reactive(Array(VOICE_COUNT).fill(null).map(() => createVoice()));
@@ -59,13 +57,13 @@ function findNextAvailableVoice(voiceRefs, nextVoiceIndex) {
 
   do {
     if (voiceRefs[index].gate.value === 0) {
-      nextVoiceIndex.value = (index + 1) % VOICE_COUNT;
+      nextVoiceIndex.value = (index + 1) % voiceRefs.length;
       return index;
     }
-    index = (index + 1) % VOICE_COUNT;
+    index = (index + 1) % voiceRefs.length;
   } while (index !== startIndex);
 
-  nextVoiceIndex.value = (startIndex + 1) % VOICE_COUNT;
+  nextVoiceIndex.value = (startIndex + 1) % voiceRefs.length;
   return startIndex;
 }
 

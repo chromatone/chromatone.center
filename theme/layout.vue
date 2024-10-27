@@ -86,12 +86,13 @@ midi-notes(v-if="!params.pure && !params.nokeys")
       page-footer(v-if="!params.pure && !params.nofooter")
   template(v-else)
     main#content.w-full.relative.flex.flex-col
-      transition-group(name="fade")
+      transition(name="panel" mode="in-out")
         page-headline(
           v-if="f.layout != 'app'"
           :pageColor="pageColor", :lightColor="lightColor" :page="f" :cover="f.dynamic ? f?.cover || f?.poster || '' : page?.frontmatter?.cover")
 
           page-parents(:parents="f.dynamic ? parents : parents.slice(0, -1)")
+      transition(name="fade")
         .fixed.top-0.left-14.right-2.z-100.text-md.p-2.flex.gap-2.items-center.bg-light-200.bg-opacity-20.dark-bg-dark-200.dark-bg-opacity-10.backdrop-blur-lg.pt-2.pl-4.min-h-15.border-t-4.op-90.transition.rounded-xl(
           :style="{ borderColor: pageColor }"
           v-if="y > 100")

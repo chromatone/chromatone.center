@@ -41,7 +41,8 @@ Three beats to a bar, each divided by two, the top number being "3" (3/4, 3/8, 3
 
 In the time signature 3/4, each bar contains three quarter-note beats, and each of those beats divides into two eighth notes, making it a simple metre. More specifically, it is a simple triple metre because there are three beats in each measure; simple duple (two beats) or simple quadruple (four) are also common metres.
 
-Used for waltzes, minuets, scherzi, polonaises, mazurkas, country & western ballads, R&B, sometimes used in pop
+Used for waltzes, minuets, scherzi, polonaises, mazurkas, country & western ballads, R&B, sometimes used in pop. Is widely used in African music.
+
 
 ### 3/8
 

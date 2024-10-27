@@ -29,21 +29,32 @@ function go(url) {
 </script>
 
 <template lang="pug">
-a.header.no-underline.row(
+.header.row(
   :style="{ borderColor: color }"
-  :href="cleanLink(item.url)"
   :class="{ 'pt-30': item?.frontmatter?.cover }"
   )
-  .cover.bg-center(:style="{ backgroundImage: bg }")
-  .info.flex-1
+  .flex.gap-2.absolute.top-4.right-4.text-xl.z-100
+    button.op-50.hover-op-90.transition(
+      title="Open web-app in a popup window"
+      aria-label="Open web-app in a popup window"
+      v-if="['app', 'iframe'].includes(item.frontmatter?.layout)" 
+      @click.stop.prevent="go(item.url + '?pure=true')")
+      .i-la-external-link-square-alt
+    a.op-50.hover-op-90.transition(
+      title="Open as a standalone web-app"
+      aria-label="Open as a standalone web-ap"
+      v-if="item.frontmatter?.standalone"
+      target="_blank"
+      :href="item.frontmatter?.iframe")
+      .i-la-external-link-alt
+  a.cover.bg-center(:href="cleanLink(item.url)" :style="{ backgroundImage: bg }")
+
+  a.info.flex-1.no-underline(:href="cleanLink(item.url)")
     .flex.items-center.w-full
       .mt-0.flex.items-center.w-full
         span.text-xl.font-bold {{ item?.frontmatter?.title }}
         .flex-1
         span(v-if="children") {{ children.length }}
-        button.op-30.hover-op-90.transition.i-la-external-link-square-alt(
-          v-if="['app', 'iframe'].includes(item.frontmatter?.layout)"
-          @click.stop.prevent="go(item.url + '?pure=true')")
       .flex-1
       card-date(v-if="!item?.frontmatter?.product",:date="item.lastModified")
     .text-md.mt-4.mb-2.font-normal.w-full.flex-1(v-if="item?.frontmatter?.description") {{ item?.frontmatter?.description }}

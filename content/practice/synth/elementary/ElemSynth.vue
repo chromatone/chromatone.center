@@ -1,6 +1,6 @@
 <script setup>
 import { globalScale, pitchColor, useMidi } from '#/use';
-import { useElemSynth } from '#/use/elem/useElemSynth'
+import { useElemSynth } from './useElemSynth'
 import { onKeyDown } from "@vueuse/core";
 
 const { controls, groups, voiceRefs: voices, stopAll, cycleNote, synthEnabled, params } = useElemSynth()

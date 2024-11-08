@@ -1,5 +1,5 @@
 import { reactive, watch, ref } from "vue";
-import { useElementary } from "./useElementary";
+import { useElementary } from "#/use/elem/useElementary";
 import { el } from "@elemaudio/core";
 
 export function useSynthVoices(VOICE_COUNT = 12) {

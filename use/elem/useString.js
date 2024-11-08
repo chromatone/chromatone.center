@@ -1,8 +1,8 @@
 import { watch, reactive, computed } from 'vue';
 import { el } from '@elemaudio/core';
-import { useElementary } from './useElementary.js';
+import { useElementary, midiFrequency } from './useElementary.js';
 import { useParams } from './useParams.js';
-import { midiFrequency } from './nodes.js';
+
 
 
 const params = {

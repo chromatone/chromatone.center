@@ -17,7 +17,14 @@ links:
 
 
 <script setup>
+import { defineClientComponent } from 'vitepress'
+
+const ElemSynth = defineClientComponent(() => {
+  return import('./ElemSynth.vue')
+})
+
 import { meters, midiColor } from '#/use'
+
 </script>
 
 <client-only>

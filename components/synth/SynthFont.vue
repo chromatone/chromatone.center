@@ -4,7 +4,7 @@
 
 import { useSoundFont } from '#/use';
 
-const { getSoundfontNames, inst, cached, loaded, instrument, fontEnabled, active, volume } = useSoundFont()
+const { getSoundfontNames, inst, cached, loaded, instrument, synthEnabled, active, volume } = useSoundFont()
 
 const capitalize = s => s && s[0].toUpperCase() + s.slice(1)
 </script>
@@ -19,8 +19,8 @@ const capitalize = s => s && s[0].toUpperCase() + s.slice(1)
       ) {{ name.replaceAll('_', ' ') }}
 
   .flex.flex.gap-4.items-center.justify-start.p-2
-    button.flex.text-lg.transition.text-button.items-center.justify-center(@click="fontEnabled = !fontEnabled"
-      :class="{ 'active': fontEnabled }"
+    button.flex.text-lg.transition.text-button.items-center.justify-center(@click="synthEnabled = !synthEnabled"
+      :class="{ 'active': synthEnabled }"
       )
       .i-la-spinner.animate-pulse(v-if="!loaded")
       .i-la-power-off(v-else)

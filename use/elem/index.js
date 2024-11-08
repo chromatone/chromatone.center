@@ -1,7 +1,4 @@
 export * from "./useElementary.js"
 export * from "./useMic.js"
 export * from "./useParams.js"
-export * from "./useElemSynth.js"
-export * from "./useVoices.js"
-export * from "./nodes.js"
 export * from "./useString.js"

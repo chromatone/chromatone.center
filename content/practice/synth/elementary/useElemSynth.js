@@ -1,10 +1,10 @@
 import { ref, watchEffect, watch } from 'vue';
 import { el } from '@elemaudio/core';
 import { useMidi, useTempo } from '#/use';
-import { midiFrequency, srvb } from './nodes';
-import { useParams } from './useParams';
+import { srvb } from './srvb';
+import { useParams } from '#/use/elem/useParams';
 import { useSynthVoices } from './useVoices';
-import { useElementary, layers } from './useElementary';
+import { useElementary, layers, midiFrequency } from '#/use/elem/useElementary';
 
 import params from "./synthParams.json"
 import { useStorage } from '@vueuse/core';

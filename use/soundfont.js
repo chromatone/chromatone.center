@@ -12,7 +12,7 @@ const cached = reactive([])
 const loaded = ref(false)
 const active = ref(false)
 const volume = useClamp(useStorage('sound-font-volume', 1), 0, 1)
-const fontEnabled = useStorage('sound-font-enabled', true)
+export const synthEnabled = useStorage('sound-font-enabled', true)
 
 export function useSoundFont() {
 
@@ -39,7 +39,7 @@ export function useSoundFont() {
   watch(volume, v => inst.value.output.setVolume(v * 127), { immediate: true })
 
   watch(() => midi.note, note => {
-    if (!loaded.value || !fontEnabled.value) return
+    if (!loaded.value || !synthEnabled.value) return
     if (note.type == "noteon") {
       inst.value.start({ note: note.number, velocity: note.velocity });
       active.value = true
@@ -56,7 +56,7 @@ export function useSoundFont() {
     cached,
     loaded,
     instrument,
-    fontEnabled,
+    synthEnabled,
     volume
   }
 }

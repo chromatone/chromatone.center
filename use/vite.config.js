@@ -34,7 +34,7 @@ export default defineConfig({
     },
     chunkSizeWarningLimit: 100000,
     rollupOptions: {
-      external: ['vue', '@elemaudio/core', '@elemaudio/web-renderer', 'tone', 'webmidi'],
+      external: ['vue', '@elemaudio/core', '@elemaudio/web-renderer', 'tone', 'webmidi', 'tonal', 'meyda'],
     },
   },
 })

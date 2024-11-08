@@ -4,13 +4,15 @@
 import { useStorage } from '@vueuse/core';
 import { useClamp } from '@vueuse/math';
 import { reactive, computed, watchEffect, onMounted, ref, watch, shallowReactive } from 'vue';
-import { WebMidi, Note } from "webmidi";
+import { WebMidi, Note, Utilities } from "webmidi";
 import { setupKeyboard } from './keyboard';
 import Ola from "ola";
 import { Chord, Midi } from 'tonal';
 
 const MIDI_CHANNEL_STORAGE_KEY = "global-midi-channel";
 const MIDI_FILTER_STORAGE_KEY = "global-midi-filter";
+
+export { Utilities, Note }
 
 export const midi = reactive({
   enabled: false,
@@ -113,6 +115,7 @@ export function playKey(noteName = 'A4', attack = 0, duration = 1, midiOut = tru
 
 export function useMidi() {
   if (!midi.initiated) {
+    midi.initiated = true;
     onMounted(() => {
       setupKeyboard();
       setupMidi();
@@ -123,7 +126,6 @@ export function useMidi() {
       Object.values(WebMidi.outputs).forEach(output => output[action]());
     });
     midi.stopped = false;
-    midi.initiated = true;
   }
   return {
     log,

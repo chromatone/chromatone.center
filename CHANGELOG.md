@@ -1,3 +1,27 @@
+## v2.9.7 (2024-11-08)
+
+### New feature:
+
+- moved elemsynth to the folder to then move to an external repo too([`13f628a`](https://github.com/chromatone/chromatone.center/commit/13f628a2e2d80e61c3e015b13bad773f7d034925)) (by davay)
+- Drone web-app now has it's own repo and PWA!([`f66bbb0`](https://github.com/chromatone/chromatone.center/commit/f66bbb05fc82a3215f9e86b1e6fa6db19eb9c13c)) (by davay)
+- SRVB reveerb added back to quite buggy elem synth...([`6ba2e58`](https://github.com/chromatone/chromatone.center/commit/6ba2e58ef2860709bf17ee3760ee7f004467d5bb)) (by davay)
+- standalone webapp links to the iframe content([`1f109ba`](https://github.com/chromatone/chromatone.center/commit/1f109ba1e03d86835e233d3924f4c27f4ff7f4af)) (by davay)
+- spectral syntesis research started([`6668c94`](https://github.com/chromatone/chromatone.center/commit/6668c9496703847eef0a866099361a1b6ced8209)) (by davay)
+- Spectrogram moves to a separate repo and it's own subdomain. iframes power!([`53a787d`](https://github.com/chromatone/chromatone.center/commit/53a787d797f9106b2a6b0e5d51ce5130b99d1606)) (by davay)
+- record live spectrogram image([`cf95390`](https://github.com/chromatone/chromatone.center/commit/cf95390882eb8cbdfee2c24f2d426d3b573ed48e)) (by davay)
+- spectrogram updated([`7d91557`](https://github.com/chromatone/chromatone.center/commit/7d91557ef53889f3d26f80109044ada55f75021f)) (by davay)
+
+## v2.9.6 (2024-10-17)
+
+### New feature:
+
+- fully polished useParams() or Elementary refs([`a25f858`](https://github.com/chromatone/chromatone.center/commit/a25f85821e688bb0556b690b7c75f710a4c56674)) (by davay)
+- new Elementary playground and better useParams([`31ee339`](https://github.com/chromatone/chromatone.center/commit/31ee3392f6ad4065376801ff1c5b08ea1ddb959d)) (by davay)
+
+### Bugs fixed:
+
+- better balkan rhythms([`ba8d20c`](https://github.com/chromatone/chromatone.center/commit/ba8d20c7fea8740a905fce4683722faddb5e6007)) (by davay)
+
 ## v2.9.5 (2024-10-15)
 
 ### New feature:

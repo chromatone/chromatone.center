@@ -34,15 +34,7 @@ export default defineConfig({
     },
     chunkSizeWarningLimit: 100000,
     rollupOptions: {
-      external: ['vue'],
-      output: {
-        manualChunks: {
-          tone: ['tone', '@tonejs/midi'],
-          webmidi: ['webmidi'],
-          tonal: ['tonal'],
-          elementary: ['@elemaudio/web-renderer', '@elemaudio/core']
-        },
-      },
+      external: ['vue', '@elemaudio/core', '@elemaudio/web-renderer', 'tone', 'webmidi'],
     },
   },
 })

@@ -1,7 +1,7 @@
 {
 	"name": "use-chromatone",
 	"description": "Visual music language theory and practice toolbox",
-	"version": "2.9.6",
+	"version": "2.9.7",
 	"homepage": "https://chromatone.center",
 	"repository": {
 		"type": "git",

@@ -272,18 +272,20 @@ function handlePitchBend(input) {
 
 function handleMonoAftertouch(input) {
   return ev => {
-    createMidiChannel(ev.channel)
-    midi.monoAftertouch[ev.channel] = ev.value;
-    channels[ev.channel].monoAftertouch = ev.value;
+    let ch = ev.channel || 0
+    createMidiChannel(ch)
+    midi.monoAftertouch[ch] = ev.value;
+    channels[ch].monoAftertouch = ev.value;
   };
 }
 
 function handlePolyAftertouch(input) {
   return ev => {
-    createMidiChannel(ev.channel)
-    if (!midi.polyAftertouch[ev.channel]) midi.polyAftertouch[ev.channel] = {};
-    midi.polyAftertouch[ev.channel][ev.note.number] = ev.value;
-    channels[ev.channel].polyAftertouch[ev.note.number] = ev.value;
+    let ch = ev.channel || 0
+    createMidiChannel(ch)
+    if (!midi.polyAftertouch[ch]) midi.polyAftertouch[ch] = {};
+    midi.polyAftertouch[ch][ev.note.number] = ev.value;
+    channels[ch].polyAftertouch[ev.note.number] = ev.value;
   };
 }
 

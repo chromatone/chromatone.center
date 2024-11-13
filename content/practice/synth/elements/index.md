@@ -15,12 +15,5 @@ links:
   - https://www.nickwritesablog.com/drum-synthesis-in-javascript/
   - https://github.com/elemaudio/web-examples/blob/master/planets/app.js
   - https://github.com/teetow/elementary_grid/blob/master/src/lib/useSynth.tsx
-hidden: true
-head:
-- - meta
-  - http-equiv: refresh
-    content: "0; url=/practice/synth/elements/"
 ---
 
-
-This page is moved to https://chromatone.center/practice/synth/elements/

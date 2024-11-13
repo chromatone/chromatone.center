@@ -1,6 +1,6 @@
 ---
-title: Elementary synth
-description: MIDI enabled synthesizer built with Elementary audio library
+title: Elements synth
+description: Performant multilayered polyphonic web-synth
 date: 2024-06-23
 cover: lockup.svg
 layout: iframe

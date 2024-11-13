@@ -111,12 +111,12 @@
     - 4
   Bars: "31"
   chords:
-    - - Ebmmaj7
-      - Ebmmaj7
+    - - EbmMaj7
+      - EbmMaj7
       - Ebm6
       - Ebm6 Bb7alt
-    - - Ebmmaj7
-      - Ebmmaj7
+    - - EbmMaj7
+      - EbmMaj7
       - Ab7
       - Ab7
     - - Fm7
@@ -126,12 +126,12 @@
     - - Gm7b5 C7b9
       - Fm7b5
       - Bb7b9 Bb7alt
-      - Ebmmaj7
-    - - Ebmmaj7
+      - EbmMaj7
+    - - EbmMaj7
       - Ebm6
       - Ebm6 Bb7alt
-      - Ebmmaj7
-    - - Ebmmaj7
+      - EbmMaj7
+    - - EbmMaj7
       - Ab7
       - Ab7
       - Fm7
@@ -1522,7 +1522,7 @@
       - Cm7 F7
       - Cm7 F7
       - Bb6 Bb6 Em7b5 A7
-    - - Dm7 Dm7 Dmmaj7 Dm7
+    - - Dm7 Dm7 DmMaj7 Dm7
       - Em7b5 A7#5
       - Dm7
       - Em7 A7
@@ -1881,21 +1881,21 @@
     - 4
   Bars: "32"
   chords:
-    - - Dmmaj7
+    - - DmMaj7
       - Bbm7 Bbm7 A7#5#9 Eb7
-      - Dmmaj7
+      - DmMaj7
       - Cm7 Cm7 Bm7b5 E7
     - - Bbm7 Eb7#11
       - Bbm7 Eb7#11
-      - Dmmaj7 Db7#11
+      - DmMaj7 Db7#11
       - Em7b5 A7
-    - - Dmmaj7
+    - - DmMaj7
       - Bbm7 Bbm7 A7#5#9 Eb7
-      - Dmmaj7
+      - DmMaj7
       - Cm7 Cm7 Bm7b5 E7
     - - Bbm7 Eb7#11
       - Bbm7 Eb7#11
-      - Dmmaj7 Db7#11
+      - DmMaj7 Db7#11
       - Em7b5 A7
     - - Bbm7 Eb7#11
       - Bbm7 Eb7#11
@@ -1904,15 +1904,15 @@
     - - Bb7#11 A7#5
       - Ab7#11 Gm7
       - Em7b5 A7#5#9
-      - Bbmmaj7 Eb7#11
-    - - Dmmaj7
+      - BbmMaj7 Eb7#11
+    - - DmMaj7
       - Bbm7 Bbm7 A7#5#9 Eb7
-      - Dmmaj7
+      - DmMaj7
       - Cm7 Cm7 Bm7b5 E7
     - - Bbm7 Eb7#11
       - Bbm7 Eb7#11
-      - Dmmaj7 Db7#11
-      - Dmmaj7
+      - DmMaj7 Db7#11
+      - DmMaj7
 - filename: Dansero
   Title: Dansero
   ComposedBy: Richard Hayman, Lee Daniels, and S. Parker
@@ -2258,11 +2258,11 @@
   Bars: "28"
   chords:
     - - Gm
-      - Gmmaj7
+      - GmMaj7
       - Gm7
       - Gm6
     - - Gm
-      - Gmmaj7
+      - GmMaj7
       - Gm7
       - Gm6
     - - C7#9
@@ -2270,7 +2270,7 @@
       - C7#9
       - C7#9
     - - Gm
-      - Gmmaj7
+      - GmMaj7
       - Gm7
       - Gm6
     - - D7#9
@@ -2278,11 +2278,11 @@
       - C7#9
       - C7#9
     - - Gm
-      - Gmmaj7
+      - GmMaj7
       - Gm7
       - Gm6
     - - Gm
-      - Gmmaj7
+      - GmMaj7
       - Gm7
       - Gm6
 - filename: MoonlightInVermont
@@ -2372,11 +2372,11 @@
     - 4
   Bars: "16"
   chords:
-    - - Fmmaj9
+    - - FmMaj9
       - Dm7b5
       - Gm9b5
       - C13b9
-    - - Fmmaj9
+    - - FmMaj9
       - Dm7b5
       - Cm9b5
       - F13b9
@@ -2668,8 +2668,8 @@
       - Dm69
     - - A7#9
       - A7#9
-      - Dmmaj7
-      - Dmmaj7
+      - DmMaj7
+      - DmMaj7
     - - Fmaj7
       - Ebmaj7
       - Emaj7
@@ -4860,7 +4860,7 @@
       - Bbm7 Eb7
       - Bbm7 Eb7
     - - Abmaj7 Ab6
-      - Abmmaj7 Abm6
+      - AbmMaj7 Abm6
       - Gm7 C7
       - Fm7 Bb7
     - - Eb6
@@ -4870,16 +4870,16 @@
     - - Bbm7 Eb7
       - Bbm7 Eb7
       - Abmaj7 Ab6
-      - Abmmaj7 Abm6
+      - AbmMaj7 Abm6
     - - Gm7 C7
       - Fm7 Bb7
       - Eb6 Ab
       - Eb6 Eb6 Ab7 G7
-    - - Cm Cmmaj7
+    - - Cm CmMaj7
       - Cm7 Cm6
       - Gm7
       - Dm7b5 G7b9
-    - - Cm Cmmaj7
+    - - Cm CmMaj7
       - Cm7 Cm6
       - Gm7 C7
       - Fm7b5 Bb7
@@ -4888,7 +4888,7 @@
       - Bbm7 Eb7
       - Bbm7 Eb7
     - - Abmaj7 Ab6
-      - Abmmaj7 Abm6
+      - AbmMaj7 Abm6
       - Gm7 C7
       - Fm7 Bb7
     - - Eb6
@@ -9225,7 +9225,7 @@
       - Dmaj7
       - A9sus4
     - - G#m7b5
-      - Gmmaj7
+      - GmMaj7
       - F#m7 F#m7 Bm7
       - Em7 Em7 A7
     - - Dmaj7
@@ -10808,19 +10808,19 @@
     - 4
   Bars: "40"
   chords:
-    - - Gmmaj7
-      - Gmmaj7
+    - - GmMaj7
+      - GmMaj7
       - Cm6
       - Cm6
-    - - Cmmaj7
+    - - CmMaj7
       - Eb7 Eb7 A7 D7
       - Gm6
       - Gm6
-    - - Gmmaj7
-      - Gmmaj7
+    - - GmMaj7
+      - GmMaj7
       - Cm6
       - Cm6
-    - - Cmmaj7
+    - - CmMaj7
       - Eb7 Eb7 A7 D7
       - Gm6
       - Gm6 F7
@@ -10840,11 +10840,11 @@
       - Eb7 Bbm7
       - F7
       - F7
-    - - Gmmaj7
-      - Gmmaj7
+    - - GmMaj7
+      - GmMaj7
       - Cm6
       - Cm6
-    - - Cmmaj7
+    - - CmMaj7
       - Eb7 Eb7 A7 D7
       - Gm6
       - D7alt
@@ -11572,7 +11572,7 @@
       - Gm7 C7
     - - Cm7
       - F7b9
-      - Bbmmaj7
+      - BbmMaj7
       - Eb7
     - - Abmaj7
       - Dm7b5 G7b9
@@ -11584,7 +11584,7 @@
       - Fm7/Bb Bb7
     - - Ebmaj7
       - Am7 D7
-      - Gm7 Gmmaj7
+      - Gm7 GmMaj7
       - C7
     - - Cm7 Gb7#11
       - F7 Ebm6/F
@@ -12596,7 +12596,7 @@
       - Ebm6
       - Bbmaj7
       - Bbmaj7
-    - - Gm Gmmaj7
+    - - Gm GmMaj7
       - Gm7 C7
       - F7
       - F7
@@ -14241,7 +14241,7 @@
     - - Gmaj7 Em7
       - Am7 D7
       - F7 E7
-      - A7 A7 Cmmaj7 Cm6
+      - A7 A7 CmMaj7 Cm6
     - - Bm7 E7
       - Am7 D7b9
       - Gmaj7 Bb7
@@ -14415,11 +14415,11 @@
       - Fm7 Bb7
       - Fm7 Bb7
       - Eb6 Eb6 Am7b5 D7b9
-    - - Gm Gmmaj7
+    - - Gm GmMaj7
       - Gm7 Gm6
       - Cm7 Cm7/Bb
       - Am7 D7
-    - - Gm7 Gmmaj7
+    - - Gm7 GmMaj7
       - Gm7 Gm6
       - Cm7 F7
       - Fm7 Bb7
@@ -15632,7 +15632,7 @@
       - Am7
       - D7
     - - Dm7 Dm7 Dm7 Dbm7
-      - Cmmaj7
+      - CmMaj7
       - Bm7b5
       - E7alt
     - - Am7
@@ -16277,17 +16277,17 @@
     - 4
   Bars: "34"
   chords:
-    - - Bbm Bbmmaj7
+    - - Bbm BbmMaj7
       - Bbm7 Bbm6
-      - Bbm Bbm Bbmmaj7 F#m7
+      - Bbm Bbm BbmMaj7 F#m7
       - Fm7 Bb13
     - - Ebm
       - Ebm
       - C7#9 F7#9
       - Bbm F7alt
-    - - Bbm Bbmmaj7
+    - - Bbm BbmMaj7
       - Bbm7 Bbm6
-      - Bbm Bbm Bbmmaj7 F#m7
+      - Bbm Bbm BbmMaj7 F#m7
       - Fm7 Bb13
     - - Ebm
       - Ebm
@@ -16296,21 +16296,21 @@
     - - Cm7b5 F7
       - Bbm
       - Cm7b5 F7
-      - Bbm Bbmmaj7
+      - Bbm BbmMaj7
     - - Ebm7b5 Ab7
-      - Dbmmaj7
+      - DbmMaj7
       - Eb7b5
       - C7#9 F7alt
-    - - Bbm Bbmmaj7
+    - - Bbm BbmMaj7
       - Bbm7 Bbm6
-      - Bbm Bbm Bbmmaj7 F#m7
+      - Bbm Bbm BbmMaj7 F#m7
       - Fm7 Bb13
     - - Ebm
       - Ebm
       - C7#9 F7#9
       - Bbm
     - - C7#9 F7#9
-      - Bbmmaj7
+      - BbmMaj7
 - filename: BritePiece
   Title: Brite Piece
   ComposedBy: Dave Liebman
@@ -16532,13 +16532,13 @@
       - D9
       - Am7
       - D9
-    - - Am7 Ammaj7
+    - - Am7 AmMaj7
       - D9sus4 D9
-      - Am7 Ammaj7
+      - Am7 AmMaj7
       - D9sus4 D9
-    - - Am7 Ammaj7
+    - - Am7 AmMaj7
       - D9sus4 D9
-      - Am7 Ammaj7
+      - Am7 AmMaj7
       - Am7 Am6
 - filename: VeryEarly
   Title: Very Early
@@ -17647,7 +17647,7 @@
       - Dm Gm7
       - Cm7 F7b9
       - Bbmaj7 D7
-    - - Gm Gmmaj7
+    - - Gm GmMaj7
       - Gm7 Gm6
       - Cm7 F7b9
       - Bbmaj7 Bb7
@@ -17663,7 +17663,7 @@
       - Dm Gm7
       - Cm7 F7b9
       - Bbmaj7 D7
-    - - Gm Gmmaj7
+    - - Gm GmMaj7
       - Gm7 Gm6
       - Cm7 F7b9
       - Bbmaj7 Bb7
@@ -18525,8 +18525,8 @@
       - B7 Bb7+
       - Eb13
       - Eo7 C7b9
-    - - Fmmaj7 Fmmaj7 Fm7 Bb7
-      - Fmmaj7 Fmmaj7 Fm7 Bb7
+    - - FmMaj7 FmMaj7 Fm7 Bb7
+      - FmMaj7 FmMaj7 Fm7 Bb7
       - Bb7
       - Bb7
     - - Gb7+
@@ -19045,7 +19045,7 @@
   Bars: "24"
   chords:
     - - Gm
-      - Gmmaj7
+      - GmMaj7
       - Gm7
       - Gm6
     - - Fm7 Bb7
@@ -19061,7 +19061,7 @@
       - Fm7 Bb7
       - Ebm7 Ab7
     - - Gm
-      - Gmmaj7
+      - GmMaj7
       - Gm7
       - Gm6
     - - Fm7 Bb7
@@ -19872,7 +19872,7 @@
       - F
       - F
     - - Cm
-      - Cmmaj7
+      - CmMaj7
       - Cm7
       - F7
     - - Bb
@@ -22591,7 +22591,7 @@
       - Em7b5 A7#5b9
       - Dm7
       - G13
-    - - Cm Cmmaj7
+    - - Cm CmMaj7
       - Ab13 G13
       - C9
       - Cm9 F13
@@ -24610,7 +24610,7 @@
       - Bm E7
       - Abmaj7
       - DbMb5
-    - - Gmmaj7
+    - - GmMaj7
       - C7sus4 C7#9
       - F#m
       - B7sus4
@@ -25020,7 +25020,7 @@
     - - Abm7b5 Abm7b5 Abm7b5 Db7b9
       - Db7b9 E#m7b5
       - E#m7b5 Am7 Am7 Am7
-      - Cmmaj7 Cmmaj7 Cmmaj7 Ebo7
+      - CmMaj7 CmMaj7 CmMaj7 Ebo7
     - - Ebo7 Em7
       - Em7 Gm7 Gm7 Gm7
       - Bbm6 Bbm6 Bbm6 Dbm7b5
@@ -25463,7 +25463,7 @@
     - 4
   Bars: "32"
   chords:
-    - - Gm Gmmaj7
+    - - Gm GmMaj7
       - Gm7 Gm6
       - Eb7 D7
       - Gm
@@ -25471,7 +25471,7 @@
       - C7b5
       - F7sus
       - Gm D7+
-    - - Gm Gmmaj7
+    - - Gm GmMaj7
       - Gm7 Gm6
       - Eb7 D7
       - Gm
@@ -25487,7 +25487,7 @@
       - C7
       - F7
       - D7+
-    - - Gm Gmmaj7
+    - - Gm GmMaj7
       - Gm7 Gm6
       - Eb7 D7
       - Gm
@@ -25634,7 +25634,7 @@
       - Dm7
       - G7
     - - Dm
-      - Dmmaj7
+      - DmMaj7
       - Dm7
       - G7
     - - Em7
@@ -26415,7 +26415,7 @@
       - Dm7/G
     - - Cmaj7 Cmaj7 Bo7 C6
       - C6 Cmaj7 Am7 Abo7
-      - Gm Gmmaj7
+      - Gm GmMaj7
       - C7sus4 C9
     - - G11 G11 Bo7 Am7
       - Am7
@@ -28542,12 +28542,12 @@
     - - Bb Bb9
       - Eb Eb+ Ebmaj7 Eb6
       - Dm7b5 G9sus4
-      - Cmmaj7 F9sus4
+      - CmMaj7 F9sus4
     - - Bb
       - C7
       - Am7b5
       - D7b9#11 D7 D13 D13
-    - - Gmmaj7 Gm7
+    - - GmMaj7 Gm7
       - C9 C13
       - Fmaj7
       - Fmaj7 Fmaj7 Bb F
@@ -28558,12 +28558,12 @@
     - - Bb Bb9
       - Eb Eb+ Ebmaj7 Eb6
       - Dm7b5 G9sus4
-      - Cmmaj7 F9sus4
+      - CmMaj7 F9sus4
     - - Bb
       - C7
       - Am7b5
       - D7b9#11 D7 D13 D13
-    - - Gmmaj7 Gm7
+    - - GmMaj7 Gm7
       - C9
       - E/F Fmaj7
       - F9sus4
@@ -29072,7 +29072,7 @@
       - Fm7 Bb7
       - Ebmaj7
       - Am7b5 D7alt
-    - - Gm7 Gmmaj7
+    - - Gm7 GmMaj7
       - Gm7 C7
       - Cm7 G7+
       - Cm7 F7
@@ -29295,7 +29295,7 @@
       - Ab7
       - Eb7
       - Eb7 G7
-    - - Cm7 Cmmaj7
+    - - Cm7 CmMaj7
       - Cm7 F7
       - Fm7 Fm7 Fm7 Fm7 Fm7 Fm7 B7 Bb7
       - NCx3 Eb13
@@ -29570,7 +29570,7 @@
       - Bb7 A7#5 Dm11 Dm11
     - - Am7 D7
       - Am7 D7
-      - Gm Gmmaj7
+      - Gm GmMaj7
       - Gm
     - - Bm7 E7
       - Bm7 E7
@@ -29765,7 +29765,7 @@
       - Gm7
       - F/A
       - Bbmaj7
-    - - Gm Gmmaj7
+    - - Gm GmMaj7
       - Gm7 C7
       - Gb7#11
       - F7
@@ -30139,7 +30139,7 @@
     - - Cm
       - Cm
       - Cm Cm6
-      - Cmmaj7 Cm7
+      - CmMaj7 Cm7
     - - Cm
       - Cm
       - Dm7b5
@@ -30153,7 +30153,7 @@
       - Cm
       - Cm
     - - Cm Cm6
-      - Cmmaj7 Cm7
+      - CmMaj7 Cm7
       - G7
       - Ab7
     - - D7/A
@@ -30177,7 +30177,7 @@
       - Cm
       - Cm
     - - Cm Cm6
-      - Cmmaj7 Cm7
+      - CmMaj7 Cm7
       - Cm
       - Cm
     - - Dm7b5
@@ -30846,7 +30846,7 @@
       - A7sus4 A7
     - - F
       - F F E7+ E7
-      - Am Ammaj7
+      - Am AmMaj7
       - Am7 Am6
     - - E
       - Fm7 B7
@@ -31195,7 +31195,7 @@
       - Dm7 G7
       - Cmaj7
     - - Bm7b5 E7b9
-      - Am Ammaj7
+      - Am AmMaj7
       - Am7 D7
       - Dm7 G7
     - - Dm7 G7
@@ -31869,7 +31869,7 @@
   Bars: "72"
   chords:
     - - Cm
-      - Cmmaj7
+      - CmMaj7
       - Cm7
       - Cm6
     - - Cm
@@ -31885,7 +31885,7 @@
       - Dm7b5
       - G7
     - - Cm
-      - Cmmaj7
+      - CmMaj7
       - Cm7
       - Cm6
     - - Cm
@@ -31917,7 +31917,7 @@
       - Eb
       - Dm7b5 G7
     - - Cm
-      - Cmmaj7
+      - CmMaj7
       - Cm7
       - Cm6
     - - Cm
@@ -32605,7 +32605,7 @@
       - Dmaj7
     - - Am7b5
       - D7b9
-      - Gm Gmmaj7
+      - Gm GmMaj7
       - Gm7 Gm6
     - - Gm7b5
       - C7b9
@@ -32796,8 +32796,8 @@
       - Abm7
       - Gbm7
       - Gbm7
-    - - Ebmmaj7
-      - Ebmmaj7
+    - - EbmMaj7
+      - EbmMaj7
       - Bmaj7
       - Bmaj7
     - - Fm7/Bb
@@ -32820,8 +32820,8 @@
       - Abm7
       - Gbm7
       - Gbm7
-    - - Ebmmaj7
-      - Ebmmaj7
+    - - EbmMaj7
+      - EbmMaj7
       - Bmaj7
       - Bmaj7
 - filename: AllIEverWanted
@@ -33684,7 +33684,7 @@
   chords:
     - - Cm Ab/C
       - Cm6 Cm7
-      - Cmmaj7 Cm7
+      - CmMaj7 Cm7
       - Cm6 Ab/C
     - - Cm6 Cm/Bb
       - Ao7 Ab7
@@ -34237,11 +34237,11 @@
   chords:
     - - Dm7b5
       - G7b9
-      - Cmmaj7
+      - CmMaj7
       - Am7b5
     - - Dm7b5
       - G7b9
-      - Cmmaj7
+      - CmMaj7
       - F7
     - - Fm7
       - Bm7 E7
@@ -34253,11 +34253,11 @@
       - Abmaj7
     - - Dm7b5
       - G7b9
-      - Cmmaj7
+      - CmMaj7
       - Am7b5
     - - Dm7b5
       - G7b9
-      - Cmmaj7
+      - CmMaj7
       - F7
     - - Fm7
       - Bm7 E7
@@ -34285,11 +34285,11 @@
       - Ebm7 Ab7
     - - Dm7b5
       - G7b9
-      - Cmmaj7
+      - CmMaj7
       - Am7b5
     - - Dm7b5
       - G7b9
-      - Cmmaj7
+      - CmMaj7
       - F7
     - - Fm7
       - Bm7 E7
@@ -35896,7 +35896,7 @@
       - Dbmaj7
       - Bbmaj7
       - Bbmaj7
-    - - Gm Gmmaj7
+    - - Gm GmMaj7
       - Gm7 C7
       - Cm7
       - F7
@@ -36255,16 +36255,16 @@
   chords:
     - - Gm7b5
       - C7#11
-      - Fmmaj7
-      - Fmmaj7
+      - FmMaj7
+      - FmMaj7
     - - Dm7b5
       - G7
       - Cmaj7
       - Cmaj7
     - - Gm7b5
       - C7#11
-      - Fmmaj7
-      - Fmmaj7
+      - FmMaj7
+      - FmMaj7
     - - Dm7b5
       - G7
       - Cmaj7
@@ -36279,8 +36279,8 @@
       - G13b9#11
     - - Gm7b5
       - C7#11
-      - Fmmaj7
-      - Fmmaj7
+      - FmMaj7
+      - FmMaj7
     - - Dm7b5
       - G7
       - Cmaj7
@@ -36739,7 +36739,7 @@
       - Em7b5 A7b9
       - Dm7 Dm7/C
       - Bm7b5 E7
-    - - Am Ammaj7
+    - - Am AmMaj7
       - Am7 D7
       - Dm11 G7
       - Gm7 C9
@@ -36831,7 +36831,7 @@
       - Fm
     - - Fm Db7
       - Db7 C7
-      - Fmmaj7 Fmmaj7 Fmmaj7 C7b5#9
+      - FmMaj7 FmMaj7 FmMaj7 C7b5#9
       - C7b5#9
     - - Fm
       - Bbm6 C7
@@ -36843,8 +36843,8 @@
       - Fm
     - - Fm Db7
       - Db7 C7
-      - Fmmaj7
-      - Fmmaj7
+      - FmMaj7
+      - FmMaj7
 - filename: RePersonIKnew
   Title: "Re: Person I Knew"
   ComposedBy: Bill Evans
@@ -36862,11 +36862,11 @@
       - Fm7/C
       - Cmadd9
       - Cmadd9
-    - - Fmmaj7/C
+    - - FmMaj7/C
       - Cmadd9
       - Fm7/C
       - Bbmaj7#5/C
-    - - Fmmaj7/C
+    - - FmMaj7/C
       - Bbmaj7/C
       - Fm7/C
       - Db/C
@@ -36878,11 +36878,11 @@
       - Fm7/C
       - Cmadd9
       - Cmadd9
-    - - Fmmaj7/C
+    - - FmMaj7/C
       - Cmadd9
       - Fm7/C
       - Bbmaj7#5/C
-    - - Fmmaj7/C
+    - - FmMaj7/C
       - Bbmaj7/C
       - Fm7/C
       - Db/C
@@ -37411,7 +37411,7 @@
       - Abmaj7
     - - Dbmaj7/Ab Dbo7/Ab
       - Abmaj7 G/Ab
-      - Dbmmaj7 Dbm6/Eb
+      - DbmMaj7 Dbm6/Eb
       - Abmaj7
     - - Eb7/Ab
       - Bb/Ab Bb/Ab Bb/Ab G/Ab
@@ -37420,7 +37420,7 @@
     - - Abmaj7
       - Dbmaj7/Ab Dbo7/Ab
       - Abmaj7 G/Ab
-      - Dbmmaj7 Dbm6/Eb
+      - DbmMaj7 Dbm6/Eb
     - - Abmaj7
       - Eb7/Ab
       - Abmaj7
@@ -37531,11 +37531,11 @@
   Bars: "22"
   chords:
     - - Dm
-      - Dmmaj7
+      - DmMaj7
       - Dm7
       - G6
     - - Dm
-      - Dmmaj7
+      - DmMaj7
       - Dm7
       - G6
     - - Dm
@@ -38435,7 +38435,7 @@
     - - C6/G
       - Ebo7/G
       - Dm7/G
-      - F#m7b5 Fmmaj7
+      - F#m7b5 FmMaj7
     - - Em7 Eb9
       - Dm7 G9
       - C69
@@ -38908,7 +38908,7 @@
       - Fmaj7
       - Bm7 E7
       - Bm7 E7
-    - - Am Ammaj7
+    - - Am AmMaj7
       - Am7 D7
       - Ab7#11
       - G7
@@ -38934,7 +38934,7 @@
       - Em7b5/Bb
       - A7
     - - Dm
-      - Dmmaj7
+      - DmMaj7
       - Dm7 G7
       - Cmaj7
     - - Cmaj7
@@ -38950,7 +38950,7 @@
       - Em7b5/Bb
       - A7
     - - Dm
-      - Dmmaj7
+      - DmMaj7
       - Dm7 G7
       - Cmaj7
     - - Cmaj7
@@ -40424,13 +40424,13 @@
     - 4
   Bars: "34"
   chords:
-    - - Dm Dmmaj7
-      - Dm7 Dmmaj7
-      - Cmmaj7 Cm7
+    - - Dm DmMaj7
+      - Dm7 DmMaj7
+      - CmMaj7 Cm7
       - F7 E7
-    - - Am Ammaj7
-      - Am7 Ammaj7
-      - Gmmaj7 Gm7
+    - - Am AmMaj7
+      - Am7 AmMaj7
+      - GmMaj7 Gm7
       - Gm7 C7
     - - Fmaj7
       - F#m7b5 B7
@@ -40440,13 +40440,13 @@
       - D7b5 Dm7b5 C#m7b5 F#7
       - Bmaj7 Bmaj7 Bmaj7 B7
       - Bbm7 Am7
-    - - Dm Dmmaj7
-      - Dm7 Dmmaj7
-      - Cmmaj7 Cm7
+    - - Dm DmMaj7
+      - Dm7 DmMaj7
+      - CmMaj7 Cm7
       - F7 E7
-    - - Am Ammaj7
-      - Am7 Ammaj7
-      - Gmmaj7 Gm7
+    - - Am AmMaj7
+      - Am7 AmMaj7
+      - GmMaj7 Gm7
       - Gm7 C7
     - - Fmaj7 B7b9
       - Bb7
@@ -41797,7 +41797,7 @@
       - Gm7 C7alt
       - Fm7
       - Dm7b5 G7alt
-    - - Cm Cmmaj7
+    - - Cm CmMaj7
       - Cm7 Cm6
       - F7#11
       - F7#11
@@ -41837,7 +41837,7 @@
       - Gm7 C7alt
       - Fm7
       - Dm7b5 G7alt
-    - - Cm Cmmaj7
+    - - Cm CmMaj7
       - Cm7 Cm6
       - F7#11
       - F7#11
@@ -42008,7 +42008,7 @@
     - - Em7
       - A7+ A7+ A7
       - Dm7
-      - Dmmaj7 Dmmaj7 Dm7
+      - DmMaj7 DmMaj7 Dm7
     - - G7
       - G7
       - Gm7
@@ -42267,7 +42267,7 @@
   chords:
     - - C Cmaj7
       - C6 C
-      - Dm Dmmaj7
+      - Dm DmMaj7
       - Dm7 G7
     - - Dm Bb/D
       - G/D G
@@ -42275,7 +42275,7 @@
       - G11
     - - C Cmaj7
       - C6 C
-      - Dm Dmmaj7
+      - Dm DmMaj7
       - Dm7 G7
     - - Dm Bb/D
       - G/D G
@@ -42285,13 +42285,13 @@
       - Cmaj7
       - G11
       - Cmaj7
-    - - Am Ammaj7
+    - - Am AmMaj7
       - Am7 D7
       - Dm7 G7
       - Dm7 G7
     - - C Cmaj7
       - C6 C
-      - Dm Dmmaj7
+      - Dm DmMaj7
       - Dm7 G7
     - - Dm Bb/D
       - G/D G
@@ -42299,7 +42299,7 @@
       - A7
     - - F
       - E7
-      - Am Am Ammaj7 Am7
+      - Am Am AmMaj7 Am7
       - D7
     - - Dm7 Em7
       - Dm7 Dm9/G
@@ -42602,8 +42602,8 @@
       - E7b9
     - - Am
       - Bm7b5 E7alt
-      - Am7 Ammaj7
-      - Am7 Ammaj7
+      - Am7 AmMaj7
+      - Am7 AmMaj7
     - - Eb7b5
       - Eb7b5
       - Am7
@@ -42820,7 +42820,7 @@
       - Em7b5 A7
       - Dm7
       - Em7b5 A7
-    - - Dm Dmmaj7
+    - - Dm DmMaj7
       - Dm7 Dm6
       - Gm6 Dm7
       - Em7b5
@@ -42836,7 +42836,7 @@
       - Em7b5 A7
       - Dm7
       - Em7b5 A7
-    - - Dm Dmmaj7
+    - - Dm DmMaj7
       - Dm7 Dm6
       - Gm6 Dm7
       - Em7b5
@@ -43113,7 +43113,7 @@
       - Bm7 E7b9
       - A69
       - Bb6 G7b9/B
-    - - Cm Cmmaj7 Cm7 Cm7
+    - - Cm CmMaj7 Cm7 Cm7
       - Cm7 Dm7
       - Ebm7
       - Ab13#11 Eb
@@ -43254,7 +43254,7 @@
   Bars: "32"
   chords:
     - - Ebmaj7
-      - Ebmmaj7 Ebmmaj7 Ebmmaj7 Ebm7
+      - EbmMaj7 EbmMaj7 EbmMaj7 Ebm7
       - Dm7
       - Dbo7 Dbo7 Dm7 Dbm7
     - - Cm7
@@ -43262,7 +43262,7 @@
       - Bb6 Fo7 F7 Bbo7
       - Eb6 C9 Bb7 Bb7+
     - - Ebmaj7
-      - Ebmmaj7 Ebmmaj7 Ebmmaj7 Ebm7
+      - EbmMaj7 EbmMaj7 EbmMaj7 Ebm7
       - Dm7
       - Dbo7 Dbo7 Dm7 Dbm7
     - - Cm7
@@ -43727,7 +43727,7 @@
       - Ao/E
     - - Em7
       - Bm7/E E7b9
-      - Ammaj7 Am7
+      - AmMaj7 Am7
       - Am7/D D7b9
     - - Gmaj7
       - Cmaj7
@@ -43745,7 +43745,7 @@
       - C#m7b5/F# F#7b9
       - Bm Bm7
       - Bm7/E E7b9
-    - - Amadd9 Amadd9 Ammaj7 Am7
+    - - Amadd9 Amadd9 AmMaj7 Am7
       - Am7/D D7b9
       - Gmaj7
       - Cmaj7
@@ -44120,7 +44120,7 @@
   Bars: "32"
   chords:
     - - Fm
-      - Fmmaj7/E
+      - FmMaj7/E
       - Fm7/Eb
       - Bb7 Eb7
     - - Ab6 F7
@@ -44128,7 +44128,7 @@
       - Ab6
       - Ab6 C7alt
     - - Fm
-      - Fmmaj7/E
+      - FmMaj7/E
       - Fm7/Eb
       - Bb7 Eb7
     - - Ab6 F7
@@ -44144,7 +44144,7 @@
       - Db7sus4
       - Db7sus4
     - - Fm
-      - Fmmaj7/E
+      - FmMaj7/E
       - Fm7/Eb
       - Bb7 Eb7
     - - Ab6 F7
@@ -44250,7 +44250,7 @@
     - - Em7/A
       - Em7/A
       - Dmaj7
-      - Dmaj7 Dmmaj7
+      - Dmaj7 DmMaj7
     - - Amaj7
       - Amaj7
       - B/A
@@ -45836,7 +45836,7 @@
       - Cmaj7 Dm7 Em7 Gb13
       - Fmaj7 G13b9
       - Cmaj7 E7#5
-    - - Am Ammaj7
+    - - Am AmMaj7
       - Am7 A7#5
       - Dm7 G7
       - Cmaj7 Cmaj7 Gm7 C7b9
@@ -49553,7 +49553,7 @@
       - Fmaj7
     - - Em7
       - A7
-      - Dmmaj7 Dm7
+      - DmMaj7 Dm7
       - G7
     - - Cmaj7 Am7
       - Dm7 G7
@@ -52605,7 +52605,7 @@
       - F
       - F
     - - Bbm
-      - Bbmmaj7
+      - BbmMaj7
       - Eb11
       - Eb7
     - - Abmaj7
@@ -52745,7 +52745,7 @@
       - Fm Bb7
       - Bbm7 Eb13
       - D7#5b9
-    - - Cmmaj9
+    - - CmMaj9
       - Fm7 Bb9
       - Bbm9 Eb13
       - D7#5b9
@@ -52761,7 +52761,7 @@
       - Bb13
       - Ebmaj7
       - Dm7b5 G7+
-    - - Cmmaj9
+    - - CmMaj9
       - Eb13
       - Am11 Ab7#11
       - Gm
@@ -52986,7 +52986,7 @@
     - - Em7
       - Am7
       - Fmaj7
-      - Fmmaj7 Fm6
+      - FmMaj7 Fm6
     - - C+
       - Dm7b5 G7alt
       - C6
@@ -52998,7 +52998,7 @@
     - - Em7
       - Am7
       - Fmaj7
-      - Fmmaj7 Fm6
+      - FmMaj7 Fm6
     - - C+
       - Dm7b5 G7alt
       - C6
@@ -53018,7 +53018,7 @@
     - - Em7
       - Am7
       - Fmaj7
-      - Fmmaj7 Fm6
+      - FmMaj7 Fm6
     - - C+
       - Dm7b5 G7alt
       - C6
@@ -53853,9 +53853,9 @@
       - Ebo7
       - Dm7
       - G7
-    - - Dm Dmmaj7
+    - - Dm DmMaj7
       - Dm7 G7
-      - Dm Dmmaj7
+      - Dm DmMaj7
       - Dm7 G7
     - - G7
       - G7 G7#5
@@ -55632,7 +55632,7 @@
       - A7sus4
       - Dmaj7
       - F7alt
-    - - Bbmmaj7
+    - - BbmMaj7
       - Bbm7
       - Bbm6
       - A7alt
@@ -55675,7 +55675,7 @@
       - Bm7 E7
       - Am7
       - F#m7b5 B7alt
-    - - Em Emmaj7
+    - - Em EmMaj7
       - Em7 A7alt
       - Dm7
       - Dm7 G7
@@ -55691,7 +55691,7 @@
       - Bm7 E7
       - Am7
       - F#m7b5 B7alt
-    - - Em Emmaj7
+    - - Em EmMaj7
       - Em7 A7alt
       - Dm7
       - Dm7 G7
@@ -56648,7 +56648,7 @@
       - Eb7#11/G
     - - Eb7#11/G
       - F#m7b5
-      - Fmmaj7
+      - FmMaj7
       - C/E
     - - B7/D#
       - G/D
@@ -57337,7 +57337,7 @@
       - Fmaj7 Cmaj7/E
       - Ebo7
       - Dm7 Cmaj7/E
-    - - Fmmaj7 Fm7/Eb
+    - - FmMaj7 Fm7/Eb
       - G7susb9 G7susb9 G7susb9 G7b5b9
       - Cmaj7
       - Cmaj7
@@ -57551,7 +57551,7 @@
       - Ebm7 Ab7
       - Gmaj7
       - C#m7 F#7#11
-    - - Bmmaj7
+    - - BmMaj7
       - Cmaj7
       - Bm7 E7
       - Em7 A7
@@ -57563,7 +57563,7 @@
       - Ebm7 Ab7
       - Gmaj7
       - C#m7 F#7#11
-    - - Bmmaj7
+    - - BmMaj7
       - Cmaj7
       - Bm7 E7
       - Em7 A7
@@ -57642,13 +57642,13 @@
   Bars: "8"
   chords:
     - - Em7b5 A7
-      - Dmmaj9
+      - DmMaj9
       - Em7b5 A7
-      - Dmmaj9
+      - DmMaj9
     - - Em7b5 A7
       - Dm Db7 Cm B7
       - Bb7 Bb7 Em7b5 A7
-      - Dmmaj9
+      - DmMaj9
 - filename: AllMyLove
   Title: All My Love
   ComposedBy: Dave Brubeck
@@ -57658,7 +57658,7 @@
     - 4
   Bars: "32"
   chords:
-    - - Am7 Ammaj7/G#
+    - - Am7 AmMaj7/G#
       - Am7/G D7/F#
       - Fm7
       - C/E A7
@@ -57666,7 +57666,7 @@
       - Cmaj7
       - Bm7b5
       - E7
-    - - Am7 Ammaj7/G#
+    - - Am7 AmMaj7/G#
       - Am7/G D7/F#
       - Fm7
       - C/E A7
@@ -57682,7 +57682,7 @@
       - F#m7 B7
       - E7 Cmaj7
       - Bm7b5 Bbmaj7
-    - - Am7 Ammaj7/G#
+    - - Am7 AmMaj7/G#
       - Am7/G D7/F#
       - Fm7
       - C/E A7
@@ -58085,7 +58085,7 @@
       - Gm7 C7b9
       - Fmaj7 A7#9
       - Dm7 Dm7 Am7b5 D7#9
-    - - Gm Gm6 Fmmaj7 Fm7
+    - - Gm Gm6 FmMaj7 Fm7
       - Em7 Em7b5 A7 A7#11
       - Dmaj7 Bm7
       - F7 F7+
@@ -61789,7 +61789,7 @@
     - 4
   Bars: "66"
   chords:
-    - - Gmmaj7
+    - - GmMaj7
       - Ebmaj7
       - A7b5
       - D7#5
@@ -61803,9 +61803,9 @@
       - E7
     - - A7#9
       - D7#5
-      - Gmmaj7
+      - GmMaj7
       - A7#5 D7b9
-    - - Gmmaj7
+    - - GmMaj7
       - Ebmaj7
       - A7
       - D7
@@ -61833,7 +61833,7 @@
       - Eb7b9
       - A7#9
       - Dmaj7
-    - - Gmmaj7
+    - - GmMaj7
       - Ebmaj7
       - A7b5
       - D7#5
@@ -61847,7 +61847,7 @@
       - E7
     - - A7#9
       - D7#5
-      - Gmmaj7
+      - GmMaj7
       - A7#5 D7b9
     - - Cm7
       - Emaj7
@@ -63687,7 +63687,7 @@
       - Fm7
       - Bbm7 Eb7
       - Ab C7+
-    - - Fm Fmmaj7
+    - - Fm FmMaj7
       - Fm7
       - Bb7
       - Eb7
@@ -64358,14 +64358,14 @@
     - - Gmaj7 Gmaj7 Gmaj7 Em7
       - Gm/C Fm/Bb Fm/Bb Em/A Ebm/Ab Ebm/Ab Ab7#11 Ab7#11
       - Gmaj7 Gmaj7 Gmaj7 Em7
-      - Gmmaj7 Fmmaj7 Fmmaj7 Emmaj7 Ebmmaj7 Ebmmaj7 Ab7 Ab7
-    - - Fm/Bb Fmmaj7/Bb
+      - GmMaj7 FmMaj7 FmMaj7 EmMaj7 EbmMaj7 EbmMaj7 Ab7 Ab7
+    - - Fm/Bb FmMaj7/Bb
       - G7alt G7alt Abm7 Db7b9
       - Gbmaj7#11 Abmaj7#11
       - Bm7 E7alt
     - - Am/D
       - Cm/D
-      - Ammaj7/B
+      - AmMaj7/B
       - Bbmaj7#11
     - - Emaj7 F#m7 Abm7 Amaj7
       - Bbm7 Cm7 Dbmaj7 Eb7b9
@@ -64374,8 +64374,8 @@
     - - Gmaj7 Gmaj7 Gmaj7 Em7
       - Gm/C Fm/Bb Fm/Bb Em/A Ebm/Ab Ebm/Ab Ab7#11 Ab7#11
       - Gmaj7 Gmaj7 Gmaj7 Em7
-      - Gmmaj7 Fmmaj7 Fmmaj7 Emmaj7 Ebmmaj7 Ebmmaj7 Ab7 Ab7
-    - - Fm/Bb Fmmaj7/Bb
+      - GmMaj7 FmMaj7 FmMaj7 EmMaj7 EbmMaj7 EbmMaj7 Ab7 Ab7
+    - - Fm/Bb FmMaj7/Bb
       - G7alt G7alt Abm7 Db7b9
       - Gbmaj7#11 Abmaj7#11
       - Bm7 E7alt
@@ -64489,7 +64489,7 @@
       - Cmaj7 C6
       - Bm7
       - Bm7/E E7b9
-    - - Am7 Ammaj7
+    - - Am7 AmMaj7
       - Am7 D7
       - G
       - G7#5
@@ -64512,7 +64512,7 @@
     - - G
       - G G7
       - C
-      - Cmmaj7
+      - CmMaj7
     - - Bm7
       - Eb7/Bb
       - Am7
@@ -65603,7 +65603,7 @@
     - - Dm7
       - Dm7/C
       - Bm7b5
-      - Bbmmaj7
+      - BbmMaj7
     - - Bbmaj7/A
       - Abo7
       - Gm7
@@ -65619,7 +65619,7 @@
     - - Dm7
       - Dm7/C
       - Bm7b5
-      - Bbmmaj7
+      - BbmMaj7
     - - F/A
       - Abo7
       - Gm7
@@ -65769,8 +65769,8 @@
       - Ebm7
     - - Fm7
       - Fm7
-      - Ebmmaj7
-      - Ebmmaj7
+      - EbmMaj7
+      - EbmMaj7
     - - Dbmaj7
       - Dbmaj7
       - Dbm7
@@ -66239,17 +66239,17 @@
     - 4
   Bars: "32"
   chords:
-    - - Dm Dmmaj7
+    - - Dm DmMaj7
       - Dm7 Dm6
-      - Gm Gmmaj7
+      - Gm GmMaj7
       - Gm7 Gm6
     - - Dm
       - D7
       - Gm7 C7
       - F A7alt
-    - - Dm Dmmaj7
+    - - Dm DmMaj7
       - Dm7 Dm6
-      - Gm Gmmaj7
+      - Gm GmMaj7
       - Gm7 Gm6
     - - Dm
       - D7
@@ -66263,9 +66263,9 @@
       - Ebm7 Ab7
       - Gm7/C
       - C7
-    - - Dm Dmmaj7
+    - - Dm DmMaj7
       - Dm7 Dm6
-      - Gm Gmmaj7
+      - Gm GmMaj7
       - Gm7 Gm6
     - - Dm
       - D7
@@ -67144,11 +67144,11 @@
     - 4
   Bars: "64"
   chords:
-    - - Bbmmaj7
+    - - BbmMaj7
       - Bbm6
-      - Abmmaj7
+      - AbmMaj7
       - Abm6
-    - - Bbmmaj7
+    - - BbmMaj7
       - Bbm6
       - Abm7
       - Db7
@@ -67158,13 +67158,13 @@
       - C7#9
     - - F7b5b9
       - F7b5b9 F7#5
-      - Bbmmaj7
-      - Bbmmaj7
-    - - Bbmmaj7
+      - BbmMaj7
+      - BbmMaj7
+    - - BbmMaj7
       - Bbm6
-      - Abmmaj7
+      - AbmMaj7
       - Abm6
-    - - Bbmmaj7
+    - - BbmMaj7
       - Bbm6
       - Abm7
       - Db7
@@ -67174,8 +67174,8 @@
       - C7#9
     - - F7b5b9
       - F7b5b9 F7#5
-      - Bbmmaj7
-      - Bbmmaj7
+      - BbmMaj7
+      - BbmMaj7
     - - Ebm7/Ab
       - Ebm7/Ab
       - Dbmaj7
@@ -67192,11 +67192,11 @@
       - Ebm7/Ab
       - Dbmaj7
       - Cm7b5 F7
-    - - Bbmmaj7
+    - - BbmMaj7
       - Bbm6
-      - Abmmaj7
+      - AbmMaj7
       - Abm6
-    - - Bbmmaj7
+    - - BbmMaj7
       - Bbm6
       - Abm7
       - Db7
@@ -67206,8 +67206,8 @@
       - C7#9
     - - F7b5b9
       - F7b5b9 F7#5
-      - Bbmmaj7
-      - Bbmmaj7
+      - BbmMaj7
+      - BbmMaj7
 - filename: RedCross
   Title: Red Cross
   ComposedBy: Charlie Parker
@@ -69677,7 +69677,7 @@
       - G7
     - - Cm7 Cm7/Bb
       - Am7b5 D7alt
-      - Gm Gmmaj7
+      - Gm GmMaj7
       - Gm7 Gm6
     - - Gm7
       - C7
@@ -69828,10 +69828,10 @@
     - - Cm7 Gm7
       - Em7b5 Dm7/E
       - Am
-      - Ammaj7
+      - AmMaj7
     - - Fmaj7 Cmaj7
       - Cm7
-      - Ammaj7 Ammaj7/B
+      - AmMaj7 AmMaj7/B
       - Bm7 E7
     - - F#m7
       - Am/B F#7b9
@@ -70072,7 +70072,7 @@
       - E7
       - Fmaj7
       - Fmaj7 A7
-    - - Dm Dmmaj7
+    - - Dm DmMaj7
       - Dm7 Dm6
       - G7
       - Gm7 C7
@@ -71815,15 +71815,15 @@
       - D7b9
     - - Gmaj7
       - Gmaj7
-      - Cmmaj7
+      - CmMaj7
       - Cm6
     - - Gmaj7
       - Gmaj7
-      - Cmmaj7
+      - CmMaj7
       - Cm6
     - - Gmaj7
       - Gmaj7
-      - Cmmaj7
+      - CmMaj7
       - Cm6
     - - Gmaj7
       - Gb+
@@ -72424,7 +72424,7 @@
       - C7
       - F7
       - Am7b5 D7
-    - - Gm Gmmaj7
+    - - Gm GmMaj7
       - Gm7
       - C7
       - C7
@@ -72770,7 +72770,7 @@
   Bars: "36"
   chords:
     - - Cm
-      - Cmmaj7
+      - CmMaj7
       - Cm7
       - Cm6
     - - Abmaj7
@@ -72778,7 +72778,7 @@
       - Dm7b5
       - G7b9
     - - Cm
-      - Cmmaj7
+      - CmMaj7
       - Cm7
       - Cm6
     - - Abmaj7
@@ -72794,7 +72794,7 @@
       - Abmaj7
       - Dm7b5 G7b9
     - - Cm
-      - Cmmaj7
+      - CmMaj7
       - Cm7
       - Cm6
     - - Abmaj7
@@ -75169,7 +75169,7 @@
       - Cm6 Cm7
       - Fmaj7 Bbmaj7
       - Am7b5 Eb7 D7 D7
-    - - Gm7 Gm7 Bbmmaj7 Eb9
+    - - Gm7 Gm7 BbmMaj7 Eb9
       - Am7 Am7 Abm7 Db9
       - Gm7 C7#5#9
       - Fmaj7
@@ -75177,7 +75177,7 @@
       - Cm6 Cm7
       - Fmaj7 Bbmaj7
       - Am7b5 Eb7 D7 D7
-    - - Gm7 Gm7 Bbmmaj7 Eb9
+    - - Gm7 Gm7 BbmMaj7 Eb9
       - Am7 Am7 Abm7 Db9
       - Gm7 Gm7 C7#5#9 C7#5
       - F6
@@ -75193,7 +75193,7 @@
       - Cm6 Cm7
       - Fmaj7 Bbmaj7
       - Am7b5 Eb7 D7 D7
-    - - Gm7 Gm7 Bbmmaj7 Eb9
+    - - Gm7 Gm7 BbmMaj7 Eb9
       - Am7 Am7 Abm7 Db9
       - Gm7 C13
       - FM6
@@ -76146,8 +76146,8 @@
       - B7#11
     - - F7alt
       - Bb7alt
-      - Ebmmaj7
-      - Ebmmaj7
+      - EbmMaj7
+      - EbmMaj7
 - filename: Tenderly-CB
   Title: Tenderly-CB
   ComposedBy: Walter Gross
@@ -76716,7 +76716,7 @@
       - Cm7
       - Fm7 Bb7
       - Ebmaj7 G7#5
-    - - Cm Cmmaj7
+    - - Cm CmMaj7
       - Cm7 F7
       - Bb7sus4
       - Bb7 Bb7b9
@@ -76761,7 +76761,7 @@
       - Dm7 Dm7 Gm7 C7
       - Fmaj7
       - Em7b5 A7b9
-    - - Dm7 Dmmaj7
+    - - Dm7 DmMaj7
       - Dm7 Dm6
       - Am Am#5
       - Am6 Am7
@@ -76787,7 +76787,7 @@
   Bars: "74"
   chords:
     - - Em7
-      - Emmaj7
+      - EmMaj7
       - Em7
       - Em7
     - - Am
@@ -76803,7 +76803,7 @@
       - Cmaj7
       - Am
     - - Em7
-      - Emmaj7
+      - EmMaj7
       - Em7
       - Em7
     - - Am
@@ -76839,7 +76839,7 @@
       - Cm/G
       - Ab7
     - - Em7
-      - Emmaj7
+      - EmMaj7
       - Em7
       - Em7
     - - Am
@@ -77670,7 +77670,7 @@
       - Dm7
       - Bm7b5 E7b9
     - - Am
-      - Ammaj7/G#
+      - AmMaj7/G#
       - Am7/G Fmaj7
       - Em7
     - - Em7b5
@@ -78109,7 +78109,7 @@
       - Cm69 Cm69 Cm69 Cm7
       - E7 Bb7
     - - Ebm7
-      - F#mmaj7
+      - F#mMaj7
       - C69
       - C69
     - - Cm69
@@ -78117,7 +78117,7 @@
       - Cm69 Cm69 Cm69 Cm7
       - E7 Bb7
     - - Ebm7
-      - F#mmaj7
+      - F#mMaj7
       - C69
       - C69
     - - F#m7 B7
@@ -78133,7 +78133,7 @@
       - Cm69 Cm69 Cm69 Cm7
       - E7 Bb7
     - - Ebm7
-      - F#mmaj7
+      - F#mMaj7
       - C69
       - C69
 - filename: BalladForAnita
@@ -78730,8 +78730,8 @@
       - Bbmaj7
       - Am7
       - D7
-    - - Gmmaj7
-      - Gmmaj7
+    - - GmMaj7
+      - GmMaj7
       - C7#11
       - C7#11
     - - Gm7b5 C7
@@ -79058,15 +79058,15 @@
     - - NC
       - NC
       - NC
-      - Cmmaj7b6
+      - CmMaj7b6
     - - NC
       - NC
       - NC
-      - Cmmaj7b6
+      - CmMaj7b6
     - - F G Eb F
       - Db Eb NC NC
       - NC
-      - NC Cmmaj7b6
+      - NC CmMaj7b6
 - filename: MoonlightSavingTime
   Title: Moonlight Saving Time
   ComposedBy: Irving Kahal and Harry Richman
@@ -79773,7 +79773,7 @@
       - G7#5
       - Cm7
       - A7#5
-    - - Dmmaj7
+    - - DmMaj7
       - Gm7
       - Cm7
       - Ab7 F7
@@ -79789,7 +79789,7 @@
       - G7#5
       - Cm7
       - A7#5
-    - - Dmmaj7
+    - - DmMaj7
       - Gm7
       - Cm7
       - Am7b5 D7
@@ -80403,7 +80403,7 @@
       - Gm6
       - Gm+
       - Gm6
-    - - Gmmaj7 Gm7
+    - - GmMaj7 Gm7
       - Gm6
       - Gm+
       - Gm6
@@ -80919,7 +80919,7 @@
       - Ebmaj7
       - Bbm7 Eb7
     - - Abmaj7
-      - Abmmaj7
+      - AbmMaj7
       - Ebmaj7
       - Fm7 Bb7
     - - Ebmaj7
@@ -80927,7 +80927,7 @@
       - Ebmaj7
       - Bbm7 Eb7
     - - Abmaj7
-      - Abmmaj7
+      - AbmMaj7
       - Ebmaj7
       - Am7b5 D7alt
     - - Gm7
@@ -80943,7 +80943,7 @@
       - Ebmaj7
       - Bbm7 Eb7
     - - Abmaj7
-      - Abmmaj7
+      - AbmMaj7
       - Ebmaj7
       - Db13#11
 - filename: WonderfulDayLikeToday
@@ -82112,9 +82112,9 @@
       - Gm7
       - C7
     - - Gm7
-      - Gmmaj7
-      - Gm7 Gmmaj7
-      - Gmmaj7 Gm7
+      - GmMaj7
+      - Gm7 GmMaj7
+      - GmMaj7 Gm7
     - - Dm7
       - G7
       - C7sus4
@@ -84554,7 +84554,7 @@
       - Fm7/Eb
     - - G7b9sus4 G7#9
       - Cm7 C7b9
-      - Fmmaj7 Fm7
+      - FmMaj7 Fm7
       - Db7#11
     - - Ebmaj7/Bb
       - Abmaj7/Bb
@@ -84857,7 +84857,7 @@
     - - Fm7 Fm7 Fm7 Bb7 Bb7
       - Fm7
       - Bb7+ Bb7+ Bb7+ Bb7 Eb7
-      - Fmmaj7 Fmmaj7 Fmmaj7 Fm7 Fm7
+      - FmMaj7 FmMaj7 FmMaj7 Fm7 Fm7
     - - Bb7
       - Eb7 Eb7 Eb7 C7 C7
       - Fm7 Fm7 Fm7 G7 C7
@@ -84865,7 +84865,7 @@
     - - Bbm6 Bbm6 Bbm6 C7 C7
       - Bbm6 Bbm6 Bbm6 Bbm7
       - Bbm6 Bbm6 Bbm6 C7
-      - Fmmaj7
+      - FmMaj7
 - filename: ThisIsAllIAsk
   Title: This Is All I Ask
   ComposedBy: Gordon Jenkins
@@ -84957,18 +84957,18 @@
     - 4
   Bars: "64"
   chords:
-    - - Cmmaj7
-      - Cmmaj7
-      - Dbmmaj7
-      - Dbmmaj7
+    - - CmMaj7
+      - CmMaj7
+      - DbmMaj7
+      - DbmMaj7
     - - Dm7b5
       - Dm7b5
       - G7#5#9
       - G7#5#9
-    - - Cmmaj7
-      - Cmmaj7
-      - Dbmmaj7
-      - Dbmmaj7
+    - - CmMaj7
+      - CmMaj7
+      - DbmMaj7
+      - DbmMaj7
     - - Gm7
       - Gm7
       - Gm7
@@ -84989,16 +84989,16 @@
       - Bm/E
       - Dm7b5
       - G7b9
-    - - Cmmaj7
-      - Cmmaj7
-      - Dbmmaj7
-      - Dbmmaj7
+    - - CmMaj7
+      - CmMaj7
+      - DbmMaj7
+      - DbmMaj7
     - - Dm7b5
       - Dm7b5
       - G7#5#9
       - G7#5#9
-    - - Cmmaj7
-      - Cmmaj7
+    - - CmMaj7
+      - CmMaj7
       - Bbm7
       - Eb7b9
     - - Abmaj7b5
@@ -85598,7 +85598,7 @@
       - F#m7b5 B7
     - - Em7 Em7 Dm7 G7
       - C C Am6/B B7+
-      - Em Emmaj7
+      - Em EmMaj7
       - Em7 A7
     - - Dm7 F7/Eb
       - Bbmaj7 Bbmaj7 Gm6/A A7
@@ -86580,7 +86580,7 @@
     - - Cmaj7
       - Cmaj7
       - F#m7b5
-      - Fmmaj7
+      - FmMaj7
     - - Em7
       - A7
       - D7
@@ -87432,7 +87432,7 @@
       - Cm7
       - Cm7
     - - Cm
-      - Cmmaj7
+      - CmMaj7
       - Cm7
       - Cm7
     - - F7
@@ -88053,7 +88053,7 @@
       - Ebmaj7 Eo7
       - Fm7
       - Dm7b5 G7alt
-    - - Cm Cmmaj7
+    - - Cm CmMaj7
       - Cm7 Cm6
       - Am7b5 D7alt
       - Gm
@@ -88470,7 +88470,7 @@
       - D7
       - Gm7
       - C#o7
-    - - Cmmaj7 Cm7
+    - - CmMaj7 Cm7
       - C#o7
       - Dm7 Ebmaj7
       - Ebm7/F Ab7sus4
@@ -88482,7 +88482,7 @@
       - D7
       - Gm7
       - C#o7
-    - - Cmmaj7 Cm7
+    - - CmMaj7 Cm7
       - C#o7
       - Dm7 Ebmaj7
       - Ebm7/F Ab7sus4
@@ -88954,7 +88954,7 @@
   chords:
     - - F6
       - F6
-      - Fmmaj7
+      - FmMaj7
       - Bb7
     - - Cmaj7
       - Em7 A7
@@ -88970,7 +88970,7 @@
       - G7 C7+
     - - F6
       - F6
-      - Fmmaj7
+      - FmMaj7
       - Bb7
     - - Cmaj7
       - Em7 A7
@@ -89054,7 +89054,7 @@
       - Dm7
       - Em7b5
       - A7b9
-    - - Dm Dmmaj7
+    - - Dm DmMaj7
       - Dm7 Dm6
       - Gm7
       - Em7 A7b9
@@ -89070,7 +89070,7 @@
       - Dm7
       - Em7b5
       - A7b9
-    - - Dm Dmmaj7
+    - - Dm DmMaj7
       - Dm7 Dm6
       - Bm7b5
       - Bbm7
@@ -90381,7 +90381,7 @@
       - F#m7b5 B7
     - - Em7
       - F#m7b5 B7b9
-      - Em Emmaj7
+      - Em EmMaj7
       - Am7 Am7 Am7/D D7
     - - Gmaj7
       - Dm7 Dm7/G
@@ -90519,7 +90519,7 @@
     - - Dm7 A7sus4b9
       - Dm7 A7sus4b9
       - Dm7 Ebmaj7
-      - Dm Dmmaj7 G7sus4b9 G7b9
+      - Dm DmMaj7 G7sus4b9 G7b9
     - - Cm7 G7sus4b9
       - Cm7 G7sus4b9
       - Cm7 G7#5#9
@@ -90698,7 +90698,7 @@
       - C6 C#o7
       - G/D
       - F#m7b5 B7b9
-    - - Em Emmaj7
+    - - Em EmMaj7
       - Em7 Em6
       - F#m7b5 B7b9
       - Em7
@@ -90706,7 +90706,7 @@
       - B7
       - Gm7 C7
       - F#m7 B7
-    - - Em Emmaj7
+    - - Em EmMaj7
       - Em7 Em6
       - F#m7b5 B7b9
       - Em7
@@ -90976,7 +90976,7 @@
       - Bb7
       - Eb6
       - Eb6
-    - - Bbmmaj7
+    - - BbmMaj7
       - Eb7
       - Bbm7
       - Eb7
@@ -91488,7 +91488,7 @@
       - Cm7 Cm7 Abm7 Db7
       - Ebmaj7 G7alt
     - - Cm
-      - Cmmaj7
+      - CmMaj7
       - Cm7
       - F7 F7 Abm7 Db7
     - - Ebmaj7 Cm7
@@ -92625,7 +92625,7 @@
   Bars: "32"
   chords:
     - - A7
-      - Cmmaj7
+      - CmMaj7
       - Gmaj7 Cm6
       - Bm7 E7
     - - Am7 D7
@@ -92633,7 +92633,7 @@
       - Am7 D7
       - Gmaj7
     - - A7
-      - Cmmaj7
+      - CmMaj7
       - Gmaj7 Cm6
       - Bm7 E7
     - - Am7 D7
@@ -92649,7 +92649,7 @@
       - Am7
       - D7
     - - A7
-      - Cmmaj7
+      - CmMaj7
       - Gmaj7 Cm6
       - Bm7 E7
     - - Am7 D7
@@ -93434,7 +93434,7 @@
       - Fmaj7
       - Em7b5 A7
     - - Dm
-      - Dmmaj7
+      - DmMaj7
       - Dm7
       - G7/Db
     - - Bbmaj7
@@ -93450,7 +93450,7 @@
       - Fmaj7
       - Em7b5 A7
     - - Dm
-      - Dmmaj7
+      - DmMaj7
       - Dm7
       - G7/Db
     - - Bbmaj7
@@ -94355,7 +94355,7 @@
     - - Cmaj7 Dm7/C
       - B/C Cmaj7
       - B7+ B7b9
-      - Emmaj7 Em6
+      - EmMaj7 Em6
     - - Am7 B7+
       - Em Em B7+ Em7
       - Em7b5 A7b9
@@ -94735,7 +94735,7 @@
     - - Bbmaj7 Bo7
       - Cm7 C#o7
       - Dm7 D7+
-      - Ebmmaj7 Ab7
+      - EbmMaj7 Ab7
     - - Bbmaj7 E7
       - Ebmaj7 Ab7
       - Dm7 G7
@@ -94743,7 +94743,7 @@
     - - Bbmaj7 Bo7
       - Cm7 C#o7
       - Dm7 D7+
-      - Ebmmaj7 Ab7
+      - EbmMaj7 Ab7
     - - Bbmaj7 E7
       - Ebmaj7 Ab7
       - Bbmaj7
@@ -94759,7 +94759,7 @@
     - - Bbmaj7 Bo7
       - Cm7 C#o7
       - Dm7 D7+
-      - Ebmmaj7 Ab7
+      - EbmMaj7 Ab7
     - - Bbmaj7 E7
       - Ebmaj7 Ab7
       - Bbmaj7
@@ -95135,7 +95135,7 @@
       - B7
       - Ebmaj7
       - Ebmaj7 G7
-    - - Cm Cmmaj7
+    - - Cm CmMaj7
       - Cm7 F7
       - Fm7
       - Fm7 Bb7
@@ -95951,7 +95951,7 @@
       - Fmaj7 E7
     - - Am7 Am7/G
       - F#m7b5 B7b9
-      - Em Emmaj7
+      - Em EmMaj7
       - A9sus4 A7
     - - Dm7b5 Dm7
       - G7
@@ -96392,11 +96392,11 @@
       - B7sus4 B7
       - Am7
       - D7sus4
-    - - Gm Gmmaj7
+    - - Gm GmMaj7
       - Gm7 Gm6
       - Abmaj7
       - Abmaj7
-    - - Gm Gmmaj7
+    - - Gm GmMaj7
       - Gm7 Gm6
       - Abmaj7
       - Abmaj7
@@ -96982,7 +96982,7 @@
   Bars: "32"
   chords:
     - - Bm7 E7
-      - Am Ammaj7
+      - Am AmMaj7
       - Ao7 D7
       - Gm
     - - Go7 C7
@@ -96990,7 +96990,7 @@
       - Gm7 C7
       - F
     - - Bm7 E7
-      - Am Ammaj7
+      - Am AmMaj7
       - Ao7 D7
       - Gm
     - - Go7 C7
@@ -97006,7 +97006,7 @@
       - G7 C7
       - F
     - - Bm7 E7
-      - Am Ammaj7
+      - Am AmMaj7
       - Ao7 D7
       - Gm
     - - Go7 C7
@@ -98125,7 +98125,7 @@
       - F#7#5
     - - Bm9
       - Bm9
-      - Dm Dmmaj7
+      - Dm DmMaj7
       - Dm7 Dm6
     - - C#67 C#7#5
       - F#9sus4
@@ -98141,7 +98141,7 @@
       - F#7#5
     - - Bm9
       - Bm9
-      - Dm Dmmaj7
+      - Dm DmMaj7
       - Dm7 Dm6
     - - C#67 C#7#5
       - F#9sus4
@@ -98745,7 +98745,7 @@
       - F6
       - F6 F#o7
       - C7
-    - - Gm Gmmaj7
+    - - Gm GmMaj7
       - Gm7 Gm6
       - Gm7 C7#5
       - Fmaj7
@@ -98770,7 +98770,7 @@
       - Cmaj7 C#o7
       - Dm7
       - G7
-    - - Dm Dmmaj7
+    - - Dm DmMaj7
       - Dm7 G7
       - Cmaj7
       - Cmaj7 Cmaj7 Bm7b5 E7
@@ -98786,7 +98786,7 @@
       - Cmaj7 C#o7
       - Dm7
       - G7
-    - - Dm Dmmaj7
+    - - Dm DmMaj7
       - Dm7 G7
       - Bm7b5 E7
       - Am7 Am7 Gm7 C7
@@ -99661,16 +99661,16 @@
   chords:
     - - Gmaj7 Gmaj7/A
       - Bm7 E7b5
-      - Bbmmaj7
-      - Bbmmaj7 Eb7b5
+      - BbmMaj7
+      - BbmMaj7 Eb7b5
     - - Am7
       - Cm7 F7
       - Am7 Ab7
       - G6
     - - Gmaj7 Gmaj7/A
       - Bm7 E7b5
-      - Bbmmaj7
-      - Bbmmaj7 Eb7b5
+      - BbmMaj7
+      - BbmMaj7 Eb7b5
     - - Am7
       - Cm7 F7
       - Am7 Ab7
@@ -99685,8 +99685,8 @@
       - Ebmaj7 Ab7b5
     - - Gmaj7 Gmaj7/A
       - Bm7 E7b5
-      - Bbmmaj7
-      - Bbmmaj7 Eb7b5
+      - BbmMaj7
+      - BbmMaj7 Eb7b5
     - - Am7
       - Cm7 F7
       - Am7 Ab7
@@ -100449,7 +100449,7 @@
       - E7#11
     - - E7sus4
       - Eb7#11
-      - Bbmmaj7
+      - BbmMaj7
       - A13b9
 - filename: IHearMusic
   Title: I Hear Music
@@ -102339,7 +102339,7 @@
       - Bo7
       - Cm7 Cm7 Cm7 D7
       - D7
-    - - Gm Gmmaj7/F#
+    - - Gm GmMaj7/F#
       - Gm7/F Gm6/E
       - C C Cm D7+
       - D7+ D7
@@ -103429,7 +103429,7 @@
       - Cmaj7 C#dim7
       - Dm7
       - G7
-    - - Am7 Ammaj7
+    - - Am7 AmMaj7
       - Am7 Am6
       - Gm7 C7
       - Fmaj7 Fmaj7 Fm7 Bb7
@@ -104114,11 +104114,11 @@
   Bars: "28"
   chords:
     - - Fm
-      - Fmmaj7/E
+      - FmMaj7/E
       - Fm7/Eb
       - Dm7b5
     - - Bbm7
-      - Bbmmaj7/A
+      - BbmMaj7/A
       - Bbm7/Ab Gm7b5
       - Gm7/C C7b9
     - - Fmaj7
@@ -104253,7 +104253,7 @@
       - Fm7
       - Abm7
     - - Gm7
-      - Gbmmaj7 Gbm7
+      - GbmMaj7 Gbm7
       - Fm7
       - Emaj7 E7
     - - Ebmaj7 Bb7b9
@@ -105124,7 +105124,7 @@
       - Bbm7b5 Dbm/Eb
     - - Abmaj7
       - Gm7b5 C7#9
-      - Abm Abmmaj7
+      - Abm AbmMaj7
       - Abm7b5 Db7b9
     - - Gbmaj7 F7b9
       - Bbm F#m7
@@ -105148,7 +105148,7 @@
       - Gbmaj7
     - - Bbm7/C C7b9
       - Fm7 F7/A
-      - Bbm7 Bbmmaj7
+      - Bbm7 BbmMaj7
       - Eb7#11
     - - A/E
       - F7#9 Bbm7
@@ -107417,7 +107417,7 @@
   Bars: "32"
   chords:
     - - Dm
-      - Dmmaj7
+      - DmMaj7
       - Dm7
       - Dm6
     - - F
@@ -107425,7 +107425,7 @@
       - F
       - Em7b5 A7
     - - Dm
-      - Dmmaj7
+      - DmMaj7
       - Dm7
       - Dm6
     - - F
@@ -107441,7 +107441,7 @@
       - Bbm F
       - Bbm Bbm F A7
     - - Dm
-      - Dmmaj7
+      - DmMaj7
       - Dm7
       - Dm6
     - - F
@@ -109540,7 +109540,7 @@
   Bars: "24"
   chords:
     - - Am
-      - Ammaj7
+      - AmMaj7
       - Am7
       - Em7
     - - Fmaj7 F#o7
@@ -111476,7 +111476,7 @@
   Bars: "64"
   chords:
     - - Am
-      - Ammaj7
+      - AmMaj7
       - Am7
       - Am6
     - - Am7
@@ -111492,7 +111492,7 @@
       - Cmaj7
       - Bm7b5 E7b9
     - - Am
-      - Ammaj7
+      - AmMaj7
       - Am7
       - Am6
     - - Am7
@@ -111524,7 +111524,7 @@
       - C7
       - E7b9
     - - Am
-      - Ammaj7
+      - AmMaj7
       - Am7
       - Am6
     - - Am7

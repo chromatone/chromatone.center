@@ -4,7 +4,7 @@
  */
 
 import { shallowReactive, reactive, computed, watch, watchEffect, onBeforeUnmount, markRaw, ref } from 'vue'
-import { tempo } from "./tempo";
+import { clickSounds, tempo } from "./tempo";
 import { Sequence, PanVol, gainToDb, getDraw, Sampler, start, Recorder, Meter, UserMedia, getContext } from "tone";
 import { createAudioChannel } from './audio'
 import { rotateArray } from "./calculations";
@@ -82,17 +82,20 @@ export function useSequence(initial = { over: 4, under: 4, sound: "A", volume: 1
       ...createAudioChannel(`sequence-${mode}-${order}`),
       panner: markRaw(new PanVol(order % 2 ? -0.5 : 0.5, 0)),
       synth: markRaw(new Sampler({
-        urls: Object.fromEntries(
-          Object.entries({ A: 'tongue', B: 'synth', C: 'seiko', D: 'ping', E: 'logic' })
-            .flatMap(([key, sound]) => [
-              [`${key}1`, `${sound}/high.mp3`],
-              [`${key}2`, `${sound}/low.mp3`]
-            ])
-        ),
+        urls: {
+          A1: clickSounds.high,
+          A2: clickSounds.low,
+          ...Object.fromEntries(
+            Object.entries({ B: 'synth', C: 'seiko', D: 'ping', E: 'tongue' })
+              .flatMap(([key, sound]) => [
+                [`${key}1`, `/audio/metronome/${sound}/high.mp3`],
+                [`${key}2`, `/audio/metronome/${sound}/low.mp3`]
+              ])
+          )
+        },
         volume: 1,
         attack: 0.001,
         release: 2,
-        baseUrl: "/audio/metronome/",
       })),
     });
 

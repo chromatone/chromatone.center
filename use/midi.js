@@ -297,7 +297,12 @@ function setupOutput(output) {
 }
 
 function handleDisconnect(e) {
-  delete midi[`${e.port.type}s`][e.port.id];
+  if (e.port.type == 'input') {
+    delete inputs[e.port.id];
+  } else if (e.port.type == 'output') {
+    delete outputs[e.port.id];
+  }
+
 }
 
 function noteInOn(ev) {

@@ -8,7 +8,7 @@ links:
   - https://habr.com/ru/post/278265/
 ---
 
-<style scoped> 
+<style scoped lang="postcss">
 .info {
   @apply bg-light-400 dark-bg-dark-400 z-10 max-w-65ch rounded-xl bg-op-60 dark-bg-op-60 backdrop-blur-md;
 }

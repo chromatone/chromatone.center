@@ -3,12 +3,12 @@ import { Poline } from 'poline'
 import { reactive, computed, ref } from 'vue'
 
 import nearestColor from 'nearest-color';
-import colorNameList from 'color-name-list/dist/colornames.json';
+import { colornames } from 'color-name-list';
 import { colord } from 'colord';
 import { useStorage, useClipboard } from '@vueuse/core';
 
 // nearestColor need objects {name => hex} as input
-const colors = colorNameList.reduce((o, { name, hex }) => Object.assign(o, { [name]: hex }), {});
+const colors = colornames.reduce((o, { name, hex }) => Object.assign(o, { [name]: hex }), {});
 
 const nearest = nearestColor.from(colors);
 

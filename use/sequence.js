@@ -85,8 +85,8 @@ export function useSequence(initial = { over: 4, under: 4, sound: "A", volume: 1
         urls: Object.fromEntries(
           Object.entries({ A: 'tongue', B: 'synth', C: 'seiko', D: 'ping', E: 'logic' })
             .flatMap(([key, sound]) => [
-              [`${key}1`, `${sound}/high.wav`],
-              [`${key}2`, `${sound}/low.wav`]
+              [`${key}1`, `${sound}/high.mp3`],
+              [`${key}2`, `${sound}/low.mp3`]
             ])
         ),
         volume: 1,

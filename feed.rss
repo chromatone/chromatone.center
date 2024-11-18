@@ -4,7 +4,7 @@
         <title>Chromatone</title>
         <link>https://chromatone.center</link>
         <description>Visual Music Language development updates and more</description>
-        <lastBuildDate>Sun, 17 Nov 2024 08:12:37 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 18 Nov 2024 08:11:17 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en-EN</language>
@@ -13,7 +13,7 @@
             <title><![CDATA[Words sequencing]]></title>
             <link>https://chromatone.center/practice/generative/words/</link>
             <guid>https://chromatone.center/practice/generative/words/</guid>
-            <pubDate>Sun, 17 Nov 2024 08:10:17 GMT</pubDate>
+            <pubDate>Mon, 18 Nov 2024 08:09:23 GMT</pubDate>
             <description><![CDATA[&lt;script setup
 import { defineClientComponent } from 'vitepress'
 const Words = defineClientCompone]]></description>
@@ -24,7 +24,7 @@ const Words = defineClientCompone]]></description>
             <title><![CDATA[Words sequencing]]></title>
             <link>https://chromatone.center/practice/sequencing/words/</link>
             <guid>https://chromatone.center/practice/sequencing/words/</guid>
-            <pubDate>Sun, 17 Nov 2024 08:10:17 GMT</pubDate>
+            <pubDate>Mon, 18 Nov 2024 08:09:23 GMT</pubDate>
             <description><![CDATA[This page is moved to https://chromatone.center/practice/generative/words/]]></description>
             <content:encoded><![CDATA[<p>This page is moved to <a href="https://chromatone.center/practice/generative/words/" target="_blank" rel="noreferrer">https://chromatone.center/practice/generative/words/</a></p>
 ]]></content:encoded>
@@ -34,7 +34,7 @@ const Words = defineClientCompone]]></description>
             <title><![CDATA[ZZFXM]]></title>
             <link>https://chromatone.center/practice/sequencing/zzfxm/</link>
             <guid>https://chromatone.center/practice/sequencing/zzfxm/</guid>
-            <pubDate>Sun, 17 Nov 2024 08:10:17 GMT</pubDate>
+            <pubDate>Mon, 18 Nov 2024 08:09:23 GMT</pubDate>
             <description><![CDATA[&lt;script setup
 import { defineClientComponent } from 'vitepress'
 const ZzFxm = defineClientCompone]]></description>
@@ -46,7 +46,7 @@ const ZzFxm = defineClientCompone]]></description>
             <title><![CDATA[Synth snippets]]></title>
             <link>https://chromatone.center/practice/synth/snippets.html</link>
             <guid>https://chromatone.center/practice/synth/snippets.html</guid>
-            <pubDate>Sun, 17 Nov 2024 08:10:17 GMT</pubDate>
+            <pubDate>Mon, 18 Nov 2024 08:09:23 GMT</pubDate>
             <description><![CDATA[Code pieces]]></description>
             <content:encoded><![CDATA[<h3 id="skew-by-upheaver" tabindex="-1">Skew by <a href="https://discord.com/channels/826071713426178078/834787928688689172/1123676571279048875" target="_blank" rel="noreferrer">upheaver</a> <a class="header-anchor" href="#skew-by-upheaver" aria-label="Permalink to &quot;Skew by [upheaver](https://discord.com/channels/826071713426178078/834787928688689172/1123676571279048875)&quot;"></a></h3>
 <p>Sharing a useful snippet. JUCE's logskew function in Typescript, if anyone wants to scale their parameter values (for example convert 0-1 range to 20-20000 hz in a non linear way) :</p>
@@ -72,7 +72,7 @@ const ZzFxm = defineClientCompone]]></description>
             <title><![CDATA[Reharmonization]]></title>
             <link>https://chromatone.center/theory/harmony/reharmonization/</link>
             <guid>https://chromatone.center/theory/harmony/reharmonization/</guid>
-            <pubDate>Sun, 17 Nov 2024 08:10:17 GMT</pubDate>
+            <pubDate>Mon, 18 Nov 2024 08:09:23 GMT</pubDate>
             <description><![CDATA[How to reharmonize a song]]></description>
             <content:encoded><![CDATA[<youtube-embed video="lz3WR-F_pnM" /><h2 id="reharmonization-chord-substitution-but-for-the-whole-chord-progression" tabindex="-1">Reharmonization = Chord substitution but for the whole chord progression <a class="header-anchor" href="#reharmonization-chord-substitution-but-for-the-whole-chord-progression" aria-label="Permalink to &quot;Reharmonization = Chord substitution but for the whole chord progression&quot;"></a></h2>
 <p>Reharmonization is used to:</p>
@@ -4903,10 +4903,7 @@ sixteenth:  1  e  &amp;  a  2  e  &amp;  a  3  e  &amp;  a  4  e  &amp;  a
             <guid>https://chromatone.center/practice/rhythm/circle/</guid>
             <pubDate>Sat, 02 Oct 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[Looped rhythm and polyrhythm exploration tool]]></description>
-            <content:encoded><![CDATA[<client-only >
-<rhythm-circle style="position: sticky; top: 0;" /></client-only >
-<div class="info custom-block"><p class="custom-block-title">INFO</p>
-<h2 id="welcome-to-the-all-mighty-chromatone-circular-metronome" tabindex="-1">Welcome to the all-mighty Chromatone circular metronome <a class="header-anchor" href="#welcome-to-the-all-mighty-chromatone-circular-metronome" aria-label="Permalink to &quot;Welcome to the all-mighty Chromatone circular metronome&quot;"></a></h2>
+            <content:encoded><![CDATA[<h2 id="welcome-to-the-all-mighty-chromatone-circular-metronome" tabindex="-1">Welcome to the all-mighty Chromatone circular metronome <a class="header-anchor" href="#welcome-to-the-all-mighty-chromatone-circular-metronome" aria-label="Permalink to &quot;Welcome to the all-mighty Chromatone circular metronome&quot;"></a></h2>
 <p>It's the center for deep exploration of any kind of rhythmic patterns. We have two independent wheels ready to hold any variety of looping beats. Here's how you operate it:</p>
 <ol>
 <li>Set the <strong>number of steps</strong> with the top left slider. The external loop takes up to 48 steps for long sequences. The internal loop is smaller and can hold up to 16 steps.</li>
@@ -4929,12 +4926,6 @@ sixteenth:  1  e  &amp;  a  2  e  &amp;  a  3  e  &amp;  a  4  e  &amp;  a
 <li>Explore our <a href="./../../../theory/rhythm/">rhythm theory section</a> for inspiration about what to dial into the loops. This app can act as a simple visual and audial cue for your music practice or become a tool to explore the enormous space of possible rhythmic combinations. Polyrhythms have never been so easy to see and internalise. The colors and the form of the metronome can help sticking to the tempo even in silence. Be creative and feel the power of this rhythm visualisation tool.</li>
 <li>You can also control all the parameters of the metronome with your MIDI-controller. Use the knobs to send the <strong>CC messages number 1-16</strong> on <strong>channel 1</strong> for it. Two loops are independently controlled by these MIDI commands. You can easily change the CC numbers here.</li>
 </ol>
-</div>
-<div class="info custom-block"><p class="custom-block-title">INFO</p>
-<client-only >
-  <rhythm-circle-midi-controls />
-</client-only >
-</div>
 ]]></content:encoded>
             <enclosure url="https://chromatone.center/tempo.png" length="0" type="image/png"/>
         </item>

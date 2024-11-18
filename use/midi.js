@@ -83,14 +83,10 @@ export function learnCC({ number, channel }) {
   return val;
 }
 
-export function playKeyOnce(note, attack, duration) {
-  playKey(note, attack, duration)
-  requestAnimationFrame(() => playKey(note, 0))
-}
 
-export function playKey(noteName = 'A4', attack = 0, duration = 1, midiOut = true) {
+export function playKey(noteNum = 69, attack = 0, duration = 1, midiOut = true) {
   requestAnimationFrame(() => {
-    const note = new Note(noteName, {
+    const note = new Note(noteNum, {
       attack,
       release: attack,
       duration
@@ -147,7 +143,6 @@ export function useMidi() {
     midiPlay,
     midiStop,
     playKey,
-    playKeyOnce,
     stopAll,
     getPitchBend,
     sendPitchBend,
@@ -486,10 +481,11 @@ export function playNoteOnce(note, velocity, duration = 300) {
 
 
 export function playNote(note, velocity = 0.9) {
+
   if (Array.isArray(note)) {
     note.forEach(n => playNote(n))
   } else {
-    playKey(note, velocity)
+    playKey(Utilities.guessNoteNumber(note), velocity)
   }
 }
 
@@ -501,6 +497,6 @@ export function stopNote(note) {
   if (Array.isArray(note)) {
     note.forEach(n => stopNote(n))
   } else {
-    playKey(note, 0)
+    playKey(Utilities.guessNoteNumber(note), 0)
   }
 }

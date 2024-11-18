@@ -26,12 +26,12 @@
 	"packageManager": "pnpm@9.13.2",
 	"exports": {
 		".": {
-			"import": "./lib/use-chromatone.js",
-			"browser": "./lib/use-chromatone.js"
+			"import": "./lib/index.js",
+			"browser": "./lib/index.js"
 		}
 	},
-	"main": "./lib/use-chromatone.js",
-	"module": "./lib/use-chromatone.js",
+	"main": "./lib/index.js",
+	"module": "./lib/index.js",
 	"files": [
 		"lib"
 	],

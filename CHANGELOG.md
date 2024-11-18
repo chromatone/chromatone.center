@@ -1,3 +1,41 @@
+## v2.9.9 (2024-11-19)
+
+### New feature:
+
+- modular exports([`9d9c840`](https://github.com/chromatone/chromatone.center/commit/9d9c84042b303014babe53a01fab6f2c0e97a7d9)) (by davay)
+- multiple entry lib([`0b244f8`](https://github.com/chromatone/chromatone.center/commit/0b244f82dd4c406cf534b8aff8c5cec0e68b6c9e)) (by davay)
+- playNote now expects a MIDI number (will guess from string or number)([`ffca5bf`](https://github.com/chromatone/chromatone.center/commit/ffca5bff4cee215628d2a959c8e14c5f14bfdf8a)) (by davay)
+- close sidebar on iframe app open([`ff5a0b5`](https://github.com/chromatone/chromatone.center/commit/ff5a0b54f78bf45b59ccf6beb0753af4a5418dae)) (by davay)
+- cleaner midi functions([`fc61f7f`](https://github.com/chromatone/chromatone.center/commit/fc61f7fa807d342279c278cfa7dcef8ea3e9c9b8)) (by davay)
+- circular metronome has it's own subdomain now([`1b84773`](https://github.com/chromatone/chromatone.center/commit/1b847737cb0ea04e869c8f03fc71a715a5e23da6)) (by davay)
+
+### Bugs fixed:
+
+- correct exports([`13621f9`](https://github.com/chromatone/chromatone.center/commit/13621f9dd1d2ce5a4556c27d5c3350e3c8c80749)) (by davay)
+
+## v2.9.9-0 (2024-11-17)
+
+### New feature:
+
+- embed basic click sounds([`846b0bb`](https://github.com/chromatone/chromatone.center/commit/846b0bbbcaac624fd5309f05828174c0dd2582a8)) (by davay)
+
+## v2.9.8 (2024-11-17)
+
+### New feature:
+
+- fresh deps and ligher audio files([`2e2dacd`](https://github.com/chromatone/chromatone.center/commit/2e2dacd6854669c124f4ba8ef8c45e86d0098051)) (by davay)
+- real book better chords and mMaj fix([`b45816d`](https://github.com/chromatone/chromatone.center/commit/b45816dd69d650342709983161cdb72953d9fcc8)) (by davay)
+- elements synth redirect([`a68b616`](https://github.com/chromatone/chromatone.center/commit/a68b616d65eca1c564e070073b397efab0650f4a)) (by davay)
+- Elements synth is now a standalone web-app([`b9a520c`](https://github.com/chromatone/chromatone.center/commit/b9a520c2380b66d082e6fa097e00a76efd52ea6e)) (by davay)
+- more external deps([`246248f`](https://github.com/chromatone/chromatone.center/commit/246248f1602f3d8a40a68d8a8bb05566bca4aaea)) (by davay)
+
+## v2.9.8-0 (2024-11-08)
+
+### New feature:
+
+- peer dependencies for the lib([`956c03c`](https://github.com/chromatone/chromatone.center/commit/956c03c7cdddf70008b96ff8260805b318f77776)) (by davay)
+- reexport webmidi Utilities([`a2eb013`](https://github.com/chromatone/chromatone.center/commit/a2eb013f0987e6c3c459b0d844042aec3f3ba1e0)) (by davay)
+
 ## v2.9.7 (2024-11-08)
 
 ### New feature:

@@ -25,10 +25,21 @@
 	},
 	"packageManager": "pnpm@9.13.2",
 	"exports": {
-		".": {
-			"import": "./lib/index.js",
-			"browser": "./lib/index.js"
-		}
+		".": "./lib/index.js",
+		"./audio": "./lib/audio.js",
+		"./calculations": "./lib/calculations.js",
+		"./chroma": "./lib/chroma.js",
+		"./colors": "./lib/colors.js",
+		"./loop": "./lib/loop.js",
+		"./mic": "./lib/mic.js",
+		"./midi": "./lib/midi.js",
+		"./mouse": "./lib/mouse.js",
+		"./recorder": "./lib/recorder.js",
+		"./sequence": "./lib/sequence.js",
+		"./soundfont": "./lib/soundfont.js",
+		"./tempo": "./lib/tempo.js",
+		"./theory": "./lib/theory.js",
+		"./tuner": "./lib/tuner.js"
 	},
 	"main": "./lib/index.js",
 	"module": "./lib/index.js",

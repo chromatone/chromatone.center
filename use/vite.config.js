@@ -29,7 +29,18 @@ export default defineConfig({
     lib: {
       entry: {
         index: resolve(dirname, './index.js'),
+        audio: resolve(dirname, './audio.js'),
+        chroma: resolve(dirname, './chroma.js'),
+        loop: resolve(dirname, './loop.js'),
+        mic: resolve(dirname, './mic.js'),
+        mouse: resolve(dirname, './mouse.js'),
+        recorder: resolve(dirname, './recorder.js'),
         midi: resolve(dirname, './midi.js'),
+        sequence: resolve(dirname, './sequence.js'),
+        soundfont: resolve(dirname, './soundfont.js'),
+        tempo: resolve(dirname, './tempo.js'),
+        theory: resolve(dirname, './theory.js'),
+        tuner: resolve(dirname, './tuner.js'),
         calculations: resolve(dirname, './calculations.js'),
         colors: resolve(dirname, './colors.js'),
       },
@@ -38,7 +49,7 @@ export default defineConfig({
     },
     chunkSizeWarningLimit: 100000,
     rollupOptions: {
-      external: ['vue', '@elemaudio/core', '@elemaudio/web-renderer', 'tone', 'webmidi', 'tonal', 'meyda', 'aubiojs', '@vueuse/core', '@vueuse/math', 'recordrtc'],
+      external: ['vue', '@elemaudio/core', '@elemaudio/web-renderer', 'tone', 'webmidi', 'tonal', 'meyda', 'aubiojs', '@vueuse/core', '@vueuse/math', 'recordrtc', 'colord'],
     },
   },
 })

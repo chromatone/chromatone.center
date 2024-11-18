@@ -27,14 +27,18 @@ export default defineConfig({
     minify: true,
     outDir: "../lib",
     lib: {
-      entry: resolve(dirname, './index.js'),
+      entry: {
+        index: resolve(dirname, './index.js'),
+        midi: resolve(dirname, './midi.js'),
+        calculations: resolve(dirname, './calculations.js'),
+        colors: resolve(dirname, './colors.js'),
+      },
       name: 'use-chromatone',
-      fileName: 'use-chromatone',
       formats: ["es"],
     },
     chunkSizeWarningLimit: 100000,
     rollupOptions: {
-      external: ['vue', '@elemaudio/core', '@elemaudio/web-renderer', 'tone', 'webmidi', 'tonal', 'meyda'],
+      external: ['vue', '@elemaudio/core', '@elemaudio/web-renderer', 'tone', 'webmidi', 'tonal', 'meyda', 'aubiojs', '@vueuse/core', '@vueuse/math', 'recordrtc'],
     },
   },
 })

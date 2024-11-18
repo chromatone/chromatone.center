@@ -1,6 +1,5 @@
 <script setup>
 import { ref } from 'vue';
-import { Note } from 'tonal';
 
 import { noteColor } from '#/use/colors';
 import { useMidi } from '#/use/midi';
@@ -37,12 +36,9 @@ function startKey(note, event) {
   const adjustedVelocity = 0.3 + (logVelocity * 0.7);
   const scaleFactor = globalScale.isIn(notes[(note + 3) % 12]) ? 1 : 0.5;
   const finalVelocity = adjustedVelocity * scaleFactor;
-  playNote(Note.fromMidi(note), finalVelocity)
+  playNote(note, finalVelocity)
 }
 
-function stopKey(note, event) {
-  stopNote(Note.fromMidi(note))
-}
 
 const noteKey = ref()
 
@@ -60,9 +56,9 @@ g.note(
     :fill="noteColor(note + 3, null, activeNotes[note] ? 1 : 0.1, globalScale.isIn(notes[(note + 3) % 12]) ? 1 : .4)"
     @pointerdown.prevent="startKey(note, $event)", 
     @pointerenter="pressed ? startKey(note, $event) : null"
-    @pointerleave="stopKey(note, $event)", 
-    @pointerup.prevent="stopKey(note, $event)", 
-    @touchcancel="stopNote(note, $event)"
+    @pointerleave="stopNote(note)", 
+    @pointerup.prevent="stopNote(note)", 
+    @touchcancel="stopNote(note)"
     )
   g.marks.pointer-events-none
     line(

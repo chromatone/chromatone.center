@@ -183,9 +183,7 @@ export function useCircles() {
           hitBody.render.fillStyle = originalStyle;
         }
 
-        const note = Note.fromMidi(pair[body].isStatic ? 33 + globalScale.tonic : hitBody.data?.note || 33 + globalScale.tonic);
-
-        playNoteOnce(note, velocity, 100)
+        playNoteOnce(pair[body].isStatic ? 33 + globalScale.tonic : hitBody.data?.note || 33 + globalScale.tonic, velocity, 100)
 
         setTimeout(() => {
           if (!['hole', 'wall'].includes(hitBody.label)) {

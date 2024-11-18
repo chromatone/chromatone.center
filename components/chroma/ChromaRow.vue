@@ -36,7 +36,7 @@ const state = reactive({
 
 function hover(i, bit) {
   if (bit == 1) {
-    playsNote(i + globalScale?.tonic)
+    playNoteOnce(i + globalScale?.tonic + 57)
   }
 }
 
@@ -72,7 +72,7 @@ const chordNotes = computed(() => {
 function arpeggiate(octave = false) {
   let playedNotes = [...chordNotes.value]
   if (octave) {
-    playedNotes.push(Frequency(globalScale?.tonic + 57 + 12, 'midi').toNote())
+    playedNotes.push(globalScale?.tonic + 57 + 12)
     let back = [...chordNotes.value].reverse()
     playedNotes = [...playedNotes, ...back]
   }
@@ -83,13 +83,6 @@ function arpeggiate(octave = false) {
     }, i * 1000 / (2 * tempo.bpm / 60))
   })
 }
-
-function playsNote(note = 0, octave = 0) {
-  let freq = Frequency(note + 57, 'midi')
-  playNoteOnce(freq.toNote())
-}
-
-
 
 </script>
 

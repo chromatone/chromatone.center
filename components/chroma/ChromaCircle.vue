@@ -35,7 +35,7 @@ const chord = computed(() => ChordType.get(props.chroma));
 const scale = computed(() => ScaleType.get(props.chroma).name)
 
 function toggleNote(n) {
-  playNoteOnce(notes[n] + 3, 0.5, 200)
+  playNoteOnce(69 + n, 0.5, 200)
   globalScale.tonic = n;
 }
 

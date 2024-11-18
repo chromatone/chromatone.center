@@ -4,7 +4,6 @@ import { notes } from '#/use/theory'
 import { playChroma, stopChroma } from '#/use/chroma'
 import { globalScale } from '#/use/global'
 import { chromaColorMix, noteColor } from "#/use/colors"
-import { Frequency } from 'tone'
 import { colord } from 'colord'
 import { computed } from 'vue'
 import { ChordType, ScaleType } from 'tonal'
@@ -39,14 +38,10 @@ const steps = computed(() => {
 
 function hover(step) {
   if (step.active) {
-    playNote(step.pitch)
+    playNoteOnce(step.pitch + 57)
   }
 }
 
-function playNote(note = 0, octave = 0) {
-  let freq = Frequency(note + 57, 'midi')
-  playNoteOnce(freq.toNote())
-}
 </script>
 
 <template lang="pug">

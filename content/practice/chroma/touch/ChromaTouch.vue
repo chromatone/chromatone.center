@@ -63,13 +63,13 @@ function handleTouch(ev) {
 watch(voices, (vs, prev) => {
   for (let v in vs) {
     if (vs[v]?.num != prev[v]?.num) {
-      playNote(notes[vs[v]?.pitch] + (vs[v]?.octave + (vs[v]?.pitch >= 3 ? 4 : 3)))
+      playNote(vs[v]?.pitch + 57 + vs[v]?.octave * 12)
     }
   }
   nextTick(() => {
     for (let p in prev) {
       if (prev[p]?.num != vs[p]?.num) {
-        stopNote(notes[prev[p]?.pitch] + (prev[p]?.octave + (prev[p]?.pitch >= 3 ? 4 : 3)))
+        stopNote(prev[p]?.pitch + 57 + prev[p]?.octave * 12)
       }
     }
   })

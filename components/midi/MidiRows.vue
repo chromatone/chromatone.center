@@ -1,7 +1,7 @@
 <script setup>
 import { computed, reactive, watch } from 'vue';
 import { useMidi, useSequence, useTempo, playNoteOnce } from '#/use/';
-import { getTransport, Part, Frequency } from 'tone'
+import { getTransport, Part } from 'tone'
 import { Midi } from '@tonejs/midi'
 
 const Transport = getTransport()
@@ -22,8 +22,7 @@ const totalTicks = computed(() => (meter.over * Transport.PPQ * 4 / meter.under)
 const circularTicks = computed(() => tempo.ticks % totalTicks.value)
 
 const part = new Part((time, note) => {
-	console.log(note)
-	playNoteOnce(Frequency(note.midi, "midi").toNote())
+	playNoteOnce(note.midi)
 }).set({
 	loop: true,
 	loopEnd: '800i',
@@ -39,7 +38,7 @@ const allNotes = reactive([])
 const { track, midiFile } = useMidiTracks()
 
 watch(() => midi.note, note => {
-	playNoteOnce(Frequency(note.midi, "midi").toNote())
+	playNoteOnce(note.midi)
 	if (!row.recording || !tempo.playing) return
 	if (note.velocity > 0) {
 		activeNotes[note.number] = circularTicks.value

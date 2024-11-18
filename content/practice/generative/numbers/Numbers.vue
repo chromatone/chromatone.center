@@ -29,9 +29,8 @@ function playSequence() {
 watch(midiArray, arr => {
 
   arr.forEach((midiNote, i) => {
-    const note = Note.fromMidi(midiNote)
     setTimeout(() => {
-      playNoteOnce(note)
+      playNoteOnce(midiNote)
     }, 150 * i + 2)
 
   })

@@ -47,11 +47,10 @@ function coord(n = 0, q = 0.5) {
 const pressed = ref()
 
 function keyPlay(midiNote, event, off, velocity) {
-  let n = Note.fromMidi(midiNote)
   if (!off) {
-    playNote(n, velocity)
+    playNote(midiNote, velocity)
   } else {
-    stopNote(n)
+    stopNote(midiNote)
   }
 }
 

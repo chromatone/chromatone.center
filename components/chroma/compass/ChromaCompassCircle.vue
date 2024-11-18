@@ -104,8 +104,7 @@ function playNoteNum(note = 0, octave = 0) {
     note = note + 12
   }
   note = note + 12 * octave
-  let freq = Frequency(note + 57, 'midi')
-  playNoteOnce(freq.toNote())
+  playNoteOnce(note + 57)
 }
 
 const chordNotes = computed(() => {

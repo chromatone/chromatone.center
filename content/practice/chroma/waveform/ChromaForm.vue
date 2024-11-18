@@ -40,8 +40,7 @@ const sounding = ref(false)
 watchEffect(() => {
   if (sounding.value) {
     for (let note in activeNotes.value) {
-      let oct = note < 3 ? 3 : 4;
-      playNote(notes[note] + oct)
+      playNote(note + 57)
     }
   } else {
     stopAll()

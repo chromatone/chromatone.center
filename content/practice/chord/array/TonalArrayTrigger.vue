@@ -44,22 +44,22 @@ const activeMidi = computed(() => {
 });
 
 
-const chordNames = computed(() => {
+const chordNotes = computed(() => {
   return chordPitches.value.map(pitch => {
-    return Frequency(pitchFreq(pitch)).transpose(-12 + 12 * midi.offset).toNote()
+    return pitch + 57 + 12 * midi.offset
   })
 })
 
 function playChord() {
   playing.value = true
-  playNote(chordNames.value)
-  midiPlay(chordNames.value)
+  playNote(chordNotes.value)
+  midiPlay(chordNotes.value)
 }
 
 function stopChord() {
   playing.value = false
-  stopNote(chordNames.value)
-  midiStop(chordNames.value)
+  stopNote(chordNotes.value)
+  midiStop(chordNotes.value)
 }
 
 </script>

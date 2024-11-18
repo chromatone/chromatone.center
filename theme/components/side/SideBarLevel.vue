@@ -14,6 +14,8 @@ const props = defineProps({
   level: { type: Number, default: 0 }
 })
 
+const emit = defineEmits(['close'])
+
 
 const { pages, children } = usePages({ path: props.path }, data)
 </script>
@@ -34,7 +36,7 @@ transition(name="fade")
       a(
         :href="cleanLink(dot.url)" 
         :id="dot?.frontmatter?.title" 
-
+        @click="dot?.frontmatter?.iframe && emit('close')"
         :style="{ color: level == 0 ? lchToHsl(d, children.length) : 'currentColor' }") 
         .flex-auto(:class="{ 'text-xl font-bold': level == 0 }") {{ dot?.frontmatter?.title }}
         .flex-1

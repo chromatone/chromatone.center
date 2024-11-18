@@ -204,7 +204,7 @@ client-only
     a.text-xl.p-2.m-2.block.font-bold(
       href="/practice/"
       ) Practice
-    BarLevel(path="/practice/" :level="0")
+    BarLevel(path="/practice/" :level="0" @close="practiceOpen = false")
 </template>
 
 <style lang="postcss" scoped>

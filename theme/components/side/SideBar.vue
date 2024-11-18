@@ -10,7 +10,7 @@ defineProps({
   open: { type: Boolean, required: true },
 });
 
-defineEmits(['close'])
+const emit = defineEmits(['close'])
 
 const route = useRoute();
 
@@ -39,10 +39,10 @@ transition(name="fade")
 .panel(:class="{ open }")
   .mt-17px.ml-52px.text-xl.mb-4
     a.no-underline(href="/", :aria-label="`${site.title}, go to main page`") {{ site.title }}
-  nav-search(@close="search=false" :focus="search")
-  SideBarLevel(path="/" :level="0")
+  nav-search(@close="search = false" :focus="search")
+  SideBarLevel(path="/" :level="0" @close="emit('close')")
   .flex-1
-  a.opacity-20.p-4.mt-1.hover-opacity-80.flex.items-center.gap-2(href="/" v-if="route.path!='/'") 
+  a.opacity-20.p-4.mt-1.hover-opacity-80.flex.items-center.gap-2(href="/" v-if="route.path != '/'") 
     .i-la-home
     .p-0 Back to main
 </template>

@@ -4,7 +4,7 @@
         <title>Chromatone</title>
         <link>https://chromatone.center</link>
         <description>Visual Music Language development updates and more</description>
-        <lastBuildDate>Mon, 18 Nov 2024 17:04:00 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 19 Nov 2024 10:33:28 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en-EN</language>
@@ -13,7 +13,7 @@
             <title><![CDATA[Words sequencing]]></title>
             <link>https://chromatone.center/practice/generative/words/</link>
             <guid>https://chromatone.center/practice/generative/words/</guid>
-            <pubDate>Mon, 18 Nov 2024 17:01:31 GMT</pubDate>
+            <pubDate>Tue, 19 Nov 2024 10:31:31 GMT</pubDate>
             <description><![CDATA[&lt;script setup
 import { defineClientComponent } from 'vitepress'
 const Words = defineClientCompone]]></description>
@@ -24,7 +24,7 @@ const Words = defineClientCompone]]></description>
             <title><![CDATA[Words sequencing]]></title>
             <link>https://chromatone.center/practice/sequencing/words/</link>
             <guid>https://chromatone.center/practice/sequencing/words/</guid>
-            <pubDate>Mon, 18 Nov 2024 17:01:31 GMT</pubDate>
+            <pubDate>Tue, 19 Nov 2024 10:31:31 GMT</pubDate>
             <description><![CDATA[This page is moved to https://chromatone.center/practice/generative/words/]]></description>
             <content:encoded><![CDATA[<p>This page is moved to <a href="https://chromatone.center/practice/generative/words/" target="_blank" rel="noreferrer">https://chromatone.center/practice/generative/words/</a></p>
 ]]></content:encoded>
@@ -34,7 +34,7 @@ const Words = defineClientCompone]]></description>
             <title><![CDATA[ZZFXM]]></title>
             <link>https://chromatone.center/practice/sequencing/zzfxm/</link>
             <guid>https://chromatone.center/practice/sequencing/zzfxm/</guid>
-            <pubDate>Mon, 18 Nov 2024 17:01:31 GMT</pubDate>
+            <pubDate>Tue, 19 Nov 2024 10:31:31 GMT</pubDate>
             <description><![CDATA[&lt;script setup
 import { defineClientComponent } from 'vitepress'
 const ZzFxm = defineClientCompone]]></description>
@@ -46,7 +46,7 @@ const ZzFxm = defineClientCompone]]></description>
             <title><![CDATA[Synth snippets]]></title>
             <link>https://chromatone.center/practice/synth/snippets.html</link>
             <guid>https://chromatone.center/practice/synth/snippets.html</guid>
-            <pubDate>Mon, 18 Nov 2024 17:01:31 GMT</pubDate>
+            <pubDate>Tue, 19 Nov 2024 10:31:31 GMT</pubDate>
             <description><![CDATA[Code pieces]]></description>
             <content:encoded><![CDATA[<h3 id="skew-by-upheaver" tabindex="-1">Skew by <a href="https://discord.com/channels/826071713426178078/834787928688689172/1123676571279048875" target="_blank" rel="noreferrer">upheaver</a> <a class="header-anchor" href="#skew-by-upheaver" aria-label="Permalink to &quot;Skew by [upheaver](https://discord.com/channels/826071713426178078/834787928688689172/1123676571279048875)&quot;"></a></h3>
 <p>Sharing a useful snippet. JUCE's logskew function in Typescript, if anyone wants to scale their parameter values (for example convert 0-1 range to 20-20000 hz in a non linear way) :</p>
@@ -72,7 +72,7 @@ const ZzFxm = defineClientCompone]]></description>
             <title><![CDATA[Reharmonization]]></title>
             <link>https://chromatone.center/theory/harmony/reharmonization/</link>
             <guid>https://chromatone.center/theory/harmony/reharmonization/</guid>
-            <pubDate>Mon, 18 Nov 2024 17:01:31 GMT</pubDate>
+            <pubDate>Tue, 19 Nov 2024 10:31:31 GMT</pubDate>
             <description><![CDATA[How to reharmonize a song]]></description>
             <content:encoded><![CDATA[<youtube-embed video="lz3WR-F_pnM" /><h2 id="reharmonization-chord-substitution-but-for-the-whole-chord-progression" tabindex="-1">Reharmonization = Chord substitution but for the whole chord progression <a class="header-anchor" href="#reharmonization-chord-substitution-but-for-the-whole-chord-progression" aria-label="Permalink to &quot;Reharmonization = Chord substitution but for the whole chord progression&quot;"></a></h2>
 <p>Reharmonization is used to:</p>
@@ -1507,7 +1507,7 @@ Multiple stages of valve gain/clipping can be &quot;cascaded&quot; to produce a 
             <guid>https://chromatone.center/practice/chord/fifths/</guid>
             <pubDate>Thu, 02 Jun 2022 00:00:00 GMT</pubDate>
             <description><![CDATA[12 major chords organized in a sequence of perfect fifths along with their relative minors]]></description>
-            <content:encoded><![CDATA[<ChordFifths style="position: sticky; top: 0;" /><div class="info custom-block"><p class="custom-block-title">INFO</p>
+            <content:encoded><![CDATA[<div class="info custom-block"><p class="custom-block-title">INFO</p>
 <h2 id="the-double-circle-of-fifths-a-tool-to-explore-chords-in-tonal-space" tabindex="-1">The double circle of fifths. A tool to explore chords in tonal space <a class="header-anchor" href="#the-double-circle-of-fifths-a-tool-to-explore-chords-in-tonal-space" aria-label="Permalink to &quot;The double circle of fifths. A tool to explore chords in tonal space&quot;"></a></h2>
 <p>The circle of fifths organizes pitches in a sequence of perfect fifths, generally shown as a circle with the pitches (and their corresponding keys) in a clockwise progression. Musicians and composers often use the circle of fifths to describe the musical relationships between pitches. Its design is helpful in composing and harmonizing melodies, building chords, and modulating to different keys within a composition.</p>
 <p>Moving counterclockwise, the pitches descend by a fifth, but ascending by a perfect fourth will lead to the same note an octave higher (therefore in the same pitch class). Moving counter-clockwise from C could be thought of as descending by a fifth to F, or ascending by a fourth to F.</p>
@@ -1517,7 +1517,7 @@ Multiple stages of valve gain/clipping can be &quot;cascaded&quot; to produce a 
 <p>This scheme helps find interesting chord progressions either in one predefined key or traversing different keys in complex modulation movements. Neighbouring sectors include scales that are easy to borrow chords from and to travel to with simple moves like common-chord modulation. Once you find any other path from one key to another you can trace its form on the circle and transpose it to any key you're in or you want to move to. The article about <a href="https://en.wikipedia.org/wiki/Secondary_chord" target="_blank" rel="noreferrer">secondary chords</a> is a good starting poing in this exploration.</p>
 </div>
 ]]></content:encoded>
-            <enclosure url="https://chromatone.center/fifths.png" length="0" type="image/png"/>
+            <enclosure url="https://chromatone.center/screen.png" length="0" type="image/png"/>
         </item>
         <item>
             <title><![CDATA[Table]]></title>

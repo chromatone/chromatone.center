@@ -3,18 +3,11 @@ title: Circle of fifths
 description: 12 major chords organized in a sequence of perfect fifths along with their relative minors
 date: 2022-06-02
 cover: fifths.png
-layout: app
+layout: iframe
+standalone: true
+iframe: https://fifths.chromatone.center
 ---
 
-<script setup>
-import { defineClientComponent } from 'vitepress'
-
-const ChordFifths = defineClientComponent(() => {
-  return import('./ChordFifths.vue')
-})
-</script>
-
-<ChordFifths style="position: sticky; top: 0;" />
 
 ::: info
 

@@ -3,41 +3,47 @@
  * @description Chroma 
  */
 
-import { Frequency } from "tone";
 import { playNote, playNoteOnce, stopNote } from "./midi";
 import { rotateArray } from "./calculations";
-import { notes } from './theory'
-import { Note } from "tonal";
 import { globalScale } from "./global";
 
-const allNotes = [...notes].map((n, i) => ({ name: n, pitch: i }))
+function getChromaNotes(chroma = globalScale.chroma, tonic = globalScale.tonic, inversion = 0) {
+  // Get the initial notes array
+  const notes = Array(12).fill(true)
+    .map((_, n) => n + tonic + 57)
+    .filter((_, n) => {
+      if (rotateArray(chroma.split(""), -tonic)[n] == "1") {
+        return true;
+      }
+    });
 
-function getChromaNotes(chroma = globalScale.chroma, tonic = globalScale.tonic) {
-  let shiftChroma = rotateArray(chroma.split(""), -tonic);
-  let chOct = rotateArray(allNotes, -tonic).map((n) => {
-    let noteName = Frequency(n.pitch + tonic + 57, "midi").toNote();
-    return noteName;
-  });
-  let filtered = chOct.filter((val, i) => {
-    if (shiftChroma[i] == "1") {
-      return true;
-    }
-  });
-  return Note.sortedNames(filtered);
+  // If inversion is 0 or invalid, return original array
+  if (inversion <= 0 || inversion >= notes.length) {
+    return notes;
+  }
+
+  // Rotate the array by inversion steps and adjust octaves
+  const rotatedNotes = [...notes.slice(inversion), ...notes.slice(0, inversion)]
+    .map((note, index) => {
+      // Add 12 (one octave) to all notes that were moved to the end
+      if (index >= notes.length - inversion) {
+        return note + 12;
+      }
+      return note;
+    });
+
+  return rotatedNotes;
 }
 
-export function playChromaOnce(chroma, tonic) {
-  let notes = getChromaNotes(chroma, tonic);
-  playNoteOnce(notes)
+export function playChromaOnce(chroma, tonic, inversion) {
+  playNoteOnce(getChromaNotes(chroma, tonic, inversion))
 }
 
-export function playChroma(chroma, tonic) {
-  let notes = getChromaNotes(chroma, tonic);
-  playNote(notes)
+export function playChroma(chroma, tonic, inversion) {
+  playNote(getChromaNotes(chroma, tonic, inversion))
 }
 
-export function stopChroma(chroma, tonic) {
-  let notes = getChromaNotes(chroma, tonic);
-  stopNote(notes)
+export function stopChroma(chroma, tonic, inversion) {
+  stopNote(getChromaNotes(chroma, tonic, inversion))
 }
 

@@ -1,5 +1,5 @@
 <script setup>
-import { computed, nextTick, onMounted, ref, watch } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 import { globalScale, tempo } from '#/use'
 import { useClamp } from '@vueuse/math';
 import { TransitionPresets, useTimestamp, useTransition } from '@vueuse/core'
@@ -87,7 +87,7 @@ const started = ref(false)
 <template lang="pug">
 #screen.bg-light-900.dark-bg-dark-800
   .flex.flex-col.gap-4.p-4.justify-between.relative.items-stretch.min-h-100vh.transition.duration-1000(
-  :style="{backgroundColor:colord(colorMix).alpha(.3).toHex()}"
+  :style="{ backgroundColor: colord(colorMix).alpha(.3).toHex() }"
     )
     .text-4xl.text-center RANDOM JAM 
 
@@ -95,40 +95,40 @@ const started = ref(false)
 
       .text-center.text-2xl.sm-text-4xl.tabular-nums.rounded-full.px-4.py-2.shadow(
         style="flex: 1 1 140px"
-        :style="{backgroundColor: tempoColor}"
+        :style="{ backgroundColor: tempoColor }"
         ) {{ output.toFixed() }} BPM
-      button.transition.duration-1000.text-4xl.bg-dark-400.p-4.rounded-full.shadow-xl(@click="randomize()" :style="{backgroundColor:colorMix}")
-        .p-0(:class="{'animate-spin':spin}")
+      button.transition.duration-1000.text-4xl.bg-dark-400.p-4.rounded-full.shadow-xl(@click="randomize()" :style="{ backgroundColor: colorMix }")
+        .p-0(:class="{ 'animate-spin': spin }")
           .i-system-uicons-reset.-scale-y-100
       .text-2xl.sm-text-4xl.text-center.rounded-full.px-4.py-2.shadow(
         style="flex: 1 1 140px"
-        :style="{backgroundColor: tonicColor}"
+        :style="{ backgroundColor: tonicColor }"
         ) {{ globalScale.note.name }} {{ globalScale?.set?.name }}
 
 
     .overflow-clip.rounded-lg.flex.items-center.border-1.relative.border-dark-200.border-op-30.dark-border-light-200.dark-border-op-40.py-6
-      .absolute.left-2.z-10 {{fromStart.filter(Boolean).join(' m ')}} s
-      .absolute.right-2.z-10 -{{ tillFinish.filter(Boolean).join(' m ')}} s
+      .absolute.left-2.z-10 {{ fromStart.filter(Boolean).join(' m ') }} s
+      .absolute.right-2.z-10 -{{ tillFinish.filter(Boolean).join(' m ') }} s
 
-      .bg-dark-400.transition.duration-300.top-0.bottom-0.left-0.absolute.flex.items-center(:style="{backgroundColor: colorMix ,width: `${progress*100}%`}")
+      .bg-dark-400.transition.duration-300.top-0.bottom-0.left-0.absolute.flex.items-center(:style="{ backgroundColor: colorMix, width: `${progress * 100}%` }")
 
     .flex.flex-wrap.gap-4.text-center.relative.items-center.justify-stretch.mb-8
       .flex.flex-col.gap-2.w-full.max-h-30vh
         .flex.flex-col.gap-2.w-full
           .flex.gap-2.w-full
-            .p-1.bit(v-for="i in 4" :style="{backgroundColor: i-1 ==position[1] ? tempoColor : 'transparent' }")
+            .p-1.bit(v-for="i in 4" :style="{ backgroundColor: i - 1 == position[1] ? tempoColor : 'transparent' }")
 
           .flex.gap-2.w-full
-            .p-2.bit(v-for="i in 4" :style="{backgroundColor: i-1 ==position[0]%4 ? tempoColor : 'transparent' }")
+            .p-2.bit(v-for="i in 4" :style="{ backgroundColor: i - 1 == position[0] % 4 ? tempoColor : 'transparent' }")
 
           .flex.gap-2.w-full
-            .p-3.bit(v-for="i in 4" :style="{backgroundColor: i-1 ==(Math.floor(position[0]/4))%4 ? tempoColor : 'transparent' }")
+            .p-3.bit(v-for="i in 4" :style="{ backgroundColor: i - 1 == (Math.floor(position[0] / 4)) % 4 ? tempoColor : 'transparent' }")
 
           .flex.gap-2.w-full
-            .p-4.bit(v-for="i in 4" :style="{backgroundColor: i-1 ==(Math.floor(position[0]/4/4))%4 ? tempoColor : 'transparent' }")
+            .p-4.bit(v-for="i in 4" :style="{ backgroundColor: i - 1 == (Math.floor(position[0] / 4 / 4)) % 4 ? tempoColor : 'transparent' }")
           .flex.gap-2.w-full
 
-            .p-5.bit(v-for="i in 4" :style="{backgroundColor: i-1 ==(Math.floor(position[0]/4/4/4))%4 ? tempoColor : 'transparent' }")
+            .p-5.bit(v-for="i in 4" :style="{ backgroundColor: i - 1 == (Math.floor(position[0] / 4 / 4 / 4)) % 4 ? tempoColor : 'transparent' }")
 
 
     chroma-keys.max-h-35vh(

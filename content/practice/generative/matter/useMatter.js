@@ -1,4 +1,4 @@
-import { ref, reactive, watch, onMounted, onBeforeUnmount, nextTick } from 'vue';
+import { ref, reactive, watch, onMounted, onBeforeUnmount } from 'vue';
 import { Render, Composite, Runner, Events, Engine, Mouse, } from 'matter-js';
 import { useResizeObserver } from '@vueuse/core';
 import { useCircles } from './useCircles';

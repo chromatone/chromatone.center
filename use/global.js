@@ -5,7 +5,7 @@
 
 import { notes } from './theory'
 import { ScaleType, Scale, Pcset } from "tonal";
-import { reactive, computed, nextTick, ref } from 'vue'
+import { reactive, computed } from 'vue'
 import { useStorage } from "@vueuse/core";
 import { useClamp } from "@vueuse/math";
 

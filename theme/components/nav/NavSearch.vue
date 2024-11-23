@@ -1,7 +1,7 @@
 <script setup>
 import { onClickOutside, onKeyStroke, useFocus } from "@vueuse/core";
 import Fuse from "fuse.js";
-import { computed, nextTick, onMounted, ref, watch } from "vue";
+import { computed, onMounted, ref, watch } from "vue";
 import { data } from '../../../content/pages.data'
 import { cleanLink } from '../../../theme/pages'
 import { useRouter } from "vitepress";
@@ -48,7 +48,7 @@ onKeyStroke('Escape', () => { input.value = '', focused.value = false })
       v-model="input" 
       placeholder="Search"
       )
-    button.z-400.absolute.right-2(v-if="input" @click="input ='';$emit('close')")
+    button.z-400.absolute.right-2(v-if="input" @click="input = ''; $emit('close')")
       .i-la-times.text-lg
   .flex.flex-col.w-full.gap-2.max-h-80dvh.overflow-y-scroll
     a.px-3.py-3.bg-light-600.rounded.shadow.dark-bg-dark-300.hover-bg-light-100.dark-hover-bg-dark-600.border-1.dark-border-dark-50.border-opacity-20.no-underline(
@@ -56,7 +56,7 @@ onKeyStroke('Escape', () => { input.value = '', focused.value = false })
       @keyup.enter="router.go(cleanLink(candidate.item.url))"
       :href="cleanLink(candidate.item.url)"
       @click="input = ''; $emit('close')"
-      v-for="candidate in candidates.filter(c=>c.score<.3)" :key="candidate"
+      v-for="candidate in candidates.filter(c => c.score < .3)" :key="candidate"
       :style="{ opacity: 1 - candidate.score / 2 }"
       ) 
       .font-bold {{ candidate.item?.frontmatter?.title }}

@@ -5,7 +5,7 @@ import { rotateArray } from '#/use/calculations'
 import { noteColor } from '#/use/colors'
 import { notes, flats } from '#/use/theory'
 import { colord } from 'colord'
-import { reactive, computed, nextTick } from 'vue'
+import { reactive, computed } from 'vue'
 import { ChordType, ScaleType } from 'tonal'
 
 const props = defineProps({

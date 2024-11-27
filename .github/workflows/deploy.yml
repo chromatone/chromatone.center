@@ -11,6 +11,9 @@ on:
     types:
       - buildhook
 
+permissions:
+  contents: write
+
 jobs:
   build:
     name: Build

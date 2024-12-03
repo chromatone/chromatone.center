@@ -1,5 +1,5 @@
 /**
- * @module MidiRender
+ * @module Render
  */
 
 import { Midi } from "@tonejs/midi";

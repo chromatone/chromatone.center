@@ -2,7 +2,7 @@
 import { Midi } from '@tonejs/midi'
 import { noteColor } from "#/use/colors"
 import { now, PolySynth, Synth } from 'tone'
-import { createAndDownloadBlobFile } from '#/use/midiRender'
+import { createAndDownloadBlobFile } from '#/use/render'
 import { computed, reactive, ref, shallowRef, watch } from 'vue';
 
 const midiData = shallowRef()
@@ -122,12 +122,12 @@ function play() {
     control-rotary(
       v-model="map.start"
       :min="0"
-      :max="map.end-1"
+      :max="map.end - 1"
       param="Start"
       )
     control-rotary(
       v-model="map.end"
-      :min="map.start+1"
+      :min="map.start + 1"
       :max="info.duration"
       param="End"
       )
@@ -148,7 +148,7 @@ function play() {
         preserveAspectRatio="none"
         version="1.1",
         baseProfile="full",
-        :viewBox="`${map.start} ${127-range.upper} ${map.end-map.start} ${map.height}`",
+        :viewBox="`${map.start} ${127 - range.upper} ${map.end - map.start} ${map.height}`",
         xmlns="http://www.w3.org/2000/svg",
         )
         g(

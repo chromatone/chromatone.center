@@ -35,6 +35,7 @@
 		"./midi": "./lib/midi.js",
 		"./mouse": "./lib/mouse.js",
 		"./recorder": "./lib/recorder.js",
+		"./render": "./lib/render.js",
 		"./sequence": "./lib/sequence.js",
 		"./soundfont": "./lib/soundfont.js",
 		"./tempo": "./lib/tempo.js",

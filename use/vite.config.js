@@ -43,6 +43,7 @@ export default defineConfig({
         tuner: resolve(dirname, './tuner.js'),
         calculations: resolve(dirname, './calculations.js'),
         colors: resolve(dirname, './colors.js'),
+        render: resolve(dirname, './render.js'),
       },
       name: 'use-chromatone',
       formats: ["es"],

@@ -1,5 +1,5 @@
 <script setup>
-import { renderMidi } from '#/use/midiRender'
+import { renderMidi } from '#/use/render'
 import { tracks, maxRatio } from '#/use/sequence'
 import { loops } from './loops';
 import { reactive, ref, watch } from 'vue'

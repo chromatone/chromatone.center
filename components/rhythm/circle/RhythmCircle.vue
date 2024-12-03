@@ -6,7 +6,7 @@ import { midi } from '#/use/midi'
 import { tempo } from '#/use/tempo'
 import { ref, watch } from 'vue'
 
-import { renderMidi } from '#/use/midiRender'
+import { renderMidi } from '#/use/render'
 import { tracks } from '#/use/sequence'
 import { controls } from './controls'
 

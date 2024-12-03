@@ -23,11 +23,11 @@
 <dd></dd>
 <dt><a href="#module_MIDI">MIDI</a></dt>
 <dd></dd>
-<dt><a href="#module_MidiRender">MidiRender</a></dt>
-<dd></dd>
 <dt><a href="#module_Mouse">Mouse</a></dt>
 <dd></dd>
 <dt><a href="#module_AudioRecorder">AudioRecorder</a></dt>
+<dd></dd>
+<dt><a href="#module_Render">Render</a></dt>
 <dd></dd>
 <dt><a href="#Sequence
 The beat loopsmodule_">Sequence
@@ -244,15 +244,15 @@ Global state
 <a name="module_MIDI"></a>
 
 ## MIDI
-<a name="module_MidiRender"></a>
-
-## MidiRender
 <a name="module_Mouse"></a>
 
 ## Mouse
 <a name="module_AudioRecorder"></a>
 
 ## AudioRecorder
+<a name="module_Render"></a>
+
+## Render
 <a name="Sequence
 The beat loopsmodule_"></a>
 

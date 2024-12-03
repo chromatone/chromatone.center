@@ -8,7 +8,7 @@ import { rotateArray } from "./calculations";
 import { globalScale } from "./global";
 import { Sequence, PanVol, gainToDb, getDraw, PolySynth, start, Midi, Frequency, Time, getContext } from "tone";
 import { midiPlay } from "./midi";
-import { createAndDownloadBlobFile } from "./midiRender";
+import { createAndDownloadBlobFile } from "./render";
 import { createAudioChannel } from './audio'
 import { useStorage } from '@vueuse/core'
 

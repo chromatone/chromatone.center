@@ -2,7 +2,7 @@
 import { Midi } from '@tonejs/midi'
 import { noteColor } from "#/use/colors"
 import { now, PolySynth, Synth, getTransport } from 'tone'
-import { createAndDownloadBlobFile } from '#/use/midiRender'
+import { createAndDownloadBlobFile } from '#/use/render'
 import { useAudio } from '#/use/audio'
 import { reactive, computed } from 'vue'
 

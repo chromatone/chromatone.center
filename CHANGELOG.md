@@ -1,3 +1,9 @@
+## v3.0.1 (2024-12-03)
+
+### New feature:
+
+- midi render exported module([`7df9d44`](https://github.com/chromatone/chromatone.center/commit/7df9d44e8d54d0ba978927205d16cff183316ead)) (by davay)
+
 ## v3.0.0 (2024-12-03)
 
 ### New feature:

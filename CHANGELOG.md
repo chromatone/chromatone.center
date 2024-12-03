@@ -1,3 +1,21 @@
+## v3.0.0 (2024-12-03)
+
+### New feature:
+
+- vite 6, directus 18 and all fresh deps([`bef9bb8`](https://github.com/chromatone/chromatone.center/commit/bef9bb8d5b35503b0f9dc5788e67dc38df3bf0a6)) (by davay)
+- consistent cards on main page in preparation to v3([`484eea8`](https://github.com/chromatone/chromatone.center/commit/484eea8d95cca38fe4aef05355402cd41a798f40)) (by davay)
+- better db([`4ba2e65`](https://github.com/chromatone/chromatone.center/commit/4ba2e6544e9b08c8e65f3a0541d49255211d8c63)) (by davay)
+- fresh deps and MidiGrid started([`fdf02be`](https://github.com/chromatone/chromatone.center/commit/fdf02be83bc724db0b1618dbe3f06c1402e842ae)) (by davay)
+- added inversion parameter for playChroma([`dade90c`](https://github.com/chromatone/chromatone.center/commit/dade90c2db26fc78ec8b9d7029978fc12c8562cb)) (by davay)
+- Real Book moved out to a separate repo([`9a36390`](https://github.com/chromatone/chromatone.center/commit/9a363908cc5cc5e2ae7eae017bc32dd36607cebb)) (by davay)
+- fresh dark screenshot([`f44fbdc`](https://github.com/chromatone/chromatone.center/commit/f44fbdc801960a4c163224ef0cc2faa3777c05c4)) (by davay)
+- circle of fifths got a separate web-app and domain([`8405ff4`](https://github.com/chromatone/chromatone.center/commit/8405ff4907d11638913c572b1f46c569ee425ecf)) (by davay)
+
+### Bugs fixed:
+
+- permissions([`05294da`](https://github.com/chromatone/chromatone.center/commit/05294dae883740245099f1651798214ccc492294)) (by davay)
+- Cleaned up unused nextTick([`3205089`](https://github.com/chromatone/chromatone.center/commit/32050898e5bca001618bb2a6ac8820abf812125d)) (by davay)
+
 ## v2.9.9 (2024-11-19)
 
 ### New feature:

@@ -38,7 +38,7 @@ function close() {
 
 <template lang="pug">
 a.top-16px.left-2.fixed.z-1000.cursor-pointer.mr-3.op-40.hover-op-100.transition(href="/" @click="close()")
-  img.h-30px(v-if="theme.logo", :src="theme.logo", alt="Chromatone logo")
+  img.h-30px(src="https://chromatone.center/media/logo/smooth.svg", alt="Chromatone logo")
 
 full-screen.op-40.hover-op-80.active-op-100.transition.text-xl.fixed.bottom-2.right-2.z-10000(v-if="params?.pure")
 
@@ -68,8 +68,8 @@ midi-notes(v-if="!params.pure && !params.nokeys")
         .text-3rem.md-text-4rem.font-bold Chromatone
         .text-2rem.md-ml-1 Visual Music Language
         .text-xl.md-ml-1 to learn, explore and communicate with 
-      .flex.flex-wrap.items-start.px-4.gap-4
-        .flex.flex-wrap.gap-4.items-stretch(
+      .flex.flex-wrap.items-start.px-4.gap-8
+        .flex.flex-wrap.gap-16.items-stretch(
           style="flex: 1 1 280px;"
           ) 
           home-tile(

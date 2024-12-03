@@ -1,22 +1,22 @@
 # Chromatone
- 
-[![Chomatone logo in a shape of 12 petals flower, each having it's own distinct color 30 degrees of hue apart. Starting from red A it goes to orange A#, yellow B, lime C and then all around the circle with cyan D# and purple G back to red A.](https://chromatone.center/media/logo/logo.svg)](https://chromatone.center/)
+
+[![Chomatone logo in a shape of 12 petals flower, each having it's own distinct colors 30 degrees of hue apart. Each one also is white and black as 12 piano keys in an octave from A to G#. Starting from red A it goes to orange A#, yellow B, lime C and then all around the circle with cyan D# and purple G back to red A.](https://chromatone.center/media/logo/logo.svg)](https://chromatone.center/)
 
 ## Visual Music Language
 
-Independent open-source research project that uses colors and shapes on the screen to learn, play and communicate notes and rhythms from the speakers.
+Independent open-source research project to use colors, shapes and motion to learn, play and communicate melody, harmony and rhythms in live music performance environment.
 
 [Open digital garden](./content/index.md)
 
 ## Theory
 
-Cards and short overviews on physics and physiology of vision and hearing and their intersection at visual music research, exploration, practice and self expression.
+Scientific research on many aspects of music theory as cards and short overviews on physics and physiology of vision and hearing and their intersection at visual music research, exploration, practice and self expression.
 
 [Visual Music Theory](./content/theory/index.md)
 
 ## Practice
 
-Useful tools to have in the pocket like a pack of interactive cards to learn and use in everyday music practice. These are open source web-experiments with different aspects of sound and color.
+Progressive web-apps as useful tools to have in a pocket to learn and use in everyday music practice. These are open source web-experiments with various interactive combinations of sounds and colors.
 
 [Visual Music Practice](./content/practice/index.md)
 
@@ -24,7 +24,7 @@ Useful tools to have in the pocket like a pack of interactive cards to learn and
 
 [![NPM Version and link to npmjs.com](https://img.shields.io/npm/v/use-chromatone)](https://www.npmjs.com/package/use-chromatone)
 
-A collection of sound analysis and synthesis tools along with other useful media instruments to experiment with. All in a form of convenient NPM package you can use in any JS project, both SSR and client-side. Ideal tool for modern audio researchers, educators and their students as we abstract all the low level details into simple building blocks that can be used for prototyping and concept verification.
+I'm maintaining an open-source collection of sound analysis and synthesis tools along with other useful media instruments to experiment with. All in a form of convenient NPM package you can use in any JS project, both SSR and client-side. Ideal tool for modern audio researchers, educators and their students as we abstract all the low level details into simple building blocks that can be used for prototyping and concept verification.
 
 [Chromatone composables](./use/README.md)
 
@@ -41,12 +41,14 @@ We collect all the musical knowledge we can get so then we can build new insight
 ### JS UI
 
 - [Vite](https://vitejs.dev/) - Next generation frontend tooling for fast development and building
+
   - [unplugin-vue-components](https://github.com/antfu/unplugin-vue-components) - On-demand components auto-importing for Vue
   - [unplugin-icons](https://github.com/antfu/unplugin-icons) - Access thousands of icons as Vue components on-demand
   - [Icônes](https://icones.js.org/) - Icon explorer with instant searching and SVG downloading
   - [Vitepress](https://vitepress.vuejs.org/guide/global-component.html#content) - Vue-powered static site generator
 
 - [Vue 3](https://v3.vuejs.org/) - Progressive JavaScript framework for building user interfaces
+
   - [VueUse](https://vueuse.org) - Collection of essential Vue Composition Utilities
   - [VueUse/Gesture](https://gesture.vueuse.org) - Vue Composables making your app interactive with gestures
   - [Floating Vue](https://floating-vue.starpad.dev) - Tooltips, dropdowns, and popovers made easy for Vue

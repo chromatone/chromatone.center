@@ -40,13 +40,6 @@ function go(url) {
       v-if="['app', 'iframe'].includes(item.frontmatter?.layout)" 
       @click.stop.prevent="go(item.url + '?pure=true')")
       .i-la-external-link-square-alt
-    a.op-50.hover-op-90.transition(
-      title="Open as a standalone web-app"
-      aria-label="Open as a standalone web-ap"
-      v-if="item.frontmatter?.standalone"
-      target="_blank"
-      :href="item.frontmatter?.iframe")
-      .i-la-external-link-alt
   a.cover.bg-center(:href="cleanLink(item.url)" :style="{ backgroundImage: bg }")
 
   a.info.flex-1.no-underline(:href="cleanLink(item.url)")
@@ -58,6 +51,14 @@ function go(url) {
       .flex-1
       card-date(v-if="!item?.frontmatter?.product",:date="item.lastModified")
     .text-md.mt-4.mb-2.font-normal.w-full.flex-1(v-if="item?.frontmatter?.description") {{ item?.frontmatter?.description }}
+    a.op-50.hover-op-90.transition.flex.items-center.gap-1(
+      title="Open as a standalone web-app"
+      aria-label="Open as a standalone web-ap"
+      v-if="item.frontmatter?.standalone"
+      target="_blank"
+      :href="item.frontmatter?.iframe")
+      .p-0 Standalone web-app
+      .i-la-external-link-alt.-mb-2px
     page-buttons(:buttons="item?.frontmatter?.buttons" :color="color")
 </template>
 

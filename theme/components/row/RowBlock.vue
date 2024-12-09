@@ -29,9 +29,8 @@ function go(url) {
 </script>
 
 <template lang="pug">
-.header.row(
+.header.row.pt-30(
   :style="{ borderColor: color }"
-  :class="{ 'pt-30': item?.frontmatter?.cover }"
   )
   .flex.gap-2.absolute.top-4.right-4.text-xl.z-100
     button.op-50.hover-op-90.transition(

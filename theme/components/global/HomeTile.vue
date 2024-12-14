@@ -15,12 +15,10 @@ const children = useChildren({ path: props.item.url }, data)
 </script>
 
 <template lang="pug">
-.tile.flex.p-4.pt-36.flex-col.bg-light-300.shadow-lg.hover-shadow-xl.dark-bg-dark-400.flex.flex-col.transition.no-underline.rounded-2xl.saturate-90.contrast-90.hover-saturate-100.hover-contrast-90.overflow-hidden.relative(
-  :i="i", :total="total")
-
-  .cover.absolute.left-0.top-0.right-0.bottom-0.transition.scale-105.cover.bg-center(
-    :style="{ backgroundImage: ` url(${props.item?.frontmatter?.cover})` }",
-    )
+.tile.flex.p-4.pt-36.flex-col.bg-light-300.shadow-lg.hover-shadow-xl.dark-bg-dark-400.flex.flex-col.transition.no-underline.rounded-2xl.saturate-90.contrast-90.hover-saturate-100.hover-contrast-90.overflow-hidden.relative.cover.bg-center(
+  :i="i", :total="total"
+  :style="{ backgroundImage: `linear-gradient(hsla(0,0%,100%,0.3), hsla(0,0%,50%,0.5)), url(${props.item?.frontmatter?.cover})` }",
+  )
   //- img.cover(:src="'/media/' + item.data.cover")
   a.flex.flex-col.p-4.pb-4.no-underline.bg-light-100.rounded-lg.bg-op-80.dark-bg-dark-700.dark-bg-op-80.backdrop-blur.hover-bg-op-95.dark-text-light-100(
     :href="cleanLink(item.url)", 
@@ -49,11 +47,11 @@ const children = useChildren({ path: props.item.url }, data)
 </template>
 
 <style lang="postcss" scoped>
-.cover {
+/* .cover {
   @apply saturate-50 contrast-50 transition-800 blur-sm brightness-140 dark-brightness-80
 }
 
 .tile:hover .cover {
   @apply saturate-80 contrast-70 blur-1px brightness-100
-}
+} */
 </style>

@@ -195,15 +195,19 @@ client-only
     nav-search.m-4(@close="searchOpen = false" :focus="searchOpen")
 
   BarPanel(v-model="theoryOpen")
-    a.text-xl.p-2.m-2.block.font-bold(
+    a.text-2xl.p-2.m-2.block.font-bold.flex.gap-2.items-center(
       href="/theory/"
-      ) Theory
+      ) 
+      .i-la-book
+      .p-0 Theory
     BarLevel(path="/theory/" :level="0")
 
   BarPanel(v-model="practiceOpen")
-    a.text-xl.p-2.m-2.block.font-bold(
+    a.text-2xl.p-2.m-2.block.font-bold.flex.gap-2.items-center(
       href="/practice/"
-      ) Practice
+      ) 
+      .i-la-hand-point-up
+      .p-0 Practice
     BarLevel(path="/practice/" :level="0" @close="practiceOpen = false")
 </template>
 

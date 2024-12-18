@@ -34,7 +34,6 @@ transition(name="fade")
       a(
         :href="cleanLink(dot.url)" 
         :id="dot?.frontmatter?.title" 
-
         :style="{ color: level == 0 ? lchToHsl(d, children.length) : 'currentColor' }") 
         .flex-auto(:class="{ 'text-lg font-bold': level == 0 }") {{ dot?.frontmatter?.title }}
         .flex-1.min-w-10

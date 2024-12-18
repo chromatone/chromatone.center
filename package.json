@@ -138,6 +138,7 @@
 		"@iconify-json/ph": "^1.2.1",
 		"@iconify-json/system-uicons": "^1.2.1",
 		"@iconify-json/tabler": "^1.2.10",
+		"@iconify-json/hugeicons": "^1.2.2",
 		"@modyfi/vite-plugin-yaml": "^1.1.0",
 		"@unocss/extractor-pug": "^0.65.0",
 		"@vite-pwa/vitepress": "^0.5.3",

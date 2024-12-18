@@ -95,6 +95,14 @@ nav.bar
     aria-label="Academy"
     )
     .scale-85.i-mdi-pillar
+  a.button(
+    title="School"
+    href="/school/"
+    :class="{ active: route.path.includes('school') }"
+    v-tooltip.right="'Creative Multimedia School'"
+    aria-label="Creative Multimedia School"
+    )
+    .scale-85.i-hugeicons-school-bus
   //- a.button(
   //-   title="Contacts"
   //-   href="/contacts/"

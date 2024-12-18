@@ -222,6 +222,9 @@ importers:
       '@iconify-json/healthicons':
         specifier: ^1.2.2
         version: 1.2.2
+      '@iconify-json/hugeicons':
+        specifier: ^1.2.2
+        version: 1.2.2
       '@iconify-json/ion':
         specifier: ^1.2.1
         version: 1.2.1
@@ -1482,6 +1485,9 @@ packages:
 
   '@iconify-json/healthicons@1.2.2':
     resolution: {integrity: sha512-NfW9TfRmGyOlo9fzX4almPkN34slFqmWMKtAeaxawXuCdEnlcvP5VEdGg4jb8yTZCfVIo6eWnGUQTPmXyUfl9A==}
+
+  '@iconify-json/hugeicons@1.2.2':
+    resolution: {integrity: sha512-6twKTOjUecuX2Cl3OP83YBe5ACDGrJvQePwoI/hMZ6TEpYuB+23BjwekMmO+cSiP13YmKALCkcF4NZp2MAnIrw==}
 
   '@iconify-json/ion@1.2.1':
     resolution: {integrity: sha512-33jiBdtP8+uBV0KRz8Z9g54QFujzssiT9W6wdNuY61VQM1s3cvoAX89yiczRs4/6b2xJE5vqqvsEJAQPqfY5JA==}
@@ -6676,6 +6682,10 @@ snapshots:
       '@iconify/types': 2.0.0
 
   '@iconify-json/healthicons@1.2.2':
+    dependencies:
+      '@iconify/types': 2.0.0
+
+  '@iconify-json/hugeicons@1.2.2':
     dependencies:
       '@iconify/types': 2.0.0
 

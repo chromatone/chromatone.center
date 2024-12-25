@@ -13,7 +13,7 @@ const { mic, input } = useMicrophone();
       .i-ph-microphone.z-10.relative(v-if="!mic.opened")
       .i-ph-microphone-fill.z-10.relative(v-else)
       .m-0 Mic
-    button.flex-button(:class="{ active: mic.monitor }", @click="mic.monitor = !mic.monitor", v-tooltip.top="'Connect microphone to output'")
+    button.flex-button(:style="{backgroundColor:mic.monitor ? '#f227' : ''}" @click="mic.monitor = !mic.monitor", v-tooltip.top="'Connect microphone to output. Be careful with the feedback!'")
       .i-ph-ear
       .m-0 Monitoring
     control-rotary(v-model="mic.volume", :min="0", :max="5", :step="0.001", param="GAIN", v-tooltip.bottom="'Microphone volume'")

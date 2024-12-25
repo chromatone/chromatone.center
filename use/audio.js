@@ -5,7 +5,7 @@
 
 import { getDestination, start, gainToDb, Meter, Reverb, Limiter, Volume, getContext } from "tone";
 import { useRecorder } from "./recorder";
-import { shallowReactive, reactive, watchEffect, markRaw } from 'vue';
+import { shallowReactive, reactive, watchEffect, markRaw, watch } from 'vue';
 import { useRafFn, useStorage } from "@vueuse/core";
 import { useClamp } from "@vueuse/math";
 
@@ -81,13 +81,12 @@ export function useAudio() {
 
     master.limiter.connect(master.reverb);
 
-    watchEffect(() => {
-      master.destination.mute = audio.mute;
+    watch(() => audio.mute, m => master.destination.mute = m)
+
+    watch(() => audio.volume, v => {
+      master.destination.volume.targetRampTo(gainToDb(v), 0.1);
     });
 
-    watchEffect(() => {
-      master.destination.volume.targetRampTo(gainToDb(audio.volume), 0.1);
-    });
     audio.initiated = true;
   }
   return { audio, master, channels };

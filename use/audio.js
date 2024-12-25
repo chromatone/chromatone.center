@@ -23,7 +23,7 @@ import { useClamp } from "@vueuse/math";
 const audio = reactive({
   initiated: false,
   mute: useStorage("mute", false),
-  volume: useClamp(useStorage("main-vol", 1), 0, 2),
+  volume: useClamp(1, 0, 1),
   meter: 0
 });
 

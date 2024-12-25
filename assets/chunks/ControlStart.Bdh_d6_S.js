@@ -1,1 +1,0 @@
-import{y as o,z as n,J as s,ac as r,v as a}from"./framework.BhJJX2Rg.js";const c={class:"button"};function _(e,t){return o(),n("button",c,[s(e.$slots,"default",{},()=>[t[0]||(t[0]=r("Start"))],!0)])}const d={},u=a(d,[["render",_],["__scopeId","data-v-fb351d24"]]);export{u as _};

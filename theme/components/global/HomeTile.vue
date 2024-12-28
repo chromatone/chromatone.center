@@ -15,7 +15,7 @@ const children = useChildren({ path: props.item.url }, data)
 </script>
 
 <template lang="pug">
-.tile.flex.p-4.pt-36.flex-col.bg-light-300.shadow-lg.hover-shadow-xl.dark-bg-dark-400.flex.flex-col.transition.no-underline.rounded-2xl.saturate-90.contrast-90.hover-saturate-100.hover-contrast-90.overflow-hidden.relative.cover.bg-center(
+.tile.flex.p-4.pt-36.flex-col.bg-light-300.shadow-lg.hover-shadow-xl.dark-bg-dark-400.flex.flex-col.transition.no-underline.rounded-2xl.saturate-90.contrast-90.hover-saturate-100.hover-contrast-90.overflow-hidden.relative.bg-center.bg-cover(
   :i="i", :total="total"
   :style="{ backgroundImage: `linear-gradient(hsla(0,0%,100%,0.3), hsla(0,0%,50%,0.5)), url(${props.item?.frontmatter?.cover})` }",
   )

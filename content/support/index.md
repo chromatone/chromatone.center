@@ -1,7 +1,7 @@
 ---
 title: Support
 description: Share links, contribute code or donate funds to the ongoing research and development
-date: 2021-01-05
+date: 2021-01-02
 topContent: true
 cover: diego-catto.jpg
 buttons:

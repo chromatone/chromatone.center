@@ -4,7 +4,7 @@
         <title>Chromatone</title>
         <link>https://chromatone.center</link>
         <description>Visual Music Language development updates and more</description>
-        <lastBuildDate>Thu, 26 Dec 2024 04:30:10 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 28 Dec 2024 08:31:01 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en-EN</language>
@@ -13,7 +13,7 @@
             <title><![CDATA[Words sequencing]]></title>
             <link>https://chromatone.center/practice/generative/words/</link>
             <guid>https://chromatone.center/practice/generative/words/</guid>
-            <pubDate>Thu, 26 Dec 2024 04:28:20 GMT</pubDate>
+            <pubDate>Sat, 28 Dec 2024 08:29:02 GMT</pubDate>
             <description><![CDATA[&lt;script setup
 import { defineClientComponent } from 'vitepress'
 const Words = defineClientCompone]]></description>
@@ -24,7 +24,7 @@ const Words = defineClientCompone]]></description>
             <title><![CDATA[Words sequencing]]></title>
             <link>https://chromatone.center/practice/sequencing/words/</link>
             <guid>https://chromatone.center/practice/sequencing/words/</guid>
-            <pubDate>Thu, 26 Dec 2024 04:28:20 GMT</pubDate>
+            <pubDate>Sat, 28 Dec 2024 08:29:02 GMT</pubDate>
             <description><![CDATA[This page is moved to https://chromatone.center/practice/generative/words/]]></description>
             <content:encoded><![CDATA[<p>This page is moved to <a href="https://chromatone.center/practice/generative/words/" target="_blank" rel="noreferrer">https://chromatone.center/practice/generative/words/</a></p>
 ]]></content:encoded>
@@ -34,7 +34,7 @@ const Words = defineClientCompone]]></description>
             <title><![CDATA[ZZFXM]]></title>
             <link>https://chromatone.center/practice/sequencing/zzfxm/</link>
             <guid>https://chromatone.center/practice/sequencing/zzfxm/</guid>
-            <pubDate>Thu, 26 Dec 2024 04:28:20 GMT</pubDate>
+            <pubDate>Sat, 28 Dec 2024 08:29:02 GMT</pubDate>
             <description><![CDATA[&lt;script setup
 import { defineClientComponent } from 'vitepress'
 const ZzFxm = defineClientCompone]]></description>
@@ -46,7 +46,7 @@ const ZzFxm = defineClientCompone]]></description>
             <title><![CDATA[Synth snippets]]></title>
             <link>https://chromatone.center/practice/synth/snippets.html</link>
             <guid>https://chromatone.center/practice/synth/snippets.html</guid>
-            <pubDate>Thu, 26 Dec 2024 04:28:20 GMT</pubDate>
+            <pubDate>Sat, 28 Dec 2024 08:29:02 GMT</pubDate>
             <description><![CDATA[Code pieces]]></description>
             <content:encoded><![CDATA[<h3 id="skew-by-upheaver" tabindex="-1">Skew by <a href="https://discord.com/channels/826071713426178078/834787928688689172/1123676571279048875" target="_blank" rel="noreferrer">upheaver</a> <a class="header-anchor" href="#skew-by-upheaver" aria-label="Permalink to &quot;Skew by [upheaver](https://discord.com/channels/826071713426178078/834787928688689172/1123676571279048875)&quot;"></a></h3>
 <p>Sharing a useful snippet. JUCE's logskew function in Typescript, if anyone wants to scale their parameter values (for example convert 0-1 range to 20-20000 hz in a non linear way) :</p>
@@ -72,7 +72,7 @@ const ZzFxm = defineClientCompone]]></description>
             <title><![CDATA[Reharmonization]]></title>
             <link>https://chromatone.center/theory/harmony/reharmonization/</link>
             <guid>https://chromatone.center/theory/harmony/reharmonization/</guid>
-            <pubDate>Thu, 26 Dec 2024 04:28:20 GMT</pubDate>
+            <pubDate>Sat, 28 Dec 2024 08:29:02 GMT</pubDate>
             <description><![CDATA[How to reharmonize a song]]></description>
             <content:encoded><![CDATA[<youtube-embed video="lz3WR-F_pnM" /><h2 id="reharmonization-chord-substitution-but-for-the-whole-chord-progression" tabindex="-1">Reharmonization = Chord substitution but for the whole chord progression <a class="header-anchor" href="#reharmonization-chord-substitution-but-for-the-whole-chord-progression" aria-label="Permalink to &quot;Reharmonization = Chord substitution but for the whole chord progression&quot;"></a></h2>
 <p>Reharmonization is used to:</p>
@@ -8134,29 +8134,6 @@ In music, texture is how the tempo, melodic, and harmonic materials are combined
             <enclosure url="https://chromatone.center/soundtrap.jpg" length="0" type="image/jpg"/>
         </item>
         <item>
-            <title><![CDATA[Tutorship]]></title>
-            <link>https://chromatone.center/tutor/</link>
-            <guid>https://chromatone.center/tutor/</guid>
-            <pubDate>Mon, 05 Jul 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[Personal guidance through complexities of music with easy to grasp visuals and web apps]]></description>
-            <content:encoded><![CDATA[<!-- 
-<script setup>
-import Tutor from './Tutor.vue'
-</script>
-
-<Tutor /> -->
-]]></content:encoded>
-            <enclosure url="https://chromatone.center/wes-hicks.jpg" length="0" type="image/jpg"/>
-        </item>
-        <item>
-            <title><![CDATA[Shop]]></title>
-            <link>https://chromatone.center/shop/</link>
-            <guid>https://chromatone.center/shop/</guid>
-            <pubDate>Sun, 04 Jul 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[Durable vinyl stickers for musical instruments and other printed and printable music theory memos]]></description>
-            <enclosure url="https://chromatone.center/shop.jpg" length="0" type="image/jpg"/>
-        </item>
-        <item>
             <title><![CDATA[Chord Sheets Lab]]></title>
             <link>https://chromatone.center/practice/chord/chord-sheets/</link>
             <guid>https://chromatone.center/practice/chord/chord-sheets/</guid>
@@ -8508,20 +8485,20 @@ Mill Stroke</p>
             <enclosure url="https://chromatone.center/anton-shuvalov.jpg" length="0" type="image/jpg"/>
         </item>
         <item>
+            <title><![CDATA[Shop]]></title>
+            <link>https://chromatone.center/shop/</link>
+            <guid>https://chromatone.center/shop/</guid>
+            <pubDate>Tue, 06 Apr 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[Durable vinyl stickers for musical instruments and other printed and printable music theory memos]]></description>
+            <enclosure url="https://chromatone.center/shop.jpg" length="0" type="image/jpg"/>
+        </item>
+        <item>
             <title><![CDATA[Paper]]></title>
             <link>https://chromatone.center/practice/visual/paper/</link>
             <guid>https://chromatone.center/practice/visual/paper/</guid>
             <pubDate>Mon, 05 Apr 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[A 8 channel MIDI visualization app, simulating drawing on a fading out virtual paper]]></description>
             <enclosure url="https://chromatone.center/paper.png" length="0" type="image/png"/>
-        </item>
-        <item>
-            <title><![CDATA[Academy]]></title>
-            <link>https://chromatone.center/academy/</link>
-            <guid>https://chromatone.center/academy/</guid>
-            <pubDate>Fri, 02 Apr 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[Research and study platform to provide collaborative online education experience for our global community]]></description>
-            <enclosure url="https://chromatone.center/wes-hicks.jpg" length="0" type="image/jpg"/>
         </item>
         <item>
             <title><![CDATA[Jam]]></title>
@@ -8576,6 +8553,21 @@ Mill Stroke</p>
 <p>In conclusion, computer notation is a vast and evolving field, opening up new possibilities for how we create, interact with, and understand music. As technology continues to advance, we can only imagine the future innovations that will further revolutionize the way we notate and perceive music.</p>
 ]]></content:encoded>
             <enclosure url="https://chromatone.center/FL.png" length="0" type="image/png"/>
+        </item>
+        <item>
+            <title><![CDATA[Tutorship]]></title>
+            <link>https://chromatone.center/tutor/</link>
+            <guid>https://chromatone.center/tutor/</guid>
+            <pubDate>Sat, 06 Mar 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[Personal guidance through complexities of music with easy to grasp visuals and web apps]]></description>
+            <content:encoded><![CDATA[<!--
+<script setup>
+import Tutor from './Tutor.vue'
+</script>
+
+<Tutor /> -->
+]]></content:encoded>
+            <enclosure url="https://chromatone.center/wes-hicks.jpg" length="0" type="image/jpg"/>
         </item>
         <item>
             <title><![CDATA[Emancipation of dissonance]]></title>
@@ -8700,6 +8692,14 @@ P  I  I 0  1  2  3  4  5  6  7  8  9 10 11  0
 ]]></content:encoded>
         </item>
         <item>
+            <title><![CDATA[Academy]]></title>
+            <link>https://chromatone.center/academy/</link>
+            <guid>https://chromatone.center/academy/</guid>
+            <pubDate>Tue, 02 Feb 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[Research and study platform to provide collaborative online education experience for our global community]]></description>
+            <enclosure url="https://chromatone.center/wei-hunag.jpg" length="0" type="image/jpg"/>
+        </item>
+        <item>
             <title><![CDATA[Chromatone color notation]]></title>
             <link>https://chromatone.center/theory/notes/color/</link>
             <guid>https://chromatone.center/theory/notes/color/</guid>
@@ -8726,10 +8726,18 @@ P  I  I 0  1  2  3  4  5  6  7  8  9 10 11  0
             <enclosure url="https://chromatone.center/midi-roll.png" length="0" type="image/png"/>
         </item>
         <item>
+            <title><![CDATA[School]]></title>
+            <link>https://chromatone.center/school/</link>
+            <guid>https://chromatone.center/school/</guid>
+            <pubDate>Sun, 24 Jan 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[In-person group classes in short courses as a great step up in content creation]]></description>
+            <enclosure url="https://chromatone.center/photo.jpeg" length="0" type="image/jpeg"/>
+        </item>
+        <item>
             <title><![CDATA[Support]]></title>
             <link>https://chromatone.center/support/</link>
             <guid>https://chromatone.center/support/</guid>
-            <pubDate>Tue, 05 Jan 2021 00:00:00 GMT</pubDate>
+            <pubDate>Sat, 02 Jan 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[Share links, contribute code or donate funds to the ongoing research and development]]></description>
             <content:encoded><![CDATA[<map-globe class="mb-8" :dots="dots" /><p>Chromatone is an open source initiative made not to be a proprietary standard, but to become a wide spread language, used by musicians, visual artists along with music gear companies and app developers all over the world.</p>
 <h2 id="follow-and-share" tabindex="-1">Follow and share <a class="header-anchor" href="#follow-and-share" aria-label="Permalink to &quot;Follow and share&quot;"></a></h2>
@@ -9239,14 +9247,6 @@ const HydraSynth = defineClientCo]]></description>
             <description><![CDATA[There's a plenty of opportunities to dive into different aspects of music theory and practice online]]></description>
             <content:encoded><![CDATA[<ToolsList v-if="data" :data="data" />]]></content:encoded>
             <enclosure url="https://chromatone.center/other.png" length="0" type="image/png"/>
-        </item>
-        <item>
-            <title><![CDATA[Creative Multimedia School]]></title>
-            <link>https://chromatone.center/school/</link>
-            <guid>https://chromatone.center/school/</guid>
-            <pubDate>Thu, 18 Dec 2014 00:00:00 GMT</pubDate>
-            <description><![CDATA[In-person group classes in short courses as a great step up in content creation]]></description>
-            <enclosure url="https://chromatone.center/photo.jpeg" length="0" type="image/jpeg"/>
         </item>
         <item>
             <title><![CDATA[Spectral synthesis]]></title>

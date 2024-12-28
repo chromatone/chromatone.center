@@ -99,10 +99,10 @@ nav.bar
     title="School"
     href="/school/"
     :class="{ active: route.path.includes('school') }"
-    v-tooltip.right="'Creative Multimedia School'"
+    v-tooltip.right="'School'"
     aria-label="Creative Multimedia School"
     )
-    .scale-85.i-hugeicons-school-bus
+    .scale-85.i-bxs-school
   //- a.button(
   //-   title="Contacts"
   //-   href="/contacts/"

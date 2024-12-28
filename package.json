@@ -128,6 +128,7 @@
 	"devDependencies": {
 		"@directus/sdk": "^18.0.3",
 		"@iconify-json/bi": "^1.2.2",
+		"@iconify-json/bxs": "^1.2.2",
 		"@iconify-json/carbon": "^1.2.5",
 		"@iconify-json/fad": "^1.2.1",
 		"@iconify-json/fluent": "^1.2.11",

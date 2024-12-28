@@ -25,7 +25,7 @@ const children = useChildren({ path: props.item.url }, data)
     )
     .flex.items-center.gap-2.mb-4(
       )
-      .text-3xl(style="flex: 0 1 30px") 
+      .text-3xl.mt-1(style="flex: 0 1 30px") 
         .i-la-book(v-if="item?.frontmatter?.title == 'Theory'")
         .i-la-hand-point-up(v-if="item?.frontmatter?.title == 'Practice'")
         .i-la-chalkboard-teacher(v-if="item?.frontmatter?.title == 'Academy'")
@@ -33,6 +33,7 @@ const children = useChildren({ path: props.item.url }, data)
         .i-la-star(v-if="item?.frontmatter?.title == 'Support'")
         .i-la-at(v-if="item?.frontmatter?.title == 'Contacts'")
         .i-la-chalkboard-teacher(v-if="item?.frontmatter?.title == 'Tutorship'")
+        .i-bxs-school(v-if="item?.frontmatter?.title == 'School'")
       .text-3xl.font-bold.underline.underline-4(
         :style="{ textDecorationColor: lchToHsl(i, total) }"
       ) {{ item?.frontmatter?.title }}

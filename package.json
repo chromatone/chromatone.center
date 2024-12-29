@@ -30,6 +30,7 @@
 		"./calculations": "./lib/calculations.js",
 		"./chroma": "./lib/chroma.js",
 		"./colors": "./lib/colors.js",
+		"./global": "./lib/global.js",
 		"./loop": "./lib/loop.js",
 		"./mic": "./lib/mic.js",
 		"./midi": "./lib/midi.js",

@@ -31,6 +31,7 @@ export default defineConfig({
         index: resolve(dirname, './index.js'),
         audio: resolve(dirname, './audio.js'),
         chroma: resolve(dirname, './chroma.js'),
+        global: resolve(dirname, './global.js'),
         loop: resolve(dirname, './loop.js'),
         mic: resolve(dirname, './mic.js'),
         mouse: resolve(dirname, './mouse.js'),

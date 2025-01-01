@@ -44,9 +44,9 @@ function isInScale(note) {
 function keyColor(key, off) {
   if (key == null) return 'transparent'
   if (key == props.pitch) return colord(noteColor(key, 3)).toHex()
-  if (isInChroma(key) && !off) return colord(noteColor(key, 3.5)).toHex()
+  if (isInChroma(key) && !off) return colord(noteColor(key, 3)).toHex()
 
-  return notes[key].length != 2 ? '#eee' : '#999'
+  return notes[key].length != 2 ? '#fff' : '#999'
 }
 
 </script>
@@ -62,6 +62,7 @@ svg.w-full.mt-2#chroma-keys(
   xmlns="http://www.w3.org/2000/svg",
   font-weight="200"
   font-size="40"
+  font-family="Commissioner, sans-serif"
   text-anchor="middle",
   dominant-baseline="middle"
   :class="{ letters }"
@@ -71,18 +72,20 @@ svg.w-full.mt-2#chroma-keys(
       feDropShadow(dx="0" dy="3" stdDeviation="4" flood-color="#2225")
 
   rect(
-    y="-150"
-    width="710" 
-    height="500" 
-    rx="60"
-    :fill="colord(noteColor(pitch, 1, 2, 1)).toHex()")
+    y="-40"
+    x="50"
+    width="610" 
+    height="40" 
+    rx="20"
+    :fill="colord(noteColor(pitch, 3, 2, 1)).toHex()")
 
   text(
-    font-weight="bold"
-    fill="white"
-    text-anchor="middle",
-    x="350"
-    y="-50"
+    font-weight="thin"
+    font-family="Commissioner, sans-serif"
+    fill="black"
+    text-anchor="start",
+    x="80"
+    y="-90"
     font-size="90" ) {{ notes[pitch] }}{{ type }}
 
   g.white
@@ -140,7 +143,7 @@ svg.w-full.mt-2#chroma-keys(
         )
       text.pointer-events-none(
         v-show="isInChroma(key)"
-        :fill="colord(noteColor(key)).isDark() ? 'white' : 'black'"
+        :fill="colord(noteColor(key, 3)).brightness() < 0.3 ? 'white' : 'black'"
         :font-weight="key == pitch ? 800 : 200"
         ) 
         tspan(y="165" x="42") {{ notes[key] }}

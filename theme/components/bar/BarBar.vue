@@ -100,7 +100,7 @@ nav.bar
     href="/school/"
     :class="{ active: route.path.includes('school') }"
     v-tooltip.right="'School'"
-    aria-label="Creative Multimedia School"
+    aria-label="Visual Music School"
     )
     .scale-85.i-bxs-school
   //- a.button(

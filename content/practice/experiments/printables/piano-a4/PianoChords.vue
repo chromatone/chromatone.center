@@ -35,7 +35,7 @@ svg#diatonic.m-8.select-none(
   :viewBox="`-${box.margin} -${box.margin + box.head} ${box.width + 2 * box.margin} ${box.height + 2 * box.margin + box.head}`",
   xmlns="http://www.w3.org/2000/svg",
   font-family="Commissioner, sans-serif"
-  text-anchor="middle",
+  text-anchor="start",
   dominant-baseline="middle"
   )
   rect.page(
@@ -48,6 +48,12 @@ svg#diatonic.m-8.select-none(
     rx="1"
     fill="#fff"
     )
+
+  text(font-size="3" transform="translate(3,-1)")
+    tspan CHROMATONE
+    tspan(dy="4" x="0") SCALE CHORDS
+    tspan(dy="4" x="0") PIANO KEYS
+
   g.striped(
     v-for="(tonic, pitch) in notes"
     :key="pitch"
@@ -66,7 +72,7 @@ svg#diatonic.m-8.select-none(
     v-for="(scale, sc) in chords.list" 
     )
     text(
-      :transform="`translate(${box.padding.left + sc * 24.6 + 16},3)`"
+      :transform="`translate(${box.padding.left + sc * 24.6 + 4},3)`"
       ) {{ scale.scale }}
 
   g(
@@ -95,18 +101,15 @@ svg#diatonic.m-8.select-none(
     stroke-width="0.1" 
     stroke="black")
   line(
-    :x1="box.padding.left"
-    :x2="box.padding.left"
+    :x1="box.padding.left - 1.5"
+    :x2="box.padding.left - 1.5"
     :y1="box.head + 2.2"
     :y2="box.height - 5"
     stroke="#777"
     stroke-linecap="round"
     stroke-width="0.2"
   )
-  text(font-size="3" transform="translate(14,-1)")
-    tspan CHROMATONE
-    tspan(dy="4" x="0") SCALE CHORDS
-    tspan(dy="4" x="0") PIANO KEYS
+
 </template>
 
 <style lang="postcss" scoped>

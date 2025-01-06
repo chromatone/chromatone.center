@@ -4,7 +4,7 @@
         <title>Chromatone</title>
         <link>https://chromatone.center</link>
         <description>Visual Music Language development updates and more</description>
-        <lastBuildDate>Mon, 06 Jan 2025 09:20:21 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 06 Jan 2025 13:17:37 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en-EN</language>
@@ -13,7 +13,7 @@
             <title><![CDATA[Words sequencing]]></title>
             <link>https://chromatone.center/practice/generative/words/</link>
             <guid>https://chromatone.center/practice/generative/words/</guid>
-            <pubDate>Mon, 06 Jan 2025 09:18:10 GMT</pubDate>
+            <pubDate>Mon, 06 Jan 2025 13:15:49 GMT</pubDate>
             <description><![CDATA[&lt;script setup
 import { defineClientComponent } from 'vitepress'
 const Words = defineClientCompone]]></description>
@@ -24,7 +24,7 @@ const Words = defineClientCompone]]></description>
             <title><![CDATA[Words sequencing]]></title>
             <link>https://chromatone.center/practice/sequencing/words/</link>
             <guid>https://chromatone.center/practice/sequencing/words/</guid>
-            <pubDate>Mon, 06 Jan 2025 09:18:10 GMT</pubDate>
+            <pubDate>Mon, 06 Jan 2025 13:15:49 GMT</pubDate>
             <description><![CDATA[This page is moved to https://chromatone.center/practice/generative/words/]]></description>
             <content:encoded><![CDATA[<p>This page is moved to <a href="https://chromatone.center/practice/generative/words/" target="_blank" rel="noreferrer">https://chromatone.center/practice/generative/words/</a></p>
 ]]></content:encoded>
@@ -34,7 +34,7 @@ const Words = defineClientCompone]]></description>
             <title><![CDATA[ZZFXM]]></title>
             <link>https://chromatone.center/practice/sequencing/zzfxm/</link>
             <guid>https://chromatone.center/practice/sequencing/zzfxm/</guid>
-            <pubDate>Mon, 06 Jan 2025 09:18:10 GMT</pubDate>
+            <pubDate>Mon, 06 Jan 2025 13:15:49 GMT</pubDate>
             <description><![CDATA[&lt;script setup
 import { defineClientComponent } from 'vitepress'
 const ZzFxm = defineClientCompone]]></description>
@@ -46,7 +46,7 @@ const ZzFxm = defineClientCompone]]></description>
             <title><![CDATA[Synth snippets]]></title>
             <link>https://chromatone.center/practice/synth/snippets.html</link>
             <guid>https://chromatone.center/practice/synth/snippets.html</guid>
-            <pubDate>Mon, 06 Jan 2025 09:18:10 GMT</pubDate>
+            <pubDate>Mon, 06 Jan 2025 13:15:49 GMT</pubDate>
             <description><![CDATA[Code pieces]]></description>
             <content:encoded><![CDATA[<h3 id="skew-by-upheaver" tabindex="-1">Skew by <a href="https://discord.com/channels/826071713426178078/834787928688689172/1123676571279048875" target="_blank" rel="noreferrer">upheaver</a> <a class="header-anchor" href="#skew-by-upheaver" aria-label="Permalink to &quot;Skew by [upheaver](https://discord.com/channels/826071713426178078/834787928688689172/1123676571279048875)&quot;"></a></h3>
 <p>Sharing a useful snippet. JUCE's logskew function in Typescript, if anyone wants to scale their parameter values (for example convert 0-1 range to 20-20000 hz in a non linear way) :</p>
@@ -72,7 +72,7 @@ const ZzFxm = defineClientCompone]]></description>
             <title><![CDATA[Reharmonization]]></title>
             <link>https://chromatone.center/theory/harmony/reharmonization/</link>
             <guid>https://chromatone.center/theory/harmony/reharmonization/</guid>
-            <pubDate>Mon, 06 Jan 2025 09:18:10 GMT</pubDate>
+            <pubDate>Mon, 06 Jan 2025 13:15:49 GMT</pubDate>
             <description><![CDATA[How to reharmonize a song]]></description>
             <content:encoded><![CDATA[<youtube-embed video="lz3WR-F_pnM" /><h2 id="reharmonization-chord-substitution-but-for-the-whole-chord-progression" tabindex="-1">Reharmonization = Chord substitution but for the whole chord progression <a class="header-anchor" href="#reharmonization-chord-substitution-but-for-the-whole-chord-progression" aria-label="Permalink to &quot;Reharmonization = Chord substitution but for the whole chord progression&quot;"></a></h2>
 <p>Reharmonization is used to:</p>
@@ -1159,16 +1159,6 @@ Multiple stages of valve gain/clipping can be &quot;cascaded&quot; to produce a 
             <description><![CDATA[Reactive colorful virtual piano keyboard]]></description>
             <content:encoded><![CDATA[<MidiKeys />]]></content:encoded>
             <enclosure url="https://chromatone.center/cover.png" length="0" type="image/png"/>
-        </item>
-        <item>
-            <title><![CDATA[Printable A4 piano chords]]></title>
-            <link>https://chromatone.center/practice/experiments/printables/piano-a4/</link>
-            <guid>https://chromatone.center/practice/experiments/printables/piano-a4/</guid>
-            <pubDate>Wed, 02 Aug 2023 00:00:00 GMT</pubDate>
-            <description><![CDATA[All chords for all scales on one page]]></description>
-            <content:encoded><![CDATA[<h2 id="diatonic-scales-and-modes" tabindex="-1">Diatonic scales and modes <a class="header-anchor" href="#diatonic-scales-and-modes" aria-label="Permalink to &quot;Diatonic scales and modes&quot;"></a></h2>
-<piano-chords width="100%" class="max-w-55ch" /><save-buttons svg="diatonic" password="piano-a4-Vr74E"/>]]></content:encoded>
-            <enclosure url="https://chromatone.center/piano.png" length="0" type="image/png"/>
         </item>
         <item>
             <title><![CDATA[Sound painting]]></title>
@@ -7961,16 +7951,6 @@ Preparation – Dissonance – Resolution</p>
             <enclosure url="https://chromatone.center/zhu-zaiyu-1154.jpg" length="0" type="image/jpg"/>
         </item>
         <item>
-            <title><![CDATA[A4 cheat-sheet]]></title>
-            <link>https://chromatone.center/practice/experiments/printables/circles-a4/</link>
-            <guid>https://chromatone.center/practice/experiments/printables/circles-a4/</guid>
-            <pubDate>Mon, 09 Aug 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[A comprehesive guide to colorful notes - WIP]]></description>
-            <content:encoded><![CDATA[<h2 id="diatonic-scales-and-modes" tabindex="-1">Diatonic scales and modes <a class="header-anchor" href="#diatonic-scales-and-modes" aria-label="Permalink to &quot;Diatonic scales and modes&quot;"></a></h2>
-<print-scales   width="100%" class="max-w-55ch" /><save-buttons svg="diatonic" password="circle-a4-99tuD"/>]]></content:encoded>
-            <enclosure url="https://chromatone.center/cover.png" length="0" type="image/png"/>
-        </item>
-        <item>
             <title><![CDATA[Perceptual color models]]></title>
             <link>https://chromatone.center/theory/color/models/perceptual/</link>
             <guid>https://chromatone.center/theory/color/models/perceptual/</guid>
@@ -8977,18 +8957,6 @@ particular song. “And then ultimately you must find your own way.”</p>
 </ul>
 ]]></content:encoded>
             <enclosure url="https://chromatone.center/cover.png" length="0" type="image/png"/>
-        </item>
-        <item>
-            <title><![CDATA[Printables]]></title>
-            <link>https://chromatone.center/practice/experiments/printables/</link>
-            <guid>https://chromatone.center/practice/experiments/printables/</guid>
-            <pubDate>Mon, 10 Aug 2020 00:00:00 GMT</pubDate>
-            <description><![CDATA[Hand crafted PDF files for you to print locally]]></description>
-            <content:encoded><![CDATA[<p>New way to enjoy Chromatone yourself and share with friends, even offline. Printable PDF cheat-sheets and posters are a growing collection of digital goods, that will be made available in upcoming weeks and months.</p>
-<p>The main thing about these files is that they will be evolving with time and we will be able to send updates to previous customers as well as immediately give every new customer to receive the most recent and refined file to print.</p>
-<p>The purpose of these pages are to become a guide and helper in a long and sometimes difficult journey into deep understanding and creative exploration of music. With just one sheet of paper you can</p>
-]]></content:encoded>
-            <enclosure url="https://chromatone.center/bank-phrom.jpg" length="0" type="image/jpg"/>
         </item>
         <item>
             <title><![CDATA[Scale chords]]></title>

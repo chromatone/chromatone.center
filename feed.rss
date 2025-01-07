@@ -4,7 +4,7 @@
         <title>Chromatone</title>
         <link>https://chromatone.center</link>
         <description>Visual Music Language development updates and more</description>
-        <lastBuildDate>Mon, 06 Jan 2025 13:17:37 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 07 Jan 2025 04:06:30 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en-EN</language>
@@ -13,7 +13,7 @@
             <title><![CDATA[Words sequencing]]></title>
             <link>https://chromatone.center/practice/generative/words/</link>
             <guid>https://chromatone.center/practice/generative/words/</guid>
-            <pubDate>Mon, 06 Jan 2025 13:15:49 GMT</pubDate>
+            <pubDate>Tue, 07 Jan 2025 04:04:35 GMT</pubDate>
             <description><![CDATA[&lt;script setup
 import { defineClientComponent } from 'vitepress'
 const Words = defineClientCompone]]></description>
@@ -24,7 +24,7 @@ const Words = defineClientCompone]]></description>
             <title><![CDATA[Words sequencing]]></title>
             <link>https://chromatone.center/practice/sequencing/words/</link>
             <guid>https://chromatone.center/practice/sequencing/words/</guid>
-            <pubDate>Mon, 06 Jan 2025 13:15:49 GMT</pubDate>
+            <pubDate>Tue, 07 Jan 2025 04:04:35 GMT</pubDate>
             <description><![CDATA[This page is moved to https://chromatone.center/practice/generative/words/]]></description>
             <content:encoded><![CDATA[<p>This page is moved to <a href="https://chromatone.center/practice/generative/words/" target="_blank" rel="noreferrer">https://chromatone.center/practice/generative/words/</a></p>
 ]]></content:encoded>
@@ -34,7 +34,7 @@ const Words = defineClientCompone]]></description>
             <title><![CDATA[ZZFXM]]></title>
             <link>https://chromatone.center/practice/sequencing/zzfxm/</link>
             <guid>https://chromatone.center/practice/sequencing/zzfxm/</guid>
-            <pubDate>Mon, 06 Jan 2025 13:15:49 GMT</pubDate>
+            <pubDate>Tue, 07 Jan 2025 04:04:35 GMT</pubDate>
             <description><![CDATA[&lt;script setup
 import { defineClientComponent } from 'vitepress'
 const ZzFxm = defineClientCompone]]></description>
@@ -46,7 +46,7 @@ const ZzFxm = defineClientCompone]]></description>
             <title><![CDATA[Synth snippets]]></title>
             <link>https://chromatone.center/practice/synth/snippets.html</link>
             <guid>https://chromatone.center/practice/synth/snippets.html</guid>
-            <pubDate>Mon, 06 Jan 2025 13:15:49 GMT</pubDate>
+            <pubDate>Tue, 07 Jan 2025 04:04:35 GMT</pubDate>
             <description><![CDATA[Code pieces]]></description>
             <content:encoded><![CDATA[<h3 id="skew-by-upheaver" tabindex="-1">Skew by <a href="https://discord.com/channels/826071713426178078/834787928688689172/1123676571279048875" target="_blank" rel="noreferrer">upheaver</a> <a class="header-anchor" href="#skew-by-upheaver" aria-label="Permalink to &quot;Skew by [upheaver](https://discord.com/channels/826071713426178078/834787928688689172/1123676571279048875)&quot;"></a></h3>
 <p>Sharing a useful snippet. JUCE's logskew function in Typescript, if anyone wants to scale their parameter values (for example convert 0-1 range to 20-20000 hz in a non linear way) :</p>
@@ -72,7 +72,7 @@ const ZzFxm = defineClientCompone]]></description>
             <title><![CDATA[Reharmonization]]></title>
             <link>https://chromatone.center/theory/harmony/reharmonization/</link>
             <guid>https://chromatone.center/theory/harmony/reharmonization/</guid>
-            <pubDate>Mon, 06 Jan 2025 13:15:49 GMT</pubDate>
+            <pubDate>Tue, 07 Jan 2025 04:04:35 GMT</pubDate>
             <description><![CDATA[How to reharmonize a song]]></description>
             <content:encoded><![CDATA[<youtube-embed video="lz3WR-F_pnM" /><h2 id="reharmonization-chord-substitution-but-for-the-whole-chord-progression" tabindex="-1">Reharmonization = Chord substitution but for the whole chord progression <a class="header-anchor" href="#reharmonization-chord-substitution-but-for-the-whole-chord-progression" aria-label="Permalink to &quot;Reharmonization = Chord substitution but for the whole chord progression&quot;"></a></h2>
 <p>Reharmonization is used to:</p>
@@ -6982,9 +6982,9 @@ C / K / D / T / E / F / H / G / P / A / V / B.</p>
 <youtube-embed video="_xKbjYBnHhc" /><p><img src="./images/retina.jpg" alt="Retina structure"></p>
 <p><img src="./images/Distribution_of_Cones_and_Rods_on_Human_Retina.png" alt="Distribution of cones and rods"></p>
 <h2 id="visual-pathway" tabindex="-1">Visual pathway <a class="header-anchor" href="#visual-pathway" aria-label="Permalink to &quot;Visual pathway&quot;"></a></h2>
-<youtube-embed video="ai7QnHS7C7g" /><p><img src="./images/Human-visual-pathway.svg" alt="Visual pathway"></p>
+<youtube-embed video="ai7QnHS7C7g" /><youtube-embed video="dKcCscadzkg" /><p><img src="./images/Human-visual-pathway.svg" alt="Visual pathway"></p>
 <p>Human eye with normal vision has three kinds of cone cells that sense light, having peaks of spectral sensitivity in short (&quot;S&quot;, 420 nm – 440 nm), middle (&quot;M&quot;, 530 nm – 540 nm), and long (&quot;L&quot;, 560 nm – 580 nm) wavelengths. These cone cells underlie human color perception in conditions of medium and high brightness; in very dim light color vision diminishes, and the low-brightness, monochromatic &quot;night vision&quot; receptors, denominated &quot;rod cells&quot;, become effective. Thus, three parameters corresponding to levels of stimulus of the three kinds of cone cells, in principle describe any human color sensation. Weighting a total light power spectrum by the individual spectral sensitivities of the three kinds of cone cells renders three effective values of stimulus; these three values compose a tristimulus specification of the objective color of the light spectrum. The three parameters, denoted &quot;S&quot;, &quot;M&quot;, and &quot;L&quot;, are indicated using a 3-dimensional space denominated the &quot;LMS color space&quot;, which is one of many color spaces devised to quantify human color vision.</p>
-<p><img src="./color-sensitivity.jpg" alt="Color sensitivity"></p>
+<youtube-embed video="kN9lN9L8eKE" /><p><img src="./color-sensitivity.jpg" alt="Color sensitivity"></p>
 <p><img src="./images/Cone-fundamentals-with-srgb-spectrum.svg" alt="Normalized cone response"></p>
 <blockquote>
 <p><img src="./images/cie-1931.svg" alt="The CIE XYZ standard observer color matching functions"></p>
@@ -6993,7 +6993,7 @@ C / K / D / T / E / F / H / G / P / A / V / B.</p>
 <p><img src="./images/Eyesensitivity.svg" alt=""></p>
 <p><img src="./images/Line_of_purples.png" alt=""></p>
 <h2 id="opposite-color-vision-theory" tabindex="-1">Opposite color vision theory <a class="header-anchor" href="#opposite-color-vision-theory" aria-label="Permalink to &quot;Opposite color vision theory&quot;"></a></h2>
-<youtube-embed video="l8_fZPHasdo" /><p><img src="./images/Diagram_of_the_opponent_process.png" alt="Opponent process diagram"></p>
+<youtube-embed video="l8_fZPHasdo" /><youtube-embed video="FjIcwZrPB78" /><p><img src="./images/Diagram_of_the_opponent_process.png" alt="Opponent process diagram"></p>
 <h2 id="just-noticable-difference" tabindex="-1">Just noticable difference <a class="header-anchor" href="#just-noticable-difference" aria-label="Permalink to &quot;Just noticable difference&quot;"></a></h2>
 <youtube-embed video="IZsAD_nm-q4" /><p>Tolerancing concerns the question &quot;What is a set of colors that are imperceptibly/acceptably close to a given reference?&quot; If the distance measure is perceptually uniform, then the answer is simply &quot;the set of points whose distance to the reference is less than the just-noticeable-difference (JND) threshold.&quot; This requires a perceptually uniform metric in order for the threshold to be constant throughout the gamut (range of colors). Otherwise, the threshold will be a function of the reference color—cumbersome as a practical guide.</p>
 <p>In the CIE 1931 color space, for example, the tolerance contours are defined by the MacAdam ellipse, which holds L* (lightness) fixed. As can be observed on the adjacent diagram, the ellipses denoting the tolerance contours vary in size. It is partly this non-uniformity that led to the creation of CIELUV and CIELAB.</p>

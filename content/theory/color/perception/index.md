@@ -29,9 +29,13 @@ Perception of color derives from the stimulation of cone cells in the human eye 
 
 <youtube-embed video="ai7QnHS7C7g" />
 
+<youtube-embed video="dKcCscadzkg" />
+
 ![Visual pathway](./images/Human-visual-pathway.svg)
 
 Human eye with normal vision has three kinds of cone cells that sense light, having peaks of spectral sensitivity in short ("S", 420 nm – 440 nm), middle ("M", 530 nm – 540 nm), and long ("L", 560 nm – 580 nm) wavelengths. These cone cells underlie human color perception in conditions of medium and high brightness; in very dim light color vision diminishes, and the low-brightness, monochromatic "night vision" receptors, denominated "rod cells", become effective. Thus, three parameters corresponding to levels of stimulus of the three kinds of cone cells, in principle describe any human color sensation. Weighting a total light power spectrum by the individual spectral sensitivities of the three kinds of cone cells renders three effective values of stimulus; these three values compose a tristimulus specification of the objective color of the light spectrum. The three parameters, denoted "S", "M", and "L", are indicated using a 3-dimensional space denominated the "LMS color space", which is one of many color spaces devised to quantify human color vision.
+
+<youtube-embed video="kN9lN9L8eKE" />
 
 ![Color sensitivity](./color-sensitivity.jpg)
 
@@ -49,6 +53,8 @@ Human eye with normal vision has three kinds of cone cells that sense light, hav
 
 <youtube-embed video="l8_fZPHasdo" />
 
+<youtube-embed video="FjIcwZrPB78" />
+
 ![Opponent process diagram](./images/Diagram_of_the_opponent_process.png)
 
 ## Just noticable difference
@@ -62,6 +68,3 @@ In the CIE 1931 color space, for example, the tolerance contours are defined by 
 > ![](./images/CIExy1931_MacAdam.png)
 >
 > A MacAdam diagram in the CIE 1931 color space. The ellipses are shown ten times their actual size.
->
-
-

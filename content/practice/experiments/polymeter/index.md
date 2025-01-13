@@ -1,6 +1,6 @@
 ---
-title: Polyrhythmic circles
-description: Vistual prototype for a real life device
+title: Polymeter concentric circles
+description: Cycles of measures of various number of beats
 date: 2015-01-02
 layout: app
 cover: poly.png

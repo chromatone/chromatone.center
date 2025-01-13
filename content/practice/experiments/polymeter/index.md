@@ -9,7 +9,7 @@ cover: poly.png
 <script setup>
 import { defineClientComponent } from 'vitepress'
 
-const PolyRhythms = defineClientComponent(() => import('./PolyRhythms.vue'))
+const PolyMeter = defineClientComponent(() => import('./PolyMeter.vue'))
 </script>
 
-<PolyRhythms />
+<PolyMeter />

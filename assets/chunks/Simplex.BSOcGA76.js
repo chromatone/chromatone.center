@@ -1,1 +1,0 @@
-import{B as e,C as c,z as n}from"./framework.B_b_ZswS.js";function r(o,a){return e(),c("p",null,"Simplex")}const t={},s=n(t,[["render",r]]);export{s as default};

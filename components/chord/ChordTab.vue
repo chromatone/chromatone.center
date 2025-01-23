@@ -57,13 +57,13 @@ function getNote(string, semitones) {
 </script>
 
 <template lang="pug">
-.flex.flex-col.justify-center.rounded-3xl.py-2(
+.flex.flex-col.justify-center.rounded-3xl.py-4(
   :style="{ backgroundColor: neck.color.lch }")
   .flex.gap-1.p-2.text-lg(v-if="title")
     .font-bold {{ notes[pitch] }}{{ neck.title }} 
     .flex-1
     .p-0.capitalize.active-op-100.transition(v-for="(ins, i) in instruments" @click="instrument = i" :class="{ [i == instrument ? 'op-100' : 'op-40']: true }") {{ i }}
-  svg#fretboard.max-h-3xl.w-full.my-2(
+  svg#fretboard.max-h-3xl.w-full(
     version="1.1",
     baseProfile="full",
     :viewBox="`-50 -50 ${neck.height + 100} ${neck.width + 60}`",

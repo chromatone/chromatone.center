@@ -1,7 +1,7 @@
 ---
 title: Musical form
 description: The structure of a musical composition or performance
-cover: 100122828-0232_Lohse_Zwei_Themen_web.jpg
+cover: Lohse_Zwei_Themen_web.jpg
 date: 2021-11-02
 links:
   - https://en.wikipedia.org/wiki/List_of_classical_music_genres
@@ -273,4 +273,8 @@ The simplest examples given by van der Merwe are fixed notes, definite intervals
 - perfect cadence
 - three primary triads implied
 
-Co-ordinated matrices may possess "bound-upness" or "at-oddness", depending on the degree to which they are connected to each other or go their separate ways, respectively, and are more or less easy to reconcile. The matrices of the larger matrix known as sonata rondo form are more bound up than the matrices of rondo form, while African and Indian music feature more rhythmic at-oddness than European music's coinciding beats, and European harmony features more at-oddness (between the melody and bass) than the preceding organum. At-oddness is a matter of degree, and almost all at odd matrices are partially bound up.[3]
+Co-ordinated matrices may possess "bound-upness" or "at-oddness", depending on the degree to which they are connected to each other or go their separate ways, respectively, and are more or less easy to reconcile. The matrices of the larger matrix known as sonata rondo form are more bound up than the matrices of rondo form, while African and Indian music feature more rhythmic at-oddness than European music's coinciding beats, and European harmony features more at-oddness (between the melody and bass) than the preceding organum. At-oddness is a matter of degree, and almost all at odd matrices are partially bound up.
+
+## Andalusian Cadence
+
+<youtube-embed video="_g9r-zRcxI0" />

@@ -19,6 +19,8 @@ Syncopation can also occur when a strong harmony is simultaneous with a weak bea
 
 Technically, "syncopation occurs when a temporary displacement of the regular metrical accent occurs, causing the emphasis to shift from a strong accent to a weak accent". "Syncopation is", however, "very simply, a deliberate disruption of the two- or three-beat stress pattern, most often by stressing an off-beat, or a note that is not on the beat."
 
+<youtube-embed video="_uqu-aD9HpU" />
+
 #### Suspension
 
 For the following example, there are two points of syncopation where the third beats are sustained from the second beats. In the same way, the first beat of the second bar is sustained from the fourth beat of the first bar.

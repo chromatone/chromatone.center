@@ -4,7 +4,7 @@
         <title>Chromatone</title>
         <link>https://chromatone.center</link>
         <description>Visual Music Language development updates and more</description>
-        <lastBuildDate>Mon, 27 Jan 2025 17:17:20 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 28 Jan 2025 16:04:09 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en-EN</language>
@@ -13,7 +13,7 @@
             <title><![CDATA[Words sequencing]]></title>
             <link>https://chromatone.center/practice/generative/words/</link>
             <guid>https://chromatone.center/practice/generative/words/</guid>
-            <pubDate>Mon, 27 Jan 2025 17:15:02 GMT</pubDate>
+            <pubDate>Tue, 28 Jan 2025 16:02:15 GMT</pubDate>
             <description><![CDATA[&lt;script setup
 import { defineClientComponent } from 'vitepress'
 const Words = defineClientCompone]]></description>
@@ -24,7 +24,7 @@ const Words = defineClientCompone]]></description>
             <title><![CDATA[Words sequencing]]></title>
             <link>https://chromatone.center/practice/sequencing/words/</link>
             <guid>https://chromatone.center/practice/sequencing/words/</guid>
-            <pubDate>Mon, 27 Jan 2025 17:15:02 GMT</pubDate>
+            <pubDate>Tue, 28 Jan 2025 16:02:15 GMT</pubDate>
             <description><![CDATA[This page is moved to https://chromatone.center/practice/generative/words/]]></description>
             <content:encoded><![CDATA[<p>This page is moved to <a href="https://chromatone.center/practice/generative/words/" target="_blank" rel="noreferrer">https://chromatone.center/practice/generative/words/</a></p>
 ]]></content:encoded>
@@ -34,7 +34,7 @@ const Words = defineClientCompone]]></description>
             <title><![CDATA[ZZFXM]]></title>
             <link>https://chromatone.center/practice/sequencing/zzfxm/</link>
             <guid>https://chromatone.center/practice/sequencing/zzfxm/</guid>
-            <pubDate>Mon, 27 Jan 2025 17:15:02 GMT</pubDate>
+            <pubDate>Tue, 28 Jan 2025 16:02:15 GMT</pubDate>
             <description><![CDATA[&lt;script setup
 import { defineClientComponent } from 'vitepress'
 const ZzFxm = defineClientCompone]]></description>
@@ -46,7 +46,7 @@ const ZzFxm = defineClientCompone]]></description>
             <title><![CDATA[Synth snippets]]></title>
             <link>https://chromatone.center/practice/synth/snippets.html</link>
             <guid>https://chromatone.center/practice/synth/snippets.html</guid>
-            <pubDate>Mon, 27 Jan 2025 17:15:02 GMT</pubDate>
+            <pubDate>Tue, 28 Jan 2025 16:02:15 GMT</pubDate>
             <description><![CDATA[Code pieces]]></description>
             <content:encoded><![CDATA[<h3 id="skew-by-upheaver" tabindex="-1">Skew by <a href="https://discord.com/channels/826071713426178078/834787928688689172/1123676571279048875" target="_blank" rel="noreferrer">upheaver</a> <a class="header-anchor" href="#skew-by-upheaver" aria-label="Permalink to &quot;Skew by [upheaver](https://discord.com/channels/826071713426178078/834787928688689172/1123676571279048875)&quot;"></a></h3>
 <p>Sharing a useful snippet. JUCE's logskew function in Typescript, if anyone wants to scale their parameter values (for example convert 0-1 range to 20-20000 hz in a non linear way) :</p>
@@ -72,7 +72,7 @@ const ZzFxm = defineClientCompone]]></description>
             <title><![CDATA[Reharmonization]]></title>
             <link>https://chromatone.center/theory/harmony/reharmonization/</link>
             <guid>https://chromatone.center/theory/harmony/reharmonization/</guid>
-            <pubDate>Mon, 27 Jan 2025 17:15:02 GMT</pubDate>
+            <pubDate>Tue, 28 Jan 2025 16:02:15 GMT</pubDate>
             <description><![CDATA[How to reharmonize a song]]></description>
             <content:encoded><![CDATA[<youtube-embed video="lz3WR-F_pnM" /><h2 id="reharmonization-chord-substitution-but-for-the-whole-chord-progression" tabindex="-1">Reharmonization = Chord substitution but for the whole chord progression <a class="header-anchor" href="#reharmonization-chord-substitution-but-for-the-whole-chord-progression" aria-label="Permalink to &quot;Reharmonization = Chord substitution but for the whole chord progression&quot;"></a></h2>
 <p>Reharmonization is used to:</p>
@@ -2598,9 +2598,10 @@ Da capo aria</p>
 <li>perfect cadence</li>
 <li>three primary triads implied</li>
 </ul>
-<p>Co-ordinated matrices may possess &quot;bound-upness&quot; or &quot;at-oddness&quot;, depending on the degree to which they are connected to each other or go their separate ways, respectively, and are more or less easy to reconcile. The matrices of the larger matrix known as sonata rondo form are more bound up than the matrices of rondo form, while African and Indian music feature more rhythmic at-oddness than European music's coinciding beats, and European harmony features more at-oddness (between the melody and bass) than the preceding organum. At-oddness is a matter of degree, and almost all at odd matrices are partially bound up.[3]</p>
-]]></content:encoded>
-            <enclosure url="https://chromatone.center/100122828-0232_Lohse_Zwei_Themen_web.jpg" length="0" type="image/jpg"/>
+<p>Co-ordinated matrices may possess &quot;bound-upness&quot; or &quot;at-oddness&quot;, depending on the degree to which they are connected to each other or go their separate ways, respectively, and are more or less easy to reconcile. The matrices of the larger matrix known as sonata rondo form are more bound up than the matrices of rondo form, while African and Indian music feature more rhythmic at-oddness than European music's coinciding beats, and European harmony features more at-oddness (between the melody and bass) than the preceding organum. At-oddness is a matter of degree, and almost all at odd matrices are partially bound up.</p>
+<h2 id="andalusian-cadence" tabindex="-1">Andalusian Cadence <a class="header-anchor" href="#andalusian-cadence" aria-label="Permalink to &quot;Andalusian Cadence&quot;"></a></h2>
+<youtube-embed video="_g9r-zRcxI0" />]]></content:encoded>
+            <enclosure url="https://chromatone.center/Lohse_Zwei_Themen_web.jpg" length="0" type="image/jpg"/>
         </item>
         <item>
             <title><![CDATA[Color]]></title>
@@ -6228,7 +6229,7 @@ Level e: C D♭ D E♭ E F F♯ G A♭ A B♭ B C</p>
 <p>Syncopation can also occur when a strong harmony is simultaneous with a weak beat, for instance, when a 7th-chord is played on the second beat of 3/4 measure or a dominant chord is played at the fourth beat of a 4/4 measure. The latter occurs frequently in tonal cadences for 18th- and early-19th-century music and is the usual conclusion of any section.</p>
 <youtube-embed video="RuvA4b_2pk0" /><h3 id="types-of-syncopation" tabindex="-1">Types of syncopation <a class="header-anchor" href="#types-of-syncopation" aria-label="Permalink to &quot;Types of syncopation&quot;"></a></h3>
 <p>Technically, &quot;syncopation occurs when a temporary displacement of the regular metrical accent occurs, causing the emphasis to shift from a strong accent to a weak accent&quot;. &quot;Syncopation is&quot;, however, &quot;very simply, a deliberate disruption of the two- or three-beat stress pattern, most often by stressing an off-beat, or a note that is not on the beat.&quot;</p>
-<h4 id="suspension" tabindex="-1">Suspension <a class="header-anchor" href="#suspension" aria-label="Permalink to &quot;Suspension&quot;"></a></h4>
+<youtube-embed video="_uqu-aD9HpU" /><h4 id="suspension" tabindex="-1">Suspension <a class="header-anchor" href="#suspension" aria-label="Permalink to &quot;Suspension&quot;"></a></h4>
 <p>For the following example, there are two points of syncopation where the third beats are sustained from the second beats. In the same way, the first beat of the second bar is sustained from the fourth beat of the first bar.</p>
 <p>Though syncopation may be very complex, dense or complex-looking rhythms often contain no syncopation. However, whether it is a placed rest or an accented note, any point in a piece of music that changes the listener's sense of the downbeat is a point of syncopation because it shifts where the strong and weak accents are built.</p>
 <h4 id="off-beat-syncopation" tabindex="-1">Off-beat syncopation <a class="header-anchor" href="#off-beat-syncopation" aria-label="Permalink to &quot;Off-beat syncopation&quot;"></a></h4>

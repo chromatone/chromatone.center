@@ -1,1 +1,0 @@
-import{c as o,h as n,j as s,aI as r,_ as a}from"./framework.D_pKV3Tc.js";const _={class:"button"};function c(e,t){return o(),n("button",_,[s(e.$slots,"default",{},()=>[t[0]||(t[0]=r("Start"))],!0)])}const d={},u=a(d,[["render",c],["__scopeId","data-v-fb351d24"]]);export{u as _};

@@ -95,7 +95,8 @@ nav.bar
     aria-label="Academy"
     )
     .scale-85.i-mdi-pillar
-  a.button(
+
+  // a.button(
     title="School"
     href="/school/"
     :class="{ active: route.path.includes('school') }"
@@ -103,14 +104,15 @@ nav.bar
     aria-label="Visual Music School"
     )
     .scale-85.i-bxs-school
-  //- a.button(
-  //-   title="Contacts"
-  //-   href="/contacts/"
-  //-   :class="{ active: route.path.includes('contacts') }"
-  //-   v-tooltip.right="'Contacts'"
-  //-   aria-label="Contacts"
-  //-   )
-  //-   .i-la-at
+
+  // a.button(
+    title="Contacts"
+    href="/contacts/"
+    :class="{ active: route.path.includes('contacts') }"
+    v-tooltip.right="'Contacts'"
+    aria-label="Contacts"
+    )
+    .i-la-at
 
 
 

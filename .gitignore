@@ -16,6 +16,8 @@ tmp
 # Build
 public/css/main.css
 
+content/public/cover
+
 # Coverage reports
 coverage
 

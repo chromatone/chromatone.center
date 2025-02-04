@@ -26,7 +26,7 @@ export default withPwa(defineConfig({
     if (pageData.frontmatter?.dynamic) {
       pageData.title = pageData.params?.title
       pageData.description = pageData.params?.description
-      pageData.frontmatter = { ...pageData.frontmatter, ...pageData.params, cover: pageData.params?.cover ? `https://db.chromatone.center/assets/${pageData.params?.cover}?fit=cover&format=webp&width=1000` : '' }
+      pageData.frontmatter = { ...pageData.frontmatter, ...pageData.params, cover: pageData.params?.cover ? `https://db.chromatone.center/assets/${pageData.params?.cover?.id}?fit=cover&format=webp&width=1000` : '' }
     }
   },
   pwa: {

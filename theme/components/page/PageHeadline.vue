@@ -34,13 +34,13 @@ const buttons = computed(() => {
   v-if="!$frontmatter.misc"
   :class="{ 'has-cover': page?.cover || page?.icon }"
   :style="{ backgroundColor: pageColor }"
-  )
-  .cover(v-if="cover",:style="{ backgroundImage: `url(${cover})`, backgroundColor: pageColor }")
+  ) 
+  .cover(v-if="page?.cover",:style="{ backgroundImage: `url(${page?.cover})`, backgroundColor: pageColor }")
   img.icon(v-if="page?.icon",:src="page?.icon")
   slot
   .meta(:style="{ borderColor: pageColor }")
     .text-2xl.md-text-3xl.font-bold.flex.flex-wrap.items-center(v-if="page?.title" :key="page.url") 
-      .mr-0 {{ page?.title }}
+      .mr-0 {{ page?.title }} 
       .flex-1
       .mx-2.my-0.text-6xl(v-if="page?.emoji") {{ page?.emoji }}
     .mt-0.mb-0(v-if="page?.description") {{ page?.description }}

@@ -87,16 +87,16 @@ nav.bar
     )
     .i-la-chalkboard-teacher
 
-  //- a.button(
-  //-   title="Projects"
-  //-   href="/projects/"
-  //-   :class="{ active: route.path.includes('projects') }"
-  //-   v-tooltip.right="'Projects'"
-  //-   aria-label="Projects"
-  //-   )
-  //-   .scale-100.i-la-layer-group
-
   a.button(
+    title="Projects"
+    href="/projects/"
+    :class="{ active: route.path.includes('projects') }"
+    v-tooltip.right="'Projects'"
+    aria-label="Projects"
+    )
+    .scale-100.i-la-layer-group
+
+  //- a.button(
     title="Academy"
     href="/academy/"
     :class="{ active: route.path.includes('academy') }"

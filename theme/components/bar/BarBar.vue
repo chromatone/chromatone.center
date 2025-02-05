@@ -94,7 +94,7 @@ nav.bar
     v-tooltip.right="'Projects'"
     aria-label="Projects"
     )
-    .scale-100.i-la-layer-group
+    .transition.scale-100.hover-op-100.op-70.i-la-layer-group
 
   //- a.button(
     title="Academy"

@@ -87,14 +87,14 @@ nav.bar
     )
     .i-la-chalkboard-teacher
 
-  a.button(
-    title="Projects"
-    href="/projects/"
-    :class="{ active: route.path.includes('projects') }"
-    v-tooltip.right="'Projects'"
-    aria-label="Projects"
-    )
-    .scale-100.i-la-layer-group
+  //- a.button(
+  //-   title="Projects"
+  //-   href="/projects/"
+  //-   :class="{ active: route.path.includes('projects') }"
+  //-   v-tooltip.right="'Projects'"
+  //-   aria-label="Projects"
+  //-   )
+  //-   .scale-100.i-la-layer-group
 
   a.button(
     title="Academy"
@@ -105,7 +105,7 @@ nav.bar
     )
     .scale-85.i-mdi-pillar
 
-  // a.button(
+  //-  a.button(
     title="School"
     href="/school/"
     :class="{ active: route.path.includes('school') }"
@@ -114,7 +114,7 @@ nav.bar
     )
     .scale-85.i-bxs-school
 
-  // a.button(
+  //-  a.button(
     title="Contacts"
     href="/contacts/"
     :class="{ active: route.path.includes('contacts') }"

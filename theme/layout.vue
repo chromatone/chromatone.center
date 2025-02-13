@@ -162,7 +162,7 @@ midi-notes(v-if="!params.pure && !params.nokeys")
 
 .pure #content {
   max-height: 100vh;
-  overflow: scroll;
+  overflow-y: scroll;
   overscroll-behavior: none;
 }
 

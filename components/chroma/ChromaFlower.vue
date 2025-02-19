@@ -10,6 +10,7 @@ import { colord } from "colord";
 import { useClipboard, watchThrottled } from '@vueuse/core'
 import { computed, onMounted, ref, shallowRef } from 'vue'
 import { Note } from 'tonal'
+import { useGesture } from '@vueuse/gesture'
 
 const props = defineProps({
   letters: { type: Boolean, default: true },
@@ -75,6 +76,115 @@ watchThrottled(loaded, l => {
     console.error('Loaded color scheme is not valid')
   }
 })
+
+const svg = ref()
+const currentNote = ref(null)
+const touchPoints = new Map()
+
+useGesture({
+  onTouchstart: handleTouchStart,
+  onTouchmove: handleTouchMove,
+  onTouchend: handleTouchEnd,
+  onTouchcancel: handleTouchEnd,
+  onDrag: ({ event, first, last, active }) => {
+    event.preventDefault()
+    const element = document.elementFromPoint(event.clientX, event.clientY)
+    if (!element) return
+
+    const keyElement = element.closest('.key')
+    if (!keyElement) return
+
+    const noteData = flower.value[parseInt(keyElement.dataset.pitch)]
+    if (!noteData) return
+
+    if (first) {
+      playNote(noteData.midi)
+      currentNote.value = noteData.midi
+    } else if (last) {
+      stopNote(currentNote.value)
+      currentNote.value = null
+    } else if (active && currentNote.value !== noteData.midi) {
+      stopNote(currentNote.value)
+      playNote(noteData.midi)
+      currentNote.value = noteData.midi
+    }
+  },
+  onDragEnd: () => {
+    if (currentNote.value !== null) {
+      stopNote(currentNote.value)
+      currentNote.value = null
+    }
+  }
+}, {
+  domTarget: svg,
+  eventOptions: { passive: false },
+  triggerAllEvents: true,
+  dragDelay: 0,
+})
+
+function handleTouchStart({ event }) {
+  event.preventDefault()
+  Array.from(event.changedTouches).forEach(touch => {
+    const element = document.elementFromPoint(touch.clientX, touch.clientY)
+    if (!element) return
+
+    const keyElement = element.closest('.key')
+    if (!keyElement) return
+
+    const noteData = flower.value[parseInt(keyElement.dataset.pitch)]
+    if (!noteData) return
+
+    touchPoints.set(touch.identifier, noteData.midi)
+    playNote(noteData.midi)
+  })
+}
+
+function handleTouchMove({ event }) {
+  event.preventDefault()
+  Array.from(event.changedTouches).forEach(touch => {
+    const oldNote = touchPoints.get(touch.identifier)
+    const element = document.elementFromPoint(touch.clientX, touch.clientY)
+    if (!element) {
+      if (oldNote !== undefined) {
+        stopNote(oldNote)
+        touchPoints.delete(touch.identifier)
+      }
+      return
+    }
+
+    const keyElement = element.closest('.key')
+    if (!keyElement) {
+      if (oldNote !== undefined) {
+        stopNote(oldNote)
+        touchPoints.delete(touch.identifier)
+      }
+      return
+    }
+
+    const noteData = flower.value[parseInt(keyElement.dataset.pitch)]
+    if (!noteData) return
+
+    const newNote = noteData.midi
+    if (newNote !== oldNote) {
+      if (oldNote !== undefined) {
+        stopNote(oldNote)
+      }
+      touchPoints.set(touch.identifier, newNote)
+      playNote(newNote)
+    }
+  })
+}
+
+function handleTouchEnd({ event }) {
+  event.preventDefault()
+  Array.from(event.changedTouches).forEach(touch => {
+    const note = touchPoints.get(touch.identifier)
+    if (note !== undefined) {
+      stopNote(note)
+      touchPoints.delete(touch.identifier)
+    }
+  })
+}
 </script>
 
 <template lang="pug">
@@ -102,12 +212,14 @@ watchThrottled(loaded, l => {
       )
 
   svg.w-full.min-w-full(
+    ref="svg"
     version="1.1",
     baseProfile="full",
     :viewBox="`${-pad} ${-pad} ${size + 2 * pad} ${size + 2 * pad}`",
     xmlns="http://www.w3.org/2000/svg",
     text-anchor="middle" 
-    dominant-baseline="middle" 
+    dominant-baseline="middle"
+    style="touch-action: none"
     @touchstart="pressed = true"
     @touchend="pressed = false"
     @mousedown="pressed = true"
@@ -143,12 +255,7 @@ watchThrottled(loaded, l => {
     g(:transform="`translate(${size / 2}, ${size / 2}) `")
       g.keys(v-for="(note, pitch) in flower" :key="note")
         g.key.cursor-pointer(
-          @mousedown.passive="keyPlay(note.midi, $event);"
-          @mouseup.passive="keyPlay(note.midi, $event, true)"
-          @mouseenter.passive="pressed && keyPlay(note.midi, $event);"
-          @touchstart.prevent.stop="keyPlay(note.midi, $event)"
-          @touchend.prevent.stop="keyPlay(note.midi, $event, true)"
-          @mouseleave="keyPlay(note.midi, $event, true)"
+          :data-pitch="pitch"
           )
           g.petal(
             :transform="`rotate(${pitch * 30}) translate(2,-120) `"
@@ -314,5 +421,13 @@ input[type="color"] {
 input[type="color"]::-webkit-color-swatch {
   border: none;
   border-radius: 50%;
+}
+
+svg {
+  touch-action: none;
+}
+
+.key {
+  touch-action: none;
 }
 </style>

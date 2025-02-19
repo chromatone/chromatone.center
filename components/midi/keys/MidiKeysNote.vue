@@ -6,7 +6,7 @@ import { useMidi } from '#/use/midi';
 import { notes } from '#/use/theory';
 import { globalScale } from '#/use/global';
 import { intervals } from '#/use/theory';
-import { playNote, stopNote } from '#/use/midi'
+
 
 
 const props = defineProps({
@@ -26,19 +26,7 @@ function logCurve(x, factor = 10) {
   return Math.log(1 + factor * x) / Math.log(1 + factor);
 }
 
-function startKey(note, event) {
-  event?.preventDefault()
-  const rect = event.target.getBoundingClientRect();
-  const relativeY = event.clientY - rect.top;
-  const height = rect.height;
-  const linearVelocity = (relativeY / height);
-  const logVelocity = logCurve(linearVelocity);
-  const adjustedVelocity = 0.3 + (logVelocity * 0.7);
-  const scaleFactor = globalScale.isIn(notes[(note + 3) % 12]) ? 1 : 0.5;
-  const finalVelocity = adjustedVelocity * scaleFactor;
-  playNote(note, finalVelocity)
-}
-
+// Remove startKey function as it will be handled by parent
 
 const noteKey = ref()
 
@@ -50,15 +38,11 @@ g.note(
   text-anchor="middle",
   ref="noteKey"
   )
-  rect(
+  rect.note-cell(
+    :data-note="note"
     :width="width"
     :height="height"
     :fill="noteColor(note + 3, null, activeNotes[note] ? 1 : 0.1, globalScale.isIn(notes[(note + 3) % 12]) ? 1 : .4)"
-    @pointerdown.prevent="startKey(note, $event)", 
-    @pointerenter="pressed ? startKey(note, $event) : null"
-    @pointerleave="stopNote(note)", 
-    @pointerup.prevent="stopNote(note)", 
-    @touchcancel="stopNote(note)"
     )
   g.marks.pointer-events-none
     line(

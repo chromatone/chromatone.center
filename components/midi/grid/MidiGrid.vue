@@ -146,7 +146,80 @@ const getGrid = (chroma = "101011010101", tonic = 0, start = 2, end = 5) => Arra
 
 const midiGrid = computed(() => getGrid(scaleChroma.value.chroma, globalScale.tonic, begin.value, end.value))
 
-// const noteGrid = computed(() => midiGrid.value.map((oct) => oct.map(note => Note.fromMidi(note))))
+const currentNote = ref(null)
+
+const touchPoints = new Map() // Map<number, number> (touchId -> noteId)
+
+useGesture({
+  onTouchstart: handleTouchStart,
+  onTouchmove: handleTouchMove,
+  onTouchend: handleTouchEnd,
+  onTouchcancel: handleTouchEnd
+}, {
+  domTarget: area,
+  eventOptions: { passive: false },
+  triggerAllEvents: true
+})
+
+function handleTouchStart({ event }) {
+  event.preventDefault()
+  Array.from(event.changedTouches).forEach(touch => {
+    const element = document.elementFromPoint(touch.clientX, touch.clientY)
+    if (!element) return
+
+    const noteElement = element.closest('.note-cell')
+    if (!noteElement) return
+
+    const note = parseInt(noteElement.dataset.note)
+    touchPoints.set(touch.identifier, note)
+    playNote(note)
+  })
+}
+
+function handleTouchMove({ event }) {
+  event.preventDefault()
+  Array.from(event.changedTouches).forEach(touch => {
+    const oldNote = touchPoints.get(touch.identifier)
+    const element = document.elementFromPoint(touch.clientX, touch.clientY)
+    if (!element) {
+      if (oldNote !== undefined) {
+        stopNote(oldNote)
+        touchPoints.delete(touch.identifier)
+      }
+      return
+    }
+
+    const noteElement = element.closest('.note-cell')
+    if (!noteElement) {
+      if (oldNote !== undefined) {
+        stopNote(oldNote)
+        touchPoints.delete(touch.identifier)
+      }
+      return
+    }
+
+    const newNote = parseInt(noteElement.dataset.note)
+    if (newNote !== oldNote) {
+      if (oldNote !== undefined) {
+        stopNote(oldNote)
+      }
+      touchPoints.set(touch.identifier, newNote)
+      playNote(newNote)
+    }
+  })
+}
+
+function handleTouchEnd({ event }) {
+  event.preventDefault()
+  Array.from(event.changedTouches).forEach(touch => {
+    const note = touchPoints.get(touch.identifier)
+    if (note !== undefined) {
+      stopNote(note)
+      touchPoints.delete(touch.identifier)
+    }
+  })
+}
+
 
 </script>
 
@@ -249,37 +322,44 @@ svg.w-full.cursor-pointer.fullscreen-container.overflow-hidden.select-none.touch
         ) {{ end }}
 
   g.grid(ref="area")
-
     g.row(v-for="(octave, oct) in midiGrid" :key="oct")
-      g.cell(
-        :class="{ 'brightness-140': activeNotes[note] }"
+      g.note-cell(
         v-for="(note, n) in octave" :key="note"
+        :data-note="note"
         :transform="`translate(${n * width / midiGrid[0].length} ${height - (oct + 1) * (height / midiGrid.length)})`"
-        @pointerdown.prevent="playNote(note)", 
+        @pointerdown.prevent="playNote(note)"
         @pointerenter="pressed ? playNote(note) : null"
-        @pointerleave="stopNote(note)", 
-        @pointerup.prevent="stopNote(note)", 
+        @pointerleave="pressed ? stopNote(note) : null"
+        @pointerup.prevent="stopNote(note)"
         @pointercancel="stopNote(note)"
         )
         rect(
-          :fill="noteColor(note - 9)"
+          :fill="noteColor(note - 9, null, 1, activeNotes[note] ? 1 : 0.4)"
           :height="height / midiGrid.length"
           :width="width / midiGrid[0].length"
           )
         text(
           dominant-baseline="middle"
-          :y="height / midiGrid.length / 2"
-          :x=10
+          :y="25"
+          :x="10"
+          font-size="24"
+          ) {{ Note.fromMidi(note) }} 
+        text(
+          dominant-baseline="middle"
+          text-anchor="end"
+          opacity=".3"
+          :y="height / midiGrid.length - 10"
+          :x="width / midiGrid[0].length - 10"
           ) 
-          tspan.text-2xl() {{ Note.fromMidi(note) }} 
-          tspan(dy="30" x=10) {{ note }} 
+
+          tspan() {{ note }} 
 
     g.intervals
       g.interval(
         v-for="(note, n) in midiGrid[0]" :key="note"
         :transform="`translate(${n * width / midiGrid[0].length + 10} 20)`"
         )
-        text {{ Interval.fromSemitones(note - midiGrid[0][0]) }}
+        text(text-anchor="end" font-weight="bold" :y="10" :x="width / midiGrid[0].length - 20") {{ Interval.fromSemitones(note - midiGrid[0][0]) }}
 </template>
 
 <style scoped>
@@ -295,5 +375,9 @@ svg {
   -webkit-user-select: none;
   -webkit-user-modify: none;
   -webkit-highlight: none;
+}
+
+.note-cell {
+  touch-action: none;
 }
 </style>

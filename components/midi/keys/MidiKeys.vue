@@ -10,6 +10,7 @@ import { useClamp } from '@vueuse/math'
 import { useStorage } from '@vueuse/core'
 import { intervals } from '#/use/theory';
 import { ScaleType } from 'tonal'
+import { playNote, stopNote } from '#/use/midi'
 
 const props = defineProps({
   width: { type: Number, default: 900 },
@@ -88,6 +89,111 @@ const filterScale = useStorage('filter-keys', true)
 const keys = computed(() => filterScale.value ? rawKeys.value.filter(key => {
   return globalScale.isIn(notes[(key + 3) % 12])
 }) : rawKeys.value)
+
+const currentNote = ref(null)
+const touchPoints = new Map()
+
+useGesture({
+  onTouchstart: handleTouchStart,
+  onTouchmove: handleTouchMove,
+  onTouchend: handleTouchEnd,
+  onTouchcancel: handleTouchEnd,
+  onDrag: ({ event, first, last, active }) => {
+    event.preventDefault()
+    const element = document.elementFromPoint(event.clientX, event.clientY)
+    if (!element) return
+
+    const noteElement = element.closest('.note-cell')
+    if (!noteElement) return
+
+    const note = parseInt(noteElement.dataset.note)
+    if (isNaN(note)) return
+
+    if (first) {
+      playNote(note)
+      currentNote.value = note
+    } else if (last) {
+      stopNote(currentNote.value)
+      currentNote.value = null
+    } else if (active && currentNote.value !== note) {
+      stopNote(currentNote.value)
+      playNote(note)
+      currentNote.value = note
+    }
+  },
+  onDragEnd: () => {
+    if (currentNote.value !== null) {
+      stopNote(currentNote.value)
+      currentNote.value = null
+    }
+  }
+}, {
+  domTarget: area,
+  eventOptions: { passive: false },
+  triggerAllEvents: true,
+  dragDelay: 0,
+})
+
+function handleTouchStart({ event }) {
+  event.preventDefault()
+  Array.from(event.changedTouches).forEach(touch => {
+    const element = document.elementFromPoint(touch.clientX, touch.clientY)
+    if (!element) return
+
+    const noteElement = element.closest('.note-cell')
+    if (!noteElement) return
+
+    const note = parseInt(noteElement.dataset.note)
+    if (isNaN(note)) return
+
+    touchPoints.set(touch.identifier, note)
+    playNote(note)
+  })
+}
+
+function handleTouchMove({ event }) {
+  event.preventDefault()
+  Array.from(event.changedTouches).forEach(touch => {
+    const oldNote = touchPoints.get(touch.identifier)
+    const element = document.elementFromPoint(touch.clientX, touch.clientY)
+    if (!element) {
+      if (oldNote !== undefined) {
+        stopNote(oldNote)
+        touchPoints.delete(touch.identifier)
+      }
+      return
+    }
+
+    const noteElement = element.closest('.note-cell')
+    if (!noteElement) {
+      if (oldNote !== undefined) {
+        stopNote(oldNote)
+        touchPoints.delete(touch.identifier)
+      }
+      return
+    }
+
+    const newNote = parseInt(noteElement.dataset.note)
+    if (newNote !== oldNote) {
+      if (oldNote !== undefined) {
+        stopNote(oldNote)
+      }
+      touchPoints.set(touch.identifier, newNote)
+      playNote(newNote)
+    }
+  })
+}
+
+function handleTouchEnd({ event }) {
+  event.preventDefault()
+  Array.from(event.changedTouches).forEach(touch => {
+    const note = touchPoints.get(touch.identifier)
+    if (note !== undefined) {
+      stopNote(note)
+      touchPoints.delete(touch.identifier)
+    }
+  })
+}
 
 </script>
 
@@ -268,5 +374,9 @@ svg {
   -webkit-user-select: none;
   -webkit-user-modify: none;
   -webkit-highlight: none;
+}
+
+.note-cell {
+  touch-action: none;
 }
 </style>

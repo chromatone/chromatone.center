@@ -23,7 +23,7 @@
 	"engines": {
 		"node": "^23.x"
 	},
-	"packageManager": "pnpm@10.2.0",
+	"packageManager": "pnpm@10.4.1",
 	"exports": {
 		".": "./lib/index.js",
 		"./audio": "./lib/audio.js",
@@ -54,8 +54,7 @@
 		"build-db": "cd db && vite build --emptyOutDir",
 		"build": "pnpm run docs && vitepress build content",
 		"serve": "vitepress serve content --port 3200",
-		"docs": "jsdoc2md use/*.js > use/docs/index.md",
-		"deploy": "sh deploy.sh"
+		"docs": "jsdoc2md use/*.js > use/docs/index.md"
 	},
 	"peerDependencies": {
 		"@elemaudio/core": "^3.2.1",
@@ -68,11 +67,11 @@
 		"@gun-vue/gun-es": "^0.2.1240",
 		"@tonejs/midi": "^2.0.28",
 		"@types/matter-js": "^0.19.8",
-		"@unocss/reset": "^65.4.3",
-		"@vueuse/core": "^12.5.0",
+		"@unocss/reset": "^66.0.0",
+		"@vueuse/core": "^12.7.0",
 		"@vueuse/gesture": "^2.0.0",
-		"@vueuse/integrations": "^12.5.0",
-		"@vueuse/math": "^12.5.0",
+		"@vueuse/integrations": "^12.7.0",
+		"@vueuse/math": "^12.7.0",
 		"abcjs": "^6.4.4",
 		"an-array-of-english-words": "^2.0.0",
 		"atrament": "^4.6.0",
@@ -83,7 +82,7 @@
 		"big-integer": "^1.6.52",
 		"chordsheetjs": "^12.0.0",
 		"cobe": "^0.6.3",
-		"color-name-list": "^11.4.0",
+		"color-name-list": "^11.5.0",
 		"color-spectrum": "^1.1.3",
 		"colord": "^2.9.3",
 		"drauu": "^0.4.2",
@@ -96,7 +95,7 @@
 		"hydra-synth": "^1.3.29",
 		"image-downloader": "^4.3.0",
 		"jisg": "^0.9.99",
-		"mathjs": "^14.2.0",
+		"mathjs": "^14.2.1",
 		"matter-attractors": "^0.1.6",
 		"matter-js": "^0.20.0",
 		"matter-wrap": "^0.2.0",
@@ -116,7 +115,7 @@
 		"tonal": "^6.4.0",
 		"universal-base64url": "^1.1.0",
 		"uqr": "^0.1.2",
-		"vite-plugin-top-level-await": "^1.4.4",
+		"vite-plugin-top-level-await": "^1.5.0",
 		"vite-plugin-wasm": "^3.4.1",
 		"vitepress-plugin-rss": "^0.3.1",
 		"vue-glsl": "^1.1.27",
@@ -126,33 +125,38 @@
 		"zzfx": "^1.3.0"
 	},
 	"devDependencies": {
-		"@directus/sdk": "^19.0.0",
+		"@directus/sdk": "^19.0.1",
 		"@iconify-json/bi": "^1.2.2",
 		"@iconify-json/bxs": "^1.2.2",
-		"@iconify-json/carbon": "^1.2.6",
+		"@iconify-json/carbon": "^1.2.7",
 		"@iconify-json/fad": "^1.2.1",
-		"@iconify-json/fluent": "^1.2.13",
-		"@iconify-json/healthicons": "^1.2.4",
+		"@iconify-json/fluent": "^1.2.14",
+		"@iconify-json/healthicons": "^1.2.5",
 		"@iconify-json/hugeicons": "^1.2.3",
 		"@iconify-json/ion": "^1.2.2",
 		"@iconify-json/la": "^1.2.1",
 		"@iconify-json/mdi": "^1.2.3",
 		"@iconify-json/ph": "^1.2.2",
 		"@iconify-json/system-uicons": "^1.2.2",
-		"@iconify-json/tabler": "^1.2.15",
+		"@iconify-json/tabler": "^1.2.16",
 		"@modyfi/vite-plugin-yaml": "^1.1.0",
-		"@unocss/extractor-pug": "^65.4.3",
+		"@unocss/extractor-pug": "^66.0.0",
 		"@vite-pwa/vitepress": "^0.5.3",
 		"@vue/compiler-sfc": "^3.5.13",
-		"@vue/language-plugin-pug": "^2.2.0",
+		"@vue/language-plugin-pug": "^2.2.2",
 		"jsdoc-to-markdown": "^9.1.1",
 		"pug": "^3.0.3",
 		"sharp": "^0.33.5",
-		"unocss": "^65.4.3",
-		"unplugin-icons": "^22.0.0",
-		"unplugin-vue-components": "^28.0.0",
-		"vite": "^6.0.11",
+		"unocss": "^66.0.0",
+		"unplugin-icons": "^22.1.0",
+		"unplugin-vue-components": "^28.4.0",
+		"vite": "^6.1.1",
 		"vitepress": "^2.0.0-alpha.2",
 		"workbox-window": "^7.3.0"
+	},
+	"pnpm": {
+		"onlyBuiltDependencies": [
+			"@swc/core"
+		]
 	}
 }

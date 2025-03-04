@@ -19,7 +19,7 @@ const message = computed(() => {
   for (let p in knobs) {
     arr.push(`${p}${knobs[p]}`);
   }
-  arr.push("A0,0.2,150,1,250,0T59");
+  arr.push("A0,0,10,0.2,30,1,400,0.7,600,0.3,0,0");
   return arr.join("");
 });
 
@@ -174,7 +174,7 @@ export function useAMY() {
   function play(note, velocity = 0) {
     if (!amy_started) startAudio();
     let osc = `v${note * 20}`;
-    if (velocity > 0) {
+    if (velocity > 0 && ) {
       let setup = osc + message.value;
       amy_play_message(setup);
       history.unshift(setup);

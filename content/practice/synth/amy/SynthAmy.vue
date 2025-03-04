@@ -67,24 +67,8 @@ const { knobs, waveforms, reset, note, play, message, history } = useAMY()
     )
     .flex-auto(key="flex")
     button.text-button(@click="reset()" key="reset") RESET
-.p-2.rounded-xl.border-1.m-2.select-none.flex.flex-wrap.gap-4
-  control-rotary(
-    :min="1"
-    :max="127"
-    param="Note"
-    v-model="note"
-    :fixed="0"
-    unit="MIDI"
-    )
-  button.flex.items-center.gap-4.select-none.p-4.rounded-xl.bg-green-300.dark-bg-green-900.active-font-bold(
-    @mousedown.prevent.stop="play(note, 1)"
-    @touchstart.prevent.stop="play(note, 1)"
-    @mouseup.prevent.stop="play(note, 0)"
-    @touchend.prevent.stop="play(note, 0)"
-    )
-    .i-la-play.text-4xl
 
-.p-4.flex.items-center.font-mono {{ message }}
+input.p-4.flex.items-center.font-mono(v-model="message")
 
 .top-16.right-4.p-4.w-80.max-h-80vh.overflow-hidden.flex.flex-col.opacity-30.pointer-events-none.font-mono.text-sm.fixed
   .font-bold.border-b-2 {{ message }}

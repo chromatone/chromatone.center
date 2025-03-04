@@ -22,12 +22,13 @@ onBeforeUnmount(() => synthEnabled.value = true)
 
 <SynthAmy/>
 
+<MidiKeys></MidiKeys>
+
 ## AMY Synth
 
 ### the Additive Music synthesizer librarY
 
 Highly experimental. [Issue pending](https://github.com/bwhitman/amy/issues/35)
-
 
 - Press `A` on your keyboard to play a note. Or push the PLAY button.
 - Use <i class="p-3 i-la-arrow-left"></i> and <i class="p-3 i-la-arrow-right"></i> keys to browse patches

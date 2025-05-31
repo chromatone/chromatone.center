@@ -1,10 +1,10 @@
 ---
 title: Hydra synth
-subtitle: Experiment with visual synth
+description: Experiment with visual synth
 cover: cover.png
 layout: app
 date: 2020-02-02
-links: 
+links:
   - https://github.com/hydra-synth/hydra-synth
   - https://github.com/hydra-synth/hydra
   - https://github.com/hydra-synth/hydra-examples
@@ -26,4 +26,4 @@ Set of tools for livecoding networked visuals. Inspired by analog modular synthe
 
 Hydra uses multiple framebuffers to allow dynamically mixing, compositing, and collaborating between connected browser-visual-streams. Coordinate and color transforms can be applied to each output via chained functions.
 
-https://hydra.ojack.xyz 
+https://hydra.ojack.xyz

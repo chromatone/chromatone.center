@@ -29,20 +29,20 @@ export default defineConfig(
     },
     plugins: [
       ViteYaml(),
-      RssPlugin({
-        title: 'Chromatone',
-        baseUrl: 'https://chromatone.center',
-        copyright: 'Copyright (c) 2017-present, Denis Starov',
-        description: 'Visual Music Language development updates and more',
-        language: 'en-EN',
-        icon: true,
-        author: {
-          name: 'Denis Starov',
-          email: 'davay@chromatone.center',
-          link: 'https://starovdenis.com'
-        },
-        log: false,
-      }),
+      // RssPlugin({
+      //   title: 'Chromatone',
+      //   baseUrl: 'https://chromatone.center',
+      //   copyright: 'Copyright (c) 2017-present, Denis Starov',
+      //   description: 'Visual Music Language development updates and more',
+      //   language: 'en-EN',
+      //   icon: true,
+      //   author: {
+      //     name: 'Denis Starov',
+      //     email: 'davay@chromatone.center',
+      //     link: 'https://starovdenis.com'
+      //   },
+      //   log: false,
+      // }),
       Components({
         dirs: ['../components', '../theme/components', '../audio'],
         extensions: ['vue', 'ts', 'js'],

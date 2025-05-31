@@ -63,7 +63,7 @@ function trigger(pub) { gun.get(appName).get('personal').get(pub).put(Date.now()
 
 async function generate() { pair.value = await SEA.pair() }
 
-function leave() { gun.user().leave(); setTimeout(() => { if (!gun.user()?.is) { userPub = null } }, 1000); }
+function leave() { gun.user().leave(); setTimeout(() => { if (!gun.user()?.is) { userPub.value = null } }, 1000); }
 
 </script>
 

@@ -1,0 +1,1 @@
+import{B as o,C as n,M as s,af as r,z as a}from"./framework.B_b_ZswS.js";const _={class:"button"};function c(e,t){return o(),n("button",_,[s(e.$slots,"default",{},()=>[t[0]||(t[0]=r("Start"))],!0)])}const d={},u=a(d,[["render",c],["__scopeId","data-v-fb351d24"]]);export{u as _};

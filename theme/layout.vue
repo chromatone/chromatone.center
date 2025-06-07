@@ -89,7 +89,7 @@ midi-notes(v-if="!params.pure && !params.nokeys")
       transition(name="panel" mode="in-out")
         page-headline(
           v-if="f.layout != 'app'"
-          :pageColor="pageColor", :lightColor="lightColor" :page="f" :cover="f.dynamic ? f?.cover?.id || f?.poster?.id : page?.frontmatter?.cover")
+          :pageColor="pageColor", :lightColor="lightColor" :page="f" :cover="f.dynamic ? f?.cover?.id || f?.poster?.id : page?.frontmatter?.cover") 
 
           page-parents(:parents="f.dynamic ? parents : parents.slice(0, -1)")
       transition(name="fade")

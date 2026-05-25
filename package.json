@@ -21,7 +21,7 @@
 	"author": "Davay42",
 	"type": "module",
 	"engines": {
-		"node": "^23.x"
+		"node": "^24.x"
 	},
 	"packageManager": "pnpm@10.33.2",
 	"exports": {

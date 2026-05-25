@@ -2,6 +2,7 @@ import { computed, markRaw, nextTick, reactive, ref, watch, onMounted } from 'vu
 import { createDrauu } from 'drauu'
 import { toReactive, useStorage } from '@vueuse/core'
 import { useCycleList } from '@vueuse/core'
+import { useRoute } from 'vitepress'
 
 
 export const brushColors = [
@@ -62,7 +63,9 @@ export const drauuOptions = reactive({
 export const drauu = markRaw(createDrauu(drauuOptions))
 
 export function clearDrauu() {
-  drauu.clear()
+  if (drauu.mounted) {
+    drauu.clear()
+  }
 }
 
 export function updateState() {
@@ -72,6 +75,7 @@ export function updateState() {
 }
 
 export function loadCanvas(page) {
+  if (!drauu.mounted) return
   disableDump = true
   const data = pages[page || currentPage.value]
   if (data != null)
@@ -82,7 +86,13 @@ export function loadCanvas(page) {
 }
 
 export function useDraw() {
+  const route = useRoute()
+
   if (!drawingInitiated.value) {
+    // Sync currentPage with route path
+    watch(route, (r) => {
+      currentPage.value = r.path
+    }, { immediate: true })
     drauu.on('changed', () => {
       updateState()
       if (!disableDump) {
@@ -93,27 +103,15 @@ export function useDraw() {
       }
     })
 
-    onMounted(() => {
-      nextTick(() => {
-        if (pages?.[currentPage.value] != null)
-          drauu.load(pages?.[currentPage.value] || '')
-      })
-
-    })
-
     watch(currentPage, (page) => {
+      if (!drauu.mounted) return
       disableDump = true
       if (pages[page] != null)
         drauu.load(pages[page] || '')
+      else
+        drauu.clear()
       disableDump = false
       updateState()
-    })
-
-    nextTick(() => {
-      watch(currentPage, () => {
-
-        loadCanvas()
-      }, { immediate: true })
     })
 
     drauu.on('start', () => isDrawing.value = true)

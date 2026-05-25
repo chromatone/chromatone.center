@@ -116,13 +116,13 @@ midi-notes(v-if="!params.pure && !params.nokeys")
 
           content.content.flex-auto.z-10(v-if="!f?.topContent")
 
-      nav-next-prev.mt-8(
+      nav-next-prev(
         :siblings="siblings" 
         :parents="parents"
         v-if="!params.pure && !params.nonav"
         )
       //- nav-row.p-4
-      page-footer(v-if="!params.pure && !params.nofooter")
+      //- page-footer(v-if="!params.pure && !params.nofooter")
   client-only
     draw-layer.z-100
     cast-camera

@@ -2,18 +2,11 @@
 import { useDraw } from '#/theme/composables/draw'
 import { midi } from '#/use/midi'
 import { noteColor } from "#/use/colors"
-import { useRoute } from 'vitepress'
-import { onMounted, watch } from 'vue';
-
-const route = useRoute()
+import { watch } from 'vue'
 
 const { brush, brushColors, canClear,
   canRedo, canUndo, clearDrauu,
   drauu, drawingEnabled, drawingMode, brushSizes, drawingPinned, currentPage } = useDraw()
-
-onMounted(() => {
-  watch(route, (r) => currentPage.value = r.path, { immediate: true })
-})
 
 function undo() {
   drauu.undo()

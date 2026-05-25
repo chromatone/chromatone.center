@@ -24,19 +24,15 @@ export function useSequencer() {
       clap: 0,
       kick: 0,
     },
-    train: computed(() => el.train({ key: 'seq:train' },
-      el.sm(
-        el.const({
-          key: 'seq:freq',
-          value: sequencer.playing ? sequencer.bpm / 15 : 0
-        }))))
   })
 
-  watch(sequencer, s => {
+  watch(() => [sequencer.playing, sequencer.bpm, sequencer.volume, sequencer.tracks, sequencer.hit], () => {
     const { audio, render } = useElementary()
 
     // const metro = el.metro({ interval: s.interval })
     const reset = el.const({ key: 'seq:reset', value: 0 })
+    const trainFreq = sequencer.playing ? sequencer.bpm / 15 : 0
+    const train = el.train(trainFreq)
 
     const all = el.mul(
       el.const({
@@ -54,20 +50,20 @@ export function useSequencer() {
               }),
               el.seq2({
                 key: 'seq:kick',
-                seq: [...s.tracks.kick]
-              }, sequencer.train, reset))),
+                seq: [...sequencer.tracks.kick]
+              }, train, reset))),
           clapSynth(800, 0.005, 0.204,
             el.or(
               el.const({
                 key: 'hit:clap',
                 value: sequencer.hit.clap
-              }), el.seq2({ key: 'seq:clap', seq: [...s.tracks.clap] }, sequencer.train, reset))),
+              }), el.seq2({ key: 'seq:clap', seq: [...sequencer.tracks.clap] }, train, reset))),
           hatSynth(317, 12000, 0.005, 0.1,
             el.or(
               el.const({
                 key: 'hit:hhat',
-                value: sequencer.hit.hhat
-              }), el.seq2({ key: 'seq:hh', seq: [...s.tracks.hhat] }, sequencer.train, reset))),
+                value: sequencer.hit.hat
+              }), el.seq2({ key: 'seq:hh', seq: [...sequencer.tracks.hhat] }, train, reset))),
         )))
 
     audio.layers.seq = { signal: [all, all] }

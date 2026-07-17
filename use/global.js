@@ -3,7 +3,7 @@
  * @description Global state
  */
 
-import { notes } from './theory'
+import { notes } from './theory.js'
 import { ScaleType, Scale, Pcset } from "tonal";
 import { reactive, computed } from 'vue'
 import { useStorage } from "@vueuse/core";
@@ -23,3 +23,5 @@ export const globalScale = reactive({
   pcs: computed(() => Scale.scaleNotes(globalScale.full.notes)),
   isIn: computed(() => Pcset.isNoteIncludedIn(globalScale.pcs)),
 });
+
+globalThis.__chromatoneGlobalScale = globalScale;

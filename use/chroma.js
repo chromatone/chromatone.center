@@ -5,6 +5,7 @@
 
 import { playNote, playNoteOnce, stopNote } from "./midi.js";
 import { rotateArray } from './calculations.js';
+import { Note } from 'tonal';
 
 function getDefaultScale() {
   return globalThis.__chromatoneGlobalScale || { chroma: '101011010101', tonic: 0 };
@@ -16,15 +17,15 @@ export function getChromaNotes(chroma = getDefaultScale().chroma, tonic = getDef
     .filter((_, n) => rotateArray(chroma.split(''), -tonic)[n] == '1');
 
   if (inversion <= 0 || inversion >= notes.length) {
-    return notes;
+    return notes.map(note => Note.fromMidi(note));
   }
 
   return [...notes.slice(inversion), ...notes.slice(0, inversion)]
     .map((note, index) => {
       if (index >= notes.length - inversion) {
-        return note + 12;
+        return Note.fromMidi(note + 12);
       }
-      return note;
+      return Note.fromMidi(note);
     });
 }
 

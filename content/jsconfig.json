@@ -20,7 +20,6 @@
 		"readme": "use/README.md"
 	},
 	"compilerOptions": {
-		"baseUrl": ".",
 		"paths": {
 			"#/*": [
 				"../*"
@@ -29,7 +28,6 @@
 		"jsx": "preserve",
 		"esModuleInterop": true,
 		"target": "esnext",
-		"moduleResolution": "Node",
 		"resolveJsonModule": true,
 		"allowJs": true,
 		"isolatedModules": true,

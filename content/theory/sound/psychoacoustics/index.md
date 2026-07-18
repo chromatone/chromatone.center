@@ -26,3 +26,7 @@ In 1956 Robinson and Dadson produced a new experimental determination that they 
 https://en.wikipedia.org/wiki/Interaural_time_difference
 
 <youtube-embed video="Gc5eICzHkFU" />
+
+## Dissonance curve
+
+<youtube-embed video="tCsl6ZcY9ag" />

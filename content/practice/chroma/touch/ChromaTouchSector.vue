@@ -17,7 +17,7 @@ g.sector
   SvgRing(
     :cx="0"
     :cy="0"
-    :radius="size - octave * (size / octaves)"
+    :radius="(octave + 1) * (size / octaves)"
     :thickness="size / octaves"
     :from="n * 30 - 15"
     :to="(n + 1) * 30 - 15"
@@ -25,5 +25,5 @@ g.sector
     ) 
     text.fill-black.text-4px(
       :style="{ fontWeight: rotateArray(globalScale.chroma, -globalScale.tonic)[n] == 1 ? 'bold' : 'normal', fontSize: globalScale.tonic == n ? '8px' : '4px' }"
-      y="1" v-if="octave == 0") {{ note }}
+      y="1" v-if="octave == 3") {{ note }}
 </template>

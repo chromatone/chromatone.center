@@ -20,7 +20,7 @@ const voices = computed(() => {
   for (let t in touches) {
     const { angle, distance } = touches[t]
     const pitch = Math.ceil((angle - 15) / 30) % 12
-    const octave = Math.floor((1 - distance) * octaves.value + startOctave.value - 2)
+    const octave = Math.floor((distance) * octaves.value + startOctave.value - 2)
     const num = (octave + 4) * 12 + pitch - 3
     list[t] = { pitch, octave, num }
   }

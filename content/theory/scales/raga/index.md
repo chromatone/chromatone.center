@@ -16,7 +16,7 @@ Every raga has a swara (a note or named pitch) called shadja, or adhara sadja, w
 
 According to Monier Monier-Williams, the term comes from a Sanskrit word for "the act of colouring or dyeing", or simply a "colour, hue, tint, dye". The term also connotes an emotional state referring to a "feeling, affection, desire, interest, joy or delight", particularly related to passion, love, or sympathy for a subject or something. In the context of ancient Indian music, the term refers to a harmonious note, melody, formula, building block of music available to a musician to construct a state of experience in the audience.
 
-The word appears in the ancient Principal Upanishads of Hinduism, as well as the Bhagavad Gita.[ For example, verse 3.5 of the Maitri Upanishad and verse 2.2.9 of the Mundaka Upanishad contain the word rāga. The Mundaka Upanishad uses it in its discussion of soul (Atman-Brahman) and matter (Prakriti), with the sense that the soul does not "color, dye, stain, tint" the matter. The Maitri Upanishad uses the term in the sense of "passion, inner quality, psychological state". The term rāga is also found in ancient texts of Buddhism where it connotes "passion, sensuality, lust, desire" for pleasurable experiences as one of three impurities of a character. Alternatively, rāga is used in Buddhist texts in the sense of "color, dye, hue".
+The word appears in the ancient Principal Upanishads of Hinduism, as well as the Bhagavad Gita. For example, verse 3.5 of the Maitri Upanishad and verse 2.2.9 of the Mundaka Upanishad contain the word rāga. The Mundaka Upanishad uses it in its discussion of soul (Atman-Brahman) and matter (Prakriti), with the sense that the soul does not "color, dye, stain, tint" the matter. The Maitri Upanishad uses the term in the sense of "passion, inner quality, psychological state". The term rāga is also found in ancient texts of Buddhism where it connotes "passion, sensuality, lust, desire" for pleasurable experiences as one of three impurities of a character. Alternatively, rāga is used in Buddhist texts in the sense of "color, dye, hue".
 
 <youtube-embed video="J8QgzZQ3hyc" />
 
@@ -142,3 +142,6 @@ http://carnatica.net/origin.htm
 http://www.melakarta.com/index.html
 
 http://www.carnaticcorner.com/articles/22_srutis.htm
+
+
+<img src="./melakarta_visualization.svg" />

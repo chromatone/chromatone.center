@@ -1,0 +1,280 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1440 1030" role="img" aria-label="Melakarta swara and Western pitch networks" aria-describedby="desc">
+  <desc id="desc">Two matching directed networks show Melakarta swara choices and their Western pitches when Sa is C.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#88909a" />
+    </marker>
+    <style>
+      .background { fill: #eeeeee; }
+      text { fill: #17202a; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      .title { font-size: 38px; font-weight: 600; letter-spacing: .02em; }
+      .section-title { font-size: 17px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; fill: #58636f; }
+      .network-title { font-size: 22px; font-weight: 600; }
+      .column-label text { font-size: 18px; font-weight: 600; text-anchor: middle; }
+      .column-label .degree { font-size: 15px; font-weight: 500; fill: #68737f; }
+      .edge { fill: none; stroke: #88909a; stroke-width: 1.8; stroke-linecap: round; }
+      .node circle { stroke: #59636e; stroke-width: 1.4; }
+      .node text { font-size: 16px; font-weight: 600; pointer-events: none; }
+      .node.fixed circle { fill: #f7e7a6; }
+      .node.r circle { fill: #f5bfd0; }
+      .node.g circle { fill: #cde8c5; }
+      .node.m circle { fill: #d8cef2; }
+      .node.d circle { fill: #c9e0f4; }
+      .node.n circle { fill: #f6cfad; }
+      .divider { stroke: #d8dde3; stroke-width: 1; }
+      .equation { font-size: 19px; font-weight: 600; }
+      .caption { font-size: 14px; fill: #68737f; }
+    </style>
+  </defs>
+  <rect class="background" width="1440" height="1030" />
+  <text class="title" x="720" y="62" text-anchor="middle">Melakarta</text>
+  <text class="caption" x="28" y="116">Swaras</text>
+  <text class="caption" x="28" y="144">Scale degrees</text>
+    <g class="column-label" transform="translate(92 0)">
+      <text y="116">Sa</text>
+      <text class="degree" y="144">Ⅰ</text>
+    </g>
+    <g class="column-label" transform="translate(270 0)">
+      <text y="116">Ri</text>
+      <text class="degree" y="144">Ⅱ</text>
+    </g>
+    <g class="column-label" transform="translate(448 0)">
+      <text y="116">Ga</text>
+      <text class="degree" y="144">Ⅲ</text>
+    </g>
+    <g class="column-label" transform="translate(626 0)">
+      <text y="116">Ma</text>
+      <text class="degree" y="144">Ⅳ</text>
+    </g>
+    <g class="column-label" transform="translate(804 0)">
+      <text y="116">Pa</text>
+      <text class="degree" y="144">Ⅴ</text>
+    </g>
+    <g class="column-label" transform="translate(982 0)">
+      <text y="116">Dha</text>
+      <text class="degree" y="144">Ⅵ</text>
+    </g>
+    <g class="column-label" transform="translate(1160 0)">
+      <text y="116">Ni</text>
+      <text class="degree" y="144">Ⅶ</text>
+    </g>
+    <g class="column-label" transform="translate(1338 0)">
+      <text y="116">Sa′</text>
+      <text class="degree" y="144">Ⅷ</text>
+    </g>
+  <text class="section-title" x="359" y="190" text-anchor="middle">Chakra</text>
+  <text class="section-title" x="626" y="190" text-anchor="middle">Madhyama</text>
+  <text class="section-title" x="1071" y="190" text-anchor="middle">Raga</text>
+  <text class="network-title" x="28" y="232">Swaras</text>
+    <g id="swara-network">
+      <g id="swara-edges" marker-end="url(#arrow)">
+      <path id="swara-edge-S-R1" class="edge" d="M 115 348 L 247 432" />
+      <path id="swara-edge-S-R2" class="edge" d="M 115 348 L 247 348" />
+      <path id="swara-edge-S-R3" class="edge" d="M 115 348 L 247 264" />
+      <path id="swara-edge-R1-G1" class="edge" d="M 293 432 L 425 432" />
+      <path id="swara-edge-R1-G2" class="edge" d="M 293 432 L 425 348" />
+      <path id="swara-edge-R1-G3" class="edge" d="M 293 432 L 425 264" />
+      <path id="swara-edge-R2-G2" class="edge" d="M 293 348 L 425 348" />
+      <path id="swara-edge-R2-G3" class="edge" d="M 293 348 L 425 264" />
+      <path id="swara-edge-R3-G3" class="edge" d="M 293 264 L 425 264" />
+      <path id="swara-edge-G1-M1" class="edge" d="M 471 432 L 603 390" />
+      <path id="swara-edge-G1-M2" class="edge" d="M 471 432 L 603 306" />
+      <path id="swara-edge-G2-M1" class="edge" d="M 471 348 L 603 390" />
+      <path id="swara-edge-G2-M2" class="edge" d="M 471 348 L 603 306" />
+      <path id="swara-edge-G3-M1" class="edge" d="M 471 264 L 603 390" />
+      <path id="swara-edge-G3-M2" class="edge" d="M 471 264 L 603 306" />
+      <path id="swara-edge-M1-P" class="edge" d="M 649 390 L 781 348" />
+      <path id="swara-edge-M2-P" class="edge" d="M 649 306 L 781 348" />
+      <path id="swara-edge-P-D1" class="edge" d="M 827 348 L 959 432" />
+      <path id="swara-edge-P-D2" class="edge" d="M 827 348 L 959 348" />
+      <path id="swara-edge-P-D3" class="edge" d="M 827 348 L 959 264" />
+      <path id="swara-edge-D1-N1" class="edge" d="M 1005 432 L 1137 432" />
+      <path id="swara-edge-D1-N2" class="edge" d="M 1005 432 L 1137 348" />
+      <path id="swara-edge-D1-N3" class="edge" d="M 1005 432 L 1137 264" />
+      <path id="swara-edge-D2-N2" class="edge" d="M 1005 348 L 1137 348" />
+      <path id="swara-edge-D2-N3" class="edge" d="M 1005 348 L 1137 264" />
+      <path id="swara-edge-D3-N3" class="edge" d="M 1005 264 L 1137 264" />
+      <path id="swara-edge-N1-S2" class="edge" d="M 1183 432 L 1315 348" />
+      <path id="swara-edge-N2-S2" class="edge" d="M 1183 348 L 1315 348" />
+      <path id="swara-edge-N3-S2" class="edge" d="M 1183 264 L 1315 348" />
+      </g>
+      <g id="swara-nodes">
+      <g id="swara-node-S" class="node" transform="translate(92 348)">
+        <circle r="23"  fill="hsla(0, 80%, 70%,1)"  />
+        <text text-anchor="middle" dominant-baseline="central">S</text>
+      </g>
+      <g id="swara-node-R1" class="node " transform="translate(270 432)">
+        <circle r="23" fill="hsla(30, 80%, 70%,1)" />
+        <text text-anchor="middle" dominant-baseline="central">R₁</text>
+      </g>
+      <g id="swara-node-R2" class="node " transform="translate(270 348)">
+        <circle r="23" fill="hsla(60, 80%, 70%,1)" />
+        <text text-anchor="middle" dominant-baseline="central">R₂</text>
+      </g>
+      <g id="swara-node-R3" class="node " transform="translate(270 264)">
+        <circle r="23" fill="hsla(90, 80%, 70%,1)" />
+        <text text-anchor="middle" dominant-baseline="central">R₃</text>
+      </g>
+      <g id="swara-node-G1" class="node " transform="translate(448 432)">
+        <circle r="23" fill="hsla(60, 80%, 70%,1)" />
+        <text text-anchor="middle" dominant-baseline="central">G₁</text>
+      </g>
+      <g id="swara-node-G2" class="node " transform="translate(448 348)">
+        <circle r="23" fill="hsla(90, 80%, 70%,1)" />
+        <text text-anchor="middle" dominant-baseline="central">G₂</text>
+      </g>
+      <g id="swara-node-G3" class="node " transform="translate(448 264)">
+        <circle r="23" fill="hsla(120, 80%, 70%,1)" />
+        <text text-anchor="middle" dominant-baseline="central">G₃ </text>
+      </g>
+      <g id="swara-node-M1" class="node " transform="translate(626 390)">
+        <circle r="23" fill="hsla(150, 80%, 70%,1)" />
+        <text text-anchor="middle" dominant-baseline="central">M₁</text>
+      </g>
+      <g id="swara-node-M2" class="node " transform="translate(626 306)">
+        <circle r="23" fill="hsla(180, 80%, 70%,1)" />
+        <text text-anchor="middle" dominant-baseline="central">M₂</text>
+      </g>
+      <g id="swara-node-P" class="node" transform="translate(804 348)">
+        <circle r="23" fill="hsla(210, 80%, 70%,1)" />
+        <text text-anchor="middle" dominant-baseline="central">P</text>
+      </g>
+      <g id="swara-node-D1" class="node " transform="translate(982 432)">
+        <circle r="23" fill="hsla(240, 80%, 70%,1)" />
+        <text text-anchor="middle" dominant-baseline="central">D₁</text>
+      </g>
+      <g id="swara-node-D2" class="node " transform="translate(982 348)">
+        <circle r="23" fill="hsla(270, 80%, 70%,1)" />
+        <text text-anchor="middle" dominant-baseline="central">D₂</text>
+      </g>
+      <g id="swara-node-D3" class="node" transform="translate(982 264)">
+        <circle r="23" fill="hsla(300, 80%, 70%,1)" />
+        <text text-anchor="middle" dominant-baseline="central">D₃</text>
+      </g>
+      <g id="swara-node-N1" class="node " transform="translate(1160 432)">
+        <circle r="23" fill="hsla(270, 80%, 70%,1)" />
+        <text text-anchor="middle" dominant-baseline="central">N₁</text>
+      </g>
+      <g id="swara-node-N2" class="node " transform="translate(1160 348)">
+        <circle r="23" fill="hsla(300, 80%, 70%,1)" />
+        <text text-anchor="middle" dominant-baseline="central">N₂</text>
+      </g>
+      <g id="swara-node-N3" class="node " transform="translate(1160 264)">
+        <circle r="23" fill="hsla(330, 80%, 70%,1)" />
+        <text text-anchor="middle" dominant-baseline="central">N₃</text>
+      </g>
+      <g id="swara-node-S2" class="node" transform="translate(1338 348)">
+        <circle r="23" fill="hsla(0, 80%, 80%,1)" />
+        <text text-anchor="middle" dominant-baseline="central">S′</text>
+      </g>
+      </g>
+    </g>
+  <line class="divider" x1="28" x2="1412" y1="490" y2="490" />
+  <text class="network-title" x="28" y="542">Western pitches <tspan class="caption">(Sa = C, Chromatone color scheme)</tspan></text>
+    <g id="pitch-network">
+      <g id="pitch-edges" marker-end="url(#arrow)">
+      <path id="pitch-edge-S-R1" class="edge" d="M 115 692 L 247 776" />
+      <path id="pitch-edge-S-R2" class="edge" d="M 115 692 L 247 692" />
+      <path id="pitch-edge-S-R3" class="edge" d="M 115 692 L 247 608" />
+      <path id="pitch-edge-R1-G1" class="edge" d="M 293 776 L 425 776" />
+      <path id="pitch-edge-R1-G2" class="edge" d="M 293 776 L 425 692" />
+      <path id="pitch-edge-R1-G3" class="edge" d="M 293 776 L 425 608" />
+      <path id="pitch-edge-R2-G2" class="edge" d="M 293 692 L 425 692" />
+      <path id="pitch-edge-R2-G3" class="edge" d="M 293 692 L 425 608" />
+      <path id="pitch-edge-R3-G3" class="edge" d="M 293 608 L 425 608" />
+      <path id="pitch-edge-G1-M1" class="edge" d="M 471 776 L 603 734" />
+      <path id="pitch-edge-G1-M2" class="edge" d="M 471 776 L 603 650" />
+      <path id="pitch-edge-G2-M1" class="edge" d="M 471 692 L 603 734" />
+      <path id="pitch-edge-G2-M2" class="edge" d="M 471 692 L 603 650" />
+      <path id="pitch-edge-G3-M1" class="edge" d="M 471 608 L 603 734" />
+      <path id="pitch-edge-G3-M2" class="edge" d="M 471 608 L 603 650" />
+      <path id="pitch-edge-M1-P" class="edge" d="M 649 734 L 781 692" />
+      <path id="pitch-edge-M2-P" class="edge" d="M 649 650 L 781 692" />
+      <path id="pitch-edge-P-D1" class="edge" d="M 827 692 L 959 776" />
+      <path id="pitch-edge-P-D2" class="edge" d="M 827 692 L 959 692" />
+      <path id="pitch-edge-P-D3" class="edge" d="M 827 692 L 959 608" />
+      <path id="pitch-edge-D1-N1" class="edge" d="M 1005 776 L 1137 776" />
+      <path id="pitch-edge-D1-N2" class="edge" d="M 1005 776 L 1137 692" />
+      <path id="pitch-edge-D1-N3" class="edge" d="M 1005 776 L 1137 608" />
+      <path id="pitch-edge-D2-N2" class="edge" d="M 1005 692 L 1137 692" />
+      <path id="pitch-edge-D2-N3" class="edge" d="M 1005 692 L 1137 608" />
+      <path id="pitch-edge-D3-N3" class="edge" d="M 1005 608 L 1137 608" />
+      <path id="pitch-edge-N1-S2" class="edge" d="M 1183 776 L 1315 692" />
+      <path id="pitch-edge-N2-S2" class="edge" d="M 1183 692 L 1315 692" />
+      <path id="pitch-edge-N3-S2" class="edge" d="M 1183 608 L 1315 692" />
+      </g>
+      <g id="pitch-nodes">
+      <g id="pitch-node-S" class="node" transform="translate(92 692)">
+        <circle r="23" fill="hsla(90, 80%, 70%,1)" />
+        <text text-anchor="middle" dominant-baseline="central">C</text>
+      </g>
+      <g id="pitch-node-R1" class="node" transform="translate(270 776)">
+        <circle r="23" fill="hsla(120, 80%, 70%,1)" />
+        <text text-anchor="middle" dominant-baseline="central">D♭</text>
+      </g>
+      <g id="pitch-node-R2" class="node" transform="translate(270 692)">
+        <circle r="23" fill="hsla(150, 80%, 70%,1)" />
+        <text text-anchor="middle" dominant-baseline="central">D</text>
+      </g>
+      <g id="pitch-node-R3" class="node" transform="translate(270 608)">
+        <circle r="23" fill="hsla(180, 80%, 70%,1)" />
+        <text text-anchor="middle" dominant-baseline="central">D♯</text>
+      </g>
+      <g id="pitch-node-G1" class="node" transform="translate(448 776)">
+        <circle r="23" fill="hsla(150, 80%, 70%,1)" />
+        <text text-anchor="middle" dominant-baseline="central">E𝄫</text>
+      </g>
+      <g id="pitch-node-G2" class="node" transform="translate(448 692)">
+        <circle r="23" fill="hsla(180, 80%, 70%,1)" />
+        <text text-anchor="middle" dominant-baseline="central">E♭</text>
+      </g>
+      <g id="pitch-node-G3" class="node" transform="translate(448 608)">
+        <circle r="23" fill="hsla(210, 80%, 70%,1)" />
+        <text text-anchor="middle" dominant-baseline="central">E</text>
+      </g>
+      <g id="pitch-node-M1" class="node" transform="translate(626 734)">
+        <circle r="23"  fill="hsla(240, 80%, 70%,1)" />
+        <text text-anchor="middle" dominant-baseline="central">F</text>
+      </g>
+      <g id="pitch-node-M2" class="node" transform="translate(626 650)">
+        <circle r="23"  fill="hsla(270, 80%, 70%,1)" />
+        <text text-anchor="middle" dominant-baseline="central">F♯</text>
+      </g>
+      <g id="pitch-node-P" class="node" transform="translate(804 692)">
+        <circle r="23"  fill="hsla(300, 80%, 70%,1)" />
+        <text text-anchor="middle" dominant-baseline="central">G</text>
+      </g>
+      <g id="pitch-node-D1" class="node" transform="translate(982 776)">
+        <circle r="23"  fill="hsla(330, 80%, 70%,1)" />
+        <text text-anchor="middle" dominant-baseline="central">A♭</text>
+      </g>
+      <g id="pitch-node-D2" class="node" transform="translate(982 692)">
+        <circle r="23"  fill="hsla(0, 80%, 70%,1)" />
+        <text text-anchor="middle" dominant-baseline="central">A</text>
+      </g>
+      <g id="pitch-node-D3" class="node" transform="translate(982 608)">
+        <circle r="23"  fill="hsla(30, 80%, 70%,1)" />
+        <text text-anchor="middle" dominant-baseline="central">A♯</text>
+      </g>
+      <g id="pitch-node-N1" class="node" transform="translate(1160 776)">
+        <circle r="23" fill="hsla(0, 80%, 70%,1)"  />
+        <text text-anchor="middle" dominant-baseline="central">B𝄫</text>
+      </g>
+      <g id="pitch-node-N2" class="node" transform="translate(1160 692)">
+        <circle r="23" fill="hsla(30, 80%, 70%,1)" />
+        <text text-anchor="middle" dominant-baseline="central">B♭</text>
+      </g>
+      <g id="pitch-node-N3" class="node" transform="translate(1160 608)">
+        <circle r="23" fill="hsla(60, 80%, 70%,1)"  />
+        <text text-anchor="middle" dominant-baseline="central">B</text>
+      </g>
+      <g id="pitch-node-S2" class="node" transform="translate(1338 692)">
+        <circle r="23" fill="hsla(90, 100%, 80%,1)" />
+        <text text-anchor="middle" dominant-baseline="central">C′</text>
+      </g>
+      </g>
+    </g>
+  <text class="caption" x="720" y="875" text-anchor="middle">Lower pitch</text>
+  <path d="M 720 854 L 720 822" stroke="#88909a" stroke-width="1.5" marker-end="url(#arrow)" transform="rotate(180 720 838)" />
+  <text class="equation" x="720" y="972" text-anchor="middle">6 R/G options × 2 Madhyama options × 6 D/N options = 72 Melakarta ragas</text>
+</svg>

@@ -1,5 +1,5 @@
 <script setup>
-import { flats, naturals, noteColor, noteNames } from "#/use";
+import { flats, naturals, noteColor, noteNames, playChromaOnce } from "#/use";
 import ChordSheetJS from "chordsheetjs";
 import { Chord } from "tonal";
 import { computed, onMounted, reactive, ref, watch } from "vue";
@@ -80,7 +80,6 @@ const chords = computed(() => {
 const hash = ref();
 
 onMounted(() => {
-  console.log(parsed.value)
   hash.value = window.location.hash.slice(1);
   if (!hash.value) return;
   try {
@@ -99,18 +98,22 @@ const hashUrl = computed(
 const { copy, copied } = useClipboard({
   source: hashUrl,
 });
+
+function play(a, b) {
+  console.log(a, b)
+}
 </script>
 
 <template lang="pug">
 .flex.gap-2.p-4.gap-4.flex-wrap.chords.z-100
 
-  textarea.p-4.min-h-90(autoresize style="flex: 1 1 200px" v-model="chordSheet")
+  textarea.p-4.min-h-90(autoresize style="flex: 1 1 280px" v-model="chordSheet")
 
-  .p-4.bg-light-100.dark-bg-dark-300.shadow-xl.rounded-xl(style="flex: 1 1 300px" v-html="parsed")
+  .p-4.bg-light-100.dark-bg-dark-300.shadow-xl.rounded-xl(style="flex: 1 1 280px" v-html="parsed")
 
   #favs.flex.items-center.gap-4.flex-wrap.w-full.p-4.rounded-xl.shadow-lg(popover)
     .text-2xl.flex-full Songs collection
-    button.p-2.flex.items-center.bg-light-100.rounded-xl.shadow.hover-shadow-lg.transition(
+    .p-2.flex.items-center.bg-light-100.rounded-xl.shadow.hover-shadow-lg.transition(
       style="flex: 1 1 220px"
       v-for="(fav, f) in favs" :key="fav" @click="chordSheet = fav" :class="{ ['bg-stone-300']: chordSheet == fav }" ) 
       .text-lg() {{ f }}
@@ -118,28 +121,28 @@ const { copy, copied } = useClipboard({
       button.op-50.hover-op-80.active-op-100.hover-text-red.transition(@click.stop="delete favs[f]")
         .i-la-times
 
-  .flex.gap-2.p-4.flex-wrap
+
+  .flex.gap-0.flex.text-sm.sticky.bottom-0(style="flex: 1 0 100%")
+    button.text-button(@click="song = song.transposeUp()") Transpose Up
+    button.text-button(@click="song = song.transposeDown()") Transpose Down
+    .is-group.flex.flex-wrap
+      button.text-button.disabled-op-40(@click="instrument = 'piano'" :disabled="instrument == 'piano'") Piano     
+      button.text-button.disabled-op-40(@click="instrument = 'guitar'" :disabled="instrument == 'guitar'") Guitar
+      button.text-button.disabled-op-40(@click="instrument = 'ukulele'" :disabled="instrument == 'ukulele'") Ukulele
+    button.text-button(@click="copy()") {{ copied ? 'Copied URL' : 'Copy URL' }}
     button.text-button(
       popovertarget="favs"
       @click="favs[song.title] = chordSheet" data-modal="favs") 
       .i-la-star(v-if="favs[song.title] != chordSheet")
       .i-la-star-solid(v-else)
 
-    button.text-button(@click="song = song.transposeUp()") Transpose Up
-    button.text-button(@click="song = song.transposeDown()") Transpose Down
-    .is-group.flex
-      button.text-button.disabled-op-40(@click="instrument = 'piano'" :disabled="instrument == 'piano'") Piano     
-      button.text-button.disabled-op-40(@click="instrument = 'guitar'" :disabled="instrument == 'guitar'") Guitar
-      button.text-button.disabled-op-40(@click="instrument = 'ukulele'" :disabled="instrument == 'ukulele'") Ukulele
-    button.text-button(@click="copy()") {{ copied ? 'Copied' : 'Copy URL' }}
-
   .flex.flex-wrap.p-4.gap-4.bg-light-100.dark-bg-dark-300.shadow-xl.rounded-xl(style="flex: 1 1 280px" )
-    .p-0.flex.flex-col(style="flex: 1 1 140px" v-for="chord in chords" :key="chord") 
+    .p-0.flex.flex-col(style="flex: 1 0 120px" v-for="chord in chords" :key="chord") 
       .flex.gap-2.justify-between.whitespace-nowrap.px-2
         .flex-1 {{ chord.symbol }} 
         .flex-1 
         .op-60.flex-1 {{ chord.name }}
-      chroma-keys(
+      chroma-keys.max-w-50(
         v-if="instrument == 'piano'"
         :title="false"
         :chroma="chord.chroma" :pitch="noteNames[chord.tonic]")
@@ -147,7 +150,10 @@ const { copy, copied } = useClipboard({
         v-if="instrument == 'ukulele' || instrument == 'guitar'"
         v-model:instrument="instrument"
         :title="false"
+        @pointerdown="play(chord.chroma, chord.tonic)"
         :chroma="chord.chroma" :pitch="noteNames[chord.tonic]")
+
+
 
 </template>
 

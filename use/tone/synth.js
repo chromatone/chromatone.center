@@ -28,7 +28,7 @@ export const synth = {
   params: reactive({
     maxPolyphony: 50,
     oscillator: {
-      type: useStorage('synth-osc', 'sawtooth8'),
+      type: useStorage('synth-osc', 'sawtooth'),
     },
     volume: -20,
     envelope: {

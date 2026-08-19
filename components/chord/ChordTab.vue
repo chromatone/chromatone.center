@@ -57,7 +57,7 @@ function getNote(string, semitones) {
 </script>
 
 <template lang="pug">
-.flex.flex-col.justify-center.rounded-3xl.py-4(
+.flex.flex-col.justify-center.rounded-3xl.py-2(
   :style="{ backgroundColor: neck.color.lch }")
   .flex.gap-1.p-2.text-lg(v-if="title")
     .font-bold {{ notes[pitch] }}{{ neck.title }} 
@@ -66,7 +66,7 @@ function getNote(string, semitones) {
   svg#fretboard.max-h-3xl.w-full(
     version="1.1",
     baseProfile="full",
-    :viewBox="`-50 -50 ${neck.height + 100} ${neck.width + 60}`",
+    :viewBox="`-40 -50 ${neck.width - 80} ${420}`",
     xmlns="http://www.w3.org/2000/svg",
     font-family="Commissioner, sans-serif"
     font-size="20px"

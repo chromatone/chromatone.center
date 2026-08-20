@@ -68,7 +68,7 @@
 <stop offset="1.000" stop-color="#040100" />
 </linearGradient>
 </defs>
-
+<rect width="600" height="480" fill="#eee" />
 <path fill="url(#grad_spectrum)" fill-opacity="0.25" d="M144 18h62v395h-62z" />
 <g font-family="Arial" font-size="12pt" font-weight="bold" text-anchor="middle" stroke="none" fill="#999999">
  <switch><text x="120" y="16" systemLanguage="da"><tspan>UV</tspan></text><text x="120" y="16"><tspan>UV</tspan></text></switch>

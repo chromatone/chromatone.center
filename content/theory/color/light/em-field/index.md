@@ -1,9 +1,8 @@
 ---
 title: Electromagnetic fields
 description: EM-waves propagationg through space
-
 date: 2021-08-24
-cover: Results_of_Michael_Faraday's_iron_filings_experiment._Wellcome_M0000164.jpg
+cover: magnet.jpg
 links: 
   - https://en.wikipedia.org/wiki/Electromagnetic_field
   - https://en.wikipedia.org/wiki/Ionosphere#D_layer

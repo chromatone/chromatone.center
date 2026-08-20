@@ -3,7 +3,6 @@ title: Theory
 description: All the knowledge of music becoming visible with the simple color coding system
 cover: manuel-nageli.jpg
 date: 2021-10-30
-topContent: true
 ---
 
 > **Chroma** - from Greek **khrōma** - "surface of the body, skin, color of the skin," also used generically for "color"

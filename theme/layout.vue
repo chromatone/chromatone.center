@@ -66,7 +66,7 @@ midi-notes(v-if="!params.pure && !params.nokeys")
         .text-2rem.md-ml-1 Visual Music Language
         .text-xl.md-ml-1 to learn, explore and communicate with 
       .flex.flex-col.items-center.p-4.gap-8
-        .flex.flex-wrap.gap-4.items-stretch 
+        .flex.flex-wrap.gap-8.items-stretch 
           home-tile.rounded-2xl(
             style="flex: 1 1 420px;"
             v-for="(area, i) in children", 
@@ -105,7 +105,7 @@ midi-notes(v-if="!params.pure && !params.nokeys")
         .relative.flex.flex-col.items-center.w-full.flex-auto(:key="route.path")
 
           row-list.px-2.my-2( v-if="children && !f?.topContent" :children="children")
-          content.content.flex-auto.z-10
+          content.content.flex-auto.z-10.py-4
           row-list.px-2.my-2( v-if="children && f?.topContent" :children="children")
 
       nav-next-prev(

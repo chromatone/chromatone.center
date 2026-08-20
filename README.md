@@ -88,15 +88,3 @@ We collect all the musical knowledge we can get so then we can build new insight
 You can instantly fork and start editing your own copy of the whole web-app with this link. So if you want to edit some small imperfection or adjust any parameter of any of components - your are welcome to use Chromatone repo as a playground for your own ideas. And we would be glad to merge your contributions too!
 
 [Edit repo on Codesandbox](https://codesandbox.io/p/github/chromatone/chromatone.center/)
-
-## TBD
-
-- Tauri desktop build
-  - https://github.com/NicolaSpadari/nuxtor
-  - https://github.com/ZaneH/piano-trainer/blob/master/src-tauri/Cargo.toml
-  - https://www.youtube.com/watch?v=RFFSYgdeczw
-  - https://github.com/ruohki/tauri-midi-example/blob/main/src-tauri/src/main.rs
-- Popover panels
-  - https://caniuse.com/?search=popover
-  - https://frontendmasters.com/blog/popovers-work-pretty-nicely-as-slide-out-drawers/
-  - https://caniuse.com/css-text-wrap-balance

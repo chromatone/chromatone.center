@@ -64,9 +64,14 @@ function changeRatio(drag) {
 </script>
 
 <template lang="pug">
-.flex.flex-col.fullscreen-container.select-none#screen.z-100
+.flex.flex-col.fullscreen-container.select-none#screen.z-100.gap-4
+
+  .flex.flex-wrap.items-center.p-4.gap-2.w-full
+    .font-bold.text-xl.flex-auto Monochord Lab
+    ControlRotary(v-for="(string, s) in stringList" v-model="string.controls['string:volume']" :fixed="2" :max="1" :step="0.001" :param="`VOL ` + string.name") 
+
   button.min-h-80vh.p-40.text-2xl.font-bold.bg-light-900.dark-bg-dark-700.absolute.min-h-30.top-0.z-100.right-0.left-0.w-full.bg-op-30.dark-bg-op-30.backdrop-blur(v-if="!started" @pointerdown="start()") START 
-  svg.my-12.select-none.touch-action-none.select-none(
+  svg.my-4.select-none.touch-action-none.select-none(
     v-else
     style="-webkit-overflow-scrolling: touch;"
     version="1.1",
@@ -188,6 +193,8 @@ function changeRatio(drag) {
       line(x1="100" x2="100" y1="0" y2="20")
       line(:x1="100 * smooth.ratio" :x2="100 * smooth.ratio" y1="5" y2="20")
       rect.cursor-grab(width="8" height="8" opacity="0.3" rx="2" :x="100 * smooth.ratio - 4" y="6" v-wheel="changeRatio" v-drag="changeRatio" )
+
+
 
   .flex.flex-wrap.justify-center.p-2
     button.text-button.flex-1(

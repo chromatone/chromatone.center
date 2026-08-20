@@ -36,7 +36,7 @@ const synth = reactive({
   started: false,
   playing: false,
   osc: 'sine',
-  oscs: ['sine', 'sawtooth8'],
+  oscs: ['sine', 'sawtooth'],
   envelope: {
     attack: 0.2,
     decay: 0.2,
@@ -253,7 +253,7 @@ watch([() => freq.hz, () => mouse.pressed], () => {
         y="520"
       ) {{ cent }}
     path(
-      v-if="synth.osc == 'sawtooth8'"
+      v-if="synth.osc == 'sawtooth'"
       fill="none", 
       stroke="currentColor", 
       stroke-width="3", 

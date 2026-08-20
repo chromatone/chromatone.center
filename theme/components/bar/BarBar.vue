@@ -69,13 +69,15 @@ nav.bar
   .spacer
 
   a.button(
-    title="Shop"
-    href="/shop/"
-    :class="{ active: route.path.includes('shop') }"
-    v-tooltip.right="'Shop'"
-    aria-label="Shop"
+    title="Projects"
+    href="/projects/"
+    :class="{ active: route.path.includes('projects') }"
+    v-tooltip.right="'Projects'"
+    aria-label="Projects"
     )
-    .i-la-shopping-bag
+    .transition.scale-100.hover-op-100.op-70.i-la-layer-group
+
+
 
   a.button(
 
@@ -88,13 +90,13 @@ nav.bar
     .i-la-chalkboard-teacher
 
   a.button(
-    title="Projects"
-    href="/projects/"
-    :class="{ active: route.path.includes('projects') }"
-    v-tooltip.right="'Projects'"
-    aria-label="Projects"
+    title="Shop"
+    href="/shop/"
+    :class="{ active: route.path.includes('shop') }"
+    v-tooltip.right="'Shop'"
+    aria-label="Shop"
     )
-    .transition.scale-100.hover-op-100.op-70.i-la-layer-group
+    .i-la-shopping-bag
 
   //- a.button(
     title="Academy"

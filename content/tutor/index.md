@@ -2,7 +2,7 @@
 title: Tutorship
 description: Personal guidance through complexities of music with easy to grasp visuals and web apps
 layout: iframe
-date: 2021-03-06
+date: 2021-04-12
 cover: wes-hicks.jpg
 topContent: true
 iframe: https://tutor.chromatone.center

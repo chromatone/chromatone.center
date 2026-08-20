@@ -15,20 +15,20 @@ const children = useChildren({ path: props.item.url }, data)
 </script>
 
 <template lang="pug">
-.tile.flex.p-4.pt-36.flex-col.bg-light-300.shadow-lg.hover-shadow-xl.dark-bg-dark-400.flex.flex-col.transition.no-underline.rounded-2xl.saturate-90.contrast-90.hover-saturate-100.hover-contrast-90.overflow-hidden.relative.bg-center.bg-cover(
+.tile.flex.p-4.pt-36.flex-col.bg-light-300.shadow-lg.hover-shadow-xl.dark-bg-dark-400.flex.flex-col.transition.no-underline.saturate-90.contrast-90.hover-saturate-100.hover-contrast-90.overflow-hidden.relative.bg-center.bg-cover(
   :i="i", :total="total"
   :style="{ backgroundImage: `linear-gradient(hsla(0,0%,100%,0.3), hsla(0,0%,50%,0.5)), url(${props.item?.frontmatter?.cover})` }",
   )
   //- img.cover(:src="'/media/' + item.data.cover")
-  a.flex.flex-col.p-4.pb-4.no-underline.bg-light-100.rounded-lg.bg-op-80.dark-bg-dark-700.dark-bg-op-80.backdrop-blur.hover-bg-op-95.dark-text-light-100(
+  a.flex.flex-col.p-4.pb-4.no-underline.bg-light-100.rounded-lg.bg-op-70.dark-bg-dark-700.dark-bg-op-70.backdrop-blur.hover-bg-op-95.dark-text-light-100(
     :href="cleanLink(item.url)", 
     )
-    .flex.items-center.gap-2.mb-4(
-      )
+    .flex.items-center.gap-2.mb-4()
       .text-3xl.mt-1(style="flex: 0 1 30px") 
         .i-la-book(v-if="item?.frontmatter?.title == 'Theory'")
         .i-la-hand-point-up(v-if="item?.frontmatter?.title == 'Practice'")
         .i-la-chalkboard-teacher(v-if="item?.frontmatter?.title == 'Academy'")
+        .i-la-layer-group(v-if="item?.frontmatter?.title == 'Projects'")
         .i-la-shopping-bag(v-if="item?.frontmatter?.title == 'Shop'")
         .i-la-star(v-if="item?.frontmatter?.title == 'Support'")
         .i-la-at(v-if="item?.frontmatter?.title == 'Contacts'")
@@ -44,7 +44,7 @@ const children = useChildren({ path: props.item.url }, data)
       :href="cleanLink(page.url)",
       v-for="(page, p) in children" :key="page.url"
       )
-      .m-3.mb-4.font-bold(:i="p", :total="children.length") {{ page?.frontmatter?.title }}
+      .p-3.pb-4.font-normal.text-lg(:i="p", :total="children.length") {{ page?.frontmatter?.title }}
 </template>
 
 <style lang="postcss" scoped>

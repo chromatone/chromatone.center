@@ -60,29 +60,23 @@ midi-notes(v-if="!params.pure && !params.nokeys")
   template(v-else-if="f.layout == 'home'")
     main.home.items-center.justify-center.overflow-clip(aria-labelledby="main-title")
 
-      chroma-flower.flex.justify-center(
-        style="flex: 1 1 420px")
-      .flex-1.p-8.gap-1.flex.flex-col.origin-left(
-        style="flex: 1 1 400px"
-        )
+      chroma-flower.flex.justify-center(style="flex: 1 1 420px")
+      .flex-1.p-2.gap-1.flex.flex-col.text-center(style="flex: 1 1 420px")
         .text-3rem.md-text-4rem.font-bold Chromatone
         .text-2rem.md-ml-1 Visual Music Language
         .text-xl.md-ml-1 to learn, explore and communicate with 
-      .flex.flex-wrap.items-start.px-4.gap-8
-        .flex.flex-wrap.gap-16.items-stretch(
-          style="flex: 1 1 280px;"
-          ) 
-          home-tile(
-            style="flex: 1 1 280px;"
+      .flex.flex-col.items-center.p-4.gap-8
+        .flex.flex-wrap.gap-4.items-stretch 
+          home-tile.rounded-2xl(
+            style="flex: 1 1 420px;"
             v-for="(area, i) in children", 
             :key="area.url", 
             :item="area", 
             :i="i",
             :total="children.length")  
-        .flex.flex-col.gap-4(style="flex: 1 1 280px;")
-          .p-0(v-if="f?.youtube")
-            youtube-embed(:video="f?.youtube" )
-          content.content.z-2.flex-auto
+          .flex.flex-col.gap-4(style="flex: 1 1 420px;")
+            youtube-embed(:video="f?.youtube" v-if="f?.youtube")
+        content.content.z-2.flex-auto
       page-footer(v-if="!params.pure && !params.nofooter")
   template(v-else)
     main#content.w-full.relative.flex.flex-col
@@ -108,18 +102,16 @@ midi-notes(v-if="!params.pure && !params.nokeys")
         :src="f.iframe"
         )
       transition(name="fade")
-        .relative.flex.flex-col.items-stretch.w-full.flex-auto(:key="route.path")
+        .relative.flex.flex-col.items-center.w-full.flex-auto(:key="route.path")
 
-          content.content.flex-auto.z-10(v-if="f?.topContent")
-
-          row-list.px-2.my-2( v-if="children" :children="children")
-
-          content.content.flex-auto.z-10(v-if="!f?.topContent")
+          row-list.px-2.my-2( v-if="children && !f?.topContent" :children="children")
+          content.content.flex-auto.z-10
+          row-list.px-2.my-2( v-if="children && f?.topContent" :children="children")
 
       nav-next-prev(
         :siblings="siblings" 
         :parents="parents"
-        v-if="!params.pure && !params.nonav"
+        v-if="!params.pure && !params.nonav && f.layout != 'app'"
         )
       //- nav-row.p-4
       //- page-footer(v-if="!params.pure && !params.nofooter")

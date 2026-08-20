@@ -2,7 +2,7 @@
 title: Projects
 description: Our initiatives and collaborations
 layout: iframe
-date: 2021-02-02
+date: 2021-04-16
 cover: tamara-bitter.jpg
 topContent: true
 iframe: https://projects.chromatone.center

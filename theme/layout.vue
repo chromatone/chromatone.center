@@ -102,11 +102,11 @@ midi-notes(v-if="!params.pure && !params.nokeys")
         :src="f.iframe"
         )
       transition(name="fade")
-        .relative.flex.flex-col.items-center.w-full.flex-auto(:key="route.path")
+        .relative.flex.flex-wrap.items-start.justify-center.w-full.flex-auto(:key="route.path")
 
-          row-list.px-2.my-2( v-if="children && !f?.topContent" :children="children")
-          content.content.flex-auto.z-10.py-4
-          row-list.px-2.my-2( v-if="children && f?.topContent" :children="children")
+          row-list.px-2.my-2(style="flex:3" v-if="children && !f?.topContent" :children="children")
+          content.content.z-10.py-4(style="flex:1 300px")
+          row-list.px-2.my-2(style="flex:1 300px" v-if="children && f?.topContent" :children="children")
 
       nav-next-prev(
         :siblings="siblings" 

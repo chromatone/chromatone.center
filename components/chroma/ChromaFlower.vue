@@ -293,14 +293,14 @@ function handleTouchEnd({ event }) {
             )
             circle.transition(
               style="transition: all 100ms ease-out"
-              :fill="noteColor(pitch, activeChromaMidi[pitch] ? 4 : 3)"
+              :fill="noteColor(pitch, activeChromaMidi[pitch] ? 4 : 3, activeChromaMidi[pitch] ? 0.9 : 0.6)"
               :r="pitch == globalScale.tonic ? size / 11 : size / 12"
               )
             g(v-if="tunr?.tuner?.initiated")
               circle(
                 style="transition: all 80ms ease-out"
                 :fill="noteColor(pitch, 7, 2, getAmmount(tunr.tuner.aChroma[pitch]))"
-                :r="size / 12"
+                :r="size / 10"
                 filter="url(#blur)"
                 )
             text.transition(
@@ -360,7 +360,7 @@ function handleTouchEnd({ event }) {
           circle.transition(
             filter="url(#blur)"
             style="transition:all 500ms ease"
-            r='32' 
+            r='64' 
             cy="0"
             :fill="!tunr.tuner.note?.silent && tunr.tuner.initiated ? noteColor((tunr.tuner.note.value + 3) % 12, 4) : 'transparent'")
           text.opacity-50.select-none(

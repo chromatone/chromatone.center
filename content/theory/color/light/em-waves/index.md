@@ -139,12 +139,6 @@ Microwaves exhibit properties intermediate between radio waves and infrared:
 5. **Spectroscopy**: IR spectroscopy identifies molecular bonds and functional groups
 6. **Astronomy**: Observing cool stars, dust clouds, and planets hidden in visible light
 
-<figure style="text-align: center;">
-  <img src="https://qc4n.bigmodel.cn/imageJrh6_searched_original.png?UCloudPublicKey=TOKEN_3f4277c6-f8d6-41a9-968b-dbfa0994d483&Expires=1819180409&Signature=FKU9iZY1Y%2FIz%2F7G%2F4oFggsGGm9U%3D" alt="Detailed EM Spectrum" style="max-width: 90%;">
-  <figcaption style="font-style: italic; color: #666; margin-top: 8px;">
-    Detailed view of the electromagnetic spectrum showing the infrared region adjacent to visible light.
-  </figcaption>
-</figure>
 
 ---
 

@@ -51,7 +51,7 @@ midi-notes(v-if="!params.pure && !params.nokeys")
   RegisterSW
 
   template(v-if="f.layout == 'iframe'")
-    iframe.min-h-100dvh.w-full.max-w-100svw(
+    iframe.min-h-100dvh.w-full.max-w-100dvw(
       v-if="f?.iframe"
       :src="f.iframe"
       allow="midi;microphone;fullscreen;"
@@ -61,26 +61,26 @@ midi-notes(v-if="!params.pure && !params.nokeys")
     content
 
   template(v-else-if="f.layout == 'home'")
-    #content
-      main(aria-labelledby="main-title")
-        chroma-flower.flex.justify-center(style="flex: 1 1 420px")
-        .flex-1.p-2.gap-1.flex.flex-col.text-center(style="flex: 1 1 420px")
-          .text-3rem.md-text-4rem.font-bold Chromatone
-          .text-2rem.md-ml-1 Visual Music Language
-          .text-xl.md-ml-1 to learn, explore and communicate with 
-        .flex.flex-col.items-center.p-4.gap-8
-          .flex.flex-wrap.gap-8.items-stretch 
-            home-tile.rounded-2xl(
-              style="flex: 1 1 420px;"
-              v-for="(area, i) in children", 
-              :key="area.url", 
-              :item="area", 
-              :i="i",
-              :total="children.length")  
-            .flex.flex-col.gap-4(style="flex: 1 1 420px;")
-              youtube-embed(:video="f?.youtube" v-if="f?.youtube")
-        content
-        //- page-footer(v-if="!params.pure && !params.nofooter")
+
+    main.p-4(aria-labelledby="main-title")
+      chroma-flower.flex.justify-center(style="flex: 1 1 420px")
+      .flex-1.p-2.gap-1.flex.flex-col.text-center(style="flex: 1 1 420px")
+        .text-3rem.md-text-4rem.font-bold Chromatone
+        .text-2xl.md-ml-1 Visual Music Language
+        .text-lg.md-ml-1 to learn, explore and communicate with 
+      .flex.flex-col.items-center.p-4.gap-8
+        .flex.flex-wrap.gap-8.items-stretch 
+          home-tile.rounded-2xl(
+            style="flex: 1 1 420px;"
+            v-for="(area, i) in children", 
+            :key="area.url", 
+            :item="area", 
+            :i="i",
+            :total="children.length")  
+          .flex.flex-col.gap-4(style="flex: 1 1 420px;")
+            youtube-embed(:video="f?.youtube" v-if="f?.youtube")
+      content#content
+      //- page-footer(v-if="!params.pure && !params.nofooter")
   template(v-else)
     transition(name="fade")
       main#content(:key="route.path")

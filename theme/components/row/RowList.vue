@@ -12,19 +12,19 @@ function cleanLink(url) {
 </script>
 
 <template lang="pug">
-.flex.flex-wrap.gap-4
-  .flex.items-stretch(
-    v-for="(block, i) in children",
-    :key="block.url", 
-    style="flex: 1 1 220px"
-    :id="cleanLink(block.url)"
-    :i="i"
-    :total="children.length"
-    )
-    row-block(
-      :item="block", 
-      :color="lchToHsl(i, children.length)"
-      )  
+
+.flex.items-stretch.my-4(
+  v-for="(block, i) in children",
+  :key="block.url", 
+  style="flex: 1 1 220px"
+  :id="cleanLink(block.url)"
+  :i="i"
+  :total="children.length"
+  )
+  row-block(
+    :item="block", 
+    :color="lchToHsl(i, children.length)"
+    )  
 </template>
 
 <style></style>

@@ -18,7 +18,7 @@ const colors = reactive({
 <template lang="pug">
 .flex.flex-wrap.gap-2.p-2.items-stretch(:style="{ borderColor: colors?.current }")
   a.pad(
-    style="flex:1 1"
+    style="flex:1 1 100px"
     v-if="siblings?.prev" 
     :href="cleanLink(siblings.prev.url)"
     :style="{ backgroundColor: colors.prev, backgroundImage: `url(${siblings?.prev?.frontmatter?.cover})` }"
@@ -27,18 +27,18 @@ const colors = reactive({
       .i-la-angle-double-left.icon.icon-prev
       span.text.-mt-1 {{ siblings?.prev?.frontmatter?.title }}
 
-  //- a.pad(
-  //-   style="flex:1 1"
-  //-   v-for="(parent, p) in [...parents].slice(1, -1)" :key="parent"
-  //-   :href="cleanLink(parent?.url)"
-  //-   :style="{ backgroundColor: colors?.next, backgroundImage: `url(${parent?.frontmatter?.cover})` }"
-  //-   )
-  //-   .link
-  //-     .i-la-angle-double-up.mr-1
-  //-     .text.-mt-1 {{ parent?.frontmatter?.title }}
-
   a.pad(
     style="flex:1 1"
+    v-for="(parent, p) in [...parents].slice(1, -1)" :key="parent"
+    :href="cleanLink(parent?.url)"
+    :style="{ backgroundColor: colors?.next, backgroundImage: `url(${parent?.frontmatter?.cover})` }"
+    )
+    .link
+      .i-la-angle-double-up.mr-1
+      .text.-mt-1 {{ parent?.frontmatter?.title }}
+
+  a.pad(
+    style="flex:1 1 100px"
     v-if="siblings?.next"
     :href="cleanLink(siblings.next?.url)"
     :style="{ backgroundColor: colors?.next, backgroundImage: `url(${siblings?.next?.frontmatter?.cover})` }"
@@ -70,7 +70,7 @@ const colors = reactive({
 }
 
 .pad {
-  @apply no-underline bg-cover bg-center p-4 transition-all duration-200 ease-out rounded-xl shadow-lg hover-shadow-xl transition-all;
+  @apply no-underline bg-cover m-2 bg-center p-4 transition-all duration-200 ease-out rounded-xl shadow-lg hover-shadow-xl transition-all;
   flex: 1 1 45%;
   filter: grayscale(50%);
 }

@@ -87,11 +87,6 @@ midi-notes(v-if="!params.pure && !params.nokeys")
         page-headline(
           v-if="f.layout != 'app'"
           :pageColor="pageColor", :lightColor="lightColor" :page="f" :cover="f.dynamic ? f?.cover?.id || f?.poster?.id : page?.frontmatter?.cover") 
-          nav-next-prev(
-            :siblings="siblings" 
-            :parents="parents"
-            v-if="!params.pure && !params.nonav && f.layout != 'app'"
-            )
       transition(name="fade")
         .fixed.top-0.left-14.right-2.z-100.text-md.p-2.flex.gap-2.items-center.bg-light-200.bg-opacity-20.dark-bg-dark-200.dark-bg-opacity-10.backdrop-blur-lg.pt-2.pl-4.min-h-15.border-t-4.op-90.transition.rounded-xl(
           :style="{ borderColor: pageColor }"
@@ -110,6 +105,11 @@ midi-notes(v-if="!params.pure && !params.nokeys")
 
       content
       row-list(:children="children")
+      nav-next-prev(
+        :siblings="siblings" 
+        :parents="parents"
+        v-if="!params.pure && !params.nonav && f.layout != 'app'"
+        )
 
   client-only
     draw-layer.z-100
@@ -124,14 +124,20 @@ body {
   overscroll-behavior: none;
 }
 
+#app {
+  max-height: 99dvh;
+  overflow: hidden
+}
+
 .main {
-  @apply relative flex items-stretch min-h-screen bg-cover bg-center bg-fixed;
+  @apply relative flex items-stretch bg-cover bg-center bg-fixed;
 }
 
 #content {
+  min-height: 0;
   width: 100%;
   padding: 2em;
-  height: 100dvh;
+  max-height: 100dvh;
   column-width: 36ch;
   column-gap: 2rem;
   overflow-x: scroll;
@@ -139,17 +145,21 @@ body {
   scroll-padding: 2rem;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
+  z-index: 200;
 }
 
 #content p {
   padding: 0.5rem 0em;
+  z-index: 100;
 }
 
 #content * {
   scroll-snap-align: start;
+  z-index: 400;
 }
 
-#content img {
+#content img,
+#content .iframe-container {
   break-inside: avoid;
 }
 

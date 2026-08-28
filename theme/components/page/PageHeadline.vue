@@ -58,7 +58,6 @@ const buttons = computed(() => {
       .mx-2.my-0.text-6xl(v-if="page?.emoji") {{ page?.emoji }}
     .mt-0.mb-0(v-if="page?.description") {{ page?.description }}
     page-buttons(:buttons="buttons")
-  slot
 </template>
 
 <style lang="postcss" scoped>

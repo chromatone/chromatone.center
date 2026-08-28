@@ -51,7 +51,7 @@ midi-notes(v-if="!params.pure && !params.nokeys")
   RegisterSW
 
   template(v-if="f.layout == 'iframe'")
-    iframe.min-h-80svh.w-full.max-w-100svw(
+    iframe.min-h-100dvh.w-full.max-w-100svw(
       v-if="f?.iframe"
       :src="f.iframe"
       allow="midi;microphone;fullscreen;"
@@ -61,55 +61,56 @@ midi-notes(v-if="!params.pure && !params.nokeys")
     content
 
   template(v-else-if="f.layout == 'home'")
-    main.home.items-center.justify-center.overflow-clip(aria-labelledby="main-title")
-
-      chroma-flower.flex.justify-center(style="flex: 1 1 420px")
-      .flex-1.p-2.gap-1.flex.flex-col.text-center(style="flex: 1 1 420px")
-        .text-3rem.md-text-4rem.font-bold Chromatone
-        .text-2rem.md-ml-1 Visual Music Language
-        .text-xl.md-ml-1 to learn, explore and communicate with 
-      .flex.flex-col.items-center.p-4.gap-8
-        .flex.flex-wrap.gap-8.items-stretch 
-          home-tile.rounded-2xl(
-            style="flex: 1 1 420px;"
-            v-for="(area, i) in children", 
-            :key="area.url", 
-            :item="area", 
-            :i="i",
-            :total="children.length")  
-          .flex.flex-col.gap-4(style="flex: 1 1 420px;")
-            youtube-embed(:video="f?.youtube" v-if="f?.youtube")
-        content.content.z-2.flex-auto
-      page-footer(v-if="!params.pure && !params.nofooter")
+    #content
+      main(aria-labelledby="main-title")
+        chroma-flower.flex.justify-center(style="flex: 1 1 420px")
+        .flex-1.p-2.gap-1.flex.flex-col.text-center(style="flex: 1 1 420px")
+          .text-3rem.md-text-4rem.font-bold Chromatone
+          .text-2rem.md-ml-1 Visual Music Language
+          .text-xl.md-ml-1 to learn, explore and communicate with 
+        .flex.flex-col.items-center.p-4.gap-8
+          .flex.flex-wrap.gap-8.items-stretch 
+            home-tile.rounded-2xl(
+              style="flex: 1 1 420px;"
+              v-for="(area, i) in children", 
+              :key="area.url", 
+              :item="area", 
+              :i="i",
+              :total="children.length")  
+            .flex.flex-col.gap-4(style="flex: 1 1 420px;")
+              youtube-embed(:video="f?.youtube" v-if="f?.youtube")
+        content
+        //- page-footer(v-if="!params.pure && !params.nofooter")
   template(v-else)
-    main#content
-      transition(name="panel" mode="in-out")
-        page-headline(
-          v-if="f.layout != 'app'"
-          :pageColor="pageColor", :lightColor="lightColor" :page="f" :cover="f.dynamic ? f?.cover?.id || f?.poster?.id : page?.frontmatter?.cover") 
-      transition(name="fade")
-        .fixed.top-0.left-14.right-2.z-100.text-md.p-2.flex.gap-2.items-center.bg-light-200.bg-opacity-20.dark-bg-dark-200.dark-bg-opacity-10.backdrop-blur-lg.pt-2.pl-4.min-h-15.border-t-4.op-90.transition.rounded-xl(
-          :style="{ borderColor: pageColor }"
-          v-if="y > 100")
-          .flex-1.flex.flex-wrap.gap-2
-            h2.font-bold.select-none.pointer-events-none {{ f?.title }} 
-            .p-0.select-none.pointer-events-none {{ f?.description }}
+    transition(name="fade")
+      main#content(:key="route.path")
+        transition(name="panel" mode="in-out")
+          page-headline(
+            v-if="f.layout != 'app'"
+            :pageColor="pageColor", :lightColor="lightColor" :page="f" :cover="f.dynamic ? f?.cover?.id || f?.poster?.id : page?.frontmatter?.cover") 
+        transition(name="fade")
+          .fixed.top-0.left-14.right-2.z-100.text-md.p-2.flex.gap-2.items-center.bg-light-200.bg-opacity-20.dark-bg-dark-200.dark-bg-opacity-10.backdrop-blur-lg.pt-2.pl-4.min-h-15.border-t-4.op-90.transition.rounded-xl(
+            :style="{ borderColor: pageColor }"
+            v-if="y > 100")
+            .flex-1.flex.flex-wrap.gap-2
+              h2.font-bold.select-none.pointer-events-none {{ f?.title }} 
+              .p-0.select-none.pointer-events-none {{ f?.description }}
 
-          .i-la-angle-up.w-6(@click="scrollTop()")
+            .i-la-angle-up.w-6(@click="scrollTop()")
 
-      iframe.min-h-80svh.w-full.max-w-100svw(
-        allow="midi;microphone;fullscreen;"
-        v-if="f?.iframe"
-        :src="f.iframe"
-        )
+        iframe.min-h-80svh.w-full.max-w-100svw(
+          allow="midi;microphone;fullscreen;"
+          v-if="f?.iframe"
+          :src="f.iframe"
+          )
 
-      content
-      row-list(:children="children")
-      nav-next-prev(
-        :siblings="siblings" 
-        :parents="parents"
-        v-if="!params.pure && !params.nonav && f.layout != 'app'"
-        )
+        content
+        row-list(:children="children")
+        nav-next-prev(
+          :siblings="siblings" 
+          :parents="parents"
+          v-if="!params.pure && !params.nonav && f.layout != 'app'"
+          )
 
   client-only
     draw-layer.z-100
@@ -126,7 +127,6 @@ body {
 
 #app {
   max-height: 99dvh;
-  overflow: hidden
 }
 
 .main {

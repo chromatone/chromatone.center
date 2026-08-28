@@ -15,6 +15,9 @@ const MidiRoll = defineClientComponent(() => {
 
 <MidiRoll style="position: sticky; top: 0;" />
 
+
+<div style="break-before: column; break-after:column"></div>
+
 ::: info
 
 1. Play some notes on your MIDI controller or computer keyboard and watch them appear on the endless roll.

@@ -8,8 +8,9 @@ component: beat-bars
 ---
 
 <client-only >
-  <beat-bars />
+  <beat-bars style="margin-bottom:4em;break-after:column" />
 </client-only >
+
 
 ## Flexible metronome bars to construct any possible rhythm
 

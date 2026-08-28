@@ -29,9 +29,10 @@ function go(url) {
 </script>
 
 <template lang="pug">
-.header.row.pt-30(
+.header.row.min-h-28dvh(
   :style="{ borderColor: color }"
   )
+  .flex-1
   .flex.gap-2.absolute.top-4.right-4.text-xl.z-100
     button.op-50.hover-op-90.transition(
       title="Open web-app in a popup window"
@@ -43,13 +44,13 @@ function go(url) {
 
   a.info.flex-1.no-underline(:href="cleanLink(item.url)")
     .flex.items-center.w-full
-      .mt-0.flex.items-center.w-full
+      .flex.items-center.w-full
         span.text-xl.font-bold {{ item?.frontmatter?.title }}
         .flex-1
-        span(v-if="children") {{ children.length }}
+        .font-bold(v-if="children") {{ children.length }}
       .flex-1
       card-date(v-if="!item?.frontmatter?.product",:date="item.lastModified")
-    .text-md.mt-4.mb-2.font-normal.w-full.flex-1(v-if="item?.frontmatter?.description") {{ item?.frontmatter?.description }}
+    .text-md.font-normal.w-full.flex-1(v-if="item?.frontmatter?.description") {{ item?.frontmatter?.description }}
     a.op-50.hover-op-90.transition.flex.items-center.gap-1(
       title="Open as a standalone web-app"
       aria-label="Open as a standalone web-ap"

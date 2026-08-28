@@ -7,7 +7,7 @@ const {
 
 
 <template lang="pug">
-.flex.flex-wrap.gap-4.m-4
+.flex.flex-wrap.gap-2
   .row.is-group.gap-2.select-none
     control-push(
       v-model="active" 

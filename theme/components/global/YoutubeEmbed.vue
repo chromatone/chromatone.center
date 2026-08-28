@@ -6,12 +6,10 @@ defineProps({
 });
 
 const loaded = ref(false)
-
-
 </script>
 
 <template lang="pug">
-.iframe-container.shadow-lg.overflow-hidden.rounded-lg.bg-cover.min-h-100()
+.iframe-container.shadow-lg.overflow-hidden.rounded-lg.bg-cover.min-h-80.max-w-full()
   .flex.items-center.relative.w-full.bg-cover.cursor-pointer.op-80.hover-op-100.transition(
     v-if="!loaded"
     @click="loaded = true")

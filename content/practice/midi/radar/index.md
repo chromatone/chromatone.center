@@ -12,6 +12,8 @@ cover: geometry.png
   <midi-panel class=" mx-2 max-w-55ch"  />
 </client-only>
 
+<div style="break-before: column; break-after:column"></div>
+
 ::: info
 
 ### See all the MIDI signals on the clock

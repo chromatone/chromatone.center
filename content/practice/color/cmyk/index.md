@@ -8,6 +8,6 @@ cover: cmyk.png
 
 <client-only>
 
-<color-cmyk style="position: sticky; top: 0;"  />
+<color-cmyk/>
 
 </client-only>

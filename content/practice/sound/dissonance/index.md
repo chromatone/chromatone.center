@@ -22,7 +22,7 @@ const SoundDissonance = defineClientComponent(() => {
 
 <client-only >
 
-  <SoundDissonance style="position: sticky; top: 0;" />
+  <SoundDissonance style="column-span: all" />
 
 </client-only >
 

@@ -16,7 +16,7 @@ const colors = reactive({
 </script>
 
 <template lang="pug">
-.flex.flex-wrap.gap-2.p-2(:style="{ borderColor: colors?.current }")
+.flex.flex-wrap.gap-2.p-2.items-stretch(:style="{ borderColor: colors?.current }")
   a.pad(
     style="flex:1 1"
     v-if="siblings?.prev" 
@@ -27,15 +27,15 @@ const colors = reactive({
       .i-la-angle-double-left.icon.icon-prev
       span.text.-mt-1 {{ siblings?.prev?.frontmatter?.title }}
 
-  a.pad(
-    style="flex:1 1"
-    v-for="(parent, p) in [...parents].slice(1, -1)" :key="parent"
-    :href="cleanLink(parent?.url)"
-    :style="{ backgroundColor: colors?.next, backgroundImage: `url(${parent?.frontmatter?.cover})` }"
-    )
-    .link
-      .i-la-angle-double-up.mr-1
-      .text.-mt-1 {{ parent?.frontmatter?.title }}
+  //- a.pad(
+  //-   style="flex:1 1"
+  //-   v-for="(parent, p) in [...parents].slice(1, -1)" :key="parent"
+  //-   :href="cleanLink(parent?.url)"
+  //-   :style="{ backgroundColor: colors?.next, backgroundImage: `url(${parent?.frontmatter?.cover})` }"
+  //-   )
+  //-   .link
+  //-     .i-la-angle-double-up.mr-1
+  //-     .text.-mt-1 {{ parent?.frontmatter?.title }}
 
   a.pad(
     style="flex:1 1"
@@ -62,7 +62,7 @@ const colors = reactive({
 }
 
 .parent {
-  @apply p-2 flex items-center justify-start m-2 rounded-xl shadow-md transition-all duration-100 ease-out bg-light-400/40 dark-bg-dark-300/10 no-underline hover-(bg-light-100/60 shadow-lg) dark-(hover-bg-dark-300);
+  @apply p-2 flex items-center justify-start m-2 rounded-xl shadow-md transition-all duration-100 ease-out bg-light-400/40 dark-bg-dark-300/50 no-underline hover-(bg-light-100/90 shadow-lg) dark-(hover-bg-dark-300);
 }
 
 .row {
@@ -72,11 +72,11 @@ const colors = reactive({
 .pad {
   @apply no-underline bg-cover bg-center p-4 transition-all duration-200 ease-out rounded-xl shadow-lg hover-shadow-xl transition-all;
   flex: 1 1 45%;
-  filter: grayscale(50%) opacity(50%) contrast(80%);
+  filter: grayscale(50%);
 }
 
 .pad:hover {
-  filter: grayscale(0%) opacity(100%) contrast(100%);
+  filter: grayscale(0%);
 }
 
 .prev {

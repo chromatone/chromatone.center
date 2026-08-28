@@ -3,7 +3,7 @@ import { computed } from 'vue';
 import { useRoute, useData } from "vitepress";
 import { lchToHsl } from '#/use/colors'
 import { data } from '../content/pages.data'
-import { usePages, usePage } from './pages'
+import { usePages, usePage, cleanLink } from './pages'
 import { drawingEnabled, drawingPinned } from '../theme/composables/draw'
 import { useUrlSearchParams } from '@vueuse/core'
 import { useWindowScroll } from '@vueuse/core'
@@ -57,6 +57,9 @@ midi-notes(v-if="!params.pure && !params.nokeys")
       allow="midi;microphone;fullscreen;"
       )
 
+  .w-full.h-full(v-else-if="f.layout == 'app'")
+    content
+
   template(v-else-if="f.layout == 'home'")
     main.home.items-center.justify-center.overflow-clip(aria-labelledby="main-title")
 
@@ -79,13 +82,16 @@ midi-notes(v-if="!params.pure && !params.nokeys")
         content.content.z-2.flex-auto
       page-footer(v-if="!params.pure && !params.nofooter")
   template(v-else)
-    main#content.w-full.relative.flex.flex-col
+    main#content
       transition(name="panel" mode="in-out")
         page-headline(
           v-if="f.layout != 'app'"
           :pageColor="pageColor", :lightColor="lightColor" :page="f" :cover="f.dynamic ? f?.cover?.id || f?.poster?.id : page?.frontmatter?.cover") 
-
-          page-parents(:parents="f.dynamic ? parents : parents.slice(0, -1)")
+          nav-next-prev(
+            :siblings="siblings" 
+            :parents="parents"
+            v-if="!params.pure && !params.nonav && f.layout != 'app'"
+            )
       transition(name="fade")
         .fixed.top-0.left-14.right-2.z-100.text-md.p-2.flex.gap-2.items-center.bg-light-200.bg-opacity-20.dark-bg-dark-200.dark-bg-opacity-10.backdrop-blur-lg.pt-2.pl-4.min-h-15.border-t-4.op-90.transition.rounded-xl(
           :style="{ borderColor: pageColor }"
@@ -101,20 +107,10 @@ midi-notes(v-if="!params.pure && !params.nokeys")
         v-if="f?.iframe"
         :src="f.iframe"
         )
-      transition(name="fade")
-        .relative.flex.flex-wrap.items-start.justify-center.w-full.flex-auto(:key="route.path")
 
-          row-list.px-2.my-2(style="flex:3" v-if="children && !f?.topContent" :children="children")
-          content.content.z-10.py-4(style="flex:1 300px")
-          row-list.px-2.my-2(style="flex:1 300px" v-if="children && f?.topContent" :children="children")
+      content
+      row-list(:children="children")
 
-      nav-next-prev(
-        :siblings="siblings" 
-        :parents="parents"
-        v-if="!params.pure && !params.nonav && f.layout != 'app'"
-        )
-      //- nav-row.p-4
-      //- page-footer(v-if="!params.pure && !params.nofooter")
   client-only
     draw-layer.z-100
     cast-camera
@@ -123,9 +119,44 @@ midi-notes(v-if="!params.pure && !params.nokeys")
 </template>
 
 <style lang="postcss">
+html,
+body {
+  overscroll-behavior: none;
+}
+
 .main {
   @apply relative flex items-stretch min-h-screen bg-cover bg-center bg-fixed;
 }
+
+#content {
+  width: 100%;
+  padding: 2em;
+  height: 100dvh;
+  column-width: 36ch;
+  column-gap: 2rem;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  scroll-padding: 2rem;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+
+#content p {
+  padding: 0.5rem 0em;
+}
+
+#content * {
+  scroll-snap-align: start;
+}
+
+#content img {
+  break-inside: avoid;
+}
+
+#content * {
+  line-height: 1.6;
+}
+
 
 .sidebar-mask {
   transition: all 300ms ease-out;

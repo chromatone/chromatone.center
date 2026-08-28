@@ -4,7 +4,7 @@ import { Gun, SEA } from '@gun-vue/gun-es'
 import { gunAvatar } from 'gun-avatar'
 import { computed, onBeforeUnmount, onMounted, reactive, ref, shallowReactive, watch } from 'vue';
 
-const gun = Gun({ peers: ['https://peer.wallie.io/gun'] });
+const gun = Gun({ peers: ['https://gun.defucc.me/gun'] });
 
 const appName = `test-app-1000`
 

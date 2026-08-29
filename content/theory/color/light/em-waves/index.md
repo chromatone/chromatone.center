@@ -1,40 +1,19 @@
 ---
 title: Electromagnetic radiation
 description: EM-waves propagationg through space
-
 date: 2021-12-10
 cover: emwavepropagation.jpg
 ---
 
-<youtube-embed video="FWCN_uI5ygY" />
-
 Synchronised oscillations (or their quanta, photons) of the electric and magnetic fields, propagating through space at the speed of ~300,000 km/s.
 
-![](./emwavepropagation.jpg)
-
 Visible light is a certain portion of electromagnetic spectrum between infrared (too weak to excite electrons in molecules) and ultraviolet (powerful enough to cause irreversible chemical reactions in organic matter).
-
-<img src="./em-acoustic.svg" >
-
-![em-s](em-s.jpg)
-
-<youtube-embed video="V_jYXQFjCmA" />
-
-![Photo effect](photo-effect.jpg)
-
-
-# Electromagnetic Radiation: The Complete Guide to Light and Beyond
 
 ## What is Electromagnetic Radiation?
 
 **Electromagnetic radiation (EMR)** is a form of energy that is propagated through space as synchronized oscillations of electric and magnetic fields, or equivalently, as streams of photons—quantum packets of electromagnetic energy. These waves travel through space at the speed of light (~300,000 km/s or ~186,000 miles per second) in a vacuum, carrying energy and momentum from one location to another.
 
-<figure style="text-align: center;">
-  <img src="./emwavepropagation.jpg" alt="Electromagnetic Wave Propagation" style="max-width: 100%;">
-  <figcaption style="font-style: italic; color: #666; margin-top: 8px;">
-    An electromagnetic wave showing perpendicular oscillating electric (E) and magnetic (B) fields propagating through space. The fields are in phase and perpendicular to each other and to the direction of propagation.
-  </figcaption>
-</figure>
+![](./emwavepropagation.jpg)
 
 Unlike mechanical waves (such as sound or water waves), electromagnetic waves do not require a medium for propagation—they can travel through perfect vacuum. This fundamental property was demonstrated experimentally and explained theoretically by James Clerk Maxwell in the 1860s, who unified electricity, magnetism, and optics into a single theoretical framework.
 
@@ -55,6 +34,8 @@ These quantities are related by the fundamental equation: **c = λf**
 **E = hf = hc/λ**
 
 where h is Planck's constant (6.626 × 10⁻³⁴ J·s). Higher frequency (shorter wavelength) radiation carries more energetic photons.
+
+<youtube-embed video="FWCN_uI5ygY" />
 
 ---
 
@@ -209,14 +190,9 @@ Human vision relies on **rhodopsin** in rod cells (for low-light vision) and thr
 5. **Photolithography**: Manufacturing integrated circuits (using extreme UV at 13.5 nm for cutting-edge chips)
 6. **Medical Therapy**: Psoriasis treatment, vitamin D synthesis, some skin conditions
 
-### Health Effects:
+![Photo effect](photo-effect.jpg)
 
-<figure style="text-align: center;">
-  <img src="./photo-effect.jpg" alt="Photoelectric Effect" style="max-width: 85%;">
-  <figcaption style="font-style: italic; color: #666; margin-top: 8px;">
-    The photoelectric effect: ultraviolet photons ejecting electrons from a metal surface. This phenomenon, which cannot be explained by classical wave theory, was crucial in establishing quantum mechanics.
-  </figcaption>
-</figure>
+### Health Effects:
 
 UV radiation is **powerful enough to cause irreversible chemical reactions in organic matter**:
 
@@ -418,7 +394,7 @@ where σ ≈ 5.67 × 10⁻⁸ W/(m²·K⁴)
 
 This shows radiated power increases rapidly with temperature—doubling temperature increases radiation 16-fold!
 
----
+---emission of electrons
 
 ## The Photoelectric Effect and Quantum Nature
 

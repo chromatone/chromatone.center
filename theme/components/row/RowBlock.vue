@@ -29,7 +29,7 @@ function go(url) {
 </script>
 
 <template lang="pug">
-.header.row.min-h-28dvh(
+.header.row.min-h-30.min-w-40(
   :style="{ borderColor: color }"
   )
   .flex-1

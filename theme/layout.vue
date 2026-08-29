@@ -105,7 +105,8 @@ midi-notes(v-if="!params.pure && !params.nokeys")
           )
 
         content
-        row-list(:children="children")
+        .flex.flex-wrap.gap-2
+          row-list(:children="children")
         nav-next-prev(
           :siblings="siblings" 
           :parents="parents"

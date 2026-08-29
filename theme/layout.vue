@@ -104,9 +104,10 @@ midi-notes(v-if="!params.pure && !params.nokeys")
           :src="f.iframe"
           )
 
-        content
         .flex.flex-wrap.gap-2
           row-list(:children="children")
+        content
+
         nav-next-prev(
           :siblings="siblings" 
           :parents="parents"
@@ -128,6 +129,7 @@ body {
 
 #app {
   max-height: 99dvh;
+  height: 100dvh;
 }
 
 .main {
@@ -138,6 +140,7 @@ body {
   min-height: 0;
   width: 100%;
   padding: 2em;
+  height: 100dvh;
   max-height: 100dvh;
   column-width: 36ch;
   column-gap: 2rem;

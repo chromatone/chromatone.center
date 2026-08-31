@@ -1,0 +1,413 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>acoustic wave — compression / rarefaction</title>
+<style>
+  html,body{margin:0;height:100%;background:#050608;overflow:hidden}
+  canvas{display:block;width:100%;height:100%}
+  #veil{position:fixed;inset:0;pointer-events:none;
+    background:radial-gradient(circle at 50% 50%, rgba(5,6,8,0) 55%, rgba(5,6,8,0.65) 78%, #050608 100%);}
+  #cap{position:fixed;left:18px;bottom:14px;font:12px/1.4 monospace; color:#9fb8c8;
+    opacity:.5; letter-spacing:.02em;}
+  #warn{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
+    color:#c66;font:14px monospace;background:#050608;display:none}
+</style>
+</head>
+<body>
+<canvas id="gl"></canvas>
+<div id="veil"></div>
+<div id="cap">click + hold to excite the medium &nbsp;→&nbsp; compression / rarefaction &nbsp;→&nbsp; helmholtz resonance</div>
+<div id="warn">WebGL2 + EXT_color_buffer_float required.</div>
+<script>
+"use strict";
+/* ---------------------------------------------------------------------
+   Acoustic wave demo. Everything is generated procedurally — no vertex
+   buffers, no textures loaded from disk, no libraries.
+
+   Trick #1  the physical field (pressure) is a 2D wave equation solved
+             on a small float texture (ping-pong FBOs) — this IS the
+             medium. Nothing here "is" a particle simulation.
+   Trick #2  the "couple million particles" are never stored anywhere.
+             Each of the ~2M points is reconstructed purely from
+             gl_VertexID (grid index + hashed jitter) — zero bytes of
+             per-particle memory, zero upload cost.
+   Trick #3  particles don't move because we simulate them — they move
+             because we displace their *rest position* by the local
+             pressure gradient of the field texture. Longitudinal
+             compression/rarefaction falls out for free.
+   Trick #4  density = brightness. Additive point blending means that
+             wherever the gradient pushes particles together, the
+             image gets brighter automatically — no explicit color
+             ramp needed to "sell" a compaction band.
+   Trick #5  fixed-timestep sim loop, independent of render framerate,
+             classic to keep an explicit FDTD stable regardless of
+             the browser's rAF jitter.
+   ------------------------------------------------------------------- */
+
+// ---- tunables --------------------------------------------------------
+const SIM         = 512;            // field resolution (square)
+const GRID_W       = 1600, GRID_H = 1200;      // ~1.92M particles
+const FIXED_DT      = 1/120;         // physics step
+const MAX_STEPS      = 4;
+const WAVE_C2         = 0.20;         // (c*dt/dx)^2, keep < 0.25 for stability
+const SRC_FREQ_HZ      = 0.42;         // the "specific frequency" the pointer emits
+const SRC_AMP         = 0.9;
+const SRC_SIGMA        = 0.010;
+const ENV_RATE        = 0.16;         // per-step smoothing -> soft attack/release, avoids click transients
+const THERMAL_LOSS      = 0.0012;        // interior viscous loss / step -> settles over many seconds, enough round-trips to resonate
+const EDGE_LOSS        = 0.12;         // stronger absorption right at the domain border, unrelated to cavity resonance
+const RES_POS         = [0.50, 0.15];      // bottom-center — the "guitar body"
+const RES_R          = 0.150;
+const RES_T          = 0.020;
+const RES_GAP_HALF      = 0.34;
+const RES_GAP_CENTER     = Math.PI/2;       // opening faces straight up, into the "string"
+const DISP_SCALE       = 5.5;          // gradient -> particle displacement (pre-saturation)
+const MAX_DISP        = 0.028;         // soft ceiling on displacement, in uv units
+const POINT_SIZE       = 1.35;
+
+// ---- boilerplate -------------------------------------------------------
+const canvas = document.getElementById('gl');
+const gl = canvas.getContext('webgl2', {antialias:false, alpha:false, depth:false, stencil:false, powerPreference:'high-performance'});
+if(!gl || !gl.getExtension('EXT_color_buffer_float')){
+  document.getElementById('warn').style.display='flex';
+  throw new Error('missing webgl2 / EXT_color_buffer_float');
+}
+gl.getExtension('OES_texture_float_linear');
+
+function compile(type, src){
+  const sh = gl.createShader(type);
+  gl.shaderSource(sh, src);
+  gl.compileShader(sh);
+  if(!gl.getShaderParameter(sh, gl.COMPILE_STATUS)){
+    console.error(gl.getShaderInfoLog(sh), src);
+  }
+  return sh;
+}
+function link(vsSrc, fsSrc){
+  const p = gl.createProgram();
+  gl.attachShader(p, compile(gl.VERTEX_SHADER, vsSrc));
+  gl.attachShader(p, compile(gl.FRAGMENT_SHADER, fsSrc));
+  gl.linkProgram(p);
+  if(!gl.getProgramParameter(p, gl.LINK_STATUS)) console.error(gl.getProgramInfoLog(p));
+  return p;
+}
+function uniforms(p, names){
+  const o = {};
+  for(const n of names) o[n] = gl.getUniformLocation(p, n);
+  return o;
+}
+// one empty VAO, bound for every draw — some drivers require *a* VAO
+// even when the vertex shader has zero attributes (gl_VertexID only).
+const emptyVAO = gl.createVertexArray();
+gl.bindVertexArray(emptyVAO);
+
+// ---- field textures (ping-pong, 3-way rotation) ------------------------
+function makeField(w,h){
+  const tex = gl.createTexture();
+  gl.bindTexture(gl.TEXTURE_2D, tex);
+  gl.texStorage2D(gl.TEXTURE_2D, 1, gl.R32F, w, h);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+  const fbo = gl.createFramebuffer();
+  gl.bindFramebuffer(gl.FRAMEBUFFER, fbo);
+  gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, tex, 0);
+  gl.viewport(0,0,w,h);
+  gl.clearColor(0,0,0,1);
+  gl.clear(gl.COLOR_BUFFER_BIT);
+  gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+  return {tex, fbo};
+}
+const bufs = [makeField(SIM,SIM), makeField(SIM,SIM), makeField(SIM,SIM)];
+let iCurr=0, iPrev=1, iNext=2; // rotating indices: t, t-1, scratch
+
+// ---- fullscreen triangle (no vertex buffer) -----------------------------
+const FS_VERT = `#version 300 es
+void main(){
+  vec2 p = vec2((gl_VertexID<<1)&2, gl_VertexID&2);
+  gl_Position = vec4(p*2.0-1.0, 0.0, 1.0);
+}`;
+
+const SIM_FRAG = `#version 300 es
+precision highp float;
+uniform sampler2D uCurr, uPrev;
+uniform ivec2 uSimRes;
+uniform float uSimTime, uC2;
+uniform vec2 uSrcPos; uniform float uSrcFreq, uSrcAmp, uSrcSigma, uSrcEnv;
+uniform vec2 uResPos; uniform float uResR, uResT, uGapCenter, uGapHalf;
+uniform float uGlobalDamp, uEdgeDamp;
+out vec4 outColor;
+
+ivec2 clampi(ivec2 p){ return clamp(p, ivec2(0), uSimRes-ivec2(1)); }
+
+float wallMask(vec2 uv){
+  vec2 d = uv - uResPos;
+  float r = length(d);
+  float a = atan(d.y, d.x);
+  float da = abs(atan(sin(a-uGapCenter), cos(a-uGapCenter))); // wrapped angular distance
+  bool inRing = (r > uResR-uResT) && (r < uResR);
+  bool inGap  = da < uGapHalf;
+  return (inRing && !inGap) ? 1.0 : 0.0;
+}
+
+void main(){
+  ivec2 ip = ivec2(gl_FragCoord.xy);
+  vec2 uv  = gl_FragCoord.xy / vec2(uSimRes);
+
+  float c  = texelFetch(uCurr, ip, 0).r;
+  float pL = texelFetch(uCurr, clampi(ip+ivec2(-1,0)), 0).r;
+  float pR = texelFetch(uCurr, clampi(ip+ivec2( 1,0)), 0).r;
+  float pD = texelFetch(uCurr, clampi(ip+ivec2(0,-1)), 0).r;
+  float pU = texelFetch(uCurr, clampi(ip+ivec2(0, 1)), 0).r;
+  float prev = texelFetch(uPrev, ip, 0).r;
+
+  float lap = (pL+pR+pD+pU-4.0*c);
+
+  float sd = distance(uv, uSrcPos);
+  float src = uSrcEnv * uSrcAmp * sin(6.28318530718*uSrcFreq*uSimTime) * exp(-(sd*sd)/(uSrcSigma*uSrcSigma));
+
+  float next = 2.0*c - prev + uC2*(lap) + uC2*src;
+
+  // thermal / viscous loss everywhere (lets the medium settle to rest once
+  // the pointer is released) plus a stronger absorbing sponge right at the
+  // domain edge, so we don't get hard-wall echoes bouncing back in.
+  float edge = smoothstep(0.36, 0.5, distance(uv, vec2(0.5)));
+  float damp = mix(uGlobalDamp, uEdgeDamp, edge);
+  next -= damp*(next-c);
+
+  if(wallMask(uv) > 0.5) next = 0.0; // rigid resonator shell
+
+  outColor = vec4(next,0.0,0.0,1.0);
+}`;
+
+const simProg = link(FS_VERT, SIM_FRAG);
+const simU = uniforms(simProg, ['uCurr','uPrev','uSimRes','uSimTime','uC2',
+  'uSrcPos','uSrcFreq','uSrcAmp','uSrcSigma','uSrcEnv','uResPos','uResR','uResT','uGapCenter','uGapHalf',
+  'uGlobalDamp','uEdgeDamp']);
+
+// ---- pointer-driven excitation ------------------------------------------
+// click / touch and hold to inject energy at that point, at SRC_FREQ_HZ,
+// for as long as the pointer stays down. srcEnv is smoothed so press/release
+// fades in and out instead of clicking the medium with a hard step.
+let pointerUV = [0.50, 0.55];
+let isPointerDown = false;
+let srcEnv = 0;
+
+function computeFit(w,h){ return w>h ? [h/w,1] : [1,w/h]; }
+
+function updatePointerFromEvent(e){
+  const rect = canvas.getBoundingClientRect();
+  const scaleX = canvas.width/rect.width, scaleY = canvas.height/rect.height;
+  const px = (e.clientX-rect.left)*scaleX;
+  const py = (e.clientY-rect.top)*scaleY;
+  const ndcX = (px/canvas.width)*2 - 1;
+  const ndcY = -((py/canvas.height)*2 - 1);
+  const fit = computeFit(canvas.width, canvas.height);
+  pointerUV = [ (ndcX/fit[0]+1)/2, (ndcY/fit[1]+1)/2 ];
+}
+canvas.style.touchAction = 'none';
+canvas.addEventListener('pointerdown', e=>{ isPointerDown=true; updatePointerFromEvent(e); canvas.setPointerCapture(e.pointerId); });
+canvas.addEventListener('pointermove', e=>{ if(isPointerDown) updatePointerFromEvent(e); });
+window.addEventListener('pointerup',   ()=>{ isPointerDown=false; });
+window.addEventListener('pointercancel', ()=>{ isPointerDown=false; });
+
+function simStep(simTime){
+  const target = isPointerDown ? 1.0 : 0.0;
+  srcEnv += (target - srcEnv) * ENV_RATE;   // soft attack/release per physics tick
+
+  gl.bindFramebuffer(gl.FRAMEBUFFER, bufs[iNext].fbo);
+  gl.viewport(0,0,SIM,SIM);
+  gl.disable(gl.BLEND);
+  gl.useProgram(simProg);
+  gl.activeTexture(gl.TEXTURE0); gl.bindTexture(gl.TEXTURE_2D, bufs[iCurr].tex); gl.uniform1i(simU.uCurr,0);
+  gl.activeTexture(gl.TEXTURE1); gl.bindTexture(gl.TEXTURE_2D, bufs[iPrev].tex); gl.uniform1i(simU.uPrev,1);
+  gl.uniform2i(simU.uSimRes, SIM, SIM);
+  gl.uniform1f(simU.uSimTime, simTime);
+  gl.uniform1f(simU.uC2, WAVE_C2);
+  gl.uniform2f(simU.uSrcPos, pointerUV[0], pointerUV[1]);
+  gl.uniform1f(simU.uSrcFreq, SRC_FREQ_HZ);
+  gl.uniform1f(simU.uSrcAmp, SRC_AMP);
+  gl.uniform1f(simU.uSrcSigma, SRC_SIGMA);
+  gl.uniform1f(simU.uSrcEnv, srcEnv);
+  gl.uniform2f(simU.uResPos, RES_POS[0], RES_POS[1]);
+  gl.uniform1f(simU.uResR, RES_R);
+  gl.uniform1f(simU.uResT, RES_T);
+  gl.uniform1f(simU.uGapCenter, RES_GAP_CENTER);
+  gl.uniform1f(simU.uGapHalf, RES_GAP_HALF);
+  gl.uniform1f(simU.uGlobalDamp, THERMAL_LOSS);
+  gl.uniform1f(simU.uEdgeDamp, EDGE_LOSS);
+  gl.drawArrays(gl.TRIANGLES, 0, 3);
+  const t = iPrev; iPrev = iCurr; iCurr = iNext; iNext = t;
+}
+
+// ---- particle field (no vertex buffer: gl_VertexID -> grid + jitter) ---
+const PARTICLE_VERT = `#version 300 es
+precision highp float;
+uniform sampler2D uField;
+uniform ivec2 uGrid, uSimRes;
+uniform float uTime, uDisp, uMaxDisp, uPointSize;
+uniform vec2 uFit;
+out float vP;
+
+float hash(float n){ return fract(sin(n)*43758.5453123); }
+ivec2 clampi(ivec2 p){ return clamp(p, ivec2(0), uSimRes-ivec2(1)); }
+
+void main(){
+  int id = gl_VertexID;
+  int gx = id % uGrid.x;
+  int gy = id / uGrid.x;
+  vec2 cell = (vec2(gx,gy)+0.5) / vec2(uGrid);
+  float h1 = hash(float(id)*12.9898+1.0);
+  float h2 = hash(float(id)*78.2330+7.0);
+  vec2 jitter = (vec2(h1,h2)-0.5) / vec2(uGrid);
+  vec2 uv = clamp(cell + jitter, 0.002, 0.998);
+
+  ivec2 ip = ivec2(uv*vec2(uSimRes));
+  float c  = texelFetch(uField, ip, 0).r;
+  float pL = texelFetch(uField, clampi(ip+ivec2(-1,0)), 0).r;
+  float pR = texelFetch(uField, clampi(ip+ivec2( 1,0)), 0).r;
+  float pD = texelFetch(uField, clampi(ip+ivec2(0,-1)), 0).r;
+  float pU = texelFetch(uField, clampi(ip+ivec2(0, 1)), 0).r;
+  vec2 grad = vec2(pR-pL, pU-pD);
+
+  vec2 raw = -grad * uDisp;                        // longitudinal push toward compressions
+  vec2 disp = raw / (1.0 + length(raw)/uMaxDisp);   // soft ceiling: eases toward uMaxDisp, never overshoots
+  float ph = h1*6.28318;
+  vec2 conv = 0.0022*vec2(sin(uTime*0.55+ph), cos(uTime*0.47+ph*1.7)); // bounded convective jitter, zero net drift
+
+  vec2 p = (uv + disp + conv) * 2.0 - 1.0;
+  p *= uFit;
+
+  gl_Position = vec4(p, 0.0, 1.0);
+  gl_PointSize = uPointSize;
+  vP = c;
+}`;
+
+const PARTICLE_FRAG = `#version 300 es
+precision highp float;
+in float vP;
+out vec4 outColor;
+void main(){
+  vec2 d = gl_PointCoord - 0.5;
+  float r2 = dot(d,d);
+  if(r2 > 0.25) discard;
+  float soft = smoothstep(0.25, 0.0, r2);
+  vec3 cool = vec3(0.20, 0.50, 1.00);
+  vec3 warm = vec3(1.00, 0.55, 0.22);
+  vec3 col = mix(cool, warm, smoothstep(-0.55, 0.55, vP*9.0));
+  float a = soft*0.5;
+  outColor = vec4(col*a, a);
+}`;
+
+const partProg = link(PARTICLE_VERT, PARTICLE_FRAG);
+const partU = uniforms(partProg, ['uField','uGrid','uSimRes','uTime','uDisp','uMaxDisp','uPointSize','uFit']);
+
+// ---- geometry markers: resonator ring + pulsing source dot -------------
+// (drawn with the same "everything is dots" language as the particle field)
+const SHAPE_VERT = `#version 300 es
+precision highp float;
+uniform vec2 uCenter; uniform float uRadius, uGapCenter, uGapHalf, uSize;
+uniform vec2 uFit; uniform int uN;
+void main(){
+  float t = float(gl_VertexID)/float(uN);
+  float ang = t*6.28318530718 - 3.14159265359;
+  float da = abs(atan(sin(ang-uGapCenter), cos(ang-uGapCenter)));
+  vec2 pos = uCenter + uRadius*vec2(cos(ang), sin(ang));
+  vec2 p = (pos*2.0-1.0) * uFit;
+  gl_Position = (da < uGapHalf) ? vec4(9.0,9.0,0.0,1.0) : vec4(p,0.0,1.0);
+  gl_PointSize = uSize;
+}`;
+const SHAPE_FRAG = `#version 300 es
+precision highp float;
+uniform vec3 uColor; uniform float uAlpha;
+out vec4 outColor;
+void main(){
+  vec2 d = gl_PointCoord-0.5;
+  float r2=dot(d,d);
+  if(r2>0.25) discard;
+  float soft = smoothstep(0.25,0.0,r2);
+  outColor = vec4(uColor*soft*uAlpha, soft*uAlpha);
+}`;
+const shapeProg = link(SHAPE_VERT, SHAPE_FRAG);
+const shapeU = uniforms(shapeProg, ['uCenter','uRadius','uGapCenter','uGapHalf','uSize','uFit','uN','uColor','uAlpha']);
+
+function drawRing(cx,cy,r,gapC,gapH,n,size,color,alpha,fit){
+  gl.useProgram(shapeProg);
+  gl.uniform2f(shapeU.uCenter,cx,cy);
+  gl.uniform1f(shapeU.uRadius,r);
+  gl.uniform1f(shapeU.uGapCenter,gapC);
+  gl.uniform1f(shapeU.uGapHalf,gapH);
+  gl.uniform1f(shapeU.uSize,size);
+  gl.uniform2f(shapeU.uFit,fit[0],fit[1]);
+  gl.uniform1i(shapeU.uN,n);
+  gl.uniform3f(shapeU.uColor,color[0],color[1],color[2]);
+  gl.uniform1f(shapeU.uAlpha,alpha);
+  gl.drawArrays(gl.POINTS,0,n);
+}
+
+// ---- resize --------------------------------------------------------------
+function resize(){
+  const dpr = Math.min(1.5, window.devicePixelRatio||1);
+  canvas.width  = Math.round(innerWidth*dpr);
+  canvas.height = Math.round(innerHeight*dpr);
+}
+addEventListener('resize', resize);
+resize();
+
+// ---- main loop (fixed timestep physics, decoupled render) ---------------
+let simClock = 0, last = performance.now(), acc = 0;
+function frame(now){
+  const dtReal = Math.min(0.05, (now-last)/1000);
+  last = now;
+  acc += dtReal;
+  let steps = 0;
+  while(acc >= FIXED_DT && steps < MAX_STEPS){
+    simStep(simClock);
+    simClock += FIXED_DT;
+    acc -= FIXED_DT;
+    steps++;
+  }
+  render();
+  requestAnimationFrame(frame);
+}
+
+function render(){
+  gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+  gl.viewport(0,0,canvas.width,canvas.height);
+  gl.clearColor(0.02,0.023,0.03,1);
+  gl.clear(gl.COLOR_BUFFER_BIT);
+  gl.enable(gl.BLEND);
+  gl.blendFunc(gl.ONE, gl.ONE);
+
+  const w=canvas.width, h=canvas.height;
+  const fit = computeFit(w,h);
+
+  // faint resonator shell, always visible
+  drawRing(RES_POS[0], RES_POS[1], RES_R, RES_GAP_CENTER, RES_GAP_HALF, 220, 2.0*Math.min(2,w/900), [0.35,0.42,0.5], 0.35, fit);
+
+  // pulsing source marker: follows the pointer, fades in/out with srcEnv
+  if(srcEnv > 0.01){
+    const pulse = 0.010 + 0.006*srcEnv*(1.0+0.5*Math.sin(2*Math.PI*SRC_FREQ_HZ*simClock));
+    drawRing(pointerUV[0], pointerUV[1], pulse, 0, Math.PI, 40, 2.4*Math.min(2,w/900), [1.0,0.65,0.3], 0.9*srcEnv, fit);
+  }
+
+  gl.useProgram(partProg);
+  gl.activeTexture(gl.TEXTURE0);
+  gl.bindTexture(gl.TEXTURE_2D, bufs[iCurr].tex);
+  gl.uniform1i(partU.uField, 0);
+  gl.uniform2i(partU.uGrid, GRID_W, GRID_H);
+  gl.uniform2i(partU.uSimRes, SIM, SIM);
+  gl.uniform1f(partU.uTime, simClock);
+  gl.uniform1f(partU.uDisp, DISP_SCALE);
+  gl.uniform1f(partU.uMaxDisp, MAX_DISP);
+  gl.uniform1f(partU.uPointSize, POINT_SIZE*Math.min(1.6, w/1400));
+  gl.uniform2f(partU.uFit, fit[0], fit[1]);
+  gl.drawArrays(gl.POINTS, 0, GRID_W*GRID_H);
+}
+
+requestAnimationFrame(frame);
+</script>
+</body>
+</html>

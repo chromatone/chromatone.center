@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>acoustic field — a minimal 2D guitar</title>
+  <style>
+    html,
+    body {
+      margin: 0;
+      height: 100%;
+      background: #040507;
+      overflow: hidden
+    }
+
+    canvas {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      display: block;
+      touch-action: none;
+      cursor: crosshair
+    }
+
+    #hud {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      user-select: none;
+      font: 600 10px/1.7 ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+      color: #66707d;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      text-shadow: 0 1px 8px rgba(2, 4, 8, .9)
+    }
+
+    #hud b {
+      font-weight: 600;
+      color: #e7dac4
+    }
+
+    #t {
+      position: absolute;
+      left: 18px;
+      top: 15px
+    }
+
+    #t b {
+      display: block;
+      font-size: 12px;
+      letter-spacing: .34em;
+      color: #efe5d4
+    }
+
+    #r {
+      position: absolute;
+      right: 18px;
+      top: 15px;
+      text-align: right
+    }
+
+    #b {
+      position: absolute;
+      right: 18px;
+      bottom: 13px;
+      text-align: right
+    }
+
+    #b em {
+      font-style: normal;
+      color: #4b545f
+    }
+
+    #st {
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      background: #39424d;
+      margin: 0 6px 0 0
+    }
+  </style>
+</head>
+
+<body>
+  <canvas></canvas>
+  <div id="hud">
+    <div id="t"><b>ACOUSTIC FIELD</b>a minimal 2D guitar<br>the wave travels — the medium stays put</div>
+    <div id="r"><span id="st"></span><b id="sx">quiet</b><br>
+      string <b id="fs">—</b><br>resonator <b id="fr">—</b><br>particles <b id="np">0</b></div>
+    <div id="b">SPACE strum · ← ↑ ↓ → move resonator<br>drag stirs the air · click the string to pluck
+      it<br><em>displacement ×6 · slow-motion ×229</em></div>
+  </div>
+  <script>
+    "use strict";
+    const cv = document.querySelector('canvas'), hud = document.getElementById('hud');
+    const gl = cv.getContext('webgl2', { antialias: false, alpha: false, depth: false, stencil: false });
+    const ext = gl && gl.getExtension('EXT_color_buffer_float');
+    if (!gl || !ext) { hud.innerHTML = '<div id="t"><b>ACOUSTIC FIELD</b>needs WebGL2 + float render targets</div>'; throw 0; }
+
+    /* ---------- shaders ---------- */
+    const VERT = `#version 300 es
+layout(location=0) in vec2 a;
+void main(){gl_Position=vec4(a,0.,1.);}`;
+
+    // one SDF is the drawing, the wall mask, and the obstacle — square stage, mirror-symmetric
+    const GEO = `const float CEL=1./384.;
+const float YS=.580,X0=.120,X1=.880,EXG=6.;
+uniform vec2 uR;
+const float RR=.065,WT=.014,NW=.019;
+float sdBox(vec2 p,vec2 b){vec2 d=abs(p)-b;return length(max(d,vec2(0.)))+min(max(d.x,d.y),0.);}
+float sdPost(vec2 q){
+  float a=sdBox(q-vec2(X0-.017,YS),vec2(.011,.034));
+  float b=sdBox(q-vec2(X1+.017,YS),vec2(.011,.034));
+  return min(a,b);}
+float sdWall(vec2 q){vec2 p=q-uR;
+  float dC=length(p)-RR;                       // cavity
+  float ann=max(dC-WT,-dC);                    // wall shell
+  float slit=-sdBox(p-vec2(0.,RR+WT*.5),vec2(NW,WT*.5+.003)); // carved port, aimed at the string
+  return max(ann,slit);}
+float airW(vec2 q){return smoothstep(0.,.003,sdWall(q))*smoothstep(0.,.003,sdPost(q));}
+float sponge(vec2 q){
+  float m=min(min(q.x,1.-q.x),min(q.y,1.-q.y));
+  return 1.-.07*(1.-smoothstep(0.,.075,m));}`;
+
+    // FDTD pass 1: momentum  du/dt = -grad p, plus string band + pointer, plus xi integration
+    const FV = `#version 300 es
+precision highp float;
+uniform sampler2D Tv,Tp,Ts;
+uniform vec4 uPtr;
+out vec4 O;
+ ${GEO}
+void main(){
+  vec2 uv=gl_FragCoord.xy/384.,q=uv,e=vec2(CEL,CEL);
+  vec4 S=texture(Tv,uv);
+  float gx=texture(Tp,uv+vec2(e.x,0.)).r-texture(Tp,uv-vec2(e.x,0.)).r;
+  float gy=texture(Tp,uv+vec2(0.,e.y)).r-texture(Tp,uv-vec2(0.,e.y)).r;
+  vec2 vel=S.xy-.5333*vec2(gx,gy);
+  vec2 dir=q-uPtr.xy;float dl=max(length(dir),1e-4);       // your finger = a loudspeaker
+  vel=mix(vel,(dir/dl)*uPtr.z,uPtr.w*(1.-smoothstep(.008,.012,dl)));
+  vel*=airW(q)*sponge(q)*.9998;
+  vec2 st=texture(Ts,vec2(clamp((q.x-X0)/(X1-X0),0.,1.),.5)).xy;   // string state (y,vy)
+  float band=smoothstep(X0-.004,X0+.004,q.x)*(1.-smoothstep(X1-.004,X1+.004,q.x));
+  band*=1.-smoothstep(.0040,.0058,abs(q.y-(YS+EXG*st.x)));         // band rides the string
+  vel=mix(vel,vec2(0.,st.y*480.),band);                            // the oscillating body
+  O=vec4(vel,(S.zw+vel/480.)*.99896);                              // xi += u*dt, slow leak home
+}`;
+
+    // FDTD pass 2: continuity  dp/dt = -k div u  (+ scrub under moving solids)
+    const FP = `#version 300 es
+precision highp float;
+uniform sampler2D Tv,Tp;
+out vec4 O;
+ ${GEO}
+void main(){
+  vec2 uv=gl_FragCoord.xy/384.,e=vec2(CEL,CEL);
+  float dx=texture(Tv,uv+vec2(e.x,0.)).x-texture(Tv,uv-vec2(e.x,0.)).x;
+  float dy=texture(Tv,uv+vec2(0.,e.y)).y-texture(Tv,uv-vec2(0.,e.y)).y;
+  float scrub=1.-.3*(1.-airW(uv));
+  O=vec4((texture(Tp,uv).r-.3*(dx+dy))*(sponge(uv)*.9998*scrub),0.,0.,1.);
+}`;
+
+    // the string: 1D leapfrog wave equation on a 128-texel ping-pong, plucked by impulse
+    const FSTR = `#version 300 es
+precision highp float;
+uniform sampler2D Ts;
+uniform vec4 uPk;
+out vec4 O;
+void main(){
+  vec2 uv=gl_FragCoord.xy/128.;float du=1./128.;
+  vec2 s=texture(Ts,vec2(uv.x,.5)).xy;
+  float ym=texture(Ts,vec2(uv.x-du,.5)).x;
+  float yp=texture(Ts,vec2(uv.x+du,.5)).x;
+  float end=smoothstep(0.,1.5*du,uv.x)*smoothstep(0.,1.5*du,1.-uv.x);
+  float v=(s.y+.81*(ym-2.*s.x+yp))*(1.-.0018);   // tension + loss
+  float y=(s.x+v)*end+uPk.w*uPk.y*max(0.,1.-abs(uv.x-uPk.x)/uPk.z);
+  O=vec4(y,v*end,0.,1.);
+}`;
+
+    // two 1-pixel probes: the demo measures the string and the cavity
+    const FQS = `#version 300 es
+precision highp float;
+uniform sampler2D Ts;
+out vec4 O;
+void main(){
+  float y=texture(Ts,vec2(.42,.5)).x;
+  O=vec4(.5+.48*y/(.006+abs(y)),0.,0.,1.);
+}`;
+    const FQC = `#version 300 es
+precision highp float;
+uniform sampler2D Tp;
+uniform vec2 uR;
+out vec4 O;
+void main(){
+  float p=texture(Tp,uR).r;
+  O=vec4(.5+.48*p/(.010+abs(p)),0.,0.,1.);
+}`;
+
+    // presentation: schlieren-warped backdrop + capped tint + inverse-advected dot lattice
+    const FR = `#version 300 es
+precision highp float;
+uniform sampler2D Tv,Tp,Ts;
+uniform vec4 uStg;
+out vec4 O;
+ ${GEO}
+float h21(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
+float vno(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);
+  return mix(mix(h21(i),h21(i+vec2(1.,0.)),f.x),
+             mix(h21(i+vec2(0.,1.)),h21(i+vec2(1.,1.)),f.x),f.y);}
+void main(){
+  vec2 sp=gl_FragCoord.xy-uStg.xy;
+  float W=uStg.z;
+  bool on=sp.x>0.&&sp.x<W&&sp.y>0.&&sp.y<W;
+  vec3 col=vec3(.012,.014,.020);
+  if(on){
+    vec2 q=sp/W;
+    float p=texture(Tp,q).r;
+    vec4 V=texture(Tv,q);
+    // schlieren: the pressure gradient bends the backdrop — the wave is a lens
+    vec2 e=vec2(1.5/384.,0.);
+    vec2 gr=vec2(texture(Tp,q+e.xy).r-texture(Tp,q-e.xy).r,
+                 texture(Tp,q+e.yx).r-texture(Tp,q-e.yx).r)*256.;
+    vec2 bo=clamp(-.008*gr,vec2(-.01),vec2(.01));
+    float n1=vno((q+bo)*90.),n2=vno((q+bo)*23.+7.7);
+    col=vec3(.020,.026,.036)*(.55+.9*n2)*(.7+.6*n1);
+    // pressure tint — soft, capped, never opaque
+    float pv=tanh(6.*p);
+    col+=(pv>0.?vec3(1.,.58,.20):vec3(.12,.60,.72))*pow(abs(pv),.7)*.35;
+    // THE trick: static hash-dot lattices sampled at (px - xi); they bunch where the
+    // medium converges, spread where it diverges, and always drift back home.
+    vec2 D=V.zw*(W*6.);
+    vec2 un=V.xy/max(length(V.xy),1e-4);
+    float st=1.+9.*min(length(V.xy),.25);
+    float tint=.85+.45*tanh(12.*p);
+    const float SS[5]=float[5](2.6,3.6,5.,7.2,10.);
+    const float PR[5]=float[5](.78,.84,.90,.96,1.04);
+    vec3 acc=vec3(0.);
+    for(int i=0;i<5;i++){
+      float s=SS[i];
+      vec2 r=sp-D*PR[i],cl=floor(r/s);
+      vec2 h=vec2(h21(cl),h21(cl.yx+7.31));
+      vec2 d=(cl+h)*s-r;
+      d=vec2(dot(d,un),dot(d,vec2(-un.y,un.x)));d.x/=st;
+      float g=.26*(.6+.8*h21(cl+5.1));
+      float b=.025*s*s*(.55+.9*h21(cl+19.7));
+      vec3 pc=mix(vec3(.95,.91,.83),vec3(1.,.80,.52),h21(cl+3.7)*h21(cl+3.7));
+      acc+=pc*(exp(-dot(d,d)/(s*s*g))*b);
+    }
+    col+=acc*tint;
+    // the string, its ghost rest-line, the posts
+    float su=clamp((q.x-X0)/(X1-X0),0.,1.);
+    float sy=texture(Ts,vec2(su,.5)).x;
+    float inS=smoothstep(X0-.003,X0+.003,q.x)*(1.-smoothstep(X1-.003,X1+.003,q.x));
+    float dS=(q.y-(YS+EXG*sy))*W,dR=(q.y-YS)*W;
+    col+=inS*(exp(-dS*dS/6.)*1.4+exp(-abs(dS)/5.)*.28)*vec3(1.,.85,.60);
+    col+=inS*exp(-dR*dR/3.)*vec3(.30,.36,.45)*.14;
+    // solids + rim light + cavity breathing through the shell
+    float dW=sdWall(q),dP=sdPost(q);
+    float fW=1.-smoothstep(-.0012,.0012,dW),fP=1.-smoothstep(-.0012,.0012,dP);
+    col=mix(col,vec3(.082,.092,.112),max(fW,fP));
+    float eW=exp(-abs(dW)*500.),eP=exp(-abs(dP)*500.);
+    float cpv=abs(tanh(6.*texture(Tp,uR).r));
+    col+=vec3(.40,.46,.56)*(eW*.45+eP*.45)+vec3(1.,.55,.22)*eW*cpv*.9;
+    vec2 c=q-.5;
+    col*=1.-.85*dot(c,c);
+    col+=(h21(gl_FragCoord.xy+fract(uStg.w*.61)*97.)-.5)*.014;
+  }else{
+    vec2 bb=abs(sp-vec2(W*.5))-vec2(W*.5);
+    col+=vec3(.30,.36,.45)*.12*(1.-smoothstep(-.5,1.5,abs(max(bb.x,bb.y)-1.)));
+  }
+  O=vec4(col,1.);
+}`;
+
+    /* ---------- gl plumbing ---------- */
+    function sh(t, s) {
+      const o = gl.createShader(t); gl.shaderSource(o, s); gl.compileShader(o);
+      if (!gl.getShaderParameter(o, gl.COMPILE_STATUS)) console.error(gl.getShaderInfoLog(o)); return o;
+    }
+    function prog(f) {
+      const p = gl.createProgram(); gl.attachShader(p, sh(gl.VERTEX_SHADER, VERT));
+      gl.attachShader(p, sh(gl.FRAGMENT_SHADER, f)); gl.linkProgram(p); return p;
+    }
+    const pV = prog(FV), pP = prog(FP), pS = prog(FSTR), pR = prog(FR), pQS = prog(FQS), pQC = prog(FQC);
+    const u = {
+      V: { Tv: gl.getUniformLocation(pV, 'Tv'), Tp: gl.getUniformLocation(pV, 'Tp'), Ts: gl.getUniformLocation(pV, 'Ts'), P: gl.getUniformLocation(pV, 'uPtr'), R: gl.getUniformLocation(pV, 'uR') },
+      P: { Tv: gl.getUniformLocation(pP, 'Tv'), Tp: gl.getUniformLocation(pP, 'Tp'), R: gl.getUniformLocation(pP, 'uR') },
+      S: { Ts: gl.getUniformLocation(pS, 'Ts'), Pk: gl.getUniformLocation(pS, 'uPk') },
+      R: { Tv: gl.getUniformLocation(pR, 'Tv'), Tp: gl.getUniformLocation(pR, 'Tp'), Ts: gl.getUniformLocation(pR, 'Ts'), Stg: gl.getUniformLocation(pR, 'uStg'), R: gl.getUniformLocation(pR, 'uR') },
+      QS: { Ts: gl.getUniformLocation(pQS, 'Ts') },
+      QC: { Tp: gl.getUniformLocation(pQC, 'Tp'), R: gl.getUniformLocation(pQC, 'uR') }
+    };
+    gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
+    gl.enableVertexAttribArray(0); gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
+    function tex(w, h, f, t) {
+      const o = gl.createTexture(); gl.bindTexture(gl.TEXTURE_2D, o);
+      gl.texImage2D(gl.TEXTURE_2D, 0, f, w, h, 0, gl.RGBA, t, null);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE); return o;
+    }
+    const N = 384, DT = 1 / 480, YS = .58, XA = .12, XB = .88, AUTO = 6.8, PCY = [.5, .27, .5, .73];
+    let Vc = tex(N, N, gl.RGBA16F, gl.HALF_FLOAT), Vn = tex(N, N, gl.RGBA16F, gl.HALF_FLOAT),
+      Pc = tex(N, N, gl.RGBA16F, gl.HALF_FLOAT), Pn = tex(N, N, gl.RGBA16F, gl.HALF_FLOAT),
+      Sc = tex(128, 1, gl.RGBA16F, gl.HALF_FLOAT), Sn = tex(128, 1, gl.RGBA16F, gl.HALF_FLOAT),
+      qtS = tex(1, 1, gl.RGBA8, gl.UNSIGNED_BYTE), qtC = tex(1, 1, gl.RGBA8, gl.UNSIGNED_BYTE);
+    const fb = gl.createFramebuffer();
+    const to = (t, w, h) => {
+      gl.bindFramebuffer(gl.FRAMEBUFFER, fb);
+      gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, t, 0); gl.viewport(0, 0, w, h);
+    };
+    const bind = (i, t) => { gl.activeTexture(gl.TEXTURE0 + i); gl.bindTexture(gl.TEXTURE_2D, t); };
+    const tri = () => gl.drawArrays(gl.TRIANGLES, 0, 3);
+    [Vc, Vn, Pc, Pn, Sc, Sn].forEach(t => { to(t, N, N); gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT); });
+
+    /* ---------- state ---------- */
+    let simT = 0, acc = 0, last = 0, hold = false, strumT = -9, lastManual = -9, nextPk = .9, pi = 0, pk = null, lastPkT = 0;
+    const RC = { x: .5, y: .29 };                      // resonator center — arrow keys move this
+    const keys = new Set();
+    const ptr = { x: .5, y: .5, tx: .5, ty: .5, env: 0, ph: 0 };
+    let strA = false, sLast = 0, sLastC = -9, fS = 0, xs = [];
+    let cLast = 0, cLastC = -9, fC = 0, xc = [];
+
+    /* ---------- simulation ---------- */
+    function pluck(p, a) { pk = { x: p, y: a, z: .1, w: 1 }; strumT = simT; }
+    function step() {
+      gl.useProgram(pS); bind(0, Sc); gl.uniform1i(u.S.Ts, 0);
+      gl.uniform4f(u.S.Pk, pk ? pk.x : 0, pk ? pk.y : 0, pk ? pk.z : .1, pk ? pk.w : 0);
+      to(Sn, 128, 1); tri();[Sc, Sn] = [Sn, Sc]; pk = null;
+      gl.useProgram(pV); bind(0, Vc); bind(1, Pc); bind(2, Sc);
+      gl.uniform1i(u.V.Tv, 0); gl.uniform1i(u.V.Tp, 1); gl.uniform1i(u.V.Ts, 2);
+      gl.uniform2f(u.V.R, RC.x, RC.y);
+      gl.uniform4f(u.V.P, ptr.x, ptr.y, .06 * ptr.env * Math.cos(ptr.ph), ptr.env);
+      to(Vn, N, N); tri();[Vc, Vn] = [Vn, Vc];
+      gl.useProgram(pP); bind(0, Vc); bind(1, Pc);
+      gl.uniform1i(u.P.Tv, 0); gl.uniform1i(u.P.Tp, 1); gl.uniform2f(u.P.R, RC.x, RC.y);
+      to(Pn, N, N); tri();[Pc, Pn] = [Pn, Pc];
+      ptr.env += ((hold ? 1 : 0) - ptr.env) * Math.min(1, 10 * DT);
+      ptr.x += (ptr.tx - ptr.x) * Math.min(1, 20 * DT);
+      ptr.y += (ptr.ty - ptr.y) * Math.min(1, 20 * DT);
+      ptr.ph += 6.28318 * 2.8 * DT;
+      simT += DT;
+    }
+
+    /* ---------- probes: zero crossings -> live frequencies ---------- */
+    const pbS = new Uint8Array(4), pbC = new Uint8Array(4);
+    function probeStr() {
+      gl.useProgram(pQS); bind(0, Sc); gl.uniform1i(u.QS.Ts, 0);
+      to(qtS, 1, 1); tri();
+      gl.readPixels(0, 0, 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, pbS);
+      const v = pbS[0] / 255 - .5;
+      strA = Math.abs(v) > .055;
+      if (strA && v * sLast < 0 && Math.abs(v) > .02 && Math.abs(sLast) > .02 && simT - sLastC > .06) {
+        sLastC = simT; xs.push(simT); if (xs.length > 12) xs.shift();
+        if (xs.length >= 5) {
+          const c = xs.slice(-9), f = .5 / ((c[c.length - 1] - c[0]) / (c.length - 1));
+          fS = fS ? fS * .7 + f * .3 : f;
+        }
+      }
+      sLast = v;
+    }
+    function probeCav() {
+      gl.useProgram(pQC); bind(0, Pc); gl.uniform1i(u.QC.Tp, 0); gl.uniform2f(u.QC.R, RC.x, RC.y);
+      to(qtC, 1, 1); tri();
+      gl.readPixels(0, 0, 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, pbC);
+      const v = pbC[0] / 255 - .5;
+      if (!strA && v * cLast < 0 && Math.abs(v) > .02 && Math.abs(cLast) > .02 && simT - cLastC > .05) {
+        cLastC = simT; xc.push(simT); if (xc.length > 12) xc.shift();
+        if (xc.length >= 5) {
+          const c = xc.slice(-9), f = .5 / ((c[c.length - 1] - c[0]) / (c.length - 1));
+          fC = fC ? fC * .7 + f * .3 : f;
+        }
+      }
+      cLast = v;
+    }
+
+    /* ---------- presentation ---------- */
+    function render() {
+      gl.useProgram(pR); bind(0, Vc); bind(1, Pc); bind(2, Sc);
+      gl.uniform1i(u.R.Tv, 0); gl.uniform1i(u.R.Tp, 1); gl.uniform1i(u.R.Ts, 2);
+      gl.uniform2f(u.R.R, RC.x, RC.y);
+      gl.uniform4f(u.R.Stg, offx, offy, W, simT);
+      gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+      gl.viewport(0, 0, cv.width, cv.height);
+      tri();
+    }
+
+    /* ---------- hud, resize, input ---------- */
+    const $ = i => document.getElementById(i);
+    let W = 0, offx = 0, offy = 0, lastHud = 0;
+    function resize() {
+      const d = Math.min(devicePixelRatio || 1, 2);
+      cv.width = Math.round(innerWidth * d); cv.height = Math.round(innerHeight * d);
+      W = Math.round(Math.min(cv.width, cv.height) / 2) * 2;
+      offx = (cv.width - W) / 2; offy = (cv.height - W) / 2;
+      let n = 0; for (const s of [2.6, 3.6, 5, 7.2, 10]) n += W * W / (s * s);
+      $('np').textContent = Math.round(n).toLocaleString('en-US');
+    }
+    addEventListener('resize', resize); resize();
+    function ptrSet(e) {
+      const r = cv.getBoundingClientRect(), w = Math.min(r.width, r.height);
+      const L = r.left + (r.width - w) / 2, T = r.top + (r.height - w) / 2;
+      ptr.tx = Math.min(.97, Math.max(.03, (e.clientX - L) / w));
+      ptr.ty = Math.min(.97, Math.max(.03, 1 - (e.clientY - T) / w));   // gl_FragCoord is bottom-up
+    }
+    cv.addEventListener('pointerdown', e => {
+      ptrSet(e);
+      if (ptr.tx > XA + .02 && ptr.tx < XB - .02 && Math.abs(ptr.ty - YS) < .11) {
+        pluck((ptr.tx - XA) / (XB - XA), .014); lastManual = simT;
+      } else { hold = true; try { cv.setPointerCapture(e.pointerId); } catch (_) { } }
+    });
+    cv.addEventListener('pointermove', e => { if (hold) ptrSet(e); });
+    addEventListener('pointerup', () => hold = false);
+    addEventListener('pointercancel', () => hold = false);
+    addEventListener('contextmenu', e => e.preventDefault());
+    addEventListener('keydown', e => {
+      if (e.code === 'Space') {
+        e.preventDefault();
+        if (performance.now() - lastPkT > 140) { pluck(.5, .012); lastManual = simT; lastPkT = performance.now(); }
+      }
+      else if (e.code.startsWith('Arrow')) { e.preventDefault(); keys.add(e.code); }
+    });
+    addEventListener('keyup', e => keys.delete(e.code));
+    addEventListener('blur', () => keys.clear());
+    function syncHud() {
+      $('fs').textContent = (strA && fS > 0) ? Math.round(fS * 229 / 10) * 10 + ' Hz' : '—';
+      const cav = simT - cLastC < .9 && fC > 0;
+      $('fr').textContent = cav ? '≈ ' + Math.round(fC * 229 / 10) * 10 + ' Hz' : '—';
+      let t = 'quiet', c = '#66707d';
+      if (simT - strumT < .45) { t = 'strummed'; c = '#ffb066'; }
+      else if (strA) { t = 'string rings'; c = '#ffb066'; }
+      else if (cav) { t = 'resonator rings'; c = '#66d6de'; }
+      $('sx').textContent = t; $('sx').style.color = c; $('st').style.background = c;
+    }
+    function frame(ms) {
+      requestAnimationFrame(frame);
+      const now = ms * .001, dt = Math.min(now - last, .1); last = now;
+      let kx = 0, ky = 0;
+      if (keys.has('ArrowLeft')) kx--; if (keys.has('ArrowRight')) kx++;
+      if (keys.has('ArrowUp')) ky++; if (keys.has('ArrowDown')) ky--;
+      if (kx || ky) {
+        RC.x = Math.min(.81, Math.max(.19, RC.x + kx * .3 * dt));
+        RC.y = Math.min(.385, Math.max(.12, RC.y + ky * .3 * dt));
+      }
+      if (simT >= nextPk) {                                   // attract mode: strums itself when idle
+        if (simT - lastManual > 5) { pluck(PCY[pi++ % PCY.length], .012); nextPk = simT + AUTO; }
+        else nextPk = simT + 1.2;
+      }
+      acc += dt; let n = 0;
+      while (acc >= DT && n < 8) { step(); acc -= DT; n++; }
+      if (n === 8) acc = 0;
+      probeStr(); probeCav(); render();
+      if (ms - lastHud > 160) { lastHud = ms; syncHud(); }
+    }
+    requestAnimationFrame(frame);
+  </script>
+</body>
+
+</html>

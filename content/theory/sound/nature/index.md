@@ -44,3 +44,7 @@ Acoustic vibrations propagate as mechanical waves of pressure in a transmission 
 
 
 <youtube-embed video="24yESm63tSY" />
+
+![](./absorption.jpg)
+
+![](./Audio-Frequency-Spectrum-Explained.jpg)

@@ -64,7 +64,7 @@ function changeRatio(drag) {
 </script>
 
 <template lang="pug">
-.flex.flex-col.fullscreen-container.select-none#screen.z-100.gap-4
+.flex.flex-col.fullscreen-container.select-none#screen.z-100.gap-4.h-100dvh
 
   .flex.flex-wrap.items-center.p-4.gap-2.w-full
     .font-bold.text-xl.flex-auto Monochord Lab

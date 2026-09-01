@@ -47,12 +47,12 @@ export function useString(name = 'string' + Math.floor(Math.random() * 300)) {
     let delTimeSamps = el.ms2samps(el.mul(el.div(1, freq), 1000))
 
     // 3. Excitation: Gentler noise burst for a natural string character
-    let adsr = el.adsr(0.02, 0.3, 0.7, 1.0, midiCV['string:trigger'])
+    let adsr = el.adsr(0.02, 0.2, 0.9, 1.0, midiCV['string:trigger'])
     let noise = el.noise()
     let excitation = el.mul(adsr, noise, midiCV['string:velocity'])
 
     // FIXED: Q of 0.7 is much more natural than 6. Cutoff at 2x freq removes harshness.
-    let filteredExcitation = el.lowpass(el.mul(freq, 2), 0.7, excitation)
+    let filteredExcitation = el.lowpass(el.mul(freq, 6), 0.7, excitation)
 
     // 4. Delay line with damping
     let dlRaw = el.delay(
@@ -64,7 +64,7 @@ export function useString(name = 'string' + Math.floor(Math.random() * 300)) {
 
     // FIXED: Simulate string high-frequency energy loss by filtering the delay output.
     // Cutoff scales with frequency but has a fixed floor (800Hz) to avoid muddiness on low notes.
-    let dampedDelay = el.lowpass(el.add(el.mul(freq, 3), 800), 0.7, dlRaw)
+    let dampedDelay = el.lowpass(el.add(el.mul(freq, 3), 800), 1.7, dlRaw)
 
     // 5. Body Resonance (Formants)
     // FIXED: Acoustic instruments have relatively fixed body resonances. 

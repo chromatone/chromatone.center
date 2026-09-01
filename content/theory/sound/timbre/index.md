@@ -22,6 +22,10 @@ Many commentators have attempted to decompose timbre into component attributes. 
 - Changes both of spectral envelope (formant-glide) and fundamental frequency (micro-intonation)
 - Prefix, or onset of a sound, quite dissimilar to the ensuing lasting vibration
 
+<iframe width="100%" height="400" src="/demo/membrane.html">Membrane simulation demo</iframe>
+
+[Membrane simulation](/demo/membrane.html){target="_self"}
+
 ## Amplitude envelope
 
 ![](./adsr.svg)

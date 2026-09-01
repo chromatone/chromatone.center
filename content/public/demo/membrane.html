@@ -1,0 +1,593 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>MEMBRANE — resonant modes</title>
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      overflow: hidden;
+      height: 100%;
+    }
+
+    canvas {
+      display: block;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .ui {
+      position: fixed;
+      font-family: 'Courier New', monospace;
+      color: #cfead0;
+      user-select: none;
+      pointer-events: none;
+      text-shadow: 0 0 6px rgba(120, 255, 170, .35);
+    }
+
+    .ui a,
+    .ui button {
+      pointer-events: auto;
+    }
+
+    #title {
+      top: 14px;
+      left: 16px;
+      font-size: 15px;
+      letter-spacing: 3px;
+      opacity: .85;
+    }
+
+    #title b {
+      color: #ffd76a;
+      text-shadow: 0 0 8px rgba(255, 200, 80, .5);
+    }
+
+    #hud {
+      bottom: 14px;
+      left: 16px;
+      font-size: 11px;
+      line-height: 1.55;
+      max-width: 520px;
+      background: rgba(0, 10, 6, .35);
+      padding: 10px 12px;
+      border: 1px solid rgba(140, 255, 180, .15);
+      border-radius: 4px;
+    }
+
+    #hud.hidden {
+      display: none;
+    }
+
+    #hud .row {
+      opacity: .9
+    }
+
+    #hud .dim {
+      opacity: .55
+    }
+
+    #ratios {
+      margin-top: 6px;
+      font-size: 10px;
+      opacity: .8;
+      letter-spacing: .5px;
+    }
+
+    #controls {
+      top: 14px;
+      right: 16px;
+      display: flex;
+      gap: 6px;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+
+    button {
+      pointer-events: auto;
+      background: rgba(0, 20, 12, .5);
+      color: #cfead0;
+      border: 1px solid rgba(140, 255, 180, .35);
+      font-family: inherit;
+      font-size: 11px;
+      padding: 6px 10px;
+      border-radius: 3px;
+      cursor: pointer;
+      letter-spacing: 1px;
+    }
+
+    button:hover {
+      background: rgba(120, 255, 180, .15);
+    }
+
+    button.active {
+      background: rgba(255, 215, 106, .18);
+      border-color: rgba(255, 215, 106, .6);
+      color: #ffe9a8;
+    }
+
+    #modelabel {
+      position: fixed;
+      top: 44px;
+      right: 16px;
+      font-family: monospace;
+      font-size: 11px;
+      color: #ffd76a;
+      opacity: .85;
+      letter-spacing: 2px;
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="gl"></canvas>
+  <div class="ui" id="title">MEMBRANE <b>//</b> struck-drum &amp; Chladni-plate resonant modes</div>
+  <div class="ui" id="modelabel"></div>
+  <div class="ui" id="controls">
+    <button id="btnMode">TAB — switch DRUM / PLATE</button>
+    <button id="btnMute">right-click / M — mute</button>
+    <button id="btnReset">R — reset</button>
+    <button id="btnHud">H — toggle info</button>
+  </div>
+  <div class="ui" id="hud">
+    <div class="row"><b>click</b> the membrane to strike it &nbsp;·&nbsp; <b>space</b> = center strike &nbsp;·&nbsp;
+      drag while clicking for multiple hits</div>
+    <div class="row dim">Each particle rides the height field of a real 2nd-order wave equation (drum, rim clamped =
+      rigid boundary) or a 4th-order plate (biharmonic) equation (Chladni). Forces propagate cell-to-cell exactly like
+      a mass-spring membrane — the particle swarm just visualizes the continuous field.</div>
+    <div id="ratios"></div>
+  </div>
+  <script>
+    "use strict";
+    const canvas = document.getElementById('gl');
+    const gl = canvas.getContext('webgl2', { antialias: false, alpha: false, depth: false, stencil: false, preserveDrawingBuffer: false });
+    if (!gl) { document.body.innerHTML = '<div class="ui" style="top:40%;left:40%;font-size:16px">WebGL2 not available.</div>'; throw new Error('no webgl2'); }
+    if (!gl.getExtension('EXT_color_buffer_float')) {
+      document.body.innerHTML = '<div class="ui" style="top:40%;left:40%;font-size:16px">Float framebuffers unsupported on this GPU/driver.</div>';
+      throw new Error('no float fbo');
+    }
+
+    // ---------- tunables ----------
+    const SIM_N = 256;     // simulation grid (drum / plate PDE)
+    const PART_N = 1280;    // particle swarm is PART_N*PART_N ≈ 1.64M points
+    const DOMAIN_SCALE = 1.8, VIEW_SCALE = 0.85, TILT = 0.35, Y_OFFSET = 0.03;
+
+    // ---------- gl helpers ----------
+    function compile(type, src) {
+      const s = gl.createShader(type);
+      gl.shaderSource(s, src); gl.compileShader(s);
+      if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) console.error(gl.getShaderInfoLog(s), src);
+      return s;
+    }
+    function link(vs, fs) {
+      const p = gl.createProgram();
+      gl.attachShader(p, compile(gl.VERTEX_SHADER, vs));
+      gl.attachShader(p, compile(gl.FRAGMENT_SHADER, fs));
+      gl.linkProgram(p);
+      if (!gl.getProgramParameter(p, gl.LINK_STATUS)) console.error(gl.getProgramInfoLog(p));
+      return p;
+    }
+    function makeTex(w, h, internalFormat, format, type, filter) {
+      const t = gl.createTexture();
+      gl.bindTexture(gl.TEXTURE_2D, t);
+      gl.texImage2D(gl.TEXTURE_2D, 0, internalFormat, w, h, 0, format, type, null);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, filter);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, filter);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+      return t;
+    }
+    function makeFBO(tex) {
+      const f = gl.createFramebuffer();
+      gl.bindFramebuffer(gl.FRAMEBUFFER, f);
+      gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, tex, 0);
+      gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+      return f;
+    }
+    function bindTex(program, name, tex, unit) {
+      gl.activeTexture(gl.TEXTURE0 + unit);
+      gl.bindTexture(gl.TEXTURE_2D, tex);
+      gl.uniform1i(gl.getUniformLocation(program, name), unit);
+    }
+    function u1f(p, n, v) { gl.uniform1f(gl.getUniformLocation(p, n), v); }
+    function u2f(p, n, a, b) { gl.uniform2f(gl.getUniformLocation(p, n), a, b); }
+    function drawTri() { gl.drawArrays(gl.TRIANGLES, 0, 3); }
+
+    // ---------- shaders ----------
+    const VS_QUAD = `#version 300 es
+void main(){
+  vec2 p = vec2(float((gl_VertexID<<1)&2), float(gl_VertexID&2));
+  gl_Position = vec4(p*2.0-1.0, 0.0, 1.0);
+}`;
+
+    const FS_LAP = `#version 300 es
+precision highp float;
+uniform sampler2D uState; uniform vec2 uRes;
+out vec4 outColor;
+void main(){
+  ivec2 p = ivec2(gl_FragCoord.xy);
+  ivec2 r = ivec2(uRes) - 1;
+  float l  = texelFetch(uState, ivec2(max(p.x-1,0), p.y), 0).r;
+  float rr = texelFetch(uState, ivec2(min(p.x+1,r.x), p.y), 0).r;
+  float d  = texelFetch(uState, ivec2(p.x, max(p.y-1,0)), 0).r;
+  float up = texelFetch(uState, ivec2(p.x, min(p.y+1,r.y)), 0).r;
+  float c  = texelFetch(uState, p, 0).r;
+  outColor = vec4(l+rr+d+up-4.0*c, 0.0, 0.0, 1.0);
+}`;
+
+    // height-field wave sim. r=h(t) g=h(t-1) b=slow amplitude envelope (drives Chladni sand)
+    const FS_UPDATE = `#version 300 es
+precision highp float;
+uniform sampler2D uState; uniform sampler2D uLap; uniform vec2 uRes;
+uniform float uMode, uTime, uDampBase, uK;
+uniform vec2 uStrikePos; uniform float uStrikeTime, uStrikeStrength, uMuteTime;
+out vec4 outColor;
+void main(){
+  ivec2 p = ivec2(gl_FragCoord.xy);
+  ivec2 r = ivec2(uRes) - 1;
+  vec2 uv = (vec2(p)+0.5)/uRes;
+  vec3 st = texelFetch(uState, p, 0).rgb;
+  float h = st.r, hPrev = st.g, env = st.b;
+
+  float l  = texelFetch(uState, ivec2(max(p.x-1,0), p.y), 0).r;
+  float rr = texelFetch(uState, ivec2(min(p.x+1,r.x), p.y), 0).r;
+  float d  = texelFetch(uState, ivec2(p.x, max(p.y-1,0)), 0).r;
+  float up = texelFetch(uState, ivec2(p.x, min(p.y+1,r.y)), 0).r;
+  float sum4 = l+rr+d+up;
+
+  float hNext;
+  if(uMode < 0.5){
+    // classic stable 2nd-order membrane (drum): h' = avg(neighbors) - h_prev
+    hNext = sum4*0.5 - hPrev;
+  } else {
+    // 4th-order plate (biharmonic): h' = 2h - h_prev - k*lap(lap(h))
+    float ll  = texelFetch(uLap, ivec2(max(p.x-1,0), p.y), 0).r;
+    float lrr = texelFetch(uLap, ivec2(min(p.x+1,r.x), p.y), 0).r;
+    float ld  = texelFetch(uLap, ivec2(p.x, max(p.y-1,0)), 0).r;
+    float lu  = texelFetch(uLap, ivec2(p.x, min(p.y+1,r.y)), 0).r;
+    float lc  = texelFetch(uLap, p, 0).r;
+    float biharm = ll+lrr+ld+lu-4.0*lc;
+    hNext = 2.0*h - hPrev - uK*biharm;
+  }
+
+  float damp = uDampBase;
+  float ma = uTime - uMuteTime;
+  if(ma >= 0.0 && ma < 0.4) damp = mix(0.80, uDampBase, ma/0.4);
+  hNext *= damp;
+
+  float sa = uTime - uStrikeTime;
+  if(sa >= 0.0 && sa < 0.09){
+    float dist = distance(uv, uStrikePos);
+    float g = exp(-dist*dist*1800.0);
+    hNext += uStrikeStrength*g*(1.0 - sa/0.09);
+  }
+
+  if(uMode < 0.5){
+    float dc = distance(uv, vec2(0.5));
+    float mask = 1.0 - smoothstep(0.46, 0.495, dc);
+    hNext *= mask;
+  }
+
+  if(!(hNext > -30.0 && hNext < 30.0)) hNext = 0.0;
+  hNext = clamp(hNext, -3.0, 3.0);
+  float newEnv = env*0.985 + abs(hNext)*0.015;
+  outColor = vec4(hNext, h, newEnv, 1.0);
+}`;
+
+    const FS_INITPOS = `#version 300 es
+precision highp float;
+uniform vec2 uPartRes; out vec4 outColor;
+void main(){ outColor = vec4(gl_FragCoord.xy/uPartRes, 0.0, 1.0); }`;
+
+    const FS_UPDATEPOS = `#version 300 es
+precision highp float;
+uniform sampler2D uPos; uniform sampler2D uState; uniform vec2 uPartRes;
+uniform float uMode, uTime;
+out vec4 outColor;
+float hash(vec2 p){ return fract(sin(dot(p, vec2(41.3,289.1)))*43758.5453); }
+void main(){
+  ivec2 p = ivec2(gl_FragCoord.xy);
+  vec2 home = (vec2(p)+0.5) / uPartRes;
+  vec2 pos = texelFetch(uPos, p, 0).rg;
+  if(uMode < 0.5){
+    pos = mix(pos, home, 0.08); // membrane fabric: stays put on the grid, only height moves
+  } else {
+    // Chladni sand: crawl away from local vibration energy, settle on nodal lines
+    float e = 0.004;
+    float aX1 = texture(uState, clamp(pos+vec2(e,0.0),0.001,0.999)).b;
+    float aX0 = texture(uState, clamp(pos-vec2(e,0.0),0.001,0.999)).b;
+    float aY1 = texture(uState, clamp(pos+vec2(0.0,e),0.001,0.999)).b;
+    float aY0 = texture(uState, clamp(pos-vec2(0.0,e),0.001,0.999)).b;
+    float aC  = texture(uState, pos).b;
+    vec2 grad = vec2(aX1-aX0, aY1-aY0) / (2.0*e);
+    vec2 jitter = (vec2(hash(pos+uTime), hash(pos.yx+uTime*1.7)) - 0.5) * 0.002 * (0.15+aC);
+    pos += -grad*0.00035 + jitter + (home-pos)*0.0008;
+    pos = clamp(pos, 0.002, 0.998);
+  }
+  outColor = vec4(pos, 0.0, 1.0);
+}`;
+
+    const VS_PARTICLE = `#version 300 es
+precision highp float;
+uniform sampler2D uPos; uniform sampler2D uState;
+uniform float uPartW, uMode, uInvAspect;
+out vec3 vColor; out float vAmp;
+void main(){
+  int idx = gl_VertexID;
+  int w = int(uPartW);
+  ivec2 tc = ivec2(idx % w, idx / w);
+  vec2 pos = texelFetch(uPos, tc, 0).rg;
+  vec3 st = texture(uState, pos).rgb;
+  float h = st.r, env = st.b;
+
+  float dc = distance(pos, vec2(0.5));
+  bool hide = (uMode < 0.5 && dc > 0.495);
+
+  float heightScale = mix(0.5, 0.12, uMode);
+  vec2 world = (pos - 0.5) * ${DOMAIN_SCALE.toFixed(2)};
+  float z = h * heightScale;
+  float tiltY = world.y*cos(${TILT.toFixed(2)}) - z*sin(${TILT.toFixed(2)});
+  gl_Position = vec4(world.x*${VIEW_SCALE.toFixed(2)}*uInvAspect, tiltY*${VIEW_SCALE.toFixed(2)} + ${Y_OFFSET.toFixed(2)}, 0.0, 1.0);
+  if(hide) gl_Position = vec4(2.0,2.0,0.0,1.0);
+
+  float amp = clamp(abs(h)*2.0, 0.0, 1.0);
+  float calm = clamp(1.0-env*3.0, 0.0, 1.0);
+  vec3 drumColor  = mix(vec3(0.12,0.28,0.95), vec3(1.0,0.75,0.15), clamp(h*1.5+0.5,0.0,1.0));
+  vec3 plateColor = mix(vec3(0.15,0.06,0.05), vec3(1.0,0.96,0.85), calm);
+  vColor = mix(drumColor, plateColor, uMode);
+  vAmp = mix(amp, calm, uMode);
+  gl_PointSize = 1.2 + vAmp*3.5;
+}`;
+
+    const FS_PARTICLE = `#version 300 es
+precision highp float;
+in vec3 vColor; in float vAmp; out vec4 outColor;
+void main(){
+  vec2 d = gl_PointCoord - 0.5;
+  float rr = dot(d,d);
+  if(rr > 0.25) discard;
+  float a = smoothstep(0.25,0.0,rr) * (0.25 + vAmp*0.65);
+  outColor = vec4(vColor*a, a);
+}`;
+
+    const FS_FADE = `#version 300 es
+precision highp float;
+out vec4 outColor;
+void main(){ outColor = vec4(0.0,0.0,0.0,0.16); }`;
+
+    const VS_RIM = `#version 300 es
+uniform float uMode, uInvAspect;
+void main(){
+  float t = float(gl_VertexID) / 64.0;
+  vec2 p;
+  if(uMode < 0.5){
+    float ang = t*6.28318530718;
+    p = vec2(cos(ang), sin(ang)) * 0.49;
+  } else {
+    float tt = fract(t*4.0);
+    float side = floor(t*4.0);
+    if(side < 0.5)      p = vec2(-0.49+tt*0.98, -0.49);
+    else if(side < 1.5) p = vec2(0.49, -0.49+tt*0.98);
+    else if(side < 2.5) p = vec2(0.49-tt*0.98, 0.49);
+    else                 p = vec2(-0.49, 0.49-tt*0.98);
+  }
+  vec2 world = p * ${DOMAIN_SCALE.toFixed(2)};
+  float tiltY = world.y*cos(${TILT.toFixed(2)});
+  gl_Position = vec4(world.x*${VIEW_SCALE.toFixed(2)}*uInvAspect, tiltY*${VIEW_SCALE.toFixed(2)}+${Y_OFFSET.toFixed(2)}, 0.0, 1.0);
+}`;
+    const FS_RIM = `#version 300 es
+precision highp float; out vec4 outColor;
+void main(){ outColor = vec4(0.85,0.7,0.35,0.5); }`;
+
+    // ---------- programs ----------
+    const progLap = link(VS_QUAD, FS_LAP);
+    const progUpdate = link(VS_QUAD, FS_UPDATE);
+    const progInitPos = link(VS_QUAD, FS_INITPOS);
+    const progUpdatePos = link(VS_QUAD, FS_UPDATEPOS);
+    const progRender = link(VS_PARTICLE, FS_PARTICLE);
+    const progFade = link(VS_QUAD, FS_FADE);
+    const progRim = link(VS_RIM, FS_RIM);
+
+    // ---------- textures / fbos ----------
+    const simTex = [
+      makeTex(SIM_N, SIM_N, gl.RGBA16F, gl.RGBA, gl.HALF_FLOAT, gl.LINEAR),
+      makeTex(SIM_N, SIM_N, gl.RGBA16F, gl.RGBA, gl.HALF_FLOAT, gl.LINEAR)
+    ];
+    const simFBO = [makeFBO(simTex[0]), makeFBO(simTex[1])];
+    const lapTex = makeTex(SIM_N, SIM_N, gl.R16F, gl.RED, gl.HALF_FLOAT, gl.NEAREST);
+    const lapFBO = makeFBO(lapTex);
+
+    const posTex = [
+      makeTex(PART_N, PART_N, gl.RGBA16F, gl.RGBA, gl.HALF_FLOAT, gl.NEAREST),
+      makeTex(PART_N, PART_N, gl.RGBA16F, gl.RGBA, gl.HALF_FLOAT, gl.NEAREST)
+    ];
+    const posFBO = [makeFBO(posTex[0]), makeFBO(posTex[1])];
+
+    let curSim = 0, curPos = 0;
+
+    function clearSimBuffers() {
+      gl.clearColor(0, 0, 0, 1);
+      gl.bindFramebuffer(gl.FRAMEBUFFER, simFBO[0]); gl.viewport(0, 0, SIM_N, SIM_N); gl.clear(gl.COLOR_BUFFER_BIT);
+      gl.bindFramebuffer(gl.FRAMEBUFFER, simFBO[1]); gl.viewport(0, 0, SIM_N, SIM_N); gl.clear(gl.COLOR_BUFFER_BIT);
+      gl.bindFramebuffer(gl.FRAMEBUFFER, lapFBO); gl.viewport(0, 0, SIM_N, SIM_N); gl.clear(gl.COLOR_BUFFER_BIT);
+    }
+    function initParticlePositions() {
+      gl.useProgram(progInitPos);
+      u2f(progInitPos, 'uPartRes', PART_N, PART_N);
+      gl.bindFramebuffer(gl.FRAMEBUFFER, posFBO[0]); gl.viewport(0, 0, PART_N, PART_N); drawTri();
+      gl.bindFramebuffer(gl.FRAMEBUFFER, posFBO[1]); gl.viewport(0, 0, PART_N, PART_N); drawTri();
+    }
+    clearSimBuffers();
+    initParticlePositions();
+
+    // ---------- state ----------
+    let mode = 0;              // 0 drum, 1 plate
+    let simTime = 0.3;          // starts >0 so the initial auto-strike below fires almost immediately
+    let strikePos = [0.5, 0.5], strikeTime = 0.0, strikeStrength = 1.0;
+    let muteTime = -10;
+    let invAspect = 1;
+
+    function strikeAt(x, y, strength) {
+      strikePos = [Math.min(Math.max(x, 0.02), 0.98), Math.min(Math.max(y, 0.02), 0.98)];
+      strikeTime = simTime;
+      strikeStrength = strength || (0.75 + Math.random() * 0.35);
+    }
+    function mute() { muteTime = simTime; }
+    function resetAll() { clearSimBuffers(); initParticlePositions(); }
+    function setMode(m) {
+      mode = m;
+      resetAll();
+      document.getElementById('modelabel').textContent = mode < 0.5 ? 'MODE: DRUM (membrane)' : 'MODE: CHLADNI PLATE';
+      document.getElementById('btnMode').classList.toggle('active', mode > 0.5);
+    }
+    setMode(0);
+    strikeAt(0.5, 0.5, 1.0);
+
+    document.getElementById('ratios').innerHTML =
+      'Drum harmonics are <b>inharmonic</b> — mode (m,n) frequency ratio = zero<sub>m,n</sub> of Bessel J<sub>m</sub> / zero<sub>0,1</sub>:<br>' +
+      '(0,1)=1.00&nbsp; (1,1)=1.59&nbsp; (2,1)=2.14&nbsp; (0,2)=2.30&nbsp; (3,1)=2.65&nbsp; (1,2)=2.92&nbsp; (4,1)=3.16&nbsp; (2,2)=3.50 ' +
+      '<span class="dim">— unlike a string\'s clean 1,2,3,4…, which is why drums sound "thuddy" not tonal.</span><br>' +
+      'Chladni plate modes (m,n) roughly scale with (m&sup2;+n&sup2;) for an idealized plate; sand piles on the nodal ' +
+      'lines where vibration amplitude is zero — click off-center vs. center to compare symmetric vs. skewed patterns.';
+
+    // ---------- screen <-> membrane coordinate mapping (must mirror VS_PARTICLE/VS_RIM math) ----------
+    function screenToPos(clientX, clientY) {
+      const rect = canvas.getBoundingClientRect();
+      const cx = ((clientX - rect.left) / rect.width) * 2 - 1;
+      const cy = -(((clientY - rect.top) / rect.height) * 2 - 1);
+      const ia = rect.height / rect.width;
+      const worldX = cx / (VIEW_SCALE * ia);
+      const tiltY = (cy - Y_OFFSET) / VIEW_SCALE;
+      const worldY = tiltY / Math.cos(TILT);
+      return [worldX / DOMAIN_SCALE + 0.5, worldY / DOMAIN_SCALE + 0.5];
+    }
+
+    // ---------- input ----------
+    let dragging = false;
+    canvas.addEventListener('pointerdown', e => {
+      if (e.button === 2) return;
+      dragging = true;
+      const [x, y] = screenToPos(e.clientX, e.clientY);
+      strikeAt(x, y);
+    });
+    canvas.addEventListener('pointermove', e => {
+      if (!dragging) return;
+      const [x, y] = screenToPos(e.clientX, e.clientY);
+      if (simTime - strikeTime > 0.1) strikeAt(x, y, 0.5);
+    });
+    window.addEventListener('pointerup', () => dragging = false);
+    canvas.addEventListener('contextmenu', e => { e.preventDefault(); mute(); });
+    window.addEventListener('keydown', e => {
+      if (e.key === ' ') { e.preventDefault(); strikeAt(0.5, 0.5); }
+      else if (e.key === 'm' || e.key === 'M') mute();
+      else if (e.key === 'Tab') { e.preventDefault(); setMode(mode < 0.5 ? 1 : 0); }
+      else if (e.key === 'r' || e.key === 'R') resetAll();
+      else if (e.key === 'h' || e.key === 'H') document.getElementById('hud').classList.toggle('hidden');
+    });
+    document.getElementById('btnMode').onclick = () => setMode(mode < 0.5 ? 1 : 0);
+    document.getElementById('btnMute').onclick = mute;
+    document.getElementById('btnReset').onclick = resetAll;
+    document.getElementById('btnHud').onclick = () => document.getElementById('hud').classList.toggle('hidden');
+
+    // ---------- resize ----------
+    function resize() {
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      canvas.width = Math.floor(innerWidth * dpr);
+      canvas.height = Math.floor(innerHeight * dpr);
+      invAspect = canvas.height / canvas.width;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    // ---------- main loop ----------
+    gl.enable(gl.BLEND);
+    gl.clearColor(0, 0, 0, 1);
+    gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    gl.clear(gl.COLOR_BUFFER_BIT);
+
+    const DAMP_BASE = 0.996;   // membrane energy loss per frame -> rings out over a few seconds
+    const K_PLATE = 0.022;     // biharmonic stiffness (small: 4th-order scheme is stiff, keep conservative)
+
+    function frame() {
+      simTime += 1 / 60;
+
+      // 1. laplacian (feeds the plate's biharmonic term; cheap, always run)
+      gl.bindFramebuffer(gl.FRAMEBUFFER, lapFBO);
+      gl.viewport(0, 0, SIM_N, SIM_N);
+      gl.disable(gl.BLEND);
+      gl.useProgram(progLap);
+      bindTex(progLap, 'uState', simTex[curSim], 0);
+      u2f(progLap, 'uRes', SIM_N, SIM_N);
+      drawTri();
+
+      // 2. sim update (ping-pong)
+      const otherSim = 1 - curSim;
+      gl.bindFramebuffer(gl.FRAMEBUFFER, simFBO[otherSim]);
+      gl.viewport(0, 0, SIM_N, SIM_N);
+      gl.useProgram(progUpdate);
+      bindTex(progUpdate, 'uState', simTex[curSim], 0);
+      bindTex(progUpdate, 'uLap', lapTex, 1);
+      u2f(progUpdate, 'uRes', SIM_N, SIM_N);
+      u1f(progUpdate, 'uMode', mode);
+      u1f(progUpdate, 'uTime', simTime);
+      u1f(progUpdate, 'uDampBase', DAMP_BASE);
+      u1f(progUpdate, 'uK', K_PLATE);
+      u2f(progUpdate, 'uStrikePos', strikePos[0], strikePos[1]);
+      u1f(progUpdate, 'uStrikeTime', strikeTime);
+      u1f(progUpdate, 'uStrikeStrength', strikeStrength);
+      u1f(progUpdate, 'uMuteTime', muteTime);
+      drawTri();
+      curSim = otherSim;
+
+      // 3. particle position update (ping-pong)
+      const otherPos = 1 - curPos;
+      gl.bindFramebuffer(gl.FRAMEBUFFER, posFBO[otherPos]);
+      gl.viewport(0, 0, PART_N, PART_N);
+      gl.useProgram(progUpdatePos);
+      bindTex(progUpdatePos, 'uPos', posTex[curPos], 0);
+      bindTex(progUpdatePos, 'uState', simTex[curSim], 1);
+      u2f(progUpdatePos, 'uPartRes', PART_N, PART_N);
+      u1f(progUpdatePos, 'uMode', mode);
+      u1f(progUpdatePos, 'uTime', simTime);
+      drawTri();
+      curPos = otherPos;
+
+      // 4. render
+      gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+      gl.viewport(0, 0, canvas.width, canvas.height);
+      gl.enable(gl.BLEND);
+
+      // phosphor-persistence fade instead of a hard clear -> trails, like a strobing high-speed camera
+      gl.useProgram(progFade);
+      gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+      drawTri();
+
+      // rigid rim outline
+      gl.useProgram(progRim);
+      u1f(progRim, 'uMode', mode);
+      u1f(progRim, 'uInvAspect', invAspect);
+      gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+      gl.drawArrays(gl.LINE_LOOP, 0, 64);
+
+      // particle swarm
+      gl.useProgram(progRender);
+      bindTex(progRender, 'uPos', posTex[curPos], 0);
+      bindTex(progRender, 'uState', simTex[curSim], 1);
+      u1f(progRender, 'uPartW', PART_N);
+      u1f(progRender, 'uMode', mode);
+      u1f(progRender, 'uInvAspect', invAspect);
+      gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
+      gl.drawArrays(gl.POINTS, 0, PART_N * PART_N);
+
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  </script>
+</body>
+
+</html>

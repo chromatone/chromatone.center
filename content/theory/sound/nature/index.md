@@ -20,11 +20,13 @@ Acoustic vibrations propagate as mechanical waves of pressure in a transmission 
 
 <iframe width="100%" height="400" src="/demo/sound-wave.html">Wave demo</iframe>
 
-<a href="/demo/sound-wave.html">Wave demo</a>
+[Wave demo](/demo/sound-wave.html){target="_self"}
 
 https://auditoryneuroscience.com/ear/dancing_hair_cell
 
 <iframe width="100%" height="400" src="/demo/simulation.html">Simulation demo</iframe>
+
+[Simulation demo](/demo/simulation.html){target="_self"}
 
 <youtube-embed video="XLfQpv2ZRPU" />
 

@@ -147,7 +147,7 @@ body {
   overflow-x: scroll;
   overflow-y: hidden;
   scroll-padding: 2rem;
-  scroll-snap-type: x mandatory;
+  scroll-snap-type: x proximity;
   scroll-behavior: smooth;
   z-index: 200;
 }

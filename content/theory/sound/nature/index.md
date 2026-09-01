@@ -22,7 +22,7 @@ Acoustic vibrations propagate as mechanical waves of pressure in a transmission 
 
 <a href="/demo/sound-wave.html">Wave demo</a>
 
-
+https://auditoryneuroscience.com/ear/dancing_hair_cell
 
 <iframe width="100%" height="400" src="/demo/simulation.html">Simulation demo</iframe>
 
@@ -31,6 +31,10 @@ Acoustic vibrations propagate as mechanical waves of pressure in a transmission 
 ![](./Spherical_pressure_waves.gif)
 
 <youtube-embed video="px3oVGXr4mo" />
+
+
+<youtube-embed video="b_3AngVJzp8" />
+
 
 ## Acoustic vibrations
 

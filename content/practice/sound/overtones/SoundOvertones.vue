@@ -35,35 +35,18 @@ const sound = reactive({
 
     const { channel } = createAudioChannel('overtones')
     sine = new Synth({
-      oscillator: {
-        type: 'sine',
-      },
+      oscillator: { type: 'sine' },
       volume: -10,
-      envelope: {
-        attack: 0.1,
-        decay: 0.01,
-        sustain: 1,
-        release: 4,
-      },
+      envelope: { attack: 0.1, decay: 0.01, sustain: 1, release: 4 },
     }).connect(channel)
     saw = new Synth({
-      oscillator: {
-        type: 'sawtooth8',
-      },
+      oscillator: { type: 'sawtooth8' },
       volume: -10,
-      envelope: {
-        attack: 0.1,
-        decay: 0.01,
-        sustain: 1,
-        release: 4,
-      },
+      envelope: { attack: 0.1, decay: 0.01, sustain: 1, release: 4 },
     }).connect(channel)
   },
   playSaw(note) {
-    if (!sound.enabled) {
-      sound.init()
-      return null
-    }
+    if (!sound.enabled) { sound.init(); return null }
     saw.triggerAttack(note)
   },
   stopSaw() {
@@ -71,10 +54,7 @@ const sound = reactive({
     saw.triggerRelease()
   },
   play(note, order) {
-    if (!sound.enabled) {
-      sound.init()
-      return null
-    }
+    if (!sound.enabled) { sound.init(); return null }
     saw.volume.rampTo(-10 - 100 * order, 0.01)
     sine.triggerAttack(note, '+0.1', (overtones.count - order) / overtones.count)
   },
@@ -92,9 +72,7 @@ const sound = reactive({
 const { timestamp, pause, resume } = useTimestamp({ controls: true, offset: -Date.now() })
 
 const time = reactive({
-  phase: computed(() => {
-    return time.speed * (timestamp.value / 100) % 100 / 100
-  }),
+  phase: computed(() => (time.speed * (timestamp.value / 100) % 100) / 100),
   speed: 1,
   move: true,
 })
@@ -107,28 +85,29 @@ const fundamental = reactive({
   pitch: 0,
   octave: useStorage('overtones-octave', 2),
   frequency: computed(() => pitchFreq(globalScale.tonic, fundamental.octave)),
-  points: computed(() => {
-    let points = []
+  position: computed(() => {
     const totalRows = overtones.count + 1
     const rowHeight = (box.height - box.padY) / totalRows
+    return box.height - 0.5 * rowHeight
+  }),
+  points: computed(() => {
+    const totalRows = overtones.count + 1
+    const rowHeight = (box.height - box.padY) / totalRows
+    let points = []
     for (let pos = 0; pos <= box.width; pos += 1) {
       let sum = 0
       for (let partial = 1; partial <= overtones.count; partial++) {
         sum = sum + calcWave(partial, pos, time.phase) / (Math.exp(partial / 2 + 1))
       }
-      // Scale to fit nicely within the top row (max sum is ~0.56, so 1.5x keeps it under rowHeight)
-      let y = rowHeight * 1.5 * sum
+      // Scaled to stay prominent but contained within the bottom row
+      let y = rowHeight * 1.2 * sum
       points[pos] = `${pos},${y}`
     }
     return points.join(' ')
   }),
   stroke: computed(() => freqColor(fundamental.frequency)),
-  note: computed(() => {
-    return Frequency(fundamental.frequency).toNote()
-  }),
-  cents: computed(() => {
-    return calcCents(fundamental.frequency, Frequency(fundamental.note).toFrequency())
-  }),
+  note: computed(() => Frequency(fundamental.frequency).toNote()),
+  cents: computed(() => calcCents(fundamental.frequency, Frequency(fundamental.note).toFrequency())),
 });
 
 const overtones = reactive({
@@ -142,6 +121,8 @@ const overtones = reactive({
 watch(() => overtones.count, count => {
   overtones.list = []
   const totalRows = count + 1
+  const rowHeight = (box.height - box.padY) / totalRows
+
   for (let i = 1; i <= count; i++) {
     const n = i // Harmonic number: 1 (P1), 2 (P8), 3 (P8+P5), etc.
     overtones.list[i - 1] = {
@@ -154,11 +135,13 @@ watch(() => overtones.count, count => {
         const nearestSemitone = Math.round(c / 100) * 100
         return parseFloat((c - nearestSemitone).toFixed(1))
       }),
-      position: computed(() => i * (box.height - box.padY) / totalRows),
+      // Positions ascend from bottom to top
+      position: computed(() => box.height - (i + 0.5) * rowHeight),
       stroke: computed(() => freqColor(fundamental.frequency * n)),
-      amplitude: computed(() => (box.height - box.padY) / (2 * totalRows * n)),
+      // Strictly bounded amplitude prevents any scattered overflow
+      amplitude: computed(() => rowHeight / (2 * n)),
       points: computed(() => {
-        const amp = (box.height - box.padY) / (2 * totalRows * n)
+        const amp = rowHeight / (2 * n)
         let pts = []
         for (let pos = 0; pos <= box.width; pos += 1) {
           pts.push(`${pos},${amp * calcWave(n, pos, time.phase)}`)
@@ -190,35 +173,24 @@ function calcCents(base, freq) {
   svg#overtones.w-full.max-h-90vh(
     version="1.1"
     baseProfile="full"
-    :viewBox="`${-box.padX} ${-3 * box.padY} ${box.width + 2 * box.padX} ${box.height + 3 * box.padY}`"
+    :viewBox="`${-box.padX} ${-0.5 * box.padY} ${box.width + 2 * box.padX} ${box.height + 3 * box.padY}`"
     xmlns="http://www.w3.org/2000/svg"
     font-family="Commissioner, sans-serif"
     @mouseleave="sound.stop()"
-    )
+  )
+    // Guitar rotated 180° and placed at the bottom
     sound-overtones-guitar(
       :length="box.width"
-      :transform="`translate(0,-1) rotate(180) translate(-150, -12)`"
+      :transform="`translate(0, ${box.height - 12})`"
     )
-    g#edges
-      line(
-        x1="0"
-        x2="0"
-        y1="0"
-        :y2="box.height - 8"
-        stroke="gray"
-        stroke-width="0.2"
-      )
-      line(
-        :x1="box.width"
-        :x2="box.width"
-        y1="0"
-        :y2="box.height - 8"
-        stroke="gray"
-        stroke-width="0.2"
-      )
 
-    // SUM WAVE (Top Row)
+    g#edges
+      line(x1="0" x2="0" :y1="box.padY" :y2="box.height - 8" stroke="gray" stroke-width="0.2")
+      line(:x1="box.width" :x2="box.width" :y1="box.padY" :y2="box.height - 8" stroke="gray" stroke-width="0.2")
+
+    // SUM WAVE (Bottom Row)
     g#fundamental.cursor-pointer(
+      :transform="`translate(0, ${fundamental.position})`"
       @mouseover="fundamental.hover = true"
       @mouseleave="fundamental.hover = false; sound.stopSaw()"
       @mousedown="sound.playSaw(fundamental.frequency, true)"
@@ -226,64 +198,25 @@ function calcCents(base, freq) {
       @mouseup="sound.stopSaw()"
       @touchend="sound.stopSaw()"
       @touchcancel="sound.stopSaw()"
-      )
+    )
       rect.transition-all.duration-200(
         x="0"
-        :y="-0.5 * (box.height - box.padY) / (overtones.count + 1)"
+        :y="-0.5 * ((box.height - box.padY) / (overtones.count + 1))"
         :width="box.width"
         :height="(box.height - box.padY) / (overtones.count + 1)"
         :fill="fundamental.stroke"
         :opacity="fundamental.hover ? 0.2 : 0.05"
       )
-      polyline(
-        fill="none"
-        v-bind="fundamental"
-        :stroke-width="fundamental.hover ? 2 : 1"
-      )
-      circle(
-        cx="0"
-        cy="0"
-        r="1"
-        :fill="fundamental.stroke"
-      )
-      circle(
-        :cx="box.width"
-        cy="0"
-        r="1"
-        :fill="fundamental.stroke"
-      )
-      text(
-        fill="currentColor"
-        :x="-2"
-        text-anchor="end"
-        y="-3"
-        font-size="4px"
-        font-weight="bold"
-      ) Sum
-      text(
-        fill="currentColor"
-        :x="-2"
-        text-anchor="end"
-        y="2"
-        font-size="4px"
-      ) {{ fundamental.frequency.toFixed(1) }} Hz 
-      text(
-        font-weight="bold"
-        fill="currentColor"
-        :x="box.width + 2"
-        text-anchor="start"
-        y="-3"
-        font-size="4px"
-      ) Sum
-      text(
-        fill="currentColor"
-        :x="box.width + 2"
-        text-anchor="start"
-        y="2"
-        font-size="4px"
-      ) {{ fundamental.note }} ({{ fundamental.cents.toFixed(0) }} cents)
+      polyline(fill="none" v-bind="fundamental" :stroke-width="fundamental.hover ? 2 : 1")
+      circle(cx="0" cy="0" r="1" :fill="fundamental.stroke")
+      circle(:cx="box.width" cy="0" r="1" :fill="fundamental.stroke")
 
-    // INDIVIDUAL HARMONICS (Rows below Sum)
+      text(fill="currentColor" :x="-2" text-anchor="end" y="-3" font-size="4px" font-weight="bold") Sum
+      text(fill="currentColor" :x="-2" text-anchor="end" y="2" font-size="4px") {{ fundamental.frequency.toFixed(1) }} Hz 
+      text(font-weight="bold" fill="currentColor" :x="box.width + 2" text-anchor="start" y="-3" font-size="4px") Sum
+      text(fill="currentColor" :x="box.width + 2" text-anchor="start" y="2" font-size="4px") {{ fundamental.note }} ({{ fundamental.cents.toFixed(0) }} cents)
+
+    // INDIVIDUAL HARMONICS (Ascending Rows)
     g.overtone.cursor-pointer(
       v-for="(overtone, i) in overtones.list"
       :key="i"
@@ -297,10 +230,10 @@ function calcCents(base, freq) {
       @mouseup="sound.stop(); overtone.active = false"
       @touchend="sound.stop(); overtone.active = false"
       @touchcancel="sound.stop(); overtone.active = false"
-      )
+    )
       rect.transition-all.duration-200(
         x="0"
-        :y="-0.5 * (box.height - box.padY) / (overtones.count + 1)"
+        :y="-0.5 * ((box.height - box.padY) / (overtones.count + 1))"
         :width="box.width"
         :height="(box.height - box.padY) / (overtones.count + 1)"
         :fill="overtone.stroke"
@@ -311,36 +244,12 @@ function calcCents(base, freq) {
         fill="none"
         :stroke-width="overtone.hover ? overtone.active ? 2 : 1 : 0.5"
       )
-      text(
-        fill="currentColor"
-        :x="-2"
-        text-anchor="end"
-        y="-3"
-        font-size="4px"
-        font-weight="bold"
-      ) {{ overtone.harmonicNumber }}
-      text(
-        fill="currentColor"
-        :x="-2"
-        text-anchor="end"
-        y="2"
-        font-size="4px"
-      ) {{ overtone.frequency.toFixed(1) }} Hz
-      text(
-        font-weight="bold"
-        fill="currentColor"
-        :x="box.width + 2"
-        text-anchor="start"
-        y="-3"
-        font-size="4px"
-      ) {{ overtones.intervals[overtone.harmonicNumber - 1] }} 
-      text(
-        fill="currentColor"
-        :x="box.width + 2"
-        text-anchor="start"
-        y="2"
-        font-size="4px"
-      ) {{ overtone.note }} ({{ overtone.centDiff > 0 ? '+' : '' }}{{ overtone.centDiff }} cents)
+
+      text(fill="currentColor" :x="-2" text-anchor="end" y="-3" font-size="4px" font-weight="bold") {{ overtone.harmonicNumber }}
+      text(fill="currentColor" :x="-2" text-anchor="end" y="2" font-size="4px") {{ overtone.frequency.toFixed(1) }} Hz
+      text(font-weight="bold" fill="currentColor" :x="box.width + 2" text-anchor="start" y="-3" font-size="4px") {{ overtones.intervals[overtone.harmonicNumber - 1] }} 
+      text(fill="currentColor" :x="box.width + 2" text-anchor="start" y="2" font-size="4px") {{ overtone.note }} ({{ overtone.centDiff > 0 ? '+' : '' }}{{ overtone.centDiff }} cents)
+
       circle.transition-all.duration-200(
         v-for="dot in overtone.dots"
         :key="dot"
@@ -350,18 +259,18 @@ function calcCents(base, freq) {
         :fill="overtone.stroke"
       )
 
-    // Vertical Node Lines
+    // Vertical Node Lines (drawing upwards from each harmonic)
     g.lines(
       v-for="(overtone, i) in overtones.list"
       :key="i"
-      )
+    )
       line(
         v-for="dot in overtone.dots"
         :key="dot"
         :x1="dot"
         :x2="dot"
         :y1="overtone.position"
-        :y2="0"
+        :y2="200"
         :stroke="overtone.stroke"
         stroke-width="0.2"
         :opacity="1 - i / (overtones.count + 2)"
@@ -407,6 +316,7 @@ function calcCents(base, freq) {
         :fixed="0"
         param="octave"
       )
+
   .relative.flex.flex-col.items-center
     button.shadow.p-3.m-1.border-1.border-current.rounded.absolute.top-80(
       v-if="!sound.enabled"

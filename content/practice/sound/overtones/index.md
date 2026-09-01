@@ -15,5 +15,3 @@ const SoundOvertones = defineClientComponent(() => {
 </script>
 
 <SoundOvertones />
-
-A string fixed from both ends produces a harmonic set of incremental frequency partials, also called harmonics.

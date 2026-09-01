@@ -37,7 +37,7 @@ const buttons = computed(() => {
 
 <template lang="pug">
 .header(
-  style="flex: 1 1 200px;"
+  style="flex: 1 1 400px;"
   v-if="!$frontmatter.misc"
   :class="{ 'has-cover': page?.cover || page?.icon }"
   :style="{ backgroundColor: pageColor }"
@@ -45,7 +45,7 @@ const buttons = computed(() => {
   .cover(v-if="page?.cover",:style="{ backgroundImage: `url(${cover})`, backgroundColor: pageColor }") 
   .w-full.max-w-60ch.flex.flex-wrap.items-stretch.justify-start.gap-2
     a.text-sm.transition.rounded-lg.no-underline.flex.items-center.px-2.py-1.bg-light-300.dark-bg-dark-100.hover-bg-light-100.hover-dark-bg-dark-100.z-100(
-      v-for="page in parents", 
+      v-for="page in parents.slice(0, -1)", 
       :key="page.url" 
       :href="cleanLink(page.url)") 
       span.font-bold {{ page?.frontmatter?.title }}

@@ -16,7 +16,7 @@ const colors = reactive({
 </script>
 
 <template lang="pug">
-.flex.flex-wrap.gap-2.p-2.items-stretch(:style="{ borderColor: colors?.current }")
+.flex.flex-wrap.gap-2.p-2.items-end(:style="{ borderColor: colors?.current }")
   a.pad(
     style="flex:1 1 100px"
     v-if="siblings?.prev" 

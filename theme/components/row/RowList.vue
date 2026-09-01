@@ -12,7 +12,7 @@ function cleanLink(url) {
 </script>
 
 <template lang="pug">
-.flex.items-stretch.my-4(
+.flex.items-stretch.my-4.self-start(
   v-for="(block, i) in children",
   :key="block.url", 
   style="flex: 1 1 120px;"

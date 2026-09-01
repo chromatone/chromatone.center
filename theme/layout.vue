@@ -105,13 +105,14 @@ midi-notes(v-if="!params.pure && !params.nokeys")
           )
 
         row-list(:children="children" )
-        content
+        .max-w-55ch(style="flex: 1 1 35ch;")
+          content
 
-        nav-next-prev(
-          :siblings="siblings" 
-          :parents="parents"
-          v-if="!params.pure && !params.nonav && f.layout != 'app'"
-          )
+          nav-next-prev(
+            :siblings="siblings" 
+            :parents="parents"
+            v-if="!params.pure && !params.nonav && f.layout != 'app'"
+            )
 
   client-only
     draw-layer.z-100

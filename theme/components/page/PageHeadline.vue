@@ -37,6 +37,7 @@ const buttons = computed(() => {
 
 <template lang="pug">
 .header(
+  style="flex: 1 1 200px;"
   v-if="!$frontmatter.misc"
   :class="{ 'has-cover': page?.cover || page?.icon }"
   :style="{ backgroundColor: pageColor }"
@@ -62,7 +63,7 @@ const buttons = computed(() => {
 
 <style lang="postcss" scoped>
 .header {
-  @apply p-4 h-full relative flex flex-col gap-1 min-h-38svh justify-start overflow-hidden transition-all duration-400 ease-in rounded-1rem;
+  @apply p-4 max-h-90dvh relative flex flex-col gap-1 justify-start overflow-hidden transition-all duration-400 ease-in rounded-1rem;
 }
 
 .cover {

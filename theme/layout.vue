@@ -89,7 +89,7 @@ midi-notes(v-if="!params.pure && !params.nokeys")
             v-if="f.layout != 'app'"
             :pageColor="pageColor", :lightColor="lightColor" :page="f" :cover="f.dynamic ? f?.cover?.id || f?.poster?.id : page?.frontmatter?.cover") 
         transition(name="fade")
-          .fixed.top-0.left-14.right-2.z-100.text-md.p-2.flex.gap-2.items-center.bg-light-200.bg-opacity-20.dark-bg-dark-200.dark-bg-opacity-10.backdrop-blur-lg.pt-2.pl-4.min-h-15.border-t-4.op-90.transition.rounded-xl(
+          .fixed.top-0.left-14.right-2.z-10000.text-md.p-2.flex.gap-2.items-center.bg-light-200.bg-opacity-20.dark-bg-dark-200.dark-bg-opacity-10.backdrop-blur-lg.pt-2.pl-4.min-h-15.border-t-4.op-90.transition.rounded-xl(
             :style="{ borderColor: pageColor }"
             v-if="y > 100")
             .flex-1.flex.flex-wrap.gap-2
@@ -104,8 +104,7 @@ midi-notes(v-if="!params.pure && !params.nokeys")
           :src="f.iframe"
           )
 
-        .flex.flex-wrap.gap-2
-          row-list(:children="children")
+        row-list(:children="children" )
         content
 
         nav-next-prev(
@@ -121,12 +120,7 @@ midi-notes(v-if="!params.pure && !params.nokeys")
     
 </template>
 
-<style lang="postcss">
-html,
-body {
-  overscroll-behavior: none;
-}
-
+<style>
 #app {
   max-height: 99dvh;
   height: 100dvh;
@@ -140,16 +134,8 @@ body {
   min-height: 0;
   width: 100%;
   padding: 2em;
-  height: 100dvh;
-  max-height: 100dvh;
-  column-width: 36ch;
-  column-gap: 2rem;
-  overflow-x: scroll;
-  overflow-y: hidden;
-  scroll-padding: 2rem;
-  scroll-snap-type: x proximity;
-  scroll-behavior: smooth;
   z-index: 200;
+  @apply relative flex flex-wrap gap-4;
 }
 
 #content p {
@@ -157,10 +143,6 @@ body {
   z-index: 100;
 }
 
-#content * {
-  scroll-snap-align: start;
-  z-index: 400;
-}
 
 #content img,
 #content .iframe-container {

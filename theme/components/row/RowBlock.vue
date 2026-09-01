@@ -29,7 +29,7 @@ function go(url) {
 </script>
 
 <template lang="pug">
-.header.row.min-h-30.min-w-40(
+.header.row(
   :style="{ borderColor: color }"
   )
   .flex-1
@@ -64,7 +64,7 @@ function go(url) {
 
 <style lang="postcss" scoped>
 .row {
-  @apply bg-light-500 w-full dark-bg-dark-500 flex flex transition-all duration-300 ease no-underline rounded-xl overflow-hidden shadow-lg border-0;
+  @apply pt-24 min-h-60 min-w-60 bg-light-500 w-full dark-bg-dark-500 flex flex transition-all duration-300 ease no-underline rounded-xl overflow-hidden shadow-lg border-0;
   flex: 1 1 80px;
 }
 

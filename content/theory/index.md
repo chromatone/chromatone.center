@@ -22,3 +22,7 @@ Two notes form [Intervals](./intervals/index.md) and three or more of them from 
 Then we start organizing all these sound structures in time based on [Rhythm](./rhythm/index.md) and dive deep into [Harmony](./harmony/index.md) and [Melody](./melody/index.md) that evolve naturally to the whole [Composition](./composition/index.md) level.
 
 There's quite a deep research here, and there's more [External resources](./resources/index.md) to explore for those, who needs to learn even more about music theory themselves.
+
+
+<youtube-embed video="tVrSaLrmbVw"/>
+

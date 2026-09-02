@@ -11,9 +11,6 @@ export default withPwa(defineConfig({
   titleTemplate: 'Chromatone.center',
   description: "Visual music language",
   lang: "en",
-  themeConfig: {
-    socialLinks: []
-  },
   head: [
     ["meta", { property: "og:type", content: "website" }],
     ["meta", { name: "apple-mobile-web-app-status-bar-style", content: "white-translucent", },],

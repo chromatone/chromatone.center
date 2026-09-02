@@ -70,11 +70,6 @@ onMounted(() => {
 
 <template lang="pug">
 .flex.flex-col.m-auto
-  button(
-    :style="{background: state.colorize ? 'linear-gradient(#e66465, #9198e5)': ''}" 
-    class="button fixed right-16 bottom-4 z-20000 p-2 bg-light-400 dark-bg-dark-400 rounded-xl shadow active_bg-red-100" 
-    @click="state.colorize = !state.colorize"
-    ) Colorize notes
   save-svg.fixed.bottom-4.right-55(svg="paper" :deep="true")
   .flex.flex-wrap
     button.p-2.border-1.m-2(

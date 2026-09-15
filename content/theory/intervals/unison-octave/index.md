@@ -47,6 +47,8 @@ Pitch class is important because human pitch-perception is periodic: pitches bel
 
 Psychologists refer to the quality of a pitch as its **"chroma"**. A chroma is an attribute of pitches (as opposed to tone height), just like hue is an attribute of color. A pitch class is a set of all pitches that share the same chroma, just like "the set of all yellow things" is the collection of all yellow objects.
 
+<youtube-embed video="BzNzgsAE4F0" />
+
 ## Pitch class space
 
 In music theory, pitch-class space is the circular space representing all the notes (pitch classes) in a musical octave. In this space, there is no distinction between tones that are separated by an integral number of octaves. For example, C4, C5, and C6, though different pitches, are represented by the same point in pitch class space.

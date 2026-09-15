@@ -2,6 +2,7 @@
 title: Interval cycles
 description: Collection of pitch classes created from a sequence of the same interval class
 date: 2021-02-03
+cover: mitchell-luo.jpg
 ---
 
 In music, an [interval cycle](https://en.wikipedia.org/wiki/Interval_cycle) is a collection of pitch classes created from a sequence of the same interval class. In other words, a collection of pitches by starting with a certain note and going up by a certain interval until the original note is reached (e.g. starting from C, going up by 3 semitones repeatedly until eventually C is again reached - the cycle is the collection of all the notes met on the way). In other words, interval cycles "unfold a single recurrent interval in a series that closes with a return to the initial pitch class". See: wikt:cycle.

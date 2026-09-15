@@ -1,7 +1,7 @@
 ---
 title: Unison and octave
 description: Intervals inside the same pitch class
-
+cover: garmin-b.jpg
 date: 2021-09-10
 ---
 

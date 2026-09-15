@@ -2,6 +2,7 @@
 title: Sensory dissonance
 description: The rather objective approach to pitch interval consonance and dissonance measure to model, calculate and extract
 date: 2021-02-15
+cover: shaouraav-sarose-shreshtha.jpg
 ---
 
 <youtube-embed video="wg5QcF2akzQ" />

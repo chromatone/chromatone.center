@@ -2,6 +2,7 @@
 title: Third and sixth
 description: The imperfect consonant intervals
 date: 2021-09-06
+cover: viswanath-v-pai.jpg
 ---
 
 ## Major third M3

@@ -1,7 +1,7 @@
 ---
 title: Emancipation of dissonance
 description: The process of gradual acceptance of the more dissonant intervals as consonant and musical
-
+cover: steven-van-elk.jpg
 date: 2021-03-04
 ---
 

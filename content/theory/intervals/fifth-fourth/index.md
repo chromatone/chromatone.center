@@ -2,6 +2,7 @@
 title: Fifth and fourth
 description: Perfect, but not equivalent intervals
 date: 2021-09-08
+cover: erol-ahmed.jpg
 ---
 
 ## Fifth P5

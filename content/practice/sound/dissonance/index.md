@@ -33,6 +33,6 @@ A simple curve for two sine waves is readily established and then we can calcula
 
 Try dragging the note to hear the exact interval. Toggle the plain sine and rich sawtooth waveforms. Compare the feeling of consonance and the dips in the curve yourself.
 
-[More info in the Theory research](../../../theory/intervals/dissonance/index.md).
+[More info in the Theory research](../../../theory/sound/dissonance/index.md).
 
 :::

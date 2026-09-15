@@ -151,7 +151,7 @@
 		"unplugin-icons": "^23.0.1",
 		"unplugin-vue-components": "^32.1.0",
 		"vite": "^8.0.14",
-		"vitepress": "2.0.0-alpha.17",
+		"vitepress": "2.0.0-alpha.20",
 		"workbox-window": "^7.4.1"
 	},
 	"pnpm": {

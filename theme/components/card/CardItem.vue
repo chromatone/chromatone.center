@@ -1,7 +1,7 @@
 <script setup>
 import { useData, useRoute } from 'vitepress'
 import { data } from '../../../content/pages.data'
-import { cleanLink, useChildren, usePage } from '../../../theme/pages'
+import { cleanLink, useChildren, usePage } from '../../../theme/pages.js'
 
 const props = defineProps({
   item: Object,

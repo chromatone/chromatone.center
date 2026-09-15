@@ -1,5 +1,5 @@
 <script setup>
-import { cleanLink } from '../../../theme/pages'
+import { cleanLink } from '../../../theme/pages.js'
 const props = defineProps({
   parents: { type: Array }
 })

@@ -1,7 +1,7 @@
 <script setup>
 import { lchToHsl } from '#/use/'
 import { computed, reactive } from 'vue';
-import { cleanLink } from '../../../theme/pages'
+import { cleanLink } from '../../../theme/pages.js'
 
 const props = defineProps({
   parents: { type: Array },
@@ -35,7 +35,7 @@ const colors = reactive({
     )
     .link
       .i-la-angle-double-up.mr-1
-      .text.-mt-1 {{ parent?.frontmatter?.title }}
+      .text-md.-mt-1 {{ parent?.frontmatter?.title }}
 
   a.pad(
     style="flex:1 1 100px"
@@ -44,7 +44,7 @@ const colors = reactive({
     :style="{ backgroundColor: colors?.next, backgroundImage: `url(${siblings?.next?.frontmatter?.cover})` }"
     )
     .link
-      span.text.-mt-1 {{ siblings?.next?.frontmatter?.title }}
+      span.text-md.-mt-1 {{ siblings?.next?.frontmatter?.title }}
       .i-la-angle-double-right.icon.icon-next
 
       
@@ -95,10 +95,6 @@ const colors = reactive({
   max-width: fit-content
 }
 
-.text {
-  @apply text-md;
-  overflow: hidden;
-}
 
 
 .icon-prev {

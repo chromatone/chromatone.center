@@ -1,5 +1,5 @@
 import { createContentLoader } from 'vitepress'
-import VPMedia from '../theme/media'
+import VPMedia from '../theme/media.js'
 
 
 const pages = createContentLoader('./**/index.md', {

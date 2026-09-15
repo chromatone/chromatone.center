@@ -4,7 +4,7 @@
         <title>Chromatone</title>
         <link>https://chromatone.center/</link>
         <description>Visual Music Language development updates and more</description>
-        <lastBuildDate>Tue, 08 Sep 2026 12:11:19 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 15 Sep 2026 07:00:52 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en-EN</language>
@@ -22,7 +22,7 @@
             <title><![CDATA[Words sequencing]]></title>
             <link>https://chromatone.center/practice/generative/words/</link>
             <guid isPermaLink="false">https://chromatone.center/practice/generative/words/</guid>
-            <pubDate>Tue, 08 Sep 2026 12:09:21 GMT</pubDate>
+            <pubDate>Tue, 15 Sep 2026 06:59:29 GMT</pubDate>
             <description><![CDATA[&lt;script setup
 import { defineClientComponent } from 'vitepress'
 const Words = defineClientCompone]]></description>
@@ -34,7 +34,7 @@ const Words = defineClientCompone]]></description>
             <title><![CDATA[Words sequencing]]></title>
             <link>https://chromatone.center/practice/sequencing/words/</link>
             <guid isPermaLink="false">https://chromatone.center/practice/sequencing/words/</guid>
-            <pubDate>Tue, 08 Sep 2026 12:09:21 GMT</pubDate>
+            <pubDate>Tue, 15 Sep 2026 06:59:29 GMT</pubDate>
             <description><![CDATA[This page is moved to https://chromatone.center/practice/generative/words/]]></description>
             <content:encoded><![CDATA[<p>This page is moved to <a href="https://chromatone.center/practice/generative/words/" target="_blank" rel="noreferrer">https://chromatone.center/practice/generative/words/</a></p>
 ]]></content:encoded>
@@ -45,7 +45,7 @@ const Words = defineClientCompone]]></description>
             <title><![CDATA[ZZFXM]]></title>
             <link>https://chromatone.center/practice/sequencing/zzfxm/</link>
             <guid isPermaLink="false">https://chromatone.center/practice/sequencing/zzfxm/</guid>
-            <pubDate>Tue, 08 Sep 2026 12:09:21 GMT</pubDate>
+            <pubDate>Tue, 15 Sep 2026 06:59:29 GMT</pubDate>
             <description><![CDATA[&lt;script setup
 import { defineClientComponent } from 'vitepress'
 const ZzFxm = defineClientCompone]]></description>
@@ -58,7 +58,7 @@ const ZzFxm = defineClientCompone]]></description>
             <title><![CDATA[AMY - A high-performance fixed-point Music synthesizer librarY for microcontrollers]]></title>
             <link>https://chromatone.center/practice/synth/amy/README.html</link>
             <guid isPermaLink="false">https://chromatone.center/practice/synth/amy/README.html</guid>
-            <pubDate>Tue, 08 Sep 2026 12:09:21 GMT</pubDate>
+            <pubDate>Tue, 15 Sep 2026 06:59:29 GMT</pubDate>
             <description><![CDATA[# AMY - A high-performance fixed-point Music synthesizer librarY for microcontrollers
 
 AMY is a fast, small and accurate music synthesizer library written in C with Python and Arduino bindings that deals with combinations of many oscillators very well. It can easily be embedded into almost any program, architecture or microcontroller. We've run AMY on [the web](https://shorepine.github.io/amy/), Mac, Linux, ESP32, ESP32S3 and ESP32P4, Teensy 3.6, Teensy 4.1, the Raspberry Pi, the Playdate, Pi Pico RP2040, the Pi Pico 2 RP2530, iOS devices, the Electro-Smith Daisy (ARM Cortex M7), and more to come. It is highly optimized for polyphony and poly-timbral operation on even the lowest power and constrained RAM microcontroller but can scale to as many cores as you want. 
@@ -306,7 +306,7 @@ Here's the full list:
 <h2 id="using-amy-in-any-other-software" tabindex="-1">Using AMY in any other software <a class="header-anchor" href="#using-amy-in-any-other-software" aria-label="Permalink to “Using AMY in any other software”">&#8203;</a></h2>
 <p>To use AMY in your own software, simply copy the .c and .h files in <code>src</code> to your program and compile them. No other libraries should be required to synthesize audio in AMY. You'll want to make sure the configuration in <code>amy_config.h</code> is set up for your application / hardware.</p>
 <p>To run a simple C example on many platforms:</p>
-<div class="language-"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre><!--::markdown-it-async::tms5q3or9ssbm0axld0mi::--><code>make
+<div class="language-"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang"></span><pre><!--::markdown-it-async::t2yep4ikvzxjsaimifz8::--><code>make
 ./amy-example # you should hear tones out your default speaker, use ./amy-example -h for options</code></pre>
 </div><h1 id="using-amy" tabindex="-1">Using AMY <a class="header-anchor" href="#using-amy" aria-label="Permalink to “Using AMY”">&#8203;</a></h1>
 <blockquote>
@@ -314,7 +314,7 @@ Here's the full list:
 </blockquote>
 <p>AMY can be controlled using its wire protocol or by fillng its data structures directly. It's up to what's easier for you and your application.</p>
 <p>In Python, rendering to a buffer of samples, using the high level API:</p>
-<div class="language-python"><button title="Copy Code" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::l0qjym5e9titk1kk5io5hs::--><code>&gt;&gt;&gt; import amy
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::4tah3tnt9c40d96twi3fx::--><code>&gt;&gt;&gt; import amy
 &gt;&gt;&gt; m = amy.message(voices=&#039;0&#039;, load_patch=130, note=50, vel=1)
 &gt;&gt;&gt; print(m) # Show the wire protocol message
 v0n50l1K130r0Z
@@ -322,12 +322,12 @@ v0n50l1K130r0Z
 &gt;&gt;&gt; # This plays immediately on Tulip, but if you&#039;re running Amy in regular Python, you can get the waveform from render:
 &gt;&gt;&gt; audio = amy.render(5.0)</code></pre>
 </div><p>You can also start a thread playing live audio:</p>
-<div class="language-python"><button title="Copy Code" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::5szsdmqwyx23019axsj44w::--><code>&gt;&gt;&gt; import amy
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::uo0w5vc791qx1o2t2fdf6::--><code>&gt;&gt;&gt; import amy
 &gt;&gt;&gt; amy.live() # can optinally pass in playback and capture audio device IDs, amy.live(2, 1) 
 &gt;&gt;&gt; amy.send(voices=&#039;0&#039;, load_patch=130, note=50, vel=1)
 &gt;&gt;&gt; amy.stop()</code></pre>
 </div><p>In C, using the high level structures directly;</p>
-<div class="language-c"><button title="Copy Code" class="copy"></button><span class="lang">c</span><pre><!--::markdown-it-async::lx45eimw5eg909gjmw10ui::--><code>#include &quot;amy.h&quot;
+<div class="language-c"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">c</span><pre><!--::markdown-it-async::ts3hw4fwwyctfd1a4jr00l::--><code>#include &quot;amy.h&quot;
 void bleep() {
     struct event e = amy_default_event();
     int32_t start = amy_sysclock();   // Right now..
@@ -351,7 +351,7 @@ void main() {
     bleep();
 }</code></pre>
 </div><p>Or in C, sending the wire protocol directly:</p>
-<div class="language-c"><button title="Copy Code" class="copy"></button><span class="lang">c</span><pre><!--::markdown-it-async::qrejwxij52fezvev2yuxq::--><code>#include &quot;amy.h&quot;
+<div class="language-c"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">c</span><pre><!--::markdown-it-async::onr76yk9e69ixmajbcd8c::--><code>#include &quot;amy.h&quot;
 
 void main() {
     amy_start(/* cores= */ 1, /* reverb= */ 0, /* chorus= */ 0, /* echo */ 1);
@@ -359,7 +359,7 @@ void main() {
     amy_play_message(&quot;v0n50l1K130r0Z&quot;);
 }</code></pre>
 </div><p>If you want to receive buffers of samples, or have more control over the rendering pipeline to support multi-core, instead of using <code>amy_live_start()</code>:</p>
-<div class="language-c"><button title="Copy Code" class="copy"></button><span class="lang">c</span><pre><!--::markdown-it-async::bt1nlv4p9lu0l9yjr1vtxt::--><code>#include &quot;amy.h&quot;
+<div class="language-c"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">c</span><pre><!--::markdown-it-async::fdbtvb9jxkiqi7v9yqvqao::--><code>#include &quot;amy.h&quot;
 ...
 amy_start(/* cores= */ 2, /* reverb= */ 1, /* chorus= */ 1, /* echo */ 1);
 ...
@@ -375,13 +375,13 @@ amy_start(/* cores= */ 2, /* reverb= */ 1, /* chorus= */ 1, /* echo */ 1);
 ... }
 </code></pre>
 </div><p>On storage constrained devices, you may want to limit the amount of PCM samples we ship with AMY. To do this, include a smaller set after including <code>amy.h</code>, like:</p>
-<div class="language-c"><button title="Copy Code" class="copy"></button><span class="lang">c</span><pre><!--::markdown-it-async::bk9lvgg4drg5vb2knx2nos::--><code>#include &quot;amy.h&quot;
+<div class="language-c"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">c</span><pre><!--::markdown-it-async::lrlqh3w0ax4knuao2o4uc::--><code>#include &quot;amy.h&quot;
 #include &quot;pcm_tiny.h&quot; 
 // or, #include &quot;pcm_small.h&quot;</code></pre>
 </div><h1 id="wire-protocol" tabindex="-1">Wire protocol <a class="header-anchor" href="#wire-protocol" aria-label="Permalink to “Wire protocol”">&#8203;</a></h1>
 <p>AMY's wire protocol is a series of numbers delimited by ascii characters that define all possible parameters of an oscillator. This is a design decision intended to make using AMY from any sort of environment as easy as possible, with no data structure or parsing overhead on the client. It's also readable and compact, far more expressive than MIDI and can be sent over network links, UARTs, or as arguments to functions or commands. We've used AMY over multicast UDP, over Javascript, in Max/MSP, in Python, C, Micropython and many more!</p>
 <p>AMY accepts commands in ASCII, like so:</p>
-<div class="language-"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre><!--::markdown-it-async::z93u6uf22fgc05msoxc7r::--><code>v0w4f440.0l1.0Z</code></pre>
+<div class="language-"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang"></span><pre><!--::markdown-it-async::ay68yupn6qgko7htuco6u9::--><code>v0w4f440.0l1.0Z</code></pre>
 </div><p>This example controls osc 0 (<code>v0</code>), sets its waveform to triangle (<code>w4</code>), sets its frequency to 4400 Hz (<code>f440.0</code>), and velocity (i.e. amplitude) to 1 (<code>l1.0</code>).  The final <code>Z</code> is a terminator indicating the message is complete.</p>
 <p>Here's the full list:</p>
 <table tabindex="0">
@@ -638,18 +638,18 @@ amy_start(/* cores= */ 2, /* reverb= */ 1, /* chorus= */ 1, /* echo */ 1);
 </table>
 <h1 id="synthesizer-details" tabindex="-1">Synthesizer details <a class="header-anchor" href="#synthesizer-details" aria-label="Permalink to “Synthesizer details”">&#8203;</a></h1>
 <p>We'll use Python for showing examples of AMY.  Maybe you're running under <a href="https://github.com/shorepine/tulipcc" target="_blank" rel="noreferrer">Tulip</a>, in which case AMY is already loaded, but if you're running under standard Python, make sure you've installed <code>libamy</code> and are running a live AMY first by running <code>make test</code> and then:</p>
-<div class="language-bash"><button title="Copy Code" class="copy"></button><span class="lang">bash</span><pre><!--::markdown-it-async::jx7sdlwkchdx6hjmp6anmq::--><code>python
+<div class="language-bash"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">bash</span><pre><!--::markdown-it-async::in4lodloezmxqrycn8lwr::--><code>python
 &gt;&gt;&gt; import amy
 &gt;&gt;&gt; amy.live()</code></pre>
 </div><h2 id="amy-s-sequencer-and-timestamps" tabindex="-1">AMY's sequencer and timestamps <a class="header-anchor" href="#amy-s-sequencer-and-timestamps" aria-label="Permalink to “AMY's sequencer and timestamps”">&#8203;</a></h2>
 <p>AMY is meant to either receive messages in real time or scheduled events in the future. It can be used as a sequencer where you can schedule notes to play in the future or on a divider of the clock.</p>
 <p>The scheduled events are very helpful in cases where you can't rely on an accurate clock from the client, or don't have one. The clock used internally by AMY is based on the audio samples being generated out the speakers, which should run at an accurate 44,100 times a second.  This lets you do things like schedule fast moving parameter changes over short windows of time.</p>
 <p>For example, to play two notes, one a second after the first, you could do:</p>
-<div class="language-python"><button title="Copy Code" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::tghga7ta9h9acbyjdsbs3::--><code>amy.send(osc=0, note=50, vel=1)
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::aeeb5j9ryopjuoqrcpmodq::--><code>amy.send(osc=0, note=50, vel=1)
 time.sleep(1)
 amy.send(osc=0, note=52, vel=1)</code></pre>
 </div><p>But you'd be at the mercy of Python's internal timing, or your OS. A more precise way is to send the messages at the same time, but to indicate the intended time of the playback:</p>
-<div class="language-python"><button title="Copy Code" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::vz77fscngaj5tzw9eya6ub::--><code>start = amy.millis()  # arbitrary start timestamp
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::uvk3mcm35mjaiqbf9ohaq::--><code>start = amy.millis()  # arbitrary start timestamp
 amy.send(osc=0, note=50, vel=1, time=start)
 amy.send(osc=0, note=52, vel=1, time=start + 1000)</code></pre>
 </div><p>Both <code>amy.send()</code>s will return immediately, but you'll hear the second note play precisely a second after the first. AMY uses this internal clock to schedule step changes in breakpoints as well.</p>
@@ -662,7 +662,7 @@ amy.send(osc=0, note=52, vel=1, time=start + 1000)</code></pre>
 <p><code>tag</code> should be given, and will be <code>0</code> if not. You should set <code>tag</code> to a random or incrementing number in your code that you can refer to later. <code>tag</code> allows you to replace or delete the event once scheduled.</p>
 <p>If you are including AMY in a program, you can set the hook <code>void (*amy_external_sequencer_hook)(uint32_t)</code> to any function. This will be called at every tick with the current tick number as an argument.</p>
 <p>Sequencer examples:</p>
-<div class="language-python"><button title="Copy Code" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::ef1uui2kd5asvrdjs24g7d::--><code>amy.send(osc=2, vel=1, wave=amy.PCM, patch=2, sequence=&quot;1000,,3&quot;) # play a PCM drum at absolute tick 1000 
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::h7qcgojg5oam4xh6fxpl::--><code>amy.send(osc=2, vel=1, wave=amy.PCM, patch=2, sequence=&quot;1000,,3&quot;) # play a PCM drum at absolute tick 1000 
 
 amy.send(osc=0, vel=1, wave=amy.PCM, patch=0, sequence=&quot;,24,1&quot;) # play a PCM drum every eighth note.
 amy.send(osc=1, vel=1, wave=amy.PCM, patch=1, sequence=&quot;,48,2&quot;) # play a PCM drum every quarter note.
@@ -680,28 +680,28 @@ amy.send(osc=1, vel=1, wave=amy.PCM, patch=1, sequence=&quot;216,384,2&quot;) # 
 <p>Try to set the volume of the synth with <code>amy.send(volume=2)</code> -- that can be up to 10 or so.  The default is 1.</p>
 <p><code>amy.reset()</code> resets all oscillators to default. You can also do <code>amy.reset(osc=5)</code> to do just one oscillator.</p>
 <p>Let's set a simple sine wave first</p>
-<div class="language-python"><button title="Copy Code" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::b512z4nld89pm97al3q0h::--><code>amy.send(osc=0, wave=amy.SINE, freq=220, vel=1)</code></pre>
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::agtux2obyknzxoi7ijsj5g::--><code>amy.send(osc=0, wave=amy.SINE, freq=220, vel=1)</code></pre>
 </div><p>We are simply telling oscillator 0 to be a sine wave at 220Hz and amplitude (specified as a note-on velocity) of 1.  You can also try <code>amy.PULSE</code>, or <code>amy.SAW_DOWN</code>, etc.</p>
 <p>To turn off the note, send a note off (velocity zero):</p>
-<div class="language-python"><button title="Copy Code" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::olvtnf24kzd519zpm89k::--><code>amy.send(osc=0, vel=0)  # Note off.</code></pre>
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::vlhpkjycqclhlt8xryw6w6::--><code>amy.send(osc=0, vel=0)  # Note off.</code></pre>
 </div><p>You can also make oscillators louder with <code>vel</code> larger than 1.  By default, the total amplitude comes from multiplying together the oscillator amplitude (i.e., the natural level of the oscillator, which is 1 by default) and the velocity (the particular level of this note event) -- however, this can be changed by changing the default values of the <code>amp</code> <strong>ControlCoefficients</strong> (see below).</p>
 <p>You can also use <code>note</code> (MIDI note value) instead of <code>freq</code> to control the oscillator frequency for each note event:</p>
-<div class="language-python"><button title="Copy Code" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::1xgmxlnyydf00cc5wphgrlnk::--><code>amy.reset()
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::ubilsdjjyai6cj9mnv26m4::--><code>amy.reset()
 amy.send(osc=0, wave=amy.SINE, note=57, vel=1)</code></pre>
 </div><p>This won't work as intended without the <code>amy.reset()</code>, because once you've set the oscillator to a non-default frequency with <code>freq=220</code>, it will act as an offset to the frequency specified by <code>note</code>.  (See <strong>ControlCoefficients</strong> below to see how to control this behavior).</p>
 <p>Now let's make a lot of sine waves!</p>
-<div class="language-python"><button title="Copy Code" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::jfgtqjfh9nt0sq5avposxm::--><code>import time
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::rpksu5hm4jsyfbdysifse::--><code>import time
 amy.reset()
 for i in range(16):
     amy.send(osc=i, wave=amy.SINE, freq=110+(i*80), vel=((16-i)/32.0))
     time.sleep(0.5) # Sleep for 0.5 seconds</code></pre>
 </div><p>Neat! You can see how simple / powerful it is to have control over lots of oscillators. You have up to 64 (or more, depending on your platform). Let's make it more interesting. A classic analog tone is the filtered saw wave. Let's make one.</p>
-<div class="language-python"><button title="Copy Code" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::5l7ss88otu21xlf5qb42fy::--><code>amy.send(osc=0, wave=amy.SAW_DOWN, filter_freq=400, resonance=5, filter_type=amy.FILTER_LPF)
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::si42am0xjckvy9vsp3ltf::--><code>amy.send(osc=0, wave=amy.SAW_DOWN, filter_freq=400, resonance=5, filter_type=amy.FILTER_LPF)
 amy.send(osc=0, vel=1, note=40)</code></pre>
 </div><p>You want to be able to stop the note too by sending a note off:</p>
-<div class="language-python"><button title="Copy Code" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::kpdtoz1niwlylxhhr8ghbj::--><code>amy.send(osc=0, vel=0)</code></pre>
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::kqz9fwntadl12s5lzkst::--><code>amy.send(osc=0, vel=0)</code></pre>
 </div><p>Sounds nice. But we want that filter freq to go down over time, to make that classic filter sweep tone. Let's use an Envelope Generator! An Envelope Generator (EG) creates a smooth time envelope based on a breakpoint set, which is a simple list of (time-delta, target-value) pairs - you can have up to 8 of these per EG, and 2 different EGs to control different things. They're just like ADSRs, but more powerful. You can use an EG to control amplitude, oscillator frequency, filter cutoff frequency, PWM duty cycle, or stereo pan. The EG gets triggered when the note begins. So let's make an EG that turns the filter frequency down from its start at 3200 Hz to 400 Hz over 1000 milliseconds. And when the note goes off, it tapers the frequency to 50 Hz over 200 milliseconds.</p>
-<div class="language-python"><button title="Copy Code" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::1freci9f591kjkoxyvu5p::--><code>amy.send(osc=0, wave=amy.SAW_DOWN, resonance=5, filter_type=amy.FILTER_LPF)
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::2mdlyyp3g1uuqyvre9viu::--><code>amy.send(osc=0, wave=amy.SAW_DOWN, resonance=5, filter_type=amy.FILTER_LPF)
 amy.send(osc=0, filter_freq=&#039;50,0,0,0,1&#039;, bp1=&#039;0,6.0,1000,3.0,200,0&#039;)
 amy.send(osc=0, vel=1, note=40)</code></pre>
 </div><p>There are two things to note here:  Firstly, the envelope is defined by the set of breakpoints in <code>bp1</code> (defining the second EG; the first is controlled by <code>bp0</code>).  The <code>bp</code> strings alternate time intervals in milliseconds with target values.  So <code>0,6.0,1000,3.0,200,0</code> means to move to 6.0 after 0 ms (i.e., the initial value is 6), then to decay to 3.0 over the next 1000 ms (1 second).  The final pair is always taken as the &quot;release&quot;, and does not begin until the note-off event is received.  In this case, the EG decays to 0 in the 200 ms after the note-off.</p>
@@ -723,16 +723,16 @@ amy.send(osc=0, vel=1, note=40)</code></pre>
 <p>The note frequency is scaled relative to a zero-point of middle C (MIDI note 60, 261.63 Hz), so to make the oscillator faithfully track the <code>note</code> parameter to the note-on event, you would use something like <code>freq='261.63,1'</code>.  Setting it to <code>freq='523.26,1'</code> would make the oscillator always be one octave higher than the <code>note</code> MIDI number.  Setting <code>freq='261.3,0.5'</code> would make the oscillator track the <code>note</code> parameter at half an octave per unit, so while <code>note=60</code> would still give middle C, <code>note=72</code> (C5) would make the oscillator run at F#4, and <code>note=84</code> (C6) would be required to get C5 from the oscillator.</p>
 <p>The default set of ControlCoefficients for <code>freq</code> is <code>'261.63,1,0,0,0,0,1'</code>, i.e. a base of middle C, tracking the MIDI note, plus pitch bend (at unit-per-octave).  Because 261.63 is such an important value, as a special case, setting the first <code>freq</code> value to zero is magically rewritten as 261.63, so <code>freq='0,1,0,0,0,0,1'</code> also yields the default behavior.  <code>amp</code> also has a set of defaults: <code>amp='0,0,1,1,0,0,0'</code>, i.e. tracking note-on velocity plus modulation by EG0 (which just tracks the note-on status if it has not been set up).  <code>amp</code> is a little special because the individual components are <em>multiplied</em> together, instead of added together, for any control inputs with nonzero coefficients.  Finally, an offset of 1.0 is added to the coefficient-scaled LFO modulator and pitch bend inputs before multiplying them into the amplitude, to allow small variations around unity e.g. for tremolo.  These defaults are set up in <a href="https://github.com/shorepine/amy/blob/b1ed189b01e6b908bc19f18a4e0a85761d739807/src/amy.c#L551" target="_blank" rel="noreferrer"><code>src/amy.c:reset_osc()</code></a>.</p>
 <p>We also have LFOs, which are implemented as one oscillator modulating another (instead of sending its waveform to the output). You set up the low-frequency oscillator, then have it control a parameter of another audible oscillator. Let's make the classic 8-bit duty cycle pulse wave modulation, a favorite:</p>
-<div class="language-python"><button title="Copy Code" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::rxudjlckzh8gyrczzo0xg::--><code>amy.reset()  # Clear the state.
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::lv8y0ba5zflum05jsy1dt8::--><code>amy.reset()  # Clear the state.
 amy.send(osc=1, wave=amy.SINE, freq=0.5, amp=1)   # We set the amp but not the vel, so it doesn&#039;t sound.
 amy.send(osc=0, wave=amy.PULSE, duty={&#039;const&#039;: 0.5, &#039;mod&#039;: 0.4}, mod_source=1)
 amy.send(osc=0, note=60, vel=0.5)</code></pre>
 </div><p>You see we first set up the modulation oscillator (a sine wave at 0.5Hz, with amplitude of 1).  We do <em>not</em> send it a velocity, because that would make it start sending a 0.5 Hz sinewave to the audio output; we want its output only to be used internally.  Then we set up the oscillator to be modulated, a pulse wave with a modulation source of oscillator 1 and the duty <strong>ControlCoefficients</strong> set to have a constant value of 0.5 plus 0.4 times the modulating input (i.e., the depth of the pulse width modulation, where 0.4 modulates between 0.1 and 0.9, almost the maximum depth).  The initial duty cycle will start at 0.5 and be offset by the state of oscillator 1 every tick, to make that classic thick saw line from the C64 et al. The modulation will re-trigger every note on. Just like with envelope generators, the modulation oscillator has a 'slot' in the ControlCoefficients - the 6th coefficient, <code>mod</code> - so it can modulate PWM duty cycle, amplitude, frequency, filter frequency, or pan! And if you want to modulate more than one thing, like frequency and duty, just specify multiple ControlCoefficients:</p>
-<div class="language-python"><button title="Copy Code" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::bvparnw8dur4qh7sx7gmtk::--><code>amy.send(osc=1, wave=amy.TRIANGLE, freq=5, amp=1)
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::knak988eubc6at3knycy::--><code>amy.send(osc=1, wave=amy.TRIANGLE, freq=5, amp=1)
 amy.send(osc=0, wave=amy.PULSE, duty={&#039;const&#039;: 0.5, &#039;mod&#039;: 0.25}, freq={&#039;mod&#039;: 0.5}, mod_source=1)
 amy.send(osc=0, note=60, vel=0.5)</code></pre>
 </div><p><code>amy.py</code> has some helpful presets, if you want to use them, or add to them. To make that filter bass, just do <code>amy.preset(1, osc=0)</code> and then <code>amy.send(osc=0, vel=1, note=40)</code> to hear it. Here's another one:</p>
-<div class="language-python"><button title="Copy Code" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::e3h5081ulx5f9jyxjpwe5l::--><code>amy.preset(0, osc=2) # will set a simple sine wave tone on oscillator 2
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::5li1480wvmtmkododssi4h::--><code>amy.preset(0, osc=2) # will set a simple sine wave tone on oscillator 2
 amy.send(osc=2, note=50, vel=1.5) # will play the note at velocity 1.5
 amy.send(osc=2, vel=0) # will send a &quot;note off&quot; -- you&#039;ll hear the note release
 amy.send(osc=2, freq=220.5, vel=1.5) # same but specifying the frequency
@@ -754,51 +754,51 @@ amy.reset()</code></pre>
 <p>Every note on (specified by setting <code>vel</code> / <code>l</code> to anything &gt; 0) will trigger this envelope, and setting velocity to 0 will trigger the note off / release section.</p>
 <p>You can set a completely separate envelope using the second envelope generator, for example, to change pitch and amplitude at different rates.</p>
 <p>As with ControlCoefficients, missing values in the comma-separated parameter strings mean to leave the existing value unchanged.  However, unlike ControlCoefficients, it's important to explicitly indicate every value you want to leave unchanged, since the number of parameters provided determines the number of breakpoints in the set.  So in the following sequence:</p>
-<div class="language-"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre><!--::markdown-it-async::wy0glt9rjyfjklb4s7mzrg::--><code>amy.send(osc=0, bp0=&#039;0,1,1000,0.1,200,0&#039;)
+<div class="language-"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang"></span><pre><!--::markdown-it-async::31rh5pt491zmj6gqnxvd7a::--><code>amy.send(osc=0, bp0=&#039;0,1,1000,0.1,200,0&#039;)
 amy.send(osc=0, bp0=&#039;,,,0.9,,&#039;)</code></pre>
 </div><p>.. we end up with the same effect as <code>bp0='0,1,1000,0.9,200,0</code>.  However, if we do:</p>
-<div class="language-"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre><!--::markdown-it-async::ow6cbue24eyqtuxlgjgvf::--><code>amy.send(osc=0, bp0=&#039;0,1,1000,0.1,200,0&#039;)
+<div class="language-"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang"></span><pre><!--::markdown-it-async::zkzib6v5hywa8y1ahnfj::--><code>amy.send(osc=0, bp0=&#039;0,1,1000,0.1,200,0&#039;)
 amy.send(osc=0, bp0=&#039;,,,0.9&#039;)  # No trailing commas.</code></pre>
 </div><p>.. we effectively end up with <code>bp0='0,1,1000,0.9</code>, i.e. the 4 elements in the second <code>bp0</code> string change the first breakpoint set to have only 2 breakpoints, meaning a constant amplitude during note-on, then a final slow release to 0.9 -- not at all like the first form, and likely not what we wanted.</p>
 <h2 id="audio-input-and-effects" tabindex="-1">Audio input and effects <a class="header-anchor" href="#audio-input-and-effects" aria-label="Permalink to “Audio input and effects”">&#8203;</a></h2>
 <p>By setting <code>wave</code> to <code>AUDIO_IN0</code> or <code>AUDIO_IN1</code>, you can have either channel of a stereo input act as an AMY oscillator. You can use this oscillator like you would any other in AMY, apply global effects to it, add filters, change amplitude, etc.</p>
-<div class="language-"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre><!--::markdown-it-async::nqimgiogk0j2xzu719r17g::--><code>amy.send(osc=0, wave=amy.AUDIO_IN0, vel=1)
+<div class="language-"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang"></span><pre><!--::markdown-it-async::9r4uqj54c2ps2cfbwx9eli::--><code>amy.send(osc=0, wave=amy.AUDIO_IN0, vel=1)
 amy.echo(1, 250, 250, 0.5, 0.5)</code></pre>
 </div><p>If you are building your own audio system around AMY you will want to fill in the buffer <code>amy_in_block</code> before rendering. Our included <code>miniaudio</code>-based system does this for you. See <a href="https://github.com/shorepine/amychip" target="_blank" rel="noreferrer"><code>amychip</code></a> for a demo of this in hardware.</p>
 <h2 id="fm-algo-type" tabindex="-1">FM &amp; ALGO type <a class="header-anchor" href="#fm-algo-type" aria-label="Permalink to “FM &amp; ALGO type”">&#8203;</a></h2>
 <p>Try default DX7 patches, from 128 to 256:</p>
-<div class="language-python"><button title="Copy Code" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::xftbppboh1pb4tnfr0jfm::--><code>amy.send(voices=&#039;0&#039;, load_patch=128)
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::v7eu74ebg3g2onlw3unjyt::--><code>amy.send(voices=&#039;0&#039;, load_patch=128)
 amy.send(voices=&#039;0&#039;, note=50,vel=1)</code></pre>
 </div><p>The <code>load_patch</code> lets you set which preset is used (0 to 127 are the Juno 106 analog synth presets, and 128 to 255 are the DX7 FM presets).  But let's make the classic FM bell tone ourselves, without a patch. We'll just be using two operators (two sine waves), one modulating the other.</p>
 <p><img src="https://raw.githubusercontent.com/shorepine/alles/main/pics/dx7_algorithms.jpg" alt="DX7 Algorithms"></p>
 <p>When building your own algorithm sets, assign a separate oscillator as wave=<code>ALGO</code>, but the source oscillators as <code>SINE</code>. The algorithm #s are borrowed from the DX7. You don't have to use all 6 operators. Note that the <code>algo_source</code> parameter counts backwards from operator 6. When building operators, they can have their frequencies specified directly with <code>freq</code> or as a ratio of the root <code>ALGO</code> oscillator via <code>ratio</code>.</p>
-<div class="language-python"><button title="Copy Code" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::x37xp50584rbms1j801f35::--><code>amy.reset()
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::989gl8m0c3n2wg6xjuu6uu::--><code>amy.reset()
 amy.send(osc=2, wave=amy.SINE, ratio=1, amp={&#039;const&#039;: 1, &#039;vel&#039;: 0, &#039;eg0&#039;: 0})
 amy.send(osc=1, wave=amy.SINE, ratio=0.2, amp={&#039;const&#039;: 1, &#039;vel&#039;: 0, &#039;eg0&#039;: 1}, bp0=&#039;0,1,1000,0,0,0&#039;)
 amy.send(osc=0, wave=amy.ALGO, algorithm=1, algo_source=&#039;,,,,2,1&#039;)</code></pre>
 </div><p>Let's unpack that last line: we're setting up a ALGO &quot;oscillator&quot; that controls up to 6 other oscillators. We only need two, so we set the <code>algo_source</code> to mostly not used and have oscillator 2 modulate oscillator 1. You can have the operators work with each other in all sorts of crazy ways. For this simple example, we just use the DX7 algorithm #1. And we'll use only operators 2 and 1. Therefore our <code>algo_source</code> lists the oscillators involved, counting backwards from 6. We're saying only have operator 2 (osc 2 in this case) and operator 1 (osc 1).  From the picture, we see DX7 algorithm 1 has operator 2 feeding operator 1, so we have osc 2 providing the frequency-modulation input to osc 1.</p>
 <p>What's going on with <code>ratio</code>? And <code>amp</code>? Ratio, for FM synthesis operators, means the ratio of the frequency for that operator relative to the base note. So oscillator 1 will be played at 20% of the base note frequency, and oscillator 2 will take the frequency of the base note. In FM synthesis, the <code>amp</code> of a modulator input is  called &quot;beta&quot;, which describes the strength of the modulation.  Here, osc 2 is providing the modulation with a constant beta of 1, which will result in a range of sinusoids with frequencies around the carrier at multiples of the modulator.  We set osc 2's amp ControlCoefficients for velocity and envelope generator 0 to 0 because they default to 1, but we don't want them for this example (FM sines don't receive the parent note's velocity, so we need to disable its influence).  Osc 1 has <code>bp0</code> decaying its amplitude to 0 over 1000 ms, but because beta is fixed there's no other change to the sound over that time.</p>
 <p>Ok, we've set up the oscillators. Now, let's hear it!</p>
-<div class="language-python"><button title="Copy Code" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::5aym97y0lf7hnnkd1yw82h::--><code>amy.send(osc=0, note=60, vel=1)</code></pre>
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::rhc89hg8v2h2xbip97z2t2::--><code>amy.send(osc=0, note=60, vel=1)</code></pre>
 </div><p>You should hear a bell-like tone. Nice. (This example is also implemented using the C API in <a href="https://github.com/shorepine/amy/blob/b1ed189b01e6b908bc19f18a4e0a85761d739807/src/examples.c#L281" target="_blank" rel="noreferrer"><code>src/examples.c:example_fm()</code></a>.)</p>
 <p>FM gets much more exciting when we vary beta, which just means varying the amplitide envelope of the modulator.  The spectral effects of the frequency modulation depend on beta in a rich, nonlinear way, leading to the glistening FM sounds.  Let's try fading in the modulator over 5 seconds:</p>
-<div class="language-python"><button title="Copy Code" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::kbykvu0xoytg2oh73slfls::--><code>amy.reset()
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::mhotlp0x9xxfzkl0vvznd::--><code>amy.reset()
 amy.send(osc=2, wave=amy.SINE, ratio=0.2, amp={&#039;const&#039;: 1, &#039;vel&#039;: 0, &#039;eg0&#039;: 2}, bp0=&#039;0,0,5000,1,0,0&#039;)  # Op 2, modulator
 amy.send(osc=1, wave=amy.SINE, ratio=1, amp={&#039;const&#039;: 1, &#039;vel&#039;: 0, &#039;eg0&#039;: 0})  # Op 1, carrier
 amy.send(osc=0, wave=amy.ALGO, algorithm=1, algo_source=&#039;,,,,2,1&#039;)</code></pre>
 </div><p>Just a refresher on envelope generators; here we are saying to set the beta parameter (amplitude of the modulating tone) to 2x envelope generator 0's output, which starts at 0 at time 0 (actually, this is the default), then grows to 1.0 at time 5000ms - so beta grows to 2.0. At the release of the note, beta immediately drops back to 0. We can play it with:</p>
-<div class="language-python"><button title="Copy Code" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::kj5746zctuqnig2qb4o9y::--><code>amy.send(osc=0, note=60, vel=1)</code></pre>
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::lc7iw4ghjzbuh5c25lyqwk::--><code>amy.send(osc=0, note=60, vel=1)</code></pre>
 </div><p>and stop it with</p>
-<div class="language-python"><button title="Copy Code" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::x0akjc6d7jcageom1ee3g::--><code>amy.send(osc=0, vel=0)</code></pre>
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::wv43x6m3uxkizgn6fcqe8a::--><code>amy.send(osc=0, vel=0)</code></pre>
 </div><h2 id="partials" tabindex="-1">Partials <a class="header-anchor" href="#partials" aria-label="Permalink to “Partials”">&#8203;</a></h2>
 <p>Additive synthesis is simply adding together oscillators to make more complex tones. You can modulate the breakpoints of these oscillators over time, for example, changing their pitch or time without artifacts, as the synthesis is simply playing sine waves back at certain amplitudes and frequencies (and phases). It's well suited to certain types of instruments.</p>
 <p><img src="https://raw.githubusercontent.com/shorepine/alles/main/pics/partials.png" alt="Partials"></p>
 <p>We have analyzed the partials of a group of instruments and stored them as presets baked into the synth. Each of these patches are comprised of multiple sine wave oscillators, changing over time. The <code>PARTIALS</code> type has the presets:</p>
-<div class="language-python"><button title="Copy Code" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::vw4l3obnywqzrmof8ectb::--><code>amy.send(osc=0, vel=1, note=50, wave=amy.PARTIALS, patch=5) # a nice organ tone
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::8cquvjfsoree0bx64hxsc::--><code>amy.send(osc=0, vel=1, note=50, wave=amy.PARTIALS, patch=5) # a nice organ tone
 amy.send(osc=0, vel=1, note=55, wave=amy.PARTIALS, patch=5) # change the frequency
 amy.send(osc=0, vel=1, note=50, wave=amy.PARTIALS, patch=6, ratio=0.2) # ratio slows down the partial playback</code></pre>
 </div><p>The presets are just the start of what you can do with partials in AMY. You can analyze any piece of audio and decompose it into sine waves and play it back on the synthesizer in real time. It requires a little setup on the client end, here on macOS:</p>
-<div class="language-bash"><button title="Copy Code" class="copy"></button><span class="lang">bash</span><pre><!--::markdown-it-async::7xu7wcrdr9npt3mj3f22k::--><code>brew install python3 swig ffmpeg
+<div class="language-bash"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">bash</span><pre><!--::markdown-it-async::qcbi5vvqptdsh3t8oc33i::--><code>brew install python3 swig ffmpeg
 python3 -m pip install pydub numpy --user
 tar xvf loris-1.8.tar
 cd loris-1.8
@@ -807,7 +807,7 @@ make
 make install
 cd ..</code></pre>
 </div><p>And then in python (run <code>python3</code>):</p>
-<div class="language-python"><button title="Copy Code" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::vbpta261vsjghjqmms4mk::--><code>import partials, amy
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::5mifabuf4n97qb7dqemhov::--><code>import partials, amy
 (m, s) = partials.sequence(&#039;sounds/sleepwalk_original_45s.mp3&#039;)  # Any audio file
 153 partials and 977 breakpoints, max oscs used at once was 8
 
@@ -816,7 +816,7 @@ partials.play(s)</code></pre>
 </div><p><a href="https://user-images.githubusercontent.com/76612/131150119-6fa69e3c-3244-476b-a209-1bd5760bc979.mp4" target="_blank" rel="noreferrer">https://user-images.githubusercontent.com/76612/131150119-6fa69e3c-3244-476b-a209-1bd5760bc979.mp4</a></p>
 <p>You can see, given any audio file, you can hear a sine wave decomposition version of in AMY. This particular sound emitted 109 partials, with a total of 1029 breakpoints among them to play back to the mesh. Of those 109 partials, only 8 are active at once. <code>partials.sequence()</code> performs voice stealing to ensure we use as few oscillators as necessary to play back a set.</p>
 <p>There's a lot of parameters you can (and should!) play with in Loris. <code>partials.sequence</code>  and <code>partials.play</code>takes the following with their defaults:</p>
-<div class="language-python"><button title="Copy Code" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::2aqfojimc42gd0dsbyiwit::--><code>def sequence(filename, # any audio filename
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::9fqgo97jk8mjh2crlwf3mb::--><code>def sequence(filename, # any audio filename
              max_len_s = 10, # analyze first N seconds
              amp_floor=-30, # only accept partials at this amplitude in dB, lower #s == more partials
              hop_time=0.04, # time between analysis windows, impacts distance between breakpoints
@@ -836,7 +836,7 @@ def play(sequence, # from partials.sequence
          )</code></pre>
 </div><h2 id="build-your-own-partials" tabindex="-1">Build-your-own Partials <a class="header-anchor" href="#build-your-own-partials" aria-label="Permalink to “Build-your-own Partials”">&#8203;</a></h2>
 <p>You can also explicitly control partials in &quot;build-your-own partials&quot; mode, accessed via <code>wave=amy.BYO_PARTIALS</code>.  This sets up a string of oscs as individual sinusoids, just like <code>PARTIALS</code> mode, but it's up to you to control the details of each partial via its parameters, envelopes, etc.  You just have to say how many partials you want with <code>num_partials</code>.  You can then individually set up the amplitude <code>bp0</code> envelopes of the next <code>num_partials</code> oscs for arbitrary control, subject to the limit of 7 breakpoints plus release for each envelope.  For instance, to get an 8-harmonic pluck tone with a 50 ms attack, and harmonic weights and decay times inversely proportional to to the harmonic number:</p>
-<div class="language-python"><button title="Copy Code" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::9o73sn3kag773dbsalsz::--><code>num_partials = 8
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::yhxptk0ykalescs6bqddd9::--><code>num_partials = 8
 amy.send(osc=0, wave=amy.BYO_PARTIALS, num_partials=num_partials)
 for i in range(1, num_partials + 1):
     # Set up each partial as the corresponding harmonic of 261.63
@@ -845,7 +845,7 @@ for i in range(1, num_partials + 1):
              bp0=&#039;50,%.2f,%d,0,0,0&#039; % ((1.0 / i), 1000 // i))
 amy.send(osc=0, note=60, vel=1)</code></pre>
 </div><p>You can add a filter (or an envelope etc.) to the sum of all the <code>PARTIAL</code> oscs by configuring it on the parent <code>PARTIALS</code> osc:</p>
-<div class="language-"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre><!--::markdown-it-async::y4o1vsp9xmn240929n6m7r::--><code>amy.send(osc=0, filter=amy.FILTER_HPF, resonance=4, filter_freq={&#039;const&#039;: 200, &#039;eg1&#039;: 4}, bp1=&#039;0,0,1000,1,0,0&#039;)
+<div class="language-"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang"></span><pre><!--::markdown-it-async::bq1xaf0gdgojpqqld71o3n::--><code>amy.send(osc=0, filter=amy.FILTER_HPF, resonance=4, filter_freq={&#039;const&#039;: 200, &#039;eg1&#039;: 4}, bp1=&#039;0,0,1000,1,0,0&#039;)
 amy.send(osc=0, note=60, vel=1)
 # etc.</code></pre>
 </div><p>Note that the default <code>bp0</code> amplitude envelope of the <code>PARTIALS</code> osc is a gate, so if you want to have a nonzero release on your partials, you'll need to add a slower release to the <code>PARTIALS</code> osc to avoid it cutting them off.</p>
@@ -853,39 +853,39 @@ amy.send(osc=0, note=60, vel=1)
 <p>Please see our <a href="https://shorepine.github.io/amy/piano.html" target="_blank" rel="noreferrer">piano voice documentation</a> for more on the <code>INTERP_PARTIALS</code> type.</p>
 <h2 id="pcm" tabindex="-1">PCM <a class="header-anchor" href="#pcm" aria-label="Permalink to “PCM”">&#8203;</a></h2>
 <p>AMY comes with a set of 67 drum-like and instrument PCM samples to use as well, as they are normally hard to render with additive, subtractive or FM synthesis. You can use the type <code>PCM</code> and patch numbers 0-66 to explore them. Their native pitch is used if you don't give a frequency or note parameter. You can update the baked-in PCM sample bank using <code>amy_headers.py</code>.</p>
-<div class="language-python"><button title="Copy Code" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::1v8gv8t7txgvu0ycrk6rwt::--><code>amy.send(osc=0, wave=amy.PCM, vel=1, patch=10) # cowbell
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::oeh2kwawae5eq28miae3i::--><code>amy.send(osc=0, wave=amy.PCM, vel=1, patch=10) # cowbell
 amy.send(osc=0, wave=amy.PCM, vel=1, patch=10, note=70) # higher cowbell! </code></pre>
 </div><p>You can turn on sample looping, helpful for instruments, using <code>feedback</code>:</p>
-<div class="language-python"><button title="Copy Code" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::kqzmskio0zclaf7u5vdoo::--><code>amy.send(wave=amy.PCM,vel=1,patch=21,feedback=0) # clean guitar string, no looping
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::io7hliad9iqsxxpf3n9uq::--><code>amy.send(wave=amy.PCM,vel=1,patch=21,feedback=0) # clean guitar string, no looping
 amy.send(wave=amy.PCM,vel=1,patch=21,feedback=1) # loops forever until note off
 amy.send(vel=0) # note off
 amy.send(wave=amy.PCM,vel=1,patch=35,feedback=1) # nice violin</code></pre>
 </div><h2 id="sampler-aka-memory-pcm" tabindex="-1">Sampler (aka Memory PCM) <a class="header-anchor" href="#sampler-aka-memory-pcm" aria-label="Permalink to “Sampler (aka Memory PCM)”">&#8203;</a></h2>
 <p>You can also load your own samples into AMY at runtime. We support sending PCM data over the wire protocol. Use <code>load_sample</code> in <code>amy.py</code> as an example:</p>
-<div class="language-python"><button title="Copy Code" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::ntvcuocvr1odnwoy78wwy::--><code>amy.load_sample(&quot;G1.wav&quot;, patch=3)
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::ietu0ps2mrztawd20rxi::--><code>amy.load_sample(&quot;G1.wav&quot;, patch=3)
 amy.send(osc=0, wave=amy.PCM, patch=3, vel=1) # plays the sample</code></pre>
 </div><p>You can use any patch number. If it overlaps with an existing PCM baked in number, it will play the memory sample instead of the baked in sample until you <code>unload_sample</code> the patch.</p>
 <p>If the WAV file has sampler metadata like loop points or base MIDI note, we use that in AMY. You can set it directly as well using <code>loopstart</code>, <code>loopend</code>, <code>midinote</code> or <code>length</code> in the <code>load_sample</code> call. To unload a sample:</p>
-<div class="language-python"><button title="Copy Code" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::4fa6zvwb4kw876jxg6sw13::--><code>amy.unload_sample(3) # unloads the RAM for patch 3</code></pre>
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::gjqzmr432nydtb1poxayo::--><code>amy.unload_sample(3) # unloads the RAM for patch 3</code></pre>
 </div><p>Under the hood, if AMY receives a <code>load_sample</code> message (with patch number and nonzero length), it will then pause all other message parsing until it has received <code>length</code> amount of base64 encoded bytes over the wire protocol. Each individual message must be base64 encoded. Since AMY's maximum message length is 255 bytes, there is logic in <code>load_sample</code> in <code>amy.py</code>  to split the sample data into 188 byte chunks, which generates 252 bytes of base64 text. Please see <code>amy.load_sample</code> if you wish to load samples on other platforms.</p>
 <h2 id="voices-and-patches-dx7-piano-juno-6-custom-support" tabindex="-1"><a name="voices_and_patches"></a>Voices and patches (DX7, Piano, Juno-6, custom) support <a class="header-anchor" href="#voices-and-patches-dx7-piano-juno-6-custom-support" aria-label="Permalink to “Voices and patches (DX7, Piano, Juno-6, custom) support”">&#8203;</a></h2>
 <p>Up until now, we have been directly controlling the AMY oscillators, which are the fundamental building blocks for sound production.  However, as we've seen, most interesting tones involve multiple oscillators.  AMY provides a second layer of organization, <strong>voices</strong>, to make it easier to configure and use groups of oscillators in coordination.  And you configure a voice by using a <strong>patch</strong>, which is simply a stored list of AMY commands that set up one or more oscillators.</p>
 <p>A voice in AMY is a collection of oscillators. You can assign any patch to any voice number, or set up mulitple voices to have the same patch (for example, a polyphonic synth), and AMY will allocate the oscillators it needs under the hood.  (Note that when you use voices, you'll need to include the <code>voices</code> arg when addressing oscillators, and AMY will automatically route your command to the relevant oscillator in each voice set -- there's no other way to tell which oscillators are being used by which voices.)</p>
 <p>To play a patch, for instance the built-in patches emulating Juno and DX7 synthesizers and a piano, you allocate them to one or more voices, then send note events, or parameter moidifications, to those voices. We ship patches 0-127 for Juno, 128-255 for DX7, and 256 for our <a href="https://shorepine.github.io/amy/piano.html" target="_blank" rel="noreferrer">built in piano</a>. For example, a multitimbral Juno/DX7 synth can be set up like this:</p>
-<div class="language-python"><button title="Copy Code" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::00ty8tmvuaq6mitanrtg2aq::--><code>amy.send(voices=&#039;0,1,2,3&#039;, load_patch=1)     # Juno patch #1 on voice 0-3
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::uczwj6t48t2sb1nqlflme::--><code>amy.send(voices=&#039;0,1,2,3&#039;, load_patch=1)     # Juno patch #1 on voice 0-3
 amy.send(voices=&#039;4,5,6,7&#039;, load_patch=129)   # DX7 patch #2 on voices 4-7
 amy.send(voices=0, note=60, vel=1)           # Play note 60 on voice 0
 amy.send(voices=0, osc=0, filter_freq=8000)  # Open up the filter on the Juno voice (using its bottom oscillator)</code></pre>
 </div><p>The code in <code>amy_headers.py</code> generates these patches and bakes them into AMY so they're ready for playback on any device. You can add your own patches by storing alternative wire-protocol setup strings in <code>patches.h</code>.</p>
 <p>You can also create your own patches at runtime and use them for voices with <code>store_patch='PATCH_NUMBER,AMY_PATCH_STRING'</code> where <code>PATCH_NUMBER</code> is a number in the range 1024-1055. This message must be on its own in the <code>amy.send()</code> command, not combined with any other parameters, because AMY will treat the rest of the message as a patch rather than interpreting the remaining arguments as ususal.</p>
 <p>So you can do:</p>
-<div class="language-"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre><!--::markdown-it-async::f4seipq6o54bu1wpwgwssa::--><code>&gt;&gt;&gt; import amy; amy.live()  # Not needed on Tulip.
+<div class="language-"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang"></span><pre><!--::markdown-it-async::jz05nakiteym2aruamhk::--><code>&gt;&gt;&gt; import amy; amy.live()  # Not needed on Tulip.
 &gt;&gt;&gt; amy.send(store_patch=&#039;1024,v0S0Zv0S1Zv1w0f0.25P0.5a0.5Zv0w0f261.63,1,0,0,0,1A0,1,500,0,0,0L1Z&#039;)
 &gt;&gt;&gt; amy.send(voices=0, load_patch=1024)
 &gt;&gt;&gt; amy.send(voices=0, vel=2, note=50)</code></pre>
 </div><p>AMY infers the number of oscs needed for the patch at <code>store_patch</code> time. If you store a new patch over an old one, that old memory is freed and re-allocated. (We rely on <code>malloc</code> for all of this.)</p>
 <p>You can &quot;record&quot; patches in a sequence of commands like this:</p>
-<div class="language-"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre><!--::markdown-it-async::otsb6nkzwi99u0z7tzgynj::--><code>&gt;&gt;&gt; amy.log_patch()
+<div class="language-"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang"></span><pre><!--::markdown-it-async::sr2hf5p8p8ocv9lrnrmch6::--><code>&gt;&gt;&gt; amy.log_patch()
 &gt;&gt;&gt; # Execute any commands to set up the oscillators.
 &gt;&gt;&gt; amy.preset(5)
 &gt;&gt;&gt; bass_drum = amy.retrieve_patch()
@@ -901,11 +901,11 @@ amy.send(voices=0, osc=0, filter_freq=8000)  # Open up the filter on the Juno vo
             <title><![CDATA[Synth snippets]]></title>
             <link>https://chromatone.center/practice/synth/snippets.html</link>
             <guid isPermaLink="false">https://chromatone.center/practice/synth/snippets.html</guid>
-            <pubDate>Tue, 08 Sep 2026 12:09:21 GMT</pubDate>
+            <pubDate>Tue, 15 Sep 2026 06:59:29 GMT</pubDate>
             <description><![CDATA[Code pieces]]></description>
             <content:encoded><![CDATA[<h3 id="skew-by-upheaver" tabindex="-1">Skew by <a href="https://discord.com/channels/826071713426178078/834787928688689172/1123676571279048875" target="_blank" rel="noreferrer">upheaver</a> <a class="header-anchor" href="#skew-by-upheaver" aria-label="Permalink to “Skew by upheaver”">&#8203;</a></h3>
 <p>Sharing a useful snippet. JUCE's logskew function in Typescript, if anyone wants to scale their parameter values (for example convert 0-1 range to 20-20000 hz in a non linear way) :</p>
-<div class="language-js"><button title="Copy Code" class="copy"></button><span class="lang">js</span><pre><!--::markdown-it-async::2teelfuxqmi3b9wehuf1r9::--><code>const clamp = ( min: number, max: number, num: number ) =&gt; {
+<div class="language-js"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">js</span><pre><!--::markdown-it-async::1lkrzurjpx3jfpknelus3rn::--><code>const clamp = ( min: number, max: number, num: number ) =&gt; {
     return Math.min(Math.max(num, min), max);
 }
 
@@ -928,7 +928,7 @@ console.log(logskew( 20, 20000, 0.5, 1000)) // will output 1000</code></pre>
             <title><![CDATA[Reharmonization]]></title>
             <link>https://chromatone.center/theory/harmony/reharmonization/</link>
             <guid isPermaLink="false">https://chromatone.center/theory/harmony/reharmonization/</guid>
-            <pubDate>Tue, 08 Sep 2026 12:09:21 GMT</pubDate>
+            <pubDate>Tue, 15 Sep 2026 06:59:29 GMT</pubDate>
             <description><![CDATA[How to reharmonize a song]]></description>
             <content:encoded><![CDATA[<youtube-embed video="lz3WR-F_pnM" /><h2 id="reharmonization-chord-substitution-but-for-the-whole-chord-progression" tabindex="-1">Reharmonization = Chord substitution but for the whole chord progression <a class="header-anchor" href="#reharmonization-chord-substitution-but-for-the-whole-chord-progression" aria-label="Permalink to “Reharmonization = Chord substitution but for the whole chord progression”">&#8203;</a></h2>
 <p>Reharmonization is used to:</p>
@@ -1150,7 +1150,7 @@ console.log(logskew( 20, 20000, 0.5, 1000)) // will output 1000</code></pre>
             <title><![CDATA[Max Konyi's feeling states]]></title>
             <link>https://chromatone.center/theory/intervals/Max Konyi's feeling states.html</link>
             <guid isPermaLink="false">https://chromatone.center/theory/intervals/Max Konyi's feeling states.html</guid>
-            <pubDate>Tue, 08 Sep 2026 12:09:21 GMT</pubDate>
+            <pubDate>Tue, 15 Sep 2026 06:59:29 GMT</pubDate>
             <description><![CDATA[# Max Konyi's feeling states
 
 A granular look into Max Konyi's framework reveals that each of the 12 chromatic scale degrees acts as a distinct emotional ecosystem when measured against a steady tonic drone.
@@ -2470,7 +2470,7 @@ Multiple stages of valve gain/clipping can be &quot;cascaded&quot; to produce a 
             <pubDate>Thu, 16 Jun 2022 00:00:00 GMT</pubDate>
             <description><![CDATA[Record all MIDI notes on an infinite roll]]></description>
             <content:encoded><![CDATA[<MidiRoll style="position: sticky; top: 0;" /><div style="break-before: column; break-after:column"></div>
-<div  class="info custom-block"><p class="custom-block-title custom-block-title-default">INFO</p>
+<div class="info custom-block"><p class="custom-block-title custom-block-title-default">INFO</p>
 <ol>
 <li>Play some notes on your MIDI controller or computer keyboard and watch them appear on the endless roll.</li>
 <li>Drag or scroll over the canvas to change the roll speed.</li>
@@ -2559,7 +2559,7 @@ Multiple stages of valve gain/clipping can be &quot;cascaded&quot; to produce a 
             <guid isPermaLink="false">https://chromatone.center/practice/chroma/gram/</guid>
             <pubDate>Sun, 12 Jun 2022 00:00:00 GMT</pubDate>
             <description><![CDATA[Visual representation of any audio chroma content]]></description>
-            <content:encoded><![CDATA[<ChromaGram  style="position: sticky; top: 0;" /><div  class="info custom-block"><p class="custom-block-title custom-block-title-default">INFO</p>
+            <content:encoded><![CDATA[<ChromaGram  style="position: sticky; top: 0;" /><div class="info custom-block"><p class="custom-block-title custom-block-title-default">INFO</p>
 <p>This app shows the <a href="https://en.wikipedia.org/wiki/Chroma_feature" target="_blank" rel="noreferrer">chromagram</a> or the <a href="https://en.wikipedia.org/wiki/Harmonic_pitch_class_profiles" target="_blank" rel="noreferrer">12 tone harmonic pitch class profile</a> of the incoming signal. It means is analyzes the frequency spectrum and sums them according to one of the 12 pitch classes. The relative power of every pitch class is plotted, showing the primary tones of the audio signal. Pure sine tone will give us one line filled and noise will make all the bands glow equally bright.</p>
 <ol>
 <li><i class="p-3 mr-1 i-fluent-drag-24-regular"></i> Drag the canvas graph to change the roll speed.</li>
@@ -2591,7 +2591,7 @@ Multiple stages of valve gain/clipping can be &quot;cascaded&quot; to produce a 
             <guid isPermaLink="false">https://chromatone.center/practice/pitch/roll/</guid>
             <pubDate>Sun, 12 Jun 2022 00:00:00 GMT</pubDate>
             <description><![CDATA[Plot main pitch of any incoming audio on an endless roll]]></description>
-            <content:encoded><![CDATA[<PitchRoll style="position: sticky; top: 0;" /><div  class="info custom-block"><p class="custom-block-title custom-block-title-default">INFO</p>
+            <content:encoded><![CDATA[<PitchRoll style="position: sticky; top: 0;" /><div class="info custom-block"><p class="custom-block-title custom-block-title-default">INFO</p>
 <p>This app listens to the incoming audio and analyzes it for the base pitch and tempo. The note with the cents difference is show at the top left. Tempo is shown at the top right. The pitch is plotted on the vertical axis with colored circles while beats are drawn as vertical lines.</p>
 <ol>
 <li>Press <i class="p-3 mr-1 i-la-play"></i> to start plotting the audio parameters. Press <i class="p-3 mr-1 i-la-pause"></i> to pause the process. You can also do this by clicking the graph itself or by pressing the <strong>Spacebar</strong> key on your keyboard.</li>
@@ -2634,7 +2634,7 @@ Multiple stages of valve gain/clipping can be &quot;cascaded&quot; to produce a 
             <guid isPermaLink="false">https://chromatone.center/practice/chord/fifths/</guid>
             <pubDate>Thu, 02 Jun 2022 00:00:00 GMT</pubDate>
             <description><![CDATA[12 major chords organized in a sequence of perfect fifths along with their relative minors]]></description>
-            <content:encoded><![CDATA[<div  class="info custom-block"><p class="custom-block-title custom-block-title-default">INFO</p>
+            <content:encoded><![CDATA[<div class="info custom-block"><p class="custom-block-title custom-block-title-default">INFO</p>
 <h2 id="the-double-circle-of-fifths-a-tool-to-explore-chords-in-tonal-space" tabindex="-1">The double circle of fifths. A tool to explore chords in tonal space <a class="header-anchor" href="#the-double-circle-of-fifths-a-tool-to-explore-chords-in-tonal-space" aria-label="Permalink to “The double circle of fifths. A tool to explore chords in tonal space”">&#8203;</a></h2>
 <p>The circle of fifths organizes pitches in a sequence of perfect fifths, generally shown as a circle with the pitches (and their corresponding keys) in a clockwise progression. Musicians and composers often use the circle of fifths to describe the musical relationships between pitches. Its design is helpful in composing and harmonizing melodies, building chords, and modulating to different keys within a composition.</p>
 <p>Moving counterclockwise, the pitches descend by a fifth, but ascending by a perfect fourth will lead to the same note an octave higher (therefore in the same pitch class). Moving counter-clockwise from C could be thought of as descending by a fifth to F, or ascending by a fourth to F.</p>
@@ -2685,7 +2685,7 @@ Multiple stages of valve gain/clipping can be &quot;cascaded&quot; to produce a 
 <p>Toussaint could have called them Bjorklund rhythms, but Euclidean rhythm has a more timeless feel. As I will discuss later, there are other ways of deriving the same set of patterns.</p>
 <h2 id="euclidean-rhythm-in-code" tabindex="-1">Euclidean rhythm in code <a class="header-anchor" href="#euclidean-rhythm-in-code" aria-label="Permalink to “Euclidean rhythm in code”">&#8203;</a></h2>
 <p>This is fairly basic to code. As an input, we’ll use the number of onsets, and a total number of pulses. To keep things simple we’ll have our end result be an array of 1s (onset) and 0s (no onset). Conceptually, we need keep track of two groups: a front group and a back group. To start, the front group will be an array consisting of the onsets (each in their own array) and the back array will consist of one array for each non-onset pulse. Then recursively we create a new front array by concatenating pairs from the old front and back until we run out of elements in either the front or the back, and the new back array will be whatever elements are left over. We keep going until the back array has one (or zero) elements, then we flatten the resulting 2nd array. Our Swift code looks something like this:</p>
-<div class="language-swift"><button title="Copy Code" class="copy"></button><span class="lang">swift</span><pre><!--::markdown-it-async::md2bwp5xmtvx2u4h2773p::--><code>func generateEuclidean(onsets: Int, pulses: Int) -&gt; [Int] {
+<div class="language-swift"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">swift</span><pre><!--::markdown-it-async::mhsoibrbt8shpsxijwm4q::--><code>func generateEuclidean(onsets: Int, pulses: Int) -&gt; [Int] {
     let front:[[Int]] = Array(repeating: [1], count: onsets)
     let back:[[Int]] = Array(repeating: [0], count: pulses - onsets)
     return euclidRecursive(front: front, back: back).flatMap {$0}
@@ -2712,7 +2712,7 @@ private func euclidRecursive (front: [[Int]], back: [[Int]]) -&gt; [[Int]] {
 <p>And to get our rhythm, we can just say that if floor of the y-value at each x is the same as the previous value, then it is a continuation of the previous onset, and if it has a new y-value, it is the beginning of a new onset.</p>
 <img src="./images/9.png" />
 <p>Here is the algorithm in Swift. Not that the Bjorklund approach was difficult, but the Bresenham approach is incredibly simple to code.</p>
-<div class="language-swift"><button title="Copy Code" class="copy"></button><span class="lang">swift</span><pre><!--::markdown-it-async::us0m5f7bf881hqyeltt7g4::--><code>func bresenhamEuclidean(onsets: Int, pulses: Int) -&gt; [Int] {
+<div class="language-swift"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">swift</span><pre><!--::markdown-it-async::8m0k8n7zzbticdddixj1v::--><code>func bresenhamEuclidean(onsets: Int, pulses: Int) -&gt; [Int] {
     let slope = Double(onsets) / Double(pulses)
     var result = [Int]()
     var previous: Int? = nil
@@ -4192,7 +4192,7 @@ With their combination of polyphonic singing, polyrhythmic percussion and masked
             <content:encoded><![CDATA[<client-only >
 <midi-radar style="position: sticky; top: 0;"  /><midi-panel class=" mx-2 max-w-55ch"  /></client-only>
 <div style="break-before: column; break-after:column"></div>
-<div  class="info custom-block"><p class="custom-block-title custom-block-title-default">INFO</p>
+<div class="info custom-block"><p class="custom-block-title custom-block-title-default">INFO</p>
 <h3 id="see-all-the-midi-signals-on-the-clock" tabindex="-1">See all the MIDI signals on the clock <a class="header-anchor" href="#see-all-the-midi-signals-on-the-clock" aria-label="Permalink to “See all the MIDI signals on the clock”">&#8203;</a></h3>
 <p>Press play on your sequencer to start run the radar by incoming MIDI-clock signal, or just press <code>spacebar</code> to start internal metronome, that will drive the radar clocks.</p>
 <p>Drag across the circle up and down to adjust temporal zoom - ther higher the zoom, the longer the loop (from one to 8 measures).</p>
@@ -6117,7 +6117,7 @@ Meter is the measurement of the number of pulses between more or less regularly 
 <p>Within the <a href="https://richterguitar.com/flamenco-guitar/flamenco-guitar-toques-and-palos/fandangos/" target="_blank" rel="noreferrer">Fandango</a> <em>toque</em> are regional styles known as ‘<em>fandangos locales’</em>. Fandangos de Huelva is one such example.</p>
 <p>Unlike the <em>toque libre</em> fandango styles, Fandangos de Huelva follows a strict <em>compás</em> structure that can be danced to.</p>
 <p>You can count the 12 beat <em>compás</em> of Fandango de Huelva into beats of 3 as seen here:</p>
-<p><img src="./fandangos-de-huelva-compas-01.png" alt="Fandangos de Huelva 12 beat compás, silent beats are indicated with quarter rests."></p>
+<p><img src="./fandangos-de-huelva-compas-01.png" alt="Fandangos de Huelva 12 beat compás, silent beats are indicated with quarter rests." width="1081" height="181"></p>
 <blockquote>
 <p>Fandangos de Huelva Compás, silent beats indicated with quarter rests</p>
 </blockquote>
@@ -6152,7 +6152,7 @@ Meter is the measurement of the number of pulses between more or less regularly 
 <h3 id="tientos" tabindex="-1">Tientos <a class="header-anchor" href="#tientos" aria-label="Permalink to “Tientos”">&#8203;</a></h3>
 <p>The Tientos is often danced, and is a bit slower than other tangos. However every <a href="https://richterguitar.com/flamenco-guitar/flamenco-guitar-toques-and-palos/tientos/" target="_blank" rel="noreferrer">Tientos</a> does speed up and become a tango by the end following the dance <em>escobilla</em> sections. You can count the <a href="https://richterguitar.com/flamenco-guitar/flamenco-guitar-toques-and-palos/tientos/" target="_blank" rel="noreferrer">Tientos</a> four beat <em>compás</em> with accents on beats 2 and 4.</p>
 <p>There is a distinctive syncopation in the rhythm of the Tientos. You can see one of the simplest variations below:</p>
-<p><img src="./tientos-compas-01.png" alt="Tientos Compás simple variation with syncopation."></p>
+<p><img src="./tientos-compas-01.png" alt="Tientos Compás simple variation with syncopation." width="735" height="193"></p>
 <blockquote>
 <p>Basic Tientos Compás</p>
 </blockquote>
@@ -6160,7 +6160,7 @@ Meter is the measurement of the number of pulses between more or less regularly 
 <p>The Spanish expression Ida y Vuelta (“departure and return” or “round trip”) refers to <em>palos</em> that were exported from Spain to the New World, particularly Cuba, where they evolved with African and Native American music influences. Immigrants later imported these forms back to Spain with a new flair.</p>
 <h3 id="colombianas" tabindex="-1">Colombianas <a class="header-anchor" href="#colombianas" aria-label="Permalink to “Colombianas”">&#8203;</a></h3>
 <p>People credit the famous flamenco singer <a href="https://en.wikipedia.org/wiki/Pepe_Marchena" target="_blank" rel="noreferrer">Pepe Marchena</a> for creating the <a href="https://richterguitar.com/flamenco-guitar/flamenco-guitar-toques-and-palos/colombianas/" target="_blank" rel="noreferrer">Colombiana</a> (or <em>Colombina</em>) in 1931. The guitarist Ramon Montoya accompanied Marchena in recordings of the <a href="https://richterguitar.com/flamenco-guitar/flamenco-guitar-toques-and-palos/colombianas/" target="_blank" rel="noreferrer">Colombiana</a> the following year. <a href="https://richterguitar.com/flamenco-guitar/flamenco-guitar-toques-and-palos/colombianas/" target="_blank" rel="noreferrer">Colombianas</a> are in a major mode and follow a 4-beat <em>compás</em> similar to the Rumba:</p>
-<p><img src="./colombiana-compas-01.png" alt="Flamenco Colombiana basic compás rhythm with accents. "></p>
+<p><img src="./colombiana-compas-01.png" alt="Flamenco Colombiana basic compás rhythm with accents. " width="636" height="163"></p>
 <blockquote>
 <p>Basic Colombiana Compás</p>
 </blockquote>
@@ -7114,7 +7114,7 @@ sixteenth:  1  e  &amp;  a  2  e  &amp;  a  3  e  &amp;  a  4  e  &amp;  a
             <pubDate>Sat, 25 Sep 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[Upgraded staff notation by Jose A. Sotorrio]]></description>
             <content:encoded><![CDATA[<p>Bilinear is quite similar to <a href="http://musicnotation.org/system/twinline-notation-by-thomas-reed/" target="_blank" rel="noreferrer">Reed’s Twinline</a>. Sotorrio maintains he had no prior knowledge of Twinline when designing Bilinear, since he relied primarily on Gardner Read’s Source Book of Proposed Music Notation Reforms which does not include Twinline. (It was published in 1987, just after Twinline was introduced in 1986.) Since Twinline is the earlier system (Bilinear was introduced in 1997), Sotorrio now offers Bilinear as a variant of Twinline.</p>
-<p><img src="./bilinear-jose-sotorrio.png" alt=""></p>
+<p><img src="./bilinear-jose-sotorrio.png" alt="" width="500" height="110"></p>
 <p>The two systems share the same line pattern and the same alternating oval and triangle shaped noteheads, but there are differences in their details. Twinline’s triangles are right triangles with the 90 degree angle at their tip, while Bilinear’s triangles have a sharper angle at their tip. Also, the shape, color, and size of noteheads in Bilinear may be different depending on a note’s duration, as illustrated in the following image (courtesy of the Bilinear website):</p>
 <p><img src="https://chromatone.center/assets/blinearcomparison2.DFgwWvKv.jpg" alt=""></p>
 ]]></content:encoded>
@@ -7186,9 +7186,9 @@ sixteenth:  1  e  &amp;  a  2  e  &amp;  a  3  e  &amp;  a  4  e  &amp;  a
 <p>“The need for a new notation, or a radical improvement of the old, is greater than it seems, and the number of ingenious minds that have tackled the problem is greater than one might think.” — Arnold Schoenberg</p>
 </blockquote>
 <p>Here is a chromatic scale on a traditional diatonic staff (above) and the same chromatic scale on a chromatic staff with five lines (below). This is just one of many versions of chromatic staff.</p>
-<p><img src="./chromatic-staff.png" alt=""></p>
+<p><img src="./chromatic-staff.png" alt="" width="577" height="114"></p>
 <p>On a chromatic staff each note has its own line or space on the staff. On the traditional staff only seven notes have their own line or space, the notes from just one key (C major/A minor, the white keys on the piano). The remaining notes (the black keys) have to be represented by altering these seven notes with sharp signs (#) or flat signs (b), either in the key signature or as an accidental.</p>
-<p><img src="./octaves-chromatic-5-line.png" alt=""></p>
+<p><img src="./octaves-chromatic-5-line.png" alt="" width="570" height="150"></p>
 <p>All of these features of traditional music notation combine to make reading music much more difficult than it might be with a better notation system. For an analogy, imagine trying to do arithmetic with Roman numerals. It can be done, but the notation system makes a big difference. Of course it is important to view traditional notation in its broader historical context and to keep in mind the innovations and reforms that it has undergone over time.</p>
 <p><a href="http://musicnotation.org/" target="_blank" rel="noreferrer">Music notation project</a></p>
 ]]></content:encoded>
@@ -7300,7 +7300,7 @@ Twelve-tone Phrygian/Lydian polymode (C) C–D♭–D–E♭–E–F–F♯–G�
 <h2 id="technical-specification" tabindex="-1">Technical specification <a class="header-anchor" href="#technical-specification" aria-label="Permalink to “Technical specification”">&#8203;</a></h2>
 <p>To be recognized by ringtone programs, an RTTTL/Nokring format ringtone must contain three specific elements: name, settings, and notes.</p>
 <p>For example, here is the RTTTL ringtone for Haunted House:</p>
-<div class="language-"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre><!--::markdown-it-async::wjjqxfu32fz81yyx6ps58::--><code>HauntHouse: d=4,o=5,b=108: 2a4, 2e, 2d#, 2b4, 2a4, 2c, 2d, 2a#4, 2e., e, 1f4, 1a4, 1d#, 2e., d, 2c., b4, 1a4, 1p, 2a4, 2e, 2d#, 2b4, 2a4, 2c, 2d, 2a#4, 2e., e, 1f4, 1a4, 1d#, 2e., d, 2c., b4, 1a4</code></pre>
+<div class="language-"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang"></span><pre><!--::markdown-it-async::h6o7q2mcg863rfqldsi8w6::--><code>HauntHouse: d=4,o=5,b=108: 2a4, 2e, 2d#, 2b4, 2a4, 2c, 2d, 2a#4, 2e., e, 1f4, 1a4, 1d#, 2e., d, 2c., b4, 1a4, 1p, 2a4, 2e, 2d#, 2b4, 2a4, 2c, 2d, 2a#4, 2e., e, 1f4, 1a4, 1d#, 2e., d, 2c., b4, 1a4</code></pre>
 </div><p>The three parts are separated by a colon.</p>
 <ul>
 <li>
@@ -7409,7 +7409,7 @@ C / K / D / T / E / F / H / G / P / A / V / B.</p>
             <pubDate>Fri, 17 Sep 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[A simple notation used to identify a piece of music through melodic motion]]></description>
             <content:encoded><![CDATA[<p>The Parsons code, formally named the Parsons code for melodic contours, is a simple notation used to identify a piece of music through melodic motion — movements of the pitch up and down. Denys Parsons (father of Alan Parsons) developed this system for his 1975 book The Directory of Tunes and Musical Themes. Representing a melody in this manner makes it easier to index or search for pieces, particularly when the notes' values are unknown. Parsons covered around 15,000 classical, popular and folk pieces in his dictionary. In the process he found out that *UU is the most popular opening contour, used in 23% of all the themes, something that applies to all the genres.</p>
-<div class="language-"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre><!--::markdown-it-async::m9uwpxc974qwut847vfdye::--><code>Parsons Code of Ode to Joy
+<div class="language-"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang"></span><pre><!--::markdown-it-async::mxrwetqm0k9rbty03guth::--><code>Parsons Code of Ode to Joy
 
     Parsons$ ./contour *RUURDDDDRUURDR
             *-*
@@ -7481,7 +7481,7 @@ C / K / D / T / E / F / H / G / P / A / V / B.</p>
             <content:encoded><![CDATA[<p><img src="https://chromatone.center/assets/chromatic.sO29Tumx.svg" alt="svg"></p>
 <p>Two notes sounding simultaneously or sequentially form the basic building block for all the emotional expressiveness of music. They form some kind of relationships that bring up some distinct feeling.</p>
 <p>The most basic is the 1:2 ratio of an <a href="./unison-octave/">Unison and octave</a>, that are foundational for cyclic nature of pitch class space. <a href="./fifth-fourth/">Perfect Fifth and Fourth</a> are the foundational consonances that bring joy of the simple 2:3 and 3:4 ratios. This is the root of the 12 note system as a whole.</p>
-<p><a href="./third-sixth/">Thirds and Sixth</a> are the imperfect consonances to evoke deeper feelings while the <a href="./second-seventh/">Seconds and Sevenths</a> are the sharper dissonances to spice everything up. We'll explore the process of the <a href="./emancipation/">Emancipation of dissonance</a> to find out how did we get at this point in our pitch pairs interpretation. And how science finally got <a href="./dissonance/">a measure for sound consonance</a>. And take a brief look at some mathematical implications of building <a href="./cycles/">interval chains</a>.</p>
+<p><a href="./third-sixth/">Thirds and Sixth</a> are the imperfect consonances to evoke deeper feelings while the <a href="./second-seventh/">Seconds and Sevenths</a> are the sharper dissonances to spice everything up. We'll explore the process of the <a href="./emancipation/">Emancipation of dissonance</a> to find out how did we get at this point in our pitch pairs interpretation. And take a brief look at some mathematical implications of building <a href="./cycles/">interval chains</a>.</p>
 <youtube-embed video="3sUpoSTy8zw" /><youtube-embed video="cyW5z-M2yzw" />]]></content:encoded>
             <author>davay@chromatone.center (Denis Starov)</author>
             <enclosure url="https://chromatone.center/guang-yang.jpg" length="0" type="image/jpg"/>
@@ -7570,7 +7570,7 @@ C / K / D / T / E / F / H / G / P / A / V / B.</p>
             <guid isPermaLink="false">https://chromatone.center/theory/notes/alternative/scientific/</guid>
             <pubDate>Tue, 14 Sep 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[American SPN]]></description>
-            <content:encoded><![CDATA[<p><img src="./Scientific_pitch_notation_octaves_of_C.png" alt=""></p>
+            <content:encoded><![CDATA[<p><img src="./Scientific_pitch_notation_octaves_of_C.png" alt="" width="583" height="355"></p>
 <p>Scientific pitch notation (SPN), also known as American standard pitch notation (ASPN) and international pitch notation (IPN),[1] is a method of specifying musical pitch by combining a musical note name (with accidental if needed) and a number identifying the pitch's octave.</p>
 <p>Although scientific pitch notation was originally designed as a companion to scientific pitch (see below), the two are not synonymous. Scientific pitch is a pitch standard—a system that defines the specific frequencies of particular pitches (see below). Scientific pitch notation concerns only how pitch names are notated, that is, how they are designated in printed and written text, and does not inherently specify actual frequencies. Thus, the use of scientific pitch notation to distinguish octaves does not depend on the pitch standard used.</p>
 <p>The notation makes use of the traditional tone names (A to G) which are followed by numbers showing which octave they are part of.</p>
@@ -7969,6 +7969,7 @@ Level e: C D♭ D E♭ E F F♯ G A♭ A B♭ B C</p>
 <p>According to David Kopp (2002, 1), &quot;Harmonic space, or tonal space as defined by Fred Lerdahl, is the abstract nexus of possible normative harmonic connections in a system, as opposed to the actual series of temporal connections in a realized work, linear or otherwise.&quot;</p>
 ]]></content:encoded>
             <author>davay@chromatone.center (Denis Starov)</author>
+            <enclosure url="https://chromatone.center/garmin-b.jpg" length="0" type="image/jpg"/>
         </item>
         <item>
             <title><![CDATA[Scale degrees]]></title>
@@ -8036,6 +8037,7 @@ Level e: C D♭ D E♭ E F F♯ G A♭ A B♭ B C</p>
 </blockquote>
 ]]></content:encoded>
             <author>davay@chromatone.center (Denis Starov)</author>
+            <enclosure url="https://chromatone.center/erol-ahmed.jpg" length="0" type="image/jpg"/>
         </item>
         <item>
             <title><![CDATA[Third and sixth]]></title>
@@ -8091,7 +8093,7 @@ Level e: C D♭ D E♭ E F F♯ G A♭ A B♭ B C</p>
 </ul>
 ]]></content:encoded>
             <author>davay@chromatone.center (Denis Starov)</author>
-            <enclosure url="https://chromatone.center/assets/Comparison_of_major_thirds.mjXdG2SQ.png" length="0" type="image/png"/>
+            <enclosure url="https://chromatone.center/viswanath-v-pai.jpg" length="0" type="image/jpg"/>
         </item>
         <item>
             <title><![CDATA[Syncopation, swing and groove]]></title>
@@ -8972,7 +8974,7 @@ C / K / D / T / E / F / H / G / P / A / V / B.</p>
 <youtube-embed video="ai7QnHS7C7g" /><youtube-embed video="dKcCscadzkg" /><p><img src="https://chromatone.center/assets/Human-visual-pathway.CUChjsbE.svg" alt="Visual pathway"></p>
 <p>Human eye with normal vision has three kinds of cone cells that sense light, having peaks of spectral sensitivity in short (&quot;S&quot;, 420 nm – 440 nm), middle (&quot;M&quot;, 530 nm – 540 nm), and long (&quot;L&quot;, 560 nm – 580 nm) wavelengths. These cone cells underlie human color perception in conditions of medium and high brightness; in very dim light color vision diminishes, and the low-brightness, monochromatic &quot;night vision&quot; receptors, denominated &quot;rod cells&quot;, become effective. Thus, three parameters corresponding to levels of stimulus of the three kinds of cone cells, in principle describe any human color sensation. Weighting a total light power spectrum by the individual spectral sensitivities of the three kinds of cone cells renders three effective values of stimulus; these three values compose a tristimulus specification of the objective color of the light spectrum. The three parameters, denoted &quot;S&quot;, &quot;M&quot;, and &quot;L&quot;, are indicated using a 3-dimensional space denominated the &quot;LMS color space&quot;, which is one of many color spaces devised to quantify human color vision.</p>
 <youtube-embed video="kN9lN9L8eKE" /><p><img src="https://chromatone.center/assets/color-sensitivity.Cbsm2g9x.jpg" alt="Color sensitivity"></p>
-<p><img src="./images/Cone-fundamentals-with-srgb-spectrum.svg" alt="Normalized cone response"></p>
+<p><img src="./images/Cone-fundamentals-with-srgb-spectrum.svg" alt="Normalized cone response" width="540" height="380"></p>
 <blockquote>
 <p><img src="https://chromatone.center/assets/cie-1931.p1UAY_HE.svg" alt="The CIE XYZ standard observer color matching functions"></p>
 <p>The CIE XYZ standard observer color matching functions</p>
@@ -9315,7 +9317,7 @@ A picture from the 2009 non-fiction book Wednesday Is Indigo Blue. Note the numb
 <h2 id="ideasthesia" tabindex="-1">Ideasthesia <a class="header-anchor" href="#ideasthesia" aria-label="Permalink to “Ideasthesia”">&#8203;</a></h2>
 <p>Ideasthesia (alternative spelling ideaesthesia) is a neuroscientific phenomenon in which activations of concepts (inducers) evoke perception-like sensory experiences (concurrents). The name comes from the Ancient Greek ἰδέα (idéa) and αἴσθησις (aísthēsis), meaning &quot;sensing concepts&quot; or &quot;sensing ideas&quot;. The notion was introduced by neuroscientist Danko Nikolić as an alternative explanation for a set of phenomena traditionally covered by synesthesia.</p>
 <p>While &quot;synesthesia&quot; meaning &quot;union of senses&quot; implies the association of two sensory elements with little connection to the cognitive level, empirical evidence indicated that most phenomena linked to synesthesia are in fact induced by semantic representations. That is, the linguistic meaning of the stimulus is what is important rather than its sensory properties. In other words, while synesthesia presumes that both the trigger (inducer) and the resulting experience (concurrent) are of sensory nature, ideasthesia presumes that only the resulting experience is of sensory nature while the trigger is semantic.</p>
-<p><img src="./Booba-Kiki.svg" alt="svg"></p>
+<p><img src="./Booba-Kiki.svg" alt="svg" width="500" height="255"></p>
 <p>Over the past decade, it has been suggested that the Bouba/Kiki phenomenon is a case of ideasthesia. Most people will agree that the star-shaped object on the left is named Kiki and the round one on the right Bouba. It has been assumed that these associations come from direct connections between visual and auditory cortices. However, Gomez et al. have shown that Kiki/Bouba associations are much richer as either word and either image is associated semantically to a number of concepts such as white or black color, feminine vs. masculine, cold vs. hot, and others. These sound-shape associations seem to be related through a large overlap between semantic networks of Kiki and star-shape on the one hand, and Bouba and round-shape on the other hand. For example, both Kiki and star-shape are clever, small, thin and nervous. This indicates that behind Kiki-Bouba effect lies a rich semantic network. In other words, our sensory experience is largely determined by the meaning that we assign to stimuli.</p>
 <h2 id="implications-for-art-theory" tabindex="-1">Implications for art theory <a class="header-anchor" href="#implications-for-art-theory" aria-label="Permalink to “Implications for art theory”">&#8203;</a></h2>
 <p>The concept of ideasthesia has been often discussed in relation to art, and also used to formulate a psychological theory of art. According to the theory, we consider something to be a piece of art when experiences induced by the piece are accurately balanced with semantics induced by the same piece. Thus, a piece of art makes us both strongly think and strongly experience. Moreover, the two must be perfectly balanced such that the most salient stimulus or event is both the one that evokes strongest experiences (fear, joy, ... ) and strongest cognition (recall, memory, ...) — in other words, idea is well balanced with aesthesia.</p>
@@ -9355,10 +9357,10 @@ A picture from the 2009 non-fiction book Wednesday Is Indigo Blue. Note the numb
             <description><![CDATA[The harmonic relations of notes]]></description>
             <content:encoded><![CDATA[<client-only >
 <SoundDissonance style="column-span: all" /></client-only >
-<div  class="info custom-block"><p class="custom-block-title custom-block-title-default">INFO</p>
+<div class="info custom-block"><p class="custom-block-title custom-block-title-default">INFO</p>
 <p>A simple curve for two sine waves is readily established and then we can calculate and explore sensory dissonance curves for complex sounds as the sum of interactions between their partials.</p>
 <p>Try dragging the note to hear the exact interval. Toggle the plain sine and rich sawtooth waveforms. Compare the feeling of consonance and the dips in the curve yourself.</p>
-<p><a href="./../../../theory/intervals/dissonance/">More info in the Theory research</a>.</p>
+<p><a href="./../../../theory/sound/dissonance/">More info in the Theory research</a>.</p>
 </div>
 ]]></content:encoded>
             <author>davay@chromatone.center (Denis Starov)</author>
@@ -9452,7 +9454,7 @@ A picture from the 2009 non-fiction book Wednesday Is Indigo Blue. Note the numb
 <p><strong>Commas</strong> are very small intervals that result from minute differences between pairs of just intervals. For example, the 5:4 ratio is different from the Pythagorean (3-limit) major third (81:64) by a difference of 81:80, called the syntonic comma.</p>
 <p><img src="https://chromatone.center/assets/intervals.CWuDBgaD.svg" alt="svg"></p>
 <p>A twelve-tone scale can also be created by compounding harmonics up to the fifth: namely, by multiplying the frequency of a given reference note (the base note) by powers of 2, 3, or 5, or a combination of them. This method is called five-limit tuning.</p>
-<p><img src="./pentactys.svg" alt="svg"></p>
+<p><img src="./pentactys.svg" alt="svg" width="433" height="362"></p>
 <p>5-limit tuning encompasses ratios additionally using the number 5 and its powers, such as 5:4, a major third, and 15:8, a major seventh. 7-limit and higher systems use higher partials in the overtone series.</p>
 ]]></content:encoded>
             <author>davay@chromatone.center (Denis Starov)</author>
@@ -9470,7 +9472,7 @@ A picture from the 2009 non-fiction book Wednesday Is Indigo Blue. Note the numb
 <p>E♭–B♭–F–C–G–D–A–E–B–F♯–C♯–G♯</p>
 </blockquote>
 <p>This succession of eleven 3:2 intervals spans across a wide range of frequency (on a piano keyboard, it encompasses 77 keys). Since notes differing in frequency by a factor of 2 are given the same name, it is customary to divide or multiply the frequencies of some of these notes by 2 or by a power of 2. The purpose of this adjustment is to move the 12 notes within a smaller range of frequency, namely within the interval between the base note D and the D above it (a note with twice its frequency). This interval is typically called the basic octave (on a piano keyboard, an octave has only 12 keys).</p>
-<p><img src="./Tetractys.svg" alt="svg"></p>
+<p><img src="./Tetractys.svg" alt="svg" width="338" height="283"></p>
 <p>The tetractys (Greek: τετρακτύς) is a triangular figure consisting of ten points arranged in four rows: one, two, three, and four points in each row, which is the geometrical representation of the fourth triangular number. As a mystical symbol, it was very important to the secret worship of Pythagoreanism.</p>
 ]]></content:encoded>
             <author>davay@chromatone.center (Denis Starov)</author>
@@ -9505,7 +9507,7 @@ A picture from the 2009 non-fiction book Wednesday Is Indigo Blue. Note the numb
             <description><![CDATA[From neumes to staves]]></description>
             <content:encoded><![CDATA[<h2 id="medieval-neumes-c-500–1400" tabindex="-1">Medieval neumes c. 500–1400 <a class="header-anchor" href="#medieval-neumes-c-500–1400" aria-label="Permalink to “Medieval neumes c. 500–1400”">&#8203;</a></h2>
 <youtube-embed video="2OBB5-bP6qs" /><p><img src="https://chromatone.center/assets/Dies_irae_ms_fragm.B1fydv3B.jpg" alt="">
-<img src="./images/Dies_irae.gif" alt=""></p>
+<img src="./images/Dies_irae.gif" alt="" width="722" height="95"></p>
 <p>Early Western medieval notation was written with neumes, which did not specify exact pitches but only the shape of the melodies, i.e. indicating when the musical line went up or down; presumably these were intended as mnemonics for melodies which had been taught by rote.</p>
 <p><img src="https://chromatone.center/assets/adiastemic.C9c2_Tv5.jpg" alt=""></p>
 <p>During the 9th through 11th centuries a number of systems were developed to specify pitch more precisely, including diastematic neumes whose height on the page corresponded with their absolute pitch level (Longobardian and Beneventan manuscripts from Italy show this technique around AD 1000). Digraphic notation, using letter names similar to modern note names in conjunction with the neumes, made a brief appearance in a few manuscripts, but a number of manuscripts used one or more horizontal lines to indicate particular pitches.</p>
@@ -9575,7 +9577,7 @@ Guido (left) showing Tedald the monochord, depicted in an 11th-century medieval 
 <p><img src="https://chromatone.center/assets/baroque.CFQI-GO3.jpg" alt=""></p>
 <p><img src="https://chromatone.center/assets/ballard.CITfiBh_.jpg" alt="A music piece for lute by Robert II Ballard, 1612"></p>
 <blockquote>
-<p><img src="https://chromatone.center/assets/Bachlut1.BDcRdeuX.png" alt=""></p>
+<p><img src="./images/Bachlut1.png" alt="" width="612" height="918"></p>
 <p><img src="https://chromatone.center/assets/bach2.CTPfnZQ8.png" alt="">
 J.S. Bach</p>
 </blockquote>
@@ -9799,7 +9801,7 @@ The corresponding scale for the C7♯11 chord, with added ninth and thirteenth t
 <abc-render responsive :abc="`M:4/4\n|(5G2A2B2c2d2|(7CDEFGAB|`" /><h3 id="rests" tabindex="-1">Rests <a class="header-anchor" href="#rests" aria-label="Permalink to “Rests”">&#8203;</a></h3>
 <abc-render responsive :abc="`M:4/4\n|z8|z4z4|z2z2z2z2|zzzzzzzz|z/z/z/z/z/z/z/z/z/z/z/z/z/z/z/z/|`" /><p><img src="https://chromatone.center/assets/note-values-and-rests.CQymK56H.png" alt=""></p>
 <blockquote>
-<p><img src="./Bachlut1.png" alt="">
+<p><img src="https://chromatone.center/assets/Bachlut1.BDcRdeuX.png" alt="">
 J.S.Bach Prelude</p>
 </blockquote>
 <h3 id="alexander-scriabin-piano-concerto-in-f-sharp-minor-op-20" tabindex="-1">Alexander Scriabin - Piano Concerto in F sharp minor, Op. 20 <a class="header-anchor" href="#alexander-scriabin-piano-concerto-in-f-sharp-minor-op-20" aria-label="Permalink to “Alexander Scriabin - Piano Concerto in F sharp minor, Op. 20”">&#8203;</a></h3>
@@ -9901,15 +9903,15 @@ Preparation – Dissonance – Resolution</p>
 <p>Zhu Zaiyu (朱載堉), a prince of the Ming court, spent thirty years on research based on the equal temperament idea originally postulated by his father. He described his new pitch theory in his Fusion of Music and Calendar 律暦融通 published in 1580. This was followed by the publication of a detailed account of the new theory of the equal temperament with a precise numerical specification for 12-TET in his 5,000-page work Complete Compendium of Music and Pitch (Yuelü quan shu 樂律全書) in 1584.</p>
 <p><img src="https://chromatone.center/assets/zhu-zaiyu-1154.CL1Tkoth.jpg" alt=""></p>
 <p>Zhu obtained his result mathematically by dividing the length of string and pipe successively by 12√2 ≈ 1.059463, and for pipe length by 24√2, such that after twelve divisions (an octave) the length was divided by a factor of 2:</p>
-<p><img src="./12-equation.svg" alt="svg"></p>
+<p><img src="./12-equation.svg" alt="svg" width="133" height="41"></p>
 <p>Similarly, after 84 divisions (7 octaves) the length was divided by a factor of 128.</p>
 <p><img src="https://chromatone.center/assets/128-equation.DeRAZHSu.svg" alt="svg"></p>
 <p>Zhu Zaiyu has been credited as the first person to solve the equal temperament problem mathematically.</p>
 <p><img src="https://chromatone.center/assets/zhu-zaiyu-strings.BTZHfxel.jpg" alt=""></p>
 <h3 id="mathematics-of-12-tet" tabindex="-1">Mathematics of 12-TET <a class="header-anchor" href="#mathematics-of-12-tet" aria-label="Permalink to “Mathematics of 12-TET”">&#8203;</a></h3>
 <p><img src="https://chromatone.center/assets/tet-equation.CSs9QS7J.svg" alt="svg"></p>
-<p><img src="./tet-fifth-equation.svg" alt="svg"></p>
-<p><img src="./oct-equation.svg" alt="svg"></p>
+<p><img src="./tet-fifth-equation.svg" alt="svg" width="501" height="35"></p>
+<p><img src="./oct-equation.svg" alt="svg" width="449" height="33"></p>
 <p><img src="https://chromatone.center/assets/Monochord_ET.BLszrf3B.png" alt=""></p>
 <h3 id="tuning-to-the-beats" tabindex="-1">Tuning to the beats <a class="header-anchor" href="#tuning-to-the-beats" aria-label="Permalink to “Tuning to the beats”">&#8203;</a></h3>
 <p>A precise equal temperament is possible using the 17th-century Sabbatini method of splitting the octave first into three tempered major thirds. This was also proposed by several writers during the Classical era. Tuning without beat rates but employing several checks, achieving virtually modern accuracy, was already done in the first decades of the 19th century. Using beat rates, first proposed in 1749, became common after their diffusion by Helmholtz and Ellis in the second half of the 19th century. The ultimate precision was available with 2-decimal tables published by White in 1917</p>
@@ -10321,7 +10323,7 @@ Mill Stroke</p>
             <guid isPermaLink="false">https://chromatone.center/practice/chroma/palette/</guid>
             <pubDate>Thu, 22 Apr 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[A MIDI reactive GLSL shader as a direct visual mathematical interpretation of musical notes]]></description>
-            <content:encoded><![CDATA[<ChromaPalette style="position: sticky; top: 0;"/><div  class="info custom-block"><p class="custom-block-title custom-block-title-default">INFO</p>
+            <content:encoded><![CDATA[<ChromaPalette style="position: sticky; top: 0;"/><div class="info custom-block"><p class="custom-block-title custom-block-title-default">INFO</p>
 <p>Chroma Palette is an immersive digital artwork that leverages Denis Starov's Chromatone system to translate the aural into the visual. Incorporating a microphone to capture live ambient audio, the installation analyzes the sounds and assigns one of twelve unique colors to each of the twelve distinct pitch classes, effectively rendering a visual representation of the sound's frequency content on a screen. This innovative approach not only allows for the visualization of music but also creates a multisensory feedback loop, engaging both sight and hearing in a unified perceptual experience.</p>
 <p>The artwork operates within the broader context of the Chromatone music web-apps ecosystem, which is designed to facilitate the study and appreciation of music through visual means. By interacting with Pitch Palette, participants influence the soundscape, thereby altering the visual output in real-time. This participatory element is key, transforming viewers into an integral part of the installation and inviting them to explore the symbiotic relationship between different senses and the environment. Through Pitch Palette, Starov extends an invitation to journey into a synesthetic space where sound and color intersect and are experienced in unison.</p>
 </div>
@@ -10572,7 +10574,7 @@ import Tutor from './Tutor.vue'
 </blockquote>
 <p>Turning points, pivot tones, neutralization, chromatic substitutes, and nondiatonic phenomena are concepts Schoenberg began teaching to address the changing context of dissonance in late nineteenth-century harmonic theory. In his chapter titled “At the Frontiers of Tonality,” Schoenberg began to illustrate what he called “vagrant harmonies,” defining the diminished triad, diminished seventh chords, and the augmented sixth chord and explaining how each of these chords functions in harmony.</p>
 <p>Just as the harmonic series was and is used as a justification for consonance, such as by Rameau, among others, the harmonic series is often used as physical or psychoacoustic justification for the gradual emancipation of intervals and chords found further and further up the harmonic series over time, such as is argued by Henry Cowell in defense of his tone clusters. Some argue further that they are not dissonances, but consonances higher up the harmonic series and thus more complex. Chailley (1951, 12); cited in Nattiez 1990 gives the following diagram, a specific timeline he proposes:</p>
-<p><img src="./Chailley_harmonic_series_emancipationt.png" alt=""></p>
+<p><img src="./Chailley_harmonic_series_emancipationt.png" alt="" width="882" height="151"></p>
 <h3 id="cooper-timeline" tabindex="-1">Cooper timeline <a class="header-anchor" href="#cooper-timeline" aria-label="Permalink to “Cooper timeline”">&#8203;</a></h3>
 <p><img src="https://chromatone.center/assets/Overtone_series_and_Western_music_development.Dc4aEf3a.png" alt=""></p>
 <p>Cooper (1973, 6-7) proposes the following timeline:</p>
@@ -10587,6 +10589,7 @@ import Tutor from './Tutor.vue'
 </ul>
 ]]></content:encoded>
             <author>davay@chromatone.center (Denis Starov)</author>
+            <enclosure url="https://chromatone.center/steven-van-elk.jpg" length="0" type="image/jpg"/>
         </item>
         <item>
             <title><![CDATA[Experiments]]></title>
@@ -10602,8 +10605,8 @@ import Tutor from './Tutor.vue'
         </item>
         <item>
             <title><![CDATA[Sensory dissonance]]></title>
-            <link>https://chromatone.center/theory/intervals/dissonance/</link>
-            <guid isPermaLink="false">https://chromatone.center/theory/intervals/dissonance/</guid>
+            <link>https://chromatone.center/theory/sound/dissonance/</link>
+            <guid isPermaLink="false">https://chromatone.center/theory/sound/dissonance/</guid>
             <pubDate>Mon, 15 Feb 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[The rather objective approach to pitch interval consonance and dissonance measure to model, calculate and extract]]></description>
             <content:encoded><![CDATA[<youtube-embed video="wg5QcF2akzQ" /><h2 id="research" tabindex="-1">Research <a class="header-anchor" href="#research" aria-label="Permalink to “Research”">&#8203;</a></h2>
@@ -10629,6 +10632,7 @@ analyzed musical work.</p>
 <p>Although no two people see colors, hear sounds or express thoughts, feelings, desires or realizations in exactly the same way, by sharing our unique perceptions of these sensory stimuli, we can communicate and appreciate the perceptions and viewpoints of others. Even the most dissonant musical chords, painterly strokes or written and spoken words gain values of harmony and acceptance as their rhythms, hues and tonalities grow familiar and vital to us all.</p>
 ]]></content:encoded>
             <author>davay@chromatone.center (Denis Starov)</author>
+            <enclosure url="https://chromatone.center/shaouraav-sarose-shreshtha.jpg" length="0" type="image/jpg"/>
         </item>
         <item>
             <title><![CDATA[Interval cycles]]></title>
@@ -10677,6 +10681,7 @@ P  I  I 0  1  2  3  4  5  6  7  8  9 10 11  0
 <p>A <a href="https://en.wikipedia.org/wiki/Bisector_(music)" target="_blank" rel="noreferrer">bisector</a> is a more general concept used to create collections that cannot be generated but includes all collections which can be generated.</p>
 ]]></content:encoded>
             <author>davay@chromatone.center (Denis Starov)</author>
+            <enclosure url="https://chromatone.center/mitchell-luo.jpg" length="0" type="image/jpg"/>
         </item>
         <item>
             <title><![CDATA[Chromatone color notation]]></title>
@@ -10995,13 +11000,13 @@ Example of numeric vihuela tablature from the book &quot;Orphenica Lyra&quot; by
 <p><img src="https://chromatone.center/assets/Star-Wars-Ukulele-The-Imperial-March.B6MKuXpl.jpg" alt=""></p>
 <h3 id="drum-tabs" tabindex="-1">Drum tabs <a class="header-anchor" href="#drum-tabs" aria-label="Permalink to “Drum tabs”">&#8203;</a></h3>
 <p>Instead of the durational notes normally seen on a piece of sheet music, drum tab uses proportional horizontal placement to indicate rhythm and vertical placement on a series of lines to represent which drum from the drum kit to stroke. Drum tabs frequently depict drum patterns.</p>
-<div class="language-"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre><!--::markdown-it-async::m0qajg9j379wruzk38jqf::--><code>HH|x-x-x-x-x-x-x-x-||
+<div class="language-"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang"></span><pre><!--::markdown-it-async::ctasucyabeq2i5cl27nzhd::--><code>HH|x-x-x-x-x-x-x-x-||
  S|----o-------o---||
  B|o-------o-------||
    1 + 2 + 3 + 4 +</code></pre>
 </div><h3 id="keyboard-tabulature" tabindex="-1">Keyboard tabulature <a class="header-anchor" href="#keyboard-tabulature" aria-label="Permalink to “Keyboard tabulature”">&#8203;</a></h3>
 <p>The modern keyboard tabs are built using any monospaced font. THey show each octave of the piano on a separate lane (with &quot;R&quot; and &quot;L&quot; for the hand). Letters show the note played. &quot;&gt;&quot; symbols show note durations in the fixed time periods, divided by &quot;|&quot; symbols. The actual chords are placed above the tabs.</p>
-<div class="language-"><button title="Copy Code" class="copy"></button><span class="lang"></span><pre><!--::markdown-it-async::31dp5qvjo3x4clrw2cjdvx::--><code>Penny Lane - The Beatles
+<div class="language-"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang"></span><pre><!--::markdown-it-async::qpbedkjv6qf9hjr1dotr8a::--><code>Penny Lane - The Beatles
 Tabbed By: Ebon-Ivor
 
              C          Am7          Dm7        Gsus7
@@ -12261,7 +12266,7 @@ I started with WebMIDI even before</p>
             <guid isPermaLink="false">https://chromatone.center/practice/color/mix/</guid>
             <pubDate>Tue, 05 Apr 2011 00:00:00 GMT</pubDate>
             <description><![CDATA[Full screen colors react to midi notes to explore the cross stimulation of the brain]]></description>
-            <content:encoded><![CDATA[<ColorMix style="position: sticky; top: 0;" /><div  class="info custom-block"><p class="custom-block-title custom-block-title-default">INFO</p>
+            <content:encoded><![CDATA[<ColorMix style="position: sticky; top: 0;" /><div class="info custom-block"><p class="custom-block-title custom-block-title-default">INFO</p>
 <p>Press any key on your keyboard to hear a note and to see the corresponding color. Go fullscreen with the button at the top right.</p>
 </div>
 ]]></content:encoded>

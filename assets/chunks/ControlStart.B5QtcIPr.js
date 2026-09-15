@@ -1,0 +1,1 @@
+import{F as e,L as t,et as n,it as r,n as i}from"./framework.Bs4wm_X5.js";var a={class:`button`};function o(i,o){return n(),e(`button`,a,[r(i.$slots,`default`,{},()=>[o[0]||=t(`Start`,-1)],!0)])}var s=i({},[[`render`,o],[`__scopeId`,`data-v-fb351d24`]]);export{s as t};

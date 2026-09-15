@@ -48,7 +48,7 @@ export function useString(name = 'string' + Math.floor(Math.random() * 300)) {
 
     // 3. Excitation: Gentler noise burst for a natural string character
     let adsr = el.adsr(0.02, 0.2, 0.9, 1.0, midiCV['string:trigger'])
-    let noise = el.noise()
+    let noise = el.blepsaw(freq)
     let excitation = el.mul(adsr, noise, midiCV['string:velocity'])
 
     // FIXED: Q of 0.7 is much more natural than 6. Cutoff at 2x freq removes harshness.

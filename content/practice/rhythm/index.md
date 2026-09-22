@@ -1,7 +1,7 @@
 ---
 title: Rhythm
 description: Delicate patterns of beat and groove
-date: 2021-11-15
+date: 2021-09-18
 cover: abimael-ahumada.jpg
 ---
 

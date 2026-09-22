@@ -1,7 +1,7 @@
 ---
 title: Fifth and fourth
 description: Perfect, but not equivalent intervals
-date: 2021-09-08
+date: 2021-09-07
 cover: erol-ahmed.jpg
 ---
 

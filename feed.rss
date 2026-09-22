@@ -4,7 +4,7 @@
         <title>Chromatone</title>
         <link>https://chromatone.center/</link>
         <description>Visual Music Language development updates and more</description>
-        <lastBuildDate>Tue, 22 Sep 2026 08:09:08 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 22 Sep 2026 18:51:24 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en-EN</language>
@@ -13,7 +13,7 @@
             <title><![CDATA[Words sequencing]]></title>
             <link>https://chromatone.center/practice/generative/words/</link>
             <guid isPermaLink="false">https://chromatone.center/practice/generative/words/</guid>
-            <pubDate>Tue, 22 Sep 2026 08:06:52 GMT</pubDate>
+            <pubDate>Tue, 22 Sep 2026 18:48:42 GMT</pubDate>
             <description><![CDATA[&lt;script setup
 import { defineClientComponent } from 'vitepress'
 const Words = defineClientCompone]]></description>
@@ -25,7 +25,7 @@ const Words = defineClientCompone]]></description>
             <title><![CDATA[Words sequencing]]></title>
             <link>https://chromatone.center/practice/sequencing/words/</link>
             <guid isPermaLink="false">https://chromatone.center/practice/sequencing/words/</guid>
-            <pubDate>Tue, 22 Sep 2026 08:06:52 GMT</pubDate>
+            <pubDate>Tue, 22 Sep 2026 18:48:42 GMT</pubDate>
             <description><![CDATA[This page is moved to https://chromatone.center/practice/generative/words/]]></description>
             <content:encoded><![CDATA[<p>This page is moved to <a href="https://chromatone.center/practice/generative/words/" target="_blank" rel="noreferrer">https://chromatone.center/practice/generative/words/</a></p>
 ]]></content:encoded>
@@ -36,7 +36,7 @@ const Words = defineClientCompone]]></description>
             <title><![CDATA[ZZFXM]]></title>
             <link>https://chromatone.center/practice/sequencing/zzfxm/</link>
             <guid isPermaLink="false">https://chromatone.center/practice/sequencing/zzfxm/</guid>
-            <pubDate>Tue, 22 Sep 2026 08:06:52 GMT</pubDate>
+            <pubDate>Tue, 22 Sep 2026 18:48:42 GMT</pubDate>
             <description><![CDATA[&lt;script setup
 import { defineClientComponent } from 'vitepress'
 const ZzFxm = defineClientCompone]]></description>
@@ -49,7 +49,7 @@ const ZzFxm = defineClientCompone]]></description>
             <title><![CDATA[AMY - A high-performance fixed-point Music synthesizer librarY for microcontrollers]]></title>
             <link>https://chromatone.center/practice/synth/amy/README.html</link>
             <guid isPermaLink="false">https://chromatone.center/practice/synth/amy/README.html</guid>
-            <pubDate>Tue, 22 Sep 2026 08:06:52 GMT</pubDate>
+            <pubDate>Tue, 22 Sep 2026 18:48:42 GMT</pubDate>
             <description><![CDATA[# AMY - A high-performance fixed-point Music synthesizer librarY for microcontrollers
 
 AMY is a fast, small and accurate music synthesizer library written in C with Python and Arduino bindings that deals with combinations of many oscillators very well. It can easily be embedded into almost any program, architecture or microcontroller. We've run AMY on [the web](https://shorepine.github.io/amy/), Mac, Linux, ESP32, ESP32S3 and ESP32P4, Teensy 3.6, Teensy 4.1, the Raspberry Pi, the Playdate, Pi Pico RP2040, the Pi Pico 2 RP2530, iOS devices, the Electro-Smith Daisy (ARM Cortex M7), and more to come. It is highly optimized for polyphony and poly-timbral operation on even the lowest power and constrained RAM microcontroller but can scale to as many cores as you want. 
@@ -297,7 +297,7 @@ Here's the full list:
 <h2 id="using-amy-in-any-other-software" tabindex="-1">Using AMY in any other software <a class="header-anchor" href="#using-amy-in-any-other-software" aria-label="Permalink to “Using AMY in any other software”">&#8203;</a></h2>
 <p>To use AMY in your own software, simply copy the .c and .h files in <code>src</code> to your program and compile them. No other libraries should be required to synthesize audio in AMY. You'll want to make sure the configuration in <code>amy_config.h</code> is set up for your application / hardware.</p>
 <p>To run a simple C example on many platforms:</p>
-<div class="language-"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang"></span><pre><!--::markdown-it-async::5yldc86dm4kr4r0dq2xmhf::--><code>make
+<div class="language-"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang"></span><pre><!--::markdown-it-async::dg5n8j5j0xdndsnm6wp7q::--><code>make
 ./amy-example # you should hear tones out your default speaker, use ./amy-example -h for options</code></pre>
 </div><h1 id="using-amy" tabindex="-1">Using AMY <a class="header-anchor" href="#using-amy" aria-label="Permalink to “Using AMY”">&#8203;</a></h1>
 <blockquote>
@@ -305,7 +305,7 @@ Here's the full list:
 </blockquote>
 <p>AMY can be controlled using its wire protocol or by fillng its data structures directly. It's up to what's easier for you and your application.</p>
 <p>In Python, rendering to a buffer of samples, using the high level API:</p>
-<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::1olzz133idh6q17rl7p01::--><code>&gt;&gt;&gt; import amy
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::eb1zqpv7mkdmaejq02wpm::--><code>&gt;&gt;&gt; import amy
 &gt;&gt;&gt; m = amy.message(voices=&#039;0&#039;, load_patch=130, note=50, vel=1)
 &gt;&gt;&gt; print(m) # Show the wire protocol message
 v0n50l1K130r0Z
@@ -313,12 +313,12 @@ v0n50l1K130r0Z
 &gt;&gt;&gt; # This plays immediately on Tulip, but if you&#039;re running Amy in regular Python, you can get the waveform from render:
 &gt;&gt;&gt; audio = amy.render(5.0)</code></pre>
 </div><p>You can also start a thread playing live audio:</p>
-<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::nqj402thzyg4bs489oj66u::--><code>&gt;&gt;&gt; import amy
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::ipuga2ytt9fvk9uq7h5zk::--><code>&gt;&gt;&gt; import amy
 &gt;&gt;&gt; amy.live() # can optinally pass in playback and capture audio device IDs, amy.live(2, 1) 
 &gt;&gt;&gt; amy.send(voices=&#039;0&#039;, load_patch=130, note=50, vel=1)
 &gt;&gt;&gt; amy.stop()</code></pre>
 </div><p>In C, using the high level structures directly;</p>
-<div class="language-c"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">c</span><pre><!--::markdown-it-async::ju5ly4nkeoh25938sw0vfl::--><code>#include &quot;amy.h&quot;
+<div class="language-c"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">c</span><pre><!--::markdown-it-async::maydwddhn2heb6asorycb::--><code>#include &quot;amy.h&quot;
 void bleep() {
     struct event e = amy_default_event();
     int32_t start = amy_sysclock();   // Right now..
@@ -342,7 +342,7 @@ void main() {
     bleep();
 }</code></pre>
 </div><p>Or in C, sending the wire protocol directly:</p>
-<div class="language-c"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">c</span><pre><!--::markdown-it-async::lliw5gpxqvovlne870up9p::--><code>#include &quot;amy.h&quot;
+<div class="language-c"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">c</span><pre><!--::markdown-it-async::sly958oa8rh92fl8zbyqk::--><code>#include &quot;amy.h&quot;
 
 void main() {
     amy_start(/* cores= */ 1, /* reverb= */ 0, /* chorus= */ 0, /* echo */ 1);
@@ -350,7 +350,7 @@ void main() {
     amy_play_message(&quot;v0n50l1K130r0Z&quot;);
 }</code></pre>
 </div><p>If you want to receive buffers of samples, or have more control over the rendering pipeline to support multi-core, instead of using <code>amy_live_start()</code>:</p>
-<div class="language-c"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">c</span><pre><!--::markdown-it-async::jfqntjin09d52e4zcorc::--><code>#include &quot;amy.h&quot;
+<div class="language-c"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">c</span><pre><!--::markdown-it-async::717cthdw8dikwb58snh62t::--><code>#include &quot;amy.h&quot;
 ...
 amy_start(/* cores= */ 2, /* reverb= */ 1, /* chorus= */ 1, /* echo */ 1);
 ...
@@ -366,13 +366,13 @@ amy_start(/* cores= */ 2, /* reverb= */ 1, /* chorus= */ 1, /* echo */ 1);
 ... }
 </code></pre>
 </div><p>On storage constrained devices, you may want to limit the amount of PCM samples we ship with AMY. To do this, include a smaller set after including <code>amy.h</code>, like:</p>
-<div class="language-c"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">c</span><pre><!--::markdown-it-async::x4h3pzy4kdh49x3x4z26b5::--><code>#include &quot;amy.h&quot;
+<div class="language-c"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">c</span><pre><!--::markdown-it-async::4qb592n3m9he0o89g900b6::--><code>#include &quot;amy.h&quot;
 #include &quot;pcm_tiny.h&quot; 
 // or, #include &quot;pcm_small.h&quot;</code></pre>
 </div><h1 id="wire-protocol" tabindex="-1">Wire protocol <a class="header-anchor" href="#wire-protocol" aria-label="Permalink to “Wire protocol”">&#8203;</a></h1>
 <p>AMY's wire protocol is a series of numbers delimited by ascii characters that define all possible parameters of an oscillator. This is a design decision intended to make using AMY from any sort of environment as easy as possible, with no data structure or parsing overhead on the client. It's also readable and compact, far more expressive than MIDI and can be sent over network links, UARTs, or as arguments to functions or commands. We've used AMY over multicast UDP, over Javascript, in Max/MSP, in Python, C, Micropython and many more!</p>
 <p>AMY accepts commands in ASCII, like so:</p>
-<div class="language-"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang"></span><pre><!--::markdown-it-async::7t1l5tzq01cmpei4lhmw8::--><code>v0w4f440.0l1.0Z</code></pre>
+<div class="language-"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang"></span><pre><!--::markdown-it-async::49aqyb3n4kg8m84il2unvi::--><code>v0w4f440.0l1.0Z</code></pre>
 </div><p>This example controls osc 0 (<code>v0</code>), sets its waveform to triangle (<code>w4</code>), sets its frequency to 4400 Hz (<code>f440.0</code>), and velocity (i.e. amplitude) to 1 (<code>l1.0</code>).  The final <code>Z</code> is a terminator indicating the message is complete.</p>
 <p>Here's the full list:</p>
 <table tabindex="0">
@@ -629,18 +629,18 @@ amy_start(/* cores= */ 2, /* reverb= */ 1, /* chorus= */ 1, /* echo */ 1);
 </table>
 <h1 id="synthesizer-details" tabindex="-1">Synthesizer details <a class="header-anchor" href="#synthesizer-details" aria-label="Permalink to “Synthesizer details”">&#8203;</a></h1>
 <p>We'll use Python for showing examples of AMY.  Maybe you're running under <a href="https://github.com/shorepine/tulipcc" target="_blank" rel="noreferrer">Tulip</a>, in which case AMY is already loaded, but if you're running under standard Python, make sure you've installed <code>libamy</code> and are running a live AMY first by running <code>make test</code> and then:</p>
-<div class="language-bash"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">bash</span><pre><!--::markdown-it-async::qqllahime2i7ad6csl5j::--><code>python
+<div class="language-bash"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">bash</span><pre><!--::markdown-it-async::hfdnq77o9yrk1fdhix1kt::--><code>python
 &gt;&gt;&gt; import amy
 &gt;&gt;&gt; amy.live()</code></pre>
 </div><h2 id="amy-s-sequencer-and-timestamps" tabindex="-1">AMY's sequencer and timestamps <a class="header-anchor" href="#amy-s-sequencer-and-timestamps" aria-label="Permalink to “AMY's sequencer and timestamps”">&#8203;</a></h2>
 <p>AMY is meant to either receive messages in real time or scheduled events in the future. It can be used as a sequencer where you can schedule notes to play in the future or on a divider of the clock.</p>
 <p>The scheduled events are very helpful in cases where you can't rely on an accurate clock from the client, or don't have one. The clock used internally by AMY is based on the audio samples being generated out the speakers, which should run at an accurate 44,100 times a second.  This lets you do things like schedule fast moving parameter changes over short windows of time.</p>
 <p>For example, to play two notes, one a second after the first, you could do:</p>
-<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::44q0thlwjg3rm5vnyxymv8::--><code>amy.send(osc=0, note=50, vel=1)
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::ixje4520zuzc8i1xq2rc::--><code>amy.send(osc=0, note=50, vel=1)
 time.sleep(1)
 amy.send(osc=0, note=52, vel=1)</code></pre>
 </div><p>But you'd be at the mercy of Python's internal timing, or your OS. A more precise way is to send the messages at the same time, but to indicate the intended time of the playback:</p>
-<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::y9a6rag1hup5ozzoffktr9::--><code>start = amy.millis()  # arbitrary start timestamp
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::gbjouaxd8o9n92jpb67ud::--><code>start = amy.millis()  # arbitrary start timestamp
 amy.send(osc=0, note=50, vel=1, time=start)
 amy.send(osc=0, note=52, vel=1, time=start + 1000)</code></pre>
 </div><p>Both <code>amy.send()</code>s will return immediately, but you'll hear the second note play precisely a second after the first. AMY uses this internal clock to schedule step changes in breakpoints as well.</p>
@@ -653,7 +653,7 @@ amy.send(osc=0, note=52, vel=1, time=start + 1000)</code></pre>
 <p><code>tag</code> should be given, and will be <code>0</code> if not. You should set <code>tag</code> to a random or incrementing number in your code that you can refer to later. <code>tag</code> allows you to replace or delete the event once scheduled.</p>
 <p>If you are including AMY in a program, you can set the hook <code>void (*amy_external_sequencer_hook)(uint32_t)</code> to any function. This will be called at every tick with the current tick number as an argument.</p>
 <p>Sequencer examples:</p>
-<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::7xy0juszdsbs5l8rfz4w4::--><code>amy.send(osc=2, vel=1, wave=amy.PCM, patch=2, sequence=&quot;1000,,3&quot;) # play a PCM drum at absolute tick 1000 
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::4xid34i8rh68mvga7ypi6::--><code>amy.send(osc=2, vel=1, wave=amy.PCM, patch=2, sequence=&quot;1000,,3&quot;) # play a PCM drum at absolute tick 1000 
 
 amy.send(osc=0, vel=1, wave=amy.PCM, patch=0, sequence=&quot;,24,1&quot;) # play a PCM drum every eighth note.
 amy.send(osc=1, vel=1, wave=amy.PCM, patch=1, sequence=&quot;,48,2&quot;) # play a PCM drum every quarter note.
@@ -671,28 +671,28 @@ amy.send(osc=1, vel=1, wave=amy.PCM, patch=1, sequence=&quot;216,384,2&quot;) # 
 <p>Try to set the volume of the synth with <code>amy.send(volume=2)</code> -- that can be up to 10 or so.  The default is 1.</p>
 <p><code>amy.reset()</code> resets all oscillators to default. You can also do <code>amy.reset(osc=5)</code> to do just one oscillator.</p>
 <p>Let's set a simple sine wave first</p>
-<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::bvyxi6k78fky4tiabd5jp::--><code>amy.send(osc=0, wave=amy.SINE, freq=220, vel=1)</code></pre>
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::samyjfruuom6czlhm3p7fb::--><code>amy.send(osc=0, wave=amy.SINE, freq=220, vel=1)</code></pre>
 </div><p>We are simply telling oscillator 0 to be a sine wave at 220Hz and amplitude (specified as a note-on velocity) of 1.  You can also try <code>amy.PULSE</code>, or <code>amy.SAW_DOWN</code>, etc.</p>
 <p>To turn off the note, send a note off (velocity zero):</p>
-<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::0l0815g6icdfeptos79509g::--><code>amy.send(osc=0, vel=0)  # Note off.</code></pre>
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::8hx1xs1sxep8jeyldsdb05::--><code>amy.send(osc=0, vel=0)  # Note off.</code></pre>
 </div><p>You can also make oscillators louder with <code>vel</code> larger than 1.  By default, the total amplitude comes from multiplying together the oscillator amplitude (i.e., the natural level of the oscillator, which is 1 by default) and the velocity (the particular level of this note event) -- however, this can be changed by changing the default values of the <code>amp</code> <strong>ControlCoefficients</strong> (see below).</p>
 <p>You can also use <code>note</code> (MIDI note value) instead of <code>freq</code> to control the oscillator frequency for each note event:</p>
-<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::v7y94uul6lqmbud411s3h::--><code>amy.reset()
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::eb9o9ffvx942zhg85jmnh::--><code>amy.reset()
 amy.send(osc=0, wave=amy.SINE, note=57, vel=1)</code></pre>
 </div><p>This won't work as intended without the <code>amy.reset()</code>, because once you've set the oscillator to a non-default frequency with <code>freq=220</code>, it will act as an offset to the frequency specified by <code>note</code>.  (See <strong>ControlCoefficients</strong> below to see how to control this behavior).</p>
 <p>Now let's make a lot of sine waves!</p>
-<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::m91uimnhvyrl5lmztyyk4e::--><code>import time
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::t706z7aj2elo8axwtw498::--><code>import time
 amy.reset()
 for i in range(16):
     amy.send(osc=i, wave=amy.SINE, freq=110+(i*80), vel=((16-i)/32.0))
     time.sleep(0.5) # Sleep for 0.5 seconds</code></pre>
 </div><p>Neat! You can see how simple / powerful it is to have control over lots of oscillators. You have up to 64 (or more, depending on your platform). Let's make it more interesting. A classic analog tone is the filtered saw wave. Let's make one.</p>
-<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::wb4syy5bs1g6epzq5hnit9::--><code>amy.send(osc=0, wave=amy.SAW_DOWN, filter_freq=400, resonance=5, filter_type=amy.FILTER_LPF)
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::q5y1utnbnjb694jvsz06zs::--><code>amy.send(osc=0, wave=amy.SAW_DOWN, filter_freq=400, resonance=5, filter_type=amy.FILTER_LPF)
 amy.send(osc=0, vel=1, note=40)</code></pre>
 </div><p>You want to be able to stop the note too by sending a note off:</p>
-<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::koogl97slxgdxyw82vq0t::--><code>amy.send(osc=0, vel=0)</code></pre>
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::5o98bditisn1yg8l60siab::--><code>amy.send(osc=0, vel=0)</code></pre>
 </div><p>Sounds nice. But we want that filter freq to go down over time, to make that classic filter sweep tone. Let's use an Envelope Generator! An Envelope Generator (EG) creates a smooth time envelope based on a breakpoint set, which is a simple list of (time-delta, target-value) pairs - you can have up to 8 of these per EG, and 2 different EGs to control different things. They're just like ADSRs, but more powerful. You can use an EG to control amplitude, oscillator frequency, filter cutoff frequency, PWM duty cycle, or stereo pan. The EG gets triggered when the note begins. So let's make an EG that turns the filter frequency down from its start at 3200 Hz to 400 Hz over 1000 milliseconds. And when the note goes off, it tapers the frequency to 50 Hz over 200 milliseconds.</p>
-<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::qww5j0g71nb6o63l2x5pr::--><code>amy.send(osc=0, wave=amy.SAW_DOWN, resonance=5, filter_type=amy.FILTER_LPF)
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::8sbt7gw3gwifepei35bxps::--><code>amy.send(osc=0, wave=amy.SAW_DOWN, resonance=5, filter_type=amy.FILTER_LPF)
 amy.send(osc=0, filter_freq=&#039;50,0,0,0,1&#039;, bp1=&#039;0,6.0,1000,3.0,200,0&#039;)
 amy.send(osc=0, vel=1, note=40)</code></pre>
 </div><p>There are two things to note here:  Firstly, the envelope is defined by the set of breakpoints in <code>bp1</code> (defining the second EG; the first is controlled by <code>bp0</code>).  The <code>bp</code> strings alternate time intervals in milliseconds with target values.  So <code>0,6.0,1000,3.0,200,0</code> means to move to 6.0 after 0 ms (i.e., the initial value is 6), then to decay to 3.0 over the next 1000 ms (1 second).  The final pair is always taken as the &quot;release&quot;, and does not begin until the note-off event is received.  In this case, the EG decays to 0 in the 200 ms after the note-off.</p>
@@ -714,16 +714,16 @@ amy.send(osc=0, vel=1, note=40)</code></pre>
 <p>The note frequency is scaled relative to a zero-point of middle C (MIDI note 60, 261.63 Hz), so to make the oscillator faithfully track the <code>note</code> parameter to the note-on event, you would use something like <code>freq='261.63,1'</code>.  Setting it to <code>freq='523.26,1'</code> would make the oscillator always be one octave higher than the <code>note</code> MIDI number.  Setting <code>freq='261.3,0.5'</code> would make the oscillator track the <code>note</code> parameter at half an octave per unit, so while <code>note=60</code> would still give middle C, <code>note=72</code> (C5) would make the oscillator run at F#4, and <code>note=84</code> (C6) would be required to get C5 from the oscillator.</p>
 <p>The default set of ControlCoefficients for <code>freq</code> is <code>'261.63,1,0,0,0,0,1'</code>, i.e. a base of middle C, tracking the MIDI note, plus pitch bend (at unit-per-octave).  Because 261.63 is such an important value, as a special case, setting the first <code>freq</code> value to zero is magically rewritten as 261.63, so <code>freq='0,1,0,0,0,0,1'</code> also yields the default behavior.  <code>amp</code> also has a set of defaults: <code>amp='0,0,1,1,0,0,0'</code>, i.e. tracking note-on velocity plus modulation by EG0 (which just tracks the note-on status if it has not been set up).  <code>amp</code> is a little special because the individual components are <em>multiplied</em> together, instead of added together, for any control inputs with nonzero coefficients.  Finally, an offset of 1.0 is added to the coefficient-scaled LFO modulator and pitch bend inputs before multiplying them into the amplitude, to allow small variations around unity e.g. for tremolo.  These defaults are set up in <a href="https://github.com/shorepine/amy/blob/b1ed189b01e6b908bc19f18a4e0a85761d739807/src/amy.c#L551" target="_blank" rel="noreferrer"><code>src/amy.c:reset_osc()</code></a>.</p>
 <p>We also have LFOs, which are implemented as one oscillator modulating another (instead of sending its waveform to the output). You set up the low-frequency oscillator, then have it control a parameter of another audible oscillator. Let's make the classic 8-bit duty cycle pulse wave modulation, a favorite:</p>
-<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::w7zperdvr5xku4uez9z5::--><code>amy.reset()  # Clear the state.
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::qgd0vqpsmjkaf3e7gzije::--><code>amy.reset()  # Clear the state.
 amy.send(osc=1, wave=amy.SINE, freq=0.5, amp=1)   # We set the amp but not the vel, so it doesn&#039;t sound.
 amy.send(osc=0, wave=amy.PULSE, duty={&#039;const&#039;: 0.5, &#039;mod&#039;: 0.4}, mod_source=1)
 amy.send(osc=0, note=60, vel=0.5)</code></pre>
 </div><p>You see we first set up the modulation oscillator (a sine wave at 0.5Hz, with amplitude of 1).  We do <em>not</em> send it a velocity, because that would make it start sending a 0.5 Hz sinewave to the audio output; we want its output only to be used internally.  Then we set up the oscillator to be modulated, a pulse wave with a modulation source of oscillator 1 and the duty <strong>ControlCoefficients</strong> set to have a constant value of 0.5 plus 0.4 times the modulating input (i.e., the depth of the pulse width modulation, where 0.4 modulates between 0.1 and 0.9, almost the maximum depth).  The initial duty cycle will start at 0.5 and be offset by the state of oscillator 1 every tick, to make that classic thick saw line from the C64 et al. The modulation will re-trigger every note on. Just like with envelope generators, the modulation oscillator has a 'slot' in the ControlCoefficients - the 6th coefficient, <code>mod</code> - so it can modulate PWM duty cycle, amplitude, frequency, filter frequency, or pan! And if you want to modulate more than one thing, like frequency and duty, just specify multiple ControlCoefficients:</p>
-<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::6uy80r75bn0zv570armpjm::--><code>amy.send(osc=1, wave=amy.TRIANGLE, freq=5, amp=1)
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::dk480g2bgs5iyn8m30oru::--><code>amy.send(osc=1, wave=amy.TRIANGLE, freq=5, amp=1)
 amy.send(osc=0, wave=amy.PULSE, duty={&#039;const&#039;: 0.5, &#039;mod&#039;: 0.25}, freq={&#039;mod&#039;: 0.5}, mod_source=1)
 amy.send(osc=0, note=60, vel=0.5)</code></pre>
 </div><p><code>amy.py</code> has some helpful presets, if you want to use them, or add to them. To make that filter bass, just do <code>amy.preset(1, osc=0)</code> and then <code>amy.send(osc=0, vel=1, note=40)</code> to hear it. Here's another one:</p>
-<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::wb27uektnjl19g7e0n2lf::--><code>amy.preset(0, osc=2) # will set a simple sine wave tone on oscillator 2
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::ndlzdr3e809pcsx41bv4qa::--><code>amy.preset(0, osc=2) # will set a simple sine wave tone on oscillator 2
 amy.send(osc=2, note=50, vel=1.5) # will play the note at velocity 1.5
 amy.send(osc=2, vel=0) # will send a &quot;note off&quot; -- you&#039;ll hear the note release
 amy.send(osc=2, freq=220.5, vel=1.5) # same but specifying the frequency
@@ -745,51 +745,51 @@ amy.reset()</code></pre>
 <p>Every note on (specified by setting <code>vel</code> / <code>l</code> to anything &gt; 0) will trigger this envelope, and setting velocity to 0 will trigger the note off / release section.</p>
 <p>You can set a completely separate envelope using the second envelope generator, for example, to change pitch and amplitude at different rates.</p>
 <p>As with ControlCoefficients, missing values in the comma-separated parameter strings mean to leave the existing value unchanged.  However, unlike ControlCoefficients, it's important to explicitly indicate every value you want to leave unchanged, since the number of parameters provided determines the number of breakpoints in the set.  So in the following sequence:</p>
-<div class="language-"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang"></span><pre><!--::markdown-it-async::hp4sbqtfptz8cvt4yu81s::--><code>amy.send(osc=0, bp0=&#039;0,1,1000,0.1,200,0&#039;)
+<div class="language-"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang"></span><pre><!--::markdown-it-async::17hullqwon5q9bjt29jgcd::--><code>amy.send(osc=0, bp0=&#039;0,1,1000,0.1,200,0&#039;)
 amy.send(osc=0, bp0=&#039;,,,0.9,,&#039;)</code></pre>
 </div><p>.. we end up with the same effect as <code>bp0='0,1,1000,0.9,200,0</code>.  However, if we do:</p>
-<div class="language-"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang"></span><pre><!--::markdown-it-async::o7u0f1mdjcndg9lo8vhhhu::--><code>amy.send(osc=0, bp0=&#039;0,1,1000,0.1,200,0&#039;)
+<div class="language-"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang"></span><pre><!--::markdown-it-async::00p5rduwzmw4gm6dqdgigz8::--><code>amy.send(osc=0, bp0=&#039;0,1,1000,0.1,200,0&#039;)
 amy.send(osc=0, bp0=&#039;,,,0.9&#039;)  # No trailing commas.</code></pre>
 </div><p>.. we effectively end up with <code>bp0='0,1,1000,0.9</code>, i.e. the 4 elements in the second <code>bp0</code> string change the first breakpoint set to have only 2 breakpoints, meaning a constant amplitude during note-on, then a final slow release to 0.9 -- not at all like the first form, and likely not what we wanted.</p>
 <h2 id="audio-input-and-effects" tabindex="-1">Audio input and effects <a class="header-anchor" href="#audio-input-and-effects" aria-label="Permalink to “Audio input and effects”">&#8203;</a></h2>
 <p>By setting <code>wave</code> to <code>AUDIO_IN0</code> or <code>AUDIO_IN1</code>, you can have either channel of a stereo input act as an AMY oscillator. You can use this oscillator like you would any other in AMY, apply global effects to it, add filters, change amplitude, etc.</p>
-<div class="language-"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang"></span><pre><!--::markdown-it-async::efugzo5s2nasm1n8igjar::--><code>amy.send(osc=0, wave=amy.AUDIO_IN0, vel=1)
+<div class="language-"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang"></span><pre><!--::markdown-it-async::tbcpki7mlnssxveqbwymf::--><code>amy.send(osc=0, wave=amy.AUDIO_IN0, vel=1)
 amy.echo(1, 250, 250, 0.5, 0.5)</code></pre>
 </div><p>If you are building your own audio system around AMY you will want to fill in the buffer <code>amy_in_block</code> before rendering. Our included <code>miniaudio</code>-based system does this for you. See <a href="https://github.com/shorepine/amychip" target="_blank" rel="noreferrer"><code>amychip</code></a> for a demo of this in hardware.</p>
 <h2 id="fm-algo-type" tabindex="-1">FM &amp; ALGO type <a class="header-anchor" href="#fm-algo-type" aria-label="Permalink to “FM &amp; ALGO type”">&#8203;</a></h2>
 <p>Try default DX7 patches, from 128 to 256:</p>
-<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::5cezkib2xje2t3c62zkybj::--><code>amy.send(voices=&#039;0&#039;, load_patch=128)
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::zyj6ms7zbmmx3htm00516c::--><code>amy.send(voices=&#039;0&#039;, load_patch=128)
 amy.send(voices=&#039;0&#039;, note=50,vel=1)</code></pre>
 </div><p>The <code>load_patch</code> lets you set which preset is used (0 to 127 are the Juno 106 analog synth presets, and 128 to 255 are the DX7 FM presets).  But let's make the classic FM bell tone ourselves, without a patch. We'll just be using two operators (two sine waves), one modulating the other.</p>
 <p><img src="https://raw.githubusercontent.com/shorepine/alles/main/pics/dx7_algorithms.jpg" alt="DX7 Algorithms"></p>
 <p>When building your own algorithm sets, assign a separate oscillator as wave=<code>ALGO</code>, but the source oscillators as <code>SINE</code>. The algorithm #s are borrowed from the DX7. You don't have to use all 6 operators. Note that the <code>algo_source</code> parameter counts backwards from operator 6. When building operators, they can have their frequencies specified directly with <code>freq</code> or as a ratio of the root <code>ALGO</code> oscillator via <code>ratio</code>.</p>
-<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::peuudfktudsx1d74z6pq::--><code>amy.reset()
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::i7gltmx2iw74l7qe1179w::--><code>amy.reset()
 amy.send(osc=2, wave=amy.SINE, ratio=1, amp={&#039;const&#039;: 1, &#039;vel&#039;: 0, &#039;eg0&#039;: 0})
 amy.send(osc=1, wave=amy.SINE, ratio=0.2, amp={&#039;const&#039;: 1, &#039;vel&#039;: 0, &#039;eg0&#039;: 1}, bp0=&#039;0,1,1000,0,0,0&#039;)
 amy.send(osc=0, wave=amy.ALGO, algorithm=1, algo_source=&#039;,,,,2,1&#039;)</code></pre>
 </div><p>Let's unpack that last line: we're setting up a ALGO &quot;oscillator&quot; that controls up to 6 other oscillators. We only need two, so we set the <code>algo_source</code> to mostly not used and have oscillator 2 modulate oscillator 1. You can have the operators work with each other in all sorts of crazy ways. For this simple example, we just use the DX7 algorithm #1. And we'll use only operators 2 and 1. Therefore our <code>algo_source</code> lists the oscillators involved, counting backwards from 6. We're saying only have operator 2 (osc 2 in this case) and operator 1 (osc 1).  From the picture, we see DX7 algorithm 1 has operator 2 feeding operator 1, so we have osc 2 providing the frequency-modulation input to osc 1.</p>
 <p>What's going on with <code>ratio</code>? And <code>amp</code>? Ratio, for FM synthesis operators, means the ratio of the frequency for that operator relative to the base note. So oscillator 1 will be played at 20% of the base note frequency, and oscillator 2 will take the frequency of the base note. In FM synthesis, the <code>amp</code> of a modulator input is  called &quot;beta&quot;, which describes the strength of the modulation.  Here, osc 2 is providing the modulation with a constant beta of 1, which will result in a range of sinusoids with frequencies around the carrier at multiples of the modulator.  We set osc 2's amp ControlCoefficients for velocity and envelope generator 0 to 0 because they default to 1, but we don't want them for this example (FM sines don't receive the parent note's velocity, so we need to disable its influence).  Osc 1 has <code>bp0</code> decaying its amplitude to 0 over 1000 ms, but because beta is fixed there's no other change to the sound over that time.</p>
 <p>Ok, we've set up the oscillators. Now, let's hear it!</p>
-<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::x0hay92r8hmh61konvs95j::--><code>amy.send(osc=0, note=60, vel=1)</code></pre>
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::tr8aitvisbhgi37po8c4zh::--><code>amy.send(osc=0, note=60, vel=1)</code></pre>
 </div><p>You should hear a bell-like tone. Nice. (This example is also implemented using the C API in <a href="https://github.com/shorepine/amy/blob/b1ed189b01e6b908bc19f18a4e0a85761d739807/src/examples.c#L281" target="_blank" rel="noreferrer"><code>src/examples.c:example_fm()</code></a>.)</p>
 <p>FM gets much more exciting when we vary beta, which just means varying the amplitide envelope of the modulator.  The spectral effects of the frequency modulation depend on beta in a rich, nonlinear way, leading to the glistening FM sounds.  Let's try fading in the modulator over 5 seconds:</p>
-<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::x2ie3m5jnu2r4l76kg36h::--><code>amy.reset()
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::hii3zt9g647fq0vuqqyavp::--><code>amy.reset()
 amy.send(osc=2, wave=amy.SINE, ratio=0.2, amp={&#039;const&#039;: 1, &#039;vel&#039;: 0, &#039;eg0&#039;: 2}, bp0=&#039;0,0,5000,1,0,0&#039;)  # Op 2, modulator
 amy.send(osc=1, wave=amy.SINE, ratio=1, amp={&#039;const&#039;: 1, &#039;vel&#039;: 0, &#039;eg0&#039;: 0})  # Op 1, carrier
 amy.send(osc=0, wave=amy.ALGO, algorithm=1, algo_source=&#039;,,,,2,1&#039;)</code></pre>
 </div><p>Just a refresher on envelope generators; here we are saying to set the beta parameter (amplitude of the modulating tone) to 2x envelope generator 0's output, which starts at 0 at time 0 (actually, this is the default), then grows to 1.0 at time 5000ms - so beta grows to 2.0. At the release of the note, beta immediately drops back to 0. We can play it with:</p>
-<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::zczecx00s6dmunsqfs77::--><code>amy.send(osc=0, note=60, vel=1)</code></pre>
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::aze285pf1fwscn5onfne7o::--><code>amy.send(osc=0, note=60, vel=1)</code></pre>
 </div><p>and stop it with</p>
-<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::kty78h5tgicwzyfsjxton::--><code>amy.send(osc=0, vel=0)</code></pre>
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::u2h0qu8362nhd7fxm12rq::--><code>amy.send(osc=0, vel=0)</code></pre>
 </div><h2 id="partials" tabindex="-1">Partials <a class="header-anchor" href="#partials" aria-label="Permalink to “Partials”">&#8203;</a></h2>
 <p>Additive synthesis is simply adding together oscillators to make more complex tones. You can modulate the breakpoints of these oscillators over time, for example, changing their pitch or time without artifacts, as the synthesis is simply playing sine waves back at certain amplitudes and frequencies (and phases). It's well suited to certain types of instruments.</p>
 <p><img src="https://raw.githubusercontent.com/shorepine/alles/main/pics/partials.png" alt="Partials"></p>
 <p>We have analyzed the partials of a group of instruments and stored them as presets baked into the synth. Each of these patches are comprised of multiple sine wave oscillators, changing over time. The <code>PARTIALS</code> type has the presets:</p>
-<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::oe1vy8oudhae5ov7ihta6::--><code>amy.send(osc=0, vel=1, note=50, wave=amy.PARTIALS, patch=5) # a nice organ tone
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::ep7xlj2f8fai7isgg0suo::--><code>amy.send(osc=0, vel=1, note=50, wave=amy.PARTIALS, patch=5) # a nice organ tone
 amy.send(osc=0, vel=1, note=55, wave=amy.PARTIALS, patch=5) # change the frequency
 amy.send(osc=0, vel=1, note=50, wave=amy.PARTIALS, patch=6, ratio=0.2) # ratio slows down the partial playback</code></pre>
 </div><p>The presets are just the start of what you can do with partials in AMY. You can analyze any piece of audio and decompose it into sine waves and play it back on the synthesizer in real time. It requires a little setup on the client end, here on macOS:</p>
-<div class="language-bash"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">bash</span><pre><!--::markdown-it-async::g9pzhfoo1zlxgnwmzpztf::--><code>brew install python3 swig ffmpeg
+<div class="language-bash"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">bash</span><pre><!--::markdown-it-async::2aredall3a5gvfuajclj3p::--><code>brew install python3 swig ffmpeg
 python3 -m pip install pydub numpy --user
 tar xvf loris-1.8.tar
 cd loris-1.8
@@ -798,7 +798,7 @@ make
 make install
 cd ..</code></pre>
 </div><p>And then in python (run <code>python3</code>):</p>
-<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::civvery2zjh4i50kww96v::--><code>import partials, amy
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::0yp6spt3y4qajdr94izxib::--><code>import partials, amy
 (m, s) = partials.sequence(&#039;sounds/sleepwalk_original_45s.mp3&#039;)  # Any audio file
 153 partials and 977 breakpoints, max oscs used at once was 8
 
@@ -807,7 +807,7 @@ partials.play(s)</code></pre>
 </div><p><a href="https://user-images.githubusercontent.com/76612/131150119-6fa69e3c-3244-476b-a209-1bd5760bc979.mp4" target="_blank" rel="noreferrer">https://user-images.githubusercontent.com/76612/131150119-6fa69e3c-3244-476b-a209-1bd5760bc979.mp4</a></p>
 <p>You can see, given any audio file, you can hear a sine wave decomposition version of in AMY. This particular sound emitted 109 partials, with a total of 1029 breakpoints among them to play back to the mesh. Of those 109 partials, only 8 are active at once. <code>partials.sequence()</code> performs voice stealing to ensure we use as few oscillators as necessary to play back a set.</p>
 <p>There's a lot of parameters you can (and should!) play with in Loris. <code>partials.sequence</code>  and <code>partials.play</code>takes the following with their defaults:</p>
-<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::ja325g29jitigcwwpcqej::--><code>def sequence(filename, # any audio filename
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::3bpghy91pjlavmrtprzzph::--><code>def sequence(filename, # any audio filename
              max_len_s = 10, # analyze first N seconds
              amp_floor=-30, # only accept partials at this amplitude in dB, lower #s == more partials
              hop_time=0.04, # time between analysis windows, impacts distance between breakpoints
@@ -827,7 +827,7 @@ def play(sequence, # from partials.sequence
          )</code></pre>
 </div><h2 id="build-your-own-partials" tabindex="-1">Build-your-own Partials <a class="header-anchor" href="#build-your-own-partials" aria-label="Permalink to “Build-your-own Partials”">&#8203;</a></h2>
 <p>You can also explicitly control partials in &quot;build-your-own partials&quot; mode, accessed via <code>wave=amy.BYO_PARTIALS</code>.  This sets up a string of oscs as individual sinusoids, just like <code>PARTIALS</code> mode, but it's up to you to control the details of each partial via its parameters, envelopes, etc.  You just have to say how many partials you want with <code>num_partials</code>.  You can then individually set up the amplitude <code>bp0</code> envelopes of the next <code>num_partials</code> oscs for arbitrary control, subject to the limit of 7 breakpoints plus release for each envelope.  For instance, to get an 8-harmonic pluck tone with a 50 ms attack, and harmonic weights and decay times inversely proportional to to the harmonic number:</p>
-<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::p3g3s0axzd8t4tu4bqd8a::--><code>num_partials = 8
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::vcsxph57sphuftbuc47tk::--><code>num_partials = 8
 amy.send(osc=0, wave=amy.BYO_PARTIALS, num_partials=num_partials)
 for i in range(1, num_partials + 1):
     # Set up each partial as the corresponding harmonic of 261.63
@@ -836,7 +836,7 @@ for i in range(1, num_partials + 1):
              bp0=&#039;50,%.2f,%d,0,0,0&#039; % ((1.0 / i), 1000 // i))
 amy.send(osc=0, note=60, vel=1)</code></pre>
 </div><p>You can add a filter (or an envelope etc.) to the sum of all the <code>PARTIAL</code> oscs by configuring it on the parent <code>PARTIALS</code> osc:</p>
-<div class="language-"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang"></span><pre><!--::markdown-it-async::m3nin5da45kt2go4omhnr::--><code>amy.send(osc=0, filter=amy.FILTER_HPF, resonance=4, filter_freq={&#039;const&#039;: 200, &#039;eg1&#039;: 4}, bp1=&#039;0,0,1000,1,0,0&#039;)
+<div class="language-"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang"></span><pre><!--::markdown-it-async::uqtjfy71adoeey51fprcli::--><code>amy.send(osc=0, filter=amy.FILTER_HPF, resonance=4, filter_freq={&#039;const&#039;: 200, &#039;eg1&#039;: 4}, bp1=&#039;0,0,1000,1,0,0&#039;)
 amy.send(osc=0, note=60, vel=1)
 # etc.</code></pre>
 </div><p>Note that the default <code>bp0</code> amplitude envelope of the <code>PARTIALS</code> osc is a gate, so if you want to have a nonzero release on your partials, you'll need to add a slower release to the <code>PARTIALS</code> osc to avoid it cutting them off.</p>
@@ -844,39 +844,39 @@ amy.send(osc=0, note=60, vel=1)
 <p>Please see our <a href="https://shorepine.github.io/amy/piano.html" target="_blank" rel="noreferrer">piano voice documentation</a> for more on the <code>INTERP_PARTIALS</code> type.</p>
 <h2 id="pcm" tabindex="-1">PCM <a class="header-anchor" href="#pcm" aria-label="Permalink to “PCM”">&#8203;</a></h2>
 <p>AMY comes with a set of 67 drum-like and instrument PCM samples to use as well, as they are normally hard to render with additive, subtractive or FM synthesis. You can use the type <code>PCM</code> and patch numbers 0-66 to explore them. Their native pitch is used if you don't give a frequency or note parameter. You can update the baked-in PCM sample bank using <code>amy_headers.py</code>.</p>
-<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::4l8x1ccdj2eqhyr145gkh::--><code>amy.send(osc=0, wave=amy.PCM, vel=1, patch=10) # cowbell
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::xk0tgrn4rqs4b2kx4uaiq::--><code>amy.send(osc=0, wave=amy.PCM, vel=1, patch=10) # cowbell
 amy.send(osc=0, wave=amy.PCM, vel=1, patch=10, note=70) # higher cowbell! </code></pre>
 </div><p>You can turn on sample looping, helpful for instruments, using <code>feedback</code>:</p>
-<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::21lvulssu49upz8l5p66z::--><code>amy.send(wave=amy.PCM,vel=1,patch=21,feedback=0) # clean guitar string, no looping
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::b6kb4bbaj2tnjkxhfewp8::--><code>amy.send(wave=amy.PCM,vel=1,patch=21,feedback=0) # clean guitar string, no looping
 amy.send(wave=amy.PCM,vel=1,patch=21,feedback=1) # loops forever until note off
 amy.send(vel=0) # note off
 amy.send(wave=amy.PCM,vel=1,patch=35,feedback=1) # nice violin</code></pre>
 </div><h2 id="sampler-aka-memory-pcm" tabindex="-1">Sampler (aka Memory PCM) <a class="header-anchor" href="#sampler-aka-memory-pcm" aria-label="Permalink to “Sampler (aka Memory PCM)”">&#8203;</a></h2>
 <p>You can also load your own samples into AMY at runtime. We support sending PCM data over the wire protocol. Use <code>load_sample</code> in <code>amy.py</code> as an example:</p>
-<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::j1w0g5xqztf6w4hz4kssl7::--><code>amy.load_sample(&quot;G1.wav&quot;, patch=3)
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::r77n7q231vnbey6qyh38k::--><code>amy.load_sample(&quot;G1.wav&quot;, patch=3)
 amy.send(osc=0, wave=amy.PCM, patch=3, vel=1) # plays the sample</code></pre>
 </div><p>You can use any patch number. If it overlaps with an existing PCM baked in number, it will play the memory sample instead of the baked in sample until you <code>unload_sample</code> the patch.</p>
 <p>If the WAV file has sampler metadata like loop points or base MIDI note, we use that in AMY. You can set it directly as well using <code>loopstart</code>, <code>loopend</code>, <code>midinote</code> or <code>length</code> in the <code>load_sample</code> call. To unload a sample:</p>
-<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::4zquuuqed2fz99pwqlofuo::--><code>amy.unload_sample(3) # unloads the RAM for patch 3</code></pre>
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::vr5egotut7snbgp31oubf::--><code>amy.unload_sample(3) # unloads the RAM for patch 3</code></pre>
 </div><p>Under the hood, if AMY receives a <code>load_sample</code> message (with patch number and nonzero length), it will then pause all other message parsing until it has received <code>length</code> amount of base64 encoded bytes over the wire protocol. Each individual message must be base64 encoded. Since AMY's maximum message length is 255 bytes, there is logic in <code>load_sample</code> in <code>amy.py</code>  to split the sample data into 188 byte chunks, which generates 252 bytes of base64 text. Please see <code>amy.load_sample</code> if you wish to load samples on other platforms.</p>
 <h2 id="voices-and-patches-dx7-piano-juno-6-custom-support" tabindex="-1"><a name="voices_and_patches"></a>Voices and patches (DX7, Piano, Juno-6, custom) support <a class="header-anchor" href="#voices-and-patches-dx7-piano-juno-6-custom-support" aria-label="Permalink to “Voices and patches (DX7, Piano, Juno-6, custom) support”">&#8203;</a></h2>
 <p>Up until now, we have been directly controlling the AMY oscillators, which are the fundamental building blocks for sound production.  However, as we've seen, most interesting tones involve multiple oscillators.  AMY provides a second layer of organization, <strong>voices</strong>, to make it easier to configure and use groups of oscillators in coordination.  And you configure a voice by using a <strong>patch</strong>, which is simply a stored list of AMY commands that set up one or more oscillators.</p>
 <p>A voice in AMY is a collection of oscillators. You can assign any patch to any voice number, or set up mulitple voices to have the same patch (for example, a polyphonic synth), and AMY will allocate the oscillators it needs under the hood.  (Note that when you use voices, you'll need to include the <code>voices</code> arg when addressing oscillators, and AMY will automatically route your command to the relevant oscillator in each voice set -- there's no other way to tell which oscillators are being used by which voices.)</p>
 <p>To play a patch, for instance the built-in patches emulating Juno and DX7 synthesizers and a piano, you allocate them to one or more voices, then send note events, or parameter moidifications, to those voices. We ship patches 0-127 for Juno, 128-255 for DX7, and 256 for our <a href="https://shorepine.github.io/amy/piano.html" target="_blank" rel="noreferrer">built in piano</a>. For example, a multitimbral Juno/DX7 synth can be set up like this:</p>
-<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::depzb9n3maegz0138vvbq7::--><code>amy.send(voices=&#039;0,1,2,3&#039;, load_patch=1)     # Juno patch #1 on voice 0-3
+<div class="language-python"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">python</span><pre><!--::markdown-it-async::fvqmywyet6ewff2aekwbg::--><code>amy.send(voices=&#039;0,1,2,3&#039;, load_patch=1)     # Juno patch #1 on voice 0-3
 amy.send(voices=&#039;4,5,6,7&#039;, load_patch=129)   # DX7 patch #2 on voices 4-7
 amy.send(voices=0, note=60, vel=1)           # Play note 60 on voice 0
 amy.send(voices=0, osc=0, filter_freq=8000)  # Open up the filter on the Juno voice (using its bottom oscillator)</code></pre>
 </div><p>The code in <code>amy_headers.py</code> generates these patches and bakes them into AMY so they're ready for playback on any device. You can add your own patches by storing alternative wire-protocol setup strings in <code>patches.h</code>.</p>
 <p>You can also create your own patches at runtime and use them for voices with <code>store_patch='PATCH_NUMBER,AMY_PATCH_STRING'</code> where <code>PATCH_NUMBER</code> is a number in the range 1024-1055. This message must be on its own in the <code>amy.send()</code> command, not combined with any other parameters, because AMY will treat the rest of the message as a patch rather than interpreting the remaining arguments as ususal.</p>
 <p>So you can do:</p>
-<div class="language-"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang"></span><pre><!--::markdown-it-async::4xzl6acpwkrsuxmk20n9ta::--><code>&gt;&gt;&gt; import amy; amy.live()  # Not needed on Tulip.
+<div class="language-"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang"></span><pre><!--::markdown-it-async::wcheuhc3h0k8ycj8gd38ap::--><code>&gt;&gt;&gt; import amy; amy.live()  # Not needed on Tulip.
 &gt;&gt;&gt; amy.send(store_patch=&#039;1024,v0S0Zv0S1Zv1w0f0.25P0.5a0.5Zv0w0f261.63,1,0,0,0,1A0,1,500,0,0,0L1Z&#039;)
 &gt;&gt;&gt; amy.send(voices=0, load_patch=1024)
 &gt;&gt;&gt; amy.send(voices=0, vel=2, note=50)</code></pre>
 </div><p>AMY infers the number of oscs needed for the patch at <code>store_patch</code> time. If you store a new patch over an old one, that old memory is freed and re-allocated. (We rely on <code>malloc</code> for all of this.)</p>
 <p>You can &quot;record&quot; patches in a sequence of commands like this:</p>
-<div class="language-"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang"></span><pre><!--::markdown-it-async::doibfc8qrkitj3c1tt8kg::--><code>&gt;&gt;&gt; amy.log_patch()
+<div class="language-"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang"></span><pre><!--::markdown-it-async::gq8ynt7gc36v36gyfbq17::--><code>&gt;&gt;&gt; amy.log_patch()
 &gt;&gt;&gt; # Execute any commands to set up the oscillators.
 &gt;&gt;&gt; amy.preset(5)
 &gt;&gt;&gt; bass_drum = amy.retrieve_patch()
@@ -892,11 +892,11 @@ amy.send(voices=0, osc=0, filter_freq=8000)  # Open up the filter on the Juno vo
             <title><![CDATA[Synth snippets]]></title>
             <link>https://chromatone.center/practice/synth/snippets.html</link>
             <guid isPermaLink="false">https://chromatone.center/practice/synth/snippets.html</guid>
-            <pubDate>Tue, 22 Sep 2026 08:06:52 GMT</pubDate>
+            <pubDate>Tue, 22 Sep 2026 18:48:42 GMT</pubDate>
             <description><![CDATA[Code pieces]]></description>
             <content:encoded><![CDATA[<h3 id="skew-by-upheaver" tabindex="-1">Skew by <a href="https://discord.com/channels/826071713426178078/834787928688689172/1123676571279048875" target="_blank" rel="noreferrer">upheaver</a> <a class="header-anchor" href="#skew-by-upheaver" aria-label="Permalink to “Skew by upheaver”">&#8203;</a></h3>
 <p>Sharing a useful snippet. JUCE's logskew function in Typescript, if anyone wants to scale their parameter values (for example convert 0-1 range to 20-20000 hz in a non linear way) :</p>
-<div class="language-js"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">js</span><pre><!--::markdown-it-async::qxjum1tvm6uqen611c6eg::--><code>const clamp = ( min: number, max: number, num: number ) =&gt; {
+<div class="language-js"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">js</span><pre><!--::markdown-it-async::bije5th3shmru4qdf67qo::--><code>const clamp = ( min: number, max: number, num: number ) =&gt; {
     return Math.min(Math.max(num, min), max);
 }
 
@@ -919,7 +919,7 @@ console.log(logskew( 20, 20000, 0.5, 1000)) // will output 1000</code></pre>
             <title><![CDATA[Reharmonization]]></title>
             <link>https://chromatone.center/theory/harmony/reharmonization/</link>
             <guid isPermaLink="false">https://chromatone.center/theory/harmony/reharmonization/</guid>
-            <pubDate>Tue, 22 Sep 2026 08:06:52 GMT</pubDate>
+            <pubDate>Tue, 22 Sep 2026 18:48:42 GMT</pubDate>
             <description><![CDATA[How to reharmonize a song]]></description>
             <content:encoded><![CDATA[<youtube-embed video="lz3WR-F_pnM" /><h2 id="reharmonization-chord-substitution-but-for-the-whole-chord-progression" tabindex="-1">Reharmonization = Chord substitution but for the whole chord progression <a class="header-anchor" href="#reharmonization-chord-substitution-but-for-the-whole-chord-progression" aria-label="Permalink to “Reharmonization = Chord substitution but for the whole chord progression”">&#8203;</a></h2>
 <p>Reharmonization is used to:</p>
@@ -1141,7 +1141,7 @@ console.log(logskew( 20, 20000, 0.5, 1000)) // will output 1000</code></pre>
             <title><![CDATA[Max Konyi's feeling states]]></title>
             <link>https://chromatone.center/theory/intervals/Max Konyi's feeling states.html</link>
             <guid isPermaLink="false">https://chromatone.center/theory/intervals/Max Konyi's feeling states.html</guid>
-            <pubDate>Tue, 22 Sep 2026 08:06:52 GMT</pubDate>
+            <pubDate>Tue, 22 Sep 2026 18:48:42 GMT</pubDate>
             <description><![CDATA[# Max Konyi's feeling states
 
 A granular look into Max Konyi's framework reveals that each of the 12 chromatic scale degrees acts as a distinct emotional ecosystem when measured against a steady tonic drone.
@@ -2685,7 +2685,7 @@ Multiple stages of valve gain/clipping can be &quot;cascaded&quot; to produce a 
 <p>Toussaint could have called them Bjorklund rhythms, but Euclidean rhythm has a more timeless feel. As I will discuss later, there are other ways of deriving the same set of patterns.</p>
 <h2 id="euclidean-rhythm-in-code" tabindex="-1">Euclidean rhythm in code <a class="header-anchor" href="#euclidean-rhythm-in-code" aria-label="Permalink to “Euclidean rhythm in code”">&#8203;</a></h2>
 <p>This is fairly basic to code. As an input, we’ll use the number of onsets, and a total number of pulses. To keep things simple we’ll have our end result be an array of 1s (onset) and 0s (no onset). Conceptually, we need keep track of two groups: a front group and a back group. To start, the front group will be an array consisting of the onsets (each in their own array) and the back array will consist of one array for each non-onset pulse. Then recursively we create a new front array by concatenating pairs from the old front and back until we run out of elements in either the front or the back, and the new back array will be whatever elements are left over. We keep going until the back array has one (or zero) elements, then we flatten the resulting 2nd array. Our Swift code looks something like this:</p>
-<div class="language-swift"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">swift</span><pre><!--::markdown-it-async::0xw02txdkd5xz0ncm9twd7::--><code>func generateEuclidean(onsets: Int, pulses: Int) -&gt; [Int] {
+<div class="language-swift"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">swift</span><pre><!--::markdown-it-async::z07hyts35kkm4goql886w::--><code>func generateEuclidean(onsets: Int, pulses: Int) -&gt; [Int] {
     let front:[[Int]] = Array(repeating: [1], count: onsets)
     let back:[[Int]] = Array(repeating: [0], count: pulses - onsets)
     return euclidRecursive(front: front, back: back).flatMap {$0}
@@ -2712,7 +2712,7 @@ private func euclidRecursive (front: [[Int]], back: [[Int]]) -&gt; [[Int]] {
 <p>And to get our rhythm, we can just say that if floor of the y-value at each x is the same as the previous value, then it is a continuation of the previous onset, and if it has a new y-value, it is the beginning of a new onset.</p>
 <img src="./images/9.png" />
 <p>Here is the algorithm in Swift. Not that the Bjorklund approach was difficult, but the Bresenham approach is incredibly simple to code.</p>
-<div class="language-swift"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">swift</span><pre><!--::markdown-it-async::aabwgyoy8n8yh9v9kzg9rn::--><code>func bresenhamEuclidean(onsets: Int, pulses: Int) -&gt; [Int] {
+<div class="language-swift"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang">swift</span><pre><!--::markdown-it-async::vq394nek74a79x7f6lfy::--><code>func bresenhamEuclidean(onsets: Int, pulses: Int) -&gt; [Int] {
     let slope = Double(onsets) / Double(pulses)
     var result = [Int]()
     var previous: Int? = nil
@@ -3773,17 +3773,6 @@ This rule was taught by Bruckner to Schoenberg and Schenker, who both had follow
 <youtube-embed video="EpLdMIA9QzQ" /><youtube-embed video="1V25bEVuulk" /><youtube-embed video="kkKuecXa5RQ" /><h3 id="vocal-techniques" tabindex="-1">Vocal techniques <a class="header-anchor" href="#vocal-techniques" aria-label="Permalink to “Vocal techniques”">&#8203;</a></h3>
 <youtube-embed video="GC-tQl9HWp4" /><youtube-embed video="3-UgkKoOcAI" /><youtube-embed video="Vc54taQsLxA" />]]></content:encoded>
             <author>davay@chromatone.center (Denis Starov)</author>
-        </item>
-        <item>
-            <title><![CDATA[Rhythm]]></title>
-            <link>https://chromatone.center/practice/rhythm/</link>
-            <guid isPermaLink="false">https://chromatone.center/practice/rhythm/</guid>
-            <pubDate>Mon, 15 Nov 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[Delicate patterns of beat and groove]]></description>
-            <content:encoded><![CDATA[<p>Explore beats loops with the <a href="./bars/">Horizontal bars</a> or <a href="./circle/">Circlular</a> metronomes.</p>
-]]></content:encoded>
-            <author>davay@chromatone.center (Denis Starov)</author>
-            <enclosure url="https://chromatone.center/abimael-ahumada.jpg" length="0" type="image/jpg"/>
         </item>
         <item>
             <title><![CDATA[Generative theory of tonal music]]></title>
@@ -6196,51 +6185,6 @@ Meter is the measurement of the number of pulses between more or less regularly 
             <enclosure url="https://chromatone.center/flam.jpg" length="0" type="image/jpg"/>
         </item>
         <item>
-            <title><![CDATA[Rhythm]]></title>
-            <link>https://chromatone.center/theory/rhythm/</link>
-            <guid isPermaLink="false">https://chromatone.center/theory/rhythm/</guid>
-            <pubDate>Fri, 15 Oct 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[Musical exploration of time]]></description>
-            <content:encoded><![CDATA[<p><a href="./study/">What is Rhythm</a> and how does the temporal dimension of music evolve? How we can conceptualize the human <a href="./pulse/">Musical time feeling</a>? How can we <a href="./counting/">Count fast enough</a> to understand the inner relations of different rhythmic patterns?</p>
-<p>The main concept in modern Western rhythmic tradition is the <a href="./meter/">Meters</a> differentiation. While there's a plenty of other <a href="./system/">national musical time organisation systems</a>, that may emphasize some other aspects of the temporal music feel, such as <a href="./groove/">Syncopation, swing and groove</a>.</p>
-<p>And there's so much to explore in practice while learning basic <a href="./rudiments/">Drum rudiments</a> on your own.</p>
-<h2 id="embodiment-of-music" tabindex="-1">Embodiment of music <a class="header-anchor" href="#embodiment-of-music" aria-label="Permalink to “Embodiment of music”">&#8203;</a></h2>
-<table tabindex="0">
-<thead>
-<tr>
-<th>Timescale</th>
-<th>Movement</th>
-<th>Time</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Phrase</td>
-<td>Breath</td>
-<td>2-8 sec</td>
-</tr>
-<tr>
-<td>Pulse</td>
-<td>Walking</td>
-<td>250-2000 ms</td>
-</tr>
-<tr>
-<td>Note</td>
-<td>Fingers</td>
-<td>100-1000 ms</td>
-</tr>
-<tr>
-<td>Microrhythm</td>
-<td>Talk</td>
-<td>5-50 ms</td>
-</tr>
-</tbody>
-</table>
-<youtube-embed video="UMFazztdbAI"/> ]]></content:encoded>
-            <author>davay@chromatone.center (Denis Starov)</author>
-            <enclosure url="https://chromatone.center/brent-ninaber.jpg" length="0" type="image/jpg"/>
-        </item>
-        <item>
             <title><![CDATA[Drone]]></title>
             <link>https://chromatone.center/theory/melody/drone/</link>
             <guid isPermaLink="false">https://chromatone.center/theory/melody/drone/</guid>
@@ -7300,7 +7244,7 @@ Twelve-tone Phrygian/Lydian polymode (C) C–D♭–D–E♭–E–F–F♯–G�
 <h2 id="technical-specification" tabindex="-1">Technical specification <a class="header-anchor" href="#technical-specification" aria-label="Permalink to “Technical specification”">&#8203;</a></h2>
 <p>To be recognized by ringtone programs, an RTTTL/Nokring format ringtone must contain three specific elements: name, settings, and notes.</p>
 <p>For example, here is the RTTTL ringtone for Haunted House:</p>
-<div class="language-"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang"></span><pre><!--::markdown-it-async::juhxojo5kecjvewwva5i1i::--><code>HauntHouse: d=4,o=5,b=108: 2a4, 2e, 2d#, 2b4, 2a4, 2c, 2d, 2a#4, 2e., e, 1f4, 1a4, 1d#, 2e., d, 2c., b4, 1a4, 1p, 2a4, 2e, 2d#, 2b4, 2a4, 2c, 2d, 2a#4, 2e., e, 1f4, 1a4, 1d#, 2e., d, 2c., b4, 1a4</code></pre>
+<div class="language-"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang"></span><pre><!--::markdown-it-async::yi9fo0rvjoar90vos0ty3p::--><code>HauntHouse: d=4,o=5,b=108: 2a4, 2e, 2d#, 2b4, 2a4, 2c, 2d, 2a#4, 2e., e, 1f4, 1a4, 1d#, 2e., d, 2c., b4, 1a4, 1p, 2a4, 2e, 2d#, 2b4, 2a4, 2c, 2d, 2a#4, 2e., e, 1f4, 1a4, 1d#, 2e., d, 2c., b4, 1a4</code></pre>
 </div><p>The three parts are separated by a colon.</p>
 <ul>
 <li>
@@ -7362,6 +7306,17 @@ Example</p>
             <enclosure url="https://chromatone.center/derek-story.jpg" length="0" type="image/jpg"/>
         </item>
         <item>
+            <title><![CDATA[Rhythm]]></title>
+            <link>https://chromatone.center/practice/rhythm/</link>
+            <guid isPermaLink="false">https://chromatone.center/practice/rhythm/</guid>
+            <pubDate>Sat, 18 Sep 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[Delicate patterns of beat and groove]]></description>
+            <content:encoded><![CDATA[<p>Explore beats loops with the <a href="./bars/">Horizontal bars</a> or <a href="./circle/">Circlular</a> metronomes.</p>
+]]></content:encoded>
+            <author>davay@chromatone.center (Denis Starov)</author>
+            <enclosure url="https://chromatone.center/abimael-ahumada.jpg" length="0" type="image/jpg"/>
+        </item>
+        <item>
             <title><![CDATA[Dodeka]]></title>
             <link>https://chromatone.center/theory/notes/alternative/dodeka/</link>
             <guid isPermaLink="false">https://chromatone.center/theory/notes/alternative/dodeka/</guid>
@@ -7409,7 +7364,7 @@ C / K / D / T / E / F / H / G / P / A / V / B.</p>
             <pubDate>Fri, 17 Sep 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[A simple notation used to identify a piece of music through melodic motion]]></description>
             <content:encoded><![CDATA[<p>The Parsons code, formally named the Parsons code for melodic contours, is a simple notation used to identify a piece of music through melodic motion — movements of the pitch up and down. Denys Parsons (father of Alan Parsons) developed this system for his 1975 book The Directory of Tunes and Musical Themes. Representing a melody in this manner makes it easier to index or search for pieces, particularly when the notes' values are unknown. Parsons covered around 15,000 classical, popular and folk pieces in his dictionary. In the process he found out that *UU is the most popular opening contour, used in 23% of all the themes, something that applies to all the genres.</p>
-<div class="language-"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang"></span><pre><!--::markdown-it-async::f88qgsfuxlah9lij14f9co::--><code>Parsons Code of Ode to Joy
+<div class="language-"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang"></span><pre><!--::markdown-it-async::49faar0kqbqadsxptarm::--><code>Parsons Code of Ode to Joy
 
     Parsons$ ./contour *RUURDDDDRUURDR
             *-*
@@ -7482,7 +7437,21 @@ C / K / D / T / E / F / H / G / P / A / V / B.</p>
 <p>Two notes sounding simultaneously or sequentially form the basic building block for all the emotional expressiveness of music. They form some kind of relationships that bring up some distinct feeling.</p>
 <p>The most basic is the 1:2 ratio of an <a href="./unison-octave/">Unison and octave</a>, that are foundational for cyclic nature of pitch class space. <a href="./fifth-fourth/">Perfect Fifth and Fourth</a> are the foundational consonances that bring joy of the simple 2:3 and 3:4 ratios. This is the root of the 12 note system as a whole.</p>
 <p><a href="./third-sixth/">Thirds and Sixth</a> are the imperfect consonances to evoke deeper feelings while the <a href="./second-seventh/">Seconds and Sevenths</a> are the sharper dissonances to spice everything up. We'll explore the process of the <a href="./emancipation/">Emancipation of dissonance</a> to find out how did we get at this point in our pitch pairs interpretation. And take a brief look at some mathematical implications of building <a href="./cycles/">interval chains</a>.</p>
-<youtube-embed video="3sUpoSTy8zw" /><youtube-embed video="cyW5z-M2yzw" />]]></content:encoded>
+<youtube-embed video="3sUpoSTy8zw" /><youtube-embed video="cyW5z-M2yzw" /><h2 id="pitch-class-space" tabindex="-1">Pitch class space <a class="header-anchor" href="#pitch-class-space" aria-label="Permalink to “Pitch class space”">&#8203;</a></h2>
+<p>In music theory, pitch-class space is the circular space representing all the notes (pitch classes) in a musical octave. In this space, there is no distinction between tones that are separated by an integral number of octaves. For example, C4, C5, and C6, though different pitches, are represented by the same point in pitch class space.</p>
+<p>Since pitch-class space is a circle, we return to our starting point by taking a series of steps in the same direction: beginning with C, we can move &quot;upward&quot; in pitch-class space, through the pitch classes C♯, D, D♯, E, F, F♯, G, G♯, A, A♯, and B, returning finally to C. By contrast, pitch space is a linear space: the more steps we take in a single direction, the further we get from our starting point.</p>
+<p>Deutsch and Feroe (1981), and Lerdahl and Jackendoff (1983) use a &quot;reductional format&quot; to represent the perception of pitch-class relations in tonal contexts. These two-dimensional models resemble bar graphs, using height to represent a pitch class's degree of importance or centricity. Lerdahl's version uses five levels: the first (highest) contains only the tonic, the second contains tonic and dominant, the third contains tonic, mediant, and dominant, the fourth contains all the notes of the diatonic scale, and the fifth contains the chromatic scale. In addition to representing centricity or importance, the individual levels are also supposed to represent &quot;alphabets&quot; that describe the melodic possibilities in tonal music (Lerdahl 2001, 44–46). The model asserts that tonal melodies will be cognized in terms of one of the five levels a-e:</p>
+<blockquote>
+<p>Level a: C C
+Level b: C G C
+Level c: C E G C
+Level d: C D E F G A B C
+Level e: C D♭ D E♭ E F F♯ G A♭ A B♭ B C</p>
+<p>(Lerdahl 1992, 113)</p>
+</blockquote>
+<p>Note that Lerdahl's model is meant to be cyclical, with its right edge identical to its left. One could therefore display Lerdahl's graph as a series of five concentric circles representing the five melodic &quot;alphabets.&quot; In this way one could unite the circular representation depicted at the beginning of this article with Lerdahl's flat two-dimensional representation depicted above.</p>
+<p>According to David Kopp (2002, 1), &quot;Harmonic space, or tonal space as defined by Fred Lerdahl, is the abstract nexus of possible normative harmonic connections in a system, as opposed to the actual series of temporal connections in a realized work, linear or otherwise.&quot;</p>
+]]></content:encoded>
             <author>davay@chromatone.center (Denis Starov)</author>
             <enclosure url="https://chromatone.center/guang-yang.jpg" length="0" type="image/jpg"/>
         </item>
@@ -7933,41 +7902,280 @@ Messages</p>
             <guid isPermaLink="false">https://chromatone.center/theory/intervals/unison-octave/</guid>
             <pubDate>Fri, 10 Sep 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[Intervals inside the same pitch class]]></description>
-            <content:encoded><![CDATA[<h2 id="unison-p1" tabindex="-1">Unison P1 <a class="header-anchor" href="#unison-p1" aria-label="Permalink to “Unison P1”">&#8203;</a></h2>
-<abc-render abc="[A4A4] AA" /><chroma-profile chroma="100000000000" /><p>Unison is two or more musical parts that sound either the same pitch or pitches separated by intervals of one or more octaves, usually at the same time.</p>
-<p>Unison or perfect unison (also called a prime, or perfect prime) may refer to the (pseudo-)interval formed by a tone and its duplication (in German, Unisono, Einklang, or Prime), for example C–C, as differentiated from the second, C–D, etc. In the unison the two pitches have the ratio of 1:1 or 0 half steps and zero cents. Although two tones in unison are considered to be the same pitch, they are still perceivable as coming from separate sources, whether played on instruments of a different type or of the same type. This is because a pair of tones in unison come from different locations or can have different &quot;colors&quot; (timbres), i.e. come from different musical instruments or human voices. Voices with different colors have, as sound waves, different waveforms. These waveforms have the same fundamental frequency but differ in the amplitudes of their higher harmonics. The unison is considered the most consonant interval while the near unison is considered the most dissonant. The unison is also the easiest interval to tune. The unison is abbreviated as &quot;P1&quot;.</p>
+            <content:encoded><![CDATA[<p>An <strong>interval</strong> is the relationship between two musical sounds in terms of pitch — the terrain we navigate every time we jam, harmonize, or sing in a choir. Intervals occur <strong>simultaneously</strong> (two notes sounding together — <em>harmonic</em>, vertical) and <strong>sequentially</strong> (one note following another — <em>melodic</em>, horizontal).</p>
+<p>Two intervals anchor that entire terrain: <strong>unison</strong> and <strong>octave</strong>. They are the reference points from which all other intervals derive their meaning — and the only intervals where both notes share the same <strong>pitch class</strong>, the same color in Chromatone.</p>
+<table tabindex="0">
+<thead>
+<tr>
+<th>At a glance</th>
+<th>Unison (P1)</th>
+<th>Octave (P8)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Frequency ratio</td>
+<td>1:1</td>
+<td>2:1</td>
+</tr>
+<tr>
+<td>Semitones</td>
+<td>0</td>
+<td>12</td>
+</tr>
+<tr>
+<td>Cents</td>
+<td>0</td>
+<td>1200</td>
+</tr>
+<tr>
+<td>Pitch class / chroma</td>
+<td>same</td>
+<td>same</td>
+</tr>
+<tr>
+<td>On the spectrogram</td>
+<td>one reinforced band</td>
+<td>parallel same-color lines</td>
+</tr>
+</tbody>
+</table>
+<h2 id="unison-p1" tabindex="-1">Unison P1 <a class="header-anchor" href="#unison-p1" aria-label="Permalink to “Unison P1”">&#8203;</a></h2>
+<abc-render abc="[A4A4] AA" /><chroma-profile chroma="100000000000" /><p><strong>Unison</strong> is two or more musical parts sounding either the same pitch, or pitches separated by one or more octaves, usually at the same time. <strong>Perfect unison</strong> (also a <strong>prime</strong> or <strong>perfect prime</strong>; German <em>Unisono</em>, <em>Einklang</em>, or <em>Prime</em>) is the (pseudo-)interval between a tone and its exact duplication — C–C, as differentiated from the second, C–D.</p>
+<ul>
+<li><strong>Ratio 1:1</strong> — 0 half steps, 0 cents. Two parts, one frequency.</li>
+<li><strong>The most consonant interval</strong> — while the <strong>near unison</strong> is the most <em>dissonant</em>: tones a few hertz apart produce slow loudness <strong>beats</strong>, and differences of a few tens of hertz fall inside one critical band of the ear as maximal roughness (Plomp &amp; Levelt, 1965).</li>
+<li><strong>The easiest interval to tune</strong> — precisely because those beats slow down and disappear at exactly 1:1. Ensemble players and piano tuners tune unisons by ear this way.</li>
+<li><strong>Still two sources.</strong> Even in perfect unison we perceive separate voices: they arrive from different locations and carry different <strong>timbres</strong> — different waveforms with the same fundamental frequency but different amplitudes of higher harmonics.</li>
+</ul>
+<blockquote>
+<p><strong>Feel it:</strong> when a choir section sings together, voices merge into a wall of unified sound; an orchestra doubling one line gains thickness and authority; a rock band doubling a riff in unison gets a fatter tone. The parts fuse into reinforcement and unity — yet the blend is richer than any single voice.</p>
+</blockquote>
+<blockquote>
+<p><strong>Fact:</strong> most piano keys strike <strong>two or three strings tuned in unison</strong>; Balinese gamelan deliberately tunes paired instruments a few hertz apart so the &quot;unison&quot; shimmers with slow beats called <strong>ombak</strong> (&quot;wave&quot;) — near-unison used as beauty, not error.</p>
+</blockquote>
+<p><strong>Chromatone view.</strong> On the spectrogram, unison appears as two perfectly aligned lines of color occupying the same frequency — a single, reinforced band. No tension, no movement: pure alignment. That is exactly why unison feels like home.</p>
 <h2 id="octave-p8" tabindex="-1">Octave P8 <a class="header-anchor" href="#octave-p8" aria-label="Permalink to “Octave P8”">&#8203;</a></h2>
-<abc-render abc="[A4a] Aa" /><p>An octave (Latin: octavus: eighth) or perfect octave (sometimes called the diapason) is the interval between one musical pitch and another with double its frequency. The octave relationship is a natural phenomenon that has been referred to as the &quot;basic miracle of music,&quot; the use of which is &quot;common in most musical systems.&quot; The interval between the first and second harmonics of the harmonic series is an octave.</p>
-<p>Any two musical notes with fundamental frequencies in a ratio equal to 2n (n is any integer) are perceived as very similar and represent the simplest interval in music – an octave. Human pitch perception is periodic so that “color” or chroma of all the notes that are an octave apart seem circularly equivalent and brings them together into one pitch class.</p>
+<abc-render abc="[A4a] Aa" /><p>An <strong>octave</strong> (Latin <em>octavus</em>: eighth; also <strong>perfect octave</strong> or <strong>diapason</strong>, from Greek <em>dia pasōn</em>, &quot;through all [the strings]&quot;) is the interval between one musical pitch and another with <strong>double its frequency</strong>: A 220 Hz → A 440 Hz → A 880 Hz, doubling by 2ⁿ in both directions without limit. This octave relationship is a natural phenomenon, referred to as the &quot;basic miracle of music,&quot; the use of which is &quot;common in most musical systems.&quot;</p>
+<ul>
+<li><strong>Nature's first interval.</strong> The step between the 1st and 2nd harmonics of the harmonic series is an octave — as is every 2→4, 3→6, 4→8 step above it.</li>
+<li><strong>1200 cents.</strong> Human pitch perception is <strong>logarithmic</strong> — we hear ratios, not hertz differences — so intervals are measured in <strong>cents</strong>, the unit Alexander John Ellis introduced in his 1885 English edition of Helmholtz's <em>On the Sensations of Tone</em>: one octave = 1200 cents, one equal-tempered semitone = 100.</li>
+<li><strong>Same color, new register.</strong> Because pitch perception is periodic, the &quot;color&quot; (<strong>chroma</strong>) of all notes an octave apart seems circularly equivalent, gathering them into one <strong>pitch class</strong>. Psychologists picture pitch as a <strong>helix</strong>: height climbs forever while chroma circles every 12 semitones (Revesz, 1913; Shepard, 1982).</li>
+</ul>
+<blockquote>
+<p><strong>Feel it:</strong> octaves are separation yet unity — different registers, still &quot;together.&quot; Doubling a melody in octaves adds brilliance and power, reinforced bass lines hit harder, open spacious harmonies appear, and sudden octave jumps create drama.</p>
+</blockquote>
 <img src="./key-intervals.svg">
-<p>To emphasize that it is one of the perfect intervals (including unison, perfect fourth, and perfect fifth), the octave is designated P8.</p>
-<h2 id="notation" tabindex="-1">Notation <a class="header-anchor" href="#notation" aria-label="Permalink to “Notation”">&#8203;</a></h2>
-<p>Octaves are identified with various naming systems. Among the most common are the scientific, Helmholtz, organ pipe, and MIDI note systems. In scientific pitch notation, a specific octave is indicated by a numerical subscript number after note name. In this notation, middle C is C4, because of the note's position as the fourth C key on a standard 88-key piano keyboard, while the C an octave higher is C5.</p>
-<h3 id="octave-equivalence" tabindex="-1">Octave equivalence <a class="header-anchor" href="#octave-equivalence" aria-label="Permalink to “Octave equivalence”">&#8203;</a></h3>
-<p>After the unison, the octave is the simplest interval in music. The human ear tends to hear both notes as being essentially &quot;the same&quot;, due to closely related harmonics. Notes separated by an octave &quot;ring&quot; together, adding a pleasing sound to music. The interval is so natural to humans that when men and women are asked to sing in unison, they typically sing in octave.</p>
+<p>To emphasize that it is one of the <strong>perfect intervals</strong> (together with unison, perfect fourth, and perfect fifth), the octave is designated <strong>P8</strong>.</p>
+<p><strong>Chromatone view.</strong> On the spectrogram, octaves appear as <strong>parallel lines of the same color</strong>, spaced equally apart (equally, because the frequency axis is logarithmic). The pattern repeats at each octave level — the octave is a true <strong>cycle</strong>, which is why we can say &quot;C&quot; in any octave and mean essentially the same thing.</p>
+<chroma-profile chroma="100000000000" /><p><em>The same chroma profile lights up for both notes of an octave: different height, identical color.</em></p>
+<h2 id="octave-equivalence-who-hears-the-cycle" tabindex="-1">Octave equivalence: who hears the cycle? <a class="header-anchor" href="#octave-equivalence-who-hears-the-cycle" aria-label="Permalink to “Octave equivalence: who hears the cycle?”">&#8203;</a></h2>
+<p>After the unison, the octave is the simplest interval in music. The human ear tends to hear both notes as essentially &quot;the same,&quot; due to closely related harmonics — in fact <strong>every harmonic of the higher note is also a harmonic of the lower one</strong>, so notes an octave apart &quot;ring&quot; together. The interval is so natural that when men and women are asked to sing in unison, they typically sing in octave.</p>
+<p>This perceived sameness of pitches one or more octaves apart is called <strong>octave equivalence</strong>. It is why notes an octave apart share one letter name in Western notation, and why &quot;scales are uniquely defined by specifying the intervals within an octave.&quot;</p>
+<h3 id="the-evidence" tabindex="-1">The evidence <a class="header-anchor" href="#the-evidence" aria-label="Permalink to “The evidence”">&#8203;</a></h3>
+<ul>
+<li><strong>Human infants</strong>, before language development, already group octave-related tones by chroma (Demany &amp; Armand, 1984).</li>
+<li><strong>Rats</strong> generalize across octaves (Blackwell &amp; Schlosberg, 1943; confirmed with modern methods by Wagner et al., 2024), and <strong>rhesus monkeys</strong> recognize melodies transposed by an octave (Wright et al., 2000) — evidence that octave perception is deep in mammalian hearing, plausibly tied to harmonic vocal structures.</li>
+<li><strong>Not everyone, though:</strong> European starlings (Cynx, 1993), black-capped chickadees, and common marmosets (Wagner et al., 2023) fail standard octave-equivalence tests — the trait is widespread, but not universal across species.</li>
+<li><strong>The brain files octaves under one category.</strong> fMRI adaptation shows cortical populations tuned to pitch <strong>chroma</strong> respond alike to octave-related tones (Moerel et al., 2014), and auditory attention automatically spreads to octave-related frequencies (Borra et al., 2013).</li>
+<li><strong>Absolute pitch reveals the split:</strong> people with absolute pitch name chroma flawlessly yet often misjudge <em>which octave</em> a note is in — pitch class and pitch height are separate cognitive processes.</li>
+<li><strong>Culture tunes the hardware.</strong> Among the Tsimane' of the Bolivian Amazon, sung reproductions show the universal logarithmic pitch scaling but <strong>no detectable octave equivalence</strong> (Jacoby &amp; McDermott, 2019): musical experience — especially singing — appears to strengthen a cycle the ear is merely ready to hear.</li>
+</ul>
 <img src="./octaves.svg">
-<p>For this reason, notes an octave apart are given the same note name in the Western system of music notation—the name of a note an octave above A is also A. This is called octave equivalence, the assumption that pitches one or more octaves apart are musically equivalent in many ways, leading to the convention &quot;that scales are uniquely defined by specifying the intervals within an octave&quot;. The conceptualization of pitch as having two dimensions, pitch height (absolute frequency) and pitch class (relative position within the octave), inherently include octave circularity. Thus all C♯s, or all 1s (if C = 0), in any octave are part of the same pitch class.</p>
-<p>A <a href="https://en.wikipedia.org/wiki/Pitch_class" target="_blank" rel="noreferrer">pitch class</a> (p.c. or pc) is a set of all pitches that are a whole number of octaves apart, e.g., the pitch class A consists of the As in all octaves. &quot;The pitch class A stands for all possible As, in whatever octave position.&quot;</p>
+<p>A <strong>pitch class</strong> (p.c. or pc) is the set of all pitches a whole number of octaves apart: &quot;The pitch class A stands for all possible As, in whatever octave position.&quot; Pitch therefore has two dimensions — <strong>pitch height</strong> (absolute frequency) and <strong>pitch class</strong> (position within the octave) — and that pair is what makes pitch circular. Thus all C♯s, or all 1s (if C = 0), in any octave belong to one pitch class.</p>
 <blockquote>
 <p>Although there is no formal upper or lower limit to this sequence, only a few of these pitches are audible to the human ear. Yet we can imagine seeing the 40th octave as the frequency gets to the visual spectrum.</p>
 </blockquote>
-<p>Pitch class is important because human pitch-perception is periodic: pitches belonging to the same pitch class are perceived as having a similar quality or color, a property called <strong>&quot;octave equivalence&quot;</strong>.</p>
-<p>Psychologists refer to the quality of a pitch as its <strong>&quot;chroma&quot;</strong>. A chroma is an attribute of pitches (as opposed to tone height), just like hue is an attribute of color. A pitch class is a set of all pitches that share the same chroma, just like &quot;the set of all yellow things&quot; is the collection of all yellow objects.</p>
-<youtube-embed video="BzNzgsAE4F0" /><h2 id="pitch-class-space" tabindex="-1">Pitch class space <a class="header-anchor" href="#pitch-class-space" aria-label="Permalink to “Pitch class space”">&#8203;</a></h2>
-<p>In music theory, pitch-class space is the circular space representing all the notes (pitch classes) in a musical octave. In this space, there is no distinction between tones that are separated by an integral number of octaves. For example, C4, C5, and C6, though different pitches, are represented by the same point in pitch class space.</p>
-<p>Since pitch-class space is a circle, we return to our starting point by taking a series of steps in the same direction: beginning with C, we can move &quot;upward&quot; in pitch-class space, through the pitch classes C♯, D, D♯, E, F, F♯, G, G♯, A, A♯, and B, returning finally to C. By contrast, pitch space is a linear space: the more steps we take in a single direction, the further we get from our starting point.</p>
-<p>Deutsch and Feroe (1981), and Lerdahl and Jackendoff (1983) use a &quot;reductional format&quot; to represent the perception of pitch-class relations in tonal contexts. These two-dimensional models resemble bar graphs, using height to represent a pitch class's degree of importance or centricity. Lerdahl's version uses five levels: the first (highest) contains only the tonic, the second contains tonic and dominant, the third contains tonic, mediant, and dominant, the fourth contains all the notes of the diatonic scale, and the fifth contains the chromatic scale. In addition to representing centricity or importance, the individual levels are also supposed to represent &quot;alphabets&quot; that describe the melodic possibilities in tonal music (Lerdahl 2001, 44–46). The model asserts that tonal melodies will be cognized in terms of one of the five levels a-e:</p>
+<p>Psychologists refer to the quality of a pitch as its <strong>chroma</strong> — an attribute of pitch, just like <strong>hue</strong> is an attribute of color. A pitch class is the sound-world's &quot;set of all yellow things&quot;: every B, in every octave, is one class, one color.</p>
+<h3 id="the-shepard-tone-the-cycle-made-audible" tabindex="-1">The Shepard tone: the cycle made audible <a class="header-anchor" href="#the-shepard-tone-the-cycle-made-audible" aria-label="Permalink to “The Shepard tone: the cycle made audible”">&#8203;</a></h3>
+<p>Stack octaves, fade the top and bottom in and out, and you can rise forever without ever getting higher: the <strong>Shepard tone</strong> (Shepard, 1964, <em>Circularity in Judgments of Relative Pitch</em>; the sliding version is the Shepard–Risset glissando). Its cousin, the <strong>tritone paradox</strong> (Deutsch, 1986), splits listeners into people who hear the same two-tone pair rise and people who hear it fall — direct proof that the brain organizes pitch along an octave circle.</p>
+<youtube-embed video="BzNzgsAE4F0" /><h3 id="two-octave-quirks-of-the-brain" tabindex="-1">Two octave quirks of the brain <a class="header-anchor" href="#two-octave-quirks-of-the-brain" aria-label="Permalink to “Two octave quirks of the brain”">&#8203;</a></h3>
+<ul>
+<li><strong>Missing fundamental.</strong> Hear only the upper harmonics of a note and the brain reconstructs the bass anyway (first described by Seebeck in 1841; Schouten's &quot;residue pitch,&quot; 1940). This is why small speakers &quot;play&quot; bass notes they cannot physically reproduce: pitch is a construction, and the octave is its scaffolding.</li>
+<li><strong>Octave stretching.</strong> Judged by ear, octaves at the extremes of the piano sound best slightly <strong>wider</strong> than 2:1 (by a few to a few tens of cents). Piano tuners bake this perceptual stretch into the <strong>Railsback curve</strong>, and string inharmonicity plus sensory dissonance explain much of it (e.g., <em>JASA</em>, 2019). The &quot;perfect&quot; octave is exactly perfect in mathematics — and nearly perfect in the ear.</li>
+</ul>
+<h2 id="notation-naming-the-octaves" tabindex="-1">Notation: naming the octaves <a class="header-anchor" href="#notation-naming-the-octaves" aria-label="Permalink to “Notation: naming the octaves”">&#8203;</a></h2>
+<p>Octaves are identified with various naming systems. Among the most common are the <strong>scientific</strong>, <strong>Helmholtz</strong>, <strong>organ-pipe</strong>, and <strong>MIDI</strong> systems. In scientific pitch notation a numeral follows the note name: middle C is <strong>C4</strong> — the fourth C on a standard 88-key piano — and the C an octave higher is C5. Helmholtz uses primes (c′, c″…); MIDI counts semitones (middle C = 60, A440 = 69); and organ <strong>footage</strong> names octaves by pipe length: 8′ sounds as written, 4′ an octave above, 16′ below, 32′ and 64′ into the contra and sub-contra depths.</p>
+<table tabindex="0">
+<thead>
+<tr>
+<th>Octave name</th>
+<th>Range</th>
+<th>C frequency</th>
+<th>Who lives here</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sub-contra</td>
+<td>C0–B0</td>
+<td>16.4–31 Hz</td>
+<td>Lowest audible octave, mostly unused; basso profondo such as Mikhail Zlatopolsky; Tim Storms' record low G−7 (0.189 Hz, 2012) lies far below it</td>
+</tr>
+<tr>
+<td>Contra</td>
+<td>C1–B1</td>
+<td>32.7–61.7 Hz</td>
+<td>Extreme bass voices (Vladimir Miller); 32′ organ stops</td>
+</tr>
+<tr>
+<td>Great</td>
+<td>C2–B2</td>
+<td>65.4–123.5 Hz</td>
+<td>Bass country: basso profondo, bass, baritone; vocal fry dips here; rare low notes of Mariah Carey or Georgia Brown</td>
+</tr>
+<tr>
+<td>Small</td>
+<td>C3–B3</td>
+<td>130.8–246.9 Hz</td>
+<td>Foundation of most vocal music; tenor to soprano harmony roots</td>
+</tr>
+<tr>
+<td>First</td>
+<td>C4–B4</td>
+<td>261.6–493.9 Hz</td>
+<td>The &quot;middle C&quot; octave; most melodic action; tenors and altos at work</td>
+</tr>
+<tr>
+<td>Second</td>
+<td>C5–B5</td>
+<td>523.3–987.8 Hz</td>
+<td>Soprano territory — bright, prominent, carries well</td>
+</tr>
+<tr>
+<td>Third</td>
+<td>C6–B6</td>
+<td>1046.5–1975.5 Hz</td>
+<td>Flutes, violins, coloratura; whistle register begins (above ~1000 Hz the body has few resonators left, so timbre thins)</td>
+</tr>
+<tr>
+<td>Fourth–fifth</td>
+<td>C7–B8</td>
+<td>2093–7902 Hz</td>
+<td>Coloratura extremes and the piano's top (C8); Georgia Brown's record G7 lives here</td>
+</tr>
+<tr>
+<td>Sixth and above</td>
+<td>C9+</td>
+<td>8 kHz+</td>
+<td>Whistle tones; past ~20 kHz the cycle leaves the human ear entirely</td>
+</tr>
+</tbody>
+</table>
 <blockquote>
-<p>Level a: C C
-Level b: C G C
-Level c: C E G C
-Level d: C D E F G A B C
-Level e: C D♭ D E♭ E F F♯ G A♭ A B♭ B C</p>
-<p>(Lerdahl 1992, 113)</p>
+<p><strong>Records:</strong> in 2004 Georgia Brown (Brazil) documented the Guinness widest <strong>female</strong> vocal range — <strong>8 octaves, G2 to G10</strong>, its top note above human hearing; Tim Storms (USA) holds the overall record at <strong>10 octaves</strong>.</p>
 </blockquote>
-<p>Note that Lerdahl's model is meant to be cyclical, with its right edge identical to its left. One could therefore display Lerdahl's graph as a series of five concentric circles representing the five melodic &quot;alphabets.&quot; In this way one could unite the circular representation depicted at the beginning of this article with Lerdahl's flat two-dimensional representation depicted above.</p>
-<p>According to David Kopp (2002, 1), &quot;Harmonic space, or tonal space as defined by Fred Lerdahl, is the abstract nexus of possible normative harmonic connections in a system, as opposed to the actual series of temporal connections in a realized work, linear or otherwise.&quot;</p>
-<p><a href="/demo/shepard.html" target="_self">Shepard tone generator</a></p>
+<youtube-embed video="MzjB8BOBms8" /><p><strong>The audible window is about ten octaves</strong> (20 Hz – 20 kHz). A piano spans 7⅓ of them (A0–C8); a large organ with a 64′ stop reaches ~8 Hz — vibration felt in the chest more than heard as pitch.</p>
+<p><strong>Practical payoff:</strong> knowing the octave map helps you find your place in the musical texture, avoid competing for the same frequency space, build balanced arrangements, and sing where your voice naturally wants to go.</p>
+<h2 id="beyond-hearing-hypothetical-octaves" tabindex="-1">Beyond hearing: hypothetical octaves <a class="header-anchor" href="#beyond-hearing-hypothetical-octaves" aria-label="Permalink to “Beyond hearing: hypothetical octaves”">&#8203;</a></h2>
+<p>The 2:1 cycle does not stop at the ear's door:</p>
+<ul>
+<li><strong>+40 octaves ≈ light.</strong> Double 440 Hz forty times (≈ 4.8 × 10¹⁴ Hz) and you arrive in the <strong>visible spectrum</strong> (~400–790 THz). Poetically, the eye's whole window is itself <strong>just under one octave wide</strong> — vision &quot;hears&quot; a single octave of light.</li>
+<li><strong>−4 to −5 octaves ≈ rhythm.</strong> Below roughly 16–20 Hz, pitch dissolves into discrete pulses: the realm of <strong>tempo</strong> (~0.5–8 Hz, i.e. 30–480 BPM). Rhythm and melody turn out to be the same phenomenon at different speeds — a polyrhythm is a polyphony slowed down.</li>
+<li><strong>On Chromatone's 16-step linear grid</strong> (n/16, n ∈ [16, 32]) mapped to 12-TET pitch classes, the octave boundaries land on exact integers:</li>
+</ul>
+<table tabindex="0">
+<thead>
+<tr>
+<th>Interval</th>
+<th>Grid ratio</th>
+<th>Frequency ratio</th>
+<th>Cents</th>
+<th>Deviation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Unison (P1)</td>
+<td>16/16</td>
+<td>1/1</td>
+<td>0.0</td>
+<td>0.0</td>
+</tr>
+<tr>
+<td>Octave (P8)</td>
+<td>32/16</td>
+<td>2/1</td>
+<td>1200.0</td>
+<td>0.0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="dividing-the-octave-cultural-perspectives" tabindex="-1">Dividing the octave: cultural perspectives <a class="header-anchor" href="#dividing-the-octave-cultural-perspectives" aria-label="Permalink to “Dividing the octave: cultural perspectives”">&#8203;</a></h2>
+<p>The octave frame (2:1) is near-universal; what cultures do <strong>inside</strong> it varies beautifully:</p>
+<ul>
+<li><strong>Western classical:</strong> 12 equal semitones; the whole pitch-organization system assumes octave equivalence.</li>
+<li><strong>India:</strong> the <strong>22 shruti</strong> microtones color the octave around the tonic <strong>sa</strong>, the raga's anchor across octaves.</li>
+<li><strong>Arabic &amp; Persian maqam:</strong> quarter-tone steps within a 24-position framework — subtle emotional nuance, same cycle.</li>
+<li><strong>Indonesia:</strong> gamelan <strong>slendro</strong> (≈5 near-equal steps) and <strong>pelog</strong> (7 unequal steps) divide — and slightly stretch — the octave their own way.</li>
+<li><strong>Thailand:</strong> a <strong>7-tone equidistant</strong> system (≈171.4 cents per step).</li>
+<li><strong>East Asia:</strong> pentatonic frameworks span the octave while emphasizing different internal relationships.</li>
+</ul>
+<p>Same circle, different maps.</p>
+<h2 id="practice-feeling-unison-and-octave" tabindex="-1">Practice: feeling unison and octave <a class="header-anchor" href="#practice-feeling-unison-and-octave" aria-label="Permalink to “Practice: feeling unison and octave”">&#8203;</a></h2>
+<p><strong>Exercise 1 — Unison matching.</strong></p>
+<ol>
+<li>Choose a drone (sustained note).</li>
+<li>Sing the matching note.</li>
+<li>Notice how perfect tuning feels versus slightly off (the wobble of beats).</li>
+<li>Practice finding perfect alignment — zero beats.</li>
+</ol>
+<p><strong>Exercise 2 — Octave hopping.</strong></p>
+<ol>
+<li>With your drone, sing the note an octave above.</li>
+<li>Drop back to the original.</li>
+<li>Try the octave below.</li>
+<li>Practice moving between octave positions — &quot;same note, different floor.&quot;</li>
+</ol>
+<p><strong>Exercise 3 — Octave harmonization.</strong></p>
+<ol>
+<li>Have a friend play a simple melody.</li>
+<li>Sing along in unison.</li>
+<li>Sing an octave above.</li>
+<li>Sing an octave below. Notice: unison fuses, octaves widen.</li>
+</ol>
+<p><strong>In a jam:</strong></p>
+<ul>
+<li><strong>Find your octave home.</strong> If the bass holds the low octave, take the one above; if the middle is crowded, drop or jump an octave to create space.</li>
+<li><strong>Double for impact.</strong> Guitarists and keyboardists double solos in octaves; vocalists add an octave for emphasis, power, and clarity.</li>
+<li><strong>Jump for drama.</strong> Octave leaps up for climaxes, down for sudden energy shifts; octave displacement for surprise.</li>
+</ul>
+<h2 id="chromatone-connection" tabindex="-1">Chromatone connection <a class="header-anchor" href="#chromatone-connection" aria-label="Permalink to “Chromatone connection”">&#8203;</a></h2>
+<p>On the Chromatone spectrogram, intervals become color relationships:</p>
+<ul>
+<li><strong>Unison</strong> = same color at the same position — one reinforced band.</li>
+<li><strong>Octave</strong> = same color at regularly spaced positions — the cycle made visible.</li>
+</ul>
+<p>With <strong>Chromatone stickers</strong> on your instrument, unison and octave relationships are visually obvious: octaves are quick to find, transposed melodies keep their color pattern, and chords and scales reveal their octave skeleton at a glance. These visual patterns explain why these intervals feel fundamental — they are the most basic relationships in the color/pitch spectrum.</p>
+<h2 id="summary" tabindex="-1">Summary <a class="header-anchor" href="#summary" aria-label="Permalink to “Summary”">&#8203;</a></h2>
+<ul>
+<li><strong>Interval</strong> = relationship between two pitches; harmonic (together) or melodic (in sequence).</li>
+<li><strong>Unison P1</strong> = 1:1, 0 cents — maximal consonance, easiest to tune; near-unison = maximal dissonance (beats).</li>
+<li><strong>Octave P8</strong> = 2:1, 1200 cents — same pitch class in a new register; the harmonic series' first step.</li>
+<li><strong>Octave equivalence</strong> appears in human infants, rats, and monkeys, is encoded in auditory cortex — and is strengthened (or not) by musical culture.</li>
+<li><strong>Pitch = height × chroma</strong>; the pitch helix, the Shepard tone, and the tritone paradox make the circularity audible.</li>
+<li><strong>The ear's window ≈ 10 octaves</strong>; the cycle extends hypothetically from rhythm (−4/−5) to light (+40).</li>
+<li><strong>Cultures divide the octave differently</strong> (12, 22, 24, 5, 7 steps…) but keep the 2:1 frame.</li>
+<li><strong>Chromatone</strong> renders both intervals as one color: aligned (unison) or stacked in a regular pattern (octave).</li>
+<li><strong>Practice:</strong> tune by beats, hop octaves, harmonize — and in a jam, choose your octave consciously.</li>
+</ul>
+<h3 id="sources-further-reading" tabindex="-1">Sources &amp; further reading <a class="header-anchor" href="#sources-further-reading" aria-label="Permalink to “Sources &amp; further reading”">&#8203;</a></h3>
+<ul>
+<li>Demany &amp; Armand (1984), <em>The perceptual reality of tone chroma in early infancy</em></li>
+<li>Blackwell &amp; Schlosberg (1943), <em>Octave generalization… in the white rat</em></li>
+<li>Wright et al. (2000), <em>Music perception and octave generalization in rhesus monkeys</em></li>
+<li>Cynx (1993), starling octave tests</li>
+<li>Wagner et al. (2023, 2024), marmoset and rat comparisons</li>
+<li>Moerel et al. (2014), <em>Representation of pitch chroma…</em></li>
+<li>Borra et al. (2013), <em>Octave effect in auditory attention</em></li>
+<li>Jacoby &amp; McDermott (2019), <em>Universal and non-universal features of musical pitch…</em></li>
+<li>Shepard (1964), <em>Circularity in judgments of relative pitch</em></li>
+<li>Deutsch (1986), tritone paradox</li>
+<li>Schouten (1940), residue pitch</li>
+<li>Plomp &amp; Levelt (1965), <em>Tonal consonance and critical bandwidth</em></li>
+<li>Ellis (1885), translation of Helmholtz</li>
+<li>Railsback (1938), octave stretch curve.</li>
+</ul>
 ]]></content:encoded>
             <author>davay@chromatone.center (Denis Starov)</author>
             <enclosure url="https://chromatone.center/garmin-b.jpg" length="0" type="image/jpg"/>
@@ -8007,35 +8215,211 @@ Level e: C D♭ D E♭ E F F♯ G A♭ A B♭ B C</p>
             <title><![CDATA[Fifth and fourth]]></title>
             <link>https://chromatone.center/theory/intervals/fifth-fourth/</link>
             <guid isPermaLink="false">https://chromatone.center/theory/intervals/fifth-fourth/</guid>
-            <pubDate>Wed, 08 Sep 2021 00:00:00 GMT</pubDate>
+            <pubDate>Tue, 07 Sep 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[Perfect, but not equivalent intervals]]></description>
-            <content:encoded><![CDATA[<h2 id="fifth-p5" tabindex="-1">Fifth P5 <a class="header-anchor" href="#fifth-p5" aria-label="Permalink to “Fifth P5”">&#8203;</a></h2>
-<abc-render abc="[A4e] Ae" /><chroma-profile :chroma="'100000010000'" /><p>The second most harmonic interval is the fifth – a 3/2 of any given frequency. Pythagoras is claimed to be the first to use this law to construct pleasant musical notes combinations. This principle is foundational for the modern 12-TET equal temperament. Take the lowest starting frequency and go up in two ways:</p>
+            <content:encoded><![CDATA[<p>Having anchored musical space with the unison and the octave, we meet the intervals that <strong>build structure</strong> on top of it: the perfect fifth and the perfect fourth. These are the architects of harmony — they define keys, drive tension and resolution, and form the backbone of musical movement across cultures. Everything in this article grows from two small integers: <strong>3:2</strong> and <strong>4:3</strong>.</p>
+<table tabindex="0">
+<thead>
+<tr>
+<th>At a glance</th>
+<th>Perfect fifth (P5)</th>
+<th>Perfect fourth (P4)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Just ratio</td>
+<td>3:2</td>
+<td>4:3</td>
+</tr>
+<tr>
+<td>Just size</td>
+<td>701.96 cents</td>
+<td>498.04 cents</td>
+</tr>
+<tr>
+<td>12-TET size</td>
+<td>7 semitones = 700 cents</td>
+<td>5 semitones = 500 cents</td>
+</tr>
+<tr>
+<td>In the harmonic series</td>
+<td>2nd → 3rd harmonic</td>
+<td>3rd → 4th harmonic</td>
+</tr>
+<tr>
+<td>String stop (monochord)</td>
+<td>2⁄3 of the length</td>
+<td>3⁄4 of the length</td>
+</tr>
+<tr>
+<td>Inversion</td>
+<td>becomes a P4</td>
+<td>becomes a P5</td>
+</tr>
+<tr>
+<td>On the 16-grid</td>
+<td>exact line (24/16, +2.0¢)</td>
+<td>floats between lines (21/16, −29.2¢)</td>
+</tr>
+<tr>
+<td>Character</td>
+<td>grounded, open, powerful</td>
+<td>suspended, open, resolving</td>
+</tr>
+</tbody>
+</table>
+<h2 id="fifth-p5" tabindex="-1">Fifth P5 <a class="header-anchor" href="#fifth-p5" aria-label="Permalink to “Fifth P5”">&#8203;</a></h2>
+<abc-render abc="[A4e] Ae" /><chroma-profile :chroma="'100000010000'" /><p>The <strong>second most harmonic interval</strong> (after the octave) is the fifth — <strong>3/2</strong> of any given frequency. If your drone is at 200 Hz, the fifth above sits at 300 Hz. Pythagoras is claimed to be the first to use this law to construct pleasant combinations of musical notes, and the principle is foundational for the modern 12-tone equal temperament.</p>
+<p><strong>Why 3:2 feels &quot;right.&quot;</strong> The harmonics of two notes a fifth apart align constantly: the <strong>third harmonic of the lower note (3f) coincides exactly with the second harmonic of the upper (2 × 1.5f)</strong>, and every second harmonic of the upper keeps landing on every third of the lower. Coiniding harmonics that fall outside the ear's critical band are precisely what produces sensory consonance (Plomp &amp; Levelt, 1965) — the acoustic root of the fifth's feeling of strength and correctness.</p>
+<p><strong>The monochord and the cosmos.</strong> Stopping a string at <strong>2⁄3 of its length</strong> sounds a fifth above the open string. Pythagoras read the beauty of 3:2 as evidence of a mathematical harmony underlying the universe — the idea later poetized as the <strong>&quot;music of the spheres.&quot;</strong> His followers revered the <strong>tetractys</strong>, the triangular figure whose rows encode the intervals:</p>
 <ul>
-<li>multiplying it by two – stepping an octave above,</li>
-<li>and also multiplying by 1.5 – stepping a fifth in a time.</li>
+<li><strong>1</strong> — the monad (unity)</li>
+<li><strong>2</strong> — the dyad (octave, 2:1)</li>
+<li><strong>3</strong> — the triad (fifth, 3:2)</li>
+<li><strong>4</strong> — the tetrad (fourth, 4:3)</li>
+</ul>
+<h3 id="the-fifth-as-a-scale-generator" tabindex="-1">The fifth as a scale generator <a class="header-anchor" href="#the-fifth-as-a-scale-generator" aria-label="Permalink to “The fifth as a scale generator”">&#8203;</a></h3>
+<p>Take the lowest starting frequency and go up in two ways:</p>
+<ul>
+<li>multiplying it by <strong>two</strong> — stepping an octave above,</li>
+<li>and multiplying it by <strong>1.5</strong> — stepping a fifth at a time.</li>
 </ul>
 <img src="./images/circle-of-fifths-exp.svg">
-<p>After 7 octaves and 12 fifths you’ll end up on the same starting tone. And you’ll find that you’ve pressed all the other tones on the way. So any other step of fifth gives us a new note. Get the note frequencies, then divide them by two until they’re in the same octave with the starting frequency. And there you got it – 12 notes in any given octave.</p>
+<p>After <strong>7 octaves and 12 fifths</strong> you'll end up on the same starting tone — and you'll find you've pressed <strong>all the other tones on the way</strong>. Every new step of a fifth gives a new note: C → G → D → A → E → B → F♯ → C♯ → G♯ → D♯ → A♯ → E♯ → C. (Fourths run the same cycle in reverse: C → F → B♭ → E♭ → A♭ → D♭ → G♭ → B → E → A → D → G → C.) Fold every generated fifth down by octaves — divide by two until it lands in the starting octave — and there you have it: <strong>12 notes in any given octave</strong>. This is why fifths and fourths govern key relationships and modulation: they connect all twelve pitch classes in one systematic loop.</p>
 <img src="./images/oct-equation.svg">
-<p>This equation shows the approximate equality of the values of 12 perfect fifth intervals and 7 octaves. If we use the just interval of 3/2 we get the small difference, that represents the Pythagorean comma.</p>
-<p>In musical tuning, the Pythagorean comma (or ditonic comma), named after the ancient mathematician and philosopher Pythagoras, is the small interval (or comma) existing in Pythagorean tuning between two enharmonically equivalent notes such as C and B♯ (Play), or D♭ and C♯. It is equal to the frequency ratio. (1.5)12⁄27 =. 531441⁄524288 ≈ 1.01364, or about 23.46 cents, roughly a quarter of a semitone (in between 75:74 and 74:73).</p>
+<p>This equation shows the approximate equality of <strong>12 perfect fifths and 7 octaves</strong>: (3/2)¹² ≈ 129.74634 versus 2⁷ = 128. If we use the just interval of 3/2, the small leftover difference is the <strong>Pythagorean comma</strong>.</p>
+<p>In musical tuning, the Pythagorean comma (or <strong>ditonic comma</strong>), named after Pythagoras, is the small interval existing in Pythagorean tuning between two enharmonically equivalent notes such as C and B♯, or D♭ and C♯. It is equal to the frequency ratio (1.5)¹⁄2⁷ = 531441⁄524288 ≈ 1.01364, or about <strong>23.46 cents</strong> — roughly a quarter of a semitone (in between 75:74 and 74:73).</p>
+<blockquote>
+<p><strong>Fact:</strong> that 23.46-cent &quot;error&quot; puzzled mathematicians for centuries and spawned the Renaissance <strong>meantone temperaments</strong>, which narrow eleven fifths to ≈696.6 cents to purify the thirds — leaving one howling <strong>wolf fifth</strong> of ≈737.6 cents to be avoided. The comma is the reason temperament exists at all.</p>
+</blockquote>
 <img src="./images/key-intervals.svg">
 <h3 id="_12-tone-equal-temperament" tabindex="-1">12-Tone Equal Temperament <a class="header-anchor" href="#_12-tone-equal-temperament" aria-label="Permalink to “12-Tone Equal Temperament”">&#8203;</a></h3>
-<p>Twelve-tone equal temperament is the musical system that divides the octave into 12 parts, all of which are equally tempered (equally spaced) on a logarithmic scale, with a ratio equal to the 12th root of 2 (12√2 ≈ 1.05946). That resulting smallest interval, 1⁄12 the width of an octave, is called a semitone or half step.</p>
+<p>Twelve-tone equal temperament is the musical system that divides the octave into 12 parts, all of which are equally tempered (equally spaced) on a logarithmic scale, with a ratio equal to the 12th root of 2 (¹²√2 ≈ 1.05946). That resulting smallest interval, 1⁄12 the width of an octave, is called a <strong>semitone</strong> or half step.</p>
 <img src="./images/tet-fifth-equation.svg" />
+<p>In 12-TET the fifth becomes <strong>700 cents</strong> (1.96 cents narrower than pure 3:2) and the fourth <strong>500 cents</strong> (1.96 cents wider than pure 4:3) — a compromise of about two cents each, small enough that both still sound &quot;perfect.&quot; That tiny narrowing is audible as <strong>slow beating</strong>: at A4–E5 the tempered fifth beats about <strong>1.5 times per second</strong> (the 3rd harmonic of A at 1320 Hz against the 2nd harmonic of E at ≈1318.5 Hz). Piano tuners don't hide these beats — they <strong>count them</strong>, using specific beating patterns as a ruler for a well-tempered instrument.</p>
+<p><strong>Emotional character.</strong> The perfect fifth feels <strong>stable and grounded, open and spacious</strong> (it defines no major/minor quality), <strong>supportive, and powerful</strong>. Hear it at the openings of Strauss's <em>Also sprach Zarathustra</em> (the <em>2001</em> theme), the <em>Star Wars</em> main title, or <em>Twinkle, Twinkle, Little Star</em>; on stage it is the guitar <strong>power chord</strong> (root + fifth, usually with octave doubling) and the falling fifth of every V–I cadence.</p>
+<p><strong>Innate?</strong> Infants as young as <strong>2–6 months</strong> prefer consonant intervals over dissonant ones (Zentner &amp; Kagan, 1996; Trainor &amp; Heinmiller, 1998), and 9-month-olds process melodies built on the 3:2 fifth noticeably better than other sequences (Schellenberg &amp; Trehub, 1996) — evidence that fifth-consonance is at least partly hardwired. Yet the Tsimane' of the Bolivian Amazon rate consonance and dissonance as equally pleasant (McDermott et al., 2016), so <em>preference</em> is tuned by culture even where the <em>perception</em> is universal.</p>
+<p><strong>Chromatone view.</strong> On the spectrogram the fifth appears as two colors at a specific, consistent spacing — and walking the circle of fifths cycles you through all 12 colors in a predictable sequence.</p>
 <h2 id="perfect-fourth-p4" tabindex="-1">Perfect fourth P4 <a class="header-anchor" href="#perfect-fourth-p4" aria-label="Permalink to “Perfect fourth P4”">&#8203;</a></h2>
-<abc-render abc="[A4d] Ad" /><chroma-profile :chroma="'100001000000'" /><p>Perfect fourth is the inverse of the perfect fifth.</p>
-<p>The perfect fourth may be derived from the harmonic series as the interval between the third and fourth harmonics. The term perfect identifies this interval as belonging to the group of perfect intervals, so called because they are neither major nor minor.</p>
-<p>A perfect fourth in just intonation corresponds to a pitch ratio of 4:3, or about 498 cents, while in equal temperament a perfect fourth is equal to five semitones, or 500 cents.</p>
-<p>The perfect fourth is a perfect interval like the unison, octave, and perfect fifth, and it is a sensory consonance. In common practice harmony, however, it is considered a stylistic dissonance in certain contexts, namely in two-voice textures and whenever it occurs &quot;above the bass in chords with three or more notes&quot;. If the bass note also happens to be the chord's root, the interval's upper note almost always temporarily displaces the third of any chord, and, in the terminology used in popular music, is then called a suspended fourth.</p>
+<abc-render abc="[A4d] Ad" /><chroma-profile :chroma="'100001000000'" /><p>The <strong>perfect fourth is the inverse of the perfect fifth</strong>: ratio <strong>4:3</strong>, about <strong>498.04 cents</strong> in just intonation, five semitones (<strong>500 cents</strong>) in equal temperament. It may be derived from the harmonic series as the interval between the <strong>third and fourth harmonics</strong>. The term <em>perfect</em> identifies it as belonging to the group of perfect intervals (unison, fourth, fifth, octave) — so called because they are neither major nor minor.</p>
+<h3 id="inversion-the-mirror-math" tabindex="-1">Inversion: the mirror math <a class="header-anchor" href="#inversion-the-mirror-math" aria-label="Permalink to “Inversion: the mirror math”">&#8203;</a></h3>
+<p>Interval inversion asks: <em>what interval completes the rest of the octave?</em> Fourths and fifths are exact complements:</p>
+<ul>
+<li><strong>Ratios multiply to the octave:</strong> 4/3 × 3/2 = 2/1. In general, the inversion of a ratio R is I(R) = 2/R — so I(3/2) = 4/3 and I(4/3) = 3/2.</li>
+<li><strong>Cents add to the octave:</strong> 498.04 + 701.96 = 1200.00.</li>
+<li><strong>On a string of length L:</strong> stopping at 2⁄3 L sounds the fifth, at 3⁄4 L the fourth; the leftover segments (1⁄3 L, 1⁄4 L) resonate as higher harmonics.</li>
+<li><strong>The gap between them is the whole tone:</strong> 3/2 ÷ 4/3 = <strong>9:8</strong>, the Pythagorean <strong>epogdoon</strong> (203.91 cents; exactly 200 cents in 12-TET). The ancient whole tone was discovered precisely as <em>the space left between a fourth and a fifth</em> — on the keyboard, the step from F up to G.</li>
+</ul>
+<h3 id="the-fourth-s-double-life" tabindex="-1">The fourth's double life <a class="header-anchor" href="#the-fourth-s-double-life" aria-label="Permalink to “The fourth's double life”">&#8203;</a></h3>
+<p>The perfect fourth is a <strong>sensory consonance</strong> — its harmonics align as cleanly as the fifth's (the 4th harmonic of the lower note meets the 3rd of the upper). In common-practice harmony, however, it is considered a <strong>stylistic dissonance in certain contexts</strong>: namely in two-voice textures, and whenever it occurs <strong>above the bass</strong> in chords with three or more notes. If the bass note also happens to be the chord's root, the interval's upper note almost always temporarily displaces the third of the chord — in popular-music terminology, a <strong>suspended fourth</strong> (sus4), which the ear expects to resolve down to the third.</p>
+<p>Medieval theorists called the fourth above the bass &quot;imperfect&quot; for exactly this reason: its upper note's harmonic series sits <em>off</em> the bass's grid, creating a mild mismatch that wants to settle. Its &quot;perfection&quot; as a classification refers to its consonance and mathematical purity, not to its behavior.</p>
+<p><strong>Emotional character.</strong> Where the fifth feels grounded, the fourth feels <strong>suspended, open, resolving, supportive</strong> — a gentle leaning rather than a pillar. Hear it in the opening leaps of <em>Amazing Grace</em>, Wagner's Bridal Chorus (<em>Here Comes the Bride</em>), and <em>O Tannenbaum</em>: longing and expectation, ready to move on.</p>
+<blockquote>
+<p><strong>Next up:</strong> exactly halfway between the fourth (498¢) and the fifth (702¢) lies the octave's midpoint at 600 cents — the most notorious interval in Western history, the tritone. Its symmetry, its √2 ratio, and its legend as <em>diabolus in musica</em> get an article of their own; here we only note that P4 and P5 sit as equal-and-opposite mirrors (±101.96 cents) around it.</p>
+</blockquote>
+<h3 id="the-fourth-on-the-16-grid" tabindex="-1">The fourth on the 16-grid <a class="header-anchor" href="#the-fourth-on-the-16-grid" aria-label="Permalink to “The fourth on the 16-grid”">&#8203;</a></h3>
+<p>Mapping Chromatone's linear 16-step fundamental grid (n/16) onto 12-TET pitch classes reveals why the two &quot;perfect&quot; siblings feel physically different:</p>
+<table tabindex="0">
+<thead>
+<tr>
+<th>Interval</th>
+<th>Grid ratio</th>
+<th>Ratio</th>
+<th>Cents</th>
+<th>Deviation from 12-TET</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Perfect 5th (P5)</td>
+<td>24/16</td>
+<td>3/2</td>
+<td>702.0</td>
+<td>+2.0</td>
+</tr>
+<tr>
+<td>Perfect 4th (P4)</td>
+<td>21/16</td>
+<td>21:16</td>
+<td>470.8</td>
+<td>−29.2</td>
+</tr>
+</tbody>
+</table>
+<p>The fifth lands on an <strong>exact integer grid line</strong> (24/16 = 3/2) — perfect alignment with the physical frequency-division substrate. The fourth <strong>floats microtonally between grid lines</strong>, which matches its experienced quality: more suspended, less physically grounded.</p>
+<p>In the layered Chromatone model this is coherent architecture, not coincidence:</p>
+<ul>
+<li><strong>Layer 1 — the 3-limit frame</strong> (primes {2, 3}) builds the macro-geometry of pitch space: octave 2:1, fifth 3:2, fourth 4:3, whole tone 9:8 (epogdoon).</li>
+<li><strong>Layer 3 — the 16-grid substrate</strong> is where the fifth aligns exactly and the fourth requires microtonal adjustment.</li>
+</ul>
+<p>Fifths and fourths together form the <strong>geometric skeleton</strong> of pitch space; the fifth is the one member of the family that also locks onto the substrate.</p>
 <h2 id="quartal-and-quintal-harmony" tabindex="-1">Quartal and quintal harmony <a class="header-anchor" href="#quartal-and-quintal-harmony" aria-label="Permalink to “Quartal and quintal harmony”">&#8203;</a></h2>
-<p>In music, quartal harmony is the building of harmonic structures built from the intervals of the perfect fourth, the augmented fourth and the diminished fourth. For instance, a three-note quartal chord on C can be built by stacking perfect fourths, C–F–B♭.</p>
-<p>Quintal harmony is harmonic structure preferring the perfect fifth, the augmented fifth and the diminished fifth. For instance, a three-note quintal chord on C can be built by stacking perfect fifths, C–G–D.</p>
-<p>Regarding chords built from perfect fourths alone, composer Vincent Persichetti writes that:</p>
+<p><strong>Quartal harmony</strong> builds harmonic structures from fourths — perfect, augmented, and diminished. A three-note quartal chord on C stacks perfect fourths: <strong>C–F–B♭</strong>. <strong>Quintal harmony</strong> prefers fifths: <strong>C–G–D</strong>.</p>
+<p>Regarding chords built from perfect fourths alone, composer Vincent Persichetti writes:</p>
 <blockquote>
 <p>Chords by perfect fourth are ambiguous in that, like all chords built by equidistant intervals (diminished seventh chords or augmented triads), any member can function as the root. The indifference of this rootless harmony to tonality places the burden of key verification upon the voice with the most active melodic line.</p>
 </blockquote>
+<p>That productive ambiguity made quartal stacking the sound of modal jazz: the famous <strong>&quot;So What&quot; chord</strong> Bill Evans played on Miles Davis's <em>Kind of Blue</em> is three perfect fourths plus a major third on top (E–A–D–G–B), and McCoy Tyner built whole solos from fourth stacks. The intervals are even built into our instruments: the <strong>guitar is tuned in fourths</strong> (with one third between G and B), while the <strong>violin family is tuned in fifths</strong> (G–D–A–E) — quartal and quintal geography under your fingers. Modern composers extend the idea into <strong>polychords</strong> (stacked fourth/fifth structures combined) and into floating, non-directional <strong>modal harmonies</strong> that replace fifth-based tonality with fourth-based space.</p>
+<h2 id="the-circle-of-fifths-in-practice" tabindex="-1">The circle of fifths in practice <a class="header-anchor" href="#the-circle-of-fifths-in-practice" aria-label="Permalink to “The circle of fifths in practice”">&#8203;</a></h2>
+<p>The circle was first drawn in <strong>1679 by Nikolay Diletsky</strong> (Ukrainian theorist and composer) in his <em>Idea grammatiki musikiyskoy</em>, and popularized in the 18th century by Johann David Heinichen (1728) — a diagram of the very cycle generated above by stacking 3:2 steps.</p>
+<p>It is a working map, not decoration:</p>
+<ul>
+<li><strong>Key relationships:</strong> neighboring keys on the circle differ by one accidental and share most notes.</li>
+<li><strong>Chord progressions:</strong> moving around the circle (especially counter-clockwise, i.e., by fourths) creates the strongest harmonic motion — the V–I cadence is just one step of it. Note that a <strong>falling fifth and a rising fourth are the same move</strong>, which is why the circle unifies both intervals.</li>
+<li><strong>Transposition and modulation:</strong> shifting around the circle shows exactly which notes change.</li>
+</ul>
+<p><strong>Chromatone view:</strong> on the spectrogram the circle of fifths appears as a regular pattern of color relationships — cycling through fifths walks you through all 12 colors in order, making the circle intuitive rather than abstract.</p>
+<h2 id="cultural-perspectives" tabindex="-1">Cultural perspectives <a class="header-anchor" href="#cultural-perspectives" aria-label="Permalink to “Cultural perspectives”">&#8203;</a></h2>
+<ul>
+<li><strong>Western classical:</strong> the fifth/fourth frame <em>is</em> the harmonic system — circle of fifths, dominant–tonic engine, cadential grammar.</li>
+<li><strong>Indian classical:</strong> the <strong>tanpura</strong> drone sounds <strong>sa and pa</strong> (tonic and fifth) continuously; the sa–pa relationship anchors every raga, while <strong>shrutis</strong> color subtle microtonal variations around these pillars.</li>
+<li><strong>African traditions:</strong> call-and-response patterns and instruments like the <strong>mbira (kalimba)</strong> and marimba emphasize fifths and fourths; pentatonic scales common across the continent naturally outline fifth/fourth relationships.</li>
+<li><strong>Arabic and Persian music:</strong> maqam practice bends and shades fifths and fourths microtonally for melodic expression, keeping the 2:1 octave frame intact.</li>
+<li><strong>Just intonation and experimental music:</strong> pure 3:2 and 4:3 beyond equal temperament, and new microtonal divisions of the fifth and fourth, continue the exploration Pythagoras began.</li>
+</ul>
+<p>Same architecture, different dialects: the 3:2 / 4:3 frame is near-universal; the tuning of its edges is cultural.</p>
+<h2 id="practice-feeling-the-fifth-and-fourth" tabindex="-1">Practice: feeling the fifth and fourth <a class="header-anchor" href="#practice-feeling-the-fifth-and-fourth" aria-label="Permalink to “Practice: feeling the fifth and fourth”">&#8203;</a></h2>
+<p><strong>Exercise 1 — The fifth drone.</strong> 1) Choose a comfortable drone note. 2) Sing the perfect fifth above it. 3) Hold it and notice the feeling of stability — the &quot;lock&quot; of coinciding harmonics. 4) Try singing the fifth <em>below</em> the drone. 5) Notice how the quality changes while the relationship remains.</p>
+<p><strong>Exercise 2 — The fourth's suspense.</strong> 1) With your drone, sing the perfect fourth above. 2) Notice how it differs from the fifth. 3) Does it feel like it wants to go somewhere? 4) Resolve it down to a major third. 5) Notice the sense of release — the sus4 resolving in your own voice.</p>
+<p><strong>Exercise 3 — The inversion mirror.</strong> 1) Sing the fifth above your drone (e.g., drone C → sing G). 2) Now sing the fourth <em>below</em> the drone's octave (C an octave down → G is a fourth above it… equivalently, G is a fourth below the drone's upper octave). 3) Confirm it is the same pitch class: <strong>a fifth up = a fourth down from the octave</strong>. 4) Alternate the two voicings and feel the character flip from grounded to suspended while the color stays the same.</p>
+<p><strong>In a jam:</strong></p>
+<ul>
+<li><strong>Fifths for power and stability:</strong> bass lines moving in fifths give strong direction; power chords are fifths; vocal harmonies in fifths sound open and supportive; counterpoint in fifths keeps lines independent but related.</li>
+<li><strong>Fourths for suspension and interest:</strong> smooth voice leading, modern open quartal voicings, melodic ornament, modal interchange.</li>
+<li><strong>Find your place:</strong> if the bass is walking fifths, complement with thirds or sixths; if the texture is crowded, open space with fourths; if the harmony is over-complex, ground it with a fifth.</li>
+</ul>
+<h2 id="chromatone-connection" tabindex="-1">Chromatone connection <a class="header-anchor" href="#chromatone-connection" aria-label="Permalink to “Chromatone connection”">&#8203;</a></h2>
+<p>On the Chromatone spectrogram these intervals are consistent color geometries:</p>
+<ul>
+<li><strong>Perfect fifth</strong> — two colors at a specific, consistent spacing (7 steps of the 12-color wheel).</li>
+<li><strong>Perfect fourth</strong> — the mirror spacing (5 steps), the fifth's complement within the octave cycle.</li>
+</ul>
+<p>With <strong>Chromatone stickers</strong> on your instrument, fifths and fourths form predictable visual patterns, and the circle of fifths becomes a color cycle you can see wrapping around your fretboard or keyboard — the architecture of harmony, rendered as geometry.</p>
+<h2 id="summary" tabindex="-1">Summary <a class="header-anchor" href="#summary" aria-label="Permalink to “Summary”">&#8203;</a></h2>
+<ul>
+<li><strong>Perfect fifth (3:2, ≈702¢ / 700¢ in 12-TET)</strong> — the most consonant non-octave interval; harmonics align at 3f = 2 × 1.5f; the generator of all 12 pitch classes via the circle of fifths.</li>
+<li><strong>Pythagorean comma (≈23.46¢)</strong> — the gap between 12 fifths and 7 octaves; the birthmark of temperament (meantone, wolf fifth, and finally 12-TET's ¹²√2).</li>
+<li><strong>Perfect fourth (4:3, ≈498¢ / 500¢)</strong> — the fifth's exact inversion (ratios multiply to 2:1, cents add to 1200); sensory consonance with a contextual, &quot;suspended&quot; life above the bass (sus4).</li>
+<li><strong>The epogdoon (9:8, ≈204¢)</strong> — the whole tone, discovered as the space between fourth and fifth.</li>
+<li><strong>On the 16-grid:</strong> P5 is an exact substrate line (24/16, +2.0¢); P4 floats between lines (21/16, −29.2¢) — physics mirroring phenomenology.</li>
+<li><strong>Quartal/quintal harmony</strong> — fourths and fifths as building material: Persichetti's rootless ambiguity, the &quot;So What&quot; chord, and the tuning of guitars (fourths) vs. violins (fifths).</li>
+<li><strong>Circle of fifths</strong> — Diletsky 1679; the map of keys, cadences, transposition, and modulation; a color cycle in Chromatone.</li>
+<li><strong>Cognition &amp; culture</strong> — infants prefer consonant fifths from the first months of life, while cultural exposure tunes the preference; sa–pa drones, African pentatonics, and maqam shading all live inside the same 3:2 frame.</li>
+<li><strong>Practice</strong> — feel the fifth's lock, the fourth's lean, and their inversion mirror; in a jam, choose fifths to ground and fourths to open space.</li>
+</ul>
+<p>Mastering fifths and fourths gives you the tools to understand and create harmonic structure — you are navigating the architecture of music itself. Next: the interval sitting exactly between them, the tritone.</p>
+<h3 id="sources-further-reading" tabindex="-1">Sources &amp; further reading <a class="header-anchor" href="#sources-further-reading" aria-label="Permalink to “Sources &amp; further reading”">&#8203;</a></h3>
+<ul>
+<li>Plomp &amp; Levelt (1965), <em>Tonal consonance and critical bandwidth</em></li>
+<li>Schellenberg &amp; Trehub (1996), <em>Natural musical intervals: evidence from infant listeners</em></li>
+<li>Zentner &amp; Kagan (1996); Trainor &amp; Heinmiller (1998), infant consonance preference</li>
+<li>Trainor (1997), ratio effects in infants and adults</li>
+<li>McDermott et al. (2016), <em>Indifference to dissonance in native Amazonians</em></li>
+<li>Diletsky (1679), <em>Idea grammatiki musikiyskoy</em>; Heinichen (1728)</li>
+<li>Persichetti, <em>Twentieth Century Harmony</em></li>
+<li>Chromatone course unit <em>vmt/intervals/fifth-fourth</em>.</li>
+</ul>
 ]]></content:encoded>
             <author>davay@chromatone.center (Denis Starov)</author>
             <enclosure url="https://chromatone.center/erol-ahmed.jpg" length="0" type="image/jpg"/>
@@ -8095,6 +8479,181 @@ Level e: C D♭ D E♭ E F F♯ G A♭ A B♭ B C</p>
 ]]></content:encoded>
             <author>davay@chromatone.center (Denis Starov)</author>
             <enclosure url="https://chromatone.center/viswanath-v-pai.jpg" length="0" type="image/jpg"/>
+        </item>
+        <item>
+            <title><![CDATA[Tritone]]></title>
+            <link>https://chromatone.center/theory/intervals/tritone/</link>
+            <guid isPermaLink="false">https://chromatone.center/theory/intervals/tritone/</guid>
+            <pubDate>Mon, 06 Sep 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[The dissonant center of the octave]]></description>
+            <content:encoded><![CDATA[<h1 id="tritone" tabindex="-1">Tritone <a class="header-anchor" href="#tritone" aria-label="Permalink to “Tritone”">&#8203;</a></h1>
+<h2 id="tt" tabindex="-1">TT <a class="header-anchor" href="#tt" aria-label="Permalink to “TT”">&#8203;</a></h2>
+<abc-render abc="[A4d#] Ad#" /><chroma-profile class="mb-6" :chroma="'100000100000'" />    <h2 id="introduction-the-maximum-tension-point" tabindex="-1">Introduction: The Maximum Tension Point <a class="header-anchor" href="#introduction-the-maximum-tension-point" aria-label="Permalink to “Introduction: The Maximum Tension Point”">&#8203;</a></h2>
+<p>The tritone occupies a unique position in musical space - exactly halfway between the most consonant intervals (fifth and fourth) and the point of maximum tension. This interval of three whole tones has fascinated, terrified, and inspired musicians for centuries. Once called &quot;diabolus in musica&quot; (the devil in music), the tritone is now embraced as a powerful tool for creating dramatic tension and sophisticated harmonic motion.</p>
+<h2 id="what-is-a-tritone" tabindex="-1">What is a Tritone? <a class="header-anchor" href="#what-is-a-tritone" aria-label="Permalink to “What is a Tritone?”">&#8203;</a></h2>
+<p>The tritone is the interval of three whole tones (hence the name). It's exactly half an octave - six semitones out of twelve. The tritone can be thought of as:</p>
+<ul>
+<li>An augmented fourth (4+ semitones)</li>
+<li>A diminished fifth (5- semitones)</li>
+</ul>
+<p>Both describe the same distance, but from different starting points.</p>
+<h2 id="the-mathematical-anomaly" tabindex="-1">The Mathematical Anomaly <a class="header-anchor" href="#the-mathematical-anomaly" aria-label="Permalink to “The Mathematical Anomaly”">&#8203;</a></h2>
+<h3 id="the-geometric-mean-of-fourth-and-fifth" tabindex="-1">The Geometric Mean of Fourth and Fifth <a class="header-anchor" href="#the-geometric-mean-of-fourth-and-fifth" aria-label="Permalink to “The Geometric Mean of Fourth and Fifth”">&#8203;</a></h3>
+<p>The tritone represents the precise midpoint between the Perfect 4th (4:3) and the Perfect 5th (3:2). If you calculate the geometric mean between these ratios:</p>
+<blockquote>
+<p>Midpoint = √(4/3 × 3/2) = √(12/6) = √2 ≈ 1.41421356...</p>
+</blockquote>
+<p>In logarithmic space (cents):</p>
+<ul>
+<li><strong>Perfect 4th:</strong> 498.05 cents</li>
+<li><strong>Perfect 5th:</strong> 701.95 cents</li>
+<li><strong>Tritone Midpoint:</strong> (498.05 + 701.95)/2 = 600.00 cents</li>
+</ul>
+<h3 id="the-√2-ratio" tabindex="-1">The √2 Ratio <a class="header-anchor" href="#the-√2-ratio" aria-label="Permalink to “The √2 Ratio”">&#8203;</a></h3>
+<p>The tritone has a frequency ratio of √2:1 in equal temperament or approximately 45:32 in just intonation. This is the most complex ratio among the basic intervals, which explains its dissonant quality.</p>
+<p>Unlike the fifth (3:2) or fourth (4:3), the tritone's harmonics don't align neatly. This creates audible beating and tension that our ears perceive as dissonance.</p>
+<h3 id="the-pythagorean-tritone" tabindex="-1">The Pythagorean Tritone <a class="header-anchor" href="#the-pythagorean-tritone" aria-label="Permalink to “The Pythagorean Tritone”">&#8203;</a></h3>
+<p>The name &quot;tri-tone&quot; literally means &quot;three whole tones.&quot; In Pythagorean tuning, a whole tone is an epogdoon (9:8). If you stack three epogdoons together:</p>
+<blockquote>
+<p>Pythagorean Tritone = (9/8)³ = 729/512 ≈ 1.4238 (611.73 cents)</p>
+</blockquote>
+<p>Notice that 729 = 3⁶ and 512 = 2⁹. The Pythagorean tritone is born from the direct collision of pure powers of 3 and powers of 2.</p>
+<h2 id="the-unique-fixed-point-of-inversion" tabindex="-1">The Unique Fixed Point of Inversion <a class="header-anchor" href="#the-unique-fixed-point-of-inversion" aria-label="Permalink to “The Unique Fixed Point of Inversion”">&#8203;</a></h2>
+<p>Every other musical interval has a distinct partner when inverted within the octave:</p>
+<ul>
+<li>Unison (1:1) ↔ Octave (2:1)</li>
+<li>Fourth (4:3) ↔ Fifth (3:2)</li>
+<li>Minor Third (6:5) ↔ Major Sixth (5:3)</li>
+</ul>
+<p>The tritone is the <strong>only non-trivial interval whose inversion is itself</strong>:</p>
+<blockquote>
+<p>Inversion(√2) = 2 / √2 = √2</p>
+</blockquote>
+<p>This self-inversion is precisely why the tritone was dubbed the <em>Diabolus in Musica</em> (&quot;Devil in Music&quot;) in Medieval theory. It sits on the razor's edge where directionality disappears: moving a tritone up or down lands on the exact same relative pitch class, splitting the 2:1 continuum into a perfectly balanced mirror.</p>
+<h2 id="structural-properties-√2-vs-φ" tabindex="-1">Structural Properties: √2 vs Φ <a class="header-anchor" href="#structural-properties-√2-vs-φ" aria-label="Permalink to “Structural Properties: √2 vs Φ”">&#8203;</a></h2>
+<p>In the taxonomy of harmonic limits, √2 occupies a unique position alongside the golden ratio Φ:</p>
+<table tabindex="0">
+<thead>
+<tr>
+<th>Property</th>
+<th>The Golden Ratio (Φ)</th>
+<th>The Tritone (√2)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Symmetry Type</strong></td>
+<td>Total Asymmetry (Golden Section)</td>
+<td>Total Symmetry (Bisection)</td>
+</tr>
+<tr>
+<td><strong>Octave Division</strong></td>
+<td>Asymmetric cut into 833c and 367c</td>
+<td>Exact half-way cut into 600c and 600c</td>
+</tr>
+<tr>
+<td><strong>Octave Inversion</strong></td>
+<td>2/Φ = √5-1 (Transforms Sixth to Third)</td>
+<td>2/√2 = √2 (Inverts into itself)</td>
+</tr>
+<tr>
+<td><strong>Acoustic Effect</strong></td>
+<td>Non-periodic, infinitely non-repeating</td>
+<td>Maximum tension, structural turning point</td>
+</tr>
+</tbody>
+</table>
+<p>Where Φ represents the ultimate asymmetric division of space, √2 represents the ultimate symmetric division of the octave.</p>
+<h2 id="historical-notoriety-the-devil-in-music" tabindex="-1">Historical Notoriety: The Devil in Music <a class="header-anchor" href="#historical-notoriety-the-devil-in-music" aria-label="Permalink to “Historical Notoriety: The Devil in Music”">&#8203;</a></h2>
+<p>In medieval and Renaissance music, the tritone was literally called &quot;diabolus in musica&quot; - the devil in music. It was considered so unstable and dangerous that its use was restricted in sacred music.</p>
+<p>This fear wasn't just superstition - the tritone genuinely creates tension that demands resolution. Composers learned to use it carefully, often resolving it to a perfect fifth or major third.</p>
+<h2 id="the-tension-resolution-engine" tabindex="-1">The Tension-Resolution Engine <a class="header-anchor" href="#the-tension-resolution-engine" aria-label="Permalink to “The Tension-Resolution Engine”">&#8203;</a></h2>
+<p>The tritone's power lies in its tendency to resolve. In Western tonal music, the tritone is the engine that drives harmonic motion:</p>
+<ul>
+<li>The dominant seventh chord contains a tritone that resolves to the tonic</li>
+<li>This resolution creates the sense of &quot;home&quot; that defines tonal music</li>
+</ul>
+<p>When you hear a tritone, your ear instinctively wants it to resolve somewhere. This is why it's so powerful for creating dramatic tension.</p>
+<h2 id="emotional-character-of-the-tritone" tabindex="-1">Emotional Character of the Tritone <a class="header-anchor" href="#emotional-character-of-the-tritone" aria-label="Permalink to “Emotional Character of the Tritone”">&#8203;</a></h2>
+<p>The tritone feels:</p>
+<ul>
+<li><strong>Tense</strong> - it demands resolution</li>
+<li><strong>Unsettling</strong> - creates a sense of unease or mystery</li>
+<li><strong>Dramatic</strong> - perfect for moments of tension</li>
+<li><strong>Modern</strong> - associated with 20th century and contemporary music</li>
+</ul>
+<p>Think of the opening of &quot;The Simpsons&quot; theme or Jimi Hendrix's &quot;Purple Haze&quot; - both prominently feature tritones for their unsettling, edgy quality.</p>
+<h2 id="the-tritone-paradox" tabindex="-1">The Tritone Paradox <a class="header-anchor" href="#the-tritone-paradox" aria-label="Permalink to “The Tritone Paradox”">&#8203;</a></h2>
+<p>Diana Deutsch discovered the &quot;tritone paradox&quot; - a perceptual phenomenon where people disagree on the direction of tritone intervals. This reveals individual differences in pitch perception and categorical perception. The paradox is influenced by language background and musical training, showing how interval perception can be subjective and culturally influenced.</p>
+<h2 id="cultural-perspectives-on-the-tritone" tabindex="-1">Cultural Perspectives on the Tritone <a class="header-anchor" href="#cultural-perspectives-on-the-tritone" aria-label="Permalink to “Cultural Perspectives on the Tritone”">&#8203;</a></h2>
+<h3 id="western-classical-music" tabindex="-1">Western Classical Music <a class="header-anchor" href="#western-classical-music" aria-label="Permalink to “Western Classical Music”">&#8203;</a></h3>
+<p>The tritone, once feared, became essential to Romantic and modern harmony. Composers like Wagner, Debussy, and jazz musicians embraced its tension for expressive purposes.</p>
+<h3 id="jazz-and-blues" tabindex="-1">Jazz and Blues <a class="header-anchor" href="#jazz-and-blues" aria-label="Permalink to “Jazz and Blues”">&#8203;</a></h3>
+<p>Jazz musicians treat the tritone as a friend rather than a devil. Tritone substitution - replacing a dominant seventh chord with another one a tritone away - is a cornerstone of jazz harmony. Blues music uses the tension of the tritone in the &quot;blue notes&quot; to create its characteristic emotional landscape.</p>
+<h2 id="applications-in-jamming-and-improvisation" tabindex="-1">Applications in Jamming and Improvisation <a class="header-anchor" href="#applications-in-jamming-and-improvisation" aria-label="Permalink to “Applications in Jamming and Improvisation”">&#8203;</a></h2>
+<h3 id="using-tritones-for-tension-and-drama" tabindex="-1">Using Tritones for Tension and Drama <a class="header-anchor" href="#using-tritones-for-tension-and-drama" aria-label="Permalink to “Using Tritones for Tension and Drama”">&#8203;</a></h3>
+<ul>
+<li><strong>Dominant chords</strong> use tritones to create tension that resolves to tonic</li>
+<li><strong>Chromatic movement</strong> often involves tritone relationships</li>
+<li><strong>Modern jazz</strong> uses tritone substitution for sophisticated harmonic movement</li>
+<li><strong>Rock and metal</strong> use tritones for aggressive, edgy sounds</li>
+</ul>
+<h3 id="finding-your-place-in-the-harmonic-landscape" tabindex="-1">Finding Your Place in the Harmonic Landscape <a class="header-anchor" href="#finding-your-place-in-the-harmonic-landscape" aria-label="Permalink to “Finding Your Place in the Harmonic Landscape”">&#8203;</a></h3>
+<p>When jamming:</p>
+<ul>
+<li>If there's tritone tension happening, you can either reinforce it or provide resolution</li>
+<li>Use tritones to create dramatic moments in your improvisation</li>
+<li>Resolve tritones to more consonant intervals for sense of completion</li>
+</ul>
+<h2 id="augmented-and-diminished-variations" tabindex="-1">Augmented and Diminished Variations <a class="header-anchor" href="#augmented-and-diminished-variations" aria-label="Permalink to “Augmented and Diminished Variations”">&#8203;</a></h2>
+<h3 id="diminished-fifth-5" tabindex="-1">Diminished Fifth (5-) <a class="header-anchor" href="#diminished-fifth-5" aria-label="Permalink to “Diminished Fifth (5-)”">&#8203;</a></h3>
+<p>This is the same as the tritone we've been discussing. In classical terminology, it's called a diminished fifth when it occurs in a context where a perfect fifth would be expected.</p>
+<h3 id="augmented-fourth-4" tabindex="-1">Augmented Fourth (4+) <a class="header-anchor" href="#augmented-fourth-4" aria-label="Permalink to “Augmented Fourth (4+)”">&#8203;</a></h3>
+<p>This is another name for the tritone, emphasizing its relationship to the fourth rather than the fifth.</p>
+<h2 id="connecting-to-the-chromatone-system" tabindex="-1">Connecting to the Chromatone System <a class="header-anchor" href="#connecting-to-the-chromatone-system" aria-label="Permalink to “Connecting to the Chromatone System”">&#8203;</a></h2>
+<p>The Chromatone Spectrogram reveals the tritone's unique position:</p>
+<ul>
+<li><strong>Tritone</strong> shows the maximum distance within the octave, creating visual tension</li>
+<li>The tritone stands out as the most &quot;stretched&quot; relationship on the visual display</li>
+<li>You can see the tritone as the central axis that divides the octave into two equal halves</li>
+</ul>
+<p>This visual understanding complements the auditory and emotional understanding we're developing.</p>
+<h2 id="microtonal-tritone-variations" tabindex="-1">Microtonal Tritone Variations <a class="header-anchor" href="#microtonal-tritone-variations" aria-label="Permalink to “Microtonal Tritone Variations”">&#8203;</a></h2>
+<p>Different cultures explore variations around the tritone:</p>
+<ul>
+<li><strong>Arabic maqam</strong> uses quarter tones that can create intervals approaching tritone relationships</li>
+<li><strong>Indian classical music</strong> includes shruti variations that can approximate tritone-like tensions</li>
+<li><strong>Blues music</strong> uses &quot;blue notes&quot; that fall between minor and major thirds, creating tritone-like tension</li>
+<li><strong>Just intonation systems</strong> explore different tritone ratios beyond the equal temperament √2</li>
+</ul>
+<p>These variations show that while the tritone's mathematical position is fixed, cultures explore different expressive approaches to this maximum tension point.</p>
+<p><strong>The 16-Grid Linear Substrate:</strong>
+Mapping the linear 16-step fundamental grid reveals the tritone's unique position:</p>
+<ul>
+<li><strong>Tritone (TT)</strong>: 23/16 ratio, 628.3 cents, +28.3 deviation from 12-TET (or 22/16 = 11/8 ratio, 551.3 cents, -48.7 deviation)</li>
+</ul>
+<p>The tritone is symmetrically straddled by 22/16 (11/8 = 551.3 cents) and 23/16 (628.3 cents), reflecting the absence of an exact integer midpoint on an even-numbered linear grid. Neither is an exact grid line, explaining the tritone's floating, unstable quality—it never perfectly aligns with the physical substrate.</p>
+<p><strong>3-Layer Architecture:</strong></p>
+<ul>
+<li><strong>Layer 1 (3-Limit Frame)</strong>: Uses primes {2, 3} to establish macro-architecture. The tritone (√2) sits as the geometric midpoint between the perfect fourth (4:3) and perfect fifth (3:2), forming the central reflection axis across which intervals mirror one another.</li>
+<li><strong>Layer 3 (16-Grid Substrate)</strong>: The tritone floats between grid lines (22/16 and 23/16), never achieving exact alignment. This explains its unique perceptual quality—it's the interval that demands resolution because it never feels &quot;at home&quot; in the physical substrate.</li>
+</ul>
+<p>This layered model shows how the tritone functions as the central axis (Layer 1) while floating between grid lines (Layer 3), creating its characteristic tension and instability.</p>
+<h2 id="summary-of-key-points" tabindex="-1">Summary of Key Points <a class="header-anchor" href="#summary-of-key-points" aria-label="Permalink to “Summary of Key Points”">&#8203;</a></h2>
+<ul>
+<li><strong>Tritone</strong> = half octave, √2 ratio, maximum tension</li>
+<li><strong>Self-inversion</strong> = only interval that inverts to itself</li>
+<li><strong>Geometric midpoint</strong> = exactly between fourth and fifth</li>
+<li><strong>Historical notoriety</strong> = once called &quot;devil in music&quot;</li>
+<li><strong>Tension-resolution engine</strong> = drives Western harmonic motion</li>
+<li><strong>Practical application</strong> = use for dramatic tension and sophisticated harmony</li>
+<li><strong>Cultural evolution</strong> = from forbidden to essential in modern music</li>
+<li><strong>Chromatone visualization</strong> = shows as central axis dividing octave</li>
+</ul>
+<p>Mastering the tritone gives you control over the most powerful tension-creation tool in Western music. You're no longer just avoiding &quot;dangerous&quot; intervals - you're wielding their power intentionally for expressive effect.</p>
+]]></content:encoded>
+            <author>davay@chromatone.center (Denis Starov)</author>
+            <enclosure url="https://chromatone.center/maximilian-bungart.jpg" length="0" type="image/jpg"/>
         </item>
         <item>
             <title><![CDATA[Syncopation, swing and groove]]></title>
@@ -9328,6 +9887,51 @@ A picture from the 2009 non-fiction book Wednesday Is Indigo Blue. Note the numb
             <enclosure url="https://chromatone.center/Number_Form-synesthesia.jpg" length="0" type="image/jpg"/>
         </item>
         <item>
+            <title><![CDATA[Rhythm]]></title>
+            <link>https://chromatone.center/theory/rhythm/</link>
+            <guid isPermaLink="false">https://chromatone.center/theory/rhythm/</guid>
+            <pubDate>Wed, 25 Aug 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[Musical exploration of time]]></description>
+            <content:encoded><![CDATA[<p><a href="./study/">What is Rhythm</a> and how does the temporal dimension of music evolve? How we can conceptualize the human <a href="./pulse/">Musical time feeling</a>? How can we <a href="./counting/">Count fast enough</a> to understand the inner relations of different rhythmic patterns?</p>
+<p>The main concept in modern Western rhythmic tradition is the <a href="./meter/">Meters</a> differentiation. While there's a plenty of other <a href="./system/">national musical time organisation systems</a>, that may emphasize some other aspects of the temporal music feel, such as <a href="./groove/">Syncopation, swing and groove</a>.</p>
+<p>And there's so much to explore in practice while learning basic <a href="./rudiments/">Drum rudiments</a> on your own.</p>
+<h2 id="embodiment-of-music" tabindex="-1">Embodiment of music <a class="header-anchor" href="#embodiment-of-music" aria-label="Permalink to “Embodiment of music”">&#8203;</a></h2>
+<table tabindex="0">
+<thead>
+<tr>
+<th>Timescale</th>
+<th>Movement</th>
+<th>Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Phrase</td>
+<td>Breath</td>
+<td>2-8 sec</td>
+</tr>
+<tr>
+<td>Pulse</td>
+<td>Walking</td>
+<td>250-2000 ms</td>
+</tr>
+<tr>
+<td>Note</td>
+<td>Fingers</td>
+<td>100-1000 ms</td>
+</tr>
+<tr>
+<td>Microrhythm</td>
+<td>Talk</td>
+<td>5-50 ms</td>
+</tr>
+</tbody>
+</table>
+<youtube-embed video="UMFazztdbAI"/> ]]></content:encoded>
+            <author>davay@chromatone.center (Denis Starov)</author>
+            <enclosure url="https://chromatone.center/brent-ninaber.jpg" length="0" type="image/jpg"/>
+        </item>
+        <item>
             <title><![CDATA[Chromatic spectrum]]></title>
             <link>https://chromatone.center/theory/interplay/spectrum/</link>
             <guid isPermaLink="false">https://chromatone.center/theory/interplay/spectrum/</guid>
@@ -10264,6 +10868,14 @@ Mill Stroke</p>
             <enclosure url="https://chromatone.center/modes.png" length="0" type="image/png"/>
         </item>
         <item>
+            <title><![CDATA[Shepard's tone]]></title>
+            <link>https://chromatone.center/practice/pitch/shepard/</link>
+            <guid isPermaLink="false">https://chromatone.center/practice/pitch/shepard/</guid>
+            <pubDate>Sun, 06 Jun 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[Ever rising pitch illusion]]></description>
+            <author>davay@chromatone.center (Denis Starov)</author>
+        </item>
+        <item>
             <title><![CDATA[Alternative notation systems]]></title>
             <link>https://chromatone.center/theory/notes/alternative/</link>
             <guid isPermaLink="false">https://chromatone.center/theory/notes/alternative/</guid>
@@ -11001,13 +11613,13 @@ Example of numeric vihuela tablature from the book &quot;Orphenica Lyra&quot; by
 <p><img src="https://chromatone.center/assets/Star-Wars-Ukulele-The-Imperial-March.B6MKuXpl.jpg" alt=""></p>
 <h3 id="drum-tabs" tabindex="-1">Drum tabs <a class="header-anchor" href="#drum-tabs" aria-label="Permalink to “Drum tabs”">&#8203;</a></h3>
 <p>Instead of the durational notes normally seen on a piece of sheet music, drum tab uses proportional horizontal placement to indicate rhythm and vertical placement on a series of lines to represent which drum from the drum kit to stroke. Drum tabs frequently depict drum patterns.</p>
-<div class="language-"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang"></span><pre><!--::markdown-it-async::t9l9f2c27flzklqd17atgf::--><code>HH|x-x-x-x-x-x-x-x-||
+<div class="language-"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang"></span><pre><!--::markdown-it-async::58syo55uwo4dexqkadpqbn::--><code>HH|x-x-x-x-x-x-x-x-||
  S|----o-------o---||
  B|o-------o-------||
    1 + 2 + 3 + 4 +</code></pre>
 </div><h3 id="keyboard-tabulature" tabindex="-1">Keyboard tabulature <a class="header-anchor" href="#keyboard-tabulature" aria-label="Permalink to “Keyboard tabulature”">&#8203;</a></h3>
 <p>The modern keyboard tabs are built using any monospaced font. THey show each octave of the piano on a separate lane (with &quot;R&quot; and &quot;L&quot; for the hand). Letters show the note played. &quot;&gt;&quot; symbols show note durations in the fixed time periods, divided by &quot;|&quot; symbols. The actual chords are placed above the tabs.</p>
-<div class="language-"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang"></span><pre><!--::markdown-it-async::wycovp2hgk91odxaifgwr7::--><code>Penny Lane - The Beatles
+<div class="language-"><button title="Copy code" data-copied="Copied" class="copy"></button><span class="lang"></span><pre><!--::markdown-it-async::uyi389mn47g75kc1135bdm::--><code>Penny Lane - The Beatles
 Tabbed By: Ebon-Ivor
 
              C          Am7          Dm7        Gsus7

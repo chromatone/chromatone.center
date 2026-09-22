@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SHEPARD // infinite glissando engine</title>
+<style>
+  :root{
+    --bg:#07070d; --bg2:#0c0e1a;
+    --cyan:#4cf3ff; --magenta:#ff3ec8; --amber:#ffb13e;
+    --ink:#cfe0ee; --dim:#5c6a82; --line:rgba(140,180,220,.18);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;height:100%;background:var(--bg);overflow:hidden;
+    font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;color:var(--ink);}
+  canvas{position:fixed;inset:0;width:100%;height:100%;display:block;}
+
+  .brand{position:fixed;top:22px;left:26px;pointer-events:none;user-select:none;}
+  .brand b{font-size:22px;letter-spacing:.14em;color:var(--ink);
+    text-shadow:0 0 18px rgba(76,243,255,.55);
+    display:inline-block;transform:skewX(-8deg);}
+  .brand span{display:block;font-size:10px;letter-spacing:.32em;color:var(--dim);margin-top:4px;}
+  .brand em{display:block;font-size:9px;letter-spacing:.1em;color:var(--dim);margin-top:8px;font-style:normal;
+    max-width:220px;line-height:1.5;opacity:.75;}
+
+  .dock{position:fixed;left:0;right:0;bottom:0;display:flex;justify-content:center;
+    padding:12px 14px 14px;pointer-events:none;}
+  .panel{pointer-events:auto;display:flex;gap:0;background:rgba(9,11,20,.72);
+    backdrop-filter:blur(14px) saturate(140%);border:1px solid var(--line);
+    border-radius:10px;box-shadow:0 0 0 1px rgba(76,243,255,.06),0 18px 50px rgba(0,0,0,.55);
+    max-width:1180px;width:100%;overflow:hidden;max-height:78vh;overflow-y:auto;}
+  .sec{padding:12px 20px;flex:1;min-width:0;}
+  .sec + .sec{border-left:1px solid var(--line);}
+  .sec h2{margin:0 0 8px;font-size:10px;letter-spacing:.28em;font-weight:600;color:var(--dim);}
+  .sec.tone h2{color:var(--cyan);}
+  .sec.rhythm h2{color:var(--amber);}
+  .row{display:flex;align-items:center;gap:10px;margin:6px 0;}
+  .row label{width:78px;flex:none;font-size:11px;color:var(--dim);letter-spacing:.02em;}
+  .row .val{width:66px;flex:none;text-align:right;font-size:11px;color:var(--ink);font-variant-numeric:tabular-nums;}
+  input[type=range]{flex:1;-webkit-appearance:none;appearance:none;height:3px;
+    background:linear-gradient(90deg,var(--line),var(--line));border-radius:3px;outline:none;}
+  .sec.tone input[type=range]::-webkit-slider-thumb{background:var(--cyan);box-shadow:0 0 10px var(--cyan);}
+  .sec.rhythm input[type=range]::-webkit-slider-thumb{background:var(--amber);box-shadow:0 0 10px var(--amber);}
+  .sec.master input[type=range]::-webkit-slider-thumb{background:var(--magenta);box-shadow:0 0 10px var(--magenta);}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:11px;height:11px;border-radius:50%;
+    border:none;cursor:pointer;margin-top:-4px;}
+  input[type=range]::-moz-range-thumb{width:11px;height:11px;border-radius:50%;border:none;cursor:pointer;}
+  input[type=range]::-webkit-slider-runnable-track{height:3px;border-radius:3px;}
+
+  .toggle{display:flex;align-items:center;gap:8px;margin-bottom:8px;cursor:pointer;user-select:none;}
+  .toggle input{display:none;}
+  .sw{width:30px;height:16px;border-radius:9px;background:var(--line);position:relative;transition:.15s;flex:none;}
+  .sw::after{content:"";position:absolute;top:2px;left:2px;width:12px;height:12px;border-radius:50%;
+    background:var(--dim);transition:.15s;}
+  .toggle input:checked + .sw{background:rgba(255,177,62,.28);}
+  .toggle input:checked + .sw::after{transform:translateX(14px);background:var(--amber);box-shadow:0 0 8px var(--amber);}
+  .toggle span.tlabel{font-size:10px;letter-spacing:.28em;color:var(--dim);}
+
+  .sec.master{flex:none;width:170px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;}
+  #play{width:60px;height:60px;border-radius:50%;border:1px solid var(--line);background:rgba(255,62,200,.08);
+    color:var(--magenta);font-size:19px;cursor:pointer;box-shadow:0 0 22px rgba(255,62,200,.25) inset;}
+  #play:hover{box-shadow:0 0 26px rgba(255,62,200,.45) inset;}
+  .dir{font-size:10px;letter-spacing:.2em;color:var(--dim);text-align:center;}
+  .dir b{color:var(--ink);}
+
+  @media (max-width:880px){
+    .panel{flex-wrap:wrap;max-height:70vh;}
+    .sec{flex:1 1 45%;border-left:none!important;border-top:1px solid var(--line);}
+    .sec.master{width:100%;flex-direction:row;order:-1;border-top:none!important;}
+  }
+</style>
+</head>
+<body>
+<canvas id="viz"></canvas>
+
+<div class="brand"><b>SHEPARD—RISSET</b><span>infinite glissando &amp; tempo engine</span>
+<em>pitch hue = chromatone wheel &middot; A=red, 360&deg;/octave &middot; loudness = Gaussian window in log-frequency space</em></div>
+
+<div class="dock">
+  <div class="panel">
+
+    <div class="sec tone">
+      <h2>PITCH &mdash; SHEPARD TONE</h2>
+      <div class="row"><label>rate</label><input id="rate" type="range" min="-180" max="180" step="1" value="24"><span class="val" id="rateV">24 ⁄min</span></div>
+      <div class="row"><label>voices</label><input id="voices" type="range" min="3" max="10" step="1" value="6"><span class="val" id="voicesV">6</span></div>
+      <div class="row"><label>low</label><input id="fmin" type="range" min="20" max="2000" step="1" value="80"><span class="val" id="fminV">80 Hz</span></div>
+      <div class="row"><label>high</label><input id="fmax" type="range" min="200" max="9000" step="1" value="2400"><span class="val" id="fmaxV">2400 Hz</span></div>
+      <div class="row"><label>center</label><input id="fc" type="range" min="200" max="4000" step="1" value="800"><span class="val" id="fcV">800 Hz</span></div>
+      <div class="row"><label>width</label><input id="sigma" type="range" min="0.4" max="2.5" step="0.05" value="1.1"><span class="val" id="sigmaV">1.10 oct</span></div>
+      <div class="row"><label>level</label><input id="tgain" type="range" min="0" max="100" step="1" value="55"><span class="val" id="tgainV">55%</span></div>
+    </div>
+
+    <div class="sec rhythm">
+      <label class="toggle"><input id="renable" type="checkbox"><span class="sw"></span><span class="tlabel">RHYTHM &mdash; RISSET ACCEL.</span></label>
+      <div class="row"><label>rate</label><input id="rrate" type="range" min="-180" max="180" step="1" value="20"><span class="val" id="rrateV">20 ⁄min</span></div>
+      <div class="row"><label>layers</label><input id="rlayers" type="range" min="3" max="8" step="1" value="5"><span class="val" id="rlayersV">5</span></div>
+      <div class="row"><label>slow</label><input id="rmin" type="range" min="10" max="300" step="1" value="50"><span class="val" id="rminV">50 bpm</span></div>
+      <div class="row"><label>fast</label><input id="rmax" type="range" min="60" max="1200" step="1" value="400"><span class="val" id="rmaxV">400 bpm</span></div>
+      <div class="row"><label>center</label><input id="rfc" type="range" min="40" max="600" step="1" value="140"><span class="val" id="rfcV">140 bpm</span></div>
+      <div class="row"><label>width</label><input id="rsigma" type="range" min="0.4" max="2.5" step="0.05" value="1.1"><span class="val" id="rsigmaV">1.10 oct</span></div>
+      <div class="row"><label>level</label><input id="rgain" type="range" min="0" max="100" step="1" value="45"><span class="val" id="rgainV">45%</span></div>
+    </div>
+
+    <div class="sec master">
+      <button id="play">&#9658;</button>
+      <div class="row" style="margin:0;width:100%;"><label style="width:44px;">vol</label><input id="master" type="range" min="0" max="100" step="1" value="70"><span class="val" id="masterV">70%</span></div>
+      <div class="dir">tone <b id="dirT">rising</b> &middot; rhythm <b id="dirR">rising</b></div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+/* ---------- AudioWorklet processor (built as source string, zero external deps) ---------- */
+const WORKLET = `
+class ShepardProcessor extends AudioWorkletProcessor {
+  constructor(){
+    super();
+    this.sr = sampleRate;
+    this.MAXT = 10; this.MAXR = 8;
+    this.TILT_DB = 3; // Fletcher-Munson compensation: +3dB/oct below center
+    this.fMin=80; this.fMax=2400; this.rateOct=24/60; this.toneGain=0.55; this.fc=800; this.sigma=1.1;
+    this.rRateOct=20/60; this.rMin=50/60; this.rMax=400/60; this.rGain=0.45; this.master=0.7; this.rEn=0;
+    this.rfc=140/60; this.rsigma=1.1;
+    this.t = {fMin:80,fMax:2400,rateOct:24/60,toneN:6,toneGain:0.55,fc:800,sigma:1.1,
+      rEn:0,rRateOct:20/60,rMin:50/60,rMax:400/60,rN:5,rGain:0.45,rfc:140/60,rsigma:1.1,master:0.7};
+    this.sweep=0; this.rSweep=0;
+    this.phase=new Float64Array(this.MAXT);
+    this.tAct=new Float64Array(this.MAXT);
+    this.beat=new Float64Array(this.MAXR);
+    this.env=new Float64Array(this.MAXR);
+    this.envT=new Float64Array(this.MAXR);
+    this.rAct=new Float64Array(this.MAXR);
+    this.c = 1-Math.exp(-1/(this.sr*0.06));
+    this.port.onmessage = e=>Object.assign(this.t, e.data);
+  }
+  // Gaussian window in log2-frequency space, centered at fc, +tilt dB/oct below center
+  gwin(freq, fc, sigma, tiltDb){
+    const x = Math.log2(freq/fc);
+    let g = Math.exp(-(x*x)/(2*sigma*sigma));
+    if (tiltDb && x < 0) g *= Math.pow(10, (tiltDb*(-x))/20);
+    return g;
+  }
+  process(_, outputs){
+    const out=outputs[0]; const n0=out[0].length;
+    const left=out[0], right=out[1]||out[0];
+    const c=this.c, t=this.t;
+    const nyq = this.sr*0.45;
+    for(let n=0;n<n0;n++){
+      this.fMin+=(t.fMin-this.fMin)*c;
+      this.fMax+=(t.fMax-this.fMax)*c;
+      this.rateOct+=(t.rateOct-this.rateOct)*c;
+      this.toneGain+=(t.toneGain-this.toneGain)*c;
+      this.fc+=(t.fc-this.fc)*c;
+      this.sigma+=(t.sigma-this.sigma)*c;
+      this.rRateOct+=(t.rRateOct-this.rRateOct)*c;
+      this.rMin+=(t.rMin-this.rMin)*c;
+      this.rMax+=(t.rMax-this.rMax)*c;
+      this.rGain+=(t.rGain-this.rGain)*c;
+      this.rfc+=(t.rfc-this.rfc)*c;
+      this.rsigma+=(t.rsigma-this.rsigma)*c;
+      this.master+=(t.master-this.master)*c;
+      this.rEn+=(t.rEn-this.rEn)*c;
+
+      const fMin=Math.max(10,this.fMin), fMax=Math.max(fMin*1.02,this.fMax);
+      const Loct=Math.log2(fMax/fMin);
+      this.sweep += (this.rateOct/Loct)/this.sr;
+      this.sweep -= Math.floor(this.sweep);
+
+      const N=Math.max(1,Math.round(t.toneN));
+      let tl=0, tr=0;
+      for(let i=0;i<this.MAXT;i++){
+        const active = i<N?1:0;
+        this.tAct[i]+=(active-this.tAct[i])*c;
+        const a=this.tAct[i];
+        if(a<0.0015 && !active) continue;
+        // layers spaced exactly one octave apart (i / Loct = one octave's worth of sweep fraction)
+        let pos=this.sweep+i/Loct; pos-=Math.floor(pos);
+        const freq=fMin*Math.pow(2,pos*Loct);
+        let win = this.gwin(freq, this.fc, this.sigma, this.TILT_DB);
+        if (freq >= nyq) win = 0; // hard mute past ~Nyquist to avoid foldback
+        let ph=this.phase[i]+2*Math.PI*freq/this.sr;
+        if(ph>6.283185307179586) ph-=6.283185307179586;
+        this.phase[i]=ph;
+        const s=Math.sin(ph)*win*a;
+        const pan = N>1 ? (i/(N-1))*2-1 : 0;
+        tl += s*Math.sqrt(0.5*(1-pan));
+        tr += s*Math.sqrt(0.5*(1+pan));
+      }
+      const tNorm=this.toneGain/Math.sqrt(N);
+      tl*=tNorm; tr*=tNorm;
+
+      let rl=0, rr=0;
+      if(this.rEn>0.01){
+        const rMin=Math.max(0.05,this.rMin), rMax=Math.max(rMin*1.02,this.rMax);
+        const Tr=Math.log2(rMax/rMin);
+        this.rSweep += (this.rRateOct/Tr)/this.sr;
+        this.rSweep -= Math.floor(this.rSweep);
+        const M=Math.max(1,Math.round(t.rN));
+        for(let j=0;j<this.MAXR;j++){
+          const active=j<M?1:0;
+          this.rAct[j]+=(active-this.rAct[j])*c;
+          const a=this.rAct[j];
+          let pos=this.rSweep+j/Tr; pos-=Math.floor(pos);
+          const rate=rMin*Math.pow(2,pos*Tr);
+          const win = this.gwin(rate, this.rfc, this.rsigma, 0);
+          this.beat[j]+=rate/this.sr;
+          if(this.beat[j]>=1){
+            this.beat[j]-=1;
+            this.env[j]=1; this.envT[j]=0;
+            this.port.postMessage({c:1,j,pos});
+          }
+          if(this.env[j]>0.0008){
+            const freqC=500+pos*1600;
+            const click=Math.sin(2*Math.PI*freqC*this.envT[j])*this.env[j]*win*a;
+            rl+=click; rr+=click;
+            this.env[j]*=0.9982;
+            this.envT[j]+=1/this.sr;
+          }
+        }
+        const rNorm=this.rGain*this.rEn/Math.sqrt(M);
+        rl*=rNorm; rr*=rNorm;
+      }
+      left[n]=(tl+rl)*this.master;
+      right[n]=(tr+rr)*this.master;
+    }
+    return true;
+  }
+}
+registerProcessor('shepard', ShepardProcessor);
+`;
+
+/* ---------- Chromatone pitch->hue mapping: A=red(0deg), continuous 30deg/semitone, 360deg/octave ---------- */
+function chromatoneHue(freq){
+  const n = 12*Math.log2(freq/440); // semitones from A4, any octave
+  const semis = ((n%12)+12)%12;
+  return semis*30;
+}
+
+/* ---------- Audio engine wiring ---------- */
+let ctx=null, node=null, playing=false;
+const $ = id=>document.getElementById(id);
+const els = {
+  rate:$('rate'), voices:$('voices'), fmin:$('fmin'), fmax:$('fmax'), fc:$('fc'), sigma:$('sigma'), tgain:$('tgain'),
+  renable:$('renable'), rrate:$('rrate'), rlayers:$('rlayers'), rmin:$('rmin'), rmax:$('rmax'),
+  rfc:$('rfc'), rsigma:$('rsigma'), rgain:$('rgain'),
+  master:$('master')
+};
+
+function fmtRate(v){ return (v>0?'+':'') + v + ' ⁄min'; }
+function refreshLabels(){
+  $('rateV').textContent = fmtRate(+els.rate.value);
+  $('voicesV').textContent = els.voices.value;
+  $('fminV').textContent = els.fmin.value+' Hz';
+  $('fmaxV').textContent = els.fmax.value+' Hz';
+  $('fcV').textContent = els.fc.value+' Hz';
+  $('sigmaV').textContent = (+els.sigma.value).toFixed(2)+' oct';
+  $('tgainV').textContent = els.tgain.value+'%';
+  $('rrateV').textContent = fmtRate(+els.rrate.value);
+  $('rlayersV').textContent = els.rlayers.value;
+  $('rminV').textContent = els.rmin.value+' bpm';
+  $('rmaxV').textContent = els.rmax.value+' bpm';
+  $('rfcV').textContent = els.rfc.value+' bpm';
+  $('rsigmaV').textContent = (+els.rsigma.value).toFixed(2)+' oct';
+  $('rgainV').textContent = els.rgain.value+'%';
+  $('masterV').textContent = els.master.value+'%';
+  $('dirT').textContent = (+els.rate.value>=0?'rising':'falling');
+  $('dirR').textContent = (+els.rrate.value>=0?'accel.':'decel.');
+}
+
+function params(){
+  const fmin = Math.min(+els.fmin.value, +els.fmax.value-40);
+  const fmax = Math.max(+els.fmax.value, fmin+40);
+  const rmin = Math.min(+els.rmin.value, +els.rmax.value-10);
+  const rmax = Math.max(+els.rmax.value, rmin+10);
+  return {
+    fMin: fmin, fMax: fmax, rateOct: (+els.rate.value)/60,
+    toneN: +els.voices.value, toneGain: (+els.tgain.value)/100,
+    fc: +els.fc.value, sigma: +els.sigma.value,
+    rEn: els.renable.checked ? 1 : 0,
+    rRateOct: (+els.rrate.value)/60, rMin: rmin/60, rMax: rmax/60,
+    rN: +els.rlayers.value, rGain: (+els.rgain.value)/100,
+    rfc: (+els.rfc.value)/60, rsigma: +els.rsigma.value,
+    master: (+els.master.value)/100
+  };
+}
+function sendParams(){ if(node) node.port.postMessage(params()); }
+
+async function ensureAudio(){
+  if(ctx) return;
+  ctx = new (window.AudioContext||window.webkitAudioContext)();
+  const blobUrl = URL.createObjectURL(new Blob([WORKLET], {type:'application/javascript'}));
+  await ctx.audioWorklet.addModule(blobUrl);
+  node = new AudioWorkletNode(ctx, 'shepard', {numberOfInputs:0, numberOfOutputs:1, outputChannelCount:[2]});
+  const lp = ctx.createBiquadFilter(); lp.type='lowpass'; lp.frequency.value=17000; lp.Q.value=0.707; // anti-alias safety net
+  const comp = ctx.createDynamicsCompressor();
+  comp.threshold.value = -8; comp.ratio.value = 4; comp.attack.value=0.003; comp.release.value=0.25;
+  node.connect(lp).connect(comp).connect(ctx.destination);
+  node.port.onmessage = e=>{ if(e.data && e.data.c) flashLayer(e.data.j, e.data.pos); };
+  sendParams();
+}
+
+$('play').addEventListener('click', async ()=>{
+  await ensureAudio();
+  if(ctx.state!=='running'){ await ctx.resume(); playing=true; }
+  else { await ctx.suspend(); playing=false; }
+  $('play').innerHTML = playing? '&#10074;&#10074;' : '&#9658;';
+});
+
+Object.values(els).forEach(el=>{
+  const ev = el.type==='checkbox' ? 'change' : 'input';
+  el.addEventListener(ev, ()=>{
+    if(el===els.fmin && +els.fmin.value > +els.fmax.value-40) els.fmax.value = +els.fmin.value+40;
+    if(el===els.fmax && +els.fmax.value < +els.fmin.value+40) els.fmin.value = +els.fmax.value-40;
+    if(el===els.rmin && +els.rmin.value > +els.rmax.value-10) els.rmax.value = +els.rmin.value+10;
+    if(el===els.rmax && +els.rmax.value < +els.rmin.value+10) els.rmin.value = +els.rmax.value-10;
+    refreshLabels(); sendParams();
+  });
+});
+refreshLabels();
+
+/* ---------- Minimal visualizer: mirrors the same math on the main thread ---------- */
+const cv=$('viz'), gx=cv.getContext('2d');
+let W,H,DPR;
+function resize(){
+  DPR = Math.min(2, window.devicePixelRatio||1);
+  W = cv.width = innerWidth*DPR; H = cv.height = innerHeight*DPR;
+  cv.style.width=innerWidth+'px'; cv.style.height=innerHeight+'px';
+}
+addEventListener('resize', resize); resize();
+
+let vizSweep=0, vizRSweep=0, lastTs=0;
+const flash = new Array(8).fill(0);
+function flashLayer(j){ flash[j]=1; }
+function gwin(freq, fc, sigma){ const x=Math.log2(freq/fc); return Math.exp(-(x*x)/(2*sigma*sigma)); }
+
+function drawChromatoneRing(){
+  const r0 = 30*DPR, cx = W-70*DPR, cy = 70*DPR, names=['A','A#','B','C','C#','D','D#','E','F','F#','G','G#'];
+  for(let k=0;k<12;k++){
+    const ang = (k*30-90)*Math.PI/180;
+    const x = cx+Math.cos(ang)*r0, y = cy+Math.sin(ang)*r0;
+    gx.beginPath(); gx.fillStyle=`hsl(${k*30},85%,58%)`;
+    gx.arc(x,y,4.2*DPR,0,Math.PI*2); gx.fill();
+  }
+  gx.font=`${9*DPR}px ui-monospace,monospace`; gx.fillStyle='rgba(180,200,220,.4)';
+  gx.textAlign='center'; gx.fillText('A=red / oct wheel', cx, cy+r0+16*DPR);
+}
+
+function frame(ts){
+  if(!lastTs) lastTs=ts;
+  const dt = Math.min(0.05,(ts-lastTs)/1000); lastTs=ts;
+
+  gx.fillStyle='rgba(7,7,13,0.30)';
+  gx.fillRect(0,0,W,H);
+
+  const fmin=+els.fmin.value, fmax=Math.max(+els.fmax.value, fmin+40);
+  const Loct=Math.log2(fmax/fmin);
+  const rateOct=(+els.rate.value)/60;
+  vizSweep += (rateOct/Loct)*dt; vizSweep -= Math.floor(vizSweep);
+  const N = +els.voices.value;
+  const fc = +els.fc.value, sigma = +els.sigma.value;
+
+  const cx=W/2, cy=H*0.46, turns=3.1, maxR=Math.min(W,H)*0.4, minR=Math.min(W,H)*0.035;
+
+  gx.beginPath();
+  for(let s=0;s<=200;s++){
+    const p=s/200; const ang=p*Math.PI*2*turns; const r=minR+p*(maxR-minR);
+    const x=cx+Math.cos(ang)*r, y=cy+Math.sin(ang)*r;
+    s===0?gx.moveTo(x,y):gx.lineTo(x,y);
+  }
+  gx.strokeStyle='rgba(120,160,200,0.08)'; gx.lineWidth=1*DPR; gx.stroke();
+
+  for(let i=0;i<N;i++){
+    let pos=vizSweep+i/Loct; pos-=Math.floor(pos);
+    const freq = fmin*Math.pow(2,pos*Loct);
+    const w = gwin(freq, fc, sigma);
+    const ang=pos*Math.PI*2*turns;
+    const r=minR+pos*(maxR-minR);
+    const x=cx+Math.cos(ang)*r, y=cy+Math.sin(ang)*r;
+    const hue=chromatoneHue(freq);
+    gx.beginPath();
+    gx.fillStyle=`hsla(${hue},90%,60%,${0.15+0.8*Math.min(1,w)})`;
+    gx.shadowColor=`hsla(${hue},95%,58%,${0.9*Math.min(1,w)})`;
+    gx.shadowBlur=(8+22*Math.min(1,w))*DPR;
+    gx.arc(x,y,(2.5+7*Math.min(1,w))*DPR,0,Math.PI*2);
+    gx.fill();
+  }
+  gx.shadowBlur=0;
+
+  drawChromatoneRing();
+
+  const M=+els.rlayers.value;
+  const n=8, gap=10*DPR, bw=Math.min(46*DPR,(Math.min(W*0.6,560*DPR))/n - gap);
+  const totalW = n*(bw+gap)-gap;
+  const bx0 = cx-totalW/2, by=H-46*DPR;
+  for(let j=0;j<n;j++){
+    flash[j]*=0.86;
+    const active = j<M && els.renable.checked;
+    const x = bx0+j*(bw+gap);
+    const hgt = 6*DPR + flash[j]*40*DPR;
+    gx.fillStyle = active ? `rgba(255,177,62,${0.16+0.84*flash[j]})` : 'rgba(150,170,200,0.05)';
+    gx.fillRect(x, by-hgt, bw, hgt);
+  }
+
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+</script>
+</body>
+</html>

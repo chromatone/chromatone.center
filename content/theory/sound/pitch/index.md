@@ -25,6 +25,8 @@ The pitch of complex tones can be ambiguous, meaning that two or more different 
 
 Pitch depends to a lesser degree on the sound pressure level (loudness, volume) of the tone, especially at frequencies below 1,000 Hz and above 2,000 Hz. The pitch of lower tones gets lower as sound pressure increases. For instance, a tone of 200 Hz that is very loud seems one semitone lower in pitch than if it is just barely audible. Above 2,000 Hz, the pitch gets higher as the sound gets louder. These results were obtained in the pioneering works by S. Stevens and W. Snow. Later investigations, i.e. by A. Cohen, had shown that in most cases the apparent pitch shifts were not significantly different from pitch‐matching errors. When averaged, the remaining shifts followed the directions of Stevens' curves but were small (2% or less by frequency, i.e. not more than a semitone).
 
+<youtube-embed video="A6XxOO1VK6U" />
+
 ### Theories of pitch perception
 
 Theories of pitch perception try to explain how the physical sound and specific physiology of the auditory system work together to yield the experience of pitch. In general, pitch perception theories can be divided into place coding and temporal coding. Place theory holds that the perception of pitch is determined by the place of maximum excitation on the basilar membrane.

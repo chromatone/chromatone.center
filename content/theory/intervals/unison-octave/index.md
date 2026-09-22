@@ -68,3 +68,5 @@ Deutsch and Feroe (1981), and Lerdahl and Jackendoff (1983) use a "reductional f
 Note that Lerdahl's model is meant to be cyclical, with its right edge identical to its left. One could therefore display Lerdahl's graph as a series of five concentric circles representing the five melodic "alphabets." In this way one could unite the circular representation depicted at the beginning of this article with Lerdahl's flat two-dimensional representation depicted above.
 
 According to David Kopp (2002, 1), "Harmonic space, or tonal space as defined by Fred Lerdahl, is the abstract nexus of possible normative harmonic connections in a system, as opposed to the actual series of temporal connections in a realized work, linear or otherwise."
+
+<a href="/demo/shepard.html" target="_self">Shepard tone generator</a>

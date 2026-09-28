@@ -7,8 +7,8 @@ import { playNote, stopNote } from '#/use/midi'
 import { globalScale } from '#/use/global'
 import { useTuner } from '#/use/tuner'
 import { colord } from "colord";
-import { useClipboard, watchThrottled } from '@vueuse/core'
-import { computed, onMounted, ref, shallowRef } from 'vue'
+import { useClipboard, watchThrottled, useDebounceFn } from '@vueuse/core'
+import { computed, onMounted, ref, shallowRef, watch } from 'vue'
 import { Note } from 'tonal'
 import { useGesture } from '@vueuse/gesture'
 
@@ -80,6 +80,42 @@ watchThrottled(loaded, l => {
 const svg = ref()
 const currentNote = ref(null)
 const touchPoints = new Map()
+
+// Rotation state for smooth tonic-based rotation
+const currentRotation = ref(0)
+const targetRotation = computed(() => {
+  // Calculate target rotation: we want the tonic to be at the top (90 degrees in SVG coordinates)
+  // Each note is 30 degrees apart
+  // Tonic 0 (C) should be at top, so rotation should be -0 * 30 = 0
+  // Tonic 1 (C#) should be at top, so rotation should be -1 * 30 = -30
+  return -globalScale.tonic * 30
+})
+
+// Smooth rotation animation
+const animateRotation = useDebounceFn(() => {
+  const diff = targetRotation.value - currentRotation.value
+  // Handle shortest path: if difference is > 180, go the other way
+  let adjustedDiff = diff
+  if (Math.abs(diff) > 180) {
+    adjustedDiff = diff > 0 ? diff - 360 : diff + 360
+  }
+
+  // Small step for smooth animation
+  const step = adjustedDiff * 0.1
+  currentRotation.value += step
+
+  // Continue animation if not at target
+  if (Math.abs(currentRotation.value - targetRotation.value) > 0.1) {
+    requestAnimationFrame(animateRotation)
+  } else {
+    currentRotation.value = targetRotation.value
+  }
+}, 16)
+
+// Watch for tonic changes and trigger rotation
+watch(() => globalScale.tonic, () => {
+  animateRotation()
+}, { immediate: true })
 
 useGesture({
   onTouchstart: handleTouchStart,
@@ -252,7 +288,7 @@ function handleTouchEnd({ event }) {
         n="SourceGraphic" 
         :stdDeviation="15")
 
-    g(:transform="`translate(${size / 2}, ${size / 2}) `")
+    g(:transform="`translate(${size / 2}, ${size / 2}) rotate(${currentRotation})`")
       g.keys(v-for="(note, pitch) in flower" :key="note")
         g.key.cursor-pointer(
           :data-pitch="pitch"
@@ -308,6 +344,7 @@ function handleTouchEnd({ event }) {
               :font-size="size / 20"
               font-weight="bold"
               :fill="!activeChromaMidi[pitch] ? 'white' : 'black'"
+              :transform="`rotate(${-currentRotation}, 0, 0)`"
               )
               tspan(
                 dy="5"
@@ -338,7 +375,9 @@ function handleTouchEnd({ event }) {
               :fill="scheme.custom[(note - 9) % 12]"
               :r="12" 
               )          
-      g.controls
+      g.controls(
+        :transform="`rotate(${-currentRotation})`"
+        )
         g.mic.transition.cursor-pointer.opacity-40.hover-opacity-100(
           v-if="tunr?.tuner && !tunr.tuner.initiated"
           v-tooltip.top="'Start input audio analysis'"
@@ -387,6 +426,7 @@ function handleTouchEnd({ event }) {
         :aria-label="'Guessed chord: ' + guessChords[0]"
         @click="copy(guessChords[0])"
         v-if="guessChords[0]"
+        :transform="`rotate(${-currentRotation})`"
         )
         rect(
           fill="#0001"
@@ -405,6 +445,7 @@ function handleTouchEnd({ event }) {
         circle(
           r="3" 
           fill="currentColor"
+          :transform="`rotate(${-currentRotation})`"
           )
 </template>
 

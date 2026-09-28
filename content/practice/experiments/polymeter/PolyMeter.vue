@@ -1,5 +1,5 @@
 <script setup>
-import { midiColor, playNoteOnce, useTempo } from '#/use';
+import { midiColor, playNoteOnce, useTempo, globalScale } from '#/use';
 import { Note } from 'tonal';
 import { watch, ref, computed, reactive } from 'vue';
 
@@ -10,9 +10,9 @@ const octave = 3
 
 const getRotation = (ticks = 0, ratio = 1) => ((ticks / (192 * bar * ratio)) % 1) * 360;
 
-const ratios = reactive([1, 2, 3, 4, 5, 6])
+const ratios = reactive([1, 2, 3, 4, 5, 6, 7, 8])
 
-const intervals = reactive(['1P', '8P', '5P', '4P', '3M', '9M'])
+const intervals = reactive(['1P', '8P', '5P', '8P+8P', '3M', '4P', '6M', '8P+8P+8P'].toReversed())
 
 const notes = computed(() => intervals.map(interval => Note.transpose(tempo.note + octave, interval)))
 

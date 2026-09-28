@@ -14,6 +14,13 @@ const props = defineProps({
   }
 });
 
+// Tweak these to get the perfect feel
+const DRAG_SENSITIVITY = 0.3
+const WHEEL_SENSITIVITY = 0.1 // Trackpads usually need a lower multiplier than mouse wheels
+
+let startVol = 0
+let startPan = 0
+
 const synth = useSynth(props.pitch, props.octave);
 
 const dragOptions = reactive({
@@ -29,14 +36,20 @@ const dragHandler = (dragEvent) => {
   if (context.state == 'suspended') {
     start()
   }
-  let { movement: [x, y], tap } = dragEvent
+  let { movement: [x, y], tap, first } = dragEvent
+
+  if (first) {
+    startVol = synth.vol
+    startPan = synth.pan
+  }
+
   if (!tap) {
-    synth.vol += -y / 20
+    // Changed from division to multiplication
+    synth.vol = startVol + (-y * DRAG_SENSITIVITY)
     if (synth.vol > 100) synth.vol = 100
     if (synth.vol < 0) synth.vol = 0
 
-    synth.pan += x / 20
-
+    synth.pan = startPan + (x * DRAG_SENSITIVITY)
     if (synth.pan > 100) synth.pan = 100
     if (synth.pan < 0) synth.pan = 0
   } else {
@@ -46,8 +59,24 @@ const dragHandler = (dragEvent) => {
     } else {
       synth.vol = 50
     }
-
   }
+}
+
+const wheelHandler = (wheelEvent) => {
+  if (context.state == 'suspended') {
+    start()
+  }
+
+  // Wheel events provide 'delta' (incremental change per scroll tick)
+  const { delta: [dx, dy] } = wheelEvent
+
+  synth.vol += dy * WHEEL_SENSITIVITY
+  if (synth.vol > 100) synth.vol = 100
+  if (synth.vol < 0) synth.vol = 0
+
+  synth.pan += -dx * WHEEL_SENSITIVITY
+  if (synth.pan > 100) synth.pan = 100
+  if (synth.pan < 0) synth.pan = 0
 }
 
 const color = computed(() => noteColor(props.pitch, props.octave))
@@ -66,8 +95,9 @@ const textColor = computed(() => {
 <template lang="pug">
 .cell(
   v-drag="dragHandler",
+  v-wheel="wheelHandler"
   :drag-options="dragOptions",
-  :style="{backgroundColor: color, color: textColor }", 
+  :style="{ backgroundColor: color, color: textColor }", 
   :class="{ active: synth.active }")
   .absolute.w-full.h-full.top-0.left-0.bottom-0(v-show="synth.vol > 0")
     .volume(

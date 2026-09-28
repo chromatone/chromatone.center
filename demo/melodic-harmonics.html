@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chromatone Harmonics Explorer</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #050505;
+      color: #eee;
+      font-family: 'Courier New', Courier, monospace;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    #info {
+      font-size: 12px;
+      color: #888;
+      text-align: center;
+      padding: 12px 0;
+      letter-spacing: 1.5px;
+      opacity: 0.7;
+      background: rgba(10, 10, 10, 0.9);
+      border-bottom: 1px solid #1a1a1a;
+      flex-shrink: 0;
+    }
+
+    #info strong {
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    #canvas-container {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    svg {
+      width: 100%;
+      height: 100%;
+      max-width: 900px;
+      max-height: 900px;
+    }
+
+    #controls {
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(8px);
+      border-top: 1px solid #1a1a1a;
+      padding: 14px 24px;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      flex-shrink: 0;
+    }
+
+    .control-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .label {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #555;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+    }
+
+    .pitch-btn {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 2px solid #1a1a1a;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      outline: none;
+      opacity: 0.5;
+    }
+
+    .pitch-btn:hover {
+      transform: translateY(-2px);
+      opacity: 0.85;
+    }
+
+    .pitch-btn.active {
+      transform: scale(1.3);
+      border-color: #fff;
+      opacity: 1;
+      box-shadow: 0 0 10px currentColor;
+    }
+
+    .oct-btn {
+      min-width: 28px;
+      height: 22px;
+      border-radius: 4px;
+      border: 1px solid #2a2a2a;
+      background: #151515;
+      color: #777;
+      font-family: 'Courier New', monospace;
+      font-size: 11px;
+      cursor: pointer;
+      transition: all 0.15s;
+      padding: 0 6px;
+    }
+
+    .oct-btn:hover {
+      background: #1a1a1a;
+      border-color: #444;
+      color: #aaa;
+    }
+
+    .oct-btn.active {
+      background: #2a2a2a;
+      color: #fff;
+      border-color: #555;
+    }
+
+    #start-hint {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #444;
+      font-size: 11px;
+      letter-spacing: 3px;
+      pointer-events: none;
+      opacity: 0.6;
+    }
+
+    @media (max-width: 768px) {
+      #controls {
+        padding: 10px 12px;
+        gap: 12px;
+      }
+
+      .pitch-btn {
+        width: 18px;
+        height: 18px;
+      }
+
+      .oct-btn {
+        min-width: 24px;
+        height: 20px;
+        font-size: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="info">Select a Pitch Class</div>
+
+  <div id="canvas-container">
+    <svg id="visualizer" viewBox="0 0 500 500"></svg>
+    <div id="start-hint">CLICK TO START</div>
+  </div>
+
+  <div id="controls">
+    <div class="control-group">
+      <span class="label">Pitch</span>
+      <div class="btn-row" id="pitch-buttons"></div>
+    </div>
+
+    <div class="control-group">
+      <span class="label">Pitch Oct</span>
+      <div class="btn-row" id="pitch-octave-btns"></div>
+    </div>
+
+    <div class="control-group">
+      <span class="label">Tempo Oct</span>
+      <div class="btn-row" id="tempo-octave-btns"></div>
+    </div>
+
+    <div class="control-group">
+      <span class="label">Harmonics</span>
+      <div class="btn-row" id="harmonics-btns"></div>
+    </div>
+  </div>
+
+  <script>
+    const PITCHES = [
+      { name: 'A', color: '#cc0000', idx: 0, baseMidi: 69 },
+      { name: 'A#', color: '#cc6600', idx: 1, baseMidi: 70 },
+      { name: 'B', color: '#cccc00', idx: 2, baseMidi: 71 },
+      { name: 'C', color: '#66cc00', idx: 3, baseMidi: 72 },
+      { name: 'C#', color: '#00cc00', idx: 4, baseMidi: 73 },
+      { name: 'D', color: '#00cc66', idx: 5, baseMidi: 74 },
+      { name: 'D#', color: '#00cccc', idx: 6, baseMidi: 75 },
+      { name: 'E', color: '#0066cc', idx: 7, baseMidi: 76 },
+      { name: 'F', color: '#0000cc', idx: 8, baseMidi: 77 },
+      { name: 'F#', color: '#6600cc', idx: 9, baseMidi: 78 },
+      { name: 'G', color: '#cc00cc', idx: 10, baseMidi: 79 },
+      { name: 'G#', color: '#cc0066', idx: 11, baseMidi: 80 },
+    ];
+
+    const SVG_NS = 'http://www.w3.org/2000/svg';
+    const CX = 250;
+    const CY = 250;
+    const MAX_HARMONICS = 32;
+    const OCTAVE_VALUES = [-2, -1, 0, 1, 2];
+    const HARMONIC_COUNTS = [8, 16, 32];
+    const MAX_RADIUS = 240;
+    const MIN_RADIUS = 25;
+
+    // State
+    let selectedPitch = PITCHES[0];
+    let pitchOctave = 1;
+    let tempoOctave = -1;
+    let numHarmonics = 8;
+
+    let F_base = 0;
+    let T_max_base = -1;
+
+    let audioCtx = null;
+    let isPlaying = false;
+    let schedulerTimer = null;
+    let cycleStartTime = 0;
+
+    // Pre-allocated typed arrays for MAX_HARMONICS (low GC pressure)
+    let frequencies = new Float32Array(MAX_HARMONICS);
+    let periods = new Float32Array(MAX_HARMONICS);
+    let nextNoteTime = new Float32Array(MAX_HARMONICS);
+    let cachedAngles = new Float32Array(MAX_HARMONICS);
+    let colors = new Array(MAX_HARMONICS);
+
+    // DOM refs
+    let svg = null;
+    let infoDiv = null;
+    let startHint = null;
+    let harmonicElements = new Array(MAX_HARMONICS);
+    let pitchButtons = [];
+    let pitchOctaveButtons = [];
+    let tempoOctaveButtons = [];
+    let harmonicsButtons = [];
+
+    function createSVGElement(tag, attrs) {
+      const el = document.createElementNS(SVG_NS, tag);
+      for (const key in attrs) {
+        el.setAttribute(key, attrs[key]);
+      }
+      return el;
+    }
+
+    function setupUI() {
+      svg = document.getElementById('visualizer');
+      infoDiv = document.getElementById('info');
+      startHint = document.getElementById('start-hint');
+
+      // Pitch buttons
+      const pitchContainer = document.getElementById('pitch-buttons');
+      PITCHES.forEach((pitch, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'pitch-btn';
+        btn.style.backgroundColor = pitch.color;
+        btn.style.color = pitch.color;
+        btn.title = pitch.name;
+        btn.onclick = () => selectPitch(pitch);
+        if (i === 0) btn.classList.add('active');
+        pitchContainer.appendChild(btn);
+        pitchButtons.push(btn);
+      });
+
+      // Octave buttons
+      setupOctaveButtons('pitch-octave-btns', pitchOctaveButtons, pitchOctave);
+      setupOctaveButtons('tempo-octave-btns', tempoOctaveButtons, tempoOctave);
+
+      // Harmonics count buttons
+      const harmonicsContainer = document.getElementById('harmonics-btns');
+      HARMONIC_COUNTS.forEach(count => {
+        const btn = document.createElement('button');
+        btn.className = 'oct-btn';
+        btn.textContent = count;
+        btn.onclick = () => setHarmonicCount(count);
+        if (count === numHarmonics) btn.classList.add('active');
+        harmonicsContainer.appendChild(btn);
+        harmonicsButtons.push(btn);
+      });
+
+      createRadialGrid();
+      createHarmonicElements();
+      updateRadii();
+    }
+
+    function setupOctaveButtons(containerId, buttonArray, defaultValue) {
+      const container = document.getElementById(containerId);
+      OCTAVE_VALUES.forEach(val => {
+        const label = val === 0 ? '0' : (val > 0 ? '+' + val : val);
+        const btn = document.createElement('button');
+        btn.className = 'oct-btn';
+        btn.textContent = label;
+        btn.onclick = () => setOctave(containerId === 'pitch-octave-btns' ? 'pitch' : 'tempo', val);
+        if (val === defaultValue) btn.classList.add('active');
+        container.appendChild(btn);
+        buttonArray.push(btn);
+      });
+    }
+
+    function createRadialGrid() {
+      const gridGroup = createSVGElement('g', { opacity: '0.06' });
+
+      for (let r = 50; r <= 250; r += 50) {
+        gridGroup.appendChild(createSVGElement('circle', {
+          cx: CX, cy: CY, r: r,
+          fill: 'none', stroke: '#ffffff', 'stroke-width': '0.5'
+        }));
+      }
+
+      for (let angle = 0; angle < 360; angle += 30) {
+        const rad = (angle * Math.PI) / 180;
+        gridGroup.appendChild(createSVGElement('line', {
+          x1: CX, y1: CY,
+          x2: CX + 250 * Math.cos(rad),
+          y2: CY + 250 * Math.sin(rad),
+          stroke: '#ffffff', 'stroke-width': '0.5'
+        }));
+      }
+
+      svg.appendChild(gridGroup);
+      svg.appendChild(createSVGElement('circle', {
+        id: 'center-dot', cx: CX, cy: CY, r: '3', fill: PITCHES[0].color
+      }));
+    }
+
+    function createHarmonicElements() {
+      for (let n = 0; n < MAX_HARMONICS; n++) {
+        const harmonicNum = n + 1;
+        const group = createSVGElement('g', {});
+
+        const circle = createSVGElement('circle', {
+          cx: CX, cy: CY, r: 0,
+          fill: 'none', 'stroke-width': '1', opacity: '0.15'
+        });
+        group.appendChild(circle);
+
+        const dots = [];
+        const lines = [];
+
+        for (let m = 0; m < harmonicNum; m++) {
+          const angle = (360 * m) / harmonicNum;
+          const markGroup = createSVGElement('g', {
+            transform: 'rotate(' + angle + ' ' + CX + ' ' + CY + ')'
+          });
+
+          const line = createSVGElement('line', {
+            x1: CX, y1: CY, x2: CX, y2: CY,
+            'stroke-width': m === 0 ? '2' : '1'
+          });
+          markGroup.appendChild(line);
+          lines.push(line);
+
+          const dot = createSVGElement('circle', {
+            cx: CX, cy: CY,
+            r: m === 0 ? '4' : '1.5'
+          });
+          markGroup.appendChild(dot);
+          dots.push(dot);
+
+          group.appendChild(markGroup);
+        }
+
+        svg.appendChild(group);
+        harmonicElements[n] = { group, circle, dots, lines };
+      }
+    }
+
+    function updateRadii() {
+      const radiusStep = numHarmonics > 1
+        ? (MAX_RADIUS - MIN_RADIUS) / (numHarmonics - 1)
+        : 0;
+
+      for (let n = 0; n < MAX_HARMONICS; n++) {
+        const el = harmonicElements[n];
+
+        if (n >= numHarmonics) {
+          el.group.style.display = 'none';
+          continue;
+        }
+
+        el.group.style.display = '';
+        const r = MAX_RADIUS - n * radiusStep;
+
+        el.circle.setAttribute('r', r);
+
+        for (let m = 0; m < el.dots.length; m++) {
+          el.lines[m].setAttribute('y2', CY - r);
+          el.dots[m].setAttribute('cy', CY - r);
+        }
+      }
+    }
+
+    function setOctave(type, val) {
+      if (type === 'pitch') {
+        pitchOctave = val;
+        pitchOctaveButtons.forEach((btn, i) => {
+          btn.classList.toggle('active', OCTAVE_VALUES[i] === val);
+        });
+      } else {
+        tempoOctave = val;
+        tempoOctaveButtons.forEach((btn, i) => {
+          btn.classList.toggle('active', OCTAVE_VALUES[i] === val);
+        });
+      }
+      restart();
+    }
+
+    function setHarmonicCount(count) {
+      numHarmonics = count;
+      harmonicsButtons.forEach((btn, i) => {
+        btn.classList.toggle('active', HARMONIC_COUNTS[i] === count);
+      });
+      restart();
+    }
+
+    function updateBases() {
+      const F_class = 440 * Math.pow(2, (selectedPitch.baseMidi - 69) / 12);
+
+      F_base = F_class;
+      while (F_base >= 60) F_base /= 2;
+      while (F_base < 30) F_base *= 2;
+
+      T_max_base = F_class * 60;
+      while (T_max_base > 412.5) T_max_base /= 2;
+    }
+
+    function selectPitch(pitch) {
+      if (startHint.style.display !== 'none') {
+        startHint.style.display = 'none';
+      }
+
+      selectedPitch = pitch;
+      document.getElementById('center-dot').setAttribute('fill', pitch.color);
+
+      pitchButtons.forEach((btn, i) => {
+        btn.classList.toggle('active', PITCHES[i] === pitch);
+      });
+
+      restart();
+    }
+
+    function calculateHarmonics() {
+      const F_1 = F_base * Math.pow(2, pitchOctave);
+      const T_max = T_max_base * Math.pow(2, tempoOctave);
+      // Octave rule: fundamental tempo is always T_max / 8
+      // Higher harmonics (9+) simply get faster tempos
+      const T_1 = T_max / 8;
+
+      for (let n = 0; n < numHarmonics; n++) {
+        const harmonicNum = n + 1;
+        frequencies[n] = harmonicNum * F_1;
+        periods[n] = 60 / (T_1 * harmonicNum);
+
+        const cents = 1200 * Math.log2(harmonicNum);
+        const semitones = Math.round(cents / 100) % 12;
+        colors[n] = PITCHES[(selectedPitch.idx + semitones) % 12].color;
+      }
+    }
+
+    function updateInfo() {
+      const pOct = pitchOctave === 0 ? '0' : (pitchOctave > 0 ? '+' + pitchOctave : pitchOctave);
+      const tOct = tempoOctave === 0 ? '0' : (tempoOctave > 0 ? '+' + tempoOctave : tempoOctave);
+
+      infoDiv.innerHTML =
+        '<strong style="color:' + selectedPitch.color + '">' + selectedPitch.name + '</strong>' +
+        ' &nbsp;|&nbsp; ' + numHarmonics + ' harmonics' +
+        ' &nbsp;|&nbsp; Pitch: ' + pOct + ' (' + frequencies[0].toFixed(1) + ' Hz)' +
+        ' &nbsp;|&nbsp; Tempo: ' + tOct + ' (' + (60 / periods[0]).toFixed(1) + ' BPM)';
+    }
+
+    function updateVisualizer() {
+      for (let n = 0; n < numHarmonics; n++) {
+        const el = harmonicElements[n];
+        const color = colors[n];
+
+        el.circle.setAttribute('stroke', color);
+
+        for (let m = 0; m < el.dots.length; m++) {
+          const isMain = m === 0;
+          el.lines[m].setAttribute('stroke', isMain ? color : '#333');
+          el.dots[m].setAttribute('fill', isMain ? color : '#555');
+        }
+      }
+    }
+
+    function playHarmonic(n, time) {
+      const freq = frequencies[n];
+      const amp = 0.3 / (n + 1);
+
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq, time);
+
+      gain.gain.setValueAtTime(0, time);
+      gain.gain.linearRampToValueAtTime(amp, time + 0.005);
+      gain.gain.exponentialRampToValueAtTime(0.001, time + 0.6);
+
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+
+      osc.start(time);
+      osc.stop(time + 0.8);
+    }
+
+    function scheduler() {
+      if (!audioCtx || !isPlaying) return;
+
+      const currentTime = audioCtx.currentTime;
+      const scheduleAhead = 0.1;
+
+      for (let i = 0; i < numHarmonics; i++) {
+        while (nextNoteTime[i] < currentTime + scheduleAhead) {
+          playHarmonic(i, nextNoteTime[i]);
+          nextNoteTime[i] += periods[i];
+        }
+      }
+
+      schedulerTimer = setTimeout(scheduler, 25);
+    }
+
+    function animate() {
+      if (audioCtx && isPlaying) {
+        const elapsed = audioCtx.currentTime - cycleStartTime;
+
+        for (let n = 0; n < numHarmonics; n++) {
+          const period = periods[n];
+          const progress = ((elapsed % period) + period) % period / period;
+          cachedAngles[n] = progress * 360;
+
+          harmonicElements[n].group.setAttribute(
+            'transform',
+            'rotate(' + cachedAngles[n] + ' ' + CX + ' ' + CY + ')'
+          );
+        }
+      }
+
+      requestAnimationFrame(animate);
+    }
+
+    function initAudio() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+    }
+
+    function start() {
+      initAudio();
+      if (!periods) calculateHarmonics();
+
+      isPlaying = true;
+      cycleStartTime = audioCtx.currentTime + 0.1;
+
+      for (let i = 0; i < numHarmonics; i++) {
+        nextNoteTime[i] = cycleStartTime;
+      }
+
+      scheduler();
+    }
+
+    function stop() {
+      isPlaying = false;
+      if (schedulerTimer) {
+        clearTimeout(schedulerTimer);
+        schedulerTimer = null;
+      }
+    }
+
+    function restart() {
+      stop();
+      updateBases();
+      calculateHarmonics();
+      updateRadii();
+      updateInfo();
+      updateVisualizer();
+      start();
+    }
+
+    document.body.addEventListener('click', () => {
+      if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+    }, { once: true });
+
+    window.addEventListener('load', () => {
+      setupUI();
+      updateBases();
+      calculateHarmonics();
+      updateInfo();
+      updateVisualizer();
+      animate();
+    });
+
+    window.addEventListener('beforeunload', () => {
+      stop();
+      if (audioCtx) audioCtx.close();
+    });
+  </script>
+</body>
+
+</html>

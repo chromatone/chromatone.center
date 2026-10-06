@@ -1,1 +1,0 @@
-import{bt as e}from"./framework.Bs4wm_X5.js";import{Nn as t}from"./theme.DQuT1Y4p.js";var n=e({colorize:t(`colorize-notes`,!1)});export{n as t};

@@ -2,7 +2,6 @@
 title: Indian Raga
 description: Improvisational music framework
 date: 2021-09-03
-
 cover: five-gandharva.jpg
 ---
 

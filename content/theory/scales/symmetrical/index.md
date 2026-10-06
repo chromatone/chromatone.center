@@ -2,6 +2,7 @@
 title: Symmetrical scales
 description: Modes of limited transpostions and interval cycles
 date: 2021-09-12
+cover: nicolas-krebs.jpg
 ---
 
 <script setup>

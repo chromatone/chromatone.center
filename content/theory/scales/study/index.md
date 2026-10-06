@@ -1,7 +1,7 @@
 ---
 title: Study of scales
 description: The principles for analyzing different combinations of notes
-
+cover: kanhaiya-sharma.jpg
 date: 2021-09-30
 ---
 

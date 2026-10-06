@@ -1,7 +1,7 @@
 ---
 title: Diatonic scales
 description: The seven 7-notes set rotations
-
+cover: mike-lewinski.jpg
 date: 2021-09-15
 
 ---

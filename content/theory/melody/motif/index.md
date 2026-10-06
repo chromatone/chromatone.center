@@ -2,6 +2,7 @@
 title: Motif
 description: Constructing music piece per repetition and change of ideas
 date: 2021-11-27
+cover: tracey-parish.jpg
 ---
 
 In music, a motif is a short musical idea, a salient recurring figure, musical fragment or succession of notes that has some special importance in or is characteristic of a composition. The motif is the smallest structural unit possessing thematic identity.

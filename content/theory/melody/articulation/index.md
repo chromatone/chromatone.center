@@ -2,6 +2,7 @@
 title: Articulation and ornamentation
 description: String techniques and way to play
 date: 2021-09-30
+cover: immo-wegmann.jpg
 ---
 
 ## Articulation elements

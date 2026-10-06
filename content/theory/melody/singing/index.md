@@ -1,7 +1,7 @@
 ---
 title: Singing
 description: Connecting melody and text through a human voice
-
+cover: thomas-griggs.jpg
 date: 2021-11-20
 ---
 

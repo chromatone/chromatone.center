@@ -1,7 +1,7 @@
 ---
 title: Motion
 description: Melodic motion of the voice
-
+cover: stephane-gagnon.jpg
 date: 2021-11-24
 ---
 

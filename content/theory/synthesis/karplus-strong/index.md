@@ -2,7 +2,7 @@
 title: Karplus–Strong string
 description: A method of physical modelling synthesis
 date: 2023-11-14
-cover: ksa.png
+cover: william-veitch.jpg
 ---
 
 Karplus–Strong string synthesis is a method of physical modelling synthesis that loops a short waveform through a filtered delay line to simulate the sound of a hammered or plucked string or some types of percussion.

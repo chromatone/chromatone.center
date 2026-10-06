@@ -134,12 +134,12 @@ const sumColor = computed(() => {
     baseProfile="full",
     :viewBox="`0 0 ${width} ${height}`",
     xmlns="http://www.w3.org/2000/svg",
-    @mousedown="playChroma(chroma); pressed = true"
-    @touchstart.prevent.stop="playChroma(chroma); pressed = true"
-    @touchend="stopChroma(chroma); pressed = false"
-    @touchcancel="stopChroma(chroma); pressed = false"
-    @mouseup="stopChroma(chroma); pressed = false"
-    @mouseleave="stopChroma(chroma); pressed = false"
+    @mousedown="playChroma(chroma, globalScale.tonic); pressed = true"
+    @touchstart.prevent.stop="playChroma(chroma, globalScale.tonic); pressed = true"
+    @touchend="stopChroma(chroma, globalScale.tonic); pressed = false"
+    @touchcancel="stopChroma(chroma, globalScale.tonic); pressed = false"
+    @mouseup="stopChroma(chroma, globalScale.tonic); pressed = false"
+    @mouseleave="stopChroma(chroma, globalScale.tonic); pressed = false"
     )
     g(
       :transform="`translate(${(speedOffset) / (speedRange) * width} 10)`"

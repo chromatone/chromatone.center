@@ -16,7 +16,7 @@ const colors = reactive({
 </script>
 
 <template lang="pug">
-.flex.flex-wrap.gap-2.p-2.items-end(:style="{ borderColor: colors?.current }")
+.flex.flex-wrap.gap-4.items-end(:style="{ borderColor: colors?.current }")
   a.pad(
     style="flex:1 1 100px"
     v-if="siblings?.prev" 
@@ -70,7 +70,7 @@ const colors = reactive({
 }
 
 .pad {
-  @apply no-underline bg-cover m-2 bg-center p-4 transition-all duration-200 ease-out rounded-xl shadow-lg hover-shadow-xl transition-all;
+  @apply no-underline bg-cover bg-center p-4 transition-all duration-200 ease-out rounded-xl shadow-lg hover-shadow-xl transition-all;
   flex: 1 1 45%;
   filter: grayscale(50%);
 }

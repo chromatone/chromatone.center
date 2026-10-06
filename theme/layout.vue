@@ -89,7 +89,7 @@ midi-notes(v-if="!params.pure && !params.nokeys")
             v-if="f.layout != 'app'"
             :pageColor="pageColor", :lightColor="lightColor" :page="f" :cover="f.dynamic ? f?.cover?.id || f?.poster?.id : page?.frontmatter?.cover") 
         transition(name="fade")
-          .fixed.top-0.left-14.right-2.z-10000.text-md.p-2.flex.gap-2.items-center.bg-light-200.bg-opacity-20.dark-bg-dark-200.dark-bg-opacity-10.backdrop-blur-lg.pt-2.pl-4.min-h-15.border-t-4.op-90.transition.rounded-xl(
+          .fixed.top-0.left-14.right-2.z-10000.text-md.p-2.flex.gap-2.items-center.bg-light-200.bg-opacity-20.dark-bg-dark-200.dark-bg-opacity-10.backdrop-blur-lg.pt-2.pl-4.border-t-4.op-90.transition.rounded-xl(
             :style="{ borderColor: pageColor }"
             v-if="y > 100")
             .flex-1.flex.flex-wrap.gap-2
@@ -105,10 +105,10 @@ midi-notes(v-if="!params.pure && !params.nokeys")
           )
 
         row-list(:children="children" )
-        .max-w-55ch(style="flex: 1 1 35ch;")
+        .max-w-55ch.mx-auto(style="flex: 1 1 55ch;")
           content
 
-          nav-next-prev(
+          nav-next-prev.mt-4(
             :siblings="siblings" 
             :parents="parents"
             v-if="!params.pure && !params.nonav && f.layout != 'app'"
@@ -136,7 +136,7 @@ midi-notes(v-if="!params.pure && !params.nokeys")
   width: 100%;
   padding: 2em;
   z-index: 200;
-  @apply relative flex flex-wrap gap-4;
+  @apply relative flex flex-col gap-4;
 }
 
 #content p {

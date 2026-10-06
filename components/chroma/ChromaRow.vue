@@ -110,10 +110,10 @@ function arpeggiate(octave = false) {
 
       button.text-button.text-white.font-bold.text-md.flex.gap-1(
         :style="{ backgroundColor: chromaColorMix(chroma, globalScale?.tonic).hsl }"
-        @pointerdown.prevent.stop="playChroma(chroma)"
-        @pointerout="stopChroma(chroma)"
-        @pointerup="stopChroma(chroma)"
-        @pointerleave="stopChroma(chroma)"
+        @pointerdown.prevent.stop="playChroma(chroma, globalScale?.tonic)"
+        @pointerout="stopChroma(chroma, globalScale?.tonic)"
+        @pointerup="stopChroma(chroma, globalScale?.tonic)"
+        @pointerleave="stopChroma(chroma, globalScale?.tonic)"
       ) 
         span.mr-1 {{ globalScale?.note.name }}{{ state.chord.aliases[0] || ' ' + state.scale.name }}
 

@@ -14,7 +14,19 @@ function getDefaultScale() {
 export function getChromaNotes(chroma = getDefaultScale().chroma, tonic = getDefaultScale().tonic, inversion = 0) {
   const notes = Array(12).fill(true)
     .map((_, n) => n + tonic + 57)
-    .filter((_, n) => rotateArray(chroma.split(''), -tonic)[n] == '1');
+    .filter((_, n) => chroma[n] == '1');
+
+  if (inversion <= 0 || inversion >= notes.length) {
+    return notes.map(note => Note.fromMidi(note));
+  }
+
+  return [...notes.slice(inversion), ...notes.slice(0, inversion)]
+    .map((note, index) => {
+      if (index >= notes.length - inversion) {
+        return Note.fromMidi(note + 12);
+      }
+      return Note.fromMidi(note);
+    });
 
   if (inversion <= 0 || inversion >= notes.length) {
     return notes.map(note => Note.fromMidi(note));

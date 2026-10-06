@@ -50,7 +50,7 @@ const currentChord = ref()
 </script>
 
 <template lang="pug">
-.gap-2.p-4.items-center.select-none(
+.gap-2.p-4.items-center.select-none.w-full(
   style="display: grid;  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));") 
   template(
     style="flex: 1"

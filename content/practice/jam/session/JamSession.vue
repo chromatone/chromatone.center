@@ -19,7 +19,7 @@ const instrument = ref('guitar')
 
 <template lang="pug">
 #screen.bg-light-900.dark-bg-dark-800
-	.flex.gap-6.p-4.justify-between.relative.items-stretch.flex-wrap(
+	.flex.flex-col.gap-6.p-4.justify-between.relative.items-stretch.flex-wrap(
 	:style="{ backgroundColor: `hsla(${30 * globalScale.tonic}, 80%, 50%, 0.1)` }"
 		)
 

@@ -1,332 +1,936 @@
-<title>Syncopation Explorer</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
-<style>
-/* Layout: one screen. Header transport, grid chips, rhythm chips, then a ruler and four stacked track rectangles with a label column. */
-:root{--bg:#121110;--panel:#1a1816;--panel2:#242120;--line:#ffffff17;--fg:#ece6dd;--dim:#8d857a;--play:#fff3dc;
---c0:#ff6b57;--c1:#f2c14e;--c2:#4fd1a5;--c3:#7aa2ff;--lw:5.4rem;
---disp:'Unbounded',system-ui,sans-serif;--ui:'Instrument Sans',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,Menlo,monospace;color-scheme:dark}
-*{box-sizing:border-box}
-html,body{height:100%}
-body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.3 var(--ui);padding-inline:16px;padding-block:12px;overflow:hidden;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}
-button{font:inherit;color:inherit}
-:focus-visible{outline:2px solid var(--c1);outline-offset:2px}
-#app{height:100%;max-width:1500px;margin-inline:auto;display:flex;flex-direction:column;gap:10px;min-height:0}
-header{display:flex;align-items:center;flex-wrap:wrap;gap:8px 18px}
-h1{margin:0;font:600 .78rem/1.2 var(--disp);letter-spacing:.02em}
-.play{width:48px;height:48px;border-radius:50%;border:0;background:var(--play);color:#14110e;display:grid;place-items:center;cursor:pointer;flex:none;transition:transform .08s}
-.play:active{transform:scale(.94)}
-.play svg{grid-area:1/1;width:20px;height:20px;fill:currentColor}
-.play[aria-pressed=true] .ip,.play[aria-pressed=false] .is{display:none}
-.bpm{display:flex;align-items:center;gap:8px}
-.bpm output{font:600 1.5rem/1 var(--mono);min-width:3ch;text-align:right;font-variant-numeric:tabular-nums}
-.bpm small,.sub,.row>b,.rl{font:600 .62rem var(--ui);letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
-.sq{width:28px;height:28px;border-radius:8px;border:1px solid var(--line);background:var(--panel);cursor:pointer;font:600 1rem/1 var(--mono);color:var(--dim)}
-.sq:hover{color:var(--fg)}
-input[type=range]{accent-color:var(--c1);width:clamp(90px,15vw,170px)}
-.pill{border:1px solid var(--line);background:var(--panel);color:var(--dim);padding:6px 12px 6px 10px;border-radius:999px;font:600 .68rem var(--ui);letter-spacing:.08em;text-transform:uppercase;cursor:pointer;display:inline-flex;align-items:center;gap:7px}
-.pill::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--dim);opacity:.5}
-.pill[aria-pressed=true]{color:var(--fg);border-color:#ffffff40;background:var(--panel2)}
-.pill[aria-pressed=true]::before{background:var(--c2);opacity:1}
-.tog{display:flex;gap:8px;margin-left:auto}
-.row{display:flex;align-items:flex-start;gap:10px;min-width:0}
-.row>b{width:3.6rem;flex:none;padding-top:.5rem}
-.sep{width:1px;height:18px;background:var(--line);margin:5px 4px 0;flex:none}
-.chips{display:flex;flex-wrap:wrap;gap:6px;min-width:0}
-.g{min-width:2.4rem;height:28px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--dim);font:600 .8rem var(--mono);cursor:pointer;display:inline-flex;gap:6px;align-items:center;justify-content:center;padding:0 9px;flex:none}
-.g::before{content:'';width:8px;height:8px;border-radius:2px;background:var(--gc);opacity:.45}
-.g[aria-pressed=true]{color:var(--fg);border-color:var(--gc);background:color-mix(in srgb,var(--gc) 14%,var(--panel))}
-.g[aria-pressed=true]::before{opacity:1}
-.p{height:28px;padding:0 11px;border-radius:8px;border:1px solid var(--line);background:var(--panel);font:500 .78rem var(--ui);cursor:pointer;flex:none}
-.p:hover{background:var(--panel2)}
-.p.on{background:var(--fg);color:var(--bg);border-color:var(--fg)}
-.p.clr{color:var(--dim)}
-#stage{flex:1;min-height:0;display:grid;grid-template-columns:var(--lw) minmax(0,1fr);grid-template-rows:46px repeat(4,minmax(0,1fr));gap:8px}
-.cell{position:relative;min-height:0;border-radius:10px;overflow:hidden;background:var(--panel);border:1px solid var(--line);transition:opacity .15s}
-.cell.mut{opacity:.4}
-.cell.rul{background:none;border:0;overflow:visible}
-.cell canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:crosshair}
-.lab{display:flex;flex-direction:column;justify-content:center;gap:4px;min-width:0}
-.lab.rl{justify-content:flex-end;font-family:var(--mono);font-weight:400;text-transform:none;letter-spacing:0;font-size:.7rem;padding-bottom:2px}
-.nm{background:none;border:0;padding:0;font:600 1.15rem/1 var(--disp);color:var(--c);cursor:pointer;text-align:left}
-.bt{display:flex;gap:5px}
-.bt button{width:26px;height:24px;border-radius:7px;border:1px solid var(--line);background:var(--panel);color:var(--dim);font:600 .72rem var(--mono);cursor:pointer}
-.bt button:hover{color:var(--fg)}
-.bt .m[aria-pressed=true]{background:var(--c);color:#14110e;border-color:var(--c)}
-#read{font:500 .74rem var(--mono);color:var(--dim);min-height:1.2em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-@media(max-height:640px){.sub{display:none}}
-@media(max-width:640px){
-:root{--lw:3.2rem}
-.nm{font-size:.9rem}.sub{display:none}.row>b{display:none}
-.tog{margin-left:0}
-.row .chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
-.row .chips::-webkit-scrollbar{display:none}
-.bt button{width:22px}
-}
-</style>
-<div id="app">
-<header>
-<button class="play" id="play" aria-pressed="false" aria-label="Play or stop (Space)"><svg class="ip" viewBox="0 0 20 20"><path d="M5 2.5v15l13-7.5z"/></svg><svg class="is" viewBox="0 0 20 20"><rect x="3.5" y="3.5" width="13" height="13" rx="1.5"/></svg></button>
-<h1>Syncopation<br>Explorer</h1>
-<div class="bpm"><button class="sq" id="bm" aria-label="Slower">−</button><output id="bv">98</output><small>bpm</small><button class="sq" id="bp" aria-label="Faster">+</button><input type="range" id="bpm" min="40" max="200" value="98" aria-label="Tempo"></div>
-<div class="tog"><button class="pill" id="tick" aria-pressed="false" title="Click on every line of the selected grids, so you can hear where the grid is">Grid ticks</button><button class="pill" id="mag" aria-pressed="true" title="Hits snap to nearby grid lines. Hold Alt to place freely">Magnet</button></div>
-</header>
-<div class="row"><b>Grid</b><div class="chips" id="grids"></div></div>
-<div class="row"><b>Rhythms</b><div class="chips" id="pres"></div></div>
-<main id="stage"></main>
-<div id="read"></div>
-</div>
-<script type="module">
-const $=(s,r=document)=>r.querySelector(s),clamp=(x,a,b)=>Math.min(b,Math.max(a,x));
-const css=getComputedStyle(document.documentElement),tok=(n,f)=>css.getPropertyValue(n).trim()||f;
-const FG=tok('--fg','#ece6dd'),DIM=tok('--dim','#8d857a'),PLAY=tok('--play','#fff3dc'),MONO=tok('--mono','monospace');
-const HINT='Space plays · click a track to place a hit, higher is louder · drag to move · click a hit to remove · Alt = free placement';
+<!doctype html>
+<html>
 
-/* ---------- state ---------- */
-const GR=Array.from({length:16},(_,i)=>i+1);
-const GC={1:'#f0e6d2',2:'#b78cff',3:'#4fd8ff',4:'#ffd25e',5:'#ff8fc7',6:'#9be564',7:'#ffb35c',8:'#d9d2c7',9:'#ff7f6e',10:'#7aa2ff',11:'#d4e157',12:'#6fe3b8',13:'#e0a3ff',14:'#8fe388',15:'#ffc2a0',16:'#8f9cb3'};
-const GT=n=>400+n*65;
-const TR=[['bum','kick','--c0','#ff6b57'],['ts','shaker','--c1','#f2c14e'],['ch','snare','--c2','#4fd1a5'],['ka','wood','--c3','#7aa2ff']];
-const T=TR.map(([id,sub,v,f])=>({id,sub,col:tok(v,f),hits:[],muted:false,w:0,h:0}));
-const S={bpm:98,grids:new Set([16]),tick:false,mag:true,cur:null,playing:false,hp:null};
-const barDur=()=>240/S.bpm;           // one bar = 4 beats; the loop position is a float 0..1
-const lines=()=>[...new Set([8,...S.grids])];
+<head>
+  <meta charset=utf8>
+  <meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <style>
+    :root {
+      color-scheme: light;
+      box-sizing: border-box;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px)
+    }
 
-/* ---------- rhythm library ---------- */
-const V={X:1,x:.82,o:.58,g:.34};
-const str=s=>[...s].flatMap((c,i)=>V[c]?[{p:i/s.length,v:V[c]}]:[]);
-const E=(n,o=0,v=.8,a=v)=>Array.from({length:n},(_,k)=>({p:(k+o)/n,v:k?v:a}));
-/* pc() reads hits as "percent-of-bar:velocity", the notation of the research tables. Voice order in every preset: bum, ts, ch, ka. */
-const pc=s=>s.trim()?s.trim().split(/\s+/).map(h=>{const[a,b]=h.split(':');return{p:a/100,v:b/100}}):[];
-const OFF=[0,.26,.463,.676];   // 16th onsets inside a beat, from the measured durations 26.0 / 20.3 / 21.3 / 32.4 %
-const warp=hs=>hs.map(h=>{const s=Math.round(h.p*16);return{p:((s>>2)+OFF[s&3])/4,v:h.v}});
-const hat8='x.o.x.o.x.o.x.o.';
-const sBum=pc('0:45 25:100 50:45 75:100'),
- sCaixa=pc('0:60 6.25:45 12.5:80 18.75:45 25:60 31.25:45 37.5:80 43.75:45 50:60 56.25:45 62.5:80 68.75:45 75:60 81.25:45 87.5:80 93.75:45'),
- sTam=pc('0:95 18.75:70 37.5:90 50:95 68.75:70 87.5:90'),
- sAg=pc('12.5:70 31.25:55 62.5:70 81.25:55');
-const cumT=[pc('0:95 25:40 50:95 75:40'),pc('0:60 12.5:70 25:60 37.5:70 50:60 62.5:70 75:60 87.5:70'),pc('0:70 25:85 50:70 75:85')],
- canT=[pc('0:95 37.5:90 50:40 87.5:90'),pc('0:85 12.5:85 25:50 37.5:85 50:85 62.5:85 75:50 87.5:85'),pc('0:70 25:90 37.5:60 50:70 75:95 87.5:60')];
-const poly=['pulse','8ths','cycle A','cycle B'];
-const PR=[
-{f:'cu',n:'Tresillo',bpm:92,g:[16],v:['bass','maraca','conga slaps','clave'],
- t:[pc('0:100 37.5:80 50:95 87.5:75'),pc('0:50 12.5:75 25:40 37.5:75 50:50 62.5:75 75:40 87.5:75'),pc('12.5:55 43.75:65 62.5:55 93.75:65'),pc('0:85 18.75:60 37.5:80 50:85 68.75:60 87.5:80')]},
-{f:'cu',n:'Son clave 3-2',bpm:100,g:[16],v:['bass tumbao','cascara','conga tumbao','clave'],
- t:[pc('18.75:95 43.75:90 68.75:95 93.75:90'),pc('0:60 12.5:40 25:80 37.5:40 50:60 62.5:40 75:80 87.5:40'),pc('6.25:60 25:55 43.75:70 56.25:60 68.75:55 93.75:70'),pc('0:100 18.75:80 37.5:95 62.5:80 75:100')]},
-{f:'cu',n:'Son, pushed tresillo',bpm:100,g:[16],v:['bass','maracas','congas','clave'],s:'clave 18.0 vs grid 18.75, bass 37.0 and 87.0 vs 37.5 and 87.5: pushed early',
- t:[pc('0:85 18:88 37:92 87:95'),pc('0:65 12.5:50 18.75:60 25:65 37.5:50 50:70 62.5:50 75:60 87.5:50'),pc('0:35 12.5:40 25:50 37.5:90 50:95 62.5:40 75:55 87.5:90'),pc('0:95 18:92 37.5:90 62.5:85 75:88')]},
-{f:'cu',n:'Rumba clave 3-2',bpm:100,g:[16],v:['tumbadora','catá','high drum','clave'],s:'clave ends on 75, standard rumba 3-2 (the research table lists 87.5)',
- t:[pc('6.25:75 37.5:65 56.25:75 87.5:85'),pc('0:60 25:50 50:60 75:50'),pc('0:70 12.5:55 31.25:65 50:85 62.5:55 81.25:90'),pc('0:100 18.75:80 43.75:95 62.5:80 75:100')]},
-{f:'br',n:'Samba batucada',bpm:100,g:[16],v:['surdo','tamborim','caixa','agogô'],t:[sBum,sTam,sCaixa,sAg]},
-{f:'br',n:'Samba, research feel',bpm:100,g:[16],v:['surdo','tamborim','caixa','agogô'],s:'delayed 16ths: tamborim at 8, 27, 58, 77, caixa at 7.2 and 57.2',
- t:[sBum,pc('0:65 8:88 18.75:60 27:92 50:65 58:88 68.75:60 77:95'),pc('0:55 7.2:45 18.75:50 25:60 50:55 57.2:45 68.75:50 75:65'),pc('0:85 18.75:90 50:85 62.5:92 75:70')]},
-{f:'br',n:'Samba, measured 16ths',bpm:100,g:[16],v:['surdo','tamborim','caixa','agogô'],s:'16ths start at 0 / 26.0 / 46.3 / 67.6 % of each beat',
- t:[sBum,warp(sTam),warp(sCaixa),warp(sAg)]},
-{f:'br',n:'Bossa clave',bpm:118,g:[8,16],v:['bass drum','shaker','clave','rim'],t:['x.....x.x.....x.',hat8,'x..x..x...x..x..','....g.......g...']},
-{f:'br',n:'Bossa, Gilberto cell',bpm:118,g:[8,16],v:['bass','brush','chord stabs','rim'],s:'chord stabs land one 16th ahead of each beat',
- t:[pc('0:100 37.5:80 50:95 87.5:80'),pc('0:55 25:45 50:55 75:45'),pc('6.25:75 31.25:65 56.25:75 81.25:65'),pc('0:70 18.75:55 37.5:70 50:70 68.75:55 87.5:70')]},
-{f:'ca',n:'Dembow',bpm:95,g:[16],v:['kick','hi-hat','snare','perc'],s:'kick on every beat (the research table has a tresillo kick)',
- t:[pc('0:100 25:90 50:100 75:90'),pc('0:45 12.5:70 25:40 37.5:70 50:45 62.5:70 75:40 87.5:70'),pc('18.75:90 68.75:90'),pc('25:60 56.25:60 75:55')]},
-{f:'ca',n:'Cumbia, on grid',bpm:92,g:[8,16],v:['tambora','maracas','alegre','llamador'],t:[...cumT,pc('12.5:90 37.5:90 62.5:90 87.5:90')]},
-{f:'ca',n:'Cumbia, late llamador',bpm:92,g:[8,16],v:['tambora','maracas','alegre','llamador'],s:'llamador 2.0% of the bar behind the grid (12.5 becomes 14.5)',t:[...cumT,pc('14.5:90 39.5:90 64.5:90 89.5:90')]},
-{f:'ca',n:'Candombe, on grid',bpm:112,g:[8,16],v:['piano','madera','repique','chico'],t:[...canT,pc('12.5:85 37.5:85 62.5:85 87.5:85')]},
-{f:'ca',n:'Candombe, dragged chico',bpm:112,g:[8,16],v:['piano','madera','repique','chico'],s:'chico upbeats 1.5% of the bar behind the grid (12.5 becomes 14.0)',t:[...canT,pc('14:85 39:85 64:85 89:85')]},
-{f:'ca',n:'One drop',bpm:76,g:[8],v:['kick','hat','rimshot','skank'],t:['........x.......','o.g.o.g.o.g.o.g.','........x.......','..x...x...x...x.']},
-{f:'us',n:'Blues shuffle',bpm:100,g:[12],v:['kick','ride','snare','–'],s:'triplet swing: the skip notes sit at 2/3 of the beat',
- t:[pc('0:100 50:95'),pc('0:70 16.6667:45 25:60 41.6667:45 50:70 66.6667:45 75:60 91.6667:45'),pc('25:90 75:90'),[]]},
-{f:'us',n:'Drum & bass 2-step',bpm:174,g:[16],v:['kick','closed hat','snare','open hat'],
- t:[pc('0:100 62.5:95'),pc('6.25:40 12.5:55 18.75:35 31.25:40 37.5:55 43.75:35 56.25:40 68.75:55 81.25:40 87.5:55 93.75:35'),pc('25:95 75:95'),pc('0:50 25:60 50:50 75:60')]},
-{f:'x',n:'Afro 12/8 bell',bpm:88,g:[12],v:['bass','shaker','drum','bell'],t:['x..o..x..o..','xgoxgoxgoxgo','...x.....x..','x.x.xx.x.x.x']},
-{f:'x',n:'2 : 3',bpm:84,g:[2,3,6],v:poly,t:[E(2,0,.8,.95),E(6,0,.35),E(3,0,.85),E(3,.5,.5)]},
-{f:'x',n:'3 : 4',bpm:80,g:[3,4],v:poly,t:[E(4,0,.65,.95),E(8,0,.3),E(3,0,.85),E(3,.5,.5)]},
-{f:'x',n:'5 : 8',bpm:72,g:[5,8],v:poly,t:[E(4,0,.65,.95),E(8,0,.3),E(5,0,.85),E(5,.5,.5)]},
-{f:'x',n:'7 : 8',bpm:72,g:[7,8],v:poly,t:[E(4,0,.65,.95),E(8,0,.3),E(7,0,.85),E(7,.5,.5)]}];
-PR.forEach(p=>p.d=[3,2,1,0].map(i=>TR[i][0]+' '+p.v[i]).join(' · '));
-const mk=x=>(typeof x==='string'?str(x):x).map(h=>({p:h.p,v:h.v,fl:-9}));
+    html {
+      scroll-padding-top: env(safe-area-inset-top, 0px)
+    }
 
-/* ---------- audio ---------- */
-let ctx,master,nbuf,ticks=[],cursor=0,cursorPhase=0,timer,worker;
-const LOOK=.14,LV=[.95,.7,.62,.62],SEND=[0,.12,.26,.2];
-const amp=v=>.04+.96*v**1.6;
-const gn=(v=1)=>{const g=ctx.createGain();g.gain.value=v;return g};
-const biq=(type,f,q)=>{const b=ctx.createBiquadFilter();b.type=type;b.frequency.value=f;if(q)b.Q.value=q;return b};
-const osc=(type,f,t,d)=>{const o=ctx.createOscillator();o.type=type;o.frequency.setValueAtTime(f,t);o.start(t);o.stop(t+d);return o};
-const noise=(t,d,node)=>{const s=ctx.createBufferSource();s.buffer=nbuf;s.connect(node);s.start(t,Math.random()*(nbuf.duration-d-.01));s.stop(t+d)};
-const env=(g,t,pk,a,d)=>{const p=g.gain;p.setValueAtTime(1e-4,t);p.exponentialRampToValueAtTime(Math.max(pk,2e-4),t+a);p.exponentialRampToValueAtTime(1e-4,t+a+d)};
-function ensureAudio(){
-  if(ctx){if(ctx.state==='suspended')ctx.resume();return}
-  ctx=new(window.AudioContext||window.webkitAudioContext)({latencyHint:'interactive'});
-  const comp=ctx.createDynamicsCompressor();comp.threshold.value=-12;comp.knee.value=10;comp.ratio.value=5;comp.attack.value=.002;comp.release.value=.18;
-  master=gn(.8);master.connect(comp).connect(ctx.destination);
-  const sr=ctx.sampleRate;nbuf=ctx.createBuffer(1,sr*1.5|0,sr);
-  const nd=nbuf.getChannelData(0);for(let i=0;i<nd.length;i++)nd[i]=Math.random()*2-1;
-  const L=sr*.9|0,ir=ctx.createBuffer(2,L,sr);                       // small dark room, generated
-  for(let c=0;c<2;c++){const d=ir.getChannelData(c);let y=0;for(let i=0;i<L;i++){y+=((Math.random()*2-1)*(1-i/L)**3.5-y)*.28;d[i]=y}}
-  const rv=ctx.createConvolver();rv.buffer=ir;rv.connect(gn(.55)).connect(master);
-  T.forEach((t,i)=>{const bus=gn(LV[i]);bus.connect(master);bus.connect(gn(SEND[i])).connect(rv);t.in=bus;
-    if(!i){const sh=ctx.createWaveShaper(),c=new Float32Array(1024);for(let k=0;k<1024;k++)c[k]=Math.tanh((k/512-1)*2.2)/Math.tanh(2.2);sh.curve=c;sh.oversample='2x';sh.connect(bus);t.in=sh}});
-  ctx.resume();
-}
-const VOICE=[
- (t,a)=>{const o=osc('sine',105+55*a,t,.7);o.frequency.exponentialRampToValueAtTime(50,t+.13);let g=gn(0);env(g,t,a*.95,.004,.55);o.connect(g).connect(T[0].in);
-   const lp=biq('lowpass',650);g=gn(0);env(g,t,a*.22,.001,.025);noise(t,.04,lp);lp.connect(g).connect(T[0].in)},
- (t,a)=>{const hp=biq('highpass',5400,.7),pk=biq('peaking',8800,1.1),lp=biq('lowpass',13500),g=gn(0);pk.gain.value=6;
-   env(g,t,a*.55,.0015,.035+.04*a);noise(t,.12,hp);hp.connect(pk).connect(lp).connect(g).connect(T[1].in)},
- (t,a)=>{const lp=biq('lowpass',9500);lp.connect(T[2].in);
-   let b=biq('bandpass',2700,.6),g=gn(0);env(g,t,a*.6,.002,.15);noise(t,.2,b);b.connect(g).connect(lp);
-   b=biq('bandpass',1150,.9);g=gn(0);env(g,t,a*.3,.002,.09);noise(t,.15,b);b.connect(g).connect(lp);
-   const s=osc('triangle',215,t,.16);s.frequency.exponentialRampToValueAtTime(150,t+.07);g=gn(0);env(g,t,a*.5,.001,.1);s.connect(g).connect(lp)},
- (t,a)=>{const f=930+220*a,out=T[3].in;
-   let o=osc('sine',f*1.06,t,.2);o.frequency.exponentialRampToValueAtTime(f,t+.012);let g=gn(0);env(g,t,a*.62,.001,.11);o.connect(g).connect(out);
-   o=osc('sine',f*2.43,t,.1);g=gn(0);env(g,t,a*.17,.001,.03);o.connect(g).connect(out);
-   const b=biq('bandpass',3300,1.4);g=gn(0);env(g,t,a*.2,.0008,.009);noise(t,.03,b);b.connect(g).connect(out)}];
-const tickVoice=(t,f,a)=>{const o=osc('sine',f,t,.06),g=gn(0);env(g,t,a,.001,.028);o.connect(g).connect(master)};
-const audition=(i,v)=>{ensureAudio();VOICE[i](ctx.currentTime+.003,amp(v))};
-function buildTicks(){const m=new Map([[0,{p:0,f:1600,a:.2}]]);
-  for(const n of [...S.grids].sort((a,b)=>a-b))for(let k=1;k<n;k++){const key=Math.round(k/n*1e6);if(!m.has(key))m.set(key,{p:k/n,f:GT(n),a:.09})}
-  ticks=[...m.values()]}
+    body {
+      margin: 0;
+      padding: 0;
+      font: 14px -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #fff;
+      color: #000
+    }
 
-/* ---------- scheduler: lookahead on the audio clock, positions are plain floats ---------- */
-function sched(){
-  if(!S.playing)return;
-  const now=ctx.currentTime,hz=now+LOOK;
-  if(cursor<now-.05){cursorPhase=(cursorPhase+(now+.03-cursor)/barDur())%1;cursor=now+.03}   // tab stalled: resync
-  if(cursor>=hz)return;
-  const dur=barDur(),a=cursorPhase,b=a+(hz-cursor)/dur;
-  const when=p=>{if(p<a)p+=1;return p<b?cursor+(p-a)*dur:-1};
-  T.forEach((t,i)=>{if(t.muted)return;for(const o of t.hits){const w=when(o.p);if(w>=0){o.fl=w;VOICE[i](w,amp(o.v))}}});
-  if(S.tick)for(const k of ticks){const w=when(k.p);if(w>=0)tickVoice(w,k.f,k.a)}
-  cursor=hz;cursorPhase=b-Math.floor(b);
-}
-function start(){ensureAudio();cursor=ctx.currentTime+.08;cursorPhase=0;S.playing=true;
-  if(worker)worker.postMessage(25);else timer=setInterval(sched,25);ui()}
-function stop(){S.playing=false;if(worker)worker.postMessage(0);else clearInterval(timer);ui()}
-try{worker=new Worker(URL.createObjectURL(new Blob(['let t;onmessage=e=>{clearInterval(t);if(e.data)t=setInterval(()=>postMessage(0),e.data)}'])));worker.onmessage=sched}catch{worker=null}
+    img {
+      max-width: 100%
+    }
 
-/* ---------- UI build ---------- */
-const stage=$('#stage'),rd=$('#read');
-stage.insertAdjacentHTML('beforeend','<div class="lab rl" id="bar"></div><div class="cell rul"><canvas id="ruler"></canvas></div>');
-const R={cv:$('#ruler')};
-[3,2,1,0].forEach(i=>{const t=T[i];   // screen order, top to bottom: ka, ts, ch, bum
-  const lab=document.createElement('div');lab.className='lab';lab.style.setProperty('--c',t.col);
-  lab.innerHTML=`<button class="nm" title="Hear it">${t.id}</button><span class="sub">${t.sub}</span><div class="bt"><button class="m" title="Mute" aria-label="Mute ${t.id}">M</button><button class="x" title="Clear track" aria-label="Clear ${t.id}">×</button></div>`;
-  t.cell=document.createElement('div');t.cell.className='cell';t.cell.innerHTML='<canvas></canvas>';t.cv=$('canvas',t.cell);
-  stage.append(lab,t.cell);t.sb=$('.sub',lab);
-  $('.nm',lab).onclick=()=>audition(i,.8);
-  t.mb=$('.m',lab);t.mb.onclick=()=>{t.muted=!t.muted;sync()};
-  $('.x',lab).onclick=()=>{t.hits=[];S.cur=null;sync()};
-  bindTrack(t,i);
-});
-const gbox=$('#grids'),pbox=$('#pres');
-GR.forEach(n=>{const b=document.createElement('button');b.className='g';b.textContent=n;b.dataset.n=n;b.style.setProperty('--gc',GC[n]);b.title='Divide the bar into '+n;
-  b.onclick=()=>{S.grids.has(n)?S.grids.delete(n):S.grids.add(n);sync()};gbox.append(b)});
-let lg;PR.forEach((pr,i)=>{if(lg&&pr.f!==lg){const s=document.createElement('i');s.className='sep';pbox.append(s)}lg=pr.f;
-  const b=document.createElement('button');b.className='p';b.textContent=pr.n;b.dataset.i=i;b.title=pr.d;b.onclick=()=>load(pr);pbox.append(b)});
-{const b=document.createElement('button');b.className='p clr';b.textContent='Clear all';b.onclick=()=>{T.forEach(t=>t.hits=[]);S.cur=null;setSubs(null);sync()};pbox.append(b)}
-const setSubs=v=>T.forEach((t,i)=>t.sb.textContent=v?v[i]:TR[i][1]);
-function load(pr){pr.t.forEach((x,i)=>T[i].hits=mk(x));S.bpm=pr.bpm;S.grids=new Set(pr.g);S.cur=pr.n;setSubs(pr.v);sync();rd.textContent=pr.n+' · '+pr.d+(pr.s?' · '+pr.s:'')}
-function ui(){$('#play').setAttribute('aria-pressed',S.playing)}
-function sync(){
-  $('#bpm').value=S.bpm;$('#bv').textContent=S.bpm;$('#bar').textContent='bar '+barDur().toFixed(2)+' s';
-  gbox.querySelectorAll('.g').forEach(b=>b.setAttribute('aria-pressed',S.grids.has(+b.dataset.n)));
-  pbox.querySelectorAll('.p[data-i]').forEach(b=>b.classList.toggle('on',PR[b.dataset.i].n===S.cur));
-  $('#tick').setAttribute('aria-pressed',S.tick);$('#mag').setAttribute('aria-pressed',S.mag);
-  T.forEach(t=>{t.mb.setAttribute('aria-pressed',t.muted);t.cell.classList.toggle('mut',t.muted)});
-  buildTicks();save();
-}
-const setBpm=v=>{S.bpm=clamp(Math.round(v),40,200);sync()};
-$('#bpm').oninput=e=>setBpm(+e.target.value);$('#bm').onclick=()=>setBpm(S.bpm-1);$('#bp').onclick=()=>setBpm(S.bpm+1);
-$('#tick').onclick=()=>{S.tick=!S.tick;sync()};$('#mag').onclick=()=>{S.mag=!S.mag;sync()};
-$('#play').onclick=()=>S.playing?stop():start();
-addEventListener('keydown',e=>{
-  if(e.code==='Space'){e.preventDefault();if(!e.repeat)S.playing?stop():start()}
-  else if(e.key==='ArrowUp'||e.key==='ArrowDown'){e.preventDefault();setBpm(S.bpm+(e.key==='ArrowUp'?1:-1)*(e.shiftKey?5:1))}});
-addEventListener('keyup',e=>{if(e.code==='Space')e.preventDefault()});
-addEventListener('pointerdown',ensureAudio,{capture:true});
+    [hidden]:not([hidden=until-found i]) {
+      display: none !important
+    }
+  </style>
+</head>
 
-/* ---------- persistence (per viewer, optional) ---------- */
-const KEY='syncopation-explorer-v1';let sv;
-function save(){clearTimeout(sv);sv=setTimeout(()=>{try{localStorage.setItem(KEY,JSON.stringify({bpm:S.bpm,g:[...S.grids],tick:S.tick,mag:S.mag,cur:S.cur,mute:T.map(t=>t.muted),h:T.map(t=>t.hits.map(o=>[+o.p.toFixed(5),+o.v.toFixed(3)]))}))}catch{}},300)}
-function restore(){try{const d=JSON.parse(localStorage.getItem(KEY));if(!d||d.h?.length!==4)return false;
-  d.h.forEach((a,i)=>T[i].hits=a.filter(h=>h[0]>=0&&h[0]<1&&h[1]>0&&h[1]<=1).map(h=>({p:h[0],v:h[1],fl:-9})));
-  S.bpm=clamp(+d.bpm||98,40,200);S.grids=new Set((d.g||[]).filter(n=>GR.includes(n)));S.tick=!!d.tick;S.mag=d.mag!==false;S.cur=d.cur||null;
-  T.forEach((t,i)=>t.muted=!!d.mute?.[i]);return true}catch{return false}}
+<body>
+  <title>Syncopation Explorer</title>
 
-/* ---------- pointer editing ---------- */
-let D=null,H=null;
-const yToV=(y,h)=>clamp((h-8-y)/(h-20),.05,1);
-function snap(p,w,e){
-  p=clamp(p,0,.9999);if(!S.mag||e.altKey)return p;
-  let best=p,bd=7;for(const n of lines()){const q=Math.round(p*n)/n;if(q>=1)continue;const d=Math.abs(p-q)*w;if(d<bd){bd=d;best=q}}return best}
-function find(t,x,y,w,h){let best=null,bd=11;for(const o of t.hits){const dx=Math.abs(o.p*w-x),hy=h-8-(h-20)*o.v;if(dx<bd&&y>hy-11){bd=dx;best=o}}return best}
-function nearest(p){let b=null;for(const n of lines()){const k=Math.round(p*n),d=p-k/n;if(!b||Math.abs(d)<Math.abs(b.d))b={d,n,k:k%n}}return b}
-function readout(p,v){const b=nearest(p),ms=b.d*barDur()*1000;
-  rd.textContent=`pos ${p.toFixed(4)} · beat ${(1+p*4).toFixed(3)} · vel ${Math.round(v*100)}% · `+(Math.abs(ms)<.05?`on grid ${b.n}·${b.k}`:`${Math.abs(ms).toFixed(1)} ms ${ms>0?'late':'early'} vs ${b.n}·${b.k}`)}
-function bindTrack(t,i){
-  const cv=t.cv,pos=e=>{const r=cv.getBoundingClientRect();return{x:e.clientX-r.left,y:e.clientY-r.top,w:r.width,h:r.height}};
-  cv.oncontextmenu=e=>e.preventDefault();
-  cv.onpointerdown=e=>{
-    const{x,y,w,h}=pos(e),o=find(t,x,y,w,h);
-    if(e.button===2){if(o){t.hits.splice(t.hits.indexOf(o),1);S.cur=null;sync()}return}
-    if(o)D={t,i,o,isNew:false,moved:false,sx:e.clientX,sy:e.clientY,ox:o.p*w-x,ov:o.v-yToV(y,h)};
-    else{const n={p:snap(x/w,w,e),v:yToV(y,h),fl:-9};t.hits.push(n);audition(i,n.v);D={t,i,o:n,isNew:true,moved:false,sx:e.clientX,sy:e.clientY,ox:0,ov:0}}
-    cv.setPointerCapture(e.pointerId);S.hp=D.o.p;readout(D.o.p,D.o.v);S.cur=null;sync()};
-  cv.onpointermove=e=>{
-    const{x,y,w,h}=pos(e);
-    if(D&&D.t===t){
-      if(!D.moved&&Math.hypot(e.clientX-D.sx,e.clientY-D.sy)>4)D.moved=true;
-      if(D.moved||D.isNew){D.o.p=snap((x+D.ox)/w,w,e);D.o.v=clamp(yToV(y,h)+D.ov,.05,1)}
-      S.hp=D.o.p;readout(D.o.p,D.o.v);return}
-    if(D)return;
-    const o=find(t,x,y,w,h);H={t:i,over:!!o,p:snap(x/w,w,e),v:yToV(y,h)};
-    S.hp=o?o.p:H.p;cv.style.cursor=o?'grab':'crosshair';readout(o?o.p:H.p,o?o.v:H.v)};
-  const up=()=>{if(!D||D.t!==t)return;
-    if(!D.isNew&&!D.moved)t.hits.splice(t.hits.indexOf(D.o),1);
-    else if(D.moved)audition(i,D.o.v);
-    D=null;S.hp=null;H=null;sync();rd.textContent=HINT};
-  cv.onpointerup=up;cv.onpointercancel=up;
-  cv.onpointerleave=()=>{if(!D){H=null;S.hp=null;rd.textContent=HINT}};
-}
+  <style>
+    /* Layout: one screen. Header transport, grid chips, rhythm chips, then a ruler and four stacked track rectangles with a label column. */
+    :root {
+      --bg: #121110;
+      --panel: #1a1816;
+      --panel2: #242120;
+      --line: #ffffff17;
+      --fg: #ece6dd;
+      --dim: #8d857a;
+      --play: #fff3dc;
+      --c0: #ff6b57;
+      --c1: #f2c14e;
+      --c2: #4fd1a5;
+      --c3: #7aa2ff;
+      --lw: 5.4rem;
+      --disp: 'Unbounded', system-ui, sans-serif;
+      --ui: 'Instrument Sans', system-ui, sans-serif;
+      --mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+      color-scheme: dark
+    }
 
-/* ---------- drawing ---------- */
-const ln=(c,x1,y1,x2,y2)=>{c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke()};
-const dot=(c,x,y,r)=>{c.beginPath();c.arc(x,y,r,0,6.2832);c.fill()};
-function fit(o){const r=o.cv.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);o.w=r.width;o.h=r.height;o.cv.width=Math.round(r.width*d);o.cv.height=Math.round(r.height*d);o.cx=o.cv.getContext('2d');o.cx.setTransform(d,0,0,d,0,0)}
-const ro=new ResizeObserver(es=>es.forEach(e=>fit([R,...T].find(o=>o.cv===e.target))));[R,...T].forEach(o=>ro.observe(o.cv));
-const CNT=['1','+','2','+','3','+','4','+'];
-function drawRuler(ph){
-  const c=R.cx,w=R.w,h=R.h;if(!w)return;c.clearRect(0,0,w,h);
-  c.font='500 11px '+MONO;c.textBaseline='alphabetic';
-  for(let k=0;k<8;k++){const x=Math.round(k/8*w);c.globalAlpha=1;c.fillStyle=k%2?DIM:FG;c.fillText(CNT[k],x+3,11);c.globalAlpha=.5;c.fillStyle=DIM;c.fillRect(x,15,1,k%2?3:6)}
-  const gs=[...S.grids].sort((a,b)=>a-b),lh=Math.min(7,(h-22)/Math.max(1,gs.length));
-  gs.forEach((n,j)=>{c.globalAlpha=1;c.fillStyle=GC[n];for(let k=0;k<n;k++)c.fillRect(Math.round(k/n*w),22+j*lh,2,Math.max(1.5,lh-1.5))});
-  if(S.hp!=null){c.globalAlpha=.55;c.fillStyle='#fff';c.fillRect(Math.round(S.hp*w),0,1,h)}
-  if(ph!=null){const x=ph*w;c.globalAlpha=1;c.fillStyle=PLAY;c.beginPath();c.moveTo(x-5,0);c.lineTo(x+5,0);c.lineTo(x,8);c.fill()}
-  c.globalAlpha=1}
-function drawTrack(t,now,ph){
-  const c=t.cx,w=t.w,h=t.h,col=t.col;if(!w)return;c.clearRect(0,0,w,h);
-  const yT=12,yB=h-8;c.lineWidth=1;c.lineCap='butt';c.strokeStyle='#fff';
-  c.globalAlpha=.045;for(const f of[.25,.5,.75]){const y=Math.round(yB-(yB-yT)*f)+.5;ln(c,0,y,w,y)}
-  for(let k=1;k<8;k++){c.globalAlpha=k%2?.06:.13;const x=Math.round(k/8*w)+.5;ln(c,x,0,x,h)}
-  for(const n of S.grids){c.strokeStyle=GC[n];c.globalAlpha=.34;for(let k=1;k<n;k++){const x=Math.round(k/n*w)+.5;ln(c,x,0,x,h)}}
-  if(ph!=null){const px=ph*w,tw=Math.min(px,w*.09);if(tw>1){const g=c.createLinearGradient(px-tw,0,px,0);g.addColorStop(0,'rgba(255,243,220,0)');g.addColorStop(1,'rgba(255,243,220,.10)');c.globalAlpha=1;c.fillStyle=g;c.fillRect(px-tw,0,tw,h)}}
-  if(S.hp!=null){c.globalAlpha=.2;c.strokeStyle='#fff';const x=Math.round(S.hp*w)+.5;ln(c,x,0,x,h)}
-  if(H&&T[H.t]===t&&!H.over&&!D){const x=H.p*w,y=yB-(yB-yT)*H.v;c.globalAlpha=.4;c.strokeStyle=col;c.lineWidth=3;c.lineCap='round';c.setLineDash([2,6]);ln(c,x,yB,x,y);c.setLineDash([]);c.lineWidth=2;c.beginPath();c.arc(x,y,5.5+3*H.v,0,6.2832);c.stroke()}
-  for(const o of t.hits){
-    const x=o.p*w,y=yB-(yB-yT)*o.v,r=5.5+3*o.v,age=now-o.fl,f=age>=0&&age<.45?1-age/.45:0;
-    c.strokeStyle=col;c.lineWidth=3;c.lineCap='round';c.globalAlpha=.5+.35*o.v+.15*f;ln(c,x,yB,x,y);
-    if(f>0){const g=c.createRadialGradient(x,y,0,x,y,r*4);g.addColorStop(0,col);g.addColorStop(1,col+'00');c.globalAlpha=.55*f;c.fillStyle=g;dot(c,x,y,r*4);
-      c.globalAlpha=f*.9;c.lineWidth=2;c.beginPath();c.arc(x,y,r+(1-f)*16,0,6.2832);c.stroke()}
-    c.globalAlpha=1;c.fillStyle=col;dot(c,x,y,r);c.globalAlpha=.4;c.fillStyle='#fff';dot(c,x-r*.25,y-r*.25,r*.35)}
-  if(ph!=null){const x=ph*w;c.strokeStyle=PLAY;c.lineCap='butt';c.globalAlpha=.16;c.lineWidth=7;ln(c,x,0,x,h);c.globalAlpha=.95;c.lineWidth=2;ln(c,x,0,x,h)}
-  c.globalAlpha=1}
-function frame(){
-  const now=ctx?ctx.currentTime-(ctx.outputLatency||0):0;let ph=null;
-  if(S.playing){ph=cursorPhase-(cursor-now)/barDur();ph-=Math.floor(ph)}
-  drawRuler(ph);T.forEach(t=>drawTrack(t,now,ph));requestAnimationFrame(frame)}
+    * {
+      box-sizing: border-box
+    }
 
-/* ---------- go ---------- */
-if(!restore())load(PR[0]);else setSubs(PR.find(p=>p.n===S.cur)?.v);
-rd.textContent=HINT;sync();ui();requestAnimationFrame(frame);
-</script>
+    html,
+    body {
+      height: 100%
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font: 14px/1.3 var(--ui);
+      padding-inline: 16px;
+      padding-block: 12px;
+      overflow: hidden;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-tap-highlight-color: transparent
+    }
+
+    button {
+      font: inherit;
+      color: inherit
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--c1);
+      outline-offset: 2px
+    }
+
+    #app {
+      height: 100%;
+      max-width: 1500px;
+      margin-inline: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-height: 0
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 18px
+    }
+
+    h1 {
+      margin: 0;
+      font: 600 .98rem/1.2 var(--disp);
+      letter-spacing: .02em
+    }
+
+    .play {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 0;
+      background: var(--play);
+      color: #14110e;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      flex: none;
+      transition: transform .08s
+    }
+
+    .play:active {
+      transform: scale(.94)
+    }
+
+    .play svg {
+      grid-area: 1/1;
+      width: 20px;
+      height: 20px;
+      fill: currentColor
+    }
+
+    .play[aria-pressed=true] .ip,
+    .play[aria-pressed=false] .is {
+      display: none
+    }
+
+    .bpm {
+      display: flex;
+      align-items: center;
+      gap: 8px
+    }
+
+    .bpm output {
+      font: 600 1.5rem/1 var(--mono);
+      min-width: 3ch;
+      text-align: right;
+      font-variant-numeric: tabular-nums
+    }
+
+    .bpm small,
+    .sub,
+    .row>b,
+    .rl {
+      font: 600 .62rem var(--ui);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--dim)
+    }
+
+    .sq {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      cursor: pointer;
+      font: 600 1rem/1 var(--mono);
+      color: var(--dim)
+    }
+
+    .sq:hover {
+      color: var(--fg)
+    }
+
+    input[type=range] {
+      accent-color: var(--c1);
+      width: clamp(90px, 15vw, 170px)
+    }
+
+    .pill {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--dim);
+      padding: 6px 12px 6px 10px;
+      border-radius: 999px;
+      font: 600 .68rem var(--ui);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px
+    }
+
+    .pill::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--dim);
+      opacity: .5
+    }
+
+    .pill[aria-pressed=true] {
+      color: var(--fg);
+      border-color: #ffffff40;
+      background: var(--panel2)
+    }
+
+    .pill[aria-pressed=true]::before {
+      background: var(--c2);
+      opacity: 1
+    }
+
+    .tog {
+      display: flex;
+      gap: 8px;
+      margin-left: auto
+    }
+
+    .row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0
+    }
+
+    .row>b {
+      width: 4.5rem;
+      flex: none
+    }
+
+    .chips {
+      display: flex;
+      gap: 6px;
+      min-width: 0;
+      flex: 1;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding-block: 2px;
+      overscroll-behavior-x: contain;
+      cursor: grab
+    }
+
+    .chips::-webkit-scrollbar {
+      display: none
+    }
+
+    .chips.fl {
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 32px);
+      mask-image: linear-gradient(90deg, transparent, #000 32px)
+    }
+
+    .chips.fr {
+      -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 32px), transparent);
+      mask-image: linear-gradient(90deg, #000 calc(100% - 32px), transparent)
+    }
+
+    .chips.fl.fr {
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 32px, #000 calc(100% - 32px), transparent);
+      mask-image: linear-gradient(90deg, transparent, #000 32px, #000 calc(100% - 32px), transparent)
+    }
+
+    .fam {
+      flex: none;
+      align-self: center;
+      white-space: nowrap;
+      height: 18px;
+      line-height: 18px;
+      margin-left: 6px;
+      padding-left: 12px;
+      border-left: 1px solid var(--line);
+      font: 600 .6rem var(--ui);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--dim);
+      display: flex;
+      align-items: center;
+    }
+
+    .fam:first-child {
+      margin: 0;
+      padding: 0;
+      border: 0
+    }
+
+    .g {
+      min-width: 2.4rem;
+      height: 28px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--dim);
+      font: 600 .8rem var(--mono);
+      cursor: pointer;
+      display: inline-flex;
+      gap: 6px;
+      align-items: center;
+      justify-content: center;
+      padding: 0 9px;
+      flex: none
+    }
+
+    .g::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 2px;
+      background: var(--gc);
+      opacity: .45
+    }
+
+    .g[aria-pressed=true] {
+      color: var(--fg);
+      border-color: var(--gc);
+      background: color-mix(in srgb, var(--gc) 14%, var(--panel))
+    }
+
+    .g[aria-pressed=true]::before {
+      opacity: 1
+    }
+
+    .p {
+      height: 28px;
+      padding: 0 11px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      font: 500 .78rem var(--ui);
+      cursor: pointer;
+      flex: none
+    }
+
+    .p:hover {
+      background: var(--panel2)
+    }
+
+    .p.on {
+      background: var(--fg);
+      color: var(--bg);
+      border-color: var(--fg)
+    }
+
+    .p.clr {
+      color: var(--dim)
+    }
+
+    #stage {
+      flex: 1;
+      min-height: 0;
+      display: grid;
+      grid-template-columns: var(--lw) minmax(0, 1fr);
+      grid-template-rows: 46px repeat(4, minmax(0, 1fr));
+      gap: 8px
+    }
+
+    .cell {
+      position: relative;
+      min-height: 0;
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      transition: opacity .15s
+    }
+
+    .cell.mut {
+      opacity: .4
+    }
+
+    .cell.rul {
+      background: none;
+      border: 0;
+      overflow: visible
+    }
+
+    .cell canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      touch-action: none;
+      cursor: crosshair
+    }
+
+    .lab {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 4px;
+      min-width: 0
+    }
+
+    .lab.rl {
+      justify-content: flex-end;
+      font-family: var(--mono);
+      font-weight: 400;
+      text-transform: none;
+      letter-spacing: 0;
+      font-size: .7rem;
+      padding-bottom: 2px
+    }
+
+    .nm {
+      background: none;
+      border: 0;
+      padding: 0;
+      font: 600 1.15rem/1 var(--disp);
+      color: var(--c);
+      cursor: pointer;
+      text-align: left
+    }
+
+    .bt {
+      display: flex;
+      gap: 5px
+    }
+
+    .bt button {
+      width: 26px;
+      height: 24px;
+      border-radius: 7px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--dim);
+      font: 600 .72rem var(--mono);
+      cursor: pointer
+    }
+
+    .bt button:hover {
+      color: var(--fg)
+    }
+
+    .bt .m[aria-pressed=true] {
+      background: var(--c);
+      color: #14110e;
+      border-color: var(--c)
+    }
+
+    #read {
+      font: 500 .74rem var(--mono);
+      color: var(--dim);
+      min-height: 1.2em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis
+    }
+
+    @media(max-height:640px) {
+      .sub {
+        display: none
+      }
+    }
+
+    @media(max-width:640px) {
+      :root {
+        --lw: 3.2rem
+      }
+
+      .nm {
+        font-size: .9rem
+      }
+
+      .sub {
+        display: none
+      }
+
+      .row>b {
+        display: none
+      }
+
+      .tog {
+        margin-left: 0
+      }
+
+      .bt button {
+        width: 22px
+      }
+    }
+  </style>
+  <div id="app">
+    <header>
+      <button class="play" id="play" aria-pressed="false" aria-label="Play or stop (Space)"><svg class="ip"
+          viewBox="0 0 20 20">
+          <path d="M5 2.5v15l13-7.5z" />
+        </svg><svg class="is" viewBox="0 0 20 20">
+          <rect x="3.5" y="3.5" width="13" height="13" rx="1.5" />
+        </svg></button>
+      <h1>Syncopation<br>Explorer</h1>
+      <div class="bpm"><button class="sq" id="bm" aria-label="Slower">−</button><output
+          id="bv">98</output><small>bpm</small><button class="sq" id="bp" aria-label="Faster">+</button><input
+          type="range" id="bpm" min="40" max="200" value="98" aria-label="Tempo"></div>
+      <div class="tog"><button class="pill" id="clr" title="Remove every hit from all four tracks">Clear</button><button
+          class="pill" id="tick" aria-pressed="false"
+          title="Click on every line of the selected grids, so you can hear where the grid is">Grid
+          ticks</button><button class="pill" id="mag" aria-pressed="true"
+          title="Hits snap to nearby grid lines. Hold Alt to place freely">Magnet</button></div>
+    </header>
+    <div class="row"><b>Grid</b>
+      <div class="chips" id="grids"></div>
+    </div>
+    <div class="row"><b>Rhythms</b>
+      <div class="chips" id="pres"></div><button class="sq" id="pv" aria-label="Previous rhythm"
+        title="Previous rhythm (←)">‹</button><button class="sq" id="nx" aria-label="Next rhythm"
+        title="Next rhythm (→)">›</button>
+    </div>
+    <main id="stage"></main>
+    <div id="read"></div>
+  </div>
+  <script type="module">
+    const $ = (s, r = document) => r.querySelector(s), clamp = (x, a, b) => Math.min(b, Math.max(a, x));
+    const css = getComputedStyle(document.documentElement), tok = (n, f) => css.getPropertyValue(n).trim() || f;
+    const FG = tok('--fg', '#ece6dd'), DIM = tok('--dim', '#8d857a'), PLAY = tok('--play', '#fff3dc'), MONO = tok('--mono', 'monospace');
+    const HINT = 'Space plays · ← → rhythms · click a track to place a hit, higher is louder · drag to move · click a hit to remove · Alt = free placement';
+
+    /* ---------- state ---------- */
+    const GR = Array.from({ length: 16 }, (_, i) => i + 1);
+    const GC = { 1: '#f0e6d2', 2: '#b78cff', 3: '#4fd8ff', 4: '#ffd25e', 5: '#ff8fc7', 6: '#9be564', 7: '#ffb35c', 8: '#d9d2c7', 9: '#ff7f6e', 10: '#7aa2ff', 11: '#d4e157', 12: '#6fe3b8', 13: '#e0a3ff', 14: '#8fe388', 15: '#ffc2a0', 16: '#8f9cb3' };
+    const GT = n => 400 + n * 65;
+    const TR = [['bum', 'kick', '--c0', '#ff6b57'], ['ts', 'shaker', '--c1', '#f2c14e'], ['ch', 'snare', '--c2', '#4fd1a5'], ['ka', 'wood', '--c3', '#7aa2ff']];
+    const T = TR.map(([id, sub, v, f]) => ({ id, sub, col: tok(v, f), hits: [], muted: false, w: 0, h: 0 }));
+    const S = { bpm: 98, grids: new Set([16]), tick: false, mag: true, cur: null, playing: false, hp: null };
+    const barDur = () => 240 / S.bpm;           // one bar = 4 beats; the loop position is a float 0..1
+    const lines = () => [...new Set([8, ...S.grids])];
+
+    /* ---------- rhythm library ---------- */
+    const V = { X: 1, x: .82, o: .58, g: .34 };
+    const str = s => [...s].flatMap((c, i) => V[c] ? [{ p: i / s.length, v: V[c] }] : []);
+    const E = (n, o = 0, v = .8, a = v) => Array.from({ length: n }, (_, k) => ({ p: (k + o) / n, v: k ? v : a }));
+    /* pc(): hits as "percent-of-bar:velocity", the notation of the research tables.
+       Microtiming from measured duration ratios: cumul() turns durations into onset fractions.
+       wp(r)        re-times a 16th grid so the four 16ths of each beat follow r
+       sub(r,s,n)   r repeats inside each of n equal beats, one char of s per step
+       grp(r,s,k)   r cuts the whole bar into unequal pulses, each split in k equal steps (k may be an array)
+       Voice order in every preset: bum, ts, ch, ka. */
+    const pc = s => s.trim() ? s.trim().split(/\s+/).map(h => { const [a, b] = h.split(':'); return { p: a / 100, v: b / 100 } }) : [];
+    const cumul = r => { const t = r.reduce((a, b) => a + b), c = [0]; r.forEach((x, i) => c.push(c[i] + x / t)); return c };
+    const wp = r => { const c = cumul(r); return hs => hs.map(h => { const s = Math.round(h.p * 16); return { p: ((s >> 2) + c[s & 3]) / 4, v: h.v } }) };
+    const sw = (r, s) => wp(r)(str(s));
+    const sub = (r, s, beats = 4) => {
+      const n = r.length, c = cumul(r); if (s.length !== beats * n) throw Error('sub ' + s);
+      return [...s].flatMap((ch, i) => V[ch] ? [{ p: ((i / n | 0) + c[i % n]) / beats, v: V[ch] }] : [])
+    };
+    const grp = (r, s, k = 1) => {
+      const c = cumul(r), t = r.reduce((a, b) => a + b), st = [];
+      r.forEach((x, j) => { const m = Array.isArray(k) ? k[j] : k; for (let q = 0; q < m; q++)st.push(c[j] + x / t * q / m) });
+      if (s.length !== st.length) throw Error('grp ' + s); return [...s].flatMap((ch, i) => V[ch] ? [{ p: st[i], v: V[ch] }] : [])
+    };
+    const FAM = { cu: 'Cuba', br: 'Brazil', ca: 'Latin & Caribbean', af: 'Africa', eu: 'Europe', us: 'Jazz & beats', as: 'Asia & Oceania', x: 'Cycles' };
+    const hat8 = 'x.o.x.o.x.o.x.o.';
+    const sBum = pc('0:45 25:100 50:45 75:100'),
+      sCaixa = pc('0:60 6.25:45 12.5:80 18.75:45 25:60 31.25:45 37.5:80 43.75:45 50:60 56.25:45 62.5:80 68.75:45 75:60 81.25:45 87.5:80 93.75:45'),
+      sTam = pc('0:95 18.75:70 37.5:90 50:95 68.75:70 87.5:90'),
+      sAg = pc('12.5:70 31.25:55 62.5:70 81.25:55');
+    const cumT = [pc('0:95 25:40 50:95 75:40'), pc('0:60 12.5:70 25:60 37.5:70 50:60 62.5:70 75:60 87.5:70'), pc('0:70 25:85 50:70 75:85')],
+      canT = [pc('0:95 37.5:90 50:40 87.5:90'), pc('0:85 12.5:85 25:50 37.5:85 50:85 62.5:85 75:50 87.5:85'), pc('0:70 25:90 37.5:60 50:70 75:95 87.5:60')];
+    const poly = ['pulse', '8ths', 'cycle A', 'cycle B'];
+    /* measured beat splits, percent of the beat (or of the bar for the 3 and 5 pulse cycles) */
+    const MEAS = [26, 20.3, 21.3, 32.4], SC = [22, 28, 23, 27], SB = [19, 25, 30, 26], CD = [24, 23, 22, 31],
+      ST = [45, 25, 30], MJ = [25, 33, 42], EW = [24, 34, 42], VW = [27, 40, 33], PO = [38, 28, 34], BG = [38, 62], AK = [22, 22, 22, 34],
+      JM = [63, 37], JF = [53, 47], DL = [60, 40], WG = [55, 45], HK = [58, 42];
+    const PR = [
+      {
+        f: 'cu', n: 'Tresillo', bpm: 92, g: [16], v: ['bass', 'maraca', 'conga slaps', 'clave'],
+        t: [pc('0:100 37.5:80 50:95 87.5:75'), pc('0:50 12.5:75 25:40 37.5:75 50:50 62.5:75 75:40 87.5:75'), pc('12.5:55 43.75:65 62.5:55 93.75:65'), pc('0:85 18.75:60 37.5:80 50:85 68.75:60 87.5:80')]
+      },
+      {
+        f: 'cu', n: 'Son clave 3-2', bpm: 100, g: [16], v: ['bass tumbao', 'cascara', 'conga tumbao', 'clave'],
+        t: [pc('18.75:95 43.75:90 68.75:95 93.75:90'), pc('0:60 12.5:40 25:80 37.5:40 50:60 62.5:40 75:80 87.5:40'), pc('6.25:60 25:55 43.75:70 56.25:60 68.75:55 93.75:70'), pc('0:100 18.75:80 37.5:95 62.5:80 75:100')]
+      },
+      {
+        f: 'cu', n: 'Son, pushed tresillo', bpm: 100, g: [16], v: ['bass', 'maracas', 'congas', 'clave'], s: 'clave 18.0 vs grid 18.75, bass 37.0 and 87.0 vs 37.5 and 87.5: pushed early',
+        t: [pc('0:85 18:88 37:92 87:95'), pc('0:65 12.5:50 18.75:60 25:65 37.5:50 50:70 62.5:50 75:60 87.5:50'), pc('0:35 12.5:40 25:50 37.5:90 50:95 62.5:40 75:55 87.5:90'), pc('0:95 18:92 37.5:90 62.5:85 75:88')]
+      },
+      {
+        f: 'cu', n: 'Rumba clave 3-2', bpm: 100, g: [16], v: ['tumbadora', 'catá', 'high drum', 'clave'], s: 'clave ends on 75, standard rumba 3-2 (the research table lists 87.5)',
+        t: [pc('6.25:75 37.5:65 56.25:75 87.5:85'), pc('0:60 25:50 50:60 75:50'), pc('0:70 12.5:55 31.25:65 50:85 62.5:55 81.25:90'), pc('0:100 18.75:80 43.75:95 62.5:80 75:100')]
+      },
+      { f: 'br', n: 'Samba batucada', bpm: 100, g: [16], v: ['surdo', 'tamborim', 'caixa', 'agogô'], t: [sBum, sTam, sCaixa, sAg] },
+      {
+        f: 'br', n: 'Samba, research feel', bpm: 100, g: [16], v: ['surdo', 'tamborim', 'caixa', 'agogô'], s: 'delayed 16ths: tamborim at 8, 27, 58, 77, caixa at 7.2 and 57.2',
+        t: [sBum, pc('0:65 8:88 18.75:60 27:92 50:65 58:88 68.75:60 77:95'), pc('0:55 7.2:45 18.75:50 25:60 50:55 57.2:45 68.75:50 75:65'), pc('0:85 18.75:90 50:85 62.5:92 75:70')]
+      },
+      {
+        f: 'br', n: 'Samba, measured 16ths', bpm: 100, g: [16], v: ['surdo', 'tamborim', 'caixa', 'agogô'], s: '16ths split 26.0 / 20.3 / 21.3 / 32.4 % of each beat',
+        t: [sBum, wp(MEAS)(sTam), wp(MEAS)(sCaixa), wp(MEAS)(sAg)]
+      },
+      {
+        f: 'br', n: 'Samba carioca 22:28:23:27', bpm: 100, g: [16], v: ['surdo', 'tamborim', 'caixa', 'agogô'], s: 'light, even 16th displacement',
+        t: [sBum, wp(SC)(sTam), wp(SC)(sCaixa), wp(SC)(sAg)]
+      },
+      {
+        f: 'br', n: 'Suingue baiano 19:25:30:26', bpm: 80, g: [16], v: ['surdo', 'agogô', 'caixa', 'repique'], s: 'Bahian 16ths, long 2nd and 3rd pulse; groove composed around the ratio',
+        t: [sw(SB, 'X.....x.X.....x.'), sw(SB, 'x.xx.x.xx.xx.x.x'), sw(SB, 'xgogxgogxgogxgog'), sw(SB, 'g...x...g...x...')]
+      },
+      { f: 'br', n: 'Bossa clave', bpm: 118, g: [8, 16], v: ['bass drum', 'shaker', 'clave', 'rim'], t: ['x.....x.x.....x.', hat8, 'x..x..x...x..x..', '....g.......g...'] },
+      {
+        f: 'br', n: 'Bossa, Gilberto cell', bpm: 118, g: [8, 16], v: ['bass', 'brush', 'chord stabs', 'rim'], s: 'chord stabs land one 16th ahead of each beat',
+        t: [pc('0:100 37.5:80 50:95 87.5:80'), pc('0:55 25:45 50:55 75:45'), pc('6.25:75 31.25:65 56.25:75 81.25:65'), pc('0:70 18.75:55 37.5:70 50:70 68.75:55 87.5:70')]
+      },
+      {
+        f: 'ca', n: 'Dembow', bpm: 95, g: [16], v: ['kick', 'hi-hat', 'snare', 'perc'], s: 'kick on every beat (the research table has a tresillo kick)',
+        t: [pc('0:100 25:90 50:100 75:90'), pc('0:45 12.5:70 25:40 37.5:70 50:45 62.5:70 75:40 87.5:70'), pc('18.75:90 68.75:90'), pc('25:60 56.25:60 75:55')]
+      },
+      { f: 'ca', n: 'Cumbia, on grid', bpm: 92, g: [8, 16], v: ['tambora', 'maracas', 'alegre', 'llamador'], t: [...cumT, pc('12.5:90 37.5:90 62.5:90 87.5:90')] },
+      { f: 'ca', n: 'Cumbia, late llamador', bpm: 92, g: [8, 16], v: ['tambora', 'maracas', 'alegre', 'llamador'], s: 'llamador 2.0% of the bar behind the grid (12.5 becomes 14.5)', t: [...cumT, pc('14.5:90 39.5:90 64.5:90 89.5:90')] },
+      { f: 'ca', n: 'Candombe, on grid', bpm: 112, g: [8, 16], v: ['piano', 'madera', 'repique', 'chico'], t: [...canT, pc('12.5:85 37.5:85 62.5:85 87.5:85')] },
+      { f: 'ca', n: 'Candombe, dragged chico', bpm: 112, g: [8, 16], v: ['piano', 'madera', 'repique', 'chico'], s: 'chico upbeats 1.5% of the bar behind the grid (12.5 becomes 14.0)', t: [...canT, pc('14:85 39:85 64:85 89:85')] },
+      {
+        f: 'ca', n: 'Candombe corpus 24:23:22:31', bpm: 112, g: [16], v: ['piano', 'madera', 'repique', 'chico'], s: 'beat split 24/23/22/31, long last 16th; groove composed around the ratio',
+        t: [sub(CD, 'X...x.x.X...x.x.', 4), sub(CD, 'x.xx.xx.x.xx.xx.', 4), sub(CD, '.X.x..X.x.X...x.', 4), sub(CD, 'X.xxX.xxX.xxX.xx', 4)]
+      },
+      { f: 'ca', n: 'One drop', bpm: 76, g: [8], v: ['kick', 'hat', 'rimshot', 'skank'], t: ['........x.......', 'o.g.o.g.o.g.o.g.', '........x.......', '..x...x...x...x.'] },
+      { f: 'af', n: 'Afro 12/8 bell', bpm: 88, g: [12], v: ['bass', 'shaker', 'drum', 'bell'], t: ['x..o..x..o..', 'xgoxgoxgoxgo', '...x.....x..', 'x.x.xx.x.x.x'] },
+      {
+        f: 'af', n: 'Sṭambēlī 45:25:30', bpm: 84, g: [4, 12], v: ['bass', 'shaker', 'clap', 'bell'], s: 'Tunisia: each pulse split 45/25/30; groove composed around the ratio',
+        t: [sub(ST, 'X.....x.g...'), sub(ST, 'xgoxgoxgoxgo'), sub(ST, '...X.....X..'), sub(ST, '.x..x..x..x.')]
+      },
+      {
+        f: 'af', n: 'Mandé jembe 25:33:42', bpm: 108, g: [12], v: ['dunun', 'shaker', 'jembe slap', 'bell'], s: 'Mali: short-medium-long triplet; groove composed around the ratio',
+        t: [sub(MJ, 'X.....x..g..'), sub(MJ, 'gxogxogxogxo'), sub(MJ, '..x..X..x..X'), sub(MJ, 'x.xx.xx.xx.x')]
+      },
+      {
+        f: 'af', n: 'Ewe 24:34:42', bpm: 100, g: [12], v: ['atsimevu', 'axatse', 'kagan', 'gankogui'], s: 'Ghana: triplet split 24/34/42 on the standard bell; rest composed',
+        t: [sub(EW, 'X..x..X..x.g'), sub(EW, 'x.ox.ox.ox.o'), sub(EW, '.x...x.x...x'), sub(EW, 'x.x.xx.x.x.x')]
+      },
+      {
+        f: 'eu', n: 'Viennese waltz 27:40:33', bpm: 126, g: [3, 6], v: ['bass', 'eighths', 'chord', 'upbeat'], s: 'the bar is 3 unequal pulses: 27 / 40 / 33 %; eighths split each pulse in two',
+        t: [grp(VW, 'X.....', 2), grp(VW, 'ogogog', 2), grp(VW, '..x.x.', 2), grp(VW, '.g.g.g', 2)]
+      },
+      {
+        f: 'eu', n: 'Boda polska 38:28:34', bpm: 120, g: [3, 6], v: ['stomp', 'eighths', 'accent', 'upbeat'], s: 'the bar is 3 unequal pulses: 38 / 28 / 34 %; groove composed around the ratio',
+        t: [grp(PO, 'X...x.', 2), grp(PO, 'o.o.o.', 2), grp(PO, '..x...', 2), grp(PO, '.g.x.g', 2)]
+      },
+      {
+        f: 'eu', n: 'Bulgarian 2+3 (38:62)', bpm: 150, g: [5], v: ['tapan', 'shaker', 'rim', 'bell'], s: '5/8 as 2+3 with the groups at 38 / 62 % of the bar',
+        t: [grp(BG, 'X.x..', [2, 3]), grp(BG, 'xgxgg', [2, 3]), grp(BG, '..x.x', [2, 3]), grp(BG, 'x.x.x', [2, 3])]
+      },
+      {
+        f: 'eu', n: 'Aksak 9/8 (2+2+2+3)', bpm: 130, g: [9], v: ['düm', 'shaker', 'tek', 'tick'], s: 'pulses at 22 / 22 / 22 / 34 % of the bar, each cut into 2, 2, 2, 3 steps',
+        t: [grp(AK, 'X.x.x.X..', [2, 2, 2, 3]), grp(AK, 'xoxoxoxoo', [2, 2, 2, 3]), grp(AK, '..x...x.x', [2, 2, 2, 3]), grp(AK, '.g.g.g.g.', [2, 2, 2, 3])]
+      },
+      {
+        f: 'us', n: 'Blues shuffle', bpm: 100, g: [12], v: ['kick', 'ride', 'snare', '–'], s: 'triplet swing: the skip notes sit at 2/3 of the beat',
+        t: [pc('0:100 50:95'), pc('0:70 16.6667:45 25:60 41.6667:45 50:70 66.6667:45 75:60 91.6667:45'), pc('25:90 75:90'), []]
+      },
+      {
+        f: 'us', n: 'Jazz swing 63:37', bpm: 138, g: [8], v: ['feather', 'ride', 'hat', 'comp'], s: 'medium tempo: eighths split 63 / 37 % of the beat; groove composed around the ratio',
+        t: [sub(JM, 'g.g.g.g.'), sub(JM, 'x.xxx.xx'), sub(JM, '..x...x.'), sub(JM, 'o..x....')]
+      },
+      {
+        f: 'us', n: 'Bebop 53:47', bpm: 200, g: [8], v: ['feather', 'ride', 'hat', 'comp'], s: 'fast tempo: the swing ratio compresses to 53 / 47',
+        t: [sub(JF, 'g.g.g.g.'), sub(JF, 'x.xxx.xx'), sub(JF, '..x...x.'), sub(JF, 'g..x..o.')]
+      },
+      {
+        f: 'us', n: 'Dilla feel 60:40', bpm: 88, g: [16], v: ['kick', 'hat', 'snare', 'perc'], s: 'each 8th split 3:2, the quintuplet 3+2 swing on the 16ths; groove composed around the ratio',
+        t: [sub(DL, 'X.....x.X..x....', 8), sub(DL, 'xgxgxgxgxgxgxgxg', 8), sub(DL, '....X.......X...', 8), sub(DL, '..g.......g..o..', 8)]
+      },
+      {
+        f: 'us', n: 'Drum & bass 2-step', bpm: 174, g: [16], v: ['kick', 'closed hat', 'snare', 'open hat'],
+        t: [pc('0:100 62.5:95'), pc('6.25:40 12.5:55 18.75:35 31.25:40 37.5:55 43.75:35 56.25:40 68.75:55 81.25:40 87.5:55 93.75:35'), pc('25:95 75:95'), pc('0:50 25:60 50:50 75:60')]
+      },
+      {
+        f: 'as', n: 'Teental 4+4+4+4', bpm: 40, g: [4, 16], v: ['bayan', 'tali, khali', 'dayan', 'vibhag'], s: '16 matras, theka Dha Dhin Dhin Dha ×2, Dha Tin Tin Ta, Ta Dhin Dhin Dha; nominally even, rubato left to you',
+        t: [str('XgoxxgoXo....gox'), str('X...x...o...x...'), str('xooxxooxxooxxoox'), str('g...g...g...g...')]
+      },
+      {
+        f: 'as', n: 'Wangga clapsticks 55:45', bpm: 100, g: [2, 8], v: ['drone', 'rattle', 'stomp', 'clapsticks'], s: 'Arnhem Land: the bar is two pulses, 55 / 45 %, four steps each; groove composed around the ratio',
+        t: [grp(WG, 'X...x...', [4, 4]), grp(WG, 'o.o.o.o.', [4, 4]), grp(WG, '..x...x.', [4, 4]), grp(WG, 'x.xxx.xx', [4, 4])]
+      },
+      {
+        f: 'as', n: 'Haka pulse 58:42', bpm: 126, g: [4, 8], v: ['stomp', 'thigh slap', 'chest slap', 'chant'], s: 'Aotearoa: each beat split 58 / 42 %; groove composed around the ratio',
+        t: [sub(HK, 'X.x.X.x.'), sub(HK, '.x.x.x.x'), sub(HK, '..X...X.'), sub(HK, 'x..x..x.')]
+      },
+      { f: 'x', n: '2 : 3', bpm: 84, g: [2, 3, 6], v: poly, t: [E(2, 0, .8, .95), E(6, 0, .35), E(3, 0, .85), E(3, .5, .5)] },
+      { f: 'x', n: '3 : 4', bpm: 80, g: [3, 4], v: poly, t: [E(4, 0, .65, .95), E(8, 0, .3), E(3, 0, .85), E(3, .5, .5)] },
+      { f: 'x', n: '5 : 8', bpm: 72, g: [5, 8], v: poly, t: [E(4, 0, .65, .95), E(8, 0, .3), E(5, 0, .85), E(5, .5, .5)] },
+      { f: 'x', n: '7 : 8', bpm: 72, g: [7, 8], v: poly, t: [E(4, 0, .65, .95), E(8, 0, .3), E(7, 0, .85), E(7, .5, .5)] }];
+    PR.forEach(p => p.d = [3, 2, 1, 0].map(i => TR[i][0] + ' ' + p.v[i]).join(' · '));
+    const mk = x => (typeof x === 'string' ? str(x) : x).map(h => ({ p: h.p, v: h.v, fl: -9 }));
+
+    /* ---------- audio ---------- */
+    let ctx, master, nbuf, ticks = [], cursor = 0, cursorPhase = 0, timer, worker;
+    const LOOK = .14, LV = [.95, .7, .62, .62], SEND = [0, .12, .26, .2];
+    const amp = v => .04 + .96 * v ** 1.6;
+    const gn = (v = 1) => { const g = ctx.createGain(); g.gain.value = v; return g };
+    const biq = (type, f, q) => { const b = ctx.createBiquadFilter(); b.type = type; b.frequency.value = f; if (q) b.Q.value = q; return b };
+    const osc = (type, f, t, d) => { const o = ctx.createOscillator(); o.type = type; o.frequency.setValueAtTime(f, t); o.start(t); o.stop(t + d); return o };
+    const noise = (t, d, node) => { const s = ctx.createBufferSource(); s.buffer = nbuf; s.connect(node); s.start(t, Math.random() * (nbuf.duration - d - .01)); s.stop(t + d) };
+    const env = (g, t, pk, a, d) => { const p = g.gain; p.setValueAtTime(1e-4, t); p.exponentialRampToValueAtTime(Math.max(pk, 2e-4), t + a); p.exponentialRampToValueAtTime(1e-4, t + a + d) };
+    function ensureAudio() {
+      if (ctx) { if (ctx.state === 'suspended') ctx.resume(); return }
+      ctx = new (window.AudioContext || window.webkitAudioContext)({ latencyHint: 'interactive' });
+      const comp = ctx.createDynamicsCompressor(); comp.threshold.value = -12; comp.knee.value = 10; comp.ratio.value = 5; comp.attack.value = .002; comp.release.value = .18;
+      master = gn(.8); master.connect(comp).connect(ctx.destination);
+      const sr = ctx.sampleRate; nbuf = ctx.createBuffer(1, sr * 1.5 | 0, sr);
+      const nd = nbuf.getChannelData(0); for (let i = 0; i < nd.length; i++)nd[i] = Math.random() * 2 - 1;
+      const L = sr * .9 | 0, ir = ctx.createBuffer(2, L, sr);                       // small dark room, generated
+      for (let c = 0; c < 2; c++) { const d = ir.getChannelData(c); let y = 0; for (let i = 0; i < L; i++) { y += ((Math.random() * 2 - 1) * (1 - i / L) ** 3.5 - y) * .28; d[i] = y } }
+      const rv = ctx.createConvolver(); rv.buffer = ir; rv.connect(gn(.55)).connect(master);
+      T.forEach((t, i) => {
+        const bus = gn(LV[i]); bus.connect(master); bus.connect(gn(SEND[i])).connect(rv); t.in = bus;
+        if (!i) { const sh = ctx.createWaveShaper(), c = new Float32Array(1024); for (let k = 0; k < 1024; k++)c[k] = Math.tanh((k / 512 - 1) * 2.2) / Math.tanh(2.2); sh.curve = c; sh.oversample = '2x'; sh.connect(bus); t.in = sh }
+      });
+      ctx.resume();
+    }
+    const VOICE = [
+      (t, a) => {
+        const o = osc('sine', 105 + 55 * a, t, .7); o.frequency.exponentialRampToValueAtTime(50, t + .13); let g = gn(0); env(g, t, a * .95, .004, .55); o.connect(g).connect(T[0].in);
+        const lp = biq('lowpass', 650); g = gn(0); env(g, t, a * .22, .001, .025); noise(t, .04, lp); lp.connect(g).connect(T[0].in)
+      },
+      (t, a) => {
+        const hp = biq('highpass', 5400, .7), pk = biq('peaking', 8800, 1.1), lp = biq('lowpass', 13500), g = gn(0); pk.gain.value = 6;
+        env(g, t, a * .55, .0015, .035 + .04 * a); noise(t, .12, hp); hp.connect(pk).connect(lp).connect(g).connect(T[1].in)
+      },
+      (t, a) => {
+        const lp = biq('lowpass', 9500); lp.connect(T[2].in);
+        let b = biq('bandpass', 2700, .6), g = gn(0); env(g, t, a * .6, .002, .15); noise(t, .2, b); b.connect(g).connect(lp);
+        b = biq('bandpass', 1150, .9); g = gn(0); env(g, t, a * .3, .002, .09); noise(t, .15, b); b.connect(g).connect(lp);
+        const s = osc('triangle', 215, t, .16); s.frequency.exponentialRampToValueAtTime(150, t + .07); g = gn(0); env(g, t, a * .5, .001, .1); s.connect(g).connect(lp)
+      },
+      (t, a) => {
+        const f = 930 + 220 * a, out = T[3].in;
+        let o = osc('sine', f * 1.06, t, .2); o.frequency.exponentialRampToValueAtTime(f, t + .012); let g = gn(0); env(g, t, a * .62, .001, .11); o.connect(g).connect(out);
+        o = osc('sine', f * 2.43, t, .1); g = gn(0); env(g, t, a * .17, .001, .03); o.connect(g).connect(out);
+        const b = biq('bandpass', 3300, 1.4); g = gn(0); env(g, t, a * .2, .0008, .009); noise(t, .03, b); b.connect(g).connect(out)
+      }];
+    const tickVoice = (t, f, a) => { const o = osc('sine', f, t, .06), g = gn(0); env(g, t, a, .001, .028); o.connect(g).connect(master) };
+    const audition = (i, v) => { ensureAudio(); VOICE[i](ctx.currentTime + .003, amp(v)) };
+    function buildTicks() {
+      const m = new Map([[0, { p: 0, f: 1600, a: .2 }]]);
+      for (const n of [...S.grids].sort((a, b) => a - b)) for (let k = 1; k < n; k++) { const key = Math.round(k / n * 1e6); if (!m.has(key)) m.set(key, { p: k / n, f: GT(n), a: .09 }) }
+      ticks = [...m.values()]
+    }
+
+    /* ---------- scheduler: lookahead on the audio clock, positions are plain floats ---------- */
+    function sched() {
+      if (!S.playing) return;
+      const now = ctx.currentTime, hz = now + LOOK;
+      if (cursor < now - .05) { cursorPhase = (cursorPhase + (now + .03 - cursor) / barDur()) % 1; cursor = now + .03 }   // tab stalled: resync
+      if (cursor >= hz) return;
+      const dur = barDur(), a = cursorPhase, b = a + (hz - cursor) / dur;
+      const when = p => { if (p < a) p += 1; return p < b ? cursor + (p - a) * dur : -1 };
+      T.forEach((t, i) => { if (t.muted) return; for (const o of t.hits) { const w = when(o.p); if (w >= 0) { o.fl = w; VOICE[i](w, amp(o.v)) } } });
+      if (S.tick) for (const k of ticks) { const w = when(k.p); if (w >= 0) tickVoice(w, k.f, k.a) }
+      cursor = hz; cursorPhase = b - Math.floor(b);
+    }
+    function start() {
+      ensureAudio(); cursor = ctx.currentTime + .08; cursorPhase = 0; S.playing = true;
+      if (worker) worker.postMessage(25); else timer = setInterval(sched, 25); ui()
+    }
+    function stop() { S.playing = false; if (worker) worker.postMessage(0); else clearInterval(timer); ui() }
+    try { worker = new Worker(URL.createObjectURL(new Blob(['let t;onmessage=e=>{clearInterval(t);if(e.data)t=setInterval(()=>postMessage(0),e.data)}']))); worker.onmessage = sched } catch { worker = null }
+
+    /* ---------- UI build ---------- */
+    const stage = $('#stage'), rd = $('#read');
+    stage.insertAdjacentHTML('beforeend', '<div class="lab rl" id="bar"></div><div class="cell rul"><canvas id="ruler"></canvas></div>');
+    const R = { cv: $('#ruler') };
+    [3, 2, 1, 0].forEach(i => {
+      const t = T[i];   // screen order, top to bottom: ka, ts, ch, bum
+      const lab = document.createElement('div'); lab.className = 'lab'; lab.style.setProperty('--c', t.col);
+      lab.innerHTML = `<button class="nm" title="Hear it">${t.id}</button><span class="sub">${t.sub}</span><div class="bt"><button class="m" title="Mute" aria-label="Mute ${t.id}">M</button><button class="x" title="Clear track" aria-label="Clear ${t.id}">×</button></div>`;
+      t.cell = document.createElement('div'); t.cell.className = 'cell'; t.cell.innerHTML = '<canvas></canvas>'; t.cv = $('canvas', t.cell);
+      stage.append(lab, t.cell); t.sb = $('.sub', lab);
+      $('.nm', lab).onclick = () => audition(i, .8);
+      t.mb = $('.m', lab); t.mb.onclick = () => { t.muted = !t.muted; sync() };
+      $('.x', lab).onclick = () => { t.hits = []; S.cur = null; sync() };
+      bindTrack(t, i);
+    });
+    const gbox = $('#grids'), pbox = $('#pres');
+    GR.forEach(n => {
+      const b = document.createElement('button'); b.className = 'g'; b.textContent = n; b.dataset.n = n; b.style.setProperty('--gc', GC[n]); b.title = 'Divide the bar into ' + n;
+      b.onclick = () => { S.grids.has(n) ? S.grids.delete(n) : S.grids.add(n); sync() }; gbox.append(b)
+    });
+    let lg; PR.forEach((pr, i) => {
+      if (pr.f !== lg) { const s = document.createElement('span'); s.className = 'fam'; s.textContent = FAM[pr.f]; pbox.append(s) } lg = pr.f;
+      const b = document.createElement('button'); b.className = 'p'; b.textContent = pr.n; b.dataset.i = i; b.title = pr.d; b.onclick = () => load(pr); pbox.append(b)
+    });
+    const setSubs = v => T.forEach((t, i) => t.sb.textContent = v ? v[i] : TR[i][1]);
+    function load(pr) {
+      pr.t.forEach((x, i) => T[i].hits = mk(x)); S.bpm = pr.bpm; S.grids = new Set(pr.g); S.cur = pr.n; setSubs(pr.v); sync(); rd.textContent = pr.n + ' · ' + pr.d + (pr.s ? ' · ' + pr.s : '');
+      pbox.querySelector('.p.on')?.scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' })
+    }
+    const step = d => { const k = PR.findIndex(p => p.n === S.cur), n = PR.length; load(PR[k < 0 ? (d > 0 ? 0 : n - 1) : (k + d + n) % n]) };
+    $('#pv').onclick = () => step(-1); $('#nx').onclick = () => step(1);
+    $('#clr').onclick = () => { T.forEach(t => t.hits = []); S.cur = null; setSubs(null); sync() };
+    /* horizontal strips: fade at overflowing edges, wheel and mouse drag scroll, touch scrolls natively */
+    function strip(el) {
+      const up = () => { el.classList.toggle('fl', el.scrollLeft > 2); el.classList.toggle('fr', el.scrollLeft < el.scrollWidth - el.clientWidth - 2) };
+      el.addEventListener('scroll', up, { passive: true }); new ResizeObserver(up).observe(el); requestAnimationFrame(up);
+      el.addEventListener('wheel', e => { if (Math.abs(e.deltaY) > Math.abs(e.deltaX) && el.scrollWidth > el.clientWidth) { el.scrollLeft += e.deltaY; e.preventDefault() } }, { passive: false });
+      let d = null;
+      el.addEventListener('pointerdown', e => { if (e.pointerType === 'mouse' && e.button === 0) d = { x: e.clientX, l: el.scrollLeft, m: false } });
+      addEventListener('pointermove', e => { if (!d) return; const dx = e.clientX - d.x; if (Math.abs(dx) > 5) d.m = true; if (d.m) el.scrollLeft = d.l - dx });
+      addEventListener('pointerup', () => { if (d) setTimeout(() => d = null) });
+      el.addEventListener('click', e => { if (d?.m) { e.stopPropagation(); e.preventDefault() } }, true);
+      return up
+    }
+    strip(gbox); strip(pbox);
+    function ui() { $('#play').setAttribute('aria-pressed', S.playing) }
+    function sync() {
+      $('#bpm').value = S.bpm; $('#bv').textContent = S.bpm; $('#bar').textContent = 'bar ' + barDur().toFixed(2) + ' s';
+      gbox.querySelectorAll('.g').forEach(b => b.setAttribute('aria-pressed', S.grids.has(+b.dataset.n)));
+      pbox.querySelectorAll('.p[data-i]').forEach(b => b.classList.toggle('on', PR[b.dataset.i].n === S.cur));
+      $('#tick').setAttribute('aria-pressed', S.tick); $('#mag').setAttribute('aria-pressed', S.mag);
+      T.forEach(t => { t.mb.setAttribute('aria-pressed', t.muted); t.cell.classList.toggle('mut', t.muted) });
+      buildTicks(); save();
+    }
+    const setBpm = v => { S.bpm = clamp(Math.round(v), 40, 200); sync() };
+    $('#bpm').oninput = e => setBpm(+e.target.value); $('#bm').onclick = () => setBpm(S.bpm - 1); $('#bp').onclick = () => setBpm(S.bpm + 1);
+    $('#tick').onclick = () => { S.tick = !S.tick; sync() }; $('#mag').onclick = () => { S.mag = !S.mag; sync() };
+    $('#play').onclick = () => S.playing ? stop() : start();
+    addEventListener('keydown', e => {
+      if (e.code === 'Space') { e.preventDefault(); if (!e.repeat) S.playing ? stop() : start() }
+      else if ((e.key === 'ArrowLeft' || e.key === 'ArrowRight') && !e.altKey && !e.metaKey && !e.ctrlKey && e.target.type !== 'range') { e.preventDefault(); step(e.key === 'ArrowRight' ? 1 : -1) }
+      else if (e.key === 'ArrowUp' || e.key === 'ArrowDown') { e.preventDefault(); setBpm(S.bpm + (e.key === 'ArrowUp' ? 1 : -1) * (e.shiftKey ? 5 : 1)) }
+    });
+    addEventListener('keyup', e => { if (e.code === 'Space') e.preventDefault() });
+    addEventListener('pointerdown', ensureAudio, { capture: true });
+
+    /* ---------- persistence (per viewer, optional) ---------- */
+    const KEY = 'syncopation-explorer-v1'; let sv;
+    function save() { clearTimeout(sv); sv = setTimeout(() => { try { localStorage.setItem(KEY, JSON.stringify({ bpm: S.bpm, g: [...S.grids], tick: S.tick, mag: S.mag, cur: S.cur, mute: T.map(t => t.muted), h: T.map(t => t.hits.map(o => [+o.p.toFixed(5), +o.v.toFixed(3)])) })) } catch { } }, 300) }
+    function restore() {
+      try {
+        const d = JSON.parse(localStorage.getItem(KEY)); if (!d || d.h?.length !== 4) return false;
+        d.h.forEach((a, i) => T[i].hits = a.filter(h => h[0] >= 0 && h[0] < 1 && h[1] > 0 && h[1] <= 1).map(h => ({ p: h[0], v: h[1], fl: -9 })));
+        S.bpm = clamp(+d.bpm || 98, 40, 200); S.grids = new Set((d.g || []).filter(n => GR.includes(n))); S.tick = !!d.tick; S.mag = d.mag !== false; S.cur = d.cur || null;
+        T.forEach((t, i) => t.muted = !!d.mute?.[i]); return true
+      } catch { return false }
+    }
+
+    /* ---------- pointer editing ---------- */
+    let D = null, H = null;
+    const yToV = (y, h) => clamp((h - 8 - y) / (h - 20), .05, 1);
+    function snap(p, w, e) {
+      p = clamp(p, 0, .9999); if (!S.mag || e.altKey) return p;
+      let best = p, bd = 7; for (const n of lines()) { const q = Math.round(p * n) / n; if (q >= 1) continue; const d = Math.abs(p - q) * w; if (d < bd) { bd = d; best = q } } return best
+    }
+    function find(t, x, y, w, h) { let best = null, bd = 11; for (const o of t.hits) { const dx = Math.abs(o.p * w - x), hy = h - 8 - (h - 20) * o.v; if (dx < bd && y > hy - 11) { bd = dx; best = o } } return best }
+    function nearest(p) { let b = null; for (const n of lines()) { const k = Math.round(p * n), d = p - k / n; if (!b || Math.abs(d) < Math.abs(b.d)) b = { d, n, k: k % n } } return b }
+    function readout(p, v) {
+      const b = nearest(p), ms = b.d * barDur() * 1000;
+      rd.textContent = `pos ${p.toFixed(4)} · beat ${(1 + p * 4).toFixed(3)} · vel ${Math.round(v * 100)}% · ` + (Math.abs(ms) < .05 ? `on grid ${b.n}·${b.k}` : `${Math.abs(ms).toFixed(1)} ms ${ms > 0 ? 'late' : 'early'} vs ${b.n}·${b.k}`)
+    }
+    function bindTrack(t, i) {
+      const cv = t.cv, pos = e => { const r = cv.getBoundingClientRect(); return { x: e.clientX - r.left, y: e.clientY - r.top, w: r.width, h: r.height } };
+      cv.oncontextmenu = e => e.preventDefault();
+      cv.onpointerdown = e => {
+        const { x, y, w, h } = pos(e), o = find(t, x, y, w, h);
+        if (e.button === 2) { if (o) { t.hits.splice(t.hits.indexOf(o), 1); S.cur = null; sync() } return }
+        if (o) D = { t, i, o, isNew: false, moved: false, sx: e.clientX, sy: e.clientY, ox: o.p * w - x, ov: o.v - yToV(y, h) };
+        else { const n = { p: snap(x / w, w, e), v: yToV(y, h), fl: -9 }; t.hits.push(n); audition(i, n.v); D = { t, i, o: n, isNew: true, moved: false, sx: e.clientX, sy: e.clientY, ox: 0, ov: 0 } }
+        cv.setPointerCapture(e.pointerId); S.hp = D.o.p; readout(D.o.p, D.o.v); S.cur = null; sync()
+      };
+      cv.onpointermove = e => {
+        const { x, y, w, h } = pos(e);
+        if (D && D.t === t) {
+          if (!D.moved && Math.hypot(e.clientX - D.sx, e.clientY - D.sy) > 4) D.moved = true;
+          if (D.moved || D.isNew) { D.o.p = snap((x + D.ox) / w, w, e); D.o.v = clamp(yToV(y, h) + D.ov, .05, 1) }
+          S.hp = D.o.p; readout(D.o.p, D.o.v); return
+        }
+        if (D) return;
+        const o = find(t, x, y, w, h); H = { t: i, over: !!o, p: snap(x / w, w, e), v: yToV(y, h) };
+        S.hp = o ? o.p : H.p; cv.style.cursor = o ? 'grab' : 'crosshair'; readout(o ? o.p : H.p, o ? o.v : H.v)
+      };
+      const up = () => {
+        if (!D || D.t !== t) return;
+        if (!D.isNew && !D.moved) t.hits.splice(t.hits.indexOf(D.o), 1);
+        else if (D.moved) audition(i, D.o.v);
+        D = null; S.hp = null; H = null; sync(); rd.textContent = HINT
+      };
+      cv.onpointerup = up; cv.onpointercancel = up;
+      cv.onpointerleave = () => { if (!D) { H = null; S.hp = null; rd.textContent = HINT } };
+    }
+
+    /* ---------- drawing ---------- */
+    const ln = (c, x1, y1, x2, y2) => { c.beginPath(); c.moveTo(x1, y1); c.lineTo(x2, y2); c.stroke() };
+    const dot = (c, x, y, r) => { c.beginPath(); c.arc(x, y, r, 0, 6.2832); c.fill() };
+    function fit(o) { const r = o.cv.getBoundingClientRect(), d = Math.min(devicePixelRatio || 1, 2); o.w = r.width; o.h = r.height; o.cv.width = Math.round(r.width * d); o.cv.height = Math.round(r.height * d); o.cx = o.cv.getContext('2d'); o.cx.setTransform(d, 0, 0, d, 0, 0) }
+    const ro = new ResizeObserver(es => es.forEach(e => fit([R, ...T].find(o => o.cv === e.target))));[R, ...T].forEach(o => ro.observe(o.cv));
+    const CNT = ['1', '+', '2', '+', '3', '+', '4', '+'];
+    function drawRuler(ph) {
+      const c = R.cx, w = R.w, h = R.h; if (!w) return; c.clearRect(0, 0, w, h);
+      c.font = '500 11px ' + MONO; c.textBaseline = 'alphabetic';
+      for (let k = 0; k < 8; k++) { const x = Math.round(k / 8 * w); c.globalAlpha = 1; c.fillStyle = k % 2 ? DIM : FG; c.fillText(CNT[k], x + 3, 11); c.globalAlpha = .5; c.fillStyle = DIM; c.fillRect(x, 15, 1, k % 2 ? 3 : 6) }
+      const gs = [...S.grids].sort((a, b) => a - b), lh = Math.min(7, (h - 22) / Math.max(1, gs.length));
+      gs.forEach((n, j) => { c.globalAlpha = 1; c.fillStyle = GC[n]; for (let k = 0; k < n; k++)c.fillRect(Math.round(k / n * w), 22 + j * lh, 2, Math.max(1.5, lh - 1.5)) });
+      if (S.hp != null) { c.globalAlpha = .55; c.fillStyle = '#fff'; c.fillRect(Math.round(S.hp * w), 0, 1, h) }
+      if (ph != null) { const x = ph * w; c.globalAlpha = 1; c.fillStyle = PLAY; c.beginPath(); c.moveTo(x - 5, 0); c.lineTo(x + 5, 0); c.lineTo(x, 8); c.fill() }
+      c.globalAlpha = 1
+    }
+    function drawTrack(t, now, ph) {
+      const c = t.cx, w = t.w, h = t.h, col = t.col; if (!w) return; c.clearRect(0, 0, w, h);
+      const yT = 12, yB = h - 8; c.lineWidth = 1; c.lineCap = 'butt'; c.strokeStyle = '#fff';
+      c.globalAlpha = .045; for (const f of [.25, .5, .75]) { const y = Math.round(yB - (yB - yT) * f) + .5; ln(c, 0, y, w, y) }
+      for (let k = 1; k < 8; k++) { c.globalAlpha = k % 2 ? .06 : .13; const x = Math.round(k / 8 * w) + .5; ln(c, x, 0, x, h) }
+      for (const n of S.grids) { c.strokeStyle = GC[n]; c.globalAlpha = .34; for (let k = 1; k < n; k++) { const x = Math.round(k / n * w) + .5; ln(c, x, 0, x, h) } }
+      if (ph != null) { const px = ph * w, tw = Math.min(px, w * .09); if (tw > 1) { const g = c.createLinearGradient(px - tw, 0, px, 0); g.addColorStop(0, 'rgba(255,243,220,0)'); g.addColorStop(1, 'rgba(255,243,220,.10)'); c.globalAlpha = 1; c.fillStyle = g; c.fillRect(px - tw, 0, tw, h) } }
+      if (S.hp != null) { c.globalAlpha = .2; c.strokeStyle = '#fff'; const x = Math.round(S.hp * w) + .5; ln(c, x, 0, x, h) }
+      if (H && T[H.t] === t && !H.over && !D) { const x = H.p * w, y = yB - (yB - yT) * H.v; c.globalAlpha = .4; c.strokeStyle = col; c.lineWidth = 3; c.lineCap = 'round'; c.setLineDash([2, 6]); ln(c, x, yB, x, y); c.setLineDash([]); c.lineWidth = 2; c.beginPath(); c.arc(x, y, 5.5 + 3 * H.v, 0, 6.2832); c.stroke() }
+      for (const o of t.hits) {
+        const x = o.p * w, y = yB - (yB - yT) * o.v, r = 5.5 + 3 * o.v, age = now - o.fl, f = age >= 0 && age < .45 ? 1 - age / .45 : 0;
+        c.strokeStyle = col; c.lineWidth = 3; c.lineCap = 'round'; c.globalAlpha = .5 + .35 * o.v + .15 * f; ln(c, x, yB, x, y);
+        if (f > 0) {
+          const g = c.createRadialGradient(x, y, 0, x, y, r * 4); g.addColorStop(0, col); g.addColorStop(1, col + '00'); c.globalAlpha = .55 * f; c.fillStyle = g; dot(c, x, y, r * 4);
+          c.globalAlpha = f * .9; c.lineWidth = 2; c.beginPath(); c.arc(x, y, r + (1 - f) * 16, 0, 6.2832); c.stroke()
+        }
+        c.globalAlpha = 1; c.fillStyle = col; dot(c, x, y, r); c.globalAlpha = .4; c.fillStyle = '#fff'; dot(c, x - r * .25, y - r * .25, r * .35)
+      }
+      if (ph != null) { const x = ph * w; c.strokeStyle = PLAY; c.lineCap = 'butt'; c.globalAlpha = .16; c.lineWidth = 7; ln(c, x, 0, x, h); c.globalAlpha = .95; c.lineWidth = 2; ln(c, x, 0, x, h) }
+      c.globalAlpha = 1
+    }
+    function frame() {
+      const now = ctx ? ctx.currentTime - (ctx.outputLatency || 0) : 0; let ph = null;
+      if (S.playing) { ph = cursorPhase - (cursor - now) / barDur(); ph -= Math.floor(ph) }
+      drawRuler(ph); T.forEach(t => drawTrack(t, now, ph)); requestAnimationFrame(frame)
+    }
+
+    /* ---------- go ---------- */
+    if (!restore()) load(PR[0]); else setSubs(PR.find(p => p.n === S.cur)?.v);
+    rd.textContent = HINT; sync(); ui(); requestAnimationFrame(frame);
+  </script>
+
+</body>
+
+</html>

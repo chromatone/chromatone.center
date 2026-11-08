@@ -1,0 +1,1 @@
+import{F as e,L as t,et as n,n as r,nt as i}from"./framework.D0iFQGkp.js";var a={class:`button`};function o(r,o){return n(),e(`button`,a,[i(r.$slots,`default`,{},()=>[o[0]||=t(`Start`,-1)],!0)])}var s=r({},[[`render`,o],[`__scopeId`,`data-v-fb351d24`]]);export{s as t};

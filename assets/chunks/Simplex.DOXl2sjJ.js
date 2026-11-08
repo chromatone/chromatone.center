@@ -1,1 +1,0 @@
-import{F as e,et as t,n}from"./framework.Bs4wm_X5.js";function r(n,r){return t(),e(`p`,null,`Simplex`)}var i=n({},[[`render`,r]]);export{i as default};

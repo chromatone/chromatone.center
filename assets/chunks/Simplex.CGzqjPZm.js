@@ -1,0 +1,1 @@
+import{F as e,et as t,n}from"./framework.D0iFQGkp.js";function r(n,r){return t(),e(`p`,null,`Simplex`)}var i=n({},[[`render`,r]]);export{i as default};

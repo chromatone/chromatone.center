@@ -1,3 +1,15 @@
 packages:
   - "db"
   - "."
+allowBuilds:
+  '@swc/core': true
+  core-js: true
+  esbuild: true
+  midi-writer-js: true
+  sharp: true
+  vue-demi: true
+minimumReleaseAgeExclude:
+  - "@unplugin-pwa/core@0.0.4"
+  - "@unplugin-pwa/inspector@0.0.4"
+  - "@unplugin-pwa/vite@0.0.4"
+  - "@vite-pwa/vitepress@2.0.2"

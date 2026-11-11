@@ -8,6 +8,7 @@ import { WebMidi, Note, Utilities } from "webmidi";
 import { setupKeyboard } from './keyboard';
 import Ola from "ola";
 import { Chord, Midi } from 'tonal';
+import { globalScale } from './global.js';
 
 const MIDI_CHANNEL_STORAGE_KEY = "global-midi-channel";
 const MIDI_FILTER_STORAGE_KEY = "global-midi-filter";
@@ -483,9 +484,13 @@ export function playNoteOnce(note, velocity, duration = 300) {
 export function playNote(note, velocity = 0.9) {
 
   if (Array.isArray(note)) {
-    note.forEach(n => playNote(n))
+    note.forEach(n => playNote(n, velocity))
   } else {
-    playKey(Utilities.guessNoteNumber(note), velocity)
+    const midiNote = Utilities.guessNoteNumber(note)
+    if (midiNote == null || isNaN(midiNote)) return
+    // pitch class in notes[] order (0 = A), matching globalScale.tonic
+    const pitch = ((Math.round(midiNote) - 9) % 12 + 12) % 12
+    playKey(midiNote, globalScale.noteVelocity(pitch, velocity))
   }
 }
 

@@ -22,6 +22,12 @@ export const globalScale = reactive({
   }),
   pcs: computed(() => Scale.scaleNotes(globalScale.full.notes)),
   isIn: computed(() => Pcset.isNoteIncludedIn(globalScale.pcs)),
+  // chroma is tonic-relative: bit i belongs to pitch class (tonic + i) % 12.
+  // inScale(pitch) checks a pitch class (0-11, notes[] order) against the scale.
+  inScale: (pitch) => globalScale.chroma[(pitch - globalScale.tonic + 12) % 12] === '1',
+  // velocity multiplier applied to notes outside the scale
+  suppressed: 0.5,
+  noteVelocity: (pitch, velocity = 1) => globalScale.inScale(pitch) ? velocity : velocity * globalScale.suppressed,
 });
 
 globalThis.__chromatoneGlobalScale = globalScale;

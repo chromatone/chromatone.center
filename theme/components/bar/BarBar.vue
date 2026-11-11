@@ -25,7 +25,7 @@ const instrument = ref('guitar')
 
 </script>
 
-<template lang='pug'>
+<template lang="pug">
 nav.bar
   a(
     href="/"
@@ -190,12 +190,22 @@ client-only
 
   BarPanel(v-model="scaleOpen")
     synth-font.sticky.top-0.z-100
-    .flex.gap-2 
-      button.text-button(@click="midi.offset--")
-        .i-la-minus
-      .text-button {{ midi.offset }}
-      button.text-button(@click="midi.offset++")
-        .i-la-plus
+    .flex.w-full.justify-between
+      .flex.items-center
+        button.text-button(@click="midi.offset--")
+          .i-la-minus
+        .text-button {{ midi.offset }}
+        button.text-button(@click="midi.offset++")
+          .i-la-plus
+      control-rotary(
+        v-model="globalScale.suppressed"
+        :min="0"
+        :max="1"
+        :step="0.1"
+        :fixed="1"
+        unit="%"
+        param="Suppress"
+      )
     control-scale.w-full
     chord-tabs-neck.max-h-80dvh(
       :instrument="instrument"

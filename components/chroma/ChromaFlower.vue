@@ -27,6 +27,7 @@ const flower = computed(() => {
       coord: coord(n, 0.42),
       middle: coord(n, 0.28),
       inside: coord(n, 0.15),
+      inScale: globalScale.inScale(n),
     }
   })
 })
@@ -296,7 +297,7 @@ function handleTouchEnd({ event }) {
           g.petal(
             :transform="`rotate(${pitch * 30}) translate(2,-120) `"
             :fill="note.note.length > 1 ? '#222' : '#eee'"
-            :opacity="activeChromaMidi[pitch] ? 1 : 0.9"
+            :opacity="activeChromaMidi[pitch] ? 1 : note.inScale ? 0.9 : 0.5 + (0.3 * (globalScale.suppressed))"
             style="transition: all 100ms ease-out"
             filter="url(#shadow)"
             ) 
@@ -329,8 +330,8 @@ function handleTouchEnd({ event }) {
             )
             circle.transition(
               style="transition: all 100ms ease-out"
-              :fill="noteColor(pitch, activeChromaMidi[pitch] ? 4 : 3, activeChromaMidi[pitch] ? 0.9 : 0.6)"
-              :r="pitch == globalScale.tonic ? size / 11 : size / 12"
+              :fill="noteColor(pitch, activeChromaMidi[pitch] ? 4 : 3, activeChromaMidi[pitch] ? 0.9 : note.inScale ? 0.6 : (0.6 * (globalScale.suppressed)))"
+              :r="(pitch == globalScale.tonic ? size / 11 : size / 12) * (note.inScale ? 1 : (0.6 + 0.4 * globalScale.suppressed))"
               )
             g(v-if="tunr?.tuner?.initiated")
               circle(

@@ -1,0 +1,1 @@
+import{Nn as e}from"./theme._pC_zslA.js";import{_t as t}from"./framework.D0iFQGkp.js";var n=t({colorize:e(`colorize-notes`,!1)});export{n as t};

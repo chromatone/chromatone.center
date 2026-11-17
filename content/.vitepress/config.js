@@ -63,6 +63,7 @@ export default withPwa(defineConfig({
       }
     }
     return [
+      ["script", {}, "var q=new URLSearchParams(location.search);if(q.has('pure')){var e=document.documentElement;e.classList.add('pure');if(window.opener)e.classList.add('has-opener')}"],
       process.env.NODE_ENV === "production" && ["script", { async: true, defer: true, "data-website-id": "165ab64e-7686-4726-8013-3fa8340dccef", src: "https://stats.chromatone.center/script.js" }],
 
       ["link", { rel: "icon", type: "image/svg+xml", href: "https://chromatone.center/media/logo/click-logo.svg" }],

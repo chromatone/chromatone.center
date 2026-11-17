@@ -187,6 +187,18 @@ midi-notes(v-if="!params.pure && !params.nokeys")
   overscroll-behavior: none;
 }
 
+html.pure .main {
+  margin-left: 0 !important;
+}
+
+html.pure nav.bar {
+  display: none;
+}
+
+html.pure:not(.has-opener) a.top-16px {
+  display: none;
+}
+
 .pure .content .info {
   @apply hidden;
 }

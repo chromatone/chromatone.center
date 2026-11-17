@@ -5,14 +5,15 @@ import { lchToHsl } from '#/use/colors'
 import { data } from '../content/pages.data'
 import { usePages, usePage, cleanLink } from './pages'
 import { drawingEnabled, drawingPinned } from '../theme/composables/draw'
-import { useUrlSearchParams } from '@vueuse/core'
 import { useWindowScroll } from '@vueuse/core'
 
 const { y } = useWindowScroll()
-const params = useUrlSearchParams('history')
 const { isDark, theme } = useData()
 const route = useRoute();
 const { frontmatter: f } = useData()
+
+const params = computed(() => Object.fromEntries(new URLSearchParams(route.query || "")))
+const hasOpener = computed(() => typeof window !== 'undefined' && !!window.opener)
 
 const { pages, children, siblings, parents } = usePages(route, data)
 
@@ -37,7 +38,7 @@ function close() {
 </script>
 
 <template lang="pug">
-a.top-16px.left-2.fixed.z-1000.cursor-pointer.mr-3.op-40.hover-op-100.transition(href="/" @click="close()")
+a.top-16px.left-2.fixed.z-1000.cursor-pointer.mr-3.op-40.hover-op-100.transition(href="/" @click="close()" v-if="!params.pure || hasOpener")
   img.h-30px(src="https://chromatone.center/media/logo/smooth.svg", alt="Chromatone logo")
 
 full-screen.op-40.hover-op-80.active-op-100.transition.text-xl.fixed.bottom-2.right-2.z-10000(v-if="params?.pure")
@@ -121,7 +122,7 @@ midi-notes(v-if="!params.pure && !params.nokeys")
     
 </template>
 
-<style>
+<style lang="postcss">
 #app {
   max-height: 99dvh;
   height: 100dvh;

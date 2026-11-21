@@ -59,7 +59,7 @@ export default withPwa(defineConfig({
       if (pageData.frontmatter.dynamic) {
         image = pageData.frontmatter?.cover
       } else {
-        image = 'https://chromatone.center/media_files/cover/' + url.split('/').join('-') + pageData.frontmatter?.cover
+        image = 'https://chromatone.center/card.png'
       }
     }
     return [
